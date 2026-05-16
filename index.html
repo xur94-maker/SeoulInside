@@ -19,7 +19,6 @@
     --accent-dim: rgba(200,240,96,0.12);
     --accent-dim2: rgba(200,240,96,0.06);
     --red: #ff5c5c;
-    --radius: 10px;
     --radius-sm: 6px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,10 +27,8 @@
     color: var(--text);
     font-family: 'Noto Sans KR', sans-serif;
     min-height: 100vh;
-    padding: 0;
   }
 
-  /* 헤더 */
   header {
     position: sticky;
     top: 0;
@@ -42,11 +39,11 @@
     padding: 16px 24px;
   }
   .header-inner {
-    max-width: 760px;
+    max-width: 680px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
   }
   .logo {
     font-family: 'DM Mono', monospace;
@@ -56,22 +53,19 @@
     letter-spacing: .04em;
     flex-shrink: 0;
   }
-  .search-wrap {
-    flex: 1;
-    position: relative;
-  }
+  .search-wrap { flex: 1; position: relative; }
   .search-wrap svg {
     position: absolute;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text3);
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
   }
   #search {
     width: 100%;
-    padding: 8px 12px 8px 32px;
+    padding: 8px 12px 8px 30px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
@@ -88,7 +82,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    padding: 8px 14px;
+    padding: 8px 13px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
@@ -101,26 +95,20 @@
   }
   .btn:hover { border-color: var(--border2); color: var(--text); }
   .btn.accent { background: var(--accent-dim); border-color: rgba(200,240,96,0.3); color: var(--accent); }
-  .btn.accent:hover { background: rgba(200,240,96,0.18); }
+  .btn.accent:hover { background: rgba(200,240,96,0.2); }
 
-  /* 통계 바 */
   .stats-bar {
-    max-width: 760px;
+    max-width: 680px;
     margin: 0 auto;
     padding: 10px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
     font-size: 11px;
     color: var(--text3);
     font-family: 'DM Mono', monospace;
   }
-  .stats-bar span { color: var(--text2); }
 
-  /* 추가 폼 */
   .add-form {
-    max-width: 760px;
-    margin: 0 auto 4px;
+    max-width: 680px;
+    margin: 0 auto 8px;
     padding: 0 24px;
     display: none;
     gap: 8px;
@@ -138,68 +126,39 @@
     font-size: 13px;
     font-family: 'Noto Sans KR', sans-serif;
     outline: none;
+    transition: border-color .2s;
   }
   .add-form input:focus { border-color: var(--accent); }
   .add-form input::placeholder { color: var(--text3); }
-  .add-form select {
-    padding: 9px 12px;
-    background: var(--surface);
-    border: 1px solid var(--border2);
-    border-radius: var(--radius-sm);
-    color: var(--text2);
-    font-size: 13px;
-    font-family: 'Noto Sans KR', sans-serif;
-    outline: none;
-    cursor: pointer;
-  }
 
-  /* 메인 */
   main {
-    max-width: 760px;
+    max-width: 680px;
     margin: 0 auto;
-    padding: 8px 24px 60px;
+    padding: 4px 24px 60px;
   }
 
-  /* 섹션 */
-  .section { margin-bottom: 24px; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-  .section-title {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--text3);
-    font-family: 'DM Mono', monospace;
-  }
-  .section-count {
-    font-size: 10px;
-    color: var(--text3);
-    font-family: 'DM Mono', monospace;
-  }
-
-  /* 링크 카드 */
   .link-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 9px 12px;
+    padding: 10px 12px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     margin-bottom: 4px;
     transition: border-color .15s, background .15s;
-    position: relative;
   }
   .link-item:hover { border-color: var(--border2); background: var(--surface2); }
-  .link-item.top-item { border-color: rgba(200,240,96,0.2); background: var(--accent-dim2); }
+  .link-item.top-item { border-color: rgba(200,240,96,0.25); background: var(--accent-dim2); }
 
+  .rank {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: var(--text3);
+    min-width: 20px;
+    text-align: right;
+    flex-shrink: 0;
+  }
   .favicon {
     width: 16px;
     height: 16px;
@@ -216,7 +175,6 @@
     text-overflow: ellipsis;
     cursor: pointer;
     text-decoration: none;
-    font-weight: 400;
     transition: color .15s;
   }
   .link-name:hover { color: var(--accent); }
@@ -226,10 +184,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 180px;
+    max-width: 160px;
     font-family: 'DM Mono', monospace;
+    flex-shrink: 0;
   }
-
   .count-badge {
     font-size: 11px;
     font-weight: 500;
@@ -243,10 +201,7 @@
     flex-shrink: 0;
     transition: all .2s;
   }
-  .count-badge.has-count {
-    color: var(--accent);
-    background: var(--accent-dim);
-  }
+  .count-badge.has-count { color: var(--accent); background: var(--accent-dim); }
 
   .del-btn {
     background: none;
@@ -264,29 +219,23 @@
   .link-item:hover .del-btn { opacity: 1; }
   .del-btn:hover { color: var(--red); }
 
-  /* 빈 상태 */
   .empty {
     text-align: center;
-    padding: 40px 0;
+    padding: 48px 0;
     color: var(--text3);
     font-size: 13px;
   }
 
-  /* 애니메이션 */
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-3px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-  .link-item { animation: slideIn .15s ease; }
+  .link-item { animation: fadeIn .12s ease; }
 
-  /* 반응형 */
   @media (max-width: 500px) {
     .link-url { display: none; }
-    .logo { font-size: 13px; }
     header { padding: 12px 16px; }
-    main { padding: 8px 16px 60px; }
-    .add-form { padding: 0 16px; }
-    .stats-bar { padding: 8px 16px; }
+    main, .add-form, .stats-bar { padding-left: 16px; padding-right: 16px; }
   }
 </style>
 </head>
@@ -306,24 +255,11 @@
   </div>
 </header>
 
-<div class="stats-bar">
-  <span id="stats">로딩 중...</span>
-</div>
+<div class="stats-bar" id="stats"></div>
 
 <div class="add-form" id="addForm">
   <input type="text" id="newName" placeholder="이름 (예: 네이버)">
   <input type="text" id="newUrl" placeholder="URL (예: https://naver.com)">
-  <select id="newCat">
-    <option>AI 도구</option>
-    <option>SNS</option>
-    <option>미디어</option>
-    <option>GitHub</option>
-    <option>쇼핑</option>
-    <option>부동산</option>
-    <option>금융</option>
-    <option>도구</option>
-    <option>새 링크</option>
-  </select>
   <button class="btn accent" onclick="addLink()">저장</button>
   <button class="btn" onclick="toggleAdd()">취소</button>
 </div>
@@ -332,67 +268,67 @@
 
 <script>
 const RAW = [
-  {name:"Claude AI",url:"https://claude.ai/new",cat:"AI 도구"},
-  {name:"Grok",url:"https://grok.com/",cat:"AI 도구"},
-  {name:"DeepSeek",url:"https://chat.deepseek.com/",cat:"AI 도구"},
-  {name:"Gemini",url:"https://gemini.google.com/app",cat:"AI 도구"},
-  {name:"YouTube",url:"https://www.youtube.com/",cat:"미디어"},
-  {name:"YouTube 채널",url:"https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ",cat:"미디어"},
-  {name:"Facebook",url:"https://www.facebook.com/?locale=ko_KR",cat:"SNS"},
-  {name:"Reddit SeoulInside",url:"https://www.reddit.com/r/seoulinside/",cat:"SNS"},
-  {name:"Substack",url:"https://seoulinside.substack.com/archive?sort=top",cat:"SNS"},
-  {name:"Medium",url:"https://medium.com/p/import",cat:"SNS"},
-  {name:"WordPress",url:"https://wordpress.com/home/seoulinside.wordpress.com",cat:"SNS"},
-  {name:"500px",url:"https://500px.com/manager?view=photos&filter=all",cat:"SNS"},
-  {name:"Ko-fi",url:"https://ko-fi.com/Manage/",cat:"SNS"},
-  {name:"SeoulInside 웹사이트",url:"https://xur94-maker.github.io/SeoulInside/",cat:"GitHub"},
-  {name:"SeoulInside 저장소",url:"https://github.com/xur94-maker/SeoulInside",cat:"GitHub"},
-  {name:"GitHub Pages 설정",url:"https://github.com/xur94-maker/SeoulInside/settings/pages",cat:"GitHub"},
-  {name:"네이버 쇼핑",url:"https://shopping.naver.com/ns/home",cat:"쇼핑"},
-  {name:"에누리",url:"https://www.enuri.com/",cat:"쇼핑"},
-  {name:"쿠팡플레이",url:"https://www.coupangplay.com/home",cat:"쇼핑"},
-  {name:"뽐뿌 부동산",url:"https://www.ppomppu.co.kr/zboard/zboard.php?id=house&hotlist_flag=999",cat:"부동산"},
-  {name:"네이버 부동산",url:"https://new.land.naver.com/complexes?ms=2AKili,3z7ceQ,17&a=APT:ABYG:JGC:PRE&b=A1&e=RETAIL&h=66&i=99&ad=true",cat:"부동산"},
-  {name:"네이버 관심목록",url:"https://new.land.naver.com/interests",cat:"부동산"},
-  {name:"네이버 검색 매물",url:"https://new.land.naver.com/search?ms=2AHO5s,3zdsC3,16&a=APT:PRE:ABYG:JGC&b=A1&e=RETAIL&h=33&i=66&ad=true",cat:"부동산"},
-  {name:"하우스랭킹 뉴스",url:"https://www.houseranking.co.kr/houseranking/news/news_list_today_n.php?aa1=%EA%B2%BD%EA%B8%B0%EB%8F%84&aa2=%EA%B4%91%EB%AA%85%EC%8B%9C&aa3=%ED%95%98%EC%95%88%EB%8F%99&abc=4",cat:"부동산"},
-  {name:"하우스랭킹 매매",url:"https://www.houseranking.co.kr/houseranking/news/news_list_today_n_7.php?aa1=%EA%B2%BD%EA%B8%B0%EB%8F%84&aa2=%EA%B4%91%EB%AA%85%EC%8B%9C&aa3=%ED%95%98%EC%95%88%EB%8F%99&abc=4&ff2=1000&mmtype=%EB%A7%A4%EB%A7%A4&menu=1",cat:"부동산"},
-  {name:"FM코리아 부동산",url:"https://www.fmkorea.com/?mid=realestate",cat:"부동산"},
-  {name:"네이버 카페 재건축",url:"https://search.naver.com/search.naver?ssc=tab.cafe.all&query=%EC%9E%AC%EA%B1%B4%EC%B6%95",cat:"부동산"},
-  {name:"네이버 블로그 재건축",url:"https://search.naver.com/search.naver?ssc=tab.blog.all&query=%EC%9E%AC%EA%B1%B4%EC%B6%95",cat:"부동산"},
-  {name:"네이버 뉴스 재건축",url:"https://search.naver.com/search.naver?where=news&query=%EC%9E%AC%EA%B1%B4%EC%B6%95",cat:"부동산"},
-  {name:"구글 재건축 뉴스",url:"https://www.google.com/search?q=%EC%9E%AC%EA%B1%B4%EC%B6%95&tbm=nws",cat:"부동산"},
-  {name:"네이버 카페",url:"https://cafe.naver.com/x1291",cat:"부동산"},
-  {name:"카페 메뉴",url:"https://cafe.naver.com/f-e/cafes/12730407/menus/195?viewType=L",cat:"부동산"},
-  {name:"다음 KOSPI",url:"https://finance.daum.net/domestic/kospi",cat:"금융"},
-  {name:"알파스퀘어 삼성전자",url:"https://alphasquare.co.kr/home/stock-summary?code=005930",cat:"금융"},
-  {name:"Investing 미국",url:"https://kr.investing.com/markets/united-states",cat:"금융"},
-  {name:"PayPal",url:"https://www.paypal.com/signin",cat:"금융"},
-  {name:"네이버 페이",url:"https://pay.naver.com/pc/history?page=1",cat:"금융"},
-  {name:"PikPak",url:"https://mypikpak.com/ko/check-in?from_source=pp_browser_extension",cat:"도구"},
-  {name:"네이버 메일",url:"https://mail.naver.com/v2/new?type=toMe",cat:"도구"},
-  {name:"Gmail",url:"https://mail.google.com/mail/u/1/#inbox",cat:"도구"},
-  {name:"Google 메시지",url:"http://messages.google.com/web/conversations",cat:"도구"},
-  {name:"구글 포토",url:"https://photos.google.com/u/2/?pageId=none&pli=1",cat:"도구"},
-  {name:"네이버 마이박스",url:"https://mybox.naver.com/main/web/my",cat:"도구"},
-  {name:"서울대 포털",url:"https://my.snu.ac.kr/login.jsp",cat:"도구"},
-  {name:"스누라이프",url:"https://www.snulife.com/main/",cat:"도구"},
-  {name:"네이버 모바일",url:"https://m.naver.com/",cat:"도구"},
-  {name:"AAGAG",url:"https://aagag.com/",cat:"도구"},
+  {name:"Claude AI",url:"https://claude.ai/new"},
+  {name:"Grok",url:"https://grok.com/"},
+  {name:"DeepSeek",url:"https://chat.deepseek.com/"},
+  {name:"Gemini",url:"https://gemini.google.com/app"},
+  {name:"YouTube",url:"https://www.youtube.com/"},
+  {name:"YouTube 채널",url:"https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"},
+  {name:"Facebook",url:"https://www.facebook.com/?locale=ko_KR"},
+  {name:"Reddit SeoulInside",url:"https://www.reddit.com/r/seoulinside/"},
+  {name:"Substack",url:"https://seoulinside.substack.com/archive?sort=top"},
+  {name:"Medium",url:"https://medium.com/p/import"},
+  {name:"WordPress",url:"https://wordpress.com/home/seoulinside.wordpress.com"},
+  {name:"500px",url:"https://500px.com/manager?view=photos&filter=all"},
+  {name:"Ko-fi",url:"https://ko-fi.com/Manage/"},
+  {name:"SeoulInside 웹사이트",url:"https://xur94-maker.github.io/SeoulInside/"},
+  {name:"SeoulInside 저장소",url:"https://github.com/xur94-maker/SeoulInside"},
+  {name:"GitHub Pages 설정",url:"https://github.com/xur94-maker/SeoulInside/settings/pages"},
+  {name:"네이버 쇼핑",url:"https://shopping.naver.com/ns/home"},
+  {name:"에누리",url:"https://www.enuri.com/"},
+  {name:"쿠팡플레이",url:"https://www.coupangplay.com/home"},
+  {name:"뽐뿌 부동산",url:"https://www.ppomppu.co.kr/zboard/zboard.php?id=house&hotlist_flag=999"},
+  {name:"네이버 부동산",url:"https://new.land.naver.com/complexes?ms=2AKili,3z7ceQ,17&a=APT:ABYG:JGC:PRE&b=A1&e=RETAIL&h=66&i=99&ad=true"},
+  {name:"네이버 관심목록",url:"https://new.land.naver.com/interests"},
+  {name:"네이버 검색 매물",url:"https://new.land.naver.com/search?ms=2AHO5s,3zdsC3,16&a=APT:PRE:ABYG:JGC&b=A1&e=RETAIL&h=33&i=66&ad=true"},
+  {name:"하우스랭킹 뉴스",url:"https://www.houseranking.co.kr/houseranking/news/news_list_today_n.php?aa1=%EA%B2%BD%EA%B8%B0%EB%8F%84&aa2=%EA%B4%91%EB%AA%85%EC%8B%9C&aa3=%ED%95%98%EC%95%88%EB%8F%99&abc=4"},
+  {name:"하우스랭킹 매매",url:"https://www.houseranking.co.kr/houseranking/news/news_list_today_n_7.php?aa1=%EA%B2%BD%EA%B8%B0%EB%8F%84&aa2=%EA%B4%91%EB%AA%85%EC%8B%9C&aa3=%ED%95%98%EC%95%88%EB%8F%99&abc=4&ff2=1000&mmtype=%EB%A7%A4%EB%A7%A4&menu=1"},
+  {name:"FM코리아 부동산",url:"https://www.fmkorea.com/?mid=realestate"},
+  {name:"네이버 카페 재건축",url:"https://search.naver.com/search.naver?ssc=tab.cafe.all&query=%EC%9E%AC%EA%B1%B4%EC%B6%95"},
+  {name:"네이버 블로그 재건축",url:"https://search.naver.com/search.naver?ssc=tab.blog.all&query=%EC%9E%AC%EA%B1%B4%EC%B6%95"},
+  {name:"네이버 뉴스 재건축",url:"https://search.naver.com/search.naver?where=news&query=%EC%9E%AC%EA%B1%B4%EC%B6%95"},
+  {name:"구글 재건축 뉴스",url:"https://www.google.com/search?q=%EC%9E%AC%EA%B1%B4%EC%B6%95&tbm=nws"},
+  {name:"네이버 카페",url:"https://cafe.naver.com/x1291"},
+  {name:"카페 메뉴",url:"https://cafe.naver.com/f-e/cafes/12730407/menus/195?viewType=L"},
+  {name:"다음 KOSPI",url:"https://finance.daum.net/domestic/kospi"},
+  {name:"알파스퀘어 삼성전자",url:"https://alphasquare.co.kr/home/stock-summary?code=005930"},
+  {name:"Investing 미국",url:"https://kr.investing.com/markets/united-states"},
+  {name:"PayPal",url:"https://www.paypal.com/signin"},
+  {name:"네이버 페이",url:"https://pay.naver.com/pc/history?page=1"},
+  {name:"PikPak",url:"https://mypikpak.com/ko/check-in?from_source=pp_browser_extension"},
+  {name:"네이버 메일",url:"https://mail.naver.com/v2/new?type=toMe"},
+  {name:"Gmail",url:"https://mail.google.com/mail/u/1/#inbox"},
+  {name:"Google 메시지",url:"http://messages.google.com/web/conversations"},
+  {name:"구글 포토",url:"https://photos.google.com/u/2/?pageId=none&pli=1"},
+  {name:"네이버 마이박스",url:"https://mybox.naver.com/main/web/my"},
+  {name:"서울대 포털",url:"https://my.snu.ac.kr/login.jsp"},
+  {name:"스누라이프",url:"https://www.snulife.com/main/"},
+  {name:"네이버 모바일",url:"https://m.naver.com/"},
+  {name:"AAGAG",url:"https://aagag.com/"},
 ];
 
-const STORAGE_KEY = 'si_links_v2';
+const KEY = 'si_links_v3';
 
 function load() {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return JSON.parse(saved);
+    const s = localStorage.getItem(KEY);
+    if (s) return JSON.parse(s);
   } catch(e) {}
   return RAW.map((l, i) => ({ ...l, id: i, count: 0 }));
 }
 
 function save(links) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(links)); } catch(e) {}
+  try { localStorage.setItem(KEY, JSON.stringify(links)); } catch(e) {}
 }
 
 let links = load();
@@ -433,10 +369,8 @@ function toggleAdd() {
 function addLink() {
   const name = document.getElementById('newName').value.trim();
   const url = document.getElementById('newUrl').value.trim();
-  const cat = document.getElementById('newCat').value;
   if (!name || !url) { alert('이름과 URL을 입력해 주세요.'); return; }
-  const id = Date.now();
-  links.unshift({ name, url, cat, id, count: 0 });
+  links.unshift({ name, url, id: Date.now(), count: 0 });
   save(links);
   document.getElementById('newName').value = '';
   document.getElementById('newUrl').value = '';
@@ -446,56 +380,38 @@ function addLink() {
 
 function render() {
   const q = document.getElementById('search').value.toLowerCase();
-  let filtered = links.filter(l =>
-    l.name.toLowerCase().includes(q) ||
-    getDomain(l.url).toLowerCase().includes(q) ||
-    l.cat.toLowerCase().includes(q)
-  );
+  const filtered = links
+    .filter(l => l.name.toLowerCase().includes(q) || getDomain(l.url).includes(q))
+    .sort((a, b) => b.count - a.count);
 
-  const sorted = [...filtered].sort((a, b) => b.count - a.count);
   const totalClicks = links.reduce((s, l) => s + l.count, 0);
   const maxCount = Math.max(...links.map(l => l.count), 0);
-
   document.getElementById('stats').textContent =
     `총 ${links.length}개 링크  ·  누적 클릭 ${totalClicks}회`;
 
-  const cats = {};
-  sorted.forEach(l => {
-    if (!cats[l.cat]) cats[l.cat] = [];
-    cats[l.cat].push(l);
-  });
+  if (filtered.length === 0) {
+    document.getElementById('main').innerHTML = '<div class="empty">검색 결과가 없어요.</div>';
+    return;
+  }
 
   let html = '';
-
-  if (sorted.length === 0) {
-    html = '<div class="empty">검색 결과가 없어요.</div>';
-  } else {
-    Object.entries(cats).forEach(([cat, items]) => {
-      html += `<div class="section">
-        <div class="section-header">
-          <span class="section-title">${cat}</span>
-          <span class="section-count">${items.length}</span>
-        </div>`;
-      items.forEach(l => {
-        const isTop = maxCount > 0 && l.count === maxCount;
-        const badgeClass = l.count > 0 ? 'count-badge has-count' : 'count-badge';
-        const domain = getDomain(l.url);
-        html += `<div class="link-item${isTop ? ' top-item' : ''}">
-          <img class="favicon" src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" alt="" onerror="this.style.display='none'">
-          <a class="link-name" href="${l.url}" onclick="handleClick(${l.id});return false;" title="${l.url}">${l.name}</a>
-          <span class="link-url">${domain}</span>
-          <span class="${badgeClass}">${l.count}</span>
-          <button class="del-btn" onclick="deleteLink(${l.id})" title="삭제" aria-label="삭제">×</button>
-        </div>`;
-      });
-      html += '</div>';
-    });
-  }
+  filtered.forEach((l, i) => {
+    const isTop = maxCount > 0 && l.count === maxCount;
+    const badgeClass = l.count > 0 ? 'count-badge has-count' : 'count-badge';
+    const domain = getDomain(l.url);
+    html += `<div class="link-item${isTop ? ' top-item' : ''}">
+      <span class="rank">${i + 1}</span>
+      <img class="favicon" src="https://www.google.com/s2/favicons?domain=${domain}&sz=32" alt="" onerror="this.style.display='none'">
+      <a class="link-name" href="${l.url}" onclick="handleClick(${l.id});return false;" title="${l.url}">${l.name}</a>
+      <span class="link-url">${domain}</span>
+      <span class="${badgeClass}">${l.count}</span>
+      <button class="del-btn" onclick="deleteLink(${l.id})" title="삭제" aria-label="삭제">×</button>
+    </div>`;
+  });
 
   document.getElementById('main').innerHTML = html;
 }
 
-document.getElementById('search').addEventListener('input', render);
 render();
 </script>
 </body>
