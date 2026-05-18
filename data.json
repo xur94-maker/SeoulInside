@@ -1,50 +1,56 @@
 {
-  "wordpressNews": "https://seoulinside.substack.com\nKOSPI Stages Dramatic Intraday Reversal, Closes Slightly Higher\nKorea Markets ·&nbsp;\n[수정] May 18, 2026\nThe index fell more than 4% at the open — triggering a sidecar halt — before recovering fully to close up 0.31%, as domestic buyers overwhelmed a massive foreign selloff.\nKOSPI close\n&nbsp;7,516.04&nbsp;\nDay&#8217;s range\n&nbsp;7,142 – 7,630&nbsp;\nUSD/KRW\n&nbsp;1,500.3\nHow the session unfolded\nOpen –4%+\n&nbsp;→&nbsp;\nSidecar triggered\n&nbsp;→&nbsp;\nLow 7,142\n&nbsp;→&nbsp;\nClose +0.31%\nSidecar:\n&nbsp;a 5-minute halt on program trading, triggered when&nbsp;\nKOSPI 200 futures\n&nbsp;move ≥5% for 1 minute. Korea&#8217;s volatility circuit breaker.\nSeoul opened sharply lower, weighed down by Friday&#8217;s Wall Street decline — driven by renewed inflation concerns and Middle East tensions — and continued foreign outflows that have persisted since May 7.&nbsp;\n[수정] A sidecar was triggered early in the session, suspending program trading as KOSPI 200 futures breached the ≥5% threshold.\nThe reversal came swiftly. Domestic retail and institutional investors bought heavily into the dip. Separately, a Seoul court issued an injunction blocking Samsung Electronics&#8217; largest union from proceeding with a planned strike on May 21, easing what had been a significant near-term overhang for the index&#8217;s largest constituent.\nCapital flows\nInvestor typeFlowForeign investors–₩3.65T (~$2.7B)Retail (domestic)+₩2.21T (~$1.6B)Institutional+₩1.39T (~$1.0B)\nForeign selling exceeded the combined domestic buying by roughly $100M, yet the index finished positive — a sign of concentrated retail demand in key large-caps rather than broad-based support.\nNotable movers\nTickerNameChange005930.KSSamsung Electronics+3.88%000660.KSSK Hynix+1.15%005380.KSHyundai Motor–5.29%373220.KSLG Energy Solution–2.16%042700.KSHanmi Semiconductor–14.0%\nThree things to watch\n1. Samsung labor risk\n&nbsp;The court injunction is a temporary reprieve. If union negotiations stall, a strike threat could re-emerge. Samsung accounts for roughly 20% of KOSPI&#8217;s market cap — any sustained disruption would have outsized index impact.\n2. USD/KRW at 1,500\n&nbsp;The won has been at or above the 1,500 level — a rate historically associated with crisis periods (1997 IMF bailout, 2008 GFC). Sustained weakness here adds FX risk for foreign investors holding Korean assets.\n3. Foreign flow trend\n&nbsp;Today&#8217;s $2.7B in foreign selling is not a one-off. Outflows have been running continuously since May 7. Whether this is tactical positioning or a structural rotation away from Korean equities is the key question for the weeks ahead.\nTags: KOSPI · Samsung Electronics · Korea markets · USD/KRW · foreign flows\n📖 Korea Market Glossary — Everything You Need to Read Seoul Inside\nA living reference guide for international readers. Bookmark this post and refer back anytime.\n🏛️ Market Structure\nKOSPI\n(Korea Composite Stock Price Index)\n&nbsp;Korea&#8217;s main benchmark index, equivalent to the S&amp;P 500. Tracks all common stocks listed on the Korea Exchange (KRX). When Koreans say &#8220;the market,&#8221; they mean the KOSPI.\nKOSDAQ\n&nbsp;Korea&#8217;s second exchange, focused on small- and mid-cap tech and biotech companies — similar in spirit to Nasdaq. More volatile than the KOSPI.\nKOSPI 200\n&nbsp;A sub-index of the 200 largest and most liquid KOSPI stocks. Important because derivatives (futures, options) are based on this index — not the broader KOSPI.&nbsp;\n[수정] The sidecar is triggered by KOSPI 200 futures movements. The circuit breaker, however, is triggered by declines in the KOSPI index itself — not futures.\nKRX\n(Korea Exchange)\n&nbsp;Korea&#8217;s single, unified stock exchange where all equities, bonds, and derivatives trade. Unlike the US, which splits trading across NYSE, Nasdaq, and others, Korea has just one exchange. Run by a government-backed public corporation.\n⚡ Circuit Breakers &amp; Volatility Controls\nSidecar\n(프로그램 매매 호가 효력 일시정지)\n&nbsp;A 5-minute suspension of&nbsp;\nprogram trading orders only\n&nbsp;— triggered when KOSPI 200 futures move ≥5% from the previous day&#8217;s close for 1 consecutive minute. Regular buy/sell orders from individuals continue during a sidecar. It can only be triggered once per session, and never in the final 40 minutes of trading.\nvs. US Circuit Breaker:\n&nbsp;The US circuit breaker halts&nbsp;\nall\n&nbsp;trading market-wide (at –7%, –13%, –20%). Korea&#8217;s sidecar is narrower — it targets only algorithmic basket trades, acting as a speed bump rather than a full stop.\nCircuit Breaker\n(매매거래 중단)\n&nbsp;Korea&#8217;s full trading halt. Triggered when the KOSPI falls ≥8% from the prior close for 1 minute. All trading stops for 20 minutes. A second trigger at –15% halts trading again; a third at –20% closes the market for the day. Far rarer than the sidecar.\nVI\n(Volatility Interruption, 변동성 완화 장치)\n&nbsp;A stock-level pause (not market-wide) triggered when an individual stock&#8217;s price moves too fast within a short window. Trading in that single stock pauses for 2 minutes while an auction determines a fair price. Happens dozens of times daily across the market.\n👥 Investor Types &amp; Flow Data\nOne of Korea&#8217;s most distinctive features: the KRX publishes&nbsp;\nreal-time net buying/selling data\n&nbsp;broken into three groups. This transparency is rare globally — most markets don&#8217;t disclose this in real time.\nForeign Investors\n(외국인)\n&nbsp;Overseas institutions and funds. Historically hold ~30% of KOSPI market cap — far higher than the ~15% foreign ownership typical in US equities. Because of this, foreign flows have an outsized impact on the index. When foreigners sell heavily, the market feels it immediately.\nRetail Investors\n(개인 / 개미)\n&nbsp;Domestic individual investors. Called&nbsp;\n개미\n&nbsp;(ants) — small but numerous. Korean retail participation is among the highest in the world. During market drops, retail investors often &#8220;buy the dip&#8221; aggressively, acting as a market stabilizer.\nInstitutional Investors\n(기관)\n&nbsp;Domestic institutions: pension funds (NPS — Korea&#8217;s giant national pension), insurance companies, mutual funds, and securities firms trading on their own account. NPS alone manages over $700B and is a major price-setter.\nNPS\n(National Pension Service, 국민연금)\n&nbsp;Korea&#8217;s national pension fund, one of the largest sovereign-linked funds in the world. Its buying and selling decisions can move the KOSPI meaningfully. When NPS is a buyer, the market pays attention.\n💱 Currency\nUSD/KRW\n&nbsp;The US dollar to Korean won exchange rate. Quoted as the number of won per one dollar — so a higher number means a&nbsp;\nweaker\n&nbsp;won. For example, USD/KRW 1,500 means ₩1,500 buys $1.\nKey historical levels:\n~1,100–1,200\n— normal, stable range (2010s)\n~1,500\n— historically associated with crisis (1997 IMF bailout, 2008 GFC)\n~2,000\n— seen briefly during the 1997–98 Asian financial crisis\nA weak won raises costs for Korean companies that import raw materials, but can help exporters like Samsung and Hyundai by making their products cheaper abroad.\n🏢 Key Companies &amp; Market Structure\nSamsung Electronics\n(005930.KS)\n&nbsp;The single largest company on the KOSPI, accounting for roughly 20% of the index&#8217;s total market cap. A global leader in memory chips (DRAM, NAND), smartphones, and display panels. When Samsung moves, the KOSPI moves.\nSK Hynix\n(000660.KS)\n&nbsp;The world&#8217;s second-largest memory chip maker (after Samsung). Heavily tied to the global AI and data center boom — its HBM (High Bandwidth Memory) chips are used in Nvidia&#8217;s AI GPUs.\nChaebol\n(재벌)\n&nbsp;Korea&#8217;s large family-controlled conglomerates. Samsung, SK, Hyundai, LG, Lotte — these groups dominate the Korean economy. A single chaebol family typically controls dozens of affiliated companies through cross-shareholding. Understanding chaebol structure is key to understanding Korean equities.\nThe top 10 KOSPI stocks account for over 50% of the index — a much higher concentration than the S&amp;P 500.\n📊 Data &amp; Terminology\nMarket Cap Weighting\n&nbsp;The KOSPI is a market-cap weighted index, like the S&amp;P 500. Larger companies move the index more. Samsung&#8217;s ~20% weight means a 5% move in Samsung Electronics shifts the KOSPI by roughly 1% all by itself.\nTick Size\n&nbsp;The minimum price movement for a stock. In Korea, tick sizes vary by price range — unlike the uniform $0.01 tick in the US.\nT+2 Settlement\n&nbsp;Korean equities settle 2 business days after the trade date.&nbsp;\n[수정] Note: the US moved to T+1 settlement in May 2024, so Korea&#8217;s T+2 cycle is now longer than the current US standard.\nShorting Rules\n&nbsp;Short selling in Korea has been subject to periodic bans and restrictions, most recently reimposed in 2023 and partially lifted in 2025. Regulations around short selling are stricter and more politically sensitive in Korea than in Western markets.\n🗓️ Trading Hours\nSessionTime (KST)Pre-market auction8:00 – 9:00 AMRegular trading9:00 AM – 3:30 PMAfter-hours auction3:40 – 4:00 PM\nKST = Korea Standard Time = UTC+9. No daylight saving time in Korea.\n📅 Key Dates to Know\nDividend Season\n&nbsp;Most Korean companies pay annual dividends with a December fiscal year-end. The ex-dividend date is typically in late December, causing increased trading activity around that period.\nEarnings Season\n&nbsp;Korean companies report quarterly, with major results typically in January (Q4/FY), April (Q1), July (Q2), and October (Q3).\nThis glossary is updated periodically. If you encounter a term not listed here, reply to any newsletter issue and I&#8217;ll add it.\nShare this:\nShare on X (Opens in new window)\nX\nShare on Facebook (Opens in new window)\nFacebook",
+  "wordpressNews": "https://seoulinside.substack.com\nKOSPI Stages Dramatic Intraday Reversal, Closes Slightly Higher\nKorea Markets ·&nbsp;\n[수정] May 18, 2026\nThe index fell more than 4% at the open — triggering a sidecar halt — before recovering fully to close up 0.31%, as domestic buyers overwhelmed a massive foreign selloff.\nKOSPI close\n&nbsp;7,516.04&nbsp;\nDay&#8217;s range\n&nbsp;7,142 – 7,630&nbsp;\nUSD/KRW\n&nbsp;1,500.3\nHow the session unfolded\nOpen –4%+\n&nbsp;→&nbsp;\nSidecar triggered\n&nbsp;→&nbsp;\nLow 7,142\n&nbsp;→&nbsp;\nClose +0.31%\nSidecar:\n&nbsp;a 5-minute halt on program trading, triggered when&nbsp;\nKOSPI 200 futures\n&nbsp;move ≥5% for 1 minute. Korea&#8217;s volatility circuit breaker.\nSeoul opened sharply lower, weighed down by Friday&#8217;s Wall Street decline — driven by renewed inflation concerns and Middle East tensions — and continued foreign outflows that have persisted since May 7.&nbsp;\n[수정] A sidecar was triggered early in the session, suspending program trading as KOSPI 200 futures breached the ≥5% threshold.\nThe reversal came swiftly. Domestic retail and institutional investors bought heavily into the dip. Separately, a Seoul court issued an injunction blocking Samsung Electronics&#8217; largest union from proceeding with a planned strike on May 21, easing what had been a significant near-term overhang for the index&#8217;s largest constituent.\nCapital flows\nInvestor typeFlowForeign investors–₩3.65T (~$2.7B)Retail (domestic)+₩2.21T (~$1.6B)Institutional+₩1.39T (~$1.0B)\nForeign selling exceeded the combined domestic buying by roughly $100M, yet the index finished positive — a sign of concentrated retail demand in key large-caps rather than broad-based support.\nNotable movers\nTickerNameChange005930.KSSamsung Electronics+3.88%000660.KSSK Hynix+1.15%005380.KSHyundai Motor–5.29%373220.KSLG Energy Solution–2.16%042700.KSHanmi Semiconductor–14.0%\nThree things to watch\n1. Samsung labor risk\n&nbsp;The court injunction is a temporary reprieve. If union negotiations stall, a strike threat could re-emerge. Samsung accounts for roughly 20% of KOSPI&#8217;s market cap — any sustained disruption would have outsized index impact.\n2. USD/KRW at 1,500\n&nbsp;The won has been at or above the 1,500 level — a rate historically associated with crisis periods (1997 IMF bailout, 2008 GFC). Sustained weakness here adds FX risk for foreign investors holding Korean assets.\n3. Foreign flow trend\n&nbsp;Today&#8217;s $2.7B in foreign selling is not a one-off. Outflows have been running continuously since May 7. Whether this is tactical positioning or a structural rotation away from Korean equities is the key question for the weeks ahead.\nTags: KOSPI · Samsung Electronics · Korea markets · USD/KRW · foreign flows\n📖 Korea Market Glossary — Everything You Need to Read Seoul Inside\nA living reference guide for international readers. Bookmark this post and refer back anytime.\n🏛️ Market Structure\nKOSPI\n(Korea Composite Stock Price Index)\n&nbsp;Korea&#8217;s main benchmark index, equivalent to the S&amp;P 500. Tracks all common stocks listed on the Korea Exchange (KRX). When Koreans say &#8220;the market,&#8221; they mean the KOSPI.\nKOSDAQ\n&nbsp;Korea&#8217;s second exchange, focused on small- and mid-cap tech and biotech companies — similar in spirit to Nasdaq. More volatile than the KOSPI.\nKOSPI 200\n&nbsp;A sub-index of the 200 largest and most liquid KOSPI stocks. Important because derivatives (futures, options) are based on this index — not the broader KOSPI.&nbsp;\n[수정] The sidecar is triggered by KOSPI 200 futures movements. The circuit breaker, however, is triggered by declines in the KOSPI index itself — not futures.\nKRX\n(Korea Exchange)\n&nbsp;Korea&#8217;s single, unified stock exchange where all equities, bonds, and derivatives trade. Unlike the US, which splits trading across NYSE, Nasdaq, and others, Korea has just one exchange. Run by a government-backed public corporation.\n⚡ Circuit Breakers &amp; Volatility Controls\nSidecar\n(프로그램 매매 호가 효력 일시정지)\n&nbsp;A 5-minute suspension of&nbsp;\nprogram trading orders only\n&nbsp;— triggered when KOSPI 200 futures move ≥5% from the previous day&#8217;s close for 1 consecutive minute. Regular buy/sell orders from individuals continue during a sidecar. It can only be triggered once per session, and never in the final 40 minutes of trading.\nvs. US Circuit Breaker:\n&nbsp;The US circuit breaker halts&nbsp;\nall\n&nbsp;trading market-wide (at –7%, –13%, –20%). Korea&#8217;s sidecar is narrower — it targets only algorithmic basket trades, acting as a speed bump rather than a full stop.\nCircuit Breaker\n(매매거래 중단)\n&nbsp;Korea&#8217;s full trading halt. Triggered when the KOSPI falls ≥8% from the prior close for 1 minute. All trading stops for 20 minutes. A second trigger at –15% halts trading again; a third at –20% closes the market for the day. Far rarer than the sidecar.\nVI\n(Volatility Interruption, 변동성 완화 장치)\n&nbsp;A stock-level pause (not market-wide) triggered when an individual stock&#8217;s price moves too fast within a short window. Trading in that single stock pauses for 2 minutes while an auction determines a fair price. Happens dozens of times daily across the market.\n👥 Investor Types &amp; Flow Data\nOne of Korea&#8217;s most distinctive features: the KRX publishes&nbsp;\nreal-time net buying/selling data\n&nbsp;broken into three groups. This transparency is rare globally — most markets don&#8217;t disclose this in real time.\nForeign Investors\n(외국인)\n&nbsp;Overseas institutions and funds. Historically hold ~30% of KOSPI market cap — far higher than the ~15% foreign ownership typical in US equities. Because of this, foreign flows have an outsized impact on the index. When foreigners sell heavily, the market feels it immediately.\nRetail Investors\n(개인 / 개미)\n&nbsp;Domestic individual investors. Called&nbsp;\n개미\n&nbsp;(ants) — small but numerous. Korean retail participation is among the highest in the world. During market drops, retail investors often &#8220;buy the dip&#8221; aggressively, acting as a market stabilizer.\nInstitutional Investors\n(기관)\n&nbsp;Domestic institutions: pension funds (NPS — Korea&#8217;s giant national pension), insurance companies, mutual funds, and securities firms trading on their own account. NPS alone manages over $700B and is a major price-setter.\nNPS\n(National Pension Service, 국민연금)\n&nbsp;Korea&#8217;s national pension fund, one of the largest sovereign-linked funds in the world. Its buying and selling decisions can move the KOSPI meaningfully. When NPS is a buyer, the market pays attention.\n💱 Currency\nUSD/KRW\n&nbsp;The US dollar to Korean won exchange rate. Quoted as the number of won per one dollar — so a higher number means a&nbsp;\nweaker\n&nbsp;won. For example, USD/KRW 1,500 means ₩1,500 buys $1.\nKey historical levels:\n~1,100–1,200\n&nbsp;— normal, stable range (2010s)\n~1,500\n&nbsp;— historically associated with crisis (1997 IMF bailout, 2008 GFC)\n~2,000\n&nbsp;— seen briefly during the 1997–98 Asian financial crisis\nA weak won raises costs for Korean companies that import raw materials, but can help exporters like Samsung and Hyundai by making their products cheaper abroad.\n🏢 Key Companies &amp; Market Structure\nSamsung Electronics\n(005930.KS)\n&nbsp;The single largest company on the KOSPI, accounting for roughly 20% of the index&#8217;s total market cap. A global leader in memory chips (DRAM, NAND), smartphones, and display panels. When Samsung moves, the KOSPI moves.\nSK Hynix\n(000660.KS)\n&nbsp;The world&#8217;s second-largest memory chip maker (after Samsung). Heavily tied to the global AI and data center boom — its HBM (High Bandwidth Memory) chips are used in Nvidia&#8217;s AI GPUs.\nChaebol\n(재벌)\n&nbsp;Korea&#8217;s large family-controlled conglomerates. Samsung, SK, Hyundai, LG, Lotte — these groups dominate the Korean economy. A single chaebol family typically controls dozens of affiliated companies through cross-shareholding. Understanding chaebol structure is key to understanding Korean equities.\nThe top 10 KOSPI stocks account for over 50% of the index — a much higher concentration than the S&amp;P 500.\n📊 Data &amp; Terminology\nMarket Cap Weighting\n&nbsp;The KOSPI is a market-cap weighted index, like the S&amp;P 500. Larger companies move the index more. Samsung&#8217;s ~20% weight means a 5% move in Samsung Electronics shifts the KOSPI by roughly 1% all by itself.\nTick Size\n&nbsp;The minimum price movement for a stock. In Korea, tick sizes vary by price range — unlike the uniform $0.01 tick in the US.\nT+2 Settlement\n&nbsp;Korean equities settle 2 business days after the trade date.&nbsp;\n[수정] Note: the US moved to T+1 settlement in May 2024, so Korea&#8217;s T+2 cycle is now longer than the current US standard.\nShorting Rules\n&nbsp;Short selling in Korea has been subject to periodic bans and restrictions, most recently reimposed in 2023 and partially lifted in 2025. Regulations around short selling are stricter and more politically sensitive in Korea than in Western markets.\n🗓️ Trading Hours\nSessionTime (KST)Pre-market auction8:00 – 9:00 AMRegular trading9:00 AM – 3:30 PMAfter-hours auction3:40 – 4:00 PM\nKST = Korea Standard Time = UTC+9. No daylight saving time in Korea.\n📅 Key Dates to Know\nDividend Season\n&nbsp;Most Korean companies pay annual dividends with a December fiscal year-end. The ex-dividend date is typically in late December, causing increased trading activity around that period.\nEarnings Season\n&nbsp;Korean companies report quarterly, with major results typically in January (Q4/FY), April (Q1), July (Q2), and October (Q3).\nThis glossary is updated periodically. If you encounter a term not listed here, reply to any newsletter issue and I&#8217;ll add it.\n전세 (jeon-se): The Korean Housing System That Makes No Sense — Until It Does (Prologue)\nProfits Like NVIDIA, Valued Like a Steel Mill Part 2\nThe ₩12 Trillion Bill — South Korea’s Inheritance Tax, Explained\nThe Citizen Who Beat a Law Firm — With AI and No Legal Training\nYou Are Also a Draft (Part 5 of a series — conclusion)\nThe Chip War Nobody Saw Coming: How a Once-Bankrupt Underdog Quietly Dethroned the World’s Largest Memory Maker\nPart 1 of the Jeonse Series | Seoul Inside | May 2026\nThe Most Profitable Legal Business on Earth Is Making Sand Think (Part 1)\nSeoul Real Estate Has Always Been Unaffordable — Even 500 Years Ago\nFrom Association to Relocation: Real Timelines from Korea’s Urban Renewal Projects\nAI Thinks It Knows You. MIT Just Proved It Doesn’t\nThe Strike That Shouldn’t Be Happening — And Why Samsung Should Pay Anyway\nHow a Korean gaming giant’s CEO consulted ChatGPT instead of his lawyers (AI &amp; Legal Risk)\nKorea&#8217;s Only True Bubble — And Why It Took a Drama to Remember It\nWhy &#8220;We Can&#8217;t Do This Without You&#8221; Is a Warning\nThe Bubble That Never Burst (Gangnam, thirty years)\nWhat You Refuse to Give Up (Part 3 of a series)\nHow Wide Is Wide Enough (Part 4 of a series)\nThe Capital You Can Actually Take With You (Part 2 of a series)\nShare this:\nShare on X (Opens in new window)\nX\nShare on Facebook (Opens in new window)\nFacebook",
   "wordpressNewsUrl": "https://seoulinside.wordpress.com/2026/05/18/news/",
   "globalNews": [
     {
-      "title": "At least 100 deaths reported in Ebola outbreak in DR Congo as six Americans exposed",
+      "title": "Trump says he called off new Iran attack at request of Gulf states",
+      "link": "https://www.bbc.com/news/articles/c7079e55zjro?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 18 May 2026 22:30:58 GMT",
+      "desc": "The US president says he is holding off on a US attack planned for Tuesday as \"serious negotiations are now taking place\"."
+    },
+    {
+      "title": "At least 100 dead in Ebola outbreak in DR Congo, official says",
       "link": "https://www.bbc.com/news/articles/cq6pz60p996o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 18 May 2026 16:20:30 GMT",
-      "desc": "One of the six Americans is experiencing symptoms, according to media reports. One province in Congo reports 390 cases."
+      "date": "Mon, 18 May 2026 19:31:18 GMT",
+      "desc": "The World Health Organization (WHO) has declared the outbreak an international emergency."
+    },
+    {
+      "title": "Selling children to survive: Afghan fathers forced to make impossible choices",
+      "link": "https://www.bbc.com/news/articles/c0q25dwj807o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 18 May 2026 21:09:07 GMT",
+      "desc": "In Afghanistan today, a staggering three in four people cannot meet their basic needs."
+    },
+    {
+      "title": "Trump v Massie: Could president's Republican nemesis survive $20m attack to oust him?",
+      "link": "https://www.bbc.com/news/articles/cz924g45530o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 18 May 2026 21:39:45 GMT",
+      "desc": "The Kentucky congressman, who has crossed the president on federal spending and the Epstein files, faces Republican voters on Tuesday."
     },
     {
       "title": "Death toll from Israeli strikes on Lebanon passes 3,000, officials say",
       "link": "https://www.bbc.com/news/articles/cqjpglyjwjeo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 18 May 2026 16:16:38 GMT",
       "desc": "It marks a grim milestone in the conflict between Israel and the Lebanese armed group Hezbollah since March, despite a nominal ceasefire."
-    },
-    {
-      "title": "Judge rules gun and writings are admissible in Luigi Mangione's New York murder trial",
-      "link": "https://www.bbc.com/news/articles/cx21g6qz45xo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 18 May 2026 16:00:17 GMT",
-      "desc": "Other items found with Mangione at a Pennsylvania McDonald's will not be allowed to be presented in court, the judge ruled."
-    },
-    {
-      "title": "Two men arrested over stunt at enclosure of famed monkey Punch",
-      "link": "https://www.bbc.com/news/articles/cr5pz4jvlp5o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 18 May 2026 14:51:53 GMT",
-      "desc": "Two US nationals have been arrested after one jumped the fence of the monkey, who went viral online, police say."
-    },
-    {
-      "title": "Former Google CEO Eric Schmidt booed by graduates at mention of AI",
-      "link": "https://www.bbc.com/news/articles/ce8pqd54qneo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 18 May 2026 15:16:00 GMT",
-      "desc": "The reaction underscores a growing anxiety among students over AI's impact on jobs and their future careers."
     }
   ],
   "koreaNews": [
     {
-      "title": "North Korea - Economy, Resources, Trade - Britannica",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
-      "date": "Fri, 15 May 2026 05:00:00 GMT",
-      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
+      "title": "Energy Shock and Economic Resilience: South Korea and the Iran War - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPdFI2cXlqNDFCN0RTS3J6RS12Q21wWTVKeW9uLU5pTkdKbWpjY2R1dGF1bzZYcWdDYXhwVHlNLXJKbUVFNFRmSS01VVdJaW80RDF3N0w0akROVndDaTNsOXZhb3lzT1ozcWloWTQzWmh4SVhGQ2I3Mjl4bHVlY3FKSjV5bVpoNVlEWExJbjAtbnRjWTlHU2hfR0lrVQ?oc=5",
+      "date": "Mon, 18 May 2026 18:21:54 GMT",
+      "desc": "Energy Shock and Economic Resilience: South Korea and the Iran War&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "Samsung Electronics and union extend talks to avert strike threatening global supply chains - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQTS1TUUtVWHY4LWNkWVVfS0t0Q0FkdzBpOEY1LTktUFIxY2ViUXNVYzh6MFhRQ1p3NV9hMUs5NHRoNkhnMHVQU1pKYTVtTF9lT2k3a1F4YzF3bjR6cWloQ0pNc1ktLTVnWUpEeFUwLWs0OUtUdDRkSkk0Q3ROU01BdDQ4NmFXb3FoV3RYQVh0dEtVREZqOG04RlBoc01Nck1JdEx6NE15UWhWZGhaOXJfZld5dmlsUkFEbE1aT2tqemJWU0NFUXBKRVE5bnB4NExKV2c?oc=5",
-      "date": "Mon, 18 May 2026 10:41:57 GMT",
-      "desc": "Samsung Electronics and union extend talks to avert strike threatening global supply chains&nbsp;&nbsp;Reuters"
+      "title": "Taiwan’s GDP per capita lead fuels South Korean unease - Taipei Times",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE14SGc5ZlJLOC02MEVFaWFheWV0dE4wd3RxMlFacDQyWERSalFCQU9ZUE9nNDZKRTdKNHkwT1RhdEk5eXJ4bURNX0hvY21yeTB2TUwyWXF4Y0Y1bHhTbWZBUXFFX3lUeTFJd3BJQXN0VlZ1dUYyRkVJ?oc=5",
+      "date": "Mon, 18 May 2026 16:00:00 GMT",
+      "desc": "Taiwan’s GDP per capita lead fuels South Korean unease&nbsp;&nbsp;Taipei Times"
+    },
+    {
+      "title": "How South Korea Is Weathering the Iran War Oil Shock - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOaHdsRHNhYmNwVUpXNnBZcjQyMk81V00xSnRoZWFfRy1HcnFqVS1WY29lM2dKS29pTDRPWjdBLUl6ZHFsbVh3ZkFkOEM5d3F1ZmVNLXFpaVBIV0k1TDQ1VzdVbHZYOVBkOVQxaFRoWWxSd1hCeFUzVFltR0FtT0wzOHdlLTA2QQ?oc=5",
+      "date": "Mon, 18 May 2026 18:58:23 GMT",
+      "desc": "How South Korea Is Weathering the Iran War Oil Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "South Korea (KOR) Exports, Imports, and Trade Partners | The Observatory of Economic Complexity - The Observatory of Economic Complexity",
@@ -59,105 +65,99 @@
       "desc": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "South Korea weighs the cost of stepping into Samsung’s US$400,000 bonus row - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPWUdsd25uYVRuVWZkVWlOaU14ejlzZzl6YjFILWpwU2ZZMDFzZDdyM0ZDdDUxcTJCSmt5SE44UGplR3dVZW9WQzdkV3U2cjVJRUl5eUczT0JfM3lFZVlwcjVHNlZYOWU2NEcxaHVsVEh6SFFZQUhDb3FjRHNQYXc4eVExaDdaX01OcHZkS3Z2elU4VFZib1FjOWxJZnllQVppcjI2YmF3ZFE0WWZya3FZLXhpODVZSzRMQmMxMXZ5alRKT1p6NTRVdUpfX1NMQzTSAc8BQVVfeXFMTXlmazhPdGFjc1NlVndUSlRBcHZ4SlYzSnBEVks1ZDAwbFhoMWE1c2Nha3FZOGNLVGpMQm5EdVNrZUZXdFFJVGVMb2FiT0FxVjllTXpSc0hZYnprZ3IxNGlMdDF4NWhVYk1ic2pfMHhraklNYVM1dTBPRjk0bjZ1Ri14R2xCWkhmOWpiTUowNXpvOEtxVGVwN3ZLcjhYMmdLdHV0dnZIQmRkb1R1SmRlVElSVXZfTXUzYktQa1JYRkVMbWFOeEdKMmc2ZXdmWHV3?oc=5",
-      "date": "Mon, 18 May 2026 09:00:07 GMT",
-      "desc": "South Korea weighs the cost of stepping into Samsung’s US$400,000 bonus row&nbsp;&nbsp;South China Morning Post"
-    },
-    {
       "title": "ETFs Shift to Samsung Electronics, SK Hynix Despite Diversification Rules - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQaDZ5X1o4WWRwUlhMODlQSkowU1JBWlY1SlJmTXYtQWJRX1VCbzhCeWlCNkNBeWNEdlV1T055ZzZnR0VPQlhlYmhYQlNISGZFcWF1eC1JTXFzcXRtOUFiLU0xZ2lwUWtxQzYwcVQ0RVowZkZ3MnBXa2tHMzlMWjNETVVyTDlEY1p6cUp6LVln?oc=5",
       "date": "Mon, 18 May 2026 06:04:06 GMT",
       "desc": "ETFs Shift to Samsung Electronics, SK Hynix Despite Diversification Rules&nbsp;&nbsp;조선일보"
     },
     {
+      "title": "Samsung-SK hynix concentration weakens ETF diversification - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQdVdJV0hZdmpFSDdVRnUzWGdZcFpmOGlYQm1BZlgxQ2FLa0dhcFdrZGF0ZWRfa1lzRkVKc0p6ejdiSV9tVGI2VDBIVXhDT2Z1X19sQ1drTkYxbTdMaWFMeldUbGtaUjFPc01way1lNjljVm9YNnAwTXdSdDBxV0h1bmd5cXRRVXR2dVR4M3NNdnJOUEdyT0sxcHFjZVBmdDdnXzRPRERBYzZWbGdDRGU5U0xVSmcxd9IBuwFBVV95cUxNVVVjVG9WSDZBYXRnb1hqZUFNRElubWxrQm84VlB0NngtUng1QUhkX1RxeGk0U2hvV0QycmEyVjB4MFlmdFoyc3BiZHR1aUx4Y0cyZERKckhVTE1rRHdrVFY3X2RyLUNwbWZBN3Y0UWZFb3dzSGNmd04tdTlDdGI0ODJXeHpLNzJSdFEwQllnTXhNY1RZSzd2cGM3T2RabnNkZlpfZDA2Wk9CWGNKUmRzQy1TZVlDNmMxSU5v?oc=5",
+      "date": "Mon, 18 May 2026 22:00:00 GMT",
+      "desc": "Samsung-SK hynix concentration weakens ETF diversification&nbsp;&nbsp;The Korea Times"
+    },
+    {
       "title": "A 45,000-person labor strike at Samsung's memory chip plants could throw a wrench into the AI boom - Fortune",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxORXlCa0gyT29UdjdaZVRtVklHc2RlLTBNOWhYNEZXdEZpVFhHTTNuVzF1Qy0tYk9ZRGhuMlpkd0NQZW1DM3BUYmJkTFVrblctX2c5MkhJV1F6QUlUXzNXTFl5Y0o1UWlwT2xhN2FOd1h4cXBWbnhiV2tIU29PWnlhUTZZNTFTUjRRU3hWNXhlNUxaNjEyT3VV?oc=5",
       "date": "Sun, 17 May 2026 09:03:00 GMT",
       "desc": "A 45,000-person labor strike at Samsung's memory chip plants could throw a wrench into the AI boom&nbsp;&nbsp;Fortune"
-    },
-    {
-      "title": "Asia's trillion-dollar titans are powering — and distorting — its fastest growing stock markets - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPZ0xXZEFYTnlPVWgyRDdBZzFWUGw1V0FmNkNxdlZOaFRIVlFsS1NCcjAzUW5DNWpIRWZ0TDlJT1BzRmNQMHFoZG5jVkRtLVRYY1I0RDR1MmdSTWZzN0F0YWpCZzJMSUFwcWNpRGotbzRibXgxRUlyeWxJVmRTSUh4UUFVRDBxcDhCOUJWRWRfVnh3TGMyWDl3YlRJTDlTOE9sam1pTFJEaUhCZHAwbnhwTEZtZWNoUHcyV3fSAb8BQVVfeXFMTi1aVEJnSmd0OVF1VFZjZmFsbnRXMThWa242czBSRmQ5UXBuQXd1VjJTTG5tTnFrU3Z4d0pKYmtVME5zc3l2dzNjRmg5ODFJLTM5aFk4eWhzQms2MmYya1lqVWdMeDF3TV9UdkRzaTZBZWRoTDZsXzRsbk1qRFpQNmNkdDhxbFFjbkZGeFpyUlRLNmdnQWJoNE5xZjJTbmQ1dFJzVWg3b09SaWU0RV9VYmVkX0dlZDcyUUNFa1lCU1E?oc=5",
-      "date": "Tue, 12 May 2026 04:43:14 GMT",
-      "desc": "Asia's trillion-dollar titans are powering — and distorting — its fastest growing stock markets&nbsp;&nbsp;CNBC"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 220.91,
+      "price": 222.32,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 393.52,
+      "price": 395.95,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 414.81,
+      "price": 420.99,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 105.83,
+      "price": 108.17,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 197.74,
+      "price": 203.64,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 208.43,
+      "price": 215.12,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 400.88,
+      "price": 396.94,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 295.41,
+      "price": 297.84,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 419.5,
+      "price": 423.54,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7370.93,
+      "price": 7403.05,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25976.24,
+      "price": 26090.73,
       "change": 0.0,
       "pct": 0.0
     }
@@ -208,10 +208,10 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1493.47,
+      "price": 1488.34,
       "change": 0.0,
       "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-18 16:43 UTC"
+  "updatedAt": "2026-05-18 22:57 UTC"
 }
