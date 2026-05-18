@@ -127,28 +127,6 @@ header {
   padding-bottom: 4px;
   margin-bottom: 1rem;
 }
-/* ── 내 글 (1열) ── */
-.my-post {
-  padding: 0.9rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-.my-post:last-child { border-bottom: none; }
-.my-post a {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.02rem;
-  font-weight: 700;
-  color: var(--ink);
-  text-decoration: none;
-  line-height: 1.3;
-  display: block;
-}
-.my-post a:hover { color: var(--accent); }
-.my-post .post-meta {
-  font-size: 0.65rem;
-  color: var(--mid);
-  font-family: 'IBM Plex Mono', monospace;
-  margin-top: 4px;
-}
 /* ── 주식 ── */
 .stock-row {
   display: flex;
@@ -205,12 +183,12 @@ header {
 }
 @keyframes blink { 50% { opacity: 0.3; } }
 
-/* ── Medium 두 칼럼 섹션 ── */
-.medium-section {
+/* ── 워드프레스 두 칼럼 섹션 ── */
+.wp-section {
   border-top: 3px double var(--ink);
   padding: 2.5rem 2rem;
 }
-.medium-section .section-label {
+.wp-section .section-label {
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -220,61 +198,51 @@ header {
   padding-bottom: 4px;
   margin-bottom: 1.6rem;
 }
-.medium-grid {
+.wp-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
 @media (max-width: 680px) {
-  .medium-grid { grid-template-columns: 1fr; }
+  .wp-grid { grid-template-columns: 1fr; }
 }
-.medium-card {
+.wp-card {
   border: 1px solid var(--rule);
-  padding: 1.6rem;
   background: #fff;
+  overflow: hidden;
   transition: box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
 }
-.medium-card:hover {
+.wp-card:hover {
   box-shadow: 4px 4px 0 var(--ink);
 }
-.medium-card .card-label {
+.wp-card .card-header {
+  padding: 1rem 1.4rem 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wp-card .card-label {
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--mid);
   font-family: 'IBM Plex Mono', monospace;
-  margin-bottom: 0.8rem;
 }
-.medium-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 0.8rem;
-  color: var(--ink);
-}
-.medium-card p {
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: var(--mid);
-  flex-grow: 1;
-  margin-bottom: 1.2rem;
-}
-.medium-card a.read-btn {
-  display: inline-block;
-  padding: 7px 16px;
-  background: var(--ink);
-  color: var(--paper);
+.wp-card .card-link {
+  font-size: 0.62rem;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
+  color: var(--accent);
   text-decoration: none;
-  align-self: flex-start;
-  transition: background 0.2s;
 }
-.medium-card a.read-btn:hover { background: var(--accent); }
+.wp-card .card-link:hover { text-decoration: underline; }
+/* iframe 임베드 */
+.wp-card iframe {
+  width: 100%;
+  height: 480px;
+  border: none;
+  display: block;
+}
 
 /* ── 푸터 ── */
 footer {
@@ -316,15 +284,9 @@ footer {
 <!-- 메인 그리드 -->
 <div class="grid">
 
-  <!-- 1열: Analysis & Insight → 서브스택 특정 글 -->
+  <!-- 1열: 비워둠 -->
   <div class="col">
     <div class="section-label">✍ Analysis &amp; Insight</div>
-    <div class="my-post">
-      <a href="https://seoulinside.substack.com/p/analysis" target="_blank" rel="noopener">
-        Analysis — Seoul Inside
-      </a>
-      <div class="post-meta">seoulinside.substack.com</div>
-    </div>
   </div>
 
   <!-- 2열: 주식 -->
@@ -347,25 +309,37 @@ footer {
 
 </div>
 
-<!-- ── Medium 두 칼럼 섹션 ── -->
-<div class="medium-section">
-  <div class="section-label">📰 Latest from Seoul Inside — Medium</div>
-  <div class="medium-grid">
+<!-- ── 워드프레스 두 칼럼 섹션 ── -->
+<div class="wp-section">
+  <div class="section-label">✍ Latest from Seoul Inside</div>
+  <div class="wp-grid">
 
-    <!-- 왼쪽 카드 -->
-    <div class="medium-card">
-      <div class="card-label">📰 News</div>
-      <h3>Seoul Inside News</h3>
-      <p>In-depth coverage and analysis of Korea's latest news, curated for an English-speaking audience.</p>
-      <a class="read-btn" href="https://medium.com/@Seoulinside/news-b4fd63e36bba" target="_blank" rel="noopener">Read on Medium →</a>
+    <!-- 왼쪽: SUN -->
+    <div class="wp-card">
+      <div class="card-header">
+        <span class="card-label">📰 Today's View</span>
+        <a class="card-link" href="https://seoulinside.wordpress.com/2026/05/18/sun/" target="_blank" rel="noopener">Open ↗</a>
+      </div>
+      <iframe
+        src="https://seoulinside.wordpress.com/2026/05/18/sun/"
+        title="Seoul Inside — Sun"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin">
+      </iframe>
     </div>
 
-    <!-- 오른쪽 카드 -->
-    <div class="medium-card">
-      <div class="card-label">📰 News</div>
-      <h3>Seoul Inside News</h3>
-      <p>More stories from inside Seoul — markets, culture, and the stories that matter to Korea watchers.</p>
-      <a class="read-btn" href="https://medium.com/@Seoulinside/news-f2ec3bd9a2e2" target="_blank" rel="noopener">Read on Medium →</a>
+    <!-- 오른쪽: NEWS -->
+    <div class="wp-card">
+      <div class="card-header">
+        <span class="card-label">📰 News</span>
+        <a class="card-link" href="https://seoulinside.wordpress.com/2026/05/18/news/" target="_blank" rel="noopener">Open ↗</a>
+      </div>
+      <iframe
+        src="https://seoulinside.wordpress.com/2026/05/18/news/"
+        title="Seoul Inside — News"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin">
+      </iframe>
     </div>
 
   </div>
