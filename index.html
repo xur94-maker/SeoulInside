@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seoul Inside — 추천 글 모음</title>
-  <meta name="description" content="Seoul Inside 서브스택의 인기 글과 최신 글을 한눈에 모아봅니다." />
-  <meta property="og:title" content="Seoul Inside — 추천 글 모음" />
-  <meta property="og:description" content="Seoul Inside 서브스택의 인기 글과 최신 글을 한눈에 모아봅니다." />
+  <title>Seoul Inside — Top Reads</title>
+  <meta name="description" content="Curated top picks and latest posts from Seoul Inside on Substack." />
+  <meta property="og:title" content="Seoul Inside — Top Reads" />
+  <meta property="og:description" content="Curated top picks and latest posts from Seoul Inside on Substack." />
   <meta property="og:url" content="https://seoulinside.substack.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -356,16 +356,16 @@
   <header>
     <div class="header-date" id="today-date"></div>
     <div class="site-title">Seoul <span>Inside</span></div>
-    <div class="site-tagline">서울의 안쪽 — 인기글 & 최신글 큐레이션</div>
+    <div class="site-tagline">Inside the City — Top Picks & Latest Posts</div>
     <div class="header-rule">
       <span></span><em>seoulinside.substack.com</em><span></span>
     </div>
   </header>
 
   <nav>
-    <a href="#popular">인기글 Top 7</a>
-    <a href="#newest">최신글 Top 7</a>
-    <a href="https://seoulinside.substack.com/" target="_blank" rel="noopener">구독하기</a>
+    <a href="#popular">Top 7 Popular</a>
+    <a href="#newest">Top 7 Newest</a>
+    <a href="https://seoulinside.substack.com/" target="_blank" rel="noopener">Subscribe</a>
   </nav>
 
   <!-- MAIN -->
@@ -373,15 +373,15 @@
     <div class="sections-grid" id="sections-grid">
       <div class="loading-wrap" id="loading">
         <div class="loading-spinner"></div>
-        <div class="loading-text">글을 불러오는 중...</div>
+        <div class="loading-text">Loading posts...</div>
       </div>
     </div>
   </main>
 
   <!-- SUBSCRIBE STRIP -->
   <div class="subscribe-strip">
-    <p>서울의 속살을 담은 이야기, 놓치지 마세요</p>
-    <a class="subscribe-btn" href="https://seoulinside.substack.com/#subscribe" target="_blank" rel="noopener">무료 구독하기 →</a>
+    <p>Stories from inside Seoul — don't miss a single one</p>
+    <a class="subscribe-btn" href="https://seoulinside.substack.com/#subscribe" target="_blank" rel="noopener">Subscribe for Free →</a>
   </div>
 
   <!-- FOOTER -->
@@ -389,9 +389,9 @@
     <div class="footer-inner">
       <div class="footer-logo">Seoul Inside</div>
       <div class="footer-links">
-        <a href="https://seoulinside.substack.com/" target="_blank" rel="noopener">Substack 홈</a>
-        <a href="https://seoulinside.substack.com/archive" target="_blank" rel="noopener">전체 글 보기</a>
-        <a href="https://seoulinside.substack.com/#subscribe" target="_blank" rel="noopener">구독</a>
+        <a href="https://seoulinside.substack.com/" target="_blank" rel="noopener">Substack Home</a>
+        <a href="https://seoulinside.substack.com/archive" target="_blank" rel="noopener">All Posts</a>
+        <a href="https://seoulinside.substack.com/#subscribe" target="_blank" rel="noopener">Subscribe</a>
       </div>
       <div class="footer-note">© 2025 Seoul Inside · Powered by Substack RSS</div>
     </div>
@@ -401,9 +401,9 @@
     // ── 날짜 표시 ──
     const dateEl = document.getElementById('today-date');
     const now = new Date();
-    dateEl.textContent = now.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+    dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
 
-    // ── RSS 파싱 ──
+    // ── RSS Feed ──
     const RSS_URL = 'https://seoulinside.substack.com/feed';
     const PROXY   = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=20`;
 
@@ -425,13 +425,12 @@
           guid:    item.guid,
         }));
 
-        // 신규순: 날짜 최신순
+        // Newest: sort by date descending
         const newest = [...posts]
           .sort((a, b) => b.date - a.date)
           .slice(0, 7);
 
-        // 인기순: 현재는 날짜 오래된 순(초기엔 가장 공들인 글) — 추후 좋아요 연동 가능
-        // 글이 7개 미만이면 available 전체 사용
+        // Popular: oldest first for now (most established posts) — can wire up likes later
         const popular = [...posts]
           .sort((a, b) => a.date - b.date)
           .slice(0, 7);
@@ -450,15 +449,15 @@
     }
 
     function fmtDate(date) {
-      return date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'short', day: 'numeric' });
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
     }
 
     function renderSections(popular, newest) {
       const grid = document.getElementById('sections-grid');
       grid.innerHTML = '';
 
-      grid.appendChild(buildSection('popular', '인기', '인기글 Top 7', popular));
-      grid.appendChild(buildSection('newest',  'new',  '최신글 Top 7', newest));
+      grid.appendChild(buildSection('popular', '인기', 'Top 7 Popular', popular));
+      grid.appendChild(buildSection('newest',  'new',  'Top 7 Newest', newest));
     }
 
     function buildSection(id, badgeClass, title, posts) {
@@ -469,11 +468,11 @@
         <div class="section-header">
           <span class="section-badge ${badgeClass === 'new' ? 'new' : ''}">${badgeClass === 'new' ? 'NEW' : 'HOT'}</span>
           <h2 class="section-title">${title}</h2>
-          <span class="section-count">${posts.length}편</span>
+          <span class="section-count">${posts.length} posts</span>
         </div>`;
 
       if (!posts.length) {
-        sec.innerHTML = header + `<p class="error-msg">아직 글이 없습니다.<br>첫 글을 기다리고 있어요 ✍️</p>`;
+        sec.innerHTML = header + `<p class="error-msg">No posts yet.<br>The first story is on its way ✍️</p>`;
         return sec;
       }
 
@@ -488,10 +487,10 @@
           </div>
         </a>`).join('');
 
-      const updatedAt = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+      const updatedAt = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
 
       sec.innerHTML = header + `<ul class="article-list">${items}</ul>
-        <div class="updated-tag">마지막 업데이트 · ${updatedAt}</div>`;
+        <div class="updated-tag">Last updated · ${updatedAt}</div>`;
       return sec;
     }
 
@@ -504,7 +503,7 @@
       grid.innerHTML = `
         <div class="loading-wrap">
           <div class="error-msg" style="border-color:var(--muted);color:var(--muted);background:transparent">
-            아직 발행된 글이 없습니다.<br>첫 번째 글을 기다리고 있어요 ✍️
+            No posts published yet.<br>The first story is coming soon ✍️
           </div>
         </div>`;
     }
@@ -514,8 +513,8 @@
       grid.innerHTML = `
         <div class="loading-wrap">
           <div class="error-msg">
-            글을 불러오지 못했습니다.<br>
-            잠시 후 새로고침 해주세요.
+            Could not load posts.<br>
+            Please refresh and try again.
           </div>
         </div>`;
     }
