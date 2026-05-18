@@ -1,525 +1,736 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seoul Inside — Top Reads</title>
-  <meta name="description" content="Curated top picks and latest posts from Seoul Inside on Substack." />
-  <meta property="og:title" content="Seoul Inside — Top Reads" />
-  <meta property="og:description" content="Curated top picks and latest posts from Seoul Inside on Substack." />
-  <meta property="og:url" content="https://seoulinside.substack.com/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seoul Inside — Korea Intelligence Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #0f0e0d;
+      --ink: #0f0f0f;
       --paper: #f5f0e8;
-      --cream: #ede8de;
-      --accent: #c0392b;
-      --accent2: #1a3a5c;
-      --muted: #7a7060;
-      --rule: #c8bfaa;
-      --card-bg: #faf7f2;
+      --accent: #c8102e;
+      --gold: #b8952a;
+      --muted: #6b6560;
+      --border: #d8d0c0;
+      --card: #fffdf8;
+      --tag-bg: #f0ebe0;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: var(--paper);
       color: var(--ink);
-      font-family: 'Noto Serif KR', serif;
-      min-height: 100vh;
-      overflow-x: hidden;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     /* ── HEADER ── */
     header {
-      border-bottom: 3px double var(--ink);
-      padding: 2rem 0 1.2rem;
-      text-align: center;
-      position: relative;
-      background: var(--paper);
+      border-bottom: 3px solid var(--ink);
+      padding: 0 32px;
     }
-
-    .header-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    .site-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      color: var(--ink);
-    }
-
-    .site-title span {
-      color: var(--accent);
-      font-style: italic;
-    }
-
-    .site-tagline {
-      margin-top: 0.5rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-
-    .header-rule {
+    .header-top {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      justify-content: center;
-      margin-top: 1rem;
+      justify-content: space-between;
+      padding: 10px 0 8px;
+      border-bottom: 1px solid var(--border);
     }
-    .header-rule span { width: 40px; height: 1px; background: var(--ink); display: block; }
-    .header-rule em { font-family: 'Playfair Display', serif; font-size: 0.8rem; color: var(--muted); font-style: italic; }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0.7rem 0;
-      border-bottom: 1px solid var(--rule);
-      background: var(--cream);
-    }
-
-    nav a {
+    .dateline {
       font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .refresh-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 5px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .refresh-btn:hover { opacity: 0.85; }
+
+    .header-main {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 16px 0 14px;
+    }
+    .masthead h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .masthead h1 span { color: var(--accent); }
+    .masthead .tagline {
+      font-size: 11px;
+      color: var(--muted);
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ink);
+      margin-top: 4px;
+    }
+    .header-nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .header-nav a {
       text-decoration: none;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
-    nav a:hover { color: var(--accent); }
+    .header-nav a:hover { color: var(--accent); }
 
-    /* ── MAIN GRID ── */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2.5rem 1.2rem 4rem;
+    /* ── TICKER BAR ── */
+    .ticker-bar {
+      background: var(--ink);
+      color: white;
+      padding: 8px 32px;
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+      border-bottom: 2px solid var(--accent);
+    }
+    .ticker-section {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .ticker-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-right: 16px;
+      border-right: 1px solid #333;
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .ticker-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ccc;
+    }
+    .ticker-price {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .ticker-change {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+    }
+    .up { color: #4caf7d; }
+    .down { color: #e05252; }
+    .divider-v {
+      width: 1px;
+      height: 20px;
+      background: #333;
+      margin: 0 16px;
     }
 
-    .sections-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-    }
-
-    @media (max-width: 700px) {
-      .sections-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
-
-    /* ── SECTION ── */
+    /* ── SECTION LABELS ── */
     .section-header {
       display: flex;
-      align-items: baseline;
-      gap: 0.7rem;
-      margin-bottom: 1.2rem;
-      padding-bottom: 0.7rem;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: white;
+      background: var(--ink);
+      padding: 3px 8px;
+    }
+    .section-label.accent { background: var(--accent); }
+    .section-label.gold { background: var(--gold); }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── MAIN GRID ── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0;
+      padding: 0 32px;
       border-bottom: 2px solid var(--ink);
     }
 
-    .section-badge {
+    .col {
+      padding: 20px 18px;
+      border-right: 1px solid var(--border);
+    }
+    .col:last-child { border-right: none; }
+
+    /* ── CARDS ── */
+    .article-card {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .article-card:last-child { border-bottom: none; }
+    .article-card:hover .card-title { color: var(--accent); }
+
+    .card-source {
       font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
+      font-size: 9px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      background: var(--ink);
-      color: var(--paper);
-      padding: 0.2rem 0.5rem;
-      border-radius: 2px;
-    }
-
-    .section-badge.new { background: var(--accent2); }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .section-count {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
       color: var(--muted);
-      margin-left: auto;
+      margin-bottom: 4px;
     }
-
-    /* ── ARTICLE CARDS ── */
-    .article-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
-
-    .article-item {
-      display: flex;
-      gap: 0.9rem;
-      align-items: flex-start;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--rule);
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.15s;
-      border-radius: 4px;
-      padding-left: 0.3rem;
-      padding-right: 0.3rem;
-    }
-
-    .article-item:hover { background: var(--cream); }
-    .article-item:last-child { border-bottom: none; }
-
-    .rank-num {
+    .card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 14px;
       font-weight: 700;
-      color: var(--rule);
-      min-width: 2rem;
-      line-height: 1;
-      padding-top: 0.1rem;
+      line-height: 1.35;
+      color: var(--ink);
       transition: color 0.2s;
+      text-decoration: none;
+      display: block;
     }
-
-    .article-item:hover .rank-num { color: var(--accent); }
-    .rank-num.top3 { color: var(--accent); }
-
-    .article-content { flex: 1; min-width: 0; }
-
-    .article-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      line-height: 1.4;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 0.3rem;
-    }
-
-    .article-meta {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
+    .card-title:visited { color: var(--ink); }
+    .card-desc {
+      font-size: 12px;
       color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .article-excerpt {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
+      margin-top: 4px;
       line-height: 1.5;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-
-    /* ── LOADING / ERROR ── */
-    .loading-wrap {
-      text-align: center;
-      padding: 3rem 0;
-      grid-column: 1 / -1;
+    .card-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 5px;
     }
-
-    .loading-spinner {
+    .card-tag {
       display: inline-block;
-      width: 28px; height: 28px;
-      border: 2px solid var(--rule);
-      border-top-color: var(--ink);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 0.7rem;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .loading-text {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
+      background: var(--tag-bg);
       color: var(--muted);
-      letter-spacing: 0.1em;
-    }
-
-    .error-msg {
+      font-size: 9px;
       font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      text-align: center;
-      padding: 1.5rem;
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      background: #fdf0ee;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 3px double var(--ink);
-      padding: 1.5rem 1rem;
-      text-align: center;
-      background: var(--cream);
-    }
-
-    .footer-inner {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .footer-links { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-top: 0.6rem; }
-    .footer-links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-    }
-    .footer-links a:hover { color: var(--accent); }
-
-    .footer-note {
-      font-size: 0.7rem;
-      color: var(--muted);
-      margin-top: 0.7rem;
+      padding: 2px 6px;
+      margin-top: 5px;
     }
 
-    /* ── SUBSCRIBE STRIP ── */
-    .subscribe-strip {
-      background: var(--ink);
-      color: var(--paper);
-      text-align: center;
-      padding: 1.4rem 1rem;
+    /* ── MY ARTICLES (col 1) ── */
+    .my-article-card {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
     }
-
-    .subscribe-strip p {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-style: italic;
-      margin-bottom: 0.7rem;
+    .my-article-card:last-child { border-bottom: none; }
+    .my-article-card:hover .card-title { color: var(--accent); }
+    .my-article-card .card-title {
+      font-size: 15px;
     }
-
-    .subscribe-btn {
+    .featured-tag {
       display: inline-block;
       background: var(--accent);
-      color: #fff;
+      color: white;
+      font-size: 9px;
       font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 0.55rem 1.4rem;
-      border-radius: 2px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .subscribe-btn:hover { opacity: 0.85; }
-
-    /* ── ANIMATIONS ── */
-    .article-item {
-      opacity: 0;
-      transform: translateY(8px);
-      animation: fadeUp 0.35s ease forwards;
+      padding: 2px 7px;
+      margin-bottom: 5px;
     }
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
+    /* ── MARKET CARDS ── */
+    .market-card {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
     }
-
-    .updated-tag {
+    .market-card:last-child { border-bottom: none; }
+    .market-name {
       font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .market-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 2px 0;
+    }
+    .market-meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .market-change-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 1px 6px;
+    }
+    .market-change-badge.up { background: #e8f5ee; color: #2d7a4f; }
+    .market-change-badge.down { background: #fdeaea; color: #b83232; }
+    .market-exchange {
+      font-size: 10px;
       color: var(--muted);
-      text-align: right;
-      margin-top: 1rem;
-      letter-spacing: 0.08em;
+      font-family: 'DM Mono', monospace;
+    }
+    .market-update {
+      font-size: 9px;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      margin-top: 3px;
+    }
+
+    /* ── BOTTOM BAR ── */
+    .bottom-bar {
+      padding: 10px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .bottom-bar .credit {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .bottom-bar .substack-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── LOADING / ERROR ── */
+    .loading-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 20px 0;
+      text-align: center;
+    }
+    .error-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: #e05252;
+      padding: 10px 0;
+    }
+
+    /* ── EXCHANGE RATE BOX ── */
+    .exchange-box {
+      background: var(--ink);
+      color: white;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+    }
+    .exchange-box .ex-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .exchange-box .ex-rate {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .exchange-box .ex-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr 1fr; }
+      .masthead h1 { font-size: 36px; }
+    }
+    @media (max-width: 600px) {
+      .main-grid { grid-template-columns: 1fr; }
+      header, .ticker-bar, .bottom-bar { padding-left: 16px; padding-right: 16px; }
+      .main-grid { padding: 0 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-date" id="today-date"></div>
-    <div class="site-title">Seoul <span>Inside</span></div>
-    <div class="site-tagline">Inside the City — Top Picks & Latest Posts</div>
-    <div class="header-rule">
-      <span></span><em>seoulinside.substack.com</em><span></span>
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-top">
+    <span class="dateline" id="date-display">Loading date...</span>
+    <button class="refresh-btn" onclick="loadAll()">↻ Refresh All</button>
+  </div>
+  <div class="header-main">
+    <div class="masthead">
+      <h1>Seoul <span>Inside</span></h1>
+      <div class="tagline">Korea Intelligence — Business · Markets · Policy</div>
     </div>
-  </header>
+    <nav class="header-nav">
+      <a href="https://seoulinside.substack.com" target="_blank">Substack</a>
+      <a href="#my-articles">My Analysis</a>
+      <a href="#markets">Markets</a>
+      <a href="#news">News</a>
+    </nav>
+  </div>
+</header>
 
-  <nav>
-    <a href="#popular">Top 7 Popular</a>
-    <a href="#newest">Top 7 Newest</a>
-    <a href="https://seoulinside.substack.com/" target="_blank" rel="noopener">Subscribe</a>
-  </nav>
+<!-- ── TICKER BAR ── -->
+<div class="ticker-bar" id="ticker-bar">
+  <div class="ticker-section" id="world-ticker">
+    <span class="ticker-label">Global</span>
+    <span class="ticker-item"><span class="ticker-name">Loading...</span></span>
+  </div>
+  <div class="divider-v"></div>
+  <div class="ticker-section" id="korea-ticker">
+    <span class="ticker-label">KRX</span>
+    <span class="ticker-item"><span class="ticker-name">Loading...</span></span>
+  </div>
+  <div class="divider-v"></div>
+  <div class="ticker-section" id="fx-ticker">
+    <span class="ticker-label">FX</span>
+    <span class="ticker-item"><span class="ticker-name">Loading...</span></span>
+  </div>
+</div>
 
-  <!-- MAIN -->
-  <main>
-    <div class="sections-grid" id="sections-grid">
-      <div class="loading-wrap" id="loading">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">Loading posts...</div>
-      </div>
+<!-- ── MAIN GRID ── -->
+<div class="main-grid">
+
+  <!-- COL 1: MY ARTICLES (Seoul Inside) -->
+  <div class="col" id="my-articles">
+    <div class="section-header">
+      <span class="section-label accent">Seoul Inside</span>
+      <span class="section-line"></span>
     </div>
-  </main>
-
-  <!-- SUBSCRIBE STRIP -->
-  <div class="subscribe-strip">
-    <p>Stories from inside Seoul — don't miss a single one</p>
-    <a class="subscribe-btn" href="https://seoulinside.substack.com/#subscribe" target="_blank" rel="noopener">Subscribe for Free →</a>
+    <div id="my-articles-list"><div class="loading-text">Loading articles...</div></div>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">Seoul Inside</div>
-      <div class="footer-links">
-        <a href="https://seoulinside.substack.com/" target="_blank" rel="noopener">Substack Home</a>
-        <a href="https://seoulinside.substack.com/archive" target="_blank" rel="noopener">All Posts</a>
-        <a href="https://seoulinside.substack.com/#subscribe" target="_blank" rel="noopener">Subscribe</a>
-      </div>
-      <div class="footer-note">© 2025 Seoul Inside · Powered by Substack RSS</div>
+  <!-- COL 2: WORLD MARKETS -->
+  <div class="col" id="markets">
+    <div class="section-header">
+      <span class="section-label gold">World Markets</span>
+      <span class="section-line"></span>
     </div>
-  </footer>
+    <div id="world-markets-list"><div class="loading-text">Loading market data...</div></div>
 
-  <script>
-    // ── 날짜 표시 ──
-    const dateEl = document.getElementById('today-date');
-    const now = new Date();
-    dateEl.textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+    <div style="margin-top:20px">
+      <div class="section-header">
+        <span class="section-label">Korea Markets</span>
+        <span class="section-line"></span>
+      </div>
+      <div id="korea-markets-list"><div class="loading-text">Loading...</div></div>
+    </div>
 
-    // ── RSS Feed ──
-    const RSS_URL = 'https://seoulinside.substack.com/feed';
-    const PROXY   = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=20`;
+    <div style="margin-top:20px">
+      <div class="exchange-box" id="fx-box">
+        <div class="ex-label">USD / KRW</div>
+        <div class="ex-rate" id="fx-rate">—</div>
+        <div class="ex-sub" id="fx-sub">Fetching rate...</div>
+      </div>
+    </div>
+  </div>
 
-    async function loadPosts() {
-      try {
-        const res  = await fetch(PROXY);
-        const data = await res.json();
+  <!-- COL 3: TOP WORLD NEWS -->
+  <div class="col" id="news">
+    <div class="section-header">
+      <span class="section-label">Top News</span>
+      <span class="section-line"></span>
+    </div>
+    <div id="world-news-list"><div class="loading-text">Loading news...</div></div>
+  </div>
 
-        if (data.status !== 'ok' || !data.items?.length) {
-          showEmpty();
-          return;
-        }
+  <!-- COL 4: KOREA NEWS -->
+  <div class="col">
+    <div class="section-header">
+      <span class="section-label accent">Korea Watch</span>
+      <span class="section-line"></span>
+    </div>
+    <div id="korea-news-list"><div class="loading-text">Loading Korea news...</div></div>
+  </div>
 
-        const posts = data.items.map(item => ({
-          title:   item.title,
-          link:    item.link,
-          date:    new Date(item.pubDate),
-          excerpt: stripHtml(item.description || item.content || ''),
-          guid:    item.guid,
-        }));
+</div>
 
-        // Newest: sort by date descending
-        const newest = [...posts]
-          .sort((a, b) => b.date - a.date)
-          .slice(0, 7);
+<!-- ── BOTTOM ── -->
+<div class="bottom-bar">
+  <span class="credit">© 2026 B. Sun · Seoul Inside · All external links © their respective publishers</span>
+  <a class="substack-link" href="https://seoulinside.substack.com" target="_blank">→ Subscribe on Substack</a>
+</div>
 
-        // Popular: oldest first for now (most established posts) — can wire up likes later
-        const popular = [...posts]
-          .sort((a, b) => a.date - b.date)
-          .slice(0, 7);
+<script>
+// ── UTILITIES ──
+function formatDate(str) {
+  if (!str) return '';
+  const d = new Date(str);
+  if (isNaN(d)) return str;
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
 
-        renderSections(popular, newest);
-      } catch (e) {
-        console.error(e);
-        showError();
-      }
+function setDateDisplay() {
+  const now = new Date();
+  document.getElementById('date-display').textContent =
+    now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+}
+
+function truncate(str, n) {
+  if (!str) return '';
+  const plain = str.replace(/<[^>]+>/g, '');
+  return plain.length > n ? plain.slice(0, n) + '…' : plain;
+}
+
+// ── RSS via rss2json ──
+async function fetchRSS(url) {
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&count=8`;
+  const res = await fetch(api);
+  const data = await res.json();
+  if (data.status !== 'ok') throw new Error('RSS error');
+  return data.items;
+}
+
+// ── MY ARTICLES (Substack) ──
+async function loadMyArticles() {
+  const el = document.getElementById('my-articles-list');
+  try {
+    const items = await fetchRSS('https://seoulinside.substack.com/feed');
+    el.innerHTML = items.slice(0, 7).map((item, i) => `
+      <div class="my-article-card">
+        ${i === 0 ? '<span class="featured-tag">Latest</span>' : ''}
+        <a class="card-title" href="${item.link}" target="_blank">${item.title}</a>
+        <div class="card-desc">${truncate(item.description || item.content, 90)}</div>
+        <div class="card-date">${formatDate(item.pubDate)}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    el.innerHTML = `<div class="error-text">Could not load articles. <a href="https://seoulinside.substack.com/archive" target="_blank" style="color:var(--accent)">View on Substack →</a></div>`;
+  }
+}
+
+// ── WORLD NEWS ──
+async function loadWorldNews() {
+  const el = document.getElementById('world-news-list');
+  try {
+    const items = await fetchRSS('https://feeds.reuters.com/reuters/topNews');
+    el.innerHTML = items.slice(0, 7).map(item => `
+      <div class="article-card">
+        <div class="card-source">Reuters</div>
+        <a class="card-title" href="${item.link}" target="_blank">${item.title}</a>
+        <div class="card-date">${formatDate(item.pubDate)}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    // fallback: try AP News
+    try {
+      const items2 = await fetchRSS('https://rsshub.app/apnews/topics/apf-topnews');
+      el.innerHTML = items2.slice(0, 7).map(item => `
+        <div class="article-card">
+          <div class="card-source">AP News</div>
+          <a class="card-title" href="${item.link}" target="_blank">${item.title}</a>
+          <div class="card-date">${formatDate(item.pubDate)}</div>
+        </div>
+      `).join('');
+    } catch (e2) {
+      el.innerHTML = `<div class="error-text">News unavailable</div>`;
     }
+  }
+}
 
-    function stripHtml(html) {
-      const d = document.createElement('div');
-      d.innerHTML = html;
-      return d.textContent.replace(/\s+/g, ' ').trim().slice(0, 120);
-    }
+// ── KOREA NEWS ──
+async function loadKoreaNews() {
+  const el = document.getElementById('korea-news-list');
+  try {
+    const url = 'https://news.google.com/rss/search?q=South+Korea+economy+OR+Samsung+OR+Korean+market&hl=en-US&gl=US&ceid=US:en';
+    const items = await fetchRSS(url);
+    el.innerHTML = items.slice(0, 7).map(item => `
+      <div class="article-card">
+        <div class="card-source">${item.author || 'Google News'}</div>
+        <a class="card-title" href="${item.link}" target="_blank">${item.title}</a>
+        <div class="card-date">${formatDate(item.pubDate)}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    el.innerHTML = `<div class="error-text">Korea news unavailable</div>`;
+  }
+}
 
-    function fmtDate(date) {
-      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-    }
+// ── MARKET DATA (via Yahoo Finance unofficial) ──
+async function loadMarkets() {
+  // World stocks
+  const worldStocks = [
+    { symbol: 'AAPL',  name: 'Apple' },
+    { symbol: 'NVDA',  name: 'NVIDIA' },
+    { symbol: 'MSFT',  name: 'Microsoft' },
+    { symbol: 'TSLA',  name: 'Tesla' },
+    { symbol: '^GSPC', name: 'S&P 500' },
+    { symbol: '^DJI',  name: 'Dow Jones' },
+  ];
 
-    function renderSections(popular, newest) {
-      const grid = document.getElementById('sections-grid');
-      grid.innerHTML = '';
+  const koreaStocks = [
+    { symbol: '005930.KS', name: 'Samsung Electronics' },
+    { symbol: '000660.KS', name: 'SK Hynix' },
+    { symbol: '035420.KS', name: 'NAVER' },
+    { symbol: '051910.KS', name: 'LG Chem' },
+    { symbol: '^KS11',     name: 'KOSPI' },
+  ];
 
-      grid.appendChild(buildSection('popular', '인기', 'Top 7 Popular', popular));
-      grid.appendChild(buildSection('newest',  'new',  'Top 7 Newest', newest));
-    }
+  async function fetchQuote(symbol) {
+    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=2d`;
+    const res = await fetch(url);
+    const data = await res.json();
+    const meta = data.chart.result[0].meta;
+    const price = meta.regularMarketPrice;
+    const prev = meta.chartPreviousClose || meta.previousClose;
+    const change = price - prev;
+    const pct = (change / prev) * 100;
+    return { price, change, pct };
+  }
 
-    function buildSection(id, badgeClass, title, posts) {
-      const sec = document.createElement('section');
-      sec.id = id;
+  // World markets
+  const worldEl = document.getElementById('world-markets-list');
+  const tickerWorldEl = document.getElementById('world-ticker');
+  worldEl.innerHTML = '<div class="loading-text">Fetching prices...</div>';
 
-      const header = `
-        <div class="section-header">
-          <span class="section-badge ${badgeClass === 'new' ? 'new' : ''}">${badgeClass === 'new' ? 'NEW' : 'HOT'}</span>
-          <h2 class="section-title">${title}</h2>
-          <span class="section-count">${posts.length} posts</span>
-        </div>`;
-
-      if (!posts.length) {
-        sec.innerHTML = header + `<p class="error-msg">No posts yet.<br>The first story is on its way ✍️</p>`;
-        return sec;
-      }
-
-      const items = posts.map((p, i) => `
-        <a class="article-item" href="${p.link}" target="_blank" rel="noopener"
-           style="animation-delay:${i * 0.06}s">
-          <div class="rank-num ${i < 3 ? 'top3' : ''}">${String(i + 1).padStart(2, '0')}</div>
-          <div class="article-content">
-            <div class="article-title">${escHtml(p.title)}</div>
-            <div class="article-meta">${fmtDate(p.date)}</div>
-            ${p.excerpt ? `<div class="article-excerpt">${escHtml(p.excerpt)}</div>` : ''}
+  try {
+    const results = await Promise.allSettled(worldStocks.map(s => fetchQuote(s.symbol)));
+    worldEl.innerHTML = worldStocks.map((s, i) => {
+      if (results[i].status !== 'fulfilled') return '';
+      const { price, change, pct } = results[i].value;
+      const dir = pct >= 0 ? 'up' : 'down';
+      const sign = pct >= 0 ? '+' : '';
+      return `
+        <div class="market-card">
+          <div class="market-name">${s.name} <span style="color:var(--muted);font-size:10px">${s.symbol}</span></div>
+          <div class="market-price ${dir}">${price.toLocaleString('en-US', {maximumFractionDigits: 2})}</div>
+          <div class="market-meta">
+            <span class="market-change-badge ${dir}">${sign}${pct.toFixed(2)}%</span>
+            <span class="market-exchange">${sign}${change.toFixed(2)}</span>
           </div>
-        </a>`).join('');
+        </div>`;
+    }).join('');
 
-      const updatedAt = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    // Ticker
+    tickerWorldEl.innerHTML = '<span class="ticker-label">Global</span>' +
+      worldStocks.map((s, i) => {
+        if (results[i].status !== 'fulfilled') return '';
+        const { price, pct } = results[i].value;
+        const dir = pct >= 0 ? 'up' : 'down';
+        const sign = pct >= 0 ? '+' : '';
+        return `<span class="ticker-item">
+          <span class="ticker-name">${s.name}</span>
+          <span class="ticker-price ${dir}">${price.toLocaleString('en-US', {maximumFractionDigits:0})}</span>
+          <span class="ticker-change ${dir}">${sign}${pct.toFixed(2)}%</span>
+        </span>`;
+      }).join('');
+  } catch (e) {
+    worldEl.innerHTML = `<div class="error-text">Market data unavailable (CORS). Try a backend proxy.</div>`;
+    tickerWorldEl.innerHTML = '<span class="ticker-label">Global</span><span class="ticker-item"><span class="ticker-name" style="color:#aaa">Market data blocked by CORS</span></span>';
+  }
 
-      sec.innerHTML = header + `<ul class="article-list">${items}</ul>
-        <div class="updated-tag">Last updated · ${updatedAt}</div>`;
-      return sec;
-    }
+  // Korea markets
+  const koreaEl = document.getElementById('korea-markets-list');
+  const tickerKoreaEl = document.getElementById('korea-ticker');
+  koreaEl.innerHTML = '<div class="loading-text">Fetching KRX data...</div>';
 
-    function escHtml(str) {
-      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-
-    function showEmpty() {
-      const grid = document.getElementById('sections-grid');
-      grid.innerHTML = `
-        <div class="loading-wrap">
-          <div class="error-msg" style="border-color:var(--muted);color:var(--muted);background:transparent">
-            No posts published yet.<br>The first story is coming soon ✍️
+  try {
+    const results2 = await Promise.allSettled(koreaStocks.map(s => fetchQuote(s.symbol)));
+    koreaEl.innerHTML = koreaStocks.map((s, i) => {
+      if (results2[i].status !== 'fulfilled') return '';
+      const { price, change, pct } = results2[i].value;
+      const dir = pct >= 0 ? 'up' : 'down';
+      const sign = pct >= 0 ? '+' : '';
+      return `
+        <div class="market-card">
+          <div class="market-name">${s.name}</div>
+          <div class="market-price ${dir}">${price.toLocaleString('ko-KR', {maximumFractionDigits: 0})}</div>
+          <div class="market-meta">
+            <span class="market-change-badge ${dir}">${sign}${pct.toFixed(2)}%</span>
+            <span class="market-exchange">${sign}${change.toFixed(0)}</span>
           </div>
         </div>`;
-    }
+    }).join('');
 
-    function showError() {
-      const grid = document.getElementById('sections-grid');
-      grid.innerHTML = `
-        <div class="loading-wrap">
-          <div class="error-msg">
-            Could not load posts.<br>
-            Please refresh and try again.
-          </div>
-        </div>`;
-    }
+    tickerKoreaEl.innerHTML = '<span class="ticker-label">KRX</span>' +
+      koreaStocks.map((s, i) => {
+        if (results2[i].status !== 'fulfilled') return '';
+        const { price, pct } = results2[i].value;
+        const dir = pct >= 0 ? 'up' : 'down';
+        const sign = pct >= 0 ? '+' : '';
+        return `<span class="ticker-item">
+          <span class="ticker-name">${s.name}</span>
+          <span class="ticker-price ${dir}">${price.toLocaleString('ko-KR', {maximumFractionDigits:0})}</span>
+          <span class="ticker-change ${dir}">${sign}${pct.toFixed(2)}%</span>
+        </span>`;
+      }).join('');
+  } catch (e) {
+    koreaEl.innerHTML = `<div class="error-text">KRX data unavailable</div>`;
+  }
 
-    loadPosts();
-  </script>
+  // FX Rate USD/KRW
+  try {
+    const fxData = await fetchQuote('USDKRW=X');
+    const dir = fxData.pct >= 0 ? 'up' : 'down';
+    const sign = fxData.pct >= 0 ? '+' : '';
+    document.getElementById('fx-rate').textContent = '₩' + fxData.price.toLocaleString('ko-KR', {maximumFractionDigits: 2});
+    document.getElementById('fx-sub').textContent = `${sign}${fxData.pct.toFixed(2)}% today · 1 USD`;
+    document.getElementById('fx-ticker').innerHTML =
+      `<span class="ticker-label">FX</span>
+       <span class="ticker-item">
+         <span class="ticker-name">USD/KRW</span>
+         <span class="ticker-price ${dir}">₩${fxData.price.toLocaleString('ko-KR',{maximumFractionDigits:0})}</span>
+         <span class="ticker-change ${dir}">${sign}${fxData.pct.toFixed(2)}%</span>
+       </span>`;
+  } catch (e) {
+    document.getElementById('fx-rate').textContent = '—';
+    document.getElementById('fx-sub').textContent = 'FX data unavailable';
+  }
+}
+
+// ── LOAD ALL ──
+async function loadAll() {
+  setDateDisplay();
+  loadMyArticles();
+  loadWorldNews();
+  loadKoreaNews();
+  loadMarkets();
+}
+
+loadAll();
+</script>
 </body>
 </html>
