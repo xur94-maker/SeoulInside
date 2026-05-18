@@ -5,6 +5,29 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
 
+def strip_namespaces(raw_bytes):
+    """XML 네임스페이스를 완전히 제거"""
+    # content:encoded → content_encoded 등으로 변환
+    raw_bytes = raw_bytes.replace(b'content:encoded', b'content_encoded')
+    raw_bytes = raw_bytes.replace(b'dc:creator', b'dc_creator')
+    raw_bytes = raw_bytes.replace(b'dc:date', b'dc_date')
+    raw_bytes = raw_bytes.replace(b'atom:link', b'atom_link')
+    raw_bytes = raw_bytes.replace(b'itunes:owner', b'itunes_owner')
+    raw_bytes = raw_bytes.replace(b'itunes:email', b'itunes_email')
+    raw_bytes = raw_bytes.replace(b'itunes:name', b'itunes_name')
+    raw_bytes = raw_bytes.replace(b'itunes:author', b'itunes_author')
+    raw_bytes = raw_bytes.replace(b'itunes:block', b'itunes_block')
+    raw_bytes = raw_bytes.replace(b'googleplay:owner', b'googleplay_owner')
+    raw_bytes = raw_bytes.replace(b'googleplay:email', b'googleplay_email')
+    raw_bytes = raw_bytes.replace(b'googleplay:author', b'googleplay_author')
+    raw_bytes = raw_bytes.replace(b'media:content', b'media_content')
+    raw_bytes = raw_bytes.replace(b'media:thumbnail', b'media_thumbnail')
+    # xmlns 선언 제거
+    raw_bytes = re.sub(rb'\s+xmlns(?::[a-zA-Z0-9_]+)?="[^"]*"', b'', raw_bytes)
+    raw_bytes = re.sub(rb"\s+xmlns(?::[a-zA-Z0-9_]+)?='[^']*'", b'', raw_bytes)
+    return raw_bytes
+
+
 def fetch_rss(url, max_items=8):
     try:
         req = urllib.request.Request(url, headers={
@@ -14,19 +37,7 @@ def fetch_rss(url, max_items=8):
         with urllib.request.urlopen(req, timeout=15) as r:
             raw = r.read()
 
-        # 모든 네임스페이스 제거 후 파싱
-        raw = re.sub(rb'<([a-zA-Z]+):[a-zA-Z]+', lambda m: m.group(0), raw)
-        raw = re.sub(rb' xmlns[^"]*"[^"]*"', b'', raw)
-        raw = re.sub(rb' xmlns[^\']*\'[^\']*\'', b'', raw)
-
-        # 네임스페이스 태그 단순화
-        raw = raw.replace(b'content:encoded', b'content_encoded')
-        raw = raw.replace(b'dc:creator', b'dc_creator')
-        raw = raw.replace(b'dc:date', b'dc_date')
-        raw = raw.replace(b'media:content', b'media_content')
-        raw = raw.replace(b'media:thumbnail', b'media_thumbnail')
-        raw = raw.replace(b'atom:link', b'atom_link')
-
+        raw = strip_namespaces(raw)
         root = ET.fromstring(raw)
         items = []
         for item in root.iter('item'):
@@ -56,14 +67,17 @@ def fetch_substack(feed_url, max_items=8):
         with urllib.request.urlopen(req, timeout=15) as r:
             raw = r.read()
 
-        # 네임스페이스 제거
-        raw = raw.replace(b'content:encoded', b'content_encoded')
-        raw = raw.replace(b'dc:creator', b'dc_creator')
-        raw = raw.replace(b'dc:date', b'dc_date')
-        raw = raw.replace(b'atom:link', b'atom_link')
-        raw = re.sub(rb' xmlns[^=]*="[^"]*"', b'', raw)
+        print(f'  RSS 응답 크기: {len(raw)} bytes')
 
-        root = ET.fromstring(raw)
+        raw = strip_namespaces(raw)
+
+        # 파싱 시도
+        try:
+            root = ET.fromstring(raw)
+        except ET.ParseError as pe:
+            print(f'  XML 파싱 오류: {pe}')
+            # CDATA 문제일 수 있으므로 간단 추출 시도
+            return fallback_substack(raw.decode('utf-8', errors='ignore'), max_items)
 
         posts = []
         latest_body = None
@@ -71,7 +85,10 @@ def fetch_substack(feed_url, max_items=8):
         latest_link = None
         latest_date = None
 
-        for i, item in enumerate(root.iter('item')):
+        all_items = list(root.iter('item'))
+        print(f'  item 태그 수: {len(all_items)}개')
+
+        for i, item in enumerate(all_items):
             title = (item.findtext('title') or '').strip()
             link  = (item.findtext('link')  or '').strip()
             date  = (item.findtext('pubDate') or '').strip()
@@ -88,7 +105,6 @@ def fetch_substack(feed_url, max_items=8):
                 latest_title = title
                 latest_link  = link
                 latest_date  = date
-                # 서브스택 구독 푸터 제거
                 body = re.sub(r'<div class="subscription-widget.*', '', body, flags=re.DOTALL)
                 latest_body = body
 
@@ -100,12 +116,34 @@ def fetch_substack(feed_url, max_items=8):
             latest = {'title': latest_title, 'link': latest_link,
                       'date': latest_date, 'body': latest_body}
 
-        print(f'  서브스택: {len(posts)}개 파싱됨')
+        print(f'  서브스택: {len(posts)}개 파싱됨, 최신글: {latest_title[:40] if latest_title else "없음"}')
         return posts, latest
 
     except Exception as e:
         print(f'  서브스택 오류: {e}')
+        import traceback
+        traceback.print_exc()
         return [], None
+
+
+def fallback_substack(text, max_items=8):
+    """XML 파싱 실패 시 정규식으로 간단 추출"""
+    print('  폴백 파서 사용 중...')
+    posts = []
+    titles = re.findall(r'<title><!\[CDATA\[(.*?)\]\]></title>', text)
+    links  = re.findall(r'<link>(https://[^<]+)</link>', text)
+    dates  = re.findall(r'<pubDate>(.*?)</pubDate>', text)
+
+    for i in range(min(len(titles), len(links), max_items)):
+        if 'seoulinside' in links[i] and '/p/' in links[i]:
+            posts.append({
+                'title': titles[i],
+                'link': links[i],
+                'date': dates[i] if i < len(dates) else '',
+                'desc': ''
+            })
+    print(f'  폴백: {len(posts)}개 추출')
+    return posts, None
 
 
 def fetch_stock(symbol, label):
@@ -173,7 +211,7 @@ data['koreaStocks'] = [
 
 # 5) 완료
 print('[5/5] 저장 중...')
-data['updatedAt'] = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
+data['updatedAt'] = datetime.지금(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
 
 with open('data.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
