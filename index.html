@@ -104,7 +104,7 @@ header {
   justify-content: space-between;
 }
 
-/* ── 그리드 (3열로 변경) ── */
+/* ── 그리드 (3열) ── */
 .grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr;
@@ -224,47 +224,13 @@ footer {
   padding-bottom: 4px;
   margin-bottom: 1.6rem;
 }
-.latest-post-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  font-weight: 700;
-  line-height: 1.25;
-  margin-bottom: 0.4rem;
-}
-.latest-post-section h2 a {
-  color: var(--ink);
-  text-decoration: none;
-}
-.latest-post-section h2 a:hover { color: var(--accent); }
-.latest-post-meta {
-  font-size: 0.68rem;
-  font-family: 'IBM Plex Mono', monospace;
-  color: var(--mid);
-  margin-bottom: 1.8rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--rule);
-}
 .latest-post-body {
   font-size: 1rem;
   line-height: 1.85;
   color: var(--ink);
+  white-space: pre-line;
 }
 .latest-post-body p { margin-bottom: 1.1rem; }
-.latest-post-body h1,
-.latest-post-body h2,
-.latest-post-body h3 {
-  font-family: 'Playfair Display', serif;
-  margin: 1.6rem 0 0.6rem;
-}
-.latest-post-body a { color: var(--accent); }
-.latest-post-body img { max-width: 100%; border-radius: 2px; margin: 1rem 0; }
-.latest-post-body blockquote {
-  border-left: 3px solid var(--accent);
-  padding-left: 1rem;
-  color: var(--mid);
-  font-style: italic;
-  margin: 1rem 0;
-}
 .read-more-link {
   display: inline-block;
   margin-top: 1.6rem;
@@ -347,7 +313,6 @@ document.getElementById('today-date').textContent =
 
 function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined, {maximumFractionDigits:2}) : '—'; }
 
-// 변동률(%)만 표시 — 중복 제거
 function fmtChg(c, p) {
   const sign = c >= 0 ? '+' : '';
   return `${sign}${p.toFixed(2)}%`;
@@ -404,14 +369,14 @@ async function loadData() {
     renderNews(data.globalNews || [], 'global-news');
     renderNews(data.koreaNews || [], 'korea-news');
 
-    // 최신 포스트 전문 렌더링
-    const lp = data.latestPost;
-    if (lp && lp.body) {
+    // ── WordPress 최신 포스트 렌더링 (wordpressNews 키 사용) ──
+    const postText = data.wordpressNews;
+    const postUrl  = data.wordpressNewsUrl;
+
+    if (postText && postText.trim().length > 0) {
       document.getElementById('latest-post').innerHTML = `
-        <h2><a href="${lp.link}" target="_blank" rel="noopener">${lp.title}</a></h2>
-        <div class="latest-post-meta">${lp.date ? lp.date.slice(0,16) : ''} · Seoul Inside</div>
-        <div class="latest-post-body">${lp.body}</div>
-        <a class="read-more-link" href="${lp.link}" target="_blank" rel="noopener">Read on Substack →</a>
+        <div class="latest-post-body">${postText}</div>
+        <a class="read-more-link" href="${postUrl}" target="_blank" rel="noopener">Read on WordPress →</a>
       `;
     } else {
       document.getElementById('latest-post').innerHTML =
@@ -423,11 +388,13 @@ async function loadData() {
     document.getElementById('footer-updated').textContent = 'Last data update: ' + ts;
 
   } catch (e) {
-    ['stocks','global-news','korea-news'].forEach(id => {
+    ['stocks', 'global-news', 'korea-news'].forEach(id => {
       document.getElementById(id).innerHTML =
-        `<div class="loading">⏳ data.json 생성 전입니다.<br>GitHub Actions가 실행된 후 새로고침 해주세요.</div>`;
+        `<div class="loading">⏳ Data not ready yet.<br>Please refresh after GitHub Actions completes.</div>`;
     });
-    document.getElementById('updated-at').textContent = '데이터 준비 중…';
+    document.getElementById('latest-post').innerHTML =
+      `<div class="loading">⏳ Data not ready yet.<br>Please refresh after GitHub Actions completes.</div>`;
+    document.getElementById('updated-at').textContent = 'Preparing data…';
   }
 }
 
