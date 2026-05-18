@@ -41,10 +41,10 @@
       "desc": "Samsung Electronics and union extend talks to avert strike threatening global supply chains&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal - CNBC",
+      "title": "Samsung strike involving 47,000 workers looms as South Korea's president urges labor deal - CNBC",
       "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOYlM2TUJxOXJ3cXRqak5naURHR0hSZFIwNVlDbzYtQ1VNb0JGUmR0NGZBUjIwOWEwTDd2U0puX3hrUkMySDhkR2xfZVFfOFF5QmtpM2FHYUpHenNoNFpxUXV1UVVDazdPN0tYV3U0aDlNRWxhQmNsQ0MwcmVEY0VSdHB30gGHAUFVX3lxTE1ncTl4b19mRFYySTF6Z3UtNlBCMUloNjR3UVZMUWZ3TExzdjF1R0RPQUpkbjQySm8ybVptVEg4dDVqYlBxOWtXN3NFTUl4Zm4wbUJDTDJ2NTZxYktralZhbkZneXFyVm1fa1JQZVZIejV2ckVEX3Q5Tkh6cHJENTNaSFI4STlfdw?oc=5",
       "date": "Mon, 18 May 2026 04:24:25 GMT",
-      "desc": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal&nbsp;&nbsp;CNBC"
+      "desc": "Samsung strike involving 47,000 workers looms as South Korea's president urges labor deal&nbsp;&nbsp;CNBC"
     },
     {
       "title": "North Korea - Economy, Resources, Trade - Britannica",
@@ -53,10 +53,10 @@
       "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
     },
     {
-      "title": "South Korea weighs the cost of stepping into Samsung’s US$400,000 bonus row - South China Morning Post",
+      "title": "South Korea weighs the cost of stepping into Samsung's US$400,000 bonus row - South China Morning Post",
       "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOcUFlVERhelJBWG5aWlBJQ05lbWU2MVZPNE4zV0k2ZEd0SVlZUWZ4c3AwUzk3Z0E1cDkwWlduOHFHV3pLeDlDX1Fsd2NuUE12S2tYVmlHSElBNEZ3TnlYc1hScm1ZeXBBaFZFcHBTdHFWN2tTUE9tX0lUaURybXhpcXNXRVpQc25jVW5KaXo5TEhlQkdha1hJTFZhclpNUW1USEk4MDBUajNfOUxqalphcTVHUG9CQ1c2dElhWmZPdi1ZREhBdDZSdzhVNm9YNC1NaVNQZzhmSDFrMDh6WlY1Y3RRZ0NqWUNabjVBN2FabTAxY1A0YTFPYmoxN24?oc=5",
       "date": "Mon, 18 May 2026 09:00:07 GMT",
-      "desc": "South Korea weighs the cost of stepping into Samsung’s US$400,000 bonus row&nbsp;&nbsp;South China Morning Post"
+      "desc": "South Korea weighs the cost of stepping into Samsung's US$400,000 bonus row&nbsp;&nbsp;South China Morning Post"
     },
     {
       "title": "Samsung and union enter new round of talks ahead of planned strike - digitimes",
@@ -127,6 +127,13 @@
       "pct": 0.0
     },
     {
+      "symbol": "GOOGL",
+      "label": "Google",
+      "price": 0.0,
+      "change": 0.0,
+      "pct": 0.0
+    },
+    {
       "symbol": "^GSPC",
       "label": "S&P 500",
       "price": 7408.5,
@@ -157,9 +164,9 @@
       "pct": 0.0
     },
     {
-      "symbol": "035420.KS",
-      "label": "NAVER",
-      "price": 200000.0,
+      "symbol": "^KS11",
+      "label": "코스피",
+      "price": 0.0,
       "change": 0.0,
       "pct": 0.0
     },
