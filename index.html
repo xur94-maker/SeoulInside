@@ -1,448 +1,526 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SeoulInside — 링크 모음</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0f0f0f;
-    --surface: #1a1a1a;
-    --surface2: #242424;
-    --border: #2a2a2a;
-    --border2: #383838;
-    --text: #e8e8e8;
-    --text2: #888888;
-    --text3: #555555;
-    --accent: #c8f060;
-    --accent-dim: rgba(200,240,96,0.12);
-    --red: #ff5c5c;
-    --radius: 10px;
-    --radius-sm: 6px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Noto Sans KR', sans-serif;
-    min-height: 100vh;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seoul Inside — 추천 글 모음</title>
+  <meta name="description" content="Seoul Inside 서브스택의 인기 글과 최신 글을 한눈에 모아봅니다." />
+  <meta property="og:title" content="Seoul Inside — 추천 글 모음" />
+  <meta property="og:description" content="Seoul Inside 서브스택의 인기 글과 최신 글을 한눈에 모아봅니다." />
+  <meta property="og:url" content="https://seoulinside.substack.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+KR:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  /* ── 헤더 ── */
-  header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(15,15,15,0.93);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 24px;
-  }
-  .header-inner {
-    max-width: 960px; margin: 0 auto;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 15px; font-weight: 500;
-    color: var(--accent); letter-spacing: .04em; flex-shrink: 0;
-  }
-  .search-wrap { flex: 1; position: relative; }
-  .search-wrap svg {
-    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-    color: var(--text3); width: 14px; height: 14px;
-  }
-  #search {
-    width: 100%; padding: 8px 12px 8px 30px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); color: var(--text);
-    font-size: 13px; font-family: 'Noto Sans KR', sans-serif;
-    outline: none; transition: border-color .2s;
-  }
-  #search:focus { border-color: var(--border2); }
-  #search::placeholder { color: var(--text3); }
+  <style>
+    :root {
+      --ink: #0f0e0d;
+      --paper: #f5f0e8;
+      --cream: #ede8de;
+      --accent: #c0392b;
+      --accent2: #1a3a5c;
+      --muted: #7a7060;
+      --rule: #c8bfaa;
+      --card-bg: #faf7f2;
+    }
 
-  .btn {
-    display: flex; align-items: center; gap: 5px;
-    padding: 8px 13px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius-sm); color: var(--text2);
-    font-size: 12px; font-family: 'Noto Sans KR', sans-serif;
-    cursor: pointer; white-space: nowrap; transition: all .2s;
-  }
-  .btn:hover { border-color: var(--border2); color: var(--text); }
-  .btn.accent { background: var(--accent-dim); border-color: rgba(200,240,96,0.3); color: var(--accent); }
-  .btn.accent:hover { background: rgba(200,240,96,0.2); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── 통계 ── */
-  .stats-bar {
-    max-width: 960px; margin: 0 auto;
-    padding: 10px 24px;
-    font-size: 11px; color: var(--text3);
-    font-family: 'DM Mono', monospace;
-  }
+    html { scroll-behavior: smooth; }
 
-  /* ── 추가 폼 ── */
-  .add-form {
-    max-width: 960px; margin: 0 auto 10px;
-    padding: 0 24px;
-    display: none; gap: 8px; flex-wrap: wrap;
-  }
-  .add-form.open { display: flex; }
-  .add-form input {
-    flex: 1; min-width: 140px;
-    padding: 9px 12px;
-    background: var(--surface); border: 1px solid var(--border2);
-    border-radius: var(--radius-sm); color: var(--text);
-    font-size: 13px; font-family: 'Noto Sans KR', sans-serif;
-    outline: none; transition: border-color .2s;
-  }
-  .add-form input:focus { border-color: var(--accent); }
-  .add-form input::placeholder { color: var(--text3); }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Noto Serif KR', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-  /* ── 그리드 ── */
-  main {
-    max-width: 960px; margin: 0 auto;
-    padding: 4px 24px 60px;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 8px;
-  }
+    /* ── HEADER ── */
+    header {
+      border-bottom: 3px double var(--ink);
+      padding: 2rem 0 1.2rem;
+      text-align: center;
+      position: relative;
+      background: var(--paper);
+    }
 
-  /* ── 카드 ── */
-  .card {
-    position: relative;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 12px 12px;
-    cursor: pointer;
-    transition: border-color .15s, background .15s, transform .1s;
-    display: flex; flex-direction: column; align-items: center;
-    gap: 8px; text-decoration: none;
-    animation: pop .15s ease;
-  }
-  .card:hover { border-color: var(--border2); background: var(--surface2); transform: translateY(-2px); }
-  .card.top-card { border-color: rgba(200,240,96,0.3); background: rgba(200,240,96,0.04); }
+    .header-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
 
-  @keyframes pop {
-    from { opacity: 0; transform: scale(.95); }
-    to   { opacity: 1; transform: scale(1); }
-  }
+    .site-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--ink);
+    }
 
-  /* 순번 */
-  .card-rank {
-    position: absolute; top: 7px; left: 9px;
-    font-size: 10px; font-family: 'DM Mono', monospace;
-    color: var(--text3);
-  }
+    .site-title span {
+      color: var(--accent);
+      font-style: italic;
+    }
 
-  /* 카운트 배지 */
-  .card-count {
-    position: absolute; top: 6px; right: 8px;
-    font-size: 10px; font-family: 'DM Mono', monospace;
-    color: var(--text3);
-    background: var(--border);
-    border-radius: 99px; padding: 1px 7px;
-    transition: all .2s;
-  }
-  .card-count.has-count { color: var(--accent); background: var(--accent-dim); }
+    .site-tagline {
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
 
-  /* 파비콘 */
-  .card-icon {
-    width: 32px; height: 32px;
-    border-radius: 8px; object-fit: contain;
-    margin-top: 6px;
-  }
+    .header-rule {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .header-rule span { width: 40px; height: 1px; background: var(--ink); display: block; }
+    .header-rule em { font-family: 'Playfair Display', serif; font-size: 0.8rem; color: var(--muted); font-style: italic; }
 
-  /* 이름 */
-  .card-name {
-    font-size: 12px; font-weight: 500;
-    color: var(--text);
-    text-align: center;
-    word-break: keep-all;
-    line-height: 1.3;
-  }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--rule);
+      background: var(--cream);
+    }
 
-  /* 설명 */
-  .card-desc {
-    font-size: 10px; color: var(--text3);
-    text-align: center; line-height: 1.4;
-    word-break: keep-all;
-    min-height: 28px;
-  }
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
 
-  /* 호버 액션 버튼들 */
-  .card-actions {
-    position: absolute; bottom: 6px; right: 6px;
-    display: flex; gap: 3px;
-    opacity: 0; transition: opacity .15s;
-  }
-  .card:hover .card-actions { opacity: 1; }
-  .icon-btn {
-    background: var(--surface2); border: 1px solid var(--border2);
-    border-radius: 5px; color: var(--text3);
-    font-size: 11px; padding: 3px 5px;
-    cursor: pointer; line-height: 1;
-    transition: color .15s, border-color .15s;
-  }
-  .icon-btn:hover { color: var(--accent); border-color: rgba(200,240,96,0.4); }
-  .icon-btn.del:hover { color: var(--red); border-color: rgba(255,92,92,0.4); }
+    /* ── MAIN GRID ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.2rem 4rem;
+    }
 
-  /* ── 모달 (이름/설명 수정) ── */
-  .modal-backdrop {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.7); z-index: 200;
-    align-items: center; justify-content: center;
-  }
-  .modal-backdrop.open { display: flex; }
-  .modal {
-    background: var(--surface2); border: 1px solid var(--border2);
-    border-radius: var(--radius); padding: 20px;
-    width: 320px; display: flex; flex-direction: column; gap: 10px;
-  }
-  .modal h3 { font-size: 13px; font-weight: 500; color: var(--text2); }
-  .modal input, .modal textarea {
-    padding: 9px 12px;
-    background: var(--surface); border: 1px solid var(--border2);
-    border-radius: var(--radius-sm); color: var(--text);
-    font-size: 13px; font-family: 'Noto Sans KR', sans-serif;
-    outline: none; width: 100%; transition: border-color .2s;
-  }
-  .modal input:focus, .modal textarea:focus { border-color: var(--accent); }
-  .modal textarea { resize: vertical; min-height: 60px; }
-  .modal-btns { display: flex; gap: 8px; justify-content: flex-end; }
+    .sections-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
 
-  .empty {
-    grid-column: 1/-1;
-    text-align: center; padding: 48px 0;
-    color: var(--text3); font-size: 13px;
-  }
+    @media (max-width: 700px) {
+      .sections-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
 
-  @media (max-width: 500px) {
-    header { padding: 12px 16px; }
-    main, .add-form, .stats-bar { padding-left: 16px; padding-right: 16px; }
-    .grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-  }
-</style>
+    /* ── SECTION ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .section-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    .section-badge.new { background: var(--accent2); }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .section-count {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    /* ── ARTICLE CARDS ── */
+    .article-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+
+    .article-item {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+      border-radius: 4px;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
+    }
+
+    .article-item:hover { background: var(--cream); }
+    .article-item:last-child { border-bottom: none; }
+
+    .rank-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--rule);
+      min-width: 2rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      transition: color 0.2s;
+    }
+
+    .article-item:hover .rank-num { color: var(--accent); }
+    .rank-num.top3 { color: var(--accent); }
+
+    .article-content { flex: 1; min-width: 0; }
+
+    .article-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 0.3rem;
+    }
+
+    .article-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .article-excerpt {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── LOADING / ERROR ── */
+    .loading-wrap {
+      text-align: center;
+      padding: 3rem 0;
+      grid-column: 1 / -1;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 28px; height: 28px;
+      border: 2px solid var(--rule);
+      border-top-color: var(--ink);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 0.7rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .error-msg {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-align: center;
+      padding: 1.5rem;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      background: #fdf0ee;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 3px double var(--ink);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .footer-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-links { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-top: 0.6rem; }
+    .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-note {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.7rem;
+    }
+
+    /* ── SUBSCRIBE STRIP ── */
+    .subscribe-strip {
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      padding: 1.4rem 1rem;
+    }
+
+    .subscribe-strip p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 0.7rem;
+    }
+
+    .subscribe-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .subscribe-btn:hover { opacity: 0.85; }
+
+    /* ── ANIMATIONS ── */
+    .article-item {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp 0.35s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .updated-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 1rem;
+      letter-spacing: 0.08em;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <div class="logo">SeoulInside</div>
-    <div class="search-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>
-      <input type="text" id="search" placeholder="링크 검색..." oninput="render()">
+  <!-- HEADER -->
+  <header>
+    <div class="header-date" id="today-date"></div>
+    <div class="site-title">Seoul <span>Inside</span></div>
+    <div class="site-tagline">서울의 안쪽 — 인기글 & 최신글 큐레이션</div>
+    <div class="header-rule">
+      <span></span><em>seoulinside.substack.com</em><span></span>
     </div>
-    <button class="btn accent" onclick="toggleAdd()">＋ 추가</button>
-    <button class="btn" onclick="resetCounts()" title="카운트 초기화">↺</button>
-  </div>
-</header>
+  </header>
 
-<div class="stats-bar" id="stats"></div>
+  <nav>
+    <a href="#popular">인기글 Top 7</a>
+    <a href="#newest">최신글 Top 7</a>
+    <a href="https://seoulinside.substack.com/" target="_blank" rel="noopener">구독하기</a>
+  </nav>
 
-<div class="add-form" id="addForm">
-  <input type="text" id="newName" placeholder="이름 (예: 네이버)">
-  <input type="text" id="newUrl" placeholder="URL (예: https://naver.com)">
-  <input type="text" id="newDesc" placeholder="설명 (예: 뉴스·쇼핑 포털)" maxlength="20">
-  <button class="btn accent" onclick="addLink()">저장</button>
-  <button class="btn" onclick="toggleAdd()">취소</button>
-</div>
-
-<main>
-  <div class="grid" id="grid"></div>
-</main>
-
-<!-- 수정 모달 -->
-<div class="modal-backdrop" id="modal">
-  <div class="modal">
-    <h3>링크 수정</h3>
-    <input type="text" id="editName" placeholder="이름">
-    <textarea id="editDesc" placeholder="설명 (최대 20자)" maxlength="20"></textarea>
-    <div class="modal-btns">
-      <button class="btn" onclick="closeModal()">취소</button>
-      <button class="btn accent" onclick="saveEdit()">저장</button>
-    </div>
-  </div>
-</div>
-
-<script>
-const RAW = [
-  {name:"Claude AI",      url:"https://claude.ai/new",                                    desc:"앤트로픽 AI 채팅"},
-  {name:"Grok",           url:"https://grok.com/",                                        desc:"xAI 챗봇"},
-  {name:"DeepSeek",       url:"https://chat.deepseek.com/",                               desc:"중국 AI 챗봇"},
-  {name:"Gemini",         url:"https://gemini.google.com/app",                            desc:"구글 AI 챗봇"},
-  {name:"YouTube",        url:"https://www.youtube.com/",                                 desc:"동영상 플랫폼"},
-  {name:"YouTube 채널",   url:"https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ",desc:"내 채널 관리"},
-  {name:"Facebook",       url:"https://www.facebook.com/?locale=ko_KR",                  desc:"소셜 미디어"},
-  {name:"Reddit",         url:"https://www.reddit.com/r/seoulinside/",                   desc:"SeoulInside 커뮤니티"},
-  {name:"Substack",       url:"https://seoulinside.substack.com/archive?sort=top",        desc:"뉴스레터 아카이브"},
-  {name:"Medium",         url:"https://medium.com/p/import",                              desc:"블로그 플랫폼"},
-  {name:"WordPress",      url:"https://wordpress.com/home/seoulinside.wordpress.com",     desc:"워드프레스 홈"},
-  {name:"500px",          url:"https://500px.com/manager?view=photos&filter=all",         desc:"사진 포트폴리오"},
-  {name:"Ko-fi",          url:"https://ko-fi.com/Manage/",                                desc:"후원 관리"},
-  {name:"SI 웹사이트",    url:"https://xur94-maker.github.io/SeoulInside/",               desc:"SeoulInside 사이트"},
-  {name:"SI 저장소",      url:"https://github.com/xur94-maker/SeoulInside",               desc:"GitHub 저장소"},
-  {name:"GitHub Pages",   url:"https://github.com/xur94-maker/SeoulInside/settings/pages",desc:"Pages 설정"},
-  {name:"네이버 쇼핑",   url:"https://shopping.naver.com/ns/home",                        desc:"쇼핑 검색"},
-  {name:"에누리",         url:"https://www.enuri.com/",                                   desc:"가격 비교"},
-  {name:"쿠팡플레이",     url:"https://www.coupangplay.com/home",                         desc:"OTT 스트리밍"},
-  {name:"뽐뿌 부동산",    url:"https://www.ppomppu.co.kr/zboard/zboard.php?id=house&hotlist_flag=999", desc:"핫딜 부동산 정보"},
-  {name:"네이버 부동산",  url:"https://new.land.naver.com/complexes?ms=2AKili,3z7ceQ,17&a=APT:ABYG:JGC:PRE&b=A1&e=RETAIL&h=66&i=99&ad=true", desc:"아파트 매물 검색"},
-  {name:"관심 목록",      url:"https://new.land.naver.com/interests",                     desc:"찜한 매물"},
-  {name:"매물 검색",      url:"https://new.land.naver.com/search?ms=2AHO5s,3zdsC3,16&a=APT:PRE:ABYG:JGC&b=A1&e=RETAIL&h=33&i=66&ad=true", desc:"조건별 매물"},
-  {name:"하우스랭킹 뉴스",url:"https://www.houseranking.co.kr/houseranking/news/news_list_today_n.php?aa1=%EA%B2%BD%EA%B8%B0%EB%8F%84&aa2=%EA%B4%91%EB%AA%85%EC%8B%9C&aa3=%ED%95%98%EC%95%88%EB%8F%99&abc=4", desc:"광명 하안동 뉴스"},
-  {name:"하우스랭킹 매매",url:"https://www.houseranking.co.kr/houseranking/news/news_list_today_n_7.php?aa1=%EA%B2%BD%EA%B8%B0%EB%8F%84&aa2=%EA%B4%91%EB%AA%85%EC%8B%9C&aa3=%ED%95%98%EC%95%88%EB%8F%99&abc=4&ff2=1000&mmtype=%EB%A7%A4%EB%A7%A4&menu=1", desc:"매매 실거래가"},
-  {name:"FM 부동산",      url:"https://www.fmkorea.com/?mid=realestate",                  desc:"FM코리아 부동산"},
-  {name:"카페 재건축",    url:"https://search.naver.com/search.naver?ssc=tab.cafe.all&query=%EC%9E%AC%EA%B1%B4%EC%B6%95", desc:"재건축 카페 검색"},
-  {name:"블로그 재건축",  url:"https://search.naver.com/search.naver?ssc=tab.blog.all&query=%EC%9E%AC%EA%B1%B4%EC%B6%95", desc:"재건축 블로그"},
-  {name:"뉴스 재건축",    url:"https://search.naver.com/search.naver?where=news&query=%EC%9E%AC%EA%B1%B4%EC%B6%95", desc:"재건축 최신 뉴스"},
-  {name:"구글 재건축",    url:"https://www.google.com/search?q=%EC%9E%AC%EA%B1%B4%EC%B6%95&tbm=nws", desc:"구글 뉴스"},
-  {name:"네이버 카페",    url:"https://cafe.naver.com/x1291",                             desc:"관심 카페"},
-  {name:"카페 메뉴",      url:"https://cafe.naver.com/f-e/cafes/12730407/menus/195?viewType=L", desc:"카페 게시판"},
-  {name:"다음 KOSPI",     url:"https://finance.daum.net/domestic/kospi",                  desc:"코스피 지수"},
-  {name:"알파스퀘어",     url:"https://alphasquare.co.kr/home/stock-summary?code=005930", desc:"삼성전자 주가"},
-  {name:"Investing",      url:"https://kr.investing.com/markets/united-states",           desc:"미국 시장"},
-  {name:"PayPal",         url:"https://www.paypal.com/signin",                            desc:"결제 서비스"},
-  {name:"네이버 페이",    url:"https://pay.naver.com/pc/history?page=1",                  desc:"결제 내역"},
-  {name:"PikPak",         url:"https://mypikpak.com/ko/check-in?from_source=pp_browser_extension", desc:"출석 체크"},
-  {name:"네이버 메일",    url:"https://mail.naver.com/v2/new?type=toMe",                  desc:"나에게 보내기"},
-  {name:"Gmail",          url:"https://mail.google.com/mail/u/1/#inbox",                  desc:"구글 메일"},
-  {name:"Google 메시지",  url:"http://messages.google.com/web/conversations",             desc:"문자 웹 버전"},
-  {name:"구글 포토",      url:"https://photos.google.com/u/2/?pageId=none&pli=1",         desc:"사진 백업"},
-  {name:"네이버 마이박스",url:"https://mybox.naver.com/main/web/my",                      desc:"클라우드 저장소"},
-  {name:"서울대 포털",    url:"https://my.snu.ac.kr/login.jsp",                           desc:"SNU 포털"},
-  {name:"스누라이프",     url:"https://www.snulife.com/main/",                            desc:"서울대 커뮤니티"},
-  {name:"네이버 모바일",  url:"https://m.naver.com/",                                     desc:"모바일 네이버"},
-  {name:"AAGAG",          url:"https://aagag.com/",                                       desc:""},
-];
-
-const KEY = 'si_links_v4';
-
-function load() {
-  try { const s = localStorage.getItem(KEY); if (s) return JSON.parse(s); } catch(e) {}
-  return RAW.map((l, i) => ({ ...l, id: i, count: 0 }));
-}
-function save(links) { try { localStorage.setItem(KEY, JSON.stringify(links)); } catch(e) {} }
-
-let links = load();
-let editingId = null;
-
-function getDomain(url) { try { return new URL(url).hostname; } catch { return ''; } }
-
-function handleClick(id) {
-  const l = links.find(x => x.id === id);
-  if (!l) return;
-  l.count++;
-  save(links);
-  window.open(l.url, '_blank');
-  render();
-}
-
-function deleteLink(id) {
-  if (!confirm('이 링크를 삭제할까요?')) return;
-  links = links.filter(x => x.id !== id);
-  save(links);
-  render();
-}
-
-function resetCounts() {
-  if (!confirm('모든 클릭 카운트를 초기화할까요?')) return;
-  links.forEach(l => l.count = 0);
-  save(links);
-  render();
-}
-
-function toggleAdd() {
-  const f = document.getElementById('addForm');
-  f.classList.toggle('open');
-  if (f.classList.contains('open')) document.getElementById('newName').focus();
-}
-
-function addLink() {
-  const name = document.getElementById('newName').value.trim();
-  const url  = document.getElementById('newUrl').value.trim();
-  const desc = document.getElementById('newDesc').value.trim();
-  if (!name || !url) { alert('이름과 URL을 입력해 주세요.'); return; }
-  links.unshift({ name, url, desc, id: Date.now(), count: 0 });
-  save(links);
-  ['newName','newUrl','newDesc'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('addForm').classList.remove('open');
-  render();
-}
-
-function openEdit(id) {
-  const l = links.find(x => x.id === id);
-  if (!l) return;
-  editingId = id;
-  document.getElementById('editName').value = l.name;
-  document.getElementById('editDesc').value = l.desc || '';
-  document.getElementById('modal').classList.add('open');
-  document.getElementById('editName').focus();
-}
-
-function closeModal() {
-  document.getElementById('modal').classList.remove('open');
-  editingId = null;
-}
-
-function saveEdit() {
-  const l = links.find(x => x.id === editingId);
-  if (!l) return;
-  l.name = document.getElementById('editName').value.trim() || l.name;
-  l.desc = document.getElementById('editDesc').value.trim();
-  save(links);
-  closeModal();
-  render();
-}
-
-document.getElementById('modal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-function render() {
-  const q = document.getElementById('search').value.toLowerCase();
-  const filtered = links
-    .filter(l => l.name.toLowerCase().includes(q) || (l.desc||'').toLowerCase().includes(q) || getDomain(l.url).includes(q))
-    .sort((a, b) => b.count - a.count);
-
-  const totalClicks = links.reduce((s, l) => s + l.count, 0);
-  const maxCount = Math.max(...links.map(l => l.count), 0);
-  document.getElementById('stats').textContent = `총 ${links.length}개 링크  ·  누적 클릭 ${totalClicks}회`;
-
-  if (filtered.length === 0) {
-    document.getElementById('grid').innerHTML = '<div class="empty">검색 결과가 없어요.</div>';
-    return;
-  }
-
-  let html = '';
-  filtered.forEach((l, i) => {
-    const isTop = maxCount > 0 && l.count === maxCount;
-    const badgeClass = l.count > 0 ? 'card-count has-count' : 'card-count';
-    const domain = getDomain(l.url);
-    html += `
-    <div class="card${isTop ? ' top-card' : ''}" onclick="handleClick(${l.id})">
-      <span class="card-rank">${i + 1}</span>
-      <span class="${badgeClass}">${l.count}</span>
-      <img class="card-icon" src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" alt="" onerror="this.style.opacity='.3'">
-      <div class="card-name">${l.name}</div>
-      <div class="card-desc">${l.desc || ''}</div>
-      <div class="card-actions" onclick="event.stopPropagation()">
-        <button class="icon-btn" onclick="openEdit(${l.id})" title="수정">✏</button>
-        <button class="icon-btn del" onclick="deleteLink(${l.id})" title="삭제">×</button>
+  <!-- MAIN -->
+  <main>
+    <div class="sections-grid" id="sections-grid">
+      <div class="loading-wrap" id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">글을 불러오는 중...</div>
       </div>
-    </div>`;
-  });
+    </div>
+  </main>
 
-  document.getElementById('grid').innerHTML = html;
-}
+  <!-- SUBSCRIBE STRIP -->
+  <div class="subscribe-strip">
+    <p>서울의 속살을 담은 이야기, 놓치지 마세요</p>
+    <a class="subscribe-btn" href="https://seoulinside.substack.com/#subscribe" target="_blank" rel="noopener">무료 구독하기 →</a>
+  </div>
 
-render();
-</script>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Seoul Inside</div>
+      <div class="footer-links">
+        <a href="https://seoulinside.substack.com/" target="_blank" rel="noopener">Substack 홈</a>
+        <a href="https://seoulinside.substack.com/archive" target="_blank" rel="noopener">전체 글 보기</a>
+        <a href="https://seoulinside.substack.com/#subscribe" target="_blank" rel="noopener">구독</a>
+      </div>
+      <div class="footer-note">© 2025 Seoul Inside · Powered by Substack RSS</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── 날짜 표시 ──
+    const dateEl = document.getElementById('today-date');
+    const now = new Date();
+    dateEl.textContent = now.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+
+    // ── RSS 파싱 ──
+    const RSS_URL = 'https://seoulinside.substack.com/feed';
+    const PROXY   = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=20`;
+
+    async function loadPosts() {
+      try {
+        const res  = await fetch(PROXY);
+        const data = await res.json();
+
+        if (data.status !== 'ok' || !data.items?.length) {
+          showEmpty();
+          return;
+        }
+
+        const posts = data.items.map(item => ({
+          title:   item.title,
+          link:    item.link,
+          date:    new Date(item.pubDate),
+          excerpt: stripHtml(item.description || item.content || ''),
+          guid:    item.guid,
+        }));
+
+        // 신규순: 날짜 최신순
+        const newest = [...posts]
+          .sort((a, b) => b.date - a.date)
+          .slice(0, 7);
+
+        // 인기순: 현재는 날짜 오래된 순(초기엔 가장 공들인 글) — 추후 좋아요 연동 가능
+        // 글이 7개 미만이면 available 전체 사용
+        const popular = [...posts]
+          .sort((a, b) => a.date - b.date)
+          .slice(0, 7);
+
+        renderSections(popular, newest);
+      } catch (e) {
+        console.error(e);
+        showError();
+      }
+    }
+
+    function stripHtml(html) {
+      const d = document.createElement('div');
+      d.innerHTML = html;
+      return d.textContent.replace(/\s+/g, ' ').trim().slice(0, 120);
+    }
+
+    function fmtDate(date) {
+      return date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    function renderSections(popular, newest) {
+      const grid = document.getElementById('sections-grid');
+      grid.innerHTML = '';
+
+      grid.appendChild(buildSection('popular', '인기', '인기글 Top 7', popular));
+      grid.appendChild(buildSection('newest',  'new',  '최신글 Top 7', newest));
+    }
+
+    function buildSection(id, badgeClass, title, posts) {
+      const sec = document.createElement('section');
+      sec.id = id;
+
+      const header = `
+        <div class="section-header">
+          <span class="section-badge ${badgeClass === 'new' ? 'new' : ''}">${badgeClass === 'new' ? 'NEW' : 'HOT'}</span>
+          <h2 class="section-title">${title}</h2>
+          <span class="section-count">${posts.length}편</span>
+        </div>`;
+
+      if (!posts.length) {
+        sec.innerHTML = header + `<p class="error-msg">아직 글이 없습니다.<br>첫 글을 기다리고 있어요 ✍️</p>`;
+        return sec;
+      }
+
+      const items = posts.map((p, i) => `
+        <a class="article-item" href="${p.link}" target="_blank" rel="noopener"
+           style="animation-delay:${i * 0.06}s">
+          <div class="rank-num ${i < 3 ? 'top3' : ''}">${String(i + 1).padStart(2, '0')}</div>
+          <div class="article-content">
+            <div class="article-title">${escHtml(p.title)}</div>
+            <div class="article-meta">${fmtDate(p.date)}</div>
+            ${p.excerpt ? `<div class="article-excerpt">${escHtml(p.excerpt)}</div>` : ''}
+          </div>
+        </a>`).join('');
+
+      const updatedAt = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+
+      sec.innerHTML = header + `<ul class="article-list">${items}</ul>
+        <div class="updated-tag">마지막 업데이트 · ${updatedAt}</div>`;
+      return sec;
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function showEmpty() {
+      const grid = document.getElementById('sections-grid');
+      grid.innerHTML = `
+        <div class="loading-wrap">
+          <div class="error-msg" style="border-color:var(--muted);color:var(--muted);background:transparent">
+            아직 발행된 글이 없습니다.<br>첫 번째 글을 기다리고 있어요 ✍️
+          </div>
+        </div>`;
+    }
+
+    function showError() {
+      const grid = document.getElementById('sections-grid');
+      grid.innerHTML = `
+        <div class="loading-wrap">
+          <div class="error-msg">
+            글을 불러오지 못했습니다.<br>
+            잠시 후 새로고침 해주세요.
+          </div>
+        </div>`;
+    }
+
+    loadPosts();
+  </script>
 </body>
 </html>
