@@ -61,16 +61,14 @@ def fetch_substack(feed_url, max_items=8):
     """서브스택 전용 RSS 파서"""
     try:
         req = urllib.request.Request(feed_url, headers={
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+            "User-Agent": "Feedparser/6.0 +https://github.com/kurtmckee/feedparser",
             "Accept": "application/rss+xml, application/xml, text/xml, */*",
+            "Cache-Control": "no-cache",
         })
         with urllib.request.urlopen(req, timeout=15) as r:
             raw = r.read()
-
         print(f'  RSS 응답 크기: {len(raw)} bytes')
-
         raw = strip_namespaces(raw)
-
         # 파싱 시도
         try:
             root = ET.fromstring(raw)
