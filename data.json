@@ -163,14 +163,14 @@
     {
       "symbol": "005930.KS",
       "label": "삼성전자",
-      "price": 283000.0,
+      "price": 282750.0,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "000660.KS",
       "label": "SK하이닉스",
-      "price": 1848000.0,
+      "price": 1852000.0,
       "change": 0.0,
       "pct": 0.0
     },
@@ -184,10 +184,10 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1498.98,
+      "price": 1498.28,
       "change": 0.0,
       "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-18 06:33 UTC"
+  "updatedAt": "2026-05-18 06:37 UTC"
 }
