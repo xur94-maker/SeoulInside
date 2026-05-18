@@ -16,7 +16,9 @@
   --up: #1a7a3a;
   --down: #c0392b;
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   background: var(--paper);
   color: var(--ink);
@@ -24,6 +26,7 @@ body {
   font-weight: 300;
   min-height: 100vh;
 }
+
 /* ── 티커 바 ── */
 .ticker-wrap {
   background: var(--ink);
@@ -42,6 +45,7 @@ body {
 .ticker-inner .up { color: #4fc87a; }
 .ticker-inner .down { color: #ff6b6b; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
 /* ── 헤더 ── */
 header {
   border-bottom: 3px double var(--ink);
@@ -86,6 +90,7 @@ header {
   transition: background 0.2s;
 }
 .refresh-btn:hover { background: var(--accent); }
+
 /* ── 날짜 밴드 ── */
 .dateline {
   border-bottom: 1px solid var(--ink);
@@ -98,24 +103,29 @@ header {
   display: flex;
   justify-content: space-between;
 }
-/* ── 그리드 ── */
+
+/* ── 그리드 (3열로 변경) ── */
 .grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr 1fr;
   gap: 0;
   border-bottom: 1px solid var(--rule);
 }
+
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) {
   .grid { grid-template-columns: 1fr; }
 }
+
 .col {
   padding: 1.4rem 1.5rem;
   border-right: 1px solid var(--rule);
+  overflow: visible;
 }
 .col:last-child { border-right: none; }
+
 /* ── 섹션 타이틀 ── */
 .section-label {
   font-size: 0.62rem;
@@ -127,6 +137,7 @@ header {
   padding-bottom: 4px;
   margin-bottom: 1rem;
 }
+
 /* ── 주식 ── */
 .stock-row {
   display: flex;
@@ -152,6 +163,7 @@ header {
   color: var(--mid);
   padding-top: 6px;
 }
+
 /* ── 뉴스 ── */
 .news-item {
   padding: 0.65rem 0;
@@ -173,6 +185,7 @@ header {
   font-family: 'IBM Plex Mono', monospace;
   margin-top: 3px;
 }
+
 /* ── 로딩 / 에러 ── */
 .loading {
   color: var(--mid);
@@ -182,67 +195,6 @@ header {
   animation: blink 1.2s step-start infinite;
 }
 @keyframes blink { 50% { opacity: 0.3; } }
-
-/* ── 워드프레스 두 칼럼 섹션 ── */
-.wp-section {
-  border-top: 3px double var(--ink);
-  padding: 2.5rem 2rem;
-}
-.wp-section .section-label {
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 500;
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 4px;
-  margin-bottom: 1.6rem;
-}
-.wp-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-@media (max-width: 680px) {
-  .wp-grid { grid-template-columns: 1fr; }
-}
-.wp-card {
-  border: 1px solid var(--rule);
-  background: #fff;
-  overflow: hidden;
-  transition: box-shadow 0.2s;
-}
-.wp-card:hover {
-  box-shadow: 4px 4px 0 var(--ink);
-}
-.wp-card .card-header {
-  padding: 1rem 1.4rem 0.6rem;
-  border-bottom: 1px solid var(--rule);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.wp-card .card-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mid);
-  font-family: 'IBM Plex Mono', monospace;
-}
-.wp-card .card-link {
-  font-size: 0.62rem;
-  font-family: 'IBM Plex Mono', monospace;
-  color: var(--accent);
-  text-decoration: none;
-}
-.wp-card .card-link:hover { text-decoration: underline; }
-/* iframe 임베드 */
-.wp-card iframe {
-  width: 100%;
-  height: 480px;
-  border: none;
-  display: block;
-}
 
 /* ── 푸터 ── */
 footer {
@@ -254,6 +206,78 @@ footer {
   display: flex;
   justify-content: space-between;
 }
+
+/* ── 최신 포스트 전문 ── */
+.latest-post-section {
+  border-top: 3px double var(--ink);
+  padding: 2.5rem 2rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.latest-post-section .section-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 4px;
+  margin-bottom: 1.6rem;
+}
+.latest-post-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+.latest-post-section h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.latest-post-section h2 a:hover { color: var(--accent); }
+.latest-post-meta {
+  font-size: 0.68rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--mid);
+  margin-bottom: 1.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.latest-post-body {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.latest-post-body p { margin-bottom: 1.1rem; }
+.latest-post-body h1,
+.latest-post-body h2,
+.latest-post-body h3 {
+  font-family: 'Playfair Display', serif;
+  margin: 1.6rem 0 0.6rem;
+}
+.latest-post-body a { color: var(--accent); }
+.latest-post-body img { max-width: 100%; border-radius: 2px; margin: 1rem 0; }
+.latest-post-body blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--mid);
+  font-style: italic;
+  margin: 1rem 0;
+}
+.read-more-link {
+  display: inline-block;
+  margin-top: 1.6rem;
+  padding: 8px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.read-more-link:hover { background: var(--accent); }
 </style>
 </head>
 <body>
@@ -281,27 +305,22 @@ footer {
   <span>seoulinside.substack.com</span>
 </div>
 
-<!-- 메인 그리드 -->
+<!-- 메인 그리드 (3열: Markets / World News / Korea Coverage) -->
 <div class="grid">
 
-  <!-- 1열: 비워둠 -->
-  <div class="col">
-    <div class="section-label">✍ Analysis &amp; Insight</div>
-  </div>
-
-  <!-- 2열: 주식 -->
+  <!-- 1열: 주식 -->
   <div class="col">
     <div class="section-label">📈 Markets</div>
     <div id="stocks"><div class="loading">Loading…</div></div>
   </div>
 
-  <!-- 3열: 글로벌 뉴스 -->
+  <!-- 2열: 글로벌 뉴스 -->
   <div class="col">
     <div class="section-label">🌐 World News</div>
     <div id="global-news"><div class="loading">Loading…</div></div>
   </div>
 
-  <!-- 4열: 한국 관련 기사 -->
+  <!-- 3열: 한국 관련 기사 -->
   <div class="col">
     <div class="section-label">🇰🇷 Korea Coverage</div>
     <div id="korea-news"><div class="loading">Loading…</div></div>
@@ -309,40 +328,10 @@ footer {
 
 </div>
 
-<!-- ── 워드프레스 두 칼럼 섹션 ── -->
-<div class="wp-section">
+<!-- 최신 포스트 전문 -->
+<div class="latest-post-section">
   <div class="section-label">✍ Latest from Seoul Inside</div>
-  <div class="wp-grid">
-
-    <!-- 왼쪽: SUN -->
-    <div class="wp-card">
-      <div class="card-header">
-        <span class="card-label">📰 Today's View</span>
-        <a class="card-link" href="https://seoulinside.wordpress.com/2026/05/18/sun/" target="_blank" rel="noopener">Open ↗</a>
-      </div>
-      <iframe
-        src="https://seoulinside.wordpress.com/2026/05/18/sun/"
-        title="Seoul Inside — Sun"
-        loading="lazy"
-        sandbox="allow-scripts allow-same-origin">
-      </iframe>
-    </div>
-
-    <!-- 오른쪽: NEWS -->
-    <div class="wp-card">
-      <div class="card-header">
-        <span class="card-label">📰 News</span>
-        <a class="card-link" href="https://seoulinside.wordpress.com/2026/05/18/news/" target="_blank" rel="noopener">Open ↗</a>
-      </div>
-      <iframe
-        src="https://seoulinside.wordpress.com/2026/05/18/news/"
-        title="Seoul Inside — News"
-        loading="lazy"
-        sandbox="allow-scripts allow-same-origin">
-      </iframe>
-    </div>
-
-  </div>
+  <div id="latest-post"><div class="loading">Loading latest post…</div></div>
 </div>
 
 <footer>
@@ -357,9 +346,11 @@ document.getElementById('today-date').textContent =
   now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
 function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined, {maximumFractionDigits:2}) : '—'; }
+
+// 변동률(%)만 표시 — 중복 제거
 function fmtChg(c, p) {
   const sign = c >= 0 ? '+' : '';
-  return `${sign}${c.toFixed(2)} (${sign}${p.toFixed(2)}%)`;
+  return `${sign}${p.toFixed(2)}%`;
 }
 
 function renderTicker(worlds, koreas) {
@@ -413,9 +404,24 @@ async function loadData() {
     renderNews(data.globalNews || [], 'global-news');
     renderNews(data.koreaNews || [], 'korea-news');
 
+    // 최신 포스트 전문 렌더링
+    const lp = data.latestPost;
+    if (lp && lp.body) {
+      document.getElementById('latest-post').innerHTML = `
+        <h2><a href="${lp.link}" target="_blank" rel="noopener">${lp.title}</a></h2>
+        <div class="latest-post-meta">${lp.date ? lp.date.slice(0,16) : ''} · Seoul Inside</div>
+        <div class="latest-post-body">${lp.body}</div>
+        <a class="read-more-link" href="${lp.link}" target="_blank" rel="noopener">Read on Substack →</a>
+      `;
+    } else {
+      document.getElementById('latest-post').innerHTML =
+        '<div class="loading">Latest post not available yet.</div>';
+    }
+
     const ts = data.updatedAt || '';
     document.getElementById('updated-at').textContent = 'Updated: ' + ts;
     document.getElementById('footer-updated').textContent = 'Last data update: ' + ts;
+
   } catch (e) {
     ['stocks','global-news','korea-news'].forEach(id => {
       document.getElementById(id).innerHTML =
