@@ -1,13 +1,62 @@
 {
   "myPosts": [],
   "latestPost": null,
-  "globalNews": [],
+  "globalNews": [
+    {
+      "title": "Trump warns 'clock is ticking' for Iran as peace progress stalls",
+      "link": "https://www.bbc.com/news/articles/cd0p4y9y48xo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 18 May 2026 03:53:36 GMT",
+      "desc": "Iranian media reports the US has not made concrete concessions in response to Tehran's latest proposals."
+    },
+    {
+      "title": "WHO declares Ebola outbreak in DR Congo an international emergency",
+      "link": "https://www.bbc.com/news/articles/c2l2p0wwzzdo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 18 May 2026 06:15:40 GMT",
+      "desc": "The agency added that the outbreak, with around 246 cases and 80 deaths, does not meet the criteria of pandemic emergency."
+    },
+    {
+      "title": "How worrying is the Ebola outbreak in DR Congo?",
+      "link": "https://www.bbc.com/news/articles/c9q311nj5r3o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 17 May 2026 18:06:31 GMT",
+      "desc": "An outbreak in DR Congo has been declared a health emergency, with almost 250 suspected cases reported."
+    },
+    {
+      "title": "'This may be the last time you hear my voice': Political executions surge in Iran since start of war",
+      "link": "https://www.bbc.com/news/articles/cn8p392nl7yo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 17 May 2026 23:02:56 GMT",
+      "desc": "Since the US and Israel attacked Iran on  28 February, the UN says it’s verified the execution of at least 32 political prisoners."
+    },
+    {
+      "title": "Moment two fighter jets collide mid-air at US air show",
+      "link": "https://www.bbc.com/news/videos/ce8pzkg7klgo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 18 May 2026 00:49:25 GMT",
+      "desc": "Four crew members safely ejected from US Navy jets and are in a stable condition after the collision."
+    },
+    {
+      "title": "Erdogan Wants Turkey to Have More Babies. Few Parents Are Listening.",
+      "link": "https://www.nytimes.com/2026/05/17/world/europe/erdogan-turkey-demography-babies-family-planning-economy.html",
+      "date": "Sun, 17 May 2026 11:54:56 +0000",
+      "desc": "Using cash grants and subsidized loans, President Recep Tayyip Erdogan’s government is trying to increase the birthrate. It’s not working."
+    },
+    {
+      "title": "Runoff in Peru Offers Two Starkly Differing Visions for the Nation",
+      "link": "https://www.nytimes.com/2026/05/17/world/americas/peru-runoff-election.html",
+      "date": "Sun, 17 May 2026 14:47:10 +0000",
+      "desc": "The presidential election pits Keiko Fujimori, a conservative, against Roberto Sánchez, a leftist, after a crisis marked by delays and protests."
+    },
+    {
+      "title": "How Birding Apps Are Boosting Tourism in the World’s Top Bird Destination",
+      "link": "https://www.nytimes.com/2026/05/17/world/americas/colombia-birding-app-merlin-ebird-tourism.html",
+      "date": "Sun, 17 May 2026 09:01:59 +0000",
+      "desc": "Colombia is home to the most species of birds known to ornithologists. Merlin, an app, is helping to build an “avian tourism” industry there."
+    }
+  ],
   "koreaNews": [
     {
-      "title": "North Korea - Economy, Resources, Trade - Britannica",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
-      "date": "Fri, 15 May 2026 05:00:00 GMT",
-      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
+      "title": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQTS1TUUtVWHY4LWNkWVVfS0t0Q0FkdzBpOEY1LTktUFIxY2ViUXNVYzh6MFhRQ1p3NV9hMUs5NHRoNkhnMHVQU1pKYTVtTF9lT2k3a1F4YzF3bjR6cWloQ0pNc1ktLTVnWUpEeFUwLWs0OUtUdDRkSkk0Q3ROU01BdDQ4NmFXb3FoV3RYQVh0dEtVREZqOG04RlBoc01Nck1JdEx6NE15UWhWZGhaOXJfZld5dmlsUkFEbE1aT2tqemJWU0NFUXBKRVE5bnB4NExKV2c?oc=5",
+      "date": "Mon, 18 May 2026 00:57:00 GMT",
+      "desc": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains&nbsp;&nbsp;Reuters"
     },
     {
       "title": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal - CNBC",
@@ -16,10 +65,10 @@
       "desc": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQTS1TUUtVWHY4LWNkWVVfS0t0Q0FkdzBpOEY1LTktUFIxY2ViUXNVYzh6MFhRQ1p3NV9hMUs5NHRoNkhnMHVQU1pKYTVtTF9lT2k3a1F4YzF3bjR6cWloQ0pNc1ktLTVnWUpEeFUwLWs0OUtUdDRkSkk0Q3ROU01BdDQ4NmFXb3FoV3RYQVh0dEtVREZqOG04RlBoc01Nck1JdEx6NE15UWhWZGhaOXJfZld5dmlsUkFEbE1aT2tqemJWU0NFUXBKRVE5bnB4NExKV2c?oc=5",
-      "date": "Mon, 18 May 2026 00:57:00 GMT",
-      "desc": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains&nbsp;&nbsp;Reuters"
+      "title": "Samsung and union enter new round of talks ahead of planned strike - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNU3dzUDBqa1dtU3VpcE90VlN6clBYQlBKaVRmVWtXVS1vWUVSSHlJZndZc1BWTjlPbEN3anNlUG4tbzg0ampjTkRhV3VlR2wzMzJGUmtTVENXQnJBc1pKNVh4TnJpLVB6X0hVeW5hZEI4N3pQemFmZ05HdTlGVlBsM0NIVFhRUTkzQ3hPU2ZDLUdnX2Jh?oc=5",
+      "date": "Mon, 18 May 2026 04:07:38 GMT",
+      "desc": "Samsung and union enter new round of talks ahead of planned strike&nbsp;&nbsp;digitimes"
     },
     {
       "title": "Business lobbies urge Samsung union to call off strike over economic risks - The Korea Herald",
@@ -28,38 +77,31 @@
       "desc": "Business lobbies urge Samsung union to call off strike over economic risks&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "South Korea says it will pursue all options to avoid Samsung strike - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQUjdZWFJvcUlEd3ZtT0FXUmxyMU5TN3djTVp4ZEFhWWRfWmNHSUU5ME1BUlpqVDVNQ3h3S3NrbEp1XzlWWTZwVk5xUlJzY0tWYWUwV3Q0R1R2WHdWVmJZT1FfZVBZTTF6TUZZTll3Tko2N09RRFBYWU1RdlVadlg0U2hRNDBFWThhRHcyZzAxODkwR2ZPbDBCQnVoOFg?oc=5",
-      "date": "Sun, 17 May 2026 04:04:00 GMT",
-      "desc": "South Korea says it will pursue all options to avoid Samsung strike&nbsp;&nbsp;Yahoo Finance"
+      "title": "Inflationary pressures mount in South Korea and Japan, raising rate hike odds - ING THINK economic and financial analysis | ING THINK",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPUkNTUW9udTV5LTlpVEJMajRQa1lVaWlrRUV2N29NNWtKOVo4QmlxVHJpaGdjblBCbnB2ZG5MLTJUejBEc0NkZGM0NV9kamxJbndJNnh0NGJnM3JmdGpOeGt4enNzRzMzSlpDejJqU3ZkVkZJZFNsdFZjdTJoTFF6RFZmSnpZU0tqN1FFT3FWamlHN0JnNEFGdEpadE0wUmZUSUozanBmd2V5LVhRcVE?oc=5",
+      "date": "Fri, 15 May 2026 04:46:54 GMT",
+      "desc": "Inflationary pressures mount in South Korea and Japan, raising rate hike odds&nbsp;&nbsp;ING THINK economic and financial analysis | ING THINK"
     },
     {
-      "title": "Asia's trillion-dollar titans are powering — and distorting — its fastest growing stock markets - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPZ0xXZEFYTnlPVWgyRDdBZzFWUGw1V0FmNkNxdlZOaFRIVlFsS1NCcjAzUW5DNWpIRWZ0TDlJT1BzRmNQMHFoZG5jVkRtLVRYY1I0RDR1MmdSTWZzN0F0YWpCZzJMSUFwcWNpRGotbzRibXgxRUlyeWxJVmRTSUh4UUFVRDBxcDhCOUJWRWRfVnh3TGMyWDl3YlRJTDlTOE9sam1pTFJEaUhCZHAwbnhwTEZtZWNoUHcyV3fSAb8BQVVfeXFMTi1aVEJnSmd0OVF1VFZjZmFsbnRXMThWa242czBSRmQ5UXBuQXd1VjJTTG5tTnFrU3Z4d0pKYmtVME5zc3l2dzNjRmg5ODFJLTM5aFk4eWhzQms2MmYya1lqVWdMeDF3TV9UdkRzaTZBZWRoTDZsXzRsbk1qRFpQNmNkdDhxbFFjbkZGeFpyUlRLNmdnQWJoNE5xZjJTbmQ1dFJzVWg3b09SaWU0RV9VYmVkX0dlZDcyUUNFa1lCU1E?oc=5",
-      "date": "Tue, 12 May 2026 04:43:14 GMT",
-      "desc": "Asia's trillion-dollar titans are powering — and distorting — its fastest growing stock markets&nbsp;&nbsp;CNBC"
+      "title": "ETF Portfolios Overload on Samsung Electronics, SK Hynix Amid Semiconductor Rally - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQaDZ5X1o4WWRwUlhMODlQSkowU1JBWlY1SlJmTXYtQWJRX1VCbzhCeWlCNkNBeWNEdlV1T055ZzZnR0VPQlhlYmhYQlNISGZFcWF1eC1JTXFzcXRtOUFiLU0xZ2lwUWtxQzYwcVQ0RVowZkZ3MnBXa2tHMzlMWjNETVVyTDlEY1p6cUp6LVln?oc=5",
+      "date": "Mon, 18 May 2026 01:15:12 GMT",
+      "desc": "ETF Portfolios Overload on Samsung Electronics, SK Hynix Amid Semiconductor Rally&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOYlM2TUJxOXJ3cXRqak5naURHR0hSZFIwNVlDbzYtQ1VNb0JGUmR0NGZBUjIwOWEwTDd2U0puX3hrUkMySDhkR2xfZVFfOFF5QmtpM2FHYUpHenNoNFpxUXV1UVVDazdPN0tYV3U0aDlNRWxhQmNsQ0MwcmVEY0VSdHB30gGHAUFVX3lxTE1ncTl4b19mRFYySTF6Z3UtNlBCMUloNjR3UVZMUWZ3TExzdjF1R0RPQUpkbjQySm8ybVptVEg4dDVqYlBxOWtXN3NFTUl4Zm4wbUJDTDJ2NTZxYktralZhbkZneXFyVm1fa1JQZVZIejV2ckVEX3Q5Tkh6cHJENTNaSFI4STlfdw?oc=5",
-      "date": "Mon, 18 May 2026 04:24:25 GMT",
-      "desc": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal&nbsp;&nbsp;CNBC"
+      "title": "A 45,000-person labor strike at Samsung's memory chip plants could throw a wrench into the AI boom - Fortune",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxORXlCa0gyT29UdjdaZVRtVklHc2RlLTBNOWhYNEZXdEZpVFhHTTNuVzF1Qy0tYk9ZRGhuMlpkd0NQZW1DM3BUYmJkTFVrblctX2c5MkhJV1F6QUlUXzNXTFl5Y0o1UWlwT2xhN2FOd1h4cXBWbnhiV2tIU29PWnlhUTZZNTFTUjRRU3hWNXhlNUxaNjEyT3VV?oc=5",
+      "date": "Sun, 17 May 2026 09:03:00 GMT",
+      "desc": "A 45,000-person labor strike at Samsung's memory chip plants could throw a wrench into the AI boom&nbsp;&nbsp;Fortune"
     },
     {
-      "title": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQTS1TUUtVWHY4LWNkWVVfS0t0Q0FkdzBpOEY1LTktUFIxY2ViUXNVYzh6MFhRQ1p3NV9hMUs5NHRoNkhnMHVQU1pKYTVtTF9lT2k3a1F4YzF3bjR6cWloQ0pNc1ktLTVnWUpEeFUwLWs0OUtUdDRkSkk0Q3ROU01BdDQ4NmFXb3FoV3RYQVh0dEtVREZqOG04RlBoc01Nck1JdEx6NE15UWhWZGhaOXJfZld5dmlsUkFEbE1aT2tqemJWU0NFUXBKRVE5bnB4NExKV2c?oc=5",
-      "date": "Mon, 18 May 2026 00:57:00 GMT",
-      "desc": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains&nbsp;&nbsp;Reuters"
+      "title": "Samsung Electronics, SK hynix Boost R&D Spending by Up to 68% in Q1 - thelec.net",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFByRXNMQ3dodU5hUGNaZ2dxZEZSVEtPQkU2UHliNWNZRUM5UWkzS3IyZlBESWVFcnBNTEZrRVRTQzJUQ3ItR1JIU2RmdG5BOFpFQXBLdWZld0o4MVJBcjRRRFdERlR5WXc?oc=5",
+      "date": "Sun, 17 May 2026 11:47:53 GMT",
+      "desc": "Samsung Electronics, SK hynix Boost R&D Spending by Up to 68% in Q1&nbsp;&nbsp;thelec.net"
     }
   ],
   "worldStocks": [
-    {
-      "symbol": "AAPL",
-      "label": "Apple",
-      "price": 300.23,
-      "change": 0.0,
-      "pct": 0.0
-    },
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
@@ -68,23 +110,37 @@
       "pct": 0.0
     },
     {
-      "symbol": "TSLA",
-      "label": "Tesla",
-      "price": 422.24,
+      "symbol": "TSM",
+      "label": "TSMC",
+      "price": 404.35,
       "change": 0.0,
       "pct": 0.0
     },
     {
-      "symbol": "MSFT",
-      "label": "Microsoft",
-      "price": 421.92,
+      "symbol": "AMD",
+      "label": "AMD",
+      "price": 424.1,
       "change": 0.0,
       "pct": 0.0
     },
     {
-      "symbol": "AMZN",
-      "label": "Amazon",
-      "price": 264.14,
+      "symbol": "INTC",
+      "label": "Intel",
+      "price": 108.77,
+      "change": 0.0,
+      "pct": 0.0
+    },
+    {
+      "symbol": "QCOM",
+      "label": "Qualcomm",
+      "price": 201.49,
+      "change": 0.0,
+      "pct": 0.0
+    },
+    {
+      "symbol": "ARM",
+      "label": "ARM",
+      "price": 209.16,
       "change": 0.0,
       "pct": 0.0
     },
@@ -114,31 +170,24 @@
     {
       "symbol": "000660.KS",
       "label": "SK하이닉스",
-      "price": 1837000.0,
-      "change": 0.0,
-      "pct": 0.0
-    },
-    {
-      "symbol": "005380.KS",
-      "label": "현대차",
-      "price": 665000.0,
+      "price": 1848000.0,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 200500.0,
+      "price": 201000.0,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1498.78,
+      "price": 1498.98,
       "change": 0.0,
       "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-18 06:21 UTC"
+  "updatedAt": "2026-05-18 06:33 UTC"
 }
