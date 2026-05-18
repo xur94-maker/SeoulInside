@@ -6,23 +6,12 @@ from datetime import datetime, timezone
 
 
 def strip_namespaces(raw_bytes):
-    """XML 네임스페이스를 완전히 제거"""
-    # content:encoded → content_encoded 등으로 변환
     raw_bytes = raw_bytes.replace(b'content:encoded', b'content_encoded')
     raw_bytes = raw_bytes.replace(b'dc:creator', b'dc_creator')
     raw_bytes = raw_bytes.replace(b'dc:date', b'dc_date')
     raw_bytes = raw_bytes.replace(b'atom:link', b'atom_link')
-    raw_bytes = raw_bytes.replace(b'itunes:owner', b'itunes_owner')
-    raw_bytes = raw_bytes.replace(b'itunes:email', b'itunes_email')
-    raw_bytes = raw_bytes.replace(b'itunes:name', b'itunes_name')
-    raw_bytes = raw_bytes.replace(b'itunes:author', b'itunes_author')
-    raw_bytes = raw_bytes.replace(b'itunes:block', b'itunes_block')
-    raw_bytes = raw_bytes.replace(b'googleplay:owner', b'googleplay_owner')
-    raw_bytes = raw_bytes.replace(b'googleplay:email', b'googleplay_email')
-    raw_bytes = raw_bytes.replace(b'googleplay:author', b'googleplay_author')
     raw_bytes = raw_bytes.replace(b'media:content', b'media_content')
     raw_bytes = raw_bytes.replace(b'media:thumbnail', b'media_thumbnail')
-    # xmlns 선언 제거
     raw_bytes = re.sub(rb'\s+xmlns(?::[a-zA-Z0-9_]+)?="[^"]*"', b'', raw_bytes)
     raw_bytes = re.sub(rb"\s+xmlns(?::[a-zA-Z0-9_]+)?='[^']*'", b'', raw_bytes)
     return raw_bytes
@@ -57,91 +46,38 @@ def fetch_rss(url, max_items=8):
         return []
 
 
-def fetch_substack(feed_url, max_items=8):
-    """서브스택 전용 RSS 파서"""
+def fetch_wordpress_news(url):
+    """워드프레스 칠판 페이지에서 내용을 직접 읽어옴"""
     try:
-        req = urllib.request.Request(feed_url, headers={
-            "User-Agent": "Feedparser/6.0 +https://github.com/kurtmckee/feedparser",
-            "Accept": "application/rss+xml, application/xml, text/xml, */*",
-            "Cache-Control": "no-cache",
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "text/html,*/*",
         })
         with urllib.request.urlopen(req, timeout=15) as r:
-            raw = r.read()
-        print(f'  RSS 응답 크기: {len(raw)} bytes')
-        raw = strip_namespaces(raw)
-        # 파싱 시도
-        try:
-            root = ET.fromstring(raw)
-        except ET.ParseError as pe:
-            print(f'  XML 파싱 오류: {pe}')
-            # CDATA 문제일 수 있으므로 간단 추출 시도
-            return fallback_substack(raw.decode('utf-8', errors='ignore'), max_items)
+            raw = r.read().decode('utf-8', errors='ignore')
 
-        posts = []
-        latest_body = None
-        latest_title = None
-        latest_link = None
-        latest_date = None
+        # <article> 또는 <div class="entry-content"> 안의 텍스트 추출
+        # 워드프레스는 보통 entry-content 클래스에 본문이 있음
+        match = re.search(r'class="entry-content"[^>]*>(.*?)</div>', raw, re.DOTALL)
+        if not match:
+            match = re.search(r'<article[^>]*>(.*?)</article>', raw, re.DOTALL)
 
-        all_items = list(root.iter('item'))
-        print(f'  item 태그 수: {len(all_items)}개')
-
-        for i, item in enumerate(all_items):
-            title = (item.findtext('title') or '').strip()
-            link  = (item.findtext('link')  or '').strip()
-            date  = (item.findtext('pubDate') or '').strip()
-            body  = (item.findtext('content_encoded') or
-                     item.findtext('description') or '').strip()
-
-            desc = re.sub(r'<[^>]+>', '', body).strip()[:200]
-
-            if title and link:
-                posts.append({'title': title, 'link': link, 'date': date, 'desc': desc})
-
-            # 최신 포스트 전문 저장
-            if i == 0 and body:
-                latest_title = title
-                latest_link  = link
-                latest_date  = date
-                body = re.sub(r'<div class="subscription-widget.*', '', body, flags=re.DOTALL)
-                latest_body = body
-
-            if len(posts) >= max_items:
-                break
-
-        latest = None
-        if latest_title and latest_body:
-            latest = {'title': latest_title, 'link': latest_link,
-                      'date': latest_date, 'body': latest_body}
-
-        print(f'  서브스택: {len(posts)}개 파싱됨, 최신글: {latest_title[:40] if latest_title else "없음"}')
-        return posts, latest
+        if match:
+            content = match.group(1)
+            # HTML 태그 제거
+            content = re.sub(r'<[^>]+>', '\n', content)
+            # 빈 줄 정리
+            lines = [l.strip() for l in content.splitlines() if l.strip()]
+            content = '\n'.join(lines)
+            print(f'  워드프레스 칠판: {len(lines)}줄 읽음')
+            return content
+        else:
+            print('  워드프레스 칠판: 본문을 찾지 못함')
+            return ''
 
     except Exception as e:
-        print(f'  서브스택 오류: {e}')
-        import traceback
-        traceback.print_exc()
-        return [], None
-
-
-def fallback_substack(text, max_items=8):
-    """XML 파싱 실패 시 정규식으로 간단 추출"""
-    print('  폴백 파서 사용 중...')
-    posts = []
-    titles = re.findall(r'<title><!\[CDATA\[(.*?)\]\]></title>', text)
-    links  = re.findall(r'<link>(https://[^<]+)</link>', text)
-    dates  = re.findall(r'<pubDate>(.*?)</pubDate>', text)
-
-    for i in range(min(len(titles), len(links), max_items)):
-        if 'seoulinside' in links[i] and '/p/' in links[i]:
-            posts.append({
-                'title': titles[i],
-                'link': links[i],
-                'date': dates[i] if i < len(dates) else '',
-                'desc': ''
-            })
-    print(f'  폴백: {len(posts)}개 추출')
-    return posts, None
+        print(f'  워드프레스 오류: {e}')
+        return ''
 
 
 def fetch_stock(symbol, label):
@@ -168,11 +104,13 @@ def fetch_stock(symbol, label):
 # ── 수집 시작 ─────────────────────────────────────────────────
 print('=== SeoulInside 데이터 수집 시작 ===')
 data = {}
-SUBSTACK_FEED = 'https://seoulinside.substack.com/feed'
 
-# 1) 서브스택 (전용 파서)
-print('[1/5] 서브스택 수집 중...')
-data['myPosts'], data['latestPost'] = fetch_substack(SUBSTACK_FEED, max_items=8)
+WORDPRESS_NEWS_URL = 'https://seoulinside.wordpress.com/2026/05/18/news/'
+
+# 1) 워드프레스 칠판 (서브스택 대체)
+print('[1/5] 워드프레스 칠판 읽는 중...')
+data['wordpressNews'] = fetch_wordpress_news(WORDPRESS_NEWS_URL)
+data['wordpressNewsUrl'] = WORDPRESS_NEWS_URL
 
 # 2) 글로벌 뉴스
 print('[2/5] 글로벌 뉴스 수집 중...')
@@ -214,6 +152,7 @@ data['updatedAt'] = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
 with open('data.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
-lp = data['latestPost']
 print(f'\n✅ 완료! ({data["updatedAt"]})')
-print(f'   서브스택: {len(data["myPosts"])}개 | 최신글: {lp["title"][:40] if lp else "없음"}')
+print(f'   워드프레스 칠판: {len(data["wordpressNews"])}자 읽음')
+print(f'   글로벌 뉴스: {len(data["globalNews"])}개')
+print(f'   한국 뉴스: {len(data["koreaNews"])}개')
