@@ -41,13 +41,13 @@ def fetch_rss(url, max_items=8):
         root = ET.fromstring(raw)
         items = []
         for item in root.iter('item'):
-            title = (item.findtext('title') 또는 '').strip()
-            link  = (item.findtext('link')  또는 '').strip()
-            date  = (item.findtext('pubDate') 또는 item.findtext('dc_date') 또는 '').strip()
-            desc  = (item.findtext('content_encoded') 또는
-                     item.findtext('description') 또는 '').strip()
+            title = (item.findtext('title') or '').strip()
+            link  = (item.findtext('link')  or '').strip()
+            date  = (item.findtext('pubDate') or item.findtext('dc_date') or '').strip()
+            desc  = (item.findtext('content_encoded') or
+                     item.findtext('description') or '').strip()
             desc  = re.sub(r'<[^>]+>', '', desc).strip()[:200]
-            if title 및 link:
+            if title and link:
                 items.append({'title': title, 'link': link, 'date': date, 'desc': desc})
             if len(items) >= max_items:
                 break
@@ -89,19 +89,19 @@ def fetch_substack(feed_url, max_items=8):
         print(f'  item 태그 수: {len(all_items)}개')
 
         for i, item in enumerate(all_items):
-            title = (item.findtext('title') 또는 '').strip()
-            link  = (item.findtext('link')  또는 '').strip()
-            date  = (item.findtext('pubDate') 또는 '').strip()
-            body  = (item.findtext('content_encoded') 또는
-                     item.findtext('description') 또는 '').strip()
+            title = (item.findtext('title') or '').strip()
+            link  = (item.findtext('link')  or '').strip()
+            date  = (item.findtext('pubDate') or '').strip()
+            body  = (item.findtext('content_encoded') or
+                     item.findtext('description') or '').strip()
 
             desc = re.sub(r'<[^>]+>', '', body).strip()[:200]
 
-            if title 및 link:
+            if title and link:
                 posts.append({'title': title, 'link': link, 'date': date, 'desc': desc})
 
             # 최신 포스트 전문 저장
-            if i == 0 및 body:
+            if i == 0 and body:
                 latest_title = title
                 latest_link  = link
                 latest_date  = date
@@ -112,7 +112,7 @@ def fetch_substack(feed_url, max_items=8):
                 break
 
         latest = None
-        if latest_title 및 latest_body:
+        if latest_title and latest_body:
             latest = {'title': latest_title, 'link': latest_link,
                       'date': latest_date, 'body': latest_body}
 
@@ -135,7 +135,7 @@ def fallback_substack(text, max_items=8):
     dates  = re.findall(r'<pubDate>(.*?)</pubDate>', text)
 
     for i in range(min(len(titles), len(links), max_items)):
-        if 'seoulinside' in links[i] 및 '/p/' in links[i]:
+        if 'seoulinside' in links[i] and '/p/' in links[i]:
             posts.append({
                 'title': titles[i],
                 'link': links[i],
