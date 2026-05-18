@@ -6,236 +6,286 @@
 <title>Seoul Inside</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink:    #0f0f0f;
-    --paper:  #f5f0e8;
-    --accent: #c0392b;
-    --gold:   #b8860b;
-    --mid:    #6b6456;
-    --rule:   #d4ccc0;
-    --up:     #1a7a3a;
-    --down:   #c0392b;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0f0f0f;
+  --paper: #f5f0e8;
+  --accent: #c0392b;
+  --gold: #b8860b;
+  --mid: #6b6456;
+  --rule: #d4ccc0;
+  --up: #1a7a3a;
+  --down: #c0392b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+}
+/* ── 티커 바 ── */
+.ticker-wrap {
+  background: var(--ink);
+  color: #e8e0d0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  padding: 6px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 60s linear infinite;
+}
+.ticker-inner span { margin-right: 3rem; }
+.ticker-inner .up { color: #4fc87a; }
+.ticker-inner .down { color: #ff6b6b; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* ── 헤더 ── */
+header {
+  border-bottom: 3px double var(--ink);
+  padding: 1.5rem 2rem 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.masthead h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.masthead h1 span { color: var(--accent); }
+.masthead .tagline {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-top: 4px;
+}
+.header-meta {
+  text-align: right;
+  font-size: 0.72rem;
+  color: var(--mid);
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1.7;
+}
+.refresh-btn {
+  margin-top: 6px;
+  padding: 4px 12px;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.refresh-btn:hover { background: var(--accent); }
+/* ── 날짜 밴드 ── */
+.dateline {
+  border-bottom: 1px solid var(--ink);
+  padding: 4px 2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-family: 'IBM Plex Mono', monospace;
+  display: flex;
+  justify-content: space-between;
+}
+/* ── 그리드 ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; }
+}
+.col {
+  padding: 1.4rem 1.5rem;
+  border-right: 1px solid var(--rule);
+}
+.col:last-child { border-right: none; }
+/* ── 섹션 타이틀 ── */
+.section-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 4px;
+  margin-bottom: 1rem;
+}
+/* ── 내 글 (1열) ── */
+.my-post {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.my-post:last-child { border-bottom: none; }
+.my-post a {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.3;
+  display: block;
+}
+.my-post a:hover { color: var(--accent); }
+.my-post .post-meta {
+  font-size: 0.65rem;
+  color: var(--mid);
+  font-family: 'IBM Plex Mono', monospace;
+  margin-top: 4px;
+}
+/* ── 주식 ── */
+.stock-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px dotted var(--rule);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+}
+.stock-row:last-child { border-bottom: none; }
+.stock-label { color: var(--ink); font-weight: 500; }
+.stock-price { color: var(--mid); }
+.stock-chg { font-size: 0.7rem; }
+.stock-chg.up { color: var(--up); }
+.stock-chg.down { color: var(--down); }
+.divider-row {
+  border-top: 1px solid var(--rule);
+  margin: 0.7rem 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  padding-top: 6px;
+}
+/* ── 뉴스 ── */
+.news-item {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.news-item:last-child { border-bottom: none; }
+.news-item a {
+  font-size: 0.84rem;
+  font-weight: 400;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.45;
+  display: block;
+}
+.news-item a:hover { color: var(--accent); text-decoration: underline; }
+.news-item .news-src {
+  font-size: 0.62rem;
+  color: var(--mid);
+  font-family: 'IBM Plex Mono', monospace;
+  margin-top: 3px;
+}
+/* ── 로딩 / 에러 ── */
+.loading {
+  color: var(--mid);
+  font-size: 0.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 1rem 0;
+  animation: blink 1.2s step-start infinite;
+}
+@keyframes blink { 50% { opacity: 0.3; } }
 
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-  }
+/* ── Medium 두 칼럼 섹션 ── */
+.medium-section {
+  border-top: 3px double var(--ink);
+  padding: 2.5rem 2rem;
+}
+.medium-section .section-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 4px;
+  margin-bottom: 1.6rem;
+}
+.medium-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 680px) {
+  .medium-grid { grid-template-columns: 1fr; }
+}
+.medium-card {
+  border: 1px solid var(--rule);
+  padding: 1.6rem;
+  background: #fff;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.medium-card:hover {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.medium-card .card-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-family: 'IBM Plex Mono', monospace;
+  margin-bottom: 0.8rem;
+}
+.medium-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+  color: var(--ink);
+}
+.medium-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--mid);
+  flex-grow: 1;
+  margin-bottom: 1.2rem;
+}
+.medium-card a.read-btn {
+  display: inline-block;
+  padding: 7px 16px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+.medium-card a.read-btn:hover { background: var(--accent); }
 
-  /* ── 티커 바 ── */
-  .ticker-wrap {
-    background: var(--ink);
-    color: #e8e0d0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.72rem;
-    padding: 6px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .ticker-inner {
-    display: inline-block;
-    animation: ticker 60s linear infinite;
-  }
-  .ticker-inner span { margin-right: 3rem; }
-  .ticker-inner .up   { color: #4fc87a; }
-  .ticker-inner .down { color: #ff6b6b; }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-  /* ── 헤더 ── */
-  header {
-    border-bottom: 3px double var(--ink);
-    padding: 1.5rem 2rem 1rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .masthead h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  .masthead h1 span { color: var(--accent); }
-  .masthead .tagline {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--mid);
-    margin-top: 4px;
-  }
-  .header-meta {
-    text-align: right;
-    font-size: 0.72rem;
-    color: var(--mid);
-    font-family: 'IBM Plex Mono', monospace;
-    line-height: 1.7;
-  }
-  .refresh-btn {
-    margin-top: 6px;
-    padding: 4px 12px;
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .refresh-btn:hover { background: var(--accent); }
-
-  /* ── 날짜 밴드 ── */
-  .dateline {
-    border-bottom: 1px solid var(--ink);
-    padding: 4px 2rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--mid);
-    font-family: 'IBM Plex Mono', monospace;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  /* ── 3단 그리드 ── */
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  @media (max-width: 760px) {
-    .grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 480px) {
-    .grid { grid-template-columns: 1fr; }
-  }
-
-  .col {
-    padding: 1.4rem 1.5rem;
-    border-right: 1px solid var(--rule);
-  }
-  .col:last-child { border-right: none; }
-
-  /* ── 섹션 타이틀 ── */
-  .section-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 500;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 4px;
-    margin-bottom: 1rem;
-  }
-
-  /* ── 주식 ── */
-  .stock-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 5px 0;
-    border-bottom: 1px dotted var(--rule);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-  }
-  .stock-row:last-child { border-bottom: none; }
-  .stock-label { color: var(--ink); font-weight: 500; }
-  .stock-price { color: var(--mid); }
-  .stock-chg { font-size: 0.7rem; }
-  .stock-chg.up   { color: var(--up); }
-  .stock-chg.down { color: var(--down); }
-
-  .divider-row {
-    border-top: 1px solid var(--rule);
-    margin: 0.7rem 0;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--mid);
-    padding-top: 6px;
-  }
-
-  /* ── 뉴스 ── */
-  .news-item {
-    padding: 0.65rem 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  .news-item:last-child { border-bottom: none; }
-  .news-item a {
-    font-size: 0.84rem;
-    font-weight: 400;
-    color: var(--ink);
-    text-decoration: none;
-    line-height: 1.45;
-    display: block;
-  }
-  .news-item a:hover { color: var(--accent); text-decoration: underline; }
-  .news-item .news-src {
-    font-size: 0.62rem;
-    color: var(--mid);
-    font-family: 'IBM Plex Mono', monospace;
-    margin-top: 3px;
-  }
-
-  /* ── 로딩 ── */
-  .loading {
-    color: var(--mid);
-    font-size: 0.8rem;
-    font-family: 'IBM Plex Mono', monospace;
-    padding: 1rem 0;
-    animation: blink 1.2s step-start infinite;
-  }
-  @keyframes blink { 50% { opacity: 0.3; } }
-
-  /* ── 워드프레스 칠판 섹션 (하단 전체폭) ── */
-  .wordpress-section {
-    border-top: 3px double var(--ink);
-    padding: 2.5rem 2rem;
-  }
-  .wordpress-section .section-label {
-    margin-bottom: 1.4rem;
-  }
-  .wordpress-content {
-    max-width: 100%;
-    font-size: 0.95rem;
-    line-height: 1.9;
-    color: var(--ink);
-    white-space: pre-wrap;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 300;
-    columns: 2 420px;
-    column-gap: 3rem;
-    column-rule: 1px solid var(--rule);
-  }
-  .wordpress-source {
-    margin-top: 1.2rem;
-    font-size: 0.65rem;
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--mid);
-  }
-  .wordpress-source a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .wordpress-source a:hover { text-decoration: underline; }
-
-  /* ── 푸터 ── */
-  footer {
-    padding: 1rem 2rem;
-    font-size: 0.65rem;
-    color: var(--mid);
-    border-top: 1px solid var(--rule);
-    font-family: 'IBM Plex Mono', monospace;
-    display: flex;
-    justify-content: space-between;
-  }
+/* ── 푸터 ── */
+footer {
+  padding: 1rem 2rem;
+  font-size: 0.65rem;
+  color: var(--mid);
+  border-top: 1px solid var(--rule);
+  font-family: 'IBM Plex Mono', monospace;
+  display: flex;
+  justify-content: space-between;
+}
 </style>
 </head>
 <body>
@@ -263,28 +313,61 @@
   <span>seoulinside.substack.com</span>
 </div>
 
-<!-- 3단 그리드: 주식 / 글로벌뉴스 / 한국뉴스 -->
+<!-- 메인 그리드 -->
 <div class="grid">
+
+  <!-- 1열: Analysis & Insight → 서브스택 특정 글 -->
+  <div class="col">
+    <div class="section-label">✍ Analysis &amp; Insight</div>
+    <div class="my-post">
+      <a href="https://seoulinside.substack.com/p/analysis" target="_blank" rel="noopener">
+        Analysis — Seoul Inside
+      </a>
+      <div class="post-meta">seoulinside.substack.com</div>
+    </div>
+  </div>
+
+  <!-- 2열: 주식 -->
   <div class="col">
     <div class="section-label">📈 Markets</div>
     <div id="stocks"><div class="loading">Loading…</div></div>
   </div>
+
+  <!-- 3열: 글로벌 뉴스 -->
   <div class="col">
     <div class="section-label">🌐 World News</div>
     <div id="global-news"><div class="loading">Loading…</div></div>
   </div>
+
+  <!-- 4열: 한국 관련 기사 -->
   <div class="col">
     <div class="section-label">🇰🇷 Korea Coverage</div>
     <div id="korea-news"><div class="loading">Loading…</div></div>
   </div>
+
 </div>
 
-<!-- 하단 워드프레스 칠판 (전체폭) -->
-<div class="wordpress-section">
-  <div class="section-label">📋 Seoul Inside — Today's Briefing</div>
-  <div id="wordpress-content"><div class="loading">Loading briefing…</div></div>
-  <div class="wordpress-source">
-    Source: <a href="https://seoulinside.wordpress.com/2026/05/18/news/" target="_blank" rel="noopener">seoulinside.wordpress.com</a>
+<!-- ── Medium 두 칼럼 섹션 ── -->
+<div class="medium-section">
+  <div class="section-label">📰 Latest from Seoul Inside — Medium</div>
+  <div class="medium-grid">
+
+    <!-- 왼쪽 카드 -->
+    <div class="medium-card">
+      <div class="card-label">📰 News</div>
+      <h3>Seoul Inside News</h3>
+      <p>In-depth coverage and analysis of Korea's latest news, curated for an English-speaking audience.</p>
+      <a class="read-btn" href="https://medium.com/@Seoulinside/news-b4fd63e36bba" target="_blank" rel="noopener">Read on Medium →</a>
+    </div>
+
+    <!-- 오른쪽 카드 -->
+    <div class="medium-card">
+      <div class="card-label">📰 News</div>
+      <h3>Seoul Inside News</h3>
+      <p>More stories from inside Seoul — markets, culture, and the stories that matter to Korea watchers.</p>
+      <a class="read-btn" href="https://medium.com/@Seoulinside/news-f2ec3bd9a2e2" target="_blank" rel="noopener">Read on Medium →</a>
+    </div>
+
   </div>
 </div>
 
@@ -294,89 +377,81 @@
 </footer>
 
 <script>
-  const now = new Date();
-  document.getElementById('today-date').textContent =
-    now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+// 오늘 날짜 표시
+const now = new Date();
+document.getElementById('today-date').textContent =
+  now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
-  function fmtPrice(p)  { return p > 0 ? p.toLocaleString(undefined, {maximumFractionDigits:2}) : '—'; }
-  function fmtChg(c, p) {
-    const sign = c >= 0 ? '+' : '';
-    return `${sign}${c.toFixed(2)} (${sign}${p.toFixed(2)}%)`;
+function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined, {maximumFractionDigits:2}) : '—'; }
+function fmtChg(c, p) {
+  const sign = c >= 0 ? '+' : '';
+  return `${sign}${c.toFixed(2)} (${sign}${p.toFixed(2)}%)`;
+}
+
+function renderTicker(worlds, koreas) {
+  const all = [...worlds, ...koreas];
+  const html = all.map(s => {
+    const cls = s.change >= 0 ? 'up' : 'down';
+    const sign = s.change >= 0 ? '▲' : '▼';
+    return `<span><b>${s.label}</b> ${fmtPrice(s.price)} <span class="${cls}">${sign}${Math.abs(s.pct).toFixed(2)}%</span></span>`;
+  }).join('');
+  document.getElementById('ticker').innerHTML = html + html;
+}
+
+function renderStocks(worlds, koreas) {
+  const rows = (arr) => arr.map(s => {
+    const cls = s.change >= 0 ? 'up' : 'down';
+    return `<div class="stock-row">
+      <span class="stock-label">${s.label}</span>
+      <span>
+        <span class="stock-price">${fmtPrice(s.price)}</span>&nbsp;
+        <span class="stock-chg ${cls}">${fmtChg(s.change, s.pct)}</span>
+      </span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('stocks').innerHTML =
+    rows(worlds) +
+    `<div class="divider-row">Korea</div>` +
+    rows(koreas);
+}
+
+function renderNews(items, targetId) {
+  if (!items || !items.length) {
+    document.getElementById(targetId).innerHTML = '<div class="loading">No articles found.</div>';
+    return;
   }
+  document.getElementById(targetId).innerHTML = items.map(n => `
+    <div class="news-item">
+      <a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>
+      <div class="news-src">${n.date ? n.date.slice(0,16) : ''}</div>
+    </div>`).join('');
+}
 
-  function renderTicker(worlds, koreas) {
-    const all = [...worlds, ...koreas];
-    const html = all.map(s => {
-      const cls  = s.change >= 0 ? 'up' : 'down';
-      const sign = s.change >= 0 ? '▲' : '▼';
-      return `<span><b>${s.label}</b> ${fmtPrice(s.price)} <span class="${cls}">${sign}${Math.abs(s.pct).toFixed(2)}%</span></span>`;
-    }).join('');
-    document.getElementById('ticker').innerHTML = html + html;
+async function loadData() {
+  try {
+    const res = await fetch('data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('data.json not found');
+    const data = await res.json();
+
+    renderTicker(data.worldStocks || [], data.koreaStocks || []);
+    renderStocks(data.worldStocks || [], data.koreaStocks || []);
+    renderNews(data.globalNews || [], 'global-news');
+    renderNews(data.koreaNews || [], 'korea-news');
+
+    const ts = data.updatedAt || '';
+    document.getElementById('updated-at').textContent = 'Updated: ' + ts;
+    document.getElementById('footer-updated').textContent = 'Last data update: ' + ts;
+  } catch (e) {
+    ['stocks','global-news','korea-news'].forEach(id => {
+      document.getElementById(id).innerHTML =
+        `<div class="loading">⏳ data.json 생성 전입니다.<br>GitHub Actions가 실행된 후 새로고침 해주세요.</div>`;
+    });
+    document.getElementById('updated-at').textContent = '데이터 준비 중…';
   }
+}
 
-  function renderStocks(worlds, koreas) {
-    const rows = (arr) => arr.map(s => {
-      const cls = s.change >= 0 ? 'up' : 'down';
-      return `<div class="stock-row">
-        <span class="stock-label">${s.label}</span>
-        <span>
-          <span class="stock-price">${fmtPrice(s.price)}</span>&nbsp;
-          <span class="stock-chg ${cls}">${fmtChg(s.change, s.pct)}</span>
-        </span>
-      </div>`;
-    }).join('');
-    document.getElementById('stocks').innerHTML =
-      rows(worlds) +
-      `<div class="divider-row">Korea</div>` +
-      rows(koreas);
-  }
-
-  function renderNews(items, targetId) {
-    if (!items || !items.length) {
-      document.getElementById(targetId).innerHTML = '<div class="loading">No articles found.</div>';
-      return;
-    }
-    document.getElementById(targetId).innerHTML = items.map(n => `
-      <div class="news-item">
-        <a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>
-        <div class="news-src">${n.date ? n.date.slice(0,16) : ''}</div>
-      </div>`).join('');
-  }
-
-  function renderWordpress(content) {
-    const el = document.getElementById('wordpress-content');
-    if (!content || content.trim().length === 0) {
-      el.innerHTML = '<div class="loading">Briefing not available yet.</div>';
-      return;
-    }
-    el.innerHTML = `<div class="wordpress-content">${content}</div>`;
-  }
-
-  async function loadData() {
-    try {
-      const res  = await fetch('data.json?t=' + Date.now());
-      if (!res.ok) throw new Error('data.json not found');
-      const data = await res.json();
-
-      renderTicker(data.worldStocks || [], data.koreaStocks || []);
-      renderStocks(data.worldStocks || [], data.koreaStocks || []);
-      renderNews(data.globalNews || [], 'global-news');
-      renderNews(data.koreaNews  || [], 'korea-news');
-      renderWordpress(data.wordpressNews || '');
-
-      const ts = data.updatedAt || '';
-      document.getElementById('updated-at').textContent     = 'Updated: ' + ts;
-      document.getElementById('footer-updated').textContent = 'Last data update: ' + ts;
-    } catch (e) {
-      ['stocks','global-news','korea-news'].forEach(id => {
-        document.getElementById(id).innerHTML =
-          `<div class="loading">⏳ data.json 생성 전입니다.<br>GitHub Actions 실행 후 새로고침 해주세요.</div>`;
-      });
-      document.getElementById('updated-at').textContent = '데이터 준비 중…';
-    }
-  }
-
-  loadData();
+loadData();
 </script>
 </body>
 </html>
