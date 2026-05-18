@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seoul Inside — Korea Intelligence Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f0f0f;
+      --paper: #f5f0e8;
+      --accent: #c8102e;
+      --gold: #b8952a;
+      --muted: #6b6560;
+      --border: #d8d0c0;
+      --card: #fffdf8;
+      --tag-bg: #f0ebe0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 3px solid var(--ink);
+      padding: 0 32px;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .dateline {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .refresh-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 5px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .refresh-btn:hover { opacity: 0.85; }
+
+    .header-main {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 16px 0 14px;
+    }
+    .masthead h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .masthead h1 span { color: var(--accent); }
+    .masthead .tagline {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .header-nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .header-nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--accent); }
+
+    /* ── TICKER BAR ── */
+    .ticker-bar {
+      background: var(--ink);
+      color: white;
+      padding: 8px 32px;
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+      border-bottom: 2px solid var(--accent);
+    }
+    .ticker-section {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .ticker-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-right: 16px;
+      border-right: 1px solid #333;
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .ticker-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: #ccc;
+    }
+    .ticker-price {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .ticker-change {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+    }
+    .up { color: #4caf7d; }
+    .down { color: #e05252; }
+    .divider-v {
+      width: 1px;
+      height: 20px;
+      background: #333;
+      margin: 0 16px;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: white;
+      background: var(--ink);
+      padding: 3px 8px;
+    }
+    .section-label.accent { background: var(--accent); }
+    .section-label.gold { background: var(--gold); }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── MAIN GRID ── */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0;
+      padding: 0 32px;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .col {
+      padding: 20px 18px;
+      border-right: 1px solid var(--border);
+    }
+    .col:last-child { border-right: none; }
+
+    /* ── CARDS ── */
+    .article-card {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .article-card:last-child { border-bottom: none; }
+    .article-card:hover .card-title { color: var(--accent); }
+
+    .card-source {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink);
+      transition: color 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .card-title:visited { color: var(--ink); }
+    .card-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+    .card-tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--muted);
+      font-size: 9px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      margin-top: 5px;
+    }
+
+    /* ── MY ARTICLES (col 1) ── */
+    .my-article-card {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .my-article-card:last-child { border-bottom: none; }
+    .my-article-card:hover .card-title { color: var(--accent); }
+    .my-article-card .card-title {
+      font-size: 15px;
+    }
+    .featured-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 9px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      margin-bottom: 5px;
+    }
+
+    /* ── MARKET CARDS ── */
+    .market-card {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .market-card:last-child { border-bottom: none; }
+    .market-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .market-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 2px 0;
+    }
+    .market-meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .market-change-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 1px 6px;
+    }
+    .market-change-badge.up { background: #e8f5ee; color: #2d7a4f; }
+    .market-change-badge.down { background: #fdeaea; color: #b83232; }
+    .market-exchange {
+      font-size: 10px;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+    }
+    .market-update {
+      font-size: 9px;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      margin-top: 3px;
+    }
+
+    /* ── BOTTOM BAR ── */
+    .bottom-bar {
+      padding: 10px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .bottom-bar .credit {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .bottom-bar .substack-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── LOADING / ERROR ── */
+    .loading-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 20px 0;
+      text-align: center;
+    }
+    .error-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: #e05252;
+      padding: 10px 0;
+    }
+
+    /* ── EXCHANGE RATE BOX ── */
+    .exchange-box {
+      background: var(--ink);
+      color: white;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+    }
+    .exchange-box .ex-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .exchange-box .ex-rate {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .exchange-box .ex-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr 1fr; }
+      .masthead h1 { font-size: 36px; }
+    }
+    @media (max-width: 600px) {
+      .main-grid { grid-template-columns: 1fr; }
+      header, .ticker-bar, .bottom-bar { padding-left: 16px; padding-right: 16px; }
+      .main-grid { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-top">
+    <span class="dateline" id="date-display">Loading date...</span>
+    <button class="refresh-btn" onclick="loadAll()">↻ Refresh All</button>
+  </div>
+  <div class="header-main">
+    <div class="masthead">
+      <h1>Seoul <span>Inside</span></h1>
+      <div class="tagline">Korea Intelligence — Business · Markets · Policy</div>
+    </div>
+    <nav class="header-nav">
+      <a href="https://seoulinside.substack.com" target="_blank">Substack</a>
+      <a href="#my-articles">My Analysis</a>
+      <a href="#markets">Markets</a>
+      <a href="#news">News</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── TICKER BAR ── -->
+<div class="ticker-bar" id="ticker-bar">
+  <div class="ticker-section" id="world-ticker">
+    <span class="ticker-label">Global</span>
+    <span class="ticker-item"><span class="ticker-name">Loading...</span></span>
+  </div>
+  <div class="divider-v"></div>
+  <div class="ticker-section" id="korea-ticker">
+    <span class="ticker-label">KRX</span>
+    <span class="ticker-item"><span class="ticker-name">Loading...</span></span>
+  </div>
+  <div class="divider-v"></div>
+  <div class="ticker-section" id="fx-ticker">
+    <span class="ticker-label">FX</span>
+    <span class="ticker-item"><span class="ticker-name">Loading...</span></span>
+  </div>
+</div>
+
+<!-- ── MAIN GRID ── -->
+<div class="main-grid">
+
+  <!-- COL 1: MY ARTICLES (Seoul Inside) -->
+  <div class="col" id="my-articles">
+    <div class="section-header">
+      <span class="section-label accent">Seoul Inside</span>
+      <span class="section-line"></span>
+    </div>
+    <div id="my-articles-list"><div class="loading-text">Loading articles...</div></div>
+  </div>
+
+  <!-- COL 2: WORLD MARKETS -->
+  <div class="col" id="markets">
+    <div class="section-header">
+      <span class="section-label gold">World Markets</span>
+      <span class="section-line"></span>
+    </div>
+    <div id="world-markets-list"><div class="loading-text">Loading market data...</div></div>
+
+    <div style="margin-top:20px">
+      <div class="section-header">
+        <span class="section-label">Korea Markets</span>
+        <span class="section-line"></span>
+      </div>
+      <div id="korea-markets-list"><div class="loading-text">Loading...</div></div>
+    </div>
+
+    <div style="margin-top:20px">
+      <div class="exchange-box" id="fx-box">
+        <div class="ex-label">USD / KRW</div>
+        <div class="ex-rate" id="fx-rate">—</div>
+        <div class="ex-sub" id="fx-sub">Fetching rate...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COL 3: TOP WORLD NEWS -->
+  <div class="col" id="news">
+    <div class="section-header">
+      <span class="section-label">Top News</span>
+      <span class="section-line"></span>
+    </div>
+    <div id="world-news-list"><div class="loading-text">Loading news...</div></div>
+  </div>
+
+  <!-- COL 4: KOREA NEWS -->
+  <div class="col">
+    <div class="section-header">
+      <span class="section-label accent">Korea Watch</span>
+      <span class="section-line"></span>
+    </div>
+    <div id="korea-news-list"><div class="loading-text">Loading Korea news...</div></div>
+  </div>
+
+</div>
+
+<!-- ── BOTTOM ── -->
+<div class="bottom-bar">
+  <span class="credit">© 2026 B. Sun · Seoul Inside · All external links © their respective publishers</span>
+  <a class="substack-link" href="https://seoulinside.substack.com" target="_blank">→ Subscribe on Substack</a>
+</div>
+
+<script>
+// ── UTILITIES ──
+function formatDate(str) {
+  if (!str) return '';
+  const d = new Date(str);
+  if (isNaN(d)) return str;
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function setDateDisplay() {
+  const now = new Date();
+  document.getElementById('date-display').textContent =
+    now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+}
+
+function truncate(str, n) {
+  if (!str) return '';
+  const plain = str.replace(/<[^>]+>/g, '');
+  return plain.length > n ? plain.slice(0, n) + '…' : plain;
+}
+
+// ── RSS via rss2json ──
+async function fetchRSS(url) {
+  const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&count=8`;
+  const res = await fetch(api);
+  const data = await res.json();
+  if (data.status !== 'ok') throw new Error('RSS error');
+  return data.items;
+}
+
+// ── MY ARTICLES (Substack) ──
+async function loadMyArticles() {
+  const el = document.getElementById('my-articles-list');
+  try {
+    const items = await fetchRSS('https://seoulinside.substack.com/feed');
+    el.innerHTML = items.slice(0, 7).map((item, i) => `
+      <div class="my-article-card">
+        ${i === 0 ? '<span class="featured-tag">Latest</span>' : ''}
+        <a class="card-title" href="${item.link}" target="_blank">${item.title}</a>
+        <div class="card-desc">${truncate(item.description || item.content, 90)}</div>
+        <div class="card-date">${formatDate(item.pubDate)}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    el.innerHTML = `<div class="error-text">Could not load articles. <a href="https://seoulinside.substack.com/archive" target="_blank" style="color:var(--accent)">View on Substack →</a></div>`;
+  }
+}
+
+// ── WORLD NEWS ──
+async function loadWorldNews() {
+  const el = document.getElementById('world-news-list');
+  try {
+    const items = await fetchRSS('https://feeds.reuters.com/reuters/topNews');
+    el.innerHTML = items.slice(0, 7).map(item => `
+      <div class="article-card">
+        <div class="card-source">Reuters</div>
+        <a class="card-title" href="${item.link}" target="_blank">${item.title}</a>
+        <div class="card-date">${formatDate(item.pubDate)}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    // fallback: try AP News
+    try {
+      const items2 = await fetchRSS('https://rsshub.app/apnews/topics/apf-topnews');
+      el.innerHTML = items2.slice(0, 7).map(item => `
+        <div class="article-card">
+          <div class="card-source">AP News</div>
+          <a class="card-title" href="${item.link}" target="_blank">${item.title}</a>
+          <div class="card-date">${formatDate(item.pubDate)}</div>
+        </div>
+      `).join('');
+    } catch (e2) {
+      el.innerHTML = `<div class="error-text">News unavailable</div>`;
+    }
+  }
+}
+
+// ── KOREA NEWS ──
+async function loadKoreaNews() {
+  const el = document.getElementById('korea-news-list');
+  try {
+    const url = 'https://news.google.com/rss/search?q=South+Korea+economy+OR+Samsung+OR+Korean+market&hl=en-US&gl=US&ceid=US:en';
+    const items = await fetchRSS(url);
+    el.innerHTML = items.slice(0, 7).map(item => `
+      <div class="article-card">
+        <div class="card-source">${item.author || 'Google News'}</div>
+        <a class="card-title" href="${item.link}" target="_blank">${item.title}</a>
+        <div class="card-date">${formatDate(item.pubDate)}</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    el.innerHTML = `<div class="error-text">Korea news unavailable</div>`;
+  }
+}
+
+// ── MARKET DATA (via Yahoo Finance unofficial) ──
+async function loadMarkets() {
+  // World stocks
+  const worldStocks = [
+    { symbol: 'AAPL',  name: 'Apple' },
+    { symbol: 'NVDA',  name: 'NVIDIA' },
+    { symbol: 'MSFT',  name: 'Microsoft' },
+    { symbol: 'TSLA',  name: 'Tesla' },
+    { symbol: '^GSPC', name: 'S&P 500' },
+    { symbol: '^DJI',  name: 'Dow Jones' },
+  ];
+
+  const koreaStocks = [
+    { symbol: '005930.KS', name: 'Samsung Electronics' },
+    { symbol: '000660.KS', name: 'SK Hynix' },
+    { symbol: '035420.KS', name: 'NAVER' },
+    { symbol: '051910.KS', name: 'LG Chem' },
+    { symbol: '^KS11',     name: 'KOSPI' },
+  ];
+
+  async function fetchQuote(symbol) {
+    const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d&range=2d`;
+    const res = await fetch(url);
+    const data = await res.json();
+    const meta = data.chart.result[0].meta;
+    const price = meta.regularMarketPrice;
+    const prev = meta.chartPreviousClose || meta.previousClose;
+    const change = price - prev;
+    const pct = (change / prev) * 100;
+    return { price, change, pct };
+  }
+
+  // World markets
+  const worldEl = document.getElementById('world-markets-list');
+  const tickerWorldEl = document.getElementById('world-ticker');
+  worldEl.innerHTML = '<div class="loading-text">Fetching prices...</div>';
+
+  try {
+    const results = await Promise.allSettled(worldStocks.map(s => fetchQuote(s.symbol)));
+    worldEl.innerHTML = worldStocks.map((s, i) => {
+      if (results[i].status !== 'fulfilled') return '';
+      const { price, change, pct } = results[i].value;
+      const dir = pct >= 0 ? 'up' : 'down';
+      const sign = pct >= 0 ? '+' : '';
+      return `
+        <div class="market-card">
+          <div class="market-name">${s.name} <span style="color:var(--muted);font-size:10px">${s.symbol}</span></div>
+          <div class="market-price ${dir}">${price.toLocaleString('en-US', {maximumFractionDigits: 2})}</div>
+          <div class="market-meta">
+            <span class="market-change-badge ${dir}">${sign}${pct.toFixed(2)}%</span>
+            <span class="market-exchange">${sign}${change.toFixed(2)}</span>
+          </div>
+        </div>`;
+    }).join('');
+
+    // Ticker
+    tickerWorldEl.innerHTML = '<span class="ticker-label">Global</span>' +
+      worldStocks.map((s, i) => {
+        if (results[i].status !== 'fulfilled') return '';
+        const { price, pct } = results[i].value;
+        const dir = pct >= 0 ? 'up' : 'down';
+        const sign = pct >= 0 ? '+' : '';
+        return `<span class="ticker-item">
+          <span class="ticker-name">${s.name}</span>
+          <span class="ticker-price ${dir}">${price.toLocaleString('en-US', {maximumFractionDigits:0})}</span>
+          <span class="ticker-change ${dir}">${sign}${pct.toFixed(2)}%</span>
+        </span>`;
+      }).join('');
+  } catch (e) {
+    worldEl.innerHTML = `<div class="error-text">Market data unavailable (CORS). Try a backend proxy.</div>`;
+    tickerWorldEl.innerHTML = '<span class="ticker-label">Global</span><span class="ticker-item"><span class="ticker-name" style="color:#aaa">Market data blocked by CORS</span></span>';
+  }
+
+  // Korea markets
+  const koreaEl = document.getElementById('korea-markets-list');
+  const tickerKoreaEl = document.getElementById('korea-ticker');
+  koreaEl.innerHTML = '<div class="loading-text">Fetching KRX data...</div>';
+
+  try {
+    const results2 = await Promise.allSettled(koreaStocks.map(s => fetchQuote(s.symbol)));
+    koreaEl.innerHTML = koreaStocks.map((s, i) => {
+      if (results2[i].status !== 'fulfilled') return '';
+      const { price, change, pct } = results2[i].value;
+      const dir = pct >= 0 ? 'up' : 'down';
+      const sign = pct >= 0 ? '+' : '';
+      return `
+        <div class="market-card">
+          <div class="market-name">${s.name}</div>
+          <div class="market-price ${dir}">${price.toLocaleString('ko-KR', {maximumFractionDigits: 0})}</div>
+          <div class="market-meta">
+            <span class="market-change-badge ${dir}">${sign}${pct.toFixed(2)}%</span>
+            <span class="market-exchange">${sign}${change.toFixed(0)}</span>
+          </div>
+        </div>`;
+    }).join('');
+
+    tickerKoreaEl.innerHTML = '<span class="ticker-label">KRX</span>' +
+      koreaStocks.map((s, i) => {
+        if (results2[i].status !== 'fulfilled') return '';
+        const { price, pct } = results2[i].value;
+        const dir = pct >= 0 ? 'up' : 'down';
+        const sign = pct >= 0 ? '+' : '';
+        return `<span class="ticker-item">
+          <span class="ticker-name">${s.name}</span>
+          <span class="ticker-price ${dir}">${price.toLocaleString('ko-KR', {maximumFractionDigits:0})}</span>
+          <span class="ticker-change ${dir}">${sign}${pct.toFixed(2)}%</span>
+        </span>`;
+      }).join('');
+  } catch (e) {
+    koreaEl.innerHTML = `<div class="error-text">KRX data unavailable</div>`;
+  }
+
+  // FX Rate USD/KRW
+  try {
+    const fxData = await fetchQuote('USDKRW=X');
+    const dir = fxData.pct >= 0 ? 'up' : 'down';
+    const sign = fxData.pct >= 0 ? '+' : '';
+    document.getElementById('fx-rate').textContent = '₩' + fxData.price.toLocaleString('ko-KR', {maximumFractionDigits: 2});
+    document.getElementById('fx-sub').textContent = `${sign}${fxData.pct.toFixed(2)}% today · 1 USD`;
+    document.getElementById('fx-ticker').innerHTML =
+      `<span class="ticker-label">FX</span>
+       <span class="ticker-item">
+         <span class="ticker-name">USD/KRW</span>
+         <span class="ticker-price ${dir}">₩${fxData.price.toLocaleString('ko-KR',{maximumFractionDigits:0})}</span>
+         <span class="ticker-change ${dir}">${sign}${fxData.pct.toFixed(2)}%</span>
+       </span>`;
+  } catch (e) {
+    document.getElementById('fx-rate').textContent = '—';
+    document.getElementById('fx-sub').textContent = 'FX data unavailable';
+  }
+}
+
+// ── LOAD ALL ──
+async function loadAll() {
+  setDateDisplay();
+  loadMyArticles();
+  loadWorldNews();
+  loadKoreaNews();
+  loadMarkets();
+}
+
+loadAll();
+</script>
+</body>
+</html>
