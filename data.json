@@ -1,6 +1,6 @@
 {
-  "myPosts": [],
-  "latestPost": null,
+  "wordpressNews": "test\nhello\nworld\nShare this:\nShare on X (Opens in new window)\nX\nShare on Facebook (Opens in new window)\nFacebook",
+  "wordpressNewsUrl": "https://seoulinside.wordpress.com/2026/05/18/news/",
   "globalNews": [
     {
       "title": "Trump warns 'clock is ticking' for Iran as peace progress stalls",
@@ -35,12 +35,6 @@
   ],
   "koreaNews": [
     {
-      "title": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains - WTVB",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOOFhiRlk2SUp2RDZOOU5Wa2NQTGVST1F6MVRlTHRoSnV2eEZOMllybHk3SFdxc1ZSRm5lWjUxcG5MazJkdXQySWw3MVc2VHZ4Q184bEpxbFNqTF83Wk9oQmk4dF9rWlhzeVVZQTBKcHA1a21iWmxhX1ZnRXlucUw3RGx3aHR6c1ptX3d6Z2ZmdWFqdkRmY3pNcE9XWW5mV1NUWlhQdHVMSEtzMmNFZHhndnp5UDZoQQ?oc=5",
-      "date": "Mon, 18 May 2026 06:06:41 GMT",
-      "desc": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains&nbsp;&nbsp;WTVB"
-    },
-    {
       "title": "Samsung Electronics, union hold last-ditch talks to avert strike threatening global supply chains - Reuters",
       "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQTS1TUUtVWHY4LWNkWVVfS0t0Q0FkdzBpOEY1LTktUFIxY2ViUXNVYzh6MFhRQ1p3NV9hMUs5NHRoNkhnMHVQU1pKYTVtTF9lT2k3a1F4YzF3bjR6cWloQ0pNc1ktLTVnWUpEeFUwLWs0OUtUdDRkSkk0Q3ROU01BdDQ4NmFXb3FoV3RYQVh0dEtVREZqOG04RlBoc01Nck1JdEx6NE15UWhWZGhaOXJfZld5dmlsUkFEbE1aT2tqemJWU0NFUXBKRVE5bnB4NExKV2c?oc=5",
       "date": "Mon, 18 May 2026 00:57:00 GMT",
@@ -63,6 +57,12 @@
       "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1WQktQMHNVdG1XSEk4ck15RkxXZjRidlRCekhMUXpySkVFdEl1MzdwbXJ0cjhZSGhsTGRZT0h3NkZiZ2xBQ0Yxa1ZOWFlMMlljTGZGMlp5VQ?oc=5",
       "date": "Mon, 18 May 2026 06:03:06 GMT",
       "desc": "Business lobbies urge Samsung union to call off strike over economic risks&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "South Korea facts of the day - Marginal REVOLUTION",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQR0xEUGMwTlNLbGw0UmJyMHhuT2l4QXh0Skp3WE5jUlkyT0dHellPVUtrTS1vWE95VGVwazdVZWFqYmxzVWY3Z3JmWGdMZjdvQkdtMF9KZ2VBM3A5cy05YkE4S3RhV3dTaE9QMGdWbjhWMkJleWkxaGkyajY5TmR6VUhpM1E3WlpBb2F2NTdURFMya0NETUE?oc=5",
+      "date": "Sun, 17 May 2026 04:01:17 GMT",
+      "desc": "South Korea facts of the day&nbsp;&nbsp;Marginal REVOLUTION"
     },
     {
       "title": "ETFs Shift to Samsung Electronics, SK Hynix Despite Diversification Rules - 조선일보",
@@ -166,10 +166,10 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1496.59,
+      "price": 1495.3,
       "change": 0.0,
       "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-18 07:29 UTC"
+  "updatedAt": "2026-05-18 08:31 UTC"
 }
