@@ -31,24 +31,6 @@
       "link": "https://www.bbc.com/news/videos/ce8pzkg7klgo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 18 May 2026 00:49:25 GMT",
       "desc": "Four crew members safely ejected from US Navy jets and are in a stable condition after the collision."
-    },
-    {
-      "title": "Erdogan Wants Turkey to Have More Babies. Few Parents Are Listening.",
-      "link": "https://www.nytimes.com/2026/05/17/world/europe/erdogan-turkey-demography-babies-family-planning-economy.html",
-      "date": "Sun, 17 May 2026 11:54:56 +0000",
-      "desc": "Using cash grants and subsidized loans, President Recep Tayyip Erdogan’s government is trying to increase the birthrate. It’s not working."
-    },
-    {
-      "title": "Runoff in Peru Offers Two Starkly Differing Visions for the Nation",
-      "link": "https://www.nytimes.com/2026/05/17/world/americas/peru-runoff-election.html",
-      "date": "Sun, 17 May 2026 14:47:10 +0000",
-      "desc": "The presidential election pits Keiko Fujimori, a conservative, against Roberto Sánchez, a leftist, after a crisis marked by delays and protests."
-    },
-    {
-      "title": "How Birding Apps Are Boosting Tourism in the World’s Top Bird Destination",
-      "link": "https://www.nytimes.com/2026/05/17/world/americas/colombia-birding-app-merlin-ebird-tourism.html",
-      "date": "Sun, 17 May 2026 09:01:59 +0000",
-      "desc": "Colombia is home to the most species of birds known to ornithologists. Merlin, an app, is helping to build an “avian tourism” industry there."
     }
   ],
   "koreaNews": [
@@ -163,14 +145,14 @@
     {
       "symbol": "005930.KS",
       "label": "삼성전자",
-      "price": 282750.0,
+      "price": 282000.0,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "000660.KS",
       "label": "SK하이닉스",
-      "price": 1852000.0,
+      "price": 1851000.0,
       "change": 0.0,
       "pct": 0.0
     },
@@ -184,10 +166,10 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1498.28,
+      "price": 1496.89,
       "change": 0.0,
       "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-18 06:37 UTC"
+  "updatedAt": "2026-05-18 06:42 UTC"
 }
