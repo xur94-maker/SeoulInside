@@ -3,6 +3,18 @@
   "wordpressNewsUrl": "https://seoulinside.wordpress.com/2026/05/18/news/",
   "globalNews": [
     {
+      "title": "At least six Americans exposed to Ebola during DR Congo outbreak",
+      "link": "https://www.bbc.com/news/articles/cq6pz60p996o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 18 May 2026 10:46:34 GMT",
+      "desc": "One of the six Americans believed to have been exposed is experiencing symptoms, according to media reports."
+    },
+    {
+      "title": "Shakira wins £50m tax refund from Spanish government",
+      "link": "https://www.bbc.com/news/articles/cd9pzd14vj5o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 18 May 2026 11:58:54 GMT",
+      "desc": "The Colombian singer says the court ruling means the \"narrative\" that she was guilty now \"crumbles\"."
+    },
+    {
       "title": "Trump warns 'clock is ticking' for Iran as peace progress stalls",
       "link": "https://www.bbc.com/news/articles/cd0p4y9y48xo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 18 May 2026 09:58:35 GMT",
@@ -11,41 +23,17 @@
     {
       "title": "Bodies of missing Italian divers found in Maldives",
       "link": "https://www.bbc.com/news/articles/c332mngz25vo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 18 May 2026 11:20:00 GMT",
+      "date": "Mon, 18 May 2026 11:54:17 GMT",
       "desc": "The bodies of all five Italian divers who died in the Maldives last week have now been found, officials tell the BBC."
     },
     {
-      "title": "At least six Americans exposed to Ebola during DR Congo outbreak",
-      "link": "https://www.bbc.com/news/articles/cq6pz60p996o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 18 May 2026 10:46:34 GMT",
-      "desc": "One of the six Americans believed to have been exposed is experiencing symptoms, according to media reports."
-    },
-    {
-      "title": "Israeli forces boarding Gaza-bound flotilla near Cyprus, activists say",
+      "title": "Israeli forces board Gaza-bound flotilla near Cyprus, activists say",
       "link": "https://www.bbc.com/news/articles/c142vz80553o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 18 May 2026 10:00:47 GMT",
+      "date": "Mon, 18 May 2026 12:27:40 GMT",
       "desc": "Live broadcasts from the Global Sumud flotilla show commandos boarding several boats trying to breach the Gaza maritime blockade."
-    },
-    {
-      "title": "Strike over high fuel prices paralyses transport in Kenya",
-      "link": "https://www.bbc.com/news/articles/cm2p0n44drvo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 18 May 2026 10:54:46 GMT",
-      "desc": "Key roads have remained largely empty and some schools have asked students to stay at home."
     }
   ],
   "koreaNews": [
-    {
-      "title": "Samsung Electronics and union extend talks to avert strike threatening global supply chains - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQTS1TUUtVWHY4LWNkWVVfS0t0Q0FkdzBpOEY1LTktUFIxY2ViUXNVYzh6MFhRQ1p3NV9hMUs5NHRoNkhnMHVQU1pKYTVtTF9lT2k3a1F4YzF3bjR6cWloQ0pNc1ktLTVnWUpEeFUwLWs0OUtUdDRkSkk0Q3ROU01BdDQ4NmFXb3FoV3RYQVh0dEtVREZqOG04RlBoc01Nck1JdEx6NE15UWhWZGhaOXJfZld5dmlsUkFEbE1aT2tqemJWU0NFUXBKRVE5bnB4NExKV2c?oc=5",
-      "date": "Mon, 18 May 2026 10:24:36 GMT",
-      "desc": "Samsung Electronics and union extend talks to avert strike threatening global supply chains&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Samsung strike involving 47,000 workers looms as South Korea's president urges labor deal - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOYlM2TUJxOXJ3cXRqak5naURHR0hSZFIwNVlDbzYtQ1VNb0JGUmR0NGZBUjIwOWEwTDd2U0puX3hrUkMySDhkR2xfZVFfOFF5QmtpM2FHYUpHenNoNFpxUXV1UVVDazdPN0tYV3U0aDlNRWxhQmNsQ0MwcmVEY0VSdHB30gGHAUFVX3lxTE1ncTl4b19mRFYySTF6Z3UtNlBCMUloNjR3UVZMUWZ3TExzdjF1R0RPQUpkbjQySm8ybVptVEg4dDVqYlBxOWtXN3NFTUl4Zm4wbUJDTDJ2NTZxYktralZhbkZneXFyVm1fa1JQZVZIejV2ckVEX3Q5Tkh6cHJENTNaSFI4STlfdw?oc=5",
-      "date": "Mon, 18 May 2026 04:24:25 GMT",
-      "desc": "Samsung strike involving 47,000 workers looms as South Korea's president urges labor deal&nbsp;&nbsp;CNBC"
-    },
     {
       "title": "North Korea - Economy, Resources, Trade - Britannica",
       "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
@@ -53,16 +41,28 @@
       "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
     },
     {
-      "title": "South Korea weighs the cost of stepping into Samsung's US$400,000 bonus row - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOcUFlVERhelJBWG5aWlBJQ05lbWU2MVZPNE4zV0k2ZEd0SVlZUWZ4c3AwUzk3Z0E1cDkwWlduOHFHV3pLeDlDX1Fsd2NuUE12S2tYVmlHSElBNEZ3TnlYc1hScm1ZeXBBaFZFcHBTdHFWN2tTUE9tX0lUaURybXhpcXNXRVpQc25jVW5KaXo5TEhlQkdha1hJTFZhclpNUW1USEk4MDBUajNfOUxqalphcTVHUG9CQ1c2dElhWmZPdi1ZREhBdDZSdzhVNm9YNC1NaVNQZzhmSDFrMDh6WlY1Y3RRZ0NqWUNabjVBN2FabTAxY1A0YTFPYmoxN24?oc=5",
-      "date": "Mon, 18 May 2026 09:00:07 GMT",
-      "desc": "South Korea weighs the cost of stepping into Samsung's US$400,000 bonus row&nbsp;&nbsp;South China Morning Post"
+      "title": "South Korea (KOR) Exports, Imports, and Trade Partners | The Observatory of Economic Complexity - The Observatory of Economic Complexity",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBFb3pSd3NpT0s5andZTy02ZG15OUpWVGJjcmM2UGhwcjU4T1ZEOU1tUHRBN2NyeHhkS0k1bmN3c3RveGxyb3NUWUxZdmdNRVRQLXc?oc=5",
+      "date": "Thu, 14 May 2026 19:24:31 GMT",
+      "desc": "South Korea (KOR) Exports, Imports, and Trade Partners | The Observatory of Economic Complexity&nbsp;&nbsp;The Observatory of Economic Complexity"
     },
     {
-      "title": "Samsung and union enter new round of talks ahead of planned strike - digitimes",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNU3dzUDBqa1dtU3VpcE90VlN6clBYQlBKaVRmVWtXVS1vWUVSSHlJZndZc1BWTjlPbEN3anNlUG4tbzg0ampjTkRhV3VlR2wzMzJGUmtTVENXQnJBc1pKNVh4TnJpLVB6X0hVeW5hZEI4N3pQemFmZ05HdTlGVlBsM0NIVFhRUTkzQ3hPU2ZDLUdnX2Jh?oc=5",
-      "date": "Mon, 18 May 2026 04:07:38 GMT",
-      "desc": "Samsung and union enter new round of talks ahead of planned strike&nbsp;&nbsp;digitimes"
+      "title": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOYlM2TUJxOXJ3cXRqak5naURHR0hSZFIwNVlDbzYtQ1VNb0JGUmR0NGZBUjIwOWEwTDd2U0puX3hrUkMySDhkR2xfZVFfOFF5QmtpM2FHYUpHenNoNFpxUXV1UVVDazdPN0tYV3U0aDlNRWxhQmNsQ0MwcmVEY0VSdHB30gGHAUFVX3lxTE1ncTl4b19mRFYySTF6Z3UtNlBCMUloNjR3UVZMUWZ3TExzdjF1R0RPQUpkbjQySm8ybVptVEg4dDVqYlBxOWtXN3NFTUl4Zm4wbUJDTDJ2NTZxYktralZhbkZneXFyVm1fa1JQZVZIejV2ckVEX3Q5Tkh6cHJENTNaSFI4STlfdw?oc=5",
+      "date": "Mon, 18 May 2026 04:24:25 GMT",
+      "desc": "Samsung strike involving 47,000 workers looms as South Korea’s president urges labor deal&nbsp;&nbsp;CNBC"
+    },
+    {
+      "title": "South Korea weighs the cost of stepping into Samsung’s US$400,000 bonus row - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPWUdsd25uYVRuVWZkVWlOaU14ejlzZzl6YjFILWpwU2ZZMDFzZDdyM0ZDdDUxcTJCSmt5SE44UGplR3dVZW9WQzdkV3U2cjVJRUl5eUczT0JfM3lFZVlwcjVHNlZYOWU2NEcxaHVsVEh6SFFZQUhDb3FjRHNQYXc4eVExaDdaX01OcHZkS3Z2elU4VFZib1FjOWxJZnllQVppcjI2YmF3ZFE0WWZya3FZLXhpODVZSzRMQmMxMXZ5alRKT1p6NTRVdUpfX1NMQzTSAc8BQVVfeXFMTXlmazhPdGFjc1NlVndUSlRBcHZ4SlYzSnBEVks1ZDAwbFhoMWE1c2Nha3FZOGNLVGpMQm5EdVNrZUZXdFFJVGVMb2FiT0FxVjllTXpSc0hZYnprZ3IxNGlMdDF4NWhVYk1ic2pfMHhraklNYVM1dTBPRjk0bjZ1Ri14R2xCWkhmOWpiTUowNXpvOEtxVGVwN3ZLcjhYMmdLdHV0dnZIQmRkb1R1SmRlVElSVXZfTXUzYktQa1JYRkVMbWFOeEdKMmc2ZXdmWHV3?oc=5",
+      "date": "Mon, 18 May 2026 09:00:07 GMT",
+      "desc": "South Korea weighs the cost of stepping into Samsung’s US$400,000 bonus row&nbsp;&nbsp;South China Morning Post"
+    },
+    {
+      "title": "Samsung Electronics and union extend talks to avert strike threatening global supply chains - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQTS1TUUtVWHY4LWNkWVVfS0t0Q0FkdzBpOEY1LTktUFIxY2ViUXNVYzh6MFhRQ1p3NV9hMUs5NHRoNkhnMHVQU1pKYTVtTF9lT2k3a1F4YzF3bjR6cWloQ0pNc1ktLTVnWUpEeFUwLWs0OUtUdDRkSkk0Q3ROU01BdDQ4NmFXb3FoV3RYQVh0dEtVREZqOG04RlBoc01Nck1JdEx6NE15UWhWZGhaOXJfZld5dmlsUkFEbE1aT2tqemJWU0NFUXBKRVE5bnB4NExKV2c?oc=5",
+      "date": "Mon, 18 May 2026 00:57:00 GMT",
+      "desc": "Samsung Electronics and union extend talks to avert strike threatening global supply chains&nbsp;&nbsp;Reuters"
     },
     {
       "title": "ETFs Shift to Samsung Electronics, SK Hynix Despite Diversification Rules - 조선일보",
@@ -127,13 +127,6 @@
       "pct": 0.0
     },
     {
-      "symbol": "GOOGL",
-      "label": "Google",
-      "price": 0.0,
-      "change": 0.0,
-      "pct": 0.0
-    },
-    {
       "symbol": "^GSPC",
       "label": "S&P 500",
       "price": 7408.5,
@@ -164,19 +157,19 @@
       "pct": 0.0
     },
     {
-      "symbol": "^KS11",
-      "label": "코스피",
-      "price": 0.0,
+      "symbol": "035420.KS",
+      "label": "NAVER",
+      "price": 200000.0,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1501.08,
+      "price": 1495.25,
       "change": 0.0,
       "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-18 11:27 UTC"
+  "updatedAt": "2026-05-18 12:39 UTC"
 }
