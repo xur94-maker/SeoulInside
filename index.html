@@ -227,6 +227,79 @@
     display: flex;
     justify-content: space-between;
   }
+
+  /* ── 최신 포스트 전문 ── */
+  .latest-post-section {
+    border-top: 3px double var(--ink);
+    padding: 2.5rem 2rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .latest-post-section .section-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 4px;
+    margin-bottom: 1.6rem;
+  }
+  .latest-post-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+  .latest-post-section h2 a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .latest-post-section h2 a:hover { color: var(--accent); }
+  .latest-post-meta {
+    font-size: 0.68rem;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--mid);
+    margin-bottom: 1.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .latest-post-body {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+  .latest-post-body p  { margin-bottom: 1.1rem; }
+  .latest-post-body h1,
+  .latest-post-body h2,
+  .latest-post-body h3 {
+    font-family: 'Playfair Display', serif;
+    margin: 1.6rem 0 0.6rem;
+  }
+  .latest-post-body a  { color: var(--accent); }
+  .latest-post-body img { max-width: 100%; border-radius: 2px; margin: 1rem 0; }
+  .latest-post-body blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    color: var(--mid);
+    font-style: italic;
+    margin: 1rem 0;
+  }
+  .read-more-link {
+    display: inline-block;
+    margin-top: 1.6rem;
+    padding: 8px 20px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .read-more-link:hover { background: var(--accent); }
+
 </style>
 </head>
 <body>
@@ -280,6 +353,13 @@
     <div id="korea-news"><div class="loading">Loading…</div></div>
   </div>
 </div>
+
+<!-- 최신 포스트 전문 -->
+<div class="latest-post-section">
+  <div class="section-label">✍ Latest from Seoul Inside</div>
+  <div id="latest-post"><div class="loading">Loading latest post…</div></div>
+</div>
+
 
 <footer>
   <span>© Seoul Inside — Curated English coverage of Korea</span>
@@ -362,6 +442,21 @@
       renderStocks(data.worldStocks || [], data.koreaStocks || []);
       renderNews(data.globalNews || [], 'global-news');
       renderNews(data.koreaNews  || [], 'korea-news');
+
+
+      // 최신 포스트 전문 렌더링
+      const lp = data.latestPost;
+      if (lp && lp.body) {
+        document.getElementById('latest-post').innerHTML = `
+          <h2><a href="${lp.link}" target="_blank" rel="noopener">${lp.title}</a></h2>
+          <div class="latest-post-meta">${lp.date ? lp.date.slice(0,16) : ''} · Seoul Inside</div>
+          <div class="latest-post-body">${lp.body}</div>
+          <a class="read-more-link" href="${lp.link}" target="_blank" rel="noopener">Read on Substack →</a>
+        `;
+      } else {
+        document.getElementById('latest-post').innerHTML =
+          '<div class="loading">Latest post not available yet.</div>';
+      }
 
       const ts = data.updatedAt || '';
       document.getElementById('updated-at').textContent    = 'Updated: ' + ts;
