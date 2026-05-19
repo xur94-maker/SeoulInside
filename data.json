@@ -3,16 +3,16 @@
   "wordpressNewsUrl": "https://seoulinside.wordpress.com/2026/05/18/news/",
   "globalNews": [
     {
-      "title": "Ebola may be spreading faster than first thought, WHO doctor warns",
+      "title": "Ebola outbreak may be spreading faster than first thought, WHO doctor warns",
       "link": "https://www.bbc.com/news/articles/ceqp11gn1l8o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 19 May 2026 10:15:46 GMT",
+      "date": "Tue, 19 May 2026 14:20:15 GMT",
       "desc": "Hundreds of cases are suspected in central Africa but experts fear the actual number may be much higher."
     },
     {
-      "title": "Teen suspects fatally shoot three in suspected hate crime at San Diego mosque",
-      "link": "https://www.bbc.com/news/articles/c5y7q66gq56o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 19 May 2026 07:07:55 GMT",
-      "desc": "The alleged attackers were aged 17 and 18 and one left a note containing \"generalised hate rhetoric\", investigators say."
+      "title": "Father-of-eight killed in San Diego mosque shooting hailed as hero",
+      "link": "https://www.bbc.com/news/articles/clyp3gkrwg9o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 19 May 2026 12:30:48 GMT",
+      "desc": "Security guard Amin Abdullah, one of three killed in the attack, was described as \"a shining light\"."
     },
     {
       "title": "Victim or enabler? Epstein girlfriend who could face questions despite plea deal",
@@ -21,16 +21,16 @@
       "desc": "Nadia Marcinko is relatively unknown but may soon be called before US legislators."
     },
     {
+      "title": "Son of Mango boss arrested over father's fatal fall from cliff",
+      "link": "https://www.bbc.com/news/articles/c0m2pg1z4x8o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 19 May 2026 15:30:57 GMT",
+      "desc": "Isak, 71, died in December 2024 after falling from a ravine while walking in the Montserrat mountains near Barcelona."
+    },
+    {
       "title": "Selling children to survive: Afghan fathers forced to make impossible choices",
       "link": "https://www.bbc.com/news/articles/c0q25dwj807o?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 19 May 2026 10:46:50 GMT",
       "desc": "In Afghanistan today, a staggering three in four people cannot meet their basic needs."
-    },
-    {
-      "title": "Two dead in Spain shooting, with babies reportedly among injured",
-      "link": "https://www.bbc.com/news/articles/cdrpnzv84gro?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 19 May 2026 07:17:15 GMT",
-      "desc": "Police say a 25-year-old man is suspected of killing his parents and injuring four others in southern Spain."
     }
   ],
   "koreaNews": [
@@ -47,10 +47,10 @@
       "desc": "South Korea needs partnerships to secure its economic lifelines&nbsp;&nbsp;East Asia Forum"
     },
     {
-      "title": "Investors puzzled over Korean won’s stay above 1,500 despite record current account surplus - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1MX3hDbGlEMmRPZWpmZGlaZHN5djhSM0NIbXJQZ25CZkpXeU9oLVhySW5HTW5CQzNYcmFka1hFUGkwZ21HN1RPZG92b2UtZmpNc3FnWDUxYlJaTEFNVEpOMmFVa2VEeFpaLVE?oc=5",
-      "date": "Tue, 19 May 2026 12:10:02 GMT",
-      "desc": "Investors puzzled over Korean won’s stay above 1,500 despite record current account surplus&nbsp;&nbsp;KED Global"
+      "title": "Starbucks Korea CEO fired over promotion that evoked military crackdown - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOZ2xvOEpyemcwUGFZcUd4cTlTQ082OGxQUVdIS3VseDFuM2RTZlZvZzZFZldpRDl4VTFOdlk2dnVMWUpjelJZaFhNRXNWXzBaNnBNdk9QZkpQdi1oQk83MmxvMTBWdFg4c1lEVm9QbjVhRFBtdERpeVg4RUZVYzZYRnFYZ3hPdlMyZTR5b1lacVFjMUNBbmdYcGNpS0dCcUVIUWFIU042czJTZTl6dDBTT1A0Nng4QdIBuwFBVV95cUxORGRKRzVkSl9rQ1MwY0l2VnE1ZVJrV05FMGV6V2lxcDhkaWxGNVVUVDg0ZEQ4eHU1Wkp6OXNpWHNBSDFlV3ZXMUZPZWlUZGRnWTl5clVjZzlaMG5BWjJOcVc4V0tJMkRoOThRUVBSRUhwQU1NcTBlOU1iSV9tOGlyX3lJSTFIWnl2TmdjME04SW1QVGo5Unh5a0FtcUZJendkdV9maGlpcTNRWk80WWEta1NmaXJ4UW1oSjdj?oc=5",
+      "date": "Tue, 19 May 2026 12:33:28 GMT",
+      "desc": "Starbucks Korea CEO fired over promotion that evoked military crackdown&nbsp;&nbsp;Al Jazeera"
     },
     {
       "title": "South Korea (KOR) Exports, Imports, and Trade Partners | The Observatory of Economic Complexity - The Observatory of Economic Complexity",
@@ -59,10 +59,16 @@
       "desc": "South Korea (KOR) Exports, Imports, and Trade Partners | The Observatory of Economic Complexity&nbsp;&nbsp;The Observatory of Economic Complexity"
     },
     {
-      "title": "South Korea's Q1 GDP growth roars past market on booming AI-driven chip demand - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOMHJfRk9LSWYwbjJhbVgwc2tMbTVaZW11d3FWdjlkVWJ5Yk1UdkdYZzFVbE5nMlZwQWtWZ0d0eUhXX3hPbEpQRFJvQkg0eFUwVG9lZ3VNVnR4NlpKUXk0N0NHWVZHVWc0cVBaZGdqZTktTWhVTTJnOGRKUnBiR2ZxRThOVG54X05NcGhrTFpXU0JjYlE4VXA5dUwteXctYWNaX0dhaGZ0aExnRkxmLUxHblBWXzhzZGJwemNaWQ?oc=5",
-      "date": "Wed, 22 Apr 2026 07:00:00 GMT",
-      "desc": "South Korea's Q1 GDP growth roars past market on booming AI-driven chip demand&nbsp;&nbsp;Reuters"
+      "title": "Investors puzzled over Korean won’s stay above 1,500 despite record current account surplus - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1MX3hDbGlEMmRPZWpmZGlaZHN5djhSM0NIbXJQZ25CZkpXeU9oLVhySW5HTW5CQzNYcmFka1hFUGkwZ21HN1RPZG92b2UtZmpNc3FnWDUxYlJaTEFNVEpOMmFVa2VEeFpaLVE?oc=5",
+      "date": "Tue, 19 May 2026 12:10:02 GMT",
+      "desc": "Investors puzzled over Korean won’s stay above 1,500 despite record current account surplus&nbsp;&nbsp;KED Global"
+    },
+    {
+      "title": "Samsung, SK Hynix Employees Abandon Training for Bonuses - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZkhLNllkWTQyR3RGQ3BSdEp4S0E4bU1lbUJBOHJwajRNLVJPWmU5Njd5OHM3RlVOWmF6V2YwcjVOeURTQWdXR3E5aXY4SW5qVEs1b01xLTlhc195YjUtSm9peVJiOG9za2xIcU5yeXNkMmthQjBjbzRrcUFrOFlJMDBQVWdwVVkz?oc=5",
+      "date": "Tue, 19 May 2026 15:52:16 GMT",
+      "desc": "Samsung, SK Hynix Employees Abandon Training for Bonuses&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Samsung, SK Hynix face chipmaking chemical squeeze as China feedstock costs surge - digitimes",
@@ -75,89 +81,83 @@
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxORXlCa0gyT29UdjdaZVRtVklHc2RlLTBNOWhYNEZXdEZpVFhHTTNuVzF1Qy0tYk9ZRGhuMlpkd0NQZW1DM3BUYmJkTFVrblctX2c5MkhJV1F6QUlUXzNXTFl5Y0o1UWlwT2xhN2FOd1h4cXBWbnhiV2tIU29PWnlhUTZZNTFTUjRRU3hWNXhlNUxaNjEyT3VV?oc=5",
       "date": "Sun, 17 May 2026 09:03:00 GMT",
       "desc": "A 45,000-person labor strike at Samsung's memory chip plants could throw a wrench into the AI boom&nbsp;&nbsp;Fortune"
-    },
-    {
-      "title": "ETF portfolios overload on Samsung Electronics, SK Hynix amid semiconductor rally - MSN",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNcWh6cEo3TllwWVRnMFhvZzJmUHBlZ3p0aXdDOEQzVzJzckg3cEJ4cUVmaFMxaTZlRTM3OU9KYV9DQ294U2FqVVR6c1JkMVFRQnIyUml4S3pEa0gxUDB0bW85RllJd3FJQWhxYkZtajdLakxzZVlWVENSR0lNMTFyR0pvN3VobWJzTUprYU1oTm1BZzVoaXJhVktPY1NKS1JRMUNIUUNKdktjSGhQdW9WeWtSTlNjdFNt?oc=5",
-      "date": "Mon, 18 May 2026 00:26:37 GMT",
-      "desc": "ETF portfolios overload on Samsung Electronics, SK Hynix amid semiconductor rally&nbsp;&nbsp;MSN"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 222.32,
+      "price": 223.06,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 395.95,
+      "price": 396.07,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 420.99,
+      "price": 418.39,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 108.17,
+      "price": 110.28,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 203.64,
+      "price": 197.38,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 215.12,
+      "price": 221.66,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 396.94,
+      "price": 387.51,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 297.84,
+      "price": 297.67,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 423.54,
+      "price": 417.88,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7403.05,
+      "price": 7372.69,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26090.73,
+      "price": 25912.99,
       "change": 0.0,
       "pct": 0.0
     }
@@ -208,10 +208,10 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1508.12,
+      "price": 1505.38,
       "change": 0.0,
       "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-19 12:16 UTC"
+  "updatedAt": "2026-05-19 16:44 UTC"
 }
