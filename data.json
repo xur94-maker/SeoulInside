@@ -3,19 +3,25 @@
   "wordpressNewsUrl": "https://seoulinside.wordpress.com/2026/05/18/news/",
   "globalNews": [
     {
-      "title": "Xi basks in spotlight as he hosts Putin days after Trump",
-      "link": "https://www.bbc.com/news/articles/cjep12qx3xjo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 20 May 2026 11:42:44 GMT",
-      "desc": "Two presidential visits days apart is how Xi Jinping wants the world to see him: talking to everyone, tied to no-one."
+      "title": "US charges Cuba's Raúl Castro with murder over 1996 downing of two planes",
+      "link": "https://www.bbc.com/news/articles/c3r219yxl5eo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 20 May 2026 20:11:02 GMT",
+      "desc": "Castro and five others are charged with conspiracy to kill US nationals, murder, and destruction of aircraft"
+    },
+    {
+      "title": "Rosenberg: Putin enjoys Xi's Chinese welcome but heads home without pipeline deal",
+      "link": "https://www.bbc.com/news/articles/c8r8me3nlllo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 20 May 2026 16:34:40 GMT",
+      "desc": "Russia and China showed they were shoulder-to-shoulder on the world stage, but it became clear there are limits, says the BBC's Russia Editor."
     },
     {
       "title": "Far-right Israeli minister condemned for taunting handcuffed Gaza flotilla activists",
       "link": "https://www.bbc.com/news/articles/clyp32weyn8o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 20 May 2026 16:02:37 GMT",
+      "date": "Wed, 20 May 2026 20:17:51 GMT",
       "desc": "France and Italy are among the countries that have criticised a video showing Itamar Ben-Gvir taunting dozens of activists detained at an Israeli port."
     },
     {
-      "title": "Ebola vaccine could take nine months as death toll rise further, WHO warns",
+      "title": "Ebola vaccine could take nine months as death toll rises further, WHO warns",
       "link": "https://www.bbc.com/news/articles/cwy2g197dp8o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 20 May 2026 15:18:12 GMT",
       "desc": "In its latest update, the World Health Organization says there have now been 139 suspected deaths and 600 cases."
@@ -25,12 +31,6 @@
       "link": "https://www.bbc.com/news/articles/cwy2g09yvgmo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 20 May 2026 15:44:41 GMT",
       "desc": "Isak Andic's son Jonathan denies involvement in the fatal fall of his father, who founded one of Europe's biggest clothing empires."
-    },
-    {
-      "title": "Lithuania's leaders take shelter during drone air alert",
-      "link": "https://www.bbc.com/news/articles/c9d3vpqqqpeo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 20 May 2026 10:53:19 GMT",
-      "desc": "Flights were suspended and people were urged to take shelter after a suspected drone was detected near the Belarus border."
     }
   ],
   "koreaNews": [
@@ -41,21 +41,21 @@
       "desc": "Energy Shock and Economic Resilience: South Korea and the Iran War&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "Why are nearly 50,000 Samsung workers about to strike in South Korea? - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPUU9LWXJxWEs1Z0J2RmpKWTVnQ1hhV3IwcmNLYzFXb3RVeDN0bGJ2djlvdzE1RS1PU3JINHpTSGhMUzY0MGdhcC1mWGxvOU1iT2EzYzRUdUNZbVZldXBqeWxwUGVOTXZXcDJXNWhPSlVrVWpWektnUUtFYnF1eTNHOXhHVmlEVV8wMjNFZDJfQUl1MVZOOEQtaGlXdDQydm1ud05YU2ZrOGpndk520gGyAUFVX3lxTE1ySHpFNDE3NmFrM05yLVlMLUlRUEhnaXlJVTAtc21FTGZFcWR3RTFnZEpXZWV5anJyWjVFbWJTS2xycWhSaWNnNDNpdWJ1RUpuQzRwazdvajZvOTZTN1dXaFVaQk9WanlYemtXM0dIQTZMUjBNeVV3VDh3Q1k2RGV2NWJ5Tmg5UlVZTXVRRmVDN2pSb0N3WmhaUDg5QzUtczg3YTJFRVpRSUpPOHRneWRselE?oc=5",
-      "date": "Wed, 20 May 2026 11:43:21 GMT",
-      "desc": "Why are nearly 50,000 Samsung workers about to strike in South Korea?&nbsp;&nbsp;Al Jazeera"
+      "title": "North Korea - Economy, Resources, Trade - Britannica",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
+      "date": "Mon, 18 May 2026 05:00:00 GMT",
+      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
     },
     {
-      "title": "Nobel Economist Warns South Korea of 'Demographic Suicide' and Urges Immigration Expansion - 조선일보",
+      "title": "Nobel Economist Warns South Korea Faces 'Demographic Suicide' - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQR0xqVkplemVJWUZEckZsUmdJQXBMVlhfdVVvTHc1YUQwUTRnbEVkMWtRTUp0RUNNR1dMSkQ2WF9yWnZNRjNwXzMzRDdrX0xCcnVSQ0hFdk1VWXBFZnowMGR4ZDlsRUhtLU1NcV9OVy1GVDNWSWZJb1VpYUZsU2k5SEI5Wk9nU1pwM3hGZVZn?oc=5",
-      "date": "Wed, 20 May 2026 15:35:12 GMT",
-      "desc": "Nobel Economist Warns South Korea of 'Demographic Suicide' and Urges Immigration Expansion&nbsp;&nbsp;조선일보"
+      "date": "Wed, 20 May 2026 18:30:43 GMT",
+      "desc": "Nobel Economist Warns South Korea Faces 'Demographic Suicide'&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Explainer: South Korea weighs emergency step to blunt blow from Samsung strike - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQaFhlWE9sQk5aRHB6cklTYXZpMVREdHlkNDRpQm42NHFMeXV3azVXSlFXWUxreHR3YUtVRzBYSlpfaThtZXZFdXlMQVZhN3RZa2lTOHpYWER1endIQ3N3VlhiS1FNQ2RicmR4Q2ZCei1aaWV2SkpsY1VwNjdTM1RiVHdxRzFnOFhaTGVHUU4zZmxyOXplMVhtemFyWmhpOHFEeGZKOHh5WEpLNXlwZWN6WWVEdEJDa1dKYVE?oc=5",
-      "date": "Wed, 20 May 2026 06:58:07 GMT",
+      "date": "Wed, 20 May 2026 06:56:00 GMT",
       "desc": "Explainer: South Korea weighs emergency step to blunt blow from Samsung strike&nbsp;&nbsp;Reuters"
     },
     {
@@ -71,93 +71,93 @@
       "desc": "Nvidia Outlook Set to Test Samsung, SK Hynix Chip Rally&nbsp;&nbsp;bloomingbit"
     },
     {
-      "title": "Samsung, SK Hynix Employees Choose Bonuses Over Training - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQZkhLNllkWTQyR3RGQ3BSdEp4S0E4bU1lbUJBOHJwajRNLVJPWmU5Njd5OHM3RlVOWmF6V2YwcjVOeURTQWdXR3E5aXY4SW5qVEs1b01xLTlhc195YjUtSm9peVJiOG9za2xIcU5yeXNkMmthQjBjbzRrcUFrOFlJMDBQVWdwVVkz?oc=5",
-      "date": "Tue, 19 May 2026 23:02:03 GMT",
-      "desc": "Samsung, SK Hynix Employees Choose Bonuses Over Training&nbsp;&nbsp;조선일보"
-    },
-    {
       "title": "Samsung, SK Hynix face chipmaking chemical squeeze as China feedstock costs surge - digitimes",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOeENQaUh0a1BFakpHNWJ1RzNEQW1oRDJEaFNsYkF1Ri1FQmpSQkV3Qzd4MTY2ZFJzSFQzZTFuU2tGY2hSZEZ0S0VuRXR0ZjhlSWZibTBuWThydUJFazRJeDcwVlItbVNQTmxOVkZvVV91WjdJZkxiX0cwNmpjNHRaUHN3Qk9PZVJOeDFLODYxZkpUMU1zLWZRTE53?oc=5",
       "date": "Mon, 18 May 2026 22:54:11 GMT",
       "desc": "Samsung, SK Hynix face chipmaking chemical squeeze as China feedstock costs surge&nbsp;&nbsp;digitimes"
+    },
+    {
+      "title": "Samsung, SK Hynix lead electronic component wages toward 10 million KRW mark - MSN",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOZE11Sl9leGN2NmtGclNfZVJEWmZnQUxWRGlpbHZSMENPbmtXZmJleENjNVpmTW14OFExSDhhM2xPaXRQMDYxejh6TmFqMlNyUFlIVW1wTGtIM2pVa0RpcndHZnQzM2pRWWREQ3pRR1RRbGtrZXZMNFNaaHk5cjhKaGtyei1aMV9HTmYzQXowRzM5UTVXNzZmZ2VwamJJSjNZeGl4RHpfMVhIZWFSbVd5QjRHcDlzNEFqYTFRcFBZVUk3UQ?oc=5",
+      "date": "Sun, 17 May 2026 12:07:36 GMT",
+      "desc": "Samsung, SK Hynix lead electronic component wages toward 10 million KRW mark&nbsp;&nbsp;MSN"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 224.75,
+      "price": 223.47,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 401.24,
+      "price": 401.62,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 444.81,
+      "price": 447.58,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 116.13,
+      "price": 118.96,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 200.94,
+      "price": 202.51,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 255.39,
+      "price": 256.73,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 385.36,
+      "price": 388.91,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 300.11,
+      "price": 302.25,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 417.79,
+      "price": 421.06,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7416.58,
+      "price": 7432.97,
       "change": 0.0,
       "pct": 0.0
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26184.6,
+      "price": 26270.36,
       "change": 0.0,
       "pct": 0.0
     }
@@ -208,10 +208,10 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1495.68,
+      "price": 1496.45,
       "change": 0.0,
       "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-20 16:45 UTC"
+  "updatedAt": "2026-05-20 23:08 UTC"
 }
