@@ -73,28 +73,45 @@ def fetch_medium_rss(medium_user, max_items=8):
     return items
 
 def fetch_stock(symbol, label, currency='USD'):
+    """주식 데이터 가져오기 (등락률, 시총 포함)"""
     try:
-        url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=1d'
+        # 차트 데이터로 가격 + 변동률 가져오기
+        url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=2d'
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=15) as r:
             d = json.loads(r.read())
-        meta = d['chart']['result'][0]['meta']
+        
+        result = d['chart']['result'][0]
+        meta = result['meta']
         price = meta.get('regularMarketPrice', 0)
         prev = meta.get('previousClose', price)
+        
+        # 등락률 계산
         change = price - prev
         pct = (change / prev * 100) if prev else 0
+        
+        # 시가총액 가져오기
         cap_t = None
         try:
-            url2 = f'https://query1.finance.yahoo.com/v10/finance/quoteSummary/{symbol}?modules=summaryDetail'
+            url2 = f'https://query1.finance.yahoo.com/v10/finance/quoteSummary/{symbol}?modules=price'
             req2 = urllib.request.Request(url2, headers={"User-Agent": "Mozilla/5.0"})
             with urllib.request.urlopen(req2, timeout=15) as r2:
                 d2 = json.loads(r2.read())
-            cap_raw = d2['quoteSummary']['result'][0]['summaryDetail'].get('marketCap', {}).get('raw', None)
+            cap_raw = d2['quoteSummary']['result'][0]['price'].get('marketCap', {}).get('raw', None)
             if cap_raw:
-                cap_t = round(cap_raw / 1_000_000_000_000, 2)
+                cap_t = round(cap_raw / 1_000_000_000_000, 2)  # 조 단위
         except:
             pass
-        return {'symbol': symbol, 'label': label, 'currency': currency, 'price': round(price, 2), 'change': round(change, 2), 'pct': round(pct, 2), 'capT': cap_t}
+        
+        return {
+            'symbol': symbol,
+            'label': label,
+            'currency': currency,
+            'price': round(price, 2),
+            'change': round(change, 2),
+            'pct': round(pct, 2),
+            'capT': cap_t
+        }
     except Exception as e:
         print(f'Stock error ({symbol}): {e}')
         return {'symbol': symbol, 'label': label, 'currency': currency, 'price': 0, 'change': 0, 'pct': 0, 'capT': None}
@@ -102,25 +119,25 @@ def fetch_stock(symbol, label, currency='USD'):
 print('=== SeoulInside Data Collection Start ===')
 data = {}
 
-print('[1/4] Fetching Substack posts...')
+print('[1/5] Fetching Substack posts...')
 substack_posts, latest_post = fetch_substack_posts('https://seoulinside.substack.com', max_items=10)
 data['myPosts'] = substack_posts
 if latest_post:
     data['latestPost'] = latest_post
 print(f'  Substack: {len(data["myPosts"])} items')
 
-print('[2/4] Fetching Medium posts...')
+print('[2/5] Fetching Medium posts...')
 medium_posts = fetch_medium_rss('Seoulinside', max_items=8)
 data['mediumPosts'] = medium_posts
 print(f'  Medium: {len(data["mediumPosts"])} items')
 
-print('[3/4] Fetching global news...')
+print('[3/5] Fetching global news...')
 global_news = fetch_rss('https://feeds.bbci.co.uk/news/world/rss.xml', max_items=5)
 global_news += fetch_rss('https://rss.nytimes.com/services/xml/rss/nyt/World.xml', max_items=4)
 data['globalNews'] = global_news[:8]
 print(f'  Global: {len(data["globalNews"])} items')
 
-print('[4/4] Fetching Korea news...')
+print('[4/5] Fetching Korea news...')
 korea_news = fetch_rss('https://news.google.com/rss/search?q=South+Korea+economy&hl=en&gl=US&ceid=US:en', max_items=5)
 korea_news += fetch_rss('https://news.google.com/rss/search?q=Samsung+SK+Hynix+semiconductor&hl=en&gl=US&ceid=US:en', max_items=5)
 data['koreaNews'] = korea_news[:8]
@@ -128,17 +145,25 @@ print(f'  Korea: {len(data["koreaNews"])} items')
 
 print('[5/5] Fetching stocks...')
 data['worldStocks'] = [
-    fetch_stock('NVDA', 'NVIDIA', 'USD'), fetch_stock('TSM', 'TSMC', 'USD'),
-    fetch_stock('AMD', 'AMD', 'USD'), fetch_stock('INTC', 'Intel', 'USD'),
-    fetch_stock('QCOM', 'Qualcomm', 'USD'), fetch_stock('ARM', 'ARM', 'USD'),
-    fetch_stock('GOOGL', 'Google', 'USD'), fetch_stock('AAPL', 'Apple', 'USD'),
-    fetch_stock('MSFT', 'Microsoft', 'USD'), fetch_stock('^GSPC', 'S&P 500', 'USD'),
+    fetch_stock('NVDA', 'NVIDIA', 'USD'),
+    fetch_stock('TSM', 'TSMC', 'USD'),
+    fetch_stock('AMD', 'AMD', 'USD'),
+    fetch_stock('INTC', 'Intel', 'USD'),
+    fetch_stock('QCOM', 'Qualcomm', 'USD'),
+    fetch_stock('ARM', 'ARM', 'USD'),
+    fetch_stock('GOOGL', 'Google', 'USD'),
+    fetch_stock('AAPL', 'Apple', 'USD'),
+    fetch_stock('MSFT', 'Microsoft', 'USD'),
+    fetch_stock('^GSPC', 'S&P 500', 'USD'),
     fetch_stock('^IXIC', 'NASDAQ', 'USD')
 ]
 data['koreaStocks'] = [
-    fetch_stock('005930.KS', 'Samsung', 'KRW'), fetch_stock('000660.KS', 'SK Hynix', 'KRW'),
-    fetch_stock('005380.KS', 'Hyundai', 'KRW'), fetch_stock('000270.KS', 'Kia', 'KRW'),
-    fetch_stock('035420.KS', 'NAVER', 'KRW'), fetch_stock('^KS11', 'KOSPI', 'KRW'),
+    fetch_stock('005930.KS', 'Samsung', 'KRW'),
+    fetch_stock('000660.KS', 'SK Hynix', 'KRW'),
+    fetch_stock('005380.KS', 'Hyundai Motor', 'KRW'),
+    fetch_stock('000270.KS', 'Kia', 'KRW'),
+    fetch_stock('035420.KS', 'NAVER', 'KRW'),
+    fetch_stock('^KS11', 'KOSPI', 'KRW'),
     fetch_stock('USDKRW=X', 'USD/KRW', 'FX')
 ]
 
