@@ -144,23 +144,44 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 5px 0;
+  padding: 6px 0;
   border-bottom: 1px dotted var(--rule);
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.78rem;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 .stock-row:last-child { border-bottom: none; }
-.stock-label { color: var(--ink); font-weight: 500; }
-.stock-price { color: var(--mid); }
+.stock-label {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.stock-label:hover { color: var(--accent); text-decoration: underline; }
+.stock-right {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.stock-price { color: var(--mid); font-weight: 500; }
+.stock-change { font-weight: 500; margin-left: 0rem; }
+.stock-change.up { color: var(--up); }
+.stock-change.down { color: var(--down); }
 .stock-cap {
   font-size: 0.68rem;
   color: var(--gold);
-  margin-left: 6px;
   font-weight: 500;
+  background: rgba(184, 134, 11, 0.08);
+  padding: 2px 6px;
+  border-radius: 12px;
+  letter-spacing: 0.3px;
 }
 .divider-row {
   border-top: 1px solid var(--rule);
-  margin: 0.7rem 0;
+  margin: 0.7rem 0 0.3rem;
   font-size: 0.6rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -267,7 +288,6 @@ footer {
 }
 .read-more-link:hover { background: var(--accent); }
 
-/* Medium 섹션 스타일 - Substack과 동일한 스타일 유지 */
 .medium-section {
   border-top: 1px solid var(--rule);
   margin-top: 1rem;
@@ -315,13 +335,11 @@ footer {
   </div>
 </div>
 
-<!-- Substack 최신글 (풀버전) -->
 <div class="latest-post-section">
   <div class="section-label">✍ Latest from Substack</div>
   <div id="latest-post"><div class="loading">Loading latest post…</div></div>
 </div>
 
-<!-- Medium 섹션 (추가됨) -->
 <div class="latest-post-section medium-section">
   <div class="section-label">📝 Medium / Seoul Inside</div>
   <div id="medium-posts"><div class="loading">Loading Medium posts…</div></div>
@@ -338,18 +356,14 @@ document.getElementById('today-date').textContent =
   now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
 function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined, {maximumFractionDigits:2}) : '—'; }
-function fmtCap(capT, currency) {
-  if (!capT) return '';
-  if (currency === 'KRW') return `₩${capT}T`;
-  if (currency === 'FX' || currency === 'IDX') return '';
-  return `$${capT}T`;
-}
 
 function renderTicker(worlds, koreas) {
   const all = [...worlds, ...koreas];
   const html = all.map(s => {
-    const capStr = fmtCap(s.capT, s.currency);
-    return `<span><b>${s.label}</b> ${fmtPrice(s.price)}${capStr ? ' · ' + capStr : ''}</span>`;
+    const capStr = s.capT ? (s.currency === 'KRW' ? `₩${s.capT.toFixed(1)}T` : (s.currency === 'USD' && s.symbol !== '^GSPC' && s.symbol !== '^IXIC' ? `$${s.capT.toFixed(1)}T` : '')) : '';
+    const pctClass = s.pct >= 0 ? 'up' : 'down';
+    const pctSign = s.pct >= 0 ? '+' : '';
+    return `<span><b>${s.label}</b> ${fmtPrice(s.price)} ${capStr ? '· ' + capStr : ''} <span class="${pctClass}">${pctSign}${s.pct}%</span></span>`;
   }).join('');
   document.getElementById('ticker').innerHTML = html + html;
 }
@@ -382,20 +396,37 @@ function renderMediumPosts(posts) {
 }
 
 function renderStocks(worlds, koreas) {
-  const rows = (arr) => arr.map(s => {
-    const capStr = fmtCap(s.capT, s.currency);
-    return `<div class="stock-row">
-      <span class="stock-label">${s.label}</span>
-      <span>
-        <span class="stock-price">${fmtPrice(s.price)}</span>
-        ${capStr ? `<span class="stock-cap">${capStr}</span>` : ''}
-      </span>
-    </div>`;
-  }).join('');
-  document.getElementById('stocks').innerHTML =
-    rows(worlds) +
-    `<div class="divider-row">Korea</div>` +
-    rows(koreas);
+  const renderRows = (arr, isKorea = false) => {
+    return arr.map(s => {
+      let capText = '';
+      // 지수(^KS11, ^GSPC, ^IXIC)나 환율(FX)은 시총 제외
+      const isIndex = s.symbol === '^KS11' || s.symbol === '^GSPC' || s.symbol === '^IXIC';
+      const isFX = s.currency === 'FX';
+      if (s.capT && !isIndex && !isFX) {
+        if (s.currency === 'KRW') capText = `₩${s.capT.toFixed(1)}T`;
+        else if (s.currency === 'USD') capText = `$${s.capT.toFixed(1)}T`;
+      }
+      
+      const pctClass = s.pct >= 0 ? 'up' : 'down';
+      const pctSign = s.pct >= 0 ? '+' : '';
+      const yahooUrl = `https://finance.yahoo.com/quote/${s.symbol}`;
+      
+      return `
+        <div class="stock-row">
+          <a href="${yahooUrl}" target="_blank" rel="noopener" class="stock-label">${s.label}</a>
+          <div class="stock-right">
+            <span class="stock-price">${fmtPrice(s.price)}</span>
+            <span class="stock-change ${pctClass}">${pctSign}${s.pct}%</span>
+            ${capText ? `<span class="stock-cap">${capText}</span>` : ''}
+          </div>
+        </div>
+      `;
+    }).join('');
+  };
+  
+  const worldHtml = renderRows(worlds);
+  const koreaHtml = koreas.length ? `<div class="divider-row">🇰🇷 Korea</div>${renderRows(koreas)}` : '';
+  document.getElementById('stocks').innerHTML = worldHtml + koreaHtml;
 }
 
 function renderNews(items, targetId) {
