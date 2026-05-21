@@ -33,7 +33,7 @@ def fetch_rss(url, max_items=8):
         print(f'RSS error: {e}')
         return []
 
-def fetch_substack_posts(substack_url='https://seoulinside.substack.com', max_items=10):
+def fetch_substack_posts(substack_url='https://seoulinside.substack.com', max_items=10, full_archive=False):
     try:
         feed_url = f'{substack_url}/feed'
         req = urllib.request.Request(feed_url, headers={"User-Agent": "Mozilla/5.0"})
@@ -43,6 +43,8 @@ def fetch_substack_posts(substack_url='https://seoulinside.substack.com', max_it
         root = ET.fromstring(raw)
         items = []
         latest = None
+        # max_items를 크게 늘려서 아카이브용 전체 글 수집 (예: 30개)
+        limit = 60 if full_archive else max_items
         for i, item in enumerate(root.iter('item')):
             title = (item.findtext('title') or '').strip()
             link = (item.findtext('link') or '').strip()
@@ -53,7 +55,7 @@ def fetch_substack_posts(substack_url='https://seoulinside.substack.com', max_it
                 items.append(post)
                 if i == 0:
                     latest = post
-            if len(items) >= max_items:
+            if len(items) >= limit:
                 break
         return items, latest
     except Exception as e:
@@ -73,9 +75,7 @@ def fetch_medium_rss(medium_user, max_items=8):
     return items
 
 def fetch_stock(symbol, label, currency='USD'):
-    """주식 데이터 가져오기 (등락률, 시총 포함)"""
     try:
-        # 차트 데이터로 가격 + 변동률 가져오기
         url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=2d'
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=15) as r:
@@ -86,11 +86,9 @@ def fetch_stock(symbol, label, currency='USD'):
         price = meta.get('regularMarketPrice', 0)
         prev = meta.get('previousClose', price)
         
-        # 등락률 계산
         change = price - prev
         pct = (change / prev * 100) if prev else 0
         
-        # 시가총액 가져오기
         cap_t = None
         try:
             url2 = f'https://query1.finance.yahoo.com/v10/finance/quoteSummary/{symbol}?modules=price'
@@ -99,7 +97,7 @@ def fetch_stock(symbol, label, currency='USD'):
                 d2 = json.loads(r2.read())
             cap_raw = d2['quoteSummary']['result'][0]['price'].get('marketCap', {}).get('raw', None)
             if cap_raw:
-                cap_t = round(cap_raw / 1_000_000_000_000, 2)  # 조 단위
+                cap_t = round(cap_raw / 1_000_000_000_000, 2)
         except:
             pass
         
@@ -119,30 +117,39 @@ def fetch_stock(symbol, label, currency='USD'):
 print('=== SeoulInside Data Collection Start ===')
 data = {}
 
+# 1. Substack: 일반용 10개 + 아카이브용 전체 (최대 60개)
 print('[1/5] Fetching Substack posts...')
-substack_posts, latest_post = fetch_substack_posts('https://seoulinside.substack.com', max_items=10)
-data['myPosts'] = substack_posts
+substack_posts_limited, latest_post = fetch_substack_posts('https://seoulinside.substack.com', max_items=10, full_archive=False)
+substack_posts_full, _ = fetch_substack_posts('https://seoulinside.substack.com', max_items=60, full_archive=True)
+
+data['myPosts'] = substack_posts_limited
+data['substackArchive'] = substack_posts_full   # ← 아카이브용 전체 목록 추가!
 if latest_post:
     data['latestPost'] = latest_post
-print(f'  Substack: {len(data["myPosts"])} items')
+print(f'  Substack (main): {len(data["myPosts"])} items')
+print(f'  Substack (archive full): {len(data["substackArchive"])} items')
 
+# 2. Medium
 print('[2/5] Fetching Medium posts...')
 medium_posts = fetch_medium_rss('Seoulinside', max_items=8)
 data['mediumPosts'] = medium_posts
 print(f'  Medium: {len(data["mediumPosts"])} items')
 
+# 3. 글로벌 뉴스
 print('[3/5] Fetching global news...')
 global_news = fetch_rss('https://feeds.bbci.co.uk/news/world/rss.xml', max_items=5)
 global_news += fetch_rss('https://rss.nytimes.com/services/xml/rss/nyt/World.xml', max_items=4)
 data['globalNews'] = global_news[:8]
 print(f'  Global: {len(data["globalNews"])} items')
 
+# 4. 한국 뉴스
 print('[4/5] Fetching Korea news...')
 korea_news = fetch_rss('https://news.google.com/rss/search?q=South+Korea+economy&hl=en&gl=US&ceid=US:en', max_items=5)
 korea_news += fetch_rss('https://news.google.com/rss/search?q=Samsung+SK+Hynix+semiconductor&hl=en&gl=US&ceid=US:en', max_items=5)
 data['koreaNews'] = korea_news[:8]
 print(f'  Korea: {len(data["koreaNews"])} items')
 
+# 5. 주식
 print('[5/5] Fetching stocks...')
 data['worldStocks'] = [
     fetch_stock('NVDA', 'NVIDIA', 'USD'),
@@ -172,4 +179,4 @@ data['updatedAt'] = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
 with open('data.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
-print(f'\n✅ Done! Substack: {len(data["myPosts"])}, Medium: {len(data["mediumPosts"])}, Global: {len(data["globalNews"])}, Korea: {len(data["koreaNews"])}')
+print(f'\n✅ Done! Substack main: {len(data["myPosts"])}, Archive: {len(data.get("substackArchive", []))}, Medium: {len(data["mediumPosts"])}, Global: {len(data["globalNews"])}, Korea: {len(data["koreaNews"])}')
