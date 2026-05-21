@@ -62,6 +62,15 @@ header {
   color: var(--mid);
   margin-top: 4px;
 }
+.masthead .tagline a {
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.masthead .tagline a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
 .header-meta {
   text-align: right;
   font-size: 0.72rem;
@@ -93,6 +102,90 @@ header {
   font-family: 'IBM Plex Mono', monospace;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.dateline a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--mid);
+}
+.dateline a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* 새로운 2단 아카이브 레이아웃 */
+.archive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+  margin-top: 0;
+}
+.archive-col {
+  padding: 1.4rem 1.5rem;
+  border-right: 1px solid var(--rule);
+}
+.archive-col:last-child {
+  border-right: none;
+}
+@media (max-width: 700px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+  .archive-col {
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .archive-col:last-child {
+    border-bottom: none;
+  }
+}
+.archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.archive-item {
+  padding: 0.7rem 0;
+  border-bottom: 1px dotted var(--rule);
+}
+.archive-item:last-child {
+  border-bottom: none;
+}
+.archive-item a {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.35;
+  display: block;
+}
+.archive-item a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.archive-item .archive-date {
+  font-size: 0.62rem;
+  color: var(--mid);
+  font-family: 'IBM Plex Mono', monospace;
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+}
+.view-all-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  letter-spacing: 0.5px;
+}
+.view-all-link:hover {
+  opacity: 0.8;
 }
 
 .grid {
@@ -224,12 +317,14 @@ footer {
   font-family: 'IBM Plex Mono', monospace;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .latest-post-section {
   border-top: 3px double var(--ink);
-  padding: 2.5rem 2rem;
-  max-width: 860px;
+  padding: 2rem 2rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 .latest-post-section .section-label {
@@ -240,11 +335,11 @@ footer {
   font-weight: 500;
   border-bottom: 1px solid var(--accent);
   padding-bottom: 4px;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.4rem;
 }
 .latest-post-section h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.3rem, 3vw, 2rem);
   font-weight: 700;
   line-height: 1.25;
   margin-bottom: 0.4rem;
@@ -255,33 +350,33 @@ footer {
   font-size: 0.68rem;
   font-family: 'IBM Plex Mono', monospace;
   color: var(--mid);
-  margin-bottom: 1.8rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--rule);
 }
-.latest-post-body { font-size: 1rem; line-height: 1.85; color: var(--ink); }
-.latest-post-body p { margin-bottom: 1.1rem; }
+.latest-post-body { font-size: 1rem; line-height: 1.7; color: var(--ink); max-height: 400px; overflow-y: auto; }
+.latest-post-body p { margin-bottom: 1rem; }
 .latest-post-body h1, .latest-post-body h2, .latest-post-body h3 {
   font-family: 'Playfair Display', serif;
-  margin: 1.6rem 0 0.6rem;
+  margin: 1.4rem 0 0.5rem;
 }
 .latest-post-body a { color: var(--accent); }
-.latest-post-body img { max-width: 100%; border-radius: 2px; margin: 1rem 0; }
+.latest-post-body img { max-width: 100%; border-radius: 2px; margin: 0.8rem 0; }
 .latest-post-body blockquote {
   border-left: 3px solid var(--accent);
   padding-left: 1rem;
   color: var(--mid);
   font-style: italic;
-  margin: 1rem 0;
+  margin: 0.8rem 0;
 }
 .read-more-link {
   display: inline-block;
-  margin-top: 1.6rem;
-  padding: 8px 20px;
+  margin-top: 1.2rem;
+  padding: 6px 18px;
   background: var(--ink);
   color: var(--paper);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-decoration: none;
   transition: background 0.2s;
@@ -290,7 +385,7 @@ footer {
 
 .medium-section {
   border-top: 1px solid var(--rule);
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 </style>
 </head>
@@ -303,7 +398,12 @@ footer {
 <header>
   <div class="masthead">
     <h1>Seoul <span>Inside</span></h1>
-    <div class="tagline">   <a href="https://medium.com/@Seoulinside/news1-fb946ec27af9" target="_blank" rel="noopener">Korea</a> ·    <a href="https://seoulinside.wordpress.com/2026/05/18/news/" target="_blank" rel="noopener">Markets</a> ·    <a href="link1.html" target="_blank">Analysis</a> ·    <a href="link2.html" target="_blank">English</a> </div>
+    <div class="tagline">
+      <a href="https://en.wikipedia.org/wiki/Korea" target="_blank" rel="noopener">Korea</a> · 
+      <a href="https://finance.yahoo.com/markets" target="_blank" rel="noopener">Markets</a> · 
+      <a href="link1.html" target="_blank">Analysis</a> · 
+      <a href="link2.html" target="_blank">English</a>
+    </div>
   </div>
   <div class="header-meta">
     <div id="updated-at">Loading…</div>
@@ -313,7 +413,10 @@ footer {
 
 <div class="dateline">
   <span id="today-date"></span>
-  <span>   <a href="https://seoulinside.substack.com" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; border-bottom: 1px dotted var(--mid);">seoulinside.substack.com</a>   ·    <a href="https://medium.com/@Seoulinside" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; border-bottom: 1px dotted var(--mid);">medium.com/@Seoulinside</a> </span>
+  <span>
+    <a href="https://seoulinside.substack.com" target="_blank" rel="noopener">seoulinside.substack.com</a> · 
+    <a href="https://medium.com/@Seoulinside" target="_blank" rel="noopener">medium.com/@Seoulinside</a>
+  </span>
 </div>
 
 <div class="grid">
@@ -335,6 +438,24 @@ footer {
   </div>
 </div>
 
+<!-- NEW: TWO AUTO-STACKING ARCHIVE SECTIONS (Archive left / Notes right) -->
+<div class="archive-grid">
+  <div class="archive-col">
+    <div class="section-label">📚 Substack Archive (auto)</div>
+    <div id="substack-archive-list" class="archive-list">
+      <div class="loading">Loading archive…</div>
+    </div>
+    <a href="https://seoulinside.substack.com/archive" target="_blank" class="view-all-link">→ View full archive</a>
+  </div>
+  <div class="archive-col">
+    <div class="section-label">📝 Notes / Posts (auto)</div>
+    <div id="notes-list" class="archive-list">
+      <div class="loading">Loading notes…</div>
+    </div>
+    <a href="https://seoulinside.substack.com/notes" target="_blank" class="view-all-link">→ All notes</a>
+  </div>
+</div>
+
 <div class="latest-post-section">
   <div class="section-label">✍ Latest from Substack</div>
   <div id="latest-post"><div class="loading">Loading latest post…</div></div>
@@ -352,8 +473,7 @@ footer {
 
 <script>
 const now = new Date();
-document.getElementById('today-date').textContent =
-  now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+document.getElementById('today-date').textContent = now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
 function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined, {maximumFractionDigits:2}) : '—'; }
 
@@ -396,21 +516,17 @@ function renderMediumPosts(posts) {
 }
 
 function renderStocks(worlds, koreas) {
-  const renderRows = (arr, isKorea = false) => {
-    return arr.map(s => {
+  const renderRows = (arr) => arr.map(s => {
       let capText = '';
-      // 지수(^KS11, ^GSPC, ^IXIC)나 환율(FX)은 시총 제외
       const isIndex = s.symbol === '^KS11' || s.symbol === '^GSPC' || s.symbol === '^IXIC';
       const isFX = s.currency === 'FX';
       if (s.capT && !isIndex && !isFX) {
         if (s.currency === 'KRW') capText = `₩${s.capT.toFixed(1)}T`;
         else if (s.currency === 'USD') capText = `$${s.capT.toFixed(1)}T`;
       }
-      
       const pctClass = s.pct >= 0 ? 'up' : 'down';
       const pctSign = s.pct >= 0 ? '+' : '';
       const yahooUrl = `https://finance.yahoo.com/quote/${s.symbol}`;
-      
       return `
         <div class="stock-row">
           <a href="${yahooUrl}" target="_blank" rel="noopener" class="stock-label">${s.label}</a>
@@ -422,8 +538,6 @@ function renderStocks(worlds, koreas) {
         </div>
       `;
     }).join('');
-  };
-  
   const worldHtml = renderRows(worlds);
   const koreaHtml = koreas.length ? `<div class="divider-row">🇰🇷 Korea</div>${renderRows(koreas)}` : '';
   document.getElementById('stocks').innerHTML = worldHtml + koreaHtml;
@@ -442,6 +556,36 @@ function renderNews(items, targetId) {
   `).join('');
 }
 
+// 자동 적층: Substack Archive (전체 글 목록) + Notes (최근 포스트/노트)
+function renderArchiveAndNotes(myPosts, notesPosts) {
+  // 왼쪽: Substack Archive (myPosts 전체 → 최대 15개)
+  const archiveContainer = document.getElementById('substack-archive-list');
+  if (myPosts && myPosts.length) {
+    archiveContainer.innerHTML = myPosts.slice(0, 15).map(p => `
+      <div class="archive-item">
+        <a href="${p.link}" target="_blank" rel="noopener">${p.title}</a>
+        <div class="archive-date">${p.date ? p.date.slice(0,16) : ''}</div>
+      </div>
+    `).join('');
+  } else {
+    archiveContainer.innerHTML = '<div class="loading">No archive yet.</div>';
+  }
+
+  // 오른쪽: Notes (일단 Substack의 최신 글을 재활용, 또는 Medium 최신으로 대체 가능)
+  const notesContainer = document.getElementById('notes-list');
+  const notesSource = notesPosts && notesPosts.length ? notesPosts : (myPosts || []).slice(0, 10);
+  if (notesSource && notesSource.length) {
+    notesContainer.innerHTML = notesSource.slice(0, 12).map(n => `
+      <div class="archive-item">
+        <a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>
+        <div class="archive-date">${n.date ? n.date.slice(0,16) : ''}</div>
+      </div>
+    `).join('');
+  } else {
+    notesContainer.innerHTML = '<div class="loading">No notes yet.</div>';
+  }
+}
+
 async function loadData() {
   try {
     const res = await fetch('data.json?t=' + Date.now());
@@ -455,6 +599,9 @@ async function loadData() {
     renderNews(data.globalNews || [], 'global-news');
     renderNews(data.koreaNews || [], 'korea-news');
 
+    // 핵심: 자동 적층 (Archive + Notes)
+    renderArchiveAndNotes(data.myPosts || [], data.mediumPosts || []);
+
     const lp = data.latestPost;
     if (lp && lp.body) {
       document.getElementById('latest-post').innerHTML = `
@@ -464,8 +611,7 @@ async function loadData() {
         <a class="read-more-link" href="${lp.link}" target="_blank" rel="noopener">Read on Substack →</a>
       `;
     } else {
-      document.getElementById('latest-post').innerHTML =
-        '<div class="loading">Latest post not available yet.</div>';
+      document.getElementById('latest-post').innerHTML = '<div class="loading">Latest post not available yet.</div>';
     }
 
     const ts = data.updatedAt || '';
@@ -473,13 +619,12 @@ async function loadData() {
     document.getElementById('footer-updated').textContent = 'Last data update: ' + ts;
 
   } catch (e) {
-    ['my-posts', 'stocks', 'global-news', 'korea-news', 'medium-posts'].forEach(id => {
-      document.getElementById(id).innerHTML =
-        `<div class="loading">⏳ data.json 생성 전입니다.<br>GitHub Actions가 실행된 후 새로고침 해주세요.</div>`;
+    ['my-posts', 'stocks', 'global-news', 'korea-news', 'medium-posts', 'substack-archive-list', 'notes-list'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = `<div class="loading">⏳ Data not ready yet.<br>GitHub Actions will create data.json</div>`;
     });
-    document.getElementById('updated-at').textContent = '데이터 준비 중…';
-    document.getElementById('latest-post').innerHTML = 
-      '<div class="loading">⏳ 데이터 준비 중입니다. 잠시 후 새로고침 해주세요.</div>';
+    document.getElementById('updated-at').textContent = 'Waiting for data…';
+    document.getElementById('latest-post').innerHTML = '<div class="loading">⏳ Waiting for latest post...</div>';
   }
 }
 
