@@ -75,7 +75,7 @@ def fetch_wordpress_news(url):
         return ''
 
 
-def fetch_stock(symbol, label):
+def fetch_stock(symbol, label, currency='USD'):
     try:
         url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=1d'
         req = urllib.request.Request(url, headers={
@@ -84,16 +84,42 @@ def fetch_stock(symbol, label):
         })
         with urllib.request.urlopen(req, timeout=15) as r:
             d = json.loads(r.read())
-        meta   = d['chart']['result'][0]['meta']
-        price  = meta.get('regularMarketPrice', 0)
-        prev   = meta.get('previousClose', price)
-        change = price - prev
-        pct    = (change / prev * 100) if prev else 0
-        return {'symbol': symbol, 'label': label,
-                'price': round(price, 2), 'change': round(change, 2), 'pct': round(pct, 2)}
+        meta      = d['chart']['result'][0]['meta']
+        price     = meta.get('regularMarketPrice', 0)
+        prev      = meta.get('previousClose', price)
+        change    = price - prev
+        pct       = (change / prev * 100) if prev else 0
+        mkt_cap   = meta.get('regularMarketVolume', 0)  # fallback
+
+        # marketCap은 v8에 없는 경우가 많아 quoteSummary로 별도 fetch
+        cap_t = None
+        try:
+            url2 = f'https://query1.finance.yahoo.com/v10/finance/quoteSummary/{symbol}?modules=summaryDetail'
+            req2 = urllib.request.Request(url2, headers={
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Accept': 'application/json',
+            })
+            with urllib.request.urlopen(req2, timeout=15) as r2:
+                d2 = json.loads(r2.read())
+            cap_raw = d2['quoteSummary']['result'][0]['summaryDetail'].get('marketCap', {}).get('raw', None)
+            if cap_raw:
+                cap_t = round(cap_raw / 1_000_000_000_000, 2)  # → T 단위
+        except:
+            pass
+
+        return {
+            'symbol': symbol,
+            'label': label,
+            'currency': currency,
+            'price': round(price, 2),
+            'change': round(change, 2),
+            'pct': round(pct, 2),
+            'capT': cap_t,  # None이면 표시 안 함
+        }
     except Exception as e:
         print(f'  Stock error ({symbol}): {e}')
-        return {'symbol': symbol, 'label': label, 'price': 0, 'change': 0, 'pct': 0}
+        return {'symbol': symbol, 'label': label, 'currency': currency,
+                'price': 0, 'change': 0, 'pct': 0, 'capT': None}
 
 
 # ── Data Collection Start ─────────────────────────────────────────────────
@@ -124,26 +150,26 @@ print(f'  Korea: {len(data["koreaNews"])} items')
 # 4) Stocks
 print('[4/5] Fetching stock prices...')
 data['worldStocks'] = [
-    fetch_stock('NVDA',   'NVIDIA'),
-    fetch_stock('TSM',    'TSMC'),
-    fetch_stock('AMD',    'AMD'),
-    fetch_stock('INTC',   'Intel'),
-    fetch_stock('QCOM',   'Qualcomm'),
-    fetch_stock('ARM',    'ARM'),
-    fetch_stock('GOOGL',  'Google'),
-    fetch_stock('AAPL',   'Apple'),
-    fetch_stock('MSFT',   'Microsoft'),
-    fetch_stock('^GSPC',  'S&P 500'),
-    fetch_stock('^IXIC',  'NASDAQ'),
+    fetch_stock('NVDA',   'NVIDIA',    'USD'),
+    fetch_stock('TSM',    'TSMC',      'USD'),
+    fetch_stock('AMD',    'AMD',       'USD'),
+    fetch_stock('INTC',   'Intel',     'USD'),
+    fetch_stock('QCOM',   'Qualcomm',  'USD'),
+    fetch_stock('ARM',    'ARM',       'USD'),
+    fetch_stock('GOOGL',  'Google',    'USD'),
+    fetch_stock('AAPL',   'Apple',     'USD'),
+    fetch_stock('MSFT',   'Microsoft', 'USD'),
+    fetch_stock('^GSPC',  'S&P 500',   'USD'),
+    fetch_stock('^IXIC',  'NASDAQ',    'USD'),
 ]
 data['koreaStocks'] = [
-    fetch_stock('005930.KS', 'Samsung'),
-    fetch_stock('000660.KS', 'SK Hynix'),
-    fetch_stock('005380.KS', 'Hyundai'),
-    fetch_stock('000270.KS', 'Kia'),
-    fetch_stock('035420.KS', 'NAVER'),
-    fetch_stock('^KS11',     'KOSPI'),
-    fetch_stock('USDKRW=X',  'USD/KRW'),
+    fetch_stock('005930.KS', 'Samsung',  'KRW'),
+    fetch_stock('000660.KS', 'SK Hynix', 'KRW'),
+    fetch_stock('005380.KS', 'Hyundai',  'KRW'),
+    fetch_stock('000270.KS', 'Kia',      'KRW'),
+    fetch_stock('035420.KS', 'NAVER',    'KRW'),
+    fetch_stock('^KS11',     'KOSPI',    'KRW'),
+    fetch_stock('USDKRW=X',  'USD/KRW',  'FX'),
 ]
 
 # 5) Done
