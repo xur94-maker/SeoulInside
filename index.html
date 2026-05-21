@@ -140,7 +140,6 @@ header {
   margin-top: 4px;
 }
 
-/* 주식 행 */
 .stock-row {
   display: flex;
   justify-content: space-between;
@@ -267,6 +266,12 @@ footer {
   transition: background 0.2s;
 }
 .read-more-link:hover { background: var(--accent); }
+
+/* Medium 섹션 스타일 - Substack과 동일한 스타일 유지 */
+.medium-section {
+  border-top: 1px solid var(--rule);
+  margin-top: 1rem;
+}
 </style>
 </head>
 <body>
@@ -288,13 +293,13 @@ footer {
 
 <div class="dateline">
   <span id="today-date"></span>
-  <span>seoulinside.substack.com</span>
+  <span>seoulinside.substack.com · medium.com/@Seoulinside</span>
 </div>
 
 <div class="grid">
   <div class="col">
-    <div class="section-label">✍ Analysis &amp; Insight</div>
-    <div id="my-posts"><div class="loading">Loading…</div></div>
+    <div class="section-label">✍ Substack / Seoul Inside</div>
+    <div id="my-posts"><div class="loading">Loading Substack posts…</div></div>
   </div>
   <div class="col">
     <div class="section-label">📈 Markets</div>
@@ -310,9 +315,16 @@ footer {
   </div>
 </div>
 
+<!-- Substack 최신글 (풀버전) -->
 <div class="latest-post-section">
-  <div class="section-label">✍ Latest from Seoul Inside</div>
+  <div class="section-label">✍ Latest from Substack</div>
   <div id="latest-post"><div class="loading">Loading latest post…</div></div>
+</div>
+
+<!-- Medium 섹션 (추가됨) -->
+<div class="latest-post-section medium-section">
+  <div class="section-label">📝 Medium / Seoul Inside</div>
+  <div id="medium-posts"><div class="loading">Loading Medium posts…</div></div>
 </div>
 
 <footer>
@@ -326,7 +338,6 @@ document.getElementById('today-date').textContent =
   now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
 function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined, {maximumFractionDigits:2}) : '—'; }
-
 function fmtCap(capT, currency) {
   if (!capT) return '';
   if (currency === 'KRW') return `₩${capT}T`;
@@ -345,14 +356,29 @@ function renderTicker(worlds, koreas) {
 
 function renderMyPosts(posts) {
   if (!posts || !posts.length) {
-    document.getElementById('my-posts').innerHTML = '<div class="loading">No posts found.</div>';
+    document.getElementById('my-posts').innerHTML = '<div class="loading">No Substack posts found.</div>';
     return;
   }
   document.getElementById('my-posts').innerHTML = posts.map(p => `
     <div class="my-post">
       <a href="${p.link}" target="_blank" rel="noopener">${p.title}</a>
       <div class="post-date">${p.date ? p.date.slice(0,16) : ''}</div>
-    </div>`).join('');
+    </div>
+  `).join('');
+}
+
+function renderMediumPosts(posts) {
+  const container = document.getElementById('medium-posts');
+  if (!posts || !posts.length) {
+    container.innerHTML = '<div class="loading">No Medium posts found.</div>';
+    return;
+  }
+  container.innerHTML = posts.map(p => `
+    <div class="my-post">
+      <a href="${p.link}" target="_blank" rel="noopener">${p.title}</a>
+      <div class="post-date">${p.date ? p.date.slice(0,16) : ''}</div>
+    </div>
+  `).join('');
 }
 
 function renderStocks(worlds, koreas) {
@@ -366,7 +392,6 @@ function renderStocks(worlds, koreas) {
       </span>
     </div>`;
   }).join('');
-
   document.getElementById('stocks').innerHTML =
     rows(worlds) +
     `<div class="divider-row">Korea</div>` +
@@ -382,7 +407,8 @@ function renderNews(items, targetId) {
     <div class="news-item">
       <a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>
       <div class="news-src">${n.date ? n.date.slice(0,16) : ''}</div>
-    </div>`).join('');
+    </div>
+  `).join('');
 }
 
 async function loadData() {
@@ -393,6 +419,7 @@ async function loadData() {
 
     renderTicker(data.worldStocks || [], data.koreaStocks || []);
     renderMyPosts(data.myPosts || []);
+    renderMediumPosts(data.mediumPosts || []);
     renderStocks(data.worldStocks || [], data.koreaStocks || []);
     renderNews(data.globalNews || [], 'global-news');
     renderNews(data.koreaNews || [], 'korea-news');
@@ -401,7 +428,7 @@ async function loadData() {
     if (lp && lp.body) {
       document.getElementById('latest-post').innerHTML = `
         <h2><a href="${lp.link}" target="_blank" rel="noopener">${lp.title}</a></h2>
-        <div class="latest-post-meta">${lp.date ? lp.date.slice(0,16) : ''} · Seoul Inside</div>
+        <div class="latest-post-meta">${lp.date ? lp.date.slice(0,16) : ''} · Seoul Inside (Substack)</div>
         <div class="latest-post-body">${lp.body}</div>
         <a class="read-more-link" href="${lp.link}" target="_blank" rel="noopener">Read on Substack →</a>
       `;
@@ -415,11 +442,13 @@ async function loadData() {
     document.getElementById('footer-updated').textContent = 'Last data update: ' + ts;
 
   } catch (e) {
-    ['my-posts','stocks','global-news','korea-news'].forEach(id => {
+    ['my-posts', 'stocks', 'global-news', 'korea-news', 'medium-posts'].forEach(id => {
       document.getElementById(id).innerHTML =
         `<div class="loading">⏳ data.json 생성 전입니다.<br>GitHub Actions가 실행된 후 새로고침 해주세요.</div>`;
     });
     document.getElementById('updated-at').textContent = '데이터 준비 중…';
+    document.getElementById('latest-post').innerHTML = 
+      '<div class="loading">⏳ 데이터 준비 중입니다. 잠시 후 새로고침 해주세요.</div>';
   }
 }
 
