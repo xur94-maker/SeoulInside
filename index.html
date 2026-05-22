@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Seoul Inside</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- marked.js: 마크다운 → HTML 변환 라이브러리 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
 <style>
 :root {
   --ink: #0f0f0f;
@@ -24,6 +26,8 @@ body {
   font-weight: 300;
   min-height: 100vh;
 }
+
+/* ── 티커 바 ── */
 .ticker-wrap {
   background: var(--ink);
   color: #e8e0d0;
@@ -39,6 +43,7 @@ body {
 .ticker-inner .down { color: #ff6b6b; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+/* ── 헤더 ── */
 header {
   border-bottom: 3px double var(--ink);
   padding: 1.5rem 2rem 1rem;
@@ -62,15 +67,6 @@ header {
   color: var(--mid);
   margin-top: 4px;
 }
-.masthead .tagline a {
-  color: var(--mid);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.masthead .tagline a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
 .header-meta {
   text-align: right;
   font-size: 0.72rem;
@@ -92,6 +88,7 @@ header {
 }
 .refresh-btn:hover { background: var(--accent); }
 
+/* ── 날짜 밴드 ── */
 .dateline {
   border-bottom: 1px solid var(--ink);
   padding: 4px 2rem;
@@ -102,92 +99,9 @@ header {
   font-family: 'IBM Plex Mono', monospace;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.dateline a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px dotted var(--mid);
-}
-.dateline a:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
 }
 
-/* 새로운 2단 아카이브 레이아웃 */
-.archive-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border-bottom: 1px solid var(--rule);
-  margin-top: 0;
-}
-.archive-col {
-  padding: 1.4rem 1.5rem;
-  border-right: 1px solid var(--rule);
-}
-.archive-col:last-child {
-  border-right: none;
-}
-@media (max-width: 700px) {
-  .archive-grid {
-    grid-template-columns: 1fr;
-  }
-  .archive-col {
-    border-right: none;
-    border-bottom: 1px solid var(--rule);
-  }
-  .archive-col:last-child {
-    border-bottom: none;
-  }
-}
-.archive-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.archive-item {
-  padding: 0.7rem 0;
-  border-bottom: 1px dotted var(--rule);
-}
-.archive-item:last-child {
-  border-bottom: none;
-}
-.archive-item a {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--ink);
-  text-decoration: none;
-  line-height: 1.35;
-  display: block;
-}
-.archive-item a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
-.archive-item .archive-date {
-  font-size: 0.62rem;
-  color: var(--mid);
-  font-family: 'IBM Plex Mono', monospace;
-  margin-top: 4px;
-  letter-spacing: 0.3px;
-}
-.view-all-link {
-  display: inline-block;
-  margin-top: 1rem;
-  font-size: 0.7rem;
-  font-family: 'IBM Plex Mono', monospace;
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid var(--accent);
-  letter-spacing: 0.5px;
-}
-.view-all-link:hover {
-  opacity: 0.8;
-}
-
+/* ── 그리드 ── */
 .grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
@@ -203,6 +117,7 @@ header {
 }
 .col:last-child { border-right: none; }
 
+/* ── 섹션 타이틀 ── */
 .section-label {
   font-size: 0.62rem;
   letter-spacing: 0.22em;
@@ -214,7 +129,11 @@ header {
   margin-bottom: 1rem;
 }
 
-.my-post { padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
+/* ── ✍ Analysis 목록 (list.md) ── */
+.my-post {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+}
 .my-post:last-child { border-bottom: none; }
 .my-post a {
   font-family: 'Playfair Display', serif;
@@ -233,48 +152,25 @@ header {
   margin-top: 4px;
 }
 
+/* ── 주식 ── */
 .stock-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 6px 0;
+  padding: 5px 0;
   border-bottom: 1px dotted var(--rule);
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.78rem;
-  flex-wrap: wrap;
-  gap: 4px;
 }
 .stock-row:last-child { border-bottom: none; }
-.stock-label {
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-.stock-label:hover { color: var(--accent); text-decoration: underline; }
-.stock-right {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-.stock-price { color: var(--mid); font-weight: 500; }
-.stock-change { font-weight: 500; margin-left: 0rem; }
-.stock-change.up { color: var(--up); }
-.stock-change.down { color: var(--down); }
-.stock-cap {
-  font-size: 0.68rem;
-  color: var(--gold);
-  font-weight: 500;
-  background: rgba(184, 134, 11, 0.08);
-  padding: 2px 6px;
-  border-radius: 12px;
-  letter-spacing: 0.3px;
-}
+.stock-label { color: var(--ink); font-weight: 500; }
+.stock-price { color: var(--mid); }
+.stock-chg { font-size: 0.7rem; }
+.stock-chg.up { color: var(--up); }
+.stock-chg.down { color: var(--down); }
 .divider-row {
   border-top: 1px solid var(--rule);
-  margin: 0.7rem 0 0.3rem;
+  margin: 0.7rem 0;
   font-size: 0.6rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -282,7 +178,11 @@ header {
   padding-top: 6px;
 }
 
-.news-item { padding: 0.65rem 0; border-bottom: 1px solid var(--rule); }
+/* ── 뉴스 ── */
+.news-item {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--rule);
+}
 .news-item:last-child { border-bottom: none; }
 .news-item a {
   font-size: 0.84rem;
@@ -300,6 +200,7 @@ header {
   margin-top: 3px;
 }
 
+/* ── 로딩 / 에러 ── */
 .loading {
   color: var(--mid);
   font-size: 0.8rem;
@@ -309,6 +210,7 @@ header {
 }
 @keyframes blink { 50% { opacity: 0.3; } }
 
+/* ── 푸터 ── */
 footer {
   padding: 1rem 2rem;
   font-size: 0.65rem;
@@ -317,14 +219,13 @@ footer {
   font-family: 'IBM Plex Mono', monospace;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
 }
 
+/* ── 최신 포스트 전문 (latest.md) ── */
 .latest-post-section {
   border-top: 3px double var(--ink);
-  padding: 2rem 2rem;
-  max-width: 1000px;
+  padding: 2.5rem 2rem;
+  max-width: 860px;
   margin: 0 auto;
 }
 .latest-post-section .section-label {
@@ -335,135 +236,89 @@ footer {
   font-weight: 500;
   border-bottom: 1px solid var(--accent);
   padding-bottom: 4px;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.6rem;
 }
-.latest-post-section h2 {
+.latest-post-body {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.latest-post-body p { margin-bottom: 1.1rem; }
+.latest-post-body h1,
+.latest-post-body h2,
+.latest-post-body h3 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 3vw, 2rem);
-  font-weight: 700;
-  line-height: 1.25;
-  margin-bottom: 0.4rem;
-}
-.latest-post-section h2 a { color: var(--ink); text-decoration: none; }
-.latest-post-section h2 a:hover { color: var(--accent); }
-.latest-post-meta {
-  font-size: 0.68rem;
-  font-family: 'IBM Plex Mono', monospace;
-  color: var(--mid);
-  margin-bottom: 1.4rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--rule);
-}
-.latest-post-body { font-size: 1rem; line-height: 1.7; color: var(--ink); max-height: 400px; overflow-y: auto; }
-.latest-post-body p { margin-bottom: 1rem; }
-.latest-post-body h1, .latest-post-body h2, .latest-post-body h3 {
-  font-family: 'Playfair Display', serif;
-  margin: 1.4rem 0 0.5rem;
+  margin: 1.6rem 0 0.6rem;
 }
 .latest-post-body a { color: var(--accent); }
-.latest-post-body img { max-width: 100%; border-radius: 2px; margin: 0.8rem 0; }
+.latest-post-body img { max-width: 100%; border-radius: 2px; margin: 1rem 0; }
 .latest-post-body blockquote {
   border-left: 3px solid var(--accent);
   padding-left: 1rem;
   color: var(--mid);
   font-style: italic;
-  margin: 0.8rem 0;
-}
-.read-more-link {
-  display: inline-block;
-  margin-top: 1.2rem;
-  padding: 6px 18px;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.read-more-link:hover { background: var(--accent); }
-
-.medium-section {
-  border-top: 1px solid var(--rule);
-  margin-top: 0.5rem;
+  margin: 1rem 0;
 }
 </style>
 </head>
 <body>
 
+<!-- 티커 바 -->
 <div class="ticker-wrap">
   <div class="ticker-inner" id="ticker">Loading market data…</div>
 </div>
 
+<!-- 헤더 -->
 <header>
   <div class="masthead">
     <h1>Seoul <span>Inside</span></h1>
-    <div class="tagline">
-      <a href="https://medium.com/@Seoulinside/news1-fb946ec27af9" target="_blank" rel="noopener">Korea</a> · 
-      <a href="https://finance.yahoo.com/markets" target="_blank" rel="noopener">Markets</a> · 
-      <a href="link1.html" target="_blank">Analysis</a> · 
-      <a href="link2.html" target="_blank">English</a>
-    </div>
+    <div class="tagline">Korea · Markets · Analysis · English</div>
   </div>
   <div class="header-meta">
-    <div id="updated-at">Loading…</div>
-    <button class="refresh-btn" onclick="loadData()">⟳ Refresh</button>
+    <div id="updated-at"></div>
+    <button class="refresh-btn" onclick="loadAll()">⟳ Refresh</button>
   </div>
 </header>
 
+<!-- 날짜 밴드 -->
 <div class="dateline">
   <span id="today-date"></span>
-  <span>
-    <a href="https://seoulinside.substack.com" target="_blank" rel="noopener">seoulinside.substack.com</a> · 
-    <a href="https://medium.com/@Seoulinside" target="_blank" rel="noopener">medium.com/@Seoulinside</a>
-  </span>
+  <span>seoulinside.wordpress.com</span>
 </div>
 
+<!-- 메인 그리드 -->
 <div class="grid">
+
+  <!-- 1열: ✍ Analysis — list.md -->
   <div class="col">
-    <div class="section-label">✍ Substack / Seoul Inside</div>
-    <div id="my-posts"><div class="loading">Loading Substack posts…</div></div>
+    <div class="section-label">✍ Analysis &amp; Insight</div>
+    <div id="my-posts"><div class="loading">Loading…</div></div>
   </div>
+
+  <!-- 2열: 주식 -->
   <div class="col">
     <div class="section-label">📈 Markets</div>
     <div id="stocks"><div class="loading">Loading…</div></div>
   </div>
+
+  <!-- 3열: 글로벌 뉴스 -->
   <div class="col">
     <div class="section-label">🌐 World News</div>
     <div id="global-news"><div class="loading">Loading…</div></div>
   </div>
+
+  <!-- 4열: 한국 관련 기사 -->
   <div class="col">
     <div class="section-label">🇰🇷 Korea Coverage</div>
     <div id="korea-news"><div class="loading">Loading…</div></div>
   </div>
+
 </div>
 
-<!-- NEW: TWO AUTO-STACKING ARCHIVE SECTIONS (Archive left / Notes right) -->
-<div class="archive-grid">
-  <div class="archive-col">
-    <div class="section-label">📚 Substack Archive (auto)</div>
-    <div id="substack-archive-list" class="archive-list">
-      <div class="loading">Loading archive…</div>
-    </div>
-    <a href="https://seoulinside.substack.com/archive" target="_blank" class="view-all-link">→ View full archive</a>
-  </div>
-  <div class="archive-col">
-    <div class="section-label">📝 Notes / Posts (auto)</div>
-    <div id="notes-list" class="archive-list">
-      <div class="loading">Loading notes…</div>
-    </div>
-    <a href="https://seoulinside.substack.com/notes" target="_blank" class="view-all-link">→ All notes</a>
-  </div>
-</div>
-
+<!-- 최신 포스트 전문 — latest.md -->
 <div class="latest-post-section">
-  <div class="section-label">✍ Latest from Substack</div>
-  <div id="latest-post"><div class="loading">Loading latest post…</div></div>
-</div>
-
-<div class="latest-post-section medium-section">
-  <div class="section-label">📝 Medium / Seoul Inside</div>
-  <div id="medium-posts"><div class="loading">Loading Medium posts…</div></div>
+  <div class="section-label">✍ Latest from Seoul Inside</div>
+  <div id="latest-post" class="latest-post-body"><div class="loading">Loading latest post…</div></div>
 </div>
 
 <footer>
@@ -472,75 +327,105 @@ footer {
 </footer>
 
 <script>
+/* ── 날짜 ── */
 const now = new Date();
-document.getElementById('today-date').textContent = now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+document.getElementById('today-date').textContent =
+  now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+document.getElementById('updated-at').textContent =
+  'Updated: ' + now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
+document.getElementById('footer-updated').textContent =
+  'Last update: ' + now.toLocaleString('en-US');
 
-function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined, {maximumFractionDigits:2}) : '—'; }
+/* ════════════════════════════════
+   1) list.md → ✍ Analysis 목록
+   형식:
+     # 제목 | 날짜
+     https://링크
+   (빈 줄로 구분)
+════════════════════════════════ */
+async function loadList() {
+  try {
+    const res = await fetch('list.md?t=' + Date.now());
+    if (!res.ok) throw new Error('list.md not found');
+    const text = await res.text();
+
+    // 블록 파싱: "# 제목\n링크" 패턴
+    const blocks = text.trim().split(/\n\s*\n/);
+    const posts = blocks.map(block => {
+      const lines = block.trim().split('\n').map(l => l.trim()).filter(Boolean);
+      if (!lines.length) return null;
+      const titleLine = lines.find(l => l.startsWith('#')) || '';
+      const link      = lines.find(l => l.startsWith('http')) || '#';
+      // "# 제목 | 날짜" 분리
+      const raw   = titleLine.replace(/^#+\s*/, '');
+      const parts = raw.split('|');
+      const title = parts[0].trim();
+      const date  = parts[1] ? parts[1].trim() : '';
+      return { title, link, date };
+    }).filter(Boolean);
+
+    if (!posts.length) throw new Error('empty');
+
+    document.getElementById('my-posts').innerHTML = posts.map(p => `
+      <div class="my-post">
+        <a href="${p.link}" target="_blank" rel="noopener">${p.title}</a>
+        <div class="post-date">${p.date}</div>
+      </div>`).join('');
+  } catch {
+    document.getElementById('my-posts').innerHTML =
+      '<div class="loading">list.md 파일을 확인해 주세요.</div>';
+  }
+}
+
+/* ════════════════════════════════
+   2) latest.md → 하단 전문
+   마크다운 → HTML 변환 (marked.js)
+════════════════════════════════ */
+async function loadLatest() {
+  try {
+    const res = await fetch('latest.md?t=' + Date.now());
+    if (!res.ok) throw new Error('latest.md not found');
+    const text = await res.text();
+    document.getElementById('latest-post').innerHTML = marked.parse(text);
+  } catch {
+    document.getElementById('latest-post').innerHTML =
+      '<div class="loading">latest.md 파일을 확인해 주세요.</div>';
+  }
+}
+
+/* ════════════════════════════════
+   3) data.json → 주식 + 뉴스
+   (기존 구조 유지, 없으면 안내)
+════════════════════════════════ */
+function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined,{maximumFractionDigits:2}) : '—'; }
+function fmtChg(c, p) {
+  const sign = c >= 0 ? '+' : '';
+  return `${sign}${c.toFixed(2)} (${sign}${p.toFixed(2)}%)`;
+}
 
 function renderTicker(worlds, koreas) {
   const all = [...worlds, ...koreas];
   const html = all.map(s => {
-    const capStr = s.capT ? (s.currency === 'KRW' ? `₩${s.capT.toFixed(1)}T` : (s.currency === 'USD' && s.symbol !== '^GSPC' && s.symbol !== '^IXIC' ? `$${s.capT.toFixed(1)}T` : '')) : '';
-    const pctClass = s.pct >= 0 ? 'up' : 'down';
-    const pctSign = s.pct >= 0 ? '+' : '';
-    return `<span><b>${s.label}</b> ${fmtPrice(s.price)} ${capStr ? '· ' + capStr : ''} <span class="${pctClass}">${pctSign}${s.pct}%</span></span>`;
+    const cls  = s.change >= 0 ? 'up' : 'down';
+    const sign = s.change >= 0 ? '▲' : '▼';
+    return `<span><b>${s.label}</b> ${fmtPrice(s.price)} <span class="${cls}">${sign}${Math.abs(s.pct).toFixed(2)}%</span></span>`;
   }).join('');
   document.getElementById('ticker').innerHTML = html + html;
 }
 
-function renderMyPosts(posts) {
-  if (!posts || !posts.length) {
-    document.getElementById('my-posts').innerHTML = '<div class="loading">No Substack posts found.</div>';
-    return;
-  }
-  document.getElementById('my-posts').innerHTML = posts.map(p => `
-    <div class="my-post">
-      <a href="${p.link}" target="_blank" rel="noopener">${p.title}</a>
-      <div class="post-date">${p.date ? p.date.slice(0,16) : ''}</div>
-    </div>
-  `).join('');
-}
-
-function renderMediumPosts(posts) {
-  const container = document.getElementById('medium-posts');
-  if (!posts || !posts.length) {
-    container.innerHTML = '<div class="loading">No Medium posts found.</div>';
-    return;
-  }
-  container.innerHTML = posts.map(p => `
-    <div class="my-post">
-      <a href="${p.link}" target="_blank" rel="noopener">${p.title}</a>
-      <div class="post-date">${p.date ? p.date.slice(0,16) : ''}</div>
-    </div>
-  `).join('');
-}
-
 function renderStocks(worlds, koreas) {
-  const renderRows = (arr) => arr.map(s => {
-      let capText = '';
-      const isIndex = s.symbol === '^KS11' || s.symbol === '^GSPC' || s.symbol === '^IXIC';
-      const isFX = s.currency === 'FX';
-      if (s.capT && !isIndex && !isFX) {
-        if (s.currency === 'KRW') capText = `₩${s.capT.toFixed(1)}T`;
-        else if (s.currency === 'USD') capText = `$${s.capT.toFixed(1)}T`;
-      }
-      const pctClass = s.pct >= 0 ? 'up' : 'down';
-      const pctSign = s.pct >= 0 ? '+' : '';
-      const yahooUrl = `https://finance.yahoo.com/quote/${s.symbol}`;
-      return `
-        <div class="stock-row">
-          <a href="${yahooUrl}" target="_blank" rel="noopener" class="stock-label">${s.label}</a>
-          <div class="stock-right">
-            <span class="stock-price">${fmtPrice(s.price)}</span>
-            <span class="stock-change ${pctClass}">${pctSign}${s.pct}%</span>
-            ${capText ? `<span class="stock-cap">${capText}</span>` : ''}
-          </div>
-        </div>
-      `;
-    }).join('');
-  const worldHtml = renderRows(worlds);
-  const koreaHtml = koreas.length ? `<div class="divider-row">🇰🇷 Korea</div>${renderRows(koreas)}` : '';
-  document.getElementById('stocks').innerHTML = worldHtml + koreaHtml;
+  const rows = arr => arr.map(s => {
+    const cls = s.change >= 0 ? 'up' : 'down';
+    return `<div class="stock-row">
+      <span class="stock-label">${s.label}</span>
+      <span>
+        <span class="stock-price">${fmtPrice(s.price)}</span>&nbsp;
+        <span class="stock-chg ${cls}">${fmtChg(s.change, s.pct)}</span>
+      </span>
+    </div>`;
+  }).join('');
+  document.getElementById('stocks').innerHTML =
+    rows(worlds) + `<div class="divider-row">Korea</div>` + rows(koreas);
 }
 
 function renderNews(items, targetId) {
@@ -552,83 +437,36 @@ function renderNews(items, targetId) {
     <div class="news-item">
       <a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>
       <div class="news-src">${n.date ? n.date.slice(0,16) : ''}</div>
-    </div>
-  `).join('');
-}
-
-// 자동 적층: Substack Archive (전체 글 목록) + Notes (최근 포스트/노트)
-function renderArchiveAndNotes(myPosts, notesPosts) {
-  // 왼쪽: Substack Archive (myPosts 전체 → 최대 15개)
-  const archiveContainer = document.getElementById('substack-archive-list');
-  if (myPosts && myPosts.length) {
-    archiveContainer.innerHTML = myPosts.slice(0, 15).map(p => `
-      <div class="archive-item">
-        <a href="${p.link}" target="_blank" rel="noopener">${p.title}</a>
-        <div class="archive-date">${p.date ? p.date.slice(0,16) : ''}</div>
-      </div>
-    `).join('');
-  } else {
-    archiveContainer.innerHTML = '<div class="loading">No archive yet.</div>';
-  }
-
-  // 오른쪽: Notes (일단 Substack의 최신 글을 재활용, 또는 Medium 최신으로 대체 가능)
-  const notesContainer = document.getElementById('notes-list');
-  const notesSource = notesPosts && notesPosts.length ? notesPosts : (myPosts || []).slice(0, 10);
-  if (notesSource && notesSource.length) {
-    notesContainer.innerHTML = notesSource.slice(0, 12).map(n => `
-      <div class="archive-item">
-        <a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>
-        <div class="archive-date">${n.date ? n.date.slice(0,16) : ''}</div>
-      </div>
-    `).join('');
-  } else {
-    notesContainer.innerHTML = '<div class="loading">No notes yet.</div>';
-  }
+    </div>`).join('');
 }
 
 async function loadData() {
   try {
     const res = await fetch('data.json?t=' + Date.now());
-    if (!res.ok) throw new Error('data.json not found');
+    if (!res.ok) throw new Error('no data.json');
     const data = await res.json();
-
     renderTicker(data.worldStocks || [], data.koreaStocks || []);
-    renderMyPosts(data.myPosts || []);
-    renderMediumPosts(data.mediumPosts || []);
     renderStocks(data.worldStocks || [], data.koreaStocks || []);
     renderNews(data.globalNews || [], 'global-news');
-    renderNews(data.koreaNews || [], 'korea-news');
-
-    // 핵심: 자동 적층 (Archive + Notes)
-    renderArchiveAndNotes(data.myPosts || [], data.mediumPosts || []);
-
-    const lp = data.latestPost;
-    if (lp && lp.body) {
-      document.getElementById('latest-post').innerHTML = `
-        <h2><a href="${lp.link}" target="_blank" rel="noopener">${lp.title}</a></h2>
-        <div class="latest-post-meta">${lp.date ? lp.date.slice(0,16) : ''} · Seoul Inside (Substack)</div>
-        <div class="latest-post-body">${lp.body}</div>
-        <a class="read-more-link" href="${lp.link}" target="_blank" rel="noopener">Read on Substack →</a>
-      `;
-    } else {
-      document.getElementById('latest-post').innerHTML = '<div class="loading">Latest post not available yet.</div>';
-    }
-
-    const ts = data.updatedAt || '';
-    document.getElementById('updated-at').textContent = 'Updated: ' + ts;
-    document.getElementById('footer-updated').textContent = 'Last data update: ' + ts;
-
-  } catch (e) {
-    ['my-posts', 'stocks', 'global-news', 'korea-news', 'medium-posts', 'substack-archive-list', 'notes-list'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = `<div class="loading">⏳ Data not ready yet.<br>GitHub Actions will create data.json</div>`;
+    renderNews(data.koreaNews  || [], 'korea-news');
+  } catch {
+    ['stocks','global-news','korea-news'].forEach(id => {
+      document.getElementById(id).innerHTML =
+        '<div class="loading">data.json 준비 전입니다.</div>';
     });
-    document.getElementById('updated-at').textContent = 'Waiting for data…';
-    document.getElementById('latest-post').innerHTML = '<div class="loading">⏳ Waiting for latest post...</div>';
+    document.getElementById('ticker').innerHTML =
+      '<span>Seoul Inside · Korea · Markets · Analysis · English</span>'.repeat(6);
   }
 }
 
-loadData();
+/* ── 전체 로드 ── */
+function loadAll() {
+  loadList();
+  loadLatest();
+  loadData();
+}
+
+loadAll();
 </script>
 </body>
 </html>
