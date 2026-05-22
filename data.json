@@ -1,9 +1,43 @@
 {
-  "myPosts": [],
-  "substackArchive": [],
-  "mediumPosts": [],
-  "globalNews": [],
+  "globalNews": [
+    {
+      "title": "Rubio says Cuba is threat to US as Havana accuses him of 'lies'",
+      "link": "https://www.bbc.com/news/articles/ckgpzwkn5jko?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 22 May 2026 00:10:44 GMT",
+      "desc": "Cuba's foreign minister accused Rubio of trying to \"instigate a military aggression\"."
+    },
+    {
+      "title": "Three ways Cuba crisis could play out  after US indictment of Raúl Castro",
+      "link": "https://www.bbc.com/news/articles/ckgplwg3xk3o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 21 May 2026 18:40:12 GMT",
+      "desc": "The Trump administration has been putting tremendous economic pressure on the island's Communist government."
+    },
+    {
+      "title": "'No means no': Greenlanders protest against Trump outside new US consulate",
+      "link": "https://www.bbc.com/news/articles/cwy2gxvnq1zo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 22 May 2026 01:37:02 GMT",
+      "desc": "The inauguration of the new consulate comes amid a push by the US president for greater control over the island."
+    },
+    {
+      "title": "Angry crowd sets Ebola hospital tents on fire in DR Congo",
+      "link": "https://www.bbc.com/news/articles/cp8p2g8yp8do?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 21 May 2026 20:12:25 GMT",
+      "desc": "Grieving relatives and friends of a suspected Ebola victim were prevented from taking his body for burial."
+    },
+    {
+      "title": "Alberta to hold referendum on whether to remain in Canada",
+      "link": "https://www.bbc.com/news/articles/cvgze8n5dxko?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 22 May 2026 02:40:58 GMT",
+      "desc": "Voters in the western province will decide next October whether they want to stay in Canada or move ahead with a process for a binding independence referendum."
+    }
+  ],
   "koreaNews": [
+    {
+      "title": "Despite the tailwind of AI, South Korea's economy still has challenges beneath the hood: HSBC - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOY3ZpU1h1UVVBbW95X3paellQdU50VGZKaHBOT0E1NkR4UUk1YXdTZFJoLVl3b1VVYWNNX2ZyTnZoaHF6LWNsSTJFcklrdW5EaWh0SWdfblVXM096aHp6UE94U19xaEtEMWlxemhPaWFjMDZIT0FjdEltcnkzbGVEVDcxS0VOSkNUeXpwVFhlMl85YTdGdDZZZk1rMkpJSDFYRXRmTWtTUXp1Ui1yZ0xIWWF3?oc=5",
+      "date": "Fri, 22 May 2026 03:21:35 GMT",
+      "desc": "Despite the tailwind of AI, South Korea's economy still has challenges beneath the hood: HSBC&nbsp;&nbsp;CNBC"
+    },
     {
       "title": "Energy Shock and Economic Resilience: South Korea and the Iran War - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPdFI2cXlqNDFCN0RTS3J6RS12Q21wWTVKeW9uLU5pTkdKbWpjY2R1dGF1bzZYcWdDYXhwVHlNLXJKbUVFNFRmSS01VVdJaW80RDF3N0w0akROVndDaTNsOXZhb3lzT1ozcWloWTQzWmh4SVhGQ2I3Mjl4bHVlY3FKSjV5bVpoNVlEWExJbjAtbnRjWTlHU2hfR0lrVQ?oc=5",
@@ -23,201 +57,159 @@
       "desc": "South Korea Consumer Confidence Rises in May&nbsp;&nbsp;TradingView"
     },
     {
-      "title": "Explainer: South Korea weighs emergency step to blunt blow from Samsung strike - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQaFhlWE9sQk5aRHB6cklTYXZpMVREdHlkNDRpQm42NHFMeXV3azVXSlFXWUxreHR3YUtVRzBYSlpfaThtZXZFdXlMQVZhN3RZa2lTOHpYWER1endIQ3N3VlhiS1FNQ2RicmR4Q2ZCei1aaWV2SkpsY1VwNjdTM1RiVHdxRzFnOFhaTGVHUU4zZmxyOXplMVhtemFyWmhpOHFEeGZKOHh5WEpLNXlwZWN6WWVEdEJDa1dKYVE?oc=5",
-      "date": "Wed, 20 May 2026 06:56:00 GMT",
-      "desc": "Explainer: South Korea weighs emergency step to blunt blow from Samsung strike&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "AI euphoria getting reality check in South Korea, and vice versa - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPaTljeC0yMzdxaVRXTmFVR0NNZkx6TFVCZnVrbXJ2eDFiV3FLMnk3NTJ3MWxRZUpmUXZQdm4zbWVlM2ZQLURhamVBWXhkWW5TczcxYXRoNFBuT09sNDktVXF0Z0xISlNfTDY1RHY4azJzbEhyaUFnb1hlcEJXc0cwM2dsZWoya1c5WmNabjdzbmpmLVZOZm9TTUpn?oc=5",
-      "date": "Thu, 21 May 2026 18:35:31 GMT",
-      "desc": "AI euphoria getting reality check in South Korea, and vice versa&nbsp;&nbsp;Asia Times"
+      "title": "Daewoo E&C chair awarded for promoting Korea-Africa ties - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB3TS16ZlV3Sm1HcGN1RW5FLXdpaE9PVVUwMGhQRFVtUjQxczV0M3hxUWRXV2ZBdVo5M2VneGltOVVlMjVHQklibXQ2cGdWNFNLUUo4OEhRZw?oc=5",
+      "date": "Fri, 22 May 2026 01:40:04 GMT",
+      "desc": "Daewoo E&C chair awarded for promoting Korea-Africa ties&nbsp;&nbsp;The Korea Herald"
     },
     {
       "title": "Samsung Averts a Walkout With Big Bonuses, but Discord Over A.I. Profits Brews - The New York Times",
       "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA2dU1qNlpGelpUcGEtejRLTzV0NU5Nbzk4VG82TjdKc29LWHVPOWU2Wm5mZUdTRkd5bnBtNlJsek1BSXVXNGpRaFVvejF6cFlsRnZIa2txOU5PeU51elQzT3FwRHZrNXVqQVNfZlJMWWI3cEF6SVpDa0wzLXg?oc=5",
-      "date": "Thu, 21 May 2026 09:45:52 GMT",
+      "date": "Thu, 21 May 2026 18:06:59 GMT",
       "desc": "Samsung Averts a Walkout With Big Bonuses, but Discord Over A.I. Profits Brews&nbsp;&nbsp;The New York Times"
     },
     {
-      "title": "Cheap entry, high risk: Leveraged Samsung, SK hynix ETFs to debut at W20,000 - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1HYzdodklzNkM5RUlySzRsYlF6aTI5aFR2TU1iWU9hcnpkLTdQamJTVVVUaUFLSGlfQVhhZlpWY3BGUE9UZHhrVnRmWmRrWlFfYXQxeFZLTQ?oc=5",
-      "date": "Thu, 21 May 2026 08:36:11 GMT",
-      "desc": "Cheap entry, high risk: Leveraged Samsung, SK hynix ETFs to debut at W20,000&nbsp;&nbsp;The Korea Herald"
+      "title": "Samsung reportedly set to distribute up to $26.6 billion to staff in AI-driven semiconductor bonuses after last-minute union deal — average payouts could approach $400,000 per chip employee - Tom's Hardware",
+      "link": "https://news.google.com/rss/articles/CBMi4AJBVV95cUxQbXpFVmpFaHM1OW9SUV95emRnYXAyNXlCQnBnNGV3OFJVaFhseDNoVkpfWFFYQmZtNU15VW9UNlU5cVJrY0dxaGx3bHpMSFMxMjBCMWwwNG1XTG4zUC01N0FXZEk1b1ZTR1JwT0xjM3l5VlVmdmlTTExaaWpweXhnNFU4UW1fejczYl9BY0FERWxsdE1PRGZnek51VkJEdUtHZEE5WnhldXYwQllxMExGS3dNck9JUHhHNG9aNEZkQ2JEMjNWRGhiX2ZFWm9wSFp0dV9hRDBYXy1OMEVBVGNRVGdkNk5fVzI5WmdfYzQ2ckl4blBLaVhZbDZOdnBuUkdMTlVDQjFqMXgwZmp6VEFPclItbS03WWxwbFQ0aVJBY0JNNmRVVkw3T08tZjYtRFZzNjUxTHUyVFptQ2JMSXU0OXdPQl9kUlo2MzdKUFloRHk1TDE2U2xlbC0zVDYzeW02?oc=5",
+      "date": "Thu, 21 May 2026 14:25:18 GMT",
+      "desc": "Samsung reportedly set to distribute up to $26.6 billion to staff in AI-driven semiconductor bonuses after last-minute union deal — average payouts could approach $400,000 per chip employee&nbsp;&nbsp"
     },
     {
-      "title": "Samsung and SK Hynix employees are reportedly abandoning overseas training programs to nab up to $400,000 performance bonuses — online dating grades rise as female members 'seeking out SK hynix employees' - Tom's Hardware",
-      "link": "https://news.google.com/rss/articles/CBMi7wJBVV95cUxNc0ZqcTlGYWFaV3RVbmxYUWRpcmpscHFrRmY0dUp0SWtwa2VraEcyMXhTR1N4M2tzVGU5RWE5U28wVmh4aFVFV2RLMk01ZUlNMGU4WHBFdFNia2szbElyS3NiNXdiVFV2Q3R1dUdOSi1ESnRzZ3Nsc0JwLUdxM1dwVnRnR3VkVXFpVjZBZy1MbUd5OW93dDltdEJseDRwaGdjci1Rd1N2MTRfeV9CQ29JSU9HcTVpSURKMkJBWHNLNXhDaHFxd2dtYjRmQTMtUWJsMnd6U251VmFJWXdSeG9XcHgwbjVEVFRhNXYxMXBDSDBTVWZlaFV3SU1mX2ZkU3dnajhxUTJvYlh3XzdGeFpNM0hoU1R1cXhwZHBtNkY4eWUzWUJ4WGdfRi1wdmwzY01ZeEx4OS15eHVZcFFhZzJGcVVSOW9Xd0JPQ1Z4ZTVoVHY0X3dzYjE3X1FBV2tTYUIyVmtZWGgxMHp5WmVES2xv?oc=5",
-      "date": "Wed, 20 May 2026 15:35:01 GMT",
-      "desc": "Samsung and SK Hynix employees are reportedly abandoning overseas training programs to nab up to $400,000 performance bonuses — online dating grades rise as female members 'seeking out SK hynix employ"
+      "title": "AI turned Samsung into a $1 trillion company. Its workers want a bigger slice of the pie - CNN",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5JNkFBanpEZ2tGUFdzY2g1cHlnenAtcFR4c0YyU2JqNXotamZPLU83TVVEZ3RzdU5LM25wd1JFTHRVWmxVN29aQTFXVzdNc0dGeGdmR3hWeXpHQ1ZVMk83TmVQVU5ISEZGaHd0SW1HaW5ndW1IR0pUY1FqSQ?oc=5",
+      "date": "Thu, 21 May 2026 08:33:23 GMT",
+      "desc": "AI turned Samsung into a $1 trillion company. Its workers want a bigger slice of the pie&nbsp;&nbsp;CNN"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "currency": "USD",
       "price": 219.51,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "currency": "USD",
       "price": 407.15,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "currency": "USD",
       "price": 449.59,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "currency": "USD",
       "price": 118.5,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "currency": "USD",
       "price": 213.41,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "currency": "USD",
       "price": 298.23,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "currency": "USD",
       "price": 387.66,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "currency": "USD",
       "price": 304.99,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "currency": "USD",
       "price": 419.09,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "currency": "USD",
       "price": 7445.72,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "currency": "USD",
       "price": 26293.1,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     }
   ],
   "koreaStocks": [
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "currency": "KRW",
-      "price": 299500.0,
+      "price": 292500.0,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "currency": "KRW",
-      "price": 1940000.0,
+      "price": 1935000.0,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "005380.KS",
-      "label": "Hyundai Motor",
-      "currency": "KRW",
-      "price": 666000.0,
+      "label": "Hyundai",
+      "price": 655500.0,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "currency": "KRW",
-      "price": 167900.0,
+      "price": 164800.0,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "currency": "KRW",
-      "price": 199500.0,
+      "price": 202500.0,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "currency": "KRW",
-      "price": 7815.59,
+      "price": 7835.95,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "currency": "FX",
-      "price": 1507.77,
+      "price": 1517.42,
       "change": 0.0,
-      "pct": 0.0,
-      "capT": null
+      "pct": 0.0
     }
   ],
-  "updatedAt": "2026-05-21 23:00 UTC"
+  "updatedAt": "2026-05-22 06:42 UTC"
 }
