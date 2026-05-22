@@ -67,26 +67,61 @@ def fetch_stock(symbol, label):
         return {'symbol': symbol, 'label': label, 'price': 0, 'change': 0, 'pct': 0}
 
 
+def parse_date(date_str):
+    """pubDate 문자열에서 날짜만 추출 (예: Thu, 21 May 2026 → 2026-05-21)"""
+    try:
+        dt = datetime.strptime(date_str[:25].strip(), '%a, %d %b %Y %H:%M:%S')
+        return dt.strftime('%Y-%m-%d')
+    except Exception:
+        return date_str[:10] if date_str else ''
+
+
+def generate_list_md(posts):
+    """Substack 포스트 목록으로 list.md 생성"""
+    lines = []
+    for p in posts:
+        date = parse_date(p.get('date', ''))
+        title = p.get('title', '').strip()
+        link  = p.get('link', '').strip()
+        lines.append(f'# {title} | {date}')
+        lines.append(link)
+        lines.append('')
+    return '\n'.join(lines)
+
+
 # ── Data Collection Start ─────────────────────────────────────────────────
 print('=== SeoulInside Data Collection Start ===')
 data = {}
 
-# 1) Global news
-print('[1/3] Fetching global news...')
+SUBSTACK_RSS = 'https://seoulinside.substack.com/feed'
+
+# 1) Substack RSS → list.md 자동 생성
+print('[1/4] Fetching Substack posts...')
+substack_posts = fetch_rss(SUBSTACK_RSS, max_items=20)
+if substack_posts:
+    list_md = generate_list_md(substack_posts)
+    with open('list.md', 'w', encoding='utf-8') as f:
+        f.write(list_md)
+    print(f'  Substack: {len(substack_posts)} posts → list.md 생성 완료')
+else:
+    print('  Substack RSS 실패 — list.md 유지')
+
+# 2) Global news
+print('[2/4] Fetching global news...')
 global_news  = fetch_rss('https://feeds.bbci.co.uk/news/world/rss.xml', max_items=5)
 global_news += fetch_rss('https://rss.nytimes.com/services/xml/rss/nyt/World.xml', max_items=4)
 data['globalNews'] = global_news[:8]
 print(f'  Global: {len(data["globalNews"])} items')
 
-# 2) Korea-related news
-print('[2/3] Fetching Korea-related news...')
+# 3) Korea-related news
+print('[3/4] Fetching Korea-related news...')
 korea_news  = fetch_rss('https://news.google.com/rss/search?q=South+Korea+economy&hl=en&gl=US&ceid=US:en', max_items=5)
 korea_news += fetch_rss('https://news.google.com/rss/search?q=Samsung+SK+Hynix+semiconductor&hl=en&gl=US&ceid=US:en', max_items=5)
 data['koreaNews'] = korea_news[:8]
 print(f'  Korea: {len(data["koreaNews"])} items')
 
-# 3) Stocks
-print('[3/3] Fetching stock prices...')
+# 4) Stocks
+print('[4/4] Fetching stock prices...')
 data['worldStocks'] = [
     fetch_stock('NVDA',   'NVIDIA'),
     fetch_stock('TSM',    'TSMC'),
@@ -117,7 +152,8 @@ with open('data.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=2)
 
 print(f'\n✅ Done! ({data["updatedAt"]})')
-print(f'   Global news : {len(data["globalNews"])} items')
-print(f'   Korea news  : {len(data["koreaNews"])} items')
-print(f'   World stocks: {len(data["worldStocks"])} items')
-print(f'   Korea stocks: {len(data["koreaStocks"])} items')
+print(f'   Substack posts: {len(substack_posts)} → list.md')
+print(f'   Global news   : {len(data["globalNews"])} items')
+print(f'   Korea news    : {len(data["koreaNews"])} items')
+print(f'   World stocks  : {len(data["worldStocks"])} items')
+print(f'   Korea stocks  : {len(data["koreaStocks"])} items')
