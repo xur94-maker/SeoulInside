@@ -178,6 +178,8 @@
 
 **TL;DR:** A man receives a message directly in his mind – not a text or email – unmistakably from someone he knows. It reads: "Samsung. Hyundai. Stocks." He calls his broker and clarifies: not Samsung Electronics, but Samsung Motors and Hyundai Electronics. He bets "everything I have" on both. Cryptic, abrupt – flash fiction or parable.
 
+[Read more →](https://seoulinside.substack.com/p/the-message)
+
 ---
 
 ## Detection Is Not the Problem. Tracking Is.
@@ -193,10 +195,6 @@
 **TL;DR:** JangKaSull (Jang Wonyoung + Karina + Sullyoon) is 4th gen's unofficial "visual troika." When brand reputation data questioned Sullyoon's inclusion (rank #47 vs #1/#2), fans rebutted: "This isn't a ranking — it's a nickname." The Yuna debate (JangKaSull vs. JangKaSullYu) led to idols being asked on shows, then all four appeared together at a 2025 charity event. Fandom's unofficial cartography operates independently of industry metrics — and terms born in niche communities become generation-defining icons.
 
 [Read more →](https://seoulinside.substack.com/p/seoul-on-shuffle)
-
----
-
-[Read more →](https://seoulinside.substack.com/p/the-message)
 
 ---
 
