@@ -178,10 +178,30 @@
 
 **TL;DR:** A man receives a message directly in his mind – not a text or email – unmistakably from someone he knows. It reads: "Samsung. Hyundai. Stocks." He calls his broker and clarifies: not Samsung Electronics, but Samsung Motors and Hyundai Electronics. He bets "everything I have" on both. Cryptic, abrupt – flash fiction or parable.
 
+---
+
+## Detection Is Not the Problem. Tracking Is.
+
+**TL;DR:** Stealth doesn't make you invisible — it makes you unlockable. The 1960s HAWK missile system reveals why: detection and tracking are separate problems, and breaking either kills the chain. Modern AESA hides the seams; stealth exploits them. Low-frequency radar detects but can't target. Multistatic radar (separated transmitter/receiver) is the real threat. The physics hasn't changed — only the speed.
+
+[Read more →](https://seoulinside.substack.com/p/detection-is-not-the-problem-tracking)
+
+---
+
+## Seoul on Shuffle: The Rise of JangKaSull (장카설)
+
+**TL;DR:** JangKaSull (Jang Wonyoung + Karina + Sullyoon) is 4th gen's unofficial "visual troika." When brand reputation data questioned Sullyoon's inclusion (rank #47 vs #1/#2), fans rebutted: "This isn't a ranking — it's a nickname." The Yuna debate (JangKaSull vs. JangKaSullYu) led to idols being asked on shows, then all four appeared together at a 2025 charity event. Fandom's unofficial cartography operates independently of industry metrics — and terms born in niche communities become generation-defining icons.
+
+[Read more →](https://seoulinside.substack.com/p/seoul-on-shuffle)
+
+---
+
 [Read more →](https://seoulinside.substack.com/p/the-message)
 
-[Link1 →](https://xur94-maker.github.io/SeoulInside/link1.html)
-[Link2 →](https://xur94-maker.github.io/SeoulInside/link2.html)
-[wordpress →](https://seoulinside.wordpress.com/2026/05/18/news/)
-[medium →](https://medium.com/@Seoulinside/news1-fb946ec27af9)
+---
+
+[Link1 →](https://xur94-maker.github.io/SeoulInside/link1.html)  
+[Link2 →](https://xur94-maker.github.io/SeoulInside/link2.html)  
+[wordpress →](https://seoulinside.wordpress.com/2026/05/18/news/)  
+[medium →](https://medium.com/@Seoulinside/news1-fb946ec27af9)  
 
