@@ -179,3 +179,9 @@
 **TL;DR:** A man receives a message directly in his mind – not a text or email – unmistakably from someone he knows. It reads: "Samsung. Hyundai. Stocks." He calls his broker and clarifies: not Samsung Electronics, but Samsung Motors and Hyundai Electronics. He bets "everything I have" on both. Cryptic, abrupt – flash fiction or parable.
 
 [Read more →](https://seoulinside.substack.com/p/the-message)
+
+[Link1 →](https://xur94-maker.github.io/SeoulInside/link1.html)
+[Link2 →](https://xur94-maker.github.io/SeoulInside/link2.html)
+[wordpress →](https://seoulinside.wordpress.com/2026/05/18/news/)
+[medium →](https://medium.com/@Seoulinside/news1-fb946ec27af9)
+
