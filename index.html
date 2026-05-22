@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Seoul Inside</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<!-- marked.js: 마크다운 → HTML 변환 라이브러리 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
 <style>
 :root {
@@ -67,6 +66,12 @@ header {
   color: var(--mid);
   margin-top: 4px;
 }
+.masthead .tagline a {
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.masthead .tagline a:hover { color: var(--accent); }
 .header-meta {
   text-align: right;
   font-size: 0.72rem;
@@ -164,6 +169,13 @@ header {
 }
 .stock-row:last-child { border-bottom: none; }
 .stock-label { color: var(--ink); font-weight: 500; }
+a.stock-label {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+a.stock-label:hover { color: var(--accent); }
 .stock-price { color: var(--mid); }
 .stock-chg { font-size: 0.7rem; }
 .stock-chg.up { color: var(--up); }
@@ -272,7 +284,15 @@ footer {
 <header>
   <div class="masthead">
     <h1>Seoul <span>Inside</span></h1>
-    <div class="tagline">Korea · Markets · Analysis · English</div>
+    <div class="tagline">
+      <a href="https://xur94-maker.github.io/SeoulInside/link1.html" target="_blank" rel="noopener">Korea</a>
+      · 
+      <a href="https://xur94-maker.github.io/SeoulInside/link2.html" target="_blank" rel="noopener">Markets</a>
+      · 
+      <a href="https://seoulinside.wordpress.com/2026/05/18/news/" target="_blank" rel="noopener">Analysis</a>
+      · 
+      <a href="https://medium.com/@Seoulinside/news1-fb946ec27af9" target="_blank" rel="noopener">English</a>
+    </div>
   </div>
   <div class="header-meta">
     <div id="updated-at"></div>
@@ -338,25 +358,18 @@ document.getElementById('footer-updated').textContent =
 
 /* ════════════════════════════════
    1) list.md → ✍ Analysis 목록
-   형식:
-     # 제목 | 날짜
-     https://링크
-   (빈 줄로 구분)
 ════════════════════════════════ */
 async function loadList() {
   try {
     const res = await fetch('list.md?t=' + Date.now());
     if (!res.ok) throw new Error('list.md not found');
     const text = await res.text();
-
-    // 블록 파싱: "# 제목\n링크" 패턴
     const blocks = text.trim().split(/\n\s*\n/);
     const posts = blocks.map(block => {
       const lines = block.trim().split('\n').map(l => l.trim()).filter(Boolean);
       if (!lines.length) return null;
       const titleLine = lines.find(l => l.startsWith('#')) || '';
       const link      = lines.find(l => l.startsWith('http')) || '#';
-      // "# 제목 | 날짜" 분리
       const raw   = titleLine.replace(/^#+\s*/, '');
       const parts = raw.split('|');
       const title = parts[0].trim();
@@ -379,7 +392,6 @@ async function loadList() {
 
 /* ════════════════════════════════
    2) latest.md → 하단 전문
-   마크다운 → HTML 변환 (marked.js)
 ════════════════════════════════ */
 async function loadLatest() {
   try {
@@ -395,7 +407,6 @@ async function loadLatest() {
 
 /* ════════════════════════════════
    3) data.json → 주식 + 뉴스
-   (기존 구조 유지, 없으면 안내)
 ════════════════════════════════ */
 function fmtPrice(p) { return p > 0 ? p.toLocaleString(undefined,{maximumFractionDigits:2}) : '—'; }
 function fmtChg(c, p) {
@@ -416,8 +427,11 @@ function renderTicker(worlds, koreas) {
 function renderStocks(worlds, koreas) {
   const rows = arr => arr.map(s => {
     const cls = s.change >= 0 ? 'up' : 'down';
+    const labelHtml = s.url
+      ? `<a href="${s.url}" target="_blank" rel="noopener" class="stock-label">${s.label}</a>`
+      : `<span class="stock-label">${s.label}</span>`;
     return `<div class="stock-row">
-      <span class="stock-label">${s.label}</span>
+      ${labelHtml}
       <span>
         <span class="stock-price">${fmtPrice(s.price)}</span>&nbsp;
         <span class="stock-chg ${cls}">${fmtChg(s.change, s.pct)}</span>

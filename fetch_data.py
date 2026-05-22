@@ -46,10 +46,10 @@ def fetch_rss(url, max_items=8):
         return []
 
 
-def fetch_stock(symbol, label):
+def fetch_stock(symbol, label, url=None):
     try:
-        url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=1d'
-        req = urllib.request.Request(url, headers={
+        api_url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=2d'
+        req = urllib.request.Request(api_url, headers={
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
             'Accept': 'application/json',
         })
@@ -57,14 +57,27 @@ def fetch_stock(symbol, label):
             d = json.loads(r.read())
         meta   = d['chart']['result'][0]['meta']
         price  = meta.get('regularMarketPrice', 0)
-        prev   = meta.get('previousClose', price)
+        prev   = (meta.get('chartPreviousClose')
+                  or meta.get('previousClose')
+                  or price)
         change = price - prev
         pct    = (change / prev * 100) if prev else 0
-        return {'symbol': symbol, 'label': label,
-                'price': round(price, 2), 'change': round(change, 2), 'pct': round(pct, 2)}
+        result = {
+            'symbol': symbol,
+            'label': label,
+            'price': round(price, 2),
+            'change': round(change, 2),
+            'pct': round(pct, 2),
+        }
+        if url:
+            result['url'] = url
+        return result
     except Exception as e:
         print(f'  Stock error ({symbol}): {e}')
-        return {'symbol': symbol, 'label': label, 'price': 0, 'change': 0, 'pct': 0}
+        result = {'symbol': symbol, 'label': label, 'price': 0, 'change': 0, 'pct': 0}
+        if url:
+            result['url'] = url
+        return result
 
 
 def parse_date(date_str):
@@ -120,29 +133,29 @@ korea_news += fetch_rss('https://news.google.com/rss/search?q=Samsung+SK+Hynix+s
 data['koreaNews'] = korea_news[:8]
 print(f'  Korea: {len(data["koreaNews"])} items')
 
-# 4) Stocks
+# 4) Stocks — url 필드 추가, chartPreviousClose 우선 사용으로 변동률 수정
 print('[4/4] Fetching stock prices...')
 data['worldStocks'] = [
-    fetch_stock('NVDA',   'NVIDIA'),
-    fetch_stock('TSM',    'TSMC'),
-    fetch_stock('AMD',    'AMD'),
-    fetch_stock('INTC',   'Intel'),
-    fetch_stock('QCOM',   'Qualcomm'),
-    fetch_stock('ARM',    'ARM'),
-    fetch_stock('GOOGL',  'Google'),
-    fetch_stock('AAPL',   'Apple'),
-    fetch_stock('MSFT',   'Microsoft'),
-    fetch_stock('^GSPC',  'S&P 500'),
-    fetch_stock('^IXIC',  'NASDAQ'),
+    fetch_stock('NVDA',   'NVIDIA',    'https://finance.yahoo.com/quote/NVDA'),
+    fetch_stock('TSM',    'TSMC',      'https://finance.yahoo.com/quote/TSM'),
+    fetch_stock('AMD',    'AMD',       'https://finance.yahoo.com/quote/AMD'),
+    fetch_stock('INTC',   'Intel',     'https://finance.yahoo.com/quote/INTC'),
+    fetch_stock('QCOM',   'Qualcomm',  'https://finance.yahoo.com/quote/QCOM'),
+    fetch_stock('ARM',    'ARM',       'https://finance.yahoo.com/quote/ARM'),
+    fetch_stock('GOOGL',  'Google',    'https://finance.yahoo.com/quote/GOOGL'),
+    fetch_stock('AAPL',   'Apple',     'https://finance.yahoo.com/quote/AAPL'),
+    fetch_stock('MSFT',   'Microsoft', 'https://finance.yahoo.com/quote/MSFT'),
+    fetch_stock('^GSPC',  'S&P 500',   'https://finance.yahoo.com/quote/%5EGSPC'),
+    fetch_stock('^IXIC',  'NASDAQ',    'https://finance.yahoo.com/quote/%5EIXIC'),
 ]
 data['koreaStocks'] = [
-    fetch_stock('005930.KS', 'Samsung'),
-    fetch_stock('000660.KS', 'SK Hynix'),
-    fetch_stock('005380.KS', 'Hyundai'),
-    fetch_stock('000270.KS', 'Kia'),
-    fetch_stock('035420.KS', 'NAVER'),
-    fetch_stock('^KS11',     'KOSPI'),
-    fetch_stock('USDKRW=X',  'USD/KRW'),
+    fetch_stock('005930.KS', 'Samsung',  'https://finance.yahoo.com/quote/005930.KS'),
+    fetch_stock('000660.KS', 'SK Hynix', 'https://finance.yahoo.com/quote/000660.KS'),
+    fetch_stock('005380.KS', 'Hyundai',  'https://finance.yahoo.com/quote/005380.KS'),
+    fetch_stock('000270.KS', 'Kia',      'https://finance.yahoo.com/quote/000270.KS'),
+    fetch_stock('035420.KS', 'NAVER',    'https://finance.yahoo.com/quote/035420.KS'),
+    fetch_stock('^KS11',     'KOSPI',    'https://finance.yahoo.com/quote/%5EKS11'),
+    fetch_stock('USDKRW=X',  'USD/KRW',  'https://finance.yahoo.com/quote/USDKRW%3DX'),
 ]
 
 # Done
