@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "At least 90 killed in Chinese coal mine explosion, state media reports",
+      "title": "Trump says Iran deal 'largely negotiated' including reopening Strait of Hormuz",
+      "link": "https://www.bbc.com/news/articles/crmp121z3z8o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 23 May 2026 22:10:24 GMT",
+      "desc": "Tehran also signals progress on talks but says the key issue of nuclear weapons is not part of an initial framework it is working on."
+    },
+    {
+      "title": "At least 82 killed in Chinese coal mine explosion",
       "link": "https://www.bbc.com/news/articles/c5y0ve18qlko?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 23 May 2026 13:40:31 GMT",
+      "date": "Sat, 23 May 2026 15:18:40 GMT",
       "desc": "The blast in Shanxi province constitutes the country's worst mining disaster in 16 years."
     },
     {
-      "title": "Putin vows retaliation after accusing Ukraine of hitting student dormitory",
-      "link": "https://www.bbc.com/news/articles/c5y74lwx395o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 23 May 2026 14:06:12 GMT",
-      "desc": "Ukraine says it struck Russia's elite Rubicon drone military unit in a Moscow-occupied region."
+      "title": "Red Cross volunteers die from suspected Ebola in DR Congo",
+      "link": "https://www.bbc.com/news/articles/c759knxln0wo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 23 May 2026 19:55:16 GMT",
+      "desc": "They are thought to have caught the virus before the outbreak was identified, the Red Cross says."
     },
     {
       "title": "French mum and partner held until trial after sons abandoned by road in Portugal",
@@ -19,30 +25,24 @@
       "desc": "The couple, who allegedly left the woman's sons on a roadside in southern Portugal, will remain in custody."
     },
     {
-      "title": "Rubio meets Modi during India visit with energy high on agenda",
-      "link": "https://www.bbc.com/news/articles/c87qrwyyrn2o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 23 May 2026 11:55:39 GMT",
-      "desc": "The secretary of state wants to sell US energy to Delhi to make up for shortfalls caused by the Iran war."
-    },
-    {
-      "title": "SpaceX launches massive Starship V3 rocket on test flight",
-      "link": "https://www.bbc.com/news/articles/c62d65y16nno?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 23 May 2026 03:53:20 GMT",
-      "desc": "The largest and most powerful rocket in history blasted off after its first attempted launch was postponed."
+      "title": "Putin vows retaliation after accusing Ukraine of hitting student dormitory",
+      "link": "https://www.bbc.com/news/articles/c5y74lwx395o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 23 May 2026 14:06:12 GMT",
+      "desc": "Ukraine says it struck Russia's elite Rubicon drone military unit in a Moscow-occupied region."
     }
   ],
   "koreaNews": [
-    {
-      "title": "How South Korea Is Weathering the Iran War Oil Shock - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOaHdsRHNhYmNwVUpXNnBZcjQyMk81V00xSnRoZWFfRy1HcnFqVS1WY29lM2dKS29pTDRPWjdBLUl6ZHFsbVh3ZkFkOEM5d3F1ZmVNLXFpaVBIV0k1TDQ1VzdVbHZYOVBkOVQxaFRoWWxSd1hCeFUzVFltR0FtT0wzOHdlLTA2QQ?oc=5",
-      "date": "Mon, 18 May 2026 18:58:23 GMT",
-      "desc": "How South Korea Is Weathering the Iran War Oil Shock&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
     {
       "title": "North Korea - Economy, Resources, Trade - Britannica",
       "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
       "date": "Wed, 20 May 2026 05:00:00 GMT",
       "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
+    },
+    {
+      "title": "Energy Shock and Economic Resilience: South Korea and the Iran War - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPdFI2cXlqNDFCN0RTS3J6RS12Q21wWTVKeW9uLU5pTkdKbWpjY2R1dGF1bzZYcWdDYXhwVHlNLXJKbUVFNFRmSS01VVdJaW80RDF3N0w0akROVndDaTNsOXZhb3lzT1ozcWloWTQzWmh4SVhGQ2I3Mjl4bHVlY3FKSjV5bVpoNVlEWExJbjAtbnRjWTlHU2hfR0lrVQ?oc=5",
+      "date": "Mon, 18 May 2026 18:21:54 GMT",
+      "desc": "Energy Shock and Economic Resilience: South Korea and the Iran War&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "Despite the tailwind of AI, South Korea's economy still has challenges beneath the hood: HSBC - CNBC",
@@ -57,10 +57,10 @@
       "desc": "Explainer: South Korea weighs emergency step to blunt blow from Samsung strike&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea’s stock market soars as Samsung union calls off planned strike - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbjY2cW4zd3kySXMxNEJ2d2pfeWc3aEZqYXdyaERLNG5lX0d3aEpxd0Y3c2JXay1UdUlxR2Y5MlhUTzZIdFF5STFYcmo0STZnRmNKZ2FOejM2ZlU3dDVnQ2NYUmp4R0s3dDJkTGR5MGdsOGRjMUFDcmdXa1JtazJzQkVNblBwM29aNzdESlFxY1lmZloyYVNLaUdZenA4WVpZSUZfdFVWUzczekZJajBUNFRQdWdCMkx60gG-AUFVX3lxTE1ESkNqUkhOZDdoUkFhNjdyTFMzYlNzN2xJbFpqTUhmWDlaYW1WQWxZZlFDX2JBQnZNcU44TTNJclhjcTZfaUp5SW1HUS1NWi1uWVBrVE5mbGVnNUdsTEEzSDdwY0lFd3NCTUhaY1NrcUFiV29YcWhUbWRNSXZGZzJ5VXN5VFFsallWNEw4alZMNUh4R1BDRjZnbkpvZmF2d0RDTzZjZW82UnJnUlZYZ1JSa0ViSllSOVFPakN0V0E?oc=5",
-      "date": "Thu, 21 May 2026 07:24:47 GMT",
-      "desc": "South Korea’s stock market soars as Samsung union calls off planned strike&nbsp;&nbsp;Al Jazeera"
+      "title": "South Korea’s Companies Face Increasing Competition from Within China - Hudson Institute",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNQ1M0Nlh4NEhVcUg0LU1KNGxBRzhzVlJ4U0k0SmJNZHR6R1FyR2toY1RaYzVGaERXaHdNZGJFZ0pLY0dQVk1QUUtVdi00VjJ3d0JTQ3pjWk1QQVlPMDVSb1JqYUwta0I5VzNkdUtmNGtsa2otakNjU2hTdEQ4c09mTHZnbjhzbGNhUGxHZTJnUDlxbDJtMnBOOFJGUUhNRUp1ZWlYN2l6a2pzSTJQVjRuM093aVE5Zw?oc=5",
+      "date": "Tue, 05 May 2026 12:00:00 GMT",
+      "desc": "South Korea’s Companies Face Increasing Competition from Within China&nbsp;&nbsp;Hudson Institute"
     },
     {
       "title": "Samsung Averts a Walkout With Big Bonuses, but Discord Over A.I. Profits Brews - The New York Times",
@@ -69,16 +69,16 @@
       "desc": "Samsung Averts a Walkout With Big Bonuses, but Discord Over A.I. Profits Brews&nbsp;&nbsp;The New York Times"
     },
     {
-      "title": "Cheap entry, high risk: Leveraged Samsung, SK hynix ETFs to debut at W20,000 - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1HYzdodklzNkM5RUlySzRsYlF6aTI5aFR2TU1iWU9hcnpkLTdQamJTVVVUaUFLSGlfQVhhZlpWY3BGUE9UZHhrVnRmWmRrWlFfYXQxeFZLTQ?oc=5",
-      "date": "Thu, 21 May 2026 08:36:11 GMT",
-      "desc": "Cheap entry, high risk: Leveraged Samsung, SK hynix ETFs to debut at W20,000&nbsp;&nbsp;The Korea Herald"
+      "title": "Breakingviews - Why it’s too late to jump on the chip bandwagon - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPdy1ZN2pMcWVxeXdPenI2TTVWZkxrM0MtM3NjLThENzViOVVkOXc3c3RWOFo0d2xvZVA3NTJpbXlhcjM4dXhoamVSczh3Wm1qb3dNRHNKWmNjd291Y1FTVWFXNG1uNHhIb19kMnQtV21KWUJDQ1MxRlhTcUgwbnBTaldFclFNZ2JYX2FyN240UGJ3N205NzRqOFloX2JuQQ?oc=5",
+      "date": "Fri, 22 May 2026 05:00:00 GMT",
+      "desc": "Breakingviews - Why it’s too late to jump on the chip bandwagon&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung and SK Hynix employees are reportedly abandoning overseas training programs to nab up to $400,000 performance bonuses — online dating grades rise as female members 'seeking out SK hynix employees' - Tom's Hardware",
-      "link": "https://news.google.com/rss/articles/CBMi7wJBVV95cUxNc0ZqcTlGYWFaV3RVbmxYUWRpcmpscHFrRmY0dUp0SWtwa2VraEcyMXhTR1N4M2tzVGU5RWE5U28wVmh4aFVFV2RLMk01ZUlNMGU4WHBFdFNia2szbElyS3NiNXdiVFV2Q3R1dUdOSi1ESnRzZ3Nsc0JwLUdxM1dwVnRnR3VkVXFpVjZBZy1MbUd5OW93dDltdEJseDRwaGdjci1Rd1N2MTRfeV9CQ29JSU9HcTVpSURKMkJBWHNLNXhDaHFxd2dtYjRmQTMtUWJsMnd6U251VmFJWXdSeG9XcHgwbjVEVFRhNXYxMXBDSDBTVWZlaFV3SU1mX2ZkU3dnajhxUTJvYlh3XzdGeFpNM0hoU1R1cXhwZHBtNkY4eWUzWUJ4WGdfRi1wdmwzY01ZeEx4OS15eHVZcFFhZzJGcVVSOW9Xd0JPQ1Z4ZTVoVHY0X3dzYjE3X1FBV2tTYUIyVmtZWGgxMHp5WmVES2xv?oc=5",
-      "date": "Wed, 20 May 2026 15:35:01 GMT",
-      "desc": "Samsung and SK Hynix employees are reportedly abandoning overseas training programs to nab up to $400,000 performance bonuses — online dating grades rise as female members 'seeking out SK hynix employ"
+      "title": "WONIK QnC to Invest 25.5 Billion Won in Gumi Expansion Amid Rising Samsung, SK Demand - thelec.net",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9ZVVktWVBzWmdMaE11c3BCcy0yZDhmVUY3N09xXy12TFpTUnlVekMtNEdyV0lueThIZnU5WGo0bHB0aXF1VmczMWUwTEtfWGtXZDJnMGZ5blUyYnZ5bGl2VHZwNDA0T28?oc=5",
+      "date": "Sat, 23 May 2026 12:28:35 GMT",
+      "desc": "WONIK QnC to Invest 25.5 Billion Won in Gumi Expansion Amid Rising Samsung, SK Demand&nbsp;&nbsp;thelec.net"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-23 14:53 UTC"
+  "updatedAt": "2026-05-23 22:49 UTC"
 }
