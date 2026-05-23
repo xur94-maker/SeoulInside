@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Russia's Putin vows retaliation after accusing Ukraine of hitting student dormitory",
+      "title": "At least 90 killed in Chinese coal mine explosion, state media reports",
+      "link": "https://www.bbc.com/news/articles/c5y0ve18qlko?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 23 May 2026 10:26:56 GMT",
+      "desc": "The blast in Shanxi province constitutes the country's worst mining disaster in 16 years."
+    },
+    {
+      "title": "Putin vows retaliation after accusing Ukraine of hitting student dormitory",
       "link": "https://www.bbc.com/news/articles/c5y74lwx395o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 22 May 2026 19:40:14 GMT",
-      "desc": "Ukraine said it hit Russia's elite Rubicon drone military unit in a Moscow-occupied part of eastern Ukraine."
+      "date": "Sat, 23 May 2026 07:44:14 GMT",
+      "desc": "Ukraine says it struck Russia's elite Rubicon drone military unit in a Moscow-occupied region."
+    },
+    {
+      "title": "SpaceX launches massive Starship V3 rocket on test flight",
+      "link": "https://www.bbc.com/news/articles/c62d65y16nno?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 23 May 2026 03:53:20 GMT",
+      "desc": "The largest and most powerful rocket in history blasted off after its first attempted launch was postponed."
     },
     {
       "title": "Rubio tries to reassure Nato allies over US troop deployments",
@@ -17,26 +29,20 @@
       "link": "https://www.bbc.com/news/articles/cr7p30m1dn1o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 22 May 2026 16:23:08 GMT",
       "desc": "The head of the UN health agency says the risk in the wider region is \"high\", but it remains \"low\" at the global level."
-    },
-    {
-      "title": "Gaza flotilla activists allege abuse by Israeli forces while detained",
-      "link": "https://www.bbc.com/news/articles/cglp5z63k9no?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 22 May 2026 20:52:35 GMT",
-      "desc": "The detainees say they were slapped, hit, humiliated and even subjected to sexual violence, but Israel's prison service says the allegations are false."
-    },
-    {
-      "title": "Bodies of Italian divers did not have optimal equipment, says rescuer",
-      "link": "https://www.bbc.com/news/articles/c0l2j723nrxo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 22 May 2026 17:54:11 GMT",
-      "desc": "Images from a cave where the four Italians were found reveal the difficulty that rescuers had in recovering their bodies."
     }
   ],
   "koreaNews": [
     {
-      "title": "Can South Korea Fill the Middle East’s Missile Defense Gap? - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNbk5WRzk0ZFlCQ0VJbUlMVGtsWWV5dUc0UTMtbkhCQmtGbnY0aFdDdnRmcVowM1h6VWxqMWtTdV9tWDdlYm1QcEZaLWZTblh1aktqRzNIRGdmMU9oOE9xTUZMbzR0bk9fU2Z5SXJxNnpxTHNBYWRRNF9vbGJOMlVKVFFQZVZXQ2J1MHhoOA?oc=5",
-      "date": "Fri, 22 May 2026 21:47:16 GMT",
-      "desc": "Can South Korea Fill the Middle East’s Missile Defense Gap?&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "How South Korea Is Weathering the Iran War Oil Shock - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOaHdsRHNhYmNwVUpXNnBZcjQyMk81V00xSnRoZWFfRy1HcnFqVS1WY29lM2dKS29pTDRPWjdBLUl6ZHFsbVh3ZkFkOEM5d3F1ZmVNLXFpaVBIV0k1TDQ1VzdVbHZYOVBkOVQxaFRoWWxSd1hCeFUzVFltR0FtT0wzOHdlLTA2QQ?oc=5",
+      "date": "Mon, 18 May 2026 18:58:23 GMT",
+      "desc": "How South Korea Is Weathering the Iran War Oil Shock&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "North Korea - Economy, Resources, Trade - Britannica",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
+      "date": "Wed, 20 May 2026 05:00:00 GMT",
+      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
     },
     {
       "title": "Despite the tailwind of AI, South Korea's economy still has challenges beneath the hood: HSBC - CNBC",
@@ -45,33 +51,21 @@
       "desc": "Despite the tailwind of AI, South Korea's economy still has challenges beneath the hood: HSBC&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Why North Korea Hasn’t Had Its Own ‘Reform and Opening’ - The Diplomat – Asia-Pacific Current Affairs Magazine",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPMFExdnNqSFZGbEtoSmx2bEhDNFpRbDdYMTVLSTVodWNDckh0WjZSclAzanZxVzJQT3M2QVM0aGNvcThVSzdKRUlkdWpMNUlXZklfTkdzVWJyQ1E2aGtRcW9iZlcyTUhFeTRJem8wXzhJZGp3NFNpdVZRTnV3OUZtemIyRXExSmJCWmRhOFZB?oc=5",
-      "date": "Fri, 22 May 2026 16:33:38 GMT",
-      "desc": "Why North Korea Hasn’t Had Its Own ‘Reform and Opening’&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
+      "title": "Explainer: South Korea weighs emergency step to blunt blow from Samsung strike - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQaFhlWE9sQk5aRHB6cklTYXZpMVREdHlkNDRpQm42NHFMeXV3azVXSlFXWUxreHR3YUtVRzBYSlpfaThtZXZFdXlMQVZhN3RZa2lTOHpYWER1endIQ3N3VlhiS1FNQ2RicmR4Q2ZCei1aaWV2SkpsY1VwNjdTM1RiVHdxRzFnOFhaTGVHUU4zZmxyOXplMVhtemFyWmhpOHFEeGZKOHh5WEpLNXlwZWN6WWVEdEJDa1dKYVE?oc=5",
+      "date": "Wed, 20 May 2026 06:56:00 GMT",
+      "desc": "Explainer: South Korea weighs emergency step to blunt blow from Samsung strike&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea's Q1 GDP growth roars past market on booming AI-driven chip demand - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOMHJfRk9LSWYwbjJhbVgwc2tMbTVaZW11d3FWdjlkVWJ5Yk1UdkdYZzFVbE5nMlZwQWtWZ0d0eUhXX3hPbEpQRFJvQkg0eFUwVG9lZ3VNVnR4NlpKUXk0N0NHWVZHVWc0cVBaZGdqZTktTWhVTTJnOGRKUnBiR2ZxRThOVG54X05NcGhrTFpXU0JjYlE4VXA5dUwteXctYWNaX0dhaGZ0aExnRkxmLUxHblBWXzhzZGJwemNaWQ?oc=5",
-      "date": "Wed, 22 Apr 2026 07:00:00 GMT",
-      "desc": "South Korea's Q1 GDP growth roars past market on booming AI-driven chip demand&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "How South Korea Is Weathering the Iran War Oil Shock - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOaHdsRHNhYmNwVUpXNnBZcjQyMk81V00xSnRoZWFfRy1HcnFqVS1WY29lM2dKS29pTDRPWjdBLUl6ZHFsbVh3ZkFkOEM5d3F1ZmVNLXFpaVBIV0k1TDQ1VzdVbHZYOVBkOVQxaFRoWWxSd1hCeFUzVFltR0FtT0wzOHdlLTA2QQ?oc=5",
-      "date": "Mon, 18 May 2026 18:58:23 GMT",
-      "desc": "How South Korea Is Weathering the Iran War Oil Shock&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "Samsung Electronics, SK Hynix: Don't Mistake Luck for Skill - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOanpwZUdBNDFMOHU4VTZnTHFDOUR6ZlktZ0FWU19Ga2ZNb2JoZUJZWncwWlZ5Mktob3dJUGd0SEtwbXVkVkRNeEZUVGFxTTFzRkZuQW4zVm9fZGZFcmd2OWNCY1VGY3dHNUllQ25wR0dfM3ZFOERYZHFJZnF3WXdIbXQ0dVhaZnc?oc=5",
-      "date": "Fri, 22 May 2026 15:00:15 GMT",
-      "desc": "Samsung Electronics, SK Hynix: Don't Mistake Luck for Skill&nbsp;&nbsp;조선일보"
+      "title": "South Korea’s stock market soars as Samsung union calls off planned strike - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbjY2cW4zd3kySXMxNEJ2d2pfeWc3aEZqYXdyaERLNG5lX0d3aEpxd0Y3c2JXay1UdUlxR2Y5MlhUTzZIdFF5STFYcmo0STZnRmNKZ2FOejM2ZlU3dDVnQ2NYUmp4R0s3dDJkTGR5MGdsOGRjMUFDcmdXa1JtazJzQkVNblBwM29aNzdESlFxY1lmZloyYVNLaUdZenA4WVpZSUZfdFVWUzczekZJajBUNFRQdWdCMkx60gG-AUFVX3lxTE1ESkNqUkhOZDdoUkFhNjdyTFMzYlNzN2xJbFpqTUhmWDlaYW1WQWxZZlFDX2JBQnZNcU44TTNJclhjcTZfaUp5SW1HUS1NWi1uWVBrVE5mbGVnNUdsTEEzSDdwY0lFd3NCTUhaY1NrcUFiV29YcWhUbWRNSXZGZzJ5VXN5VFFsallWNEw4alZMNUh4R1BDRjZnbkpvZmF2d0RDTzZjZW82UnJnUlZYZ1JSa0ViSllSOVFPakN0V0E?oc=5",
+      "date": "Thu, 21 May 2026 07:24:47 GMT",
+      "desc": "South Korea’s stock market soars as Samsung union calls off planned strike&nbsp;&nbsp;Al Jazeera"
     },
     {
       "title": "Samsung Averts a Walkout With Big Bonuses, but Discord Over A.I. Profits Brews - The New York Times",
       "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA2dU1qNlpGelpUcGEtejRLTzV0NU5Nbzk4VG82TjdKc29LWHVPOWU2Wm5mZUdTRkd5bnBtNlJsek1BSXVXNGpRaFVvejF6cFlsRnZIa2txOU5PeU51elQzT3FwRHZrNXVqQVNfZlJMWWI3cEF6SVpDa0wzLXg?oc=5",
-      "date": "Thu, 21 May 2026 18:06:59 GMT",
+      "date": "Thu, 21 May 2026 09:45:52 GMT",
       "desc": "Samsung Averts a Walkout With Big Bonuses, but Discord Over A.I. Profits Brews&nbsp;&nbsp;The New York Times"
     },
     {
@@ -79,6 +73,12 @@
       "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1HYzdodklzNkM5RUlySzRsYlF6aTI5aFR2TU1iWU9hcnpkLTdQamJTVVVUaUFLSGlfQVhhZlpWY3BGUE9UZHhrVnRmWmRrWlFfYXQxeFZLTQ?oc=5",
       "date": "Thu, 21 May 2026 08:36:11 GMT",
       "desc": "Cheap entry, high risk: Leveraged Samsung, SK hynix ETFs to debut at W20,000&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "Samsung Electronics, SK Hynix: Don't Mistake Luck for Skill - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOanpwZUdBNDFMOHU4VTZnTHFDOUR6ZlktZ0FWU19Ga2ZNb2JoZUJZWncwWlZ5Mktob3dJUGd0SEtwbXVkVkRNeEZUVGFxTTFzRkZuQW4zVm9fZGZFcmd2OWNCY1VGY3dHNUllQ25wR0dfM3ZFOERYZHFJZnF3WXdIbXQ0dVhaZnc?oc=5",
+      "date": "Fri, 22 May 2026 15:00:15 GMT",
+      "desc": "Samsung Electronics, SK Hynix: Don't Mistake Luck for Skill&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-22 22:54 UTC"
+  "updatedAt": "2026-05-23 10:40 UTC"
 }
