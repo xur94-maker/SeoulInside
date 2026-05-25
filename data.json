@@ -1,22 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Trump tells US negotiators 'not to rush' into deal with Iran",
-      "link": "https://www.bbc.com/news/articles/clyp0040x7po?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 24 May 2026 20:26:26 GMT",
-      "desc": "The deal under discussion would involve a 60-day ceasefire extension during which the Strait of Hormuz would be reopened, according to US media."
+      "title": "Rubio says 'solid' Iran deal may come on Monday",
+      "link": "https://www.bbc.com/news/articles/cglpp2yk336o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 25 May 2026 06:41:43 GMT",
+      "desc": "The deal under discussion would involve a 60-day ceasefire extension during which the Strait of Hormuz would be reopened, US media reports."
     },
     {
-      "title": "Large-scale Russian attack on Ukraine leaves four dead and dozens injured",
-      "link": "https://www.bbc.com/news/articles/clyp6831yp5o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 24 May 2026 16:50:46 GMT",
-      "desc": "The Oreshnik missile, which reportedly travels over 10 times the speed of sound, was used, Russia has confirmed."
-    },
-    {
-      "title": "Turkish riot police storm opposition offices after leaders ousted",
-      "link": "https://www.bbc.com/news/articles/c87qwrqre83o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 24 May 2026 19:49:39 GMT",
-      "desc": "Officers forced their way into the building days after the party vowed to defy a court ruling removing its leaders."
+      "title": "Oil prices slide on hopes of US-Iran peace deal",
+      "link": "https://www.bbc.com/news/articles/c809m7g29r7o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 25 May 2026 06:01:59 GMT",
+      "desc": "Trump said on Saturday that an agreement would include the reopening of the Strait of Hormuz, without giving further details."
     },
     {
       "title": "She was told to marry in a country which bans girls' education. So she got in a taxi and fled",
@@ -25,10 +19,16 @@
       "desc": "Nearly five years on from the school ban, young women say they have waved goodbye to their dreams."
     },
     {
-      "title": "BBC at the site of China's worst mining disaster in more than a decade",
-      "link": "https://www.bbc.com/news/videos/c809m33yjz7o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 24 May 2026 10:34:52 GMT",
-      "desc": "At least 82 people have been killed after a gas explosion at the Liushenyu mine in China."
+      "title": "Large-scale Russian attack on Ukraine leaves four dead and dozens injured",
+      "link": "https://www.bbc.com/news/articles/clyp6831yp5o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 25 May 2026 04:45:13 GMT",
+      "desc": "A hypersonic missile, which reportedly travels over 10 times the speed of sound, was used, Russia has confirmed."
+    },
+    {
+      "title": "Turkish riot police storm opposition offices after leaders ousted",
+      "link": "https://www.bbc.com/news/articles/c87qwrqre83o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 24 May 2026 19:49:39 GMT",
+      "desc": "Officers forced their way into the building days after the party vowed to defy a court ruling removing its leaders."
     }
   ],
   "koreaNews": [
@@ -51,16 +51,16 @@
       "desc": "China-South Korea Economic Friendship and Cooperation Center unveiled at the 8th WCIFIT&nbsp;&nbsp;中国新闻网"
     },
     {
-      "title": "Despite the tailwind of AI, South Korea's economy still has challenges beneath the hood: HSBC - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOY3ZpU1h1UVVBbW95X3paellQdU50VGZKaHBOT0E1NkR4UUk1YXdTZFJoLVl3b1VVYWNNX2ZyTnZoaHF6LWNsSTJFcklrdW5EaWh0SWdfblVXM096aHp6UE94U19xaEtEMWlxemhPaWFjMDZIT0FjdEltcnkzbGVEVDcxS0VOSkNUeXpwVFhlMl85YTdGdDZZZk1rMkpJSDFYRXRmTWtTUXp1Ui1yZ0xIWWF3?oc=5",
-      "date": "Fri, 22 May 2026 03:48:00 GMT",
-      "desc": "Despite the tailwind of AI, South Korea's economy still has challenges beneath the hood: HSBC&nbsp;&nbsp;CNBC"
+      "title": "Policy chief says high rates, prices, exchange rate are ‘cost of success' in economic leap forward - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOQ05HdkFyX2hmNFJ5RzExa1k1QVFUcXBDSXdMNFctMmg3OU1qLW82U2NYdm8xVGFMcHFTbFR1Qnd0RWxiM0dQbXFyLUNYZ2s1WmlTZXRUTW1pUS1aZnJVZUtmNV9YdDZkb0hQcmNWTDlMMWphUm1lbnIzSWFIdzJEdXFxakdJS2lEMHdJaENzOU54UnN1RnRBd2c4a05Nb2Vtbk9MaExnMVVPZ1RqUlZfWktYd3pndHBCWUJsVEs3RlZmWE5VRjRfZUJsVFdRQkg2a09pTi01azI3bzhHQlgwOGFHeU9fSzjSAewBQVVfeXFMUFUzdDYwTGttczhvTFJDWl9RQ2hHTnd0RUVxSi1KVG5VWk5RdmhKX0drdkN5N0tnX1QtYWxyRWJUV0x0UlJWTXNaNFA2aWtUTHpfVjUzQ2Fmc3JKZmwtMXQ5ZDUxelF2VzFlalBsOW9rS0phcVI5TnEteVQ3VWNkZFk0b1dkenFyNnRqd3pwbTIzV2J6TDJyTjhSX3JQLWdGVWluMzdtM2Z4ZTV2VzJhNjR2UVlVY0tVMHpuYlVtOEdtRFIzb2VsSk4ySmVxY1NDQWtZRjZWVnNfMGZsazYySndiQlVHTlRJZW1NMkU?oc=5",
+      "date": "Mon, 25 May 2026 03:04:02 GMT",
+      "desc": "Policy chief says high rates, prices, exchange rate are ‘cost of success' in economic leap forward&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "South Korea needs partnerships to secure its economic lifelines - East Asia Forum",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOV2UzS0dSOEVNTUhiU3ZZTkNwM25sMkpDS0pQR1VGTmZLeFZFMThPVDV5T3VtYk5yVmNPdWRyM2pHeTEwY3ZmcXVsZE9pY1ZlNk5DZmlzOHVWZG9pcVFwdkVPN0xfQ29DRTROMWtUUTBpQmdLT0U4clp3OVRfTXRqQTBOOEx4ZDJZNTNUdmJ6Tk9BdUg1SWVTMXZ3bFljOHBxTFlr?oc=5",
-      "date": "Tue, 19 May 2026 00:00:00 GMT",
-      "desc": "South Korea needs partnerships to secure its economic lifelines&nbsp;&nbsp;East Asia Forum"
+      "title": "Invested Allies - Center for a New American Security | CNAS",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE84RWdpa3lVd2dVLUF0RWxTT1VjeGJEQWdfYWltRU4xQ2lPZWtGOVM0VXhwem43S0hXZDlqVUdUcTVCcWR5QTN6czVEZlVmRDRsRnVPUEtzU19xQThnTXRjU2dfcC1MT0NM?oc=5",
+      "date": "Thu, 21 May 2026 20:00:03 GMT",
+      "desc": "Invested Allies&nbsp;&nbsp;Center for a New American Security | CNAS"
     },
     {
       "title": "South Korea to launch leveraged stock ETFs on Samsung, SK Hynix - Bloomberg - Investing.com",
@@ -69,16 +69,16 @@
       "desc": "South Korea to launch leveraged stock ETFs on Samsung, SK Hynix - Bloomberg&nbsp;&nbsp;Investing.com"
     },
     {
-      "title": "Samsung Averts a Walkout With Big Bonuses, but Discord Over A.I. Profits Brews - The New York Times",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA2dU1qNlpGelpUcGEtejRLTzV0NU5Nbzk4VG82TjdKc29LWHVPOWU2Wm5mZUdTRkd5bnBtNlJsek1BSXVXNGpRaFVvejF6cFlsRnZIa2txOU5PeU51elQzT3FwRHZrNXVqQVNfZlJMWWI3cEF6SVpDa0wzLXg?oc=5",
-      "date": "Thu, 21 May 2026 09:45:52 GMT",
-      "desc": "Samsung Averts a Walkout With Big Bonuses, but Discord Over A.I. Profits Brews&nbsp;&nbsp;The New York Times"
+      "title": "Foreign Demand for K-ETFs Expands Beyond Samsung, SK hynix to KOSPI 200 - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNSVhZTEc5Wnl6ZmJZc0tTUVJxVS03X0FfMTZYdmJtdkxicjlYZnk4THFnQWJ2amVXSUtCbjY4NVJyZ19FbXlkaXV3YW1tWXY0MW1NTlVHMHZZUF9XS1RzR1d6QWY4OG9jZlhDN0dCdTQ2N3dyTlhlSm1zMXA0dXJDMGY0UFdlZENyM1FFdm03VExKZ05Ga2FRT0J5cXlBcG4z?oc=5",
+      "date": "Mon, 25 May 2026 01:59:31 GMT",
+      "desc": "Foreign Demand for K-ETFs Expands Beyond Samsung, SK hynix to KOSPI 200&nbsp;&nbsp;Seoul Economic Daily"
     },
     {
-      "title": "Breakingviews - Why it’s too late to jump on the chip bandwagon - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPdy1ZN2pMcWVxeXdPenI2TTVWZkxrM0MtM3NjLThENzViOVVkOXc3c3RWOFo0d2xvZVA3NTJpbXlhcjM4dXhoamVSczh3Wm1qb3dNRHNKWmNjd291Y1FTVWFXNG1uNHhIb19kMnQtV21KWUJDQ1MxRlhTcUgwbnBTaldFclFNZ2JYX2FyN240UGJ3N205NzRqOFloX2JuQQ?oc=5",
-      "date": "Fri, 22 May 2026 05:00:00 GMT",
-      "desc": "Breakingviews - Why it’s too late to jump on the chip bandwagon&nbsp;&nbsp;Reuters"
+      "title": "As major semiconductor companies, such as Samsung Electronics and SK Hynix, have decided on hundreds.. - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5OT3BMcEFZUUR0Vm13b1ZZc3RpRjBEaWJKdUV6dDNkVFpldDlIYWE4VUwzRUZDeGJUWWxBVUM1b0MyWmtRTE1qMHNka0pyTVZGWC1RNm1B?oc=5",
+      "date": "Mon, 25 May 2026 00:09:30 GMT",
+      "desc": "As major semiconductor companies, such as Samsung Electronics and SK Hynix, have decided on hundreds..&nbsp;&nbsp;매일경제"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1520.48,
-      "change": 20.71,
-      "pct": 1.38,
+      "price": 1512.29,
+      "change": 7.89,
+      "pct": 0.52,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-24 22:54 UTC"
+  "updatedAt": "2026-05-25 07:06 UTC"
 }
