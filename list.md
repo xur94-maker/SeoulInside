@@ -1,11 +1,34 @@
-# KOSPI Crosses 8,000 for the First Time — But the Real Story Is What Foreigners Did After 3 PM
-https://seoulinside.substack.com/p/kospi-crosses-8000-for-the-first
+#seoulinside.bsky.social
+https://bsky.app/profile/seoulinside.bsky.social
 
-# Korea Market Outlook 
-https://seoulinside.wordpress.com/2026/05/18/news/
+#reddit.com/r/seoulinside/
+https://www.reddit.com/r/seoulinside/
+
+#x.com/Seoul_Inside
+https://x.com/Seoul_Inside
+
+#threads.com/@seoul_letter
+https://www.threads.com/@seoul_letter?hl=ko
+
+#instagram.com/seoul_letter
+https://www.instagram.com/seoul_letter/
+
+#seoulinside.substack.com
+https://seoulinside.substack.com/
+
+#medium.com/@Seoulinside
+https://medium.com/@Seoulinside
+
+#seoulinside.wordpress.com
+https://seoulinside.wordpress.com/
+
+#xur94-maker.github.io/SeoulInside
+https://xur94-maker.github.io/SeoulInside/
+
+https://www.facebook.com/sun.vonxu
+
+
 
 # Seoul Economy Weekly
 https://medium.com/@Seoulinside/seoul-inside-complete-archive-99c462603e25/
 
-# Inside the BOK Rate Decision 
-https://xur94-maker.github.io/SeoulInside/link1.html/
