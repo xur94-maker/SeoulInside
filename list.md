@@ -56,7 +56,7 @@ https://seoulinside.substack.com/p/kospi-crosses-8000-for-the-first
 https://seoulinside.wordpress.com/2026/05/18/news/
 
 # Seoul Economy Weekly
-https://seoulinside.wordpress.com/2026/05/10/example/
+[https://medium.com/@Seoulinside/seoul-inside-complete-archive-99c462603e25/]
 
 # Inside the BOK Rate Decision 
-https://seoulinside.wordpress.com/2026/05/03/example/
+[https://xur94-maker.github.io/SeoulInside/link1.html/]
