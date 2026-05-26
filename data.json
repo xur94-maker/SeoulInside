@@ -1,22 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "US launches new strikes on Iran, targeting missile sites and boats",
-      "link": "https://www.bbc.com/news/articles/cvgzzn4y1n8o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 26 May 2026 05:45:58 GMT",
-      "desc": "US Central Command says the strikes were taken in \"self-defense\". It comes as senior Iranian negotiators are in Qatar for talks to end the war."
-    },
-    {
-      "title": "Netanyahu says Israel will intensify strikes against Hezbollah",
-      "link": "https://www.bbc.com/news/articles/cewppdk1187o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 26 May 2026 01:17:46 GMT",
-      "desc": "The Israeli military hits targets in eastern Lebanon after the prime minister announces further strikes."
-    },
-    {
-      "title": "Deal with US not imminent, Iran says",
-      "link": "https://www.bbc.com/news/articles/cglpp2yk336o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 25 May 2026 22:05:29 GMT",
-      "desc": "The US secretary of state earlier said that an agreement could possibly come on Monday."
+      "title": "Iran condemns US strikes as 'gross violation' of ceasefire",
+      "link": "https://www.bbc.com/news/articles/c4g44yl7q70o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 26 May 2026 15:15:29 GMT",
+      "desc": "The attacks took place while Iranian and Qatari negotiators were in Doha for peace talks."
     },
     {
       "title": "Russia threatens more Kyiv strikes and tells foreign nationals to leave",
@@ -25,13 +13,31 @@
       "desc": "It comes after the Ukrainian capital suffered one of the biggest aerial assaults of the war overnight on Saturday."
     },
     {
-      "title": "Wave of child abuse cases shakes schools in Paris",
-      "link": "https://www.bbc.com/news/articles/c8e8gx2d7j4o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 25 May 2026 23:01:57 GMT",
-      "desc": "A school assistant goes on trial accused of sexual mistreatment of children in his care, in the latest case to rock the Paris school system."
+      "title": "Four killed as school minibus collides with train in Belgium",
+      "link": "https://www.bbc.com/news/articles/c70vvd17rg7o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 26 May 2026 17:11:24 GMT",
+      "desc": "Two schoolchildren, their chaperone and the minibus driver were killed in the crash, says a Belgian minister."
+    },
+    {
+      "title": "Eleven killed in Lebanon village as Israel intensifies strikes",
+      "link": "https://www.bbc.com/news/articles/cx211rgngp0o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 26 May 2026 12:44:57 GMT",
+      "desc": "Israel says it struck 100 Hezbollah infrastructure sites and fighters in Lebanon, after PM Benjamin Netanyahu vows to \"crush\" Hezbollah."
+    },
+    {
+      "title": "Ebola needs swift response to prevent catastrophe, says DR Congo governor",
+      "link": "https://www.bbc.com/news/articles/c3022rd2er4o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 26 May 2026 11:22:04 GMT",
+      "desc": "The governor of Ituri said the more time they lose, the closer the province is to disaster."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea's central bank to hold key rate on May 28, hikes expected from Q3 - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPOXhXVGIwUjRNXzFLNHd5Mm51dE54aGpkRnB1ck9FTFhES3l1MTNMbk1nZmZKZFdab0Z6Q0FyMVEtLUlTaDRyWmdaa0ZKSkRnVnNXZ0lsQmxLLUljQ0kxQlJaZnpfbXIxclZObDhjN2oxekpUN1FGNDVKM1pnaGhyUVAxN0JGMk95LVdzeGNiUXZ1WjI2QTY0REIxNA?oc=5",
+      "date": "Tue, 26 May 2026 00:42:00 GMT",
+      "desc": "South Korea's central bank to hold key rate on May 28, hikes expected from Q3&nbsp;&nbsp;Yahoo Finance"
+    },
     {
       "title": "How South Korea Is Weathering the Iran War Oil Shock - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOaHdsRHNhYmNwVUpXNnBZcjQyMk81V00xSnRoZWFfRy1HcnFqVS1WY29lM2dKS29pTDRPWjdBLUl6ZHFsbVh3ZkFkOEM5d3F1ZmVNLXFpaVBIV0k1TDQ1VzdVbHZYOVBkOVQxaFRoWWxSd1hCeFUzVFltR0FtT0wzOHdlLTA2QQ?oc=5",
@@ -39,16 +45,10 @@
       "desc": "How South Korea Is Weathering the Iran War Oil Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "Finance ministry to prepare post-Middle East crisis growth strategy for H2 - Yonhap News Agency",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBtM2lGb2lIemNqd0J6eFhkNWpIWEg4QmtfUGpmTnJveVlJbjd0RUZ5R3NYamZhcWNBRkJZbnUzOEhpcWctUzJNX2VsWm9naEVEdTc3R3pFZERSQQ?oc=5",
-      "date": "Tue, 26 May 2026 03:59:03 GMT",
-      "desc": "Finance ministry to prepare post-Middle East crisis growth strategy for H2&nbsp;&nbsp;Yonhap News Agency"
-    },
-    {
-      "title": "BOK expected to hike rates twice to 3.0% in 2026, KED survey shows - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9FakwtZWxOQkU4cmpLdldaMVFhV2xaelNkVURzWExhX3U0ZDJEMXlsM25kQkdWWU5jMkdfM0xpTlp0dzRaT1RuNEdDbVcxTW9yTFp6MjZxTGQwMTFoNWtvaEVJZHhwenFVRjZpblFJOFQ?oc=5",
-      "date": "Tue, 26 May 2026 02:49:56 GMT",
-      "desc": "BOK expected to hike rates twice to 3.0% in 2026, KED survey shows&nbsp;&nbsp;KED Global"
+      "title": "Korea Sees Faster Economic Growth on Semiconductor Surge - Koreabizwire",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNQnJoX0J6SUtRaVJucjhMM3EtbGduQXhjVHloeVpZYXN4TlNWb2dpbUt4N3JKaTRKSk5MdVprVEp0UmpxOE9VWDUzcWlFZUI1cnhMUmQyeDFWdmhhSWNZZlg0ckJyOWRtQWV1WHRDN2dfQVJNUXM5MGRZSDNnSFFtMUU2cGhxQlRLTnQ3WUZneXU?oc=5",
+      "date": "Tue, 26 May 2026 06:51:02 GMT",
+      "desc": "Korea Sees Faster Economic Growth on Semiconductor Surge&nbsp;&nbsp;Koreabizwire"
     },
     {
       "title": "China-South Korea Economic Friendship and Cooperation Center unveiled at the 8th WCIFIT - 中国新闻网",
@@ -57,117 +57,117 @@
       "desc": "China-South Korea Economic Friendship and Cooperation Center unveiled at the 8th WCIFIT&nbsp;&nbsp;中国新闻网"
     },
     {
-      "title": "Fiscal Expert Warns South Korea's 100 Trillion Won Deficits Unsustainable - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNeHczbHAyVTBrdVlxRTBLUTV6V1Z6RlhndDJNbFJDOXY1MUJkYXZnQ3dhcVZrRHJRNTJkaGc2SnAwdGUzWVNDWDNRVFRaZnVSUUh4M2J0UnM4Q29EWV9xdXNDSnZXZ3F5SlkySzc3Zmw1OXpEN293YVNqdlk2VTdaR0JfTTdDaTRMc1BPS2JB?oc=5",
-      "date": "Tue, 26 May 2026 02:20:29 GMT",
-      "desc": "Fiscal Expert Warns South Korea's 100 Trillion Won Deficits Unsustainable&nbsp;&nbsp;조선일보"
+      "title": "BOK expected to hike rates twice to 3.0% by year-end, KED survey shows - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9FakwtZWxOQkU4cmpLdldaMVFhV2xaelNkVURzWExhX3U0ZDJEMXlsM25kQkdWWU5jMkdfM0xpTlp0dzRaT1RuNEdDbVcxTW9yTFp6MjZxTGQwMTFoNWtvaEVJZHhwenFVRjZpblFJOFQ?oc=5",
+      "date": "Tue, 26 May 2026 11:30:00 GMT",
+      "desc": "BOK expected to hike rates twice to 3.0% by year-end, KED survey shows&nbsp;&nbsp;KED Global"
+    },
+    {
+      "title": "KOSPI Surpasses 8,000 Led by Samsung, SK Hynix - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOQm14VHg3UUJTZS1ocnF6VGJFM3Z4NE9CUVV4VjhqUEhKMzNnQUxneGo5WVRGbjkwcFdHZWRDQkhzZ1lUVHBnUnRhWmVpWnQ0VVZTampRa2hGdFVtVV9Nb09zRjVSMTBHZkpreGdNam5jR3dIQ0dhelJ0ZEV0MGJYYUwyaGpFUU5adXp6aDBB?oc=5",
+      "date": "Tue, 26 May 2026 15:57:42 GMT",
+      "desc": "KOSPI Surpasses 8,000 Led by Samsung, SK Hynix&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Block trade puts Samsung Electronics supplier Leeno back in M&A spotlight - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBjT3FMMlA5SVdxLVVkS05ockpJRGlNUFFXUHdvMWVhSUUyX2NqNWlic3hodEZzU0pkeGNsWUFPbFRBbTJWdVZGbXpfMml4Vmo5RmhRcDJ5ODlteVRWSEUyZ25wUGotOV9PRmNMdXI3VG5CZTgwbk5QZlJhaw?oc=5",
+      "date": "Tue, 26 May 2026 11:41:00 GMT",
+      "desc": "Block trade puts Samsung Electronics supplier Leeno back in M&A spotlight&nbsp;&nbsp;KED Global"
     },
     {
       "title": "Samsung Electronics, SK hynix employees see marriage desirability increase amid chip industry boom - Korea JoongAng Daily",
       "link": "https://news.google.com/rss/articles/CBMijgJBVV95cUxQY29OWHptbzlrUEJoZEF1VHA1M2RqemtUWTRBd21TSi1GN1F6TnktbC1ZY2dxX2loRnY5SXloRGdQMU9qSFZXMjFMUzAwX2V1cDdDUnVGNWpFR0R6YUVMVzNPclU4QTRFczc1bW5NdjBTMzFNUlVvcEx2Z3pDVEV0Q0VaaWU1UGdXeGdOVmN0ZnI0ZkhqS2ZDejJNWEpZazF5RlNnSHN1VnI2RTJoN1lWaUpwcDRSQXNDMDQzQWl5RS11a3QxSHRXeVFBZG5jMUVfWHViQVdqYnNPZ0VxbTVYMmVLQzhkZ2pld3BweVYyMHQ0OFh5ekFpeTkwQ0R4d0ZqSHFMeHNZdjgyUHVSaHc?oc=5",
       "date": "Mon, 25 May 2026 22:00:00 GMT",
       "desc": "Samsung Electronics, SK hynix employees see marriage desirability increase amid chip industry boom&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "Samsung, SK Hynix Workers' Income 10x Semiconductor SMEs - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxON21WcmJQMldtcUQzcExBZER2ekhJeTF1clU3VU0wU3BmU0RBWGFzZEJJSkZXYkJyb0JyS1FzUlB4YzZZWGVfMlNuNVpZcUdmbVg5ZVYwaFFsdmhwOWt1UjZ2OGZMSDhlYmkwUG4wd1ZwaWI0QW1KSENnWU5rOERkeElZTHNkVF9k?oc=5",
-      "date": "Mon, 25 May 2026 09:25:11 GMT",
-      "desc": "Samsung, SK Hynix Workers' Income 10x Semiconductor SMEs&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Samsung chip workers to get average $340,000 bonus in AI boom - The Seattle Times",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNRXc1bzZ2WDlnb3NlSGdRV19aTDQ0dm4zQkhVQV9SYnVEVkc2UjVkbDJNeFl3dXVETzZ3Z1NQX2N4OFd5LVd4SE1IV3JMM1k2NDNhdjRTR3dCdDIzdkZFaGNwRm5Oc0tRLU0tQ09Rek1ULURRaGRIeF9yXzV4UlJmeVgxVGpidmtNVUhVaFdfcnZqeUFyYXlYZWFtaV9HeVE?oc=5",
-      "date": "Mon, 25 May 2026 15:00:02 GMT",
-      "desc": "Samsung chip workers to get average $340,000 bonus in AI boom&nbsp;&nbsp;The Seattle Times"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 215.33,
-      "change": -8.14,
-      "pct": -3.64,
+      "price": 213.44,
+      "change": -6.07,
+      "pct": -2.77,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 404.52,
-      "change": 2.9,
-      "pct": 0.72,
+      "price": 411.79,
+      "change": 4.64,
+      "pct": 1.14,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 467.51,
-      "change": 19.93,
-      "pct": 4.45,
+      "price": 496.4,
+      "change": 46.81,
+      "pct": 10.41,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 119.84,
-      "change": 0.88,
-      "pct": 0.74,
+      "price": 120.95,
+      "change": 2.45,
+      "pct": 2.07,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 238.16,
-      "change": 35.65,
-      "pct": 17.6,
+      "price": 245.83,
+      "change": 32.42,
+      "pct": 15.19,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 306.51,
-      "change": 49.78,
-      "pct": 19.39,
+      "price": 316.43,
+      "change": 18.2,
+      "pct": 6.1,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 382.97,
-      "change": -5.94,
-      "pct": -1.53,
+      "price": 386.14,
+      "change": -1.52,
+      "pct": -0.39,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 308.82,
-      "change": 6.57,
-      "pct": 2.17,
+      "price": 309.32,
+      "change": 4.33,
+      "pct": 1.42,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 418.57,
-      "change": -2.49,
-      "pct": -0.59,
+      "price": 413.83,
+      "change": -5.25,
+      "pct": -1.25,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7473.47,
-      "change": 40.5,
-      "pct": 0.54,
+      "price": 7505.18,
+      "change": 59.46,
+      "pct": 0.8,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26343.97,
-      "change": 73.61,
-      "pct": 0.28,
+      "price": 26565.77,
+      "change": 272.67,
+      "pct": 1.04,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -175,17 +175,17 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 300000.0,
-      "change": 500.0,
-      "pct": 0.17,
+      "price": 299000.0,
+      "change": -500.0,
+      "pct": -0.17,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2067000.0,
-      "change": 127000.0,
-      "pct": 6.55,
+      "price": 2052000.0,
+      "change": 112000.0,
+      "pct": 5.77,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
@@ -199,35 +199,35 @@
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 166900.0,
-      "change": -1000.0,
-      "pct": -0.6,
+      "price": 167000.0,
+      "change": -900.0,
+      "pct": -0.54,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 200500.0,
-      "change": 1000.0,
-      "pct": 0.5,
+      "price": 200000.0,
+      "change": 500.0,
+      "pct": 0.25,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8066.66,
-      "change": 251.07,
-      "pct": 3.21,
+      "price": 8047.51,
+      "change": 231.92,
+      "pct": 2.97,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1503.51,
-      "change": -9.32,
-      "pct": -0.62,
+      "price": 1507.25,
+      "change": -5.58,
+      "pct": -0.37,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-26 06:40 UTC"
+  "updatedAt": "2026-05-26 17:20 UTC"
 }
