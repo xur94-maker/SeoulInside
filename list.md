@@ -1,4 +1,4 @@
-KOSPI Crosses 8,000 for the First Time — But the Real Story Is What Foreigners Did After 3 PM
+# KOSPI Crosses 8,000 for the First Time — But the Real Story Is What Foreigners Did After 3 PM
 B. Sun | Seoul Inside
 May 26, 2026
 
