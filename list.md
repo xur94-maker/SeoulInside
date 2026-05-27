@@ -31,7 +31,11 @@ https://500px.com/p/Vonxu?view=photos
 #facebook.com/sun.vonxu
 https://www.facebook.com/sun.vonxu
 
+#medium.com/import
+https://medium.com/p/import
 
+#link
+https://xur94-maker.github.io/SeoulInside/link1.html
 
 # Seoul Economy Weekly
 https://medium.com/@Seoulinside/seoul-inside-complete-archive-99c462603e25/
