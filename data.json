@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "Israel issues evacuation order for swathes of southern Lebanon",
+      "link": "https://www.bbc.com/news/articles/cj3pgrpmlklo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 27 May 2026 20:26:03 GMT",
+      "desc": "The military says areas south of the Zahrani River are now \"combat zones\" as it threatens Hezbollah with fresh strikes."
+    },
+    {
       "title": "Ebola-hit DR Congo faces 'catastrophic collision' of disease and conflict, WHO warns",
       "link": "https://www.bbc.com/news/articles/cdxpdex062yo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 27 May 2026 10:40:29 GMT",
+      "date": "Wed, 27 May 2026 18:50:50 GMT",
       "desc": "Tedros Adhanom Ghebreyesus said fighting in DR Congo was hampering efforts to stop spread"
     },
     {
-      "title": "Israel orders evacuation of Lebanese city as conflict with Hezbollah escalates",
-      "link": "https://www.bbc.com/news/articles/cj3pgrpmlklo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 27 May 2026 15:16:13 GMT",
-      "desc": "Israel's military tells residents of Tyre it will \"act forcefully\" against the armed group, after another wave of strikes in south and east Lebanon."
+      "title": "Trump says US 'not satisfied' with Iran deal yet",
+      "link": "https://www.bbc.com/news/articles/c74dy9jw1q9o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 27 May 2026 17:37:33 GMT",
+      "desc": "The US president says he believes Iran wants to reach a deal but there is still no agreement on its terms."
     },
     {
       "title": "Five people found alive after week trapped in flooded Laos cave",
@@ -23,15 +29,15 @@
       "link": "https://www.bbc.com/news/articles/cjwppj1yn7go?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 27 May 2026 13:15:26 GMT",
       "desc": "Hamas says Mohammed Odeh was killed alongside his wife and two children in a strike on a residential building."
-    },
-    {
-      "title": "Woman caught after 30 years on the run is jailed for armed robberies",
-      "link": "https://www.bbc.com/news/articles/cx21dr3lekpo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 27 May 2026 12:42:43 GMT",
-      "desc": "Klette was finally caught in a flat in Berlin in 2024 and put on trial last year."
     }
   ],
   "koreaNews": [
+    {
+      "title": "How South Korea Is Trying to Increase Its Supply-Chain Resilience - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQSm5TUVFFRFllTlVzRnB0RnIzTnRENFpGSEw2ZlNOZDg2dnBkeGlSVFJfVTN6OE1neFNEYWoySTRSLVNZa3oydkJwQVlKNWJFQjJVeU1PTmxyckNvamNOMW9kSDk3d0dsLTgzZ3RveWZ5eUxEWjNGZmdyV3RwTEVwNWdYYjBFQklqYjRXZ091NENFYjdSbTVn?oc=5",
+      "date": "Wed, 27 May 2026 19:00:52 GMT",
+      "desc": "How South Korea Is Trying to Increase Its Supply-Chain Resilience&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
     {
       "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQjVZQTd6cTdwOWwyUy1udzBUU3BmTU5lX1lTWnlaSVpEcktrcW00V3hEQUpCNjJwMExFcHNtUU1xQlU2RkNObExxNHpiWEl5MWVlcm5xTnVXWW1mUW9NWTM4ejdHMjg3MmpsaGk2RmhlTjlYTnNLRmh6dWhJSjdoRHJCbGtKNlNkTVdzN1FqMmZIVDJEeFpNQllZNU5oR3IxWF91Sm1PTFBhNWdkekozZy03aDRYcGM?oc=5",
@@ -39,22 +45,16 @@
       "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
     },
     {
-      "title": "How South Korea Is Weathering the Iran War Oil Shock - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOaHdsRHNhYmNwVUpXNnBZcjQyMk81V00xSnRoZWFfRy1HcnFqVS1WY29lM2dKS29pTDRPWjdBLUl6ZHFsbVh3ZkFkOEM5d3F1ZmVNLXFpaVBIV0k1TDQ1VzdVbHZYOVBkOVQxaFRoWWxSd1hCeFUzVFltR0FtT0wzOHdlLTA2QQ?oc=5",
-      "date": "Mon, 18 May 2026 18:58:23 GMT",
-      "desc": "How South Korea Is Weathering the Iran War Oil Shock&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "First China, now South Korea: why Asian powers are turning to commercial Arctic shipping - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxPOHNJZlcyc0pYVTBaYjRJTER0MFVhZzF3Mi1mMUxDbmdOT3ZqcjRrWkZ0dmx6Um9GOV9pUjFlOXowb0RJRWtodXV0VFNzeldaNmJISjhvSFdCQXRKbDFYWFRpY0s3UzNEUEVDUmlQV19NdDFWeGRlajI2MGxJb08tdXlISXhVR0treC1RVHdSckJiS3BZV1dXbTBFS0NuWllvX2RNQkM0cWJBbXNZdkhFSzZnN3JjbHRrajRFai1aRWpscGdyUHFuU1Z5OV95a3VWRDJsaFNUX1YybHBKdlNENUd0R2hmd3FZS2tHSHBrTlZqa2xqM2c4djQxazhaMHRJdGJKUzFyeXhOZw?oc=5",
+      "date": "Wed, 27 May 2026 23:00:09 GMT",
+      "desc": "First China, now South Korea: why Asian powers are turning to commercial Arctic shipping&nbsp;&nbsp;South China Morning Post"
     },
     {
       "title": "South Korea's central bank to hold key rate on May 28, hikes expected from Q3 - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPOXhXVGIwUjRNXzFLNHd5Mm51dE54aGpkRnB1ck9FTFhES3l1MTNMbk1nZmZKZFdab0Z6Q0FyMVEtLUlTaDRyWmdaa0ZKSkRnVnNXZ0lsQmxLLUljQ0kxQlJaZnpfbXIxclZObDhjN2oxekpUN1FGNDVKM1pnaGhyUVAxN0JGMk95LVdzeGNiUXZ1WjI2QTY0REIxNA?oc=5",
       "date": "Tue, 26 May 2026 00:42:00 GMT",
       "desc": "South Korea's central bank to hold key rate on May 28, hikes expected from Q3&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "AllianceBernstein: South Korea's Rising Governance Tide: How to Ride the Value-Up Wave - StreetInsider",
-      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQb0VObElZbm9jTTFMYTNQTEh4TGI4bUJyaG9tOExhRmdhRnd2dVEtTkJMUzRWb3RnUG94OWdwVnlrU1JxMFctVjU0aEw2ZHNIcUIzcE0wREdmeWNOOEhxQnBNRHAwLWg5MVdPejZtR3V2Y2ZnX0p4R1BVQVg4UkdJNlNDQmVERWFBWUowSXR1cUhCNWdqNV93a1NJZEZCay1udl85MTMtQlhkaVFjMy1lcXQxTkkyUXlzRmc2V0poZERROEZEQ0xuRmswNHJxeXUybjVhRW10cndCM245UWFSZmZBdw?oc=5",
-      "date": "Wed, 27 May 2026 13:02:18 GMT",
-      "desc": "AllianceBernstein: South Korea's Rising Governance Tide: How to Ride the Value-Up Wave&nbsp;&nbsp;StreetInsider"
     },
     {
       "title": "China-South Korea Economic Friendship and Cooperation Center unveiled at the 8th WCIFIT - 中国新闻网",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 211.33,
-      "change": -4.0,
-      "pct": -1.86,
+      "price": 212.6,
+      "change": -2.73,
+      "pct": -1.27,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 420.24,
-      "change": 15.72,
-      "pct": 3.89,
+      "price": 422.73,
+      "change": 18.21,
+      "pct": 4.5,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 492.74,
-      "change": 25.23,
-      "pct": 5.4,
+      "price": 495.54,
+      "change": 28.03,
+      "pct": 6.0,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 119.07,
-      "change": -0.77,
-      "pct": -0.64,
+      "price": 121.77,
+      "change": 1.93,
+      "pct": 1.61,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 228.47,
-      "change": -9.69,
-      "pct": -4.07,
+      "price": 233.4,
+      "change": -4.76,
+      "pct": -2.0,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 303.86,
-      "change": -2.65,
-      "pct": -0.87,
+      "price": 302.71,
+      "change": -3.8,
+      "pct": -1.24,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 391.77,
-      "change": 8.8,
-      "pct": 2.3,
+      "price": 388.83,
+      "change": 5.86,
+      "pct": 1.53,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 310.51,
-      "change": 1.69,
-      "pct": 0.55,
+      "price": 310.85,
+      "change": 2.03,
+      "pct": 0.66,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 413.88,
-      "change": -4.69,
-      "pct": -1.12,
+      "price": 412.67,
+      "change": -5.9,
+      "pct": -1.41,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7514.14,
-      "change": 40.67,
-      "pct": 0.54,
+      "price": 7520.36,
+      "change": 46.89,
+      "pct": 0.63,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26628.15,
-      "change": 284.18,
-      "pct": 1.08,
+      "price": 26674.73,
+      "change": 330.76,
+      "pct": 1.26,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1499.03,
-      "change": -15.76,
-      "pct": -1.04,
+      "price": 1500.33,
+      "change": -5.11,
+      "pct": -0.34,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-27 16:57 UTC"
+  "updatedAt": "2026-05-27 23:14 UTC"
 }
