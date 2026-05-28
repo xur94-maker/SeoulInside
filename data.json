@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
+      "title": "Gaza City hospitals say several killed in strike, as Israel targets Hamas leaders",
+      "link": "https://www.bbc.com/news/articles/cn9p40en4ngo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 28 May 2026 16:20:50 GMT",
+      "desc": "At least five children were reportedly killed in the strike, which appears to have targeted a Hamas commander."
+    },
+    {
+      "title": "Are US and Iran close to peace or sliding back to war?",
+      "link": "https://www.bbc.com/news/articles/cze29764067o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 28 May 2026 16:56:19 GMT",
+      "desc": "Neither side seems interested in a return to all-out conflict, despite the latest exchange of strikes."
+    },
+    {
       "title": "Iran says it targeted American base after fresh US strikes",
       "link": "https://www.bbc.com/news/articles/c98r2qy5809o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 11:52:10 GMT",
+      "date": "Thu, 28 May 2026 15:53:05 GMT",
       "desc": "The hostilities come during a fragile ceasefire between the US and Iran, and protracted negotiations to end the three-month war."
     },
     {
-      "title": "Man arrested after three injured in stabbing at Swiss train station",
-      "link": "https://www.bbc.com/news/articles/cddpllqv49qo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 10:52:21 GMT",
-      "desc": "The suspect, a 31-year-old Swiss man, has been arrested, police say, as areas around the station are cordoned off."
+      "title": "Israel hits Lebanese capital in 'targeted strike'",
+      "link": "https://www.bbc.com/news/articles/cgqpjwdv7xeo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 28 May 2026 17:04:22 GMT",
+      "desc": "Beirut had until now largely been spared even as both Israel and Hezbollah accused each other of breaking last month's ceasefire."
     },
     {
-      "title": "US justice department launches criminal investigation into Trump accuser E Jean Carroll, reports say",
-      "link": "https://www.bbc.com/news/articles/clyp77jd407o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 10:15:03 GMT",
-      "desc": "The case centres on whether the former columnist lied about the funding she received for her civil lawsuit against the US president."
-    },
-    {
-      "title": "Sixteen pupils killed in Kenya school fire",
-      "link": "https://www.bbc.com/news/articles/cx21kkxq81po?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 12:24:11 GMT",
-      "desc": "Dozens of people were also injured in the fire, the cause of which is not yet known."
-    },
-    {
-      "title": "Israel strikes Beirut and southern Lebanon after large-scale evacuation orders",
-      "link": "https://www.bbc.com/news/articles/cj3pgrpmlklo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 11:31:59 GMT",
-      "desc": "The Israeli military has ordered Lebanese residents to leave some 17% of the country's territory."
+      "title": "Villas, cars and cash: Italy seizes dead Mafia mobster's millions",
+      "link": "https://www.bbc.com/news/articles/ceqpd4gqgveo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 28 May 2026 14:47:05 GMT",
+      "desc": "Police say the operation targeted the network of notorious late Sicilian mafia boss Matteo Messina Denaro."
     }
   ],
   "koreaNews": [
+    {
+      "title": "In the World’s Economic “Black Holes,” Data Still Leaks Out - UC San Diego Today",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQUVdOZlJEM241b09lZ05sVXdIU1EzX3huSnJ5RDdOVEI5aHprZ0ZZLUVCMWJfUjRPRmY3WUdWYmdpUmJMeEs5RmlZRkk0SDNGY0ljSlpUV2w5NVo3QWJQMTZVOFlmaG9sX3BfelpaSUVYbHZBUk9TTVFoR1VVZ3hOWVBVZllhaXRoY1hLSg?oc=5",
+      "date": "Thu, 28 May 2026 15:02:32 GMT",
+      "desc": "In the World’s Economic “Black Holes,” Data Still Leaks Out&nbsp;&nbsp;UC San Diego Today"
+    },
     {
       "title": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead - WSJ",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOOEVSNTI4M2U0cjM4Z2hMV2ROVG5SNmhsVUVGbDROUVZ0TmFGOU1fbXhQZHlndlc0MktIRXRCQzgwU0lkS3dyMU40WGVjclNHTE5TcWoySXlzLWcweHVZLWYxNnIxRmtYQV8wQXdtS2VvT1VtUDZZa1VnbnZQbFpjdzZodkkteTludEFxeGYwTXBtWjZWRk9qdE5FaW5UblJjZ3V5dWNPUkVucldMOGZjb1N4blBUbVIwQ0V5aXgweTM?oc=5",
@@ -45,22 +51,16 @@
       "desc": "BOK lifts S. Korea's growth forecast to 2.6 pct for this year amid robust chip-driven exports&nbsp;&nbsp;upi.com"
     },
     {
+      "title": "South Korea Grapples With an AI Boom Spurring $340,000 Bonuses - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZ0NCSjE2ZzlSY2RENlRtc0pXVURtSUx4WHdkRGNWTy1CblMxcWdKWHUzNkJlQTltYWh3QkRvVkVvU0J6dFRpU0paQmtzTFc5QXpJZUx1VDBwUDRxTkQyNHFqM1Y0eWI4eHJSQmxfLXRJM1JhRGhaTTl2aURyUWRseGhZRXppZnlyT3NXYThibkdmazZEV21FX3hSNWthMGtUOVZiUlp0NkRPZw?oc=5",
+      "date": "Thu, 28 May 2026 17:02:13 GMT",
+      "desc": "South Korea Grapples With an AI Boom Spurring $340,000 Bonuses&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
       "title": "South Korea exports set to rise for 12th month on chip boom: Reuters poll - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQbWxESEJBc21STDFlQkVjV1hlTXNKUFp1M0hmWkI5X2ZaRnRydUZybWdsZlh6cFpkQ3NJN0NzTlFRTzR0OXZ5QklCdGNSU1RfVkdvWnJoendpTmtHbk51VjRkVUhRSFpERG9zM2lBc25LYm91Z2hqWFJlQ21xMHBhc0taYlNNSDV3UmM1Ql9ydw?oc=5",
       "date": "Thu, 28 May 2026 01:03:00 GMT",
       "desc": "South Korea exports set to rise for 12th month on chip boom: Reuters poll&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "How South Korea Is Trying to Increase Its Supply-Chain Resilience - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQSm5TUVFFRFllTlVzRnB0RnIzTnRENFpGSEw2ZlNOZDg2dnBkeGlSVFJfVTN6OE1neFNEYWoySTRSLVNZa3oydkJwQVlKNWJFQjJVeU1PTmxyckNvamNOMW9kSDk3d0dsLTgzZ3RveWZ5eUxEWjNGZmdyV3RwTEVwNWdYYjBFQklqYjRXZ091NENFYjdSbTVn?oc=5",
-      "date": "Wed, 27 May 2026 19:14:01 GMT",
-      "desc": "How South Korea Is Trying to Increase Its Supply-Chain Resilience&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "South Korea's Economic Outlook Boosted by Semiconductor Exports - GuruFocus",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNQWpkTGZlZTNTSVZyOE85SHpjekpURkdsOERBNVhUYUpIQ0pxS1lXcXd1bXlXRzVZZnVCdzRESGlBNF9Pa1h2SEM1QkNMb0txTzRFUE53UTA1SjdULXZmOGlpaWktRTYyekdVX19mMlNVRjNJcDJkcmJRUWE4Z1NvVG5ZSGtTZHhqSTFwRk1mbHM4MGFzVmdjY1FzVm1KSFV1akt3?oc=5",
-      "date": "Thu, 28 May 2026 07:50:15 GMT",
-      "desc": "South Korea's Economic Outlook Boosted by Semiconductor Exports&nbsp;&nbsp;GuruFocus"
     },
     {
       "title": "Samsung, SK Hynix jump as Korea’s first single-stock leverage ETFs debut - KED Global",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 212.6,
-      "change": -2.73,
-      "pct": -1.27,
+      "price": 213.51,
+      "change": -1.35,
+      "pct": -0.63,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 422.73,
-      "change": 18.21,
-      "pct": 4.5,
+      "price": 422.88,
+      "change": 10.56,
+      "pct": 2.56,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 495.54,
-      "change": 28.03,
-      "pct": 6.0,
+      "price": 519.35,
+      "change": 15.46,
+      "pct": 3.07,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 121.77,
-      "change": 1.93,
-      "pct": 1.61,
+      "price": 120.75,
+      "change": -2.77,
+      "pct": -2.24,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 233.4,
-      "change": -4.76,
-      "pct": -2.0,
+      "price": 247.72,
+      "change": -1.09,
+      "pct": -0.44,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 302.71,
-      "change": -3.8,
-      "pct": -1.24,
+      "price": 343.76,
+      "change": 22.54,
+      "pct": 7.02,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 388.83,
-      "change": 5.86,
-      "pct": 1.53,
+      "price": 390.46,
+      "change": 1.58,
+      "pct": 0.41,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
       "price": 310.85,
-      "change": 2.03,
-      "pct": 0.66,
+      "change": 2.52,
+      "pct": 0.82,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 412.67,
-      "change": -5.9,
-      "pct": -1.41,
+      "price": 426.05,
+      "change": 10.02,
+      "pct": 2.41,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7520.36,
-      "change": 46.89,
-      "pct": 0.63,
+      "price": 7562.07,
+      "change": 42.95,
+      "pct": 0.57,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26674.73,
-      "change": 330.76,
-      "pct": 1.26,
+      "price": 26891.27,
+      "change": 235.09,
+      "pct": 0.88,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1501.58,
-      "change": -3.86,
-      "pct": -0.26,
+      "price": 1493.8,
+      "change": -11.64,
+      "pct": -0.77,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-28 12:36 UTC"
+  "updatedAt": "2026-05-28 17:31 UTC"
 }
