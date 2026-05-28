@@ -1,48 +1,54 @@
 {
   "globalNews": [
     {
-      "title": "US strikes Iran targets for second time in three days",
+      "title": "Iran says it targeted American base after fresh US strikes",
       "link": "https://www.bbc.com/news/articles/c98r2qy5809o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 04:59:02 GMT",
+      "date": "Thu, 28 May 2026 11:52:10 GMT",
       "desc": "The hostilities come during a fragile ceasefire between the US and Iran, and protracted negotiations to end the three-month war."
     },
     {
-      "title": "Israel strikes southern Lebanon after evacuation orders",
+      "title": "Man arrested after three injured in stabbing at Swiss train station",
+      "link": "https://www.bbc.com/news/articles/cddpllqv49qo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 28 May 2026 10:52:21 GMT",
+      "desc": "The suspect, a 31-year-old Swiss man, has been arrested, police say, as areas around the station are cordoned off."
+    },
+    {
+      "title": "US justice department launches criminal investigation into Trump accuser E Jean Carroll, reports say",
+      "link": "https://www.bbc.com/news/articles/clyp77jd407o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 28 May 2026 10:15:03 GMT",
+      "desc": "The case centres on whether the former columnist lied about the funding she received for her civil lawsuit against the US president."
+    },
+    {
+      "title": "Sixteen pupils killed in Kenya school fire",
+      "link": "https://www.bbc.com/news/articles/cx21kkxq81po?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 28 May 2026 12:24:11 GMT",
+      "desc": "Dozens of people were also injured in the fire, the cause of which is not yet known."
+    },
+    {
+      "title": "Israel strikes Beirut and southern Lebanon after large-scale evacuation orders",
       "link": "https://www.bbc.com/news/articles/cj3pgrpmlklo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 06:26:41 GMT",
-      "desc": "The military says areas south of the Zahrani River are now \"combat zones\" as it begins fresh strikes."
-    },
-    {
-      "title": "Jill Biden says she thought husband was having a stroke during 2024 debate",
-      "link": "https://www.bbc.com/news/articles/c99l270vy3no?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 04:53:51 GMT",
-      "desc": "The former US first lady told CBS News that she was frightened by Joe Biden's performance against Donald Trump."
-    },
-    {
-      "title": "Ebola-hit DR Congo faces 'catastrophic collision' of disease and conflict, WHO warns",
-      "link": "https://www.bbc.com/news/articles/cdxpdex062yo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 27 May 2026 18:50:50 GMT",
-      "desc": "Tedros Adhanom Ghebreyesus said fighting in DR Congo was hampering efforts to stop spread"
-    },
-    {
-      "title": "Matthew Perry's assistant jailed for 41 months over actor's ketamine death",
-      "link": "https://www.bbc.com/news/articles/cjepvx151gqo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 27 May 2026 20:09:33 GMT",
-      "desc": "Kenneth Iwamasa, who pleaded guilty last year to one count of conspiracy to distribute ketamine causing death, said he \"will forever regret\" his actions."
+      "date": "Thu, 28 May 2026 11:31:59 GMT",
+      "desc": "The Israeli military has ordered Lebanese residents to leave some 17% of the country's territory."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea exports set to rise for 12th month on chip boom: Reuters poll - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQbWxESEJBc21STDFlQkVjV1hlTXNKUFp1M0hmWkI5X2ZaRnRydUZybWdsZlh6cFpkQ3NJN0NzTlFRTzR0OXZ5QklCdGNSU1RfVkdvWnJoendpTmtHbk51VjRkVUhRSFpERG9zM2lBc25LYm91Z2hqWFJlQ21xMHBhc0taYlNNSDV3UmM1Ql9ydw?oc=5",
-      "date": "Thu, 28 May 2026 01:03:00 GMT",
-      "desc": "South Korea exports set to rise for 12th month on chip boom: Reuters poll&nbsp;&nbsp;Yahoo Finance"
-    },
     {
       "title": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead - WSJ",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOOEVSNTI4M2U0cjM4Z2hMV2ROVG5SNmhsVUVGbDROUVZ0TmFGOU1fbXhQZHlndlc0MktIRXRCQzgwU0lkS3dyMU40WGVjclNHTE5TcWoySXlzLWcweHVZLWYxNnIxRmtYQV8wQXdtS2VvT1VtUDZZa1VnbnZQbFpjdzZodkkteTludEFxeGYwTXBtWjZWRk9qdE5FaW5UblJjZ3V5dWNPUkVucldMOGZjb1N4blBUbVIwQ0V5aXgweTM?oc=5",
       "date": "Thu, 28 May 2026 05:35:00 GMT",
       "desc": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "BOK lifts S. Korea's growth forecast to 2.6 pct for this year amid robust chip-driven exports - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNSUgwck16QjNuVlRSRmxXVUNpTUt2WU5FVV9tdE9iQ3JOLTlkU0czNkIyZVU0RGFHVEdhOGxXVkhvMkFTbnNTUklqN1dVOER5ZDBMVk5abGNZMjRwZmQtdzNWbnJHYTRMbmZHSU1BQmtlaGRyRG9JNDJMMlVhaDNrTEQ4eUhqaU9nMUl2OUNlaW51aVJvQmQteVR6T1NpSXRUcnFpNjRsWmtUNjh2Q2EyZVRjdHpXQTJsMEVaZ1VQa2psbzh1QV9xdDRqSUVDTDN00gHWAUFVX3lxTE1YWWMwRnZjMGdBVlhHel9JOUJ4ZnBGdVZmeUREQ1NVWW11bnpOV3NCZVU5MVBwanBOYzNXTXB6QnpLbDhrYnBIb2Z6enFwVjVpTl9TZlQxY1hXdUFsQk05RTVlX0JlYTNJQlBWY2VkaVNCVnhtaFFPamJrNTlSaWExSjNWQUNYNUpLeVlZRHJWY194bEZhMXB4amFxMDk5QXNQWUtaVUI5WEh4YlByWUIxT2VDOVowQ2EtQUpUb25PVndHM0pFUXNZdE4wSWpsZENaNFJOX0E?oc=5",
+      "date": "Thu, 28 May 2026 08:00:46 GMT",
+      "desc": "BOK lifts S. Korea's growth forecast to 2.6 pct for this year amid robust chip-driven exports&nbsp;&nbsp;upi.com"
+    },
+    {
+      "title": "South Korea exports set to rise for 12th month on chip boom: Reuters poll - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQbWxESEJBc21STDFlQkVjV1hlTXNKUFp1M0hmWkI5X2ZaRnRydUZybWdsZlh6cFpkQ3NJN0NzTlFRTzR0OXZ5QklCdGNSU1RfVkdvWnJoendpTmtHbk51VjRkVUhRSFpERG9zM2lBc25LYm91Z2hqWFJlQ21xMHBhc0taYlNNSDV3UmM1Ql9ydw?oc=5",
+      "date": "Thu, 28 May 2026 01:03:00 GMT",
+      "desc": "South Korea exports set to rise for 12th month on chip boom: Reuters poll&nbsp;&nbsp;Yahoo Finance"
     },
     {
       "title": "How South Korea Is Trying to Increase Its Supply-Chain Resilience - Korea Economic Institute of America -",
@@ -51,28 +57,22 @@
       "desc": "How South Korea Is Trying to Increase Its Supply-Chain Resilience&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "AI boom outweighs Iran war pain, Korean central bank chief says - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5KMlNmc01ZbFBfU09BdXkxVndSVWp4NFc2WHMwR3loWE4wQlFBTzlvZGVSb1BiZU1YYjd6SFJIaW5UM2h5d002UzVXYllENWRsblpoSGZMMktjVnRkYkg2bVYtT3VOa3JrT1hybnZPOXo?oc=5",
-      "date": "Thu, 28 May 2026 04:52:52 GMT",
-      "desc": "AI boom outweighs Iran war pain, Korean central bank chief says&nbsp;&nbsp;Financial Times"
-    },
-    {
-      "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQjVZQTd6cTdwOWwyUy1udzBUU3BmTU5lX1lTWnlaSVpEcktrcW00V3hEQUpCNjJwMExFcHNtUU1xQlU2RkNObExxNHpiWEl5MWVlcm5xTnVXWW1mUW9NWTM4ejdHMjg3MmpsaGk2RmhlTjlYTnNLRmh6dWhJSjdoRHJCbGtKNlNkTVdzN1FqMmZIVDJEeFpNQllZNU5oR3IxWF91Sm1PTFBhNWdkekozZy03aDRYcGM?oc=5",
-      "date": "Wed, 27 May 2026 14:08:47 GMT",
-      "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
-    },
-    {
-      "title": "Samsung, SK Hynix Single-Stock Leveraged ETFs Flip Lower - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE43OWdCT2JjNklvakxGOUY2cTNjQnI0R0RjZFRDd0VvSkFWbUh1eEJmc0dyUWFYT2kzdFFQNE13cl9TLTJJTElfa2hfZWVrS24zYzB5ME1BYy1saUdNd2lBc1l4d01jMy1tUE52ZXMxS2p1MFBO?oc=5",
-      "date": "Thu, 28 May 2026 03:53:37 GMT",
-      "desc": "Samsung, SK Hynix Single-Stock Leveraged ETFs Flip Lower&nbsp;&nbsp;Businesskorea"
+      "title": "South Korea's Economic Outlook Boosted by Semiconductor Exports - GuruFocus",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNQWpkTGZlZTNTSVZyOE85SHpjekpURkdsOERBNVhUYUpIQ0pxS1lXcXd1bXlXRzVZZnVCdzRESGlBNF9Pa1h2SEM1QkNMb0txTzRFUE53UTA1SjdULXZmOGlpaWktRTYyekdVX19mMlNVRjNJcDJkcmJRUWE4Z1NvVG5ZSGtTZHhqSTFwRk1mbHM4MGFzVmdjY1FzVm1KSFV1akt3?oc=5",
+      "date": "Thu, 28 May 2026 07:50:15 GMT",
+      "desc": "South Korea's Economic Outlook Boosted by Semiconductor Exports&nbsp;&nbsp;GuruFocus"
     },
     {
       "title": "Samsung, SK Hynix jump as Korea’s first single-stock leverage ETFs debut - KED Global",
       "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1QN21haHQ3MjFjS0hOMVlIRE5wcGdoQ2QtNU1yTzdCVUNHU2paQVJoazR4U1ZPdkNzOG1qaHg1MlJ2OHc5SktIS3BwcGtwUFRFdzVfclhkNzRfVDF3LWEwVUxzUEVqd1pFLUsxLXYxeldxeVVhYlJudHlB?oc=5",
       "date": "Wed, 27 May 2026 10:16:00 GMT",
       "desc": "Samsung, SK Hynix jump as Korea’s first single-stock leverage ETFs debut&nbsp;&nbsp;KED Global"
+    },
+    {
+      "title": "Samsung, SK Hynix Single-Stock Leveraged ETFs Flip Lower - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE43OWdCT2JjNklvakxGOUY2cTNjQnI0R0RjZFRDd0VvSkFWbUh1eEJmc0dyUWFYT2kzdFFQNE13cl9TLTJJTElfa2hfZWVrS24zYzB5ME1BYy1saUdNd2lBc1l4d01jMy1tUE52ZXMxS2p1MFBO?oc=5",
+      "date": "Thu, 28 May 2026 03:53:37 GMT",
+      "desc": "Samsung, SK Hynix Single-Stock Leveraged ETFs Flip Lower&nbsp;&nbsp;Businesskorea"
     },
     {
       "title": "Semiconductor Giants Samsung, SK Hynix Propel KOSPI 4% Surge - 조선일보",
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 300000.0,
-      "change": 1000.0,
-      "pct": 0.33,
+      "price": 299500.0,
+      "change": 500.0,
+      "pct": 0.17,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2288000.0,
-      "change": 236000.0,
-      "pct": 11.5,
+      "price": 2289000.0,
+      "change": 237000.0,
+      "pct": 11.55,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 679000.0,
-      "change": -10000.0,
-      "pct": -1.45,
+      "price": 677000.0,
+      "change": -12000.0,
+      "pct": -1.74,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 164500.0,
-      "change": -2500.0,
-      "pct": -1.5,
+      "price": 164300.0,
+      "change": -2700.0,
+      "pct": -1.62,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 205500.0,
-      "change": 5500.0,
-      "pct": 2.75,
+      "price": 205000.0,
+      "change": 5000.0,
+      "pct": 2.5,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8192.66,
-      "change": 145.15,
-      "pct": 1.8,
+      "price": 8185.29,
+      "change": 137.78,
+      "pct": 1.71,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1502.58,
-      "change": -2.86,
-      "pct": -0.19,
+      "price": 1501.58,
+      "change": -3.86,
+      "pct": -0.26,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-28 06:45 UTC"
+  "updatedAt": "2026-05-28 12:36 UTC"
 }
