@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "'Poison seller' who sold toxic chemicals online to people across world admits aiding suicides",
+      "link": "https://www.bbc.com/news/articles/c70vg7glglyo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 29 May 2026 17:08:50 GMT",
+      "desc": "Kenneth Law admitted charges relating to Canadian victims - but families say he should also be charged in the UK over 79 deaths in Britain."
+    },
+    {
+      "title": "Nato condemns Russian 'recklessness' after drone hits Romanian residential block",
+      "link": "https://www.bbc.com/news/articles/c93x4nxlkjeo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 29 May 2026 16:13:28 GMT",
+      "desc": "Romania will hold an emergency meeting following the incident, in which two people were injured."
+    },
+    {
+      "title": "'Controversial' North Korean invasion setting for next Call of Duty game",
+      "link": "https://www.bbc.com/news/articles/c9q391y5088o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 29 May 2026 13:55:04 GMT",
+      "desc": "Developer Infinity Ward said the game will be \"grounded in the military authenticity\" the series is known for."
+    },
+    {
+      "title": "Former US attorney general Pam Bondi testifies in congressional Epstein probe",
+      "link": "https://www.bbc.com/news/articles/czj2ldllgwgo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 29 May 2026 13:17:19 GMT",
+      "desc": "The testimony comes about a month after America's top prosecutor was ousted by US President Donald Trump."
+    },
+    {
       "title": "Eight students arrested in Kenya after suspected deadly school arson attack",
       "link": "https://www.bbc.com/news/articles/cx21r3138m9o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 29 May 2026 11:22:10 GMT",
       "desc": "Sixteen pupils died in the fire that ripped through a dormitory while they were asleep."
-    },
-    {
-      "title": "Exploding rocket casts doubts over Nasa's Moon plans",
-      "link": "https://www.bbc.com/news/articles/cwy2q0g07kgo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 29 May 2026 10:38:46 GMT",
-      "desc": "Explosion of Blue Origin rocket is a setback for the company and for Nasa's Moon plans."
-    },
-    {
-      "title": "US and Iran 'very close' to deal but 'not there yet', Vance says",
-      "link": "https://www.bbc.com/news/articles/c87qng40wz9o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 29 May 2026 09:17:35 GMT",
-      "desc": "US officials earlier told the BBC that the framework of a ceasefire extension deal had been agreed, pending the approval of Trump and Iran's leadership."
-    },
-    {
-      "title": "Netanyahu says he has directed IDF to increase control of Gaza to 70%",
-      "link": "https://www.bbc.com/news/articles/ceqpelq5reqo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 29 May 2026 02:24:52 GMT",
-      "desc": "The expansion in control by Israel would contradict the terms of the ceasefire  Israel and Hamas agreed to in October 2025."
-    },
-    {
-      "title": "Survival before safety for Delhi's poor as temperatures hit 45C",
-      "link": "https://www.bbc.com/news/articles/c172yyvp55do?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 23:56:50 GMT",
-      "desc": "As temperatures peak, Delhi’s informal workers continue working despite growing health risks."
     }
   ],
   "koreaNews": [
@@ -45,12 +45,6 @@
       "desc": "South Korea’s SK Hynix enters exclusive $1 trillion club&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUUVMTnlQOTYyODFiMEFzSFFTMWNidXBjS2YzN2FhZE5XcVVBbFg0MmNyX1hNQVQyMEhyQ0FMNU9UT0NURFhONHVRcDBPRXZWYTdEZXM4ZUlWc05HSHQ5RXRWMGpFZDNyTmIyaE5NeVRqSjRCbEhIVUFwcFEzWkdRZ1E0WjY?oc=5",
-      "date": "Fri, 29 May 2026 01:48:11 GMT",
-      "desc": "Why South Korea’s won is falling despite a chip export earnings bonanza&nbsp;&nbsp;Financial Times"
-    },
-    {
       "title": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead - WSJ",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOOEVSNTI4M2U0cjM4Z2hMV2ROVG5SNmhsVUVGbDROUVZ0TmFGOU1fbXhQZHlndlc0MktIRXRCQzgwU0lkS3dyMU40WGVjclNHTE5TcWoySXlzLWcweHVZLWYxNnIxRmtYQV8wQXdtS2VvT1VtUDZZa1VnbnZQbFpjdzZodkkteTludEFxeGYwTXBtWjZWRk9qdE5FaW5UblJjZ3V5dWNPUkVucldMOGZjb1N4blBUbVIwQ0V5aXgweTM?oc=5",
       "date": "Thu, 28 May 2026 05:35:00 GMT",
@@ -59,8 +53,14 @@
     {
       "title": "South Korea's stock market is a big leveraged AI bet - Axios",
       "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBCdXhNZlNqdFFxaDVRN3Nma3RkSnRidW9JUlk4YlRoMTFuLVF4U1ZEVVN5aHFfZV81UVVDQ2FYcl8tcFJOdy1Ob3AzbnRkNUJjQ1VWblBxWS1EWU5uSnVZbl9SVEhXakY4UnF6Ug?oc=5",
-      "date": "Thu, 28 May 2026 11:00:58 GMT",
+      "date": "Thu, 28 May 2026 16:00:58 GMT",
       "desc": "South Korea's stock market is a big leveraged AI bet&nbsp;&nbsp;Axios"
+    },
+    {
+      "title": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQaHFqd3BBRlZWWnJkVmlMREdGNHcyX01fbE9rTDdPUVRfZjFCVnFmd05QNHdNT1RLQUhFWWU4Sm1MWmNnSVYwamJidmtYekdhUnBSRm1iY2dlV1BzNnVhZTF2YlA3bFdHa2FMSTVVUnRXTmx6YmJSR0dBVWFXQVBhMU05T19qaG10dHJZNFN6MjduLUc4ZGVXVm80ejdhOUw2Z2prQVQxTUZ0YUZQMUsxVVpEbDNoSnl3aXBEdHBrYTR2SGJ6VXdFaUZuRdIBywFBVV95cUxNTEp3Rkt5SkoxU3BHcDZHQWphTkloblp3SlUwcUtlZm1YUmxSOXFkWlk1d3dTXzhoaWhuY0UtM0ltdnFCczZuNWRESG8xYXhOUDRBSzZENXlvQVprRWpKam9uR2FXLXpyck5jNVR2NnotNXNUbXBGOTVPbmhWRGRVenVTQ2N1anRLSFp2ZV8zLVdMV1V3d0pQYmFkNEtoaURlZHlLSF9BX1QyVlF3bG1KaWpNTnhleDlwMy1YWkluUi1pSTlPeXZRR2ZSdw?oc=5",
+      "date": "Fri, 29 May 2026 00:00:09 GMT",
+      "desc": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles&nbsp;&nbsp;South China Morning Post"
     },
     {
       "title": "For the third time this month, a chip giant has joined the $1 trillion club - CNN",
@@ -69,10 +69,10 @@
       "desc": "For the third time this month, a chip giant has joined the $1 trillion club&nbsp;&nbsp;CNN"
     },
     {
-      "title": "SK Hynix Closes in on Samsung Electronics in Market Capitalization - 조선일보",
+      "title": "SK Hynix Closes in on Samsung Electronics' Market Cap Lead - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNSVNVMGVhMmFKNmR2X2RFdmJna0pIN2JYY1ZSMERhUmc3aTFJRDlrMGhIaFJPVmJwbXg3Q2M1czlUbFNmV2Q5cEJrYzNma3hVMFVCNjJ1YndXenI3Q0dsWGxiMkpQb2FKTHctLUlJQzJ4UzdUZTI3ckI4Y2ZsaWFIeVlWUXRHSnh5WHpqWmtn?oc=5",
-      "date": "Fri, 29 May 2026 07:04:17 GMT",
-      "desc": "SK Hynix Closes in on Samsung Electronics in Market Capitalization&nbsp;&nbsp;조선일보"
+      "date": "Fri, 29 May 2026 12:40:12 GMT",
+      "desc": "SK Hynix Closes in on Samsung Electronics' Market Cap Lead&nbsp;&nbsp;조선일보"
     },
     {
       "title": "AI-fuelled rally in Samsung, SK Hynix shares creates a problem: Funds forced to sell despite staying bullish - TradingView",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 214.25,
-      "change": -0.61,
-      "pct": -0.28,
+      "price": 216.33,
+      "change": 3.73,
+      "pct": 1.75,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 424.86,
-      "change": 12.54,
-      "pct": 3.04,
+      "price": 419.16,
+      "change": -3.57,
+      "pct": -0.84,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 518.09,
-      "change": 14.2,
-      "pct": 2.82,
+      "price": 503.98,
+      "change": 8.44,
+      "pct": 1.7,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 120.89,
-      "change": -2.63,
-      "pct": -2.13,
+      "price": 118.1,
+      "change": -3.67,
+      "pct": -3.01,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 243.29,
-      "change": -5.53,
-      "pct": -2.22,
+      "price": 253.38,
+      "change": 19.97,
+      "pct": 8.56,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 335.27,
-      "change": 14.05,
-      "pct": 4.37,
+      "price": 351.64,
+      "change": 48.93,
+      "pct": 16.16,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 390.13,
-      "change": 1.25,
-      "pct": 0.32,
+      "price": 382.16,
+      "change": -6.67,
+      "pct": -1.72,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 312.51,
-      "change": 4.18,
-      "pct": 1.36,
+      "price": 310.39,
+      "change": -0.46,
+      "pct": -0.15,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 426.99,
-      "change": 10.96,
-      "pct": 2.63,
+      "price": 443.2,
+      "change": 30.53,
+      "pct": 7.4,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7563.63,
-      "change": 44.51,
-      "pct": 0.59,
+      "price": 7580.97,
+      "change": 60.61,
+      "pct": 0.81,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26917.47,
-      "change": 261.29,
-      "pct": 0.98,
+      "price": 26969.58,
+      "change": 294.85,
+      "pct": 1.11,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1505.74,
-      "change": 2.63,
-      "pct": 0.17,
+      "price": 1504.27,
+      "change": 1.16,
+      "pct": 0.08,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-29 12:21 UTC"
+  "updatedAt": "2026-05-29 17:27 UTC"
 }
