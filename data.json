@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "US and Iran reach tentative deal to extend ceasefire, US officials say",
+      "title": "Russian drone crashes into apartment building in Romania",
+      "link": "https://www.bbc.com/news/articles/c93x4nxlkjeo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 29 May 2026 05:48:13 GMT",
+      "desc": "The drone hit a residential building, injuring two people and causing a fire, officials said."
+    },
+    {
+      "title": "US and Iran 'very close' to deal but 'not there yet', Vance says",
       "link": "https://www.bbc.com/news/articles/c87qng40wz9o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 22:13:30 GMT",
-      "desc": "But there has been conflicting information from Tehran, with one news agency reporting that no deal has been finalised or confirmed."
+      "date": "Thu, 28 May 2026 23:32:19 GMT",
+      "desc": "US officials earlier told the BBC that the framework of a ceasefire extension deal had been agreed, pending the approval of Trump and Iran's leadership."
     },
     {
       "title": "Are US and Iran close to peace or sliding back to war?",
@@ -13,42 +19,24 @@
       "desc": "Neither side seems interested in a return to all-out conflict, despite the latest exchange of strikes."
     },
     {
-      "title": "Gaza City hospitals say several killed in strike, as Israel targets Hamas leaders",
-      "link": "https://www.bbc.com/news/articles/cn9p40en4ngo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 16:20:50 GMT",
-      "desc": "At least five children were reportedly killed in the strike, which appears to have targeted a Hamas commander."
+      "title": "Netanyahu says he has directed IDF to increase control of Gaza to 70%",
+      "link": "https://www.bbc.com/news/articles/ceqpelq5reqo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 29 May 2026 02:24:52 GMT",
+      "desc": "The expansion in control by Israel would contradict the terms of the ceasefire  Israel and Hamas agreed to in October 2025."
     },
     {
-      "title": "Israel hits Lebanese capital in 'targeted strike'",
-      "link": "https://www.bbc.com/news/articles/cgqpjwdv7xeo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 17:39:16 GMT",
-      "desc": "Beirut had until now largely been spared even as both Israel and Hezbollah accused each other of breaking last month's ceasefire."
-    },
-    {
-      "title": "Man jailed for 15 years over plot to attack Taylor Swift concert in Vienna",
-      "link": "https://www.bbc.com/news/articles/cgrp7y05l9do?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 28 May 2026 21:07:46 GMT",
-      "desc": "A 21-year-old Austrian man is found guilty of planning the attack and other terrorism-related offences."
+      "title": "Survival before safety for Delhi's poor as temperatures hit 45C",
+      "link": "https://www.bbc.com/news/articles/c172yyvp55do?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 28 May 2026 23:56:50 GMT",
+      "desc": "As temperatures peak, Delhi’s informal workers continue working despite growing health risks."
     }
   ],
   "koreaNews": [
     {
-      "title": "In the World’s Economic “Black Holes,” Data Still Leaks Out - UC San Diego Today",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQUVdOZlJEM241b09lZ05sVXdIU1EzX3huSnJ5RDdOVEI5aHprZ0ZZLUVCMWJfUjRPRmY3WUdWYmdpUmJMeEs5RmlZRkk0SDNGY0ljSlpUV2w5NVo3QWJQMTZVOFlmaG9sX3BfelpaSUVYbHZBUk9TTVFoR1VVZ3hOWVBVZllhaXRoY1hLSg?oc=5",
-      "date": "Thu, 28 May 2026 15:02:32 GMT",
-      "desc": "In the World’s Economic “Black Holes,” Data Still Leaks Out&nbsp;&nbsp;UC San Diego Today"
-    },
-    {
-      "title": "South Korea Grapples With an AI Boom Spurring $340,000 Bonuses - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZ0NCSjE2ZzlSY2RENlRtc0pXVURtSUx4WHdkRGNWTy1CblMxcWdKWHUzNkJlQTltYWh3QkRvVkVvU0J6dFRpU0paQmtzTFc5QXpJZUx1VDBwUDRxTkQyNHFqM1Y0eWI4eHJSQmxfLXRJM1JhRGhaTTl2aURyUWRseGhZRXppZnlyT3NXYThibkdmazZEV21FX3hSNWthMGtUOVZiUlp0NkRPZw?oc=5",
-      "date": "Thu, 28 May 2026 23:02:14 GMT",
-      "desc": "South Korea Grapples With an AI Boom Spurring $340,000 Bonuses&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "BOK lifts S. Korea's growth forecast to 2.6 pct for this year amid robust chip-driven exports - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNSUgwck16QjNuVlRSRmxXVUNpTUt2WU5FVV9tdE9iQ3JOLTlkU0czNkIyZVU0RGFHVEdhOGxXVkhvMkFTbnNTUklqN1dVOER5ZDBMVk5abGNZMjRwZmQtdzNWbnJHYTRMbmZHSU1BQmtlaGRyRG9JNDJMMlVhaDNrTEQ4eUhqaU9nMUl2OUNlaW51aVJvQmQteVR6T1NpSXRUcnFpNjRsWmtUNjh2Q2EyZVRjdHpXQTJsMEVaZ1VQa2psbzh1QV9xdDRqSUVDTDN00gHWAUFVX3lxTE1YWWMwRnZjMGdBVlhHel9JOUJ4ZnBGdVZmeUREQ1NVWW11bnpOV3NCZVU5MVBwanBOYzNXTXB6QnpLbDhrYnBIb2Z6enFwVjVpTl9TZlQxY1hXdUFsQk05RTVlX0JlYTNJQlBWY2VkaVNCVnhtaFFPamJrNTlSaWExSjNWQUNYNUpLeVlZRHJWY194bEZhMXB4amFxMDk5QXNQWUtaVUI5WEh4YlByWUIxT2VDOVowQ2EtQUpUb25PVndHM0pFUXNZdE4wSWpsZENaNFJOX0E?oc=5",
-      "date": "Thu, 28 May 2026 08:00:46 GMT",
-      "desc": "BOK lifts S. Korea's growth forecast to 2.6 pct for this year amid robust chip-driven exports&nbsp;&nbsp;upi.com"
+      "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQjVZQTd6cTdwOWwyUy1udzBUU3BmTU5lX1lTWnlaSVpEcktrcW00V3hEQUpCNjJwMExFcHNtUU1xQlU2RkNObExxNHpiWEl5MWVlcm5xTnVXWW1mUW9NWTM4ejdHMjg3MmpsaGk2RmhlTjlYTnNLRmh6dWhJSjdoRHJCbGtKNlNkTVdzN1FqMmZIVDJEeFpNQllZNU5oR3IxWF91Sm1PTFBhNWdkekozZy03aDRYcGM?oc=5",
+      "date": "Wed, 27 May 2026 14:08:47 GMT",
+      "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
     },
     {
       "title": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead - WSJ",
@@ -57,28 +45,40 @@
       "desc": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQjVZQTd6cTdwOWwyUy1udzBUU3BmTU5lX1lTWnlaSVpEcktrcW00V3hEQUpCNjJwMExFcHNtUU1xQlU2RkNObExxNHpiWEl5MWVlcm5xTnVXWW1mUW9NWTM4ejdHMjg3MmpsaGk2RmhlTjlYTnNLRmh6dWhJSjdoRHJCbGtKNlNkTVdzN1FqMmZIVDJEeFpNQllZNU5oR3IxWF91Sm1PTFBhNWdkekozZy03aDRYcGM?oc=5",
-      "date": "Wed, 27 May 2026 14:08:47 GMT",
-      "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
+      "title": "South Korea's stock market is a big leveraged AI bet - Axios",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBCdXhNZlNqdFFxaDVRN3Nma3RkSnRidW9JUlk4YlRoMTFuLVF4U1ZEVVN5aHFfZV81UVVDQ2FYcl8tcFJOdy1Ob3AzbnRkNUJjQ1VWblBxWS1EWU5uSnVZbl9SVEhXakY4UnF6Ug?oc=5",
+      "date": "Thu, 28 May 2026 11:00:58 GMT",
+      "desc": "South Korea's stock market is a big leveraged AI bet&nbsp;&nbsp;Axios"
+    },
+    {
+      "title": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQaHFqd3BBRlZWWnJkVmlMREdGNHcyX01fbE9rTDdPUVRfZjFCVnFmd05QNHdNT1RLQUhFWWU4Sm1MWmNnSVYwamJidmtYekdhUnBSRm1iY2dlV1BzNnVhZTF2YlA3bFdHa2FMSTVVUnRXTmx6YmJSR0dBVWFXQVBhMU05T19qaG10dHJZNFN6MjduLUc4ZGVXVm80ejdhOUw2Z2prQVQxTUZ0YUZQMUsxVVpEbDNoSnl3aXBEdHBrYTR2SGJ6VXdFaUZuRdIBywFBVV95cUxNTEp3Rkt5SkoxU3BHcDZHQWphTkloblp3SlUwcUtlZm1YUmxSOXFkWlk1d3dTXzhoaWhuY0UtM0ltdnFCczZuNWRESG8xYXhOUDRBSzZENXlvQVprRWpKam9uR2FXLXpyck5jNVR2NnotNXNUbXBGOTVPbmhWRGRVenVTQ2N1anRLSFp2ZV8zLVdMV1V3d0pQYmFkNEtoaURlZHlLSF9BX1QyVlF3bG1KaWpNTnhleDlwMy1YWkluUi1pSTlPeXZRR2ZSdw?oc=5",
+      "date": "Fri, 29 May 2026 00:00:09 GMT",
+      "desc": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles&nbsp;&nbsp;South China Morning Post"
+    },
+    {
+      "title": "South Korea Grapples With an AI Boom Spurring $340,000 Bonuses - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZ0NCSjE2ZzlSY2RENlRtc0pXVURtSUx4WHdkRGNWTy1CblMxcWdKWHUzNkJlQTltYWh3QkRvVkVvU0J6dFRpU0paQmtzTFc5QXpJZUx1VDBwUDRxTkQyNHFqM1Y0eWI4eHJSQmxfLXRJM1JhRGhaTTl2aURyUWRseGhZRXppZnlyT3NXYThibkdmazZEV21FX3hSNWthMGtUOVZiUlp0NkRPZw?oc=5",
+      "date": "Thu, 28 May 2026 23:02:14 GMT",
+      "desc": "South Korea Grapples With an AI Boom Spurring $340,000 Bonuses&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "SK Hynix Closes in on Samsung Electronics in Market Capitalization - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNSVNVMGVhMmFKNmR2X2RFdmJna0pIN2JYY1ZSMERhUmc3aTFJRDlrMGhIaFJPVmJwbXg3Q2M1czlUbFNmV2Q5cEJrYzNma3hVMFVCNjJ1YndXenI3Q0dsWGxiMkpQb2FKTHctLUlJQzJ4UzdUZTI3ckI4Y2ZsaWFIeVlWUXRHSnh5WHpqWmtn?oc=5",
+      "date": "Fri, 29 May 2026 05:36:44 GMT",
+      "desc": "SK Hynix Closes in on Samsung Electronics in Market Capitalization&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Entering into AI Agent Ecosystem: Samsung, SK hynix Invest in Anthropic - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5rdUNtRlpvcUViQnNvSE9VREx2bUJpVmFOTUl2THVZTE9mYnJkb1FGN3BSd0NUdG02NUJET2w3M01ZWEdOX0FOdm5FQWQ1LTkyRVYxbVlzdFhIa042NmZlbnBWNWxjQm9MakZFZ2tOYmVyekxB?oc=5",
+      "date": "Fri, 29 May 2026 03:11:05 GMT",
+      "desc": "Entering into AI Agent Ecosystem: Samsung, SK hynix Invest in Anthropic&nbsp;&nbsp;Businesskorea"
     },
     {
       "title": "Samsung, SK Hynix jump as Korea’s first single-stock leverage ETFs debut - KED Global",
       "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1QN21haHQ3MjFjS0hOMVlIRE5wcGdoQ2QtNU1yTzdCVUNHU2paQVJoazR4U1ZPdkNzOG1qaHg1MlJ2OHc5SktIS3BwcGtwUFRFdzVfclhkNzRfVDF3LWEwVUxzUEVqd1pFLUsxLXYxeldxeVVhYlJudHlB?oc=5",
       "date": "Wed, 27 May 2026 10:16:00 GMT",
       "desc": "Samsung, SK Hynix jump as Korea’s first single-stock leverage ETFs debut&nbsp;&nbsp;KED Global"
-    },
-    {
-      "title": "Semiconductor Giants Samsung, SK Hynix Propel KOSPI 4% Surge - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQbGVLSHkwYjBwX2VUbWtVN0hpYzgxb0F6MTJDaXBBTEdCVTdQaEE4ODNqY2JZUW1KeENMZ0lBbEtfekVFZVRKSHo0dkNDNml2YTBOa0ljb0x6V0czazhudG9yVF93TlpGZk44Z3U3bWcxZUdGNHRTakdZbHI1ZndZa0J0Y1JkZTNKMHNDenVR?oc=5",
-      "date": "Wed, 27 May 2026 01:28:48 GMT",
-      "desc": "Semiconductor Giants Samsung, SK Hynix Propel KOSPI 4% Surge&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Asia's trillion-dollar titans are powering — and distorting — its fastest growing stock markets - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPZ0xXZEFYTnlPVWgyRDdBZzFWUGw1V0FmNkNxdlZOaFRIVlFsS1NCcjAzUW5DNWpIRWZ0TDlJT1BzRmNQMHFoZG5jVkRtLVRYY1I0RDR1MmdSTWZzN0F0YWpCZzJMSUFwcWNpRGotbzRibXgxRUlyeWxJVmRTSUh4UUFVRDBxcDhCOUJWRWRfVnh3TGMyWDl3YlRJTDlTOE9sam1pTFJEaUhCZHAwbnhwTEZtZWNoUHcyV3fSAb8BQVVfeXFMTi1aVEJnSmd0OVF1VFZjZmFsbnRXMThWa242czBSRmQ5UXBuQXd1VjJTTG5tTnFrU3Z4d0pKYmtVME5zc3l2dzNjRmg5ODFJLTM5aFk4eWhzQms2MmYya1lqVWdMeDF3TV9UdkRzaTZBZWRoTDZsXzRsbk1qRFpQNmNkdDhxbFFjbkZGeFpyUlRLNmdnQWJoNE5xZjJTbmQ1dFJzVWg3b09SaWU0RV9VYmVkX0dlZDcyUUNFa1lCU1E?oc=5",
-      "date": "Mon, 25 May 2026 07:42:15 GMT",
-      "desc": "Asia's trillion-dollar titans are powering — and distorting — its fastest growing stock markets&nbsp;&nbsp;CNBC"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 299500.0,
-      "change": 500.0,
-      "pct": 0.17,
+      "price": 317000.0,
+      "change": 10000.0,
+      "pct": 3.26,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2289000.0,
-      "change": 237000.0,
-      "pct": 11.55,
+      "price": 2310000.0,
+      "change": 67000.0,
+      "pct": 2.99,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 677000.0,
-      "change": -12000.0,
-      "pct": -1.74,
+      "price": 728000.0,
+      "change": 47000.0,
+      "pct": 6.9,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 164300.0,
-      "change": -2700.0,
-      "pct": -1.62,
+      "price": 169100.0,
+      "change": 4400.0,
+      "pct": 2.67,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 205000.0,
-      "change": 5000.0,
-      "pct": 2.5,
+      "price": 233500.0,
+      "change": 34700.0,
+      "pct": 17.45,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8185.29,
-      "change": 137.78,
-      "pct": 1.71,
+      "price": 8448.88,
+      "change": 220.18,
+      "pct": 2.68,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1493.69,
-      "change": -9.42,
-      "pct": -0.63,
+      "price": 1507.19,
+      "change": 4.08,
+      "pct": 0.27,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-28 23:11 UTC"
+  "updatedAt": "2026-05-29 06:47 UTC"
 }
