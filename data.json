@@ -1,6 +1,18 @@
 {
   "globalNews": [
     {
+      "title": "No deal announced after Trump meeting to make 'final determination' on Iran",
+      "link": "https://www.bbc.com/news/articles/c0r2d40r91qo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 30 May 2026 04:19:32 GMT",
+      "desc": "The US president met his advisers, after officials confirmed the US and Iran had agreed a framework of a deal."
+    },
+    {
+      "title": "US not 'turning back' on Asia allies, but expects them to boost defence - Hegseth",
+      "link": "https://www.bbc.com/news/articles/c5ye34k7yejo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 30 May 2026 05:57:46 GMT",
+      "desc": "The US defense secretary is questioned about US commitment, including further arms deals, at an Asian security summit in Singapore."
+    },
+    {
       "title": "'Poison seller' who sold toxic chemicals online to people across world admits aiding suicides",
       "link": "https://www.bbc.com/news/articles/c70vg7glglyo?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 29 May 2026 21:40:45 GMT",
@@ -13,22 +25,10 @@
       "desc": "Romania says the Russian drone was likely hit over Ukraine by its air defences and altered its trajectory."
     },
     {
-      "title": "Trump holds meeting to make 'final determination' on Iran deal",
-      "link": "https://www.bbc.com/news/articles/c0r2d40r91qo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 29 May 2026 19:32:24 GMT",
-      "desc": "The US president met his advisers, after officials confirmed the US and Iran had agreed a framework of a deal."
-    },
-    {
       "title": "First of five men found alive in flooded Laos cave rescued",
       "link": "https://www.bbc.com/news/articles/cvgzxjrkvn8o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 29 May 2026 18:21:11 GMT",
       "desc": "The bedraggled man was led to safety by rescuers after nine days stranded in the cavern"
-    },
-    {
-      "title": "'Controversial' North Korean invasion setting for next Call of Duty game",
-      "link": "https://www.bbc.com/news/articles/c9q391y5088o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 29 May 2026 13:55:04 GMT",
-      "desc": "Developer Infinity Ward said the game will be \"grounded in the military authenticity\" the series is known for."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,16 @@
       "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
     },
     {
-      "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUUVMTnlQOTYyODFiMEFzSFFTMWNidXBjS2YzN2FhZE5XcVVBbFg0MmNyX1hNQVQyMEhyQ0FMNU9UT0NURFhONHVRcDBPRXZWYTdEZXM4ZUlWc05HSHQ5RXRWMGpFZDNyTmIyaE5NeVRqSjRCbEhIVUFwcFEzWkdRZ1E0WjY?oc=5",
-      "date": "Fri, 29 May 2026 01:48:31 GMT",
-      "desc": "Why South Korea’s won is falling despite a chip export earnings bonanza&nbsp;&nbsp;Financial Times"
-    },
-    {
       "title": "South Korea’s SK Hynix enters exclusive $1 trillion club - Al Jazeera",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPdFRzaTVtM1FwbzNaLWJjb2ZWamRzUG1yZmhYdDdubXJZbUljeWx0TEV4T2xSSkRTZlNkRThvMzN1Yms2Wm1CVlhDY0hZNEZZMlJZRF9nQVdpRmowMVE4ZDZTZV9lRlpRVEE0T1phel84U2QtNWdkb0lNQmpZTG5ESlBxUDZ5T1k0VFozU1hoa2RmTkRQeVZqckVVbk5zTG_SAaQBQVVfeXFMT1N6ZDJVa3RiMUt3TmRKanpCdElKRnpiNnZGLURHQWhYdUZrMmdnOGVnRjNuNVhTZUliUmdtV0JPZmFiZnhrY0VJZ1lJblRKdHp0eEY0MFNCcEtqNE45MURhMVNfTUZrQjQ4alE2YTluSXQ3M0dONXV3eXFLcE5sUlltNHU2SFRfS1I3cFVtQS16eFhYdGlkNDdxUktMNHNPUG9tZno?oc=5",
       "date": "Fri, 29 May 2026 08:11:59 GMT",
       "desc": "South Korea’s SK Hynix enters exclusive $1 trillion club&nbsp;&nbsp;Al Jazeera"
+    },
+    {
+      "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUUVMTnlQOTYyODFiMEFzSFFTMWNidXBjS2YzN2FhZE5XcVVBbFg0MmNyX1hNQVQyMEhyQ0FMNU9UT0NURFhONHVRcDBPRXZWYTdEZXM4ZUlWc05HSHQ5RXRWMGpFZDNyTmIyaE5NeVRqSjRCbEhIVUFwcFEzWkdRZ1E0WjY?oc=5",
+      "date": "Fri, 29 May 2026 01:48:31 GMT",
+      "desc": "Why South Korea’s won is falling despite a chip export earnings bonanza&nbsp;&nbsp;Financial Times"
     },
     {
       "title": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead - WSJ",
@@ -63,22 +63,22 @@
       "desc": "South Korea's stock market is a big leveraged AI bet&nbsp;&nbsp;Axios"
     },
     {
+      "title": "Samsung, SK Hynix trail Micron as automotive memory demand rises - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNbG5aZWhTek9Lb3ZQVzVNNG04dHFHRzFwWXlPRWY2ZnlnbGFXTTZSZnptUHRmZ2RxWVZHLTJISDF0V19aQnA1S0RRaGV0SUJRUHpGUW5SVzVEMV92UWRZcjZPNlpIS1JwYTB0enMwbGRfZUZIc3UxY2IySlRTVVBKeG5uZURVQW5qcVZiYnl1VlRJOHBlVnZR?oc=5",
+      "date": "Fri, 29 May 2026 23:19:11 GMT",
+      "desc": "Samsung, SK Hynix trail Micron as automotive memory demand rises&nbsp;&nbsp;digitimes"
+    },
+    {
       "title": "For the third time this month, a chip giant has joined the $1 trillion club - CNN",
       "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOT3BXZTI1RzlhdGhXRm41VzUzWW8ycE9LLVlMUklwSzZfaldfYU9TUUN0NDlCOGFpbWRlN2Y1MzV3YWQyUmxBdkgzRjhtQjBhZGl3Tk1XRFZ0YkpWXzNieWVsZnhsT0NFdy0zNXNHTlRfUGUxZDhfYzNxUlNsQjZHai1hR3ljNzBxWUdLMQ?oc=5",
       "date": "Fri, 29 May 2026 04:26:13 GMT",
       "desc": "For the third time this month, a chip giant has joined the $1 trillion club&nbsp;&nbsp;CNN"
     },
     {
-      "title": "SK Hynix Challenges Samsung Electronics' Market Capitalization Lead - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWGtyY0FwMmZJVklyV29WNVdRVFkwdVRCX2JBLU54N1NCenZZZ0hjd3cwLXRRejdFeTRJc3BOUVZTemhvSGRjME8wdm55R2pONVEwX1lBSHZrbmRyUzUzb0pQWWs4QXZOdVNoSGd4V1JXTHZGc2ZMTUxQUV96eGp1R0E5SlZKeXJINkVrZUVR?oc=5",
-      "date": "Fri, 29 May 2026 15:57:17 GMT",
-      "desc": "SK Hynix Challenges Samsung Electronics' Market Capitalization Lead&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Samsung, SK Hynix jump as Korea’s first single-stock leverage ETFs debut - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1QN21haHQ3MjFjS0hOMVlIRE5wcGdoQ2QtNU1yTzdCVUNHU2paQVJoazR4U1ZPdkNzOG1qaHg1MlJ2OHc5SktIS3BwcGtwUFRFdzVfclhkNzRfVDF3LWEwVUxzUEVqd1pFLUsxLXYxeldxeVVhYlJudHlB?oc=5",
-      "date": "Wed, 27 May 2026 10:16:00 GMT",
-      "desc": "Samsung, SK Hynix jump as Korea’s first single-stock leverage ETFs debut&nbsp;&nbsp;KED Global"
+      "title": "Samsung, SK Hynix Bonuses Spur Luxury Sales Surge - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNEFNeFVKWkNTOEU0Z2FnRVJ3MWFmRlZabW93TGgzNktZaEJXV1BqWUxVNUxUSWpod3VneTEzdnllSDRyR3JFOGd2LXBIWVFuNWpvRGpubHRtVTZXSFFsOG1DYndOc1dfZmItR1E3ZlhlTDZUMEdvU1VrUmUxaTM5THJCMjUyM1Jk?oc=5",
+      "date": "Sat, 30 May 2026 05:07:20 GMT",
+      "desc": "Samsung, SK Hynix Bonuses Spur Luxury Sales Surge&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-29 23:08 UTC"
+  "updatedAt": "2026-05-30 06:17 UTC"
 }
