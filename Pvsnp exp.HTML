@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P vs NP — Experiment 05 | Seoul Inside</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #222222;
+    --border-bright: #333333;
+    --text: #e8e8e8;
+    --text-dim: #555555;
+    --text-mid: #999999;
+    --accent: #c8a96e;
+    --red: #e05555;
+    --green: #55a855;
+    --blue: #5588cc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+  .site-header a { color: var(--text-dim); text-decoration: none; }
+  .site-header a:hover { color: var(--accent); }
+
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 860px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--accent); }
+
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-mid);
+    max-width: 620px;
+  }
+
+  .hero-desc strong { color: var(--text); font-weight: 400; }
+
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* Section */
+  .experiment {
+    margin-bottom: 72px;
+  }
+
+  .exp-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .exp-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .exp-desc {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+  }
+
+  /* Terminal */
+  .terminal {
+    background: #080808;
+    border: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    overflow: hidden;
+  }
+
+  .terminal-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #ffbd2e; }
+  .dot-green { background: #28c841; }
+
+  .terminal-title {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    margin-left: 8px;
+  }
+
+  .terminal-body {
+    padding: 20px;
+    min-height: 120px;
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .t-line { margin-bottom: 2px; }
+  .t-prompt { color: var(--accent); }
+  .t-cmd { color: var(--text); }
+  .t-out { color: var(--text-mid); }
+  .t-err { color: var(--red); }
+  .t-ok { color: var(--green); }
+  .t-warn { color: var(--accent); }
+  .t-comment { color: #444; }
+
+  /* Input panel */
+  .input-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .input-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .input-group label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .input-group input[type="number"],
+  .input-group input[type="text"] {
+    background: var(--bg);
+    border: 1px solid var(--border-bright);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    padding: 10px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+  .input-group input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .input-group input:focus { border-color: var(--accent); }
+
+  .run-btn {
+    background: var(--accent);
+    border: none;
+    color: #000;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 11px 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+    height: 40px;
+  }
+  .run-btn:hover { opacity: 0.85; }
+  .run-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .preset-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+
+  .preset-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    align-self: center;
+  }
+
+  .preset-btn {
+    background: transparent;
+    border: 1px solid var(--border-bright);
+    color: var(--text-mid);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.04em;
+  }
+  .preset-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Verdict */
+  .verdict {
+    margin-top: 16px;
+    padding: 16px;
+    border-left: 3px solid;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .verdict.fail { border-color: var(--red); background: rgba(224,85,85,0.04); color: var(--text-mid); }
+  .verdict.ok { border-color: var(--green); background: rgba(85,168,85,0.04); color: var(--text-mid); }
+  .verdict.warn { border-color: var(--accent); background: rgba(200,169,110,0.04); color: var(--text-mid); }
+  .verdict strong { display: block; margin-bottom: 5px; font-size: 14px; }
+  .verdict.fail strong { color: var(--red); }
+  .verdict.ok strong { color: var(--green); }
+  .verdict.warn strong { color: var(--accent); }
+
+  /* Info box */
+  .info-box {
+    border: 1px solid var(--border);
+    padding: 22px;
+    margin-top: 24px;
+    background: var(--surface);
+  }
+  .info-box h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .info-box p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+  }
+  .info-box p:last-child { margin-bottom: 0; }
+
+  .code-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text);
+    background: var(--bg);
+    padding: 10px 16px;
+    margin: 10px 0;
+    border-left: 2px solid var(--accent);
+  }
+
+  /* Role game */
+  .role-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .role-container { grid-template-columns: 1fr; }
+  }
+
+  .role-panel {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .role-header {
+    background: var(--surface);
+    padding: 12px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+  }
+
+  .role-body {
+    padding: 20px;
+    min-height: 120px;
+  }
+
+  .role-time {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .role-time.fast { color: var(--green); }
+  .role-time.slow { color: var(--red); }
+
+  .role-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    margin-top: 12px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* Barrier table */
+  .barrier-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    margin-top: 16px;
+  }
+
+  .barrier-table th {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .barrier-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+    vertical-align: top;
+  }
+
+  .barrier-table tr:last-child td { border-bottom: none; }
+  .barrier-table tr:hover td { background: var(--surface); }
+
+  .tag {
+    display: inline-block;
+    font-size: 9px;
+    padding: 2px 7px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .tag-fail { background: rgba(224,85,85,0.15); color: var(--red); }
+  .tag-ok { background: rgba(85,168,85,0.15); color: var(--green); }
+  .tag-warn { background: rgba(200,169,110,0.15); color: var(--accent); }
+
+  /* Attempt log */
+  .attempt-log {
+    border: 1px solid var(--border);
+    max-height: 180px;
+    overflow-y: auto;
+    margin-top: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .log-item {
+    display: grid;
+    grid-template-columns: 28px 1fr 80px 90px;
+    gap: 10px;
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    align-items: center;
+  }
+  .log-item:last-child { border-bottom: none; }
+  .log-item:hover { background: var(--surface); }
+  .log-num { color: var(--text-dim); }
+  .log-val { color: var(--text-mid); }
+  .log-time { color: var(--accent); }
+  .log-result { font-size: 10px; }
+  .log-result.pass { color: var(--green); }
+  .log-result.fail { color: var(--red); }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(3px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeIn 0.25s ease; }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .cursor::after {
+    content: '█';
+    animation: blink 1s infinite;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  .page-footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-footer a { color: var(--text-dim); text-decoration: none; }
+  .page-footer a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .site-header { padding: 12px 20px; }
+    .hero { padding: 48px 20px 40px; }
+    .main { padding: 40px 20px; }
+    .page-footer { padding: 20px; flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span>SEOUL INSIDE · P VS NP · EXPERIMENT 05 · MAY 2026</span>
+  <a href="https://xur94-maker.github.io/SeoulInside/pvsnp.html">← Back to P vs NP</a>
+</header>
+
+<section class="hero">
+  <p class="hero-label">Experiment 05 · P vs NP Interactive Laboratory</p>
+  <h1>Three Ways to <em>Feel</em> the Problem.</h1>
+  <p class="hero-desc">
+    Experiments 01–04 showed the explosion of brute-force computation.
+    This page goes deeper: <strong>become the verifier</strong>, 
+    <strong>watch a famous proof collapse in real time</strong>, 
+    and <strong>confront the three barriers</strong> that have blocked every proof attempt for 50 years.
+  </p>
+</section>
+
+<main class="main">
+
+  <!-- ============================================================ -->
+  <!-- EXPERIMENT A: BE THE VERIFIER                                -->
+  <!-- ============================================================ -->
+  <div class="experiment">
+    <div class="exp-header">
+      <span class="exp-number">EXPERIMENT A</span>
+      <span class="exp-title">Be the Verifier. Be the Solver.</span>
+    </div>
+
+    <p class="exp-desc">
+      NP problems have a strange asymmetry: <em>checking</em> an answer is fast, <em>finding</em> one is slow.
+      Below is a Subset Sum instance. The left panel gives you the answer and asks you to verify it.
+      The right panel asks you to find one yourself. Same problem. Completely different experience.
+    </p>
+
+    <div class="input-panel">
+      <div class="input-row">
+        <div class="input-group">
+          <label>Set size n</label>
+          <input type="number" id="ss-n" value="16" min="6" max="24">
+        </div>
+        <button class="run-btn" onclick="generateSubsetSum()">▶ Generate Instance</button>
+      </div>
+    </div>
+
+    <div class="role-container">
+      <!-- VERIFIER -->
+      <div class="role-panel">
+        <div class="role-header">▶ VERIFIER (P side) — you have the answer</div>
+        <div class="role-body" id="verifier-panel">
+          <div style="color:var(--text-dim);font-size:12px;font-family:'IBM Plex Mono',monospace;">
+            Generate an instance above.
+          </div>
+        </div>
+      </div>
+      <!-- SOLVER -->
+      <div class="role-panel">
+        <div class="role-header">▶ SOLVER (NP side) — find it yourself</div>
+        <div class="role-body" id="solver-panel">
+          <div style="color:var(--text-dim);font-size:12px;font-family:'IBM Plex Mono',monospace;">
+            Generate an instance above.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="role-result"></div>
+
+    <div class="info-box">
+      <h3>What this demonstrates</h3>
+      <p>
+        The verifier checks the answer in O(n) time — one pass through the subset.
+        The solver, without a hint, must check up to 2ⁿ subsets.
+        For n = 20, that's over a million checks. For n = 60, more than a billion billion.
+      </p>
+      <p>
+        <strong style="color:var(--text);">P vs NP asks:</strong> is there a smarter way to find the answer —
+        one that's as fast as checking it? No one has proved yes. No one has proved no.
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- EXPERIMENT B: DEOLALIKAR COLLAPSE                           -->
+  <!-- ============================================================ -->
+  <div class="experiment">
+    <div class="exp-header">
+      <span class="exp-number">EXPERIMENT B</span>
+      <span class="exp-title">The Deolalikar Collapse. Watch a Proof Die.</span>
+    </div>
+
+    <p class="exp-desc">
+      In August 2010, Vinay Deolalikar of HP Labs posted a 100-page manuscript claiming P ≠ NP.
+      Within 72 hours, a distributed team of complexity theorists — Tao, Aaronson, Lipton, Immerman —
+      identified four fatal flaws. Press Run to watch the collapse happen in real time.
+    </p>
+
+    <div class="input-panel">
+      <div class="input-row">
+        <div class="preset-row" style="margin-top:0;">
+          <span class="preset-label">Step through:</span>
+          <button class="preset-btn" onclick="deoStep(0)">Aug 6 — Posted</button>
+          <button class="preset-btn" onclick="deoStep(1)">Aug 8 — Review begins</button>
+          <button class="preset-btn" onclick="deoStep(2)">Aug 9 — Flaw 1</button>
+          <button class="preset-btn" onclick="deoStep(3)">Aug 10 — Flaw 2</button>
+          <button class="preset-btn" onclick="deoStep(4)">Aug 11 — Verdict</button>
+        </div>
+        <button class="run-btn" onclick="runDeolalikar()">▶ Full Replay</button>
+      </div>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+        <span class="terminal-title">complexity_theory_community.log — August 2010</span>
+      </div>
+      <div class="terminal-body" id="deo-terminal">
+        <div class="t-line t-comment"># Press "Full Replay" or step through the events above.</div>
+        <div class="t-line t-comment"># The fastest peer review in the history of mathematics.</div>
+        <div class="t-line cursor"> </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:16px;">
+      <h3>Why this matters</h3>
+      <p>
+        The Deolalikar episode shows two things simultaneously:
+        the mathematical community's capacity for rapid, distributed verification —
+        and the structural reason why every proof attempt fails at the same points.
+      </p>
+      <p>
+        All four flaws map directly onto the three formal barriers:
+        Relativization (1975), Natural Proofs (1997), Algebrization (2009).
+        Deolalikar's proof didn't fail by accident. It failed at the exact locations
+        the barriers predicted it would.
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- EXPERIMENT C: THE THREE BARRIERS                            -->
+  <!-- ============================================================ -->
+  <div class="experiment">
+    <div class="exp-header">
+      <span class="exp-number">EXPERIMENT C</span>
+      <span class="exp-title">Run Any Proof Strategy. Hit a Barrier.</span>
+    </div>
+
+    <p class="exp-desc">
+      Every proof attempt in history has been blocked by at least one of three formal barriers.
+      Choose a proof strategy below and watch it collide with the barrier structure.
+      No known technique survives all three simultaneously.
+    </p>
+
+    <div class="input-panel">
+      <div class="input-row">
+        <div class="input-group">
+          <label>Choose a proof strategy</label>
+          <select id="strategy-select" style="background:var(--bg);border:1px solid var(--border-bright);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:13px;padding:10px 14px;width:100%;outline:none;">
+            <option value="diag">Diagonalization (classical)</option>
+            <option value="circuit">Circuit lower bounds (natural proofs)</option>
+            <option value="arith">Arithmetization (IP = PSPACE style)</option>
+            <option value="gct">Geometric Complexity Theory</option>
+            <option value="kolmo">Kolmogorov complexity</option>
+            <option value="meta">Meta-algorithmic (Williams style)</option>
+          </select>
+        </div>
+        <button class="run-btn" onclick="runBarrierTest()">▶ Test Strategy</button>
+      </div>
+    </div>
+
+    <div id="barrier-result" style="display:none;">
+      <table class="barrier-table">
+        <thead>
+          <tr>
+            <th>Barrier</th>
+            <th>Year</th>
+            <th>Status</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody id="barrier-tbody"></tbody>
+      </table>
+      <div id="barrier-verdict"></div>
+    </div>
+
+    <div class="info-box" style="margin-top:24px;">
+      <h3>The three barriers</h3>
+      <p>
+        <strong style="color:var(--text);">Relativization (1975)</strong> — Baker, Gill, Solovay proved
+        that diagonalization cannot resolve P vs NP. Any proof that works relative to an arbitrary oracle
+        cannot settle the question.
+      </p>
+      <p>
+        <strong style="color:var(--text);">Natural Proofs (1997)</strong> — Razborov & Rudich proved
+        that any "large and constructive" circuit lower bound proof would break modern cryptography.
+        Since cryptography works, such proofs cannot exist.
+      </p>
+      <p>
+        <strong style="color:var(--text);">Algebrization (2009)</strong> — Aaronson & Wigderson proved
+        that arithmetization techniques — the method behind IP = PSPACE — also cannot resolve P vs NP.
+      </p>
+      <div class="code-line">A valid proof must be: non-relativizing AND non-naturalizing AND non-algebrizing.</div>
+      <p>As of 2026, no known technique satisfies all three. This is why the problem is still open.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- EXPERIMENT D: SCALE OF DIFFICULTY                           -->
+  <!-- ============================================================ -->
+  <div class="experiment">
+    <div class="exp-header">
+      <span class="exp-number">EXPERIMENT D</span>
+      <span class="exp-title">How Long Would Brute Force Take?</span>
+    </div>
+
+    <p class="exp-desc">
+      If P ≠ NP, brute-force is often the best we can do. Enter a problem size and see
+      how long the best known algorithms would actually take — on real hardware.
+      The numbers become meaningless fast. That's the point.
+    </p>
+
+    <div class="input-panel">
+      <div class="input-row">
+        <div class="input-group">
+          <label>Problem size n</label>
+          <input type="number" id="scale-n" value="50" min="10" max="300">
+        </div>
+        <div class="input-group">
+          <label>Hardware (operations/sec)</label>
+          <select id="scale-hw" style="background:var(--bg);border:1px solid var(--border-bright);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:13px;padding:10px 14px;width:100%;outline:none;">
+            <option value="1e9">Laptop (10⁹ ops/sec)</option>
+            <option value="1e12">Supercomputer (10¹² ops/sec)</option>
+            <option value="1e18">All computers on Earth (est. 10¹⁸ ops/sec)</option>
+            <option value="1e50">Hypothetical (10⁵⁰ ops/sec)</option>
+          </select>
+        </div>
+        <button class="run-btn" onclick="runScale()">▶ Calculate</button>
+      </div>
+      <div class="preset-row">
+        <span class="preset-label">Try:</span>
+        <button class="preset-btn" onclick="setScale(20)">n = 20</button>
+        <button class="preset-btn" onclick="setScale(50)">n = 50</button>
+        <button class="preset-btn" onclick="setScale(100)">n = 100</button>
+        <button class="preset-btn" onclick="setScale(200)">n = 200</button>
+        <button class="preset-btn" onclick="setScale(300)">n = 300 (max)</button>
+      </div>
+    </div>
+
+    <div id="scale-result" style="display:none;" class="fade-in">
+      <table class="barrier-table">
+        <thead>
+          <tr>
+            <th>Algorithm</th>
+            <th>Complexity</th>
+            <th>Operations</th>
+            <th>Time estimate</th>
+          </tr>
+        </thead>
+        <tbody id="scale-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="info-box" style="margin-top:20px;">
+      <h3>Context</h3>
+      <p>
+        The universe is approximately 4.3 × 10¹⁷ seconds old.
+        A year is about 3.15 × 10⁷ seconds.
+        When the table says "longer than the age of the universe" —
+        that is not a metaphor. It is a calculation.
+      </p>
+      <p>
+        This is why P vs NP matters for cryptography:
+        if factoring a 2048-bit RSA key takes 10¹⁰⁰ operations,
+        no computer ever built can break it — regardless of speed.
+        The hardness is mathematical, not technological.
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <span>SEOUL INSIDE · B. SUN · 2026 · P VS NP LABORATORY</span>
+  <a href="https://seoulinside.substack.com">seoulinside.substack.com</a>
+</footer>
+
+<script>
+// ============================================================
+// EXPERIMENT A — SUBSET SUM VERIFIER VS SOLVER
+// ============================================================
+
+let ssInstance = null;
+let ssAttempts = [];
+
+function generateSubsetSum() {
+  const n = Math.min(24, Math.max(6, parseInt(document.getElementById('ss-n').value) || 16));
+  
+  // Generate random set
+  const set = [];
+  for (let i = 0; i < n; i++) {
+    set.push(Math.floor(Math.random() * 200) - 100);
+  }
+  
+  // Find a valid subset (random subset that sums to 0, or close)
+  let solution = null;
+  for (let trial = 0; trial < 2000; trial++) {
+    const subset = set.filter(() => Math.random() > 0.5);
+    if (subset.length > 0 && subset.reduce((a,b) => a+b, 0) === 0) {
+      solution = subset;
+      break;
+    }
+  }
+  
+  // If no exact zero found, plant one
+  if (!solution) {
+    const subIdx = [];
+    for (let i = 0; i < Math.floor(n/2); i++) subIdx.push(i);
+    const subSum = subIdx.reduce((a,i) => a + set[i], 0);
+    set[n-1] = -subSum;
+    solution = subIdx.map(i => set[i]).concat([-subSum]);
+  }
+  
+  ssInstance = { set, solution, n };
+  ssAttempts = [];
+  
+  renderVerifier();
+  renderSolver();
+}
+
+function renderVerifier() {
+  const { set, solution } = ssInstance;
+  const start = performance.now();
+  const sum = solution.reduce((a,b) => a+b, 0);
+  const elapsed = (performance.now() - start).toFixed(3);
+  
+  document.getElementById('verifier-panel').innerHTML = `
+    <div class="fade-in">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);margin-bottom:12px;">
+        SET (n=${ssInstance.n}): [${set.slice(0,8).join(', ')}${set.length > 8 ? ', ...' : ''}]
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);margin-bottom:16px;">
+        GIVEN SUBSET: [${solution.slice(0,6).join(', ')}${solution.length > 6 ? ', ...' : ''}]
+      </div>
+      <div class="role-time fast">${elapsed}ms</div>
+      <div class="role-desc">to verify: sum = ${sum} ${sum === 0 ? '✓ valid' : '✗ invalid'}</div>
+      <div class="role-desc" style="margin-top:8px;">Complexity: O(n) — always instant</div>
+      <div class="progress-bar" style="margin-top:12px;">
+        <div class="progress-fill" style="width:2%;background:var(--green);"></div>
+      </div>
+    </div>
+  `;
+}
+
+function renderSolver() {
+  const { set, solution, n } = ssInstance;
+  const totalSubsets = Math.pow(2, n);
+  
+  document.getElementById('solver-panel').innerHTML = `
+    <div class="fade-in">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);margin-bottom:12px;">
+        SET (n=${n}): [${set.slice(0,8).join(', ')}${set.length > 8 ? ', ...' : ''}]
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dim);margin-bottom:8px;">
+        FIND subset summing to 0. No hints.
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);margin-bottom:16px;">
+        Subsets to check: 2^${n} = ${totalSubsets.toExponential(2)}
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+        <button class="preset-btn" onclick="trySolve('random')">Try random</button>
+        <button class="preset-btn" onclick="trySolve('smart')">Try greedy</button>
+        <button class="preset-btn" onclick="trySolve('reveal')">Reveal answer</button>
+      </div>
+      <div id="solver-attempt"></div>
+    </div>
+  `;
+}
+
+function trySolve(mode) {
+  if (!ssInstance) return;
+  const { set, solution } = ssInstance;
+  
+  let attempt, label, elapsed;
+  const start = performance.now();
+  
+  if (mode === 'random') {
+    attempt = set.filter(() => Math.random() > 0.5);
+    label = 'random guess';
+  } else if (mode === 'smart') {
+    // Greedy: pick positives if sum < 0, negatives if sum > 0
+    attempt = [];
+    let s = 0;
+    for (const x of set) {
+      if (s < 0 && x > 0) { attempt.push(x); s += x; }
+      else if (s > 0 && x < 0) { attempt.push(x); s += x; }
+    }
+    label = 'greedy heuristic';
+  } else {
+    attempt = solution;
+    label = 'answer revealed';
+  }
+  
+  elapsed = (performance.now() - start).toFixed(3);
+  const sum = attempt.reduce((a,b) => a+b, 0);
+  const success = sum === 0 && attempt.length > 0;
+  ssAttempts.push({ attempt, sum, success, label });
+  
+  document.getElementById('solver-attempt').innerHTML = `
+    <div class="fade-in" style="font-family:'IBM Plex Mono',monospace;font-size:11px;">
+      <div style="color:var(--text-dim);margin-bottom:4px;">Attempt #${ssAttempts.length} (${label})</div>
+      <div style="color:${success ? 'var(--green)' : 'var(--red)'};font-size:16px;font-weight:500;">
+        sum = ${sum} ${success ? '✓ FOUND' : '✗ not zero'}
+      </div>
+      <div style="color:var(--text-dim);margin-top:4px;">${elapsed}ms · ${attempt.length} elements</div>
+      ${!success && mode !== 'reveal' ? `<div style="color:var(--text-dim);margin-top:8px;">Keep trying. 2^${ssInstance.n} = ${Math.pow(2,ssInstance.n).toExponential(1)} possibilities remain.</div>` : ''}
+    </div>
+  `;
+}
+
+// ============================================================
+// EXPERIMENT B — DEOLALIKAR
+// ============================================================
+
+const deoEvents = [
+  {
+    date: 'Aug 6, 2010 · 18:00',
+    lines: [
+      { cls: 't-prompt', text: '$ curl -O vinay-deolalikar.com/proof.pdf' },
+      { cls: 't-out', text: '  Downloading: P_!=_NP.pdf (1.2MB, 103 pages)...' },
+      { cls: 't-ok', text: '  ✓ Complete.' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-comment', text: '# Vinay Deolalikar (HP Labs) posts manuscript.' },
+      { cls: 't-comment', text: '# Claim: P ≠ NP via descriptive complexity + random k-SAT.' },
+      { cls: 't-comment', text: '# Initial reaction: cautious interest.' },
+      { cls: 't-warn', text: '  "It\'s a serious attempt." — initial Twitter response' },
+    ]
+  },
+  {
+    date: 'Aug 8, 2010 · 09:00',
+    lines: [
+      { cls: 't-prompt', text: '$ python3 community_review.py --coordinated' },
+      { cls: 't-out', text: '  Reviewers online: Tao, Aaronson, Lipton, Immerman, Williams...' },
+      { cls: 't-out', text: '  Distributed review initiated via blogs and wikis.' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-comment', text: '# Dick Lipton opens "P ≠ NP?" thread.' },
+      { cls: 't-comment', text: '# Scott Aaronson begins systematic analysis.' },
+      { cls: 't-comment', text: '# This is the fastest serious peer review in math history.' },
+    ]
+  },
+  {
+    date: 'Aug 9, 2010 · 14:22',
+    lines: [
+      { cls: 't-prompt', text: '$ grep -n "average_case" proof.pdf | head -20' },
+      { cls: 't-err', text: '  ERROR — FLAW 1 IDENTIFIED (Terence Tao)' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-err', text: '  The clustering property describes RANDOM k-SAT instances.' },
+      { cls: 't-err', text: '  P vs NP is a WORST-CASE question.' },
+      { cls: 't-err', text: '  Average-case ≠ worst-case. The bridge is missing.' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-warn', text: '  "The argument applies to random instances near the threshold.' },
+      { cls: 't-warn', text: '   This says nothing about ALL instances." — Tao' },
+    ]
+  },
+  {
+    date: 'Aug 10, 2010 · 11:45',
+    lines: [
+      { cls: 't-prompt', text: '$ check_immerman_vardi.py --ordered-structures' },
+      { cls: 't-err', text: '  ERROR — FLAW 2 IDENTIFIED (Neil Immerman, author of the theorem)' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-err', text: '  Immerman-Vardi theorem applies to ORDERED structures.' },
+      { cls: 't-err', text: '  Deolalikar applies it to UNORDERED hypergraphs.' },
+      { cls: 't-err', text: '  The theorem does not hold in this setting.' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-err', text: '  FLAW 3 (Ryan Williams): Polynomial calculus result misapplied.' },
+      { cls: 't-err', text: '  FLAW 4 (Tao): Argument would also apply to P problems.' },
+      { cls: 't-err', text: '  If valid, it proves too much — therefore invalid.' },
+    ]
+  },
+  {
+    date: 'Aug 11, 2010 · 09:00',
+    lines: [
+      { cls: 't-prompt', text: '$ verdict --community-consensus' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-err', text: '  ✗ PROOF REJECTED' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-out', text: '  Scott Aaronson: "There is no proof here."' },
+      { cls: 't-out', text: '  Neil Immerman: "The theorem is misapplied at the core."' },
+      { cls: 't-out', text: '  Ryan Williams: "The polynomial calculus step fails."' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-comment', text: '# Three revisions submitted Aug 12-20. Each introduces new errors.' },
+      { cls: 't-comment', text: '# September 2010: community consensus — fatally flawed, no repair path.' },
+      { cls: 't-comment', text: '' },
+      { cls: 't-warn', text: '  Time from posting to rejection: 72 hours.' },
+      { cls: 't-warn', text: '  The proof failed at exactly the points the 3 barriers predict.' },
+      { cls: 't-warn', text: '  P vs NP: still open.' },
+    ]
+  }
+];
+
+let deoPlaying = false;
+
+function deoStep(idx) {
+  if (idx < 0 || idx >= deoEvents.length) return;
+  const event = deoEvents[idx];
+  renderTerminal(event.lines, event.date);
+}
+
+async function runDeolalikar() {
+  if (deoPlaying) return;
+  deoPlaying = true;
+  
+  const terminal = document.getElementById('deo-terminal');
+  terminal.innerHTML = '';
+  
+  for (let i = 0; i < deoEvents.length; i++) {
+    const ev = deoEvents[i];
+    const dateEl = document.createElement('div');
+    dateEl.className = 't-line t-comment';
+    dateEl.style.marginTop = i > 0 ? '16px' : '0';
+    dateEl.textContent = `# ─── ${ev.date} ───`;
+    terminal.appendChild(dateEl);
+    
+    for (const line of ev.lines) {
+      await delay(i === 0 ? 60 : 80);
+      const el = document.createElement('div');
+      el.className = `t-line ${line.cls}`;
+      el.textContent = `  ${line.text}`;
+      terminal.appendChild(el);
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+    
+    if (i < deoEvents.length - 1) await delay(400);
+  }
+  
+  deoPlaying = false;
+}
+
+function renderTerminal(lines, date) {
+  const terminal = document.getElementById('deo-terminal');
+  terminal.innerHTML = '';
+  
+  if (date) {
+    const dateEl = document.createElement('div');
+    dateEl.className = 't-line t-comment';
+    dateEl.textContent = `# ─── ${date} ───`;
+    terminal.appendChild(dateEl);
+  }
+  
+  lines.forEach(line => {
+    const el = document.createElement('div');
+    el.className = `t-line ${line.cls} fade-in`;
+    el.textContent = `  ${line.text}`;
+    terminal.appendChild(el);
+  });
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// ============================================================
+// EXPERIMENT C — BARRIER TEST
+// ============================================================
+
+const strategies = {
+  diag: {
+    name: 'Diagonalization',
+    barriers: [
+      { name: 'Relativization', year: '1975', status: 'fail', reason: 'Diagonalization relativizes completely. Baker-Gill-Solovay (1975) proved this directly.' },
+      { name: 'Natural Proofs', year: '1997', status: 'ok', reason: 'Diagonalization is not a circuit lower bound technique — not blocked by Natural Proofs.' },
+      { name: 'Algebrization', year: '2009', status: 'fail', reason: 'Diagonalization algebrizes. Aaronson-Wigderson (2009) showed algebraic oracles don\'t help.' },
+    ],
+    verdict: 'fail',
+    summary: 'Blocked by Relativization and Algebrization. This is why the Time Hierarchy Theorem technique cannot resolve P vs NP, even though it separates P from EXP.'
+  },
+  circuit: {
+    name: 'Circuit lower bounds',
+    barriers: [
+      { name: 'Relativization', year: '1975', status: 'ok', reason: 'Circuit arguments are non-relativizing — they use intrinsic Boolean structure.' },
+      { name: 'Natural Proofs', year: '1997', status: 'fail', reason: 'Most circuit lower bound proofs are large and constructive. Razborov-Rudich proves these cannot work against P/poly.' },
+      { name: 'Algebrization', year: '2009', status: 'ok', reason: 'Circuit lower bounds do not obviously algebrize.' },
+    ],
+    verdict: 'fail',
+    summary: 'Blocked by Natural Proofs. Every known circuit lower bound proof (Razborov, Håstad, Smolensky) is natural. This is the central obstacle for proving P ≠ NP via circuits.'
+  },
+  arith: {
+    name: 'Arithmetization (IP = PSPACE style)',
+    barriers: [
+      { name: 'Relativization', year: '1975', status: 'ok', reason: 'Arithmetization is non-relativizing — the IP = PSPACE proof does not work relative to arbitrary oracles.' },
+      { name: 'Natural Proofs', year: '1997', status: 'ok', reason: 'Arithmetization is not a combinatorial circuit property — not obviously blocked by Natural Proofs.' },
+      { name: 'Algebrization', year: '2009', status: 'fail', reason: 'Arithmetization algebrizes. Aaronson-Wigderson proved this directly — IP = PSPACE techniques algebrize and cannot resolve P vs NP.' },
+    ],
+    verdict: 'fail',
+    summary: 'Blocked by Algebrization. Despite producing spectacular results (IP = PSPACE, PCP theorem), arithmetization cannot resolve P vs NP. This is what the third barrier specifically addresses.'
+  },
+  gct: {
+    name: 'Geometric Complexity Theory',
+    barriers: [
+      { name: 'Relativization', year: '1975', status: 'ok', reason: 'GCT uses intrinsic algebraic geometry — likely non-relativizing.' },
+      { name: 'Natural Proofs', year: '1997', status: 'warn', reason: 'GCT obstructions may be non-constructive (escaping Natural Proofs) — but this is contested. Bürgisser-Ikenmeyer-Panova (2019) showed occurrence obstructions are insufficient.' },
+      { name: 'Algebrization', year: '2009', status: 'warn', reason: 'Whether GCT algebrizes is an open question. The representation theory approach may be genuinely non-algebrizing — or may not.' },
+    ],
+    verdict: 'warn',
+    summary: 'Status: unknown. GCT is the most ambitious current approach and may avoid all three barriers — or may collide with Natural Proofs or Algebrization. The community is genuinely divided. No circuit lower bound produced yet.'
+  },
+  kolmo: {
+    name: 'Kolmogorov complexity',
+    barriers: [
+      { name: 'Relativization', year: '1975', status: 'warn', reason: 'Kolmogorov complexity relativizes in some senses but not others. The situation is subtle and unresolved.' },
+      { name: 'Natural Proofs', year: '1997', status: 'ok', reason: 'Kolmogorov arguments are typically non-constructive — likely escaping Natural Proofs.' },
+      { name: 'Algebrization', year: '2009', status: 'ok', reason: 'Kolmogorov complexity does not obviously use algebraic oracles — likely non-algebrizing.' },
+    ],
+    verdict: 'warn',
+    summary: 'Most promising conditional approach. Kabanets-Kolokolova (2025/2026) showed that, assuming GapMcK^tP is NP-hard, disproving the Chain Rule for K^t is equivalent to proving P ≠ NP. Conditional — not unconditional.'
+  },
+  meta: {
+    name: 'Meta-algorithmic (Williams)',
+    barriers: [
+      { name: 'Relativization', year: '1975', status: 'ok', reason: 'Meta-algorithmic proofs derive lower bounds from algorithms — they do not obviously relativize.' },
+      { name: 'Natural Proofs', year: '1997', status: 'ok', reason: 'Williams\' approach is non-constructive in the key sense — it avoids the "large and constructive" property. This is why it produced NEXP ⊄ ACC⁰ (2010).' },
+      { name: 'Algebrization', year: '2009', status: 'warn', reason: 'Whether meta-algorithmic approaches algebrize is unclear. Current results reach NEXP vs ACC⁰ — far from NP vs P.' },
+    ],
+    verdict: 'warn',
+    summary: 'Best partial circumvention so far. Williams proved NEXP ⊄ ACC⁰ (2010) using this approach — the first circuit lower bound against a natural class in decades. Whether it can reach NP vs P/poly remains unknown.'
+  }
+};
+
+function runBarrierTest() {
+  const key = document.getElementById('strategy-select').value;
+  const s = strategies[key];
+  
+  const tbody = document.getElementById('barrier-tbody');
+  tbody.innerHTML = s.barriers.map(b => `
+    <tr>
+      <td style="color:var(--text);">${b.name}</td>
+      <td>${b.year}</td>
+      <td><span class="tag tag-${b.status === 'ok' ? 'ok' : b.status === 'warn' ? 'warn' : 'fail'}">
+        ${b.status === 'ok' ? 'PASSES' : b.status === 'warn' ? 'UNCLEAR' : 'BLOCKED'}
+      </span></td>
+      <td>${b.reason}</td>
+    </tr>
+  `).join('');
+  
+  const verdictEl = document.getElementById('barrier-verdict');
+  const cls = s.verdict === 'fail' ? 'fail' : s.verdict === 'warn' ? 'warn' : 'ok';
+  const icon = s.verdict === 'fail' ? '✗' : s.verdict === 'warn' ? '⚠' : '✓';
+  verdictEl.innerHTML = `
+    <div class="verdict ${cls} fade-in" style="margin-top:16px;">
+      <strong>${icon} ${s.name}</strong>
+      ${s.summary}
+    </div>
+  `;
+  
+  document.getElementById('barrier-result').style.display = 'block';
+  document.getElementById('barrier-result').classList.add('fade-in');
+}
+
+// ============================================================
+// EXPERIMENT D — SCALE
+// ============================================================
+
+function setScale(n) {
+  document.getElementById('scale-n').value = n;
+}
+
+function formatTime(seconds) {
+  if (seconds < 1e-6) return `${(seconds * 1e9).toExponential(1)} ns`;
+  if (seconds < 1e-3) return `${(seconds * 1e6).toExponential(1)} μs`;
+  if (seconds < 1) return `${(seconds * 1e3).toFixed(1)} ms`;
+  if (seconds < 60) return `${seconds.toFixed(2)} sec`;
+  if (seconds < 3600) return `${(seconds/60).toFixed(1)} min`;
+  if (seconds < 86400) return `${(seconds/3600).toFixed(1)} hours`;
+  if (seconds < 3.15e7) return `${(seconds/86400).toFixed(0)} days`;
+  if (seconds < 3.15e9) return `${(seconds/3.15e7).toFixed(1)} years`;
+  if (seconds < 3.15e16) return `${(seconds/3.15e9).toExponential(1)} billion years`;
+  if (seconds < 4.3e17) return `${(seconds/3.15e7).toExponential(1)} years`;
+  if (seconds < 1e30) return `${(seconds/4.3e17).toExponential(1)}× age of universe`;
+  return `${(seconds/4.3e17).toExponential(2)}× age of universe`;
+}
+
+function runScale() {
+  const n = parseInt(document.getElementById('scale-n').value) || 50;
+  const hw = parseFloat(document.getElementById('scale-hw').value);
+  const ageUniverse = 4.3e17;
+  
+  const algorithms = [
+    { name: 'Polynomial O(n²)', complexity: `n² = ${(n*n).toLocaleString()}`, ops: n*n, color: 'var(--green)' },
+    { name: 'Polynomial O(n³)', complexity: `n³ = ${(n*n*n).toLocaleString()}`, ops: n*n*n, color: 'var(--green)' },
+    { name: 'Sub-exponential O(2^√n)', complexity: `2^√n`, ops: Math.pow(2, Math.sqrt(n)), color: 'var(--accent)' },
+    { name: 'Exponential O(2^n)', complexity: `2^${n}`, ops: Math.pow(2, n), color: 'var(--red)' },
+    { name: 'Factorial O(n!)', complexity: `${n}!`, ops: factorial(n), color: 'var(--red)' },
+  ];
+  
+  const tbody = document.getElementById('scale-tbody');
+  tbody.innerHTML = algorithms.map(a => {
+    const secs = a.ops / hw;
+    const timeStr = formatTime(secs);
+    const ratio = secs / ageUniverse;
+    
+    return `
+      <tr>
+        <td style="color:${a.color};">${a.name}</td>
+        <td>${a.complexity}</td>
+        <td>${a.ops > 1e15 ? a.ops.toExponential(2) : a.ops.toLocaleString()}</td>
+        <td style="color:${ratio > 1 ? 'var(--red)' : ratio > 0.01 ? 'var(--accent)' : 'var(--green)'};">
+          ${timeStr}
+          ${ratio > 1 ? `<span style="font-size:10px;display:block;color:var(--text-dim);">${ratio.toExponential(1)}× age of universe</span>` : ''}
+        </td>
+      </tr>
+    `;
+  }).join('');
+  
+  document.getElementById('scale-result').style.display = 'block';
+  document.getElementById('scale-result').className = 'fade-in';
+}
+
+function factorial(n) {
+  if (n > 170) return Infinity;
+  let result = 1;
+  for (let i = 2; i <= n; i++) result *= i;
+  return result;
+}
+
+// Init
+generateSubsetSum();
+</script>
+</body>
+</html>
