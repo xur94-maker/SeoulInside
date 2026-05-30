@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>리만 가설 체험소 | Riemann Playground</title>
+<title>Riemann Hypothesis Playground</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -23,7 +23,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Libre Baskerville', 'Noto Serif KR', Georgia, serif;
+    font-family: 'Libre Baskerville', Georgia, serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -384,18 +384,18 @@
 
 <div class="header">
   <div class="header-label">Archive Supplement · May 2026 · seoulinside.substack.com</div>
-  <h1>리만 가설 <span>체험소</span></h1>
-  <p class="subtitle">증명은 없지만, 체험은 있습니다. The proof doesn't exist yet — but the experience does.</p>
+  <h1>Riemann Hypothesis <span>Playground</span></h1>
+  <p class="subtitle">The proof doesn't exist yet — but the experience does.</p>
 </div>
 
 <div class="container">
 
   <!-- SECTION 1: ZETA ZEROS -->
   <div>
-    <div class="section-label">실험 01 — 제타 함수의 비자명한 영점들</div>
+    <div class="section-label">Experiment 01 — Non-trivial Zeros of the Zeta Function</div>
     <div class="card">
-      <h2>임계선 위의 영점들 (ζ(½ + it) = 0)</h2>
-      <p class="card-desc">처음 발견된 비자명한 영점들입니다. 리만 가설이 맞다면 이들은 모두 실수부 = ½ 인 선 위에 있어야 합니다. 2026년 현재, 10조 개까지 검증 완료. 단 하나도 벗어나지 않았습니다.</p>
+      <h2>Zeros on the Critical Line (ζ(½ + it) = 0)</h2>
+      <p class="card-desc">The first known non-trivial zeros. If the Riemann Hypothesis is correct, all of them must lie on the line where the real part equals ½. As of 2026, the first 10 trillion zeros have been verified — not one has strayed off the line.</p>
       
       <div class="zeros-grid" id="zerosGrid"></div>
 
@@ -405,43 +405,43 @@
 
       <div class="controls">
         <div class="control-group">
-          <label>임계선 실수부 σ (리만 가설: σ = 0.5)</label>
+          <label>Critical line real part σ (RH predicts: σ = 0.5)</label>
           <input type="range" id="sigmaSlider" min="0.1" max="0.9" step="0.01" value="0.5">
         </div>
         <div class="control-group">
-          <label>허수부 범위 t (0 → max)</label>
+          <label>Imaginary range t (0 → max)</label>
           <input type="range" id="tMaxSlider" min="20" max="200" step="1" value="50">
         </div>
-        <div class="value-display" id="zetaInfo">σ = 0.5 | |ζ(σ+it)| 시각화 중...</div>
+        <div class="value-display" id="zetaInfo">σ = 0.5 | Visualizing |ζ(σ+it)|...</div>
       </div>
     </div>
   </div>
 
   <!-- SECTION 2: PRIME COUNT -->
   <div>
-    <div class="section-label">실험 02 — π(x) vs li(x): 소수 개수 추정</div>
+    <div class="section-label">Experiment 02 — π(x) vs li(x): Prime Counting</div>
     <div class="card">
-      <h2>소수 계수 함수와 로그 적분 비교</h2>
-      <p class="card-desc">리만 가설이 참이라면, π(x) (실제 소수 개수)와 li(x) (로그 적분) 사이의 오차는 √x · log(x)에 비례합니다. 이것이 리만 가설이 암호학의 기초가 되는 이유입니다.</p>
+      <h2>Prime Counting Function vs. Logarithmic Integral</h2>
+      <p class="card-desc">If the Riemann Hypothesis is true, the error between π(x) (actual prime count) and li(x) (logarithmic integral) is bounded by √x · log(x). This is why RH underpins modern cryptography.</p>
       
       <canvas id="piCanvas"></canvas>
       
       <div class="legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#7c6af5"></div>π(x) 실제 소수 개수</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#f5a623"></div>li(x) 로그 적분 추정</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#50e3c2; height: 1px; border-top: 1px dashed #50e3c2"></div>오차 |π(x) − li(x)|</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#7c6af5"></div>π(x) actual prime count</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f5a623"></div>li(x) logarithmic integral estimate</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#50e3c2; height: 1px; border-top: 1px dashed #50e3c2"></div>error |π(x) − li(x)|</div>
       </div>
 
       <div class="two-col" style="margin-top: 20px;">
         <div class="stat-box">
-          <div class="stat-label">x = 1,000 에서</div>
+          <div class="stat-label">At x = 1,000</div>
           <div class="stat-val" id="stat1">π(x) = 168</div>
-          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">li(x) ≈ 177.6 | 오차 9.6</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">li(x) ≈ 177.6 | error 9.6</div>
         </div>
         <div class="stat-box">
-          <div class="stat-label">x = 10,000 에서</div>
+          <div class="stat-label">At x = 10,000</div>
           <div class="stat-val" id="stat2">π(x) = 1,229</div>
-          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">li(x) ≈ 1,246 | 오차 17</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">li(x) ≈ 1,246 | error 17</div>
         </div>
       </div>
     </div>
@@ -449,69 +449,69 @@
 
   <!-- SECTION 3: GUE / MONTGOMERY-ODLYZKO -->
   <div>
-    <div class="section-label">실험 03 — 몽고메리-오들리즈코 법칙: 랜덤 행렬 vs 영점 간격</div>
+    <div class="section-label">Experiment 03 — Montgomery–Odlyzko Law: Random Matrices vs. Zero Spacings</div>
     <div class="card">
-      <h2>GUE 랜덤 행렬 ↔ 제타 영점 간격 분포</h2>
-      <p class="card-desc">1972년 프린스턴 애프터눈 티 시간, 수학자 몽고메리와 물리학자 다이슨이 우연히 같은 공식을 발견했습니다. 핵물리학의 에너지 레벨 분포 = 제타 함수의 영점 간격 분포. 이것이 "증명은 못 했지만 압도적인 수치 증거"가 존재하는 이유입니다.</p>
+      <h2>GUE Random Matrices ↔ Zeta Zero Spacing Distribution</h2>
+      <p class="card-desc">At Princeton's afternoon tea in 1972, mathematician Montgomery and physicist Dyson discovered they had independently derived the same formula. The energy level spacing of atomic nuclei = the zero spacing of the zeta function. This is why overwhelming numerical evidence exists — even without a proof.</p>
       
       <canvas id="gueCanvas"></canvas>
       
       <div class="legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#7c6af5"></div>GUE 시뮬레이션 (랜덤 행렬 고유값 간격)</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#f5a623"></div>Wigner surmise 이론 곡선</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#7c6af5"></div>GUE simulation (random matrix eigenvalue spacings)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f5a623"></div>Wigner surmise theory curve</div>
       </div>
 
       <div class="controls" style="margin-top: 20px;">
         <div class="control-group">
-          <label>행렬 크기 n</label>
+          <label>Matrix size n</label>
           <input type="range" id="matrixSize" min="20" max="200" step="10" value="100">
         </div>
         <div class="control-group">
-          <label>샘플 수</label>
+          <label>Sample count</label>
           <input type="range" id="sampleCount" min="100" max="2000" step="100" value="500">
         </div>
-        <button class="btn" id="runGUE" onclick="runGUESimulation()">시뮬레이션 실행</button>
+        <button class="btn" id="runGUE" onclick="runGUESimulation()">Run Simulation</button>
       </div>
     </div>
   </div>
 
   <!-- SECTION 4: NOT EVEN WRONG TERMINAL -->
   <div>
-    <div class="section-label">실험 04 — "Not Even Wrong" 시뮬레이터</div>
+    <div class="section-label">Experiment 04 — The "Not Even Wrong" Simulator</div>
     <div class="card">
-      <h2>아티야 스타일 증명 시뮬레이터 (2018)</h2>
-      <p class="card-desc">2018년 9월 24일, 필즈 메달과 아벨상 수상자 마이클 아티야가 89세의 나이로 하이델베르크에서 "리만 가설을 증명했다"고 발표했습니다. 수학계의 반응: "Not even wrong." — 틀린 것보다 더 나쁜, 아예 문제를 건드리지도 못한 증명.</p>
+      <h2>The Atiyah-Style Proof Simulator (2018)</h2>
+      <p class="card-desc">On September 24, 2018, Michael Atiyah — holder of both the Fields Medal and Abel Prize — announced at age 89 in Heidelberg that he had proved the Riemann Hypothesis. The mathematical community's verdict: "Not even wrong." Worse than incorrect: a proof that never engaged with the problem at all.</p>
       
       <div class="terminal">
-        <div><span class="t-comment"># 아티야 (2018) 스타일 — 15줄 증명</span></div>
+        <div><span class="t-comment"># Atiyah (2018) style — 15-line proof</span></div>
         <div><span class="t-comment"># "It's simple. Use the Todd function."</span></div>
         <br>
         <div><span class="t-keyword">def</span> <span style="color:#80d0ff">todd_function</span>(s):</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-comment"># 세부 정의: 미정 (발표 당시)</span></div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-comment"># 연결: 미세구조상수 α ≈ 1/137</span></div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-keyword">return</span> <span class="t-string">"신뢰하세요"</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-comment"># Detailed definition: undefined (at time of announcement)</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-comment"># Connection: fine-structure constant α ≈ 1/137</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-keyword">return</span> <span class="t-string">"Trust me."</span></div>
         <br>
         <div><span class="t-keyword">def</span> <span style="color:#80d0ff">prove_riemann_hypothesis</span>():</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-comment"># 가정: 임계선 밖에 영점이 있다면...</span></div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-comment"># Todd 함수 적용 → 모순 → QED</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-comment"># Assume: a zero exists off the critical line...</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-comment"># Apply Todd function → contradiction → QED</span></div>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-keyword">return</span> todd_function(<span class="t-string">"s"</span>)</div>
         <br>
         <div><span class="t-prompt">>>> </span>prove_riemann_hypothesis()</div>
-        <div><span class="t-output">'신뢰하세요'</span></div>
+        <div><span class="t-output">'Trust me.'</span></div>
         <br>
-        <div><span class="t-comment"># 동료 검토 결과:</span></div>
+        <div><span class="t-comment"># Peer review result:</span></div>
         <div><span class="t-error">PeerReviewError: Todd function is not properly defined.</span></div>
         <div><span class="t-error">The proof uses NO properties of the Riemann zeta function.</span></div>
         <div><span class="t-error">Status: "Not even wrong" — Peter Woit (2018.9.24)</span></div>
         <br>
-        <div><span class="t-comment"># Clay Institute 반응:</span></div>
+        <div><span class="t-comment"># Clay Institute response:</span></div>
         <div><span class="t-error">ClayError: Prize not awarded. (Prize remains unclaimed.)</span></div>
       </div>
 
       <div style="margin-top: 20px; padding: 16px; border-left: 2px solid var(--critical); background: rgba(245,90,90,0.04);">
         <p style="font-size: 13px; color: var(--muted); line-height: 1.7;">
-          <em>"It's simply too vague and unspecific."</em> — Jørgen Veisdal, Science 매거진 인터뷰 (2018)<br>
-          아티야는 4개월 후인 2019년 1월에 세상을 떠났습니다. 수학계는 그의 업적을 기리면서도, 증명을 받아들이지 않았습니다. <strong>지위는 증명을 대체하지 않습니다.</strong>
+          <em>"It's simply too vague and unspecific."</em> — Jørgen Veisdal, Science Magazine interview (2018)<br>
+          Atiyah passed away four months later, in January 2019. The mathematical community honored his legacy — and rejected the proof. <strong>Status does not substitute for proof.</strong>
         </p>
       </div>
     </div>
@@ -519,25 +519,25 @@
 
   <!-- SECTION 5: CURRENT STATUS -->
   <div>
-    <div class="section-label">현황 — 2026년 5월 기준</div>
+    <div class="section-label">Current Status — May 2026</div>
     <div class="card">
-      <h2>리만 가설의 현재 좌표</h2>
+      <h2>Where We Stand on the Riemann Hypothesis</h2>
       <div class="two-col" style="margin-top: 8px;">
         <div>
           <div class="stat-box" style="margin-bottom: 12px;">
-            <div class="stat-label">임계선 위 증명된 영점 비율</div>
+            <div class="stat-label">Proven proportion of zeros on critical line</div>
             <div class="stat-val">≥ 41.72%</div>
             <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">5/12 — Pratt, Robles, Zaharescu, Zeindler (2020)</div>
           </div>
           <div class="stat-box" style="margin-bottom: 12px;">
-            <div class="stat-label">수치적으로 검증된 영점 수</div>
+            <div class="stat-label">Numerically verified zeros</div>
             <div class="stat-val">~10¹³</div>
-            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">10조 개 · 전부 임계선 위 · 반례 없음</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;">10 trillion · all on critical line · no counterexample</div>
           </div>
           <div class="stat-box">
-            <div class="stat-label">클레이 상금 현황</div>
+            <div class="stat-label">Clay Prize status</div>
             <div class="stat-val">$1,000,000</div>
-            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent2);margin-top:4px;">미지급 · 1859년 이후 162년째</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent2);margin-top:4px;">Unclaimed · 162 years since 1859</div>
           </div>
         </div>
         <div>
@@ -550,10 +550,10 @@
 </div>
 
 <div class="status-bar">
-  <div class="status-item"><div class="status-dot"></div>실시간 시뮬레이션</div>
-  <div class="status-item">seoulinside.substack.com · 아카이브 보충 자료</div>
-  <div class="status-item">JavaScript 구현 (mpmath 없이 브라우저에서 직접 실행)</div>
-  <div class="status-item">리만 가설 현황: 미해결 (2026.05)</div>
+  <div class="status-item"><div class="status-dot"></div>Live simulation</div>
+  <div class="status-item">seoulinside.substack.com · Archive Supplement</div>
+  <div class="status-item">Pure JavaScript · runs entirely in-browser</div>
+  <div class="status-item">Riemann Hypothesis: Unsolved (May 2026)</div>
 </div>
 
 <script>
@@ -576,7 +576,7 @@ function buildZerosGrid() {
     const chip = document.createElement('div');
     chip.className = 'zero-chip';
     chip.innerHTML = `
-      <div class="zero-num">영점 #${i+1}</div>
+      <div class="zero-num">Zero #${i+1}</div>
       <div class="zero-val">½ + ${t.toFixed(6)}i</div>
       <div class="zero-line">Re = 0.5 ✓</div>
     `;
@@ -668,10 +668,10 @@ function drawZetaCanvas() {
   const nearZeroCount = KNOWN_ZEROS.filter(t => t <= tMax).length;
   if (Math.abs(sigma - 0.5) < 0.01) {
     info.style.borderColor = 'rgba(80,227,194,0.4)';
-    info.innerHTML = `σ = 0.5 (임계선) | t ∈ [0, ${tMax}]<br>이 범위 내 알려진 영점: <strong>${nearZeroCount}개</strong> | 리만 가설: ✓`;
+    info.innerHTML = `σ = 0.5 (critical line) | t ∈ [0, ${tMax}]<br>Known zeros in range: <strong>${nearZeroCount}</strong> | RH prediction: ✓`;
   } else {
     info.style.borderColor = 'rgba(245,90,90,0.4)';
-    info.innerHTML = `σ = ${sigma.toFixed(2)} (임계선 밖) | t ∈ [0, ${tMax}]<br>이 선에서 영점: 발견되지 않음 | 리만 가설 예측: 여기엔 없다`;
+    info.innerHTML = `σ = ${sigma.toFixed(2)} (off critical line) | t ∈ [0, ${tMax}]<br>Zeros on this line: none found | RH predicts: none here`;
   }
 }
 
@@ -798,7 +798,7 @@ function runGUESimulation() {
   const n = parseInt(document.getElementById('matrixSize').value);
   const samples = parseInt(document.getElementById('sampleCount').value);
   const btn = document.getElementById('runGUE');
-  btn.textContent = '계산 중...';
+  btn.textContent = 'Computing...';
   btn.disabled = true;
 
   setTimeout(() => {
@@ -819,7 +819,7 @@ function runGUESimulation() {
     const normalized = allSpacings.map(s => s / mean);
 
     drawGUECanvas(normalized);
-    btn.textContent = '시뮬레이션 실행';
+    btn.textContent = 'Run Simulation';
     btn.disabled = false;
   }, 50);
 }
@@ -914,10 +914,10 @@ function drawGUECanvas(spacings) {
   // Labels
   ctx.fillStyle = 'rgba(107,107,128,0.6)';
   ctx.font = '10px DM Mono';
-  ctx.fillText('GUE 행렬 고유값 간격 분포 (히스토그램) vs Wigner surmise (곡선)', 40, 20);
+  ctx.fillText('GUE eigenvalue spacing distribution (histogram) vs Wigner surmise (curve)', 40, 20);
   ctx.fillStyle = 'rgba(80,227,194,0.6)';
   ctx.font = '10px DM Mono';
-  ctx.fillText('※ 실제 제타 영점도 이 분포를 따릅니다 (Odlyzko, 10조 개 검증)', 40, 36);
+  ctx.fillText('※ Actual zeta zeros follow this distribution (Odlyzko, 10 trillion verified)', 40, 36);
 }
 
 // ============================================================
@@ -931,12 +931,12 @@ function drawProgressViz() {
   container.style.padding = '8px';
 
   const milestones = [
-    { year: 1914, pct: 0, label: "Hardy: 무한히 많은 영점이 임계선 위", color: '#7c6af5' },
+    { year: 1914, pct: 0, label: "Hardy: infinitely many zeros on critical line", color: '#7c6af5' },
     { year: 1974, pct: 34.74, label: "Levinson: ≥ 34.74%", color: '#7c6af5' },
     { year: 1989, pct: 40.88, label: "Conrey: ≥ 40.88%", color: '#7c6af5' },
-    { year: 2020, pct: 41.72, label: "Pratt et al.: ≥ 41.72% (현재 기록)", color: '#50e3c2' },
-    { year: 2026, pct: 41.72, label: "현재 (2026): 변화 없음", color: '#f5a623' },
-    { year: '?', pct: 100, label: "목표: 100% = 리만 가설 증명", color: '#f55a5a' },
+    { year: 2020, pct: 41.72, label: "Pratt et al.: ≥ 41.72% (current record)", color: '#50e3c2' },
+    { year: 2026, pct: 41.72, label: "Current (2026): no change", color: '#f5a623' },
+    { year: '?', pct: 100, label: "Goal: 100% = Riemann Hypothesis proved", color: '#f55a5a' },
   ];
 
   container.innerHTML = milestones.map(m => `
@@ -972,7 +972,7 @@ window.addEventListener('load', () => {
   ctx.fillStyle = 'rgba(107,107,128,0.4)';
   ctx.font = '13px DM Mono';
   ctx.textAlign = 'center';
-  ctx.fillText('아래 버튼을 눌러 GUE 시뮬레이션을 실행하세요', canvas.width/2, 135);
+  ctx.fillText('Click the button below to run the GUE simulation', canvas.width/2, 135);
   ctx.font = '11px DM Mono';
   ctx.fillStyle = 'rgba(107,107,128,0.3)';
   ctx.fillText('Run GUE Simulation ↓', canvas.width/2, 160);
