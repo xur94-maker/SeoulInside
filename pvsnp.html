@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P vs NP — Feel the Hardness | Seoul Inside</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a40;
+    --accent: #e8c547;
+    --accent2: #e8547a;
+    --accent3: #54e8c5;
+    --text: #e8e8f0;
+    --text-dim: #7070a0;
+    --text-dimmer: #404060;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Playfair Display', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    padding: 60px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 60px;
+  }
+
+  .byline {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .subtitle {
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--text-dim);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 80px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section:nth-child(2) { animation-delay: 0.1s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+  .section:nth-child(5) { animation-delay: 0.4s; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--text-dimmer);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 28px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* Demo card */
+  .demo-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .demo-card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .demo-card-header .dots {
+    display: flex; gap: 6px;
+  }
+  .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .dot.r { background: #e85454; }
+  .dot.y { background: var(--accent); }
+  .dot.g { background: var(--accent3); }
+
+  .demo-card-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .demo-body {
+    padding: 24px;
+  }
+
+  /* Controls */
+  .control-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .control-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .slider-wrap {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  input[type=range] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 2px;
+    background: var(--border);
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+  }
+
+  .slider-val {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    min-width: 28px;
+    text-align: right;
+  }
+
+  /* Run button */
+  .btn-run {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 10px 24px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 1px;
+    font-weight: 500;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-run:hover {
+    background: #f0d060;
+    transform: translateY(-1px);
+  }
+
+  .btn-run:active {
+    transform: translateY(0);
+  }
+
+  .btn-run:disabled {
+    background: var(--border);
+    color: var(--text-dimmer);
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Output */
+  .output {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 1px;
+    padding: 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    min-height: 80px;
+    color: var(--text-dim);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .output-line {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 2px 0;
+    border-bottom: 1px solid var(--border);
+    animation: slideIn 0.2s ease both;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .out-n { color: var(--text-dimmer); min-width: 60px; }
+  .out-result { color: var(--accent3); min-width: 80px; }
+  .out-time { color: var(--accent); min-width: 100px; }
+  .out-ops { color: var(--text-dim); font-size: 11px; }
+  .out-warn { color: var(--accent2); }
+
+  /* Bar chart */
+  .bar-chart {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bar-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    min-width: 36px;
+    text-align: right;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--surface2);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 1px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bar-time {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    min-width: 80px;
+  }
+
+  /* Insight box */
+  .insight {
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--accent);
+    background: rgba(232, 197, 71, 0.05);
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-style: italic;
+    display: none;
+  }
+
+  .insight.visible { display: block; }
+
+  /* Complexity badge */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 1px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .badge-exp { background: rgba(232, 84, 122, 0.15); color: var(--accent2); border: 1px solid rgba(232, 84, 122, 0.3); }
+  .badge-poly { background: rgba(84, 232, 197, 0.15); color: var(--accent3); border: 1px solid rgba(84, 232, 197, 0.3); }
+  .badge-np { background: rgba(232, 197, 71, 0.15); color: var(--accent); border: 1px solid rgba(232, 197, 71, 0.3); }
+
+  /* Running animation */
+  .running-indicator {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-top: 8px;
+  }
+
+  .running-indicator.active { display: flex; }
+
+  .pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 1s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.6); }
+  }
+
+  /* Separator */
+  .sep {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 60px 0;
+  }
+
+  /* Footer */
+  footer {
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dimmer);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .footer-link:hover { border-color: var(--accent); }
+
+  /* NP vs P comparison */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .compare-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 1px;
+  }
+
+  .compare-card-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .compare-card.poly .compare-card-title { color: var(--accent3); }
+  .compare-card.exp .compare-card-title { color: var(--accent2); }
+
+  .compare-card p {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-family: var(--mono);
+  }
+
+  /* Intro text */
+  .intro-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 60px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .intro-block p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  .intro-block p + p { margin-top: 12px; }
+
+  .highlight { color: var(--text); font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .control-row { flex-direction: column; align-items: flex-start; }
+    .slider-wrap { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="byline">Seoul Inside · P vs NP · Interactive Laboratory</div>
+    <h1>Feel the <em>Hardness</em></h1>
+    <p class="subtitle">Why the most important unsolved problem in computer science has resisted 50 years of the sharpest minds — demonstrated in your browser, in real time.</p>
+  </header>
+
+  <div class="intro-block">
+    <p>The <span class="highlight">P vs NP question</span> asks: if a solution can be <em>verified</em> quickly, can it also be <em>found</em> quickly? Every experiment below shows the same answer — not yet proven, but viscerally felt.</p>
+    <p>Run each experiment. Watch the time column. That explosion — from milliseconds to geological epochs — is <span class="highlight">the problem</span>.</p>
+  </div>
+
+  <!-- EXPERIMENT 1: Subset Sum -->
+  <div class="section">
+    <div class="section-label">Experiment 01</div>
+    <h2>Subset Sum <span class="badge badge-np">NP-Complete</span></h2>
+    <p class="section-desc">Given a set of integers, does any subset sum to exactly zero? Verifying a solution takes a millisecond. Finding one requires checking 2ⁿ subsets. Watch what happens as n grows.</p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <span class="demo-card-title">subset_sum_brute_force.js</span>
+      </div>
+      <div class="demo-body">
+        <div class="control-row">
+          <span class="control-label">Set size n =</span>
+          <div class="slider-wrap">
+            <input type="range" id="ss-slider" min="5" max="30" value="10" oninput="document.getElementById('ss-val').textContent=this.value">
+            <span class="slider-val" id="ss-val">10</span>
+          </div>
+          <button class="btn-run" id="ss-btn" onclick="runSubsetSum()">▶ Run</button>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card poly">
+            <div class="compare-card-title">Verify (P)</div>
+            <p>Given a subset → check if it sums to zero.<br>Always O(n). Always instant.</p>
+          </div>
+          <div class="compare-card exp">
+            <div class="compare-card-title">Solve (NP)</div>
+            <p>Find the subset → check all 2ⁿ possibilities.<br>Doubles with each element added.</p>
+          </div>
+        </div>
+
+        <div class="output" id="ss-output">
+          <span style="color:var(--text-dimmer);font-size:11px;">// Press Run to begin experiment</span>
+        </div>
+        <div class="running-indicator" id="ss-running">
+          <div class="pulse"></div> Computing — this may take a while...
+        </div>
+        <div class="insight" id="ss-insight"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIMENT 2: TSP -->
+  <div class="section">
+    <div class="section-label">Experiment 02</div>
+    <h2>Traveling Salesman <span class="badge badge-np">NP-Complete</span></h2>
+    <p class="section-desc">Find the shortest route visiting all cities exactly once. With 5 cities: 12 routes to check. With 15 cities: 43 billion. This is why logistics software costs billions to optimize.</p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <span class="demo-card-title">traveling_salesman_brute.js</span>
+      </div>
+      <div class="demo-body">
+        <div class="control-row">
+          <span class="control-label">Cities n =</span>
+          <div class="slider-wrap">
+            <input type="range" id="tsp-slider" min="3" max="13" value="6" oninput="document.getElementById('tsp-val').textContent=this.value">
+            <span class="slider-val" id="tsp-val">6</span>
+          </div>
+          <button class="btn-run" id="tsp-btn" onclick="runTSP()">▶ Run</button>
+        </div>
+
+        <div class="output" id="tsp-output">
+          <span style="color:var(--text-dimmer);font-size:11px;">// Press Run to begin experiment</span>
+        </div>
+        <div class="running-indicator" id="tsp-running">
+          <div class="pulse"></div> Enumerating all routes...
+        </div>
+
+        <div class="bar-chart" id="tsp-bars"></div>
+        <div class="insight" id="tsp-insight"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIMENT 3: 3-SAT -->
+  <div class="section">
+    <div class="section-label">Experiment 03</div>
+    <h2>3-SAT <span class="badge badge-np">NP-Complete</span></h2>
+    <p class="section-desc">The canonical NP-complete problem. Given a Boolean formula with 3 literals per clause, is there a variable assignment that satisfies it? Cook's 1971 theorem: every NP problem reduces to this one.</p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <span class="demo-card-title">three_sat_brute.js</span>
+      </div>
+      <div class="demo-body">
+        <div class="control-row">
+          <span class="control-label">Variables n =</span>
+          <div class="slider-wrap">
+            <input type="range" id="sat-slider" min="3" max="22" value="8" oninput="document.getElementById('sat-val').textContent=this.value">
+            <span class="slider-val" id="sat-val">8</span>
+          </div>
+          <button class="btn-run" id="sat-btn" onclick="runSAT()">▶ Run</button>
+        </div>
+
+        <div class="output" id="sat-output">
+          <span style="color:var(--text-dimmer);font-size:11px;">// Press Run to begin experiment</span>
+        </div>
+        <div class="running-indicator" id="sat-running">
+          <div class="pulse"></div> Checking all 2ⁿ assignments...
+        </div>
+        <div class="insight" id="sat-insight"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIMENT 4: Verification vs Search -->
+  <div class="section">
+    <div class="section-label">Experiment 04</div>
+    <h2>The Asymmetry <span class="badge badge-poly">P</span> vs <span class="badge badge-np">NP</span></h2>
+    <p class="section-desc">This is the heart of P vs NP. Verifying a solution is always fast. Finding one is exponentially slow. Watch the same n produce microseconds vs minutes — same problem, opposite directions.</p>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+        <span class="demo-card-title">verify_vs_search.js</span>
+      </div>
+      <div class="demo-body">
+        <div class="control-row">
+          <span class="control-label">Problem size n =</span>
+          <div class="slider-wrap">
+            <input type="range" id="asym-slider" min="5" max="25" value="12" oninput="document.getElementById('asym-val').textContent=this.value">
+            <span class="slider-val" id="asym-val">12</span>
+          </div>
+          <button class="btn-run" id="asym-btn" onclick="runAsymmetry()">▶ Run Both</button>
+        </div>
+
+        <div class="output" id="asym-output">
+          <span style="color:var(--text-dimmer);font-size:11px;">// Press Run to see the asymmetry</span>
+        </div>
+        <div class="insight" id="asym-insight"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <footer>
+    <span class="footer-brand">SEOUL INSIDE · B. SUN · 2026</span>
+    <a href="https://xur94-maker.github.io/SeoulInside/" class="footer-link">← Back to Seoul Inside</a>
+  </footer>
+
+</div>
+
+<script>
+// ─── Utilities ───────────────────────────────────────────────────────────────
+
+function formatTime(ms) {
+  if (ms < 0.01) return '< 0.01 ms';
+  if (ms < 1) return ms.toFixed(3) + ' ms';
+  if (ms < 1000) return ms.toFixed(1) + ' ms';
+  if (ms < 60000) return (ms/1000).toFixed(2) + ' s';
+  if (ms < 3600000) return (ms/60000).toFixed(1) + ' min';
+  if (ms < 86400000) return (ms/3600000).toFixed(1) + ' hr';
+  if (ms < 31536000000) return (ms/86400000).toFixed(0) + ' days';
+  return (ms/31536000000).toFixed(0) + ' years';
+}
+
+function formatOps(n) {
+  if (n < 1e3) return n.toFixed(0);
+  if (n < 1e6) return (n/1e3).toFixed(1) + 'K';
+  if (n < 1e9) return (n/1e6).toFixed(1) + 'M';
+  if (n < 1e12) return (n/1e9).toFixed(1) + 'B';
+  if (n < 1e15) return (n/1e12).toFixed(1) + 'T';
+  return n.toExponential(2);
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function setRunning(id, active) {
+  document.getElementById(id + '-running').classList.toggle('active', active);
+  document.getElementById(id + '-btn').disabled = active;
+}
+
+function addOutputLine(outputId, n, result, time, ops, warn) {
+  const out = document.getElementById(outputId);
+  if (out.querySelector('span')) out.innerHTML = '';
+  const line = document.createElement('div');
+  line.className = 'output-line';
+  line.style.animationDelay = '0ms';
+  line.innerHTML = `
+    <span class="out-n">n = ${n}</span>
+    <span class="out-result">${result}</span>
+    <span class="out-time ${warn ? 'out-warn' : ''}">${time}</span>
+    <span class="out-ops">${ops} operations</span>
+  `;
+  out.appendChild(line);
+}
+
+function clearOutput(id) {
+  document.getElementById(id + '-output').innerHTML = '';
+  const insight = document.getElementById(id + '-insight');
+  if (insight) { insight.classList.remove('visible'); insight.textContent = ''; }
+}
+
+function showInsight(id, text) {
+  const el = document.getElementById(id + '-insight');
+  el.textContent = text;
+  el.classList.add('visible');
+}
+
+// ─── Experiment 1: Subset Sum ─────────────────────────────────────────────────
+
+async function runSubsetSum() {
+  const n = parseInt(document.getElementById('ss-slider').value);
+  clearOutput('ss');
+  setRunning('ss', true);
+  await sleep(10);
+
+  const sizes = [];
+  for (let s = 5; s <= n; s += Math.max(1, Math.floor((n-5)/8))) sizes.push(s);
+  if (!sizes.includes(n)) sizes.push(n);
+
+  const opsPerMs = 8000000; // ~8M simple ops per ms in JS
+  let previousTime = null;
+
+  for (const size of sizes) {
+    // Generate random set
+    const set = Array.from({length: size}, () => Math.floor(Math.random() * 201) - 100);
+    const totalSubsets = Math.pow(2, size);
+
+    let found = false;
+    let checkedCount = 0;
+    const startTime = performance.now();
+
+    // Actually run for small n, estimate for large n
+    if (size <= 20) {
+      outer: for (let mask = 1; mask < totalSubsets; mask++) {
+        let sum = 0;
+        for (let i = 0; i < size; i++) {
+          if (mask & (1 << i)) sum += set[i];
+        }
+        checkedCount++;
+        if (sum === 0) { found = true; break outer; }
+      }
+    } else {
+      // Estimate: run for max 200ms then extrapolate
+      const sampleSize = Math.min(totalSubsets, 1000000);
+      for (let mask = 1; mask <= sampleSize; mask++) {
+        let sum = 0;
+        for (let i = 0; i < size; i++) {
+          if (mask & (1 << i)) sum += set[i];
+        }
+        checkedCount++;
+        if (sum === 0) { found = true; break; }
+      }
+    }
+
+    const elapsed = performance.now() - startTime;
+    let displayTime, displayOps;
+
+    if (size <= 20) {
+      displayTime = formatTime(elapsed);
+      displayOps = formatOps(checkedCount);
+    } else {
+      // Extrapolate
+      const opsPerMsActual = checkedCount / Math.max(elapsed, 0.001);
+      const estimatedMs = totalSubsets / opsPerMsActual;
+      displayTime = '~' + formatTime(estimatedMs) + ' (est.)';
+      displayOps = formatOps(totalSubsets);
+    }
+
+    const warn = size >= 25;
+    addOutputLine('ss-output', size,
+      found ? '✓ found' : '✗ none',
+      displayTime, displayOps, warn);
+
+    if (previousTime !== null && size > 5) {
+      // small delay for visual effect
+    }
+    previousTime = elapsed;
+    await sleep(30);
+  }
+
+  setRunning('ss', false);
+
+  if (n >= 20) {
+    showInsight('ss', `At n = ${n}, there are ${formatOps(Math.pow(2,n))} subsets to check. A computer checking 1 billion subsets per second would need ${formatTime(Math.pow(2,n)/1e6)} for the worst case. This is why NP ≠ P is suspected — no polynomial shortcut has ever been found.`);
+  } else {
+    showInsight('ss', `Try pushing n toward 28–30. Watch how quickly "milliseconds" becomes "centuries." The doubling with each increment is exponential growth — the hallmark of NP.`);
+  }
+}
+
+// ─── Experiment 2: TSP ────────────────────────────────────────────────────────
+
+function factorial(n) {
+  let r = 1;
+  for (let i = 2; i <= n; i++) r *= i;
+  return r;
+}
+
+async function runTSP() {
+  const n = parseInt(document.getElementById('tsp-slider').value);
+  clearOutput('tsp');
+  document.getElementById('tsp-bars').innerHTML = '';
+  setRunning('tsp', true);
+  await sleep(10);
+
+  // Generate random cities
+  const cities = Array.from({length: n}, (_, i) => ({
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    id: i
+  }));
+
+  function dist(a, b) {
+    return Math.sqrt((a.x-b.x)**2 + (a.y-b.y)**2);
+  }
+
+  // Create distance matrix
+  const d = Array.from({length: n}, (_, i) =>
+    Array.from({length: n}, (_, j) => dist(cities[i], cities[j]))
+  );
+
+  const totalRoutes = factorial(n - 1) / 2;
+  const out = document.getElementById('tsp-output');
+  out.innerHTML = '';
+
+  let bestDist = Infinity;
+  let routesChecked = 0;
+
+  const startTime = performance.now();
+
+  if (n <= 11) {
+    // Actually compute
+    const indices = Array.from({length: n-1}, (_, i) => i+1);
+
+    function permute(arr, l = 0) {
+      if (l === arr.length) {
+        let tour = [0, ...arr, 0];
+        let totalDist = 0;
+        for (let i = 0; i < tour.length - 1; i++) totalDist += d[tour[i]][tour[i+1]];
+        if (totalDist < bestDist) bestDist = totalDist;
+        routesChecked++;
+        return;
+      }
+      for (let i = l; i < arr.length; i++) {
+        [arr[l], arr[i]] = [arr[i], arr[l]];
+        permute(arr, l+1);
+        [arr[l], arr[i]] = [arr[i], arr[l]];
+      }
+    }
+    permute(indices);
+  } else {
+    // Estimate
+    const elapsed = 1;
+    routesChecked = totalRoutes;
+  }
+
+  const elapsed = performance.now() - startTime;
+
+  // Display result
+  const line = document.createElement('div');
+  line.className = 'output-line';
+
+  let timeStr, estNote = '';
+  if (n <= 11) {
+    timeStr = formatTime(elapsed);
+  } else {
+    const opsPerMs = 500000;
+    const estMs = totalRoutes / opsPerMs;
+    timeStr = '~' + formatTime(estMs);
+    estNote = ' (estimated)';
+  }
+
+  line.innerHTML = `
+    <span class="out-n">n = ${n}</span>
+    <span class="out-result">${n <= 11 ? 'solved' : 'estimated'}</span>
+    <span class="out-time ${n >= 10 ? 'out-warn' : ''}">${timeStr}${estNote}</span>
+    <span class="out-ops">${formatOps(totalRoutes)} routes</span>
+  `;
+  out.appendChild(line);
+
+  // Build bar chart for n = 3..current
+  await sleep(50);
+  const bars = document.getElementById('tsp-bars');
+  bars.innerHTML = '';
+
+  const sizes = [3,4,5,6,7,8,9,10,11,12,n].filter((v,i,a) => v <= n && a.indexOf(v) === i).sort((a,b)=>a-b);
+  const opsPerMs = 500000;
+  const times = sizes.map(s => {
+    const routes = factorial(s-1)/2;
+    return routes / opsPerMs;
+  });
+  const maxTime = Math.max(...times);
+
+  for (let i = 0; i < sizes.length; i++) {
+    const s = sizes[i];
+    const t = times[i];
+    const pct = Math.min((t / maxTime) * 100, 100);
+    const hue = Math.min(t / 1000 * 120, 120);
+    const color = t < 1 ? 'var(--accent3)' : t < 1000 ? 'var(--accent)' : 'var(--accent2)';
+
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    row.innerHTML = `
+      <span class="bar-label">${s}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:0%;background:${color}" data-pct="${pct}"></div></div>
+      <span class="bar-time">${formatTime(t)}</span>
+    `;
+    bars.appendChild(row);
+    await sleep(20);
+    row.querySelector('.bar-fill').style.width = pct + '%';
+  }
+
+  setRunning('tsp', false);
+  showInsight('tsp', `With ${n} cities, there are ${formatOps(totalRoutes)} possible routes. The best known exact algorithm (Held-Karp) runs in O(n² · 2ⁿ) — still exponential. FedEx, UPS, and airlines spend hundreds of millions on approximation algorithms because exact solutions are computationally unreachable.`);
+}
+
+// ─── Experiment 3: 3-SAT ─────────────────────────────────────────────────────
+
+function generateSAT(n, clauseRatio = 4.3) {
+  const numClauses = Math.floor(n * clauseRatio);
+  const clauses = [];
+  for (let i = 0; i < numClauses; i++) {
+    const clause = [];
+    const vars = new Set();
+    while (vars.size < 3) vars.add(Math.floor(Math.random() * n));
+    for (const v of vars) {
+      clause.push(Math.random() < 0.5 ? v : ~v);
+    }
+    clauses.push(clause);
+  }
+  return clauses;
+}
+
+function evalSAT(clauses, assignment, n) {
+  for (const clause of clauses) {
+    let satisfied = false;
+    for (const lit of clause) {
+      const v = lit < 0 ? ~lit : lit;
+      const val = (assignment >> v) & 1;
+      if (lit >= 0 ? val === 1 : val === 0) { satisfied = true; break; }
+    }
+    if (!satisfied) return false;
+  }
+  return true;
+}
+
+async function runSAT() {
+  const n = parseInt(document.getElementById('sat-slider').value);
+  clearOutput('sat');
+  setRunning('sat', true);
+  await sleep(10);
+
+  const clauses = generateSAT(n);
+  const totalAssignments = Math.pow(2, n);
+  const out = document.getElementById('sat-output');
+  out.innerHTML = '';
+
+  let found = false;
+  let checked = 0;
+  const startTime = performance.now();
+
+  if (n <= 20) {
+    for (let mask = 0; mask < totalAssignments; mask++) {
+      checked++;
+      if (evalSAT(clauses, mask, n)) { found = true; break; }
+      // Yield every 500K iterations
+      if (checked % 500000 === 0) await sleep(0);
+    }
+  }
+
+  const elapsed = performance.now() - startTime;
+
+  const line = document.createElement('div');
+  line.className = 'output-line';
+
+  let timeStr;
+  if (n <= 20) {
+    timeStr = formatTime(elapsed);
+  } else {
+    const opsPerMs = 2000000;
+    timeStr = '~' + formatTime(totalAssignments / opsPerMs) + ' (est.)';
+    checked = totalAssignments;
+  }
+
+  line.innerHTML = `
+    <span class="out-n">n = ${n} vars</span>
+    <span class="out-result">${n <= 20 ? (found ? '✓ SAT' : '✗ UNSAT') : '?'}</span>
+    <span class="out-time ${n >= 18 ? 'out-warn' : ''}">${timeStr}</span>
+    <span class="out-ops">${formatOps(n <= 20 ? checked : totalAssignments)} assignments</span>
+  `;
+  out.appendChild(line);
+
+  // Show clause info
+  const info = document.createElement('div');
+  info.className = 'output-line';
+  info.style.borderBottom = 'none';
+  info.innerHTML = `
+    <span class="out-n"></span>
+    <span style="color:var(--text-dimmer);font-size:11px;">${clauses.length} clauses · threshold ≈ 4.3n · ${n <= 20 ? `checked ${formatOps(checked)} of ${formatOps(totalAssignments)}` : 'full search estimated'}</span>
+  `;
+  out.appendChild(info);
+
+  setRunning('sat', false);
+
+  if (n >= 18) {
+    showInsight('sat', `At n = ${n} variables, brute force would check ${formatOps(totalAssignments)} assignments. Modern CDCL SAT solvers (used in chip verification and AI planning) handle millions of variables on structured instances — but worst-case 3-SAT remains exponential. The Clay Prize requires proving this is fundamental, not an engineering limitation.`);
+  } else {
+    showInsight('sat', `Cook's 1971 theorem proved that every NP problem reduces to 3-SAT. If you could solve 3-SAT in polynomial time, you'd solve every NP-complete problem simultaneously — including protein folding, logistics, and breaking RSA encryption.`);
+  }
+}
+
+// ─── Experiment 4: Asymmetry ──────────────────────────────────────────────────
+
+async function runAsymmetry() {
+  const n = parseInt(document.getElementById('asym-slider').value);
+  clearOutput('asym');
+  setRunning('asym', true);
+  await sleep(10);
+
+  const out = document.getElementById('asym-output');
+  out.innerHTML = '';
+
+  // Generate a Subset Sum instance with a known solution
+  const set = Array.from({length: n}, () => Math.floor(Math.random() * 201) - 100);
+  // Inject a solution: randomly pick a subset that sums to 0
+  const solutionIndices = [];
+  let runningSum = 0;
+  for (let i = 0; i < n - 1; i++) {
+    if (Math.random() < 0.4) { solutionIndices.push(i); runningSum += set[i]; }
+  }
+  set[n-1] = -runningSum; // guarantee solution exists
+  solutionIndices.push(n-1);
+
+  // VERIFY: check if solutionIndices sums to 0
+  const verifyStart = performance.now();
+  let verifySum = 0;
+  for (const i of solutionIndices) verifySum += set[i];
+  const verifyTime = performance.now() - verifyStart;
+  const isValid = verifySum === 0;
+
+  // Display verify result
+  await sleep(100);
+  const vLine = document.createElement('div');
+  vLine.className = 'output-line';
+  vLine.innerHTML = `
+    <span class="out-n" style="color:var(--accent3)">VERIFY</span>
+    <span class="out-result" style="color:var(--accent3)">✓ valid</span>
+    <span class="out-time" style="color:var(--accent3)">${formatTime(Math.max(verifyTime, 0.001))}</span>
+    <span class="out-ops" style="color:var(--accent3)">${n} additions — O(n)</span>
+  `;
+  out.appendChild(vLine);
+
+  await sleep(300);
+
+  // SEARCH: brute force
+  const searchOps = Math.pow(2, n);
+  let searchTime;
+
+  if (n <= 22) {
+    const searchStart = performance.now();
+    let found = false;
+    for (let mask = 1; mask < searchOps; mask++) {
+      let sum = 0;
+      for (let i = 0; i < n; i++) {
+        if (mask & (1 << i)) sum += set[i];
+      }
+      if (sum === 0) { found = true; break; }
+      if (mask % 500000 === 0) await sleep(0);
+    }
+    searchTime = performance.now() - searchStart;
+  } else {
+    const opsPerMs = 8000000;
+    searchTime = searchOps / opsPerMs;
+  }
+
+  const sLine = document.createElement('div');
+  sLine.className = 'output-line';
+  sLine.innerHTML = `
+    <span class="out-n" style="color:var(--accent2)">SEARCH</span>
+    <span class="out-result" style="color:var(--accent2)">${n <= 22 ? '✓ found' : '(est.)'}</span>
+    <span class="out-time out-warn">${n <= 22 ? formatTime(searchTime) : '~' + formatTime(searchTime)}</span>
+    <span class="out-ops">${formatOps(searchOps)} subsets — O(2ⁿ)</span>
+  `;
+  out.appendChild(sLine);
+
+  await sleep(100);
+
+  // Ratio line
+  const ratio = searchTime / Math.max(verifyTime, 0.001);
+  const rLine = document.createElement('div');
+  rLine.className = 'output-line';
+  rLine.style.borderBottom = 'none';
+  rLine.innerHTML = `
+    <span class="out-n"></span>
+    <span style="color:var(--text-dimmer);font-size:11px;">Search is ${formatOps(ratio)}× slower than verify for n = ${n}</span>
+  `;
+  out.appendChild(rLine);
+
+  setRunning('asym', false);
+
+  showInsight('asym', `This asymmetry — verify in microseconds, search in ${n > 20 ? 'geological epochs' : 'seconds'} — is the entire P vs NP problem. If P = NP, this gap cannot exist. If P ≠ NP (what 99% of experts believe), this gap is a fundamental property of the universe, not a limitation of our cleverness.`);
+}
+</script>
+</body>
+</html>
