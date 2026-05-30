@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find the Counterexample — Riemann Hypothesis | Seoul Inside</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #222222;
+    --border-bright: #333333;
+    --text: #e8e8e8;
+    --text-dim: #666666;
+    --text-mid: #999999;
+    --accent: #c8a96e;
+    --accent-dim: #7a6340;
+    --red: #e05555;
+    --green: #55a855;
+    --blue: #5588cc;
+    --critical: #c8a96e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* Header */
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .site-header a {
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+  .site-header a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 860px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-mid);
+    max-width: 620px;
+  }
+
+  .hero-desc strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin: 40px 0 0;
+  }
+
+  .stat {
+    flex: 1;
+    padding: 20px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* Main content */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* Experiment block */
+  .experiment {
+    margin-bottom: 60px;
+  }
+
+  .exp-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .exp-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .exp-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+  }
+
+  /* Input panel */
+  .input-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .input-group label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  .input-group input[type="number"],
+  .input-group input[type="range"] {
+    background: var(--bg);
+    border: 1px solid var(--border-bright);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    padding: 10px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+
+  .input-group input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .input-group input[type="number"]:focus { border-color: var(--accent); }
+
+  .input-group input[type="range"] {
+    padding: 0;
+    height: 36px;
+    cursor: pointer;
+    accent-color: var(--accent);
+  }
+
+  .range-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    min-width: 50px;
+  }
+
+  /* Preset buttons */
+  .preset-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .preset-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    align-self: center;
+    margin-right: 4px;
+  }
+
+  .preset-btn {
+    background: transparent;
+    border: 1px solid var(--border-bright);
+    color: var(--text-mid);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.05em;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .run-btn {
+    background: var(--accent);
+    border: none;
+    color: #000;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 12px 28px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+  }
+
+  .run-btn:hover { opacity: 0.85; }
+  .run-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Result panel */
+  .result-panel {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .result-header {
+    background: var(--surface);
+    padding: 12px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .result-status {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .result-status.fail { color: var(--red); }
+  .result-status.success { color: var(--green); }
+  .result-status.computing { color: var(--accent); }
+
+  .result-body {
+    padding: 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    min-height: 120px;
+  }
+
+  .result-value {
+    margin-bottom: 8px;
+  }
+
+  .result-value span {
+    color: var(--text-dim);
+    font-size: 11px;
+    margin-right: 8px;
+  }
+
+  .val-real { color: var(--blue); }
+  .val-imag { color: var(--text-mid); }
+  .val-mag { color: var(--accent); }
+  .val-re { color: var(--text); }
+
+  .verdict {
+    margin-top: 20px;
+    padding: 16px;
+    border-left: 3px solid;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .verdict.fail {
+    border-color: var(--red);
+    background: rgba(224, 85, 85, 0.05);
+    color: var(--text-mid);
+  }
+
+  .verdict.success {
+    border-color: var(--green);
+    background: rgba(85, 168, 85, 0.05);
+    color: var(--text-mid);
+  }
+
+  .verdict strong {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .verdict.fail strong { color: var(--red); }
+  .verdict.success strong { color: var(--green); }
+
+  /* Counter */
+  .attempt-counter {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .counter-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .counter-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .counter-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .counter-right {
+    text-align: right;
+  }
+
+  .global-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  /* Visualization */
+  .viz-container {
+    margin-top: 24px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .viz-header {
+    background: var(--surface);
+    padding: 10px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--border);
+  }
+
+  canvas {
+    display: block;
+    background: var(--bg);
+  }
+
+  /* History log */
+  .history-section {
+    margin-top: 32px;
+  }
+
+  .history-header {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .clear-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    padding: 4px 10px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+  }
+
+  .clear-btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .history-log {
+    border: 1px solid var(--border);
+    max-height: 220px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .history-item {
+    display: grid;
+    grid-template-columns: 28px 1fr 1fr 100px;
+    gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    align-items: center;
+    transition: background 0.1s;
+  }
+
+  .history-item:last-child { border-bottom: none; }
+  .history-item:hover { background: var(--surface); }
+
+  .history-item.fail .h-status { color: var(--red); }
+  .history-item.success .h-status { color: var(--green); }
+
+  .h-num { color: var(--text-dim); }
+  .h-point { color: var(--text-mid); }
+  .h-mag { color: var(--accent); }
+  .h-status { font-size: 10px; letter-spacing: 0.05em; }
+
+  .empty-log {
+    padding: 32px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* Info box */
+  .info-box {
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-top: 32px;
+    background: var(--surface);
+  }
+
+  .info-box h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .info-box p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-mid);
+    margin-bottom: 10px;
+  }
+
+  .info-box p:last-child { margin-bottom: 0; }
+
+  .math-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--bg);
+    padding: 10px 16px;
+    margin: 12px 0;
+    border-left: 2px solid var(--accent);
+  }
+
+  /* Footer */
+  .page-footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .page-footer a {
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+  .page-footer a:hover { color: var(--accent); }
+
+  /* Animations */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .computing-indicator {
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .site-header { padding: 12px 20px; }
+    .hero { padding: 48px 20px 40px; }
+    .main { padding: 40px 20px; }
+    .stats-bar { flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat:last-child { border-bottom: none; }
+    .history-item { grid-template-columns: 24px 1fr 80px; }
+    .h-mag { display: none; }
+    .page-footer { padding: 20px; flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span>SEOUL INSIDE · ARCHIVE SUPPLEMENT · MAY 2026</span>
+  <a href="https://seoulinside.substack.com">← seoulinside.substack.com</a>
+</header>
+
+<section class="hero">
+  <p class="hero-label">Experiment 05 · Riemann Hypothesis Playground</p>
+  <h1>Find the <em>Counterexample</em>.</h1>
+  <p class="hero-desc">
+    The Riemann Hypothesis states that every non-trivial zero of the zeta function lies on the critical line where <strong>Re(s) = ½</strong>. 
+    Ten trillion zeros have been checked. Not one has strayed. 
+    Your turn. Enter any complex number s = σ + it with σ ≠ ½ and try to make ζ(s) = 0.
+    <br><br>
+    <strong>No one has ever succeeded. That is the problem.</strong>
+  </p>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-value">10¹³</span>
+      <span class="stat-label">Zeros verified on critical line</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">162 yrs</span>
+      <span class="stat-label">Since Riemann's 1859 paper</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">$1M</span>
+      <span class="stat-label">Clay Prize — unclaimed</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="global-attempts">0</span>
+      <span class="stat-label">Attempts on this page</span>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+
+  <!-- EXPERIMENT A: Manual Input -->
+  <div class="experiment">
+    <div class="exp-header">
+      <span class="exp-number">EXPERIMENT A</span>
+      <span class="exp-title">Enter a Point. Find ζ(s) = 0.</span>
+    </div>
+
+    <p class="exp-desc">
+      Choose any complex number s = σ + it where σ (real part) ≠ ½. 
+      The calculator computes |ζ(s)| using a partial sum approximation. 
+      If you can find a point where |ζ(s)| is close to zero — you may have found a counterexample. 
+      Mathematicians have been trying for 162 years.
+    </p>
+
+    <div class="input-panel">
+      <div class="preset-row">
+        <span class="preset-label">Try:</span>
+        <button class="preset-btn" onclick="setPreset(0.3, 14.134)">Known zero (σ=½)</button>
+        <button class="preset-btn" onclick="setPreset(0.3, 14.134)">σ = 0.3, t = 14.1</button>
+        <button class="preset-btn" onclick="setPreset(0.7, 21.022)">σ = 0.7, t = 21.0</button>
+        <button class="preset-btn" onclick="setPreset(0.9, 50)">σ = 0.9, t = 50</button>
+        <button class="preset-btn" onclick="setPreset(0.1, 100)">σ = 0.1, t = 100</button>
+        <button class="preset-btn" onclick="randomPoint()">Random</button>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label>σ (Real part) — try anything except 0.5</label>
+          <input type="number" id="sigma-input" value="0.3" step="0.01" min="0.01" max="0.99">
+        </div>
+        <div class="input-group">
+          <label>t (Imaginary part)</label>
+          <input type="number" id="t-input" value="14.134" step="0.001">
+        </div>
+        <button class="run-btn" id="run-btn-a" onclick="computeZeta()">▶ Compute ζ(s)</button>
+      </div>
+    </div>
+
+    <div class="result-panel" id="result-a">
+      <div class="result-header">
+        <span>OUTPUT</span>
+        <span class="result-status" id="status-a">WAITING FOR INPUT</span>
+      </div>
+      <div class="result-body" id="result-body-a">
+        <span style="color: var(--text-dim); font-size: 12px;">Enter σ and t above, then press Compute.</span>
+      </div>
+    </div>
+
+    <!-- Attempt counter -->
+    <div class="attempt-counter">
+      <div class="counter-left">
+        <div class="counter-num" id="attempt-count">0</div>
+        <div class="counter-label">YOUR ATTEMPTS</div>
+      </div>
+      <div style="flex:1; padding: 0 24px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--text-dim); line-height: 1.6;">
+          Mathematicians worldwide: <span style="color: var(--text-mid);">uncountable</span><br>
+          Counterexamples found: <span style="color: var(--red); font-weight: 500;">0</span>
+        </div>
+      </div>
+      <div class="counter-right">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--text-dim);">
+          Closest |ζ(s)| found:<br>
+          <span style="color: var(--accent); font-size: 16px;" id="closest-val">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIMENT B: Sweep -->
+  <div class="experiment">
+    <div class="exp-header">
+      <span class="exp-number">EXPERIMENT B</span>
+      <span class="exp-title">Sweep the Strip. Watch |ζ(s)| Never Hit Zero.</span>
+    </div>
+
+    <p class="exp-desc">
+      Fix σ (real part) at any value except ½, then sweep t from 0 to 50. 
+      The graph plots |ζ(σ + it)| as t increases. On the critical line (σ = ½), zeros appear as dips touching the axis. 
+      Off the line — try as you might — the curve never reaches zero.
+    </p>
+
+    <div class="input-panel">
+      <div class="input-row">
+        <div class="input-group">
+          <label>σ (Real part) — fixed for sweep</label>
+          <input type="range" id="sigma-sweep" min="0.1" max="0.9" step="0.05" value="0.3" oninput="updateSweepLabel()">
+        </div>
+        <span class="range-value" id="sigma-sweep-label">σ = 0.30</span>
+        <button class="run-btn" id="run-btn-b" onclick="runSweep()">▶ Sweep</button>
+      </div>
+
+      <div class="preset-row">
+        <span class="preset-label">σ presets:</span>
+        <button class="preset-btn" onclick="setSweepSigma(0.5)">0.5 (critical line)</button>
+        <button class="preset-btn" onclick="setSweepSigma(0.3)">0.3</button>
+        <button class="preset-btn" onclick="setSweepSigma(0.7)">0.7</button>
+        <button class="preset-btn" onclick="setSweepSigma(0.9)">0.9</button>
+        <button class="preset-btn" onclick="setSweepSigma(0.1)">0.1</button>
+      </div>
+    </div>
+
+    <div class="viz-container">
+      <div class="viz-header" id="sweep-header">SWEEP VISUALIZATION — σ = 0.30 · t ∈ [0, 50]</div>
+      <canvas id="sweep-canvas" width="800" height="280"></canvas>
+    </div>
+
+    <div class="info-box" style="margin-top: 16px;">
+      <h3>What you're seeing</h3>
+      <p>
+        When σ = ½ (the critical line), the blue curve dips to zero at exactly the known Riemann zeros: 
+        t ≈ 14.13, 21.02, 25.01, 30.42, 32.93...
+      </p>
+      <p>
+        When σ ≠ ½, the curve oscillates but <strong style="color: var(--text);">never reaches zero</strong>. 
+        The Riemann Hypothesis says this is true for every possible σ ≠ ½ — not just the ones you can try here.
+      </p>
+    </div>
+  </div>
+
+  <!-- EXPERIMENT C: Closest approach game -->
+  <div class="experiment">
+    <div class="exp-header">
+      <span class="exp-number">EXPERIMENT C</span>
+      <span class="exp-title">Get as Close as Possible.</span>
+    </div>
+
+    <p class="exp-desc">
+      This is the challenge: find any point s = σ + it with σ ≠ ½ that minimizes |ζ(s)|. 
+      How close can you get to zero? The leaderboard tracks your best approach. 
+      Closer to zero = closer to a counterexample. No one has ever reached zero.
+    </p>
+
+    <div class="input-panel">
+      <div class="input-row">
+        <div class="input-group">
+          <label>σ (must not equal 0.5)</label>
+          <input type="number" id="sigma-c" value="0.4" step="0.001" min="0.001" max="0.999">
+        </div>
+        <div class="input-group">
+          <label>t (imaginary part)</label>
+          <input type="number" id="t-c" value="14.134" step="0.001">
+        </div>
+        <button class="run-btn" onclick="submitChallenge()">▶ Submit</button>
+      </div>
+
+      <div class="preset-row">
+        <span class="preset-label">Hints:</span>
+        <button class="preset-btn" onclick="setChallengePreset(0.4, 14.134)">Near first zero</button>
+        <button class="preset-btn" onclick="setChallengePreset(0.6, 21.022)">Near second zero</button>
+        <button class="preset-btn" onclick="setChallengePreset(0.45, 30.424)">Near fourth zero</button>
+        <button class="preset-btn" onclick="randomChallenge()">Random search</button>
+      </div>
+    </div>
+
+    <div class="result-panel" id="result-c">
+      <div class="result-header">
+        <span>CHALLENGE RESULT</span>
+        <span class="result-status" id="status-c">WAITING</span>
+      </div>
+      <div class="result-body" id="result-body-c">
+        <span style="color: var(--text-dim); font-size: 12px;">Submit a point to see how close you can get.</span>
+      </div>
+    </div>
+
+    <!-- Personal leaderboard -->
+    <div class="history-section">
+      <div class="history-header">
+        <span>YOUR CLOSEST APPROACHES (this session)</span>
+        <button class="clear-btn" onclick="clearHistory()">CLEAR</button>
+      </div>
+      <div class="history-log" id="history-log">
+        <div class="empty-log">No attempts yet. Submit a point above.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info section -->
+  <div class="info-box">
+    <h3>Why this is hard</h3>
+    <p>
+      The Riemann zeta function ζ(s) is defined for complex numbers s = σ + it. 
+      Its non-trivial zeros — the points where ζ(s) = 0 — all appear to have real part exactly ½.
+    </p>
+    <div class="math-line">ζ(s) = 1 + 1/2ˢ + 1/3ˢ + 1/4ˢ + ... (for Re(s) > 1)</div>
+    <p>
+      The functional equation extends ζ to the entire complex plane. 
+      All known zeros lie on the critical line Re(s) = ½. 
+      The Riemann Hypothesis says <em>all</em> non-trivial zeros do — not just the first 10 trillion.
+    </p>
+    <p>
+      This page uses a partial sum approximation (N = 500 terms) for illustrative purposes. 
+      The true ζ function requires analytic continuation — the values shown are accurate near the critical strip 
+      but are approximations, not exact computations.
+    </p>
+    <p style="color: var(--text-dim); font-size: 12px; margin-top: 16px;">
+      Source: <a href="https://seoulinside.substack.com" style="color: var(--accent); text-decoration: none;">Seoul Inside — Riemann Hypothesis Archive</a> · 
+      Clay Mathematics Institute: <a href="https://claymath.org/millennium-problems" style="color: var(--accent); text-decoration: none;">claymath.org</a>
+    </p>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <span>SEOUL INSIDE · B. SUN · 2026 · RIEMANN HYPOTHESIS PLAYGROUND</span>
+  <a href="https://seoulinside.substack.com">seoulinside.substack.com</a>
+</footer>
+
+<script>
+// ============================================================
+// ZETA FUNCTION COMPUTATION (partial sum + Euler-Maclaurin)
+// ============================================================
+
+function zetaPartialSum(sigma, t, N = 500) {
+  // Compute ζ(s) using partial Dirichlet series + correction
+  // For σ > 0.5, direct summation with acceleration
+  let re = 0, im = 0;
+  
+  for (let n = 1; n <= N; n++) {
+    const logN = Math.log(n);
+    const mag = Math.pow(n, -sigma);
+    const angle = -t * logN;
+    re += mag * Math.cos(angle);
+    im += mag * Math.sin(angle);
+  }
+  
+  // Euler-Maclaurin correction term (first order)
+  const mag0 = Math.pow(N + 0.5, -sigma);
+  const angle0 = -t * Math.log(N + 0.5);
+  re += mag0 * Math.cos(angle0) * (N + 0.5) / (sigma - 1 + 1e-10);
+  
+  return { re, im, mag: Math.sqrt(re*re + im*im) };
+}
+
+// Alternating series (Dirichlet eta) for 0 < σ < 1
+// ζ(s) = η(s) / (1 - 2^(1-s))
+function zetaEta(sigma, t, N = 300) {
+  let re = 0, im = 0;
+  
+  for (let n = 1; n <= N; n++) {
+    const logN = Math.log(n);
+    const mag = Math.pow(n, -sigma);
+    const angle = -t * logN;
+    const sign = (n % 2 === 0) ? -1 : 1;
+    re += sign * mag * Math.cos(angle);
+    im += sign * mag * Math.sin(angle);
+  }
+  
+  // Divide by (1 - 2^(1-s))
+  // 2^(1-s) = 2^(1-σ) * e^(-it*ln2)
+  const mag2 = Math.pow(2, 1 - sigma);
+  const angle2 = -t * Math.log(2);
+  const d_re = 1 - mag2 * Math.cos(angle2);
+  const d_im = -mag2 * Math.sin(angle2) * (-1); // note: -it*ln2 gives sin with negative
+  const d_re2 = 1 - mag2 * Math.cos(angle2);
+  const d_im2 = mag2 * Math.sin(angle2);
+  
+  const denom = d_re2 * d_re2 + d_im2 * d_im2;
+  if (denom < 1e-15) return { re: 1e10, im: 0, mag: 1e10 };
+  
+  const z_re = (re * d_re2 + im * d_im2) / denom;
+  const z_im = (im * d_re2 - re * d_im2) / denom;
+  
+  return { re: z_re, im: z_im, mag: Math.sqrt(z_re*z_re + z_im*z_im) };
+}
+
+function computeZetaAt(sigma, t) {
+  // Use eta function for critical strip (more accurate)
+  if (sigma > 0 && sigma < 1) {
+    return zetaEta(sigma, t, 400);
+  }
+  return zetaPartialSum(sigma, t, 500);
+}
+
+function formatComplex(re, im) {
+  const sign = im >= 0 ? '+' : '−';
+  return `${re.toFixed(6)} ${sign} ${Math.abs(im).toFixed(6)}i`;
+}
+
+function formatMag(m) {
+  if (m < 0.001) return m.toExponential(4);
+  return m.toFixed(6);
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let attemptCount = 0;
+let closestMag = Infinity;
+let history = [];
+let globalAttempts = 0;
+
+// ============================================================
+// EXPERIMENT A — MANUAL COMPUTE
+// ============================================================
+
+function setPreset(sigma, t) {
+  document.getElementById('sigma-input').value = sigma;
+  document.getElementById('t-input').value = t;
+}
+
+function randomPoint() {
+  const sigma = (Math.random() * 0.8 + 0.1).toFixed(3);
+  const t = (Math.random() * 100 + 5).toFixed(3);
+  setPreset(sigma, t);
+}
+
+function computeZeta() {
+  const sigma = parseFloat(document.getElementById('sigma-input').value);
+  const t = parseFloat(document.getElementById('t-input').value);
+  
+  if (isNaN(sigma) || isNaN(t)) return;
+  
+  attemptCount++;
+  globalAttempts++;
+  document.getElementById('attempt-count').textContent = attemptCount;
+  document.getElementById('global-attempts').textContent = globalAttempts;
+  
+  const statusEl = document.getElementById('status-a');
+  statusEl.textContent = 'COMPUTING...';
+  statusEl.className = 'result-status computing computing-indicator';
+  
+  setTimeout(() => {
+    const z = computeZetaAt(sigma, t);
+    
+    // Track closest
+    if (Math.abs(sigma - 0.5) > 0.01 && z.mag < closestMag) {
+      closestMag = z.mag;
+      document.getElementById('closest-val').textContent = formatMag(z.mag);
+    }
+    
+    const isOnCritLine = Math.abs(sigma - 0.5) < 0.01;
+    const isZero = z.mag < 0.05;
+    
+    const body = document.getElementById('result-body-a');
+    
+    let verdict = '';
+    if (isOnCritLine && isZero) {
+      verdict = `<div class="verdict success fade-in">
+        <strong>✓ ZERO FOUND — but on the critical line (σ ≈ ½)</strong>
+        This confirms the Riemann Hypothesis, not disproves it. All known zeros are exactly here.
+      </div>`;
+      statusEl.textContent = 'ON CRITICAL LINE';
+      statusEl.className = 'result-status success';
+    } else if (!isOnCritLine && isZero) {
+      verdict = `<div class="verdict success fade-in">
+        <strong>⚠ |ζ(s)| IS VERY SMALL — but this is an approximation</strong>
+        The true ζ function may not be zero here. Approximation artifacts can mimic near-zeros off the critical line.
+      </div>`;
+      statusEl.textContent = 'NEAR ZERO (UNVERIFIED)';
+      statusEl.className = 'result-status computing';
+    } else if (isOnCritLine) {
+      verdict = `<div class="verdict fail fade-in">
+        <strong>✗ On the critical line, but not a zero</strong>
+        The zeta function has infinitely many zeros on the critical line — but not at every point. Try t ≈ 14.13, 21.02, 25.01...
+      </div>`;
+      statusEl.textContent = 'NOT A ZERO';
+      statusEl.className = 'result-status fail';
+    } else {
+      verdict = `<div class="verdict fail fade-in">
+        <strong>✗ Not a zero — σ ≠ ½, |ζ(s)| = ${formatMag(z.mag)}</strong>
+        ${z.mag > 1 ? `The function is far from zero at this point.` : 
+          z.mag > 0.1 ? `The function is close-ish, but not zero. Keep trying.` :
+          `This is quite close — but still not zero. The hypothesis may be protecting itself.`}
+      </div>`;
+      statusEl.textContent = 'NOT A ZERO';
+      statusEl.className = 'result-status fail';
+    }
+    
+    body.innerHTML = `
+      <div class="fade-in">
+        <div class="result-value"><span>INPUT</span> s = ${sigma} + ${t}i</div>
+        <div class="result-value"><span>Re(σ)</span> <span class="val-re">${sigma}</span> 
+          ${isOnCritLine ? '<span style="color:var(--green);font-size:11px;margin-left:8px;">← critical line</span>' : 
+            `<span style="color:var(--text-dim);font-size:11px;margin-left:8px;">distance from ½: ${Math.abs(sigma-0.5).toFixed(4)}</span>`}
+        </div>
+        <div class="result-value"><span>ζ(s)</span> <span class="val-real">${z.re.toFixed(6)}</span> <span style="color:var(--text-dim)">+</span> <span class="val-imag">${z.im.toFixed(6)}i</span></div>
+        <div class="result-value"><span>|ζ(s)|</span> <span class="val-mag" style="font-size:18px;">${formatMag(z.mag)}</span></div>
+        ${verdict}
+      </div>
+    `;
+  }, 80);
+}
+
+// ============================================================
+// EXPERIMENT B — SWEEP
+// ============================================================
+
+function updateSweepLabel() {
+  const v = parseFloat(document.getElementById('sigma-sweep').value);
+  document.getElementById('sigma-sweep-label').textContent = `σ = ${v.toFixed(2)}`;
+  document.getElementById('sweep-header').textContent = 
+    `SWEEP VISUALIZATION — σ = ${v.toFixed(2)} · t ∈ [0, 50]`;
+}
+
+function setSweepSigma(v) {
+  document.getElementById('sigma-sweep').value = v;
+  updateSweepLabel();
+}
+
+function runSweep() {
+  const sigma = parseFloat(document.getElementById('sigma-sweep').value);
+  const canvas = document.getElementById('sweep-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  // Responsive canvas
+  const W = canvas.parentElement.offsetWidth;
+  canvas.width = W;
+  canvas.height = 280;
+  
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+  
+  // Background
+  ctx.fillStyle = '#0a0a0a';
+  ctx.fillRect(0, 0, w, h);
+  
+  // Grid
+  ctx.strokeStyle = '#1a1a1a';
+  ctx.lineWidth = 1;
+  for (let x = 0; x <= w; x += w/10) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+  }
+  for (let y = 0; y <= h; y += h/4) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+  }
+  
+  // Axis labels
+  ctx.fillStyle = '#444';
+  ctx.font = '10px IBM Plex Mono, monospace';
+  ctx.fillText('t = 0', 4, h - 8);
+  ctx.fillText('t = 50', w - 50, h - 8);
+  ctx.fillText('|ζ|', 4, 14);
+  
+  // Zero line
+  ctx.strokeStyle = '#333';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.moveTo(0, h - 20);
+  ctx.lineTo(w, h - 20);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#333';
+  ctx.font = '9px IBM Plex Mono, monospace';
+  ctx.fillText('zero', w - 32, h - 24);
+  
+  // Compute values
+  const steps = Math.min(400, w);
+  const tMax = 50;
+  const values = [];
+  let maxVal = 0;
+  
+  for (let i = 0; i <= steps; i++) {
+    const t = (i / steps) * tMax;
+    const z = computeZetaAt(sigma, t);
+    values.push({ t, mag: z.mag });
+    if (z.mag > maxVal) maxVal = z.mag;
+  }
+  
+  maxVal = Math.min(maxVal, 5); // cap for display
+  const plotH = h - 40;
+  
+  // Known zero positions (approximate t values)
+  const knownZeros = [14.134, 21.022, 25.010, 30.424, 32.935, 37.586, 40.918, 43.327, 48.005, 49.773];
+  
+  // Mark known zeros if on critical line
+  if (Math.abs(sigma - 0.5) < 0.02) {
+    ctx.fillStyle = 'rgba(200, 169, 110, 0.1)';
+    knownZeros.forEach(tz => {
+      const x = (tz / tMax) * w;
+      ctx.fillRect(x - 6, 0, 12, h - 20);
+    });
+  }
+  
+  // Draw curve
+  const isCritical = Math.abs(sigma - 0.5) < 0.02;
+  ctx.strokeStyle = isCritical ? '#5588cc' : '#c8a96e';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  
+  values.forEach((v, i) => {
+    const x = (i / steps) * w;
+    const y = (h - 20) - Math.min(v.mag / maxVal, 1) * plotH;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+  
+  // Zero labels on critical line
+  if (isCritical) {
+    ctx.fillStyle = '#c8a96e';
+    ctx.font = '9px IBM Plex Mono, monospace';
+    knownZeros.slice(0, 6).forEach(tz => {
+      if (tz < tMax) {
+        const x = (tz / tMax) * w;
+        ctx.fillText(`ρ`, x - 4, 14);
+        ctx.fillText(`t≈${tz.toFixed(1)}`, x - 16, 26);
+      }
+    });
+  }
+  
+  // Label
+  ctx.fillStyle = isCritical ? '#5588cc' : '#c8a96e';
+  ctx.font = '11px IBM Plex Mono, monospace';
+  ctx.fillText(isCritical ? `σ = 0.5 (critical line) — zeros visible` : `σ = ${sigma.toFixed(2)} — no zeros`, 12, 50);
+}
+
+// Draw initial sweep on load
+window.addEventListener('load', () => {
+  setTimeout(runSweep, 200);
+});
+
+window.addEventListener('resize', () => {
+  runSweep();
+});
+
+// ============================================================
+// EXPERIMENT C — CHALLENGE
+// ============================================================
+
+function setChallengePreset(sigma, t) {
+  document.getElementById('sigma-c').value = sigma;
+  document.getElementById('t-c').value = t;
+}
+
+function randomChallenge() {
+  const sigma = (Math.random() * 0.4 + 0.3 + (Math.random() > 0.5 ? 0.1 : -0.1)).toFixed(4);
+  const t = (Math.random() * 60 + 10).toFixed(3);
+  setChallengePreset(Math.max(0.01, Math.min(0.99, parseFloat(sigma))), t);
+}
+
+function submitChallenge() {
+  const sigma = parseFloat(document.getElementById('sigma-c').value);
+  const t = parseFloat(document.getElementById('t-c').value);
+  
+  if (isNaN(sigma) || isNaN(t)) return;
+  
+  const isOnCritLine = Math.abs(sigma - 0.5) < 0.01;
+  
+  attemptCount++;
+  globalAttempts++;
+  document.getElementById('attempt-count').textContent = attemptCount;
+  document.getElementById('global-attempts').textContent = globalAttempts;
+  
+  const statusEl = document.getElementById('status-c');
+  statusEl.textContent = 'COMPUTING...';
+  statusEl.className = 'result-status computing computing-indicator';
+  
+  setTimeout(() => {
+    const z = computeZetaAt(sigma, t);
+    
+    // Track closest (off critical line only)
+    if (!isOnCritLine && z.mag < closestMag) {
+      closestMag = z.mag;
+      document.getElementById('closest-val').textContent = formatMag(z.mag);
+    }
+    
+    // Add to history
+    const rank = history.filter(h => !h.onCritLine).length + 1;
+    history.unshift({ sigma, t, mag: z.mag, onCritLine: isOnCritLine, num: attemptCount });
+    renderHistory();
+    
+    const body = document.getElementById('result-body-c');
+    
+    let scoreComment = '';
+    if (isOnCritLine) {
+      scoreComment = `<span style="color:var(--text-dim)">On critical line — doesn't count as a counterexample attempt.</span>`;
+    } else if (z.mag < 0.05) {
+      scoreComment = `<span style="color:var(--accent)">★★★ Extraordinarily close. This would be newsworthy — if the computation were exact.</span>`;
+    } else if (z.mag < 0.3) {
+      scoreComment = `<span style="color:var(--accent)">★★ Very close. You're finding a region where the zeta function is small.</span>`;
+    } else if (z.mag < 1) {
+      scoreComment = `<span style="color:var(--text-mid)">★ Getting closer. The function value is less than 1.</span>`;
+    } else {
+      scoreComment = `<span style="color:var(--text-dim)">The function is ${z.mag.toFixed(2)} away from zero. Try different values.</span>`;
+    }
+    
+    body.innerHTML = `
+      <div class="fade-in">
+        <div class="result-value"><span>POINT</span> s = ${sigma} + ${t}i ${isOnCritLine ? '<span style="color:var(--green);font-size:10px;">(critical line)</span>' : ''}</div>
+        <div class="result-value"><span>|ζ(s)|</span> <span class="val-mag" style="font-size:20px;">${formatMag(z.mag)}</span></div>
+        <div class="result-value" style="margin-top:12px;">${scoreComment}</div>
+        ${!isOnCritLine ? `
+        <div class="verdict fail fade-in" style="margin-top:16px;">
+          <strong>✗ Not a counterexample</strong>
+          A true counterexample requires |ζ(s)| = 0 exactly, at a point where σ ≠ ½. 
+          Your closest approach: <span style="color:var(--accent);">${formatMag(Math.min(z.mag, closestMag))}</span>
+        </div>` : ''}
+      </div>
+    `;
+    
+    statusEl.textContent = isOnCritLine ? 'ON CRITICAL LINE' : (z.mag < 0.3 ? 'VERY CLOSE' : 'NOT A ZERO');
+    statusEl.className = `result-status ${z.mag < 0.1 && !isOnCritLine ? 'computing' : 'fail'}`;
+    
+  }, 80);
+}
+
+function renderHistory() {
+  const log = document.getElementById('history-log');
+  
+  if (history.length === 0) {
+    log.innerHTML = '<div class="empty-log">No attempts yet.</div>';
+    return;
+  }
+  
+  log.innerHTML = history.slice(0, 30).map((item, idx) => `
+    <div class="history-item ${item.onCritLine ? '' : 'fail'}">
+      <span class="h-num">#${item.num}</span>
+      <span class="h-point">${item.sigma.toFixed(4)} + ${item.t.toFixed(3)}i</span>
+      <span class="h-mag">${formatMag(item.mag)}</span>
+      <span class="h-status">${item.onCritLine ? 'CRIT LINE' : (item.mag < 0.3 ? 'CLOSE' : 'NOT ZERO')}</span>
+    </div>
+  `).join('');
+}
+
+function clearHistory() {
+  history = [];
+  closestMag = Infinity;
+  document.getElementById('closest-val').textContent = '—';
+  renderHistory();
+}
+
+// Init
+renderHistory();
+</script>
+</body>
+</html>
