@@ -25,10 +25,8 @@ https://seoulinside.wordpress.com/
 #500px.com/p/Vonxu
 https://500px.com/p/Vonxu?view=photos
 
-#facebook.com/sun.vonxu
+facebook.com/sun.vonxu
 https://www.facebook.com/sun.vonxu
-
-# ----
 
 #link
 https://xur94-maker.github.io/SeoulInside/link1.html
