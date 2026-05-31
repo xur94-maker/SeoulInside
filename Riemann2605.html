@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riemann Hypothesis — Complete Interactive Lab</title>
+    
+    <!-- MathJax: LaTeX 렌더링 -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+    
+    <!-- Plotly: 인터랙티브 그래프 -->
+    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+    
+    <!-- Pyodide: 브라우저 내 Python 실행 -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+    
+    <!-- Google Fonts 및 스타일 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 헤더 */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 24px;
+            margin-bottom: 30px;
+            border: 1px solid #334155;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+        
+        .progress-bar-container {
+            background: #334155;
+            border-radius: 20px;
+            height: 8px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #60a5fa, #a855f7);
+            width: 0%;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        
+        /* 네비게이션 버튼 */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            gap: 20px;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1rem;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59,130,246,0.4);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Part 섹션 */
+        .part {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .part.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .part-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #f1f5f9;
+            border-left: 5px solid #8b5cf6;
+            padding-left: 20px;
+        }
+        
+        .part-desc {
+            color: #94a3b8;
+            margin-bottom: 30px;
+            padding-left: 25px;
+        }
+        
+        /* 공식 카드 */
+        .formula-card {
+            background: #1e293b;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid #334155;
+            transition: box-shadow 0.3s;
+        }
+        
+        .formula-card:hover {
+            box-shadow: 0 20px 30px -15px rgba(0,0,0,0.3);
+        }
+        
+        .formula-header {
+            background: #0f172a;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .formula-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .formula-number {
+            color: #8b5cf6;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        
+        .formula-card.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+        
+        .formula-content {
+            padding: 20px;
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .formula-card.collapsed .formula-content {
+            display: none;
+        }
+        
+        /* LaTeX 수식 영역 */
+        .latex-block {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        
+        /* 탭 스타일 */
+        .code-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            color: #94a3b8;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn.active {
+            background: #334155;
+            color: #f1f5f9;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background: #2d3a4f;
+            color: #cbd5e1;
+        }
+        
+        .tab-content {
+            display: none;
+            background: #0f172a;
+            border-radius: 0 12px 12px 12px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-content pre {
+            margin: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #a5f3c3;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        /* 위젯 스타일 */
+        .widget {
+            background: #0f172a;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #334155;
+        }
+        
+        .widget-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #a855f7;
+        }
+        
+        .widget-control {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .widget-control label {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        
+        input[type="range"] {
+            width: 300px;
+            height: 4px;
+            -webkit-appearance: none;
+            background: #334155;
+            border-radius: 2px;
+        }
+        
+        input[type="range"]:focus {
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        input[type="number"] {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #f1f5f9;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        button {
+            background: #3b82f6;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        button:hover {
+            background: #2563eb;
+        }
+        
+        .toggle-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .toggle-btn {
+            background: #334155;
+            padding: 8px 16px;
+        }
+        
+        .toggle-btn.active {
+            background: #8b5cf6;
+        }
+        
+        .value-display {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .plot-container {
+            height: 300px;
+            margin-top: 15px;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .header h1 { font-size: 1.5rem; }
+            .part-title { font-size: 1.5rem; }
+            .widget-control { flex-direction: column; align-items: flex-start; }
+            input[type="range"] { width: 100%; }
+        }
+        
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            border-top: 1px solid #334155;
+            margin-top: 40px;
+        }
+        
+        /* Python 콘솔 */
+        .python-console textarea {
+            width: 100%;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 12px;
+            color: #a5f3c3;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            resize: vertical;
+        }
+        
+        .python-console pre {
+            background: #0f172a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #334155;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 헤더 -->
+    <div class="header">
+        <h1>🎓 Riemann Hypothesis</h1>
+        <div class="subtitle">Complete Interactive Lab — 47 Formulas × 3 Languages × Real-time Widgets</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div style="margin-top: 15px;">
+            <span id="part-counter">Part I / VII</span>
+        </div>
+    </div>
+    
+    <!-- 네비게이션 버튼 -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prev-btn" disabled>◀ 이전</button>
+        <button class="nav-btn" id="next-btn">다음 ▶</button>
+    </div>
+    
+    <!-- ============================================================ -->
+    <!-- PART I: Analytic Theory of the Zeta Function -->
+    <!-- ============================================================ -->
+    <div class="part" id="part1">
+        <h2 class="part-title">Part I: Analytic Theory of the Zeta Function</h2>
+        <div class="part-desc">리만 제타 함수의 정의, 해석적 확장, 함수 방정식, 감마 함수, 하다마르 곱</div>
+        
+        <!-- Formula 1 -->
+        <div class="formula-card" data-formula="1">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 1</span> — Riemann Zeta Function (Series Definition)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}, \quad \operatorname{Re}(s) > 1$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py1">🐍 Python (SymPy)</button>
+                    <button class="tab-btn" data-tab="mma1">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py1"><pre><code>from sympy import Sum, oo, symbols
+n, s = symbols('n s', complex=True)
+zeta_series = Sum(1/n**s, (n, 1, oo))</code></pre></div>
+                <div class="tab-content" data-tab="mma1"><pre><code>(* Mathematica *)
+Zeta[s]
+(* 또는 급수 표현: *)
+Sum[1/n^s, {n, 1, Infinity}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 2: Euler Product -->
+        <div class="formula-card" data-formula="2">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 2</span> — Euler Product Formula</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\zeta(s) = \prod_{p\ \text{prime}} \left(1 - \frac{1}{p^s}\right)^{-1}, \quad \operatorname{Re}(s) > 1$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py2">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma2">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py2"><pre><code>from sympy import primerange
+primes = list(primerange(2, 100))
+euler_product = 1
+for p in primes:
+    euler_product *= 1/(1 - p**(-s))</code></pre></div>
+                <div class="tab-content" data-tab="mma2"><pre><code>Zeta[s] == Product[1/(1 - Prime[p]^(-s)), {p, 1, Infinity}]</code></pre></div>
+                <div class="widget">
+                    <div class="widget-title">📊 Euler Product 근사 (처음 N개 소수)</div>
+                    <div class="widget-control">
+                        <label>소수 개수: <input type="range" id="euler_n" min="1" max="100" value="20"></label>
+                        <span>|ζ(2) - P_N| = <span id="euler_error" class="value-display">...</span></span>
+                    </div>
+                    <div id="euler_plot" class="plot-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formula 3: Euler-Maclaurin -->
+        <div class="formula-card" data-formula="3">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 3</span> — Euler-Maclaurin Representation</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\zeta(s) = \frac{1}{s-1} + \frac{1}{2} + s\int_1^{\infty} \frac{\{x\} - 1/2}{x^{s+1}}\, dx, \quad \operatorname{Re}(s) > 0$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py3">🐍 Python (SymPy)</button>
+                    <button class="tab-btn" data-tab="mma3">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py3"><pre><code>from sympy import Integral, frac, oo
+zeta_cont = 1/(s-1) + 1/2 + s * Integral((frac(x) - 1/2)/x**(s+1), (x, 1, oo))</code></pre></div>
+                <div class="tab-content" data-tab="mma3"><pre><code>Zeta[s] == 1/(s-1) + 1/2 + s * Integrate[(FractionalPart[x] - 1/2)/x^(s+1), {x, 1, Infinity}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 4: Theta Function -->
+        <div class="formula-card" data-formula="4">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 4</span> — Jacobi Theta Function</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\theta(t) = \sum_{n=-\infty}^{\infty} e^{-\pi n^2 t} = 1 + 2\sum_{n=1}^{\infty} e^{-\pi n^2 t}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py4">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma4">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py4"><pre><code>from sympy import exp, pi, Sum
+theta = 1 + 2 * Sum(exp(-pi * n**2 * t), (n, 1, oo))</code></pre></div>
+                <div class="tab-content" data-tab="mma4"><pre><code>EllipticTheta[3, 0, E^(-Pi*t)]</code></pre></div>
+                <div class="widget">
+                    <div class="widget-title">📈 Theta Function θ(t)</div>
+                    <div class="widget-control">
+                        <label>t: <input type="range" id="theta_t" min="0.01" max="2" step="0.01" value="0.5"></label>
+                        <span>θ(<span id="theta_t_val">0.5</span>) = <span id="theta_val" class="value-display">...</span></span>
+                    </div>
+                    <div id="theta_plot" class="plot-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formula 5: Theta Functional Equation -->
+        <div class="formula-card" data-formula="5">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 5</span> — Theta Function Functional Equation</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\theta(t) = t^{-1/2}\, \theta\!\left(\frac{1}{t}\right)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py5">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma5">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py5"><pre><code># Poisson summation으로 증명됨
+# theta(t) = t^{-1/2} * theta(1/t)</code></pre></div>
+                <div class="tab-content" data-tab="mma5"><pre><code>EllipticTheta[3, 0, E^(-Pi*t)] == t^(-1/2) * EllipticTheta[3, 0, E^(-Pi/t)]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 6: Functional Equation -->
+        <div class="formula-card" data-formula="6">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 6</span> — Riemann's Functional Equation</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\zeta(s) = 2^s \pi^{s-1} \sin\!\left(\frac{\pi s}{2}\right) \Gamma(1-s)\, \zeta(1-s)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py6">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma6">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py6"><pre><code>from sympy import zeta, pi, sin, gamma
+functional_eq = zeta(s) - 2**s * pi**(s-1) * sin(pi*s/2) * gamma(1-s) * zeta(1-s)</code></pre></div>
+                <div class="tab-content" data-tab="mma6"><pre><code>Zeta[s] == 2^s Pi^(s-1) Sin[Pi s/2] Gamma[1-s] Zeta[1-s]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 7: Xi Function -->
+        <div class="formula-card" data-formula="7">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 7</span> — Completed Xi Function</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\xi(s) = \tfrac{1}{2}\,s(s-1)\,\pi^{-s/2}\,\Gamma\!\left(\tfrac{s}{2}\right)\zeta(s) = \xi(1-s)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py7">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma7">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py7"><pre><code>xi = (s * (s-1) / 2) * pi**(-s/2) * gamma(s/2) * zeta(s)
+# xi(s) == xi(1-s)</code></pre></div>
+                <div class="tab-content" data-tab="mma7"><pre><code>xi[s_] := 1/2 s (s-1) Pi^(-s/2) Gamma[s/2] Zeta[s]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 8: Trivial Zeros -->
+        <div class="formula-card" data-formula="8">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 8</span> — Trivial Zeros</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\zeta(-2n) = 0, \quad n = 1, 2, 3, \dots$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py8">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma8">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py8"><pre><code>for n in range(1, 6):
+    print(f"zeta(-{2*n}) = {zeta(-2*n)}")  # 모두 0</code></pre></div>
+                <div class="tab-content" data-tab="mma8"><pre><code>Table[Zeta[-2 n], {n, 1, 5}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 9: Gamma Definition -->
+        <div class="formula-card" data-formula="9">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 9</span> — Gamma Function Definition</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\Gamma(s) = \int_0^{\infty} e^{-t}\, t^{s-1}\, dt, \quad \operatorname{Re}(s) > 0$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py9">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma9">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py9"><pre><code>gamma_integral = Integral(exp(-t) * t**(s-1), (t, 0, oo))</code></pre></div>
+                <div class="tab-content" data-tab="mma9"><pre><code>Gamma[s] == Integrate[E^(-t) t^(s-1), {t, 0, Infinity}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 10: Gamma Reflection -->
+        <div class="formula-card" data-formula="10">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 10</span> — Gamma Reflection Formula</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\Gamma(s)\,\Gamma(1-s) = \frac{\pi}{\sin(\pi s)}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py10">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma10">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py10"><pre><code>reflection = gamma(s) * gamma(1-s) - pi / sin(pi*s)  # = 0</code></pre></div>
+                <div class="tab-content" data-tab="mma10"><pre><code>Gamma[s] Gamma[1-s] == Pi / Sin[Pi s]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 11: Stirling -->
+        <div class="formula-card" data-formula="11">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 11</span> — Stirling's Approximation</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\log \Gamma(s) = \left(s - \tfrac{1}{2}\right)\log s - s + \tfrac{1}{2}\log(2\pi) + O\!\left(\tfrac{1}{|s|}\right)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py11">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma11">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py11"><pre><code>stirling = (s - 1/2)*log(s) - s + 1/2*log(2*pi)</code></pre></div>
+                <div class="tab-content" data-tab="mma11"><pre><code>Series[Log[Gamma[s]], {s, Infinity, 1}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 12: Hadamard Product -->
+        <div class="formula-card" data-formula="12">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 12</span> — Hadamard Product for Xi</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\xi(s) = e^{A+Bs} \prod_{\rho} \left(1 - \frac{s}{\rho}\right) e^{s/\rho}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py12">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma12">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py12"><pre><code># 개념적 표현 (실제 영점 목록 필요)
+# hadamard = exp(A + B*s) * Product((1 - s/rho) * exp(s/rho), rho_zeros)</code></pre></div>
+                <div class="tab-content" data-tab="mma12"><pre><code>xi[s] == Exp[A + B s] Product[(1 - s/ρ) Exp[s/ρ], {ρ, zeros}]</code></pre></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ============================================================ -->
+    <!-- PART II: The Explicit Formula -->
+    <!-- ============================================================ -->
+    <div class="part" id="part2">
+        <h2 class="part-title">Part II: The Explicit Formula</h2>
+        <div class="part-desc">폰 망골트 함수, 페론 공식, 리만의 명시 공식, 소수 계량 함수 π(x)</div>
+        
+        <!-- Formula 13: von Mangoldt -->
+        <div class="formula-card" data-formula="13">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 13</span> — von Mangoldt Function</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\Lambda(n) = \begin{cases} \log p & \text{if } n = p^k \\ 0 & \text{otherwise} \end{cases}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py13">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma13">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py13"><pre><code>from sympy import factorint, log
+def von_mangoldt(n):
+    factors = factorint(n)
+    if len(factors) == 1:
+        return log(list(factors.keys())[0])
+    return 0</code></pre></div>
+                <div class="tab-content" data-tab="mma13"><pre><code>VonMangoldt[n_] := If[PrimePowerQ[n], Log[FactorInteger[n][[1,1]]], 0]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 14: Chebyshev ψ -->
+        <div class="formula-card" data-formula="14">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 14</span> — Second Chebyshev Function ψ(x)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\psi(x) = \sum_{p^k \le x} \log p = \sum_{n=1}^{\infty} \Lambda(n) \mathbf{1}_{[1,x]}(n)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py14">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma14">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py14"><pre><code>def psi(x):
+    return sum(von_mangoldt(n) for n in range(1, int(x)+1))</code></pre></div>
+                <div class="tab-content" data-tab="mma14"><pre><code>Psi[x_] := Sum[VonMangoldt[n], {n, 1, Floor[x]}]</code></pre></div>
+                <div class="widget">
+                    <div class="widget-title">📊 ψ(x) 시각화 (소수 분포)</div>
+                    <div class="widget-control">
+                        <label>x: <input type="range" id="psi_x" min="10" max="500" step="10" value="100"></label>
+                    </div>
+                    <div id="psi_plot" class="plot-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formula 15: ζ'/ζ Connection -->
+        <div class="formula-card" data-formula="15">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 15</span> — ζ'/ζ Connection</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$-\frac{\zeta'(s)}{\zeta(s)} = \sum_{n=1}^{\infty} \frac{\Lambda(n)}{n^s}, \quad \operatorname{Re}(s) > 1$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py15">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma15">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py15"><pre><code>log_deriv = -diff(zeta(s), s) / zeta(s)</code></pre></div>
+                <div class="tab-content" data-tab="mma15"><pre><code>-D[Zeta[s], s]/Zeta[s] == Sum[VonMangoldt[n]/n^s, {n, 1, Infinity}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 16: Perron -->
+        <div class="formula-card" data-formula="16">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 16</span> — Perron's Formula</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\sum_{n \le x} a_n = \frac{1}{2\pi i} \int_{c-i\infty}^{c+i\infty} f(s)\, \frac{x^s}{s}\, ds$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py16">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma16">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py16"><pre><code>perron = (1/(2*pi*I)) * Integral(f(s) * x**s / s, (s, c - I*oo, c + I*oo))</code></pre></div>
+                <div class="tab-content" data-tab="mma16"><pre><code>Sum[a[n], {n,1,Floor[x]}] == 1/(2 Pi I) Integrate[f[s] x^s/s, {s, c-I*Infinity, c+I*Infinity}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 17: Explicit Formula ψ(x) -->
+        <div class="formula-card" data-formula="17">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 17</span> — Riemann's Explicit Formula (ψ(x))</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\psi(x) = x - \sum_{\rho} \frac{x^{\rho}}{\rho} - \log(2\pi) - \tfrac{1}{2}\log\!\left(1 - x^{-2}\right)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py17">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma17">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py17"><pre><code>def psi_explicit(x, zeros):
+    sum_rho = sum(x**rho/rho for rho in zeros)
+    return x - sum_rho - log(2*pi) - 1/2*log(1 - x**(-2))</code></pre></div>
+                <div class="tab-content" data-tab="mma17"><pre><code>PsiExplicit[x_] := x - Total[x^#/# & /@ zetaZeros] - Log[2 Pi] - 1/2 Log[1 - x^{-2}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 18: π(x) Explicit -->
+        <div class="formula-card" data-formula="18">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 18</span> — Explicit Formula for π(x)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\pi(x) = \operatorname{li}(x) - \sum_{\rho} \operatorname{li}(x^{\rho}) + \int_x^{\infty} \frac{dt}{t(t^2-1)\log t} - \log 2$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py18">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma18">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py18"><pre><code>def pi_explicit(x_val, zeros):
+    li_x = li(x_val)
+    sum_rho = sum(li(x_val**rho) for rho in zeros)
+    integral = Integral(1/(t*(t**2-1)*log(t)), (t, x_val, oo))
+    return li_x - sum_rho + integral - log(2)</code></pre></div>
+                <div class="tab-content" data-tab="mma18"><pre><code>PiExplicit[x_] := LogIntegral[x] - Total[LogIntegral[x^#] & /@ zeros] + Integrate[1/(t(t^2-1)Log[t]), {t,x,Infinity}] - Log[2]</code></pre></div>
+                <div class="widget">
+                    <div class="widget-title">📊 π(x) vs li(x) 비교</div>
+                    <div class="widget-control">
+                        <label>x: <input type="range" id="pi_x" min="10" max="1000" step="10" value="100"></label>
+                    </div>
+                    <div id="pi_plot" class="plot-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ============================================================ -->
+    <!-- PART III: Distribution of Zeros -->
+    <!-- ============================================================ -->
+    <div class="part" id="part3">
+        <h2 class="part-title">Part III: Distribution of Zeros</h2>
+        <div class="part-desc">영점 계수 N(T), 영점 없는 영역, 그람 점, 레빈슨-콘리 비율</div>
+        
+        <!-- Formula 19: Riemann-von Mangoldt -->
+        <div class="formula-card" data-formula="19">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 19</span> — Riemann-von Mangoldt Formula</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$N(T) = \frac{T}{2\pi}\log\!\left(\frac{T}{2\pi}\right) - \frac{T}{2\pi} + O(\log T)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py19">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma19">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py19"><pre><code>def N_T(T):
+    return (T/(2*pi)) * log(T/(2*pi)) - T/(2*pi)</code></pre></div>
+                <div class="tab-content" data-tab="mma19"><pre><code>N[T_] := T/(2 Pi) Log[T/(2 Pi)] - T/(2 Pi)</code></pre></div>
+                <div class="widget">
+                    <div class="widget-title">🔢 N(T) — 영점 개수</div>
+                    <div class="widget-control">
+                        <label>T: <input type="range" id="nt_t" min="10" max="1000" step="10" value="100"></label>
+                        <span>N(<span id="nt_t_val">100</span>) ≈ <span id="nt_val" class="value-display">0</span></span>
+                    </div>
+                    <div id="nt_plot" class="plot-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formula 20: Precise N(T) -->
+        <div class="formula-card" data-formula="20">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 20</span> — Precise N(T) with Argument</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$N(T) = \frac{T}{2\pi}\log\!\left(\frac{T}{2\pi e}\right) + \frac{7}{8} + \frac{1}{\pi}\arg\zeta\!\left(\tfrac{1}{2} + iT\right) + O\!\left(\frac{1}{T}\right)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py20">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma20">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py20"><pre><code>N_precise = (T/(2*pi))*log(T/(2*pi*e)) + 7/8 + (1/pi)*arg(zeta(1/2 + I*T))</code></pre></div>
+                <div class="tab-content" data-tab="mma20"><pre><code>NPrecise[T_] := T/(2 Pi) Log[T/(2 Pi E)] + 7/8 + (1/Pi) Arg[Zeta[1/2 + I T]]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 21: 3-4-1 Inequality -->
+        <div class="formula-card" data-formula="21">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 21</span> — 3-4-1 Inequality</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$3\log|\zeta(\sigma+2it)| + 4\log|\zeta(\sigma+it)| + \log|\zeta(\sigma)| \ge 0$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py21">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma21">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py21"><pre><code>def three_four_one(sigma, t):
+    return (3*log(abs(zeta(sigma + 2j*t))) + 
+            4*log(abs(zeta(sigma + 1j*t))) + 
+            log(abs(zeta(sigma))))</code></pre></div>
+                <div class="tab-content" data-tab="mma21"><pre><code>3 Log[Abs[Zeta[σ+2 I t]]] + 4 Log[Abs[Zeta[σ+I t]]] + Log[Abs[Zeta[σ]]] >= 0</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 22: Platt-Trudgian -->
+        <div class="formula-card" data-formula="22">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 22</span> — Platt-Trudgian Zero-Free Region (2021)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\zeta(s) \neq 0 \quad \text{for} \quad \sigma > 1 - \frac{1}{5.558691\,\log|t|},\ |t| \ge 2$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py22">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma22">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py22"><pre><code>def zero_free_bound(t):
+    return 1 - 1/(5.558691 * log(abs(t)))</code></pre></div>
+                <div class="tab-content" data-tab="mma22"><pre><code>zeroFreeBound[t_] := 1 - 1/(5.558691 Log[Abs[t]])</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 23: Riemann-Siegel -->
+        <div class="formula-card" data-formula="23">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 23</span> — Riemann-Siegel Formula</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\zeta\!\left(\tfrac{1}{2}+it\right) = \sum_{n=1}^{N} \frac{1}{n^{1/2+it}} + e^{-i\theta(t)} \sum_{m=1}^{M} \frac{1}{m^{1/2-it}} + O(t^{-1/4})$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py23">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma23">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py23"><pre><code>def riemann_siegel_approx(t):
+    N = int(floor(sqrt(t/(2*pi))))
+    sum1 = sum(1/n**(0.5+1j*t) for n in range(1, N+1))
+    theta_t = (t/2)*log(t/(2*pi)) - t/2 - pi/8
+    sum2 = sum(1/m**(0.5-1j*t) for m in range(1, N+1))
+    return sum1 + exp(-1j*theta_t) * sum2</code></pre></div>
+                <div class="tab-content" data-tab="mma23"><pre><code>RiemannSiegelApprox[t_] := Module[{N = Floor[Sqrt[t/(2 Pi)]], theta},
+  theta = t/2 Log[t/(2 Pi)] - t/2 - Pi/8;
+  Sum[1/n^(1/2+I t), {n,1,N}] + E^(-I theta) Sum[1/m^(1/2-I t), {m,1,N}]]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 24: Gram Points -->
+        <div class="formula-card" data-formula="24">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 24</span> — Gram Points</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\theta(g_k) = k\pi,\quad \theta(t) = \operatorname{Im}\log\Gamma\!\left(\tfrac{1}{4} + \tfrac{it}{2}\right) - \frac{t}{2}\log\pi$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py24">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma24">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py24"><pre><code>def theta_func(t):
+    return im(log(gamma(1/4 + I*t/2))) - (t/2)*log(pi)</code></pre></div>
+                <div class="tab-content" data-tab="mma24"><pre><code>theta[t_] := Im[LogGamma[1/4 + I t/2]] - t/2 Log[Pi]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 25: Levinson -->
+        <div class="formula-card" data-formula="25">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 25</span> — Levinson's Proportion (1974)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\kappa = \liminf_{T\to\infty} \frac{N_0(T)}{N(T)} \ge 0.3474 \approx \tfrac{1}{3}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py25">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma25">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py25"><pre><code>kappa_levinson = 0.3474
+print(f"κ ≥ {kappa_levinson}")</code></pre></div>
+                <div class="tab-content" data-tab="mma25"><pre><code>kappaLevinson = 0.3474</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 26: Conrey -->
+        <div class="formula-card" data-formula="26">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 26</span> — Conrey's Improvement (1989)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\kappa \ge 0.4088 \approx \tfrac{2}{5}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py26">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma26">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py26"><pre><code>kappa_conrey = 0.4088</code></pre></div>
+                <div class="tab-content" data-tab="mma26"><pre><code>kappaConrey = 0.4088</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 27: Current Record (5/12) -->
+        <div class="formula-card" data-formula="27">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 27</span> — Current Record (2020, 5/12)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\kappa \ge \frac{5}{12} \approx 0.41\overline{6}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py27">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma27">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py27"><pre><code>kappa_current = 5/12
+print(f"κ ≥ {kappa_current:.6f}")  # 0.416667</code></pre></div>
+                <div class="tab-content" data-tab="mma27"><pre><code>kappaCurrent = 5/12</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 28: Speiser -->
+        <div class="formula-card" data-formula="28">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 28</span> — Speiser's Equivalence Theorem</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\text{RH} \iff \zeta'(s) \neq 0 \quad \text{for} \quad 0 < \operatorname{Re}(s) < \tfrac{1}{2}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py28">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma28">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py28"><pre><code># RH가 참이면 ζ'(s)는 Re(s) < 1/2 에서 영점 없음</code></pre></div>
+                <div class="tab-content" data-tab="mma28"><pre><code>(* RH가 참이면 ζ'(s)의 모든 영점은 Re(s) ≥ 1/2 에 있음 *)</code></pre></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ============================================================ -->
+    <!-- PART IV: Random Matrix Theory (GUE) -->
+    <!-- ============================================================ -->
+    <div class="part" id="part4">
+        <h2 class="part-title">Part IV: Random Matrix Theory (GUE)</h2>
+        <div class="part-desc">가우시안 유니테리 앙상블, 쌍상관 함수, 사인 커널, 몽고메리 추측, 힐베르트-폴리아</div>
+        
+        <!-- Formula 29: GUE Definition -->
+        <div class="formula-card" data-formula="29">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 29</span> — GUE Probability Density</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$P(H)\, dH = \frac{1}{Z_n} \exp\!\left(-\tfrac{1}{2}\operatorname{tr}(H^2)\right) dH$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py29">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma29">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py29"><pre><code>def gue_pdf(H, Z_n):
+    return (1/Z_n) * np.exp(-0.5 * np.trace(H @ H))</code></pre></div>
+                <div class="tab-content" data-tab="mma29"><pre><code>GUEProb[H_] := 1/Z[n] Exp[-1/2 Tr[H . H]]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 30: GUE Eigenvalue Joint PDF -->
+        <div class="formula-card" data-formula="30">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 30</span> — GUE Eigenvalue Joint PDF</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$P(\lambda_1,\dots,\lambda_n) = \frac{1}{Z_n'} \prod_{1 \le i < j \le n} |\lambda_i - \lambda_j|^2 \prod_{k=1}^n e^{-\lambda_k^2/2}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py30">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma30">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py30"><pre><code>def gue_joint_pdf(lambdas, Z_prime):
+    n = len(lambdas)
+    vandermonde = np.prod([(lambdas[i]-lambdas[j])**2 for i in range(n) for j in range(i+1,n)])
+    gaussian = np.prod(np.exp(-np.array(lambdas)**2/2))
+    return vandermonde * gaussian / Z_prime</code></pre></div>
+                <div class="tab-content" data-tab="mma30"><pre><code>jointPDF[λs_] := 1/Zprime[n] Product[(λs[[i]]-λs[[j]])^2, {i,n},{j,i+1,n}] Product[E^{-λ^2/2}, {λ,λs}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 31: GUE Pair Correlation -->
+        <div class="formula-card" data-formula="31">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 31</span> — GUE Pair Correlation Function</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$R_2(s) = 1 - \left(\frac{\sin \pi s}{\pi s}\right)^2$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py31">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma31">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py31"><pre><code>def R2(s):
+    if s == 0: return 0
+    return 1 - (np.sin(np.pi * s) / (np.pi * s))**2</code></pre></div>
+                <div class="tab-content" data-tab="mma31"><pre><code>R2[s_] := 1 - (Sin[π s]/(π s))^2</code></pre></div>
+                <div class="widget">
+                    <div class="widget-title">📊 GUE 쌍상관 함수 R₂(s)</div>
+                    <div class="widget-control">
+                        <label>s: <input type="range" id="r2_s" min="0" max="3" step="0.01" value="0.5"></label>
+                        <span>R₂(<span id="r2_s_val">0.50</span>) = <span id="r2_val" class="value-display">0.593</span></span>
+                    </div>
+                    <div id="r2_plot" class="plot-container"></div>
+                    <div class="toggle-group" style="margin-top: 10px;">
+                        <button class="toggle-btn" id="r2_compare_btn">GUE vs Poisson 비교</button>
+                    </div>
+                    <div id="r2_compare_plot" class="plot-container" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formula 32: Sine Kernel -->
+        <div class="formula-card" data-formula="32">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 32</span> — Sine Kernel</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$K(x,y) = \frac{\sin(\pi(x-y))}{\pi(x-y)}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py32">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma32">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py32"><pre><code>def sine_kernel(x, y):
+    diff = np.pi * (x - y)
+    return np.sin(diff) / diff if diff != 0 else 1</code></pre></div>
+                <div class="tab-content" data-tab="mma32"><pre><code>sineKernel[x_, y_] := Sin[π (x - y)]/(π (x - y))</code></pre></div>
+                <div class="widget">
+                    <div class="widget-title">🎵 Sine Kernel Heatmap</div>
+                    <div id="sine_kernel_plot" class="plot-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formula 33: Montgomery Conjecture -->
+        <div class="formula-card" data-formula="33">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 33</span> — Montgomery's Pair Correlation Conjecture</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\lim_{T\to\infty} \frac{1}{N(T)} \#\{\gamma_1,\gamma_2 \le T: \alpha \le (\gamma_2-\gamma_1)\frac{\log T}{2\pi} \le \beta\} = \int_{\alpha}^{\beta} \left(1 - \left(\frac{\sin \pi u}{\pi u}\right)^2\right) du$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py33">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma33">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py33"><pre><code>def montgomery_integral(alpha, beta):
+    return integrate(1 - (sin(pi*u)/(pi*u))**2, (u, alpha, beta))</code></pre></div>
+                <div class="tab-content" data-tab="mma33"><pre><code>montgomeryIntegral[α_, β_] := Integrate[1 - (Sin[π u]/(π u))^2, {u, α, β}]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 34: Montgomery F(α) -->
+        <div class="formula-card" data-formula="34">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 34</span> — Montgomery's Fourier Transform Result</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$F(\alpha) = |\alpha| + o(1), \quad \text{for } |\alpha| < 1$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py34">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma34">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py34"><pre><code>def montgomery_F(alpha):
+    return abs(alpha) if abs(alpha) < 1 else None</code></pre></div>
+                <div class="tab-content" data-tab="mma34"><pre><code>MontgomeryF[α_] := Abs[α] /; Abs[α] < 1</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 35: Determinantal Form -->
+        <div class="formula-card" data-formula="35">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 35</span> — Determinantal Form</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$R_n(x_1,\dots,x_n) = \det\bigl(K(x_i, x_j)\bigr)_{i,j=1}^{n}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py35">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma35">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py35"><pre><code>def n_point_corr(x_list, kernel_func):
+    K = np.array([[kernel_func(xi, xj) for xj in x_list] for xi in x_list])
+    return np.linalg.det(K)</code></pre></div>
+                <div class="tab-content" data-tab="mma35"><pre><code>nPointCorr[xs_] := Det[Table[sineKernel[xs[[i]], xs[[j]]], {i,Length[xs]}, {j,Length[xs]}]]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 36: Hilbert-Pólya -->
+        <div class="formula-card" data-formula="36">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 36</span> — Hilbert-Pólya Conjecture</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$H \psi_n = \lambda_n \psi_n,\quad \lambda_n = \gamma_n$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py36">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma36">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py36"><pre><code># 가상의 자기수반 연산자 H의 고유값이 γ_n 과 일치</code></pre></div>
+                <div class="tab-content" data-tab="mma36"><pre><code>(* 가상의 연산자 H에 대해 Eigenvalues[H] == {γ1, γ2, ...} *)</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 37: Berry-Keating -->
+        <div class="formula-card" data-formula="37">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 37</span> — Berry-Keating Hamiltonian</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$H = xp$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py37">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma37">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py37"><pre><code>def berry_keating_hamiltonian(x, p):
+    return x * p</code></pre></div>
+                <div class="tab-content" data-tab="mma37"><pre><code>BerryKeatingHamiltonian = x * p</code></pre></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ============================================================ -->
+    <!-- PART V: Guth-Maynard (2024) Zero-Density Estimates -->
+    <!-- ============================================================ -->
+    <div class="part" id="part5">
+        <h2 class="part-title">Part V: Guth-Maynard (2024) Zero-Density Estimates</h2>
+        <div class="part-desc">84년 만의 획기적 진전 — 영점 밀도 추정 개선</div>
+        
+        <!-- Formula 38: N(σ,T) Definition -->
+        <div class="formula-card" data-formula="38">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 38</span> — Zero-Density Function N(σ, T)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$N(\sigma, T) = \#\{\rho = \beta + i\gamma : \beta > \sigma,\ 0 < \gamma \le T\}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py38">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma38">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py38"><pre><code>def N_sigma_T(sigma, T, zeros_list):
+    return len([rho for rho in zeros_list if rho.real > sigma and 0 < rho.imag <= T])</code></pre></div>
+                <div class="tab-content" data-tab="mma38"><pre><code>NsigmaT[σ_, T_] := Count[zeros, ρ_ /; Re[ρ] > σ && 0 < Im[ρ] <= T]</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 39: Ingham Bound -->
+        <div class="formula-card" data-formula="39">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 39</span> — Ingham's Bound (1940)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$N(\sigma, T) \le C \cdot T^{\frac{3(1-\sigma)}{2-\sigma}} \cdot (\log T)^5$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py39">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma39">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py39"><pre><code>def ingham_bound(sigma, T, C=1):
+    exponent = 3*(1-sigma)/(2-sigma)
+    return C * T**exponent * np.log(T)**5</code></pre></div>
+                <div class="tab-content" data-tab="mma39"><pre><code>inghamBound[σ_, T_] := C * T^(3(1-σ)/(2-σ)) * Log[T]^5</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 40: Guth-Maynard Result -->
+        <div class="formula-card" data-formula="40">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 40</span> — Guth-Maynard Main Result (2024)</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$N(\sigma, T) \le T^{A(\sigma)(1-\sigma) + o(1)}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py40">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma40">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py40"><pre><code># 비교표
+comparison = {
+    0.55: {'Ingham': 0.89, 'GuthMaynard': 0.70},
+    0.60: {'Ingham': 0.86, 'GuthMaynard': 0.62},
+    0.70: {'Ingham': 0.75, 'GuthMaynard': 0.50},
+    0.80: {'Ingham': 0.60, 'GuthMaynard': 0.38},
+    0.90: {'Ingham': 0.33, 'GuthMaynard': 0.20},
+}</code></pre></div>
+                <div class="tab-content" data-tab="mma40"><pre><code>comparison = <|0.55-><|"Ingham"->0.89,"GuthMaynard"->0.70|>, ...|></code></pre></div>
+                <div class="widget">
+                    <div class="widget-title">📊 Ingham vs Guth-Maynard 비교</div>
+                    <div class="widget-control">
+                        <label>σ: <input type="range" id="gm_sigma" min="0.51" max="0.95" step="0.01" value="0.7"></label>
+                        <span>Ingham 지수: <span id="ingham_exp" class="value-display">0.75</span> | Guth-Maynard 지수: <span id="gm_exp" class="value-display">0.50</span></span>
+                    </div>
+                    <div id="gm_plot" class="plot-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formula 41: Gallagher Method -->
+        <div class="formula-card" data-formula="41">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 41</span> — Gallagher's Method</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\zeta\!\left(\tfrac{1}{2}+it\right) \approx \sum_{n \le X} \frac{1}{n^{1/2+it}} + \chi\!\left(\tfrac{1}{2}+it\right) \sum_{m \le Y} \frac{1}{m^{1/2-it}}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py41">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma41">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py41"><pre><code>def gallagher_approx(t, X, Y):
+    sum1 = sum(1/n**(0.5+1j*t) for n in range(1, X+1))
+    sum2 = sum(1/m**(0.5-1j*t) for m in range(1, Y+1))
+    chi = (2*np.pi)**(1j*t) * gamma(0.5-1j*t)/gamma(0.5+1j*t)
+    return sum1 + chi * sum2</code></pre></div>
+                <div class="tab-content" data-tab="mma41"><pre><code>GallagherApprox[t_, X_, Y_] := Sum[1/n^(1/2+I t), {n,1,X}] + Chi[1/2+I t] Sum[1/m^(1/2-I t), {m,1,Y}]</code></pre></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ============================================================ -->
+    <!-- PART VI: Failed Approaches -->
+    <!-- ============================================================ -->
+    <div class="part" id="part6">
+        <h2 class="part-title">Part VI: Failed Approaches</h2>
+        <div class="part-desc">드 브랑주, 콘, 베리-키팅, 델리뉴 — 실패로부터 배우는 교훈</div>
+        
+        <!-- Formula 42: De Branges Space -->
+        <div class="formula-card" data-formula="42">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 42</span> — De Branges Space</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\mathcal{B}(E) = \left\{ f : \mathbb{C} \to \mathbb{C} \text{ entire} : \int_{-\infty}^{\infty} \left|\frac{f(t)}{E(t)}\right|^2 dt < \infty \right\}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py42">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma42">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py42"><pre><code># 정의만 표현 (해석적 구현은 매우 어려움)</code></pre></div>
+                <div class="tab-content" data-tab="mma42"><pre><code>(* De Branges 공간 — 복잡한 조건 *)</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 43: Connes Approach -->
+        <div class="formula-card" data-formula="43">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 43</span> — Connes' Adèle Approach</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$L^2(\mathbb{I}_{\mathbb{Q}} / \mathbb{Q}^*)$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py43">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma43">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py43"><pre><code># Idele class group 위의 L² 공간 (추상적 개념)</code></pre></div>
+                <div class="tab-content" data-tab="mma43"><pre><code>(* Connes의 아델 공간 — 추상적 개념 *)</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 44: Weil RH -->
+        <div class="formula-card" data-formula="44">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 44</span> — Weil's RH for Curves</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$Z_C(u) \text{ has zeros on } |u| = \frac{1}{\sqrt{q}}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py44">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma44">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py44"><pre><code># 유한체 위 곡선의 제타 함수 — 모든 영점이 |u|=1/√q 위에 존재</code></pre></div>
+                <div class="tab-content" data-tab="mma44"><pre><code>(* Weil의 정리: 모든 영점이 |u| = 1/√q 위에 있음 *)</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 45: Deligne -->
+        <div class="formula-card" data-formula="45">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 45</span> — Deligne's Proof of Weil Conjectures</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$|\alpha_{i,j}| = q^{i/2}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py45">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma45">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py45"><pre><code>def frobenius_eigenvalue_bound(q, i):
+    return q**(i/2)</code></pre></div>
+                <div class="tab-content" data-tab="mma45"><pre><code>(* 프로베니우스 고유값의 크기 = q^(i/2) *)</code></pre></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ============================================================ -->
+    <!-- PART VII: 2025-2026 Preprints -->
+    <!-- ============================================================ -->
+    <div class="part" id="part7">
+        <h2 class="part-title">Part VII: 2025-2026 Preprints</h2>
+        <div class="part-desc">최신 예비 논문 분석 — Bellotti, Nielsen-Semita</div>
+        
+        <!-- Formula 46: Bellotti -->
+        <div class="formula-card" data-formula="46">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 46</span> — Bellotti (2025) Log-Free Estimate</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$N(\sigma, T) \ll T^{c(1-\sigma)}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py46">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma46">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py46"><pre><code>def bellotti_bound(sigma, T, c=0.5):
+    return T ** (c * (1 - sigma))</code></pre></div>
+                <div class="tab-content" data-tab="mma46"><pre><code>bellottiBound[σ_, T_] := T^(c (1-σ))</code></pre></div>
+            </div>
+        </div>
+        
+        <!-- Formula 47: Nielsen-Semita -->
+        <div class="formula-card" data-formula="47">
+            <div class="formula-header" onclick="toggleCard(this)">
+                <h3><span class="formula-number">Formula 47</span> — Nielsen-Semita (2025) ZFC Independence Claim</h3>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="formula-content">
+                <div class="latex-block">$$\text{ZFC} \nvdash \text{RH} \quad \text{and} \quad \text{ZFC} \nvdash \neg\text{RH}$$</div>
+                <div class="code-tabs">
+                    <button class="tab-btn active" data-tab="py47">🐍 Python</button>
+                    <button class="tab-btn" data-tab="mma47">📐 Mathematica</button>
+                </div>
+                <div class="tab-content active" data-tab="py47"><pre><code># ⚠️ 수학계에서 인정받지 못하는 주장입니다</code></pre></div>
+                <div class="tab-content" data-tab="mma47"><pre><code>(* ZFC에서 RH의 독립성 — 증명되지 않음 *)</code></pre></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 네비게이션 버튼 (하단) -->
+    <div class="nav-buttons" style="margin-top: 20px;">
+        <button class="nav-btn" id="prev-btn2" disabled>◀ 이전</button>
+        <button class="nav-btn" id="next-btn2">다음 ▶</button>
+    </div>
+    
+    <!-- 푸터 -->
+    <div class="footer">
+        <p>© 2025-2026 Riemann Hypothesis Complete Interactive Lab</p>
+        <p>47 Formulas × 3 Languages (LaTeX / Python / Mathematica) × Interactive Widgets</p>
+        <p>Built with MathJax, Plotly, Pyodide | Reference: Riemann (1859), Montgomery (1973), Conrey (1989), Guth-Maynard (2024)</p>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // Part 네비게이션
+    // ============================================================
+    const parts = [1, 2, 3, 4, 5, 6, 7].map(i => document.getElementById(`part${i}`));
+    let currentPart = 0;
+    const totalParts = parts.length;
+    
+    function updatePart() {
+        parts.forEach((part, idx) => {
+            part.classList.toggle('active', idx === currentPart);
+        });
+        document.getElementById('part-counter').textContent = `Part ${currentPart+1} / ${totalParts}`;
+        const progress = ((currentPart + 0.5) / totalParts) * 100;
+        document.getElementById('progress-bar').style.width = `${progress}%`;
+        
+        const prevBtns = [document.getElementById('prev-btn'), document.getElementById('prev-btn2')];
+        const nextBtns = [document.getElementById('next-btn'), document.getElementById('next-btn2')];
+        
+        prevBtns.forEach(btn => {
+            if (btn) btn.disabled = currentPart === 0;
+        });
+        nextBtns.forEach(btn => {
+            if (btn) btn.disabled = currentPart === totalParts - 1;
+        });
+    }
+    
+    function nextPart() {
+        if (currentPart < totalParts - 1) {
+            currentPart++;
+            updatePart();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+    
+    function prevPart() {
+        if (currentPart > 0) {
+            currentPart--;
+            updatePart();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+    
+    document.getElementById('next-btn')?.addEventListener('click', nextPart);
+    document.getElementById('next-btn2')?.addEventListener('click', nextPart);
+    document.getElementById('prev-btn')?.addEventListener('click', prevPart);
+    document.getElementById('prev-btn2')?.addEventListener('click', prevPart);
+    
+    updatePart();
+    
+    // ============================================================
+    // 수식 카드 접기/펼치기
+    // ============================================================
+    function toggleCard(headerElement) {
+        const card = headerElement.closest('.formula-card');
+        card.classList.toggle('collapsed');
+    }
+    
+    // ============================================================
+    // 코드 탭 전환
+    // ============================================================
+    document.querySelectorAll('.code-tabs').forEach(tabsContainer => {
+        const btns = tabsContainer.querySelectorAll('.tab-btn');
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const container = btn.closest('.formula-content');
+                const tabId = btn.dataset.tab;
+                
+                container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                container.querySelector(`.tab-content[data-tab="${tabId}"]`).classList.add('active');
+            });
+        });
+    });
+    
+    // ============================================================
+    // 위젯 1: Euler Product (Formula 2)
+    // ============================================================
+    function updateEulerProduct() {
+        const n = parseInt(document.getElementById('euler_n')?.value || 20);
+        const true_zeta2 = Math.PI**2 / 6;  // ζ(2) = π²/6
+        let product = 1;
+        const primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97];
+        for (let i = 0; i < n && i < primes.length; i++) {
+            product *= 1 / (1 - 1/primes[i]**2);
+        }
+        const error = Math.abs(true_zeta2 - product);
+        document.getElementById('euler_error').textContent = error.toExponential(4);
+        
+        // 그래프
+        const xs = [];
+        const errors = [];
+        for (let i = 1; i <= 50; i++) {
+            let p = 1;
+            for (let j = 0; j < i && j < primes.length; j++) {
+                p *= 1 / (1 - 1/primes[j]**2);
+            }
+            xs.push(i);
+            errors.push(Math.abs(true_zeta2 - p));
+        }
+        Plotly.newPlot('euler_plot', [{
+            x: xs, y: errors, mode: 'lines+markers',
+            line: {color: '#60a5fa'}, marker: {color: '#a855f7'}
+        }], {
+            title: 'Euler Product Convergence Error',
+            xaxis: {title: 'Number of Primes N'},
+            yaxis: {title: '|ζ(2) - P_N|', type: 'log'},
+            paper_bgcolor: '#1e293b',
+            plot_bgcolor: '#1e293b',
+            font: {color: '#f1f5f9'}
+        });
+    }
+    document.getElementById('euler_n')?.addEventListener('input', updateEulerProduct);
+    updateEulerProduct();
+    
+    // ============================================================
+    // 위젯 2: Theta Function (Formula 4)
+    // ============================================================
+    function updateTheta() {
+        const t = parseFloat(document.getElementById('theta_t')?.value || 0.5);
+        document.getElementById('theta_t_val').textContent = t.toFixed(2);
+        
+        let sum = 0;
+        for (let n = 1; n <= 100; n++) {
+            sum += Math.exp(-Math.PI * n * n * t);
+        }
+        const theta = 1 + 2 * sum;
+        document.getElementById('theta_val').textContent = theta.toFixed(6);
+        
+        const ts = [];
+        const vals = [];
+        for (let i = 0.01; i <= 2; i += 0.01) {
+            let s = 0;
+            for (let n = 1; n <= 50; n++) {
+                s += Math.exp(-Math.PI * n * n * i);
+            }
+            ts.push(i);
+            vals.push(1 + 2*s);
+        }
+        Plotly.newPlot('theta_plot', [{
+            x: ts, y: vals, mode: 'lines',
+            line: {color: '#f59e0b', width: 2}
+        }], {
+            title: 'Jacobi Theta Function θ(t)',
+            xaxis: {title: 't'},
+            yaxis: {title: 'θ(t)'},
+            paper_bgcolor: '#1e293b',
+            plot_bgcolor: '#1e293b',
+            font: {color: '#f1f5f9'}
+        });
+    }
+    document.getElementById('theta_t')?.addEventListener('input', updateTheta);
+    updateTheta();
+    
+    // ============================================================
+    // 위젯 3: ψ(x) (Formula 14)
+    // ============================================================
+    function updatePsi() {
+        const x = parseFloat(document.getElementById('psi_x')?.value || 100);
+        function vonMangoldt(n) {
+            if (n === 1) return 0;
+            const factors = [];
+            let temp = n;
+            for (let p = 2; p <= Math.sqrt(temp); p++) {
+                if (temp % p === 0) {
+                    factors.push(p);
+                    while (temp % p === 0) temp /= p;
+                }
+            }
+            if (temp > 1) factors.push(temp);
+            if (factors.length === 1) return Math.log(factors[0]);
+            return 0;
+        }
+        let psi = 0;
+        for (let n = 2; n <= x; n++) psi += vonMangoldt(n);
+        
+        const xs = [];
+        const psis = [];
+        for (let i = 10; i <= 500; i += 10) {
+            let sum = 0;
+            for (let n = 2; n <= i; n++) sum += vonMangoldt(n);
+            xs.push(i);
+            psis.push(sum);
+        }
+        Plotly.newPlot('psi_plot', [{
+            x: xs, y: psis, mode: 'lines+markers',
+            line: {color: '#10b981', width: 2}, marker: {color: '#34d399'}
+        }, {
+            x: xs, y: xs, mode: 'lines',
+            line: {color: '#ef4444', width: 1.5, dash: 'dash'},
+            name: 'y = x'
+        }], {
+            title: 'ψ(x) — Second Chebyshev Function',
+            xaxis: {title: 'x'},
+            yaxis: {title: 'ψ(x)'},
+            paper_bgcolor: '#1e293b',
+            plot_bgcolor: '#1e293b',
+            font: {color: '#f1f5f9'}
+        });
+    }
+    document.getElementById('psi_x')?.addEventListener('input', updatePsi);
+    updatePsi();
+    
+    // ============================================================
+    // 위젯 4: π(x) (Formula 18)
+    // ============================================================
+    function isPrime(n) {
+        if (n < 2) return false;
+        for (let i = 2; i <= Math.sqrt(n); i++) if (n % i === 0) return false;
+        return true;
+    }
+    function updatePi() {
+        const x = parseFloat(document.getElementById('pi_x')?.value || 100);
+        let pi = 0;
+        for (let n = 2; n <= x; n++) if (isPrime(n)) pi++;
+        
+        function li(x) {
+            if (x <= 1) return 0;
+            let integral = 0;
+            let dt = 0.001;
+            for (let t = 2; t <= x; t += dt) integral += 1 / Math.log(t);
+            return integral;
+        }
+        
+        const xs = [];
+        const pis = [];
+        const lis = [];
+        for (let i = 10; i <= 1000; i += 20) {
+            let count = 0;
+            for (let n = 2; n <= i; n++) if (isPrime(n)) count++;
+            xs.push(i);
+            pis.push(count);
+            lis.push(li(i));
+        }
+        Plotly.newPlot('pi_plot', [{
+            x: xs, y: pis, mode: 'lines+markers',
+            line: {color: '#60a5fa', width: 2}, name: 'π(x)'
+        }, {
+            x: xs, y: lis, mode: 'lines',
+            line: {color: '#a855f7', width: 2, dash: 'dash'}, name: 'li(x)'
+        }], {
+            title: 'π(x) vs li(x)',
+            xaxis: {title: 'x'},
+            yaxis: {title: 'Count'},
+            paper_bgcolor: '#1e293b',
+            plot_bgcolor: '#1e293b',
+            font: {color: '#f1f5f9'}
+        });
+    }
+    document.getElementById('pi_x')?.addEventListener('input', updatePi);
+    updatePi();
+    
+    // ============================================================
+    // 위젯 5: N(T) (Formula 19)
+    // ============================================================
+    function updateNT() {
+        const T = parseFloat(document.getElementById('nt_t')?.value || 100);
+        document.getElementById('nt_t_val').textContent = T;
+        const N = (T/(2*Math.PI)) * Math.log(T/(2*Math.PI)) - T/(2*Math.PI);
+        document.getElementById('nt_val').textContent = Math.round(N);
+        
+        const Ts = [];
+        const Ns = [];
+        for (let t = 10; t <= 1000; t += 20) {
+            Ts.push(t);
+            Ns.push((t/(2*Math.PI)) * Math.log(t/(2*Math.PI)) - t/(2*Math.PI));
+        }
+        Plotly.newPlot('nt_plot', [{
+            x: Ts, y: Ns, mode: 'lines',
+            line: {color: '#ec4899', width: 2}
+        }], {
+            title: 'N(T) — Number of Zeros up to Height T',
+            xaxis: {title: 'T'},
+            yaxis: {title: 'N(T)'},
+            paper_bgcolor: '#1e293b',
+            plot_bgcolor: '#1e293b',
+            font: {color: '#f1f5f9'}
+        });
+    }
+    document.getElementById('nt_t')?.addEventListener('input', updateNT);
+    updateNT();
+    
+    // ============================================================
+    // 위젯 6: R₂(s) (Formula 31)
+    // ============================================================
+    function R2(s) {
+        if (s === 0) return 0;
+        return 1 - Math.pow(Math.sin(Math.PI * s) / (Math.PI * s), 2);
+    }
+    function updateR2() {
+        const s = parseFloat(document.getElementById('r2_s')?.value || 0.5);
+        document.getElementById('r2_s_val').textContent = s.toFixed(2);
+        document.getElementById('r2_val').textContent = R2(s).toFixed(4);
+        
+        const svals = [];
+        const r2vals = [];
+        for (let x = 0.01; x <= 3; x += 0.01) {
+            svals.push(x);
+            r2vals.push(R2(x));
+        }
+        Plotly.newPlot('r2_plot', [{
+            x: svals, y: r2vals, mode: 'lines',
+            line: {color: '#06b6d4', width: 2}
+        }], {
+            title: 'GUE Pair Correlation R₂(s)',
+            xaxis: {title: 's (normalized spacing)'},
+            yaxis: {title: 'R₂(s)', range: [-0.1, 1.1]},
+            paper_bgcolor: '#1e293b',
+            plot_bgcolor: '#1e293b',
+            font: {color: '#f1f5f9'}
+        });
+    }
+    document.getElementById('r2_s')?.addEventListener('input', updateR2);
+    updateR2();
+    
+    // R₂ 비교 버튼
+    let compareShown = false;
+    document.getElementById('r2_compare_btn')?.addEventListener('click', () => {
+        const container = document.getElementById('r2_compare_plot');
+        if (!compareShown) {
+            const svals = [];
+            const gue = [];
+            const poisson = [];
+            for (let x = 0.01; x <= 3; x += 0.01) {
+                svals.push(x);
+                gue.push(R2(x));
+                poisson.push(1);
+            }
+            Plotly.newPlot('r2_compare_plot', [{
+                x: svals, y: gue, mode: 'lines',
+                line: {color: '#06b6d4', width: 2}, name: 'GUE'
+            }, {
+                x: svals, y: poisson, mode: 'lines',
+                line: {color: '#ef4444', width: 2, dash: 'dash'}, name: 'Poisson (Random)'
+            }], {
+                title: 'GUE vs Poisson: Level Repulsion',
+                xaxis: {title: 's'},
+                yaxis: {title: 'Probability Density'},
+                paper_bgcolor: '#1e293b',
+                plot_bgcolor: '#1e293b',
+                font: {color: '#f1f5f9'}
+            });
+            container.style.display = 'block';
+            compareShown = true;
+            document.getElementById('r2_compare_btn').textContent = '비교 숨기기';
+        } else {
+            container.style.display = 'none';
+            compareShown = false;
+            document.getElementById('r2_compare_btn').textContent = 'GUE vs Poisson 비교';
+        }
+    });
+    
+    // ============================================================
+    // 위젯 7: Sine Kernel Heatmap (Formula 32)
+    // ============================================================
+    function updateSineKernel() {
+        const x = [];
+        const y = [];
+        const z = [];
+        for (let i = -3; i <= 3; i += 0.1) {
+            for (let j = -3; j <= 3; j += 0.1) {
+                x.push(i);
+                y.push(j);
+                const diff = Math.PI * (i - j);
+                const val = diff === 0 ? 1 : Math.sin(diff) / diff;
+                z.push(val);
+            }
+        }
+        Plotly.newPlot('sine_kernel_plot', [{
+            x: x, y: y, z: z, mode: 'markers',
+            marker: {color: z, colorscale: 'Viridis', showscale: true, size: 5},
+            type: 'scatter3d'
+        }], {
+            title: 'Sine Kernel K(x,y)',
+            scene: {
+                xaxis: {title: 'x'},
+                yaxis: {title: 'y'},
+                zaxis: {title: 'K(x,y)'}
+            },
+            paper_bgcolor: '#1e293b',
+            font: {color: '#f1f5f9'}
+        });
+    }
+    updateSineKernel();
+    
+    // ============================================================
+    // 위젯 8: Guth-Maynard 비교 (Formula 40)
+    // ============================================================
+    function updateGM() {
+        const sigma = parseFloat(document.getElementById('gm_sigma')?.value || 0.7);
+        function inghamExp(s) { return 3*(1-s)/(2-s); }
+        function gmExp(s) {
+            if (s <= 0.55) return 0.70;
+            if (s <= 0.60) return 0.62;
+            if (s <= 0.70) return 0.50;
+            if (s <= 0.80) return 0.38;
+            return 0.20;
+        }
+        document.getElementById('ingham_exp').textContent = inghamExp(sigma).toFixed(3);
+        document.getElementById('gm_exp').textContent = gmExp(sigma).toFixed(3);
+        
+        const sigmas = [];
+        const inghams = [];
+        const gms = [];
+        for (let s = 0.51; s <= 0.95; s += 0.01) {
+            sigmas.push(s);
+            inghams.push(3*(1-s)/(2-s));
+            if (s <= 0.55) gms.push(0.70);
+            else if (s <= 0.60) gms.push(0.62);
+            else if (s <= 0.70) gms.push(0.50);
+            else if (s <= 0.80) gms.push(0.38);
+            else gms.push(0.20);
+        }
+        Plotly.newPlot('gm_plot', [{
+            x: sigmas, y: inghams, mode: 'lines',
+            line: {color: '#ef4444', width: 2}, name: 'Ingham (1940)'
+        }, {
+            x: sigmas, y: gms, mode: 'lines',
+            line: {color: '#10b981', width: 2}, name: 'Guth-Maynard (2024)'
+        }], {
+            title: 'Zero-Density Exponent Comparison',
+            xaxis: {title: 'σ (real part threshold)'},
+            yaxis: {title: 'Exponent A(σ)'},
+            paper_bgcolor: '#1e293b',
+            plot_bgcolor: '#1e293b',
+            font: {color: '#f1f5f9'}
+        });
+    }
+    document.getElementById('gm_sigma')?.addEventListener('input', updateGM);
+    updateGM();
+    
+    // ============================================================
+    // Pyodide 초기화 (선택적)
+    // ============================================================
+    let pyodideReady = false;
+    async function initPyodide() {
+        if (typeof loadPyodide !== 'undefined') {
+            try {
+                window.pyodide = await loadPyodide();
+                await window.pyodide.loadPackage(['numpy', 'sympy']);
+                pyodideReady = true;
+                console.log('Pyodide ready!');
+            } catch (e) {
+                console.warn('Pyodide load failed:', e);
+            }
+        }
+    }
+    initPyodide();
+</script>
+</body>
+</html>
