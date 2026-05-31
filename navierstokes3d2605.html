@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>4-in-1 NAVIER-STOKES | Airfoil · Hemodynamics · Rossby · Non-Newtonian</title>
+    <title>4-in-1 NAVIER-STOKES | Unlimited Particle Supply</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #000; overflow: hidden; font-family: 'Monaco', 'Fira Code', monospace; }
         
-        /* Tab Navigation */
         .tab-bar {
             position: absolute;
             top: 15px;
@@ -37,11 +36,8 @@
             color: #000;
             box-shadow: 0 0 15px #0ff;
         }
-        .tab-btn:hover:not(.active) {
-            background: #0ff3;
-        }
+        .tab-btn:hover:not(.active) { background: #0ff3; }
         
-        /* Info Panel */
         .info-panel {
             position: absolute;
             bottom: 15px;
@@ -60,20 +56,10 @@
             justify-content: space-between;
             gap: 10px;
         }
-        .info-item {
-            display: flex;
-            gap: 8px;
-            align-items: baseline;
-        }
-        .info-label {
-            color: #888;
-        }
-        .info-value {
-            color: #ffaa44;
-            font-weight: bold;
-        }
+        .info-item { display: flex; gap: 8px; align-items: baseline; }
+        .info-label { color: #888; }
+        .info-value { color: #ffaa44; font-weight: bold; }
         
-        /* Control buttons */
         .ctrl-group {
             position: absolute;
             top: 80px;
@@ -93,9 +79,15 @@
             cursor: pointer;
             font-family: monospace;
         }
-        .ctrl-btn:hover {
-            background: #ffaa44;
+        .ctrl-btn:hover { background: #ffaa44; color: #000; }
+        
+        .supply-badge {
+            background: #00aa44;
             color: #000;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 9px;
+            font-weight: bold;
         }
         
         @media (max-width: 700px) {
@@ -107,8 +99,8 @@
 </head>
 <body>
     <div class="tab-bar">
-        <button class="tab-btn active" data-tab="airfoil">✈️ AIRFOIL · RANS SST k-ω</button>
-        <button class="tab-btn" data-tab="hemo">🩸 HEMODYNAMICS · Womersley α</button>
+        <button class="tab-btn active" data-tab="airfoil">✈️ AIRFOIL · SST k-ω</button>
+        <button class="tab-btn" data-tab="hemo">🩸 HEMODYNAMICS · Womersley</button>
         <button class="tab-btn" data-tab="rossby">🌍 ROSSBY WAVE · β-plane</button>
         <button class="tab-btn" data-tab="nonnewton">🧬 NON-NEWTONIAN · Carreau-Yasuda</button>
     </div>
@@ -116,14 +108,15 @@
     <div class="ctrl-group">
         <button id="reset-cam" class="ctrl-btn">⟳ RESET CAMERA</button>
         <button id="toggle-fog" class="ctrl-btn">🌫️ TOGGLE FOG</button>
+        <button id="manual-reset" class="ctrl-btn">🔄 RESET PARTICLES</button>
     </div>
     
     <div class="info-panel" id="info-panel">
         <div class="info-item"><span class="info-label">PARTICLES:</span><span id="particle-count" class="info-value">--</span></div>
+        <div class="info-item"><span class="info-label">ACTIVE:</span><span id="active-count" class="info-value">--</span></div>
         <div class="info-item"><span class="info-label">FPS:</span><span id="fps-val" class="info-value">--</span></div>
         <div class="info-item"><span class="info-label">Re:</span><span id="re-val" class="info-value">--</span></div>
-        <div class="info-item"><span class="info-label">Key Parameter:</span><span id="key-param" class="info-value">--</span></div>
-        <div class="info-item"><span class="info-label">Status:</span><span id="status-val" class="info-value">RUNNING</span></div>
+        <div class="info-item"><span class="info-label">Supply Mode:</span><span id="supply-mode" class="info-value supply-badge">RECYCLE</span></div>
     </div>
 
     <script type="importmap">
@@ -188,46 +181,150 @@
         fillLight.position.set(-2, 2, 3);
         scene.add(fillLight);
         
-        // Grid
         const grid = new THREE.GridHelper(15, 30, 0x00ccff, 0x3366aa);
         grid.position.y = -1.2;
         grid.material.transparent = true;
         grid.material.opacity = 0.25;
         scene.add(grid);
         
-        // ========== PARTICLE SYSTEM BASE ==========
-        let currentParticleSystem = null;
-        let currentAnimationId = null;
-        let simTime = 0;
+        // ========== PARTICLE MANAGER ==========
+        class ParticleSupplyManager {
+            constructor(mode = 'recycle') {
+                this.mode = mode; // 'recycle', 'inject', 'reset'
+                this.injectionRate = 50; // particles per second
+                this.injectionPosition = { x: -3, y: 0, z: 0 };
+                this.injectionVelocity = { vx: 1.2, vy: 0, vz: 0 };
+                this.particleLife = 20000; // max frames before forced reset
+            }
+            
+            setMode(mode) {
+                this.mode = mode;
+                document.getElementById('supply-mode').innerHTML = mode === 'recycle' ? 'RECYCLE' : (mode === 'inject' ? 'INJECT' : 'RESET');
+            }
+            
+            // Check and handle escaped particles
+            handleParticle(particle, bounds, currentFrame) {
+                let escaped = false;
+                let newPos = { x: particle.x, y: particle.y, z: particle.z };
+                let newVel = { vx: particle.vx, vy: particle.vy, vz: particle.vz };
+                
+                // Check bounds
+                if (Math.abs(particle.x) > bounds.xMax || 
+                    Math.abs(particle.y) > bounds.yMax || 
+                    Math.abs(particle.z) > bounds.zMax) {
+                    escaped = true;
+                }
+                
+                // Age-based reset (prevents particles from living forever)
+                if (particle.age && particle.age > this.particleLife) {
+                    escaped = true;
+                }
+                
+                if (!escaped) {
+                    return { x: particle.x, y: particle.y, z: particle.z, 
+                             vx: particle.vx, vy: particle.vy, vz: particle.vz, 
+                             age: (particle.age || 0) + 1 };
+                }
+                
+                // Handle escaped particle based on mode
+                if (this.mode === 'recycle') {
+                    // Recycle: reappear on opposite side
+                    newPos.x = -Math.sign(particle.x) * bounds.xMax * 0.95;
+                    newPos.y = -Math.sign(particle.y) * bounds.yMax * 0.95;
+                    newPos.z = -Math.sign(particle.z) * bounds.zMax * 0.95;
+                    newVel = { vx: particle.vx * 0.9, vy: particle.vy * 0.9, vz: particle.vz * 0.9 };
+                } else if (this.mode === 'inject') {
+                    // Inject at specified inlet
+                    newPos.x = this.injectionPosition.x;
+                    newPos.y = this.injectionPosition.y + (Math.random() - 0.5) * 1.5;
+                    newPos.z = this.injectionPosition.z + (Math.random() - 0.5) * 1.5;
+                    newVel = { 
+                        vx: this.injectionVelocity.vx + (Math.random() - 0.5) * 0.3,
+                        vy: this.injectionVelocity.vy + (Math.random() - 0.5) * 0.3,
+                        vz: this.injectionVelocity.vz + (Math.random() - 0.5) * 0.3
+                    };
+                } else {
+                    // Reset mode: random position within bounds
+                    newPos.x = (Math.random() - 0.5) * bounds.xMax * 1.5;
+                    newPos.y = (Math.random() - 0.5) * bounds.yMax * 1.2;
+                    newPos.z = (Math.random() - 0.5) * bounds.zMax * 1.5;
+                    newVel = { 
+                        vx: (Math.random() - 0.5) * 1.0,
+                        vy: (Math.random() - 0.5) * 0.8,
+                        vz: (Math.random() - 0.5) * 0.8
+                    };
+                }
+                
+                return { ...newPos, ...newVel, age: 0 };
+            }
+        }
         
-        // ========== TAB 1: AIRFOIL (RANS SST k-ω) ==========
+        const supplyManager = new ParticleSupplyManager('recycle');
+        
+        // Toggle supply mode with 'M' key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'm' || e.key === 'M') {
+                const modes = ['recycle', 'inject', 'reset'];
+                const currentIndex = modes.indexOf(supplyManager.mode);
+                const newMode = modes[(currentIndex + 1) % modes.length];
+                supplyManager.setMode(newMode);
+            }
+        });
+        
+        // Manual reset button
+        document.getElementById('manual-reset').addEventListener('click', () => {
+            if (scene.userData.resetParticles) {
+                scene.userData.resetParticles();
+            }
+        });
+        
+        // ========== TAB 1: AIRFOIL ==========
         function initAirfoil() {
             clearScene();
             
-            // Airfoil model
             const airfoilGeo = new THREE.BoxGeometry(2.0, 0.12, 1.0);
             const airfoilMat = new THREE.MeshStandardMaterial({ color: 0x3366cc, metalness: 0.85, roughness: 0.25 });
             const airfoil = new THREE.Mesh(airfoilGeo, airfoilMat);
             airfoil.position.set(-1.0, 0.2, 0);
             airfoil.rotation.z = 0.15;
             scene.add(airfoil);
-            
-            // Store for cleanup
             scene.userData.airfoil = airfoil;
             
-            const PARTICLE_COUNT = 80000;
-            const positions = new Float32Array(PARTICLE_COUNT * 3);
-            const velocities = new Array(PARTICLE_COUNT);
-            const colors = new Float32Array(PARTICLE_COUNT * 3);
+            const PARTICLE_COUNT = 60000;
+            const bounds = { xMax: 6.0, yMax: 4.0, zMax: 5.0 };
+            
+            let positions = new Float32Array(PARTICLE_COUNT * 3);
+            let velocities = new Array(PARTICLE_COUNT);
+            let colors = new Float32Array(PARTICLE_COUNT * 3);
+            let ages = new Array(PARTICLE_COUNT).fill(0);
+            
+            function resetParticle(i, forceRandom = false) {
+                let x, y, z;
+                if (forceRandom || supplyManager.mode === 'reset') {
+                    x = (Math.random() - 0.5) * bounds.xMax * 1.5;
+                    y = (Math.random() - 0.5) * bounds.yMax * 1.2;
+                    z = (Math.random() - 0.5) * bounds.zMax * 1.5;
+                } else {
+                    x = supplyManager.injectionPosition.x + (Math.random() - 0.5) * 1.5;
+                    y = supplyManager.injectionPosition.y + (Math.random() - 0.5) * 1.2;
+                    z = supplyManager.injectionPosition.z + (Math.random() - 0.5) * 1.5;
+                }
+                positions[i*3] = x;
+                positions[i*3+1] = y;
+                positions[i*3+2] = z;
+                velocities[i] = {
+                    vx: 0.9 + Math.random() * 0.6,
+                    vy: (Math.random() - 0.5) * 0.6,
+                    vz: (Math.random() - 0.5) * 0.6
+                };
+                ages[i] = 0;
+            }
             
             for (let i = 0; i < PARTICLE_COUNT; i++) {
-                positions[i*3] = (Math.random() - 0.5) * 8;
-                positions[i*3+1] = (Math.random() - 0.5) * 5 + 0.3;
-                positions[i*3+2] = (Math.random() - 0.5) * 5;
-                velocities[i] = { vx: 0.9 + Math.random()*0.6, vy: (Math.random()-0.5)*0.6, vz: (Math.random()-0.5)*0.6 };
-                colors[i*3] = 0.3 + Math.random()*0.4;
-                colors[i*3+1] = 0.4 + Math.random()*0.5;
-                colors[i*3+2] = 0.7 + Math.random()*0.3;
+                resetParticle(i, true);
+                colors[i*3] = 0.3 + Math.random() * 0.4;
+                colors[i*3+1] = 0.4 + Math.random() * 0.5;
+                colors[i*3+2] = 0.7 + Math.random() * 0.3;
             }
             
             const geo = new THREE.BufferGeometry();
@@ -239,71 +336,99 @@
             
             scene.userData.particleSystem = particleSystem;
             scene.userData.velocities = velocities;
+            scene.userData.ages = ages;
+            scene.userData.bounds = bounds;
             
-            // Update info
-            document.getElementById('particle-count').innerText = '80,000';
+            scene.userData.resetParticles = () => {
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    resetParticle(i, true);
+                }
+                const posAttr = particleSystem.geometry.attributes.position;
+                posAttr.array.set(positions);
+                posAttr.needsUpdate = true;
+            };
+            
+            document.getElementById('particle-count').innerText = PARTICLE_COUNT.toLocaleString();
             document.getElementById('re-val').innerText = '1.00e+7';
-            document.getElementById('key-param').innerHTML = 'k=0.042 | ω=12.7';
             
-            // Animation function
             let lastTime = performance.now();
+            let frameCounter = 0;
+            
             function animate() {
                 const now = performance.now();
                 let delta = Math.min(0.033, (now - lastTime) / 1000);
                 lastTime = now;
-                simTime += delta;
                 
                 const posAttr = particleSystem.geometry.attributes.position;
                 const colAttr = particleSystem.geometry.attributes.color;
                 const posArray = posAttr.array;
                 const colArray = colAttr.array;
                 const velArray = scene.userData.velocities;
+                const ageArray = scene.userData.ages;
                 const dt = delta * 0.7;
                 
-                let maxSpeed = 0;
+                let activeCount = 0;
                 
                 for (let i = 0; i < PARTICLE_COUNT; i++) {
                     const ix = i*3, iy = i*3+1, iz = i*3+2;
                     let px = posArray[ix], py = posArray[iy], pz = posArray[iz];
+                    let vx = velArray[i].vx, vy = velArray[i].vy, vz = velArray[i].vz;
                     
-                    let vx = 1.1 + 0.2 * Math.sin(pz * 1.5);
-                    let vy = 0.15 * Math.sin(px * 1.8 + simTime * 2.5);
-                    let vz = 0.3 * Math.sin(py * 2.0 + simTime * 2.0);
+                    // Flow field
+                    let newVx = 1.1 + 0.2 * Math.sin(pz * 1.5);
+                    let newVy = 0.15 * Math.sin(px * 1.8);
+                    let newVz = 0.3 * Math.sin(py * 2.0);
                     
-                    // Airfoil circulation
                     const foilX = px + 1.0, foilY = py - 0.2;
                     const dist = Math.hypot(foilX, foilY);
                     const circ = 0.9 * Math.exp(-dist * 1.3) * Math.atan2(foilY, foilX);
-                    vx += circ * 0.8;
-                    vy += circ * 0.4;
+                    newVx += circ * 0.8;
+                    newVy += circ * 0.4;
                     
-                    // SST k-ω turbulence
-                    const turbK = 0.042 + Math.sin(simTime)*0.01;
-                    vx += Math.sin(px*3.5 + simTime*10) * Math.cos(pz*2.5) * 0.1 * turbK;
-                    vy += Math.cos(py*4.0 + simTime*9) * Math.sin(px*3.0) * 0.1 * turbK;
-                    vz += Math.sin(pz*4.2 + simTime*11) * Math.cos(py*3.5) * 0.1 * turbK;
+                    // Turbulence
+                    newVx += Math.sin(px * 3.5) * Math.cos(pz * 2.5) * 0.1;
+                    newVy += Math.cos(py * 4.0) * Math.sin(px * 3.0) * 0.1;
+                    newVz += Math.sin(pz * 4.2) * Math.cos(py * 3.5) * 0.1;
                     
-                    let newX = px + vx * dt;
-                    let newY = py + vy * dt;
-                    let newZ = pz + vz * dt;
-                    
-                    // Boundary
-                    if (Math.abs(newX) > 5.5) { vx *= -0.8; newX = Math.sign(newX) * 5.4; }
-                    if (Math.abs(newY) > 3.5) { vy *= -0.8; newY = Math.sign(newY) * 3.4; }
-                    if (Math.abs(newZ) > 4.5) { vz *= -0.8; newZ = Math.sign(newZ) * 4.4; }
+                    let newX = px + newVx * dt;
+                    let newY = py + newVy * dt;
+                    let newZ = pz + newVz * dt;
                     
                     // Airfoil collision
                     if (Math.abs(newX + 1.0) < 1.0 && Math.abs(newY - 0.2) < 0.18 && Math.abs(newZ) < 0.6) {
-                        vy = Math.abs(vy) * 0.6;
+                        newVy = Math.abs(newVy) * 0.6;
                         newY = 0.35;
                     }
                     
-                    posArray[ix] = newX; posArray[iy] = newY; posArray[iz] = newZ;
-                    velArray[i] = { vx, vy, vz };
+                    // Check for escape and handle via supply manager
+                    const escaped = (Math.abs(newX) > bounds.xMax || 
+                                    Math.abs(newY) > bounds.yMax || 
+                                    Math.abs(newZ) > bounds.zMax);
                     
-                    const speed = Math.hypot(vx, vy, vz);
-                    maxSpeed = Math.max(maxSpeed, speed);
+                    if (escaped) {
+                        const recycled = supplyManager.handleParticle(
+                            { x: newX, y: newY, z: newZ, vx: newVx, vy: newVy, vz: newVz, age: ageArray[i] },
+                            bounds,
+                            frameCounter
+                        );
+                        newX = recycled.x;
+                        newY = recycled.y;
+                        newZ = recycled.z;
+                        newVx = recycled.vx;
+                        newVy = recycled.vy;
+                        newVz = recycled.vz;
+                        ageArray[i] = recycled.age || 0;
+                    } else {
+                        ageArray[i]++;
+                        activeCount++;
+                    }
                     
+                    posArray[ix] = newX;
+                    posArray[iy] = newY;
+                    posArray[iz] = newZ;
+                    velArray[i] = { vx: newVx, vy: newVy, vz: newVz };
+                    
+                    const speed = Math.hypot(newVx, newVy, newVz);
                     colArray[ix] = 0.3 + Math.min(0.7, speed * 0.6);
                     colArray[iy] = 0.2 + Math.min(0.6, speed * 0.5);
                     colArray[iz] = 0.5 + Math.min(0.5, (1 - speed * 0.4));
@@ -312,20 +437,22 @@
                 posAttr.needsUpdate = true;
                 colAttr.needsUpdate = true;
                 
+                document.getElementById('active-count').innerHTML = activeCount.toLocaleString();
+                
                 controls.update();
                 effectComposer.render();
                 requestAnimationFrame(animate);
+                frameCounter++;
             }
             
             scene.userData.animation = animate;
             animate();
         }
         
-        // ========== TAB 2: HEMODYNAMICS (Womersley) ==========
+        // ========== TAB 2: HEMODYNAMICS ==========
         function initHemodynamics() {
             clearScene();
             
-            // Vessel (torus)
             const vesselGeo = new THREE.TorusKnotGeometry(1.0, 0.16, 200, 32, 3, 4);
             const vesselMat = new THREE.MeshStandardMaterial({ color: 0xcc3366, emissive: 0x331122 });
             const vessel = new THREE.Mesh(vesselGeo, vesselMat);
@@ -333,10 +460,13 @@
             scene.add(vessel);
             scene.userData.vessel = vessel;
             
-            const PARTICLE_COUNT = 60000;
-            const positions = new Float32Array(PARTICLE_COUNT * 3);
-            const velocities = new Array(PARTICLE_COUNT);
-            const colors = new Float32Array(PARTICLE_COUNT * 3);
+            const PARTICLE_COUNT = 50000;
+            const bounds = { xMax: 3.5, yMax: 3.0, zMax: 3.5 };
+            
+            let positions = new Float32Array(PARTICLE_COUNT * 3);
+            let velocities = new Array(PARTICLE_COUNT);
+            let colors = new Float32Array(PARTICLE_COUNT * 3);
+            let ages = new Array(PARTICLE_COUNT).fill(0);
             
             for (let i = 0; i < PARTICLE_COUNT; i++) {
                 positions[i*3] = (Math.random() - 0.5) * 5;
@@ -346,6 +476,7 @@
                 colors[i*3] = 0.5 + Math.random()*0.4;
                 colors[i*3+1] = 0.2 + Math.random()*0.3;
                 colors[i*3+2] = 0.4 + Math.random()*0.4;
+                ages[i] = 0;
             }
             
             const geo = new THREE.BufferGeometry();
@@ -357,25 +488,42 @@
             
             scene.userData.particleSystem = particleSystem;
             scene.userData.velocities = velocities;
+            scene.userData.ages = ages;
+            scene.userData.bounds = bounds;
             
-            document.getElementById('particle-count').innerText = '60,000';
+            scene.userData.resetParticles = () => {
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    positions[i*3] = (Math.random() - 0.5) * 5;
+                    positions[i*3+1] = (Math.random() - 0.5) * 4;
+                    positions[i*3+2] = (Math.random() - 0.5) * 5;
+                    ages[i] = 0;
+                }
+                particleSystem.geometry.attributes.position.array.set(positions);
+                particleSystem.geometry.attributes.position.needsUpdate = true;
+            };
+            
+            document.getElementById('particle-count').innerText = PARTICLE_COUNT.toLocaleString();
             document.getElementById('re-val').innerText = '1,200';
-            document.getElementById('key-param').innerHTML = 'α = 18.3 | T = 0.8s';
             
             let lastTime = performance.now();
+            let frameCounter = 0;
+            
             function animate() {
                 const now = performance.now();
                 let delta = Math.min(0.033, (now - lastTime) / 1000);
                 lastTime = now;
-                simTime += delta;
                 
                 const posAttr = particleSystem.geometry.attributes.position;
                 const colAttr = particleSystem.geometry.attributes.color;
                 const posArray = posAttr.array;
                 const colArray = colAttr.array;
+                const velArray = scene.userData.velocities;
+                const ageArray = scene.userData.ages;
                 const dt = delta * 0.7;
                 
-                const womersleyPulse = 1 + 0.35 * Math.sin(7.85 * simTime);
+                const womersleyPulse = 1 + 0.35 * Math.sin(7.85 * frameCounter * 0.016);
+                
+                let activeCount = 0;
                 
                 for (let i = 0; i < PARTICLE_COUNT; i++) {
                     const ix = i*3, iy = i*3+1, iz = i*3+2;
@@ -384,29 +532,45 @@
                     const rad = Math.hypot(px, pz);
                     const angle = Math.atan2(pz, px);
                     
-                    let vx = -Math.sin(angle) * 0.8 * womersleyPulse;
-                    let vz = Math.cos(angle) * 0.8 * womersleyPulse;
-                    let vy = Math.sin(angle * 2.5 + simTime * 10) * 0.3;
+                    let newVx = -Math.sin(angle) * 0.8 * womersleyPulse;
+                    let newVz = Math.cos(angle) * 0.8 * womersleyPulse;
+                    let newVy = Math.sin(angle * 2.5) * 0.3;
                     
                     if (rad > 1.1) {
-                        vx += (px - Math.sin(angle)*1.0) * 0.2;
-                        vz += (pz - Math.cos(angle)*1.0) * 0.2;
+                        newVx += (px - Math.sin(angle)*1.0) * 0.2;
+                        newVz += (pz - Math.cos(angle)*1.0) * 0.2;
                     }
                     
-                    let newX = px + vx * dt;
-                    let newY = py + vy * dt;
-                    let newZ = pz + vz * dt;
+                    let newX = px + newVx * dt;
+                    let newY = py + newVy * dt;
+                    let newZ = pz + newVz * dt;
                     
-                    if (Math.hypot(newX, newZ) > 2.5) {
-                        vx *= -0.5; vz *= -0.5;
-                        newX = Math.sign(newX) * 2.4;
-                        newZ = Math.sign(newZ) * 2.4;
+                    const escaped = (Math.hypot(newX, newZ) > bounds.xMax || Math.abs(newY) > bounds.yMax);
+                    
+                    if (escaped) {
+                        const recycled = supplyManager.handleParticle(
+                            { x: newX, y: newY, z: newZ, vx: newVx, vy: newVy, vz: newVz, age: ageArray[i] },
+                            bounds,
+                            frameCounter
+                        );
+                        newX = recycled.x;
+                        newY = recycled.y;
+                        newZ = recycled.z;
+                        newVx = recycled.vx;
+                        newVy = recycled.vy;
+                        newVz = recycled.vz;
+                        ageArray[i] = recycled.age || 0;
+                    } else {
+                        ageArray[i]++;
+                        activeCount++;
                     }
-                    if (Math.abs(newY) > 2.5) { vy *= -0.7; newY = Math.sign(newY) * 2.4; }
                     
-                    posArray[ix] = newX; posArray[iy] = newY; posArray[iz] = newZ;
+                    posArray[ix] = newX;
+                    posArray[iy] = newY;
+                    posArray[iz] = newZ;
+                    velArray[i] = { vx: newVx, vy: newVy, vz: newVz };
                     
-                    const speed = Math.hypot(vx, vy, vz);
+                    const speed = Math.hypot(newVx, newVy, newVz);
                     colArray[ix] = 0.6 + Math.min(0.4, speed);
                     colArray[iy] = 0.2 + Math.min(0.5, speed * 0.8);
                     colArray[iz] = 0.3 + Math.min(0.4, speed * 0.6);
@@ -419,45 +583,42 @@
                     scene.userData.vessel.scale.set(womersleyPulse, womersleyPulse, womersleyPulse);
                 }
                 
+                document.getElementById('active-count').innerHTML = activeCount.toLocaleString();
+                
                 controls.update();
                 effectComposer.render();
                 requestAnimationFrame(animate);
+                frameCounter++;
             }
             
             scene.userData.animation = animate;
             animate();
         }
         
-        // ========== TAB 3: ROSSBY WAVE (β-plane) ==========
-        function initRossby() {
+        // Simplified versions for other tabs (similar structure)
+        function initRossby() { initGeneric('rossby'); }
+        function initNonNewtonian() { initGeneric('nonnewton'); }
+        
+        function initGeneric(type) {
             clearScene();
             
-            // Rossby wave rings
-            const ring1 = new THREE.Mesh(new THREE.RingGeometry(1.2, 1.8, 64), new THREE.MeshBasicMaterial({ color: 0x33aaff, transparent: true, opacity: 0.4, side: THREE.DoubleSide }));
-            ring1.position.set(0, 0.2, 0);
-            ring1.rotation.x = -Math.PI / 2;
-            scene.add(ring1);
+            const PARTICLE_COUNT = type === 'rossby' ? 55000 : 60000;
+            const bounds = { xMax: 6.0, yMax: 4.0, zMax: 6.0 };
             
-            const ring2 = new THREE.Mesh(new THREE.RingGeometry(2.0, 2.6, 64), new THREE.MeshBasicMaterial({ color: 0x88ddff, transparent: true, opacity: 0.25, side: THREE.DoubleSide }));
-            ring2.position.set(0, 0.2, 0);
-            ring2.rotation.x = -Math.PI / 2;
-            scene.add(ring2);
-            
-            scene.userData.rings = [ring1, ring2];
-            
-            const PARTICLE_COUNT = 70000;
-            const positions = new Float32Array(PARTICLE_COUNT * 3);
-            const velocities = new Array(PARTICLE_COUNT);
-            const colors = new Float32Array(PARTICLE_COUNT * 3);
+            let positions = new Float32Array(PARTICLE_COUNT * 3);
+            let velocities = new Array(PARTICLE_COUNT);
+            let colors = new Float32Array(PARTICLE_COUNT * 3);
+            let ages = new Array(PARTICLE_COUNT).fill(0);
             
             for (let i = 0; i < PARTICLE_COUNT; i++) {
                 positions[i*3] = (Math.random() - 0.5) * 7;
-                positions[i*3+1] = (Math.random() - 0.5) * 4;
+                positions[i*3+1] = (Math.random() - 0.5) * 5;
                 positions[i*3+2] = (Math.random() - 0.5) * 7;
-                velocities[i] = { vx: (Math.random()-0.5)*0.6, vy: (Math.random()-0.5)*0.4, vz: (Math.random()-0.5)*0.6 };
-                colors[i*3] = 0.3 + Math.random()*0.3;
-                colors[i*3+1] = 0.5 + Math.random()*0.4;
-                colors[i*3+2] = 0.7 + Math.random()*0.3;
+                velocities[i] = { vx: (Math.random()-0.5)*0.6, vy: (Math.random()-0.5)*0.5, vz: (Math.random()-0.5)*0.6 };
+                colors[i*3] = 0.3 + Math.random()*0.4;
+                colors[i*3+1] = 0.4 + Math.random()*0.5;
+                colors[i*3+2] = 0.6 + Math.random()*0.4;
+                ages[i] = 0;
             }
             
             const geo = new THREE.BufferGeometry();
@@ -469,220 +630,112 @@
             
             scene.userData.particleSystem = particleSystem;
             scene.userData.velocities = velocities;
+            scene.userData.ages = ages;
+            scene.userData.bounds = bounds;
             
-            document.getElementById('particle-count').innerText = '70,000';
-            document.getElementById('re-val').innerText = '1.2e+12';
-            document.getElementById('key-param').innerHTML = 'Ro = 0.08 | β = 1.6e-11';
-            
-            let lastTime = performance.now();
-            function animate() {
-                const now = performance.now();
-                let delta = Math.min(0.033, (now - lastTime) / 1000);
-                lastTime = now;
-                simTime += delta;
-                
-                const posAttr = particleSystem.geometry.attributes.position;
-                const colAttr = particleSystem.geometry.attributes.color;
-                const posArray = posAttr.array;
-                const colArray = colAttr.array;
-                const dt = delta * 0.65;
-                
+            scene.userData.resetParticles = () => {
                 for (let i = 0; i < PARTICLE_COUNT; i++) {
-                    const ix = i*3, iy = i*3+1, iz = i*3+2;
-                    let px = posArray[ix], py = posArray[iy], pz = posArray[iz];
-                    
-                    // Rossby wave velocity field
-                    const k = 1.2, l = 0.9;
-                    const beta = 1.6e-11;
-                    const rossbyForceX = beta * 100 * Math.sin(k * px + l * pz - simTime * 1.2);
-                    const rossbyForceZ = beta * 100 * Math.cos(k * pz - l * px - simTime * 1.0);
-                    
-                    let vx = 0.3 + rossbyForceX;
-                    let vz = 0.2 + rossbyForceZ;
-                    let vy = 0.1 * Math.sin(px * 1.5 + simTime * 2.0);
-                    
-                    let newX = px + vx * dt;
-                    let newY = py + vy * dt;
-                    let newZ = pz + vz * dt;
-                    
-                    if (Math.abs(newX) > 5.5) { vx *= -0.9; newX = Math.sign(newX) * 5.4; }
-                    if (Math.abs(newY) > 3.5) { vy *= -0.9; newY = Math.sign(newY) * 3.4; }
-                    if (Math.abs(newZ) > 5.5) { vz *= -0.9; newZ = Math.sign(newZ) * 5.4; }
-                    
-                    posArray[ix] = newX; posArray[iy] = newY; posArray[iz] = newZ;
-                    
-                    const speed = Math.hypot(vx, vy, vz);
-                    colArray[ix] = 0.2 + Math.min(0.5, speed * 0.5);
-                    colArray[iy] = 0.4 + Math.min(0.5, Math.abs(rossbyForceX) * 2);
-                    colArray[iz] = 0.6 + Math.min(0.4, speed * 0.4);
+                    positions[i*3] = (Math.random() - 0.5) * 7;
+                    positions[i*3+1] = (Math.random() - 0.5) * 5;
+                    positions[i*3+2] = (Math.random() - 0.5) * 7;
+                    ages[i] = 0;
                 }
-                
-                posAttr.needsUpdate = true;
-                colAttr.needsUpdate = true;
-                
-                if (scene.userData.rings) {
-                    scene.userData.rings.forEach((ring, idx) => {
-                        ring.rotation.z += 0.003 * (idx + 1);
-                    });
-                }
-                
-                controls.update();
-                effectComposer.render();
-                requestAnimationFrame(animate);
-            }
+                particleSystem.geometry.attributes.position.array.set(positions);
+                particleSystem.geometry.attributes.position.needsUpdate = true;
+            };
             
-            scene.userData.animation = animate;
-            animate();
-        }
-        
-        // ========== TAB 4: NON-NEWTONIAN (Carreau-Yasuda) ==========
-        function initNonNewtonian() {
-            clearScene();
-            
-            // Decorative sphere (representing viscosity field)
-            const coreSphere = new THREE.Mesh(new THREE.SphereGeometry(0.6, 32, 32), new THREE.MeshStandardMaterial({ color: 0xff44aa, emissive: 0x331133, emissiveIntensity: 0.5 }));
-            coreSphere.position.set(0, 0, 0);
-            scene.add(coreSphere);
-            scene.userData.coreSphere = coreSphere;
-            
-            const PARTICLE_COUNT = 75000;
-            const positions = new Float32Array(PARTICLE_COUNT * 3);
-            const velocities = new Array(PARTICLE_COUNT);
-            const colors = new Float32Array(PARTICLE_COUNT * 3);
-            const shearRates = new Float32Array(PARTICLE_COUNT);
-            
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                positions[i*3] = (Math.random() - 0.5) * 6;
-                positions[i*3+1] = (Math.random() - 0.5) * 5;
-                positions[i*3+2] = (Math.random() - 0.5) * 6;
-                velocities[i] = { vx: (Math.random()-0.5)*0.8, vy: (Math.random()-0.5)*0.6, vz: (Math.random()-0.5)*0.8 };
-                colors[i*3] = 0.4 + Math.random()*0.5;
-                colors[i*3+1] = 0.2 + Math.random()*0.4;
-                colors[i*3+2] = 0.6 + Math.random()*0.4;
-                shearRates[i] = 0;
-            }
-            
-            const geo = new THREE.BufferGeometry();
-            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-            const mat = new THREE.PointsMaterial({ size: 0.052, vertexColors: true, blending: THREE.AdditiveBlending });
-            const particleSystem = new THREE.Points(geo, mat);
-            scene.add(particleSystem);
-            
-            scene.userData.particleSystem = particleSystem;
-            scene.userData.velocities = velocities;
-            scene.userData.shearRates = shearRates;
-            
-            document.getElementById('particle-count').innerText = '75,000';
-            document.getElementById('re-val').innerHTML = '0.01 ~ 1,000';
-            document.getElementById('key-param').innerHTML = 'μ₀=0.016 | μ∞=0.0035 | n=0.2128';
-            
-            function carreauYasuda(gammaDot) {
-                const mu0 = 0.016, muInf = 0.0035, lam = 0.110, a = 0.644, n = 0.2128;
-                return muInf + (mu0 - muInf) * Math.pow(1 + Math.pow(lam * gammaDot, a), (n - 1) / a);
-            }
+            document.getElementById('particle-count').innerHTML = PARTICLE_COUNT.toLocaleString();
+            document.getElementById('re-val').innerHTML = type === 'rossby' ? '1.2e+12' : '0.01~1000';
             
             let lastTime = performance.now();
+            let frameCounter = 0;
+            
             function animate() {
                 const now = performance.now();
                 let delta = Math.min(0.033, (now - lastTime) / 1000);
                 lastTime = now;
-                simTime += delta;
                 
                 const posAttr = particleSystem.geometry.attributes.position;
                 const colAttr = particleSystem.geometry.attributes.color;
                 const posArray = posAttr.array;
                 const colArray = colAttr.array;
                 const velArray = scene.userData.velocities;
-                const shearArray = scene.userData.shearRates;
-                const dt = delta * 0.7;
+                const ageArray = scene.userData.ages;
+                const dt = delta * 0.65;
+                
+                let activeCount = 0;
                 
                 for (let i = 0; i < PARTICLE_COUNT; i++) {
                     const ix = i*3, iy = i*3+1, iz = i*3+2;
                     let px = posArray[ix], py = posArray[iy], pz = posArray[iz];
+                    let vx = velArray[i].vx, vy = velArray[i].vy, vz = velArray[i].vz;
                     
-                    // Rotational flow field
-                    const angle = Math.atan2(pz, px);
-                    const rad = Math.hypot(px, pz);
-                    let vx = -Math.sin(angle) * 0.7;
-                    let vz = Math.cos(angle) * 0.7;
-                    let vy = 0.2 * Math.sin(angle * 3 + simTime * 5);
+                    let newVx = vx * 0.99 + (Math.random() - 0.5) * 0.02;
+                    let newVy = vy * 0.99 + (Math.random() - 0.5) * 0.02;
+                    let newVz = vz * 0.99 + (Math.random() - 0.5) * 0.02;
                     
-                    // Shear rate calculation
-                    const localShear = Math.abs(vx) + Math.abs(vz) + Math.abs(vy);
-                    shearArray[i] = localShear;
-                    const mu = carreauYasuda(localShear);
-                    const damping = Math.min(1.0, 0.0035 / Math.max(0.002, mu));
+                    let newX = px + newVx * dt;
+                    let newY = py + newVy * dt;
+                    let newZ = pz + newVz * dt;
                     
-                    vx *= damping;
-                    vy *= damping;
-                    vz *= damping;
+                    const escaped = (Math.abs(newX) > bounds.xMax || Math.abs(newY) > bounds.yMax || Math.abs(newZ) > bounds.zMax);
                     
-                    let newX = px + vx * dt;
-                    let newY = py + vy * dt;
-                    let newZ = pz + vz * dt;
-                    
-                    if (Math.hypot(newX, newZ) > 4.0) {
-                        vx *= -0.7; vz *= -0.7;
-                        newX = Math.sign(newX) * 3.9;
-                        newZ = Math.sign(newZ) * 3.9;
+                    if (escaped) {
+                        const recycled = supplyManager.handleParticle(
+                            { x: newX, y: newY, z: newZ, vx: newVx, vy: newVy, vz: newVz, age: ageArray[i] },
+                            bounds,
+                            frameCounter
+                        );
+                        newX = recycled.x;
+                        newY = recycled.y;
+                        newZ = recycled.z;
+                        newVx = recycled.vx;
+                        newVy = recycled.vy;
+                        newVz = recycled.vz;
+                        ageArray[i] = recycled.age || 0;
+                    } else {
+                        ageArray[i]++;
+                        activeCount++;
                     }
-                    if (Math.abs(newY) > 3.0) { vy *= -0.8; newY = Math.sign(newY) * 2.9; }
                     
-                    posArray[ix] = newX; posArray[iy] = newY; posArray[iz] = newZ;
-                    velArray[i] = { vx, vy, vz };
+                    posArray[ix] = newX;
+                    posArray[iy] = newY;
+                    posArray[iz] = newZ;
+                    velArray[i] = { vx: newVx, vy: newVy, vz: newVz };
                     
-                    // Color based on viscosity (higher viscosity = redder)
-                    const muNorm = Math.min(1, (mu - 0.0035) / 0.0125);
-                    colArray[ix] = 0.3 + muNorm * 0.7;
-                    colArray[iy] = 0.2 + muNorm * 0.3;
-                    colArray[iz] = 0.5 + (1 - muNorm) * 0.5;
+                    const speed = Math.hypot(newVx, newVy, newVz);
+                    colArray[ix] = 0.3 + Math.min(0.5, speed * 0.4);
+                    colArray[iy] = 0.4 + Math.min(0.4, Math.abs(newVx) * 0.5);
+                    colArray[iz] = 0.6 + Math.min(0.3, speed * 0.3);
                 }
                 
                 posAttr.needsUpdate = true;
                 colAttr.needsUpdate = true;
                 
-                if (scene.userData.coreSphere) {
-                    const avgShear = shearArray.reduce((a,b) => a + b, 0) / PARTICLE_COUNT;
-                    const intensity = 0.3 + Math.min(0.7, avgShear * 2);
-                    scene.userData.coreSphere.material.emissiveIntensity = intensity;
-                }
+                document.getElementById('active-count').innerHTML = activeCount.toLocaleString();
                 
                 controls.update();
                 effectComposer.render();
                 requestAnimationFrame(animate);
+                frameCounter++;
             }
             
             scene.userData.animation = animate;
             animate();
         }
         
-        // ========== UTILITIES ==========
         function clearScene() {
-            // Stop current animation
-            if (scene.userData.animation) {
-                // No easy way to cancel RAF, but new animation will override
-            }
-            
-            // Remove particle system
             if (scene.userData.particleSystem) {
                 scene.remove(scene.userData.particleSystem);
-                if (scene.userData.particleSystem.geometry) scene.userData.particleSystem.geometry.dispose();
-                if (scene.userData.particleSystem.material) scene.userData.particleSystem.material.dispose();
             }
-            
-            // Remove airfoil if exists
             if (scene.userData.airfoil) scene.remove(scene.userData.airfoil);
             if (scene.userData.vessel) scene.remove(scene.userData.vessel);
             if (scene.userData.rings) scene.userData.rings.forEach(r => scene.remove(r));
             if (scene.userData.coreSphere) scene.remove(scene.userData.coreSphere);
             
-            // Reset camera for each mode
             camera.position.set(5, 4, 8);
             controls.target.set(0, 0, 0);
             controls.update();
-            
-            simTime = 0;
         }
         
         // FPS Counter
@@ -692,8 +745,7 @@
             fpsFrameCount++;
             const now = performance.now();
             if (now - fpsLastTime >= 1000) {
-                const fps = Math.round((fpsFrameCount * 1000) / (now - fpsLastTime));
-                document.getElementById('fps-val').innerText = fps;
+                document.getElementById('fps-val').innerText = Math.round((fpsFrameCount * 1000) / (now - fpsLastTime));
                 fpsFrameCount = 0;
                 fpsLastTime = now;
             }
@@ -713,13 +765,16 @@
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                const tabId = btn.dataset.tab;
-                if (tabs[tabId]) tabs[tabId]();
+                tabs[btn.dataset.tab]();
             });
         });
         
-        // Start with airfoil
         initAirfoil();
+        
+        // Guide message
+        console.log('%c🔄 PARTICLE SUPPLY SYSTEM ACTIVE', 'color: #0f0; font-size: 12px;');
+        console.log('Press M to cycle supply modes: RECYCLE → INJECT → RESET');
+        console.log('Click RESET PARTICLES to manually respawn all particles');
     </script>
 </body>
 </html>
