@@ -1,1461 +1,725 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Navier–Stokes: Four Applications · Seoul Inside</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700;800&family=JetBrains+Mono:wght@300;400;700&family=Noto+Serif+KR:wght@300;400&display=swap');
-
-  :root {
-    --bg: #020408;
-    --panel: rgba(5,15,30,0.85);
-    --border: rgba(0,200,255,0.15);
-    --accent1: #00c8ff;
-    --accent2: #ff4060;
-    --accent3: #40ff90;
-    --accent4: #ffaa00;
-    --text: #c8e0f0;
-    --dim: rgba(200,224,240,0.4);
-    --glow: 0 0 30px rgba(0,200,255,0.3);
-  }
-
-  * { margin:0; padding:0; box-sizing:border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Oxanium', monospace;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    cursor: crosshair;
-  }
-
-  #canvas-bg {
-    position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    z-index: 0;
-  }
-
-  /* ── HEADER ── */
-  #header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 18px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(180deg, rgba(2,4,8,0.95) 0%, transparent 100%);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    font-size: 11px;
-    letter-spacing: 0.4em;
-    color: var(--accent1);
-    text-transform: uppercase;
-    opacity: 0.7;
-  }
-
-  .title-main {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    background: linear-gradient(90deg, var(--accent1), #fff, var(--accent1));
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 4s linear infinite;
-  }
-
-  @keyframes shimmer {
-    0%{background-position:0%} 100%{background-position:200%}
-  }
-
-  .eq-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--accent1);
-    opacity: 0.6;
-    letter-spacing: 0.05em;
-  }
-
-  /* ── MAIN LAYOUT ── */
-  #scene-container {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 1;
-  }
-
-  /* ── NAV TABS ── */
-  #nav-tabs {
-    position: fixed;
-    left: 0; bottom: 0;
-    width: 100%;
-    z-index: 100;
-    display: flex;
-    gap: 2px;
-    padding: 0 0 0 0;
-    background: rgba(2,4,8,0.9);
-    border-top: 1px solid var(--border);
-  }
-
-  .nav-tab {
-    flex: 1;
-    padding: 14px 10px 18px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--dim);
-    border-top: 2px solid transparent;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .nav-tab:hover { color: var(--text); }
-
-  .nav-tab.active {
-    color: #fff;
-    border-top-color: var(--tab-color, var(--accent1));
-    background: rgba(0,200,255,0.05);
-    text-shadow: 0 0 20px var(--tab-color, var(--accent1));
-  }
-
-  .nav-tab .tab-num {
-    display: block;
-    font-size: 18px;
-    font-weight: 800;
-    margin-bottom: 3px;
-    color: var(--tab-color, var(--accent1));
-  }
-
-  .nav-tab.active .tab-num {
-    text-shadow: 0 0 20px currentColor;
-  }
-
-  /* ── INFO PANEL ── */
-  #info-panel {
-    position: fixed;
-    right: 24px;
-    top: 80px;
-    width: 300px;
-    z-index: 50;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    backdrop-filter: blur(20px);
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-  }
-
-  .panel-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .panel-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--panel-color, var(--accent1));
-    box-shadow: 0 0 12px var(--panel-color, var(--accent1));
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%,100%{opacity:1;transform:scale(1)}
-    50%{opacity:0.5;transform:scale(0.8)}
-  }
-
-  .panel-title {
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: var(--panel-color, var(--accent1));
-    text-transform: uppercase;
-  }
-
-  .panel-body { padding: 20px; }
-
-  .panel-name {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    line-height: 1.3;
-  }
-
-  .panel-subtitle {
-    font-size: 10px;
-    color: var(--dim);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .panel-eq {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--panel-color, var(--accent1));
-    background: rgba(0,0,0,0.4);
-    padding: 12px 14px;
-    border-left: 2px solid var(--panel-color, var(--accent1));
-    border-radius: 0 2px 2px 0;
-    margin-bottom: 14px;
-    line-height: 1.7;
-    white-space: pre-wrap;
-  }
-
-  .panel-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-
-  .stat-box {
-    background: rgba(0,0,0,0.3);
-    border: 1px solid var(--border);
-    padding: 10px 12px;
-    border-radius: 2px;
-  }
-
-  .stat-label {
-    font-size: 9px;
-    color: var(--dim);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-
-  .stat-val {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--panel-color, var(--accent1));
-  }
-
-  .panel-desc {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 11px;
-    color: var(--dim);
-    line-height: 1.8;
-  }
-
-  /* ── CROSSHAIR RETICLE ── */
-  #reticle {
-    position: fixed;
-    pointer-events: none;
-    z-index: 200;
-    transform: translate(-50%,-50%);
-    width: 30px; height: 30px;
-    display: none;
-  }
-
-  /* ── PERF HUD ── */
-  #perf-hud {
-    position: fixed;
-    left: 24px;
-    top: 80px;
-    z-index: 100;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: rgba(0,200,100,0.6);
-    line-height: 1.9;
-    pointer-events: none;
-  }
-
-  /* ── SCAN LINES ── */
-  #scanlines {
-    position: fixed;
-    top:0;left:0;right:0;bottom:0;
-    z-index: 300;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.03) 2px,
-      rgba(0,0,0,0.03) 4px
-    );
-  }
-
-  /* ── CORNER DECORATION ── */
-  .corner {
-    position: fixed;
-    width: 40px; height: 40px;
-    z-index: 200;
-    pointer-events: none;
-    opacity: 0.4;
-  }
-  .corner-tl { top:65px; left:10px; border-top:1px solid var(--accent1); border-left:1px solid var(--accent1); }
-  .corner-tr { top:65px; right:10px; border-top:1px solid var(--accent1); border-right:1px solid var(--accent1); }
-  .corner-bl { bottom:70px; left:10px; border-bottom:1px solid var(--accent1); border-left:1px solid var(--accent1); }
-  .corner-br { bottom:70px; right:10px; border-bottom:1px solid var(--accent1); border-right:1px solid var(--accent1); }
-
-  /* ── FORMULA TICKER ── */
-  #ticker {
-    position: fixed;
-    bottom: 62px;
-    left: 0; right: 0;
-    z-index: 99;
-    height: 24px;
-    overflow: hidden;
-    background: rgba(2,4,8,0.8);
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-  }
-
-  .ticker-inner {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: rgba(0,200,255,0.5);
-    white-space: nowrap;
-    animation: ticker-scroll 60s linear infinite;
-  }
-
-  @keyframes ticker-scroll {
-    0%{transform:translateX(100vw)} 100%{transform:translateX(-100%)}
-  }
-
-  /* ── LOADING ── */
-  #loader {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: var(--bg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    transition: opacity 0.8s;
-  }
-
-  .loader-ring {
-    width: 60px; height: 60px;
-    border: 1px solid rgba(0,200,255,0.2);
-    border-top-color: var(--accent1);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin { to{transform:rotate(360deg)} }
-
-  .loader-text {
-    font-size: 11px;
-    letter-spacing: 0.4em;
-    color: var(--accent1);
-    text-transform: uppercase;
-    animation: blink 1s step-end infinite;
-  }
-
-  @keyframes blink { 50%{opacity:0} }
-
-  /* Slider control */
-  #controls {
-    position: fixed;
-    left: 24px;
-    bottom: 90px;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .ctrl-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 10px;
-    color: var(--dim);
-    letter-spacing: 0.1em;
-  }
-
-  .ctrl-row label { width: 60px; text-align: right; }
-
-  .ctrl-row input[type=range] {
-    -webkit-appearance: none;
-    width: 100px;
-    height: 2px;
-    background: rgba(0,200,255,0.2);
-    outline: none;
-  }
-
-  .ctrl-row input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--accent1);
-    box-shadow: 0 0 8px var(--accent1);
-    cursor: pointer;
-  }
-
-  .ctrl-val {
-    width: 40px;
-    color: var(--accent1);
-    font-family: 'JetBrains Mono', monospace;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>4-in-1 NAVIER-STOKES | Airfoil · Hemodynamics · Rossby · Non-Newtonian</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; overflow: hidden; font-family: 'Monaco', 'Fira Code', monospace; }
+        
+        /* Tab Navigation */
+        .tab-bar {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            z-index: 300;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            pointer-events: auto;
+        }
+        .tab-btn {
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #0ff;
+            color: #0ff;
+            padding: 8px 18px;
+            cursor: pointer;
+            font-family: monospace;
+            font-size: 12px;
+            font-weight: bold;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+        }
+        .tab-btn.active {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 15px #0ff;
+        }
+        .tab-btn:hover:not(.active) {
+            background: #0ff3;
+        }
+        
+        /* Info Panel */
+        .info-panel {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            border-top: 2px solid #0ff;
+            padding: 10px 15px;
+            z-index: 300;
+            pointer-events: auto;
+            font-size: 10px;
+            color: #0ff;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .info-item {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
+        .info-label {
+            color: #888;
+        }
+        .info-value {
+            color: #ffaa44;
+            font-weight: bold;
+        }
+        
+        /* Control buttons */
+        .ctrl-group {
+            position: absolute;
+            top: 80px;
+            right: 15px;
+            z-index: 300;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: auto;
+        }
+        .ctrl-btn {
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #ffaa44;
+            color: #ffaa44;
+            padding: 6px 12px;
+            font-size: 10px;
+            cursor: pointer;
+            font-family: monospace;
+        }
+        .ctrl-btn:hover {
+            background: #ffaa44;
+            color: #000;
+        }
+        
+        @media (max-width: 700px) {
+            .tab-btn { padding: 4px 10px; font-size: 9px; }
+            .info-panel { font-size: 8px; padding: 6px 10px; }
+            .ctrl-btn { padding: 3px 8px; font-size: 8px; }
+        }
+    </style>
 </head>
 <body>
-
-<div id="loader">
-  <div class="loader-ring"></div>
-  <div class="loader-text">초기화 중 // INITIALIZING FLUID DYNAMICS ENGINE</div>
-</div>
-
-<canvas id="canvas-bg"></canvas>
-<div id="scene-container"></div>
-<div id="scanlines"></div>
-
-<!-- Corners -->
-<div class="corner corner-tl"></div>
-<div class="corner corner-tr"></div>
-<div class="corner corner-bl"></div>
-<div class="corner corner-br"></div>
-
-<!-- Header -->
-<div id="header">
-  <div class="logo">Seoul Inside · B.Sun · 2026</div>
-  <div class="title-main">Navier–Stokes Equations — Four Applications</div>
-  <div class="eq-badge">∂u/∂t + (u·∇)u = −∇p/ρ + ν∇²u</div>
-</div>
-
-<!-- Performance HUD -->
-<div id="perf-hud">
-  <div id="hud-fps">FPS: ···</div>
-  <div id="hud-re">Re: ···</div>
-  <div id="hud-mode">MODE: ···</div>
-  <div id="hud-t">t: 0.000s</div>
-</div>
-
-<!-- Info Panel -->
-<div id="info-panel">
-  <div class="panel-header">
-    <div class="panel-dot"></div>
-    <div class="panel-title" id="pt">EXAMPLE 01</div>
-  </div>
-  <div class="panel-body">
-    <div class="panel-name" id="pname">Airfoil at High Reynolds Number</div>
-    <div class="panel-subtitle" id="psub">RANS / SST k-ω Turbulence Model</div>
-    <div class="panel-eq" id="peq">∂k/∂t + ⟨uj⟩∂k/∂xj =
-Pk − β*kω + ∂/∂xj[(ν+σk νt)∂k/∂xj]</div>
-    <div class="panel-stats" id="pstats"></div>
-    <div class="panel-desc" id="pdesc"></div>
-  </div>
-</div>
-
-<!-- Controls -->
-<div id="controls">
-  <div class="ctrl-row">
-    <label>SPEED</label>
-    <input type="range" id="ctrl-speed" min="0.1" max="3" step="0.1" value="1">
-    <span class="ctrl-val" id="cv-speed">1.0</span>
-  </div>
-  <div class="ctrl-row">
-    <label>DENSITY</label>
-    <input type="range" id="ctrl-density" min="500" max="5000" step="100" value="2000">
-    <span class="ctrl-val" id="cv-density">2000</span>
-  </div>
-</div>
-
-<!-- Ticker -->
-<div id="ticker">
-  <div class="ticker-inner">
-    &nbsp;&nbsp;&nbsp;
-    ∂ρ/∂t + ∇·(ρu) = 0 &nbsp;·&nbsp;
-    ρ(∂u/∂t + u·∇u) = −∇p + μ∇²u + f &nbsp;·&nbsp;
-    Re = ρUL/μ &nbsp;·&nbsp;
-    DNS: Re¹⁰⁷ → ~10²¹ ops: STRUCTURALLY IMPOSSIBLE &nbsp;·&nbsp;
-    SST k-ω: F₁φ₁ + (1−F₁)φ₂ &nbsp;·&nbsp;
-    α = R√(ω/ν) &nbsp;·&nbsp;
-    OSI = ½(1 − |∫τw dt|/∫|τw|dt) &nbsp;·&nbsp;
-    σ = (p∞−pv)/(½ρU²) &nbsp;·&nbsp;
-    Ro ≪ 1: geostrophic balance &nbsp;·&nbsp;
-    ∂q/∂t + ug·∇q = 0 &nbsp;·&nbsp;
-    cp = U − β/(k²+ℓ²+f₀²/N²H²): Rossby wave phase speed &nbsp;·&nbsp;
-    τw = μ(∂ut/∂n)|wall &nbsp;·&nbsp;
-    Carreau-Yasuda: μ(γ̇) = μ∞ + (μ₀−μ∞)[1+(λγ̇)ᵃ]^{(n−1)/a} &nbsp;·&nbsp;
-    Womersley: α ≈ 18.3 (aorta), 6.1 (carotid), 2.3 (coronary) &nbsp;·&nbsp;
-    R_B = (3αv/4πn₀(1−αv))^{1/3} &nbsp;&nbsp;&nbsp;
-  </div>
-</div>
-
-<!-- Nav Tabs -->
-<div id="nav-tabs">
-  <div class="nav-tab active" data-idx="0" style="--tab-color:#00c8ff">
-    <span class="tab-num">01</span>
-    AIRFOIL · RANS
-  </div>
-  <div class="nav-tab" data-idx="1" style="--tab-color:#ff4060">
-    <span class="tab-num">02</span>
-    WEATHER · NWP
-  </div>
-  <div class="nav-tab" data-idx="2" style="--tab-color:#40ff90">
-    <span class="tab-num">03</span>
-    HEMODYNAMICS
-  </div>
-  <div class="nav-tab" data-idx="3" style="--tab-color:#ffaa00">
-    <span class="tab-num">04</span>
-    CAVITATION
-  </div>
-</div>
-
-<!-- Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<script>
-// ═══════════════════════════════════════════════════════════
-// DATA
-// ═══════════════════════════════════════════════════════════
-const EXAMPLES = [
-  {
-    idx: 0,
-    color: '#00c8ff',
-    colorHex: 0x00c8ff,
-    title: 'EXAMPLE 01',
-    name: 'Airfoil at High Reynolds Number',
-    sub: 'RANS / Menter SST k-ω Model / Re = 10⁷',
-    eq: `∂k/∂t + ⟨uj⟩∂k/∂xj =
-Pk − β*kω
-  + ∂/∂xj[(ν+σk νt)∂k/∂xj]
-
-νt = a₁k / max(a₁ω, ΩF₂)`,
-    stats: [
-      {label:'Reynolds No.', val:'10⁷'},
-      {label:'DNS Grid', val:'~10¹⁵'},
-      {label:'Model', val:'SST k-ω'},
-      {label:'BL Thickness', val:'~1 mm'},
-    ],
-    desc: 'DNS at Re=10⁷는 구조적으로 불가능. RANS+SST k-ω가 현재 항공산업 표준. F₁ 블렌딩함수가 근벽/자유류를 연속적으로 전환.',
-    mode: 'airfoil',
-  },
-  {
-    idx: 1,
-    color: '#ff4060',
-    colorHex: 0xff4060,
-    title: 'EXAMPLE 02',
-    name: 'Numerical Weather Prediction',
-    sub: 'Primitive Equations / QG-PV / Rossby Waves',
-    eq: `∂u/∂t + (u·∇)u + ω∂u/∂p
-  + f k̂×u = −∇Φ + F
-
-∂q/∂t + ug·∇q = 0
-cp = U − β/(k²+ℓ²+f₀²/N²H²)`,
-    stats: [
-      {label:'Reynolds No.', val:'10¹²'},
-      {label:'Grid', val:'T85 / 128×256'},
-      {label:'Δt (SL)', val:'600 s'},
-      {label:'Ro', val:'≪ 1'},
-    ],
-    desc: '대기는 얇은 회전 유체막. 정수압 근사가 음파 모드를 제거. 준지균 PV는 정상 블로킹 조건 cp=0을 결정.',
-    mode: 'atmosphere',
-  },
-  {
-    idx: 2,
-    color: '#40ff90',
-    colorHex: 0x40ff90,
-    title: 'EXAMPLE 03',
-    name: 'Hemodynamics — Blood Flow',
-    sub: 'Pulsatile N-S / Carreau-Yasuda / WSS / OSI',
-    eq: `τw = μ(∂ut/∂n)|wall
-
-OSI = ½(1 − |∫₀ᵀτw dt|
-            / ∫₀ᵀ|τw|dt)
-
-μ(γ̇) = μ∞ + (μ₀−μ∞)[1+(λγ̇)ᵃ]^{n/a}`,
-    stats: [
-      {label:'α (Aorta)', val:'18.3'},
-      {label:'Atherogenic', val:'τw<0.4Pa'},
-      {label:'Thrombogenic', val:'τw>4.0Pa'},
-      {label:'Period', val:'~0.8 s'},
-    ],
-    desc: '죽상동맥경화증은 낮은 TAWSS(<0.4Pa)와 높은 OSI(>0.1)가 공존하는 분기부에 집중. 환자별 CFD가 스텐트 배치 결정에 직접 사용.',
-    mode: 'blood',
-  },
-  {
-    idx: 3,
-    color: '#ffaa00',
-    colorHex: 0xffaa00,
-    title: 'EXAMPLE 04',
-    name: 'Ship Hydrodynamics & Cavitation',
-    sub: 'HEM / Schnerr-Sauer / σ = 0.33',
-    eq: `σ = (p∞−pv) / (½ρU²)
-
-ṁ⁺ = Cv(ρlρv/ρ)αv(1−αv)
-     × (3/RB)√(⅔(pv−p)/ρl)
-
-RB = (3αv/4πn₀(1−αv))^{1/3}`,
-    stats: [
-      {label:'σ (propeller)', val:'0.33'},
-      {label:'Reynolds No.', val:'10⁹'},
-      {label:'pv (20°C)', val:'2338 Pa'},
-      {label:'Collapse jet', val:'~500 m/s'},
-    ],
-    desc: 'σ=0.33 < 1 → 공동현상 불가피. HEM이 기포 체적분율을 추적하지만 침식속도는 별도의 Rayleigh-Plesset 모델 필요.',
-    mode: 'cavitation',
-  },
-];
-
-// ═══════════════════════════════════════════════════════════
-// WEBGL FLUID SIMULATION ENGINE
-// ═══════════════════════════════════════════════════════════
-
-let renderer, scene, camera;
-let activeMode = 'airfoil';
-let simTime = 0;
-let simSpeed = 1.0;
-let simDensity = 2000;
-let currentIdx = 0;
-let fps = 60, lastTime = performance.now(), frameCount = 0;
-
-const canvas = document.getElementById('canvas-bg');
-
-function initThree() {
-  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x020408, 1);
-
-  scene = new THREE.Scene();
-
-  camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.001, 1000);
-  camera.position.set(0, 0, 3);
-
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    updateAllUniforms();
-  });
-}
-
-// ── SHADER: Airfoil / Turbulent Wake ──────────────────────
-const VERT_PASSTHROUGH = `
-varying vec2 vUv;
-void main(){
-  vUv = uv;
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-}`;
-
-const FRAG_AIRFOIL = `
-precision highp float;
-varying vec2 vUv;
-uniform float uTime;
-uniform float uSpeed;
-uniform float uDensity;
-uniform vec2 uRes;
-
-#define PI 3.14159265
-
-// Simplex-like noise
-vec3 hash33(vec3 p){
-  p = fract(p * vec3(443.897, 441.423, 437.195));
-  p += dot(p, p.yxz + 19.19);
-  return fract((p.xxy + p.yxx) * p.zyx);
-}
-
-float noise(vec3 p){
-  vec3 i = floor(p); vec3 f = fract(p);
-  vec3 u = f*f*(3.-2.*f);
-  float n000 = dot(hash33(i+vec3(0,0,0))-0.5, f-vec3(0,0,0));
-  float n100 = dot(hash33(i+vec3(1,0,0))-0.5, f-vec3(1,0,0));
-  float n010 = dot(hash33(i+vec3(0,1,0))-0.5, f-vec3(0,1,0));
-  float n110 = dot(hash33(i+vec3(1,1,0))-0.5, f-vec3(1,1,0));
-  float n001 = dot(hash33(i+vec3(0,0,1))-0.5, f-vec3(0,0,1));
-  float n101 = dot(hash33(i+vec3(1,0,1))-0.5, f-vec3(1,0,1));
-  float n011 = dot(hash33(i+vec3(0,1,1))-0.5, f-vec3(0,1,1));
-  float n111 = dot(hash33(i+vec3(1,1,1))-0.5, f-vec3(1,1,1));
-  return 0.5 + 0.5*mix(mix(mix(n000,n100,u.x),mix(n010,n110,u.x),u.y),
-                        mix(mix(n001,n101,u.x),mix(n011,n111,u.x),u.y),u.z);
-}
-
-float fbm(vec3 p){
-  float v=0.; float a=0.5;
-  for(int i=0;i<6;i++){v+=a*noise(p);p=p*2.1;a*=0.5;}
-  return v;
-}
-
-// NACA 0012 thickness function
-float naca(float x){
-  x = clamp(x,0.,1.);
-  return 5.*0.12*(0.2969*sqrt(x)-0.126*x-0.3516*x*x+0.2843*x*x*x-0.1015*x*x*x*x);
-}
-
-void main(){
-  vec2 uv = vUv;
-  vec2 p = (uv - 0.5) * 2.0;
-  p.x *= uRes.x / uRes.y;
-
-  float t = uTime * uSpeed * 0.3;
-
-  // Airfoil SDF (NACA 0012, AoA = 8°)
-  float aoa = 0.14;
-  vec2 q = vec2(p.x * cos(aoa) + p.y * sin(aoa),
-               -p.x * sin(aoa) + p.y * cos(aoa));
-
-  // Translate to chord coords
-  vec2 af = q + vec2(0.3, 0.0); // center foil
-  float chord = 0.9;
-  float xc = af.x / chord;
-  float yc = af.y / chord;
-
-  // Inside airfoil?
-  float halfThick = naca(xc) * 0.7;
-  bool inside = (xc >= 0. && xc <= 1. && abs(yc) < halfThick);
-
-  // Streamline pressure field
-  float Cp = 0.0;
-  float dist_to_foil = 9999.;
-
-  if(!inside){
-    // Approximate potential flow + turbulent perturbation
-    float xi = xc - 0.5;
-    float eta = yc;
-    float r2 = xi*xi + eta*eta;
-    float r = sqrt(r2) + 0.001;
-
-    // Circulation term (Kutta condition)
-    float gamma = 0.4;
-    float theta = atan(eta, xi);
-
-    // Pressure coefficient (simplified panel method approx)
-    float u_tan = 1.0 - 1.0/(r2 + 0.1) + gamma * sin(theta) / (2.*PI*r);
-    float v_tan = -gamma * cos(theta) / (2.*PI*r);
-    Cp = 1.0 - (u_tan*u_tan + v_tan*v_tan);
-
-    // Turbulent boundary layer
-    float bl_side = sign(yc);
-    float x_bl = clamp(xc, 0., 1.);
-    float bl_thickness = 0.037 * pow(x_bl, 0.8) * 0.3; // turbulent BL
-    float dist_surf = abs(abs(yc) - naca(xc) * 0.7 * chord / chord);
-    dist_to_foil = dist_surf;
-
-    // Turbulent wake (downstream)
-    if(xc > 0.9 && abs(yc) < 0.15 + (xc-0.9)*0.5){
-      float wake_y = yc / (0.05 + (xc-0.9)*0.3);
-      float wake_prof = exp(-wake_y*wake_y*2.);
-      float turb = fbm(vec3(p*3.0, t*0.5)) * 0.5;
-      Cp -= wake_prof * (0.3 + turb * 0.2);
-
-      // Von Karman vortex street approximation
-      float vy = sin(p.x*15. - t*8.) * exp(-abs(p.y)*4.) * 0.3;
-      Cp += vy * wake_prof;
-    }
-  }
-
-  // Color mapping
-  vec3 col = vec3(0.01, 0.03, 0.07);
-
-  if(inside){
-    col = vec3(0.05, 0.05, 0.1);
-  } else {
-    // Pressure gradient: blue(low) → black → red(high)
-    float cp_norm = clamp(Cp * 0.8 + 0.5, 0., 1.);
-
-    vec3 lowP  = vec3(0.0, 0.5, 1.0);   // suction (blue/cyan)
-    vec3 midP  = vec3(0.01,0.02,0.06);  // ambient
-    vec3 highP = vec3(1.0, 0.2, 0.05);  // stagnation (red)
-
-    if(cp_norm < 0.5)
-      col = mix(lowP, midP, cp_norm*2.);
-    else
-      col = mix(midP, highP, (cp_norm-0.5)*2.);
-
-    // Turbulent kinetic energy near wall (SST k-ω BL)
-    if(xc > 0. && xc < 1. && dist_to_foil < 0.05){
-      float bl_glow = exp(-dist_to_foil * 40.) * 0.6;
-      col += vec3(0.0, 0.5, 1.0) * bl_glow;
-    }
-
-    // Streamline visualization (iso-lines of stream function)
-    float psi = eta - gamma/(2.*PI) * log(r + 0.01);
-    float streamline = abs(fract(psi * 8.0 + 0.5) - 0.5) / fwidth(psi * 8.0);
-    streamline = 1.0 - clamp(streamline * 0.5, 0., 1.);
-    col += vec3(0.0, 0.3, 0.6) * streamline * 0.15;
-  }
-
-  // Atmospheric haze / vignette
-  float vig = 1.0 - dot(vUv-0.5, vUv-0.5)*1.5;
-  col *= vig;
-
-  // Grid overlay
-  vec2 grid = abs(fract(p * 5.0) - 0.5);
-  float gl = min(grid.x, grid.y);
-  col += vec3(0., 0.1, 0.2) * (1.-smoothstep(0.,0.03,gl)) * 0.08;
-
-  gl_FragColor = vec4(col, 1.0);
-}
-`;
-
-const FRAG_ATMOSPHERE = `
-precision highp float;
-varying vec2 vUv;
-uniform float uTime;
-uniform float uSpeed;
-uniform float uDensity;
-uniform vec2 uRes;
-
-#define PI 3.14159265
-
-vec3 hash33(vec3 p){
-  p = fract(p * vec3(443.8, 441.4, 437.2));
-  p += dot(p, p.yxz+19.19);
-  return fract((p.xxy+p.yxx)*p.zyx);
-}
-float noise(vec3 p){
-  vec3 i=floor(p);vec3 f=fract(p);
-  vec3 u=f*f*(3.-2.*f);
-  return mix(mix(mix(dot(hash33(i)-0.5,f),dot(hash33(i+vec3(1,0,0))-0.5,f-vec3(1,0,0)),u.x),
-             mix(dot(hash33(i+vec3(0,1,0))-0.5,f-vec3(0,1,0)),dot(hash33(i+vec3(1,1,0))-0.5,f-vec3(1,1,0)),u.x),u.y),
-             mix(mix(dot(hash33(i+vec3(0,0,1))-0.5,f-vec3(0,0,1)),dot(hash33(i+vec3(1,0,1))-0.5,f-vec3(1,0,1)),u.x),
-             mix(dot(hash33(i+vec3(0,1,1))-0.5,f-vec3(0,1,1)),dot(hash33(i+vec3(1,1,1))-0.5,f-vec3(1,1,1)),u.x),u.y),u.z);
-}
-float fbm(vec3 p){float v=0.;float a=0.5;for(int i=0;i<7;i++){v+=a*noise(p);p*=2.1;a*=0.48;}return v;}
-
-void main(){
-  vec2 uv = vUv;
-  float t = uTime * uSpeed * 0.15;
-  vec2 p = uv - 0.5;
-  p.x *= uRes.x/uRes.y;
-
-  // Spherical atmosphere view (polar projection)
-  float lat = (uv.y - 0.5) * PI;        // -π/2 to π/2
-  float lon = (uv.x - 0.5) * 2.*PI + t*0.3;  // 0 to 2π, rotating
-
-  // Coriolis-distorted stream function
-  vec3 sphere = vec3(lon, lat, t);
-
-  // Rossby wave stream function: ψ = -Uy + A sin(kx+ly-ωt)
-  float U = 0.4; // mean westerly
-  float k = 4.0; float l = 2.0;
-  float beta = 0.8;
-  float omega_R = U*k - beta*k/(k*k+l*l+0.5);
-
-  float psi = -U*lat + 0.3*sin(k*lon + l*lat - omega_R*t*2.)
-                     + 0.15*sin(2.*k*lon + l*lat - omega_R*t*3.7)
-                     + 0.08*fbm(vec3(lon*0.5,lat*1.5,t*0.3));
-
-  // QG potential vorticity
-  float dpsi_x = k*0.3*cos(k*lon+l*lat-omega_R*t*2.);
-  float dpsi_y = -U + l*0.3*cos(k*lon+l*lat-omega_R*t*2.);
-  float lap_psi = -(k*k+l*l)*0.3*sin(k*lon+l*lat-omega_R*t*2.);
-  float q_pv = lap_psi + 2.*sin(lat); // f = 2sinφ
-
-  // Temperature gradient (baroclinic)
-  float T_anomaly = fbm(vec3(lon*0.4+t*0.2, lat*1.2, t*0.1)) - 0.5;
-
-  // Jet stream core
-  float jet_lat = 0.7 + 0.2*sin(lon*3.-t*1.5);
-  float jet = exp(-pow((lat-jet_lat)*6.,2.)) * exp(-pow((lat+jet_lat)*6.,2.));
-
-  // Color: pressure level / geopotential height Z500
-  float Z500 = psi * 2. + 5.5 + T_anomaly * 0.3;
-
-  vec3 col;
-  float z_norm = clamp((Z500 - 4.5)/2.5, 0.,1.);
-
-  // Geopotential color scale: blue(low/trough) → red(high/ridge)
-  vec3 trough = vec3(0.05, 0.1, 0.8);
-  vec3 neutral = vec3(0.01, 0.04, 0.12);
-  vec3 ridge   = vec3(0.9, 0.2, 0.05);
-
-  if(z_norm < 0.35)
-    col = mix(trough, neutral, z_norm/0.35);
-  else if(z_norm < 0.65)
-    col = mix(neutral, neutral*1.5, (z_norm-0.35)/0.3);
-  else
-    col = mix(neutral, ridge, (z_norm-0.65)/0.35);
-
-  // Jet stream glow
-  col += vec3(1.0, 0.8, 0.2) * jet * 0.5;
-
-  // Frontal zones (sharp temperature gradient)
-  float front = abs(fbm(vec3(lon*0.6+t*0.25,lat*2.,t*0.15)) - 0.5);
-  front = 1.-smoothstep(0.,0.05,front);
-  col += vec3(1.,0.3,0.1) * front * 0.3;
-
-  // Precipitation (cloud convection)
-  float precip = max(0., fbm(vec3(lon*1.5+t*0.4,lat*3.,t*0.2))-0.62)*3.;
-  col += vec3(0.8,0.9,1.0) * precip * 0.4;
-
-  // Polar vortex
-  float pv_n = smoothstep(1.0, 1.4, abs(lat)) * (1.+0.3*sin(lon*6.-t));
-  float pv_s = smoothstep(1.0, 1.4, abs(lat));
-  col = mix(col, vec3(0.5,0.7,1.0), pv_n * 0.6);
-
-  // Latitude lines (faint)
-  float lat_line = abs(fract(lat/(PI/6.) + 0.5) - 0.5);
-  col += vec3(0.1,0.2,0.4) * (1.-smoothstep(0.,0.02,lat_line)) * 0.1;
-
-  // Vignette
-  float vig = 1. - dot(vUv-0.5, vUv-0.5)*1.8;
-  col *= max(0., vig);
-
-  gl_FragColor = vec4(col, 1.0);
-}
-`;
-
-const FRAG_BLOOD = `
-precision highp float;
-varying vec2 vUv;
-uniform float uTime;
-uniform float uSpeed;
-uniform float uDensity;
-uniform vec2 uRes;
-
-#define PI 3.14159265
-
-vec3 hash33(vec3 p){p=fract(p*vec3(443.9,441.4,437.2));p+=dot(p,p.yxz+19.19);return fract((p.xxy+p.yxx)*p.zyx);}
-float noise(vec3 p){vec3 i=floor(p);vec3 f=fract(p);vec3 u=f*f*(3.-2.*f);
-  return mix(mix(mix(dot(hash33(i)-0.5,f),dot(hash33(i+vec3(1,0,0))-0.5,f-vec3(1,0,0)),u.x),
-             mix(dot(hash33(i+vec3(0,1,0))-0.5,f-vec3(0,1,0)),dot(hash33(i+vec3(1,1,0))-0.5,f-vec3(1,1,0)),u.x),u.y),
-             mix(mix(dot(hash33(i+vec3(0,0,1))-0.5,f-vec3(0,0,1)),dot(hash33(i+vec3(1,0,1))-0.5,f-vec3(1,0,1)),u.x),
-             mix(dot(hash33(i+vec3(0,1,1))-0.5,f-vec3(0,1,1)),dot(hash33(i+vec3(1,1,1))-0.5,f-vec3(1,1,1)),u.x),u.y),u.z);}
-float fbm(vec3 p){float v=0.;float a=0.5;for(int i=0;i<5;i++){v+=a*noise(p);p*=2.1;a*=0.5;}return v;}
-
-// Womersley-type pulsatile velocity profile
-float womersley(float r, float t){
-  float alpha = 6.1; // Carotid Womersley number
-  float T = 1.0;
-  // Simplified: layered harmonics approximating Bessel solution
-  float u = (1.-r*r); // Poiseuille base
-  float phase_lag = alpha * 0.08;
-  u += 0.5*sin(2.*PI*t/T - phase_lag) * (1.-r*r*r); // systolic
-  u += 0.15*sin(4.*PI*t/T - phase_lag*2.) * (1.-r);
-  u -= 0.08*sin(6.*PI*t/T + 0.3) * r*r; // diastolic reversal
-  return u;
-}
-
-void main(){
-  vec2 uv = vUv;
-  float t = uTime * uSpeed;
-
-  // Carotid bifurcation geometry (idealized)
-  vec2 p = (uv - 0.5);
-  p.x *= uRes.x/uRes.y;
-  p *= 2.;
-
-  // CCA: vertical vessel
-  float R_cca = 0.25;
-  float d_cca = abs(p.x) - R_cca;
-
-  // Bifurcation at y = 0
-  float angle_ica = 0.35; // radians
-  float angle_eca = -0.25;
-
-  // ICA
-  vec2 p_ica = vec2(p.x - p.y*tan(angle_ica), p.y);
-  float R_ica = 0.19;
-  float d_ica = abs(p_ica.x) - R_ica;
-
-  // ECA
-  vec2 p_eca = vec2(p.x - p.y*tan(angle_eca), p.y);
-  float R_eca = 0.16;
-  float d_eca = abs(p_eca.x) - R_eca;
-
-  // Lumen SDF
-  float lumen;
-  if(p.y < 0.0) lumen = d_cca;
-  else lumen = min(d_ica, d_eca);
-
-  bool in_lumen = lumen < 0.;
-  float wall_dist = abs(lumen);
-
-  // Vessel wall
-  bool in_wall = lumen > 0. && lumen < 0.04;
-
-  // Local r/R for velocity profile
-  float r;
-  if(p.y < 0.) r = abs(p.x)/R_cca;
-  else if(d_ica < d_eca) r = abs(p_ica.x)/R_ica;
-  else r = abs(p_eca.x)/R_eca;
-  r = clamp(r, 0.,1.);
-
-  // Cardiac cycle: 72 bpm
-  float T_card = 60./72.;
-  float phase = fract(t * uSpeed * 0.5 / T_card);
-
-  // Womersley velocity
-  float U = womersley(r, phase * T_card);
-
-  // Wall shear stress magnitude
-  float dudr = -2.*r; // simplified gradient
-  float tau_w = 0.0035 * abs(dudr) / 0.004; // μ × du/dr / R
-
-  // OSI: oscillatory shear (higher at bifurcation sinus)
-  float bif_proximity = exp(-length(p)*4.);
-  float osi = clamp(bif_proximity * 0.4 + fbm(vec3(p*3.,t*0.1))*0.1, 0., 0.5);
-
-  vec3 col = vec3(0.01, 0.02, 0.04);
-
-  if(in_lumen){
-    // Blood velocity: dark red (slow) → bright red/pink (fast)
-    float u_norm = clamp(U * 0.5 + 0.5, 0., 1.);
-    vec3 slow_blood = vec3(0.4, 0.02, 0.05);
-    vec3 fast_blood = vec3(1.0, 0.3, 0.3);
-    vec3 reverse_blood = vec3(0.1, 0.05, 0.4); // retrograde diastole
-
-    if(U > 0.)
-      col = mix(slow_blood, fast_blood, u_norm);
-    else
-      col = mix(vec3(0.05,0.03,0.2), reverse_blood, abs(U));
-
-    // RBC turbulent structures (Carreau-Yasuda shear thinning visible near wall)
-    float rbc = fbm(vec3(p*8.+vec2(0.,t*U*3.),t*0.5));
-    col += vec3(0.3,0.0,0.0) * rbc * 0.15 * (1.-r);
-
-    // High OSI zone: atherogenic glow (green/yellow)
-    if(osi > 0.1){
-      col = mix(col, vec3(0.2, 0.9, 0.3), (osi-0.1)*2. * 0.6);
-    }
-
-    // Low WSS atherogenic zone (< 0.4 Pa)
-    if(tau_w < 0.4 && osi > 0.05){
-      col += vec3(0., 0.6, 0.2) * 0.3;
-    }
-  } else if(in_wall){
-    // Arterial wall: fibrous tissue color + WSS gradient
-    vec3 wall_col = vec3(0.3, 0.18, 0.1);
-    // Atherogenic plaque (low WSS zones → yellow-brown)
-    float plaque = clamp(bif_proximity * 0.7 + 0.1*noise(vec3(p*5.,0.)), 0.,1.);
-    col = mix(wall_col, vec3(0.7, 0.55, 0.1), plaque * osi * 3.);
-  }
-
-  // Endothelial glow at near-wall zone
-  if(wall_dist < 0.02 && in_lumen){
-    float endo = (0.02 - wall_dist)/0.02;
-    col += vec3(0., 0.8, 0.4) * endo * tau_w * 0.15;
-  }
-
-  // Vignette
-  float vig = 1. - dot(vUv-0.5, vUv-0.5)*1.5;
-  col *= max(0.,vig);
-
-  // Scan noise (cardiac rhythm)
-  float scan = 0.97 + 0.03*sin(uv.y*200.+t*5.);
-  col *= scan;
-
-  gl_FragColor = vec4(col, 1.0);
-}
-`;
-
-const FRAG_CAVITATION = `
-precision highp float;
-varying vec2 vUv;
-uniform float uTime;
-uniform float uSpeed;
-uniform float uDensity;
-uniform vec2 uRes;
-
-#define PI 3.14159265
-
-vec3 hash33(vec3 p){p=fract(p*vec3(443.9,441.4,437.2));p+=dot(p,p.yxz+19.19);return fract((p.xxy+p.yxx)*p.zyx);}
-float noise(vec3 p){
-  vec3 i=floor(p);vec3 f=fract(p);vec3 u=f*f*(3.-2.*f);
-  return mix(mix(mix(dot(hash33(i)-0.5,f),dot(hash33(i+vec3(1,0,0))-0.5,f-vec3(1,0,0)),u.x),
-             mix(dot(hash33(i+vec3(0,1,0))-0.5,f-vec3(0,1,0)),dot(hash33(i+vec3(1,1,0))-0.5,f-vec3(1,1,0)),u.x),u.y),
-             mix(mix(dot(hash33(i+vec3(0,0,1))-0.5,f-vec3(0,0,1)),dot(hash33(i+vec3(1,0,1))-0.5,f-vec3(1,0,1)),u.x),
-             mix(dot(hash33(i+vec3(0,1,1))-0.5,f-vec3(0,1,1)),dot(hash33(i+vec3(1,1,1))-0.5,f-vec3(1,1,1)),u.x),u.y),u.z);}
-float fbm(vec3 p){float v=0.;float a=0.5;for(int i=0;i<6;i++){v+=a*noise(p);p*=2.1;a*=0.48;}return v;}
-
-float naca(float x){
-  x=clamp(x,0.,1.);
-  return 5.*0.12*(0.2969*sqrt(x)-0.126*x-0.3516*x*x+0.2843*x*x*x-0.1015*x*x*x*x);
-}
-
-void main(){
-  vec2 uv = vUv;
-  float t = uTime * uSpeed * 0.4;
-  vec2 p = (uv - 0.5) * 2.;
-  p.x *= uRes.x/uRes.y;
-
-  // Hydrofoil (NACA 0012, AoA=6°)
-  float aoa = 0.105;
-  vec2 q = vec2(p.x*cos(aoa)+p.y*sin(aoa), -p.x*sin(aoa)+p.y*cos(aoa));
-  vec2 af = q + vec2(0.2, 0.0);
-  float chord = 0.8;
-  float xc = af.x/chord;
-  float yc = af.y/chord;
-  float halfT = naca(xc) * 0.7;
-  bool in_foil = (xc>=0.&&xc<=1.&&abs(yc)<halfT);
-
-  // Cavitation number σ = 0.33
-  float sigma = 0.33;
-  float p_v = 2338.; float p_inf = 101325.;
-  float U_inf = 10.;
-
-  // Pressure coefficient field
-  float xi = xc - 0.5; float eta = yc;
-  float r2 = xi*xi + eta*eta + 0.01;
-  float r = sqrt(r2);
-  float theta = atan(eta, xi);
-  float gamma = 0.6; // circulation (AoA=6°)
-  float Cp = 1.0 - (1.0/(r2+0.05) + gamma*sin(theta)/(2.*PI*r));
-
-  // Cavitation onset: Cp < -σ
-  bool cavitating = Cp < -sigma && !in_foil && xc > 0. && xc < 1.5;
-
-  // Alpha_v (vapor volume fraction): Schnerr-Sauer field
-  float alpha_v = 0.;
-  if(cavitating){
-    float dp = clamp(-Cp - sigma, 0., 1.);
-    alpha_v = clamp(dp * 1.5, 0., 1.);
-    // Turbulent cavity surface
-    float cav_noise = fbm(vec3(xc*4.,yc*8.,t*2.));
-    alpha_v *= (0.7 + 0.3*cav_noise);
-  }
-
-  // Cloud cavitation shedding (periodic re-entrant jet)
-  float shed_freq = 8.;
-  float shed_phase = sin(t*shed_freq - xc*3.);
-  float cloud_cav = max(0., shed_phase) * exp(-xc*2.) * exp(-abs(yc)*8.);
-  alpha_v = max(alpha_v, cloud_cav * 0.6);
-
-  // Bubble collapse at wall: shock wave rings
-  float collapse = 0.;
-  for(float bx = 0.3; bx < 0.9; bx += 0.2){
-    float bt = fract(t*2. + bx);
-    float br = bt * 0.15;
-    float bd = length(q - vec2(bx-0.2, halfT*0.9));
-    float ring = exp(-pow(bd-br,2.)*500.) * (1.-bt);
-    collapse = max(collapse, ring);
-  }
-
-  vec3 col = vec3(0.01, 0.02, 0.04);
-
-  if(in_foil){
-    col = vec3(0.12, 0.14, 0.18); // steel propeller blade
-    col += vec3(0.3,0.3,0.4) * noise(vec3(q*20.,0.)) * 0.1;
-  } else {
-    // Water: pressure-colored
-    float cp_norm = clamp(Cp*0.5+0.5, 0.,1.);
-    vec3 high_p = vec3(0.0,0.1,0.5);
-    vec3 low_p  = vec3(0.0,0.4,0.8);
-    vec3 water = mix(high_p, low_p, cp_norm);
-    col = water;
-
-    // Vapor cavity: white/cyan cloud
-    if(alpha_v > 0.01){
-      vec3 vapor = mix(vec3(0.0,0.5,0.8), vec3(0.9,0.95,1.0), alpha_v);
-      col = mix(col, vapor, alpha_v);
-      // Cavity boundary glow
-      float cav_edge = alpha_v * (1.-alpha_v) * 4.;
-      col += vec3(0.0,0.8,1.0) * cav_edge * 0.5;
-    }
-
-    // Bubble collapse shock rings (orange/white flash)
-    col += vec3(1.0,0.7,0.2) * collapse;
-
-    // Turbulent wake
-    if(xc > 0.9){
-      float wake = exp(-abs(yc)*8.) * 0.3;
-      float turb_wake = fbm(vec3((xc-0.9)*4., yc*6., t*1.5));
-      col += vec3(0.5,0.8,1.0) * wake * turb_wake * 0.3;
-    }
-  }
-
-  // Erosion risk heatmap on foil surface
-  if(in_foil && xc > 0.1 && xc < 0.6){
-    float erosion = cloud_cav * 0.5 + collapse;
-    col = mix(col, vec3(1.0,0.2,0.0), erosion * 0.7);
-  }
-
-  // Vignette
-  float vig = 1. - dot(vUv-0.5,vUv-0.5)*1.5;
-  col *= max(0.,vig);
-
-  gl_FragColor = vec4(col,1.0);
-}
-`;
-
-// ── Particle Systems ─────────────────────────────────────
-class ParticleSystem {
-  constructor(count, color, size) {
-    const geo = new THREE.BufferGeometry();
-    const positions = new Float32Array(count * 3);
-    const velocities = new Float32Array(count * 3);
-    const ages = new Float32Array(count);
-    const lifetimes = new Float32Array(count);
-
-    for (let i = 0; i < count; i++) {
-      positions[i*3]   = (Math.random()-0.5)*4;
-      positions[i*3+1] = (Math.random()-0.5)*3;
-      positions[i*3+2] = (Math.random()-0.5)*0.5;
-      velocities[i*3]   = Math.random()*0.02;
-      velocities[i*3+1] = (Math.random()-0.5)*0.005;
-      velocities[i*3+2] = 0;
-      ages[i] = Math.random()*2;
-      lifetimes[i] = 1+Math.random()*3;
-    }
-
-    geo.setAttribute('position', new THREE.BufferAttribute(positions,3));
-    geo.setAttribute('velocity', new THREE.BufferAttribute(velocities,3));
-    geo.setAttribute('age', new THREE.BufferAttribute(ages,1));
-    geo.setAttribute('lifetime', new THREE.BufferAttribute(lifetimes,1));
-
-    const mat = new THREE.PointsMaterial({
-      color, size, transparent:true, opacity:0.6,
-      blending: THREE.AdditiveBlending, depthWrite:false
-    });
-
-    this.mesh = new THREE.Points(geo, mat);
-    this.velocities = velocities;
-    this.positions = positions;
-    this.ages = ages;
-    this.lifetimes = lifetimes;
-    this.count = count;
-    this.color = color;
-  }
-
-  update(dt, mode) {
-    const pos = this.positions;
-    const vel = this.velocities;
-    const t = simTime;
-
-    for (let i = 0; i < this.count; i++) {
-      this.ages[i] += dt;
-      if (this.ages[i] > this.lifetimes[i]) {
-        // Respawn
-        if (mode === 'airfoil') {
-          pos[i*3]   = -2;
-          pos[i*3+1] = (Math.random()-0.5)*2;
-        } else if (mode === 'atmosphere') {
-          pos[i*3]   = -2;
-          pos[i*3+1] = (Math.random()-0.5)*2;
-        } else if (mode === 'blood') {
-          pos[i*3]   = (Math.random()-0.5)*0.3;
-          pos[i*3+1] = -1.5;
-        } else {
-          pos[i*3]   = -2;
-          pos[i*3+1] = (Math.random()-0.5)*0.5;
+    <div class="tab-bar">
+        <button class="tab-btn active" data-tab="airfoil">✈️ AIRFOIL · RANS SST k-ω</button>
+        <button class="tab-btn" data-tab="hemo">🩸 HEMODYNAMICS · Womersley α</button>
+        <button class="tab-btn" data-tab="rossby">🌍 ROSSBY WAVE · β-plane</button>
+        <button class="tab-btn" data-tab="nonnewton">🧬 NON-NEWTONIAN · Carreau-Yasuda</button>
+    </div>
+    
+    <div class="ctrl-group">
+        <button id="reset-cam" class="ctrl-btn">⟳ RESET CAMERA</button>
+        <button id="toggle-fog" class="ctrl-btn">🌫️ TOGGLE FOG</button>
+    </div>
+    
+    <div class="info-panel" id="info-panel">
+        <div class="info-item"><span class="info-label">PARTICLES:</span><span id="particle-count" class="info-value">--</span></div>
+        <div class="info-item"><span class="info-label">FPS:</span><span id="fps-val" class="info-value">--</span></div>
+        <div class="info-item"><span class="info-label">Re:</span><span id="re-val" class="info-value">--</span></div>
+        <div class="info-item"><span class="info-label">Key Parameter:</span><span id="key-param" class="info-value">--</span></div>
+        <div class="info-item"><span class="info-label">Status:</span><span id="status-val" class="info-value">RUNNING</span></div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
         }
-        this.ages[i] = 0;
-        this.lifetimes[i] = 1 + Math.random()*3;
-      }
+    </script>
 
-      const x = pos[i*3];
-      const y = pos[i*3+1];
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
-      let vx = vel[i*3];
-      let vy = vel[i*3+1];
-
-      if (mode === 'airfoil') {
-        // Streamline around NACA (simplified)
-        const dx = x + 0.3;
-        const dy = y;
-        const r2 = dx*dx + dy*dy + 0.1;
-        const gamma = 0.4;
-        const th = Math.atan2(dy, dx);
-        vx = 0.02 * simSpeed * (1 - 1/r2 + gamma*Math.sin(th)/(2*Math.PI*Math.sqrt(r2)));
-        vy = 0.02 * simSpeed * (0.01 - gamma*Math.cos(th)/(2*Math.PI*Math.sqrt(r2)));
-      } else if (mode === 'atmosphere') {
-        // Rossby wave flow
-        const U = 0.015 * simSpeed;
-        const beta = 0.01;
-        const k = 4, l = 2;
-        const om = U*k - beta*k/(k*k+l*l+0.5);
-        const dpsi_dx = k*0.3*Math.cos(k*x*2 + l*y*2 - om*t);
-        const dpsi_dy = -U + l*0.3*Math.cos(k*x*2 + l*y*2 - om*t);
-        vx = -dpsi_dy * 0.01;
-        vy = dpsi_dx * 0.01;
-      } else if (mode === 'blood') {
-        // Pulsatile carotid flow
-        const phase = (t * simSpeed * 0.8) % (Math.PI*2);
-        const U_pulse = 0.015 * (0.5 + 0.5*Math.sin(phase));
-        const r = Math.abs(x)/0.2;
-        vx = 0;
-        vy = U_pulse * Math.max(0, 1 - r*r);
-        if (y > 0) {
-          // Bifurcation redirect
-          vx = vy * (x > 0 ? 0.3 : -0.2);
-          vy *= 0.7;
+        // ========== GLOBAL SETUP ==========
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x010118);
+        scene.fog = new THREE.FogExp2(0x010118, 0.002);
+        
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(5, 4, 8);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        document.body.appendChild(renderer.domElement);
+        
+        const effectComposer = new EffectComposer(renderer);
+        effectComposer.addPass(new RenderPass(scene, camera));
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.1, 0.3, 0.85);
+        effectComposer.addPass(bloomPass);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.zoomSpeed = 1.2;
+        controls.target.set(0, 0, 0);
+        
+        document.getElementById('reset-cam').addEventListener('click', () => {
+            camera.position.set(5, 4, 8);
+            controls.target.set(0, 0, 0);
+            controls.update();
+        });
+        
+        let fogEnabled = true;
+        document.getElementById('toggle-fog').addEventListener('click', () => {
+            fogEnabled = !fogEnabled;
+            scene.fog = fogEnabled ? new THREE.FogExp2(0x010118, 0.002) : null;
+        });
+        
+        // Lights
+        const ambient = new THREE.AmbientLight(0x111122);
+        scene.add(ambient);
+        const mainLight = new THREE.DirectionalLight(0x88aaff, 1);
+        mainLight.position.set(2, 5, 3);
+        scene.add(mainLight);
+        const fillLight = new THREE.PointLight(0xffaa66, 0.5);
+        fillLight.position.set(-2, 2, 3);
+        scene.add(fillLight);
+        
+        // Grid
+        const grid = new THREE.GridHelper(15, 30, 0x00ccff, 0x3366aa);
+        grid.position.y = -1.2;
+        grid.material.transparent = true;
+        grid.material.opacity = 0.25;
+        scene.add(grid);
+        
+        // ========== PARTICLE SYSTEM BASE ==========
+        let currentParticleSystem = null;
+        let currentAnimationId = null;
+        let simTime = 0;
+        
+        // ========== TAB 1: AIRFOIL (RANS SST k-ω) ==========
+        function initAirfoil() {
+            clearScene();
+            
+            // Airfoil model
+            const airfoilGeo = new THREE.BoxGeometry(2.0, 0.12, 1.0);
+            const airfoilMat = new THREE.MeshStandardMaterial({ color: 0x3366cc, metalness: 0.85, roughness: 0.25 });
+            const airfoil = new THREE.Mesh(airfoilGeo, airfoilMat);
+            airfoil.position.set(-1.0, 0.2, 0);
+            airfoil.rotation.z = 0.15;
+            scene.add(airfoil);
+            
+            // Store for cleanup
+            scene.userData.airfoil = airfoil;
+            
+            const PARTICLE_COUNT = 80000;
+            const positions = new Float32Array(PARTICLE_COUNT * 3);
+            const velocities = new Array(PARTICLE_COUNT);
+            const colors = new Float32Array(PARTICLE_COUNT * 3);
+            
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 8;
+                positions[i*3+1] = (Math.random() - 0.5) * 5 + 0.3;
+                positions[i*3+2] = (Math.random() - 0.5) * 5;
+                velocities[i] = { vx: 0.9 + Math.random()*0.6, vy: (Math.random()-0.5)*0.6, vz: (Math.random()-0.5)*0.6 };
+                colors[i*3] = 0.3 + Math.random()*0.4;
+                colors[i*3+1] = 0.4 + Math.random()*0.5;
+                colors[i*3+2] = 0.7 + Math.random()*0.3;
+            }
+            
+            const geo = new THREE.BufferGeometry();
+            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            const mat = new THREE.PointsMaterial({ size: 0.045, vertexColors: true, blending: THREE.AdditiveBlending });
+            const particleSystem = new THREE.Points(geo, mat);
+            scene.add(particleSystem);
+            
+            scene.userData.particleSystem = particleSystem;
+            scene.userData.velocities = velocities;
+            
+            // Update info
+            document.getElementById('particle-count').innerText = '80,000';
+            document.getElementById('re-val').innerText = '1.00e+7';
+            document.getElementById('key-param').innerHTML = 'k=0.042 | ω=12.7';
+            
+            // Animation function
+            let lastTime = performance.now();
+            function animate() {
+                const now = performance.now();
+                let delta = Math.min(0.033, (now - lastTime) / 1000);
+                lastTime = now;
+                simTime += delta;
+                
+                const posAttr = particleSystem.geometry.attributes.position;
+                const colAttr = particleSystem.geometry.attributes.color;
+                const posArray = posAttr.array;
+                const colArray = colAttr.array;
+                const velArray = scene.userData.velocities;
+                const dt = delta * 0.7;
+                
+                let maxSpeed = 0;
+                
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const ix = i*3, iy = i*3+1, iz = i*3+2;
+                    let px = posArray[ix], py = posArray[iy], pz = posArray[iz];
+                    
+                    let vx = 1.1 + 0.2 * Math.sin(pz * 1.5);
+                    let vy = 0.15 * Math.sin(px * 1.8 + simTime * 2.5);
+                    let vz = 0.3 * Math.sin(py * 2.0 + simTime * 2.0);
+                    
+                    // Airfoil circulation
+                    const foilX = px + 1.0, foilY = py - 0.2;
+                    const dist = Math.hypot(foilX, foilY);
+                    const circ = 0.9 * Math.exp(-dist * 1.3) * Math.atan2(foilY, foilX);
+                    vx += circ * 0.8;
+                    vy += circ * 0.4;
+                    
+                    // SST k-ω turbulence
+                    const turbK = 0.042 + Math.sin(simTime)*0.01;
+                    vx += Math.sin(px*3.5 + simTime*10) * Math.cos(pz*2.5) * 0.1 * turbK;
+                    vy += Math.cos(py*4.0 + simTime*9) * Math.sin(px*3.0) * 0.1 * turbK;
+                    vz += Math.sin(pz*4.2 + simTime*11) * Math.cos(py*3.5) * 0.1 * turbK;
+                    
+                    let newX = px + vx * dt;
+                    let newY = py + vy * dt;
+                    let newZ = pz + vz * dt;
+                    
+                    // Boundary
+                    if (Math.abs(newX) > 5.5) { vx *= -0.8; newX = Math.sign(newX) * 5.4; }
+                    if (Math.abs(newY) > 3.5) { vy *= -0.8; newY = Math.sign(newY) * 3.4; }
+                    if (Math.abs(newZ) > 4.5) { vz *= -0.8; newZ = Math.sign(newZ) * 4.4; }
+                    
+                    // Airfoil collision
+                    if (Math.abs(newX + 1.0) < 1.0 && Math.abs(newY - 0.2) < 0.18 && Math.abs(newZ) < 0.6) {
+                        vy = Math.abs(vy) * 0.6;
+                        newY = 0.35;
+                    }
+                    
+                    posArray[ix] = newX; posArray[iy] = newY; posArray[iz] = newZ;
+                    velArray[i] = { vx, vy, vz };
+                    
+                    const speed = Math.hypot(vx, vy, vz);
+                    maxSpeed = Math.max(maxSpeed, speed);
+                    
+                    colArray[ix] = 0.3 + Math.min(0.7, speed * 0.6);
+                    colArray[iy] = 0.2 + Math.min(0.6, speed * 0.5);
+                    colArray[iz] = 0.5 + Math.min(0.5, (1 - speed * 0.4));
+                }
+                
+                posAttr.needsUpdate = true;
+                colAttr.needsUpdate = true;
+                
+                controls.update();
+                effectComposer.render();
+                requestAnimationFrame(animate);
+            }
+            
+            scene.userData.animation = animate;
+            animate();
         }
-      } else if (mode === 'cavitation') {
-        vx = 0.02 * simSpeed;
-        vy = -0.001 * x * simSpeed;
-      }
-
-      vel[i*3] = vx; vel[i*3+1] = vy;
-      pos[i*3]   += vx;
-      pos[i*3+1] += vy;
-      pos[i*3+2]  = 0;
-    }
-
-    this.mesh.geometry.attributes.position.needsUpdate = true;
-  }
-}
-
-// ── Quads and Scenes ──────────────────────────────────────
-const shaders = {};
-const particles = {};
-let currentQuad = null;
-let currentParticles = null;
-
-const SHADER_MAP = {
-  airfoil: FRAG_AIRFOIL,
-  atmosphere: FRAG_ATMOSPHERE,
-  blood: FRAG_BLOOD,
-  cavitation: FRAG_CAVITATION,
-};
-
-function buildScene(mode) {
-  // Clear
-  while(scene.children.length > 0) scene.remove(scene.children[0]);
-
-  const aspect = window.innerWidth / window.innerHeight;
-  const geo = new THREE.PlaneGeometry(aspect * 2, 2);
-  const mat = new THREE.ShaderMaterial({
-    vertexShader: VERT_PASSTHROUGH,
-    fragmentShader: SHADER_MAP[mode],
-    uniforms: {
-      uTime: {value: 0},
-      uSpeed: {value: simSpeed},
-      uDensity: {value: simDensity},
-      uRes: {value: new THREE.Vector2(window.innerWidth, window.innerHeight)},
-    }
-  });
-
-  const quad = new THREE.Mesh(geo, mat);
-  scene.add(quad);
-  currentQuad = quad;
-
-  // Particles
-  const colors = {
-    airfoil: 0x00c8ff,
-    atmosphere: 0xff4060,
-    blood: 0xff4444,
-    cavitation: 0xffdd88,
-  };
-  const pCount = {airfoil:800, atmosphere:600, blood:500, cavitation:700};
-  const ps = new ParticleSystem(pCount[mode], colors[mode], 0.008);
-  scene.add(ps.mesh);
-  currentParticles = ps;
-}
-
-function updateAllUniforms() {
-  if (!currentQuad) return;
-  const u = currentQuad.material.uniforms;
-  if (u.uRes) u.uRes.value.set(window.innerWidth, window.innerHeight);
-}
-
-// ── UI Updates ────────────────────────────────────────────
-function updatePanel(idx) {
-  const d = EXAMPLES[idx];
-  document.documentElement.style.setProperty('--panel-color', d.color);
-
-  document.getElementById('pt').textContent = d.title;
-  document.getElementById('pname').textContent = d.name;
-  document.getElementById('psub').textContent = d.sub;
-  document.getElementById('peq').textContent = d.eq;
-  document.getElementById('pdesc').textContent = d.desc;
-
-  const statsEl = document.getElementById('pstats');
-  statsEl.innerHTML = d.stats.map(s =>
-    `<div class="stat-box">
-      <div class="stat-label">${s.label}</div>
-      <div class="stat-val">${s.val}</div>
-    </div>`
-  ).join('');
-
-  // HUD
-  document.getElementById('hud-mode').textContent = 'MODE: ' + d.mode.toUpperCase();
-  document.getElementById('hud-re').textContent = 'Re: ' + d.stats[0].val;
-}
-
-// ── Tabs ──────────────────────────────────────────────────
-document.querySelectorAll('.nav-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    const idx = parseInt(tab.dataset.idx);
-    if (idx === currentIdx) return;
-
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    currentIdx = idx;
-
-    activeMode = EXAMPLES[idx].mode;
-    buildScene(activeMode);
-    updatePanel(idx);
-  });
-});
-
-// ── Controls ──────────────────────────────────────────────
-document.getElementById('ctrl-speed').addEventListener('input', e => {
-  simSpeed = parseFloat(e.target.value);
-  document.getElementById('cv-speed').textContent = simSpeed.toFixed(1);
-  if (currentQuad) currentQuad.material.uniforms.uSpeed.value = simSpeed;
-});
-
-document.getElementById('ctrl-density').addEventListener('input', e => {
-  simDensity = parseInt(e.target.value);
-  document.getElementById('cv-density').textContent = simDensity;
-  if (currentQuad) currentQuad.material.uniforms.uDensity.value = simDensity;
-});
-
-// ── Mouse interaction ─────────────────────────────────────
-let mouse = {x:0, y:0};
-document.addEventListener('mousemove', e => {
-  mouse.x = e.clientX / window.innerWidth;
-  mouse.y = 1 - e.clientY / window.innerHeight;
-});
-
-// ── Main Loop ─────────────────────────────────────────────
-let lastT = performance.now();
-
-function animate(now) {
-  requestAnimationFrame(animate);
-
-  const dt = Math.min((now - lastT) * 0.001, 0.05);
-  lastT = now;
-  simTime += dt * simSpeed;
-
-  // FPS
-  frameCount++;
-  if (now - lastTime > 500) {
-    fps = Math.round(frameCount * 1000 / (now - lastTime));
-    frameCount = 0;
-    lastTime = now;
-    document.getElementById('hud-fps').textContent = `FPS: ${fps}`;
-    document.getElementById('hud-t').textContent = `t: ${simTime.toFixed(3)}s`;
-  }
-
-  // Update shader
-  if (currentQuad) {
-    currentQuad.material.uniforms.uTime.value = simTime;
-  }
-
-  // Update particles
-  if (currentParticles) {
-    currentParticles.update(dt, activeMode);
-  }
-
-  // Camera gentle drift
-  camera.position.x = Math.sin(simTime*0.05) * 0.05;
-  camera.position.y = Math.cos(simTime*0.07) * 0.03;
-  camera.lookAt(0,0,0);
-
-  renderer.render(scene, camera);
-}
-
-// ── Boot ─────────────────────────────────────────────────
-initThree();
-buildScene('airfoil');
-updatePanel(0);
-animate(performance.now());
-
-// Hide loader
-setTimeout(() => {
-  const loader = document.getElementById('loader');
-  loader.style.opacity = '0';
-  setTimeout(() => loader.style.display = 'none', 800);
-}, 1200);
-</script>
+        
+        // ========== TAB 2: HEMODYNAMICS (Womersley) ==========
+        function initHemodynamics() {
+            clearScene();
+            
+            // Vessel (torus)
+            const vesselGeo = new THREE.TorusKnotGeometry(1.0, 0.16, 200, 32, 3, 4);
+            const vesselMat = new THREE.MeshStandardMaterial({ color: 0xcc3366, emissive: 0x331122 });
+            const vessel = new THREE.Mesh(vesselGeo, vesselMat);
+            vessel.position.set(0, 0, 0);
+            scene.add(vessel);
+            scene.userData.vessel = vessel;
+            
+            const PARTICLE_COUNT = 60000;
+            const positions = new Float32Array(PARTICLE_COUNT * 3);
+            const velocities = new Array(PARTICLE_COUNT);
+            const colors = new Float32Array(PARTICLE_COUNT * 3);
+            
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 5;
+                positions[i*3+1] = (Math.random() - 0.5) * 4;
+                positions[i*3+2] = (Math.random() - 0.5) * 5;
+                velocities[i] = { vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5, vz: (Math.random()-0.5)*0.5 };
+                colors[i*3] = 0.5 + Math.random()*0.4;
+                colors[i*3+1] = 0.2 + Math.random()*0.3;
+                colors[i*3+2] = 0.4 + Math.random()*0.4;
+            }
+            
+            const geo = new THREE.BufferGeometry();
+            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            const mat = new THREE.PointsMaterial({ size: 0.05, vertexColors: true, blending: THREE.AdditiveBlending });
+            const particleSystem = new THREE.Points(geo, mat);
+            scene.add(particleSystem);
+            
+            scene.userData.particleSystem = particleSystem;
+            scene.userData.velocities = velocities;
+            
+            document.getElementById('particle-count').innerText = '60,000';
+            document.getElementById('re-val').innerText = '1,200';
+            document.getElementById('key-param').innerHTML = 'α = 18.3 | T = 0.8s';
+            
+            let lastTime = performance.now();
+            function animate() {
+                const now = performance.now();
+                let delta = Math.min(0.033, (now - lastTime) / 1000);
+                lastTime = now;
+                simTime += delta;
+                
+                const posAttr = particleSystem.geometry.attributes.position;
+                const colAttr = particleSystem.geometry.attributes.color;
+                const posArray = posAttr.array;
+                const colArray = colAttr.array;
+                const dt = delta * 0.7;
+                
+                const womersleyPulse = 1 + 0.35 * Math.sin(7.85 * simTime);
+                
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const ix = i*3, iy = i*3+1, iz = i*3+2;
+                    let px = posArray[ix], py = posArray[iy], pz = posArray[iz];
+                    
+                    const rad = Math.hypot(px, pz);
+                    const angle = Math.atan2(pz, px);
+                    
+                    let vx = -Math.sin(angle) * 0.8 * womersleyPulse;
+                    let vz = Math.cos(angle) * 0.8 * womersleyPulse;
+                    let vy = Math.sin(angle * 2.5 + simTime * 10) * 0.3;
+                    
+                    if (rad > 1.1) {
+                        vx += (px - Math.sin(angle)*1.0) * 0.2;
+                        vz += (pz - Math.cos(angle)*1.0) * 0.2;
+                    }
+                    
+                    let newX = px + vx * dt;
+                    let newY = py + vy * dt;
+                    let newZ = pz + vz * dt;
+                    
+                    if (Math.hypot(newX, newZ) > 2.5) {
+                        vx *= -0.5; vz *= -0.5;
+                        newX = Math.sign(newX) * 2.4;
+                        newZ = Math.sign(newZ) * 2.4;
+                    }
+                    if (Math.abs(newY) > 2.5) { vy *= -0.7; newY = Math.sign(newY) * 2.4; }
+                    
+                    posArray[ix] = newX; posArray[iy] = newY; posArray[iz] = newZ;
+                    
+                    const speed = Math.hypot(vx, vy, vz);
+                    colArray[ix] = 0.6 + Math.min(0.4, speed);
+                    colArray[iy] = 0.2 + Math.min(0.5, speed * 0.8);
+                    colArray[iz] = 0.3 + Math.min(0.4, speed * 0.6);
+                }
+                
+                posAttr.needsUpdate = true;
+                colAttr.needsUpdate = true;
+                
+                if (scene.userData.vessel) {
+                    scene.userData.vessel.scale.set(womersleyPulse, womersleyPulse, womersleyPulse);
+                }
+                
+                controls.update();
+                effectComposer.render();
+                requestAnimationFrame(animate);
+            }
+            
+            scene.userData.animation = animate;
+            animate();
+        }
+        
+        // ========== TAB 3: ROSSBY WAVE (β-plane) ==========
+        function initRossby() {
+            clearScene();
+            
+            // Rossby wave rings
+            const ring1 = new THREE.Mesh(new THREE.RingGeometry(1.2, 1.8, 64), new THREE.MeshBasicMaterial({ color: 0x33aaff, transparent: true, opacity: 0.4, side: THREE.DoubleSide }));
+            ring1.position.set(0, 0.2, 0);
+            ring1.rotation.x = -Math.PI / 2;
+            scene.add(ring1);
+            
+            const ring2 = new THREE.Mesh(new THREE.RingGeometry(2.0, 2.6, 64), new THREE.MeshBasicMaterial({ color: 0x88ddff, transparent: true, opacity: 0.25, side: THREE.DoubleSide }));
+            ring2.position.set(0, 0.2, 0);
+            ring2.rotation.x = -Math.PI / 2;
+            scene.add(ring2);
+            
+            scene.userData.rings = [ring1, ring2];
+            
+            const PARTICLE_COUNT = 70000;
+            const positions = new Float32Array(PARTICLE_COUNT * 3);
+            const velocities = new Array(PARTICLE_COUNT);
+            const colors = new Float32Array(PARTICLE_COUNT * 3);
+            
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 7;
+                positions[i*3+1] = (Math.random() - 0.5) * 4;
+                positions[i*3+2] = (Math.random() - 0.5) * 7;
+                velocities[i] = { vx: (Math.random()-0.5)*0.6, vy: (Math.random()-0.5)*0.4, vz: (Math.random()-0.5)*0.6 };
+                colors[i*3] = 0.3 + Math.random()*0.3;
+                colors[i*3+1] = 0.5 + Math.random()*0.4;
+                colors[i*3+2] = 0.7 + Math.random()*0.3;
+            }
+            
+            const geo = new THREE.BufferGeometry();
+            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            const mat = new THREE.PointsMaterial({ size: 0.048, vertexColors: true, blending: THREE.AdditiveBlending });
+            const particleSystem = new THREE.Points(geo, mat);
+            scene.add(particleSystem);
+            
+            scene.userData.particleSystem = particleSystem;
+            scene.userData.velocities = velocities;
+            
+            document.getElementById('particle-count').innerText = '70,000';
+            document.getElementById('re-val').innerText = '1.2e+12';
+            document.getElementById('key-param').innerHTML = 'Ro = 0.08 | β = 1.6e-11';
+            
+            let lastTime = performance.now();
+            function animate() {
+                const now = performance.now();
+                let delta = Math.min(0.033, (now - lastTime) / 1000);
+                lastTime = now;
+                simTime += delta;
+                
+                const posAttr = particleSystem.geometry.attributes.position;
+                const colAttr = particleSystem.geometry.attributes.color;
+                const posArray = posAttr.array;
+                const colArray = colAttr.array;
+                const dt = delta * 0.65;
+                
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const ix = i*3, iy = i*3+1, iz = i*3+2;
+                    let px = posArray[ix], py = posArray[iy], pz = posArray[iz];
+                    
+                    // Rossby wave velocity field
+                    const k = 1.2, l = 0.9;
+                    const beta = 1.6e-11;
+                    const rossbyForceX = beta * 100 * Math.sin(k * px + l * pz - simTime * 1.2);
+                    const rossbyForceZ = beta * 100 * Math.cos(k * pz - l * px - simTime * 1.0);
+                    
+                    let vx = 0.3 + rossbyForceX;
+                    let vz = 0.2 + rossbyForceZ;
+                    let vy = 0.1 * Math.sin(px * 1.5 + simTime * 2.0);
+                    
+                    let newX = px + vx * dt;
+                    let newY = py + vy * dt;
+                    let newZ = pz + vz * dt;
+                    
+                    if (Math.abs(newX) > 5.5) { vx *= -0.9; newX = Math.sign(newX) * 5.4; }
+                    if (Math.abs(newY) > 3.5) { vy *= -0.9; newY = Math.sign(newY) * 3.4; }
+                    if (Math.abs(newZ) > 5.5) { vz *= -0.9; newZ = Math.sign(newZ) * 5.4; }
+                    
+                    posArray[ix] = newX; posArray[iy] = newY; posArray[iz] = newZ;
+                    
+                    const speed = Math.hypot(vx, vy, vz);
+                    colArray[ix] = 0.2 + Math.min(0.5, speed * 0.5);
+                    colArray[iy] = 0.4 + Math.min(0.5, Math.abs(rossbyForceX) * 2);
+                    colArray[iz] = 0.6 + Math.min(0.4, speed * 0.4);
+                }
+                
+                posAttr.needsUpdate = true;
+                colAttr.needsUpdate = true;
+                
+                if (scene.userData.rings) {
+                    scene.userData.rings.forEach((ring, idx) => {
+                        ring.rotation.z += 0.003 * (idx + 1);
+                    });
+                }
+                
+                controls.update();
+                effectComposer.render();
+                requestAnimationFrame(animate);
+            }
+            
+            scene.userData.animation = animate;
+            animate();
+        }
+        
+        // ========== TAB 4: NON-NEWTONIAN (Carreau-Yasuda) ==========
+        function initNonNewtonian() {
+            clearScene();
+            
+            // Decorative sphere (representing viscosity field)
+            const coreSphere = new THREE.Mesh(new THREE.SphereGeometry(0.6, 32, 32), new THREE.MeshStandardMaterial({ color: 0xff44aa, emissive: 0x331133, emissiveIntensity: 0.5 }));
+            coreSphere.position.set(0, 0, 0);
+            scene.add(coreSphere);
+            scene.userData.coreSphere = coreSphere;
+            
+            const PARTICLE_COUNT = 75000;
+            const positions = new Float32Array(PARTICLE_COUNT * 3);
+            const velocities = new Array(PARTICLE_COUNT);
+            const colors = new Float32Array(PARTICLE_COUNT * 3);
+            const shearRates = new Float32Array(PARTICLE_COUNT);
+            
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                positions[i*3] = (Math.random() - 0.5) * 6;
+                positions[i*3+1] = (Math.random() - 0.5) * 5;
+                positions[i*3+2] = (Math.random() - 0.5) * 6;
+                velocities[i] = { vx: (Math.random()-0.5)*0.8, vy: (Math.random()-0.5)*0.6, vz: (Math.random()-0.5)*0.8 };
+                colors[i*3] = 0.4 + Math.random()*0.5;
+                colors[i*3+1] = 0.2 + Math.random()*0.4;
+                colors[i*3+2] = 0.6 + Math.random()*0.4;
+                shearRates[i] = 0;
+            }
+            
+            const geo = new THREE.BufferGeometry();
+            geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            const mat = new THREE.PointsMaterial({ size: 0.052, vertexColors: true, blending: THREE.AdditiveBlending });
+            const particleSystem = new THREE.Points(geo, mat);
+            scene.add(particleSystem);
+            
+            scene.userData.particleSystem = particleSystem;
+            scene.userData.velocities = velocities;
+            scene.userData.shearRates = shearRates;
+            
+            document.getElementById('particle-count').innerText = '75,000';
+            document.getElementById('re-val').innerHTML = '0.01 ~ 1,000';
+            document.getElementById('key-param').innerHTML = 'μ₀=0.016 | μ∞=0.0035 | n=0.2128';
+            
+            function carreauYasuda(gammaDot) {
+                const mu0 = 0.016, muInf = 0.0035, lam = 0.110, a = 0.644, n = 0.2128;
+                return muInf + (mu0 - muInf) * Math.pow(1 + Math.pow(lam * gammaDot, a), (n - 1) / a);
+            }
+            
+            let lastTime = performance.now();
+            function animate() {
+                const now = performance.now();
+                let delta = Math.min(0.033, (now - lastTime) / 1000);
+                lastTime = now;
+                simTime += delta;
+                
+                const posAttr = particleSystem.geometry.attributes.position;
+                const colAttr = particleSystem.geometry.attributes.color;
+                const posArray = posAttr.array;
+                const colArray = colAttr.array;
+                const velArray = scene.userData.velocities;
+                const shearArray = scene.userData.shearRates;
+                const dt = delta * 0.7;
+                
+                for (let i = 0; i < PARTICLE_COUNT; i++) {
+                    const ix = i*3, iy = i*3+1, iz = i*3+2;
+                    let px = posArray[ix], py = posArray[iy], pz = posArray[iz];
+                    
+                    // Rotational flow field
+                    const angle = Math.atan2(pz, px);
+                    const rad = Math.hypot(px, pz);
+                    let vx = -Math.sin(angle) * 0.7;
+                    let vz = Math.cos(angle) * 0.7;
+                    let vy = 0.2 * Math.sin(angle * 3 + simTime * 5);
+                    
+                    // Shear rate calculation
+                    const localShear = Math.abs(vx) + Math.abs(vz) + Math.abs(vy);
+                    shearArray[i] = localShear;
+                    const mu = carreauYasuda(localShear);
+                    const damping = Math.min(1.0, 0.0035 / Math.max(0.002, mu));
+                    
+                    vx *= damping;
+                    vy *= damping;
+                    vz *= damping;
+                    
+                    let newX = px + vx * dt;
+                    let newY = py + vy * dt;
+                    let newZ = pz + vz * dt;
+                    
+                    if (Math.hypot(newX, newZ) > 4.0) {
+                        vx *= -0.7; vz *= -0.7;
+                        newX = Math.sign(newX) * 3.9;
+                        newZ = Math.sign(newZ) * 3.9;
+                    }
+                    if (Math.abs(newY) > 3.0) { vy *= -0.8; newY = Math.sign(newY) * 2.9; }
+                    
+                    posArray[ix] = newX; posArray[iy] = newY; posArray[iz] = newZ;
+                    velArray[i] = { vx, vy, vz };
+                    
+                    // Color based on viscosity (higher viscosity = redder)
+                    const muNorm = Math.min(1, (mu - 0.0035) / 0.0125);
+                    colArray[ix] = 0.3 + muNorm * 0.7;
+                    colArray[iy] = 0.2 + muNorm * 0.3;
+                    colArray[iz] = 0.5 + (1 - muNorm) * 0.5;
+                }
+                
+                posAttr.needsUpdate = true;
+                colAttr.needsUpdate = true;
+                
+                if (scene.userData.coreSphere) {
+                    const avgShear = shearArray.reduce((a,b) => a + b, 0) / PARTICLE_COUNT;
+                    const intensity = 0.3 + Math.min(0.7, avgShear * 2);
+                    scene.userData.coreSphere.material.emissiveIntensity = intensity;
+                }
+                
+                controls.update();
+                effectComposer.render();
+                requestAnimationFrame(animate);
+            }
+            
+            scene.userData.animation = animate;
+            animate();
+        }
+        
+        // ========== UTILITIES ==========
+        function clearScene() {
+            // Stop current animation
+            if (scene.userData.animation) {
+                // No easy way to cancel RAF, but new animation will override
+            }
+            
+            // Remove particle system
+            if (scene.userData.particleSystem) {
+                scene.remove(scene.userData.particleSystem);
+                if (scene.userData.particleSystem.geometry) scene.userData.particleSystem.geometry.dispose();
+                if (scene.userData.particleSystem.material) scene.userData.particleSystem.material.dispose();
+            }
+            
+            // Remove airfoil if exists
+            if (scene.userData.airfoil) scene.remove(scene.userData.airfoil);
+            if (scene.userData.vessel) scene.remove(scene.userData.vessel);
+            if (scene.userData.rings) scene.userData.rings.forEach(r => scene.remove(r));
+            if (scene.userData.coreSphere) scene.remove(scene.userData.coreSphere);
+            
+            // Reset camera for each mode
+            camera.position.set(5, 4, 8);
+            controls.target.set(0, 0, 0);
+            controls.update();
+            
+            simTime = 0;
+        }
+        
+        // FPS Counter
+        let fpsFrameCount = 0;
+        let fpsLastTime = performance.now();
+        function updateFPS() {
+            fpsFrameCount++;
+            const now = performance.now();
+            if (now - fpsLastTime >= 1000) {
+                const fps = Math.round((fpsFrameCount * 1000) / (now - fpsLastTime));
+                document.getElementById('fps-val').innerText = fps;
+                fpsFrameCount = 0;
+                fpsLastTime = now;
+            }
+            requestAnimationFrame(updateFPS);
+        }
+        updateFPS();
+        
+        // Tab switching
+        const tabs = {
+            airfoil: initAirfoil,
+            hemo: initHemodynamics,
+            rossby: initRossby,
+            nonnewton: initNonNewtonian
+        };
+        
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab;
+                if (tabs[tabId]) tabs[tabId]();
+            });
+        });
+        
+        // Start with airfoil
+        initAirfoil();
+    </script>
 </body>
 </html>
