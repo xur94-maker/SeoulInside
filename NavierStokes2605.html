@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navier–Stokes | Blow-Up Challenge</title>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-3.0.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #04060f;
+  --bg2: #080d1a;
+  --panel: #0b1022;
+  --border: #1a2540;
+  --accent: #00d4ff;
+  --accent2: #ff3d6e;
+  --accent3: #7fff6e;
+  --warn: #ffaa00;
+  --text: #c8d8f0;
+  --muted: #4a5a7a;
+  --font-mono: 'Space Mono', monospace;
+  --font-display: 'Syne', sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+  position: relative;
+  padding: 48px 40px 32px;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(0,212,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.header-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.header h1 span { color: var(--accent2); }
+
+.header-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+.prize-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,170,0,0.1);
+  border: 1px solid rgba(255,170,0,0.3);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  color: var(--warn);
+  letter-spacing: 0.1em;
+  margin-top: 16px;
+}
+
+/* ── EQUATION BAR ── */
+.eq-bar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.eq-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.eq-formula {
+  font-size: 1rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ── MAIN LAYOUT ── */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  grid-template-rows: auto auto;
+  gap: 0;
+  height: calc(100vh - 220px);
+  min-height: 600px;
+}
+
+/* ── 3D VIEWPORT ── */
+.viewport {
+  position: relative;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+
+#three-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.viewport-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(4,6,15,0.85);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(8px);
+}
+
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent3);
+  box-shadow: 0 0 6px var(--accent3);
+  animation: pulse 2s infinite;
+}
+
+.status-dot.warn { background: var(--warn); box-shadow: 0 0 6px var(--warn); }
+.status-dot.danger { background: var(--accent2); box-shadow: 0 0 10px var(--accent2); animation: pulse-fast 0.5s infinite; }
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+@keyframes pulse-fast { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.energy-display {
+  text-align: right;
+  background: rgba(4,6,15,0.85);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 14px;
+  backdrop-filter: blur(8px);
+}
+
+.energy-label {
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.energy-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent3);
+  font-family: var(--font-display);
+  transition: color 0.3s;
+}
+
+.energy-value.warn { color: var(--warn); }
+.energy-value.danger { color: var(--accent2); }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-section {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* Controls */
+.control-row {
+  margin-bottom: 18px;
+}
+
+.control-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+}
+
+.control-name { color: var(--text); }
+.control-value {
+  color: var(--accent);
+  font-weight: 700;
+  min-width: 60px;
+  text-align: right;
+}
+
+input[type=range] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+input[type=range].danger::-webkit-slider-thumb {
+  background: var(--accent2);
+  box-shadow: 0 0 8px var(--accent2);
+}
+
+/* Buttons */
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary {
+  background: rgba(0,212,255,0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn.primary:hover { background: rgba(0,212,255,0.2); }
+.btn.danger-btn {
+  background: rgba(255,61,110,0.1);
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+.btn.danger-btn:hover { background: rgba(255,61,110,0.2); }
+
+/* Metrics */
+.metric-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.metric-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.metric-card-label {
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.metric-card-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display);
+}
+
+/* Presets */
+.preset-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.preset-btn {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg2);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  letter-spacing: 0.05em;
+}
+
+.preset-btn:hover { border-color: var(--accent); color: var(--accent); }
+.preset-btn .preset-name { font-weight: 700; display: block; margin-bottom: 2px; }
+.preset-btn .preset-desc { color: var(--muted); font-size: 0.6rem; }
+
+/* Leaderboard */
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  font-size: 0.7rem;
+}
+
+.lb-rank { color: var(--muted); min-width: 20px; }
+.lb-score { color: var(--accent2); font-weight: 700; margin-left: auto; }
+.lb-params { color: var(--muted); font-size: 0.6rem; }
+
+/* ── BOTTOM PANEL ── */
+.bottom-panel {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+  height: 220px;
+}
+
+.plot-panel {
+  padding: 4px;
+  border-right: 1px solid var(--border);
+}
+
+.info-panel {
+  padding: 20px 24px;
+  overflow-y: auto;
+}
+
+.info-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.info-text {
+  font-size: 0.72rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.info-text strong { color: var(--text); }
+
+/* ── BLOWUP ALERT ── */
+.blowup-alert {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(4,6,15,0.92);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px;
+}
+
+.blowup-alert.show { display: flex; }
+
+.blowup-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 800;
+  color: var(--accent2);
+  margin-bottom: 16px;
+  text-shadow: 0 0 40px rgba(255,61,110,0.5);
+  animation: flicker 0.1s infinite;
+}
+
+@keyframes flicker {
+  0%,100%{opacity:1} 50%{opacity:0.9}
+}
+
+.blowup-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.blowup-score {
+  font-size: 1.4rem;
+  color: var(--warn);
+  font-weight: 700;
+  margin: 16px 0;
+}
+
+.blowup-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .main { grid-template-columns: 1fr; grid-template-rows: 400px auto auto; }
+  .viewport { border-right: none; border-bottom: 1px solid var(--border); }
+  .bottom-panel { grid-template-columns: 1fr; height: auto; }
+  .plot-panel { height: 200px; border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-label">Millennium Prize Problem #3 · Clay Mathematics Institute</div>
+  <h1>Navier–Stokes<br><span>Blow-Up Challenge</span></h1>
+  <div class="header-sub">
+    Can you make the fluid <em>explode</em>? Push viscosity toward zero, tune the initial vortex,
+    and watch energy density climb. If a finite-time singularity exists — you'll find it here first.
+  </div>
+  <div class="prize-badge">⬡ $1,000,000 UNCLAIMED · 121 YEARS UNSOLVED</div>
+</div>
+
+<!-- EQUATION BAR -->
+<div class="eq-bar">
+  <div class="eq-label">The Equation</div>
+  <div class="eq-formula" id="ns-eq">
+    \(\partial_t \mathbf{u} + (\mathbf{u}\cdot\nabla)\mathbf{u} = -\nabla p + \nu\,\Delta\mathbf{u},\quad \nabla\cdot\mathbf{u}=0\)
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- 3D VIEWPORT -->
+  <div class="viewport">
+    <canvas id="three-canvas"></canvas>
+    <div class="viewport-overlay">
+      <div class="status-pill">
+        <div class="status-dot" id="status-dot"></div>
+        <span id="status-text">STABLE FLOW</span>
+      </div>
+      <div class="energy-display">
+        <div class="energy-label">‖u‖ Energy Norm</div>
+        <div class="energy-value" id="energy-display">1.000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <!-- CONTROLS -->
+    <div class="sidebar-section">
+      <div class="section-title">Flow Parameters</div>
+
+      <div class="control-row">
+        <div class="control-label">
+          <span class="control-name">Viscosity ν</span>
+          <span class="control-value" id="visc-val">0.100</span>
+        </div>
+        <input type="range" id="visc" min="0.001" max="0.5" step="0.001" value="0.1">
+      </div>
+
+      <div class="control-row">
+        <div class="control-label">
+          <span class="control-name">Vortex Amplitude A</span>
+          <span class="control-value" id="amp-val">1.0</span>
+        </div>
+        <input type="range" id="amp" min="0.1" max="5.0" step="0.1" value="1.0">
+      </div>
+
+      <div class="control-row">
+        <div class="control-label">
+          <span class="control-name">Wavenumber k</span>
+          <span class="control-value" id="wave-val">2</span>
+        </div>
+        <input type="range" id="wave" min="1" max="8" step="1" value="2">
+      </div>
+
+      <div class="control-row">
+        <div class="control-label">
+          <span class="control-name">Rotation Ω</span>
+          <span class="control-value" id="rot-val">0.0</span>
+        </div>
+        <input type="range" id="rot" min="0" max="5" step="0.1" value="0">
+      </div>
+
+      <div class="btn-row">
+        <button class="btn primary" onclick="resetSim()">RESET</button>
+        <button class="btn" onclick="togglePause()">PAUSE</button>
+        <button class="btn danger-btn" onclick="extremeMode()">EXTREME</button>
+      </div>
+    </div>
+
+    <!-- PRESETS -->
+    <div class="sidebar-section">
+      <div class="section-title">Initial Conditions</div>
+      <div class="preset-grid">
+        <button class="preset-btn" onclick="setPreset('lamb')">
+          <span class="preset-name">Lamb–Oseen</span>
+          <span class="preset-desc">Classical vortex decay</span>
+        </button>
+        <button class="preset-btn" onclick="setPreset('taylor')">
+          <span class="preset-name">Taylor–Green</span>
+          <span class="preset-desc">Known smooth solution</span>
+        </button>
+        <button class="preset-btn" onclick="setPreset('leray')">
+          <span class="preset-name">Leray 1934</span>
+          <span class="preset-desc">Weak solution regime</span>
+        </button>
+        <button class="preset-btn" onclick="setPreset('tao')">
+          <span class="preset-name">Tao Averaged</span>
+          <span class="preset-desc">2016 blow-up analog</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- METRICS -->
+    <div class="sidebar-section">
+      <div class="section-title">Live Diagnostics</div>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-card-label">Time t</div>
+          <div class="metric-card-value" id="m-time">0.000</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Re = 1/ν</div>
+          <div class="metric-card-value" id="m-re">10.0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Max |ω|</div>
+          <div class="metric-card-value" id="m-vort">0.000</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Enstrophy</div>
+          <div class="metric-card-value" id="m-enst">0.000</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">dE/dt</div>
+          <div class="metric-card-value" id="m-dedt">0.000</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Blow-Up Risk</div>
+          <div class="metric-card-value" id="m-risk">LOW</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEADERBOARD -->
+    <div class="sidebar-section">
+      <div class="section-title">Closest to Blow-Up</div>
+      <div id="leaderboard">
+        <div class="leaderboard-row">
+          <span class="lb-rank">#1</span>
+          <span>—</span>
+          <span class="lb-score">—</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- BOTTOM PANEL -->
+  <div class="bottom-panel">
+    <div class="plot-panel">
+      <div id="energy-plot" style="width:100%;height:100%;"></div>
+    </div>
+    <div class="info-panel">
+      <div class="info-title" id="info-title">What is Blow-Up?</div>
+      <div class="info-text" id="info-body">
+        The Navier–Stokes Millennium Problem asks: given smooth initial conditions,
+        does the velocity field <strong>u(x,t)</strong> remain smooth for all time?
+        A <strong>blow-up</strong> means the energy norm ‖u‖ → ∞ in finite time T*.
+        <br><br>
+        In 3D, nobody knows if this can happen. Lower ν (viscosity) → higher Reynolds number →
+        turbulence → the boundary of what mathematics can currently guarantee.
+        <strong>Your mission: push the system as close to singularity as possible.</strong>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- BLOW-UP ALERT -->
+<div class="blowup-alert" id="blowup-alert">
+  <div class="blowup-title">⚡ SINGULARITY DETECTED</div>
+  <div class="blowup-sub">
+    Energy norm has exceeded the regularity threshold.<br>
+    This is what a blow-up <em>looks like</em> — if one exists.
+  </div>
+  <div class="blowup-score" id="blowup-score">Peak ‖u‖: —</div>
+  <div class="blowup-note">
+    Note: This is a numerical simulation. Real blow-up in 3D Navier–Stokes
+    has never been observed or proven. The Clay Institute prize remains unclaimed.
+    Persi Diaconis once called this "the most important open problem in mathematics."
+  </div>
+  <div class="btn-row" style="justify-content:center;gap:16px;">
+    <button class="btn primary" onclick="recordAndReset()" style="flex:0;padding:10px 24px;">RECORD SCORE</button>
+    <button class="btn" onclick="closeAlert()" style="flex:0;padding:10px 24px;">CONTINUE</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════
+let paused = false;
+let simTime = 0;
+let energyHistory = [];
+let timeHistory = [];
+let leaderboard = [];
+let currentPeak = 1.0;
+let frameCount = 0;
+
+let params = { visc: 0.1, amp: 1.0, wave: 2, rot: 0.0 };
+
+// ═══════════════════════════════════════════════════════════
+// THREE.JS SETUP
+// ═══════════════════════════════════════════════════════════
+const canvas = document.getElementById('three-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, 1, 0.01, 100);
+camera.position.set(0, 0, 4);
+
+// Resize
+function resizeRenderer() {
+  const vp = canvas.parentElement;
+  const w = vp.clientWidth, h = vp.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+resizeRenderer();
+window.addEventListener('resize', resizeRenderer);
+
+// Lighting
+scene.add(new THREE.AmbientLight(0x0a0a1a, 1));
+const dLight = new THREE.DirectionalLight(0x00d4ff, 0.8);
+dLight.position.set(2, 3, 2);
+scene.add(dLight);
+const dLight2 = new THREE.DirectionalLight(0xff3d6e, 0.4);
+dLight2.position.set(-2, -1, 1);
+scene.add(dLight2);
+
+// ── PARTICLE SYSTEM ──
+const N_PARTICLES = 3000;
+const positions = new Float32Array(N_PARTICLES * 3);
+const velocities = new Float32Array(N_PARTICLES * 3);
+const colors = new Float32Array(N_PARTICLES * 3);
+const sizes = new Float32Array(N_PARTICLES);
+const initPos = new Float32Array(N_PARTICLES * 3);
+
+function initParticles() {
+  for (let i = 0; i < N_PARTICLES; i++) {
+    const x = (Math.random() - 0.5) * 4;
+    const y = (Math.random() - 0.5) * 4;
+    const z = (Math.random() - 0.5) * 4;
+    positions[i*3]   = initPos[i*3]   = x;
+    positions[i*3+1] = initPos[i*3+1] = y;
+    positions[i*3+2] = initPos[i*3+2] = z;
+    velocities[i*3] = velocities[i*3+1] = velocities[i*3+2] = 0;
+    colors[i*3] = 0; colors[i*3+1] = 0.83; colors[i*3+2] = 1;
+    sizes[i] = 2 + Math.random() * 3;
+  }
+}
+initParticles();
+
+const geo = new THREE.BufferGeometry();
+geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+const mat = new THREE.ShaderMaterial({
+  vertexShader: `
+    attribute float size;
+    attribute vec3 color;
+    varying vec3 vColor;
+    varying float vAlpha;
+    void main() {
+      vColor = color;
+      vec4 mvPos = modelViewMatrix * vec4(position, 1.0);
+      gl_PointSize = size * (300.0 / -mvPos.z);
+      gl_Position = projectionMatrix * mvPos;
+      vAlpha = 0.6 + 0.4 * (1.0 - length(position) / 4.0);
+    }
+  `,
+  fragmentShader: `
+    varying vec3 vColor;
+    varying float vAlpha;
+    void main() {
+      float d = length(gl_PointCoord - 0.5) * 2.0;
+      if (d > 1.0) discard;
+      float a = (1.0 - d * d) * vAlpha;
+      gl_FragColor = vec4(vColor, a);
+    }
+  `,
+  transparent: true,
+  depthWrite: false,
+  blending: THREE.AdditiveBlending,
+  vertexColors: true,
+});
+
+const particles = new THREE.Points(geo, mat);
+scene.add(particles);
+
+// ── VORTEX LINES ──
+const vortexGroup = new THREE.Group();
+scene.add(vortexGroup);
+
+function makeVortexRing(radius, y, color, segments=64) {
+  const pts = [];
+  for (let i = 0; i <= segments; i++) {
+    const a = (i / segments) * Math.PI * 2;
+    pts.push(new THREE.Vector3(Math.cos(a)*radius, y, Math.sin(a)*radius));
+  }
+  const curve = new THREE.CatmullRomCurve3(pts, true);
+  const g = new THREE.TubeGeometry(curve, segments, 0.015, 6, true);
+  const m = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.5 });
+  return new THREE.Mesh(g, m);
+}
+
+function rebuildVortex() {
+  while (vortexGroup.children.length) vortexGroup.remove(vortexGroup.children[0]);
+  const k = params.wave;
+  for (let i = 0; i < k; i++) {
+    const y = ((i / k) - 0.5) * 3;
+    const r = 0.8 + params.amp * 0.2;
+    const col = i % 2 === 0 ? 0x00d4ff : 0xff3d6e;
+    vortexGroup.add(makeVortexRing(r, y, col));
+  }
+}
+rebuildVortex();
+
+// ── VELOCITY FIELD FUNCTION ──
+function velocity(x, y, z, t) {
+  const k = params.wave;
+  const A = params.amp;
+  const nu = params.visc;
+  const decay = Math.exp(-nu * k * k * t);
+  const Omega = params.rot;
+
+  // Taylor–Green style + rotation
+  const ux = A * decay * Math.sin(k*x) * Math.cos(k*y) * Math.cos(k*z)
+            + Omega * (-y);
+  const uy = -A * decay * Math.cos(k*x) * Math.sin(k*y) * Math.cos(k*z)
+            + Omega * x;
+  const uz = A * 0.3 * decay * Math.sin(k*z) * Math.cos(k*x);
+  return [ux, uy, uz];
+}
+
+// ── ENERGY NORM COMPUTATION ──
+function computeEnergy(t) {
+  const k = params.wave;
+  const A = params.amp;
+  const nu = params.visc;
+  const decay = Math.exp(-nu * k * k * t);
+  const baseE = A * A * decay * decay;
+
+  // Nonlinear amplification when viscosity is very low
+  const Re = 1.0 / Math.max(nu, 0.001);
+  const nonlinear = 1.0 + 0.001 * Re * params.rot * simTime * 0.1;
+  const enstrophyGrowth = 1.0 + 0.0005 * Re * k * k * simTime;
+
+  return baseE * nonlinear * Math.min(enstrophyGrowth, 50);
+}
+
+function computeVorticity(t) {
+  const k = params.wave;
+  const A = params.amp;
+  const nu = params.visc;
+  const decay = Math.exp(-nu * k * k * t);
+  const Re = 1.0 / Math.max(nu, 0.001);
+  return A * k * decay * (1 + 0.002 * Re * simTime * params.amp);
+}
+
+function computeEnstrophy(t) {
+  const vort = computeVorticity(t);
+  return vort * vort * 0.5;
+}
+
+// ═══════════════════════════════════════════════════════════
+// PLOTLY ENERGY GRAPH
+// ═══════════════════════════════════════════════════════════
+Plotly.newPlot('energy-plot', [{
+  x: [], y: [],
+  mode: 'lines',
+  line: { color: '#00d4ff', width: 2 },
+  name: '‖u‖',
+  fill: 'tozeroy',
+  fillcolor: 'rgba(0,212,255,0.05)'
+}, {
+  x: [], y: [],
+  mode: 'lines',
+  line: { color: '#ff3d6e', width: 1.5, dash: 'dot' },
+  name: 'Enstrophy',
+}], {
+  margin: { t: 8, r: 10, b: 30, l: 50 },
+  paper_bgcolor: 'transparent',
+  plot_bgcolor: 'transparent',
+  font: { color: '#4a5a7a', family: 'Space Mono', size: 9 },
+  xaxis: { title: 'time t', color: '#4a5a7a', gridcolor: '#1a2540', zerolinecolor: '#1a2540' },
+  yaxis: { title: '‖u‖', color: '#4a5a7a', gridcolor: '#1a2540', zerolinecolor: '#1a2540' },
+  legend: { font: { size: 9 }, bgcolor: 'transparent' },
+  showlegend: true,
+}, { responsive: true, displayModeBar: false });
+
+// ═══════════════════════════════════════════════════════════
+// ANIMATION LOOP
+// ═══════════════════════════════════════════════════════════
+const clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  const delta = Math.min(clock.getDelta(), 0.05);
+  if (!paused) {
+    simTime += delta * 0.3;
+    frameCount++;
+
+    // Update particles
+    for (let i = 0; i < N_PARTICLES; i++) {
+      const x = positions[i*3], y = positions[i*3+1], z = positions[i*3+2];
+      const [ux, uy, uz] = velocity(x, y, z, simTime);
+
+      positions[i*3]   += ux * delta * 0.4;
+      positions[i*3+1] += uy * delta * 0.4;
+      positions[i*3+2] += uz * delta * 0.4;
+
+      // Wrap
+      for (let d = 0; d < 3; d++) {
+        if (positions[i*3+d] > 2.5) positions[i*3+d] -= 5;
+        if (positions[i*3+d] < -2.5) positions[i*3+d] += 5;
+      }
+
+      // Color by speed
+      const spd = Math.sqrt(ux*ux + uy*uy + uz*uz);
+      const energy = computeEnergy(simTime);
+      const t = Math.min(spd / (params.amp * 2 + 0.01), 1);
+      const risk = Math.min(energy / 10, 1);
+
+      colors[i*3]   = t * 0.8 + risk * 0.8;
+      colors[i*3+1] = (1-t) * 0.83 * (1-risk*0.5);
+      colors[i*3+2] = (1-t) * 1.0 * (1-risk*0.8);
+      sizes[i] = (2 + t * 4) * (1 + risk * 0.5);
+    }
+
+    geo.attributes.position.needsUpdate = true;
+    geo.attributes.color.needsUpdate = true;
+    geo.attributes.size.needsUpdate = true;
+
+    // Rotate vortex lines
+    vortexGroup.rotation.y = simTime * 0.2 * (1 + params.rot * 0.3);
+    vortexGroup.rotation.x = simTime * 0.05;
+
+    // Slow camera orbit
+    camera.position.x = Math.sin(simTime * 0.1) * 4;
+    camera.position.z = Math.cos(simTime * 0.1) * 4;
+    camera.position.y = Math.sin(simTime * 0.07) * 1.5;
+    camera.lookAt(0, 0, 0);
+
+    // Compute diagnostics
+    const energy = computeEnergy(simTime);
+    const vort = computeVorticity(simTime);
+    const enst = computeEnstrophy(simTime);
+    const Re = 1.0 / Math.max(params.visc, 0.001);
+
+    if (energy > currentPeak) currentPeak = energy;
+
+    // Update plot (every 5 frames)
+    if (frameCount % 5 === 0) {
+      timeHistory.push(simTime);
+      energyHistory.push(energy);
+      const enstH = enst;
+
+      if (timeHistory.length > 300) {
+        timeHistory.shift(); energyHistory.shift();
+      }
+
+      Plotly.extendTraces('energy-plot', {
+        x: [[simTime], [simTime]],
+        y: [[energy], [enst * 0.1]]
+      }, [0, 1]);
+
+      if (timeHistory.length > 250) {
+        Plotly.relayout('energy-plot', {
+          'xaxis.range': [timeHistory[0], timeHistory[timeHistory.length-1]]
+        });
+      }
+    }
+
+    // Update UI
+    const risk = getRisk(energy, Re);
+    updateUI(energy, vort, enst, Re, risk);
+
+    // Blow-up detection
+    if (energy > 15 && !document.getElementById('blowup-alert').classList.contains('show')) {
+      triggerBlowUp(energy);
+    }
+  }
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+// ═══════════════════════════════════════════════════════════
+// UI UPDATES
+// ═══════════════════════════════════════════════════════════
+function getRisk(energy, Re) {
+  if (energy > 10) return 'CRITICAL';
+  if (energy > 5) return 'HIGH';
+  if (energy > 2) return 'MODERATE';
+  return 'LOW';
+}
+
+function updateUI(energy, vort, enst, Re, risk) {
+  // Energy display
+  const ed = document.getElementById('energy-display');
+  ed.textContent = energy.toFixed(3);
+  ed.className = 'energy-value' + (risk === 'CRITICAL' ? ' danger' : risk === 'HIGH' ? ' warn' : '');
+
+  // Status
+  const dot = document.getElementById('status-dot');
+  const st = document.getElementById('status-text');
+  if (risk === 'CRITICAL') {
+    dot.className = 'status-dot danger';
+    st.textContent = 'CRITICAL — NEAR SINGULARITY';
+  } else if (risk === 'HIGH') {
+    dot.className = 'status-dot warn';
+    st.textContent = 'HIGH TURBULENCE';
+  } else {
+    dot.className = 'status-dot';
+    st.textContent = 'STABLE FLOW';
+  }
+
+  // Metrics
+  document.getElementById('m-time').textContent = simTime.toFixed(3);
+  document.getElementById('m-re').textContent = Re.toFixed(1);
+  document.getElementById('m-vort').textContent = vort.toFixed(3);
+  document.getElementById('m-enst').textContent = enst.toFixed(3);
+
+  const dedt = energyHistory.length > 2
+    ? (energyHistory[energyHistory.length-1] - energyHistory[energyHistory.length-2]) / 0.05
+    : 0;
+  document.getElementById('m-dedt').textContent = dedt.toFixed(3);
+  document.getElementById('m-risk').textContent = risk;
+  document.getElementById('m-risk').style.color =
+    risk === 'CRITICAL' ? 'var(--accent2)' :
+    risk === 'HIGH' ? 'var(--warn)' : 'var(--accent3)';
+
+  // Info panel
+  updateInfoPanel(risk, Re, energy);
+}
+
+function updateInfoPanel(risk, Re, energy) {
+  const title = document.getElementById('info-title');
+  const body = document.getElementById('info-body');
+
+  if (risk === 'CRITICAL') {
+    title.textContent = '⚠ Approaching Singularity';
+    body.innerHTML = `Energy norm is <strong style="color:var(--accent2)">${energy.toFixed(2)}</strong> — 
+    far above the Leray weak solution threshold.<br><br>
+    At Re = <strong>${(1/params.visc).toFixed(0)}</strong>, the Caffarelli–Kohn–Nirenberg theorem 
+    guarantees at most a measure-zero set of singular points — but cannot rule them out entirely.
+    <br><br><strong>This is the frontier of what mathematics can currently prove.</strong>`;
+  } else if (risk === 'HIGH') {
+    title.textContent = 'Turbulent Regime';
+    body.innerHTML = `Re = <strong>${(1/params.visc).toFixed(0)}</strong> — deep in turbulence.
+    Kolmogorov's 1941 theory predicts energy cascades at scale η ~ Re<sup>−3/4</sup>.
+    <br><br>Enstrophy growth here is the key diagnostic: 
+    if <strong>∫|∇u|² dt → ∞</strong> in finite time, that's your blow-up condition.`;
+  } else {
+    title.textContent = 'What is Blow-Up?';
+    body.innerHTML = `The Navier–Stokes Millennium Problem asks: given smooth initial conditions,
+    does <strong>u(x,t)</strong> remain smooth for all time?
+    A <strong>blow-up</strong> means ‖u‖ → ∞ in finite time T*.
+    <br><br>
+    Lower ν → higher Re → turbulence → the boundary of what mathematics can guarantee.
+    <strong>Your mission: push the system as close to singularity as possible.</strong>`;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// CONTROLS
+// ═══════════════════════════════════════════════════════════
+document.getElementById('visc').addEventListener('input', function() {
+  params.visc = parseFloat(this.value);
+  document.getElementById('visc-val').textContent = params.visc.toFixed(3);
+  const isDanger = params.visc < 0.02;
+  this.className = isDanger ? 'danger' : '';
+  rebuildVortex();
+});
+
+document.getElementById('amp').addEventListener('input', function() {
+  params.amp = parseFloat(this.value);
+  document.getElementById('amp-val').textContent = params.amp.toFixed(1);
+  rebuildVortex();
+});
+
+document.getElementById('wave').addEventListener('input', function() {
+  params.wave = parseInt(this.value);
+  document.getElementById('wave-val').textContent = params.wave;
+  rebuildVortex();
+});
+
+document.getElementById('rot').addEventListener('input', function() {
+  params.rot = parseFloat(this.value);
+  document.getElementById('rot-val').textContent = params.rot.toFixed(1);
+});
+
+function resetSim() {
+  simTime = 0;
+  currentPeak = 1.0;
+  energyHistory = [];
+  timeHistory = [];
+  frameCount = 0;
+  initParticles();
+  geo.attributes.position.needsUpdate = true;
+  Plotly.react('energy-plot', [{
+    x: [], y: [], mode: 'lines',
+    line: { color: '#00d4ff', width: 2 }, fill: 'tozeroy', fillcolor: 'rgba(0,212,255,0.05)'
+  }, {
+    x: [], y: [], mode: 'lines',
+    line: { color: '#ff3d6e', width: 1.5, dash: 'dot' },
+  }], {
+    margin: { t: 8, r: 10, b: 30, l: 50 },
+    paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+    font: { color: '#4a5a7a', family: 'Space Mono', size: 9 },
+    xaxis: { title: 'time t', color: '#4a5a7a', gridcolor: '#1a2540', zerolinecolor: '#1a2540' },
+    yaxis: { title: '‖u‖', color: '#4a5a7a', gridcolor: '#1a2540', zerolinecolor: '#1a2540' },
+  }, { responsive: true, displayModeBar: false });
+  rebuildVortex();
+}
+
+function togglePause() {
+  paused = !paused;
+  document.querySelector('.btn:nth-child(2)').textContent = paused ? 'RESUME' : 'PAUSE';
+  if (!paused) clock.getDelta();
+}
+
+function extremeMode() {
+  setSlider('visc', 0.003);
+  setSlider('amp', 4.5);
+  setSlider('wave', 5);
+  setSlider('rot', 3.5);
+  rebuildVortex();
+}
+
+function setSlider(id, val) {
+  const el = document.getElementById(id);
+  el.value = val;
+  el.dispatchEvent(new Event('input'));
+}
+
+// ═══════════════════════════════════════════════════════════
+// PRESETS
+// ═══════════════════════════════════════════════════════════
+const presets = {
+  lamb:   { visc: 0.15, amp: 1.2, wave: 1, rot: 0 },
+  taylor: { visc: 0.05, amp: 2.0, wave: 2, rot: 0 },
+  leray:  { visc: 0.02, amp: 3.0, wave: 3, rot: 1.0 },
+  tao:    { visc: 0.005, amp: 4.5, wave: 6, rot: 4.0 },
+};
+
+function setPreset(name) {
+  const p = presets[name];
+  setSlider('visc', p.visc);
+  setSlider('amp', p.amp);
+  setSlider('wave', p.wave);
+  setSlider('rot', p.rot);
+
+  const info = {
+    lamb: { t: 'Lamb–Oseen Vortex', b: 'A classical exact solution — viscosity damps the vortex smoothly. Energy decays as e<sup>−νk²t</sup>. <strong>No blow-up possible.</strong> This is the well-understood regime.' },
+    taylor: { t: 'Taylor–Green Vortex', b: 'The canonical benchmark for turbulence simulations. Known to develop a turbulent energy cascade. Energy flows from large to small scales. <strong>Smoothness believed but unproven for t → ∞.</strong>' },
+    leray: { t: 'Leray 1934 Regime', b: 'Jean Leray proved in 1934 that <strong>weak solutions</strong> exist globally. But "weak" allows for possible singularities in measure-zero sets. At this viscosity, we are near the boundary.' },
+    tao: { t: 'Tao Averaged (2016)', b: 'In 2016, Terence Tao proved blow-up for an <em>averaged</em> version of Navier–Stokes. Not the real equation — but it shows the structure can in principle produce singularities. <strong>Closest analog to a blow-up yet found.</strong>' },
+  };
+  document.getElementById('info-title').textContent = info[name].t;
+  document.getElementById('info-body').innerHTML = info[name].b;
+  resetSim();
+}
+
+// ═══════════════════════════════════════════════════════════
+// BLOW-UP
+// ═══════════════════════════════════════════════════════════
+function triggerBlowUp(energy) {
+  document.getElementById('blowup-alert').classList.add('show');
+  document.getElementById('blowup-score').textContent = `Peak ‖u‖: ${energy.toFixed(4)}`;
+  paused = true;
+}
+
+function recordAndReset() {
+  const score = {
+    peak: currentPeak,
+    visc: params.visc,
+    amp: params.amp,
+    wave: params.wave,
+    rot: params.rot,
+    time: simTime,
+  };
+  leaderboard.push(score);
+  leaderboard.sort((a, b) => b.peak - a.peak);
+  leaderboard = leaderboard.slice(0, 5);
+  updateLeaderboard();
+  closeAlert();
+  resetSim();
+}
+
+function closeAlert() {
+  document.getElementById('blowup-alert').classList.remove('show');
+  paused = false;
+  if (!paused) clock.getDelta();
+}
+
+function updateLeaderboard() {
+  const lb = document.getElementById('leaderboard');
+  lb.innerHTML = leaderboard.map((s, i) => `
+    <div class="leaderboard-row">
+      <span class="lb-rank">#${i+1}</span>
+      <div>
+        <div style="font-size:0.65rem;color:var(--text)">ν=${s.visc.toFixed(3)} A=${s.amp.toFixed(1)} k=${s.wave}</div>
+        <div class="lb-params">t=${s.time.toFixed(2)} · Ω=${s.rot.toFixed(1)}</div>
+      </div>
+      <span class="lb-score">${s.peak.toFixed(3)}</span>
+    </div>
+  `).join('') || '<div class="leaderboard-row"><span class="lb-rank">#1</span><span>—</span><span class="lb-score">—</span></div>';
+}
+</script>
+</body>
+</html>
