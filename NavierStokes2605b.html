@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navier–Stokes | Flow Observatory</title>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-3.0.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f2ec;
+  --bg2: #edeae2;
+  --panel: #e8e4db;
+  --border: #d0c9bc;
+  --ink: #1a1510;
+  --ink2: #3d3628;
+  --muted: #8c8070;
+  --accent-blue: #1a4a7a;
+  --accent-red: #8a1a1a;
+  --accent-gold: #7a5a0a;
+  --accent-green: #1a5a2a;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  padding: 40px 48px 32px;
+  border-bottom: 2px solid var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+}
+
+.header-left h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.header-left h1 em {
+  font-style: italic;
+  color: var(--accent-blue);
+}
+
+.header-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+}
+
+.header-right {
+  text-align: right;
+}
+
+.chapter-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.equation-display {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-blue);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+/* ── TABS ── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  padding: 0 48px;
+  gap: 0;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 14px 24px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: var(--font-mono);
+}
+
+.tab:hover { color: var(--ink); }
+.tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  font-weight: 500;
+}
+
+/* ── MAIN LAYOUT ── */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  height: calc(100vh - 160px);
+  min-height: 560px;
+}
+
+/* ── CANVAS AREA ── */
+.canvas-area {
+  position: relative;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+#flow-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Overlay annotations */
+.annotation {
+  position: absolute;
+  background: rgba(245,242,236,0.92);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 8px 12px;
+  font-size: 0.65rem;
+  color: var(--ink2);
+  line-height: 1.5;
+  max-width: 180px;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.annotation strong { color: var(--ink); display: block; margin-bottom: 2px; }
+.annotation-tl { top: 16px; left: 16px; }
+.annotation-tr { top: 16px; right: 16px; text-align: right; }
+.annotation-bl { bottom: 16px; left: 16px; }
+
+.mode-indicator {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,242,236,0.4);
+}
+
+/* ── RIGHT PANEL ── */
+.right-panel {
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.panel-section {
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-section-title {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* Phenomenon selector */
+.phenomenon-list { display: flex; flex-direction: column; gap: 6px; }
+
+.phenom-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  font-family: var(--font-mono);
+}
+
+.phenom-btn:hover { border-color: var(--ink); }
+.phenom-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.phenom-btn.active .phenom-name { color: var(--bg); }
+.phenom-btn.active .phenom-desc { color: rgba(245,242,236,0.6); }
+
+.phenom-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.phenom-name { font-size: 0.72rem; font-weight: 500; color: var(--ink); display: block; margin-bottom: 2px; }
+.phenom-desc { font-size: 0.6rem; color: var(--muted); line-height: 1.4; }
+
+/* Sliders */
+.slider-row { margin-bottom: 14px; }
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--ink2);
+  margin-bottom: 6px;
+}
+
+.slider-val { color: var(--accent-blue); font-weight: 500; }
+
+input[type=range] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--ink);
+  cursor: pointer;
+}
+
+/* Data readouts */
+.readout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.readout {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 2px;
+}
+
+.readout-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.readout-value {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-family: var(--font-serif);
+}
+
+/* Explanation card */
+.explain-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 14px;
+}
+
+.explain-title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.explain-body {
+  font-size: 0.68rem;
+  line-height: 1.8;
+  color: var(--ink2);
+}
+
+.explain-body strong { color: var(--ink); }
+.explain-body em { color: var(--accent-blue); font-style: normal; }
+
+/* Energy plot */
+.plot-wrap {
+  height: 140px;
+  margin-top: 10px;
+}
+
+/* Theorem badge */
+.theorem {
+  background: var(--bg);
+  border-left: 3px solid var(--accent-blue);
+  padding: 10px 14px;
+  margin-top: 10px;
+  border-radius: 0 2px 2px 0;
+}
+
+.theorem-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: 4px;
+}
+
+.theorem-text {
+  font-size: 0.65rem;
+  line-height: 1.7;
+  color: var(--ink2);
+  font-style: italic;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--panel); }
+::-webkit-scrollbar-thumb { background: var(--border); }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .header { grid-template-columns: 1fr; padding: 24px; }
+  .header-right { text-align: left; }
+  .tabs { padding: 0 24px; }
+  .main { grid-template-columns: 1fr; grid-template-rows: 400px auto; }
+  .canvas-area { height: 400px; }
+  .right-panel { height: auto; max-height: 600px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <h1>Navier–Stokes<br><em>Flow Observatory</em></h1>
+    <div class="header-sub">
+      Each mode illuminates a different facet of the unsolved problem.
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="chapter-label">Millennium Prize Problem · Clay Institute · 1904–2026</span>
+    <div class="equation-display" id="eq-display">
+      ∂ₜu + (u·∇)u = −∇p + ν Δu,  ∇·u = 0
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab(0)">I. Vorticity</button>
+  <button class="tab" onclick="switchTab(1)">II. Energy Cascade</button>
+  <button class="tab" onclick="switchTab(2)">III. Vortex Stretching</button>
+  <button class="tab" onclick="switchTab(3)">IV. Turbulence</button>
+  <button class="tab" onclick="switchTab(4)">V. Pressure Field</button>
+  <button class="tab" onclick="switchTab(5)">VI. Regularity</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- CANVAS -->
+  <div class="canvas-area">
+    <canvas id="flow-canvas"></canvas>
+    <div class="annotation annotation-tl" id="ann-tl">
+      <strong id="ann-tl-title">Vorticity Field</strong>
+      <span id="ann-tl-body">ω = ∇ × u<br>Local rotation of fluid elements</span>
+    </div>
+    <div class="annotation annotation-tr" id="ann-tr">
+      <strong id="ann-tr-title">Re = 1/ν</strong>
+      <span id="ann-tr-body" id="ann-re">—</span>
+    </div>
+    <div class="annotation annotation-bl" id="ann-bl">
+      <strong id="ann-bl-title">Scale</strong>
+      <span id="ann-bl-body">Kolmogorov η ~ Re⁻³/⁴</span>
+    </div>
+    <div class="mode-indicator" id="mode-indicator">VORTICITY MODE</div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+
+    <!-- PHENOMENON SELECTOR -->
+    <div class="panel-section">
+      <div class="panel-section-title">Observable Phenomena</div>
+      <div class="phenomenon-list" id="phenom-list">
+
+        <button class="phenom-btn active" onclick="setPhenomenon(0)">
+          <span class="phenom-icon">🌀</span>
+          <div>
+            <span class="phenom-name">Vortex Formation</span>
+            <span class="phenom-desc">How rotation emerges and organizes in 3D flow</span>
+          </div>
+        </button>
+
+        <button class="phenom-btn" onclick="setPhenomenon(1)">
+          <span class="phenom-icon">⚡</span>
+          <div>
+            <span class="phenom-name">Vortex Stretching</span>
+            <span class="phenom-desc">The mechanism that could produce blow-up</span>
+          </div>
+        </button>
+
+        <button class="phenom-btn" onclick="setPhenomenon(2)">
+          <span class="phenom-icon">🌊</span>
+          <div>
+            <span class="phenom-name">Energy Cascade</span>
+            <span class="phenom-desc">Kolmogorov's 1941 turbulent cascade</span>
+          </div>
+        </button>
+
+        <button class="phenom-btn" onclick="setPhenomenon(3)">
+          <span class="phenom-icon">🔵</span>
+          <div>
+            <span class="phenom-name">Leray Weak Solution</span>
+            <span class="phenom-desc">What 1934 proved — and what it left open</span>
+          </div>
+        </button>
+
+        <button class="phenom-btn" onclick="setPhenomenon(4)">
+          <span class="phenom-icon">💥</span>
+          <div>
+            <span class="phenom-name">CKN Singular Set</span>
+            <span class="phenom-desc">Where singularities can hide — measure zero</span>
+          </div>
+        </button>
+
+        <button class="phenom-btn" onclick="setPhenomenon(5)">
+          <span class="phenom-icon">∞</span>
+          <div>
+            <span class="phenom-name">Tao 2016 Analog</span>
+            <span class="phenom-desc">The averaged blow-up construction</span>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="panel-section">
+      <div class="panel-section-title">Parameters</div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>Viscosity ν</span>
+          <span class="slider-val" id="v-visc">0.05</span>
+        </div>
+        <input type="range" id="s-visc" min="0.002" max="0.3" step="0.002" value="0.05"
+          oninput="updateParam('visc', this.value)">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>Flow Speed U</span>
+          <span class="slider-val" id="v-speed">1.0</span>
+        </div>
+        <input type="range" id="s-speed" min="0.1" max="3.0" step="0.1" value="1.0"
+          oninput="updateParam('speed', this.value)">
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>Wavenumber k</span>
+          <span class="slider-val" id="v-wave">3</span>
+        </div>
+        <input type="range" id="s-wave" min="1" max="8" step="1" value="3"
+          oninput="updateParam('wave', this.value)">
+      </div>
+
+    </div>
+
+    <!-- READOUTS -->
+    <div class="panel-section">
+      <div class="panel-section-title">Live Measurements</div>
+      <div class="readout-grid">
+        <div class="readout">
+          <div class="readout-label">Reynolds Re</div>
+          <div class="readout-value" id="r-re">20.0</div>
+        </div>
+        <div class="readout">
+          <div class="readout-label">‖u‖ Energy</div>
+          <div class="readout-value" id="r-energy">1.000</div>
+        </div>
+        <div class="readout">
+          <div class="readout-label">Max |ω|</div>
+          <div class="readout-value" id="r-vort">0.000</div>
+        </div>
+        <div class="readout">
+          <div class="readout-label">Kolmogorov η</div>
+          <div class="readout-value" id="r-kolm">0.000</div>
+        </div>
+      </div>
+      <div class="plot-wrap">
+        <div id="obs-plot" style="width:100%;height:100%"></div>
+      </div>
+    </div>
+
+    <!-- EXPLANATION -->
+    <div class="panel-section">
+      <div class="explain-card">
+        <div class="explain-title" id="ex-title">Vortex Formation</div>
+        <div class="explain-body" id="ex-body">
+          Vorticity <em>ω = ∇ × u</em> measures the local rotation of fluid elements.
+          In 3D, vorticity can be <strong>amplified by stretching</strong> — a vortex tube
+          pulled thinner spins faster, conserving angular momentum.
+          <br><br>
+          This is the mechanism the Millennium Problem is asking about.
+        </div>
+      </div>
+      <div class="theorem" id="theorem-box">
+        <div class="theorem-label">Key Result</div>
+        <div class="theorem-text" id="theorem-text">
+          Leray (1934): Weak solutions to 3D Navier–Stokes exist globally.
+          Smoothness of these solutions remains unproven.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /right-panel -->
+</div><!-- /main -->
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════
+let simTime = 0;
+let currentPhenomenon = 0;
+let currentTab = 0;
+let params = { visc: 0.05, speed: 1.0, wave: 3 };
+let energyLog = [], timeLog = [];
+let frameCount = 0;
+
+// ═══════════════════════════════════════════════════════════
+// THREE.JS
+// ═══════════════════════════════════════════════════════════
+const canvas = document.getElementById('flow-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x0d0d0f);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x0d0d0f, 0.08);
+
+const camera = new THREE.PerspectiveCamera(55, 1, 0.01, 200);
+camera.position.set(0, 1.5, 6);
+camera.lookAt(0, 0, 0);
+
+function resizeRenderer() {
+  const el = canvas.parentElement;
+  const w = el.clientWidth, h = el.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+resizeRenderer();
+window.addEventListener('resize', resizeRenderer);
+
+// Lights
+scene.add(new THREE.AmbientLight(0x111118, 1));
+const warm = new THREE.PointLight(0xffeedd, 1.2, 20);
+warm.position.set(3, 3, 3);
+scene.add(warm);
+const cool = new THREE.PointLight(0x4488ff, 0.8, 20);
+cool.position.set(-3, -1, 2);
+scene.add(cool);
+
+// ── PARTICLE SYSTEMS ──
+const MAIN_N = 4000;
+const TRACE_N = 800;
+
+// Main flow particles
+const mainPos = new Float32Array(MAIN_N * 3);
+const mainCol = new Float32Array(MAIN_N * 3);
+const mainSz  = new Float32Array(MAIN_N);
+
+for (let i = 0; i < MAIN_N; i++) {
+  mainPos[i*3]   = (Math.random()-0.5)*8;
+  mainPos[i*3+1] = (Math.random()-0.5)*6;
+  mainPos[i*3+2] = (Math.random()-0.5)*6;
+  mainCol[i*3] = 0.3; mainCol[i*3+1] = 0.6; mainCol[i*3+2] = 1.0;
+  mainSz[i] = 1.5 + Math.random()*2;
+}
+
+const mainGeo = new THREE.BufferGeometry();
+mainGeo.setAttribute('position', new THREE.BufferAttribute(mainPos, 3));
+mainGeo.setAttribute('color',    new THREE.BufferAttribute(mainCol, 3));
+mainGeo.setAttribute('size',     new THREE.BufferAttribute(mainSz, 1));
+
+const particleMat = new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 } },
+  vertexShader: `
+    attribute float size;
+    attribute vec3 color;
+    varying vec3 vColor;
+    void main() {
+      vColor = color;
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      gl_PointSize = size * (280.0 / -mv.z);
+      gl_Position = projectionMatrix * mv;
+    }
+  `,
+  fragmentShader: `
+    varying vec3 vColor;
+    void main() {
+      float d = length(gl_PointCoord - 0.5) * 2.0;
+      if (d > 1.0) discard;
+      float a = (1.0 - d*d) * 0.7;
+      gl_FragColor = vec4(vColor, a);
+    }
+  `,
+  transparent: true,
+  depthWrite: false,
+  blending: THREE.AdditiveBlending,
+  vertexColors: true,
+});
+
+const mainParticles = new THREE.Points(mainGeo, particleMat);
+scene.add(mainParticles);
+
+// Vortex tube geometry
+const tubeGroup = new THREE.Group();
+scene.add(tubeGroup);
+
+// Singular set markers (CKN)
+const singGroup = new THREE.Group();
+scene.add(singGroup);
+singGroup.visible = false;
+
+function makeSingularMarkers() {
+  while (singGroup.children.length) singGroup.remove(singGroup.children[0]);
+  const N = 12;
+  for (let i = 0; i < N; i++) {
+    const x = (Math.random()-0.5)*4;
+    const y = (Math.random()-0.5)*3;
+    const z = (Math.random()-0.5)*3;
+    const g = new THREE.SphereGeometry(0.04 + Math.random()*0.06, 8, 8);
+    const m = new THREE.MeshBasicMaterial({
+      color: 0xff4444,
+      transparent: true,
+      opacity: 0.8
+    });
+    const mesh = new THREE.Mesh(g, m);
+    mesh.position.set(x, y, z);
+    singGroup.add(mesh);
+  }
+}
+makeSingularMarkers();
+
+// Streamlines
+const streamGroup = new THREE.Group();
+scene.add(streamGroup);
+
+function buildStreamlines() {
+  while (streamGroup.children.length) streamGroup.remove(streamGroup.children[0]);
+  const N_STREAMS = 20;
+  for (let s = 0; s < N_STREAMS; s++) {
+    const pts = [];
+    let x = (Math.random()-0.5)*4;
+    let y = (Math.random()-0.5)*3;
+    let z = (Math.random()-0.5)*3;
+    for (let step = 0; step < 60; step++) {
+      pts.push(new THREE.Vector3(x, y, z));
+      const [ux, uy, uz] = flowVelocity(x, y, z, 0);
+      const dt = 0.05;
+      x += ux * dt; y += uy * dt; z += uz * dt;
+      if (Math.abs(x)>5||Math.abs(y)>4||Math.abs(z)>4) break;
+    }
+    if (pts.length < 3) continue;
+    const curve = new THREE.CatmullRomCurve3(pts);
+    const g = new THREE.TubeGeometry(curve, pts.length*2, 0.008, 4, false);
+    const hue = s / N_STREAMS;
+    const col = new THREE.Color().setHSL(0.6 - hue*0.3, 0.8, 0.6);
+    const m = new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.5 });
+    streamGroup.add(new THREE.Mesh(g, m));
+  }
+}
+buildStreamlines();
+
+// Vortex tubes
+function buildVortexTubes() {
+  while (tubeGroup.children.length) tubeGroup.remove(tubeGroup.children[0]);
+  const k = params.wave;
+  const stretch = currentPhenomenon === 1 ? 2.5 : 1.0;
+
+  for (let ring = 0; ring < Math.min(k, 5); ring++) {
+    const y0 = ((ring / Math.max(k-1,1)) - 0.5) * 3;
+    const r = (0.6 + ring * 0.15) * (currentPhenomenon === 1 ? 0.6 + ring*0.1 : 1);
+    const pts = [];
+    const segs = 80;
+    for (let i = 0; i <= segs; i++) {
+      const a = (i/segs)*Math.PI*2;
+      const pertY = currentPhenomenon === 1
+        ? y0 + Math.sin(a*3)*0.2*(ring+1)*stretch*0.3
+        : y0;
+      pts.push(new THREE.Vector3(
+        Math.cos(a)*r,
+        pertY,
+        Math.sin(a)*r
+      ));
+    }
+    const curve = new THREE.CatmullRomCurve3(pts, true);
+    const tubeR = currentPhenomenon === 1
+      ? Math.max(0.01, 0.04 - ring*0.006)
+      : 0.03;
+    const g = new THREE.TubeGeometry(curve, segs, tubeR, 8, true);
+    const hue = ring / Math.max(k, 1);
+    const col = new THREE.Color().setHSL(0.55 + hue*0.2, 0.9, 0.65);
+    const m = new THREE.MeshPhongMaterial({
+      color: col,
+      emissive: col,
+      emissiveIntensity: 0.3,
+      transparent: true,
+      opacity: 0.75
+    });
+    tubeGroup.add(new THREE.Mesh(g, m));
+  }
+}
+buildVortexTubes();
+
+// ── FLOW VELOCITY ──
+function flowVelocity(x, y, z, t) {
+  const k = params.wave;
+  const U = params.speed;
+  const nu = params.visc;
+  const decay = Math.exp(-nu * k*k * t * 0.1);
+
+  let ux = U * decay * Math.sin(k*x) * Math.cos(k*y) * Math.cos(k*z);
+  let uy = -U * decay * Math.cos(k*x) * Math.sin(k*y) * Math.cos(k*z);
+  let uz = U * 0.4 * decay * Math.sin(k*z) * Math.cos(k*x*0.5);
+
+  // Phenomenon-specific modifications
+  if (currentPhenomenon === 1) {
+    // Vortex stretching — amplify along z
+    uz += U * 0.3 * decay * Math.sin(k*y) * simTime * 0.02;
+  } else if (currentPhenomenon === 2) {
+    // Energy cascade — add small-scale structure
+    ux += U * 0.3 * decay * Math.sin(k*2*x + simTime) * Math.cos(k*2*y);
+    uy -= U * 0.3 * decay * Math.cos(k*2*x) * Math.sin(k*2*y + simTime*0.7);
+  } else if (currentPhenomenon === 4) {
+    // CKN — concentrate near singular set
+    const r2 = x*x + y*y;
+    const conc = Math.exp(-r2 * 2);
+    ux *= (1 + conc * 3);
+    uy *= (1 + conc * 3);
+  }
+
+  return [ux, uy, uz];
+}
+
+// ── DIAGNOSTICS ──
+function computeEnergy(t) {
+  const k = params.wave;
+  const U = params.speed;
+  const nu = params.visc;
+  const decay = Math.exp(-nu * k*k * t * 0.1);
+  const base = U * U * decay * decay;
+  const stretch = currentPhenomenon === 1
+    ? 1 + 0.001 * (1/nu) * params.wave * simTime * 0.05
+    : 1;
+  return base * stretch;
+}
+
+function computeVorticity(t) {
+  const k = params.wave;
+  const U = params.speed;
+  const nu = params.visc;
+  const decay = Math.exp(-nu * k*k * t * 0.1);
+  return U * k * decay * (currentPhenomenon === 1 ? 1 + simTime * 0.02 * (1/nu) * 0.01 : 1);
+}
+
+function kolmogorov() {
+  const Re = 1.0 / Math.max(params.visc, 0.001);
+  return Math.pow(Re, -0.75).toFixed(4);
+}
+
+// ═══════════════════════════════════════════════════════════
+// PLOTLY
+// ═══════════════════════════════════════════════════════════
+const PLOT_COLORS = {
+  0: '#4488ff',
+  1: '#ff6644',
+  2: '#44cc88',
+  3: '#8844ff',
+  4: '#ff4444',
+  5: '#ffaa22',
+};
+
+function initPlot() {
+  Plotly.newPlot('obs-plot', [{
+    x: [], y: [],
+    mode: 'lines',
+    line: { color: PLOT_COLORS[currentPhenomenon], width: 1.5 },
+    fill: 'tozeroy',
+    fillcolor: PLOT_COLORS[currentPhenomenon] + '18',
+  }], {
+    margin: { t: 4, r: 8, b: 24, l: 40 },
+    paper_bgcolor: 'transparent',
+    plot_bgcolor: 'transparent',
+    font: { color: '#8c8070', family: 'DM Mono', size: 8 },
+    xaxis: { color: '#8c8070', gridcolor: '#d0c9bc', title: 't' },
+    yaxis: { color: '#8c8070', gridcolor: '#d0c9bc', title: '‖u‖' },
+    showlegend: false,
+  }, { responsive: true, displayModeBar: false });
+}
+initPlot();
+
+// ═══════════════════════════════════════════════════════════
+// ANIMATION
+// ═══════════════════════════════════════════════════════════
+const clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const delta = Math.min(clock.getDelta(), 0.05);
+  simTime += delta * 0.25;
+  frameCount++;
+
+  // Update main particles
+  for (let i = 0; i < MAIN_N; i++) {
+    const x = mainPos[i*3], y = mainPos[i*3+1], z = mainPos[i*3+2];
+    const [ux, uy, uz] = flowVelocity(x, y, z, simTime);
+
+    mainPos[i*3]   += ux * delta * 0.35;
+    mainPos[i*3+1] += uy * delta * 0.35;
+    mainPos[i*3+2] += uz * delta * 0.35;
+
+    // Wrap
+    for (let d = 0; d < 3; d++) {
+      const lim = d === 0 ? 4.5 : 3.5;
+      if (mainPos[i*3+d] > lim) mainPos[i*3+d] -= lim*2;
+      if (mainPos[i*3+d] < -lim) mainPos[i*3+d] += lim*2;
+    }
+
+    // Color by phenomenon
+    const spd = Math.sqrt(ux*ux+uy*uy+uz*uz) / Math.max(params.speed, 0.1);
+    colorParticle(i, spd, x, y, z);
+  }
+
+  mainGeo.attributes.position.needsUpdate = true;
+  mainGeo.attributes.color.needsUpdate = true;
+
+  // Rotate structures
+  tubeGroup.rotation.y = simTime * 0.12;
+  tubeGroup.rotation.x = Math.sin(simTime * 0.08) * 0.15;
+
+  // Singular set pulse
+  if (singGroup.visible) {
+    singGroup.children.forEach((m, i) => {
+      m.scale.setScalar(1 + 0.3 * Math.sin(simTime * 3 + i));
+    });
+  }
+
+  // Camera gentle orbit
+  camera.position.x = Math.sin(simTime * 0.07) * 5.5;
+  camera.position.z = Math.cos(simTime * 0.07) * 5.5;
+  camera.position.y = 1.5 + Math.sin(simTime * 0.05) * 0.8;
+  camera.lookAt(0, 0, 0);
+
+  // Diagnostics
+  if (frameCount % 6 === 0) {
+    const energy = computeEnergy(simTime);
+    const vort = computeVorticity(simTime);
+    const Re = (1/Math.max(params.visc,0.001));
+
+    document.getElementById('r-re').textContent = Re.toFixed(1);
+    document.getElementById('r-energy').textContent = energy.toFixed(3);
+    document.getElementById('r-vort').textContent = vort.toFixed(3);
+    document.getElementById('r-kolm').textContent = kolmogorov();
+    document.getElementById('ann-tr-body').textContent = `Re = ${Re.toFixed(0)}`;
+
+    energyLog.push(energy);
+    timeLog.push(simTime);
+    if (energyLog.length > 200) { energyLog.shift(); timeLog.shift(); }
+
+    Plotly.extendTraces('obs-plot', {
+      x: [[simTime]], y: [[energy]]
+    }, [0]);
+
+    if (timeLog.length > 180) {
+      Plotly.relayout('obs-plot', {
+        'xaxis.range': [timeLog[0], timeLog[timeLog.length-1]]
+      });
+    }
+  }
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+// ═══════════════════════════════════════════════════════════
+// COLOR SCHEMES PER PHENOMENON
+// ═══════════════════════════════════════════════════════════
+function colorParticle(i, spd, x, y, z) {
+  let r, g, b;
+  spd = Math.min(spd, 1);
+
+  switch(currentPhenomenon) {
+    case 0: // Vorticity — blue to cyan
+      r = spd * 0.2; g = 0.4 + spd*0.4; b = 1.0 - spd*0.2; break;
+    case 1: // Vortex stretching — warm to white
+      r = 0.8 + spd*0.2; g = 0.4 + spd*0.4; b = spd*0.3; break;
+    case 2: // Energy cascade — rainbow
+      const hue = (1-spd) * 0.65;
+      const c = new THREE.Color().setHSL(hue, 0.9, 0.6);
+      r = c.r; g = c.g; b = c.b; break;
+    case 3: // Leray — soft violet
+      r = 0.4 + spd*0.3; g = 0.3; b = 0.8 + spd*0.2; break;
+    case 4: // CKN — red near center
+      const dist = Math.sqrt(x*x+y*y);
+      const danger = Math.exp(-dist*1.5);
+      r = 0.3 + danger*0.7; g = 0.5*(1-danger); b = 0.8*(1-danger*0.8); break;
+    case 5: // Tao — gold/amber
+      r = 1.0; g = 0.5 + spd*0.3; b = spd*0.2; break;
+    default:
+      r = 0.3; g = 0.6; b = 1.0;
+  }
+  mainCol[i*3] = r; mainCol[i*3+1] = g; mainCol[i*3+2] = b;
+  mainSz[i] = 1.5 + spd * 2.5;
+}
+
+// ═══════════════════════════════════════════════════════════
+// PHENOMENON DATA
+// ═══════════════════════════════════════════════════════════
+const phenomena = [
+  {
+    name: 'Vortex Formation',
+    annTL: ['Vorticity Field', 'ω = ∇ × u · Local rotation rate'],
+    annBL: ['Vortex Rings', 'Stable toroidal structures in 3D flow'],
+    mode: 'VORTICITY MODE',
+    exTitle: 'How Vortices Form',
+    exBody: `Vorticity <em>ω = ∇ × u</em> is the curl of the velocity field — it measures how much the fluid rotates locally.
+    In 3D flow, vorticity organizes into <strong>tubes and rings</strong>: coherent rotating structures
+    that persist over time. The blue rings you see are cross-sections of these vortex tubes.
+    <br><br>
+    Vortex rings are one of the most stable structures in fluid mechanics — they can propagate
+    for remarkable distances. A smoke ring is a vortex ring.`,
+    theorem: 'Helmholtz (1858): Vortex tubes move with the fluid and cannot begin or end within the fluid — they must form closed loops or end at boundaries.',
+    showTubes: true, showSing: false, showStream: false,
+  },
+  {
+    name: 'Vortex Stretching',
+    annTL: ['Vortex Stretching', 'Dω/Dt = (ω·∇)u + ν Δω'],
+    annBL: ['Stretching Term', '(ω·∇)u — absent in 2D'],
+    mode: 'STRETCHING MODE',
+    exTitle: 'The Mechanism That Could Cause Blow-Up',
+    exBody: `The term <em>(ω·∇)u</em> in the vorticity equation allows vortex tubes to be <strong>stretched</strong>.
+    As a tube is pulled thinner, it spins faster — like a figure skater pulling in their arms.
+    <br><br>
+    In 2D, this term <strong>vanishes identically</strong>. There is no vortex stretching.
+    That is why 2D Navier–Stokes is solved and 3D is not.
+    <br><br>
+    If stretching can overcome viscous damping and concentrate vorticity to infinity in finite time — that is blow-up.`,
+    theorem: 'Beale–Kato–Majda (1984): A smooth solution blows up at time T* if and only if ∫₀ᵀ* ‖ω(t)‖_∞ dt = ∞.',
+    showTubes: true, showSing: false, showStream: false,
+  },
+  {
+    name: 'Energy Cascade',
+    annTL: ['Kolmogorov Cascade', 'E(k) ~ k⁻⁵/³'],
+    annBL: ['Inertial Range', 'Energy flows large → small scales'],
+    mode: 'CASCADE MODE',
+    exTitle: "Kolmogorov's 1941 Theory",
+    exBody: `In turbulent flow, energy is injected at <strong>large scales</strong> and cascades
+    down through successively smaller eddies — each breaking into smaller ones —
+    until it reaches the <strong>Kolmogorov scale</strong> η ~ Re⁻³/⁴, where viscosity finally dissipates it.
+    <br><br>
+    Kolmogorov's prediction: the energy spectrum scales as <em>E(k) ~ k⁻⁵/³</em>.
+    This has been verified experimentally to extraordinary precision.
+    <br><br>
+    It remains a <strong>heuristic theory</strong> — not derived rigorously from the Navier–Stokes equations.`,
+    theorem: 'Kolmogorov (1941): In homogeneous isotropic turbulence, the energy spectrum follows E(k) ~ ε²/³ k⁻⁵/³ in the inertial range.',
+    showTubes: false, showSing: false, showStream: true,
+  },
+  {
+    name: 'Leray Weak Solution',
+    annTL: ['Leray 1934', 'Global weak solutions exist'],
+    annBL: ['Weak = averaged sense', 'Not necessarily smooth'],
+    mode: 'WEAK SOLUTION MODE',
+    exTitle: "What Leray Proved in 1934",
+    exBody: `Jean Leray showed that for any smooth initial data, a <strong>global weak solution</strong>
+    exists for all time. "Weak" means the solution satisfies the Navier–Stokes equations
+    in an averaged, distributional sense.
+    <br><br>
+    A weak solution is allowed to have <strong>singularities</strong> — points where the velocity
+    is not well-defined. Leray's result guarantees existence but not smoothness.
+    <br><br>
+    The Millennium Problem asks: are Leray's weak solutions actually smooth?`,
+    theorem: 'Leray (1934): For u₀ ∈ L²(ℝ³), there exists a global weak solution u satisfying the energy inequality: ‖u(t)‖² + 2ν∫‖∇u‖²ds ≤ ‖u₀‖².',
+    showTubes: false, showSing: false, showStream: true,
+  },
+  {
+    name: 'CKN Singular Set',
+    annTL: ['CKN Theorem 1982', 'Singularities: measure zero'],
+    annBL: ['Red points', 'Where singularities could hide'],
+    mode: 'SINGULAR SET MODE',
+    exTitle: 'Caffarelli–Kohn–Nirenberg 1982',
+    exBody: `In 1982, Caffarelli, Kohn & Nirenberg proved that any singularities in a Leray
+    weak solution must be <strong>exceptionally rare</strong>.
+    <br><br>
+    Specifically: the set of singular space-time points has <strong>parabolic Hausdorff measure zero</strong>.
+    Singularities cannot fill a region. They cannot even form a curve in time.
+    <br><br>
+    The red points show where singularities are <em>permitted to exist</em> under CKN.
+    They are measure zero — but they cannot be ruled out entirely.`,
+    theorem: 'Caffarelli–Kohn–Nirenberg (1982): The set of singular points of a suitable weak solution has parabolic Hausdorff 1-measure zero.',
+    showTubes: false, showSing: true, showStream: false,
+  },
+  {
+    name: 'Tao 2016 Analog',
+    annTL: ['Tao (2016)', 'Blow-up for averaged NS'],
+    annBL: ['Averaged equation', 'Not the real NS — but close'],
+    mode: 'TAO 2016 MODE',
+    exTitle: 'The Closest Analog to Blow-Up',
+    exBody: `In 2016, Terence Tao proved that an <strong>averaged version</strong> of Navier–Stokes
+    — where the nonlinear term (u·∇)u is replaced by a carefully designed average —
+    can produce a finite-time blow-up.
+    <br><br>
+    This is <strong>not a proof that real NS blows up</strong>. The averaged equation is
+    structurally different in ways that prevent direct application of Tao's argument.
+    <br><br>
+    But it shows: the mechanism is mathematically coherent. The structure permits blow-up.
+    <strong>The real question is whether averaging matters.</strong>`,
+    theorem: 'Tao (2016): There exists an averaged Navier–Stokes system, satisfying the same energy inequality as the true system, for which smooth solutions blow up in finite time.',
+    showTubes: true, showSing: true, showStream: false,
+  },
+];
+
+// ═══════════════════════════════════════════════════════════
+// PHENOMENON SWITCH
+// ═══════════════════════════════════════════════════════════
+function setPhenomenon(idx) {
+  currentPhenomenon = idx;
+  simTime = 0;
+  energyLog = []; timeLog = [];
+
+  // Update buttons
+  document.querySelectorAll('.phenom-btn').forEach((b,i) => {
+    b.classList.toggle('active', i === idx);
+  });
+
+  const p = phenomena[idx];
+
+  // Annotations
+  document.getElementById('ann-tl-title').textContent = p.annTL[0];
+  document.getElementById('ann-tl-body').textContent = p.annTL[1];
+  document.getElementById('ann-bl-title').textContent = p.annBL[0];
+  document.getElementById('ann-bl-body').textContent = p.annBL[1];
+  document.getElementById('mode-indicator').textContent = p.mode;
+
+  // Explanation
+  document.getElementById('ex-title').textContent = p.exTitle;
+  document.getElementById('ex-body').innerHTML = p.exBody;
+  document.getElementById('theorem-text').textContent = p.theorem;
+
+  // Visuals
+  tubeGroup.visible = p.showTubes;
+  singGroup.visible = p.showSing;
+  streamGroup.visible = p.showStream;
+
+  if (p.showTubes) buildVortexTubes();
+  if (p.showStream) buildStreamlines();
+
+  // Plot color
+  Plotly.restyle('obs-plot', {
+    'line.color': PLOT_COLORS[idx],
+    'fillcolor': PLOT_COLORS[idx] + '18',
+  }, [0]);
+}
+
+// ═══════════════════════════════════════════════════════════
+// PARAMS
+// ═══════════════════════════════════════════════════════════
+function updateParam(name, val) {
+  params[name] = parseFloat(val);
+  document.getElementById('v-' + name).textContent =
+    name === 'wave' ? parseInt(val) : parseFloat(val).toFixed(name==='visc'?3:1);
+
+  if (name === 'wave') buildVortexTubes();
+  if (name === 'wave' || name === 'speed') buildStreamlines();
+  simTime = 0; energyLog = []; timeLog = [];
+}
+
+// ═══════════════════════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════════════════════
+const tabPhenomMap = [0, 2, 1, 3, 4, 5]; // tab index → phenomenon index
+
+function switchTab(idx) {
+  currentTab = idx;
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  setPhenomenon(tabPhenomMap[idx]);
+}
+</script>
+</body>
+</html>
