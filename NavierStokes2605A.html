@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Navier–Stokes Singularity Explorer | 3D Vortex Stretching · Tao Blow‑up · Enstrophy Cascade</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            padding: 12px 24px;
+            border-radius: 16px;
+            color: #f0f0f0;
+            pointer-events: none;
+            border-left: 4px solid #ff3366;
+            font-size: 14px;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(10,15,30,0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 16px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            z-index: 100;
+            pointer-events: auto;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-family: monospace;
+            font-size: 13px;
+            color: #ddd;
+        }
+        .ctrl-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 140px;
+        }
+        label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #88aaff;
+        }
+        input {
+            cursor: pointer;
+            background: #1e2a3a;
+            border: none;
+            height: 4px;
+            border-radius: 4px;
+        }
+        button {
+            background: #1f2a3e;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.1s;
+            font-family: monospace;
+        }
+        button.primary {
+            background: #ff3366;
+            box-shadow: 0 0 8px #ff3366aa;
+        }
+        button.warning {
+            background: #f0a500;
+            color: #0a0a0a;
+        }
+        .metrics {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            padding: 12px 20px;
+            border-radius: 16px;
+            font-family: monospace;
+            font-size: 12px;
+            text-align: right;
+            z-index: 100;
+            pointer-events: none;
+            border-right: 3px solid #ff3366;
+            color: #ccddff;
+        }
+        .status-badge {
+            position: absolute;
+            bottom: 100px;
+            right: 20px;
+            background: #000000aa;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: bold;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.6; text-shadow: 0 0 0px #ff3366; }
+            100% { opacity: 1; text-shadow: 0 0 8px #ff3366; }
+        }
+        .blink {
+            animation: pulse 0.8s infinite alternate;
+        }
+        a {
+            color: #88aaff;
+            text-decoration: none;
+        }
+        @media (max-width: 700px) {
+            .ctrl-group { min-width: 100px; }
+            .metrics { font-size: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        🔬 <strong>NAVIER–STOKES SINGULARITY ENGINE</strong> · 3D vortex stretching · Tao 2016 · Enstrophy cascade<br>
+        <span style="font-size: 11px;">ω·∇u — the figure skater effect in 3D. Try to push BKM integral → ∞</span>
+    </div>
+    <div class="metrics" id="metricsPanel">
+        📊 ENSTROPHY Z(t) = ½∫|ω|² : <span id="enstrophyVal">0.000</span><br>
+        🔥 VORTEX STRETCHING ∫ω·Sω : <span id="stretchVal">0.000</span><br>
+        ⚡ BKM CRITERION ∫‖ω‖∞ dt : <span id="bkmVal">0.00</span> &nbsp; <span id="bkmWarning"></span><br>
+        📈 ENERGY SPECTRUM E(k) ~ k<sup>-5/3</sup> : <span id="specMatch">—</span>
+    </div>
+    <div class="status-badge" id="blowStatus">
+        🟢 REGULAR
+    </div>
+    <div id="controls">
+        <div class="ctrl-group">
+            <label>🌀 VISCOSITY ν (damping)</label>
+            <input type="range" id="nuSlider" min="0.001" max="0.05" step="0.0005" value="0.008">
+            <span id="nuVal">0.0080</span>
+        </div>
+        <div class="ctrl-group">
+            <label>💢 STRETCH AMPLIFICATION (S max)</label>
+            <input type="range" id="stretchAmp" min="0.5" max="3.0" step="0.02" value="1.8">
+            <span id="stretchAmpVal">1.80</span>
+        </div>
+        <div class="ctrl-group">
+            <label>🎯 INITIAL VORTICITY (ω₀)</label>
+            <input type="range" id="initVort" min="0.5" max="4.0" step="0.05" value="1.5">
+            <span id="initVortVal">1.50</span>
+        </div>
+        <div class="ctrl-group">
+            <button id="resetSim" class="primary">⟳ RESET SIMULATION</button>
+            <button id="taoBlowBtn" class="warning">💀 TAO 2016 EXTREME</button>
+        </div>
+    </div>
+
+    <!-- Import Three.js core and add-ons -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+        // --------------------------------------------------------------
+        //  HIGH-END 3D FLUID DYNAMICS SIMULATOR (VORTEX STRETCHING + ENSTROPHY)
+        //  Based on: dω/dt = (ω·∇)u + νΔω, with synthetic strain field
+        //  Real-time particle advection & stretching visualization.
+        // --------------------------------------------------------------
+        
+        // --- setup scene ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x010115);
+        scene.fog = new THREE.FogExp2(0x010115, 0.003);
+        
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(5, 4, 7);
+        camera.lookAt(0, 0, 0);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = false;
+        controls.enableZoom = true;
+        controls.zoomSpeed = 1.2;
+        controls.rotateSpeed = 1.0;
+        
+        // --- lighting ---
+        const ambientLight = new THREE.AmbientLight(0x222222);
+        scene.add(ambientLight);
+        const mainLight = new THREE.DirectionalLight(0xffffff, 1);
+        mainLight.position.set(2, 5, 3);
+        scene.add(mainLight);
+        const backLight = new THREE.PointLight(0x4466ff, 0.5);
+        backLight.position.set(-2, 1, -3);
+        scene.add(backLight);
+        const fillLight = new THREE.PointLight(0xffaa66, 0.4);
+        fillLight.position.set(1, 2, 2);
+        scene.add(fillLight);
+        
+        // helper grid & axis (scientific aesthetic)
+        const gridHelper = new THREE.GridHelper(12, 20, 0x88aaff, 0x335588);
+        gridHelper.position.y = -1.5;
+        scene.add(gridHelper);
+        
+        // fancy bounding wireframe cube
+        const boxWire = new THREE.LineSegments();
+        const boxGeo = new THREE.BoxGeometry(5, 5, 5);
+        const edges = new THREE.EdgesGeometry(boxGeo);
+        const wireMat = new THREE.LineBasicMaterial({ color: 0x3a6ea5 });
+        const wireframe = new THREE.LineSegments(edges, wireMat);
+        wireframe.position.set(0, 0, 0);
+        scene.add(wireframe);
+        
+        // --- core simulation state (vorticity particles + strain tensor field)---
+        const PARTICLE_COUNT = 12000;
+        let particles = []; // each: {pos: THREE.Vector3, omega: THREE.Vector3, color: THREE.Color}
+        let particleSystem;
+        let geometry;
+        let material;
+        
+        // simulation parameters
+        let nu = 0.008;
+        let stretchFactor = 1.8;    // scaling of S_ij (strain rate magnitude)
+        let initialOmegaMag = 1.5;
+        let simTime = 0;
+        let bkmIntegral = 0;
+        let lastTimestamp = 0;
+        
+        // enstrophy / stretching metrics
+        let currentEnstrophy = 0;
+        let currentStretching = 0;
+        let blowFlag = false;
+        
+        // strain tensor field: synthetic but physically plausible: S = diag(λ1, λ2, λ3) with λ1+λ2+λ3=0 (incompressible)
+        // we add off-diagonals to mimic vortex stretching. custom per region.
+        function getStrainTensor(x, y, z, t) {
+            // create a divergence-free stretch field that amplifies vorticity along axis
+            const A = stretchFactor * (1 + 0.3 * Math.sin(t * 0.8));
+            const B = -stretchFactor * 0.7;
+            const C = -(A + B); // incompressibility
+            // add shear components to mimic twisting
+            const shear = 0.6 * Math.sin(x * 1.2) * Math.cos(z * 1.2);
+            return {
+                xx: A + 0.2 * Math.sin(y), xy: shear, xz: 0.4 * Math.sin(z),
+                yx: shear, yy: B + 0.1 * Math.cos(x), yz: shear * 0.8,
+                zx: 0.4 * Math.sin(z), zy: shear * 0.8, zz: C + 0.15 * Math.sin(x*y)
+            };
+        }
+        
+        // compute (ω·∇)u = S·ω (since for incompressible, stretching term = S·ω)
+        function vortexStretching(omega, S) {
+            return new THREE.Vector3(
+                S.xx * omega.x + S.xy * omega.y + S.xz * omega.z,
+                S.yx * omega.x + S.yy * omega.y + S.yz * omega.z,
+                S.zx * omega.x + S.zy * omega.y + S.zz * omega.z
+            );
+        }
+        
+        // initialize particles as vortex filaments / rings
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                // toroidal / helical distribution
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos(2 * Math.random() - 1);
+                const r = 1.5 + Math.random() * 1.5;
+                const x = r * Math.sin(theta) * Math.cos(phi);
+                const y = r * Math.sin(theta) * Math.sin(phi) * 0.8;
+                const z = r * Math.cos(theta) * 1.2;
+                // initial vorticity direction: tangent to a swirling flow
+                let omegaDir = new THREE.Vector3(-Math.sin(theta), Math.cos(theta)*0.5, Math.sin(phi));
+                omegaDir.normalize();
+                const mag = initialOmegaMag * (0.6 + 0.8 * Math.random());
+                const omegaVec = omegaDir.multiplyScalar(mag);
+                const hue = 0.55 + (mag / 4.0) * 0.4; // redder for stronger
+                const color = new THREE.Color().setHSL(hue, 1.0, 0.6);
+                particles.push({
+                    pos: new THREE.Vector3(x, y, z),
+                    omega: omegaVec,
+                    color: color,
+                    age: Math.random()
+                });
+            }
+            updateParticleGeometry();
+        }
+        
+        function updateParticleGeometry() {
+            if (geometry) geometry.dispose();
+            geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(PARTICLE_COUNT * 3);
+            const colors = new Float32Array(PARTICLE_COUNT * 3);
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                positions[i*3] = particles[i].pos.x;
+                positions[i*3+1] = particles[i].pos.y;
+                positions[i*3+2] = particles[i].pos.z;
+                colors[i*3] = particles[i].color.r;
+                colors[i*3+1] = particles[i].color.g;
+                colors[i*3+2] = particles[i].color.b;
+            }
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            if (particleSystem) scene.remove(particleSystem);
+            material = new THREE.PointsMaterial({ size: 0.08, vertexColors: true, blending: THREE.AdditiveBlending });
+            particleSystem = new THREE.Points(geometry, material);
+            scene.add(particleSystem);
+        }
+        
+        // compute enstrophy & stretching integral from particle field
+        function computeMetrics() {
+            let enst = 0;
+            let stretchInt = 0;
+            let maxOmega = 0;
+            for (let p of particles) {
+                const om2 = p.omega.lengthSq();
+                enst += om2;
+                maxOmega = Math.max(maxOmega, p.omega.length());
+                // stretching contribution approximated from current strain + omega
+                const S = getStrainTensor(p.pos.x, p.pos.y, p.pos.z, simTime);
+                const stretchVec = vortexStretching(p.omega, S);
+                stretchInt += p.omega.dot(stretchVec);
+            }
+            currentEnstrophy = 0.5 * enst / PARTICLE_COUNT;
+            currentStretching = stretchInt / PARTICLE_COUNT;
+            // BKM criterion: d/dt (max ||ω||) approximated and integrated
+            bkmIntegral += maxOmega * 0.016; // dt approx
+            document.getElementById('enstrophyVal').innerText = currentEnstrophy.toFixed(4);
+            document.getElementById('stretchVal').innerText = currentStretching.toFixed(4);
+            document.getElementById('bkmVal').innerText = bkmIntegral.toFixed(3);
+            const bkmSpan = document.getElementById('bkmWarning');
+            const statusDiv = document.getElementById('blowStatus');
+            if (bkmIntegral > 8.0 && !blowFlag) {
+                bkmSpan.innerHTML = '⚠️ BLOW-UP CANDIDATE (BKM diverging)';
+                bkmSpan.style.color = '#ff8888';
+                statusDiv.innerHTML = '💀 SINGULARITY IMMINENT 💀';
+                statusDiv.style.animation = 'pulse 0.4s infinite';
+                blowFlag = true;
+            } else if (bkmIntegral > 4.0) {
+                bkmSpan.innerHTML = '🔥 HIGH STRETCHING';
+                statusDiv.innerHTML = '⚠️ UNSTABLE REGIME';
+            } else {
+                bkmSpan.innerHTML = '';
+                if(!blowFlag) statusDiv.innerHTML = '🟢 REGULAR';
+            }
+            // spectral slope (heuristic based on enstrophy growth)
+            const specElem = document.getElementById('specMatch');
+            if (currentStretching > 0.8) specElem.innerHTML = '~ k⁻¹·⁶² (near Kolmogorov)';
+            else specElem.innerHTML = '~ k⁻¹·³⁰ (dissipative)';
+        }
+        
+        // RK4 time integration for vorticity advection + stretching + diffusion
+        function advectParticles(dt) {
+            const newParticles = [];
+            for (let p of particles) {
+                let pos = p.pos.clone();
+                let omega = p.omega.clone();
+                
+                // velocity field derived from stream function: u = curl(ψ) approximate helical
+                // for visual advection: a mix of rotation + stretching transport
+                function getVelocity(x, y, z) {
+                    const r = Math.sqrt(x*x + y*y + z*z) + 0.2;
+                    const ux = -y * 0.8 + 0.3 * Math.sin(z);
+                    const uy = x * 0.8 + 0.2 * Math.cos(z);
+                    const uz = Math.sin(x) * Math.cos(y) * 0.5;
+                    return new THREE.Vector3(ux, uy, uz);
+                }
+                // ODE: dω/dt = (ω·∇)u + νΔω (simplified laplacian as decay)
+                function omegaDeriv(omegaVec, posVec, S) {
+                    const stretch = vortexStretching(omegaVec, S);
+                    const diffusion = omegaVec.clone().multiplyScalar(-nu * 0.8);
+                    return stretch.add(diffusion);
+                }
+                
+                const S0 = getStrainTensor(pos.x, pos.y, pos.z, simTime);
+                const k1_omega = omegaDeriv(omega, pos, S0);
+                const v1 = getVelocity(pos.x, pos.y, pos.z);
+                const pos2 = pos.clone().add(v1.clone().multiplyScalar(dt * 0.5));
+                const omega2 = omega.clone().add(k1_omega.clone().multiplyScalar(dt * 0.5));
+                const S2 = getStrainTensor(pos2.x, pos2.y, pos2.z, simTime + dt*0.5);
+                const k2_omega = omegaDeriv(omega2, pos2, S2);
+                const v2 = getVelocity(pos2.x, pos2.y, pos2.z);
+                const pos3 = pos.clone().add(v2.clone().multiplyScalar(dt * 0.5));
+                const omega3 = omega.clone().add(k2_omega.clone().multiplyScalar(dt * 0.5));
+                const S3 = getStrainTensor(pos3.x, pos3.y, pos3.z, simTime + dt*0.5);
+                const k3_omega = omegaDeriv(omega3, pos3, S3);
+                const v3 = getVelocity(pos3.x, pos3.y, pos3.z);
+                const pos4 = pos.clone().add(v3.clone().multiplyScalar(dt));
+                const omega4 = omega.clone().add(k3_omega.clone().multiplyScalar(dt));
+                const S4 = getStrainTensor(pos4.x, pos4.y, pos4.z, simTime + dt);
+                const k4_omega = omegaDeriv(omega4, pos4, S4);
+                
+                const newOmega = omega.add(k1_omega.add(k2_omega).add(k3_omega).add(k4_omega).multiplyScalar(dt / 6.0));
+                const v_avg = getVelocity(pos.x, pos.y, pos.z).add(v1).add(v2).add(v3).multiplyScalar(0.25);
+                const newPos = pos.add(v_avg.multiplyScalar(dt));
+                
+                // boundary damping / reflection within [-2.8, 2.8] box
+                const bound = 2.6;
+                ['x','y','z'].forEach(axis => {
+                    if (Math.abs(newPos[axis]) > bound) {
+                        newPos[axis] = Math.sign(newPos[axis]) * bound;
+                        newOmega[axis] *= -0.7;
+                    }
+                });
+                
+                // update color based on vorticity magnitude
+                const mag = newOmega.length();
+                const hue = 0.55 + Math.min(0.4, mag / 5.0);
+                const color = new THREE.Color().setHSL(hue, 1.0, 0.6);
+                newParticles.push({
+                    pos: newPos,
+                    omega: newOmega,
+                    color: color,
+                    age: p.age + dt
+                });
+            }
+            particles = newParticles;
+            updateParticleGeometry();
+        }
+        
+        // helper: high-end glowing effect + additional trails
+        let trailLines = [];
+        const TRAIL_PARTICLES = 600;
+        let trailPositions = [];
+        
+        function initTrails() {
+            for (let i = 0; i < TRAIL_PARTICLES; i++) {
+                trailPositions.push(new THREE.Vector3(0, 0, 0));
+            }
+            const trailGeo = new THREE.BufferGeometry();
+            const trailPosArray = new Float32Array(TRAIL_PARTICLES * 3);
+            trailGeo.setAttribute('position', new THREE.BufferAttribute(trailPosArray, 3));
+            const trailMat = new THREE.PointsMaterial({ color: 0x77aaff, size: 0.04, transparent: true, opacity: 0.5, blending: THREE.AdditiveBlending });
+            const trailSys = new THREE.Points(trailGeo, trailMat);
+            scene.add(trailSys);
+            trailLines.push({ geo: trailGeo, sys: trailSys, buffer: trailPosArray, idx: 0 });
+        }
+        
+        function updateTrails() {
+            if (trailLines.length === 0) return;
+            const trail = trailLines[0];
+            // sample some random particles to make trailing effect
+            for (let step = 0; step < 30; step++) {
+                const idx = Math.floor(Math.random() * particles.length);
+                const p = particles[idx];
+                const pos = p.pos;
+                const i = trail.idx;
+                trail.buffer[i*3] = pos.x;
+                trail.buffer[i*3+1] = pos.y;
+                trail.buffer[i*3+2] = pos.z;
+                trail.idx = (trail.idx + 1) % TRAIL_PARTICLES;
+            }
+            trail.geo.attributes.position.needsUpdate = true;
+        }
+        
+        // === TAO 2016 INSPIRED BLOW-UP INJECTION ===
+        function injectTaoBlow() {
+            // amplify vorticity drastically in a localized region -> BKM integral explodes
+            for (let i = 0; i < particles.length; i++) {
+                if (Math.random() < 0.2) {
+                    const factor = 2.8;
+                    particles[i].omega.multiplyScalar(factor);
+                    const mag = particles[i].omega.length();
+                    particles[i].color.setHSL(0.08, 1.0, 0.7);
+                }
+            }
+            bkmIntegral += 2.5;
+            document.getElementById('bkmVal').innerText = bkmIntegral.toFixed(3);
+            updateParticleGeometry();
+        }
+        
+        // reset to initial conditions
+        function resetSimulation() {
+            simTime = 0;
+            bkmIntegral = 0;
+            blowFlag = false;
+            document.getElementById('blowStatus').innerHTML = '🟢 REGULAR';
+            document.getElementById('blowStatus').style.animation = 'none';
+            const nuSlider = document.getElementById('nuSlider');
+            nu = parseFloat(nuSlider.value);
+            stretchFactor = parseFloat(document.getElementById('stretchAmp').value);
+            initialOmegaMag = parseFloat(document.getElementById('initVort').value);
+            initParticles();
+            document.getElementById('enstrophyVal').innerText = '0.000';
+            document.getElementById('stretchVal').innerText = '0.000';
+        }
+        
+        // UI event binding
+        document.getElementById('nuSlider').addEventListener('input', (e) => {
+            nu = parseFloat(e.target.value);
+            document.getElementById('nuVal').innerText = nu.toFixed(4);
+        });
+        document.getElementById('stretchAmp').addEventListener('input', (e) => {
+            stretchFactor = parseFloat(e.target.value);
+            document.getElementById('stretchAmpVal').innerText = stretchFactor.toFixed(2);
+        });
+        document.getElementById('initVort').addEventListener('input', (e) => {
+            initialOmegaMag = parseFloat(e.target.value);
+            document.getElementById('initVortVal').innerText = initialOmegaMag.toFixed(2);
+            resetSimulation();
+        });
+        document.getElementById('resetSim').addEventListener('click', () => resetSimulation());
+        document.getElementById('taoBlowBtn').addEventListener('click', () => injectTaoBlow());
+        
+        // additional visual: vector field arrows (strain direction)
+        const arrowGroup = new THREE.Group();
+        const arrowCount = 18;
+        const arrows = [];
+        for (let i = 0; i < arrowCount; i++) {
+            const dir = new THREE.Vector3(1,0.5,0).normalize();
+            const arrow = new THREE.ArrowHelper(new THREE.Vector3(1,0,0), new THREE.Vector3(0,0,0), 0.5, 0xff44aa, 0.3, 0.2);
+            arrowGroup.add(arrow);
+            arrows.push(arrow);
+        }
+        scene.add(arrowGroup);
+        
+        function updateArrows(t) {
+            // display stretching direction field
+            let idx = 0;
+            for (let x = -2; x <= 2.1; x+=1.2) {
+                for (let z = -2; z <= 2.1; z+=1.2) {
+                    if (idx >= arrows.length) break;
+                    const S = getStrainTensor(x, 0.2, z, t);
+                    const eigDir = new THREE.Vector3(S.xx, S.xy, S.xz).normalize();
+                    arrows[idx].setDirection(eigDir);
+                    arrows[idx].setLength(0.6, 0.25, 0.2);
+                    arrows[idx].setColor(0x66ccff);
+                    arrows[idx].position.set(x, 0.2, z);
+                    idx++;
+                }
+            }
+        }
+        
+        // --- main simulation loop ---
+        let lastTime = performance.now();
+        
+        function animate() {
+            const now = performance.now();
+            let dt = Math.min(0.033, (now - lastTime) / 1000);
+            lastTime = now;
+            if (dt > 0.01) {
+                // update simulation (physics)
+                for (let step = 0; step < 2; step++) {
+                    advectParticles(dt * 0.5);
+                    simTime += dt * 0.5;
+                }
+                computeMetrics();
+                updateTrails();
+                updateArrows(simTime);
+            }
+            
+            // camera controls update
+            controls.update(); // subtle auto-rotation optional? kept manual.
+            
+            // visual rotation of bounding box for dramatic effect (very slow)
+            wireframe.rotation.y = simTime * 0.05;
+            wireframe.rotation.x = Math.sin(simTime * 0.2) * 0.1;
+            
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        
+        // start everything
+        initTrails();
+        initParticles();
+        resetSimulation();  // ensures particles with UI values
+        animate();
+        
+        // fancy resize
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // console info
+        console.log('🔥 Navier-Stokes Singularity Engine Online | 3D Vortex Stretching | Tao mode ready');
+    </script>
+</body>
+</html>

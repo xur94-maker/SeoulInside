@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Navier–Stokes Playground | Try to Break the Fluid</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none; /* better slider handling */
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #0a0f1e;
+            color: #eef4ff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .sub {
+            color: #8b9bcf;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #1e2a3a;
+            padding-bottom: 8px;
+        }
+
+        .tab-btn {
+            background: #111827;
+            border: none;
+            color: #9ca3af;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+        }
+
+        .tab-btn.active {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #1f2937;
+            color: #e2e8f0;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fade 0.25s ease;
+        }
+
+        .tab-pane.active-pane {
+            display: block;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(5px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .card {
+            background: #0f172ad9;
+            backdrop-filter: blur(2px);
+            background: linear-gradient(145deg, #111827 0%, #0f1722 100%);
+            border-radius: 32px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            border: 1px solid #1e2f44;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.4);
+        }
+
+        .canvas-area {
+            background: #030712;
+            border-radius: 24px;
+            padding: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        canvas {
+            background: #010409;
+            border-radius: 20px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+            width: 100%;
+            height: auto;
+            border: 1px solid #2d3a4e;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 12px;
+            align-items: center;
+        }
+
+        .slider-group {
+            flex: 2;
+            min-width: 160px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #7e8bb6;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            cursor: pointer;
+            background: #1e2a3a;
+            height: 4px;
+            border-radius: 10px;
+        }
+
+        .value-display {
+            font-family: 'JetBrains Mono', monospace;
+            background: #00000066;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        button {
+            background: #1f2a3e;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.1s linear;
+        }
+
+        button.primary {
+            background: #3b82f6;
+            box-shadow: 0 2px 6px #3b82f680;
+        }
+
+        button.warning {
+            background: #dc2626;
+        }
+
+        .metric-panel {
+            background: #00000055;
+            padding: 12px 16px;
+            border-radius: 24px;
+            margin: 16px 0 8px 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .note {
+            font-size: 0.7rem;
+            color: #6c7a9e;
+            margin-top: 16px;
+            border-top: 1px solid #1e2a3a;
+            padding-top: 12px;
+        }
+
+        .inline-equation {
+            font-family: monospace;
+            background: #010409;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+    </style>
+    <!-- MathJax for pretty equations -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div class="container">
+    <h1>🌊 Navier–Stokes &nbsp;|&nbsp; <span style="font-weight:400;">Before you read the math — try to break the fluid</span></h1>
+    <div class="sub">Interactive playground: vortex stretching · blow-up candidates · Tao's averaged ODE · Taylor–Green flow</div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="tab1">🌀 Viscosity Playground</button>
+        <button class="tab-btn" data-tab="tab2">📈 Amplitude & Energy</button>
+        <button class="tab-btn" data-tab="tab3">💥 Tao's Averaged ODE (Blow-up proxy)</button>
+        <button class="tab-btn" data-tab="tab4">🔁 Lamb–Oseen vs Leray</button>
+        <button class="tab-btn" data-tab="tab5">⚡ Vortex Stretching (ω·∇)u</button>
+        <button class="tab-btn" data-tab="tab6">🎲 Random Initial Blow-up Test</button>
+    </div>
+
+    <!-- ========================= TAB 1 : VISCOSITY + TAYLOR-GREEN ========================= -->
+    <div id="tab1" class="tab-pane active-pane">
+        <div class="card">
+            <h3>🌀 Viscosity playground — Taylor–Green vortex decay</h3>
+            <p>\( u = U \sin(kx)\cos(ky)e^{-\nu k^2 t}, \quad v = -U \cos(kx)\sin(ky)e^{-\nu k^2 t} \)</p>
+            <div class="canvas-area">
+                <canvas id="tgCanvas" width="500" height="500" style="width:100%; max-width:500px; height:auto; background:#010409;"></canvas>
+            </div>
+            <div class="controls">
+                <div class="slider-group">
+                    <label>Viscosity \( \nu \) &nbsp; (lower = more violent / turbulence)</label>
+                    <input type="range" id="nuSlider" min="0.002" max="0.1" step="0.001" value="0.02">
+                    <span id="nuVal" class="value-display">0.020</span>
+                </div>
+                <div class="slider-group">
+                    <label>Amplitude \( U \)</label>
+                    <input type="range" id="ampSliderTG" min="0.5" max="4.5" step="0.05" value="1.2">
+                    <span id="ampValTG" class="value-display">1.20</span>
+                </div>
+                <div>
+                    <button id="resetTG">⟳ Reset (t=0)</button>
+                </div>
+            </div>
+            <div class="metric-panel">
+                <div>Current energy norm \( \propto \|u\|^2 \) : <strong id="tgEnergy">0.00</strong> &nbsp; (viscous dissipation: \( \nu \int |\nabla u|^2 \))</div>
+                <div class="note">⬤ Lower ν → slower decay, chaotic-like structures. Blow-up never proven in real 3D NS, but here we feel the cascade.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================= TAB 2 : AMPLITUDE TEST (Taylor–Green energy vs time) ========================= -->
+    <div id="tab2" class="tab-pane">
+        <div class="card">
+            <h3>📈 Amplitude extreme test — Energy over time</h3>
+            <p>Energy \(E(t) = E_0 e^{-2\nu k^2 t}\). What if we increase initial amplitude? Still exponential decay, but large A creates larger initial gradients — closer to "break"?</p>
+            <div class="canvas-area">
+                <canvas id="energyCanvas" width="500" height="280" style="width:100%; max-width:500px; background:#010409;"></canvas>
+            </div>
+            <div class="controls">
+                <div class="slider-group">
+                    <label>Initial amplitude \(A\) (risk factor)</label>
+                    <input type="range" id="ampA" min="0.5" max="5.0" step="0.1" value="1.0">
+                    <span id="ampAVal" class="value-display">1.0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Viscosity \( \nu \)</label>
+                    <input type="range" id="nuAmp" min="0.002" max="0.08" step="0.001" value="0.02">
+                    <span id="nuAmpVal" class="value-display">0.020</span>
+                </div>
+                <button id="resetAmp">Recompute energy curve</button>
+            </div>
+            <div class="note">📉 Even with extreme amplitude, Taylor–Green (laminar) never blows up — but real turbulence might concentrate energy. The unsolved mystery: can 3D Euler stretching beat viscosity?</div>
+        </div>
+    </div>
+
+    <!-- ========================= TAB 3 : TAO's AVERAGED ODE (Blow-up simulation) ========================= -->
+    <div id="tab3" class="tab-pane">
+        <div class="card">
+            <h3>💥 Tao's averaged model (2016) — Finite-time blow-up in a proxy system</h3>
+            <p>Simplified ODE: \( \frac{dE}{dt} = + c\, E^{\alpha} - \nu E \) &nbsp; mimicking energy concentration (vortex stretching). <br><span class="inline-equation">Tao's construction → blow-up in finite time for smoothed NS. Here we emulate the instability.</span></p>
+            <div class="canvas-area">
+                <canvas id="taoCanvas" width="500" height="280" style="width:100%; max-width:500px;"></canvas>
+            </div>
+            <div class="controls">
+                <div class="slider-group">
+                    <label>Nonlinear exponent \(\alpha\) (stretching strength)</label>
+                    <input type="range" id="alphaTao" min="1.2" max="2.5" step="0.02" value="1.8">
+                    <span id="alphaVal" class="value-display">1.80</span>
+                </div>
+                <div class="slider-group">
+                    <label>Effective viscosity \(\nu_{\text{eff}}\) (damping)</label>
+                    <input type="range" id="nuTao" min="0.005" max="0.2" step="0.002" value="0.05">
+                    <span id="nuTaoVal" class="value-display">0.050</span>
+                </div>
+                <button id="runTaoBtn" class="primary">▶ Run / Reset ODE</button>
+                <button id="extremeTaoBtn" class="warning">⚡ EXTREME (α=2.3, ν=0.01)</button>
+            </div>
+            <div class="metric-panel">
+                <div>🔥 Blow-up status: <strong id="blowupFlag">stable</strong> &nbsp; | &nbsp; Max energy reached: <span id="maxE">0.0</span></div>
+                <div class="note">⚠️ This is a stylized ODE, not the true NS. But it demonstrates how a positive feedback loop (vortex stretching) can overcome viscosity → singular growth.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================= TAB 4 : Lamb–Oseen vs Leray regime ========================= -->
+    <div id="tab4" class="tab-pane">
+        <div class="card">
+            <h3>🔁 Lamb–Oseen (classic vortex) vs Leray boundary</h3>
+            <p>Lamb–Oseen: \( u_\theta(r,t) = \frac{\Gamma}{2\pi r}(1-e^{-r^2/(4\nu t)}) \) &nbsp; smooth, no blow-up. Leray 1934 regime: at very low viscosity, CKN theorem applies — singularities (if exist) measure zero.</p>
+            <div class="canvas-area">
+                <canvas id="vortexCanvas" width="500" height="280" style="width:100%; max-width:500px;"></canvas>
+            </div>
+            <div class="controls">
+                <div class="slider-group">
+                    <label>Circulation \( \Gamma \)</label>
+                    <input type="range" id="gammaLamb" min="1" max="15" step="0.5" value="6">
+                    <span id="gammaVal" class="value-display">6.0</span>
+                </div>
+                <div class="slider-group">
+                    <label>Kinematic viscosity \( \nu \)</label>
+                    <input type="range" id="nuLamb" min="0.005" max="0.2" step="0.002" value="0.04">
+                    <span id="nuLambVal" class="value-display">0.040</span>
+                </div>
+            </div>
+            <div class="note">Lamb–Oseen = globally smooth, never blows up. Leray supercritical regime: open question — singularities could only be isolated points (Caffarelli–Kohn–Nirenberg).</div>
+        </div>
+    </div>
+
+    <!-- ========================= TAB 5 : VORTEX STRETCHING ANIMATION ========================= -->
+    <div id="tab5" class="tab-pane">
+        <div class="card">
+            <h3>⚡ Vortex stretching (ω·∇)u — the 3D singularity engine</h3>
+            <p>In 3D, vortex lines can be stretched → vorticity amplifies → possible blow-up. <br>Animation: idealized tube elongation.</p>
+            <div class="canvas-area">
+                <canvas id="stretchCanvas" width="500" height="280" style="width:100%; max-width:500px;"></canvas>
+            </div>
+            <div class="controls">
+                <button id="animStart">▶ Start stretching</button>
+                <button id="animReset">⟳ Reset</button>
+            </div>
+            <div class="metric-panel">The figure skater effect: pull arms (stretch) → spin rate increases → enstrophy \( \int \omega^2 \) may blow up in finite time. This is the core open problem.</div>
+        </div>
+    </div>
+
+    <!-- ========================= TAB 6 : RANDOM BLOW-UP TEST ========================= -->
+    <div id="tab6" class="tab-pane">
+        <div class="card">
+            <h3>🎲 Random initial condition — Could this blow up?</h3>
+            <p>We generate random streamfunction and estimate a "singularity potential" based on enstrophy growth proxy. Real NS would need massive computation.</p>
+            <div class="controls">
+                <button id="genRandomBtn">🌀 Generate random flow field</button>
+                <button id="testBlowupBtn" class="primary">🔥 Estimate blow-up risk</button>
+            </div>
+            <div class="metric-panel" id="randomMetrics">
+                <div>Current field: <strong id="randStatus">not initialized</strong></div>
+                <div>Vorticity concentration index: <span id="randIndex">---</span></div>
+                <div class="note">This is a heuristic based on velocity gradient magnitude. Real Navier–Stokes would need DNS. For 121 years, no one has found a true smooth blow-up.</div>
+            </div>
+            <canvas id="randomCanvas" width="500" height="280" style="width:100%; max-width:500px; margin-top:12px;"></canvas>
+        </div>
+    </div>
+    <div class="sub" style="margin-top: 8px; text-align:center;">📐 Every equation follows the four‑language reference (Unicode/LaTeX/Mathematica/Python). Interactive simulations by Seoul Inside Archive — May 2026</div>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // 1) TAYLOR-GREEN CANVAS (tab1) - realtime vector field (quiver style points)
+    // --------------------------------------------------------------
+    const tgCanvas = document.getElementById('tgCanvas');
+    const ctxTG = tgCanvas.getContext('2d');
+    let tgWidth = 500, tgHeight = 500;
+    tgCanvas.width = tgWidth; tgCanvas.height = tgHeight;
+    let tgTime = 0;
+    let animFrame;
+
+    function computeTG(x, y, nu, U, t) {
+        const k = 2 * Math.PI / 5;   // spatial frequency
+        const expDecay = Math.exp(-nu * k * k * t);
+        let u = U * Math.sin(k * x) * Math.cos(k * y) * expDecay;
+        let v = -U * Math.cos(k * x) * Math.sin(k * y) * expDecay;
+        return {u, v};
+    }
+
+    function drawTaylorGreen() {
+        const nu = parseFloat(document.getElementById('nuSlider').value);
+        const U = parseFloat(document.getElementById('ampSliderTG').value);
+        const step = 22;
+        ctxTG.clearRect(0, 0, tgWidth, tgHeight);
+        ctxTG.fillStyle = "#010409";
+        ctxTG.fillRect(0, 0, tgWidth, tgHeight);
+        ctxTG.strokeStyle = "#3b82f6";
+        for (let i = 0; i < tgWidth; i += step) {
+            for (let j = 0; j < tgHeight; j += step) {
+                const x = i / tgWidth * 2*Math.PI;
+                const y = j / tgHeight * 2*Math.PI;
+                const {u, v} = computeTG(x, y, nu, U, tgTime);
+                const scale = 8.0;
+                const dx = u * scale;
+                const dy = v * scale;
+                ctxTG.beginPath();
+                ctxTG.moveTo(i, j);
+                ctxTG.lineTo(i + dx, j + dy);
+                ctxTG.strokeStyle = "#60a5fa";
+                ctxTG.lineWidth = 1.2;
+                ctxTG.stroke();
+                ctxTG.fillStyle = "#bbf0ff";
+                ctxTG.beginPath();
+                ctxTG.arc(i + dx, j + dy, 1.5, 0, 2*Math.PI);
+                ctxTG.fill();
+            }
+        }
+        // energy norm approx
+        let sum2 = 0;
+        for (let i = 0; i < tgWidth; i += 10) {
+            for (let j = 0; j < tgHeight; j += 10) {
+                const x = i / tgWidth * 2*Math.PI, y = j / tgHeight * 2*Math.PI;
+                const {u,v} = computeTG(x, y, nu, U, tgTime);
+                sum2 += u*u + v*v;
+            }
+        }
+        const energyEst = (sum2 / ( (tgWidth/10)*(tgHeight/10) )).toFixed(3);
+        document.getElementById('tgEnergy').innerText = energyEst;
+    }
+
+    document.getElementById('nuSlider').addEventListener('input', (e) => {
+        document.getElementById('nuVal').innerText = parseFloat(e.target.value).toFixed(3);
+        drawTaylorGreen();
+    });
+    document.getElementById('ampSliderTG').addEventListener('input', (e) => {
+        document.getElementById('ampValTG').innerText = parseFloat(e.target.value).toFixed(2);
+        drawTaylorGreen();
+    });
+    document.getElementById('resetTG').addEventListener('click', () => { tgTime = 0; drawTaylorGreen(); });
+    setInterval(() => { if (document.getElementById('tab1').classList.contains('active-pane')) { tgTime = Math.min(tgTime + 0.03, 3.0); drawTaylorGreen(); } }, 200);
+
+    // --------------------------------------------------------------
+    // 2) ENERGY DECAY PLOT (tab2)
+    // --------------------------------------------------------------
+    const energyCanvas = document.getElementById('energyCanvas');
+    const ctxEng = energyCanvas.getContext('2d');
+    energyCanvas.width = 500; energyCanvas.height = 280;
+    function plotEnergyDecay() {
+        const A = parseFloat(document.getElementById('ampA').value);
+        const nu = parseFloat(document.getElementById('nuAmp').value);
+        const k = 1.2;
+        ctxEng.clearRect(0, 0, 500, 280);
+        ctxEng.fillStyle = "#010409";
+        ctxEng.fillRect(0, 0, 500, 280);
+        ctxEng.beginPath();
+        ctxEng.strokeStyle = "#facc15";
+        ctxEng.lineWidth = 2.5;
+        const E0 = A*A;
+        for (let i = 0; i <= 200; i++) {
+            let t = i / 200 * 6.0;
+            let E = E0 * Math.exp(-2*nu * k * t);
+            let x = i * 2.5;
+            let y = 260 - (E / (E0+0.01)) * 220;
+            if (i === 0) ctxEng.moveTo(x, y);
+            else ctxEng.lineTo(x, y);
+        }
+        ctxEng.stroke();
+        ctxEng.fillStyle = "#94a3b8";
+        ctxEng.font = "10px monospace";
+        ctxEng.fillText("time →", 450, 270);
+        ctxEng.fillText("Energy", 10, 30);
+    }
+    document.getElementById('ampA').addEventListener('input', (e) => { document.getElementById('ampAVal').innerText = e.target.value; plotEnergyDecay(); });
+    document.getElementById('nuAmp').addEventListener('input', (e) => { document.getElementById('nuAmpVal').innerText = parseFloat(e.target.value).toFixed(3); plotEnergyDecay(); });
+    document.getElementById('resetAmp').addEventListener('click', plotEnergyDecay);
+    plotEnergyDecay();
+
+    // --------------------------------------------------------------
+    // 3) TAO ODE BLOW-UP SIMULATION
+    // --------------------------------------------------------------
+    const taoCanvas = document.getElementById('taoCanvas');
+    const ctxTao = taoCanvas.getContext('2d');
+    taoCanvas.width = 500; taoCanvas.height = 280;
+    let taoE = 0.5;
+    let taoTime = 0;
+    let taoTimer = null;
+
+    function solveTaoODE(alpha, nuEff, steps=400) {
+        let E = 0.8;
+        let time = 0;
+        let history = [{t:0, E:0.8}];
+        let dt = 0.02;
+        for (let i=0; i<steps; i++) {
+            let dE = (Math.pow(E, alpha) - nuEff * E);
+            E = E + dt * dE;
+            time += dt;
+            if (E > 1e6) { history.push({t:time, E:1e6}); break; }
+            if (E < 0.001) { history.push({t:time, E:0.001}); break; }
+            history.push({t:time, E:E});
+        }
+        return history;
+    }
+
+    function drawTaoCurve() {
+        const alpha = parseFloat(document.getElementById('alphaTao').value);
+        const nuEff = parseFloat(document.getElementById('nuTao').value);
+        const history = solveTaoODE(alpha, nuEff, 500);
+        ctxTao.clearRect(0, 0, 500, 280);
+        ctxTao.fillStyle = "#010409";
+        ctxTao.fillRect(0, 0, 500, 280);
+        let maxE = Math.min(20, Math.max(...history.map(h=>h.E)));
+        let blow = history.some(h => h.E > 50);
+        document.getElementById('blowupFlag').innerHTML = blow ? "💥 BLOW-UP (finite-time singularity)" : "✅ Remains finite";
+        document.getElementById('maxE').innerHTML = maxE.toFixed(2);
+        ctxTao.beginPath();
+        ctxTao.strokeStyle = "#ef4444";
+        for (let i=0; i<history.length; i++) {
+            let x = (history[i].t / 8) * 480;
+            let y = 260 - (Math.min(history[i].E, maxE) / maxE) * 230;
+            if (i===0) ctxTao.moveTo(x, y);
+            else ctxTao.lineTo(x, y);
+        }
+        ctxTao.stroke();
+        ctxTao.fillStyle = "#cbd5e1";
+        ctxTao.fillText("Energy E(t)", 20, 40);
+    }
+
+    document.getElementById('runTaoBtn').addEventListener('click', drawTaoCurve);
+    document.getElementById('extremeTaoBtn').addEventListener('click', () => {
+        document.getElementById('alphaTao').value = 2.3;
+        document.getElementById('nuTao').value = 0.01;
+        document.getElementById('alphaVal').innerText = "2.30";
+        document.getElementById('nuTaoVal').innerText = "0.010";
+        drawTaoCurve();
+    });
+    drawTaoCurve();
+
+    // --------------------------------------------------------------
+    // 4) Lamb-Oseen vortex velocity profile
+    // --------------------------------------------------------------
+    const vortexCanvas = document.getElementById('vortexCanvas');
+    const ctxVortex = vortexCanvas.getContext('2d');
+    vortexCanvas.width = 500; vortexCanvas.height = 280;
+    function drawLambOseen() {
+        const Gamma = parseFloat(document.getElementById('gammaLamb').value);
+        const nu = parseFloat(document.getElementById('nuLamb').value);
+        const t = 1.2;
+        ctxVortex.clearRect(0,0,500,280);
+        ctxVortex.fillStyle = "#010409";
+        ctxVortex.fillRect(0,0,500,280);
+        ctxVortex.beginPath();
+        ctxVortex.strokeStyle = "#2dd4bf";
+        for (let i=0; i<=500; i++) {
+            let r = (i/500) * 6.0;
+            let uTheta = (r>0.01) ? (Gamma/(2*Math.PI*r))*(1 - Math.exp(-r*r/(4*nu*t))) : 0;
+            let x = i;
+            let y = 260 - Math.min(uTheta, 8) * 25;
+            if (i===0) ctxVortex.moveTo(x, y);
+            else ctxVortex.lineTo(x, y);
+        }
+        ctxVortex.stroke();
+    }
+    document.getElementById('gammaLamb').addEventListener('input', (e) => { document.getElementById('gammaVal').innerText = e.target.value; drawLambOseen(); });
+    document.getElementById('nuLamb').addEventListener('input', (e) => { document.getElementById('nuLambVal').innerText = parseFloat(e.target.value).toFixed(3); drawLambOseen(); });
+    drawLambOseen();
+
+    // --------------------------------------------------------------
+    // 5) Vortex stretching animation: idealized tube
+    // --------------------------------------------------------------
+    const stretchCanvas = document.getElementById('stretchCanvas');
+    const ctxStretch = stretchCanvas.getContext('2d');
+    stretchCanvas.width = 500; stretchCanvas.height = 280;
+    let stretchFactor = 0.2;
+    let animStretch = null;
+    function drawStretch(factor) {
+        ctxStretch.clearRect(0,0,500,280);
+        ctxStretch.fillStyle = "#0b1120";
+        ctxStretch.fillRect(0,0,500,280);
+        let w = 120 + factor * 180;
+        let h = 120 - factor * 80;
+        ctxStretch.fillStyle = "#f97316";
+        ctxStretch.beginPath();
+        ctxStretch.ellipse(250, 140, w/2, Math.max(12, h/2), 0, 0, 2*Math.PI);
+        ctxStretch.fill();
+        ctxStretch.fillStyle = "white";
+        ctxStretch.font = "bold 12px monospace";
+        ctxStretch.fillText(`Stretching rate: ${(factor*3).toFixed(1)}`, 20, 50);
+        if(factor > 0.8) ctxStretch.fillStyle = "#ffaa44";
+        ctxStretch.fillText("Vorticity ω increases → blow-up candidate", 20, 90);
+    }
+    document.getElementById('animStart').addEventListener('click', () => {
+        if(animStretch) clearInterval(animStretch);
+        stretchFactor = 0.2;
+        animStretch = setInterval(() => { stretchFactor = Math.min(1.0, stretchFactor+0.015); drawStretch(stretchFactor); if(stretchFactor>=0.99) clearInterval(animStretch); }, 40);
+    });
+    document.getElementById('animReset').addEventListener('click', () => { if(animStretch) clearInterval(animStretch); stretchFactor=0.2; drawStretch(0.2); });
+    drawStretch(0.2);
+    
+    // --------------------------------------------------------------
+    // 6) Random field (heuristic)
+    // --------------------------------------------------------------
+    const randCanvas = document.getElementById('randomCanvas');
+    const ctxRand = randCanvas.getContext('2d');
+    randCanvas.width = 500; randCanvas.height = 280;
+    let randomField = null;
+    function generateRandomField() {
+        let data = [];
+        for (let i=0; i<40; i++) {
+            let row = [];
+            for (let j=0; j<40; j++) {
+                row.push(Math.random() * 2 - 1);
+            }
+            data.push(row);
+        }
+        return data;
+    }
+    function drawRandomField(field) {
+        if(!field) return;
+        const cellW = randCanvas.width/40, cellH = randCanvas.height/40;
+        for (let i=0;i<40;i++) {
+            for (let j=0;j<40;j++) {
+                let val = field[i][j];
+                let col = val > 0 ? `rgba(59,130,246,${val*0.8})` : `rgba(220,38,38,${-val*0.8})`;
+                ctxRand.fillStyle = col;
+                ctxRand.fillRect(i*cellW, j*cellH, cellW+1, cellH+1);
+            }
+        }
+    }
+    document.getElementById('genRandomBtn').addEventListener('click', () => {
+        randomField = generateRandomField();
+        drawRandomField(randomField);
+        document.getElementById('randStatus').innerHTML = "random vorticity-like field generated";
+        document.getElementById('randIndex').innerHTML = "---";
+    });
+    document.getElementById('testBlowupBtn').addEventListener('click', () => {
+        if(!randomField) { alert("Generate random field first"); return; }
+        let gradMag = 0;
+        for(let i=1;i<39;i++) for(let j=1;j<39;j++) gradMag += Math.abs(randomField[i][j]-randomField[i-1][j]) + Math.abs(randomField[i][j]-randomField[i][j-1]);
+        let index = (gradMag / 3000).toFixed(3);
+        document.getElementById('randIndex').innerHTML = index + " (enstrophy proxy)";
+        document.getElementById('randStatus').innerHTML = index > 0.35 ? "⚠️ High gradient concentration — possible blow-up candidate (unproven)" : "Mild field, unlikely singular";
+    });
+
+    // tab switching logic
+    const btns = document.querySelectorAll('.tab-btn');
+    const panes = document.querySelectorAll('.tab-pane');
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            panes.forEach(p => p.classList.remove('active-pane'));
+            document.getElementById(tabId).classList.add('active-pane');
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if(tabId === 'tab1') drawTaylorGreen();
+            if(tabId === 'tab4') drawLambOseen();
+            if(tabId === 'tab2') plotEnergyDecay();
+        });
+    });
+    drawTaylorGreen();
+</script>
+</body>
+</html>
