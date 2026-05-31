@@ -1,6 +1,50 @@
 Seoul Inside — Complete Archive
 Last updated: May 26, 2026
 
+
+1. Navier–Stokes Equations — An Archive (Technical Report)
+Link: https://seoulinside.substack.com/p/navierstokes-equations-an-archive
+
+TL;DR:
+The global existence and smoothness of solutions to the 3D incompressible Navier–Stokes equations has remained unsolved for 121 years. In 2D, global smoothness is proven. In 3D, vortex stretching is the key mechanism that could potentially produce a finite-time singularity (blow-up). Leray (1934) proved global existence of weak solutions; Caffarelli–Kohn–Nirenberg (1982) showed the singular set has parabolic Hausdorff dimension at most 1. Tao (2016) proved finite-time blow-up for an averaged version of the equations (not the real Navier–Stokes). Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
+
+2. Before You Read the Mathematics — Try to Break the Fluid First (Prologue / Public-Facing)
+Link: https://seoulinside.substack.com/p/before-you-read-the-mathematics-try
+
+TL;DR:
+This is a hands-on prologue to the Navier–Stokes problem. Readers can manipulate an interactive simulation — lowering viscosity, raising amplitude — to see whether they can force the energy norm to infinity (a blow-up). They will likely fail; no one has succeeded in 121 years. The document explains why 2D is solved (no vortex stretching) while 3D remains open (vortex stretching exists). Key milestones: Leray (1934, weak solutions), Caffarelli–Kohn–Nirenberg (1982, partial regularity), Tao (2016, blow-up for averaged model). The goal is intuition before formalism.
+
+3. Riemann Hypothesis — Technical Report
+Link: https://seoulinside.substack.com/p/riemann-hypothesis-technical-report
+
+TL;DR:
+The Riemann Hypothesis (RH) states that all nontrivial zeros of the Riemann zeta function ζ(s) have real part 1/2. It has been open for 167 years. The zeta function is defined by ζ(s)=Σ n⁻ˢ for Re(s)>1, extends analytically via the functional equation, and connects to primes via the Euler product. The Explicit Formula ψ(x)=x−Σ_ρ xᵖ/ρ−log(2π)−½log(1−x⁻²) shows that prime distribution is exactly governed by the zeros of ζ(s). Partial progress: Levinson–Conrey method has proven that at least 41.72% (5/12) of zeros lie on the critical line. Guth–Maynard (2024) improved zero-density estimates for the first time in 84 years, but remain far from RH. Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
+
+4. P vs. NP — The Open Problem (Technical Report)
+Link: https://seoulinside.substack.com/p/p-vs-np-the-open-problem
+
+TL;DR:
+P vs. NP asks: can every problem whose solution can be verified quickly also be solved quickly? P is the class of problems solvable in polynomial time by a deterministic Turing machine. NP is the class of problems whose solutions can be verified in polynomial time. The Cook–Levin theorem (1971) proved SAT is NP-complete. Three barriers rule out all known proof techniques: Relativization (1975) , Natural Proofs (1997) , and Algebrization (2009) . If P = NP, modern cryptography collapses; if P ≠ NP (believed by ~99% of experts who have thought deeply), computational limits are fundamental. Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
+
+5. The Problem That Could Break Everything — Or Prove It Was Never Breakable (P vs. NP Intelligence Dossier)
+Link: https://seoulinside.substack.com/p/the-problem-that-could-break-everything
+
+TL;DR:
+This public-facing dossier on P vs. NP emphasizes historical context and real-world stakes. Early formulations: Nash (1955, classified NSA letter) and Gödel (1956, letter to von Neumann). Yannakakis (1988) proved that symmetric linear programs for TSP require exponentially many constraints — the only verified direct contribution in Woeginger’s archive. The three barriers (Relativization, Natural Proofs, Algebrization) explain why all proof attempts fail. Recent frontier: Kabanets–Kolokolova (2025/089) connects time-bounded Kolmogorov complexity (Chain Rule) to P vs. NP. Expert polls: 83% believe P ≠ NP overall; among deep thinkers, ~99%. Status as of May 2026: UNSOLVED. Prize unclaimed.
+
+6. The Problem That Has Defeated Every Mathematician for 162 Years (Riemann Hypothesis Intelligence Dossier)
+Link: https://seoulinside.substack.com/p/the-problem-that-has-defeated-every
+
+TL;DR:
+This public-facing dossier on the Riemann Hypothesis focuses on narrative and significance. Riemann (1859) discovered that the zeros of the zeta function completely determine prime distribution and conjectured all nontrivial zeros lie on the critical line (Re(s)=1/2). Partial results have crept upward: Levinson (1974) proved ~34.74%, Conrey (1989) ~40.88%, and the current record stands at ≥41.72% (5/12) by Pratt–Robles–Zaharescu–Zeindler (2020). The Atiyah affair (2018) — a 15-slide "proof" with an undefined Todd function — became the textbook example of "not even wrong." Guth–Maynard (2024) improved zero-density estimates for the first time in 84 years, but Maynard himself says it remains "very far" from RH. Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
+
+
+
+
+
+
+
+
 [1] Real Estate & Urban Policy — Why Korea's Cities Work Differently
 Korea's reconstruction system has no Western equivalent. These pieces explain how it actually works — and why it takes decades.
 
