@@ -1,13 +1,13 @@
 {
   "globalNews": [
     {
-      "title": "Hundreds arrested in France after wild Champions League celebrations",
-      "link": "https://www.bbc.com/news/articles/cg7pk5j7nyjo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 31 May 2026 06:41:02 GMT",
-      "desc": "Thousands of officers tried to quell unrest as crowds of fans - some firing flares - celebrated PSG's victory over Arsenal."
+      "title": "Hundreds arrested and dozens of police injured after Champions League riots in France",
+      "link": "https://www.bbc.com/news/articles/c0r2ejg1w9xo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 31 May 2026 10:45:35 GMT",
+      "desc": "Nearly 800 people were arrested after clashes with police which saw 219 people injured, including 57 police officers."
     },
     {
-      "title": "Japan defence minister denies militarism, criticises China's 'huge arsenal'",
+      "title": "Japan defence minister denies militarism and criticises China's 'huge arsenal'",
       "link": "https://www.bbc.com/news/articles/cp8p4ejy8ppo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 31 May 2026 06:34:04 GMT",
       "desc": "Shinjiro Koizumi makes some of Tokyo's most pointed remarks yet in the dispute over Japan's military build-up."
@@ -25,13 +25,25 @@
       "desc": "People have just begun returning to check on their homes in the block that was hit early on Friday morning."
     },
     {
-      "title": "Italy bans Kanye West and Travis Scott concerts over security concerns",
-      "link": "https://www.bbc.com/news/articles/c3d27x5vnnvo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 30 May 2026 15:39:12 GMT",
-      "desc": "Local authorities say the cancellation of other West concerts had played a role in the decision."
+      "title": "Colombia votes in presidential election that could redefine relations with US",
+      "link": "https://www.bbc.com/news/articles/c2027g423glo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 31 May 2026 08:47:46 GMT",
+      "desc": "The election is held after months of public recrimination between current left-wing President Gustavo Petro and his US counterpart Donald Trump."
     }
   ],
   "koreaNews": [
+    {
+      "title": "How East Asia should respond to its China shock - The Economist",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQYkM0ZGRwX2U0M1RMVjVwYVV2N0VYeHoxUTV6X0p6VERkdXVtcVdDSzVqeEZiam92cThSejhobWxYRWZIa1lTX1F1Vnh4R3Joby15ZFlQTklJcUZheDZXd3JOU0ptS1Z1V09fb2dCZGMzUnRQTmxwYWZLelZGdHFoNXlmQlNzV3lOWHJ0ZXZHVUZOZ3IybUpJ?oc=5",
+      "date": "Thu, 28 May 2026 09:36:12 GMT",
+      "desc": "How East Asia should respond to its China shock&nbsp;&nbsp;The Economist"
+    },
+    {
+      "title": "South Korea’s SK Hynix enters exclusive $1 trillion club - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPdFRzaTVtM1FwbzNaLWJjb2ZWamRzUG1yZmhYdDdubXJZbUljeWx0TEV4T2xSSkRTZlNkRThvMzN1Yms2Wm1CVlhDY0hZNEZZMlJZRF9nQVdpRmowMVE4ZDZTZV9lRlpRVEE0T1phel84U2QtNWdkb0lNQmpZTG5ESlBxUDZ5T1k0VFozU1hoa2RmTkRQeVZqckVVbk5zTG_SAaQBQVVfeXFMT1N6ZDJVa3RiMUt3TmRKanpCdElKRnpiNnZGLURHQWhYdUZrMmdnOGVnRjNuNVhTZUliUmdtV0JPZmFiZnhrY0VJZ1lJblRKdHp0eEY0MFNCcEtqNE45MURhMVNfTUZrQjQ4alE2YTluSXQ3M0dONXV3eXFLcE5sUlltNHU2SFRfS1I3cFVtQS16eFhYdGlkNDdxUktMNHNPUG9tZno?oc=5",
+      "date": "Fri, 29 May 2026 08:11:59 GMT",
+      "desc": "South Korea’s SK Hynix enters exclusive $1 trillion club&nbsp;&nbsp;Al Jazeera"
+    },
     {
       "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUUVMTnlQOTYyODFiMEFzSFFTMWNidXBjS2YzN2FhZE5XcVVBbFg0MmNyX1hNQVQyMEhyQ0FMNU9UT0NURFhONHVRcDBPRXZWYTdEZXM4ZUlWc05HSHQ5RXRWMGpFZDNyTmIyaE5NeVRqSjRCbEhIVUFwcFEzWkdRZ1E0WjY?oc=5",
@@ -45,40 +57,28 @@
       "desc": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "South Korea's Growth-Income Gap Hits 2-Year High - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNTW5rTVF1UjVTSmhscnVJejlyeEJXSE5PRWdVWUM3ZDhKS0Y0dnVHby1xeEhnVWFvUWoyQk1CenoyeXNQMUNhVFlmb1FScWxxVFNFMzRsMk1neEJmbEd6aFZCRXp5am1ORXBhWXVuX1JUUFBTVTA2WDNUN3RodF9ZNzg1N0xnNDRzN05sbmlB?oc=5",
-      "date": "Sun, 31 May 2026 02:08:47 GMT",
-      "desc": "South Korea's Growth-Income Gap Hits 2-Year High&nbsp;&nbsp;조선일보"
+      "title": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOOEVSNTI4M2U0cjM4Z2hMV2ROVG5SNmhsVUVGbDROUVZ0TmFGOU1fbXhQZHlndlc0MktIRXRCQzgwU0lkS3dyMU40WGVjclNHTE5TcWoySXlzLWcweHVZLWYxNnIxRmtYQV8wQXdtS2VvT1VtUDZZa1VnbnZQbFpjdzZodkkteTludEFxeGYwTXBtWjZWRk9qdE5FaW5UblJjZ3V5dWNPUkVucldMOGZjb1N4blBUbVIwQ0V5aXgweTM?oc=5",
+      "date": "Thu, 28 May 2026 05:35:00 GMT",
+      "desc": "Bank of Korea Stands Pat But Signals Tighter Policy Ahead&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "In the World’s Economic “Black Holes,” Data Still Leaks Out - UC San Diego Today",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQUVdOZlJEM241b09lZ05sVXdIU1EzX3huSnJ5RDdOVEI5aHprZ0ZZLUVCMWJfUjRPRmY3WUdWYmdpUmJMeEs5RmlZRkk0SDNGY0ljSlpUV2w5NVo3QWJQMTZVOFlmaG9sX3BfelpaSUVYbHZBUk9TTVFoR1VVZ3hOWVBVZllhaXRoY1hLSg?oc=5",
-      "date": "Thu, 28 May 2026 15:02:32 GMT",
-      "desc": "In the World’s Economic “Black Holes,” Data Still Leaks Out&nbsp;&nbsp;UC San Diego Today"
+      "title": "SK Hynix Leverage Products Draw Double Samsung Electronics' Betting Funds - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPYmw0QkFlakVoTkE0d0VxTHh2Tmc2RGpYcXV2cUI3RWRHbzdRRV96NlhzYmxfT1NIbWJndmpxSVEyd0JaZEhyWHJ6SjZHdmxfcUxYbTUwN05oa2pDeWVNR3NtTW1tc1dLcHN3Wm1PR2Q2YjNkY0tibFd1a1MxaVlTMFlnQW5JdFdpNnk0NnpR?oc=5",
+      "date": "Sun, 31 May 2026 09:25:24 GMT",
+      "desc": "SK Hynix Leverage Products Draw Double Samsung Electronics' Betting Funds&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQjVZQTd6cTdwOWwyUy1udzBUU3BmTU5lX1lTWnlaSVpEcktrcW00V3hEQUpCNjJwMExFcHNtUU1xQlU2RkNObExxNHpiWEl5MWVlcm5xTnVXWW1mUW9NWTM4ejdHMjg3MmpsaGk2RmhlTjlYTnNLRmh6dWhJSjdoRHJCbGtKNlNkTVdzN1FqMmZIVDJEeFpNQllZNU5oR3IxWF91Sm1PTFBhNWdkekozZy03aDRYcGM?oc=5",
-      "date": "Wed, 27 May 2026 14:08:47 GMT",
-      "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
+      "title": "Samsung, SK hynix Join Anthropic Funding Round, Raising Expectations for AI Chip Cooperation - thelec.net",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0zWWpkb2NLN1V6YTdnNTllZ3JadWhFRkZfQ0VnYVJEQi1wTWxwUlVzMTRmc0lEZXhnS3N1TWJTY002SEdXMndQc2Z2S2ZweFVfY0Itd1k2eDBodkpVR2VsZEdNVVR4MTQ?oc=5",
+      "date": "Sun, 31 May 2026 09:18:53 GMT",
+      "desc": "Samsung, SK hynix Join Anthropic Funding Round, Raising Expectations for AI Chip Cooperation&nbsp;&nbsp;thelec.net"
     },
     {
-      "title": "Samsung, SK Hynix Executives Post Over 400% Stock Returns - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPeEZ2amhNTlJKZTJJakJ1dGprUDFfN05ZR1ZGNjBkaHA3TXNEb3VwQUJ2TVFSSXhHcFgzUE1xdDNFX0ItVEI1eUUyVXF0Zk9kc1ZpNjNiaTNfcXdYdkdIM18xYm5EVW9YcEE1ZENzWVMtT3VmYUE5dU1JRmtrZC1UeHdPMU5zZl83?oc=5",
-      "date": "Sun, 31 May 2026 04:30:12 GMT",
-      "desc": "Samsung, SK Hynix Executives Post Over 400% Stock Returns&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "For the third time this month, a chip giant has joined the $1 trillion club - CNN",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOT3BXZTI1RzlhdGhXRm41VzUzWW8ycE9LLVlMUklwSzZfaldfYU9TUUN0NDlCOGFpbWRlN2Y1MzV3YWQyUmxBdkgzRjhtQjBhZGl3Tk1XRFZ0YkpWXzNieWVsZnhsT0NFdy0zNXNHTlRfUGUxZDhfYzNxUlNsQjZHai1hR3ljNzBxWUdLMQ?oc=5",
-      "date": "Fri, 29 May 2026 04:26:13 GMT",
-      "desc": "For the third time this month, a chip giant has joined the $1 trillion club&nbsp;&nbsp;CNN"
-    },
-    {
-      "title": "Samsung, SK Hynix trail Micron as automotive memory demand rises - digitimes",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNbG5aZWhTek9Lb3ZQVzVNNG04dHFHRzFwWXlPRWY2ZnlnbGFXTTZSZnptUHRmZ2RxWVZHLTJISDF0V19aQnA1S0RRaGV0SUJRUHpGUW5SVzVEMV92UWRZcjZPNlpIS1JwYTB0enMwbGRfZUZIc3UxY2IySlRTVVBKeG5uZURVQW5qcVZiYnl1VlRJOHBlVnZR?oc=5",
-      "date": "Fri, 29 May 2026 23:19:11 GMT",
-      "desc": "Samsung, SK Hynix trail Micron as automotive memory demand rises&nbsp;&nbsp;digitimes"
+      "title": "SK Hynix 'Pure Semiconductor' vs Samsung Electronics: Leveraged ETF divide - MSN",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOZmMxZ29tQ1VCWjR1NHlabGVraEJSdDlqWGJ1b05QMjFHVDN1UzRwVm5EMmlRZGh4ZWowVTVza1FYWkJ0QlFScWs3MzVIWXB4SEFtU1BfcTdpUWNBOERFTU12T0lxaGY4bTdybV9NWkRVM1U3aE5XRDN6bGtIdkxTanVqRFlaMHVSUlc4cDdsUDdfajE5VEZhTlBlbkU0ZmtlZHZzOHUzQU4zTG1wNTcyOENWNGRrLWZFdmtMNG8waWR5TXBmYTZnTDdmUHV6aXdKQndHWDdWOFA?oc=5",
+      "date": "Sun, 31 May 2026 06:34:40 GMT",
+      "desc": "SK Hynix 'Pure Semiconductor' vs Samsung Electronics: Leveraged ETF divide&nbsp;&nbsp;MSN"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-31 06:53 UTC"
+  "updatedAt": "2026-05-31 11:03 UTC"
 }
