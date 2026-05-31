@@ -1,9 +1,15 @@
 {
   "globalNews": [
     {
+      "title": "Israel seizes castle in Lebanon as it expands ground offensive",
+      "link": "https://www.bbc.com/news/articles/cdep04kzz5wo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 31 May 2026 22:39:12 GMT",
+      "desc": "Prime Minister Benjamin Netanyahu calls the capture of the strategic fortress a \"decisive shift\" in Israel's campaign against Hezbollah, as European governments criticise the escalation."
+    },
+    {
       "title": "Hundreds arrested and dozens of police injured after Champions League riots in France",
       "link": "https://www.bbc.com/news/articles/c0r2ejg1w9xo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 31 May 2026 11:26:08 GMT",
+      "date": "Sun, 31 May 2026 18:13:39 GMT",
       "desc": "Nearly 800 people were arrested after clashes with police which saw 219 people injured, including 57 police officers."
     },
     {
@@ -13,25 +19,68 @@
       "desc": "Shinjiro Koizumi makes some of Tokyo's most pointed remarks yet in the dispute over Japan's military build-up."
     },
     {
-      "title": "Ebola spread in DR Congo 'deeply alarming', MSF warns",
-      "link": "https://www.bbc.com/news/articles/c99ldxykz4zo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 31 May 2026 06:47:05 GMT",
-      "desc": "The medical charity's comments come as the head of the World Health Organization visits the region worst-hit by the virus outbreak."
+      "title": "Huge blast kills dozens in rebel-held village in Myanmar",
+      "link": "https://www.bbc.com/news/articles/cglp7p787njo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 31 May 2026 16:59:55 GMT",
+      "desc": "Insurgents say it was caused by explosives being used for mining close to the Chinese border."
     },
     {
-      "title": "Laos cave survivors help with plan to find last two missing men",
-      "link": "https://www.bbc.com/news/articles/c8094jdpzv3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 31 May 2026 11:38:19 GMT",
-      "desc": "So far, five men have been freed from the narrow, flooded cave but efforts are ongoing to locate two more."
-    },
-    {
-      "title": "Colombia votes in presidential election that could redefine relations with US",
+      "title": "Polls close in Colombia presidential election that may reshape relations with US",
       "link": "https://www.bbc.com/news/articles/c2027g423glo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 31 May 2026 15:08:38 GMT",
-      "desc": "The election is held after months of public recrimination between current left-wing President Gustavo Petro and his US counterpart Donald Trump."
+      "date": "Sun, 31 May 2026 21:08:21 GMT",
+      "desc": "The election comes after months of public recrimination between current left-wing President Gustavo Petro and his US counterpart Donald Trump."
     }
   ],
-  "koreaNews": [],
+  "koreaNews": [
+    {
+      "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUUVMTnlQOTYyODFiMEFzSFFTMWNidXBjS2YzN2FhZE5XcVVBbFg0MmNyX1hNQVQyMEhyQ0FMNU9UT0NURFhONHVRcDBPRXZWYTdEZXM4ZUlWc05HSHQ5RXRWMGpFZDNyTmIyaE5NeVRqSjRCbEhIVUFwcFEzWkdRZ1E0WjY?oc=5",
+      "date": "Fri, 29 May 2026 01:48:31 GMT",
+      "desc": "Why South Korea’s won is falling despite a chip export earnings bonanza&nbsp;&nbsp;Financial Times"
+    },
+    {
+      "title": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQaHFqd3BBRlZWWnJkVmlMREdGNHcyX01fbE9rTDdPUVRfZjFCVnFmd05QNHdNT1RLQUhFWWU4Sm1MWmNnSVYwamJidmtYekdhUnBSRm1iY2dlV1BzNnVhZTF2YlA3bFdHa2FMSTVVUnRXTmx6YmJSR0dBVWFXQVBhMU05T19qaG10dHJZNFN6MjduLUc4ZGVXVm80ejdhOUw2Z2prQVQxTUZ0YUZQMUsxVVpEbDNoSnl3aXBEdHBrYTR2SGJ6VXdFaUZuRdIBywFBVV95cUxNTEp3Rkt5SkoxU3BHcDZHQWphTkloblp3SlUwcUtlZm1YUmxSOXFkWlk1d3dTXzhoaWhuY0UtM0ltdnFCczZuNWRESG8xYXhOUDRBSzZENXlvQVprRWpKam9uR2FXLXpyck5jNVR2NnotNXNUbXBGOTVPbmhWRGRVenVTQ2N1anRLSFp2ZV8zLVdMV1V3d0pQYmFkNEtoaURlZHlLSF9BX1QyVlF3bG1KaWpNTnhleDlwMy1YWkluUi1pSTlPeXZRR2ZSdw?oc=5",
+      "date": "Fri, 29 May 2026 00:00:09 GMT",
+      "desc": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles&nbsp;&nbsp;South China Morning Post"
+    },
+    {
+      "title": "Korea’s double-edged economy: Chips boom and stocks soar, yet households feel poorer - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBESTJ2LVdUUWNiRG1Qc3dEczRSdGVnSE43V3Fac0lKbl9lZlFiNjdRYmczT25lb2tuYmMxdENubGtKM0F1Qnp6QVFnLVJSRE5qa3pxNkk0Vmt3dl85d1h2WmhwVzhDS2pta0E?oc=5",
+      "date": "Sun, 31 May 2026 10:43:00 GMT",
+      "desc": "Korea’s double-edged economy: Chips boom and stocks soar, yet households feel poorer&nbsp;&nbsp;KED Global"
+    },
+    {
+      "title": "How to prevent the 'K-economy' from becoming more K-shaped - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeVJBWllzTk1GUWJ1MEF0WGRFWUVBcWxaR0JDYldQMHNnek9IS29aZEVJM3dIMVVfNnVnSU1wUHQ3c3lyaXdFUzRsMXhQMllLaEFWNXV5eUQxMmdCSml3Z1YtS2VISGJxNUtBUFJSNDhLSmpLSXRQZXdLa2hJd3dsWVIzNGs5NmlaTng2Qy0zU2FaZw?oc=5",
+      "date": "Sun, 31 May 2026 20:05:00 GMT",
+      "desc": "How to prevent the 'K-economy' from becoming more K-shaped&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
+      "title": "In the World’s Economic “Black Holes,” Data Still Leaks Out - UC San Diego Today",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQUVdOZlJEM241b09lZ05sVXdIU1EzX3huSnJ5RDdOVEI5aHprZ0ZZLUVCMWJfUjRPRmY3WUdWYmdpUmJMeEs5RmlZRkk0SDNGY0ljSlpUV2w5NVo3QWJQMTZVOFlmaG9sX3BfelpaSUVYbHZBUk9TTVFoR1VVZ3hOWVBVZllhaXRoY1hLSg?oc=5",
+      "date": "Thu, 28 May 2026 15:02:32 GMT",
+      "desc": "In the World’s Economic “Black Holes,” Data Still Leaks Out&nbsp;&nbsp;UC San Diego Today"
+    },
+    {
+      "title": "SK Hynix Leverage Products Draw Double Samsung's Funds - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPYmw0QkFlakVoTkE0d0VxTHh2Tmc2RGpYcXV2cUI3RWRHbzdRRV96NlhzYmxfT1NIbWJndmpxSVEyd0JaZEhyWHJ6SjZHdmxfcUxYbTUwN05oa2pDeWVNR3NtTW1tc1dLcHN3Wm1PR2Q2YjNkY0tibFd1a1MxaVlTMFlnQW5JdFdpNnk0NnpR?oc=5",
+      "date": "Sun, 31 May 2026 14:00:47 GMT",
+      "desc": "SK Hynix Leverage Products Draw Double Samsung's Funds&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Samsung, SK hynix Join Anthropic Funding Round, Raising Expectations for AI Chip Cooperation - thelec.net",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0zWWpkb2NLN1V6YTdnNTllZ3JadWhFRkZfQ0VnYVJEQi1wTWxwUlVzMTRmc0lEZXhnS3N1TWJTY002SEdXMndQc2Z2S2ZweFVfY0Itd1k2eDBodkpVR2VsZEdNVVR4MTQ?oc=5",
+      "date": "Sun, 31 May 2026 09:18:53 GMT",
+      "desc": "Samsung, SK hynix Join Anthropic Funding Round, Raising Expectations for AI Chip Cooperation&nbsp;&nbsp;thelec.net"
+    },
+    {
+      "title": "For the third time this month, a chip giant has joined the $1 trillion club - CNN",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOT3BXZTI1RzlhdGhXRm41VzUzWW8ycE9LLVlMUklwSzZfaldfYU9TUUN0NDlCOGFpbWRlN2Y1MzV3YWQyUmxBdkgzRjhtQjBhZGl3Tk1XRFZ0YkpWXzNieWVsZnhsT0NFdy0zNXNHTlRfUGUxZDhfYzNxUlNsQjZHai1hR3ljNzBxWUdLMQ?oc=5",
+      "date": "Fri, 29 May 2026 04:26:13 GMT",
+      "desc": "For the third time this month, a chip giant has joined the $1 trillion club&nbsp;&nbsp;CNN"
+    }
+  ],
   "worldStocks": [
     {
       "symbol": "NVDA",
@@ -174,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1507.13,
-      "change": 4.02,
-      "pct": 0.27,
+      "price": 1507.38,
+      "change": 4.27,
+      "pct": 0.28,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-05-31 15:12 UTC"
+  "updatedAt": "2026-05-31 22:57 UTC"
 }
