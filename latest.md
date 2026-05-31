@@ -1,5 +1,5 @@
 Seoul Inside — Complete Archive
-Last updated: May 26, 2026
+Last updated: 2026.05.31
 
 
 1. Navier–Stokes Equations — An Archive (Technical Report)
@@ -40,7 +40,41 @@ This public-facing dossier on the Riemann Hypothesis focuses on narrative and si
 
 
 
+1. Mokdong Complex 6 Reconstruction
+Link: https://seoulinside.substack.com/p/a-40-year-old-apartment-block-just
 
+TL;DR:
+On May 28, 2026, Seoul's Integrated Review Committee conditionally approved the redevelopment of 40-year-old Mokdong Complex 6 — the first of 14 complexes to clear this hurdle. The plan replaces 1,362 old units with 2,173 new units (max 49 floors), at an estimated cost of ₩1.2129 trillion. The key financial metric is the proportionality ratio (비례율) , estimated at 103.73%, meaning most owners would break even or gain slightly — but outcomes vary sharply by unit size: 20-pyeong owners may pay ~₩797M for a new 84㎡ unit, while 54-pyeong owners receive ~₩1.13B back. Risks include DL E&C's sole-bidder contract leverage, ICAO altitude restrictions near Gimpo Airport (post-2030), and commercial owner dissatisfaction. The contractor selection assembly on June 27 will lock the final construction cost, which determines every owner's net outcome.
+
+2. Karina at the Met Gala
+Link: https://seoulinside.substack.com/p/karina-inc-how-a-24-year-old-outperformed
+
+TL;DR:
+At the 2026 Met Gala, aespa's Karina generated 88,000 social media mentions — second only to Beyoncé (113,000), ahead of Sabrina Carpenter, Jennie, and LISA. The gap is not about fame (LISA is more globally known) but narrative density: Karina's custom Prada gown incorporated Korean hanbok elements, giving audiences three stories (luxury, heritage, milestone). Prada generated 89,000 brand mentions, more than Chanel's 61,000 despite Chanel dressing five celebrities. Karina simultaneously holds nine major brand contracts (Prada, Chanel Beauty, Nike, Sprite, Krush, Musinsa Beauty, Nordisk, Gentle Monster, K Car) — brands extract different frequencies from the same base quality without cannibalizing each other. K Car, previously using only trusted male figures, hired Karina as its first female idol ambassador; the campaign ("The car matters more than Karina") generated 26 million views in 10 days.
+
+3. RESCENE: The Meme That Built a Career
+Link: https://seoulinside.substack.com/p/the-meme-that-built-a-career-how
+
+TL;DR:
+In May 2026, rookie girl group RESCENE became the most-searched K-pop group in Korea after a viral clip: Japanese member Minami, in gyaru styling, cheerfully said "Geoje! Yaho~!" — fusing a Japanese greeting with leader Woni's hometown. The absurdist, unscripted meme triggered a measurable financial event: three RESCENE songs entered Melon's charts simultaneously (two for the first time), Woni's YouTube channel surpassed 400,000 subscribers, and Geoje City appointed the group as tourism ambassadors (2.18 million views in 5 days, 99.2% new followers). The article reconstructs RESCENE's two-year pre-viral history: performing on a dirt field at an elementary school sports day, eating at a wedding buffet, handing out flyers on the street, and crying before an 800-seat fan concert they feared would not sell out (it did). The thesis: the algorithm created a second path for small-label groups — but it still required two years of unseen, consistent work.
+
+4. Hyundai's Performance Lineage
+Link: https://seoulinside.substack.com/p/a-lineage-interrupted-a-spirit-that
+
+TL;DR:
+On the weekend of May 8–10, 2026, Hyundai won on two continents simultaneously: Thierry Neuville took WRC Portugal (Hyundai's first win of the 2026 season), and Norbert Michelisz won TCR World Tour Race 1 in Misano, Italy. The article traces Hyundai's 36-year performance lineage, starting with the 1990 Scoupe — codename "SLC" (Sports-Looking Car), deliberately not calling itself a sports car. In 1992, Rod Millen won Pikes Peak in a Scoupe Turbo, unnoticed in Korea. The Tuscani built Korea's circuit racing foundation; the Genesis Coupe (2009–2016) drew legitimate comparisons to the Nissan 370Z but was discontinued. Today's N sub-brand (i20 N Rally1, Elantra N TCR) is not a formal successor — yet it won. The article's thesis: this is not a planned strategy, but "what happens when an organization accumulates enough failure, patience, and institutional seriousness to eventually produce something worth winning with."
+
+5. Busan Tourism Surge
+Link: https://seoulinside.substack.com/p/the-city-that-wasnt-supposed-to-happen
+
+TL;DR:
+Busan attracted 3.64 million foreign visitors in 2025 (+24.4% YoY) and 1.02 million in Q1 2026 (+50% YoY) — its fastest quarter ever. International spending crossed ₩1 trillion for the first time. Cruise traffic: 89 ships in Q1 2026 alone (180,000+ passengers), triple the previous year's pace. The city's appeal is structurally rare: a major metropolitan port city (pop. 3.3M) with two world-class beaches (Haeundae, Gwangalli) reachable by subway, steep coastal topography, distinct post-war hillside neighborhoods (Gamcheon, Huinyeoul), and a food/bread culture visitors discover organically. The constraint is Gimhae Airport: 2024 passengers (9M) already exceeded design capacity (8.3M), with a nightly curfew, military co-use, and no long-haul flights. In Q1 2026, 42.9% of foreign visitors entered via other regions (mainly KTX from Seoul) vs. 43.0% by air — near-parity for the first time. The city is being discovered organically, but the airport is a hard ceiling.
+
+6. Game Humanities & Intel CPU Crisis
+Link: https://seoulinside.substack.com/p/the-warning-screen-that-became-a
+
+TL;DR:
+Chung-Ang University professor Shim Ho-nam teaches "Game Humanities" — analyzing American games for traces of U.S. hegemonism, Japanese games for wa (harmony), and games as cultural texts. His viral course announcement quotes Blizzard's StarCraft Korea server warning: "Do not set foot on this terrifying battlefield without thinking." The warning is not hyperbole — it is documentation of a culture where the baseline is so high that extraordinary acts become unremarkable. The article pairs this with a second story: in early 2024, Korean gamers playing Tekken 8 documented consistent crashes on Intel's 13th/14th gen i9 processors. Korean forums identified the pattern, ZDNet Korea reported it, and Intel eventually issued microcode patches, a replacement program, and faced class-action lawsuits. Korean gamers, waiting for a patch, had accidentally stress-tested one of the world's largest chipmakers. The thesis: Korean gaming communities function as a "precision instrument" — dense, rigorous, numerous enough that when something is wrong, the signal emerges faster than anywhere else.
 
 
 
