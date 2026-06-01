@@ -1,42 +1,54 @@
 {
   "globalNews": [
     {
-      "title": "US says it struck Iranian radar sites as Iran targets American forces in Kuwait",
-      "link": "https://www.bbc.com/news/articles/crlpy8n7pr6o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 13:12:26 GMT",
-      "desc": "Iran and the US say they have carried out fresh strikes around the Strait of Hormuz, with Kuwait condemning \"repeated\" Iranian attacks."
+      "title": "Iran warns Israeli attacks in Lebanon threaten ceasefire with US",
+      "link": "https://www.bbc.com/news/articles/c202rxp1z15o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 01 Jun 2026 18:34:14 GMT",
+      "desc": "Earlier Israel's PM ordered strikes on Beirut's southern suburbs in response to Hezbollah rocket and drone attacks on northern Israel."
     },
     {
-      "title": "Iran attacks damage 20 US military sites since start of war, satellite images show",
-      "link": "https://www.bbc.com/news/articles/c2l2yl7r8r2o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 05:33:18 GMT",
-      "desc": "Analysts told BBC Verify that Tehran's strikes were more extensive than publicly acknowledged."
+      "title": "Bowen: Trump needs this war to end but Iran is not backing down",
+      "link": "https://www.bbc.com/news/articles/cedp3lee059o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 01 Jun 2026 15:25:54 GMT",
+      "desc": "Under pressure from the polls and Gulf allies, the White House is pushing for a deal but Iran wants concessions, writes BBC's international editor."
     },
     {
-      "title": "Israel PM orders strikes on Beirut suburbs as Hezbollah conflict escalates",
-      "link": "https://www.bbc.com/news/articles/c4g419e2xlvo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 14:13:53 GMT",
-      "desc": "Benjamin Netanyahu says the Hezbollah stronghold of Dahieh will be targeted in response to attacks on Israeli civilians."
+      "title": "Three Ebola vaccines in development amid growing outbreak fears",
+      "link": "https://www.bbc.com/news/articles/cn8pw93929wo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 01 Jun 2026 14:30:39 GMT",
+      "desc": "IAVI, Moderna and the University of Oxford are all working on new vaccines."
     },
     {
-      "title": "Huge blast kills dozens in rebel-held village in Myanmar",
-      "link": "https://www.bbc.com/news/articles/cglp7p787njo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 06:23:59 GMT",
-      "desc": "Insurgents say it was caused by explosives being used for mining close to the Chinese border."
+      "title": "AI giant Anthropic says it plans to list on US stock market",
+      "link": "https://www.bbc.com/news/articles/c0k203kzp10o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 01 Jun 2026 18:50:13 GMT",
+      "desc": "The AI company behind Claude is set to offer the public shares of stock sometime this year."
     },
     {
-      "title": "Five patients recover from Ebola in DR Congo and leave hospital",
-      "link": "https://www.bbc.com/news/articles/cz928xq588no?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 09:56:24 GMT",
-      "desc": "Those infected can get better and officials stress that people should seek medical help if they have symptoms."
+      "title": "Hungarian PM threatens to oust Orbán-era president",
+      "link": "https://www.bbc.com/news/articles/c3w2vdd6jj3o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 01 Jun 2026 16:54:28 GMT",
+      "desc": "Hungary's president has refused Prime Minister Péter Magyar's demands to step aside, setting up a constitutional clash."
     }
   ],
   "koreaNews": [
     {
-      "title": "How China keeps North Korea's economy alive - dw.com",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNFI2d2pxRjh3Y1V3QVgwLWMxMlQwWDZWeW5pMW5naG8ycHBfZ3g0VkdyQm55aE9ZRm1Gc2s5bng1dE8wSHRjYm8zTUtKSGxzeTg4Znk0T0dRMzFMOXd0SWVIQk9BQTVYWDZWTWFGTXZGWjgyX3JMbDNRajhGY2I1ZQ?oc=5",
+      "title": "How China keeps North Korea's economy alive - DW.com",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNFI2d2pxRjh3Y1V3QVgwLWMxMlQwWDZWeW5pMW5naG8ycHBfZ3g0VkdyQm55aE9ZRm1Gc2s5bng1dE8wSHRjYm8zTUtKSGxzeTg4Znk0T0dRMzFMOXd0SWVIQk9BQTVYWDZWTWFGTXZGWjgyX3JMbDNRajhGY2I1ZdIBgAFBVV95cUxOWnNER3V4dUUzM0hTRVpCTnJHWEtOQ2l1UFU2ZTF0MWpteEppVUkwY3NTRmdlQWdpMTB0VEpYc3lqaGstY3JpY3dkSmxRcDdEcDJoamtlN0Q4Y0FfNUhDMm9kTE9SX2trRVprVlpFU0ZCS3pLQnI5UlBDWUMtcnZRNA?oc=5",
       "date": "Mon, 01 Jun 2026 13:25:23 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
+    },
+    {
+      "title": "South Korea export growth hits four-decade high on AI chip boom - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQMjZQV3J1NFJsM2xvOW9vWTRXWUswX1pNUmtxYm55TnRRUHU1NUJHV2lzS2dWV001SWNNSExmNFZXMTBiYno1NFNmR28ydE12R2EzYTBhSDhMVl80Mm5HZ3BjdklRODZHYzVxTTFCSFI1d2YwNmdhdXdKM0J3LWhNQVdubjR5bk5jMWhFdk1ZTzMyUQ?oc=5",
+      "date": "Mon, 01 Jun 2026 02:54:00 GMT",
+      "desc": "South Korea export growth hits four-decade high on AI chip boom&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
+      "title": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBGSkRVa3JGNjJoeFl1Q1NCaHYwMV9hNy15cDhZem56Uk5xemdnVDRUei00Z05lLU1DdWF5UXVSTGtpdEwtS3AzOTU1enJQbmhWSXNQbjFnSW8xNzJteS1BWU1zREpwdWYwRHc?oc=5",
+      "date": "Mon, 01 Jun 2026 14:51:00 GMT",
+      "desc": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record&nbsp;&nbsp;KED Global"
     },
     {
       "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
@@ -45,22 +57,10 @@
       "desc": "Why South Korea’s won is falling despite a chip export earnings bonanza&nbsp;&nbsp;Financial Times"
     },
     {
-      "title": "Chips, AI Keep South Korea’s Export Engine Firing on All Cylinders - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZVF0TklpclVMWl9EUEJJdHduWTBHZlJySC1ZbGhSdDBXM25aR2stcEg5eUk1WUNjYTUyZWxXSU1IOHBPTzd2VmZyd3RzMThhYVFDaHkzRTlacnlBeDRkU0dkakY4aklEMVVmSVUtN3JSRnYtT09xX3BmQkN0OGQ1cU40RmJiQUFXTnA4Ny1KaEFzWm9hUHNSYVFYR0kzNFJSY1dWclJyQm8tbVU?oc=5",
-      "date": "Mon, 01 Jun 2026 02:23:00 GMT",
-      "desc": "Chips, AI Keep South Korea’s Export Engine Firing on All Cylinders&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBGSkRVa3JGNjJoeFl1Q1NCaHYwMV9hNy15cDhZem56Uk5xemdnVDRUei00Z05lLU1DdWF5UXVSTGtpdEwtS3AzOTU1enJQbmhWSXNQbjFnSW8xNzJteS1BWU1zREpwdWYwRHc?oc=5",
-      "date": "Mon, 01 Jun 2026 10:03:00 GMT",
-      "desc": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record&nbsp;&nbsp;KED Global"
-    },
-    {
-      "title": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQaHFqd3BBRlZWWnJkVmlMREdGNHcyX01fbE9rTDdPUVRfZjFCVnFmd05QNHdNT1RLQUhFWWU4Sm1MWmNnSVYwamJidmtYekdhUnBSRm1iY2dlV1BzNnVhZTF2YlA3bFdHa2FMSTVVUnRXTmx6YmJSR0dBVWFXQVBhMU05T19qaG10dHJZNFN6MjduLUc4ZGVXVm80ejdhOUw2Z2prQVQxTUZ0YUZQMUsxVVpEbDNoSnl3aXBEdHBrYTR2SGJ6VXdFaUZuRdIBywFBVV95cUxNTEp3Rkt5SkoxU3BHcDZHQWphTkloblp3SlUwcUtlZm1YUmxSOXFkWlk1d3dTXzhoaWhuY0UtM0ltdnFCczZuNWRESG8xYXhOUDRBSzZENXlvQVprRWpKam9uR2FXLXpyck5jNVR2NnotNXNUbXBGOTVPbmhWRGRVenVTQ2N1anRLSFp2ZV8zLVdMV1V3d0pQYmFkNEtoaURlZHlLSF9BX1QyVlF3bG1KaWpNTnhleDlwMy1YWkluUi1pSTlPeXZRR2ZSdw?oc=5",
-      "date": "Fri, 29 May 2026 00:00:09 GMT",
-      "desc": "‘Transitory euphoria’: South Korea’s strong economic outlook masks key hurdles&nbsp;&nbsp;South China Morning Post"
+      "title": "\"Presenting Sustainable Post-Capitalism Alternatives”: DGIST Announces Findings of Comparative Study on the Social Economy in South Korea, Italy, and Poland - Asia Research News |",
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOaDJZa1dNRUhqa1B0dmlRbkg3enhNT2hGV0FxaTBOTGY5SllIbExwT1B6Y1FhZTIteHRpMmhLSjRjdzZldUl4MlVPUGZ0RHhmM2VteVMwczltRVdUMk5XQzVDNHJSVzBwdFdRUHBXc0phM0xSbWFIQ1Z2ZVVmaFQyOGFVdUFKTWhlUERqVmxiQjJxNHQzSDlTWkE1RXZIMXh2bkY0VzF4YlpncXVrSjFOQ0J0NE1rUjBkanFGVFlCMGxZRllmTjZwVllGZmdhOFJGcmllSg?oc=5",
+      "date": "Mon, 01 Jun 2026 12:34:45 GMT",
+      "desc": "\"Presenting Sustainable Post-Capitalism Alternatives”: DGIST Announces Findings of Comparative Study on the Social Economy in South Korea, Italy, and Poland&nbsp;&nbsp;Asia Research News |"
     },
     {
       "title": "Bedding maker's best performer? Samsung and SK hynix - The Korea Herald",
@@ -69,105 +69,105 @@
       "desc": "Bedding maker's best performer? Samsung and SK hynix&nbsp;&nbsp;The Korea Herald"
     },
     {
+      "title": "Samsung, SK Hynix trail Micron as automotive memory demand rises - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNbG5aZWhTek9Lb3ZQVzVNNG04dHFHRzFwWXlPRWY2ZnlnbGFXTTZSZnptUHRmZ2RxWVZHLTJISDF0V19aQnA1S0RRaGV0SUJRUHpGUW5SVzVEMV92UWRZcjZPNlpIS1JwYTB0enMwbGRfZUZIc3UxY2IySlRTVVBKeG5uZURVQW5qcVZiYnl1VlRJOHBlVnZR?oc=5",
+      "date": "Fri, 29 May 2026 23:19:11 GMT",
+      "desc": "Samsung, SK Hynix trail Micron as automotive memory demand rises&nbsp;&nbsp;digitimes"
+    },
+    {
       "title": "Samsung, SK hynix Enter Compensation Race - Businesskorea",
       "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAwY1dkVkF6djJpcGF4U1JnOE9aZ2FvVjd6VjhPdnJjNzRjMklvaWVZWWJ4UjFlRnY2S1FTX2dJWUprVGV4WXlYSDVZWk9pdFdYNDZTUjJXRVdkQnpwX0RZSzhWNEl0d1VIZ25qcjMwTVdrXzk3?oc=5",
       "date": "Mon, 01 Jun 2026 11:17:35 GMT",
       "desc": "Samsung, SK hynix Enter Compensation Race&nbsp;&nbsp;Businesskorea"
-    },
-    {
-      "title": "Samsung, SK Hynix in Compensation Chicken Game - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOUEN0VGt3Q19MVUl5Z0NBLWwxZ0pEelFMWVdmSjZYTUgzYUFBZmRKa3hFNmdXU1JkZS1RZkJVTkRxNXdNRDhoVXdXaERvVTdpNFN2M2RPNmJpTHlXNGUteEFlSWNRUEZXNExGc0JabGgxZ0J3cko2UHlVRzhDc3I5eEhQeXFFOUg4?oc=5",
-      "date": "Mon, 01 Jun 2026 00:12:11 GMT",
-      "desc": "Samsung, SK Hynix in Compensation Chicken Game&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 219.74,
-      "change": 5.49,
-      "pct": 2.56,
+      "price": 224.56,
+      "change": 10.31,
+      "pct": 4.81,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 439.97,
-      "change": 15.11,
-      "pct": 3.56,
+      "price": 439.65,
+      "change": 14.79,
+      "pct": 3.48,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 512.01,
-      "change": -6.08,
-      "pct": -1.17,
+      "price": 511.86,
+      "change": -6.23,
+      "pct": -1.2,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 112.21,
-      "change": -8.68,
-      "pct": -7.18,
+      "price": 108.12,
+      "change": -12.77,
+      "pct": -10.56,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 234.23,
-      "change": -9.06,
-      "pct": -3.72,
+      "price": 227.9,
+      "change": -15.39,
+      "pct": -6.33,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 416.05,
-      "change": 80.78,
-      "pct": 24.09,
+      "price": 409.3,
+      "change": 74.03,
+      "pct": 22.08,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 375.9,
-      "change": -14.23,
-      "pct": -3.65,
+      "price": 377.79,
+      "change": -12.34,
+      "pct": -3.16,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 306.53,
-      "change": -5.98,
-      "pct": -1.91,
+      "price": 307.62,
+      "change": -4.89,
+      "pct": -1.56,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 460.45,
-      "change": 33.46,
-      "pct": 7.84,
+      "price": 462.36,
+      "change": 35.37,
+      "pct": 8.28,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7579.02,
-      "change": 15.39,
-      "pct": 0.2,
+      "price": 7612.17,
+      "change": 48.54,
+      "pct": 0.64,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27016.68,
-      "change": 99.21,
-      "pct": 0.37,
+      "price": 27162.27,
+      "change": 244.8,
+      "pct": 0.91,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1509.38,
-      "change": 14.09,
-      "pct": 0.94,
+      "price": 1513.46,
+      "change": 18.17,
+      "pct": 1.22,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-01 15:28 UTC"
+  "updatedAt": "2026-06-01 19:15 UTC"
 }
