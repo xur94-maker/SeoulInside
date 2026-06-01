@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>태양계 3D 시뮬레이터 | NASA JPL 스타일</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: 'Segoe UI', 'Noto Sans KR', monospace; }
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            padding: 10px 18px;
+            border-radius: 12px;
+            z-index: 100;
+            pointer-events: none;
+            font-size: 12px;
+            border-left: 4px solid #ffaa44;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(20,20,40,0.85);
+            backdrop-filter: blur(12px);
+            padding: 14px 22px;
+            border-radius: 16px;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-family: monospace;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .ctrl-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 12px;
+            border-radius: 40px;
+        }
+        .ctrl-group label { color: #ffaa66; font-weight: bold; }
+        input, button {
+            background: #2a2a3a;
+            color: white;
+            border: 1px solid #ffaa66;
+            border-radius: 8px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover { background: #ffaa66; color: #1a1a2a; transform: scale(1.02); }
+        input[type="range"] { width: 150px; }
+        .status { font-size: 11px; background: #000000aa; padding: 4px 10px; border-radius: 20px; }
+        @media (max-width: 700px) {
+            .ctrl-group { font-size: 10px; padding: 3px 8px; }
+            .status { font-size: 9px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        🌌 <strong>태양계 3D 시뮬레이터</strong> | NASA JPL 스타일 (케플러 궤도 + 거리 압축)<br>
+        🪐 8개 행성 + 달 | 🎮 시간 배속 및 카메라 자유 시점
+    </div>
+    <div id="controls">
+        <div class="ctrl-group">
+            <span>⏩ 배속</span>
+            <input type="range" id="speedRange" min="0" max="100" step="1" value="15">
+            <span id="speedVal">15</span> x
+        </div>
+        <div class="ctrl-group">
+            <button id="resetCamera">🎥 시점 초기화</button>
+            <button id="autoRotateBtn">🔄 자동 회전</button>
+        </div>
+        <div class="status">
+            🕒 시뮬 시간: <span id="simYear">0</span> 년
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+        
+        // ============================================================
+        // 행성 데이터 (NASA JPL 근사값, 거리 및 크기는 시각적 압축)
+        // ============================================================
+        const planetsData = [
+            { name: '수성', color: 0xbc9a6c, size: 0.8, distance: 5.5, speed: 0.0479, angle: 0 },
+            { name: '금성', color: 0xe6b800, size: 0.95, distance: 8.0, speed: 0.0350, angle: 1.2 },
+            { name: '지구', color: 0x3388ff, size: 1.0, distance: 11.0, speed: 0.0298, angle: 2.1 },
+            { name: '화성', color: 0xc4553c, size: 0.85, distance: 14.0, speed: 0.0241, angle: 3.0 },
+            { name: '목성', color: 0xd8a27a, size: 2.2, distance: 24.0, speed: 0.0131, angle: 1.5 },
+            { name: '토성', color: 0xf0e2b6, size: 2.0, distance: 32.0, speed: 0.0097, angle: 2.8 },
+            { name: '천왕성',color: 0xb0e0e6, size: 1.6, distance: 40.0, speed: 0.0068, angle: 4.2 },
+            { name: '해왕성',color: 0x4169e1, size: 1.6, distance: 48.0, speed: 0.0054, angle: 5.0 }
+        ];
+        
+        // 달 데이터 (지구 기준)
+        const moonData = {
+            name: '달',
+            color: 0xccccaa,
+            size: 0.28,
+            distance: 2.8,
+            speed: 0.2,
+            angle: 0
+        };
+        
+        // ============================================================
+        // Three.js 셋업
+        // ============================================================
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x010118);
+        scene.fog = new THREE.FogExp2(0x010118, 0.0008);
+        
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(30, 25, 55);
+        camera.lookAt(0, 0, 0);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0px';
+        labelRenderer.domElement.style.left = '0px';
+        labelRenderer.domElement.style.pointerEvents = 'none';
+        document.body.appendChild(labelRenderer.domElement);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = false;
+        controls.autoRotateSpeed = 1.0;
+        controls.enableZoom = true;
+        controls.zoomSpeed = 1.2;
+        controls.target.set(0, 0, 0);
+        
+        // 태양
+        const sunGeometry = new THREE.SphereGeometry(3.8, 128, 128);
+        const sunMaterial = new THREE.MeshStandardMaterial({ color: 0xffaa66, emissive: 0xff4422, emissiveIntensity: 0.8 });
+        const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial);
+        scene.add(sunMesh);
+        
+        // 태양 라벨
+        const sunDiv = document.createElement('div');
+        sunDiv.textContent = '☀️ 태양';
+        sunDiv.style.color = '#ffaa66';
+        sunDiv.style.fontSize = '20px';
+        sunDiv.style.fontWeight = 'bold';
+        sunDiv.style.textShadow = '1px 1px 0px #000';
+        const sunLabel = new CSS2DObject(sunDiv);
+        scene.add(sunLabel);
+        
+        // 광원
+        const ambientLight = new THREE.AmbientLight(0x222222);
+        scene.add(ambientLight);
+        const sunLight = new THREE.PointLight(0xffaa66, 1.5, 0, 0.8);
+        sunLight.position.set(0, 0, 0);
+        scene.add(sunLight);
+        
+        // 별 배경
+        const starGeometry = new THREE.BufferGeometry();
+        const starCount = 2500;
+        const starPositions = [];
+        for (let i = 0; i < starCount; i++) {
+            starPositions.push((Math.random() - 0.5) * 400);
+            starPositions.push((Math.random() - 0.5) * 400);
+            starPositions.push((Math.random() - 0.5) * 150 - 50);
+        }
+        starGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(starPositions), 3));
+        const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.15 });
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+        
+        // 행성 객체 저장
+        const planets = [];
+        
+        planetsData.forEach(p => {
+            const geometry = new THREE.SphereGeometry(p.size, 64, 64);
+            const material = new THREE.MeshStandardMaterial({ color: p.color, roughness: 0.6, metalness: 0.1 });
+            const mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+            
+            const div = document.createElement('div');
+            div.textContent = p.name;
+            div.style.color = '#ddd';
+            div.style.fontSize = '14px';
+            div.style.background = 'rgba(0,0,0,0.6)';
+            div.style.padding = '2px 8px';
+            div.style.borderRadius = '20px';
+            div.style.borderLeft = `3px solid ${new THREE.Color(p.color).getStyle()}`;
+            const label = new CSS2DObject(div);
+            scene.add(label);
+            
+            planets.push({
+                ...p,
+                mesh,
+                label,
+                angle: p.angle
+            });
+        });
+        
+        // 달 추가 (지구 주위)
+        const moonGeometry = new THREE.SphereGeometry(moonData.size, 64, 64);
+        const moonMaterial = new THREE.MeshStandardMaterial({ color: moonData.color, roughness: 0.8 });
+        const moonMesh = new THREE.Mesh(moonGeometry, moonMaterial);
+        scene.add(moonMesh);
+        
+        const moonDiv = document.createElement('div');
+        moonDiv.textContent = '🌙 달';
+        moonDiv.style.cssText = 'color:#ffccaa;font-size:12px;background:rgba(0,0,0,0.5);padding:2px 6px;border-radius:20px;';
+        const moonLabel = new CSS2DObject(moonDiv);
+        scene.add(moonLabel);
+        
+        let earthObj = planets.find(p => p.name === '지구');
+        let moonAngle = 0;
+        
+        // 궤도 가시화 (원형 라인)
+        planetsData.forEach(p => {
+            const points = [];
+            const radius = p.distance;
+            for (let i = 0; i <= 120; i++) {
+                const angle = (i / 120) * Math.PI * 2;
+                const x = Math.cos(angle) * radius;
+                const z = Math.sin(angle) * radius;
+                points.push(new THREE.Vector3(x, 0, z));
+            }
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            const material = new THREE.LineBasicMaterial({ color: 0x4488aa });
+            const orbit = new THREE.LineLoop(geometry, material);
+            scene.add(orbit);
+        });
+        
+        // UI 요소
+        const speedSlider = document.getElementById('speedRange');
+        const speedVal = document.getElementById('speedVal');
+        const resetCamBtn = document.getElementById('resetCamera');
+        const autoRotateBtn = document.getElementById('autoRotateBtn');
+        const simYearSpan = document.getElementById('simYear');
+        
+        let timeScale = 15;
+        let autoRotate = false;
+        let simDays = 0;
+        
+        speedSlider.addEventListener('input', (e) => {
+            timeScale = parseFloat(e.target.value);
+            speedVal.innerText = timeScale;
+        });
+        resetCamBtn.addEventListener('click', () => {
+            camera.position.set(30, 25, 55);
+            controls.target.set(0, 0, 0);
+            controls.update();
+        });
+        autoRotateBtn.addEventListener('click', () => {
+            autoRotate = !autoRotate;
+            controls.autoRotate = autoRotate;
+            autoRotateBtn.textContent = autoRotate ? '⏹️ 자동 회전 중지' : '🔄 자동 회전';
+        });
+        
+        let lastTime = performance.now() / 1000;
+        
+        function animate() {
+            const now = performance.now() / 1000;
+            let dt = Math.min(0.033, now - lastTime);
+            lastTime = now;
+            if (dt < 0.005) dt = 0.016;
+            
+            const deltaAngle = dt * timeScale * 0.5; // 공전 속도 계수
+            
+            // 행성 위치 업데이트
+            planets.forEach(p => {
+                p.angle += p.speed * deltaAngle;
+                if (p.angle > Math.PI * 2) p.angle -= Math.PI * 2;
+                const x = Math.cos(p.angle) * p.distance;
+                const z = Math.sin(p.angle) * p.distance;
+                p.mesh.position.set(x, 0, z);
+                p.label.position.set(x, 0.8, z);
+            });
+            
+            // 달 위치 (지구 기준)
+            if (earthObj) {
+                moonAngle += moonData.speed * deltaAngle;
+                if (moonAngle > Math.PI * 2) moonAngle -= Math.PI * 2;
+                const moonX = earthObj.mesh.position.x + Math.cos(moonAngle) * moonData.distance;
+                const moonZ = earthObj.mesh.position.z + Math.sin(moonAngle) * moonData.distance;
+                moonMesh.position.set(moonX, 0.2, moonZ);
+                moonLabel.position.set(moonX, 0.6, moonZ);
+            }
+            
+            // 시뮬 시간 표시 (년)
+            simDays += dt * timeScale * 0.5;
+            const years = (simDays / 365.25).toFixed(2);
+            simYearSpan.innerText = years;
+            
+            controls.update();
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        
+        lastTime = performance.now() / 1000;
+        animate();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        console.log('태양계 시뮬레이터 시작 | 거리 압축 | NASA JPL 스타일');
+    </script>
+</body>
+</html>

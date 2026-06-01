@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>지구-달 궤도 시뮬레이터 | NASA JPL 스타일</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+        }
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            padding: 12px 20px;
+            border-radius: 12px;
+            z-index: 100;
+            pointer-events: none;
+            font-size: 13px;
+            border-left: 4px solid #ffaa44;
+            font-family: monospace;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(20,20,40,0.85);
+            backdrop-filter: blur(12px);
+            padding: 16px 24px;
+            border-radius: 16px;
+            z-index: 100;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-family: monospace;
+        }
+        .ctrl-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0,0,0,0.5);
+            padding: 6px 14px;
+            border-radius: 40px;
+        }
+        .ctrl-group label { font-weight: bold; color: #ffaa66; }
+        input, select, button {
+            background: #2a2a3a;
+            color: white;
+            border: 1px solid #ffaa66;
+            border-radius: 8px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-family: monospace;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #ffaa66;
+            color: #1a1a2a;
+            transform: scale(1.02);
+        }
+        input[type="range"] { width: 160px; cursor: pointer; }
+        .status {
+            font-size: 12px;
+            background: #000000aa;
+            padding: 6px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+        h1 { margin: 0; font-size: 14px; }
+        a { color: #ffaa66; text-decoration: none; }
+        @media (max-width: 800px) {
+            .ctrl-group { padding: 4px 8px; gap: 6px; font-size: 11px; }
+            .status { font-size: 10px; }
+            #info { font-size: 10px; top: 10px; left: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        🌍 <strong>지구-달 궤도 시뮬레이터</strong> | NASA JPL 스타일 (N-body + J₂ 섭동)<br>
+        📐 실시간 수치 적분 (RK4) | 📡 시간 배속 조절 가능
+    </div>
+    <div id="controls">
+        <div class="ctrl-group">
+            <span>⏩ 배속</span>
+            <input type="range" id="timeScale" min="0" max="100" step="1" value="5">
+            <span id="timeScaleVal">5</span> x
+        </div>
+        <div class="ctrl-group">
+            <span>🔄 궤적 길이</span>
+            <input type="range" id="trailLen" min="50" max="600" step="10" value="300">
+        </div>
+        <div class="ctrl-group">
+            <button id="resetViewBtn">🎥 시점 초기화</button>
+            <button id="pauseBtn">⏸️ 일시정지</button>
+            <button id="resetSimBtn">🔄 시뮬 초기화</button>
+        </div>
+        <div class="status">
+            📏 지구-달 거리: <span id="distanceDisplay">0</span> km &nbsp;|&nbsp;
+            🕒 시뮬 시간: <span id="simTimeDisplay">0</span> 일
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+        // ============================================================
+        // 상수 (SI 단위계)
+        // ============================================================
+        const G = 6.67430e-11;
+        const M_earth = 5.9722e24;
+        const M_moon = 7.342e22;
+        const R_earth = 6.378e6;
+        const J2 = 1.08262668e-3;
+        
+        // 초기 조건
+        const AU = 1.495978707e11;
+        const DIST_EM = 3.844e8; // 지구-달 거리
+        
+        // 지구를 원점에 배치
+        const r_earth0 = new THREE.Vector3(0, 0, 0);
+        const r_moon0 = new THREE.Vector3(DIST_EM, 0, 0);
+        
+        // 궤도 속도 계산 (원심력 = 중력)
+        const v_moon_orbital = Math.sqrt(G * M_earth / DIST_EM);
+        const v_earth0 = new THREE.Vector3(0, 0, 0);
+        const v_moon0 = new THREE.Vector3(0, v_moon_orbital, 0);
+        
+        // ============================================================
+        // 가속도 함수 (뉴턴 + J₂)
+        // ============================================================
+        function newtonAcc(ri, rj, Mj) {
+            const dr = new THREE.Vector3().subVectors(ri, rj);
+            const r = dr.length();
+            const r3 = r * r * r;
+            if (r3 === 0) return new THREE.Vector3(0, 0, 0);
+            return dr.multiplyScalar(-G * Mj / r3);
+        }
+        
+        function j2Acc(r) {
+            const rLen = r.length();
+            if (rLen === 0) return new THREE.Vector3(0, 0, 0);
+            const z = r.z;
+            const sinPhi = z / rLen;
+            const factor = (3 * J2 * G * M_earth * R_earth * R_earth) / (2 * Math.pow(rLen, 5));
+            const j2mag = factor * (5 * sinPhi * sinPhi - 1);
+            return r.clone().multiplyScalar(j2mag);
+        }
+        
+        function totalAccEarth(rE, rM) {
+            let a = newtonAcc(rE, rM, M_moon);
+            a.add(j2Acc(rE));
+            return a;
+        }
+        
+        function totalAccMoon(rM, rE) {
+            let a = newtonAcc(rM, rE, M_earth);
+            a.add(j2Acc(rM).multiplyScalar(0.01)); // 달에 대한 J2 영향은 미미함
+            return a;
+        }
+        
+        // RK4 적분기
+        function rk4Step(state, dt) {
+            const [rE, rM, vE, vM] = state;
+            
+            function computeDerivs(rE, rM, vE, vM) {
+                const aE = totalAccEarth(rE, rM);
+                const aM = totalAccMoon(rM, rE);
+                return [vE.clone(), vM.clone(), aE, aM];
+            }
+            
+            const k1 = computeDerivs(rE, rM, vE, vM);
+            
+            const rE2 = rE.clone().add(k1[0].clone().multiplyScalar(dt/2));
+            const rM2 = rM.clone().add(k1[1].clone().multiplyScalar(dt/2));
+            const vE2 = vE.clone().add(k1[2].clone().multiplyScalar(dt/2));
+            const vM2 = vM.clone().add(k1[3].clone().multiplyScalar(dt/2));
+            const k2 = computeDerivs(rE2, rM2, vE2, vM2);
+            
+            const rE3 = rE.clone().add(k2[0].clone().multiplyScalar(dt/2));
+            const rM3 = rM.clone().add(k2[1].clone().multiplyScalar(dt/2));
+            const vE3 = vE.clone().add(k2[2].clone().multiplyScalar(dt/2));
+            const vM3 = vM.clone().add(k2[3].clone().multiplyScalar(dt/2));
+            const k3 = computeDerivs(rE3, rM3, vE3, vM3);
+            
+            const rE4 = rE.clone().add(k3[0].clone().multiplyScalar(dt));
+            const rM4 = rM.clone().add(k3[1].clone().multiplyScalar(dt));
+            const vE4 = vE.clone().add(k3[2].clone().multiplyScalar(dt));
+            const vM4 = vM.clone().add(k3[3].clone().multiplyScalar(dt));
+            const k4 = computeDerivs(rE4, rM4, vE4, vM4);
+            
+            const newRE = rE.clone().add(
+                k1[0].clone().add(k2[0]).add(k3[0]).add(k4[0]).multiplyScalar(dt/6)
+            );
+            const newRM = rM.clone().add(
+                k1[1].clone().add(k2[1]).add(k3[1]).add(k4[1]).multiplyScalar(dt/6)
+            );
+            const newVE = vE.clone().add(
+                k1[2].clone().add(k2[2]).add(k3[2]).add(k4[2]).multiplyScalar(dt/6)
+            );
+            const newVM = vM.clone().add(
+                k1[3].clone().add(k2[3]).add(k3[3]).add(k4[3]).multiplyScalar(dt/6)
+            );
+            
+            return [newRE, newRM, newVE, newVM];
+        }
+        
+        // ============================================================
+        // Three.js 셋업
+        // ============================================================
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050b1a);
+        
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1e5, 1e12);
+        camera.position.set(1.2e9, 1.2e9, 1.2e9);
+        camera.lookAt(0, 0, 0);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = false;
+        document.body.appendChild(renderer.domElement);
+        
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0px';
+        labelRenderer.domElement.style.left = '0px';
+        labelRenderer.domElement.style.pointerEvents = 'none';
+        document.body.appendChild(labelRenderer.domElement);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = false;
+        controls.enableZoom = true;
+        controls.zoomSpeed = 1.2;
+        controls.target.set(0, 0, 0);
+        
+        // 별 배경
+        const starGeo = new THREE.BufferGeometry();
+        const starCount = 5000;
+        const starPos = [];
+        for (let i = 0; i < starCount; i++) {
+            starPos.push((Math.random() - 0.5) * 2e12);
+            starPos.push((Math.random() - 0.5) * 2e12);
+            starPos.push((Math.random() - 0.5) * 2e12);
+        }
+        starGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(starPos), 3));
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 6e7 }));
+        scene.add(stars);
+        
+        // 중앙 광원
+        const centerLight = new THREE.PointLight(0xffdd99, 0.8);
+        centerLight.position.set(0, 0, 0);
+        scene.add(centerLight);
+        scene.add(new THREE.AmbientLight(0x334455));
+        
+        // 지구 & 달 메쉬 (크기 비율은 보기 좋게 조정)
+        const earthMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(6.4e6, 128, 128),
+            new THREE.MeshStandardMaterial({ color: 0x3388ff, emissive: 0x112244, roughness: 0.5, metalness: 0.1 })
+        );
+        const moonMesh = new THREE.Mesh(
+            new THREE.SphereGeometry(1.74e6, 128, 128),
+            new THREE.MeshStandardMaterial({ color: 0xccaa88, roughness: 0.8 })
+        );
+        scene.add(earthMesh);
+        scene.add(moonMesh);
+        
+        // CSS2D 라벨
+        function makeLabel(text, color, fontSize = '18px') {
+            const div = document.createElement('div');
+            div.textContent = text;
+            div.style.color = color;
+            div.style.fontSize = fontSize;
+            div.style.fontWeight = 'bold';
+            div.style.textShadow = '1px 1px 0px #000';
+            div.style.background = 'rgba(0,0,0,0.6)';
+            div.style.padding = '4px 14px';
+            div.style.borderRadius = '30px';
+            div.style.borderLeft = `4px solid ${color}`;
+            div.style.fontFamily = 'monospace';
+            div.style.backdropFilter = 'blur(4px)';
+            return new CSS2DObject(div);
+        }
+        const earthLabel = makeLabel('🌍 지구', '#88aaff', '20px');
+        const moonLabel = makeLabel('🌙 달', '#ffccaa', '18px');
+        scene.add(earthLabel);
+        scene.add(moonLabel);
+        
+        // 궤적 (지구 기준 달의 상대 궤적)
+        let trailPositions = [];
+        let trailMax = 300;
+        let trailLine = new THREE.Line(
+            new THREE.BufferGeometry(),
+            new THREE.LineBasicMaterial({ color: 0xffaa66, linewidth: 2 })
+        );
+        scene.add(trailLine);
+        
+        function updateTrail(moonAbsPos) {
+            trailPositions.push(moonAbsPos.clone());
+            if (trailPositions.length > trailMax) trailPositions.shift();
+            
+            const points = trailPositions.map(p => p.clone());
+            const geom = new THREE.BufferGeometry().setFromPoints(points);
+            trailLine.geometry.dispose();
+            trailLine.geometry = geom;
+        }
+        
+        // 궤적 초기화
+        function clearTrail() {
+            trailPositions = [];
+            trailLine.geometry.dispose();
+            trailLine.geometry = new THREE.BufferGeometry();
+        }
+        
+        // 시뮬레이션 상태
+        let simState = [r_earth0.clone(), r_moon0.clone(), v_earth0.clone(), v_moon0.clone()];
+        let simTimeSec = 0;
+        let paused = false;
+        let timeScale = 5;
+        let trailLen = 300;
+        
+        // DOM 요소
+        const timeScaleSlider = document.getElementById('timeScale');
+        const timeScaleVal = document.getElementById('timeScaleVal');
+        const trailLenSlider = document.getElementById('trailLen');
+        const resetBtn = document.getElementById('resetViewBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const resetSimBtn = document.getElementById('resetSimBtn');
+        const distanceSpan = document.getElementById('distanceDisplay');
+        const simTimeSpan = document.getElementById('simTimeDisplay');
+        
+        timeScaleSlider.addEventListener('input', (e) => { 
+            timeScale = parseFloat(e.target.value); 
+            timeScaleVal.innerText = timeScale; 
+        });
+        
+        trailLenSlider.addEventListener('input', (e) => { 
+            trailMax = parseInt(e.target.value); 
+            if (trailPositions.length > trailMax) {
+                trailPositions = trailPositions.slice(-trailMax);
+                updateTrail(simState[1]); // 갱신
+            }
+        });
+        
+        resetBtn.addEventListener('click', () => { 
+            camera.position.set(1.2e9, 1.2e9, 1.2e9);
+            controls.target.set(0, 0, 0);
+            controls.update(); 
+        });
+        
+        pauseBtn.addEventListener('click', () => { 
+            paused = !paused; 
+            pauseBtn.textContent = paused ? '▶️ 시작' : '⏸️ 일시정지'; 
+        });
+        
+        resetSimBtn.addEventListener('click', () => {
+            simState = [r_earth0.clone(), r_moon0.clone(), v_earth0.clone(), v_moon0.clone()];
+            simTimeSec = 0;
+            clearTrail();
+            if (!paused) paused = false;
+            pauseBtn.textContent = '⏸️ 일시정지';
+        });
+        
+        let lastTime = performance.now() / 1000;
+        let frameCount = 0;
+        
+        function animate() {
+            const now = performance.now() / 1000;
+            let dtReal = Math.min(0.033, now - lastTime);
+            if (dtReal < 0.005) dtReal = 0.016;
+            lastTime = now;
+            
+            if (!paused && timeScale > 0) {
+                // 실제 물리 시간 (초 단위)
+                let dtSim = dtReal * timeScale * 86400; // timeScale은 일 배속
+                
+                // 안정성을 위한 서브스텝
+                let substeps = Math.max(1, Math.floor(dtSim / 1000));
+                let subDt = dtSim / substeps;
+                
+                for (let step = 0; step < substeps; step++) {
+                    simState = rk4Step(simState, subDt);
+                    simTimeSec += subDt;
+                }
+            }
+            
+            const [rE, rM] = simState;
+            
+            // 지구-달 거리 (km)
+            const moonRel = new THREE.Vector3().subVectors(rM, rE);
+            const distanceKm = moonRel.length() / 1000;
+            distanceSpan.innerText = distanceKm.toFixed(0);
+            simTimeSpan.innerText = (simTimeSec / 86400).toFixed(2);
+            
+            // 궤적 업데이트 (달의 절대 위치 기준)
+            updateTrail(rM);
+            
+            // 메쉬 위치 업데이트
+            earthMesh.position.copy(rE);
+            moonMesh.position.copy(rM);
+            earthLabel.position.copy(rE);
+            moonLabel.position.copy(rM);
+            
+            // 카메라 컨트롤 업데이트
+            controls.update();
+            
+            // 렌더링
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // 초기 궤적 데이터 생성
+        for (let i = 0; i < 10; i++) {
+            trailPositions.push(r_moon0.clone());
+        }
+        
+        lastTime = performance.now() / 1000;
+        animate();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        console.log('✅ 지구-달 시뮬레이터 시작 | RK4 + J₂ 섭동');
+    </script>
+</body>
+</html>
