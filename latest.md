@@ -38,6 +38,29 @@ Link: https://seoulinside.substack.com/p/the-problem-that-has-defeated-every
 TL;DR:
 This public-facing dossier on the Riemann Hypothesis focuses on narrative and significance. Riemann (1859) discovered that the zeros of the zeta function completely determine prime distribution and conjectured all nontrivial zeros lie on the critical line (Re(s)=1/2). Partial results have crept upward: Levinson (1974) proved ~34.74%, Conrey (1989) ~40.88%, and the current record stands at ≥41.72% (5/12) by Pratt–Robles–Zaharescu–Zeindler (2020). The Atiyah affair (2018) — a 15-slide "proof" with an undefined Todd function — became the textbook example of "not even wrong." Guth–Maynard (2024) improved zero-density estimates for the first time in 84 years, but Maynard himself says it remains "very far" from RH. Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
 
+7. BSD Conjecture — The Equation That Counts What Cannot Be Counted (Prologue)
+Link: https://seoulinside.substack.com/p/the-equation-that-counts-what-cannot
+
+TL;DR: Birch and Swinnerton-Dyer Conjecture claims that the number of rational points on an elliptic curve (algebraic rank) equals the order of vanishing of its L-function at s=1 (analytic rank). The prologue explains the 1960 EDSAC computation that first revealed the pattern: the product ∏ N_p/p grows like (log X)^r, where r is the rank. For rank 0 curves (e.g., y²=x³+1), L(1)≠0 and rational points are finite. For rank 1 (y²=x³-x), L(1)=0 but L'(1)≠0, giving infinitely many points. For rank 2 (y²=x³-43x+166), L(1)=L'(1)=0 but L''(1)≠0. The full BSD formula includes the mysterious Tate-Shafarevich group Ш, whose finiteness is unknown for rank ≥2. Key theorems: Coates-Wiles (1977, rank 0), Gross-Zagier (1986), Kolyvagin (1990, rank 0 & 1). Status as of May 2026: UNSOLVED (analytic rank ≥2 case open). Millennium Prize ($1M) unclaimed.
+
+8. BSD Conjecture — Complete Reference (Technical Report)
+Link: https://seoulinside.substack.com/p/bsd-conjecture-reference-complete
+
+TL;DR: A complete technical archive containing 37 formulas across four notations (Unicode, LaTeX, Mathematica, Python). Covers the elliptic curve Weierstrass form, L-function Euler product, modularity theorem, completed L-function, functional equation, Hasse-Weil bound, Mordell-Weil theorem, analytic rank definition, full BSD formula (real period Ω_E, regulator R_E, Tamagawa numbers c_p, Tate-Shafarevich group Ш, torsion subgroup). Also includes key theorems: Coates-Wiles (1977), Gross-Zagier (1986), Kolyvagin (1990), Modularity Theorem (2001), Kato (2004), Skinner-Urban (2014, Iwasawa Main Conjecture), Bhargava-Skinner-Zhang (average rank ≤1), p-adic Gross-Zagier (Kobayashi, 2013). Status as of May 2026: UNSOLVED for rank ≥2. Millennium Prize ($1M) unclaimed.
+
+9. The Moon Is Leaving. Here Is the Math. (Earth-Moon Simulator)
+Link: https://seoulinside.substack.com/p/the-moon-is-leaving-here-is-the-math
+
+TL;DR: The Moon recedes from Earth at 38.20 mm/year, measured by Lunar Laser Ranging (Apollo retroreflectors). This article presents a hierarchy of models: Level 1 (two-body Keplerian, ~10 km error/30 days), Level 2 (restricted three-body with Sun), Level 3 (N-body + J₂ oblateness, ~1 km error/30 days), Level 4 (DE440 full model including PPN general relativity, tidal deformation, fluid core, ~1 cm error/30 days). The working simulator uses Newtonian gravity + Earth's J₂ (1.08262668×10⁻³) + RK4 integrator. Without tidal deformation (Term 4, k₂ Love numbers), the recession cannot be reproduced. The 38.20 mm/year figure comes from fitting DE440 to 50+ years of laser data. Status as of May 2026: IMPLEMENTED (Level 3 model with code in Python/Mathematica). DE440 is the NASA standard for mission navigation.
+
+10. Solar System Simulator: Keplerian Orbits, Angular Kinematics, and Relative Motion
+Link: https://seoulinside.substack.com/p/solar-system-simulator-keplerian
+
+TL;DR: A kinematic (force-free) solar system simulator where each planet's position is computed directly from circular orbit equations: x(t)=d·cos(θ₀+ωt), z(t)=d·sin(θ₀+ωt). Uses constant angular velocities derived from sidereal periods (e.g., Earth: 2.983×10⁻⁷ rad/s, Jupiter: 1.307×10⁻⁷ rad/s). The Moon orbits Earth with an additional visual offset (y=0.2). Computational cost is O(n) per frame, suitable for real-time visualization. Position error is ~10,000 km for Jupiter over 30 days (due to ignoring eccentricity e=0.049). The article also provides a complete tool stack upgrade path: REBOUND (N-body, Python), Skyfield (DE440 interface, Python), SPICE Toolkit (NASA standard), JPL Horizons API, GMAT (mission analysis). Status as of May 2026: IMPLEMENTED (kinematic model suitable for education/visualization, not for navigation).
+
+
+
+
 
 
 1. Mokdong Complex 6 Reconstruction
