@@ -1,15 +1,15 @@
 {
   "globalNews": [
     {
-      "title": "Iran warns Israeli attacks in Lebanon threaten ceasefire with US",
+      "title": "Lebanon says Hezbollah agrees reciprocal halt to attacks on Israel",
       "link": "https://www.bbc.com/news/articles/c202rxp1z15o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 18:34:14 GMT",
-      "desc": "Earlier Israel's PM ordered strikes on Beirut's southern suburbs in response to Hezbollah rocket and drone attacks on northern Israel."
+      "date": "Mon, 01 Jun 2026 21:27:01 GMT",
+      "desc": "Israel's PM Netanyahu warns that strikes on Beirut will go ahead if Hezbollah does not abide by the US proposal."
     },
     {
       "title": "Bowen: Trump needs this war to end but Iran is not backing down",
       "link": "https://www.bbc.com/news/articles/cedp3lee059o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 15:25:54 GMT",
+      "date": "Mon, 01 Jun 2026 21:50:52 GMT",
       "desc": "Under pressure from the polls and Gulf allies, the White House is pushing for a deal but Iran wants concessions, writes BBC's international editor."
     },
     {
@@ -19,10 +19,10 @@
       "desc": "IAVI, Moderna and the University of Oxford are all working on new vaccines."
     },
     {
-      "title": "AI giant Anthropic says it plans to list on US stock market",
-      "link": "https://www.bbc.com/news/articles/c0k203kzp10o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 18:50:13 GMT",
-      "desc": "The AI company behind Claude is set to offer the public shares of stock sometime this year."
+      "title": "OpenAI let ChatGPT aid and abet mass shooters, Florida lawsuit claims",
+      "link": "https://www.bbc.com/news/articles/czx2j0v8d2xo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 01 Jun 2026 18:58:26 GMT",
+      "desc": "Florida Attorney General James Uthmeier alleges OpenAI and boss Sam Altman built a 'web of deceit'"
     },
     {
       "title": "Hungarian PM threatens to oust Orbán-era president",
@@ -35,20 +35,14 @@
     {
       "title": "How China keeps North Korea's economy alive - DW.com",
       "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNFI2d2pxRjh3Y1V3QVgwLWMxMlQwWDZWeW5pMW5naG8ycHBfZ3g0VkdyQm55aE9ZRm1Gc2s5bng1dE8wSHRjYm8zTUtKSGxzeTg4Znk0T0dRMzFMOXd0SWVIQk9BQTVYWDZWTWFGTXZGWjgyX3JMbDNRajhGY2I1ZdIBgAFBVV95cUxOWnNER3V4dUUzM0hTRVpCTnJHWEtOQ2l1UFU2ZTF0MWpteEppVUkwY3NTRmdlQWdpMTB0VEpYc3lqaGstY3JpY3dkSmxRcDdEcDJoamtlN0Q4Y0FfNUhDMm9kTE9SX2trRVprVlpFU0ZCS3pLQnI5UlBDWUMtcnZRNA?oc=5",
-      "date": "Mon, 01 Jun 2026 13:25:23 GMT",
+      "date": "Mon, 01 Jun 2026 09:34:42 GMT",
       "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
     },
     {
-      "title": "South Korea export growth hits four-decade high on AI chip boom - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQMjZQV3J1NFJsM2xvOW9vWTRXWUswX1pNUmtxYm55TnRRUHU1NUJHV2lzS2dWV001SWNNSExmNFZXMTBiYno1NFNmR28ydE12R2EzYTBhSDhMVl80Mm5HZ3BjdklRODZHYzVxTTFCSFI1d2YwNmdhdXdKM0J3LWhNQVdubjR5bk5jMWhFdk1ZTzMyUQ?oc=5",
-      "date": "Mon, 01 Jun 2026 02:54:00 GMT",
-      "desc": "South Korea export growth hits four-decade high on AI chip boom&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBGSkRVa3JGNjJoeFl1Q1NCaHYwMV9hNy15cDhZem56Uk5xemdnVDRUei00Z05lLU1DdWF5UXVSTGtpdEwtS3AzOTU1enJQbmhWSXNQbjFnSW8xNzJteS1BWU1zREpwdWYwRHc?oc=5",
-      "date": "Mon, 01 Jun 2026 14:51:00 GMT",
-      "desc": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record&nbsp;&nbsp;KED Global"
+      "title": "[Man-Ki Kim] OPCON transfer needs economic test - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5zQU0wdE1KSFV0YVlQeDZLaXl0SVdtSXZlQWVPSXVuV1BqREtQZGRzMWpON19VVm0yZm5pUDdNVGdNUnNabzFzVk85aDRFT1FjYXJCMEFkOA?oc=5",
+      "date": "Mon, 01 Jun 2026 20:30:04 GMT",
+      "desc": "[Man-Ki Kim] OPCON transfer needs economic test&nbsp;&nbsp;The Korea Herald"
     },
     {
       "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
@@ -57,10 +51,22 @@
       "desc": "Why South Korea’s won is falling despite a chip export earnings bonanza&nbsp;&nbsp;Financial Times"
     },
     {
-      "title": "\"Presenting Sustainable Post-Capitalism Alternatives”: DGIST Announces Findings of Comparative Study on the Social Economy in South Korea, Italy, and Poland - Asia Research News |",
-      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOaDJZa1dNRUhqa1B0dmlRbkg3enhNT2hGV0FxaTBOTGY5SllIbExwT1B6Y1FhZTIteHRpMmhLSjRjdzZldUl4MlVPUGZ0RHhmM2VteVMwczltRVdUMk5XQzVDNHJSVzBwdFdRUHBXc0phM0xSbWFIQ1Z2ZVVmaFQyOGFVdUFKTWhlUERqVmxiQjJxNHQzSDlTWkE1RXZIMXh2bkY0VzF4YlpncXVrSjFOQ0J0NE1rUjBkanFGVFlCMGxZRllmTjZwVllGZmdhOFJGcmllSg?oc=5",
-      "date": "Mon, 01 Jun 2026 12:34:45 GMT",
-      "desc": "\"Presenting Sustainable Post-Capitalism Alternatives”: DGIST Announces Findings of Comparative Study on the Social Economy in South Korea, Italy, and Poland&nbsp;&nbsp;Asia Research News |"
+      "title": "South Korea export growth hits four-decade high on AI chip boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxObUZaNE0zcldLWGpoVWFONHR4OS12MTZ4Um5rN2xYNkZLdUUyM3JWbDMxX0I0WTFaNXNuRXNnaGJIeGJ3WjdxV1ltams4cGVEeURGX2Jxd1NEV1BsNFNjVHV2Rk12NnR4VGZxQmxlMHU1X1F6UTdvdUxURnJ6bHdKdUNmM0o4elVZbVozSG5McmlkLXQ1eV8tWnNPX3laNmpHOVo2eWl6ZXZKc1VQUldMMTBoQjN4TWlJNnR1MHFwckEzMWstNVdpdGI1WTQ?oc=5",
+      "date": "Mon, 01 Jun 2026 00:54:00 GMT",
+      "desc": "South Korea export growth hits four-decade high on AI chip boom&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBGSkRVa3JGNjJoeFl1Q1NCaHYwMV9hNy15cDhZem56Uk5xemdnVDRUei00Z05lLU1DdWF5UXVSTGtpdEwtS3AzOTU1enJQbmhWSXNQbjFnSW8xNzJteS1BWU1zREpwdWYwRHc?oc=5",
+      "date": "Mon, 01 Jun 2026 14:51:00 GMT",
+      "desc": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record&nbsp;&nbsp;KED Global"
+    },
+    {
+      "title": "For the third time this month, a chip giant has joined the $1 trillion club - CNN",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOT3BXZTI1RzlhdGhXRm41VzUzWW8ycE9LLVlMUklwSzZfaldfYU9TUUN0NDlCOGFpbWRlN2Y1MzV3YWQyUmxBdkgzRjhtQjBhZGl3Tk1XRFZ0YkpWXzNieWVsZnhsT0NFdy0zNXNHTlRfUGUxZDhfYzNxUlNsQjZHai1hR3ljNzBxWUdLMQ?oc=5",
+      "date": "Fri, 29 May 2026 04:26:13 GMT",
+      "desc": "For the third time this month, a chip giant has joined the $1 trillion club&nbsp;&nbsp;CNN"
     },
     {
       "title": "Bedding maker's best performer? Samsung and SK hynix - The Korea Herald",
@@ -73,101 +79,95 @@
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNbG5aZWhTek9Lb3ZQVzVNNG04dHFHRzFwWXlPRWY2ZnlnbGFXTTZSZnptUHRmZ2RxWVZHLTJISDF0V19aQnA1S0RRaGV0SUJRUHpGUW5SVzVEMV92UWRZcjZPNlpIS1JwYTB0enMwbGRfZUZIc3UxY2IySlRTVVBKeG5uZURVQW5qcVZiYnl1VlRJOHBlVnZR?oc=5",
       "date": "Fri, 29 May 2026 23:19:11 GMT",
       "desc": "Samsung, SK Hynix trail Micron as automotive memory demand rises&nbsp;&nbsp;digitimes"
-    },
-    {
-      "title": "Samsung, SK hynix Enter Compensation Race - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAwY1dkVkF6djJpcGF4U1JnOE9aZ2FvVjd6VjhPdnJjNzRjMklvaWVZWWJ4UjFlRnY2S1FTX2dJWUprVGV4WXlYSDVZWk9pdFdYNDZTUjJXRVdkQnpwX0RZSzhWNEl0d1VIZ25qcjMwTVdrXzk3?oc=5",
-      "date": "Mon, 01 Jun 2026 11:17:35 GMT",
-      "desc": "Samsung, SK hynix Enter Compensation Race&nbsp;&nbsp;Businesskorea"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 224.56,
-      "change": 10.31,
-      "pct": 4.81,
+      "price": 224.36,
+      "change": 10.11,
+      "pct": 4.72,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 439.65,
-      "change": 14.79,
-      "pct": 3.48,
+      "price": 435.63,
+      "change": 10.77,
+      "pct": 2.53,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 511.86,
-      "change": -6.23,
-      "pct": -1.2,
+      "price": 510.13,
+      "change": -7.96,
+      "pct": -1.54,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 108.12,
-      "change": -12.77,
-      "pct": -10.56,
+      "price": 109.33,
+      "change": -11.56,
+      "pct": -9.56,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 227.9,
-      "change": -15.39,
-      "pct": -6.33,
+      "price": 228.99,
+      "change": -14.3,
+      "pct": -5.88,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 409.3,
-      "change": 74.03,
-      "pct": 22.08,
+      "price": 408.85,
+      "change": 73.58,
+      "pct": 21.95,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 377.79,
-      "change": -12.34,
-      "pct": -3.16,
+      "price": 376.37,
+      "change": -13.76,
+      "pct": -3.53,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 307.62,
-      "change": -4.89,
-      "pct": -1.56,
+      "price": 306.31,
+      "change": -6.2,
+      "pct": -1.98,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 462.36,
-      "change": 35.37,
-      "pct": 8.28,
+      "price": 460.52,
+      "change": 33.53,
+      "pct": 7.85,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7612.17,
-      "change": 48.54,
-      "pct": 0.64,
+      "price": 7599.96,
+      "change": 36.33,
+      "pct": 0.48,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27162.27,
-      "change": 244.8,
-      "pct": 0.91,
+      "price": 27086.81,
+      "change": 169.34,
+      "pct": 0.63,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1513.46,
-      "change": 18.17,
-      "pct": 1.22,
+      "price": 1511.72,
+      "change": 4.88,
+      "pct": 0.32,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-01 19:15 UTC"
+  "updatedAt": "2026-06-01 23:24 UTC"
 }
