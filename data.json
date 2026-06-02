@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Lebanon says Hezbollah agrees reciprocal halt to attacks on Israel",
+      "title": "Massive Russian attack on cities across Ukraine kills at least 10 people",
+      "link": "https://www.bbc.com/news/articles/c5y8nq8ljqwo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 02 Jun 2026 06:39:45 GMT",
+      "desc": "Rescuers are racing to find people feared trapped beneath rubble in Kyiv after the overnight missile and drone attack."
+    },
+    {
+      "title": "Clashes continue in Lebanon despite Israel and Hezbollah accepting US partial ceasefire plan",
       "link": "https://www.bbc.com/news/articles/c202rxp1z15o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 21:27:01 GMT",
-      "desc": "Israel's PM Netanyahu warns that strikes on Beirut will go ahead if Hezbollah does not abide by the US proposal."
+      "date": "Tue, 02 Jun 2026 06:04:55 GMT",
+      "desc": "A cessation of hostilities between Israel and Hezbollah is seen as crucial to the peace process with Iran."
     },
     {
       "title": "Bowen: Trump needs this war to end but Iran is not backing down",
@@ -13,72 +19,66 @@
       "desc": "Under pressure from the polls and Gulf allies, the White House is pushing for a deal but Iran wants concessions, writes BBC's international editor."
     },
     {
+      "title": "Trump administration will abide by ruling halting $1.8bn 'anti-weaponisation' fund",
+      "link": "https://www.bbc.com/news/articles/crkpyj41m15o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 01 Jun 2026 23:03:39 GMT",
+      "desc": "The justice department says it  \"disagrees strongly\" with a court decision to halt the establishment of the fund."
+    },
+    {
       "title": "Three Ebola vaccines in development amid growing outbreak fears",
       "link": "https://www.bbc.com/news/articles/cn8pw93929wo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 01 Jun 2026 14:30:39 GMT",
       "desc": "IAVI, Moderna and the University of Oxford are all working on new vaccines."
-    },
-    {
-      "title": "OpenAI let ChatGPT aid and abet mass shooters, Florida lawsuit claims",
-      "link": "https://www.bbc.com/news/articles/czx2j0v8d2xo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 18:58:26 GMT",
-      "desc": "Florida Attorney General James Uthmeier alleges OpenAI and boss Sam Altman built a 'web of deceit'"
-    },
-    {
-      "title": "Hungarian PM threatens to oust Orbán-era president",
-      "link": "https://www.bbc.com/news/articles/c3w2vdd6jj3o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 01 Jun 2026 16:54:28 GMT",
-      "desc": "Hungary's president has refused Prime Minister Péter Magyar's demands to step aside, setting up a constitutional clash."
     }
   ],
   "koreaNews": [
     {
       "title": "How China keeps North Korea's economy alive - DW.com",
       "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNFI2d2pxRjh3Y1V3QVgwLWMxMlQwWDZWeW5pMW5naG8ycHBfZ3g0VkdyQm55aE9ZRm1Gc2s5bng1dE8wSHRjYm8zTUtKSGxzeTg4Znk0T0dRMzFMOXd0SWVIQk9BQTVYWDZWTWFGTXZGWjgyX3JMbDNRajhGY2I1ZdIBgAFBVV95cUxOWnNER3V4dUUzM0hTRVpCTnJHWEtOQ2l1UFU2ZTF0MWpteEppVUkwY3NTRmdlQWdpMTB0VEpYc3lqaGstY3JpY3dkSmxRcDdEcDJoamtlN0Q4Y0FfNUhDMm9kTE9SX2trRVprVlpFU0ZCS3pLQnI5UlBDWUMtcnZRNA?oc=5",
-      "date": "Mon, 01 Jun 2026 09:34:42 GMT",
+      "date": "Mon, 01 Jun 2026 13:35:11 GMT",
       "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
     },
     {
-      "title": "[Man-Ki Kim] OPCON transfer needs economic test - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5zQU0wdE1KSFV0YVlQeDZLaXl0SVdtSXZlQWVPSXVuV1BqREtQZGRzMWpON19VVm0yZm5pUDdNVGdNUnNabzFzVk85aDRFT1FjYXJCMEFkOA?oc=5",
-      "date": "Mon, 01 Jun 2026 20:30:04 GMT",
-      "desc": "[Man-Ki Kim] OPCON transfer needs economic test&nbsp;&nbsp;The Korea Herald"
+      "title": "Chips, AI Keep South Korea’s Export Engine Firing on All Cylinders - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZVF0TklpclVMWl9EUEJJdHduWTBHZlJySC1ZbGhSdDBXM25aR2stcEg5eUk1WUNjYTUyZWxXSU1IOHBPTzd2VmZyd3RzMThhYVFDaHkzRTlacnlBeDRkU0dkakY4aklEMVVmSVUtN3JSRnYtT09xX3BmQkN0OGQ1cU40RmJiQUFXTnA4Ny1KaEFzWm9hUHNSYVFYR0kzNFJSY1dWclJyQm8tbVU?oc=5",
+      "date": "Mon, 01 Jun 2026 02:23:00 GMT",
+      "desc": "Chips, AI Keep South Korea’s Export Engine Firing on All Cylinders&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUUVMTnlQOTYyODFiMEFzSFFTMWNidXBjS2YzN2FhZE5XcVVBbFg0MmNyX1hNQVQyMEhyQ0FMNU9UT0NURFhONHVRcDBPRXZWYTdEZXM4ZUlWc05HSHQ5RXRWMGpFZDNyTmIyaE5NeVRqSjRCbEhIVUFwcFEzWkdRZ1E0WjY?oc=5",
-      "date": "Fri, 29 May 2026 01:48:31 GMT",
-      "desc": "Why South Korea’s won is falling despite a chip export earnings bonanza&nbsp;&nbsp;Financial Times"
+      "title": "How to prevent the 'K-economy' from becoming more K-shaped - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeVJBWllzTk1GUWJ1MEF0WGRFWUVBcWxaR0JDYldQMHNnek9IS29aZEVJM3dIMVVfNnVnSU1wUHQ3c3lyaXdFUzRsMXhQMllLaEFWNXV5eUQxMmdCSml3Z1YtS2VISGJxNUtBUFJSNDhLSmpLSXRQZXdLa2hJd3dsWVIzNGs5NmlaTng2Qy0zU2FaZw?oc=5",
+      "date": "Sun, 31 May 2026 20:05:00 GMT",
+      "desc": "How to prevent the 'K-economy' from becoming more K-shaped&nbsp;&nbsp;Nikkei Asia"
     },
     {
-      "title": "South Korea export growth hits four-decade high on AI chip boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxObUZaNE0zcldLWGpoVWFONHR4OS12MTZ4Um5rN2xYNkZLdUUyM3JWbDMxX0I0WTFaNXNuRXNnaGJIeGJ3WjdxV1ltams4cGVEeURGX2Jxd1NEV1BsNFNjVHV2Rk12NnR4VGZxQmxlMHU1X1F6UTdvdUxURnJ6bHdKdUNmM0o4elVZbVozSG5McmlkLXQ1eV8tWnNPX3laNmpHOVo2eWl6ZXZKc1VQUldMMTBoQjN4TWlJNnR1MHFwckEzMWstNVdpdGI1WTQ?oc=5",
-      "date": "Mon, 01 Jun 2026 00:54:00 GMT",
-      "desc": "South Korea export growth hits four-decade high on AI chip boom&nbsp;&nbsp;Reuters"
+      "title": "After Taiwan, South Korea overtakes India to become world’s sixth largest stock market; here’s why - The Times of India",
+      "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxOVkQtWm11S2pDYUxnQ0Jvd01FMkxuUGk1ZFdDUGpiY0FidkNRTWdzM2pEendvRnFsVEt3SWc5Mnh3aFRtOW03RGxsN2xOQVd5VFNhVk5RNWhtRm5NdWllWUtMV0RaLTEzc3lHTmc3WUlzSWdNSkhnMG9HbFF3cE1NemlsbnZPWjUyUVVOMHZfVktXSlM4REs4QktxU2hiSTZNNm50eEtSeHh4NXg1eWRzT2Rkd3FCMkozTWNXRXRIemJLMlcwVWExcTgwY2dJQjZsLUZfbjNrcC1Del9LeXZoblFseDhVdW00cUFNN2tBUGZjU1pDcFFxaGk4THdlMnhhdEh3b2xKMHI1aGR00gGSAkFVX3lxTE1vMTJGQjlVM0NzUVp0WXRieWJJUXJHWWYtSE1tQnRzeVF1Mm5kVWdyN0ZDWHpZMEhKelRyTEVRbmxxR3JRT05qdGlrb1ptN3Z0ZkdPM1YwT3JDc0lBZmZDeGdDQ2NXeUQxSEhnZnFPaFNqZHBiQjJfbVNBOWRhQ1Y1emJBQktGWGNWc0tsOW1vVlFBX19Lc05IQ2JrdFhJa3FOeXd4X0JUeXpLYjhSSzFTTG5mVVduWUtVbDIyLVFJQWJ1R2hFZTRRRGJBaE9UbDVfSlR1TjRmTlh4bFNOV0pDdmhDZ2IwamJCQ1B3YzBYay11SFJSUTN2S3JJMm9pSnVodmdxTlBMSE44bDZCNzE4dWc?oc=5",
+      "date": "Tue, 02 Jun 2026 03:43:00 GMT",
+      "desc": "After Taiwan, South Korea overtakes India to become world’s sixth largest stock market; here’s why&nbsp;&nbsp;The Times of India"
     },
     {
-      "title": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBGSkRVa3JGNjJoeFl1Q1NCaHYwMV9hNy15cDhZem56Uk5xemdnVDRUei00Z05lLU1DdWF5UXVSTGtpdEwtS3AzOTU1enJQbmhWSXNQbjFnSW8xNzJteS1BWU1zREpwdWYwRHc?oc=5",
-      "date": "Mon, 01 Jun 2026 14:51:00 GMT",
-      "desc": "S.Korea eyes $1 trillion export mark as May shipments hit fresh record&nbsp;&nbsp;KED Global"
+      "title": "Korea’s double-edged economy: Chips boom and stocks soar, yet households feel poorer - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBESTJ2LVdUUWNiRG1Qc3dEczRSdGVnSE43V3Fac0lKbl9lZlFiNjdRYmczT25lb2tuYmMxdENubGtKM0F1Qnp6QVFnLVJSRE5qa3pxNkk0Vmt3dl85d1h2WmhwVzhDS2pta0E?oc=5",
+      "date": "Sun, 31 May 2026 10:43:00 GMT",
+      "desc": "Korea’s double-edged economy: Chips boom and stocks soar, yet households feel poorer&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "For the third time this month, a chip giant has joined the $1 trillion club - CNN",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOT3BXZTI1RzlhdGhXRm41VzUzWW8ycE9LLVlMUklwSzZfaldfYU9TUUN0NDlCOGFpbWRlN2Y1MzV3YWQyUmxBdkgzRjhtQjBhZGl3Tk1XRFZ0YkpWXzNieWVsZnhsT0NFdy0zNXNHTlRfUGUxZDhfYzNxUlNsQjZHai1hR3ljNzBxWUdLMQ?oc=5",
-      "date": "Fri, 29 May 2026 04:26:13 GMT",
-      "desc": "For the third time this month, a chip giant has joined the $1 trillion club&nbsp;&nbsp;CNN"
+      "title": "South Korea cuts EUV equipment approvals to speed Samsung and SK Hynix expansion - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNUXRKZWQ2LW9KWVVJWjRVa1pSTndCRjRFNzJUTnFSMm5ZZGVTNnNkckIxUDMwb1dFZDBQaG5uNXJCcDZsUlp1UTUtcE5vZ1FCWkJpVklPZzhLYnA3LThxa0w2Y2hQOHg3SG40d3k0ZERUZkJIVUV5S2JGbHBLMW9oSEFFUkg5d0dQMlZETmYyMA?oc=5",
+      "date": "Tue, 02 Jun 2026 06:38:20 GMT",
+      "desc": "South Korea cuts EUV equipment approvals to speed Samsung and SK Hynix expansion&nbsp;&nbsp;digitimes"
     },
     {
-      "title": "Bedding maker's best performer? Samsung and SK hynix - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5UVGQ4YzdwT2EwSFV6bGpvdGJyVzhoTV9yOFlMM0tDRTYzRW8ya19DSDQ0Nlp1MUVHY1Q0eThhWWZ5VElseFFVNGNfd2d2d0l6blZYWXltOA?oc=5",
-      "date": "Mon, 01 Jun 2026 09:26:07 GMT",
-      "desc": "Bedding maker's best performer? Samsung and SK hynix&nbsp;&nbsp;The Korea Herald"
+      "title": "Banks position around Samsung, SK hynix 'silicon collar' performance payouts - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOWHo1MERyM1BzQVlNRHkzQ3g2MmpoVzloWVRwaHlKVlQwaGFaTXluTjdiTTYxenBmN0RuZ0o3VHlQQjNPaU9Sc0wzYW5oTXZ2U1NxSGhXZGF6eWlkS2JZdjhrNUFZVl9mYk9lZ0wta3JkTFRraGxhZmY4ZXFCOGFaaHVPczE0dmw0WmJuWFhDSHoyR0NYU1BVM3gzSTRDdVVtOHEweElOZXU2WHBodEd3SnpUZkhrUk40VVg1VkpKemNjMEd0dDFMNG85VmloNVM5Nkd0NlJNbnRwQzlZd3pHQlg1Z3VGZ0lS?oc=5",
+      "date": "Mon, 01 Jun 2026 21:00:00 GMT",
+      "desc": "Banks position around Samsung, SK hynix 'silicon collar' performance payouts&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Samsung, SK Hynix trail Micron as automotive memory demand rises - digitimes",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNbG5aZWhTek9Lb3ZQVzVNNG04dHFHRzFwWXlPRWY2ZnlnbGFXTTZSZnptUHRmZ2RxWVZHLTJISDF0V19aQnA1S0RRaGV0SUJRUHpGUW5SVzVEMV92UWRZcjZPNlpIS1JwYTB0enMwbGRfZUZIc3UxY2IySlRTVVBKeG5uZURVQW5qcVZiYnl1VlRJOHBlVnZR?oc=5",
-      "date": "Fri, 29 May 2026 23:19:11 GMT",
-      "desc": "Samsung, SK Hynix trail Micron as automotive memory demand rises&nbsp;&nbsp;digitimes"
+      "title": "Semiconductor Trio Surpasses Oil Giants Driven by AI Demand - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOR2dPNjl2TEs1dzVCWWNMLXhIQnJEZmc1RHY5b2FoY2dYY0ZyMzV0ZktPOTFjQ3FnZjJYWTFzZFFjOWFTOHVWeGFuNjhnV0plV0w4NVduclY0QmNjOWlEc3JqdmQtdlJ1Q3RIQmhsRlFCTHFGZ1dMekIwNXF0SHdHZU1qdEhwbTE5?oc=5",
+      "date": "Mon, 01 Jun 2026 21:32:03 GMT",
+      "desc": "Semiconductor Trio Surpasses Oil Giants Driven by AI Demand&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 349000.0,
-      "change": 49500.0,
-      "pct": 16.53,
+      "price": 360500.0,
+      "change": 43500.0,
+      "pct": 13.72,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2363000.0,
-      "change": 74000.0,
-      "pct": 3.23,
+      "price": 2360000.0,
+      "change": 27000.0,
+      "pct": 1.16,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 750000.0,
-      "change": 73000.0,
-      "pct": 10.78,
+      "price": 729000.0,
+      "change": 6000.0,
+      "pct": 0.83,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 169900.0,
-      "change": 5600.0,
-      "pct": 3.41,
+      "price": 168800.0,
+      "change": -400.0,
+      "pct": -0.24,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 271500.0,
-      "change": 66500.0,
-      "pct": 32.44,
+      "price": 280500.0,
+      "change": 46500.0,
+      "pct": 19.87,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8788.38,
-      "change": 603.09,
-      "pct": 7.37,
+      "price": 8801.49,
+      "change": 325.34,
+      "pct": 3.84,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1511.72,
-      "change": 4.88,
-      "pct": 0.32,
+      "price": 1518.05,
+      "change": 11.21,
+      "pct": 0.74,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-01 23:24 UTC"
+  "updatedAt": "2026-06-02 07:18 UTC"
 }
