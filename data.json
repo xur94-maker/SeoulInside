@@ -1,48 +1,48 @@
 {
   "globalNews": [
     {
-      "title": "Ukraine rescuers pull dead from rubble after Russian strikes kill 18 people",
+      "title": "Ukraine rescuers pull dead from rubble after Russian strikes kill 22 people",
       "link": "https://www.bbc.com/news/articles/c5y8nq8ljqwo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 02 Jun 2026 12:46:36 GMT",
-      "desc": "An eight-year-old boy and a woman killed in a strike on an apartment block are among the dead, officials say."
+      "date": "Tue, 02 Jun 2026 15:10:23 GMT",
+      "desc": "An eight-year-old boy killed in a strike on an apartment block are among the dead, officials say."
     },
     {
-      "title": "Clashes continue in Lebanon despite Israel and Hezbollah accepting US partial ceasefire plan",
-      "link": "https://www.bbc.com/news/articles/c202rxp1z15o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 02 Jun 2026 07:31:10 GMT",
-      "desc": "A cessation of hostilities between Israel and Hezbollah is seen as crucial to the peace process with Iran."
+      "title": "Israel strikes southern Lebanon but partial truce with Hezbollah appears to hold",
+      "link": "https://www.bbc.com/news/articles/c936zvne0l6o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 02 Jun 2026 16:11:05 GMT",
+      "desc": "Israel continues its campaign in the south, though has not struck Beirut after a deal announced by the US."
+    },
+    {
+      "title": "British couple lose Iran jail sentence appeal, family says",
+      "link": "https://www.bbc.com/news/articles/cjrpwxe82ypo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 02 Jun 2026 16:04:18 GMT",
+      "desc": "Lindsay and Craig Foreman were arrested in January 2025 during a global motorbike journey."
     },
     {
       "title": "Two people shot dead amid Kenya protests against US Ebola quarantine centre plan",
       "link": "https://www.bbc.com/news/articles/cvgz7zny3pzo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 02 Jun 2026 10:53:37 GMT",
+      "date": "Tue, 02 Jun 2026 15:58:23 GMT",
       "desc": "The US plan has sparked public anger and led to demonstrations near the site of the proposed treatment facility."
     },
     {
-      "title": "Instagram AI chatbot tricked by hackers to give access to others' accounts",
-      "link": "https://www.bbc.com/news/articles/c98rzr72dpyo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 02 Jun 2026 11:40:02 GMT",
-      "desc": "Some reports have linked the incident to recent cases of high-profile Instagram accounts being hijacked."
-    },
-    {
-      "title": "Denmark's Mette Frederiksen to form government after months of negotiations",
-      "link": "https://www.bbc.com/news/articles/cn7p3e34x5no?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 02 Jun 2026 01:19:15 GMT",
-      "desc": "The leader of Denmark's Social Democratic Party is forming a centre-left coalition minority government, giving her a third term as prime minister."
+      "title": "Canada formally requests renewal of North American free trade pact",
+      "link": "https://www.bbc.com/news/articles/cn9prr3w9nlo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 02 Jun 2026 15:20:59 GMT",
+      "desc": "In a letter to his North American counterparts, US-Canada Trade Minister Dominic LeBlanc said the three countries should renew the USMCA trade deal."
     }
   ],
   "koreaNews": [
     {
-      "title": "How China keeps North Korea's economy alive - dw.com",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNFI2d2pxRjh3Y1V3QVgwLWMxMlQwWDZWeW5pMW5naG8ycHBfZ3g0VkdyQm55aE9ZRm1Gc2s5bng1dE8wSHRjYm8zTUtKSGxzeTg4Znk0T0dRMzFMOXd0SWVIQk9BQTVYWDZWTWFGTXZGWjgyX3JMbDNRajhGY2I1ZdIBgAFBVV95cUxOWnNER3V4dUUzM0hTRVpCTnJHWEtOQ2l1UFU2ZTF0MWpteEppVUkwY3NTRmdlQWdpMTB0VEpYc3lqaGstY3JpY3dkSmxRcDdEcDJoamtlN0Q4Y0FfNUhDMm9kTE9SX2trRVprVlpFU0ZCS3pLQnI5UlBDWUMtcnZRNA?oc=5",
-      "date": "Mon, 01 Jun 2026 16:34:56 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
+      "title": "South Korea export growth hits four-decade high on AI chip boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxObUZaNE0zcldLWGpoVWFONHR4OS12MTZ4Um5rN2xYNkZLdUUyM3JWbDMxX0I0WTFaNXNuRXNnaGJIeGJ3WjdxV1ltams4cGVEeURGX2Jxd1NEV1BsNFNjVHV2Rk12NnR4VGZxQmxlMHU1X1F6UTdvdUxURnJ6bHdKdUNmM0o4elVZbVozSG5McmlkLXQ1eV8tWnNPX3laNmpHOVo2eWl6ZXZKc1VQUldMMTBoQjN4TWlJNnR1MHFwckEzMWstNVdpdGI1WTQ?oc=5",
+      "date": "Mon, 01 Jun 2026 00:54:00 GMT",
+      "desc": "South Korea export growth hits four-decade high on AI chip boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "How to prevent the 'K-economy' from becoming more K-shaped - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeVJBWllzTk1GUWJ1MEF0WGRFWUVBcWxaR0JDYldQMHNnek9IS29aZEVJM3dIMVVfNnVnSU1wUHQ3c3lyaXdFUzRsMXhQMllLaEFWNXV5eUQxMmdCSml3Z1YtS2VISGJxNUtBUFJSNDhLSmpLSXRQZXdLa2hJd3dsWVIzNGs5NmlaTng2Qy0zU2FaZw?oc=5",
-      "date": "Sun, 31 May 2026 20:05:00 GMT",
-      "desc": "How to prevent the 'K-economy' from becoming more K-shaped&nbsp;&nbsp;Nikkei Asia"
+      "title": "How China keeps North Korea's economy alive - dw.com",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQNFI2d2pxRjh3Y1V3QVgwLWMxMlQwWDZWeW5pMW5naG8ycHBfZ3g0VkdyQm55aE9ZRm1Gc2s5bng1dE8wSHRjYm8zTUtKSGxzeTg4Znk0T0dRMzFMOXd0SWVIQk9BQTVYWDZWTWFGTXZGWjgyX3JMbDNRajhGY2I1ZdIBgAFBVV95cUxOWnNER3V4dUUzM0hTRVpCTnJHWEtOQ2l1UFU2ZTF0MWpteEppVUkwY3NTRmdlQWdpMTB0VEpYc3lqaGstY3JpY3dkSmxRcDdEcDJoamtlN0Q4Y0FfNUhDMm9kTE9SX2trRVprVlpFU0ZCS3pLQnI5UlBDWUMtcnZRNA?oc=5",
+      "date": "Mon, 01 Jun 2026 22:35:44 GMT",
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
     },
     {
       "title": "Chips, AI Keep South Korea’s Export Engine Firing on All Cylinders - WSJ",
@@ -51,16 +51,22 @@
       "desc": "Chips, AI Keep South Korea’s Export Engine Firing on All Cylinders&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "South Korea, Taiwan leapfrog India, but the race was lost decades ago - The Economic Times",
-      "link": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOZVRsTnR6NkYxYnF3ZGNhR2NVTjJMdlZhbHFDNERVWDJhejluTjdvWTl6TFdsSVNObGR5UGhtd0x1aFBIZ1FTMzAxNkdhaHRWZ2R5cHRoV1JraEVIRDF2ZzdNTjRNMGNrb1ktY0FZMDJZN0psRHZBd2pOTXUzLUZsQmp4eUE2SkE0VkJRS1hVSVZhYndkOXpJZS0yZUtwQ3oyNF95VjhXOXZpQlhFYUVnbzB0aUREOFFhQmxWRlh5OEdSZTV0QTFXeGtTSkFKYW1NNjMyMnVsWW1jSHJWRld5dm1sNl9RVjFUelJLcldHYUlKeUVnRDlYRTNpYlBtT0Q0dTJ1QnlwQkNYVlZETk5ONEJSSzV0b2RkdXfSAZ8CQVVfeXFMT0QzQ2lpRFk0cmZjOWFqZzA4YWZkNW1YLVZ0Ukpzblcyb3dYTm51dzl2dUY3YzFYdWdjRHphTExFVmJWVzMxcU5taG41R0tZOG5GQ0ljUFNFa3FyWXZ3S3FCc0d6RWp1bUNxblRydG9fcUsxQmZwMkl1THg3N1dDSEVabGdseFNPemZKRmY4UWc2VDlXV05WeDJlRE5RaWxucUxCMjlLbkkzTUpjWUVCR3JTQ0JfaEZmaFQ3TktnbDVmMlpfTC1yMXFpRDFaclZKbVRzOVhadm5wTWNqZl9tT1VPR3NXd1JDSE1sX2wzc0xvUm8wZmlDOEtmUU9WVmlhdlZCckZKcXhRa1Zha0pfMEx5T3ptY3QyQmZTd3RnWDQ?oc=5",
-      "date": "Tue, 02 Jun 2026 08:47:49 GMT",
-      "desc": "South Korea, Taiwan leapfrog India, but the race was lost decades ago&nbsp;&nbsp;The Economic Times"
+      "title": "After Taiwan, South Korea overtakes India to become world’s sixth largest stock market; here’s why - The Times of India",
+      "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxOVkQtWm11S2pDYUxnQ0Jvd01FMkxuUGk1ZFdDUGpiY0FidkNRTWdzM2pEendvRnFsVEt3SWc5Mnh3aFRtOW03RGxsN2xOQVd5VFNhVk5RNWhtRm5NdWllWUtMV0RaLTEzc3lHTmc3WUlzSWdNSkhnMG9HbFF3cE1NemlsbnZPWjUyUVVOMHZfVktXSlM4REs4QktxU2hiSTZNNm50eEtSeHh4NXg1eWRzT2Rkd3FCMkozTWNXRXRIemJLMlcwVWExcTgwY2dJQjZsLUZfbjNrcC1Del9LeXZoblFseDhVdW00cUFNN2tBUGZjU1pDcFFxaGk4THdlMnhhdEh3b2xKMHI1aGR00gGSAkFVX3lxTE1vMTJGQjlVM0NzUVp0WXRieWJJUXJHWWYtSE1tQnRzeVF1Mm5kVWdyN0ZDWHpZMEhKelRyTEVRbmxxR3JRT05qdGlrb1ptN3Z0ZkdPM1YwT3JDc0lBZmZDeGdDQ2NXeUQxSEhnZnFPaFNqZHBiQjJfbVNBOWRhQ1Y1emJBQktGWGNWc0tsOW1vVlFBX19Lc05IQ2JrdFhJa3FOeXd4X0JUeXpLYjhSSzFTTG5mVVduWUtVbDIyLVFJQWJ1R2hFZTRRRGJBaE9UbDVfSlR1TjRmTlh4bFNOV0pDdmhDZ2IwamJCQ1B3YzBYay11SFJSUTN2S3JJMm9pSnVodmdxTlBMSE44bDZCNzE4dWc?oc=5",
+      "date": "Tue, 02 Jun 2026 03:43:00 GMT",
+      "desc": "After Taiwan, South Korea overtakes India to become world’s sixth largest stock market; here’s why&nbsp;&nbsp;The Times of India"
     },
     {
       "title": "Korea’s double-edged economy: Chips boom and stocks soar, yet households feel poorer - KED Global",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBESTJ2LVdUUWNiRG1Qc3dEczRSdGVnSE43V3Fac0lKbl9lZlFiNjdRYmczT25lb2tuYmMxdENubGtKM0F1Qnp6QVFnLVJSRE5qa3pxNkk0Vmt3dl85d1h2WmhwVzhDS2pta0E?oc=5",
       "date": "Sun, 31 May 2026 10:43:00 GMT",
       "desc": "Korea’s double-edged economy: Chips boom and stocks soar, yet households feel poorer&nbsp;&nbsp;KED Global"
+    },
+    {
+      "title": "Semiconductor Power Surpasses Oil in Market Value - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOR2dPNjl2TEs1dzVCWWNMLXhIQnJEZmc1RHY5b2FoY2dYY0ZyMzV0ZktPOTFjQ3FnZjJYWTFzZFFjOWFTOHVWeGFuNjhnV0plV0w4NVduclY0QmNjOWlEc3JqdmQtdlJ1Q3RIQmhsRlFCTHFGZ1dMekIwNXF0SHdHZU1qdEhwbTE5?oc=5",
+      "date": "Tue, 02 Jun 2026 15:40:30 GMT",
+      "desc": "Semiconductor Power Surpasses Oil in Market Value&nbsp;&nbsp;조선일보"
     },
     {
       "title": "South Korea cuts EUV equipment approvals to speed Samsung and SK Hynix expansion - digitimes",
@@ -73,101 +79,95 @@
       "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOWHo1MERyM1BzQVlNRHkzQ3g2MmpoVzloWVRwaHlKVlQwaGFaTXluTjdiTTYxenBmN0RuZ0o3VHlQQjNPaU9Sc0wzYW5oTXZ2U1NxSGhXZGF6eWlkS2JZdjhrNUFZVl9mYk9lZ0wta3JkTFRraGxhZmY4ZXFCOGFaaHVPczE0dmw0WmJuWFhDSHoyR0NYU1BVM3gzSTRDdVVtOHEweElOZXU2WHBodEd3SnpUZkhrUk40VVg1VkpKemNjMEd0dDFMNG85VmloNVM5Nkd0NlJNbnRwQzlZd3pHQlg1Z3VGZ0lS?oc=5",
       "date": "Mon, 01 Jun 2026 21:00:00 GMT",
       "desc": "Banks position around Samsung, SK hynix 'silicon collar' performance payouts&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "NVIDIA CEO Praises SK Hynix, Snubs Samsung Amid HBM Competition - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcEpockJVRDdXRF9QNkE5a3Q0cXplRklBWFcwNDVySTF0RTRrZFFBOWxNZkVnODFVTmtxczF5dkJCZ2tKUmJCZ0JFREx0VkMwVlhaSDNyV3I2VktZcmJDUzFrQkt6VVFHWk5XX1lKdF9MWDNIT25mVDRJT001UWpGQnFTUGtMQ3ow?oc=5",
-      "date": "Tue, 02 Jun 2026 09:18:55 GMT",
-      "desc": "NVIDIA CEO Praises SK Hynix, Snubs Samsung Amid HBM Competition&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 224.36,
-      "change": 10.11,
-      "pct": 4.72,
+      "price": 222.98,
+      "change": 11.84,
+      "pct": 5.61,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 435.63,
-      "change": 10.77,
-      "pct": 2.53,
+      "price": 443.53,
+      "change": 25.08,
+      "pct": 5.99,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 510.13,
-      "change": -7.96,
-      "pct": -1.54,
+      "price": 514.71,
+      "change": -1.39,
+      "pct": -0.27,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 109.33,
-      "change": -11.56,
-      "pct": -9.56,
+      "price": 106.76,
+      "change": -7.92,
+      "pct": -6.91,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 228.99,
-      "change": -14.3,
-      "pct": -5.88,
+      "price": 240.03,
+      "change": -10.99,
+      "pct": -4.38,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 408.85,
-      "change": 73.58,
-      "pct": 21.95,
+      "price": 406.05,
+      "change": 52.76,
+      "pct": 14.93,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 376.37,
-      "change": -13.76,
-      "pct": -3.53,
+      "price": 367.07,
+      "change": -13.27,
+      "pct": -3.49,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 306.31,
-      "change": -6.2,
-      "pct": -1.98,
+      "price": 314.67,
+      "change": 2.61,
+      "pct": 0.84,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 460.52,
-      "change": 33.53,
-      "pct": 7.85,
+      "price": 442.89,
+      "change": -7.35,
+      "pct": -1.63,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7599.96,
-      "change": 36.33,
-      "pct": 0.48,
+      "price": 7605.33,
+      "change": 25.27,
+      "pct": 0.33,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27086.81,
-      "change": 169.34,
-      "pct": 0.63,
+      "price": 27076.96,
+      "change": 104.34,
+      "pct": 0.39,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1516.58,
-      "change": 9.74,
-      "pct": 0.65,
+      "price": 1518.47,
+      "change": 11.63,
+      "pct": 0.77,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-02 12:47 UTC"
+  "updatedAt": "2026-06-02 17:59 UTC"
 }
