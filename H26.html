@@ -1,0 +1,39 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# ========== 상수 및 함수 (위와 동일) ==========
+a0 = 5.292e-11
+lambda_c = 2.426e-12
+n2 = 22
+n = 1
+deb_amp = 0.5e-11
+comp_factor = 10.0
+
+def r_theta(theta):
+    return n**2 * a0 + deb_amp * np.sin(n * theta) + (lambda_c * comp_factor) * np.sin(n2 * theta)
+
+# ========== 극좌표계 설정 ==========
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'}, figsize=(8, 8))
+theta_full = np.linspace(0, 2*np.pi, 10000)
+r_full = r_theta(theta_full)
+
+# 궤도선 (정적)
+ax.plot(theta_full, r_full, 'b-', linewidth=2, alpha=0.7)
+ax.set_title(f'Hydrogen Atom - Moving Electron (n={n})', pad=20)
+ax.grid(True, linestyle='--', alpha=0.5)
+ax.set_rmax(n**2 * a0 + lambda_c * comp_factor + deb_amp)
+
+# 전자 포인트 (애니메이션)
+point, = ax.plot([0], [n**2 * a0], 'ro', markersize=10, markerfacecolor='#ff7e33')
+
+# ========== 애니메이션 함수 ==========
+def update(frame):
+    theta = 2 * np.pi * frame / 360  # 0~2π 순환
+    r = r_theta(theta)
+    point.set_data([theta], [r])     # 극좌표로 직접 업데이트!
+    return point,
+
+ani = FuncAnimation(fig, update, frames=360, interval=20, blit=True)
+
+plt.show()
