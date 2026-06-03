@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🔥 SU(2) YANG-MILLS LATTICE — REAL SIMULATION</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Courier New', 'SF Mono', monospace;
+            background: #000;
+        }
+        #status {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 12px 20px;
+            color: #0f0;
+            border-left: 4px solid #f00;
+            font-size: 12px;
+            pointer-events: none;
+            font-family: monospace;
+            max-width: 320px;
+        }
+        #status h2 {
+            margin: 0 0 6px;
+            font-size: 14px;
+            color: #ff5555;
+        }
+        #status .warning {
+            color: #ffaa00;
+            font-size: 10px;
+            margin-top: 6px;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 14px 20px;
+            z-index: 100;
+            border: 1px solid #ff3333;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+            font-family: monospace;
+            font-size: 11px;
+            pointer-events: auto;
+        }
+        .ctrl-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: rgba(30,0,0,0.5);
+            padding: 8px 14px;
+            border-radius: 12px;
+        }
+        .ctrl-group label {
+            color: #ff8888;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+        input {
+            cursor: pointer;
+            accent-color: #ff3333;
+        }
+        button {
+            background: #330000;
+            border: 1px solid #ff4444;
+            color: #ff8888;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: monospace;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background: #ff3333;
+            color: #000;
+            box-shadow: 0 0 20px #ff0000;
+        }
+        .danger-btn {
+            background: #660000;
+            border-color: #ff0000;
+            color: #ffaaaa;
+        }
+        .metric {
+            font-size: 10px;
+            color: #aaa;
+        }
+        .metric span {
+            color: #ff6666;
+            font-weight: bold;
+        }
+        #fps {
+            color: #88ff88;
+        }
+        @media (max-width: 900px) {
+            .ctrl-group { padding: 4px 8px; }
+            button { padding: 6px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="status">
+        <h2>⚛️ SU(2) LATTICE YANG-MILLS — REAL TIME</h2>
+        <div>🔴 NON-ABELIAN GAUGE FIELD | COOLING DYNAMICS</div>
+        <div>📐 LATTICE: <span id="lattice-size-display">20</span>³ | ⚡ ACTION: <span id="action-val">---</span></div>
+        <div>🖥️ STEP: <span id="step-count">0</span> | ⏱️ LAST STEP: <span id="step-time">0</span> ms</div>
+        <div class="warning">⚠️ WARNING: HEAVY COMPUTATION — YOUR PC WILL SCREAM ⚠️</div>
+    </div>
+    <div id="controls">
+        <div class="ctrl-group">
+            <label>🔢 LATTICE SIZE N³ (RESTART REQUIRES RESET)</label>
+            <input type="range" id="lattice-slider" min="10" max="28" step="2" value="20">
+            <span id="lattice-val">20³</span>
+        </div>
+        <div class="ctrl-group">
+            <label>🎨 VISUALIZATION DENSITY (skip factor)</label>
+            <input type="range" id="density-slider" min="1" max="4" step="1" value="2">
+            <span id="density-val">skip 2</span>
+        </div>
+        <div class="ctrl-group">
+            <label>🌀 COUPLING β = 4/g² (larger = smoother)</label>
+            <input type="range" id="beta-slider" min="1.5" max="5.0" step="0.05" value="2.8">
+            <span id="beta-val">2.80</span>
+        </div>
+        <div class="ctrl-group">
+            <label>⏱️ COOLING STEPS PER FRAME</label>
+            <input type="range" id="cooling-steps-slider" min="1" max="20" step="1" value="4">
+            <span id="coolsteps-val">4</span>
+        </div>
+        <button id="reset-lattice-btn">🔄 RESTART SIMULATION</button>
+        <button id="kill-switch" class="danger-btn">💀 EMERGENCY STOP</button>
+        <div class="metric">🔥 ACTION DENSITY <span id="action-density">0.000</span></div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        
+        // ============================================================
+        // SU(2) LATTICE YANG-MILLS ENGINE (REAL SIMULATION!)
+        // ============================================================
+        
+        // SU(2) matrix = [a+ib, c+id; -c+id, a-ib] with a^2+b^2+c^2+d^2 = 1
+        // Store as [a, b, c, d] (real parts)
+        
+        class SU2Matrix {
+            constructor(a, b, c, d) {
+                this.a = a; this.b = b; this.c = c; this.d = d;
+            }
+            
+            static identity() {
+                return new SU2Matrix(1, 0, 0, 0);
+            }
+            
+            static random() {
+                let a,b,c,d;
+                do {
+                    a = Math.random() * 2 - 1;
+                    b = Math.random() * 2 - 1;
+                    c = Math.random() * 2 - 1;
+                    d = Math.random() * 2 - 1;
+                } while (a*a + b*b + c*c + d*d > 1);
+                const norm = Math.sqrt(a*a + b*b + c*c + d*d);
+                return new SU2Matrix(a/norm, b/norm, c/norm, d/norm);
+            }
+            
+            // multiply two SU(2) matrices
+            multiply(other) {
+                return new SU2Matrix(
+                    this.a * other.a - this.b * other.b - this.c * other.c - this.d * other.d,
+                    this.a * other.b + this.b * other.a + this.c * other.d - this.d * other.c,
+                    this.a * other.c - this.b * other.d + this.c * other.a + this.d * other.b,
+                    this.a * other.d + this.b * other.c - this.c * other.b + this.d * other.a
+                );
+            }
+            
+            // adjoint = inverse for SU(2)
+            adjoint() {
+                return new SU2Matrix(this.a, -this.b, -this.c, -this.d);
+            }
+            
+            // trace (real part, 2*this.a)
+            trace() {
+                return 2 * this.a;
+            }
+            
+            // project back to SU(2) after small update
+            static project(matrix) {
+                const norm = Math.sqrt(matrix.a*matrix.a + matrix.b*matrix.b + matrix.c*matrix.c + matrix.d*matrix.d);
+                return new SU2Matrix(matrix.a/norm, matrix.b/norm, matrix.c/norm, matrix.d/norm);
+            }
+            
+            // exponential of su(2) element: exp(i * sigma * vec) for small vector
+            static exp(vec) {
+                // vec = [vx, vy, vz] (real)
+                const theta = Math.sqrt(vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2]);
+                if (theta < 1e-8) return SU2Matrix.identity();
+                const c = Math.cos(theta);
+                const s = Math.sin(theta) / theta;
+                return new SU2Matrix(c, s * vec[0], s * vec[1], s * vec[2]);
+            }
+        }
+        
+        class LatticeYangMills {
+            constructor(N, beta) {
+                this.N = N;               // lattice size per dimension
+                this.beta = beta;         // coupling β = 4/g^2
+                this.totalLinks = N * N * N * 3; // 3 spatial directions (we evolve on 3D)
+                // Links: U_mu(x) for mu=1,2,3 (x,y,z) stored as flat array
+                this.links = new Array(this.totalLinks);
+                this.initializeHotStart();
+                this.actionHistory = [];
+                this.step = 0;
+            }
+            
+            initializeHotStart() {
+                // Random SU(2) matrices for all links
+                for (let i = 0; i < this.totalLinks; i++) {
+                    this.links[i] = SU2Matrix.random();
+                }
+            }
+            
+            coldStart() {
+                for (let i = 0; i < this.totalLinks; i++) {
+                    this.links[i] = SU2Matrix.identity();
+                }
+            }
+            
+            getLinkIndex(x, y, z, dir) {
+                // dir: 0=x, 1=y, 2=z
+                return ((x * this.N + y) * this.N + z) * 3 + dir;
+            }
+            
+            getLink(x, y, z, dir) {
+                return this.links[this.getLinkIndex(x, y, z, dir)];
+            }
+            
+            setLink(x, y, z, dir, mat) {
+                this.links[this.getLinkIndex(x, y, z, dir)] = mat;
+            }
+            
+            // Plaquette at (x,y,z) in plane (mu,nu)
+            computePlaquette(x, y, z, mu, nu) {
+                // U_mu(x) * U_nu(x+mu) * U_mu^adj(x+nu) * U_nu^adj(x)
+                const U_mu = this.getLink(x, y, z, mu);
+                let x2 = x, y2 = y, z2 = z;
+                if (mu === 0) x2 = (x+1) % this.N;
+                else if (mu === 1) y2 = (y+1) % this.N;
+                else z2 = (z+1) % this.N;
+                const U_nu_shift = this.getLink(x2, y2, z2, nu);
+                
+                let x3 = x, y3 = y, z3 = z;
+                if (nu === 0) x3 = (x+1) % this.N;
+                else if (nu === 1) y3 = (y+1) % this.N;
+                else z3 = (z+1) % this.N;
+                const U_mu_shift_nu = this.getLink(x3, y3, z3, mu);
+                const U_nu = this.getLink(x, y, z, nu);
+                
+                const prod1 = U_mu.multiply(U_nu_shift);
+                const prod2 = prod1.multiply(U_mu_shift_nu.adjoint());
+                const plaquette = prod2.multiply(U_nu.adjoint());
+                return plaquette.trace();
+            }
+            
+            // Total action = sum over all plaquettes (1 - 1/2 Tr(U_plaq))
+            computeTotalAction() {
+                let sum = 0;
+                for (let x = 0; x < this.N; x++) {
+                    for (let y = 0; y < this.N; y++) {
+                        for (let z = 0; z < this.N; z++) {
+                            // 3 planes: xy, xz, yz
+                            const plaq_xy = this.computePlaquette(x, y, z, 0, 1);
+                            const plaq_xz = this.computePlaquette(x, y, z, 0, 2);
+                            const plaq_yz = this.computePlaquette(x, y, z, 1, 2);
+                            sum += (1 - 0.5 * plaq_xy) + (1 - 0.5 * plaq_xz) + (1 - 0.5 * plaq_yz);
+                        }
+                    }
+                }
+                return this.beta * sum;
+            }
+            
+            // Compute staple for given link (needed for cooling)
+            computeStaple(x, y, z, mu) {
+                // staple = sum over nu != mu of U_nu(x) * U_mu(x+nu) * U_nu^adj(x+mu) + similar in -nu direction
+                let staple = new SU2Matrix(0,0,0,0);
+                for (let nu = 0; nu < 3; nu++) {
+                    if (nu === mu) continue;
+                    // positive nu direction
+                    let xp = x, yp = y, zp = z;
+                    if (nu === 0) xp = (x+1) % this.N;
+                    else if (nu === 1) yp = (y+1) % this.N;
+                    else zp = (z+1) % this.N;
+                    
+                    const U_nu_pos = this.getLink(x, y, z, nu);
+                    const U_mu_shift = this.getLink(xp, yp, zp, mu);
+                    const U_nu_adj_pos = this.getLink(xp, yp, zp, nu).adjoint();
+                    const term1 = U_nu_pos.multiply(U_mu_shift).multiply(U_nu_adj_pos);
+                    
+                    // negative nu direction
+                    let xm = x, ym = y, zm = z;
+                    if (nu === 0) xm = (x-1+this.N) % this.N;
+                    else if (nu === 1) ym = (y-1+this.N) % this.N;
+                    else zm = (z-1+this.N) % this.N;
+                    
+                    const U_nu_neg_adj = this.getLink(xm, ym, zm, nu).adjoint();
+                    let xmm = x, ymm = y, zmm = z;
+                    if (mu === 0) xmm = (x-1+this.N) % this.N;
+                    else if (mu === 1) ymm = (y-1+this.N) % this.N;
+                    else zmm = (z-1+this.N) % this.N;
+                    const U_mu_shift_neg = this.getLink(xmm, ymm, zmm, mu);
+                    const term2 = U_nu_neg_adj.multiply(U_mu_shift_neg).multiply(this.getLink(xm, ym, zm, nu));
+                    
+                    staple.a += term1.a + term2.a;
+                    staple.b += term1.b + term2.b;
+                    staple.c += term1.c + term2.c;
+                    staple.d += term1.d + term2.d;
+                }
+                return SU2Matrix.project(staple);
+            }
+            
+            // One cooling step: replace each link with projection of its staple
+            coolingStep() {
+                const newLinks = new Array(this.totalLinks);
+                for (let x = 0; x < this.N; x++) {
+                    for (let y = 0; y < this.N; y++) {
+                        for (let z = 0; z < this.N; z++) {
+                            for (let mu = 0; mu < 3; mu++) {
+                                const staple = this.computeStaple(x, y, z, mu);
+                                newLinks[this.getLinkIndex(x,y,z,mu)] = staple;
+                            }
+                        }
+                    }
+                }
+                this.links = newLinks;
+                this.step++;
+                if (this.step % 10 === 0) {
+                    const action = this.computeTotalAction();
+                    this.actionHistory.push(action);
+                    if (this.actionHistory.length > 100) this.actionHistory.shift();
+                    return action;
+                }
+                return null;
+            }
+            
+            // Get energy density at each lattice site (for visualization)
+            getEnergyDensity() {
+                const density = new Array(this.N * this.N * this.N);
+                let idx = 0;
+                for (let x = 0; x < this.N; x++) {
+                    for (let y = 0; y < this.N; y++) {
+                        for (let z = 0; z < this.N; z++) {
+                            let siteAction = 0;
+                            // sum over mu<nu around this site
+                            siteAction += (1 - 0.5 * this.computePlaquette(x,y,z,0,1));
+                            siteAction += (1 - 0.5 * this.computePlaquette(x,y,z,0,2));
+                            siteAction += (1 - 0.5 * this.computePlaquette(x,y,z,1,2));
+                            density[idx++] = siteAction;
+                        }
+                    }
+                }
+                const maxVal = Math.max(...density, 0.001);
+                return density.map(d => d / maxVal);
+            }
+        }
+        
+        // ============================================================
+        // THREE.JS VISUALIZATION
+        // ============================================================
+        
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x010005);
+        scene.fog = new THREE.FogExp2(0x010005, 0.008);
+        
+        const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 80);
+        camera.position.set(12, 10, 14);
+        camera.lookAt(0, 0, 0);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        document.body.appendChild(renderer.domElement);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.autoRotate = false;
+        controls.enableZoom = true;
+        controls.zoomSpeed = 1.2;
+        
+        // Lighting
+        const ambient = new THREE.AmbientLight(0x111122);
+        scene.add(ambient);
+        const mainLight = new THREE.DirectionalLight(0xffaa88, 0.8);
+        mainLight.position.set(2, 5, 3);
+        scene.add(mainLight);
+        const backLight = new THREE.PointLight(0x3355ff, 0.4);
+        backLight.position.set(-3, 1, -5);
+        scene.add(backLight);
+        
+        // Starfield
+        const starGeo = new THREE.BufferGeometry();
+        const starPos = [];
+        for (let i = 0; i < 2000; i++) {
+            starPos.push((Math.random() - 0.5) * 400);
+            starPos.push((Math.random() - 0.5) * 200);
+            starPos.push((Math.random() - 0.5) * 150 - 50);
+        }
+        starGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(starPos), 3));
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x88aaff, size: 0.12, transparent: true }));
+        scene.add(stars);
+        
+        let pointsMesh = null;
+        let latticeSim = null;
+        let animationId = null;
+        let isRunning = true;
+        let currentStep = 0;
+        let lastStepTime = 0;
+        
+        // Color palette
+        const hotColors = [new THREE.Color(0x330000), new THREE.Color(0xff3333), new THREE.Color(0xffaa44), new THREE.Color(0xffdd88)];
+        
+        function getColorFromDensity(density) {
+            if (density < 0.25) return hotColors[0];
+            if (density < 0.5) return hotColors[1];
+            if (density < 0.75) return hotColors[2];
+            return hotColors[3];
+        }
+        
+        function rebuildVisualization(skip, densityArray, latticeSize) {
+            if (pointsMesh) scene.remove(pointsMesh);
+            
+            const positions = [];
+            const colors = [];
+            const scale = 0.9;
+            const offset = (latticeSize - 1) / 2;
+            
+            let idx = 0;
+            for (let x = 0; x < latticeSize; x += skip) {
+                for (let y = 0; y < latticeSize; y += skip) {
+                    for (let z = 0; z < latticeSize; z += skip) {
+                        const dens = densityArray[idx];
+                        if (dens === undefined) continue;
+                        const px = (x - offset) * 0.32;
+                        const py = (y - offset) * 0.32;
+                        const pz = (z - offset) * 0.32;
+                        positions.push(px, py, pz);
+                        const color = getColorFromDensity(dens);
+                        colors.push(color.r, color.g, color.b);
+                        idx += skip * skip * skip;
+                    }
+                }
+            }
+            
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(colors), 3));
+            const material = new THREE.PointsMaterial({ size: 0.18, vertexColors: true, blending: THREE.AdditiveBlending });
+            pointsMesh = new THREE.Points(geometry, material);
+            scene.add(pointsMesh);
+        }
+        
+        // UI elements
+        const latticeSlider = document.getElementById('lattice-slider');
+        const latticeVal = document.getElementById('lattice-val');
+        const densitySlider = document.getElementById('density-slider');
+        const densityVal = document.getElementById('density-val');
+        const betaSlider = document.getElementById('beta-slider');
+        const betaVal = document.getElementById('beta-val');
+        const coolingStepsSlider = document.getElementById('cooling-steps-slider');
+        const coolstepsVal = document.getElementById('coolsteps-val');
+        const resetBtn = document.getElementById('reset-lattice-btn');
+        const killSwitch = document.getElementById('kill-switch');
+        const actionDensitySpan = document.getElementById('action-density');
+        const stepCountSpan = document.getElementById('step-count');
+        const stepTimeSpan = document.getElementById('step-time');
+        const latticeSizeSpan = document.getElementById('lattice-size-display');
+        
+        function initSimulation() {
+            if (animationId) cancelAnimationFrame(animationId);
+            const N = parseInt(latticeSlider.value);
+            const beta = parseFloat(betaSlider.value);
+            latticeSizeSpan.innerText = N;
+            latticeVal.innerText = N + '³';
+            latticeSim = new LatticeYangMills(N, beta);
+            currentStep = 0;
+            stepCountSpan.innerText = '0';
+            updateVisualization();
+            startLoop();
+        }
+        
+        let lastActionAvg = 0;
+        
+        function updateVisualization() {
+            if (!latticeSim) return;
+            const densityArray = latticeSim.getEnergyDensity();
+            const skip = parseInt(densitySlider.value);
+            densityVal.innerText = `skip ${skip}`;
+            rebuildVisualization(skip, densityArray, latticeSim.N);
+            const action = latticeSim.computeTotalAction();
+            const actionPerSite = action / (latticeSim.N * latticeSim.N * latticeSim.N * 3);
+            lastActionAvg = actionPerSite;
+            actionDensitySpan.innerText = actionPerSite.toFixed(5);
+        }
+        
+        let lastTimestamp = 0;
+        let frameCount = 0;
+        
+        function simulationStep() {
+            if (!isRunning || !latticeSim) return false;
+            const startPerf = performance.now();
+            const coolingSteps = parseInt(coolingStepsSlider.value);
+            let lastAction = null;
+            for (let i = 0; i < coolingSteps; i++) {
+                lastAction = latticeSim.coolingStep();
+                currentStep = latticeSim.step;
+            }
+            const elapsed = performance.now() - startPerf;
+            stepCountSpan.innerText = currentStep;
+            stepTimeSpan.innerText = elapsed.toFixed(1);
+            
+            if (lastAction !== null) {
+                const actionPerSite = lastAction / (latticeSim.N * latticeSim.N * latticeSim.N * 3);
+                actionDensitySpan.innerText = actionPerSite.toFixed(5);
+            }
+            
+            // Update beta dynamically if changed
+            const newBeta = parseFloat(betaSlider.value);
+            if (Math.abs(latticeSim.beta - newBeta) > 0.01) {
+                latticeSim.beta = newBeta;
+            }
+            betaVal.innerText = newBeta.toFixed(2);
+            
+            updateVisualization();
+            return true;
+        }
+        
+        function animate() {
+            if (!isRunning) {
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+                return;
+            }
+            
+            const now = performance.now();
+            // Run simulation steps — target ~2-5 steps per second depending on load
+            if (latticeSim) {
+                simulationStep();
+            }
+            
+            stars.rotation.y += 0.001;
+            stars.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1;
+            if (pointsMesh) {
+                pointsMesh.rotation.y = Math.sin(Date.now() * 0.0003) * 0.05;
+            }
+            controls.update();
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        
+        function startLoop() {
+            if (animationId) cancelAnimationFrame(animationId);
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        resetBtn.addEventListener('click', () => {
+            if (latticeSim) {
+                const N = parseInt(latticeSlider.value);
+                const beta = parseFloat(betaSlider.value);
+                latticeSim = new LatticeYangMills(N, beta);
+                currentStep = 0;
+                stepCountSpan.innerText = '0';
+                updateVisualization();
+            }
+        });
+        
+        killSwitch.addEventListener('click', () => {
+            isRunning = !isRunning;
+            killSwitch.textContent = isRunning ? '💀 EMERGENCY STOP' : '▶️ RESUME';
+            killSwitch.style.background = isRunning ? '#660000' : '#226622';
+        });
+        
+        latticeSlider.addEventListener('input', () => {
+            latticeVal.innerText = latticeSlider.value + '³';
+        });
+        
+        coolingStepsSlider.addEventListener('input', () => {
+            coolstepsVal.innerText = coolingStepsSlider.value;
+        });
+        
+        densitySlider.addEventListener('input', () => {
+            densityVal.innerText = `skip ${densitySlider.value}`;
+            if (latticeSim) updateVisualization();
+        });
+        
+        // Initial kick
+        initSimulation();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        console.log('🔥 SU(2) Yang-Mills Lattice Engine Loaded — Real non-abelian gauge simulation running. Brace your CPU!');
+    </script>
+</body>
+</html>

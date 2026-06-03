@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asymptotic Freedom — Yang-Mills β Function</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap');
+
+        :root {
+            --bg: #05070f;
+            --panel: #0b0e1a;
+            --border: #1a1f35;
+            --accent1: #00e5ff;
+            --accent2: #ff4060;
+            --accent3: #a0ff60;
+            --accent4: #ffb020;
+            --text: #c8d0e8;
+            --text-dim: #5a6080;
+            --glow1: rgba(0,229,255,0.15);
+            --glow2: rgba(255,64,96,0.15);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 48px;
+            border-left: 3px solid var(--accent1);
+            padding-left: 20px;
+        }
+
+        .label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--accent1);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(28px, 5vw, 52px);
+            font-weight: 300;
+            line-height: 1.1;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--accent1);
+        }
+
+        .subtitle {
+            margin-top: 12px;
+            font-size: 11px;
+            color: var(--text-dim);
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        /* Layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Control Panel */
+        .controls {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 24px;
+            position: sticky;
+            top: 24px;
+        }
+
+        .ctrl-section {
+            margin-bottom: 28px;
+        }
+
+        .ctrl-section:last-child { margin-bottom: 0; }
+
+        .ctrl-title {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--accent1);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ctrl-row {
+            margin-bottom: 18px;
+        }
+
+        .ctrl-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            font-size: 10px;
+            color: var(--text-dim);
+        }
+
+        .ctrl-label .val {
+            font-size: 13px;
+            color: var(--accent4);
+            font-weight: 700;
+        }
+
+        input[type=range] {
+            width: 100%;
+            height: 2px;
+            background: var(--border);
+            outline: none;
+            border: none;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: var(--accent1);
+            border-radius: 0;
+            cursor: pointer;
+            box-shadow: 0 0 8px var(--accent1);
+            transition: transform 0.1s;
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.3);
+        }
+
+        /* Status card */
+        .status-card {
+            background: rgba(0,229,255,0.04);
+            border: 1px solid rgba(0,229,255,0.15);
+            border-radius: 2px;
+            padding: 14px 16px;
+            margin-top: 4px;
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            margin-bottom: 6px;
+        }
+
+        .status-row:last-child { margin-bottom: 0; }
+
+        .status-key { color: var(--text-dim); }
+
+        .status-val {
+            font-weight: 700;
+        }
+
+        .val-positive { color: var(--accent3); }
+        .val-negative { color: var(--accent2); }
+        .val-neutral { color: var(--accent4); }
+        .val-special { color: var(--accent1); }
+
+        .freedom-badge {
+            width: 100%;
+            text-align: center;
+            padding: 8px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-top: 12px;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .freedom-badge.free {
+            background: rgba(160,255,96,0.1);
+            border: 1px solid var(--accent3);
+            color: var(--accent3);
+        }
+
+        .freedom-badge.confined {
+            background: rgba(255,64,96,0.1);
+            border: 1px solid var(--accent2);
+            color: var(--accent2);
+        }
+
+        /* Chart area */
+        .charts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .chart-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 24px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+        }
+
+        .chart-title {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--text);
+        }
+
+        .chart-formula {
+            font-family: 'Crimson Pro', serif;
+            font-style: italic;
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            border: 1px solid var(--border);
+        }
+
+        /* Annotation pills */
+        .annotations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .pill {
+            font-size: 9px;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 1px;
+            border: 1px solid;
+        }
+
+        .pill-cyan { border-color: var(--accent1); color: var(--accent1); background: rgba(0,229,255,0.05); }
+        .pill-red { border-color: var(--accent2); color: var(--accent2); background: rgba(255,64,96,0.05); }
+        .pill-green { border-color: var(--accent3); color: var(--accent3); background: rgba(160,255,96,0.05); }
+        .pill-yellow { border-color: var(--accent4); color: var(--accent4); background: rgba(255,176,32,0.05); }
+
+        /* Insight box */
+        .insight {
+            background: rgba(0,229,255,0.03);
+            border-left: 2px solid var(--accent1);
+            padding: 14px 16px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 15px;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .insight strong {
+            font-style: normal;
+            color: var(--accent1);
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+        }
+
+        /* Bottom info row */
+        .info-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .info-row { grid-template-columns: 1fr; }
+        }
+
+        .info-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 2px;
+        }
+
+        .info-card-title {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .info-card-val {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .info-card-desc {
+            font-size: 9px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* Separator */
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 32px 0;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: fixed;
+            background: rgba(11,14,26,0.95);
+            border: 1px solid var(--accent1);
+            padding: 8px 12px;
+            font-size: 10px;
+            color: var(--text);
+            pointer-events: none;
+            display: none;
+            z-index: 100;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <div class="label">Yang-Mills Theory // Interactive</div>
+        <h1>Asymptotic <em>Freedom</em><br>& β Function</h1>
+        <p class="subtitle">
+            Why does the coupling vanish at high energy? — Move the sliders to see how
+            the number of quark flavors N<sub>f</sub> and the gauge group SU(N) determine
+            whether a theory is asymptotically free.
+        </p>
+    </header>
+
+    <div class="main-grid">
+
+        <!-- Controls -->
+        <aside class="controls">
+
+            <div class="ctrl-section">
+                <div class="ctrl-title">Gauge Group</div>
+
+                <div class="ctrl-row">
+                    <div class="ctrl-label">
+                        <span>SU(N) — Gauge colors</span>
+                        <span class="val" id="N-val">N = 3</span>
+                    </div>
+                    <input type="range" id="N-slider" min="2" max="6" step="1" value="3">
+                </div>
+
+                <div class="ctrl-row">
+                    <div class="ctrl-label">
+                        <span>N<sub>f</sub> — Quark flavors</span>
+                        <span class="val" id="Nf-val">N<sub>f</sub> = 6</span>
+                    </div>
+                    <input type="range" id="Nf-slider" min="0" max="20" step="1" value="6">
+                </div>
+            </div>
+
+            <div class="ctrl-section">
+                <div class="ctrl-title">Scale</div>
+
+                <div class="ctrl-row">
+                    <div class="ctrl-label">
+                        <span>Λ<sub>QCD</sub> (MeV)</span>
+                        <span class="val" id="Lambda-val">200 MeV</span>
+                    </div>
+                    <input type="range" id="Lambda-slider" min="100" max="500" step="10" value="200">
+                </div>
+
+                <div class="ctrl-row">
+                    <div class="ctrl-label">
+                        <span>μ range (max GeV)</span>
+                        <span class="val" id="mumax-val">1000 GeV</span>
+                    </div>
+                    <input type="range" id="mumax-slider" min="100" max="10000" step="100" value="1000">
+                </div>
+            </div>
+
+            <div class="ctrl-section">
+                <div class="ctrl-title">Status</div>
+                <div class="status-card">
+                    <div class="status-row">
+                        <span class="status-key">b₀</span>
+                        <span class="status-val val-neutral" id="b0-display">7.00</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-key">β(g) sign</span>
+                        <span class="status-val" id="beta-sign">NEGATIVE ✓</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-key">α<sub>s</sub>(M<sub>Z</sub>)</span>
+                        <span class="status-val val-special" id="alphas-mz">—</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-key">Critical N<sub>f</sub></span>
+                        <span class="status-val val-yellow" id="nf-crit">—</span>
+                    </div>
+                </div>
+                <div class="freedom-badge free" id="freedom-badge">
+                    ✦ ASYMPTOTICALLY FREE ✦
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Charts -->
+        <div class="charts">
+
+            <!-- Beta function chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">β FUNCTION  vs  coupling g</span>
+                    <span class="chart-formula">β(g) = −g³/(16π²) · b₀</span>
+                </div>
+                <canvas id="beta-canvas" height="260"></canvas>
+                <div class="annotations">
+                    <span class="pill pill-cyan">β(g) &lt; 0 → Asymptotic Freedom</span>
+                    <span class="pill pill-red">β(g) &gt; 0 → Triviality / Landau Pole</span>
+                    <span class="pill pill-green">g* = UV fixed point</span>
+                </div>
+            </div>
+
+            <!-- Running coupling chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">RUNNING COUPLING  α<sub>s</sub>(μ)</span>
+                    <span class="chart-formula">α<sub>s</sub>(μ) = 4π / (b₀ ln(μ²/Λ²))</span>
+                </div>
+                <canvas id="alpha-canvas" height="260"></canvas>
+                <div class="annotations">
+                    <span class="pill pill-red">Λ<sub>QCD</sub> — confinement scale</span>
+                    <span class="pill pill-cyan">μ → ∞  ⟹  α<sub>s</sub> → 0</span>
+                    <span class="pill pill-yellow">M<sub>Z</sub> = 91.2 GeV reference</span>
+                </div>
+            </div>
+
+            <!-- b0 phase diagram -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <span class="chart-title">ASYMPTOTIC FREEDOM BOUNDARY</span>
+                    <span class="chart-formula">b₀ = (11/3)N − (2/3)N<sub>f</sub></span>
+                </div>
+                <canvas id="phase-canvas" height="220"></canvas>
+                <div class="annotations">
+                    <span class="pill pill-green">Green region → b₀ &gt; 0 → Free</span>
+                    <span class="pill pill-red">Red region → b₀ &lt; 0 → Not free</span>
+                    <span class="pill pill-cyan">● Current parameters</span>
+                </div>
+            </div>
+
+            <div class="insight">
+                <strong>KEY INSIGHT</strong><br>
+                Classical Yang-Mills has no mass parameter — the action S = ∫ Tr(F∧★F)/g² is
+                dimensionless. Yet quantization introduces Λ<sub>QCD</sub> via
+                <em>dimensional transmutation</em>: the running coupling hits a pole at a finite
+                scale, creating a dynamical mass gap. All glueball masses scale as
+                m ∝ Λ<sub>QCD</sub>.
+            </div>
+
+            <!-- Key numbers row -->
+            <div class="info-row">
+                <div class="info-card">
+                    <div class="info-card-title">b₀ coefficient</div>
+                    <div class="info-card-val" id="info-b0" style="color:var(--accent4)">7.00</div>
+                    <div class="info-card-desc">
+                        (11/3)N − (2/3)N<sub>f</sub><br>
+                        Must be &gt; 0 for asymptotic freedom
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-title">Critical N<sub>f</sub></div>
+                    <div class="info-card-val" id="info-nfcrit" style="color:var(--accent2)">16.5</div>
+                    <div class="info-card-desc">
+                        (11/2)N — max flavors<br>
+                        SU(3): N<sub>f</sub> &lt; 16.5
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-title">Λ<sub>QCD</sub> scale</div>
+                    <div class="info-card-val" id="info-lambda" style="color:var(--accent1)">200 MeV</div>
+                    <div class="info-card-desc">
+                        Confinement boundary<br>
+                        Glueball mass ~ 1.5–1.7 GeV
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ============================================================
+// PHYSICS ENGINE
+// ============================================================
+
+function computeB0(N, Nf) {
+    // b0 = (11/3)C2(G) - (4/3)*(1/2)*Nf for SU(N) with fundamental quarks
+    // C2(G) = N, T(F) = 1/2
+    return (11/3) * N - (2/3) * Nf;
+}
+
+function criticalNf(N) {
+    // b0 = 0 → Nf_crit = (11/2) * N
+    return (11/2) * N;
+}
+
+function alphaS(mu_GeV, Lambda_GeV, b0) {
+    // α_s(μ) = 4π / (b0 * ln(μ²/Λ²))
+    if (mu_GeV <= Lambda_GeV) return Infinity;
+    const ratio = mu_GeV / Lambda_GeV;
+    const logval = 2 * Math.log(ratio);
+    if (logval <= 0) return Infinity;
+    return (4 * Math.PI) / (b0 * logval);
+}
+
+function betaFunc(g, b0) {
+    // β(g) = - g³/(16π²) * b0
+    return -(g * g * g) / (16 * Math.PI * Math.PI) * b0;
+}
+
+// ============================================================
+// CANVAS UTILITIES
+// ============================================================
+
+function getCtx(id) {
+    const canvas = document.getElementById(id);
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = parseInt(canvas.getAttribute('height')) * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx._w = rect.width;
+    ctx._h = parseInt(canvas.getAttribute('height'));
+    return ctx;
+}
+
+const PAD = { top: 20, right: 20, bottom: 40, left: 55 };
+
+function drawGrid(ctx, xScale, yScale, xTicks, yTicks, xLabel, yLabel) {
+    const w = ctx._w, h = ctx._h;
+    const px = x => PAD.left + (x - xScale[0]) / (xScale[1] - xScale[0]) * (w - PAD.left - PAD.right);
+    const py = y => h - PAD.bottom - (y - yScale[0]) / (yScale[1] - yScale[0]) * (h - PAD.top - PAD.bottom);
+
+    ctx.save();
+    ctx.clearRect(0, 0, w, h);
+
+    // Grid lines
+    ctx.strokeStyle = 'rgba(26,31,53,1)';
+    ctx.lineWidth = 1;
+    for (const xt of xTicks) {
+        ctx.beginPath(); ctx.moveTo(px(xt), PAD.top); ctx.lineTo(px(xt), h - PAD.bottom); ctx.stroke();
+    }
+    for (const yt of yTicks) {
+        ctx.beginPath(); ctx.moveTo(PAD.left, py(yt)); ctx.lineTo(w - PAD.right, py(yt)); ctx.stroke();
+    }
+
+    // Axes
+    ctx.strokeStyle = '#2a3050';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(PAD.left, PAD.top); ctx.lineTo(PAD.left, h - PAD.bottom); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(PAD.left, h - PAD.bottom); ctx.lineTo(w - PAD.right, h - PAD.bottom); ctx.stroke();
+
+    // Tick labels
+    ctx.fillStyle = '#5a6080';
+    ctx.font = '9px Space Mono, monospace';
+    ctx.textAlign = 'center';
+    for (const xt of xTicks) {
+        const label = Math.abs(xt) >= 100 ? xt.toFixed(0) : xt % 1 === 0 ? xt.toString() : xt.toFixed(1);
+        ctx.fillText(label, px(xt), h - PAD.bottom + 14);
+    }
+    ctx.textAlign = 'right';
+    for (const yt of yTicks) {
+        const label = Math.abs(yt) >= 1 ? yt.toFixed(1) : yt.toFixed(3);
+        ctx.fillText(label, PAD.left - 6, py(yt) + 3);
+    }
+
+    // Axis labels
+    ctx.fillStyle = '#5a6080';
+    ctx.font = '9px Space Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(xLabel, PAD.left + (w - PAD.left - PAD.right) / 2, h - 4);
+    ctx.save();
+    ctx.translate(12, PAD.top + (h - PAD.top - PAD.bottom) / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText(yLabel, 0, 0);
+    ctx.restore();
+
+    ctx.restore();
+    return { px, py };
+}
+
+// ============================================================
+// CHART 1: BETA FUNCTION
+// ============================================================
+
+function drawBetaChart(N, Nf) {
+    const ctx = getCtx('beta-canvas');
+    const w = ctx._w, h = ctx._h;
+    const b0 = computeB0(N, Nf);
+    const isFree = b0 > 0;
+
+    const xScale = [0, 3];
+    const gMax = 3;
+    // Estimate y range
+    const yMax = Math.abs(betaFunc(gMax, b0)) * 1.2 + 0.01;
+    const yRange = isFree ? [-yMax, yMax * 0.3] : [-yMax * 0.3, yMax];
+    const xTicks = [0, 0.5, 1, 1.5, 2, 2.5, 3];
+    const step = (yRange[1] - yRange[0]) / 4;
+    const yTicks = [0, 1, 2, 3, 4].map(i => +(yRange[0] + i * step).toFixed(3));
+
+    const { px, py } = drawGrid(ctx, xScale, yRange, xTicks, yTicks, 'g  (coupling)', 'β(g)');
+
+    ctx.save();
+
+    // Zero line highlight
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(PAD.left, py(0)); ctx.lineTo(w - PAD.right, py(0)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Fill regions
+    const gradFree = ctx.createLinearGradient(0, py(yRange[1]), 0, py(0));
+    gradFree.addColorStop(0, 'rgba(160,255,96,0)');
+    gradFree.addColorStop(1, 'rgba(160,255,96,0.06)');
+    ctx.fillStyle = gradFree;
+    ctx.fillRect(PAD.left, py(0), w - PAD.left - PAD.right, py(yRange[0]) - py(0));
+
+    const gradConf = ctx.createLinearGradient(0, py(0), 0, py(yRange[1]));
+    gradConf.addColorStop(0, 'rgba(255,64,96,0.06)');
+    gradConf.addColorStop(1, 'rgba(255,64,96,0)');
+    ctx.fillStyle = gradConf;
+    ctx.fillRect(PAD.left, py(yRange[1]), w - PAD.left - PAD.right, py(0) - py(yRange[1]));
+
+    // Beta function curve
+    const color = isFree ? '#00e5ff' : '#ff4060';
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = color;
+    ctx.beginPath();
+    let first = true;
+    for (let g = 0.01; g <= gMax; g += 0.02) {
+        const bval = betaFunc(g, b0);
+        if (bval < yRange[0] || bval > yRange[1]) { first = true; continue; }
+        if (first) { ctx.moveTo(px(g), py(bval)); first = false; }
+        else ctx.lineTo(px(g), py(bval));
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Label
+    ctx.fillStyle = color;
+    ctx.font = 'bold 10px Space Mono, monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText(`b₀ = ${b0.toFixed(2)}`, PAD.left + 8, PAD.top + 14);
+    ctx.fillStyle = '#5a6080';
+    ctx.font = '9px Space Mono, monospace';
+    ctx.fillText(isFree ? 'β(g) < 0  →  ASYMPTOTICALLY FREE' : 'β(g) > 0  →  NOT FREE (Landau pole)',
+        PAD.left + 8, PAD.top + 28);
+
+    ctx.restore();
+}
+
+// ============================================================
+// CHART 2: RUNNING COUPLING
+// ============================================================
+
+function drawAlphaChart(N, Nf, Lambda_GeV, muMax_GeV) {
+    const ctx = getCtx('alpha-canvas');
+    const w = ctx._w, h = ctx._h;
+    const b0 = computeB0(N, Nf);
+    const isFree = b0 > 0;
+    const MZ = 91.2;
+
+    // Collect valid points
+    const points = [];
+    const logMin = Math.log10(Lambda_GeV * 1.05);
+    const logMax = Math.log10(muMax_GeV);
+
+    if (isFree) {
+        for (let lm = logMin; lm <= logMax; lm += (logMax - logMin) / 400) {
+            const mu = Math.pow(10, lm);
+            const a = alphaS(mu, Lambda_GeV, b0);
+            if (isFinite(a) && a > 0 && a < 3) points.push({ mu, a });
+        }
+    }
+
+    const yMax = points.length > 0 ? Math.min(2, Math.max(...points.map(p => p.a)) * 1.15) : 1.5;
+    const xScale = [Math.log10(Lambda_GeV * 0.8), logMax];
+    const yScale = [0, yMax];
+
+    // Generate ticks
+    const xTicks = [];
+    for (let lm = Math.ceil(xScale[0]); lm <= Math.floor(xScale[1]); lm++) {
+        xTicks.push(lm);
+    }
+    const yTickCount = 5;
+    const yTicks = Array.from({length: yTickCount}, (_, i) => +(i * yMax / (yTickCount - 1)).toFixed(2));
+
+    const { px, py } = drawGrid(ctx, xScale, yScale, xTicks, yTicks, 'log₁₀(μ/GeV)', 'αs(μ)');
+
+    ctx.save();
+
+    // Lambda line
+    const lxL = Math.log10(Lambda_GeV);
+    ctx.strokeStyle = 'rgba(255,64,96,0.6)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(px(lxL), PAD.top); ctx.lineTo(px(lxL), h - PAD.bottom); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#ff4060';
+    ctx.font = '9px Space Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('Λ_QCD', px(lxL), PAD.top + 12);
+
+    // MZ line
+    if (MZ >= Math.pow(10, xScale[0]) && MZ <= Math.pow(10, xScale[1])) {
+        const lxZ = Math.log10(MZ);
+        ctx.strokeStyle = 'rgba(255,176,32,0.4)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(px(lxZ), PAD.top); ctx.lineTo(px(lxZ), h - PAD.bottom); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#ffb020';
+        ctx.font = '9px Space Mono, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('M_Z', px(lxZ), PAD.top + 12);
+
+        // Dot at MZ
+        const aMZ = alphaS(MZ, Lambda_GeV, b0);
+        if (isFinite(aMZ) && aMZ > 0 && aMZ < yMax) {
+            ctx.fillStyle = '#ffb020';
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = '#ffb020';
+            ctx.beginPath();
+            ctx.arc(px(lxZ), py(aMZ), 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+    }
+
+    if (isFree && points.length > 1) {
+        // Gradient fill under curve
+        const grad = ctx.createLinearGradient(0, py(yMax), 0, py(0));
+        grad.addColorStop(0, 'rgba(0,229,255,0.15)');
+        grad.addColorStop(1, 'rgba(0,229,255,0)');
+        ctx.beginPath();
+        ctx.moveTo(px(Math.log10(points[0].mu)), py(0));
+        for (const p of points) ctx.lineTo(px(Math.log10(p.mu)), py(p.a));
+        ctx.lineTo(px(Math.log10(points[points.length-1].mu)), py(0));
+        ctx.closePath();
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // Curve
+        ctx.strokeStyle = '#00e5ff';
+        ctx.lineWidth = 2.5;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#00e5ff';
+        ctx.beginPath();
+        ctx.moveTo(px(Math.log10(points[0].mu)), py(points[0].a));
+        for (const p of points) ctx.lineTo(px(Math.log10(p.mu)), py(p.a));
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Arrow annotation: α→0
+        ctx.fillStyle = 'rgba(0,229,255,0.6)';
+        ctx.font = '9px Space Mono, monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText('α_s → 0 as μ → ∞', w - PAD.right - 4, PAD.top + 14);
+
+    } else if (!isFree) {
+        // Landau pole warning
+        ctx.fillStyle = '#ff4060';
+        ctx.font = '11px Space Mono, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('⚠  NOT ASYMPTOTICALLY FREE', w/2, h/2 - 10);
+        ctx.font = '9px Space Mono, monospace';
+        ctx.fillStyle = '#5a6080';
+        ctx.fillText('b₀ < 0  →  Landau pole appears', w/2, h/2 + 10);
+    }
+
+    ctx.restore();
+}
+
+// ============================================================
+// CHART 3: PHASE DIAGRAM
+// ============================================================
+
+function drawPhaseChart(currentN, currentNf) {
+    const ctx = getCtx('phase-canvas');
+    const w = ctx._w, h = ctx._h;
+
+    const NMax = 8, NfMax = 50;
+    const xScale = [1, NMax];
+    const yScale = [0, NfMax];
+    const xTicks = [2, 3, 4, 5, 6, 7, 8];
+    const yTicks = [0, 10, 20, 30, 40, 50];
+
+    const { px, py } = drawGrid(ctx, xScale, yScale, xTicks, yTicks, 'N (gauge group SU(N))', 'N_f (quark flavors)');
+
+    ctx.save();
+
+    // Fill: raster scan
+    const pxW = w - PAD.left - PAD.right;
+    const pxH = h - PAD.top - PAD.bottom;
+    const step = 2;
+    for (let ix = 0; ix < pxW; ix += step) {
+        for (let iy = 0; iy < pxH; iy += step) {
+            const N = xScale[0] + (ix / pxW) * (xScale[1] - xScale[0]);
+            const Nf = yScale[0] + (1 - iy / pxH) * (yScale[1] - yScale[0]);
+            const b0 = computeB0(N, Nf);
+            ctx.fillStyle = b0 > 0
+                ? `rgba(160,255,96,${Math.min(0.12, b0 * 0.008)})`
+                : `rgba(255,64,96,${Math.min(0.12, -b0 * 0.004)})`;
+            ctx.fillRect(PAD.left + ix, PAD.top + iy, step, step);
+        }
+    }
+
+    // Boundary line: Nf_crit(N) = (11/2)*N
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([5, 3]);
+    ctx.beginPath();
+    let firstPt = true;
+    for (let N = xScale[0]; N <= xScale[1]; N += 0.05) {
+        const NfC = criticalNf(N);
+        if (NfC > NfMax) { firstPt = true; continue; }
+        if (firstPt) { ctx.moveTo(px(N), py(NfC)); firstPt = false; }
+        else ctx.lineTo(px(N), py(NfC));
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.font = '9px Space Mono, monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('b₀ = 0 boundary', PAD.left + 8, py(criticalNf(xScale[0])) - 6);
+
+    // Current point
+    if (currentN >= xScale[0] && currentN <= xScale[1] && currentNf >= yScale[0] && currentNf <= yScale[1]) {
+        const b0 = computeB0(currentN, currentNf);
+        const dotColor = b0 > 0 ? '#a0ff60' : '#ff4060';
+        ctx.fillStyle = dotColor;
+        ctx.shadowBlur = 16;
+        ctx.shadowColor = dotColor;
+        ctx.beginPath();
+        ctx.arc(px(currentN), py(currentNf), 7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Label
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 9px Space Mono, monospace';
+        ctx.textAlign = 'left';
+        ctx.fillText(`SU(${currentN}), Nf=${currentNf}`, px(currentN) + 10, py(currentNf) + 3);
+    }
+
+    ctx.restore();
+}
+
+// ============================================================
+// UI UPDATE
+// ============================================================
+
+function update() {
+    const N = parseInt(document.getElementById('N-slider').value);
+    const Nf = parseInt(document.getElementById('Nf-slider').value);
+    const Lambda_MeV = parseInt(document.getElementById('Lambda-slider').value);
+    const muMax_GeV = parseInt(document.getElementById('mumax-slider').value);
+    const Lambda_GeV = Lambda_MeV / 1000;
+
+    // Update labels
+    document.getElementById('N-val').textContent = `N = ${N}`;
+    document.getElementById('Nf-val').innerHTML = `N<sub>f</sub> = ${Nf}`;
+    document.getElementById('Lambda-val').textContent = `${Lambda_MeV} MeV`;
+    document.getElementById('mumax-val').textContent = `${muMax_GeV >= 1000 ? (muMax_GeV/1000).toFixed(0)+'k' : muMax_GeV} GeV`;
+
+    const b0 = computeB0(N, Nf);
+    const isFree = b0 > 0;
+    const nfCrit = criticalNf(N);
+    const MZ = 91.2;
+    const aMZ = isFree ? alphaS(MZ, Lambda_GeV, b0) : null;
+
+    document.getElementById('b0-display').textContent = b0.toFixed(3);
+    document.getElementById('b0-display').className = `status-val ${b0 > 0 ? 'val-positive' : 'val-negative'}`;
+
+    const bsign = document.getElementById('beta-sign');
+    bsign.textContent = isFree ? 'NEGATIVE ✓' : 'POSITIVE ✗';
+    bsign.className = `status-val ${isFree ? 'val-positive' : 'val-negative'}`;
+
+    document.getElementById('alphas-mz').textContent = (isFree && aMZ && isFinite(aMZ))
+        ? aMZ.toFixed(4) : '—';
+
+    document.getElementById('nf-crit').textContent = nfCrit.toFixed(1);
+
+    const badge = document.getElementById('freedom-badge');
+    badge.textContent = isFree ? '✦ ASYMPTOTICALLY FREE ✦' : '✦ NOT ASYMPTOTICALLY FREE ✦';
+    badge.className = `freedom-badge ${isFree ? 'free' : 'confined'}`;
+
+    // Info cards
+    document.getElementById('info-b0').textContent = b0.toFixed(2);
+    document.getElementById('info-b0').style.color = isFree ? 'var(--accent3)' : 'var(--accent2)';
+    document.getElementById('info-nfcrit').textContent = nfCrit.toFixed(1);
+    document.getElementById('info-lambda').textContent = `${Lambda_MeV} MeV`;
+
+    // Draw charts
+    drawBetaChart(N, Nf);
+    drawAlphaChart(N, Nf, Lambda_GeV, muMax_GeV);
+    drawPhaseChart(N, Nf);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+
+['N-slider', 'Nf-slider', 'Lambda-slider', 'mumax-slider'].forEach(id => {
+    document.getElementById(id).addEventListener('input', update);
+});
+
+// Resize handler
+window.addEventListener('resize', () => {
+    clearTimeout(window._resizeTimer);
+    window._resizeTimer = setTimeout(update, 100);
+});
+
+// Initial draw
+update();
+</script>
+</body>
+</html>

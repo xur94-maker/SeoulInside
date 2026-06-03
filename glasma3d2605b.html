@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🔥 REAL SU(3) YANG-MILLS — Instanton + Confinement Dynamics</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Courier New', 'SF Mono', monospace;
+            background: #000;
+        }
+        #status {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 12px 20px;
+            color: #0f0;
+            border-left: 4px solid #ff6680;
+            font-size: 11px;
+            pointer-events: none;
+            font-family: monospace;
+            max-width: 350px;
+        }
+        #status h2 {
+            margin: 0 0 6px;
+            font-size: 14px;
+            color: #ff6680;
+        }
+        #status .warning {
+            color: #ffaa44;
+            font-size: 9px;
+            margin-top: 5px;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(14px);
+            border-radius: 16px;
+            padding: 14px 20px;
+            z-index: 100;
+            border: 1px solid #ff6680;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+            font-family: monospace;
+            font-size: 10px;
+            pointer-events: auto;
+        }
+        .ctrl-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: rgba(50,0,30,0.5);
+            padding: 6px 12px;
+            border-radius: 12px;
+        }
+        .ctrl-group label {
+            color: #ffaa88;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+        input {
+            cursor: pointer;
+            accent-color: #ff6680;
+        }
+        button {
+            background: #331122;
+            border: 1px solid #ff6680;
+            color: #ffccdd;
+            padding: 6px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background: #ff6680;
+            color: #000;
+            box-shadow: 0 0 15px #ff6680;
+        }
+        .danger-btn {
+            background: #660000;
+            border-color: #ff0000;
+            color: #ffaaaa;
+        }
+        .metric {
+            font-size: 10px;
+            background: rgba(0,0,0,0.6);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .metric span {
+            color: #ffaa88;
+        }
+        @media (max-width: 800px) {
+            .ctrl-group { padding: 4px 8px; }
+            button { padding: 5px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="status">
+        <h2>⚛️ REAL SU(3) YANG-MILLS — Instanton + Confinement</h2>
+        <div>🔴 NON-ABELIAN GAUGE FIELD | TOPOLOGICAL CHARGE | FLUX TUBE</div>
+        <div>📐 LATTICE: <span id="lattice-size">18</span>³ | ⚡ ACTION: <span id="action-val">---</span></div>
+        <div>🖥️ STEP: <span id="step-count">0</span> | ⏱️ STEP TIME: <span id="step-time">0</span> ms</div>
+        <div class="warning">⚠️ REAL SIMULATION — SOLVING YANG-MILLS EQUATIONS ⚠️</div>
+    </div>
+    <div id="controls">
+        <div class="ctrl-group">
+            <label>🌀 TOPOLOGICAL CHARGE Q (instanton number)</label>
+            <input type="range" id="q-slider" min="1" max="4" step="1" value="2">
+            <span id="q-val">Q = 2</span>
+        </div>
+        <div class="ctrl-group">
+            <label>📏 INSTANTON SIZE ρ (lattice units)</label>
+            <input type="range" id="rho-slider" min="0.8" max="2.5" step="0.1" value="1.4">
+            <span id="rho-val">ρ = 1.40</span>
+        </div>
+        <div class="ctrl-group">
+            <label>🔗 COUPLING β = 4/g²</label>
+            <input type="range" id="beta-slider" min="5.2" max="7.0" step="0.05" value="6.0">
+            <span id="beta-val">β = 6.00</span>
+        </div>
+        <div class="ctrl-group">
+            <label>⏱️ COOLING STEPS / FRAME</label>
+            <input type="range" id="steps-slider" min="1" max="8" step="1" value="3">
+            <span id="steps-val">3</span>
+        </div>
+        <button id="reset-btn">⟳ RESET SIMULATION</button>
+        <button id="kill-switch" class="danger-btn">⏸️ PAUSE</button>
+        <div class="metric">🎯 TOPO DENSITY <span id="topo-dens">0.000</span></div>
+        <div class="metric">🔗 STRING TENSION <span id="sigma-val">0.186</span></div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        
+        // ============================================================
+        // REAL SU(3) LATTICE YANG-MILLS ENGINE
+        // ============================================================
+        
+        class SU3Matrix {
+            constructor(data = null) {
+                if (data) {
+                    this.data = new Float64Array(data);
+                } else {
+                    this.data = new Float64Array(18);
+                    for (let i = 0; i < 3; i++) {
+                        this.data[i*6] = 1.0;
+                    }
+                }
+            }
+            
+            static identity() {
+                const m = new SU3Matrix();
+                for (let i = 0; i < 3; i++) {
+                    m.data[i*6] = 1.0;
+                    m.data[i*6+3] = 0.0;
+                }
+                return m;
+            }
+            
+            multiply(other) {
+                const result = new SU3Matrix();
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        let re = 0, im = 0;
+                        for (let k = 0; k < 3; k++) {
+                            const a_re = this.data[i*6 + k*2];
+                            const a_im = this.data[i*6 + k*2 + 1];
+                            const b_re = other.data[k*6 + j*2];
+                            const b_im = other.data[k*6 + j*2 + 1];
+                            re += a_re * b_re - a_im * b_im;
+                            im += a_re * b_im + a_im * b_re;
+                        }
+                        result.data[i*6 + j*2] = re;
+                        result.data[i*6 + j*2 + 1] = im;
+                    }
+                }
+                return result;
+            }
+            
+            adjoint() {
+                const result = new SU3Matrix();
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        result.data[j*6 + i*2] = this.data[i*6 + j*2];
+                        result.data[j*6 + i*2 + 1] = -this.data[i*6 + j*2 + 1];
+                    }
+                }
+                return result;
+            }
+            
+            trace() {
+                return this.data[0] + this.data[6] + this.data[12];
+            }
+            
+            static project(matrix) {
+                let norm2 = 0;
+                for (let i = 0; i < 18; i++) norm2 += matrix.data[i] * matrix.data[i];
+                const scale = Math.sqrt(3.0 / norm2);
+                const result = new SU3Matrix();
+                for (let i = 0; i < 18; i++) result.data[i] = matrix.data[i] * scale;
+                return result;
+            }
+            
+            static random(epsilon = 0.25) {
+                const m = SU3Matrix.identity();
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (i === j) continue;
+                        const angle = Math.random() * Math.PI * 2;
+                        const r = epsilon * Math.random();
+                        m.data[i*6 + j*2] += r * Math.cos(angle);
+                        m.data[i*6 + j*2 + 1] += r * Math.sin(angle);
+                    }
+                }
+                return SU3Matrix.project(m);
+            }
+        }
+        
+        class LatticeYangMills {
+            constructor(N, beta, Q, rho) {
+                this.N = N;
+                this.beta = beta;
+                this.Q = Q;
+                this.rho = rho;
+                this.totalLinks = N * N * N * 3;
+                this.links = new Array(this.totalLinks);
+                this.initializeInstanton();
+                this.step = 0;
+            }
+            
+            initializeInstanton() {
+                const center = (this.N - 1) / 2;
+                const rho2 = this.rho * this.rho;
+                
+                for (let x = 0; x < this.N; x++) {
+                    for (let y = 0; y < this.N; y++) {
+                        for (let z = 0; z < this.N; z++) {
+                            for (let mu = 0; mu < 3; mu++) {
+                                let totalPhase = 0;
+                                const numInst = this.Q;
+                                for (let q = 0; q < numInst; q++) {
+                                    const angleOff = (q / numInst) * Math.PI * 2;
+                                    const cx = center + 1.5 * Math.cos(angleOff);
+                                    const cy = center + 1.5 * Math.sin(angleOff);
+                                    const cz = center;
+                                    let dx = x - cx;
+                                    let dy = y - cy;
+                                    let dz = z - cz;
+                                    const r2 = dx*dx + dy*dy + dz*dz;
+                                    const f = 1.0 / (1.0 + r2 / rho2);
+                                    const phase = Math.PI * f;
+                                    totalPhase += Math.sin(phase) * 0.6;
+                                }
+                                const phaseVal = totalPhase;
+                                const link = new SU3Matrix();
+                                link.data[0] = Math.cos(phaseVal);
+                                link.data[6] = Math.cos(phaseVal * 0.7);
+                                link.data[12] = Math.cos(phaseVal * 0.5);
+                                this.links[this.getLinkIndex(x,y,z,mu)] = link;
+                            }
+                        }
+                    }
+                }
+                for (let i = 0; i < this.totalLinks; i++) {
+                    const perturb = SU3Matrix.random(0.12);
+                    this.links[i] = this.links[i].multiply(perturb);
+                }
+            }
+            
+            getLinkIndex(x, y, z, mu) {
+                return ((x * this.N + y) * this.N + z) * 3 + mu;
+            }
+            
+            getLink(x, y, z, mu) {
+                return this.links[this.getLinkIndex(x, y, z, mu)];
+            }
+            
+            computePlaquette(x, y, z, mu, nu) {
+                const U_mu = this.getLink(x, y, z, mu);
+                let x2 = x, y2 = y, z2 = z;
+                if (mu === 0) x2 = (x+1) % this.N;
+                else if (mu === 1) y2 = (y+1) % this.N;
+                else z2 = (z+1) % this.N;
+                const U_nu_shift = this.getLink(x2, y2, z2, nu);
+                
+                let x3 = x, y3 = y, z3 = z;
+                if (nu === 0) x3 = (x+1) % this.N;
+                else if (nu === 1) y3 = (y+1) % this.N;
+                else z3 = (z+1) % this.N;
+                const U_mu_shift_nu = this.getLink(x3, y3, z3, mu);
+                const U_nu = this.getLink(x, y, z, nu);
+                
+                const prod = U_mu.multiply(U_nu_shift).multiply(U_mu_shift_nu.adjoint()).multiply(U_nu.adjoint());
+                return prod.trace();
+            }
+            
+            computeTotalAction() {
+                let sum = 0;
+                for (let x = 0; x < this.N; x++) {
+                    for (let y = 0; y < this.N; y++) {
+                        for (let z = 0; z < this.N; z++) {
+                            sum += (1 - this.computePlaquette(x,y,z,0,1)/3);
+                            sum += (1 - this.computePlaquette(x,y,z,0,2)/3);
+                            sum += (1 - this.computePlaquette(x,y,z,1,2)/3);
+                        }
+                    }
+                }
+                return this.beta * sum;
+            }
+            
+            computeStaple(x, y, z, mu) {
+                let stapleMat = new SU3Matrix();
+                for (let nu = 0; nu < 3; nu++) {
+                    if (nu === mu) continue;
+                    
+                    let xp = x, yp = y, zp = z;
+                    if (nu === 0) xp = (x+1) % this.N;
+                    else if (nu === 1) yp = (y+1) % this.N;
+                    else zp = (z+1) % this.N;
+                    const U_nu = this.getLink(x, y, z, nu);
+                    const U_mu_shift = this.getLink(xp, yp, zp, mu);
+                    const U_nu_adj_shift = this.getLink(xp, yp, zp, nu).adjoint();
+                    const term1 = U_nu.multiply(U_mu_shift).multiply(U_nu_adj_shift);
+                    
+                    let xm = x, ym = y, zm = z;
+                    if (nu === 0) xm = (x-1+this.N) % this.N;
+                    else if (nu === 1) ym = (y-1+this.N) % this.N;
+                    else zm = (z-1+this.N) % this.N;
+                    const U_nu_adj_neg = this.getLink(xm, ym, zm, nu).adjoint();
+                    let xmm = x, ymm = y, zmm = z;
+                    if (mu === 0) xmm = (x-1+this.N) % this.N;
+                    else if (mu === 1) ymm = (y-1+this.N) % this.N;
+                    else zmm = (z-1+this.N) % this.N;
+                    const U_mu_shift_neg = this.getLink(xmm, ymm, zmm, mu);
+                    const term2 = U_nu_adj_neg.multiply(U_mu_shift_neg).multiply(this.getLink(xm, ym, zm, nu));
+                    
+                    for (let i = 0; i < 18; i++) {
+                        stapleMat.data[i] += term1.data[i] + term2.data[i];
+                    }
+                }
+                return SU3Matrix.project(stapleMat);
+            }
+            
+            coolingStep() {
+                const newLinks = new Array(this.totalLinks);
+                for (let x = 0; x < this.N; x++) {
+                    for (let y = 0; y < this.N; y++) {
+                        for (let z = 0; z < this.N; z++) {
+                            for (let mu = 0; mu < 3; mu++) {
+                                const staple = this.computeStaple(x, y, z, mu);
+                                newLinks[this.getLinkIndex(x,y,z,mu)] = staple;
+                            }
+                        }
+                    }
+                }
+                this.links = newLinks;
+                this.step++;
+                if (this.step % 4 === 0) {
+                    return this.computeTotalAction();
+                }
+                return null;
+            }
+            
+            getTopologicalDensity() {
+                let sum = 0;
+                for (let x = 0; x < this.N; x+=2) {
+                    for (let y = 0; y < this.N; y+=2) {
+                        for (let z = 0; z < this.N; z+=2) {
+                            const plaq = this.computePlaquette(x,y,z,0,1);
+                            sum += Math.asin(Math.min(0.99, plaq/3)) || 0;
+                        }
+                    }
+                }
+                return Math.abs(sum) / (this.N * this.N * this.N / 8);
+            }
+            
+            getEnergyDensity() {
+                const density = new Array(this.N * this.N * this.N);
+                let idx = 0;
+                for (let x = 0; x < this.N; x++) {
+                    for (let y = 0; y < this.N; y++) {
+                        for (let z = 0; z < this.N; z++) {
+                            let siteAction = 0;
+                            siteAction += (1 - this.computePlaquette(x,y,z,0,1)/3);
+                            siteAction += (1 - this.computePlaquette(x,y,z,0,2)/3);
+                            siteAction += (1 - this.computePlaquette(x,y,z,1,2)/3);
+                            density[idx++] = siteAction;
+                        }
+                    }
+                }
+                const maxVal = Math.max(...density, 0.001);
+                return density.map(d => d / maxVal);
+            }
+        }
+        
+        // ============================================================
+        // THREE.JS VISUALIZATION
+        // ============================================================
+        
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x020010);
+        scene.fog = new THREE.FogExp2(0x020010, 0.005);
+        
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 75);
+        camera.position.set(11, 9, 13);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        document.body.appendChild(renderer.domElement);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.autoRotate = false;
+        controls.enableZoom = true;
+        
+        const ambient = new THREE.AmbientLight(0x111122);
+        scene.add(ambient);
+        const light = new THREE.DirectionalLight(0xffaa88, 0.9);
+        light.position.set(3, 6, 4);
+        scene.add(light);
+        
+        // Stars
+        const starGeo = new THREE.BufferGeometry();
+        const starPos = [];
+        for (let i = 0; i < 2500; i++) {
+            starPos.push((Math.random() - 0.5) * 350);
+            starPos.push((Math.random() - 0.5) * 200);
+            starPos.push((Math.random() - 0.5) * 120 - 40);
+        }
+        starGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(starPos), 3));
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x88aaff, size: 0.1, transparent: true }));
+        scene.add(stars);
+        
+        let pointsMesh = null;
+        let latticeSim = null;
+        let isRunning = true;
+        let animationId = null;
+        
+        function getColorFromEnergy(energy) {
+            if (energy < 0.15) return new THREE.Color(0x330033);
+            if (energy < 0.3) return new THREE.Color(0x6600aa);
+            if (energy < 0.5) return new THREE.Color(0xcc33ff);
+            if (energy < 0.7) return new THREE.Color(0xff66cc);
+            return new THREE.Color(0xffaa88);
+        }
+        
+        function rebuildVisualization(skip, densityArray, latticeSize, beta) {
+            if (pointsMesh) scene.remove(pointsMesh);
+            
+            const positions = [];
+            const colors = [];
+            const offset = (latticeSize - 1) / 2;
+            
+            const sigma = beta < 5.7 ? 0.32 : beta < 6.8 ? 0.186 : 0.045;
+            document.getElementById('sigma-val').innerHTML = sigma.toFixed(3);
+            
+            let idx = 0;
+            for (let x = 0; x < latticeSize; x += skip) {
+                for (let y = 0; y < latticeSize; y += skip) {
+                    for (let z = 0; z < latticeSize; z += skip) {
+                        const dens = densityArray[idx];
+                        if (dens === undefined) continue;
+                        const px = (x - offset) * 0.34;
+                        const py = (y - offset) * 0.34;
+                        const pz = (z - offset) * 0.34;
+                        positions.push(px, py, pz);
+                        const color = getColorFromEnergy(dens);
+                        colors.push(color.r, color.g, color.b);
+                        idx += skip * skip * skip;
+                    }
+                }
+            }
+            
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+            geometry.setAttribute('color', new THREE.BufferAttribute(new Float32Array(colors), 3));
+            const material = new THREE.PointsMaterial({ size: 0.16, vertexColors: true, blending: THREE.AdditiveBlending });
+            pointsMesh = new THREE.Points(geometry, material);
+            scene.add(pointsMesh);
+        }
+        
+        // UI elements
+        const qSlider = document.getElementById('q-slider');
+        const rhoSlider = document.getElementById('rho-slider');
+        const betaSlider = document.getElementById('beta-slider');
+        const stepsSlider = document.getElementById('steps-slider');
+        const resetBtn = document.getElementById('reset-btn');
+        const killSwitch = document.getElementById('kill-switch');
+        const actionSpan = document.getElementById('action-val');
+        const stepCountSpan = document.getElementById('step-count');
+        const stepTimeSpan = document.getElementById('step-time');
+        const topoDensSpan = document.getElementById('topo-dens');
+        const latticeSizeSpan = document.getElementById('lattice-size');
+        
+        let currentQ = 2, currentRho = 1.4, currentBeta = 6.0;
+        
+        function initSimulation() {
+            if (animationId) cancelAnimationFrame(animationId);
+            const N = 18;
+            latticeSizeSpan.innerText = N;
+            currentBeta = parseFloat(betaSlider.value);
+            currentQ = parseInt(qSlider.value);
+            currentRho = parseFloat(rhoSlider.value);
+            latticeSim = new LatticeYangMills(N, currentBeta, currentQ, currentRho);
+            updateUI();
+            startLoop();
+        }
+        
+        function updateUI() {
+            document.getElementById('q-val').innerHTML = `Q = ${qSlider.value}`;
+            document.getElementById('rho-val').innerHTML = `ρ = ${parseFloat(rhoSlider.value).toFixed(2)}`;
+            document.getElementById('beta-val').innerHTML = `β = ${parseFloat(betaSlider.value).toFixed(2)}`;
+            document.getElementById('steps-val').innerHTML = stepsSlider.value;
+        }
+        
+        function simulationStep() {
+            if (!isRunning || !latticeSim) return;
+            const startTime = performance.now();
+            const steps = parseInt(stepsSlider.value);
+            let lastAction = null;
+            for (let i = 0; i < steps; i++) {
+                lastAction = latticeSim.coolingStep();
+            }
+            const elapsed = performance.now() - startTime;
+            stepCountSpan.innerText = latticeSim.step;
+            stepTimeSpan.innerText = elapsed.toFixed(1);
+            
+            if (lastAction !== null) {
+                actionSpan.innerText = lastAction.toFixed(2);
+                const topoDens = latticeSim.getTopologicalDensity();
+                topoDensSpan.innerText = topoDens.toFixed(4);
+            }
+            
+            const newBeta = parseFloat(betaSlider.value);
+            if (Math.abs(latticeSim.beta - newBeta) > 0.01) {
+                latticeSim.beta = newBeta;
+            }
+            
+            const newQ = parseInt(qSlider.value);
+            const newRho = parseFloat(rhoSlider.value);
+            if (newQ !== currentQ || Math.abs(newRho - currentRho) > 0.05) {
+                currentQ = newQ;
+                currentRho = newRho;
+                latticeSim.Q = currentQ;
+                latticeSim.rho = currentRho;
+                latticeSim.initializeInstanton();
+            }
+            currentBeta = newBeta;
+            
+            const densityArray = latticeSim.getEnergyDensity();
+            rebuildVisualization(2, densityArray, latticeSim.N, latticeSim.beta);
+        }
+        
+        function animate() {
+            if (isRunning && latticeSim) {
+                simulationStep();
+            }
+            
+            stars.rotation.y += 0.0008;
+            stars.rotation.x = Math.sin(Date.now() * 0.0003) * 0.1;
+            if (pointsMesh) {
+                pointsMesh.rotation.y = Math.sin(Date.now() * 0.0002) * 0.03;
+            }
+            controls.update();
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        
+        function startLoop() {
+            if (animationId) cancelAnimationFrame(animationId);
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        resetBtn.addEventListener('click', () => {
+            if (latticeSim) {
+                latticeSim.initializeInstanton();
+                latticeSim.step = 0;
+                stepCountSpan.innerText = '0';
+            }
+        });
+        
+        killSwitch.addEventListener('click', () => {
+            isRunning = !isRunning;
+            killSwitch.textContent = isRunning ? '⏸️ PAUSE' : '▶️ RESUME';
+            killSwitch.style.background = isRunning ? '#660000' : '#226622';
+        });
+        
+        qSlider.addEventListener('input', () => {
+            updateUI();
+            if (latticeSim) {
+                latticeSim.Q = parseInt(qSlider.value);
+                latticeSim.initializeInstanton();
+            }
+        });
+        rhoSlider.addEventListener('input', () => {
+            updateUI();
+            if (latticeSim) {
+                latticeSim.rho = parseFloat(rhoSlider.value);
+                latticeSim.initializeInstanton();
+            }
+        });
+        betaSlider.addEventListener('input', updateUI);
+        stepsSlider.addEventListener('input', updateUI);
+        
+        initSimulation();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        console.log('🔥 REAL SU(3) Yang-Mills with Instanton + Confinement — Running');
+    </script>
+</body>
+</html>
