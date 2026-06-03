@@ -1,39 +1,239 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Hydrogen Atom - de Broglie + Compton (Dual Log Scale)</title>
+    <style>
+        * { box-sizing: border-box; user-select: none; }
+        body {
+            background: linear-gradient(145deg, #0a0f1e 0%, #05070f 100%);
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            background: rgba(18, 25, 45, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.5), 0 0 0 1px rgba(66,153,225,0.2);
+        }
+        h1 { font-size: 1.5rem; margin: 0 0 0.2rem; color: #e2f0ff; }
+        .sub { color: #8aa2c9; font-size: 0.8rem; margin-bottom: 1.5rem; border-left: 3px solid #3b82f6; padding-left: 12px; }
+        .flex { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+        .canvas-area { flex: 2; min-width: 300px; background: #010314; border-radius: 1.5rem; padding: 0.5rem; text-align: center; }
+        .info-area { flex: 1.2; min-width: 260px; background: rgba(12, 18, 30, 0.8); border-radius: 1.5rem; padding: 1rem; }
+        canvas { width: 100%; aspect-ratio: 1/1; background: #00020b; border-radius: 1.2rem; display: block; box-shadow: 0 0 0 1px #1e2a44; }
+        .n-group { background: #0f172f; border-radius: 2rem; display: flex; gap: 0.3rem; padding: 0.2rem; margin-bottom: 1rem; justify-content: center; }
+        .n-btn { background: transparent; border: none; color: #b9d0f0; font-weight: bold; font-size: 1.2rem; width: 2.6rem; padding: 0.5rem 0; border-radius: 2rem; cursor: pointer; transition: 0.1s; }
+        .n-btn.active { background: #3b82f6; color: white; box-shadow: 0 0 6px #3b82f6; }
+        .slider-card { background: #0f172f; border-radius: 1.2rem; padding: 0.7rem 1rem; margin-top: 0.8rem; }
+        .slider-card label { font-size: 0.8rem; display: block; margin-bottom: 6px; font-weight: bold; }
+        .label-deb { color: #ffaa66; }
+        .label-comp { color: #88ccff; }
+        input { width: 100%; cursor: pointer; margin: 5px 0; }
+        .scale-labels { display: flex; justify-content: space-between; font-size: 0.6rem; color: #6d8bc5; padding: 0 5px; }
+        .stats { background: #050a18; border-radius: 1rem; padding: 0.6rem; margin-top: 1rem; }
+        .stat-row { display: flex; justify-content: space-between; font-size: 0.75rem; padding: 4px 0; border-bottom: 1px solid #1e2a44; }
+        .badge { background: #0f172f; border-radius: 1rem; padding: 0.6rem; font-size: 0.7rem; margin-top: 10px; text-align: center; }
+        .footnote { font-size: 0.65rem; text-align: center; color: #4c6590; margin-top: 1rem; }
+        button { cursor: pointer; }
+        .highlight { color: #ffaa66; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>⚛️ Hydrogen Atom · de Broglie + Compton</h1>
+    <div class="sub">r(θ) = n²a₀ + <span class="label-deb">A₁·sin(nθ)</span> + <span class="label-comp">A₂·sin(22θ)</span> | Dual Log Scale</div>
 
-# ========== 상수 및 함수 (위와 동일) ==========
-a0 = 5.292e-11
-lambda_c = 2.426e-12
-n2 = 22
-n = 1
-deb_amp = 0.5e-11
-comp_factor = 10.0
+    <div class="flex">
+        <div class="canvas-area">
+            <canvas id="orbitCanvas" width="600" height="600"></canvas>
+            <div class="n-group" id="nGroup">
+                <button data-n="1" class="n-btn active">n=1</button>
+                <button data-n="2" class="n-btn">n=2</button>
+                <button data-n="3" class="n-btn">n=3</button>
+                <button data-n="4" class="n-btn">n=4</button>
+            </div>
+            
+            <div class="slider-card">
+                <label class="label-deb">🎯 de Broglie (sin(nθ)) : 10^{<span id="logDebVal">0.50</span>} = <span id="debMult">3.16</span>×</label>
+                <input type="range" id="debLogSlider" min="-1" max="2.5" step="0.01" value="0.5">
+                <div class="scale-labels">
+                    <span>-1 (0.1×)</span><span>0 (1×)</span><span>1 (10×)</span><span>2 (100×)</span>
+                </div>
+            </div>
+            
+            <div class="slider-card">
+                <label class="label-comp">✨ Compton (sin(22θ)) : 10^{<span id="logCompVal">1.00</span>} = <span id="compMult">10.00</span>×</label>
+                <input type="range" id="compLogSlider" min="0" max="2.5" step="0.01" value="1.0">
+                <div class="scale-labels">
+                    <span>0 (1×·real)</span><span>1 (10×)</span><span>2 (100×)</span><span>2.5 (316×)</span>
+                </div>
+            </div>
+        </div>
 
-def r_theta(theta):
-    return n**2 * a0 + deb_amp * np.sin(n * theta) + (lambda_c * comp_factor) * np.sin(n2 * theta)
+        <div class="info-area">
+            <div class="stats">
+                <div class="stat-row"><span>🔵 Principal n</span><span id="nValue">1</span></div>
+                <div class="stat-row"><span>📐 Current θ</span><span id="thetaDeg">0°</span></div>
+                <div class="stat-row"><span>📊 de Broglie ×</span><span id="debMultShow">3.16</span></div>
+                <div class="stat-row"><span>📊 Compton ×</span><span id="compMultShow">10.00</span></div>
+            </div>
+            <div class="badge">
+                🧬 <strong>de Broglie</strong> : sin(nθ) — n=1 → <span style="color:#ffaa66;">1 wave</span><br>
+                🧬 <strong>Compton</strong> : sin(22θ) — <span style="color:#88ccff;">22 waves</span><br>
+                🎯 <strong>Log scale</strong> : left=real, right=exaggerated<br>
+                📐 r(θ) = n²a₀ + A₁·sin(nθ) + A₂·sin(22θ)
+            </div>
+        </div>
+    </div>
+    <div class="footnote">
+        📐 a₀ = 5.292e-11 m | λ_C = 2.426e-12 m | Dual log sliders for independent exaggeration
+    </div>
+</div>
 
-# ========== 극좌표계 설정 ==========
-fig, ax = plt.subplots(subplot_kw={'projection': 'polar'}, figsize=(8, 8))
-theta_full = np.linspace(0, 2*np.pi, 10000)
-r_full = r_theta(theta_full)
-
-# 궤도선 (정적)
-ax.plot(theta_full, r_full, 'b-', linewidth=2, alpha=0.7)
-ax.set_title(f'Hydrogen Atom - Moving Electron (n={n})', pad=20)
-ax.grid(True, linestyle='--', alpha=0.5)
-ax.set_rmax(n**2 * a0 + lambda_c * comp_factor + deb_amp)
-
-# 전자 포인트 (애니메이션)
-point, = ax.plot([0], [n**2 * a0], 'ro', markersize=10, markerfacecolor='#ff7e33')
-
-# ========== 애니메이션 함수 ==========
-def update(frame):
-    theta = 2 * np.pi * frame / 360  # 0~2π 순환
-    r = r_theta(theta)
-    point.set_data([theta], [r])     # 극좌표로 직접 업데이트!
-    return point,
-
-ani = FuncAnimation(fig, update, frames=360, interval=20, blit=True)
-
-plt.show()
+<script>
+    (function(){
+        const a0 = 5.292e-11;
+        const lambdaC = 2.426e-12;
+        const n2 = 22;
+        const DEB_BASE_AMP = 0.5e-11;
+        
+        let currentN = 1;
+        let debLogValue = 0.5;
+        let compLogValue = 1.0;
+        
+        let animationId = null;
+        let theta = 0;
+        let startTime = null;
+        let period = 5000;
+        let canvas = document.getElementById('orbitCanvas');
+        let ctx = canvas.getContext('2d');
+        let width, height;
+        
+        function getDebMultiplier() { return Math.pow(10, debLogValue); }
+        function getCompMultiplier() { return Math.pow(10, compLogValue); }
+        function getDebAmplitude() { return DEB_BASE_AMP * getDebMultiplier(); }
+        function getCompAmplitude() { return lambdaC * getCompMultiplier(); }
+        
+        function getRadius(n, thetaRad) {
+            return n*n*a0 + getDebAmplitude() * Math.sin(n * thetaRad) + getCompAmplitude() * Math.sin(n2 * thetaRad);
+        }
+        
+        function updateUI() {
+            document.getElementById('logDebVal').innerHTML = debLogValue.toFixed(2);
+            document.getElementById('debMult').innerHTML = getDebMultiplier().toFixed(2);
+            document.getElementById('debMultShow').innerHTML = getDebMultiplier().toFixed(2);
+            document.getElementById('logCompVal').innerHTML = compLogValue.toFixed(2);
+            document.getElementById('compMult').innerHTML = getCompMultiplier().toFixed(2);
+            document.getElementById('compMultShow').innerHTML = getCompMultiplier().toFixed(2);
+            document.getElementById('nValue').innerHTML = currentN;
+        }
+        
+        function draw() {
+            if (!ctx || width === undefined) return;
+            ctx.clearRect(0, 0, width, height);
+            const centerX = width/2, centerY = height/2;
+            const maxR = currentN*currentN*a0 + Math.abs(getDebAmplitude()) + getCompAmplitude();
+            const pxPerMeter = (Math.min(width, height) * 0.85) / (2 * maxR);
+            
+            const steps = 10000;
+            ctx.beginPath();
+            let first = true;
+            for (let i = 0; i <= steps; i++) {
+                const theta_i = (i / steps) * 2 * Math.PI;
+                const r_val = getRadius(currentN, theta_i);
+                const x = centerX + r_val * Math.cos(theta_i) * pxPerMeter;
+                const y = centerY + r_val * Math.sin(theta_i) * pxPerMeter;
+                if (first) { ctx.moveTo(x, y); first = false; }
+                else { ctx.lineTo(x, y); }
+            }
+            ctx.strokeStyle = '#3b82f6';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+            
+            const meanR = currentN*currentN*a0;
+            const meanPx = meanR * pxPerMeter;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, meanPx, 0, 2*Math.PI);
+            ctx.strokeStyle = '#60a5fa60';
+            ctx.setLineDash([8, 10]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            const currentR = getRadius(currentN, theta);
+            const ex = centerX + currentR * Math.cos(theta) * pxPerMeter;
+            const ey = centerY + currentR * Math.sin(theta) * pxPerMeter;
+            ctx.beginPath();
+            ctx.arc(ex, ey, 8, 0, 2*Math.PI);
+            ctx.fillStyle = '#ff7e33';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(ex, ey, 3, 0, 2*Math.PI);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 5, 0, 2*Math.PI);
+            ctx.fillStyle = '#ffb347';
+            ctx.fill();
+            
+            document.getElementById('thetaDeg').innerHTML = `${(theta * 180 / Math.PI).toFixed(0)}°`;
+        }
+        
+        function animate(timestamp) {
+            if (!startTime) { startTime = timestamp; requestAnimationFrame(animate); return; }
+            theta = ((timestamp - startTime) * 2 * Math.PI / period) % (2 * Math.PI);
+            draw();
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        function startAnim() {
+            if (animationId) cancelAnimationFrame(animationId);
+            startTime = null;
+            theta = 0;
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        function setN(n) {
+            currentN = n;
+            document.querySelectorAll('.n-btn').forEach(btn => {
+                if (parseInt(btn.getAttribute('data-n')) === n) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            updateUI();
+            startAnim();
+        }
+        
+        function resizeCanvas() {
+            const sz = Math.min(canvas.parentElement.clientWidth, 550);
+            canvas.width = sz;
+            canvas.height = sz;
+            width = canvas.width;
+            height = canvas.height;
+            draw();
+        }
+        
+        document.querySelectorAll('.n-btn').forEach(btn => {
+            btn.addEventListener('click', () => setN(parseInt(btn.getAttribute('data-n'))));
+        });
+        document.getElementById('debLogSlider').addEventListener('input', (e) => { debLogValue = parseFloat(e.target.value); updateUI(); startAnim(); });
+        document.getElementById('compLogSlider').addEventListener('input', (e) => { compLogValue = parseFloat(e.target.value); updateUI(); startAnim(); });
+        window.addEventListener('resize', resizeCanvas);
+        new ResizeObserver(resizeCanvas).observe(canvas.parentElement);
+        
+        resizeCanvas();
+        updateUI();
+        startAnim();
+    })();
+</script>
+</body>
+</html>
