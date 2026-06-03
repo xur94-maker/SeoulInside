@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collider — Yang-Mills Interactive</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,600;1,300&display=swap');
+
+:root {
+  --bg: #03050d;
+  --panel: #080b18;
+  --border: #141928;
+  --c1: #00e5ff;
+  --c2: #ff4060;
+  --c3: #a0ff60;
+  --c4: #ffb020;
+  --c5: #cc66ff;
+  --text: #b0bcd8;
+  --dim: #404868;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none; z-index: 0;
+}
+
+.wrap { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 32px 20px; }
+
+/* ── HEADER ── */
+header { margin-bottom: 36px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.hdr-left { border-left: 3px solid var(--c1); padding-left: 18px; }
+.eyebrow { font-size: 9px; letter-spacing: 3px; color: var(--c1); text-transform: uppercase; margin-bottom: 6px; }
+h1 { font-family: 'Crimson Pro', serif; font-weight: 300; font-size: clamp(26px,4vw,48px); color: #fff; line-height: 1.1; }
+h1 em { font-style: italic; color: var(--c1); }
+.hdr-badge { font-size: 9px; padding: 6px 14px; border: 1px solid var(--c3); color: var(--c3); background: rgba(160,255,96,0.05); letter-spacing: 2px; }
+
+/* ── LAYOUT ── */
+.layout { display: grid; grid-template-columns: 260px 1fr 260px; gap: 16px; }
+@media(max-width:1000px){ .layout { grid-template-columns: 1fr 1fr; } }
+@media(max-width:660px){ .layout { grid-template-columns: 1fr; } }
+
+/* ── BEAM PANEL ── */
+.beam-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.beam-panel.beam-a { border-top: 2px solid var(--c1); }
+.beam-panel.beam-b { border-top: 2px solid var(--c2); }
+
+.panel-title { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.beam-a .panel-title { color: var(--c1); }
+.beam-b .panel-title { color: var(--c2); }
+
+.particle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.p-btn {
+  padding: 8px 4px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+  line-height: 1.5;
+}
+.p-btn:hover { border-color: var(--text); color: var(--text); }
+.p-btn.active-a { border-color: var(--c1); color: var(--c1); background: rgba(0,229,255,0.06); box-shadow: 0 0 8px rgba(0,229,255,0.2); }
+.p-btn.active-b { border-color: var(--c2); color: var(--c2); background: rgba(255,64,96,0.06); box-shadow: 0 0 8px rgba(255,64,96,0.2); }
+
+.slider-row { display: flex; flex-direction: column; gap: 5px; }
+.slider-label { display: flex; justify-content: space-between; font-size: 9px; color: var(--dim); }
+.slider-label span { color: var(--c4); font-weight: 700; }
+input[type=range] {
+  width: 100%; height: 2px; background: var(--border);
+  outline: none; border: none; cursor: pointer;
+  appearance: none; -webkit-appearance: none;
+}
+input[type=range].beam-a-range::-webkit-slider-thumb { appearance:none; width:12px; height:12px; background:var(--c1); cursor:pointer; box-shadow:0 0 6px var(--c1); }
+input[type=range].beam-b-range::-webkit-slider-thumb { appearance:none; width:12px; height:12px; background:var(--c2); cursor:pointer; box-shadow:0 0 6px var(--c2); }
+
+.particle-info { background: rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 10px 12px; font-size: 9px; line-height: 1.8; color: var(--dim); }
+.particle-info b { color: var(--text); }
+
+/* ── CENTER STAGE ── */
+.stage { display: flex; flex-direction: column; gap: 14px; }
+
+.canvas-wrap {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--c4);
+  position: relative;
+  overflow: hidden;
+}
+
+#collider-canvas { display: block; width: 100%; }
+
+.fire-row { display: flex; justify-content: center; padding: 14px; background: var(--panel); border: 1px solid var(--border); }
+#fire-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 12px 40px;
+  background: transparent;
+  border: 1px solid var(--c4);
+  color: var(--c4);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+#fire-btn:hover { background: var(--c4); color: #000; box-shadow: 0 0 20px var(--c4); }
+#fire-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── RESULTS PANEL ── */
+.results { background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--c3); padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.results-title { font-size: 9px; letter-spacing: 2px; color: var(--c3); text-transform: uppercase; }
+
+.result-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 9px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+.result-key { color: var(--dim); }
+.result-val { font-weight: 700; }
+
+.products-list { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
+.product-item { font-size: 9px; padding: 5px 8px; background: rgba(0,0,0,0.3); border-left: 2px solid; line-height: 1.6; }
+
+.alpha-mini { background: var(--bg); border: 1px solid var(--border); padding: 10px; }
+.alpha-mini-title { font-size: 8px; letter-spacing: 1px; color: var(--dim); margin-bottom: 6px; }
+#alpha-mini-canvas { display: block; width: 100%; }
+
+/* ── BOTTOM ROW ── */
+.bottom-row { margin-top: 16px; display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+@media(max-width:700px){ .bottom-row { grid-template-columns: 1fr 1fr; } }
+
+.stat-card { background: var(--panel); border: 1px solid var(--border); padding: 14px; }
+.stat-card-label { font-size: 8px; letter-spacing: 2px; color: var(--dim); text-transform: uppercase; margin-bottom: 6px; }
+.stat-card-val { font-size: 20px; font-weight: 700; }
+.stat-card-desc { font-size: 8px; color: var(--dim); margin-top: 4px; line-height: 1.5; }
+
+/* ── INSIGHT ── */
+.insight { margin-top: 16px; background: rgba(0,229,255,0.03); border-left: 2px solid var(--c1); padding: 14px 18px; font-family: 'Crimson Pro', serif; font-size: 15px; font-style: italic; color: var(--text); line-height: 1.6; }
+.insight strong { font-style: normal; font-family: 'Space Mono', monospace; font-size: 10px; color: var(--c1); }
+
+.collision-type-badge {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  font-size: 9px; letter-spacing: 2px; padding: 4px 12px;
+  border: 1px solid; border-radius: 1px;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="hdr-left">
+    <div class="eyebrow">Yang-Mills Theory // Collider</div>
+    <h1>Particle <em>Collider</em><br>Simulator</h1>
+  </div>
+  <div class="hdr-badge">SU(3) QCD ENGINE</div>
+</header>
+
+<div class="layout">
+
+  <!-- BEAM A -->
+  <div class="beam-panel beam-a">
+    <div class="panel-title">◀ Beam A</div>
+    <div class="particle-grid" id="grid-a"></div>
+    <div class="slider-row">
+      <div class="slider-label">Energy (GeV) <span id="ea-val">6500</span></div>
+      <input type="range" class="beam-a-range" id="ea-slider" min="10" max="13600" step="10" value="6500">
+    </div>
+    <div class="particle-info" id="info-a"></div>
+  </div>
+
+  <!-- CENTER STAGE -->
+  <div class="stage">
+    <div class="canvas-wrap">
+      <canvas id="collider-canvas" height="380"></canvas>
+      <div class="collision-type-badge" id="ctype-badge">pp → JETS</div>
+    </div>
+    <div class="fire-row">
+      <button id="fire-btn">⚡ COLLIDE</button>
+    </div>
+  </div>
+
+  <!-- BEAM B + RESULTS -->
+  <div style="display:flex;flex-direction:column;gap:14px;">
+
+    <div class="beam-panel beam-b">
+      <div class="panel-title">Beam B ▶</div>
+      <div class="particle-grid" id="grid-b"></div>
+      <div class="slider-row">
+        <div class="slider-label">Energy (GeV) <span id="eb-val">6500</span></div>
+        <input type="range" class="beam-b-range" id="eb-slider" min="10" max="13600" step="10" value="6500">
+      </div>
+      <div class="particle-info" id="info-b"></div>
+    </div>
+
+    <div class="results">
+      <div class="results-title">Collision Products</div>
+      <div class="result-row">
+        <span class="result-key">√s (CM energy)</span>
+        <span class="result-val" id="res-sqrts" style="color:var(--c4)">13000 GeV</span>
+      </div>
+      <div class="result-row">
+        <span class="result-key">α_s at √s</span>
+        <span class="result-val" id="res-alphas" style="color:var(--c1)">0.118</span>
+      </div>
+      <div class="result-row">
+        <span class="result-key">Coupling regime</span>
+        <span class="result-val" id="res-regime" style="color:var(--c3)">PERTURBATIVE</span>
+      </div>
+      <div class="result-row">
+        <span class="result-key">Dominant process</span>
+        <span class="result-val" id="res-process" style="color:var(--c5)">gg → gg</span>
+      </div>
+      <div class="products-list" id="products-list"></div>
+      <div class="alpha-mini">
+        <div class="alpha-mini-title">α_s RUNNING — current √s ●</div>
+        <canvas id="alpha-mini-canvas" height="80"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bottom stats -->
+<div class="bottom-row">
+  <div class="stat-card">
+    <div class="stat-card-label">CM Energy √s</div>
+    <div class="stat-card-val" id="stat-sqrts" style="color:var(--c4)">13 TeV</div>
+    <div class="stat-card-desc">LHC Run 2 peak: 13 TeV</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card-label">α_s(√s)</div>
+    <div class="stat-card-val" id="stat-alphas" style="color:var(--c1)">0.118</div>
+    <div class="stat-card-desc">α_s(M_Z) = 0.118 (PDG)</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card-label">Quark-Gluon State</div>
+    <div class="stat-card-val" id="stat-state" style="color:var(--c3)">QGP</div>
+    <div class="stat-card-desc">Plasma forms above ~2 GeV/fm³</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card-label">Confinement</div>
+    <div class="stat-card-val" id="stat-conf" style="color:var(--c2)">BROKEN</div>
+    <div class="stat-card-desc">Deconfined at high √s</div>
+  </div>
+</div>
+
+<div class="insight">
+  <strong>CONNECTION TO YANG-MILLS</strong><br>
+  Every collision cross-section computed at the LHC uses α_s(μ) — the running coupling from
+  the β function. At high √s, α_s → 0 (asymptotic freedom): quarks behave as nearly free
+  particles inside the collision fireball. At low energies, α_s → ∞ near Λ_QCD: confinement
+  kicks in and only hadrons emerge. The <em>mass gap</em> is why you never see a lone quark
+  in the detector.
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// ============================================================
+// PARTICLE DATA
+// ============================================================
+const PARTICLES = {
+  p:   { name: 'Proton',       sym: 'p',   quark: true,  heavy: false, constituents: ['u','u','d'], color: '#00e5ff',  desc: 'uud quarks\nSU(3) color singlet\nMass: 938 MeV' },
+  n:   { name: 'Neutron',      sym: 'n',   quark: true,  heavy: false, constituents: ['u','d','d'], color: '#44aaff',  desc: 'udd quarks\nSU(3) color singlet\nMass: 940 MeV' },
+  Pb:  { name: 'Lead-208',     sym: '²⁰⁸Pb', quark: true, heavy: true,  constituents: [],            color: '#ffb020',  desc: '82 protons\n126 neutrons\nNucleus (heavy ion)' },
+  e:   { name: 'Electron',     sym: 'e⁻',  quark: false, heavy: false, constituents: [],            color: '#a0ff60',  desc: 'Point lepton\nNo color charge\nQED only' },
+  ep:  { name: 'Positron',     sym: 'e⁺',  quark: false, heavy: false, constituents: [],            color: '#ff80a0',  desc: 'Antielectron\nNo color charge\nAnnihilation' },
+  mu:  { name: 'Muon',         sym: 'μ⁻',  quark: false, heavy: false, constituents: [],            color: '#cc66ff',  desc: 'Heavy lepton\nNo color charge\nMass: 106 MeV' },
+};
+
+const ORDER = ['p','n','Pb','e','ep','mu'];
+
+// ============================================================
+// PHYSICS
+// ============================================================
+const LAMBDA_QCD = 0.2; // GeV
+
+function computeB0(N=3, Nf=6) { return (11/3)*N - (2/3)*Nf; }
+const B0 = computeB0(3, 6); // 7.0
+
+function alphaS(mu_GeV) {
+  if (mu_GeV <= LAMBDA_QCD * 1.001) return 10;
+  const log = 2 * Math.log(mu_GeV / LAMBDA_QCD);
+  if (log <= 0) return 10;
+  return Math.min(10, (4 * Math.PI) / (B0 * log));
+}
+
+function sqrtS(Ea, Eb) { return 2 * Math.sqrt(Ea * Eb); }
+
+function collisionType(pA, pB) {
+  const hA = PARTICLES[pA], hB = PARTICLES[pB];
+  if (pA==='p'  && pB==='p')   return 'pp';
+  if ((pA==='p'||pA==='n') && (pB==='Pb'||pA==='Pb')) return 'pPb';
+  if (pA==='Pb' && pB==='Pb')  return 'PbPb';
+  if (!hA.quark && !hB.quark)  return 'leptonic';
+  if ((!hA.quark && hB.quark) || (hA.quark && !hB.quark)) return 'DIS';
+  return 'hadronic';
+}
+
+function getProducts(type, sqrts, aS) {
+  const perturbative = aS < 0.3;
+  const products = [];
+  if (type === 'leptonic') {
+    if (sqrts > 80) {
+      products.push({ name: 'W/Z bosons', desc: 'Electroweak production', color: 'var(--c5)' });
+    }
+    if (sqrts > 200) {
+      products.push({ name: 'Higgs boson (rare)', desc: 'e⁺e⁻ → ZH', color: 'var(--c4)' });
+    }
+    products.push({ name: 'Fermion pairs (f f̄)', desc: 'QED/EW, no color', color: 'var(--c3)' });
+    return products;
+  }
+  if (type === 'PbPb') {
+    products.push({ name: 'Quark-Gluon Plasma', desc: 'glasma → QGP → hadrons', color: 'var(--c4)' });
+    products.push({ name: 'J/ψ suppression', desc: 'Deconfinement signal', color: 'var(--c2)' });
+    products.push({ name: 'Thousands of hadrons', desc: 'π, K, p, n, ...', color: 'var(--c3)' });
+    return products;
+  }
+  if (type === 'DIS') {
+    products.push({ name: 'Scattered lepton', desc: 'γ*/Z exchange probe', color: 'var(--c3)' });
+    products.push({ name: 'Parton jets', desc: 'Quark/gluon fragments', color: 'var(--c1)' });
+    return products;
+  }
+  // hadronic (pp, pn, etc)
+  if (sqrts > 1000 && perturbative) {
+    products.push({ name: 'Hard jets ×2–4', desc: 'gg/qg/qq scattering', color: 'var(--c1)' });
+  }
+  if (sqrts > 80) {
+    products.push({ name: 'W/Z + jets', desc: 'EW + QCD', color: 'var(--c5)' });
+  }
+  if (sqrts > 200) {
+    products.push({ name: 'Higgs (rare)', desc: 'gg → H via top loop', color: 'var(--c4)' });
+  }
+  products.push({ name: 'Underlying event', desc: 'Soft hadrons, MPI', color: 'var(--c3)' });
+  products.push({ name: 'Beam remnants', desc: 'Spectator partons', color: 'var(--dim)' });
+  return products;
+}
+
+function dominantProcess(type, pA, pB) {
+  if (type === 'leptonic') return 'e⁺e⁻ → γ*/Z → ff̄';
+  if (type === 'DIS') return 'γ* + q → q (deep inelastic)';
+  if (type === 'PbPb') return 'gg → glasma → QGP';
+  return 'gg → gg  (gluon fusion dominant)';
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let state = { pA: 'p', pB: 'p', Ea: 6500, Eb: 6500, colliding: false, phase: 0 };
+
+// ============================================================
+// CANVAS — COLLIDER
+// ============================================================
+let particles = [];
+let jets = [];
+let qgpBlobs = [];
+let animId = null;
+
+function initCanvas() {
+  const canvas = document.getElementById('collider-canvas');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.offsetWidth;
+  const h = 380;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  return { ctx, w, h };
+}
+
+function launchCollision() {
+  if (state.colliding) return;
+  state.colliding = true;
+  state.phase = 0;
+  particles = [];
+  jets = [];
+  qgpBlobs = [];
+
+  document.getElementById('fire-btn').disabled = true;
+
+  const { ctx, w, h } = initCanvas();
+  const cx = w / 2, cy = h / 2;
+  const type = collisionType(state.pA, state.pB);
+  const sqrts = sqrtS(state.Ea, state.Eb);
+  const aS = alphaS(sqrts);
+
+  const pDataA = PARTICLES[state.pA];
+  const pDataB = PARTICLES[state.pB];
+
+  // Build incoming beams
+  const nA = pDataA.heavy ? 6 : 3;
+  const nB = pDataB.heavy ? 6 : 3;
+
+  for (let i = 0; i < nA; i++) {
+    particles.push({
+      x: 0, y: cy + (i - (nA-1)/2) * 8,
+      vx: w * 0.012, vy: 0,
+      r: pDataA.heavy ? 4 : 2.5,
+      color: pDataA.color, beam: 'A', alive: true, phase: 'incoming'
+    });
+  }
+  for (let i = 0; i < nB; i++) {
+    particles.push({
+      x: w, y: cy + (i - (nB-1)/2) * 8,
+      vx: -w * 0.012, vy: 0,
+      r: pDataB.heavy ? 4 : 2.5,
+      color: pDataB.color, beam: 'B', alive: true, phase: 'incoming'
+    });
+  }
+
+  let frame = 0;
+  const totalFrames = 180;
+
+  function tick() {
+    ctx.clearRect(0, 0, w, h);
+    frame++;
+
+    // Background glow at center
+    const progress = Math.max(0, (frame - 60) / 40);
+    if (progress > 0) {
+      const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 80 * progress);
+      if (type === 'PbPb') {
+        grd.addColorStop(0, `rgba(255,176,32,${0.3 * Math.min(1, progress)})`);
+        grd.addColorStop(1, 'transparent');
+      } else {
+        grd.addColorStop(0, `rgba(0,229,255,${0.2 * Math.min(1, progress)})`);
+        grd.addColorStop(1, 'transparent');
+      }
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    // Move particles
+    for (const p of particles) {
+      if (!p.alive) continue;
+      p.x += p.vx; p.y += p.vy;
+      const dist = Math.sqrt((p.x - cx)**2 + (p.y - cy)**2);
+
+      if (dist < 12 && p.phase === 'incoming') {
+        p.alive = false;
+        // Spawn jets / QGP blobs
+        if (type === 'PbPb') {
+          for (let j = 0; j < 12; j++) {
+            const angle = (j / 12) * Math.PI * 2;
+            qgpBlobs.push({ x: cx, y: cy, vx: Math.cos(angle) * 1.2, vy: Math.sin(angle) * 1.2, r: 4, life: 1.0, color: pDataA.color });
+          }
+        } else if (type === 'leptonic') {
+          for (let j = 0; j < 6; j++) {
+            const angle = (j / 6) * Math.PI * 2;
+            jets.push({ x: cx, y: cy, angle, length: 0, maxLen: 100 + Math.random()*80, color: j%2===0?pDataA.color:pDataB.color, width: 1.5 });
+          }
+        } else {
+          const nJets = aS < 0.2 ? 4 : 2;
+          for (let j = 0; j < nJets; j++) {
+            const angle = (j / nJets) * Math.PI * 2 + Math.random() * 0.3;
+            jets.push({ x: cx, y: cy, angle, length: 0, maxLen: 80 + Math.random()*60, color: j%2===0?'#00e5ff':'#ff4060', width: 2 });
+            // Sub-jets (hadron fragments)
+            for (let k = 0; k < 4; k++) {
+              const da = (Math.random()-0.5) * 0.5;
+              jets.push({ x: cx, y: cy, angle: angle+da, length: 0, maxLen: 30+Math.random()*40, color: '#a0ff60', width: 1 });
+            }
+          }
+        }
+      }
+    }
+
+    // Grow jets
+    for (const j of jets) {
+      if (j.length < j.maxLen) j.length += 3.5;
+      ctx.save();
+      ctx.strokeStyle = j.color;
+      ctx.lineWidth = j.width;
+      ctx.shadowBlur = j.width > 1.5 ? 8 : 3;
+      ctx.shadowColor = j.color;
+      ctx.globalAlpha = Math.max(0.2, 1 - j.length / j.maxLen * 0.5);
+      ctx.beginPath();
+      ctx.moveTo(j.x, j.y);
+      ctx.lineTo(j.x + Math.cos(j.angle) * j.length, j.y + Math.sin(j.angle) * j.length);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // QGP blobs
+    for (const b of qgpBlobs) {
+      b.x += b.vx; b.y += b.vy;
+      b.r += 0.15;
+      b.life -= 0.008;
+      if (b.life <= 0) continue;
+      ctx.save();
+      ctx.globalAlpha = b.life;
+      ctx.fillStyle = b.color;
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = b.color;
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // Draw live particles
+    for (const p of particles) {
+      if (!p.alive) continue;
+      ctx.save();
+      ctx.fillStyle = p.color;
+      ctx.shadowBlur = 10; ctx.shadowColor = p.color;
+      ctx.globalAlpha = 0.9;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
+    }
+
+    // Beam tubes (background guide lines)
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4,6]);
+    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+    ctx.restore();
+
+    // Flash at collision point
+    if (frame >= 58 && frame <= 65) {
+      const intensity = 1 - Math.abs(frame - 61.5) / 3.5;
+      ctx.save();
+      ctx.fillStyle = `rgba(255,255,255,${intensity * 0.7})`;
+      ctx.shadowBlur = 40; ctx.shadowColor = '#fff';
+      ctx.beginPath(); ctx.arc(cx, cy, 10 * intensity, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
+    }
+
+    // Collision point dot
+    if (frame > 65) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(255,255,255,0.3)';
+      ctx.beginPath(); ctx.arc(cx, cy, 2, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
+    }
+
+    // √s annotation
+    if (frame > 70) {
+      ctx.save();
+      ctx.font = '10px Space Mono, monospace';
+      ctx.fillStyle = 'rgba(255,176,32,0.7)';
+      ctx.textAlign = 'center';
+      const sqrtsStr = sqrts >= 1000 ? `√s = ${(sqrts/1000).toFixed(1)} TeV` : `√s = ${sqrts.toFixed(0)} GeV`;
+      ctx.fillText(sqrtsStr, cx, cy - 20);
+      ctx.restore();
+    }
+
+    if (frame < totalFrames) {
+      animId = requestAnimationFrame(tick);
+    } else {
+      state.colliding = false;
+      document.getElementById('fire-btn').disabled = false;
+      // Final static frame
+      drawStaticAfterImage(ctx, w, h, cx, cy, type);
+    }
+  }
+
+  if (animId) cancelAnimationFrame(animId);
+  animId = requestAnimationFrame(tick);
+}
+
+function drawStaticAfterImage(ctx, w, h, cx, cy, type) {
+  // Keep the last frame visible — nothing extra needed
+}
+
+function drawIdle() {
+  const canvas = document.getElementById('collider-canvas');
+  if (!canvas.offsetWidth) return;
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.offsetWidth, h = 380;
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  ctx.clearRect(0, 0, w, h);
+  const cy = h / 2;
+
+  // Beam guides
+  ctx.strokeStyle = 'rgba(0,229,255,0.12)';
+  ctx.lineWidth = 1; ctx.setLineDash([6,8]);
+  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Beam A dot
+  const pA = PARTICLES[state.pA], pB = PARTICLES[state.pB];
+  ctx.fillStyle = pA.color; ctx.shadowBlur = 14; ctx.shadowColor = pA.color;
+  ctx.beginPath(); ctx.arc(30, cy, pA.heavy?8:5, 0, Math.PI*2); ctx.fill();
+
+  // Beam B dot
+  ctx.fillStyle = pB.color; ctx.shadowBlur = 14; ctx.shadowColor = pB.color;
+  ctx.beginPath(); ctx.arc(w-30, cy, pB.heavy?8:5, 0, Math.PI*2); ctx.fill();
+  ctx.shadowBlur = 0;
+
+  // Labels
+  ctx.font = '10px Space Mono, monospace';
+  ctx.textAlign = 'left'; ctx.fillStyle = pA.color;
+  ctx.fillText(pA.sym + '  →', 12, cy - 14);
+  ctx.textAlign = 'right'; ctx.fillStyle = pB.color;
+  ctx.fillText('←  ' + pB.sym, w-12, cy - 14);
+
+  // Center crosshair
+  ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+  ctx.lineWidth = 1;
+  const s = 12;
+  ctx.beginPath(); ctx.moveTo(w/2-s, cy); ctx.lineTo(w/2+s, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(w/2, cy-s); ctx.lineTo(w/2, cy+s); ctx.stroke();
+
+  // Energy labels
+  ctx.font = '9px Space Mono, monospace';
+  ctx.fillStyle = 'rgba(255,176,32,0.5)';
+  ctx.textAlign = 'left';
+  ctx.fillText(`${state.Ea >= 1000 ? (state.Ea/1000).toFixed(1)+'k' : state.Ea} GeV`, 12, cy+18);
+  ctx.textAlign = 'right';
+  ctx.fillText(`${state.Eb >= 1000 ? (state.Eb/1000).toFixed(1)+'k' : state.Eb} GeV`, w-12, cy+18);
+}
+
+// ============================================================
+// MINI ALPHA_S CHART
+// ============================================================
+function drawAlphaMini() {
+  const canvas = document.getElementById('alpha-mini-canvas');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.offsetWidth || 200;
+  canvas.width = w * dpr; canvas.height = 80 * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const h = 80;
+  ctx.clearRect(0, 0, w, h);
+
+  const sqrts = sqrtS(state.Ea, state.Eb);
+  const logMin = Math.log10(LAMBDA_QCD * 1.1);
+  const logMax = Math.log10(14000);
+  const pad = { l: 30, r: 10, t: 8, b: 20 };
+
+  const px = lm => pad.l + (lm - logMin) / (logMax - logMin) * (w - pad.l - pad.r);
+  const py = a  => h - pad.b - Math.min(a, 1.5) / 1.5 * (h - pad.t - pad.b);
+
+  // Axes
+  ctx.strokeStyle = '#1a2030'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, h-pad.b); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(pad.l, h-pad.b); ctx.lineTo(w-pad.r, h-pad.b); ctx.stroke();
+
+  // Tick labels
+  ctx.fillStyle = '#404868'; ctx.font = '7px Space Mono,monospace'; ctx.textAlign = 'center';
+  [1, 10, 100, 1000, 10000].forEach(v => {
+    const lv = Math.log10(v);
+    if (lv >= logMin && lv <= logMax) {
+      const label = v >= 1000 ? v/1000+'k' : v.toString();
+      ctx.fillText(label, px(lv), h - pad.b + 10);
+    }
+  });
+
+  // Curve
+  ctx.strokeStyle = '#00e5ff'; ctx.lineWidth = 1.5;
+  ctx.shadowBlur = 4; ctx.shadowColor = '#00e5ff';
+  ctx.beginPath();
+  let first = true;
+  for (let lm = logMin + 0.01; lm <= logMax; lm += 0.02) {
+    const mu = Math.pow(10, lm);
+    const a = alphaS(mu);
+    if (!isFinite(a) || a > 1.5) { first = true; continue; }
+    if (first) { ctx.moveTo(px(lm), py(a)); first = false; }
+    else ctx.lineTo(px(lm), py(a));
+  }
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Current √s dot
+  if (sqrts > LAMBDA_QCD * 1.2) {
+    const lsq = Math.log10(sqrts);
+    const aSQ = alphaS(sqrts);
+    if (lsq >= logMin && lsq <= logMax && aSQ <= 1.5) {
+      ctx.fillStyle = '#ffb020'; ctx.shadowBlur = 8; ctx.shadowColor = '#ffb020';
+      ctx.beginPath(); ctx.arc(px(lsq), py(aSQ), 4, 0, Math.PI*2); ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = 'rgba(255,176,32,0.7)'; ctx.font = '7px Space Mono,monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('●', px(lsq), py(aSQ) - 6);
+    }
+  }
+
+  // Λ_QCD line
+  ctx.strokeStyle = 'rgba(255,64,96,0.4)'; ctx.lineWidth = 1; ctx.setLineDash([2,3]);
+  const lL = Math.log10(LAMBDA_QCD);
+  ctx.beginPath(); ctx.moveTo(px(lL), pad.t); ctx.lineTo(px(lL), h-pad.b); ctx.stroke();
+  ctx.setLineDash([]);
+}
+
+// ============================================================
+// UI UPDATE
+// ============================================================
+function buildGrid(id, beam) {
+  const grid = document.getElementById(id);
+  grid.innerHTML = '';
+  ORDER.forEach(key => {
+    const p = PARTICLES[key];
+    const btn = document.createElement('button');
+    btn.className = `p-btn ${beam === 'A' ? (state.pA===key?'active-a':'') : (state.pB===key?'active-b':'')}`;
+    btn.innerHTML = `<div style="font-size:13px;font-weight:700">${p.sym}</div><div style="opacity:0.7">${p.name.split(' ')[0]}</div>`;
+    btn.addEventListener('click', () => {
+      if (beam === 'A') state.pA = key;
+      else state.pB = key;
+      refresh();
+    });
+    grid.appendChild(btn);
+  });
+}
+
+function updateInfo(id, key) {
+  const p = PARTICLES[key];
+  document.getElementById(id).innerHTML = `<b>${p.name}</b>\n${p.desc}`.replace(/\n/g,'<br>');
+}
+
+function refresh() {
+  buildGrid('grid-a', 'A');
+  buildGrid('grid-b', 'B');
+  updateInfo('info-a', state.pA);
+  updateInfo('info-b', state.pB);
+
+  const sqrts = sqrtS(state.Ea, state.Eb);
+  const aS = alphaS(sqrts);
+  const type = collisionType(state.pA, state.pB);
+  const products = getProducts(type, sqrts, aS);
+  const perturbative = aS < 0.3;
+
+  document.getElementById('ea-val').textContent = state.Ea >= 1000 ? (state.Ea/1000).toFixed(1)+'k' : state.Ea;
+  document.getElementById('eb-val').textContent = state.Eb >= 1000 ? (state.Eb/1000).toFixed(1)+'k' : state.Eb;
+
+  const sqrtsStr = sqrts >= 1000 ? `${(sqrts/1000).toFixed(2)} TeV` : `${sqrts.toFixed(1)} GeV`;
+  document.getElementById('res-sqrts').textContent = sqrtsStr;
+  document.getElementById('res-alphas').textContent = aS < 10 ? aS.toFixed(4) : '> 1 (non-pert.)';
+  document.getElementById('res-regime').textContent = perturbative ? 'PERTURBATIVE' : 'NON-PERTURBATIVE';
+  document.getElementById('res-regime').style.color = perturbative ? 'var(--c3)' : 'var(--c2)';
+  document.getElementById('res-process').textContent = dominantProcess(type, state.pA, state.pB);
+
+  const list = document.getElementById('products-list');
+  list.innerHTML = products.map(pr =>
+    `<div class="product-item" style="border-color:${pr.color};color:${pr.color}">
+      <b>${pr.name}</b><br><span style="color:var(--dim)">${pr.desc}</span>
+    </div>`
+  ).join('');
+
+  // Collision type badge
+  const badge = document.getElementById('ctype-badge');
+  const badgeLabels = { pp:'pp → JETS', pPb:'p+Pb → JETS+QGP', PbPb:'Pb+Pb → QGP', leptonic:'e⁺e⁻ → PAIRS', DIS:'DIS — PARTONS', hadronic:'HADRONIC' };
+  const badgeColors = { pp:'var(--c1)', pPb:'var(--c4)', PbPb:'var(--c4)', leptonic:'var(--c3)', DIS:'var(--c5)', hadronic:'var(--text)' };
+  badge.textContent = badgeLabels[type] || type.toUpperCase();
+  badge.style.borderColor = badgeColors[type] || 'var(--text)';
+  badge.style.color = badgeColors[type] || 'var(--text)';
+  badge.style.background = `rgba(0,0,0,0.6)`;
+
+  // Bottom stats
+  document.getElementById('stat-sqrts').textContent = sqrts >= 1000 ? `${(sqrts/1000).toFixed(1)} TeV` : `${sqrts.toFixed(0)} GeV`;
+  document.getElementById('stat-alphas').textContent = aS < 10 ? aS.toFixed(3) : '≫1';
+  document.getElementById('stat-state').textContent = type === 'PbPb' ? 'QGP' : (type === 'leptonic' ? 'QED' : 'HADRONS');
+  const confined = aS > 1;
+  document.getElementById('stat-conf').textContent = confined ? 'ACTIVE' : 'BROKEN';
+  document.getElementById('stat-conf').style.color = confined ? 'var(--c2)' : 'var(--c3)';
+
+  drawIdle();
+  drawAlphaMini();
+}
+
+// ============================================================
+// EVENTS
+// ============================================================
+document.getElementById('ea-slider').addEventListener('input', e => { state.Ea = parseInt(e.target.value); refresh(); });
+document.getElementById('eb-slider').addEventListener('input', e => { state.Eb = parseInt(e.target.value); refresh(); });
+document.getElementById('fire-btn').addEventListener('click', launchCollision);
+window.addEventListener('resize', () => { clearTimeout(window._rt); window._rt = setTimeout(refresh, 100); });
+
+// ============================================================
+// INIT
+// ============================================================
+refresh();
+</script>
+</body>
+</html>
