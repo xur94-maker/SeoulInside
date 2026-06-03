@@ -1,28 +1,28 @@
 {
   "globalNews": [
     {
+      "title": "US and Iran launch new strikes, as Kuwait says airport hit by Iranian drones",
+      "link": "https://www.bbc.com/news/articles/c5yx135yg53o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 03 Jun 2026 11:17:08 GMT",
+      "desc": "Kuwait says one person is dead after drones hit civilian buildings including its international airport."
+    },
+    {
       "title": "Israel strikes southern Lebanon but partial truce with Hezbollah appears to hold",
       "link": "https://www.bbc.com/news/articles/c936zvne0l6o?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 02 Jun 2026 21:51:20 GMT",
       "desc": "Israel continues its campaign in the south, though has not struck Beirut after a deal announced by the US."
     },
     {
-      "title": "US and Iran launch new strikes, as Kuwait says airport hit by Iranian drones",
-      "link": "https://www.bbc.com/news/articles/c5yx135yg53o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 03 Jun 2026 06:54:14 GMT",
-      "desc": "Kuwait says its international airport has been badly damaged by Iranian drones, and traffic is suspended."
+      "title": "Ukrainian drones hit St Petersburg as Putin's flagship economic forum opens",
+      "link": "https://www.bbc.com/news/articles/c0e2vqd3j1vo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 03 Jun 2026 11:34:07 GMT",
+      "desc": "Several long-range drones struck oil storage facilities near the city, days before Vladimir Putin is due to address the event."
     },
     {
-      "title": "Seven killed after drone hits bus in Russia-controlled part of Ukraine",
-      "link": "https://www.bbc.com/news/articles/cp3peyykxd5o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 03 Jun 2026 07:23:16 GMT",
-      "desc": "The bus was travelling between Moscow and Simferopol, in Russian-occupied Crimea, an official says."
-    },
-    {
-      "title": "Putin remains uncompromising on Ukraine, but is public discourse on war changing in Russia?",
-      "link": "https://www.bbc.com/news/articles/cy82339793go?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 02 Jun 2026 23:33:34 GMT",
-      "desc": "Russia is intensifying attacks in Ukraine but more than four years of war are causing concern even among Putin loyalists."
+      "title": "Foreign nationals among at least 21 killed in Delhi fire",
+      "link": "https://www.bbc.com/news/articles/czd29327qzvo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 03 Jun 2026 11:54:25 GMT",
+      "desc": "Many victims were South Asians who had travelled to India for treatment or to accompany relatives."
     },
     {
       "title": "Shell pumped oil through Nigeria pipeline for years despite pollution evidence, documents show",
@@ -33,52 +33,52 @@
   ],
   "koreaNews": [
     {
-      "title": "China’s AI chip demand is surging – and South Korea is riding the wave - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNWXhQUFpaYldXck1yTHFZcVpRenNNdnBxYmthZjhrN0UzU29kWEhucG9jbHptZVo3R3ZNbEFZZFlCeEhjR0FBZEg5YnZGZFJQN3pCT3BhNmN1MjNYRDU4amhPYmE5c3Y1c0p4WmNaSFd2VzRiUGZIdTBKTlhmQW45TkN4RUpkdHBpVkNReEhIVDV1d1dhQy1VWEw4dW5FYzFJNFBfb3hEWXBYbkhKRGJyUjlscUNCMmtELW1DbDB4WHFneUZKN2NOWUhFc9IBywFBVV95cUxNdklfNTdOdkNNTGVxUFNqbmhMWUMzMkZidnJQa3M5cmZYWFV1NkpqY1NUTzRKNEJkWTNlYk9nZ3RNanVCYWlTd2VYbmI4aFl3TW5pZXpuZzNlZ1JxYW5XN2c0RnNzaDVHclF4aWhGOElaeG5xZlRkU2pLbUlKZGRFZUthZzdhaEU5aDhVU0pMTjgwbDRYYlZmUU1RYUtIcEJrX1NJcFAwMHNYV1lRT0RzYlQ2SkhQYUtHMnk3MjdSS2VnOEFRVEZOMFVHZw?oc=5",
-      "date": "Wed, 03 Jun 2026 03:00:17 GMT",
-      "desc": "China’s AI chip demand is surging – and South Korea is riding the wave&nbsp;&nbsp;South China Morning Post"
-    },
-    {
       "title": "South Korea export growth hits four-decade high on AI chip boom - Reuters",
       "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxObUZaNE0zcldLWGpoVWFONHR4OS12MTZ4Um5rN2xYNkZLdUUyM3JWbDMxX0I0WTFaNXNuRXNnaGJIeGJ3WjdxV1ltams4cGVEeURGX2Jxd1NEV1BsNFNjVHV2Rk12NnR4VGZxQmxlMHU1X1F6UTdvdUxURnJ6bHdKdUNmM0o4elVZbVozSG5McmlkLXQ1eV8tWnNPX3laNmpHOVo2eWl6ZXZKc1VQUldMMTBoQjN4TWlJNnR1MHFwckEzMWstNVdpdGI1WTQ?oc=5",
       "date": "Mon, 01 Jun 2026 00:54:00 GMT",
       "desc": "South Korea export growth hits four-decade high on AI chip boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Chips, AI Keep South Korea’s Export Engine Firing on All Cylinders - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZVF0TklpclVMWl9EUEJJdHduWTBHZlJySC1ZbGhSdDBXM25aR2stcEg5eUk1WUNjYTUyZWxXSU1IOHBPTzd2VmZyd3RzMThhYVFDaHkzRTlacnlBeDRkU0dkakY4aklEMVVmSVUtN3JSRnYtT09xX3BmQkN0OGQ1cU40RmJiQUFXTnA4Ny1KaEFzWm9hUHNSYVFYR0kzNFJSY1dWclJyQm8tbVU?oc=5",
-      "date": "Mon, 01 Jun 2026 02:23:00 GMT",
-      "desc": "Chips, AI Keep South Korea’s Export Engine Firing on All Cylinders&nbsp;&nbsp;WSJ"
+      "title": "How China keeps North Korea's economy alive - dw.com",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
+      "date": "Tue, 02 Jun 2026 08:38:37 GMT",
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
     },
     {
-      "title": "Korea’s double-edged economy: Chips boom and stocks soar, yet households feel poorer - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBESTJ2LVdUUWNiRG1Qc3dEczRSdGVnSE43V3Fac0lKbl9lZlFiNjdRYmczT25lb2tuYmMxdENubGtKM0F1Qnp6QVFnLVJSRE5qa3pxNkk0Vmt3dl85d1h2WmhwVzhDS2pta0E?oc=5",
-      "date": "Sun, 31 May 2026 10:43:00 GMT",
-      "desc": "Korea’s double-edged economy: Chips boom and stocks soar, yet households feel poorer&nbsp;&nbsp;KED Global"
+      "title": "South Korea Inflation Accelerated to 26-Month High in May - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOQkhEQnpBdkp6c3NtWTM5d1AxZ3pOQ29XWXppMDZtUHVnaWE0OGw2cWU1SEtfaDdESC1vTDZkV0NvcGtiYmNGS0ZvTnh3QjRyZnMtRXpUb1RDRkdoaVRJTG9DLVEtNXhmaVFiRnZHNkFFNG9JYnFSMk5wdGRrRFl3cTl1ZEdJT2hOMDhsVjZiOW1FVkZRY04yU1l3?oc=5",
+      "date": "Mon, 01 Jun 2026 23:46:00 GMT",
+      "desc": "South Korea Inflation Accelerated to 26-Month High in May&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "S. Korea's monthly exports up 53% to record high of $87.8b in May - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE13cDE3bFZIS3BORnZWcFBzUHFmVVN5YlF1X0lwd0VORzJnU21VQUdFWU1wZzgyRFEwMzNqVFpha0JJQlFCVEYyMTNQNlNITHdGazZyd09YVQ?oc=5",
-      "date": "Mon, 01 Jun 2026 00:05:19 GMT",
-      "desc": "S. Korea's monthly exports up 53% to record high of $87.8b in May&nbsp;&nbsp;The Korea Herald"
+      "title": "China’s AI chip demand is surging – and South Korea is riding the wave - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNWXhQUFpaYldXck1yTHFZcVpRenNNdnBxYmthZjhrN0UzU29kWEhucG9jbHptZVo3R3ZNbEFZZFlCeEhjR0FBZEg5YnZGZFJQN3pCT3BhNmN1MjNYRDU4amhPYmE5c3Y1c0p4WmNaSFd2VzRiUGZIdTBKTlhmQW45TkN4RUpkdHBpVkNReEhIVDV1d1dhQy1VWEw4dW5FYzFJNFBfb3hEWXBYbkhKRGJyUjlscUNCMmtELW1DbDB4WHFneUZKN2NOWUhFc9IBywFBVV95cUxNdklfNTdOdkNNTGVxUFNqbmhMWUMzMkZidnJQa3M5cmZYWFV1NkpqY1NUTzRKNEJkWTNlYk9nZ3RNanVCYWlTd2VYbmI4aFl3TW5pZXpuZzNlZ1JxYW5XN2c0RnNzaDVHclF4aWhGOElaeG5xZlRkU2pLbUlKZGRFZUthZzdhaEU5aDhVU0pMTjgwbDRYYlZmUU1RYUtIcEJrX1NJcFAwMHNYV1lRT0RzYlQ2SkhQYUtHMnk3MjdSS2VnOEFRVEZOMFVHZw?oc=5",
+      "date": "Wed, 03 Jun 2026 03:00:17 GMT",
+      "desc": "China’s AI chip demand is surging – and South Korea is riding the wave&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "Semiconductor Power Surpasses Oil in Market Value - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOR2dPNjl2TEs1dzVCWWNMLXhIQnJEZmc1RHY5b2FoY2dYY0ZyMzV0ZktPOTFjQ3FnZjJYWTFzZFFjOWFTOHVWeGFuNjhnV0plV0w4NVduclY0QmNjOWlEc3JqdmQtdlJ1Q3RIQmhsRlFCTHFGZ1dMekIwNXF0SHdHZU1qdEhwbTE5?oc=5",
-      "date": "Tue, 02 Jun 2026 15:40:30 GMT",
-      "desc": "Semiconductor Power Surpasses Oil in Market Value&nbsp;&nbsp;조선일보"
+      "title": "After Taiwan, South Korea overtakes India to become world’s sixth largest stock market; here’s why - The Times of India",
+      "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxOVkQtWm11S2pDYUxnQ0Jvd01FMkxuUGk1ZFdDUGpiY0FidkNRTWdzM2pEendvRnFsVEt3SWc5Mnh3aFRtOW03RGxsN2xOQVd5VFNhVk5RNWhtRm5NdWllWUtMV0RaLTEzc3lHTmc3WUlzSWdNSkhnMG9HbFF3cE1NemlsbnZPWjUyUVVOMHZfVktXSlM4REs4QktxU2hiSTZNNm50eEtSeHh4NXg1eWRzT2Rkd3FCMkozTWNXRXRIemJLMlcwVWExcTgwY2dJQjZsLUZfbjNrcC1Del9LeXZoblFseDhVdW00cUFNN2tBUGZjU1pDcFFxaGk4THdlMnhhdEh3b2xKMHI1aGR00gGSAkFVX3lxTE1vMTJGQjlVM0NzUVp0WXRieWJJUXJHWWYtSE1tQnRzeVF1Mm5kVWdyN0ZDWHpZMEhKelRyTEVRbmxxR3JRT05qdGlrb1ptN3Z0ZkdPM1YwT3JDc0lBZmZDeGdDQ2NXeUQxSEhnZnFPaFNqZHBiQjJfbVNBOWRhQ1Y1emJBQktGWGNWc0tsOW1vVlFBX19Lc05IQ2JrdFhJa3FOeXd4X0JUeXpLYjhSSzFTTG5mVVduWUtVbDIyLVFJQWJ1R2hFZTRRRGJBaE9UbDVfSlR1TjRmTlh4bFNOV0pDdmhDZ2IwamJCQ1B3YzBYay11SFJSUTN2S3JJMm9pSnVodmdxTlBMSE44bDZCNzE4dWc?oc=5",
+      "date": "Tue, 02 Jun 2026 03:43:00 GMT",
+      "desc": "After Taiwan, South Korea overtakes India to become world’s sixth largest stock market; here’s why&nbsp;&nbsp;The Times of India"
+    },
+    {
+      "title": "SK Hynix Leverage Products Draw Double Samsung's Funds - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPYmw0QkFlakVoTkE0d0VxTHh2Tmc2RGpYcXV2cUI3RWRHbzdRRV96NlhzYmxfT1NIbWJndmpxSVEyd0JaZEhyWHJ6SjZHdmxfcUxYbTUwN05oa2pDeWVNR3NtTW1tc1dLcHN3Wm1PR2Q2YjNkY0tibFd1a1MxaVlTMFlnQW5JdFdpNnk0NnpR?oc=5",
+      "date": "Sun, 31 May 2026 14:00:47 GMT",
+      "desc": "SK Hynix Leverage Products Draw Double Samsung's Funds&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "SK Hynix 'Pure Semiconductor' vs Samsung Electronics: Leveraged ETF divide - MSN",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNb2t4QXVJUktLU2FrUXV3ejhHNmpKSEtuaXM1YzFyM1VFdFcwUXdTdEc2cHI0YzdBUnZBZC05UkFQc0RsMWZ5NGJkcDZkRVhrQ1hrZXhNd0NTNDdXMnd2SmV4UzZvWTZxOXZoYnd2ZDVuaHBtRWZHQi1vZTZvdWZKRHJiNGotdUNYN0VTOXQwazNRaFV1WkJkR2FlTWJ2R3BhQ1hFMHd3?oc=5",
+      "date": "Sun, 31 May 2026 13:31:25 GMT",
+      "desc": "SK Hynix 'Pure Semiconductor' vs Samsung Electronics: Leveraged ETF divide&nbsp;&nbsp;MSN"
     },
     {
       "title": "Samsung, SK hynix Join Anthropic Funding Round, Raising Expectations for AI Chip Cooperation - thelec.net",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0zWWpkb2NLN1V6YTdnNTllZ3JadWhFRkZfQ0VnYVJEQi1wTWxwUlVzMTRmc0lEZXhnS3N1TWJTY002SEdXMndQc2Z2S2ZweFVfY0Itd1k2eDBodkpVR2VsZEdNVVR4MTQ?oc=5",
       "date": "Sun, 31 May 2026 09:18:53 GMT",
       "desc": "Samsung, SK hynix Join Anthropic Funding Round, Raising Expectations for AI Chip Cooperation&nbsp;&nbsp;thelec.net"
-    },
-    {
-      "title": "AI Enters the 'Semiconductor Security War'... Samsung, SK hynix Deploy Mythos - 아시아경제",
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1KNW1UaTdJYjhVZ2ItSFk3MDBvcnBPdU55RF9NRjU4c2t1bkxVTWZrMXpZZ3RMSHNuYUVVbkFnOU5DUXRCNWFfNEhiYldXS3dYdXA3ZjFoY0lwb05MVC1Nd1JDUk8?oc=5",
-      "date": "Wed, 03 Jun 2026 02:38:03 GMT",
-      "desc": "AI Enters the 'Semiconductor Security War'... Samsung, SK hynix Deploy Mythos&nbsp;&nbsp;아시아경제"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1527.63,
-      "change": 16.36,
-      "pct": 1.08,
+      "price": 1527.05,
+      "change": 15.78,
+      "pct": 1.04,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-03 08:10 UTC"
+  "updatedAt": "2026-06-03 13:21 UTC"
 }
