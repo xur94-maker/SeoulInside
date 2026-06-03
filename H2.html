@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Hydrogen Atom - de Broglie -600~600 | Trail Size 0~10</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(30,30,50,0.95);
+            backdrop-filter: blur(8px);
+            padding: 8px;
+            border-radius: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            z-index: 20;
+            font-size: 9px;
+            max-height: 38%;
+            overflow-y: auto;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 80px;
+            background: rgba(0,0,0,0.5);
+            padding: 3px 5px;
+            border-radius: 5px;
+            color: white;
+        }
+        .control-group label { font-size: 7px; color: #ccc; }
+        input { cursor: pointer; }
+        button {
+            background: #3b82f6;
+            border: none;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+            font-size: 8px;
+        }
+        .value-display { font-size: 7px; color: #ffaa66; }
+        .note {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-size: 7px;
+            color: #ffaa66;
+            pointer-events: none;
+        }
+        .color-preview { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-left: 4px; border: 1px solid white; }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <div class="control-group"><label>🎯 n</label><div><button id="n1">1</button><button id="n2">2</button><button id="n3">3</button><button id="n4">4</button></div></div>
+        
+        <!-- de Broglie: -600 ~ 600, 기본값 0 -->
+        <div class="control-group"><label>🎨 de Broglie (-600~600)</label><input type="range" id="debAmp" min="-600" max="600" step="1" value="0"><span id="debVal">0</span></div>
+        
+        <div class="control-group"><label>✨ Compton</label><input type="range" id="compAmp" min="0" max="30" step="0.5" value="8"><span id="compVal">8.0</span></div>
+        <div class="control-group"><label>🔄 Orbit Speed</label><input type="range" id="orbitSpeed" min="0" max="2.5" step="0.02" value="1.2"><span id="speedVal">6.3×</span></div>
+        <div class="control-group"><label>🐍 Trail Count</label><input type="range" id="trailSlider" min="0" max="5000" step="100" value="2000"><span id="trailVal">2000</span></div>
+        
+        <div class="control-group"><label>🔴 X축</label><input type="range" id="xAmp" min="0" max="1.0" step="0.01" value="0.0"><span id="xAmpVal">0.00</span><input type="range" id="xSpeed" min="0" max="2.5" step="0.01" value="0.5"><span id="xSpeedVal">1.0×</span></div>
+        <div class="control-group"><label>🔵 Y축</label><input type="range" id="yAmp" min="0" max="1.0" step="0.01" value="0.0"><span id="yAmpVal">0.00</span><input type="range" id="ySpeed" min="0" max="2.5" step="0.01" value="0.5"><span id="ySpeedVal">1.0×</span></div>
+        <div class="control-group"><label>🟣 Z축</label><input type="range" id="zAmp" min="0" max="1.0" step="0.01" value="0.0"><span id="zAmpVal">0.00</span><input type="range" id="zSpeed" min="0" max="2.5" step="0.01" value="0.5"><span id="zSpeedVal">1.0×</span></div>
+        
+        <div class="control-group"><label>🎨 Color Hue</label><input type="range" id="colorHue" min="0" max="360" step="1" value="30"><span id="hueVal">30°</span><div id="colorPreview" class="color-preview"></div></div>
+        <div class="control-group"><label>💡 Brightness</label><input type="range" id="brightness" min="0.2" max="2.0" step="0.01" value="1.2"><span id="brightVal">1.20</span></div>
+        <div class="control-group"><label>✨ Trail Glow</label><input type="range" id="trailGlow" min="0" max="1.5" step="0.01" value="0.9"><span id="glowVal">0.90</span></div>
+        
+        <!-- Trail Size: 0 ~ 10, 기본값 0.8 -->
+        <div class="control-group"><label>💠 Trail Size (0~10)</label><input type="range" id="trailSize" min="0" max="10" step="0.05" value="0.8"><span id="trailSizeVal">0.80</span></div>
+    </div>
+    <div class="note">💠 de Broglie 음수 가능 (-600~600) | Trail Size 최대 10 (n=4에서도 큼)</div>
+
+    <script type="importmap">
+        { "imports": { "three": "https://unpkg.com/three@0.128.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/" } }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+        const a0 = 5.292e-11, lambdaC = 2.426e-12, n2 = 22, SCALE = 1e11;
+        let n = 2, debAmp = 0, compAmp = 8, orbitSpeedLog = 1.2, trailCount = 2000;
+        let xAmp = 0, xSpeedLog = 0.5, xPhase = 0;
+        let yAmp = 0, ySpeedLog = 0.5, yPhase = 0;
+        let zAmp = 0, zSpeedLog = 0.5, zPhase = 0;
+        let colorHue = 30, brightness = 1.2, trailGlow = 0.9;
+        let trailPointSize = 0.8;
+        
+        function getOrbitSpeed() { return Math.pow(10, orbitSpeedLog) * 0.2; }
+        function getXSpeed() { return Math.pow(10, xSpeedLog) * 0.5; }
+        function getYSpeed() { return Math.pow(10, ySpeedLog) * 0.5; }
+        function getZSpeed() { return Math.pow(10, zSpeedLog) * 0.5; }
+        function getCompVisualAmp() { return lambdaC * compAmp * SCALE; }
+        
+        // de Broglie 진폭: 음수 가능 (위상 반전)
+        function getDebVisualAmp() { return debAmp * 0.5e-11 * SCALE; }
+        
+        function getBohrRadius() { return n * n * a0 * SCALE; }
+        function getRadiusVisual(phi) { return getBohrRadius() + getDebVisualAmp() * Math.sin(n * phi) + getCompVisualAmp() * Math.sin(n2 * phi); }
+        
+        // Three.js
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050b1a);
+        scene.fog = new THREE.FogExp2(0x050b1a, 0.0015);
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(18, 16, 22);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0px';
+        labelRenderer.domElement.style.left = '0px';
+        labelRenderer.domElement.style.pointerEvents = 'none';
+        document.body.appendChild(labelRenderer.domElement);
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        
+        const ambientLight = new THREE.AmbientLight(0x222222);
+        scene.add(ambientLight);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+        dirLight.position.set(5, 10, 7);
+        scene.add(dirLight);
+        const coloredLight = new THREE.PointLight(0xffaa66, 0.5);
+        coloredLight.position.set(3, 5, 4);
+        scene.add(coloredLight);
+        
+        const gridHelper = new THREE.GridHelper(45, 20, 0x335588, 0x224466);
+        gridHelper.position.y = -4.5;
+        scene.add(gridHelper);
+        
+        const nucleusMat = new THREE.MeshStandardMaterial({ color: 0xffaa66, emissive: 0x331100 });
+        const nucleus = new THREE.Mesh(new THREE.SphereGeometry(0.65, 32, 32), nucleusMat);
+        scene.add(nucleus);
+        
+        let orbitLine = null, electronMesh = null, trailPoints = [], trailPositions = [];
+        
+        function updateElectronColor() {
+            if (!electronMesh) return;
+            const color = new THREE.Color().setHSL(colorHue / 360, 1.0, 0.5 * Math.min(1.5, brightness));
+            electronMesh.material.color = color;
+            electronMesh.material.emissiveIntensity = 0.3 * brightness;
+            coloredLight.intensity = 0.3 + brightness * 0.3;
+            coloredLight.color.setHSL(colorHue / 360, 1.0, 0.6);
+        }
+        
+        function initTrail() {
+            trailPoints.forEach(p => scene.remove(p));
+            trailPoints = [];
+            for (let i = 0; i < 5000; i++) {
+                const geometry = new THREE.SphereGeometry(0.1, 8, 8);
+                const material = new THREE.MeshStandardMaterial({ color: 0xff8866, emissive: 0x331100 });
+                const sphere = new THREE.Mesh(geometry, material);
+                sphere.visible = false;
+                scene.add(sphere);
+                trailPoints.push(sphere);
+            }
+        }
+        
+        function updateTrail(currentPos) {
+            trailPositions.unshift({ ...currentPos });
+            if (trailPositions.length > 5000) trailPositions.pop();
+            for (let i = 0; i < trailPoints.length; i++) {
+                if (i < trailCount && trailPositions[i]) {
+                    const p = trailPositions[i];
+                    trailPoints[i].visible = true;
+                    trailPoints[i].position.set(p.x, p.y, p.z);
+                    trailPoints[i].scale.set(trailPointSize, trailPointSize, trailPointSize);
+                    const intensity = (1 - i / trailCount) * trailGlow * 0.8;
+                    trailPoints[i].material.emissiveIntensity = intensity;
+                    const trailColor = new THREE.Color().setHSL(colorHue / 360, 1.0, 0.5);
+                    trailPoints[i].material.color = trailColor;
+                } else {
+                    trailPoints[i].visible = false;
+                }
+            }
+        }
+        
+        function createOrbitLine() {
+            const points = [];
+            for (let i = 0; i <= 4000; i++) {
+                const phi = (i / 4000) * Math.PI * 2;
+                const r = getRadiusVisual(phi);
+                points.push(new THREE.Vector3(r * Math.cos(phi), 0, r * Math.sin(phi)));
+            }
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            if (orbitLine) scene.remove(orbitLine);
+            orbitLine = new THREE.LineLoop(geometry, new THREE.LineBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.5 }));
+            scene.add(orbitLine);
+        }
+        
+        function createElectron() {
+            if (electronMesh) scene.remove(electronMesh);
+            const geometry = new THREE.SphereGeometry(0.48, 48, 48);
+            const material = new THREE.MeshStandardMaterial({ color: 0xff6633, emissive: 0x441100 });
+            electronMesh = new THREE.Mesh(geometry, material);
+            scene.add(electronMesh);
+            updateElectronColor();
+        }
+        
+        const starGeo = new THREE.BufferGeometry();
+        const starPositions = new Float32Array(2000 * 3);
+        for (let i = 0; i < 2000; i++) {
+            starPositions[i*3] = (Math.random() - 0.5) * 300;
+            starPositions[i*3+1] = (Math.random() - 0.5) * 150;
+            starPositions[i*3+2] = (Math.random() - 0.5) * 200;
+        }
+        starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xaaccff, size: 0.1 })));
+        
+        const infoDiv = document.createElement('div');
+        infoDiv.style.cssText = 'color:#ccddff;font-size:9px;background:rgba(0,0,0,0.6);padding:3px 10px;border-radius:16px;font-family:monospace';
+        const labelObj = new CSS2DObject(infoDiv);
+        labelObj.position.set(0, 6.5, 0);
+        scene.add(labelObj);
+        
+        let angle = 0, lastTime = 0;
+        let lastPos = { x: 0, y: 0, z: 0 };
+        
+        function getElectronPosition() {
+            const r = getRadiusVisual(angle);
+            let x = r * Math.cos(angle), y = 0, z = r * Math.sin(angle);
+            const xTilt = xAmp * Math.PI * Math.sin(xPhase);
+            let ax = x, ay = z * Math.sin(xTilt), az = z * Math.cos(xTilt);
+            const yTilt = yAmp * Math.PI * (yPhase % (2 * Math.PI)) / Math.PI;
+            let bx = ax * Math.cos(yTilt) + az * Math.sin(yTilt);
+            let by = ay;
+            let bz = -ax * Math.sin(yTilt) + az * Math.cos(yTilt);
+            const zTilt = zAmp * Math.PI * Math.sin(zPhase);
+            let fx = bx * Math.cos(zTilt) - by * Math.sin(zTilt);
+            let fy = bx * Math.sin(zTilt) + by * Math.cos(zTilt);
+            let fz = bz;
+            return { x: fx, y: fy, z: fz };
+        }
+        
+        function update() {
+            if (!electronMesh) return;
+            const dt = 0.016;
+            xPhase += dt * getXSpeed();
+            yPhase += dt * getYSpeed();
+            zPhase += dt * getZSpeed();
+            const pos = getElectronPosition();
+            electronMesh.position.set(pos.x, pos.y, pos.z);
+            updateTrail(pos);
+            infoDiv.textContent = `⚛️ n=${n} | de Broglie=${debAmp} | Trail:${trailCount} | Hue:${colorHue}° | Size:${trailPointSize.toFixed(2)}`;
+        }
+        
+        function refresh() { createOrbitLine(); createElectron(); initTrail(); trailPositions = []; update(); }
+        
+        // UI Events
+        document.getElementById('n1').onclick = () => { n = 1; refresh(); };
+        document.getElementById('n2').onclick = () => { n = 2; refresh(); };
+        document.getElementById('n3').onclick = () => { n = 3; refresh(); };
+        document.getElementById('n4').onclick = () => { n = 4; refresh(); };
+        document.getElementById('debAmp').oninput = (e) => { debAmp = parseInt(e.target.value); document.getElementById('debVal').innerText = debAmp; refresh(); };
+        document.getElementById('compAmp').oninput = (e) => { compAmp = parseFloat(e.target.value); document.getElementById('compVal').innerText = compAmp.toFixed(1); refresh(); };
+        document.getElementById('orbitSpeed').oninput = (e) => { orbitSpeedLog = parseFloat(e.target.value); document.getElementById('speedVal').innerText = getOrbitSpeed().toFixed(1)+'×'; };
+        document.getElementById('trailSlider').oninput = (e) => { trailCount = parseInt(e.target.value); document.getElementById('trailVal').innerText = trailCount; };
+        
+        document.getElementById('xAmp').oninput = (e) => { xAmp = parseFloat(e.target.value); document.getElementById('xAmpVal').innerText = xAmp.toFixed(2); refresh(); };
+        document.getElementById('xSpeed').oninput = (e) => { xSpeedLog = parseFloat(e.target.value); document.getElementById('xSpeedVal').innerText = getXSpeed().toFixed(1)+'×'; };
+        document.getElementById('yAmp').oninput = (e) => { yAmp = parseFloat(e.target.value); document.getElementById('yAmpVal').innerText = yAmp.toFixed(2); refresh(); };
+        document.getElementById('ySpeed').oninput = (e) => { ySpeedLog = parseFloat(e.target.value); document.getElementById('ySpeedVal').innerText = getYSpeed().toFixed(1)+'×'; };
+        document.getElementById('zAmp').oninput = (e) => { zAmp = parseFloat(e.target.value); document.getElementById('zAmpVal').innerText = zAmp.toFixed(2); refresh(); };
+        document.getElementById('zSpeed').oninput = (e) => { zSpeedLog = parseFloat(e.target.value); document.getElementById('zSpeedVal').innerText = getZSpeed().toFixed(1)+'×'; };
+        
+        document.getElementById('colorHue').oninput = (e) => { colorHue = parseInt(e.target.value); document.getElementById('hueVal').innerText = colorHue+'°'; document.getElementById('colorPreview').style.background = `hsl(${colorHue},100%,50%)`; updateElectronColor(); refresh(); };
+        document.getElementById('brightness').oninput = (e) => { brightness = parseFloat(e.target.value); document.getElementById('brightVal').innerText = brightness.toFixed(2); updateElectronColor(); refresh(); };
+        document.getElementById('trailGlow').oninput = (e) => { trailGlow = parseFloat(e.target.value); document.getElementById('glowVal').innerText = trailGlow.toFixed(2); refresh(); };
+        document.getElementById('trailSize').oninput = (e) => { trailPointSize = parseFloat(e.target.value); document.getElementById('trailSizeVal').innerText = trailPointSize.toFixed(2); refresh(); };
+        
+        refresh();
+        
+        function animate(time) {
+            const delta = Math.min(0.033, (time - lastTime) / 1000);
+            lastTime = time;
+            angle += delta * 2.5 * getOrbitSpeed();
+            if (angle > Math.PI * 2) angle -= Math.PI * 2;
+            update();
+            controls.update();
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        lastTime = performance.now();
+        requestAnimationFrame(animate);
+        window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); labelRenderer.setSize(window.innerWidth, window.innerHeight); });
+    </script>
+</body>
+</html>
