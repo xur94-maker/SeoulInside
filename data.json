@@ -1,16 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "US and Iran launch new strikes, as Kuwait says airport hit by Iranian drones",
-      "link": "https://www.bbc.com/news/articles/c5yx135yg53o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 03 Jun 2026 11:17:08 GMT",
-      "desc": "Kuwait says one person is dead after drones hit civilian buildings including its international airport."
+      "title": "Israeli strikes kill nine in Lebanon as Hezbollah fires rockets over border",
+      "link": "https://www.bbc.com/news/articles/c5y01pdqvkgo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 03 Jun 2026 18:02:52 GMT",
+      "desc": "The incidents strain a partial ceasefire agreed by Israel and the Lebanese armed group on Monday."
     },
     {
-      "title": "Israel strikes southern Lebanon but partial truce with Hezbollah appears to hold",
-      "link": "https://www.bbc.com/news/articles/c936zvne0l6o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 02 Jun 2026 21:51:20 GMT",
-      "desc": "Israel continues its campaign in the south, though has not struck Beirut after a deal announced by the US."
+      "title": "One killed and dozens injured in Iranian drone strikes on Kuwait airport",
+      "link": "https://www.bbc.com/news/articles/c5yx135yg53o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 03 Jun 2026 14:02:25 GMT",
+      "desc": "Iran says the attack on Kuwait was in retaliation for earlier US strikes on an Iranian oil tanker and island."
     },
     {
       "title": "Ukrainian drones hit St Petersburg as Putin's flagship economic forum opens",
@@ -25,10 +25,10 @@
       "desc": "Many victims were South Asians who had travelled to India for treatment or to accompany relatives."
     },
     {
-      "title": "Shell pumped oil through Nigeria pipeline for years despite pollution evidence, documents show",
-      "link": "https://www.bbc.com/news/articles/cdrp8v7407ro?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 03 Jun 2026 05:13:02 GMT",
-      "desc": "The oil giant says the documents ignore the critical context of the complex operating environment at the time."
+      "title": "US announces new tariffs over forced labour concerns",
+      "link": "https://www.bbc.com/news/articles/cq6pe7nvldmo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 03 Jun 2026 15:12:28 GMT",
+      "desc": "It comes after the US Supreme Court struck down many of US President Donald Trump's previous duties in February."
     }
   ],
   "koreaNews": [
@@ -39,10 +39,10 @@
       "desc": "South Korea export growth hits four-decade high on AI chip boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "How China keeps North Korea's economy alive - dw.com",
+      "title": "How China keeps North Korea's economy alive - DW.com",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
       "date": "Tue, 02 Jun 2026 08:38:37 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
     },
     {
       "title": "South Korea Inflation Accelerated to 26-Month High in May - WSJ",
@@ -57,22 +57,22 @@
       "desc": "China’s AI chip demand is surging – and South Korea is riding the wave&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "After Taiwan, South Korea overtakes India to become world’s sixth largest stock market; here’s why - The Times of India",
-      "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxOVkQtWm11S2pDYUxnQ0Jvd01FMkxuUGk1ZFdDUGpiY0FidkNRTWdzM2pEendvRnFsVEt3SWc5Mnh3aFRtOW03RGxsN2xOQVd5VFNhVk5RNWhtRm5NdWllWUtMV0RaLTEzc3lHTmc3WUlzSWdNSkhnMG9HbFF3cE1NemlsbnZPWjUyUVVOMHZfVktXSlM4REs4QktxU2hiSTZNNm50eEtSeHh4NXg1eWRzT2Rkd3FCMkozTWNXRXRIemJLMlcwVWExcTgwY2dJQjZsLUZfbjNrcC1Del9LeXZoblFseDhVdW00cUFNN2tBUGZjU1pDcFFxaGk4THdlMnhhdEh3b2xKMHI1aGR00gGSAkFVX3lxTE1vMTJGQjlVM0NzUVp0WXRieWJJUXJHWWYtSE1tQnRzeVF1Mm5kVWdyN0ZDWHpZMEhKelRyTEVRbmxxR3JRT05qdGlrb1ptN3Z0ZkdPM1YwT3JDc0lBZmZDeGdDQ2NXeUQxSEhnZnFPaFNqZHBiQjJfbVNBOWRhQ1Y1emJBQktGWGNWc0tsOW1vVlFBX19Lc05IQ2JrdFhJa3FOeXd4X0JUeXpLYjhSSzFTTG5mVVduWUtVbDIyLVFJQWJ1R2hFZTRRRGJBaE9UbDVfSlR1TjRmTlh4bFNOV0pDdmhDZ2IwamJCQ1B3YzBYay11SFJSUTN2S3JJMm9pSnVodmdxTlBMSE44bDZCNzE4dWc?oc=5",
-      "date": "Tue, 02 Jun 2026 03:43:00 GMT",
-      "desc": "After Taiwan, South Korea overtakes India to become world’s sixth largest stock market; here’s why&nbsp;&nbsp;The Times of India"
+      "title": "South Korea, Taiwan leapfrog India, but the race was lost decades ago - The Economic Times",
+      "link": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOZVRsTnR6NkYxYnF3ZGNhR2NVTjJMdlZhbHFDNERVWDJhejluTjdvWTl6TFdsSVNObGR5UGhtd0x1aFBIZ1FTMzAxNkdhaHRWZ2R5cHRoV1JraEVIRDF2ZzdNTjRNMGNrb1ktY0FZMDJZN0psRHZBd2pOTXUzLUZsQmp4eUE2SkE0VkJRS1hVSVZhYndkOXpJZS0yZUtwQ3oyNF95VjhXOXZpQlhFYUVnbzB0aUREOFFhQmxWRlh5OEdSZTV0QTFXeGtTSkFKYW1NNjMyMnVsWW1jSHJWRld5dm1sNl9RVjFUelJLcldHYUlKeUVnRDlYRTNpYlBtT0Q0dTJ1QnlwQkNYVlZETk5ONEJSSzV0b2RkdXfSAZ8CQVVfeXFMT0QzQ2lpRFk0cmZjOWFqZzA4YWZkNW1YLVZ0Ukpzblcyb3dYTm51dzl2dUY3YzFYdWdjRHphTExFVmJWVzMxcU5taG41R0tZOG5GQ0ljUFNFa3FyWXZ3S3FCc0d6RWp1bUNxblRydG9fcUsxQmZwMkl1THg3N1dDSEVabGdseFNPemZKRmY4UWc2VDlXV05WeDJlRE5RaWxucUxCMjlLbkkzTUpjWUVCR3JTQ0JfaEZmaFQ3TktnbDVmMlpfTC1yMXFpRDFaclZKbVRzOVhadm5wTWNqZl9tT1VPR3NXd1JDSE1sX2wzc0xvUm8wZmlDOEtmUU9WVmlhdlZCckZKcXhRa1Zha0pfMEx5T3ptY3QyQmZTd3RnWDQ?oc=5",
+      "date": "Tue, 02 Jun 2026 08:47:49 GMT",
+      "desc": "South Korea, Taiwan leapfrog India, but the race was lost decades ago&nbsp;&nbsp;The Economic Times"
     },
     {
-      "title": "SK Hynix Leverage Products Draw Double Samsung's Funds - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPYmw0QkFlakVoTkE0d0VxTHh2Tmc2RGpYcXV2cUI3RWRHbzdRRV96NlhzYmxfT1NIbWJndmpxSVEyd0JaZEhyWHJ6SjZHdmxfcUxYbTUwN05oa2pDeWVNR3NtTW1tc1dLcHN3Wm1PR2Q2YjNkY0tibFd1a1MxaVlTMFlnQW5JdFdpNnk0NnpR?oc=5",
-      "date": "Sun, 31 May 2026 14:00:47 GMT",
-      "desc": "SK Hynix Leverage Products Draw Double Samsung's Funds&nbsp;&nbsp;조선일보"
+      "title": "After Samsung, SK Hynix Employees Upset: 500 Million Won Mortgage Limit Spurs Job - Switching Thoughts; Kia and Hyundai React - 36Kr",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9tUTdIYWdobFk2bDYtUVBXVndpazdlMEY3clY1UG51U0p1bndFeDVaM2hwNDJzN0kyT1c0ZDYzUkRlUWpBT1dKbmdYbkRhTXFPSXVN?oc=5",
+      "date": "Wed, 03 Jun 2026 15:11:33 GMT",
+      "desc": "After Samsung, SK Hynix Employees Upset: 500 Million Won Mortgage Limit Spurs Job - Switching Thoughts; Kia and Hyundai React&nbsp;&nbsp;36Kr"
     },
     {
-      "title": "SK Hynix 'Pure Semiconductor' vs Samsung Electronics: Leveraged ETF divide - MSN",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNb2t4QXVJUktLU2FrUXV3ejhHNmpKSEtuaXM1YzFyM1VFdFcwUXdTdEc2cHI0YzdBUnZBZC05UkFQc0RsMWZ5NGJkcDZkRVhrQ1hrZXhNd0NTNDdXMnd2SmV4UzZvWTZxOXZoYnd2ZDVuaHBtRWZHQi1vZTZvdWZKRHJiNGotdUNYN0VTOXQwazNRaFV1WkJkR2FlTWJ2R3BhQ1hFMHd3?oc=5",
-      "date": "Sun, 31 May 2026 13:31:25 GMT",
-      "desc": "SK Hynix 'Pure Semiconductor' vs Samsung Electronics: Leveraged ETF divide&nbsp;&nbsp;MSN"
+      "title": "Korea weighs how to use Samsung, SK hynix-driven tax windfall - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE02X3VKcG5ZMEhqUnpmRXgwT1RFeTZ4Tmw4clRlblhhNXRJSmpQT0lDOUhuQ194NVBqYVE2ei1FS2FJaTNDRFVYNTVDaWZsOVRoSFFDYXp2RQ?oc=5",
+      "date": "Sun, 31 May 2026 06:15:38 GMT",
+      "desc": "Korea weighs how to use Samsung, SK hynix-driven tax windfall&nbsp;&nbsp;The Korea Herald"
     },
     {
       "title": "Samsung, SK hynix Join Anthropic Funding Round, Raising Expectations for AI Chip Cooperation - thelec.net",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 222.82,
-      "change": 11.68,
-      "pct": 5.53,
+      "price": 215.37,
+      "change": -9.0,
+      "pct": -4.01,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 446.69,
-      "change": 28.24,
-      "pct": 6.75,
+      "price": 438.63,
+      "change": 3.0,
+      "pct": 0.69,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 521.54,
-      "change": 5.44,
-      "pct": 1.05,
+      "price": 538.78,
+      "change": 28.65,
+      "pct": 5.62,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 107.93,
-      "change": -6.75,
-      "pct": -5.89,
+      "price": 112.1,
+      "change": 2.77,
+      "pct": 2.53,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 240.84,
-      "change": -10.18,
-      "pct": -4.06,
+      "price": 250.12,
+      "change": 21.13,
+      "pct": 9.23,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 402.71,
-      "change": 49.42,
-      "pct": 13.99,
+      "price": 409.44,
+      "change": 0.58,
+      "pct": 0.14,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 361.85,
-      "change": -18.49,
-      "pct": -4.86,
+      "price": 359.42,
+      "change": -16.95,
+      "pct": -4.5,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 315.2,
-      "change": 3.14,
-      "pct": 1.01,
+      "price": 309.35,
+      "change": 3.04,
+      "pct": 0.99,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 441.31,
-      "change": -8.93,
-      "pct": -1.98,
+      "price": 427.36,
+      "change": -33.16,
+      "pct": -7.2,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7609.78,
-      "change": 29.72,
-      "pct": 0.39,
+      "price": 7566.16,
+      "change": -33.8,
+      "pct": -0.44,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27093.9,
-      "change": 121.28,
-      "pct": 0.45,
+      "price": 26862.19,
+      "change": -224.62,
+      "pct": -0.83,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1527.05,
-      "change": 15.78,
-      "pct": 1.04,
+      "price": 1530.17,
+      "change": 18.9,
+      "pct": 1.25,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-03 13:21 UTC"
+  "updatedAt": "2026-06-03 18:16 UTC"
 }
