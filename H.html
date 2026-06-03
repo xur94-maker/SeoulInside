@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Hydrogen Atom - Independent X/Y Precession</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; }
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 15px;
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 10;
+            font-size: 12px;
+            backdrop-filter: blur(5px);
+            font-family: monospace;
+            z-index: 30;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(30,30,50,0.95);
+            backdrop-filter: blur(8px);
+            padding: 15px;
+            border-radius: 12px;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            z-index: 20;
+            font-family: sans-serif;
+            border: 1px solid rgba(255,255,255,0.2);
+            pointer-events: auto;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 130px;
+            background: rgba(0,0,0,0.4);
+            padding: 6px 10px;
+            border-radius: 8px;
+        }
+        .control-group label {
+            font-size: 10px;
+            color: #aaa;
+        }
+        input {
+            cursor: pointer;
+        }
+        button {
+            background: #3b82f6;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .value-display {
+            font-size: 10px;
+            color: #ffaa66;
+            margin-top: 3px;
+        }
+        .note {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: rgba(255,255,255,0.5);
+            background: rgba(0,0,0,0.5);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 9px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .badge {
+            color: #ff8844;
+            font-weight: bold;
+        }
+        .mode-indicator {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-family: monospace;
+            color: #ffaa66;
+            pointer-events: none;
+            z-index: 30;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        ⚛️ <span class="badge">X축 세차 (진동)</span> + <span class="badge">Y축 세차 (회전)</span> 독립 제어<br>
+        📐 X: 180° 왕복 진동 | Y: 360° 연속 회전
+    </div>
+    <div class="mode-indicator" id="modeIndicator">
+        🔄 <span id="modeText">X:0° Y:0°</span>
+    </div>
+    <div id="controls">
+        <div class="control-group">
+            <label>🎯 n (Quantum)</label>
+            <div style="display: flex; gap: 4px;">
+                <button id="n1">1</button><button id="n2">2</button>
+                <button id="n3">3</button><button id="n4">4</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <label>🎨 de Broglie : <span id="debVal">0.60</span></label>
+            <input type="range" id="debAmp" min="0" max="2.0" step="0.01" value="0.6">
+        </div>
+        <div class="control-group">
+            <label>✨ Compton : <span id="compVal">1.20</span></label>
+            <input type="range" id="compAmp" min="0" max="3.0" step="0.02" value="1.2">
+        </div>
+        <div class="control-group">
+            <label>🔄 Orbit Speed : <span id="speedVal">1.00</span>×</label>
+            <input type="range" id="orbitSpeed" min="0" max="2.5" step="0.01" value="0.7">
+        </div>
+        <div class="control-group">
+            <label>🐍 Trail 길이 : <span id="trailVal">80</span>점</label>
+            <input type="range" id="trailSlider" min="0" max="3.4" step="0.05" value="1.9">
+        </div>
+        <div class="control-group" style="border: 1px solid #ff8844aa;">
+            <label>🔴 <span class="badge">X축 세차 (진동 180°)</span></label>
+            <label style="font-size:9px; color:#ff8844;">진폭 (0=없음 ~ 1=최대) : <span id="xAmpVal">0.00</span></label>
+            <input type="range" id="xAmp" min="0" max="1.0" step="0.01" value="0.0">
+            <label style="font-size:9px; color:#ff8844;">속도 : <span id="xSpeedVal">1.0</span>×</label>
+            <input type="range" id="xSpeed" min="0" max="2.5" step="0.01" value="0.5">
+            <div class="value-display">← X축 기준 왕복 진동 (Spin 1/2)</div>
+        </div>
+        <div class="control-group" style="border: 1px solid #44aaff aa;">
+            <label>🔵 <span class="badge">Y축 세차 (회전 360°)</span></label>
+            <label style="font-size:9px; color:#44aaff;">진폭 (0=없음 ~ 1=최대) : <span id="yAmpVal">0.00</span></label>
+            <input type="range" id="yAmp" min="0" max="1.0" step="0.01" value="0.0">
+            <label style="font-size:9px; color:#44aaff;">속도 : <span id="ySpeedVal">1.0</span>×</label>
+            <input type="range" id="ySpeed" min="0" max="2.5" step="0.01" value="0.5">
+            <div class="value-display">← Y축 기준 연속 회전 (Spin 1)</div>
+        </div>
+    </div>
+    <div class="note">
+        🧬 X(빨강): 180° 왕복진동 | Y(파랑): 360° 연속회전 | 둘 다 켜면 복합 세차
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+        // --- Constants ---
+        const a0 = 5.292e-11;
+        const lambdaC = 2.426e-12;
+        const n2 = 22;
+        const SCALE = 1e11;
+        
+        // State
+        let n = 1;
+        let debAmp = 0.6;
+        let compAmp = 1.2;
+        let orbitSpeedLog = 0.7;
+        let trailLengthLog = 1.9;  // log10 scale, 10^1.9 ≈ 80
+        function getTrailLength() { return Math.round(Math.pow(10, trailLengthLog)); }
+
+        // X축 세차 (진동, 180° 왕복)
+        let xPrecAmp = 0.0;      // 0~1
+        let xPrecSpeedLog = 0.5;
+        let xPhase = 0;
+
+        // Y축 세차 (회전, 360° 연속)
+        let yPrecAmp = 0.0;      // 0~1
+        let yPrecSpeedLog = 0.5;
+        let yPhase = 0;
+        
+        function getOrbitSpeed() {
+            return Math.pow(10, orbitSpeedLog) * 0.2;
+        }
+        function getXSpeed() { return Math.pow(10, xPrecSpeedLog) * 0.5; }
+        function getYSpeed() { return Math.pow(10, yPrecSpeedLog) * 0.5; }
+        
+        function getCompVisualAmp() {
+            return lambdaC * compAmp * SCALE;
+        }
+        
+        function getDebVisualAmp() {
+            return debAmp * 0.5e-11 * SCALE;
+        }
+        
+        function getBohrRadius() {
+            return n * n * a0 * SCALE;
+        }
+        
+        function getRadiusVisual(phiRad) {
+            const bohr = getBohrRadius();
+            const debTerm = getDebVisualAmp() * Math.sin(n * phiRad);
+            const compTerm = getCompVisualAmp() * Math.sin(n2 * phiRad);
+            return bohr + debTerm + compTerm;
+        }
+        
+        // --- Three.js ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050b1a);
+        scene.fog = new THREE.FogExp2(0x050b1a, 0.002);
+        
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(14, 10, 16);
+        camera.lookAt(0, 0, 0);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
+        
+        const labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0px';
+        labelRenderer.domElement.style.left = '0px';
+        labelRenderer.domElement.style.pointerEvents = 'none';
+        document.body.appendChild(labelRenderer.domElement);
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = false;
+        controls.enableZoom = true;
+        
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0x222222);
+        scene.add(ambientLight);
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1);
+        dirLight.position.set(5, 10, 7);
+        scene.add(dirLight);
+        const fillLight = new THREE.PointLight(0x4466cc, 0.4);
+        fillLight.position.set(-2, 3, 4);
+        scene.add(fillLight);
+        
+        const gridHelper = new THREE.GridHelper(28, 20, 0x335588, 0x224466);
+        gridHelper.position.y = -2.5;
+        scene.add(gridHelper);
+        
+        // Nucleus
+        const nucleusMat = new THREE.MeshStandardMaterial({ color: 0xffaa66, emissive: 0x331100, roughness: 0.3 });
+        const nucleus = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 32), nucleusMat);
+        scene.add(nucleus);
+        
+        let orbitLine = null;
+        let electronMesh = null;
+        
+        let trailPoints = [];
+        let trailPositions = [];
+        const MAX_TRAIL = 2000;
+
+        function initTrail() {
+            trailPoints.forEach(p => scene.remove(p));
+            trailPoints = [];
+            for (let i = 0; i < MAX_TRAIL; i++) {
+                const geometry = new THREE.SphereGeometry(0.1, 6, 6);
+                const material = new THREE.MeshStandardMaterial({ color: 0xff8866, emissive: 0x331100 });
+                const sphere = new THREE.Mesh(geometry, material);
+                sphere.visible = false;
+                scene.add(sphere);
+                trailPoints.push(sphere);
+            }
+        }
+        
+        function updateTrail(currentPos) {
+            const trailCount = Math.min(getTrailLength(), MAX_TRAIL);
+            for (let i = 0; i < trailPoints.length; i++) {
+                if (i < trailCount && trailPositions[i]) {
+                    trailPoints[i].visible = true;
+                    trailPoints[i].position.set(trailPositions[i].x, trailPositions[i].y, trailPositions[i].z);
+                    const alpha = (1 - i / trailCount);
+                    trailPoints[i].material.emissiveIntensity = alpha * 0.8;
+                } else {
+                    trailPoints[i].visible = false;
+                }
+            }
+            trailPositions.unshift({...currentPos});
+            if (trailPositions.length > MAX_TRAIL) trailPositions.pop();
+        }
+        
+        function createOrbitLine() {
+            const points = [];
+            const segments = 4000;
+            for (let i = 0; i <= segments; i++) {
+                const phi = (i / segments) * Math.PI * 2;
+                const r_vis = getRadiusVisual(phi);
+                const x = r_vis * Math.cos(phi);
+                const z = r_vis * Math.sin(phi);
+                points.push(new THREE.Vector3(x, 0, z));
+            }
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            const material = new THREE.LineBasicMaterial({ color: 0x3b82f6 });
+            if (orbitLine) scene.remove(orbitLine);
+            orbitLine = new THREE.LineLoop(geometry, material);
+            scene.add(orbitLine);
+        }
+        
+        function createElectron() {
+            if (electronMesh) scene.remove(electronMesh);
+            const geometry = new THREE.SphereGeometry(0.42, 32, 32);
+            const material = new THREE.MeshStandardMaterial({ color: 0xff6633, emissive: 0x441100 });
+            electronMesh = new THREE.Mesh(geometry, material);
+            scene.add(electronMesh);
+        }
+        
+        // Starfield
+        const starGeo = new THREE.BufferGeometry();
+        const starCount = 1200;
+        const starPos = new Float32Array(starCount * 3);
+        for (let i = 0; i < starCount; i++) {
+            starPos[i*3] = (Math.random() - 0.5) * 200;
+            starPos[i*3+1] = (Math.random() - 0.5) * 100;
+            starPos[i*3+2] = (Math.random() - 0.5) * 120 - 50;
+        }
+        starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+        const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xaaccff, size: 0.1 }));
+        scene.add(stars);
+        
+        // Label
+        const infoDiv = document.createElement('div');
+        infoDiv.style.color = '#ccddff';
+        infoDiv.style.fontSize = '11px';
+        infoDiv.style.backgroundColor = 'rgba(0,0,0,0.6)';
+        infoDiv.style.padding = '4px 10px';
+        infoDiv.style.borderRadius = '20px';
+        infoDiv.style.fontFamily = 'monospace';
+        const labelObj = new CSS2DObject(infoDiv);
+        labelObj.position.set(0, 5.5, 0);
+        scene.add(labelObj);
+        
+        let angle = 0;
+        let lastTime = 0;
+        
+        // 핵심: X축(진동) + Y축(회전) 독립 세차
+        function getElectronPosition() {
+            const r_vis = getRadiusVisual(angle);
+
+            // 기본 궤도 (XZ 평면)
+            const diskX = r_vis * Math.cos(angle);
+            const diskZ = r_vis * Math.sin(angle);
+
+            // X축 세차: 180° 왕복 진동 (sin으로 왔다갔다)
+            const xTilt = xPrecAmp * Math.PI * Math.sin(xPhase);  // -π ~ +π
+
+            // Y축 세차: 360° 연속 회전
+            const yTilt = yPrecAmp * Math.PI * (yPhase % (2 * Math.PI)) / Math.PI - yPrecAmp * Math.PI;
+
+            // X축 회전 적용 (XZ평면을 X축 기준으로 기울임)
+            const afterX_x = diskX;
+            const afterX_y = diskZ * Math.sin(xTilt);
+            const afterX_z = diskZ * Math.cos(xTilt);
+
+            // Y축 회전 적용 (Y축 기준으로 추가 회전)
+            const cosY = Math.cos(yTilt);
+            const sinY = Math.sin(yTilt);
+            const x = afterX_x * cosY + afterX_z * sinY;
+            const y = afterX_y;
+            const z = -afterX_x * sinY + afterX_z * cosY;
+
+            return { x, y, z };
+        }
+        
+        function updateElectronAndTrail() {
+            if (!electronMesh) return;
+
+            // 페이즈 진행
+            const dt = 0.016;
+            xPhase += dt * getXSpeed();
+            yPhase += dt * getYSpeed();
+            if (xPhase > Math.PI * 200) xPhase -= Math.PI * 200;
+            if (yPhase > Math.PI * 200) yPhase -= Math.PI * 200;
+
+            const pos = getElectronPosition();
+            electronMesh.position.set(pos.x, pos.y, pos.z);
+            updateTrail(pos);
+
+            const xDeg = (xPrecAmp * 180).toFixed(0);
+            const yDeg = (yPrecAmp * 180).toFixed(0);
+            document.getElementById('modeText').innerText = `X:${xDeg}° Y:${yDeg}°`;
+            infoDiv.textContent = `⚛️ n=${n} | X세차: ${xDeg}° (진동) | Y세차: ${yDeg}° (회전)`;
+        }
+        
+        function refreshScene() {
+            createOrbitLine();
+            createElectron();
+            initTrail();
+            trailPositions = [];
+            updateElectronAndTrail();
+        }
+        
+        // UI Bindings
+        document.getElementById('n1').onclick = () => { n = 1; refreshScene(); };
+        document.getElementById('n2').onclick = () => { n = 2; refreshScene(); };
+        document.getElementById('n3').onclick = () => { n = 3; refreshScene(); };
+        document.getElementById('n4').onclick = () => { n = 4; refreshScene(); };
+        
+        document.getElementById('debAmp').oninput = (e) => { debAmp = parseFloat(e.target.value); document.getElementById('debVal').innerText = debAmp.toFixed(2); refreshScene(); };
+        document.getElementById('compAmp').oninput = (e) => { compAmp = parseFloat(e.target.value); document.getElementById('compVal').innerText = compAmp.toFixed(2); refreshScene(); };
+        document.getElementById('orbitSpeed').oninput = (e) => { orbitSpeedLog = parseFloat(e.target.value); document.getElementById('speedVal').innerText = getOrbitSpeed().toFixed(1); };
+        document.getElementById('trailSlider').oninput = (e) => { trailLengthLog = parseFloat(e.target.value); document.getElementById('trailVal').innerText = getTrailLength(); };
+
+        document.getElementById('xAmp').oninput = (e) => { xPrecAmp = parseFloat(e.target.value); document.getElementById('xAmpVal').innerText = xPrecAmp.toFixed(2); };
+        document.getElementById('xSpeed').oninput = (e) => { xPrecSpeedLog = parseFloat(e.target.value); document.getElementById('xSpeedVal').innerText = getXSpeed().toFixed(1); };
+        document.getElementById('yAmp').oninput = (e) => { yPrecAmp = parseFloat(e.target.value); document.getElementById('yAmpVal').innerText = yPrecAmp.toFixed(2); };
+        document.getElementById('ySpeed').oninput = (e) => { yPrecSpeedLog = parseFloat(e.target.value); document.getElementById('ySpeedVal').innerText = getYSpeed().toFixed(1); };
+        
+        refreshScene();
+        
+        function animate(time) {
+            const delta = Math.min(0.033, (time - lastTime) / 1000);
+            lastTime = time;
+            const orbitSpd = getOrbitSpeed();
+            angle += delta * 2.2 * orbitSpd;
+            if (angle > Math.PI * 2) angle -= Math.PI * 2;
+            
+            updateElectronAndTrail();
+            controls.update();
+            renderer.render(scene, camera);
+            labelRenderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        
+        lastTime = performance.now();
+        requestAnimationFrame(animate);
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
