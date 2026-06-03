@@ -638,7 +638,230 @@ loadAll();
 
     <!-- 여기부터 기존 아카이브 내용을 그대로 붙여넣으시면 됩니다 -->
     <!-- ========== 아래는 기존 내용 (수정 없이 복사) ========== -->
+Seoul Inside: Millennium Problems & Scientific Technology Archive Index
+B. Sun | Seoul Inside
+Jun 03, 2026
 
+
+This document introduces 12 core posts published on the Seoul Inside Substack. Each post covers topics ranging from the Clay Mathematics Institute’s Millennium Problems to practical physics simulations, offering in-depth technical content for a broad audience.
+
+Note: As of May-June 2026, only the Poincaré Conjecture has been solved among the seven Millennium Problems; the remaining six remain unsolved.
+
+Millennium Prize Problems
+1. Yang-Mills Existence and Mass Gap
+Post: Yang-Mills Theory Archive
+Link: https://seoulinside.substack.com/p/yang-mills-theory-archive
+Published: 2026-06-03 | Type: Technical Reference (Chronology, Concepts, Multi-Notation)
+
+This document is a comprehensive technical reference on the Yang-Mills Existence and Mass Gap problem, the only physics problem among the seven Millennium Problems. The official problem statement is: “Prove that for any compact simple gauge group G, a non-trivial quantum Yang-Mills theory exists on ℝ⁴ and has a mass gap Δ > 0 in its energy spectrum.”
+
+The core paradox is that classical Yang-Mills theory is dimensionless (no mass parameter), yet quantum particles acquire mass through a process called “dimensional transmutation” during quantization. This phenomenon is directly connected to quark confinement in Quantum Chromodynamics (QCD), the theory of the strong nuclear force.
+
+The document provides a detailed chronology from Weyl (1918) to the present, including the Yang-Mills paper (1954), the Higgs mechanism (1964), ‘t Hooft-Veltman’s renormalization proof (1971-72), Gross-Politzer-Wilczek’s discovery of asymptotic freedom (1973), Donaldson’s application to 4D geometry (1983), and the Millennium Problem designation (2000).
+
+Physical evidence from lattice QCD simulations and strong force experiments strongly suggests the existence of a mass gap, but a mathematical proof remains absent. Edward Witten assessed it as “really hard. It is probably too hard for now.”
+
+The document presents key formulas in four parallel notations: Unicode, LaTeX, Mathematica, and Python, including the gauge potential A(x) = Aᵃ_μ(x) tᵃ dx^μ and gauge transformation A → h⁻¹Ah + h⁻¹dh.
+
+2. Birch and Swinnerton-Dyer (BSD) Conjecture (Prologue)
+Post: The Equation That Counts What Cannot Be Counted
+Link: https://seoulinside.substack.com/p/the-equation-that-counts-what-cannot
+Published: 2026-06-01 | Type: Millennium Problem Prologue
+
+This prologue introduces the BSD conjecture intuitively, without heavy mathematical formalism. The author starts with a simple curve, y² = x³ − x, and asks: how many points on this curve have rational coordinates? The answer is infinitely many. But y² = x³ + 1 has exactly two rational points, and y² = x³ − 43x + 166 has exactly one. No obvious pattern emerges.
+
+In 1960 at Cambridge, Bryan Birch and Peter Swinnerton-Dyer used EDSAC, one of the world’s first electronic computers, to count points on elliptic curves modulo primes p (N_p). They computed the product ∏ N_p/p and observed that curves where the product grew slowly (like log X) had infinitely many rational points, while curves where the product stabilized had only finitely many.
+
+The conjecture states that the order of vanishing (analytic rank) of the L-function L(E,s) = ∏ (1 - a_p p^{-s} + p^{1-2s})^{-1} at s=1 equals the number of independent rational points (algebraic rank) on the curve. This connects geometry (rational points) to analysis (L-function zeros).
+
+Partial results include Coates-Wiles (1977, rank 0), Gross-Zagier (1986, rank 1), and Kolyvagin (1989-90, rank 0 and 1 cases, also proving finiteness of the Tate-Shafarevich group Ш for these ranks). For rank ≥ 2, almost nothing is proven. The full BSD formula includes Ш, the mysterious Tate-Shafarevich group, which measures the failure of the local-global principle (solutions everywhere locally but no global rational solution).
+
+3. BSD Conjecture (Technical Reference)
+Post: BSD Conjecture Reference Complete
+Link: https://seoulinside.substack.com/p/bsd-conjecture-reference-complete
+Published: 2026-06-01 | Type: Multi-Notation Technical Reference
+
+This document is a technical reference for the BSD conjecture, presented in four parallel notation systems: Unicode (general readers), LaTeX (mathematicians), Mathematica (Wolfram users), and Python (developers). It begins with the elliptic curve in Weierstrass form: E: y² = x³ + ax + b, with discriminant Δ_E ≠ 0.
+
+Core components include: N_p = #E(𝔽_p), the number of points over the finite field. The L-function is defined as L(E,s) = ∏{p|Δ} (1 - a_p p^{-s})^{-1} · ∏{p∤Δ} (1 - a_p p^{-s} + p^{1-2s})^{-1}, where a_p = p + 1 - N_p (the trace of Frobenius).
+
+The Modularity Theorem (Breuil-Conrad-Diamond-Taylor, 2001) states that every elliptic curve over ℚ is associated with a modular form f_E(z) = Σ a_n e^{2π i n z}. The completed L-function Λ(E,s) = (2π)^{-s} Γ(s) N^{s/2} L(E,s) satisfies the functional equation Λ(E,s) = ε·Λ(E,2-s) with ε = ±1.
+
+The Mordell-Weil theorem states E(ℚ) ≅ ℤ^r ⊕ E(ℚ)tors, where r is the algebraic rank. The weak BSD conjecture asserts ord{s=1} L(E,s) = rank_ℤ E(ℚ). The full BSD formula is:
+
+L^{(r)}(E,1)/r! = (Ω_E · R_E · ∏_p c_p · |Ш(E/ℚ)|) / |E(ℚ)_tors|²
+
+Where: Ω_E is the real period (integral over real locus), R_E is the regulator (determinant of height pairing matrix), c_p are Tamagawa numbers (local indices), Ш is the Tate-Shafarevich group (conjectured finite), and E_tors is the torsion subgroup.
+
+4. Solar System Simulator (Kinematic Model)
+Post: Solar System Simulator: Keplerian Orbits
+Link: https://seoulinside.substack.com/p/solar-system-simulator-keplerian
+Published: 2026-06-01 | Type: Educational Visualization Code
+
+This post presents a kinematic solar system model that deliberately contrasts with the previously built dynamic Earth-Moon simulator. This model uses no forces, no integration, and no Runge-Kutta methods. Each planet’s position at time t is computed directly from a closed-form equation, assuming circular orbits, constant angular velocity, and the Sun fixed at the origin.
+
+The variable registry includes 32 variables across five groups: per-planet orbital parameters (8 planets × 4 values: distance in AU, speed in rad/s, initial angle in rad), Moon parameters (distance 0.00257 AU, speed 2.662×10⁻⁶ rad/s), simulation controls (timeScale 0-200, simDays, dt), visualization variables (orbit lines, labels), and camera/viewport settings.
+
+The position calculation formula is: p(t) = (d·cos(θ₀ + ω·t), 0, d·sin(θ₀ + ω·t)). Each frame updates the angle via θ_{n+1} = θ_n + ω·Δt·τ_scale, with modulo 2π. The Moon’s position is Earth’s position plus an offset, with a visual y-offset of 0.2.
+
+The document includes a comparison table between the kinematic and dynamic models. The kinematic model has ODE order 1st, 9 state variables, is analytically solvable, O(n) computational cost, but a position error of ~10,000 km for Jupiter after 30 days. The dynamic model has 2nd order ODE, includes Newtonian physics and J₂, uses RK4, and achieves ~1 km error.
+
+The angular velocities are derived from sidereal orbital periods via ω = 2π/T, ensuring correct angular period ratios (e.g., Mercury completes four orbits for every one of Earth’s).
+
+5. Earth-Moon Simulator (Dynamic Model)
+Post: The Moon Is Leaving. Here Is the Math.
+Link: https://seoulinside.substack.com/p/the-moon-is-leaving-here-is-the-math
+Published: 2026-06-01 | Type: High-Precision Physics Simulation
+
+This document presents a hierarchical model of Earth-Moon orbital dynamics. Level 1 is the two-body Keplerian model (error ~km/day, teaching). Level 2 is the restricted three-body problem/CR3BP (adding the Sun, Lagrange points). Level 3 is N-body + gravitational harmonics (adding Jupiter, Saturn, etc., error ~meters/day). Level 4 is the full dynamical model, currently the JPL DE440 standard (error ~cm/year).
+
+DE440 (Park et al., 2021, The Astronomical Journal) is not a simple set of equations but a fitted solution based on over 50 years of Lunar Laser Ranging (LLR) data. It includes gravitational interactions between all major solar system bodies, Earth’s oblateness (J₂ and higher harmonics), Moon’s gravity field (degree-and-order 4), tidal dissipation in both Earth and Moon (frequency-dependent Love numbers), lunar libration with fluid core effects, general relativistic corrections (PPN β=γ=1), and solar radiation pressure.
+
+The total acceleration is the sum of four terms:
+
+Newtonian gravity: a_newton(i) = -∑_{j≠i} G M_j (r_i - r_j)/|r_i - r_j|³
+
+PPN (general relativity) correction: order v²/c² ≈ 10⁻⁸, includes velocity-dependent terms
+
+Spherical harmonic gravity (J₂ dominates for Earth): a_J2 = -(3J₂ GM R²)/(2r⁵) · [x(1-5 sin²φ), y(1-5 sin²φ), z(3-5 sin²φ)]
+
+Tidal deformation: a_tidal = (k₂ GM_j R_i⁵/r⁵) · [3(r̂·r̂_ij)r̂_ij - r̂_ij]
+
+The tidal term is responsible for the Moon’s recession. The Moon raises a tidal bulge on Earth, and Earth’s rotation drags this bulge ahead of the Moon, creating a torque that transfers angular momentum from Earth’s rotation to the Moon’s orbit. This causes the Moon to recede by 38.20 mm per year and Earth’s day to lengthen by approximately 1.8 milliseconds per century.
+
+6. Navier-Stokes Equations (Prologue)
+Post: Before You Read the Mathematics — Try to Break the Fluid First
+Link: https://seoulinside.substack.com/p/before-you-read-the-mathematics-try
+Published: 2026-05-31 | Type: Millennium Problem Prologue
+
+This prologue invites readers to interact with a simulation to explore whether a fluid can develop a singularity (blow-up) where velocity becomes infinite in finite time. Lowering viscosity (increasing Reynolds number) and raising amplitude creates an energy cascade from large to small scales, with the question being whether this cascade can overcome viscous damping.
+
+The core difference between 2D and 3D lies in the vortex stretching term (ω·∇)u. In 2D, this term vanishes identically, making the equations globally solvable. In 3D, vortex stretching can amplify vorticity, potentially leading to blow-up.
+
+Known results: Leray (1934) proved global existence of weak solutions in 3D, but these solutions may have singularities and are not known to be unique. Caffarelli-Kohn-Nirenberg (1982) proved that any singularities must occur on a set of parabolic Hausdorff dimension at most 1 (i.e., they cannot fill a region, curve, or surface). Tao (2016) proved finite-time blow-up for an averaged version of the Navier-Stokes equations, but this system suppresses small-scale interactions present in the real equations.
+
+The simulation offers four presets: Lamb-Oseen (classical exact solution, decays smoothly), Taylor-Green (turbulence benchmark, smoothness believed but unproven), Leray 1934 (near the boundary of weak solution theory), and Tao Averaged (approximates the 2016 construction).
+
+The official problem statement by Charles Fefferman (Princeton) asks: either prove that for any smooth initial condition in 3D, a smooth global solution exists, or find a smooth initial condition that produces a finite-time blow-up. As of May 2026, the prize remains unclaimed.
+
+7. Navier-Stokes Equations (Technical Reference)
+Post: Navier-Stokes Equations — An Archive
+Link: https://seoulinside.substack.com/p/navierstokes-equations-an-archive
+Published: 2026-05-31 | Type: Multi-Notation Technical Reference
+
+This document is a comprehensive technical reference on the Navier-Stokes Existence and Smoothness problem, with careful clarification of the Millennium Problem’s precise scope. The spatial domain is either ℝ³ (decay at infinity: u → 0 as |x| → ∞) or 𝕋³ (periodic boundary conditions). Bounded domains with physical walls (no-slip condition) are explicitly excluded from the problem statement. This is not a formatting detail—the presence of boundaries fundamentally changes the mathematics, creating boundary layers, corner singularities, and making the vanishing-viscosity limit singular.
+
+The Millennium Problem concerns only the incompressible Navier-Stokes equations: ∇·u = 0, ρ = constant. Compressible fluid material included in the document (shock waves, Rankine-Hugoniot conditions) is for physical completeness and is not directly relevant to the prize question.
+
+The document provides precise interpretations of three major theorems:
+
+Beale-Kato-Majda criterion (1984): If blow-up occurs at time T, then ∫₀^{T} ‖ω(t)‖_L∞ dt diverges. The common misreading—”blow-up occurs when vorticity becomes infinite”—is incorrect. If ‖ω‖_L∞ ~ 1/√(T*-t), the integral converges, and BKM makes no conclusion.
+
+Caffarelli-Kohn-Nirenberg (1982): The singular set of any suitable weak solution has parabolic Hausdorff dimension at most 1, and P¹(S)=0. This rules out singularities forming along curves, surfaces, or volumes, but does NOT rule out isolated point singularities or fractal sets with dimension < 1.
+
+Tao (2016): Finite-time blow-up for an averaged system where the advecting velocity is replaced by a spatially smoothed version (u ∗ φ). The averaging removes small-scale back-reactions present in the true equations. Many experts believe these interactions might be precisely what prevents blow-up.
+
+The nonlinear term (u·∇)u is quadratic (doubling u quadruples the output) and self-referential. The error amplification equation ∂ₜw + (u·∇)w + (w·∇)v = νΔw shows how the term (w·∇)v amplifies errors. Yet the energy identity ∫ (u·∇)u·u dV = 0 shows the nonlinear term redistributes energy but does not create or destroy it.
+
+Leray-Hopf weak solutions (1934) satisfy a global energy inequality (≤ instead of =), permitting “phantom dissipation” at singular points. Uniqueness is known to fail (Albritton, Brué, Colombo, 2022). Suitable weak solutions (local energy inequality) restrict singularities further. Smooth classical solutions are what the Millennium Problem asks for.
+
+The document includes physical grounding: Reynolds number regimes (Stokes flow at Re≪1 is time-reversible; golf ball dimples trigger drag crisis at Re~2×10⁵, reducing drag coefficient from 0.47 to 0.09), Kolmogorov scale η = (ν³/ε)^{1/4} (laboratory water tank: ~18 μm, atmospheric boundary layer: ~0.23 mm), and DNS cost scaling Re³ (Re=10⁷ requires ~10²¹ operations, structurally infeasible).
+
+8. Navier-Stokes Equations (Applications)
+Post: Navier-Stokes Equations — Applications Archive
+Link: https://seoulinside.substack.com/p/navierstokes-equations-applications
+Published: 2026-06-01 | Type: Applications Casebook
+
+This document presents four practical applications of the Navier-Stokes equations.
+
+Example 1: Airfoil at High Reynolds Number (Re=10⁷). DNS is structurally impossible due to Re³ scaling (~10²¹ operations). Instead, Reynolds-Averaged Navier-Stokes (RANS) with turbulence modeling is used. Reynolds decomposition (u_i = ⟨u_i⟩ + u_i’) and averaging introduces the Reynolds stress tensor ⟨u_i’u_j’⟩, creating the closure problem (4 equations, 6 new unknowns). The Boussinesq hypothesis models Reynolds stress as proportional to mean strain rate via eddy viscosity ν_t.
+
+The industry standard is the Menter SST k-ω model (1994), which blends k-ω behavior near walls (F₁=1, log-layer, viscous sublayer) with k-ε behavior in freestream (F₁=0, wake mixing). The model includes a cross-diffusion term 2(1-F₁)σ_ω2(1/ω)∇k·∇ω (unique to SST) and a limiter (F₂) preventing ν_t overprediction in adverse pressure gradients.
+
+Example 2: Numerical Weather Prediction. The atmosphere has Re~10¹², making DNS meaningless. The Primitive Equations are used: hydrostatic balance ∂p/∂z = -ρg eliminates acoustic modes (allowing Δt ~600s instead of ~30s), and the shallow atmosphere approximation drops metric terms involving z/a.
+
+The quasi-geostrophic potential vorticity q = ∇²ψ + f + (f₀²/N²)∂²ψ/∂z² filters inertia-gravity waves and retains Rossby wave dynamics. Subgrid processes (cumulus convection, boundary layer turbulence, radiation) are parameterized. The spectral transform method with triangular truncation (e.g., T85) and semi-Lagrangian advection removes acoustic and advective CFL constraints.
+
+Example 3: Hemodynamics. Blood exhibits shear-thinning modeled by the Carreau-Yasuda model: μ(γ̇) = μ_∞ + (μ_0-μ_∞)[1+(λγ̇)ᵃ]^{(n-1)/a} (μ_0=0.016 Pa·s, μ_∞=0.0035 Pa·s). Atherosclerosis correlates with low time-averaged wall shear stress (τ_w < 0.4 Pa) and high oscillatory shear index (OSI > 0.1).
+
+The Womersley number α = R√(ω/ν) measures pulsatile flow unsteadiness: aorta α≈18 (strongly unsteady, flat core, thin Stokes layer), carotid α≈6.1, coronary α≈2.3, arteriole α≈0.08 (quasi-steady).
+
+Example 4: Shock Wave-Boundary Layer Interaction (SBLI). In supersonic flow, shock waves induce adverse pressure gradients that can separate the boundary layer, causing increased drag, thermal loads, and engine unstart. This is a critical design challenge for supersonic inlets and rocket nozzles.
+
+9. Riemann Hypothesis (Technical Report)
+Post: Riemann Hypothesis — Technical Report
+Link: https://seoulinside.substack.com/p/riemann-hypothesis-technical-report
+Published: 2026-05-31 | Type: Mathematical Technical Report
+
+This document is a rigorous technical report on the Riemann Hypothesis (RH), targeting readers with background in complex analysis and analytic number theory. The Riemann zeta function is defined for Re(s)>1 by ζ(s) = Σ_{n=1}^∞ 1/n^s, with the Euler product ζ(s) = ∏_p (1-p^{-s})^{-1} providing the fundamental connection to primes.
+
+Analytic continuation to Re(s)>0 is achieved via Euler-Maclaurin summation: ζ(s) = 1/(s-1) + 1/2 + s∫₁^∞ ({x}-1/2)/x^{s+1} dx. A more powerful approach uses the Jacobi theta function θ(t) = Σ_{n=-∞}^∞ e^{-πn²t} and Poisson summation to derive π^{-s/2}Γ(s/2)ζ(s) = (1/2)∫₀^∞ t^{s/2-1}(θ(t)-1)dt.
+
+The functional equation is ζ(s) = 2^s π^{s-1} sin(πs/2) Γ(1-s) ζ(1-s), or symmetrically ξ(s)=ξ(1-s) where ξ(s)=(1/2)s(s-1)π^{-s/2}Γ(s/2)ζ(s). Trivial zeros occur at s = -2, -4, -6,...
+
+The von Mangoldt function Λ(n) (log p if n=p^k, 0 otherwise) appears in the logarithmic derivative: ζ’(s)/ζ(s) = -Σ Λ(n)/n^s. The explicit formula connects primes to zeros: ψ(x) = x - Σ_ρ x^ρ/ρ - log(2π) - (1/2)log(1-x^{-2}), where ψ(x) = Σ_{p^k ≤ x} log p.
+
+Partial results via the Levinson method: Levinson (1974) proved at least 34.74% of zeros lie on the critical line; Conrey (1989) raised this to 40.88%; Pratt, Robles, Zaharescu, Zeindler (2020) achieved 41.72% (5/12). The method uses a mollifier M(s) to smooth ζ(s) and averages weighted by |M(1/2+it)|².
+
+The Guth-Maynard breakthrough (2024) improved zero-density estimates for the first time since Ingham (1940), proving bounds of the form N(σ,T) ≤ C·T^{A(1-σ)}. This is not a proof of RH but a significant analytic advance.
+
+The Montgomery-Odlyzko Law connects ζ zeros to random matrix theory (GUE): the pair correlation function R_2(y) = 1 - (sin(πy)/(πy))². This was proven for function field zeta functions by Katz and Sarnak (1999). The Hilbert-Polya conjecture posits that the zeros correspond to eigenvalues of a self-adjoint operator, which would automatically prove RH.
+
+10. Riemann Hypothesis (Information Dossier)
+Post: The Problem That Has Defeated Every Mathematician for 162 Years
+Link: https://seoulinside.substack.com/p/the-problem-that-has-defeated-every
+Published: 2026-05-30 | Type: General Audience Information Report
+
+This document is an information dossier on the Riemann Hypothesis, presenting its history, significance, partial progress, and failed proof attempts for a general audience. In 1859, Bernhard Riemann wrote an 8-page paper that found structure underlying the seemingly random distribution of prime numbers, but he could not prove his central claim: all non-trivial zeros of the Riemann zeta function have real part 1/2.
+
+If true, RH provides precise tools for understanding prime distribution and validates approximately 10,000 theorems proven conditionally on RH. If false, those theorems collapse. The stakes extend to cryptography, primality testing, and the Generalized Riemann Hypothesis (GRH), which is even more practically significant.
+
+Partial progress timeline: Hardy (1914) proved infinitely many zeros lie on the critical line. Levinson (1974) proved at least 34.74% are on the line. Conrey (1989) raised this to 40.88%. The current record (Pratt, Robles, Zaharescu, Zeindler, 2020) is 41.72% (5/12). Computational verification has extended to approximately 10 trillion (10¹³) zeros, all found on the critical line—but this does not constitute a proof.
+
+The 2018 Atiyah affair: At age 89, Fields Medal and Abel Prize winner Michael Atiyah announced a 15-line proof at Heidelberg. The core object, the “Todd function,” was not rigorously defined, and the proof made almost no use of the zeta function’s properties. Mathematician Peter Woit, invoking physicist Wolfgang Pauli’s phrase, called it “not even wrong”—meaning so fundamentally flawed it cannot be meaningfully evaluated. Atiyah died four months later. The episode demonstrates that status does not substitute for proof.
+
+The 2024 Guth-Maynard breakthrough improved zero-density estimates for the first time in 84 years, but Maynard himself noted: “A complete proof would require entirely new ideas that don’t yet exist.” The 2025-2026 preprint surge (Nielsen & Semita, Kuipers, Moon with AI agents, Jenssen) has produced multiple claims, but none have survived peer review.
+
+The Montgomery-Odlyzko Law emerged from a 1972 tea-time encounter at Princeton’s Institute for Advanced Study. Hugh Montgomery showed his pair correlation formula to physicist Freeman Dyson, who recognized it as the eigenvalue statistics of the Gaussian Unitary Ensemble (GUE) from nuclear physics. Andrew Odlyzko’s computational verification at Bell Labs showed stunning agreement. The Hilbert-Polya conjecture suggests zeros might be eigenvalues of an undiscovered physical operator.
+
+11. P vs NP (Technical Report)
+Post: P vs. NP — The Open Problem
+Link: https://seoulinside.substack.com/p/p-vs-np-the-open-problem
+Published: 2026-05-31 | Type: Computational Complexity Technical Report
+
+This document is a technical report on the P vs. NP problem, organized around formal definitions, barrier analysis, proof construction, exercises, and resource mapping. P is the class of decision problems solvable by a deterministic Turing machine in polynomial time (O(n^k)). NP is the class where a candidate solution can be verified in polynomial time.
+
+The three barriers:
+
+Relativization (Baker-Gill-Solovay, 1975): There exist oracles A and B such that P^A = NP^A and P^B ≠ NP^B. Any proof that works relative to all oracles (relativizing proof) cannot resolve P vs. NP. Diagonalization arguments relativize.
+
+Natural Proofs (Razborov-Rudich, 1997): A natural property (constructive + large + useful against P/poly) would break pseudorandom generators. Since secure PRGs (RSA, AES) are believed to exist, natural proofs likely do not exist. Razborov proved his own approximation method cannot extend to P vs. NP.
+
+Algebrization (Aaronson-Wigderson, 2009): Extends relativization to algebraic oracles, closing off arithmetization-based techniques (IP=PSPACE, etc.).
+
+Yannakakis (1988) proved that expressing Traveling Salesman Problem (TSP) with a symmetric linear program requires exponentially many constraints—the only result in Woeginger’s archive that has been peer-reviewed and accepted.
+
+Recent developments: Kabanets & Kolokolova (ECCC 2025/089, revised March 2026) connect time-bounded Kolmogorov complexity chain rules to P vs. NP, conditional on cryptographic hardness assumptions. Meta-complexity (Oxford, 2025-2026) treats the difficulty of proofs as a complexity question. Geometric Complexity Theory (Mulmuley & Sohoni) encodes P vs. NP in representation theory: if the permanent (representing #P-hardness) cannot be expressed as a determinant of polynomial-size matrix, then P ≠ NP.
+
+2024-2026 proof attempts: Lee (Jan 2026, P=NP, failed on specific 3-SAT instances), Bhattacharjee (May 2026, P≠NP, Fourier-entropy approach, unreviewed), Goertzel (2025, P≠NP, non-relativizing approach targeting algebrization), among others. None have survived scrutiny.
+
+12. P vs NP (Information Dossier)
+Post: The Problem That Could Break Everything — Or Prove It Was Never Breakable
+Link: https://seoulinside.substack.com/p/the-problem-that-could-break-everything
+Published: 2026-05-30 | Type: General Audience Information Report
+
+This document is an information dossier on the P vs. NP problem, covering its historical arc, practical implications, and expert consensus.
+
+If P = NP, every cryptographic system protecting the modern internet (RSA, AES, elliptic-curve encryption) collapses. Problems like drug discovery, protein folding, and logistics optimization would become tractable overnight. If P ≠ NP (the overwhelming expert consensus, approximately 99% among those who have studied it deeply), then the observed limits of computation are fundamental properties of the universe.
+
+Historical arc: John Nash (1955) intuited exponential difficulty in breaking cryptography. Kurt Gödel (1956) asked whether theorem proving could be done in quadratic or linear time. Stephen Cook (1971) proved SAT is NP-complete. Richard Karp (1972) demonstrated 21 NP-complete problems.
+
+Baker-Gill-Solovay (1975): relativization barrier. Deolalikar affair (2010): a 100+ page claim of P≠NP that was refuted within days by a distributed team. Gasarch’s polls: 2002 (61% P≠NP), 2019 (approximately 83% overall, 99% among deep thinkers).
+
+Aaronson’s Bayesian argument: if P=NP were true, it would be extraordinary that no polynomial-time algorithm for any NP-complete problem has been found despite decades of effort. Wigderson views P vs. NP as a question about the nature of mathematical proof and human reasoning.
+
+Frontier research: Kolmogorov complexity chain rules (Kabanets & Kolokolova), meta-complexity (Oxford), geometric complexity theory (Mulmuley & Sohoni), and AI-assisted proof exploration (2025-2026). The problem remains unsolved as of May 2026.
+  
     <p style="visibility: hidden;">
 -----------------------------------------
   
