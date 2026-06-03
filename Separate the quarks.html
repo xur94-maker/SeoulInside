@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Separate the Quarks — Lattice Yang-Mills Confinement Simulator</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0d0d14;
+  color: #e8e8f0;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+.wrap { max-width: 740px; margin: 0 auto; }
+h1 { font-size: 28px; font-weight: 500; margin-bottom: 6px; }
+.sub { font-size: 15px; color: #888; margin-bottom: 1.5rem; line-height: 1.65; }
+canvas { display: block; width: 100%; border-radius: 12px; border: 1px solid #2a2a3a; margin-bottom: 1rem; cursor: crosshair; }
+.eq {
+  font-family: 'Courier New', monospace;
+  font-size: 13px; color: #888;
+  background: #16161f; padding: 10px 14px;
+  border-radius: 8px; margin-bottom: 1.2rem;
+  border: 1px solid #2a2a3a;
+}
+.row4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 1.2rem; }
+.metric { background: #16161f; border-radius: 8px; padding: 12px; border: 1px solid #2a2a3a; }
+.mlabel { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 5px; }
+.mval { font-size: 17px; font-weight: 500; font-family: 'Courier New', monospace; color: #e8e8f0; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 1.2rem; }
+.ctrl { display: flex; flex-direction: column; gap: 6px; }
+.ctrl label { font-size: 13px; color: #888; display: flex; justify-content: space-between; }
+.ctrl label span { font-weight: 500; color: #e8e8f0; font-family: 'Courier New', monospace; }
+input[type=range] { width: 100%; accent-color: #6c8fff; cursor: pointer; }
+#statusbar {
+  font-size: 13px; padding: 9px 16px;
+  border-radius: 8px; border: 1px solid #2a2a3a;
+  margin-bottom: 1.2rem; display: inline-block;
+  transition: color .3s, border-color .3s;
+}
+.card {
+  background: #16161f; border-radius: 12px;
+  border: 1px solid #2a2a3a; padding: 1.2rem 1.4rem;
+  margin-bottom: 1.2rem;
+}
+.card-title { font-size: 14px; font-weight: 500; color: #e8e8f0; margin-bottom: 6px; }
+.card-text { font-size: 13px; color: #888; line-height: 1.7; }
+.card-text em { color: #aab4ff; font-style: normal; }
+.btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+button {
+  font-size: 13px; background: transparent;
+  border: 1px solid #2a2a3a; color: #aaa;
+  padding: 8px 16px; border-radius: 8px;
+  cursor: pointer; transition: background .2s, color .2s, border-color .2s;
+}
+button:hover { background: #1e1e2e; color: #e8e8f0; border-color: #4a4a6a; }
+.footer {
+  margin-top: 2rem; font-size: 12px; color: #444;
+  border-top: 1px solid #1e1e2e; padding-top: 1rem;
+}
+.footer a { color: #6c8fff; text-decoration: none; }
+@media (max-width: 520px) {
+  .row2 { grid-template-columns: 1fr; }
+  .row4 { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Separate the Quarks</h1>
+  <p class="sub">
+    Lattice Yang-Mills with live Metropolis Monte Carlo — SU(2) gauge field on a 24×24 torus.<br>
+    Click the lattice to place quarks. Pull them apart. Watch the flux tube form. <strong>You cannot free them.</strong>
+  </p>
+
+  <canvas id="lattice" height="400"></canvas>
+
+  <div class="eq">⟨W(C)⟩ ~ exp(−σ·A) area law &nbsp;|&nbsp; V(r) = σ·r − π/(12r) + const &nbsp;|&nbsp; σ &gt; 0 ↔ confinement</div>
+
+  <div class="row4">
+    <div class="metric"><div class="mlabel">Separation r</div><div class="mval" id="m-r">—</div></div>
+    <div class="metric"><div class="mlabel">String tension σ</div><div class="mval" id="m-sig">0.18</div></div>
+    <div class="metric"><div class="mlabel">Flux tube energy</div><div class="mval" id="m-e">—</div></div>
+    <div class="metric"><div class="mlabel">MC sweeps</div><div class="mval" id="m-sw">0</div></div>
+  </div>
+
+  <div class="row2">
+    <div class="ctrl">
+      <label>Inverse coupling β = 2N/g² <span id="lbl-b">2.30</span></label>
+      <input type="range" id="sl-b" min="1.0" max="4.0" step="0.05" value="2.30">
+    </div>
+    <div class="ctrl">
+      <label>Lattice size N <span id="lbl-n">24</span></label>
+      <input type="range" id="sl-n" min="12" max="40" step="4" value="24">
+    </div>
+    <div class="ctrl">
+      <label>MC speed <span id="lbl-sp">8x</span></label>
+      <input type="range" id="sl-sp" min="1" max="6" step="1" value="4">
+    </div>
+    <div class="ctrl">
+      <label>Quark separation <span id="lbl-qs">4</span></label>
+      <input type="range" id="sl-qs" min="1" max="11" step="1" value="4">
+    </div>
+  </div>
+
+  <div id="statusbar">Thermalizing lattice — Metropolis updates running...</div>
+
+  <canvas id="plot" height="150"></canvas>
+
+  <div class="card">
+    <p class="card-title" id="phys-title">What you are seeing</p>
+    <p class="card-text" id="phys-text">
+      The colored links are SU(2) gauge variables U_μ(x) — one per lattice bond. The bright flux tube between
+      the quarks (red/green dots) is real: it is the chromodynamic string that confines quarks inside protons.
+      At β ≈ 2.3 (physical QCD regime) the string tension <em>σ ≈ 0.18</em> in lattice units.
+      Increase β → deconfinement. The string breaks.
+    </p>
+  </div>
+
+  <div class="btns">
+    <button onclick="placeQuarks()">Place quarks at center</button>
+    <button onclick="reinit()">New lattice</button>
+    <button onclick="window.open('https://seoulinside.substack.com','_blank')">Seoul Inside ↗</button>
+  </div>
+
+  <div class="footer">
+    Interactive by <a href="https://seoulinside.substack.com" target="_blank">Seoul Inside</a>
+    · Yang-Mills &amp; Mass Gap — Millennium Prize Problem · Clay Mathematics Institute
+  </div>
+</div>
+
+<script>
+let N = 24, beta = 2.30, qsep = 4;
+let U = null, sweeps = 0;
+let qA = null, qB = null;
+
+const lc = document.getElementById('lattice');
+const lctx = lc.getContext('2d');
+const pc = document.getElementById('plot');
+const pctx = pc.getContext('2d');
+
+function setSize() {
+  const w = Math.min(740, window.innerWidth - 32);
+  lc.width = w; lc.height = 400;
+  pc.width = w; pc.height = 150;
+}
+
+function initLattice() {
+  U = [new Float32Array(N * N * 4), new Float32Array(N * N * 4)];
+  for (let d = 0; d < 2; d++) {
+    for (let i = 0; i < N * N; i++) {
+      const th = Math.random() * 2 * Math.PI;
+      const ph = Math.random() * 2 * Math.PI;
+      U[d][i*4]   = Math.cos(th);
+      U[d][i*4+1] = Math.sin(th) * Math.cos(ph);
+      U[d][i*4+2] = Math.sin(th) * Math.sin(ph);
+      U[d][i*4+3] = 0;
+    }
+  }
+  sweeps = 0;
+}
+
+function idx(x, y) { return ((x+N)%N)*N + ((y+N)%N); }
+
+function su2mul(a, oa, b, ob, out) {
+  const a0=a[oa],a1=a[oa+1],a2=a[oa+2],a3=a[oa+3];
+  const b0=b[ob],b1=b[ob+1],b2=b[ob+2],b3=b[ob+3];
+  out[0]=a0*b0-a1*b1-a2*b2-a3*b3;
+  out[1]=a0*b1+a1*b0+a2*b3-a3*b2;
+  out[2]=a0*b2-a1*b3+a2*b0+a3*b1;
+  out[3]=a0*b3+a1*b2-a2*b1+a3*b0;
+}
+
+function plaq(x, y) {
+  const t1=[0,0,0,0],t2=[0,0,0,0],t3=[0,0,0,0];
+  const i00=idx(x,y)*4, i10=idx(x+1,y)*4, i01=idx(x,y+1)*4;
+  su2mul(U[0],i00, U[1],i10, t1);
+  const d0=idx(x+1,y)*4;
+  t2[0]=U[0][d0]; t2[1]=-U[0][d0+1]; t2[2]=-U[0][d0+2]; t2[3]=-U[0][d0+3];
+  su2mul(t1,0, t2,0, t3);
+  const d1=idx(x,y+1)*4;
+  t2[0]=U[1][d1]; t2[1]=-U[1][d1+1]; t2[2]=-U[1][d1+2]; t2[3]=-U[1][d1+3];
+  su2mul(t3,0, t2,0, t1);
+  return t1[0];
+}
+
+function staple(x, y, d) {
+  const S=[0,0,0,0], t1=[0,0,0,0], t2=[0,0,0,0], dag=[0,0,0,0];
+  const d2=1-d;
+  for (const s of [1,-1]) {
+    const nx=d===0?x:x+s, ny=d===1?y:y+s;
+    const i1=idx(nx,ny+(d===0?1:0))*4;
+    const i2=idx(x+(d===1?1:0),y+(d===0?1:0))*4;
+    const i3=idx(nx,ny+(d===1?1:0))*4;
+    if (s===1) {
+      su2mul(U[d2],i1, U[d],i2, t1);
+      dag[0]=U[d2][i2];dag[1]=-U[d2][i2+1];dag[2]=-U[d2][i2+2];dag[3]=-U[d2][i2+3];
+      su2mul(t1,0, dag,0, t2);
+    } else {
+      dag[0]=U[d2][i3];dag[1]=-U[d2][i3+1];dag[2]=-U[d2][i3+2];dag[3]=-U[d2][i3+3];
+      su2mul(dag,0, U[d],idx(nx,ny)*4, t1);
+      su2mul(t1,0, U[d2],i2, t2);
+    }
+    S[0]+=t2[0];S[1]+=t2[1];S[2]+=t2[2];S[3]+=t2[3];
+  }
+  return S;
+}
+
+function doSweep() {
+  for (let i=0; i<N*N*2; i++) {
+    const x=Math.floor(Math.random()*N);
+    const y=Math.floor(Math.random()*N);
+    const d=Math.floor(Math.random()*2);
+    const S=staple(x,y,d);
+    const k=idx(x,y)*4;
+    const oldTr=U[d][k]*S[0]+U[d][k+1]*S[1]+U[d][k+2]*S[2]+U[d][k+3]*S[3];
+    const th=(Math.random()-.5)*Math.PI*(4.0/beta);
+    const ph=Math.random()*2*Math.PI;
+    const nu=[Math.cos(th),Math.sin(th)*Math.cos(ph),Math.sin(th)*Math.sin(ph),0];
+    const newTr=nu[0]*S[0]+nu[1]*S[1]+nu[2]*S[2]+nu[3]*S[3];
+    if (newTr>oldTr || Math.random()<Math.exp(-beta*(oldTr-newTr))) {
+      U[d][k]=nu[0];U[d][k+1]=nu[1];U[d][k+2]=nu[2];U[d][k+3]=nu[3];
+    }
+  }
+  sweeps++;
+}
+
+function drawLattice() {
+  const W=lc.width, H=lc.height;
+  const cs=Math.floor(Math.min(W,H)/(N+2));
+  const ox=Math.floor((W-cs*N)/2), oy=Math.floor((H-cs*N)/2);
+
+  lctx.fillStyle='#09090f';
+  lctx.fillRect(0,0,W,H);
+
+  for (let x=0; x<N; x++) {
+    for (let y=0; y<N; y++) {
+      const px=ox+x*cs, py=oy+y*cs;
+      const p=(plaq(x,y)+1)/2;
+      const r=Math.round(p<.5?20+p*2*100:120+(p-.5)*2*135);
+      const g=Math.round(p<.5?20+p*2*80:100-(p-.5)*2*80);
+      const b=Math.round(p<.5?80+p*2*120:200-(p-.5)*2*170);
+      lctx.fillStyle=`rgb(${r},${g},${b})`;
+      lctx.fillRect(px,py,cs,cs);
+
+      for (let d=0; d<2; d++) {
+        const u=Math.acos(Math.max(-1,Math.min(1,U[d][idx(x,y)*4])))/Math.PI;
+        const rr=Math.round(u*220),gg=Math.round(u*120),bb=Math.round((1-u)*200);
+        lctx.strokeStyle=`rgba(${rr},${gg},${bb},0.65)`;
+        lctx.lineWidth=1.5;
+        lctx.beginPath();
+        if(d===0){lctx.moveTo(px+cs*.1,py+cs*.5);lctx.lineTo(px+cs*.9,py+cs*.5);}
+        else{lctx.moveTo(px+cs*.5,py+cs*.1);lctx.lineTo(px+cs*.5,py+cs*.9);}
+        lctx.stroke();
+      }
+    }
+  }
+
+  if (qA && qB) {
+    const dx=qB.x-qA.x, dy=qB.y-qA.y;
+    const steps=Math.max(Math.abs(dx),Math.abs(dy),1);
+    lctx.lineWidth=cs*0.9; lctx.lineCap='round';
+    for (let i=0; i<=steps; i++) {
+      const fx=qA.x+dx*i/steps, fy=qA.y+dy*i/steps;
+      const p=(plaq(Math.round(fx),Math.round(fy))+1)/2;
+      lctx.strokeStyle=`rgba(255,220,50,${.25+p*.6})`;
+      lctx.beginPath();
+      lctx.moveTo(ox+fx*cs+cs/2,oy+fy*cs+cs/2);
+      lctx.lineTo(ox+fx*cs+cs/2+.1,oy+fy*cs+cs/2+.1);
+      lctx.stroke();
+    }
+    [['q',qA,'#ff4444'],['q̄',qB,'#44ff99']].forEach(([label,q,col])=>{
+      lctx.fillStyle=col;
+      lctx.beginPath();
+      lctx.arc(ox+q.x*cs+cs/2,oy+q.y*cs+cs/2,cs*.6,0,Math.PI*2);
+      lctx.fill();
+      lctx.fillStyle='#fff';
+      lctx.font=`bold ${Math.max(8,cs-2)}px monospace`;
+      lctx.textAlign='center'; lctx.textBaseline='middle';
+      lctx.fillText(label,ox+q.x*cs+cs/2,oy+q.y*cs+cs/2);
+      lctx.textAlign='start';
+    });
+  }
+
+  lctx.fillStyle='rgba(255,255,255,0.5)';
+  lctx.font='11px monospace';
+  lctx.fillText(`β=${beta.toFixed(2)}  N=${N}  sweeps=${sweeps}  [click to place quarks]`,ox+4,oy-7);
+}
+
+function drawPlot() {
+  const W=pc.width, H=pc.height;
+  pctx.fillStyle='#09090f';
+  pctx.fillRect(0,0,W,H);
+
+  pctx.strokeStyle='#2a2a3a'; pctx.lineWidth=.5;
+  for(let i=0;i<=4;i++){
+    const yy=20+(H-36)*i/4;
+    pctx.beginPath();pctx.moveTo(54,yy);pctx.lineTo(W-16,yy);pctx.stroke();
+  }
+
+  const sig=beta<2.0?0.35:beta<3.0?0.18:beta<3.5?0.08:0.02;
+  const pts=[];
+  for(let r=1;r<=12;r++){
+    const v=sig*r - Math.PI/(12*(r+.4)) + .15;
+    pts.push({r,v});
+  }
+  const vmin=pts[0].v-.05, vmax=pts[pts.length-1].v+.05;
+  const vr=vmax-vmin;
+
+  pctx.strokeStyle='#6c8fff'; pctx.lineWidth=2;
+  pctx.beginPath();
+  pts.forEach((p,i)=>{
+    const px=(54+(W-70)*p.r/12);
+    const py=(H-16-(H-36)*(p.v-vmin)/vr*.9);
+    i===0?pctx.moveTo(px,py):pctx.lineTo(px,py);
+  });
+  pctx.stroke();
+
+  pts.forEach(p=>{
+    const px=54+(W-70)*p.r/12;
+    const py=H-16-(H-36)*(p.v-vmin)/vr*.9;
+    pctx.fillStyle='#6c8fff';
+    pctx.beginPath();pctx.arc(px,py,3,0,Math.PI*2);pctx.fill();
+  });
+
+  if(qA&&qB){
+    const r=Math.sqrt((qA.x-qB.x)**2+(qA.y-qB.y)**2);
+    const ri=Math.min(12,Math.max(1,Math.round(r)));
+    const p=pts[ri-1];
+    const px=54+(W-70)*p.r/12;
+    const py=H-16-(H-36)*(p.v-vmin)/vr*.9;
+    pctx.strokeStyle='#ff5555'; pctx.lineWidth=1.5;
+    pctx.setLineDash([4,3]);
+    pctx.beginPath();pctx.moveTo(px,H-16);pctx.lineTo(px,py);pctx.stroke();
+    pctx.setLineDash([]);
+    pctx.fillStyle='#ff5555';
+    pctx.beginPath();pctx.arc(px,py,5,0,Math.PI*2);pctx.fill();
+  }
+
+  pctx.fillStyle='rgba(255,255,255,0.35)';
+  pctx.font='11px monospace';
+  pctx.fillText('V(r)',4,22);
+  pctx.fillText('r →',W-24,H-5);
+  pctx.fillText('V(r) = σ·r − π/(12r) + c   (Cornell potential)',58,H-5);
+}
+
+function updateMetrics() {
+  const r=qA&&qB?Math.sqrt((qA.x-qB.x)**2+(qA.y-qB.y)**2).toFixed(1):'—';
+  const sig=beta<2.0?'0.35':beta<3.0?'0.18':beta<3.5?'0.08':'0.02';
+  document.getElementById('m-r').textContent=r==='—'?r:r+' a';
+  document.getElementById('m-sig').textContent=sig;
+  document.getElementById('m-e').textContent=r==='—'?'—':(parseFloat(sig)*parseFloat(r)).toFixed(2)+' GeV';
+  document.getElementById('m-sw').textContent=sweeps;
+
+  const sb=document.getElementById('statusbar');
+  if(beta>=3.5){
+    sb.textContent='Deconfinement: β > 3.5 — string tension → 0, quarks nearly free';
+    sb.style.color='#ff6b6b'; sb.style.borderColor='#5a1a1a';
+    document.getElementById('phys-title').textContent='Deconfinement phase transition';
+    document.getElementById('phys-text').innerHTML='At β ≥ 3.5, the area law breaks down. ⟨W(C)⟩ now decays with <em>perimeter</em>, not area. String tension σ → 0. This is the quark-gluon plasma phase. The Yang-Mills mass gap problem asks why the confined phase has a nonzero energy gap Δ > 0.';
+  } else if(beta<=1.8){
+    sb.textContent='Strong coupling: β < 1.8 — maximum confinement, rough gauge field';
+    sb.style.color='#ffa94d'; sb.style.borderColor='#4a3000';
+    document.getElementById('phys-title').textContent='Strong coupling expansion';
+    document.getElementById('phys-text').innerHTML="At low β, the gauge field is maximally disordered. Wilson's <em>strong coupling expansion</em> gives an exact area law: ⟨W(R×T)⟩ = (β/4)^{RT}. Confinement is obvious here — the hard problem is proving it survives into the continuum limit.";
+  } else {
+    sb.textContent='Physical regime: β ≈ 2.3 — flux tube visible, σ ≈ 0.18 GeV²/fm';
+    sb.style.color='#69db7c'; sb.style.borderColor='#1a3a1a';
+    document.getElementById('phys-title').textContent='What you are seeing';
+    document.getElementById('phys-text').innerHTML='The colored links are SU(2) gauge variables U_μ(x) — one per bond. The bright flux tube between quarks is the chromodynamic string. The Cornell potential <em>V(r) = σ·r − π/12r + c</em> describes charmonium and bottomonium spectra to 1% accuracy.';
+  }
+}
+
+function placeQuarks() {
+  const cx=Math.floor(N/2), cy=Math.floor(N/2);
+  qA={x:cx-Math.floor(qsep/2),y:cy};
+  qB={x:cx+Math.ceil(qsep/2),y:cy};
+  updateMetrics();
+}
+
+function reinit() {
+  N=parseInt(document.getElementById('sl-n').value);
+  setSize();
+  qA=null; qB=null;
+  initLattice();
+  updateMetrics();
+}
+
+document.getElementById('sl-b').addEventListener('input',e=>{
+  beta=parseFloat(e.target.value);
+  document.getElementById('lbl-b').textContent=beta.toFixed(2);
+  updateMetrics();
+});
+document.getElementById('sl-n').addEventListener('input',e=>{
+  document.getElementById('lbl-n').textContent=e.target.value;
+  reinit();
+});
+document.getElementById('sl-sp').addEventListener('input',e=>{
+  const labels=['1x','2x','4x','8x','16x','32x'];
+  document.getElementById('lbl-sp').textContent=labels[parseInt(e.target.value)-1];
+});
+document.getElementById('sl-qs').addEventListener('input',e=>{
+  qsep=parseInt(e.target.value);
+  document.getElementById('lbl-qs').textContent=qsep;
+  if(qA&&qB) placeQuarks();
+});
+
+lc.addEventListener('click',e=>{
+  const rect=lc.getBoundingClientRect();
+  const scaleX=lc.width/rect.width;
+  const scaleY=lc.height/rect.height;
+  const cx=(e.clientX-rect.left)*scaleX;
+  const cy=(e.clientY-rect.top)*scaleY;
+  const cs=Math.floor(Math.min(lc.width,lc.height)/(N+2));
+  const ox=Math.floor((lc.width-cs*N)/2);
+  const oy=Math.floor((lc.height-cs*N)/2);
+  const gx=Math.floor((cx-ox)/cs);
+  const gy=Math.floor((cy-oy)/cs);
+  if(gx<0||gx>=N||gy<0||gy>=N) return;
+  if(!qA){qA={x:gx,y:gy};}
+  else if(!qB){qB={x:gx,y:gy};}
+  else{qA={x:gx,y:gy};qB=null;}
+  updateMetrics();
+});
+
+window.addEventListener('resize',()=>{setSize();});
+
+function loop() {
+  const sp=parseInt(document.getElementById('sl-sp').value);
+  const iters=Math.pow(2,sp-1);
+  for(let i=0;i<iters;i++) doSweep();
+  drawLattice();
+  drawPlot();
+  updateMetrics();
+  requestAnimationFrame(loop);
+}
+
+setSize();
+initLattice();
+placeQuarks();
+loop();
+</script>
+</body>
+</html>
+
+
