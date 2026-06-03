@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Hydrogen Atom - Oscillation ↔ Rotation (Spin 1/2 ↔ 1)</title>
+    <title>Hydrogen Atom - Independent X/Y Precession</title>
     <style>
         body { margin: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; }
         #info {
@@ -103,11 +103,11 @@
 </head>
 <body>
     <div id="info">
-        ⚛️ <span class="badge">진동 ↔ 회전</span> | Spin 1/2 (Oscillation) ↔ Spin 1 (Rotation)<br>
-        📐 180° = 전자(진동) | 360° = 광자(회전) | 그 사이 = <span class="badge">새로운 물리</span>
+        ⚛️ <span class="badge">X축 세차 (진동)</span> + <span class="badge">Y축 세차 (회전)</span> 독립 제어<br>
+        📐 X: 180° 왕복 진동 | Y: 360° 연속 회전
     </div>
     <div class="mode-indicator" id="modeIndicator">
-        🔄 Mode: <span id="modeText">Oscillation (Spin 1/2)</span>
+        🔄 <span id="modeText">X:0° Y:0°</span>
     </div>
     <div id="controls">
         <div class="control-group">
@@ -133,18 +133,25 @@
             <label>🐍 Trail : <span id="trailVal">0.00</span></label>
             <input type="range" id="trailSlider" min="0" max="1.0" step="0.01" value="0.0">
         </div>
-        <div class="control-group">
-            <label>🎯 <span class="badge">Spin Mode (0~360°)</span> : <span id="spinRangeVal">180</span>°</label>
-            <input type="range" id="spinRange" min="0" max="360" step="1" value="180">
-            <div class="value-display">← 180° = 진동(1/2) | 360° = 회전(1) →</div>
+        <div class="control-group" style="border: 1px solid #ff8844aa;">
+            <label>🔴 <span class="badge">X축 세차 (진동 180°)</span></label>
+            <label style="font-size:9px; color:#ff8844;">진폭 (0=없음 ~ 1=최대) : <span id="xAmpVal">0.00</span></label>
+            <input type="range" id="xAmp" min="0" max="1.0" step="0.01" value="0.0">
+            <label style="font-size:9px; color:#ff8844;">속도 : <span id="xSpeedVal">1.0</span>×</label>
+            <input type="range" id="xSpeed" min="0" max="2.5" step="0.01" value="0.5">
+            <div class="value-display">← X축 기준 왕복 진동 (Spin 1/2)</div>
         </div>
-        <div class="control-group">
-            <label>⚡ Spin Speed : <span id="spinSpeedVal">1.00</span>×</label>
-            <input type="range" id="spinSpeed" min="0" max="2.5" step="0.01" value="0.5">
+        <div class="control-group" style="border: 1px solid #44aaff aa;">
+            <label>🔵 <span class="badge">Y축 세차 (회전 360°)</span></label>
+            <label style="font-size:9px; color:#44aaff;">진폭 (0=없음 ~ 1=최대) : <span id="yAmpVal">0.00</span></label>
+            <input type="range" id="yAmp" min="0" max="1.0" step="0.01" value="0.0">
+            <label style="font-size:9px; color:#44aaff;">속도 : <span id="ySpeedVal">1.0</span>×</label>
+            <input type="range" id="ySpeed" min="0" max="2.5" step="0.01" value="0.5">
+            <div class="value-display">← Y축 기준 연속 회전 (Spin 1)</div>
         </div>
     </div>
     <div class="note">
-        🧬 180° 모드: 위아래 진동 | 360° 모드: 빙글빙글 회전 | 그 사이는 하이브리드
+        🧬 X(빨강): 180° 왕복진동 | Y(파랑): 360° 연속회전 | 둘 다 켜면 복합 세차
     </div>
 
     <script type="importmap">
@@ -173,20 +180,22 @@
         let compAmp = 1.2;
         let orbitSpeedLog = 0.7;
         let trailIntensity = 0.0;
-        let spinRangeDeg = 180;      // 0~360°, 180° = 진동 모드, 360° = 회전 모드
-        let spinSpeedLog = 0.5;
+
+        // X축 세차 (진동, 180° 왕복)
+        let xPrecAmp = 0.0;      // 0~1
+        let xPrecSpeedLog = 0.5;
+        let xPhase = 0;
+
+        // Y축 세차 (회전, 360° 연속)
+        let yPrecAmp = 0.0;      // 0~1
+        let yPrecSpeedLog = 0.5;
+        let yPhase = 0;
         
         function getOrbitSpeed() {
             return Math.pow(10, orbitSpeedLog) * 0.2;
         }
-        
-        function getSpinSpeed() {
-            return Math.pow(10, spinSpeedLog) * 0.5;
-        }
-        
-        function getMaxAngle() {
-            return (spinRangeDeg / 180) * Math.PI;  // 0 to 2π
-        }
+        function getXSpeed() { return Math.pow(10, xPrecSpeedLog) * 0.5; }
+        function getYSpeed() { return Math.pow(10, yPrecSpeedLog) * 0.5; }
         
         function getCompVisualAmp() {
             return lambdaC * compAmp * SCALE;
@@ -342,71 +351,55 @@
         scene.add(labelObj);
         
         let angle = 0;
-        let spinPhase = 0;
         let lastTime = 0;
         
-        // 새로운 핵심 함수: 진동 모드 ↔ 회전 모드
+        // 핵심: X축(진동) + Y축(회전) 독립 세차
         function getElectronPosition() {
             const r_vis = getRadiusVisual(angle);
-            // 디스크 좌표 (기본 궤도)
+
+            // 기본 궤도 (XZ 평면)
             const diskX = r_vis * Math.cos(angle);
             const diskZ = r_vis * Math.sin(angle);
-            
-            const maxAngle = getMaxAngle();
-            const spinFreq = getSpinSpeed();
-            spinPhase += 0.016 * spinFreq;
-            if (spinPhase > Math.PI * 2) spinPhase -= Math.PI * 2;
-            
-            // Spin Range에 따라 진동 모드(180°)와 회전 모드(360°) 결정
-            const t = spinRangeDeg / 360;  // 0~1, 0.5=180°, 1=360°
-            
-            // 진동 모드 (Oscillation) - 180° 근처
-            const oscTilt = (Math.sin(spinPhase) + 1) / 2 * maxAngle;
-            
-            // 회전 모드 (Rotation) - 360° 근처
-            const rotTilt = spinPhase % maxAngle;
-            
-            // 두 모드의 가중치 (0.5에서 혼합, 0.5 미만=진동, 0.5 초과=회전)
-            const oscWeight = Math.max(0, 1 - t * 2);      // t=0~0.5: 1~0
-            const rotWeight = Math.max(0, t * 2 - 1);      // t=0.5~1: 0~1
-            
-            // tilt 계산
-            let tilt;
-            if (oscWeight > 0.99) {
-                tilt = oscTilt;
-            } else if (rotWeight > 0.99) {
-                tilt = rotTilt;
-            } else {
-                tilt = (oscTilt * oscWeight + rotTilt * rotWeight) / (oscWeight + rotWeight);
-            }
-            
-            // X/Y/Z 좌표 계산 (tilt는 극각)
-            const x = diskX * Math.cos(tilt);
-            const y = diskX * Math.sin(tilt) * Math.sin(angle);
-            const z = diskZ * Math.cos(tilt) + diskX * Math.sin(tilt) * Math.cos(angle);
-            
+
+            // X축 세차: 180° 왕복 진동 (sin으로 왔다갔다)
+            const xTilt = xPrecAmp * Math.PI * Math.sin(xPhase);  // -π ~ +π
+
+            // Y축 세차: 360° 연속 회전
+            const yTilt = yPrecAmp * Math.PI * (yPhase % (2 * Math.PI)) / Math.PI - yPrecAmp * Math.PI;
+
+            // X축 회전 적용 (XZ평면을 X축 기준으로 기울임)
+            const afterX_x = diskX;
+            const afterX_y = diskZ * Math.sin(xTilt);
+            const afterX_z = diskZ * Math.cos(xTilt);
+
+            // Y축 회전 적용 (Y축 기준으로 추가 회전)
+            const cosY = Math.cos(yTilt);
+            const sinY = Math.sin(yTilt);
+            const x = afterX_x * cosY + afterX_z * sinY;
+            const y = afterX_y;
+            const z = -afterX_x * sinY + afterX_z * cosY;
+
             return { x, y, z };
         }
         
         function updateElectronAndTrail() {
             if (!electronMesh) return;
+
+            // 페이즈 진행
+            const dt = 0.016;
+            xPhase += dt * getXSpeed();
+            yPhase += dt * getYSpeed();
+            if (xPhase > Math.PI * 200) xPhase -= Math.PI * 200;
+            if (yPhase > Math.PI * 200) yPhase -= Math.PI * 200;
+
             const pos = getElectronPosition();
             electronMesh.position.set(pos.x, pos.y, pos.z);
             updateTrail(pos);
-            
-            const orbitSpd = getOrbitSpeed();
-            const spinSpd = getSpinSpeed();
-            
-            // 모드 표시
-            let modeText = "";
-            if (spinRangeDeg < 90) modeText = "Hybrid (Near 0°)";
-            else if (spinRangeDeg < 160) modeText = "Oscillation (Spin 1/2)";
-            else if (spinRangeDeg < 200) modeText = "Pure Oscillation (Spin 1/2)";
-            else if (spinRangeDeg < 280) modeText = "Hybrid (Transition)";
-            else modeText = "Rotation (Spin 1)";
-            
-            document.getElementById('modeText').innerText = modeText;
-            infoDiv.textContent = `⚛️ n=${n} | ${spinRangeDeg}° (${modeText}) | Spin Speed: ${spinSpd.toFixed(1)}×`;
+
+            const xDeg = (xPrecAmp * 180).toFixed(0);
+            const yDeg = (yPrecAmp * 180).toFixed(0);
+            document.getElementById('modeText').innerText = `X:${xDeg}° Y:${yDeg}°`;
+            infoDiv.textContent = `⚛️ n=${n} | X세차: ${xDeg}° (진동) | Y세차: ${yDeg}° (회전)`;
         }
         
         function refreshScene() {
@@ -427,8 +420,11 @@
         document.getElementById('compAmp').oninput = (e) => { compAmp = parseFloat(e.target.value); document.getElementById('compVal').innerText = compAmp.toFixed(2); refreshScene(); };
         document.getElementById('orbitSpeed').oninput = (e) => { orbitSpeedLog = parseFloat(e.target.value); document.getElementById('speedVal').innerText = getOrbitSpeed().toFixed(1); };
         document.getElementById('trailSlider').oninput = (e) => { trailIntensity = parseFloat(e.target.value); document.getElementById('trailVal').innerText = trailIntensity.toFixed(2); };
-        document.getElementById('spinRange').oninput = (e) => { spinRangeDeg = parseFloat(e.target.value); document.getElementById('spinRangeVal').innerText = spinRangeDeg; refreshScene(); };
-        document.getElementById('spinSpeed').oninput = (e) => { spinSpeedLog = parseFloat(e.target.value); document.getElementById('spinSpeedVal').innerText = getSpinSpeed().toFixed(1); };
+
+        document.getElementById('xAmp').oninput = (e) => { xPrecAmp = parseFloat(e.target.value); document.getElementById('xAmpVal').innerText = xPrecAmp.toFixed(2); };
+        document.getElementById('xSpeed').oninput = (e) => { xPrecSpeedLog = parseFloat(e.target.value); document.getElementById('xSpeedVal').innerText = getXSpeed().toFixed(1); };
+        document.getElementById('yAmp').oninput = (e) => { yPrecAmp = parseFloat(e.target.value); document.getElementById('yAmpVal').innerText = yPrecAmp.toFixed(2); };
+        document.getElementById('ySpeed').oninput = (e) => { yPrecSpeedLog = parseFloat(e.target.value); document.getElementById('ySpeedVal').innerText = getYSpeed().toFixed(1); };
         
         refreshScene();
         
