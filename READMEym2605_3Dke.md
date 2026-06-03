@@ -1,3 +1,112 @@
+Built an LHC in the Browser — Making the Yang-Mills Collider
+A relativistic particle physics simulator in pure JavaScript
+B. Sun | Seoul Inside
+Jun 03, 2026
+
+A few days ago, I asked myself a strange question.
+
+“Could I just run a CERN particle collider in the browser?”
+
+The short answer — yes. Quite seriously, too.
+
+🔗 Try it yourself →
+
+It Started with Simple Curiosity
+The original code looked like a particle physics simulator, but under the hood the physics were fairly simple. Particles flew in straight lines, the magnetic field only affected the x and z directions, and decays just fired off in random directions.
+
+“What if I put real physics in here?” That thought was the beginning of this project.
+
+What Actually Happens Inside the LHC
+At CERN’s LHC (Large Hadron Collider), two protons collide head-on at nearly the speed of light. The energy released at the moment of collision can reach up to 13.6 TeV — roughly 14,500 times the rest mass of a proton, all concentrated at a single point.
+
+From that collision, hundreds of new particles are born in an instant. Pions, kaons, muons, electrons — each with different masses and charges, flying off in every direction. Inside a powerful solenoid magnetic field (about 3.8 Tesla), each one traces its own helical path.
+
+The detector measures the curvature of these paths to calculate momentum. Even with the same charge, heavier particles curve gently while lighter ones curve sharply.
+
+Reproducing this in the browser was the goal.
+
+The Physics Engine: What’s Under the Hood
+1. Special Relativity — “Nothing Can Exceed the Speed of Light”
+This was the first problem to solve. Conventional game physics engines use Newtonian mechanics: F = ma. Apply a force continuously and velocity increases without limit.
+
+But inside the LHC, protons travel at 99.9999991% of the speed of light. Newtonian mechanics breaks down completely at these speeds.
+
+The solution is the Lorentz factor γ (gamma):
+
+γ = E / m = 1 / √(1 - v²/c²)
+As velocity approaches the speed of light, γ grows explosively — the same force produces less and less acceleration. Every particle in this simulator passes through this formula. No particle can exceed the speed of light.
+
+2. Boris Integrator — The Same Method Used by GEANT4
+Numerically computing the motion of a particle in a magnetic field is trickier than it sounds. A naive implementation lets energy slowly leak out, causing the spiral to gradually grow or shrink — a real error.
+
+The Boris Integrator is the algorithm that solves this problem. It’s the standard method used in CERN’s GEANT4 and plasma physics PIC codes. The key idea is to split the magnetic rotation into two half-rotations:
+
+p⁻ = p + p × t      ← first half-rotation
+p⁺ = p⁻ + p⁻ × s   ← second half-rotation
+This method conserves energy precisely while reproducing helical trajectories. As a result, in this simulator you can see positively charged particles curving counterclockwise and negatively charged ones curving clockwise — exactly as in a real detector.
+
+3. The Bethe-Bloch Formula — Different Particles Slow Down Differently
+Inside an LHC detector, particles lose energy as they pass through the detection material. The Bethe-Bloch formula calculates this energy loss:
+
+-dE/dx ≈ K · z² / β² · [ln(2mₑβ²γ² / I) - β²]
+The key point is that this loss differs for each particle. Light electrons lose energy quickly and trace short spirals. Heavy muons punch through almost the entire detector, leaving long straight tracks. This difference is visible in the simulator.
+
+4. Decay Branching Ratios — π⁺ Doesn’t Always Decay the Same Way
+This was personally the most fascinating part.
+
+The positively charged pion (π⁺) is an unstable particle — it decays into other particles almost immediately after being created. But it doesn’t always decay the same way.
+
+Decay Mode Probability π⁺ → μ⁺ + νμ 99.99% π⁺ → e⁺ + νe 0.01%
+
+It almost always decays into a muon, but roughly once in every 10,000 times it decays into an electron instead. These values are actual experimental measurements from the PDG (Particle Data Group).
+
+This simulator implements those probabilities exactly. Run enough collisions and you’ll occasionally see a rare decay flagged separately in the event log. When it happens, it’s genuinely exciting.
+
+5. 4-Momentum Conservation — Physics Laws Hold Even During Decay
+The directions and velocities of particles produced in a decay are determined by 4-momentum conservation. First, the decay direction is calculated in the parent particle’s rest frame (CM frame), then transformed to the lab frame via a Lorentz boost.
+
+As a result, high-energy particle decays are collimated (concentrated forward), while low-energy decays spread more isotropically. It’s a moment where the laws of physics naturally visualize themselves.
+
+6. αs(μ) — The Strong Force Coupling That Changes with Energy
+One of the most remarkable features of QCD (Quantum Chromodynamics) is asymptotic freedom: at higher energies, the strong force between quarks actually becomes weaker. This was the discovery that earned the 2004 Nobel Prize in Physics.
+
+This simulator calculates αs(μ) in real time using the 2-loop beta function:
+
+αs(MZ) = 0.1181  ← actual measured value at the Z boson mass
+Move the collision energy (√s) slider and αs changes — and that value determines how many particles are produced in the collision. At 13 TeV (LHC scale), hundreds of particles; at 20 GeV, tens — trends consistent with real experimental data.
+
+Two Versions
+3D Version (Three.js) Particles trace three-dimensional helices inside a solenoid ring. Freely rotate the view with your mouse. Adjust magnetic field strength and collision energy in real time.
+
+2D Dashboard Version The same physics engine, with QCD analysis tools added. Divided into three levels:
+
+LV.1 Analytic — Instant 2-loop αs(μ) calculation
+
+LV.2 Monte Carlo — PDF-sampled 2→2 parton scattering, pT distributions
+
+LV.3 Heavy Ion — Pb+Pb collisions via the Glauber model, QGP formation condition analysis
+
+Yang-Mills Theory and the Millennium Problem
+This project takes its name from Yang-Mills theory — the mathematical foundation of QCD, published in 1954 by C.N. Yang and R.L. Mills.
+
+The theory contains an unsolved mathematical problem: the Mass Gap Problem. There is still no rigorous mathematical proof of why quarks cannot exist in isolation, or why the strong force only acts over short distances.
+
+This is one of the 7 Millennium Prize Problems selected by the Clay Mathematics Institute. Solve it and you win $1,000,000. It remains unsolved.
+
+Closing Thoughts
+The most striking thing about building this project was the realization that formulas written on paper decades ago run just as well in a browser today.
+
+The Bethe-Bloch formula dates to the 1930s. The Boris Integrator was published in 1970. Asymptotic freedom in αs was discovered in 1973.
+
+These equations are still running at CERN today — and right now, in this browser.
+
+🔗 Launch the 3D Simulator →
+
+Physics Engine Summary
+Component Description Relativistic Motion Lorentz factor γ = E/m applied; speed of light cannot be exceeded Boris Integrator Standard numerical integration used in GEANT4 and PIC codes Bethe-Bloch Energy loss formula based on particle mass, charge, and velocity 4-Momentum Conservation CM frame 2-body decay followed by Lorentz boost Branching Ratios π⁺→μ⁺νμ (99.99%) vs e⁺νe (0.01%) and other PDG values αs(μ) Running Coupling 2-loop β function with quark flavor thresholds Monte Carlo PDF sampling, 2→2 parton scattering, pT distributions Glauber Model Heavy-ion collisions, Ncoll, ε₀, QGP formation conditions Helix Trajectories Accurate curvature under solenoid magnetic field
+
+The code is publicly available on GitHub. Feedback and questions are always welcome.
+
 # ⚛️ Yang-Mills Collider — Full Physics Simulation
 
 > **A browser-based particle physics simulator implementing relativistic dynamics, QCD running coupling, and realistic decay chains — entirely in vanilla JavaScript.**
