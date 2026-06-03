@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yang-Mills Collider Pro — QCD Simulation</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,600;1,300&display=swap');
+
+:root {
+  --bg: #03050d;
+  --panel: #080b18;
+  --border: #141928;
+  --c1: #00e5ff;
+  --c2: #ff4060;
+  --c3: #a0ff60;
+  --c4: #ffb020;
+  --c5: #cc66ff;
+  --text: #b0bcd8;
+  --dim: #404868;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none; z-index: 0;
+}
+
+.wrap { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 24px 20px; }
+
+header { margin-bottom: 28px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.hdr-left { border-left: 3px solid var(--c1); padding-left: 18px; }
+.eyebrow { font-size: 9px; letter-spacing: 3px; color: var(--c1); text-transform: uppercase; margin-bottom: 6px; }
+h1 { font-family: 'Crimson Pro', serif; font-weight: 300; font-size: clamp(26px,4vw,48px); color: #fff; line-height: 1.1; }
+h1 em { font-style: italic; color: var(--c1); }
+.hdr-badge { font-size: 9px; padding: 6px 14px; border: 1px solid var(--c3); color: var(--c3); background: rgba(160,255,96,0.05); letter-spacing: 2px; }
+
+.layout { display: grid; grid-template-columns: 280px 1fr 280px; gap: 16px; }
+@media(max-width:1000px){ .layout { grid-template-columns: 1fr 1fr; } }
+@media(max-width:660px){ .layout { grid-template-columns: 1fr; } }
+
+/* Beam Panels */
+.beam-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.beam-panel.beam-a { border-top: 2px solid var(--c1); }
+.beam-panel.beam-b { border-top: 2px solid var(--c2); }
+.panel-title { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.beam-a .panel-title { color: var(--c1); }
+.beam-b .panel-title { color: var(--c2); }
+
+.particle-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+.p-btn {
+  padding: 8px 4px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+.p-btn:hover { border-color: var(--text); color: var(--text); }
+.p-btn.active-a { border-color: var(--c1); color: var(--c1); background: rgba(0,229,255,0.06); }
+.p-btn.active-b { border-color: var(--c2); color: var(--c2); background: rgba(255,64,96,0.06); }
+
+.slider-row { display: flex; flex-direction: column; gap: 5px; }
+.slider-label { display: flex; justify-content: space-between; font-size: 9px; color: var(--dim); }
+input[type=range] { width: 100%; height: 2px; background: var(--border); cursor: pointer; appearance: none; }
+input[type=range].beam-a-range::-webkit-slider-thumb { appearance:none; width:12px; height:12px; background:var(--c1); cursor:pointer; }
+input[type=range].beam-b-range::-webkit-slider-thumb { appearance:none; width:12px; height:12px; background:var(--c2); cursor:pointer; }
+
+.particle-info { background: rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 10px 12px; font-size: 9px; line-height: 1.8; color: var(--dim); }
+
+/* Level Tabs */
+.level-tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+.level-tab {
+  flex: 1; padding: 8px 4px; text-align: center;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--dim); font-family: 'Space Mono', monospace;
+  font-size: 9px; cursor: pointer; transition: all 0.2s;
+}
+.level-tab.active { background: var(--c4); border-color: var(--c4); color: #000; font-weight: bold; }
+.level-tab[data-lv="1"]:hover { border-color: var(--c1); }
+.level-tab[data-lv="2"]:hover { border-color: var(--c5); }
+.level-tab[data-lv="3"]:hover { border-color: var(--c3); }
+
+/* Stage */
+.stage { display: flex; flex-direction: column; gap: 12px; }
+.canvas-wrap {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--c4);
+  position: relative;
+  overflow: hidden;
+}
+#collider-canvas { display: block; width: 100%; height: auto; background: #03050d; }
+.fire-row { display: flex; justify-content: center; padding: 12px; background: var(--panel); border: 1px solid var(--border); }
+#fire-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: 3px;
+  padding: 10px 36px;
+  background: transparent; border: 1px solid var(--c4);
+  color: var(--c4); cursor: pointer; transition: all 0.2s;
+}
+#fire-btn:hover { background: var(--c4); color: #000; box-shadow: 0 0 20px var(--c4); }
+#fire-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.progress-bar { height: 2px; background: var(--border); margin-top: 8px; overflow: hidden; }
+.progress-fill { width: 0%; height: 100%; background: var(--c4); transition: width 0.05s; }
+
+/* Results Panel */
+.results { background: var(--panel); border: 1px solid var(--border); border-top: 2px solid var(--c3); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.results-title { font-size: 9px; letter-spacing: 2px; color: var(--c3); text-transform: uppercase; }
+.result-row { display: flex; justify-content: space-between; font-size: 9px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+.result-key { color: var(--dim); }
+.result-val { font-weight: 700; }
+.products-list { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; max-height: 200px; overflow-y: auto; }
+.product-item { font-size: 9px; padding: 6px 10px; background: rgba(0,0,0,0.3); border-left: 2px solid; line-height: 1.5; }
+.log-area { font-family: 'Space Mono', monospace; font-size: 9px; background: var(--bg); border: 1px solid var(--border); padding: 10px; max-height: 150px; overflow-y: auto; }
+.log-line { padding: 3px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+.log-key { color: var(--dim); }
+.log-val { color: var(--c3); }
+.log-val.warn { color: var(--c4); }
+.log-val.hot { color: var(--c2); }
+
+.alpha-mini { background: var(--bg); border: 1px solid var(--border); padding: 10px; margin-top: 8px; }
+.alpha-mini-title { font-size: 8px; letter-spacing: 1px; color: var(--dim); margin-bottom: 6px; }
+#alpha-mini-canvas { display: block; width: 100%; height: 70px; }
+
+.bottom-row { margin-top: 16px; display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.stat-card { background: var(--panel); border: 1px solid var(--border); padding: 12px; }
+.stat-card-label { font-size: 8px; letter-spacing: 2px; color: var(--dim); text-transform: uppercase; }
+.stat-card-val { font-size: 18px; font-weight: 700; margin: 4px 0; }
+.stat-card-desc { font-size: 8px; color: var(--dim); }
+
+.insight { margin-top: 16px; background: rgba(0,229,255,0.03); border-left: 2px solid var(--c1); padding: 12px 16px; font-family: 'Crimson Pro', serif; font-size: 14px; font-style: italic; line-height: 1.5; }
+.insight strong { font-style: normal; font-family: 'Space Mono', monospace; font-size: 9px; color: var(--c1); }
+
+.collision-badge {
+  position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+  font-size: 8px; letter-spacing: 2px; padding: 3px 10px;
+  border: 1px solid; background: rgba(0,0,0,0.6);
+  pointer-events: none; white-space: nowrap;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="hdr-left">
+    <div class="eyebrow">Yang-Mills Theory // Quantum Chromodynamics</div>
+    <h1>Yang-Mills <em>Collider</em><br>Pro — QCD Engine</h1>
+  </div>
+  <div class="hdr-badge">SU(3) × MILLENNIUM PROBLEM</div>
+</header>
+
+<div class="layout">
+
+  <!-- LEFT: Beam A + Level -->
+  <div>
+    <div class="beam-panel beam-a">
+      <div class="panel-title">◀ Beam A</div>
+      <div class="particle-grid" id="grid-a"></div>
+      <div class="slider-row">
+        <div class="slider-label">Energy (GeV) <span id="ea-val">6500</span></div>
+        <input type="range" class="beam-a-range" id="ea-slider" min="100" max="7000" step="100" value="6500">
+      </div>
+      <div class="particle-info" id="info-a"></div>
+    </div>
+    
+    <div class="beam-panel" style="margin-top:14px;border-top:2px solid var(--c4)">
+      <div class="panel-title">SIMULATION LEVEL</div>
+      <div class="level-tabs">
+        <button class="level-tab active" data-lv="1" onclick="setLevel(1)">LV.1<br>Analytic</button>
+        <button class="level-tab" data-lv="2" onclick="setLevel(2)">LV.2<br>Monte Carlo</button>
+        <button class="level-tab" data-lv="3" onclick="setLevel(3)">LV.3<br>Heavy Ion</button>
+      </div>
+      <div id="level-desc" style="font-size:9px;color:var(--dim);line-height:1.6;margin:8px 0 4px">
+        <span style="color:var(--c1)">2-loop RGE</span> — α_s(μ) 계산, 즉시 실행
+      </div>
+      <div id="n-events-group" style="display:none; margin-top:8px">
+        <div class="slider-label">MC Events</div>
+        <select id="n-events" style="background:var(--bg);color:var(--text);border:1px solid var(--border);padding:5px;font-family:'Space Mono';font-size:9px;width:100%">
+          <option value="500">500 events</option>
+          <option value="2000" selected>2,000 events</option>
+          <option value="5000">5,000 events</option>
+        </select>
+      </div>
+      <div id="ion-group" style="display:none; margin-top:8px">
+        <div class="slider-label">Nuclear A (Pb) <span id="ionA-val">208</span></div>
+        <input type="range" id="ionA" min="1" max="208" value="208" step="1">
+        <div class="slider-label" style="margin-top:6px">Impact b (fm) <span id="bparam-val">0.0</span></div>
+        <input type="range" id="bparam" min="0" max="15" value="0" step="0.5">
+      </div>
+    </div>
+  </div>
+
+  <!-- CENTER: Canvas -->
+  <div class="stage">
+    <div class="canvas-wrap">
+      <canvas id="collider-canvas" height="420"></canvas>
+      <div class="collision-badge" id="ctype-badge">pp → JETS</div>
+      <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+    </div>
+    <div class="fire-row">
+      <button id="fire-btn">⚡ COLLIDE (RUN SIMULATION)</button>
+    </div>
+  </div>
+
+  <!-- RIGHT: Results + Log -->
+  <div>
+    <div class="beam-panel beam-b">
+      <div class="panel-title">Beam B ▶</div>
+      <div class="particle-grid" id="grid-b"></div>
+      <div class="slider-row">
+        <div class="slider-label">Energy (GeV) <span id="eb-val">6500</span></div>
+        <input type="range" class="beam-b-range" id="eb-slider" min="100" max="7000" step="100" value="6500">
+      </div>
+      <div class="particle-info" id="info-b"></div>
+    </div>
+
+    <div class="results">
+      <div class="results-title">COLLISION OUTPUT</div>
+      <div class="result-row">
+        <span class="result-key">√s</span>
+        <span class="result-val" id="res-sqrts" style="color:var(--c4)">13000 GeV</span>
+      </div>
+      <div class="result-row">
+        <span class="result-key">α_s(√s/2)</span>
+        <span class="result-val" id="res-alphas" style="color:var(--c1)">0.118</span>
+      </div>
+      <div class="result-row">
+        <span class="result-key">Regime</span>
+        <span class="result-val" id="res-regime">PERTURBATIVE</span>
+      </div>
+      <div class="result-row">
+        <span class="result-key">Dominant process</span>
+        <span class="result-val" id="res-process" style="color:var(--c5)">gg → gg</span>
+      </div>
+      
+      <div class="products-list" id="products-list"></div>
+      
+      <div class="alpha-mini">
+        <div class="alpha-mini-title">α_s(μ) RUNNING — 2-loop RGE</div>
+        <canvas id="alpha-mini-canvas" height="70"></canvas>
+      </div>
+      
+      <div class="log-area" id="log-area">
+        <div class="log-line"><span class="log-key">Status</span><span class="log-val">Ready</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-row">
+  <div class="stat-card"><div class="stat-card-label">CM Energy √s</div><div class="stat-card-val" id="stat-sqrts" style="color:var(--c4)">13 TeV</div><div class="stat-card-desc">LHC nominal</div></div>
+  <div class="stat-card"><div class="stat-card-label">α_s(√s/2)</div><div class="stat-card-val" id="stat-alphas" style="color:var(--c1)">0.118</div><div class="stat-card-desc">Running coupling</div></div>
+  <div class="stat-card"><div class="stat-card-label">QGP Status</div><div class="stat-card-val" id="stat-state" style="color:var(--c3)">—</div><div class="stat-card-desc">ε₀ > 2 GeV/fm³</div></div>
+  <div class="stat-card"><div class="stat-card-label">Confinement</div><div class="stat-card-val" id="stat-conf" style="color:var(--c3)">BROKEN</div><div class="stat-card-desc">High-T deconfinement</div></div>
+</div>
+
+<div class="insight">
+  <strong>YANG-MILLS & MASS GAP</strong><br>
+  This simulator implements the 2-loop β-function for α_s(μ), PDF-sampled Monte Carlo for jet production,
+  and Glauber modeling for heavy-ion collisions. The mass gap — why quarks are confined — emerges from
+  non-perturbative QCD and is observed in lattice simulations (m_glueball ≈ 1.6 GeV). The Millennium Problem
+  asks for a rigorous proof of the mass gap in 4D Yang-Mills theory. It remains UNSOLVED.
+</div>
+
+</div>
+
+<script>
+// ============================================================
+// PHYSICS ENGINE (from v2)
+// ============================================================
+const MZ = 91.1876;
+const ALPHAS_MZ = 0.1181;
+const LAMBDA_QCD = 0.213;
+const NF_THRESHOLDS = [1.27, 4.18, 173.1];
+
+function nf(mu) {
+  let n = 3;
+  if (mu > NF_THRESHOLDS[0]) n++;
+  if (mu > NF_THRESHOLDS[1]) n++;
+  if (mu > NF_THRESHOLDS[2]) n++;
+  return n;
+}
+
+function beta0(mu) { return 11 - 2 * nf(mu) / 3; }
+function beta1(mu) { return 102 - 38 * nf(mu) / 3; }
+
+function alphaS(mu) {
+  if (mu < LAMBDA_QCD * 1.2) return 1.5;
+  const b0 = beta0(mu);
+  const t = Math.log(mu / MZ);
+  const as1 = ALPHAS_MZ / (1 + (b0 * ALPHAS_MZ / (2 * Math.PI)) * t);
+  if (as1 < 0 || as1 > 1.5) return 1.5;
+  const b1 = beta1(mu);
+  const corr = 1 + (b1 / (4 * Math.PI * b0)) * as1 * Math.log(1 + (b0 * ALPHAS_MZ / (2 * Math.PI)) * t);
+  return Math.max(0.05, Math.min(1.5, as1 * corr));
+}
+
+function regime(as) {
+  if (as < 0.3) return { label: 'PERTURBATIVE', cls: '' };
+  if (as < 0.8) return { label: 'MARGINAL', cls: 'warn' };
+  return { label: 'CONFINED', cls: 'hot' };
+}
+
+function gluonPDF(x, Q) {
+  const A = 2.8, delta = 0.35, n = 5.6;
+  return A * Math.pow(x, -delta) * Math.pow(1 - x, n);
+}
+
+function runMonteCarlo(sqrts, nEvents) {
+  const results = { jets: [], meanPt: 0, maxPt: 0, nJets: 0, ptHist: new Array(20).fill(0), totCrossSection: 0 };
+  const as = alphaS(sqrts / 2);
+  let sumPt = 0;
+  for (let i = 0; i < nEvents; i++) {
+    const x1 = Math.pow(Math.random(), 1/0.35) * 0.5 + 0.01;
+    const x2 = Math.pow(Math.random(), 1/0.35) * 0.5 + 0.01;
+    const sqrts_hat = sqrts * Math.sqrt(x1 * x2);
+    if (sqrts_hat < 10) continue;
+    const w = gluonPDF(x1, sqrts_hat) * gluonPDF(x2, sqrts_hat);
+    const pT_min = 5, pT_max = sqrts_hat / 2;
+    const u = Math.random();
+    const pT = pT_min / Math.pow(u, 1/3);
+    if (pT > pT_max) continue;
+    const cosTheta = 1 - 2 * Math.random();
+    const eta = -0.5 * Math.log((1 + Math.abs(cosTheta)) / (1 - Math.abs(cosTheta) + 1e-9));
+    const accept = w / (gluonPDF(0.1, sqrts_hat) * gluonPDF(0.1, sqrts_hat) + 1e-9);
+    if (Math.random() > accept) continue;
+    const jet = { pT, eta: eta * (Math.random() > 0.5 ? 1 : -1), phi: Math.random() * 2 * Math.PI, x1, x2 };
+    results.jets.push(jet);
+    sumPt += pT;
+    results.maxPt = Math.max(results.maxPt, pT);
+    const ptBin = Math.min(19, Math.floor(pT / 100));
+    results.ptHist[ptBin]++;
+  }
+  results.nJets = results.jets.length;
+  results.meanPt = results.nJets > 0 ? sumPt / results.nJets : 0;
+  const sigma_est = Math.PI * as * as / (Math.pow(sqrts * 0.2, 2)) * 0.389e6;
+  results.totCrossSection = sigma_est * results.nJets / Math.max(1, nEvents);
+  return results;
+}
+
+function runHeavyIon(sqrts, A, bParam) {
+  const R_A = 1.2 * Math.pow(A, 1/3);
+  const T_A = A / (Math.PI * R_A * R_A);
+  const overlapT = T_A * T_A * Math.PI * R_A * R_A * Math.exp(-bParam * bParam / (R_A * R_A));
+  const sigma_NN = 67;
+  const Ncoll = Math.max(1, overlapT * sigma_NN * 0.1);
+  const Npart = Math.min(2 * A, 2 * A * (1 - Math.exp(-T_A * sigma_NN * 0.05)));
+  const dNdy = 2.5 * Math.pow(Ncoll, 0.88);
+  const tau0 = 0.3;
+  const epsilon_0 = 0.2 * dNdy / (Math.PI * Math.pow(R_A, 2) * tau0);
+  const eps_QGP = 2.0;
+  const QGP_formed = epsilon_0 > eps_QGP;
+  const T_init = Math.pow(epsilon_0 / (48 * Math.PI * Math.PI / 90 * Math.pow(Math.PI, 2)), 0.25) * 0.197;
+  const eccentricity = bParam > 0 ? (bParam * bParam) / (2 * R_A * R_A + bParam * bParam) * 0.6 : 0;
+  const v2 = eccentricity * 0.18;
+  const dEdx = QGP_formed ? 1.5 * Math.log(T_init / 0.16 + 1) : 0;
+  const N_charged = 2.5 * dNdy;
+  return {
+    Ncoll: Math.round(Ncoll), Npart: Math.round(Npart),
+    epsilon_0: epsilon_0.toFixed(2), T_init: (T_init * 1000).toFixed(0),
+    QGP_formed, v2: (v2 * 100).toFixed(1), dEdx: dEdx.toFixed(2),
+    N_charged: Math.round(N_charged), N_pions: Math.round(N_charged * 0.7),
+    N_kaons: Math.round(N_charged * 0.15), N_protons: Math.round(N_charged * 0.15),
+    bParam, R_A: R_A.toFixed(2)
+  };
+}
+
+// ============================================================
+// PARTICLE DATA
+// ============================================================
+const PARTICLES = {
+  p:   { name: 'Proton', sym: 'p', quark: true, heavy: false, constituents: ['u','u','d'], color: '#00e5ff', desc: 'uud quarks\nSU(3) color singlet\nMass: 938 MeV' },
+  n:   { name: 'Neutron', sym: 'n', quark: true, heavy: false, constituents: ['u','d','d'], color: '#44aaff', desc: 'udd quarks\nMass: 940 MeV' },
+  Pb:  { name: 'Lead-208', sym: '²⁰⁸Pb', quark: true, heavy: true, constituents: [], color: '#ffb020', desc: '82 protons, 126 neutrons\nHeavy ion' },
+  e:   { name: 'Electron', sym: 'e⁻', quark: false, heavy: false, constituents: [], color: '#a0ff60', desc: 'Point lepton\nNo color charge' },
+  ep:  { name: 'Positron', sym: 'e⁺', quark: false, heavy: false, constituents: [], color: '#ff80a0', desc: 'Antielectron' },
+  mu:  { name: 'Muon', sym: 'μ⁻', quark: false, heavy: false, constituents: [], color: '#cc66ff', desc: 'Heavy lepton\nMass: 106 MeV' },
+};
+const ORDER = ['p', 'n', 'Pb', 'e', 'ep', 'mu'];
+
+// ============================================================
+// GLOBAL STATE
+// ============================================================
+let state = { pA: 'p', pB: 'p', Ea: 6500, Eb: 6500, level: 1, colliding: false };
+let animId = null, jetsAnim = [], qgpBlobs = [], particlesAnim = [];
+
+// ============================================================
+// UI Helpers
+// ============================================================
+function sqrtS(Ea, Eb) { return 2 * Math.sqrt(Ea * Eb); }
+
+function collisionType(pA, pB) {
+  const hA = PARTICLES[pA], hB = PARTICLES[pB];
+  if (pA === 'p' && pB === 'p') return 'pp';
+  if ((pA === 'p' || pA === 'n') && (pB === 'Pb' || pA === 'Pb')) return 'pPb';
+  if (pA === 'Pb' && pB === 'Pb') return 'PbPb';
+  if (!hA.quark && !hB.quark) return 'leptonic';
+  if ((!hA.quark && hB.quark) || (hA.quark && !hB.quark)) return 'DIS';
+  return 'hadronic';
+}
+
+function dominantProcess(type, level, sqrts) {
+  if (level === 2) return 'MC: gg → gg (PDF sampled)';
+  if (level === 3) return 'Glauber: gg → glasma → QGP';
+  if (type === 'leptonic') return 'e⁺e⁻ → γ*/Z → ff̄';
+  if (type === 'DIS') return 'γ* + q → q';
+  if (type === 'PbPb') return 'gg → QGP + jets';
+  return sqrts > 5000 ? 'gg → gg (gluon fusion)' : 'gq → gq';
+}
+
+function getProducts(type, level, sqrts, aS, hiResult) {
+  const products = [];
+  if (level === 3 && hiResult) {
+    products.push({ name: 'Quark-Gluon Plasma', desc: `ε₀ = ${hiResult.epsilon_0} GeV/fm³, T_init = ${hiResult.T_init} MeV`, color: 'var(--c4)' });
+    products.push({ name: `N_coll = ${hiResult.Ncoll}, N_part = ${hiResult.Npart}`, desc: 'Glauber model participants', color: 'var(--c3)' });
+    products.push({ name: `v₂ (elliptic flow) = ${hiResult.v2}%`, desc: 'Anisotropic flow', color: 'var(--c5)' });
+    products.push({ name: `Hadrons: ${hiResult.N_charged} charged`, desc: `${hiResult.N_pions} π, ${hiResult.N_kaons} K, ${hiResult.N_protons} p`, color: 'var(--c1)' });
+    return products;
+  }
+  if (level === 2) {
+    products.push({ name: 'Monte Carlo Jets', desc: 'gg → gg scattering with PDF sampling', color: 'var(--c1)' });
+    products.push({ name: 'pT distribution', desc: 'Power-law ~ 1/pT⁴', color: 'var(--c5)' });
+    return products;
+  }
+  if (type === 'PbPb') {
+    products.push({ name: 'Quark-Gluon Plasma', desc: 'Deconfined medium', color: 'var(--c4)' });
+    products.push({ name: 'Thousands of hadrons', desc: 'π, K, p, ...', color: 'var(--c3)' });
+  } else if (type === 'leptonic') {
+    products.push({ name: 'Fermion pairs', desc: 'e⁺e⁻ → ff̄', color: 'var(--c3)' });
+    if (sqrts > 80) products.push({ name: 'W/Z bosons', desc: 'Electroweak', color: 'var(--c5)' });
+  } else {
+    products.push({ name: 'Hard jets', desc: aS < 0.3 ? 'Perturbative QCD' : 'Non-perturbative', color: 'var(--c1)' });
+    products.push({ name: 'Underlying event', desc: 'Soft hadrons', color: 'var(--dim)' });
+  }
+  return products;
+}
+
+// ============================================================
+// PHYSICS ENGINE — 2D PARTICLE SIMULATION
+// Boris integrator + Bethe-Bloch + 4-momentum decay + branching ratios
+// ============================================================
+
+// ── Particle database (mass GeV, charge, color, decay channels) ──
+const PARTICLE_DB = {
+  proton:     { sym:'p',   mass:0.938272, charge:+1, color:'#00e5ff', lifetime:60,  decays:[] },
+  pion_p:     { sym:'π⁺',  mass:0.139570, charge:+1, color:'#ffb020', lifetime:2.2, decays:[
+    { products:['muon_p','numu'],     br:0.9999 },
+    { products:['positron','nue'],    br:0.0001 }
+  ]},
+  pion_m:     { sym:'π⁻',  mass:0.139570, charge:-1, color:'#ff9030', lifetime:2.2, decays:[
+    { products:['muon_m','antinumu'], br:0.9999 },
+    { products:['electron','antinue'],br:0.0001 }
+  ]},
+  pion_0:     { sym:'π⁰',  mass:0.134977, charge: 0, color:'#ff6644', lifetime:0.1, decays:[
+    { products:['photon','photon'],   br:0.9882 }
+  ]},
+  kaon_p:     { sym:'K⁺',  mass:0.493677, charge:+1, color:'#cc66ff', lifetime:1.6, decays:[
+    { products:['muon_p','numu'],     br:0.6356 },
+    { products:['pion_p','pion_0'],   br:0.2067 },
+    { products:['pion_p','pion_p','pion_m'], br:0.0559 }
+  ]},
+  kaon_m:     { sym:'K⁻',  mass:0.493677, charge:-1, color:'#aa44ee', lifetime:1.6, decays:[
+    { products:['muon_m','antinumu'], br:0.6356 },
+    { products:['pion_m','pion_0'],   br:0.2067 }
+  ]},
+  muon_p:     { sym:'μ⁺',  mass:0.105658, charge:+1, color:'#a0ff60', lifetime:2.8, decays:[
+    { products:['positron','nue','antinumu'], br:1.0 }
+  ]},
+  muon_m:     { sym:'μ⁻',  mass:0.105658, charge:-1, color:'#70dd40', lifetime:2.8, decays:[
+    { products:['electron','antinue','numu'], br:1.0 }
+  ]},
+  electron:   { sym:'e⁻',  mass:0.000511, charge:-1, color:'#ffffff', lifetime:60,  decays:[] },
+  positron:   { sym:'e⁺',  mass:0.000511, charge:+1, color:'#ffccff', lifetime:60,  decays:[] },
+  photon:     { sym:'γ',   mass:0.0,      charge: 0, color:'#ffffaa', lifetime:1.5, decays:[] },
+  nue:        { sym:'νe',  mass:0.0,      charge: 0, color:'#113311', lifetime:0.05,decays:[] },
+  antinue:    { sym:'ν̄e', mass:0.0,      charge: 0, color:'#113311', lifetime:0.05,decays:[] },
+  numu:       { sym:'νμ',  mass:0.0,      charge: 0, color:'#113311', lifetime:0.05,decays:[] },
+  antinumu:   { sym:'ν̄μ', mass:0.0,      charge: 0, color:'#113311', lifetime:0.05,decays:[] },
+};
+
+// Bethe-Bloch energy loss
+const K_BB = 0.00003, mE_GeV = 0.000511, I_GeV = 175e-9;
+function betheBloch2D(q, mass, px, py) {
+  if (q === 0 || mass < 0.001) return 0;
+  const p2 = px*px + py*py;
+  const p  = Math.sqrt(p2);
+  const E  = Math.sqrt(p2 + mass*mass);
+  const g  = E / mass;
+  const beta = p / (g * mass);
+  if (beta < 0.01) return 0;
+  const b2 = beta*beta;
+  const arg = Math.max(1.01, (2*mE_GeV*b2*g*g) / I_GeV);
+  return Math.max(0, K_BB * q*q / b2 * (Math.log(arg) - b2));
+}
+
+// 2-body CM decay → returns two momentum 2-vectors
+function twoBodyDecay2D(ppx, ppy, parentM, m1, m2) {
+  const s = parentM * parentM;
+  if (s < (m1+m2)*(m1+m2)) return null;
+  const pCM = Math.sqrt(Math.max(0, (s-(m1+m2)*(m1+m2))*(s-(m1-m2)*(m1-m2))) / (4*s));
+  // random angle in CM
+  const theta = Math.random() * Math.PI * 2;
+  const p1CMx = Math.cos(theta)*pCM, p1CMy = Math.sin(theta)*pCM;
+  // Lorentz boost back to lab
+  const pMag = Math.sqrt(ppx*ppx + ppy*ppy);
+  const pE   = Math.sqrt(pMag*pMag + parentM*parentM);
+  if (pMag < 1e-9) return { p1:[p1CMx, p1CMy], p2:[-p1CMx, -p1CMy] };
+  const nx = ppx/pMag, ny = ppy/pMag;
+  const beta = pMag/pE, gam = pE/parentM;
+  function boost(cmx, cmy, m_b) {
+    const E_cm = Math.sqrt(cmx*cmx + cmy*cmy + m_b*m_b);
+    const pL   = cmx*nx + cmy*ny;
+    const pL2  = gam*(pL + beta*E_cm);
+    const dpL  = pL2 - pL;
+    return [cmx + dpL*nx, cmy + dpL*ny];
+  }
+  return { p1: boost(p1CMx, p1CMy, m1), p2: boost(-p1CMx, -p1CMy, m2) };
+}
+
+// Boris step for 2D (B field perpendicular to canvas = into screen, along Z)
+// dp/dt = q(v × B), B = Bz ẑ → in 2D: Fx = q·vy·Bz, Fy = -q·vx·Bz
+const PSCALE = 60; // GeV → canvas px/s
+function borisStep2D(p, dt, Bz) {
+  if (p.charge === 0) {
+    p.x += p.px * dt * PSCALE;
+    p.y += p.py * dt * PSCALE;
+    return;
+  }
+  const q = p.charge, m = p.mass;
+
+  function getGamma(px, py) {
+    return Math.sqrt(1 + (px*px + py*py)/(m*m));
+  }
+
+  // Bethe-Bloch half-kick
+  const dEdx = betheBloch2D(q, m, p.px, p.py);
+  const pMag0 = Math.sqrt(p.px*p.px + p.py*p.py);
+  if (pMag0 > 1e-6) {
+    const loss = Math.min(pMag0*0.5, dEdx*dt);
+    const r = Math.max(0, pMag0-loss)/pMag0;
+    p.px *= r; p.py *= r;
+  }
+
+  // Boris: t = (q*Bz*dt)/(2*gamma*m)
+  const g = getGamma(p.px, p.py);
+  const tZ = (q * Bz * dt * 0.5) / (g * m);
+  const tMag2 = tZ * tZ;  // only z-component
+  // p⁻ = p + p × t  (2D: only z-rotation)
+  const pmx = p.px - p.py * tZ;
+  const pmy = p.py + p.px * tZ;
+  // s = 2t/(1+|t|²)
+  const sZ = 2*tZ / (1 + tMag2);
+  // p⁺ = p⁻ + p⁻ × s
+  p.px = p.px + (- pmy * sZ);
+  p.py = p.py + (  pmx * sZ);
+
+  // Second Bethe-Bloch half-kick
+  const pMag1 = Math.sqrt(p.px*p.px + p.py*p.py);
+  if (pMag1 > 1e-6) {
+    const loss = Math.min(pMag1*0.5, dEdx*dt);
+    const r = Math.max(0, pMag1-loss)/pMag1;
+    p.px *= r; p.py *= r;
+  }
+
+  // Position: v = p/(γm), scene units
+  const g2 = getGamma(p.px, p.py);
+  const invGM = 1.0 / (g2 * m);
+  p.x += p.px * invGM * dt * PSCALE;
+  p.y += p.py * invGM * dt * PSCALE;
+}
+
+// ── Particle factory ──
+function makeParticle(typeKey, x, y, px, py) {
+  const d = PARTICLE_DB[typeKey];
+  if (!d) return null;
+  return {
+    typeKey, x, y, px, py,
+    mass: d.mass, charge: d.charge, sym: d.sym, color: d.color,
+    life: d.lifetime * (0.6 + Math.random()*0.8),
+    decays: d.decays,
+    trail: [[x,y]],
+    alive: true
+  };
+}
+
+// ── Decay a particle → return children ──
+function decayParticle2D(p) {
+  if (!p.decays || p.decays.length === 0) return [];
+  const roll = Math.random();
+  let cum = 0, chosen = null;
+  for (const ch of p.decays) {
+    cum += ch.br;
+    if (roll <= cum) { chosen = ch; break; }
+  }
+  if (!chosen) chosen = p.decays[p.decays.length-1];
+
+  const children = [];
+  if (chosen.products.length === 2) {
+    const [k1, k2] = chosen.products;
+    const d1 = PARTICLE_DB[k1], d2 = PARTICLE_DB[k2];
+    if (!d1 || !d2) return [];
+    const result = twoBodyDecay2D(p.px, p.py, p.mass, d1.mass, d2.mass);
+    if (!result) return [];
+    const c1 = makeParticle(k1, p.x, p.y, result.p1[0], result.p1[1]);
+    const c2 = makeParticle(k2, p.x, p.y, result.p2[0], result.p2[1]);
+    if (c1) children.push(c1);
+    if (c2) children.push(c2);
+  } else {
+    // 3-body: distribute momentum roughly
+    for (const k of chosen.products) {
+      const d = PARTICLE_DB[k]; if (!d) continue;
+      const frac = 0.25 + Math.random()*0.5;
+      const dAngle = (Math.random()-0.5)*Math.PI*0.8;
+      const pMag = Math.sqrt(p.px*p.px + p.py*p.py) * frac;
+      const baseAngle = Math.atan2(p.py, p.px) + dAngle;
+      const c = makeParticle(k, p.x, p.y, Math.cos(baseAngle)*pMag, Math.sin(baseAngle)*pMag);
+      if (c) children.push(c);
+    }
+  }
+  return children;
+}
+
+// ── Multiplicity from αs and √s (same formula as 3D version) ──
+function expectedMultiplicity2D(sqrts) {
+  const mu = sqrts/2;
+  const as = alphaS(Math.max(2, mu));
+  const lnS = Math.log(Math.max(2, sqrts/0.938));
+  return Math.min(200, Math.max(4, Math.floor(2 + as * 22 * lnS * lnS * (0.8 + Math.random()*0.4))));
+}
+
+// Primary particle keys (weighted toward pions, like real QCD)
+const PRIMARY_2D = ['proton','pion_p','pion_m','pion_0','kaon_p','kaon_m','muon_p','muon_m','electron','positron'];
+const PRIMARY_W  = [0.06,   0.25,    0.25,    0.08,    0.07,    0.07,    0.06,    0.06,    0.03,      0.03];
+
+// ── Canvas / idle draw ──
+function initCanvas() {
+  const canvas = document.getElementById('collider-canvas');
+  const w = canvas.offsetWidth;
+  const h = 420;
+  canvas.width = w;
+  canvas.height = h;
+  return { ctx: canvas.getContext('2d'), w, h };
+}
+
+function drawIdle() {
+  const canvas = document.getElementById('collider-canvas');
+  const w = canvas.offsetWidth;
+  const h = 420;
+  canvas.width = w;
+  canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, w, h);
+  const cy = h / 2;
+
+  // Beam axis
+  ctx.strokeStyle = 'rgba(0,229,255,0.1)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([6, 8]);
+  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Detector rings (solenoid cross-section)
+  [70, 110, 155].forEach(r => {
+    ctx.strokeStyle = 'rgba(0,229,255,0.04)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(w/2, cy, r, 0, Math.PI*2); ctx.stroke();
+  });
+
+  const pA = PARTICLES[state.pA], pB = PARTICLES[state.pB];
+  ctx.fillStyle = pA.color;
+  ctx.shadowBlur = 12; ctx.shadowColor = pA.color;
+  ctx.beginPath(); ctx.arc(40, cy, pA.heavy ? 8 : 5, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = pB.color;
+  ctx.shadowColor = pB.color;
+  ctx.beginPath(); ctx.arc(w - 40, cy, pB.heavy ? 8 : 5, 0, Math.PI * 2); ctx.fill();
+  ctx.shadowBlur = 0;
+
+  ctx.font = '9px Space Mono';
+  ctx.fillStyle = pA.color;
+  ctx.textAlign = 'left';
+  ctx.fillText(pA.sym, 20, cy - 12);
+  ctx.fillStyle = pB.color;
+  ctx.textAlign = 'right';
+  ctx.fillText(pB.sym, w - 20, cy - 12);
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+  ctx.lineWidth = 1;
+  const s = 14;
+  ctx.beginPath(); ctx.moveTo(w/2 - s, cy); ctx.lineTo(w/2 + s, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(w/2, cy - s); ctx.lineTo(w/2, cy + s); ctx.stroke();
+
+  const sqrts = sqrtS(state.Ea, state.Eb);
+  ctx.fillStyle = 'rgba(255,176,32,0.5)';
+  ctx.font = '8px Space Mono';
+  ctx.textAlign = 'center';
+  ctx.fillText(`√s = ${sqrts >= 1000 ? (sqrts/1000).toFixed(1)+' TeV' : sqrts.toFixed(0)+' GeV'}`, w/2, cy - 20);
+}
+
+// ── Main animation with full physics ──
+function launchCollisionAnimation(mcResult, hiResult, type, level, sqrts) {
+  if (state.colliding) return;
+  state.colliding = true;
+  document.getElementById('fire-btn').disabled = true;
+
+  const canvas = document.getElementById('collider-canvas');
+  const w = canvas.offsetWidth;
+  const h = 420;
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  const cy = h / 2, cx = w / 2;
+
+  // B field (Tesla, into screen = positive Bz for canvas coords)
+  const Bz = 3.8; // typical ATLAS/CMS solenoid
+
+  // Generate particles at t=0
+  let simParticles = [];
+  const N = level === 3
+    ? (hiResult ? Math.min(80, Math.round(hiResult.N_charged * 0.25)) : 30)
+    : (level === 2 && mcResult ? Math.min(60, mcResult.nJets * 2 + 20) : expectedMultiplicity2D(sqrts));
+
+  for (let i = 0; i < N; i++) {
+    // Pick type with weights
+    const roll = Math.random();
+    let cum = 0, key = PRIMARY_2D[0];
+    for (let j = 0; j < PRIMARY_2D.length; j++) {
+      cum += PRIMARY_W[j];
+      if (roll <= cum) { key = PRIMARY_2D[j]; break; }
+    }
+    const d = PARTICLE_DB[key];
+    // Kinetic energy from √s / N with fluctuation
+    const KE = (sqrts / N) * (0.3 + Math.random()*1.6);
+    const pMag = Math.sqrt(Math.max(0, KE*(KE + 2*d.mass)));
+    const angle = Math.random() * Math.PI * 2;
+    const p = makeParticle(key, cx, cy, Math.cos(angle)*pMag, Math.sin(angle)*pMag);
+    if (p) simParticles.push(p);
+  }
+
+  // For level 2: use actual jet angles from MC
+  if (level === 2 && mcResult && mcResult.jets) {
+    simParticles = [];
+    const topJets = mcResult.jets.slice(0, Math.min(50, mcResult.jets.length));
+    topJets.forEach(jet => {
+      const key = Math.random() < 0.5 ? 'pion_p' : 'pion_m';
+      const d = PARTICLE_DB[key];
+      const pMag = Math.max(0.1, jet.pT / 10);
+      const angle = jet.phi;
+      const p = makeParticle(key, cx, cy, Math.cos(angle)*pMag, Math.sin(angle)*pMag);
+      if (p) simParticles.push(p);
+    });
+  }
+
+  let frame = 0;
+  const DT = 0.022; // simulation timestep
+  let decayLog = 0, rareLog = 0;
+
+  function tick() {
+    ctx.clearRect(0, 0, w, h);
+    frame++;
+
+    // Collision flash
+    if (frame >= 1 && frame <= 12) {
+      const intensity = 1 - frame/12;
+      const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 80);
+      grd.addColorStop(0, `rgba(255,200,80,${intensity*0.8})`);
+      grd.addColorStop(1, 'transparent');
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    // Detector rings
+    [70, 110, 155].forEach(r => {
+      ctx.strokeStyle = 'rgba(0,229,255,0.05)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
+    });
+
+    // Beam axis
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 6]);
+    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Physics step + draw
+    const newParticles = [];
+    for (let i = simParticles.length - 1; i >= 0; i--) {
+      const p = simParticles[i];
+
+      // Step physics
+      borisStep2D(p, DT, Bz);
+      p.life -= DT;
+
+      // Record trail (skip neutrinos)
+      if (!p.typeKey.includes('nu')) {
+        p.trail.push([p.x, p.y]);
+        if (p.trail.length > 35) p.trail.shift();
+      }
+
+      // Out of bounds or dead
+      const oob = Math.abs(p.x - cx) > w*0.55 || Math.abs(p.y - cy) > h*0.55;
+      if (p.life <= 0 || oob) {
+        // Decay if unstable
+        if (p.life <= 0 && p.decays && p.decays.length > 0) {
+          // Choose channel by branching ratio
+          const roll2 = Math.random();
+          let cum2 = 0, ch2 = null;
+          for (const ch of p.decays) { cum2 += ch.br; if (roll2 <= cum2) { ch2 = ch; break; } }
+          if (!ch2) ch2 = p.decays[p.decays.length-1];
+          const isRare = ch2.br < 0.01;
+          if (isRare) rareLog++;
+          decayLog++;
+          const children = decayParticle2D(p);
+          newParticles.push(...children);
+        }
+        simParticles.splice(i, 1);
+        continue;
+      }
+
+      // Draw trail
+      if (p.trail.length > 1 && !p.typeKey.includes('nu')) {
+        ctx.beginPath();
+        ctx.moveTo(p.trail[0][0], p.trail[0][1]);
+        for (let t = 1; t < p.trail.length; t++) ctx.lineTo(p.trail[t][0], p.trail[t][1]);
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = p.charge !== 0 ? 1.2 : 0.6;
+        ctx.globalAlpha = 0.35;
+        ctx.shadowBlur = 0;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+
+      // Draw particle head (charged = glow)
+      if (!p.typeKey.includes('nu')) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.charge !== 0 ? 2.2 : 1.4, 0, Math.PI*2);
+        ctx.fillStyle = p.color;
+        if (p.charge !== 0) { ctx.shadowBlur = 7; ctx.shadowColor = p.color; }
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+    simParticles.push(...newParticles);
+
+    // HUD overlay on canvas
+    ctx.font = '8px Space Mono';
+    ctx.fillStyle = 'rgba(0,229,255,0.5)';
+    ctx.textAlign = 'left';
+    ctx.fillText(`particles: ${simParticles.length}`, 8, 14);
+    ctx.fillText(`decays: ${decayLog}${rareLog>0?' | rare: '+rareLog:''}`, 8, 26);
+    ctx.fillStyle = 'rgba(160,255,96,0.4)';
+    ctx.fillText(`B = ${Bz} T  (Boris integrator)`, 8, h-8);
+
+    if (frame < 300 && simParticles.length > 0) {
+      animId = requestAnimationFrame(tick);
+    } else {
+      state.colliding = false;
+      document.getElementById('fire-btn').disabled = false;
+      drawIdle();
+    }
+  }
+
+  if (animId) cancelAnimationFrame(animId);
+  setTimeout(() => tick(), 30);
+}
+
+// ============================================================
+// MAIN SIMULATION (combines v1 UI + v2 physics)
+// ============================================================
+async function runSimulation() {
+  if (state.colliding) return;
+  
+  const sqrts = sqrtS(state.Ea, state.Eb);
+  const type = collisionType(state.pA, state.pB);
+  const as = alphaS(sqrts / 2);
+  const reg = regime(as);
+  const level = state.level;
+  
+  document.getElementById('fire-btn').disabled = true;
+  document.getElementById('prog-fill').style.width = '0%';
+  const logArea = document.getElementById('log-area');
+  
+  let mcResult = null;
+  let hiResult = null;
+  let logHtml = `<div class="log-line"><span class="log-key">Mode</span><span class="log-val">Level ${level}</span></div>`;
+  
+  if (level === 1) {
+    document.getElementById('prog-fill').style.width = '100%';
+    const proc = dominantProcess(type, level, sqrts);
+    const sigma = Math.PI * as * as / Math.pow(sqrts * 0.2, 2) * 0.389e6;
+    logHtml += `<div class="log-line"><span class="log-key">√s</span><span class="log-val">${sqrts.toLocaleString()} GeV</span></div>
+                <div class="log-line"><span class="log-key">α_s(√s/2)</span><span class="log-val ${reg.cls}">${as.toFixed(5)}</span></div>
+                <div class="log-line"><span class="log-key">Regime</span><span class="log-val ${reg.cls}">${reg.label}</span></div>
+                <div class="log-line"><span class="log-key">n_f</span><span class="log-val">${nf(sqrts / 2)}</span></div>
+                <div class="log-line"><span class="log-key">β₀</span><span class="log-val">${beta0(sqrts / 2).toFixed(3)}</span></div>
+                <div class="log-line"><span class="log-key">σ_est (gg→gg)</span><span class="log-val">${sigma.toExponential(3)} pb</span></div>`;
+    drawIdle();
+    launchCollisionAnimation(null, null, type, level, sqrts);
+  } 
+  else if (level === 2) {
+    const nEv = parseInt(document.getElementById('n-events').value);
+    document.getElementById('prog-fill').style.width = '20%';
+    await new Promise(r => setTimeout(r, 30));
+    mcResult = runMonteCarlo(sqrts, nEv);
+    document.getElementById('prog-fill').style.width = '80%';
+    await new Promise(r => setTimeout(r, 30));
+    logHtml += `<div class="log-line"><span class="log-key">Events</span><span class="log-val">${nEv.toLocaleString()}</span></div>
+                <div class="log-line"><span class="log-key">Jets found</span><span class="log-val">${mcResult.nJets.toLocaleString()}</span></div>
+                <div class="log-line"><span class="log-key">⟨pT⟩</span><span class="log-val">${mcResult.meanPt.toFixed(1)} GeV</span></div>
+                <div class="log-line"><span class="log-key">pT,max</span><span class="log-val">${mcResult.maxPt.toFixed(1)} GeV</span></div>
+                <div class="log-line"><span class="log-key">σ_tot (est.)</span><span class="log-val">${mcResult.totCrossSection.toExponential(2)} pb</span></div>
+                <div class="log-line"><span class="log-key">α_s</span><span class="log-val">${as.toFixed(4)}</span></div>`;
+    document.getElementById('prog-fill').style.width = '100%';
+    launchCollisionAnimation(mcResult, null, type, level, sqrts);
+  } 
+  else if (level === 3) {
+    const ionA = parseInt(document.getElementById('ionA').value);
+    const bParam = parseFloat(document.getElementById('bparam').value);
+    document.getElementById('prog-fill').style.width = '30%';
+    await new Promise(r => setTimeout(r, 30));
+    hiResult = runHeavyIon(sqrts, ionA, bParam);
+document.getElementById('prog-fill').style.width = '100%';
+    logHtml += `<div class="log-line"><span class="log-key">A (Pb)</span><span class="log-val">${ionA}</span></div>
+                <div class="log-line"><span class="log-key">b (fm)</span><span class="log-val">${bParam.toFixed(1)}</span></div>
+                <div class="log-line"><span class="log-key">N_coll</span><span class="log-val">${hiResult.Ncoll}</span></div>
+                <div class="log-line"><span class="log-key">N_part</span><span class="log-val">${hiResult.Npart}</span></div>
+                <div class="log-line"><span class="log-key">ε₀</span><span class="log-val ${hiResult.QGP_formed ? 'hot' : ''}">${hiResult.epsilon_0} GeV/fm³</span></div>
+                <div class="log-line"><span class="log-key">T_init</span><span class="log-val">${hiResult.T_init} MeV</span></div>
+                <div class="log-line"><span class="log-key">QGP formed</span><span class="log-val ${hiResult.QGP_formed ? 'hot' : ''}">${hiResult.QGP_formed ? '✓ YES' : '✗ NO'}</span></div>
+                <div class="log-line"><span class="log-key">v₂ (%)</span><span class="log-val">${hiResult.v2}</span></div>
+                <div class="log-line"><span class="log-key">N_charged</span><span class="log-val">${hiResult.N_charged}</span></div>`;
+    document.getElementById('prog-fill').style.width = '100%';
+    launchCollisionAnimation(null, hiResult, type, level, sqrts);
+  }
+  
+  logArea.innerHTML = logHtml;
+  
+  // Update UI
+  const sqrtsStr = sqrts >= 1000 ? `${(sqrts/1000).toFixed(2)} TeV` : `${sqrts.toFixed(1)} GeV`;
+  document.getElementById('res-sqrts').textContent = sqrtsStr;
+  document.getElementById('res-alphas').textContent = as.toFixed(4);
+  document.getElementById('res-regime').textContent = reg.label;
+  document.getElementById('res-regime').style.color = reg.cls === 'hot' ? 'var(--c2)' : (reg.cls === 'warn' ? 'var(--c4)' : 'var(--c3)');
+  document.getElementById('res-process').textContent = dominantProcess(type, level, sqrts);
+  
+  const products = getProducts(type, level, sqrts, as, hiResult);
+  document.getElementById('products-list').innerHTML = products.map(p => 
+    `<div class="product-item" style="border-color:${p.color};color:${p.color}"><b>${p.name}</b><br><span style="color:var(--dim)">${p.desc}</span></div>`
+  ).join('');
+  
+  const badge = document.getElementById('ctype-badge');
+  const badgeMap = { pp:'pp → JETS', pPb:'p+Pb → QGP', PbPb:'Pb+Pb → QGP', leptonic:'e⁺e⁻ → PAIRS', DIS:'DIS', hadronic:'HADRONIC' };
+  badge.textContent = badgeMap[type] || type;
+  
+  document.getElementById('stat-sqrts').textContent = sqrts >= 1000 ? `${(sqrts/1000).toFixed(1)} TeV` : `${sqrts.toFixed(0)} GeV`;
+  document.getElementById('stat-alphas').textContent = as.toFixed(3);
+  document.getElementById('stat-state').textContent = (level === 3 && hiResult?.QGP_formed) ? 'QGP' : (level === 2 ? 'PARTONS' : 'HADRONS');
+  document.getElementById('stat-conf').textContent = as > 0.8 ? 'ACTIVE' : 'BROKEN';
+  document.getElementById('stat-conf').style.color = as > 0.8 ? 'var(--c2)' : 'var(--c3)';
+  
+  drawAlphaMini();
+  document.getElementById('fire-btn').disabled = false;
+}
+
+// ============================================================
+// UI HELPERS
+// ============================================================
+function setLevel(lv) {
+  state.level = lv;
+  document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.level-tab[data-lv="${lv}"]`).classList.add('active');
+  document.getElementById('n-events-group').style.display = lv === 2 ? 'block' : 'none';
+  document.getElementById('ion-group').style.display = lv === 3 ? 'block' : 'none';
+  const descMap = {
+    1: '<span style="color:var(--c1)">2-loop RGE</span> — α_s(μ) 계산, 즉시 실행',
+    2: '<span style="color:var(--c5)">Monte Carlo</span> — PDF 샘플링, 2→2 산란, pT 분포',
+    3: '<span style="color:var(--c3)">Glauber model</span> — N_coll, ε₀, QGP 형성 조건'
+  };
+  document.getElementById('level-desc').innerHTML = descMap[lv];
+  drawIdle();
+}
+
+function buildGrid(id, beam) {
+  const grid = document.getElementById(id);
+  grid.innerHTML = '';
+  ORDER.forEach(key => {
+    const p = PARTICLES[key];
+    const btn = document.createElement('button');
+    btn.className = `p-btn ${beam === 'A' ? (state.pA === key ? 'active-a' : '') : (state.pB === key ? 'active-b' : '')}`;
+    btn.innerHTML = `<div style="font-size:12px;font-weight:700">${p.sym}</div><div style="opacity:0.7">${p.name.split(' ')[0]}</div>`;
+    btn.onclick = () => {
+      if (beam === 'A') state.pA = key;
+      else state.pB = key;
+      refresh();
+    };
+    grid.appendChild(btn);
+  });
+}
+
+function updateInfo(id, key) {
+  const p = PARTICLES[key];
+  document.getElementById(id).innerHTML = `<b>${p.name}</b><br>${p.desc}`.replace(/\n/g,'<br>');
+}
+
+function drawAlphaMini() {
+  const canvas = document.getElementById('alpha-mini-canvas');
+  const w = canvas.offsetWidth || 240;
+  const h = 70;
+  canvas.width = w;
+  canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, w, h);
+  
+  const sqrts = sqrtS(state.Ea, state.Eb);
+  const logMin = Math.log10(0.5);
+  const logMax = Math.log10(15000);
+  const pad = { l: 28, r: 8, t: 6, b: 16 };
+  
+  const px = lm => pad.l + (lm - logMin) / (logMax - logMin) * (w - pad.l - pad.r);
+  const py = a => h - pad.b - Math.min(a, 1.5) / 1.5 * (h - pad.t - pad.b);
+  
+  ctx.strokeStyle = '#1a2030'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, h - pad.b); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(pad.l, h - pad.b); ctx.lineTo(w - pad.r, h - pad.b); ctx.stroke();
+  
+  ctx.fillStyle = '#404868'; ctx.font = '6px Space Mono';
+  [1, 10, 100, 1000, 10000].forEach(v => {
+    const lv = Math.log10(v);
+    if (lv >= logMin && lv <= logMax) {
+      ctx.fillText(v >= 1000 ? v/1000+'k' : v, px(lv), h - pad.b + 8);
+    }
+  });
+  
+  ctx.strokeStyle = '#00e5ff'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  let first = true;
+  for (let lm = logMin + 0.02; lm <= logMax; lm += 0.03) {
+    const mu = Math.pow(10, lm);
+    const a = alphaS(mu);
+    if (!isFinite(a) || a > 1.5) { first = true; continue; }
+    if (first) { ctx.moveTo(px(lm), py(a)); first = false; }
+    else ctx.lineTo(px(lm), py(a));
+  }
+  ctx.stroke();
+  
+  if (sqrts > 1) {
+    const lsq = Math.log10(sqrts);
+    const aSQ = alphaS(sqrts);
+    ctx.fillStyle = '#ffb020';
+    ctx.shadowBlur = 4; ctx.shadowColor = '#ffb020';
+    ctx.beginPath(); ctx.arc(px(lsq), py(aSQ), 3.5, 0, Math.PI*2); ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+}
+
+function refresh() {
+  buildGrid('grid-a', 'A');
+  buildGrid('grid-b', 'B');
+  updateInfo('info-a', state.pA);
+  updateInfo('info-b', state.pB);
+  
+  const sqrts = sqrtS(state.Ea, state.Eb);
+  const as = alphaS(sqrts / 2);
+  const reg = regime(as);
+  
+  document.getElementById('ea-val').textContent = state.Ea >= 1000 ? (state.Ea/1000).toFixed(1)+'k' : state.Ea;
+  document.getElementById('eb-val').textContent = state.Eb >= 1000 ? (state.Eb/1000).toFixed(1)+'k' : state.Eb;
+  document.getElementById('res-alphas').textContent = as.toFixed(4);
+  document.getElementById('res-regime').textContent = reg.label;
+  document.getElementById('res-sqrts').textContent = sqrts >= 1000 ? `${(sqrts/1000).toFixed(2)} TeV` : `${sqrts.toFixed(1)} GeV`;
+  
+  drawAlphaMini();
+  drawIdle();
+}
+
+// ============================================================
+// EVENT LISTENERS & INIT
+// ============================================================
+document.getElementById('ea-slider').addEventListener('input', e => { state.Ea = parseInt(e.target.value); refresh(); });
+document.getElementById('eb-slider').addEventListener('input', e => { state.Eb = parseInt(e.target.value); refresh(); });
+document.getElementById('fire-btn').addEventListener('click', runSimulation);
+document.getElementById('ionA').addEventListener('input', e => document.getElementById('ionA-val').textContent = e.target.value);
+document.getElementById('bparam').addEventListener('input', e => document.getElementById('bparam-val').textContent = parseFloat(e.target.value).toFixed(1));
+
+window.addEventListener('resize', () => { drawIdle(); drawAlphaMini(); });
+
+refresh();
+setLevel(1);
+</script>
+</body>
+</html>

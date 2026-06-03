@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yang-Mills Collider — Full Physics</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+        :root {
+            --c-bg: #03040f;
+            --c-panel: rgba(4,8,28,0.92);
+            --c-border: #0ff3;
+            --c-accent: #00f5ff;
+            --c-warn: #ff6b35;
+            --c-good: #39ff14;
+            --c-dim: #334;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--c-bg); overflow: hidden; font-family: 'Share Tech Mono', monospace; color: #cde; }
+
+        /* ── HUD panels ── */
+        .hud {
+            position: absolute; z-index: 100;
+            background: var(--c-panel);
+            border: 1px solid var(--c-border);
+            border-radius: 4px;
+            padding: 10px 14px;
+            font-size: 11px;
+            line-height: 1.7;
+            backdrop-filter: blur(6px);
+        }
+
+        #hud-tl { top: 16px; left: 16px; border-left: 2px solid var(--c-accent); min-width: 230px; }
+        #hud-tr { top: 16px; right: 16px; border-right: 2px solid #ff0; min-width: 200px; }
+        #hud-br { bottom: 80px; right: 16px; border-right: 2px solid var(--c-good); font-size: 10px; min-width: 210px; }
+
+        .hud-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--c-accent);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .val { color: var(--c-good); font-weight: bold; }
+        .val-warn { color: var(--c-warn); font-weight: bold; }
+        .val-accent { color: var(--c-accent); }
+
+        /* ── Sliders ── */
+        .slider-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+        .slider-row label { width: 120px; font-size: 10px; color: #89a; }
+        input[type=range] {
+            -webkit-appearance: none; appearance: none;
+            width: 100px; height: 3px;
+            background: linear-gradient(90deg, var(--c-accent), #004466);
+            border-radius: 2px; outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--c-accent);
+            cursor: pointer;
+            box-shadow: 0 0 6px var(--c-accent);
+        }
+
+        /* ── Bottom controls ── */
+        #controls {
+            position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 12px; z-index: 100;
+        }
+        .btn {
+            padding: 9px 22px;
+            font-family: 'Orbitron', monospace;
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2px;
+            background: transparent;
+            border: 1px solid var(--c-accent);
+            color: var(--c-accent);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-transform: uppercase;
+        }
+        .btn:hover { background: var(--c-accent); color: #000; box-shadow: 0 0 20px var(--c-accent); }
+        .btn.danger { border-color: var(--c-warn); color: var(--c-warn); }
+        .btn.danger:hover { background: var(--c-warn); color: #000; box-shadow: 0 0 20px var(--c-warn); }
+
+        /* ── Event log ── */
+        #log {
+            position: absolute; bottom: 80px; left: 16px;
+            background: var(--c-panel);
+            border: 1px solid var(--c-border);
+            border-left: 2px solid var(--c-warn);
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 9px;
+            line-height: 1.6;
+            width: 240px;
+            max-height: 120px;
+            overflow: hidden;
+            z-index: 100;
+        }
+        .log-title { font-family: 'Orbitron', monospace; font-size: 9px; letter-spacing: 2px; color: var(--c-warn); margin-bottom: 4px; }
+        .log-entry { color: #6af; }
+        .log-entry.decay { color: #fa6; }
+        .log-entry.rare { color: #f6f; }
+
+        /* ── Corner label ── */
+        #corner {
+            position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+            font-family: 'Orbitron', monospace;
+            font-size: 13px; font-weight: 900;
+            letter-spacing: 6px;
+            color: transparent;
+            background: linear-gradient(90deg, var(--c-accent), #fff, var(--c-accent));
+            -webkit-background-clip: text; background-clip: text;
+            z-index: 100;
+            text-shadow: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="corner">YANG-MILLS COLLIDER</div>
+
+<!-- Top-left: live physics readout -->
+<div class="hud" id="hud-tl">
+    <div class="hud-title">Collision State</div>
+    <div>Particles &nbsp;&nbsp;: <span class="val" id="nPart">0</span></div>
+    <div>Decays &nbsp;&nbsp;&nbsp;&nbsp;: <span class="val" id="nDecay">0</span></div>
+    <div>Rare decays : <span class="val-warn" id="nRare">0</span></div>
+    <div>CoM energy &nbsp;: <span class="val-accent" id="eCom">—</span> GeV</div>
+    <div>αs(μ) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="val-accent" id="alphaS">—</span></div>
+    <div>Multiplicity: <span class="val" id="multOut">—</span></div>
+</div>
+
+<!-- Top-right: controls -->
+<div class="hud" id="hud-tr">
+    <div class="hud-title">Parameters</div>
+    <div class="slider-row">
+        <label>🧲 B-field (T)</label>
+        <input type="range" id="bSlider" min="0" max="14" step="0.5" value="5">
+        <span class="val" id="bVal">5.0</span>
+    </div>
+    <div class="slider-row">
+        <label>⚡ CoM √s (GeV)</label>
+        <input type="range" id="eSlider" min="20" max="14000" step="20" value="1000">
+        <span class="val" id="eVal">1000</span>
+    </div>
+    <div class="slider-row">
+        <label>🎛 Trail length</label>
+        <input type="range" id="trailSlider" min="5" max="60" step="5" value="20">
+        <span class="val" id="trailVal">20</span>
+    </div>
+    <div style="margin-top:8px; font-size:9px; color:#556;">
+        Relativistic · Bethe-Bloch · 4p-conserv.<br>
+        Branching ratios · αs multiplicity
+    </div>
+</div>
+
+<!-- Bottom-right: last decay chain -->
+<div class="hud" id="hud-br">
+    <div class="hud-title">Physics Notes</div>
+    <div id="physNotes" style="color:#7af; font-size:9px; line-height:1.8;">
+        Boris integrator (symplectic).<br>
+        B = (0, −B, 0) 하향 솔레노이드.<br>
+        나선(helix) 궤적 정확 재현.<br>
+        Bethe-Bloch 에너지 손실.<br>
+        π⁺→μ⁺νμ (99.99%) 분기비.<br>
+        αs(μ) → 입자 다중도 결정.
+    </div>
+</div>
+
+<!-- Event log -->
+<div id="log">
+    <div class="log-title">Event Log</div>
+    <div id="logEntries"></div>
+</div>
+
+<!-- Controls -->
+<div id="controls">
+    <button class="btn" id="collideBtn">💥 COLLIDE</button>
+    <button class="btn danger" id="clearBtn">⬛ CLEAR</button>
+</div>
+
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+    }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ═══════════════════════════════════════════════════════
+//  PHYSICS CONSTANTS
+// ═══════════════════════════════════════════════════════
+const C_LIGHT = 1.0;          // natural units (c=1)
+const SCALE   = 80;            // GeV → scene units for velocity display
+
+// ── Running coupling αs (full 1-loop NLO) ──
+// nf = 5 active flavours, Λ_QCD ≈ 0.218 GeV
+function alphaS(mu) {
+    const asMz = 0.1181;
+    const mZ   = 91.1876;
+    // b0 = (11Nc - 2nf)/(12π) , Nc=3, nf=5
+    const b0   = (11*3 - 2*5) / (12 * Math.PI);
+    const t    = Math.log(mu / mZ);
+    const as   = asMz / (1 + 2 * b0 * asMz * t);
+    return Math.min(0.5, Math.max(0.07, as));
+}
+
+// ── Lorentz γ from |p|/m ──
+function gamma(px, py, pz, m) {
+    const p2  = px*px + py*py + pz*pz;
+    const E   = Math.sqrt(p2 + m*m);
+    return E / m;
+}
+function betaGamma(px, py, pz, m) {
+    const p   = Math.sqrt(px*px + py*py + pz*pz);
+    const g   = gamma(px, py, pz, m);
+    return { beta: p / (g * m), gamma: g };
+}
+
+// ── Bethe-Bloch energy loss (simplified relativistic) ──
+// -dE/dx ≈ K · z² · Z/A · (1/β²) · [ln(2mₑβ²γ²/I) - β²]
+// K≈0.307 MeV·cm²/mol, I≈10eV for vacuum (minimal)
+// Returns ΔKE per unit time (in GeV/s-equivalent)
+const K_BB   = 0.00004;   // tuned for scene scale
+const mE_GeV = 0.000511;
+const I_GeV  = 175e-9;   // mean excitation ~175 eV in GeV
+
+function betheBloch(charge, mass, px, py, pz) {
+    if (charge === 0) return 0;
+    const {beta, gamma: g} = betaGamma(px, py, pz, mass);
+    if (beta < 0.01) return 0;
+    const b2 = beta * beta;
+    const logArg = Math.max(1.01, (2 * mE_GeV * b2 * g*g) / I_GeV);
+    const dEdx = K_BB * charge*charge / b2 * (Math.log(logArg) - b2);
+    return Math.max(0, dEdx);
+}
+
+// ── Multiplicity from αs and √s ──
+// Phenomenological: <N> ∝ αs(√s) × ln²(√s/m₀) + base
+function expectedMultiplicity(sqrtS) {
+    const mu  = sqrtS / 2;
+    const as  = alphaS(Math.max(2, mu));
+    const lnS = Math.log(sqrtS / 0.938);
+    // based on KNO scaling approximation
+    const n   = Math.floor(2 + as * 22 * lnS * lnS * (0.8 + Math.random()*0.4));
+    return Math.min(300, Math.max(4, n));
+}
+
+// ── 2-body decay in CM frame → 4-momenta conserved ──
+function twoBodyDecay(parentPx, parentPy, parentPz, parentM, m1, m2) {
+    const pE  = Math.sqrt(parentPx**2 + parentPy**2 + parentPz**2 + parentM**2);
+    // CM momentum magnitude
+    const s   = parentM * parentM;
+    if (s < (m1+m2)**2) return null; // kinematically forbidden
+    const pCM = Math.sqrt(
+        Math.max(0, (s - (m1+m2)**2) * (s - (m1-m2)**2)) / (4*s)
+    );
+    // random isotropic direction in CM
+    const cosT = 2*Math.random()-1;
+    const sinT = Math.sqrt(1-cosT*cosT);
+    const phi  = 2*Math.PI*Math.random();
+    const p1CM = new THREE.Vector3(sinT*Math.cos(phi)*pCM, sinT*Math.sin(phi)*pCM, cosT*pCM);
+    const p2CM = p1CM.clone().negate();
+
+    // boost back to lab frame (Lorentz boost along parent direction)
+    const pMag = Math.sqrt(parentPx**2+parentPy**2+parentPz**2);
+    if (pMag < 1e-9) {
+        return { p1: p1CM.multiplyScalar(SCALE), p2: p2CM.multiplyScalar(SCALE) };
+    }
+    const nx = parentPx/pMag, ny = parentPy/pMag, nz = parentPz/pMag;
+    const betaBoost = pMag / pE;
+    const gBoost    = pE / parentM;
+
+    function boost(p, m_b) {
+        const E_cm = Math.sqrt(p.dot(p) + m_b*m_b);
+        const pL   = p.x*nx + p.y*ny + p.z*nz;
+        const pL2  = gBoost * (pL + betaBoost * E_cm);
+        const dp   = pL2 - pL;
+        return new THREE.Vector3(p.x + dp*nx, p.y + dp*ny, p.z + dp*nz);
+    }
+    return {
+        p1: boost(p1CM, m1).multiplyScalar(SCALE),
+        p2: boost(p2CM, m2).multiplyScalar(SCALE)
+    };
+}
+
+// ═══════════════════════════════════════════════════════
+//  PARTICLE DATABASE  (mass in GeV, lifetime in scene-s)
+// ═══════════════════════════════════════════════════════
+const DB = {
+    proton:      { sym:"p",   mass:0.938272, charge:+1, color:"#ff5566", lifetime:99,  decays:[] },
+    neutron:     { sym:"n",   mass:0.939565, charge: 0, color:"#8899bb", lifetime:6.0, decays:[
+        { products:["proton","electron","antinue"], br:1.0 }
+    ]},
+    pion_p:      { sym:"π⁺",  mass:0.139570, charge:+1, color:"#ffaa22", lifetime:2.0, decays:[
+        { products:["muon_p","numu"],    br:0.9999 },
+        { products:["positron","nue"],   br:0.0001 }
+    ]},
+    pion_m:      { sym:"π⁻",  mass:0.139570, charge:-1, color:"#ffcc44", lifetime:2.0, decays:[
+        { products:["muon_m","antinumu"],br:0.9999 },
+        { products:["electron","antinue"],br:0.0001 }
+    ]},
+    pion_0:      { sym:"π⁰",  mass:0.134977, charge: 0, color:"#ff8866", lifetime:0.08, decays:[
+        { products:["photon","photon"],  br:0.9882 }
+    ]},
+    kaon_p:      { sym:"K⁺",  mass:0.493677, charge:+1, color:"#ff7733", lifetime:1.5, decays:[
+        { products:["muon_p","numu"],    br:0.6356 },
+        { products:["pion_p","pion_0"],  br:0.2067 },
+        { products:["pion_p","pion_p","pion_m"], br:0.0559 }
+    ]},
+    kaon_m:      { sym:"K⁻",  mass:0.493677, charge:-1, color:"#ff9944", lifetime:1.5, decays:[
+        { products:["muon_m","antinumu"],br:0.6356 },
+        { products:["pion_m","pion_0"],  br:0.2067 }
+    ]},
+    muon_m:      { sym:"μ⁻",  mass:0.105658, charge:-1, color:"#6699ff", lifetime:2.5, decays:[
+        { products:["electron","antinue","numu"], br:1.0 }
+    ]},
+    muon_p:      { sym:"μ⁺",  mass:0.105658, charge:+1, color:"#99bbff", lifetime:2.5, decays:[
+        { products:["positron","nue","antinumu"], br:1.0 }
+    ]},
+    electron:    { sym:"e⁻",  mass:0.000511, charge:-1, color:"#ffffff", lifetime:99,  decays:[] },
+    positron:    { sym:"e⁺",  mass:0.000511, charge:+1, color:"#ffccff", lifetime:99,  decays:[] },
+    photon:      { sym:"γ",   mass:0.0,      charge: 0, color:"#ffffaa", lifetime:2.0, decays:[] },
+    // neutrinos (invisible, very short scene life)
+    nue:         { sym:"νe",  mass:0.0,      charge: 0, color:"#224422", lifetime:0.1, decays:[] },
+    antinue:     { sym:"ν̄e", mass:0.0,      charge: 0, color:"#224422", lifetime:0.1, decays:[] },
+    numu:        { sym:"νμ",  mass:0.0,      charge: 0, color:"#224422", lifetime:0.1, decays:[] },
+    antinumu:    { sym:"ν̄μ", mass:0.0,      charge: 0, color:"#224422", lifetime:0.1, decays:[] },
+};
+
+// Visible primary particles (can be created in collision)
+const PRIMARY_KEYS = ["proton","pion_p","pion_m","pion_0","kaon_p","kaon_m","muon_m","muon_p","electron","positron"];
+
+// ═══════════════════════════════════════════════════════
+//  THREE.JS SCENE
+// ═══════════════════════════════════════════════════════
+const scene    = new THREE.Scene();
+scene.background = new THREE.Color(0x030410);
+scene.fog = new THREE.FogExp2(0x030410, 0.00025);
+
+const camera = new THREE.PerspectiveCamera(58, innerWidth/innerHeight, 0.1, 3000);
+camera.position.set(280, 160, 380);
+camera.lookAt(0,0,0);
+
+const renderer = new THREE.WebGLRenderer({ antialias:true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(devicePixelRatio);
+document.body.appendChild(renderer.domElement);
+
+const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.enableDamping = true; orbit.dampingFactor = 0.05;
+
+// Lights
+scene.add(new THREE.AmbientLight(0x111122, 1.2));
+const sun = new THREE.DirectionalLight(0xffffff, 0.8);
+sun.position.set(4,8,6); scene.add(sun);
+const glow = new THREE.PointLight(0xff4400, 1.0, 400);
+scene.add(glow);
+
+// Stars
+const starBuf = new THREE.BufferGeometry();
+const sp = [];
+for (let i=0;i<2000;i++){
+    sp.push((Math.random()-.5)*2400, (Math.random()-.5)*1200, (Math.random()-.5)*1800-200);
+}
+starBuf.setAttribute('position', new THREE.BufferAttribute(new Float32Array(sp), 3));
+scene.add(new THREE.Points(starBuf, new THREE.PointsMaterial({color:0xffffff, size:0.28})));
+
+// Detector ring
+const ringGeo = new THREE.TorusGeometry(280, 2.5, 32, 200);
+const ringMat = new THREE.MeshStandardMaterial({color:0x1166aa, emissive:0x003355, emissiveIntensity:0.8});
+const ring = new THREE.Mesh(ringGeo, ringMat); ring.rotation.x = Math.PI/2;
+scene.add(ring);
+
+// Inner detector cylinder (tracker volume)
+const cylGeo = new THREE.CylinderGeometry(90, 90, 200, 64, 1, true);
+const cylMat = new THREE.MeshBasicMaterial({color:0x002244, wireframe:true, transparent:true, opacity:0.08});
+scene.add(new THREE.Mesh(cylGeo, cylMat));
+
+// Grid lines
+const grid = new THREE.GridHelper(600, 30, 0x111133, 0x111133);
+grid.position.y = -100; scene.add(grid);
+
+// Shared geometries
+const sphGeo = new THREE.SphereGeometry(0.6, 10, 10);
+
+// ═══════════════════════════════════════════════════════
+//  PARTICLE SYSTEM
+// ═══════════════════════════════════════════════════════
+let particles   = [];
+let decayCount  = 0;
+let rareCount   = 0;
+let currentB    = 5.0;
+let currentSqrtS = 1000;
+let trailLen    = 20;
+let colliding   = false;
+
+// Material cache
+const matCache = {};
+function getMat(color) {
+    if (matCache[color]) return matCache[color];
+    const m = new THREE.MeshStandardMaterial({
+        color, emissive: color, emissiveIntensity: 0.4
+    });
+    matCache[color] = m; return m;
+}
+
+function createParticle(typeKey, pos, vel) {
+    const d = DB[typeKey]; if (!d) return null;
+    const isNeutrino = typeKey.startsWith('nu') || typeKey.startsWith('antinu');
+    if (isNeutrino) {
+        // Neutrinos: no mesh, very short life
+        return {
+            typeKey, mesh:null, trailLine:null,
+            pos: pos.clone(), vel: vel.clone(),
+            mass: d.mass, charge: 0,
+            life: d.lifetime * (0.8 + Math.random()*0.4),
+            unstable: d.decays.length > 0,
+            decays: d.decays, sym: d.sym,
+            trail: [], isNeutrino: true
+        };
+    }
+    const mesh = new THREE.Mesh(sphGeo, getMat(d.color).clone());
+    mesh.position.copy(pos); scene.add(mesh);
+    return {
+        typeKey, mesh, trailLine:null,
+        pos: pos.clone(), vel: vel.clone(),
+        mass: d.mass, charge: d.charge,
+        life: d.lifetime * (0.7 + Math.random()*0.6),
+        unstable: d.decays.length > 0,
+        decays: d.decays, sym: d.sym,
+        trail: [], isNeutrino: false
+    };
+}
+
+function stepParticle(p, dt) {
+    if (p.isNeutrino || p.charge === 0) {
+        // Neutral: straight line (no magnetic deflection)
+        p.pos.addScaledVector(p.vel, dt);
+        if (p.mesh) p.mesh.position.copy(p.pos);
+        return;
+    }
+
+    const m = p.mass;
+    const q = p.charge;
+
+    // B field vector — along -y (downward), matching real solenoid axis
+    const Bx = 0, By = -currentB, Bz = 0;
+
+    // ── p (scene units = GeV * SCALE) → physical momentum in GeV ──
+    let ppx = p.vel.x / SCALE;
+    let ppy = p.vel.y / SCALE;
+    let ppz = p.vel.z / SCALE;
+
+    // Relativistic γ from p and m
+    function getGamma(px, py, pz) {
+        const p2 = px*px + py*py + pz*pz;
+        return Math.sqrt(1 + p2 / (m*m));
+    }
+
+    // ── Boris integrator (relativistic, symplectic) ──
+    // Reference: Birdsall & Langdon, "Plasma Physics via Computer Simulation"
+    // Step 1: half Bethe-Bloch kick (energy loss)
+    const dEdx = betheBloch(q, m, ppx, ppy, ppz);
+    const pMag0 = Math.sqrt(ppx*ppx + ppy*ppy + ppz*ppz);
+    if (pMag0 > 1e-6) {
+        const loss = Math.min(pMag0 * 0.5, dEdx * dt);
+        const ratio = Math.max(0, pMag0 - loss) / pMag0;
+        ppx *= ratio; ppy *= ratio; ppz *= ratio;
+    }
+
+    // Step 2: Boris magnetic rotation
+    // t = (q/2γm) * B * dt
+    let g = getGamma(ppx, ppy, ppz);
+    const coeff = (q * dt * 0.5) / (g * m);
+    const tx = coeff * Bx, ty = coeff * By, tz = coeff * Bz;
+    const tMag2 = tx*tx + ty*ty + tz*tz;
+
+    // p⁻ = p + p × t  (half rotation)
+    const pmx = ppx + (ppy*tz - ppz*ty);
+    const pmy = ppy + (ppz*tx - ppx*tz);
+    const pmz = ppz + (ppx*ty - ppy*tx);
+
+    // s = 2t / (1 + |t|²)
+    const sx = 2*tx / (1 + tMag2);
+    const sy = 2*ty / (1 + tMag2);
+    const sz = 2*tz / (1 + tMag2);
+
+    // p⁺ = p⁻ + p⁻ × s  (full rotation)
+    ppx = ppx + (pmy*sz - pmz*sy);
+    ppy = ppy + (pmz*sx - pmx*sz);
+    ppz = ppz + (pmx*sy - pmy*sx);
+
+    // Step 3: second half Bethe-Bloch kick
+    const pMag1 = Math.sqrt(ppx*ppx + ppy*ppy + ppz*ppz);
+    if (pMag1 > 1e-6) {
+        const loss = Math.min(pMag1 * 0.5, dEdx * dt);
+        const ratio = Math.max(0, pMag1 - loss) / pMag1;
+        ppx *= ratio; ppy *= ratio; ppz *= ratio;
+    }
+
+    // Write back to scene units
+    p.vel.x = ppx * SCALE;
+    p.vel.y = ppy * SCALE;
+    p.vel.z = ppz * SCALE;
+
+    // ── Position update: x += (p/γm) * dt  (relativistic velocity) ──
+    g = getGamma(ppx, ppy, ppz);
+    const invGM = 1.0 / (g * m);
+    p.pos.x += ppx * invGM * dt * SCALE;
+    p.pos.y += ppy * invGM * dt * SCALE;
+    p.pos.z += ppz * invGM * dt * SCALE;
+
+    if (p.mesh) p.mesh.position.copy(p.pos);
+
+    // ── Trail ──
+    p.trail.push(p.pos.clone());
+    if (p.trail.length > trailLen) p.trail.shift();
+    if (p.trailLine) scene.remove(p.trailLine);
+    if (p.trail.length > 1) {
+        const geo = new THREE.BufferGeometry().setFromPoints(p.trail);
+        const mat = new THREE.LineBasicMaterial({
+            color: DB[p.typeKey].color,
+            transparent: true, opacity: 0.35
+        });
+        p.trailLine = new THREE.Line(geo, mat);
+        scene.add(p.trailLine);
+    }
+
+    // Boundary
+    if (Math.abs(p.pos.x)>700 || Math.abs(p.pos.z)>700 || Math.abs(p.pos.y)>500) p.life = 0;
+}
+
+function doDecay(p) {
+    if (!p.unstable || p.life > 0 || p.decays.length === 0) return [];
+    // Choose decay channel via branching ratio
+    const roll = Math.random();
+    let cumulative = 0, chosen = null;
+    for (const ch of p.decays) {
+        cumulative += ch.br;
+        if (roll <= cumulative) { chosen = ch; break; }
+    }
+    if (!chosen) chosen = p.decays[p.decays.length-1];
+
+    const isRare = chosen.br < 0.01;
+    if (isRare) {
+        rareCount++;
+        addLog(`⚡ RARE: ${p.sym} → ${chosen.products.join(' ')}`, 'rare');
+    } else {
+        addLog(`${p.sym} → ${chosen.products.join(' ')}`, 'decay');
+    }
+    decayCount++;
+
+    const newPs = [];
+    if (chosen.products.length === 2) {
+        const [k1, k2] = chosen.products;
+        const d1 = DB[k1], d2 = DB[k2];
+        if (!d1 || !d2) return [];
+        const pMag = p.vel.length() / SCALE;
+        const result = twoBodyDecay(p.vel.x/SCALE, p.vel.y/SCALE, p.vel.z/SCALE, p.mass, d1.mass, d2.mass);
+        if (!result) return [];
+        const np1 = createParticle(k1, p.pos, result.p1);
+        const np2 = createParticle(k2, p.pos, result.p2);
+        if (np1) newPs.push(np1);
+        if (np2) newPs.push(np2);
+    } else {
+        // 3-body: split momentum roughly
+        for (const k of chosen.products) {
+            const d = DB[k]; if (!d) continue;
+            const frac = 0.3 + Math.random()*0.4;
+            const angle = (Math.random()-0.5)*Math.PI*0.9;
+            const speed = p.vel.length() * frac;
+            const a2 = Math.atan2(p.vel.z, p.vel.x) + angle;
+            const vNew = new THREE.Vector3(
+                Math.cos(a2)*speed, (Math.random()-.5)*speed*0.5,
+                Math.sin(a2)*speed
+            );
+            const np = createParticle(k, p.pos, vNew);
+            if (np) newPs.push(np);
+        }
+    }
+    return newPs;
+}
+
+function updateAll(dt) {
+    const spawned = [];
+    for (let i = particles.length-1; i >= 0; i--) {
+        const p = particles[i];
+        if (p.life <= 0) {
+            const children = doDecay(p);
+            spawned.push(...children);
+            if (p.mesh) scene.remove(p.mesh);
+            if (p.trailLine) scene.remove(p.trailLine);
+            particles.splice(i, 1);
+            continue;
+        }
+        stepParticle(p, dt);
+        p.life -= dt;
+    }
+    particles.push(...spawned);
+
+    // Update HUD
+    document.getElementById('nPart').innerText  = particles.length;
+    document.getElementById('nDecay').innerText = decayCount;
+    document.getElementById('nRare').innerText  = rareCount;
+}
+
+// ═══════════════════════════════════════════════════════
+//  COLLISION GENERATOR
+// ═══════════════════════════════════════════════════════
+function generateCollision() {
+    if (colliding) return; colliding = true;
+
+    const sqrtS = currentSqrtS;
+    const mu    = sqrtS / 2;
+    const as    = alphaS(Math.max(2, mu));
+    const N     = expectedMultiplicity(sqrtS);
+
+    document.getElementById('eCom').innerText  = sqrtS.toLocaleString() + ' GeV';
+    document.getElementById('alphaS').innerText = as.toFixed(4);
+    document.getElementById('multOut').innerText = N;
+
+    addLog(`💥 √s=${sqrtS} GeV  αs=${as.toFixed(3)}  N≈${N}`, 'entry');
+
+    for (let i = 0; i < N; i++) {
+        // Weighted towards pions (dominant in QCD)
+        const weights = [0.06,0.22,0.22,0.06,0.06,0.03,0.03,0.1,0.1,0.06,0.06];
+        const roll = Math.random();
+        let cum = 0, key = PRIMARY_KEYS[0];
+        for (let j = 0; j < PRIMARY_KEYS.length; j++) {
+            cum += (weights[j]||0.05);
+            if (roll <= cum) { key = PRIMARY_KEYS[j]; break; }
+        }
+
+        const d = DB[key];
+        const KE  = (sqrtS / N) * (0.3 + Math.random()*1.4);   // kinetic energy fraction
+        const pMag = Math.sqrt(Math.max(0, KE*(KE + 2*d.mass))); // from T=E-m
+        const cosT  = 2*Math.random()-1;
+        const sinT  = Math.sqrt(1-cosT*cosT);
+        const phi   = 2*Math.PI*Math.random();
+
+        const vel = new THREE.Vector3(
+            sinT*Math.cos(phi)*pMag*SCALE,
+            cosT*pMag*SCALE,
+            sinT*Math.sin(phi)*pMag*SCALE
+        );
+        const p = createParticle(key, new THREE.Vector3(0,0,0), vel);
+        if (p) particles.push(p);
+    }
+
+    glow.intensity = 2.5; glow.color.set(0xff6622);
+    setTimeout(()=>{ glow.intensity=0.8; glow.color.set(0xff4400); }, 250);
+    colliding = false;
+}
+
+function clearAll() {
+    for (const p of particles) {
+        if (p.mesh) scene.remove(p.mesh);
+        if (p.trailLine) scene.remove(p.trailLine);
+    }
+    particles = []; decayCount = 0; rareCount = 0;
+    document.getElementById('nPart').innerText  = '0';
+    document.getElementById('nDecay').innerText = '0';
+    document.getElementById('nRare').innerText  = '0';
+    document.getElementById('logEntries').innerHTML = '';
+}
+
+// ═══════════════════════════════════════════════════════
+//  EVENT LOG
+// ═══════════════════════════════════════════════════════
+const LOG_MAX = 8;
+function addLog(msg, cls='entry') {
+    const el = document.getElementById('logEntries');
+    const div = document.createElement('div');
+    div.className = `log-entry ${cls}`; div.innerText = msg;
+    el.prepend(div);
+    while (el.children.length > LOG_MAX) el.removeChild(el.lastChild);
+}
+
+// ═══════════════════════════════════════════════════════
+//  UI BINDINGS
+// ═══════════════════════════════════════════════════════
+document.getElementById('collideBtn').addEventListener('click', generateCollision);
+document.getElementById('clearBtn').addEventListener('click', clearAll);
+
+document.getElementById('bSlider').addEventListener('input', e => {
+    currentB = parseFloat(e.target.value);
+    document.getElementById('bVal').innerText = currentB.toFixed(1);
+});
+document.getElementById('eSlider').addEventListener('input', e => {
+    currentSqrtS = parseFloat(e.target.value);
+    document.getElementById('eVal').innerText = currentSqrtS;
+});
+document.getElementById('trailSlider').addEventListener('input', e => {
+    trailLen = parseInt(e.target.value);
+    document.getElementById('trailVal').innerText = trailLen;
+});
+
+window.addEventListener('resize', () => {
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+});
+
+// ═══════════════════════════════════════════════════════
+//  ANIMATION LOOP
+// ═══════════════════════════════════════════════════════
+let last = performance.now();
+function animate() {
+    const now = performance.now();
+    const dt  = Math.min(0.04, (now-last)/1000);
+    last = now;
+    updateAll(dt);
+    orbit.update();
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+}
+animate();
+
+// Auto-fire opening collision
+setTimeout(generateCollision, 600);
+</script>
+</body>
+</html>
