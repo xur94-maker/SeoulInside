@@ -1,4 +1,4 @@
-Built an LHC in the Browser — Making the Yang-Mills Collider
+A Relativistic Particle Collider, Built in Pure JavaScript — Making the Yang-Mills Collider
 A relativistic particle physics simulator in pure JavaScript
 B. Sun | Seoul Inside
 Jun 03, 2026
@@ -70,7 +70,7 @@ As a result, high-energy particle decays are collimated (concentrated forward), 
 6. αs(μ) — The Strong Force Coupling That Changes with Energy
 One of the most remarkable features of QCD (Quantum Chromodynamics) is asymptotic freedom: at higher energies, the strong force between quarks actually becomes weaker. This was the discovery that earned the 2004 Nobel Prize in Physics.
 
-This simulator calculates αs(μ) in real time using the 2-loop beta function:
+This simulator calculates αs(μ) in real time using the 1-loop beta function:
 
 αs(MZ) = 0.1181  ← actual measured value at the Z boson mass
 Move the collision energy (√s) slider and αs changes — and that value determines how many particles are produced in the collision. At 13 TeV (LHC scale), hundreds of particles; at 20 GeV, tens — trends consistent with real experimental data.
@@ -80,7 +80,7 @@ Two Versions
 
 2D Dashboard Version The same physics engine, with QCD analysis tools added. Divided into three levels:
 
-LV.1 Analytic — Instant 2-loop αs(μ) calculation
+LV.1 Analytic — Instant 1-loop αs(μ) calculation
 
 LV.2 Monte Carlo — PDF-sampled 2→2 parton scattering, pT distributions
 
@@ -103,10 +103,9 @@ These equations are still running at CERN today — and right now, in this brows
 🔗 Launch the 3D Simulator →
 
 Physics Engine Summary
-Component Description Relativistic Motion Lorentz factor γ = E/m applied; speed of light cannot be exceeded Boris Integrator Standard numerical integration used in GEANT4 and PIC codes Bethe-Bloch Energy loss formula based on particle mass, charge, and velocity 4-Momentum Conservation CM frame 2-body decay followed by Lorentz boost Branching Ratios π⁺→μ⁺νμ (99.99%) vs e⁺νe (0.01%) and other PDG values αs(μ) Running Coupling 2-loop β function with quark flavor thresholds Monte Carlo PDF sampling, 2→2 parton scattering, pT distributions Glauber Model Heavy-ion collisions, Ncoll, ε₀, QGP formation conditions Helix Trajectories Accurate curvature under solenoid magnetic field
+Component Description Relativistic Motion Lorentz factor γ = E/m applied; speed of light cannot be exceeded Boris Integrator Standard numerical integration used in GEANT4 and PIC codes Bethe-Bloch Energy loss formula based on particle mass, charge, and velocity 4-Momentum Conservation CM frame 2-body decay followed by Lorentz boost Branching Ratios π⁺→μ⁺νμ (99.99%) vs e⁺νe (0.01%) and other PDG values αs(μ) Running Coupling 1-loop β function with quark flavor thresholds Monte Carlo PDF sampling, 2→2 parton scattering, pT distributions Glauber Model Heavy-ion collisions, Ncoll, ε₀, QGP formation conditions Helix Trajectories Accurate curvature under solenoid magnetic field
 
 The code is publicly available on GitHub. Feedback and questions are always welcome.
-
 # ⚛️ Yang-Mills Collider — Full Physics Simulation
 
 > **A browser-based particle physics simulator implementing relativistic dynamics, QCD running coupling, and realistic decay chains — entirely in vanilla JavaScript.**
