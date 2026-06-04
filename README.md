@@ -2,7 +2,7 @@
 
 ### Yang-Mills Collider v3.0 — A technical inventory
 
-*B. Sun | Seoul Inside*
+*B. Sun | Seoul Inside* (https://seoulinside.substack.com/p/yang-mills-collider-v30-a-technical)*
 *June 2026*
 
 ---
