@@ -4,6 +4,8 @@
 
 https://xur94-maker.github.io/SeoulInside/LHC_kerr.html
 
+https://seoulinside.substack.com/p/black-hole-physics-in-yang-mills
+
 ## 1. What Is Currently Implemented
 
 ### 1.1 Newtonian Gravity
