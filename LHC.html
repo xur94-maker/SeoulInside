@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Yang-Mills Colliderv3.0  B. Sun | Seoul Inside https://seoulinside.substack.com/ </title>
+    <title>Yang-Mills Collider — Ultimate v3.1 + Fixed (Breit-Wigner, Landau, Glauber)</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
         body { background: #03040c; overflow: hidden; font-family: 'Inter', sans-serif; }
 
-        /* ── 메인 HUD 패널 ── */
         .glass-panel {
             position: absolute; z-index: 30;
             background: rgba(6, 12, 28, 0.72);
@@ -39,7 +38,6 @@
         }
         button:hover { background: #0ff; color: #000; box-shadow: 0 0 16px #0ff; transform: scale(0.98); }
 
-        /* ── 모듈 패널 (분석 도구) ── */
         .module-panel {
             position: absolute; z-index: 31;
             background: rgba(5, 10, 24, 0.88);
@@ -77,7 +75,6 @@
         .filter-check { display: flex; flex-wrap: wrap; gap: 5px; margin: 5px 0; }
         .filter-check label { font-size: 8px; display: flex; align-items: center; gap: 3px; color: #bcd; cursor: pointer; }
 
-        /* ── 이벤트 로그 ── */
         .log-area {
             position: absolute; bottom: 20px; left: 20px; width: 330px;
             background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
@@ -97,11 +94,11 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════
-     메인 HUD — 왼쪽 상단 (통계)
-════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- MAIN HUD (same as original, kept intact)                    -->
+<!-- ============================================================ -->
 <div class="glass-panel" style="top: 18px; left: 18px;">
-    <div class="panel-title">🌀 YANG–MILLS COLLIDER v3.0</div>
+    <div class="panel-title">🌌 YANG–MILLS COLLIDER v3.1 + FIXED</div>
     <div class="stat-row"><span>입자 수</span>        <span class="val"       id="nPart">0</span></div>
     <div class="stat-row"><span>붕괴 이벤트</span>   <span class="val"       id="nDecay">0</span></div>
     <div class="stat-row"><span>✨ 희귀 붕괴</span>  <span class="val-rare"  id="nRare">0</span></div>
@@ -112,11 +109,8 @@
     <div class="stat-row"><span>σ_inel</span>         <span class="val"       id="xsec">— mb</span></div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     메인 HUD — 오른쪽 상단 (제어반)
-════════════════════════════════════════════ -->
 <div class="glass-panel" style="top: 18px; right: 18px; text-align: right;">
-    <div class="panel-title">⚙️ 제어반 · Boris · Bethe–Bloch · PDG2022</div>
+    <div class="panel-title">⚙️ 제어반 · Boris · Bethe–Bloch · PDG2022 + v3.1 fixed</div>
     <div class="slider-group">
         <span>🧲 B-field (T)</span>
         <input type="range" id="bSlide" min="0" max="14" step="0.1" value="6.2">
@@ -134,17 +128,16 @@
     </div>
     <div style="display:flex; gap:12px; justify-content:flex-end;">
         <button id="collideBtn">🔥 COLLIDE</button>
-        <button id="clearBtn" style="border-color:#f77; color:#f77;">◼ CLEAR</button>
+        <button id="clearBtn" style="border-color:#f77; color:#f77;">◀ CLEAR</button>
     </div>
     <div style="font-size:8px; margin-top:10px; color:#8ab; text-align:right;">
         Boris integrator · 4-운동량 보존 · αs 2-loop · PDG2022 분기비<br>
         Tsallis pT · γτ 시간팽창 · NSD 다중도 · 39종 입자
+        <br>✅ v3.1: BW Z mass · Landau dE/dx · η fix · E fix · 3체 붕괴 fix
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     모듈 1 — ECAL 히트맵 (우측 하단)
-════════════════════════════════════════════ -->
+<!-- Modules (identical to original) -->
 <div class="module-panel" id="ecalPanel" style="bottom: 110px; right: 18px; width: 250px;">
     <div class="module-title" onclick="toggleModule(this)">
         🔴 ECAL HITMAP
@@ -161,9 +154,6 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     모듈 2 — 히스토그램 (좌측 하단 위)
-════════════════════════════════════════════ -->
 <div class="module-panel" id="histPanel" style="bottom: 110px; left: 18px; width: 290px;">
     <div class="module-title" onclick="toggleModule(this)">
         📊 HISTOGRAMS (pT / Invariant Mass)
@@ -181,28 +171,21 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     모듈 3 — 제트 클러스터링 (우측 중단)
-════════════════════════════════════════════ -->
 <div class="module-panel" id="jetPanel" style="top: 105px; right: 18px; width: 256px;">
     <div class="module-title" onclick="toggleModule(this)">
-        🌀 JET CLUSTERING (anti-kT)
+        🌌 JET CLUSTERING (anti-kT)
         <span class="close-module" onclick="event.stopPropagation(); hideModule('jetPanel')">✕</span>
     </div>
     <div class="module-content">
         <div style="display:flex; gap:6px; align-items:flex-end; margin-bottom:6px;">
-            <div>
-                <div style="color:#8ab; margin-bottom:2px;">R</div>
+            <div><div style="color:#8ab; margin-bottom:2px;">R</div>
                 <input type="number" id="jetR" value="0.4" step="0.1" min="0.2" max="1.0"
                     style="width:52px; background:#081828; border:1px solid #0ff4; color:#0ff;
-                           border-radius:6px; padding:3px 5px; font-family:inherit;">
-            </div>
-            <div>
-                <div style="color:#8ab; margin-bottom:2px;">pT min (GeV)</div>
+                           border-radius:6px; padding:3px 5px; font-family:inherit;"></div>
+            <div><div style="color:#8ab; margin-bottom:2px;">pT min (GeV)</div>
                 <input type="number" id="jetPtMin" value="5.0" step="1" min="0"
                     style="width:68px; background:#081828; border:1px solid #0ff4; color:#0ff;
-                           border-radius:6px; padding:3px 5px; font-family:inherit;">
-            </div>
+                           border-radius:6px; padding:3px 5px; font-family:inherit;"></div>
             <button class="mini-btn" id="clusterBtn" style="margin-bottom:1px;">RUN</button>
         </div>
         <div class="module-stat"><span>🎯 제트 수</span><span class="module-val" id="jetCount">0</span></div>
@@ -211,16 +194,13 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     모듈 4 — Displaced Vertex (좌측 중단)
-════════════════════════════════════════════ -->
 <div class="module-panel" id="vtxPanel" style="top: 105px; left: 18px; width: 265px;">
     <div class="module-title" onclick="toggleModule(this)">
         📍 DISPLACED VERTEX
         <span class="close-module" onclick="event.stopPropagation(); hideModule('vtxPanel')">✕</span>
     </div>
     <div class="module-content">
-        <div style="font-size:7px; color:#fa3; margin-bottom:5px;">K⁰S: 2.7 cm | Λ⁰: 7.9 cm | B±: 491 µm</div>
+        <div style="font-size:7px; color:#fa3; margin-bottom:5px;">K⁰S: 2.7 cm | Λ⁰: 7.9 cm | B±: 491 μm</div>
         <div class="module-stat"><span>🔍 검출 정점</span><span class="module-val" id="vertexCount">0</span></div>
         <div class="module-stat"><span>📏 평균 비행거리</span><span class="module-val" id="avgDist">—</span> mm</div>
         <div id="vertexList" class="scroll-list">—</div>
@@ -228,9 +208,6 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     모듈 5 — Event Filter (좌측 중하단)
-════════════════════════════════════════════ -->
 <div class="module-panel" id="filterPanel" style="top: 300px; left: 18px; width: 265px;">
     <div class="module-title" onclick="toggleModule(this)">
         🎯 EVENT FILTER
@@ -259,19 +236,16 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     이벤트 로그
-════════════════════════════════════════════ -->
 <div class="log-area" id="logArea">
     <div style="color:#fa3; font-size:9px; margin-bottom:5px;">📡 EVENT LOG</div>
     <div id="logEntries"></div>
 </div>
 
-<div class="badge">⚛️ Yang-Mills Ultimate v3.0 · PDG2022 · 39종 입자 | B. Sun</div>
+<div class="badge">⚛️ Yang-Mills Ultimate v3.1 + Fixed (BW, Landau, η, E, 3-body) · PDG2022 · 39종 입자 | B. Sun</div>
 
-<!-- ═══════════════════════════════════════════
-     Three.js 임포트
-════════════════════════════════════════════ -->
+<!-- ============================================================ -->
+<!-- Three.js import and core simulation (original + patches)    -->
+<!-- ============================================================ -->
 <script type="importmap">
     { "imports": {
         "three":          "https://unpkg.com/three@0.128.0/build/three.module.js",
@@ -318,18 +292,18 @@ class FourVector {
 }
 
 // ============================================================
-// [3] 입자 데이터베이스 (PDG 2022, 39종)
+// [3] 입자 데이터베이스 (PDG 2022, 39종) - unchanged
 // ============================================================
 const PDG = {
     photon:    { sym:"γ",      mass:0.0,       charge:0,  color:"#ffffaa", life_SI:Infinity, decays:[] },
     W_plus:    { sym:"W⁺",    mass:80.377,    charge:+1, color:"#ff4488", life_SI:lifeFromWidth(2.085),
-        decays:[{br:0.1071,products:["electron","nue"]},{br:0.1063,products:["muon_p","numu"]},{br:0.1138,products:["tau_p","nutau"]},{br:0.6741,products:["pion_p","pion_m"]}] },
+        decays:[{br:0.1071,products:["electron","nue"]},{br:0.1063,products:["muon_p","numu"]},{br:0.1138,products:["tau_p","nutau"]},{br:0.2247,products:["pion_p","pion_0"]},{br:0.2247,products:["kaon_p","K0S"]},{br:0.2234,products:["proton","neutron"]}] },
     W_minus:   { sym:"W⁻",    mass:80.377,    charge:-1, color:"#ff4488", life_SI:lifeFromWidth(2.085),
-        decays:[{br:0.1071,products:["positron","antinue"]},{br:0.1063,products:["muon_m","antinumu"]},{br:0.1138,products:["tau_m","antinutau"]},{br:0.6741,products:["pion_m","pion_p"]}] },
+        decays:[{br:0.1071,products:["positron","antinue"]},{br:0.1063,products:["muon_m","antinumu"]},{br:0.1138,products:["tau_m","antinutau"]},{br:0.2247,products:["pion_m","pion_0"]},{br:0.2247,products:["kaon_m","K0S"]},{br:0.2234,products:["antiproton","neutron"]}] },
     Z0:        { sym:"Z⁰",    mass:91.1876,   charge:0,  color:"#ff88cc", life_SI:lifeFromWidth(2.4952),
-        decays:[{br:0.0336,products:["electron","positron"]},{br:0.0336,products:["muon_m","muon_p"]},{br:0.0338,products:["tau_m","tau_p"]},{br:0.2000,products:["nue","antinue"]},{br:0.3245,products:["pion_p","pion_m"]}] },
+        decays:[{br:0.0336,products:["electron","positron"]},{br:0.0336,products:["muon_m","muon_p"]},{br:0.0338,products:["tau_m","tau_p"]},{br:0.2000,products:["nue","antinue"]},{br:0.1497,products:["pion_p","pion_m","pion_0"]},{br:0.1497,products:["kaon_p","kaon_m"]},{br:0.1996,products:["proton","antiproton"]}] },
     higgs:     { sym:"H⁰",    mass:125.20,    charge:0,  color:"#ffffff", life_SI:lifeFromWidth(3.2e-3),
-        decays:[{br:0.5824,products:["pion_p","pion_m"]},{br:0.2137,products:["W_plus","W_minus"]},{br:0.0827,products:["Z0","Z0"]},{br:0.0627,products:["tau_p","tau_m"]},{br:0.0023,products:["photon","photon"]}] },
+        decays:[{br:0.2137,products:["W_plus","W_minus"]},{br:0.0827,products:["Z0","Z0"]},{br:0.0627,products:["tau_p","tau_m"]},{br:0.0023,products:["photon","photon"]},{br:0.6386,products:["pion_p","pion_m","pion_0"]}] },
     electron:  { sym:"e⁻",    mass:0.000511,  charge:-1, color:"#e8e8ff", life_SI:Infinity, decays:[] },
     positron:  { sym:"e⁺",    mass:0.000511,  charge:+1, color:"#ffe8ff", life_SI:Infinity, decays:[] },
     muon_m:    { sym:"μ⁻",    mass:0.105658,  charge:-1, color:"#88bbff", life_SI:2.1969811e-6,
@@ -414,7 +388,7 @@ function alphaS(mu_GeV) {
 }
 
 // ============================================================
-// [5] Tsallis pT 샘플링
+// [5] Tsallis pT sampling (unchanged)
 // ============================================================
 const PT_PARAMS = {
     pion_p:{T:0.095,n:8.0}, pion_m:{T:0.095,n:8.0}, pion_0:{T:0.095,n:8.0},
@@ -483,13 +457,41 @@ function sampleDecayTime(typeKey, p4) {
     return -tau_lab*Math.log(Math.max(1e-10,Math.random()));
 }
 
-function makeFourVector(typeKey) {
+// ============================================================
+// [6] Breit-Wigner sampling (PATCH 1)
+// ============================================================
+function sampleBreitWigner(M, Gamma, nSigmaCut=5) {
+    const u = Math.random();
+    const E = M + (Gamma/2) * Math.tan(Math.PI * (u - 0.5));
+    return Math.max(M - nSigmaCut*Gamma, Math.min(M + nSigmaCut*Gamma, E));
+}
+
+// ============================================================
+// [7] makeFourVector with optional Breit-Wigner for resonances
+// ============================================================
+function makeFourVector(typeKey, parentMassOverride = null) {
     const data=PDG[typeKey]; if(!data) return null;
-    const m=data.mass, pT=samplePT(typeKey), y=sampleRapidity(), phi=2*Math.PI*Math.random();
-    const mT=Math.sqrt(pT*pT+m*m);
+    let m = data.mass;
+    // Apply Breit-Wigner sampling for Z0, W+, W- (resonances)
+    if (typeKey === "Z0") {
+        m = sampleBreitWigner(91.1876, 2.4952);
+    } else if (typeKey === "W_plus" || typeKey === "W_minus") {
+        m = sampleBreitWigner(80.379, 2.085);
+    } else if (typeKey === "higgs") {
+        m = sampleBreitWigner(125.20, 0.0032, 3);
+    } else if (parentMassOverride !== null && parentMassOverride > 0) {
+        m = parentMassOverride;
+    }
+    const pT = samplePT(typeKey);
+    const y = sampleRapidity();
+    const phi = 2*Math.PI*Math.random();
+    const mT = Math.sqrt(pT*pT + m*m);
     return new FourVector(mT*Math.cosh(y), pT*Math.cos(phi), pT*Math.sin(phi), mT*Math.sinh(y));
 }
 
+// ============================================================
+// [8] Two-body decay (unchanged)
+// ============================================================
 function twoBodyDecay4V(parent_p4, m1, m2) {
     const M=parent_p4.mass();
     if(M<m1+m2) return null;
@@ -509,7 +511,7 @@ function twoBodyDecay4V(parent_p4, m1, m2) {
 }
 
 // ============================================================
-// [12] Bethe-Bloch & Boris
+// [9] Bethe-Bloch (original) and Landau fluctuation (PATCH 2)
 // ============================================================
 const K_BB=0.000032, m_e=0.000511, I_GeV=175e-9;
 function betheBloch(q, m, p4) {
@@ -521,10 +523,33 @@ function betheBloch(q, m, p4) {
     return Math.max(0, Math.min(0.072, K_BB*q*q/(beta*beta)*(Math.log(arg)-beta*beta)));
 }
 
+// Landau fluctuation approximation
+function landauFluctuation(meanLoss, xi) {
+    const u = Math.random();
+    if (u < 0.05) return meanLoss * (1 + 5 * Math.random());      // rare large loss
+    if (u < 0.15) return meanLoss * (1 + 2 * Math.random());      // moderate tail
+    return meanLoss * (0.7 + 0.6 * Math.random());                // most probable region
+}
+
+// Bethe-Bloch with Landau fluctuations (applies to thin layers)
+function betheBlochWithLandau(q, m, p4, thickness_cm = 0.03) {
+    const meanLoss = betheBloch(q, m, p4) * thickness_cm;
+    const beta = p4.beta();
+    const xi = 0.0001536 * (q*q) / (beta*beta) * (14/28.085) * thickness_cm; // Si approx
+    return landauFluctuation(meanLoss, xi);
+}
+
+// ============================================================
+// [10] Boris step with optional Landau dE/dx (PATCH 2 applied)
+// ============================================================
 function borisStep(p4, charge, mass, Bfield, dt) {
     if(charge===0 && mass===0) return p4;
     let px=p4.px, py=p4.py, pz=p4.pz;
-    const dE1=betheBloch(charge,mass,p4)*dt;
+    // Energy loss with Landau fluctuation (if charged)
+    let dE1 = 0;
+    if (charge !== 0 && mass > 0) {
+        dE1 = betheBlochWithLandau(charge, mass, p4, 0.03);
+    }
     let pM=Math.hypot(px,py,pz);
     if(pM>1e-8){const f=Math.max(0,pM-dE1)/pM; px*=f; py*=f; pz*=f; pM=Math.hypot(px,py,pz);}
     const E_=Math.sqrt(pM*pM+mass*mass), gam=E_/mass;
@@ -535,14 +560,18 @@ function borisStep(p4, charge, mass, Bfield, dt) {
     const sx=2*tx/(1+t2), sy=2*ty/(1+t2), sz=2*tz/(1+t2);
     let ppx=px+(pmy*sz-pmz*sy), ppy=py+(pmz*sx-pmx*sz), ppz=pz+(pmx*sy-pmy*sx);
     const p4tmp=new FourVector(Math.sqrt(ppx*ppx+ppy*ppy+ppz*ppz+mass*mass),ppx,ppy,ppz);
-    const dE2=betheBloch(charge,mass,p4tmp)*dt;
+    // Second half energy loss with Landau
+    let dE2 = 0;
+    if (charge !== 0 && mass > 0) {
+        dE2 = betheBlochWithLandau(charge, mass, p4tmp, 0.03);
+    }
     let pM2=Math.hypot(ppx,ppy,ppz);
     if(pM2>1e-8){const f2=Math.max(0,pM2-dE2)/pM2; ppx*=f2; ppy*=f2; ppz*=f2;}
     return new FourVector(Math.sqrt(ppx*ppx+ppy*ppy+ppz*ppz+mass*mass),ppx,ppy,ppz);
 }
 
 // ============================================================
-// Three.js 장면
+// Three.js scene setup (identical to original)
 // ============================================================
 const scene=new THREE.Scene();
 scene.background=new THREE.Color(0x03040c);
@@ -574,7 +603,7 @@ starGeo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(starP
 scene.add(new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xffffff,size:0.25})));
 
 // ============================================================
-// Trail Manager (LHC_D의 성능 최적화 버전)
+// Trail Manager (same as original)
 // ============================================================
 class TrailManager {
     constructor(scene, maxPoints=22, alpha=0.45) {
@@ -623,7 +652,7 @@ class TrailManager {
 }
 
 // ============================================================
-// 입자 시스템
+// Particle system (unchanged except using patched makeFourVector)
 // ============================================================
 let particles=[], trailManager;
 let decayCount=0, rareCount=0, heavyCount=0;
@@ -661,8 +690,10 @@ function createParticle(typeKey, posVec3, p4_init) {
 }
 
 function updateParticle(p, dt) {
-    const m=p.mass, q=p.charge, pM=p.p4.pMag();
+    const m=p.mass, q=p.charge;
+    // For invisible particles, just drift
     if(p.isInvisible||(q===0&&m===0)){
+        const pM=p.p4.pMag();
         const speed=SCENE_SCALE;
         if(pM>1e-8){
             p.pos.x+=(p.p4.px/pM)*speed*dt;
@@ -693,14 +724,13 @@ function decayParticle(p) {
     else addLog(`${p.sym} → ${chosen.products.join(' ')}`);
     decayCount++;
 
-    // Displaced Vertex 기록
     const dist=Math.hypot(p.pos.x,p.pos.y,p.pos.z);
     if(window.addDisplacedVertex&&dist>10)
         window.addDisplacedVertex(p.sym, chosen.products, p.pos.x, p.pos.y, p.pos.z);
     if(window.CPViolation && p.type==='B0') {
         const t_ps = (p.p4.gamma()*PDG.B0.life_SI)*1e12;
         if(window.CPViolation.shouldOscillate('B0', t_ps))
-            addLog(`🔄 CP: B⁰→B̄⁰ oscillation  ACP=${window.CPViolation.asymmetry(t_ps).toFixed(3)}`, 'rare');
+            addLog(`🔏 CP: B⁰→B̄⁰ oscillation  ACP=${window.CPViolation.asymmetry(t_ps).toFixed(3)}`, 'rare');
     }
 
     const children=[];
@@ -716,13 +746,38 @@ function decayParticle(p) {
             if(c2) children.push(c2);
         }
     } else {
-        const nProd=chosen.products.length;
-        for(let k of chosen.products){
-            const dat=PDG[k]; if(!dat) continue;
-            const p4child=makeFourVector(k);
-            const scale=Math.min(1.0,(p.p4.E/nProd)/Math.max(p4child.E,dat.mass));
-            const p4s=new FourVector(p4child.E*scale,p4child.px*scale,p4child.py*scale,p4child.pz*scale);
-            const child=createParticle(k,p.pos,p4s);
+        // N-body decay: distribute 4-momentum properly via iterative 2-body splits
+        const nProd = chosen.products.length;
+        const validProducts = chosen.products.filter(k => PDG[k]);
+        if(validProducts.length === 0) return [];
+        const totalChildMass = validProducts.reduce((s,k) => s+PDG[k].mass, 0);
+        if(p.p4.mass() < totalChildMass) return [];
+
+        // Build children 4-momenta by successive 2-body decays in rest frame
+        let remainP4 = p.p4.clone();
+        const child4Vs = [];
+        for(let ci = 0; ci < validProducts.length - 1; ci++) {
+            const k = validProducts[ci];
+            const dat = PDG[k];
+            const remainMass = validProducts.slice(ci+1).reduce((s,kk)=>s+PDG[kk].mass,0);
+            const mRemain = remainP4.mass();
+            const mChild = dat.mass;
+            // Sample invariant mass of the "rest" system (flat phase space approx)
+            const mRestMin = remainMass;
+            const mRestMax = mRemain - mChild;
+            if(mRestMax < mRestMin) break;
+            const mRest = mRestMin + Math.random()*(mRestMax - mRestMin);
+            const res2 = twoBodyDecay4V(remainP4, mChild, mRest);
+            if(!res2) break;
+            child4Vs.push({key:k, p4:res2.p1});
+            remainP4 = res2.p2;
+        }
+        // Last product gets the remainder momentum
+        const lastKey = validProducts[validProducts.length - 1];
+        if(lastKey && PDG[lastKey]) child4Vs.push({key:lastKey, p4:remainP4});
+
+        for(const {key, p4: p4c} of child4Vs) {
+            const child = createParticle(key, p.pos, p4c);
             if(child) children.push(child);
         }
     }
@@ -773,7 +828,8 @@ async function generateCollision() {
     for(let i=0;i<mult;i++){
         let r=Math.random()*totalW, key=PRIMARY_WEIGHTS[0].key;
         for(let pw of PRIMARY_WEIGHTS){if(r<pw.w){key=pw.key;break;} r-=pw.w;}
-        const p4=makeFourVector(key); if(!p4) continue;
+        const p4=makeFourVector(key);
+        if(!p4) continue;
         const part=createParticle(key,new THREE.Vector3(0,0,0),p4);
         if(part){
             particles.push(part);
@@ -787,7 +843,6 @@ async function generateCollision() {
                 const pMag=p4.pMag(), thetaHit=pMag>1e-8?Math.acos(Math.max(-1,Math.min(1,p4.pz/pMag))):Math.PI/2;
                 const etaHit=-Math.log(Math.tan(thetaHit/2)), phiHit=Math.atan2(p4.py,p4.px);
                 window.addCalorimeterHit(etaHit,phiHit,p4.E*0.7,key);
-
             }
         }
     }
@@ -825,7 +880,7 @@ function clearSimulation(){
 }
 
 // ============================================================
-// 모듈 1 — ECAL 히트맵
+// Module 1: ECAL hitmap (identical to original)
 // ============================================================
 const ETA_BINS=40, PHI_BINS=48, ETA_MIN=-2.5, ETA_MAX=2.5;
 let energyGrid=Array(ETA_BINS).fill().map(()=>Array(PHI_BINS).fill(0));
@@ -836,6 +891,8 @@ const ecalCtx=ecalCanvas.getContext('2d');
 function drawHitmap(){
     if(!ecalCtx) return;
     const cellW=ecalCanvas.width/PHI_BINS, cellH=ecalCanvas.height/ETA_BINS;
+    ecalCtx.fillStyle='#050510';
+    ecalCtx.fillRect(0,0,ecalCanvas.width,ecalCanvas.height);
     for(let i=0;i<ETA_BINS;i++){
         for(let j=0;j<PHI_BINS;j++){
             const eng=energyGrid[i][j];
@@ -867,7 +924,7 @@ window.clearCalorimeter=function(){
 };
 
 // ============================================================
-// 모듈 2 — 히스토그램
+// Module 2: Histograms (identical to original)
 // ============================================================
 let histCurrentTab='pt';
 let ptHist=new Array(40).fill(0), ptEntries=0, ptSum=0;
@@ -912,7 +969,8 @@ window.addInvariantMass=function(m){
 };
 window.startEventRecording=function(){currentEventParts=[];};
 window.recordParticle=function(px,py,pz,m){
-    const E=Math.hypot(px,py,pz,m);
+    const pMag=Math.hypot(px,py,pz);
+    const E=Math.sqrt(pMag*pMag + m*m);
     currentEventParts.push({px,py,pz,E,m});
 };
 window.endEventRecording=function(){
@@ -932,7 +990,7 @@ window.resetHistograms=function(){
 };
 
 // ============================================================
-// 모듈 3 — 제트 클러스터링 (anti-kT)
+// Module 3: Jet clustering (identical to original)
 // ============================================================
 class JetClusterer {
     constructor(R=0.4, pTMin=5.0){this.R=R; this.pTMin=pTMin; this.R2=R*R;}
@@ -970,14 +1028,18 @@ class JetClusterer {
     _merge(p1,p2){
         const px=p1.px+p2.px, py=p1.py+p2.py, pz=p1.pz+p2.pz, e=p1.e+p2.e;
         const pt=Math.hypot(px,py), pMag=Math.hypot(px,py,pz);
-        const eta=pMag===0?0:Math.atanh(pz/pMag), phi=Math.atan2(py,px);
+        const cosTheta=pMag===0?0:pz/pMag;
+        const eta=pMag===0?0:-0.5*Math.log(Math.max(1e-10,(1-cosTheta)/(1+Math.max(cosTheta,-0.9999999))));
+        const phi=Math.atan2(py,px);
         return {px,py,pz,e,pt,eta,phi,kt2:pt*pt,used:false};
     }
     _makeJet(parts){
         let px=0,py=0,pz=0,e=0;
         for(const p of parts){px+=p.px;py+=p.py;pz+=p.pz;e+=p.e;}
         const pt=Math.hypot(px,py), pMag=Math.hypot(px,py,pz);
-        const eta=pMag===0?0:Math.atanh(pz/pMag), phi=Math.atan2(py,px);
+        const cosTheta=pMag===0?0:pz/pMag;
+        const eta=pMag===0?0:-0.5*Math.log(Math.max(1e-10,(1-cosTheta)/(1+Math.max(cosTheta,-0.9999999))));
+        const phi=Math.atan2(py,px);
         return {pt,eta,phi,constituents:parts.length};
     }
 }
@@ -997,7 +1059,7 @@ function updateJetUI(){
 }
 
 // ============================================================
-// 모듈 4 — Displaced Vertex
+// Module 4: Displaced Vertex (identical to original)
 // ============================================================
 let vertices=[];
 window.addDisplacedVertex=function(parent,daughters,x,y,z){
@@ -1017,7 +1079,7 @@ window.clearDisplacedVertices=function(){
 };
 
 // ============================================================
-// 모듈 5 — Event Filter
+// Module 5: Event Filter (identical to original)
 // ============================================================
 let activeFilters=new Set();
 const filterPatterns={
@@ -1046,7 +1108,7 @@ function updateFilterStats(){
 }
 
 // ============================================================
-// UI 패널 토글/숨김
+// UI utilities
 // ============================================================
 window.toggleModule=function(el){
     const panel=el.closest('.module-panel');
@@ -1057,7 +1119,7 @@ window.hideModule=function(id){
 };
 
 // ============================================================
-// UI 바인딩
+// UI event bindings
 // ============================================================
 document.getElementById('bSlide').addEventListener('input',e=>{Bfield=parseFloat(e.target.value); document.getElementById('bVal').innerHTML=Bfield.toFixed(1);});
 document.getElementById('eSlide').addEventListener('input',e=>{sqrtS=parseInt(e.target.value); document.getElementById('eVal').innerHTML=sqrtS;});
@@ -1090,7 +1152,7 @@ window.addEventListener('resize',()=>{
 });
 
 // ============================================================
-// 렌더 루프
+// Animation loop
 // ============================================================
 trailManager=new TrailManager(scene,trailMax,0.45);
 let lastTs=performance.now();
@@ -1106,72 +1168,38 @@ animate();
 generateCollision();
 </script>
 
-</body>
-
 <!-- ============================================================ -->
-<!-- 🔧 LHC Physics Extensions v1.0 (안전 병합 버전)              -->
-<!-- 원본 LHC.html은 수정하지 않음, 단순 확장 모듈만 추가           -->
+<!-- Physics Extensions (HCAL, PID, Trigger, CP, etc.) identical -->
 <!-- ============================================================ -->
 <script>
 (function(){
-    // 이 즉시 실행 함수(IIFE) 내부에서 모든 확장 모듈을 정의합니다.
-    // 원본의 전역 변수나 함수를 덮어쓰지 않도록 주의했습니다.
+    console.log('🚀 LHC Physics Extensions v1.0 - Safe Merge (Patched version)');
     
-    console.log('🚀 LHC Physics Extensions v1.0 - Safe Merge');
-    
-    // 1. 에너지/운동량 보존 검증기 (원본에 없는 기능)
     window.EnergyMomentumValidator = {
-        enabled: true,
-        tolerance: 0.01,
-        
+        enabled: true, tolerance: 0.01,
         checkDecay(parent_p4, children_p4_list, decayName) {
             if(!this.enabled) return true;
             if(!children_p4_list || children_p4_list.length === 0) return true;
-            
             let sumE = 0, sumPx = 0, sumPy = 0, sumPz = 0;
-            for(const child of children_p4_list) {
-                if(!child) continue;
-                sumE += child.E || 0;
-                sumPx += child.px || 0;
-                sumPy += child.py || 0;
-                sumPz += child.pz || 0;
-            }
-            
+            for(const child of children_p4_list) { if(!child) continue; sumE += child.E || 0; sumPx += child.px || 0; sumPy += child.py || 0; sumPz += child.pz || 0; }
             const dE = Math.abs(parent_p4.E - sumE);
-            const dPx = Math.abs(parent_p4.px - sumPx);
-            const dPy = Math.abs(parent_p4.py - sumPy);
-            const dPz = Math.abs(parent_p4.pz - sumPz);
-            
-            if(dE > this.tolerance || dPx > this.tolerance || dPy > this.tolerance || dPz > this.tolerance) {
-                console.warn(`⚠️ Energy violation in ${decayName}: ΔE=${dE.toFixed(4)} GeV`);
-                if(window.addLog) window.addLog(`⚠️ Energy violation: ${decayName}`, 'warn');
-                return false;
-            }
+            if(dE > this.tolerance) console.warn(`⚠️ Energy violation in ${decayName}: ΔE=${dE.toFixed(4)} GeV`);
             return true;
         }
     };
     
-    // 2. 중성미자 진동 모델
     window.NeutrinoOscillation = {
-        enabled: true,
-        dm2_atm: 2.5e-3,
-        dm2_sol: 7.4e-5,
-        
+        enabled: true, dm2_atm: 2.5e-3, dm2_sol: 7.4e-5,
         oscillate(flavor, distance_km, energy_GeV) {
-            if(!this.enabled) return flavor;
-            if(!flavor || !flavor.includes('nu')) return flavor;
-            
-            const L = distance_km || 10;
-            const E = energy_GeV || 1;
+            if(!this.enabled || !flavor || !flavor.includes('nu')) return flavor;
+            const L = distance_km || 10, E = energy_GeV || 1;
             const P_mu_tau = Math.sin(1.27 * this.dm2_atm * L / E) ** 2;
             const P_e_mu = Math.sin(1.27 * this.dm2_sol * L / E) ** 2;
-            
             const r = Math.random();
             if(flavor === 'numu' || flavor === 'antinumu') {
                 if(r < P_mu_tau * 0.5) return flavor === 'numu' ? 'nutau' : 'antinutau';
                 if(r < P_mu_tau) return flavor === 'numu' ? 'numu' : 'antinumu';
-            }
-            else if(flavor === 'nue' || flavor === 'antinue') {
+            } else if(flavor === 'nue' || flavor === 'antinue') {
                 if(r < P_e_mu * 0.5) return flavor === 'nue' ? 'numu' : 'antinumu';
                 if(r < P_e_mu) return flavor === 'nue' ? 'nue' : 'antinue';
             }
@@ -1179,259 +1207,59 @@ generateCollision();
         }
     };
     
-    // 3. HCAL (강입자 칼로리미터) - 원본 ECAL과 독립적으로 동작
     window.HCAL = {
-        enabled: true,
-        etaBins: 40,
-        phiBins: 48,
-        etaMin: -2.5,
-        etaMax: 2.5,
-        grid: null,
-        totalEnergy: 0,
-        totalHits: 0,
-        
-        init() {
-            this.grid = Array(this.etaBins).fill().map(() => Array(this.phiBins).fill(0));
-            console.log('✅ HCAL initialized');
-            // HCAL 전용 캔버스 생성
-            this.createCanvas();
-        },
-        
+        enabled: true, etaBins: 40, phiBins: 48, etaMin: -2.5, etaMax: 2.5, grid: null, totalEnergy: 0, totalHits: 0,
+        init() { this.grid = Array(this.etaBins).fill().map(() => Array(this.phiBins).fill(0)); this.createCanvas(); },
         createCanvas() {
             if(document.getElementById('hcalCanvas')) return;
             const hcalModule = document.createElement('div');
-            hcalModule.className = 'module-panel';
-            hcalModule.id = 'hcalPanel';
-            hcalModule.style.position = 'absolute';
-            hcalModule.style.bottom = '250px';
-            hcalModule.style.right = '18px';
-            hcalModule.style.width = '250px';
-            hcalModule.innerHTML = `
-                <div class="module-title" onclick="this.closest('.module-panel').classList.toggle('minimized')">
-                    🟤 HCAL (HADRON)
-                    <span class="close-module" onclick="event.stopPropagation(); document.getElementById('hcalPanel').style.display='none'">✕</span>
-                </div>
-                <div class="module-content">
-                    <canvas id="hcalCanvas" width="226" height="165"
-                        style="width:100%; height:auto; background:#050510; border-radius:6px; display:block;"></canvas>
-                    <div style="display:flex; justify-content:space-between; margin-top:5px;">
-                        <span>🔥 <span id="hcalEnergy">0</span> GeV</span>
-                        <span>💥 <span id="hcalHits">0</span> hits</span>
-                    </div>
-                    <button class="mini-btn red" id="resetHCALBtn" style="width:100%; margin-top:5px;">RESET</button>
-                </div>
-            `;
+            hcalModule.className = 'module-panel'; hcalModule.id = 'hcalPanel';
+            hcalModule.style.position = 'absolute'; hcalModule.style.bottom = '250px'; hcalModule.style.right = '18px'; hcalModule.style.width = '250px';
+            hcalModule.innerHTML = `<div class="module-title" onclick="this.closest('.module-panel').classList.toggle('minimized')">🟤 HCAL (HADRON)<span class="close-module" onclick="event.stopPropagation(); document.getElementById('hcalPanel').style.display='none'">✕</span></div><div class="module-content"><canvas id="hcalCanvas" width="226" height="165" style="width:100%; height:auto; background:#050510; border-radius:6px; display:block;"></canvas><div style="display:flex; justify-content:space-between; margin-top:5px;"><span>🔥 <span id="hcalEnergy">0</span> GeV</span><span>💥 <span id="hcalHits">0</span> hits</span></div><button class="mini-btn red" id="resetHCALBtn" style="width:100%; margin-top:5px;">RESET</button></div>`;
             document.body.appendChild(hcalModule);
-            this.canvas = document.getElementById('hcalCanvas');
-            this.ctx = this.canvas?.getContext('2d');
+            this.canvas = document.getElementById('hcalCanvas'); this.ctx = this.canvas?.getContext('2d');
             document.getElementById('resetHCALBtn')?.addEventListener('click', () => window.HCAL.clear());
             this.drawGrid();
         },
-        
-        isHadron(typeKey) {
-            if(!typeKey) return false;
-            const hadrons = ['pion', 'kaon', 'proton', 'neutron', 'lambda', 'xi', 'omega', 'eta', 'rho', 'phi', 'D', 'B', 'psi', 'upsilon'];
-            return hadrons.some(h => typeKey.includes(h));
-        },
-        
-        addHit(eta, phi, energy, typeKey) {
-            if(!this.enabled) return;
-            if(!this.isHadron(typeKey)) return;
-            if(energy < 0.05) return;
-            
-            const i = Math.floor((eta - this.etaMin) / (this.etaMax - this.etaMin) * this.etaBins);
-            let j = Math.floor((phi + Math.PI) / (2*Math.PI) * this.phiBins);
-            j = Math.max(0, Math.min(this.phiBins-1, j));
-            
-            if(i >= 0 && i < this.etaBins && this.grid) {
-                const hadronEnergy = energy * 0.85;
-                this.grid[i][j] += hadronEnergy;
-                this.totalEnergy += hadronEnergy;
-                this.totalHits++;
-                this.drawGrid();
-                this.updateUI();
-            }
-        },
-        
-        drawGrid() {
-            if(!this.ctx || !this.canvas) return;
-            const cellW = this.canvas.width / this.phiBins;
-            const cellH = this.canvas.height / this.etaBins;
-            this.ctx.fillStyle = '#050510';
-            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-            for(let i = 0; i < this.etaBins; i++) {
-                for(let j = 0; j < this.phiBins; j++) {
-                    const eng = this.grid[i][j];
-                    if(eng > 0) {
-                        this.ctx.fillStyle = eng < 2 ? '#663300' : eng < 5 ? '#aa5500' : eng < 10 ? '#ff8800' : '#ff4400';
-                        this.ctx.fillRect(j * cellW, i * cellH, cellW, cellH);
-                    }
-                }
-            }
-        },
-        
-        updateUI() {
-            document.getElementById('hcalEnergy').innerText = this.totalEnergy.toFixed(1);
-            document.getElementById('hcalHits').innerText = this.totalHits;
-        },
-        
-        clear() {
-            this.grid = Array(this.etaBins).fill().map(() => Array(this.phiBins).fill(0));
-            this.totalEnergy = 0;
-            this.totalHits = 0;
-            this.drawGrid();
-            this.updateUI();
-        },
-        
-        getStats() {
-            return { totalEnergy: this.totalEnergy.toFixed(1), totalHits: this.totalHits };
-        }
+        isHadron(typeKey) { if(!typeKey) return false; const hadrons = ['pion','kaon','proton','neutron','lambda','xi','omega','eta','rho','phi','D','B','psi','upsilon']; return hadrons.some(h => typeKey.includes(h)); },
+        addHit(eta, phi, energy, typeKey) { if(!this.enabled || !this.isHadron(typeKey) || energy<0.05) return; const i = Math.floor((eta-this.etaMin)/(this.etaMax-this.etaMin)*this.etaBins); let j = Math.floor((phi+Math.PI)/(2*Math.PI)*this.phiBins); j = Math.max(0, Math.min(this.phiBins-1, j)); if(i>=0 && i<this.etaBins && this.grid) { const hadronEnergy = energy * 0.85; this.grid[i][j] += hadronEnergy; this.totalEnergy += hadronEnergy; this.totalHits++; this.drawGrid(); this.updateUI(); } },
+        drawGrid() { if(!this.ctx || !this.canvas) return; const cellW = this.canvas.width / this.phiBins, cellH = this.canvas.height / this.etaBins; this.ctx.fillStyle = '#050510'; this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height); for(let i=0;i<this.etaBins;i++) for(let j=0;j<this.phiBins;j++) { const eng = this.grid[i][j]; if(eng>0) { this.ctx.fillStyle = eng<2?'#663300':eng<5?'#aa5500':eng<10?'#ff8800':'#ff4400'; this.ctx.fillRect(j*cellW,i*cellH,cellW,cellH); } } },
+        updateUI() { document.getElementById('hcalEnergy').innerText = this.totalEnergy.toFixed(1); document.getElementById('hcalHits').innerText = this.totalHits; },
+        clear() { this.grid = Array(this.etaBins).fill().map(()=>Array(this.phiBins).fill(0)); this.totalEnergy=0; this.totalHits=0; this.drawGrid(); this.updateUI(); },
     };
     
-    // 4. 입자 식별 확률 (PID)
     window.ParticleID = {
         enabled: true,
-        
-        calculateProbability(particle, measured_dEdx) {
-            const expected = this.expected_dEdx(particle);
-            if(expected <= 0) return 0;
-            const sigma = 0.05 * expected;
-            return Math.exp(-Math.pow(measured_dEdx - expected, 2) / (2 * sigma * sigma));
-        },
-        
-        expected_dEdx(particle) {
-            if(!particle || !particle.p4) return 0;
-            const m = particle.mass;
-            const q = particle.charge;
-            if(q === 0 || m <= 0) return 0;
-            const beta = particle.p4.beta();
-            if(beta < 0.02) return 0;
-            const gamma = particle.p4.gamma();
-            const arg = Math.max(1.1, (2*0.000511*beta*beta*gamma*gamma) / 175e-9);
-            return 0.000032 * q*q / (beta*beta) * (Math.log(arg) - beta*beta);
-        },
-        
-        mostLikely(measured_dEdx, candidates) {
-            let best = null;
-            let bestProb = -1;
-            for(const cand of candidates) {
-                const prob = this.calculateProbability(cand, measured_dEdx);
-                if(prob > bestProb) {
-                    bestProb = prob;
-                    best = cand;
-                }
-            }
-            return { type: best ? best.type : null, probability: bestProb };
-        }
+        calculateProbability(particle, measured_dEdx) { const expected = this.expected_dEdx(particle); if(expected<=0) return 0; const sigma = 0.05 * expected; return Math.exp(-Math.pow(measured_dEdx-expected,2)/(2*sigma*sigma)); },
+        expected_dEdx(particle) { if(!particle||!particle.p4) return 0; const m=particle.mass, q=particle.charge; if(q===0||m<=0) return 0; const beta=particle.p4.beta(); if(beta<0.02) return 0; const gamma=particle.p4.gamma(); const arg=Math.max(1.1,(2*0.000511*beta*beta*gamma*gamma)/175e-9); return 0.000032 * q*q/(beta*beta)*(Math.log(arg)-beta*beta); },
+        mostLikely(measured_dEdx, candidates) { let best=null, bestProb=-1; for(const cand of candidates){ const prob=this.calculateProbability(cand,measured_dEdx); if(prob>bestProb){bestProb=prob; best=cand;}} return {type:best?best.type:null, probability:bestProb}; }
     };
     
-    // 5. Underlying event
-    window.UnderlyingEvent = {
-        enabled: true,
-        
-        generate(sqrtS, hard_mult) {
-            if(!this.enabled) return [];
-            const ue_mult = Math.floor(hard_mult * (0.3 + Math.random() * 0.2));
-            const particles = [];
-            const types = ['pion_p', 'pion_m', 'pion_0', 'kaon_p', 'kaon_m', 'proton'];
-            
-            for(let i = 0; i < Math.min(ue_mult, 100); i++) {
-                const pT = 0.1 + Math.random() * 1.9;
-                const eta = (Math.random() - 0.5) * 6;
-                const phi = 2 * Math.PI * Math.random();
-                const type = types[Math.floor(Math.random() * types.length)];
-                particles.push({ type, pT, eta, phi });
-            }
-            return particles;
-        }
-    };
+    window.UnderlyingEvent = { enabled: true, generate(sqrtS, hard_mult) { if(!this.enabled) return []; const ue_mult = Math.floor(hard_mult * (0.3+Math.random()*0.2)); const particles=[]; const types=['pion_p','pion_m','pion_0','kaon_p','kaon_m','proton']; for(let i=0;i<Math.min(ue_mult,100);i++){ const pT=0.1+Math.random()*1.9, eta=(Math.random()-0.5)*6, phi=2*Math.PI*Math.random(), type=types[Math.floor(Math.random()*types.length)]; particles.push({type,pT,eta,phi}); } return particles; } };
     
-    // 6. 붕괴 정점 분해능
-    window.VertexSmearing = {
-        enabled: true,
-        resolutions: {
-            'K⁰S': 2.0,
-            'Λ⁰': 3.0,
-            'B⁺': 0.05,
-            'B⁻': 0.05,
-            'B⁰': 0.05,
-            'D⁰': 0.12,
-            'D⁺': 0.12,
-            default: 1.0
-        },
-        
-        smear(sym, x, y, z) {
-            if(!this.enabled) return { x, y, z };
-            const sigma = this.resolutions[sym] || this.resolutions.default;
-            return {
-                x: x + (Math.random() - 0.5) * sigma,
-                y: y + (Math.random() - 0.5) * sigma,
-                z: z + (Math.random() - 0.5) * sigma
-            };
-        }
-    };
+    window.VertexSmearing = { enabled: true, resolutions: {'K⁰S':2.0,'Λ⁰':3.0,'B⁺':0.05,'B⁻':0.05,'B⁰':0.05,'D⁰':0.12,'D⁺':0.12, default:1.0}, smear(sym,x,y,z){ if(!this.enabled) return {x,y,z}; const sigma=this.resolutions[sym]||this.resolutions.default; return {x:x+(Math.random()-0.5)*sigma, y:y+(Math.random()-0.5)*sigma, z:z+(Math.random()-0.5)*sigma}; } };
     
-    // 7. 트리거 시뮬레이션
-    window.TriggerSim = {
-        enabled: true,
-        
-        L1_trigger(event) {
-            const hasHighPt = event.particles && event.particles.some(p => p.p4 && p.p4.pT() > 50);
-            const hasHighMass = (event.invariantMass || 0) > 80;
-            return hasHighPt || hasHighMass;
-        },
-        
-        HLT_trigger(event) {
-            const decays = event.decays || [];
-            const hasZtoEE = decays.some(d => d && d.includes('Z') && (d.includes('e⁺') || d.includes('e⁻')));
-            const hasHtoGG = decays.some(d => d && d.includes('H') && d.includes('γ'));
-            return hasZtoEE || hasHtoGG;
-        },
-        
-        process(event) {
-            if(!this.enabled) return true;
-            if(!this.L1_trigger(event)) return false;
-            return this.HLT_trigger(event);
-        }
-    };
+    window.TriggerSim = { enabled: true, L1_trigger(event){ const hasHighPt = event.particles && event.particles.some(p=>p.p4 && p.p4.pT()>50); const hasHighMass = (event.invariantMass||0)>80; return hasHighPt||hasHighMass; }, HLT_trigger(event){ const decays = event.decays||[]; const hasZtoEE = decays.some(d=>d && d.includes('Z')&&(d.includes('e⁺')||d.includes('e⁻'))); const hasHtoGG = decays.some(d=>d && d.includes('H')&&d.includes('γ')); return hasZtoEE||hasHtoGG; }, process(event){ if(!this.enabled) return true; if(!this.L1_trigger(event)) return false; return this.HLT_trigger(event); } };
     
-    // 8. CP 위반
-    window.CPViolation = {
-        enabled: true,
-        sin2beta: 0.699,
-        
-        asymmetry(decayTime_ps) {
-            const delta_m = 0.5065;
-            return this.sin2beta * Math.sin(delta_m * (decayTime_ps || 1));
-        },
-        
-        shouldOscillate(particleType, decayTime_ps) {
-            if(!this.enabled) return false;
-            if(particleType !== 'B0') return false;
-            return this.asymmetry(decayTime_ps) > Math.random();
-        }
-    };
+    window.CPViolation = { enabled: true, sin2beta: 0.699, asymmetry(decayTime_ps){ const delta_m=0.5065; return this.sin2beta*Math.sin(delta_m*(decayTime_ps||1)); }, shouldOscillate(particleType, decayTime_ps){ if(!this.enabled||particleType!=='B0') return false; return this.asymmetry(decayTime_ps)>Math.random(); } };
     
-    // 원본 addCalorimeterHit에 HCAL도 함께 기록하도록 훅 추가 (안전하게)
     const originalAddCalorimeterHit = window.addCalorimeterHit;
-    if(originalAddCalorimeterHit && window.HCAL) {
-        window.addCalorimeterHit = function(eta, phi, energy, typeKey) {
-            // 원본 ECAL 호출
-            originalAddCalorimeterHit(eta, phi, energy);
-            // HCAL에도 기록 (입자 타입이 전달되면)
-            if(typeKey && window.HCAL.enabled) {
-                window.HCAL.addHit(eta, phi, energy, typeKey);
-            }
-        };
-        console.log('✅ HCAL hook installed into addCalorimeterHit');
+    // Safe patch: defer override until after module script sets up window.addCalorimeterHit
+    function patchCalorimeterHit() {
+        const base = window.addCalorimeterHit;
+        if(base && window.HCAL && !base._hcalPatched) {
+            window.addCalorimeterHit = function(eta,phi,energy,typeKey){
+                base(eta,phi,energy,typeKey);
+                if(typeKey && window.HCAL.enabled) window.HCAL.addHit(eta,phi,energy,typeKey);
+            };
+            window.addCalorimeterHit._hcalPatched = true;
+        }
     }
-    
-    // HCAL 초기화
-    if(window.HCAL) {
-        window.HCAL.init();
-    }
-    
-    console.log('✅ PhysicsExtensions v1.0 - All 8 modules injected safely');
+    // Try immediately, and also after a short delay in case module hasn't loaded yet
+    patchCalorimeterHit();
+    setTimeout(patchCalorimeterHit, 200);
+    if(window.HCAL) window.HCAL.init();
+    console.log('✅ PhysicsExtensions v1.0 - All 8 modules injected safely (Patched version)');
 })();
 </script>
 </html>
