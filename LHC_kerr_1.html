@@ -994,9 +994,8 @@ function applyBlackHoleGravity(p, dt) {
         // 에르고구 내부: 추가 가속 (공전 강제)
         // r_ergo ≈ 2 * Rs_base (적도 기준)
         const r_ergo = Rs_base * 2.0;
-        if (r < r_ergo * 1.2 && BH_SPIN > 0.1) {
-            const ergoFade = Math.max(0, Math.min(1, (r_ergo * 1.2 - r) / (r_ergo * 0.2)));
-            const ergoBoost = BH_SPIN * logMass * 80.0 / (r2 + 1.0) * ergoFade;
+        if (r < r_ergo && BH_SPIN > 0.1) {
+            const ergoBoost = BH_SPIN * logMass * 80.0 / (r2 + 1.0);
             p.p4.px += ergoBoost * tx * dt;
             p.p4.pz += ergoBoost * tz * dt;
         }
@@ -1024,9 +1023,8 @@ function updateParticle(p, dt) {
         return;
     }
     // 블랙홀 중력 먼저 적용 (운동량 변경)
-    if (applyBlackHoleGravity(p, dt * 0.5)) { p.absorbed = true; return; }
+    if (applyBlackHoleGravity(p, dt)) { p.absorbed = true; return; }
     p.p4=borisStep(p.p4,q,m,Bfield,dt);
-    if (applyBlackHoleGravity(p, dt * 0.5)) { p.absorbed = true; return; }
     const gam=p.p4.E/m, invGM=SCENE_SCALE/(gam*m);
     p.pos.x+=p.p4.px*invGM*dt;
     p.pos.y+=p.p4.py*invGM*dt;
