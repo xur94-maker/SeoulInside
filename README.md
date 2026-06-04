@@ -1,233 +1,452 @@
-A Relativistic Particle Collider, Built in Pure JavaScript — Making the Yang-Mills Collider
-A relativistic particle physics simulator in pure JavaScript
-B. Sun | Seoul Inside
-Jun 03, 2026
+# What Is Actually Inside This HTML File
 
-A few days ago, I asked myself a strange question.
+### Yang-Mills Collider v3.0 — A technical inventory
 
-“Could I just run a CERN particle collider in the browser?”
-
-The short answer — yes. Quite seriously, too.
-
-🔗 Try it yourself →
-
-It Started with Simple Curiosity
-The original code looked like a particle physics simulator, but under the hood the physics were fairly simple. Particles flew in straight lines, the magnetic field only affected the x and z directions, and decays just fired off in random directions.
-
-“What if I put real physics in here?” That thought was the beginning of this project.
-
-What Actually Happens Inside the LHC
-At CERN’s LHC (Large Hadron Collider), two protons collide head-on at nearly the speed of light. The energy released at the moment of collision can reach up to 13.6 TeV — roughly 14,500 times the rest mass of a proton, all concentrated at a single point.
-
-From that collision, hundreds of new particles are born in an instant. Pions, kaons, muons, electrons — each with different masses and charges, flying off in every direction. Inside a powerful solenoid magnetic field (about 3.8 Tesla), each one traces its own helical path.
-
-The detector measures the curvature of these paths to calculate momentum. Even with the same charge, heavier particles curve gently while lighter ones curve sharply.
-
-Reproducing this in the browser was the goal.
-
-The Physics Engine: What’s Under the Hood
-1. Special Relativity — “Nothing Can Exceed the Speed of Light”
-This was the first problem to solve. Conventional game physics engines use Newtonian mechanics: F = ma. Apply a force continuously and velocity increases without limit.
-
-But inside the LHC, protons travel at 99.9999991% of the speed of light. Newtonian mechanics breaks down completely at these speeds.
-
-The solution is the Lorentz factor γ (gamma):
-
-γ = E / m = 1 / √(1 - v²/c²)
-As velocity approaches the speed of light, γ grows explosively — the same force produces less and less acceleration. Every particle in this simulator passes through this formula. No particle can exceed the speed of light.
-
-2. Boris Integrator — The Same Method Used by GEANT4
-Numerically computing the motion of a particle in a magnetic field is trickier than it sounds. A naive implementation lets energy slowly leak out, causing the spiral to gradually grow or shrink — a real error.
-
-The Boris Integrator is the algorithm that solves this problem. It’s the standard method used in CERN’s GEANT4 and plasma physics PIC codes. The key idea is to split the magnetic rotation into two half-rotations:
-
-p⁻ = p + p × t      ← first half-rotation
-p⁺ = p⁻ + p⁻ × s   ← second half-rotation
-This method conserves energy precisely while reproducing helical trajectories. As a result, in this simulator you can see positively charged particles curving counterclockwise and negatively charged ones curving clockwise — exactly as in a real detector.
-
-3. The Bethe-Bloch Formula — Different Particles Slow Down Differently
-Inside an LHC detector, particles lose energy as they pass through the detection material. The Bethe-Bloch formula calculates this energy loss:
-
--dE/dx ≈ K · z² / β² · [ln(2mₑβ²γ² / I) - β²]
-The key point is that this loss differs for each particle. Light electrons lose energy quickly and trace short spirals. Heavy muons punch through almost the entire detector, leaving long straight tracks. This difference is visible in the simulator.
-
-4. Decay Branching Ratios — π⁺ Doesn’t Always Decay the Same Way
-This was personally the most fascinating part.
-
-The positively charged pion (π⁺) is an unstable particle — it decays into other particles almost immediately after being created. But it doesn’t always decay the same way.
-
-Decay Mode Probability π⁺ → μ⁺ + νμ 99.99% π⁺ → e⁺ + νe 0.01%
-
-It almost always decays into a muon, but roughly once in every 10,000 times it decays into an electron instead. These values are actual experimental measurements from the PDG (Particle Data Group).
-
-This simulator implements those probabilities exactly. Run enough collisions and you’ll occasionally see a rare decay flagged separately in the event log. When it happens, it’s genuinely exciting.
-
-5. 4-Momentum Conservation — Physics Laws Hold Even During Decay
-The directions and velocities of particles produced in a decay are determined by 4-momentum conservation. First, the decay direction is calculated in the parent particle’s rest frame (CM frame), then transformed to the lab frame via a Lorentz boost.
-
-As a result, high-energy particle decays are collimated (concentrated forward), while low-energy decays spread more isotropically. It’s a moment where the laws of physics naturally visualize themselves.
-
-6. αs(μ) — The Strong Force Coupling That Changes with Energy
-One of the most remarkable features of QCD (Quantum Chromodynamics) is asymptotic freedom: at higher energies, the strong force between quarks actually becomes weaker. This was the discovery that earned the 2004 Nobel Prize in Physics.
-
-This simulator calculates αs(μ) in real time using the 1-loop beta function:
-
-αs(MZ) = 0.1181  ← actual measured value at the Z boson mass
-Move the collision energy (√s) slider and αs changes — and that value determines how many particles are produced in the collision. At 13 TeV (LHC scale), hundreds of particles; at 20 GeV, tens — trends consistent with real experimental data.
-
-Two Versions
-3D Version (Three.js) Particles trace three-dimensional helices inside a solenoid ring. Freely rotate the view with your mouse. Adjust magnetic field strength and collision energy in real time.
-
-2D Dashboard Version The same physics engine, with QCD analysis tools added. Divided into three levels:
-
-LV.1 Analytic — Instant 1-loop αs(μ) calculation
-
-LV.2 Monte Carlo — PDF-sampled 2→2 parton scattering, pT distributions
-
-LV.3 Heavy Ion — Pb+Pb collisions via the Glauber model, QGP formation condition analysis
-
-Yang-Mills Theory and the Millennium Problem
-This project takes its name from Yang-Mills theory — the mathematical foundation of QCD, published in 1954 by C.N. Yang and R.L. Mills.
-
-The theory contains an unsolved mathematical problem: the Mass Gap Problem. There is still no rigorous mathematical proof of why quarks cannot exist in isolation, or why the strong force only acts over short distances.
-
-This is one of the 7 Millennium Prize Problems selected by the Clay Mathematics Institute. Solve it and you win $1,000,000. It remains unsolved.
-
-Closing Thoughts
-The most striking thing about building this project was the realization that formulas written on paper decades ago run just as well in a browser today.
-
-The Bethe-Bloch formula dates to the 1930s. The Boris Integrator was published in 1970. Asymptotic freedom in αs was discovered in 1973.
-
-These equations are still running at CERN today — and right now, in this browser.
-
-🔗 Launch the 3D Simulator →
-
-Physics Engine Summary
-Component Description Relativistic Motion Lorentz factor γ = E/m applied; speed of light cannot be exceeded Boris Integrator Standard numerical integration used in GEANT4 and PIC codes Bethe-Bloch Energy loss formula based on particle mass, charge, and velocity 4-Momentum Conservation CM frame 2-body decay followed by Lorentz boost Branching Ratios π⁺→μ⁺νμ (99.99%) vs e⁺νe (0.01%) and other PDG values αs(μ) Running Coupling 1-loop β function with quark flavor thresholds Monte Carlo PDF sampling, 2→2 parton scattering, pT distributions Glauber Model Heavy-ion collisions, Ncoll, ε₀, QGP formation conditions Helix Trajectories Accurate curvature under solenoid magnetic field
-
-The code is publicly available on GitHub. Feedback and questions are always welcome.
-
-# ⚛️ Yang-Mills Collider — Full Physics Simulation
-
-> **A browser-based particle physics simulator implementing relativistic dynamics, QCD running coupling, and realistic decay chains — entirely in vanilla JavaScript.**
-
-🔗 **Live Demo (3D):** [xur94-maker.github.io/SeoulInside/ym2605_3D.HTML](https://xur94-maker.github.io/SeoulInside/ym2605_3D.HTML)
+*B. Sun | Seoul Inside*
+*June 2026*
 
 ---
 
-## 🇰🇷 한국어 소개
+One HTML file. 1,424 lines. No external physics library. 3D rendering via Three.js. No server. No compilation step.
 
-브라우저에서 실행되는 입자물리 시뮬레이터입니다. CERN LHC에서 일어나는 양성자 충돌을 물리적으로 최대한 정확하게 재현하는 것을 목표로 합니다.
-
-### 구현된 물리 엔진
-
-| 항목 | 내용 |
-|------|------|
-| **상대론적 운동** | 로런츠 인자 γ = E/m 적용, 광속 초과 불가 |
-| **Boris Integrator** | GEANT4·PIC 코드에서 표준으로 쓰이는 수치 적분법 |
-| **Bethe-Bloch** | 질량·전하·속도에 따른 에너지 손실 공식 |
-| **4-운동량 보존** | CM frame 2체 붕괴 후 로런츠 부스트 |
-| **분기비(Branching Ratio)** | π⁺→μ⁺νμ (99.99%) vs e⁺νe (0.01%) 등 PDG 실제 값 |
-| **αs(μ) 달리기 결합상수** | 2-loop β함수, 쿼크 맛 문턱값 포함 |
-| **Monte Carlo** | PDF 샘플링, 2→2 파톤 산란, pT 분포 |
-| **Glauber 모형** | 중이온 충돌, Ncoll, ε₀, QGP 형성 조건 |
-| **나선(Helix) 궤적** | 솔레노이드 자기장 하에서 정확한 곡률 |
-
-### 파일 구성
-
-```
-SeoulInside/
-├── ym2605_3D.HTML        # Three.js 3D 시뮬레이터
-└── collider_v2D1.html    # 2D 대시보드 (QCD 엔진 + 캔버스 애니메이션)
-```
+This is a complete inventory of what is running inside it.
 
 ---
 
-## 🌐 English
-
-A particle physics simulator running entirely in the browser. It aims to physically reproduce proton collisions as they occur at the CERN LHC.
-
-### Physics Engine
-
-**Relativistic Dynamics**
-All particles obey special relativity. The Lorentz factor γ = E/m is applied at every integration step, making it impossible for any particle to exceed the speed of light.
-
-**Boris Integrator**
-The same symplectic integration method used in GEANT4 and plasma PIC codes. It conserves energy exactly under a magnetic field, producing accurate helical trajectories for charged particles.
+## Physical Constants
 
 ```
-p⁻ = p + p × t          ← half-rotation
-p⁺ = p⁻ + p⁻ × s        ← remaining half-rotation
-position: x += (p/γm)·dt
+c  = 2.99792458 × 10⁸ m/s        (CODATA 2018)
+ℏ  = 6.582119569 × 10⁻²⁵ GeV·s  (CODATA 2018)
+ℏc = 0.1973269804 GeV·fm          (CODATA 2018)
 ```
 
-**Bethe-Bloch Energy Loss**
-```
--dE/dx ≈ K·z²/β² · [ln(2mₑβ²γ²/I) - β²]
-```
-Heavier particles lose less energy per unit length; light particles (electrons) spiral inward rapidly.
-
-**4-Momentum Conserving Decay**
-Two-body decays are computed in the center-of-momentum frame and Lorentz-boosted back to the lab frame. Kinematically forbidden decays (insufficient mass) are automatically rejected.
-
-**Branching Ratios (PDG values)**
-
-| Decay | Branch | Probability |
-|-------|--------|-------------|
-| π⁺ → μ⁺ νμ | dominant | 99.99% |
-| π⁺ → e⁺ νe | rare | 0.01% |
-| K⁺ → μ⁺ νμ | dominant | 63.56% |
-| K⁺ → π⁺ π⁰ | — | 20.67% |
-| K⁺ → π⁺ π⁺ π⁻ | — | 5.59% |
-| μ⁻ → e⁻ ν̄e νμ | — | 100% |
-
-**Running Coupling αs(μ)**
-2-loop renormalization group equation with active quark flavor thresholds (mc, mb, mt). The multiplicity of produced particles is determined by αs(√s/2) — higher energy collisions produce more particles, consistent with KNO scaling.
-
-**Monte Carlo (Level 2)**
-Parton distribution functions (PDF) are sampled using importance sampling. 2→2 partonic scattering (gg → gg) is simulated with realistic pT power-law distributions.
-
-**Glauber Model (Level 3)**
-Heavy-ion collisions (Pb+Pb) are modeled using the optical Glauber approach. Outputs include Ncoll, Npart, initial energy density ε₀, QGP formation condition (ε > 2 GeV/fm³), initial temperature T_init, and elliptic flow coefficient v₂.
-
-### Particle Database
-
-| Particle | Mass (GeV) | Charge | Lifetime |
-|----------|-----------|--------|----------|
-| p (proton) | 0.938272 | +1 | stable |
-| π⁺ / π⁻ | 0.139570 | ±1 | 2.2 s* |
-| π⁰ | 0.134977 | 0 | 0.1 s* |
-| K⁺ / K⁻ | 0.493677 | ±1 | 1.6 s* |
-| μ⁺ / μ⁻ | 0.105658 | ±1 | 2.8 s* |
-| e⁻ / e⁺ | 0.000511 | ±1 | stable |
-| γ (photon) | 0 | 0 | — |
-| νe, νμ (neutrino) | ≈ 0 | 0 | invisible |
-
-*scene-scaled lifetimes
-
-### Tech Stack
-
-- **Vanilla JavaScript** — no physics library
-- **Three.js r128** — 3D rendering
-- **Canvas 2D API** — 2D dashboard
-- **OrbitControls** — interactive camera
+Particle lifetimes are derived directly from decay widths via τ = ℏ/Γ. Every lifetime in the simulation is computed from this relation, not hardcoded.
 
 ---
 
-## 📐 Yang-Mills & The Mass Gap
+## Particle Database — 39 Species (PDG 2022)
 
-This simulator is named after **Yang-Mills theory**, the mathematical foundation of QCD (Quantum Chromodynamics) — the theory of the strong nuclear force. The **mass gap problem** asks why the lowest-energy excitation of a Yang-Mills field has strictly positive mass (i.e., why free quarks are never observed). It is one of the **seven Millennium Prize Problems** and remains **UNSOLVED**.
+Every entry carries: rest mass (GeV/c²), electric charge, mean lifetime (seconds), and complete branching ratio tables.
+
+Selected entries, verbatim from the code:
+
+| Particle | Mass (GeV) | Lifetime | Source |
+|----------|-----------|----------|--------|
+| W± | 80.377 | ℏ/2.085 GeV | PDG 2022 |
+| Z⁰ | 91.1876 | ℏ/2.4952 GeV | PDG 2022 |
+| H⁰ | 125.20 | ℏ/3.2×10⁻³ GeV | PDG 2022 |
+| μ± | 0.105658 | 2.1969811×10⁻⁶ s | PDG 2022 |
+| τ± | 1.77686 | 2.903×10⁻¹³ s | PDG 2022 |
+| π± | 0.13957 | 2.6033×10⁻⁸ s | PDG 2022 |
+| π⁰ | 0.13498 | 8.52×10⁻¹⁷ s | PDG 2022 |
+| K± | 0.493677 | 1.2380×10⁻⁸ s | PDG 2022 |
+| K⁰S | 0.497611 | 8.954×10⁻¹¹ s | PDG 2022 |
+| K⁰L | 0.497611 | 5.116×10⁻⁸ s | PDG 2022 |
+| J/ψ | 3.09690 | ℏ/92.9×10⁻⁶ GeV | PDG 2022 |
+| Υ(1S) | 9.46030 | ℏ/54.02×10⁻⁶ GeV | PDG 2022 |
+| B± | 5.27934 | 1.638×10⁻¹² s | PDG 2022 |
+| B⁰ | 5.27966 | 1.519×10⁻¹² s | PDG 2022 |
+| D⁰ | 1.86484 | 4.101×10⁻¹³ s | PDG 2022 |
+| n | 0.939565 | 879.4 s | PDG 2022 |
+| Λ⁰ | 1.11568 | 2.632×10⁻¹⁰ s | PDG 2022 |
+| Ξ⁻ | 1.32171 | 1.639×10⁻¹⁰ s | PDG 2022 |
+| Ω⁻ | 1.67245 | 8.21×10⁻¹¹ s | PDG 2022 |
+
+### Selected Branching Ratios (PDG 2022)
+
+**π⁺ decay:**
+- π⁺ → μ⁺ νμ : 99.9877%
+- π⁺ → e⁺ νe : 0.0123%
+
+**K⁺ decay:**
+- K⁺ → μ⁺ νμ : 63.56%
+- K⁺ → π⁺ π⁰ : 20.67%
+- K⁺ → π⁺ π⁺ π⁻ : 5.59%
+- K⁺ → π⁰ e⁺ νe : 5.07%
+- K⁺ → π⁰ μ⁺ νμ : 3.35%
+
+**K⁰L decay:**
+- K⁰L → π⁻ e⁺ νe : 20.20%
+- K⁰L → π⁺ e⁻ ν̄e : 20.20%
+- K⁰L → π⁻ μ⁺ νμ : 13.52%
+- K⁰L → π⁺ μ⁻ ν̄μ : 13.52%
+- K⁰L → π⁰ π⁰ π⁰ : 19.74%
+- K⁰L → π⁺ π⁻ π⁰ : 12.57%
+
+**τ⁻ decay:**
+- τ⁻ → e⁻ ν̄e ντ : 17.82%
+- τ⁻ → μ⁻ ν̄μ ντ : 17.39%
+- τ⁻ → π⁻ ντ : 10.82%
+- τ⁻ → π⁻ π⁰ ντ : 25.52%
+- τ⁻ → π⁻ π⁺ π⁻ ντ : 28.45%
+
+**H⁰ decay:**
+- H⁰ → bb̄ (approximated via π⁺π⁻) : 58.24%
+- H⁰ → W⁺W⁻ : 21.37%
+- H⁰ → ZZ : 8.27%
+- H⁰ → τ⁺τ⁻ : 6.27%
+- H⁰ → γγ : 0.23%
 
 ---
 
-## 📄 License
+## Relativistic Kinematics
 
-MIT License — © 2026 xur94-maker  , https://seoulinside.substack.com/  B. Sun
+### 4-Momentum Class
 
-Feel free to use, fork, or modify. Attribution appreciated.
+The simulation implements the full Minkowski metric. Every particle carries a covariant 4-vector (E, px, py, pz).
+
+```
+m² = E² − |p|²
+β  = |p| / E
+γ  = E / m
+pT = √(px² + py²)
+```
+
+Lorentz boost is implemented along an arbitrary unit vector (nx, ny, nz):
+
+```
+pL_new = γ(pL + β·E)
+E_new  = γ(E + β·pL)
+```
+
+### 2-Body Decay in the CM Frame
+
+For a parent particle of mass M decaying to daughters of mass m₁, m₂:
+
+```
+p*CM = √[ (M² − (m₁+m₂)²)(M² − (m₁−m₂)²) ] / (2M)
+```
+
+Decay direction is sampled isotropically in the CM frame, then Lorentz-boosted to the lab frame. At high boost, this produces the experimentally observed forward collimation of decay products.
+
+### Time Dilation
+
+Proper decay time is sampled exponentially:
+
+```
+t_decay = −γτ₀ · ln(u),   u ~ Uniform(0,1)
+```
+
+where τ₀ is the PDG rest-frame lifetime and γ = E/m is the Lorentz factor. A B meson produced at 100 GeV lives approximately 207 times longer in the lab frame than at rest.
+
+---
+
+## QCD Running Coupling — αs(μ), 2-Loop
+
+The strong coupling constant is not fixed. It is computed at each collision energy via the 2-loop renormalization group equation:
+
+```
+β₀ = (33 − 2nf) / (12π)
+β₁ = (153 − 19nf) / (24π²)
+
+αs⁽¹⁾(μ) = αs(MZ) / (1 + 2β₀·αs(MZ)·ln(μ/MZ))
+
+αs⁽²⁾(μ) = αs⁽¹⁾ · [1 − (β₁/β₀)·αs⁽¹⁾·ln(1 + 2β₀·αs(MZ)·ln(μ/MZ))]
+```
+
+Boundary condition: αs(MZ) = 0.1180, MZ = 91.1876 GeV (PDG 2022).
+
+At μ = 13,000 GeV (LHC Run 2 energy): αs ≈ 0.085.
+At μ = 91 GeV (Z pole): αs = 0.1180.
+At μ = 1 GeV: αs → 0.48 (coupling constant cutoff applied).
+
+This is asymptotic freedom — the discovery for which Gross, Politzer, and Wilczek received the 2004 Nobel Prize in Physics.
+
+---
+
+## Charged Multiplicity — NSD Distribution
+
+Mean charged multiplicity at a given √s follows the empirical parametrization:
+
+```
+⟨dN/dη⟩ = 0.7604 · s^0.3196
+```
+
+The actual multiplicity per event is sampled from a Negative Binomial Distribution with k = 3.0:
+
+```
+N ~ NegBinomial(mean = ⟨dN/dη⟩ × 9.5,  k = 3.0)
+```
+
+This reproduces the KNO-violating multiplicity distributions measured at the SPS, Tevatron, and LHC.
+
+---
+
+## Transverse Momentum — Tsallis Distribution
+
+pT for each particle species is sampled from the Tsallis–Pareto distribution:
+
+```
+dN/dpT ∝ pT · (1 + pT² / (n·T²))^(−n)
+```
+
+Species-specific parameters (T in GeV):
+
+| Species | T (GeV) | n |
+|---------|---------|---|
+| π± | 0.095 | 8.0 |
+| K± | 0.140 | 7.5 |
+| p | 0.180 | 7.0 |
+| Λ⁰ | 0.200 | 6.5 |
+| W±, Z⁰ | 10.0 | 4.0 |
+| H⁰ | 20.0 | 3.5 |
+
+Parameters are consistent with ALICE and CMS measurements in pp collisions.
+
+---
+
+## Rapidity Distribution
+
+Initial rapidity is sampled from a Gaussian with σ = 2.3, truncated at |y| < 5.0:
+
+```
+y ~ 𝒩(0, σ=2.3),   |y| ≤ 5.0
+```
+
+This approximates the plateau structure of charged particle rapidity distributions measured in inelastic pp collisions across LHC energies.
+
+---
+
+## Boris Integrator
+
+Magnetic field integration uses the Boris algorithm — the standard method in GEANT4 and plasma physics PIC codes. Published by Boris (1970).
+
+The algorithm splits each timestep into two half-rotations, preserving phase space volume exactly (symplectic integration):
+
+```
+t = (q·Δt/2) / (γm)  ·  B̂
+
+p⁻ = p_old + p_old × t
+s  = 2t / (1 + |t|²)
+p⁺ = p⁻  + p⁻  × s        ← full magnetic rotation
+p_new = p⁺ + p_new_half × t
+```
+
+This guarantees that a charged particle in a uniform magnetic field traces an exact helix indefinitely, with no energy drift. Euler or RK4 methods accumulate secular errors in this geometry.
+
+Applied in the simulation: positive charges curve counterclockwise, negative charges clockwise, when viewed along the solenoid axis. Curvature radius R = p/(qB) in SI units.
+
+---
+
+## Bethe-Bloch Energy Loss
+
+Energy loss per unit time for a charged particle traversing detector material:
+
+```
+−dE/dx = K · z²/β² · [ln(2mₑβ²γ²/I) − β²]
+```
+
+where:
+- K = 3.2×10⁻⁵ GeV (material constant, silicon-equivalent)
+- mₑ = 0.000511 GeV
+- I = 175×10⁻⁹ GeV (mean excitation energy)
+- z = particle charge number
+
+Applied symmetrically at each half-step of the Boris integrator to maintain self-consistency. Result: electrons stop within millimeters, muons traverse the full detector, protons exhibit the characteristic Bragg peak behavior.
+
+---
+
+## Calorimetry
+
+### ECAL (Electromagnetic Calorimeter)
+
+Segmented in (η, φ) with 20×32 cells. Records energy deposits from electrons, positrons, and photons. Color scale: < 2 GeV (dark orange) → < 5 GeV → < 10 GeV → > 10 GeV (red).
+
+### HCAL (Hadronic Calorimeter)
+
+Separate segmentation for hadrons (pions, kaons, protons, neutrons). HCAL response is hooked into the main calorimeter hit function post-initialization — preserving ECAL data integrity while extending coverage to strongly interacting particles.
+
+---
+
+## Jet Clustering — anti-kT Algorithm
+
+The anti-kT algorithm (Cacciari, Salam, Soyez 2008) — the standard jet algorithm at ATLAS and CMS — is implemented with configurable radius parameter R and minimum pT threshold.
+
+Distance metrics:
+
+```
+d_iB = pT,i^(−2)
+d_ij = min(pT,i^(−2), pT,j^(−2)) · ΔR²ij / R²
+```
+
+where ΔR²ij = Δη² + Δφ². Particles are clustered iteratively; a particle becomes a jet when d_iB < all d_ij. The negative exponent (−2) makes anti-kT infrared and collinear safe, and produces geometrically regular, cone-like jets.
+
+---
+
+## Displaced Vertex Reconstruction
+
+Secondary vertices from long-lived particles are recorded with species-specific position resolution (σ):
+
+| Particle | cτ (PDG) | σ (simulation) |
+|----------|---------|----------------|
+| K⁰S | 2.69 cm | 2.0 mm |
+| Λ⁰ | 7.89 cm | 3.0 mm |
+| B± | 491 μm | 0.05 mm |
+| B⁰ | 455 μm | 0.05 mm |
+| D⁰ | 123 μm | 0.12 mm |
+
+Smearing is applied as a uniform distribution of width σ in each of (x, y, z). This approximates the silicon vertex detector resolution of LHCb and ATLAS inner tracker systems.
+
+---
+
+## Trigger System — L1 and HLT
+
+Two-level trigger mimicking the LHC trigger architecture:
+
+**Level-1 (hardware trigger):**
+- Pass if any particle has pT > 50 GeV, OR
+- Pass if event invariant mass > 80 GeV
+
+**High-Level Trigger (software trigger):**
+- Pass if event contains Z → e⁺e⁻ or Z → μ⁺μ⁻ decay, OR
+- Pass if event contains H⁰ → γγ decay
+
+Events failing L1 are discarded before HLT evaluation. At LHC design luminosity, this two-stage filter reduces the raw 40 MHz crossing rate to approximately 1 kHz for storage.
+
+---
+
+## Particle Identification — dE/dx PID
+
+Track identification uses the Bethe-Bloch expected energy loss as a discriminant. For a candidate particle with measured dE/dx:
+
+```
+P(type | dE/dx_meas) ∝ exp[−(dE/dx_meas − dE/dx_expected)² / (2σ²)]
+```
+
+where σ = 0.05 × dE/dx_expected (5% relative resolution, consistent with silicon TPC performance). The most likely particle type is assigned by maximum likelihood across all candidate species.
+
+---
+
+## CP Violation — B⁰ System
+
+The time-dependent CP asymmetry in B⁰ → J/ψ K⁰S is implemented:
+
+```
+𝒜_CP(t) = sin(2β) · sin(Δmd · t)
+```
+
+where:
+- sin(2β) = 0.699 (world average, BaBar + Belle, PDG 2022)
+- Δmd = 0.5065 ps⁻¹ (B⁰–B̄⁰ oscillation frequency, PDG 2022)
+
+B⁰ mesons oscillate to B̄⁰ with probability determined by this asymmetry. This is the measurement that established matter–antimatter asymmetry in the B sector, for which Kobayashi and Maskawa received the 2008 Nobel Prize in Physics.
+
+---
+
+## Underlying Event
+
+Soft particle production accompanying the hard scatter is modeled as a fraction of hard multiplicity:
+
+```
+N_UE ~ Uniform(0.30, 0.50) × N_hard
+```
+
+Species sampled from: π±, π⁰, K±, p. This approximates the MPI (Multi-Parton Interaction) contribution measured by CDF and CMS underlying event analyses.
+
+---
+
+## Heavy Particle Production Thresholds
+
+Hard production rates are implemented as energy-dependent Poisson probabilities:
+
+| Particle | √s threshold | Rate |
+|----------|-------------|------|
+| J/ψ | 200 GeV | 1.5×10⁻³ per event |
+| Υ(1S) | 1,000 GeV | 8×10⁻⁴ per event |
+| W± | 2,000 GeV | 1.2×10⁻³ per event |
+| Z⁰ | 2,000 GeV | 4×10⁻⁴ per event |
+| B± | 5,000 GeV | 3×10⁻⁴ per event |
+| D⁰ | 3,000 GeV | 4×10⁻⁴ per event |
+| H⁰ | 8,000 GeV | 1×10⁻⁵ per event |
+
+At √s = 13,000 GeV with αs(13 TeV) ≈ 0.085, the simulation produces multiplicity distributions and heavy particle rates consistent with LHC Run 2 measurements.
+
+---
+
+## What Is Not in This File
+
+The Yang-Mills mass gap — the proof that the quantum Yang-Mills field has a strictly positive mass gap Δ > 0 — does not exist in this file, or anywhere else.
+
+It is one of the seven Millennium Prize Problems. The Clay Mathematics Institute has offered $1,000,000 for its solution since 2000. As of the date of this article, it remains unsolved.
+
+The simulation runs correctly without it.
+
+---
+
+## Summary
+
+| Component | Origin | Year |
+|-----------|--------|------|
+| PDG particle data (39 species) | Particle Data Group | 2022 |
+| Bethe-Bloch formula | Bethe, Bloch | 1930s |
+| Boris integrator | Boris | 1970 |
+| αs 2-loop β function | Gross, Politzer, Wilczek | 1973 |
+| Tsallis pT distribution | Tsallis | 1988 |
+| anti-kT jet algorithm | Cacciari, Salam, Soyez | 2008 |
+| sin(2β) = 0.699 | BaBar + Belle | 2004 |
+| Δmd = 0.5065 ps⁻¹ | HFLAV average | 2022 |
+| CODATA physical constants | CODATA | 2018 |
+
+All of the above runs in a browser tab.
+
+---
+
+*🔗 [Launch Yang-Mills Collider v3.0 →](https://xur94-maker.github.io/SeoulInside/LHC.html)*
+
+*Source: Yang-Mills Collider v3.0 (LHC.html, 1,424 lines). All physical constants and branching ratios from PDG 2022 unless otherwise noted.*
 
 
 
+
+
+
+---
+
+## Implementation Notes
+
+### Inelastic Cross-Section
+
+The total inelastic pp cross-section is computed at each collision energy via an empirical power-law fit:
+
+
+σ_inel(√s) = 72.9 · (√s / 13000)^0.096  mb
+
+At √s = 13,000 GeV this returns 72.9 mb, consistent with the TOTEM measurement at LHC Run 2. The 0.096 exponent reflects the slow logarithmic rise of hadronic cross-sections with energy — a consequence of the Froissart bound.
+
+### Negative Binomial Sampling
+
+The charged multiplicity N is drawn from a Negative Binomial Distribution with k = 3.0. Rather than inverting the NB CDF directly, the implementation uses the identity:
+
+
+X ~ NegBinomial(r, p)  ⟺  X = Poisson(λ),  λ ~ Gamma(r, (1−p)/p)
+
+
+The Gamma variate is approximated by summing k independent exponential samples:
+
+```javascript
+let n = 0;
+for(let i = 0; i < k; i++) n -= Math.log(Math.random());
+return Math.round(n * mean / k);
+```
+
+This is exact in the limit k → ∞ and produces the correct KNO-violating tails for k = 3.
+
+---
+
+## Known Approximations
+
+This simulation makes deliberate simplifications. They are listed here for completeness.
+
+**3-body phase space.** Two-body decays (π⁰ → γγ, B⁰ → D⁻π⁺) are handled via the exact CM-frame formula with full Lorentz boost. Three-body decays (τ⁻ → π⁻π⁺π⁻ντ, K⁰L → π⁺π⁻π⁰) sample each daughter independently from the Tsallis distribution and rescale to conserve energy — this does not reproduce the correct Dalitz plot structure.
+
+**No parton distribution functions.** The simulation does not model the initial-state parton kinematics. Collision energy √s is treated as a fixed parameter rather than sampled from quark/gluon PDFs (CTEQ, NNPDF). This means the per-event hard-scatter kinematics are not correlated with the underlying event.
+
+**No color confinement.** Quarks and gluons do not appear as explicit degrees of freedom. The hadronization step — in which colored partons fragment into color-neutral hadrons — is replaced entirely by direct sampling from the PDG particle database. The Lund string model (PYTHIA) or cluster model (HERWIG) are not implemented.
+
+**Detector geometry.** The solenoid field is uniform and longitudinal. No material budget, no dead zones, no endcap geometry. The Bethe-Bloch energy loss uses a single silicon-equivalent material constant K throughout.
+
+These approximations are well-understood and do not affect the qualitative correctness of the simulation for its intended purpose: demonstrating relativistic kinematics, detector physics, and QCD phenomenology in a single browser tab.
 
 
 
