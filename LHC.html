@@ -436,16 +436,15 @@ const PRIMARY_WEIGHTS = [
     {key:"omega",w:0.002},{key:"antiproton",w:0.012},
 ];
 function trySpawnHeavy(sqrtS) {
-    const r=Math.random();
-    if(sqrtS>=200  && r<0.0015) return "psi_J";
-    if(sqrtS>=1000 && r<0.0008) return "upsilon1S";
-    if(sqrtS>=2000 && r<0.0012) return "W_plus";
-    if(sqrtS>=2000 && r<0.0006) return "W_minus";
-    if(sqrtS>=2000 && r<0.0004) return "Z0";
-    if(sqrtS>=5000 && r<0.0003) return "B_plus";
-    if(sqrtS>=5000 && r<0.0003) return "B0";
-    if(sqrtS>=3000 && r<0.0004) return "D0";
-    if(sqrtS>=8000 && r<0.00001) return "higgs";
+    if(sqrtS>=200  && Math.random()<0.0015) return "psi_J";
+    if(sqrtS>=1000 && Math.random()<0.0008) return "upsilon1S";
+    if(sqrtS>=2000 && Math.random()<0.0012) return "W_plus";
+    if(sqrtS>=2000 && Math.random()<0.0006) return "W_minus";
+    if(sqrtS>=2000 && Math.random()<0.0004) return "Z0";
+    if(sqrtS>=5000 && Math.random()<0.0003) return "B_plus";
+    if(sqrtS>=5000 && Math.random()<0.0003) return "B0";
+    if(sqrtS>=3000 && Math.random()<0.0004) return "D0";
+    if(sqrtS>=8000 && Math.random()<0.00001) return "higgs";
     return null;
 }
 
@@ -492,14 +491,25 @@ function makeFourVector(typeKey, parentMassOverride = null) {
 // ============================================================
 // [8] Two-body decay (unchanged)
 // ============================================================
-function twoBodyDecay4V(parent_p4, m1, m2) {
+function twoBodyDecay4V(parent_p4, m1, m2, parentType='', d1='', d2='') {
     const M=parent_p4.mass();
     if(M<m1+m2) return null;
     const s=M*M;
     const val=((s-(m1+m2)**2)*(s-(m1-m2)**2))/(4*s);
     if(val<0) return null;
     const pCM=Math.sqrt(val);
-    const cosT=2*Math.random()-1, sinT=Math.sqrt(Math.max(0,1-cosT*cosT)), phi=2*Math.PI*Math.random();
+
+    // Z→ll: 1+cos²θ 분포, 그 외: 등방성
+    let cosT;
+    const isZtoLepton = parentType==='Z0' &&
+        ['electron','positron','muon_m','muon_p'].includes(d1);
+    if(isZtoLepton) {
+        do { cosT=2*Math.random()-1; } while(Math.random() > (1+cosT*cosT)/2);
+    } else {
+        cosT=2*Math.random()-1;
+    }
+
+    const sinT=Math.sqrt(Math.max(0,1-cosT*cosT)), phi=2*Math.PI*Math.random();
     const E1=Math.sqrt(pCM*pCM+m1*m1), E2=Math.sqrt(pCM*pCM+m2*m2);
     const px=sinT*Math.cos(phi)*pCM, py=sinT*Math.sin(phi)*pCM, pz=cosT*pCM;
     let p1=new FourVector(E1,px,py,pz), p2=new FourVector(E2,-px,-py,-pz);
@@ -526,9 +536,9 @@ function betheBloch(q, m, p4) {
 // Landau fluctuation approximation
 function landauFluctuation(meanLoss, xi) {
     const u = Math.random();
-    if (u < 0.05) return meanLoss * (1 + 5 * Math.random());      // rare large loss
-    if (u < 0.15) return meanLoss * (1 + 2 * Math.random());      // moderate tail
-    return meanLoss * (0.7 + 0.6 * Math.random());                // most probable region
+    if (u < 0.05) return meanLoss + xi * 5 * Math.random();  // 희귀 큰 손실
+    if (u < 0.15) return meanLoss + xi * 2 * Math.random();  // 중간 꼬리
+    return Math.max(0, meanLoss * (0.7 + 0.6 * Math.random())); // 최빈값 근처             // most probable region
 }
 
 // Bethe-Bloch with Landau fluctuations (applies to thin layers)
@@ -738,7 +748,7 @@ function decayParticle(p) {
         const [k1,k2]=chosen.products;
         const d1=PDG[k1],d2=PDG[k2];
         if(!d1||!d2) return [];
-        const res=twoBodyDecay4V(p.p4,d1.mass,d2.mass);
+        const res=twoBodyDecay4V(p.p4,d1.mass,d2.mass, p.type, k1, k2);
         if(res){
             const c1=createParticle(k1,p.pos,res.p1);
             const c2=createParticle(k2,p.pos,res.p2);
@@ -1193,8 +1203,11 @@ generateCollision();
         oscillate(flavor, distance_km, energy_GeV) {
             if(!this.enabled || !flavor || !flavor.includes('nu')) return flavor;
             const L = distance_km || 10, E = energy_GeV || 1;
-            const P_mu_tau = Math.sin(1.27 * this.dm2_atm * L / E) ** 2;
-            const P_e_mu = Math.sin(1.27 * this.dm2_sol * L / E) ** 2;
+            const sin2_2theta_atm = 1.00;  // θ₂₃ ≈ 45° → sin²(2θ₂₃) ≈ 1.0  (PDG 2022)
+            const sin2_2theta_sol = 0.846; // θ₁₂ ≈ 34° → sin²(2θ₁₂) ≈ 0.846 (PDG 2022)
+            const P_mu_tau = sin2_2theta_atm * Math.sin(1.27 * this.dm2_atm * L / E) ** 2;
+            const P_e_mu   = sin2_2theta_sol * Math.sin(1.27 * this.dm2_sol * L / E) ** 2;
+
             const r = Math.random();
             if(flavor === 'numu' || flavor === 'antinumu') {
                 if(r < P_mu_tau * 0.5) return flavor === 'numu' ? 'nutau' : 'antinutau';
