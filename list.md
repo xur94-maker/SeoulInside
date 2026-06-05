@@ -29,7 +29,7 @@ https://seoulinside.wordpress.com/
 https://500px.com/p/Vonxu?view=photos
 
 #README
-https://github.com/xur94-maker/SeoulInside
+https://github.com/xur94-maker/SeoulInside/blob/main/README.md
 
 #index.html
 https://xur94-maker.github.io/SeoulInside   
