@@ -1,3 +1,6 @@
+#link
+https://xur94-maker.github.io/SeoulInside/link1.html
+
 #seoulinside.bsky.social
 https://bsky.app/profile/seoulinside.bsky.social
 
@@ -25,11 +28,11 @@ https://seoulinside.wordpress.com/
 #500px.com/p/Vonxu
 https://500px.com/p/Vonxu?view=photos
 
-facebook.com/sun.vonxu
-https://www.facebook.com/sun.vonxu
+#README
+https://github.com/xur94-maker/SeoulInside
 
-#link
-https://xur94-maker.github.io/SeoulInside/link1.html
+#index.html
+https://xur94-maker.github.io/SeoulInside   
 
 #medium.com/import
 https://medium.com/p/import
@@ -44,3 +47,7 @@ https://github.com/xur94-maker/SeoulInside
 
 #xur94-maker.github.io/SeoulInside
 https://xur94-maker.github.io/SeoulInside/
+
+
+facebook.com/sun.vonxu
+https://www.facebook.com/sun.vonxu
