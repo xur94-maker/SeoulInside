@@ -1,6 +1,3 @@
-#link
-https://xur94-maker.github.io/SeoulInside/link1.html
-
 #seoulinside.bsky.social
 https://bsky.app/profile/seoulinside.bsky.social
 
@@ -24,6 +21,9 @@ https://medium.com/@Seoulinside
 
 #seoulinside.wordpress.com
 https://seoulinside.wordpress.com/
+
+#link
+https://xur94-maker.github.io/SeoulInside/link1.html
 
 #500px.com/p/Vonxu
 https://500px.com/p/Vonxu?view=photos
