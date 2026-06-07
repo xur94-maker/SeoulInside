@@ -948,7 +948,7 @@ function createParticle(typeKey, posVec3, p4_init) {
         type:typeKey, mass:data.mass, charge:data.charge, decays:data.decays, sym:data.sym,
         p4:p4_init.clone(), pos:posVec3.clone(), mesh,
         isInvisible, t_remain:t_decay,
-        life:t_decay*PHYS.c*0.001,
+        life:t_decay,
         isHeavy:data.mass>1.5,
         id:Math.random()
     };
@@ -1039,17 +1039,28 @@ function decayParticle(p) {
     if(!p.decays.length) return [];
     let totalBr=0; for(let d of p.decays) totalBr+=d.br;
     let r=Math.random()*totalBr, chosen=null;
-    for(let d of p.decays){if(r<d.br){chosen=d;break;} r-=d.br;}
-    if(!chosen) return [];
+    for(let d of p.decays){ r -= d.br; if(r <= 0){ chosen=d; break; } }
+    if(!chosen) chosen = p.decays[p.decays.length-1];
     const isRare=chosen.br<0.01, isHeavy=p.isHeavy||p.mass>3.0;
     if(isRare){rareCount++; addLog(`⚡ RARE: ${p.sym} → ${chosen.products.join(' ')}`, 'rare');}
     else if(isHeavy){heavyCount++; addLog(`🌟 HEAVY: ${p.sym} → ${chosen.products.join(' ')}`, 'heavy');}
     else addLog(`${p.sym} → ${chosen.products.join(' ')}`);
     decayCount++;
+    // 이벤트 필터 검사
+    if(window.checkEventFilter) {
+        const decayStr = `${p.sym} → ${chosen.products.join(' ')}`;
+        const pT = p.p4.pT(), pMag = p.p4.pMag();
+        const eta = pMag > 1e-8 ? -Math.log(Math.tan(Math.acos(Math.max(-1, Math.min(1, p.p4.pz/pMag)))/2)) : 0;
+        window.checkEventFilter(decayStr, {pt: pT, eta});
+    }
 
     const dist=Math.hypot(p.pos.x,p.pos.y,p.pos.z);
-    if(window.addDisplacedVertex&&dist>10)
-        window.addDisplacedVertex(p.sym, chosen.products, p.pos.x, p.pos.y, p.pos.z);
+    if(window.addDisplacedVertex&&dist>10) {
+        const sv = window.VertexSmearing
+            ? window.VertexSmearing.smear(p.sym, p.pos.x, p.pos.y, p.pos.z)
+            : {x: p.pos.x, y: p.pos.y, z: p.pos.z};
+        window.addDisplacedVertex(p.sym, chosen.products, sv.x, sv.y, sv.z);
+    }
     if(window.CPViolation && p.type==='B0') {
         const t_ps = (p.p4.gamma()*PDG.B0.life_SI)*1e12;
         if(window.CPViolation.shouldOscillate('B0', t_ps))
@@ -1057,12 +1068,22 @@ function decayParticle(p) {
     }
 
     const children=[];
+    // 뉴트리노 진동 적용
+    const oscillatedProducts = chosen.products.map(pk => {
+        if(window.NeutrinoOscillation && pk.includes('nu')) {
+            const dist = Math.hypot(p.pos.x, p.pos.y, p.pos.z) * 0.001;
+            return window.NeutrinoOscillation.oscillate(pk, dist, p.p4.E);
+        }
+        return pk;
+    });
     if(chosen.products.length===2){
-        const [k1,k2]=chosen.products;
-        const d1=PDG[k1],d2=PDG[k2];
+        const [k1,k2]=oscillatedProducts;
+        const d1=PDG[k1]||PDG[chosen.products[0]], d2=PDG[k2]||PDG[chosen.products[1]];
         if(!d1||!d2) return [];
         const res=twoBodyDecay4V(p.p4,d1.mass,d2.mass, p.type, k1, k2);
         if(res){
+            if(window.EnergyMomentumValidator)
+                window.EnergyMomentumValidator.checkDecay(p.p4,[res.p1,res.p2],`${p.sym}→${k1}+${k2}`);
             const c1=createParticle(k1,p.pos,res.p1);
             const c2=createParticle(k2,p.pos,res.p2);
             if(c1) children.push(c1);
@@ -1071,7 +1092,7 @@ function decayParticle(p) {
     } else {
         // N-body decay: distribute 4-momentum properly via iterative 2-body splits
         const nProd = chosen.products.length;
-        const validProducts = chosen.products.filter(k => PDG[k]);
+        const validProducts = oscillatedProducts.filter(k => PDG[k]);
         if(validProducts.length === 0) return [];
         const totalChildMass = validProducts.reduce((s,k) => s+PDG[k].mass, 0);
         if(p.p4.mass() < totalChildMass) return [];
@@ -1155,8 +1176,8 @@ async function generateCollision() {
     if(window.startEventRecording) window.startEventRecording();
     const totalW=PRIMARY_WEIGHTS.reduce((a,b)=>a+b.w,0);
     for(let i=0;i<mult;i++){
-        let r=Math.random()*totalW, key=PRIMARY_WEIGHTS[0].key;
-        for(let pw of PRIMARY_WEIGHTS){if(r<pw.w){key=pw.key;break;} r-=pw.w;}
+        let r=Math.random()*totalW, key=PRIMARY_WEIGHTS[PRIMARY_WEIGHTS.length-1].key;
+        for(let pw of PRIMARY_WEIGHTS){ r -= pw.w; if(r <= 0){ key=pw.key; break; } }
         const p4=makeFourVector(key);
         if(!p4) continue;
         const part=createParticle(key,new THREE.Vector3(0,0,0),p4);
@@ -1179,6 +1200,24 @@ async function generateCollision() {
     if(window.TriggerSim){
         const pass=window.TriggerSim.L1_trigger({particles});
         addLog(`🎯 L1 Trigger: ${pass?'✅ PASS':'❌ FAIL'}`);
+    }
+
+    // 기저 사건(Underlying Event) soft 입자 추가
+    if(window.UnderlyingEvent && window.UnderlyingEvent.enabled) {
+        const ueParticles = window.UnderlyingEvent.generate(s, mult);
+        for(const up of ueParticles) {
+            if(!PDG[up.type]) continue;
+            const mT = Math.sqrt(up.pT*up.pT + PDG[up.type].mass**2);
+            const p4ue = new FourVector(
+                mT*Math.cosh(up.eta),
+                up.pT*Math.cos(up.phi),
+                up.pT*Math.sin(up.phi),
+                mT*Math.sinh(up.eta)
+            );
+            const part = createParticle(up.type, new THREE.Vector3(0,0,0), p4ue);
+            if(part) particles.push(part);
+        }
+        addLog(`🌊 UE: soft 입자 ${ueParticles.length}개 추가`);
     }
 
     for(let i=0;i<mult;i++){
@@ -1626,6 +1665,7 @@ generateCollision();
     }
     // Try immediately, and also after a short delay in case module hasn't loaded yet
     patchCalorimeterHit();
+    setTimeout(patchCalorimeterHit, 50);
     setTimeout(patchCalorimeterHit, 200);
     if(window.HCAL) window.HCAL.init();
     console.log('✅ PhysicsExtensions v1.0 - All 8 modules injected safely (Patched version)');
