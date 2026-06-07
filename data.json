@@ -1,43 +1,37 @@
 {
   "globalNews": [
     {
+      "title": "Hegseth attacks Europe over migration with beach 'invasion' D-Day speech",
+      "link": "https://www.bbc.com/news/articles/c802e7jk458o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 07 Jun 2026 05:47:28 GMT",
+      "desc": "The US defence secretary was speaking in Normandy, 82 years after allied forces launched their operation to liberate Nazi-occupied north-western Europe."
+    },
+    {
       "title": "Ukrainian drones target St Petersburg in attack Russia calls 'unprecedented'",
       "link": "https://www.bbc.com/news/articles/cg7498kz808o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 06 Jun 2026 20:50:40 GMT",
       "desc": "Residents of Russia's second-largest city were urged to stay indoors for the first time since the war started."
     },
     {
-      "title": "US and Iran exchange strikes in Gulf in latest test of ceasefire",
-      "link": "https://www.bbc.com/news/articles/cvgzgyjk2weo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 06 Jun 2026 14:46:20 GMT",
-      "desc": "The US military strikes Iranian drones and radar sites and Tehran says it has targeted US bases in Kuwait and Bahrain."
+      "title": "Iran says staff blocked from entering US after players given World Cup visas",
+      "link": "https://www.bbc.com/news/articles/cy8286nqz87o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 06 Jun 2026 22:38:36 GMT",
+      "desc": "Iranian officials say technical staff have been denied visas, hours after the US said players could enter the country."
     },
     {
-      "title": "Hegseth attacks Europe over 'invasion' of migrants on its beaches in D-Day speech",
-      "link": "https://www.bbc.com/news/articles/c802e7jk458o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 06 Jun 2026 21:14:00 GMT",
-      "desc": "The US defence secretary was speaking in Normandy, 82 years after allied forces launched their operation to liberate Nazi-occupied north-western Europe."
+      "title": "Insecurity and instability drive voters in Peru's tight presidential race",
+      "link": "https://www.bbc.com/news/articles/c9d21184e7yo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 06 Jun 2026 23:17:43 GMT",
+      "desc": "After eight presidents in 10 years, many voters are looking for stability so the next president can focus on tackling crime and inequality."
     },
     {
       "title": "Funeral held for baby shot dead by Israeli troops in occupied West Bank",
       "link": "https://www.bbc.com/news/articles/cly8lgn0x30o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 06 Jun 2026 19:57:42 GMT",
       "desc": "The seven-month-old boy's shrouded body was wrapped in a Palestinian flag and carried by his father to the graveyard."
-    },
-    {
-      "title": "Pope begins Spain visit with praise for country's opposition to war and support for migrants",
-      "link": "https://www.bbc.com/news/articles/c8d2pgjy4qgo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 06 Jun 2026 18:34:26 GMT",
-      "desc": "On the first day of his official seven-day tour of Spain, the Pope praises the country's \"active commitment to peace and solidarity among peoples\"."
     }
   ],
   "koreaNews": [
-    {
-      "title": "How South Korea's stock boom sparked a currency crisis - Axios",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE05cHJtbmlLNkNWeW9UVjRXeS14RUgweENQMmtKbFptNjFSejd0ZnBRMkEzWmpMeHJZNlBlOVhiYWhQN0JTS1NZYzBjYWp5bVdZN1VDYWc4Um5lcXNOV21ndXNNQ0JycE9v?oc=5",
-      "date": "Sat, 06 Jun 2026 08:48:26 GMT",
-      "desc": "How South Korea's stock boom sparked a currency crisis&nbsp;&nbsp;Axios"
-    },
     {
       "title": "Strategic Clarity: Reassessing the Value of China to Korea - CSIS | Center for Strategic and International Studies",
       "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQdjRUcmVuZHRscS1aYUw0VnJiRmtvdktDblBGdWFKUjY3SnhFZkc1MXlTY3YtRzRUNmdkVHlIb3hxVW00ZnhIV3R1LWlrX1FYSER6TVB5VTV2VXFNeXY1dU8xXzhPWlJJa3ZUZ2VTTTFSWHJzSzNQU1M4Zmo3Nk9FUGRKcw?oc=5",
@@ -45,22 +39,28 @@
       "desc": "Strategic Clarity: Reassessing the Value of China to Korea&nbsp;&nbsp;CSIS | Center for Strategic and International Studies"
     },
     {
-      "title": "Energy Shock and Economic Resilience: South Korea and the Iran War - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPdFI2cXlqNDFCN0RTS3J6RS12Q21wWTVKeW9uLU5pTkdKbWpjY2R1dGF1bzZYcWdDYXhwVHlNLXJKbUVFNFRmSS01VVdJaW80RDF3N0w0akROVndDaTNsOXZhb3lzT1ozcWloWTQzWmh4SVhGQ2I3Mjl4bHVlY3FKSjV5bVpoNVlEWExJbjAtbnRjWTlHU2hfR0lrVQ?oc=5",
-      "date": "Mon, 18 May 2026 18:21:54 GMT",
-      "desc": "Energy Shock and Economic Resilience: South Korea and the Iran War&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "How South Korea Is Weathering the Iran War Oil Shock - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOaHdsRHNhYmNwVUpXNnBZcjQyMk81V00xSnRoZWFfRy1HcnFqVS1WY29lM2dKS29pTDRPWjdBLUl6ZHFsbVh3ZkFkOEM5d3F1ZmVNLXFpaVBIV0k1TDQ1VzdVbHZYOVBkOVQxaFRoWWxSd1hCeFUzVFltR0FtT0wzOHdlLTA2QQ?oc=5",
+      "date": "Mon, 18 May 2026 07:00:00 GMT",
+      "desc": "How South Korea Is Weathering the Iran War Oil Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "How South Korean jet fuel — and pop music — are impacting Hawaiʻi and beyond - Hawaii Public Radio",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNNmd1ZEF5cFBnTU92NGNLVTMwbkFET3htSDh5ek1FdThEVWxfVXM3cnJmcTFuWEZWTjVUM1hoTmsxaXhZT2VBTnQtMXVxb0xjMnVweVNwWUV4NWQ4dTJCaWRZdml0V3BvakFMOUtUcHFZTFYxSDBFUzNJSjFSdDJfbVM2NEQzVGpsSGNJVTZBaldpT1ZHY2JlNy1BdHJqdjBIcTkydDRibzk1NnJ2emVfOW9nSTg5ZnJ4YzFCa3hwLXdZeTB5UEoxNjNCT1Q?oc=5",
-      "date": "Thu, 04 Jun 2026 00:14:00 GMT",
-      "desc": "How South Korean jet fuel — and pop music — are impacting Hawaiʻi and beyond&nbsp;&nbsp;Hawaii Public Radio"
+      "title": "(Economy Insight) Bank of Korea Swings Hawkish as Real GDI Surges - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5TVGFoSnIzWld1c3NKcnRUZVF5MThmNHcwZ0hiTnByVHVWeXFUbllKTzJsQXNORlZmUVBzN2tEdUptZ2NGUUhfWkZYY191akI5Vktma19teFQ1SU9BWHRSbnNwdjM5dmlrTEN3aVNBeHB0NjFw?oc=5",
+      "date": "Sun, 07 Jun 2026 02:05:10 GMT",
+      "desc": "(Economy Insight) Bank of Korea Swings Hawkish as Real GDI Surges&nbsp;&nbsp;Businesskorea"
     },
     {
-      "title": "U.S. Conservatives Alarmed by South Korea's Prosecution Dismissal - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPSThMUVM1TWZLU21Yd0N2UjZtUG9EbEJ3cDBkcC1vV1BZWXkxb1lhOEU2NUVTZjlBc3FsS3JDTkdIQlBYVHVicXZaOVh5aGNEeXlYWGtaUWZTTVpOdWhSQ2NwRktmQXN0UmpvZzBiZUNVQzhMNzBVUWt3a1JiU3FZUHFBTTR2eW4x?oc=5",
-      "date": "Sat, 06 Jun 2026 21:56:15 GMT",
-      "desc": "U.S. Conservatives Alarmed by South Korea's Prosecution Dismissal&nbsp;&nbsp;조선일보"
+      "title": "AI Saves Time but Fails to Raise South Korea's Productivity - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPaXNMRTgzNTlPa1V0bUJjdVBBV09uMVF0MXpGbGZmSmxNS0JleUJUcXRVXzF1WlhJNDlwNXpDLTJIZ1ZGbkJVNWlKclhEcmdpZVowWHVOLUFsLXdHZFVFLTNGNm5wa0ltZ09JSTVZOWQ4QVRMd3I5eVBtR01aM3JPUWt0bkpIQjhOM2txVG5R?oc=5",
+      "date": "Sun, 07 Jun 2026 03:45:40 GMT",
+      "desc": "AI Saves Time but Fails to Raise South Korea's Productivity&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "OECD projects S. Korea's potential growth rate to hit record low in 2027 - Yonhap News Agency",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1EMmIxMkJFOVl0YlIxeG5tNXV2emdSY0RTZzRteEYxOXpqRklwMW9uVUJDUENCY3g0b2VWaVdsUzM3YVRrZkVBT284NTJOMTdPakJfcmd6cDdsUQ?oc=5",
+      "date": "Sun, 07 Jun 2026 01:02:11 GMT",
+      "desc": "OECD projects S. Korea's potential growth rate to hit record low in 2027&nbsp;&nbsp;Yonhap News Agency"
     },
     {
       "title": "Asia tech stocks drop after Broadcom rattles AI trade and drags Wall Street names lower - CNBC",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-06 22:59 UTC"
+  "updatedAt": "2026-06-07 07:00 UTC"
 }
