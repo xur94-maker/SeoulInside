@@ -1,69 +1,237 @@
-Seoul Inside — Complete Archive
-Last updated: 2026.05.31
+From Particles to Galaxies
+Stage 1: Particle Accelerator (The Smallest World)
+These simulators implement LHC-level high-energy physics in a browser. The engine incorporates special relativity, decay branching ratios, and asymptotic freedom of the strong interaction — not a simple toy. It includes 39 particle species based on PDG 2022 data, the Boris integrator, the Bethe-Bloch formula, and other core elements of real particle physics experiments.
 
+1. A Relativistic Particle Collider, Built in Pure JavaScript
+Link: https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making
 
-1. Navier–Stokes Equations — An Archive (Technical Report)
-Link: https://seoulinside.substack.com/p/navierstokes-equations-an-archive
+The starting point of this project. From a simple question — "Could I just run a CERN particle collider in the browser?" — this post documents the journey of implementing special relativity, the Boris integrator (the same algorithm used in GEANT4), Bethe-Bloch energy loss, PDG decay branching ratios, and the 2-loop running coupling of the strong interaction (αs).
 
-TL;DR:
-The global existence and smoothness of solutions to the 3D incompressible Navier–Stokes equations has remained unsolved for 121 years. In 2D, global smoothness is proven. In 3D, vortex stretching is the key mechanism that could potentially produce a finite-time singularity (blow-up). Leray (1934) proved global existence of weak solutions; Caffarelli–Kohn–Nirenberg (1982) showed the singular set has parabolic Hausdorff dimension at most 1. Tao (2016) proved finite-time blow-up for an averaged version of the equations (not the real Navier–Stokes). Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
+Core content: Lorentz factor γ = E/m, Boris integrator (helical trajectories without energy drift), π⁺ → μ⁺ νμ (99.99%) vs e⁺ νe (0.01%) branching ratios, asymptotic freedom (2004 Nobel Prize). All of this runs inside a single HTML file.
 
-2. Before You Read the Mathematics — Try to Break the Fluid First (Prologue / Public-Facing)
-Link: https://seoulinside.substack.com/p/before-you-read-the-mathematics-try
+2. Yang-Mills Collider v3.0 — A technical inventory
+Link: https://seoulinside.substack.com/p/yang-mills-collider-v30-a-technical
 
-TL;DR:
-This is a hands-on prologue to the Navier–Stokes problem. Readers can manipulate an interactive simulation — lowering viscosity, raising amplitude — to see whether they can force the energy norm to infinity (a blow-up). They will likely fail; no one has succeeded in 121 years. The document explains why 2D is solved (no vortex stretching) while 3D remains open (vortex stretching exists). Key milestones: Leray (1934, weak solutions), Caffarelli–Kohn–Nirenberg (1982, partial regularity), Tao (2016, blow-up for averaged model). The goal is intuition before formalism.
+A complete technical specification dissecting what lies inside the 1,424-line HTML file. Physical constants (CODATA 2018), 39 particle species (PDG 2022, lifetimes calculated as τ = ℏ/Γ), 4-momentum class (Minkowski metric), 2-body decay kinematics, QCD 2-loop beta functions (β₀, β₁), Tsallis pT distributions (π: T=0.095, n=8.0; W/Z: T=10.0, n=4.0), Boris integrator, Bethe-Bloch, anti-kT jet clustering (R=0.4, pT>5 GeV), displaced vertex reconstruction (K⁰S: 2.7 cm cτ → 2.0 mm σ), L1/HLT trigger, dE/dx particle identification, CP violation in B⁰ → J/ψ K⁰S (sin2β=0.699), heavy particle production thresholds (J/ψ at 200 GeV, H⁰ at 8 TeV). What is implemented and what is omitted (full Kerr metric, Hawking radiation, tidal forces) are all explicitly stated.
 
-3. Riemann Hypothesis — Technical Report
-Link: https://seoulinside.substack.com/p/riemann-hypothesis-technical-report
+3. LHC Simulation: Physics Formulas and Explanations
+Link: https://seoulinside.substack.com/p/lhc-simulation-physics-formulas-and
 
-TL;DR:
-The Riemann Hypothesis (RH) states that all nontrivial zeros of the Riemann zeta function ζ(s) have real part 1/2. It has been open for 167 years. The zeta function is defined by ζ(s)=Σ n⁻ˢ for Re(s)>1, extends analytically via the functional equation, and connects to primes via the Euler product. The Explicit Formula ψ(x)=x−Σ_ρ xᵖ/ρ−log(2π)−½log(1−x⁻²) shows that prime distribution is exactly governed by the zeros of ζ(s). Partial progress: Levinson–Conrey method has proven that at least 41.72% (5/12) of zeros lie on the critical line. Guth–Maynard (2024) improved zero-density estimates for the first time in 84 years, but remain far from RH. Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
+An independent handbook presenting all physics formulas in four parallel notations (Unicode, LaTeX, Mathematica, Python/SymPy). Invariant mass (m² = E² − |p|²), velocity (β = |p|/E), Lorentz factor (γ = E/m), transverse momentum (pT), Lorentz boost, 2-body decay momentum (p*_CM), time dilation (t_decay = −γτ₀·ln(u)), QCD beta function coefficients (β₀, β₁), charged multiplicity, Tsallis pT distribution, Boris integrator, Bethe-Bloch, anti-kT jet clustering, CP violation, inelastic pp cross-section (σ_inel = 72.9·(√s/13000)^0.096 mb). Each formula includes its historical origin, physical meaning, limitations, and references.
 
-4. P vs. NP — The Open Problem (Technical Report)
-Link: https://seoulinside.substack.com/p/p-vs-np-the-open-problem
+Stage 2: Black Hole (The Middle World, The Turning Point)
+Adding a black hole to the particle collider triggered unexpected phenomena. Four lines of Newtonian gravity code, combined with a magnetic field, produced an accretion disk, the Penrose process, and — most importantly — the separation and survival of particle-antiparticle pairs. This became the decisive inspiration for the galactic-scale hypothesis that followed.
 
-TL;DR:
-P vs. NP asks: can every problem whose solution can be verified quickly also be solved quickly? P is the class of problems solvable in polynomial time by a deterministic Turing machine. NP is the class of problems whose solutions can be verified in polynomial time. The Cook–Levin theorem (1971) proved SAT is NP-complete. Three barriers rule out all known proof techniques: Relativization (1975) , Natural Proofs (1997) , and Algebrization (2009) . If P = NP, modern cryptography collapses; if P ≠ NP (believed by ~99% of experts who have thought deeply), computational limits are fundamental. Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
+4. Black Hole Physics in Yang-Mills Collider v3.2
+Link: https://seoulinside.substack.com/p/black-hole-physics-in-yang-mills
 
-5. The Problem That Could Break Everything — Or Prove It Was Never Breakable (P vs. NP Intelligence Dossier)
-Link: https://seoulinside.substack.com/p/the-problem-that-could-break-everything
+A technical specification of the black hole physics implemented in the LHC simulator. Newtonian gravity (4 lines of code: gAcc = logMass * 120.0 / (r² + 1.0)), Kerr black hole event horizon approximation (r_+ = M·(1 + √(1-a*²))), Lense-Thirring effect (frame dragging: Ω_LT ≈ 2GJ/c²r³ → approximated as tangential acceleration), ergosphere (region where no static observer can exist). Also documented: phenomena that emerged without being designed — the equivalence principle (all particles absorbed identically), accretion disk formation (a consequence of angular momentum conservation), the Penrose process (particle escape from the ergosphere under magnetic field + spin conditions). What was omitted (full Kerr metric, Hawking radiation, gravitational waves) is also honestly stated.
 
-TL;DR:
-This public-facing dossier on P vs. NP emphasizes historical context and real-world stakes. Early formulations: Nash (1955, classified NSA letter) and Gödel (1956, letter to von Neumann). Yannakakis (1988) proved that symmetric linear programs for TSP require exponentially many constraints — the only verified direct contribution in Woeginger’s archive. The three barriers (Relativization, Natural Proofs, Algebrization) explain why all proof attempts fail. Recent frontier: Kabanets–Kolokolova (2025/089) connects time-bounded Kolmogorov complexity (Chain Rule) to P vs. NP. Expert polls: 83% believe P ≠ NP overall; among deep thinkers, ~99%. Status as of May 2026: UNSOLVED. Prize unclaimed.
+5. I Added a Black Hole to the LHC — and Something Unexpected Happened
+Link: https://seoulinside.substack.com/p/i-added-a-black-hole-to-the-lhc-and
 
-6. The Problem That Has Defeated Every Mathematician for 162 Years (Riemann Hypothesis Intelligence Dossier)
-Link: https://seoulinside.substack.com/p/the-problem-that-has-defeated-every
+The turning point of this entire project, and the record of its most dramatic moment. About to study economics, the word "Black" in "Black-Scholes" triggered an idea — he went back to the LHC simulator and added a black hole. The expectation: everything would fall in and collapse to a single point. What actually happened was different.
 
-TL;DR:
-This public-facing dossier on the Riemann Hypothesis focuses on narrative and significance. Riemann (1859) discovered that the zeros of the zeta function completely determine prime distribution and conjectured all nontrivial zeros lie on the critical line (Re(s)=1/2). Partial results have crept upward: Levinson (1974) proved ~34.74%, Conrey (1989) ~40.88%, and the current record stands at ≥41.72% (5/12) by Pratt–Robles–Zaharescu–Zeindler (2020). The Atiyah affair (2018) — a 15-slide "proof" with an undefined Todd function — became the textbook example of "not even wrong." Guth–Maynard (2024) improved zero-density estimates for the first time in 84 years, but Maynard himself says it remains "very far" from RH. Status as of May 2026: UNSOLVED. Millennium Prize ($1M) unclaimed.
+Under a sufficiently strong magnetic field, particles and antiparticles created at the same point curved in opposite directions — they separated, survived, and did not annihilate. The Boris integrator rotates positive and negative charges in opposite directions in a magnetic field. The black hole pulls both toward the same point. But they arrive from opposite sides. They are captured on opposite sides. An accretion disk appeared without being programmed.
 
-7. BSD Conjecture — The Equation That Counts What Cannot Be Counted (Prologue)
-Link: https://seoulinside.substack.com/p/the-equation-that-counts-what-cannot
+This observation became the starting point for the "vacuum statistical mass" hypothesis. "If this process operates at any meaningful scale near real black holes..." The effective mass of a black hole would fluctuate continuously, and the gravitational influence of those fluctuations would propagate outward to the surrounding galaxy with a delay. Ghost mass — the gravitational influence of a mass that briefly existed persists for r/c after it is gone.
 
-TL;DR: Birch and Swinnerton-Dyer Conjecture claims that the number of rational points on an elliptic curve (algebraic rank) equals the order of vanishing of its L-function at s=1 (analytic rank). The prologue explains the 1960 EDSAC computation that first revealed the pattern: the product ∏ N_p/p grows like (log X)^r, where r is the rank. For rank 0 curves (e.g., y²=x³+1), L(1)≠0 and rational points are finite. For rank 1 (y²=x³-x), L(1)=0 but L'(1)≠0, giving infinitely many points. For rank 2 (y²=x³-43x+166), L(1)=L'(1)=0 but L''(1)≠0. The full BSD formula includes the mysterious Tate-Shafarevich group Ш, whose finiteness is unknown for rank ≥2. Key theorems: Coates-Wiles (1977, rank 0), Gross-Zagier (1986), Kolyvagin (1990, rank 0 & 1). Status as of May 2026: UNSOLVED (analytic rank ≥2 case open). Millennium Prize ($1M) unclaimed.
+Stage 3: Galaxy (The Largest World, The Unified Hypothesis)
+The "mass fluctuation" possibility observed in the LHC simulator is extended to galactic scale. Black hole displacement and delayed gravitational propagation (finite speed of light) combine to produce spiral arms and flat rotation curves as a default state. This is a unified framework explaining galactic phenomena without invoking dark matter.
 
-8. BSD Conjecture — Complete Reference (Technical Report)
-Link: https://seoulinside.substack.com/p/bsd-conjecture-reference-complete
+6. Delayed Gravitational Interaction as a Mechanism for Spiral Arm Formation in Disk Galaxies
+Link: https://seoulinside.substack.com/p/delayed-gravitational-interaction
 
-TL;DR: A complete technical archive containing 37 formulas across four notations (Unicode, LaTeX, Mathematica, Python). Covers the elliptic curve Weierstrass form, L-function Euler product, modularity theorem, completed L-function, functional equation, Hasse-Weil bound, Mordell-Weil theorem, analytic rank definition, full BSD formula (real period Ω_E, regulator R_E, Tamagawa numbers c_p, Tate-Shafarevich group Ш, torsion subgroup). Also includes key theorems: Coates-Wiles (1977), Gross-Zagier (1986), Kolyvagin (1990), Modularity Theorem (2001), Kato (2004), Skinner-Urban (2014, Iwasawa Main Conjecture), Bhargava-Skinner-Zhang (average rank ≤1), p-adic Gross-Zagier (Kobayashi, 2013). Status as of May 2026: UNSOLVED for rank ≥2. Millennium Prize ($1M) unclaimed.
+The beginning of Hypothesis I. Argues that spiral arms can form without Lin-Shu density wave theory or tidal interactions, using only two conditions (finite gravitational propagation speed + black hole displaced from center). "If gravity propagates at speed c, then a star at distance r feels gravity not from the black hole's current position, but from its position at t − r/c. If the black hole is in motion, stars at different distances reference different past positions. This radially-dependent angular offset is sheared into a spiral pattern in a rotating disk."
 
-9. The Moon Is Leaving. Here Is the Math. (Earth-Moon Simulator)
-Link: https://seoulinside.substack.com/p/the-moon-is-leaving-here-is-the-math
+Introduces the Yahalom (2013, 2019, 2024) retarded gravity correction term: a_r = α·G·M̈_BH/(2c²)·R̂. The critical feature of this term is that it does not diminish as 1/r² — it becomes relatively more important at large radii, precisely where dark matter is observationally invoked. The simulator maintains a 300-step FIFO history buffer; each star finds its corresponding past black hole position via interpolation.
 
-TL;DR: The Moon recedes from Earth at 38.20 mm/year, measured by Lunar Laser Ranging (Apollo retroreflectors). This article presents a hierarchy of models: Level 1 (two-body Keplerian, ~10 km error/30 days), Level 2 (restricted three-body with Sun), Level 3 (N-body + J₂ oblateness, ~1 km error/30 days), Level 4 (DE440 full model including PPN general relativity, tidal deformation, fluid core, ~1 cm error/30 days). The working simulator uses Newtonian gravity + Earth's J₂ (1.08262668×10⁻³) + RK4 integrator. Without tidal deformation (Term 4, k₂ Love numbers), the recession cannot be reproduced. The 38.20 mm/year figure comes from fitting DE440 to 50+ years of laser data. Status as of May 2026: IMPLEMENTED (Level 3 model with code in Python/Mathematica). DE440 is the NASA standard for mission navigation.
+7. Black Hole Displacement and the Default State of Spiral Galaxies
+Link: https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
 
-10. Solar System Simulator: Keplerian Orbits, Angular Kinematics, and Relative Motion
+Connects the hypothesis to observations and inverts the question itself. The standard question — "Why do spiral arms form?" — is wrong. The correct question is: "Why do some galaxies NOT have spiral arms?"
+
+Mass ratio argument: In the Solar System, the Sun contains 99.8% of the total mass and cannot be displaced (no spiral arms). In a disk galaxy, the central supermassive black hole contains only 0.1–0.5% of the total galactic mass (Kormendy & Ho 2013). The galactic barycenter is determined primarily by the stellar disk and dark matter halo. The black hole has no structural reason to remain at the barycenter. Black hole displacement is the default state.
+
+Observational evidence: M87 (elliptical) — 6.8±0.8 pc displacement measured (no spiral arms — no disk). M31 (Andromeda) — documented double nucleus (spiral arms present). Milky Way — nuclear star cluster itself displaced up to ~100 pc (spiral arms present). BCGs (brightest cluster galaxies) — one-third show offsets (Chu, Boldrini & Silk 2022). The pattern is consistent: displacement exists wherever it has been measured with sufficient resolution, and spiral structure follows wherever a disk is present.
+
+8. Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe
+Link: https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity
+
+Hypothesis II. The vacuum is not empty. The energy-time uncertainty relation (ΔE·Δt ≥ ℏ/2) allows virtual particle pairs to exist temporarily. At the Planck scale (t_P ≈ 5.39×10⁻⁴⁴ s), Planck-energy (E_P ≈ 1.22×10¹⁹ GeV) virtual pairs can exist. What if this phenomenon is amplified in extreme environments like black hole ergospheres or strong magnetic fields?
+
+The statistical snapshot argument: Freeze the universe for 10⁻⁴⁴ seconds. At that instant, across every cubic Planck length, particle pairs are blinking into existence. Each is gone before any measurement could reach it. But in that frozen moment — they are there. They have mass. They curve spacetime. The snapshot has weight.
+
+Relation to the cosmological constant problem: The discrepancy between QFT-predicted vacuum energy density (~10⁹⁶ kg/m³) and the observed cosmological constant (~10⁻²⁷ kg/m³) — a factor of 10¹²³ — is the largest unsolved problem in physics. This hypothesis proposes "correlation disruption": in flat spacetime, long-range quantum entanglement almost perfectly cancels gravitational effects (the cosmological constant). However, strong curvature near black holes or strong magnetic fields partially disrupt this correlation, leaving residual statistical mass. The radial profile takes the form ρ_vac(r) ~ Γ₀·ρ_Λ·(r_s/r)^β, which is more centrally concentrated than the NFW profile.
+
+9. A Unified Technical Framework — Simulation Evidence and Theoretical Foundations
+Link: https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
+
+The final integration report and completion of this entire series. States three core claims explicitly and systematically connects each to simulation evidence and theoretical foundations.
+
+Claim I (Retarded Gravity and Spiral Arms): When a black hole is displaced from the geometric center of a disk galaxy — however slightly — spiral arm structure emerges immediately and persistently. Verifiable directly in GalaxyCS v4.
+
+Claim II (Vacuum Statistical Mass and Pair Separation): The ultra-strong magnetic fields in the vicinity of supermassive black holes — combined with the extreme energy densities of accretion disks and relativistic jets — create conditions where particle-antiparticle pairs produced from vacuum fluctuations are separated by the magnetic field before annihilation can occur. Separated particles persist as mass. This mass fluctuates. Observed directly in Yang-Mills Collider v3.2.
+
+Claim III (Fluctuating Mass and Finite-Speed Gravity): If gravity propagates at a finite speed (which it does), then the gravitational influence of fluctuating mass near a black hole propagates outward across the galaxy with a delay proportional to distance. A flat rotation curve emerges from this naturally.
+
+Major sections: Acknowledges the successes of ΛCDM (CMB, BAO, large-scale structure) while noting its remaining problems (direct detection failure, cusp-core problem, missing satellites problem, cosmological constant problem). Argues that retarded gravity and vacuum statistical mass — as "additional effects" — can make meaningful contributions at galactic scales. Presents quantitative results: approximately 80–90% of the rotation curve is explained by retarded gravity alone, with the remaining 10–20% explainable by vacuum statistical mass.
+
+Stage 4: Foundations and Millennium Problems (For Reference)
+This section provides the theoretical foundations for the exploration above. Read it after experiencing the simulations, when you wish to understand more deeply why these questions matter.
+
+10. Solar System Simulator: Keplerian Orbits
 Link: https://seoulinside.substack.com/p/solar-system-simulator-keplerian
 
-TL;DR: A kinematic (force-free) solar system simulator where each planet's position is computed directly from circular orbit equations: x(t)=d·cos(θ₀+ωt), z(t)=d·sin(θ₀+ωt). Uses constant angular velocities derived from sidereal periods (e.g., Earth: 2.983×10⁻⁷ rad/s, Jupiter: 1.307×10⁻⁷ rad/s). The Moon orbits Earth with an additional visual offset (y=0.2). Computational cost is O(n) per frame, suitable for real-time visualization. Position error is ~10,000 km for Jupiter over 30 days (due to ignoring eccentricity e=0.049). The article also provides a complete tool stack upgrade path: REBOUND (N-body, Python), Skyfield (DE440 interface, Python), SPICE Toolkit (NASA standard), JPL Horizons API, GMAT (mission analysis). Status as of May 2026: IMPLEMENTED (kinematic model suitable for education/visualization, not for navigation).
+The essence of the kinematic model. Each planet's position is computed directly from a closed-form equation without forces: p(t) = (d·cos(θ₀+ω·t), 0, d·sin(θ₀+ω·t)). Includes a variable registry: 8 planets × 4 values (distance in AU, angular velocity in rad/s, initial angle in rad), Moon position (Earth position + offset), simulation controls (timeScale 0–200, simDays, dt), visualization variables (orbit lines, labels), and camera/viewport settings.
 
-11. Navier–Stokes Equations — Applications Archive
+Comparison with the dynamic model: Kinematic model — 1st-order ODE, 9 state variables, analytically solvable, O(n) computational cost, but Jupiter position error of ~10,000 km after 30 days. Dynamic model (N-body, J₂, RK4) — error of ~1 km. Angular velocities are derived from sidereal orbital periods via ω = 2π/T, preserving angular velocity ratios (e.g., Mercury completes four orbits for every one of Earth's).
+
+11. The Moon Is Leaving. Here Is the Math
+Link: https://seoulinside.substack.com/p/the-moon-is-leaving-here-is-the-math
+
+The essence of the dynamic model. A four-level hierarchy: Level 1 (2-body Kepler, error ~km/day, teaching), Level 2 (restricted 3-body problem/CR3BP, adding the Sun, Lagrange points), Level 3 (N-body + gravitational harmonics, adding Jupiter and Saturn, error ~meters/day), Level 4 (full dynamic model, JPL DE440, error ~cm/year).
+
+DE440 (Park et al. 2021) is not a simple set of equations but a fitted solution based on over 50 years of Lunar Laser Ranging (LLR) data. It includes gravitational interactions between all major solar system bodies, Earth's oblateness (J₂ and higher harmonics), Moon's gravity field (degree-and-order 4), tidal dissipation in both Earth and Moon (frequency-dependent Love numbers), lunar libration with fluid core effects, general relativistic corrections (PPN β=γ=1), and solar radiation pressure.
+
+The tidal term (a_tidal = (k₂ GM_j R_i⁵/r⁵)·[3(r̂·r̂_ij)r̂_ij − r̂_ij]) explains the Moon's recession. The Moon raises a tidal bulge on Earth, and Earth's rotation drags this bulge ahead of the Moon, creating a torque that transfers angular momentum from Earth's rotation to the Moon's orbit. This causes the Moon to recede by 38.20 mm per year and Earth's day to lengthen by approximately 1.8 milliseconds per century.
+
+12. Yang-Mills Theory Archive
+Link: https://seoulinside.substack.com/p/yang-mills-theory-archive
+
+A complete technical reference on the Yang-Mills Existence and Mass Gap problem. Official problem statement: "Prove that for any compact simple gauge group G, a non-trivial quantum Yang-Mills theory exists on ℝ⁴ and has a mass gap Δ > 0 in its energy spectrum."
+
+Core paradox: Classical Yang-Mills theory is dimensionless (no mass parameter), yet quantum particles acquire mass through a process called "dimensional transmutation" during quantization. This phenomenon is directly connected to quark confinement in Quantum Chromodynamics (QCD), the theory of the strong nuclear force.
+
+Detailed chronology: Weyl (1918) → Yang-Mills (1954) → Higgs (1964) → 't Hooft-Veltman's renormalization proof (1971-72) → Gross-Politzer-Wilczek's discovery of asymptotic freedom (1973, 2004 Nobel Prize) → Donaldson's application to 4D geometry (1983) → Millennium Problem designation (2000). Physical evidence from lattice QCD simulations and strong force experiments strongly suggests the existence of a mass gap, but a mathematical proof remains absent. Edward Witten's assessment: "It is really hard. It is probably too hard for now."
+
+13. Navier-Stokes Equations — An Archive
+Link: https://seoulinside.substack.com/p/navierstokes-equations-an-archive
+
+A complete technical reference on the Navier-Stokes Existence and Smoothness problem. The spatial domain is either ℝ³ (decay at infinity: u → 0 as |x| → ∞) or 𝕋³ (periodic boundary conditions). Bounded domains with physical walls (no-slip condition) are explicitly excluded from the problem statement. This is not a formatting detail — the presence of boundaries fundamentally changes the mathematics, creating boundary layers, corner singularities, and making the vanishing-viscosity limit singular.
+
+The Millennium Problem concerns only the incompressible Navier-Stokes equations: ∇·u = 0, ρ = constant. Compressible fluid material (shock waves, Rankine-Hugoniot conditions) is included for physical completeness and is not directly relevant to the prize question.
+
+Precise interpretations of three major theorems:
+
+Beale-Kato-Majda criterion (1984): If blow-up occurs at time T, then ∫₀^T ‖ω(t)‖_L∞ dt diverges. The common misreading — "blow-up occurs when vorticity becomes infinite" — is incorrect. If ‖ω‖_L∞ ~ 1/√(T*-t), the integral converges, and BKM makes no conclusion.
+
+Caffarelli-Kohn-Nirenberg (1982): The singular set of any suitable weak solution has parabolic Hausdorff dimension at most 1. This rules out singularities forming along curves, surfaces, or volumes, but does NOT rule out isolated point singularities or fractal sets with dimension < 1.
+
+Tao (2016): Finite-time blow-up for an averaged system where the advecting velocity is replaced by a spatially smoothed version (u ∗ φ). The averaging removes small-scale back-reactions present in the true equations. Many experts believe these interactions might be precisely what prevents blow-up.
+
+14. Riemann Hypothesis — Technical Report
+Link: https://seoulinside.substack.com/p/riemann-hypothesis-technical-report
+
+A rigorous analytic technical report on the Riemann Hypothesis. Target audience: mathematics undergraduates (3rd–4th year) with background in complex analysis and analytic number theory, graduate students, researchers, and serious amateurs. Prerequisites: Cauchy integral theorem, residue theorem, analytic continuation, Dirichlet series, real analysis (series convergence, integral approximation).
+
+Riemann zeta function: Defined for Re(s)>1 as ζ(s) = Σ_{n=1}^∞ 1/nˢ, with the Euler product ζ(s) = ∏_p (1-p^{-s})^{-1} providing the fundamental connection to primes. Analytic continuation via Riemann's theta function approach: π^{-s/2}Γ(s/2)ζ(s) = (1/2)∫₀^∞ t^{s/2-1}(θ(t)-1)dt.
+
+Functional equation: ζ(s) = 2ˢ π^{s-1} sin(πs/2) Γ(1-s) ζ(1-s), or in symmetric form ξ(s)=ξ(1-s) where ξ(s) = (1/2)s(s-1)π^{-s/2}Γ(s/2)ζ(s). ξ(s) is entire.
+
+Explicit Formula: ψ(x) = x − Σ_ρ x^ρ/ρ − log(2π) − (1/2)log(1-x^{-2}), where ψ(x) = Σ_{p^k ≤ x} log p. This formula directly connects the distribution of primes to the non-trivial zeros of the zeta function. The Riemann Hypothesis states that all non-trivial zeros have real part 1/2.
+
+Partial results: Levinson (1974, ≥34.74% on critical line), Conrey (1989, 40.88%), Pratt-Robles-Zaharecu-Zeindler (2020, 41.72% = 5/12). Guth-Maynard (2024) made the first improvement to zero-density estimates in 84 years, but as Maynard himself acknowledged, "A complete proof would require entirely new ideas that don't yet exist."
+
+15. P vs. NP — The Open Problem
+Link: https://seoulinside.substack.com/p/p-vs-np-the-open-problem
+
+A technical status report on the P vs. NP problem, designed for three audiences simultaneously: Light (concepts, history, interactive links → general readers, undergraduates Y1–Y2), Standard+ (major proof sketches → undergraduates Y3–Y4, computer science), Expert (full formal definitions, exercises → graduate students, researchers).
+
+P is the class of decision problems solvable by a deterministic Turing machine in polynomial time (O(n^k)). NP is the class where a candidate solution can be verified in polynomial time (the nondeterministic Turing machine definition and the verifier definition are equivalent). P vs. NP asks: "Is every problem whose solution is easy to check also easy to solve?"
+
+NP-completeness (Cook-Levin theorem, 1971/1972): SAT (Boolean satisfiability) is NP-complete — every NP problem reduces to SAT in polynomial time, and if SAT is in P, then P = NP.
+
+The three barriers:
+
+Relativization (Baker-Gill-Solovay, 1975): There exist oracles A and B such that P^A = NP^A and P^B ≠ NP^B. Therefore, any proof technique that relativizes (works relative to all oracles) cannot resolve P vs. NP. Diagonalization arguments relativize.
+
+Natural Proofs (Razborov-Rudich, 1997): If a natural property (constructive + large + useful against P/poly) exists, then secure pseudorandom generators do not exist. Modern cryptography (RSA, AES) assumes the existence of secure PRGs, so natural proofs likely do not exist.
+
+Algebrization (Aaronson-Wigderson, 2009): Extends the relativization barrier to algebraic oracles via polynomial extensions. Rules out arithmetization-based techniques (used in IP = PSPACE, etc.).
+
+16. BSD Conjecture Reference Complete
+Link: https://seoulinside.substack.com/p/bsd-conjecture-reference-complete
+
+A complete technical reference on the BSD conjecture, presented in four parallel notations (Unicode, LaTeX, Mathematica, Python). Elliptic curve in Weierstrass form: E: y² = x³ + ax + b, discriminant Δ_E ≠ 0.
+
+Core components:
+
+N_p = #E(𝔽_p), the number of points over the finite field
+
+L-function: L(E,s) = ∏{p|Δ} (1 − a_p p^{-s})^{-1} · ∏{p∤Δ} (1 − a_p p^{-s} + p^{1-2s})^{-1}, where a_p = p + 1 − N_p (the trace of Frobenius)
+
+Modularity Theorem (Breuil-Conrad-Diamond-Taylor, 2001): Every elliptic curve over ℚ is associated with a modular form f_E(z) = Σ a_n e^{2π i n z}
+
+Completed L-function: Λ(E,s) = (2π)^{-s} Γ(s) N^{s/2} L(E,s) satisfies the functional equation Λ(E,s) = ε·Λ(E,2-s) (ε = ±1)
+
+Weak BSD conjecture: ord_{s=1} L(E,s) = rank_ℤ E(ℚ) (analytic rank = algebraic rank).
+
+Full BSD formula:
+L^{(r)}(E,1)/r! = (Ω_E · R_E · ∏_p c_p · |Ш(E/ℚ)|) / |E(ℚ)_tors|²
+
+Where Ω_E is the real period, R_E is the regulator, c_p are Tamagawa numbers, Ш is the Tate-Shafarevich group (conjectured finite), and E_tors is the torsion subgroup.
+
+17. The Problem That Has Defeated Every Mathematician for 162 Years
+Link: https://seoulinside.substack.com/p/the-problem-that-has-defeated-every
+
+An information dossier on the Riemann Hypothesis, presenting its history, partial progress, failed proof attempts, and current status for a general audience. A companion to the Technical Report (#14).
+
+In 1859, Bernhard Riemann wrote an 8-page paper. He found structure underlying the seemingly random distribution of prime numbers, but could not prove his central claim. That claim is the Riemann Hypothesis.
+
+Timeline: Hardy (1914, infinitely many zeros on critical line), Levinson (1974, ≥34.74% on critical line), Conrey (1989, 40.88%), Pratt-Robles-Zaharecu-Zeindler (2020, 41.72%). Computational verification: the first 10¹³ zeros have all been found on the critical line — but this does not constitute a proof. Verification of 10¹³ zeros says nothing about the 10¹³+1-th zero.
+
+The Atiyah affair (2018): At age 89, Fields Medal and Abel Prize winner Michael Atiyah announced a "simple proof" at Heidelberg. He introduced a new object called the "Todd function," which was not properly defined. The proof made almost no use of the properties of the zeta function. Peter Woit's assessment: "not even wrong" — meaning so fundamentally flawed it cannot be meaningfully evaluated. Atiyah died four months later.
+
+Guth-Maynard (2024): The first breakthrough in zero-density estimates in 84 years. Maynard himself acknowledged: "A complete proof would require entirely new ideas that don't yet exist."
+
+18. The Problem That Could Break Everything — Or Prove It Was Never Breakable
+Link: https://seoulinside.substack.com/p/the-problem-that-could-break-everything
+
+An information dossier on the P vs. NP problem, covering its historical arc, practical implications, and expert consensus for a general audience. A companion to the Technical Report (#15).
+
+If P = NP:
+
+Every cryptographic system protecting the modern internet (RSA, AES, elliptic-curve encryption) collapses.
+
+Drug discovery, protein folding, logistics optimization — problems that currently require centuries of compute time — become tractable overnight.
+
+If P ≠ NP (the overwhelming expert consensus, approximately 99%):
+
+The observed limits of computation are fundamental properties of the universe.
+
+The difficulty of breaking encryption is not a gap in our cleverness, but a consequence of physical law.
+
+Historical arc: John Nash (1955, in a classified letter to the NSA, intuited exponential difficulty), Kurt Gödel (1956, letter to von Neumann), Stephen Cook (1971, proved SAT is NP-complete), Richard Karp (1972, demonstrated 21 NP-complete problems). Baker-Gill-Solovay (1975, relativization barrier). Razborov-Rudich (1997, natural proofs barrier). Aaronson-Wigderson (2009, algebrization barrier).
+
+2024–2026 proof attempt surge: Lee (Jan 2026, claimed P=NP, failed on specific 3-SAT instances), Bhattacharjee (May 2026, claimed P≠NP, Fourier-entropy approach, unreviewed), Goertzel (2025, P≠NP, non-relativizing approach). Gasarch's polls: 2002 (61% P≠NP), 2019 (approximately 83% overall, 99% among deep thinkers). Aaronson's Bayesian argument: if P=NP were true, it would be extraordinary that no polynomial-time algorithm for any NP-complete problem has been found despite decades of effort.
+
+19. Before You Read the Mathematics — Try to Break the Fluid First
+Link: https://seoulinside.substack.com/p/before-you-read-the-mathematics-try
+
+A prologue to the Navier-Stokes problem, inviting readers to explore through simulation whether a fluid can develop a singularity (blow-up where velocity becomes infinite in finite time). Lowering viscosity (increasing Reynolds number) and raising amplitude creates an energy cascade from large to small scales. The question: can this cascade overcome viscous damping?
+
+The crucial difference between 2D and 3D: The vortex stretching term (ω·∇)u. In 2D, this term vanishes identically, making the equations globally solvable. In 3D, vortex stretching can amplify vorticity, potentially leading to blow-up.
+
+Known results: Leray (1934) proved global existence of weak solutions in 3D, but these solutions may have singularities and are not known to be unique. Caffarelli-Kohn-Nirenberg (1982) proved that the singular set of any suitable weak solution has parabolic Hausdorff dimension at most 1. Tao (2016) proved finite-time blow-up for an averaged version of the Navier-Stokes equations (this system suppresses small-scale interactions present in the real equations).
+
+Four presets: Lamb-Oseen (classical exact solution, decays smoothly), Taylor-Green (turbulence benchmark, smoothness believed but unproven), Leray 1934 (near the boundary of weak solution theory), Tao Averaged (approximates the 2016 construction).
+
+20. Navier-Stokes Equations — Applications Archive
 Link: https://seoulinside.substack.com/p/navierstokes-equations-applications
 
-TL;DR: This is Part 3 of the Navier–Stokes series, documenting four essential real-world applications where the equations are used today — not as pure mathematics, but as engineering tools with known, quantifiable limitations. Example 1 (Airfoil): At Re=10⁷, DNS is structurally impossible (~10²¹ operations). Industry uses RANS with the Menter SST k-ω model (1994), which blends k-ω near walls (F₁=1) and k-ε in freestream (F₁=0). The closure problem (Reynolds stress tensor, 6 unknowns) is permanent. Example 2 (Weather Prediction): The Primitive Equations assume hydrostatic balance (∂p/∂z = −ρg, eliminating acoustic waves) and use parameterization for subgrid processes (boundary layer, cumulus convection, large-scale condensation). Rossby waves propagate westward (c_p = U − β/(k²+ℓ²+f₀²/N²H²)). The spectral transform method with semi-implicit time stepping allows Δt ~ 600 s. Example 3 (Hemodynamics): Blood is non-Newtonian (Carreau–Yasuda model: μ from 0.016 to 0.0035 Pa·s). Wall shear stress (τ_w = μ ∂u_t/∂n) below 0.4 Pa is atherogenic. Oscillatory Shear Index (OSI = ½[1 − |∫τ_w dt|/∫|τ_w|dt]) above 0.1 indicates disturbed flow. The Womersley number α = R√(ω/ν) determines pulsatile flow regime (coronary α≈2.3, aorta α≈18.3). Example 4 (Combustion): (Section starts but content cuts off — incomplete in source.) Status as of May 2026: IMPLEMENTED (engineering models with permanent closure/parameterization; not exact solutions to Navier–Stokes).
+An applications casebook presenting four practical applications.
+
+Example 1: Airfoil at High Reynolds Number (Re=10⁷). DNS is structurally impossible due to Re³ scaling (~10²¹ operations). Instead, Reynolds-Averaged Navier-Stokes (RANS) with turbulence modeling is used. The industry standard is the Menter SST k-ω model (1994), which blends k-ω behavior near walls (F₁=1) with k-ε behavior in freestream (F₁=0). The model includes a cross-diffusion term 2(1-F₁)σ_ω2(1/ω)∇k·∇ω and a limiter (F₂) preventing ν_t overprediction in adverse pressure gradients.
+
+Example 2: Numerical Weather Prediction. The atmosphere has Re~10¹², making DNS meaningless. The Primitive Equations are used: hydrostatic balance ∂p/∂z = -ρg (eliminates acoustic modes → Δt ~600s instead of ~30s), and the shallow atmosphere approximation (drops metric terms involving z/a). Quasi-geostrophic potential vorticity q = ∇²ψ + f + (f₀²/N²)∂²ψ/∂z² filters inertia-gravity waves and retains Rossby wave dynamics.
+
+Example 3: Hemodynamics. Blood exhibits shear-thinning modeled by the Carreau-Yasuda model: μ(γ̇) = μ_∞ + (μ_0-μ_∞)[1+(λγ̇)ᵃ]^{(n-1)/a} (μ_0=0.016 Pa·s, μ_∞=0.0035 Pa·s). Atherosclerosis correlates with low time-averaged wall shear stress (τ_w < 0.4 Pa) and high oscillatory shear index (OSI > 0.1). The Womersley number α = R√(ω/ν) measures pulsatile flow unsteadiness: aorta α≈18, carotid α≈6.1, arteriole α≈0.08 (quasi-steady).
+
+Example 4: Shock Wave-Boundary Layer Interaction (SBLI). In supersonic flow, shock waves induce adverse pressure gradients that can separate the boundary layer, causing increased drag, thermal loads, and engine unstart. This is a critical design challenge for supersonic inlets and rocket nozzles.
 
 
+----
 
 
 1. Mokdong Complex 6 Reconstruction
@@ -455,10 +623,10 @@ Read more → https://seoulinside.substack.com/p/about-this-newsletter
 
 ---
 
-[Link1 →](https://xur94-maker.github.io/SeoulInside/link1.html)  
-[Link2 →](https://xur94-maker.github.io/SeoulInside/link2.html)  
-[wordpress →](https://seoulinside.wordpress.com/2026/05/18/news/)  
-[medium →](https://medium.com/@Seoulinside/news1-fb946ec27af9)  
+- [Link1 →](https://xur94-maker.github.io/SeoulInside/link1.html)  
+- [Link2 →](https://xur94-maker.github.io/SeoulInside/link2.html)  - 
+- [wordpress →](https://seoulinside.wordpress.com/2026/05/18/news/)  
+- [medium →](https://medium.com/@Seoulinside/news1-fb946ec27af9)  
 
 - [GitHub Repository: SeoulInside](https://github.com/xur94-maker/SeoulInside)
 - [GitHub Pages Settings](https://github.com/xur94-maker/SeoulInside/settings/pages)
