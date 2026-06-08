@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "Iran and Israel say they have halted strikes after first exchange of fire since truce",
+      "link": "https://www.bbc.com/news/articles/cj6ge150z5go?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 08 Jun 2026 17:11:32 GMT",
+      "desc": "Iran launched about 30 missiles at Israel following a strike in Lebanon, while Israel carried out two waves of air strikes in Iran."
+    },
+    {
+      "title": "Iran releases footage of missiles launched at Israel",
+      "link": "https://www.bbc.com/news/videos/c2kyd52wje4o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 08 Jun 2026 07:26:45 GMT",
+      "desc": "Iran said its attacks were \"the beginning of a full week of continuous strikes.\""
+    },
+    {
       "title": "At least 32 dead after major earthquake strikes southern Philippines",
       "link": "https://www.bbc.com/news/articles/clyel78e6p5o?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 08 Jun 2026 11:10:07 GMT",
       "desc": "The magnitude-7.8 quake triggered small tsunami waves in the Philippines, Indonesia and Japan."
-    },
-    {
-      "title": "Rare footage captured of Great White shark in Mediterranean Sea",
-      "link": "https://www.bbc.com/news/videos/cd6p6zqzj6do?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 08 Jun 2026 06:09:53 GMT",
-      "desc": "A volunteer diver has described shaking as he filmed his encounter with an endangered Great White shark between Tunisia and Sicily."
     },
     {
       "title": "Armenia's pro-West government wins election despite Russian pressure",
@@ -19,31 +25,13 @@
       "desc": "Prime Minister Nikol Pashinyan's Civil Contract Party secures nearly 50% of the vote, comfortably beating the other contenders."
     },
     {
-      "title": "Knicks' long-awaited NBA run electrifies NYC, with Trump set to attend key game",
-      "link": "https://www.bbc.com/news/articles/ceqd5jgded8o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 08 Jun 2026 09:08:59 GMT",
-      "desc": "The Knicks' stunning winning streak has energised the city as the New York basketball team prepares for the third game of the finals series at its home arena."
-    },
-    {
-      "title": "Zelensky's close European allies set out five conditions for peace talks",
-      "link": "https://www.bbc.com/news/articles/cr7xr1g3nvvo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 07 Jun 2026 21:39:43 GMT",
-      "desc": "The Ukrainian president's meeting with his staunchest European allies came as US President Donald Trump's focus shifts to the war with Iran."
+      "title": "'A World Cup for them not us': Fans' anger at US travel bans and visa restrictions",
+      "link": "https://www.bbc.com/news/articles/cx212p8r28eo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 07 Jun 2026 23:00:27 GMT",
+      "desc": "Fans across the world say US travel bans and visa regulations make them feel excluded from the World Cup."
     }
   ],
   "koreaNews": [
-    {
-      "title": "The World’s Most Surprising Economic Success Story Is…North Korea - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBEVnJvWG9sa2syTGVsZW4zaXE4THdkOTJxYUdPZ2c2cEhTM3FBcm9aZUFKX2RCMW5SNW1YbXBfNDliTlAxLTNUVkxRbFVQcnJFdGZUTDByemE2R2diMmprRzU4Y3o1U3Exd2JQQnhBMjE3eUlRMlE?oc=5",
-      "date": "Mon, 08 Jun 2026 03:26:00 GMT",
-      "desc": "The World’s Most Surprising Economic Success Story Is…North Korea&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "A ‘Miraculous Transformation’: How Kim Jong-un Fortified North Korea - The New York Times",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUFJ4NmJoNW9QbW9qQ240elN0cktydU9wR2JpWWRjd2JkZVhoT0QyZlRHQzB6dmRSWkJac0FDNVJ3TVpnSi1yYXI1dkwxV3l3b2NXYTYtSUYwSWZDQk0yNjY3TG50S1MxZ2RNbkVFaHFIZ0JSeGRNRGxUb3ZOU2NsRUlMcDREQjA4Z0otLVBuck5QYkhWb2c?oc=5",
-      "date": "Mon, 08 Jun 2026 04:01:16 GMT",
-      "desc": "A ‘Miraculous Transformation’: How Kim Jong-un Fortified North Korea&nbsp;&nbsp;The New York Times"
-    },
     {
       "title": "Chips, ships and guns: South Korea booms on AI race and global conflict - Financial Times",
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPVlRaRmJlSjZ0QkNwd1JfcXhURW9PZmZiR19ITy00c29rRWl1UnJJb2l5ZnBXVkt1MDlyeEZDQnd4bFBEYmhJZThSZFFwOG5KNi1RcEpWT254RHhubGdyU0dkOFRoTmhRc2tlczA3bWRCWFhoYmdFYlozbFpPX00xRkFWRmM?oc=5",
@@ -51,16 +39,28 @@
       "desc": "Chips, ships and guns: South Korea booms on AI race and global conflict&nbsp;&nbsp;Financial Times"
     },
     {
-      "title": "Strategic Clarity: Reassessing the Value of China to Korea - CSIS | Center for Strategic and International Studies",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQdjRUcmVuZHRscS1aYUw0VnJiRmtvdktDblBGdWFKUjY3SnhFZkc1MXlTY3YtRzRUNmdkVHlIb3hxVW00ZnhIV3R1LWlrX1FYSER6TVB5VTV2VXFNeXY1dU8xXzhPWlJJa3ZUZ2VTTTFSWHJzSzNQU1M4Zmo3Nk9FUGRKcw?oc=5",
-      "date": "Fri, 05 Jun 2026 16:04:29 GMT",
-      "desc": "Strategic Clarity: Reassessing the Value of China to Korea&nbsp;&nbsp;CSIS | Center for Strategic and International Studies"
+      "title": "The World’s Most Surprising Economic Success Story Is…North Korea - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBEVnJvWG9sa2syTGVsZW4zaXE4THdkOTJxYUdPZ2c2cEhTM3FBcm9aZUFKX2RCMW5SNW1YbXBfNDliTlAxLTNUVkxRbFVQcnJFdGZUTDByemE2R2diMmprRzU4Y3o1U3Exd2JQQnhBMjE3eUlRMlE?oc=5",
+      "date": "Mon, 08 Jun 2026 03:26:00 GMT",
+      "desc": "The World’s Most Surprising Economic Success Story Is…North Korea&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Hormuz Fees Threaten South Korean Economy - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE8xT19DNlBac2RScmNMQ1U0VHNpOENTSmNRemZ1aU51NE1pUEVVMXNkeUhvXzBjM2U4NDNtR2JJOGtzdDV6Sk5HanRueHN1YUJ4NV91OFhONEVNMW9HMngwX0xGbjR3WmRoaFkxaFFjWWxaenBV?oc=5",
-      "date": "Mon, 08 Jun 2026 06:28:45 GMT",
-      "desc": "Hormuz Fees Threaten South Korean Economy&nbsp;&nbsp;Businesskorea"
+      "title": "How South Korea's stock boom sparked a currency crisis - Axios",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE05cHJtbmlLNkNWeW9UVjRXeS14RUgweENQMmtKbFptNjFSejd0ZnBRMkEzWmpMeHJZNlBlOVhiYWhQN0JTS1NZYzBjYWp5bVdZN1VDYWc4Um5lcXNOV21ndXNNQ0JycE9v?oc=5",
+      "date": "Fri, 05 Jun 2026 11:02:27 GMT",
+      "desc": "How South Korea's stock boom sparked a currency crisis&nbsp;&nbsp;Axios"
+    },
+    {
+      "title": "AI race and rearmament lift South Korea to economic outperformance - CHOSUNBIZ - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNVHBKQm9OQU1QS0Q0ZUlVdExFZjdCWm1UNUtvU2haOEk4OFBQRmFvLWFiaGs2Y0hPdC1ocGx1cE5PUzRFNk92TS1ObFgtNmtSdTFRUWFjLTk1ZHNZYlJPNXE5dUJnOGVnZzhDNHBEdElwel9uMnlOVE1nTlp6YmxDa1h30gGWAUFVX3lxTFAxWlVnRElOT2NxdzdRRFc3WHlJTGNUZVhOQUJjc1MyS05LRmlIY0h6WUIzZ1lrZ3hEME5maXBkYVNUMmFDOGxhUmtkdkdtX3RqMC1Md29JeU44NTZmZWpwa1FkSEJ1ZTB5ZjEwYS0yTzQ1NjEwNDh4aUwteF8wMmcwTk1mZk9Sejd1NjNnN0FvVVY2dGg2UQ?oc=5",
+      "date": "Mon, 08 Jun 2026 13:56:00 GMT",
+      "desc": "AI race and rearmament lift South Korea to economic outperformance - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
+    },
+    {
+      "title": "Korea halts entire stock market, global chaos - News.com.au",
+      "link": "https://news.google.com/rss/articles/CBMiogJBVV95cUxQRXNqLWdFa2htdWtLTjljUU05anhJeVRLR1dqbGoxU2F0a3JVV05FU052ZVVQOXdNLXVXR3BlVUhrQm1WRmlIeE5IdG1RTDFHNmJyMEJleWVJU3ZObTBhTDB5Z2R5dFBfc2R2Y2JCLV9vMDVFcnd0VENEWWhXUlB6WEFWNEJ2YW5wdEZaVXpCbk1aSXpkdEhiZmJCRDdET1otdzRVTm5oaDFCMHQyWXF6RS1DN0dQLUxqQnBya3lXbzhPdmJwSktEN0tKalhGNmhBS0hGU09VUmd1eFdPUzdKN1M0Ml9JOFhoY1NSdkxTREMzSTYtaVdUbkxGUWtqMXJZbFdGNWF5V1hMaWt4Q084Y1p0RGVsNHJLNmFTTDlRY2M5Z9IBpwJBVV95cUxQRWRRaUVaQVZDUWhpM2pxSVlaTVhucFBpU3NVSC1vS0FLN2hIblFmc213bGNMcmpwYjkwUXg0c0RjQ2FhTFdFVjk2UzM2Mk55TVp2WnlWdXRMNUs4eEJFWnc0X2ZEVXBfSGpPejlRZXA5QjF5bVpVSENidFNNaldMd2xheE9xVHlXa25uWS1zY3BzRUI4WjRWQUhxdm4ybFhyci1jNnBWRzI3cjRrUkNDaF9tX2QzR3BaQ3NqOTRKaEtuZ29EdE5jMGJkaUZJTWdrSG9QMGV2RUU5ZjgtY2Q2QUJrX1VGZzR2WXNkUlFEODFqR1d2eTNMbk1SYXllN1RfTjE5cmgzbmozOC1QdzFOR21FdlphR2hoRWFteEhZTW9EaUZHckJj?oc=5",
+      "date": "Mon, 08 Jun 2026 05:05:07 GMT",
+      "desc": "Korea halts entire stock market, global chaos&nbsp;&nbsp;News.com.au"
     },
     {
       "title": "Asia tech stocks drop after Broadcom rattles AI trade and drags Wall Street names lower - CNBC",
@@ -75,99 +75,99 @@
       "desc": "Chinese Semiconductor Firms Challenge Samsung, SK Hynix&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Broadcom-Linked AI Selloff Hits Samsung, SK Hynix Stocks In Korea: DRAM Eyes Second Day In Red - Stocktwits",
-      "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPZGdWamN1aDBNUzI2dGpKbWlLTW5pcy1mSWJwUlc1OWNJeG5hZzJOT2RuNWRfN0dYNTZGMkxsVVdiaWlPMW51R0wtNUh1SHRkVGk4RUNSV19nc0tPb0VGd2NpYm9IWDNEc2RmaVlzSjYxOFkwdXFoQTRLVnhuQVVxR3czaFlhUTIxT2NWaklDRE1NZzlJSTY5WDRRcHM2RXRta296X1gzckhMMXlVMWRYTmxnazFnYjYyV1NqcGIycEtfay1UQVZDODdhWnhXeExWOWVEMDQtcExYWjZMRDFleG14UWk3TERFY2NiTg?oc=5",
-      "date": "Fri, 05 Jun 2026 06:45:44 GMT",
-      "desc": "Broadcom-Linked AI Selloff Hits Samsung, SK Hynix Stocks In Korea: DRAM Eyes Second Day In Red&nbsp;&nbsp;Stocktwits"
+      "title": "Samsung, SK Hynix Slide as Chip Peak Fears Grip Seoul; Brokers Call Pullback a Buying Chance - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE0wNUcxV3Z3VGYyYXhfSW5SVXlMRGN4V3pQbkdWam00Xy1VMzRXQWVXc00wUS1STF95Vnc4RGJ1UHM5dnFVdHlfeS1zTGQyQW01Q0dPYg?oc=5",
+      "date": "Mon, 08 Jun 2026 13:08:24 GMT",
+      "desc": "Samsung, SK Hynix Slide as Chip Peak Fears Grip Seoul; Brokers Call Pullback a Buying Chance&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 205.1,
-      "change": -9.65,
-      "pct": -4.49,
+      "price": 208.34,
+      "change": -10.31,
+      "pct": -4.72,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 415.17,
-      "change": -21.52,
-      "pct": -4.93,
+      "price": 427.65,
+      "change": -17.27,
+      "pct": -3.88,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 466.38,
-      "change": -76.14,
-      "pct": -14.03,
+      "price": 488.84,
+      "change": -34.36,
+      "pct": -6.57,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 99.17,
-      "change": -13.54,
-      "pct": -12.01,
+      "price": 110.25,
+      "change": -1.53,
+      "pct": -1.37,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 215.94,
-      "change": -34.07,
-      "pct": -13.63,
+      "price": 217.04,
+      "change": -25.53,
+      "pct": -10.53,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 342.93,
-      "change": -68.9,
-      "pct": -16.73,
+      "price": 347.95,
+      "change": -45.49,
+      "pct": -11.56,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 368.53,
-      "change": 9.54,
-      "pct": 2.66,
+      "price": 361.87,
+      "change": -10.32,
+      "pct": -2.77,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 307.34,
-      "change": -2.92,
-      "pct": -0.94,
+      "price": 313.14,
+      "change": 1.91,
+      "pct": 0.61,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 416.67,
-      "change": -10.67,
-      "pct": -2.5,
+      "price": 409.24,
+      "change": -18.81,
+      "pct": -4.39,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7383.74,
-      "change": -169.94,
-      "pct": -2.25,
+      "price": 7423.38,
+      "change": -160.93,
+      "pct": -2.12,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25709.43,
-      "change": -1144.55,
-      "pct": -4.26,
+      "price": 26017.42,
+      "change": -813.54,
+      "pct": -3.03,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1526.59,
-      "change": -6.48,
-      "pct": -0.42,
+      "price": 1525.81,
+      "change": -7.26,
+      "pct": -0.47,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-08 13:11 UTC"
+  "updatedAt": "2026-06-08 17:17 UTC"
 }
