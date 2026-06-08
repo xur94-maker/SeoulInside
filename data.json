@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "At least 32 dead after major earthquake strikes southern Philippines",
+      "link": "https://www.bbc.com/news/articles/clyel78e6p5o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 08 Jun 2026 11:10:07 GMT",
+      "desc": "The magnitude-7.8 quake triggered small tsunami waves in the Philippines, Indonesia and Japan."
+    },
+    {
       "title": "Rare footage captured of Great White shark in Mediterranean Sea",
       "link": "https://www.bbc.com/news/videos/cd6p6zqzj6do?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 08 Jun 2026 06:09:53 GMT",
       "desc": "A volunteer diver has described shaking as he filmed his encounter with an endangered Great White shark between Tunisia and Sicily."
     },
     {
-      "title": "Five people injured in stabbing at New York City's Penn Station",
-      "link": "https://www.bbc.com/news/articles/cj0g4425zmeo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 08 Jun 2026 01:33:08 GMT",
-      "desc": "The city is currently heightening security measures before President Trump visits on Monday to watch the NBA finals."
+      "title": "Armenia's pro-West government wins election despite Russian pressure",
+      "link": "https://www.bbc.com/news/articles/cvgel990n51o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 08 Jun 2026 10:28:40 GMT",
+      "desc": "Prime Minister Nikol Pashinyan's Civil Contract Party secures nearly 50% of the vote, comfortably beating the other contenders."
+    },
+    {
+      "title": "Knicks' long-awaited NBA run electrifies NYC, with Trump set to attend key game",
+      "link": "https://www.bbc.com/news/articles/ceqd5jgded8o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 08 Jun 2026 09:08:59 GMT",
+      "desc": "The Knicks' stunning winning streak has energised the city as the New York basketball team prepares for the third game of the finals series at its home arena."
     },
     {
       "title": "Zelensky's close European allies set out five conditions for peace talks",
       "link": "https://www.bbc.com/news/articles/cr7xr1g3nvvo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 07 Jun 2026 21:39:43 GMT",
       "desc": "The Ukrainian president's meeting with his staunchest European allies came as US President Donald Trump's focus shifts to the war with Iran."
-    },
-    {
-      "title": "Trump abruptly ends NBC interview after clash over 'rigged election' claim",
-      "link": "https://www.bbc.com/news/articles/ce8k1xx6yzjo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 07 Jun 2026 19:55:49 GMT",
-      "desc": "During the interview, the president was repeatedly challenged on several points by the show's presenter Kristen Welker."
-    },
-    {
-      "title": "'A World Cup for them not us': Fans' anger at US travel bans and visa restrictions",
-      "link": "https://www.bbc.com/news/articles/cx212p8r28eo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 07 Jun 2026 23:00:27 GMT",
-      "desc": "Fans across the world say US travel bans and visa regulations make them feel excluded from the World Cup."
     }
   ],
   "koreaNews": [
@@ -51,10 +51,10 @@
       "desc": "Chips, ships and guns: South Korea booms on AI race and global conflict&nbsp;&nbsp;Financial Times"
     },
     {
-      "title": "South Korea (KOR) Exports, Imports, and Trade Partners | The Observatory of Economic Complexity - The Observatory of Economic Complexity",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBFb3pSd3NpT0s5andZTy02ZG15OUpWVGJjcmM2UGhwcjU4T1ZEOU1tUHRBN2NyeHhkS0k1bmN3c3RveGxyb3NUWUxZdmdNRVRQLXc?oc=5",
-      "date": "Fri, 05 Jun 2026 23:02:01 GMT",
-      "desc": "South Korea (KOR) Exports, Imports, and Trade Partners | The Observatory of Economic Complexity&nbsp;&nbsp;The Observatory of Economic Complexity"
+      "title": "Strategic Clarity: Reassessing the Value of China to Korea - CSIS | Center for Strategic and International Studies",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQdjRUcmVuZHRscS1aYUw0VnJiRmtvdktDblBGdWFKUjY3SnhFZkc1MXlTY3YtRzRUNmdkVHlIb3hxVW00ZnhIV3R1LWlrX1FYSER6TVB5VTV2VXFNeXY1dU8xXzhPWlJJa3ZUZ2VTTTFSWHJzSzNQU1M4Zmo3Nk9FUGRKcw?oc=5",
+      "date": "Fri, 05 Jun 2026 16:04:29 GMT",
+      "desc": "Strategic Clarity: Reassessing the Value of China to Korea&nbsp;&nbsp;CSIS | Center for Strategic and International Studies"
     },
     {
       "title": "Hormuz Fees Threaten South Korean Economy - Businesskorea",
@@ -63,22 +63,22 @@
       "desc": "Hormuz Fees Threaten South Korean Economy&nbsp;&nbsp;Businesskorea"
     },
     {
-      "title": "US chip slump drives Samsung, SK hynix premarket plunge in South Korea - CHOSUNBIZ - Chosunbiz",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOWVlOQTlaY1QyMXlPR0JqazY1ZHhtZ3ZYWmYxcGJFbWh2WUxoZktVdTBTdTFrdWRsODdXTzljbnF1c0dzTGtYNWRCd1pNWVgzYlI5MzVyNUU1aGo2SHY0Wmg4RzVlbHF3ck1OSzJvYXQtZlpEWV90b08xaUtmbjdDSNIBlAFBVV95cUxPeEtaVWpYWHVhNWZXUzUxWTZuX1A3SmU1LWZkU3c4VERtSWhmRjhOVm12NGJYZ1FwSzRta1lzWlJScE9QRDYwU0Z1dnFnLTB2QjN1MmUwbU03TWZQUm9VdHpFOGRTX0FscDdpcUprb2kwT3R4X0FwMlcxNmIycDMwTTByOEpjYnVUVTIwbGhOMjZpYUZD?oc=5",
-      "date": "Sun, 07 Jun 2026 23:36:00 GMT",
-      "desc": "US chip slump drives Samsung, SK hynix premarket plunge in South Korea - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
+      "title": "Asia tech stocks drop after Broadcom rattles AI trade and drags Wall Street names lower - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNSnBRX3BLYW9qOURXY2pUZGszSnd5dFQtNWMtaEJVOU5qbmFFc1hkVW5fel9RcVo3RTV1Mmh0NUUxNE5fZG9WQlpPeTdDYXJMQnZkMWV3dGhlYXAwZzlMZ1NFTWtCeWk5QjZXalFkZjFHRU1zYWR3b3VmU0N6aDg5TFRRVldDYXplcTgyMXV3aFcyMkhqY1BZ0gGcAUFVX3lxTE5rVEFtSjRacDlFNFVKclY1N0p5dTNyWXlEZC1qOUZlcVJPU1FSUi1OVlc1UXh4azBNel9ZbXVaUjNaQVQ5MlpkV3RkNi1GREVZRXYtMEZYQTlhYndZVkhQbGROdGRxb2drUU5yNFp3dDhPeTBteE9IUzBVM1ptNTFCRU05RFRfMkdNcUhZQVh5M1FkWFQ4TkRuZWE2bw?oc=5",
+      "date": "Fri, 05 Jun 2026 01:39:00 GMT",
+      "desc": "Asia tech stocks drop after Broadcom rattles AI trade and drags Wall Street names lower&nbsp;&nbsp;CNBC"
+    },
+    {
+      "title": "Chinese Semiconductor Firms Challenge Samsung, SK Hynix - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPa0Eyd1RjbVBQTi03amFLNDk1YkFOUnNNTEtkSGlWRkZiQ0FOLXB0RHVOQWNfUjNGZ0lEcnhTTzVjdzJjaFdPWTdDTXJFbjFOTU5NV1Z0RXhhSnliUmxSQ0JXUFZTTk80MzJNOTFPNHlubmllSjFLRmVTVmpRb01hWWhaTDB5SWc?oc=5",
+      "date": "Mon, 08 Jun 2026 08:07:33 GMT",
+      "desc": "Chinese Semiconductor Firms Challenge Samsung, SK Hynix&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Broadcom-Linked AI Selloff Hits Samsung, SK Hynix Stocks In Korea: DRAM Eyes Second Day In Red - Stocktwits",
       "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPZGdWamN1aDBNUzI2dGpKbWlLTW5pcy1mSWJwUlc1OWNJeG5hZzJOT2RuNWRfN0dYNTZGMkxsVVdiaWlPMW51R0wtNUh1SHRkVGk4RUNSV19nc0tPb0VGd2NpYm9IWDNEc2RmaVlzSjYxOFkwdXFoQTRLVnhuQVVxR3czaFlhUTIxT2NWaklDRE1NZzlJSTY5WDRRcHM2RXRta296X1gzckhMMXlVMWRYTmxnazFnYjYyV1NqcGIycEtfay1UQVZDODdhWnhXeExWOWVEMDQtcExYWjZMRDFleG14UWk3TERFY2NiTg?oc=5",
       "date": "Fri, 05 Jun 2026 06:45:44 GMT",
       "desc": "Broadcom-Linked AI Selloff Hits Samsung, SK Hynix Stocks In Korea: DRAM Eyes Second Day In Red&nbsp;&nbsp;Stocktwits"
-    },
-    {
-      "title": "Nvidia’s Huang Says AI Stocks Are ‘Very Cheap’ as Samsung, SK Hynix Pare Early Losses - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBSa1FTbjZjMUdWcjUwRGlpeGp1ZHUySDZwcFYyRldqOW1WVUROQlVRZUJiZkkzdy1hZTdlZGlSeEdOZGduVFBKTXEzMlh2RHFydWMyMw?oc=5",
-      "date": "Mon, 08 Jun 2026 00:55:01 GMT",
-      "desc": "Nvidia’s Huang Says AI Stocks Are ‘Very Cheap’ as Samsung, SK Hynix Pare Early Losses&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1531.01,
-      "change": -2.06,
-      "pct": -0.13,
+      "price": 1526.59,
+      "change": -6.48,
+      "pct": -0.42,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-08 07:25 UTC"
+  "updatedAt": "2026-06-08 13:11 UTC"
 }
