@@ -4,11 +4,11 @@
 
 B. Sun | Seoul Inside | 2026
 
+https://seoulinside.substack.com/p/the-passive-layer-core-document
+
 https://seoulinside.substack.com/p/passive-layer-essential-citations
 
 https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
-
-https://seoulinside.substack.com/p/the-passive-layer-core-document
 
 https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
 
