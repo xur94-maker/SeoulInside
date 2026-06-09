@@ -4,26 +4,13 @@
 
 B. Sun | Seoul Inside | 2026
 
----
-
-## Simulators (Run in Your Browser)
-
-| Simulator | Description | Launch |
-|---|---|---|
-| **Galaxy v5.0** | BH displacement → spiral formation + real-time S₂ analysis | [🔗 Run](https://xur94-maker.github.io/SeoulInside/Galaxy_2.html) |
-| **LHC + Kerr BH v3.2** | Particle collision + magnetic field → charge separation + disk formation | [🔗 Run](https://xur94-maker.github.io/SeoulInside/LHC_kerr_2.html) |
-
-> Use arrow keys to move the black hole and observe spiral arm strength (S₂) change in real time.  
-> The LHC simulator demonstrates particle separation and spontaneous disk formation around a black hole in a strong magnetic field.
-
+https://seoulinside.substack.com/p/passive-layer-essential-citations
 
 https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
 
 https://seoulinside.substack.com/p/the-passive-layer-core-document
 
 https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
-
-https://seoulinside.substack.com/p/passive-layer-essential-citations
 
 https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity
 
