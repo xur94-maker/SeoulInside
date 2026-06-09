@@ -18,7 +18,7 @@ B. Sun | Seoul Inside | 2026
 
 ---
 
-##Core Documents (Full Text)
+## Core Documents (Full Text)
 
 - [1. The Passive Layer — Core Document](#1-the-passive-layer--core-document)
 - [2. A Unified Technical Framework — Simulation Evidence and Theoretical Foundations](#2-a-unified-technical-framework--simulation-evidence-and-theoretical-foundations)
