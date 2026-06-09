@@ -1,25 +1,47 @@
+# The Passive Layer: Complete Unified Framework
 
-The Passive Layer  Complete Unified Framework
+**A Complementary Framework for Galactic Dynamics — Without Invoking Dark Matter**
 
-A Complementary Framework for Galactic Dynamics
+B. Sun | Seoul Inside | 2026
 
-[B. Sun | Seoul Inside](https://substack.com/@seoulinside)
+---
+
+## ⚡ Live Simulators (Run in Your Browser)
+
+| Simulator | Description | Launch |
+|---|---|---|
+| **Galaxy v5.0** | BH displacement → spiral formation + real-time S₂ analysis | [🔗 Run](https://xur94-maker.github.io/SeoulInside/Galaxy_2.html) |
+| **LHC + Kerr BH v3.2** | Particle collision + magnetic field → charge separation + disk formation | [🔗 Run](https://xur94-maker.github.io/SeoulInside/LHC_kerr_2.html) |
+
+> Use arrow keys to move the black hole and observe spiral arm strength (S₂) change in real time.  
+> The LHC simulator demonstrates particle separation and spontaneous disk formation around a black hole in a strong magnetic field.
+
+---
+
+## 📚 Core Documents (Full Text)
+
+- [1. The Passive Layer — Core Document](#1-the-passive-layer--core-document)
+- [2. A Unified Technical Framework — Simulation Evidence and Theoretical Foundations](#2-a-unified-technical-framework--simulation-evidence-and-theoretical-foundations)
+
+---
+
+## 📖 Document Index
 
 0. The Passive Layer — Core Document
-1. A Unified Technical Framework  
-2. The Passive Layer — Core Document  
-3. Black Hole Displacement and the Default State  
-4. Passive Layer — Essential Citations 
-5. Vacuum Fluctuations, Delayed Gravity... 
-6. High-Energy Particle Generation... 
-7. Delayed Gravitational Interaction  
-8. Black Hole Physics in Yang-Mills Collider  
-9. LHC Simulation: Physics Formulas and Explanations  
-10. Yang-Mills Collider v3.0 — A technical inventory  
-11. I Added a Black Hole to the LHC... 
-12. A Relativistic Particle Collider...  
-A. Galaxy_2.html   
-B. LHC_kerr_2.html
+1. A Unified Technical Framework
+2. Black Hole Displacement and the Default State
+3. Passive Layer — Essential Citations
+4. Vacuum Fluctuations, Delayed Gravity...
+5. High-Energy Particle Generation...
+6. Delayed Gravitational Interaction
+7. Black Hole Physics in Yang-Mills Collider
+8. LHC Simulation: Physics Formulas and Explanations
+9. Yang-Mills Collider v3.0 — A technical inventory
+10. I Added a Black Hole to the LHC...
+11. A Relativistic Particle Collider...
+
+A. Galaxy_2.html (simulator)
+B. LHC_kerr_2.html (simulator)
 
 ----
 
