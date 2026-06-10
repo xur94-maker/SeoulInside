@@ -1,13 +1,6 @@
 # The Passive Layer: Complete Unified Framework
 
-
-
-
-
-https://seoulinside.substack.com/p/passive-layer-complete-technical
-
-----
-
+https://seoulinside.substack.com/p/the-passive-layer
 
 https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making (2026-06-03)
 
@@ -39,7 +32,11 @@ https://seoulinside.substack.com/p/physics-series-full
 
 ----
 
-
 https://xur94-maker.github.io/SeoulInside/Galaxy_2.html
 
 https://xur94-maker.github.io/SeoulInside/LHC_kerr_2.html
+
+https://xur94-maker.github.io/SeoulInside/LHC_kerr_1.html
+
+https://xur94-maker.github.io/SeoulInside/Galaxy_1.html
+
