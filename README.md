@@ -7,7 +7,7 @@ https://github.com/xur94-maker/SeoulInside/blob/main/passive_layer.pdf
 
 https://seoulinside.substack.com/p/passive-layer-complete-technical
 
-
+----
 
 
 https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making (2026-06-03)
@@ -34,11 +34,11 @@ https://seoulinside.substack.com/p/high-energy-particle-generation-and (2026-06-
 
 https://seoulinside.substack.com/p/the-passive-layer-core-document (2026-06-09)
 
-
+----
 
 https://seoulinside.substack.com/p/physics-series-full
 
-
+----
 
 
 https://xur94-maker.github.io/SeoulInside/Galaxy_2.html
