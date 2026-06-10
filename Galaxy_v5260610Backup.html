@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>GalaxyKerr v5.0 — 미니 블랙홀 + 지연 중력</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap');
+        * { margin:0; padding:0; box-sizing:border-box; user-select:none; }
+        body { background:#03040c; overflow:hidden; font-family:'Inter', sans-serif; }
+
+        .glass-panel {
+            position:absolute; z-index:30;
+            background:rgba(6,12,28,0.88);
+            backdrop-filter:blur(16px);
+            border-radius:20px;
+            border:1px solid rgba(0,255,255,0.22);
+            padding:12px 18px;
+            box-shadow:0 8px 32px rgba(0,0,0,0.6);
+            pointer-events:auto;
+        }
+        .panel-title {
+            font-size:9px; letter-spacing:2.5px; font-weight:600;
+            color:#2ef; text-transform:uppercase; margin-bottom:10px;
+        }
+        .stat-row { display:flex; justify-content:space-between; gap:24px; font-size:9px; margin:3px 0; color:#bcd; }
+        .val { color:#5f6; font-weight:700; }
+        .val-accent { color:#0ff; font-weight:700; }
+        .val-warn { color:#fa8; font-weight:700; }
+        .slider-group { display:flex; align-items:center; gap:10px; margin:6px 0; font-size:9px; color:#bcd; }
+        .slider-label { min-width:140px; }
+        input[type=range] { width:130px; height:3px; border-radius:4px; cursor:pointer; accent-color:#0ff; }
+        .slider-val { min-width:52px; text-align:right; color:#4ef; font-weight:700; font-family:'JetBrains Mono'; font-size:9px; }
+        button {
+            background:rgba(0,20,40,0.85); border:1px solid #0ff; color:#0ff;
+            padding:5px 16px; font-family:'JetBrains Mono'; font-weight:600; border-radius:60px;
+            cursor:pointer; transition:0.2s; font-size:9px; letter-spacing:1px;
+        }
+        button:hover { background:#0ff; color:#000; box-shadow:0 0 18px #0ff; }
+        button.danger { border-color:#f77; color:#f77; }
+        button.danger:hover { background:#f77; color:#000; box-shadow:0 0 18px #f77; }
+        .toggle-group { display:flex; gap:8px; margin:8px 0; padding:6px 0; border-top:1px solid #0ff2; border-bottom:1px solid #0ff2; }
+        .toggle-btn {
+            flex:1; text-align:center; padding:4px; font-size:8px;
+            background:#0a1420; border:1px solid #2af; color:#2af;
+            border-radius:20px; cursor:pointer; transition:0.15s;
+        }
+        .toggle-btn.active { background:#2af; color:#000; }
+        .chart-container {
+            position:absolute; z-index:30;
+            background:rgba(6,12,28,0.88);
+            backdrop-filter:blur(16px);
+            border-radius:16px;
+            border:1px solid rgba(0,255,255,0.18);
+            padding:10px 14px;
+            pointer-events:none;
+        }
+        .chart-title { font-size:8px; letter-spacing:1.5px; color:#2af; font-family:'JetBrains Mono'; margin-bottom:7px; }
+        .badge {
+            position:absolute; bottom:18px; right:20px;
+            background:rgba(0,0,0,0.55); border-radius:40px; padding:5px 14px;
+            font-size:8px; color:#8af; font-family:'JetBrains Mono'; z-index:30;
+            border:1px solid #2af4;
+        }
+        #metrics {
+            position:absolute; top:10px; left:50%; transform:translateX(-50%);
+            background:rgba(0,0,0,0.6); padding:4px 14px;
+            border-radius:30px; font-size:8px; color:#4ef;
+            font-family:'JetBrains Mono'; z-index:31;
+            border:1px solid #0ff3;
+        }
+        #flashOverlay {
+            position:absolute; inset:0; pointer-events:none; z-index:20;
+            background:radial-gradient(circle at 50% 50%, rgba(0,200,255,0.07) 0%, transparent 70%);
+            opacity:0; transition:opacity 0.6s;
+        }
+        #flashOverlay.active { opacity:1; transition:opacity 0.05s; }
+    </style>
+</head>
+<body>
+<div id="flashOverlay"></div>
+<div id="metrics">⭐ 0 | 🪐 0 | 🖥️ 0 fps | ΔE: — | ΔL: —</div>
+
+<!-- 왼쪽 상태 패널 -->
+<div class="glass-panel" style="top:18px; left:18px; width:250px;">
+    <div class="panel-title">🌌 GalaxyKerr — 미니 블랙홀</div>
+    <div class="stat-row"><span>⭐ 별 수</span><span class="val" id="nStars">0</span></div>
+    <div class="stat-row"><span>🪐 미니 BH 수</span><span class="val-accent" id="nMiniBH">0</span></div>
+    <div class="stat-row"><span>시뮬레이션 시간</span><span class="val" id="simTime">0 Myr</span></div>
+    <div class="stat-row"><span>🌌 외곽 속도</span><span class="val-accent" id="outerVel">— km/s</span></div>
+    <div class="stat-row"><span>🟡 뉴턴 예측</span><span class="val-warn" id="newtonVel">— km/s</span></div>
+    <div class="stat-row"><span>⚡ 속도 이상비</span><span class="val-accent" id="velRatio">—</span></div>
+    <div class="stat-row"><span>💿 원반 질량 @10kpc</span><span class="val" id="diskMassVal">—</span></div>
+    <div id="retardInfo" style="font-size:7px; margin-top:6px; border-top:1px solid #0ff2; padding-top:5px; color:#7ac; line-height:1.7;">지연 효과: OFF</div>
+</div>
+
+<!-- 오른쪽 제어반 -->
+<div class="glass-panel" style="top:18px; right:18px; width:380px;">
+    <div class="panel-title">⚙️ 제어반 · 미니 BH 모드</div>
+
+    <div class="slider-group"><span class="slider-label">⚫ BH 질량 log₁₀(M/M☉)</span><input type="range" id="bhMassLogSlide" min="1" max="20" step="0.1" value="6.5"><span class="slider-val" id="bhMassLogVal">6.5</span></div>
+    <div class="slider-group"><span class="slider-label">🌌 은하 질량 log₁₀(M/M☉)</span><input type="range" id="galMassLogSlide" min="8" max="13" step="0.1" value="10.8"><span class="slider-val" id="galMassLogVal">10.8</span></div>
+    <div class="slider-group"><span class="slider-label">⏱ 지연 강도 α</span><input type="range" id="retardSlide" min="0" max="10" step="0.01" value="1.0"><span class="slider-val" id="retardVal">1.00</span></div>
+    <div class="slider-group"><span class="slider-label">📉 M̈ log₁₀ (M☉/Myr²)</span><input type="range" id="mddLogSlide" min="0" max="12" step="0.1" value="6"><span class="slider-val" id="mddLogVal">6.0</span></div>
+    <div class="slider-group"><span class="slider-label">💪 G_scale (×10ⁿ)</span><input type="range" id="gScaleSlide" min="0" max="4" step="0.5" value="0"><span class="slider-val" id="gScaleVal">×10⁰</span></div>
+    <div class="slider-group"><span class="slider-label">⏱️ 시간 스텝 DT (Myr)</span><input type="range" id="dtSlide" min="0.0002" max="5.005" step="0.0001" value="0.0015"><span class="slider-val" id="dtVal">0.0015</span></div>
+    <div class="slider-group"><span class="slider-label">🕰️ 히스토리 버퍼 (스텝)</span><input type="range" id="histBufSlide" min="10" max="300" step="10" value="60"><span class="slider-val" id="histBufVal">60</span></div>
+    <div class="slider-group"><span class="slider-label">✦ 별 개수</span><input type="range" id="nStarSlide" min="1000" max="80000" step="1000" value="20000"><span class="slider-val" id="nStarVal">20000</span></div>
+    <div class="slider-group"><span class="slider-label">💥 충돌 강도 (별 수)</span><input type="range" id="collideNSlide" min="20" max="300" step="10" value="80"><span class="slider-val" id="collideNVal">80</span></div>
+    <div class="slider-group"><span class="slider-label">🪐 미니 BH 질량 비율</span><input type="range" id="miniMassRatioSlide" min="0.001" max="0.05" step="0.001" value="0.01"><span class="slider-val" id="miniMassRatioVal">1.0%</span></div>
+    <div class="slider-group"><span class="slider-label">🔄 BH 스핀 (a*)</span><input type="range" id="bhSpinSlide" min="0" max="1" step="0.05" value="0.9"><span class="slider-val" id="bhSpinVal">0.90</span></div>
+    <div class="slider-group"><span class="slider-label">📍 BH 위치 반경 (kpc)</span><input type="range" id="bhRadSlide" min="0" max="12" step="0.1" value="0"><span class="slider-val" id="bhRadVal">0.0</span></div>
+    <div class="slider-group"><span class="slider-label">🧭 BH 위치 각도 (°)</span><input type="range" id="bhAngSlide" min="0" max="360" step="1" value="0"><span class="slider-val" id="bhAngVal">0°</span></div>
+
+    <div class="toggle-group">
+        <div id="vyZeroBtn" class="toggle-btn">🔒 vy=0 모드</div>
+        <div id="vyRandBtn" class="toggle-btn active">🎲 vy=랜덤</div>
+    </div>
+    <div style="font-size:8px; color:#fa8; margin:4px 0 2px;">🔬 초기 속도 모드 (검증용)</div>
+    <div class="toggle-group">
+        <div id="velCircBtn" class="toggle-btn active">🌀 원형궤도 (기본)</div>
+        <div id="velRandBtn" class="toggle-btn">🎲 완전랜덤 (검증)</div>
+        <div id="velZeroBtn" class="toggle-btn">⛔ 정지 (검증)</div>
+    </div>
+    <div id="velModeDesc" style="font-size:7px; color:#8ab; margin-top:3px; text-align:center;">현재: 원형 궤도 속도로 시작 (회전 강제)</div>
+
+    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:6px;">
+        <button id="collideBtn">🔥 COLLIDE (미니BH 생성)</button>
+        <button id="initBtn">🌌 초기화</button>
+        <button class="danger" id="clearBtn">◀ 리셋</button>
+    </div>
+    <div style="font-size:7px; margin-top:8px; color:#6ab; text-align:center;">
+        💡 COLLIDE → 미니 블랙홀 생성 (중심 BH의 1~5% 질량) → 중력 영향 · 합체 · 흡수
+    </div>
+</div>
+
+<!-- 회전 곡선 차트 -->
+<div class="chart-container" style="bottom:14px; left:14px; width:290px;">
+    <div class="chart-title">📊 회전 곡선 (km/s vs kpc)</div>
+    <canvas id="rotCurveCanvas" width="266" height="140" style="width:100%; background:#020810; border-radius:6px;"></canvas>
+    <div style="display:flex; gap:10px; margin-top:5px; font-size:7px; color:#8ab; font-family:'JetBrains Mono';">
+        <span style="color:#4ef;">● 실제</span>
+        <span style="color:#fa8;">● 뉴턴</span>
+        <span style="color:#f55;">● M33</span>
+    </div>
+</div>
+
+<!-- 이벤트 로그 -->
+<div style="position:absolute; bottom:14px; left:320px; width:280px;
+    background:rgba(0,0,0,0.6); backdrop-filter:blur(8px);
+    border-left:3px solid #fa3; border-radius:14px;
+    padding:8px 12px; font-size:8px; font-family:'JetBrains Mono';
+    pointer-events:none; z-index:30; max-height:110px; overflow:hidden;">
+    <div style="color:#fa3; margin-bottom:4px;">📡 EVENT LOG</div>
+    <div id="logEntries"></div>
+</div>
+
+<div class="badge">⚛️ GalaxyKerr v5.0 | 미니 블랙홀 + 지연 중력(r/c 버퍼) + Freeman 원반 + Kerr BH | B. Sun</div>
+
+<script type="importmap">
+{ "imports": {
+    "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+}}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ============================================================
+// [1] 물리 상수 (은하 스케일)
+// ============================================================
+const G_SI    = 6.67430e-11;
+const C_SI    = 2.99792458e8;
+const PC_M    = 3.08567758e16;
+const KPC_M   = PC_M * 1e3;
+const MYR_S   = 3.15576e13;
+const MSUN    = 1.989e30;
+const G_BASE  = G_SI * MSUN * MYR_S * MYR_S / (KPC_M ** 3);
+const C_SIM   = C_SI * MYR_S / KPC_M;
+const GALAXY_RADIUS = 15.0;
+const DISK_SCALE_LEN = 3.0;
+
+// ============================================================
+// [2] 파라미터
+// ============================================================
+let BH_MASS_LOG    = 6.5;
+let GAL_MASS_LOG   = 10.8;
+let MDD_LOG        = 6.0;
+let G_SCALE_EXP    = 0;
+let RETARD_STRENGTH= 1.0;
+let N_STARS        = 20000;
+let DT             = 0.0015;
+let HIST_BUF_SIZE  = 60;
+let vyZeroMode     = false;
+let velInitMode    = 'circular';
+let M_DDOT_SIGN    = 1;
+let BH_SPIN        = 0.9;
+let BH_RAD         = 0.0;
+let BH_ANG         = 0.0;
+let COLLIDE_N      = 80;
+let MINI_BH_MASS_RATIO = 0.01;  // 중심 BH 대비 질량 비율 (1%)
+
+const bhOffset = new THREE.Vector3(0, 0, 0);
+function updateBHOffset() {
+    bhOffset.set(BH_RAD * Math.cos(BH_ANG), 0, BH_RAD * Math.sin(BH_ANG));
+}
+let simTimeMyr     = 0;
+let paused         = false;
+let initialTotalEnergy = 0, initialTotalAngularMomentum = 0;
+
+// 미니 블랙홀 배열
+let secondaryMasses = [];
+
+function getBHMass()  { return Math.pow(10, BH_MASS_LOG); }
+function getGalMass() { return Math.pow(10, GAL_MASS_LOG); }
+function getMDDot()   { return M_DDOT_SIGN * Math.pow(10, MDD_LOG); }
+function getG()       { return G_BASE * Math.pow(10, G_SCALE_EXP); }
+
+// ============================================================
+// Freeman (1970) 지수 원반 내부 질량
+// ============================================================
+function diskMass(r_kpc) {
+    const x = r_kpc / DISK_SCALE_LEN;
+    return getGalMass() * (1.0 - (1.0 + x) * Math.exp(-x));
+}
+
+// ============================================================
+// [3] Three.js 씬
+// ============================================================
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x03040c);
+scene.fog = new THREE.FogExp2(0x03040c, 0.00022);
+
+const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 2000);
+camera.position.set(0, 28, 60);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+document.body.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+
+scene.add(new THREE.AmbientLight(0x111133));
+const dir = new THREE.DirectionalLight(0xffffff, 0.5);
+dir.position.set(5, 10, 5);
+scene.add(dir);
+
+// 배경 별
+const bgGeo = new THREE.BufferGeometry();
+const bgPos = [];
+for (let i = 0; i < 4000; i++)
+    bgPos.push((Math.random()-0.5)*900, (Math.random()-0.5)*600, (Math.random()-0.5)*500 - 80);
+bgGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(bgPos), 3));
+scene.add(new THREE.Points(bgGeo, new THREE.PointsMaterial({ color:0x334466, size:0.1, transparent:true, opacity:0.45 })));
+
+// 은하 원반 가이드 링
+for (let r = 3; r <= 15; r += 3) {
+    const pts = [];
+    for (let a = 0; a <= 64; a++) {
+        const ang = (a/64)*Math.PI*2;
+        pts.push(new THREE.Vector3(Math.cos(ang)*r, 0, Math.sin(ang)*r));
+    }
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    scene.add(new THREE.LineLoop(geo, new THREE.LineBasicMaterial({ color:0x0a1a2a, transparent:true, opacity:0.35 })));
+}
+
+// ============================================================
+// [4] BH 시각화
+// ============================================================
+let bhVisuals = [];
+let bhGroup = null;
+
+function clearBHVisuals() {
+    bhVisuals.forEach(o => {
+        scene.remove(o);
+        if (o.geometry) o.geometry.dispose();
+        if (o.material) o.material.dispose();
+        if (o.children) {
+            o.children.forEach(c => {
+                if (c.geometry) c.geometry.dispose();
+                if (c.material) c.material.dispose();
+            });
+        }
+    });
+    bhVisuals = [];
+    bhGroup = null;
+}
+
+function updateBHVisual() {
+    clearBHVisuals();
+    bhGroup = new THREE.Group();
+    const logM = BH_MASS_LOG;
+    const rad = 0.25 + (logM - 4) * 0.07;
+
+    const photoR = rad * 1.5;
+    const photoPts = [];
+    for (let a = 0; a <= 128; a++) {
+        const ang = (a/128)*Math.PI*2;
+        photoPts.push(new THREE.Vector3(Math.cos(ang)*photoR, 0, Math.sin(ang)*photoR));
+    }
+    const photoGeo = new THREE.BufferGeometry().setFromPoints(photoPts);
+    bhGroup.add(new THREE.LineLoop(photoGeo, new THREE.LineBasicMaterial({ color:0x00eeff, transparent:true, opacity:0.7 })));
+
+    const ringColors = [0xcceeff, 0xffffff, 0xffddaa, 0xff9944, 0xff5522];
+    const ringOpas   = [0.8, 0.6, 0.4, 0.25, 0.12];
+    for (let i = 0; i < 5; i++) {
+        const r = photoR * (1.2 + i*0.45);
+        const pts = [];
+        for (let a = 0; a <= 180; a++) {
+            const ang = (a/180)*Math.PI*2;
+            pts.push(new THREE.Vector3(Math.cos(ang)*r, 0, Math.sin(ang)*r));
+        }
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        bhGroup.add(new THREE.LineLoop(geo, new THREE.LineBasicMaterial({ color:ringColors[i], transparent:true, opacity:ringOpas[i] })));
+    }
+
+    const core = new THREE.Mesh(new THREE.SphereGeometry(rad, 20, 16), new THREE.MeshStandardMaterial({ color:0x3388ff, emissive:0x001133 }));
+    bhGroup.add(core);
+
+    if (BH_SPIN > 0.2) {
+        const ergoR = rad * (1.5 + BH_SPIN * 0.8);
+        const ergo = new THREE.Mesh(new THREE.SphereGeometry(ergoR, 18, 12), new THREE.MeshBasicMaterial({ color:0x6600ff, transparent:true, opacity:0.07, wireframe:true }));
+        ergo.scale.set(1, 0.65, 1);
+        bhGroup.add(ergo);
+    }
+
+    if (BH_SPIN > 0) {
+        for (let s = 0; s < 2; s++) {
+            const spiralPts = [];
+            for (let t = 0; t < 200; t++) {
+                const tt = t / 200;
+                const rr = rad * (1.6 + tt * 1.4);
+                const ang = (s * Math.PI) + tt * Math.PI * 6;
+                spiralPts.push(new THREE.Vector3(Math.cos(ang) * rr, (tt - 0.5) * rad * 0.4, Math.sin(ang) * rr));
+            }
+            const sGeo = new THREE.BufferGeometry().setFromPoints(spiralPts);
+            bhGroup.add(new THREE.Line(sGeo, new THREE.LineBasicMaterial({ color:0x0088ff, transparent:true, opacity:0.25 })));
+        }
+    }
+
+    bhGroup.position.copy(bhOffset);
+    scene.add(bhGroup);
+    bhVisuals.push(bhGroup);
+}
+
+// ============================================================
+// [5] 미니 블랙홀 생성 함수
+// ============================================================
+function createMiniBH(pos, massRatio, vel) {
+    const centralBHMass = getBHMass();
+    const miniMass = centralBHMass * massRatio;
+    const radius = 0.08 + Math.log10(miniMass / centralBHMass + 0.1) * 0.15;
+    
+    const group = new THREE.Group();
+    
+    // 코어
+    const coreGeo = new THREE.SphereGeometry(radius, 16, 16);
+    const coreMat = new THREE.MeshStandardMaterial({ color: 0xff4422, emissive: 0x441100, emissiveIntensity: 0.8 });
+    const core = new THREE.Mesh(coreGeo, coreMat);
+    group.add(core);
+    
+    // 미니 강착원반 링
+    const ringPts = [];
+    for (let a = 0; a <= 64; a++) {
+        const ang = (a/64)*Math.PI*2;
+        const r = radius * 1.6;
+        ringPts.push(new THREE.Vector3(Math.cos(ang)*r, 0, Math.sin(ang)*r));
+    }
+    const ringGeo = new THREE.BufferGeometry().setFromPoints(ringPts);
+    const ringMat = new THREE.LineBasicMaterial({ color: 0xff8866, transparent: true, opacity: 0.6 });
+    const ring = new THREE.LineLoop(ringGeo, ringMat);
+    group.add(ring);
+    
+    group.position.copy(pos);
+    scene.add(group);
+    
+    return {
+        pos: pos.clone(),
+        vel: vel ? vel.clone() : new THREE.Vector3(0, 0, 0),
+        mass: miniMass,
+        mesh: group,
+        radius: radius,
+        initialMassRatio: massRatio,
+        age: 0
+    };
+}
+
+// ============================================================
+// [6] 미니 블랙홀 업데이트 (중력, 합체, 흡수)
+// ============================================================
+function updateMiniBHs(dt) {
+    const G = getG();
+    const centralBHMass = getBHMass();
+    const centralPos = bhOffset;
+    
+    for (let i = 0; i < secondaryMasses.length; i++) {
+        const m = secondaryMasses[i];
+        m.age += dt;
+        
+        // 중심 블랙홀과의 중력
+        const dx_c = centralPos.x - m.pos.x;
+        const dz_c = centralPos.z - m.pos.z;
+        const r_c = Math.sqrt(dx_c*dx_c + dz_c*dz_c) + 0.1;
+        const acc_c = G * centralBHMass / (r_c * r_c);
+        m.vel.x += acc_c * (dx_c / r_c) * dt;
+        m.vel.z += acc_c * (dz_c / r_c) * dt;
+        
+        // 다른 미니 블랙홀과의 중력 및 합체
+        for (let j = i+1; j < secondaryMasses.length; j++) {
+            const m2 = secondaryMasses[j];
+            const dx_m = m2.pos.x - m.pos.x;
+            const dz_m = m2.pos.z - m.pos.z;
+            const r_m = Math.sqrt(dx_m*dx_m + dz_m*dz_m) + 0.2;
+            
+            // 합체 조건
+            const mergeDist = m.radius + m2.radius;
+            if (r_m < mergeDist) {
+                const totalMass = m.mass + m2.mass;
+                const newPos = new THREE.Vector3(
+                    (m.pos.x * m.mass + m2.pos.x * m2.mass) / totalMass,
+                    (m.pos.y * m.mass + m2.pos.y * m2.mass) / totalMass,
+                    (m.pos.z * m.mass + m2.pos.z * m2.mass) / totalMass
+                );
+                const newVel = new THREE.Vector3(
+                    (m.vel.x * m.mass + m2.vel.x * m2.mass) / totalMass,
+                    (m.vel.y * m.mass + m2.vel.y * m2.mass) / totalMass,
+                    (m.vel.z * m.mass + m2.vel.z * m2.mass) / totalMass
+                );
+                
+                scene.remove(m.mesh);
+                scene.remove(m2.mesh);
+                if (m.mesh.geometry) m.mesh.geometry.dispose();
+                if (m.mesh.material) m.mesh.material.dispose();
+                if (m2.mesh.geometry) m2.mesh.geometry.dispose();
+                if (m2.mesh.material) m2.mesh.material.dispose();
+                
+                const newMassRatio = totalMass / centralBHMass;
+                const newMiniBH = createMiniBH(newPos, newMassRatio, newVel);
+                secondaryMasses[i] = newMiniBH;
+                secondaryMasses.splice(j, 1);
+                addLog(`🌀 미니 BH 합체! 질량비 = ${(newMassRatio*100).toFixed(2)}%`);
+                i--;
+                break;
+            } else {
+                const acc_m = G * m2.mass / (r_m * r_m);
+                m.vel.x += acc_m * (dx_m / r_m) * dt;
+                m.vel.z += acc_m * (dz_m / r_m) * dt;
+            }
+        }
+        
+        // 위치 업데이트
+        m.pos.x += m.vel.x * dt;
+        m.pos.z += m.vel.z * dt;
+        m.mesh.position.copy(m.pos);
+        
+        // 중심 BH로 너무 가까워지면 흡수
+        const r_c_abs = Math.sqrt(dx_c*dx_c + dz_c*dz_c);
+        if (r_c_abs < m.radius * 1.5) {
+            scene.remove(m.mesh);
+            if (m.mesh.geometry) m.mesh.geometry.dispose();
+            if (m.mesh.material) m.mesh.material.dispose();
+            secondaryMasses.splice(i, 1);
+            addLog(`💀 미니 BH가 중심 블랙홀에 흡수됨`);
+            i--;
+        }
+    }
+}
+
+// ============================================================
+// [7] 별 시스템
+// ============================================================
+let starPoints = null;
+let starData   = [];
+
+function newtonCircularVelocity(r_kpc) {
+    if (r_kpc < 0.01) return 0;
+    const G = getG();
+    const totalM = getBHMass() + diskMass(r_kpc);
+    return Math.sqrt(G * totalM / r_kpc);
+}
+
+// 지연 중력 함수들
+function getRetardedPos(star, r_now) {
+    const tau = RETARD_STRENGTH * r_now / C_SIM;
+    const hist = star.history;
+    if (!hist || hist.length < 2) return null;
+    const targetTime = simTimeMyr - tau;
+    const n = hist.length;
+    const t0 = simTimeMyr - (n - 1) * DT;
+    if (targetTime <= t0) return hist[0];
+    const fIdx = (targetTime - t0) / DT;
+    const i0 = Math.floor(fIdx);
+    const i1 = Math.min(i0 + 1, n - 1);
+    const frac = fIdx - i0;
+    const p0 = hist[Math.max(0, i0)];
+    const p1 = hist[i1];
+    return { x: p0.x + (p1.x - p0.x) * frac, y: p0.y + (p1.y - p0.y) * frac, z: p0.z + (p1.z - p0.z) * frac };
+}
+
+function computeRetardedAcc(star, dx_now, dy_now, dz_now, r_now) {
+    if (RETARD_STRENGTH <= 0 || MDD_LOG <= 0) return { ax:0, ay:0, az:0 };
+    const G = getG(), Mdd = getMDDot();
+    const retPos = getRetardedPos(star, r_now);
+    let dx, dy, dz, r;
+    if (retPos) {
+        dx = star.pos.x - retPos.x - bhOffset.x;
+        dy = star.pos.y - retPos.y - bhOffset.y;
+        dz = star.pos.z - retPos.z - bhOffset.z;
+        r = Math.sqrt(dx*dx + dy*dy + dz*dz);
+        if (r < 0.01) { dx = dx_now; dy = dy_now; dz = dz_now; r = r_now; }
+    } else {
+        dx = dx_now; dy = dy_now; dz = dz_now; r = r_now;
+    }
+    const a_mag = G * Math.abs(Mdd) / (2.0 * C_SIM * C_SIM);
+    const dir = Mdd > 0 ? 1 : -1;
+    return { ax: a_mag * dir * dx/r, ay: a_mag * dir * dy/r, az: a_mag * dir * dz/r };
+}
+
+function computeAcceleration(star) {
+    const pos = star.pos;
+    const dx = pos.x - bhOffset.x;
+    const dy = pos.y - bhOffset.y;
+    const dz = pos.z - bhOffset.z;
+    const r3d = Math.sqrt(dx*dx + dy*dy + dz*dz);
+    const G = getG();
+    let ax=0, ay=0, az=0;
+
+    // BH 중력
+    const bhM = getBHMass();
+    if (bhM > 0 && r3d > 0.001) {
+        const rb = r3d + 0.01;
+        const g_bh = G * bhM / (rb*rb);
+        ax -= g_bh * dx/rb;
+        ay -= g_bh * dy/rb;
+        az -= g_bh * dz/rb;
+        if (BH_SPIN > 0) {
+            const r_xz = Math.sqrt(dx*dx + dz*dz) + 0.01;
+            const fd = BH_SPIN * G * bhM * 0.12 / (rb*rb*rb + 0.01);
+            ax -= fd * (-dz/r_xz);
+            az -= fd * (dx/r_xz);
+        }
+    }
+
+    // 원반 중력
+    const r_xz = Math.sqrt(dx*dx + dz*dz);
+    if (r_xz > 0.01) {
+        const mDisk = diskMass(r_xz);
+        const g_disk = G * mDisk / (r_xz * r_xz + 0.01);
+        ax -= g_disk * dx / r_xz;
+        az -= g_disk * dz / r_xz;
+        ay -= G * mDisk * dy / (r_xz * r_xz * r_xz + 0.1);
+    }
+
+    // 지연 중력
+    const ret = computeRetardedAcc(star, dx, dy, dz, r3d);
+    ax += ret.ax;
+    ay += ret.ay;
+    az += ret.az;
+
+    // 미니 블랙홀들의 중력
+    for (const mbh of secondaryMasses) {
+        const dx_m = pos.x - mbh.pos.x;
+        const dz_m = pos.z - mbh.pos.z;
+        const dy_m = pos.y - mbh.pos.y;
+        const r_m = Math.sqrt(dx_m*dx_m + dy_m*dy_m + dz_m*dz_m);
+        if (r_m < 0.05) continue;
+        const acc_m = G * mbh.mass / (r_m * r_m);
+        ax -= acc_m * dx_m / r_m;
+        ay -= acc_m * dy_m / r_m;
+        az -= acc_m * dz_m / r_m;
+    }
+
+    return { ax, ay, az };
+}
+
+function leapfrogStep(star, dt) {
+    const a0 = computeAcceleration(star);
+    star.vel.x += a0.ax * dt * 0.5;
+    star.vel.y += a0.ay * dt * 0.5;
+    star.vel.z += a0.az * dt * 0.5;
+    star.pos.x += star.vel.x * dt;
+    star.pos.y += star.vel.y * dt;
+    star.pos.z += star.vel.z * dt;
+    const a1 = computeAcceleration(star);
+    star.vel.x += a1.ax * dt * 0.5;
+    star.vel.y += a1.ay * dt * 0.5;
+    star.vel.z += a1.az * dt * 0.5;
+    star.history.push({ x: star.pos.x, y: star.pos.y, z: star.pos.z });
+    if (star.history.length > HIST_BUF_SIZE) star.history.shift();
+}
+
+function sampleStarPosition() {
+    let r;
+    do { r = -DISK_SCALE_LEN * Math.log(1 - Math.random()*0.999); } while (r > GALAXY_RADIUS);
+    const phi = Math.random()*Math.PI*2;
+    const z = (Math.random()-0.5)*0.5*(1 - r/GALAXY_RADIUS);
+    return { x: bhOffset.x + r*Math.cos(phi), z: bhOffset.z + r*Math.sin(phi), y: bhOffset.y + z, r };
+}
+
+function starColor(r) {
+    const t = r / GALAXY_RADIUS;
+    return { cr:0.3+t*0.7, cg:0.4+t*0.3, cb:0.9-t*0.6 };
+}
+
+function initStars() {
+    if (starPoints) scene.remove(starPoints);
+    const count = N_STARS;
+    const positions = new Float32Array(count*3);
+    const colors    = new Float32Array(count*3);
+    starData = [];
+
+    for (let i = 0; i < count; i++) {
+        const { x, z, y, r } = sampleStarPosition();
+        const v_circ = newtonCircularVelocity(r);
+        const dx = x - bhOffset.x, dz = z - bhOffset.z;
+        const phi = Math.atan2(dz, dx);
+        let vx, vz, vy;
+        if (velInitMode === 'circular') {
+            vx = -v_circ * Math.sin(phi) * (0.96 + Math.random()*0.08);
+            vz =  v_circ * Math.cos(phi) * (0.96 + Math.random()*0.08);
+            vy = vyZeroMode ? 0 : (Math.random()-0.5)*1.2;
+        } else if (velInitMode === 'random') {
+            vx = (Math.random()-0.5) * 2 * v_circ;
+            vz = (Math.random()-0.5) * 2 * v_circ;
+            vy = (Math.random()-0.5) * v_circ * 0.3;
+        } else {
+            vx = 0; vz = 0; vy = 0;
+        }
+        const { cr, cg, cb } = starColor(r);
+        starData.push({
+            pos: new THREE.Vector3(x, y, z),
+            vel: new THREE.Vector3(vx, vy, vz),
+            history: [{ x, y, z }],
+            settled: true,
+            collided: false
+        });
+        positions[i*3]=x; positions[i*3+1]=y; positions[i*3+2]=z;
+        colors[i*3]=cr;   colors[i*3+1]=cg;   colors[i*3+2]=cb;
+    }
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geo.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
+    starPoints = new THREE.Points(geo, new THREE.PointsMaterial({ size:0.18, vertexColors:true, transparent:true, opacity:0.88, sizeAttenuation:true }));
+    scene.add(starPoints);
+
+    const initCons = computeConservation();
+    initialTotalEnergy = initCons.energy;
+    initialTotalAngularMomentum = initCons.angularMomentum;
+    simTimeMyr = 0;
+    addLog('🌌 은하 초기화 완료 | 별=' + count.toLocaleString());
+}
+
+function updateStarPositions() {
+    if (!starPoints) return;
+    const posAttr = starPoints.geometry.attributes.position;
+    const arr = posAttr.array;
+    for (let i = 0; i < starData.length; i++) {
+        arr[i*3]   = starData[i].pos.x;
+        arr[i*3+1] = starData[i].pos.y;
+        arr[i*3+2] = starData[i].pos.z;
+    }
+    posAttr.needsUpdate = true;
+}
+
+// ============================================================
+// [8] COLLIDE — 미니 블랙홀 생성
+// ============================================================
+let flyingParticles = [];
+const SETTLE_MAX_AGE = 220;
+
+function spawnCollisionParticles(n) {
+    const flash = document.getElementById('flashOverlay');
+    flash.classList.add('active');
+    setTimeout(() => flash.classList.remove('active'), 300);
+
+    for (let i = 0; i < n; i++) {
+        const { x, z, y, r } = sampleStarPosition();
+        const v_circ = newtonCircularVelocity(r);
+        const phi = Math.atan2(z, x);
+        const tvx = -v_circ * Math.sin(phi) * (0.96 + Math.random()*0.08);
+        const tvz =  v_circ * Math.cos(phi) * (0.96 + Math.random()*0.08);
+        const tvy = vyZeroMode ? 0 : (Math.random()-0.5)*1.2;
+
+        const burst = 0.4 + Math.random() * 0.8;
+        const angle = Math.random() * Math.PI * 2;
+        const elev  = (Math.random()-0.5) * Math.PI * 0.4;
+        const ix = Math.cos(elev)*Math.cos(angle)*burst;
+        const iy = Math.sin(elev)*burst;
+        const iz = Math.cos(elev)*Math.sin(angle)*burst;
+
+        const speed = 0.4 + Math.random()*0.6;
+        const tx = x - ix, ty = y - iy, tz = z - iz;
+        const tlen = Math.sqrt(tx*tx+ty*ty+tz*tz) + 0.001;
+
+        const geo = new THREE.SphereGeometry(0.3, 6, 6);
+        const mat = new THREE.MeshStandardMaterial({ color: 0xffaa44, emissive: 0xff4400, emissiveIntensity:1.2, transparent:true });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(ix, iy, iz);
+        scene.add(mesh);
+
+        const trailPts = [new THREE.Vector3(ix, iy, iz)];
+        const trailGeo = new THREE.BufferGeometry().setFromPoints(trailPts);
+        const trailMat = new THREE.LineBasicMaterial({ color:0xffaa44, transparent:true, opacity:0.5 });
+        const trailLine = new THREE.Line(trailGeo, trailMat);
+        scene.add(trailLine);
+
+        flyingParticles.push({
+            mesh, pos: new THREE.Vector3(ix, iy, iz),
+            vel: new THREE.Vector3(tx/tlen*speed + (Math.random()-0.5)*0.2, ty/tlen*speed + (Math.random()-0.5)*0.1, tz/tlen*speed + (Math.random()-0.5)*0.2),
+            targetPos: new THREE.Vector3(x, y, z),
+            targetVel: new THREE.Vector3(tvx, tvy, tvz),
+            age: 0, maxAge: SETTLE_MAX_AGE + Math.floor(Math.random()*80),
+            trail: trailLine, trailPoints: [new THREE.Vector3(ix,iy,iz)]
+        });
+    }
+    addLog(`💥 충돌 방출 ${n}개 입자 → 미니 BH로 정착 예정`);
+}
+
+function updateFlyingParticles() {
+    const toSettle = [];
+    for (let i = flyingParticles.length - 1; i >= 0; i--) {
+        const p = flyingParticles[i];
+        p.age++;
+        const t = p.age / p.maxAge;
+
+        if (t >= 1) {
+            scene.remove(p.mesh);
+            p.mesh.geometry.dispose(); p.mesh.material.dispose();
+            scene.remove(p.trail);
+            p.trail.geometry.dispose(); p.trail.material.dispose();
+            flyingParticles.splice(i, 1);
+            toSettle.push({ pos: p.targetPos, vel: p.targetVel });
+            continue;
+        }
+
+        const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2;
+        const freeX = p.pos.x + p.vel.x;
+        const freeY = p.pos.y + p.vel.y;
+        const freeZ = p.pos.z + p.vel.z;
+        p.pos.x = freeX*(1-eased*0.08) + p.targetPos.x*(eased*0.08);
+        p.pos.y = freeY*(1-eased*0.08) + p.targetPos.y*(eased*0.08);
+        p.pos.z = freeZ*(1-eased*0.08) + p.targetPos.z*(eased*0.08);
+        p.vel.lerp(p.targetVel, 0.025*eased);
+        p.mesh.position.copy(p.pos);
+        const scale = 1.0 - t*0.6;
+        p.mesh.scale.setScalar(scale);
+        p.mesh.material.opacity = 1.0 - t*0.3;
+
+        p.trailPoints.push(p.pos.clone());
+        if (p.trailPoints.length > 25) p.trailPoints.shift();
+        scene.remove(p.trail);
+        p.trail.geometry.dispose();
+        p.trail.geometry = new THREE.BufferGeometry().setFromPoints(p.trailPoints);
+        p.trail.material.opacity = 0.5 * (1-t);
+        scene.add(p.trail);
+    }
+
+    // 정착: 미니 블랙홀 생성
+    if (toSettle.length > 0) {
+        for (const s of toSettle) {
+            const newMiniBH = createMiniBH(s.pos, MINI_BH_MASS_RATIO, s.vel);
+            secondaryMasses.push(newMiniBH);
+        }
+        addLog(`✨ ${toSettle.length}개 미니 블랙홀 생성! (질량 = 중심 BH의 ${(MINI_BH_MASS_RATIO*100).toFixed(1)}%)`);
+    }
+}
+
+// 미니 BH 모두 제거
+function clearAllMiniBHs() {
+    for (const mbh of secondaryMasses) {
+        scene.remove(mbh.mesh);
+        if (mbh.mesh.geometry) mbh.mesh.geometry.dispose();
+        if (mbh.mesh.material) mbh.mesh.material.dispose();
+    }
+    secondaryMasses = [];
+}
+
+// ============================================================
+// [9] 보존량, 차트, HUD
+// ============================================================
+function computeConservation() {
+    let E=0, L=0;
+    const G = getG(), bhM = getBHMass();
+    for (const s of starData) {
+        const v2 = s.vel.x**2 + s.vel.y**2 + s.vel.z**2;
+        const dx = s.pos.x - bhOffset.x, dy = s.pos.y - bhOffset.y, dz = s.pos.z - bhOffset.z;
+        const r = Math.sqrt(dx*dx + dy*dy + dz*dz) + 0.001;
+        E += 0.5*v2;
+        if (bhM > 0) E -= G*bhM/r;
+        L += (s.pos.x - bhOffset.x)*s.vel.z - (s.pos.z - bhOffset.z)*s.vel.x;
+    }
+    return { energy:E, angularMomentum:L };
+}
+
+function kpcMyrToKms(v) { return v * KPC_M / MYR_S / 1000; }
+
+const rotCanvas = document.getElementById('rotCurveCanvas');
+const rotCtx    = rotCanvas.getContext('2d');
+const M33_OBS   = [[0.5,62],[1,78],[2,98],[3,108],[4,112],[5,114],[6,115],[7,116],[8,117],[9,117.5],[10,118],[12,118],[14,117]];
+
+function drawRotationCurve() {
+    const W=rotCanvas.width, H=rotCanvas.height;
+    rotCtx.fillStyle='#020810'; rotCtx.fillRect(0,0,W,H);
+    const maxR=GALAXY_RADIUS, maxV=350;
+    const l=26, r=6, t=10, b=16;
+    const px=rr=>l+(rr/maxR)*(W-l-r);
+    const py=vv=>H-b-(vv/maxV)*(H-t-b);
+
+    rotCtx.strokeStyle='#0a1a2e'; rotCtx.lineWidth=0.5;
+    for(let v=0;v<=maxV;v+=50){ rotCtx.beginPath(); rotCtx.moveTo(l,py(v)); rotCtx.lineTo(W-r,py(v)); rotCtx.stroke(); }
+    for(let rr=0;rr<=maxR;rr+=3){ rotCtx.beginPath(); rotCtx.moveTo(px(rr),t); rotCtx.lineTo(px(rr),H-b); rotCtx.stroke(); }
+
+    rotCtx.strokeStyle='#fa8'; rotCtx.lineWidth=1.6; rotCtx.beginPath();
+    let first=true;
+    for(let rr=0.2;rr<=maxR;rr+=0.2){
+        const vn=kpcMyrToKms(newtonCircularVelocity(rr));
+        first ? rotCtx.moveTo(px(rr),py(vn)) : rotCtx.lineTo(px(rr),py(vn));
+        first=false;
+    }
+    rotCtx.stroke();
+
+    rotCtx.fillStyle='#f55';
+    for(const [rr,vv] of M33_OBS) if(rr<=maxR){
+        rotCtx.beginPath(); rotCtx.arc(px(rr),py(vv),2,0,Math.PI*2); rotCtx.fill();
+    }
+
+    if(starData.length > 20){
+        const bins=Array(15).fill().map(()=>({sum:0,cnt:0}));
+        for(const s of starData){
+            const dx=s.pos.x-bhOffset.x, dz=s.pos.z-bhOffset.z;
+            const rr=Math.sqrt(dx*dx+dz*dz);
+            const bi=Math.min(14,Math.floor(rr/maxR*15));
+            bins[bi].sum += kpcMyrToKms(Math.sqrt(s.vel.x**2+s.vel.z**2));
+            bins[bi].cnt++;
+        }
+        rotCtx.strokeStyle='#4ef'; rotCtx.lineWidth=2;
+        rotCtx.beginPath(); let started=false;
+        for(let i=0;i<15;i++){
+            if(bins[i].cnt<3) continue;
+            const rC=(i+0.5)/15*maxR, va=bins[i].sum/bins[i].cnt;
+            started ? rotCtx.lineTo(px(rC),py(va)) : rotCtx.moveTo(px(rC),py(va));
+            started=true;
+        }
+        rotCtx.stroke();
+    }
+}
+
+function updateHUD() {
+    document.getElementById('nStars').textContent = starData.length.toLocaleString();
+    document.getElementById('nMiniBH').textContent = secondaryMasses.length;
+    document.getElementById('simTime').textContent = simTimeMyr.toFixed(2) + ' Myr';
+
+    let sumV=0, cntV=0;
+    for(const s of starData){
+        const dx=s.pos.x-bhOffset.x, dz=s.pos.z-bhOffset.z;
+        const r=Math.sqrt(dx*dx+dz*dz);
+        if(r>9){ sumV+=Math.sqrt(s.vel.x**2+s.vel.z**2); cntV++; }
+    }
+    const ov = cntV>0 ? kpcMyrToKms(sumV/cntV) : 0;
+    const nv = kpcMyrToKms(newtonCircularVelocity(10));
+    document.getElementById('outerVel').textContent  = ov.toFixed(0) + ' km/s';
+    document.getElementById('newtonVel').textContent = nv.toFixed(0) + ' km/s';
+    document.getElementById('velRatio').textContent  = (nv>0 ? (ov/nv).toFixed(2) : '—') + 'x';
+    document.getElementById('diskMassVal').textContent = (diskMass(10) / 1e10).toFixed(2) + '×10¹⁰M☉';
+    document.getElementById('retardInfo').innerHTML =
+        `α=${RETARD_STRENGTH.toFixed(2)} · M̈=10^${MDD_LOG} · G=10^${G_SCALE_EXP}<br>` +
+        `vy=0: ${vyZeroMode?'✅':'❌'} · 스핀 a*=${BH_SPIN.toFixed(2)}<br>` +
+        `BH 위치: r=${BH_RAD.toFixed(1)} kpc, θ=${(BH_ANG*180/Math.PI).toFixed(0)}°<br>` +
+        `미니 BH 질량비: ${(MINI_BH_MASS_RATIO*100).toFixed(1)}%<br>` +
+        `지연: ${RETARD_STRENGTH>0&&MDD_LOG>0?'<span style="color:#4ef">활성</span>':'비활성'}`;
+
+    const cons = computeConservation();
+    const dE = initialTotalEnergy!==0 ? ((cons.energy-initialTotalEnergy)/Math.abs(initialTotalEnergy)*100) : 0;
+    const dL = initialTotalAngularMomentum!==0 ? ((cons.angularMomentum-initialTotalAngularMomentum)/Math.abs(initialTotalAngularMomentum)*100) : 0;
+    const eCol = Math.abs(dE)>5?'#f55':Math.abs(dE)>1?'#fa0':'#5f6';
+    const lCol = Math.abs(dL)>5?'#f55':Math.abs(dL)>1?'#fa0':'#5f6';
+    document.getElementById('metrics').innerHTML =
+        `⭐ ${starData.length.toLocaleString()} | 🪐 ${secondaryMasses.length} | 🖥️ ${fps} fps | ΔE: <span style="color:${eCol}">${dE.toFixed(1)}%</span> | ΔL: <span style="color:${lCol}">${dL.toFixed(1)}%</span>`;
+}
+
+// ============================================================
+// [10] 로그
+// ============================================================
+function addLog(msg) {
+    const el = document.getElementById('logEntries');
+    const d = document.createElement('div');
+    d.style.cssText = 'color:#acd; margin:1px 0;';
+    d.textContent = msg;
+    el.prepend(d);
+    while (el.children.length > 8) el.removeChild(el.lastChild);
+}
+
+// ============================================================
+// [11] UI 바인딩
+// ============================================================
+function bindSlider(id, valId, fmt, cb) {
+    const el = document.getElementById(id);
+    el.addEventListener('input', () => {
+        const v = parseFloat(el.value);
+        document.getElementById(valId).textContent = fmt ? fmt(v) : v;
+        cb(v);
+    });
+}
+bindSlider('bhMassLogSlide','bhMassLogVal', null, v=>{ BH_MASS_LOG=v; updateBHVisual(); });
+bindSlider('galMassLogSlide','galMassLogVal', null, v=>{ GAL_MASS_LOG=v; });
+bindSlider('mddLogSlide','mddLogVal', null, v=>{ MDD_LOG=v; });
+bindSlider('retardSlide','retardVal', v=>v.toFixed(2), v=>{ RETARD_STRENGTH=v; });
+bindSlider('gScaleSlide','gScaleVal', v=>`×10^${v}`, v=>{ G_SCALE_EXP=v; });
+bindSlider('dtSlide','dtVal', null, v=>{ DT=v; });
+bindSlider('histBufSlide','histBufVal', null, v=>{ HIST_BUF_SIZE=v; addLog(`🕰️ 버퍼 ${v}스텝`); });
+bindSlider('nStarSlide','nStarVal', null, v=>{ N_STARS=v; });
+bindSlider('collideNSlide','collideNVal', null, v=>{ COLLIDE_N=v; });
+bindSlider('bhSpinSlide','bhSpinVal', v=>v.toFixed(2), v=>{ BH_SPIN=v; updateBHVisual(); });
+bindSlider('bhRadSlide','bhRadVal', v=>v.toFixed(1), v=>{ BH_RAD=v; updateBHOffset(); updateBHVisual(); });
+bindSlider('bhAngSlide','bhAngVal', v=>v.toFixed(0)+'°', v=>{ BH_ANG=v*(Math.PI/180); updateBHOffset(); updateBHVisual(); });
+bindSlider('miniMassRatioSlide','miniMassRatioVal', v=>`${(v*100).toFixed(1)}%`, v=>{ MINI_BH_MASS_RATIO=v; });
+
+document.getElementById('vyZeroBtn').addEventListener('click', () => {
+    vyZeroMode=true;
+    document.getElementById('vyZeroBtn').classList.add('active');
+    document.getElementById('vyRandBtn').classList.remove('active');
+    addLog('🔒 vy=0 모드');
+});
+document.getElementById('vyRandBtn').addEventListener('click', () => {
+    vyZeroMode=false;
+    document.getElementById('vyRandBtn').classList.add('active');
+    document.getElementById('vyZeroBtn').classList.remove('active');
+    addLog('🎲 vy=랜덤 모드');
+});
+
+function setVelMode(mode) {
+    velInitMode = mode;
+    document.getElementById('velCircBtn').classList.toggle('active', mode==='circular');
+    document.getElementById('velRandBtn').classList.toggle('active', mode==='random');
+    document.getElementById('velZeroBtn').classList.toggle('active', mode==='zero');
+    const desc = {
+        circular: '현재: 원형 궤도 속도로 시작 (회전 강제)',
+        random:   '⚠️ 검증 모드: 완전 랜덤 속도 (회전 없음)',
+        zero:     '⚠️ 검증 모드: 완전 정지에서 시작'
+    };
+    document.getElementById('velModeDesc').textContent = desc[mode];
+    const colors = { circular:'#8ab', random:'#fa8', zero:'#f77' };
+    document.getElementById('velModeDesc').style.color = colors[mode];
+    addLog('속도 모드: ' + mode);
+}
+document.getElementById('velCircBtn').addEventListener('click', () => setVelMode('circular'));
+document.getElementById('velRandBtn').addEventListener('click', () => setVelMode('random'));
+document.getElementById('velZeroBtn').addEventListener('click', () => setVelMode('zero'));
+
+let colliding = false;
+document.getElementById('collideBtn').addEventListener('click', () => {
+    if (colliding) return;
+    colliding = true;
+    spawnCollisionParticles(COLLIDE_N);
+    setTimeout(() => colliding=false, 600);
+});
+document.getElementById('initBtn').addEventListener('click', () => { clearAllMiniBHs(); initStars(); updateBHVisual(); });
+document.getElementById('clearBtn').addEventListener('click', () => {
+    for (const p of flyingParticles) {
+        scene.remove(p.mesh); p.mesh.geometry.dispose(); p.mesh.material.dispose();
+        scene.remove(p.trail); p.trail.geometry.dispose(); p.trail.material.dispose();
+    }
+    flyingParticles = [];
+    clearAllMiniBHs();
+    initStars();
+    addLog('◀ 리셋');
+});
+
+// ============================================================
+// [12] 메인 루프
+// ============================================================
+let fps=60, _lastTime=performance.now(), _frames=0, _frameStep=0;
+
+function animate() {
+    requestAnimationFrame(animate);
+    _frames++;
+    const now = performance.now();
+    if (now-_lastTime >= 1000) { fps=_frames; _frames=0; _lastTime=now; }
+
+    if (!paused && starData.length > 0) {
+        for (let i = 0; i < starData.length; i++) {
+            leapfrogStep(starData[i], DT);
+            const s = starData[i];
+            if (Math.abs(s.pos.x) > GALAXY_RADIUS*2.5 || Math.abs(s.pos.z) > GALAXY_RADIUS*2.5) {
+                if (s.collided) {
+                    // 외부 유입 별: 그대로 유지
+                } else {
+                    const { x, z, y, r } = sampleStarPosition();
+                    const phi = Math.atan2(z, x);
+                    const vc = newtonCircularVelocity(r);
+                    s.pos.set(x, y, z);
+                    if (velInitMode === 'circular') {
+                        s.vel.set(-vc*Math.sin(phi), vyZeroMode?0:(Math.random()-0.5)*1.2, vc*Math.cos(phi));
+                    } else if (velInitMode === 'random') {
+                        s.vel.set((Math.random()-0.5)*2*vc, (Math.random()-0.5)*vc*0.3, (Math.random()-0.5)*2*vc);
+                    } else {
+                        s.vel.set(0, 0, 0);
+                    }
+                }
+            }
+        }
+        simTimeMyr += DT;
+        updateStarPositions();
+        updateMiniBHs(DT);
+    }
+
+    updateFlyingParticles();
+
+    if (_frameStep++ % 5 === 0) {
+        drawRotationCurve();
+        updateHUD();
+    }
+
+    controls.update();
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+});
+
+// 시작
+updateBHOffset();
+initStars();
+updateBHVisual();
+drawRotationCurve();
+updateHUD();
+animate();
+addLog('✅ GalaxyKerr v5.0 | 미니 블랙홀 모드 활성화');
+</script>
+</body>
+</html>
