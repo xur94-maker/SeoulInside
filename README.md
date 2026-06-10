@@ -40,3 +40,30 @@ https://xur94-maker.github.io/SeoulInside/LHC_kerr_1.html
 
 https://xur94-maker.github.io/SeoulInside/Galaxy_1.html
 
+
+----
+----
+https://seoulinside.substack.com/p/the-bubble-that-never-burst
+
+https://seoulinside.substack.com/p/the-trickle-dry-effect
+
+https://seoulinside.substack.com/p/the-rubber-ruler-problem
+
+https://seoulinside.substack.com/p/stacking-of-infrastructure-a-prologue
+
+https://seoulinside.substack.com/p/urban-layer-stacking-how-cities-survive
+
+https://seoulinside.substack.com/p/the-address-that-ate-the-university-bde
+----
+----
+https://seoulinside.substack.com/p/the-bubble-that-never-burst
+
+https://seoulinside.substack.com/p/the-trickle-dry-effect
+
+https://seoulinside.substack.com/p/the-rubber-ruler-problem
+
+https://seoulinside.substack.com/p/the-legibility-paradox-why-the-broken
+
+----
+
+
