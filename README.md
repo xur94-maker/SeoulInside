@@ -3,7 +3,6 @@
 
 
 
-https://github.com/xur94-maker/SeoulInside/blob/main/passive_layer.pdf
 
 https://seoulinside.substack.com/p/passive-layer-complete-technical
 
