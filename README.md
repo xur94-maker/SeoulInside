@@ -26,6 +26,15 @@ https://seoulinside.substack.com/p/high-energy-particle-generation-and (2026-06-
 
 https://seoulinside.substack.com/p/the-passive-layer-core-document (2026-06-09)
 
+https://seoulinside.substack.com/p/the-passive-layer
+
+https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal
+
+https://seoulinside.substack.com/p/long-term-survival-of-antimatter
+
+https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
+
+
 ----
 
 https://seoulinside.substack.com/p/physics-series-full
