@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Trump says US will hit Iran 'hard' again today",
-      "link": "https://www.bbc.com/news/articles/ce371kw2ex2o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 10 Jun 2026 21:49:57 GMT",
-      "desc": "The US president warns Iran \"will have to pay the price\" for taking too long to agree a deal, after Tehran vows retaliation to any attacks."
+      "title": "US and Iran exchange strikes across Middle East for second day in a row",
+      "link": "https://www.bbc.com/news/articles/c4gyp9v0e93o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 11 Jun 2026 07:18:40 GMT",
+      "desc": "Iran says it responded to US strikes by targeting American assets in Kuwait, Jordan and Bahrain, which reported damage to its capital city overnight."
+    },
+    {
+      "title": "Trump says he 'loves the inflation' as US prices rise at fastest rate in three years",
+      "link": "https://www.bbc.com/news/articles/c0myzxjkw99o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 11 Jun 2026 00:02:45 GMT",
+      "desc": "Consumers are increasingly feeling the strain of the US-Israel war in Iran."
+    },
+    {
+      "title": "The furious dispute over what caused Air India flight 171 to crash",
+      "link": "https://www.bbc.com/news/articles/cwyk9exxp2qo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 10 Jun 2026 23:10:11 GMT",
+      "desc": "The final conclusions of the investigation have yet to be published, although more could become apparent in the coming days."
     },
     {
       "title": "Three Indian sailors missing after US says it hit tanker in Gulf of Oman",
       "link": "https://www.bbc.com/news/articles/c0rygjw1kqxo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 10 Jun 2026 17:48:54 GMT",
-      "desc": "India's government said three Indian sailors were missing and 21 crew had been rescued after the hit on the Settebello off the coast of Oman."
+      "desc": "India's government said 21 crew had been rescued after the hit on the Settebello off the coast of Oman."
     },
     {
-      "title": "Fireworks illuminate Barcelona's Sagrada Família during Pope visit",
-      "link": "https://www.bbc.com/news/videos/ce95gmdlp98o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 10 Jun 2026 21:52:09 GMT",
-      "desc": "Pope Leo XIV says Barcelona's iconic Sagrada Família is a masterpiece of \"stones, colours and light\" during his visit to Spain."
-    },
-    {
-      "title": "Whale graveyard dating back five million years discovered",
-      "link": "https://www.bbc.com/news/articles/c75ylx4xn10o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 10 Jun 2026 18:24:09 GMT",
-      "desc": "The Indian Ocean site is \"far beyond anything we had imagined\", one researcher says."
-    },
-    {
-      "title": "Bill Gates says Epstein wanted personal relationship, but he 'never reciprocated'",
-      "link": "https://www.bbc.com/news/articles/c0jy8v0ge66o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 10 Jun 2026 19:31:24 GMT",
-      "desc": "The Microsoft co-founder spent hours talking to lawmakers behind closed doors, where he also said Epstein used his marital infidelities to pressure him."
+      "title": "An Everest guide's miraculous survival raises questions for tourism industry",
+      "link": "https://www.bbc.com/news/articles/c1ly4p25jyvo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 10 Jun 2026 22:17:09 GMT",
+      "desc": "Why was a cook leading clients up the world's highest peak? And why was he left to rescue himself?"
     }
   ],
   "koreaNews": [
@@ -63,10 +63,10 @@
       "desc": "Korea Upgrades Economic Growth, Reinforcing BOK Hawkish Shift&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "Samsung, SK Deny Knowledge of Semiconductor Plants in Chungcheong, Honam — But Speculation Persists - thelec.net",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1rZWo0alJrTTRfZVhkcWdiLWhYZk9wdUtwcXB2WEp0ODFDdS12YXI0c3BkMnpRU3ZrcW1tOEJHU0JyaksyS2RTUk80UHJEdDRIelFRd3ZWemRtbldvMmxWT1FRbExKRG8?oc=5",
-      "date": "Wed, 10 Jun 2026 04:26:12 GMT",
-      "desc": "Samsung, SK Deny Knowledge of Semiconductor Plants in Chungcheong, Honam — But Speculation Persists&nbsp;&nbsp;thelec.net"
+      "title": "Samsung, SK hynix chip investment hopes build in Korea's southwest - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5RRDZsbUpCTE1BY0d4UWprMU5feGdmdzNUOEFNLXU0Wjk1MVVDcDRIMFBESlczelA2RnFCNkFKX3g5dXlRR1dOSGt1UFlKSUZZN3YtcThXWQ?oc=5",
+      "date": "Thu, 11 Jun 2026 05:16:24 GMT",
+      "desc": "Samsung, SK hynix chip investment hopes build in Korea's southwest&nbsp;&nbsp;The Korea Herald"
     },
     {
       "title": "Asia tech stocks drop after Broadcom rattles AI trade and drags Wall Street names lower - CNBC",
@@ -75,10 +75,10 @@
       "desc": "Asia tech stocks drop after Broadcom rattles AI trade and drags Wall Street names lower&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Broadcom-Linked AI Selloff Hits Samsung, SK Hynix Stocks In Korea: DRAM Eyes Second Day In Red - Stocktwits",
-      "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPZGdWamN1aDBNUzI2dGpKbWlLTW5pcy1mSWJwUlc1OWNJeG5hZzJOT2RuNWRfN0dYNTZGMkxsVVdiaWlPMW51R0wtNUh1SHRkVGk4RUNSV19nc0tPb0VGd2NpYm9IWDNEc2RmaVlzSjYxOFkwdXFoQTRLVnhuQVVxR3czaFlhUTIxT2NWaklDRE1NZzlJSTY5WDRRcHM2RXRta296X1gzckhMMXlVMWRYTmxnazFnYjYyV1NqcGIycEtfay1UQVZDODdhWnhXeExWOWVEMDQtcExYWjZMRDFleG14UWk3TERFY2NiTg?oc=5",
-      "date": "Mon, 08 Jun 2026 16:28:13 GMT",
-      "desc": "Broadcom-Linked AI Selloff Hits Samsung, SK Hynix Stocks In Korea: DRAM Eyes Second Day In Red&nbsp;&nbsp;Stocktwits"
+      "title": "AI Memory Chip Demand Surges, SK Hynix and Samsung Race to Significantly Expand Capacity - TradingKey",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOODZQbnl2VlBvUmVuQ2lfbXI1WUVxb01zdHRFdUltYTNsT2JMS3JFRVQ5Y2paeEdXZF9tTEpIMFNzSV9DRXFNbmFLbnB3V3FwbjI3c3ZiOWI2eUdUWWMzRjhud1BESlBPZGtqTTJfc0wzdmNVOUlTTXpZajNvUkpWaDYwWUZRU1lObFdvWnpHUXVfcXBnV2k1R0VBY1E?oc=5",
+      "date": "Thu, 11 Jun 2026 04:03:53 GMT",
+      "desc": "AI Memory Chip Demand Surges, SK Hynix and Samsung Race to Significantly Expand Capacity&nbsp;&nbsp;TradingKey"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 302500.0,
-      "change": 7000.0,
-      "pct": 2.37,
+      "price": 299000.0,
+      "change": -23000.0,
+      "pct": -7.14,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2048000.0,
-      "change": 137000.0,
-      "pct": 7.17,
+      "price": 2101000.0,
+      "change": -114000.0,
+      "pct": -5.15,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 602000.0,
-      "change": -37000.0,
-      "pct": -5.79,
+      "price": 597000.0,
+      "change": -42000.0,
+      "pct": -6.57,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 159700.0,
-      "change": 8300.0,
-      "pct": 5.48,
+      "price": 156000.0,
+      "change": -8300.0,
+      "pct": -5.05,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 227000.0,
-      "change": -52000.0,
-      "pct": -18.64,
+      "price": 224000.0,
+      "change": -33000.0,
+      "pct": -12.84,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 7730.82,
-      "change": 246.41,
-      "pct": 3.29,
+      "price": 7763.95,
+      "change": -332.98,
+      "pct": -4.11,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1520.54,
-      "change": -5.27,
-      "pct": -0.35,
+      "price": 1530.81,
+      "change": 5.0,
+      "pct": 0.33,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-10 23:22 UTC"
+  "updatedAt": "2026-06-11 07:24 UTC"
 }
