@@ -1,48 +1,54 @@
 {
   "globalNews": [
     {
+      "title": "Tributes paid to David Hockney, a 'giant' and 'true icon' of British art",
+      "link": "https://www.bbc.com/news/articles/cvgjxdr27z4o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 12 Jun 2026 14:03:35 GMT",
+      "desc": "Hockney, one of the UK's most important and influential artists, has died at the age of 88."
+    },
+    {
       "title": "Tehran says 'nothing' finalised after Trump claims deal to end Iran war near",
       "link": "https://www.bbc.com/news/articles/c78y6w78828o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 12 Jun 2026 08:09:37 GMT",
       "desc": "Iran says reports of a deal are \"speculative\" after the US president says a \"great settlement\" to end the conflict has been reached."
     },
     {
-      "title": "Flip flop or deliberate? - Unpacking Trump’s strategy on Iran",
-      "link": "https://www.bbc.com/news/videos/cz9lg5ywzvpo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 11 Jun 2026 20:22:16 GMT",
-      "desc": "The BBC's Gary O'Donoghue looks at the US president's mixed messaging over the war and the questions it raises."
+      "title": "Discovery of €1.2m jewellery prompts fresh probe into former Spanish PM",
+      "link": "https://www.bbc.com/news/articles/cjeg9p1xqdwo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 12 Jun 2026 15:55:46 GMT",
+      "desc": "José Luis Rodriguez Zapatero is suspected of being unable to show proof he paid import duties on the jewellery."
     },
     {
-      "title": "Thai Princess Bajrakitiyabha dies after more than three years in coma",
-      "link": "https://www.bbc.com/news/articles/cvgzzndx780o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 12 Jun 2026 00:45:20 GMT",
-      "desc": "Princess Bajrakitiyabha, the king's eldest daughter, collapsed in December 2022 while exercising her dogs."
+      "title": "Taylor Swift makes tearful 21-minute speech as she joins Songwriters Hall of Fame",
+      "link": "https://www.bbc.com/news/articles/c5yzxd0g833o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 12 Jun 2026 11:12:11 GMT",
+      "desc": "The singer thanks her family as she becomes the youngest woman to be inducted into the Hall of Fame."
     },
     {
-      "title": "Why the economics make this the craziest World Cup ever",
-      "link": "https://www.bbc.com/news/articles/cpv32417nlwo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 11 Jun 2026 23:07:52 GMT",
-      "desc": "From trade wars to soaring ticket prices, the 2026 World Cup is unlike any before it. Faisal Islam explores what this tournament reveals about our changing global economy."
-    },
-    {
-      "title": "'They destroyed the future': Palestinian anger at rise in Israeli demolitions in East Jerusalem",
-      "link": "https://www.bbc.com/news/articles/cewpwjr9rj4o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 12 Jun 2026 05:01:48 GMT",
-      "desc": "Palestinian homes are being pulled down in occupied East Jerusalem to make way for a park."
+      "title": "More time needed for deadly Air India crash inquiry, officials say",
+      "link": "https://www.bbc.com/news/articles/cnv93899vzqo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 12 Jun 2026 15:09:40 GMT",
+      "desc": "A statement says \"significant progress\" has been made into investigating the crash, in which 260 people died a year ago."
     }
   ],
   "koreaNews": [
     {
-      "title": "Lee to attend business roundtable in Rome to explore Korea-Italy economic cooperation - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQM0hQX0pSNEtOY1llaTVDXzViNGhRV3FMdTROR3FHNlZ4SHpac3E4cFA4LTFuOUk2T3VtMjNhdW43am1WSUJtb0FKWXBfWmZ1d1hqWGZycUYwSVRHci1ld21kc1FzMGZpWmRlRngyN3ZBc2h3M2RkYWU0QkVZYlNMb2diTTFmbHV5OE9RS2Y0bTh4b1Z2Um5KUDc0OXRaWFRHRXdzLVdaXzRjZHdzRFBxWkt6bm11clpRVWNTSWhCeFZ0YlAtbmpSR3VhZGstNFZWRE1SQ0lpUnduTE3SAeABQVVfeXFMTWpMLWxCbWJFSDNuUlBtU0pfZ1laWjM2RjBSY04zTC1GVWdOQ0ZmLV9uLTZsMm1jMkoxWHZ0a0pyV3hQN3ZiS1lTVWdhS21sWlRwNXl4THRxVUM3Uk5EbE1KWkNWbWxOOURIUXg0T3JHLS15NENzaTJMeWZJNnJ2QzFkNElVUE9EM1NIWGFRQkR0U1hPakdBSTlTenpLVjd0VlVIZmFUR2pvNU9aMFB0QzBKUFBtdTBpXzdRVGw5MzVjLVpIdnVWdnFYSWhtSkNOZ2k1VmZmTkJmME9sQTJSdTg?oc=5",
-      "date": "Fri, 12 Jun 2026 12:09:04 GMT",
-      "desc": "Lee to attend business roundtable in Rome to explore Korea-Italy economic cooperation&nbsp;&nbsp;The Korea Times"
+      "title": "Bank of Korea Governor Signals Readiness to Raise Rates as Inflation Risks Mount - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPSDBHcTVYamNkcnNrVnMtVG1PQ2pkeGdpeS1JaXM4Q1F0bDZlZjZtQmdLMGdxR0RxVlRtM0NkUng3OWtGalpDV083dGc1cFlXR0VKQi0yRG13bG5DRkZFY250NnhrSTNIX25mSzJJX05ybmdubnl2UFhVVzMyLTB6eDAxOFBlUkFfQ3ExLWtac1VFcU1uRWZQc2RwcnZiUVVRZXljbXp1amc5bUZRc0xrTmU4YS1pRFdrUjFMckRhTm83NXVBN3UwTjl1Q3ltQQ?oc=5",
+      "date": "Fri, 12 Jun 2026 08:33:00 GMT",
+      "desc": "Bank of Korea Governor Signals Readiness to Raise Rates as Inflation Risks Mount&nbsp;&nbsp;WSJ"
     },
     {
       "title": "BTS-mania poised to boost South Korea's economy well into the future - CNBC",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPbjRzeVZxdXVWY0VLY3pSTDJoNDVVdzVRNHlJYlNkMXlYdXcwMzQwNGJlTXRxWktENDdRc3lIOC11TkVtTlZhTjlIc0FLSkk2YVU1ekdqM0xkbU52RHdmSzFwQ2lzU3RuU2FiQmg2NldhYTlhb245X1VzN1BXNks0bVRxU0o0dEZYMER6RXIyV1B3Q1ZHMjUyanlPONIBoAFBVV95cUxOTU1xbnR4aktFbkV5b05yZUZwenlFNDF6ODNYalR2T1dKamxRdE1pOG9DaWRQRG43T0VKTmJFd25SaXg1a2NqcHQ1ZVplcjBuSWItWG9iMHg3RGhzRzl6bTZFQWJvVHBzSVNxbGlYLUxfRFAxTndXUUZSREp1azVkSXE3Y1BCV2VDMV9yRTNWTE9MOVgxY2hKOWZIcTRBM0p3?oc=5",
       "date": "Fri, 12 Jun 2026 02:24:00 GMT",
       "desc": "BTS-mania poised to boost South Korea's economy well into the future&nbsp;&nbsp;CNBC"
+    },
+    {
+      "title": "South Korea’s booming stock market mints generation of novice investors - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNNUpiSFoyTnplM3A4S2NsM1MtbWlGUWNMQVZ5Ql9QbTM3VVktSDJOY2VRcTB4WjREVExRQWQxVTVzOXZ0MUNVaXNHTXBWeWNvbTVNYkhVR3drSFNfMDNKbU9WQUhrRkdxZ212NmIzZWh6OXBSdTdJY2N5UTI3dWRTdk5INkVyTmtqY1RXMlZVdU1makhnQ3JOeTFHdW1kazhETFBqUGZWRV9UbUp6cU9zQ1FVcW5sckXSAbwBQVVfeXFMT0dYd3A4VGRzd2p6MVQ5Z0l5alUwNHdDbTI3VWFJMFBodXFobjFKRm9URWxVNHZSc3BaaDFfcEJEQ1NsQm9FaVpsMHJjYy1rSnY3TXpDRlV6Nmk2OTVHU1hOWl95ejBONldMOXpIbnBYSWZlU2hPU3VsbVpJaDBRdktpNmwtUnExWUZiZ2FzUHdkSEprbExDYV8xNWlfcEdyXzJSOE80VjUtNE0yaDItSE5IWHVOQzBZSEhYUTU?oc=5",
+      "date": "Wed, 10 Jun 2026 02:02:12 GMT",
+      "desc": "South Korea’s booming stock market mints generation of novice investors&nbsp;&nbsp;Al Jazeera"
     },
     {
       "title": "North Korea’s economy is apparently booming - Morning Brew",
@@ -57,12 +63,6 @@
       "desc": "Lee says depending on U.S. for defense no longer valid, will boost economic ties&nbsp;&nbsp;Yonhap News Agency"
     },
     {
-      "title": "South Korea’s booming stock market mints generation of novice investors - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNNUpiSFoyTnplM3A4S2NsM1MtbWlGUWNMQVZ5Ql9QbTM3VVktSDJOY2VRcTB4WjREVExRQWQxVTVzOXZ0MUNVaXNHTXBWeWNvbTVNYkhVR3drSFNfMDNKbU9WQUhrRkdxZ212NmIzZWh6OXBSdTdJY2N5UTI3dWRTdk5INkVyTmtqY1RXMlZVdU1makhnQ3JOeTFHdW1kazhETFBqUGZWRV9UbUp6cU9zQ1FVcW5sckXSAbwBQVVfeXFMT0dYd3A4VGRzd2p6MVQ5Z0l5alUwNHdDbTI3VWFJMFBodXFobjFKRm9URWxVNHZSc3BaaDFfcEJEQ1NsQm9FaVpsMHJjYy1rSnY3TXpDRlV6Nmk2OTVHU1hOWl95ejBONldMOXpIbnBYSWZlU2hPU3VsbVpJaDBRdktpNmwtUnExWUZiZ2FzUHdkSEprbExDYV8xNWlfcEdyXzJSOE80VjUtNE0yaDItSE5IWHVOQzBZSEhYUTU?oc=5",
-      "date": "Wed, 10 Jun 2026 02:02:12 GMT",
-      "desc": "South Korea’s booming stock market mints generation of novice investors&nbsp;&nbsp;Al Jazeera"
-    },
-    {
       "title": "South Korea concrete delivery halt threatens Samsung, SK Hynix chip plant work, media reports - Reuters",
       "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQODBWV1dIMlZrQ3E2SHpiVWJPQzFIdkIyYjRfa2w0RWxpaTdfZWJRUFgwSTlfZ2RvVjh2UUthSmI4cE9kdzBaQ0hndXEzdlUwNUl6WDI4akdUMTEtQVJGelNPLVBleU43NXl2YWRSRVV5RkozMUVFSlpZS0dGaXVaaXFDMzk3RU15aVVyX194d21xTHVjYlBTUTBwT3RqcURVdGxiLU5pR0lvSnBfWDE5YXlxX2p3WjJ4WGNfTzQ2UjBjT09jd0E2T1NmTTRCOG5fVUE?oc=5",
       "date": "Fri, 12 Jun 2026 03:09:00 GMT",
@@ -70,7 +70,7 @@
     },
     {
       "title": "Drivers strike disrupts Samsung, SK hynix chip plant work - Tech in Asia",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNam5HNF9ZenFLY3RaWUswUmFJbVFwTmZDVU4zYi1TMWktZkFtVEtzT29Va1Y1c2lfWDlyQlhEdFBZYTM0UldJd292VUNVWU9kRUgwejVpZ21VUWJhUWk4dGZKLXJuWnFtanBEZ0dXTExBbDNROFREZDg4WjB4X2lnMzlKLW4ta2lDM1NBOTN4X0czbmQtREU3Sg?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxORFFXVExJMnNnQzhVZndwY2JlNnpJZUtaelNVR1R6dnBsYzdzVHJ5LVJpbm1ISkh1d1FhNDctZ01qTS1pTWtGUGJFRjloRHJOV1F2RUYxeGpnWHZDUWoxZnpIYXV3cWUtOE9MUi1nRTEybGNFNFhpMVE0SThvZW5BcVVoMnNlZWxTazlZekRSYjZKUQ?oc=5",
       "date": "Fri, 12 Jun 2026 07:59:00 GMT",
       "desc": "Drivers strike disrupts Samsung, SK hynix chip plant work&nbsp;&nbsp;Tech in Asia"
     },
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 204.87,
-      "change": -3.32,
-      "pct": -1.59,
+      "price": 204.79,
+      "change": 4.38,
+      "pct": 2.18,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 421.07,
-      "change": -6.85,
-      "pct": -1.6,
+      "price": 424.83,
+      "change": 16.08,
+      "pct": 3.93,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 488.45,
-      "change": 12.94,
-      "pct": 2.72,
+      "price": 511.46,
+      "change": 59.06,
+      "pct": 13.05,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 116.96,
-      "change": 9.04,
-      "pct": 8.38,
+      "price": 124.54,
+      "change": 17.5,
+      "pct": 16.35,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 202.96,
-      "change": -2.46,
-      "pct": -1.2,
+      "price": 213.54,
+      "change": 22.34,
+      "pct": 11.69,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 342.23,
-      "change": 17.37,
-      "pct": 5.35,
+      "price": 370.04,
+      "change": 62.61,
+      "pct": 20.36,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 357.77,
-      "change": -6.49,
-      "pct": -1.78,
+      "price": 361.26,
+      "change": 4.88,
+      "pct": 1.37,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 295.63,
-      "change": 5.08,
-      "pct": 1.75,
+      "price": 291.03,
+      "change": -0.55,
+      "pct": -0.19,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 390.34,
-      "change": -13.07,
-      "pct": -3.24,
+      "price": 387.58,
+      "change": -9.78,
+      "pct": -2.46,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7394.3,
-      "change": 7.65,
-      "pct": 0.1,
+      "price": 7419.73,
+      "change": 152.74,
+      "pct": 2.1,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25809.66,
-      "change": 130.84,
-      "pct": 0.51,
+      "price": 25845.57,
+      "change": 676.07,
+      "pct": 2.69,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1520.29,
-      "change": -4.76,
-      "pct": -0.31,
+      "price": 1516.38,
+      "change": -8.67,
+      "pct": -0.57,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-12 12:24 UTC"
+  "updatedAt": "2026-06-12 16:38 UTC"
 }
