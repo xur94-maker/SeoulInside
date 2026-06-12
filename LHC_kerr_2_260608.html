@@ -321,24 +321,9 @@ const PDG = {
     W_minus:   { sym:"W⁻",    mass:80.377,    charge:-1, color:"#ff4488", life_SI:lifeFromWidth(2.085),
         decays:[{br:0.1071,products:["positron","antinue"]},{br:0.1063,products:["muon_m","antinumu"]},{br:0.1138,products:["tau_m","antinutau"]},{br:0.2247,products:["pion_m","pion_0"]},{br:0.2247,products:["kaon_m","K0S"]},{br:0.2234,products:["antiproton","neutron"]}] },
     Z0:        { sym:"Z⁰",    mass:91.1876,   charge:0,  color:"#ff88cc", life_SI:lifeFromWidth(2.4952),
-        decays:[{br:0.03366,products:["electron","positron"]},{br:0.03366,products:["muon_m","muon_p"]},{br:0.03370,products:["tau_m","tau_p"]},{br:0.06667,products:["nue","antinue"]},{br:0.06667,products:["numu","antinumu"]},{br:0.06667,products:["nutau","antinutau"]},{br:0.14232,products:["pion_p","pion_m","pion_0"]},{br:0.14232,products:["kaon_p","kaon_m","pion_0"]},{br:0.14232,products:["proton","antiproton"]},{br:0.12000,products:["D_plus","D_minus"]},{br:0.07600,products:["B_plus","B_minus"]},{br:0.07600,products:["B0","B0bar"]}] },
+        decays:[{br:0.0336,products:["electron","positron"]},{br:0.0336,products:["muon_m","muon_p"]},{br:0.0338,products:["tau_m","tau_p"]},{br:0.2000,products:["nue","antinue"]},{br:0.1497,products:["pion_p","pion_m","pion_0"]},{br:0.1497,products:["kaon_p","kaon_m"]},{br:0.1996,products:["proton","antiproton"]}] },
     higgs:     { sym:"H⁰",    mass:125.20,    charge:0,  color:"#ffffff", life_SI:lifeFromWidth(3.2e-3),
-        // PDG 2022 Higgs branching ratios — b쿼크/c쿼크는 B/D 메존으로 하드로나이제이션
-        decays:[
-            {br:0.2137, products:["W_plus","W_minus"]},
-            {br:0.0262, products:["Z0","Z0"]},
-            {br:0.0627, products:["tau_p","tau_m"]},
-            {br:0.0023, products:["photon","photon"]},
-            // H→bb̄ (58.24%): b쿼크 → B메존 페어 (B⁺B⁻ / B⁰B̄⁰ 각 ~50%)
-            {br:0.2912, products:["B_plus","B_minus"]},
-            {br:0.2912, products:["B0","B0bar"]},
-            // H→cc̄ (2.89%): c쿼크 → D메존 페어
-            {br:0.0145, products:["D_plus","D_minus"]},
-            {br:0.0144, products:["D0","D0bar"]},
-            // H→gg (8.18%): 글루온 제트 → 하드로닉 최종 상태 근사
-            {br:0.0409, products:["kaon_p","kaon_m","pion_0"]},
-            {br:0.0409, products:["pion_p","pion_m","pion_0"]}
-        ] },
+        decays:[{br:0.2137,products:["W_plus","W_minus"]},{br:0.0827,products:["Z0","Z0"]},{br:0.0627,products:["tau_p","tau_m"]},{br:0.0023,products:["photon","photon"]},{br:0.6386,products:["pion_p","pion_m","pion_0"]}] },
     electron:  { sym:"e⁻",    mass:0.000511,  charge:-1, color:"#e8e8ff", life_SI:Infinity, decays:[] },
     positron:  { sym:"e⁺",    mass:0.000511,  charge:+1, color:"#ffe8ff", life_SI:Infinity, decays:[] },
     muon_m:    { sym:"μ⁻",    mass:0.105658,  charge:-1, color:"#88bbff", life_SI:2.1969811e-6,
@@ -362,11 +347,11 @@ const PDG = {
     pion_0:    { sym:"π⁰",   mass:0.13498,   charge:0,  color:"#ffaa77", life_SI:8.52e-17,
         decays:[{br:0.98823,products:["photon","photon"]},{br:0.01174,products:["photon","electron","positron"]}] },
     eta:       { sym:"η",     mass:0.54786,   charge:0,  color:"#ffdd88", life_SI:lifeFromWidth(1.31e-3),
-        decays:[{br:0.3941,products:["photon","photon"]},{br:0.3268,products:["pion_0","pion_0","pion_0"]},{br:0.2292,products:["pion_p","pion_m","pion_0"]},{br:0.0422,products:["pion_p","pion_m","photon"]},{br:0.0069,products:["electron","positron","photon"]},{br:0.0008,products:["muon_m","muon_p","photon"]}] },
+        decays:[{br:0.3941,products:["photon","photon"]},{br:0.3268,products:["pion_0","pion_0","pion_0"]},{br:0.2292,products:["pion_p","pion_m","pion_0"]}] },
     kaon_p:    { sym:"K⁺",   mass:0.493677,  charge:+1, color:"#ffaa55", life_SI:1.2380e-8,
-        decays:[{br:0.6356,products:["muon_p","numu"]},{br:0.2067,products:["pion_p","pion_0"]},{br:0.0559,products:["pion_p","pion_p","pion_m"]},{br:0.0507,products:["pion_0","positron","nue"]},{br:0.0335,products:["pion_0","muon_p","numu"]},{br:0.0176,products:["pion_p","pion_m","pion_p"]}] },
+        decays:[{br:0.6356,products:["muon_p","numu"]},{br:0.2067,products:["pion_p","pion_0"]},{br:0.0559,products:["pion_p","pion_p","pion_m"]},{br:0.0507,products:["pion_0","positron","nue"]},{br:0.0335,products:["pion_0","muon_p","numu"]}] },
     kaon_m:    { sym:"K⁻",   mass:0.493677,  charge:-1, color:"#ffcc66", life_SI:1.2380e-8,
-        decays:[{br:0.6356,products:["muon_m","antinumu"]},{br:0.2067,products:["pion_m","pion_0"]},{br:0.0559,products:["pion_m","pion_m","pion_p"]},{br:0.0507,products:["pion_0","electron","antinue"]},{br:0.0335,products:["pion_0","muon_m","antinumu"]},{br:0.0176,products:["pion_m","pion_p","pion_m"]}] },
+        decays:[{br:0.6356,products:["muon_m","antinumu"]},{br:0.2067,products:["pion_m","pion_0"]},{br:0.0559,products:["pion_m","pion_m","pion_p"]},{br:0.0507,products:["pion_0","electron","antinue"]},{br:0.0335,products:["pion_0","muon_m","antinumu"]}] },
     K0S:       { sym:"K⁰S",  mass:0.497611,  charge:0,  color:"#ffdd99", life_SI:8.954e-11,
         decays:[{br:0.6920,products:["pion_p","pion_m"]},{br:0.3069,products:["pion_0","pion_0"]}] },
     K0L:       { sym:"K⁰L",  mass:0.497611,  charge:0,  color:"#ffbb77", life_SI:5.116e-8,
@@ -376,17 +361,15 @@ const PDG = {
     rho_p:     { sym:"ρ⁺",   mass:0.77526,   charge:+1, color:"#ff9944", life_SI:lifeFromWidth(0.1491),
         decays:[{br:1.0,products:["pion_p","pion_0"]}] },
     phi:       { sym:"φ",     mass:1.01946,   charge:0,  color:"#ffdd44", life_SI:lifeFromWidth(4.249e-3),
-        decays:[{br:0.4920,products:["kaon_p","kaon_m"]},{br:0.3400,products:["K0L","K0S"]},{br:0.1532,products:["pion_p","pion_m","pion_0"]},{br:0.0131,products:["eta","photon"]}] },
+        decays:[{br:0.489,products:["kaon_p","kaon_m"]},{br:0.340,products:["K0L","K0S"]},{br:0.0286,products:["rho_0","pion_0"]}] },
     omega:     { sym:"ω",     mass:0.78266,   charge:0,  color:"#ffcc33", life_SI:lifeFromWidth(8.68e-3),
-        decays:[{br:0.8920,products:["pion_p","pion_m","pion_0"]},{br:0.0840,products:["pion_0","photon"]},{br:0.0153,products:["pion_p","pion_m"]},{br:0.0073,products:["electron","positron"]},{br:0.0014,products:["pion_0","pion_0","photon"]}] },
+        decays:[{br:0.892,products:["pion_p","pion_m","pion_0"]},{br:0.084,products:["pion_0","photon"]}] },
     psi_J:     { sym:"J/ψ",  mass:3.09690,   charge:0,  color:"#00ffdd", life_SI:lifeFromWidth(92.9e-6),
         decays:[{br:0.0594,products:["electron","positron"]},{br:0.0593,products:["muon_m","muon_p"]},{br:0.8813,products:["pion_p","pion_m","pion_0"]}] },
     upsilon1S: { sym:"Υ(1S)", mass:9.46030,   charge:0,  color:"#00ddff", life_SI:lifeFromWidth(54.02e-6),
         decays:[{br:0.0238,products:["electron","positron"]},{br:0.0248,products:["muon_m","muon_p"]},{br:0.0251,products:["tau_m","tau_p"]},{br:0.9263,products:["pion_p","pion_m","pion_0"]}] },
     D0:        { sym:"D⁰",   mass:1.86484,   charge:0,  color:"#aaddff", life_SI:4.101e-13,
-        decays:[{br:0.0389,products:["kaon_m","pion_p"]},{br:0.1421,products:["kaon_m","pion_p","pion_0"]},{br:0.0823,products:["kaon_m","pion_p","pion_p","pion_m"]},{br:0.0355,products:["kaon_m","positron","nue"]},{br:0.0331,products:["kaon_m","muon_p","numu"]},{br:0.0287,products:["K0S","pion_p","pion_m"]},{br:0.6394,products:["pion_p","pion_m","pion_0"]}] },
-    D0bar:     { sym:"D̄⁰",  mass:1.86484,   charge:0,  color:"#88bbee", life_SI:4.101e-13,
-        decays:[{br:0.0389,products:["kaon_p","pion_m"]},{br:0.1421,products:["kaon_p","pion_m","pion_0"]},{br:0.0823,products:["kaon_p","pion_m","pion_m","pion_p"]},{br:0.0355,products:["kaon_p","electron","antinue"]},{br:0.0331,products:["kaon_p","muon_m","antinumu"]},{br:0.0287,products:["K0S","pion_m","pion_p"]},{br:0.6394,products:["pion_m","pion_p","pion_0"]}] },
+        decays:[{br:0.0389,products:["kaon_m","pion_p"]},{br:0.1421,products:["kaon_m","pion_p","pion_0"]},{br:0.7190,products:["pion_p","pion_m","pion_0"]}] },
     D_plus:    { sym:"D⁺",   mass:1.86966,   charge:+1, color:"#99ccff", life_SI:1.040e-12,
         decays:[{br:0.0938,products:["kaon_m","pion_p","pion_p"]},{br:0.9062,products:["pion_p","pion_0","pion_0"]}] },
     D_minus:   { sym:"D⁻",   mass:1.86966,   charge:-1, color:"#99ccff", life_SI:1.040e-12,
@@ -397,8 +380,6 @@ const PDG = {
         decays:[{br:0.1079,products:["D0","pion_m"]},{br:0.0197,products:["psi_J","kaon_m"]},{br:0.8724,products:["pion_m","pion_p","pion_0"]}] },
     B0:        { sym:"B⁰",   mass:5.27966,   charge:0,  color:"#cc77ff", life_SI:1.519e-12,
         decays:[{br:0.2630,products:["D_minus","pion_p"]},{br:0.0269,products:["psi_J","K0S"]},{br:0.7101,products:["pion_p","pion_m","pion_0"]}] },
-    B0bar:     { sym:"B̄⁰",  mass:5.27966,   charge:0,  color:"#bb66ee", life_SI:1.519e-12,
-        decays:[{br:0.2630,products:["D_plus","pion_m"]},{br:0.0269,products:["psi_J","K0S"]},{br:0.7101,products:["pion_m","pion_p","pion_0"]}] },
     proton:    { sym:"p",     mass:0.938272,  charge:+1, color:"#ff7788", life_SI:Infinity, decays:[] },
     neutron:   { sym:"n",     mass:0.939565,  charge:0,  color:"#aaaaff", life_SI:879.4,
         decays:[{br:1.0,products:["proton","electron","antinue"]}] },
@@ -439,8 +420,8 @@ const PT_PARAMS = {
     W_plus:{T:10.0,n:4.0}, W_minus:{T:10.0,n:4.0}, Z0:{T:10.0,n:4.0},
     higgs:{T:20.0,n:3.5}, psi_J:{T:1.5,n:5.5}, upsilon1S:{T:3.0,n:5.0},
     eta:{T:0.110,n:7.8}, rho_0:{T:0.120,n:7.5}, phi:{T:0.150,n:7.0},
-    D0:{T:0.600,n:5.5}, D0bar:{T:0.600,n:5.5}, D_plus:{T:0.600,n:5.5}, D_minus:{T:0.600,n:5.5},
-    B_plus:{T:1.200,n:4.5}, B_minus:{T:1.200,n:4.5}, B0:{T:1.200,n:4.5}, B0bar:{T:1.200,n:4.5},
+    D0:{T:0.600,n:5.5}, D_plus:{T:0.600,n:5.5}, D_minus:{T:0.600,n:5.5},
+    B_plus:{T:1.200,n:4.5}, B_minus:{T:1.200,n:4.5}, B0:{T:1.200,n:4.5},
 };
 function samplePT(typeKey) {
     const p=PT_PARAMS[typeKey]||{T:0.120,n:7.5}, T=p.T, n=p.n;
@@ -997,29 +978,29 @@ function applyBlackHoleGravity(p, dt) {
     p.p4.py -= gAcc * (dy / r) * dt;
     p.p4.pz -= gAcc * (dz / r) * dt;
 
-    // ── 틀 끌림 (Frame Dragging) — 커 메트릭 핵심 ────────────── 260612 V3EE 에서 최초삭제
+    // ── 틀 끌림 (Frame Dragging) — 커 메트릭 핵심 ──────────────
     // Lense-Thirring 효과: Ω_LT = 2GJ/r³ 에서 영감
     // 회전축 = Y축, 접선 방향 = (−dz, 0, dx) / r_xz
-    //////if (BH_SPIN > 0) {
-    //////    const r_xz  = Math.sqrt(dx*dx + dz*dz) + 0.01;
-    //////    // 틀 끌림 가속도: 스핀 × 질량 / r³ 에 비례
-    //////    const fdAcc = BH_SPIN * logMass * 55.0 / (r2 * r + 1.0);
-    //////    // 접선 단위벡터 (Y축 주변 회전, 반시계방향)
-    //////    const tx = -dz / r_xz;
-    //////    const tz =  dx / r_xz;
-    //////    p.p4.px += fdAcc * tx * dt;
-    //////    p.p4.pz += fdAcc * tz * dt;
-    //////
-        // 에르고구 내부: 추가 가속 (공전 강제)   260612 V3EE 에서 최초삭제
+    if (BH_SPIN > 0) {
+        const r_xz  = Math.sqrt(dx*dx + dz*dz) + 0.01;
+        // 틀 끌림 가속도: 스핀 × 질량 / r³ 에 비례
+        const fdAcc = BH_SPIN * logMass * 55.0 / (r2 * r + 1.0);
+        // 접선 단위벡터 (Y축 주변 회전, 반시계방향)
+        const tx = -dz / r_xz;
+        const tz =  dx / r_xz;
+        p.p4.px += fdAcc * tx * dt;
+        p.p4.pz += fdAcc * tz * dt;
+
+        // 에르고구 내부: 추가 가속 (공전 강제)
         // r_ergo ≈ 2 * Rs_base (적도 기준)
-       ////// const r_ergo = Rs_base * 2.0;
-       ////// if (r < r_ergo * 1.2 && BH_SPIN > 0.1) {
-       //////     const ergoFade = Math.max(0, Math.min(1, (r_ergo * 1.2 - r) / (r_ergo * 0.2)));
-       //////     const ergoBoost = BH_SPIN * logMass * 80.0 / (r2 + 1.0) * ergoFade;
-       //////     p.p4.px += ergoBoost * tx * dt;
-       //////     p.p4.pz += ergoBoost * tz * dt;
-       ////// }
-    //////}
+        const r_ergo = Rs_base * 2.0;
+        if (r < r_ergo * 1.2 && BH_SPIN > 0.1) {
+            const ergoFade = Math.max(0, Math.min(1, (r_ergo * 1.2 - r) / (r_ergo * 0.2)));
+            const ergoBoost = BH_SPIN * logMass * 80.0 / (r2 + 1.0) * ergoFade;
+            p.p4.px += ergoBoost * tx * dt;
+            p.p4.pz += ergoBoost * tz * dt;
+        }
+    }
 
     // ── 에너지-운동량 관계 갱신 (상대론적) ─────────────────────
     const pM = Math.hypot(p.p4.px, p.p4.py, p.p4.pz);
@@ -1061,18 +1042,7 @@ function decayParticle(p) {
     for(let d of p.decays){ r -= d.br; if(r <= 0){ chosen=d; break; } }
     if(!chosen) chosen = p.decays[p.decays.length-1];
     const isRare=chosen.br<0.01, isHeavy=p.isHeavy||p.mass>3.0;
-    // Higgs 붕괴 채널별 표시
-    const isHiggsToBB = p.type==='higgs' && chosen.products.some(k=>k.startsWith('B'));
-    const isHiggsToCC = p.type==='higgs' && chosen.products.some(k=>k.startsWith('D'));
-    const isHiggsToGG = p.type==='higgs' && chosen.products.includes('kaon_p') && !isHiggsToBB;
-    const isHiggsToWW = p.type==='higgs' && chosen.products.includes('W_plus');
-    const isHiggsToZZ = p.type==='higgs' && chosen.products.includes('Z0');
-    if(isHiggsToBB){ heavyCount++; addLog(`🔵 H→bb̄: ${p.sym} → ${chosen.products.join(' ')} [B메존 하드로나이제이션]`, 'heavy');}
-    else if(isHiggsToCC){ heavyCount++; addLog(`🟢 H→cc̄: ${p.sym} → ${chosen.products.join(' ')} [D메존 하드로나이제이션]`, 'heavy');}
-    else if(isHiggsToGG){ heavyCount++; addLog(`🟡 H→gg: ${p.sym} → ${chosen.products.join(' ')} [글루온 제트]`, 'heavy');}
-    else if(isHiggsToWW){ heavyCount++; addLog(`🔴 H→WW*: ${p.sym} → W(on-shell) + W*(off-shell) [가상 W 보존]`, 'heavy');}
-    else if(isHiggsToZZ){ heavyCount++; addLog(`🟠 H→ZZ*: ${p.sym} → Z(on-shell) + Z*(off-shell) [가상 Z 보존]`, 'heavy');}
-    else if(isRare){rareCount++; addLog(`⚡ RARE: ${p.sym} → ${chosen.products.join(' ')}`, 'rare');}
+    if(isRare){rareCount++; addLog(`⚡ RARE: ${p.sym} → ${chosen.products.join(' ')}`, 'rare');}
     else if(isHeavy){heavyCount++; addLog(`🌟 HEAVY: ${p.sym} → ${chosen.products.join(' ')}`, 'heavy');}
     else addLog(`${p.sym} → ${chosen.products.join(' ')}`);
     decayCount++;
@@ -1110,29 +1080,7 @@ function decayParticle(p) {
         const [k1,k2]=oscillatedProducts;
         const d1=PDG[k1]||PDG[chosen.products[0]], d2=PDG[k2]||PDG[chosen.products[1]];
         if(!d1||!d2) return [];
-        // H→WW* / H→ZZ* off-shell 처리:
-        // M_H=125.2 GeV < 2*M_W=160.8 GeV, 2*M_Z=182.4 GeV
-        // 한쪽을 on-shell, 다른쪽을 off-shell로 샘플링
-        let m1 = d1.mass, m2 = d2.mass;
-        const isHiggsToWW = p.type==='higgs' && (k1==='W_plus'||k1==='W_minus');
-        const isHiggsToZZ = p.type==='higgs' && k1==='Z0';
-        if(isHiggsToWW) {
-            // on-shell W: 80.377 GeV, off-shell W*: M_H - M_W_on ~ 44.8 GeV
-            // off-shell W* 질량: uniform sample in [m_e, M_H - M_W]
-            const M_H = p.p4.mass();
-            const M_W = 80.377;
-            m1 = M_W;  // on-shell W
-            m2 = Math.random() * (M_H - M_W - 0.002);  // off-shell W* [0, ~44.8 GeV]
-            m2 = Math.max(0.002, m2);
-        } else if(isHiggsToZZ) {
-            // on-shell Z: 91.1876 GeV, off-shell Z*: M_H - M_Z ~ 34 GeV
-            const M_H = p.p4.mass();
-            const M_Z = 91.1876;
-            m1 = M_Z;  // on-shell Z
-            m2 = Math.random() * (M_H - M_Z - 0.002);  // off-shell Z* [0, ~34 GeV]
-            m2 = Math.max(0.002, m2);
-        }
-        const res=twoBodyDecay4V(p.p4,m1,m2, p.type, k1, k2);
+        const res=twoBodyDecay4V(p.p4,d1.mass,d2.mass, p.type, k1, k2);
         if(res){
             if(window.EnergyMomentumValidator)
                 window.EnergyMomentumValidator.checkDecay(p.p4,[res.p1,res.p2],`${p.sym}→${k1}+${k2}`);
