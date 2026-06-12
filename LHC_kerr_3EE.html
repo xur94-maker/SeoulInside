@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Yang-Mills Collider — Ultimate v3.2EE + Kerr Black Hole (Frame Dragging)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+        body { background: #03040c; overflow: hidden; font-family: 'Inter', sans-serif; }
+
+        .glass-panel {
+            position: absolute; z-index: 30;
+            background: rgba(6, 12, 28, 0.72);
+            backdrop-filter: blur(14px);
+            border-radius: 22px;
+            border: 1px solid rgba(0, 255, 255, 0.28);
+            padding: 14px 20px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.55);
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.2s ease;
+            pointer-events: auto;
+        }
+        .panel-title {
+            font-size: 10px; letter-spacing: 2.5px; font-weight: 600;
+            color: #2ef; text-transform: uppercase; margin-bottom: 10px;
+        }
+        .stat-row { display: flex; justify-content: space-between; gap: 28px; font-size: 11px; margin: 5px 0; color: #bcd; }
+        .val       { color: #5f6; font-weight: 700; letter-spacing: 0.5px; }
+        .val-accent{ color: #0ff; font-weight: 700; }
+        .val-rare  { color: #fc6; font-weight: 700; text-shadow: 0 0 4px #f90; }
+        .slider-group { display: flex; align-items: center; gap: 14px; margin: 9px 0; font-size: 11px; color: #bcd; }
+        input[type=range] { width: 150px; height: 3px; border-radius: 4px; cursor: pointer; accent-color: #0ff; }
+        button {
+            background: rgba(0, 20, 40, 0.8); border: 1px solid #0ff; color: #0ff;
+            padding: 6px 18px; font-family: 'JetBrains Mono'; font-weight: 600; border-radius: 60px;
+            cursor: pointer; transition: 0.2s; margin-top: 6px; font-size: 10px; letter-spacing: 1px;
+        }
+        button:hover { background: #0ff; color: #000; box-shadow: 0 0 16px #0ff; transform: scale(0.98); }
+
+        .module-panel {
+            position: absolute; z-index: 31;
+            background: rgba(5, 10, 24, 0.88);
+            backdrop-filter: blur(14px);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 255, 255, 0.22);
+            padding: 10px 13px;
+            pointer-events: auto;
+            transition: 0.2s;
+        }
+        .module-panel.minimized .module-content { display: none; }
+        .module-title {
+            font-size: 9px; letter-spacing: 1.5px; color: #2af;
+            font-family: 'JetBrains Mono', monospace; font-weight: 600;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 7px;
+        }
+        .close-module { color: #f77; cursor: pointer; font-size: 11px; padding-left: 8px; }
+        .module-content { font-size: 8px; font-family: 'JetBrains Mono', monospace; color: #bcd; }
+        .module-stat { display: flex; justify-content: space-between; font-size: 8px; margin: 3px 0; color: #bcd; }
+        .module-val { color: #5f6; font-weight: 700; }
+        .mini-btn {
+            background: rgba(0,20,40,0.8); border: 1px solid #0ff; color: #0ff;
+            padding: 2px 8px; font-family: 'JetBrains Mono'; border-radius: 30px;
+            cursor: pointer; font-size: 8px; transition: 0.15s;
+        }
+        .mini-btn:hover { background: #0ff; color: #000; }
+        .mini-btn.red { border-color: #f77; color: #f77; }
+        .mini-btn.red:hover { background: #f77; color: #000; }
+        .scroll-list { max-height: 90px; overflow-y: auto; margin-top: 4px; }
+        .list-item {
+            border-left: 2px solid #2af; padding: 2px 5px; margin: 2px 0;
+            font-size: 7px; color: #9cf;
+        }
+        .filter-check { display: flex; flex-wrap: wrap; gap: 5px; margin: 5px 0; }
+        .filter-check label { font-size: 8px; display: flex; align-items: center; gap: 3px; color: #bcd; cursor: pointer; }
+
+        .log-area {
+            position: absolute; bottom: 20px; left: 20px; width: 330px;
+            background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+            border-left: 3px solid #fa3; border-radius: 14px;
+            padding: 10px 14px; font-size: 9px; font-family: 'JetBrains Mono';
+            pointer-events: none; z-index: 30;
+        }
+        .rare  { color: #fc6; font-weight: bold; text-shadow: 0 0 3px #f90; }
+        .heavy { color: #f8f; font-weight: bold; text-shadow: 0 0 3px #c0c; }
+        .badge {
+            position: absolute; bottom: 24px; right: 24px;
+            background: rgba(0,0,0,0.5); border-radius: 40px; padding: 6px 16px;
+            font-size: 9px; color: #8af; font-family: monospace; z-index: 30;
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- MAIN HUD (same as original, kept intact)                    -->
+<!-- ============================================================ -->
+<div class="glass-panel" style="top: 18px; left: 18px;">
+    <div class="panel-title">🌌 YANG–MILLS COLLIDER v3.1 + FIXED</div>
+    <div class="stat-row"><span>입자 수</span>        <span class="val"       id="nPart">0</span></div>
+    <div class="stat-row"><span>붕괴 이벤트</span>   <span class="val"       id="nDecay">0</span></div>
+    <div class="stat-row"><span>✨ 희귀 붕괴</span>  <span class="val-rare"  id="nRare">0</span></div>
+    <div class="stat-row"><span>⚡ 중입자 생성</span><span class="val-rare"  id="nHeavy">0</span></div>
+    <div class="stat-row"><span>√s (CoM)</span>       <span class="val"       id="eCom">— GeV</span></div>
+    <div class="stat-row"><span>αs(μ) 2-loop</span>  <span class="val-accent" id="alphaS">—</span></div>
+    <div class="stat-row"><span>다중도 (NSD)</span>  <span class="val"       id="multOut">—</span></div>
+    <div class="stat-row"><span>σ_inel</span>         <span class="val"       id="xsec">— mb</span></div>
+</div>
+
+<div class="glass-panel" style="top: 18px; right: 18px; text-align: right;">
+    <div class="panel-title">⚙️ 제어반 · Boris · Bethe–Bloch · PDG2022 + v3.2 Kerr</div>
+    <div class="slider-group">
+        <span>🧲 B-field (T)</span>
+        <input type="range" id="bSlide" min="0" max="14" step="0.1" value="6.2">
+        <span id="bVal" class="val">6.2</span>
+    </div>
+    <div class="slider-group">
+        <span>💥 √s (GeV)</span>
+        <input type="range" id="eSlide" min="30" max="14000" step="100" value="13000">
+        <span id="eVal" class="val">13000</span>
+    </div>
+    <div class="slider-group">
+        <span>✧ Trail 길이</span>
+        <input type="range" id="trailSlide" min="6" max="55" step="3" value="22">
+        <span id="trailVal" class="val">22</span>
+    </div>
+    <div class="slider-group">
+        <span>⚫ BH 거리</span>
+        <input type="range" id="bhDistSlide" min="0" max="200" step="5" value="80">
+        <span id="bhDistVal" class="val">80</span>
+    </div>
+    <div class="slider-group">
+        <span>🌀 BH 질량</span>
+        <input type="range" id="bhMassSlide" min="0" max="1000000000000" step="5000" value="0">
+        <span id="bhMassVal" class="val">0</span>
+    </div>
+    <div class="slider-group">
+        <span>🔄 BH 스핀 (a*)</span>
+        <input type="range" id="bhSpinSlide" min="0" max="1" step="0.05" value="0">
+        <span id="bhSpinVal" class="val">0.00</span>
+    </div>
+    <div class="slider-group">
+        <span>🕸 그리드 밝기</span>
+        <input type="range" id="gridBrightSlide" min="0" max="1" step="0.05" value="0.35">
+        <span id="gridBrightVal" class="val">0.35</span>
+    </div>
+    <div style="display:flex; gap:12px; justify-content:flex-end;">
+        <button id="collideBtn">🔥 COLLIDE</button>
+        <button id="clearBtn" style="border-color:#f77; color:#f77;">◀ CLEAR</button>
+    </div>
+    <div style="font-size:8px; margin-top:10px; color:#8ab; text-align:right;">
+        Boris integrator · 4-운동량 보존 · αs 2-loop · PDG2022 분기비<br>
+        Tsallis pT · γτ 시간팽창 · NSD 다중도 · 39종 입자
+        <br>✅ v3.2 + ⚫ Kerr Black Hole (Frame Dragging)
+    </div>
+</div>
+
+<!-- Modules (identical to original) -->
+<div class="module-panel" id="ecalPanel" style="bottom: 110px; right: 18px; width: 250px;">
+    <div class="module-title" onclick="toggleModule(this)">
+        🔴 ECAL HITMAP
+        <span class="close-module" onclick="event.stopPropagation(); hideModule('ecalPanel')">✕</span>
+    </div>
+    <div class="module-content">
+        <canvas id="ecalCanvas" width="226" height="165"
+            style="width:100%; height:auto; background:#050510; border-radius:6px; display:block;"></canvas>
+        <div style="display:flex; justify-content:space-between; margin-top:5px;">
+            <span>🔥 <span id="totalEnergy">0</span> GeV</span>
+            <span>💥 <span id="totalHits">0</span> hits</span>
+        </div>
+        <button class="mini-btn red" id="resetHitsBtn" style="width:100%; margin-top:5px;">RESET</button>
+    </div>
+</div>
+
+<div class="module-panel" id="histPanel" style="bottom: 110px; left: 18px; width: 290px;">
+    <div class="module-title" onclick="toggleModule(this)">
+        📊 HISTOGRAMS (pT / Invariant Mass)
+        <span class="close-module" onclick="event.stopPropagation(); hideModule('histPanel')">✕</span>
+    </div>
+    <div class="module-content">
+        <div style="display:flex; gap:5px; margin-bottom:5px;">
+            <button class="mini-btn" id="tabPtBtn" style="flex:1;">pT</button>
+            <button class="mini-btn" id="tabMassBtn" style="flex:1;">Inv. Mass</button>
+        </div>
+        <canvas id="histCanvas" width="266" height="130"
+            style="width:100%; height:auto; background:#050510; border-radius:4px; display:block;"></canvas>
+        <div id="histStats" style="font-size:7px; text-align:center; margin-top:4px; color:#8af;">Entries: 0</div>
+        <button class="mini-btn red" id="resetHistBtn" style="width:100%; margin-top:5px;">RESET</button>
+    </div>
+</div>
+
+<div class="module-panel" id="jetPanel" style="top: 105px; right: 18px; width: 256px;">
+    <div class="module-title" onclick="toggleModule(this)">
+        🌌 JET CLUSTERING (anti-kT)
+        <span class="close-module" onclick="event.stopPropagation(); hideModule('jetPanel')">✕</span>
+    </div>
+    <div class="module-content">
+        <div style="display:flex; gap:6px; align-items:flex-end; margin-bottom:6px;">
+            <div><div style="color:#8ab; margin-bottom:2px;">R</div>
+                <input type="number" id="jetR" value="0.4" step="0.1" min="0.2" max="1.0"
+                    style="width:52px; background:#081828; border:1px solid #0ff4; color:#0ff;
+                           border-radius:6px; padding:3px 5px; font-family:inherit;"></div>
+            <div><div style="color:#8ab; margin-bottom:2px;">pT min (GeV)</div>
+                <input type="number" id="jetPtMin" value="5.0" step="1" min="0"
+                    style="width:68px; background:#081828; border:1px solid #0ff4; color:#0ff;
+                           border-radius:6px; padding:3px 5px; font-family:inherit;"></div>
+            <button class="mini-btn" id="clusterBtn" style="margin-bottom:1px;">RUN</button>
+        </div>
+        <div class="module-stat"><span>🎯 제트 수</span><span class="module-val" id="jetCount">0</span></div>
+        <div class="module-stat"><span>총 pT</span><span class="module-val" id="totalJetPt">0</span> GeV</div>
+        <div id="jetList" class="scroll-list">—</div>
+    </div>
+</div>
+
+<div class="module-panel" id="vtxPanel" style="top: 105px; left: 18px; width: 265px;">
+    <div class="module-title" onclick="toggleModule(this)">
+        📍 DISPLACED VERTEX
+        <span class="close-module" onclick="event.stopPropagation(); hideModule('vtxPanel')">✕</span>
+    </div>
+    <div class="module-content">
+        <div style="font-size:7px; color:#fa3; margin-bottom:5px;">K⁰S: 2.7 cm | Λ⁰: 7.9 cm | B±: 491 μm</div>
+        <div class="module-stat"><span>🔍 검출 정점</span><span class="module-val" id="vertexCount">0</span></div>
+        <div class="module-stat"><span>📏 평균 비행거리</span><span class="module-val" id="avgDist">—</span> mm</div>
+        <div id="vertexList" class="scroll-list">—</div>
+        <button class="mini-btn red" id="clearVerticesBtn" style="width:100%; margin-top:5px;">CLEAR</button>
+    </div>
+</div>
+
+<div class="module-panel" id="filterPanel" style="top: 300px; left: 18px; width: 265px;">
+    <div class="module-title" onclick="toggleModule(this)">
+        🎯 EVENT FILTER
+        <span class="close-module" onclick="event.stopPropagation(); hideModule('filterPanel')">✕</span>
+    </div>
+    <div class="module-content">
+        <div class="filter-check" id="decayFilters">
+            <label><input type="checkbox" value="Z->ee">  Z→ee</label>
+            <label><input type="checkbox" value="Z->μμ">  Z→μμ</label>
+            <label><input type="checkbox" value="H->γγ">  H→γγ</label>
+            <label><input type="checkbox" value="Jpsi->μμ"> J/ψ→μμ</label>
+        </div>
+        <div style="display:flex; gap:6px; margin:5px 0;">
+            <input type="number" id="ptMin"  value="0"   step="0.5" placeholder="pT min"
+                style="width:78px; background:#081828; border:1px solid #0ff4; color:#0ff;
+                       border-radius:6px; padding:3px 5px; font-family:inherit;">
+            <input type="number" id="etaMax" value="2.5" step="0.1" placeholder="|η| max"
+                style="width:78px; background:#081828; border:1px solid #0ff4; color:#0ff;
+                       border-radius:6px; padding:3px 5px; font-family:inherit;">
+        </div>
+        <div style="font-size:7px; margin-bottom:4px;">
+            ✅ 통과: <span id="passedCount" style="color:#5f6;">0</span>
+            &nbsp;❌ 거부: <span id="rejectedCount" style="color:#f77;">0</span>
+        </div>
+        <button class="mini-btn" id="applyFilterBtn" style="width:100%;">APPLY FILTER</button>
+    </div>
+</div>
+
+<div class="log-area" id="logArea">
+    <div style="color:#fa3; font-size:9px; margin-bottom:5px;">📡 EVENT LOG</div>
+    <div id="logEntries"></div>
+</div>
+
+<div class="badge">⚛️ Yang-Mills Ultimate v3.2 + Kerr BH (Frame Dragging, Ergosphere) · PDG2022 · 39종 입자 | B. Sun</div>
+
+<!-- ============================================================ -->
+<!-- Three.js import and core simulation (original + patches)    -->
+<!-- ============================================================ -->
+<script type="importmap">
+    { "imports": {
+        "three":          "https://unpkg.com/three@0.128.0/build/three.module.js",
+        "three/addons/":  "https://unpkg.com/three@0.128.0/examples/jsm/"
+    }}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ============================================================
+// [1] 물리 상수 (CODATA 2018 / PDG 2022)
+// ============================================================
+const PHYS = {
+    c:      2.99792458e8,
+    hbar_s: 6.582119569e-25,
+    hbarc:  0.1973269804,
+};
+const SCENE_SCALE = 80.0;
+function lifeFromWidth(Gamma_GeV) { return PHYS.hbar_s / Gamma_GeV; }
+
+// ============================================================
+// [2] 4-벡터 클래스
+// ============================================================
+class FourVector {
+    constructor(E, px, py, pz) { this.E=E; this.px=px; this.py=py; this.pz=pz; }
+    mass2() { return this.E*this.E - this.px*this.px - this.py*this.py - this.pz*this.pz; }
+    mass()  { const m2=this.mass2(); return m2>=0 ? Math.sqrt(m2) : 0; }
+    pMag()  { return Math.sqrt(this.px*this.px + this.py*this.py + this.pz*this.pz); }
+    beta()  { return this.pMag() / this.E; }
+    gamma() { const m=this.mass(); return m>0 ? this.E/m : Infinity; }
+    pT()    { return Math.sqrt(this.px*this.px + this.py*this.py); }
+    add(o)  { return new FourVector(this.E+o.E, this.px+o.px, this.py+o.py, this.pz+o.pz); }
+    clone() { return new FourVector(this.E, this.px, this.py, this.pz); }
+    boost(beta, nx, ny, nz) {
+        const gamma = 1.0 / Math.sqrt(1 - beta*beta);
+        const pL    = this.px*nx + this.py*ny + this.pz*nz;
+        const pLnew = gamma*(pL + beta*this.E);
+        const Enew  = gamma*(this.E + beta*pL);
+        const dpL   = pLnew - pL;
+        return new FourVector(Enew, this.px+dpL*nx, this.py+dpL*ny, this.pz+dpL*nz);
+    }
+}
+
+// ============================================================
+// [3] 입자 데이터베이스 (PDG 2022, 39종) - unchanged
+// ============================================================
+const PDG = {
+    photon:    { sym:"γ",      mass:0.0,       charge:0,  color:"#ffffaa", life_SI:Infinity, decays:[] },
+    W_plus:    { sym:"W⁺",    mass:80.377,    charge:+1, color:"#ff4488", life_SI:lifeFromWidth(2.085),
+        decays:[{br:0.1071,products:["electron","nue"]},{br:0.1063,products:["muon_p","numu"]},{br:0.1138,products:["tau_p","nutau"]},{br:0.2247,products:["pion_p","pion_0"]},{br:0.2247,products:["kaon_p","K0S"]},{br:0.2234,products:["proton","neutron"]}] },
+    W_minus:   { sym:"W⁻",    mass:80.377,    charge:-1, color:"#ff4488", life_SI:lifeFromWidth(2.085),
+        decays:[{br:0.1071,products:["positron","antinue"]},{br:0.1063,products:["muon_m","antinumu"]},{br:0.1138,products:["tau_m","antinutau"]},{br:0.2247,products:["pion_m","pion_0"]},{br:0.2247,products:["kaon_m","K0S"]},{br:0.2234,products:["antiproton","neutron"]}] },
+    Z0:        { sym:"Z⁰",    mass:91.1876,   charge:0,  color:"#ff88cc", life_SI:lifeFromWidth(2.4952),
+        decays:[{br:0.03366,products:["electron","positron"]},{br:0.03366,products:["muon_m","muon_p"]},{br:0.03370,products:["tau_m","tau_p"]},{br:0.06667,products:["nue","antinue"]},{br:0.06667,products:["numu","antinumu"]},{br:0.06667,products:["nutau","antinutau"]},{br:0.14232,products:["pion_p","pion_m","pion_0"]},{br:0.14232,products:["kaon_p","kaon_m","pion_0"]},{br:0.14232,products:["proton","antiproton"]},{br:0.12000,products:["D_plus","D_minus"]},{br:0.07600,products:["B_plus","B_minus"]},{br:0.07600,products:["B0","B0bar"]}] },
+    higgs:     { sym:"H⁰",    mass:125.20,    charge:0,  color:"#ffffff", life_SI:lifeFromWidth(3.2e-3),
+        // PDG 2022 Higgs branching ratios — b쿼크/c쿼크는 B/D 메존으로 하드로나이제이션
+        decays:[
+            {br:0.2137, products:["W_plus","W_minus"]},
+            {br:0.0262, products:["Z0","Z0"]},
+            {br:0.0627, products:["tau_p","tau_m"]},
+            {br:0.0023, products:["photon","photon"]},
+            // H→bb̄ (58.24%): b쿼크 → B메존 페어 (B⁺B⁻ / B⁰B̄⁰ 각 ~50%)
+            {br:0.2912, products:["B_plus","B_minus"]},
+            {br:0.2912, products:["B0","B0bar"]},
+            // H→cc̄ (2.89%): c쿼크 → D메존 페어
+            {br:0.0145, products:["D_plus","D_minus"]},
+            {br:0.0144, products:["D0","D0bar"]},
+            // H→gg (8.18%): 글루온 제트 → 하드로닉 최종 상태 근사
+            {br:0.0409, products:["kaon_p","kaon_m","pion_0"]},
+            {br:0.0409, products:["pion_p","pion_m","pion_0"]}
+        ] },
+    electron:  { sym:"e⁻",    mass:0.000511,  charge:-1, color:"#e8e8ff", life_SI:Infinity, decays:[] },
+    positron:  { sym:"e⁺",    mass:0.000511,  charge:+1, color:"#ffe8ff", life_SI:Infinity, decays:[] },
+    muon_m:    { sym:"μ⁻",    mass:0.105658,  charge:-1, color:"#88bbff", life_SI:2.1969811e-6,
+        decays:[{br:1.0,products:["electron","antinue","numu"]}] },
+    muon_p:    { sym:"μ⁺",    mass:0.105658,  charge:+1, color:"#99ccff", life_SI:2.1969811e-6,
+        decays:[{br:1.0,products:["positron","nue","antinumu"]}] },
+    tau_m:     { sym:"τ⁻",    mass:1.77686,   charge:-1, color:"#ff6699", life_SI:2.903e-13,
+        decays:[{br:0.1782,products:["electron","antinue","nutau"]},{br:0.1739,products:["muon_m","antinumu","nutau"]},{br:0.1082,products:["pion_m","nutau"]},{br:0.2552,products:["pion_m","pion_0","nutau"]},{br:0.2845,products:["pion_m","pion_p","pion_m","nutau"]}] },
+    tau_p:     { sym:"τ⁺",    mass:1.77686,   charge:+1, color:"#ff6699", life_SI:2.903e-13,
+        decays:[{br:0.1782,products:["positron","nue","antinutau"]},{br:0.1739,products:["muon_p","numu","antinutau"]},{br:0.1082,products:["pion_p","antinutau"]},{br:0.2552,products:["pion_p","pion_0","antinutau"]},{br:0.2845,products:["pion_p","pion_m","pion_p","antinutau"]}] },
+    nue:       { sym:"νe",    mass:0.0, charge:0, color:"#336633", life_SI:Infinity, decays:[] },
+    antinue:   { sym:"ν̄e",   mass:0.0, charge:0, color:"#336633", life_SI:Infinity, decays:[] },
+    numu:      { sym:"νμ",    mass:0.0, charge:0, color:"#336633", life_SI:Infinity, decays:[] },
+    antinumu:  { sym:"ν̄μ",   mass:0.0, charge:0, color:"#336633", life_SI:Infinity, decays:[] },
+    nutau:     { sym:"ντ",    mass:0.0, charge:0, color:"#336633", life_SI:Infinity, decays:[] },
+    antinutau: { sym:"ν̄τ",   mass:0.0, charge:0, color:"#336633", life_SI:Infinity, decays:[] },
+    pion_p:    { sym:"π⁺",   mass:0.13957,   charge:+1, color:"#ffbb55", life_SI:2.6033e-8,
+        decays:[{br:0.999877,products:["muon_p","numu"]},{br:0.000123,products:["positron","nue"]}] },
+    pion_m:    { sym:"π⁻",   mass:0.13957,   charge:-1, color:"#ffcc77", life_SI:2.6033e-8,
+        decays:[{br:0.999877,products:["muon_m","antinumu"]},{br:0.000123,products:["electron","antinue"]}] },
+    pion_0:    { sym:"π⁰",   mass:0.13498,   charge:0,  color:"#ffaa77", life_SI:8.52e-17,
+        decays:[{br:0.98823,products:["photon","photon"]},{br:0.01174,products:["photon","electron","positron"]}] },
+    eta:       { sym:"η",     mass:0.54786,   charge:0,  color:"#ffdd88", life_SI:lifeFromWidth(1.31e-3),
+        decays:[{br:0.3941,products:["photon","photon"]},{br:0.3268,products:["pion_0","pion_0","pion_0"]},{br:0.2292,products:["pion_p","pion_m","pion_0"]},{br:0.0422,products:["pion_p","pion_m","photon"]},{br:0.0069,products:["electron","positron","photon"]},{br:0.0008,products:["muon_m","muon_p","photon"]}] },
+    kaon_p:    { sym:"K⁺",   mass:0.493677,  charge:+1, color:"#ffaa55", life_SI:1.2380e-8,
+        decays:[{br:0.6356,products:["muon_p","numu"]},{br:0.2067,products:["pion_p","pion_0"]},{br:0.0559,products:["pion_p","pion_p","pion_m"]},{br:0.0507,products:["pion_0","positron","nue"]},{br:0.0335,products:["pion_0","muon_p","numu"]},{br:0.0176,products:["pion_p","pion_m","pion_p"]}] },
+    kaon_m:    { sym:"K⁻",   mass:0.493677,  charge:-1, color:"#ffcc66", life_SI:1.2380e-8,
+        decays:[{br:0.6356,products:["muon_m","antinumu"]},{br:0.2067,products:["pion_m","pion_0"]},{br:0.0559,products:["pion_m","pion_m","pion_p"]},{br:0.0507,products:["pion_0","electron","antinue"]},{br:0.0335,products:["pion_0","muon_m","antinumu"]},{br:0.0176,products:["pion_m","pion_p","pion_m"]}] },
+    K0S:       { sym:"K⁰S",  mass:0.497611,  charge:0,  color:"#ffdd99", life_SI:8.954e-11,
+        decays:[{br:0.6920,products:["pion_p","pion_m"]},{br:0.3069,products:["pion_0","pion_0"]}] },
+    K0L:       { sym:"K⁰L",  mass:0.497611,  charge:0,  color:"#ffbb77", life_SI:5.116e-8,
+        decays:[{br:0.2020,products:["pion_m","positron","nue"]},{br:0.2020,products:["pion_p","electron","antinue"]},{br:0.1352,products:["pion_m","muon_p","numu"]},{br:0.1352,products:["pion_p","muon_m","antinumu"]},{br:0.1974,products:["pion_0","pion_0","pion_0"]},{br:0.1257,products:["pion_p","pion_m","pion_0"]}] },
+    rho_0:     { sym:"ρ⁰",   mass:0.77526,   charge:0,  color:"#ff8833", life_SI:lifeFromWidth(0.1491),
+        decays:[{br:0.9988,products:["pion_p","pion_m"]}] },
+    rho_p:     { sym:"ρ⁺",   mass:0.77526,   charge:+1, color:"#ff9944", life_SI:lifeFromWidth(0.1491),
+        decays:[{br:1.0,products:["pion_p","pion_0"]}] },
+    phi:       { sym:"φ",     mass:1.01946,   charge:0,  color:"#ffdd44", life_SI:lifeFromWidth(4.249e-3),
+        decays:[{br:0.4920,products:["kaon_p","kaon_m"]},{br:0.3400,products:["K0L","K0S"]},{br:0.1532,products:["pion_p","pion_m","pion_0"]},{br:0.0131,products:["eta","photon"]}] },
+    omega:     { sym:"ω",     mass:0.78266,   charge:0,  color:"#ffcc33", life_SI:lifeFromWidth(8.68e-3),
+        decays:[{br:0.8920,products:["pion_p","pion_m","pion_0"]},{br:0.0840,products:["pion_0","photon"]},{br:0.0153,products:["pion_p","pion_m"]},{br:0.0073,products:["electron","positron"]},{br:0.0014,products:["pion_0","pion_0","photon"]}] },
+    psi_J:     { sym:"J/ψ",  mass:3.09690,   charge:0,  color:"#00ffdd", life_SI:lifeFromWidth(92.9e-6),
+        decays:[{br:0.0594,products:["electron","positron"]},{br:0.0593,products:["muon_m","muon_p"]},{br:0.8813,products:["pion_p","pion_m","pion_0"]}] },
+    upsilon1S: { sym:"Υ(1S)", mass:9.46030,   charge:0,  color:"#00ddff", life_SI:lifeFromWidth(54.02e-6),
+        decays:[{br:0.0238,products:["electron","positron"]},{br:0.0248,products:["muon_m","muon_p"]},{br:0.0251,products:["tau_m","tau_p"]},{br:0.9263,products:["pion_p","pion_m","pion_0"]}] },
+    D0:        { sym:"D⁰",   mass:1.86484,   charge:0,  color:"#aaddff", life_SI:4.101e-13,
+        decays:[{br:0.0389,products:["kaon_m","pion_p"]},{br:0.1421,products:["kaon_m","pion_p","pion_0"]},{br:0.0823,products:["kaon_m","pion_p","pion_p","pion_m"]},{br:0.0355,products:["kaon_m","positron","nue"]},{br:0.0331,products:["kaon_m","muon_p","numu"]},{br:0.0287,products:["K0S","pion_p","pion_m"]},{br:0.6394,products:["pion_p","pion_m","pion_0"]}] },
+    D0bar:     { sym:"D̄⁰",  mass:1.86484,   charge:0,  color:"#88bbee", life_SI:4.101e-13,
+        decays:[{br:0.0389,products:["kaon_p","pion_m"]},{br:0.1421,products:["kaon_p","pion_m","pion_0"]},{br:0.0823,products:["kaon_p","pion_m","pion_m","pion_p"]},{br:0.0355,products:["kaon_p","electron","antinue"]},{br:0.0331,products:["kaon_p","muon_m","antinumu"]},{br:0.0287,products:["K0S","pion_m","pion_p"]},{br:0.6394,products:["pion_m","pion_p","pion_0"]}] },
+    D_plus:    { sym:"D⁺",   mass:1.86966,   charge:+1, color:"#99ccff", life_SI:1.040e-12,
+        decays:[{br:0.0938,products:["kaon_m","pion_p","pion_p"]},{br:0.9062,products:["pion_p","pion_0","pion_0"]}] },
+    D_minus:   { sym:"D⁻",   mass:1.86966,   charge:-1, color:"#99ccff", life_SI:1.040e-12,
+        decays:[{br:0.0938,products:["kaon_p","pion_m","pion_m"]},{br:0.9062,products:["pion_m","pion_0","pion_0"]}] },
+    B_plus:    { sym:"B⁺",   mass:5.27934,   charge:+1, color:"#dd88ff", life_SI:1.638e-12,
+        decays:[{br:0.1079,products:["D0","pion_p"]},{br:0.0197,products:["psi_J","kaon_p"]},{br:0.8724,products:["pion_p","pion_m","pion_0"]}] },
+    B_minus:   { sym:"B⁻",   mass:5.27934,   charge:-1, color:"#dd88ff", life_SI:1.638e-12,
+        decays:[{br:0.1079,products:["D0","pion_m"]},{br:0.0197,products:["psi_J","kaon_m"]},{br:0.8724,products:["pion_m","pion_p","pion_0"]}] },
+    B0:        { sym:"B⁰",   mass:5.27966,   charge:0,  color:"#cc77ff", life_SI:1.519e-12,
+        decays:[{br:0.2630,products:["D_minus","pion_p"]},{br:0.0269,products:["psi_J","K0S"]},{br:0.7101,products:["pion_p","pion_m","pion_0"]}] },
+    B0bar:     { sym:"B̄⁰",  mass:5.27966,   charge:0,  color:"#bb66ee", life_SI:1.519e-12,
+        decays:[{br:0.2630,products:["D_plus","pion_m"]},{br:0.0269,products:["psi_J","K0S"]},{br:0.7101,products:["pion_m","pion_p","pion_0"]}] },
+    proton:    { sym:"p",     mass:0.938272,  charge:+1, color:"#ff7788", life_SI:Infinity, decays:[] },
+    neutron:   { sym:"n",     mass:0.939565,  charge:0,  color:"#aaaaff", life_SI:879.4,
+        decays:[{br:1.0,products:["proton","electron","antinue"]}] },
+    antiproton:{ sym:"p̄",    mass:0.938272,  charge:-1, color:"#ff4455", life_SI:Infinity, decays:[] },
+    lambda:    { sym:"Λ⁰",   mass:1.11568,   charge:0,  color:"#77ffaa", life_SI:2.632e-10,
+        decays:[{br:0.6397,products:["proton","pion_m"]},{br:0.3578,products:["neutron","pion_0"]}] },
+    xi_m:      { sym:"Ξ⁻",   mass:1.32171,   charge:-1, color:"#33ddaa", life_SI:1.639e-10,
+        decays:[{br:0.9987,products:["lambda","pion_m"]}] },
+    omega_b:   { sym:"Ω⁻",   mass:1.67245,   charge:-1, color:"#22cc99", life_SI:8.21e-11,
+        decays:[{br:0.678,products:["lambda","kaon_m"]},{br:0.322,products:["xi_m","pion_0"]}] },
+};
+
+// ============================================================
+// [4] αs 2-loop running coupling (PDG 2022)
+// ============================================================
+function alphaS(mu_GeV) {
+    const asMz=0.11800, mZ=91.1876, nf=5;
+    const b0=(33-2*nf)/(12*Math.PI);
+    const b1=(153-19*nf)/(24*Math.PI*Math.PI);
+    const L=Math.log(Math.max(1.0, mu_GeV)/mZ);
+    const t=1+2*b0*asMz*L;
+    if(t<=0) return 0.48;
+    const as1=asMz/t;
+    const as2=as1*(1-(b1/b0)*as1*Math.log(t));
+    return Math.min(0.5, Math.max(0.05, as2));
+}
+
+// ============================================================
+// [5] Tsallis pT sampling (unchanged)
+// ============================================================
+const PT_PARAMS = {
+    pion_p:{T:0.095,n:8.0}, pion_m:{T:0.095,n:8.0}, pion_0:{T:0.095,n:8.0},
+    kaon_p:{T:0.140,n:7.5}, kaon_m:{T:0.140,n:7.5}, K0S:{T:0.140,n:7.5}, K0L:{T:0.140,n:7.5},
+    proton:{T:0.180,n:7.0}, neutron:{T:0.180,n:7.0}, antiproton:{T:0.180,n:7.0},
+    lambda:{T:0.200,n:6.5}, xi_m:{T:0.210,n:6.3}, omega_b:{T:0.220,n:6.0},
+    muon_m:{T:0.095,n:8.0}, muon_p:{T:0.095,n:8.0}, tau_m:{T:0.200,n:6.0}, tau_p:{T:0.200,n:6.0},
+    electron:{T:0.095,n:9.0}, positron:{T:0.095,n:9.0},
+    W_plus:{T:10.0,n:4.0}, W_minus:{T:10.0,n:4.0}, Z0:{T:10.0,n:4.0},
+    higgs:{T:20.0,n:3.5}, psi_J:{T:1.5,n:5.5}, upsilon1S:{T:3.0,n:5.0},
+    eta:{T:0.110,n:7.8}, rho_0:{T:0.120,n:7.5}, phi:{T:0.150,n:7.0},
+    D0:{T:0.600,n:5.5}, D0bar:{T:0.600,n:5.5}, D_plus:{T:0.600,n:5.5}, D_minus:{T:0.600,n:5.5},
+    B_plus:{T:1.200,n:4.5}, B_minus:{T:1.200,n:4.5}, B0:{T:1.200,n:4.5}, B0bar:{T:1.200,n:4.5},
+};
+function samplePT(typeKey) {
+    const p=PT_PARAMS[typeKey]||{T:0.120,n:7.5}, T=p.T, n=p.n;
+    for(let i=0;i<500;i++){
+        const pT=Math.random()*100;
+        const f=pT*Math.pow(1+pT*pT/(n*T*T),-n);
+        if(Math.random()*(100*1.05)<=f) return pT;
+    }
+    return T;
+}
+
+function sampleRapidity(sigma=2.3, yMax=5.0) {
+    const u1=Math.max(1e-10,Math.random()), u2=Math.random();
+    const z=Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
+    return Math.max(-yMax, Math.min(yMax, z*sigma));
+}
+
+function calcMultiplicity(sqrtS) {
+    const a=0.7604, b=0.3196;
+    const dNdeta=a*Math.pow(sqrtS,b);
+    const mean=dNdeta*9.5, k=3.0;
+    let n=0;
+    for(let i=0;i<k;i++) n-=Math.log(Math.max(1e-10,Math.random()));
+    return Math.max(5, Math.min(500, Math.round(n*mean/k)));
+}
+
+const PRIMARY_WEIGHTS = [
+    {key:"pion_p",w:0.290},{key:"pion_m",w:0.290},{key:"pion_0",w:0.115},
+    {key:"kaon_p",w:0.050},{key:"kaon_m",w:0.050},{key:"K0S",w:0.022},
+    {key:"K0L",w:0.022},{key:"proton",w:0.040},{key:"neutron",w:0.028},
+    {key:"lambda",w:0.018},{key:"eta",w:0.014},{key:"rho_0",w:0.007},
+    {key:"omega",w:0.002},{key:"antiproton",w:0.012},
+];
+function trySpawnHeavy(sqrtS) {
+    if(sqrtS>=200  && Math.random()<0.0015) return "psi_J";
+    if(sqrtS>=1000 && Math.random()<0.0008) return "upsilon1S";
+    if(sqrtS>=2000 && Math.random()<0.0012) return "W_plus";
+    if(sqrtS>=2000 && Math.random()<0.0006) return "W_minus";
+    if(sqrtS>=2000 && Math.random()<0.0004) return "Z0";
+    if(sqrtS>=5000 && Math.random()<0.0003) return "B_plus";
+    if(sqrtS>=5000 && Math.random()<0.0003) return "B0";
+    if(sqrtS>=3000 && Math.random()<0.0004) return "D0";
+    if(sqrtS>=8000 && Math.random()<0.00001) return "higgs";
+    return null;
+}
+
+function sampleDecayTime(typeKey, p4) {
+    const data=PDG[typeKey];
+    if(!data||data.life_SI===Infinity) return Infinity;
+    const gamma_p=p4.gamma();
+    const tau_lab=gamma_p*data.life_SI;
+    return -tau_lab*Math.log(Math.max(1e-10,Math.random()));
+}
+
+// ============================================================
+// [6] Breit-Wigner sampling (PATCH 1)
+// ============================================================
+function sampleBreitWigner(M, Gamma, nSigmaCut=5) {
+    const u = Math.random();
+    const E = M + (Gamma/2) * Math.tan(Math.PI * (u - 0.5));
+    return Math.max(M - nSigmaCut*Gamma, Math.min(M + nSigmaCut*Gamma, E));
+}
+
+// ============================================================
+// [7] makeFourVector with optional Breit-Wigner for resonances
+// ============================================================
+function makeFourVector(typeKey, parentMassOverride = null) {
+    const data=PDG[typeKey]; if(!data) return null;
+    let m = data.mass;
+    // Apply Breit-Wigner sampling for Z0, W+, W- (resonances)
+    if (typeKey === "Z0") {
+        m = sampleBreitWigner(91.1876, 2.4952);
+    } else if (typeKey === "W_plus" || typeKey === "W_minus") {
+        m = sampleBreitWigner(80.379, 2.085);
+    } else if (typeKey === "higgs") {
+        m = sampleBreitWigner(125.20, 0.0032, 3);
+    } else if (parentMassOverride !== null && parentMassOverride > 0) {
+        m = parentMassOverride;
+    }
+    const pT = samplePT(typeKey);
+    const y = sampleRapidity();
+    const phi = 2*Math.PI*Math.random();
+    const mT = Math.sqrt(pT*pT + m*m);
+    return new FourVector(mT*Math.cosh(y), pT*Math.cos(phi), pT*Math.sin(phi), mT*Math.sinh(y));
+}
+
+// ============================================================
+// [8] Two-body decay (unchanged)
+// ============================================================
+function twoBodyDecay4V(parent_p4, m1, m2, parentType='', d1='', d2='') {
+    const M=parent_p4.mass();
+    if(M<m1+m2) return null;
+    const s=M*M;
+    const val=((s-(m1+m2)**2)*(s-(m1-m2)**2))/(4*s);
+    if(val<0) return null;
+    const pCM=Math.sqrt(val);
+
+    // Z→ll: 1+cos²θ 분포, 그 외: 등방성
+    let cosT;
+    const isZtoLepton = parentType==='Z0' &&
+        ['electron','positron','muon_m','muon_p'].includes(d1);
+    if(isZtoLepton) {
+        do { cosT=2*Math.random()-1; } while(Math.random() > (1+cosT*cosT)/2);
+    } else {
+        cosT=2*Math.random()-1;
+    }
+
+    const sinT=Math.sqrt(Math.max(0,1-cosT*cosT)), phi=2*Math.PI*Math.random();
+    const E1=Math.sqrt(pCM*pCM+m1*m1), E2=Math.sqrt(pCM*pCM+m2*m2);
+    const px=sinT*Math.cos(phi)*pCM, py=sinT*Math.sin(phi)*pCM, pz=cosT*pCM;
+    let p1=new FourVector(E1,px,py,pz), p2=new FourVector(E2,-px,-py,-pz);
+    const pMag=parent_p4.pMag();
+    if(pMag<1e-10) return {p1,p2};
+    const beta=pMag/parent_p4.E;
+    const nx=parent_p4.px/pMag, ny=parent_p4.py/pMag, nz=parent_p4.pz/pMag;
+    return {p1:p1.boost(beta,nx,ny,nz), p2:p2.boost(beta,nx,ny,nz)};
+}
+
+// ============================================================
+// [9] Bethe-Bloch (original) and Landau fluctuation (PATCH 2)
+// ============================================================
+const K_BB=0.000032, m_e=0.000511, I_GeV=175e-9;
+function betheBloch(q, m, p4) {
+    if(q===0) return 0;
+    const pM=p4.pMag(), E=p4.E, beta=pM/E;
+    if(beta<0.02) return 0;
+    const gamma_p=E/m;
+    const arg=Math.max(1.1,(2*m_e*beta*beta*gamma_p*gamma_p)/I_GeV);
+    return Math.max(0, Math.min(0.072, K_BB*q*q/(beta*beta)*(Math.log(arg)-beta*beta)));
+}
+
+// Landau fluctuation approximation
+function landauFluctuation(meanLoss, xi) {
+    const u = Math.random();
+    if (u < 0.05) return meanLoss + xi * 5 * Math.random();  // 희귀 큰 손실
+    if (u < 0.15) return meanLoss + xi * 2 * Math.random();  // 중간 꼬리
+    return Math.max(0, meanLoss * (0.7 + 0.6 * Math.random())); // 최빈값 근처             // most probable region
+}
+
+// Bethe-Bloch with Landau fluctuations (applies to thin layers)
+function betheBlochWithLandau(q, m, p4, thickness_cm = 0.03) {
+    const meanLoss = betheBloch(q, m, p4) * thickness_cm;
+    const beta = p4.beta();
+    const xi = 0.0001536 * (q*q) / (beta*beta) * (14/28.085) * thickness_cm; // Si approx
+    return landauFluctuation(meanLoss, xi);
+}
+
+// ============================================================
+// [10] Boris step with optional Landau dE/dx (PATCH 2 applied)
+// ============================================================
+function borisStep(p4, charge, mass, Bfield, dt) {
+    if(charge===0 && mass===0) return p4;
+    let px=p4.px, py=p4.py, pz=p4.pz;
+    // Energy loss with Landau fluctuation (if charged)
+    let dE1 = 0;
+    if (charge !== 0 && mass > 0) {
+        dE1 = betheBlochWithLandau(charge, mass, p4, 0.03);
+    }
+    let pM=Math.hypot(px,py,pz);
+    if(pM>1e-8){const f=Math.max(0,pM-dE1)/pM; px*=f; py*=f; pz*=f; pM=Math.hypot(px,py,pz);}
+    const E_=Math.sqrt(pM*pM+mass*mass), gam=E_/mass;
+    const tc=(charge*dt*0.5)/(gam*mass);
+    const tx=0, ty=tc*(-Bfield), tz=0;
+    const t2=tx*tx+ty*ty+tz*tz;
+    const pmx=px+(py*tz-pz*ty), pmy=py+(pz*tx-px*tz), pmz=pz+(px*ty-py*tx);
+    const sx=2*tx/(1+t2), sy=2*ty/(1+t2), sz=2*tz/(1+t2);
+    let ppx=px+(pmy*sz-pmz*sy), ppy=py+(pmz*sx-pmx*sz), ppz=pz+(pmx*sy-pmy*sx);
+    const p4tmp=new FourVector(Math.sqrt(ppx*ppx+ppy*ppy+ppz*ppz+mass*mass),ppx,ppy,ppz);
+    // Second half energy loss with Landau
+    let dE2 = 0;
+    if (charge !== 0 && mass > 0) {
+        dE2 = betheBlochWithLandau(charge, mass, p4tmp, 0.03);
+    }
+    let pM2=Math.hypot(ppx,ppy,ppz);
+    if(pM2>1e-8){const f2=Math.max(0,pM2-dE2)/pM2; ppx*=f2; ppy*=f2; ppz*=f2;}
+    return new FourVector(Math.sqrt(ppx*ppx+ppy*ppy+ppz*ppz+mass*mass),ppx,ppy,ppz);
+}
+
+// ============================================================
+// Three.js scene setup (identical to original)
+// ============================================================
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x03040c);
+scene.fog=new THREE.FogExp2(0x03040c,0.00024);
+const camera=new THREE.PerspectiveCamera(50,window.innerWidth/window.innerHeight,0.3,2200);
+camera.position.set(340,180,430);
+const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:"high-performance"});
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.body.appendChild(renderer.domElement);
+const controls=new OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true;
+
+scene.add(new THREE.AmbientLight(0x11162a));
+const light=new THREE.DirectionalLight(0xffffff,1.2);
+light.position.set(3,5,2); scene.add(light);
+const ring=new THREE.Mesh(
+    new THREE.TorusGeometry(255,2.6,48,200),
+    new THREE.MeshStandardMaterial({color:0x2277bb,emissive:0x004466})
+);
+ring.rotation.x=Math.PI/2; scene.add(ring);
+scene.add(new THREE.Mesh(
+    new THREE.CylinderGeometry(98,98,230,32,1),
+    new THREE.MeshBasicMaterial({color:0x2266aa,wireframe:true,transparent:true,opacity:0.12})
+));
+const starGeo=new THREE.BufferGeometry();
+const starPos=[];
+for(let i=0;i<1800;i++) starPos.push((Math.random()-0.5)*2400,(Math.random()-0.5)*1400,(Math.random()-0.5)*1600-200);
+starGeo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(starPos),3));
+scene.add(new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xffffff,size:0.25})));
+
+// ============================================================
+// Trail Manager (same as original)
+// ============================================================
+class TrailManager {
+    constructor(scene, maxPoints=22, alpha=0.45) {
+        this.scene=scene; this.maxPoints=maxPoints; this.alpha=alpha; this.trails=new Map();
+    }
+    addParticle(id, colorHex) {
+        if(this.trails.has(id)) return;
+        this.trails.set(id,{points:[],color:colorHex,lines:null});
+    }
+    updatePosition(id, pos) {
+        const trail=this.trails.get(id); if(!trail) return;
+        trail.points.push(pos.clone());
+        while(trail.points.length>this.maxPoints) trail.points.shift();
+        if(trail.points.length>=2) this._updateGeometry(trail);
+    }
+    _updateGeometry(trail) {
+        const verts=[];
+        for(let i=0;i<trail.points.length-1;i++){
+            verts.push(trail.points[i].x,trail.points[i].y,trail.points[i].z);
+            verts.push(trail.points[i+1].x,trail.points[i+1].y,trail.points[i+1].z);
+        }
+        if(trail.lines){
+            trail.lines.geometry.dispose();
+            trail.lines.geometry=new THREE.BufferGeometry();
+            trail.lines.geometry.setAttribute('position',new THREE.BufferAttribute(new Float32Array(verts),3));
+        } else {
+            const mat=new THREE.LineBasicMaterial({color:trail.color,transparent:true,opacity:this.alpha});
+            const geo=new THREE.BufferGeometry();
+            geo.setAttribute('position',new THREE.BufferAttribute(new Float32Array(verts),3));
+            trail.lines=new THREE.LineSegments(geo,mat);
+            this.scene.add(trail.lines);
+        }
+    }
+    removeParticle(id) {
+        const trail=this.trails.get(id);
+        if(trail&&trail.lines){this.scene.remove(trail.lines); trail.lines.geometry.dispose();}
+        this.trails.delete(id);
+    }
+    clearAll() {
+        for(const [id,trail] of this.trails){
+            if(trail.lines){this.scene.remove(trail.lines); trail.lines.geometry.dispose();}
+        }
+        this.trails.clear();
+    }
+    setMaxLength(len){this.maxPoints=len;}
+}
+
+// ============================================================
+// Particle system (unchanged except using patched makeFourVector)
+// ============================================================
+let particles=[], trailManager;
+let decayCount=0, rareCount=0, heavyCount=0;
+let Bfield=6.2, sqrtS=13000, trailMax=22, colliding=false;
+
+// ── 블랙홀 설정 ──────────────────────────────────────────────
+let BH_DIST   = 80;
+let BH_MASS   = 0;
+let BH_SPIN   = 0.0;   // 무차원 스핀 파라미터 a* = a/M, 0~1 (커 파라미터)
+let bhMesh    = null;
+let bhAccDisk = null;
+let bhErgo    = null;  // 에르고구 시각화
+let bhPos     = new THREE.Vector3(BH_DIST, 0, 0);
+
+// 블랙홀 시각 구성요소 목록 (전부 scene에서 제거하기 위해)
+let bhVisuals = [];
+function clearBHVisuals() {
+    bhVisuals.forEach(o => scene.remove(o));
+    bhVisuals = [];
+    bhMesh = null; bhAccDisk = null; bhErgo = null;
+}
+
+function updateBHVisual() {
+    clearBHVisuals();
+    if (BH_MASS <= 0) return;
+    bhPos.set(BH_DIST, 0, 0);
+
+    const logM   = Math.log10(BH_MASS + 1);
+    const pointR = Math.max(1.0, logM * 0.7);
+    const oblate = 1.0 - BH_SPIN * 0.32;
+
+    // ── 1. 사건의 지평선 — 구체 없음, 완전한 공백 ───────────────
+    // 블랙홀은 보이지 않는다. 주변 효과만이 존재를 암시.
+    bhMesh = null; // 참조만 유지 (흡수 반지름 계산은 물리 코드에서 pointR 기준)
+
+    // ── 2. 포토링 (광자구) — 극도로 얇고 날카로운 흰 링 ────────
+    const photoR = pointR * 1.5;
+    const photoRing = new THREE.Mesh(
+        new THREE.TorusGeometry(photoR, photoR * 0.018, 6, 120),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.55 })
+    );
+    photoRing.position.copy(bhPos);
+    photoRing.rotation.x = Math.PI / 2;
+    photoRing.renderOrder = 3;
+    scene.add(photoRing);
+    bhVisuals.push(photoRing);
+
+    // ── 3. 강착원반 — 다중 레이어, 안쪽 청백 → 바깥 주황적 ─────
+    const iscoFactor = 1.0 - BH_SPIN * 0.45;
+    const diskBase   = Math.max(5, logM * 4.5) * iscoFactor;
+
+    // 라인 링: THREE.LineLoop 사용 — 순수한 선
+    const diskLines = [
+        // [반지름배수, 색, opacity]
+        [1.05, 0xcceeff, 0.95],  // 최내곽: 청백, 가장 밝음
+        [1.25, 0xffffff, 0.75],  // 내부: 순백
+        [1.50, 0xffddaa, 0.55],  // 중간: 따뜻한 백
+        [1.80, 0xff9944, 0.40],  // 주황
+        [2.15, 0xff5522, 0.28],  // 붉은
+        [2.55, 0xcc2200, 0.16],  // 암적, 거의 사라짐
+    ];
+
+    diskLines.forEach(([rm, col, opa]) => {
+        const r = diskBase * rm;
+        const segments = 180;
+        const pts = [];
+        for (let i = 0; i <= segments; i++) {
+            const a = (i / segments) * Math.PI * 2;
+            pts.push(new THREE.Vector3(Math.cos(a) * r, 0, Math.sin(a) * r));
+        }
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        const mat = new THREE.LineBasicMaterial({
+            color: col, transparent: true, opacity: opa, depthWrite: false
+        });
+        const ring = new THREE.LineLoop(geo, mat);
+        ring.position.copy(bhPos);
+        ring.rotation.x = BH_SPIN * 0.08; // 스핀 → 미세 기울기
+        ring.renderOrder = 1;
+        scene.add(ring);
+        bhVisuals.push(ring);
+    });
+
+    // 강착원반 레퍼런스 (애니메이션용)
+    bhAccDisk = bhVisuals[bhVisuals.length - 3];
+
+    // ── 4. 내부 글로우 (점광원 효과) — 아주 작은 발광 코어 ──────
+    const glowR = pointR * 1.25;
+    const glow = new THREE.Mesh(
+        new THREE.SphereGeometry(glowR, 16, 16),
+        new THREE.MeshBasicMaterial({
+            color: BH_SPIN > 0.5 ? 0x8844ff : 0x224488,
+            transparent: true, opacity: 0.12 + BH_SPIN * 0.08,
+            side: THREE.BackSide, depthWrite: false
+        })
+    );
+    glow.position.copy(bhPos);
+    glow.renderOrder = 0;
+    scene.add(glow);
+    bhVisuals.push(glow);
+
+    // ── 5. 에르고구 — 스핀 > 0.15: 날카로운 와이어프레임 타원 ──
+    if (BH_SPIN > 0.15) {
+        const ergoR = pointR * (1.6 + BH_SPIN * 1.1);
+        const ergoGeo = new THREE.SphereGeometry(ergoR, 18, 12);
+        bhErgo = new THREE.Mesh(
+            ergoGeo,
+            new THREE.MeshBasicMaterial({
+                color: 0x6600ff,
+                transparent: true, opacity: 0.10 + BH_SPIN * 0.08,
+                wireframe: true, depthWrite: false
+            })
+        );
+        bhErgo.scale.set(1, oblate * 0.65, 1);
+        bhErgo.position.copy(bhPos);
+        bhErgo.renderOrder = 0;
+        scene.add(bhErgo);
+        bhVisuals.push(bhErgo);
+
+        // 에르고구 경계 — 적도 링 하나 더
+        const ergoEqR = ergoR;
+        const ergoEq = new THREE.Mesh(
+            new THREE.TorusGeometry(ergoEqR, ergoEqR * 0.012, 5, 100),
+            new THREE.MeshBasicMaterial({
+                color: 0xaa44ff, transparent: true,
+                opacity: 0.35 + BH_SPIN * 0.2, depthWrite: false
+            })
+        );
+        ergoEq.position.copy(bhPos);
+        ergoEq.rotation.x = Math.PI / 2;
+        ergoEq.renderOrder = 1;
+        scene.add(ergoEq);
+        bhVisuals.push(ergoEq);
+    }
+
+    // ── 6. 제트 (스핀 > 0.6: 극방향 가느다란 빔) ────────────────
+    if (BH_SPIN > 0.6) {
+        const jetLen  = pointR * (8 + BH_SPIN * 12);
+        const jetMat  = new THREE.MeshBasicMaterial({
+            color: 0x88eeff, transparent: true,
+            opacity: 0.18 + BH_SPIN * 0.15, depthWrite: false
+        });
+        [-1, 1].forEach(dir => {
+            const jet = new THREE.Mesh(
+                new THREE.CylinderGeometry(pointR * 0.04, pointR * 0.15, jetLen, 8),
+                jetMat
+            );
+            jet.position.set(bhPos.x, bhPos.y + dir * jetLen / 2, bhPos.z);
+            jet.renderOrder = 1;
+            scene.add(jet);
+            bhVisuals.push(jet);
+        });
+    }
+}
+
+// ── 시공간 곡률 그리드 ───────────────────────────────────────
+let gridLines = [];
+let GRID_BRIGHT = 0.35;
+const GRID_SIZE  = 400;
+const GRID_STEP  = 28;
+const GRID_SEGS  = 24; // 선 하나당 분할 수
+
+function buildSpacetimeGrid() {
+    // 기존 그리드 제거
+    for (const l of gridLines) scene.remove(l);
+    gridLines = [];
+
+    const mat = () => new THREE.LineBasicMaterial({
+        color: 0x0088ff, transparent: true, opacity: GRID_BRIGHT
+    });
+
+    // XZ 평면 그리드 (y=0)
+    for (let x = -GRID_SIZE; x <= GRID_SIZE; x += GRID_STEP) {
+        const pts = [];
+        for (let i = 0; i <= GRID_SEGS; i++) {
+            const z = -GRID_SIZE + (2 * GRID_SIZE / GRID_SEGS) * i;
+            pts.push(new THREE.Vector3(x, 0, z));
+        }
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        const line = new THREE.Line(geo, mat());
+        scene.add(line);
+        gridLines.push(line);
+    }
+    for (let z = -GRID_SIZE; z <= GRID_SIZE; z += GRID_STEP) {
+        const pts = [];
+        for (let i = 0; i <= GRID_SEGS; i++) {
+            const x = -GRID_SIZE + (2 * GRID_SIZE / GRID_SEGS) * i;
+            pts.push(new THREE.Vector3(x, 0, z));
+        }
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        const line = new THREE.Line(geo, mat());
+        scene.add(line);
+        gridLines.push(line);
+    }
+}
+
+function updateGridWarp() {
+    if (gridLines.length === 0) return;
+    const hasBH = BH_MASS > 0;
+    const logMass = hasBH ? Math.log10(BH_MASS + 1) : 0;
+
+    for (const line of gridLines) {
+        const geo = line.geometry;
+        const pos = geo.attributes.position;
+        const orig = geo.userData.original;
+
+        // 최초 1회 원본 저장
+        if (!orig) {
+            geo.userData.original = new Float32Array(pos.array);
+        }
+        const src = geo.userData.original;
+
+        for (let i = 0; i < pos.count; i++) {
+            const ox = src[i * 3];
+            const oy = src[i * 3 + 1];
+            const oz = src[i * 3 + 2];
+
+            let nx = ox, ny = oy, nz = oz;
+
+            if (hasBH) {
+                const dx = ox - bhPos.x;
+                const dy = oy - bhPos.y;
+                const dz = oz - bhPos.z;
+                const r  = Math.sqrt(dx*dx + dy*dy + dz*dz) + 0.1;
+                // 왜곡 강도: 로그 스케일, 가까울수록 강하게
+                const warp = Math.min(0.92, logMass * 12 / (r * 0.18 + 1));
+                nx = ox - (dx / r) * warp * (GRID_STEP * 0.9);
+                ny = oy - (dy / r) * warp * (GRID_STEP * 0.9);
+                nz = oz - (dz / r) * warp * (GRID_STEP * 0.9);
+            }
+
+            pos.setXYZ(i, nx, ny, nz);
+        }
+        pos.needsUpdate = true;
+
+        // 밝기 업데이트
+        line.material.opacity = GRID_BRIGHT;
+        line.visible = GRID_BRIGHT > 0.01;
+    }
+}
+
+buildSpacetimeGrid();
+
+function addLog(msg, cls='') {
+    const el=document.getElementById('logEntries');
+    const d=document.createElement('div');
+    d.className=cls; d.innerHTML=msg;
+    el.prepend(d);
+    while(el.children.length>14) el.removeChild(el.lastChild);
+}
+
+function createParticle(typeKey, posVec3, p4_init) {
+    const data=PDG[typeKey]; if(!data) return null;
+    const isInvisible=typeKey.includes('nu')||typeKey==='photon';
+    let mesh=null;
+    if(!isInvisible){
+        const mat=new THREE.MeshStandardMaterial({color:data.color,emissive:data.color,emissiveIntensity:0.45});
+        mesh=new THREE.Mesh(new THREE.SphereGeometry(0.62,10,10),mat);
+        mesh.position.copy(posVec3);
+        scene.add(mesh);
+    }
+    const t_decay=sampleDecayTime(typeKey,p4_init);
+    const particle={
+        type:typeKey, mass:data.mass, charge:data.charge, decays:data.decays, sym:data.sym,
+        p4:p4_init.clone(), pos:posVec3.clone(), mesh,
+        isInvisible, t_remain:t_decay,
+        life:t_decay,
+        isHeavy:data.mass>1.5,
+        id:Math.random()
+    };
+    if(trailManager&&mesh) trailManager.addParticle(particle.id,data.color);
+    return particle;
+}
+
+function applyBlackHoleGravity(p, dt) {
+    if (BH_MASS <= 0) return false;
+    const dx = p.pos.x - bhPos.x;
+    const dy = p.pos.y - bhPos.y;
+    const dz = p.pos.z - bhPos.z;
+    const r2 = dx*dx + dy*dy + dz*dz + 0.01;
+    const r  = Math.sqrt(r2);
+
+    const logMass = Math.log10(BH_MASS + 1);
+
+    // ── 사건의 지평선 반지름 (커 근사) ──────────────────────────
+    // r+ = M(1 + sqrt(1 - a*²))  →  스핀이 클수록 작아짐
+    const Rs_base = Math.max(0.8, logMass * 0.6);
+    const Rs = Rs_base * (1.0 + Math.sqrt(Math.max(0, 1 - BH_SPIN * BH_SPIN))) * 0.5;
+    if (r < Rs * 2) return true;
+
+    // ── 방사형 중력 (슈바르츠실트 항) ───────────────────────────
+    const gAcc = logMass * 120.0 / (r2 + 1.0);
+    p.p4.px -= gAcc * (dx / r) * dt;
+    p.p4.py -= gAcc * (dy / r) * dt;
+    p.p4.pz -= gAcc * (dz / r) * dt;
+
+    // ── 틀 끌림 (Frame Dragging) — 커 메트릭 핵심 ────────────── 260612 V3EE 에서 삭제
+    // Lense-Thirring 효과: Ω_LT = 2GJ/r³ 에서 영감
+    // 회전축 = Y축, 접선 방향 = (−dz, 0, dx) / r_xz
+    //////if (BH_SPIN > 0) {
+    //////    const r_xz  = Math.sqrt(dx*dx + dz*dz) + 0.01;
+    //////    // 틀 끌림 가속도: 스핀 × 질량 / r³ 에 비례
+    //////    const fdAcc = BH_SPIN * logMass * 55.0 / (r2 * r + 1.0);
+    //////    // 접선 단위벡터 (Y축 주변 회전, 반시계방향)
+    //////    const tx = -dz / r_xz;
+    //////    const tz =  dx / r_xz;
+    //////    p.p4.px += fdAcc * tx * dt;
+    //////    p.p4.pz += fdAcc * tz * dt;
+    //////
+        // 에르고구 내부: 추가 가속 (공전 강제)   260612 V3EE 에서 삭제
+        // r_ergo ≈ 2 * Rs_base (적도 기준)
+       ////// const r_ergo = Rs_base * 2.0;
+       ////// if (r < r_ergo * 1.2 && BH_SPIN > 0.1) {
+       //////     const ergoFade = Math.max(0, Math.min(1, (r_ergo * 1.2 - r) / (r_ergo * 0.2)));
+       //////     const ergoBoost = BH_SPIN * logMass * 80.0 / (r2 + 1.0) * ergoFade;
+       //////     p.p4.px += ergoBoost * tx * dt;
+       //////     p.p4.pz += ergoBoost * tz * dt;
+       ////// }
+    //////}
+
+    // ── 에너지-운동량 관계 갱신 (상대론적) ─────────────────────
+    const pM = Math.hypot(p.p4.px, p.p4.py, p.p4.pz);
+    p.p4.E   = Math.sqrt(pM*pM + p.mass*p.mass);
+    return false;
+}
+
+function updateParticle(p, dt) {
+    const m=p.mass, q=p.charge;
+    if(p.isInvisible||(q===0&&m===0)){
+        const pM=p.p4.pMag();
+        const speed=SCENE_SCALE;
+        if(pM>1e-8){
+            p.pos.x+=(p.p4.px/pM)*speed*dt;
+            p.pos.y+=(p.p4.py/pM)*speed*dt;
+            p.pos.z+=(p.p4.pz/pM)*speed*dt;
+        }
+        // 중성 입자도 중력 영향
+        if (applyBlackHoleGravity(p, dt)) { p.absorbed = true; return; }
+        if(p.mesh) p.mesh.position.copy(p.pos);
+        return;
+    }
+    // 블랙홀 중력 먼저 적용 (운동량 변경)
+    if (applyBlackHoleGravity(p, dt * 0.5)) { p.absorbed = true; return; }
+    p.p4=borisStep(p.p4,q,m,Bfield,dt);
+    if (applyBlackHoleGravity(p, dt * 0.5)) { p.absorbed = true; return; }
+    const gam=p.p4.E/m, invGM=SCENE_SCALE/(gam*m);
+    p.pos.x+=p.p4.px*invGM*dt;
+    p.pos.y+=p.p4.py*invGM*dt;
+    p.pos.z+=p.p4.pz*invGM*dt;
+    if(p.mesh) p.mesh.position.copy(p.pos);
+    if(trailManager&&p.mesh) trailManager.updatePosition(p.id,p.pos);
+}
+
+function decayParticle(p) {
+    if(!p.decays.length) return [];
+    let totalBr=0; for(let d of p.decays) totalBr+=d.br;
+    let r=Math.random()*totalBr, chosen=null;
+    for(let d of p.decays){ r -= d.br; if(r <= 0){ chosen=d; break; } }
+    if(!chosen) chosen = p.decays[p.decays.length-1];
+    const isRare=chosen.br<0.01, isHeavy=p.isHeavy||p.mass>3.0;
+    // Higgs 붕괴 채널별 표시
+    const isHiggsToBB = p.type==='higgs' && chosen.products.some(k=>k.startsWith('B'));
+    const isHiggsToCC = p.type==='higgs' && chosen.products.some(k=>k.startsWith('D'));
+    const isHiggsToGG = p.type==='higgs' && chosen.products.includes('kaon_p') && !isHiggsToBB;
+    const isHiggsToWW = p.type==='higgs' && chosen.products.includes('W_plus');
+    const isHiggsToZZ = p.type==='higgs' && chosen.products.includes('Z0');
+    if(isHiggsToBB){ heavyCount++; addLog(`🔵 H→bb̄: ${p.sym} → ${chosen.products.join(' ')} [B메존 하드로나이제이션]`, 'heavy');}
+    else if(isHiggsToCC){ heavyCount++; addLog(`🟢 H→cc̄: ${p.sym} → ${chosen.products.join(' ')} [D메존 하드로나이제이션]`, 'heavy');}
+    else if(isHiggsToGG){ heavyCount++; addLog(`🟡 H→gg: ${p.sym} → ${chosen.products.join(' ')} [글루온 제트]`, 'heavy');}
+    else if(isHiggsToWW){ heavyCount++; addLog(`🔴 H→WW*: ${p.sym} → W(on-shell) + W*(off-shell) [가상 W 보존]`, 'heavy');}
+    else if(isHiggsToZZ){ heavyCount++; addLog(`🟠 H→ZZ*: ${p.sym} → Z(on-shell) + Z*(off-shell) [가상 Z 보존]`, 'heavy');}
+    else if(isRare){rareCount++; addLog(`⚡ RARE: ${p.sym} → ${chosen.products.join(' ')}`, 'rare');}
+    else if(isHeavy){heavyCount++; addLog(`🌟 HEAVY: ${p.sym} → ${chosen.products.join(' ')}`, 'heavy');}
+    else addLog(`${p.sym} → ${chosen.products.join(' ')}`);
+    decayCount++;
+    // 이벤트 필터 검사
+    if(window.checkEventFilter) {
+        const decayStr = `${p.sym} → ${chosen.products.join(' ')}`;
+        const pT = p.p4.pT(), pMag = p.p4.pMag();
+        const eta = pMag > 1e-8 ? -Math.log(Math.tan(Math.acos(Math.max(-1, Math.min(1, p.p4.pz/pMag)))/2)) : 0;
+        window.checkEventFilter(decayStr, {pt: pT, eta});
+    }
+
+    const dist=Math.hypot(p.pos.x,p.pos.y,p.pos.z);
+    if(window.addDisplacedVertex&&dist>10) {
+        const sv = window.VertexSmearing
+            ? window.VertexSmearing.smear(p.sym, p.pos.x, p.pos.y, p.pos.z)
+            : {x: p.pos.x, y: p.pos.y, z: p.pos.z};
+        window.addDisplacedVertex(p.sym, chosen.products, sv.x, sv.y, sv.z);
+    }
+    if(window.CPViolation && p.type==='B0') {
+        const t_ps = (p.p4.gamma()*PDG.B0.life_SI)*1e12;
+        if(window.CPViolation.shouldOscillate('B0', t_ps))
+            addLog(`🔏 CP: B⁰→B̄⁰ oscillation  ACP=${window.CPViolation.asymmetry(t_ps).toFixed(3)}`, 'rare');
+    }
+
+    const children=[];
+    // 뉴트리노 진동 적용
+    const oscillatedProducts = chosen.products.map(pk => {
+        if(window.NeutrinoOscillation && pk.includes('nu')) {
+            const dist = Math.hypot(p.pos.x, p.pos.y, p.pos.z) * 0.001;
+            return window.NeutrinoOscillation.oscillate(pk, dist, p.p4.E);
+        }
+        return pk;
+    });
+    if(chosen.products.length===2){
+        const [k1,k2]=oscillatedProducts;
+        const d1=PDG[k1]||PDG[chosen.products[0]], d2=PDG[k2]||PDG[chosen.products[1]];
+        if(!d1||!d2) return [];
+        // H→WW* / H→ZZ* off-shell 처리:
+        // M_H=125.2 GeV < 2*M_W=160.8 GeV, 2*M_Z=182.4 GeV
+        // 한쪽을 on-shell, 다른쪽을 off-shell로 샘플링
+        let m1 = d1.mass, m2 = d2.mass;
+        const isHiggsToWW = p.type==='higgs' && (k1==='W_plus'||k1==='W_minus');
+        const isHiggsToZZ = p.type==='higgs' && k1==='Z0';
+        if(isHiggsToWW) {
+            // on-shell W: 80.377 GeV, off-shell W*: M_H - M_W_on ~ 44.8 GeV
+            // off-shell W* 질량: uniform sample in [m_e, M_H - M_W]
+            const M_H = p.p4.mass();
+            const M_W = 80.377;
+            m1 = M_W;  // on-shell W
+            m2 = Math.random() * (M_H - M_W - 0.002);  // off-shell W* [0, ~44.8 GeV]
+            m2 = Math.max(0.002, m2);
+        } else if(isHiggsToZZ) {
+            // on-shell Z: 91.1876 GeV, off-shell Z*: M_H - M_Z ~ 34 GeV
+            const M_H = p.p4.mass();
+            const M_Z = 91.1876;
+            m1 = M_Z;  // on-shell Z
+            m2 = Math.random() * (M_H - M_Z - 0.002);  // off-shell Z* [0, ~34 GeV]
+            m2 = Math.max(0.002, m2);
+        }
+        const res=twoBodyDecay4V(p.p4,m1,m2, p.type, k1, k2);
+        if(res){
+            if(window.EnergyMomentumValidator)
+                window.EnergyMomentumValidator.checkDecay(p.p4,[res.p1,res.p2],`${p.sym}→${k1}+${k2}`);
+            const c1=createParticle(k1,p.pos,res.p1);
+            const c2=createParticle(k2,p.pos,res.p2);
+            if(c1) children.push(c1);
+            if(c2) children.push(c2);
+        }
+    } else {
+        // N-body decay: distribute 4-momentum properly via iterative 2-body splits
+        const nProd = chosen.products.length;
+        const validProducts = oscillatedProducts.filter(k => PDG[k]);
+        if(validProducts.length === 0) return [];
+        const totalChildMass = validProducts.reduce((s,k) => s+PDG[k].mass, 0);
+        if(p.p4.mass() < totalChildMass) return [];
+
+        // Build children 4-momenta by successive 2-body decays in rest frame
+        let remainP4 = p.p4.clone();
+        const child4Vs = [];
+        for(let ci = 0; ci < validProducts.length - 1; ci++) {
+            const k = validProducts[ci];
+            const dat = PDG[k];
+            const remainMass = validProducts.slice(ci+1).reduce((s,kk)=>s+PDG[kk].mass,0);
+            const mRemain = remainP4.mass();
+            const mChild = dat.mass;
+            // Sample invariant mass of the "rest" system (flat phase space approx)
+            const mRestMin = remainMass;
+            const mRestMax = mRemain - mChild;
+            if(mRestMax < mRestMin) break;
+            const mRest = mRestMin + Math.random()*(mRestMax - mRestMin);
+            const res2 = twoBodyDecay4V(remainP4, mChild, mRest);
+            if(!res2) break;
+            child4Vs.push({key:k, p4:res2.p1});
+            remainP4 = res2.p2;
+        }
+        // Last product gets the remainder momentum
+        const lastKey = validProducts[validProducts.length - 1];
+        if(lastKey && PDG[lastKey]) child4Vs.push({key:lastKey, p4:remainP4});
+
+        for(const {key, p4: p4c} of child4Vs) {
+            const child = createParticle(key, p.pos, p4c);
+            if(child) children.push(child);
+        }
+    }
+    return children;
+}
+
+function updateWorld(dt) {
+    let newParts=[];
+    for(let i=0;i<particles.length;i++){
+        let p=particles[i];
+        p.life-=dt;
+        // 블랙홀 흡수 처리
+        if(p.absorbed){
+            if(p.mesh) scene.remove(p.mesh);
+            if(trailManager) trailManager.removeParticle(p.id);
+            particles.splice(i,1); i--; continue;
+        }
+        if(p.life<=0){
+            const decays=decayParticle(p);
+            newParts.push(...decays);
+            if(p.mesh) scene.remove(p.mesh);
+            if(trailManager) trailManager.removeParticle(p.id);
+            particles.splice(i,1); i--; continue;
+        }
+        updateParticle(p,dt);
+        if(Math.abs(p.pos.x)>950||Math.abs(p.pos.z)>950||Math.abs(p.pos.y)>720){
+            if(p.mesh) scene.remove(p.mesh);
+            if(trailManager) trailManager.removeParticle(p.id);
+            particles.splice(i,1); i--;
+        }
+    }
+    particles.push(...newParts);
+    document.getElementById('nPart').innerHTML=particles.length;
+    document.getElementById('nDecay').innerHTML=decayCount;
+    document.getElementById('nRare').innerHTML=rareCount;
+    document.getElementById('nHeavy').innerHTML=heavyCount;
+}
+
+function inelasticXsec(sqrtS_GeV){return 72.9*Math.pow(sqrtS_GeV/13000,0.096);}
+
+async function generateCollision() {
+    if(colliding) return;
+    colliding=true;
+    const s=sqrtS, mult=calcMultiplicity(s), mu=Math.max(2,s/2);
+    const as=alphaS(mu), sig=inelasticXsec(s);
+    document.getElementById('eCom').innerHTML=s.toLocaleString()+' GeV';
+    document.getElementById('alphaS').innerHTML=as.toFixed(5);
+    document.getElementById('multOut').innerHTML=mult;
+    document.getElementById('xsec').innerHTML=sig.toFixed(1)+' mb';
+    addLog(`💥 √s=${s} GeV  αs=${as.toFixed(4)}  N=${mult}  σ=${sig.toFixed(1)}mb`);
+
+    if(window.startEventRecording) window.startEventRecording();
+    const totalW=PRIMARY_WEIGHTS.reduce((a,b)=>a+b.w,0);
+    for(let i=0;i<mult;i++){
+        let r=Math.random()*totalW, key=PRIMARY_WEIGHTS[PRIMARY_WEIGHTS.length-1].key;
+        for(let pw of PRIMARY_WEIGHTS){ r -= pw.w; if(r <= 0){ key=pw.key; break; } }
+        const p4=makeFourVector(key);
+        if(!p4) continue;
+        const part=createParticle(key,new THREE.Vector3(0,0,0),p4);
+        if(part){
+            particles.push(part);
+            if(window.recordParticle) window.recordParticle(p4.px,p4.py,p4.pz,PDG[key].mass);
+            if(window.addPTValue) window.addPTValue(p4.pT());
+            if(window.ParticleID && part.charge!==0 && part.mass>0){
+                const dEdx=window.ParticleID.expected_dEdx(part);
+                if(dEdx>0) addLog(`🔬 PID: ${PDG[key].sym}  dE/dx=${dEdx.toFixed(5)} GeV`);
+            }
+            if(window.addCalorimeterHit&&!key.includes('nu')&&key!=='photon'){
+                const pMag=p4.pMag(), thetaHit=pMag>1e-8?Math.acos(Math.max(-1,Math.min(1,p4.pz/pMag))):Math.PI/2;
+                const etaHit=-Math.log(Math.tan(thetaHit/2)), phiHit=Math.atan2(p4.py,p4.px);
+                window.addCalorimeterHit(etaHit,phiHit,p4.E*0.7,key);
+            }
+        }
+    }
+    if(window.endEventRecording) window.endEventRecording();
+    if(window.TriggerSim){
+        const pass=window.TriggerSim.L1_trigger({particles});
+        addLog(`🎯 L1 Trigger: ${pass?'✅ PASS':'❌ FAIL'}`);
+    }
+
+    // 기저 사건(Underlying Event) soft 입자 추가
+    if(window.UnderlyingEvent && window.UnderlyingEvent.enabled) {
+        const ueParticles = window.UnderlyingEvent.generate(s, mult);
+        for(const up of ueParticles) {
+            if(!PDG[up.type]) continue;
+            const mT = Math.sqrt(up.pT*up.pT + PDG[up.type].mass**2);
+            const p4ue = new FourVector(
+                mT*Math.cosh(up.eta),
+                up.pT*Math.cos(up.phi),
+                up.pT*Math.sin(up.phi),
+                mT*Math.sinh(up.eta)
+            );
+            const part = createParticle(up.type, new THREE.Vector3(0,0,0), p4ue);
+            if(part) particles.push(part);
+        }
+        addLog(`🌊 UE: soft 입자 ${ueParticles.length}개 추가`);
+    }
+
+    for(let i=0;i<mult;i++){
+        const hkey=trySpawnHeavy(s);
+        if(hkey){
+            const p4h=makeFourVector(hkey);
+            if(p4h){
+                const ph=createParticle(hkey,new THREE.Vector3(0,0,0),p4h);
+                if(ph){particles.push(ph); heavyCount++; addLog(`🌟 생성: ${PDG[hkey].sym}  M=${PDG[hkey].mass.toFixed(3)} GeV`,'heavy');}
+            }
+        }
+    }
+    setTimeout(()=>{colliding=false;},260);
+}
+
+function clearSimulation(){
+    for(let p of particles){
+        if(p.mesh) scene.remove(p.mesh);
+        if(trailManager) trailManager.removeParticle(p.id);
+    }
+    particles=[]; decayCount=0; rareCount=0; heavyCount=0;
+    if(trailManager) trailManager.clearAll();
+    if(window.clearCalorimeter) window.clearCalorimeter();
+    if(window.resetHistograms) window.resetHistograms();
+    if(window.clearDisplacedVertices) window.clearDisplacedVertices();
+    document.getElementById('logEntries').innerHTML='';
+    ['nPart','nDecay','nRare','nHeavy'].forEach(id=>document.getElementById(id).innerHTML='0');
+}
+
+// ============================================================
+// Module 1: ECAL hitmap (identical to original)
+// ============================================================
+const ETA_BINS=40, PHI_BINS=48, ETA_MIN=-2.5, ETA_MAX=2.5;
+let energyGrid=Array(ETA_BINS).fill().map(()=>Array(PHI_BINS).fill(0));
+let totalEnergy=0, totalHits=0;
+const ecalCanvas=document.getElementById('ecalCanvas');
+const ecalCtx=ecalCanvas.getContext('2d');
+
+function drawHitmap(){
+    if(!ecalCtx) return;
+    const cellW=ecalCanvas.width/PHI_BINS, cellH=ecalCanvas.height/ETA_BINS;
+    ecalCtx.fillStyle='#050510';
+    ecalCtx.fillRect(0,0,ecalCanvas.width,ecalCanvas.height);
+    for(let i=0;i<ETA_BINS;i++){
+        for(let j=0;j<PHI_BINS;j++){
+            const eng=energyGrid[i][j];
+            if(eng>0){
+                ecalCtx.fillStyle=eng<2?'#0044aa':eng<5?'#00aaff':eng<10?'#00ffcc':eng<20?'#ffff44':'#ff0000';
+                ecalCtx.fillRect(j*cellW,i*cellH,cellW,cellH);
+            }
+        }
+    }
+}
+window.addCalorimeterHit=function(eta,phi,energy){
+    if(energy<0.05) return;
+    const i=Math.floor((eta-ETA_MIN)/(ETA_MAX-ETA_MIN)*ETA_BINS);
+    let j=Math.max(0,Math.min(PHI_BINS-1,Math.floor((phi+Math.PI)/(2*Math.PI)*PHI_BINS)));
+    if(i>=0&&i<ETA_BINS){
+        energyGrid[i][j]+=energy; totalEnergy+=energy; totalHits++;
+        document.getElementById('totalEnergy').innerText=totalEnergy.toFixed(1);
+        document.getElementById('totalHits').innerText=totalHits;
+        drawHitmap();
+    }
+};
+window.clearCalorimeter=function(){
+    energyGrid=Array(ETA_BINS).fill().map(()=>Array(PHI_BINS).fill(0));
+    totalEnergy=0; totalHits=0;
+    ecalCtx.fillStyle='#050510';
+    ecalCtx.fillRect(0,0,ecalCanvas.width,ecalCanvas.height);
+    document.getElementById('totalEnergy').innerText='0';
+    document.getElementById('totalHits').innerText='0';
+};
+
+// ============================================================
+// Module 2: Histograms (identical to original)
+// ============================================================
+let histCurrentTab='pt';
+let ptHist=new Array(40).fill(0), ptEntries=0, ptSum=0;
+let massHist=new Array(50).fill(0), massEntries=0, massSum=0;
+let currentEventParts=[];
+const histCanvas=document.getElementById('histCanvas');
+const histCtx=histCanvas.getContext('2d');
+
+function drawHistogram(){
+    if(!histCtx) return;
+    histCtx.fillStyle='#050510';
+    histCtx.fillRect(0,0,histCanvas.width,histCanvas.height);
+    if(histCurrentTab==='pt'){
+        const maxCount=Math.max(1,...ptHist), barW=histCanvas.width/40;
+        for(let i=0;i<40;i++){
+            const h=(ptHist[i]/maxCount)*histCanvas.height;
+            if(h>0){histCtx.fillStyle='#2af'; histCtx.fillRect(i*barW,histCanvas.height-h,barW-1,h);}
+        }
+        document.getElementById('histStats').innerHTML=`Entries: ${ptEntries} | &lt;pT&gt;: ${ptEntries>0?(ptSum/ptEntries).toFixed(2):'—'} GeV`;
+    } else {
+        const maxCount=Math.max(1,...massHist), barW=histCanvas.width/50;
+        for(let i=0;i<50;i++){
+            const h=(massHist[i]/maxCount)*histCanvas.height;
+            if(h>0){
+                const massVal=(i+0.5)*120/50;
+                histCtx.fillStyle=(massVal>85&&massVal<95)?'#ffaa44':'#2af';
+                histCtx.fillRect(i*barW,histCanvas.height-h,barW-1,h);
+            }
+        }
+        document.getElementById('histStats').innerHTML=`Entries: ${massEntries} | &lt;M&gt;: ${massEntries>0?(massSum/massEntries).toFixed(2):'—'} GeV`;
+    }
+}
+window.addPTValue=function(pT){
+    if(pT<0||pT>50) return;
+    const bin=Math.floor(pT/50*40);
+    if(bin>=0&&bin<40){ptHist[bin]++; ptEntries++; ptSum+=pT; drawHistogram();}
+};
+window.addInvariantMass=function(m){
+    if(m<0||m>120) return;
+    const bin=Math.floor(m/120*50);
+    if(bin>=0&&bin<50){massHist[bin]++; massEntries++; massSum+=m; drawHistogram();}
+};
+window.startEventRecording=function(){currentEventParts=[];};
+window.recordParticle=function(px,py,pz,m){
+    const pMag=Math.hypot(px,py,pz);
+    const E=Math.sqrt(pMag*pMag + m*m);
+    currentEventParts.push({px,py,pz,E,m});
+};
+window.endEventRecording=function(){
+    for(let i=0;i<currentEventParts.length;i++){
+        for(let j=i+1;j<currentEventParts.length;j++){
+            const p1=currentEventParts[i], p2=currentEventParts[j];
+            const Etot=p1.E+p2.E, pxtot=p1.px+p2.px, pytot=p1.py+p2.py, pztot=p1.pz+p2.pz;
+            const m2=Etot*Etot-(pxtot*pxtot+pytot*pytot+pztot*pztot);
+            if(m2>0) window.addInvariantMass(Math.sqrt(m2));
+        }
+    }
+};
+window.resetHistograms=function(){
+    ptHist=new Array(40).fill(0); ptEntries=0; ptSum=0;
+    massHist=new Array(50).fill(0); massEntries=0; massSum=0;
+    drawHistogram();
+};
+
+// ============================================================
+// Module 3: Jet clustering (identical to original)
+// ============================================================
+class JetClusterer {
+    constructor(R=0.4, pTMin=5.0){this.R=R; this.pTMin=pTMin; this.R2=R*R;}
+    cluster(parts){
+        let inputs=parts.map(p=>({...p,used:false,kt2:p.pt*p.pt})), jets=[];
+        while(true){
+            let minD=Infinity, minI=-1, minJ=-1, isBeam=false;
+            for(let i=0;i<inputs.length;i++){
+                if(inputs[i].used) continue;
+                const diB=inputs[i].kt2;
+                if(diB<minD){minD=diB; minI=i; minJ=-1; isBeam=true;}
+                for(let j=i+1;j<inputs.length;j++){
+                    if(inputs[j].used) continue;
+                    const dEta=inputs[i].eta-inputs[j].eta;
+                    let dPhi=inputs[i].phi-inputs[j].phi;
+                    while(dPhi>Math.PI) dPhi-=2*Math.PI;
+                    while(dPhi<-Math.PI) dPhi+=2*Math.PI;
+                    const dR2=dEta*dEta+dPhi*dPhi;
+                    const dij=Math.min(inputs[i].kt2,inputs[j].kt2)*dR2/this.R2;
+                    if(dij<minD){minD=dij; minI=i; minJ=j; isBeam=false;}
+                }
+            }
+            if(minI===-1) break;
+            if(isBeam){
+                if(inputs[minI].pt>=this.pTMin) jets.push(this._makeJet([inputs[minI]]));
+                inputs[minI].used=true;
+            } else {
+                inputs[minI]=this._merge(inputs[minI],inputs[minJ]);
+                inputs[minJ].used=true;
+            }
+        }
+        jets.sort((a,b)=>b.pt-a.pt);
+        return jets;
+    }
+    _merge(p1,p2){
+        const px=p1.px+p2.px, py=p1.py+p2.py, pz=p1.pz+p2.pz, e=p1.e+p2.e;
+        const pt=Math.hypot(px,py), pMag=Math.hypot(px,py,pz);
+        const cosTheta=pMag===0?0:pz/pMag;
+        const eta=pMag===0?0:-0.5*Math.log(Math.max(1e-10,(1-cosTheta)/(1+Math.max(cosTheta,-0.9999999))));
+        const phi=Math.atan2(py,px);
+        return {px,py,pz,e,pt,eta,phi,kt2:pt*pt,used:false};
+    }
+    _makeJet(parts){
+        let px=0,py=0,pz=0,e=0;
+        for(const p of parts){px+=p.px;py+=p.py;pz+=p.pz;e+=p.e;}
+        const pt=Math.hypot(px,py), pMag=Math.hypot(px,py,pz);
+        const cosTheta=pMag===0?0:pz/pMag;
+        const eta=pMag===0?0:-0.5*Math.log(Math.max(1e-10,(1-cosTheta)/(1+Math.max(cosTheta,-0.9999999))));
+        const phi=Math.atan2(py,px);
+        return {pt,eta,phi,constituents:parts.length};
+    }
+}
+let currentJets=[];
+window.runJetClustering=function(parts){
+    if(!parts||parts.length===0){currentJets=[]; updateJetUI(); return [];}
+    const R=parseFloat(document.getElementById('jetR').value)||0.4;
+    const pTMin=parseFloat(document.getElementById('jetPtMin').value)||5;
+    currentJets=new JetClusterer(R,pTMin).cluster(parts);
+    updateJetUI(); return currentJets;
+};
+function updateJetUI(){
+    document.getElementById('jetCount').innerText=currentJets.length;
+    document.getElementById('totalJetPt').innerText=currentJets.reduce((s,j)=>s+j.pt,0).toFixed(1);
+    const container=document.getElementById('jetList');
+    container.innerHTML=currentJets.length===0?'—':currentJets.slice(0,6).map((j,i)=>`<div class="list-item">Jet${i+1}: pT=${j.pt.toFixed(1)} GeV, η=${j.eta.toFixed(2)}</div>`).join('');
+}
+
+// ============================================================
+// Module 4: Displaced Vertex (identical to original)
+// ============================================================
+let vertices=[];
+window.addDisplacedVertex=function(parent,daughters,x,y,z){
+    const dist=Math.hypot(x,y,z);
+    vertices.unshift({parent,daughters,x,y,z,dist});
+    if(vertices.length>30) vertices.pop();
+    document.getElementById('vertexCount').innerText=vertices.length;
+    const avg=vertices.reduce((s,v)=>s+v.dist,0)/vertices.length;
+    document.getElementById('avgDist').innerHTML=avg.toFixed(1);
+    document.getElementById('vertexList').innerHTML=vertices.slice(0,8).map(v=>`<div class="list-item">${v.parent}→${v.daughters.join(',')}<br>📍 ${v.dist.toFixed(1)} mm</div>`).join('');
+};
+window.clearDisplacedVertices=function(){
+    vertices=[];
+    document.getElementById('vertexCount').innerText='0';
+    document.getElementById('avgDist').innerHTML='—';
+    document.getElementById('vertexList').innerHTML='—';
+};
+
+// ============================================================
+// Module 5: Event Filter (identical to original)
+// ============================================================
+let activeFilters=new Set();
+const filterPatterns={
+    'Z->ee':    s=>s.includes('Z')&&(s.includes('e⁺')||s.includes('e⁻')),
+    'Z->μμ':    s=>s.includes('Z')&&(s.includes('μ⁺')||s.includes('μ⁻')),
+    'H->γγ':    s=>s.includes('H')&&s.includes('γ'),
+    'Jpsi->μμ': s=>(s.includes('J/ψ')||s.includes('psi'))&&s.includes('μ'),
+};
+let passedEvents=0, rejectedEvents=0;
+window.checkEventFilter=function(decayStr,particlePtEta){
+    let decayPass=true;
+    if(activeFilters.size>0){
+        decayPass=false;
+        for(const f of activeFilters) if(filterPatterns[f]&&filterPatterns[f](decayStr)){decayPass=true;break;}
+    }
+    if(!decayPass){rejectedEvents++; updateFilterStats(); return false;}
+    const ptMin=parseFloat(document.getElementById('ptMin').value)||0;
+    const etaMax=parseFloat(document.getElementById('etaMax').value)||2.5;
+    if(particlePtEta&&particlePtEta.pt<ptMin){rejectedEvents++; updateFilterStats(); return false;}
+    if(particlePtEta&&Math.abs(particlePtEta.eta)>etaMax){rejectedEvents++; updateFilterStats(); return false;}
+    passedEvents++; updateFilterStats(); return true;
+};
+function updateFilterStats(){
+    document.getElementById('passedCount').innerText=passedEvents;
+    document.getElementById('rejectedCount').innerText=rejectedEvents;
+}
+
+// ============================================================
+// UI utilities
+// ============================================================
+window.toggleModule=function(el){
+    const panel=el.closest('.module-panel');
+    panel.classList.toggle('minimized');
+};
+window.hideModule=function(id){
+    document.getElementById(id).style.display='none';
+};
+
+// ============================================================
+// UI event bindings
+// ============================================================
+document.getElementById('bSlide').addEventListener('input',e=>{Bfield=parseFloat(e.target.value); document.getElementById('bVal').innerHTML=Bfield.toFixed(1);});
+document.getElementById('eSlide').addEventListener('input',e=>{sqrtS=parseInt(e.target.value); document.getElementById('eVal').innerHTML=sqrtS;});
+document.getElementById('trailSlide').addEventListener('input',e=>{trailMax=parseInt(e.target.value); document.getElementById('trailVal').innerHTML=trailMax; if(trailManager) trailManager.setMaxLength(trailMax);});
+document.getElementById('bhDistSlide').addEventListener('input',e=>{
+    BH_DIST=+e.target.value;
+    document.getElementById('bhDistVal').innerHTML=e.target.value;
+    bhPos.set(BH_DIST, 0, 0);
+    updateBHVisual();
+});
+document.getElementById('bhMassSlide').addEventListener('input',e=>{
+    BH_MASS=+e.target.value;
+    document.getElementById('bhMassVal').innerHTML=(+e.target.value).toLocaleString();
+    updateBHVisual();
+});
+document.getElementById('bhSpinSlide').addEventListener('input',e=>{
+    BH_SPIN=+e.target.value;
+    document.getElementById('bhSpinVal').innerHTML=(+e.target.value).toFixed(2);
+    updateBHVisual();
+});
+document.getElementById('gridBrightSlide').addEventListener('input',e=>{
+    GRID_BRIGHT=+e.target.value;
+    document.getElementById('gridBrightVal').innerHTML=(+e.target.value).toFixed(2);
+});
+document.getElementById('collideBtn').addEventListener('click',generateCollision);
+document.getElementById('clearBtn').addEventListener('click',clearSimulation);
+document.getElementById('resetHitsBtn').addEventListener('click',()=>window.clearCalorimeter());
+document.getElementById('resetHistBtn').addEventListener('click',()=>window.resetHistograms());
+document.getElementById('tabPtBtn').addEventListener('click',()=>{histCurrentTab='pt'; drawHistogram();});
+document.getElementById('tabMassBtn').addEventListener('click',()=>{histCurrentTab='mass'; drawHistogram();});
+document.getElementById('clusterBtn').addEventListener('click',()=>{
+    const parts=particles.filter(p=>p.mesh&&!p.isInvisible&&p.charge!==0).map(p=>{
+        const px=p.p4.px, py=p.p4.py, pz=p.p4.pz;
+        const pt=Math.hypot(px,py), pMag=Math.hypot(px,py,pz);
+        const eta=pMag===0?0:Math.atanh(pz/pMag), phi=Math.atan2(py,px);
+        return {px,py,pz,e:p.p4.E,pt,eta,phi};
+    });
+    window.runJetClustering(parts);
+});
+document.getElementById('clearVerticesBtn').addEventListener('click',()=>window.clearDisplacedVertices());
+document.getElementById('applyFilterBtn').addEventListener('click',()=>{
+    activeFilters.clear();
+    document.querySelectorAll('#decayFilters input:checked').forEach(cb=>activeFilters.add(cb.value));
+    passedEvents=0; rejectedEvents=0; updateFilterStats();
+});
+window.addEventListener('resize',()=>{
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+});
+
+// ============================================================
+// Animation loop
+// ============================================================
+trailManager=new TrailManager(scene,trailMax,0.45);
+let lastTs=performance.now();
+let bhAnimTime = 0;
+function animate(){
+    const now=performance.now(), dt=Math.min(0.033,(now-lastTs)/1000);
+    lastTs=now;
+    bhAnimTime += dt;
+
+    // 강착원반 링 회전 (LineLoop)
+    if (BH_MASS > 0 && BH_SPIN > 0) {
+        bhVisuals.forEach((obj, i) => {
+            if (obj && obj.isLine) {
+                const speed = (0.12 + BH_SPIN * 0.30) / (1 + i * 0.25);
+                obj.rotation.z += speed * dt;
+            }
+            if (obj && obj.geometry && obj.geometry.type === 'SphereGeometry' && obj.material && obj.material.wireframe) {
+                obj.rotation.y += 0.08 * BH_SPIN * dt;
+            }
+        });
+    }
+
+    updateWorld(dt);
+    updateGridWarp();
+    controls.update();
+    renderer.render(scene,camera);
+    requestAnimationFrame(animate);
+}
+animate();
+generateCollision();
+</script>
+
+<!-- ============================================================ -->
+<!-- Physics Extensions (HCAL, PID, Trigger, CP, etc.) identical -->
+<!-- ============================================================ -->
+<script>
+(function(){
+    console.log('🚀 LHC Physics Extensions v1.0 - Safe Merge (Patched version)');
+    
+    window.EnergyMomentumValidator = {
+        enabled: true, tolerance: 0.01,
+        checkDecay(parent_p4, children_p4_list, decayName) {
+            if(!this.enabled) return true;
+            if(!children_p4_list || children_p4_list.length === 0) return true;
+            let sumE = 0, sumPx = 0, sumPy = 0, sumPz = 0;
+            for(const child of children_p4_list) { if(!child) continue; sumE += child.E || 0; sumPx += child.px || 0; sumPy += child.py || 0; sumPz += child.pz || 0; }
+            const dE = Math.abs(parent_p4.E - sumE);
+            if(dE > this.tolerance) console.warn(`⚠️ Energy violation in ${decayName}: ΔE=${dE.toFixed(4)} GeV`);
+            return true;
+        }
+    };
+    
+    window.NeutrinoOscillation = {
+        enabled: true, dm2_atm: 2.5e-3, dm2_sol: 7.4e-5,
+        oscillate(flavor, distance_km, energy_GeV) {
+            if(!this.enabled || !flavor || !flavor.includes('nu')) return flavor;
+            const L = distance_km || 10, E = energy_GeV || 1;
+            const sin2_2theta_atm = 1.00;  // θ₂₃ ≈ 45° → sin²(2θ₂₃) ≈ 1.0  (PDG 2022)
+            const sin2_2theta_sol = 0.846; // θ₁₂ ≈ 34° → sin²(2θ₁₂) ≈ 0.846 (PDG 2022)
+            const P_mu_tau = sin2_2theta_atm * Math.sin(1.27 * this.dm2_atm * L / E) ** 2;
+            const P_e_mu   = sin2_2theta_sol * Math.sin(1.27 * this.dm2_sol * L / E) ** 2;
+
+            const r = Math.random();
+            if(flavor === 'numu' || flavor === 'antinumu') {
+                if(r < P_mu_tau * 0.5) return flavor === 'numu' ? 'nutau' : 'antinutau';
+                if(r < P_mu_tau) return flavor === 'numu' ? 'numu' : 'antinumu';
+            } else if(flavor === 'nue' || flavor === 'antinue') {
+                if(r < P_e_mu * 0.5) return flavor === 'nue' ? 'numu' : 'antinumu';
+                if(r < P_e_mu) return flavor === 'nue' ? 'nue' : 'antinue';
+            }
+            return flavor;
+        }
+    };
+    
+    window.HCAL = {
+        enabled: true, etaBins: 40, phiBins: 48, etaMin: -2.5, etaMax: 2.5, grid: null, totalEnergy: 0, totalHits: 0,
+        init() { this.grid = Array(this.etaBins).fill().map(() => Array(this.phiBins).fill(0)); this.createCanvas(); },
+        createCanvas() {
+            if(document.getElementById('hcalCanvas')) return;
+            const hcalModule = document.createElement('div');
+            hcalModule.className = 'module-panel'; hcalModule.id = 'hcalPanel';
+            hcalModule.style.position = 'absolute'; hcalModule.style.bottom = '250px'; hcalModule.style.right = '18px'; hcalModule.style.width = '250px';
+            hcalModule.innerHTML = `<div class="module-title" onclick="this.closest('.module-panel').classList.toggle('minimized')">🟤 HCAL (HADRON)<span class="close-module" onclick="event.stopPropagation(); document.getElementById('hcalPanel').style.display='none'">✕</span></div><div class="module-content"><canvas id="hcalCanvas" width="226" height="165" style="width:100%; height:auto; background:#050510; border-radius:6px; display:block;"></canvas><div style="display:flex; justify-content:space-between; margin-top:5px;"><span>🔥 <span id="hcalEnergy">0</span> GeV</span><span>💥 <span id="hcalHits">0</span> hits</span></div><button class="mini-btn red" id="resetHCALBtn" style="width:100%; margin-top:5px;">RESET</button></div>`;
+            document.body.appendChild(hcalModule);
+            this.canvas = document.getElementById('hcalCanvas'); this.ctx = this.canvas?.getContext('2d');
+            document.getElementById('resetHCALBtn')?.addEventListener('click', () => window.HCAL.clear());
+            this.drawGrid();
+        },
+        isHadron(typeKey) { if(!typeKey) return false; const hadrons = ['pion','kaon','proton','neutron','lambda','xi','omega','eta','rho','phi','D','B','psi','upsilon']; return hadrons.some(h => typeKey.includes(h)); },
+        addHit(eta, phi, energy, typeKey) { if(!this.enabled || !this.isHadron(typeKey) || energy<0.05) return; const i = Math.floor((eta-this.etaMin)/(this.etaMax-this.etaMin)*this.etaBins); let j = Math.floor((phi+Math.PI)/(2*Math.PI)*this.phiBins); j = Math.max(0, Math.min(this.phiBins-1, j)); if(i>=0 && i<this.etaBins && this.grid) { const hadronEnergy = energy * 0.85; this.grid[i][j] += hadronEnergy; this.totalEnergy += hadronEnergy; this.totalHits++; this.drawGrid(); this.updateUI(); } },
+        drawGrid() { if(!this.ctx || !this.canvas) return; const cellW = this.canvas.width / this.phiBins, cellH = this.canvas.height / this.etaBins; this.ctx.fillStyle = '#050510'; this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height); for(let i=0;i<this.etaBins;i++) for(let j=0;j<this.phiBins;j++) { const eng = this.grid[i][j]; if(eng>0) { this.ctx.fillStyle = eng<2?'#663300':eng<5?'#aa5500':eng<10?'#ff8800':'#ff4400'; this.ctx.fillRect(j*cellW,i*cellH,cellW,cellH); } } },
+        updateUI() { document.getElementById('hcalEnergy').innerText = this.totalEnergy.toFixed(1); document.getElementById('hcalHits').innerText = this.totalHits; },
+        clear() { this.grid = Array(this.etaBins).fill().map(()=>Array(this.phiBins).fill(0)); this.totalEnergy=0; this.totalHits=0; this.drawGrid(); this.updateUI(); },
+    };
+    
+    window.ParticleID = {
+        enabled: true,
+        calculateProbability(particle, measured_dEdx) { const expected = this.expected_dEdx(particle); if(expected<=0) return 0; const sigma = 0.05 * expected; return Math.exp(-Math.pow(measured_dEdx-expected,2)/(2*sigma*sigma)); },
+        expected_dEdx(particle) { if(!particle||!particle.p4) return 0; const m=particle.mass, q=particle.charge; if(q===0||m<=0) return 0; const beta=particle.p4.beta(); if(beta<0.02) return 0; const gamma=particle.p4.gamma(); const arg=Math.max(1.1,(2*0.000511*beta*beta*gamma*gamma)/175e-9); return 0.000032 * q*q/(beta*beta)*(Math.log(arg)-beta*beta); },
+        mostLikely(measured_dEdx, candidates) { let best=null, bestProb=-1; for(const cand of candidates){ const prob=this.calculateProbability(cand,measured_dEdx); if(prob>bestProb){bestProb=prob; best=cand;}} return {type:best?best.type:null, probability:bestProb}; }
+    };
+    
+    window.UnderlyingEvent = { enabled: true, generate(sqrtS, hard_mult) { if(!this.enabled) return []; const ue_mult = Math.floor(hard_mult * (0.3+Math.random()*0.2)); const particles=[]; const types=['pion_p','pion_m','pion_0','kaon_p','kaon_m','proton']; for(let i=0;i<Math.min(ue_mult,100);i++){ const pT=0.1+Math.random()*1.9, eta=(Math.random()-0.5)*6, phi=2*Math.PI*Math.random(), type=types[Math.floor(Math.random()*types.length)]; particles.push({type,pT,eta,phi}); } return particles; } };
+    
+    window.VertexSmearing = { enabled: true, resolutions: {'K⁰S':2.0,'Λ⁰':3.0,'B⁺':0.05,'B⁻':0.05,'B⁰':0.05,'D⁰':0.12,'D⁺':0.12, default:1.0}, smear(sym,x,y,z){ if(!this.enabled) return {x,y,z}; const sigma=this.resolutions[sym]||this.resolutions.default; return {x:x+(Math.random()-0.5)*sigma, y:y+(Math.random()-0.5)*sigma, z:z+(Math.random()-0.5)*sigma}; } };
+    
+    window.TriggerSim = { enabled: true, L1_trigger(event){ const hasHighPt = event.particles && event.particles.some(p=>p.p4 && p.p4.pT()>50); const hasHighMass = (event.invariantMass||0)>80; return hasHighPt||hasHighMass; }, HLT_trigger(event){ const decays = event.decays||[]; const hasZtoEE = decays.some(d=>d && d.includes('Z')&&(d.includes('e⁺')||d.includes('e⁻'))); const hasHtoGG = decays.some(d=>d && d.includes('H')&&d.includes('γ')); return hasZtoEE||hasHtoGG; }, process(event){ if(!this.enabled) return true; if(!this.L1_trigger(event)) return false; return this.HLT_trigger(event); } };
+    
+    window.CPViolation = { enabled: true, sin2beta: 0.699, asymmetry(decayTime_ps){ const delta_m=0.5065; return this.sin2beta*Math.sin(delta_m*(decayTime_ps||1)); }, shouldOscillate(particleType, decayTime_ps){ if(!this.enabled||particleType!=='B0') return false; return this.asymmetry(decayTime_ps)>Math.random(); } };
+    
+    const originalAddCalorimeterHit = window.addCalorimeterHit;
+    // Safe patch: defer override until after module script sets up window.addCalorimeterHit
+    function patchCalorimeterHit() {
+        const base = window.addCalorimeterHit;
+        if(base && window.HCAL && !base._hcalPatched) {
+            window.addCalorimeterHit = function(eta,phi,energy,typeKey){
+                base(eta,phi,energy,typeKey);
+                if(typeKey && window.HCAL.enabled) window.HCAL.addHit(eta,phi,energy,typeKey);
+            };
+            window.addCalorimeterHit._hcalPatched = true;
+        }
+    }
+    // Try immediately, and also after a short delay in case module hasn't loaded yet
+    patchCalorimeterHit();
+    setTimeout(patchCalorimeterHit, 50);
+    setTimeout(patchCalorimeterHit, 200);
+    if(window.HCAL) window.HCAL.init();
+    console.log('✅ PhysicsExtensions v1.0 - All 8 modules injected safely (Patched version)');
+})();
+</script>
+</html>
