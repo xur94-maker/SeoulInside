@@ -133,7 +133,8 @@
     </div>
     <div class="slider-group">
         <span>🌀 BH 질량</span>
-        <input type="range" id="bhMassSlide" min="0" max="1000000000000" step="5000" value="0">
+        <input type="range" id="bhMassSlide" min="0" max="350" step="0.1" value="0">
+
         <span id="bhMassVal" class="val">0</span>
     </div>
     <div class="slider-group">
@@ -459,12 +460,25 @@ function sampleRapidity(sigma=2.3, yMax=5.0) {
 }
 
 function calcMultiplicity(sqrtS) {
-    const a=0.7604, b=0.3196;
-    const dNdeta=a*Math.pow(sqrtS,b);
-    const mean=dNdeta*9.5, k=3.0;
-    let n=0;
-    for(let i=0;i<k;i++) n-=Math.log(Math.max(1e-10,Math.random()));
-    return Math.max(5, Math.min(500, Math.round(n*mean/k)));
+    // <N_ch> 직접 피팅: ALICE UA5 pp 900 GeV ~ 13 TeV 데이터
+    // <N_ch> = A * sqrtS^B,  A=0.2348, B=0.6010
+    // 참조: Eur.Phys.J.C 68(2010)345, ALICE 13 TeV (PLB 802, 2020)
+    const A=0.2348, B=0.6010;
+    const mean = A * Math.pow(sqrtS, B);
+
+    // 음이항 분포 (Negative Binomial) — Gamma-Poisson 혼합으로 정확 구현
+    // k=2.0: pp KNO 위반 피팅값 (UA5, ALICE 공통)
+    // NB 이론: μ=mean, σ²=mean+mean²/k
+    const k_nb = 2.0;
+    // 1단계: Gamma(k_nb, 1) 샘플 → λ = g * (mean/k_nb)
+    let g = 0;
+    for(let i = 0; i < k_nb; i++) g -= Math.log(Math.max(1e-10, Math.random()));
+    const lambda = g * (mean / k_nb);
+    // 2단계: Poisson(λ) 샘플 (Knuth 알고리즘)
+    const L = Math.exp(-Math.min(lambda, 700));
+    let poisson = 0, p_prod = 1.0;
+    do { poisson++; p_prod *= Math.random(); } while(p_prod > L && poisson < 2000);
+    return Math.max(2, Math.min(500, poisson - 1));
 }
 
 const PRIMARY_WEIGHTS = [
@@ -729,9 +743,10 @@ function updateBHVisual() {
     if (BH_MASS <= 0) return;
     bhPos.set(BH_DIST, 0, 0);
 
-    const logM   = Math.log10(BH_MASS + 1);
-    const pointR = Math.max(1.0, logM * 0.7);
-    const oblate = 1.0 - BH_SPIN * 0.32;
+    // 물리 함수와 동일한 BH_MASS 직접 스케일로 시각 크기 통일 (0~12 범위)
+    const Rs_base   = BH_MASS * 0.16;   // 사건의 지평선 기준 반지름
+    const pointR    = Math.max(1.5, Rs_base * (1.0 + Math.sqrt(Math.max(0, 1 - BH_SPIN*BH_SPIN))) * 0.5);
+    const oblate    = 1.0 - BH_SPIN * 0.32;
 
     // ── 1. 사건의 지평선 — 구체 없음, 완전한 공백 ───────────────
     // 블랙홀은 보이지 않는다. 주변 효과만이 존재를 암시.
@@ -750,8 +765,9 @@ function updateBHVisual() {
     bhVisuals.push(photoRing);
 
     // ── 3. 강착원반 — 다중 레이어, 안쪽 청백 → 바깥 주황적 ─────
+    // ISCO: Kerr 계량에서 스핀에 따라 줄어듦 (a*=0: r_ISCO=6M, a*=1: r_ISCO=M)
     const iscoFactor = 1.0 - BH_SPIN * 0.45;
-    const diskBase   = Math.max(5, logM * 4.5) * iscoFactor;
+    const diskBase   = Math.max(5, Rs_base * 3.5) * iscoFactor;
 
     // 라인 링: THREE.LineLoop 사용 — 순수한 선
     const diskLines = [
@@ -804,7 +820,7 @@ function updateBHVisual() {
 
     // ── 5. 에르고구 — 스핀 > 0.15: 날카로운 와이어프레임 타원 ──
     if (BH_SPIN > 0.15) {
-        const ergoR = pointR * (1.6 + BH_SPIN * 1.1);
+        const ergoR = pointR * (2.0 + BH_SPIN * 1.2);  // r_ergo ≈ 2*Rs (적도)
         const ergoGeo = new THREE.SphereGeometry(ergoR, 18, 12);
         bhErgo = new THREE.Mesh(
             ergoGeo,
@@ -900,7 +916,6 @@ function buildSpacetimeGrid() {
 function updateGridWarp() {
     if (gridLines.length === 0) return;
     const hasBH = BH_MASS > 0;
-    const logMass = hasBH ? Math.log10(BH_MASS + 1) : 0;
 
     for (const line of gridLines) {
         const geo = line.geometry;
@@ -926,7 +941,7 @@ function updateGridWarp() {
                 const dz = oz - bhPos.z;
                 const r  = Math.sqrt(dx*dx + dy*dy + dz*dz) + 0.1;
                 // 왜곡 강도: 로그 스케일, 가까울수록 강하게
-                const warp = Math.min(0.92, logMass * 12 / (r * 0.18 + 1));
+                const warp = Math.min(0.92, BH_MASS * 1.0 / (r * 0.18 + 1));
                 nx = ox - (dx / r) * warp * (GRID_STEP * 0.9);
                 ny = oy - (dy / r) * warp * (GRID_STEP * 0.9);
                 nz = oz - (dz / r) * warp * (GRID_STEP * 0.9);
@@ -983,42 +998,36 @@ function applyBlackHoleGravity(p, dt) {
     const r2 = dx*dx + dy*dy + dz*dz + 0.01;
     const r  = Math.sqrt(r2);
 
-    const logMass = Math.log10(BH_MASS + 1);
-
-    // ── 사건의 지평선 반지름 (커 근사) ──────────────────────────
-    // r+ = M(1 + sqrt(1 - a*²))  →  스핀이 클수록 작아짐
-    const Rs_base = Math.max(0.8, logMass * 0.6);
+    // ── 사건의 지평선: 커 계량 r+ = Rs_base*(1+√(1-a*²))/2 ─────
+    const Rs_base = BH_MASS * 0.16;
     const Rs = Rs_base * (1.0 + Math.sqrt(Math.max(0, 1 - BH_SPIN * BH_SPIN))) * 0.5;
-    if (r < Rs * 2) return true;
+    if (r < Rs) return true;   // 사건의 지평선 내부 → 흡수
 
-    // ── 방사형 중력 (슈바르츠실트 항) ───────────────────────────
-    const gAcc = logMass * 120.0 / (r2 + 1.0);
+    // ── 방사형 중력 (슈바르츠실트 근사) ────────────────────────
+    const G_SIM  = 120.0;
+    const gAcc   = BH_MASS * G_SIM / (r2 + 1.0);
     p.p4.px -= gAcc * (dx / r) * dt;
     p.p4.py -= gAcc * (dy / r) * dt;
     p.p4.pz -= gAcc * (dz / r) * dt;
 
-    // ── 틀 끌림 (Frame Dragging) — 커 메트릭 핵심 ────────────── 260612 V3EE 에서 최초삭제
-    // Lense-Thirring 효과: Ω_LT = 2GJ/r³ 에서 영감
-    // 회전축 = Y축, 접선 방향 = (−dz, 0, dx) / r_xz
+    // ── 틀 끌림 (Lense-Thirring / 커 메트릭) ────────────────────
     //////if (BH_SPIN > 0) {
-    //////    const r_xz  = Math.sqrt(dx*dx + dz*dz) + 0.01;
-    //////    // 틀 끌림 가속도: 스핀 × 질량 / r³ 에 비례
-    //////    const fdAcc = BH_SPIN * logMass * 55.0 / (r2 * r + 1.0);
-    //////    // 접선 단위벡터 (Y축 주변 회전, 반시계방향)
+    //////    const FD_SIM = 55.0;
+    //////    const r_xz   = Math.sqrt(dx*dx + dz*dz) + 0.01;
+    //////    const fdAcc  = BH_SPIN * BH_MASS * FD_SIM / (r2 * r + 1.0);
     //////    const tx = -dz / r_xz;
     //////    const tz =  dx / r_xz;
     //////    p.p4.px += fdAcc * tx * dt;
     //////    p.p4.pz += fdAcc * tz * dt;
-    //////
-        // 에르고구 내부: 추가 가속 (공전 강제)   260612 V3EE 에서 최초삭제
-        // r_ergo ≈ 2 * Rs_base (적도 기준)
-       ////// const r_ergo = Rs_base * 2.0;
-       ////// if (r < r_ergo * 1.2 && BH_SPIN > 0.1) {
-       //////     const ergoFade = Math.max(0, Math.min(1, (r_ergo * 1.2 - r) / (r_ergo * 0.2)));
-       //////     const ergoBoost = BH_SPIN * logMass * 80.0 / (r2 + 1.0) * ergoFade;
-       //////     p.p4.px += ergoBoost * tx * dt;
-       //////     p.p4.pz += ergoBoost * tz * dt;
-       ////// }
+
+        // ── 에르고구: r < r_ergo = 2*Rs_base (적도 기준) ────────
+    //////    const r_ergo = Rs_base * 2.0;
+    //////    if (r < r_ergo && BH_SPIN > 0.1) {
+    //////        const ergoFade  = Math.max(0, Math.min(1, (r_ergo - r) / (r_ergo - Rs)));
+    //////        const ergoBoost = BH_SPIN * BH_MASS * 80.0 / (r2 + 1.0) * ergoFade;
+    //////         p.p4.px += ergoBoost * tx * dt;
+    //////        p.p4.pz += ergoBoost * tz * dt;
+    //////    }
     //////}
 
     // ── 에너지-운동량 관계 갱신 (상대론적) ─────────────────────
@@ -1092,7 +1101,10 @@ function decayParticle(p) {
         window.addDisplacedVertex(p.sym, chosen.products, sv.x, sv.y, sv.z);
     }
     if(window.CPViolation && p.type==='B0') {
-        const t_ps = (p.p4.gamma()*PDG.B0.life_SI)*1e12;
+        // 수정: 개별 입자의 실제 경과 수명 = (전체 수명 - 남은 수명) × γ → ps 변환
+        const tau_total = PDG.B0.life_SI * p.p4.gamma();  // 고유 수명 × γ (lab frame)
+        const t_elapsed = tau_total - p.life;              // 실제 경과 시간 (lab frame)
+        const t_ps = Math.max(0, t_elapsed) * 1e12;       // ps 단위
         if(window.CPViolation.shouldOscillate('B0', t_ps))
             addLog(`🔏 CP: B⁰→B̄⁰ oscillation  ACP=${window.CPViolation.asymmetry(t_ps).toFixed(3)}`, 'rare');
     }
