@@ -27,16 +27,19 @@ https://seoulinside.substack.com/p/the-passive-layer
 
 https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal
 
-https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
-
-
+---
 
 
 https://seoulinside.substack.com/p/long-term-survival-of-antimatter
 
 https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
 
+https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
 
+
+
+
+---
 
 https://seoulinside.substack.com/p/physics-series-full
 
@@ -64,6 +67,10 @@ https://seoulinside.substack.com/p/the-problem-that-could-break-everything
 
 https://seoulinside.substack.com/p/the-problem-that-has-defeated-every
 
+https://seoulinside.substack.com/p/solar-system-simulator-keplerian
+
+https://seoulinside.substack.com/p/the-moon-is-leaving-here-is-the-math
+
 ----
 
 
@@ -72,6 +79,7 @@ https://seoulinside.substack.com/p/the-problem-that-has-defeated-every
 ----
 
 https://seoulinside.substack.com/p/physics-series-full
+
 
 ----
 
@@ -99,6 +107,8 @@ https://seoulinside.substack.com/p/urban-layer-stacking-how-cities-survive
 
 https://seoulinside.substack.com/p/the-address-that-ate-the-university-bde
 
+
+
 ----
 ----
 
@@ -111,5 +121,9 @@ https://seoulinside.substack.com/p/the-rubber-ruler-problem
 https://seoulinside.substack.com/p/the-legibility-paradox-why-the-broken
 
 ----
+
+
+
+
 
 
