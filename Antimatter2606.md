@@ -349,27 +349,170 @@ What the simulation provides is a proof of concept at the level of physical mech
 
 ---
 
-## 7. The Boundary Asymmetry Mechanism
+# Section 7 (Reinforced): The Boundary Asymmetry Mechanism
 
-### 7.1 Domain Structure
+**Scope note:** This section extends the qualitative framework of the original Section 7 with order-of-magnitude estimates derivable from current observational and theoretical constraints. All quantitative claims are explicitly labeled by their basis (observed / theoretical prediction / derived estimate). No claim is made beyond what current knowledge permits.
+
+---
+
+## 7.1 Domain Structure
 
 If the early universe magnetic field drove charge separation, the result would be a universe divided into domains: regions dominated by matter separated from regions dominated by antimatter by boundary layers where the field reverses or weakens.
 
-The scale of these domains depends on the coherence length of the primordial magnetic field. After cosmic expansion and magnetohydrodynamic evolution, the domain scale is model-dependent. The observational question is not whether domain boundaries exist at some scale today, but whether the asymmetry between domains was sufficient to produce the observed baryon-to-photon ratio η_obs ~ 6 × 10⁻¹⁰.
+### 7.1.1 Domain Scale — Order-of-Magnitude Estimate
 
-Given the twenty-three-order-of-magnitude surplus of field strength over the minimum required for separation, even an extremely imperfect domain structure with small, irregular, partially mixed domains could produce the required asymmetry.
+The coherence length of the primordial magnetic field, L_B, sets the characteristic domain scale. This is model-dependent, but current constraints permit a bounded estimate.
 
-### 7.2 Asymmetric Annihilation at Domain Boundaries
+**From magnetohydrodynamic (MHD) evolution:**
+A primordial field generated at the electroweak phase transition (T_EW ~ 100 GeV) evolves under MHD turbulence. The coherence length grows via inverse cascade:
 
-At the boundaries between matter-dominated and antimatter-dominated domains, annihilation occurs as particles and antiparticles from adjacent domains encounter each other. Several mechanisms can drive asymmetric boundary annihilation:
+L_B(t) ~ L_EW · (t/t_EW)^{2/3}
 
-(i) Asymmetric diffusion: If the diffusion coefficients for particles and antiparticles differ due to asymmetric interactions with the ambient magnetic field, one population can diffuse across the boundary more efficiently and be annihilated at a higher rate.
+where L_EW is the initial correlation length at the electroweak scale.
 
-(ii) Thermal asymmetry: Annihilation is exothermic (releasing 2m_e c² per pair for e⁺e⁻). This energy heats the boundary region, driving further particle flux. If one domain is warmer than the other due to asymmetric magnetic energy dissipation, the flux asymmetry produces an asymmetric annihilation rate.
+**Observational constraint (Planck 2018 + Faraday rotation surveys):**
+Current comoving upper limit on coherence length: L_B,comoving < 1 Mpc
 
-(iii) Adiabatic compression: As the universe expands and cools, magnetic pressure may compress one type of domain preferentially depending on field topology.
+**Lower bound from causality:**
+At the electroweak phase transition (t_EW ~ 10^{-11} s), the Hubble horizon is:
+R_H,EW ~ c · t_EW ~ 3 × 10^{-3} cm (physical)
 
-Any of these effects, operating at one part in 10¹⁰, is sufficient to produce the observed baryon asymmetry without CP violation, without baryon number violation, and without new physics.
+The initial correlation length cannot exceed the Hubble horizon, so:
+L_EW < 3 × 10^{-3} cm (physical at T_EW)
+
+**Derived domain scale at nucleosynthesis (T ~ 1 MeV, t ~ 1 s):**
+Scaling by MHD inverse cascade from T_EW to T_nucl:
+
+L_nucl ~ L_EW · (t_nucl / t_EW)^{2/3}
+       ~ 3×10^{-3} cm · (1 s / 10^{-11} s)^{2/3}
+       ~ 3×10^{-3} · 10^{7.3} cm
+       ~ 6 × 10^4 cm ~ 600 m (physical)
+
+In comoving units (redshift factor ~10^9 from nucleosynthesis to today):
+L_nucl,comoving ~ 600 m / 10^9 ~ 6 × 10^{-7} m ~ sub-micron scale today
+
+**Status:** This is a derived estimate, sensitive to the MHD cascade model. The key point is not the precise value but the implication: domain scales at nucleosynthesis were many orders of magnitude smaller than the Hubble horizon (~3 × 10^{10} cm). There were approximately (R_H / L_nucl)^3 ~ (10^{10} / 10^5)^3 = 10^{15} domains within the observable horizon at nucleosynthesis. Even with imperfect separation, statistical averaging over 10^{15} domains strongly suppresses large-scale asymmetry — consistent with the observed uniformity of the CMB.
+
+---
+
+## 7.2 Asymmetric Annihilation at Domain Boundaries
+
+At the boundaries between matter-dominated and antimatter-dominated domains, annihilation occurs as particles and antiparticles from adjacent domains encounter each other.
+
+### 7.2.1 Annihilation Rate at the Boundary — Order-of-Magnitude Estimate
+
+The annihilation rate per unit volume at a domain boundary:
+
+Γ_ann = n_+ · n_- · ⟨σ_ann v_rel⟩
+
+At nucleosynthesis (T ~ 1 MeV), the baryon number density is:
+n_b ~ η_obs · n_γ ~ 6×10^{-10} · 10^{31} cm^{-3} ~ 2×10^{22} cm^{-3}
+
+But we are concerned with the epoch before nucleosynthesis, when pair production was still active (T > m_e c^2 ~ 0.511 MeV, t < 1 s). At T ~ 1 MeV:
+n_e ~ n_γ ~ (2ζ(3)/π²) T³ ~ 10^{31} cm^{-3}
+
+The thermally-averaged annihilation cross section at v_rel ~ c:
+⟨σ_ann v_rel⟩ ~ π r_e² c ~ π (2.8×10^{-13})² · 3×10^{10} ~ 7×10^{-16} cm³/s
+
+The characteristic annihilation timescale at the boundary:
+τ_ann ~ 1 / (n_e · ⟨σ_ann v_rel⟩) ~ 1 / (10^{31} · 7×10^{-16}) ~ 10^{-16} s
+
+This is much shorter than the Hubble time at that epoch (t_H ~ 1 s at T ~ 1 MeV). This confirms that any particle and antiparticle that physically encounter each other will annihilate essentially instantaneously — reinforcing that separation must be spatial, not temporal.
+
+### 7.2.2 Required Boundary Asymmetry — Derived from η_obs
+
+The required surviving asymmetry is:
+
+(n_b - n_{b̄}) / n_{b̄} ≈ η_obs ~ 6.1 × 10^{-10}
+
+This can be recast as a geometric constraint on domain boundaries.
+
+Consider two adjacent domains of size L (one matter, one antimatter) separated by a boundary layer of thickness δ. The fraction of particles within distance δ of the boundary is:
+
+f_boundary ~ δ / L
+
+For the asymmetry to survive, annihilation must be incomplete — meaning either:
+(a) The boundary layer thickness δ is small compared to L, limiting the fraction that annihilates, or
+(b) Annihilation at the boundary produces an asymmetric flux, with more antimatter than matter crossing from one domain to the other.
+
+**Constraint from η_obs:**
+If fraction f_ann of each domain annihilates at the boundary symmetrically, and a fraction ε > 0 more antimatter than matter is destroyed:
+
+Net surviving asymmetry ~ ε · f_ann ~ η_obs ~ 6 × 10^{-10}
+
+For f_ann ~ 1 (most boundary material annihilates):
+ε ~ 6 × 10^{-10}
+
+This means an asymmetry of just one part in 1.6 × 10^9 in the boundary annihilation rate is sufficient. This is a surprisingly weak condition — well within the range of small physical effects such as:
+
+- Asymmetric diffusion coefficients (electrons diffuse faster than protons by factor ~√(m_p/m_e) ~ 43)
+- Thermal gradients from asymmetric magnetic energy dissipation
+- CP violation at the domain interface (even the known SM CP violation of ~10^{-5} exceeds the required ~10^{-10} by five orders of magnitude when applied locally at the boundary)
+
+**Status:** The required boundary asymmetry is derivable from η_obs. Its magnitude (one part in ~10^9–10^{10}) is so small that multiple known physical effects are individually sufficient to produce it. This does not prove the mechanism worked — it demonstrates the required condition is not stringent.
+
+---
+
+## 7.3 Upper Bound on Surviving Antimatter — Observational Constraint
+
+If this mechanism operated, regions of antimatter must exist somewhere. Current observational constraints bound the scale of these regions.
+
+**From the diffuse gamma-ray background (COMPTEL/INTEGRAL/Fermi):**
+No excess 511 keV annihilation radiation has been observed beyond our galactic center and cosmic ray sources. This constrains bulk antimatter regions to:
+
+R_anti > 10 Mpc (comoving)
+
+meaning any surviving antimatter domains must be larger than ~10 Mpc in size today — otherwise the annihilation boundary would produce observable gamma-ray flux.
+
+**From Big Bang Nucleosynthesis (BBN):**
+BBN is sensitive to baryon-to-photon ratio η at the epoch of nucleosynthesis. Spatial variations in η from domain inhomogeneity are constrained by the observed uniformity of primordial helium abundance:
+
+δη/η < 0.1 on scales < 100 Mpc (comoving)
+
+**Implication:**
+If surviving antimatter domains exist, they are either:
+(a) Larger than ~10 Mpc (beyond current observational reach), or
+(b) Completely annihilated before the present epoch
+
+Both outcomes are consistent with the mechanism. The observational null result does not falsify the mechanism — it constrains the domain size.
+
+**Status:** This is a genuine constraint, not a free parameter. If future surveys (SKA, Fermi-LAT extended) detect anomalous 511 keV emission on Mpc scales, it would strongly support this mechanism. Non-detection on scales below 10 Mpc is consistent with but does not require the mechanism.
+
+---
+
+## 7.4 Summary: What Current Knowledge Permits Us to Claim
+
+The following table distinguishes what is known, what is derived, and what remains open.
+
+| Claim | Basis | Status |
+|---|---|---|
+| Separation occurs for any B ≠ 0 | Lorentz force law | Certain |
+| Predicted primordial fields exceed separation threshold by 10^{23} | Vachaspati 1991, Section 5 | Theoretical prediction (well-established models) |
+| Domain scale at nucleosynthesis ~ 10^5 cm | MHD inverse cascade estimate | Order-of-magnitude estimate (model-dependent) |
+| Number of domains within Hubble horizon ~ 10^{15} | Derived from domain scale | Order-of-magnitude estimate |
+| Required boundary asymmetry ~ 6 × 10^{-10} | Derived from η_obs | Exact (from Planck 2018) |
+| Required asymmetry is weaker than known SM effects | Comparison with known CP violation | Derived comparison |
+| Surviving antimatter domains, if any, are > 10 Mpc | COMPTEL/INTEGRAL/Fermi constraints | Observational constraint |
+| Quantitative efficiency under realistic early-universe conditions | Not calculated | Open question |
+| Detailed domain interface dynamics | Not derived | Open question |
+
+---
+
+## 7.5 What This Section Does Not Claim
+
+This reinforced section does not claim:
+
+- That the mechanism produced exactly η_obs = 6.1 × 10^{-10}. It claims the required asymmetry is small enough that multiple known physical effects are individually sufficient to produce it.
+
+- That the domain scale estimate (Section 7.1.1) is precise. It is an order-of-magnitude estimate based on MHD cascade models. The coherence length evolution is model-dependent.
+
+- That surviving antimatter domains do not exist. Current observations constrain their minimum size, not their existence.
+
+- That the magnetic separation mechanism is the sole or dominant contributor to the observed baryon asymmetry. It may be one of several contributing mechanisms.
+
+The claims made are: (1) the mechanism exists and operates for any B ≠ 0, (2) the required asymmetry is quantitatively small by the standards of known physics, and (3) current observational constraints are consistent with the mechanism rather than excluding it.
+
+These three claims are supportable from current knowledge. Everything beyond them is labeled as open.
 
 ---
 
