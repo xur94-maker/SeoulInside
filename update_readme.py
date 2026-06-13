@@ -2,12 +2,13 @@
 update_readme.py
 ─────────────────
 RSS 피드(seoulinside.substack.com)에서 최신 글을 가져와:
-  1. README.md 의 BLOG-POST-LIST 섹션을 자동 갱신
+  1. README.md 의 BLOG-POST-LIST 섹션을 자동 갱신 (제목 + 요약 포함 → SEO)
   2. index.html 이 읽는 data.json 의 myPosts / latestPost 를 갱신
 """
 
 import json
 import re
+import html
 import feedparser
 from datetime import datetime, timezone
 from pathlib import Path
@@ -17,28 +18,44 @@ FEED_URL      = "https://seoulinside.substack.com/feed"
 README_PATH   = "README.md"
 DATA_JSON     = "data.json"
 MAX_POSTS     = 10   # README 목록 & data.json myPosts 개수
+SUMMARY_CHARS = 150  # README에 넣을 요약 최대 글자수
 START_TAG     = "<!-- BLOG-POST-LIST:START -->"
 END_TAG       = "<!-- BLOG-POST-LIST:END -->"
 # ──────────────────────────────────────────────────────
 
 
 # ── RSS 가져오기 ───────────────────────────────────────
+def strip_html(raw: str) -> str:
+    """HTML 태그 제거 후 공백 정리"""
+    clean = re.sub(r"<[^>]+>", " ", raw)
+    clean = html.unescape(clean)
+    clean = re.sub(r"\s+", " ", clean).strip()
+    return clean
+
+
 def fetch_entries(feed_url: str, max_n: int) -> list[dict]:
     feed = feedparser.parse(feed_url)
     results = []
     for entry in feed.entries[:max_n]:
-        # summary / content 에서 본문 HTML 추출
+        # 본문 HTML (data.json latestPost용)
         body_html = ""
         if hasattr(entry, "content"):
             body_html = entry.content[0].get("value", "")
         elif hasattr(entry, "summary"):
             body_html = entry.summary
 
+        # 요약 텍스트 (README SEO용) — summary 우선, 없으면 본문 앞부분
+        summary_raw = entry.get("summary", body_html)
+        summary_text = strip_html(summary_raw)
+        if len(summary_text) > SUMMARY_CHARS:
+            summary_text = summary_text[:SUMMARY_CHARS].rsplit(" ", 1)[0] + "…"
+
         results.append({
-            "title": entry.get("title", "제목 없음"),
-            "link":  entry.get("link", ""),
-            "date":  entry.get("published", ""),
-            "body":  body_html,
+            "title":   entry.get("title", "제목 없음"),
+            "link":    entry.get("link", ""),
+            "date":    entry.get("published", ""),
+            "summary": summary_text,
+            "body":    body_html,
         })
     return results
 
@@ -55,13 +72,21 @@ def format_date(raw: str) -> str:
 
 # ── 1. README 갱신 ─────────────────────────────────────
 def build_readme_block(entries: list[dict]) -> str:
+    """
+    각 글을 제목 + 날짜 + 요약 형태로 렌더링.
+    구글이 제목과 요약 텍스트를 모두 인덱싱할 수 있어 SEO에 효과적.
+    """
     lines = []
     for e in entries:
         date = format_date(e["date"])
         date_str = f" `{date}`" if date else ""
-        lines.append(f"- [{e['title']}]({e['link']}){date_str}")
+        lines.append(f"### [{e['title']}]({e['link']}){date_str}")
+        if e["summary"]:
+            lines.append(f"{e['summary']}")
+        lines.append("")  # 빈 줄로 구분
+
     updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    lines.append(f"\n> 🔄 마지막 업데이트: {updated}")
+    lines.append(f"> 🔄 마지막 업데이트: {updated}")
     return "\n".join(lines)
 
 
@@ -95,7 +120,6 @@ def update_readme(block: str) -> None:
 def update_data_json(entries: list[dict]) -> None:
     data_path = Path(DATA_JSON)
 
-    # 기존 data.json 이 있으면 읽어서 stocks/news 등 보존
     existing: dict = {}
     if data_path.exists():
         try:
@@ -105,30 +129,19 @@ def update_data_json(entries: list[dict]) -> None:
 
     now_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
-    # myPosts: index.html 1열에 표시되는 글 목록
     my_posts = [
-        {
-            "title": e["title"],
-            "link":  e["link"],
-            "date":  e["date"],
-        }
+        {"title": e["title"], "link": e["link"], "date": e["date"]}
         for e in entries
     ]
 
-    # latestPost: index.html 하단 전문 섹션
     latest = entries[0] if entries else None
     latest_post = (
-        {
-            "title": latest["title"],
-            "link":  latest["link"],
-            "date":  latest["date"],
-            "body":  latest["body"],
-        }
+        {"title": latest["title"], "link": latest["link"],
+         "date": latest["date"], "body": latest["body"]}
         if latest
         else existing.get("latestPost", {})
     )
 
-    # 기존 stocks / news 는 그대로 유지하고 posts 부분만 교체
     existing.update({
         "myPosts":    my_posts,
         "latestPost": latest_post,
@@ -155,11 +168,7 @@ if __name__ == "__main__":
     for i, e in enumerate(entries, 1):
         print(f"  {i}. {e['title']}")
 
-    # 1) README 갱신
-    readme_block = build_readme_block(entries)
-    update_readme(readme_block)
-
-    # 2) data.json 갱신
+    update_readme(build_readme_block(entries))
     update_data_json(entries)
 
     print("\n🎉 완료!")
