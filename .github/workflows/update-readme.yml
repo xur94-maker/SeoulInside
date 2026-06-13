@@ -1,4 +1,4 @@
-name: 📝 README 최신 글 자동 갱신
+name: 📝 README & data.json 자동 갱신
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Actions 탭에서 수동 실행 가능
 
 jobs:
-  update-readme:
+  update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -24,13 +24,13 @@ jobs:
       - name: 📦 feedparser 설치
         run: pip install feedparser
 
-      - name: 🔄 README 갱신 스크립트 실행
+      - name: 🔄 스크립트 실행 (README + data.json 동시 갱신)
         run: python update_readme.py
 
       - name: 💾 변경 사항 커밋 & 푸시
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git diff --cached --quiet || git commit -m "chore: 최신 블로그 글 자동 반영 📝"
+          git add README.md data.json
+          git diff --cached --quiet || git commit -m "chore: RSS 기반 README & data.json 자동 갱신 📝"
           git push
