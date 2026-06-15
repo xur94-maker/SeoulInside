@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Trump says deal to end war with Iran already signed and details to be released 'pretty soon'",
+      "link": "https://www.bbc.com/news/articles/ce8mv6l6eezo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 15 Jun 2026 20:33:54 GMT",
+      "desc": "Trump says Strait of Hormuz will be open from Friday but there is still confusion about the exact contents of the agreement."
+    },
+    {
       "title": "Bowen: Iran deal ends Trump's war that revealed limit of US dominance",
       "link": "https://www.bbc.com/news/articles/cdr4x3vg347o?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 15 Jun 2026 14:26:28 GMT",
@@ -23,21 +29,9 @@
       "link": "https://www.bbc.com/news/articles/cy5vngrq3q5o?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 15 Jun 2026 17:25:15 GMT",
       "desc": "Ibrahim helped define a genre of South African jazz music in a career that spanned eight decades."
-    },
-    {
-      "title": "MSF staff abused Sudanese refugees in sex-for-food scandal",
-      "link": "https://www.bbc.com/news/articles/c74ykjl8mx3o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 15 Jun 2026 16:32:48 GMT",
-      "desc": "Some victims said they chose not to speak out because they feared staff would cut off access to aid."
     }
   ],
   "koreaNews": [
-    {
-      "title": "Bank of Korea Governor Signals Readiness to Raise Rates as Inflation Risks Mount - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPSDBHcTVYamNkcnNrVnMtVG1PQ2pkeGdpeS1JaXM4Q1F0bDZlZjZtQmdLMGdxR0RxVlRtM0NkUng3OWtGalpDV083dGc1cFlXR0VKQi0yRG13bG5DRkZFY250NnhrSTNIX25mSzJJX05ybmdubnl2UFhVVzMyLTB6eDAxOFBlUkFfQ3ExLWtac1VFcU1uRWZQc2RwcnZiUVVRZXljbXp1amc5bUZRc0xrTmU4YS1pRFdrUjFMckRhTm83NXVBN3UwTjl1Q3ltQQ?oc=5",
-      "date": "Fri, 12 Jun 2026 08:33:00 GMT",
-      "desc": "Bank of Korea Governor Signals Readiness to Raise Rates as Inflation Risks Mount&nbsp;&nbsp;WSJ"
-    },
     {
       "title": "South Korea seeks to turn hit movies into lasting industry success - Nikkei Asia",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPOVlWSGlRWEJoQ2I0TzY5Mm1XaUZzOGRoRUFtWTZYcHQ4Zm1XV0VuZjZ4RTdDenRjQ3FvVW14M254SXd4NzZXOUtDTkRiNnRCTVdTTkdHVUhCMUpUYjluVlNmQThxOVAwVUdXNUNWSkd6YTFyeVlySWxyaFZJOUd5M3hyenVFRnlWeHVqRFRSbUpJamtoa2tZSzN4RlFiWkE?oc=5",
@@ -63,10 +57,10 @@
       "desc": "BTS-mania poised to boost South Korea's economy well into the future&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Samsung Electronics, SK hynix Consider First Packaging Plants in Honam - thelec.net",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1qZ25Vd2hRcnYyakZHdjdUb1d5Q1RDTU5TbGVILTZxckVUVkp2N1h6ZDR1aVZjYVVZOGVXTUgxZEEyRHJaX3VMT2ZOV2haZ0JtVUljYXBZZk44b3dOZk5fQnYzcEZ3ZGM?oc=5",
-      "date": "Sun, 14 Jun 2026 22:10:28 GMT",
-      "desc": "Samsung Electronics, SK hynix Consider First Packaging Plants in Honam&nbsp;&nbsp;thelec.net"
+      "title": "Why South Korea’s won is falling despite a chip export earnings bonanza - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUUVMTnlQOTYyODFiMEFzSFFTMWNidXBjS2YzN2FhZE5XcVVBbFg0MmNyX1hNQVQyMEhyQ0FMNU9UT0NURFhONHVRcDBPRXZWYTdEZXM4ZUlWc05HSHQ5RXRWMGpFZDNyTmIyaE5NeVRqSjRCbEhIVUFwcFEzWkdRZ1E0WjY?oc=5",
+      "date": "Thu, 28 May 2026 07:00:00 GMT",
+      "desc": "Why South Korea’s won is falling despite a chip export earnings bonanza&nbsp;&nbsp;Financial Times"
     },
     {
       "title": "South Korea concrete delivery halt threatens Samsung, SK Hynix chip plant work, media reports - Reuters",
@@ -75,99 +69,105 @@
       "desc": "South Korea concrete delivery halt threatens Samsung, SK Hynix chip plant work, media reports&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung, SK Hynix Climb Toward Prior Highs as Focus Shifts to Earnings - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9EbWs3ckdabVBPY1BfeTVEREEwNkFjdDJoVkF5LVJ5UjlmMThCQVJRVG1fQ20tWV9CT2NJc0V2c1VDdXhjckpLdnF4QmVQUmh2Uk5ieQ?oc=5",
-      "date": "Mon, 15 Jun 2026 14:20:08 GMT",
-      "desc": "Samsung, SK Hynix Climb Toward Prior Highs as Focus Shifts to Earnings&nbsp;&nbsp;bloomingbit"
+      "title": "'Samsung-SK hynix Leverage' Investors Need 10%+ Rebound to Break Even - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWGJQdEZoLWw3emViUUw0SzE4Z3c0Uzh2RjZCQTIyQVRmVTlPMlA2SXlQcjBCOVB1OEZFbk9tWDNNQ00yamxUOV9iSGFyQ3JWSnZRbkhOelEyZGFOVExicUxBZWZublgwbnctN3RrZncxYzJ1VFBwNzNLS1RXYmR0cTdjU3lJOGJQT0drdm5TdmlVS1hFVnZNX2lybDRuSzF4eGlF?oc=5",
+      "date": "Mon, 15 Jun 2026 21:00:05 GMT",
+      "desc": "'Samsung-SK hynix Leverage' Investors Need 10%+ Rebound to Break Even&nbsp;&nbsp;Seoul Economic Daily"
+    },
+    {
+      "title": "Samsung Electronics, SK hynix Consider First Packaging Plants in Honam - thelec.net",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1qZ25Vd2hRcnYyakZHdjdUb1d5Q1RDTU5TbGVILTZxckVUVkp2N1h6ZDR1aVZjYVVZOGVXTUgxZEEyRHJaX3VMT2ZOV2haZ0JtVUljYXBZZk44b3dOZk5fQnYzcEZ3ZGM?oc=5",
+      "date": "Sun, 14 Jun 2026 22:10:28 GMT",
+      "desc": "Samsung Electronics, SK hynix Consider First Packaging Plants in Honam&nbsp;&nbsp;thelec.net"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 212.06,
-      "change": 7.19,
-      "pct": 3.51,
+      "price": 212.45,
+      "change": 7.58,
+      "pct": 3.7,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 441.38,
-      "change": 20.31,
-      "pct": 4.82,
+      "price": 441.4,
+      "change": 20.33,
+      "pct": 4.83,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 547.7,
-      "change": 59.25,
-      "pct": 12.13,
+      "price": 547.26,
+      "change": 58.81,
+      "pct": 12.04,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 127.93,
-      "change": 10.97,
-      "pct": 9.38,
+      "price": 127.86,
+      "change": 10.9,
+      "pct": 9.32,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 221.31,
-      "change": 18.35,
-      "pct": 9.04,
+      "price": 220.81,
+      "change": 17.85,
+      "pct": 8.79,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 415.1,
-      "change": 72.87,
-      "pct": 21.29,
+      "price": 412.55,
+      "change": 70.32,
+      "pct": 20.55,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 371.44,
-      "change": 13.67,
-      "pct": 3.82,
+      "price": 369.35,
+      "change": 11.58,
+      "pct": 3.24,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 295.3,
-      "change": -0.33,
-      "pct": -0.11,
+      "price": 296.42,
+      "change": 0.79,
+      "pct": 0.27,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 399.39,
-      "change": 9.05,
-      "pct": 2.32,
+      "price": 399.76,
+      "change": 9.42,
+      "pct": 2.41,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7562.55,
-      "change": 168.25,
-      "pct": 2.28,
+      "price": 7554.29,
+      "change": 159.99,
+      "pct": 2.16,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26659.66,
-      "change": 850.0,
-      "pct": 3.29,
+      "price": 26683.94,
+      "change": 874.28,
+      "pct": 3.39,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1514.54,
-      "change": -2.84,
-      "pct": -0.19,
+      "price": 1514.0,
+      "change": 4.5,
+      "pct": 0.3,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-15 18:20 UTC"
+  "updatedAt": "2026-06-15 23:42 UTC"
 }
