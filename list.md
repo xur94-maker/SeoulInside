@@ -16,37 +16,33 @@ https://www.instagram.com/seoul_letter/
 #seoulinside.substack.com
 https://seoulinside.substack.com/
 
-#medium.com/@Seoulinside
-https://medium.com/@Seoulinside
-
-#seoulinside.wordpress.com
-https://seoulinside.wordpress.com/
-
 #link
 https://xur94-maker.github.io/SeoulInside/link1.html
-
-#500px.com/p/Vonxu
-https://500px.com/p/Vonxu?view=photos
-
-#README
-https://github.com/xur94-maker/SeoulInside/blob/main/README.md
-
-#index.html
-https://xur94-maker.github.io/SeoulInside   
-
-#medium.com/import
-https://medium.com/p/import
 
 #ko-fi.com
 https://ko-fi.com/Manage/
 
+#500px.com/p/Vonxu
+https://500px.com/p/Vonxu?view=photos
+
+#index.html
+https://xur94-maker.github.io/SeoulInside   
+
+#README
+https://github.com/xur94-maker/SeoulInside/blob/main/README.md
+
 #github.com/xur94-maker/SeoulInside
 https://github.com/xur94-maker/SeoulInside
 
-
-
 #xur94-maker.github.io/SeoulInside
 https://xur94-maker.github.io/SeoulInside/
+
+#Sitemaps
+https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fseoulinside.substack.com%2F
+
+#Google Search Console
+https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&ie=UTF-8
+
 
 
 facebook.com/sun.vonxu
