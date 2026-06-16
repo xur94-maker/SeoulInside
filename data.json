@@ -1,16 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Trump may release US-Iran deal before Friday, Vance says",
-      "link": "https://www.bbc.com/news/articles/ce8mv6l6eezo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 16 Jun 2026 08:07:32 GMT",
-      "desc": "The US vice-president says the agreement is \"about a page and a half\" and \"very general\", meaning many details will be worked out later."
-    },
-    {
       "title": "Iran deal presents political nightmare for Netanyahu",
       "link": "https://www.bbc.com/news/articles/cj4gnqw8j52o?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 16 Jun 2026 03:40:36 GMT",
       "desc": "Donald Trump's ceasefire agreement with Iran leaves the Israeli PM trapped in a new political and security dilemma."
+    },
+    {
+      "title": "Russian artist and Putin critic shot dead in Poland",
+      "link": "https://www.bbc.com/news/articles/clyrzd5g6k2o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 16 Jun 2026 10:37:16 GMT",
+      "desc": "Robert Kuzovkov, who used the pseudonym Semyon Skrepetsky, has been known for his caricatures of politicians including Vladimir Putin."
     },
     {
       "title": "Eight dead after US Air Force B-52 bomber crashes in California",
@@ -19,19 +19,25 @@
       "desc": "The incident occurred on Monday morning while the aircraft had been on a routine test mission."
     },
     {
-      "title": "Japan raises interest rate to highest for 31 years",
-      "link": "https://www.bbc.com/news/articles/cjdgl213dpzo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 16 Jun 2026 08:26:30 GMT",
-      "desc": "The Bank of Japan has been raising rates from near-zero since 2024."
+      "title": "Cuba tourism collapses as US pressure campaign bites",
+      "link": "https://www.bbc.com/news/articles/ckg8zrm20jjo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 16 Jun 2026 11:16:59 GMT",
+      "desc": "The number of foreign visitors is down by 58% compared to last year, Cuban officials say, amid sanctions and an effective oil blockade."
     },
     {
-      "title": "California's Gavin Newsom alleges justice department is investigating his wife and ex-staff",
-      "link": "https://www.bbc.com/news/articles/c3vyw7021r0o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 15 Jun 2026 23:06:58 GMT",
-      "desc": "A source familiar with the investigations says they had been ongoing for \"roughly a year\"."
+      "title": "Hungary's MPs block return of Orbán, limiting rule of PM to eight years",
+      "link": "https://www.bbc.com/news/articles/c621zplqrrno?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 16 Jun 2026 12:42:15 GMT",
+      "desc": "The vote fulfils a promise by new PM Péter Magyar to stop his predecessor from becoming prime minister again."
     }
   ],
   "koreaNews": [
+    {
+      "title": "Interim Iran deal eases key risk for Korea's export-driven economy - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE05cXo3VGljUmNnRlNUT2lfYUJrUFlJVXJ6RV95bGdXNGFweVdOTFE3ZVVRS1hwcE9aYzBJaWJ6QTZ6NGhTci02LVAtQ2o0WVdsTUg5M3hSVQ?oc=5",
+      "date": "Mon, 15 Jun 2026 06:18:54 GMT",
+      "desc": "Interim Iran deal eases key risk for Korea's export-driven economy&nbsp;&nbsp;The Korea Herald"
+    },
     {
       "title": "South Korea Has Diversified Some Critical Minerals. The Hardest Dependencies Remain. - The Diplomat – Asia-Pacific Current Affairs Magazine",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQRTVMVG5uZDVjNWxDeFBSYVplWW1PZFBDVlBScER5ck81Rmh2NEZUMC1KLUUwdXIzcFY5eGJTUmlJY3M1QUtUSGkzN0FEczRCZGtuTGpGTXRXdWs4eHBIQ1NCcnBGWTNfU2p5WG10a3pNNlRpOUxNNzVZVFlOUlJxdTRzYmpNN2NXcmRrd2dncnZDcnNnOEt0bHpFaGRBOHp3aEUwWnJXbWd2QjU3TmNpdDdEUVFjZw?oc=5",
@@ -45,22 +51,16 @@
       "desc": "South Korea seeks to turn hit movies into lasting industry success&nbsp;&nbsp;Nikkei Asia"
     },
     {
-      "title": "Democratic Party targets key economy committees as July assembly talks loom - CHOSUNBIZ - Chosunbiz",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBHcnNzT1ZCRjRyNENuNi12U3FJNmVDX0NuQnFoMGZhemswMC1uQUhxNkVITnJrMFJINGRBT3ZLbTZVN2dqc0FsQUdsSkNVNkc0SDA3NmZPdFhoNDFMNVFXM0h4RU5idV9YZGQ5YXlKRy1tNVpvSmpVeDhIMHpSa2fSAZMBQVVfeXFMT1VlXzN6UzlvblJ0RG9vQXlJQzNFX2lQTTVrTlR5SkpCVHhkM2tqd3c1RUp1Ty1VNlU0bEcxeVZRUXp5eldaZWktN1hLQ3pVY3NZdDNEd1hjTEFNSjgyZkNud0FNdnNuNVZkM2tPMmF1SmNkNjFKTUsyQkxZVXc5Yks2T1YzSVVFYXdKTmo1NzliYmpv?oc=5",
-      "date": "Tue, 16 Jun 2026 01:55:00 GMT",
-      "desc": "Democratic Party targets key economy committees as July assembly talks loom - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
+      "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQjVZQTd6cTdwOWwyUy1udzBUU3BmTU5lX1lTWnlaSVpEcktrcW00V3hEQUpCNjJwMExFcHNtUU1xQlU2RkNObExxNHpiWEl5MWVlcm5xTnVXWW1mUW9NWTM4ejdHMjg3MmpsaGk2RmhlTjlYTnNLRmh6dWhJSjdoRHJCbGtKNlNkTVdzN1FqMmZIVDJEeFpNQllZNU5oR3IxWF91Sm1PTFBhNWdkekozZy03aDRYcGM?oc=5",
+      "date": "Wed, 27 May 2026 07:00:00 GMT",
+      "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
     },
     {
-      "title": "Interim Iran deal eases key risk for Korea's export-driven economy - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE05cXo3VGljUmNnRlNUT2lfYUJrUFlJVXJ6RV95bGdXNGFweVdOTFE3ZVVRS1hwcE9aYzBJaWJ6QTZ6NGhTci02LVAtQ2o0WVdsTUg5M3hSVQ?oc=5",
-      "date": "Mon, 15 Jun 2026 06:18:54 GMT",
-      "desc": "Interim Iran deal eases key risk for Korea's export-driven economy&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "South Korea's Shinan turns solar profits into resident pensions - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPQUU4ay1VSHBvMER6T1lqT3d5MHlEVlE4ZWJOTXBGcGo4ZTBrWlRwbk45RGlvT2VFRmhzS3lVMW5rdzVybW0xWlR2cnU4b3dxd0hTX2VKNVpaenFVMFM0LVV6NTFfNVNiYlJfYnQ0ZGxsUm0tejBTR1NEMWswS3ZvWkEwS2VDX2xiV1BNUV9RU2RqM2V3d1RGc1NzWGpvaklkcGl6ejU4NnZ6dUFF0gGyAUFVX3lxTE1oWHhrMFJSeW1tTk9oMXNqUV9IYTRsOS1xaEI2S29ESDFrSm1FaUFqSjhzVWpoejc2SnZjRE1kTGJWY3AweW5rNzQ0X2hDaWhvQlZMWklzX19ObVJsajFsR1Y2LVoweVFnTzNMNHh5MkhJbmRhSTZEUm5JamFteWJsc19YbzdOVHd4X0wxWjhVdGt2XzYyRWhwUXhVSlQ3V0I4MkNKSEdWRXdNQ002QjBkSkE?oc=5",
-      "date": "Tue, 16 Jun 2026 00:25:47 GMT",
-      "desc": "South Korea's Shinan turns solar profits into resident pensions&nbsp;&nbsp;upi.com"
+      "title": "BTS-mania poised to boost South Korea's economy well into the future - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPbjRzeVZxdXVWY0VLY3pSTDJoNDVVdzVRNHlJYlNkMXlYdXcwMzQwNGJlTXRxWktENDdRc3lIOC11TkVtTlZhTjlIc0FLSkk2YVU1ekdqM0xkbU52RHdmSzFwQ2lzU3RuU2FiQmg2NldhYTlhb245X1VzN1BXNks0bVRxU0o0dEZYMER6RXIyV1B3Q1ZHMjUyanlPONIBoAFBVV95cUxOTU1xbnR4aktFbkV5b05yZUZwenlFNDF6ODNYalR2T1dKamxRdE1pOG9DaWRQRG43T0VKTmJFd25SaXg1a2NqcHQ1ZVplcjBuSWItWG9iMHg3RGhzRzl6bTZFQWJvVHBzSVNxbGlYLUxfRFAxTndXUUZSREp1azVkSXE3Y1BCV2VDMV9yRTNWTE9MOVgxY2hKOWZIcTRBM0p3?oc=5",
+      "date": "Fri, 12 Jun 2026 02:24:00 GMT",
+      "desc": "BTS-mania poised to boost South Korea's economy well into the future&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Why Korea's chip boom is stirring hopes far from Seoul - The Korea Herald",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 212.45,
-      "change": 7.58,
-      "pct": 3.7,
+      "price": 208.92,
+      "change": 3.73,
+      "pct": 1.82,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 441.4,
-      "change": 20.33,
-      "pct": 4.83,
+      "price": 433.62,
+      "change": 9.69,
+      "pct": 2.29,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 547.26,
-      "change": 58.81,
-      "pct": 12.04,
+      "price": 531.0,
+      "change": 19.43,
+      "pct": 3.8,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 127.86,
-      "change": 10.9,
-      "pct": 9.32,
+      "price": 123.73,
+      "change": -0.84,
+      "pct": -0.67,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 220.81,
-      "change": 17.85,
-      "pct": 8.79,
+      "price": 225.72,
+      "change": 14.0,
+      "pct": 6.61,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 412.55,
-      "change": 70.32,
-      "pct": 20.55,
+      "price": 412.56,
+      "change": 31.75,
+      "pct": 8.34,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 369.35,
-      "change": 11.58,
-      "pct": 3.24,
+      "price": 371.55,
+      "change": 11.87,
+      "pct": 3.3,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 296.42,
-      "change": 0.79,
-      "pct": 0.27,
+      "price": 297.35,
+      "change": 6.22,
+      "pct": 2.13,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 399.76,
-      "change": 9.42,
-      "pct": 2.41,
+      "price": 393.04,
+      "change": 2.3,
+      "pct": 0.59,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7554.29,
-      "change": 159.99,
-      "pct": 2.16,
+      "price": 7547.0,
+      "change": 115.54,
+      "pct": 1.55,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26683.94,
-      "change": 874.28,
-      "pct": 3.39,
+      "price": 26620.66,
+      "change": 731.82,
+      "pct": 2.83,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1506.58,
-      "change": -2.92,
-      "pct": -0.19,
+      "price": 1509.07,
+      "change": -0.43,
+      "pct": -0.03,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-16 08:40 UTC"
+  "updatedAt": "2026-06-16 14:22 UTC"
 }
