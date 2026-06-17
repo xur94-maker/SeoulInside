@@ -19,15 +19,15 @@
       "desc": "Health facilities have come under attack during the current outbreak as a result of misinformation and fear."
     },
     {
-      "title": "Israel launches fresh strikes on Lebanon despite Trump criticism",
-      "link": "https://www.bbc.com/news/articles/c7vyn17g832o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 17 Jun 2026 10:01:42 GMT",
-      "desc": "Speaking on Tuesday, Trump said Israel's PM Benjamin Netanyahu needed \"to be more responsible with respect to Lebanon\"."
+      "title": "Ex-Nigeria oil minister cleared in UK bribery trial",
+      "link": "https://www.bbc.com/news/articles/c872pwx4x2vo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 17 Jun 2026 19:03:10 GMT",
+      "desc": "Diezani Alison-Madueke had been accused of receiving bribes from oil tycoons but was found not guilty by a jury at Southwark Crown Court."
     },
     {
       "title": "Serial killer who murdered eight women in Long Island town imprisoned for life",
       "link": "https://www.bbc.com/news/articles/clyw29kvlydo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 17 Jun 2026 16:43:51 GMT",
+      "date": "Wed, 17 Jun 2026 17:45:54 GMT",
       "desc": "In fiery exchange, judge sentenced him to three life sentences plus 25 years to life on four other charges, all running consecutively."
     }
   ],
@@ -69,105 +69,105 @@
       "desc": "Samsung, SK Hynix suppliers seek war-cost payback after US-Iran shock drains chip materials inventory&nbsp;&nbsp;digitimes"
     },
     {
+      "title": "Samsung and SK Hynix Near Decision on Semiconductor Investment in Honam Region - aju press",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9lcm1scUxWSVo2Y3JGdGtHWHVya182U202YWdiOWZfRFJ4MTNnTG9ndlhIdzMwRDdtbTZRRUptZ3NvUkJLa25yekloeWxYZktpeG9yWmJoa9IBV0FVX3lxTE9lcm1scUxWSVo2Y3JGdGtHWHVya182U202YWdiOWZfRFJ4MTNnTG9ndlhIdzMwRDdtbTZRRUptZ3NvUkJLa25yekloeWxYZktpeG9yWmJoaw?oc=5",
+      "date": "Wed, 17 Jun 2026 20:16:00 GMT",
+      "desc": "Samsung and SK Hynix Near Decision on Semiconductor Investment in Honam Region&nbsp;&nbsp;aju press"
+    },
+    {
       "title": "South Korea concrete delivery halt threatens Samsung, SK Hynix chip plant work, media reports - Reuters",
       "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQODBWV1dIMlZrQ3E2SHpiVWJPQzFIdkIyYjRfa2w0RWxpaTdfZWJRUFgwSTlfZ2RvVjh2UUthSmI4cE9kdzBaQ0hndXEzdlUwNUl6WDI4akdUMTEtQVJGelNPLVBleU43NXl2YWRSRVV5RkozMUVFSlpZS0dGaXVaaXFDMzk3RU15aVVyX194d21xTHVjYlBTUTBwT3RqcURVdGxiLU5pR0lvSnBfWDE5YXlxX2p3WjJ4WGNfTzQ2UjBjT09jd0E2T1NmTTRCOG5fVUE?oc=5",
       "date": "Fri, 12 Jun 2026 03:09:00 GMT",
       "desc": "South Korea concrete delivery halt threatens Samsung, SK Hynix chip plant work, media reports&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "SK Square, Samsung Life Insurance: Semiconductor Beneficiary Stocks - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMUNReV9EVEJncjJwNGcxNFdrWFFyMVgxU1RrS0xlY1p4VXl2ZUhGbXY4bE5nTHdrTTUyWHQwRzZOUW5NQUNGSWVNbTNzOUoxaUhVc1owTTJ3b0xyclNwaXMxbWV1MTBtMjMtdnhacUNNNEdKbFRnbTF6ZjlEMnllMTRFY2EzcFBrZnBrNXln?oc=5",
-      "date": "Wed, 17 Jun 2026 15:36:57 GMT",
-      "desc": "SK Square, Samsung Life Insurance: Semiconductor Beneficiary Stocks&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 207.34,
-      "change": -5.11,
-      "pct": -2.41,
+      "price": 204.65,
+      "change": -7.8,
+      "pct": -3.67,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 439.18,
-      "change": -2.22,
-      "pct": -0.5,
+      "price": 432.15,
+      "change": -9.25,
+      "pct": -2.1,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 521.88,
-      "change": -25.38,
-      "pct": -4.64,
+      "price": 512.48,
+      "change": -34.78,
+      "pct": -6.36,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 122.14,
-      "change": -5.72,
-      "pct": -4.48,
+      "price": 121.1,
+      "change": -6.76,
+      "pct": -5.29,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 218.73,
-      "change": -2.08,
-      "pct": -0.94,
+      "price": 212.97,
+      "change": -7.84,
+      "pct": -3.55,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 422.44,
-      "change": 9.89,
-      "pct": 2.4,
+      "price": 418.88,
+      "change": 6.33,
+      "pct": 1.53,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 365.37,
-      "change": -3.98,
-      "pct": -1.08,
+      "price": 363.79,
+      "change": -5.56,
+      "pct": -1.51,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 298.47,
-      "change": 2.05,
-      "pct": 0.69,
+      "price": 295.95,
+      "change": -0.47,
+      "pct": -0.16,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 384.17,
-      "change": -15.59,
-      "pct": -3.9,
+      "price": 378.91,
+      "change": -20.85,
+      "pct": -5.22,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7511.55,
-      "change": -42.74,
-      "pct": -0.57,
+      "price": 7420.1,
+      "change": -134.19,
+      "pct": -1.78,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26370.18,
-      "change": -313.76,
-      "pct": -1.18,
+      "price": 26021.66,
+      "change": -662.28,
+      "pct": -2.48,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1514.67,
-      "change": 1.36,
-      "pct": 0.09,
+      "price": 1527.41,
+      "change": 16.45,
+      "pct": 1.09,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-17 16:51 UTC"
+  "updatedAt": "2026-06-17 23:20 UTC"
 }
