@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "US lifts naval blockade as Iran's supreme leader says Trump made deal 'out of desperation'",
+      "link": "https://www.bbc.com/news/articles/c8r2eejdd35o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 18 Jun 2026 21:34:28 GMT",
+      "desc": "Iran's supreme leader says he disagrees with the deal and Donald Trump signed it \"out of desperation\"."
+    },
+    {
       "title": "Bowen: US-Iran deal raises inescapable question of what the war was for",
       "link": "https://www.bbc.com/news/articles/clyegr2mp8jo?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 18 Jun 2026 15:53:55 GMT",
       "desc": "While the human cost is clear, the Iranian regime has not just survived the war, it has been empowered."
     },
     {
-      "title": "Why Iran believes deal with US leaves it stronger than before",
+      "title": "What Iran and US get from deal and why both could struggle to keep it",
       "link": "https://www.bbc.com/news/articles/c932yqz8lggo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 18 Jun 2026 15:38:18 GMT",
-      "desc": "Iran has come out of the war's first chapter stronger than many expected, but its next challenge may be harder, the BBC Persian Service's Amir Azimi writes."
+      "date": "Thu, 18 Jun 2026 20:04:40 GMT",
+      "desc": "BBC analysts assess the claims by both Washington and Tehran to have won a victory with the deal to end their war."
     },
     {
       "title": "Moscow residents complain of black rain after largest Ukrainian attack hits oil refinery",
@@ -19,16 +25,10 @@
       "desc": "A refinery and a shopping centre burned after almost 200 Ukrainian drones struck an area to the south-east of the Russian capital."
     },
     {
-      "title": "Gunmen attack Niger's biggest airport for second time in months",
+      "title": "Thirty-five killed as gunmen attack Niger's biggest airport",
       "link": "https://www.bbc.com/news/articles/cdx7krkdqeno?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 18 Jun 2026 16:01:07 GMT",
+      "date": "Thu, 18 Jun 2026 21:47:25 GMT",
       "desc": "Niger has been fighting a militant Islamist insurgency for a decade and in January suspected jihadists attacked the same airport."
-    },
-    {
-      "title": "Hegseth renews Nato criticism and says US will review presence in Europe",
-      "link": "https://www.bbc.com/news/articles/c3vy5l62622o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 18 Jun 2026 13:31:01 GMT",
-      "desc": "The US defence secretary's move follows a US decision to scale back its commitments to a high readiness force within the alliance."
     }
   ],
   "koreaNews": [
@@ -45,10 +45,10 @@
       "desc": "Korea rises 6 spots to 21st in world competitiveness rankings&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "How China keeps North Korea's economy alive - DW",
+      "title": "How China keeps North Korea's economy alive - DW.com",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
       "date": "Mon, 01 Jun 2026 07:00:00 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW"
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
     },
     {
       "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 210.28,
-      "change": 2.87,
-      "pct": 1.38,
+      "price": 210.69,
+      "change": 3.28,
+      "pct": 1.58,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 454.42,
-      "change": 28.59,
-      "pct": 6.71,
+      "price": 462.12,
+      "change": 36.29,
+      "pct": 8.52,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 533.65,
-      "change": 26.36,
-      "pct": 5.2,
+      "price": 537.37,
+      "change": 30.08,
+      "pct": 5.93,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 133.73,
-      "change": 16.68,
-      "pct": 14.25,
+      "price": 133.99,
+      "change": 16.94,
+      "pct": 14.47,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 222.99,
-      "change": 8.92,
-      "pct": 4.16,
+      "price": 226.11,
+      "change": 12.04,
+      "pct": 5.62,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 426.89,
-      "change": 30.55,
-      "pct": 7.71,
+      "price": 439.46,
+      "change": 43.12,
+      "pct": 10.88,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 367.01,
-      "change": -6.24,
-      "pct": -1.67,
+      "price": 368.03,
+      "change": -5.22,
+      "pct": -1.4,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 297.25,
-      "change": -1.99,
-      "pct": -0.67,
+      "price": 298.01,
+      "change": -1.23,
+      "pct": -0.41,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 378.99,
-      "change": -14.84,
-      "pct": -3.77,
+      "price": 379.4,
+      "change": -14.43,
+      "pct": -3.66,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7495.98,
-      "change": -15.37,
-      "pct": -0.2,
+      "price": 7500.58,
+      "change": -10.77,
+      "pct": -0.14,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26399.9,
-      "change": 23.56,
-      "pct": 0.09,
+      "price": 26517.93,
+      "change": 141.59,
+      "pct": 0.54,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1535.18,
-      "change": 24.22,
-      "pct": 1.6,
+      "price": 1536.42,
+      "change": 11.0,
+      "pct": 0.72,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-18 16:51 UTC"
+  "updatedAt": "2026-06-18 23:41 UTC"
 }
