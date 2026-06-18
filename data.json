@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "What's in the US-Iran agreement?",
+      "link": "https://www.bbc.com/news/articles/cvgmqzr6p9mo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 18 Jun 2026 01:28:02 GMT",
+      "desc": "The 14-paragraph memo includes an end to fighting, an agreement that Iran will never have a nuclear weapon, and a $300bn redevelopment package for Iran."
+    },
+    {
       "title": "Iran sends tankers loaded with oil past US military blockade",
       "link": "https://www.bbc.com/news/articles/cpq37yxexd9o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 17 Jun 2026 13:27:47 GMT",
       "desc": "Three Iranian tankers loaded with crude oil have passed the US blockade line in the Gulf of Oman, ship-tracking data shows."
+    },
+    {
+      "title": "Japan ramping up defence is 'critical' to prevent war, Defence Minister Koizumi tells BBC",
+      "link": "https://www.bbc.com/news/articles/cly8qd4595eo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 17 Jun 2026 22:36:13 GMT",
+      "desc": "Japan needs to revisit the pacifist posture that has defined it since World War Two, Shinjiro Koizumi says."
     },
     {
       "title": "Status quo at Jerusalem's holiest site under threat as Israeli nationalists flout rules",
@@ -17,18 +29,6 @@
       "link": "https://www.bbc.com/news/articles/cvgep4l397eo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 17 Jun 2026 16:50:42 GMT",
       "desc": "Health facilities have come under attack during the current outbreak as a result of misinformation and fear."
-    },
-    {
-      "title": "Ex-Nigeria oil minister cleared in UK bribery trial",
-      "link": "https://www.bbc.com/news/articles/c872pwx4x2vo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 17 Jun 2026 19:03:10 GMT",
-      "desc": "Diezani Alison-Madueke had been accused of receiving bribes from oil tycoons but was found not guilty by a jury at Southwark Crown Court."
-    },
-    {
-      "title": "Serial killer who murdered eight women in Long Island town imprisoned for life",
-      "link": "https://www.bbc.com/news/articles/clyw29kvlydo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 17 Jun 2026 17:45:54 GMT",
-      "desc": "In fiery exchange, judge sentenced him to three life sentences plus 25 years to life on four other charges, all running consecutively."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,22 @@
       "desc": "Interim Iran deal eases key risk for Korea's export-driven economy&nbsp;&nbsp;The Korea Herald"
     },
     {
+      "title": "Bank of Korea Warns Inflation May Stay Elevated Despite Middle East Truce - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPUWxWeUR1TFd0c0pDelBCSHNqaFdVdzZ4RVNkV0FyeWxnbVN1ejQzZVdGdUlqTm1RbHRXdjZnX1JqZ3Ria3BfU1NaVkNTXzFNNDVMMXlIRnFCcHJWRGFIZDBTTk9vc090Vi1Ob1RQR3RGZ3ZLMUhUUElHVEtmSWFCeHRsR1Ridk5LMzBlLWc3R0VaT2VjMGtmWVVZb25GNjJZU0ljUzBTNlo3VmpCbjF5VEczWDdqbU9xY0t1NlMtbTV0bTg3?oc=5",
+      "date": "Wed, 17 Jun 2026 06:47:00 GMT",
+      "desc": "Bank of Korea Warns Inflation May Stay Elevated Despite Middle East Truce&nbsp;&nbsp;WSJ"
+    },
+    {
       "title": "South Korea Has Diversified Some Critical Minerals. The Hardest Dependencies Remain. - The Diplomat – Asia-Pacific",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQRTVMVG5uZDVjNWxDeFBSYVplWW1PZFBDVlBScER5ck81Rmh2NEZUMC1KLUUwdXIzcFY5eGJTUmlJY3M1QUtUSGkzN0FEczRCZGtuTGpGTXRXdWs4eHBIQ1NCcnBGWTNfU2p5WG10a3pNNlRpOUxNNzVZVFlOUlJxdTRzYmpNN2NXcmRrd2dncnZDcnNnOEt0bHpFaGRBOHp3aEUwWnJXbWd2QjU3TmNpdDdEUVFjZw?oc=5",
       "date": "Mon, 15 Jun 2026 13:52:13 GMT",
       "desc": "South Korea Has Diversified Some Critical Minerals. The Hardest Dependencies Remain.&nbsp;&nbsp;The Diplomat – Asia-Pacific"
     },
     {
-      "title": "How China keeps North Korea's economy alive - DW.com",
+      "title": "How China keeps North Korea's economy alive - dw.com",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
       "date": "Mon, 01 Jun 2026 07:00:00 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
     },
     {
       "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
@@ -57,16 +63,10 @@
       "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
     },
     {
-      "title": "BTS-mania poised to boost South Korea's economy well into the future - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPbjRzeVZxdXVWY0VLY3pSTDJoNDVVdzVRNHlJYlNkMXlYdXcwMzQwNGJlTXRxWktENDdRc3lIOC11TkVtTlZhTjlIc0FLSkk2YVU1ekdqM0xkbU52RHdmSzFwQ2lzU3RuU2FiQmg2NldhYTlhb245X1VzN1BXNks0bVRxU0o0dEZYMER6RXIyV1B3Q1ZHMjUyanlPONIBoAFBVV95cUxOTU1xbnR4aktFbkV5b05yZUZwenlFNDF6ODNYalR2T1dKamxRdE1pOG9DaWRQRG43T0VKTmJFd25SaXg1a2NqcHQ1ZVplcjBuSWItWG9iMHg3RGhzRzl6bTZFQWJvVHBzSVNxbGlYLUxfRFAxTndXUUZSREp1azVkSXE3Y1BCV2VDMV9yRTNWTE9MOVgxY2hKOWZIcTRBM0p3?oc=5",
-      "date": "Fri, 12 Jun 2026 02:24:00 GMT",
-      "desc": "BTS-mania poised to boost South Korea's economy well into the future&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "Samsung, SK Hynix suppliers seek war-cost payback after US-Iran shock drains chip materials inventory - digitimes",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxObHNmYlRxclJLTVJZd3AxUTg4d1JFM0syVy1Hbm9vOS1jWTctMUJyLTBBZW80eG1zOGZYVFI2dHZVYVJtVFJKcnZ0eUdBcmFvXy1pY0E5UzU0MVEwVXFGQUtNeVV5WjlQdWItTWRPV3FoMERvXzVndVBYRHFjNHpKeFplMV8xd28zUzdXWkw1N1JkRDRUTVE?oc=5",
-      "date": "Wed, 17 Jun 2026 07:49:24 GMT",
-      "desc": "Samsung, SK Hynix suppliers seek war-cost payback after US-Iran shock drains chip materials inventory&nbsp;&nbsp;digitimes"
+      "title": "Samsung, SK Hynix Shares Rally on Memory Price Surge - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9iOGdzY05DWTM2TUpGZGlGb2FaakVNX25WSE5uU19ybVctZEFaanpnQ1dQVlNzYUN1aWNjSHFCWUNpS0YxWHhnX3JPWHZ4TXBldmFSX0RVWkRkeE95QzItZ2lDM1oydXpTMTAzbDZ0OVNvZzcx?oc=5",
+      "date": "Thu, 18 Jun 2026 03:23:06 GMT",
+      "desc": "Samsung, SK Hynix Shares Rally on Memory Price Surge&nbsp;&nbsp;Businesskorea"
     },
     {
       "title": "Samsung and SK Hynix Near Decision on Semiconductor Investment in Honam Region - aju press",
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 346500.0,
-      "change": 9500.0,
-      "pct": 2.82,
+      "price": 362500.0,
+      "change": 19500.0,
+      "pct": 5.69,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2521000.0,
-      "change": 233000.0,
-      "pct": 10.18,
+      "price": 2685000.0,
+      "change": 303000.0,
+      "pct": 12.72,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 618000.0,
-      "change": -29000.0,
-      "pct": -4.48,
+      "price": 601000.0,
+      "change": -39000.0,
+      "pct": -6.09,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 166300.0,
-      "change": -1200.0,
-      "pct": -0.72,
+      "price": 158800.0,
+      "change": -11400.0,
+      "pct": -6.7,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 243500.0,
-      "change": -4500.0,
-      "pct": -1.81,
+      "price": 235000.0,
+      "change": -7000.0,
+      "pct": -2.89,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8864.24,
-      "change": 318.26,
-      "pct": 3.72,
+      "price": 9063.84,
+      "change": 337.24,
+      "pct": 3.86,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1527.41,
-      "change": 16.45,
-      "pct": 1.09,
+      "price": 1529.54,
+      "change": 18.58,
+      "pct": 1.23,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-18 02:38 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-06-18 07:29 UTC"
 }
