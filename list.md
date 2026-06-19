@@ -17,7 +17,7 @@ https://www.instagram.com/seoul_letter/
 https://seoulinside.substack.com/
 
 #site:seoulinside.substack.com
-site:seoulinside.substack.com
+https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&ie=UTF-8
 
 #link
 https://xur94-maker.github.io/SeoulInside/link1.html
