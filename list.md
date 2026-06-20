@@ -1,3 +1,6 @@
+#news.google.com
+https://news.google.com/home?hl=ko&gl=KR&ceid=KR%3Ako
+
 #seoulinside.bsky.social
 https://bsky.app/profile/seoulinside.bsky.social
 
@@ -21,6 +24,9 @@ https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&
 
 #link
 https://xur94-maker.github.io/SeoulInside/link1.html
+
+#list
+https://github.com/xur94-maker/SeoulInside/blob/main/list.md
 
 #ko-fi.com
 https://ko-fi.com/Manage/
