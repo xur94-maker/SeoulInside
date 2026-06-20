@@ -52,7 +52,8 @@ https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fseou
 #Google Search Console
 https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&ie=UTF-8
 
-
+#medium.com/p/import
+https://medium.com/p/import
 
 facebook.com/sun.vonxu
 https://www.facebook.com/sun.vonxu
