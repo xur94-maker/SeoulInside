@@ -1,48 +1,48 @@
 {
   "globalNews": [
     {
-      "title": "Israel and Hezbollah continue strikes despite ceasefire agreement",
-      "link": "https://www.bbc.com/news/articles/cx240k9l112o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 20 Jun 2026 13:23:40 GMT",
-      "desc": "Deaths are reported in southern Lebanon, with the IDF saying it hit Hezbollah targets after the group fired over 50 projectiles at Israeli forces."
+      "title": "Iran says it has closed Strait of Hormuz over Israeli attacks in Lebanon",
+      "link": "https://www.bbc.com/news/articles/cwyekkwm1mmo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 20 Jun 2026 21:11:57 GMT",
+      "desc": "The US military has disputed Tehran's claim, which comes ahead of US-Iran talks in Switzerland on Sunday."
     },
     {
-      "title": "Zelensky stripped of highest Polish honour over WW2 name of army unit",
-      "link": "https://www.bbc.com/news/articles/cr7xzg3dmj8o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 19 Jun 2026 21:46:07 GMT",
-      "desc": "Ukraine has denounced the move, calling it a \"strategic mistake\" and \"disrespectful\"."
+      "title": "Lebanese turtle conservationist Mona Khalil killed by Israeli strike",
+      "link": "https://www.bbc.com/news/articles/cwylx1vq18zo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 20 Jun 2026 17:40:43 GMT",
+      "desc": "Mona Khalil, who had refused to leave the beach she had spent years protecting, died from her injuries after the Israeli strike."
     },
     {
-      "title": "Tourist dies in Dominican Republic luxury resort fire",
-      "link": "https://www.bbc.com/news/articles/c932k8010j1o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 20 Jun 2026 07:40:20 GMT",
-      "desc": "Nearly 1,700 people were evacuated from the huge blaze at Viva Wyndham Dominicus Beach in Bayahibe, a popular resort town on the Caribbean coast."
-    },
-    {
-      "title": "Trump hits out at Italy's Meloni after pushback on G7 photo claim",
+      "title": "Meloni tells Trump to 'focus on your own popularity' as row escalates",
       "link": "https://www.bbc.com/news/articles/cgqj77909jpo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 20 Jun 2026 14:24:35 GMT",
-      "desc": "Trump said the Italian leader asked \"over and over\" for a picture at G7, after she said the US president \"made-up\" a story that she \"begged\" for a photo."
+      "date": "Sat, 20 Jun 2026 15:31:12 GMT",
+      "desc": "The US president earlier questioned Meloni's popularity after suggesting she \"begged\" for a photo at G7 summit"
     },
     {
-      "title": "US to stop funding HIV programmes in South Africa",
-      "link": "https://www.bbc.com/news/articles/cdr457lxr71o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 19 Jun 2026 23:35:07 GMT",
-      "desc": "More than eight million South Africans are living with HIV – the highest number of any country in the world."
+      "title": "Israeli strikes kill six people in Gaza including Al Jazeera cameraman, officials say",
+      "link": "https://www.bbc.com/news/articles/c4gy26p6pwzo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 20 Jun 2026 21:57:36 GMT",
+      "desc": "The Israeli military accused Ahmed Wishah of being a \"Hamas sniper operative\", without providing evidence."
+    },
+    {
+      "title": "Bolivian president declares state of emergency",
+      "link": "https://www.bbc.com/news/articles/cr47wn92zdgo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 20 Jun 2026 15:27:09 GMT",
+      "desc": "The move comes after weeks of anti-government protests that have caused a shortage of basic goods in Bolivia."
     }
   ],
   "koreaNews": [
-    {
-      "title": "Bank of Korea Warns Inflation May Stay Elevated Despite Middle East Truce - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPUWxWeUR1TFd0c0pDelBCSHNqaFdVdzZ4RVNkV0FyeWxnbVN1ejQzZVdGdUlqTm1RbHRXdjZnX1JqZ3Ria3BfU1NaVkNTXzFNNDVMMXlIRnFCcHJWRGFIZDBTTk9vc090Vi1Ob1RQR3RGZ3ZLMUhUUElHVEtmSWFCeHRsR1Ridk5LMzBlLWc3R0VaT2VjMGtmWVVZb25GNjJZU0ljUzBTNlo3VmpCbjF5VEczWDdqbU9xY0t1NlMtbTV0bTg3?oc=5",
-      "date": "Wed, 17 Jun 2026 06:47:00 GMT",
-      "desc": "Bank of Korea Warns Inflation May Stay Elevated Despite Middle East Truce&nbsp;&nbsp;WSJ"
-    },
     {
       "title": "AI nation: Is it boom, bubble or both for South Korea? - Nikkei Asia",
       "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNUnA3S2hPTkloRHdPQTh0Mmx4ZFE1UE10OXdMZms2UzRmRzFBaWU4VGRWczhXQmJGSkE0UGhLbF9XUWZubFVJZU8tMkhRa2pfRWNRRmVfOHMzcFZFa0w1bGZEOEdHQWJEU256clVoT01mdXZ6WmhBODFQUHIyeGFiVHJKdlhFdlc1UnVv?oc=5",
       "date": "Wed, 17 Jun 2026 20:05:00 GMT",
       "desc": "AI nation: Is it boom, bubble or both for South Korea?&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
+      "title": "[Column] North Korea’s economic boom - Hankyoreh : English Edition",
+      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNd3d0QTN6SjJBaWNjVDVoVU5nQ0hZM3NSVWNWaGZ5N2tZcVFKYkRsdkxmTGxnX19SUWU1bXFYdjk5UmdmN0JFQ3k3NFBCQkNGYnJDNGhMSW05WUxsaFE4RTV6cW5hMHZxSzBLOEMxUDRtOGZGV1U5MmZnUU9fbm8xNGIyX3ltUQ?oc=5",
+      "date": "Fri, 19 Jun 2026 08:11:00 GMT",
+      "desc": "[Column] North Korea’s economic boom&nbsp;&nbsp;Hankyoreh : English Edition"
     },
     {
       "title": "Korea rises 6 spots to 21st in world competitiveness rankings - The Korea Times",
@@ -63,16 +63,16 @@
       "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
     },
     {
+      "title": "Semiconductor stocks leading the domestic stock market will be tested ahead of U.S. memory chip comp.. - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFByVFRTWWhLV04xcHVpS2lXc1U0RFUzUHoyLTF4UG1xWlVlMHhqa3A0WlpOYmtmczNvdVgzSTIwcXBsd05ic1Uyalk4eWM5NTA?oc=5",
+      "date": "Sat, 20 Jun 2026 21:10:22 GMT",
+      "desc": "Semiconductor stocks leading the domestic stock market will be tested ahead of U.S. memory chip comp..&nbsp;&nbsp;매일경제"
+    },
+    {
       "title": "Samsung, SK Hynix suppliers seek war-cost payback after US-Iran shock drains chip materials inventory - digitimes",
       "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxObHNmYlRxclJLTVJZd3AxUTg4d1JFM0syVy1Hbm9vOS1jWTctMUJyLTBBZW80eG1zOGZYVFI2dHZVYVJtVFJKcnZ0eUdBcmFvXy1pY0E5UzU0MVEwVXFGQUtNeVV5WjlQdWItTWRPV3FoMERvXzVndVBYRHFjNHpKeFplMV8xd28zUzdXWkw1N1JkRDRUTVE?oc=5",
       "date": "Wed, 17 Jun 2026 07:49:24 GMT",
       "desc": "Samsung, SK Hynix suppliers seek war-cost payback after US-Iran shock drains chip materials inventory&nbsp;&nbsp;digitimes"
-    },
-    {
-      "title": "South Korea concrete delivery halt threatens Samsung, SK Hynix chip plant work, media reports - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQODBWV1dIMlZrQ3E2SHpiVWJPQzFIdkIyYjRfa2w0RWxpaTdfZWJRUFgwSTlfZ2RvVjh2UUthSmI4cE9kdzBaQ0hndXEzdlUwNUl6WDI4akdUMTEtQVJGelNPLVBleU43NXl2YWRSRVV5RkozMUVFSlpZS0dGaXVaaXFDMzk3RU15aVVyX194d21xTHVjYlBTUTBwT3RqcURVdGxiLU5pR0lvSnBfWDE5YXlxX2p3WjJ4WGNfTzQ2UjBjT09jd0E2T1NmTTRCOG5fVUE?oc=5",
-      "date": "Thu, 11 Jun 2026 07:00:00 GMT",
-      "desc": "South Korea concrete delivery halt threatens Samsung, SK Hynix chip plant work, media reports&nbsp;&nbsp;Reuters"
     },
     {
       "title": "Samsung, SK Hynix Shares Rally on Memory Price Surge - Businesskorea",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-20 15:27 UTC"
+  "updatedAt": "2026-06-20 23:03 UTC"
 }
