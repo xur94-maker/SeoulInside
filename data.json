@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Iran says it has closed Strait of Hormuz over Israeli attacks in Lebanon",
+      "title": "US-Iran talks to begin in Switzerland as Tehran says it closed Strait of Hormuz",
       "link": "https://www.bbc.com/news/articles/cwyekkwm1mmo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 20 Jun 2026 21:11:57 GMT",
-      "desc": "The US military has disputed Tehran's claim, which comes ahead of US-Iran talks in Switzerland on Sunday."
+      "date": "Sun, 21 Jun 2026 04:34:00 GMT",
+      "desc": "The US disputed Iran's claim the waterway is shut, a move Tehran says was a response to Israeli attacks in Lebanon."
+    },
+    {
+      "title": "BBC sees destroyed villages in Israeli-occupied southern Lebanon",
+      "link": "https://www.bbc.com/news/videos/c8r2pyv3e2po?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 20 Jun 2026 16:37:03 GMT",
+      "desc": "Travelling with a humanitarian convoy, BBC's Hugo Bachega has been given rare access to a part of Lebanon under Israeli occupation."
     },
     {
       "title": "Lebanese turtle conservationist Mona Khalil killed by Israeli strike",
       "link": "https://www.bbc.com/news/articles/cwylx1vq18zo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 20 Jun 2026 17:40:43 GMT",
-      "desc": "Mona Khalil, who had refused to leave the beach she had spent years protecting, died from her injuries after the Israeli strike."
+      "desc": "Mona Khalil, who had refused to leave the beach she had spent years protecting, died after several days in hospital, an environmental group said."
+    },
+    {
+      "title": "Colombia's escalating, brutal internal conflict is defining its presidential election",
+      "link": "https://www.bbc.com/news/articles/cvgqv8q1ndpo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 20 Jun 2026 23:17:51 GMT",
+      "desc": "A left-wing senator who backs talks with armed gangs faces an outsider endorsed by Trump."
     },
     {
       "title": "Meloni tells Trump to 'focus on your own popularity' as row escalates",
       "link": "https://www.bbc.com/news/articles/cgqj77909jpo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 20 Jun 2026 15:31:12 GMT",
       "desc": "The US president earlier questioned Meloni's popularity after suggesting she \"begged\" for a photo at G7 summit"
-    },
-    {
-      "title": "Israeli strikes kill six people in Gaza including Al Jazeera cameraman, officials say",
-      "link": "https://www.bbc.com/news/articles/c4gy26p6pwzo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 20 Jun 2026 21:57:36 GMT",
-      "desc": "The Israeli military accused Ahmed Wishah of being a \"Hamas sniper operative\", without providing evidence."
-    },
-    {
-      "title": "Bolivian president declares state of emergency",
-      "link": "https://www.bbc.com/news/articles/cr47wn92zdgo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 20 Jun 2026 15:27:09 GMT",
-      "desc": "The move comes after weeks of anti-government protests that have caused a shortage of basic goods in Bolivia."
     }
   ],
   "koreaNews": [
@@ -37,6 +37,12 @@
       "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNUnA3S2hPTkloRHdPQTh0Mmx4ZFE1UE10OXdMZms2UzRmRzFBaWU4VGRWczhXQmJGSkE0UGhLbF9XUWZubFVJZU8tMkhRa2pfRWNRRmVfOHMzcFZFa0w1bGZEOEdHQWJEU256clVoT01mdXZ6WmhBODFQUHIyeGFiVHJKdlhFdlc1UnVv?oc=5",
       "date": "Wed, 17 Jun 2026 20:05:00 GMT",
       "desc": "AI nation: Is it boom, bubble or both for South Korea?&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
+      "title": "The new superpower: The lesson that Israel must learn - The Jerusalem Post",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBQMjVzQ3VGNkZYWWRMN1ZpbnhmRTk3OEc3SElMMGVTZnlVd0tVd0h2b0xqSlBlYVRTaFdhNU9WaVdUMlFQWXJfQWdpakRDcjlxYmphc0tIdVhyVXhVay1ZaGU3UW5WN3JucF9kRXpMU1JDR2hTU29v?oc=5",
+      "date": "Sun, 21 Jun 2026 07:15:00 GMT",
+      "desc": "The new superpower: The lesson that Israel must learn&nbsp;&nbsp;The Jerusalem Post"
     },
     {
       "title": "[Column] North Korea’s economic boom - Hankyoreh : English Edition",
@@ -51,34 +57,28 @@
       "desc": "Korea rises 6 spots to 21st in world competitiveness rankings&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "How China keeps North Korea's economy alive - DW.com",
+      "title": "How China keeps North Korea's economy alive - dw.com",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
       "date": "Mon, 01 Jun 2026 07:00:00 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
     },
     {
-      "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQjVZQTd6cTdwOWwyUy1udzBUU3BmTU5lX1lTWnlaSVpEcktrcW00V3hEQUpCNjJwMExFcHNtUU1xQlU2RkNObExxNHpiWEl5MWVlcm5xTnVXWW1mUW9NWTM4ejdHMjg3MmpsaGk2RmhlTjlYTnNLRmh6dWhJSjdoRHJCbGtKNlNkTVdzN1FqMmZIVDJEeFpNQllZNU5oR3IxWF91Sm1PTFBhNWdkekozZy03aDRYcGM?oc=5",
-      "date": "Wed, 27 May 2026 07:00:00 GMT",
-      "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
+      "title": "Samsung, SK hynix chip majors top SNU in admissions - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9ZVk9GV3ZXS3o4emE3amxaNVVIQXl4V2FBc0xuanRJU0dIRTZvOWRvZDlLVXdfWkJnczJDanM0RHhmMTVxaWJDMzVyVG04R0ZNUm96b2JQUQ?oc=5",
+      "date": "Sun, 21 Jun 2026 02:25:14 GMT",
+      "desc": "Samsung, SK hynix chip majors top SNU in admissions&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "Semiconductor stocks leading the domestic stock market will be tested ahead of U.S. memory chip comp.. - 매일경제",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFByVFRTWWhLV04xcHVpS2lXc1U0RFUzUHoyLTF4UG1xWlVlMHhqa3A0WlpOYmtmczNvdVgzSTIwcXBsd05ic1Uyalk4eWM5NTA?oc=5",
-      "date": "Sat, 20 Jun 2026 21:10:22 GMT",
-      "desc": "Semiconductor stocks leading the domestic stock market will be tested ahead of U.S. memory chip comp..&nbsp;&nbsp;매일경제"
+      "title": "Massive bonuses for South Korea's chip workers puts central bank on inflation alert - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPYVI2MVhwTzJvWEVXTUdXWlF1Q3dlbjBYNU14YVI0MEhrbUUzYkp4NTRfZi1Yd3hvQ3RxMGNURTRGZXpLbXhlaUpNcVpQMHQ0LUJoRzBXNk5NMnpiYXVQc1o3N2VONHlidUZfSnFqUjZWdHZTRjFmdUlJck5CNTloN2g4OEc3amdGQ01SNVg0eHViTTlO0gGaAUFVX3lxTE9aVlk0U2hDNER1amp4ZmJYYnNjMV9OSXZYaDQzeERlUkJ1My1zQjBXNHctR1R4bVFMT05TNTFXc3RyRTNZTlU3Z0NCMWhBUVNtRjNaMlRfOVlGdDdLOHkzdVV0V3I0NEgySUhIU1I1SlBuUGQ5UHhQZkd1T3lGa2VuTWVlUms2VjY3OFhsenIwU19jS1N4UGs1bmc?oc=5",
+      "date": "Sat, 20 Jun 2026 08:59:40 GMT",
+      "desc": "Massive bonuses for South Korea's chip workers puts central bank on inflation alert&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Samsung, SK Hynix suppliers seek war-cost payback after US-Iran shock drains chip materials inventory - digitimes",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxObHNmYlRxclJLTVJZd3AxUTg4d1JFM0syVy1Hbm9vOS1jWTctMUJyLTBBZW80eG1zOGZYVFI2dHZVYVJtVFJKcnZ0eUdBcmFvXy1pY0E5UzU0MVEwVXFGQUtNeVV5WjlQdWItTWRPV3FoMERvXzVndVBYRHFjNHpKeFplMV8xd28zUzdXWkw1N1JkRDRUTVE?oc=5",
-      "date": "Wed, 17 Jun 2026 07:49:24 GMT",
-      "desc": "Samsung, SK Hynix suppliers seek war-cost payback after US-Iran shock drains chip materials inventory&nbsp;&nbsp;digitimes"
-    },
-    {
-      "title": "Samsung, SK Hynix Shares Rally on Memory Price Surge - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9iOGdzY05DWTM2TUpGZGlGb2FaakVNX25WSE5uU19ybVctZEFaanpnQ1dQVlNzYUN1aWNjSHFCWUNpS0YxWHhnX3JPWHZ4TXBldmFSX0RVWkRkeE95QzItZ2lDM1oydXpTMTAzbDZ0OVNvZzcx?oc=5",
-      "date": "Thu, 18 Jun 2026 03:23:06 GMT",
-      "desc": "Samsung, SK Hynix Shares Rally on Memory Price Surge&nbsp;&nbsp;Businesskorea"
+      "title": "Samsung, SK hynix-linked semiconductor majors outscore SNU in admissions - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOMm1iRjNLX3o3azJjcFRWVnljcHplUXNNUmZYNlFMUE1CcjdlMWxhMzF5RjY0WHhkYmtMMkE5LV84bndqeVRwOGF4RkFoVlZaM2VEX2xqLXgtUWRscy1fNHpnWEh2TGFYaktNaFlIb1BNUVJjV25fZFJJM3l2SzhXS3NsaWtINHM5aXMtOUtEbzdsM0pmRC1UNkFQbHE5dXVQRzYxVWNMZWpDZm1TN2FpUjZvSFljcVNhamJ5RkFEMExsbHlYZVg00gHMAUFVX3lxTE5BbGVqd1QwdjF2eXdKNC12cFRiMGg1WUxPcDl5MW9QN2lBWGNYS0lVbk1Cc1VBeEZTSWFLZDdMdUxUN19aZ3ZReEhWMU5PUTloOW9UWHFfMFVDUHNoMkNxSW9NYUhvY0JxNG5aZjVJYml6Ri05aENlSmtHREcxYy00T2N2X3p6N0JFRTVRRmZyNTk4d3oxSWtyMjNjZlRBbllSWFlsSnRiQlVYRmJ1dFg2ZkE5OE16cU5mbUxURkVGcEN4UnVtcmtSZXh6Zw?oc=5",
+      "date": "Sun, 21 Jun 2026 07:16:02 GMT",
+      "desc": "Samsung, SK hynix-linked semiconductor majors outscore SNU in admissions&nbsp;&nbsp;The Korea Times"
     }
   ],
   "worldStocks": [
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-21 02:41 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-06-21 07:28 UTC"
 }
