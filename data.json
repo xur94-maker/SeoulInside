@@ -1,42 +1,60 @@
 {
   "globalNews": [
     {
-      "title": "First round of US-Iran talks ends with encouraging progress, mediators say",
-      "link": "https://www.bbc.com/news/articles/cwy0q41v1lzo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 22 Jun 2026 10:46:45 GMT",
-      "desc": "The US-Iran talks began on Sunday in Switzerland, after last week's agreement, which includes a commitment to reach a final deal within 60 days."
-    },
-    {
       "title": "Vance says Iran will allow nuclear inspectors back into the country",
       "link": "https://www.bbc.com/news/articles/c3vy3nr63gxo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 22 Jun 2026 14:18:19 GMT",
       "desc": "The US vice-president says a great deal of progress has been made after the first round of talks between the US and Iran."
     },
     {
-      "title": "Trump-backed political outsider wins Colombia election, initial count shows",
-      "link": "https://www.bbc.com/news/articles/clye4ky2yzpo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 22 Jun 2026 03:31:40 GMT",
-      "desc": "Abelardo de la Espriella appears to have narrowly defeated his rival Iván Cepeda, who says the preliminary count is \"not yet official or binding\"."
+      "title": "At least 13 killed and dozens injured after Qatar gas explosion",
+      "link": "https://www.bbc.com/news/articles/cwy05llpjpno?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 22 Jun 2026 15:15:42 GMT",
+      "desc": "The city's main liquified natural gas (LNG) processing site suffered a \"technical accident\" in the Ras Laffan industrial zone."
     },
     {
-      "title": "Largest ever cocaine bust in Australia after police raid underground bunker",
-      "link": "https://www.bbc.com/news/articles/c14ygjzr8j7o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 22 Jun 2026 01:40:00 GMT",
-      "desc": "Police seized 2.7 tonnes of cocaine worth an estimated A$816m after searching a property in western Sydney."
+      "title": "Myanmar army killed over 700 civilians in six months, UN says",
+      "link": "https://www.bbc.com/news/articles/cnv97e42r7yo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 22 Jun 2026 15:31:55 GMT",
+      "desc": "The new UN report says the 702 civilian deaths over six months last year included 153 children."
     },
     {
       "title": "Russian troop build-up threatens city seen as key to seizing Ukraine's Donbas",
       "link": "https://www.bbc.com/news/articles/c9w2g0ewk95o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 21 Jun 2026 23:57:59 GMT",
       "desc": "If Kostyantynivka falls, Russian forces would be able push towards Ukraine's last remaining strongholds in the east."
+    },
+    {
+      "title": "Clive Davis, music mogul behind Whitney Houston and Bruce Springsteen, dies aged 94",
+      "link": "https://www.bbc.com/news/articles/c3vy3e6q90qo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 22 Jun 2026 17:06:12 GMT",
+      "desc": "The record company executive also worked with Billy Joel, Pink Floyd, Alicia Keys and Aerosmith."
     }
   ],
   "koreaNews": [
     {
+      "title": "The case for South Korea to join the G7 - Engelsberg Ideas",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQZnAyY19weEY1T2NuZi1QY0l2bVlGWEpYbHVHS3FxUUFFeVZRY3pUNDhtZlpZVlZUMjhyWjRMUVpOV0lXTVZlQnVlOHFkQlMyOVU0SGNzVzBqTGFlWk5HYTJtV1Fkdm02S21pVmZCaE1nNlZxUGpGRlE4YzdSVVpNVnoxOA?oc=5",
+      "date": "Mon, 22 Jun 2026 15:24:10 GMT",
+      "desc": "The case for South Korea to join the G7&nbsp;&nbsp;Engelsberg Ideas"
+    },
+    {
+      "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYUZrbDM4Q3U2eGh2QmE5Z3BGYnBzVDVBRDZpLTk1aWdkcFlCWVlIWk1yMWVLOUJtZG15WXVpRzQwNmstMENsQ2RHMURQYkRCam9ITV9iUTRmbHVUVlhKc1FFbi0zYThqUHNURl9wbTdwbFdWd2s0ajdwTmdNMmFvc3dCX3EzQkwyQjZLTjgyN3F5YUcwU1o1aDFkUTY?oc=5",
+      "date": "Wed, 17 Jun 2026 15:17:54 GMT",
+      "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
       "title": "South Korea’s Policy Chief Flags Property Risks From Chip Windfall - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOOUdJY2xhc01Ma0VZNGtPRHhuSDZ2bGdCWkE0T012ZWtSVTJiX3dpUk5LNXdQc2h4RU41LVdTSVd6VUwtejNpVUhlNnloSk9uVWZFWUxaRm5IYlhLT0hCOHE3eVo1ZzZ3TXdoeG1wUENaZXFRaXNIOVpIaGFpSVZrYkh2UFJMYVptQ01IU1MxbGs2eVhzWUFQTEVhYTNuY19aTE0xTUpZa3J3M0xTcFk1QjRpUQ?oc=5",
-      "date": "Mon, 22 Jun 2026 03:07:00 GMT",
+      "date": "Mon, 22 Jun 2026 03:07:08 GMT",
       "desc": "South Korea’s Policy Chief Flags Property Risks From Chip Windfall&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "South Korea's Economic Growth and Impact on Real Estate - GuruFocus",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPS0tUZGM5c0YyLWZDQ2FDYjMtUXB2V2hSclpiUnJaei1oQTFrQnZ5Y0hka09CdDR3WUM3dk53UnFRaVR5NndBT25KVlRhandlLXpEeTJEb0pSUmg2WkpSNG9Sb2FSRWxaRE51cVotTU1GRnBIandZWUtIRC1wQ1hkTHVhYW1jYWhKQ0VSNjJqVGwzQnpyOGU0WQ?oc=5",
+      "date": "Mon, 22 Jun 2026 04:17:58 GMT",
+      "desc": "South Korea's Economic Growth and Impact on Real Estate&nbsp;&nbsp;GuruFocus"
     },
     {
       "title": "South Korean chipmakers are being paid such massive bonuses it’s becoming an inflation problem for the central bank - Fortune",
@@ -45,22 +63,10 @@
       "desc": "South Korean chipmakers are being paid such massive bonuses it’s becoming an inflation problem for the central bank&nbsp;&nbsp;Fortune"
     },
     {
-      "title": "The new superpower: The lesson that Israel must learn - The Jerusalem Post",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBQMjVzQ3VGNkZYWWRMN1ZpbnhmRTk3OEc3SElMMGVTZnlVd0tVd0h2b0xqSlBlYVRTaFdhNU9WaVdUMlFQWXJfQWdpakRDcjlxYmphc0tIdVhyVXhVay1ZaGU3UW5WN3JucF9kRXpMU1JDR2hTU29v?oc=5",
-      "date": "Sun, 21 Jun 2026 07:15:00 GMT",
-      "desc": "The new superpower: The lesson that Israel must learn&nbsp;&nbsp;The Jerusalem Post"
-    },
-    {
-      "title": "How China keeps North Korea's economy alive - dw.com",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
-      "date": "Mon, 01 Jun 2026 07:00:00 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
-    },
-    {
-      "title": "Japan, South Korea and Taiwan are suffering industrial rot - The Economist",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQjVZQTd6cTdwOWwyUy1udzBUU3BmTU5lX1lTWnlaSVpEcktrcW00V3hEQUpCNjJwMExFcHNtUU1xQlU2RkNObExxNHpiWEl5MWVlcm5xTnVXWW1mUW9NWTM4ejdHMjg3MmpsaGk2RmhlTjlYTnNLRmh6dWhJSjdoRHJCbGtKNlNkTVdzN1FqMmZIVDJEeFpNQllZNU5oR3IxWF91Sm1PTFBhNWdkekozZy03aDRYcGM?oc=5",
-      "date": "Wed, 27 May 2026 07:00:00 GMT",
-      "desc": "Japan, South Korea and Taiwan are suffering industrial rot&nbsp;&nbsp;The Economist"
+      "title": "SK Hynix overtakes Samsung to become South Korea's most valuable company - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbHluTXR0eVV4MVVvamJZY1BmUUNiYkxxeG52ak43ei1pXzZtMm95Sm1COThhSkR5WExMV3pNY1RMT1FoUnFyVlF0b3VDeGNxMC1HUEdHOWdnTVhZdjZDQllENl9OU2xwdlhoTk93YVZaZmY4VW5BUzlYOVl3emg1b1FYQURvZHZsSmJTd2RnYTdJREhzZ25LTldrX3c1V04yZEJSQ0Jqd1ktYWxySkdTc2czNnlwenpq?oc=5",
+      "date": "Mon, 22 Jun 2026 04:38:00 GMT",
+      "desc": "SK Hynix overtakes Samsung to become South Korea's most valuable company&nbsp;&nbsp;Reuters"
     },
     {
       "title": "SK Hynix overtakes Samsung to become South Korea's most valuable company - Yahoo Finance",
@@ -69,15 +75,9 @@
       "desc": "SK Hynix overtakes Samsung to become South Korea's most valuable company&nbsp;&nbsp;Yahoo Finance"
     },
     {
-      "title": "SK Hynix overtakes Samsung to become South Korea's most valuable company - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbHluTXR0eVV4MVVvamJZY1BmUUNiYkxxeG52ak43ei1pXzZtMm95Sm1COThhSkR5WExMV3pNY1RMT1FoUnFyVlF0b3VDeGNxMC1HUEdHOWdnTVhZdjZDQllENl9OU2xwdlhoTk93YVZaZmY4VW5BUzlYOVl3emg1b1FYQURvZHZsSmJTd2RnYTdJREhzZ25LTldrX3c1V04yZEJSQ0Jqd1ktYWxySkdTc2czNnlwenpq?oc=5",
-      "date": "Mon, 22 Jun 2026 04:38:00 GMT",
-      "desc": "SK Hynix overtakes Samsung to become South Korea's most valuable company&nbsp;&nbsp;Reuters"
-    },
-    {
       "title": "SK Hynix surpassed Samsung as South Korea's most valuable company - qz.com",
       "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPcXpnOTB6bEhRbjdGNnBmOHM1VVpMOFZfTU4xNmFWMXNpS1plVVJyNVVJUlVqRjBaeFR0UzhDYlhjVFBOTktPbE05RlBZWW1uRlB5SjRkT2o2UlQwamhEMFhQZW55SUFnel9DSFZsSFBGRUlIZDVtLWIyMUhaS3NuOU9Cd0ZlTXBILWc?oc=5",
-      "date": "Mon, 22 Jun 2026 11:57:57 GMT",
+      "date": "Mon, 22 Jun 2026 12:04:05 GMT",
       "desc": "SK Hynix surpassed Samsung as South Korea's most valuable company&nbsp;&nbsp;qz.com"
     }
   ],
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 209.69,
-      "change": 5.04,
-      "pct": 2.46,
+      "price": 208.86,
+      "change": 4.21,
+      "pct": 2.06,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 470.33,
-      "change": 38.18,
-      "pct": 8.83,
+      "price": 467.15,
+      "change": 35.0,
+      "pct": 8.1,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 544.83,
-      "change": 32.35,
-      "pct": 6.31,
+      "price": 545.77,
+      "change": 33.29,
+      "pct": 6.5,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 138.93,
-      "change": 17.83,
-      "pct": 14.72,
+      "price": 140.52,
+      "change": 19.42,
+      "pct": 16.04,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 225.96,
-      "change": 12.99,
-      "pct": 6.1,
+      "price": 227.72,
+      "change": 14.75,
+      "pct": 6.93,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 418.78,
-      "change": -0.1,
-      "pct": -0.02,
+      "price": 409.09,
+      "change": -9.79,
+      "pct": -2.34,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 347.32,
-      "change": -16.47,
-      "pct": -4.53,
+      "price": 347.78,
+      "change": -16.01,
+      "pct": -4.4,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 299.92,
-      "change": 3.97,
-      "pct": 1.34,
+      "price": 298.63,
+      "change": 2.69,
+      "pct": 0.91,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 373.86,
-      "change": -5.05,
-      "pct": -1.33,
+      "price": 369.91,
+      "change": -9.0,
+      "pct": -2.38,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7480.92,
-      "change": 60.82,
-      "pct": 0.82,
+      "price": 7476.35,
+      "change": 56.25,
+      "pct": 0.76,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26263.87,
-      "change": 242.21,
-      "pct": 0.93,
+      "price": 26230.88,
+      "change": 209.22,
+      "pct": 0.8,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1535.88,
-      "change": -1.68,
-      "pct": -0.11,
+      "price": 1536.77,
+      "change": -0.79,
+      "pct": -0.05,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-22 14:47 UTC"
+  "updatedAt": "2026-06-22 18:08 UTC"
 }
