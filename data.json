@@ -1,16 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Congress passes war powers measure for first time, rebuking Trump's war with Iran",
-      "link": "https://www.bbc.co.uk/news/articles/ce8j6g3v3r4o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 24 Jun 2026 03:57:59 GMT",
-      "desc": "The resolution is largely symbolic, but it adds to pressure on the White House to end the conflict once and for all."
+      "title": "Power outages hit France as record heatwave set to peak",
+      "link": "https://www.bbc.co.uk/news/articles/c78y4102n1zo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 24 Jun 2026 11:20:58 GMT",
+      "desc": "The heatwave is expected to spread to other parts of western Europe on Wednesday, before extending eastwards over the weekend."
     },
     {
-      "title": "Drowning deaths soar in France as Europe buckles in peak of heatwave",
-      "link": "https://www.bbc.co.uk/news/articles/c79yvw3j114o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 23 Jun 2026 16:27:17 GMT",
-      "desc": "Forty people have drowned in heatwave-related deaths in France since last Thursday, Prime Minister Sébastien Lecornu says."
+      "title": "Congress passes war powers measure for first time, breaking with Trump over Iran",
+      "link": "https://www.bbc.co.uk/news/articles/ce8j6g3v3r4o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 24 Jun 2026 03:57:59 GMT",
+      "desc": "The resolution passed on Tuesday was largely symbolic, but it adds to pressure on the White House to end the conflict once and for all."
     },
     {
       "title": "UN says it will evacuate sailors stranded in Strait of Hormuz, as Rubio warns against tolls",
@@ -25,24 +25,18 @@
       "desc": "Brad Lander unseats Dan Goldman in a race that laid bare the city's divisions over the Israel-Gaza war."
     },
     {
-      "title": "Sydney woman wakes from induced coma more than a week after shark attack",
-      "link": "https://www.bbc.co.uk/news/articles/cy8drk2dk3no?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 24 Jun 2026 01:42:43 GMT",
-      "desc": "Leah Stewart, 34, had one of her arms amputated after she was bitten while swimming at Coogee Beach."
+      "title": "Ukraine strikes knock out power in key city in Russian-occupied Crimea",
+      "link": "https://www.bbc.co.uk/news/articles/c3ryv72pjqno?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 24 Jun 2026 09:48:24 GMT",
+      "desc": "Sevastopol's Moscow-installed governor warns there will be no electricity in some areas until the evening."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s Plan to Tax Unrealized Gains Sparks Market Chaos and Black Tuesday - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZFBGMHJ0S3FQa3JSZlBCa2J4TjF3cUVid1lYZE9yUzJvMXBNYzd2dVRydTZNZjJ1UkF4eW51TERWR0VNR2l4SHRKeGgwOS1VM2txV2Jub1hvekJBTmZoWkVrUEJUN01fYU84X0JxX19PdFRxUGI4a1dUdTZBemxJLWtTa3ZYc0dhaXltLThsOTF2RlBUMzAzSE5FZjM?oc=5",
-      "date": "Tue, 23 Jun 2026 21:00:00 GMT",
-      "desc": "South Korea’s Plan to Tax Unrealized Gains Sparks Market Chaos and Black Tuesday&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "The new superpower: The lesson that Israel must learn - The Jerusalem Post",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBQMjVzQ3VGNkZYWWRMN1ZpbnhmRTk3OEc3SElMMGVTZnlVd0tVd0h2b0xqSlBlYVRTaFdhNU9WaVdUMlFQWXJfQWdpakRDcjlxYmphc0tIdVhyVXhVay1ZaGU3UW5WN3JucF9kRXpMU1JDR2hTU29v?oc=5",
-      "date": "Sun, 21 Jun 2026 07:15:00 GMT",
-      "desc": "The new superpower: The lesson that Israel must learn&nbsp;&nbsp;The Jerusalem Post"
+      "title": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses - The New York Times",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBudXBJNFhjVDR2NS1NZ2lZQ0s1Z3k4UG1kdHF0aEZZaEluNW9FWFFMM0hwS05sTzNPbG5GMFZKNE9HRHJGcjlnLVk5aXRKSGpuT0ZxbkwyVm5PVmhvS1ZGbGJ2Z1FoREJhTWRVZUM1UUFuWXhiSnVmVndR?oc=5",
+      "date": "Wed, 24 Jun 2026 09:47:24 GMT",
+      "desc": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses&nbsp;&nbsp;The New York Times"
     },
     {
       "title": "South Korea’s Policy Chief Flags Property Risks From Chip Windfall - Bloomberg.com",
@@ -63,6 +57,12 @@
       "desc": "South Korean chipmakers are being paid such massive bonuses it’s becoming an inflation problem for the central bank&nbsp;&nbsp;Fortune"
     },
     {
+      "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
+      "date": "Tue, 23 Jun 2026 00:00:11 GMT",
+      "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
+    },
+    {
       "title": "SK Hynix overtakes Samsung to become South Korea's most valuable company - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbHluTXR0eVV4MVVvamJZY1BmUUNiYkxxeG52ak43ei1pXzZtMm95Sm1COThhSkR5WExMV3pNY1RMT1FoUnFyVlF0b3VDeGNxMC1HUEdHOWdnTVhZdjZDQllENl9OU2xwdlhoTk93YVZaZmY4VW5BUzlYOVl3emg1b1FYQURvZHZsSmJTd2RnYTdJREhzZ25LTldrX3c1V04yZEJSQ0Jqd1ktYWxySkdTc2czNnlwenpq?oc=5",
       "date": "Mon, 22 Jun 2026 04:38:00 GMT",
@@ -75,10 +75,10 @@
       "desc": "Samsung, SK hynix Consider Massive Honam Semiconductor Investment, Raising Questions Over Yongin Plans&nbsp;&nbsp;thelec.net"
     },
     {
-      "title": "How SK Hynix's bet on a niche memory chip made it more valuable than Samsung - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPUzZyMHVEbFBPMjFsTEx3UG01MUF3MnduN2RTbGlhQkdHM1pNYWJtbkNUb0JIc3VfdTMwNFRfOVo2MWhTc09HLTBqdUJjX1NKYnVWbDh1WEdVZ2JBZG5VcW15Yk9hWHpDWHh5UmlwM3VySFk1YzIzX1FzUHlldUJlSklUODJFMnotelN1UVZwbVMyR1YxNXM1LUtTY09Dd0ZscWF2RXk4RFhWaXhqUmZwb01Eb0FtMVdVVXRKTUZUSmhNbEE?oc=5",
-      "date": "Wed, 24 Jun 2026 03:03:40 GMT",
-      "desc": "How SK Hynix's bet on a niche memory chip made it more valuable than Samsung&nbsp;&nbsp;Reuters"
+      "title": "South Korea's government discussing major new chip investments with Samsung, SK Hynix - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNUTU1OU9NUDJTeEJRZDg0UnFOMjAyOHJTcG5qa3N5dUlwVmtIUy1xN2pCM1VWMHNzeVlvTGVxSGNBMURKWGpaNk9IQlJiQTNoSUdjVUd6LXRqc2djODk5OU12bmNzNmZfeldhOUVCWGk2NUZTMGhTQ3piRmQ0aFhpbVo1N0lKVU4tdjh4NFZIWHV3YVlONXhpQWM1VVdjLWhfNzJ6VklZUDgzYzZnSEkzQmJjTnNKcFJndmN5YnlCV3g2cTVhdGhXd1BnNEFNQQ?oc=5",
+      "date": "Wed, 24 Jun 2026 01:33:00 GMT",
+      "desc": "South Korea's government discussing major new chip investments with Samsung, SK Hynix&nbsp;&nbsp;Reuters"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 338000.0,
-      "change": -15500.0,
-      "pct": -4.38,
+      "price": 340500.0,
+      "change": -13000.0,
+      "pct": -3.68,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2623000.0,
-      "change": -296000.0,
-      "pct": -10.14,
+      "price": 2580000.0,
+      "change": -339000.0,
+      "pct": -11.61,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 511000.0,
-      "change": -70000.0,
-      "pct": -12.05,
+      "price": 509000.0,
+      "change": -72000.0,
+      "pct": -12.39,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 139100.0,
-      "change": -12300.0,
-      "pct": -8.12,
+      "price": 138900.0,
+      "change": -12500.0,
+      "pct": -8.26,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 199700.0,
-      "change": -22300.0,
-      "pct": -10.05,
+      "price": 199400.0,
+      "change": -22600.0,
+      "pct": -10.18,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8500.7,
-      "change": -613.85,
-      "pct": -6.73,
+      "price": 8471.02,
+      "change": -643.53,
+      "pct": -7.06,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1543.49,
-      "change": 4.44,
-      "pct": 0.29,
+      "price": 1545.74,
+      "change": 6.69,
+      "pct": 0.43,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-24 06:38 UTC"
+  "updatedAt": "2026-06-24 11:49 UTC"
 }
