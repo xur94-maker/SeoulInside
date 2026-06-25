@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "'I thought building would fall on top of me' - Venezuelans describe earthquake panic",
+      "link": "https://www.bbc.co.uk/news/articles/czj8vjvmz38o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 25 Jun 2026 02:27:27 GMT",
+      "desc": "Two quakes hit the capital seconds apart, the first at a magnitude of 7.2 and the second at 7.5."
+    },
+    {
       "title": "France, UK and Spain see record temperatures as heatwave grips western Europe",
       "link": "https://www.bbc.co.uk/news/articles/c78y4102n1zo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 24 Jun 2026 21:39:18 GMT",
       "desc": "Tens of millions of people are grappling with punishing temperatures, which have led to red heat alerts across the continent."
+    },
+    {
+      "title": "Trump asks Congress for $87bn, mostly for 'urgent' Iran war costs",
+      "link": "https://www.bbc.co.uk/news/articles/c1eydwldzdjo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 25 Jun 2026 00:51:28 GMT",
+      "desc": "But the budget faces an uphill battle, coming a day after lawmakers rebuked Trump's military action."
     },
     {
       "title": "Air conditioning creates political divide after France records hottest day",
@@ -13,36 +25,24 @@
       "desc": "France is being forced to re-think its longstanding reservations about air-conditioning as temperatures soar."
     },
     {
-      "title": "UN nuclear chief says inspectors will visit Iran sites as part of war deal",
-      "link": "https://www.bbc.co.uk/news/articles/cpd395zv81vo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 24 Jun 2026 17:31:48 GMT",
-      "desc": "Rafael Grossi says the IAEA is \"working on modalities\" but an Iranian  minister says such access would only be part of a final deal with the US."
-    },
-    {
-      "title": "Clean sweep for Mamdani-backed candidates in New York's Democratic primary",
-      "link": "https://www.bbc.co.uk/news/articles/clye652m41po?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 24 Jun 2026 13:03:35 GMT",
-      "desc": "Brad Lander unseats Dan Goldman in a race that laid bare the city's divisions over the Israel-Gaza war."
-    },
-    {
-      "title": "Biggest city in Crimea without power after Ukraine strikes",
-      "link": "https://www.bbc.co.uk/news/articles/c3ryv72pjqno?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 24 Jun 2026 09:48:24 GMT",
-      "desc": "Sevastopol's Moscow-installed governor warns there will be no electricity in some areas until the evening."
+      "title": "Philippines bans video game played by alleged high school shooter",
+      "link": "https://www.bbc.co.uk/news/articles/c14y7738nm8o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 24 Jun 2026 22:14:12 GMT",
+      "desc": "The rare school shooting that left three students killed and 20 others injured has shocked the country."
     }
   ],
   "koreaNews": [
     {
       "title": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses - The New York Times",
       "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBudXBJNFhjVDR2NS1NZ2lZQ0s1Z3k4UG1kdHF0aEZZaEluNW9FWFFMM0hwS05sTzNPbG5GMFZKNE9HRHJGcjlnLVk5aXRKSGpuT0ZxbkwyVm5PVmhvS1ZGbGJ2Z1FoREJhTWRVZUM1UUFuWXhiSnVmVndR?oc=5",
-      "date": "Wed, 24 Jun 2026 09:47:24 GMT",
+      "date": "Wed, 24 Jun 2026 09:00:54 GMT",
       "desc": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses&nbsp;&nbsp;The New York Times"
     },
     {
-      "title": "The case for South Korea to join the G7 - Engelsberg Ideas",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQZnAyY19weEY1T2NuZi1QY0l2bVlGWEpYbHVHS3FxUUFFeVZRY3pUNDhtZlpZVlZUMjhyWjRMUVpOV0lXTVZlQnVlOHFkQlMyOVU0SGNzVzBqTGFlWk5HYTJtV1Fkdm02S21pVmZCaE1nNlZxUGpGRlE4YzdSVVpNVnoxOA?oc=5",
-      "date": "Mon, 22 Jun 2026 15:24:10 GMT",
-      "desc": "The case for South Korea to join the G7&nbsp;&nbsp;Engelsberg Ideas"
+      "title": "South Korea touts economic package in Canada submarine bid - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQbUtKRVFYS0J1bU1fdGNMN0pLdlZwTjkzZjBCbEstNjRmM2d2cGMwTkM2RHdHYXNFSXliYXRvQjA4RklROU11N1kyVnRnb0ZGaTFNcEtVRDF6ZEtlTk5KaEpzUWktMmZ3MEZGdzE5QXdlbENZMXZ5ZnoxQ1p2WjBLeGtuQW9jYjgzcThYX2JnOURqVHJkRnB6Y2dYTDd6N2NHczMtbHF30gGrAUFVX3lxTE01T3BhYlhCZ0RZTDlYVVJobVBoR3FneDk2Q3o5dkE5V01mcVJKUG5sbjRfNldIUkIwYU1MQm1GUktiRzZwLXRUNGdBQ1JrWjB1NlpaZWVoSWEwdmEyc1g2eHdOcjNPbHJ6UXZkaVVJSGlYZTRGOThFdUhiVXVJc1lHRlozU1k3RkR5SFRycy1vVXhLcXgxaVJCa3BmMDN1VHZNdms3QVpEbzkzTQ?oc=5",
+      "date": "Thu, 25 Jun 2026 00:26:51 GMT",
+      "desc": "South Korea touts economic package in Canada submarine bid&nbsp;&nbsp;upi.com"
     },
     {
       "title": "South Korea’s Policy Chief Flags Property Risks From Chip Windfall - Bloomberg.com",
@@ -51,16 +51,16 @@
       "desc": "South Korea’s Policy Chief Flags Property Risks From Chip Windfall&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korean chipmakers are being paid such massive bonuses it’s becoming an inflation problem for the central bank - Fortune",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOUGlfSWhnYVNuVjRDM2FnZENDZEltSVlaVHBSd3lMRXlPV3cySmxLdXVRQmh3R29nMWtZWGN5U3ZQOWRrNFVjNzlKbkQxSTlMYVRja1p6X19mbFVEc3B1Slg4d090Q1MxaC0xbTFHNGdGay1OOUN1RVFyY1o0Tm03NWhsYjFxT0xhdi1qYU1zaE9fRXo1T3c?oc=5",
-      "date": "Mon, 22 Jun 2026 10:58:00 GMT",
-      "desc": "South Korean chipmakers are being paid such massive bonuses it’s becoming an inflation problem for the central bank&nbsp;&nbsp;Fortune"
+      "title": "The case for South Korea to join the G7 - Engelsberg Ideas",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQZnAyY19weEY1T2NuZi1QY0l2bVlGWEpYbHVHS3FxUUFFeVZRY3pUNDhtZlpZVlZUMjhyWjRMUVpOV0lXTVZlQnVlOHFkQlMyOVU0SGNzVzBqTGFlWk5HYTJtV1Fkdm02S21pVmZCaE1nNlZxUGpGRlE4YzdSVVpNVnoxOA?oc=5",
+      "date": "Mon, 22 Jun 2026 15:24:10 GMT",
+      "desc": "The case for South Korea to join the G7&nbsp;&nbsp;Engelsberg Ideas"
     },
     {
-      "title": "The future of peace on the Korean Peninsula - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5LM3lqUHVBTVpYeHU4M1B6blRjRDQyejctdy12YzE2RlF2a1RTX0lXVFVFZldtNmtnbzJHWklRb1FBdFJJOGpnNkdBelJWMVVzNUF0bzhhVDJrN01YRl9Jbm8tQkNhNS1rdkNvWnM2LTd5TnFNalBQUnJrWDVSNmM?oc=5",
-      "date": "Tue, 23 Jun 2026 16:15:49 GMT",
-      "desc": "The future of peace on the Korean Peninsula&nbsp;&nbsp;Asia Times"
+      "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
+      "date": "Tue, 23 Jun 2026 00:00:11 GMT",
+      "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
     },
     {
       "title": "SK Hynix overtakes Samsung to become South Korea's most valuable company - Reuters",
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 340500.0,
-      "change": -13000.0,
-      "pct": -3.68,
+      "price": 358500.0,
+      "change": 48500.0,
+      "pct": 15.65,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2580000.0,
-      "change": -339000.0,
-      "pct": -11.61,
+      "price": 2939000.0,
+      "change": 384000.0,
+      "pct": 15.03,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 509000.0,
-      "change": -72000.0,
-      "pct": -12.39,
+      "price": 503000.0,
+      "change": -8000.0,
+      "pct": -1.57,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 138900.0,
-      "change": -12500.0,
-      "pct": -8.26,
+      "price": 139900.0,
+      "change": 2500.0,
+      "pct": 1.82,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 199400.0,
-      "change": -22600.0,
-      "pct": -10.18,
+      "price": 200000.0,
+      "change": -2500.0,
+      "pct": -1.23,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8471.02,
-      "change": -643.53,
-      "pct": -7.06,
+      "price": 8964.1,
+      "change": 760.26,
+      "pct": 9.27,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1539.63,
-      "change": 4.38,
-      "pct": 0.29,
+      "price": 1542.16,
+      "change": 6.91,
+      "pct": 0.45,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-25 02:12 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-06-25 06:41 UTC"
 }
