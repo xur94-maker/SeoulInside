@@ -1,10 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "'I thought building would fall on top of me' - Venezuelans describe earthquake panic",
+      "title": "'I thought I was going to die' - Venezuelans describe earthquake panic",
       "link": "https://www.bbc.co.uk/news/articles/czj8vjvmz38o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 25 Jun 2026 02:27:27 GMT",
-      "desc": "Two quakes hit the capital seconds apart, the first at a magnitude of 7.2 and the second at 7.5."
+      "date": "Thu, 25 Jun 2026 10:48:09 GMT",
+      "desc": "Buildings were flattened in the capital Caracas, where voices have been heard calling from the rubble."
     },
     {
       "title": "France, UK and Spain see record temperatures as heatwave grips western Europe",
@@ -13,16 +13,16 @@
       "desc": "Tens of millions of people are grappling with punishing temperatures, which have led to red heat alerts across the continent."
     },
     {
-      "title": "Trump asks Congress for $87bn, mostly for 'urgent' Iran war costs",
+      "title": "Trump asks Congress for billions for Iran war, after tension with Republicans",
       "link": "https://www.bbc.co.uk/news/articles/c1eydwldzdjo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 25 Jun 2026 00:51:28 GMT",
-      "desc": "But the budget faces an uphill battle, coming a day after lawmakers rebuked Trump's military action."
+      "date": "Thu, 25 Jun 2026 09:06:59 GMT",
+      "desc": "But the budget faces an uphill battle as the president spars with some members of his own party over the issue."
     },
     {
-      "title": "Air conditioning creates political divide after France records hottest day",
-      "link": "https://www.bbc.co.uk/news/articles/c4gyqldl3p5o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 24 Jun 2026 13:51:24 GMT",
-      "desc": "France is being forced to re-think its longstanding reservations about air-conditioning as temperatures soar."
+      "title": "Oil price falls back to pre-Iran war levels",
+      "link": "https://www.bbc.co.uk/news/articles/c0jy7d7wzv4o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 25 Jun 2026 07:34:55 GMT",
+      "desc": "Signs that traffic through the key Strait of Hormuz shipping route is gradually resuming has helped to push the oil price down."
     },
     {
       "title": "Philippines bans video game played by alleged high school shooter",
@@ -37,12 +37,6 @@
       "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBudXBJNFhjVDR2NS1NZ2lZQ0s1Z3k4UG1kdHF0aEZZaEluNW9FWFFMM0hwS05sTzNPbG5GMFZKNE9HRHJGcjlnLVk5aXRKSGpuT0ZxbkwyVm5PVmhvS1ZGbGJ2Z1FoREJhTWRVZUM1UUFuWXhiSnVmVndR?oc=5",
       "date": "Wed, 24 Jun 2026 09:00:54 GMT",
       "desc": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses&nbsp;&nbsp;The New York Times"
-    },
-    {
-      "title": "South Korea touts economic package in Canada submarine bid - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQbUtKRVFYS0J1bU1fdGNMN0pLdlZwTjkzZjBCbEstNjRmM2d2cGMwTkM2RHdHYXNFSXliYXRvQjA4RklROU11N1kyVnRnb0ZGaTFNcEtVRDF6ZEtlTk5KaEpzUWktMmZ3MEZGdzE5QXdlbENZMXZ5ZnoxQ1p2WjBLeGtuQW9jYjgzcThYX2JnOURqVHJkRnB6Y2dYTDd6N2NHczMtbHF30gGrAUFVX3lxTE01T3BhYlhCZ0RZTDlYVVJobVBoR3FneDk2Q3o5dkE5V01mcVJKUG5sbjRfNldIUkIwYU1MQm1GUktiRzZwLXRUNGdBQ1JrWjB1NlpaZWVoSWEwdmEyc1g2eHdOcjNPbHJ6UXZkaVVJSGlYZTRGOThFdUhiVXVJc1lHRlozU1k3RkR5SFRycy1vVXhLcXgxaVJCa3BmMDN1VHZNdms3QVpEbzkzTQ?oc=5",
-      "date": "Thu, 25 Jun 2026 00:26:51 GMT",
-      "desc": "South Korea touts economic package in Canada submarine bid&nbsp;&nbsp;upi.com"
     },
     {
       "title": "South Korea’s Policy Chief Flags Property Risks From Chip Windfall - Bloomberg.com",
@@ -61,6 +55,12 @@
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
       "date": "Tue, 23 Jun 2026 00:00:11 GMT",
       "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
+    },
+    {
+      "title": "South Korean chipmakers are being paid such massive bonuses it’s becoming an inflation problem for the central bank - Fortune",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOUGlfSWhnYVNuVjRDM2FnZENDZEltSVlaVHBSd3lMRXlPV3cySmxLdXVRQmh3R29nMWtZWGN5U3ZQOWRrNFVjNzlKbkQxSTlMYVRja1p6X19mbFVEc3B1Slg4d090Q1MxaC0xbTFHNGdGay1OOUN1RVFyY1o0Tm03NWhsYjFxT0xhdi1qYU1zaE9fRXo1T3c?oc=5",
+      "date": "Mon, 22 Jun 2026 10:58:00 GMT",
+      "desc": "South Korean chipmakers are being paid such massive bonuses it’s becoming an inflation problem for the central bank&nbsp;&nbsp;Fortune"
     },
     {
       "title": "SK Hynix overtakes Samsung to become South Korea's most valuable company - Reuters",
@@ -183,9 +183,9 @@
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2939000.0,
-      "change": 384000.0,
-      "pct": 15.03,
+      "price": 2917000.0,
+      "change": 362000.0,
+      "pct": 14.17,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
@@ -199,35 +199,35 @@
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 139900.0,
-      "change": 2500.0,
-      "pct": 1.82,
+      "price": 139500.0,
+      "change": 2100.0,
+      "pct": 1.53,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 200000.0,
-      "change": -2500.0,
-      "pct": -1.23,
+      "price": 199700.0,
+      "change": -2800.0,
+      "pct": -1.38,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8964.1,
-      "change": 760.26,
-      "pct": 9.27,
+      "price": 8930.3,
+      "change": 726.46,
+      "pct": 8.86,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1542.16,
-      "change": 6.91,
-      "pct": 0.45,
+      "price": 1543.31,
+      "change": 8.06,
+      "pct": 0.52,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-25 06:41 UTC"
+  "updatedAt": "2026-06-25 11:44 UTC"
 }
