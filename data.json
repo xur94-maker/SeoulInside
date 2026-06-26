@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "Rescuers search rubble for survivors as Venezuela earthquakes kill at least 235",
-      "link": "https://www.bbc.co.uk/news/articles/cjegdqw5d3yo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 26 Jun 2026 03:24:12 GMT",
-      "desc": "At least 4,300 people have been injured after two seven-plus magnitude shallow quakes hit seconds apart."
-    },
-    {
       "title": "Earthquake is devastating blow to Venezuela at time of uncertainty",
       "link": "https://www.bbc.co.uk/news/articles/c3vynpw7rk4o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 26 Jun 2026 02:12:07 GMT",
       "desc": "The twin quakes come less than six months after Venezuela's then-leader Nicolás Maduro was seized by US forces."
     },
     {
-      "title": "People flee as building collapses on Caracas outskirts",
-      "link": "https://www.bbc.co.uk/news/videos/c78y1e3606vo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 25 Jun 2026 12:08:30 GMT",
-      "desc": "The capital and its surrounding areas have seen some of the worst damage from the 7.2 and 7.5 quakes, which hit a minute apart."
+      "title": "Aerial footage reveals destruction in coastal Venezuela",
+      "link": "https://www.bbc.co.uk/news/videos/c75y1kd16qdo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 26 Jun 2026 05:13:22 GMT",
+      "desc": "Multi-storey buildings have collapsed in La Guaira following two major earthquakes on Wednesday."
     },
     {
       "title": "UN pauses Strait of Hormuz evacuation plan after cargo ship attacked",
       "link": "https://www.bbc.co.uk/news/articles/cjwg9np904qo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 26 Jun 2026 00:28:02 GMT",
+      "date": "Fri, 26 Jun 2026 11:27:59 GMT",
       "desc": "The ship was reportedly struck by an \"unknown projectile\" near Oman but no casualties were reported."
     },
     {
-      "title": "Women alleging rape and sexual assault in France call to abolish statute of limitations",
-      "link": "https://www.bbc.co.uk/news/articles/ckg7z5dvxnzo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 25 Jun 2026 18:50:12 GMT",
-      "desc": "More than 50 women are calling for the abolition of the statute of limitations which they say has prevented them seeking justice."
+      "title": "Christmas market attacker jailed for life for murdering six in Germany",
+      "link": "https://www.bbc.co.uk/news/articles/cy06y63y6lno?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 26 Jun 2026 10:49:11 GMT",
+      "desc": "A nine-year-old and five women were killed when Taleb Al-Abdulmohsen drove into the market in 2024."
+    },
+    {
+      "title": "Senior Ukrainian intelligence official jailed for life for spying for Russia",
+      "link": "https://www.bbc.co.uk/news/articles/cg4w3wyxzzno?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 26 Jun 2026 10:38:37 GMT",
+      "desc": "Col Dmytro Kozyura agreed to share state secrets and systematically disclosed classified information, prosecutors say."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea’s Plan to Tax Unrealized Gains Sparks Market Chaos and Black Tuesday - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZFBGMHJ0S3FQa3JSZlBCa2J4TjF3cUVid1lYZE9yUzJvMXBNYzd2dVRydTZNZjJ1UkF4eW51TERWR0VNR2l4SHRKeGgwOS1VM2txV2Jub1hvekJBTmZoWkVrUEJUN01fYU84X0JxX19PdFRxUGI4a1dUdTZBemxJLWtTa3ZYc0dhaXltLThsOTF2RlBUMzAzSE5FZjM?oc=5",
+      "date": "Tue, 23 Jun 2026 21:00:00 GMT",
+      "desc": "South Korea’s Plan to Tax Unrealized Gains Sparks Market Chaos and Black Tuesday&nbsp;&nbsp;Yahoo Finance"
+    },
     {
       "title": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses - The New York Times",
       "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBudXBJNFhjVDR2NS1NZ2lZQ0s1Z3k4UG1kdHF0aEZZaEluNW9FWFFMM0hwS05sTzNPbG5GMFZKNE9HRHJGcjlnLVk5aXRKSGpuT0ZxbkwyVm5PVmhvS1ZGbGJ2Z1FoREJhTWRVZUM1UUFuWXhiSnVmVndR?oc=5",
@@ -51,16 +57,10 @@
       "desc": "Toss partners with Poseidon to build user-led AI data economy in South Korea - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
     },
     {
-      "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
-      "date": "Tue, 23 Jun 2026 00:00:11 GMT",
-      "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
-    },
-    {
-      "title": "South Korea’s Plan to Tax Unrealized Gains Sparks Market Chaos and Black Tuesday - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPZFBGMHJ0S3FQa3JSZlBCa2J4TjF3cUVid1lYZE9yUzJvMXBNYzd2dVRydTZNZjJ1UkF4eW51TERWR0VNR2l4SHRKeGgwOS1VM2txV2Jub1hvekJBTmZoWkVrUEJUN01fYU84X0JxX19PdFRxUGI4a1dUdTZBemxJLWtTa3ZYc0dhaXltLThsOTF2RlBUMzAzSE5FZjM?oc=5",
-      "date": "Tue, 23 Jun 2026 21:00:00 GMT",
-      "desc": "South Korea’s Plan to Tax Unrealized Gains Sparks Market Chaos and Black Tuesday&nbsp;&nbsp;Yahoo Finance"
+      "title": "How China keeps North Korea's economy alive - dw.com",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
+      "date": "Mon, 01 Jun 2026 07:00:00 GMT",
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
     },
     {
       "title": "In South Korea, a job or partner at Samsung or SK Hynix is the new 'A+' catch - Reuters",
@@ -175,25 +175,25 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 336000.0,
-      "change": -4500.0,
-      "pct": -1.32,
+      "price": 339500.0,
+      "change": -1000.0,
+      "pct": -0.29,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2656000.0,
-      "change": 35000.0,
-      "pct": 1.34,
+      "price": 2673000.0,
+      "change": 52000.0,
+      "pct": 1.98,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 479500.0,
-      "change": -29500.0,
-      "pct": -5.8,
+      "price": 480500.0,
+      "change": -28500.0,
+      "pct": -5.6,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
@@ -207,27 +207,27 @@
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 196000.0,
-      "change": -3400.0,
-      "pct": -1.71,
+      "price": 196400.0,
+      "change": -3000.0,
+      "pct": -1.5,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8361.76,
-      "change": -109.26,
-      "pct": -1.29,
+      "price": 8411.21,
+      "change": -59.81,
+      "pct": -0.71,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1537.98,
-      "change": -4.78,
-      "pct": -0.31,
+      "price": 1538.17,
+      "change": -4.59,
+      "pct": -0.3,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-26 06:46 UTC"
+  "updatedAt": "2026-06-26 11:47 UTC"
 }
