@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Venezuela earthquakes kill 920 people as families desperate for news",
+      "title": "US strikes Iran after attack on cargo ship",
+      "link": "https://www.bbc.co.uk/news/articles/ckg590wqxwpo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 27 Jun 2026 02:48:12 GMT",
+      "desc": "US Central Command says it has struck missile and drone storage facilities and coastal radar positions."
+    },
+    {
+      "title": "Venezuela earthquakes kill 920 people as international rescue teams arrive",
       "link": "https://www.bbc.co.uk/news/articles/c39y79g7gzko?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 26 Jun 2026 21:15:37 GMT",
-      "desc": "Hundreds are still feared trapped under the rubble, as international rescue teams start to arrive."
+      "date": "Sat, 27 Jun 2026 04:09:24 GMT",
+      "desc": "Hundreds are still feared trapped under the rubble, as families desperate for news."
     },
     {
       "title": "Mother dies saving daughter in Venezuela earthquakes",
@@ -13,42 +19,24 @@
       "desc": "Héctor Bello wrote on social media that \"you gave your own life for our daughter\" in the quakes which killed at least 920 people."
     },
     {
-      "title": "US conducts strikes on Iran after attack on cargo ship",
-      "link": "https://www.bbc.co.uk/news/articles/ckg590wqxwpo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 26 Jun 2026 22:57:30 GMT",
-      "desc": "US Central Command says it has struck missile and drone storage facilities and coastal radar positions."
+      "title": "Meloni and Trump: A very public fall-out that is proving very hard to fix",
+      "link": "https://www.bbc.co.uk/news/articles/cze962pgk27o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 26 Jun 2026 23:01:50 GMT",
+      "desc": "Italy's PM was not long ago being called the \"Trump whisperer\", but their relationship has gone from public attacks to personal insults."
     },
     {
       "title": "Europe's deadly heatwave breaks German record and halts public events",
       "link": "https://www.bbc.co.uk/news/articles/cx2knzzwprgo?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 26 Jun 2026 18:14:36 GMT",
       "desc": "Germany's highest ever temperature of 41.3C is recorded provisionally in Saarbrücken, over the border from France."
-    },
-    {
-      "title": "DR Congo takes Rwanda to international court over decades of conflict",
-      "link": "https://www.bbc.co.uk/news/articles/c8724zn3491o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 26 Jun 2026 17:05:22 GMT",
-      "desc": "Kinshasa accuses its neighbour of committing various violations since the 1994 Rwanda genocide."
     }
   ],
   "koreaNews": [
-    {
-      "title": "North Korea - Economy, Resources, Trade - Britannica",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
-      "date": "Wed, 24 Jun 2026 05:00:00 GMT",
-      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
-    },
     {
       "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3I?oc=5",
       "date": "Tue, 23 Jun 2026 00:00:11 GMT",
       "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
-    },
-    {
-      "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYUZrbDM4Q3U2eGh2QmE5Z3BGYnBzVDVBRDZpLTk1aWdkcFlCWVlIWk1yMWVLOUJtZG15WXVpRzQwNmstMENsQ2RHMURQYkRCam9ITV9iUTRmbHVUVlhKc1FFbi0zYThqUHNURl9wbTdwbFdWd2s0ajdwTmdNMmFvc3dCX3EzQkwyQjZLTjgyN3F5YUcwU1o1aDFkUTY?oc=5",
-      "date": "Wed, 17 Jun 2026 15:17:54 GMT",
-      "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses - The New York Times",
@@ -57,10 +45,22 @@
       "desc": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses&nbsp;&nbsp;The New York Times"
     },
     {
+      "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYUZrbDM4Q3U2eGh2QmE5Z3BGYnBzVDVBRDZpLTk1aWdkcFlCWVlIWk1yMWVLOUJtZG15WXVpRzQwNmstMENsQ2RHMURQYkRCam9ITV9iUTRmbHVUVlhKc1FFbi0zYThqUHNURl9wbTdwbFdWd2s0ajdwTmdNMmFvc3dCX3EzQkwyQjZLTjgyN3F5YUcwU1o1aDFkUTY?oc=5",
+      "date": "Wed, 17 Jun 2026 15:17:54 GMT",
+      "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
       "title": "Samsung plans a massive long-term investment in South Korea - AzerNews",
       "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1oR1ppRFhReFJuN3U3V2VkYWoxVC1NeU9PZW5zUEdTRzNGRVlOaG1mTVlUNXJVSGVoZmNNS2ZDdGZCc0JJb2Q4NzRzSi11dUI4R05hTw?oc=5",
       "date": "Fri, 26 Jun 2026 15:47:00 GMT",
       "desc": "Samsung plans a massive long-term investment in South Korea&nbsp;&nbsp;AzerNews"
+    },
+    {
+      "title": "South Korea touts economic package in Canada submarine bid - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQbUtKRVFYS0J1bU1fdGNMN0pLdlZwTjkzZjBCbEstNjRmM2d2cGMwTkM2RHdHYXNFSXliYXRvQjA4RklROU11N1kyVnRnb0ZGaTFNcEtVRDF6ZEtlTk5KaEpzUWktMmZ3MEZGdzE5QXdlbENZMXZ5ZnoxQ1p2WjBLeGtuQW9jYjgzcThYX2JnOURqVHJkRnB6Y2dYTDd6N2NHczMtbHF30gGrAUFVX3lxTE01T3BhYlhCZ0RZTDlYVVJobVBoR3FneDk2Q3o5dkE5V01mcVJKUG5sbjRfNldIUkIwYU1MQm1GUktiRzZwLXRUNGdBQ1JrWjB1NlpaZWVoSWEwdmEyc1g2eHdOcjNPbHJ6UXZkaVVJSGlYZTRGOThFdUhiVXVJc1lHRlozU1k3RkR5SFRycy1vVXhLcXgxaVJCa3BmMDN1VHZNdms3QVpEbzkzTQ?oc=5",
+      "date": "Thu, 25 Jun 2026 00:26:51 GMT",
+      "desc": "South Korea touts economic package in Canada submarine bid&nbsp;&nbsp;upi.com"
     },
     {
       "title": "Samsung Electronics and SK Hynix plan $646B investment package in semiconductor expansion - Crypto Briefing",
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-27 02:09 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-06-27 06:24 UTC"
 }
