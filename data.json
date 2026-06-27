@@ -1,22 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "US strikes Iran after attack on cargo ship",
-      "link": "https://www.bbc.co.uk/news/articles/ckg590wqxwpo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 27 Jun 2026 10:40:38 GMT",
-      "desc": "Iran accuses the US of violating their deal and says it struck targets linked to American forces in response."
-    },
-    {
       "title": "Venezuela earthquakes kill 920 people as international rescue teams arrive",
       "link": "https://www.bbc.co.uk/news/articles/c39y79g7gzko?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 27 Jun 2026 08:56:30 GMT",
       "desc": "Hundreds are still feared trapped under the rubble, as families desperate for news."
     },
     {
-      "title": "Mother dies saving daughter in Venezuela earthquakes",
-      "link": "https://www.bbc.co.uk/news/articles/c0jydyz8z6jo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 26 Jun 2026 18:36:32 GMT",
-      "desc": "Héctor Bello wrote on social media that \"you gave your own life for our daughter\" in the quakes which killed at least 920 people."
+      "title": "In Caracas, this feels like the hardest moment in Venezuela's modern history",
+      "link": "https://www.bbc.co.uk/news/articles/cdjk8zwe7z3o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 27 Jun 2026 14:22:37 GMT",
+      "desc": "Rescue teams are working ceaselessly to reach those trapped under rubble. But as hope fades, anger is growing."
+    },
+    {
+      "title": "US strikes Iran after attack on cargo ship",
+      "link": "https://www.bbc.co.uk/news/articles/ckg590wqxwpo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 27 Jun 2026 10:40:38 GMT",
+      "desc": "Iran accuses the US of violating their deal and says it struck targets linked to American forces in response."
     },
     {
       "title": "Meloni and Trump: A very public fall-out that is proving very hard to fix",
@@ -34,15 +34,9 @@
   "koreaNews": [
     {
       "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3I?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
       "date": "Tue, 23 Jun 2026 00:00:11 GMT",
       "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
-    },
-    {
-      "title": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses - The New York Times",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBudXBJNFhjVDR2NS1NZ2lZQ0s1Z3k4UG1kdHF0aEZZaEluNW9FWFFMM0hwS05sTzNPbG5GMFZKNE9HRHJGcjlnLVk5aXRKSGpuT0ZxbkwyVm5PVmhvS1ZGbGJ2Z1FoREJhTWRVZUM1UUFuWXhiSnVmVndR?oc=5",
-      "date": "Wed, 24 Jun 2026 09:00:54 GMT",
-      "desc": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses&nbsp;&nbsp;The New York Times"
     },
     {
       "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
@@ -51,16 +45,22 @@
       "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
+      "title": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses - The New York Times",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBudXBJNFhjVDR2NS1NZ2lZQ0s1Z3k4UG1kdHF0aEZZaEluNW9FWFFMM0hwS05sTzNPbG5GMFZKNE9HRHJGcjlnLVk5aXRKSGpuT0ZxbkwyVm5PVmhvS1ZGbGJ2Z1FoREJhTWRVZUM1UUFuWXhiSnVmVndR?oc=5",
+      "date": "Wed, 24 Jun 2026 09:00:54 GMT",
+      "desc": "A.I. Riches Fuel Economic Divide in Asia’s Chip Powerhouses&nbsp;&nbsp;The New York Times"
+    },
+    {
       "title": "South Korea touts economic package in Canada submarine bid - upi.com",
       "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQbUtKRVFYS0J1bU1fdGNMN0pLdlZwTjkzZjBCbEstNjRmM2d2cGMwTkM2RHdHYXNFSXliYXRvQjA4RklROU11N1kyVnRnb0ZGaTFNcEtVRDF6ZEtlTk5KaEpzUWktMmZ3MEZGdzE5QXdlbENZMXZ5ZnoxQ1p2WjBLeGtuQW9jYjgzcThYX2JnOURqVHJkRnB6Y2dYTDd6N2NHczMtbHF30gGrAUFVX3lxTE01T3BhYlhCZ0RZTDlYVVJobVBoR3FneDk2Q3o5dkE5V01mcVJKUG5sbjRfNldIUkIwYU1MQm1GUktiRzZwLXRUNGdBQ1JrWjB1NlpaZWVoSWEwdmEyc1g2eHdOcjNPbHJ6UXZkaVVJSGlYZTRGOThFdUhiVXVJc1lHRlozU1k3RkR5SFRycy1vVXhLcXgxaVJCa3BmMDN1VHZNdms3QVpEbzkzTQ?oc=5",
       "date": "Thu, 25 Jun 2026 00:26:51 GMT",
       "desc": "South Korea touts economic package in Canada submarine bid&nbsp;&nbsp;upi.com"
     },
     {
-      "title": "Samsung plans a massive long-term investment in South Korea - AzerNews",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1oR1ppRFhReFJuN3U3V2VkYWoxVC1NeU9PZW5zUEdTRzNGRVlOaG1mTVlUNXJVSGVoZmNNS2ZDdGZCc0JJb2Q4NzRzSi11dUI4R05hTw?oc=5",
-      "date": "Fri, 26 Jun 2026 15:47:00 GMT",
-      "desc": "Samsung plans a massive long-term investment in South Korea&nbsp;&nbsp;AzerNews"
+      "title": "BTS-mania poised to boost South Korea's economy well into the future - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPbjRzeVZxdXVWY0VLY3pSTDJoNDVVdzVRNHlJYlNkMXlYdXcwMzQwNGJlTXRxWktENDdRc3lIOC11TkVtTlZhTjlIc0FLSkk2YVU1ekdqM0xkbU52RHdmSzFwQ2lzU3RuU2FiQmg2NldhYTlhb245X1VzN1BXNks0bVRxU0o0dEZYMER6RXIyV1B3Q1ZHMjUyanlPONIBoAFBVV95cUxOTU1xbnR4aktFbkV5b05yZUZwenlFNDF6ODNYalR2T1dKamxRdE1pOG9DaWRQRG43T0VKTmJFd25SaXg1a2NqcHQ1ZVplcjBuSWItWG9iMHg3RGhzRzl6bTZFQWJvVHBzSVNxbGlYLUxfRFAxTndXUUZSREp1azVkSXE3Y1BCV2VDMV9yRTNWTE9MOVgxY2hKOWZIcTRBM0p3?oc=5",
+      "date": "Thu, 11 Jun 2026 07:00:00 GMT",
+      "desc": "BTS-mania poised to boost South Korea's economy well into the future&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung Electronics and SK Hynix plan $646B investment package in semiconductor expansion - Crypto Briefing",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-27 11:00 UTC"
+  "updatedAt": "2026-06-27 15:07 UTC"
 }
