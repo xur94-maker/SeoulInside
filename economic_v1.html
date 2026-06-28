@@ -1,0 +1,2994 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nobel Economic Universe · Educator's Edition v1</title>
+<style>
+/* ───  학술 스타일 ─── */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;700&family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans+KR:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg:       #0a0e1a;
+  --surface:  #0f1a2e;
+  --surface2: #162035;
+  --border:   #1e3050;
+  --cyan:     #38bdf8;
+  --gold:     #f59e0b;
+  --green:    #10b981;
+  --red:      #ef4444;
+  --purple:   #a78bfa;
+  --orange:   #fb923c;
+  --pink:     #f472b6;
+  --text:     #e2e8f0;
+  --muted:    #4a6080;
+  --serif:    'IBM Plex Serif', serif;
+  --mono:     'IBM Plex Mono', monospace;
+  --sans:     'IBM Plex Sans KR', sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; overflow:hidden; background:var(--bg); color:var(--text); font-family:var(--sans); font-size:13px; }
+
+#app { display:grid; grid-template-rows:52px 1fr 32px; height:100vh; }
+
+/* ─── HEADER ─── */
+#header {
+  display:flex; align-items:center; gap:14px; padding:0 20px;
+  background:var(--surface); border-bottom:2px solid var(--border);
+  z-index:20;
+}
+.logo { font-family:var(--serif); font-size:14px; font-weight:700; color:var(--gold); letter-spacing:.04em; white-space:nowrap; }
+.logo em { color:var(--cyan); font-style:italic; font-weight:400; }
+.hdiv { width:1px; height:26px; background:var(--border); }
+.hmet { display:flex; flex-direction:column; gap:1px; }
+.hmet .hl { font-family:var(--mono); font-size:7px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; }
+.hmet .hv { font-family:var(--mono); font-size:14px; font-weight:600; line-height:1; }
+.c-gdp  { color:var(--gold); }
+.c-inf  { color:var(--orange); }
+.c-rate { color:var(--cyan); }
+.c-unemp{ color:var(--purple); }
+.c-grn  { color:var(--green); }
+.c-red  { color:var(--red); }
+
+#h-scenario { margin-left:auto; font-family:var(--mono); font-size:9px; color:var(--gold); letter-spacing:.06em; background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.25); padding:3px 14px; border-radius:20px; }
+#h-round  { font-family:var(--mono); font-size:9px; color:var(--muted); }
+#h-theory { font-family:var(--mono); font-size:9px; color:var(--cyan); }
+#h-model  { font-family:var(--mono); font-size:8px; color:var(--purple); }
+
+/* ─── MAIN GRID ─── */
+#main { display:grid; grid-template-columns:300px 1fr 320px; overflow:hidden; }
+
+.panel {
+  background:var(--surface); overflow-y:auto; padding:12px 14px;
+  display:flex; flex-direction:column; gap:10px;
+}
+.panel:first-child { border-right:2px solid var(--border); }
+.panel:last-child  { border-left:2px solid var(--border); }
+.panel::-webkit-scrollbar { width:3px; }
+.panel::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+
+.sec-label {
+  font-family:var(--mono); font-size:8px; letter-spacing:.15em;
+  color:var(--muted); text-transform:uppercase; margin-bottom:2px;
+  display:flex; align-items:center; gap:6px;
+}
+.sec-label .badge {
+  font-size:7px; background:rgba(56,189,248,.15); color:var(--cyan);
+  padding:1px 6px; border-radius:10px;
+}
+
+/* ─── PERFORMANCE CONTROL ─── */
+.perf-control {
+  background:var(--surface2); border:1px solid var(--border);
+  border-radius:6px; padding:8px 10px;
+}
+.perf-control .sl-hd { display:flex; justify-content:space-between; font-size:9px; margin-bottom:2px; }
+.perf-control .sl-name { color:var(--text); }
+.perf-control .sl-val  { font-family:var(--mono); color:var(--cyan); font-weight:600; }
+.perf-control input[type=range] { width:100%; height:3px; border-radius:2px; accent-color:var(--cyan); cursor:pointer; background:var(--border); }
+.perf-control .perf-hint { font-size:7px; color:var(--muted); margin-top:2px; }
+.quality-btn {
+  padding:2px 8px; border-radius:4px; border:1px solid var(--border);
+  background:transparent; color:var(--muted); font-family:var(--mono); font-size:7px;
+  cursor:pointer; transition:.15s;
+}
+.quality-btn:hover { border-color:var(--cyan); color:var(--cyan); }
+.quality-btn.active { background:var(--cyan); color:#000; border-color:var(--cyan); }
+
+/* ─── THEORY TOGGLE (NEW v6.2) ─── */
+.theory-group {
+  background:var(--surface2); border:1px solid var(--border);
+  border-radius:6px; padding:6px 8px; margin-bottom:4px;
+}
+.theory-group-header {
+  display:flex; align-items:center; gap:6px; margin-bottom:3px;
+}
+.theory-group-header .group-name {
+  font-size:8px; font-weight:600; color:var(--gold);
+}
+.group-toggle {
+  font-size:6px; padding:1px 6px; border-radius:3px;
+  border:1px solid var(--border); background:transparent;
+  color:var(--muted); cursor:pointer; transition:.15s;
+}
+.group-toggle:hover { border-color:var(--cyan); color:var(--cyan); }
+.theory-tag {
+  display:inline-flex; align-items:center; gap:3px;
+  font-size:7px; color:var(--text); cursor:pointer;
+  padding:1px 4px; border-radius:3px; transition:.1s;
+}
+.theory-tag:hover { background:rgba(56,189,248,.08); }
+.theory-tag input[type="checkbox"] {
+  width:10px; height:10px; accent-color:var(--cyan); cursor:pointer;
+}
+.theory-tag .dot {
+  width:5px; height:5px; border-radius:50%; display:inline-block;
+}
+.theory-tag.off { opacity:0.4; }
+
+.preset-btn {
+  font-size:6px; padding:2px 8px; border-radius:3px;
+  border:1px solid var(--border); background:transparent;
+  color:var(--muted); cursor:pointer; transition:.15s;
+}
+.preset-btn:hover { border-color:var(--gold); color:var(--gold); }
+.preset-btn.active { background:var(--gold); color:#000; border-color:var(--gold); }
+
+/* ─── SCENARIO CARDS ─── */
+.sc-card {
+  background:var(--surface2); border:1px solid var(--border);
+  border-radius:10px; padding:10px 13px; cursor:pointer; transition:.15s;
+  position:relative; overflow:hidden;
+}
+.sc-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--cyan); opacity:0; transition:.15s; }
+.sc-card:hover { border-color:rgba(56,189,248,.4); }
+.sc-card.active { border-color:var(--cyan); background:rgba(56,189,248,.06); }
+.sc-card.active::before { opacity:1; }
+.sc-year  { font-family:var(--mono); font-size:8px; color:var(--gold); margin-bottom:2px; }
+.sc-title { font-size:12px; font-weight:700; margin-bottom:2px; }
+.sc-desc  { font-size:10px; color:#64748b; line-height:1.4; }
+.sc-diff  { display:inline-block; margin-top:4px; font-size:8px; font-family:var(--mono); padding:1px 8px; border-radius:10px; }
+.d-hard   { background:rgba(239,68,68,.15); color:var(--red); }
+.d-med    { background:rgba(245,158,11,.15); color:var(--gold); }
+.d-easy   { background:rgba(16,185,129,.15); color:var(--green); }
+
+/* ─── KPI GRID ─── */
+.kpi-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; }
+.kpi { background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:6px 8px; }
+.kpi-lbl { font-size:8px; color:var(--muted); margin-bottom:2px; }
+.kpi-val { font-family:var(--mono); font-size:15px; font-weight:700; line-height:1.2; }
+.kpi-d   { font-family:var(--mono); font-size:8px; margin-top:1px; }
+.d-up    { color:var(--green); }
+.d-dn    { color:var(--red); }
+.d-fl    { color:var(--muted); }
+
+.prog-track { height:3px; background:var(--border); border-radius:1px; margin-top:4px; }
+.prog-fill  { height:100%; background:var(--cyan); border-radius:1px; transition:width .4s; }
+
+.shock-card {
+  background:rgba(239,68,68,.08); border:1px solid rgba(239,68,68,.3);
+  border-radius:6px; padding:8px 10px; display:none;
+}
+.shock-card.on { display:block; }
+.shock-title { font-size:10px; font-weight:700; color:var(--red); margin-bottom:2px; }
+.shock-desc  { font-size:9px; color:#fca5a5; line-height:1.4; }
+
+.log-box {
+  background:rgba(0,0,0,.3); border:1px solid var(--border);
+  border-radius:6px; padding:6px 8px;
+  max-height:120px; overflow-y:auto;
+  font-family:var(--mono); font-size:8px;
+}
+.log-box::-webkit-scrollbar { width:2px; }
+.log-box::-webkit-scrollbar-thumb { background:var(--border); }
+.log-e { line-height:1.7; }
+.log-e.info   { color:#7dd3fc; }
+.log-e.good   { color:var(--green); }
+.log-e.warn   { color:var(--gold); }
+.log-e.bad    { color:var(--red); }
+.log-e.policy { color:#c4b5fd; }
+.log-e.theory { color:var(--gold); }
+.log-e.academic { color:#a78bfa; font-style:italic; }
+
+.sb-wrap { margin:2px 0; }
+.sb-row  { display:flex; justify-content:space-between; font-size:9px; margin-bottom:1px; }
+.sb-name { color:var(--text); }
+.sb-val  { font-family:var(--mono); color:var(--cyan); }
+.sb-track{ height:3px; background:var(--border); border-radius:2px; overflow:hidden; }
+.sb-fill { height:100%; border-radius:2px; transition:width .5s; }
+
+/* ─── CENTER ─── */
+#center { position:relative; overflow:hidden; }
+canvas#sim3d { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+
+/* ─── OVERLAYS ─── */
+.ov-panel {
+  position:absolute; z-index:10; pointer-events:none;
+  background:rgba(7,11,20,.88); backdrop-filter:blur(14px);
+  border:1px solid var(--border); border-radius:10px; padding:8px 10px;
+  font-family:var(--mono);
+}
+.ov-panel.academic {
+  border-color:var(--purple);
+  background:rgba(167,139,250,.06);
+}
+
+#ov-islm { bottom:10px; left:10px; width:210px; }
+#ov-islm canvas { width:100%; height:100px; display:block; }
+.ov-title { font-size:7px; color:var(--cyan); letter-spacing:.1em; margin-bottom:4px; }
+.ov-legend { display:flex; gap:8px; margin-top:4px; font-size:7px; color:var(--muted); }
+.ov-legend span { display:flex; align-items:center; gap:3px; }
+.leg-dot { width:8px; height:2px; border-radius:1px; display:inline-block; }
+
+#ov-phillips { bottom:10px; right:10px; width:190px; }
+#ov-phillips canvas { width:100%; height:100px; display:block; }
+
+#ov-time { top:8px; left:50%; transform:translateX(-50%); width:340px; height:90px; }
+#ov-time canvas { width:100%; height:60px; display:block; }
+#ov-time .ov-legend { margin-top:2px; }
+
+#ov-theory {
+  top:8px; right:10px; width:200px; pointer-events:none;
+}
+#ov-theory .ov-title { margin-bottom:3px; }
+#ov-eq-name { font-size:9px; font-weight:600; color:var(--gold); margin-bottom:2px; }
+#ov-eq-formula { font-size:7px; color:var(--cyan); line-height:1.6; }
+#ov-eq-desc { font-size:7px; color:var(--muted); line-height:1.4; margin-top:3px; }
+
+#ov-eq-badge {
+  top:8px; left:10px; padding:5px 10px;
+  font-size:8px; color:var(--text); display:flex; flex-direction:column; gap:1px;
+}
+
+#flash { position:absolute; inset:0; pointer-events:none; z-index:5; opacity:0; transition:opacity .1s; }
+
+/* ─── RIGHT PANEL ─── */
+.slider-row { margin:4px 0; }
+.sl-hd { display:flex; justify-content:space-between; font-size:9px; margin-bottom:2px; }
+.sl-name { color:var(--text); }
+.sl-val  { font-family:var(--mono); color:var(--cyan); font-weight:600; }
+input[type=range] { width:100%; height:3px; border-radius:2px; accent-color:var(--cyan); cursor:pointer; background:var(--border); }
+.sl-hint { font-size:8px; color:var(--muted); margin-top:1px; line-height:1.3; }
+
+.btn {
+  width:100%; padding:6px 0; border-radius:6px; border:1px solid var(--border);
+  font-family:var(--mono); font-size:9px; letter-spacing:.04em; cursor:pointer;
+  transition:.15s; font-weight:600;
+}
+.btn-primary   { background:var(--cyan); color:#000; border-color:var(--cyan); }
+.btn-primary:hover { background:#0ea5e9; }
+.btn-secondary { background:transparent; color:var(--cyan); border-color:var(--cyan); }
+.btn-secondary:hover { background:rgba(56,189,248,.1); }
+.btn-gold      { background:transparent; color:var(--gold); border-color:var(--gold); }
+.btn-gold:hover { background:rgba(245,158,11,.1); }
+.btn-danger    { background:transparent; color:var(--red); border-color:var(--red); }
+.btn-danger:hover { background:rgba(239,68,68,.1); }
+.btn-sm { font-size:8px; padding:4px 0; }
+.btn-row { display:flex; gap:4px; }
+.btn-row .btn { margin:0; }
+
+.theory-grid { display:flex; flex-direction:column; gap:2px; max-height:150px; overflow-y:auto; }
+.theory-grid::-webkit-scrollbar { width:2px; }
+.theory-grid::-webkit-scrollbar-thumb { background:var(--border); }
+.th-btn {
+  display:flex; align-items:center; gap:6px;
+  padding:3px 6px; border-radius:4px; border:1px solid transparent;
+  cursor:pointer; transition:.1s; background:transparent;
+  font-family:var(--mono); font-size:8px; color:var(--muted); text-align:left;
+}
+.th-btn:hover { background:rgba(56,189,248,.06); color:var(--text); }
+.th-btn.active { background:rgba(56,189,248,.1); border-color:var(--cyan); color:var(--cyan); }
+.th-dot { width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+.th-year { margin-left:auto; font-size:6px; color:var(--muted); }
+
+.th-box {
+  background:rgba(0,0,0,.3); border:1px solid var(--border);
+  border-left:3px solid var(--gold); border-radius:6px; padding:7px 9px;
+}
+.th-box-name { font-size:10px; font-weight:700; color:var(--gold); margin-bottom:2px; }
+.th-box-eq   { font-family:var(--mono); font-size:7px; color:var(--cyan); line-height:1.6; margin-bottom:3px; }
+.th-box-desc { font-size:9px; color:#94a3b8; line-height:1.4; }
+
+.academic-collapse {
+  background:rgba(167,139,250,.04); border:1px solid rgba(167,139,250,.15);
+  border-radius:6px; padding:6px 8px; font-size:8px; color:var(--muted);
+  line-height:1.6; max-height:80px; overflow-y:auto;
+}
+.academic-collapse strong { color:var(--purple); }
+.academic-collapse .cite { color:var(--gold); font-family:var(--serif); font-style:italic; }
+
+#ai-interpretation {
+  background:rgba(0,0,0,.3); border:1px solid var(--border);
+  border-radius:6px; padding:6px 8px; min-height:60px;
+  font-size:8px; line-height:1.6;
+}
+
+#drop-zone {
+  border:1px dashed var(--border); border-radius:6px; padding:10px;
+  text-align:center; font-size:8px; color:var(--muted);
+  cursor:pointer; transition:.15s;
+}
+#drop-zone:hover { border-color:var(--cyan); background:rgba(56,189,248,.05); }
+#csv-status { font-size:7px; color:var(--cyan); margin-top:2px; }
+
+/* ─── FOOTER ─── */
+#footer {
+  border-top:2px solid var(--border); background:var(--surface);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 20px; font-family:var(--mono); font-size:7px; color:var(--muted);
+}
+#footer .refs { letter-spacing:.02em; }
+#footer .ver  { color:var(--cyan); }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,.8); backdrop-filter:blur(8px);
+  z-index:100; align-items:center; justify-content:center;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background:var(--surface); border:2px solid var(--border);
+  border-radius:16px; padding:28px; max-width:620px; width:92%;
+  max-height:90vh; overflow-y:auto;
+}
+.modal-title { font-size:20px; font-weight:700; margin-bottom:2px; font-family:var(--serif); }
+.modal-sub   { color:var(--muted); font-size:12px; margin-bottom:16px; }
+.modal-grade { font-family:var(--mono); font-size:72px; font-weight:700; text-align:center; margin:8px 0; line-height:1; }
+.modal-verdict { font-size:12px; color:#94a3b8; line-height:1.6; margin-bottom:12px; }
+.modal-detail  { font-family:var(--mono); font-size:9px; color:var(--muted); line-height:2; white-space:pre-wrap; }
+.modal-chart-wrap { background:rgba(0,0,0,.3); border:1px solid var(--border); border-radius:8px; padding:8px; margin:10px 0; }
+.modal-chart-title { font-family:var(--mono); font-size:8px; color:var(--cyan); margin-bottom:4px; }
+.modal-btn-row { display:flex; gap:6px; margin-top:16px; }
+.modal-btn-row .btn { margin:0; }
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- ─── HEADER ─── -->
+<div id="header">
+  <div class="logo">NOBEL ECONOMIC UNIVERSE <em>· v6.2</em></div>
+  <div class="hdiv"></div>
+  <div class="hmet"><span class="hl">GDP</span><span class="hv c-gdp" id="h-gdp">—</span></div>
+  <div class="hmet"><span class="hl">INFLATION</span><span class="hv c-inf" id="h-inf">—</span></div>
+  <div class="hmet"><span class="hl">RATE</span><span class="hv c-rate" id="h-rate">—</span></div>
+  <div class="hmet"><span class="hl">UNEMPLOYMENT</span><span class="hv c-unemp" id="h-unemp">—</span></div>
+  <div class="hmet"><span class="hl">PARTICLES</span><span class="hv" id="h-parts">0</span></div>
+  <div class="hmet"><span class="hl">FPS</span><span class="hv" id="h-fps">60</span></div>
+  <div id="h-scenario">시나리오 선택</div>
+  <div id="h-round" style="font-family:var(--mono);font-size:9px;color:var(--muted);">Round —/—</div>
+  <div id="h-model" style="font-family:var(--mono);font-size:8px;color:var(--purple);">NK-DSGE + HANK</div>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div id="main">
+
+  <!-- LEFT PANEL -->
+  <div class="panel" id="left-panel">
+    <div>
+      <div class="sec-label">역사적 시나리오 <span class="badge">4개</span></div>
+      <div class="sc-card active" data-id="stagflation">
+        <div class="sc-year">1973–1979 · 미국</div>
+        <div class="sc-title">오일쇼크 · 스태그플레이션</div>
+        <div class="sc-desc">OPEC 석유 금수로 공급 충격. 인플레이션과 실업 동시 상승.</div>
+        <span class="sc-diff d-hard">★★★ Hard</span>
+      </div>
+      <div class="sc-card" data-id="gfc" style="margin-top:5px;">
+        <div class="sc-year">2008 · 글로벌</div>
+        <div class="sc-title">금융위기 · 대침체</div>
+        <div class="sc-desc">서브프라임 붕괴, 신용 경색. 유동성 함정 탈출.</div>
+        <span class="sc-diff d-hard">★★★ Hard</span>
+      </div>
+      <div class="sc-card" data-id="recovery" style="margin-top:5px;">
+        <div class="sc-year">2021–2023 · 미국</div>
+        <div class="sc-title">팬데믹 이후 인플레이션</div>
+        <div class="sc-desc">공급망 차질 + 재정부양. 연착륙 달성.</div>
+        <span class="sc-diff d-med">★★☆ Medium</span>
+      </div>
+      <div class="sc-card" data-id="japan" style="margin-top:5px;">
+        <div class="sc-year">1990–2000 · 일본</div>
+        <div class="sc-title">버블 붕괴 · 디플레이션</div>
+        <div class="sc-desc">자산버블 붕괴 후 디플레이션. 잃어버린 10년.</div>
+        <span class="sc-diff d-med">★★☆ Medium</span>
+      </div>
+    </div>
+
+    <!-- ─── PERFORMANCE CONTROL ─── -->
+    <div>
+      <div class="sec-label">⚡ 성능 제어 <span class="badge">Beast Mode</span></div>
+      <div class="perf-control">
+        <div class="sl-hd">
+          <span class="sl-name">입자 수</span>
+          <span class="sl-val" id="sv-particle-count">200</span>
+        </div>
+        <input type="range" id="sl-particle-count" min="50" max="1000" step="25" value="200">
+        <div class="perf-hint">⚠️ 500+ : CPU/GPU 풀가동 (팬 소음 주의)</div>
+      </div>
+      <div class="perf-control" style="margin-top:4px;">
+        <div style="display:flex;gap:4px;flex-wrap:wrap;">
+          <button class="quality-btn active" data-quality="low">🟢 Low</button>
+          <button class="quality-btn" data-quality="medium">🟡 Medium</button>
+          <button class="quality-btn" data-quality="ultra">🔴 Ultra</button>
+        </div>
+        <div class="perf-hint" id="quality-status">그림자 OFF · 안티에일리어싱 OFF</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">경제 지표 <span class="badge">실시간</span></div>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-lbl">GDP 성장률</div><div class="kpi-val" id="kv-gdp">—</div><div class="kpi-d" id="kd-gdp">—</div></div>
+        <div class="kpi"><div class="kpi-lbl">인플레이션</div><div class="kpi-val" id="kv-inf">—</div><div class="kpi-d" id="kd-inf">—</div></div>
+        <div class="kpi"><div class="kpi-lbl">실업률</div><div class="kpi-val" id="kv-une">—</div><div class="kpi-d" id="kd-une">—</div></div>
+        <div class="kpi"><div class="kpi-lbl">기준금리</div><div class="kpi-val c-rate" id="kv-rate">—</div><div class="kpi-d" id="kd-rate">—</div></div>
+        <div class="kpi"><div class="kpi-lbl">재정적자/GDP</div><div class="kpi-val" id="kv-def">—</div><div class="kpi-d" id="kd-def">—</div></div>
+        <div class="kpi"><div class="kpi-lbl">신뢰지수</div><div class="kpi-val" id="kv-conf">—</div><div class="kpi-d" id="kd-conf">—</div></div>
+      </div>
+      <div class="prog-track"><div class="prog-fill" id="round-prog" style="width:0%"></div></div>
+    </div>
+
+    <div class="shock-card" id="shock-card">
+      <div class="shock-title" id="shock-title">⚡ 외생 충격</div>
+      <div class="shock-desc" id="shock-desc"></div>
+    </div>
+
+    <div>
+      <div class="sec-label">정책 평가 <span class="badge">점수</span></div>
+      <div class="sb-wrap"><div class="sb-row"><span class="sb-name">물가 안정</span><span class="sb-val" id="sc1">—</span></div><div class="sb-track"><div class="sb-fill" id="sb1" style="width:0%;background:var(--cyan)"></div></div></div>
+      <div class="sb-wrap"><div class="sb-row"><span class="sb-name">고용 안정</span><span class="sb-val" id="sc2">—</span></div><div class="sb-track"><div class="sb-fill" id="sb2" style="width:0%;background:var(--green)"></div></div></div>
+      <div class="sb-wrap"><div class="sb-row"><span class="sb-name">성장 유지</span><span class="sb-val" id="sc3">—</span></div><div class="sb-track"><div class="sb-fill" id="sb3" style="width:0%;background:var(--purple)"></div></div></div>
+      <div class="sb-wrap"><div class="sb-row"><span class="sb-name">재정 건전</span><span class="sb-val" id="sc4">—</span></div><div class="sb-track"><div class="sb-fill" id="sb4" style="width:0%;background:var(--gold)"></div></div></div>
+    </div>
+
+    <div>
+      <div class="sec-label">이벤트 로그 <span class="badge">50</span></div>
+      <div class="log-box" id="log-box">
+        <div class="log-e info">시나리오를 선택해 시뮬레이션을 시작하세요.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">🧠 정책 해석 <span class="badge">AI</span></div>
+      <div id="ai-interpretation">
+        <div style="font-size:8px;color:var(--muted);">시뮬레이션 시작 시 해석이 표시됩니다.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">📂 데이터 업로드 <span class="badge">CSV</span></div>
+      <div id="drop-zone">
+        📁 CSV 파일을 드래그하거나 클릭하여 업로드
+        <input type="file" id="csv-upload" accept=".csv" style="display:none;">
+      </div>
+      <div id="csv-status" style="font-size:7px;color:var(--cyan);margin-top:2px;"></div>
+    </div>
+
+    <div>
+      <div class="sec-label">📚 학술 참조 <span class="badge">NK-DSGE</span></div>
+      <div class="academic-collapse" id="academic-ref">
+        <strong>Model:</strong> New Keynesian 3-Equation (Gali, 2015) + HANK<br>
+        <strong>Phillips:</strong> πₜ = β·Eₜπₜ₊₁ + κ·ỹₜ + εₜˢ<br>
+        <strong>IS:</strong> ỹₜ = Eₜỹₜ₊₁ − (1/σ)·(iₜ − Eₜπₜ₊₁ − rₙ)<br>
+        <strong>Taylor:</strong> iₜ = ρ·iₜ₋₁ + (1−ρ)·[r* + πₜ + φπ(πₜ−π*) + φy·ỹₜ]<br>
+        <strong>HANK:</strong> 이질적 MPC 계층 (상위20% 0.4 / 중위60% 0.7 / 하위20% 0.95)<br>
+        <span class="cite">— Gali, J. (2015) · Kaplan, Moll & Violante (2018)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CENTER: 3D CANVAS -->
+  <div id="center">
+    <canvas id="sim3d"></canvas>
+    <div id="flash"></div>
+
+    <div class="ov-panel" id="ov-eq-badge">
+      <div style="font-size:7px;color:var(--muted);">IS-LM EQUILIBRIUM</div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--gold);" id="ov-eq-vals">Y*=— r*=—</div>
+      <div style="font-family:var(--mono);font-size:7px;color:var(--muted);margin-top:1px;">Taylor r*: <span id="ov-taylor" style="color:var(--cyan);">—</span></div>
+    </div>
+
+    <div class="ov-panel academic" id="ov-theory">
+      <div class="ov-title">ACTIVE THEORY</div>
+      <div id="ov-eq-name">Nash Equilibrium</div>
+      <div id="ov-eq-formula">u_i(s*) ≥ u_i(sᵢ, s*₋ᵢ)</div>
+      <div id="ov-eq-desc">No agent can unilaterally improve payoff.</div>
+    </div>
+
+    <div class="ov-panel" id="ov-time">
+      <div class="ov-title">TIME SERIES · GDP · π · u</div>
+      <canvas id="cv-time" height="60"></canvas>
+      <div class="ov-legend">
+        <span><span class="leg-dot" style="background:#60a5fa"></span>GDP%</span>
+        <span><span class="leg-dot" style="background:#f87171"></span>π%</span>
+        <span><span class="leg-dot" style="background:#fbbf24"></span>u%</span>
+      </div>
+    </div>
+
+    <div class="ov-panel" id="ov-islm">
+      <div class="ov-title">IS–LM (Hicks-Hansen 1937)</div>
+      <canvas id="cv-islm" height="100"></canvas>
+      <div class="ov-legend">
+        <span><span class="leg-dot" style="background:#60a5fa"></span>IS</span>
+        <span><span class="leg-dot" style="background:#34d399"></span>LM</span>
+        <span style="color:var(--gold);">● E</span>
+      </div>
+    </div>
+
+    <div class="ov-panel" id="ov-phillips">
+      <div class="ov-title">PHILLIPS CURVE (Friedman-Phelps 1968)</div>
+      <canvas id="cv-phillips" height="100"></canvas>
+      <div class="ov-legend">
+        <span><span class="leg-dot" style="background:#a78bfa"></span>SRPC</span>
+        <span><span class="leg-dot" style="background:#f87171;height:1px;border-top:2px dashed #f87171;background:transparent"></span>LRPC</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="panel" id="right-panel">
+
+    <div>
+      <div class="sec-label">통화정책 <span class="badge">중앙은행</span></div>
+      <div class="slider-row">
+        <div class="sl-hd"><span class="sl-name">기준금리 변경 (Δ%)</span><span class="sl-val" id="sv-rate">0.00%</span></div>
+        <input type="range" id="sl-rate" min="-3" max="3" step="0.25" value="0">
+        <div class="sl-hint">↑ 인상: 인플레 억제 · 투자↓ &nbsp;|&nbsp; ↓ 인하: 수요 부양</div>
+      </div>
+      <div class="slider-row">
+        <div class="sl-hd"><span class="sl-name">양적완화 (GDP %)</span><span class="sl-val" id="sv-qe">0.0%</span></div>
+        <input type="range" id="sl-qe" min="0" max="15" step="0.5" value="0">
+        <div class="sl-hint">LM 우이동 · 유동성 함정 시 효과 제한</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">재정정책 <span class="badge">정부</span></div>
+      <div class="slider-row">
+        <div class="sl-hd"><span class="sl-name">정부지출 (GDP %)</span><span class="sl-val" id="sv-gov">0.0%</span></div>
+        <input type="range" id="sl-gov" min="-5" max="10" step="0.5" value="0">
+        <div class="sl-hint">IS 우이동 · 승수 k=1/(1-MPC(1-t))</div>
+      </div>
+      <div class="slider-row">
+        <div class="sl-hd"><span class="sl-name">세율 변화 (Δpp)</span><span class="sl-val" id="sv-tax">0pp</span></div>
+        <input type="range" id="sl-tax" min="-10" max="10" step="1" value="0">
+        <div class="sl-hint">↑ 증세: 수요 억제 · 재정 개선</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">공급측 정책 <span class="badge">구조</span></div>
+      <div class="slider-row">
+        <div class="sl-hd"><span class="sl-name">구조개혁 강도</span><span class="sl-val" id="sv-sup">Lv0</span></div>
+        <input type="range" id="sl-sup" min="0" max="5" step="1" value="0">
+        <div class="sl-hint">NAIRU 하락 · 효과 2–3라운드 지연</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" id="btn-apply" style="flex:2;">▶ 정책 시행 (다음 분기)</button>
+      <button class="btn btn-secondary btn-sm" id="btn-reset-sliders" style="flex:1;">↺ 리셋</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-gold btn-sm" id="btn-shock">⚡ 외생 충격</button>
+      <button class="btn btn-danger btn-sm" id="btn-sim-reset">↺ 초기화</button>
+      <button class="btn btn-sm" id="btn-pause" style="border-color:var(--cyan);color:var(--cyan);">⏸ 일시정지</button>
+    </div>
+
+    <!-- ─── THEORY TOGGLE (v6.2 NEW) ─── -->
+    <div>
+      <div class="sec-label">⚙️ 이론 활성화 <span class="badge">토글</span></div>
+      
+      <!-- 그룹 1: 거시 핵심 -->
+      <div class="theory-group">
+        <div class="theory-group-header">
+          <span class="group-name">🏛️ 거시 핵심</span>
+          <button class="group-toggle" data-group="macro">전체 ON/OFF</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px;">
+          <label class="theory-tag" data-theory="nash">
+            <input type="checkbox" class="theory-toggle" data-theory="nash" checked>
+            <span class="dot" style="background:#38bdf8"></span> Nash
+          </label>
+          <label class="theory-tag" data-theory="rbc">
+            <input type="checkbox" class="theory-toggle" data-theory="rbc" checked>
+            <span class="dot" style="background:#d8b4fe"></span> RBC
+          </label>
+          <label class="theory-tag" data-theory="krugman">
+            <input type="checkbox" class="theory-toggle" data-theory="krugman" checked>
+            <span class="dot" style="background:#6ee7b7"></span> Krugman
+          </label>
+          <label class="theory-tag" data-theory="olg">
+            <input type="checkbox" class="theory-toggle" data-theory="olg" checked>
+            <span class="dot" style="background:#93c5fd"></span> OLG
+          </label>
+        </div>
+      </div>
+
+      <!-- 그룹 2: 행동/미시 -->
+      <div class="theory-group">
+        <div class="theory-group-header">
+          <span class="group-name">🧠 행동/미시</span>
+          <button class="group-toggle" data-group="behavioral">전체 ON/OFF</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px;">
+          <label class="theory-tag" data-theory="prospect">
+            <input type="checkbox" class="theory-toggle" data-theory="prospect">
+            <span class="dot" style="background:#f472b6"></span> Prospect
+          </label>
+          <label class="theory-tag" data-theory="thaler">
+            <input type="checkbox" class="theory-toggle" data-theory="thaler">
+            <span class="dot" style="background:#67e8f9"></span> Nudge
+          </label>
+          <label class="theory-tag" data-theory="sen">
+            <input type="checkbox" class="theory-toggle" data-theory="sen">
+            <span class="dot" style="background:#f9a8d4"></span> Sen
+          </label>
+        </div>
+      </div>
+
+      <!-- 그룹 3: 금융/자산 -->
+      <div class="theory-group">
+        <div class="theory-group-header">
+          <span class="group-name">📈 금융/자산</span>
+          <button class="group-toggle" data-group="finance">전체 ON/OFF</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px;">
+          <label class="theory-tag" data-theory="capm">
+            <input type="checkbox" class="theory-toggle" data-theory="capm">
+            <span class="dot" style="background:#fb923c"></span> CAPM
+          </label>
+          <label class="theory-tag" data-theory="bsm">
+            <input type="checkbox" class="theory-toggle" data-theory="bsm">
+            <span class="dot" style="background:#34d399"></span> BSM
+          </label>
+          <label class="theory-tag" data-theory="emh">
+            <input type="checkbox" class="theory-toggle" data-theory="emh">
+            <span class="dot" style="background:#86efac"></span> EMH
+          </label>
+          <label class="theory-tag" data-theory="markowitz">
+            <input type="checkbox" class="theory-toggle" data-theory="markowitz">
+            <span class="dot" style="background:#a78bfa"></span> Markowitz
+          </label>
+        </div>
+      </div>
+
+      <!-- 그룹 4: 성장/장기 -->
+      <div class="theory-group">
+        <div class="theory-group-header">
+          <span class="group-name">🌱 성장/장기</span>
+          <button class="group-toggle" data-group="growth">전체 ON/OFF</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px;">
+          <label class="theory-tag" data-theory="solow">
+            <input type="checkbox" class="theory-toggle" data-theory="solow">
+            <span class="dot" style="background:#fbbf24"></span> Solow
+          </label>
+          <label class="theory-tag" data-theory="institution">
+            <input type="checkbox" class="theory-toggle" data-theory="institution">
+            <span class="dot" style="background:#fdba74"></span> Institution
+          </label>
+        </div>
+      </div>
+
+      <!-- 그룹 5: 노동/시장 -->
+      <div class="theory-group">
+        <div class="theory-group-header">
+          <span class="group-name">🔧 노동/시장</span>
+          <button class="group-toggle" data-group="labor">전체 ON/OFF</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:3px;">
+          <label class="theory-tag" data-theory="dmp">
+            <input type="checkbox" class="theory-toggle" data-theory="dmp" checked>
+            <span class="dot" style="background:#22d3ee"></span> DMP
+          </label>
+          <label class="theory-tag" data-theory="olg">
+            <input type="checkbox" class="theory-toggle" data-theory="olg" checked>
+            <span class="dot" style="background:#93c5fd"></span> OLG
+          </label>
+        </div>
+      </div>
+
+      <!-- 숨겨진 theory-grid (buildTheoryGrid용) -->
+      <div class="theory-grid" id="theory-grid" style="display:none;"></div>
+
+      <!-- 프리셋 -->
+      <div style="margin-top:6px;">
+        <div style="font-size:8px;color:var(--muted);margin-bottom:2px;">📋 프리셋</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;">
+          <button class="preset-btn" data-preset="beginner">🌱 입문</button>
+          <button class="preset-btn" data-preset="intermediate">📚 중급</button>
+          <button class="preset-btn" data-preset="advanced">🎓 고급</button>
+          <button class="preset-btn" data-preset="behavioral">🧠 행동경제</button>
+          <button class="preset-btn" data-preset="finance">📈 금융</button>
+          <button class="preset-btn" data-preset="growth">🌱 성장</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">이론 블렌딩 <span class="badge">혼합</span></div>
+      <div style="font-size:8px;color:var(--muted);margin-bottom:3px;">보조 이론: <span id="blend-th-name" style="color:var(--purple);">없음</span></div>
+      <div id="blend-row" style="display:flex;gap:5px;align-items:center;">
+        <input type="range" id="sl-blend" min="0" max="1" step="0.05" value="0" style="flex:1;">
+        <span id="blend-val" style="font-family:var(--mono);font-size:8px;color:var(--cyan);min-width:32px;">0%</span>
+      </div>
+      <div class="blend-label" style="display:flex;justify-content:space-between;font-size:7px;color:var(--muted);"><span>주 이론</span><span>혼합</span></div>
+    </div>
+
+    <div>
+      <div class="sec-label">현재 이론 설명</div>
+      <div class="th-box" id="th-box">
+        <div class="th-box-name" id="tb-name">Nash Equilibrium</div>
+        <div class="th-box-eq" id="tb-eq">u_i(s*) ≥ u_i(sᵢ, s*₋ᵢ)  ∀i ∈ N</div>
+        <div class="th-box-desc" id="tb-desc">입자들이 best-response dynamics로 전략적 균형을 탐색합니다.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">Taylor Rule <span class="badge">AI</span></div>
+      <div style="font-family:var(--mono);font-size:7px;color:var(--muted);line-height:1.6;margin-bottom:4px;">
+        r* = π + 0.5(π − π*) + 0.5·ỹ + r_neutral<br>
+        π* = 2.0%  ·  r_neutral = 2.0%
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-gold btn-sm" id="btn-ai-on" style="flex:1;">🤖 AI ON</button>
+        <button class="btn btn-sm" id="btn-ai-off" style="flex:1;border-color:var(--muted);color:var(--muted);">👤 수동</button>
+        <button class="btn btn-gold btn-sm" id="btn-ai-apply" style="flex:1;">✓ 적용</button>
+      </div>
+      <div style="font-family:var(--mono);font-size:8px;color:var(--muted);margin-top:3px;">
+        추천 금리: <span id="taylor-rate" style="color:var(--gold);">—</span> &nbsp; 갭: <span id="taylor-gap">—</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-label">Monte Carlo <span class="badge">위험 분석</span></div>
+      <div class="btn-row">
+        <button class="btn btn-secondary btn-sm" id="btn-mc-run" style="flex:1;">🎲 실행 (500회)</button>
+        <button class="btn btn-sm" id="btn-mc-export" style="flex:1;border-color:var(--purple);color:var(--purple);">📊 내보내기</button>
+      </div>
+      <div style="font-family:var(--mono);font-size:8px;color:var(--muted);margin-top:3px;" id="mc-status">대기 중...</div>
+      <div id="mc-result" style="display:none;font-family:var(--mono);font-size:8px;color:var(--green);line-height:1.6;">
+        <div>평균 GDP: <span id="mc-mean">—</span></div>
+        <div>위험 확률: <span id="mc-risk">—</span></div>
+        <div>신뢰구간: <span id="mc-ci">—</span></div>
+      </div>
+    </div>
+
+  </div><!-- right panel -->
+</div><!-- main -->
+
+<!-- FOOTER -->
+<div id="footer">
+  <span class="refs">Gali (2015) · Taylor (1993) · Friedman-Phelps (1968) · Hicks (1937) · Nash (1950) · Solow (1956) · Kaplan-Moll-Violante (2018)</span>
+  <span class="ver">Nobel Economic Universe · v6.2 "Educator's Edition"</span>
+</div>
+
+</div><!-- app -->
+
+<!-- RESULT MODAL -->
+<div class="modal-overlay" id="result-modal">
+  <div class="modal">
+    <div class="modal-title" id="m-title">시뮬레이션 완료</div>
+    <div class="modal-sub" id="m-sub"></div>
+    <div class="modal-grade" id="m-grade"></div>
+    <div class="modal-verdict" id="m-verdict"></div>
+    <div class="modal-chart-wrap">
+      <div class="modal-chart-title">정책 경로 요약</div>
+      <canvas id="cv-result" height="100" style="width:100%;display:block;"></canvas>
+    </div>
+    <div class="modal-detail" id="m-detail"></div>
+    <div class="modal-btn-row">
+      <button class="btn btn-primary" onclick="closeModal()">닫기</button>
+      <button class="btn btn-secondary" id="btn-retry">재시작</button>
+      <button class="btn btn-gold btn-sm" onclick="exportAcademicData()">📊 JSON 내보내기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── LIBRARIES ─── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<script>
+// ============================================================
+// v6.2 "Educator's Edition" - COMPLETE IMPLEMENTATION (FIXED)
+// ============================================================
+
+// ─── CONFIG ───
+let PARTICLE_COUNT = 200;
+let QUALITY_LEVEL = 'low';
+let renderer, scene, camera, ptLight, cbMesh, monoMesh;
+let W3, H3, centerEl, canvas3d;
+
+// ============================================================
+// 1. NEW KEYNESIAN DSGE MODEL (Gali 2015) — v7.0 "Verified Edition"
+// ============================================================
+// 이 클래스는 v6.2의 적응적 기대(backward-looking) 근사를 폐기하고,
+// 진짜 합리적 기대(rational expectations) + Blanchard-Kahn 해법으로 교체한 것입니다.
+//
+// 모델 (Gali 2015, Ch.3 표준 3방정식):
+//   IS:     x_t = E_t[x_{t+1}] - (1/σ)(i_t - E_t[π_{t+1}] - r*)  [+ 통화/수요충격 rn_t]
+//   NKPC:   π_t = β·E_t[π_{t+1}] + κ·x_t + u_t                   [u_t = 공급/비용충격]
+//   Taylor: i_t = r* + π* + φ_π(π_t - π*) + φ_y·x_t
+//
+//   κ = (1-θ)(1-βθ)/θ × (σ+φ)   ← Calvo(1983) 가격경직성에서 직접 도출 (θ=가격 유지확률)
+//
+// 해법: Taylor 룰을 IS/NKPC에 대입해 2x2 선형시스템 [E x_{t+1}; E π_{t+1}] = M·[x_t; π_t] + shock
+// 을 구성하고, M을 고유값분해. Taylor 원칙(φ_π>1)을 만족하면 두 고유값 모두 |λ|>1이 되어
+// (= Blanchard-Kahn 결정성 조건 충족) 유일하고 비발산하는 해가 존재합니다.
+// 해는 "현재값 = 미래의 모든 충격을 할인해 합산한 값"으로 구해집니다 — 이것이 합리적 기대의 핵심:
+// 경제주체가 미래 충격의 전체 경로를 내다보고 현재 행동을 정한다는 뜻입니다.
+//
+// [학술적으로 정직한 한계 고지]
+// 표준 캘리브레이션(θ=0.75)에서 κ≈0.17인데, 최근 실증연구(Hazell-Herreño-Nakamura-Steinsson 2022,
+// Del Negro et al. 2020)는 필립스 곡선이 매우 평탄(κ≈0.002~0.06)하다고 추정합니다. 이 경우
+// 현실적 크기의 공급충격으로는 인플레이션이 거의 움직이지 않는 "flat Phillips curve puzzle"이
+// 발생합니다 (Beraja-Wolf 2024 등). 본 시뮬레이터는 교육적 가시성을 위해 θ=0.75~0.80
+// (교과서 표준) 범위를 사용하며, 이는 실증 추정보다 인플레이션 반응성이 훨씬 크다는 점을
+// 사용자가 인지해야 합니다. 이는 "버그"가 아니라 기본 NK 모델 자체의 알려진 학술적 긴장입니다.
+class NewKeynesianModel {
+    constructor(params = {}) {
+        this.periods = params.periods || 8;
+        this.nairu   = params.nairu   ?? 4.5;
+        this.beta    = params.beta    ?? 0.99;   // 분기 할인율
+        this.sigma   = params.sigma   ?? 1.0;    // 상대위험회피도 (소비의 기간간 대체탄력성의 역수)
+        this.phi     = params.phi     ?? 1.0;    // 노동공급 곡률
+        this.theta   = params.theta   ?? 0.78;   // Calvo: 가격을 유지할 확률 (분기당)
+        this.phi_pi  = params.phi_pi  ?? 1.5;     // 테일러 인플레이션 반응계수
+        this.phi_y   = params.phi_y   ?? 0.5;     // 테일러 갭 반응계수
+        this.r_star  = params.r_star  ?? 0.5;     // 분기 자연실질금리 (연 2.0%/4)
+        this.pi_star = params.pi_star ?? 0.5;     // 분기 인플레목표 (연 2.0%/4)
+
+        // Calvo 미시근거에서 카파 도출 (Gali 2015, eq. 3.21): κ=(1-θ)(1-βθ)/θ·(σ+φ)
+        this.kappa = (1 - this.theta) * (1 - this.beta * this.theta) / this.theta * (this.sigma + this.phi);
+
+        // 전진형(forward-looking) 표준형 시스템 행렬 M 구성
+        // NKPC를 E[π_{t+1}]에 대해 풀고, Taylor를 대입한 IS를 E[x_{t+1}]에 대해 풀어 정리
+        const a21 = -this.kappa / this.beta;
+        const a22 = 1 / this.beta;
+        const a11 = (1 + this.phi_y / this.sigma) - a21 / this.sigma;
+        const a12 = (this.phi_pi / this.sigma) - a22 / this.sigma;
+        this.M = [[a11, a12], [a21, a22]];
+
+        const eig = this._eig2x2(this.M);
+        this.eig = eig;
+        // Blanchard-Kahn 결정성 조건: jump variable 2개(x,π) = 불안정근(|λ|>1) 2개
+        this.determinate = Math.abs(eig.l1) > 1 && Math.abs(eig.l2) > 1;
+        if (this.determinate) {
+            const v1 = this._vecFor(eig.l1), v2 = this._vecFor(eig.l2);
+            this.P = [[v1[0], v2[0]], [v1[1], v2[1]]];
+            this.Pinv = this._invert2x2(this.P);
+        }
+    }
+
+    _eig2x2(M) {
+        const [[a, b], [c, d]] = M;
+        const tr = a + d, det = a * d - b * c;
+        const disc = Math.max(0, tr * tr - 4 * det);
+        const sq = Math.sqrt(disc);
+        return { l1: (tr + sq) / 2, l2: (tr - sq) / 2 };
+    }
+    _vecFor(l) {
+        const [[a, b]] = this.M;
+        return Math.abs(b) > 1e-12 ? [1, (l - a) / b] : [1, 0];
+    }
+    _invert2x2(M) {
+        const [[a, b], [c, d]] = M;
+        const det = a * d - b * c;
+        return [[d / det, -b / det], [-c / det, a / det]];
+    }
+    _matVec(M, v) { return [M[0][0]*v[0]+M[0][1]*v[1], M[1][0]*v[0]+M[1][1]*v[1]]; }
+
+    // rn_shock: 자연실질금리/수요·통화정책 충격 (IS 방정식에 작용)
+    // u_shock:  공급/비용 충격 (NKPC 방정식에 작용)
+    // 두 배열 모두 분기 단위, 길이는 periods. (주의: v6.2와 달리 정책금리를 외부에서
+    // "강제 고정"하는 옵션은 제거했습니다 — 학술적으로 이는 NK 모델에서 균형
+    // 불확정성(equilibrium indeterminacy)을 일으키는 것으로 알려진 영역이라, 검증되지
+    // 않은 임의의 해를 만들어내는 대신, 모든 정책 개입을 Taylor 룰에 더해지는
+    // "통화정책 충격"으로 일관되게 표현해 항상 결정적(determinate) 해를 보장합니다.)
+    runSimulation(rn_shock = null, u_shock = null) {
+        const T = this.periods;
+        const maxHorizon = 200; // 전진합산용 버퍼 (충격은 그 이후 0으로 소멸 가정)
+
+        if (!this.determinate) {
+            return {
+                gdp: new Array(T).fill(100),
+                inflation: new Array(T).fill(this.pi_star * 4),
+                unemployment: new Array(T).fill(this.nairu),
+                policy_rate: new Array(T).fill((this.r_star + this.pi_star) * 4),
+                kappa: this.kappa, determinate: false
+            };
+        }
+
+        const { l1, l2 } = this.eig;
+        const x = new Array(T).fill(0);
+        const pi_dev = new Array(T).fill(0);
+
+        const shockVecAt = (t) => {
+            const rn = rn_shock?.[t] || 0;
+            const u = u_shock?.[t] || 0;
+            return [(1 / this.sigma) * rn, -(1 / this.beta) * u];
+        };
+
+        for (let t = 0; t < T; t++) {
+            let w1 = 0, w2 = 0;
+            for (let k = 0; k <= maxHorizon; k++) {
+                const s = shockVecAt(t + k);
+                const sw = this._matVec(this.Pinv, s);
+                w1 += Math.pow(1 / l1, k + 1) * sw[0];
+                w2 += Math.pow(1 / l2, k + 1) * sw[1];
+            }
+            const z = this._matVec(this.P, [-w1, -w2]);
+            x[t] = z[0];
+            pi_dev[t] = z[1];
+        }
+
+        const pi_annual = pi_dev.map(p => (p + this.pi_star) * 4);
+        const i_rate_annual = x.map((xt, t) =>
+            Math.max(0, (this.r_star + this.pi_star + this.phi_pi * pi_dev[t] + this.phi_y * xt) * 4));
+        const une = x.map(xt => Math.max(1.0, Math.min(20, this.nairu - 0.5 * xt)));
+        const gdp = x.map(xt => 100 + xt * 8); // 시각화 단위(기존 GDP 인덱스 스케일과 호환)
+
+        return { gdp, inflation: pi_annual, unemployment: une, policy_rate: i_rate_annual, kappa: this.kappa, determinate: true };
+    }
+}
+
+// ============================================================
+// 2. POLICY OPTIMIZER (Nelder-Mead)
+// ============================================================
+// v7.0: 더 이상 "정책금리 경로"를 직접 최적화하지 않습니다(이는 NK 모델에서 균형
+// 불확정성을 일으키는 비결정적 영역입니다). 대신 Taylor 룰 위에 더해지는
+// "통화정책 충격 경로(rn_shock)"를 최적화 대상으로 삼아, 항상 결정적 해를 보장합니다.
+class PolicyOptimizer {
+    optimizePolicy(scenario, targetInf = 2.0, targetUne = 5.0, 
+                   weightInf = 0.6, periods = 20) {
+        const model = new NewKeynesianModel({ periods: periods });
+        if (!model.determinate) {
+            return { optimalPolicy: new Array(periods).fill(0), finalOutcomes: null, objectiveValue: Infinity, success: false };
+        }
+        const objective = (rnPath) => {
+            const result = model.runSimulation(rnPath, null);
+            const infDev = result.inflation.reduce((s, v) => s + (v - targetInf)**2, 0) / periods;
+            const uneDev = result.unemployment.reduce((s, v) => s + (v - targetUne)**2, 0) / periods;
+            const shockVol = rnPath.reduce((s, v, i, a) => 
+                s + (i > 0 ? (v - a[i-1])**2 : 0), 0) / periods * 0.3;
+            return weightInf * infDev + (1 - weightInf) * uneDev + shockVol;
+        };
+        
+        const initialGuess = new Array(periods).fill(0);
+        const result = this._nelderMead(objective, initialGuess, { maxIter: 500, tol: 1e-6 });
+        const finalResult = model.runSimulation(result.solution, null);
+        return {
+            optimalPolicy: result.solution,
+            finalOutcomes: finalResult,
+            objectiveValue: result.f,
+            success: result.converged
+        };
+    }
+
+    _nelderMead(f, x0, opts = {}) {
+        const maxIter = opts.maxIter || 500;
+        const tol = opts.tol || 1e-6;
+        const n = x0.length;
+        let simplex = [];
+        for (let i = 0; i <= n; i++) {
+            const x = x0.slice();
+            if (i > 0) x[i-1] += 0.1;
+            simplex.push({x, f: f(x)});
+        }
+        simplex.sort((a,b) => a.f - b.f);
+        for (let iter = 0; iter < maxIter; iter++) {
+            const xn = simplex[n].x;
+            const centroid = new Array(n).fill(0);
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j < n; j++) {
+                    centroid[j] += simplex[i].x[j];
+                }
+            }
+            for (let j = 0; j < n; j++) centroid[j] /= n;
+            
+            const xr = centroid.map((c, j) => c + 1.0 * (c - xn[j]));
+            const fr = f(xr);
+            if (fr < simplex[0].f) {
+                const xe = centroid.map((c, j) => c + 2.0 * (c - xn[j]));
+                const fe = f(xe);
+                if (fe < fr) simplex[n] = {x: xe, f: fe};
+                else simplex[n] = {x: xr, f: fr};
+            } else if (fr < simplex[n-1].f) {
+                simplex[n] = {x: xr, f: fr};
+            } else {
+                const xc = centroid.map((c, j) => c + 0.5 * (c - xn[j]));
+                const fc = f(xc);
+                if (fc < simplex[n].f) simplex[n] = {x: xc, f: fc};
+                else {
+                    for (let i = 1; i <= n; i++) {
+                        simplex[i].x = simplex[i].x.map((v, j) => 
+                            simplex[0].x[j] + 0.5 * (v - simplex[0].x[j])
+                        );
+                        simplex[i].f = f(simplex[i].x);
+                    }
+                }
+            }
+            simplex.sort((a,b) => a.f - b.f);
+            if (Math.abs(simplex[0].f - simplex[n].f) < tol) break;
+        }
+        return { solution: simplex[0].x, f: simplex[0].f, converged: simplex[0].f < 1 };
+    }
+}
+
+// ============================================================
+// 3. MONTE CARLO SIMULATOR (Web Worker)
+// ============================================================
+class MonteCarloSimulator {
+    constructor(nSim = 500) {
+        this.nSim = nSim;
+        this.worker = null;
+        this.results = null;
+    }
+
+    async run(basePolicy, nPeriods = 20, shockStd = 1.2) {
+        const workerCode = `
+            self.onmessage = function(e) {
+                const { basePolicy, nPeriods, shockStd, nSim } = e.data;
+                // v7.0: Blanchard-Kahn 합리적 기대 NK 모델 (메인 스레드와 동일한 해법)
+                class NKModel {
+                    constructor(p) {
+                        this.beta = p.beta || 0.99;
+                        this.sigma = p.sigma || 1.0;
+                        this.phi = p.phi || 1.0;
+                        this.theta = p.theta || 0.78;
+                        this.phi_pi = p.phi_pi || 1.5;
+                        this.phi_y = p.phi_y || 0.5;
+                        this.r_star = p.r_star || 0.5;
+                        this.pi_star = p.pi_star || 0.5;
+                        this.nairu = p.nairu || 4.5;
+                        this.kappa = (1-this.theta)*(1-this.beta*this.theta)/this.theta*(this.sigma+this.phi);
+                        const a21=-this.kappa/this.beta, a22=1/this.beta;
+                        const a11=(1+this.phi_y/this.sigma)-a21/this.sigma;
+                        const a12=(this.phi_pi/this.sigma)-a22/this.sigma;
+                        this.M=[[a11,a12],[a21,a22]];
+                        const tr=a11+a22, det=a11*a22-a12*a21;
+                        const disc=Math.max(0,tr*tr-4*det), sq=Math.sqrt(disc);
+                        this.l1=(tr+sq)/2; this.l2=(tr-sq)/2;
+                        this.determinate = Math.abs(this.l1)>1 && Math.abs(this.l2)>1;
+                        if (this.determinate) {
+                            const vecFor=(l)=> Math.abs(a12)>1e-12 ? [1,(l-a11)/a12] : [1,0];
+                            const v1=vecFor(this.l1), v2=vecFor(this.l2);
+                            this.P=[[v1[0],v2[0]],[v1[1],v2[1]]];
+                            const pdet=this.P[0][0]*this.P[1][1]-this.P[0][1]*this.P[1][0];
+                            this.Pinv=[[this.P[1][1]/pdet,-this.P[0][1]/pdet],[-this.P[1][0]/pdet,this.P[0][0]/pdet]];
+                        }
+                    }
+                    run(rn_shock, u_shock) {
+                        const T = nPeriods, H = 100;
+                        if (!this.determinate) {
+                            return { gdp: new Array(T).fill(100), inflation: new Array(T).fill(this.pi_star*4), policy_rate: new Array(T).fill((this.r_star+this.pi_star)*4) };
+                        }
+                        const mv=(M,v)=>[M[0][0]*v[0]+M[0][1]*v[1],M[1][0]*v[0]+M[1][1]*v[1]];
+                        const x=new Array(T).fill(0), piDev=new Array(T).fill(0);
+                        const shockAt=(t)=>{
+                            const rn=rn_shock?.[t]||0, u=u_shock?.[t]||0;
+                            return [(1/this.sigma)*rn, -(1/this.beta)*u];
+                        };
+                        for (let t=0;t<T;t++){
+                            let w1=0,w2=0;
+                            for (let k=0;k<=H;k++){
+                                const s=shockAt(t+k);
+                                const sw=mv(this.Pinv,s);
+                                w1+=Math.pow(1/this.l1,k+1)*sw[0];
+                                w2+=Math.pow(1/this.l2,k+1)*sw[1];
+                            }
+                            const z=mv(this.P,[-w1,-w2]);
+                            x[t]=z[0]; piDev[t]=z[1];
+                        }
+                        const inf=piDev.map(p=>(p+this.pi_star)*4);
+                        const rate=x.map((xt,t)=>Math.max(0,(this.r_star+this.pi_star+this.phi_pi*piDev[t]+this.phi_y*xt)*4));
+                        const gdp=x.map(xt=>100+xt*8);
+                        return { gdp, inflation: inf, policy_rate: rate };
+                    }
+                }
+                function gaussian() {
+                    let u=0,v=0; while(u===0)u=Math.random(); while(v===0)v=Math.random();
+                    return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+                }
+                const model = new NKModel({});
+                const results = [];
+                for (let i = 0; i < nSim; i++) {
+                    // basePolicy(있다면)는 통화정책 충격 경로로 해석, 거기에 무작위 공급충격을 추가
+                    const u_shock = new Float64Array(nPeriods);
+                    for (let j = 0; j < nPeriods; j++) u_shock[j] = gaussian() * shockStd * 0.05;
+                    const r = model.run(basePolicy, u_shock);
+                    results.push(r);
+                }
+                const gdpMat = results.map(r => r.gdp);
+                const meanGdp = gdpMat[0].map((_, i) => gdpMat.reduce((s, row) => s + row[i], 0) / nSim);
+                const p5Gdp = gdpMat[0].map((_, i) => {
+                    const vals = gdpMat.map(row => row[i]).sort((a,b) => a-b);
+                    return vals[Math.floor(vals.length * 0.05)];
+                });
+                const p95Gdp = gdpMat[0].map((_, i) => {
+                    const vals = gdpMat.map(row => row[i]).sort((a,b) => a-b);
+                    return vals[Math.floor(vals.length * 0.95)];
+                });
+                const failures = gdpMat.filter(row => row[row.length-1] < 95).length;
+                self.postMessage({
+                    mean_gdp: meanGdp, p5_gdp: p5Gdp, p95_gdp: p95Gdp,
+                    failure_rate: failures / nSim,
+                    final_gdp_dist: gdpMat.map(row => row[row.length-1])
+                });
+            };
+        `;
+        const blob = new Blob([workerCode], { type: 'application/javascript' });
+        const worker = new Worker(URL.createObjectURL(blob));
+        return new Promise((resolve, reject) => {
+            worker.onmessage = (e) => { this.results = e.data; resolve(e.data); worker.terminate(); };
+            worker.onerror = reject;
+            worker.postMessage({ basePolicy, nPeriods, shockStd, nSim: this.nSim });
+        });
+    }
+}
+
+// ============================================================
+// 4. THEORY DEFINITIONS (16개)
+// ============================================================
+const THEORIES = {
+  nash: { name:'Nash Equilibrium', year:1994, color:'#38bdf8',
+    desc:'Best-response dynamics: 이탈 유인 없는 전략 프로파일로 수렴.',
+    formula:'u_i(s*) ≥ u_i(sᵢ, s*₋ᵢ)  ∀i ∈ N',
+    update(p, others, sim) {
+      let cx=0,cz=0,n=0;
+      for(const o of others){ if(o===p)continue; const d=Math.hypot(o.x-p.x,o.z-p.z); if(d<55){cx+=o.x;cz+=o.z;n++;} }
+      if(n>0){ cx/=n;cz/=n; p.vx+=(cx-p.x)*0.004; p.vz+=(cz-p.z)*0.004; }
+      p.vx*=0.985; p.vz*=0.985;
+    }
+  },
+  bsm: { name:'Black-Scholes-Merton', year:1997, color:'#34d399',
+    desc:'자산 가격이 기하 브라운 운동(GBM)을 따름.',
+    formula:'dS = μS dt + σS dW_t',
+    update(p, others, sim) {
+      const dt=1/60, mu=0.015*sim.speed, sigma=0.28*sim.vol;
+      const dW=gauss()*Math.sqrt(dt);
+      p.vx += p.x*(mu*dt + sigma*dW)*0.015;
+      p.vz += p.z*(mu*dt + sigma*dW)*0.015;
+      const rf=sim.rate/100*0.02;
+      p.vx -= p.x*rf*0.004; p.vz -= p.z*rf*0.004;
+    }
+  },
+  capm: { name:'CAPM', year:1990, color:'#fb923c',
+    desc:'체계적 위험(β)에 선형 비례하는 기대수익률.',
+    formula:'E(Rᵢ) = R_f + βᵢ(E(R_m) − R_f)',
+    update(p, others, sim) {
+      if(!p.beta) p.beta = 0.5+Math.random()*1.5;
+      let mVx=0,mVz=0,n=0;
+      for(const o of others){mVx+=o.vx;mVz+=o.vz;n++;}
+      if(n>0){mVx/=n;mVz/=n;}
+      const rf=sim.rate/100, rm=Math.hypot(mVx,mVz)*0.1;
+      const er=rf+p.beta*(rm-rf);
+      const ang=Math.atan2(p.vz,p.vx);
+      p.vx+=Math.cos(ang)*er*0.03; p.vz+=Math.sin(ang)*er*0.03;
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  markowitz: { name:'Markowitz MPT', year:1990, color:'#a78bfa',
+    desc:'공분산 최소화로 효율적 프론티어 달성.',
+    formula:'min w\'Σw  s.t. w\'μ=μ_p, w\'1=1',
+    update(p, others, sim) {
+      for(const o of others){
+        if(o===p) continue;
+        const dx=p.x-o.x, dz=p.z-o.z, d=Math.hypot(dx,dz);
+        if(d<40&&d>0.1){
+          if(o.type===p.type){ const r=0.025/d; p.vx+=dx*r; p.vz+=dz*r; }
+          else if(d<50){ p.vx+=dx/d*-0.006; p.vz+=dz/d*-0.006; }
+        }
+      }
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  solow: { name:'Solow Growth', year:1987, color:'#fbbf24',
+    desc:'감가상각+인구증가에 맞선 자본 축적. k*로 수렴.',
+    formula:'k̇ = sf(k) − (δ+n+g)k, k*=(s/(δ+n))^{1/(1−α)}',
+    update(p, others, sim) {
+      const alpha=0.35, s=0.25, delta=0.05, n=0.01;
+      if(!p.capital) p.capital=1+Math.random()*5;
+      const k=p.capital;
+      const kStar=Math.pow(s/(delta+n),1/(1-alpha));
+      const kDot=s*Math.pow(Math.max(k,0.01),alpha)-(delta+n)*k;
+      p.capital=Math.max(0.1, k+kDot*0.05);
+      const ratio=p.capital/kStar;
+      const gf=(1-ratio)*0.016;
+      const ang=Math.atan2(p.z,p.x)+Math.PI/2;
+      p.vx+=Math.cos(ang)*gf*sim.speed;
+      p.vz+=Math.sin(ang)*gf*sim.speed;
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  prospect: { name:'Prospect Theory', year:2002, color:'#f472b6',
+    desc:'λ=2.25 손실회피. 손실이 이득보다 2.25배 크게 느껴짐.',
+    formula:'v(x)=x^α (x≥0), v(x)=−λ(−x)^β (x<0)',
+    update(p, others, sim) {
+      const lambda=2.25, alpha=0.88, gamma=0.65;
+      if(!p.refX){p.refX=p.x;p.refZ=p.z;p.refT=0;}
+      const dx=p.x-p.refX, dz=p.z-p.refZ;
+      const vx=dx>=0?Math.pow(dx,alpha):-lambda*Math.pow(-dx,alpha);
+      const vz=dz>=0?Math.pow(dz,alpha):-lambda*Math.pow(-dz,alpha);
+      const prob=0.2;
+      const w=Math.pow(prob,gamma)/Math.pow(Math.pow(prob,gamma)+Math.pow(1-prob,gamma),1/gamma);
+      p.vx-=vx*0.011*w; p.vz-=vz*0.011*w;
+      p.refT++; if(p.refT>120){p.refX=p.x;p.refZ=p.z;p.refT=0;}
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  dmp: { name:'DMP Search', year:2010, color:'#22d3ee',
+    desc:'Diamond-Mortensen-Pissarides: 매칭함수로 노동시장 결정.',
+    formula:'M=m₀U^α V^{1−α}, θ=V/U',
+    update(p, others, sim) {
+      if(!p.role) p.role=p.type==='firm'?'firm':'worker';
+      const m0=0.5, alpha=0.5, theta=1.2;
+      if(p.role==='worker'){
+        let near=null, minD=Infinity;
+        for(const o of others){ if(o.role!=='firm')continue; const d=Math.hypot(o.x-p.x,o.z-p.z); if(d<minD){minD=d;near=o;} }
+        if(near&&minD<80){ const mr=m0*Math.pow(1/theta,1-alpha); p.vx+=(near.x-p.x)/minD*mr*0.25; p.vz+=(near.z-p.z)/minD*mr*0.25; }
+      } else { p.vx+=(Math.random()-0.5)*0.2; p.vz+=(Math.random()-0.5)*0.2; }
+      p.vx*=0.96; p.vz*=0.96;
+    }
+  },
+  emh: { name:'Efficient Market', year:2013, color:'#86efac',
+    desc:'정보 즉시 반영. 초과수익 불가. 가격은 랜덤워크.',
+    formula:'P_t=P_{t-1}+ε_t, ε_t∼N(0,σ²)',
+    update(p, others, sim) {
+      p.vx=gauss()*sim.vol*0.42;
+      p.vz=gauss()*sim.vol*0.42;
+      const rf=sim.rate/100*0.015;
+      p.vx-=p.x*rf*0.001; p.vz-=p.z*rf*0.001;
+    }
+  },
+  mechanism: { name:'Mechanism Design', year:2007, color:'#f9a8d4',
+    desc:'VCG 메커니즘: 사적 유인을 사회적 최적과 정렬.',
+    formula:'IC: u_i(θᵢ,t(θ))≥u_i(θ̂ᵢ,t(θ̂ᵢ,θ₋ᵢ))',
+    update(p, others, sim) {
+      if(!p.type_val) p.type_val=Math.random();
+      let sw=0;
+      for(const o of others){ if(o===p)continue; const d=Math.hypot(o.x-p.x,o.z-p.z); sw+=(o.type_val||0.5)/(d+1); }
+      const ang=Math.atan2(-p.z,-p.x);
+      p.vx+=Math.cos(ang)*sw*0.0009; p.vz+=Math.sin(ang)*sw*0.0009;
+      p.vx*=0.96; p.vz*=0.96;
+    }
+  },
+  krugman: { name:'New Trade Theory', year:2008, color:'#6ee7b7',
+    desc:'규모의 경제 + 다양성 선호가 비교우위 없어도 무역 발생.',
+    formula:'X_ij=A·Y_i·Y_j/D_ij, p*=wa·σ/(σ−1)',
+    update(p, others, sim) {
+      const sigma=4;
+      if(!p.cluster) p.cluster=Math.floor(Math.random()*3);
+      const centers=[[-80,-80],[80,-80],[0,90]];
+      const [cx,cz]=centers[p.cluster];
+      p.vx+=(cx-p.x)*0.003; p.vz+=(cz-p.z)*0.003;
+      if(Math.random()<0.003){
+        const oc=(p.cluster+1+Math.floor(Math.random()*2))%3;
+        const [ox,oz]=centers[oc];
+        p.vx+=(ox-p.x)*0.01*(sigma-1)/sigma;
+        p.vz+=(oz-p.z)*0.01*(sigma-1)/sigma;
+      }
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  institution: { name:'Institutional Econ', year:2024, color:'#fdba74',
+    desc:'Acemoglu-Johnson-Robinson: 포용적 제도가 장기 발전 결정.',
+    formula:'Y_t=A_t·K_t^α·(h_t L_t)^{1-α}',
+    update(p, others, sim) {
+      if(!p.iq) p.iq=0.1+Math.random()*0.5;
+      for(const o of others){ if(o===p)continue; const d=Math.hypot(o.x-p.x,o.z-p.z); if(d<25){ p.iq=Math.min(1,p.iq+(o.iq-p.iq)*0.001); } }
+      const gf=0.001+p.iq*0.005;
+      const ang=Math.atan2(p.z,p.x);
+      p.vx+=-Math.sin(ang)*gf*sim.speed; p.vz+=Math.cos(ang)*gf*sim.speed;
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  thaler: { name:'Nudge Theory', year:2017, color:'#67e8f9',
+    desc:'선택 설계(default bias)로 자유를 제약하지 않으면서 행동 유도.',
+    formula:'P(D=1)=α+β·DefaultBias',
+    update(p, others, sim) {
+      if(!p.defX){p.defX=p.x;p.defZ=p.z;}
+      p.vx+=(p.defX-p.x)*0.0025; p.vz+=(p.defZ-p.z)*0.0025;
+      if(Math.random()<0.005){ p.vx+=(-p.x)*0.008; p.vz+=(-p.z)*0.008; }
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  sen: { name:'Capability Approach', year:1998, color:'#f9a8d4',
+    desc:'Sen: 빈곤=역량 결핍. 실질 자유(functionings) 집합이 후생 결정.',
+    formula:'CA_i={achievable functionings}, Welfare=f(CA_i)',
+    update(p, others, sim) {
+      if(!p.cap) p.cap=0.1+Math.random()*0.5;
+      for(const o of others){ if(o===p)continue; const d=Math.hypot(o.x-p.x,o.z-p.z); if(d<30&&o.cap>p.cap) p.cap=Math.min(1,p.cap+0.001); }
+      const spd=p.cap*sim.speed*1.4;
+      p.vx+=(Math.random()-0.5)*spd*0.18; p.vz+=(Math.random()-0.5)*spd*0.18;
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  olg: { name:'Overlapping Generations', year:1958, color:'#93c5fd',
+    desc:'Samuelson-Diamond: 세대 간 자원 배분.',
+    formula:'U_t=u(c_t^y)+β·u(c_{t+1}^o), c_t^y+s_t=w_t',
+    update(p, others, sim) {
+      p.age=(p.age||0)+1;
+      const mid=p.maxAge/2;
+      const ang=Math.atan2(p.z,p.x);
+      if(p.age<mid){ p.vx+=Math.cos(ang)*0.01; p.vz+=Math.sin(ang)*0.01; p.vx*=0.97; p.vz*=0.97; }
+      else{ p.vx-=Math.cos(ang)*0.014; p.vz-=Math.sin(ang)*0.014; p.vx*=0.96; p.vz*=0.96; }
+    }
+  },
+  rbc: { name:'Real Business Cycle', year:2004, color:'#d8b4fe',
+    desc:'Kydland-Prescott: 기술 충격(AR1)이 경기변동의 주 원인.',
+    formula:'lnA_t=ρ·lnA_{t-1}+ε_t, maxE[Σβᵗu(C_t,L_t)]',
+    update(p, others, sim) {
+      if(!p.lnA) p.lnA=0;
+      p.lnA=0.95*p.lnA+gauss()*0.007*sim.vol;
+      const A=Math.exp(p.lnA);
+      if(!p.capital) p.capital=1+Math.random()*3;
+      const output=A*Math.pow(p.capital,0.35);
+      const ang=Math.atan2(p.z,p.x)+Math.PI/2;
+      p.vx+=Math.cos(ang)*output*0.011*sim.speed;
+      p.vz+=Math.sin(ang)*output*0.011*sim.speed;
+      p.capital=p.capital*0.95+0.25*output*0.05;
+      p.vx*=0.97; p.vz*=0.97;
+    }
+  },
+  fama: { name:'Fama EMH', year:2013, color:'#a7f3d0',
+    desc:'모든 공·사적 정보 즉시 반영. 초과수익=0. 자기상관 없음.',
+    formula:'P_t=μ+P_{t-1}+ε_t, E[R_excess]=0',
+    update(p, others, sim) {
+      p.vx=gauss()*sim.vol*0.48;
+      p.vz=gauss()*sim.vol*0.48;
+      p.vx-=p.x*sim.rate/100*0.001;
+      p.vz-=p.z*sim.rate/100*0.001;
+    }
+  }
+};
+const TKEYS=Object.keys(THEORIES);
+
+// ============================================================
+// 5. SCENARIOS
+// ============================================================
+const SCENARIOS = {
+  stagflation:{
+    name:'오일쇼크 · 스태그플레이션', year:'1973–1979 · 미국', totalRounds:8,
+    init:{gdp:-1.5,inf:8.5,une:6.8,rate:7.0,deficit:-3.5,conf:40},
+    targets:{inf:[0,3],une:[3,6],gdp:[1.5,4]}, nairu:5.5, mpc:0.78,
+    historical: { gdp: [-1.5,-2.1,-3.2,-1.8,0.5,2.1,1.8,0.5], inf: [8.5,9.2,10.1,8.5,6.8,4.2,3.5,2.8], une: [6.8,7.2,8.1,7.5,6.2,5.5,5.2,5.0] },
+    shocks:{
+      2:{title:'2차 오일쇼크(1979)',desc:'이란 혁명으로 유가 재급등.',inf:4,gdp:-1.5},
+      5:{title:'볼커 딜레마',desc:'연준 긴축 본격화. 단기 경기침체 우려.',une:1.5}
+    },
+    hint:'공급 충격형 스태그플레이션은 수요 조정만으로 해결 불가.'
+  },
+  gfc:{
+    name:'금융위기 · 대침체', year:'2008 · 글로벌', totalRounds:8,
+    init:{gdp:-4.3,inf:0.1,une:9.2,rate:0.25,deficit:-9.8,conf:22},
+    targets:{inf:[1,3],une:[3,7],gdp:[2,5]}, nairu:5.0, mpc:0.65,
+    historical: { gdp: [-4.3,-5.8,-3.5,-1.2,2.1,3.5,2.8,1.5], inf: [0.1,0.2,0.8,1.5,2.1,2.8,3.2,2.5], une: [9.2,10.5,9.8,8.5,7.2,6.5,5.8,5.5] },
+    shocks:{
+      1:{title:'신용 경색(2008)',desc:'은행 간 대출 동결. 유동성 함정 진입.',conf:-15,gdp:-2},
+      4:{title:'유럽 재정위기 파급',desc:'그리스·이탈리아 위기가 글로벌 신뢰 훼손.',gdp:-1,conf:-10}
+    },
+    hint:'유동성 함정: ZLB 도달 후 추가 금리 인하 불가. 재정정책 효과 극대화.'
+  },
+  recovery:{
+    name:'팬데믹 이후 인플레이션', year:'2021–2023 · 미국', totalRounds:6,
+    init:{gdp:5.9,inf:7.0,une:3.9,rate:0.25,deficit:-12.4,conf:65},
+    targets:{inf:[1.5,2.5],une:[3,5],gdp:[1.5,4]}, nairu:4.0, mpc:0.82,
+    historical: { gdp: [5.9,4.2,2.5,1.8,2.1,2.8], inf: [7.0,6.5,5.2,3.5,2.8,2.2], une: [3.9,4.2,4.5,4.8,4.2,3.8] },
+    shocks:{
+      2:{title:'공급망 재혼란',desc:'중국 봉쇄로 반도체·원자재 재차 차질.',inf:1.5},
+      4:{title:'임금-물가 나선',desc:'노동시장 과열로 악순환 신호.',inf:1.0,une:-0.5}
+    },
+    hint:'2022년 연준 딜레마: 빠른 긴축 → 경기침체. 느린 긴축 → 기대인플 고착.'
+  },
+  japan:{
+    name:'버블 붕괴 · 디플레이션 함정', year:'1990–2000 · 일본', totalRounds:10,
+    init:{gdp:1.0,inf:-0.5,une:2.9,rate:0.5,deficit:-4.2,conf:35},
+    targets:{inf:[0.5,2.5],une:[2,5],gdp:[1.5,4]}, nairu:3.5, mpc:0.72,
+    historical: { gdp: [1.0,0.5,-0.2,-1.5,-0.8,0.2,0.8,1.2,1.5,0.8], inf: [-0.5,-0.3,0.1,-0.2,0.0,0.5,1.0,1.2,1.0,0.8], une: [2.9,3.2,3.5,4.2,4.8,5.0,4.8,4.5,4.2,4.0] },
+    shocks:{
+      3:{title:'은행 부실 확대',desc:'담보 자산가치 폭락. 신용 공급 급감.',gdp:-1.5,conf:-12},
+      6:{title:'소비세 인상 실패',desc:'재정 건전화 목적 증세가 회복 芽를 꺾음.',gdp:-2,inf:-0.5}
+    },
+    hint:'디플레 기대 고착 시 실질금리 양(+). 대차대조표 불황: 재정승수 극대화.'
+  }
+};
+
+// ============================================================
+// 6. STATE
+// ============================================================
+let simState={gdp:100,inf:2,rate:3,une:4.5,deficit:-3,conf:60};
+let simHistory={gdp:[],inf:[],une:[]};
+let scenarioState={};
+// v7.0: BK 합리적 기대 모델은 "현재 상태 = 과거 전체 충격 경로의 함수"이므로,
+// 라운드마다 모델을 새로 풀 때 지금까지 가해진 모든 충격을 누적해서 다시 넣어야 합니다.
+let scenarioShockHistory={rn:[], u:[]};
+let scenarioHistory={gdp:[],inf:[],une:[]};
+let activeScenario=null, currentScenId=null;
+let gameRunning=false, gameRound=0, totalRounds=0;
+
+let activeTheory='nash', blendTheory=null, blendFactor=0;
+let RATE=3.0, MONO_MASS=5.0, SPEED=1.0, VOL=1.0;
+let SIM_GDP=100, SIM_INF=2, SIM_UNE=4.5;
+let N_COLL=0, N_EQUIL=0, N_CRASH=0;
+let FPS=60,_fr=0,_lt=performance.now(),_step=0;
+let paused=false, aiMode=true;
+let mcResults = null;
+let timeChart = null;
+
+// ============================================================
+// 7. THEORY TOGGLE SYSTEM (v6.2 NEW - FIXED)
+// ============================================================
+let activeTheories = new Set(['nash', 'rbc', 'krugman', 'olg', 'dmp']);
+
+const THEORY_GROUPS = {
+  macro: { name: '🏛️ 거시 핵심', theories: ['nash', 'rbc', 'krugman', 'olg'] },
+  behavioral: { name: '🧠 행동/미시', theories: ['prospect', 'thaler', 'sen'] },
+  finance: { name: '📈 금융/자산', theories: ['capm', 'bsm', 'emh', 'markowitz'] },
+  growth: { name: '🌱 성장/장기', theories: ['solow', 'institution'] },
+  labor: { name: '🔧 노동/시장', theories: ['dmp', 'olg'] }
+};
+
+const PRESETS = {
+  beginner: { name: '🌱 입문', theories: ['nash', 'rbc'] },
+  intermediate: { name: '📚 중급', theories: ['nash', 'rbc', 'dmp', 'krugman'] },
+  advanced: { name: '🎓 고급', theories: ['nash', 'rbc', 'dmp', 'krugman', 'prospect', 'solow'] },
+  behavioral: { name: '🧠 행동경제', theories: ['prospect', 'thaler', 'sen'] },
+  finance: { name: '📈 금융', theories: ['capm', 'bsm', 'emh', 'markowitz'] },
+  growth: { name: '🌱 성장', theories: ['solow', 'institution'] }
+};
+
+function initTheoryToggles() {
+  // 토글 이벤트
+  document.querySelectorAll('.theory-toggle').forEach(cb => {
+    cb.addEventListener('change', function() {
+      const theory = this.dataset.theory;
+      const label = this.closest('.theory-tag');
+      if (this.checked) {
+        activeTheories.add(theory);
+        if (label) label.classList.remove('off');
+        addLog(`✅ 이론 활성화: ${THEORIES[theory].name}`, 'theory');
+      } else {
+        activeTheories.delete(theory);
+        if (label) label.classList.add('off');
+        addLog(`❌ 이론 비활성화: ${THEORIES[theory].name}`, 'theory');
+      }
+      flash(this.checked ? '#10b981' : '#ef4444', .08);
+    });
+    // 초기 상태 반영
+    const theory = cb.dataset.theory;
+    const label = cb.closest('.theory-tag');
+    if (!cb.checked && label) label.classList.add('off');
+  });
+  
+  // 그룹 토글
+  document.querySelectorAll('.group-toggle').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const group = this.dataset.group;
+      const groupData = THEORY_GROUPS[group];
+      if (!groupData) return;
+      
+      const checkboxes = document.querySelectorAll(`.theory-toggle[data-theory]`);
+      const groupTheories = groupData.theories;
+      const allChecked = groupTheories.every(t => {
+        const cb = document.querySelector(`.theory-toggle[data-theory="${t}"]`);
+        return cb && cb.checked;
+      });
+      
+      const targetState = !allChecked;
+      groupTheories.forEach(t => {
+        const cb = document.querySelector(`.theory-toggle[data-theory="${t}"]`);
+        if (cb) {
+          cb.checked = targetState;
+          cb.dispatchEvent(new Event('change'));
+        }
+      });
+      
+      addLog(`🔄 ${groupData.name} ${targetState ? '전체 ON' : '전체 OFF'}`, 'policy');
+    });
+  });
+  
+  // 프리셋
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const preset = this.dataset.preset;
+      const presetData = PRESETS[preset];
+      if (!presetData) return;
+      
+      document.querySelectorAll('.theory-toggle').forEach(cb => {
+        cb.checked = false;
+        const label = cb.closest('.theory-tag');
+        if (label) label.classList.add('off');
+      });
+      
+      presetData.theories.forEach(t => {
+        const cb = document.querySelector(`.theory-toggle[data-theory="${t}"]`);
+        if (cb) {
+          cb.checked = true;
+          cb.dispatchEvent(new Event('change'));
+        }
+      });
+      
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      addLog(`📋 프리셋 적용: ${presetData.name}`, 'policy');
+      flash('#f59e0b', .1);
+    });
+  });
+}
+
+// ============================================================
+// 8. THREE.JS SETUP
+// ============================================================
+canvas3d = document.getElementById('sim3d');
+centerEl = document.getElementById('center');
+scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0a0e1a);
+scene.fog = new THREE.FogExp2(0x0a0e1a, 0.00016);
+
+W3 = centerEl.clientWidth;
+H3 = centerEl.clientHeight;
+camera = new THREE.PerspectiveCamera(50, W3/H3, 0.1, 2000);
+camera.position.set(0, 155, 0);
+camera.lookAt(0, 0, 0);
+
+renderer = new THREE.WebGLRenderer({
+    canvas: canvas3d,
+    antialias: true,
+    powerPreference: "high-performance"
+});
+renderer.setSize(W3, H3);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = false;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+scene.add(new THREE.GridHelper(400, 50, 0x0d1a2e, 0x0d1a2e));
+scene.add(new THREE.AmbientLight(0x0a1020, 3));
+ptLight = new THREE.PointLight(0x38bdf8, 2, 380);
+ptLight.position.set(0, 60, 0);
+scene.add(ptLight);
+
+cbMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(10, 20, 20),
+    new THREE.MeshStandardMaterial({color:0xa855f7, emissive:0xa855f7, emissiveIntensity:.7, transparent:true, opacity:.9})
+);
+scene.add(cbMesh);
+
+monoMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(8, 16, 16),
+    new THREE.MeshStandardMaterial({color:0x1a0a2e, emissive:0x4a1a7e, emissiveIntensity:1.0})
+);
+monoMesh.position.set(90, 0, 0);
+scene.add(monoMesh);
+
+function make3DLine(color){
+  const pos=new Float32Array(80*3);
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const line=new THREE.Line(geo,new THREE.LineBasicMaterial({color,transparent:true,opacity:.55}));
+  scene.add(line);
+  return {line,pos,geo};
+}
+const {line:isLine3d,pos:isPos3d,geo:isGeo3d}=make3DLine(0x60a5fa);
+const {line:lmLine3d,pos:lmPos3d,geo:lmGeo3d}=make3DLine(0x34d399);
+
+const eqMesh=new THREE.Mesh(
+  new THREE.SphereGeometry(2.2,10,10),
+  new THREE.MeshStandardMaterial({color:0xf59e0b,emissive:0xf59e0b,emissiveIntensity:1.5})
+);
+scene.add(eqMesh);
+
+// ============================================================
+// 9. PARTICLES (HANK 버전)
+// ============================================================
+const PTYPES={
+  demand:{c:0xf87171,s:1.2}, supply:{c:0x34d399,s:1.2},
+  firm:{c:0xfb923c,s:1.6},   consumer:{c:0x38bdf8,s:1.0},
+  capital:{c:0xe879f9,s:1.8},labor:{c:0xa3e635,s:1.0},
+  trade:{c:0x67e8f9,s:1.3},  institution:{c:0xfdba74,s:1.4}
+};
+const PTKEYS2=Object.keys(PTYPES);
+const geoCache={}, matCache={};
+
+function getMeshWithIncome(type, incomeClass) {
+  const cfg = PTYPES[type] || PTYPES.demand;
+  const color = incomeClass < 0.2 ? 0xef4444 : (incomeClass < 0.8 ? 0x38bdf8 : 0xa78bfa);
+  const key = type + '_' + (incomeClass < 0.2 ? 'low' : incomeClass < 0.8 ? 'mid' : 'high');
+  
+  if (!geoCache[type]) geoCache[type] = new THREE.SphereGeometry(cfg.s * 0.75, 6, 6);
+  if (!matCache[key]) {
+    matCache[key] = new THREE.MeshStandardMaterial({
+      color: color,
+      emissive: color,
+      emissiveIntensity: 0.2,
+      transparent: true,
+      opacity: 0.85
+    });
+  }
+  return new THREE.Mesh(geoCache[type], matCache[key].clone());
+}
+
+const particles=[];
+class Particle{
+  constructor(type,x,z){
+    this.type=type||PTKEYS2[Math.floor(Math.random()*PTKEYS2.length)];
+    this.x=x??(Math.random()-.5)*160;
+    this.z=z??(Math.random()-.5)*160;
+    this.vx=(Math.random()-.5)*2.5; this.vz=(Math.random()-.5)*2.5;
+    this.mass=.6+Math.random()*.8;
+    this.alive=true; this.age=0;
+    this.maxAge=500+Math.random()*400;
+    
+    this.incomeClass = Math.random();
+    this.mpc = this.incomeClass < 0.2 ? 0.95 : (this.incomeClass < 0.8 ? 0.7 : 0.4);
+    
+    this.mesh = getMeshWithIncome(this.type, this.incomeClass);
+    this.mesh.position.set(this.x,0,this.z);
+    scene.add(this.mesh);
+    this.role=this.type==='firm'?'firm':'worker';
+  }
+  update(dt){
+    this.age+=dt;
+    if(this.age>this.maxAge){this.alive=false;return;}
+    const sim={rate:RATE,speed:SPEED,vol:VOL};
+    
+    // 활성화된 이론만 적용
+    if (activeTheories.has(activeTheory)) {
+      const th = THEORIES[activeTheory];
+      if (th) th.update(this, particles, sim);
+    }
+    
+    if (blendTheory && blendFactor > 0.05 && activeTheories.has(blendTheory)) {
+      const th2 = THEORIES[blendTheory];
+      const savedVx = this.vx, savedVz = this.vz;
+      if (th2) th2.update(this, particles, sim);
+      this.vx = savedVx * (1 - blendFactor) + this.vx * blendFactor;
+      this.vz = savedVz * (1 - blendFactor) + this.vz * blendFactor;
+    }
+    
+    const mdx=this.x-monoMesh.position.x, mdz=this.z-monoMesh.position.z;
+    const md=Math.hypot(mdx,mdz);
+    if(md<60&&md>.1){ const g=MONO_MASS*.05/(md*md)*dt*60; this.vx-=mdx/md*g; this.vz-=mdz/md*g; }
+    const R=190;
+    if(Math.abs(this.x)>R)this.vx*=-.7;
+    if(Math.abs(this.z)>R)this.vz*=-.7;
+    this.x=Math.max(-R,Math.min(R,this.x+this.vx*SPEED*dt));
+    this.z=Math.max(-R,Math.min(R,this.z+this.vz*SPEED*dt));
+    this.mesh.position.set(this.x,0,this.z);
+    const lr=this.age/this.maxAge;
+    if(lr>.8){this.mesh.material.transparent=true;this.mesh.material.opacity=1-(lr-.8)/.2;}
+  }
+  dispose(){scene.remove(this.mesh);this.mesh.material.dispose();}
+}
+
+function spawnP(type,x,z){
+  const p=new Particle(type,x,z);
+  particles.push(p);
+  return p;
+}
+
+function initParticlesHetero(count){
+  const num = count || PARTICLE_COUNT;
+  for(let i=0;i<num;i++){
+    const t=PTKEYS2[i%PTKEYS2.length];
+    const a=Math.random()*Math.PI*2, r=30+Math.random()*110;
+    spawnP(t,Math.cos(a)*r,Math.sin(a)*r);
+  }
+}
+
+function gauss(){
+  const u=1-Math.random(),v=Math.random();
+  return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+}
+
+// ============================================================
+// 10. IS-LM & TAYLOR
+// ============================================================
+function computeISLM(gov=0,tax=0,qe=0){
+  const A=50+gov*3-tax*1.5+SIM_GDP*0.1;
+  const b=20, k=0.4, h=15;
+  const MoP=100-Math.min(100,Math.max(0,(N_COLL>0?MONO_MASS*3:0)));
+  const isR=(Y)=>(A-Y)/b+RATE*0.3;
+  const lmR=(Y)=>(k*Y-MoP)/h;
+  const Ys=(A*h+MoP*b)/(k*b+h);
+  const rs=lmR(Ys);
+  return {isR,lmR,Ystar:Ys,rstar:rs};
+}
+
+function taylorRate(){
+  const piStar=2.0, rNeutral=2.0;
+  const outputGap=(SIM_GDP-100)/100*10;
+  return rNeutral+SIM_INF+0.5*(SIM_INF-piStar)+0.5*outputGap;
+}
+
+// ============================================================
+// 11. SCENARIO POLICY ENGINE
+// ============================================================
+function applyScenarioPolicy(){
+  if(!gameRunning||!activeScenario)return;
+  gameRound++;
+  const rateΔ=parseFloat(document.getElementById('sl-rate').value);
+  const qe=parseFloat(document.getElementById('sl-qe').value);
+  const govΔ=parseFloat(document.getElementById('sl-gov').value);
+  const taxΔ=parseFloat(document.getElementById('sl-tax').value);
+  const supply=parseInt(document.getElementById('sl-sup').value);
+  const prev={...scenarioState};
+
+  // ── v7.0: 모델-보정 불일치 제거 ──
+  // v6.2는 NK 모델 결과 위에 fiscalEffect, govΔ*0.08 같은 임의 보정을 사후에 덧씌웠습니다.
+  // v7.0은 모든 정책 슬라이더를 모델의 입력(충격)으로 일관되게 매핑하고, 모델이 계산한
+  // 결과를 그대로 사용합니다 — 사후 보정은 일절 없습니다.
+  //
+  // 매핑 원칙:
+  //   - 금리Δ, QE, 재정Δ, 세율Δ → 모두 수요측(IS 방정식)에 영향 → rn_shock(자연실질금리/통화정책 충격)
+  //     (QE와 금리인하는 같은 방향(완화)이므로 부호를 맞춰 합산. 재정확대는 자연실질금리를
+  //      높이는 효과(구축효과의 반대, 즉 수요 자극)로 해석, 증세는 반대.)
+  //   - 시나리오 고유 충격(오일쇼크 등) + 공급측 개혁 → u_shock(NKPC 비용충격)
+  const nk = new NewKeynesianModel({
+    periods: totalRounds,
+    nairu: Math.max(2, activeScenario.nairu - supply * 0.15),
+    theta: 0.78 - supply * 0.01,   // 공급개혁 → 가격조정 더 빈번 → 카파 소폭 상승
+    phi_pi: 1.5,
+    phi_y: 0.5
+  });
+
+  if (!nk.determinate) {
+    addLog('⚠️ 모델 불안정(비결정적 해) — 파라미터 조정 필요. 이번 라운드는 보류됩니다.', 'bad');
+    return;
+  }
+
+  // ── 이번 라운드의 정책충격을 누적 역사에 기록 ──
+  // (BK 합리적 기대 모델은 현재 상태가 "과거 전체 충격 경로"의 함수이므로,
+  //  매 라운드 모델을 다시 풀 때 지금까지의 모든 충격을 함께 넣어야 합니다.)
+  // [중요] 순수 전진형 NK 모델은 1회성 충격에 내생적 관성(persistence)이 없어,
+  // 충격이 끝나는 즉시 정상상태로 복귀합니다 — 이는 Gali(2015) 기본모형의 잘 알려진
+  // 특성입니다. 실제 거시 데이터의 지속성을 반영하기 위해, 모든 충격에 표준적인
+  // AR(1) 소멸 과정(분기당 65% 잔존, 문헌상 일반적인 값)을 적용합니다.
+  const PERSIST_RHO = 0.65;
+  while (scenarioShockHistory.rn.length < totalRounds) scenarioShockHistory.rn.push(0);
+  while (scenarioShockHistory.u.length < totalRounds) scenarioShockHistory.u.push(0);
+
+  // 과거에 입력된 충격들의 잔향(AR1 감쇠)을 미래 방향으로 전파
+  for (let i = 0; i < totalRounds; i++) {
+    if (i >= gameRound) {
+      scenarioShockHistory.rn[i] = (i > 0 ? scenarioShockHistory.rn[i-1] : 0) * PERSIST_RHO;
+      scenarioShockHistory.u[i]  = (i > 0 ? scenarioShockHistory.u[i-1]  : 0) * PERSIST_RHO;
+    }
+  }
+
+  const MPC = activeScenario.mpc;
+  const thisRoundRn = (-rateΔ + qe * 0.5 + govΔ * 0.4 - taxΔ * MPC * 0.4) / 4;
+  scenarioShockHistory.rn[gameRound - 1] = thisRoundRn + (gameRound > 1 ? scenarioShockHistory.rn[gameRound - 2] * PERSIST_RHO : 0);
+
+  const shkNow = activeScenario.shocks[gameRound];
+  const baseU = (gameRound > 1 ? scenarioShockHistory.u[gameRound - 2] * PERSIST_RHO : 0);
+  scenarioShockHistory.u[gameRound - 1] = baseU + (shkNow ? (shkNow.inf || 0) * 0.45 / 4 : 0);
+
+  const nkResult = nk.runSimulation(scenarioShockHistory.rn, scenarioShockHistory.u);
+  const idx = Math.min(gameRound - 1, nkResult.gdp.length - 1);
+
+  // 모델이 계산한 값을 그대로 사용 (사후 보정 없음)
+  scenarioState.gdp = nkResult.gdp[idx] - 100;
+  scenarioState.inf = nkResult.inflation[idx];
+  scenarioState.rate = nkResult.policy_rate[idx];
+  scenarioState.une = nkResult.unemployment[idx];
+
+  scenarioState.gdp = Math.max(-8, Math.min(12, scenarioState.gdp));
+  scenarioState.inf = Math.max(-3, Math.min(25, scenarioState.inf));
+  scenarioState.une = Math.max(1, Math.min(18, scenarioState.une));
+  scenarioState.rate = Math.max(0, Math.min(15, scenarioState.rate));
+
+  // 재정/신뢰도는 모델 외 보조지표로 유지 (NK 3방정식 모델 범위 밖이므로 별도 회계로 명시)
+  scenarioState.deficit = prev.deficit - govΔ * 0.8 + taxΔ * 0.5 + (scenarioState.gdp > 2 ? scenarioState.gdp * 0.3 : 0);
+  const confΔ = (scenarioState.gdp > 2 ? 5 : scenarioState.gdp > 0 ? 2 : -5)
+    + (scenarioState.inf < 3 ? 3 : scenarioState.inf > 7 ? -6 : 0)
+    + (scenarioState.une < 5 ? 3 : scenarioState.une > 8 ? -5 : 0);
+  scenarioState.conf = Math.max(5, Math.min(95, prev.conf + confΔ));
+
+  const shk = activeScenario.shocks[gameRound];
+  if(shk){
+    document.getElementById('shock-title').textContent=`⚡ ${shk.title}`;
+    document.getElementById('shock-desc').textContent=shk.desc;
+    document.getElementById('shock-card').classList.add('on');
+    addLog(`⚡ 충격: ${shk.title} (NKPC 공급충격으로 모델에 반영됨)`, 'bad');
+    flash('#ef4444', .15);
+  } else {
+    document.getElementById('shock-card').classList.remove('on');
+  }
+
+  scenarioHistory.gdp.push(scenarioState.gdp);
+  scenarioHistory.inf.push(scenarioState.inf);
+  scenarioHistory.une.push(scenarioState.une);
+
+  SIM_GDP = 100 + scenarioState.gdp * 8;
+  SIM_INF = scenarioState.inf;
+  SIM_UNE = scenarioState.une;
+  RATE = scenarioState.rate;
+
+  const pols = [];
+  if(rateΔ!==0) pols.push(`금리${rateΔ>0?'+':''}${rateΔ.toFixed(2)}%`);
+  if(qe>0)      pols.push(`QE ${qe.toFixed(1)}%`);
+  if(govΔ!==0)  pols.push(`재정${govΔ>0?'+':''}${govΔ.toFixed(1)}%`);
+  if(taxΔ!==0)  pols.push(`세율${taxΔ>0?'+':''}${taxΔ}pp`);
+  if(supply>0)  pols.push(`개혁Lv${supply}`);
+  if(pols.length) addLog(`[${pols.join('·')}] → GDP${scenarioState.gdp.toFixed(1)} π${scenarioState.inf.toFixed(1)} u${scenarioState.une.toFixed(1)}`, 'policy');
+
+  if (gameRound === 1) {
+    addLog('📚 NK 3방정식(Gali 2015) 합리적 기대 + Blanchard-Kahn 해법 적용', 'academic');
+    addLog('🔬 κ(필립스곡선 기울기)='+nk.kappa.toFixed(3)+' — 교과서 표준 캘리브레이션(θ=0.78)', 'academic');
+    const activeCount = activeTheories.size;
+    addLog(`⚙️ 활성화된 이론: ${activeCount}개`, 'info');
+  }
+
+  updateHUD();
+  updateAIInterpretation();
+  updateTimeChart();
+  resetPolicySliders();
+  if(gameRound >= totalRounds) setTimeout(showResult, 800);
+}
+
+// ============================================================
+// 12. COLLISION & MACRO
+// ============================================================
+function checkCollisions(){
+  const n=particles.length;
+  for(let i=0;i<n-1;i++){
+    const a=particles[i];
+    for(let j=i+1;j<n;j++){
+      const b=particles[j];
+      const dx=b.x-a.x, dz=b.z-a.z, d=Math.hypot(dx,dz);
+      if(d<5&&d>.01){
+        N_COLL++;
+        const nx=dx/d,nz=dz/d;
+        const dvx=a.vx-b.vx,dvz=a.vz-b.vz;
+        const dot=dvx*nx+dvz*nz;
+        const j2=2*dot/(a.mass+b.mass);
+        a.vx-=j2*b.mass*nx; a.vz-=j2*b.mass*nz;
+        b.vx+=j2*a.mass*nx; b.vz+=j2*a.mass*nz;
+        if((a.type==='demand'&&b.type==='supply')||(a.type==='supply'&&b.type==='demand')){
+          N_EQUIL++; SIM_GDP+=0.05; SIM_INF+=0.01;
+          if(N_EQUIL%15===0){addLog(`⇌ 균형거래 #${N_EQUIL}`, 'good');flash('#a78bfa',.06);}
+        }
+        const spd=Math.hypot(dvx,dvz);
+        if(spd>4&&((a.type==='firm'&&b.type==='consumer')||(b.type==='firm'&&a.type==='consumer'))){
+          N_CRASH++; SIM_GDP-=0.3; SIM_UNE+=0.05;
+          if(N_CRASH%8===0){addLog(`💥 시장 충돌 Spd=${spd.toFixed(1)}`, 'bad');flash('#ef4444',.1);}
+        }
+      }
+    }
+  }
+}
+
+function updateMacro(dt){
+  const{Ystar}=computeISLM();
+  const tgt=Math.max(50,Math.min(200,Ystar));
+  SIM_GDP+=(tgt-SIM_GDP)*.002*dt;
+  const Yn=100, og=(SIM_GDP-Yn)/Yn;
+  SIM_INF+=(og*3-(SIM_UNE-4.5)*.8)*.005*dt;
+  SIM_INF=Math.max(-3,Math.min(25,SIM_INF));
+  SIM_UNE-=og*.5*.01*dt;
+  SIM_UNE=Math.max(2,Math.min(15,SIM_UNE));
+  SIM_GDP=Math.max(30,Math.min(250,SIM_GDP));
+  
+  let totalConsumption = 0;
+  let totalIncome = 0;
+  for (const p of particles) {
+    totalConsumption += p.mpc || 0.7;
+    totalIncome += 1;
+  }
+  const avgMPC = totalConsumption / (totalIncome || 1);
+  const consumptionEffect = (avgMPC - 0.7) * 0.1;
+  SIM_GDP += consumptionEffect * dt * 0.5;
+  
+  if(_step%6===0){
+    simHistory.gdp.push(SIM_GDP); simHistory.inf.push(SIM_INF); simHistory.une.push(SIM_UNE);
+    if(simHistory.gdp.length>120)simHistory.gdp.shift();
+    if(simHistory.inf.length>120)simHistory.inf.shift();
+    if(simHistory.une.length>120)simHistory.une.shift();
+  }
+}
+
+function runAIPolicy(){
+  if(!aiMode)return;
+  const tr=taylorRate();
+  const diff=tr-RATE;
+  if(Math.abs(diff)>.3){ RATE+=diff*.02; RATE=Math.max(0,Math.min(15,RATE)); }
+}
+
+function maintainParticles(){
+  if(particles.length < PARTICLE_COUNT){
+    const need = Math.min(5, PARTICLE_COUNT - particles.length);
+    for(let i=0;i<need;i++){
+      const t=PTKEYS2[Math.floor(Math.random()*PTKEYS2.length)];
+      const a=Math.random()*Math.PI*2,r=60+Math.random()*80;
+      spawnP(t,Math.cos(a)*r,Math.sin(a)*r);
+    }
+  } else if(particles.length > PARTICLE_COUNT) {
+    const excess = particles.length - PARTICLE_COUNT;
+    for(let i=0;i<Math.min(excess, 10);i++){
+      const p = particles.pop();
+      if(p) p.dispose();
+    }
+  }
+}
+
+// ============================================================
+// 13. CSV UPLOADER
+// ============================================================
+function initCSVUploader() {
+  const zone = document.getElementById('drop-zone');
+  const input = document.getElementById('csv-upload');
+  const status = document.getElementById('csv-status');
+  
+  zone.addEventListener('click', () => input.click());
+  
+  zone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    zone.style.borderColor = 'var(--cyan)';
+    zone.style.background = 'rgba(56,189,248,.05)';
+  });
+  
+  zone.addEventListener('dragleave', () => {
+    zone.style.borderColor = 'var(--border)';
+    zone.style.background = 'transparent';
+  });
+  
+  zone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    zone.style.borderColor = 'var(--border)';
+    zone.style.background = 'transparent';
+    const file = e.dataTransfer.files[0];
+    if (file) handleCSV(file, status);
+  });
+  
+  input.addEventListener('change', (e) => {
+    if (e.target.files[0]) handleCSV(e.target.files[0], status);
+  });
+}
+
+function handleCSV(file, status) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const text = e.target.result;
+      const lines = text.split('\n').filter(l => l.trim());
+      const headers = lines[0].split(',').map(h => h.trim());
+      
+      const gdpIdx = headers.findIndex(h => /gdp|growth/i.test(h));
+      const infIdx = headers.findIndex(h => /infl|price|pi/i.test(h));
+      const uneIdx = headers.findIndex(h => /unemp|jobless/i.test(h));
+      
+      if (gdpIdx === -1 || infIdx === -1 || uneIdx === -1) {
+        status.textContent = '❌ 필요한 컬럼(GDP, 인플레이션, 실업률)이 없습니다.';
+        status.style.color = 'var(--red)';
+        return;
+      }
+      
+      const data = lines.slice(1).map(line => {
+        const cols = line.split(',').map(c => parseFloat(c.trim()));
+        return { gdp: cols[gdpIdx], inf: cols[infIdx], une: cols[uneIdx] };
+      }).filter(d => !isNaN(d.gdp) && !isNaN(d.inf) && !isNaN(d.une));
+      
+      if (data.length < 3) {
+        status.textContent = '❌ 유효한 데이터가 부족합니다.';
+        status.style.color = 'var(--red)';
+        return;
+      }
+      
+      scenarioHistory.gdp = data.map(d => d.gdp);
+      scenarioHistory.inf = data.map(d => d.inf);
+      scenarioHistory.une = data.map(d => d.une);
+      
+      const last = data[data.length - 1];
+      if (activeScenario) {
+        scenarioState.gdp = last.gdp;
+        scenarioState.inf = last.inf;
+        scenarioState.une = last.une;
+      }
+      
+      status.textContent = `✅ ${data.length}개 데이터 로드 완료! (${file.name})`;
+      status.style.color = 'var(--green)';
+      
+      addLog(`📂 CSV 데이터 로드: ${data.length}개 항목 (${file.name})`, 'good');
+      flash('#10b981', .1);
+      updateTimeChart();
+      updateHUD();
+      
+    } catch(err) {
+      status.textContent = '❌ 파일 파싱 오류: ' + err.message;
+      status.style.color = 'var(--red)';
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ============================================================
+// 14. AI INTERPRETATION ENGINE
+// ============================================================
+function getEconomicInterpretation(gdp, inf, une, rate) {
+  const rules = [];
+  
+  if (inf > 5) {
+    rules.push({ level: 'danger', msg: '🚨 고인플레이션! 수요 과잉 또는 공급 충격.', action: '금리 인상 + 재정 긴축' });
+  } else if (inf > 3) {
+    rules.push({ level: 'warn', msg: '⚠️ 인플레이션 상승 추세. 모니터링 필요.', action: '선제적 금리 인상 검토' });
+  } else if (inf < 0) {
+    rules.push({ level: 'danger', msg: '📉 디플레이션 위험! 수요 부진.', action: '금리 인하 + 재정 지출 확대' });
+  } else {
+    rules.push({ level: 'good', msg: '✅ 인플레이션 안정적. 목표 범위 내.', action: '현 정책 유지' });
+  }
+  
+  if (une > 8) {
+    rules.push({ level: 'danger', msg: '🔴 높은 실업률! 경기 침체 신호.', action: '확장적 통화·재정정책' });
+  } else if (une > 6) {
+    rules.push({ level: 'warn', msg: '🟡 실업률 상승 추세. 고용 창출 정책 필요.', action: '재정 지출 확대 검토' });
+  } else {
+    rules.push({ level: 'good', msg: '✅ 실업률 양호. 완전고용 수준.', action: '현 정책 유지' });
+  }
+  
+  if (gdp < -2) {
+    rules.push({ level: 'danger', msg: '📊 경기 침체! GDP 마이너스 성장.', action: '적극적 부양책' });
+  } else if (gdp < 0) {
+    rules.push({ level: 'warn', msg: '📊 성장 정체. 경기 부양 필요.', action: '완화적 정책 기조' });
+  } else if (gdp > 4) {
+    rules.push({ level: 'warn', msg: '📈 과열 신호! 인플레이션 위험.', action: '긴축 정책 고려' });
+  } else {
+    rules.push({ level: 'good', msg: '✅ 안정적 성장.', action: '현 정책 유지' });
+  }
+  
+  const tr = taylorRate();
+  const gap = tr - rate;
+  if (Math.abs(gap) > 1.5) {
+    rules.push({
+      level: 'warn',
+      msg: `🎯 Taylor Rule 격차 ${gap > 0 ? '+' : ''}${gap.toFixed(2)}%p.`,
+      action: `금리 ${gap > 0 ? '인상' : '인하'} ${Math.abs(gap).toFixed(2)}%p 검토`
+    });
+  }
+  
+  const dangerCount = rules.filter(r => r.level === 'danger').length;
+  const warnCount = rules.filter(r => r.level === 'warn').length;
+  
+  let summary = '';
+  if (dangerCount >= 2) summary = '🔴 위기 상황! 즉각적인 정책 대응 필요.';
+  else if (dangerCount >= 1 || warnCount >= 2) summary = '🟡 주의 필요. 정책 조정을 고려하세요.';
+  else summary = '🟢 양호한 경제 상태. 현 정책 유지 권장.';
+  
+  const topRules = rules.slice(0, 3);
+  
+  return { summary, topRules, taylorGap: gap, taylorRate: tr, allRules: rules };
+}
+
+function updateAIInterpretation() {
+  const el = document.getElementById('ai-interpretation');
+  if (!el) return;
+  
+  const gdp = (activeScenario ? scenarioState.gdp : (SIM_GDP - 100)) || 0;
+  const inf = (activeScenario ? scenarioState.inf : SIM_INF) || 2;
+  const une = (activeScenario ? scenarioState.une : SIM_UNE) || 4.5;
+  const rate = (activeScenario ? scenarioState.rate : RATE) || 3;
+  
+  const analysis = getEconomicInterpretation(gdp, inf, une, rate);
+  
+  const color = analysis.summary.includes('🔴') ? 'var(--red)' : 
+                analysis.summary.includes('🟡') ? 'var(--gold)' : 'var(--green)';
+  
+  el.innerHTML = `
+    <div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:4px;">🧠 정책 해석</div>
+    <div style="font-size:9px;color:${color};margin-bottom:4px;">${analysis.summary}</div>
+    ${analysis.topRules.map(r => `
+      <div style="font-size:7px;color:var(--muted);line-height:1.5;padding-left:4px;border-left:2px solid ${r.level === 'danger' ? 'var(--red)' : r.level === 'warn' ? 'var(--gold)' : 'var(--green)'};margin-bottom:2px;">
+        ${r.msg}
+        <span style="color:var(--cyan);">→ ${r.action}</span>
+      </div>
+    `).join('')}
+    <div style="font-size:7px;color:var(--muted);margin-top:2px;">🎯 Taylor 추천: ${analysis.taylorRate.toFixed(2)}% (격차 ${analysis.taylorGap > 0 ? '+' : ''}${analysis.taylorGap.toFixed(2)}%p)</div>
+  `;
+}
+
+// ============================================================
+// 15. CHART.JS TIME SERIES
+// ============================================================
+function initTimeChart() {
+  const ctx = document.getElementById('cv-time').getContext('2d');
+  
+  if (timeChart) { timeChart.destroy(); }
+  
+  timeChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8'],
+      datasets: [
+        {
+          label: 'GDP 성장률',
+          data: [0, 0, 0, 0, 0, 0, 0, 0],
+          borderColor: '#60a5fa',
+          backgroundColor: 'rgba(96,165,250,0.1)',
+          tension: 0.2,
+          pointRadius: 2,
+          borderWidth: 2
+        },
+        {
+          label: '인플레이션',
+          data: [0, 0, 0, 0, 0, 0, 0, 0],
+          borderColor: '#f87171',
+          backgroundColor: 'rgba(248,113,113,0.1)',
+          tension: 0.2,
+          pointRadius: 2,
+          borderWidth: 2
+        },
+        {
+          label: '실업률',
+          data: [0, 0, 0, 0, 0, 0, 0, 0],
+          borderColor: '#fbbf24',
+          backgroundColor: 'rgba(251,191,36,0.1)',
+          tension: 0.2,
+          pointRadius: 2,
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: { color: '#4a6080', font: { size: 7, family: 'IBM Plex Mono' }, boxWidth: 10, padding: 4 }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#4a6080', font: { size: 6 } },
+          grid: { color: 'rgba(30,48,80,0.3)' }
+        },
+        y: {
+          ticks: { color: '#4a6080', font: { size: 6 } },
+          grid: { color: 'rgba(30,48,80,0.3)' }
+        }
+      }
+    }
+  });
+}
+
+function updateTimeChart() {
+  if (!timeChart) { initTimeChart(); return; }
+  
+  let gd = [];
+  let id = [];
+  let ud = [];
+  
+  if (activeScenario && scenarioHistory.gdp.length > 0) {
+    gd = scenarioHistory.gdp;
+    id = scenarioHistory.inf;
+    ud = scenarioHistory.une;
+  } else if (simHistory.gdp.length > 0) {
+    gd = simHistory.gdp.map(v => (v - 100) / 10);
+    id = simHistory.inf;
+    ud = simHistory.une;
+  } else {
+    return;
+  }
+  
+  const maxLen = Math.max(gd.length, id.length, ud.length);
+  const labels = Array.from({length: maxLen}, (_, i) => `${i+1}`);
+  
+  timeChart.data.labels = labels;
+  timeChart.data.datasets[0].data = gd;
+  timeChart.data.datasets[1].data = id;
+  timeChart.data.datasets[2].data = ud;
+  timeChart.update('none');
+}
+
+// ============================================================
+// 16. 2D CHARTS
+// ============================================================
+function getCtx2d(id){
+  const c=document.getElementById(id);
+  if(!c)return[null,0,0];
+  const dpr=window.devicePixelRatio||1;
+  const rect=c.getBoundingClientRect();
+  const rw=rect.width, rh=rect.height||parseInt(c.getAttribute('height'))||100;
+  if(c.width!==rw*dpr||c.height!==rh*dpr){
+    c.width=rw*dpr; c.height=rh*dpr;
+    const ctx=c.getContext('2d'); ctx.scale(dpr,dpr);
+    return[ctx,rw,rh];
+  }
+  const ctx=c.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
+  return[ctx,rw,rh];
+}
+
+function drawISLM2D(){
+  const[ctx,W,H]=getCtx2d('cv-islm'); if(!ctx)return;
+  const pad={l:30,r:10,t:14,b:22};
+  const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+  ctx.fillStyle='#0a0e1a'; ctx.fillRect(0,0,W,H);
+
+  const gov=parseFloat(document.getElementById('sl-gov').value)||0;
+  const tax=parseFloat(document.getElementById('sl-tax').value)||0;
+  const qe=parseFloat(document.getElementById('sl-qe').value)||0;
+  const{isR,lmR,Ystar,rstar}=computeISLM(gov,tax,qe);
+
+  ctx.strokeStyle='#1a2d4a'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+cH); ctx.lineTo(pad.l+cW,pad.t+cH); ctx.stroke();
+  ctx.fillStyle='#4a6080'; ctx.font='7px IBM Plex Mono';
+  ctx.fillText('r',pad.l+2,pad.t+9); ctx.fillText('Y',pad.l+cW-8,pad.t+cH-3);
+
+  const toX=Y=>pad.l+(Y-40)/200*cW;
+  const toY=r=>pad.t+cH-4-(r+2)/18*cH;
+
+  ctx.strokeStyle='#60a5fa'; ctx.lineWidth=1.5; ctx.beginPath();
+  for(let Y=40;Y<=240;Y+=4){const r=isR(Y);const px=toX(Y),py=toY(r);Y===40?ctx.moveTo(px,py):ctx.lineTo(px,py);}
+  ctx.stroke();
+
+  ctx.strokeStyle='#34d399'; ctx.lineWidth=1.5; ctx.beginPath();
+  for(let Y=40;Y<=240;Y+=4){const r=lmR(Y);const px=toX(Y),py=toY(r);Y===40?ctx.moveTo(px,py):ctx.lineTo(px,py);}
+  ctx.stroke();
+
+  const ex=toX(Ystar), ey=toY(rstar);
+  ctx.setLineDash([2,3]); ctx.strokeStyle='rgba(245,158,11,.3)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(ex,ey); ctx.lineTo(ex,pad.t+cH); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(pad.l,ey); ctx.lineTo(ex,ey); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.beginPath(); ctx.arc(ex,ey,4,0,Math.PI*2);
+  ctx.fillStyle='#f59e0b'; ctx.fill();
+  ctx.fillStyle='#f59e0b'; ctx.font='7px IBM Plex Mono';
+  ctx.fillText(`E`,ex+5,ey-2);
+  ctx.fillStyle='#f59e0b66'; ctx.font='7px IBM Plex Mono';
+  ctx.fillText(`Y*=${Ystar.toFixed(0)}`,Math.max(pad.l,ex-12),pad.t+cH+8);
+  ctx.fillText(`r*=${rstar.toFixed(1)}%`,2,Math.max(pad.t+8,ey+3));
+}
+
+function drawPhillips2D(){
+  const[ctx,W,H]=getCtx2d('cv-phillips'); if(!ctx)return;
+  const pad={l:30,r:10,t:14,b:22};
+  const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+  ctx.fillStyle='#0a0e1a'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#1a2d4a'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+cH); ctx.lineTo(pad.l+cW,pad.t+cH); ctx.stroke();
+  ctx.fillStyle='#4a6080'; ctx.font='7px IBM Plex Mono';
+  ctx.fillText('π',pad.l+2,pad.t+9); ctx.fillText('u%',pad.l+cW-14,pad.t+cH-3);
+
+  const nairu=activeScenario?activeScenario.nairu:5.0;
+  const piE=activeScenario?scenarioHistory.inf.length>0?scenarioHistory.inf[scenarioHistory.inf.length-1]*0.7+2*0.3:activeScenario.init.inf*0.7+2*0.3:SIM_INF;
+  const supply=parseInt(document.getElementById('sl-sup').value)||0;
+  const nairuAdj=nairu-supply*0.1;
+
+  const toX=u=>pad.l+(u/16)*cW;
+  const toY=p=>pad.t+cH-4-(p+2)/18*cH;
+
+  ctx.strokeStyle='#f87171'; ctx.lineWidth=1; ctx.setLineDash([3,3]);
+  ctx.beginPath(); ctx.moveTo(toX(nairu),pad.t+5); ctx.lineTo(toX(nairu),pad.t+cH-5); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle='#f87171'; ctx.font='7px IBM Plex Mono';
+  ctx.fillText(`u*=${nairu}`,toX(nairu)+3,pad.t+12);
+
+  ctx.strokeStyle='#a78bfa'; ctx.lineWidth=1.5; ctx.beginPath();
+  for(let u=0.5;u<=15;u+=.2){
+    const pi=piE-0.5*(u-nairuAdj);
+    u<=0.5?ctx.moveTo(toX(u),toY(pi)):ctx.lineTo(toX(u),toY(pi));
+  }
+  ctx.stroke();
+
+  const curU=activeScenario?scenarioState.une||activeScenario.init.une:SIM_UNE;
+  const curP=activeScenario?scenarioState.inf||activeScenario.init.inf:SIM_INF;
+  ctx.beginPath(); ctx.arc(toX(curU),toY(curP),4,0,Math.PI*2);
+  ctx.fillStyle='#fbbf24'; ctx.fill();
+  ctx.fillStyle='#fbbf24'; ctx.font='7px IBM Plex Mono';
+  ctx.fillText(`(${curU.toFixed(1)},${curP.toFixed(1)})`,toX(curU)+5,toY(curP)-3);
+
+  if(scenarioHistory.inf.length>1){
+    ctx.beginPath(); ctx.strokeStyle='rgba(251,191,36,.3)'; ctx.lineWidth=1; ctx.setLineDash([2,3]);
+    scenarioHistory.une.forEach((u,i)=>{
+      const p2=scenarioHistory.inf[i];
+      i===0?ctx.moveTo(toX(u),toY(p2)):ctx.lineTo(toX(u),toY(p2));
+    });
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+}
+
+function drawAll2D(){
+  drawISLM2D();
+  drawPhillips2D();
+  updateTimeChart();
+}
+
+// ============================================================
+// 17. HUD
+// ============================================================
+function updateHUD(){
+  if(activeScenario){
+    const s=scenarioState;
+    document.getElementById('h-gdp').textContent=s.gdp.toFixed(1)+'%';
+    document.getElementById('h-inf').textContent=s.inf.toFixed(1)+'%';
+    document.getElementById('h-rate').textContent=s.rate.toFixed(2)+'%';
+    document.getElementById('h-unemp').textContent=s.une.toFixed(1)+'%';
+    setKPI('kv-gdp','kd-gdp',s.gdp,scenarioHistory.gdp[scenarioHistory.gdp.length-2]||s.gdp,2,0,true,'%');
+    setKPI('kv-inf','kd-inf',s.inf,scenarioHistory.inf[scenarioHistory.inf.length-2]||s.inf,3,7,false,'%');
+    setKPI('kv-une','kd-une',s.une,scenarioHistory.une[scenarioHistory.une.length-2]||s.une,6,10,false,'%');
+    document.getElementById('kv-rate').textContent=s.rate.toFixed(2)+'%';
+    document.getElementById('kv-def').textContent=s.deficit.toFixed(1)+'%';
+    document.getElementById('kv-conf').textContent=s.conf.toFixed(0);
+    const t=activeScenario.targets;
+    setSB('sb1','sc1',scoreTarget(s.inf,t.inf[0],t.inf[1]));
+    setSB('sb2','sc2',scoreTarget(s.une,t.une[0],t.une[1]));
+    setSB('sb3','sc3',scoreTarget(s.gdp,t.gdp[0],t.gdp[1]));
+    setSB('sb4','sc4',scoreTarget(s.deficit,-5,0));
+    document.getElementById('round-prog').style.width=(gameRound/totalRounds*100)+'%';
+    document.getElementById('h-round').textContent=`Round ${gameRound} / ${totalRounds}`;
+  } else {
+    document.getElementById('h-gdp').textContent=(SIM_GDP-100).toFixed(1)+'%';
+    document.getElementById('h-inf').textContent=SIM_INF.toFixed(1)+'%';
+    document.getElementById('h-rate').textContent=RATE.toFixed(2)+'%';
+    document.getElementById('h-unemp').textContent=SIM_UNE.toFixed(1)+'%';
+  }
+  document.getElementById('h-parts').textContent=particles.length;
+  document.getElementById('h-fps').textContent=FPS;
+}
+
+function setKPI(vid,did,cur,prev,good,bad,higher,sfx){
+  const el=document.getElementById(vid); if(!el)return;
+  el.textContent=cur.toFixed(1)+sfx;
+  if(higher) el.className='kpi-val'+(cur>=good?' c-grn':cur<=bad?' c-red':' c-inf');
+  else       el.className='kpi-val'+(cur<=good?' c-grn':cur>=bad?' c-red':' c-inf');
+  const d=document.getElementById(did); if(!d||prev===undefined)return;
+  const delta=cur-prev;
+  d.textContent=(delta>0?'▲':delta<0?'▼':'—')+Math.abs(delta).toFixed(1);
+  d.className='kpi-d '+(delta>0?(higher?'d-up':'d-dn'):delta<0?(higher?'d-dn':'d-up'):'d-fl');
+}
+
+function setSB(bid,sid,score){
+  const f=document.getElementById(bid),s=document.getElementById(sid);
+  if(f)f.style.width=Math.min(100,score)+'%';
+  if(s)s.textContent=score.toFixed(0)+'점';
+}
+
+function scoreTarget(val,lo,hi){
+  if(val>=lo&&val<=hi)return 100;
+  const c=(lo+hi)/2, r=(hi-lo)/2+3;
+  return Math.max(0,100-Math.abs(val-c)/r*100);
+}
+
+// ============================================================
+// 18. RESULT MODAL
+// ============================================================
+function showResult(){
+  gameRunning=false;
+  if(!activeScenario)return;
+  const t=activeScenario.targets;
+  const avg=arr=>arr.reduce((a,b)=>a+b,0)/arr.length;
+  const avgGDP=avg(scenarioHistory.gdp.slice(1)||[0]);
+  const avgInf=avg(scenarioHistory.inf.slice(1)||[0]);
+  const avgUne=avg(scenarioHistory.une.slice(1)||[0]);
+
+  const infS=scoreTarget(avgInf,t.inf[0],t.inf[1]);
+  const uneS=scoreTarget(avgUne,t.une[0],t.une[1]);
+  const gdpS=scoreTarget(avgGDP,t.gdp[0],t.gdp[1]);
+  const fisS=scoreTarget(scenarioState.deficit,-5,0);
+  const total=infS*.3+uneS*.25+gdpS*.3+fisS*.15;
+
+  let grade,gc,verdict;
+  if(total>=90){grade='A+';gc='#10b981';verdict='탁월한 정책 조합. 학술적으로도 최적에 근접합니다.';}
+  else if(total>=78){grade='A';gc='#34d399';verdict='우수한 성과. 대부분의 목표를 달성했습니다.';}
+  else if(total>=65){grade='B';gc='#60a5fa';verdict='양호한 성과. 일부 트레이드오프 발생.';}
+  else if(total>=50){grade='C';gc='#f59e0b';verdict='평균적 결과. 단일 목표 집중으로 다른 지표 희생.';}
+  else{grade='F';gc='#ef4444';verdict='정책 실패. 이론적 분석을 재검토하세요.';}
+
+  document.getElementById('m-title').textContent=activeScenario.name+' — 결과';
+  document.getElementById('m-sub').textContent=activeScenario.year+` · ${totalRounds}분기 시뮬레이션 완료 · NK-DSGE+HANK 모델 적용`;
+  document.getElementById('m-grade').textContent=grade;
+  document.getElementById('m-grade').style.color=gc;
+  document.getElementById('m-verdict').textContent=verdict;
+  document.getElementById('m-detail').innerHTML=
+    `평균 GDP 성장률:  ${avgGDP.toFixed(2)}%　목표 ${t.gdp[0]}–${t.gdp[1]}%　→ ${gdpS.toFixed(0)}점\n`+
+    `평균 인플레이션:  ${avgInf.toFixed(2)}%　목표 ${t.inf[0]}–${t.inf[1]}%　→ ${infS.toFixed(0)}점\n`+
+    `평균 실업률:      ${avgUne.toFixed(2)}%　목표 ${t.une[0]}–${t.une[1]}%　→ ${uneS.toFixed(0)}점\n`+
+    `최종 재정적자:    ${scenarioState.deficit.toFixed(2)}%　목표 −5~0%　→ ${fisS.toFixed(0)}점\n`+
+    `─────────────────────────────────\n`+
+    `총점: ${total.toFixed(1)} / 100　등급: ${grade}`;
+  document.getElementById('result-modal').classList.add('open');
+  setTimeout(drawResultChart,200);
+}
+
+function closeModal(){ document.getElementById('result-modal').classList.remove('open'); }
+
+function drawResultChart(){
+  const[ctx,W,H]=getCtx2d('cv-result'); if(!ctx||!activeScenario)return;
+  const pad={l:30,r:12,t:8,b:22};
+  const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+  ctx.fillStyle='#0f1a2e'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='#1a2d4a'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,pad.t+cH); ctx.lineTo(pad.l+cW,pad.t+cH); ctx.stroke();
+
+  const gd=scenarioHistory.gdp, id=scenarioHistory.inf, ud=scenarioHistory.une;
+  if(gd.length<2)return;
+  const allV=[...gd,...id,...ud];
+  const minV=Math.min(-4,...allV), maxV=Math.max(12,...allV);
+  const rng=maxV-minV||1;
+  const toX=i=>pad.l+(i/(gd.length-1))*cW;
+  const toY=v=>pad.t+cH-(v-minV)/rng*cH;
+
+  const t=activeScenario.targets;
+  ctx.fillStyle='rgba(16,185,129,.06)';
+  ctx.fillRect(pad.l,toY(t.gdp[1]),cW,toY(t.gdp[0])-toY(t.gdp[1]));
+
+  function dL(d,c){ ctx.strokeStyle=c;ctx.lineWidth=1.5;ctx.beginPath(); d.forEach((v,i)=>i===0?ctx.moveTo(toX(i),toY(v)):ctx.lineTo(toX(i),toY(v)));ctx.stroke();}
+  dL(gd,'#60a5fa'); dL(id,'#f87171'); dL(ud,'#fbbf24');
+
+  ctx.fillStyle='#4a6080'; ctx.font='7px IBM Plex Mono';
+  [-2,0,3,6].forEach(v=>{ if(v>=minV&&v<=maxV) ctx.fillText(v+'%',2,toY(v)+3); });
+  for(let i=0;i<gd.length;i+=2) ctx.fillText(`Q${i+1}`,toX(i)-4,pad.t+cH+12);
+}
+
+// ============================================================
+// 19. SCENARIO LOAD
+// ============================================================
+function loadScenario(id){
+  currentScenId=id;
+  activeScenario=SCENARIOS[id];
+  scenarioState={...activeScenario.init};
+  scenarioShockHistory={rn:[], u:[]}; // v7.0: 새 시나리오 시작 시 충격 역사 초기화
+  scenarioHistory={
+    gdp: activeScenario.historical?.gdp ? [...activeScenario.historical.gdp] : [scenarioState.gdp],
+    inf: activeScenario.historical?.inf ? [...activeScenario.historical.inf] : [scenarioState.inf],
+    une: activeScenario.historical?.une ? [...activeScenario.historical.une] : [scenarioState.une]
+  };
+  gameRound=0; totalRounds=activeScenario.totalRounds; gameRunning=true;
+  RATE=scenarioState.rate;
+  SIM_GDP=100+scenarioState.gdp*8; SIM_INF=scenarioState.inf; SIM_UNE=scenarioState.une;
+
+  document.querySelectorAll('.sc-card').forEach(c=>c.classList.remove('active'));
+  document.querySelector(`.sc-card[data-id="${id}"]`)?.classList.add('active');
+  document.getElementById('h-scenario').textContent=activeScenario.name;
+  document.getElementById('shock-card').classList.remove('on');
+
+  resetPolicySliders();
+  addLog(`▶ [${activeScenario.year}] ${activeScenario.name} 시작`, 'info');
+  addLog(`📌 목표: π ${activeScenario.targets.inf[0]}–${activeScenario.targets.inf[1]}% · GDP ${activeScenario.targets.gdp[0]}–${activeScenario.targets.gdp[1]}%`, 'info');
+  addLog(`📚 적용 모델: New Keynesian 3-Equation (Gali, 2015) + HANK`, 'academic');
+  addLog(`💡 ${activeScenario.hint}`, 'warn');
+  if (activeScenario.historical) {
+    addLog(`📊 내장 역사 데이터 ${activeScenario.historical.gdp.length}개 로드`, 'info');
+  }
+  const activeCount = activeTheories.size;
+  addLog(`⚙️ 활성화된 이론: ${activeCount}개 (토글에서 조정 가능)`, 'info');
+  flash('#38bdf8',.1);
+  updateHUD(); 
+  updateAIInterpretation();
+  updateTimeChart();
+  drawAll2D();
+}
+
+// ============================================================
+// 20. THEORY UI (기존 이론 선택 - 유지)
+// ============================================================
+function buildTheoryGrid(){
+  const grid=document.getElementById('theory-grid'); grid.innerHTML='';
+  for(const[key,th] of Object.entries(THEORIES)){
+    const btn=document.createElement('button');
+    btn.className='th-btn'+(key===activeTheory?' active':'');
+    btn.dataset.key=key;
+    btn.innerHTML=`<span class="th-dot" style="background:${th.color}"></span><span>${th.name}</span><span class="th-year">${th.year}</span>`;
+    btn.addEventListener('click',()=>{
+      const isBlend=document.getElementById('sl-blend').value>0;
+      if(isBlend&&activeTheory!==key){
+        blendTheory=key;
+        document.getElementById('blend-th-name').textContent=th.name;
+      } else {
+        activeTheory=key;
+        blendTheory=null;
+        document.getElementById('sl-blend').value=0;
+        blendFactor=0;
+        document.getElementById('blend-val').textContent='0%';
+        document.getElementById('blend-th-name').textContent='없음';
+      }
+      updateTheoryDisplay(key);
+      document.querySelectorAll('.th-btn').forEach(b=>b.classList.toggle('active',b.dataset.key===key));
+      addLog(`◆ 이론: ${th.name} (${th.year})`, 'theory');
+      flash(th.color,.1);
+    });
+    btn.addEventListener('contextmenu',e=>{
+      e.preventDefault();
+      blendTheory=key;
+      document.getElementById('blend-th-name').textContent=th.name;
+      addLog(`🔀 블렌드 이론: ${th.name}`, 'theory');
+    });
+    grid.appendChild(btn);
+  }
+}
+
+function updateTheoryDisplay(key){
+  const th=THEORIES[key];
+  if(!th)return;
+  document.getElementById('ov-eq-name').textContent=th.name;
+  document.getElementById('ov-eq-formula').textContent=th.formula;
+  document.getElementById('ov-eq-desc').textContent=th.desc;
+  document.getElementById('tb-name').textContent=th.name;
+  document.getElementById('tb-eq').textContent=th.formula;
+  document.getElementById('tb-desc').textContent=th.desc;
+  document.getElementById('h-theory')&&(document.getElementById('h-theory').textContent=th.name+' · '+th.year);
+}
+
+// ============================================================
+// 21. CONTROLS
+// ============================================================
+function resetPolicySliders(){
+  [['sl-rate','sv-rate','0.00%'],['sl-qe','sv-qe','0.0%'],['sl-gov','sv-gov','0.0%'],['sl-tax','sv-tax','0pp'],['sl-sup','sv-sup','Lv0']].forEach(([sid,vid,def])=>{
+    const el=document.getElementById(sid); if(el)el.value=0;
+    const vl=document.getElementById(vid); if(vl)vl.textContent=def;
+  });
+}
+
+function updateParticleCount() {
+    const slider = document.getElementById('sl-particle-count');
+    const display = document.getElementById('sv-particle-count');
+    const count = parseInt(slider.value);
+    PARTICLE_COUNT = count;
+    display.textContent = count;
+    
+    if (particles.length < count) {
+        const need = Math.min(10, count - particles.length);
+        for (let i = 0; i < need; i++) {
+            const t = PTKEYS2[Math.floor(Math.random() * PTKEYS2.length)];
+            const a = Math.random() * Math.PI * 2, r = 60 + Math.random() * 80;
+            spawnP(t, Math.cos(a) * r, Math.sin(a) * r);
+        }
+    } else if (particles.length > count) {
+        const excess = particles.length - count;
+        for (let i = 0; i < Math.min(excess, 10); i++) {
+            const p = particles.pop();
+            if (p) p.dispose();
+        }
+    }
+    
+    addLog(`⚙️ 입자 수: ${count}개 (${count > 500 ? '🔴 풀가동' : count > 200 ? '🟡 중간' : '🟢 가벼움'})`, 'info');
+}
+
+function updateQuality(level) {
+    QUALITY_LEVEL = level;
+    document.querySelectorAll('.quality-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.quality === level);
+    });
+    
+    const status = document.getElementById('quality-status');
+    
+    switch(level) {
+        case 'low':
+            renderer.shadowMap.enabled = false;
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 1));
+            status.textContent = '그림자 OFF · 안티에일리어싱 OFF · 저해상도';
+            break;
+        case 'medium':
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+            status.textContent = '그림자 ON · 안티에일리어싱 2x · 중간해상도';
+            break;
+        case 'ultra':
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+            status.textContent = '🔴 그림자 고품질 · 안티에일리어싱 4x · 고해상도 (GPU 풀가동)';
+            break;
+    }
+    renderer.setSize(W3, H3);
+    addLog(`🎨 렌더링 품질: ${level.toUpperCase()}`, 'policy');
+}
+function initControls(){
+  // ─── 슬라이더 ───
+  const rateEl = document.getElementById('sl-rate');
+  if(rateEl) rateEl.addEventListener('input',()=>{ 
+    document.getElementById('sv-rate').textContent = parseFloat(rateEl.value).toFixed(2) + '%'; 
+    drawAll2D(); 
+  });
+  
+  const qeEl = document.getElementById('sl-qe');
+  if(qeEl) qeEl.addEventListener('input',()=>{ 
+    document.getElementById('sv-qe').textContent = parseFloat(qeEl.value).toFixed(1) + '%'; 
+    drawAll2D(); 
+  });
+  
+  const govEl = document.getElementById('sl-gov');
+  if(govEl) govEl.addEventListener('input',()=>{ 
+    const v = parseFloat(govEl.value); 
+    document.getElementById('sv-gov').textContent = (v >= 0 ? '+' : '') + v.toFixed(1) + '%'; 
+    drawAll2D(); 
+  });
+  
+  const taxEl = document.getElementById('sl-tax');
+  if(taxEl) taxEl.addEventListener('input',()=>{ 
+    const v = parseInt(taxEl.value); 
+    document.getElementById('sv-tax').textContent = (v >= 0 ? '+' : '') + v + 'pp'; 
+    drawAll2D(); 
+  });
+  
+  const supEl = document.getElementById('sl-sup');
+  if(supEl) supEl.addEventListener('input',()=>{ 
+    document.getElementById('sv-sup').textContent = 'Lv' + parseInt(supEl.value); 
+  });
+
+  const blEl = document.getElementById('sl-blend');
+  if(blEl) blEl.addEventListener('input',()=>{ 
+    blendFactor = parseFloat(blEl.value); 
+    document.getElementById('blend-val').textContent = Math.round(blendFactor * 100) + '%'; 
+  });
+
+  // ─── Performance Controls ───
+  const particleSlider = document.getElementById('sl-particle-count');
+  if(particleSlider) {
+    particleSlider.addEventListener('input', updateParticleCount);
+  }
+  
+  document.querySelectorAll('.quality-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      updateQuality(btn.dataset.quality);
+    });
+  });
+
+  // ─── Theory Toggle System ───
+  initTheoryToggles();
+
+  // ─── Scenario Cards ───
+  document.querySelectorAll('.sc-card').forEach(c => {
+    c.addEventListener('click', () => loadScenario(c.dataset.id));
+  });
+
+  // ─── Apply Policy ───
+  document.getElementById('btn-apply').addEventListener('click', () => {
+    if(gameRunning && activeScenario) {
+      applyScenarioPolicy();
+    } else {
+      addLog('⚠️ 시나리오를 먼저 선택하세요.', 'warn');
+    }
+  });
+
+  // ─── Reset Sliders ───
+  document.getElementById('btn-reset-sliders').addEventListener('click', resetPolicySliders);
+
+  // ─── Shock Button (FIXED) ───
+  document.getElementById('btn-shock').addEventListener('click', function() {
+    if (particles.length === 0) {
+      addLog('⚠️ 입자가 없습니다. 먼저 시뮬레이션을 시작하세요.', 'warn');
+      return;
+    }
+    for(let i = 0; i < 8; i++) {
+      const idx = Math.floor(Math.random() * particles.length);
+      const p = particles[idx];
+      if(p) {
+        p.vx += (Math.random() - 0.5) * 9;
+        p.vz += (Math.random() - 0.5) * 9;
+      }
+    }
+    SIM_GDP = Math.max(30, SIM_GDP - 3);
+    SIM_INF = Math.min(25, SIM_INF + 1);
+    addLog('⚡ 외생 충격 발동! GDP↓ π↑', 'bad');
+    flash('#ef4444', 0.15);
+    updateHUD();
+    updateAIInterpretation();
+    drawAll2D();
+  });
+
+  // ─── Reset Button (FIXED) ───
+  document.getElementById('btn-sim-reset').addEventListener('click', function() {
+    // 입자 안전하게 제거
+    for(let i = particles.length - 1; i >= 0; i--) {
+      try {
+        if(particles[i] && particles[i].dispose) {
+          particles[i].dispose();
+        }
+      } catch(e) {}
+    }
+    particles.length = 0;
+    
+    SIM_GDP = 100;
+    SIM_INF = 2;
+    SIM_UNE = 4.5;
+    RATE = 3;
+    N_COLL = 0;
+    N_EQUIL = 0;
+    N_CRASH = 0;
+    simHistory = {gdp: [], inf: [], une: []};
+    activeScenario = null;
+    gameRunning = false;
+    gameRound = 0;
+    
+    document.getElementById('h-scenario').textContent = '시나리오 선택';
+    document.getElementById('h-round').textContent = 'Round —/—';
+    document.querySelectorAll('.sc-card').forEach(c => c.classList.remove('active'));
+    document.getElementById('shock-card').classList.remove('on');
+    document.getElementById('round-prog').style.width = '0%';
+    
+    initParticlesHetero(PARTICLE_COUNT);
+    addLog('↺ 시뮬레이션 초기화 완료', 'policy');
+    drawAll2D();
+    updateHUD();
+    updateAIInterpretation();
+    updateTimeChart();
+    flash('#38bdf8', 0.1);
+  });
+
+  // ─── Pause Button (FIXED) ───
+  document.getElementById('btn-pause').addEventListener('click', function() {
+    paused = !paused;
+    const btn = document.getElementById('btn-pause');
+    btn.textContent = paused ? '▶ 재개' : '⏸ 일시정지';
+    btn.style.background = paused ? 'var(--cyan)' : 'transparent';
+    btn.style.color = paused ? '#000' : 'var(--cyan)';
+    addLog(paused ? '⏸ 일시정지' : '▶ 재개', 'info');
+  });
+
+  // ─── AI Mode ───
+  document.getElementById('btn-ai-on').addEventListener('click', function() {
+    aiMode = true;
+    this.style.background = 'var(--gold)';
+    this.style.color = '#000';
+    document.getElementById('btn-ai-off').style.background = 'transparent';
+    document.getElementById('btn-ai-off').style.color = 'var(--muted)';
+    addLog('🤖 AI 정책 모드 ON', 'policy');
+  });
+  
+  document.getElementById('btn-ai-off').addEventListener('click', function() {
+    aiMode = false;
+    this.style.background = 'var(--muted)';
+    this.style.color = '#000';
+    document.getElementById('btn-ai-on').style.background = 'transparent';
+    document.getElementById('btn-ai-on').style.color = 'var(--gold)';
+    addLog('👤 수동 모드', 'policy');
+  });
+  
+  document.getElementById('btn-ai-apply').addEventListener('click', function() {
+    const tr = Math.max(0, Math.min(15, taylorRate()));
+    RATE = tr;
+    addLog(`✓ Taylor Rule 적용: r*=${RATE.toFixed(2)}%`, 'policy');
+    flash('#f59e0b', 0.1);
+    updateHUD();
+  });
+
+  document.getElementById('btn-retry').addEventListener('click', function() {
+    closeModal();
+    if(currentScenId) loadScenario(currentScenId);
+  });
+
+  // ─── Monte Carlo ───
+  document.getElementById('btn-mc-run').addEventListener('click', async function() {
+    const status = document.getElementById('mc-status');
+    status.textContent = '🔄 Monte Carlo 실행 중... (500회)';
+    status.style.color = 'var(--gold)';
+    try {
+      const mc = new MonteCarloSimulator(500);
+      const basePolicy = Array.from({length: 20}, (_, i) => 
+        Math.max(0, RATE + (i < 10 ? i * 0.05 : -i * 0.03))
+      );
+      const result = await mc.run(basePolicy, 20, 1.2);
+      mcResults = result;
+      document.getElementById('mc-result').style.display = 'block';
+      document.getElementById('mc-mean').textContent = result.mean_gdp.slice(-5).map(v => v.toFixed(1)).join(', ');
+      document.getElementById('mc-risk').textContent = (result.failure_rate * 100).toFixed(1) + '%';
+      document.getElementById('mc-ci').textContent = 
+        `${result.p5_gdp.slice(-1)[0].toFixed(1)} ~ ${result.p95_gdp.slice(-1)[0].toFixed(1)}`;
+      status.textContent = '✅ 완료';
+      status.style.color = 'var(--green)';
+      addLog(`🎲 Monte Carlo 완료: 위험률 ${(result.failure_rate*100).toFixed(1)}%`, 'academic');
+      flash('#a78bfa', 0.1);
+    } catch(e) {
+      status.textContent = '❌ 오류: ' + e.message;
+      status.style.color = 'var(--red)';
+    }
+  });
+
+  document.getElementById('btn-mc-export').addEventListener('click', function() {
+    if (!mcResults) {
+      addLog('⚠️ 먼저 Monte Carlo를 실행하세요.', 'warn');
+      return;
+    }
+    const data = {
+      type: 'monte_carlo',
+      n_sim: 500,
+      timestamp: new Date().toISOString(),
+      results: mcResults
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `monte_carlo_${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    addLog('📊 Monte Carlo 결과 내보내기 완료', 'good');
+  });
+
+  // ─── CSV Uploader ───
+  initCSVUploader();
+
+  // ─── AI 해석 업데이트 (3초마다) ───
+  setInterval(() => {
+    if (activeScenario || gameRunning) {
+      updateAIInterpretation();
+    }
+  }, 3000);
+
+  // ─── Keyboard Shortcut ───
+  document.addEventListener('keydown', function(e) {
+    if(e.key === ' ') {
+      e.preventDefault();
+      document.getElementById('btn-pause').click();
+    }
+  });
+
+  // ─── Resize ───
+  window.addEventListener('resize', function() {
+    W3 = centerEl.clientWidth;
+    H3 = centerEl.clientHeight;
+    camera.aspect = W3 / H3;
+    camera.updateProjectionMatrix();
+    renderer.setSize(W3, H3);
+    drawAll2D();
+  });
+}
+
+// ============================================================
+// 22. LOG & FLASH
+// ============================================================
+function addLog(msg,cls=''){
+  const box=document.getElementById('log-box');
+  const el=document.createElement('div');
+  el.className='log-e'+(cls?' '+cls:'');
+  el.textContent=msg;
+  box.prepend(el);
+  while(box.children.length>50)box.removeChild(box.lastChild);
+}
+
+function flash(color='#38bdf8',alpha=.12){
+  const el=document.getElementById('flash');
+  el.style.background=`radial-gradient(circle,${color}${Math.round(alpha*255).toString(16).padStart(2,'0')} 0%,transparent 70%)`;
+  el.style.opacity='1';
+  setTimeout(()=>el.style.opacity='0',130);
+}
+
+// ============================================================
+// 23. EXPORT ACADEMIC DATA
+// ============================================================
+function exportAcademicData(){
+  if(!activeScenario)return;
+  const data = {
+    metadata: {
+      simulation: "Nobel Economic Universe · v6.2 Educator's Edition",
+      scenario: activeScenario.name,
+      periods: totalRounds,
+      theory: activeTheory,
+      active_theories: Array.from(activeTheories),
+      model: "New Keynesian 3-Equation (Gali 2015) + HANK",
+      optimizer: "Nelder-Mead (simplex)",
+      timestamp: new Date().toISOString(),
+      particle_count: PARTICLE_COUNT,
+      quality: QUALITY_LEVEL,
+      monte_carlo: mcResults ? {
+        enabled: true,
+        simulations: 500,
+        failure_rate: (mcResults.failure_rate * 100).toFixed(1) + '%'
+      } : { enabled: false }
+    },
+    params: {
+      nairu: activeScenario.nairu,
+      mpc: activeScenario.mpc,
+      targets: activeScenario.targets
+    },
+    policy_path: {
+      gdp: scenarioHistory.gdp,
+      inflation: scenarioHistory.inf,
+      unemployment: scenarioHistory.une
+    },
+    results: {
+      final_gdp: scenarioState.gdp,
+      final_inflation: scenarioState.inf,
+      final_unemployment: scenarioState.une,
+      grade: document.getElementById('m-grade').textContent
+    }
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `academic_${currentScenId}_${Date.now()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  addLog('📊 학술 데이터 내보내기 완료 (JSON + 메타데이터)', 'good');
+}
+
+// ============================================================
+// 24. 3D IS-LM UPDATE
+// ============================================================
+function updateISLM3D(){
+  const gov=parseFloat(document.getElementById('sl-gov').value)||0;
+  const tax=parseFloat(document.getElementById('sl-tax').value)||0;
+  const qe=parseFloat(document.getElementById('sl-qe').value)||0;
+  const{isR,lmR,Ystar,rstar}=computeISLM(gov,tax,qe);
+  const n=40;
+  for(let i=0;i<n;i++){
+    const Y=40+(i/(n-1))*180;
+    const ri=Math.max(-5,Math.min(20,isR(Y)));
+    const rl=Math.max(-5,Math.min(20,lmR(Y)));
+    const x=(Y-130)*1.2;
+    isPos3d[i*3]=x; isPos3d[i*3+1]=ri*2; isPos3d[i*3+2]=-65;
+    lmPos3d[i*3]=x; lmPos3d[i*3+1]=rl*2; lmPos3d[i*3+2]=-65;
+  }
+  isGeo3d.attributes.position.needsUpdate=true;
+  lmGeo3d.attributes.position.needsUpdate=true;
+  eqMesh.position.set((Ystar-130)*1.2,rstar*2,-65);
+  document.getElementById('ov-eq-vals').textContent=`Y*=${Ystar.toFixed(1)}  r*=${rstar.toFixed(2)}%`;
+  const tr=taylorRate();
+  document.getElementById('ov-taylor').textContent=tr.toFixed(2)+'%';
+  document.getElementById('taylor-rate').textContent=tr.toFixed(2)+'%';
+  const gap=tr-RATE;
+  const gEl=document.getElementById('taylor-gap');
+  gEl.textContent=(gap>=0?'+':'')+gap.toFixed(2)+'%';
+  gEl.style.color=Math.abs(gap)<.5?'var(--green)':gap>0?'var(--red)':'var(--cyan)';
+}
+
+// ============================================================
+// 25. INITIALIZATION (FIXED: DOMContentLoaded로 감싸기)
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+  initParticlesHetero(PARTICLE_COUNT);
+  buildTheoryGrid();
+  updateTheoryDisplay(activeTheory);
+  initControls();
+  
+  setTimeout(() => loadScenario('stagflation'), 300);
+  
+  addLog('🚀 Nobel Economic Universe v6.2 "Educator\'s Edition" 시작', 'theory');
+  addLog('📚 NK-DSGE + HANK 모델 적용 (Gali, 2015 · Kaplan-Moll-Violante, 2018)', 'academic');
+  addLog('⚙️ 이론 토글 시스템: 원하는 이론만 선택 가능!', 'policy');
+  addLog('📋 프리셋으로 학습 수준에 맞게 설정하세요.', 'info');
+  addLog('💡 우클릭으로 블렌드 이론 지정 · ⌨️ Space 일시정지', 'info');
+});
+
+// ============================================================
+// 26. MAIN LOOP
+// ============================================================
+let prevT=performance.now();
+function animate(){
+  requestAnimationFrame(animate);
+  const now=performance.now();
+  const dt=Math.min((now-prevT)/16.67,3);
+  prevT=now;
+
+  _fr++;
+  if(now-_lt>=1000){FPS=_fr;_fr=0;_lt=now;}
+
+  if(!paused){
+    for(let i=particles.length-1;i>=0;i--){
+      particles[i].update(dt);
+      if(!particles[i].alive){particles[i].dispose();particles.splice(i,1);}
+    }
+
+    if(_step%2===0)  checkCollisions();
+    if(_step%3===0)  updateMacro(dt);
+    if(_step%5===0)  runAIPolicy();
+    if(_step%4===0)  updateHUD();
+    if(_step%6===0)  updateISLM3D();
+    if(_step%8===0)  drawAll2D();
+    if(_step%10===0) maintainParticles();
+
+    const a=now*.000035;
+    camera.position.x=Math.sin(a)*22;
+    camera.position.z=Math.cos(a)*22;
+    camera.position.y=148+Math.sin(now*.00018)*12;
+    camera.lookAt(0,0,0);
+
+    cbMesh.scale.setScalar(1+Math.sin(now*.0022)*.1);
+    ptLight.intensity=1.5+Math.sin(now*.003)*.4;
+    monoMesh.rotation.y+=.018;
+
+    _step++;
+  }
+  renderer.render(scene,camera);
+}
+animate();
+</script>
+</body>
+</html>
