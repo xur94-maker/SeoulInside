@@ -1,16 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "Two boys rescued from Venezuela earthquake rubble after days of being trapped",
-      "link": "https://www.bbc.co.uk/news/articles/cr47dvywvy5o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 28 Jun 2026 21:58:45 GMT",
-      "desc": "Rescuers spent six hours carefully digging to reach one of the boys, as many residents continue searching through the rubble by hand, still waiting for heavy machinery to arrive."
-    },
-    {
-      "title": "In Caracas, this feels like the hardest moment in Venezuela's modern history",
-      "link": "https://www.bbc.co.uk/news/articles/cdjk8zwe7z3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 27 Jun 2026 14:22:37 GMT",
-      "desc": "Rescue teams are working ceaselessly to reach those trapped under rubble. But as hope fades, anger is growing."
+      "title": "Pakistani strikes kill dozens in Afghanistan",
+      "link": "https://www.bbc.co.uk/news/articles/cy8wygyed0wo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 29 Jun 2026 04:39:05 GMT",
+      "desc": "The Taliban government says civilians were killed, while Pakistan maintains they targeted militants."
     },
     {
       "title": "Europe's heatwave linked to 1,300 deaths, WHO says, as Germany hits record 41.7C",
@@ -19,24 +13,48 @@
       "desc": "WHO chief Tedros Adhanom Ghebreyesus warned that Europe is not prepared for high temperatures."
     },
     {
+      "title": "South Korea football coach quits as president calls for probe into World Cup loss",
+      "link": "https://www.bbc.co.uk/news/articles/cdx7jk0kq4vo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 29 Jun 2026 07:18:14 GMT",
+      "desc": "South Korea was eliminated after missing out on a spot among the eight best third-placed teams."
+    },
+    {
+      "title": "Australian man charged with murder after dead girl found in suitcase in Thailand",
+      "link": "https://www.bbc.co.uk/news/articles/cd0my5zy821o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 29 Jun 2026 01:58:29 GMT",
+      "desc": "The body of Tunchanok Donhomla, 17, was found discarded near a railway track on Saturday, police say."
+    },
+    {
       "title": "Eleven killed after plane carrying skydivers crashes in eastern France",
       "link": "https://www.bbc.co.uk/news/articles/c5yz9yj9x74o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 28 Jun 2026 18:34:07 GMT",
       "desc": "The pilot and 10 passengers - including five first-time parachutists - died in the incident, local officials said."
-    },
-    {
-      "title": "US and Iran exchange strikes and accuse each other of violating ceasefire",
-      "link": "https://www.bbc.co.uk/news/articles/cdxdwkgqgq0o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 28 Jun 2026 04:54:50 GMT",
-      "desc": "Iran says it has launched retaliatory attacks at US infrastructure in Kuwait and Bahrain after the US said it hit multiple targets across Iran."
     }
   ],
   "koreaNews": [
+    {
+      "title": "Samsung, SK Reportedly to Invest $1.3 Trillion Over 10 Years - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPZmV3U1pMQjJrTEpqR2ZTV2s5bGg1MDBpQ2RUQl9DeHZUckhybFNURzNlNkswdWRLRXJJcmxTcWFQcUk1WHZJcnNIS0JJelNEQ0FRbC1aNllveTVoUmJRMnpYT1RKZXphUUd2M0hyblh4WkpQdVAzamhHZFNWVWd1amdxYzNKUG9CeHQ0MVRUQ1ktUjN3dVNCNU9qbXI4c3hCeWxDUEJ5TWFKMXJ5ckE?oc=5",
+      "date": "Mon, 29 Jun 2026 05:35:00 GMT",
+      "desc": "Samsung, SK Reportedly to Invest $1.3 Trillion Over 10 Years&nbsp;&nbsp;Bloomberg.com"
+    },
     {
       "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYUZrbDM4Q3U2eGh2QmE5Z3BGYnBzVDVBRDZpLTk1aWdkcFlCWVlIWk1yMWVLOUJtZG15WXVpRzQwNmstMENsQ2RHMURQYkRCam9ITV9iUTRmbHVUVlhKc1FFbi0zYThqUHNURl9wbTdwbFdWd2s0ajdwTmdNMmFvc3dCX3EzQkwyQjZLTjgyN3F5YUcwU1o1aDFkUTY?oc=5",
       "date": "Wed, 17 Jun 2026 07:00:00 GMT",
       "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "South Korea's Inflation Rate Surpasses 3%, Impacts Economic Poli - GuruFocus",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOUGExS0hoTjNWUmlDU0hUYU10a09hRVFpS1U3U0FNWXNETnNQemxsS3dXQ2gwaHRLa0JwQTduMl9UblhpNzcwcDd4RVRsSkFpc0RDaV9CeTZxTks4WlRodTVkRHFDMFpiWGNIWk9MbVA0dUhfM0NDMk41YV9rOENHZjMwUDY0WVM5QlgweWt0cXlMenNhV24xOE54Sk40MnFId1ZFbA?oc=5",
+      "date": "Mon, 29 Jun 2026 01:44:37 GMT",
+      "desc": "South Korea's Inflation Rate Surpasses 3%, Impacts Economic Poli&nbsp;&nbsp;GuruFocus"
+    },
+    {
+      "title": "South Korea exports set to grow at strongest pace in nearly 5 decades: Reuters poll - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQV3pLWENpV0VfOHFXbk8wR29OeTBjbUNpZXhUS3lHVThJdWNIdFl5TG9sa0k2TE9yYUNTeFlCWlNZMGdGZlQwbTdjLTd3UmFqZEtINFhiSkRjZmZTbGlKQmlIeE5oTUZadkcwT0JNNmU2N1FMaF9icXlBVFZCTmJOdkxLREZVTHAzRlRXcl90S1NLX203cUluazc3YXg3WGY3cEdJRDZDSkdXSHd2ZWl5enR0YjlWZw?oc=5",
+      "date": "Mon, 29 Jun 2026 05:05:00 GMT",
+      "desc": "South Korea exports set to grow at strongest pace in nearly 5 decades: Reuters poll&nbsp;&nbsp;Reuters"
     },
     {
       "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
@@ -45,28 +63,10 @@
       "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "In 1953, South Korea had a per-capita income lower than that of Somalia or Haiti — and within roughly seventy years, it became the world's tenth-largest economy and the dominant global producer of memory chips, in the fastest national economic transformati - Space Daily",
-      "link": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxNaURrbG5ucVU2T2d3TEV4SkZsci12NENTOEEyWHpDdzRrc1p1N2RqcnB3NmE3NDd4MjZtU0lvQWstUTU4WGN4b3AxNEwxYVktaC1TZndxNzBGRmhiUE0xUEZRUWFsWWdnTXVpd05wcnFNdXNIaWdkS25NbVNMRTBFcWlYd0VZdHV3NE15TWxTelBlTDU0YlRiVnAzVkJjb2ZrdTV5X1lEMVpmOWh4TS1raHdreEE4SktZU3daZWI2b09FRVE2dmhTdXF2cXphU21BZ3E0eVRsTXdBRlZsNWRYaXhtdTFXY2dyRmc5VjhreEl1SlAtalNVbGk3TjJXTHRhN0JBbDNqamREc1paUm84NjlraGQwUUk2VHRudVRTSTRlRF9EYzZ0S3NuQzRxYTBNeFNpNGRESVk?oc=5",
-      "date": "Sat, 27 Jun 2026 20:45:31 GMT",
-      "desc": "In 1953, South Korea had a per-capita income lower than that of Somalia or Haiti — and within roughly seventy years, it became the world's tenth-largest economy and the dominant global producer of mem"
-    },
-    {
-      "title": "BTS-mania poised to boost South Korea's economy well into the future - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPbjRzeVZxdXVWY0VLY3pSTDJoNDVVdzVRNHlJYlNkMXlYdXcwMzQwNGJlTXRxWktENDdRc3lIOC11TkVtTlZhTjlIc0FLSkk2YVU1ekdqM0xkbU52RHdmSzFwQ2lzU3RuU2FiQmg2NldhYTlhb245X1VzN1BXNks0bVRxU0o0dEZYMER6RXIyV1B3Q1ZHMjUyanlPONIBoAFBVV95cUxOTU1xbnR4aktFbkV5b05yZUZwenlFNDF6ODNYalR2T1dKamxRdE1pOG9DaWRQRG43T0VKTmJFd25SaXg1a2NqcHQ1ZVplcjBuSWItWG9iMHg3RGhzRzl6bTZFQWJvVHBzSVNxbGlYLUxfRFAxTndXUUZSREp1azVkSXE3Y1BCV2VDMV9yRTNWTE9MOVgxY2hKOWZIcTRBM0p3?oc=5",
-      "date": "Thu, 11 Jun 2026 07:00:00 GMT",
-      "desc": "BTS-mania poised to boost South Korea's economy well into the future&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "South Korea's proposed platform law could cost U.S. states $525B over the next decade, model estimates - Fox News",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOVFZxMm1NR2M0QnFiVU9PSlpicUhsTnl2TUVpOWptTFctRVI1S09sSUtxcDVpT2xWMHpHMFU3VUlJTFhqdG1fdDZyT1Vidl9lUUtvcFg4b1pwWVd4VG5rNmxIUmRzdkR5cVk3Q2NTa2hGRGFfaUxxLU83b1loaEdLaG51WjA2MlN4M09qUDlpS3U1d2dZQ3lhc0hVRm1qamk3VUF3V3pPYlg5dkY1eHJYZjdQTklRckJRQmhsMGVR0gHDAUFVX3lxTE1fX1N3UEhSVFhCa1U4Z0pGckJWTXEtc2VYME9xc2tJMm1Wd3JydGFWZHFnUjFadHhJWmhUbWg1ek1FV3dUaDJ3TVp4QWVlc1NKX2sySElDdjhqRm1TNlExUUVLdVIzSjB0VHRUZzFFXzdOOEk1SFRpdmJaS3BvSjJZZmdJX080Nk51SE9hb1RUdF9XdnVzaXpWRHNSRmNlbEgweWhtMVQ0NGFfVFNTeG5CaFpodUI5RTdOcTRCdmpXTEJlSQ?oc=5",
-      "date": "Sat, 27 Jun 2026 15:17:15 GMT",
-      "desc": "South Korea's proposed platform law could cost U.S. states $525B over the next decade, model estimates&nbsp;&nbsp;Fox News"
-    },
-    {
-      "title": "Samsung Electronics and SK Hynix plan $646B investment package in semiconductor expansion - Crypto Briefing",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5xNHpVZ0F0dXp4Y083NllOaVl5X2RWXzN3eVA5TkZVRVdFSXYxQkZ6THhJX20wbDRsdHY1Z1ZQY0NQYnlydU5UeU9NcG1ZTE0wdGR0NUktVEZmdG4yRnVLYmN1a3NMUlJfMDZ0U004NHZoeDN0ZERlMXJMSkhPMUU?oc=5",
-      "date": "Fri, 26 Jun 2026 01:50:31 GMT",
-      "desc": "Samsung Electronics and SK Hynix plan $646B investment package in semiconductor expansion&nbsp;&nbsp;Crypto Briefing"
+      "title": "Samsung, SK Hynix shares fall as investors brace for reported $1.3 trillion spending plans - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPdXdkNkdRbUEzTDFsMURTTzlNckV3WXcyRXM3SFJXT3hfVC02TmFuclQyaXhvRlNCdktSazdhNUFCelRSRm82b3lXN0FReTg1YlBucDZZaTZIcmdVaHBLeXpyd1RTVFZBczRRa2J6eTJ0X1BIaGFUOEV0QjY5c0taWUF2UWl5SGRicG00VWxUcmFuSGZTLUZETi14QUpsRjlJZDd0U3Vn0gGrAUFVX3lxTE1nMktwTXZJZk1ZZE5pOXR0bjc2Y3dHVEV0YnNtUGQyZGpxdWlUdzd0eTZOaVRfMHJFQ1V6anQ5elBJV01nZ2xOcFk4UWlCdWhFTnZKWVFNWHBuZ09FcEo2OHpNMlNRMzNQdEZaMkhvSkxnM0VUQmdzM3I3Y25UbGFkLVNKWTlBbm5RRXc1RHZGNWJocDg0VXF5bHJIdGV4RVJKOG1RT0lPaTFOQQ?oc=5",
+      "date": "Mon, 29 Jun 2026 01:35:00 GMT",
+      "desc": "Samsung, SK Hynix shares fall as investors brace for reported $1.3 trillion spending plans&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung and SK Hynix prepare $700 billion mega plan for AI, robotics, and semiconductors - Sammy Fans",
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 339500.0,
-      "change": -1000.0,
-      "pct": -0.29,
+      "price": 323000.0,
+      "change": -35500.0,
+      "pct": -9.9,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2673000.0,
-      "change": 52000.0,
-      "pct": 1.98,
+      "price": 2628000.0,
+      "change": -289000.0,
+      "pct": -9.91,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 480500.0,
-      "change": -28500.0,
-      "pct": -5.6,
+      "price": 497000.0,
+      "change": -6000.0,
+      "pct": -1.19,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 135300.0,
-      "change": -3600.0,
-      "pct": -2.59,
+      "price": 140600.0,
+      "change": 1100.0,
+      "pct": 0.79,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 196400.0,
-      "change": -3000.0,
-      "pct": -1.5,
+      "price": 204000.0,
+      "change": 4300.0,
+      "pct": 2.15,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8411.21,
-      "change": -59.81,
-      "pct": -0.71,
+      "price": 8394.65,
+      "change": -535.65,
+      "pct": -6.0,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1535.11,
-      "change": -7.65,
-      "pct": -0.5,
+      "price": 1540.98,
+      "change": -5.5,
+      "pct": -0.36,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-06-29 02:31 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-06-29 07:23 UTC"
 }
