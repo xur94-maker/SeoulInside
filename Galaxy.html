@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Galaxy — 지연 중력 + Freeman 원반</title>
+    <title>Galaxy v5.1 — 지연 중력 + 나선팔 정량 분석 (Fourier + SPARC 피팅)</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap');
         * { margin:0; padding:0; box-sizing:border-box; user-select:none; }
@@ -70,12 +70,30 @@
             border:1px solid #0ff3;
             white-space: nowrap;
         }
-        #flashOverlay {
-            position:absolute; inset:0; pointer-events:none; z-index:20;
-            background:radial-gradient(circle at 50% 50%, rgba(0,200,255,0.07) 0%, transparent 70%);
-            opacity:0; transition:opacity 0.6s;
+        .spiral-gauge {
+            background:rgba(0,0,0,0.7);
+            border-radius:8px;
+            padding:6px 12px;
+            margin-top:8px;
+            border-left:3px solid #f0f;
         }
-        #flashOverlay.active { opacity:1; transition:opacity 0.05s; }
+        .gauge-bar {
+            height:6px;
+            background:#2a2a3a;
+            border-radius:3px;
+            margin-top:4px;
+            overflow:hidden;
+        }
+        .gauge-fill {
+            height:100%;
+            width:0%;
+            background:linear-gradient(90deg, #f0f, #0ff);
+            border-radius:3px;
+            transition:width 0.1s ease;
+        }
+        #flashOverlay.active {
+            opacity: 1 !important;
+        }
         .mode-indicator {
             position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
             background:rgba(0,0,0,0.7); border-radius:20px; padding:3px 12px;
@@ -89,17 +107,66 @@
             font-size:7px; color:#8af; font-family:'JetBrains Mono'; z-index:31;
             border:1px solid #2af4;
         }
+        /* 탭 스타일 */
+        .tabs {
+            display:flex;
+            gap:4px;
+            margin-bottom:12px;
+            border-bottom:1px solid #0ff3;
+            padding-bottom:6px;
+        }
+        .tab-btn {
+            background:transparent;
+            border:1px solid #0ff4;
+            color:#0ff;
+            padding:4px 12px;
+            font-size:8px;
+            border-radius:20px;
+            cursor:pointer;
+            transition:0.15s;
+        }
+        .tab-btn.active {
+            background:#0ff;
+            color:#000;
+            border-color:#0ff;
+        }
+        .tab-content {
+            display:none;
+        }
+        .tab-content.active {
+            display:block;
+        }
+        .csv-input-area {
+            background:rgba(0,0,0,0.5);
+            border-radius:8px;
+            padding:8px;
+            margin:8px 0;
+            font-size:7px;
+            border:1px dashed #0ff4;
+        }
+        .fit-result {
+            background:#0a1420;
+            border-radius:6px;
+            padding:6px;
+            margin:5px 0;
+            font-size:8px;
+            color:#4ef;
+        }
+        .tooltip-hover {
+            cursor:help;
+            border-bottom:1px dotted #0ff4;
+        }
     </style>
 </head>
 <body>
 <div id="flashOverlay"></div>
-<div id="metrics">⭐ 0 | 🖥️ 0 fps | ΔE: — | ΔL: —</div>
+<div id="metrics">⭐ 0 | 🖥️ 0 fps | ΔE: — | ΔL: — | 🌊 S₂: —</div>
 <div class="mode-indicator" id="modeIndicator">⚡ PHYSICAL MODE (현실 물리 범위)</div>
 <div class="key-hint" id="keyHint">⌨️ ←→↑↓ : 이동 | ⇧Shift + ←→↑↓ : 미세 이동</div>
 
 <!-- 왼쪽 상태 패널 -->
-<div class="glass-panel" style="top:18px; left:18px; width:240px;">
-    <div class="panel-title">🌌 Galaxy — 지연 중력</div>
+<div class="glass-panel" style="top:18px; left:18px; width:260px;">
+    <div class="panel-title">🌌 Galaxy — 지연 중력 + 나선 분석</div>
     <div class="stat-row"><span>별 수</span><span class="val" id="nStars">0</span></div>
     <div class="stat-row"><span>시뮬레이션 시간</span><span class="val" id="simTime">0 Myr</span></div>
     <div class="stat-row"><span>🌌 외곽 속도 (r>9kpc)</span><span class="val-accent" id="outerVel">— km/s</span></div>
@@ -107,47 +174,106 @@
     <div class="stat-row"><span>⚡ 속도 이상비</span><span class="val-accent" id="velRatio">—</span></div>
     <div class="stat-row"><span>💿 원반 질량 @10kpc</span><span class="val" id="diskMassVal">—</span></div>
     <div class="stat-row"><span>🕰️ 버퍼 깊이</span><span class="val" id="bufDepth">—</span></div>
+    
+    <!-- 나선팔 강도 게이지 -->
+    <div class="spiral-gauge">
+        <div style="font-size:8px; color:#f0f;">🌀 나선팔 강도 (m=2)</div>
+        <div class="gauge-bar"><div class="gauge-fill" id="spiralFill"></div></div>
+        <div style="display:flex; justify-content:space-between; margin-top:4px;">
+            <span style="font-size:7px; color:#888;">약함</span>
+            <span id="spiralValue" style="font-size:9px; color:#f0f; font-weight:bold;">0.00</span>
+            <span style="font-size:7px; color:#888;">강함</span>
+        </div>
+        <div style="font-size:7px; color:#8af; margin-top:4px;" id="armHint">🔍 2-팔: 측정 중</div>
+    </div>
+    
     <div id="retardInfo" style="font-size:7px; margin-top:6px; border-top:1px solid #0ff2; padding-top:5px; color:#7ac; line-height:1.7;">지연 효과: OFF</div>
 </div>
 
-<!-- 오른쪽 제어반 -->
-<div class="glass-panel" style="top:18px; right:18px; width:380px;">
-    <div class="panel-title">⚙️ 제어반 · Leapfrog · 지연 중력 (물리 모드)</div>
-
-    <div class="slider-group"><span class="slider-label">⚫ BH 질량 log₁₀(M/M☉)</span><input type="range" id="bhMassLogSlide" min="4" max="9.5" step="0.05" value="6.5"><span class="slider-val" id="bhMassLogVal">6.50</span></div>
-    <div class="slider-group"><span class="slider-label">🌌 은하 질량 log₁₀(M/M☉)</span><input type="range" id="galMassLogSlide" min="9" max="12" step="0.05" value="10.8"><span class="slider-val" id="galMassLogVal">10.80</span></div>
-    <div class="slider-group"><span class="slider-label">⏱ 지연 강도 α (물리적=1)</span><input type="range" id="retardSlide" min="0" max="3" step="0.02" value="1.0"><span class="slider-val" id="retardVal">1.00</span></div>
-    <div class="slider-group"><span class="slider-label">📉 M̈ log₁₀ (M☉/Myr²)</span><input type="range" id="mddLogSlide" min="0" max="12" step="0.1" value="9.5"><span class="slider-val" id="mddLogVal">9.5</span></div>
-    <div class="slider-group"><span class="slider-label">💪 G_scale (×10ⁿ) [물리=0]</span><input type="range" id="gScaleSlide" min="0" max="4" step="0.5" value="0"><span class="slider-val" id="gScaleVal">×10⁰</span></div>
-    <div class="slider-group"><span class="slider-label">⏱️ 시간 스텝 DT (Myr) [권장:0.01-0.02]</span><input type="range" id="dtSlide" min="0.002" max="3.05" step="0.001" value="0.015"><span class="slider-val" id="dtVal">0.0150</span></div>
-    <div class="slider-group"><span class="slider-label">🕰️ 히스토리 버퍼 (스텝)</span><input type="range" id="histBufSlide" min="10" max="300" step="10" value="120"><span class="slider-val" id="histBufVal">120</span></div>
-    <div class="slider-group"><span class="slider-label">✦ 별 개수</span><input type="range" id="nStarSlide" min="1000" max="80000" step="1000" value="30000"><span class="slider-val" id="nStarVal">30000</span></div>
-    <div class="slider-group"><span class="slider-label">💥 충돌 강도 (별 수)</span><input type="range" id="collideNSlide" min="20" max="300" step="10" value="60"><span class="slider-val" id="collideNVal">60</span></div>
-    <div class="slider-group"><span class="slider-label">🔄 BH 스핀 (a*)</span><input type="range" id="bhSpinSlide" min="0" max="1" step="0.05" value="0.9"><span class="slider-val" id="bhSpinVal">0.90</span></div>
-    <div class="slider-group"><span class="slider-label">📍 BH 위치 반경 (kpc)</span><input type="range" id="bhRadSlide" min="0" max="5" step="0.05" value="0"><span class="slider-val" id="bhRadVal">0.00</span></div>
-    <div class="slider-group"><span class="slider-label">🧭 BH 위치 각도 (°)</span><input type="range" id="bhAngSlide" min="0" max="360" step="5" value="0"><span class="slider-val" id="bhAngVal">0°</span></div>
-
-    <div class="toggle-group">
-        <div id="vyZeroBtn" class="toggle-btn active">🔒 vy=0 모드 (기본)</div>
-        <div id="vyRandBtn" class="toggle-btn">🎲 vy=랜덤</div>
+<!-- 오른쪽 제어반 (탭 적용) -->
+<div class="glass-panel" style="top:18px; right:18px; width:420px;">
+    <div class="panel-title">⚙️ 제어반 · Leapfrog · 지연 중력 + 나선팔 분석 (v5.1)</div>
+    
+    <!-- 탭 버튼 -->
+    <div class="tabs">
+        <div class="tab-btn active" data-tab="main">🎮 기본 제어</div>
+        <div class="tab-btn" data-tab="sparc">📊 SPARC 피팅</div>
+        <div class="tab-btn" data-tab="analysis">📈 분석</div>
     </div>
-    <div style="font-size:8px; color:#fa8; margin:4px 0 2px;">🔬 초기 속도 모드 (검증용)</div>
-    <div class="toggle-group">
-        <div id="velCircBtn" class="toggle-btn active">🌀 원형궤도 (기본)</div>
-        <div id="velRandBtn" class="toggle-btn">🎲 완전랜덤 (검증)</div>
-        <div id="velZeroBtn" class="toggle-btn">⛔ 정지 (검증)</div>
-    </div>
-    <div id="velModeDesc" style="font-size:7px; color:#8ab; margin-top:3px; text-align:center;">현재: 원형 궤도 속도 + vy=0</div>
+    
+    <!-- 탭 1: 기본 제어 -->
+    <div id="tab-main" class="tab-content active">
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 질량 (로그 스케일, M☉)">⚫ BH 질량 log₁₀(M/M☉)</span><input type="range" id="bhMassLogSlide" min="4" max="9.5" step="0.05" value="6.5"><span class="slider-val" id="bhMassLogVal">6.50</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="은하 총 질량 (로그 스케일, M☉)">🌌 은하 질량 log₁₀(M/M☉)</span><input type="range" id="galMassLogSlide" min="9" max="12" step="0.05" value="10.8"><span class="slider-val" id="galMassLogVal">10.80</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="지연 강도 α (물리적 예측값=1)">⏱ 지연 강도 α (물리적=1)</span><input type="range" id="retardSlide" min="0" max="3" step="0.02" value="1.0"><span class="slider-val" id="retardVal">1.00</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="질량 이차 미분 (M☉/Myr²)">📉 M̈ log₁₀ (M☉/Myr²)</span><input type="range" id="mddLogSlide" min="0" max="12" step="0.1" value="9.5"><span class="slider-val" id="mddLogVal">9.5</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="중력 상수 스케일 (0=물리적)">💪 G_scale (×10ⁿ) [물리=0]</span><input type="range" id="gScaleSlide" min="0" max="4" step="0.5" value="0"><span class="slider-val" id="gScaleVal">×10⁰</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="시간 스텝 (Myr), 권장 0.01-0.02">⏱️ 시간 스텝 DT (Myr)</span><input type="range" id="dtSlide" min="0.002" max="3.05" step="0.001" value="0.015"><span class="slider-val" id="dtVal">0.0150</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="애니메이션 속도 배율">⏩ 애니메이션 속도</span><input type="range" id="animSpeedSlide" min="0.25" max="4.0" step="0.05" value="1.0"><span class="slider-val" id="animSpeedVal">1.00x</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 위치 히스토리 버퍼 크기">🕰️ 히스토리 버퍼 (스텝)</span><input type="range" id="histBufSlide" min="10" max="300" step="10" value="120"><span class="slider-val" id="histBufVal">120</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="시뮬레이션할 별의 개수">✦ 별 개수</span><input type="range" id="nStarSlide" min="1000" max="80000" step="1000" value="30000"><span class="slider-val" id="nStarVal">30000</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="COLLIDE 버튼 클릭 시 생성될 별 수">💥 충돌 강도 (별 수)</span><input type="range" id="collideNSlide" min="20" max="300" step="10" value="60"><span class="slider-val" id="collideNVal">60</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 스핀 파라미터 a* (0~1)">🔄 BH 스핀 (a*)</span><input type="range" id="bhSpinSlide" min="0" max="1" step="0.05" value="0.9"><span class="slider-val" id="bhSpinVal">0.90</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 중심으로부터의 거리 (kpc)">📍 BH 위치 반경 (kpc)</span><input type="range" id="bhRadSlide" min="0" max="5" step="0.05" value="0"><span class="slider-val" id="bhRadVal">0.00</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 위치 각도 (도)">🧭 BH 위치 각도 (°)</span><input type="range" id="bhAngSlide" min="0" max="360" step="5" value="0"><span class="slider-val" id="bhAngVal">0°</span></div>
 
-    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:6px;">
-        <button id="collideBtn">🔥 COLLIDE</button>
-        <button id="initBtn">🌌 초기화</button>
-        <button class="danger" id="clearBtn">◀ 리셋</button>
+        <div class="toggle-group">
+            <div id="vyZeroBtn" class="toggle-btn active">🔒 vy=0 모드 (기본)</div>
+            <div id="vyRandBtn" class="toggle-btn">🎲 vy=랜덤</div>
+        </div>
+        <div style="font-size:8px; color:#fa8; margin:4px 0 2px;">🔬 초기 속도 모드 (검증용)</div>
+        <div class="toggle-group">
+            <div id="velCircBtn" class="toggle-btn active">🌀 원형궤도 (기본)</div>
+            <div id="velRandBtn" class="toggle-btn">🎲 완전랜덤 (검증)</div>
+            <div id="velZeroBtn" class="toggle-btn">⛔ 정지 (검증)</div>
+        </div>
+        <div id="velModeDesc" style="font-size:7px; color:#8ab; margin-top:3px; text-align:center;">현재: 원형 궤도 속도 + vy=0</div>
+
+        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:6px;">
+            <button id="collideBtn">🔥 COLLIDE</button>
+            <button id="initBtn">🌌 초기화</button>
+            <button class="danger" id="clearBtn">◀ 리셋</button>
+        </div>
     </div>
+    
+    <!-- 탭 2: SPARC 피팅 -->
+    <div id="tab-sparc" class="tab-content">
+        <div class="csv-input-area">
+            <div style="font-size:8px; color:#4ef; margin-bottom:6px;">📂 SPARC 형식 CSV 업로드</div>
+            <input type="file" id="csvFileInput" accept=".csv" style="font-size:7px; background:#081828; border:1px solid #0ff4; color:#0ff; border-radius:6px; padding:4px; width:100%;">
+            <div style="font-size:7px; color:#8ab; margin-top:5px;">형식: r_kpc, v_obs_kms (첫 줄 헤더)</div>
+            <div style="font-size:7px; color:#fa8; margin-top:3px;">예: 0.5,62 / 1.0,78 / 2.0,98 ...</div>
+        </div>
+        <button id="fitBtn" style="width:100%; margin:4px 0;">📐 피팅 실행 (그리드 서치)</button>
+        <div id="fitResults" class="fit-result">
+            📊 피팅 결과 대기 중...
+        </div>
+        <div style="font-size:7px; color:#6ab; margin-top:5px;">
+            💡 피팅은 Ṁ_pair 값을 그리드 서치로 최적화합니다.<br>
+            χ²가 가장 낮은 값이 최적 Ṁ_pair입니다.
+        </div>
+    </div>
+    
+    <!-- 탭 3: 분석 -->
+    <div id="tab-analysis" class="tab-content">
+        <div class="stat-row"><span>🌀 현재 S₂ 강도</span><span class="val-accent" id="analysisS2">0.00</span></div>
+        <div class="stat-row"><span>📍 BH 반경</span><span class="val" id="analysisBHRad">0.00 kpc</span></div>
+        <div class="stat-row"><span>⚡ 속도 이상비</span><span class="val" id="analysisRatio">—</span></div>
+        <div class="stat-row"><span>🎯 주요 모드</span><span id="analysisMode" style="color:#f0f;">—</span></div>
+        <div style="margin-top:8px; border-top:1px solid #0ff2; padding-top:6px;">
+            <canvas id="s2HistoryCanvas" width="350" height="80" style="width:100%; background:#020810; border-radius:6px;"></canvas>
+            <div style="font-size:6px; color:#6ab; text-align:center;">⏱️ S₂ 히스토리 (최근 2000스텝)</div>
+        </div>
+        <div style="margin-top:8px;">
+            <canvas id="scatterCanvas" width="350" height="80" style="width:100%; background:#020810; border-radius:6px;"></canvas>
+            <div style="font-size:6px; color:#6ab; text-align:center;">📈 BH 반경 vs S₂ 산점도</div>
+        </div>
+    </div>
+    
     <div style="font-size:7px; margin-top:8px; color:#6ab; text-align:center;">
         💡 COLLIDE → 파티클 방출 → 은하 궤도 정착 · Leapfrog 적분기<br>
         🔬 <span style="color:#4ef;">PHYSICAL MODE</span>: G_scale=1, M̈=10^9.5, α=1<br>
-        ⌨️ <span style="color:#fa8;">방향키</span> BH 위치 제어 | <span style="color:#4ef;">⇧Shift+방향키</span> 미세 이동
+        ⌨️ <span style="color:#fa8;">방향키</span> BH 위치 제어 | <span style="color:#4ef;">🌊 S₂ 값: 0=대칭원반, 0.3~0.6=약한 나선, 0.6~0.9=뚜렷한 나선</span>
     </div>
 </div>
 
@@ -162,17 +288,18 @@
     </div>
 </div>
 
-<!-- 이벤트 로그 -->
-<div style="position:absolute; bottom:14px; left:320px; width:280px;
-    background:rgba(0,0,0,0.6); backdrop-filter:blur(8px);
-    border-left:3px solid #fa3; border-radius:14px;
-    padding:8px 12px; font-size:8px; font-family:'JetBrains Mono';
-    pointer-events:none; z-index:30; max-height:110px; overflow:hidden;">
-    <div style="color:#fa3; margin-bottom:4px;">📡 EVENT LOG</div>
-    <div id="logEntries"></div>
+<!-- 푸리에 분석 차트 -->
+<div class="chart-container" style="bottom:14px; right:14px; width:290px;">
+    <div class="chart-title">📈 푸리에 분석 — m=2 팔 강도</div>
+    <canvas id="fourierCanvas" width="266" height="120" style="width:100%; background:#020810; border-radius:6px;"></canvas>
+    <div style="display:flex; gap:10px; margin-top:5px; font-size:7px; color:#8ab; font-family:'JetBrains Mono';">
+        <span style="color:#f0f;">● m=2 (주요)</span>
+        <span style="color:#fa8;">● m=3</span>
+        <span style="color:#4ef;">● m=4</span>
+    </div>
 </div>
 
-<div class="badge">⚛️ Galaxy | 지연 중력 + Freeman 원반 | DT=0.015 Myr | vy=0 기본 | ⇧Shift+방향키 미세 이동</div>
+<div class="badge">⚛️ Galaxy v5.1 | 지연 중력 + Freeman 원반 + 나선팔 정량 분석 (Fourier m=2 + SPARC 피팅) | B. Sun</div>
 
 <script type="importmap">
 { "imports": {
@@ -209,6 +336,7 @@ let G_SCALE_EXP    = 0;
 let RETARD_STRENGTH= 1.0;
 let N_STARS        = 30000;
 let DT             = 0.015;
+let ANIM_SPEED     = 1.0;
 let HIST_BUF_SIZE  = 120;
 let vyZeroMode     = true;
 let velInitMode    = 'circular';
@@ -237,7 +365,184 @@ function diskMass(r_kpc) {
 }
 
 // ============================================================
-// [3] Three.js 씬
+// [3] 나선팔 강도 분석 (Fourier m=2)
+// ============================================================
+let currentSpiralStrength = 0;
+let spiralHistory = [];  // 시간에 따른 강도 변화 추적 (최대 2000)
+let scatterData = [];    // {bhRad, s2} 저장 (최대 500)
+
+function computeAllFourierModes(stars, bhPos) {
+    if (stars.length < 100) return null;
+    const modes = [1, 2, 3, 4];
+    const cosSum = [0, 0, 0, 0];
+    const sinSum = [0, 0, 0, 0];
+    let totalWeight = 0;
+
+    for (const star of stars) {
+        const dx = star.pos.x - bhPos.x;
+        const dz = star.pos.z - bhPos.z;
+        const r = Math.hypot(dx, dz);
+        if (r < 2.0 || r > GALAXY_RADIUS) continue;
+        const phi = Math.atan2(dz, dx);
+        const weight = 1.0 / (r * 0.5 + 1.0);
+        for (let mi = 0; mi < modes.length; mi++) {
+            cosSum[mi] += weight * Math.cos(modes[mi] * phi);
+            sinSum[mi] += weight * Math.sin(modes[mi] * phi);
+        }
+        totalWeight += weight;
+    }
+
+    if (totalWeight === 0) return null;
+    const strengths = modes.map((m, mi) =>
+        Math.min(1.5, Math.hypot(cosSum[mi], sinSum[mi]) / totalWeight * 1.5)
+    );
+    return strengths; // [m=1, m=2, m=3, m=4]
+}
+
+function computeSpiralStrength(stars, bhPos) {
+    const s = computeAllFourierModes(stars, bhPos);
+    if (!s) return 0;
+    return Math.min(1.0, s[1]); // m=2 강도
+}
+
+function drawFourierAnalysis(stars, bhPos) {
+    const canvas = document.getElementById('fourierCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = '#020810';
+    ctx.fillRect(0, 0, W, H);
+    if (stars.length < 100) {
+        ctx.fillStyle = '#8af';
+        ctx.font = '8px monospace';
+        ctx.fillText('별 데이터 수집 중...', 10, H/2);
+        return;
+    }
+
+    const strengths = computeAllFourierModes(stars, bhPos) || [0, 0, 0, 0];
+    const modes = [1, 2, 3, 4];
+
+    const maxStrength = Math.max(0.3, ...strengths);
+    const barWidth = (W - 40) / modes.length - 8;
+    const colors = ['#8af', '#f0f', '#fa8', '#4ef'];
+    for (let i = 0; i < modes.length; i++) {
+        const x = 20 + i * (barWidth + 8);
+        const height = (strengths[i] / maxStrength) * (H - 30);
+        ctx.fillStyle = colors[i];
+        ctx.fillRect(x, H - 15 - height, barWidth, height);
+        ctx.fillStyle = '#bcd';
+        ctx.font = '8px monospace';
+        ctx.fillText(`m=${modes[i]}`, x + 4, H - 5);
+        ctx.fillStyle = '#4ef';
+        ctx.font = '7px monospace';
+        ctx.fillText(strengths[i].toFixed(3), x + 4, H - 18 - height);
+    }
+    ctx.fillStyle = '#5f6';
+    ctx.font = '7px monospace';
+    ctx.fillText(`주요 모드: m=${strengths[1] > strengths[0] && strengths[1] > strengths[2] ? 2 : (strengths[0] > strengths[2] ? 1 : 3)}`, 10, 12);
+}
+
+function updateSpiralUI() {
+    const fillEl = document.getElementById('spiralFill');
+    const valEl = document.getElementById('spiralValue');
+    const hintEl = document.getElementById('armHint');
+    const analysisS2 = document.getElementById('analysisS2');
+    const analysisMode = document.getElementById('analysisMode');
+    
+    valEl.textContent = currentSpiralStrength.toFixed(3);
+    fillEl.style.width = (currentSpiralStrength * 100) + '%';
+    if (analysisS2) analysisS2.textContent = currentSpiralStrength.toFixed(3);
+    
+    let modeText = '';
+    let modeColor = '';
+    if (currentSpiralStrength < 0.15) {
+        hintEl.innerHTML = '🔘 대칭 원반 (나선팔 없음)';
+        hintEl.style.color = '#888';
+        modeText = '🔘 대칭 원반';
+        modeColor = '#888';
+    } else if (currentSpiralStrength < 0.35) {
+        hintEl.innerHTML = '🌀 약한 나선 구조 형성 중';
+        hintEl.style.color = '#8af';
+        modeText = '🌀 약한 나선';
+        modeColor = '#8af';
+    } else if (currentSpiralStrength < 0.65) {
+        hintEl.innerHTML = '🌊 뚜렷한 2-팔 나선 구조';
+        hintEl.style.color = '#f0f';
+        modeText = '🌊 뚜렷한 나선';
+        modeColor = '#f0f';
+    } else {
+        hintEl.innerHTML = '⚡ 강력한 그랜드 디자인 나선!';
+        hintEl.style.color = '#f66';
+        modeText = '⚡ 강력한 나선';
+        modeColor = '#f66';
+    }
+    if (analysisMode) {
+        analysisMode.textContent = modeText;
+        analysisMode.style.color = modeColor;
+    }
+    
+    // 히스토리 업데이트
+    spiralHistory.push(currentSpiralStrength);
+    if (spiralHistory.length > 2000) spiralHistory.shift();
+    drawS2History();
+    
+    // 산점도 데이터 업데이트
+    scatterData.push({ bhRad: BH_RAD, s2: currentSpiralStrength });
+    if (scatterData.length > 500) scatterData.shift();
+    drawScatterPlot();
+}
+
+// S₂ 히스토리 그래프
+function drawS2History() {
+    const canvas = document.getElementById('s2HistoryCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = '#020810';
+    ctx.fillRect(0, 0, W, H);
+    if (spiralHistory.length < 2) return;
+    
+    const step = W / Math.max(1, spiralHistory.length);
+    ctx.beginPath();
+    ctx.strokeStyle = '#f0f';
+    ctx.lineWidth = 1.5;
+    let first = true;
+    for (let i = 0; i < spiralHistory.length; i++) {
+        const x = i * step;
+        const y = H - spiralHistory[i] * H;
+        if (first) { ctx.moveTo(x, y); first = false; }
+        else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.fillStyle = '#4ef';
+    ctx.font = '6px monospace';
+    ctx.fillText(`최근 ${spiralHistory.length} 스텝`, 5, 10);
+}
+
+// 산점도 그래프
+function drawScatterPlot() {
+    const canvas = document.getElementById('scatterCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = '#020810';
+    ctx.fillRect(0, 0, W, H);
+    if (scatterData.length === 0) return;
+    
+    const maxRad = 5.0;
+    for (const d of scatterData) {
+        const x = (d.bhRad / maxRad) * W;
+        const y = H - d.s2 * H;
+        ctx.fillStyle = '#0ff';
+        ctx.fillRect(x-1, y-1, 2, 2);
+    }
+    ctx.fillStyle = '#fa8';
+    ctx.font = '6px monospace';
+    ctx.fillText(`상관관계: r vs S₂`, 5, 10);
+}
+
+// ============================================================
+// [4] Three.js 씬
 // ============================================================
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x03040c);
@@ -265,8 +570,7 @@ const bgPos = [];
 for (let i = 0; i < 4000; i++)
     bgPos.push((Math.random()-0.5)*900, (Math.random()-0.5)*600, (Math.random()-0.5)*500 - 80);
 bgGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(bgPos), 3));
-scene.add(new THREE.Points(bgGeo,
-    new THREE.PointsMaterial({ color:0x334466, size:0.1, transparent:true, opacity:0.45 })));
+scene.add(new THREE.Points(bgGeo, new THREE.PointsMaterial({ color:0x334466, size:0.1, transparent:true, opacity:0.45 })));
 
 for (let r = 3; r <= 15; r += 3) {
     const pts = [];
@@ -275,8 +579,7 @@ for (let r = 3; r <= 15; r += 3) {
         pts.push(new THREE.Vector3(Math.cos(ang)*r, 0, Math.sin(ang)*r));
     }
     const geo = new THREE.BufferGeometry().setFromPoints(pts);
-    scene.add(new THREE.LineLoop(geo,
-        new THREE.LineBasicMaterial({ color:0x0a1a2a, transparent:true, opacity:0.35 })));
+    scene.add(new THREE.LineLoop(geo, new THREE.LineBasicMaterial({ color:0x0a1a2a, transparent:true, opacity:0.35 })));
 }
 
 let bhGroup = null;
@@ -293,8 +596,7 @@ function updateBHVisual() {
         photoPts.push(new THREE.Vector3(Math.cos(ang)*photoR, 0, Math.sin(ang)*photoR));
     }
     const photoGeo = new THREE.BufferGeometry().setFromPoints(photoPts);
-    bhGroup.add(new THREE.LineLoop(photoGeo,
-        new THREE.LineBasicMaterial({ color:0x00eeff, transparent:true, opacity:0.7 })));
+    bhGroup.add(new THREE.LineLoop(photoGeo, new THREE.LineBasicMaterial({ color:0x00eeff, transparent:true, opacity:0.7 })));
 
     const ringColors = [0xcceeff, 0xffffff, 0xffddaa, 0xff9944, 0xff5522];
     const ringOpas   = [0.8, 0.6, 0.4, 0.25, 0.12];
@@ -306,22 +608,15 @@ function updateBHVisual() {
             pts.push(new THREE.Vector3(Math.cos(ang)*r, 0, Math.sin(ang)*r));
         }
         const geo = new THREE.BufferGeometry().setFromPoints(pts);
-        bhGroup.add(new THREE.LineLoop(geo,
-            new THREE.LineBasicMaterial({ color:ringColors[i], transparent:true, opacity:ringOpas[i] })));
+        bhGroup.add(new THREE.LineLoop(geo, new THREE.LineBasicMaterial({ color:ringColors[i], transparent:true, opacity:ringOpas[i] })));
     }
 
-    const core = new THREE.Mesh(
-        new THREE.SphereGeometry(rad, 20, 16),
-        new THREE.MeshStandardMaterial({ color:0x3388ff, emissive:0x001133 })
-    );
+    const core = new THREE.Mesh(new THREE.SphereGeometry(rad, 20, 16), new THREE.MeshStandardMaterial({ color:0x3388ff, emissive:0x001133 }));
     bhGroup.add(core);
 
     if (BH_SPIN > 0.2) {
         const ergoR = rad * (1.5 + BH_SPIN * 0.8);
-        const ergo = new THREE.Mesh(
-            new THREE.SphereGeometry(ergoR, 18, 12),
-            new THREE.MeshBasicMaterial({ color:0x6600ff, transparent:true, opacity:0.07, wireframe:true })
-        );
+        const ergo = new THREE.Mesh(new THREE.SphereGeometry(ergoR, 18, 12), new THREE.MeshBasicMaterial({ color:0x6600ff, transparent:true, opacity:0.07, wireframe:true }));
         ergo.scale.set(1, 0.65, 1);
         bhGroup.add(ergo);
     }
@@ -331,7 +626,7 @@ function updateBHVisual() {
 }
 
 // ============================================================
-// [4] 별 시스템
+// [5] 별 시스템
 // ============================================================
 let starPoints = null;
 let starData   = [];
@@ -363,7 +658,8 @@ function starColor(r) {
     return { cr:0.3 + t*0.7, cg:0.4 + t*0.3, cb:0.9 - t*0.6 };
 }
 
-function computeAcceleration(star) {
+function computeAcceleration(star, dt) {
+    dt = dt || DT;
     const pos = star.pos;
     const dx = pos.x - bhOffset.x;
     const dy = pos.y - bhOffset.y;
@@ -384,8 +680,9 @@ function computeAcceleration(star) {
             const r_xz = Math.sqrt(dx*dx + dz*dz) + 0.01;
             const J = BH_SPIN * G * bhM * bhM / C_SIM;
             const fd_mag = 2 * G * J / (C_SIM * C_SIM * rb * rb * rb + 0.01);
-            ax -= fd_mag * (-dz / r_xz);
-            az -= fd_mag * (dx / r_xz);
+            // 프레임 끌림: 속도에 수직한 Coriolis성 힘 (반시계 스핀 기준)
+            ax += fd_mag * (star.vel.z);
+            az -= fd_mag * (star.vel.x);
         }
     }
 
@@ -403,17 +700,19 @@ function computeAcceleration(star) {
         const hist = star.history;
         if (hist && hist.length >= 2) {
             const n = hist.length;
-            const t0 = simTimeMyr - (n - 1) * DT;
+            const t0 = simTimeMyr - (n - 1) * dt;
             if (tau > 0 && tau < simTimeMyr - t0) {
                 const targetTime = simTimeMyr - tau;
-                const fIdx = (targetTime - t0) / DT;
+                const fIdx = (targetTime - t0) / dt;
                 const i0 = Math.max(0, Math.min(n-2, Math.floor(fIdx)));
                 const i1 = i0 + 1;
                 const frac = fIdx - i0;
                 const p0 = hist[i0];
                 const p1 = hist[i1];
-                const dx_ret = star.pos.x - (p0.x + (p1.x - p0.x) * frac) - bhOffset.x;
-                const dz_ret = star.pos.z - (p0.z + (p1.z - p0.z) * frac) - bhOffset.z;
+                const retX = p0.x + (p1.x - p0.x) * frac;
+                const retZ = p0.z + (p1.z - p0.z) * frac;
+                const dx_ret = (star.pos.x - bhOffset.x) - (retX - bhOffset.x);
+                const dz_ret = (star.pos.z - bhOffset.z) - (retZ - bhOffset.z);
                 const r_ret = Math.sqrt(dx_ret*dx_ret + dz_ret*dz_ret) + 0.01;
                 const Mdd = getMDDot();
                 const a_mag = G * Math.abs(Mdd) / (2.0 * C_SIM * C_SIM);
@@ -428,14 +727,14 @@ function computeAcceleration(star) {
 }
 
 function leapfrogStep(star, dt) {
-    const a0 = computeAcceleration(star);
+    const a0 = computeAcceleration(star, dt);
     star.vel.x += a0.ax * dt * 0.5;
     star.vel.y += a0.ay * dt * 0.5;
     star.vel.z += a0.az * dt * 0.5;
     star.pos.x += star.vel.x * dt;
     star.pos.y += star.vel.y * dt;
     star.pos.z += star.vel.z * dt;
-    const a1 = computeAcceleration(star);
+    const a1 = computeAcceleration(star, dt);
     star.vel.x += a1.ax * dt * 0.5;
     star.vel.y += a1.ay * dt * 0.5;
     star.vel.z += a1.az * dt * 0.5;
@@ -485,8 +784,7 @@ function initStars() {
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geo.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
-    starPoints = new THREE.Points(geo,
-        new THREE.PointsMaterial({ size:0.16, vertexColors:true, transparent:true, opacity:0.88, sizeAttenuation:true }));
+    starPoints = new THREE.Points(geo, new THREE.PointsMaterial({ size:0.16, vertexColors:true, transparent:true, opacity:0.88, sizeAttenuation:true }));
     scene.add(starPoints);
     starColors = colors;
 
@@ -495,6 +793,11 @@ function initStars() {
     initialTotalAngularMomentum = initCons.angularMomentum;
     simTimeMyr = 0;
     addLog(`🌌 은하 초기화 | 별=${count.toLocaleString()} | vy=0 모드 | DT=${DT.toFixed(4)} Myr`);
+    
+    // 히스토리 초기화
+    spiralHistory = [];
+    scatterData = [];
+    currentSpiralStrength = 0;
 }
 
 function updateStarPositions() {
@@ -510,14 +813,16 @@ function updateStarPositions() {
 }
 
 // ============================================================
-// [5] COLLIDE 파티클
+// [6] COLLIDE 파티클
 // ============================================================
 let flyingParticles = [];
 
 function spawnCollisionParticles(n) {
     const flash = document.getElementById('flashOverlay');
-    flash.classList.add('active');
-    setTimeout(() => flash.classList.remove('active'), 300);
+    if (flash) {
+        flash.classList.add('active');
+        setTimeout(() => flash.classList.remove('active'), 300);
+    }
 
     for (let i = 0; i < n; i++) {
         const { x, z, y, r } = sampleStarPositionRelativeToBH();
@@ -537,20 +842,14 @@ function spawnCollisionParticles(n) {
         const hue = Math.random() < 0.5 ? 0x00ffff : 0xffaa44;
 
         const geo = new THREE.SphereGeometry(0.25, 6, 6);
-        const mat = new THREE.MeshStandardMaterial({
-            color: hue, emissive: hue, emissiveIntensity:1.0, transparent:true, opacity:1.0
-        });
+        const mat = new THREE.MeshStandardMaterial({ color: hue, emissive: hue, emissiveIntensity:1.0, transparent:true, opacity:1.0 });
         const mesh = new THREE.Mesh(geo, mat);
         mesh.position.set(ix, iy, iz);
         scene.add(mesh);
 
         flyingParticles.push({
             mesh, pos: new THREE.Vector3(ix, iy, iz),
-            vel: new THREE.Vector3(
-                (x-ix)*0.4 + (Math.random()-0.5)*0.15,
-                (y-iy)*0.4 + (Math.random()-0.5)*0.1,
-                (z-iz)*0.4 + (Math.random()-0.5)*0.15
-            ),
+            vel: new THREE.Vector3((x-ix)*0.4 + (Math.random()-0.5)*0.15, (y-iy)*0.4 + (Math.random()-0.5)*0.1, (z-iz)*0.4 + (Math.random()-0.5)*0.15),
             targetPos: new THREE.Vector3(x, y, z),
             targetVel: new THREE.Vector3(tvx, tvy, tvz),
             age: 0, maxAge: 180 + Math.floor(Math.random()*80),
@@ -619,14 +918,13 @@ function _addStarsToBuffer(newStars) {
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(newPos, 3));
     geo.setAttribute('color',    new THREE.BufferAttribute(newCol, 3));
-    starPoints = new THREE.Points(geo,
-        new THREE.PointsMaterial({ size:0.16, vertexColors:true, transparent:true, opacity:0.88, sizeAttenuation:true }));
+    starPoints = new THREE.Points(geo, new THREE.PointsMaterial({ size:0.16, vertexColors:true, transparent:true, opacity:0.88, sizeAttenuation:true }));
     scene.add(starPoints);
     starColors = newCol;
 }
 
 // ============================================================
-// [6] 보존량
+// [7] 보존량
 // ============================================================
 function computeConservation() {
     let E=0, L=0;
@@ -643,15 +941,16 @@ function computeConservation() {
 }
 
 // ============================================================
-// [7] 차트 & HUD
+// [8] 차트 & HUD
 // ============================================================
 function kpcMyrToKms(v) { return v * KPC_M / MYR_S / 1000; }
 
 const rotCanvas = document.getElementById('rotCurveCanvas');
-const rotCtx    = rotCanvas.getContext('2d');
+const rotCtx    = rotCanvas ? rotCanvas.getContext('2d') : null;
 const M33_OBS   = [[0.5,62],[1,78],[2,98],[3,108],[4,112],[5,114],[6,115],[7,116],[8,117],[9,117.5],[10,118],[12,118],[14,117]];
 
 function drawRotationCurve() {
+    if (!rotCtx) return;
     const W=rotCanvas.width, H=rotCanvas.height;
     rotCtx.fillStyle='#020810'; rotCtx.fillRect(0,0,W,H);
     const maxR=GALAXY_RADIUS, maxV=350;
@@ -699,6 +998,9 @@ function drawRotationCurve() {
 }
 
 function updateHUD() {
+    const analysisBHRad = document.getElementById('analysisBHRad');
+    if (analysisBHRad) analysisBHRad.textContent = BH_RAD.toFixed(3) + ' kpc';
+    
     document.getElementById('nStars').textContent = starData.length.toLocaleString();
     document.getElementById('simTime').textContent = simTimeMyr.toFixed(1) + ' Myr';
 
@@ -710,13 +1012,15 @@ function updateHUD() {
     }
     const ov = cntV>0 ? kpcMyrToKms(sumV/cntV) : 0;
     const nv = kpcMyrToKms(newtonCircularVelocityRelativeToBH(10));
-    document.getElementById('outerVel').textContent  = ov.toFixed(0) + ' km/s';
-    document.getElementById('newtonVel').textContent = nv.toFixed(0) + ' km/s';
-    document.getElementById('velRatio').textContent  = (nv>0 ? (ov/nv).toFixed(2) : '—') + 'x';
-    document.getElementById('diskMassVal').textContent =
-        (diskMass(10) / 1e10).toFixed(2) + '×10¹⁰M☉';
-    document.getElementById('bufDepth').textContent =
-        (starData.length > 0 ? starData[0].history.length : 0) + ' / ' + HIST_BUF_SIZE;
+    const ratio = nv>0 ? (ov/nv).toFixed(2) : '—';
+    document.getElementById('outerVel').innerText  = ov.toFixed(0) + ' km/s';
+    document.getElementById('newtonVel').innerText = nv.toFixed(0) + ' km/s';
+    document.getElementById('velRatio').innerText  = (nv>0 ? (ov/nv).toFixed(2) : '—') + 'x';
+    document.getElementById('diskMassVal').innerText = (diskMass(10) / 1e10).toFixed(2) + '×10¹⁰M☉';
+    document.getElementById('bufDepth').innerText = (starData.length > 0 ? starData[0].history.length : 0) + ' / ' + HIST_BUF_SIZE;
+    
+    const analysisRatio = document.getElementById('analysisRatio');
+    if (analysisRatio) analysisRatio.textContent = (nv>0 ? (ov/nv).toFixed(2) : '—') + 'x';
 
     document.getElementById('retardInfo').innerHTML =
         `α=${RETARD_STRENGTH.toFixed(2)} · M̈=10^${MDD_LOG} · G=10^${G_SCALE_EXP}<br>` +
@@ -730,12 +1034,22 @@ function updateHUD() {
 
     const eCol = Math.abs(dE)>5?'#f55':Math.abs(dE)>1?'#fa0':'#5f6';
     const lCol = Math.abs(dL)>5?'#f55':Math.abs(dL)>1?'#fa0':'#5f6';
-    document.getElementById('metrics').innerHTML =
-        `⭐ ${starData.length.toLocaleString()} | 🖥️ ${fps} fps | ΔE: <span style="color:${eCol}">${dE.toFixed(1)}%</span> | ΔL: <span style="color:${lCol}">${dL.toFixed(1)}%</span> | DT=${DT.toFixed(4)}Myr`;
+    
+    // 스파이럴 강도 업데이트 (단일 순회로 통합)
+    const fourierResult = computeAllFourierModes(starData, bhOffset);
+    currentSpiralStrength = fourierResult ? Math.min(1.0, fourierResult[1]) : 0;
+    updateSpiralUI();
+    drawFourierAnalysis(starData, bhOffset);
+    
+    const metricsDiv = document.getElementById('metrics');
+    if (metricsDiv) {
+        metricsDiv.innerHTML = `⭐ ${starData.length.toLocaleString()} | 🖥️ ${fps} fps | ΔE: <span style="color:${eCol}">${dE.toFixed(1)}%</span> | ΔL: <span style="color:${lCol}">${dL.toFixed(1)}%</span> | 🌊 S₂: ${currentSpiralStrength.toFixed(3)}`;
+    }
 }
 
 function addLog(msg) {
     const el = document.getElementById('logEntries');
+    if (!el) return;
     const d = document.createElement('div');
     d.style.cssText = 'color:#acd; margin:1px 0; font-size:7px;';
     d.textContent = msg;
@@ -744,7 +1058,7 @@ function addLog(msg) {
 }
 
 // ============================================================
-// [8] UI 바인딩
+// [9] UI 바인딩
 // ============================================================
 function bindSlider(id, valId, fmt, cb) {
     const el = document.getElementById(id);
@@ -761,8 +1075,9 @@ bindSlider('bhMassLogSlide','bhMassLogVal', v=>v.toFixed(2), v=>{ BH_MASS_LOG=v;
 bindSlider('galMassLogSlide','galMassLogVal', v=>v.toFixed(2), v=>{ GAL_MASS_LOG=v; });
 bindSlider('mddLogSlide','mddLogVal', v=>v.toFixed(1), v=>{ MDD_LOG=v; });
 bindSlider('retardSlide','retardVal', v=>v.toFixed(2), v=>{ RETARD_STRENGTH=v; });
-bindSlider('gScaleSlide','gScaleVal', v=>`×10^${v}`, v=>{ G_SCALE_EXP=v; });
+bindSlider('gScaleSlide','gScaleVal', v=>`×10^${Number.isInteger(v) ? v : v.toFixed(1)}`, v=>{ G_SCALE_EXP=v; });
 bindSlider('dtSlide','dtVal', v=>v.toFixed(4), v=>{ DT=v; addLog(`⏱️ DT=${v.toFixed(4)} Myr`); });
+bindSlider('animSpeedSlide','animSpeedVal', v=>v.toFixed(2)+'x', v=>{ ANIM_SPEED=v; });
 bindSlider('histBufSlide','histBufVal', v=>v, v=>{ HIST_BUF_SIZE=v; addLog(`🕰️ 버퍼 ${v}스텝`); });
 bindSlider('nStarSlide','nStarVal', v=>v, v=>{ N_STARS=v; });
 bindSlider('collideNSlide','collideNVal', v=>v, v=>{ COLLIDE_N=v; });
@@ -793,7 +1108,8 @@ function setVelMode(mode) {
         random:   '⚠️ 완전 랜덤 속도',
         zero:     '⚠️ 완전 정지'
     };
-    document.getElementById('velModeDesc').innerHTML = `현재: ${desc[mode]} ${vyZeroMode ? '· vy=0' : '· vy=랜덤'}`;
+    const descDiv = document.getElementById('velModeDesc');
+    if (descDiv) descDiv.innerHTML = `현재: ${desc[mode]} ${vyZeroMode ? '· vy=0' : '· vy=랜덤'}`;
     addLog('속도 모드: ' + mode);
 }
 document.getElementById('velCircBtn').addEventListener('click', () => setVelMode('circular'));
@@ -818,7 +1134,96 @@ document.getElementById('clearBtn').addEventListener('click', () => {
 });
 
 // ============================================================
-// [9] 메인 루프
+// [9.5] SPARC 피팅 기능
+// ============================================================
+let sparcData = null;
+document.getElementById('csvFileInput').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+        const text = ev.target.result;
+        const lines = text.trim().split('\n');
+        sparcData = [];
+        for (let i = 1; i < lines.length; i++) {
+            const parts = lines[i].split(',');
+            if (parts.length >= 2) {
+                const r = parseFloat(parts[0]);
+                const v = parseFloat(parts[1]);
+                if (!isNaN(r) && !isNaN(v) && r > 0 && v > 0) {
+                    sparcData.push({ r, v });
+                }
+            }
+        }
+        addLog(`📁 SPARC 데이터 로드: ${sparcData.length}개 포인트`);
+        document.getElementById('fitResults').innerHTML = `📊 데이터 로드 완료: ${sparcData.length}개 포인트<br>피팅을 실행하세요.`;
+    };
+    reader.readAsText(file);
+});
+
+document.getElementById('fitBtn').addEventListener('click', () => {
+    if (!sparcData || sparcData.length === 0) {
+        document.getElementById('fitResults').innerHTML = '❌ 먼저 CSV 파일을 업로드하세요.';
+        return;
+    }
+    // 그리드 서치로 최적 Ṁ_pair 찾기 (M̈ 값 최적화)
+    const mddValues = [6, 7, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12];
+    let bestMdd = MDD_LOG;
+    let bestChi2 = Infinity;
+    const results = [];
+    
+    for (const mdd of mddValues) {
+        // 임시로 M̈ 설정
+        const originalMdd = MDD_LOG;
+        MDD_LOG = mdd;
+        let chi2 = 0;
+        let valid = 0;
+        for (const pt of sparcData) {
+            if (pt.r > GALAXY_RADIUS) continue;
+            const v_sim = kpcMyrToKms(newtonCircularVelocityRelativeToBH(pt.r));
+            if (v_sim > 0) {
+                const diff = (pt.v - v_sim) / pt.v;
+                chi2 += diff * diff;
+                valid++;
+            }
+        }
+        if (valid > 0) {
+            chi2 /= valid;
+            results.push({ mdd, chi2 });
+            if (chi2 < bestChi2) {
+                bestChi2 = chi2;
+                bestMdd = mdd;
+            }
+        }
+        MDD_LOG = originalMdd;
+    }
+    
+    const ratio = bestChi2 > 0 ? (1 / Math.sqrt(bestChi2)).toFixed(2) : '?';
+    document.getElementById('fitResults').innerHTML = `
+        📐 피팅 결과<br>
+        ✅ 최적 M̈ log₁₀ = ${bestMdd.toFixed(1)}<br>
+        📉 최소 χ² = ${bestChi2.toFixed(4)}<br>
+        ⚡ 속도 이상비 ≈ ${ratio}x<br>
+        💡 이 값을 M̈ 슬라이더에 설정하세요.
+    `;
+    addLog(`📐 피팅 완료: 최적 M̈=${bestMdd.toFixed(1)}, χ²=${bestChi2.toFixed(4)}`);
+});
+
+// ============================================================
+// [10] 탭 전환
+// ============================================================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(`tab-${tabId}`).classList.add('active');
+    });
+});
+
+// ============================================================
+// [11] 메인 루프
 // ============================================================
 let fps=60, _lastTime=performance.now(), _frames=0, _frameStep=0;
 
@@ -829,8 +1234,9 @@ function animate() {
     if (now-_lastTime >= 1000) { fps=_frames; _frames=0; _lastTime=now; }
 
     if (!paused && starData.length > 0) {
+        const effectiveDT = DT * ANIM_SPEED;
         for (let i = 0; i < starData.length; i++) {
-            leapfrogStep(starData[i], DT);
+            leapfrogStep(starData[i], effectiveDT);
             const s = starData[i];
             const dx = s.pos.x - bhOffset.x;
             const dz = s.pos.z - bhOffset.z;
@@ -858,7 +1264,7 @@ function animate() {
                 }
             }
         }
-        simTimeMyr += DT;
+        simTimeMyr += effectiveDT;
         updateStarPositions();
     }
 
@@ -886,8 +1292,16 @@ updateBHVisual();
 drawRotationCurve();
 updateHUD();
 
+// 로그 엘리먼트 없으면 생성
+if (!document.getElementById('logEntries')) {
+    const logDiv = document.createElement('div');
+    logDiv.id = 'logEntries';
+    logDiv.style.cssText = 'position:absolute; bottom:80px; left:18px; width:300px; background:rgba(0,0,0,0.6); border-radius:12px; padding:6px 10px; font-size:8px; color:#acd; z-index:30;';
+    document.body.appendChild(logDiv);
+}
+
 // ============================================================
-// [10] 방향키 제어 (Shift + 방향키 = 미세 이동)
+// [12] 방향키 제어 (Shift + 방향키 = 미세 이동)
 // ============================================================
 document.addEventListener('keydown', e => {
     const slowMode = e.shiftKey;
@@ -913,13 +1327,10 @@ document.addEventListener('keydown', e => {
     }
     
     if (changed) {
-        // 각도 정규화 (0 ~ 2π)
         BH_ANG = (BH_ANG + Math.PI * 2) % (Math.PI * 2);
-        
         updateBHOffset();
         updateBHVisual();
         
-        // 슬라이더 UI 업데이트
         document.getElementById('bhRadSlide').value = BH_RAD;
         document.getElementById('bhAngSlide').value = BH_ANG * (180 / Math.PI);
         document.getElementById('bhRadVal').textContent = BH_RAD.toFixed(3);
@@ -927,21 +1338,30 @@ document.addEventListener('keydown', e => {
         
         addLog(`🎮 BH 변위: ${slowMode ? '🐢 미세이동' : '⚡ 이동'} | r=${BH_RAD.toFixed(3)} kpc, θ=${(BH_ANG*180/Math.PI).toFixed(1)}°`);
         
-        // 미세 이동 모드임을 시각적으로 표시 (잠깐)
         if (slowMode) {
             const hint = document.getElementById('keyHint');
-            hint.style.color = '#4ef';
-            hint.style.borderColor = '#4ef';
-            setTimeout(() => {
-                hint.style.color = '#8af';
-                hint.style.borderColor = '#2af4';
-            }, 300);
+            if (hint) {
+                hint.style.color = '#4ef';
+                hint.style.borderColor = '#4ef';
+                setTimeout(() => {
+                    hint.style.color = '#8af';
+                    hint.style.borderColor = '#2af4';
+                }, 300);
+            }
         }
     }
 });
 
+// 플래시 오버레이 생성
+if (!document.getElementById('flashOverlay')) {
+    const flash = document.createElement('div');
+    flash.id = 'flashOverlay';
+    flash.style.cssText = 'position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 50% 50%, rgba(0,200,255,0.07) 0%, transparent 70%); opacity:0; transition:opacity 0.05s; z-index:20;';
+    document.body.appendChild(flash);
+}
+
 animate();
-addLog('✅ Galaxy | 물리 모드 | DT=0.015 Myr | vy=0 기본 | ⇧Shift+방향키 = 미세 이동');
+addLog('✅ Galaxy v5.1 | 나선팔 정량 분석 (Fourier m=2) + SPARC 피팅 | 방향키로 BH 이동 → S₂ 값 변화 관찰!');
 </script>
 </body>
 </html>
