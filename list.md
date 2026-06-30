@@ -19,7 +19,7 @@ https://ko-fi.com/Manage/
 #500px.com/p/Vonxu
 https://500px.com/p/Vonxu?view=photos
 
-#github.com/xur94-maker/SeoulInside
+#github.com/xur94-maker/
 https://github.com/xur94-maker/SeoulInside
 
 #Sitemaps
