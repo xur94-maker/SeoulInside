@@ -1,19 +1,39 @@
 다음뉴스 실시간 트렌드
 https://news.daum.net/
+
 네이버 뉴스 (랭킹)
 https://news.naver.com/
+
 구글 뉴스 (한국)
 https://news.google.com/home?hl=ko&gl=KR&ceid=KR%3Ako
+
 구글 트렌드 실시간 인기
 https://trends.google.co.kr/trending
+
 YTN
 https://ytn.co.kr/
+
 MBC 뉴스
 https://imnews.imbc.com/
+
 네이버 데이터랩 (검색어 트렌드)
 https://datalab.naver.com/
+
 구글 트렌드
 https://trends.google.co.kr/trending
+
+facebook.com/sun.vonxu
+https://www.facebook.com/sun.vonxu
+
+seoulinside.bsky.social
+https://bsky.app/profile/seoulinside.bsky.social
+
+x.com/Seoul_Inside
+https://x.com/Seoul_Inside
+
+seoulinside.substack.com
+https://seoulinside.substack.com/
+
 
 
 
