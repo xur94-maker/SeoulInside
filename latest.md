@@ -1,3 +1,41 @@
+다음뉴스 실시간 트렌드
+https://news.daum.net/
+네이버 뉴스 (랭킹)
+https://news.naver.com/
+구글 뉴스 (한국)
+https://news.google.com/home?hl=ko&gl=KR&ceid=KR%3Ako
+구글 트렌드 실시간 인기
+https://trends.google.co.kr/trending
+YTN
+https://ytn.co.kr/
+MBC 뉴스
+https://imnews.imbc.com/
+네이버 데이터랩 (검색어 트렌드)
+https://datalab.naver.com/
+구글 트렌드
+https://trends.google.co.kr/trending
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----
 From Particles to Galaxies
 Stage 1: Particle Accelerator (The Smallest World)
 These simulators implement LHC-level high-energy physics in a browser. The engine incorporates special relativity, decay branching ratios, and asymptotic freedom of the strong interaction — not a simple toy. It includes 39 particle species based on PDG 2022 data, the Boris integrator, the Bethe-Bloch formula, and other core elements of real particle physics experiments.
