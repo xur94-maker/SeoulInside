@@ -1,28 +1,28 @@
 {
   "globalNews": [
     {
-      "title": "Trump made more than $1bn from crypto in first year back in office",
-      "link": "https://www.bbc.co.uk/news/articles/cvgmv98ez3zo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 01 Jul 2026 11:41:13 GMT",
-      "desc": "The president's crypto income far outpaces his earnings from real estate and Trump-themed items such as watches."
-    },
-    {
       "title": "Three die in Mexico City World Cup celebrations",
       "link": "https://www.bbc.co.uk/news/articles/cx2xjwj8p39o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 01 Jul 2026 11:01:12 GMT",
       "desc": "More than one million people took to the streets of Mexico City on Tuesday to mark the country's win over Ecuador."
     },
     {
-      "title": "US Supreme Court upholds birthright citizenship in blow to Trump",
-      "link": "https://www.bbc.co.uk/news/articles/cgmepnx1wzzo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 01 Jul 2026 05:32:26 GMT",
-      "desc": "The ruling is a major setback for Donald Trump's immigration agenda, and has been welcomed by civil rights groups."
+      "title": "'Time for him to pay' - Carroll calls on Trump to pay $5m after president's appeal fails",
+      "link": "https://www.bbc.co.uk/news/articles/cn4r8n3ek80o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 01 Jul 2026 15:48:02 GMT",
+      "desc": "The writer's lawyers say Trump wants to delay paying the damages awarded by a jury that found the president liable for sexually abusing and defaming her."
     },
     {
-      "title": "At least five killed in fire at Antwerp apartment block, say police",
+      "title": "Fire kills five at Antwerp apartment block",
       "link": "https://www.bbc.co.uk/news/articles/c621dx0vl7xo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 01 Jul 2026 11:49:55 GMT",
-      "desc": "The fire broke out in the 10-storey block in the Linkeroever district of the Belgian city."
+      "date": "Wed, 01 Jul 2026 16:12:18 GMT",
+      "desc": "A man was seen clambering through a window to escape black smoke in the block where some 200 people live."
+    },
+    {
+      "title": "A plane crashed into a tower in Beijing but China is not saying what happened",
+      "link": "https://www.bbc.co.uk/news/articles/crlwe28dz44o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 30 Jun 2026 23:24:05 GMT",
+      "desc": "The collision left holes on the side of the tower, but Beijing has scrubbed other visible traces of the incident."
     },
     {
       "title": "Three-year-old rescued and taken to hospital six days after Venezuela quake",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 200.09,
-      "change": 7.56,
-      "pct": 3.93,
+      "price": 196.74,
+      "change": 1.77,
+      "pct": 0.91,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 477.57,
-      "change": 45.22,
-      "pct": 10.46,
+      "price": 446.64,
+      "change": -8.46,
+      "pct": -1.86,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 580.91,
-      "change": 59.33,
-      "pct": 11.38,
+      "price": 549.8,
+      "change": 10.31,
+      "pct": 1.91,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 139.63,
-      "change": 11.31,
-      "pct": 8.81,
+      "price": 128.82,
+      "change": -2.9,
+      "pct": -2.2,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 184.79,
-      "change": -4.6,
-      "pct": -2.43,
+      "price": 185.09,
+      "change": -3.63,
+      "pct": -1.92,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 354.57,
-      "change": 20.3,
-      "pct": 6.07,
+      "price": 342.34,
+      "change": -1.24,
+      "pct": -0.36,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 357.37,
-      "change": 19.98,
-      "pct": 5.92,
+      "price": 358.8,
+      "change": 5.15,
+      "pct": 1.46,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 289.36,
-      "change": 5.58,
-      "pct": 1.97,
+      "price": 295.18,
+      "change": 13.44,
+      "pct": 4.77,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 373.02,
-      "change": 0.05,
-      "pct": 0.01,
+      "price": 386.29,
+      "change": 17.72,
+      "pct": 4.81,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7499.36,
-      "change": 145.34,
-      "pct": 1.98,
+      "price": 7517.48,
+      "change": 77.05,
+      "pct": 1.04,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26213.72,
-      "change": 916.1,
-      "pct": 3.62,
+      "price": 26139.65,
+      "change": 319.51,
+      "pct": 1.24,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1557.99,
-      "change": 16.26,
-      "pct": 1.05,
+      "price": 1550.29,
+      "change": 8.56,
+      "pct": 0.56,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-01 12:12 UTC"
+  "updatedAt": "2026-07-01 16:16 UTC"
 }
