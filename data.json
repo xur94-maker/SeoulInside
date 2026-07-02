@@ -1,42 +1,42 @@
 {
   "globalNews": [
     {
+      "title": "At least 13 killed in large-scale Russian missile and drone strikes on Kyiv",
+      "link": "https://www.bbc.co.uk/news/articles/c4gyv05gk4do?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 02 Jul 2026 06:07:11 GMT",
+      "desc": "Russia launched its biggest strikes on the city in weeks with children among the \"significant number\" of casualties, Ukrainian officials say."
+    },
+    {
+      "title": "People smuggler convicted in France found by BBC living in UK and seeking asylum",
+      "link": "https://www.bbc.co.uk/news/articles/clye9zn0y1ro?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 02 Jul 2026 05:00:03 GMT",
+      "desc": "Once described as \"the godfather\" of French migrant camps, he has been working in a Leicestershire village."
+    },
+    {
+      "title": "'Two weeks after her death I got a call': Gaza patients face agonising delays for evacuation",
+      "link": "https://www.bbc.co.uk/news/articles/cn75ex1dv61o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 02 Jul 2026 04:59:55 GMT",
+      "desc": "An estimated 300 Palestinians referred for treatment abroad have died since the ceasefire began, according to Gaza's Hamas-run health ministry."
+    },
+    {
       "title": "Aunt of Venezuelan boy pulled from rubble tells BBC she will give him 'mother's warmth'",
       "link": "https://www.bbc.co.uk/news/articles/c05yv34qlnlo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 01 Jul 2026 21:27:04 GMT",
+      "date": "Thu, 02 Jul 2026 00:26:13 GMT",
       "desc": "Kleiber Moran, 2, was rescued on Wednesday, six days after last week's deadly earthquakes."
     },
     {
-      "title": "Ukrainian charged in Germany over Nord Stream blasts",
-      "link": "https://www.bbc.co.uk/news/articles/c33yjk0ldkdo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 01 Jul 2026 18:19:32 GMT",
-      "desc": "Ukraine denies involvement in the case which may have serious implications for its relationship with Germany."
-    },
-    {
-      "title": "US blocks long-term renewal of North American trade deal",
-      "link": "https://www.bbc.co.uk/news/articles/ce8j2lmrvrdo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 01 Jul 2026 18:56:36 GMT",
-      "desc": "US blocks 16-year North America trade deal renewal, triggering annual rolling reviews"
-    },
-    {
-      "title": "Nigeria to seek compensation for property abandoned by citizens fleeing South Africa",
-      "link": "https://www.bbc.co.uk/news/articles/c9d2n8elwdlo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 01 Jul 2026 17:40:29 GMT",
-      "desc": "Nigeria's High Commissioner says businesses and properties left behind by returnees are being documented."
-    },
-    {
-      "title": "Watch: Two people climb to highest point of Empire State Building",
-      "link": "https://www.bbc.co.uk/news/videos/cz75gz79pl2o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 01 Jul 2026 17:08:56 GMT",
-      "desc": "The two were atop the 1,454 ft (443 m) building for at least ten minutes and displayed a large banner before climbing down."
+      "title": "From Truman's pension to Trump's billions - a White House windfall unmatched by any president",
+      "link": "https://www.bbc.co.uk/news/articles/c70yk07vq0po?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 01 Jul 2026 22:36:43 GMT",
+      "desc": "Historians say Trump's $2.2bn income last year is unprecedented and blurs the line on conflicts of interest."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s Exports Surge by Most Since 1978 on Red-Hot Demand for Chips - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOdnZrZkZSVVZRaXdfTWhNeTdmMUVHM0NaRXh2Rl9DSVhBVFFOTXJZZTdnQlBnNFNyQ2syeDBBX0pRTHMtMUN1REs3c1NTNkJnbE5tRUpudDB1SzZ3WDFfZkpUeTBOcVpTY2VIb1Z1RE5TWG9ZOHF0cTNqV3RkWTRkSFZINmdwdWRXQ1lPcldvbW4tQTVoMl81eA?oc=5",
-      "date": "Wed, 01 Jul 2026 02:25:00 GMT",
-      "desc": "South Korea’s Exports Surge by Most Since 1978 on Red-Hot Demand for Chips&nbsp;&nbsp;WSJ"
+      "title": "South Korea Inflation Accelerates to 30-Month High in June - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxONkZXX0c2NFdHZUVBdDFPUUNGanVBeVBreENYTFVuaWdqb3JnYjhaUElMRDVra3poeERMbjl6a0FwUVR2bXE0UW5OMUpWZUcxMzhLb2oyWGR5Z0JES0hUUEktekVPNk1WUFRaSE9iUmJRV0RlWmhCb29XOThMNlA2bDFPV2NoMXlMYlZCUHNXR09oUkNvQVB0SXozQQ?oc=5",
+      "date": "Thu, 02 Jul 2026 00:06:00 GMT",
+      "desc": "South Korea Inflation Accelerates to 30-Month High in June&nbsp;&nbsp;WSJ"
     },
     {
       "title": "A seven-member South Korean boy band named BTS has contributed close to $50 billion to South Korea's economy across the first decade of its existence, a share of the country's GDP comparable to that of a major Korean airline — and the small Korean ente - Space Daily",
@@ -45,22 +45,28 @@
       "desc": "A seven-member South Korean boy band named BTS has contributed close to $50 billion to South Korea's economy across the first decade of its existence, a share of the country's GDP comparable to that o"
     },
     {
-      "title": "South Korea exports in June soar past $100bn for first time on chip demand - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQZGRXSUxxbzRzZE1LVU5CSXNCZkswYUlFS291RGsyT3BJSzlOcUpVdmVwb3B2RWZIRUVZZnM5bG9hTzVfWGgzTWlOZ2pMWVVBYlFwRzRyYlNEYXpQLWZ4V0ZRd0lybENMRDY2SEk2ekdncEN3eWVxZklqeVZ1TWFYNW4xQmloVmk1RjVwU3dQcFdQOTYxckgyT3AtcHlrNGhtS1MzRFczUXA?oc=5",
+      "title": "Global Appetite for Korea Grows Ahead of 24-Hour Won Trading - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNaXdxVkNCbTI0WEdUdi00ZG1uaXVOb0l0V0NQUmhlWWhIUjM5TllqVHhfZHhiQmpnbHlsR0VVRDJUcmI0eFY1M3o5VVJFd0FJMkhQak15UndSOGVFaGFaYkdjcnJfcWI0TTV0c0Z6RXpROU83RUhXZl9ZVENoYlViSTR1NTVud2FWTVlZcDR2TU0zdjc4emNQZnpGSFd4R1dhTW9NU1lpZGotMW9aSl9LdQ?oc=5",
+      "date": "Thu, 02 Jul 2026 02:00:00 GMT",
+      "desc": "Global Appetite for Korea Grows Ahead of 24-Hour Won Trading&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "South Korean exports in June soar past $100bn for first time on chip demand - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQNUxDZDFOTkxDUHZ4Sk1JUXlGWmE0YUpORDNhN2l3NUpBVGFyQWdZTTdRMVNMMVUzdEpNcWhaR0t4T1l0S0x0Q3pXZ05ibDE3eTVoNG01bWFfeDM5cGl4VEFEX2FZUEFvUDJMb3ZCdEVZWlE3bFYtY1Y0ajBmbkhLN2toN2VWZERrZVJUaE5kZHNrNHdrUFByUktNdmVEcWJHU1pleGk1WGZmdw?oc=5",
       "date": "Wed, 01 Jul 2026 02:15:00 GMT",
-      "desc": "South Korea exports in June soar past $100bn for first time on chip demand&nbsp;&nbsp;Nikkei Asia"
+      "desc": "South Korean exports in June soar past $100bn for first time on chip demand&nbsp;&nbsp;Nikkei Asia"
     },
     {
-      "title": "South Korea unveils $880 billion megaplan to challenge US, China and Taiwan in AI chip dominance and glob - The Times of India",
-      "link": "https://news.google.com/rss/articles/CBMipAJBVV95cUxOd1Z6bnlleVJHamk1QjEza21JZUozLXhIOXNFQ1pfcjVZU0dmMld6U2NGTnFyWFhnNnFIbWd3ODFVaDQ3WGVsY1pJaUJfZ20yU3dCTlRhOGNUSnhGdm9OQnlmNnpDcnJhdFpYVEQ5Z3liX19kYkk3c0NMc3haWUtoTE5xVmR0ZXRhZ2RlcG94WUpIcTRKanZLTTRmUklIV3VPSE5NaWMxbEY4MGpRXzlzdDN6anNDaEhuOGltRnB4WnNYSWlfNVh3Mk1XVzJZNnRma2RTY1Q4OXFuSE1XeWdxckcwdVM0UlBhZEhkdXo0cmdLN2c3eVBOMUYxaG9XdXRPUlc0MExnLUQ5TDRwMUpOWE5JSkVpSTl5TFE0OUp1RnhjVFox0gGqAkFVX3lxTE5xUFoxWDRjem05N1ZGTXdWc25fT01JZmg1UjUwZldYOHRLc3R2YVlCRUh1S2FpT29aMTJSYUxrQWQyTGloWlNVdkVISzZKRnE5QzJSa25XbHdRS1E4Zmk1Ymd3OHg0blFtMGtjZ3d5aEpVQzVJTDdqMmJyN2VJZjZLMnVGUmJtTmJZQTA5SDFmdHRlaUZZSndFdW1lOGNzM2NncVZFZGg4amxEZFVaSFM3dFdiTlRmVHB3cmpocGZuUW1ySlY5MHo4SDRmSm5wTUNhOVZyTWxvQ2t2Z0tmb3FzUWNfVDBFX1ktREl2VFlBRGtUMFE4al9hUlFram5mTW8wbGtRclJYMU11QnNTY0QzS0R1VWFLeGxXYjVGSHpYdlpBUnc2cWZtVGc?oc=5",
-      "date": "Tue, 30 Jun 2026 10:26:00 GMT",
-      "desc": "South Korea unveils $880 billion megaplan to challenge US, China and Taiwan in AI chip dominance and glob&nbsp;&nbsp;The Times of India"
+      "title": "IT index surges nearly 4%: AI trade in South Korea is weakening, says this analyst - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPUm40VE51dk84SVU5ek1vQ25IM2ZiQmNKOGFaWnpPbzJweVVNSHZCUFIteXpsSXdvdzhQV0tZbU12QU42dXdfRnJVZkd0dDBsWEhVZXZ2VVJJZ1dQYWRXUFE0WHFvY1gzQXEtLXJGY0ViSmI1NHFBdTVtajNuNW9LeWtIb1JoQjB5WHQ5U09sMUVYOGh6dy00TWF3WGhjNVdkVGE5Sm9WbUpxVi1RelpnenQ5WGc5UVB3a0NxZkJfdzlfSE9YLVh5dGJTYTZjVjFDY3g3dk5TSTJNQQ?oc=5",
+      "date": "Thu, 02 Jul 2026 05:14:00 GMT",
+      "desc": "IT index surges nearly 4%: AI trade in South Korea is weakening, says this analyst&nbsp;&nbsp;TradingView"
     },
     {
-      "title": "South Korea exports set to grow at strongest pace in nearly 5 decades: Reuters poll - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQV3pLWENpV0VfOHFXbk8wR29OeTBjbUNpZXhUS3lHVThJdWNIdFl5TG9sa0k2TE9yYUNTeFlCWlNZMGdGZlQwbTdjLTd3UmFqZEtINFhiSkRjZmZTbGlKQmlIeE5oTUZadkcwT0JNNmU2N1FMaF9icXlBVFZCTmJOdkxLREZVTHAzRlRXcl90S1NLX203cUluazc3YXg3WGY3cEdJRDZDSkdXSHd2ZWl5enR0YjlWZw?oc=5",
-      "date": "Mon, 29 Jun 2026 05:05:00 GMT",
-      "desc": "South Korea exports set to grow at strongest pace in nearly 5 decades: Reuters poll&nbsp;&nbsp;Reuters"
+      "title": "Samsung Electronics, SK Hynix shares tumble over 7% as chip rout spreads from Wall Street - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFU0NWhkYzZuZG9IRTd6cmpiUGhyRjFoWm1aSDdLNS0xQTRuUTFpS2JZSmM1b053aV9URXhrS3RFTVdYYUpIa3ZVbFhfWmlLbVRVdEJFckN1RTdJVXBYaHU5Q2tuaDVPeGFfTWFveTRfMjFiTU1YaTJfQXFES3Myb3EwUWZzSTRfSDU3dUYxYnQzcTMxZDNZ0gGcAUFVX3lxTE5VaUJOSWVBQm9jVlZyUjRZeC16NGFpdXNDNEMwMlNEQk1Nb3FhLXJmNTlKTFJUR3Rza293STRQOVJaNXRGUWVEUXFqMTRYZWE1RVNIY24tOFJvaFFmNmNmclhLdjJ4dHJNZkd5WTJHdW5aWXNJT05oYk91ckFKVVZ5RExWa0llcXdncWRMQTY5YnNLNUhQa0wyUFNENg?oc=5",
+      "date": "Thu, 02 Jul 2026 01:02:00 GMT",
+      "desc": "Samsung Electronics, SK Hynix shares tumble over 7% as chip rout spreads from Wall Street&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung, SK Hynix mega South Korea chips gamble tests optimism of AI cycle - Reuters",
@@ -69,16 +75,10 @@
       "desc": "Samsung, SK Hynix mega South Korea chips gamble tests optimism of AI cycle&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea says Samsung and SK Hynix investing in AI, semiconductor mega-projects - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPdXdkNkdRbUEzTDFsMURTTzlNckV3WXcyRXM3SFJXT3hfVC02TmFuclQyaXhvRlNCdktSazdhNUFCelRSRm82b3lXN0FReTg1YlBucDZZaTZIcmdVaHBLeXpyd1RTVFZBczRRa2J6eTJ0X1BIaGFUOEV0QjY5c0taWUF2UWl5SGRicG00VWxUcmFuSGZTLUZETi14QUpsRjlJZDd0U3Vn0gGrAUFVX3lxTE1nMktwTXZJZk1ZZE5pOXR0bjc2Y3dHVEV0YnNtUGQyZGpxdWlUdzd0eTZOaVRfMHJFQ1V6anQ5elBJV01nZ2xOcFk4UWlCdWhFTnZKWVFNWHBuZ09FcEo2OHpNMlNRMzNQdEZaMkhvSkxnM0VUQmdzM3I3Y25UbGFkLVNKWTlBbm5RRXc1RHZGNWJocDg0VXF5bHJIdGV4RVJKOG1RT0lPaTFOQQ?oc=5",
-      "date": "Mon, 29 Jun 2026 01:35:00 GMT",
-      "desc": "South Korea says Samsung and SK Hynix investing in AI, semiconductor mega-projects&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "South Korea announces $520bn chip plant project with Samsung, SK Hynix - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPWThKRlhLUlZ5NWkxdE5WRUhQZ3dqMC1uWnp3YWFaOG1fc0hvakVGaWhtUk05bHdmNVVqcmotUHF6VjI0aF9PTGZabFp2aHVQRUx4NDJqa1pIbEl3enFTMS1VNlVsZDNBeWZ3ejRmVXg3RGRSXzF0QUlhS1EzRlpuZUdQTVlhSUM4ZS1EenVvUjd0N3RoOWluY1ZFajhjUVl6N2M5ckw0QlQzWFl5RUpJbDdzMlN4c2NYVzFoQ3lB?oc=5",
-      "date": "Mon, 29 Jun 2026 07:22:00 GMT",
-      "desc": "South Korea announces $520bn chip plant project with Samsung, SK Hynix&nbsp;&nbsp;Nikkei Asia"
+      "title": "[News] Samsung, SK hynix 800 Trillion Won Expansion Strains Chipmaking Tool Supply, Potentially Pressures TSMC, Intel - TrendForce",
+      "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxOWWxXSVViRmp5Sm5aOEtXV0NPcTNEcTNqYk1zSUs1Z09Bb0NLUllpcXhIOFhuYkNvRlFIQVo5aHJjc2M4TTdfbG01V1lxN05tTmdBM2dkOWtZTWRlSmc1ckpfUXBvU0VPU0x5YV93bjVJOWhPTU5WeWJ5VWl6Q1ZoRlNzMzhRaHZhekdZV0EyTE9pdXZaWmxGTVVNRmVUX2VtQm5yVTN4Vk9hRy1ZUDBkc18tWXRJMUktd2tYMEduU01GeVRpN085bDJITGcwQTl1VTZjYmd6T09wODJRWVRPTFdoSXdjcFlIWmp5SGdGUGhvdw?oc=5",
+      "date": "Tue, 30 Jun 2026 02:33:35 GMT",
+      "desc": "[News] Samsung, SK hynix 800 Trillion Won Expansion Strains Chipmaking Tool Supply, Potentially Pressures TSMC, Intel&nbsp;&nbsp;TrendForce"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 314500.0,
-      "change": -8500.0,
-      "pct": -2.63,
+      "price": 283500.0,
+      "change": -50500.0,
+      "pct": -15.12,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2560000.0,
-      "change": -68000.0,
-      "pct": -2.59,
+      "price": 2202000.0,
+      "change": -448000.0,
+      "pct": -16.91,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 487500.0,
-      "change": -9500.0,
-      "pct": -1.91,
+      "price": 478000.0,
+      "change": -17000.0,
+      "pct": -3.43,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 141500.0,
-      "change": 900.0,
-      "pct": 0.64,
+      "price": 144700.0,
+      "change": 6700.0,
+      "pct": 4.86,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 197400.0,
-      "change": -6600.0,
-      "pct": -3.24,
+      "price": 199600.0,
+      "change": 600.0,
+      "pct": 0.3,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8303.41,
-      "change": -91.24,
-      "pct": -1.09,
+      "price": 7639.26,
+      "change": -837.22,
+      "pct": -9.88,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1552.63,
-      "change": 4.02,
-      "pct": 0.26,
+      "price": 1555.38,
+      "change": 6.77,
+      "pct": 0.44,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-02 02:11 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-02 06:32 UTC"
 }
