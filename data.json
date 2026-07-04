@@ -1,22 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Taylor Swift marries Travis Kelce in NYC ceremony officiated by Adam Sandler",
-      "link": "https://www.bbc.co.uk/news/articles/c982ry2pen3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 02:26:54 GMT",
-      "desc": "The star-studded celebration saw several streets in Midtown Manhattan shut, as hordes of fans gathered outside the arena."
-    },
-    {
       "title": "Brutal heat cancels Fourth of July events, from DC to Philadelphia",
       "link": "https://www.bbc.co.uk/news/articles/cevlkzer7vdo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 04 Jul 2026 02:57:48 GMT",
       "desc": "More than 165 million people are enduring dangerous heat and humidity, with temperatures expected to stay at 38C (100F) for several days."
     },
     {
-      "title": "Keiko Fujimori declared winner of Peru's presidential election weeks after vote",
-      "link": "https://www.bbc.co.uk/news/articles/cr5jpvv06e1o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 07:52:55 GMT",
-      "desc": "The daughter of disgraced president Alberto Fujimori is declared winner of tight race nearly a month after voting took place."
+      "title": "Ukraine hits major oil terminal in Russia's St Petersburg",
+      "link": "https://www.bbc.co.uk/news/articles/c8j2vmzxezro?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 04 Jul 2026 18:41:25 GMT",
+      "desc": "Ukrainian President Volodymyr Zelensky says the target is key infrastructure \"that generates revenue for Russia's war\"."
     },
     {
       "title": "Large crowds gather in Tehran on first day of Ayatollah Khamenei's funeral",
@@ -25,19 +19,19 @@
       "desc": "Ali Khamenei's body will lie in state in Tehran's Grand Mosalla until Monday, before travelling across Iran and Iraq."
     },
     {
-      "title": "Ukraine hits major oil terminal in Russia's St Petersburg",
-      "link": "https://www.bbc.co.uk/news/articles/c8j2vmzxezro?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 14:07:31 GMT",
-      "desc": "Ukrainian President Volodymyr Zelensky says the target is key infrastructure \"that generates revenue for Russia's war\"."
+      "title": "Former chess champion Kramnik banned over cheating remarks",
+      "link": "https://www.bbc.co.uk/news/articles/cd6epx607dqo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 04 Jul 2026 15:45:15 GMT",
+      "desc": "The former Russian world chess champion had accused other players, including the late Daniel Naroditsky, of cheating."
+    },
+    {
+      "title": "Injury ends Williams' Wimbledon comeback",
+      "link": "https://www.bbc.co.uk/sport/tennis/articles/ce95mxn1rlmo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 04 Jul 2026 17:22:46 GMT",
+      "desc": "Serena Williams pulls out of her planned Wimbledon doubles appearance with older sister Venus because of a knee injury."
     }
   ],
   "koreaNews": [
-    {
-      "title": "After the 1997 Asian Financial Crisis nearly bankrupted South Korea, the government decided to rebuild the country through culture instead of manufacturing — and by 2022 a nation of 51 million was earning $12 billion a year in music, film, television, and cos - Space Daily",
-      "link": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxNdVB3S2dtVklsRjZoNkZqQVl1RmVfdDNBU0NQbnlhMm5wajVUM05oNDQ0Y1NkcGdVYzJyMW1IOHFaQ2FVTEYyUkNPY0gyU1BneTNfWVdiX0NLRjlvMF84TjNKYzhRXzMyTmJLT0tzazFSb3dLVVpCMElOSEw1REJDeEdndzF2ZjI0cUhvalhydldCVFJDWWw5Mkw2VHpVQ0pEeUw3MmhvcG5FUDBDaGt4ZEJGVVJvanM3M0pOMDItc1o3VExmUFpvOVhqWjVOZWlvUjRtRWVqWjdtS1lZSENwbEZCTUdKalhfenRZWHI1Z19GMlpReVlmdmZpM2V3bW5vS0M3X3NZSUk1amFjY04wcThhWEdWeU81MDEwVUtYVG5YMldCNG1PM2psZmhCajRkTXBfUnRSV29GTUU?oc=5",
-      "date": "Fri, 03 Jul 2026 17:15:06 GMT",
-      "desc": "After the 1997 Asian Financial Crisis nearly bankrupted South Korea, the government decided to rebuild the country through culture instead of manufacturing — and by 2022 a nation of 51 million was ear"
-    },
     {
       "title": "South Korea Inflation Accelerates to 30-Month High in June - WSJ",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxONkZXX0c2NFdHZUVBdDFPUUNGanVBeVBreENYTFVuaWdqb3JnYjhaUElMRDVra3poeERMbjl6a0FwUVR2bXE0UW5OMUpWZUcxMzhLb2oyWGR5Z0JES0hUUEktekVPNk1WUFRaSE9iUmJRV0RlWmhCb29XOThMNlA2bDFPV2NoMXlMYlZCUHNXR09oUkNvQVB0SXozQQ?oc=5",
@@ -53,8 +47,14 @@
     {
       "title": "How South Koreans donated 227 tonnes of gold to rescue their economy after the 1997 IMF bailout - The Times of India",
       "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxNQjQ4bVYtcTYzVzhRajVCU0lFaGg4RWFvNDNGRTRjaGFQSW5qei1GTTBpcG9vN29fcU9XQVlCTnp0b2J0OFhFSmlQWXJ5cmFpOEQ4N0pweUJoZDQ1cVprQ3RZc083RlQ4S25oOTJfdUtCWXlrV19RS1llX1IzNUIzQTJoTE80cXhkVVU1ZWprVGNsNDRBbEQxWUlNWTczTEU0ZTBzRnpRNlRGZ3dqTXV1RDRlUmpTZ3JzODNjaTlleHZlSDR0VmtiZjVlLTEtMzVXcVJuaERUaks2WnlvVi05WDNJZUdQNzZzWldqOGpONTQ3c3paU1BjUm5EN2tkbnpkLU03OEZiNGXSAY4CQVVfeXFMTTYxVHJiekg0Qnhla3NaTy1VZEpYclhQay15aWtaQ2trcTNsN3dQT0UxeGI5MHJ5cWJ3QXZBcjd3ZDIxWFpJRTlqa0s2aXVkazZvMkRxTWpGeHhOU01URWk2SmFxLWtOMDI3QkgxTEg5VWlhaWpBMVU4d2E0b1RLYnZlOFRvcWhjVlJndVlOQXB2X3BfMkZ4a3FXZ2ZOSmQ1LW91WmZZVkpnSk45T2VnQ3FxUDlHRVd1djUxWkR4Z1NMUjFraURndFJhQUpXc3NlbnB3djUxa0RLVW12YkYySHpIaG9GWkRnRUhrYjduNG9faG5waVFHQVJQTVk3Tm9KSlVPTlJ5bUJUR01jUjBn?oc=5",
-      "date": "Fri, 03 Jul 2026 04:36:00 GMT",
+      "date": "Sat, 04 Jul 2026 07:22:00 GMT",
       "desc": "How South Koreans donated 227 tonnes of gold to rescue their economy after the 1997 IMF bailout&nbsp;&nbsp;The Times of India"
+    },
+    {
+      "title": "After the 1997 Asian Financial Crisis nearly bankrupted South Korea, the government decided to rebuild the country through culture instead of manufacturing — and by 2022 a nation of 51 million was earning $12 billion a year in music, film, television, and cos - Space Daily",
+      "link": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxNdVB3S2dtVklsRjZoNkZqQVl1RmVfdDNBU0NQbnlhMm5wajVUM05oNDQ0Y1NkcGdVYzJyMW1IOHFaQ2FVTEYyUkNPY0gyU1BneTNfWVdiX0NLRjlvMF84TjNKYzhRXzMyTmJLT0tzazFSb3dLVVpCMElOSEw1REJDeEdndzF2ZjI0cUhvalhydldCVFJDWWw5Mkw2VHpVQ0pEeUw3MmhvcG5FUDBDaGt4ZEJGVVJvanM3M0pOMDItc1o3VExmUFpvOVhqWjVOZWlvUjRtRWVqWjdtS1lZSENwbEZCTUdKalhfenRZWHI1Z19GMlpReVlmdmZpM2V3bW5vS0M3X3NZSUk1amFjY04wcThhWEdWeU81MDEwVUtYVG5YMldCNG1PM2psZmhCajRkTXBfUnRSV29GTUU?oc=5",
+      "date": "Fri, 03 Jul 2026 17:15:06 GMT",
+      "desc": "After the 1997 Asian Financial Crisis nearly bankrupted South Korea, the government decided to rebuild the country through culture instead of manufacturing — and by 2022 a nation of 51 million was ear"
     },
     {
       "title": "South Korean exports in June soar past $100bn for first time on chip demand - Nikkei Asia",
@@ -63,16 +63,16 @@
       "desc": "South Korean exports in June soar past $100bn for first time on chip demand&nbsp;&nbsp;Nikkei Asia"
     },
     {
-      "title": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFU0NWhkYzZuZG9IRTd6cmpiUGhyRjFoWm1aSDdLNS0xQTRuUTFpS2JZSmM1b053aV9URXhrS3RFTVdYYUpIa3ZVbFhfWmlLbVRVdEJFckN1RTdJVXBYaHU5Q2tuaDVPeGFfTWFveTRfMjFiTU1YaTJfQXFES3Myb3EwUWZzSTRfSDU3dUYxYnQzcTMxZDNZ?oc=5",
-      "date": "Thu, 02 Jul 2026 01:02:00 GMT",
-      "desc": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street&nbsp;&nbsp;CNBC"
-    },
-    {
       "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
       "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
       "date": "Fri, 03 Jul 2026 13:17:47 GMT",
       "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
+    },
+    {
+      "title": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFU0NWhkYzZuZG9IRTd6cmpiUGhyRjFoWm1aSDdLNS0xQTRuUTFpS2JZSmM1b053aV9URXhrS3RFTVdYYUpIa3ZVbFhfWmlLbVRVdEJFckN1RTdJVXBYaHU5Q2tuaDVPeGFfTWFveTRfMjFiTU1YaTJfQXFES3Myb3EwUWZzSTRfSDU3dUYxYnQzcTMxZDNZ?oc=5",
+      "date": "Thu, 02 Jul 2026 01:02:00 GMT",
+      "desc": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung, SK Hynix mega South Korea chips gamble tests optimism of AI cycle - Reuters",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-04 14:57 UTC"
+  "updatedAt": "2026-07-04 22:54 UTC"
 }
