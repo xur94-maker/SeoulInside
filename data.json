@@ -1,16 +1,16 @@
 {
   "globalNews": [
     {
+      "title": "Iran's supreme leader absent as senior officials attend ayatollah's funeral",
+      "link": "https://www.bbc.co.uk/news/articles/cevllyj9vv3o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 05 Jul 2026 12:29:18 GMT",
+      "desc": "Mojtaba Khamenei has not been seen in public since the attack which killed his father at the onset of the US-Israel war with Iran."
+    },
+    {
       "title": "US marks 250th birthday with fireworks, flyovers and extreme weather",
       "link": "https://www.bbc.co.uk/news/articles/cp9lppvkmz5o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 05 Jul 2026 08:24:32 GMT",
       "desc": "US President Donald Trump's speech included some of his political agenda but also honoured war veterans and American history."
-    },
-    {
-      "title": "Ukraine hits major oil terminal in Russia's St Petersburg",
-      "link": "https://www.bbc.co.uk/news/articles/c8j2vmzxezro?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 18:41:25 GMT",
-      "desc": "Ukrainian President Volodymyr Zelensky says the target is key infrastructure \"that generates revenue for Russia's war\"."
     },
     {
       "title": "Evacuations in Guam as super typhoon Bavi approaches",
@@ -19,16 +19,16 @@
       "desc": "The storm is forecast to bring winds in excess of 160mph and waves nearly 11m high when it makes landfall on Monday."
     },
     {
+      "title": "Australia probes mystery space balls that washed up on beach",
+      "link": "https://www.bbc.co.uk/news/articles/c1jyydr7jnjo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 05 Jul 2026 12:55:58 GMT",
+      "desc": "Officials are searching for the origins of six pieces of space debris discovered on Forrest Beach in Queensland."
+    },
+    {
       "title": "Chinese underground church figure Jin Mingri freed from prison",
       "link": "https://www.bbc.co.uk/news/articles/c4gy51ky75vo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 05 Jul 2026 05:58:21 GMT",
       "desc": "The Zion Church founder's release comes after a direct plea to Xi Jinping from Donald Trump."
-    },
-    {
-      "title": "Former chess champion Kramnik banned over cheating remarks",
-      "link": "https://www.bbc.co.uk/news/articles/cd6epx607dqo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 15:45:15 GMT",
-      "desc": "The former Russian world chess champion had accused other players, including the late Daniel Naroditsky, of cheating."
     }
   ],
   "koreaNews": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1530.15,
-      "change": -21.66,
-      "pct": -1.4,
+      "price": 1529.16,
+      "change": -22.65,
+      "pct": -1.46,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-05 11:07 UTC"
+  "updatedAt": "2026-07-05 15:05 UTC"
 }
