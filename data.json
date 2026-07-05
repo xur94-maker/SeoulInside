@@ -1,10 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "Brutal heat cancels Fourth of July events, from DC to Philadelphia",
-      "link": "https://www.bbc.co.uk/news/articles/cevlkzer7vdo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 02:57:48 GMT",
-      "desc": "More than 165 million people are enduring dangerous heat and humidity, with temperatures expected to stay at 38C (100F) for several days."
+      "title": "US marks its 250th birthday with fireworks, flyovers and extreme weather",
+      "link": "https://www.bbc.co.uk/news/articles/cp9lppvkmz5o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 05 Jul 2026 04:38:09 GMT",
+      "desc": "US President Donald Trump's speech included some of his political agenda but also honoured war veterans and American history."
     },
     {
       "title": "Ukraine hits major oil terminal in Russia's St Petersburg",
@@ -13,42 +13,42 @@
       "desc": "Ukrainian President Volodymyr Zelensky says the target is key infrastructure \"that generates revenue for Russia's war\"."
     },
     {
-      "title": "Large crowds gather in Tehran on first day of Ayatollah Khamenei's funeral",
-      "link": "https://www.bbc.co.uk/news/articles/c0ky2zen1kgo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 09:45:55 GMT",
-      "desc": "Ali Khamenei's body will lie in state in Tehran's Grand Mosalla until Monday, before travelling across Iran and Iraq."
+      "title": "Moment of destiny for France's Le Pen in verdict to decide her future in presidential race",
+      "link": "https://www.bbc.co.uk/news/articles/c5yzlwz34p7o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 04 Jul 2026 23:17:24 GMT",
+      "desc": "Far-right leader Marine Le Pen is appealing against a verdict which found her guilty of misusing EU funds."
+    },
+    {
+      "title": "Chinese underground church figure Jin Mingri freed from prison",
+      "link": "https://www.bbc.co.uk/news/articles/c4gy51ky75vo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 05 Jul 2026 05:58:21 GMT",
+      "desc": "The Zion Church founder's release comes after a direct plea to Xi Jinping from Donald Trump."
     },
     {
       "title": "Former chess champion Kramnik banned over cheating remarks",
       "link": "https://www.bbc.co.uk/news/articles/cd6epx607dqo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 04 Jul 2026 15:45:15 GMT",
       "desc": "The former Russian world chess champion had accused other players, including the late Daniel Naroditsky, of cheating."
-    },
-    {
-      "title": "Injury ends Williams' Wimbledon comeback",
-      "link": "https://www.bbc.co.uk/sport/tennis/articles/ce95mxn1rlmo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 17:22:46 GMT",
-      "desc": "Serena Williams pulls out of her planned Wimbledon doubles appearance with older sister Venus because of a knee injury."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
+      "date": "Tue, 23 Jun 2026 07:00:00 GMT",
+      "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
+    },
+    {
+      "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYUZrbDM4Q3U2eGh2QmE5Z3BGYnBzVDVBRDZpLTk1aWdkcFlCWVlIWk1yMWVLOUJtZG15WXVpRzQwNmstMENsQ2RHMURQYkRCam9ITV9iUTRmbHVUVlhKc1FFbi0zYThqUHNURl9wbTdwbFdWd2s0ajdwTmdNMmFvc3dCX3EzQkwyQjZLTjgyN3F5YUcwU1o1aDFkUTY?oc=5",
+      "date": "Wed, 17 Jun 2026 07:00:00 GMT",
+      "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
     {
       "title": "South Korea Inflation Accelerates to 30-Month High in June - WSJ",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxONkZXX0c2NFdHZUVBdDFPUUNGanVBeVBreENYTFVuaWdqb3JnYjhaUElMRDVra3poeERMbjl6a0FwUVR2bXE0UW5OMUpWZUcxMzhLb2oyWGR5Z0JES0hUUEktekVPNk1WUFRaSE9iUmJRV0RlWmhCb29XOThMNlA2bDFPV2NoMXlMYlZCUHNXR09oUkNvQVB0SXozQQ?oc=5",
       "date": "Thu, 02 Jul 2026 00:06:00 GMT",
       "desc": "South Korea Inflation Accelerates to 30-Month High in June&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "Global Appetite for Korea Grows Ahead of 24-Hour Won Trading - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNaXdxVkNCbTI0WEdUdi00ZG1uaXVOb0l0V0NQUmhlWWhIUjM5TllqVHhfZHhiQmpnbHlsR0VVRDJUcmI0eFY1M3o5VVJFd0FJMkhQak15UndSOGVFaGFaYkdjcnJfcWI0TTV0c0Z6RXpROU83RUhXZl9ZVENoYlViSTR1NTVud2FWTVlZcDR2TU0zdjc4emNQZnpGSFd4R1dhTW9NU1lpZGotMW9aSl9LdQ?oc=5",
-      "date": "Thu, 02 Jul 2026 07:33:27 GMT",
-      "desc": "Global Appetite for Korea Grows Ahead of 24-Hour Won Trading&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "How South Koreans donated 227 tonnes of gold to rescue their economy after the 1997 IMF bailout - The Times of India",
-      "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxNQjQ4bVYtcTYzVzhRajVCU0lFaGg4RWFvNDNGRTRjaGFQSW5qei1GTTBpcG9vN29fcU9XQVlCTnp0b2J0OFhFSmlQWXJ5cmFpOEQ4N0pweUJoZDQ1cVprQ3RZc083RlQ4S25oOTJfdUtCWXlrV19RS1llX1IzNUIzQTJoTE80cXhkVVU1ZWprVGNsNDRBbEQxWUlNWTczTEU0ZTBzRnpRNlRGZ3dqTXV1RDRlUmpTZ3JzODNjaTlleHZlSDR0VmtiZjVlLTEtMzVXcVJuaERUaks2WnlvVi05WDNJZUdQNzZzWldqOGpONTQ3c3paU1BjUm5EN2tkbnpkLU03OEZiNGXSAY4CQVVfeXFMTTYxVHJiekg0Qnhla3NaTy1VZEpYclhQay15aWtaQ2trcTNsN3dQT0UxeGI5MHJ5cWJ3QXZBcjd3ZDIxWFpJRTlqa0s2aXVkazZvMkRxTWpGeHhOU01URWk2SmFxLWtOMDI3QkgxTEg5VWlhaWpBMVU4d2E0b1RLYnZlOFRvcWhjVlJndVlOQXB2X3BfMkZ4a3FXZ2ZOSmQ1LW91WmZZVkpnSk45T2VnQ3FxUDlHRVd1djUxWkR4Z1NMUjFraURndFJhQUpXc3NlbnB3djUxa0RLVW12YkYySHpIaG9GWkRnRUhrYjduNG9faG5waVFHQVJQTVk3Tm9KSlVPTlJ5bUJUR01jUjBn?oc=5",
-      "date": "Sat, 04 Jul 2026 07:22:00 GMT",
-      "desc": "How South Koreans donated 227 tonnes of gold to rescue their economy after the 1997 IMF bailout&nbsp;&nbsp;The Times of India"
     },
     {
       "title": "After the 1997 Asian Financial Crisis nearly bankrupted South Korea, the government decided to rebuild the country through culture instead of manufacturing — and by 2022 a nation of 51 million was earning $12 billion a year in music, film, television, and cos - Space Daily",
@@ -57,10 +57,10 @@
       "desc": "After the 1997 Asian Financial Crisis nearly bankrupted South Korea, the government decided to rebuild the country through culture instead of manufacturing — and by 2022 a nation of 51 million was ear"
     },
     {
-      "title": "South Korean exports in June soar past $100bn for first time on chip demand - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQNUxDZDFOTkxDUHZ4Sk1JUXlGWmE0YUpORDNhN2l3NUpBVGFyQWdZTTdRMVNMMVUzdEpNcWhaR0t4T1l0S0x0Q3pXZ05ibDE3eTVoNG01bWFfeDM5cGl4VEFEX2FZUEFvUDJMb3ZCdEVZWlE3bFYtY1Y0ajBmbkhLN2toN2VWZERrZVJUaE5kZHNrNHdrUFByUktNdmVEcWJHU1pleGk1WGZmdw?oc=5",
-      "date": "Wed, 01 Jul 2026 02:15:00 GMT",
-      "desc": "South Korean exports in June soar past $100bn for first time on chip demand&nbsp;&nbsp;Nikkei Asia"
+      "title": "[Economy Diagnosis] South Korea Faces Threefold Economic Squeeze - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5Kck5ZdnJCMGNqTTJEQ0hrNmJGR2g5UGdLdF9RaU1vTS1GTE5KbDRKVkU1YlB5c2N3ajljMXlla2N2U2NXa25yTG5PQWYxQW9UaUR6TlNlY2NNTm9oNHF3bnVCd0g3aWN4aEd6R0VKZXY0dnhp?oc=5",
+      "date": "Fri, 03 Jul 2026 03:20:00 GMT",
+      "desc": "[Economy Diagnosis] South Korea Faces Threefold Economic Squeeze&nbsp;&nbsp;Businesskorea"
     },
     {
       "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
@@ -70,7 +70,7 @@
     },
     {
       "title": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFU0NWhkYzZuZG9IRTd6cmpiUGhyRjFoWm1aSDdLNS0xQTRuUTFpS2JZSmM1b053aV9URXhrS3RFTVdYYUpIa3ZVbFhfWmlLbVRVdEJFckN1RTdJVXBYaHU5Q2tuaDVPeGFfTWFveTRfMjFiTU1YaTJfQXFES3Myb3EwUWZzSTRfSDU3dUYxYnQzcTMxZDNZ?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFU0NWhkYzZuZG9IRTd6cmpiUGhyRjFoWm1aSDdLNS0xQTRuUTFpS2JZSmM1b053aV9URXhrS3RFTVdYYUpIa3ZVbFhfWmlLbVRVdEJFckN1RTdJVXBYaHU5Q2tuaDVPeGFfTWFveTRfMjFiTU1YaTJfQXFES3Myb3EwUWZzSTRfSDU3dUYxYnQzcTMxZDNZ0gGcAUFVX3lxTE5VaUJOSWVBQm9jVlZyUjRZeC16NGFpdXNDNEMwMlNEQk1Nb3FhLXJmNTlKTFJUR3Rza293STRQOVJaNXRGUWVEUXFqMTRYZWE1RVNIY24tOFJvaFFmNmNmclhLdjJ4dHJNZkd5WTJHdW5aWXNJT05oYk91ckFKVVZ5RExWa0llcXdncWRMQTY5YnNLNUhQa0wyUFNENg?oc=5",
       "date": "Thu, 02 Jul 2026 01:02:00 GMT",
       "desc": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street&nbsp;&nbsp;CNBC"
     },
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-05 02:02 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-05 06:32 UTC"
 }
