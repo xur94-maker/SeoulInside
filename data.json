@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "At least 10 killed in second Russian strikes on Kyiv in a week",
+      "title": "Ukraine warns of interceptor missile shortage as 19 killed in Kyiv region",
       "link": "https://www.bbc.co.uk/news/articles/cewqqnd7zdwo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 06 Jul 2026 06:00:27 GMT",
-      "desc": "The capital's top military administrator said 46 people have been injured in the attack, including five children."
+      "date": "Mon, 06 Jul 2026 12:15:43 GMT",
+      "desc": "President Zelensky says Sunday's \"massive Russian attack\" on Kyiv consisted of 68 missiles and 351 strike drones."
+    },
+    {
+      "title": "Huge crowds fill Tehran streets for Khamenei's funeral procession",
+      "link": "https://www.bbc.co.uk/news/articles/cdejj44kl70o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 06 Jul 2026 12:07:44 GMT",
+      "desc": "Many people were waving Iranian flags and red banners symbolising vengeance for the former supreme leader's war death."
     },
     {
       "title": "'I ate ketchup and cheese,' says Venezuelan girl trapped under quake rubble for 32 hours",
@@ -23,15 +29,58 @@
       "link": "https://www.bbc.co.uk/news/articles/clyeele4leeo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 05 Jul 2026 23:31:04 GMT",
       "desc": "The leader of France's National Rally leads the opinion polls ahead of the 2027 presidential election and will now find out if she can stand."
-    },
-    {
-      "title": "A global hub for fake luxury goods, Vietnam cracks down on its black market",
-      "link": "https://www.bbc.co.uk/news/articles/cdx7zzywz7wo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 05 Jul 2026 22:01:43 GMT",
-      "desc": "The Trump administration wants Vietnam to stamp out its booming counterfeit industry. Locals are divided."
     }
   ],
-  "koreaNews": [],
+  "koreaNews": [
+    {
+      "title": "[Economy Insights] OECD Warns South Korea Over Semiconductor Dependence - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1iQUFaUERuZGxuOVNXZmRZWG8zanJQblR4Q2dnT3pnQTNvVExpSzJMX2ZfVWt5OHV6em9veUE1Wjg2VDFEMVJ2Y2lrWE5wTW9MaFVkMEFTelJUeUVKQnVHQnc2Y3VUWVJJZ2VXV196aDd6Zlho?oc=5",
+      "date": "Mon, 06 Jul 2026 09:02:45 GMT",
+      "desc": "[Economy Insights] OECD Warns South Korea Over Semiconductor Dependence&nbsp;&nbsp;Businesskorea"
+    },
+    {
+      "title": "South Korea’s New External Economic Development Strategy - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQZkQ1aEE3UzNLV2tVWnM4c0FfcUJ1N0l3OW44bXNBMmV0Nl8zeEdqQS02b0JNUUpZTDhHd1ZnMGxCRDZVanVQU0plMVlJUVNCQ1FIMXpmWEFlSTFkZnMtU0Q5NEM0WlFybURBc1Fnek56TjlBSFJQWUQwbXZLU3RORHVVUGhkS0FsYWRHRERn?oc=5",
+      "date": "Thu, 02 Jul 2026 20:46:33 GMT",
+      "desc": "South Korea’s New External Economic Development Strategy&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
+      "date": "Tue, 23 Jun 2026 07:00:00 GMT",
+      "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
+    },
+    {
+      "title": "Korea Starts 24-Hour Won Trading in Push for Market Liberalization - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOVHBfQ0pYQV9Gc2M4cEZwM0Vzbm1PT2U3UGV2MndFdERwQWRqeHBqZWdaTWd6RGozX0o3T1YyWlgxdDFIcW56ZHpmMl8xM3EzdFN1TFpHdlVSZWRtcXZCZnNNVU9uM1VpVzVrMGdfbjVQT2Roemg0bFRCUXBTai1vLXFCaEJmWVBzRWcyeXM5QVBodnR0aUJWYXdudHl3dU5OMHlGLWl5ZUFlSHlzczdIWm8tNlg?oc=5",
+      "date": "Mon, 06 Jul 2026 04:19:00 GMT",
+      "desc": "Korea Starts 24-Hour Won Trading in Push for Market Liberalization&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "Kim Jong-un may have turned around the North Korean economy. But do the numbers mask deeper troubles? - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOZWVMYnZueGt4TWljVERIRVZvbi1mTk9RNjVvdmNvOGVUdWxMWmZod21YTGx6YlgwYjJwb2JVTkpxTHlxQms3Ml9aN3lCV3ZsUmVMdFl0eDlwWmM3MlJUU1BoRG5rbkRBclJNcFlQdjFfYXNMSE9TeXdfTVNyVkpWZzQ2bm1WVmpkbi1namJDVlUzbTBLOEVjTFEzb3doZHBWTHNPZE9nZUdwYlM2RDczeWNUWUFUM2lsTmN3WTVJX09VVC1EbmJXSng2Q2JhNVF0Y1hUUFJOUXV3ZTJfU0Y5Tm5R?oc=5",
+      "date": "Sun, 05 Jul 2026 20:03:25 GMT",
+      "desc": "Kim Jong-un may have turned around the North Korean economy. But do the numbers mask deeper troubles?&nbsp;&nbsp;Korea JoongAng Daily"
+    },
+    {
+      "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
+      "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
+      "date": "Fri, 03 Jul 2026 13:17:47 GMT",
+      "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
+    },
+    {
+      "title": "Samsung Electronics, SK Hynix Face Market Turning Point with Key Events - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPUVBKV0pNbnR1WVlSQ2lub3d1bWVJdnpOTDdOaTRnbElTZGowclo0U2RJbktMTDV1d2htNHlpN0h0Q2g5SmdIRDVaUlE3TzMyQlk3V2pqSkdsU2NFUXpXZzI2SlhGQmZzZ1VoY3A3TFdMR29jZHBWQnFvRkk1WUJsdmZOaWYtMHY0OGpHcHV3?oc=5",
+      "date": "Sun, 05 Jul 2026 15:50:27 GMT",
+      "desc": "Samsung Electronics, SK Hynix Face Market Turning Point with Key Events&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "South Korea says Samsung and SK Hynix investing in AI, semiconductor mega-projects - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPdXdkNkdRbUEzTDFsMURTTzlNckV3WXcyRXM3SFJXT3hfVC02TmFuclQyaXhvRlNCdktSazdhNUFCelRSRm82b3lXN0FReTg1YlBucDZZaTZIcmdVaHBLeXpyd1RTVFZBczRRa2J6eTJ0X1BIaGFUOEV0QjY5c0taWUF2UWl5SGRicG00VWxUcmFuSGZTLUZETi14QUpsRjlJZDd0U3Vn0gGrAUFVX3lxTE1nMktwTXZJZk1ZZE5pOXR0bjc2Y3dHVEV0YnNtUGQyZGpxdWlUdzd0eTZOaVRfMHJFQ1V6anQ5elBJV01nZ2xOcFk4UWlCdWhFTnZKWVFNWHBuZ09FcEo2OHpNMlNRMzNQdEZaMkhvSkxnM0VUQmdzM3I3Y25UbGFkLVNKWTlBbm5RRXc1RHZGNWJocDg0VXF5bHJIdGV4RVJKOG1RT0lPaTFOQQ?oc=5",
+      "date": "Sun, 28 Jun 2026 07:00:00 GMT",
+      "desc": "South Korea says Samsung and SK Hynix investing in AI, semiconductor mega-projects&nbsp;&nbsp;CNBC"
+    }
+  ],
   "worldStocks": [
     {
       "symbol": "NVDA",
@@ -174,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1533.52,
-      "change": -8.61,
-      "pct": -0.56,
+      "price": 1532.1,
+      "change": -10.03,
+      "pct": -0.65,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-06 07:04 UTC"
+  "updatedAt": "2026-07-06 12:53 UTC"
 }
