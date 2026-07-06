@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Galaxy v5.1 — 지연 중력 + 나선팔 정량 분석 (Fourier + SPARC 피팅)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap');
+        * { margin:0; padding:0; box-sizing:border-box; user-select:none; }
+        body { background:#03040c; overflow:hidden; font-family:'Inter', sans-serif; }
+
+        .glass-panel {
+            position:absolute; z-index:30;
+            background:rgba(6,12,28,0.88);
+            backdrop-filter:blur(16px);
+            border-radius:20px;
+            border:1px solid rgba(0,255,255,0.22);
+            padding:12px 18px;
+            box-shadow:0 8px 32px rgba(0,0,0,0.6);
+            pointer-events:auto;
+        }
+        .panel-title {
+            font-size:9px; letter-spacing:2.5px; font-weight:600;
+            color:#2ef; text-transform:uppercase; margin-bottom:10px;
+        }
+        .stat-row { display:flex; justify-content:space-between; gap:24px; font-size:9px; margin:3px 0; color:#bcd; }
+        .val { color:#5f6; font-weight:700; }
+        .val-accent { color:#0ff; font-weight:700; }
+        .val-warn { color:#fa8; font-weight:700; }
+        .slider-group { display:flex; align-items:center; gap:10px; margin:6px 0; font-size:9px; color:#bcd; }
+        .slider-label { min-width:140px; }
+        input[type=range] { width:130px; height:3px; border-radius:4px; cursor:pointer; accent-color:#0ff; }
+        .slider-val { min-width:52px; text-align:right; color:#4ef; font-weight:700; font-family:'JetBrains Mono'; font-size:9px; }
+        button {
+            background:rgba(0,20,40,0.85); border:1px solid #0ff; color:#0ff;
+            padding:5px 16px; font-family:'JetBrains Mono'; font-weight:600; border-radius:60px;
+            cursor:pointer; transition:0.2s; font-size:9px; letter-spacing:1px;
+        }
+        button:hover { background:#0ff; color:#000; box-shadow:0 0 18px #0ff; }
+        button.danger { border-color:#f77; color:#f77; }
+        button.danger:hover { background:#f77; color:#000; box-shadow:0 0 18px #f77; }
+        .toggle-group { display:flex; gap:8px; margin:8px 0; padding:6px 0; border-top:1px solid #0ff2; border-bottom:1px solid #0ff2; }
+        .toggle-btn {
+            flex:1; text-align:center; padding:4px; font-size:8px;
+            background:#0a1420; border:1px solid #2af; color:#2af;
+            border-radius:20px; cursor:pointer; transition:0.15s;
+        }
+        .toggle-btn.active { background:#2af; color:#000; }
+        .chart-container {
+            position:absolute; z-index:30;
+            background:rgba(6,12,28,0.88);
+            backdrop-filter:blur(16px);
+            border-radius:16px;
+            border:1px solid rgba(0,255,255,0.18);
+            padding:10px 14px;
+            pointer-events:none;
+        }
+        .chart-title { font-size:8px; letter-spacing:1.5px; color:#2af; font-family:'JetBrains Mono'; margin-bottom:7px; }
+        .badge {
+            position:absolute; bottom:18px; right:20px;
+            background:rgba(0,0,0,0.55); border-radius:40px; padding:5px 14px;
+            font-size:8px; color:#8af; font-family:'JetBrains Mono'; z-index:30;
+            border:1px solid #2af4;
+        }
+        #metrics {
+            position:absolute; top:10px; left:50%; transform:translateX(-50%);
+            background:rgba(0,0,0,0.6); padding:4px 14px;
+            border-radius:30px; font-size:8px; color:#4ef;
+            font-family:'JetBrains Mono'; z-index:31;
+            border:1px solid #0ff3;
+            white-space: nowrap;
+        }
+        .spiral-gauge {
+            background:rgba(0,0,0,0.7);
+            border-radius:8px;
+            padding:6px 12px;
+            margin-top:8px;
+            border-left:3px solid #f0f;
+        }
+        .gauge-bar {
+            height:6px;
+            background:#2a2a3a;
+            border-radius:3px;
+            margin-top:4px;
+            overflow:hidden;
+        }
+        .gauge-fill {
+            height:100%;
+            width:0%;
+            background:linear-gradient(90deg, #f0f, #0ff);
+            border-radius:3px;
+            transition:width 0.1s ease;
+        }
+        #flashOverlay.active {
+            opacity: 1 !important;
+        }
+        .mode-indicator {
+            position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+            background:rgba(0,0,0,0.7); border-radius:20px; padding:3px 12px;
+            font-size:7px; color:#4ef; font-family:'JetBrains Mono'; z-index:31;
+            border:1px solid #0ff4;
+            white-space: nowrap;
+        }
+        .key-hint {
+            position:absolute; bottom:18px; right:200px;
+            background:rgba(0,0,0,0.5); border-radius:16px; padding:4px 10px;
+            font-size:7px; color:#8af; font-family:'JetBrains Mono'; z-index:31;
+            border:1px solid #2af4;
+        }
+        /* 탭 스타일 */
+        .tabs {
+            display:flex;
+            gap:4px;
+            margin-bottom:12px;
+            border-bottom:1px solid #0ff3;
+            padding-bottom:6px;
+        }
+        .tab-btn {
+            background:transparent;
+            border:1px solid #0ff4;
+            color:#0ff;
+            padding:4px 12px;
+            font-size:8px;
+            border-radius:20px;
+            cursor:pointer;
+            transition:0.15s;
+        }
+        .tab-btn.active {
+            background:#0ff;
+            color:#000;
+            border-color:#0ff;
+        }
+        .tab-content {
+            display:none;
+        }
+        .tab-content.active {
+            display:block;
+        }
+        .csv-input-area {
+            background:rgba(0,0,0,0.5);
+            border-radius:8px;
+            padding:8px;
+            margin:8px 0;
+            font-size:7px;
+            border:1px dashed #0ff4;
+        }
+        .fit-result {
+            background:#0a1420;
+            border-radius:6px;
+            padding:6px;
+            margin:5px 0;
+            font-size:8px;
+            color:#4ef;
+        }
+        .tooltip-hover {
+            cursor:help;
+            border-bottom:1px dotted #0ff4;
+        }
+    </style>
+</head>
+<body>
+<div id="flashOverlay"></div>
+<div id="metrics">⭐ 0 | 🖥️ 0 fps | ΔE: — | ΔL: — | 🌊 S₂: —</div>
+<div class="mode-indicator" id="modeIndicator">⚡ PHYSICAL MODE (현실 물리 범위)</div>
+<div class="key-hint" id="keyHint">⌨️ ←→↑↓ : 이동 | ⇧Shift + ←→↑↓ : 미세 이동</div>
+
+<!-- 왼쪽 상태 패널 -->
+<div class="glass-panel" style="top:18px; left:18px; width:260px;">
+    <div class="panel-title">🌌 Galaxy — 지연 중력 + 나선 분석</div>
+    <div class="stat-row"><span>별 수</span><span class="val" id="nStars">0</span></div>
+    <div class="stat-row"><span>시뮬레이션 시간</span><span class="val" id="simTime">0 Myr</span></div>
+    <div class="stat-row"><span>🌌 외곽 속도 (r>9kpc)</span><span class="val-accent" id="outerVel">— km/s</span></div>
+    <div class="stat-row"><span>🟡 뉴턴 예측 (r=10kpc)</span><span class="val-warn" id="newtonVel">— km/s</span></div>
+    <div class="stat-row"><span>⚡ 속도 이상비</span><span class="val-accent" id="velRatio">—</span></div>
+    <div class="stat-row"><span>💿 원반 질량 @10kpc</span><span class="val" id="diskMassVal">—</span></div>
+    <div class="stat-row"><span>🕰️ 버퍼 깊이</span><span class="val" id="bufDepth">—</span></div>
+    
+    <!-- 나선팔 강도 게이지 -->
+    <div class="spiral-gauge">
+        <div style="font-size:8px; color:#f0f;">🌀 나선팔 강도 (m=2)</div>
+        <div class="gauge-bar"><div class="gauge-fill" id="spiralFill"></div></div>
+        <div style="display:flex; justify-content:space-between; margin-top:4px;">
+            <span style="font-size:7px; color:#888;">약함</span>
+            <span id="spiralValue" style="font-size:9px; color:#f0f; font-weight:bold;">0.00</span>
+            <span style="font-size:7px; color:#888;">강함</span>
+        </div>
+        <div style="font-size:7px; color:#8af; margin-top:4px;" id="armHint">🔍 2-팔: 측정 중</div>
+    </div>
+    
+    <div id="retardInfo" style="font-size:7px; margin-top:6px; border-top:1px solid #0ff2; padding-top:5px; color:#7ac; line-height:1.7;">지연 효과: OFF</div>
+</div>
+
+<!-- 오른쪽 제어반 (탭 적용) -->
+<div class="glass-panel" style="top:18px; right:18px; width:420px;">
+    <div class="panel-title">⚙️ 제어반 · Leapfrog · 지연 중력 + 나선팔 분석 (v5.1)</div>
+    
+    <!-- 탭 버튼 -->
+    <div class="tabs">
+        <div class="tab-btn active" data-tab="main">🎮 기본 제어</div>
+        <div class="tab-btn" data-tab="sparc">📊 SPARC 피팅</div>
+        <div class="tab-btn" data-tab="analysis">📈 분석</div>
+    </div>
+    
+    <!-- 탭 1: 기본 제어 -->
+    <div id="tab-main" class="tab-content active">
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 질량 (로그 스케일, M☉)">⚫ BH 질량 log₁₀(M/M☉)</span><input type="range" id="bhMassLogSlide" min="4" max="9.5" step="0.05" value="6.5"><span class="slider-val" id="bhMassLogVal">6.50</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="은하 총 질량 (로그 스케일, M☉)">🌌 은하 질량 log₁₀(M/M☉)</span><input type="range" id="galMassLogSlide" min="9" max="12" step="0.05" value="10.8"><span class="slider-val" id="galMassLogVal">10.80</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="지연 강도 α (물리적 예측값=1)">⏱ 지연 강도 α (물리적=1)</span><input type="range" id="retardSlide" min="0" max="3" step="0.02" value="1.0"><span class="slider-val" id="retardVal">1.00</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="질량 이차 미분 (M☉/Myr²)">📉 M̈ log₁₀ (M☉/Myr²)</span><input type="range" id="mddLogSlide" min="0" max="12" step="0.1" value="9.5"><span class="slider-val" id="mddLogVal">9.5</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="중력 상수 스케일 (0=물리적)">💪 G_scale (×10ⁿ) [물리=0]</span><input type="range" id="gScaleSlide" min="0" max="4" step="0.5" value="0"><span class="slider-val" id="gScaleVal">×10⁰</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="시간 스텝 (Myr), 권장 0.01-0.02">⏱️ 시간 스텝 DT (Myr)</span><input type="range" id="dtSlide" min="0.002" max="3.05" step="0.001" value="0.015"><span class="slider-val" id="dtVal">0.0150</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="애니메이션 속도 배율">⏩ 애니메이션 속도</span><input type="range" id="animSpeedSlide" min="0.25" max="4.0" step="0.05" value="1.0"><span class="slider-val" id="animSpeedVal">1.00x</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 위치 히스토리 버퍼 크기">🕰️ 히스토리 버퍼 (스텝)</span><input type="range" id="histBufSlide" min="10" max="300" step="10" value="120"><span class="slider-val" id="histBufVal">120</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="시뮬레이션할 별의 개수">✦ 별 개수</span><input type="range" id="nStarSlide" min="1000" max="80000" step="1000" value="30000"><span class="slider-val" id="nStarVal">30000</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="COLLIDE 버튼 클릭 시 생성될 별 수">💥 충돌 강도 (별 수)</span><input type="range" id="collideNSlide" min="20" max="300" step="10" value="60"><span class="slider-val" id="collideNVal">60</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 스핀 파라미터 a* (0~1)">🔄 BH 스핀 (a*)</span><input type="range" id="bhSpinSlide" min="0" max="1" step="0.05" value="0.9"><span class="slider-val" id="bhSpinVal">0.90</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 중심으로부터의 거리 (kpc)">📍 BH 위치 반경 (kpc)</span><input type="range" id="bhRadSlide" min="0" max="5" step="0.05" value="0"><span class="slider-val" id="bhRadVal">0.00</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 위치 각도 (도)">🧭 BH 위치 각도 (°)</span><input type="range" id="bhAngSlide" min="0" max="360" step="5" value="0"><span class="slider-val" id="bhAngVal">0°</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="은하 원반 평면 기준 블랙홀의 수직(Y) 이탈 거리 (kpc)">↕ BH 수직위치 Y (kpc)</span><input type="range" id="bhYSlide" min="-3" max="3" step="0.05" value="0"><span class="slider-val" id="bhYVal">0.00</span></div>
+
+        <div style="font-size:8px; color:#f0f; margin:6px 0 2px;">✨ 그래픽 (물리 계산과 무관)</div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블룸(글로우) 강도, 물리 계산과 무관">🌟 블룸 강도</span><input type="range" id="bloomStrengthSlide" min="0" max="2.5" step="0.05" value="1.15"><span class="slider-val" id="bloomStrengthVal">1.15</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="블랙홀 중심 화면공간 렌즈 왜곡 강도, 물리 계산과 무관">🌌 중력렌즈 강도</span><input type="range" id="lensStrengthSlide" min="0" max="2" step="0.05" value="1.0"><span class="slider-val" id="lensStrengthVal">1.00</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="0=안정형 왜곡, 1=중심 특이점(8자) 스타일">🌀 렌즈 스타일 (8자↔안정)</span><input type="range" id="lensSingularSlide" min="0" max="1" step="0.05" value="1.0"><span class="slider-val" id="lensSingularVal">1.00</span></div>
+        <div class="slider-group"><span class="slider-label tooltip-hover" title="궤적으로 표시할 별 샘플 수 (성능에 영향)">🌠 궤적 표시 개수</span><input type="range" id="trailCountSlide" min="0" max="400" step="10" value="120"><span class="slider-val" id="trailCountVal">120</span></div>
+        <div class="toggle-group">
+            <div id="trailOnBtn" class="toggle-btn active">🌠 궤적 표시 ON</div>
+            <div id="trailOffBtn" class="toggle-btn">🚫 궤적 표시 OFF</div>
+        </div>
+
+        <div class="toggle-group">
+            <div id="vyZeroBtn" class="toggle-btn active">🔒 vy=0 모드 (기본)</div>
+            <div id="vyRandBtn" class="toggle-btn">🎲 vy=랜덤</div>
+        </div>
+        <div style="font-size:8px; color:#fa8; margin:4px 0 2px;">🔬 초기 속도 모드 (검증용)</div>
+        <div class="toggle-group">
+            <div id="velCircBtn" class="toggle-btn active">🌀 원형궤도 (기본)</div>
+            <div id="velRandBtn" class="toggle-btn">🎲 완전랜덤 (검증)</div>
+            <div id="velZeroBtn" class="toggle-btn">⛔ 정지 (검증)</div>
+        </div>
+        <div id="velModeDesc" style="font-size:7px; color:#8ab; margin-top:3px; text-align:center;">현재: 원형 궤도 속도 + vy=0</div>
+
+        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:6px;">
+            <button id="collideBtn">🔥 COLLIDE</button>
+            <button id="initBtn">🌌 초기화</button>
+            <button class="danger" id="clearBtn">◀ 리셋</button>
+        </div>
+    </div>
+    
+    <!-- 탭 2: SPARC 피팅 -->
+    <div id="tab-sparc" class="tab-content">
+        <div class="csv-input-area">
+            <div style="font-size:8px; color:#4ef; margin-bottom:6px;">📂 SPARC 형식 CSV 업로드</div>
+            <input type="file" id="csvFileInput" accept=".csv" style="font-size:7px; background:#081828; border:1px solid #0ff4; color:#0ff; border-radius:6px; padding:4px; width:100%;">
+            <div style="font-size:7px; color:#8ab; margin-top:5px;">형식: r_kpc, v_obs_kms (첫 줄 헤더)</div>
+            <div style="font-size:7px; color:#fa8; margin-top:3px;">예: 0.5,62 / 1.0,78 / 2.0,98 ...</div>
+        </div>
+        <button id="fitBtn" style="width:100%; margin:4px 0;">📐 피팅 실행 (그리드 서치)</button>
+        <div id="fitResults" class="fit-result">
+            📊 피팅 결과 대기 중...
+        </div>
+        <div style="font-size:7px; color:#6ab; margin-top:5px;">
+            💡 피팅은 Ṁ_pair 값을 그리드 서치로 최적화합니다.<br>
+            χ²가 가장 낮은 값이 최적 Ṁ_pair입니다.
+        </div>
+    </div>
+    
+    <!-- 탭 3: 분석 -->
+    <div id="tab-analysis" class="tab-content">
+        <div class="stat-row"><span>🌀 현재 S₂ 강도</span><span class="val-accent" id="analysisS2">0.00</span></div>
+        <div class="stat-row"><span>📍 BH 반경</span><span class="val" id="analysisBHRad">0.00 kpc</span></div>
+        <div class="stat-row"><span>⚡ 속도 이상비</span><span class="val" id="analysisRatio">—</span></div>
+        <div class="stat-row"><span>🎯 주요 모드</span><span id="analysisMode" style="color:#f0f;">—</span></div>
+        <div style="margin-top:8px; border-top:1px solid #0ff2; padding-top:6px;">
+            <canvas id="s2HistoryCanvas" width="350" height="80" style="width:100%; background:#020810; border-radius:6px;"></canvas>
+            <div style="font-size:6px; color:#6ab; text-align:center;">⏱️ S₂ 히스토리 (최근 2000스텝)</div>
+        </div>
+        <div style="margin-top:8px;">
+            <canvas id="scatterCanvas" width="350" height="80" style="width:100%; background:#020810; border-radius:6px;"></canvas>
+            <div style="font-size:6px; color:#6ab; text-align:center;">📈 BH 반경 vs S₂ 산점도</div>
+        </div>
+    </div>
+    
+    <div style="font-size:7px; margin-top:8px; color:#6ab; text-align:center;">
+        💡 COLLIDE → 파티클 방출 → 은하 궤도 정착 · Leapfrog 적분기<br>
+        🔬 <span style="color:#4ef;">PHYSICAL MODE</span>: G_scale=1, M̈=10^9.5, α=1<br>
+        ⌨️ <span style="color:#fa8;">방향키</span> BH 위치 제어 | <span style="color:#4ef;">🌊 S₂ 값: 0=대칭원반, 0.3~0.6=약한 나선, 0.6~0.9=뚜렷한 나선</span>
+    </div>
+</div>
+
+<!-- 회전 곡선 차트 -->
+<div class="chart-container" style="bottom:14px; left:14px; width:290px;">
+    <div class="chart-title">📊 회전 곡선 (km/s vs kpc)</div>
+    <canvas id="rotCurveCanvas" width="266" height="140" style="width:100%; background:#020810; border-radius:6px;"></canvas>
+    <div style="display:flex; gap:10px; margin-top:5px; font-size:7px; color:#8ab; font-family:'JetBrains Mono';">
+        <span style="color:#4ef;">● 실제</span>
+        <span style="color:#fa8;">● 뉴턴</span>
+        <span style="color:#f55;">● M33 관측</span>
+    </div>
+</div>
+
+<!-- 푸리에 분석 차트 -->
+<div class="chart-container" style="bottom:14px; right:14px; width:290px;">
+    <div class="chart-title">📈 푸리에 분석 — m=2 팔 강도</div>
+    <canvas id="fourierCanvas" width="266" height="120" style="width:100%; background:#020810; border-radius:6px;"></canvas>
+    <div style="display:flex; gap:10px; margin-top:5px; font-size:7px; color:#8ab; font-family:'JetBrains Mono';">
+        <span style="color:#f0f;">● m=2 (주요)</span>
+        <span style="color:#fa8;">● m=3</span>
+        <span style="color:#4ef;">● m=4</span>
+    </div>
+</div>
+
+<div class="badge">⚛️ Galaxy v5.1 (그래픽 개선판) | 물리·수학 로직 원본 그대로 + Bloom/궤적 시각화 추가 | B. Sun</div>
+
+<script type="importmap">
+{ "imports": {
+    "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+}}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { FXAAShader } from 'three/addons/shaders/FXAAShader.js';
+
+// ============================================================
+// [1] 물리 상수 (은하 스케일)
+// ============================================================
+const G_SI    = 6.67430e-11;
+const C_SI    = 2.99792458e8;
+const PC_M    = 3.08567758e16;
+const KPC_M   = PC_M * 1e3;
+const MYR_S   = 3.15576e13;
+const MSUN    = 1.989e30;
+const G_BASE  = G_SI * MSUN * MYR_S * MYR_S / (KPC_M ** 3);
+const C_SIM   = C_SI * MYR_S / KPC_M;
+const GALAXY_RADIUS = 15.0;
+const DISK_SCALE_LEN = 3.0;
+
+// ============================================================
+// [2] 파라미터 (물리적 기본값)
+// ============================================================
+let BH_MASS_LOG    = 6.5;
+let GAL_MASS_LOG   = 10.8;
+let MDD_LOG        = 9.5;
+let G_SCALE_EXP    = 0;
+let RETARD_STRENGTH= 1.0;
+let N_STARS        = 30000;
+let DT             = 0.015;
+let ANIM_SPEED     = 1.0;
+let HIST_BUF_SIZE  = 120;
+let vyZeroMode     = true;
+let velInitMode    = 'circular';
+let M_DDOT_SIGN    = 1;
+let BH_SPIN        = 0.9;
+let BH_RAD         = 0.0;
+let BH_ANG         = 0.0;
+let BH_Y           = 0.0;
+let COLLIDE_N      = 60;
+
+const bhOffset = new THREE.Vector3(0, 0, 0);
+function updateBHOffset() {
+    bhOffset.set(BH_RAD * Math.cos(BH_ANG), BH_Y, BH_RAD * Math.sin(BH_ANG));
+}
+let simTimeMyr     = 0;
+let paused         = false;
+let initialTotalEnergy = 0, initialTotalAngularMomentum = 0;
+
+function getBHMass()  { return Math.pow(10, BH_MASS_LOG); }
+function getGalMass() { return Math.pow(10, GAL_MASS_LOG); }
+function getMDDot()   { return M_DDOT_SIGN * Math.pow(10, MDD_LOG); }
+function getG()       { return G_BASE * Math.pow(10, G_SCALE_EXP); }
+
+function diskMass(r_kpc) {
+    const x = r_kpc / DISK_SCALE_LEN;
+    return getGalMass() * (1.0 - (1.0 + x) * Math.exp(-x));
+}
+
+// ============================================================
+// [3] 나선팔 강도 분석 (Fourier m=2)
+// ============================================================
+let currentSpiralStrength = 0;
+let spiralHistory = [];  // 시간에 따른 강도 변화 추적 (최대 2000)
+let scatterData = [];    // {bhRad, s2} 저장 (최대 500)
+
+function computeAllFourierModes(stars, bhPos) {
+    if (stars.length < 100) return null;
+    const modes = [1, 2, 3, 4];
+    const cosSum = [0, 0, 0, 0];
+    const sinSum = [0, 0, 0, 0];
+    let totalWeight = 0;
+
+    for (const star of stars) {
+        const dx = star.pos.x - bhPos.x;
+        const dz = star.pos.z - bhPos.z;
+        const r = Math.hypot(dx, dz);
+        if (r < 2.0 || r > GALAXY_RADIUS) continue;
+        const phi = Math.atan2(dz, dx);
+        const weight = 1.0 / (r * 0.5 + 1.0);
+        for (let mi = 0; mi < modes.length; mi++) {
+            cosSum[mi] += weight * Math.cos(modes[mi] * phi);
+            sinSum[mi] += weight * Math.sin(modes[mi] * phi);
+        }
+        totalWeight += weight;
+    }
+
+    if (totalWeight === 0) return null;
+    const strengths = modes.map((m, mi) =>
+        Math.min(1.5, Math.hypot(cosSum[mi], sinSum[mi]) / totalWeight * 1.5)
+    );
+    return strengths; // [m=1, m=2, m=3, m=4]
+}
+
+function computeSpiralStrength(stars, bhPos) {
+    const s = computeAllFourierModes(stars, bhPos);
+    if (!s) return 0;
+    return Math.min(1.0, s[1]); // m=2 강도
+}
+
+function drawFourierAnalysis(stars, bhPos) {
+    const canvas = document.getElementById('fourierCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = '#020810';
+    ctx.fillRect(0, 0, W, H);
+    if (stars.length < 100) {
+        ctx.fillStyle = '#8af';
+        ctx.font = '8px monospace';
+        ctx.fillText('별 데이터 수집 중...', 10, H/2);
+        return;
+    }
+
+    const strengths = computeAllFourierModes(stars, bhPos) || [0, 0, 0, 0];
+    const modes = [1, 2, 3, 4];
+
+    const maxStrength = Math.max(0.3, ...strengths);
+    const barWidth = (W - 40) / modes.length - 8;
+    const colors = ['#8af', '#f0f', '#fa8', '#4ef'];
+    for (let i = 0; i < modes.length; i++) {
+        const x = 20 + i * (barWidth + 8);
+        const height = (strengths[i] / maxStrength) * (H - 30);
+        ctx.fillStyle = colors[i];
+        ctx.fillRect(x, H - 15 - height, barWidth, height);
+        ctx.fillStyle = '#bcd';
+        ctx.font = '8px monospace';
+        ctx.fillText(`m=${modes[i]}`, x + 4, H - 5);
+        ctx.fillStyle = '#4ef';
+        ctx.font = '7px monospace';
+        ctx.fillText(strengths[i].toFixed(3), x + 4, H - 18 - height);
+    }
+    ctx.fillStyle = '#5f6';
+    ctx.font = '7px monospace';
+    ctx.fillText(`주요 모드: m=${strengths[1] > strengths[0] && strengths[1] > strengths[2] ? 2 : (strengths[0] > strengths[2] ? 1 : 3)}`, 10, 12);
+}
+
+function updateSpiralUI() {
+    const fillEl = document.getElementById('spiralFill');
+    const valEl = document.getElementById('spiralValue');
+    const hintEl = document.getElementById('armHint');
+    const analysisS2 = document.getElementById('analysisS2');
+    const analysisMode = document.getElementById('analysisMode');
+    
+    valEl.textContent = currentSpiralStrength.toFixed(3);
+    fillEl.style.width = (currentSpiralStrength * 100) + '%';
+    if (analysisS2) analysisS2.textContent = currentSpiralStrength.toFixed(3);
+    
+    let modeText = '';
+    let modeColor = '';
+    if (currentSpiralStrength < 0.15) {
+        hintEl.innerHTML = '🔘 대칭 원반 (나선팔 없음)';
+        hintEl.style.color = '#888';
+        modeText = '🔘 대칭 원반';
+        modeColor = '#888';
+    } else if (currentSpiralStrength < 0.35) {
+        hintEl.innerHTML = '🌀 약한 나선 구조 형성 중';
+        hintEl.style.color = '#8af';
+        modeText = '🌀 약한 나선';
+        modeColor = '#8af';
+    } else if (currentSpiralStrength < 0.65) {
+        hintEl.innerHTML = '🌊 뚜렷한 2-팔 나선 구조';
+        hintEl.style.color = '#f0f';
+        modeText = '🌊 뚜렷한 나선';
+        modeColor = '#f0f';
+    } else {
+        hintEl.innerHTML = '⚡ 강력한 그랜드 디자인 나선!';
+        hintEl.style.color = '#f66';
+        modeText = '⚡ 강력한 나선';
+        modeColor = '#f66';
+    }
+    if (analysisMode) {
+        analysisMode.textContent = modeText;
+        analysisMode.style.color = modeColor;
+    }
+    
+    // 히스토리 업데이트
+    spiralHistory.push(currentSpiralStrength);
+    if (spiralHistory.length > 2000) spiralHistory.shift();
+    drawS2History();
+    
+    // 산점도 데이터 업데이트
+    scatterData.push({ bhRad: BH_RAD, s2: currentSpiralStrength });
+    if (scatterData.length > 500) scatterData.shift();
+    drawScatterPlot();
+}
+
+// S₂ 히스토리 그래프
+function drawS2History() {
+    const canvas = document.getElementById('s2HistoryCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = '#020810';
+    ctx.fillRect(0, 0, W, H);
+    if (spiralHistory.length < 2) return;
+    
+    const step = W / Math.max(1, spiralHistory.length);
+    ctx.beginPath();
+    ctx.strokeStyle = '#f0f';
+    ctx.lineWidth = 1.5;
+    let first = true;
+    for (let i = 0; i < spiralHistory.length; i++) {
+        const x = i * step;
+        const y = H - spiralHistory[i] * H;
+        if (first) { ctx.moveTo(x, y); first = false; }
+        else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.fillStyle = '#4ef';
+    ctx.font = '6px monospace';
+    ctx.fillText(`최근 ${spiralHistory.length} 스텝`, 5, 10);
+}
+
+// 산점도 그래프
+function drawScatterPlot() {
+    const canvas = document.getElementById('scatterCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = '#020810';
+    ctx.fillRect(0, 0, W, H);
+    if (scatterData.length === 0) return;
+    
+    const maxRad = 5.0;
+    for (const d of scatterData) {
+        const x = (d.bhRad / maxRad) * W;
+        const y = H - d.s2 * H;
+        ctx.fillStyle = '#0ff';
+        ctx.fillRect(x-1, y-1, 2, 2);
+    }
+    ctx.fillStyle = '#fa8';
+    ctx.font = '6px monospace';
+    ctx.fillText(`상관관계: r vs S₂`, 5, 10);
+}
+
+// ============================================================
+// [4] Three.js 씬
+// ============================================================
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x03040c);
+scene.fog = new THREE.FogExp2(0x03040c, 0.00022);
+
+const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 2000);
+camera.position.set(0, 28, 60);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+document.body.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+
+// ------------------------------------------------------------
+// [4.1] 포스트프로세싱 (블룸) — 순수 그래픽 레이어, 물리 계산 무관
+// ------------------------------------------------------------
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+
+const bloomPass = new UnrealBloomPass(
+    new THREE.Vector2(innerWidth, innerHeight),
+    1.15,  // strength
+    0.55,  // radius
+    0.18   // threshold
+);
+composer.addPass(bloomPass);
+
+const fxaaPass = new ShaderPass(FXAAShader);
+fxaaPass.material.uniforms['resolution'].value.set(
+    1 / (innerWidth * Math.min(devicePixelRatio, 2)),
+    1 / (innerHeight * Math.min(devicePixelRatio, 2))
+);
+composer.addPass(fxaaPass);
+
+// ------------------------------------------------------------
+// [4.2] 중력렌즈 왜곡 (영화적 연출용 스타일 효과) — 화면 공간 UV 왜곡만
+// 수행하며, 별/블랙홀 물리 계산에는 전혀 관여하지 않음
+// ------------------------------------------------------------
+const LensDistortShader = {
+    uniforms: {
+        tDiffuse:    { value: null },
+        lensCenter:  { value: new THREE.Vector2(0.5, 0.5) },
+        lensStrength:{ value: 0.0 },
+        lensRadius:  { value: 0.22 },
+        aspect:      { value: innerWidth / innerHeight },
+        singularAmount: { value: 1.0 } // 0=안정형, 1=8자/특이점형
+    },
+    vertexShader: `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `,
+    fragmentShader: `
+        uniform sampler2D tDiffuse;
+        uniform vec2 lensCenter;
+        uniform float lensStrength;
+        uniform float lensRadius;
+        uniform float aspect;
+        uniform float singularAmount;
+        varying vec2 vUv;
+        void main() {
+            vec2 uv = vUv;
+            vec2 p = uv - lensCenter;
+            p.x *= aspect;
+            float dist = length(p);
+            float r = max(dist, 0.001);
+            vec2 dir = p / r;
+
+            // 안정형: 중심에서 0, 광자구 부근에서 피크, 바깥에서 감쇠 (특이점 없음)
+            float distNorm = dist / lensRadius;
+            float bendStable = lensStrength * lensRadius * distNorm * exp(1.0 - distNorm);
+            bendStable = clamp(bendStable, 0.0, lensRadius * 1.2);
+
+            // 특이점형: 중심(r→0)에서 발산 -> 8자/접힘 아티팩트
+            float rSing = max(dist, 0.0008);
+            float bendSingular = lensStrength * lensRadius * exp(-dist * dist / (2.0 * lensRadius * lensRadius)) / rSing;
+
+            float bendMag = mix(bendStable, bendSingular, singularAmount);
+            vec2 offset = dir * bendMag;
+            offset.x /= aspect;
+            vec2 sampleUv = clamp(uv - offset, 0.0, 1.0);
+            vec4 color = texture2D(tDiffuse, sampleUv);
+            float ringGlow = smoothstep(lensRadius*0.55, lensRadius*0.62, dist) * (1.0 - smoothstep(lensRadius*0.62, lensRadius*0.85, dist));
+            color.rgb += ringGlow * lensStrength * 0.35;
+            gl_FragColor = color;
+        }
+    `
+};
+const lensPass = new ShaderPass(LensDistortShader);
+composer.addPass(lensPass);
+let lensMultiplier = 1.0;
+
+function updateLensUniforms() {
+    const bhM = getBHMass();
+    if (bhM <= 0 || BH_MASS_LOG <= 4.01) {
+        lensPass.uniforms.lensStrength.value = 0.0;
+        return;
+    }
+    const screenPos = bhOffset.clone().project(camera);
+    if (screenPos.z > 1 || screenPos.z < -1) {
+        lensPass.uniforms.lensStrength.value = 0.0;
+        return;
+    }
+    lensPass.uniforms.lensCenter.value.set((screenPos.x + 1) / 2, (screenPos.y + 1) / 2);
+    const massFrac = Math.min(1.0, (BH_MASS_LOG - 4) / (9.5 - 4));
+    lensPass.uniforms.lensStrength.value = massFrac * 0.9 * lensMultiplier;
+    lensPass.uniforms.lensRadius.value = 0.10 + massFrac * 0.18;
+}
+
+scene.add(new THREE.AmbientLight(0x111133));
+const dir = new THREE.DirectionalLight(0xffffff, 0.5);
+dir.position.set(5, 10, 5);
+scene.add(dir);
+
+const bgGeo = new THREE.BufferGeometry();
+const bgPos = [];
+for (let i = 0; i < 4000; i++)
+    bgPos.push((Math.random()-0.5)*900, (Math.random()-0.5)*600, (Math.random()-0.5)*500 - 80);
+bgGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(bgPos), 3));
+scene.add(new THREE.Points(bgGeo, new THREE.PointsMaterial({ color:0x334466, size:0.1, transparent:true, opacity:0.45 })));
+
+for (let r = 3; r <= 15; r += 3) {
+    const pts = [];
+    for (let a = 0; a <= 64; a++) {
+        const ang = (a/64)*Math.PI*2;
+        pts.push(new THREE.Vector3(Math.cos(ang)*r, 0, Math.sin(ang)*r));
+    }
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    scene.add(new THREE.LineLoop(geo, new THREE.LineBasicMaterial({ color:0x0a1a2a, transparent:true, opacity:0.35 })));
+}
+
+// ------------------------------------------------------------
+// [4.2] 별 스프라이트 텍스처 (부드러운 글로우) — 순수 시각 효과
+// ------------------------------------------------------------
+function generateGlowSpriteTexture() {
+    const size = 64;
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+    grad.addColorStop(0.0, 'rgba(255,255,255,1.0)');
+    grad.addColorStop(0.2, 'rgba(255,255,255,0.9)');
+    grad.addColorStop(0.5, 'rgba(200,220,255,0.35)');
+    grad.addColorStop(1.0, 'rgba(200,220,255,0.0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, size, size);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.needsUpdate = true;
+    return tex;
+}
+const starGlowTexture = generateGlowSpriteTexture();
+
+function makeStarMaterial() {
+    return new THREE.PointsMaterial({
+        size: 0.22,
+        map: starGlowTexture,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.95,
+        sizeAttenuation: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+    });
+}
+
+let bhGroup = null;
+function updateBHVisual() {
+    if (bhGroup) scene.remove(bhGroup);
+    bhGroup = new THREE.Group();
+    const logM = BH_MASS_LOG;
+    const rad = 0.2 + (logM - 4) * 0.06;
+
+    const photoR = rad * 1.5;
+    const photoPts = [];
+    for (let a = 0; a <= 128; a++) {
+        const ang = (a/128)*Math.PI*2;
+        photoPts.push(new THREE.Vector3(Math.cos(ang)*photoR, 0, Math.sin(ang)*photoR));
+    }
+    const photoGeo = new THREE.BufferGeometry().setFromPoints(photoPts);
+    bhGroup.add(new THREE.LineLoop(photoGeo, new THREE.LineBasicMaterial({ color:0x00eeff, transparent:true, opacity:0.7 })));
+
+    const ringColors = [0xcceeff, 0xffffff, 0xffddaa, 0xff9944, 0xff5522];
+    const ringOpas   = [0.8, 0.6, 0.4, 0.25, 0.12];
+    for (let i = 0; i < 5; i++) {
+        const r = photoR * (1.2 + i*0.45);
+        const pts = [];
+        for (let a = 0; a <= 180; a++) {
+            const ang = (a/180)*Math.PI*2;
+            pts.push(new THREE.Vector3(Math.cos(ang)*r, 0, Math.sin(ang)*r));
+        }
+        const geo = new THREE.BufferGeometry().setFromPoints(pts);
+        bhGroup.add(new THREE.LineLoop(geo, new THREE.LineBasicMaterial({ color:ringColors[i], transparent:true, opacity:ringOpas[i] })));
+    }
+
+    const core = new THREE.Mesh(new THREE.SphereGeometry(rad, 20, 16), new THREE.MeshStandardMaterial({ color:0x3388ff, emissive:0x001133 }));
+    bhGroup.add(core);
+
+    if (BH_SPIN > 0.2) {
+        const ergoR = rad * (1.5 + BH_SPIN * 0.8);
+        const ergo = new THREE.Mesh(new THREE.SphereGeometry(ergoR, 18, 12), new THREE.MeshBasicMaterial({ color:0x6600ff, transparent:true, opacity:0.07, wireframe:true }));
+        ergo.scale.set(1, 0.65, 1);
+        bhGroup.add(ergo);
+    }
+
+    bhGroup.position.copy(bhOffset);
+    scene.add(bhGroup);
+}
+
+// ============================================================
+// [5] 별 시스템
+// ============================================================
+let starPoints = null;
+let starData   = [];
+let starColors = null;
+
+function newtonCircularVelocityRelativeToBH(r_kpc) {
+    if (r_kpc < 0.01) return 0;
+    const G = getG();
+    const totalM = getBHMass() + diskMass(r_kpc);
+    return Math.sqrt(G * totalM / r_kpc);
+}
+
+function sampleStarPositionRelativeToBH() {
+    let r;
+    do { r = -DISK_SCALE_LEN * Math.log(1 - Math.random()*0.999); } 
+    while (r > GALAXY_RADIUS);
+    const phi = Math.random() * Math.PI * 2;
+    const z = (Math.random() - 0.5) * 0.5 * (1 - r / GALAXY_RADIUS);
+    return {
+        x: bhOffset.x + r * Math.cos(phi),
+        z: bhOffset.z + r * Math.sin(phi),
+        y: bhOffset.y + z,
+        r: r
+    };
+}
+
+function starColor(r) {
+    const t = Math.min(1, r / GALAXY_RADIUS);
+    return { cr:0.3 + t*0.7, cg:0.4 + t*0.3, cb:0.9 - t*0.6 };
+}
+
+function computeAcceleration(star, dt) {
+    dt = dt || DT;
+    const pos = star.pos;
+    const dx = pos.x - bhOffset.x;
+    const dy = pos.y - bhOffset.y;
+    const dz = pos.z - bhOffset.z;
+    const r3d = Math.sqrt(dx*dx + dy*dy + dz*dz);
+    const G = getG();
+    let ax=0, ay=0, az=0;
+
+    const bhM = getBHMass();
+    if (bhM > 0 && r3d > 0.01) {
+        const rb = Math.max(r3d, 0.01);
+        const g_bh = G * bhM / (rb*rb);
+        ax -= g_bh * dx/rb;
+        ay -= g_bh * dy/rb;
+        az -= g_bh * dz/rb;
+
+        if (BH_SPIN > 0.01) {
+            const r_xz = Math.sqrt(dx*dx + dz*dz) + 0.01;
+            const J = BH_SPIN * G * bhM * bhM / C_SIM;
+            const fd_mag = 2 * G * J / (C_SIM * C_SIM * rb * rb * rb + 0.01);
+            // 프레임 끌림: 속도에 수직한 Coriolis성 힘 (반시계 스핀 기준)
+            ax += fd_mag * (star.vel.z);
+            az -= fd_mag * (star.vel.x);
+        }
+    }
+
+    const r_xz = Math.sqrt(dx*dx + dz*dz);
+    if (r_xz > 0.05) {
+        const mDisk = diskMass(r_xz);
+        const g_disk = G * mDisk / (r_xz * r_xz + 0.04);
+        ax -= g_disk * dx / r_xz;
+        az -= g_disk * dz / r_xz;
+        ay -= G * mDisk * dy / (r_xz * r_xz * r_xz + 0.1);
+    }
+
+    if (RETARD_STRENGTH > 0 && MDD_LOG > 0) {
+        const tau = RETARD_STRENGTH * r3d / C_SIM;
+        const hist = star.history;
+        if (hist && hist.length >= 2) {
+            const n = hist.length;
+            const t0 = simTimeMyr - (n - 1) * dt;
+            if (tau > 0 && tau < simTimeMyr - t0) {
+                const targetTime = simTimeMyr - tau;
+                const fIdx = (targetTime - t0) / dt;
+                const i0 = Math.max(0, Math.min(n-2, Math.floor(fIdx)));
+                const i1 = i0 + 1;
+                const frac = fIdx - i0;
+                const p0 = hist[i0];
+                const p1 = hist[i1];
+                const retX = p0.x + (p1.x - p0.x) * frac;
+                const retZ = p0.z + (p1.z - p0.z) * frac;
+                const dx_ret = (star.pos.x - bhOffset.x) - (retX - bhOffset.x);
+                const dz_ret = (star.pos.z - bhOffset.z) - (retZ - bhOffset.z);
+                const r_ret = Math.sqrt(dx_ret*dx_ret + dz_ret*dz_ret) + 0.01;
+                const Mdd = getMDDot();
+                const a_mag = G * Math.abs(Mdd) / (2.0 * C_SIM * C_SIM);
+                const dir = Mdd > 0 ? 1 : -1;
+                ax += a_mag * dir * dx_ret / r_ret;
+                az += a_mag * dir * dz_ret / r_ret;
+            }
+        }
+    }
+
+    return { ax, ay, az };
+}
+
+function leapfrogStep(star, dt) {
+    const a0 = computeAcceleration(star, dt);
+    star.vel.x += a0.ax * dt * 0.5;
+    star.vel.y += a0.ay * dt * 0.5;
+    star.vel.z += a0.az * dt * 0.5;
+    star.pos.x += star.vel.x * dt;
+    star.pos.y += star.vel.y * dt;
+    star.pos.z += star.vel.z * dt;
+    const a1 = computeAcceleration(star, dt);
+    star.vel.x += a1.ax * dt * 0.5;
+    star.vel.y += a1.ay * dt * 0.5;
+    star.vel.z += a1.az * dt * 0.5;
+
+    star.history.push({ x: star.pos.x, y: star.pos.y, z: star.pos.z });
+    if (star.history.length > HIST_BUF_SIZE) star.history.shift();
+}
+
+function initStars() {
+    if (starPoints) scene.remove(starPoints);
+    const count = N_STARS;
+    const positions = new Float32Array(count*3);
+    const colors    = new Float32Array(count*3);
+    starData = [];
+
+    for (let i = 0; i < count; i++) {
+        const { x, z, y, r } = sampleStarPositionRelativeToBH();
+        const v_circ = newtonCircularVelocityRelativeToBH(r);
+        const dx = x - bhOffset.x, dz = z - bhOffset.z;
+        const phi = Math.atan2(dz, dx);
+
+        let vx, vz, vy;
+        if (velInitMode === 'circular') {
+            vx = -v_circ * Math.sin(phi) * (0.96 + Math.random()*0.08);
+            vz =  v_circ * Math.cos(phi) * (0.96 + Math.random()*0.08);
+            vy = vyZeroMode ? 0 : (Math.random()-0.5)*1.2;
+        } else if (velInitMode === 'random') {
+            vx = (Math.random()-0.5) * 2 * v_circ;
+            vz = (Math.random()-0.5) * 2 * v_circ;
+            vy = (Math.random()-0.5) * v_circ * 0.3;
+        } else {
+            vx = 0; vz = 0; vy = 0;
+        }
+        const { cr, cg, cb } = starColor(r);
+
+        starData.push({
+            pos: new THREE.Vector3(x, y, z),
+            vel: new THREE.Vector3(vx, vy, vz),
+            history: [{ x, y, z }],
+            settled: true,
+            collided: false
+        });
+        positions[i*3]=x; positions[i*3+1]=y; positions[i*3+2]=z;
+        colors[i*3]=cr;   colors[i*3+1]=cg;   colors[i*3+2]=cb;
+    }
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geo.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
+    starPoints = new THREE.Points(geo, makeStarMaterial());
+    scene.add(starPoints);
+    starColors = colors;
+
+    const initCons = computeConservation();
+    initialTotalEnergy = initCons.energy;
+    initialTotalAngularMomentum = initCons.angularMomentum;
+    simTimeMyr = 0;
+    addLog(`🌌 은하 초기화 | 별=${count.toLocaleString()} | vy=0 모드 | DT=${DT.toFixed(4)} Myr`);
+    
+    // 히스토리 초기화
+    spiralHistory = [];
+    scatterData = [];
+    currentSpiralStrength = 0;
+
+    initTrails();
+}
+
+function updateStarPositions() {
+    if (!starPoints) return;
+    const posAttr = starPoints.geometry.attributes.position;
+    const arr = posAttr.array;
+    for (let i = 0; i < starData.length; i++) {
+        arr[i*3]   = starData[i].pos.x;
+        arr[i*3+1] = starData[i].pos.y;
+        arr[i*3+2] = starData[i].pos.z;
+    }
+    posAttr.needsUpdate = true;
+}
+
+// ------------------------------------------------------------
+// [5.1] 별 궤적(trail) 시각화 — star.history 데이터를 그대로 사용,
+//       물리 계산에는 전혀 관여하지 않는 순수 렌더링 레이어
+// ------------------------------------------------------------
+const MAX_TRAIL_LEN = 300; // histBufSlide 최대값과 동일
+let TRAIL_SAMPLE_COUNT = 120;
+let trailsEnabled = true;
+let trailObjs = [];
+
+function initTrails() {
+    for (const t of trailObjs) {
+        scene.remove(t.line);
+        t.line.geometry.dispose();
+        t.line.material.dispose();
+    }
+    trailObjs = [];
+    if (starData.length === 0) return;
+
+    const count = Math.min(TRAIL_SAMPLE_COUNT, starData.length);
+    const step = Math.floor(starData.length / count) || 1;
+
+    for (let i = 0; i < count; i++) {
+        const idx = Math.min(starData.length - 1, i * step);
+        const positions = new Float32Array(MAX_TRAIL_LEN * 3);
+        const colors = new Float32Array(MAX_TRAIL_LEN * 3);
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        geo.setDrawRange(0, 0);
+        const mat = new THREE.LineBasicMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.55,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+        const line = new THREE.Line(geo, mat);
+        line.frustumCulled = false;
+        line.visible = trailsEnabled;
+        scene.add(line);
+        trailObjs.push({ line, starIdx: idx });
+    }
+}
+
+function updateTrails() {
+    if (!trailsEnabled || trailObjs.length === 0) return;
+    for (const t of trailObjs) {
+        const star = starData[t.starIdx];
+        if (!star || !star.history || star.history.length < 2) {
+            t.line.geometry.setDrawRange(0, 0);
+            continue;
+        }
+        const hist = star.history;
+        const n = Math.min(hist.length, MAX_TRAIL_LEN);
+        const posArr = t.line.geometry.attributes.position.array;
+        const colArr = t.line.geometry.attributes.color.array;
+        const startIdx = hist.length - n;
+        const r = Math.hypot(star.pos.x - bhOffset.x, star.pos.z - bhOffset.z);
+        const { cr, cg, cb } = starColor(r);
+        for (let i = 0; i < n; i++) {
+            const p = hist[startIdx + i];
+            posArr[i*3] = p.x; posArr[i*3+1] = p.y; posArr[i*3+2] = p.z;
+            const fade = i / n; // 꼬리(오래된 위치)일수록 어둡게 -> Additive 블렌딩에서 자연스럽게 흐려짐
+            colArr[i*3] = cr * fade; colArr[i*3+1] = cg * fade; colArr[i*3+2] = cb * fade;
+        }
+        t.line.geometry.attributes.position.needsUpdate = true;
+        t.line.geometry.attributes.color.needsUpdate = true;
+        t.line.geometry.setDrawRange(0, n);
+    }
+}
+
+function setTrailsEnabled(on) {
+    trailsEnabled = on;
+    for (const t of trailObjs) t.line.visible = on;
+}
+
+// ============================================================
+// [6] COLLIDE 파티클
+// ============================================================
+let flyingParticles = [];
+
+function spawnCollisionParticles(n) {
+    const flash = document.getElementById('flashOverlay');
+    if (flash) {
+        flash.classList.add('active');
+        setTimeout(() => flash.classList.remove('active'), 300);
+    }
+
+    for (let i = 0; i < n; i++) {
+        const { x, z, y, r } = sampleStarPositionRelativeToBH();
+        const v_circ = newtonCircularVelocityRelativeToBH(r);
+        const phi = Math.atan2(z - bhOffset.z, x - bhOffset.x);
+        const tvx = -v_circ * Math.sin(phi) * (0.96 + Math.random()*0.08);
+        const tvz =  v_circ * Math.cos(phi) * (0.96 + Math.random()*0.08);
+        const tvy = vyZeroMode ? 0 : (Math.random()-0.5)*1.2;
+
+        const burst = 0.3 + Math.random() * 0.7;
+        const angle = Math.random() * Math.PI * 2;
+        const elev  = (Math.random()-0.5) * Math.PI * 0.4;
+        const ix = bhOffset.x + Math.cos(elev)*Math.cos(angle)*burst;
+        const iy = bhOffset.y + Math.sin(elev)*burst;
+        const iz = bhOffset.z + Math.cos(elev)*Math.sin(angle)*burst;
+
+        const hue = Math.random() < 0.5 ? 0x00ffff : 0xffaa44;
+
+        const geo = new THREE.SphereGeometry(0.25, 6, 6);
+        const mat = new THREE.MeshStandardMaterial({ color: hue, emissive: hue, emissiveIntensity:1.0, transparent:true, opacity:1.0 });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(ix, iy, iz);
+        scene.add(mesh);
+
+        flyingParticles.push({
+            mesh, pos: new THREE.Vector3(ix, iy, iz),
+            vel: new THREE.Vector3((x-ix)*0.4 + (Math.random()-0.5)*0.15, (y-iy)*0.4 + (Math.random()-0.5)*0.1, (z-iz)*0.4 + (Math.random()-0.5)*0.15),
+            targetPos: new THREE.Vector3(x, y, z),
+            targetVel: new THREE.Vector3(tvx, tvy, tvz),
+            age: 0, maxAge: 180 + Math.floor(Math.random()*80),
+            color: hue
+        });
+    }
+    addLog(`💥 충돌 방출 ${n}개 파티클`);
+}
+
+function updateFlyingParticles() {
+    const toSettle = [];
+    for (let i = flyingParticles.length - 1; i >= 0; i--) {
+        const p = flyingParticles[i];
+        p.age++;
+        const t = Math.min(1, p.age / p.maxAge);
+
+        if (t >= 1) {
+            scene.remove(p.mesh);
+            p.mesh.geometry.dispose(); p.mesh.material.dispose();
+            flyingParticles.splice(i, 1);
+            toSettle.push({ pos: p.targetPos, vel: p.targetVel });
+            continue;
+        }
+
+        const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2;
+        p.pos.lerp(p.targetPos, eased * 0.06);
+        p.vel.lerp(p.targetVel, 0.025);
+        p.mesh.position.copy(p.pos);
+        const scale = 1.0 - t * 0.5;
+        p.mesh.scale.setScalar(Math.max(0.2, scale));
+        p.mesh.material.opacity = 1.0 - t * 0.4;
+    }
+
+    if (toSettle.length > 0) {
+        _addStarsToBuffer(toSettle);
+        addLog(`✨ ${toSettle.length}개 별 정착 | 총 ${starData.length.toLocaleString()}`);
+    }
+}
+
+function _addStarsToBuffer(newStars) {
+    if (!starPoints) return;
+    const oldCount = starData.length;
+    const newCount = oldCount + newStars.length;
+    if (newCount > 150000) return;
+
+    const newPos = new Float32Array(newCount*3);
+    const newCol = new Float32Array(newCount*3);
+    const oldPosArr = starPoints.geometry.attributes.position.array;
+    const oldColArr = starPoints.geometry.attributes.color.array;
+
+    newPos.set(oldPosArr);
+    newCol.set(oldColArr);
+
+    for (let i = 0; i < newStars.length; i++) {
+        const s = newStars[i];
+        const r = Math.sqrt(s.pos.x*s.pos.x + s.pos.z*s.pos.z);
+        const { cr, cg, cb } = starColor(r);
+        const idx = (oldCount + i) * 3;
+        newPos[idx] = s.pos.x; newPos[idx+1] = s.pos.y; newPos[idx+2] = s.pos.z;
+        newCol[idx] = cr;       newCol[idx+1] = cg;       newCol[idx+2] = cb;
+        starData.push({ pos: s.pos.clone(), vel: s.vel.clone(), history: [{ x: s.pos.x, y: s.pos.y, z: s.pos.z }], settled: true, collided: true });
+    }
+
+    scene.remove(starPoints);
+    starPoints.geometry.dispose();
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(newPos, 3));
+    geo.setAttribute('color',    new THREE.BufferAttribute(newCol, 3));
+    starPoints = new THREE.Points(geo, makeStarMaterial());
+    scene.add(starPoints);
+    starColors = newCol;
+}
+
+// ============================================================
+// [7] 보존량
+// ============================================================
+function computeConservation() {
+    let E=0, L=0;
+    const G = getG(), bhM = getBHMass();
+    for (const s of starData) {
+        const v2 = s.vel.x**2 + s.vel.y**2 + s.vel.z**2;
+        const dx = s.pos.x - bhOffset.x, dy = s.pos.y - bhOffset.y, dz = s.pos.z - bhOffset.z;
+        const r = Math.sqrt(dx*dx + dy*dy + dz*dz) + 0.001;
+        E += 0.5*v2;
+        if (bhM > 0) E -= G*bhM/r;
+        L += (s.pos.x - bhOffset.x)*s.vel.z - (s.pos.z - bhOffset.z)*s.vel.x;
+    }
+    return { energy:E, angularMomentum:L };
+}
+
+// ============================================================
+// [8] 차트 & HUD
+// ============================================================
+function kpcMyrToKms(v) { return v * KPC_M / MYR_S / 1000; }
+
+const rotCanvas = document.getElementById('rotCurveCanvas');
+const rotCtx    = rotCanvas ? rotCanvas.getContext('2d') : null;
+const M33_OBS   = [[0.5,62],[1,78],[2,98],[3,108],[4,112],[5,114],[6,115],[7,116],[8,117],[9,117.5],[10,118],[12,118],[14,117]];
+
+function drawRotationCurve() {
+    if (!rotCtx) return;
+    const W=rotCanvas.width, H=rotCanvas.height;
+    rotCtx.fillStyle='#020810'; rotCtx.fillRect(0,0,W,H);
+    const maxR=GALAXY_RADIUS, maxV=350;
+    const l=26, r=6, t=10, b=16;
+    const px=rr=>l+(rr/maxR)*(W-l-r);
+    const py=vv=>H-b-(vv/maxV)*(H-t-b);
+
+    rotCtx.strokeStyle='#0a1a2e'; rotCtx.lineWidth=0.5;
+    for(let v=0;v<=maxV;v+=50){ rotCtx.beginPath(); rotCtx.moveTo(l,py(v)); rotCtx.lineTo(W-r,py(v)); rotCtx.stroke(); }
+    for(let rr=0;rr<=maxR;rr+=3){ rotCtx.beginPath(); rotCtx.moveTo(px(rr),t); rotCtx.lineTo(px(rr),H-b); rotCtx.stroke(); }
+
+    rotCtx.strokeStyle='#fa8'; rotCtx.lineWidth=1.6; rotCtx.beginPath();
+    let first=true;
+    for(let rr=0.2;rr<=maxR;rr+=0.2){
+        const vn=kpcMyrToKms(newtonCircularVelocityRelativeToBH(rr));
+        first ? rotCtx.moveTo(px(rr),py(vn)) : rotCtx.lineTo(px(rr),py(vn));
+        first=false;
+    }
+    rotCtx.stroke();
+
+    rotCtx.fillStyle='#f55';
+    for(const [rr,vv] of M33_OBS) if(rr<=maxR){
+        rotCtx.beginPath(); rotCtx.arc(px(rr),py(vv),2,0,Math.PI*2); rotCtx.fill();
+    }
+
+    if(starData.length > 20){
+        const bins=Array(15).fill().map(()=>({sum:0,cnt:0}));
+        for(const s of starData){
+            const dx=s.pos.x-bhOffset.x, dz=s.pos.z-bhOffset.z;
+            const rr=Math.sqrt(dx*dx+dz*dz);
+            const bi=Math.min(14,Math.floor(rr/maxR*15));
+            bins[bi].sum += kpcMyrToKms(Math.sqrt(s.vel.x**2+s.vel.z**2));
+            bins[bi].cnt++;
+        }
+        rotCtx.strokeStyle='#4ef'; rotCtx.lineWidth=2;
+        rotCtx.beginPath(); let started=false;
+        for(let i=0;i<15;i++){
+            if(bins[i].cnt<3) continue;
+            const rC=(i+0.5)/15*maxR, va=bins[i].sum/bins[i].cnt;
+            started ? rotCtx.lineTo(px(rC),py(va)) : rotCtx.moveTo(px(rC),py(va));
+            started=true;
+        }
+        rotCtx.stroke();
+    }
+}
+
+function updateHUD() {
+    const analysisBHRad = document.getElementById('analysisBHRad');
+    if (analysisBHRad) analysisBHRad.textContent = BH_RAD.toFixed(3) + ' kpc';
+    
+    document.getElementById('nStars').textContent = starData.length.toLocaleString();
+    document.getElementById('simTime').textContent = simTimeMyr.toFixed(1) + ' Myr';
+
+    let sumV=0, cntV=0;
+    for(const s of starData){
+        const dx=s.pos.x-bhOffset.x, dz=s.pos.z-bhOffset.z;
+        const r=Math.sqrt(dx*dx+dz*dz);
+        if(r>9){ sumV+=Math.sqrt(s.vel.x**2+s.vel.z**2); cntV++; }
+    }
+    const ov = cntV>0 ? kpcMyrToKms(sumV/cntV) : 0;
+    const nv = kpcMyrToKms(newtonCircularVelocityRelativeToBH(10));
+    const ratio = nv>0 ? (ov/nv).toFixed(2) : '—';
+    document.getElementById('outerVel').innerText  = ov.toFixed(0) + ' km/s';
+    document.getElementById('newtonVel').innerText = nv.toFixed(0) + ' km/s';
+    document.getElementById('velRatio').innerText  = (nv>0 ? (ov/nv).toFixed(2) : '—') + 'x';
+    document.getElementById('diskMassVal').innerText = (diskMass(10) / 1e10).toFixed(2) + '×10¹⁰M☉';
+    document.getElementById('bufDepth').innerText = (starData.length > 0 ? starData[0].history.length : 0) + ' / ' + HIST_BUF_SIZE;
+    
+    const analysisRatio = document.getElementById('analysisRatio');
+    if (analysisRatio) analysisRatio.textContent = (nv>0 ? (ov/nv).toFixed(2) : '—') + 'x';
+
+    document.getElementById('retardInfo').innerHTML =
+        `α=${RETARD_STRENGTH.toFixed(2)} · M̈=10^${MDD_LOG} · G=10^${G_SCALE_EXP}<br>` +
+        `vy=0: ${vyZeroMode?'✅':'❌'} · 스핀 a*=${BH_SPIN.toFixed(2)}<br>` +
+        `BH 위치: r=${BH_RAD.toFixed(3)} kpc, θ=${(BH_ANG*180/Math.PI).toFixed(1)}°<br>` +
+        `지연: ${RETARD_STRENGTH>0&&MDD_LOG>0?'<span style="color:#4ef">활성</span>':'비활성'}`;
+
+    const cons = computeConservation();
+    const dE = initialTotalEnergy!==0 ? ((cons.energy-initialTotalEnergy)/Math.abs(initialTotalEnergy)*100) : 0;
+    const dL = initialTotalAngularMomentum!==0 ? ((cons.angularMomentum-initialTotalAngularMomentum)/Math.abs(initialTotalAngularMomentum)*100) : 0;
+
+    const eCol = Math.abs(dE)>5?'#f55':Math.abs(dE)>1?'#fa0':'#5f6';
+    const lCol = Math.abs(dL)>5?'#f55':Math.abs(dL)>1?'#fa0':'#5f6';
+    
+    // 스파이럴 강도 업데이트 (단일 순회로 통합)
+    const fourierResult = computeAllFourierModes(starData, bhOffset);
+    currentSpiralStrength = fourierResult ? Math.min(1.0, fourierResult[1]) : 0;
+    updateSpiralUI();
+    drawFourierAnalysis(starData, bhOffset);
+    
+    const metricsDiv = document.getElementById('metrics');
+    if (metricsDiv) {
+        metricsDiv.innerHTML = `⭐ ${starData.length.toLocaleString()} | 🖥️ ${fps} fps | ΔE: <span style="color:${eCol}">${dE.toFixed(1)}%</span> | ΔL: <span style="color:${lCol}">${dL.toFixed(1)}%</span> | 🌊 S₂: ${currentSpiralStrength.toFixed(3)}`;
+    }
+}
+
+function addLog(msg) {
+    const el = document.getElementById('logEntries');
+    if (!el) return;
+    const d = document.createElement('div');
+    d.style.cssText = 'color:#acd; margin:1px 0; font-size:7px;';
+    d.textContent = msg;
+    el.prepend(d);
+    while (el.children.length > 8) el.removeChild(el.lastChild);
+}
+
+// ============================================================
+// [9] UI 바인딩
+// ============================================================
+function bindSlider(id, valId, fmt, cb) {
+    const el = document.getElementById(id);
+    let timeout = null;
+    el.addEventListener('input', (e) => {
+        const v = parseFloat(e.target.value);
+        document.getElementById(valId).textContent = fmt ? fmt(v) : (typeof v === 'number' ? v.toFixed(2) : v);
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(() => cb(v), 16);
+    });
+    cb(parseFloat(el.value));
+}
+bindSlider('bhMassLogSlide','bhMassLogVal', v=>v.toFixed(2), v=>{ BH_MASS_LOG=v; updateBHVisual(); });
+bindSlider('galMassLogSlide','galMassLogVal', v=>v.toFixed(2), v=>{ GAL_MASS_LOG=v; });
+bindSlider('mddLogSlide','mddLogVal', v=>v.toFixed(1), v=>{ MDD_LOG=v; });
+bindSlider('retardSlide','retardVal', v=>v.toFixed(2), v=>{ RETARD_STRENGTH=v; });
+bindSlider('gScaleSlide','gScaleVal', v=>`×10^${Number.isInteger(v) ? v : v.toFixed(1)}`, v=>{ G_SCALE_EXP=v; });
+bindSlider('dtSlide','dtVal', v=>v.toFixed(4), v=>{ DT=v; addLog(`⏱️ DT=${v.toFixed(4)} Myr`); });
+bindSlider('animSpeedSlide','animSpeedVal', v=>v.toFixed(2)+'x', v=>{ ANIM_SPEED=v; });
+bindSlider('histBufSlide','histBufVal', v=>v, v=>{ HIST_BUF_SIZE=v; addLog(`🕰️ 버퍼 ${v}스텝`); });
+bindSlider('nStarSlide','nStarVal', v=>v, v=>{ N_STARS=v; });
+bindSlider('collideNSlide','collideNVal', v=>v, v=>{ COLLIDE_N=v; });
+bindSlider('bhSpinSlide','bhSpinVal', v=>v.toFixed(2), v=>{ BH_SPIN=v; updateBHVisual(); });
+bindSlider('bhRadSlide','bhRadVal', v=>v.toFixed(3), v=>{ BH_RAD=v; updateBHOffset(); updateBHVisual(); });
+bindSlider('bhAngSlide','bhAngVal', v=>v.toFixed(0)+'°', v=>{ BH_ANG=v*(Math.PI/180); updateBHOffset(); updateBHVisual(); });
+bindSlider('bhYSlide','bhYVal', v=>v.toFixed(2), v=>{ BH_Y=v; updateBHOffset(); updateBHVisual(); });
+bindSlider('bloomStrengthSlide','bloomStrengthVal', v=>v.toFixed(2), v=>{ bloomPass.strength=v; });
+bindSlider('lensStrengthSlide','lensStrengthVal', v=>v.toFixed(2), v=>{ lensMultiplier=v; });
+bindSlider('lensSingularSlide','lensSingularVal', v=>v.toFixed(2), v=>{ lensPass.uniforms.singularAmount.value=v; });
+bindSlider('trailCountSlide','trailCountVal', v=>v, v=>{ TRAIL_SAMPLE_COUNT=v; initTrails(); });
+
+document.getElementById('trailOnBtn').addEventListener('click', () => {
+    setTrailsEnabled(true);
+    document.getElementById('trailOnBtn').classList.add('active');
+    document.getElementById('trailOffBtn').classList.remove('active');
+    addLog('🌠 궤적 표시 ON');
+});
+document.getElementById('trailOffBtn').addEventListener('click', () => {
+    setTrailsEnabled(false);
+    document.getElementById('trailOffBtn').classList.add('active');
+    document.getElementById('trailOnBtn').classList.remove('active');
+    addLog('🚫 궤적 표시 OFF');
+});
+
+document.getElementById('vyZeroBtn').addEventListener('click', () => {
+    vyZeroMode=true;
+    document.getElementById('vyZeroBtn').classList.add('active');
+    document.getElementById('vyRandBtn').classList.remove('active');
+    addLog('🔒 vy=0 모드');
+});
+document.getElementById('vyRandBtn').addEventListener('click', () => {
+    vyZeroMode=false;
+    document.getElementById('vyRandBtn').classList.add('active');
+    document.getElementById('vyZeroBtn').classList.remove('active');
+    addLog('🎲 vy=랜덤 모드');
+});
+
+function setVelMode(mode) {
+    velInitMode = mode;
+    document.getElementById('velCircBtn').classList.toggle('active', mode==='circular');
+    document.getElementById('velRandBtn').classList.toggle('active', mode==='random');
+    document.getElementById('velZeroBtn').classList.toggle('active', mode==='zero');
+    const desc = {
+        circular: '원형 궤도 속도',
+        random:   '⚠️ 완전 랜덤 속도',
+        zero:     '⚠️ 완전 정지'
+    };
+    const descDiv = document.getElementById('velModeDesc');
+    if (descDiv) descDiv.innerHTML = `현재: ${desc[mode]} ${vyZeroMode ? '· vy=0' : '· vy=랜덤'}`;
+    addLog('속도 모드: ' + mode);
+}
+document.getElementById('velCircBtn').addEventListener('click', () => setVelMode('circular'));
+document.getElementById('velRandBtn').addEventListener('click', () => setVelMode('random'));
+document.getElementById('velZeroBtn').addEventListener('click', () => setVelMode('zero'));
+
+let colliding = false;
+document.getElementById('collideBtn').addEventListener('click', () => {
+    if (colliding) return;
+    colliding = true;
+    spawnCollisionParticles(COLLIDE_N);
+    setTimeout(() => colliding=false, 600);
+});
+document.getElementById('initBtn').addEventListener('click', () => { initStars(); updateBHVisual(); });
+document.getElementById('clearBtn').addEventListener('click', () => {
+    for (const p of flyingParticles) {
+        scene.remove(p.mesh); p.mesh.geometry.dispose(); p.mesh.material.dispose();
+    }
+    flyingParticles = [];
+    initStars();
+    addLog('◀ 리셋 완료');
+});
+
+// ============================================================
+// [9.5] SPARC 피팅 기능
+// ============================================================
+let sparcData = null;
+document.getElementById('csvFileInput').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+        const text = ev.target.result;
+        const lines = text.trim().split('\n');
+        sparcData = [];
+        for (let i = 1; i < lines.length; i++) {
+            const parts = lines[i].split(',');
+            if (parts.length >= 2) {
+                const r = parseFloat(parts[0]);
+                const v = parseFloat(parts[1]);
+                if (!isNaN(r) && !isNaN(v) && r > 0 && v > 0) {
+                    sparcData.push({ r, v });
+                }
+            }
+        }
+        addLog(`📁 SPARC 데이터 로드: ${sparcData.length}개 포인트`);
+        document.getElementById('fitResults').innerHTML = `📊 데이터 로드 완료: ${sparcData.length}개 포인트<br>피팅을 실행하세요.`;
+    };
+    reader.readAsText(file);
+});
+
+document.getElementById('fitBtn').addEventListener('click', () => {
+    if (!sparcData || sparcData.length === 0) {
+        document.getElementById('fitResults').innerHTML = '❌ 먼저 CSV 파일을 업로드하세요.';
+        return;
+    }
+    // 그리드 서치로 최적 Ṁ_pair 찾기 (M̈ 값 최적화)
+    const mddValues = [6, 7, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12];
+    let bestMdd = MDD_LOG;
+    let bestChi2 = Infinity;
+    const results = [];
+    
+    for (const mdd of mddValues) {
+        // 임시로 M̈ 설정
+        const originalMdd = MDD_LOG;
+        MDD_LOG = mdd;
+        let chi2 = 0;
+        let valid = 0;
+        for (const pt of sparcData) {
+            if (pt.r > GALAXY_RADIUS) continue;
+            const v_sim = kpcMyrToKms(newtonCircularVelocityRelativeToBH(pt.r));
+            if (v_sim > 0) {
+                const diff = (pt.v - v_sim) / pt.v;
+                chi2 += diff * diff;
+                valid++;
+            }
+        }
+        if (valid > 0) {
+            chi2 /= valid;
+            results.push({ mdd, chi2 });
+            if (chi2 < bestChi2) {
+                bestChi2 = chi2;
+                bestMdd = mdd;
+            }
+        }
+        MDD_LOG = originalMdd;
+    }
+    
+    const ratio = bestChi2 > 0 ? (1 / Math.sqrt(bestChi2)).toFixed(2) : '?';
+    document.getElementById('fitResults').innerHTML = `
+        📐 피팅 결과<br>
+        ✅ 최적 M̈ log₁₀ = ${bestMdd.toFixed(1)}<br>
+        📉 최소 χ² = ${bestChi2.toFixed(4)}<br>
+        ⚡ 속도 이상비 ≈ ${ratio}x<br>
+        💡 이 값을 M̈ 슬라이더에 설정하세요.
+    `;
+    addLog(`📐 피팅 완료: 최적 M̈=${bestMdd.toFixed(1)}, χ²=${bestChi2.toFixed(4)}`);
+});
+
+// ============================================================
+// [10] 탭 전환
+// ============================================================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(`tab-${tabId}`).classList.add('active');
+    });
+});
+
+// ============================================================
+// [11] 메인 루프
+// ============================================================
+let fps=60, _lastTime=performance.now(), _frames=0, _frameStep=0;
+
+function animate() {
+    requestAnimationFrame(animate);
+    _frames++;
+    const now = performance.now();
+    if (now-_lastTime >= 1000) { fps=_frames; _frames=0; _lastTime=now; }
+
+    if (!paused && starData.length > 0) {
+        const effectiveDT = DT * ANIM_SPEED;
+        for (let i = 0; i < starData.length; i++) {
+            leapfrogStep(starData[i], effectiveDT);
+            const s = starData[i];
+            const dx = s.pos.x - bhOffset.x;
+            const dz = s.pos.z - bhOffset.z;
+            const r_from_bh = Math.sqrt(dx*dx + dz*dz);
+            
+            if (r_from_bh > GALAXY_RADIUS * 2.2) {
+                if (s.collided) {
+                    s.vel.x *= -0.4;
+                    s.vel.z *= -0.4;
+                    s.pos.x = bhOffset.x + dx * 0.5;
+                    s.pos.z = bhOffset.z + dz * 0.5;
+                } else {
+                    const { x, z, y, r: newR } = sampleStarPositionRelativeToBH();
+                    const phi = Math.atan2(z - bhOffset.z, x - bhOffset.x);
+                    const vc = newtonCircularVelocityRelativeToBH(newR);
+                    s.pos.set(x, y, z);
+                    if (velInitMode === 'circular') {
+                        s.vel.set(-vc*Math.sin(phi), vyZeroMode?0:(Math.random()-0.5)*1.2, vc*Math.cos(phi));
+                    } else if (velInitMode === 'random') {
+                        s.vel.set((Math.random()-0.5)*2*vc, (Math.random()-0.5)*vc*0.3, (Math.random()-0.5)*2*vc);
+                    } else {
+                        s.vel.set(0, 0, 0);
+                    }
+                    s.history = [{ x, y, z }];
+                }
+            }
+        }
+        simTimeMyr += effectiveDT;
+        updateStarPositions();
+    }
+
+    updateFlyingParticles();
+
+    if (_frameStep++ % 4 === 0) {
+        drawRotationCurve();
+        updateHUD();
+    }
+
+    updateTrails();
+    updateLensUniforms();
+
+    controls.update();
+    composer.render();
+}
+
+window.addEventListener('resize', () => {
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+    composer.setSize(innerWidth, innerHeight);
+    bloomPass.setSize(innerWidth, innerHeight);
+    fxaaPass.material.uniforms['resolution'].value.set(
+        1 / (innerWidth * Math.min(devicePixelRatio, 2)),
+        1 / (innerHeight * Math.min(devicePixelRatio, 2))
+    );
+    lensPass.uniforms.aspect.value = innerWidth / innerHeight;
+});
+
+// 시작
+updateBHOffset();
+initStars();
+updateBHVisual();
+drawRotationCurve();
+updateHUD();
+
+// 로그 엘리먼트 없으면 생성
+if (!document.getElementById('logEntries')) {
+    const logDiv = document.createElement('div');
+    logDiv.id = 'logEntries';
+    logDiv.style.cssText = 'position:absolute; bottom:80px; left:18px; width:300px; background:rgba(0,0,0,0.6); border-radius:12px; padding:6px 10px; font-size:8px; color:#acd; z-index:30;';
+    document.body.appendChild(logDiv);
+}
+
+// ============================================================
+// [12] 방향키 제어 (Shift + 방향키 = 미세 이동)
+// ============================================================
+document.addEventListener('keydown', e => {
+    const slowMode = e.shiftKey;
+    const angleStep = slowMode ? 0.005 : 0.05;
+    const radStep   = slowMode ? 0.02 : 0.1;
+    let changed = false;
+    
+    if(e.key === 'ArrowLeft') {
+        BH_ANG -= angleStep;
+        changed = true;
+    }
+    if(e.key === 'ArrowRight') {
+        BH_ANG += angleStep;
+        changed = true;
+    }
+    if(e.key === 'ArrowUp') {
+        BH_RAD = Math.min(5.0, BH_RAD + radStep);
+        changed = true;
+    }
+    if(e.key === 'ArrowDown') {
+        BH_RAD = Math.max(0, BH_RAD - radStep);
+        changed = true;
+    }
+    
+    if (changed) {
+        BH_ANG = (BH_ANG + Math.PI * 2) % (Math.PI * 2);
+        updateBHOffset();
+        updateBHVisual();
+        
+        document.getElementById('bhRadSlide').value = BH_RAD;
+        document.getElementById('bhAngSlide').value = BH_ANG * (180 / Math.PI);
+        document.getElementById('bhRadVal').textContent = BH_RAD.toFixed(3);
+        document.getElementById('bhAngVal').textContent = (BH_ANG * (180 / Math.PI)).toFixed(1) + '°';
+        
+        addLog(`🎮 BH 변위: ${slowMode ? '🐢 미세이동' : '⚡ 이동'} | r=${BH_RAD.toFixed(3)} kpc, θ=${(BH_ANG*180/Math.PI).toFixed(1)}°`);
+        
+        if (slowMode) {
+            const hint = document.getElementById('keyHint');
+            if (hint) {
+                hint.style.color = '#4ef';
+                hint.style.borderColor = '#4ef';
+                setTimeout(() => {
+                    hint.style.color = '#8af';
+                    hint.style.borderColor = '#2af4';
+                }, 300);
+            }
+        }
+    }
+});
+
+// 플래시 오버레이 생성
+if (!document.getElementById('flashOverlay')) {
+    const flash = document.createElement('div');
+    flash.id = 'flashOverlay';
+    flash.style.cssText = 'position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 50% 50%, rgba(0,200,255,0.07) 0%, transparent 70%); opacity:0; transition:opacity 0.05s; z-index:20;';
+    document.body.appendChild(flash);
+}
+
+animate();
+addLog('✅ Galaxy v5.1 | 나선팔 정량 분석 (Fourier m=2) + SPARC 피팅 | 방향키로 BH 이동 → S₂ 값 변화 관찰!');
+</script>
+</body>
+</html>
