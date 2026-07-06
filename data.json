@@ -1,86 +1,37 @@
 {
   "globalNews": [
     {
-      "title": "Iran's supreme leader absent as senior officials attend ayatollah's funeral",
-      "link": "https://www.bbc.co.uk/news/articles/cevllyj9vv3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 05 Jul 2026 17:58:01 GMT",
-      "desc": "Mojtaba Khamenei has not been seen in public since the attack which killed his father at the outset of the US-Israel war with Iran."
+      "title": "At least 10 killed in second Russian strikes on Kyiv in a week",
+      "link": "https://www.bbc.co.uk/news/articles/cewqqnd7zdwo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 06 Jul 2026 06:00:27 GMT",
+      "desc": "The capital's top military administrator said 46 people have been injured in the attack, including five children."
     },
     {
-      "title": "Watch: Lyse Doucet on emotion and politics at Tehran funeral of former supreme leader",
-      "link": "https://www.bbc.co.uk/news/videos/c4gyye3rplno?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 05 Jul 2026 17:54:47 GMT",
-      "desc": "The BBC's chief international correspondent reports from Tehran where funeral events are taking place in honour of Iran's former leader, Ayatollah Ali Khamenei."
+      "title": "'I ate ketchup and cheese,' says Venezuelan girl trapped under quake rubble for 32 hours",
+      "link": "https://www.bbc.co.uk/news/articles/c9922x87nj8o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 06 Jul 2026 05:04:28 GMT",
+      "desc": "Fabiana was trapped in the rubble of a 10-storey residential building after two earthquakes rocked Venezuela in June."
     },
     {
-      "title": "From 'a beautiful night' to 'world's greatest hangover', guests react to Taylor and Travis's wedding",
-      "link": "https://www.bbc.co.uk/news/articles/clyxxr9n2kjo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 05 Jul 2026 15:48:20 GMT",
-      "desc": "Some of the famous guests have been posting on social media about the big day in New York."
+      "title": "Australian PM apologises for 'inappropriate' comments about Kylie Minogue",
+      "link": "https://www.bbc.co.uk/news/articles/cr477en6w3go?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 06 Jul 2026 01:46:29 GMT",
+      "desc": "Albanese has apologised 'unequivocally' after his remarks prompted a backlash."
     },
     {
-      "title": "Moment of destiny for France's Le Pen in verdict to decide her future in presidential race",
-      "link": "https://www.bbc.co.uk/news/articles/c5yzlwz34p7o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 04 Jul 2026 23:17:24 GMT",
-      "desc": "Far-right leader Marine Le Pen is appealing against a verdict which found her guilty of misusing EU funds."
+      "title": "Marine Le Pen appeal verdict: Why this moment matters for France",
+      "link": "https://www.bbc.co.uk/news/articles/clyeele4leeo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 05 Jul 2026 23:31:04 GMT",
+      "desc": "The leader of France's National Rally leads the opinion polls ahead of the 2027 presidential election and will now find out if she can stand."
     },
     {
-      "title": "Australia probes mystery space balls that washed up on beach",
-      "link": "https://www.bbc.co.uk/news/articles/c1jyydr7jnjo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 05 Jul 2026 12:55:58 GMT",
-      "desc": "Officials are searching for the origins of six pieces of space debris discovered on Forrest Beach in Queensland."
+      "title": "A global hub for fake luxury goods, Vietnam cracks down on its black market",
+      "link": "https://www.bbc.co.uk/news/articles/cdx7zzywz7wo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 05 Jul 2026 22:01:43 GMT",
+      "desc": "The Trump administration wants Vietnam to stamp out its booming counterfeit industry. Locals are divided."
     }
   ],
-  "koreaNews": [
-    {
-      "title": "South Korea’s New External Economic Development Strategy - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQZkQ1aEE3UzNLV2tVWnM4c0FfcUJ1N0l3OW44bXNBMmV0Nl8zeEdqQS02b0JNUUpZTDhHd1ZnMGxCRDZVanVQU0plMVlJUVNCQ1FIMXpmWEFlSTFkZnMtU0Q5NEM0WlFybURBc1Fnek56TjlBSFJQWUQwbXZLU3RORHVVUGhkS0FsYWRHRERn?oc=5",
-      "date": "Thu, 02 Jul 2026 20:46:33 GMT",
-      "desc": "South Korea’s New External Economic Development Strategy&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
-      "date": "Tue, 23 Jun 2026 07:00:00 GMT",
-      "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
-    },
-    {
-      "title": "From K-Pop To GDP: The Economics Of BTS - StratNews Global",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQ1d6YUJIcVJ3YjcxOVBkY08zcHZ6YnlteEVRWTlkSktLeGw4ZVI3X0czRFZkQU8xX2FReFZ6c2tZaF9OZF9oMW9Zb29WMHhCa094eW1CUEdlSkRsQ3FBNkJpYW1hSmxlSlBvUVpMTXBsNnpDOXFOU21RWnc0NXBsUnFKUEx3VE8yeTRJQg?oc=5",
-      "date": "Sun, 05 Jul 2026 16:30:39 GMT",
-      "desc": "From K-Pop To GDP: The Economics Of BTS&nbsp;&nbsp;StratNews Global"
-    },
-    {
-      "title": "[Yoo Choon-sik] Korea’s trillion-dollar AI push meets skepticism - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE4yemJHNjkwb2s3QWpRRnJwUklnQ1VPTWNDWVR5TTZTNUhfRU1Dcm9pWmlDMC1uUG8wZ2pGaGJVWUVDSUNORHJ1UDNwbHNZSVRHVk5NVDMtMA?oc=5",
-      "date": "Sun, 05 Jul 2026 20:30:00 GMT",
-      "desc": "[Yoo Choon-sik] Korea’s trillion-dollar AI push meets skepticism&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "AI Export Controls Need an Alliance Price: Why South Korea’s Submarine Deal Matters - economy.ac",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBZVENHVXhzZUpETWZMSHY5Q0kySUw5OEhWSGJPNEtUMEJHMS1Qa0g0WnV0aS00TWxESFhacmM0Y3Z2SmF2UzlzR1hCUkp3X0xjWFhrV3B1Qmt4dw?oc=5",
-      "date": "Sun, 05 Jul 2026 22:26:36 GMT",
-      "desc": "AI Export Controls Need an Alliance Price: Why South Korea’s Submarine Deal Matters&nbsp;&nbsp;economy.ac"
-    },
-    {
-      "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
-      "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
-      "date": "Fri, 03 Jul 2026 13:17:47 GMT",
-      "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
-    },
-    {
-      "title": "Samsung, SK hynix's 800 trillion won bet at home may create U.S. pressure - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPRDBIdUg2R2xCSWlTQ1ItS3ZpRDROQlE1dnhiN3EtUjA3cG5DckZub3FNWEtzTTZ5NDJBaGRNbGZGVzE4bkFIQjZmSVJJTVZtb2FCSDk3cHVzUFRQV284RDJQQmNPSmE2bWFXbGo1dUNtcGU2OVVqbDlhak56QVo5MW1UODFTQ1Azd0NEMndQMzRkR1phVmRWU1hOOVhod3V2VGRuUWR1dkhMVHp4VjhmLURBYTBEWGhSMlFkRDZGNA?oc=5",
-      "date": "Sun, 05 Jul 2026 09:50:37 GMT",
-      "desc": "Samsung, SK hynix's 800 trillion won bet at home may create U.S. pressure&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFU0NWhkYzZuZG9IRTd6cmpiUGhyRjFoWm1aSDdLNS0xQTRuUTFpS2JZSmM1b053aV9URXhrS3RFTVdYYUpIa3ZVbFhfWmlLbVRVdEJFckN1RTdJVXBYaHU5Q2tuaDVPeGFfTWFveTRfMjFiTU1YaTJfQXFES3Myb3EwUWZzSTRfSDU3dUYxYnQzcTMxZDNZ0gGcAUFVX3lxTE5VaUJOSWVBQm9jVlZyUjRZeC16NGFpdXNDNEMwMlNEQk1Nb3FhLXJmNTlKTFJUR3Rza293STRQOVJaNXRGUWVEUXFqMTRYZWE1RVNIY24tOFJvaFFmNmNmclhLdjJ4dHJNZkd5WTJHdW5aWXNJT05oYk91ckFKVVZ5RExWa0llcXdncWRMQTY5YnNLNUhQa0wyUFNENg?oc=5",
-      "date": "Thu, 02 Jul 2026 01:02:00 GMT",
-      "desc": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street&nbsp;&nbsp;CNBC"
-    }
-  ],
+  "koreaNews": [],
   "worldStocks": [
     {
       "symbol": "NVDA",
@@ -175,61 +126,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 309500.0,
-      "change": -5000.0,
-      "pct": -1.59,
+      "price": 318000.0,
+      "change": 32000.0,
+      "pct": 11.19,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2425000.0,
-      "change": -135000.0,
-      "pct": -5.27,
+      "price": 2343000.0,
+      "change": 156000.0,
+      "pct": 7.13,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 492000.0,
-      "change": 4500.0,
-      "pct": 0.92,
+      "price": 502000.0,
+      "change": 20000.0,
+      "pct": 4.15,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 152000.0,
-      "change": 10500.0,
-      "pct": 7.42,
+      "price": 160700.0,
+      "change": 15500.0,
+      "pct": 10.67,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 195800.0,
-      "change": -1600.0,
-      "pct": -0.81,
+      "price": 196600.0,
+      "change": -3300.0,
+      "pct": -1.65,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8088.34,
-      "change": -215.07,
-      "pct": -2.59,
+      "price": 8051.33,
+      "change": 403.24,
+      "pct": 5.27,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1529.2,
-      "change": -22.61,
-      "pct": -1.46,
+      "price": 1533.52,
+      "change": -8.61,
+      "pct": -0.56,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-06 02:07 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-06 07:04 UTC"
 }
