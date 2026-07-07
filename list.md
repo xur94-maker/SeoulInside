@@ -19,6 +19,9 @@ https://www.google.com/search?q=Hunmin+Jeongeum+Haerye+%ED%9B%88%EB%AF%BC%EC%A0%
 #Trickle-Dry Effect
 https://www.google.com/search?q=The+Trickle-Dry+Effect&sourceid=chrome&ie=UTF-8&source=chrome.ob
 
+#Hongdae
+https://www.google.com/search?q=%22The+Address+That+Ate+the+University%22+How+a+street+called+Hongdae&sourceid=chrome&ie=UTF-8&source=chrome.ob
+
 #ko-fi.com
 https://ko-fi.com/Manage/
 
