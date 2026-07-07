@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
+      "title": "Zelensky to press Nato for air defence systems after intense Russian strikes",
+      "link": "https://www.bbc.co.uk/news/articles/c9d227e5zj6o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 07 Jul 2026 04:18:19 GMT",
+      "desc": "The Ukrainian president will use the Nato meeting in Turkey to argue he needs more interceptor missiles."
+    },
+    {
       "title": "Trump confirms he asked Fifa to review Balogun ban",
       "link": "https://www.bbc.co.uk/sport/football/articles/c1myykx0gmxo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 06 Jul 2026 19:06:34 GMT",
       "desc": "President Donald Trump confirms he asked Fifa to review United States striker Folarin Balogun's one-match suspension at the World Cup."
     },
     {
-      "title": "Ukraine warns of interceptor missile shortage as 23 killed in Kyiv region",
-      "link": "https://www.bbc.co.uk/news/articles/cewqqnd7zdwo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 06 Jul 2026 21:02:37 GMT",
-      "desc": "President Zelensky says Sunday's \"massive Russian attack\" on Kyiv consisted of 68 missiles and 351 strike drones."
+      "title": "Jailers and officials at Russia's 'torture prisons' in Ukraine exposed by BBC",
+      "link": "https://www.bbc.co.uk/news/articles/cx2kkrx8jeno?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 06 Jul 2026 23:55:53 GMT",
+      "desc": "Former prisoners accuse the men of abuse in detention centres and want to see them brought to trial."
     },
     {
-      "title": "Charlie Kirk's family attends hearing for suspect charged with his murder",
-      "link": "https://www.bbc.co.uk/news/articles/c1myyyyjvx5o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 06 Jul 2026 19:06:26 GMT",
-      "desc": "Tyler Robinson, 23, is accused of murdering Kirk, a key Trump ally and founder of youth organisation Turning Point USA."
+      "title": "Resistance and revenge - Iran wanted to send a message with its farewell to Khamenei",
+      "link": "https://www.bbc.co.uk/news/articles/c07yy3j3nljo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 07 Jul 2026 00:46:03 GMT",
+      "desc": "Three days of public mourning in Tehran was a political spectacle Iran's leaders wanted the world to see, writes the BBC's international correspondent Lyse Doucet."
     },
     {
-      "title": "Ex-Syrian intelligence chief found guilty of torture and sexual abuse by Austrian court",
-      "link": "https://www.bbc.co.uk/news/articles/cy8ddd1m3mpo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 06 Jul 2026 17:22:38 GMT",
-      "desc": "Two former Syrian officials went on trial in Vienna, Austria, accused of crimes against opponents of former Syrian leader Bashar al-Assad"
-    },
-    {
-      "title": "Huge crowds fill Tehran streets for Khamenei's funeral procession",
-      "link": "https://www.bbc.co.uk/news/articles/cdejj44kl70o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 06 Jul 2026 18:50:44 GMT",
-      "desc": "Many people were waving Iranian flags and red banners symbolising vengeance for the former supreme leader's war death."
+      "title": "India's landmark Ram temple overhauls board after alleged theft of donations",
+      "link": "https://www.bbc.co.uk/news/articles/c872ngz405xo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 07 Jul 2026 06:23:04 GMT",
+      "desc": "Questions have been raised over alleged theft of cash, valuable jewellery, gold and silver offered by devotees."
     }
   ],
   "koreaNews": [
+    {
+      "title": "Global banks lift Korea growth outlook to 3% on chip exports - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9hWHROYXgxOTdzTDZfOEVKbm9tX2FsRGxUdzZUWmpkbGVoVWFYY0dHVWx1NnZQQVV5WUhHb3JJTHVpQWFSdFZJeERDblo2MHlEUTA3UHRHSQ?oc=5",
+      "date": "Tue, 07 Jul 2026 05:51:53 GMT",
+      "desc": "Global banks lift Korea growth outlook to 3% on chip exports&nbsp;&nbsp;The Korea Herald"
+    },
     {
       "title": "South Korea launches 24-hour foreign exchange market - upi.com",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPRE9sdVNmVl84YW5zR3p2WUpGRUh6Q3hOY2VZRllnQW53VFlqTFhpVk1MYUV5ajZkMTNQVXBMX01RNHhtZzNQeDlhOEp0WUh2ZjJSQVdaRmZ1N1c4WlVVdURCai1PQko1VHRpSzcwTGx4ZDJ6TW1pV19IaXBoUFpUSWRBdjlWQ284ZWpzRkxBZWtXMlhqR0RWVFBVc0FYUdIBowFBVV95cUxPMHZ5aFVENl83UHlHLXc0LTRQZnlZaDR5NUlRSFV3aUFlWkNjbURaZk1RYS1PXzRmcEFRcHRBUkM4QUJ6R0xQU2F3bnhnOUJYakNyTHViWW0yRTNmTG9fSjRYVjZQcndILU5SMkJEX0hfTWMzNHFESmh6OEFRdlkzZkhfYWpmcWRlZmhLeXVDSVBOajhLQS1EWXFYR0hmWllnZm9R?oc=5",
@@ -57,28 +63,22 @@
       "desc": "[Economy Insights] OECD Warns South Korea Over Semiconductor Dependence&nbsp;&nbsp;Businesskorea"
     },
     {
-      "title": "How South Koreans donated 227 tonnes of gold to rescue their economy after the 1997 IMF bailout - The Times of India",
-      "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxNQjQ4bVYtcTYzVzhRajVCU0lFaGg4RWFvNDNGRTRjaGFQSW5qei1GTTBpcG9vN29fcU9XQVlCTnp0b2J0OFhFSmlQWXJ5cmFpOEQ4N0pweUJoZDQ1cVprQ3RZc083RlQ4S25oOTJfdUtCWXlrV19RS1llX1IzNUIzQTJoTE80cXhkVVU1ZWprVGNsNDRBbEQxWUlNWTczTEU0ZTBzRnpRNlRGZ3dqTXV1RDRlUmpTZ3JzODNjaTlleHZlSDR0VmtiZjVlLTEtMzVXcVJuaERUaks2WnlvVi05WDNJZUdQNzZzWldqOGpONTQ3c3paU1BjUm5EN2tkbnpkLU03OEZiNGXSAY4CQVVfeXFMTTYxVHJiekg0Qnhla3NaTy1VZEpYclhQay15aWtaQ2trcTNsN3dQT0UxeGI5MHJ5cWJ3QXZBcjd3ZDIxWFpJRTlqa0s2aXVkazZvMkRxTWpGeHhOU01URWk2SmFxLWtOMDI3QkgxTEg5VWlhaWpBMVU4d2E0b1RLYnZlOFRvcWhjVlJndVlOQXB2X3BfMkZ4a3FXZ2ZOSmQ1LW91WmZZVkpnSk45T2VnQ3FxUDlHRVd1djUxWkR4Z1NMUjFraURndFJhQUpXc3NlbnB3djUxa0RLVW12YkYySHpIaG9GWkRnRUhrYjduNG9faG5waVFHQVJQTVk3Tm9KSlVPTlJ5bUJUR01jUjBn?oc=5",
-      "date": "Mon, 06 Jul 2026 06:59:00 GMT",
-      "desc": "How South Koreans donated 227 tonnes of gold to rescue their economy after the 1997 IMF bailout&nbsp;&nbsp;The Times of India"
-    },
-    {
-      "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
-      "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
-      "date": "Fri, 03 Jul 2026 13:17:47 GMT",
-      "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
-    },
-    {
       "title": "Samsung Electronics, SK Hynix Face Market Turning Point with Key Events - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPUVBKV0pNbnR1WVlSQ2lub3d1bWVJdnpOTDdOaTRnbElTZGowclo0U2RJbktMTDV1d2htNHlpN0h0Q2g5SmdIRDVaUlE3TzMyQlk3V2pqSkdsU2NFUXpXZzI2SlhGQmZzZ1VoY3A3TFdMR29jZHBWQnFvRkk1WUJsdmZOaWYtMHY0OGpHcHV3?oc=5",
       "date": "Sun, 05 Jul 2026 15:50:27 GMT",
       "desc": "Samsung Electronics, SK Hynix Face Market Turning Point with Key Events&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "South Korea says Samsung and SK Hynix investing in AI, semiconductor mega-projects - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPdXdkNkdRbUEzTDFsMURTTzlNckV3WXcyRXM3SFJXT3hfVC02TmFuclQyaXhvRlNCdktSazdhNUFCelRSRm82b3lXN0FReTg1YlBucDZZaTZIcmdVaHBLeXpyd1RTVFZBczRRa2J6eTJ0X1BIaGFUOEV0QjY5c0taWUF2UWl5SGRicG00VWxUcmFuSGZTLUZETi14QUpsRjlJZDd0U3Vn0gGrAUFVX3lxTE1nMktwTXZJZk1ZZE5pOXR0bjc2Y3dHVEV0YnNtUGQyZGpxdWlUdzd0eTZOaVRfMHJFQ1V6anQ5elBJV01nZ2xOcFk4UWlCdWhFTnZKWVFNWHBuZ09FcEo2OHpNMlNRMzNQdEZaMkhvSkxnM0VUQmdzM3I3Y25UbGFkLVNKWTlBbm5RRXc1RHZGNWJocDg0VXF5bHJIdGV4RVJKOG1RT0lPaTFOQQ?oc=5",
-      "date": "Sun, 28 Jun 2026 07:00:00 GMT",
-      "desc": "South Korea says Samsung and SK Hynix investing in AI, semiconductor mega-projects&nbsp;&nbsp;CNBC"
+      "title": "Samsung, SK hynix's 800 trillion won bet at home may create U.S. pressure - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPRDBIdUg2R2xCSWlTQ1ItS3ZpRDROQlE1dnhiN3EtUjA3cG5DckZub3FNWEtzTTZ5NDJBaGRNbGZGVzE4bkFIQjZmSVJJTVZtb2FCSDk3cHVzUFRQV284RDJQQmNPSmE2bWFXbGo1dUNtcGU2OVVqbDlhak56QVo5MW1UODFTQ1Azd0NEMndQMzRkR1phVmRWU1hOOVhod3V2VGRuUWR1dkhMVHp4VjhmLURBYTBEWGhSMlFkRDZGNA?oc=5",
+      "date": "Sun, 05 Jul 2026 09:50:37 GMT",
+      "desc": "Samsung, SK hynix's 800 trillion won bet at home may create U.S. pressure&nbsp;&nbsp;Korea JoongAng Daily"
+    },
+    {
+      "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
+      "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
+      "date": "Fri, 03 Jul 2026 13:17:47 GMT",
+      "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 318000.0,
-      "change": 32000.0,
-      "pct": 11.19,
+      "price": 294500.0,
+      "change": -15000.0,
+      "pct": -4.85,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2343000.0,
-      "change": 156000.0,
-      "pct": 7.13,
+      "price": 2191000.0,
+      "change": -234000.0,
+      "pct": -9.65,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 502000.0,
-      "change": 20000.0,
-      "pct": 4.15,
+      "price": 474500.0,
+      "change": -17500.0,
+      "pct": -3.56,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 160700.0,
-      "change": 15500.0,
-      "pct": 10.67,
+      "price": 152500.0,
+      "change": 500.0,
+      "pct": 0.33,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 196600.0,
-      "change": -3300.0,
-      "pct": -1.65,
+      "price": 196200.0,
+      "change": 400.0,
+      "pct": 0.2,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 8051.33,
-      "change": 403.24,
-      "pct": 5.27,
+      "price": 7618.61,
+      "change": -469.73,
+      "pct": -5.81,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1529.85,
-      "change": -1.15,
-      "pct": -0.08,
+      "price": 1527.05,
+      "change": -3.95,
+      "pct": -0.26,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-07 02:03 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-07 06:38 UTC"
 }
