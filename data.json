@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "US and Iran trade strikes after tankers hit in Strait of Hormuz",
-      "link": "https://www.bbc.co.uk/news/articles/cwykq59jwpvo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 08 Jul 2026 04:43:44 GMT",
-      "desc": "The US military says it hit missile sites and command centres while Iran says it attacked US bases."
+      "title": "Trump says ceasefire is 'over' after US and Iran trade strikes",
+      "link": "https://www.bbc.co.uk/news/articles/clyw8w1g409o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 08 Jul 2026 10:36:58 GMT",
+      "desc": "Speaking ahead of a Nato summit, the president says US negotiators can keep talking with the Iranians \"if they want\"."
+    },
+    {
+      "title": "US strikes target Iranian military boats",
+      "link": "https://www.bbc.co.uk/news/videos/cn94nqzwpxwo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 08 Jul 2026 05:42:37 GMT",
+      "desc": "The US has launched the strikes on Iran in response to attacks on three oil tankers in the Strait of Hormuz."
     },
     {
       "title": "Will Le Pen rise again? French nationalist leader defiant after court's ruling",
@@ -15,34 +21,34 @@
     {
       "title": "Nato allies announce £37bn for new missile project",
       "link": "https://www.bbc.co.uk/news/articles/ckg4e3lwzqzo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 08 Jul 2026 03:12:00 GMT",
+      "date": "Wed, 08 Jul 2026 05:57:53 GMT",
       "desc": "Prime Minister Sir Keir Starmer will convene around a dozen leaders to discuss the programme in Ankara."
     },
     {
-      "title": "'The water just came so fast': Typhoon triggers floods and rare tornadoes in China",
-      "link": "https://www.bbc.co.uk/news/articles/c79ygnv9e93o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 08 Jul 2026 00:49:07 GMT",
-      "desc": "Villagers whose families have been stranded told the BBC they are struggling to get food and help."
-    },
-    {
-      "title": "Woman suspected of Monaco bomb attack found dead in Ukraine",
-      "link": "https://www.bbc.co.uk/news/articles/c5yz3770yg8o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 07 Jul 2026 17:58:48 GMT",
-      "desc": "Police had been hunting Anastasiia Berezovska after a Ukrainian millionaire was injured in the blast."
+      "title": "Russian fuel shortages bite – but will Putin change tack in Ukraine war?",
+      "link": "https://www.bbc.co.uk/news/articles/cr7xk8j0j2do?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 08 Jul 2026 05:05:31 GMT",
+      "desc": "Even in Moscow, authorities are unable to guarantee fuel supplies, but will economic pressure lead to talks or escalation?"
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea’s market chaos puts region on AI meltdown alert - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQZVl0WmE1Y29mWEFKNkgyRnRsRXZ4UkpMWTNLVG9CN1FlMlJjQ0dEY1IwQ1NObi1OeEFHTTVWNjZGYlJ0Q0xuYXhhLW9BY3BXVUtrQzhFb2ZfTDFaVmlXWXY4QkZYc01sYTMzeXl2TVBqcjBfQWk1YkxqQmJjMGJyLXhhVTB6QVlCTTBLTmV2MEUtOTg?oc=5",
+      "date": "Wed, 08 Jul 2026 09:47:50 GMT",
+      "desc": "South Korea’s market chaos puts region on AI meltdown alert&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "S.Korea’s record May surplus puts $250 billion full-year outlook within reach - The Korea Economic Daily Global Edition",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE90cms3NFNZby1xS0J3RFBQQ0xnVUF1U0hRQ1M4MjR6WktMR3RYamtTTmp1MHFJQVFZYVdmQ2p5ZFhOc0FuLUVmVTFWQWpWaE5DLW45UURKU3VyOGRJeE9lWVU1ckJMbngydWc?oc=5",
+      "date": "Wed, 08 Jul 2026 07:32:11 GMT",
+      "desc": "S.Korea’s record May surplus puts $250 billion full-year outlook within reach&nbsp;&nbsp;The Korea Economic Daily Global Edition"
+    },
     {
       "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
       "date": "Tue, 23 Jun 2026 07:00:00 GMT",
       "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
-    },
-    {
-      "title": "S.Korea’s record May surplus puts $250 billion full-year outlook within reach - The Korea Economic Daily Global Edition",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE90cms3NFNZby1xS0J3RFBQQ0xnVUF1U0hRQ1M4MjR6WktMR3RYamtTTmp1MHFJQVFZYVdmQ2p5ZFhOc0FuLUVmVTFWQWpWaE5DLW45UURKU3VyOGRJeE9lWVU1ckJMbngydWc?oc=5",
-      "date": "Wed, 08 Jul 2026 01:32:11 GMT",
-      "desc": "S.Korea’s record May surplus puts $250 billion full-year outlook within reach&nbsp;&nbsp;The Korea Economic Daily Global Edition"
     },
     {
       "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
@@ -51,16 +57,10 @@
       "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "Economy on recovery track despite manufacturing setback due to chip boom: KDI - Yonhap News Agency",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE80dXFqemhqNE1iWV9KWHpmckVYeUpRQ1NIbEtrYVRoQzk5dFlJZHpSYkpZaEh0TjlET3M0OGlrbUN5Q0ZJR2laV00zWmc3VjFxeGhKc2U0NGxBdw?oc=5",
-      "date": "Wed, 08 Jul 2026 03:00:30 GMT",
-      "desc": "Economy on recovery track despite manufacturing setback due to chip boom: KDI&nbsp;&nbsp;Yonhap News Agency"
-    },
-    {
-      "title": "[Contribution] A partnership built on trust — and built to grow - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE50dHl3SkFDaXhkQnV2UW5aOVhYOXpwb25GdDdBTkFUZHpVc1czRHhWZ3FRdFUyRWs4NEREZDd3UWpqXzRFM1kzbmg0Q2ZadHNCaE5yT2duOA?oc=5",
-      "date": "Wed, 08 Jul 2026 01:18:18 GMT",
-      "desc": "[Contribution] A partnership built on trust — and built to grow&nbsp;&nbsp;The Korea Herald"
+      "title": "South Korea launches 24-hour foreign exchange market - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPRE9sdVNmVl84YW5zR3p2WUpGRUh6Q3hOY2VZRllnQW53VFlqTFhpVk1MYUV5ajZkMTNQVXBMX01RNHhtZzNQeDlhOEp0WUh2ZjJSQVdaRmZ1N1c4WlVVdURCai1PQko1VHRpSzcwTGx4ZDJ6TW1pV19IaXBoUFpUSWRBdjlWQ284ZWpzRkxBZWtXMlhqR0RWVFBVc0FYUdIBowFBVV95cUxPMHZ5aFVENl83UHlHLXc0LTRQZnlZaDR5NUlRSFV3aUFlWkNjbURaZk1RYS1PXzRmcEFRcHRBUkM4QUJ6R0xQU2F3bnhnOUJYakNyTHViWW0yRTNmTG9fSjRYVjZQcndILU5SMkJEX0hfTWMzNHFESmh6OEFRdlkzZkhfYWpmcWRlZmhLeXVDSVBOajhLQS1EWXFYR0hmWllnZm9R?oc=5",
+      "date": "Mon, 06 Jul 2026 14:35:44 GMT",
+      "desc": "South Korea launches 24-hour foreign exchange market&nbsp;&nbsp;upi.com"
     },
     {
       "title": "Samsung Electronics, SK Hynix Face Market Turning Point with Key Events - 조선일보",
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 277000.0,
-      "change": -41000.0,
-      "pct": -12.89,
+      "price": 277500.0,
+      "change": -40500.0,
+      "pct": -12.74,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2110000.0,
-      "change": -233000.0,
-      "pct": -9.94,
+      "price": 2076000.0,
+      "change": -267000.0,
+      "pct": -11.4,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 459000.0,
-      "change": -43000.0,
-      "pct": -8.57,
+      "price": 462500.0,
+      "change": -39500.0,
+      "pct": -7.87,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 153750.0,
-      "change": -6950.0,
-      "pct": -4.32,
+      "price": 156800.0,
+      "change": -3900.0,
+      "pct": -2.43,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 191900.0,
-      "change": -4700.0,
-      "pct": -2.39,
+      "price": 192700.0,
+      "change": -3900.0,
+      "pct": -1.98,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 7253.96,
-      "change": -797.37,
-      "pct": -9.9,
+      "price": 7246.79,
+      "change": -804.54,
+      "pct": -9.99,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1504.28,
-      "change": -24.48,
-      "pct": -1.6,
+      "price": 1508.18,
+      "change": -20.58,
+      "pct": -1.35,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-08 05:42 UTC"
+  "updatedAt": "2026-07-08 11:09 UTC"
 }
