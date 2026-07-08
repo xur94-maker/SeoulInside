@@ -1,10 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "Trump says ceasefire is 'over' after US and Iran trade strikes",
-      "link": "https://www.bbc.co.uk/news/articles/clyw8w1g409o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 08 Jul 2026 11:18:28 GMT",
-      "desc": "Speaking ahead of a Nato summit, the president says US negotiators can keep talking with the Iranians \"if they want\"."
+      "title": "US launches more strikes on Iran with blasts reported in south of country",
+      "link": "https://www.bbc.co.uk/news/articles/cz75zjj5wp8o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 08 Jul 2026 21:40:40 GMT",
+      "desc": "Trump says the attacks are \"retribution for yesterday's bombing of ships by Iran\". Iran earlier promised strong retaliation."
     },
     {
       "title": "US strikes target Iranian military boats",
@@ -13,16 +13,16 @@
       "desc": "The US has launched the strikes on Iran in response to attacks on three oil tankers in the Strait of Hormuz."
     },
     {
+      "title": "Ukraine to get licence to produce Patriot missiles, Trump says",
+      "link": "https://www.bbc.co.uk/news/articles/ce8klree690o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 08 Jul 2026 17:18:14 GMT",
+      "desc": "Although the Patriots are highly effective against Russia's ballistic missiles, they also have lengthy production times."
+    },
+    {
       "title": "German doctor jailed for murder of 15 patients and suspected of more",
       "link": "https://www.bbc.co.uk/news/articles/cq819jyp2g7o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 08 Jul 2026 14:25:25 GMT",
       "desc": "The German palliative care doctor has been sentenced to life imprisonment for killing 15 of his patients."
-    },
-    {
-      "title": "Will Le Pen rise again? French nationalist leader defiant after court's ruling",
-      "link": "https://www.bbc.co.uk/news/articles/cvgdlprp1r3o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 08 Jul 2026 03:22:46 GMT",
-      "desc": "Within hours of a court of appeal confirming a guilty verdict, Marine Le Pen had already launched her presidential campaign."
     },
     {
       "title": "Teenager arrested after two girls, 13, seriously injured in German school attack",
@@ -41,14 +41,8 @@
     {
       "title": "S.Korea’s record May surplus puts $250 billion full-year outlook within reach - The Korea Economic Daily Global Edition",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE90cms3NFNZby1xS0J3RFBQQ0xnVUF1U0hRQ1M4MjR6WktMR3RYamtTTmp1MHFJQVFZYVdmQ2p5ZFhOc0FuLUVmVTFWQWpWaE5DLW45UURKU3VyOGRJeE9lWVU1ckJMbngydWc?oc=5",
-      "date": "Wed, 08 Jul 2026 13:28:00 GMT",
+      "date": "Wed, 08 Jul 2026 18:04:19 GMT",
       "desc": "S.Korea’s record May surplus puts $250 billion full-year outlook within reach&nbsp;&nbsp;The Korea Economic Daily Global Edition"
-    },
-    {
-      "title": "South Korea’s market chaos puts region on AI meltdown alert - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQZVl0WmE1Y29mWEFKNkgyRnRsRXZ4UkpMWTNLVG9CN1FlMlJjQ0dEY1IwQ1NObi1OeEFHTTVWNjZGYlJ0Q0xuYXhhLW9BY3BXVUtrQzhFb2ZfTDFaVmlXWXY4QkZYc01sYTMzeXl2TVBqcjBfQWk1YkxqQmJjMGJyLXhhVTB6QVlCTTBLTmV2MEUtOTg?oc=5",
-      "date": "Wed, 08 Jul 2026 09:47:50 GMT",
-      "desc": "South Korea’s market chaos puts region on AI meltdown alert&nbsp;&nbsp;Asia Times"
     },
     {
       "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
@@ -57,10 +51,16 @@
       "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "IMF Raises South Korea's Growth Forecast to 2.6% on Semiconductor Boom - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOelJDNVhCTG5aaXJPU2ljcHV0Y2x6bEVoNHpVMHdJY1owSEFoVGJ0TnRDWEhQY3dHUDhtX1ZTM0s1Z3FiS0pJRzk5UWJMekp3OEJGN3JyV2FZSnhoV1p2UkliM1ltS2lFaHJ6ZE1Tenc2ZFBLWV9SbVdnNVYyNExlMWswV3FEQVhsdDJFZDV3?oc=5",
-      "date": "Wed, 08 Jul 2026 14:22:07 GMT",
-      "desc": "IMF Raises South Korea's Growth Forecast to 2.6% on Semiconductor Boom&nbsp;&nbsp;조선일보"
+      "title": "South Korea’s market chaos puts region on AI meltdown alert - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQZVl0WmE1Y29mWEFKNkgyRnRsRXZ4UkpMWTNLVG9CN1FlMlJjQ0dEY1IwQ1NObi1OeEFHTTVWNjZGYlJ0Q0xuYXhhLW9BY3BXVUtrQzhFb2ZfTDFaVmlXWXY4QkZYc01sYTMzeXl2TVBqcjBfQWk1YkxqQmJjMGJyLXhhVTB6QVlCTTBLTmV2MEUtOTg?oc=5",
+      "date": "Wed, 08 Jul 2026 09:47:50 GMT",
+      "desc": "South Korea’s market chaos puts region on AI meltdown alert&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "ADB revises up S. Korea's growth projection for 2026 to 2.6 pct - Yonhap News Agency",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9hWmRHLURCUW40WW5faC1sTDE4WkxpRXVNamoySXc3LTRyRW9GR3J0TnhDSVNHR25aWG1xQUpDNXU2NmhqSl9VNVVWbWlVZEdaaThPY1A0LW9nUQ?oc=5",
+      "date": "Wed, 08 Jul 2026 15:30:02 GMT",
+      "desc": "ADB revises up S. Korea's growth projection for 2026 to 2.6 pct&nbsp;&nbsp;Yonhap News Agency"
     },
     {
       "title": "Morgan Stanley Urges Cutting Samsung, SK Hynix, Micron Exposure - 조선일보",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 197.04,
-      "change": 1.49,
-      "pct": 0.76,
+      "price": 204.12,
+      "change": 8.57,
+      "pct": 4.38,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 430.87,
-      "change": -20.92,
-      "pct": -4.63,
+      "price": 436.98,
+      "change": -14.81,
+      "pct": -3.28,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 501.29,
-      "change": -50.76,
-      "pct": -9.19,
+      "price": 517.4,
+      "change": -34.64,
+      "pct": -6.28,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 104.63,
-      "change": -17.57,
-      "pct": -14.38,
+      "price": 110.24,
+      "change": -11.96,
+      "pct": -9.79,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 182.6,
-      "change": -3.88,
-      "pct": -2.08,
+      "price": 186.56,
+      "change": 0.08,
+      "pct": 0.04,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 291.33,
-      "change": -30.91,
-      "pct": -9.59,
+      "price": 300.24,
+      "change": -22.0,
+      "pct": -6.83,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 360.02,
-      "change": -6.44,
-      "pct": -1.76,
+      "price": 361.92,
+      "change": -4.54,
+      "pct": -1.24,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 310.19,
-      "change": -2.47,
-      "pct": -0.79,
+      "price": 313.39,
+      "change": 0.73,
+      "pct": 0.23,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 382.63,
-      "change": -4.11,
-      "pct": -1.06,
+      "price": 383.34,
+      "change": -3.4,
+      "pct": -0.88,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7428.87,
-      "change": -108.56,
-      "pct": -1.44,
+      "price": 7482.71,
+      "change": -54.72,
+      "pct": -0.73,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25542.96,
-      "change": -578.2,
-      "pct": -2.21,
+      "price": 25870.65,
+      "change": -250.51,
+      "pct": -0.96,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1511.11,
-      "change": -17.65,
-      "pct": -1.15,
+      "price": 1504.87,
+      "change": -14.99,
+      "pct": -0.99,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-08 15:56 UTC"
+  "updatedAt": "2026-07-08 23:00 UTC"
 }
