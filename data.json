@@ -1,37 +1,86 @@
 {
   "globalNews": [
     {
-      "title": "US launches strikes on Iran after tankers hit in Strait of Hormuz",
+      "title": "US and Iran trade strikes after tankers hit in Strait of Hormuz",
       "link": "https://www.bbc.co.uk/news/articles/cwykq59jwpvo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 07 Jul 2026 22:48:45 GMT",
-      "desc": "The US says the strikes are intended to impose \"heavy costs\", while Iran warns it will \"take decisive measures\" in response."
+      "date": "Wed, 08 Jul 2026 04:43:44 GMT",
+      "desc": "The US military says it hit missile sites and command centres while Iran says it attacked US bases."
     },
     {
-      "title": "Marine Le Pen to run for French presidency and appeal conviction in top court",
-      "link": "https://www.bbc.co.uk/news/articles/c7vygl3zymjo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 07 Jul 2026 19:55:59 GMT",
-      "desc": "The hard-right National Rally leader has ended months of speculation, after a court ruled she could run but would have to wear a tag for a year."
+      "title": "Will Le Pen rise again? French nationalist leader defiant after court's ruling",
+      "link": "https://www.bbc.co.uk/news/articles/cvgdlprp1r3o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 08 Jul 2026 03:22:46 GMT",
+      "desc": "Within hours of a court of appeal confirming a guilty verdict, Marine Le Pen had already launched her presidential campaign."
     },
     {
-      "title": "Trump looms large as Nato grapples with challenge of rearming Europe",
-      "link": "https://www.bbc.co.uk/news/articles/ckg06d3dgnlo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 07 Jul 2026 18:56:19 GMT",
-      "desc": "The US president's inflammatory words have punctuated the image of unity at this crucial gathering, Security Correspondent Frank Gardner writes."
+      "title": "Nato allies announce £37bn for new missile project",
+      "link": "https://www.bbc.co.uk/news/articles/ckg4e3lwzqzo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 08 Jul 2026 03:12:00 GMT",
+      "desc": "Prime Minister Sir Keir Starmer will convene around a dozen leaders to discuss the programme in Ankara."
+    },
+    {
+      "title": "'The water just came so fast': Typhoon triggers floods and rare tornadoes in China",
+      "link": "https://www.bbc.co.uk/news/articles/c79ygnv9e93o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 08 Jul 2026 00:49:07 GMT",
+      "desc": "Villagers whose families have been stranded told the BBC they are struggling to get food and help."
     },
     {
       "title": "Woman suspected of Monaco bomb attack found dead in Ukraine",
       "link": "https://www.bbc.co.uk/news/articles/c5yz3770yg8o?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 07 Jul 2026 17:58:48 GMT",
       "desc": "Police had been hunting Anastasiia Berezovska after a Ukrainian millionaire was injured in the blast."
-    },
-    {
-      "title": "Lawyer says detained Gaza doctor was severely beaten in Israeli jail",
-      "link": "https://www.bbc.co.uk/news/articles/c07yy3pgrlmo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 07 Jul 2026 16:10:14 GMT",
-      "desc": "The lawyer for Dr Hussam Abu Safiya tells the BBC his client was so badly beaten he could not recognise him during a visit last week."
     }
   ],
-  "koreaNews": [],
+  "koreaNews": [
+    {
+      "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
+      "date": "Tue, 23 Jun 2026 07:00:00 GMT",
+      "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
+    },
+    {
+      "title": "S.Korea’s record May surplus puts $250 billion full-year outlook within reach - The Korea Economic Daily Global Edition",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE90cms3NFNZby1xS0J3RFBQQ0xnVUF1U0hRQ1M4MjR6WktMR3RYamtTTmp1MHFJQVFZYVdmQ2p5ZFhOc0FuLUVmVTFWQWpWaE5DLW45UURKU3VyOGRJeE9lWVU1ckJMbngydWc?oc=5",
+      "date": "Wed, 08 Jul 2026 01:32:11 GMT",
+      "desc": "S.Korea’s record May surplus puts $250 billion full-year outlook within reach&nbsp;&nbsp;The Korea Economic Daily Global Edition"
+    },
+    {
+      "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYUZrbDM4Q3U2eGh2QmE5Z3BGYnBzVDVBRDZpLTk1aWdkcFlCWVlIWk1yMWVLOUJtZG15WXVpRzQwNmstMENsQ2RHMURQYkRCam9ITV9iUTRmbHVUVlhKc1FFbi0zYThqUHNURl9wbTdwbFdWd2s0ajdwTmdNMmFvc3dCX3EzQkwyQjZLTjgyN3F5YUcwU1o1aDFkUTY?oc=5",
+      "date": "Wed, 17 Jun 2026 07:00:00 GMT",
+      "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "Economy on recovery track despite manufacturing setback due to chip boom: KDI - Yonhap News Agency",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE80dXFqemhqNE1iWV9KWHpmckVYeUpRQ1NIbEtrYVRoQzk5dFlJZHpSYkpZaEh0TjlET3M0OGlrbUN5Q0ZJR2laV00zWmc3VjFxeGhKc2U0NGxBdw?oc=5",
+      "date": "Wed, 08 Jul 2026 03:00:30 GMT",
+      "desc": "Economy on recovery track despite manufacturing setback due to chip boom: KDI&nbsp;&nbsp;Yonhap News Agency"
+    },
+    {
+      "title": "[Contribution] A partnership built on trust — and built to grow - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE50dHl3SkFDaXhkQnV2UW5aOVhYOXpwb25GdDdBTkFUZHpVc1czRHhWZ3FRdFUyRWs4NEREZDd3UWpqXzRFM1kzbmg0Q2ZadHNCaE5yT2duOA?oc=5",
+      "date": "Wed, 08 Jul 2026 01:18:18 GMT",
+      "desc": "[Contribution] A partnership built on trust — and built to grow&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "Samsung Electronics, SK Hynix Face Market Turning Point with Key Events - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPUVBKV0pNbnR1WVlSQ2lub3d1bWVJdnpOTDdOaTRnbElTZGowclo0U2RJbktMTDV1d2htNHlpN0h0Q2g5SmdIRDVaUlE3TzMyQlk3V2pqSkdsU2NFUXpXZzI2SlhGQmZzZ1VoY3A3TFdMR29jZHBWQnFvRkk1WUJsdmZOaWYtMHY0OGpHcHV3?oc=5",
+      "date": "Sun, 05 Jul 2026 15:50:27 GMT",
+      "desc": "Samsung Electronics, SK Hynix Face Market Turning Point with Key Events&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "[News] Samsung, SK hynix Reportedly Look Beyond Chinese Tool and Component Suppliers Amid Supply Chain Risks - TrendForce",
+      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNb21nb01BOWpsQktrSnhrSDhuemJONnRzQTlrc0Q4Y2Z2NndURFItdTVUbTJwaExhb244N2hXS2lDbW9kczJtd1hnZ29TbUtzQ2lwM1RFQ0NZaUhfZ3R5Vmt3ZXplcE1rbDlESzExakdFTjZCX1pwdEp1NzhHN1k3YlJpMkh6VjdKQkZwZjE4dVhhak1QNGpnS3MtZXQ4QVc0bmdvXzlzRFlrVTdmVEl0aVhGMEdLT1lTMmFBbkhfd2JjZ3hQVlV2VElwV0lDaDdiUHpqdEU3UFRvX1hTWmplX3ppQQ?oc=5",
+      "date": "Mon, 06 Jul 2026 07:18:14 GMT",
+      "desc": "[News] Samsung, SK hynix Reportedly Look Beyond Chinese Tool and Component Suppliers Amid Supply Chain Risks&nbsp;&nbsp;TrendForce"
+    },
+    {
+      "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
+      "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
+      "date": "Fri, 03 Jul 2026 13:17:47 GMT",
+      "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
+    }
+  ],
   "worldStocks": [
     {
       "symbol": "NVDA",
@@ -126,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 296000.0,
-      "change": -13500.0,
-      "pct": -4.36,
+      "price": 277000.0,
+      "change": -41000.0,
+      "pct": -12.89,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2201000.0,
-      "change": -224000.0,
-      "pct": -9.24,
+      "price": 2110000.0,
+      "change": -233000.0,
+      "pct": -9.94,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 479500.0,
-      "change": -12500.0,
-      "pct": -2.54,
+      "price": 459000.0,
+      "change": -43000.0,
+      "pct": -8.57,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 153700.0,
-      "change": 1700.0,
-      "pct": 1.12,
+      "price": 153750.0,
+      "change": -6950.0,
+      "pct": -4.32,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 197200.0,
-      "change": 1400.0,
-      "pct": 0.72,
+      "price": 191900.0,
+      "change": -4700.0,
+      "pct": -2.39,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 7656.31,
-      "change": -432.03,
-      "pct": -5.34,
+      "price": 7253.96,
+      "change": -797.37,
+      "pct": -9.9,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1512.89,
-      "change": -18.11,
-      "pct": -1.18,
+      "price": 1504.28,
+      "change": -24.48,
+      "pct": -1.6,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-08 01:44 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-08 05:42 UTC"
 }
