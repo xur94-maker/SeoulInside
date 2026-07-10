@@ -1,28 +1,28 @@
 {
   "globalNews": [
     {
-      "title": "Huge crowds in Mashhad as Iran's late supreme leader is buried",
-      "link": "https://www.bbc.co.uk/news/articles/c5yzm8m4peeo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 09 Jul 2026 23:18:18 GMT",
-      "desc": "Ali Khamenei was buried at the Imam Reza shrine, Iran's holiest Shia Muslim site, ending six days of public mourning ceremonies."
-    },
-    {
-      "title": "Ukrainian agent accused of murdering Monaco bomb suspect changes story",
-      "link": "https://www.bbc.co.uk/news/articles/cpv3e8y39j7o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 09 Jul 2026 20:47:41 GMT",
-      "desc": "Two men with links to Ukraine's security services are accused of killing Anastasiia Berezovska and dumping her body in woods."
-    },
-    {
-      "title": "Palestinians mourn Gaza World Cup screenings organiser killed in Israeli strike",
-      "link": "https://www.bbc.co.uk/news/articles/cwylznzjk04o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 09 Jul 2026 21:04:09 GMT",
-      "desc": "Aid worker Mohammed al-Wahidi had become a prominent humanitarian figure during the Israel-Hamas war."
-    },
-    {
       "title": "East Asia braces for destructive typhoon as landslides kill 15 in Philippines",
       "link": "https://www.bbc.co.uk/news/articles/c04y6wr03gxo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 10 Jul 2026 10:42:13 GMT",
-      "desc": "Headed for Taiwan and south-eastern China, the 1,000 km-wide Bavi is forecast to be one of the strongest storms in decades."
+      "date": "Fri, 10 Jul 2026 13:53:11 GMT",
+      "desc": "Heading for Taiwan and south-eastern China, the 1,000 km-wide Bavi is forecast to be one of the strongest storms in decades."
+    },
+    {
+      "title": "Man fatally shot by ICE in Houston was not intended target, DHS says",
+      "link": "https://www.bbc.co.uk/news/articles/cm2rm66xd17o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 10 Jul 2026 12:51:46 GMT",
+      "desc": "Immigration agents were looking for a different person when they shot Lorenzo Salgado Araujo during a traffic stop, officials say."
+    },
+    {
+      "title": "Man nearly sucked out of window mid-air on Ryanair plane, passengers say",
+      "link": "https://www.bbc.co.uk/news/articles/cgk65knkyzdo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 10 Jul 2026 12:31:08 GMT",
+      "desc": "Ryanair confirm a passenger was given medical treatment after an incident on a Malta Air flight, which is owned by Ryanair."
+    },
+    {
+      "title": "US declassifies even more UFO videos",
+      "link": "https://www.bbc.co.uk/news/videos/c8x2zez8qwzo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 10 Jul 2026 15:28:17 GMT",
+      "desc": "The US government published a fourth instalment of unresolved cases, promising to release more files on a rolling basis."
     },
     {
       "title": "China lands reusable rocket for first time, state media says",
@@ -33,16 +33,10 @@
   ],
   "koreaNews": [
     {
-      "title": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth - Bloomberg.com",
+      "title": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth - Bloomberg",
       "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNaXd3aE84c3N2ZFppRFY1RmFEd0tCQnBFX0JSajZTN3I2RnpzVjVSZlF4czJlSU0wdTMxOHdiZndYbEVqZERFNEdWTmFDR1NnZ2tpMlZKb2ZmRm0tUy1BUDZGeWM2WlFCVUcwS2d5OXRWWFI4bjVLTVdXR083b20zV0hHSkUxWGpnNUd2aE52RVQ1NGY3a1VPZ2JTanBwc2J6TEdGYlJ0OEx6aHFuaGd2Y2EyYw?oc=5",
       "date": "Thu, 09 Jul 2026 21:00:00 GMT",
-      "desc": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "South Korea delivery drivers lose legal fight for bargaining rights - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPa3pqSkJGS2NPcWtqVENxdnpQZVFwTEZNM243N3VQcWp0Y1c1Y2oxRWdYSzc0NlVnUHhRR05aS2JzM1dMZzBjRTFnSUY2eHF3SkVtMmpCR3N6d3VIYUpJNHNFUEI5cHVVeHpoR2xBV3FXcTAtbldWaGVuLWNYODRabUhGZks5Y3lNUU9CT3JEVE5obDlwV1h4Q0U4SjZjQndI?oc=5",
-      "date": "Thu, 09 Jul 2026 06:10:00 GMT",
-      "desc": "South Korea delivery drivers lose legal fight for bargaining rights&nbsp;&nbsp;Nikkei Asia"
+      "desc": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth&nbsp;&nbsp;Bloomberg"
     },
     {
       "title": "Nigerian stocks overtake South Korea to become the world's best-performing equity market in dollar terms - Business Insider Africa",
@@ -51,16 +45,22 @@
       "desc": "Nigerian stocks overtake South Korea to become the world's best-performing equity market in dollar terms&nbsp;&nbsp;Business Insider Africa"
     },
     {
+      "title": "South Korea delivery drivers lose legal fight for bargaining rights - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPa3pqSkJGS2NPcWtqVENxdnpQZVFwTEZNM243N3VQcWp0Y1c1Y2oxRWdYSzc0NlVnUHhRR05aS2JzM1dMZzBjRTFnSUY2eHF3SkVtMmpCR3N6d3VIYUpJNHNFUEI5cHVVeHpoR2xBV3FXcTAtbldWaGVuLWNYODRabUhGZks5Y3lNUU9CT3JEVE5obDlwV1h4Q0U4SjZjQndI?oc=5",
+      "date": "Thu, 09 Jul 2026 06:10:00 GMT",
+      "desc": "South Korea delivery drivers lose legal fight for bargaining rights&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
       "title": "IMF lifts Korea's growth outlook to 2.6%, biggest upgrade among 30 major economies - The Korea Times",
       "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPRmxEQkNhT1NSVWxsbzRueXFpWngtN2lBWEpnSTNIa29MbmNXMDdZWXF4RnlLcE5RU25oVHdOanNzeXc3Z0U1WkloWHh1bkw0R1oxajVma2VNdWxhZTZfa3RVY1A5QU1FcnpkbC10UDY0aTliUWRKOE9kYzZQQlloRWRDdkZsN2w0V3g2SlFQWDZ2aUlRYTRaS3F3VTlCRDVCeHplN0ZuaGQycGctOUJET2hTUEdHcFdkckg2NUZOQzRDRmpPQ055bEFHb9IB0AFBVV95cUxQNjU3WHVSLXJwSUZxU0E5VUNCN2FPQTZSelpkMUJLNm9EZkNVbHRsaGhBZVFwaDZ6bElWMXAyMG52ZGRRbjFpelMtd3I5aGlvSjBvYzI4YVhNc0RNcXV2WGxBdXI3ZDU1YVF3cktZM1Z4czRhMTRKNU5JT01KQVBJVzIxR0ZGU2t1TEtkUG9fdmVsYk9CbzlGQm1mdDc3SGNncjdRQ2F4VDNIYk9BcHBxZVByVFBlOHNDNS16dmRoLVNvcnFweDhrUzZzUWhLMWxT?oc=5",
       "date": "Wed, 08 Jul 2026 13:02:03 GMT",
       "desc": "IMF lifts Korea's growth outlook to 2.6%, biggest upgrade among 30 major economies&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "How China keeps North Korea's economy alive - DW.com",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
-      "date": "Mon, 01 Jun 2026 07:00:00 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
+      "title": "South Korea to closely watch risks around stock market volatility By Reuters - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOYmtLSGZIdzlRUXZ1dmJwdFJDdEo0cU9oZG9lTGRsajJZRXF1VkJaYlVSSHVwXzRmTzlwLWs4azFhNDlPaFF0aXBLUUtIME9lZjF5T0NLOFNiR1FyN2RGN2x6M0lGUUd4Vm44emNWZUJ3cWFWd0EtMk45dWJza1dYZU0yWUFsUnllME56Tm1EYl85SVplTDhfanlLQjhUVHNiTF9INUR4NFgzOG04bUhqU2xwUlo1bk44?oc=5",
+      "date": "Wed, 08 Jul 2026 00:35:21 GMT",
+      "desc": "South Korea to closely watch risks around stock market volatility By Reuters&nbsp;&nbsp;Investing.com"
     },
     {
       "title": "U.S. Commerce Secretary Urges Samsung, SK Hynix to Expand U.S. Semiconductor Fabs - 조선일보",
@@ -69,105 +69,105 @@
       "desc": "U.S. Commerce Secretary Urges Samsung, SK Hynix to Expand U.S. Semiconductor Fabs&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Morgan Stanley Urges Cutting Samsung, SK Hynix, Micron Exposure - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQTTl5aWQyT183TU5XOWE4Nmd3UmFZeFRVX0N0WUFzazIwM2dmLW1xdTI0R196WDVqREhYcjBPTDFvQ3FsTXk2LV9GY2FEd1lMMENkWG5yXzM5UE5CRzNuanN0RWtpd1lNSHJnc1hPZHBDT2Q1dW1sXzA0S3AxaV9SS2xZMnoyQ3BlWnM1STB3?oc=5",
-      "date": "Tue, 07 Jul 2026 15:37:22 GMT",
-      "desc": "Morgan Stanley Urges Cutting Samsung, SK Hynix, Micron Exposure&nbsp;&nbsp;조선일보"
+      "title": "U.S. Pressures Samsung, SK hynix Over Investment Plans - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1EcG5rREFMamFWSTloMXluYi1JXzdiQk5kcmRDbk1pcFBEZVJ0LThyUFFRN2pxTHZsREVGOG44SmJUT0NremFKeVlURC1lRkJ1bHRzVDNZa2dsUkZtb3lQU2ZUT0RCdGNkTUw0Vld4cFRpLW9k?oc=5",
+      "date": "Fri, 10 Jul 2026 14:16:06 GMT",
+      "desc": "U.S. Pressures Samsung, SK hynix Over Investment Plans&nbsp;&nbsp;Businesskorea"
     },
     {
-      "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
-      "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
-      "date": "Fri, 03 Jul 2026 13:17:47 GMT",
-      "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
+      "title": "Lutnick urges Samsung, SK hynix to build memory chip plants in U.S. - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQc0lhYWNEM0J2SGIta3BDbktPeXdXSWw4TjlRUGNZdVlkNjgtSXFwWTBJLVZDdl9sUW9PNGxMMGdxeHoxUFdYYzl5Zm0xOGRtclA4ZVF6TmpLd3g2SkF2QVM0cUxTRHhjZjE2THhLaU5rRW1aUjBsRERzekc4R01jSkNoc0NGaVZxQ2Q2dW1VRTR2ZHh5d1lfUEdvQzI1V1E3Y2I5cHUyOWlCcFJtekFzc1R4X1lscTBO?oc=5",
+      "date": "Fri, 10 Jul 2026 08:07:58 GMT",
+      "desc": "Lutnick urges Samsung, SK hynix to build memory chip plants in U.S.&nbsp;&nbsp;Korea JoongAng Daily"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 202.78,
-      "change": 5.85,
-      "pct": 2.97,
+      "price": 209.04,
+      "change": 4.92,
+      "pct": 2.41,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 436.96,
-      "change": 4.39,
-      "pct": 1.01,
+      "price": 434.52,
+      "change": -2.46,
+      "pct": -0.56,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 546.72,
-      "change": 30.61,
-      "pct": 5.93,
+      "price": 551.5,
+      "change": 34.09,
+      "pct": 6.59,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 112.54,
-      "change": 2.15,
-      "pct": 1.95,
+      "price": 109.35,
+      "change": -0.89,
+      "pct": -0.81,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 191.11,
-      "change": 8.14,
-      "pct": 4.45,
+      "price": 188.47,
+      "change": 1.91,
+      "pct": 1.02,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 327.87,
-      "change": 27.44,
-      "pct": 9.13,
+      "price": 324.95,
+      "change": 24.71,
+      "pct": 8.23,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 358.89,
-      "change": -8.14,
-      "pct": -2.22,
+      "price": 354.9,
+      "change": -7.02,
+      "pct": -1.94,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 316.22,
-      "change": 5.56,
-      "pct": 1.79,
+      "price": 313.86,
+      "change": 0.47,
+      "pct": 0.15,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 384.36,
-      "change": -4.48,
-      "pct": -1.15,
+      "price": 384.14,
+      "change": 0.81,
+      "pct": 0.21,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7543.64,
-      "change": 39.79,
-      "pct": 0.53,
+      "price": 7558.01,
+      "change": 75.3,
+      "pct": 1.01,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26206.89,
-      "change": 388.2,
-      "pct": 1.5,
+      "price": 26228.82,
+      "change": 358.17,
+      "pct": 1.38,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1504.92,
-      "change": 1.57,
-      "pct": 0.1,
+      "price": 1500.38,
+      "change": -2.97,
+      "pct": -0.2,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-10 11:59 UTC"
+  "updatedAt": "2026-07-10 16:13 UTC"
 }
