@@ -1,22 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "US and Iran trade attacks as Khamenei is buried",
-      "link": "https://www.bbc.co.uk/news/articles/cz75zjj5wp8o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 09 Jul 2026 23:02:18 GMT",
-      "desc": "Centcom says it hit 90 Iranian targets in the latest round of strikes, with the Iranian health ministry saying 14 people were killed since Tuesday."
+      "title": "Huge crowds in Mashhad as Iran's late supreme leader is buried",
+      "link": "https://www.bbc.co.uk/news/articles/c5yzm8m4peeo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 09 Jul 2026 23:18:18 GMT",
+      "desc": "Ali Khamenei was buried at the Imam Reza shrine, Iran's holiest Shia Muslim site, ending six days of public mourning ceremonies."
     },
     {
-      "title": "Big fall in oil, gas and cargo ships taking US-backed Hormuz route after new strikes",
-      "link": "https://www.bbc.co.uk/news/articles/c621k5r8764o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 09 Jul 2026 14:41:54 GMT",
-      "desc": "Data shows a decline in the number of ships - many carrying oil and gas - going through the waterway after attacks this week."
-    },
-    {
-      "title": "Democrat Graham Platner suspends campaign for key US Senate race after assault allegation",
-      "link": "https://www.bbc.co.uk/news/articles/c9v229434p2o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 09 Jul 2026 14:37:19 GMT",
-      "desc": "The decision came days after a woman accused him of sexual assault, an accusation he says is \"categorically false\"."
+      "title": "At least 11 die in Spain wildfire as heatwave continues in Southern Europe",
+      "link": "https://www.bbc.co.uk/news/articles/c8e2382jk7jo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 10 Jul 2026 06:32:08 GMT",
+      "desc": "Six people were injured in the blaze in Los Gallardos, in the province of Almería."
     },
     {
       "title": "Ukrainian agent accused of murdering Monaco bomb suspect changes story",
@@ -29,38 +23,50 @@
       "link": "https://www.bbc.co.uk/news/articles/cwylznzjk04o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 09 Jul 2026 21:04:09 GMT",
       "desc": "Aid worker Mohammed al-Wahidi had become a prominent humanitarian figure during the Israel-Hamas war."
+    },
+    {
+      "title": "Chip giant SK Hynix raises $26.5bn in mega US share sale",
+      "link": "https://www.bbc.co.uk/news/articles/c4gym70r0y4o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 10 Jul 2026 02:48:18 GMT",
+      "desc": "The shares are set to start trading on the Nasdaq on Friday in what will be the largest ever debut by a foreign firm."
     }
   ],
   "koreaNews": [
     {
-      "title": "A New Risk Calculus for the Korean Peninsula - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE83RGhzWUVrTHk0SnAxUmMwOHYweTMwRjQzZ29OUHU5YS1qLUV5WUI3N3E0ekx6MTlwQmRvRGNEbHktWWdmcFd6Q2VNQVVfTzRXeXR0VS1FUGo5UjdyVUgxMy0tV0VKSmZmdFBXVzlyUC1WY3MtVTAwQ2NWMA?oc=5",
-      "date": "Thu, 09 Jul 2026 17:26:36 GMT",
-      "desc": "A New Risk Calculus for the Korean Peninsula&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "AI Is Changing Everything In South Korea, Especially At The Bank Of Korea - Forbes",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdGVyWmo2STFvM29lSmJvUFhTNTRyWDVDLV9LTFQxQnNUYlc2eUhhRm9SMXdIVUJOWGhwMGNzT2xvbndnYW13RmQtV2Zmd3dKTTU1NHNobW41VktCbkN5QTBoMDZBcEIyMGEtWk5ETzBWY2U3d3BEZS16VG5TOV9LelFXbXB0R3ZkUXp5Vks1VW93U0txNmhKc0s5R3lVQ052UGNfR1RveFZNYTRMRVA0YzQxWHV3b0VnMTJVM1VYSklXVktN?oc=5",
-      "date": "Thu, 09 Jul 2026 12:00:32 GMT",
-      "desc": "AI Is Changing Everything In South Korea, Especially At The Bank Of Korea&nbsp;&nbsp;Forbes"
-    },
-    {
-      "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
-      "date": "Tue, 23 Jun 2026 07:00:00 GMT",
-      "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
-    },
-    {
       "title": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQX0NkRmNpM3Y1X1p1Q1lzYXZhMnBuak9KaWJJZndtcnllMmw1S0xrQk80SzdYTjV6alVOZjlBQnpKa09FaDVnenFIUUcxQUE0Y0xSbS1vaTNEVjVMZTgxdTJnZ1NYQkRmakg2V2ZKS2lQRkNNU1hCaVlCV2VCWDhkamlucGFwTmZyTmRGV1VpNEtSWS1KQjlDcU1nQkZsbHZlWDgyZWQ0VVJqLWo3VXdUdXh1bFVITENaZ3o4RmYybk91TFhfRGt3eEVIdmpLaEU?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNaXd3aE84c3N2ZFppRFY1RmFEd0tCQnBFX0JSajZTN3I2RnpzVjVSZlF4czJlSU0wdTMxOHdiZndYbEVqZERFNEdWTmFDR1NnZ2tpMlZKb2ZmRm0tUy1BUDZGeWM2WlFCVUcwS2d5OXRWWFI4bjVLTVdXR083b20zV0hHSkUxWGpnNUd2aE52RVQ1NGY3a1VPZ2JTanBwc2J6TEdGYlJ0OEx6aHFuaGd2Y2EyYw?oc=5",
       "date": "Thu, 09 Jul 2026 21:00:00 GMT",
       "desc": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "Food costs in S.Korea remain among OECD’s highest for 3rd straight year - The Korea Economic Daily Global Edition",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5yTDdnZlVjcFQ0ME5sVkc2WEVPb2laYVU3VDY1dG01bVdSVWVkRXVpb3pxUzlfVkVlWUdsZWlXWDBuYm15cUxYN1lJaGdSZGNnSHpXOUlhVy1hRlBvWDNjYzU0SGcxWVZoTWc?oc=5",
-      "date": "Thu, 09 Jul 2026 17:30:10 GMT",
-      "desc": "Food costs in S.Korea remain among OECD’s highest for 3rd straight year&nbsp;&nbsp;The Korea Economic Daily Global Edition"
+      "title": "South Korea delivery drivers lose legal fight for bargaining rights - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPa3pqSkJGS2NPcWtqVENxdnpQZVFwTEZNM243N3VQcWp0Y1c1Y2oxRWdYSzc0NlVnUHhRR05aS2JzM1dMZzBjRTFnSUY2eHF3SkVtMmpCR3N6d3VIYUpJNHNFUEI5cHVVeHpoR2xBV3FXcTAtbldWaGVuLWNYODRabUhGZks5Y3lNUU9CT3JEVE5obDlwV1h4Q0U4SjZjQndI?oc=5",
+      "date": "Thu, 09 Jul 2026 06:10:00 GMT",
+      "desc": "South Korea delivery drivers lose legal fight for bargaining rights&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
+      "title": "South Korea moves to fund Mongolia cancer center and expand economic ties - CHOSUNBIZ - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1SQlRKVzVmcWl0UmxOajNXYUhINy02NzdLMWlkQXZMTDQ0dFNjNEQtS2dKR0FMT1plWWtjenplZFdkTDk3UnRFYVV5a3dJajU4bFJUR25GX3pkWkttRndiRlhTblZyWDFyN2FjU2NNTWhvUkNYTTNpUmxudUwwdmvSAZMBQVVfeXFMTVM2YjRUQllNenBqZUhzcTFaQ2VDRUdxTHlyLU9VVHpFdmwxTmY2dlVzZGFKalZZYU1YTVlyOVJmZ0ZpRzNyY19QZUU4VXUyVVAzaTRxcUlHaS1CY3hiSmFnRkFMUGMxdDlpeE5YTXhMb1J5WGZkaU05OXNac0xpZnRwT0lTY3FsV0tQeGFqWHVmdE9B?oc=5",
+      "date": "Fri, 10 Jul 2026 01:07:00 GMT",
+      "desc": "South Korea moves to fund Mongolia cancer center and expand economic ties - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
+    },
+    {
+      "title": "South Korea to closely watch risks around stock market volatility By Reuters - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOYmtLSGZIdzlRUXZ1dmJwdFJDdEo0cU9oZG9lTGRsajJZRXF1VkJaYlVSSHVwXzRmTzlwLWs4azFhNDlPaFF0aXBLUUtIME9lZjF5T0NLOFNiR1FyN2RGN2x6M0lGUUd4Vm44emNWZUJ3cWFWd0EtMk45dWJza1dYZU0yWUFsUnllME56Tm1EYl85SVplTDhfanlLQjhUVHNiTF9INUR4NFgzOG04bUhqU2xwUlo1bk44?oc=5",
+      "date": "Wed, 08 Jul 2026 00:35:21 GMT",
+      "desc": "South Korea to closely watch risks around stock market volatility By Reuters&nbsp;&nbsp;Investing.com"
+    },
+    {
+      "title": "Nigerian stocks overtake South Korea to become the world's best-performing equity market in dollar terms - Business Insider Africa",
+      "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPYld6Uno3bHJsT1I1bS1fR3JHdTB1OUZTMW9XMUpoY3gxYTIxcXg5ZlZXMnB6eGVUd1pZNmxxdGpIdVZ0NzdQeDNWOExEb04wWlhGcm02bzJtMWVqbHFBWGRGZEE3YXlITUVaZFQ5MDZPTDNRcUd3ZHFCYnJTWUl6T2REYUxmai1vN2hwSG0xcFprdlRIMlU3YUktS2IzbUpNMUVyM0l4YnJuLUFIU3hKeVdlcTZtdGk2WkFzLVVPX08zWFdYMTJvTks2MkRocHRoZ3A4?oc=5",
+      "date": "Thu, 09 Jul 2026 21:56:54 GMT",
+      "desc": "Nigerian stocks overtake South Korea to become the world's best-performing equity market in dollar terms&nbsp;&nbsp;Business Insider Africa"
+    },
+    {
+      "title": "US Commerce Secretary Urges Samsung, SK Hynix to Expand US Semiconductor Fabs - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPQUtZc3VfYVhYQzNETjk1QTVSTUdZRUpoT004SlJVZVNOZmhHWXBrZ2QtOU1FZE9FbzJJcFpkZTdqbFdNcWg4aW1FT2tBa1N6aFlYcUJneTBOa2ZEeHZMeHROdWRWVDNTdFNIR2owa2dfNWZPMFNwbmVWdzR3OFNxZldKb0Jvc2wx?oc=5",
+      "date": "Fri, 10 Jul 2026 04:34:23 GMT",
+      "desc": "US Commerce Secretary Urges Samsung, SK Hynix to Expand US Semiconductor Fabs&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Morgan Stanley Urges Cutting Samsung, SK Hynix, Micron Exposure - 조선일보",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
       "date": "Fri, 03 Jul 2026 13:17:47 GMT",
       "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
-    },
-    {
-      "title": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRFU0NWhkYzZuZG9IRTd6cmpiUGhyRjFoWm1aSDdLNS0xQTRuUTFpS2JZSmM1b053aV9URXhrS3RFTVdYYUpIa3ZVbFhfWmlLbVRVdEJFckN1RTdJVXBYaHU5Q2tuaDVPeGFfTWFveTRfMjFiTU1YaTJfQXFES3Myb3EwUWZzSTRfSDU3dUYxYnQzcTMxZDNZ0gGcAUFVX3lxTE5VaUJOSWVBQm9jVlZyUjRZeC16NGFpdXNDNEMwMlNEQk1Nb3FhLXJmNTlKTFJUR3Rza293STRQOVJaNXRGUWVEUXFqMTRYZWE1RVNIY24tOFJvaFFmNmNmclhLdjJ4dHJNZkd5WTJHdW5aWXNJT05oYk91ckFKVVZ5RExWa0llcXdncWRMQTY5YnNLNUhQa0wyUFNENg?oc=5",
-      "date": "Wed, 01 Jul 2026 07:00:00 GMT",
-      "desc": "Samsung Electronics, SK Hynix shares tumble over 9% as chip rout spreads from Wall Street&nbsp;&nbsp;CNBC"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 278000.0,
-      "change": -18000.0,
-      "pct": -6.08,
+      "price": 287000.0,
+      "change": 9500.0,
+      "pct": 3.42,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 2186000.0,
-      "change": -15000.0,
-      "pct": -0.68,
+      "price": 2200000.0,
+      "change": 124000.0,
+      "pct": 5.97,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 445500.0,
-      "change": -34000.0,
-      "pct": -7.09,
+      "price": 460500.0,
+      "change": -2000.0,
+      "pct": -0.43,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 144800.0,
-      "change": -8900.0,
-      "pct": -5.79,
+      "price": 148100.0,
+      "change": -8700.0,
+      "pct": -5.55,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 184400.0,
-      "change": -12800.0,
-      "pct": -6.49,
+      "price": 192600.0,
+      "change": -100.0,
+      "pct": -0.05,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 7291.91,
-      "change": -364.4,
-      "pct": -4.76,
+      "price": 7521.71,
+      "change": 274.92,
+      "pct": 3.79,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1506.41,
-      "change": 3.06,
-      "pct": 0.2,
+      "price": 1502.98,
+      "change": -0.37,
+      "pct": -0.02,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-10 01:54 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-10 06:35 UTC"
 }
