@@ -1,43 +1,37 @@
 {
   "globalNews": [
     {
-      "title": "US wants Iran to pledge to stop shooting at ships in Strait of Hormuz",
-      "link": "https://www.bbc.co.uk/news/articles/crelyq79x71o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 14:08:07 GMT",
-      "desc": "US media say Iran has told US officials an attack on ships crossing the strait early this week was \"a mistake\"."
+      "title": "China's second typhoon in a week makes landfall",
+      "link": "https://www.bbc.co.uk/news/articles/cdxd3wkp2rzo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 11 Jul 2026 17:41:56 GMT",
+      "desc": "Nearly two million people are evacuated from eastern Zhejiang province, with the city of Wenzhou close to the path of the storm."
+    },
+    {
+      "title": "Iran supreme leader calls for revenge for father's killing",
+      "link": "https://www.bbc.co.uk/news/articles/cj9gkpp0dkeo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 11 Jul 2026 19:30:36 GMT",
+      "desc": "Mojtaba Khamenei says vengeance is \"inevitable\" for the killing, which happened on the first day of the US-Israeli war on Iran."
     },
     {
       "title": "Spain battles to contain one of its deadliest wildfires as at least 12 killed",
       "link": "https://www.bbc.co.uk/news/articles/c1wyv383j2xo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 09:01:15 GMT",
+      "date": "Sat, 11 Jul 2026 15:03:45 GMT",
       "desc": "At least four Britons are believed to be among the victims of the blaze, which left another 23 people missing."
     },
     {
-      "title": "Indian tourists among 15 killed as speedboat capsizes in Vietnam",
-      "link": "https://www.bbc.co.uk/news/articles/cwyd7x22lp1o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 13:44:03 GMT",
-      "desc": "Local media say 21 people were saved after the boat overturned in rough seas near an island in south Vietnam."
+      "title": "Trump administration subpoenas New York Times journalists over Air Force One reporting",
+      "link": "https://www.bbc.co.uk/news/articles/cpd3g8q51g7o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 11 Jul 2026 16:11:33 GMT",
+      "desc": "The reporters received the legal summons after they reported on alleged security issues with the president's new plane, which was gifted by Qatar."
     },
     {
-      "title": "China braced for second typhoon in a week as Bavi approaches landfall",
-      "link": "https://www.bbc.co.uk/news/articles/cdxd3wkp2rzo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 12:06:47 GMT",
-      "desc": "Hundreds of thousands of people are evacuated from eastern Zhejiang province, with the city of Wenzhou close to the path of the storm."
-    },
-    {
-      "title": "More than 40 kidnapped children and teachers freed after Nigerian army operation",
-      "link": "https://www.bbc.co.uk/news/articles/cly9lnjlp1eo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 14:19:34 GMT",
-      "desc": "\"I feel happy and elated… I feel joy,\" the head of the local teachers' union tells the BBC."
+      "title": "Polish PM pledges memorial to victims of WW2 'genocide by Ukrainian nationalists'",
+      "link": "https://www.bbc.co.uk/news/articles/cze94x4361po?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 11 Jul 2026 21:56:52 GMT",
+      "desc": "Warsaw and Kyiv have for decades been at loggerheads over the killings of many thousands of civilians during World War Two."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea commits $7.5 billion to AI-autonomous manufacturing as smart factory count hits 30,000 - MarketScale",
-      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNaEVUbnV5ZHloQ2ZjYV9UclE2V1BySDFLUFgyeWQ3NU5ab2dabVc1Sm43bXZrOGZxVzR1SVpQZlZmTnpIQTlMcUE1aTVkNm9oQ1JZUHZXTHVXVTB3MllyS0Q5TFdxYlhGSDJaNGw4OFdkVG1PVEt0T1BIQ0J6Yl9FS0x3T2xpREh0YXFWeHd4RUZ1QVdpd0NYNWFCWG1ObjI5ZU1Nd2FpMnhaS2NnTXJWREtINVdzN0gySW9fM0ZrNEpRNS11cktrb0tvZlFhQkhWVm9yMldIaXZwWWNTazB3eXRkcEsyeFdScFRVVEhtNHY?oc=5",
-      "date": "Sat, 11 Jul 2026 13:44:40 GMT",
-      "desc": "South Korea commits $7.5 billion to AI-autonomous manufacturing as smart factory count hits 30,000&nbsp;&nbsp;MarketScale"
-    },
     {
       "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
@@ -51,16 +45,22 @@
       "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
+      "title": "South Korea commits $7.5 billion to AI-autonomous manufacturing as smart factory count hits 30,000 - MarketScale",
+      "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNQ3FxeXI4alduWTNjaGJXU1ZCUy1lci14M3BWTE41UTY0R2RTQTBtTVZSVjR1TTI5TE1PTTRZMldPZ2RKOENqVjVKcHVEczZjTU5RYjVkb01jU2hvNnBhUDUxdlpYZUxkaHAwUUJMZU85QXctTmZvdXhkRklUS1R6RFZEU3lKdy1yZHRHY1lCZkxfQ0o0WFhzdEJLMnNuZHkxSDh4aEFzb2g2cHJlZDBINkxkZ0ZKZTUta2NPNG1kR01ueFBEcDdDZnE4XzdXdmVRMk9NTnFlR2M4cnc2eFFac2VheDNSb3pxUS1wVkRQTFhHNW53Mmc?oc=5",
+      "date": "Sat, 11 Jul 2026 13:44:40 GMT",
+      "desc": "South Korea commits $7.5 billion to AI-autonomous manufacturing as smart factory count hits 30,000&nbsp;&nbsp;MarketScale"
+    },
+    {
       "title": "AI Is Changing Everything In South Korea, Especially At The Bank Of Korea - Forbes",
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdGVyWmo2STFvM29lSmJvUFhTNTRyWDVDLV9LTFQxQnNUYlc2eUhhRm9SMXdIVUJOWGhwMGNzT2xvbndnYW13RmQtV2Zmd3dKTTU1NHNobW41VktCbkN5QTBoMDZBcEIyMGEtWk5ETzBWY2U3d3BEZS16VG5TOV9LelFXbXB0R3ZkUXp5Vks1VW93U0txNmhKc0s5R3lVQ052UGNfR1RveFZNYTRMRVA0YzQxWHV3b0VnMTJVM1VYSklXVktN?oc=5",
       "date": "Thu, 09 Jul 2026 12:00:32 GMT",
       "desc": "AI Is Changing Everything In South Korea, Especially At The Bank Of Korea&nbsp;&nbsp;Forbes"
     },
     {
-      "title": "South Korea's Deficit Households, Personal Rehab Applications Hit Records - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQV3J5OG9ieFFzTjRTN0thdlFSbHJhbEhZNGwwTjNiTUZEUUdWYUFLRHVHUFd3eTN2cGJpZTFCV084SjR2MkRzRC1SN3A1NWI4dzgtN2hKb1pZZndmbXl3ZEFtYVNfTHh4MHRpMzA4N25zTVFsRUxfVDhKdzhlTnRPVGw2SDRfUl9FWTYxSWpR?oc=5",
-      "date": "Fri, 10 Jul 2026 20:59:12 GMT",
-      "desc": "South Korea's Deficit Households, Personal Rehab Applications Hit Records&nbsp;&nbsp;조선일보"
+      "title": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNaXd3aE84c3N2ZFppRFY1RmFEd0tCQnBFX0JSajZTN3I2RnpzVjVSZlF4czJlSU0wdTMxOHdiZndYbEVqZERFNEdWTmFDR1NnZ2tpMlZKb2ZmRm0tUy1BUDZGeWM2WlFCVUcwS2d5OXRWWFI4bjVLTVdXR083b20zV0hHSkUxWGpnNUd2aE52RVQ1NGY3a1VPZ2JTanBwc2J6TEdGYlJ0OEx6aHFuaGd2Y2EyYw?oc=5",
+      "date": "Thu, 09 Jul 2026 21:00:00 GMT",
+      "desc": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "U.S. Commerce Secretary Urges Samsung, SK Hynix to Expand U.S. Semiconductor Fabs - 조선일보",
@@ -77,7 +77,7 @@
     {
       "title": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on consumer electronics instead - Tom's Hardware",
       "link": "https://news.google.com/rss/articles/CBMi-gJBVV95cUxPQ0ROT2t5aEdySmVMeVZtQ0RtclFpUFNKLXdoNkVVdjFqUE1KNE1RSWVKWmFwZU9oMFJ3WGVvTVJBWWFNWmVxQ3RMVW5HT1Y1UkFQN3JyMUFHMER4b0xyeHBPWC0xRnlITWFVLWViYktBWWNqdzV6MGw2OUVhd0NMRjhEUFgtcWw4V2trN3k4U3JuaExTVGpzTHMzMDVZM0Fxd3JDMU9sb0NBcEUzWnlTcFRxMW1hcUdseFg0R3FlNF9YeEs3VFd1aUhUVmR4WVQ4SEg3alljbkQyNTZubDVlNFJsanJLTXlFb3dvN0FQa3ZhRm5hdjlBMGhXdl9sdVJxVU1ORW1NdXhUTHB3bWF1RmRqaS1kZnNLU0dwb1l6cjZIUV9ZYXM2OW5FR3FMM2NQNEUtZTJRTXJ2TXdhUU5PSHYyWXRXd2wwQVJWbFdySERLQV95Nm1pc0lJVlNMbmp2blVleFljSzdUSm5WOWhhMC1GZy1lYUdyNmc?oc=5",
-      "date": "Fri, 03 Jul 2026 13:17:47 GMT",
+      "date": "Fri, 03 Jul 2026 07:00:00 GMT",
       "desc": "SK hynix, Samsung, Micron among semiconductor industry group lobbying against government intervention on domestic memory chip supply — says move would worsen situation, suggests tax deductions on cons"
     }
   ],
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-11 14:43 UTC"
+  "updatedAt": "2026-07-11 22:42 UTC"
 }
