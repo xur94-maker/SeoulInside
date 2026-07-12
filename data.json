@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "US launches fresh strikes as Iran closes Strait of Hormuz",
+      "title": "At least 27 killed in Bangkok bar fire",
+      "link": "https://www.bbc.co.uk/news/articles/c24yev53q06o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 12 Jul 2026 20:13:14 GMT",
+      "desc": "Firefighters arrived at the scene in the Chatuchak district to find patrons running through blasting flames to escape."
+    },
+    {
+      "title": "US insists Strait of Hormuz is open as it exchanges strikes with Iran",
       "link": "https://www.bbc.co.uk/news/articles/cj9gkpp0dkeo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 12 Jul 2026 06:49:46 GMT",
-      "desc": "The strikes follow an attack on a Cyprus -flagged vessel travelling through the critical waterway."
+      "date": "Sun, 12 Jul 2026 22:17:40 GMT",
+      "desc": "Iranian forces earlier said the Strait was closed and launched wide-ranging attacks at US allies and bases in the region."
     },
     {
       "title": "US senator and close Trump ally Lindsey Graham dies after 'brief and sudden illness'",
       "link": "https://www.bbc.co.uk/news/articles/cvgj25j6nmeo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 12 Jul 2026 14:18:45 GMT",
-      "desc": "Donald Trump paid tribute to the 71-year-old South Carolina senator, calling him a \"true American patriot\" who will be \"greatly missed\"."
+      "date": "Sun, 12 Jul 2026 22:08:07 GMT",
+      "desc": "Donald Trump pays tribute to the 71-year-old South Carolina senator, calling him a \"true American patriot\" who will be \"greatly missed\"."
+    },
+    {
+      "title": "Anthony Zurcher: From Trump critic to ally, Lindsey Graham was a political survivor of the Maga era",
+      "link": "https://www.bbc.co.uk/news/articles/clyrdn216k2o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 12 Jul 2026 19:42:26 GMT",
+      "desc": "The senator's career was marked by a willingness to adapt to America's dramatically changing political climate, writes the BBC's North America correspondent."
     },
     {
       "title": "Badly burned British couple rescued from ravine during Spain wildfires, reports say",
       "link": "https://www.bbc.co.uk/news/articles/cx2x7441762o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 12 Jul 2026 13:35:01 GMT",
       "desc": "The unnamed pair were found semi-conscious with 40% burns after being trapped by the blazes raging through Almeria province, local media reports."
-    },
-    {
-      "title": "China evacuates nearly two million people as powerful typhoon makes landfall",
-      "link": "https://www.bbc.co.uk/news/articles/cdxd3wkp2rzo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 12 Jul 2026 07:39:45 GMT",
-      "desc": "Schools, work and outdoor activities have been suspended in Zhejiang province and many transport services cancelled."
-    },
-    {
-      "title": "At least two killed in Toronto street festival shooting",
-      "link": "https://www.bbc.co.uk/news/articles/ce3e66e1x3go?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 12 Jul 2026 03:56:02 GMT",
-      "desc": "Police say there was an exchange of gunfire between two individuals at the festival, and two firearms had been recovered from the scene."
     }
   ],
   "koreaNews": [
+    {
+      "title": "North Korea - Economy, Resources, Trade - Encyclopedia Britannica",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
+      "date": "Wed, 08 Jul 2026 05:00:00 GMT",
+      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Encyclopedia Britannica"
+    },
     {
       "title": "South Korea’s economy is booming. Why is the reality so different on the ground? - South China Morning Post",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQd0hkZllxWTl5dk9tQ2V4dGFobXRQcmFKWGdYOUdZWHRscmNiVVR0MWxDTVg4V2F3Wk1SYzFoQ2VNVVgxbW9UMFVWVEstLWhWMEMwR0RZOFdSM1lOOGlFbFBDLXRKNnFoWTlVU3NmRGVnSGxRUzEwMDB0LUQzMlNtZjdtdlBVb2FXb3FDSUh0Mlg2VFhsQk51S0RpOUY3RGpDeGJXMFY0a3pNVmJxcW1ZUHQ5c3LSAbQBQVVfeXFMTnUtN01zak0zbFpfY0dZZXU4RThxdzFvZ3JBc1E5dDdGWXVOVkxadWZCN3NuNjY0SndaWlNMd2pIUGxwamFIUE5yRXlaRzlsQXl0SDVVdTRvM3Y1Z2RkU0tydGFBT1NMRVBBcndpTUlDbDNxdElaY0hMSEF0b1J4cUNma1JSNkRDN1hUbW8zMGhBNnF0Qko2Yi1rMmRvTExzWUk5UGpaOVpFd2wzRTVZYUJwN0pm?oc=5",
@@ -39,10 +45,10 @@
       "desc": "South Korea’s economy is booming. Why is the reality so different on the ground?&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "Korean Economy Redrawing Long-Term Trend Line - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQQnMyM0JKNVBWSkVZYWxwZ2R4RG90RDJZcDh6dGc0STFUYXJFRGtlMFdVTlltZk1TSHYtUVR6X1ZEUzdZMVlMMTBVbkhjRkRTNm9RaloxbGV6dUJUSlIxQjh1TXVDTkNIaTA1VkZoZVZwWVNBRWZPOThHbnYwRkRtRGl0ZUlNc183?oc=5",
-      "date": "Sun, 12 Jul 2026 06:21:37 GMT",
-      "desc": "Korean Economy Redrawing Long-Term Trend Line&nbsp;&nbsp;조선일보"
+      "title": "South Korea (KOR) Exports, Imports, and Trade Partners - The Observatory of Economic Complexity",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBFb3pSd3NpT0s5andZTy02ZG15OUpWVGJjcmM2UGhwcjU4T1ZEOU1tUHRBN2NyeHhkS0k1bmN3c3RveGxyb3NUWUxZdmdNRVRQLXc?oc=5",
+      "date": "Tue, 07 Jul 2026 17:18:36 GMT",
+      "desc": "South Korea (KOR) Exports, Imports, and Trade Partners&nbsp;&nbsp;The Observatory of Economic Complexity"
     },
     {
       "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
@@ -55,12 +61,6 @@
       "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNSm9pZ25GQTREeVVvTEtIVmxDT040b2pJc2dxaGpJeTFWNV9na3JYenlfQzk0aTkzQWIyX1VDVE9pd25JYVBGT3c5TzFEMnA5d09YYXNUekxWckREUGE0X1YwZEMydWJBeGxHUldFRWdFWTJxbGVlTUNqUWxWNUNRMFEybkctR0lCUGdIb2tDQjB2WVR0cGlrX3NfMEJ3U2lBOWRPMlNuSlpHeG9nOE5GamhoamZ6ckUxQm5J?oc=5",
       "date": "Sun, 12 Jul 2026 06:31:00 GMT",
       "desc": "World AI Conference, South Korea monetary policy, China economic data&nbsp;&nbsp;Nikkei Asia"
-    },
-    {
-      "title": "AI Is Changing Everything In South Korea, Especially At The Bank Of Korea - Forbes",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdGVyWmo2STFvM29lSmJvUFhTNTRyWDVDLV9LTFQxQnNUYlc2eUhhRm9SMXdIVUJOWGhwMGNzT2xvbndnYW13RmQtV2Zmd3dKTTU1NHNobW41VktCbkN5QTBoMDZBcEIyMGEtWk5ETzBWY2U3d3BEZS16VG5TOV9LelFXbXB0R3ZkUXp5Vks1VW93U0txNmhKc0s5R3lVQ052UGNfR1RveFZNYTRMRVA0YzQxWHV3b0VnMTJVM1VYSklXVktN?oc=5",
-      "date": "Thu, 09 Jul 2026 12:00:32 GMT",
-      "desc": "AI Is Changing Everything In South Korea, Especially At The Bank Of Korea&nbsp;&nbsp;Forbes"
     },
     {
       "title": "U.S. Commerce Secretary Urges Samsung, SK Hynix to Expand U.S. Semiconductor Fabs - 조선일보",
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1498.87,
-      "change": -4.48,
+      "price": 1498.85,
+      "change": -4.5,
       "pct": -0.3,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-12 14:47 UTC"
+  "updatedAt": "2026-07-12 22:42 UTC"
 }
