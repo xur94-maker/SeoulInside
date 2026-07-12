@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "US launches fresh strikes as Iran closes Strait of Hormuz",
+      "link": "https://www.bbc.co.uk/news/articles/cj9gkpp0dkeo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 12 Jul 2026 04:39:18 GMT",
+      "desc": "The strikes follow an attack on a Cyrpus-flagged vessel travelling through the critical waterway."
+    },
+    {
       "title": "China's second typhoon in a week makes landfall",
       "link": "https://www.bbc.co.uk/news/articles/cdxd3wkp2rzo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 17:41:56 GMT",
+      "date": "Sun, 12 Jul 2026 01:22:22 GMT",
       "desc": "Nearly two million people are evacuated from eastern Zhejiang province, with the city of Wenzhou close to the path of the storm."
     },
     {
-      "title": "Iran supreme leader calls for revenge for father's killing",
-      "link": "https://www.bbc.co.uk/news/articles/cj9gkpp0dkeo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 19:30:36 GMT",
-      "desc": "Mojtaba Khamenei says vengeance is \"inevitable\" for the killing, which happened on the first day of the US-Israeli war on Iran."
+      "title": "T. rex could become most expensive fossil ever - but it's a ​problem for scientists",
+      "link": "https://www.bbc.co.uk/news/articles/c4gykgyn1r4o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 11 Jul 2026 23:58:40 GMT",
+      "desc": "A 67 million-year-old Tyrannosaurus rex will go on sale in New York with a pre-sale value of $30m."
     },
     {
-      "title": "Spain battles to contain one of its deadliest wildfires as at least 12 killed",
-      "link": "https://www.bbc.co.uk/news/articles/c1wyv383j2xo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 15:03:45 GMT",
-      "desc": "At least four Britons are believed to be among the victims of the blaze, which left another 23 people missing."
+      "title": "At least two killed in Toronto street festival shooting",
+      "link": "https://www.bbc.co.uk/news/articles/ce3e66e1x3go?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 12 Jul 2026 03:56:02 GMT",
+      "desc": "Police say there was an exchange of gunfire between two individuals at the festival, and two firearms had been recovered from the scene."
     },
     {
       "title": "Trump administration subpoenas New York Times journalists over Air Force One reporting",
       "link": "https://www.bbc.co.uk/news/articles/cpd3g8q51g7o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 11 Jul 2026 16:11:33 GMT",
       "desc": "The reporters received the legal summons after they reported on alleged security issues with the president's new plane, which was gifted by Qatar."
-    },
-    {
-      "title": "Polish PM pledges memorial to victims of WW2 'genocide by Ukrainian nationalists'",
-      "link": "https://www.bbc.co.uk/news/articles/cze94x4361po?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 11 Jul 2026 21:56:52 GMT",
-      "desc": "Warsaw and Kyiv have for decades been at loggerheads over the killings of many thousands of civilians during World War Two."
     }
   ],
   "koreaNews": [
@@ -45,22 +45,22 @@
       "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "South Korea commits $7.5 billion to AI-autonomous manufacturing as smart factory count hits 30,000 - MarketScale",
-      "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNQ3FxeXI4alduWTNjaGJXU1ZCUy1lci14M3BWTE41UTY0R2RTQTBtTVZSVjR1TTI5TE1PTTRZMldPZ2RKOENqVjVKcHVEczZjTU5RYjVkb01jU2hvNnBhUDUxdlpYZUxkaHAwUUJMZU85QXctTmZvdXhkRklUS1R6RFZEU3lKdy1yZHRHY1lCZkxfQ0o0WFhzdEJLMnNuZHkxSDh4aEFzb2g2cHJlZDBINkxkZ0ZKZTUta2NPNG1kR01ueFBEcDdDZnE4XzdXdmVRMk9NTnFlR2M4cnc2eFFac2VheDNSb3pxUS1wVkRQTFhHNW53Mmc?oc=5",
-      "date": "Sat, 11 Jul 2026 13:44:40 GMT",
-      "desc": "South Korea commits $7.5 billion to AI-autonomous manufacturing as smart factory count hits 30,000&nbsp;&nbsp;MarketScale"
-    },
-    {
       "title": "AI Is Changing Everything In South Korea, Especially At The Bank Of Korea - Forbes",
       "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdGVyWmo2STFvM29lSmJvUFhTNTRyWDVDLV9LTFQxQnNUYlc2eUhhRm9SMXdIVUJOWGhwMGNzT2xvbndnYW13RmQtV2Zmd3dKTTU1NHNobW41VktCbkN5QTBoMDZBcEIyMGEtWk5ETzBWY2U3d3BEZS16VG5TOV9LelFXbXB0R3ZkUXp5Vks1VW93U0txNmhKc0s5R3lVQ052UGNfR1RveFZNYTRMRVA0YzQxWHV3b0VnMTJVM1VYSklXVktN?oc=5",
       "date": "Thu, 09 Jul 2026 12:00:32 GMT",
       "desc": "AI Is Changing Everything In South Korea, Especially At The Bank Of Korea&nbsp;&nbsp;Forbes"
     },
     {
-      "title": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNaXd3aE84c3N2ZFppRFY1RmFEd0tCQnBFX0JSajZTN3I2RnpzVjVSZlF4czJlSU0wdTMxOHdiZndYbEVqZERFNEdWTmFDR1NnZ2tpMlZKb2ZmRm0tUy1BUDZGeWM2WlFCVUcwS2d5OXRWWFI4bjVLTVdXR083b20zV0hHSkUxWGpnNUd2aE52RVQ1NGY3a1VPZ2JTanBwc2J6TEdGYlJ0OEx6aHFuaGd2Y2EyYw?oc=5",
-      "date": "Thu, 09 Jul 2026 21:00:00 GMT",
-      "desc": "South Korea Eyes AI Windfall Fund to Aid Growth, Jobs for Youth&nbsp;&nbsp;Bloomberg.com"
+      "title": "South Korea commits $7.5 billion to AI-autonomous manufacturing as smart factory count hits 30,000 - MarketScale",
+      "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNQ3FxeXI4alduWTNjaGJXU1ZCUy1lci14M3BWTE41UTY0R2RTQTBtTVZSVjR1TTI5TE1PTTRZMldPZ2RKOENqVjVKcHVEczZjTU5RYjVkb01jU2hvNnBhUDUxdlpYZUxkaHAwUUJMZU85QXctTmZvdXhkRklUS1R6RFZEU3lKdy1yZHRHY1lCZkxfQ0o0WFhzdEJLMnNuZHkxSDh4aEFzb2g2cHJlZDBINkxkZ0ZKZTUta2NPNG1kR01ueFBEcDdDZnE4XzdXdmVRMk9NTnFlR2M4cnc2eFFac2VheDNSb3pxUS1wVkRQTFhHNW53Mmc?oc=5",
+      "date": "Sat, 11 Jul 2026 13:44:40 GMT",
+      "desc": "South Korea commits $7.5 billion to AI-autonomous manufacturing as smart factory count hits 30,000&nbsp;&nbsp;MarketScale"
+    },
+    {
+      "title": "In 1953, South Korea had a per-capita income lower than that of Somalia or Haiti — and within roughly seventy years, it became the world's tenth-largest economy and the dominant global producer of memory chips, in the fastest national economic transformati - Space Daily",
+      "link": "https://news.google.com/rss/articles/CBMiuAJBVV95cUxNaURrbG5ucVU2T2d3TEV4SkZsci12NENTOEEyWHpDdzRrc1p1N2RqcnB3NmE3NDd4MjZtU0lvQWstUTU4WGN4b3AxNEwxYVktaC1TZndxNzBGRmhiUE0xUEZRUWFsWWdnTXVpd05wcnFNdXNIaWdkS25NbVNMRTBFcWlYd0VZdHV3NE15TWxTelBlTDU0YlRiVnAzVkJjb2ZrdTV5X1lEMVpmOWh4TS1raHdreEE4SktZU3daZWI2b09FRVE2dmhTdXF2cXphU21BZ3E0eVRsTXdBRlZsNWRYaXhtdTFXY2dyRmc5VjhreEl1SlAtalNVbGk3TjJXTHRhN0JBbDNqamREc1paUm84NjlraGQwUUk2VHRudVRTSTRlRF9EYzZ0S3NuQzRxYTBNeFNpNGRESVk?oc=5",
+      "date": "Sat, 27 Jun 2026 07:00:00 GMT",
+      "desc": "In 1953, South Korea had a per-capita income lower than that of Somalia or Haiti — and within roughly seventy years, it became the world's tenth-largest economy and the dominant global producer of mem"
     },
     {
       "title": "U.S. Commerce Secretary Urges Samsung, SK Hynix to Expand U.S. Semiconductor Fabs - 조선일보",
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-12 01:45 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-12 05:48 UTC"
 }
