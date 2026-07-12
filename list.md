@@ -7,7 +7,7 @@ https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&
 
 
 #Hunmin Jeongeum
-https://www.google.com/search?q=Hunmin+Jeongeum+Haerye+%ED%9B%88%EB%AF%BC%EC%A0%95%EC%9D%8C%ED%95%B4%EB%A1%80+Sejong+%281397%E2%80%931450%29+&biw=1438&bih=967&sca_esv=e1aacedd0a53d14f&sxsrf=APpeQntWXxHTF3PiUeeulOn9nvurUxNrdQ%3A1783223412063&ei=dNRJavCxA-u9rfcPiI3joQs&ved=0ahUKEwjwu5_w0LqVAxXrXusIHYjGOLQQ4dUDCBI&oq=Hunmin+Jeongeum+Haerye+%ED%9B%88%EB%AF%BC%EC%A0%95%EC%9D%8C%ED%95%B4%EB%A1%80+Sejong+%281397%E2%80%931450%29+&gs_lp=Egxnd3Mtd2l6LXNlcnAiP0h1bm1pbiBKZW9uZ2V1bSBIYWVyeWUg7ZuI66-87KCV7J2M7ZW066GAIFNlam9uZyAoMTM5N-KAkzE0NTApIDIFEAAY7wUyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wUyBRAAGO8FSKQ3UM4lWPgucAR4AZABAJgBwAGgAasFqgEDMC40uAEMyAEA-AEB-AECmAIIoALbBcICChAAGEcY1gQYsAPCAhcQLhjcBhi4BhjaBhjYAhjIAxiwA9gBAcICCRAhGAoYoAEYKsICBxAhGAoYoAGYAwCIBgGQBgy6BgQIARgZkgcDNC40oAeSErIHAzAuNLgHvAXCBwcwLjMuNC4xyAckgAgB&sclient=gws-wiz-serp
+https://www.google.com/search?q=King+Sejong+the+Great+%281397%E2%80%931450%2C+r.+1418%E2%80%931450%29+%7C+Hunmin+Jeongeum+Haerye+%281446%29&sca_esv=a707d86a229c684a&sxsrf=APpeQnszta8CvodLGMSxsRKnHySA_20AzQ%3A1783860401155&ei=sYxTatbaCLC12roPxfOkkQk&biw=1014&bih=788&ved=0ahUKEwiW96fslc2VAxWwmlYBHcU5KZIQ4dUDCBA&uact=5&oq=King+Sejong+the+Great+%281397%E2%80%931450%2C+r.+1418%E2%80%931450%29+%7C+Hunmin+Jeongeum+Haerye+%281446%29&gs_lp=Egxnd3Mtd2l6LXNlcnAiU0tpbmcgU2Vqb25nIHRoZSBHcmVhdCAoMTM5N-KAkzE0NTAsIHIuIDE0MTjigJMxNDUwKSB8IEh1bm1pbiBKZW9uZ2V1bSBIYWVyeWUgKDE0NDYpSABQAFgAcAB4AZABAJgBAKABAKoBALgBA8gBAPgBAZgCAKACAJgDAJIHAKAHALIHALgHAMIHAMgHAIAIAQ&sclient=gws-wiz-serp
 
 #Trickle-Dry Effect
 https://www.google.com/search?q=The+Trickle-Dry+Effect&sourceid=chrome&ie=UTF-8&source=chrome.ob
