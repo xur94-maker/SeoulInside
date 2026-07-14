@@ -21,6 +21,9 @@ https://xur94-maker.github.io/SeoulInside/link1.html
 #list
 https://github.com/xur94-maker/SeoulInside/blob/main/list.md
 
+#latest
+https://github.com/xur94-maker/SeoulInside/blob/main/latest.md
+
 #ko-fi.com
 https://ko-fi.com/Manage/
 
