@@ -10,6 +10,18 @@ https://news.google.com/home?hl=ko&gl=KR&ceid=KR%3Ako
 구글 트렌드 실시간 인기
 https://trends.google.co.kr/trending
 
+-----
+https://kimchi.pusan.ac.kr/kimchi/43683/subview.do
+
+https://www.nics.go.kr/food/kfi/kimchi/kimchi_01
+
+https://www.nics.go.kr/food/kfi/tfSrch08/list
+
+https://www.heritage.go.kr/heri/unified/renewUnifiedList.do?query=%EA%B9%80%EC%B9%98+%EB%8B%B4%EA%B7%B8%EA%B8%B0&sort=2&shapes=0&pageIndex=1&pageNo=1_1_1_1&pageSize=10
+
+
+
+
 YTN
 https://ytn.co.kr/
 
