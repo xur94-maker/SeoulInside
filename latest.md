@@ -20,6 +20,15 @@ https://www.nics.go.kr/food/kfi/tfSrch08/list
 https://www.heritage.go.kr/heri/unified/renewUnifiedList.do?query=%EA%B9%80%EC%B9%98+%EB%8B%B4%EA%B7%B8%EA%B8%B0&sort=2&shapes=0&pageIndex=1&pageNo=1_1_1_1&pageSize=10
 
 
+-----
+https://hqcenter.snu.ac.kr/archives/3129
+
+https://www.nics.go.kr/food/kfi/tfSrch08/list
+
+https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_1_1&ccbaKdcd=17&ccbaAsno=01370000&ccbaCtcd=ZZ&ccbaCpno=127ZZ01370000&ccbaGcode=HK&ccbaBcode=05&ccba
+
+
+
 
 
 YTN
