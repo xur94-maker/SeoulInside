@@ -1,15 +1,21 @@
 {
   "globalNews": [
     {
-      "title": "How US commerce secretary's Epstein links were uncovered by British whistleblower",
-      "link": "https://www.bbc.co.uk/news/articles/c9q28dlyxrzo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 14 Jul 2026 05:00:03 GMT",
-      "desc": "Simon Andriesz made the discovery about Howard Lutnick in publicly released Epstein files."
+      "title": "Trump scraps threat of 20% fee on Hormuz cargo as US resumes blockade of Iran ports",
+      "link": "https://www.bbc.co.uk/news/articles/cy0608wy8pro?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 14 Jul 2026 20:10:37 GMT",
+      "desc": "Trump drops a 24-hour-old vow to charge cargo ships for using the Strait as the US continues its battle to break Iran's hold on the waterway."
+    },
+    {
+      "title": "Strait of Hormuz 'faultline' exposes weakness of the US-Iran deal",
+      "link": "https://www.bbc.co.uk/news/articles/cwy0ydn033yo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 14 Jul 2026 19:13:49 GMT",
+      "desc": "Control of the waterway has become a key point of contention between the US and Iran, as a ceasefire deal falters."
     },
     {
       "title": "Israeli strike on police post in north Gaza kills seven, officials say",
       "link": "https://www.bbc.co.uk/news/articles/cqj1jqeyl5ro?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 14 Jul 2026 13:46:14 GMT",
+      "date": "Tue, 14 Jul 2026 17:13:27 GMT",
       "desc": "A senior officer in the Hamas-run police force was among those killed in the strike, which Israel's military says targeted \"terrorists\"."
     },
     {
@@ -21,14 +27,8 @@
     {
       "title": "'If we die, we die together': Wife of man nearly sucked out of Ryanair plane speaks of ordeal",
       "link": "https://www.bbc.co.uk/news/articles/cly8yjnw822o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 14 Jul 2026 13:49:42 GMT",
+      "date": "Tue, 14 Jul 2026 19:40:23 GMT",
       "desc": "Svetlana Grković told Serbian media that her husband is \"seriously injured and in shock\"."
-    },
-    {
-      "title": "Bangkok fire investigation finds locked doors and flammable decor as deaths climb to 30",
-      "link": "https://www.bbc.co.uk/news/articles/clyxyzlp9p2o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 14 Jul 2026 03:47:41 GMT",
-      "desc": "Survivors and first responders reported locked doors and a lack of signage marking emergency exits."
     }
   ],
   "koreaNews": [
@@ -51,16 +51,22 @@
       "desc": "South Korea Turns More Bullish on Economy as Chip Boom Rolls On&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "S. Korea gov't revises up 2026 growth outlook to 3 pct on chip supercycle - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPNU5zYzJsUlBlRE9zN3VTcXp2R1J2bTN0cldXNFNjM3NBNXNGWV9ZQ0I0ZWN5b1NUU0Z5VTg2ZFNYRjhpQXNkUkhqR2dmU0NqY29jdnZ6SF80UVY5ekt3VVdqZlFGd3NEZnNreHZIRzFNZVZQWHFicFM0ckFHbmZqLW14NlJrZjVlRnFISHMyQW9IQkNWUzNUZ1FBRkI0V0ljSUlEZXV5SUlxdU42dGxBdFhvUVpDYjY3U2hTZjV6aFdmZ0ZqemZTOUZpVXlTUTQwVk5taNIB2gFBVV95cUxPR1dXWEdVY1YzbUwxQkI0bVdFZUZhbXk4STRCOVFwUUYyODNHeGNPbjRFdWxMVHFob09RNkdWRjRGbjFONzFWUVpJX0FES2lWdHRIQUhhdFJqQjJXRlhMZm50ZFVWSU8yenplcWo1YXBqNEwxZ2t3RmRYbGJqcnZBMzdjVlZISjQ3aFRhYU5wU1B2bmIzeUJtUEhPelcwNG55OFkxUTdpNGpJV1E1Sy1ReXFSbWw4MmM2eWFLOFBtVWoweGxBbXAtNHpKQ0NYdU1DODc0TnFJRVV6QQ?oc=5",
-      "date": "Tue, 14 Jul 2026 10:38:18 GMT",
-      "desc": "S. Korea gov't revises up 2026 growth outlook to 3 pct on chip supercycle&nbsp;&nbsp;upi.com"
+      "title": "South Korea maintains blockchain economy push as AI takes center stage - The Block",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1Bdm0zcUhISE9KOUZidVZwV2NKX0wtLWV0ZEJoUmFzS2M2MlpvMFU2bVRuaV8xR0MyZm1helI5RHhrWHhzcVpmMVRvZXRPaU5pZGgweVBhY0RlMXVXSlRRODVDdWYxQk1RMkY4am9wN0JVS1RLTzd0RFZ4c1RoN1U?oc=5",
+      "date": "Tue, 14 Jul 2026 08:51:22 GMT",
+      "desc": "South Korea maintains blockchain economy push as AI takes center stage&nbsp;&nbsp;The Block"
     },
     {
-      "title": "Korea lifts growth outlook, bets big on chip boom - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5IYlBSbVpEUm1EeC0xQnhNWUpXOXNpX0l0OHNLNTVjSEJKXzdaWnRjd1pUTEVSMElMVDlNTVVVZi1rS0pWbnk4a2dSQUU2ZVRlSmczcDJtOA?oc=5",
-      "date": "Tue, 14 Jul 2026 05:11:21 GMT",
-      "desc": "Korea lifts growth outlook, bets big on chip boom&nbsp;&nbsp;The Korea Herald"
+      "title": "World AI Conference, South Korea monetary policy, China economic data - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNSm9pZ25GQTREeVVvTEtIVmxDT040b2pJc2dxaGpJeTFWNV9na3JYenlfQzk0aTkzQWIyX1VDVE9pd25JYVBGT3c5TzFEMnA5d09YYXNUekxWckREUGE0X1YwZEMydWJBeGxHUldFRWdFWTJxbGVlTUNqUWxWNUNRMFEybkctR0lCUGdIb2tDQjB2WVR0cGlrX3NfMEJ3U2lBOWRPMlNuSlpHeG9nOE5GamhoamZ6ckUxQm5J?oc=5",
+      "date": "Sun, 12 Jul 2026 06:31:00 GMT",
+      "desc": "World AI Conference, South Korea monetary policy, China economic data&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
+      "title": "Tom Lee advises buying dips in Samsung, SK Hynix amid AI demand - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9mWUtpRGd4WkEwRGhUZ243TzZjTW1zR0xia1dWdnV6RHFHYlJILXRkckpsQ0F5bExPSkVxSUpxRS1FOF9CNkNkUU1nZjh3Q2RwbzdkRThYdHJOT1hTYWphTjdhY0pnOW5zanY0?oc=5",
+      "date": "Tue, 14 Jul 2026 18:57:37 GMT",
+      "desc": "Tom Lee advises buying dips in Samsung, SK Hynix amid AI demand&nbsp;&nbsp;Crypto Briefing"
     },
     {
       "title": "Korean stocks swing wildly as Samsung, SK Hynix reverse course; Forced selling deepens market strain - The Korea Economic Daily Global Edition",
@@ -73,101 +79,95 @@
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNaGdTWjE2eXJtaWVQZlhDYXBSYkp2Y2JHcEhiX212UWVjcENLZzJjbFAwWnlTQ0NqNFhQUDFYS2F6LWVWeVlobWZsVGV2VWdpQjltSXdIWWJMb3VmT2J0aG0zTlBESTJUd3NXYy1IWEZwRXQ4djV0RHJHdWxpQnh2alFuaUZkNzdaTU91bXp3?oc=5",
       "date": "Tue, 14 Jul 2026 04:16:19 GMT",
       "desc": "Samsung, SK Hynix Slump as Chinese Semiconductor ETFs Rally&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Samsung explores US ADR listing after SK Hynix's record Nasdaq debut: report - TradingView",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOcmt3eG1GMHNkRW1EQ25VbkQ0aEZpOERlWlMyUTNVT20wV1RDaDBkMkZOdkpkSkJUdEx0R29EVjJKYk40UUNZbXRJQS14dDJsV21Oc1BFTGl5QUx2TWRNelB1cGxKT2ZGLWQ5WVVXODZZN3gtdjBTN25UenUzVFpVcUo1ZmRFRWRfUFpWM1lMVXA2ai1uNGNzTTRVSDA1eVBpN2tsWWNyRy1BcGVWZE9fNVdCTmM1SG5OZWhPTHpqUk5GdF9KZGlvR193RWU?oc=5",
-      "date": "Tue, 14 Jul 2026 09:03:16 GMT",
-      "desc": "Samsung explores US ADR listing after SK Hynix's record Nasdaq debut: report&nbsp;&nbsp;TradingView"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 207.82,
-      "change": -3.14,
-      "pct": -1.49,
+      "price": 211.8,
+      "change": 0.84,
+      "pct": 0.4,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 424.72,
-      "change": -9.39,
-      "pct": -2.16,
+      "price": 420.39,
+      "change": -13.72,
+      "pct": -3.16,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 562.86,
-      "change": 4.97,
-      "pct": 0.89,
+      "price": 548.13,
+      "change": -9.76,
+      "pct": -1.75,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 105.91,
-      "change": -3.94,
-      "pct": -3.58,
+      "price": 107.76,
+      "change": -2.08,
+      "pct": -1.89,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 182.91,
-      "change": -6.25,
-      "pct": -3.31,
+      "price": 178.1,
+      "change": -11.06,
+      "pct": -5.85,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 285.5,
-      "change": -37.89,
-      "pct": -11.72,
+      "price": 281.17,
+      "change": -42.22,
+      "pct": -13.06,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 358.36,
-      "change": 1.18,
-      "pct": 0.33,
+      "price": 359.51,
+      "change": 2.33,
+      "pct": 0.65,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 315.65,
-      "change": 0.33,
-      "pct": 0.1,
+      "price": 314.86,
+      "change": -0.46,
+      "pct": -0.15,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 386.09,
-      "change": 0.99,
-      "pct": 0.26,
+      "price": 384.93,
+      "change": -0.17,
+      "pct": -0.04,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7551.54,
-      "change": -23.85,
-      "pct": -0.31,
+      "price": 7543.59,
+      "change": -31.8,
+      "pct": -0.42,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26140.26,
-      "change": -141.35,
-      "pct": -0.54,
+      "price": 26107.01,
+      "change": -174.6,
+      "pct": -0.66,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1487.5,
-      "change": -10.98,
-      "pct": -0.73,
+      "price": 1488.57,
+      "change": -9.91,
+      "pct": -0.66,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-14 15:16 UTC"
+  "updatedAt": "2026-07-14 22:53 UTC"
 }
