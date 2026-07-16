@@ -1,3 +1,7 @@
+# 모아봐
+http://www.moabbs.com/board/cboard
+
+
 # aagag.com
 https://aagag.com/
 
@@ -5,7 +9,7 @@ https://aagag.com/
 https://bbs.hobbyspace.org
 
 # Hotbest7
-https://hotbest7.com/
+ https://hotbest7.com/issue/
 
 # 오늘의베스트
 https://todaybeststory.com/
@@ -13,14 +17,9 @@ https://todaybeststory.com/
 # 모아모아
 https://moamoa.kr/
 
-# 모아봐
-http://www.moabbs.com/board/cboard
-
-# 배오베
-https://beobe.ai/
 
 # 더쿠
-https://theqoo.net/
+ https://theqoo.net/hot
 
 
 
