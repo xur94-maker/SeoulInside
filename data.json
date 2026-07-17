@@ -1,15 +1,15 @@
 {
   "globalNews": [
     {
-      "title": "US launches new strikes as Iran says civilian infrastructure hit",
+      "title": "Iran accuses US of hitting civilian infrastructure",
       "link": "https://www.bbc.co.uk/news/articles/c151gdjwd10o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 17 Jul 2026 10:14:30 GMT",
-      "desc": "Tehran says the US strikes hit bridges, while the US boards a ship in the Strait of Hormuz."
+      "date": "Fri, 17 Jul 2026 14:32:07 GMT",
+      "desc": "The US military says its attacks were intended to \"further degrade Iranian military capabilities\"."
     },
     {
       "title": "Trump alleges China meddled in 2020 election and questions voting security ahead of midterms",
       "link": "https://www.bbc.co.uk/news/articles/cx2k9wvv5wyo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 17 Jul 2026 09:12:06 GMT",
+      "date": "Fri, 17 Jul 2026 11:37:00 GMT",
       "desc": "China said Trump's claims were fabricated and US Democrats said he was paving the way to undermine November's elections."
     },
     {
@@ -35,7 +35,7 @@
     {
       "title": "South Korea stocks slump after first rate rise in 3 years - Financial Times",
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQNV9qWVlEQ3FrNnc1RjZSVkVOSC02dS1NSkFSUEhxaGpocmFlZ1R5QXE3WU1tV1dPb3hfVklKU3VfWXNjaGd1Mzd2ZGRTamV2cS0ycFNmZFNXT1Ixd2JTX0FxY1NkVzBBMjhhRl9sYUs3a1MzZE91Z0swbEJDeWpUZjdVdC0?oc=5",
-      "date": "Thu, 16 Jul 2026 00:58:26 GMT",
+      "date": "Thu, 16 Jul 2026 04:47:57 GMT",
       "desc": "South Korea stocks slump after first rate rise in 3 years&nbsp;&nbsp;Financial Times"
     },
     {
@@ -51,16 +51,16 @@
       "desc": "Bank of Korea raises rates to 2.75% in first hike in over three years&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "South Korea central bank to raise rates for first time in over three years on July 16 - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOcVllY0FCSXYtWEhqWHNXUFhEbXVaQVRfTXVCQzF5enF5U0dZaWlZS2RyMjJ1dFhjaXRUVHdNc3lHeWpMNTlPX283TXRGZmdENlZIaURIMWk4Q0NwV09rOGt1Q09PS3BUOXVIX1lwWXVkaThGLWpvOVhPOERiUDFsWW9lbElRMDdNVVZlZHNhTHptUGFKMU5QOUIwREtXQ2xBaG0zWkcyRU5TSmUyZHNjVEc2d3o1S1E1NEkzTFBsSExTTFIwWlE?oc=5",
-      "date": "Tue, 14 Jul 2026 16:11:50 GMT",
-      "desc": "South Korea central bank to raise rates for first time in over three years on July 16&nbsp;&nbsp;Reuters"
-    },
-    {
       "title": "South Korea Raises 2026 Growth, Inflation Forecasts - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNejBVTDh0TWcwN1pTX2pSMm1rWmM0SS1aNkFPa2EtV2QtLWo3M3NxdDhlQV9WaXhONlNzdFZiSXc2T1F0akRBVWRGMEduMXdoXzBEUWN6akdwY2I4eFpaOE5Ka3QwXzVsRzB4dzBkWm03REw4U3VTelN2UXBzalg0dXZrM3JvUDk1Q1pFdUtzS1E?oc=5",
       "date": "Tue, 14 Jul 2026 03:00:00 GMT",
       "desc": "South Korea Raises 2026 Growth, Inflation Forecasts&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "South Korea forecasts 2026 economic growth at 5-year high on AI chip boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPMlJqdXFSbm1RMkt5ZU5oOG5mUHZiblBGVE9aQ1RDSDlpRTVPNFA1SHlKYkFNc3MxbHppV3ZyMVNGUTFvSlZkb0lhR2w2WU9MY1FMSHdZQUdpTnhDY3ZpNG5MLXJkMTRVTHBnOTZpQVJCY2ROWXNQeUpITmNKWEx1ZWt1MFV2UjB3S0F1VWYwa1FHRkdzQlRLTHEtYm1QNVdqWFpDM2lnWi1UUVNKb0E5eHZGOGUxYUZqcnhaLXJYWQ?oc=5",
+      "date": "Tue, 14 Jul 2026 02:58:00 GMT",
+      "desc": "South Korea forecasts 2026 economic growth at 5-year high on AI chip boom&nbsp;&nbsp;Reuters"
     },
     {
       "title": "Want to Buy ETFs With Samsung and SK Hynix? These 2 ETFs Can Deliver. - Yahoo Finance",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 207.4,
-      "change": -4.4,
-      "pct": -2.08,
+      "price": 202.62,
+      "change": -9.88,
+      "pct": -4.65,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 409.74,
-      "change": -10.65,
-      "pct": -2.53,
+      "price": 396.97,
+      "change": -22.51,
+      "pct": -5.37,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 500.94,
-      "change": -47.19,
-      "pct": -8.61,
+      "price": 485.3,
+      "change": -43.84,
+      "pct": -8.29,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 96.98,
-      "change": -10.78,
-      "pct": -10.0,
+      "price": 93.07,
+      "change": -9.92,
+      "pct": -9.63,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 170.61,
-      "change": -7.49,
-      "pct": -4.21,
+      "price": 166.72,
+      "change": -11.26,
+      "pct": -6.33,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 262.01,
-      "change": -19.16,
-      "pct": -6.81,
+      "price": 258.99,
+      "change": -18.02,
+      "pct": -6.51,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 354.46,
-      "change": -5.05,
-      "pct": -1.4,
+      "price": 345.34,
+      "change": -25.58,
+      "pct": -6.9,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 333.26,
-      "change": 18.4,
-      "pct": 5.84,
+      "price": 332.88,
+      "change": 5.38,
+      "pct": 1.64,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 401.1,
-      "change": 16.17,
-      "pct": 4.2,
+      "price": 391.49,
+      "change": -4.14,
+      "pct": -1.05,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7533.77,
-      "change": -9.82,
-      "pct": -0.13,
+      "price": 7467.67,
+      "change": -104.73,
+      "pct": -1.38,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25881.95,
-      "change": -225.06,
-      "pct": -0.86,
+      "price": 25449.66,
+      "change": -819.57,
+      "pct": -3.12,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1485.92,
-      "change": -0.28,
-      "pct": -0.02,
+      "price": 1486.29,
+      "change": 0.09,
+      "pct": 0.01,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-17 10:52 UTC"
+  "updatedAt": "2026-07-17 15:05 UTC"
 }
