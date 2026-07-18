@@ -1,9 +1,21 @@
 {
   "globalNews": [
     {
+      "title": "Russian online retail warehouses hit by deadly Ukrainian strikes",
+      "link": "https://www.bbc.co.uk/news/articles/clyxlm877p2o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 18 Jul 2026 13:06:25 GMT",
+      "desc": "Drones targeted Wildberries facilities near Moscow and in Tambov. Ukraine's leader called them \"major logistics facilities\" supplying \"sanctioned components\"."
+    },
+    {
+      "title": "Many Ukrainian soldiers outraged over removal of defence minister, troops tell BBC",
+      "link": "https://www.bbc.co.uk/news/articles/cvg8w4dpjkwo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 17 Jul 2026 19:04:09 GMT",
+      "desc": "Protests erupted in Ukraine on Thursday after Mykhailo Fedorov's removal - and now soldiers are also criticising the move."
+    },
+    {
       "title": "US strikes hit Iran for seventh consecutive night",
       "link": "https://www.bbc.co.uk/news/articles/cy748n8zx8ro?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 18 Jul 2026 07:33:40 GMT",
+      "date": "Sat, 18 Jul 2026 11:48:44 GMT",
       "desc": "Iran has retaliated against US allies in the region, with Kuwait reporting that a power and water plant had been hit."
     },
     {
@@ -13,22 +25,10 @@
       "desc": "Canadian leader Mark Carney says both the US and Canada have an equal responsibility to fight climate change, which experts say are worsening wildfire conditions."
     },
     {
-      "title": "Many Ukrainian soldiers outraged over removal of defence minister, troops tell BBC",
-      "link": "https://www.bbc.co.uk/news/articles/cvg8w4dpjkwo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 17 Jul 2026 19:04:09 GMT",
-      "desc": "Protests erupted in Ukraine on Thursday after Mykhailo Fedorov's removal - and now soldiers are also criticising the move."
-    },
-    {
       "title": "Space start-up launches India’s first commercial rocket designed for orbit",
       "link": "https://www.bbc.co.uk/news/articles/clyekv7rld3o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 18 Jul 2026 07:05:19 GMT",
       "desc": "India's first space-tech unicorn Skyroot Aerospace successfully launched Vikram-1 on Saturday."
-    },
-    {
-      "title": "White House defends Argentina team over Falklands banner",
-      "link": "https://www.bbc.co.uk/news/articles/cx2rmjk0740o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 17 Jul 2026 22:12:54 GMT",
-      "desc": "The comments could further fuel the row over the incident, which has seen Downing Street back calls for Fifa to investigate."
     }
   ],
   "koreaNews": [
@@ -37,6 +37,12 @@
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQNV9qWVlEQ3FrNnc1RjZSVkVOSC02dS1NSkFSUEhxaGpocmFlZ1R5QXE3WU1tV1dPb3hfVklKU3VfWXNjaGd1Mzd2ZGRTamV2cS0ycFNmZFNXT1Ixd2JTX0FxY1NkVzBBMjhhRl9sYUs3a1MzZE91Z0swbEJDeWpUZjdVdC0?oc=5",
       "date": "Thu, 16 Jul 2026 04:47:57 GMT",
       "desc": "South Korea stocks slump after first rate rise in 3 years&nbsp;&nbsp;Financial Times"
+    },
+    {
+      "title": "Is Fed’s Warsh Wrong About AI? South Korea May Provide Answer - Forbes",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOMm81XzcwN1BYSjRBY016U1dfVkYwT0RJejJzU0NSbFJ0YW4zdHpqbkZvajhhLVUxYVBFaHVzeklmdElVTjlKcW90VE13Q3JRZWduTDVuQXhXZXlWS2NzM3AtVGdsYkFOVTVQTmRpQ2R5b1NaUm01VGF6U21uUGZ2T3l2bXhpaGV6alYycmpEUF9sN0E4N2lHbXJpMHBmQnB1c2xXRXZrbGFKd2VzTzVIN01IRQ?oc=5",
+      "date": "Sat, 18 Jul 2026 14:03:23 GMT",
+      "desc": "Is Fed’s Warsh Wrong About AI? South Korea May Provide Answer&nbsp;&nbsp;Forbes"
     },
     {
       "title": "South Korea’s Economy Is Too Hot for One Rate Hike - Bloomberg.com",
@@ -55,12 +61,6 @@
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQUTAzbEZ6Tl9sdUoxaks0Y0RDOXktcjQyaUZmRFhDQmZDTWJTUHJ2cUNjSXZDajBHWVNHVEhURllLcXZUT1JlaFE3ZXBUSk9rSFdTLXVGUHRhUV9paGVCTFhtV3Y0SUxIWnlta0RDcXRNMGFKd0VWLWZIa2JvbEpoRkhFaFdiNDNMS0JmUVpjaC14YjgzX21N0gGcAUFVX3lxTFBFQ3hZTHpVLXNhZ2dGMlhLS0F5UGxqVWE4dGlDSkRGWGtfTlloZHgzX0F2cDQ2RkJrTU1lbTZUOTRRVlVPNlhUTzRZZUhWQ0U4c0hPMmtfT2hGcVd5eVBqaXpRTU8wZnJnQ1pkMThpNGFRYUZza2VYUm01N25sOWd0MEZFZkEtMzRmX0xUYkNRY0VsRXcycW5GNGRLVA?oc=5",
       "date": "Thu, 16 Jul 2026 01:01:00 GMT",
       "desc": "Bank of Korea raises rates to 2.75% in first hike in over three years&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "Bank of Korea picks a fight with US Fed’s AI inflation call - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQQ1o4ckFlMW1ya25aNnRZT0JhdnNfRWVfUG1HR3BucFAwUEJ5WHZYa3lhSFNPQk9tNDVnS2U3bnZlUDI4R19BMjdsUEpCSXlVSU9TcEpYLUN6UFNhVFo3eUNiQmN6RENCUnZGWS1UdElRMUtYbVNyXzYzTllXcS01SnBJaGNhRWtzMXZGdk1uNVhOMEU?oc=5",
-      "date": "Thu, 16 Jul 2026 08:18:50 GMT",
-      "desc": "Bank of Korea picks a fight with US Fed’s AI inflation call&nbsp;&nbsp;Asia Times"
     },
     {
       "title": "Want to Buy ETFs With Samsung and SK Hynix? These 2 ETFs Can Deliver. - Yahoo Finance",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-18 10:23 UTC"
+  "updatedAt": "2026-07-18 14:42 UTC"
 }
