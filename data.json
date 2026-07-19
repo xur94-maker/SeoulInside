@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Two US troops killed and one missing after Iranian attack in Jordan",
-      "link": "https://www.bbc.co.uk/news/articles/cn8nynv8ze8o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 18 Jul 2026 21:12:28 GMT",
-      "desc": "Iran and the US have traded strikes as hostilities re-escalated this week, with Tehran targeting US military facilities across the Gulf region."
+      "title": "US and Iran exchange strikes after two US deaths in Jordan attack",
+      "link": "https://www.bbc.co.uk/news/articles/cgk417jp83po?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 19 Jul 2026 05:10:57 GMT",
+      "desc": "US forces target Iranian sites for the eighth night in a row, while Iran says it fired drones at the US military in Kuwait."
+    },
+    {
+      "title": "Andrew Tate and brother arrested in US after more charges laid against them in UK",
+      "link": "https://www.bbc.co.uk/news/articles/cwymly9yd33o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 19 Jul 2026 02:17:07 GMT",
+      "desc": "The Crown Prosecution Service says it has requested their extradition from the US, while their lawyer says they are \"innocent\"."
+    },
+    {
+      "title": "Russians turn to cash, putting more strain on slowing wartime economy",
+      "link": "https://www.bbc.co.uk/news/articles/cglj255jk8ko?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 18 Jul 2026 23:59:26 GMT",
+      "desc": "Russians have been hit by mobile internet shutdowns and more businesses are seeking to dodge tax after more than four years of war with Ukraine."
     },
     {
       "title": "Russian online retail warehouses hit by deadly Ukrainian strikes",
@@ -17,18 +29,6 @@
       "link": "https://www.bbc.co.uk/news/articles/cpd7q7eev7po?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 18 Jul 2026 19:34:16 GMT",
       "desc": "Tamás Sulyok, seen as an Orbán loyalist, had until Saturday night to agree to end his term."
-    },
-    {
-      "title": "Many Ukrainian soldiers outraged over removal of defence minister, troops tell BBC",
-      "link": "https://www.bbc.co.uk/news/articles/cvg8w4dpjkwo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 17 Jul 2026 19:04:09 GMT",
-      "desc": "Protests erupted in Ukraine on Thursday after Mykhailo Fedorov's removal - and now soldiers are also criticising the move."
-    },
-    {
-      "title": "German politician resigns over surrogacy child controversy",
-      "link": "https://www.bbc.co.uk/news/articles/cq56e9n1ddzo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 18 Jul 2026 15:23:31 GMT",
-      "desc": "Jens Spahn faced criticism over his use of a surrogate, a ban on which he previously backed."
     }
   ],
   "koreaNews": [
@@ -39,10 +39,16 @@
       "desc": "South Korea stocks slump after first rate rise in 3 years&nbsp;&nbsp;Financial Times"
     },
     {
-      "title": "South Korea’s Economy Is Too Hot for One Rate Hike - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNNVh1eFZIanF4eDlxRlR2V0V3N0xUWERPMlZTYXMwUy1zN0lUb25Ja1ZpOVYza3FpXzhBSXJIalJwSnJCUjNQLWJxOEwwTGNCWWl5N1o0YTdGbUcyTEZRMFJZbm04eGJpbDZEWXpnT3NHR09hMWFZaHRfQWl1NG9nbDhmeV8zNDRHYm1qczVZcno4eVprbHJmMEt6VFd1azNXa3hiM3ByWQ?oc=5",
-      "date": "Thu, 16 Jul 2026 19:00:20 GMT",
-      "desc": "South Korea’s Economy Is Too Hot for One Rate Hike&nbsp;&nbsp;Bloomberg.com"
+      "title": "South Korea to Ease FX Rules for Foreigners to Trade Won Easier - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPdUp6M1pNVm45U0dlak53SDRMTHJFb1RKeFlERWVxWG9CcXNvNUt0c2hDY0dmTm1lUVlMazhyYlJ0VG5ESUdQc3V5WGVta1RJbmRlNVZPUWdLRGF3VWhWQWVVWVZQT3N0QUhURm5iM3dpUEpBX2NtYlMyazNRUFRjaWg0bFZNa3BqeEJMQllQY0NHajJXMXZjMDJrcXhsOUlHVzRDbzN5VUkxQkZrWVBXT2E3SW0?oc=5",
+      "date": "Sun, 19 Jul 2026 03:00:00 GMT",
+      "desc": "South Korea to Ease FX Rules for Foreigners to Trade Won Easier&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "South Korea's Per Capita GDP Nears $40,000 Mark with 7.6% Surge - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOV3pyQmE2OHU2ODFjSjcza2NTamJFMlBORDhyQWVSaGR2T0h4VXRMbGQ2Mm1qc3JrVDhhaEV2RG5YRnluRXg4QXpBQmlyQTJsZHBBdUZEV0hDVVBxbWRWSEMwMzc2WVhKRmd2RlNCaFpabUhCLWItOFgtdnAyalJETE56enVqT1EyUGV6THV3?oc=5",
+      "date": "Sun, 19 Jul 2026 03:12:18 GMT",
+      "desc": "South Korea's Per Capita GDP Nears $40,000 Mark with 7.6% Surge&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Bank of Korea Raises Rate for First Time Since 2023 - WSJ",
@@ -51,16 +57,16 @@
       "desc": "Bank of Korea Raises Rate for First Time Since 2023&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Is Fed’s Warsh Wrong About AI? South Korea May Provide Answer - Forbes",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOMm81XzcwN1BYSjRBY016U1dfVkYwT0RJejJzU0NSbFJ0YW4zdHpqbkZvajhhLVUxYVBFaHVzeklmdElVTjlKcW90VE13Q3JRZWduTDVuQXhXZXlWS2NzM3AtVGdsYkFOVTVQTmRpQ2R5b1NaUm01VGF6U21uUGZ2T3l2bXhpaGV6alYycmpEUF9sN0E4N2lHbXJpMHBmQnB1c2xXRXZrbGFKd2VzTzVIN01IRQ?oc=5",
-      "date": "Sat, 18 Jul 2026 14:03:23 GMT",
-      "desc": "Is Fed’s Warsh Wrong About AI? South Korea May Provide Answer&nbsp;&nbsp;Forbes"
+      "title": "Bank of Korea picks a fight with US Fed’s AI inflation call - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQQ1o4ckFlMW1ya25aNnRZT0JhdnNfRWVfUG1HR3BucFAwUEJ5WHZYa3lhSFNPQk9tNDVnS2U3bnZlUDI4R19BMjdsUEpCSXlVSU9TcEpYLUN6UFNhVFo3eUNiQmN6RENCUnZGWS1UdElRMUtYbVNyXzYzTllXcS01SnBJaGNhRWtzMXZGdk1uNVhOMEU?oc=5",
+      "date": "Thu, 16 Jul 2026 08:18:50 GMT",
+      "desc": "Bank of Korea picks a fight with US Fed’s AI inflation call&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "Bank of Korea raises rates to 2.75% in first hike in over three years - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQUTAzbEZ6Tl9sdUoxaks0Y0RDOXktcjQyaUZmRFhDQmZDTWJTUHJ2cUNjSXZDajBHWVNHVEhURllLcXZUT1JlaFE3ZXBUSk9rSFdTLXVGUHRhUV9paGVCTFhtV3Y0SUxIWnlta0RDcXRNMGFKd0VWLWZIa2JvbEpoRkhFaFdiNDNMS0JmUVpjaC14YjgzX21N0gGcAUFVX3lxTFBFQ3hZTHpVLXNhZ2dGMlhLS0F5UGxqVWE4dGlDSkRGWGtfTlloZHgzX0F2cDQ2RkJrTU1lbTZUOTRRVlVPNlhUTzRZZUhWQ0U4c0hPMmtfT2hGcVd5eVBqaXpRTU8wZnJnQ1pkMThpNGFRYUZza2VYUm01N25sOWd0MEZFZkEtMzRmX0xUYkNRY0VsRXcycW5GNGRLVA?oc=5",
-      "date": "Thu, 16 Jul 2026 01:01:00 GMT",
-      "desc": "Bank of Korea raises rates to 2.75% in first hike in over three years&nbsp;&nbsp;CNBC"
+      "title": "South Korea's $4T stock market signals risk appetite amid AI-driven swings in Samsung, SK Hynix - Crypto Briefing",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE40c1JRUHZab3hkaW1KbEhZakNXQk5SaG45cE9xNHMxVHBsSG9pMlFRdjN0Z202ci1JMWxCR3lKdWgxSzBEbHVvd25haE5aY0d4Z2paUzVUamtDUWVBd0NHbjBHZVh4QnY2U09TaWFweEo5RUpUZC1aWVFOdHI?oc=5",
+      "date": "Sun, 19 Jul 2026 01:07:04 GMT",
+      "desc": "South Korea's $4T stock market signals risk appetite amid AI-driven swings in Samsung, SK Hynix&nbsp;&nbsp;Crypto Briefing"
     },
     {
       "title": "Want to Buy ETFs With Samsung and SK Hynix? These 2 ETFs Can Deliver. - Yahoo Finance",
@@ -69,16 +75,10 @@
       "desc": "Want to Buy ETFs With Samsung and SK Hynix? These 2 ETFs Can Deliver.&nbsp;&nbsp;Yahoo Finance"
     },
     {
-      "title": "US Demands Share of Samsung, SK Hynix AI Profits, Stirring \"Profit-Splitting\" Storm in South Korea's Semiconductor Sector - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBDN1VjeTlPTFhOdVNpLVRvcjJtMTZOY0FJMV94YlBWS0tkU2xIOWJjUmhsaENJc3dPRFZQZU8wMWZGSjM0SWQ3ZmVNVFFCUzdYNTByRUFhRU51NlVySU1KZDFWQkN3MFJzLVpUYVNCZnd4eWRSMGc?oc=5",
-      "date": "Sat, 18 Jul 2026 04:05:00 GMT",
-      "desc": "US Demands Share of Samsung, SK Hynix AI Profits, Stirring \"Profit-Splitting\" Storm in South Korea's Semiconductor Sector&nbsp;&nbsp;finance.biggo.com"
-    },
-    {
-      "title": "South Korea says Samsung and SK Hynix investing in AI, semiconductor mega-projects - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPdXdkNkdRbUEzTDFsMURTTzlNckV3WXcyRXM3SFJXT3hfVC02TmFuclQyaXhvRlNCdktSazdhNUFCelRSRm82b3lXN0FReTg1YlBucDZZaTZIcmdVaHBLeXpyd1RTVFZBczRRa2J6eTJ0X1BIaGFUOEV0QjY5c0taWUF2UWl5SGRicG00VWxUcmFuSGZTLUZETi14QUpsRjlJZDd0U3Vn0gGrAUFVX3lxTE1nMktwTXZJZk1ZZE5pOXR0bjc2Y3dHVEV0YnNtUGQyZGpxdWlUdzd0eTZOaVRfMHJFQ1V6anQ5elBJV01nZ2xOcFk4UWlCdWhFTnZKWVFNWHBuZ09FcEo2OHpNMlNRMzNQdEZaMkhvSkxnM0VUQmdzM3I3Y25UbGFkLVNKWTlBbm5RRXc1RHZGNWJocDg0VXF5bHJIdGV4RVJKOG1RT0lPaTFOQQ?oc=5",
-      "date": "Sun, 28 Jun 2026 07:00:00 GMT",
-      "desc": "South Korea says Samsung and SK Hynix investing in AI, semiconductor mega-projects&nbsp;&nbsp;CNBC"
+      "title": "US Reportedly Pressures Samsung, SK Hynix to Share AI Windfall Profits - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9UTGtkNUh0ekUtR1Ruc0xnR0EtdHZrcFgzOU56M25tM1lMTjJnbjQ3STJjZUw4dDEwNm1yMFBOdlRFaWhrOW5xQ202QzRpcnlfZHpvdVYwaHNjTFFjQk8weTd2RE5QWWs5WWwzMzF3cnNDcXk0dFE?oc=5",
+      "date": "Fri, 17 Jul 2026 07:55:00 GMT",
+      "desc": "US Reportedly Pressures Samsung, SK Hynix to Share AI Windfall Profits&nbsp;&nbsp;finance.biggo.com"
     }
   ],
   "worldStocks": [
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-19 01:43 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-19 05:43 UTC"
 }
