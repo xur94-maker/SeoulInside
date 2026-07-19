@@ -1,43 +1,37 @@
 {
   "globalNews": [
     {
-      "title": "US and Iran exchange strikes after two US soldiers killed in Jordan",
+      "title": "US and Iran trade fire after two US soldiers killed in Jordan",
       "link": "https://www.bbc.co.uk/news/articles/cgk417jp83po?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 19 Jul 2026 05:10:57 GMT",
-      "desc": "US forces target Iranian sites for the eighth night in a row, while Iran says it fired drones at the US military in Kuwait."
+      "date": "Sun, 19 Jul 2026 13:10:57 GMT",
+      "desc": "Kuwait says an electricity and water plant is on fire after the second such attack in two days. Iran says US strikes hit an under-construction nuclear power plant."
     },
     {
       "title": "Tate brothers arrested in US as further UK charges take total to 59",
       "link": "https://www.bbc.co.uk/news/articles/cwymly9yd33o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 19 Jul 2026 10:22:35 GMT",
+      "date": "Sun, 19 Jul 2026 12:53:20 GMT",
       "desc": "The Crown Prosecution Service says it has requested their extradition from the US, while their lawyer says they are innocent."
     },
     {
-      "title": "Russia launches major ballistic missile attack on Kyiv",
+      "title": "Russia launches major ballistic missile attack on Ukrainian cities",
       "link": "https://www.bbc.co.uk/news/articles/c2el7xpnzrpo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 19 Jul 2026 09:54:50 GMT",
-      "desc": "One death is reported in what President Zelensky calls \"one of the most massive ballistic attacks\" on Ukraine's capital."
-    },
-    {
-      "title": "Cuban dissident Luis Manuel Otero Alcántara goes into exile in US",
-      "link": "https://www.bbc.co.uk/news/articles/cx2k77p2r1xo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 19 Jul 2026 07:47:02 GMT",
-      "desc": "He was arrested in 2021 during Cuba's largest anti-government protests in decades and spent five years ⁠in prison."
+      "date": "Sun, 19 Jul 2026 11:28:24 GMT",
+      "desc": "Five people are killed and at least 35 injured as Ukraine's two largest cities are targeted, as Kyiv continues its own assault on Russian infrastructure."
     },
     {
       "title": "New EU border system tripling time at passport control, airport boss says",
       "link": "https://www.bbc.co.uk/news/articles/ckg5gg6n9x3o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 19 Jul 2026 01:47:59 GMT",
       "desc": "Ryanair has also warned passengers travelling to Europe this summer to prepare for extended waits."
+    },
+    {
+      "title": "Cuban dissident Luis Manuel Otero Alcántara goes into exile in US",
+      "link": "https://www.bbc.co.uk/news/articles/cx2k77p2r1xo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 19 Jul 2026 07:47:02 GMT",
+      "desc": "He was arrested in 2021 during Cuba's largest anti-government protests in decades and spent five years ⁠in prison."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea stocks slump after first rate rise in 3 years - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQNV9qWVlEQ3FrNnc1RjZSVkVOSC02dS1NSkFSUEhxaGpocmFlZ1R5QXE3WU1tV1dPb3hfVklKU3VfWXNjaGd1Mzd2ZGRTamV2cS0ycFNmZFNXT1Ixd2JTX0FxY1NkVzBBMjhhRl9sYUs3a1MzZE91Z0swbEJDeWpUZjdVdC0?oc=5",
-      "date": "Thu, 16 Jul 2026 04:47:57 GMT",
-      "desc": "South Korea stocks slump after first rate rise in 3 years&nbsp;&nbsp;Financial Times"
-    },
     {
       "title": "South Korea to Ease FX Rules for Foreigners to Trade Won Easier - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPdUp6M1pNVm45U0dlak53SDRMTHJFb1RKeFlERWVxWG9CcXNvNUt0c2hDY0dmTm1lUVlMazhyYlJ0VG5ESUdQc3V5WGVta1RJbmRlNVZPUWdLRGF3VWhWQWVVWVZQT3N0QUhURm5iM3dpUEpBX2NtYlMyazNRUFRjaWg0bFZNa3BqeEJMQllQY0NHajJXMXZjMDJrcXhsOUlHVzRDbzN5VUkxQkZrWVBXT2E3SW0?oc=5",
@@ -45,10 +39,10 @@
       "desc": "South Korea to Ease FX Rules for Foreigners to Trade Won Easier&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "Bank of Korea Raises Rate for First Time Since 2023 - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNNl9yMHZsVWxtMXplZjMzbktzY2tXZFBxN0pKU2dTRXdkajBKX2JKUXVrbnVqS3oydVlfcUlFY2RTdkYzdDJ6X3BIZWlwUUJyVE9jcE9nTjVUNjFvQ25ZUWtFZGlWQ2ZneENlaVZsVWdTTFhZWlJ3amFwdG9lZHUxNEdxQlVWeEZUOTAwVENRd1JZdTdnY2VYUXNlUUFkRlA2U3hUUXEtYw?oc=5",
-      "date": "Thu, 16 Jul 2026 06:28:00 GMT",
-      "desc": "Bank of Korea Raises Rate for First Time Since 2023&nbsp;&nbsp;WSJ"
+      "title": "South Korea's Semiconductor Boom Risks 'Dutch Disease' - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQb0MzWjRKZnhSM191c0hGSkxMbHJ6Q29fMjhqYTc0aXdSeWxmM0t6QXhGWHFlS2dYbktsck9ITURfQnM3N1BFZHhaMnNtWXl0SmhOdGplVFVvR2g0aDFLQzd3bExGeGFjSGJwU0dTeTlFUmZjN3JFdV9CSVJFbXE4NmtHdUhQZWhNQUN2a2dB?oc=5",
+      "date": "Sun, 19 Jul 2026 04:25:42 GMT",
+      "desc": "South Korea's Semiconductor Boom Risks 'Dutch Disease'&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Bank of Korea picks a fight with US Fed’s AI inflation call - Asia Times",
@@ -57,10 +51,16 @@
       "desc": "Bank of Korea picks a fight with US Fed’s AI inflation call&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "Bank of Korea raises rates to 2.75% in first hike in over three years - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQUTAzbEZ6Tl9sdUoxaks0Y0RDOXktcjQyaUZmRFhDQmZDTWJTUHJ2cUNjSXZDajBHWVNHVEhURllLcXZUT1JlaFE3ZXBUSk9rSFdTLXVGUHRhUV9paGVCTFhtV3Y0SUxIWnlta0RDcXRNMGFKd0VWLWZIa2JvbEpoRkhFaFdiNDNMS0JmUVpjaC14YjgzX21N0gGcAUFVX3lxTFBFQ3hZTHpVLXNhZ2dGMlhLS0F5UGxqVWE4dGlDSkRGWGtfTlloZHgzX0F2cDQ2RkJrTU1lbTZUOTRRVlVPNlhUTzRZZUhWQ0U4c0hPMmtfT2hGcVd5eVBqaXpRTU8wZnJnQ1pkMThpNGFRYUZza2VYUm01N25sOWd0MEZFZkEtMzRmX0xUYkNRY0VsRXcycW5GNGRLVA?oc=5",
-      "date": "Thu, 16 Jul 2026 01:01:00 GMT",
-      "desc": "Bank of Korea raises rates to 2.75% in first hike in over three years&nbsp;&nbsp;CNBC"
+      "title": "South Korea’s Economy Is Too Hot for One Rate Hike - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNNVh1eFZIanF4eDlxRlR2V0V3N0xUWERPMlZTYXMwUy1zN0lUb25Ja1ZpOVYza3FpXzhBSXJIalJwSnJCUjNQLWJxOEwwTGNCWWl5N1o0YTdGbUcyTEZRMFJZbm04eGJpbDZEWXpnT3NHR09hMWFZaHRfQWl1NG9nbDhmeV8zNDRHYm1qczVZcno4eVprbHJmMEt6VFd1azNXa3hiM3ByWQ?oc=5",
+      "date": "Thu, 16 Jul 2026 19:00:20 GMT",
+      "desc": "South Korea’s Economy Is Too Hot for One Rate Hike&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "How China keeps North Korea's economy alive - DW.com",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
+      "date": "Mon, 01 Jun 2026 07:00:00 GMT",
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
     },
     {
       "title": "South Korea's $4T stock market signals risk appetite amid AI-driven swings in Samsung, SK Hynix - Crypto Briefing",
@@ -69,16 +69,16 @@
       "desc": "South Korea's $4T stock market signals risk appetite amid AI-driven swings in Samsung, SK Hynix&nbsp;&nbsp;Crypto Briefing"
     },
     {
+      "title": "Samsung, SK Hynix Become Global AI Barometers as Kospi-Nasdaq Correlation Triples - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBsR3Y3NWl1RXFqcWVRdG9KU2QzNng3VXZ2NE9VSGl4OFFwb1hBeTR3MzYxZHJPc09ORzUtR1NtelRWcmhMcm9kN3ZWOHdGTzhqMmF1Vw?oc=5",
+      "date": "Sun, 19 Jul 2026 14:26:19 GMT",
+      "desc": "Samsung, SK Hynix Become Global AI Barometers as Kospi-Nasdaq Correlation Triples&nbsp;&nbsp;bloomingbit"
+    },
+    {
       "title": "Want to Buy ETFs With Samsung and SK Hynix? These 2 ETFs Can Deliver. - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOVzdRQ0tqRTJ2VW5MV3dnNmFMMEgtMlBpQ3Z2aERtX25odU90c2xrN05BM0o0Mlh3bGlyeVVpb1JKUG1fTmVJVlhPLWkzNmtyX1VjeklUaDJtTzR3TVEzZ3ZOaFE0bFRJOF8xY0RHZmc5WWpMQUdxVFFKd0RZNjhQTzBzS0ZQRFFoWVI1RkV0a19MaWM?oc=5",
       "date": "Tue, 14 Jul 2026 17:05:00 GMT",
       "desc": "Want to Buy ETFs With Samsung and SK Hynix? These 2 ETFs Can Deliver.&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "US Reportedly Pressures Samsung, SK Hynix to Share AI Windfall Profits - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9UTGtkNUh0ekUtR1Ruc0xnR0EtdHZrcFgzOU56M25tM1lMTjJnbjQ3STJjZUw4dDEwNm1yMFBOdlRFaWhrOW5xQ202QzRpcnlfZHpvdVYwaHNjTFFjQk8weTd2RE5QWWs5WWwzMzF3cnNDcXk0dFE?oc=5",
-      "date": "Fri, 17 Jul 2026 07:55:00 GMT",
-      "desc": "US Reportedly Pressures Samsung, SK Hynix to Share AI Windfall Profits&nbsp;&nbsp;finance.biggo.com"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-19 10:38 UTC"
+  "updatedAt": "2026-07-19 14:46 UTC"
 }
