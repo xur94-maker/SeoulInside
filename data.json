@@ -7,6 +7,18 @@
       "desc": "The US military reports another death a day after two of its soldiers were killed in Jordan."
     },
     {
+      "title": "Boy, 13, dies during World Cup celebrations in Spain",
+      "link": "https://www.bbc.co.uk/news/articles/c0qvdy0jv05o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 20 Jul 2026 10:02:44 GMT",
+      "desc": "Two other young people were injured after a fountain partially collapsed in Salamanca's Ciudad Rodrigo."
+    },
+    {
+      "title": "Trump says US strikes hit Iran in 'honour' of American soldiers killed",
+      "link": "https://www.bbc.co.uk/news/articles/cly52xzjd3qo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 20 Jul 2026 11:18:40 GMT",
+      "desc": "Iran responded with attacks in Syria and Jordan, as two ships reportedly exploded in the Strait of Hormuz."
+    },
+    {
       "title": "Food delivery rider wins China's top literary prize",
       "link": "https://www.bbc.co.uk/news/articles/c5ydr3xd0kvo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 20 Jul 2026 03:53:07 GMT",
@@ -17,26 +29,14 @@
       "link": "https://www.bbc.co.uk/news/articles/c07r9m22gyyo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 20 Jul 2026 01:11:08 GMT",
       "desc": "The artwork in the capital Oslo was unveiled on Sunday ahead of the 15th anniversary of the attack."
-    },
-    {
-      "title": "Tate brothers arrested in US as further UK charges take total to 59",
-      "link": "https://www.bbc.co.uk/news/articles/cwymly9yd33o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 19 Jul 2026 12:53:20 GMT",
-      "desc": "The Crown Prosecution Service says it has requested their extradition from the US, while their lawyer says they are innocent."
-    },
-    {
-      "title": "Russia launches major ballistic missile attack on Ukrainian cities",
-      "link": "https://www.bbc.co.uk/news/articles/c2el7xpnzrpo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 19 Jul 2026 18:25:40 GMT",
-      "desc": "Eight people die and dozens are injured as several cities are hit by missile and drone attacks, while Kyiv continues its own assault on Russian infrastructure."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea Launches K-AI Package Linking AI, ODA for Developing Nations - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPRUJCYkhtWkIzLWxwSjdUNmFxaVhVTHZOeERwMjhULUNPRm5GaXVCY3VMd1diNGJicUR6VEFhNnFNdXowV3FoOFlpZDJsM0FxY3NJcDYyU1R0Wjd4dFVEWER0MW9qWlQ0ZUhrV2xfTENySjNySTZjcE4zLVRid3lKdHVEbUIzYTRHV0tGWW9B?oc=5",
-      "date": "Mon, 20 Jul 2026 04:16:08 GMT",
-      "desc": "South Korea Launches K-AI Package Linking AI, ODA for Developing Nations&nbsp;&nbsp;조선일보"
+      "title": "South Korea's Semiconductor Boom Risks 'Dutch Disease' - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQb0MzWjRKZnhSM191c0hGSkxMbHJ6Q29fMjhqYTc0aXdSeWxmM0t6QXhGWHFlS2dYbktsck9ITURfQnM3N1BFZHhaMnNtWXl0SmhOdGplVFVvR2g0aDFLQzd3bExGeGFjSGJwU0dTeTlFUmZjN3JFdV9CSVJFbXE4NmtHdUhQZWhNQUN2a2dB?oc=5",
+      "date": "Sun, 19 Jul 2026 04:25:42 GMT",
+      "desc": "South Korea's Semiconductor Boom Risks 'Dutch Disease'&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Chip boom puts Korea's per capita GDP within reach of $40,000 - The Korea Times",
@@ -45,10 +45,10 @@
       "desc": "Chip boom puts Korea's per capita GDP within reach of $40,000&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "South Korea's Semiconductor Boom Risks 'Dutch Disease' - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQb0MzWjRKZnhSM191c0hGSkxMbHJ6Q29fMjhqYTc0aXdSeWxmM0t6QXhGWHFlS2dYbktsck9ITURfQnM3N1BFZHhaMnNtWXl0SmhOdGplVFVvR2g0aDFLQzd3bExGeGFjSGJwU0dTeTlFUmZjN3JFdV9CSVJFbXE4NmtHdUhQZWhNQUN2a2dB?oc=5",
-      "date": "Sun, 19 Jul 2026 04:25:42 GMT",
-      "desc": "South Korea's Semiconductor Boom Risks 'Dutch Disease'&nbsp;&nbsp;조선일보"
+      "title": "Foreign investors to use won overseas without accounts at Korean banks - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPRVFKNWlfS0JIOE9DSUxQeVNYRVNQdG1acmktMmZYSm15ZE14dHBRTEk0TmlwTTJxSnJjTlVveHZmdkEteHhsMkttLU84WmhBSDNidzVFazQyNUtHTUp3MlhtUDdCRndJeUhodVhhbzhFcFoyMEVIWXZhQVVRS0IwNWtUVEliRVViYlJSeTkyQ052dUI2NV9GTWlwN2pESlhUY050N3ZZSEQ3cXVjRXdQSy10VUR2RUQ0bC0zUGtXNWjSAcYBQVVfeXFMTWNJUi1YeFdzelk3YTFmakxvbjVTM0VNeXhuOV9OT2xSZ0NjVTZNZWVjNGlGRVhUV3RxYmVSVzZiaktlRHU2ZDVlcWxJUEhIR1hZNFRuTWEtNlk4RURHUXhLZFNYdmRGamMybERaVktqQm9Pa2ttNHdhS3ZCOHpnN3o5SW1vd3hyNXNsaEg0NktUTGU3dmJpUDJTWDdVTndKUV9DNWZGalV2eFhJQkRIRmlnQVlkNURLUkx3bmdFWU9EM0tIa05n?oc=5",
+      "date": "Sun, 19 Jul 2026 06:32:03 GMT",
+      "desc": "Foreign investors to use won overseas without accounts at Korean banks&nbsp;&nbsp;The Korea Times"
     },
     {
       "title": "How China keeps North Korea's economy alive - DW.com",
@@ -69,16 +69,16 @@
       "desc": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after selloff&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Samsung, SK Hynix Shares Drop on Kimi K3 Shock - 조선일보",
+      "title": "Samsung, SK Hynix Fall on Kimi K3 Shock - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNR2pRUDY0aWhxRElSYUdwMUVVdGtraHhzX1FhTUVRUUUyRE5EV29oZ2N1SWlCOEliTG9Rc3c2aTdvRGc5NnZjVjV2dVBxd0hQSzczWER0ajZlc2dsUXFsMXo5YlFndTE0TXVXNWZyeXNHOUpid2NFUmhGV2VLRTFaMHkzb2U2Tk83cFJrMVZn?oc=5",
-      "date": "Mon, 20 Jul 2026 04:16:06 GMT",
-      "desc": "Samsung, SK Hynix Shares Drop on Kimi K3 Shock&nbsp;&nbsp;조선일보"
+      "date": "Mon, 20 Jul 2026 05:59:20 GMT",
+      "desc": "Samsung, SK Hynix Fall on Kimi K3 Shock&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Want to Buy ETFs With Samsung and SK Hynix? These 2 ETFs Can Deliver. - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOVzdRQ0tqRTJ2VW5MV3dnNmFMMEgtMlBpQ3Z2aERtX25odU90c2xrN05BM0o0Mlh3bGlyeVVpb1JKUG1fTmVJVlhPLWkzNmtyX1VjeklUaDJtTzR3TVEzZ3ZOaFE0bFRJOF8xY0RHZmc5WWpMQUdxVFFKd0RZNjhQTzBzS0ZQRFFoWVI1RkV0a19MaWM?oc=5",
-      "date": "Tue, 14 Jul 2026 17:05:00 GMT",
-      "desc": "Want to Buy ETFs With Samsung and SK Hynix? These 2 ETFs Can Deliver.&nbsp;&nbsp;Yahoo Finance"
+      "title": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOb3lvQ1kyX0dkMzlQLXZRSnlwRkRTdi1IQWV6Um5DbTZzbzZhRnJHRnRCV3hvY29BMXhzM0l6eXUzVDEwekxhNnNSMjljdDNEcVpwMEZLcmt4SDNxNVg5MFRKYWtsbENiMHg0UE1IZ0lDc2RTU0NCOGlWd3pPZnIzY0pud1pDQ210QnkxeUVxTUotbWNleThfeGNSVXcxSUdyell6WDBXNTRYMWFXLW1VTGsxUW5ndHRLUllkNWl2UmFGTXl1MmF0blpVMHU1SGkweEVPNFJITjJVVzBLVktkbEpKaw?oc=5",
+      "date": "Mon, 20 Jul 2026 06:51:07 GMT",
+      "desc": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks&nbsp;&nbsp;Benzinga"
     }
   ],
   "worldStocks": [
@@ -183,51 +183,51 @@
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1773000.0,
-      "change": -309000.0,
-      "pct": -14.84,
+      "price": 1764000.0,
+      "change": -318000.0,
+      "pct": -15.27,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 398500.0,
-      "change": -35500.0,
-      "pct": -8.18,
+      "price": 399000.0,
+      "change": -35000.0,
+      "pct": -8.06,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 138800.0,
-      "change": -6200.0,
-      "pct": -4.28,
+      "price": 140000.0,
+      "change": -5000.0,
+      "pct": -3.45,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 185100.0,
-      "change": -4500.0,
-      "pct": -2.37,
+      "price": 185900.0,
+      "change": -3700.0,
+      "pct": -1.95,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6511.43,
-      "change": -772.98,
-      "pct": -10.61,
+      "price": 6516.27,
+      "change": -768.14,
+      "pct": -10.54,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1477.98,
-      "change": -0.87,
-      "pct": -0.06,
+      "price": 1480.46,
+      "change": 1.61,
+      "pct": 0.11,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-20 06:08 UTC"
+  "updatedAt": "2026-07-20 11:50 UTC"
 }
