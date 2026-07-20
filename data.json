@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "US soldier killed and one injured after Iranian attack in Iraq",
-      "link": "https://www.bbc.co.uk/news/articles/cgk417jp83po?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 19 Jul 2026 19:45:12 GMT",
-      "desc": "The US military reports another death a day after two of its soldiers were killed in Jordan."
+      "title": "Trump says US strikes hit Iran in 'honour' of American soldiers killed",
+      "link": "https://www.bbc.co.uk/news/articles/cly52xzjd3qo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 20 Jul 2026 11:18:40 GMT",
+      "desc": "Iran responded with attacks in Syria and Jordan, as two ships reportedly exploded in the Strait of Hormuz."
+    },
+    {
+      "title": "Ten killed as Russian attacks on merchant ships in Black Sea intensify",
+      "link": "https://www.bbc.co.uk/news/articles/c4gvpv3ewv2o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 20 Jul 2026 14:14:08 GMT",
+      "desc": "Russian strikes on the Odesa region have killed 28 people in July alone, local authorities say."
     },
     {
       "title": "Boy, 13, dies during World Cup celebrations in Spain",
@@ -13,36 +19,30 @@
       "desc": "Two other young people were injured after a fountain partially collapsed in Salamanca's Ciudad Rodrigo."
     },
     {
-      "title": "Trump says US strikes hit Iran in 'honour' of American soldiers killed",
-      "link": "https://www.bbc.co.uk/news/articles/cly52xzjd3qo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 20 Jul 2026 11:18:40 GMT",
-      "desc": "Iran responded with attacks in Syria and Jordan, as two ships reportedly exploded in the Strait of Hormuz."
+      "title": "Hamas names Khalil al-Hayya as new overall leader",
+      "link": "https://www.bbc.co.uk/news/articles/cx25nzkyj50o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 20 Jul 2026 14:02:31 GMT",
+      "desc": "The Palestinian armed group's Qatar-based chief negotiator replaces Yahya Sinwar, who was killed by Israeli forces in Gaza in 2024."
     },
     {
-      "title": "Food delivery rider wins China's top literary prize",
-      "link": "https://www.bbc.co.uk/news/articles/c5ydr3xd0kvo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 20 Jul 2026 03:53:07 GMT",
-      "desc": "Wang Jibing is among blue-collar Chinese workers gaining wider attention for their literary works."
-    },
-    {
-      "title": "Norway opens new memorial for victims of 2011 massacre",
-      "link": "https://www.bbc.co.uk/news/articles/c07r9m22gyyo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 20 Jul 2026 01:11:08 GMT",
-      "desc": "The artwork in the capital Oslo was unveiled on Sunday ahead of the 15th anniversary of the attack."
+      "title": "Police block thousands of 'cockroach' protesters marching on India's parliament",
+      "link": "https://www.bbc.co.uk/news/articles/cvg9w9dxd7lo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 20 Jul 2026 12:31:10 GMT",
+      "desc": "Some protesters demanding education reforms said they were injured in clashes with police who banned the march."
     }
   ],
   "koreaNews": [
+    {
+      "title": "Economic pressures fuel 'mom-obsessed' trend among Korean youth - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQb1VtS0tsUU83QnZtd0pZdkpIZ3hoQVJHSWtJbktnOTg5UzU0R1B6SjRFMC1DajJWaFVVOTZheEhPQW5ZX0gzMGhCc2V5ejhUcHRNVDMxb0x1LWpQTng4RWRqMi1qc2lIYlBNN1pGZF93LWcxQUU1bkFxX0VkYmJPMHVBaG4wYkpWWFFzTEctRlhmcHhiLThTZVF1V3BTVnBBRVl2ZVJNeF93Y1FLTjlBOVAwNWVmREc2SnfSAb8BQVVfeXFMTzlneFg0eVNobkIzcWFfTFpaZ3YxUG9TWUt0MHJORjEwMnVnb2NQODRqdlBLV09tU2IwY0RTMFIzWW5SbHRwdXdjd2lWU2ZZOTR3TktKTHVsc3dzYzR1SXh6V1IwckZRUXZEbzhTNXV3WEZqb1pSMGR5OXVPdDhvbnB6cFpXVEVuZVFBdkRURTNiYUpDbGlLVHpPQXA2RC1mOWZ3OU1iYU5naEtocl9qcmtIZ3BRbVhJZjRUSy15SVk?oc=5",
+      "date": "Sun, 19 Jul 2026 11:01:02 GMT",
+      "desc": "Economic pressures fuel 'mom-obsessed' trend among Korean youth&nbsp;&nbsp;The Korea Times"
+    },
     {
       "title": "South Korea's Semiconductor Boom Risks 'Dutch Disease' - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQb0MzWjRKZnhSM191c0hGSkxMbHJ6Q29fMjhqYTc0aXdSeWxmM0t6QXhGWHFlS2dYbktsck9ITURfQnM3N1BFZHhaMnNtWXl0SmhOdGplVFVvR2g0aDFLQzd3bExGeGFjSGJwU0dTeTlFUmZjN3JFdV9CSVJFbXE4NmtHdUhQZWhNQUN2a2dB?oc=5",
       "date": "Sun, 19 Jul 2026 04:25:42 GMT",
       "desc": "South Korea's Semiconductor Boom Risks 'Dutch Disease'&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Chip boom puts Korea's per capita GDP within reach of $40,000 - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPU19zZzRRb25uTmZCMFN3Z3oxb1JfenhVY0VUdUZockJjMng5c3V5ZlE2a1BadEc4cXJJc05wbG9ENVFLYjFRYUJNanFPTERTWWlfYm40V0xjNS1aRkpnZThNMEUwcGxMX3pQRDdrM01rWWJKeU5tcHhkNl9sWm1oY2tGU2ZycmhjbzRaUmgtaldGazd4Rm5TNGlXUHZHeVZ4ZExvd1MxM04wSHVLVHZPM9IBtgFBVV95cUxNQzhUX2puS280Qzl5QWdpSGNGbUlRV29NWVR1RnNUOGMyWmxxY0tQcllIYWhCYWJpZWdiakJzWGVDRGhBMXVzNkJzenFpdFJOdnpkT0xIV2xsdTgyM215eHB3bEZwNjlmT2wzOE85NldOQTBsT3BvTTBESXA2dmtyeW03NTI3MnZJTjFSR2tWZjRDZnZlN3lvam1XdE0wM0g0MF93RGlQZlMxWXJfQ0FpV1M0VER2UQ?oc=5",
-      "date": "Sun, 19 Jul 2026 06:01:03 GMT",
-      "desc": "Chip boom puts Korea's per capita GDP within reach of $40,000&nbsp;&nbsp;The Korea Times"
     },
     {
       "title": "Foreign investors to use won overseas without accounts at Korean banks - The Korea Times",
@@ -51,22 +51,22 @@
       "desc": "Foreign investors to use won overseas without accounts at Korean banks&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "How China keeps North Korea's economy alive - DW.com",
+      "title": "Chip boom puts Korea's per capita GDP within reach of $40,000 - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPU19zZzRRb25uTmZCMFN3Z3oxb1JfenhVY0VUdUZockJjMng5c3V5ZlE2a1BadEc4cXJJc05wbG9ENVFLYjFRYUJNanFPTERTWWlfYm40V0xjNS1aRkpnZThNMEUwcGxMX3pQRDdrM01rWWJKeU5tcHhkNl9sWm1oY2tGU2ZycmhjbzRaUmgtaldGazd4Rm5TNGlXUHZHeVZ4ZExvd1MxM04wSHVLVHZPM9IBtgFBVV95cUxNQzhUX2puS280Qzl5QWdpSGNGbUlRV29NWVR1RnNUOGMyWmxxY0tQcllIYWhCYWJpZWdiakJzWGVDRGhBMXVzNkJzenFpdFJOdnpkT0xIV2xsdTgyM215eHB3bEZwNjlmT2wzOE85NldOQTBsT3BvTTBESXA2dmtyeW03NTI3MnZJTjFSR2tWZjRDZnZlN3lvam1XdE0wM0g0MF93RGlQZlMxWXJfQ0FpV1M0VER2UQ?oc=5",
+      "date": "Sun, 19 Jul 2026 06:01:03 GMT",
+      "desc": "Chip boom puts Korea's per capita GDP within reach of $40,000&nbsp;&nbsp;The Korea Times"
+    },
+    {
+      "title": "How China keeps North Korea's economy alive - dw.com",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
       "date": "Mon, 01 Jun 2026 07:00:00 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
+      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;dw.com"
     },
     {
-      "title": "South Korea forecasts 2026 economic growth at 5-year high on AI chip boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPMlJqdXFSbm1RMkt5ZU5oOG5mUHZiblBGVE9aQ1RDSDlpRTVPNFA1SHlKYkFNc3MxbHppV3ZyMVNGUTFvSlZkb0lhR2w2WU9MY1FMSHdZQUdpTnhDY3ZpNG5MLXJkMTRVTHBnOTZpQVJCY2ROWXNQeUpITmNKWEx1ZWt1MFV2UjB3S0F1VWYwa1FHRkdzQlRLTHEtYm1QNVdqWFpDM2lnWi1UUVNKb0E5eHZGOGUxYUZqcnhaLXJYWQ?oc=5",
-      "date": "Tue, 14 Jul 2026 02:58:00 GMT",
-      "desc": "South Korea forecasts 2026 economic growth at 5-year high on AI chip boom&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after selloff - CNBC",
+      "title": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off - CNBC",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQWUFHVC10U1hOdXZacjczZjJvWEdndDFKM3lmWjItNkc5TmtCLWczd3dPelhKSnAxV0dVRUZDOG9FLWhna3Q4OGRXVVRVa2djUEw4Ny1yTzJYOGFYUHlHbV9tUGk0Nm95cmdISkwzZThMQU50aHA2bUdxUUpfalFGVDBZNFpWalJPZlc2czQxaWZxV1h0bDlrNE5hTFlzZHozTEFYUdIBqgFBVV95cUxQd09RVThINDhuT25FUm16WWo5NjN6LUNHQUctMmR6T3VCWTFwcmhQT25fMENrbEt5aUQ1NGU2M2Rudml3cUE2RmdUTF9lSDFINm9XdzFYbXlmUDYzRmRZV3pVdVJVdmlaOFpuSFFEaEN5bk1lV0MzWUFoc2pRSkJtZDJzblNfUnQ0emh6eHZxYkMwNXdHWXlhSmg2a0Y0QXNkS3dYOG1fSHM5dw?oc=5",
       "date": "Mon, 20 Jul 2026 04:18:05 GMT",
-      "desc": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after selloff&nbsp;&nbsp;CNBC"
+      "desc": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung, SK Hynix Fall on Kimi K3 Shock - 조선일보",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 202.81,
-      "change": -9.69,
-      "pct": -4.56,
+      "price": 206.07,
+      "change": -1.33,
+      "pct": -0.64,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 398.37,
-      "change": -21.11,
-      "pct": -5.03,
+      "price": 404.07,
+      "change": -5.67,
+      "pct": -1.38,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 495.76,
-      "change": -33.38,
-      "pct": -6.31,
+      "price": 514.24,
+      "change": 13.3,
+      "pct": 2.66,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 95.04,
-      "change": -7.95,
-      "pct": -7.72,
+      "price": 98.31,
+      "change": 1.33,
+      "pct": 1.38,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 171.78,
-      "change": -6.2,
-      "pct": -3.48,
+      "price": 172.75,
+      "change": 2.14,
+      "pct": 1.25,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 267.19,
-      "change": -9.82,
-      "pct": -3.54,
+      "price": 270.96,
+      "change": 8.95,
+      "pct": 3.42,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 346.77,
-      "change": -24.15,
-      "pct": -6.51,
+      "price": 357.13,
+      "change": 2.67,
+      "pct": 0.75,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 333.74,
-      "change": 6.24,
-      "pct": 1.91,
+      "price": 326.01,
+      "change": -7.25,
+      "pct": -2.18,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 393.82,
-      "change": -1.81,
-      "pct": -0.46,
+      "price": 398.31,
+      "change": -2.79,
+      "pct": -0.69,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7457.69,
-      "change": -114.71,
-      "pct": -1.51,
+      "price": 7482.89,
+      "change": -50.88,
+      "pct": -0.68,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25520.24,
-      "change": -748.99,
-      "pct": -2.85,
+      "price": 25696.28,
+      "change": -185.67,
+      "pct": -0.72,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1480.46,
-      "change": 1.61,
-      "pct": 0.11,
+      "price": 1478.7,
+      "change": -0.15,
+      "pct": -0.01,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-20 11:50 UTC"
+  "updatedAt": "2026-07-20 15:44 UTC"
 }
