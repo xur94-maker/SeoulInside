@@ -1,15 +1,15 @@
 {
   "globalNews": [
     {
-      "title": "Trump imposes 50% tariff on Canadian imports",
+      "title": "Trump slaps 50% tariffs on Canada and Carney vows to 'intensify' trade talks",
       "link": "https://www.bbc.co.uk/news/articles/cg4dzq3x3e1o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 20 Jul 2026 22:26:34 GMT",
+      "date": "Tue, 21 Jul 2026 00:34:47 GMT",
       "desc": "The duties mark a major escalation in trade tensions between the North American neighbours."
     },
     {
       "title": "US launches fresh strikes on Iran, as Trump warns of retaliation for deaths of soldiers",
       "link": "https://www.bbc.co.uk/news/articles/cx25wg2x26do?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 20 Jul 2026 21:09:31 GMT",
+      "date": "Tue, 21 Jul 2026 02:41:28 GMT",
       "desc": "The US says the attacks were aimed at degrading Iran's capabilities to attack ships in the Strait of Hormuz."
     },
     {
@@ -33,16 +33,10 @@
   ],
   "koreaNews": [
     {
-      "title": "Economic pressures fuel 'mom-obsessed' trend among Korean youth - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQb1VtS0tsUU83QnZtd0pZdkpIZ3hoQVJHSWtJbktnOTg5UzU0R1B6SjRFMC1DajJWaFVVOTZheEhPQW5ZX0gzMGhCc2V5ejhUcHRNVDMxb0x1LWpQTng4RWRqMi1qc2lIYlBNN1pGZF93LWcxQUU1bkFxX0VkYmJPMHVBaG4wYkpWWFFzTEctRlhmcHhiLThTZVF1V3BTVnBBRVl2ZVJNeF93Y1FLTjlBOVAwNWVmREc2SnfSAb8BQVVfeXFMTzlneFg0eVNobkIzcWFfTFpaZ3YxUG9TWUt0MHJORjEwMnVnb2NQODRqdlBLV09tU2IwY0RTMFIzWW5SbHRwdXdjd2lWU2ZZOTR3TktKTHVsc3dzYzR1SXh6V1IwckZRUXZEbzhTNXV3WEZqb1pSMGR5OXVPdDhvbnB6cFpXVEVuZVFBdkRURTNiYUpDbGlLVHpPQXA2RC1mOWZ3OU1iYU5naEtocl9qcmtIZ3BRbVhJZjRUSy15SVk?oc=5",
-      "date": "Sun, 19 Jul 2026 11:01:02 GMT",
-      "desc": "Economic pressures fuel 'mom-obsessed' trend among Korean youth&nbsp;&nbsp;The Korea Times"
-    },
-    {
-      "title": "South Korea's Semiconductor Boom Risks 'Dutch Disease' - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQb0MzWjRKZnhSM191c0hGSkxMbHJ6Q29fMjhqYTc0aXdSeWxmM0t6QXhGWHFlS2dYbktsck9ITURfQnM3N1BFZHhaMnNtWXl0SmhOdGplVFVvR2g0aDFLQzd3bExGeGFjSGJwU0dTeTlFUmZjN3JFdV9CSVJFbXE4NmtHdUhQZWhNQUN2a2dB?oc=5",
-      "date": "Sun, 19 Jul 2026 04:25:42 GMT",
-      "desc": "South Korea's Semiconductor Boom Risks 'Dutch Disease'&nbsp;&nbsp;조선일보"
+      "title": "South Korea’s Early Exports Jump to July Record on AI-Led Gains - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNZjV2OExmZzh3S0gtQ2haNGlZOE4yRDcyNi0wV0xaUG41clRFZTZqa25EZ041b2FHaEs3bTlFQ2lvTHRGTU15TUNvLVA5TTJMZUJIQUY0b3Q5OTBvRk5VVUhQeTNKcHo2ZFFUNnZERGZFaUlaVTNVQkpIYWtZaXRuNzNLSGpqT2dNcjBZeHZqN3FNM1c1TTJfT1MtTHQ3YUY5X2lWV1BMcHB0OVRKckkzcHE3eXU?oc=5",
+      "date": "Tue, 21 Jul 2026 00:16:00 GMT",
+      "desc": "South Korea’s Early Exports Jump to July Record on AI-Led Gains&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "Chip boom puts Korea's per capita GDP within reach of $40,000 - The Korea Times",
@@ -51,16 +45,22 @@
       "desc": "Chip boom puts Korea's per capita GDP within reach of $40,000&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "How China keeps North Korea's economy alive - DW.com",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYUExLTBIcEo1aXBjM1JfSEI2ZnlqemY1WXJVTGdzV0VaTHVuRWctT01xbF9YY1Utc1hPd2ZyZ0RoOVVObi05bGk3NXZ2NU5vRTRvQVNBSkZkY2J4Sl84alNIUUtIMG9WVEFqSWZqbE1WbExfczNKR01MU3dTaFEyTlVmWmVqRnItRGtTUk5ldzJnS0luVC1ZZDViQdIBmwFBVV95cUxNLTlmSDdKWndGanJfM3RWNlhfRDNKVE9qTTctVkl2RmIyVkMwZE1ObTJzQjhEbFVSUU53XzYtbHZnVllZcE9hTWREc0RhMlNIbUM0OVVWNkt5U0lyMUFtZXQ2V3FjbGRPQmNGeVlWbDdLMFV2MnZyeThSWVQ5Q0ZLUFh1RmtValZKUEx0WFI5OEpjMnZYelNiTUZTYw?oc=5",
-      "date": "Mon, 01 Jun 2026 07:00:00 GMT",
-      "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
+      "title": "South Korean Economy Likely Slowed in Q2 After Robust Q1 Growth: Reuters Poll - US News Money",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOVWZFR21fMl9VbFVrenlNcU1vNzNiUDc0aEtyaWZ4MVpnelAwU0lrTnVJendrWnVva2V2aEVqdzVBd1pYcTBQSFVOTWJmX25zb0oxdjFfRmF6d0liTHBremRBZ05xV1k3ek00bjNsUDlNZXFtUC11N1I4bk1LY21OZWRkZGlPUEtuV1JUUTdjMXBKUnFjRnFPeHZqZjg3dDctMjhoYVlMTEFqN0hsZEtiV2cxTUdzS0Vrd3RzbXgxVE4?oc=5",
+      "date": "Tue, 21 Jul 2026 01:03:28 GMT",
+      "desc": "South Korean Economy Likely Slowed in Q2 After Robust Q1 Growth: Reuters Poll&nbsp;&nbsp;US News Money"
     },
     {
-      "title": "South Korea forecasts 2026 economic growth at 5-year high on AI chip boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPMlJqdXFSbm1RMkt5ZU5oOG5mUHZiblBGVE9aQ1RDSDlpRTVPNFA1SHlKYkFNc3MxbHppV3ZyMVNGUTFvSlZkb0lhR2w2WU9MY1FMSHdZQUdpTnhDY3ZpNG5MLXJkMTRVTHBnOTZpQVJCY2ROWXNQeUpITmNKWEx1ZWt1MFV2UjB3S0F1VWYwa1FHRkdzQlRLTHEtYm1QNVdqWFpDM2lnWi1UUVNKb0E5eHZGOGUxYUZqcnhaLXJYWQ?oc=5",
-      "date": "Tue, 14 Jul 2026 02:58:00 GMT",
-      "desc": "South Korea forecasts 2026 economic growth at 5-year high on AI chip boom&nbsp;&nbsp;Reuters"
+      "title": "South Korea's Semiconductor Boom Risks 'Dutch Disease' - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQb0MzWjRKZnhSM191c0hGSkxMbHJ6Q29fMjhqYTc0aXdSeWxmM0t6QXhGWHFlS2dYbktsck9ITURfQnM3N1BFZHhaMnNtWXl0SmhOdGplVFVvR2g0aDFLQzd3bExGeGFjSGJwU0dTeTlFUmZjN3JFdV9CSVJFbXE4NmtHdUhQZWhNQUN2a2dB?oc=5",
+      "date": "Sun, 19 Jul 2026 04:25:42 GMT",
+      "desc": "South Korea's Semiconductor Boom Risks 'Dutch Disease'&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Foreign investors to use won overseas without accounts at Korean banks - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPRVFKNWlfS0JIOE9DSUxQeVNYRVNQdG1acmktMmZYSm15ZE14dHBRTEk0TmlwTTJxSnJjTlVveHZmdkEteHhsMkttLU84WmhBSDNidzVFazQyNUtHTUp3MlhtUDdCRndJeUhodVhhbzhFcFoyMEVIWXZhQVVRS0IwNWtUVEliRVViYlJSeTkyQ052dUI2NV9GTWlwN2pESlhUY050N3ZZSEQ3cXVjRXdQSy10VUR2RUQ0bC0zUGtXNWjSAcYBQVVfeXFMTWNJUi1YeFdzelk3YTFmakxvbjVTM0VNeXhuOV9OT2xSZ0NjVTZNZWVjNGlGRVhUV3RxYmVSVzZiaktlRHU2ZDVlcWxJUEhIR1hZNFRuTWEtNlk4RURHUXhLZFNYdmRGamMybERaVktqQm9Pa2ttNHdhS3ZCOHpnN3o5SW1vd3hyNXNsaEg0NktUTGU3dmJpUDJTWDdVTndKUV9DNWZGalV2eFhJQkRIRmlnQVlkNURLUkx3bmdFWU9EM0tIa05n?oc=5",
+      "date": "Sun, 19 Jul 2026 06:32:03 GMT",
+      "desc": "Foreign investors to use won overseas without accounts at Korean banks&nbsp;&nbsp;The Korea Times"
     },
     {
       "title": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off - CNBC",
@@ -69,16 +69,16 @@
       "desc": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off&nbsp;&nbsp;CNBC"
     },
     {
+      "title": "Samsung Electronics, SK hynix rebound on higher U.S. chip stocks - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE0zVUgzWWF1TnlnLXdUVkhmMFJpV0NtQk9RYVFqaldYaldfemVTMEpfZTRmSVVmZ3pKWVM2bU1YUmRNTldmS1Z1VEN5NllfeVRtYWc?oc=5",
+      "date": "Tue, 21 Jul 2026 02:08:49 GMT",
+      "desc": "Samsung Electronics, SK hynix rebound on higher U.S. chip stocks&nbsp;&nbsp;매일경제"
+    },
+    {
       "title": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks - Benzinga",
       "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOb3lvQ1kyX0dkMzlQLXZRSnlwRkRTdi1IQWV6Um5DbTZzbzZhRnJHRnRCV3hvY29BMXhzM0l6eXUzVDEwekxhNnNSMjljdDNEcVpwMEZLcmt4SDNxNVg5MFRKYWtsbENiMHg0UE1IZ0lDc2RTU0NCOGlWd3pPZnIzY0pud1pDQ210QnkxeUVxTUotbWNleThfeGNSVXcxSUdyell6WDBXNTRYMWFXLW1VTGsxUW5ndHRLUllkNWl2UmFGTXl1MmF0blpVMHU1SGkweEVPNFJITjJVVzBLVktkbEpKaw?oc=5",
       "date": "Mon, 20 Jul 2026 06:51:07 GMT",
       "desc": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks&nbsp;&nbsp;Benzinga"
-    },
-    {
-      "title": "Samsung, SK Hynix Fall on Kimi K3 Shock - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNR2pRUDY0aWhxRElSYUdwMUVVdGtraHhzX1FhTUVRUUUyRE5EV29oZ2N1SWlCOEliTG9Rc3c2aTdvRGc5NnZjVjV2dVBxd0hQSzczWER0ajZlc2dsUXFsMXo5YlFndTE0TXVXNWZyeXNHOUpid2NFUmhGV2VLRTFaMHkzb2U2Tk83cFJrMVZn?oc=5",
-      "date": "Mon, 20 Jul 2026 05:59:20 GMT",
-      "desc": "Samsung, SK Hynix Fall on Kimi K3 Shock&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 244000.0,
-      "change": -35500.0,
-      "pct": -12.7,
+      "price": 257500.0,
+      "change": 2500.0,
+      "pct": 0.98,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1764000.0,
-      "change": -318000.0,
-      "pct": -15.27,
+      "price": 1837000.0,
+      "change": -5000.0,
+      "pct": -0.27,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 399000.0,
-      "change": -35000.0,
-      "pct": -8.06,
+      "price": 396000.0,
+      "change": -29000.0,
+      "pct": -6.82,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 140000.0,
-      "change": -5000.0,
-      "pct": -3.45,
+      "price": 142700.0,
+      "change": -7000.0,
+      "pct": -4.68,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 185900.0,
-      "change": -3700.0,
-      "pct": -1.95,
+      "price": 192800.0,
+      "change": 2800.0,
+      "pct": 1.47,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6516.27,
-      "change": -768.14,
-      "pct": -10.54,
+      "price": 6706.64,
+      "change": -113.96,
+      "pct": -1.67,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1475.7,
-      "change": -3.15,
-      "pct": -0.21,
+      "price": 1472.78,
+      "change": -14.61,
+      "pct": -0.98,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-21 01:43 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-21 05:41 UTC"
 }
