@@ -1,9 +1,27 @@
 {
   "globalNews": [
     {
-      "title": "Ukrainian drones hit more sites of Russian online retailer Wildberries",
+      "title": "US to announce deal allowing Saudi Arabia a nuclear programme",
+      "link": "https://www.bbc.co.uk/news/articles/cj03r59z73po?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 22 Jul 2026 14:49:12 GMT",
+      "desc": "The agreement would fulfil a long-held Saudi ambition but could attract concern in Israel and from some US lawmakers."
+    },
+    {
+      "title": "Trump threatens to target Iran's bridges and power plants if Hormuz attacks persist",
+      "link": "https://www.bbc.co.uk/news/articles/cdrv0p37k8jo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 22 Jul 2026 10:15:03 GMT",
+      "desc": "Donald Trump says the US will respond any time Iranian forces shoot at a ship in the Strait of Hormuz."
+    },
+    {
+      "title": "Tankers make sharp U-turns after Houthi shipping threat",
+      "link": "https://www.bbc.co.uk/news/articles/cn0n127lpzgo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 22 Jul 2026 14:42:49 GMT",
+      "desc": "All of the ships were travelling to or from Saudi ports before changing course, ship-tracking data shows."
+    },
+    {
+      "title": "Ukrainian drones hit Russian online giant retailer Wildberries for second time",
       "link": "https://www.bbc.co.uk/news/articles/c36de9n4pxpo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 22 Jul 2026 10:00:04 GMT",
+      "date": "Wed, 22 Jul 2026 14:52:25 GMT",
       "desc": "Logistics hubs belonging to Wildberries in the Krasnodar and Stavropol regions were struck overnight."
     },
     {
@@ -11,24 +29,6 @@
       "link": "https://www.bbc.co.uk/news/articles/cyvl35z3917o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 22 Jul 2026 05:37:43 GMT",
       "desc": "Oleksandr Syrskyi is dismissed after backlash over the removal of popular Defence Minister Mykhailo Fedorov."
-    },
-    {
-      "title": "Iran war has cost US $37.5bn so far, Hegseth says, as Pentagon seeks billions more",
-      "link": "https://www.bbc.co.uk/news/articles/c70gek2kqyno?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 22 Jul 2026 02:15:05 GMT",
-      "desc": "The hearing was disrupted by protests and a shouting match as Hegseth testified at a pivotal time in the war."
-    },
-    {
-      "title": "India's Modi government under growing pressure as 'cockroach' protests intensify",
-      "link": "https://www.bbc.co.uk/news/articles/c9d8p88lyjdo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 22 Jul 2026 08:02:04 GMT",
-      "desc": "The CJP got a boost on Tuesday when the opposition Congress party demonstrated outside the PM's house."
-    },
-    {
-      "title": "Modelling scout linked to Epstein found dead in Paris suburbs",
-      "link": "https://www.bbc.co.uk/news/articles/cp8en38vpd3o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 22 Jul 2026 10:40:14 GMT",
-      "desc": "Daniel Siad, whose name appears in the Epstein files thousands of times, had previously denied knowledge of the threat Jeffrey Epstein posed."
     }
   ],
   "koreaNews": [
@@ -63,10 +63,10 @@
       "desc": "How China keeps North Korea's economy alive&nbsp;&nbsp;DW.com"
     },
     {
-      "title": "Shareholders file complaints against labor minister, Samsung, SK hynix CEOs - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNOS0zZGs3RFNkaWFYZVJPbjRWZmVsYmkxYkRZOFR3aU1vVWhMb0VacWtmNV9DdzBVZmRsY1N1X3JKWVNBSm9vWjZQU2RqdGI2N010WjdkbzE2clNNOUYwZG91b19xNWV0QmxBWS10SjlocFpfN3hOdVhyZmxnQkFEM0hBeDZiNVRYZFp0ajFrMFlvNUQ2VUNiTzBPV3dESzMwbmhMZmdBYl9xdFNiVGozcy15RzhZYnhJTnItY1dvMFMwQ2tmZElqQ3RR0gHPAUFVX3lxTFBNLVFHN1lSX0g2akxjRk5wS2x1NlladDZBSGd1TUVsQ3R6ekFDLU9XZTZIVm9scnNyOWxNaV9QSTZEZVJaTzEtQlVvZ1pNNl9WTjhKQmxscHA3bnZjMjFKRklzMjR6am0wVGhqRXppTDU2a0xqRmFxS0wxZEFjZVgtLXRNRzMtQ3hKWVNiMFNUekFUbWZQcHBPWkpkdU1xZzRrMDhjbHA0Z3hOc3oxejNiaXRqU0IxTGlibUhwRF96Q3pTMEg2ZmVWUXNUdGRkcw?oc=5",
-      "date": "Wed, 22 Jul 2026 06:41:03 GMT",
-      "desc": "Shareholders file complaints against labor minister, Samsung, SK hynix CEOs&nbsp;&nbsp;The Korea Times"
+      "title": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40% - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5pR1BsZUdqbHRRZXl2WThWSnEtSEZJVThVdXV3cUdjSW1KcGF1OFBYWEpaaW1SZWY1aGZldVFFV1VGTkd2emtEVmRpdDlaN3o5Nkx0bQ?oc=5",
+      "date": "Wed, 22 Jul 2026 13:29:47 GMT",
+      "desc": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40%&nbsp;&nbsp;bloomingbit"
     },
     {
       "title": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off - CNBC",
@@ -75,99 +75,99 @@
       "desc": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Samsung Electronics, SK hynix rise on U.S. tech rally - 매일경제",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0wdld0S0FJQktvbm1YcWZUbzFLZ2FzdFBoN1p6SHFBVEswSk5pekI5bDRXYW4wUk4xY21iQVdaYVFGenNsTG9wUjhWXzhZM1JRR2NxQ2txSQ?oc=5",
-      "date": "Wed, 22 Jul 2026 01:55:23 GMT",
-      "desc": "Samsung Electronics, SK hynix rise on U.S. tech rally&nbsp;&nbsp;매일경제"
+      "title": "Shareholders file complaints against labor minister, Samsung, SK hynix CEOs - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNOS0zZGs3RFNkaWFYZVJPbjRWZmVsYmkxYkRZOFR3aU1vVWhMb0VacWtmNV9DdzBVZmRsY1N1X3JKWVNBSm9vWjZQU2RqdGI2N010WjdkbzE2clNNOUYwZG91b19xNWV0QmxBWS10SjlocFpfN3hOdVhyZmxnQkFEM0hBeDZiNVRYZFp0ajFrMFlvNUQ2VUNiTzBPV3dESzMwbmhMZmdBYl9xdFNiVGozcy15RzhZYnhJTnItY1dvMFMwQ2tmZElqQ3RR0gHPAUFVX3lxTFBNLVFHN1lSX0g2akxjRk5wS2x1NlladDZBSGd1TUVsQ3R6ekFDLU9XZTZIVm9scnNyOWxNaV9QSTZEZVJaTzEtQlVvZ1pNNl9WTjhKQmxscHA3bnZjMjFKRklzMjR6am0wVGhqRXppTDU2a0xqRmFxS0wxZEFjZVgtLXRNRzMtQ3hKWVNiMFNUekFUbWZQcHBPWkpkdU1xZzRrMDhjbHA0Z3hOc3oxejNiaXRqU0IxTGlibUhwRF96Q3pTMEg2ZmVWUXNUdGRkcw?oc=5",
+      "date": "Wed, 22 Jul 2026 06:41:03 GMT",
+      "desc": "Shareholders file complaints against labor minister, Samsung, SK hynix CEOs&nbsp;&nbsp;The Korea Times"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 207.29,
-      "change": 4.48,
-      "pct": 2.21,
+      "price": 212.27,
+      "change": 8.99,
+      "pct": 4.42,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 424.61,
-      "change": 26.24,
-      "pct": 6.59,
+      "price": 423.49,
+      "change": 21.19,
+      "pct": 5.27,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 544.43,
-      "change": 48.67,
-      "pct": 9.82,
+      "price": 555.08,
+      "change": 51.51,
+      "pct": 10.23,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 105.45,
-      "change": 10.41,
-      "pct": 10.95,
+      "price": 106.36,
+      "change": 9.3,
+      "pct": 9.58,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 173.5,
-      "change": 1.72,
-      "pct": 1.0,
+      "price": 178.1,
+      "change": 7.78,
+      "pct": 4.57,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 289.73,
-      "change": 22.54,
-      "pct": 8.44,
+      "price": 287.05,
+      "change": 17.44,
+      "pct": 6.47,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 347.15,
-      "change": 0.38,
-      "pct": 0.11,
+      "price": 348.06,
+      "change": -3.93,
+      "pct": -1.12,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 327.74,
-      "change": -6.0,
-      "pct": -1.8,
+      "price": 325.03,
+      "change": -1.56,
+      "pct": -0.48,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 397.75,
-      "change": 3.93,
-      "pct": 1.0,
+      "price": 390.05,
+      "change": -12.24,
+      "pct": -3.04,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7509.2,
-      "change": 51.51,
-      "pct": 0.69,
+      "price": 7518.47,
+      "change": 75.19,
+      "pct": 1.01,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25837.21,
-      "change": 316.97,
-      "pct": 1.24,
+      "price": 25826.6,
+      "change": 318.53,
+      "pct": 1.25,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1479.2,
-      "change": 4.19,
-      "pct": 0.28,
+      "price": 1476.43,
+      "change": 1.42,
+      "pct": 0.1,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-22 11:12 UTC"
+  "updatedAt": "2026-07-22 15:25 UTC"
 }
