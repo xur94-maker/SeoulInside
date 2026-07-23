@@ -3,7 +3,7 @@
     {
       "title": "US signs landmark nuclear deal with Saudi Arabia",
       "link": "https://www.bbc.co.uk/news/articles/cj03r59z73po?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 23 Jul 2026 00:21:53 GMT",
+      "date": "Thu, 23 Jul 2026 09:17:50 GMT",
       "desc": "The US Department of Energy says the \"peaceful\" co-operation agreement will give US firms \"great access\" to the Saudi nuclear energy programme."
     },
     {
@@ -13,37 +13,25 @@
       "desc": "The Houthi attacks would be the first in the Red Sea since the Iran-backed group announced a \"maritime embargo\" against Saudi Arabia."
     },
     {
+      "title": "Thousands evacuated in France fires",
+      "link": "https://www.bbc.co.uk/news/articles/cy4kmr82n44o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 23 Jul 2026 10:53:43 GMT",
+      "desc": "A third firefighter has died in Europe while tackling ongoing wildfires across the continent."
+    },
+    {
+      "title": "'I am still alive': Indian activist on hunger strike for 26 days loses 11kg",
+      "link": "https://www.bbc.co.uk/news/articles/ce34n7kqr5ko?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 23 Jul 2026 06:37:23 GMT",
+      "desc": "Sonam Wangchuk has been the main draw at the Cockroach Janta Party (CJP) protest in Delhi."
+    },
+    {
       "title": "Tankers make sharp U-turns after Houthi shipping threat",
       "link": "https://www.bbc.co.uk/news/articles/cn0n127lpzgo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 22 Jul 2026 14:42:49 GMT",
       "desc": "All of the ships were travelling to or from Saudi ports before changing course, ship-tracking data shows."
-    },
-    {
-      "title": "Russia's businesses under strain from Ukraine's attacks on Wildberries",
-      "link": "https://www.bbc.co.uk/news/articles/cvg9n2y61w6o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 22 Jul 2026 23:06:08 GMT",
-      "desc": "Ukrainian drones have hit several retail warehouses belonging to Russia's biggest online retailer Wildberries in a matter of days."
-    },
-    {
-      "title": "Fire kills 10 members of same family in Peru, police say",
-      "link": "https://www.bbc.co.uk/news/articles/cm2g11ng7j2o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 22 Jul 2026 20:56:26 GMT",
-      "desc": "Authorities are investigating the cause of the blaze in Lima as local media report\n it may have been arson."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea’s Economy Slows; Chips Keep Driving Growth - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
-      "date": "Wed, 22 Jul 2026 23:37:00 GMT",
-      "desc": "South Korea’s Economy Slows; Chips Keep Driving Growth&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "South Korea’s Economy Beats Estimates as Chip Boom Continues - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQamI5dFFiaG5tRlFPQ1BzZEFBanFSUFhMSDJXdW9UZW9fdEF0Vk1UblREMFFjbUZ4UURwUDVDT0tWQVhqcnNob2VLdjdCTmYxN2EtQXZnYlUwQnY5d0k2TjR6cHQxTmJfaGcwTU9vS2pkOUVHTnNaLVlBR1NpZm5XUGF5blFFY0VMbW9xaW1qX1c2bWR2RUcwM1N6ZXVYRjd6T0Q5Y21tOHM2bDRwci1jRw?oc=5",
-      "date": "Wed, 22 Jul 2026 23:00:00 GMT",
-      "desc": "South Korea’s Economy Beats Estimates as Chip Boom Continues&nbsp;&nbsp;Bloomberg.com"
-    },
     {
       "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
@@ -51,10 +39,22 @@
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea Is Trying to Tame Market Swings. Analysts Aren’t Sure It Will Work. - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQQW50N1BDbk9VTGxTUG81b1A2amxBTXA3SnNzb2kzSzdQU1g0SVhIaDRhUGNoYUhaSFRVbEZZSVdmNDE0VXBvZkJtdWRIYzF5eUNETm9scHloa1pqUnpBM3I3UmtXdktwQXpsSTRxYnBERGp1ME9Gd3c4Umotb09zOFZnb3NfYWVtWVBXQ19xeUZ3OFBxVmM4am5CN21tWkNXS0owN21NeU41eVhuaC1ab2JiSURlY05LNUpsUndYalQ?oc=5",
-      "date": "Wed, 22 Jul 2026 09:31:00 GMT",
-      "desc": "South Korea Is Trying to Tame Market Swings. Analysts Aren’t Sure It Will Work.&nbsp;&nbsp;WSJ"
+      "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
+      "date": "Thu, 23 Jul 2026 08:22:00 GMT",
+      "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "South Korea’s Economy Beats Estimates as Chip Boom Continues - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQamI5dFFiaG5tRlFPQ1BzZEFBanFSUFhMSDJXdW9UZW9fdEF0Vk1UblREMFFjbUZ4UURwUDVDT0tWQVhqcnNob2VLdjdCTmYxN2EtQXZnYlUwQnY5d0k2TjR6cHQxTmJfaGcwTU9vS2pkOUVHTnNaLVlBR1NpZm5XUGF5blFFY0VMbW9xaW1qX1c2bWR2RUcwM1N6ZXVYRjd6T0Q5Y21tOHM2bDRwci1jRw?oc=5",
+      "date": "Wed, 22 Jul 2026 23:53:00 GMT",
+      "desc": "South Korea’s Economy Beats Estimates as Chip Boom Continues&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "S. Korea's GDP expands 0.6 pct in Q2, with 3 pct annual growth on track: BOK - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQX2VfREpEc3d3R0F6VmJiM0lUcmhjZTZVMHNFMUNCQUZ4M0ktQnFSOXI2X1ZHaW9yMXdDdFh1U0k4dU9xY0FEVFg5TWtRaXA0MF9GM3k3NGJZeXYwM0JzanNva3ZzV1pUVEpJMWdrT2VQcUZFTE9SZ2h1djMtaFdUcEtodFJqbUF2SWI5RG5DLURXeXlGSlNPY0l6djd3ZnZzcFQ5SEJ1UllrbXJUalhaakZCdG5TOWQ2WjlIVFdzWTE5dVpFWkxhOXJoWEt6SGlUSDVmSHh3VW9HamxY0gHiAUFVX3lxTFBaM2s2Wm4xbktLZi1QYS11YTNVeWJsRnVteWViMWYwTXNRamJiR0s1eEprQnRwNTM5aXcxN0lyMVQ5Q1hoQUNFSzlaZHdnVEJBNnpleF9uZmhQbF9FY002R1pmQ1BVeUEwSGhicVlMd0ozWXM5NHU1ZFBLTHNNRU5QSEhXRTJmRVdZV3FNVkJsd0JLakU1YkwwR1k4WGFFcGV2N09GdWRaX0lFV3JnRnpyd0VkMmFZVnRIVFhLYk1udFY3MnBVU0RoOEwyRGlVd3VWS25hS3dCN3lvQjFqOUp1Qmc?oc=5",
+      "date": "Thu, 23 Jul 2026 10:26:08 GMT",
+      "desc": "S. Korea's GDP expands 0.6 pct in Q2, with 3 pct annual growth on track: BOK&nbsp;&nbsp;upi.com"
     },
     {
       "title": "South Korean economy likely slowed in Q2 after robust Q1 growth - Reuters",
@@ -63,22 +63,22 @@
       "desc": "South Korean economy likely slowed in Q2 after robust Q1 growth&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40% - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5pR1BsZUdqbHRRZXl2WThWSnEtSEZJVThVdXV3cUdjSW1KcGF1OFBYWEpaaW1SZWY1aGZldVFFV1VGTkd2emtEVmRpdDlaN3o5Nkx0bQ?oc=5",
-      "date": "Wed, 22 Jul 2026 13:29:47 GMT",
-      "desc": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40%&nbsp;&nbsp;bloomingbit"
-    },
-    {
       "title": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off - CNBC",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQWUFHVC10U1hOdXZacjczZjJvWEdndDFKM3lmWjItNkc5TmtCLWczd3dPelhKSnAxV0dVRUZDOG9FLWhna3Q4OGRXVVRVa2djUEw4Ny1yTzJYOGFYUHlHbV9tUGk0Nm95cmdISkwzZThMQU50aHA2bUdxUUpfalFGVDBZNFpWalJPZlc2czQxaWZxV1h0bDlrNE5hTFlzZHozTEFYUdIBqgFBVV95cUxQd09RVThINDhuT25FUm16WWo5NjN6LUNHQUctMmR6T3VCWTFwcmhQT25fMENrbEt5aUQ1NGU2M2Rudml3cUE2RmdUTF9lSDFINm9XdzFYbXlmUDYzRmRZV3pVdVJVdmlaOFpuSFFEaEN5bk1lV0MzWUFoc2pRSkJtZDJzblNfUnQ0emh6eHZxYkMwNXdHWXlhSmg2a0Y0QXNkS3dYOG1fSHM5dw?oc=5",
       "date": "Mon, 20 Jul 2026 04:18:05 GMT",
       "desc": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Morgan Stanley Flips to 'Buy Semiconductors' in Just Two Weeks; Samsung, SK Hynix Surge - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYaFlCZnAwYWdtVHlCU1VTMkJZZEZHSHBsSDlWb0JQQXdQWUVscTM0MUlXVlZ2QlhOTUhaUk5wZVJzTGhZVXhMZWxuUHlnd0tab0dfNkI2YktfTGMzOGxtblBqQWczWmJjREN5TDhJckNLVllJMWc?oc=5",
-      "date": "Wed, 22 Jul 2026 18:26:00 GMT",
-      "desc": "Morgan Stanley Flips to 'Buy Semiconductors' in Just Two Weeks; Samsung, SK Hynix Surge&nbsp;&nbsp;finance.biggo.com"
+      "title": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40% - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5pR1BsZUdqbHRRZXl2WThWSnEtSEZJVThVdXV3cUdjSW1KcGF1OFBYWEpaaW1SZWY1aGZldVFFV1VGTkd2emtEVmRpdDlaN3o5Nkx0bQ?oc=5",
+      "date": "Wed, 22 Jul 2026 13:29:47 GMT",
+      "desc": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40%&nbsp;&nbsp;bloomingbit"
+    },
+    {
+      "title": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOb3lvQ1kyX0dkMzlQLXZRSnlwRkRTdi1IQWV6Um5DbTZzbzZhRnJHRnRCV3hvY29BMXhzM0l6eXUzVDEwekxhNnNSMjljdDNEcVpwMEZLcmt4SDNxNVg5MFRKYWtsbENiMHg0UE1IZ0lDc2RTU0NCOGlWd3pPZnIzY0pud1pDQ210QnkxeUVxTUotbWNleThfeGNSVXcxSUdyell6WDBXNTRYMWFXLW1VTGsxUW5ndHRLUllkNWl2UmFGTXl1MmF0blpVMHU1SGkweEVPNFJITjJVVzBLVktkbEpKaw?oc=5",
+      "date": "Mon, 20 Jul 2026 06:51:07 GMT",
+      "desc": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks&nbsp;&nbsp;Benzinga"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 269000.0,
-      "change": 10000.0,
-      "pct": 3.86,
+      "price": 270000.0,
+      "change": 11000.0,
+      "pct": 4.25,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1917000.0,
-      "change": 81000.0,
-      "pct": 4.41,
+      "price": 1919000.0,
+      "change": 83000.0,
+      "pct": 4.52,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 429000.0,
-      "change": 30000.0,
-      "pct": 7.52,
+      "price": 432000.0,
+      "change": 33000.0,
+      "pct": 8.27,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 149400.0,
-      "change": 4800.0,
-      "pct": 3.32,
+      "price": 149800.0,
+      "change": 5200.0,
+      "pct": 3.6,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 219000.0,
-      "change": 26000.0,
-      "pct": 13.47,
+      "price": 220000.0,
+      "change": 27000.0,
+      "pct": 13.99,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 7062.49,
-      "change": 314.54,
-      "pct": 4.66,
+      "price": 7096.89,
+      "change": 348.94,
+      "pct": 5.17,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1466.18,
-      "change": -13.54,
-      "pct": -0.92,
+      "price": 1469.18,
+      "change": -10.54,
+      "pct": -0.71,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-23 05:45 UTC"
+  "updatedAt": "2026-07-23 11:14 UTC"
 }
