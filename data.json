@@ -1,48 +1,48 @@
 {
   "globalNews": [
     {
-      "title": "US signs landmark nuclear deal with Saudi Arabia",
-      "link": "https://www.bbc.co.uk/news/articles/cj03r59z73po?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 23 Jul 2026 09:17:50 GMT",
-      "desc": "The US Department of Energy says the \"peaceful\" co-operation agreement will give US firms \"great access\" to the Saudi nuclear energy programme."
+      "title": "Oil prices hit $100 for the first time since May",
+      "link": "https://www.bbc.co.uk/news/articles/cx2djnzrqk2o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 23 Jul 2026 15:31:00 GMT",
+      "desc": "The price of Brent crude rose more than 6% on Thursday as the war in the Middle East continues to escalate."
     },
     {
-      "title": "Houthis claim attack on oil tankers as US launches more strikes on Iran",
-      "link": "https://www.bbc.co.uk/news/articles/cpw9xzx9r4ko?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 23 Jul 2026 03:48:27 GMT",
-      "desc": "The Houthi attacks would be the first in the Red Sea since the Iran-backed group announced a \"maritime embargo\" against Saudi Arabia."
+      "title": "Saudis must recognise Israel for nuclear deal, says Trump",
+      "link": "https://www.bbc.co.uk/news/articles/cwye71yq8wwo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 23 Jul 2026 15:05:47 GMT",
+      "desc": "The US president says the landmark agreement to help Saudis develop nuclear energy is dependent on it joining the Abraham Accords."
     },
     {
-      "title": "Thousands evacuated in France fires",
+      "title": "France evacuates 20,000 as wildfires spread in south-west",
       "link": "https://www.bbc.co.uk/news/articles/cy4kmr82n44o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 23 Jul 2026 10:53:43 GMT",
-      "desc": "A third firefighter has died in Europe while tackling ongoing wildfires across the continent."
+      "date": "Thu, 23 Jul 2026 13:25:02 GMT",
+      "desc": "Most of those evacuated were tourists from campsites around Arcachon Bay in France's Gironde region."
+    },
+    {
+      "title": "Yemen's Houthis attack Saudi tanker as US launches more Iran strikes",
+      "link": "https://www.bbc.co.uk/news/articles/cpw9xzx9r4ko?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 23 Jul 2026 14:18:13 GMT",
+      "desc": "The Iran-backed group, which previously announced a \"maritime embargo\" against Saudi Arabia, also claims to have hit another vessel."
     },
     {
       "title": "'I am still alive': Indian activist on hunger strike for 26 days loses 11kg",
       "link": "https://www.bbc.co.uk/news/articles/ce34n7kqr5ko?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 23 Jul 2026 06:37:23 GMT",
+      "date": "Thu, 23 Jul 2026 15:22:06 GMT",
       "desc": "Sonam Wangchuk has been the main draw at the Cockroach Janta Party (CJP) protest in Delhi."
-    },
-    {
-      "title": "Tankers make sharp U-turns after Houthi shipping threat",
-      "link": "https://www.bbc.co.uk/news/articles/cn0n127lpzgo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 22 Jul 2026 14:42:49 GMT",
-      "desc": "All of the ships were travelling to or from Saudi ports before changing course, ship-tracking data shows."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Wed, 22 Jul 2026 23:21:00 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
-    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
       "date": "Thu, 23 Jul 2026 08:22:00 GMT",
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
+      "date": "Wed, 22 Jul 2026 23:21:00 GMT",
+      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
       "title": "South Korea’s Economy Beats Estimates as Chip Boom Continues - Bloomberg.com",
@@ -69,105 +69,105 @@
       "desc": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40% - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5pR1BsZUdqbHRRZXl2WThWSnEtSEZJVThVdXV3cUdjSW1KcGF1OFBYWEpaaW1SZWY1aGZldVFFV1VGTkd2emtEVmRpdDlaN3o5Nkx0bQ?oc=5",
-      "date": "Wed, 22 Jul 2026 13:29:47 GMT",
-      "desc": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40%&nbsp;&nbsp;bloomingbit"
-    },
-    {
       "title": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks - Benzinga",
       "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOb3lvQ1kyX0dkMzlQLXZRSnlwRkRTdi1IQWV6Um5DbTZzbzZhRnJHRnRCV3hvY29BMXhzM0l6eXUzVDEwekxhNnNSMjljdDNEcVpwMEZLcmt4SDNxNVg5MFRKYWtsbENiMHg0UE1IZ0lDc2RTU0NCOGlWd3pPZnIzY0pud1pDQ210QnkxeUVxTUotbWNleThfeGNSVXcxSUdyell6WDBXNTRYMWFXLW1VTGsxUW5ndHRLUllkNWl2UmFGTXl1MmF0blpVMHU1SGkweEVPNFJITjJVVzBLVktkbEpKaw?oc=5",
       "date": "Mon, 20 Jul 2026 06:51:07 GMT",
       "desc": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks&nbsp;&nbsp;Benzinga"
+    },
+    {
+      "title": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40% - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5pR1BsZUdqbHRRZXl2WThWSnEtSEZJVThVdXV3cUdjSW1KcGF1OFBYWEpaaW1SZWY1aGZldVFFV1VGTkd2emtEVmRpdDlaN3o5Nkx0bQ?oc=5",
+      "date": "Wed, 22 Jul 2026 13:29:47 GMT",
+      "desc": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40%&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 212.06,
-      "change": 8.78,
-      "pct": 4.32,
+      "price": 207.17,
+      "change": -0.12,
+      "pct": -0.06,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 421.21,
-      "change": 18.91,
-      "pct": 4.7,
+      "price": 413.05,
+      "change": -11.56,
+      "pct": -2.72,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 552.33,
-      "change": 48.76,
-      "pct": 9.68,
+      "price": 538.42,
+      "change": -6.0,
+      "pct": -1.1,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 102.62,
-      "change": 5.56,
-      "pct": 5.73,
+      "price": 100.57,
+      "change": -4.88,
+      "pct": -4.63,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 175.63,
-      "change": 5.31,
-      "pct": 3.12,
+      "price": 168.84,
+      "change": -4.66,
+      "pct": -2.69,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 283.4,
-      "change": 13.79,
-      "pct": 5.11,
+      "price": 275.61,
+      "change": -14.12,
+      "pct": -4.87,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 342.09,
-      "change": -9.9,
-      "pct": -2.81,
+      "price": 318.29,
+      "change": -28.86,
+      "pct": -8.31,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 325.89,
-      "change": -0.7,
-      "pct": -0.21,
+      "price": 320.98,
+      "change": -6.76,
+      "pct": -2.06,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 390.34,
-      "change": -11.95,
-      "pct": -2.97,
+      "price": 378.18,
+      "change": -19.57,
+      "pct": -4.92,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7498.96,
-      "change": 55.68,
-      "pct": 0.75,
+      "price": 7389.23,
+      "change": -119.97,
+      "pct": -1.6,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25690.9,
-      "change": 182.83,
-      "pct": 0.72,
+      "price": 25010.29,
+      "change": -826.92,
+      "pct": -3.2,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1469.18,
-      "change": -10.54,
-      "pct": -0.71,
+      "price": 1475.34,
+      "change": -4.38,
+      "pct": -0.3,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-23 11:14 UTC"
+  "updatedAt": "2026-07-23 15:46 UTC"
 }
