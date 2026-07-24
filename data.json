@@ -1,15 +1,15 @@
 {
   "globalNews": [
     {
-      "title": "Tens of thousands evacuated from French tourist spot as wildfires spread",
+      "title": "Tens of thousands evacuated from French tourist spot and near Madrid as wildfires spread",
       "link": "https://www.bbc.co.uk/news/articles/cdx82rl5g0do?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 10:50:26 GMT",
+      "date": "Fri, 24 Jul 2026 14:59:24 GMT",
       "desc": "The fire has raged in the region for several days with officials now ordering the evacuation of the entire Cap Ferret peninsula."
     },
     {
       "title": "US hits dozens of countries with new wave of tariffs",
       "link": "https://www.bbc.co.uk/news/articles/cvgj61j6l08o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 08:59:31 GMT",
+      "date": "Fri, 24 Jul 2026 12:40:44 GMT",
       "desc": "Imposed citing forced labour concerns, the levies replace a temporary global duty brought in after the US Supreme Court struck down tariffs in February."
     },
     {
@@ -21,13 +21,13 @@
     {
       "title": "Indonesian babies were trafficked to Singapore. What happens to them now?",
       "link": "https://www.bbc.co.uk/news/articles/c7vgeredvlgo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 23 Jul 2026 23:19:58 GMT",
+      "date": "Fri, 24 Jul 2026 13:33:06 GMT",
       "desc": "At least 12 babies have been trafficked from Indonesia to Singapore, but what will happen to them remains unclear."
     },
     {
       "title": "South Africa's president wins bid to temporarily halt impeachment inquiry over 'Farmgate'",
       "link": "https://www.bbc.co.uk/news/articles/cwymj9lkx13o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 10:34:04 GMT",
+      "date": "Fri, 24 Jul 2026 11:53:49 GMT",
       "desc": "Ramaphosa has faced scrutiny following the theft of large sums of cash from his private farm in 2020."
     }
   ],
@@ -39,16 +39,22 @@
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
+      "title": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPd3ZOVzUyN0Y3azFBUmpCMHJzVGpkTTRBdnI4R2h5ZDF4LVRLQkhZSWdBUmcxMVJEQk9MaXQzOXptWG5CQmt1V0o3X2k5RFhWdjBycFd1Q05BWVFiZFJTbnJaWmZkU0dVUjNiTFdJbDEzVnpIY1FKWVB5M090SDJLczBpQnluS1BJOENVRDBpQy1zZ1Jqb3JCajFodXpUbEE5WVFmRkFiUXpRVTMzcjd4TUc1RTB3Z9IBuwFBVV95cUxPRGktVEV1d25IUEZMX19PUFpMMGxJcXN6SzRRVG1xMjFyQmM5cXpOTGozYXZVTWc4SDlEa3BtVzhodXFON25vMjhQTk1VUmthWUFzNi14YVh0ZWVpTVpTaXB0UjJEbmZ4QlFUcHdIM1lhV2tzdjZ3TFJ6UXlwcllqVlBGSTc1MWlBT1NwVFZjME9LNVB1N0R6MUpQR2JDWGUxcWYzaHlLOXNGUXMzd3ltUmdJMGRxdkhKcWdv?oc=5",
+      "date": "Thu, 23 Jul 2026 07:37:04 GMT",
+      "desc": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues&nbsp;&nbsp;The Korea Times"
+    },
+    {
       "title": "South Korea’s Economy Beats Estimates as Chip Boom Continues - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQamI5dFFiaG5tRlFPQ1BzZEFBanFSUFhMSDJXdW9UZW9fdEF0Vk1UblREMFFjbUZ4UURwUDVDT0tWQVhqcnNob2VLdjdCTmYxN2EtQXZnYlUwQnY5d0k2TjR6cHQxTmJfaGcwTU9vS2pkOUVHTnNaLVlBR1NpZm5XUGF5blFFY0VMbW9xaW1qX1c2bWR2RUcwM1N6ZXVYRjd6T0Q5Y21tOHM2bDRwci1jRw?oc=5",
       "date": "Wed, 22 Jul 2026 23:53:00 GMT",
       "desc": "South Korea’s Economy Beats Estimates as Chip Boom Continues&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPd3ZOVzUyN0Y3azFBUmpCMHJzVGpkTTRBdnI4R2h5ZDF4LVRLQkhZSWdBUmcxMVJEQk9MaXQzOXptWG5CQmt1V0o3X2k5RFhWdjBycFd1Q05BWVFiZFJTbnJaWmZkU0dVUjNiTFdJbDEzVnpIY1FKWVB5M090SDJLczBpQnluS1BJOENVRDBpQy1zZ1Jqb3JCajFodXpUbEE5WVFmRkFiUXpRVTMzcjd4TUc1RTB3Z9IBuwFBVV95cUxPRGktVEV1d25IUEZMX19PUFpMMGxJcXN6SzRRVG1xMjFyQmM5cXpOTGozYXZVTWc4SDlEa3BtVzhodXFON25vMjhQTk1VUmthWUFzNi14YVh0ZWVpTVpTaXB0UjJEbmZ4QlFUcHdIM1lhV2tzdjZ3TFJ6UXlwcllqVlBGSTc1MWlBT1NwVFZjME9LNVB1N0R6MUpQR2JDWGUxcWYzaHlLOXNGUXMzd3ltUmdJMGRxdkhKcWdv?oc=5",
-      "date": "Thu, 23 Jul 2026 07:37:04 GMT",
-      "desc": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues&nbsp;&nbsp;The Korea Times"
+      "title": "China energy giant expands Korean footprint, helps fuel Seoul’s AI ambitions - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNWFdzenJXVXc1SG5YUkhMWXByd0tLa1E2ekZrbjVQSXJYUWlTYXBWRzNzNkQ1WndiVFNHdlAzUjJraG4zZUVFYUFmZmppMnQtWm8tQ0NQWmRYakQ1a0ltaWJkakJieFZnWEY2bXdJajlWWlBHaml0Z0ZXSkRMYnB6Q29acUR2dXY2Zjd3R3NhbERkQThRb2RkU3E0bUFnNkkzZVBtTHJENzJsaGxhd1hwMm5hUmoydGZFVDJ4bXJkT1hNODkxdnM1allKVUtJYXBBOWtVVWJzc25QbEF30gHcAUFVX3lxTFBGY25RTnhjTl9mcU1tS0V2UHppVklPd1pEc3EyM2N3NEphcjdEVWxteEZxMG16WVJsN0tKcVgyazVmaWhuVTVPNW0zTHB1MzY3bklPZ0JObGI4Qy1waktXLUY2YUxIdTFFOW9KZExaTXRVSElENjVEdG9pSm9KNDVOZWE1NV9NU2JxeTBQWUJhMmg0dUFDMWNRQ2otQ1dMcVd6N3dQTnRNQzkxN01vWVhzYnNKbkJ1b3BuRVVRQVZNTjBLVXZlUHlpWEZ4YU40SWdvZDA0Ukc3cFExRUE?oc=5",
+      "date": "Fri, 24 Jul 2026 11:00:08 GMT",
+      "desc": "China energy giant expands Korean footprint, helps fuel Seoul’s AI ambitions&nbsp;&nbsp;South China Morning Post"
     },
     {
       "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
@@ -57,117 +63,111 @@
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea rethinks Yellow Envelope Act as labour union demands mount - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVXF5WWVsZTFzSkdhUVd0ZFZ3VDZ0OUNMRWl3QlFHNmxCWGJ2YVBxckFySFJsNFVWUkpVeW9haUJJQXF5blM5VENobHYwLTRyOUhoWXdDbkkzc3cySElfNlNmZUFaX21zdXRhc0lFbkRYZW1rZFlOc09BdlV3SlNnR2M4MnFUd2RNVXBlQmFwZ1F5VkRRd0dKcTRzTnN0b3prWEF2VF9OaG1oVnNLYk84b2stN0ZIQ0tUdGQwVUNVMkVmNEHSAcMBQVVfeXFMT0Nyb2M1Y1lWUExWNDJEWTVZU1RBdmx1UWNrcTNJMVFqcm1NUFZkRFdwaUFGMWZJSGUyWGRrZU5Pem5QTHM2c1hzclo0RndBbjFGVFQzSGM4eTFPRnJtNmxxWkIzVDRrOTk3NHFpbmpGUUNqSjhuNmk3TU9TU2M5SXUxVmxGSDdYWHI2NzhjMnF6RDhHU3lPYm9qOGQ1NDR4R051Q1EzOGZzNTVWcDZLSHg0R3IxdUpUcGpQTGJSb3dBNnRF?oc=5",
-      "date": "Fri, 24 Jul 2026 04:30:06 GMT",
-      "desc": "South Korea rethinks Yellow Envelope Act as labour union demands mount&nbsp;&nbsp;South China Morning Post"
-    },
-    {
       "title": "German chip suppliers deepen ties with Samsung, SK Hynix - digitimes",
       "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxONUM1Q2wycFVnX3RBOUtLUTMtWTQ5MmdSSUZYV1ZieXMyQ2lvdjNnYTVyRmFXTkxhZVFiZ01MdGdiMWdJdFpCN190ekZMQzh2NFd0YXltNGtCcHR3QnlLWGVQVjN6TVdXLW5vS2UxcDAxZktEeTM3VFlOUkh3b1lIbkZnZ1A2MUpkeG5FQWVyR1BwLW40dWc?oc=5",
       "date": "Fri, 24 Jul 2026 07:19:06 GMT",
       "desc": "German chip suppliers deepen ties with Samsung, SK Hynix&nbsp;&nbsp;digitimes"
     },
     {
-      "title": "Korea investors shift to Samsung, SK hynix as semiconductor ETFs plunge - CHOSUNBIZ - Chosunbiz",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPc2I0VmY3RnptQ1pDVU1Vc2RhTmMxVy1SMDFCWjBYaGp6bDBSOTRqM3N1R2luX1VMbkVjeXh2WFN2a2F5OUFmSWNrdDhQUHJzb05TZUhqSVJrWVVYdmk0QmlUYmFGbnB2TFBkeXlvak5CQlFBVno3OWhscDNFVUoxeDVSNUxORzNjNkMwQ3VMZS11NUwz0gGUAUFVX3lxTE9zYjRWZjdGem1DWkNVTVVzZGFOYzFXLVIwMUJaMFhoanpsMFI5NGozc3VHaW5fVUxuRWN5eHZYU3ZrYXk5QWZJY2t0OFBQcnNvTlNlSGpJUmtZVVh2aTRCaVRiYUZucHZMUGR5eW9qTkJCUUFWejc5aGxwM0VVSjF4NVI1TE5HM2M2QzBDdUxlLXU1TDM?oc=5",
-      "date": "Fri, 24 Jul 2026 07:22:00 GMT",
-      "desc": "Korea investors shift to Samsung, SK hynix as semiconductor ETFs plunge - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
-    },
-    {
       "title": "Samsung, SK Hynix Near 'AI Memory Megadeals' with US Big Tech; China's CXMT Targets 3D IC Niche - finance.biggo.com",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE4xZk00a2hQcmRuZWVkS3phN1UxbVZaV2taV2xpdDNZeDJLQmpDNmFQN3lnM2VMUlBWeVcySThHN1MzNkNNZWZtbWFKX1dqNkhEcmVMSXhabERHSTgwUXAxX3JSOEdDR1h1cTMwWmZfQTZ0WW9jTnc?oc=5",
       "date": "Fri, 24 Jul 2026 07:25:00 GMT",
       "desc": "Samsung, SK Hynix Near 'AI Memory Megadeals' with US Big Tech; China's CXMT Targets 3D IC Niche&nbsp;&nbsp;finance.biggo.com"
+    },
+    {
+      "title": "Will Advanced Memory Technology Drive New US Chip Deals? - Brussels Morning Newspaper",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1MekJrUWdWVjhIVGV2Q0JQTW9Sd3dMdXVXY0RIN3Q1X1ZWLVlBS3ozcmg3YXpUcm15ZVZmMmt4ZlpJVXJKRGx2dFVJMjRDNnlZNm8wNEJwd3dzWFdGX1JpTUpTNm1Pa3JCamRDeHVMSkRiNlE?oc=5",
+      "date": "Fri, 24 Jul 2026 13:22:10 GMT",
+      "desc": "Will Advanced Memory Technology Drive New US Chip Deals?&nbsp;&nbsp;Brussels Morning Newspaper"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 208.76,
-      "change": 1.47,
-      "pct": 0.71,
+      "price": 209.38,
+      "change": -2.68,
+      "pct": -1.26,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 415.58,
-      "change": -9.03,
-      "pct": -2.13,
+      "price": 406.15,
+      "change": -15.06,
+      "pct": -3.58,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 539.69,
-      "change": -4.74,
-      "pct": -0.87,
+      "price": 530.0,
+      "change": -22.33,
+      "pct": -4.04,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 100.23,
-      "change": -5.22,
-      "pct": -4.95,
+      "price": 96.78,
+      "change": -5.84,
+      "pct": -5.69,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 171.11,
-      "change": -2.39,
-      "pct": -1.38,
+      "price": 168.19,
+      "change": -7.44,
+      "pct": -4.23,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 283.04,
-      "change": -6.69,
-      "pct": -2.31,
+      "price": 269.91,
+      "change": -13.49,
+      "pct": -4.76,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 317.69,
-      "change": -29.46,
-      "pct": -8.49,
+      "price": 319.67,
+      "change": -22.42,
+      "pct": -6.55,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 321.66,
-      "change": -6.08,
-      "pct": -1.86,
+      "price": 331.17,
+      "change": 5.28,
+      "pct": 1.62,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 381.58,
-      "change": -16.17,
-      "pct": -4.07,
+      "price": 384.71,
+      "change": -5.63,
+      "pct": -1.44,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7408.3,
-      "change": -100.9,
-      "pct": -1.34,
+      "price": 7438.14,
+      "change": -60.82,
+      "pct": -0.81,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25137.69,
-      "change": -699.52,
-      "pct": -2.71,
+      "price": 25094.83,
+      "change": -596.07,
+      "pct": -2.32,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1460.18,
-      "change": -15.45,
-      "pct": -1.05,
+      "price": 1460.71,
+      "change": -14.92,
+      "pct": -1.01,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-24 11:06 UTC"
+  "updatedAt": "2026-07-24 15:20 UTC"
 }
