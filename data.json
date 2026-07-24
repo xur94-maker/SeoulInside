@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "US imposes tariffs on dozens of trade partners, citing forced labour concerns",
+      "link": "https://www.bbc.co.uk/news/articles/cvgj61j6l08o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 24 Jul 2026 04:27:15 GMT",
+      "desc": "The tariffs target 60 trading partners over claims they failed to properly stop forced labour."
+    },
+    {
       "title": "Oil prices hit $100 for the first time since May",
       "link": "https://www.bbc.co.uk/news/articles/cx2djnzrqk2o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 23 Jul 2026 15:31:00 GMT",
       "desc": "The price of Brent crude rose more than 6% on Thursday as the war in the Middle East continues to escalate."
+    },
+    {
+      "title": "Indonesian babies were trafficked to Singapore. What happens to them now?",
+      "link": "https://www.bbc.co.uk/news/articles/c7vgeredvlgo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 23 Jul 2026 23:19:58 GMT",
+      "desc": "At least 12 babies have been trafficked from Indonesia to Singapore, but what will happen to them remains unclear."
     },
     {
       "title": "Saudis must recognise Israel for nuclear deal, says Trump",
@@ -17,21 +29,21 @@
       "link": "https://www.bbc.co.uk/news/articles/cy4kmr82n44o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 23 Jul 2026 19:17:42 GMT",
       "desc": "Most of those evacuated were tourists from campsites around Arcachon Bay in France's Gironde region."
-    },
-    {
-      "title": "India activist ends hunger strike after 26 days",
-      "link": "https://www.bbc.co.uk/news/articles/cjwx4x04yqzo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 23 Jul 2026 21:27:04 GMT",
-      "desc": "Sonam Wangchuk, a supporter of youth-led protesters demanding education reforms, says he wants to avert \"possible violence\"."
-    },
-    {
-      "title": "Ukraine's ousted defence minister insists on being reinstated",
-      "link": "https://www.bbc.co.uk/news/articles/ce97nm53pgxo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 23 Jul 2026 17:37:59 GMT",
-      "desc": "Mykhailo Fedorov refuses President Zelensky's offer to accept an alternative post, as the battle of wills continues."
     }
   ],
   "koreaNews": [
+    {
+      "title": "Koo predicts 3% growth and $40,000 GNI for South Korea this year - CHOSUNBIZ - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAtWkpmRDUzNXpHMFNGOEFwamQtUndQaUhfUGgxM0dkcjM1SEZCck5ZOXhvdGpxZEdxNXRFZkN3NldsWmZpZEJDUS1HdC1KdEFDaDB4SkhMNEUzUDRhYlRRR19GWDV2R2doV1VYMFppVjY0a00yNWtTNFpEWG80YVXSAZMBQVVfeXFMT2ZVR1c2LVJXaEkwMFFuWXk3T0VtREQyZUVuczlhTDZVSVhCaFA2cU9PWVpYckVaQ09OMDNpaDFEWXBKVjZzal9FUno5aklCT3pEckxPSEJjVGNIS2M4dlN1QVZycGNJSEtPUVJzVzJrNkVJSHM2VjNOUnNhVWlTU0hsbU9WTVM3TlpTZ0tmMjVVZENv?oc=5",
+      "date": "Fri, 24 Jul 2026 01:28:00 GMT",
+      "desc": "Koo predicts 3% growth and $40,000 GNI for South Korea this year - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
+    },
+    {
+      "title": "US keeps Korea on FX watchlist despite strong fundamentals - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9Qc0hZNVFMV0M3eEhFeTJ6bGsyZTB3T0IwN1ZQSHV2dnk0b3g5ZldlZUZzMllXd0NocHVmTWRyd3RJOVlGeUtwblF0QVYyX1NqcTM1cmRiWQ?oc=5",
+      "date": "Fri, 24 Jul 2026 02:36:52 GMT",
+      "desc": "US keeps Korea on FX watchlist despite strong fundamentals&nbsp;&nbsp;The Korea Herald"
+    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -45,40 +57,28 @@
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea’s Economy Beats Estimates as Chip Boom Continues - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQamI5dFFiaG5tRlFPQ1BzZEFBanFSUFhMSDJXdW9UZW9fdEF0Vk1UblREMFFjbUZ4UURwUDVDT0tWQVhqcnNob2VLdjdCTmYxN2EtQXZnYlUwQnY5d0k2TjR6cHQxTmJfaGcwTU9vS2pkOUVHTnNaLVlBR1NpZm5XUGF5blFFY0VMbW9xaW1qX1c2bWR2RUcwM1N6ZXVYRjd6T0Q5Y21tOHM2bDRwci1jRw?oc=5",
-      "date": "Wed, 22 Jul 2026 23:53:00 GMT",
-      "desc": "South Korea’s Economy Beats Estimates as Chip Boom Continues&nbsp;&nbsp;Bloomberg.com"
+      "title": "South Korea rethinks Yellow Envelope Act as labour union demands mount - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPVHcwZ3g5NUZDX3lmai1OZlBsZkYwZVVhT3J4NC1sOEFjb1BCb2ViWXdUTnJkcWdNeTZPamRsOHdvZjQ4TGp3SG12am11RXVKWnYyYXc5dFNKeWg2cXFBbnI1bHpSSnh0Wkg2a19YZmdZOHlKMk91RkxkWDl2d3ZxVHpmNExfbE43d1ozMFQ5M1ZSZ0duamZ2OWJJdEtmVXFmSW5vS0lPdDhCRWhqbjYtTHp0cU9QZXJNUGRob0tqamRXMmlXWHhIMUJlOS1tUW5jc3MydlFoR19ieGk4dnc?oc=5",
+      "date": "Fri, 24 Jul 2026 04:30:06 GMT",
+      "desc": "South Korea rethinks Yellow Envelope Act as labour union demands mount&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "South Korea Is Trying to Tame Market Swings. Analysts Aren’t Sure It Will Work. - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQQW50N1BDbk9VTGxTUG81b1A2amxBTXA3SnNzb2kzSzdQU1g0SVhIaDRhUGNoYUhaSFRVbEZZSVdmNDE0VXBvZkJtdWRIYzF5eUNETm9scHloa1pqUnpBM3I3UmtXdktwQXpsSTRxYnBERGp1ME9Gd3c4Umotb09zOFZnb3NfYWVtWVBXQ19xeUZ3OFBxVmM4am5CN21tWkNXS0owN21NeU41eVhuaC1ab2JiSURlY05LNUpsUndYalQ?oc=5",
-      "date": "Wed, 22 Jul 2026 09:31:00 GMT",
-      "desc": "South Korea Is Trying to Tame Market Swings. Analysts Aren’t Sure It Will Work.&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "South Korean economy likely slowed in Q2 after robust Q1 growth - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQNVUwOFBVeFV3c0JoZ0ZXYWhaR3h0dzBvY2U3T3ZfUXgxTlc5SkdvamhmbjViVEw2ZTJaOG9zUUxUVE9mTjU3NFByVHFyS2xRV3BrZ2E1V3BGMXZSTWRIUjlBdGFKeDlzdjVCQXA2Z19qZU1IMmp4aHMtNW9QNnZGSEZHeXRTbWIzdnRPUTlxYWVQMG84MjIyZ29KT1k5MGotU01CTm5wU1VQcDBxNmM3SHhxaTU0dw?oc=5",
-      "date": "Tue, 21 Jul 2026 00:39:00 GMT",
-      "desc": "South Korean economy likely slowed in Q2 after robust Q1 growth&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "\"KOSPI Headed to 10,000\"... Samsung, SK Hynix Leveraged ETFs Surge on Semiconductor Rally - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE11LXZOOHAtek1JVHhIdmV3b19qQ2VOMGpTVmFneXM3SWpvTVJHZzdJSTVjWlk4S3JpOTVrM201cnh0cGM0X0lDQ2lCQmh1WG9BOExXcm1nZ3Z4T1NWN2pteThvbEhIUEUxU0dEeVNYQm43dW5nREE?oc=5",
-      "date": "Thu, 23 Jul 2026 18:35:00 GMT",
-      "desc": "\"KOSPI Headed to 10,000\"... Samsung, SK Hynix Leveraged ETFs Surge on Semiconductor Rally&nbsp;&nbsp;finance.biggo.com"
-    },
-    {
-      "title": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQWUFHVC10U1hOdXZacjczZjJvWEdndDFKM3lmWjItNkc5TmtCLWczd3dPelhKSnAxV0dVRUZDOG9FLWhna3Q4OGRXVVRVa2djUEw4Ny1yTzJYOGFYUHlHbV9tUGk0Nm95cmdISkwzZThMQU50aHA2bUdxUUpfalFGVDBZNFpWalJPZlc2czQxaWZxV1h0bDlrNE5hTFlzZHozTEFYUdIBqgFBVV95cUxQd09RVThINDhuT25FUm16WWo5NjN6LUNHQUctMmR6T3VCWTFwcmhQT25fMENrbEt5aUQ1NGU2M2Rudml3cUE2RmdUTF9lSDFINm9XdzFYbXlmUDYzRmRZV3pVdVJVdmlaOFpuSFFEaEN5bk1lV0MzWUFoc2pRSkJtZDJzblNfUnQ0emh6eHZxYkMwNXdHWXlhSmg2a0Y0QXNkS3dYOG1fSHM5dw?oc=5",
-      "date": "Mon, 20 Jul 2026 04:18:05 GMT",
-      "desc": "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after sell-off&nbsp;&nbsp;CNBC"
+      "title": "42% of Gen Z Job Seekers Invest in Samsung, SK Hynix — 71% Funded by Part-Time Work - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1sLUpxRHFaTVBranU3SzFHaW9XVzZfZW5RRUFxVFFWb3I3bHE0eTUyOW1MSU9SeHpQSDdxbzByUXFYTVg5TnZscktxV3hNUGJVcURmb2Z0STQ3Q3VEeEpKaG56bGpaT211UGI4RERtOHZNaFVrTkE?oc=5",
+      "date": "Fri, 24 Jul 2026 00:36:00 GMT",
+      "desc": "42% of Gen Z Job Seekers Invest in Samsung, SK Hynix — 71% Funded by Part-Time Work&nbsp;&nbsp;finance.biggo.com"
     },
     {
       "title": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks - Benzinga",
       "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOb3lvQ1kyX0dkMzlQLXZRSnlwRkRTdi1IQWV6Um5DbTZzbzZhRnJHRnRCV3hvY29BMXhzM0l6eXUzVDEwekxhNnNSMjljdDNEcVpwMEZLcmt4SDNxNVg5MFRKYWtsbENiMHg0UE1IZ0lDc2RTU0NCOGlWd3pPZnIzY0pud1pDQ210QnkxeUVxTUotbWNleThfeGNSVXcxSUdyell6WDBXNTRYMWFXLW1VTGsxUW5ndHRLUllkNWl2UmFGTXl1MmF0blpVMHU1SGkweEVPNFJITjJVVzBLVktkbEpKaw?oc=5",
       "date": "Mon, 20 Jul 2026 06:51:07 GMT",
       "desc": "Samsung, SK Hynix Tumble in Seoul as China AI Breakthrough Weighs on AI Infrastructure Stocks&nbsp;&nbsp;Benzinga"
+    },
+    {
+      "title": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40% - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5pR1BsZUdqbHRRZXl2WThWSnEtSEZJVThVdXV3cUdjSW1KcGF1OFBYWEpaaW1SZWY1aGZldVFFV1VGTkd2emtEVmRpdDlaN3o5Nkx0bQ?oc=5",
+      "date": "Wed, 22 Jul 2026 13:29:47 GMT",
+      "desc": "Foreign Investors Scoop Up Samsung, SK Hynix as Shares Slump Up to 40%&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 270000.0,
-      "change": 11000.0,
-      "pct": 4.25,
+      "price": 252250.0,
+      "change": -8250.0,
+      "pct": -3.17,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1919000.0,
-      "change": 83000.0,
-      "pct": 4.52,
+      "price": 1794000.0,
+      "change": -36000.0,
+      "pct": -1.97,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 432000.0,
-      "change": 33000.0,
-      "pct": 8.27,
+      "price": 400000.0,
+      "change": -18000.0,
+      "pct": -4.31,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 149800.0,
-      "change": 5200.0,
-      "pct": 3.6,
+      "price": 134400.0,
+      "change": -12400.0,
+      "pct": -8.45,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 220000.0,
-      "change": 27000.0,
-      "pct": 13.99,
+      "price": 209500.0,
+      "change": 12600.0,
+      "pct": 6.4,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 7096.89,
-      "change": 348.94,
-      "pct": 5.17,
+      "price": 6764.35,
+      "change": -33.35,
+      "pct": -0.49,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1474.89,
-      "change": -4.83,
-      "pct": -0.33,
+      "price": 1464.08,
+      "change": -11.55,
+      "pct": -0.78,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-24 01:45 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-24 05:42 UTC"
 }
