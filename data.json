@@ -1,43 +1,37 @@
 {
   "globalNews": [
     {
+      "title": "More than 250,000 flee wildfires in France and Spain",
+      "link": "https://www.bbc.co.uk/news/articles/cd7le0d53y2o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 25 Jul 2026 17:13:40 GMT",
+      "desc": "Spain's PM warns of \"complex hours\" ahead as authorities in France say they are far from bringing blazes burning near Bordeaux under control."
+    },
+    {
+      "title": "Several injured at Berlin Pride after reports vehicle drove into crowd, police say",
+      "link": "https://www.bbc.co.uk/news/articles/clyqzylz3zno?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 25 Jul 2026 21:33:00 GMT",
+      "desc": "Police say an intensive manhunt is under way after the incident in Berlin's city centre."
+    },
+    {
       "title": "Trump takes swipes at press during White House Correspondents' Dinner",
       "link": "https://www.bbc.co.uk/news/articles/cd7le4ylev2o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 25 Jul 2026 13:51:07 GMT",
       "desc": "The event celebrated press freedom after the first dinner was cancelled by a shooting in April."
     },
     {
+      "title": "India's 'cockroach' protest called off after education minister quits",
+      "link": "https://www.bbc.co.uk/news/articles/cdx828gj5xko?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 25 Jul 2026 17:44:46 GMT",
+      "desc": "The CJP protest has been the most visible expression of public anger against PM Narendra Modi's government in recent years."
+    },
+    {
       "title": "Iran-backed Houthis claim missile attack on Saudi Arabia",
       "link": "https://www.bbc.co.uk/news/articles/cj9d27v70j1o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 25 Jul 2026 06:34:40 GMT",
       "desc": "US military says it disabled a tanker that was attempting to evade the American blockade on Iranian ports."
-    },
-    {
-      "title": "Ten killed in Russian attack on drone exhibition near Kyiv",
-      "link": "https://www.bbc.co.uk/news/articles/cj637zd1k1ko?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 25 Jul 2026 00:06:53 GMT",
-      "desc": "The event, attended by prominent members of the Ukrainian defence industry, was hit by ballistic missiles in the middle of the day."
-    },
-    {
-      "title": "Zelensky tries to fix crisis over removal of defence minister and counts the cost",
-      "link": "https://www.bbc.co.uk/news/articles/c1d1gz3n99ro?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 23:01:06 GMT",
-      "desc": "Protests have continued over Zelensky's decision to dismiss Mykhailo Fedorov, and some commentators believe he has been damaged politically."
-    },
-    {
-      "title": "Four Palestinians and two Israelis killed in West Bank shooting",
-      "link": "https://www.bbc.co.uk/news/articles/cx2rxmye4k3o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 22:49:59 GMT",
-      "desc": "Palestinians say villagers came under attack by settlers, while the Israeli military says a Palestinian stole a weapon and opened fire on hikers."
     }
   ],
   "koreaNews": [
-    {
-      "title": "Lee hails EU LNG sanctions exemption to Korea as major economic boost - CHOSUNBIZ - Chosunbiz",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBOYm1oM1dxelh2Q1BObG0zOWNEbzMwTm5RNzVNMFBJR2FhYVVGdWRHWXdzQkFVM1VRZ3JybHNhNjVqeWNNdzIxNVUyVHJObzdwTnV1MXVyU3VkcEtzLXdGUUk2NjFSQUk0U0I3a3BKQml6MnRhczJqVll4dFNoYXPSAZMBQVVfeXFMT0V2bEU5cDR2c0dnZmowbk1VUzhsYWtpYVpENjF3WnlDTjdUVlVZem1iTnU5ZDJ2UF8yS1dHcUlBN2luLVo2V1lPSjdNaEtKR2tZQnVpN0syYmFzVHlNOE9CeTU4eXJRQ0M4cm4tOWxYT2ZUSVFhN2c2dVBZZ3ZKZFE2UTBmamZZSG9KaDFtcEtGd2Rz?oc=5",
-      "date": "Sat, 25 Jul 2026 12:28:00 GMT",
-      "desc": "Lee hails EU LNG sanctions exemption to Korea as major economic boost - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
-    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -45,10 +39,10 @@
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPd3ZOVzUyN0Y3azFBUmpCMHJzVGpkTTRBdnI4R2h5ZDF4LVRLQkhZSWdBUmcxMVJEQk9MaXQzOXptWG5CQmt1V0o3X2k5RFhWdjBycFd1Q05BWVFiZFJTbnJaWmZkU0dVUjNiTFdJbDEzVnpIY1FKWVB5M090SDJLczBpQnluS1BJOENVRDBpQy1zZ1Jqb3JCajFodXpUbEE5WVFmRkFiUXpRVTMzcjd4TUc1RTB3Z9IBuwFBVV95cUxPRGktVEV1d25IUEZMX19PUFpMMGxJcXN6SzRRVG1xMjFyQmM5cXpOTGozYXZVTWc4SDlEa3BtVzhodXFON25vMjhQTk1VUmthWUFzNi14YVh0ZWVpTVpTaXB0UjJEbmZ4QlFUcHdIM1lhV2tzdjZ3TFJ6UXlwcllqVlBGSTc1MWlBT1NwVFZjME9LNVB1N0R6MUpQR2JDWGUxcWYzaHlLOXNGUXMzd3ltUmdJMGRxdkhKcWdv?oc=5",
-      "date": "Thu, 23 Jul 2026 07:37:04 GMT",
-      "desc": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues&nbsp;&nbsp;The Korea Times"
+      "title": "China energy giant expands Korean footprint, helps fuel Seoul’s AI ambitions - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNWFdzenJXVXc1SG5YUkhMWXByd0tLa1E2ekZrbjVQSXJYUWlTYXBWRzNzNkQ1WndiVFNHdlAzUjJraG4zZUVFYUFmZmppMnQtWm8tQ0NQWmRYakQ1a0ltaWJkakJieFZnWEY2bXdJajlWWlBHaml0Z0ZXSkRMYnB6Q29acUR2dXY2Zjd3R3NhbERkQThRb2RkU3E0bUFnNkkzZVBtTHJENzJsaGxhd1hwMm5hUmoydGZFVDJ4bXJkT1hNODkxdnM1allKVUtJYXBBOWtVVWJzc25QbEF30gHcAUFVX3lxTFBGY25RTnhjTl9mcU1tS0V2UHppVklPd1pEc3EyM2N3NEphcjdEVWxteEZxMG16WVJsN0tKcVgyazVmaWhuVTVPNW0zTHB1MzY3bklPZ0JObGI4Qy1waktXLUY2YUxIdTFFOW9KZExaTXRVSElENjVEdG9pSm9KNDVOZWE1NV9NU2JxeTBQWUJhMmg0dUFDMWNRQ2otQ1dMcVd6N3dQTnRNQzkxN01vWVhzYnNKbkJ1b3BuRVVRQVZNTjBLVXZlUHlpWEZ4YU40SWdvZDA0Ukc3cFExRUE?oc=5",
+      "date": "Fri, 24 Jul 2026 11:00:08 GMT",
+      "desc": "China energy giant expands Korean footprint, helps fuel Seoul’s AI ambitions&nbsp;&nbsp;South China Morning Post"
     },
     {
       "title": "South Korea’s Economy Beats Estimates as Chip Boom Continues - Bloomberg.com",
@@ -57,10 +51,16 @@
       "desc": "South Korea’s Economy Beats Estimates as Chip Boom Continues&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea rethinks Yellow Envelope Act as labour union demands mount - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVXF5WWVsZTFzSkdhUVd0ZFZ3VDZ0OUNMRWl3QlFHNmxCWGJ2YVBxckFySFJsNFVWUkpVeW9haUJJQXF5blM5VENobHYwLTRyOUhoWXdDbkkzc3cySElfNlNmZUFaX21zdXRhc0lFbkRYZW1rZFlOc09BdlV3SlNnR2M4MnFUd2RNVXBlQmFwZ1F5VkRRd0dKcTRzTnN0b3prWEF2VF9OaG1oVnNLYk84b2stN0ZIQ0tUdGQwVUNVMkVmNEHSAcMBQVVfeXFMT0Nyb2M1Y1lWUExWNDJEWTVZU1RBdmx1UWNrcTNJMVFqcm1NUFZkRFdwaUFGMWZJSGUyWGRrZU5Pem5QTHM2c1hzclo0RndBbjFGVFQzSGM4eTFPRnJtNmxxWkIzVDRrOTk3NHFpbmpGUUNqSjhuNmk3TU9TU2M5SXUxVmxGSDdYWHI2NzhjMnF6RDhHU3lPYm9qOGQ1NDR4R051Q1EzOGZzNTVWcDZLSHg0R3IxdUpUcGpQTGJSb3dBNnRF?oc=5",
-      "date": "Fri, 24 Jul 2026 04:30:06 GMT",
-      "desc": "South Korea rethinks Yellow Envelope Act as labour union demands mount&nbsp;&nbsp;South China Morning Post"
+      "title": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPd3ZOVzUyN0Y3azFBUmpCMHJzVGpkTTRBdnI4R2h5ZDF4LVRLQkhZSWdBUmcxMVJEQk9MaXQzOXptWG5CQmt1V0o3X2k5RFhWdjBycFd1Q05BWVFiZFJTbnJaWmZkU0dVUjNiTFdJbDEzVnpIY1FKWVB5M090SDJLczBpQnluS1BJOENVRDBpQy1zZ1Jqb3JCajFodXpUbEE5WVFmRkFiUXpRVTMzcjd4TUc1RTB3Z9IBuwFBVV95cUxPRGktVEV1d25IUEZMX19PUFpMMGxJcXN6SzRRVG1xMjFyQmM5cXpOTGozYXZVTWc4SDlEa3BtVzhodXFON25vMjhQTk1VUmthWUFzNi14YVh0ZWVpTVpTaXB0UjJEbmZ4QlFUcHdIM1lhV2tzdjZ3TFJ6UXlwcllqVlBGSTc1MWlBT1NwVFZjME9LNVB1N0R6MUpQR2JDWGUxcWYzaHlLOXNGUXMzd3ltUmdJMGRxdkhKcWdv?oc=5",
+      "date": "Thu, 23 Jul 2026 07:37:04 GMT",
+      "desc": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues&nbsp;&nbsp;The Korea Times"
+    },
+    {
+      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
+      "date": "Thu, 23 Jul 2026 06:58:15 GMT",
+      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
       "title": "Samsung, SK Hynix Prepare Major AI Deals as $880 Billion Plan Advances - Yahoo Finance",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-25 14:53 UTC"
+  "updatedAt": "2026-07-25 22:50 UTC"
 }
