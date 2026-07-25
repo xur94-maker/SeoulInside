@@ -1,43 +1,37 @@
 {
   "globalNews": [
     {
-      "title": "Firefighters struggle to contain Madrid wildfires, as more than 140,000 evacuated in France and Spain",
+      "title": "More than 220,000 evacuated in France and Spain due to wildfires",
       "link": "https://www.bbc.co.uk/news/articles/czjlenp0xk8o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 21:47:16 GMT",
-      "desc": "Authorities face the \"worst fire in the history of the region\", Madrid officials say, as French firefighters battle a blaze heading towards Bordeaux."
+      "date": "Sat, 25 Jul 2026 02:29:36 GMT",
+      "desc": "French firefighters battle a blaze heading towards Bordeaux while officials in Madrid say they face the \"worst fire in the history of the region\"."
     },
     {
       "title": "Ten killed in Russian attack on drone exhibition near Kyiv",
       "link": "https://www.bbc.co.uk/news/articles/cj637zd1k1ko?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 18:51:17 GMT",
+      "date": "Sat, 25 Jul 2026 00:06:53 GMT",
       "desc": "The event, attended by prominent members of the Ukrainian defence industry, was hit by ballistic missiles in the middle of the day."
     },
     {
-      "title": "Trump vows to investigate EU over fining of US tech companies",
-      "link": "https://www.bbc.co.uk/news/articles/cvgjenp4680o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 20:23:58 GMT",
-      "desc": "The US president says fines against Google, as well as Apple, Meta and Amazon, should be \"entirely reversed.\""
+      "title": "Zelensky tries to fix crisis over removal of defence minister and counts the cost",
+      "link": "https://www.bbc.co.uk/news/articles/c1d1gz3n99ro?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 24 Jul 2026 23:01:06 GMT",
+      "desc": "Protests have continued over Zelensky's decision to dismiss Mykhailo Fedorov, and some commentators believe he has been damaged politically."
     },
     {
-      "title": "US and Iran trade more strikes in Gulf as fears of escalation mount",
-      "link": "https://www.bbc.co.uk/news/articles/c05ql5llj4do?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 18:13:02 GMT",
-      "desc": "It comes as Iran condemned the US plan to use frozen Iranian assets to pay for war damages."
+      "title": "Four Palestinians and two Israelis killed in West Bank shooting",
+      "link": "https://www.bbc.co.uk/news/articles/cx2rxmye4k3o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 24 Jul 2026 22:49:59 GMT",
+      "desc": "Palestinians say villagers came under attack by settlers, while the Israeli military says a Palestinian stole a weapon and opened fire on hikers."
     },
     {
-      "title": "ICC top prosecutor removed over sexual misconduct allegations",
-      "link": "https://www.bbc.co.uk/news/articles/cqjxddx12qqo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 24 Jul 2026 21:02:30 GMT",
-      "desc": "Karim Khan denies allegations of engaging in an improper sexual relationship with a junior ICC staff member and seeking to stop her pursuing her complaint."
+      "title": "Texts reveal 14-year-old allegedly murdered by singer D4vd had pregnancy and abortion",
+      "link": "https://www.bbc.co.uk/news/articles/cr592qdj1ldo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 25 Jul 2026 02:14:50 GMT",
+      "desc": "Prosecutors allege D4vd started abusing the girl when she was 13 and she had threatened to expose him."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea's president invokes dramatic Japan realty crash to push domestic property agenda - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOa19UZzVtQ0dmakwtMDdaWFBVUXFuTVRMYk51SWt2b0lDeVBabGNtWmlBdXp6eDBYaDh1Vlpvd3d4bnhtVHRzb0pPNkhORk9hOTRORFpsWWJZVUlhQVQ0R19oV1daOFdMRXRXQlJjTGtvVUZ6bm5NV0xNTE5GQ0hUYmlta24xZjFyVzNR0gGQAUFVX3lxTE5ZRGprQVo4Rm5WbjlTaDlLUG5MbFhuRWxwZFJYdUJLaXRUZ1EyQ1pYV0VpTHJGcVM3UjM3TXYzcHJBbUhXQVdmM3RqU0JabHAxTWFqX3Jzd1hBWE44VXFibzc0dzNZUnZEc1h0V2I2YXlOMTRCVDR4am54UEZfVzZ5YlRib3ZhMHg4UjVleFN6cg?oc=5",
-      "date": "Fri, 24 Jul 2026 07:06:09 GMT",
-      "desc": "South Korea's president invokes dramatic Japan realty crash to push domestic property agenda&nbsp;&nbsp;CNBC"
-    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -51,28 +45,34 @@
       "desc": "South Korea’s Economy Beats Estimates as Chip Boom Continues&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea rethinks Yellow Envelope Act as labour union demands mount - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVXF5WWVsZTFzSkdhUVd0ZFZ3VDZ0OUNMRWl3QlFHNmxCWGJ2YVBxckFySFJsNFVWUkpVeW9haUJJQXF5blM5VENobHYwLTRyOUhoWXdDbkkzc3cySElfNlNmZUFaX21zdXRhc0lFbkRYZW1rZFlOc09BdlV3SlNnR2M4MnFUd2RNVXBlQmFwZ1F5VkRRd0dKcTRzTnN0b3prWEF2VF9OaG1oVnNLYk84b2stN0ZIQ0tUdGQwVUNVMkVmNEHSAcMBQVVfeXFMT0Nyb2M1Y1lWUExWNDJEWTVZU1RBdmx1UWNrcTNJMVFqcm1NUFZkRFdwaUFGMWZJSGUyWGRrZU5Pem5QTHM2c1hzclo0RndBbjFGVFQzSGM4eTFPRnJtNmxxWkIzVDRrOTk3NHFpbmpGUUNqSjhuNmk3TU9TU2M5SXUxVmxGSDdYWHI2NzhjMnF6RDhHU3lPYm9qOGQ1NDR4R051Q1EzOGZzNTVWcDZLSHg0R3IxdUpUcGpQTGJSb3dBNnRF?oc=5",
-      "date": "Fri, 24 Jul 2026 04:30:06 GMT",
-      "desc": "South Korea rethinks Yellow Envelope Act as labour union demands mount&nbsp;&nbsp;South China Morning Post"
+      "title": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPd3ZOVzUyN0Y3azFBUmpCMHJzVGpkTTRBdnI4R2h5ZDF4LVRLQkhZSWdBUmcxMVJEQk9MaXQzOXptWG5CQmt1V0o3X2k5RFhWdjBycFd1Q05BWVFiZFJTbnJaWmZkU0dVUjNiTFdJbDEzVnpIY1FKWVB5M090SDJLczBpQnluS1BJOENVRDBpQy1zZ1Jqb3JCajFodXpUbEE5WVFmRkFiUXpRVTMzcjd4TUc1RTB3Z9IBuwFBVV95cUxPRGktVEV1d25IUEZMX19PUFpMMGxJcXN6SzRRVG1xMjFyQmM5cXpOTGozYXZVTWc4SDlEa3BtVzhodXFON25vMjhQTk1VUmthWUFzNi14YVh0ZWVpTVpTaXB0UjJEbmZ4QlFUcHdIM1lhV2tzdjZ3TFJ6UXlwcllqVlBGSTc1MWlBT1NwVFZjME9LNVB1N0R6MUpQR2JDWGUxcWYzaHlLOXNGUXMzd3ltUmdJMGRxdkhKcWdv?oc=5",
+      "date": "Thu, 23 Jul 2026 07:37:04 GMT",
+      "desc": "[EXPLAINER] Why real estate remains one of Korea's most sensitive issues&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Wed, 22 Jul 2026 23:21:00 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
+      "title": "China energy giant expands Korean footprint, helps fuel Seoul’s AI ambitions - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNWFdzenJXVXc1SG5YUkhMWXByd0tLa1E2ekZrbjVQSXJYUWlTYXBWRzNzNkQ1WndiVFNHdlAzUjJraG4zZUVFYUFmZmppMnQtWm8tQ0NQWmRYakQ1a0ltaWJkakJieFZnWEY2bXdJajlWWlBHaml0Z0ZXSkRMYnB6Q29acUR2dXY2Zjd3R3NhbERkQThRb2RkU3E0bUFnNkkzZVBtTHJENzJsaGxhd1hwMm5hUmoydGZFVDJ4bXJkT1hNODkxdnM1allKVUtJYXBBOWtVVWJzc25QbEF30gHcAUFVX3lxTFBGY25RTnhjTl9mcU1tS0V2UHppVklPd1pEc3EyM2N3NEphcjdEVWxteEZxMG16WVJsN0tKcVgyazVmaWhuVTVPNW0zTHB1MzY3bklPZ0JObGI4Qy1waktXLUY2YUxIdTFFOW9KZExaTXRVSElENjVEdG9pSm9KNDVOZWE1NV9NU2JxeTBQWUJhMmg0dUFDMWNRQ2otQ1dMcVd6N3dQTnRNQzkxN01vWVhzYnNKbkJ1b3BuRVVRQVZNTjBLVXZlUHlpWEZ4YU40SWdvZDA0Ukc3cFExRUE?oc=5",
+      "date": "Fri, 24 Jul 2026 11:00:08 GMT",
+      "desc": "China energy giant expands Korean footprint, helps fuel Seoul’s AI ambitions&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "Samsung, SK Hynix Prepare Major AI Deals as $880 Billion Plan Advances - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQb0w3Tk44WTUxRERZc2tfd2FNb3VwNFY1SkVUTzd4WFFjTzAwaFp1VjJsNzBzSDRUSDQtQVRGQW1wQXQ4bkY1akR1akl2eTRSYkZnSl9vREJ0bUlwTzVFM0NZaEQwUVgtT3c1bnh0MWxCekVSVVFTOVRBeGctQjdibTZyQWtPVVJvcHRJQWdFRkowbmRoSEtYNXNn?oc=5",
-      "date": "Fri, 24 Jul 2026 18:54:41 GMT",
-      "desc": "Samsung, SK Hynix Prepare Major AI Deals as $880 Billion Plan Advances&nbsp;&nbsp;Yahoo Finance"
+      "title": "U.S. keeps South Korea on currency monitoring list - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNdmk0QmdQb1BCVHJ2dzR2M2lEdlZTUndlbS12LV9hWHptTEtTQ3dGNnROY2p6S1JZT2tpTHNNZWhfMlh0YUhSLUtnWFVuZnViZXpRQmRiLUhEU3JJWmtCMTFMMFVvTUMtYW5Mc2lJN2ZSYVBwZlY3NGFjTW52dTZQU0NMMEZ5X0dMYXZfU1R2em9QZmdiUzVHWmhGUFpzNmhIQXhZcEpOYnRFQ1RoM09pNERKZjFhYXMt0gG-AUFVX3lxTE5rU2dnX0RVa3ZTV3Nwb1Z4MnhfRlRoOEZkOTExVHA1T0hzRnhDOTBTMmc3X2lJTGxzSFVrQks1c1RwcU9oS3hWeWtlWFU1WlBld000TlJVdWtkOWlTMTd3SXRpbWcyMlg3NzNuSjdSU2lEazJOVmMydmtwa3BDVEVzQnBPVmFNRnhhMTdkWWt2Rm5ZRXZZUy1IS3dRRUtzU0tCRHRZM21UM2J4RjRZM3pZNnE4akV5eUR2RjkwMlE?oc=5",
+      "date": "Fri, 24 Jul 2026 22:00:11 GMT",
+      "desc": "U.S. keeps South Korea on currency monitoring list&nbsp;&nbsp;upi.com"
     },
     {
       "title": "Samsung, SK Hynix Prepare Major Chip Supply Deals With US Firms - Mexico Business News",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQdXRsVmNIMEg0cWNjZzN2STNZQlowcEdMa2RJZ3Bfb1Myb1pQbFVxRXlVRXA1VURMVWdwZk0tRk92QmE5cHk5bG00NE1YRVlhaXNiT1lzTHdMaThsRWg1OElVTkNvdExqTEY0dEFncUxxdlNaUnFpVDJ4LWNFY01HOVJSQ0xnbFRjcG1HVjlWdy11aE1IeG1iZFlWNA?oc=5",
       "date": "Fri, 24 Jul 2026 19:14:44 GMT",
       "desc": "Samsung, SK Hynix Prepare Major Chip Supply Deals With US Firms&nbsp;&nbsp;Mexico Business News"
+    },
+    {
+      "title": "Samsung, SK Hynix Prepare Major AI Deals as $880 Billion Plan Advances - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQb0w3Tk44WTUxRERZc2tfd2FNb3VwNFY1SkVUTzd4WFFjTzAwaFp1VjJsNzBzSDRUSDQtQVRGQW1wQXQ4bkY1akR1akl2eTRSYkZnSl9vREJ0bUlwTzVFM0NZaEQwUVgtT3c1bnh0MWxCekVSVVFTOVRBeGctQjdibTZyQWtPVVJvcHRJQWdFRkowbmRoSEtYNXNn?oc=5",
+      "date": "Fri, 24 Jul 2026 18:54:41 GMT",
+      "desc": "Samsung, SK Hynix Prepare Major AI Deals as $880 Billion Plan Advances&nbsp;&nbsp;Yahoo Finance"
     },
     {
       "title": "South Korean memory giants Samsung and SK Hynix are set to announce massive deals with leading U.S. tech firms, report claims — Korean president arrives in Silicon Valley for meetings and high-profile AI summit - Tom's Hardware",
@@ -223,13 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1459.42,
-      "change": -16.21,
-      "pct": -1.1,
+      "price": 1462.1,
+      "change": -13.53,
+      "pct": -0.92,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-25 01:45 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-07-25 05:35 UTC"
 }
