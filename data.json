@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "Berlin Pride attack suspect shot and killed during police operation",
+      "link": "https://www.bbc.co.uk/news/articles/c62eg899l99o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 26 Jul 2026 19:21:26 GMT",
+      "desc": "Police say Abdul Ballout was shot and killed after he rushed at officers with a knife in a western borough of Berlin."
+    },
+    {
       "title": "What we know so far about the Berlin Pride ramming attack",
       "link": "https://www.bbc.co.uk/news/articles/cevmdxz4872o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 26 Jul 2026 13:40:29 GMT",
-      "desc": "A police manhunt is under way after a suspect rammed a car into a crowd at a Pride event in the German capital on Saturday night."
+      "date": "Sun, 26 Jul 2026 20:34:23 GMT",
+      "desc": "German Chancellor Friedrich Merz condemns the attack as \"heinous\" after a suspect drove a car into a crowd near the Tiergarten park."
     },
     {
       "title": "Israeli settlers set fire to mosques, cars and farm land in West Bank, Palestinians say",
       "link": "https://www.bbc.co.uk/news/articles/cjrv77gl4deo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 26 Jul 2026 10:26:05 GMT",
-      "desc": "The latest attacks come two days after a clash between settlers and Palestinians near the village of Tell, which left four Palestinians and two Israelis dead."
+      "date": "Sun, 26 Jul 2026 21:23:53 GMT",
+      "desc": "The latest attacks come two days after a clash between settlers and Palestinians near the village of Tal, which left four Palestinians and two Israelis dead."
+    },
+    {
+      "title": "PM pledges continued support for Ukraine ahead of Zelensky visit",
+      "link": "https://www.bbc.co.uk/news/articles/cy8me5vyjg2o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 26 Jul 2026 21:30:20 GMT",
+      "desc": "The Ukrainian president will be Andy Burnham's first international visitor since taking office."
     },
     {
       "title": "Firefighters battle wildfire as tens of thousands evacuated near Bordeaux",
       "link": "https://www.bbc.co.uk/news/articles/clyj8k4nn5jo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 26 Jul 2026 11:29:07 GMT",
+      "date": "Sun, 26 Jul 2026 18:40:08 GMT",
       "desc": "More than 330,000 people have now been evacuated from wildfires across France and Spain."
-    },
-    {
-      "title": "Trump takes swipes at press during White House Correspondents' Dinner",
-      "link": "https://www.bbc.co.uk/news/articles/cd7le4ylev2o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 25 Jul 2026 13:51:07 GMT",
-      "desc": "The event celebrated press freedom after the first dinner was cancelled by a shooting in April."
-    },
-    {
-      "title": "India's 'cockroach' protest called off after education minister quits",
-      "link": "https://www.bbc.co.uk/news/articles/cdx828gj5xko?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 25 Jul 2026 17:44:46 GMT",
-      "desc": "The CJP protest has been the most visible expression of public anger against PM Narendra Modi's government in recent years."
     }
   ],
   "koreaNews": [
@@ -45,16 +45,16 @@
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
+      "title": "South Korea's Post-Crisis Model Offers Lessons for Iran's Economic Resilience - Tehran Times",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPRHN2MzMxenhkVnFvWDNiUFpYYnJmczhOMTVlZVBIMHlYcnRMSTdHWEJaX2NVMHRQdmJBb1ljTmtaS2VnTUV1cFNFNVAySV9rTFFDa1IwdUppM0tIZWFVQnMyQzBXYlY5UE9WZXl1UGFjWHNhc3ZhWGk2R3llVjNOTFMtWWRsSWxEdl9BaGtCTmJWdGhPMGhscWZfeGtSTFlHdEZXTWZRVVJtUQ?oc=5",
+      "date": "Sun, 26 Jul 2026 18:24:01 GMT",
+      "desc": "South Korea's Post-Crisis Model Offers Lessons for Iran's Economic Resilience&nbsp;&nbsp;Tehran Times"
+    },
+    {
       "title": "South Korea’s Economy Beats Estimates as Chip Boom Continues - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQamI5dFFiaG5tRlFPQ1BzZEFBanFSUFhMSDJXdW9UZW9fdEF0Vk1UblREMFFjbUZ4UURwUDVDT0tWQVhqcnNob2VLdjdCTmYxN2EtQXZnYlUwQnY5d0k2TjR6cHQxTmJfaGcwTU9vS2pkOUVHTnNaLVlBR1NpZm5XUGF5blFFY0VMbW9xaW1qX1c2bWR2RUcwM1N6ZXVYRjd6T0Q5Y21tOHM2bDRwci1jRw?oc=5",
       "date": "Wed, 22 Jul 2026 23:53:00 GMT",
       "desc": "South Korea’s Economy Beats Estimates as Chip Boom Continues&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "Explaining South Korea’s Stock Market Boom - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5zSDN5Y0x6ZDZPNThLcDR1VXJITlNsSExkZXVlbDRFVzhZOFoyX2t0dWNMTmpGbWN4MkdoT0tjWFZTY1d5UEdlU2g0eWpfVGlzZVlHdTdUcm43aVVudDdraFJTZWZmeUU2ZGZJZHRGZkNQVEJJZjJR?oc=5",
-      "date": "Wed, 22 Jul 2026 14:02:31 GMT",
-      "desc": "Explaining South Korea’s Stock Market Boom&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "S. Korea's GDP expands 0.6 pct in Q2, with 3 pct annual growth on track: BOK - upi.com",
@@ -69,16 +69,16 @@
       "desc": "Samsung, SK Hynix Prepare Major Chip Supply Deals With US Firms&nbsp;&nbsp;Mexico Business News"
     },
     {
-      "title": "‘Next Week Will Be Scary’: Market Veteran Says Samsung, SK Hynix Face Pivotal Moment - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1UTHQ5aU1BVEh2TmF2eF8wNnBnLUxtcG42QXdBMHQ2bHJsUmFLM08yTkNneWZ2VWdTMGd1Y0hxbFhLY0Jtdkpkd3BhWWRiSkVfY3JYbg?oc=5",
-      "date": "Sun, 26 Jul 2026 07:24:17 GMT",
-      "desc": "‘Next Week Will Be Scary’: Market Veteran Says Samsung, SK Hynix Face Pivotal Moment&nbsp;&nbsp;bloomingbit"
+      "title": "Samsung and SK Hynix unveil $950 billion U.S. chip supply partnerships - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNRnF0el82dlZub2EzRndmMU1makM5ZHJhLWt6T0owTTNlSjlCNWdzQWJyUVMwblM5NVdmMGo1Z0pZeDJGM0NlS01MdFJoVTBONmJDWE9fT1dhTVItaWg0TDZIeERZTTNadU44UUE4ZG5qcTBsbkk2b2VJdl9wTnFMaFlCUG1tUHk4SWRheTJDYk80NldDWGJScy1FM0FEV3k1c0Y3aEZhME5QbXJwdGhMNFdmOWVFWTd2MDB0X3A3eF9Ldw?oc=5",
+      "date": "Sat, 25 Jul 2026 07:30:33 GMT",
+      "desc": "Samsung and SK Hynix unveil $950 billion U.S. chip supply partnerships&nbsp;&nbsp;Investing.com"
     },
     {
-      "title": "Koreas big chip week begins as SK hynix, Samsung face AI boom reality check - Aju Press",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9fV3ZPdUhMejFnZC1xQWozSTVVaTVsRkdsc1lPQm96dnJaWXJTRm9jWGhsc0ZsSjJIaW5obEswTWRYeW8tcFNqZUFRZy1CM3VBcUlmLU1SbGR0U03SAVdBVV95cUxPamRlUkF4Y2Ewemdqb3dSVWFQRmItd2JNajY0ZzBpT3JmQmw0R0l5MVN4RDlTTlpyTTM5eUdMRGp1Y0EzYVdTYnY1UGpLWHFEeW85TnRqYVE?oc=5",
-      "date": "Sun, 26 Jul 2026 04:21:50 GMT",
-      "desc": "Koreas big chip week begins as SK hynix, Samsung face AI boom reality check&nbsp;&nbsp;Aju Press"
+      "title": "South Korean memory giants Samsung and SK Hynix are set to announce massive deals with leading U.S. tech firms, report claims — Korean president arrives in Silicon Valley for meetings and high-profile AI summit - Tom's Hardware",
+      "link": "https://news.google.com/rss/articles/CBMiiANBVV95cUxQcXFtMXlVcUVxM2dzR0F2NUMzdzcwbkk4QlZZdDllaTNZRU4xTnpqTkJCSWlFMlp0cjl4aE5Ub1pQQW5vUE5DYVJaN2g4eTNqN1dFcXVsalA2SzFOUzFud04wcEVGOWF2WXNEdXRSVm42WTU4YVZlby1UeEZDdVI2ZkVjbFNBV0pweHR3RkdOdnZfX2xzWlV1UG43NTZGdW9nYXBYR0hheEdwTFFXM2VnWi1nYnlPdGpOb0pmaDJkT1lja2tHanFDYXQ0dWFDd3lnZmlDUTFsWFcySGthRVdTWkNOZDVPNUs4TElra2dQSEphT3N5bWI4NlVYOXc3U3g4UTVwVHFVbHBzbEJCWlJTVll1MU1pcnlKYTFMaGlxSmJEV0FpS1FkSHAxMnJnWUxRVDNNMnk4RjF2Sm5pMUFlTHN5a2VESFFSVEUtdU1pLWRvRjBYTHh2bTVKRWRLRHlOYjU1Ylhvd3VyNWx3TUQyTVo5aXJlbE9hY0VWYUU0em5nVzR6eS1pNQ?oc=5",
+      "date": "Fri, 24 Jul 2026 14:43:04 GMT",
+      "desc": "South Korean memory giants Samsung and SK Hynix are set to announce massive deals with leading U.S. tech firms, report claims — Korean president arrives in Silicon Valley for meetings and high-profile"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-26 14:56 UTC"
+  "updatedAt": "2026-07-26 22:55 UTC"
 }
