@@ -1,5 +1,3 @@
-
-
 # K-pop / 연예 뉴스 사이트 링크 모음
 
 ## 해외 (영문) 매체
@@ -20,6 +18,90 @@
 - **마이데일리** — https://www.mydaily.co.kr/
 - **뉴스엔** — https://newsen.com/
 - **이데일리 스타in** — https://star.edaily.co.kr/
+
+## 뉴스 / 트렌드 포털
+
+- **다음뉴스 실시간 트렌드** — https://news.daum.net/
+- **네이버 뉴스 (랭킹)** — https://news.naver.com/
+- **구글 뉴스 (한국)** — https://news.google.com/home?hl=ko&gl=KR&ceid=KR%3Ako
+- **구글 트렌드 실시간 인기** — https://trends.google.co.kr/trending
+- **네이버 데이터랩 (검색어 트렌드)** — https://datalab.naver.com/
+- **YTN** — https://ytn.co.kr/
+- **MBC 뉴스** — https://imnews.imbc.com/
+
+## 커뮤니티 / 유머 사이트
+
+- **모아봐** — http://www.moabbs.com/board/cboard
+- **aagag.com** — https://aagag.com/
+- **하비스페이스** — https://bbs.hobbyspace.org
+- **Hotbest7** — https://hotbest7.com/issue/
+- **오늘의베스트** — https://todaybeststory.com/
+- **모아모아** — https://moamoa.kr/
+- **더쿠** — https://theqoo.net/hot
+
+## 개인 채널 / 소셜
+
+- **Ko-fi (Manage)** — https://ko-fi.com/Manage/
+- **500px** — https://500px.com/p/Vonxu?view=photos
+- **GitHub (SeoulInside)** — https://github.com/xur94-maker/SeoulInside
+- **Instagram (seoul_letter)** — https://www.instagram.com/seoul_letter/
+- **Threads (seoul_letter)** — https://www.threads.com/@seoul_letter?hl=ko
+- **Medium (import)** — https://medium.com/p/import
+- **Facebook (sun.vonxu)** — https://www.facebook.com/sun.vonxu
+- **Bluesky (seoulinside)** — https://bsky.app/profile/seoulinside.bsky.social
+- **X / Twitter (Seoul_Inside)** — https://x.com/Seoul_Inside
+- **Substack (seoulinside)** — https://seoulinside.substack.com/
+
+## Google Search Console / Sitemaps
+
+- **Sitemaps** — https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fseoulinside.substack.com%2F
+- **Search Console (site: 검색)** — https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&ie=UTF-8
+
+## 김치 / 문화유산 자료
+
+- **부산대학교 김치자료관** — https://kimchi.pusan.ac.kr/kimchi/43683/subview.do
+- **농촌진흥청 김치 정보** — https://www.nics.go.kr/food/kfi/kimchi/kimchi_01
+- **농촌진흥청 자료실 검색** — https://www.nics.go.kr/food/kfi/tfSrch08/list
+- **국가유산포털 (김치 담그기 검색)** — https://www.heritage.go.kr/heri/unified/renewUnifiedList.do?query=%EA%B9%80%EC%B9%98+%EB%8B%B4%EA%B7%B8%EA%B8%B0&sort=2&shapes=0&pageIndex=1&pageNo=1_1_1_1&pageSize=10
+- **서울대 HQ센터 아카이브** — https://hqcenter.snu.ac.kr/archives/3129
+- **국가유산포털 (문화재 상세)** — https://www.heritage.go.kr/heri/cul/culSelectDetail.do?pageNo=1_1_1_1&ccbaKdcd=17&ccbaAsno=01370000&ccbaCtcd=ZZ&ccbaCpno=127ZZ01370000&ccbaGcode=HK&ccbaBcode=05&ccba
+
+## 구글 검색 결과 링크
+
+- **세종대왕 / 훈민정음 해례본 검색** — https://www.google.com/search?q=King+Sejong+the+Great+%281397%E2%80%931450%2C+r.+1418%E2%80%931450%29+%7C+Hunmin+Jeongeum+Haerye+%281446%29&sca_esv=a707d86a229c684a&sxsrf=APpeQnszta8CvodLGMSxsRKnHySA_20AzQ%3A1783860401155&ei=sYxTatbaCLC12roPxfOkkQk&biw=1014&bih=788&ved=0ahUKEwiW96fslc2VAxWwmlYBHcU5KZIQ4dUDCBA&uact=5&oq=King+Sejong+the+Great+%281397%E2%80%931450%2C+r.+1418%E2%80%931450%29+%7C+Hunmin+Jeongeum+Haerye+%281446%29&gs_lp=Egxnd3Mtd2l6LXNlcnAiU0tpbmcgU2Vqb25nIHRoZSBHcmVhdCAoMTM5N-KAkzE0NTAsIHIuIDE0MTjigJMxNDUwKSB8IEh1bm1pbiBKZW9uZ2V1bSBIYWVyeWUgKDE0NDYpSABQAFgAcAB4AZABAJgBAKABAKoBALgBA8gBAPgBAZgCAKACAJgDAJIHAKAHALIHALgHAMIHAMgHAIAIAQ&sclient=gws-wiz-serp
+- **The Trickle-Dry Effect 검색** — https://www.google.com/search?q=The+Trickle-Dry+Effect&sourceid=chrome&ie=UTF-8&source=chrome.ob
+- **홍대 관련 검색** — https://www.google.com/search?q=%22The+Address+That+Ate+the+University%22+How+a+street+called+Hongdae&sourceid=chrome&ie=UTF-8&source=chrome.ob
+
+## 프로젝트 관련 (SeoulInside)
+
+- **link1** — https://xur94-maker.github.io/SeoulInside/link1.html
+- **list.md** — https://github.com/xur94-maker/SeoulInside/blob/main/list.md
+- **latest.md** — https://github.com/xur94-maker/SeoulInside/blob/main/latest.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -----
  
