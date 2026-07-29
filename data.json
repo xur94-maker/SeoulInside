@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Watch: The moment quake hit Japan",
-      "link": "https://www.bbc.co.uk/news/videos/cvg7v55gxnqo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 28 Jul 2026 15:32:37 GMT",
-      "desc": "Video shows locations across the region where a strong earthquake struck Japan's Kyushu island on 28 July."
+      "title": "More than 100 aftershocks hit Japan after deadly quake that killed 13",
+      "link": "https://www.bbc.co.uk/news/articles/cgk43y21j0do?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 11:10:54 GMT",
+      "desc": "People are being urged to stay alert, with earthquake aftershocks potentially reaching magnitude 7, officials say"
     },
     {
-      "title": "Iran and US trade strikes, shattering brief lull in fighting",
+      "title": "Japan in a ‘race against time’ to rescue people trapped beneath rubble after quake",
+      "link": "https://www.bbc.co.uk/news/videos/c3r0pg0dgrgo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 06:10:19 GMT",
+      "desc": "At least 13 people have been killed after the earthquake struck the island of Kyushu on Tuesday."
+    },
+    {
+      "title": "Saudi Arabia joins US in strikes on Iran-backed militias in Iraq",
       "link": "https://www.bbc.co.uk/news/articles/c70g6y24d76o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 04:30:08 GMT",
-      "desc": "US Central Command says it intercepted \"multiple\" ballistic missiles fired by Iran."
+      "date": "Wed, 29 Jul 2026 09:39:56 GMT",
+      "desc": "US Central Command says proxy groups launched attacks against US bases and Saudi energy infrastructure."
     },
     {
-      "title": "How Mexican drug cartels have outsourced meth labs to Nigeria",
-      "link": "https://www.bbc.co.uk/news/articles/crmrnxp4nllo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 28 Jul 2026 23:25:53 GMT",
-      "desc": "West Africa is becoming increasingly attractive to those who want to make and export illicit drugs."
+      "title": "Russia charges Telegram founder Durov with facilitating terrorism",
+      "link": "https://www.bbc.co.uk/news/articles/cj4kexqkpzno?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 10:23:29 GMT",
+      "desc": "The FSB claims the messenger app, created by Pavel Durov, has failed to remove accounts and channels used for recruitment by Ukraine's secret service."
     },
     {
-      "title": "Trump administration bans new Chinese humanoid robots",
-      "link": "https://www.bbc.co.uk/news/articles/cp9e2ex3ekyo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 02:30:50 GMT",
-      "desc": "The US and China are locked in a race to the lead the world in robotics and artificial intelligence."
-    },
-    {
-      "title": "Wildfires in south-west France flare up as region braces for new 40C heatwave",
-      "link": "https://www.bbc.co.uk/news/articles/c5yd8gly1ydo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 04:43:36 GMT",
-      "desc": "Firefighters are braced for a sharp rise in temperatures on Wednesday, which could complicate the containment of wildfires in Gironde."
+      "title": "Four women accuse Jared Leto of criminal sexual conduct",
+      "link": "https://www.bbc.co.uk/news/articles/cd7lg2nz2x2o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 05:00:07 GMT",
+      "desc": "The actor and musician faces allegations from 10 women in total who say he mistreated them as teenagers."
     }
   ],
   "koreaNews": [
@@ -39,22 +39,22 @@
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
+      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
+      "date": "Thu, 23 Jul 2026 06:58:15 GMT",
+      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
+    },
+    {
       "title": "South Korean Economy Likely Slowed in 2Q After Robust 1Q Growth - SME & Entrepreneurship Magazine",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcDdaN3gtWGFlaTFqeFRUZHFFZmRYWklweW03RzQyQ0U3WEJuU0JlaXJIWTRRODNkNXpldWJFc0hGblZqSkNPYzZER3hYckVhZWU0SEtoOTNkWEprZzY2cmp5a1Y5Rl9RcGg2WndVdUFrX043M3ZKS3U3bmQ0ZVNjQXk1U1E1elFP?oc=5",
       "date": "Wed, 29 Jul 2026 05:00:51 GMT",
       "desc": "South Korean Economy Likely Slowed in 2Q After Robust 1Q Growth&nbsp;&nbsp;SME & Entrepreneurship Magazine"
     },
     {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Wed, 22 Jul 2026 23:21:00 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "South America Courts Korea as Minerals Rewrite the Global Order - LatinAmerican Post",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNUlJMMTQxTEdqU3dfX1pKcTl5NGF6RUkxbnhEZ1dfbGo3bkJkeW5SSVVzVDh0WHdsQkdSb1pST2VYeVJjVFdXNDRZZGFYTGU0dTJ6eTdxaFlnYk54d2hxcWIxYmM3MG1PQTFzb2tXMTVxSUt3RWxuQWI0Y0dEMEJwM0NWc0E0cjZfcTZIa2Q5MVRMU3NuSHBwaTktMml0bkIzakkzS1VKeGI?oc=5",
-      "date": "Tue, 28 Jul 2026 16:12:38 GMT",
-      "desc": "South America Courts Korea as Minerals Rewrite the Global Order&nbsp;&nbsp;LatinAmerican Post"
+      "title": "How South Korea can ease Brazilian concerns to unlock trade in South America - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQRFJKbEV0UW5ycjE3dEx3SlZhSnV2Q3ZiT29oQmh4NXZkZW1lM19WVm1sU05kbkdody1qbFUxNkJhSmFGTnNaSmpia0RTcUFSWkQ0YjRfZkNzanpXZ2RoVTZBb1dSRk45VWVTUVhwU2N6Y3VUOVNvcjIwVm9FNkgzVnBmTjRRem5TUFhHbzFEQ3liRXNYMXBaUDRVWVhvZDlpaHdGaXd5cUQtNmZMOV9jdjFvV1ZKUWRIUkE3bDdVeE5SUV9pTUHSAcYBQVVfeXFMT3RhcmdFWEI0aVZCY1BHR1FYRmZNdmZ1ay1WeDVxVjk5NVRqSmI4WUMycHVfZTFtbF9TbWhDMXpqcER2a2l5VF9NSlZnMlpER0VoUl93RHg5ZEFKNjBWak1zeUpmR1NNWlVqbV91cnNwb2c2SUU3eTNwM0N5V2NSTzFHdVpYQ282MWhTcHJFOEQ4Q0taU1dXMFZFNXUxTjJhOTFtbG1NR0xxbFZkNzBBaTg1YU5SSWRqT1lYN3FMeWdPUWpVQnJR?oc=5",
+      "date": "Wed, 29 Jul 2026 09:00:10 GMT",
+      "desc": "How South Korea can ease Brazilian concerns to unlock trade in South America&nbsp;&nbsp;South China Morning Post"
     },
     {
       "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
@@ -63,22 +63,22 @@
       "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "Asian technology stocks extend sell-off with SoftBank down 7% as AI plays take a hit - CNBC",
+      "title": "Tech stocks extend sell-off with SoftBank losing 7% as AI plays take a hit - CNBC",
       "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOWm5mYzh3X2p6d2t2clJubjIzc1VBR2txNEU4V2FvVEM5RmNHZGdHOFJOX1cxZlhEMG5zaEpJQ21WRmZncG0tZm1EQVF4ZnFDMTBhMHFKMXBxN0pUaVFaYmtUbTJ5b0ZxVzJXWHpOVkFqNXBxRTNxTU5tQ3VBS0ZsbNIBhgFBVV95cUxQT0hDOFV0dDBHN25YOE5KWGNWdGlvUEhuSF9XVjhpSV9sWDdxSXozSTJwSXNSTFZnZk0zNVc1bGJJTFVkX2Z5MmpYTXRqNjVRekNHN3B4ZlJIdFZmVk9heW0wY3ZiXzFIQUNfM2o5NVNWYmxWb3RXSHBZbHJ4LWNOSWd4SUQwZw?oc=5",
       "date": "Wed, 29 Jul 2026 02:44:00 GMT",
-      "desc": "Asian technology stocks extend sell-off with SoftBank down 7% as AI plays take a hit&nbsp;&nbsp;CNBC"
+      "desc": "Tech stocks extend sell-off with SoftBank losing 7% as AI plays take a hit&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Asian chip stocks slide as China competition fears rattle AI trade - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNbm9DUFBRMVNrTExpUDkzSlpGZGxTaEtRbTVWZTNjTVlzRklHX0lBVW9fcU5ULTFBbFlZb040TlVRR0pkNGZsRUo1TkhiLU95SzVwX0N0OC1PU2x3bXkySE1ZSmlDcldEZjF1OWR5NnU1M3RVQ3lvQ2pLeHlMNjQxT3dienkwRERwZlhWWlZwMXpTRVQ1czlFVVZReFpoelhHb202ZVB1VnFpR0llQ1Fsd2N0RDNsa0hiRlE?oc=5",
-      "date": "Tue, 28 Jul 2026 09:51:44 GMT",
+      "date": "Tue, 28 Jul 2026 00:57:00 GMT",
       "desc": "Asian chip stocks slide as China competition fears rattle AI trade&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung’s chip workers are jumping ship to rival SK Hynix - MIT Technology Review",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPTFIxaG5HN3FIZUhnYXFoVWtqM1UxTFE3SWxFZjZUWHplNDV5NUdvV2hzMXN6cVZXMUNnazNkV1paYzl2cjdXQXl5ZkdWU1NiZkRSQVVUQV94U25oRllpQThYV0gyQ1hFLTh0bTB6MUpJVTktR3dsU0tEWDN6VkhwSndEc20zNlNDV05aQWFCdHkxczjSAZgBQVVfeXFMT0M4U3Awb3U1OC13LUV4QWU1M09pQl90NzZEZnFFd21jY2xteFVIRGpGdTNyVkhLRTJjcmVkSVdUTE5zcDU4TTh2UjRKLUJyOHRidE1BTTAyMDhPZlRsRjd6WEdabnA3cVY5ZkZ0SzVMaGdUUkhOMXJsNEo4aW1uNE53S3JIdUY0ODhGOEVlbmJVMmRSTElBcEI?oc=5",
-      "date": "Tue, 28 Jul 2026 09:18:57 GMT",
-      "desc": "Samsung’s chip workers are jumping ship to rival SK Hynix&nbsp;&nbsp;MIT Technology Review"
+      "title": "SK Hynix delivers record Q2 earnings, yet misses consensus - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1ubFE5VDFibndNX0RYYldzWlVYTkprYkc4UEZ4Q3FaTWtrM0Y3QWdtWFhQWjBXdDBoN2Q1bFdEbUZLZm5qcEE4S2FPLUNPUXlpNGkwUGM5emhGRXJfTXN0Y3M2M0pMTHJCblpB?oc=5",
+      "date": "Wed, 29 Jul 2026 11:01:30 GMT",
+      "desc": "SK Hynix delivers record Q2 earnings, yet misses consensus&nbsp;&nbsp;KED Global"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 203500.0,
-      "change": -50500.0,
-      "pct": -19.88,
+      "price": 208500.0,
+      "change": -45500.0,
+      "pct": -17.91,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1360000.0,
-      "change": -456000.0,
-      "pct": -25.11,
+      "price": 1401000.0,
+      "change": -415000.0,
+      "pct": -22.85,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 352000.0,
-      "change": -51000.0,
-      "pct": -12.66,
+      "price": 353500.0,
+      "change": -49500.0,
+      "pct": -12.28,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 119200.0,
-      "change": -11200.0,
-      "pct": -8.59,
+      "price": 120400.0,
+      "change": -10000.0,
+      "pct": -7.67,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 198900.0,
-      "change": -26100.0,
-      "pct": -11.6,
+      "price": 201500.0,
+      "change": -23500.0,
+      "pct": -10.44,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5553.98,
-      "change": -1201.77,
-      "pct": -17.79,
+      "price": 5663.24,
+      "change": -1092.51,
+      "pct": -16.17,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1446.2,
-      "change": -18.24,
-      "pct": -1.25,
+      "price": 1451.78,
+      "change": -12.66,
+      "pct": -0.86,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-29 05:43 UTC"
+  "updatedAt": "2026-07-29 11:29 UTC"
 }
