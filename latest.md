@@ -1,18 +1,27 @@
-#ko-fi.com https://ko-fi.com/Manage/
-
-#500px.com/ https://500px.com/p/Vonxu?view=photos
-
-#github.com/ https://github.com/xur94-maker/SeoulInside
-
-#Sitemaps https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fseoulinside.substack.com%2F
-
-#Search Console https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&ie=UTF-8
-
-#instagram.com/ https://www.instagram.com/seoul_letter/
-
-#medium.com/ https://medium.com/p/import
 
 
+# K-pop / 연예 뉴스 사이트 링크 모음
+
+## 해외 (영문) 매체
+
+- **Soompi** — https://www.soompi.com/
+- **allkpop** — https://www.allkpop.com/
+- **Koreaboo** — https://www.koreaboo.com/
+- **Billboard K-Town (K-pop)** — https://www.billboard.com/c/music/k-town/
+
+## 국내 매체
+
+- **OSEN** — https://osen.mt.co.kr/
+- **Dispatch** — https://www.dispatch.co.kr/
+- **스타뉴스** — https://star.mt.co.kr/
+- **텐아시아** — https://tenasia.hankyung.com/
+- **스포츠조선 (연예)** — https://sports.chosun.com/entertainment/
+- **일간스포츠** — https://isplus.com/
+- **마이데일리** — https://www.mydaily.co.kr/
+- **뉴스엔** — https://newsen.com/
+- **이데일리 스타in** — https://star.edaily.co.kr/
+
+-----
  
 다음뉴스 실시간 트렌드
 https://news.daum.net/
@@ -50,6 +59,21 @@ https://moamoa.kr/
 
 # 더쿠
  https://theqoo.net/hot
+
+-----
+#ko-fi.com https://ko-fi.com/Manage/
+
+#500px.com/ https://500px.com/p/Vonxu?view=photos
+
+#github.com/ https://github.com/xur94-maker/SeoulInside
+
+#Sitemaps https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fseoulinside.substack.com%2F
+
+#Search Console https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&ie=UTF-8
+
+#instagram.com/ https://www.instagram.com/seoul_letter/
+
+#medium.com/ https://medium.com/p/import
 
 -----
 https://kimchi.pusan.ac.kr/kimchi/43683/subview.do
