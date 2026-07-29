@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "More than 100 aftershocks hit Japan after deadly quake that killed 13",
+      "title": "More than 100 aftershocks hit Japan after powerful quake that killed 13",
       "link": "https://www.bbc.co.uk/news/articles/cgk43y21j0do?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 11:10:54 GMT",
+      "date": "Wed, 29 Jul 2026 11:47:05 GMT",
       "desc": "People are being urged to stay alert, with earthquake aftershocks potentially reaching magnitude 7, officials say"
-    },
-    {
-      "title": "Japan in a ‘race against time’ to rescue people trapped beneath rubble after quake",
-      "link": "https://www.bbc.co.uk/news/videos/c3r0pg0dgrgo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 06:10:19 GMT",
-      "desc": "At least 13 people have been killed after the earthquake struck the island of Kyushu on Tuesday."
     },
     {
       "title": "Saudi Arabia joins US in strikes on Iran-backed militias in Iraq",
       "link": "https://www.bbc.co.uk/news/articles/c70g6y24d76o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 09:39:56 GMT",
+      "date": "Wed, 29 Jul 2026 13:48:41 GMT",
       "desc": "US Central Command says proxy groups launched attacks against US bases and Saudi energy infrastructure."
+    },
+    {
+      "title": "Thousands in Spain return home but new heatwave raises wildfire fears",
+      "link": "https://www.bbc.co.uk/news/articles/cwyjgwg8jddo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 14:27:13 GMT",
+      "desc": "Spain and France are both braced for the start of the fourth heatwave so far this summer and some fires have continued to burn."
+    },
+    {
+      "title": "Anthony Fauci refuses to answer questions during US Senate hearing about Covid origins",
+      "link": "https://www.bbc.co.uk/news/articles/cdx85vkk0gko?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 15:40:24 GMT",
+      "desc": "The former top US health official said he feared Republicans could try to trip him up and use his testimony to prosecute him for perjury."
     },
     {
       "title": "Russia charges Telegram founder Durov with facilitating terrorism",
       "link": "https://www.bbc.co.uk/news/articles/cj4kexqkpzno?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 29 Jul 2026 10:23:29 GMT",
       "desc": "The FSB claims the messenger app, created by Pavel Durov, has failed to remove accounts and channels used for recruitment by Ukraine's secret service."
-    },
-    {
-      "title": "Four women accuse Jared Leto of criminal sexual conduct",
-      "link": "https://www.bbc.co.uk/news/articles/cd7lg2nz2x2o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 05:00:07 GMT",
-      "desc": "The actor and musician faces allegations from 10 women in total who say he mistreated them as teenagers."
     }
   ],
   "koreaNews": [
@@ -45,6 +45,12 @@
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
+      "title": "Obstacles to unification can be overcome - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOMkhPYXlxUW1PVlJJbXVfellDajA0OS1zQXdGLTNncW9lYmhDZlhUc1dMSHVZbHFnb2lZYy14SEF6a09felh6SURNekNwNEY0UHR2R0xhV0JDMEl5akg1Mml5dVRncGJyZ3BqZ2Uxa2pXel9TSEdfV0NWYVA0V0xJU1dRM1hFZ3dtNmR3RXZvMDdxTFY3N3VranFGc9IBoAFBVV95cUxOamxpcDN6aERxLWtxUTI4QmtFLW03TVJ2c0MxQ2VWdmZRT2wtR1FOc2xYZEVaSW5GT3pJV2pZWVAydHg0ZjBGaVNGM2JUX0pONE43U3JvaXFMekdKa1VEMnNZM2c3RXlObF9EVUlwMVptTWFubFd1U3VYcjlqUWQtSE9xS0ZsTEdwT19ubUxMNEZRckN0N18xaG4yTmtnaTdT?oc=5",
+      "date": "Wed, 29 Jul 2026 14:37:02 GMT",
+      "desc": "Obstacles to unification can be overcome&nbsp;&nbsp;upi.com"
+    },
+    {
       "title": "South Korean Economy Likely Slowed in 2Q After Robust 1Q Growth - SME & Entrepreneurship Magazine",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcDdaN3gtWGFlaTFqeFRUZHFFZmRYWklweW03RzQyQ0U3WEJuU0JlaXJIWTRRODNkNXpldWJFc0hGblZqSkNPYzZER3hYckVhZWU0SEtoOTNkWEprZzY2cmp5a1Y5Rl9RcGg2WndVdUFrX043M3ZKS3U3bmQ0ZVNjQXk1U1E1elFP?oc=5",
       "date": "Wed, 29 Jul 2026 05:00:51 GMT",
@@ -57,16 +63,10 @@
       "desc": "How South Korea can ease Brazilian concerns to unlock trade in South America&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYUZrbDM4Q3U2eGh2QmE5Z3BGYnBzVDVBRDZpLTk1aWdkcFlCWVlIWk1yMWVLOUJtZG15WXVpRzQwNmstMENsQ2RHMURQYkRCam9ITV9iUTRmbHVUVlhKc1FFbi0zYThqUHNURl9wbTdwbFdWd2s0ajdwTmdNMmFvc3dCX3EzQkwyQjZLTjgyN3F5YUcwU1o1aDFkUTY?oc=5",
-      "date": "Wed, 17 Jun 2026 07:00:00 GMT",
-      "desc": "South Korea’s Economy Accelerates Despite the Middle East Energy Shock&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "Tech stocks extend sell-off with SoftBank losing 7% as AI plays take a hit - CNBC",
+      "title": "Chip stocks shed more than $1 trillion as selloff hits companies powering AI boom - CNBC",
       "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOWm5mYzh3X2p6d2t2clJubjIzc1VBR2txNEU4V2FvVEM5RmNHZGdHOFJOX1cxZlhEMG5zaEpJQ21WRmZncG0tZm1EQVF4ZnFDMTBhMHFKMXBxN0pUaVFaYmtUbTJ5b0ZxVzJXWHpOVkFqNXBxRTNxTU5tQ3VBS0ZsbNIBhgFBVV95cUxQT0hDOFV0dDBHN25YOE5KWGNWdGlvUEhuSF9XVjhpSV9sWDdxSXozSTJwSXNSTFZnZk0zNVc1bGJJTFVkX2Z5MmpYTXRqNjVRekNHN3B4ZlJIdFZmVk9heW0wY3ZiXzFIQUNfM2o5NVNWYmxWb3RXSHBZbHJ4LWNOSWd4SUQwZw?oc=5",
       "date": "Wed, 29 Jul 2026 02:44:00 GMT",
-      "desc": "Tech stocks extend sell-off with SoftBank losing 7% as AI plays take a hit&nbsp;&nbsp;CNBC"
+      "desc": "Chip stocks shed more than $1 trillion as selloff hits companies powering AI boom&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Asian chip stocks slide as China competition fears rattle AI trade - Reuters",
@@ -75,99 +75,99 @@
       "desc": "Asian chip stocks slide as China competition fears rattle AI trade&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "SK Hynix delivers record Q2 earnings, yet misses consensus - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1ubFE5VDFibndNX0RYYldzWlVYTkprYkc4UEZ4Q3FaTWtrM0Y3QWdtWFhQWjBXdDBoN2Q1bFdEbUZLZm5qcEE4S2FPLUNPUXlpNGkwUGM5emhGRXJfTXN0Y3M2M0pMTHJCblpB?oc=5",
-      "date": "Wed, 29 Jul 2026 11:01:30 GMT",
-      "desc": "SK Hynix delivers record Q2 earnings, yet misses consensus&nbsp;&nbsp;KED Global"
+      "title": "Samsung’s chip workers are jumping ship to rival SK Hynix - MIT Technology Review",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPTFIxaG5HN3FIZUhnYXFoVWtqM1UxTFE3SWxFZjZUWHplNDV5NUdvV2hzMXN6cVZXMUNnazNkV1paYzl2cjdXQXl5ZkdWU1NiZkRSQVVUQV94U25oRllpQThYV0gyQ1hFLTh0bTB6MUpJVTktR3dsU0tEWDN6VkhwSndEc20zNlNDV05aQWFCdHkxczjSAZgBQVVfeXFMT0M4U3Awb3U1OC13LUV4QWU1M09pQl90NzZEZnFFd21jY2xteFVIRGpGdTNyVkhLRTJjcmVkSVdUTE5zcDU4TTh2UjRKLUJyOHRidE1BTTAyMDhPZlRsRjd6WEdabnA3cVY5ZkZ0SzVMaGdUUkhOMXJsNEo4aW1uNE53S3JIdUY0ODhGOEVlbmJVMmRSTElBcEI?oc=5",
+      "date": "Tue, 28 Jul 2026 09:18:57 GMT",
+      "desc": "Samsung’s chip workers are jumping ship to rival SK Hynix&nbsp;&nbsp;MIT Technology Review"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 197.01,
-      "change": -9.83,
-      "pct": -4.75,
+      "price": 191.8,
+      "change": -4.71,
+      "pct": -2.4,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 392.31,
-      "change": -11.1,
-      "pct": -2.75,
+      "price": 376.31,
+      "change": -22.78,
+      "pct": -5.71,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 454.62,
-      "change": -67.33,
-      "pct": -12.9,
+      "price": 428.32,
+      "change": -66.62,
+      "pct": -13.46,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 86.3,
-      "change": -6.02,
-      "pct": -6.52,
+      "price": 82.97,
+      "change": -8.7,
+      "pct": -9.49,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 162.88,
-      "change": -4.09,
-      "pct": -2.45,
+      "price": 159.78,
+      "change": -10.26,
+      "pct": -6.03,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 244.74,
-      "change": -15.27,
-      "pct": -5.87,
+      "price": 230.16,
+      "change": -36.17,
+      "pct": -13.58,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 333.71,
-      "change": 13.97,
-      "pct": 4.37,
+      "price": 333.64,
+      "change": 7.08,
+      "pct": 2.17,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 340.08,
-      "change": 7.06,
-      "pct": 2.12,
+      "price": 339.89,
+      "change": 2.98,
+      "pct": 0.88,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 393.35,
-      "change": 11.65,
-      "pct": 3.05,
+      "price": 394.17,
+      "change": 5.07,
+      "pct": 1.3,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7428.78,
-      "change": 16.8,
-      "pct": 0.23,
+      "price": 7361.2,
+      "change": -51.98,
+      "pct": -0.7,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 24876.91,
-      "change": -98.91,
-      "pct": -0.4,
+      "price": 24574.02,
+      "change": -358.06,
+      "pct": -1.44,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1451.78,
-      "change": -12.66,
-      "pct": -0.86,
+      "price": 1452.08,
+      "change": -12.36,
+      "pct": -0.84,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-29 11:29 UTC"
+  "updatedAt": "2026-07-29 15:43 UTC"
 }
