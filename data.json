@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "More than 100 aftershocks hit Japan after powerful quake that killed 13",
-      "link": "https://www.bbc.co.uk/news/articles/cgk43y21j0do?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 11:47:05 GMT",
-      "desc": "People are being urged to stay alert, with earthquake aftershocks potentially reaching magnitude 7, officials say"
+      "title": "Saudi Arabia's dilemma as it tries to stay out of US-Iran war",
+      "link": "https://www.bbc.co.uk/news/articles/clyx83l8jv8o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 18:41:31 GMT",
+      "desc": "The kingdom faces a choice of whether to keep hitting back as a deterrent or to try to de-escalate the situation."
     },
     {
-      "title": "Saudi Arabia joins US in strikes on Iran-backed militias in Iraq",
-      "link": "https://www.bbc.co.uk/news/articles/c70g6y24d76o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 13:48:41 GMT",
-      "desc": "US Central Command says proxy groups launched attacks against US bases and Saudi energy infrastructure."
-    },
-    {
-      "title": "Thousands in Spain return home but new heatwave raises wildfire fears",
+      "title": "Two firefighters die in Crete as wildfires threaten parts of southern Europe",
       "link": "https://www.bbc.co.uk/news/articles/cwyjgwg8jddo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 14:27:13 GMT",
-      "desc": "Spain and France are both braced for the start of the fourth heatwave so far this summer and some fires have continued to burn."
+      "date": "Wed, 29 Jul 2026 16:23:41 GMT",
+      "desc": "Gale-force winds have whipped up the flames prompting the evacuation of several villages on the island, as parts of the continent also continue to tackle fires."
     },
     {
-      "title": "Anthony Fauci refuses to answer questions during US Senate hearing about Covid origins",
-      "link": "https://www.bbc.co.uk/news/articles/cdx85vkk0gko?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 15:40:24 GMT",
-      "desc": "The former top US health official said he feared Republicans could try to trip him up and use his testimony to prosecute him for perjury."
+      "title": "Zendaya on working with Tom Holland in Spider-Man: ‘When you’re best friends it’s easy’",
+      "link": "https://www.bbc.co.uk/news/articles/c0km3d2j6mko?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 20:21:46 GMT",
+      "desc": "The couple walked the white carpet at the London premiere of their latest film, Spiderman: Brand New Day."
     },
     {
-      "title": "Russia charges Telegram founder Durov with facilitating terrorism",
-      "link": "https://www.bbc.co.uk/news/articles/cj4kexqkpzno?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 10:23:29 GMT",
-      "desc": "The FSB claims the messenger app, created by Pavel Durov, has failed to remove accounts and channels used for recruitment by Ukraine's secret service."
+      "title": "'It's our home, it's our forest': BBC speaks to locals fighting France wildfire",
+      "link": "https://www.bbc.co.uk/news/articles/c62q5we799ro?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 16:49:41 GMT",
+      "desc": "Firefighters are battling flare-ups in 40C heat in the Gironde region, as some locals have refused to heed evacuations."
+    },
+    {
+      "title": "Salman Rushdie attacker convicted of terror offenses",
+      "link": "https://www.bbc.co.uk/news/articles/c86ng1g5wy4o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 29 Jul 2026 22:15:33 GMT",
+      "desc": "Hadi Matar, 28, was convicted of attempting to help Hezbollah by attacking the British-Indian author."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea’s stock market plunges as AI-driven boom fades - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmZNcEtQUnpRbHdtRWpiVng1dnhxVlJCM1VVdzZRQUpwMjh0cGJDLVRuWnZpSDdjc1Q5VkpYaUF3OWRZU0NPYjZzSUxvakwtMjBVLVdRSjdLOVI0QmpockFtQTIwamJHNW1TREJsZXBrN1ZQX001VHBfMldwUEQtTGVIMG5YTGN6aEdQeU9mOEsxTU51Y3NlRjI2UVFlbTZZTGVv0gGoAUFVX3lxTE8tVjBGU2Mtb3BsRTVwU3BZWmVua0ZBS3ZFT012R0JuTkgwQ0M3UlFTaEdRdURyYnM0X0lPTlBCQjFmVEpKYXBqOGhJR0RiRHRoZXpFdEk4eENJT0QtaXBTMXNHN3g5alF3T0FMU0U4RkJQTUlrWXJFODNkRVlVdUJOQTRyTFpScExfUHdYRjRUSUlWTERBNDNOazdneHlEZXhGTHVWUU1RVg?oc=5",
+      "date": "Wed, 29 Jul 2026 17:54:32 GMT",
+      "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;Al Jazeera"
+    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -39,10 +45,10 @@
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Thu, 23 Jul 2026 06:58:15 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
+      "title": "South Korean Firms Are Powering U.S. Energy Storage - keia.org",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPNGg3S0VOc3ZRTVNNUlFvNVRzeTFUV3cwemxfLTlrNFI2TnJPM3BDY0VpRU9qbG5ja21GWTlKaVJ3blR3U3NMdDI5SHgyU3VkRXB1NTl5eG1VTVRNWTNkakJSaF9lU25zTF8yYUplY1FnQzNOZlJMUGllbElUUEx1emN4RQ?oc=5",
+      "date": "Wed, 29 Jul 2026 13:33:36 GMT",
+      "desc": "South Korean Firms Are Powering U.S. Energy Storage&nbsp;&nbsp;keia.org"
     },
     {
       "title": "Obstacles to unification can be overcome - upi.com",
@@ -51,28 +57,22 @@
       "desc": "Obstacles to unification can be overcome&nbsp;&nbsp;upi.com"
     },
     {
-      "title": "South Korean Economy Likely Slowed in 2Q After Robust 1Q Growth - SME & Entrepreneurship Magazine",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcDdaN3gtWGFlaTFqeFRUZHFFZmRYWklweW03RzQyQ0U3WEJuU0JlaXJIWTRRODNkNXpldWJFc0hGblZqSkNPYzZER3hYckVhZWU0SEtoOTNkWEprZzY2cmp5a1Y5Rl9RcGg2WndVdUFrX043M3ZKS3U3bmQ0ZVNjQXk1U1E1elFP?oc=5",
-      "date": "Wed, 29 Jul 2026 05:00:51 GMT",
-      "desc": "South Korean Economy Likely Slowed in 2Q After Robust 1Q Growth&nbsp;&nbsp;SME & Entrepreneurship Magazine"
+      "title": "South Korea's Q2 GDP beats estimates on chip export boom - reuters.com",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
+      "date": "Wed, 22 Jul 2026 23:21:00 GMT",
+      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;reuters.com"
     },
     {
-      "title": "How South Korea can ease Brazilian concerns to unlock trade in South America - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQRFJKbEV0UW5ycjE3dEx3SlZhSnV2Q3ZiT29oQmh4NXZkZW1lM19WVm1sU05kbkdody1qbFUxNkJhSmFGTnNaSmpia0RTcUFSWkQ0YjRfZkNzanpXZ2RoVTZBb1dSRk45VWVTUVhwU2N6Y3VUOVNvcjIwVm9FNkgzVnBmTjRRem5TUFhHbzFEQ3liRXNYMXBaUDRVWVhvZDlpaHdGaXd5cUQtNmZMOV9jdjFvV1ZKUWRIUkE3bDdVeE5SUV9pTUHSAcYBQVVfeXFMT3RhcmdFWEI0aVZCY1BHR1FYRmZNdmZ1ay1WeDVxVjk5NVRqSmI4WUMycHVfZTFtbF9TbWhDMXpqcER2a2l5VF9NSlZnMlpER0VoUl93RHg5ZEFKNjBWak1zeUpmR1NNWlVqbV91cnNwb2c2SUU3eTNwM0N5V2NSTzFHdVpYQ282MWhTcHJFOEQ4Q0taU1dXMFZFNXUxTjJhOTFtbG1NR0xxbFZkNzBBaTg1YU5SSWRqT1lYN3FMeWdPUWpVQnJR?oc=5",
-      "date": "Wed, 29 Jul 2026 09:00:10 GMT",
-      "desc": "How South Korea can ease Brazilian concerns to unlock trade in South America&nbsp;&nbsp;South China Morning Post"
-    },
-    {
-      "title": "Chip stocks shed more than $1 trillion as selloff hits companies powering AI boom - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOWm5mYzh3X2p6d2t2clJubjIzc1VBR2txNEU4V2FvVEM5RmNHZGdHOFJOX1cxZlhEMG5zaEpJQ21WRmZncG0tZm1EQVF4ZnFDMTBhMHFKMXBxN0pUaVFaYmtUbTJ5b0ZxVzJXWHpOVkFqNXBxRTNxTU5tQ3VBS0ZsbNIBhgFBVV95cUxQT0hDOFV0dDBHN25YOE5KWGNWdGlvUEhuSF9XVjhpSV9sWDdxSXozSTJwSXNSTFZnZk0zNVc1bGJJTFVkX2Z5MmpYTXRqNjVRekNHN3B4ZlJIdFZmVk9heW0wY3ZiXzFIQUNfM2o5NVNWYmxWb3RXSHBZbHJ4LWNOSWd4SUQwZw?oc=5",
-      "date": "Wed, 29 Jul 2026 02:44:00 GMT",
-      "desc": "Chip stocks shed more than $1 trillion as selloff hits companies powering AI boom&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "Asian chip stocks slide as China competition fears rattle AI trade - Reuters",
+      "title": "Asian chip stocks slide as China competition fears rattle AI trade - reuters.com",
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNbm9DUFBRMVNrTExpUDkzSlpGZGxTaEtRbTVWZTNjTVlzRklHX0lBVW9fcU5ULTFBbFlZb040TlVRR0pkNGZsRUo1TkhiLU95SzVwX0N0OC1PU2x3bXkySE1ZSmlDcldEZjF1OWR5NnU1M3RVQ3lvQ2pLeHlMNjQxT3dienkwRERwZlhWWlZwMXpTRVQ1czlFVVZReFpoelhHb202ZVB1VnFpR0llQ1Fsd2N0RDNsa0hiRlE?oc=5",
       "date": "Tue, 28 Jul 2026 00:57:00 GMT",
-      "desc": "Asian chip stocks slide as China competition fears rattle AI trade&nbsp;&nbsp;Reuters"
+      "desc": "Asian chip stocks slide as China competition fears rattle AI trade&nbsp;&nbsp;reuters.com"
+    },
+    {
+      "title": "AMD, Intel and Micron extend losses as chip stocks get clobbered - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQTE5ReURiN3E4azk1Q0xhR1FzQmZpV3JCNmw4NnVvV21fUEw3b3lNRTV3XzlxUXNBRW9rMzluQU5DTFlYMm9QX3QxNjkyWHZuWDl5MGVrTVkwbFpVRVg3a3Y3YW1iSzByU29jYmRFMFhoY1hDRGVjdmV5NEM0dGVGSEZuVDFGWDM0VFozUmxpcnZ3Rm5zcW9nZHRLUmpZYk5IdlHSAacBQVVfeXFMTmk4b0Nkd25faFlwV3U3OVJheGxMSzdWNHFLSHQ3SktjRV9BamdvUTJSU3QtdFM0UUpUYWVDVUdfOW0xWVlwMEMtTmgzek9LTUdwNWFlOHlLQjdFN0VZVjZlbVZOQ0ZEbVViNFVLWVlSb01RbUxPeHVKeURPTHQ2QTY1TXdXSHdHWFA0d2ZRSDVRejhDQzNFenBaQ0E1ckIwNHRGdXpfRlk?oc=5",
+      "date": "Tue, 28 Jul 2026 01:02:00 GMT",
+      "desc": "AMD, Intel and Micron extend losses as chip stocks get clobbered&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung’s chip workers are jumping ship to rival SK Hynix - MIT Technology Review",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 191.8,
-      "change": -4.71,
-      "pct": -2.4,
+      "price": 190.01,
+      "change": -6.5,
+      "pct": -3.31,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 376.31,
-      "change": -22.78,
-      "pct": -5.71,
+      "price": 374.67,
+      "change": -24.42,
+      "pct": -6.12,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 428.32,
-      "change": -66.62,
-      "pct": -13.46,
+      "price": 429.56,
+      "change": -65.39,
+      "pct": -13.21,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 82.97,
-      "change": -8.7,
-      "pct": -9.49,
+      "price": 81.88,
+      "change": -9.79,
+      "pct": -10.68,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 159.78,
-      "change": -10.26,
-      "pct": -6.03,
+      "price": 155.68,
+      "change": -14.36,
+      "pct": -8.45,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 230.16,
-      "change": -36.17,
-      "pct": -13.58,
+      "price": 224.89,
+      "change": -41.44,
+      "pct": -15.56,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 333.64,
-      "change": 7.08,
-      "pct": 2.17,
+      "price": 336.71,
+      "change": 10.15,
+      "pct": 3.11,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 339.89,
-      "change": 2.98,
-      "pct": 0.88,
+      "price": 338.19,
+      "change": 1.28,
+      "pct": 0.38,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 394.17,
-      "change": 5.07,
-      "pct": 1.3,
+      "price": 390.54,
+      "change": 1.44,
+      "pct": 0.37,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7361.2,
-      "change": -51.98,
-      "pct": -0.7,
+      "price": 7316.15,
+      "change": -97.03,
+      "pct": -1.31,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 24574.02,
-      "change": -358.06,
-      "pct": -1.44,
+      "price": 24442.94,
+      "change": -489.14,
+      "pct": -1.96,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1452.08,
-      "change": -12.36,
-      "pct": -0.84,
+      "price": 1443.98,
+      "change": -20.46,
+      "pct": -1.4,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-29 15:43 UTC"
+  "updatedAt": "2026-07-29 22:56 UTC"
 }
