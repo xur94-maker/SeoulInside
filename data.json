@@ -3,8 +3,8 @@
     {
       "title": "US launches 'heavy' strikes on Iran after attempted attack on American troops",
       "link": "https://www.bbc.co.uk/news/articles/c74gwdzywmeo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 30 Jul 2026 03:33:01 GMT",
-      "desc": "The US military said the strikes were in response to Iran firing missiles at US forces in the Middle East on Tuesday."
+      "date": "Thu, 30 Jul 2026 10:49:14 GMT",
+      "desc": "After a short period of relative calm when hostilities were paused, both sides have now restarted missile attacks."
     },
     {
       "title": "Saudi Arabia's dilemma as it tries to stay out of US-Iran war",
@@ -13,22 +13,22 @@
       "desc": "The kingdom faces a choice of whether to keep hitting back as a deterrent or to try to de-escalate the situation."
     },
     {
-      "title": "Three Greek firefighters die as wildfires threaten parts of southern Europe",
-      "link": "https://www.bbc.co.uk/news/articles/cwyjgwg8jddo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 30 Jul 2026 01:53:25 GMT",
-      "desc": "Gale-force winds on Crete have whipped up flames prompting the evacuation of several villages, as parts of the continent continue to tackle fires."
+      "title": "Missile that left crater deep inside Poland was probably Russian - Polish PM",
+      "link": "https://www.bbc.co.uk/news/articles/cwymkgenv2ro?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 30 Jul 2026 09:56:06 GMT",
+      "desc": "The unidentified object caused a 10m-wide (33ft) crater a short distance from the village of Tarnawa Kolonia, about 100km from the border with Ukraine during a Russian attack on the city of Lviv."
     },
     {
-      "title": "'It's our home, it's our forest': BBC speaks to locals fighting France wildfire",
-      "link": "https://www.bbc.co.uk/news/articles/c62q5we799ro?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 16:49:41 GMT",
-      "desc": "Firefighters are battling flare-ups in 40C heat in the Gironde region, as some locals have refused to heed evacuations."
+      "title": "Thousands evacuated in Crete as European wildfires continue to rage",
+      "link": "https://www.bbc.co.uk/news/articles/c9w01781981o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 30 Jul 2026 09:10:11 GMT",
+      "desc": "Strong winds have fanned the flames in the Rethymno region as wildfires continue to ravage the Greek island."
     },
     {
-      "title": "Zendaya on working with Tom Holland in Spider-Man: ‘When you’re best friends it’s easy’",
-      "link": "https://www.bbc.co.uk/news/articles/c0km3d2j6mko?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 29 Jul 2026 20:21:46 GMT",
-      "desc": "The couple walked the white carpet at the London premiere of their latest film, Spiderman: Brand New Day."
+      "title": "Nicaraguan leader proposes extending presidential term by another year",
+      "link": "https://www.bbc.co.uk/news/articles/c0m78k3k31jo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 30 Jul 2026 10:34:07 GMT",
+      "desc": "It is not the first time the constitution has been amended to allow Daniel Ortega, 80, to stay in power for longer."
     }
   ],
   "koreaNews": [
@@ -39,28 +39,34 @@
       "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;Al Jazeera"
     },
     {
+      "title": "South Korean stocks erase about $2T as AI-led selloff deepens - Anadolu Ajansı",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPRGlzei01NmRKQWt3RmdIWXdIV0RkRWhQUkFJeV91Q245ODdQOWhzVGxkN01WNFZiWjFIUGZialJVOVp0a0l1ZWZyMVRnMnE4Z3Y3RkxrbDM4aWVYYVBwRXludEtXUEVjZ3EyenhZS2JvQWNZNGlCRmdPVS1SOVBBNjdldThETnQ5RnpWOUVJV09sSlhvNG5RS2ZKTzVNRmRybGVV?oc=5",
+      "date": "Thu, 30 Jul 2026 09:32:19 GMT",
+      "desc": "South Korean stocks erase about $2T as AI-led selloff deepens&nbsp;&nbsp;Anadolu Ajansı"
+    },
+    {
+      "title": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors - The Diplomat – Asia-Pacific",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQ29DUHpKZmZzb29VMUNpeDEzNkF0SDliX25fXzhVdUQxWXQ0SW5UcEhTX3Y1TDd4MzFPWU1oZ2hsLWg0Uk1JdlpnVDlfYzNkdWRnbVM0V0Y0WldvZ1Zsc0E2N096elJhS0I1OVpNVm9PSW1JdWpvQk1PSVYzeTZQTzhJUWpKVzAxNGZTbnVScmtjWFFRTF96MWJaQ2FYdlBwSGctbXYwU21XeGRRQWdTaHVOTWJKWHIy?oc=5",
+      "date": "Thu, 30 Jul 2026 07:14:02 GMT",
+      "desc": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors&nbsp;&nbsp;The Diplomat – Asia-Pacific"
+    },
+    {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
       "date": "Thu, 23 Jul 2026 08:22:00 GMT",
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "South Korea export growth seen easing but chip boom to hold: Reuters poll - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNU1o0WDdjN0o5ZDg4cmt0M2pFWVlrSDM3bTRUUHlCeVN3ODF2Q1RjczJaVGlHaWNfbEZsdy1fdlFQUElIZGg0WjZBbUlvbXpQU1h3bC1TZ1Q1Rk9XWVUxdDdNNFVRNDk1bnVzRWhoSTFWakxwY1E5bTEtdWo4QjRrRGl2VllsYkt1RWFXaE9SYk9ZWDBkNjVMb19ma2NFRm5tNEh4eTY2V2dTaUE?oc=5",
-      "date": "Thu, 30 Jul 2026 05:06:00 GMT",
-      "desc": "South Korea export growth seen easing but chip boom to hold: Reuters poll&nbsp;&nbsp;Reuters"
+      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
+      "date": "Wed, 22 Jul 2026 23:21:00 GMT",
+      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korean Firms Are Powering U.S. Energy Storage - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPNGg3S0VOc3ZRTVNNUlFvNVRzeTFUV3cwemxfLTlrNFI2TnJPM3BDY0VpRU9qbG5ja21GWTlKaVJ3blR3U3NMdDI5SHgyU3VkRXB1NTl5eG1VTVRNWTNkakJSaF9lU25zTF8yYUplY1FnQzNOZlJMUGllbElUUEx1emN4RQ?oc=5",
-      "date": "Wed, 29 Jul 2026 13:33:36 GMT",
-      "desc": "South Korean Firms Are Powering U.S. Energy Storage&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "Samsung reports record profit as South Korean chip giants benefit from global AI boom - The Washington Post",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNbzktV0ZQMnYwY2t2MXZjRnZoMGlPMmNkaUNULUY1ZXZBWjlNTnVadlBRQ25zYVpIWXVvZXpRQVFSdkpSREt4dHAzZ20yTW5abDFtcXhEY1E1N0NhYkZoSzM5cHBBV3NJZG5hS1FNeWM3cUxVQVBfS29GbVZQanhDSHh3YU5IVEVVYjJmTWVYYnNaMkUwdnZLMGFvdjJQTU51ODBqTEVma1hRT1RDZk1rX2ZFUjV0X0dqUXo4LWYzM3dkZUtzV1psVA?oc=5",
-      "date": "Thu, 30 Jul 2026 04:14:50 GMT",
-      "desc": "Samsung reports record profit as South Korean chip giants benefit from global AI boom&nbsp;&nbsp;The Washington Post"
+      "title": "Samsung’s chip workers are jumping ship to rival SK Hynix - MIT Technology Review",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPTFIxaG5HN3FIZUhnYXFoVWtqM1UxTFE3SWxFZjZUWHplNDV5NUdvV2hzMXN6cVZXMUNnazNkV1paYzl2cjdXQXl5ZkdWU1NiZkRSQVVUQV94U25oRllpQThYV0gyQ1hFLTh0bTB6MUpJVTktR3dsU0tEWDN6VkhwSndEc20zNlNDV05aQWFCdHkxczjSAZgBQVVfeXFMT0M4U3Awb3U1OC13LUV4QWU1M09pQl90NzZEZnFFd21jY2xteFVIRGpGdTNyVkhLRTJjcmVkSVdUTE5zcDU4TTh2UjRKLUJyOHRidE1BTTAyMDhPZlRsRjd6WEdabnA3cVY5ZkZ0SzVMaGdUUkhOMXJsNEo4aW1uNE53S3JIdUY0ODhGOEVlbmJVMmRSTElBcEI?oc=5",
+      "date": "Tue, 28 Jul 2026 09:18:57 GMT",
+      "desc": "Samsung’s chip workers are jumping ship to rival SK Hynix&nbsp;&nbsp;MIT Technology Review"
     },
     {
       "title": "Asian chip stocks slide as China competition fears rattle AI trade - Reuters",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQTE5ReURiN3E4azk1Q0xhR1FzQmZpV3JCNmw4NnVvV21fUEw3b3lNRTV3XzlxUXNBRW9rMzluQU5DTFlYMm9QX3QxNjkyWHZuWDl5MGVrTVkwbFpVRVg3a3Y3YW1iSzByU29jYmRFMFhoY1hDRGVjdmV5NEM0dGVGSEZuVDFGWDM0VFozUmxpcnZ3Rm5zcW9nZHRLUmpZYk5IdlHSAacBQVVfeXFMTmk4b0Nkd25faFlwV3U3OVJheGxMSzdWNHFLSHQ3SktjRV9BamdvUTJSU3QtdFM0UUpUYWVDVUdfOW0xWVlwMEMtTmgzek9LTUdwNWFlOHlLQjdFN0VZVjZlbVZOQ0ZEbVViNFVLWVlSb01RbUxPeHVKeURPTHQ2QTY1TXdXSHdHWFA0d2ZRSDVRejhDQzNFenBaQ0E1ckIwNHRGdXpfRlk?oc=5",
       "date": "Tue, 28 Jul 2026 01:02:00 GMT",
       "desc": "AMD, Intel and Micron extend losses as chip stocks get clobbered&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "Samsung’s chip workers are jumping ship to rival SK Hynix - MIT Technology Review",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPTFIxaG5HN3FIZUhnYXFoVWtqM1UxTFE3SWxFZjZUWHplNDV5NUdvV2hzMXN6cVZXMUNnazNkV1paYzl2cjdXQXl5ZkdWU1NiZkRSQVVUQV94U25oRllpQThYV0gyQ1hFLTh0bTB6MUpJVTktR3dsU0tEWDN6VkhwSndEc20zNlNDV05aQWFCdHkxczjSAZgBQVVfeXFMT0M4U3Awb3U1OC13LUV4QWU1M09pQl90NzZEZnFFd21jY2xteFVIRGpGdTNyVkhLRTJjcmVkSVdUTE5zcDU4TTh2UjRKLUJyOHRidE1BTTAyMDhPZlRsRjd6WEdabnA3cVY5ZkZ0SzVMaGdUUkhOMXJsNEo4aW1uNE53S3JIdUY0ODhGOEVlbmJVMmRSTElBcEI?oc=5",
-      "date": "Tue, 28 Jul 2026 09:18:57 GMT",
-      "desc": "Samsung’s chip workers are jumping ship to rival SK Hynix&nbsp;&nbsp;MIT Technology Review"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 206500.0,
-      "change": -13500.0,
-      "pct": -6.14,
+      "price": 207000.0,
+      "change": -13000.0,
+      "pct": -5.91,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1309000.0,
-      "change": -241000.0,
-      "pct": -15.55,
+      "price": 1322000.0,
+      "change": -228000.0,
+      "pct": -14.71,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 345000.0,
-      "change": -19000.0,
-      "pct": -5.22,
+      "price": 351000.0,
+      "change": -13000.0,
+      "pct": -3.57,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 119100.0,
-      "change": -2700.0,
-      "pct": -2.22,
+      "price": 120800.0,
+      "change": -1000.0,
+      "pct": -0.82,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 195900.0,
-      "change": -14100.0,
-      "pct": -6.71,
+      "price": 194700.0,
+      "change": -15300.0,
+      "pct": -7.29,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5560.32,
-      "change": -463.34,
-      "pct": -7.69,
+      "price": 5593.56,
+      "change": -430.1,
+      "pct": -7.14,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1438.18,
-      "change": -14.98,
-      "pct": -1.03,
+      "price": 1432.48,
+      "change": -20.68,
+      "pct": -1.42,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-30 05:32 UTC"
+  "updatedAt": "2026-07-30 11:13 UTC"
 }
