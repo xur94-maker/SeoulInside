@@ -1,10 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "About 60,000 migrants arrive in Ceuta in 24 hours, Spanish territory's leader says",
+      "title": "Spain's PM blames traffickers after 60,000 migrants reach Ceuta from Morocco",
       "link": "https://www.bbc.co.uk/news/articles/cx2kp639yx4o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 31 Jul 2026 14:20:18 GMT",
-      "desc": "Spain's prime minister described the situation as an \"attack\" on its North African territory and said all illegal migrants would be returned to Morocco."
+      "date": "Fri, 31 Jul 2026 17:03:47 GMT",
+      "desc": "Spain said most had returned to Morocco by Friday evening, as Italy suspended its Schengen agreement on free movement with Madrid."
     },
     {
       "title": "Bowen: Plan for Hamas to disarm faces big obstacles, yet it offers rare hope for Gaza",
@@ -13,10 +13,10 @@
       "desc": "The realities of politics, war, zero trust, the deaths of thousands and the destruction of Gaza will make any agreement very complicated."
     },
     {
-      "title": "AC Milan and Italy great Baresi dies aged 66",
-      "link": "https://www.bbc.co.uk/sport/football/articles/ckgvlz45l3eo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 31 Jul 2026 09:44:48 GMT",
-      "desc": "AC Milan and Italy great Franco Baresi has died at the age of 66, the Italian club announces."
+      "title": "Body of US climber the latest recovered after Pakistan avalanche",
+      "link": "https://www.bbc.co.uk/news/articles/cddjz1r01l8o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 31 Jul 2026 20:22:46 GMT",
+      "desc": "The bodies of two other climbers have already been recovered from the mountain, while others are still missing."
     },
     {
       "title": "Peru's ex-president has 15-year jail sentence for corruption charges overturned",
@@ -31,143 +31,94 @@
       "desc": "Around 500 people, mostly tourists, are evacuated by boat from Agios Vasileios after becoming trapped."
     }
   ],
-  "koreaNews": [
-    {
-      "title": "South Korea’s stock market plunges as AI-driven boom fades - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmZNcEtQUnpRbHdtRWpiVng1dnhxVlJCM1VVdzZRQUpwMjh0cGJDLVRuWnZpSDdjc1Q5VkpYaUF3OWRZU0NPYjZzSUxvakwtMjBVLVdRSjdLOVI0QmpockFtQTIwamJHNW1TREJsZXBrN1ZQX001VHBfMldwUEQtTGVIMG5YTGN6aEdQeU9mOEsxTU51Y3NlRjI2UVFlbTZZTGVv0gGoAUFVX3lxTE8tVjBGU2Mtb3BsRTVwU3BZWmVua0ZBS3ZFT012R0JuTkgwQ0M3UlFTaEdRdURyYnM0X0lPTlBCQjFmVEpKYXBqOGhJR0RiRHRoZXpFdEk4eENJT0QtaXBTMXNHN3g5alF3T0FMU0U4RkJQTUlrWXJFODNkRVlVdUJOQTRyTFpScExfUHdYRjRUSUlWTERBNDNOazdneHlEZXhGTHVWUU1RVg?oc=5",
-      "date": "Wed, 29 Jul 2026 17:54:32 GMT",
-      "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;Al Jazeera"
-    },
-    {
-      "title": "Plunge in South Korea's stock market fails to mask the strong momentum in memory chips! South Korea, the 'canary in the global economic coal mine,' is expected to see exports surge by 59% year-on-year in July. - Moomoo",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOQlpvWUFOaEQ4YU1BelZoVW9nelpEM2l4VV8yY2l1eFFTb1RVbWJHcXh1VHNoTFBaUGwxcGdkUW9FSkh2V19Fc203SmpPNUV2aWJlWkFhX1JfeU1rbEM5cnlFSjloaElka3NScDRwYlQ0VFhaTHFXb0loUmZXU1gza3JTMVFNTVpPei1PZ1pfVndYTzZqMkJV?oc=5",
-      "date": "Thu, 30 Jul 2026 11:38:27 GMT",
-      "desc": "Plunge in South Korea's stock market fails to mask the strong momentum in memory chips! South Korea, the 'canary in the global economic coal mine,' is expected to see exports surge by 59% year-on-year"
-    },
-    {
-      "title": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea - Japan Wire by Kyodo News",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1JMUlHZHVTQUxFamR6YkpzcjA2bmU0NFVjQ1hDaUo2SmxQdDdQdkFSZ1otdHFEQVQ3YjEwWXBLZXZmS0k5QWZNcFVQWDJHWEpqLTRnYWhhckxqdw?oc=5",
-      "date": "Fri, 31 Jul 2026 07:32:24 GMT",
-      "desc": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea&nbsp;&nbsp;Japan Wire by Kyodo News"
-    },
-    {
-      "title": "AI reckoning makes South Korean economy run for cover - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQVR4RkFyTlYydG8yM3hrTWI5SmJxUlI4ZXFRODRYM1BqQjZjQUVYbHNqcjdSVldtYlJSSlNiWWxGalBZbkxEejlpNXdZMWxhcWpUQmFGZ0JDNm5CVlJua0JoeWI3T05XcTY5N2lXZ2NjbVphalFtRnZ4VmVjN3k2UElVdXY4TDRLUWpBNw?oc=5",
-      "date": "Fri, 31 Jul 2026 05:53:07 GMT",
-      "desc": "AI reckoning makes South Korean economy run for cover&nbsp;&nbsp;Asia Times"
-    },
-    {
-      "title": "N. Korean economy grows over 3% for 3rd consecutive year in 2025: BOK - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNaGl2ZFBsVUhIeTVqSEdHRno0ZHV1LXh4VnZESXd3T0R5WnRPUnJEdU9YeWpfbHl6Wm5jQzNJNzV2Q01Fc25uVWFJNlhQZnlhU1FSWFZlQkE4UXZLYkx5dDhROEgyb3BFQVBxSk1ZZUhKY0FFT19RTnZxOEhBN3VQSjl2MEx6bjE3aVpTZ1I0d3dhYTE0eTNTTzFjM0VNeFVNTnRBRmRnNnZrM0otc1JXR3dlNWtER1VvNU5DbnBmMVREYXRBV1B6Wi1R0gHPAUFVX3lxTE14RXRyZE1pYUlSN0F1U2tBZVdVNm8wWEZCeDBaSTZoeXp1eG9McjVXV0RLQmZMVDVKTW5DODhhTGJpUDY4VV9PMmRkaUNZc0NsbWtYWmgwSTNYSzVkX0hKRURXWVJsVXdiWGZSQXdqSWxoeGJ1aHlRTmJ2VXk1NEN3T05pZ1dFQ3lETTgxTkxyTFNGSWRuYzgwTkRDRlJRYVY5MDdZSFYxdGJPRXpFejJwbkE4ODFEb2JSRVZwdW16ZGpDT0dlTUVaMmlFTkd2Yw?oc=5",
-      "date": "Fri, 31 Jul 2026 04:16:03 GMT",
-      "desc": "N. Korean economy grows over 3% for 3rd consecutive year in 2025: BOK&nbsp;&nbsp;The Korea Times"
-    },
-    {
-      "title": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1QSWFIbG5ZZC1Tdm0zNVB0UHptVnhRMmpoWkpXbVJDV01VWW0zZHhDRXF2U2lEQ2JiX205NmZOaUt0RkEwSW1rdEx2amg5UDVYLUgwdGR0bHlrU1NzTVBlaTRWdFdpWllGWTNleGNQM3FxckR6Rml4ZHV4SzZud9IBgwFBVV95cUxNc0tPRFNqMy0wNzBYRGRrYUpCZ1NvdHU1MGlUaFpIX0xEMnBqOTZOTW9oMmZWOFN2a0JQeldPN0h2c2tiM3BLcWZ1UE4zQ1hydFlGT3U1Y1h3eUNMT1VDUXFycWFHazBXdjRkUzlLdlJjYTFQeS1Sc0tRWWxrVng0aURNWQ?oc=5",
-      "date": "Fri, 31 Jul 2026 00:14:00 GMT",
-      "desc": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "Samsung, SK Hynix Semiconductors Power South Korea's $44.8B Export Record - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPOGlnOEowQ0lGVlhZYS1qTUs5X3NhRnV0WmloVFlZanVmbmNZdE1SZHVTTTJkUnpwUkdMOGxtX085Z0xUSXo4ZVZ6X19xOEpvTS16Y3BobXhfd1pEY3dveE82WWNaRlRJb29ZWUxFRlV2WVFJalJsNEM5ZWsyZDNoZ08yUFZva3FD?oc=5",
-      "date": "Fri, 31 Jul 2026 15:44:52 GMT",
-      "desc": "Samsung, SK Hynix Semiconductors Power South Korea's $44.8B Export Record&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Samsung, SK Hynix shares jump nearly 30%; Kospi posts record daily gain - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9VZkh1T0ZIcFVsNFVjWGlBWlZMNlZNczI3QU5FQ09ycGYtWGlGUERnaV83Znd5c1dkNk11cWNzeGpNTXdYZjJjdUpPOVlyb3otbXpnczBOc3JtVVVCa3FnUGdvNDA0SER2VGw0ZXpreUM4MnNLSF9BMlFR?oc=5",
-      "date": "Fri, 31 Jul 2026 12:20:00 GMT",
-      "desc": "Samsung, SK Hynix shares jump nearly 30%; Kospi posts record daily gain&nbsp;&nbsp;KED Global"
-    }
-  ],
+  "koreaNews": [],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 196.16,
-      "change": 6.15,
-      "pct": 3.23,
+      "price": 200.75,
+      "change": 10.74,
+      "pct": 5.65,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 405.48,
-      "change": 30.81,
-      "pct": 8.22,
+      "price": 404.25,
+      "change": 29.58,
+      "pct": 7.89,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 488.65,
-      "change": 59.09,
-      "pct": 13.76,
+      "price": 476.15,
+      "change": 46.59,
+      "pct": 10.85,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 92.03,
-      "change": 10.15,
-      "pct": 12.4,
+      "price": 90.2,
+      "change": 8.32,
+      "pct": 10.16,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 148.31,
-      "change": -7.37,
-      "pct": -4.73,
+      "price": 147.61,
+      "change": -8.07,
+      "pct": -5.18,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 244.91,
-      "change": 20.02,
-      "pct": 8.9,
+      "price": 239.69,
+      "change": 14.8,
+      "pct": 6.58,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 352.12,
-      "change": 15.41,
-      "pct": 4.58,
+      "price": 356.13,
+      "change": 19.42,
+      "pct": 5.77,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 300.78,
-      "change": -37.41,
-      "pct": -11.06,
+      "price": 308.91,
+      "change": -29.28,
+      "pct": -8.66,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 461.79,
-      "change": 71.25,
-      "pct": 18.24,
+      "price": 464.72,
+      "change": 74.18,
+      "pct": 18.99,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7448.21,
-      "change": 132.06,
-      "pct": 1.81,
+      "price": 7489.72,
+      "change": 173.57,
+      "pct": 2.37,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25162.48,
-      "change": 719.54,
-      "pct": 2.94,
+      "price": 25373.85,
+      "change": 930.91,
+      "pct": 3.81,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +174,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1436.78,
-      "change": -5.5,
-      "pct": -0.38,
+      "price": 1442.07,
+      "change": -0.21,
+      "pct": -0.01,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-31 15:54 UTC"
+  "updatedAt": "2026-07-31 22:56 UTC"
 }
