@@ -1,22 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "About 49,000 migrants enter Spanish territory of Ceuta in 24 hours, officials say",
+      "title": "About 60,000 migrants arrive in Ceuta in 24 hours, Spanish territory's leader says",
       "link": "https://www.bbc.co.uk/news/articles/cx2kp639yx4o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 31 Jul 2026 11:14:29 GMT",
-      "desc": "The estimated number of arrivals is more than half of the population of the city, which is about 83,600."
+      "date": "Fri, 31 Jul 2026 14:20:18 GMT",
+      "desc": "Spain's prime minister described the situation as an \"attack\" on its North African territory and said all illegal migrants would be returned to Morocco."
     },
     {
-      "title": "Hamas says it has agreed to disarm after Trump announces Board of Peace plan",
-      "link": "https://www.bbc.co.uk/news/articles/cj03m512r4go?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 31 Jul 2026 07:03:29 GMT",
-      "desc": "A senior Hamas official has told the BBC they have agreed to the Board of Peace's plan. Israel has not commented."
-    },
-    {
-      "title": "If Hamas disarmament plan holds, it could mark first credible step to ending Gaza war",
-      "link": "https://www.bbc.co.uk/news/articles/c9d8gd87d83o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 31 Jul 2026 04:25:49 GMT",
-      "desc": "The plan - if successful - potentially removes the most significant obstacle to advancing the Trump-backed peace initiative in Gaza."
+      "title": "Bowen: Plan for Hamas to disarm faces big obstacles, yet it offers rare hope for Gaza",
+      "link": "https://www.bbc.co.uk/news/articles/c2dkje4p4klo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 31 Jul 2026 15:18:31 GMT",
+      "desc": "The realities of politics, war, zero trust, the deaths of thousands and the destruction of Gaza will make any agreement very complicated."
     },
     {
       "title": "AC Milan and Italy great Baresi dies aged 66",
@@ -29,6 +23,12 @@
       "link": "https://www.bbc.co.uk/news/articles/cx2j9nj88rro?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 31 Jul 2026 10:32:17 GMT",
       "desc": "Ollanta Humala had been convicted of money laundering offences alongside his wife in 2025."
+    },
+    {
+      "title": "Hundreds escape Greek wildfire by sea as blazes continue across Europe",
+      "link": "https://www.bbc.co.uk/news/articles/c0kmzx8vpv4o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 31 Jul 2026 14:26:07 GMT",
+      "desc": "Around 500 people, mostly tourists, are evacuated by boat from Agios Vasileios after becoming trapped."
     }
   ],
   "koreaNews": [
@@ -45,10 +45,10 @@
       "desc": "Plunge in South Korea's stock market fails to mask the strong momentum in memory chips! South Korea, the 'canary in the global economic coal mine,' is expected to see exports surge by 59% year-on-year"
     },
     {
-      "title": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOVGMyMGZFeEtYaWlCQjRHaG5nWGpVTHR0RTkzZVN4b3BLekFUdzBrT2EtRDVXT3plTWpvTG5LYmhNYTV4RXYtdno3X3hrREVMM3dOYVJvVWtGNTZTZWxnYWxHUVV1UFJ5QVJlYm5SVlR5WEJMQnZHdWRBa2lyS3lLeVdzMnV2d0xKVW12THpsalR1QWJpOWZXLWc4ZzNET1NzRWUxYnJIUmQ0SHFETVU4bWJHa044OU91d3AwSExXX2xmRnNMX1FONl9oQmJVcms?oc=5",
-      "date": "Fri, 31 Jul 2026 03:04:00 GMT",
-      "desc": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says&nbsp;&nbsp;Reuters"
+      "title": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea - Japan Wire by Kyodo News",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1JMUlHZHVTQUxFamR6YkpzcjA2bmU0NFVjQ1hDaUo2SmxQdDdQdkFSZ1otdHFEQVQ3YjEwWXBLZXZmS0k5QWZNcFVQWDJHWEpqLTRnYWhhckxqdw?oc=5",
+      "date": "Fri, 31 Jul 2026 07:32:24 GMT",
+      "desc": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea&nbsp;&nbsp;Japan Wire by Kyodo News"
     },
     {
       "title": "AI reckoning makes South Korean economy run for cover - Asia Times",
@@ -57,10 +57,10 @@
       "desc": "AI reckoning makes South Korean economy run for cover&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea - Japan Wire by Kyodo News",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1JMUlHZHVTQUxFamR6YkpzcjA2bmU0NFVjQ1hDaUo2SmxQdDdQdkFSZ1otdHFEQVQ3YjEwWXBLZXZmS0k5QWZNcFVQWDJHWEpqLTRnYWhhckxqdw?oc=5",
-      "date": "Fri, 31 Jul 2026 07:32:24 GMT",
-      "desc": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea&nbsp;&nbsp;Japan Wire by Kyodo News"
+      "title": "N. Korean economy grows over 3% for 3rd consecutive year in 2025: BOK - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNaGl2ZFBsVUhIeTVqSEdHRno0ZHV1LXh4VnZESXd3T0R5WnRPUnJEdU9YeWpfbHl6Wm5jQzNJNzV2Q01Fc25uVWFJNlhQZnlhU1FSWFZlQkE4UXZLYkx5dDhROEgyb3BFQVBxSk1ZZUhKY0FFT19RTnZxOEhBN3VQSjl2MEx6bjE3aVpTZ1I0d3dhYTE0eTNTTzFjM0VNeFVNTnRBRmRnNnZrM0otc1JXR3dlNWtER1VvNU5DbnBmMVREYXRBV1B6Wi1R0gHPAUFVX3lxTE14RXRyZE1pYUlSN0F1U2tBZVdVNm8wWEZCeDBaSTZoeXp1eG9McjVXV0RLQmZMVDVKTW5DODhhTGJpUDY4VV9PMmRkaUNZc0NsbWtYWmgwSTNYSzVkX0hKRURXWVJsVXdiWGZSQXdqSWxoeGJ1aHlRTmJ2VXk1NEN3T05pZ1dFQ3lETTgxTkxyTFNGSWRuYzgwTkRDRlJRYVY5MDdZSFYxdGJPRXpFejJwbkE4ODFEb2JSRVZwdW16ZGpDT0dlTUVaMmlFTkd2Yw?oc=5",
+      "date": "Fri, 31 Jul 2026 04:16:03 GMT",
+      "desc": "N. Korean economy grows over 3% for 3rd consecutive year in 2025: BOK&nbsp;&nbsp;The Korea Times"
     },
     {
       "title": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back - CNBC",
@@ -69,105 +69,105 @@
       "desc": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Samsung, SK Hynix shares jump nearly 30%; Kospi posts record daily gain - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9VZkh1T0ZIcFVsNFVjWGlBWlZMNlZNczI3QU5FQ09ycGYtWGlGUERnaV83Znd5c1dkNk11cWNzeGpNTXdYZjJjdUpPOVlyb3otbXpnczBOc3JtVVVCa3FnUGdvNDA0SER2VGw0ZXpreUM4MnNLSF9BMlFR?oc=5",
-      "date": "Fri, 31 Jul 2026 09:02:00 GMT",
-      "desc": "Samsung, SK Hynix shares jump nearly 30%; Kospi posts record daily gain&nbsp;&nbsp;KED Global"
+      "title": "Samsung, SK Hynix Semiconductors Power South Korea's $44.8B Export Record - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPOGlnOEowQ0lGVlhZYS1qTUs5X3NhRnV0WmloVFlZanVmbmNZdE1SZHVTTTJkUnpwUkdMOGxtX085Z0xUSXo4ZVZ6X19xOEpvTS16Y3BobXhfd1pEY3dveE82WWNaRlRJb29ZWUxFRlV2WVFJalJsNEM5ZWsyZDNoZ08yUFZva3FD?oc=5",
+      "date": "Fri, 31 Jul 2026 15:44:52 GMT",
+      "desc": "Samsung, SK Hynix Semiconductors Power South Korea's $44.8B Export Record&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Samsung’s chip workers are jumping ship to rival SK Hynix - MIT Technology Review",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPTFIxaG5HN3FIZUhnYXFoVWtqM1UxTFE3SWxFZjZUWHplNDV5NUdvV2hzMXN6cVZXMUNnazNkV1paYzl2cjdXQXl5ZkdWU1NiZkRSQVVUQV94U25oRllpQThYV0gyQ1hFLTh0bTB6MUpJVTktR3dsU0tEWDN6VkhwSndEc20zNlNDV05aQWFCdHkxczjSAZgBQVVfeXFMT0M4U3Awb3U1OC13LUV4QWU1M09pQl90NzZEZnFFd21jY2xteFVIRGpGdTNyVkhLRTJjcmVkSVdUTE5zcDU4TTh2UjRKLUJyOHRidE1BTTAyMDhPZlRsRjd6WEdabnA3cVY5ZkZ0SzVMaGdUUkhOMXJsNEo4aW1uNE53S3JIdUY0ODhGOEVlbmJVMmRSTElBcEI?oc=5",
-      "date": "Tue, 28 Jul 2026 09:18:57 GMT",
-      "desc": "Samsung’s chip workers are jumping ship to rival SK Hynix&nbsp;&nbsp;MIT Technology Review"
+      "title": "Samsung, SK Hynix shares jump nearly 30%; Kospi posts record daily gain - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9VZkh1T0ZIcFVsNFVjWGlBWlZMNlZNczI3QU5FQ09ycGYtWGlGUERnaV83Znd5c1dkNk11cWNzeGpNTXdYZjJjdUpPOVlyb3otbXpnczBOc3JtVVVCa3FnUGdvNDA0SER2VGw0ZXpreUM4MnNLSF9BMlFR?oc=5",
+      "date": "Fri, 31 Jul 2026 12:20:00 GMT",
+      "desc": "Samsung, SK Hynix shares jump nearly 30%; Kospi posts record daily gain&nbsp;&nbsp;KED Global"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 195.04,
-      "change": -1.97,
-      "pct": -1.0,
+      "price": 196.16,
+      "change": 6.15,
+      "pct": 3.23,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 403.31,
-      "change": 11.0,
-      "pct": 2.8,
+      "price": 405.48,
+      "change": 30.81,
+      "pct": 8.22,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 485.39,
-      "change": 30.77,
-      "pct": 6.77,
+      "price": 488.65,
+      "change": 59.09,
+      "pct": 13.76,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 91.13,
-      "change": 4.83,
-      "pct": 5.6,
+      "price": 92.03,
+      "change": 10.15,
+      "pct": 12.4,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 151.6,
-      "change": -11.28,
-      "pct": -6.93,
+      "price": 148.31,
+      "change": -7.37,
+      "pct": -4.73,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 241.54,
-      "change": -3.2,
-      "pct": -1.31,
+      "price": 244.91,
+      "change": 20.02,
+      "pct": 8.9,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 333.66,
-      "change": -0.05,
-      "pct": -0.01,
+      "price": 352.12,
+      "change": 15.41,
+      "pct": 4.58,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 333.43,
-      "change": -6.65,
-      "pct": -1.96,
+      "price": 300.78,
+      "change": -37.41,
+      "pct": -11.06,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 451.1,
-      "change": 57.75,
-      "pct": 14.68,
+      "price": 461.79,
+      "change": 71.25,
+      "pct": 18.24,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7437.63,
-      "change": 8.85,
-      "pct": 0.12,
+      "price": 7448.21,
+      "change": 132.06,
+      "pct": 1.81,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25122.18,
-      "change": 245.27,
-      "pct": 0.99,
+      "price": 25162.48,
+      "change": 719.54,
+      "pct": 2.94,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1436.6,
-      "change": -5.68,
-      "pct": -0.39,
+      "price": 1436.78,
+      "change": -5.5,
+      "pct": -0.38,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-07-31 11:32 UTC"
+  "updatedAt": "2026-07-31 15:54 UTC"
 }
