@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Spain attacks 'selfish' response of some EU countries to Ceuta migrant crossings",
-      "link": "https://www.bbc.co.uk/news/articles/cx2v91xn1z9o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 01 Aug 2026 12:43:21 GMT",
-      "desc": "Italy has temporarily suspended the Schengen arrangement with Spain as Prime Minister Giorgia Meloni called scenes in Ceuta \"shocking\"."
+      "title": "EU calls emergency meeting to discuss Ceuta migrant crossings",
+      "link": "https://www.bbc.co.uk/news/articles/cz7d17r455go?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 01 Aug 2026 20:09:27 GMT",
+      "desc": "There have been tense exchanges between Spain and other EU states over the influx of migrants into the enclave of Ceuta."
     },
     {
-      "title": "Uefa has 'lost confidence' in Infantino's Fifa leadership",
+      "title": "Call for 'full review' as pressure grows on Infantino",
       "link": "https://www.bbc.co.uk/sport/football/articles/c04kr2nv3v3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 01 Aug 2026 09:51:05 GMT",
-      "desc": "The governing body of European football says Fifa president Gianni Infantino has \"failed to deliver\" on promises he made when elected 10 years ago."
+      "date": "Sat, 01 Aug 2026 17:07:46 GMT",
+      "desc": "The leadership of Fifa is publicly questioned by football's governing bodies in Europe, North and Central America and the Caribbean."
+    },
+    {
+      "title": "Tourist plane crashes in Peru, killing 13",
+      "link": "https://www.bbc.co.uk/news/articles/c70g132erlko?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 01 Aug 2026 22:34:20 GMT",
+      "desc": "The small plane was flying over the Nazca Lines ​archaeological site when it crashed, according to local reports."
     },
     {
       "title": "Israeli West Bank settler tells BBC attacks on Palestinians are justified as revenge",
@@ -19,16 +25,10 @@
       "desc": "Settler violence against Palestinians is on the rise in the West Bank, as settlements and outposts expand."
     },
     {
-      "title": "Mountaineer Nirmal Purja killed in Pakistan avalanche, his company says",
-      "link": "https://www.bbc.co.uk/news/articles/clyljq79kdko?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 01 Aug 2026 14:11:40 GMT",
-      "desc": "The renowned mountaineer was known for scaling the world's 14 highest peaks in just over six months in 2019."
-    },
-    {
-      "title": "Nine killed in strikes on Kyiv, as Ukraine sinks Russian container ship",
-      "link": "https://www.bbc.co.uk/news/articles/ce973yvk7pko?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 01 Aug 2026 13:35:39 GMT",
-      "desc": "The attack comes as Moscow escalates deadly ballistic missile attacks on the Ukrainian capital."
+      "title": "Italy putting nearly all major cities on highest heat alert",
+      "link": "https://www.bbc.co.uk/news/articles/cr7k4gdrgljo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 01 Aug 2026 17:51:46 GMT",
+      "desc": "Some 19 major Italian cities - including Rome, Milan and Naples - are already on red alert, and by Monday all but two will be."
     }
   ],
   "koreaNews": [
@@ -39,25 +39,25 @@
       "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOVGMyMGZFeEtYaWlCQjRHaG5nWGpVTHR0RTkzZVN4b3BLekFUdzBrT2EtRDVXT3plTWpvTG5LYmhNYTV4RXYtdno3X3hrREVMM3dOYVJvVWtGNTZTZWxnYWxHUVV1UFJ5QVJlYm5SVlR5WEJMQnZHdWRBa2lyS3lLeVdzMnV2d0xKVW12THpsalR1QWJpOWZXLWc4ZzNET1NzRWUxYnJIUmQ0SHFETVU4bWJHa044OU91d3AwSExXX2xmRnNMX1FONl9oQmJVcms?oc=5",
-      "date": "Fri, 31 Jul 2026 03:04:00 GMT",
-      "desc": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says&nbsp;&nbsp;Reuters"
-    },
-    {
       "title": "South Korea’s Exports Extend Momentum as Chip Boom Persists - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOUEVsZ09zWGQ3YUJZWVZ4MzR4R2NhZG9vMzF5UHk1bGExRFRZVGZWWkVDVXM0aFBMbERDRjduV2tWc0k4aklHYWU5VEd0REZmUXIyRUZWRWZDNTVOM3RLdDJFTzhGb3oxaWlqMG1BOEdQSzB4TWlEbmJ4ZV9keFQxaTdOQ003NlBPVG5MdHFwd0Zuak9PaV85OV9LVTZhbWtuMUNlX0N2OVhRektqWHpPUlotNXNiQQ?oc=5",
       "date": "Sat, 01 Aug 2026 00:41:00 GMT",
       "desc": "South Korea’s Exports Extend Momentum as Chip Boom Persists&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "AI reckoning makes South Korean economy run for cover - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQVR4RkFyTlYydG8yM3hrTWI5SmJxUlI4ZXFRODRYM1BqQjZjQUVYbHNqcjdSVldtYlJSSlNiWWxGalBZbkxEejlpNXdZMWxhcWpUQmFGZ0JDNm5CVlJua0JoeWI3T05XcTY5N2lXZ2NjbVphalFtRnZ4VmVjN3k2UElVdXY4TDRLUWpBNw?oc=5",
-      "date": "Fri, 31 Jul 2026 05:53:07 GMT",
-      "desc": "AI reckoning makes South Korean economy run for cover&nbsp;&nbsp;Asia Times"
+      "title": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOVGMyMGZFeEtYaWlCQjRHaG5nWGpVTHR0RTkzZVN4b3BLekFUdzBrT2EtRDVXT3plTWpvTG5LYmhNYTV4RXYtdno3X3hrREVMM3dOYVJvVWtGNTZTZWxnYWxHUVV1UFJ5QVJlYm5SVlR5WEJMQnZHdWRBa2lyS3lLeVdzMnV2d0xKVW12THpsalR1QWJpOWZXLWc4ZzNET1NzRWUxYnJIUmQ0SHFETVU4bWJHa044OU91d3AwSExXX2xmRnNMX1FONl9oQmJVcms?oc=5",
+      "date": "Fri, 31 Jul 2026 03:04:00 GMT",
+      "desc": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Plunge in South Korea's stock market fails to mask the strong momentum in memory chips! South Korea, the 'canary in the global economic coal mine,' is expected to see exports surge by 59% year-on-year in July. - Moomoo",
+      "title": "AI reckoning makes South Korean economy run for cover - asiatimes.com",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQVR4RkFyTlYydG8yM3hrTWI5SmJxUlI4ZXFRODRYM1BqQjZjQUVYbHNqcjdSVldtYlJSSlNiWWxGalBZbkxEejlpNXdZMWxhcWpUQmFGZ0JDNm5CVlJua0JoeWI3T05XcTY5N2lXZ2NjbVphalFtRnZ4VmVjN3k2UElVdXY4TDRLUWpBNw?oc=5",
+      "date": "Fri, 31 Jul 2026 05:53:07 GMT",
+      "desc": "AI reckoning makes South Korean economy run for cover&nbsp;&nbsp;asiatimes.com"
+    },
+    {
+      "title": "Plunge in South Korea's stock market fails to mask the strong momentum in memory chips! South Korea, the 'canary in the global economic coal mine,' is expected to see exports surge by 59% year-on-year in July. - moomoo.com",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOQlpvWUFOaEQ4YU1BelZoVW9nelpEM2l4VV8yY2l1eFFTb1RVbWJHcXh1VHNoTFBaUGwxcGdkUW9FSkh2V19Fc203SmpPNUV2aWJlWkFhX1JfeU1rbEM5cnlFSjloaElka3NScDRwYlQ0VFhaTHFXb0loUmZXU1gza3JTMVFNTVpPei1PZ1pfVndYTzZqMkJV?oc=5",
       "date": "Thu, 30 Jul 2026 11:38:27 GMT",
       "desc": "Plunge in South Korea's stock market fails to mask the strong momentum in memory chips! South Korea, the 'canary in the global economic coal mine,' is expected to see exports surge by 59% year-on-year"
@@ -75,10 +75,10 @@
       "desc": "Samsung’s chip workers are jumping ship to rival SK Hynix&nbsp;&nbsp;MIT Technology Review"
     },
     {
-      "title": "Samsung and SK Hynix answer AI doubters with big numbers and deals - japantimes.co.jp",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9YNU5RekF6Tm9FckZLLVRic1hlZGQ2enlQcDNWUlYxY3FoY0pqRENZUVlfNGlaWXowLXI4M3Z1dDYwMmh2UHBiakVtV0sxenBvOWVHV2hOMS1kN0NiYWdwMWJNdzVDdDlwYVlYZFo3OUdsVGZOTFU4R05B?oc=5",
-      "date": "Fri, 31 Jul 2026 03:45:00 GMT",
-      "desc": "Samsung and SK Hynix answer AI doubters with big numbers and deals&nbsp;&nbsp;japantimes.co.jp"
+      "title": "Samsung, SK Hynix Semiconductors Power South Korea's $44.8B Export Record - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPOGlnOEowQ0lGVlhZYS1qTUs5X3NhRnV0WmloVFlZanVmbmNZdE1SZHVTTTJkUnpwUkdMOGxtX085Z0xUSXo4ZVZ6X19xOEpvTS16Y3BobXhfd1pEY3dveE82WWNaRlRJb29ZWUxFRlV2WVFJalJsNEM5ZWsyZDNoZ08yUFZva3FD?oc=5",
+      "date": "Fri, 31 Jul 2026 15:44:52 GMT",
+      "desc": "Samsung, SK Hynix Semiconductors Power South Korea's $44.8B Export Record&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-01 14:51 UTC"
+  "updatedAt": "2026-08-01 22:50 UTC"
 }
