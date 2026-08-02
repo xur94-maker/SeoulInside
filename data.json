@@ -1,15 +1,21 @@
 {
   "globalNews": [
     {
+      "title": "Two crew killed after firefighting helicopters collide in Greece, as British pilot survives",
+      "link": "https://www.bbc.co.uk/news/articles/c1417713ve6o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 02 Aug 2026 20:36:37 GMT",
+      "desc": "One Danish and one Greek national died in the incident, while a British pilot and another Greek crew member survived."
+    },
+    {
       "title": "Trump cancels Iran strikes subject to deal being made 'rapidly'",
       "link": "https://www.bbc.co.uk/news/articles/cjwx74qgld2o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 02 Aug 2026 11:12:00 GMT",
       "desc": "The US president claims Iran and other Middle Eastern countries asked Washington to hold off on any attack as the \"perimeters\" of a deal had been agreed."
     },
     {
-      "title": "At least eight killed in Israeli strikes on Gaza after Hamas agree disarmament deal",
+      "title": "At least 13 killed in Israeli strikes on Gaza after Hamas agree disarmament deal",
       "link": "https://www.bbc.co.uk/news/articles/czjlvvkzj20o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 02 Aug 2026 14:46:16 GMT",
+      "date": "Sun, 02 Aug 2026 15:50:59 GMT",
       "desc": "Israel says it was targeting military operatives in the strikes on Gaza City, Khan Younis and Deir el-Balah."
     },
     {
@@ -19,16 +25,10 @@
       "desc": "The Ceuta crossings have shaken Europe politically, exposing divisions over the sensitive issue of migration, the BBC's Sarah Rainsford writes."
     },
     {
-      "title": "Five dead, 41 missing, after Indonesia ferry catches fire",
-      "link": "https://www.bbc.co.uk/news/articles/c74g0wjvlrxo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 02 Aug 2026 11:49:40 GMT",
-      "desc": "The vessel with at least 250 people on board caught fire off Madura island."
-    },
-    {
-      "title": "Young guns for hire - the teenage hitmen recruited to kill across Europe",
-      "link": "https://www.bbc.co.uk/news/articles/czrjyevmv61o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 01 Aug 2026 23:03:35 GMT",
-      "desc": "The Foxtrot Network is thought to be responsible for about 35 murders in Europe, and uses violence-as-a-service tactics."
+      "title": "Ukraine says major Russian oil refinery and airfield hit, as Moscow reports eight deaths",
+      "link": "https://www.bbc.co.uk/news/articles/c998gg5pe09o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 02 Aug 2026 15:48:00 GMT",
+      "desc": "Russia's military says it attacked Ukraine's ports and vessels in the Black Sea overnight."
     }
   ],
   "koreaNews": [
@@ -51,22 +51,22 @@
       "desc": "AI reckoning makes South Korean economy run for cover&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "Plunge in South Korea's stock market fails to mask the strong momentum in memory chips! South Korea, the 'canary in the global economic coal mine,' is expected to see exports surge by 59% year-on-year in July. - Moomoo",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOQlpvWUFOaEQ4YU1BelZoVW9nelpEM2l4VV8yY2l1eFFTb1RVbWJHcXh1VHNoTFBaUGwxcGdkUW9FSkh2V19Fc203SmpPNUV2aWJlWkFhX1JfeU1rbEM5cnlFSjloaElka3NScDRwYlQ0VFhaTHFXb0loUmZXU1gza3JTMVFNTVpPei1PZ1pfVndYTzZqMkJV?oc=5",
-      "date": "Thu, 30 Jul 2026 11:31:40 GMT",
-      "desc": "Plunge in South Korea's stock market fails to mask the strong momentum in memory chips! South Korea, the 'canary in the global economic coal mine,' is expected to see exports surge by 59% year-on-year"
+      "title": "Lee returns from overseas trip with economic security gains, domestic tests ahead - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNZG1TaXFTNC1kcFI1VEZlajBFd3I5UVVVQ2lnTTJCVWF5UHpKcDY5N3NVRU9nQURwY1o3MWVJM3ZQdzFSeTlxZDJaQWFsamE2U3FJS3JqSXBfdE5YUlRzb010MjVDRWJUVk9FaGphRW4wQWtrN3NvcllGeEtCRk5FYUU4VFRFQ2NQVm9MbnhaaDE4R0J1ckdjNFJaejBRMGYwWXBCbFk1am5ZdkZ3Wlo4OUgxNXp4emFxMWVwRDU5S1RQRU5Qd1hURk1TZEc3SF9KNW5Jc9IB2gFBVV95cUxNOW9WbVQ3SjE4OHJXT0syXzE4YW4yVXBja204RG51Vi1rTkdYSzk5YW1neTBmcFJHb1NhZ1pOZnBCMDhncUpvNXVwOFc1ak1OTW1fSkU1YjBpMFV3UGhoOG5tZUk1THd2NlFXZDNDaVU2M3poWFQ1RXQwWUFVS3F0VGIxOFFsTWFxT3hBSHY2WWF5VW1xaEI2YUEwZWRhS3EyUDl1ZG1fbDhDVVBOVkc4eFZFR1llb2Q1UndrMmRxeGRrQmYtbmU0S29nM2F1cUMxTWx5c2p5SzJmUQ?oc=5",
+      "date": "Sun, 02 Aug 2026 07:20:03 GMT",
+      "desc": "Lee returns from overseas trip with economic security gains, domestic tests ahead&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea - Japan Wire by Kyodo News",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1JMUlHZHVTQUxFamR6YkpzcjA2bmU0NFVjQ1hDaUo2SmxQdDdQdkFSZ1otdHFEQVQ3YjEwWXBLZXZmS0k5QWZNcFVQWDJHWEpqLTRnYWhhckxqdw?oc=5",
-      "date": "Fri, 31 Jul 2026 07:32:24 GMT",
-      "desc": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea&nbsp;&nbsp;Japan Wire by Kyodo News"
+      "title": "South Korea exports beat forecasts in July on AI chip demand - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOMExVQ1NZaDAxTWxvTmo5YUFRR3BKdEJBNHlPdV9zMS1ZSHRKdldWS1NQZWdTTE11Y3Z4UHljQk0xclRtM2hJd3lNbDhheDhlWHhpenRhYjc5MnFYYm1zMDhkd1NmZmVROXBKVi1RYWczckdtdjdLanZvWktsTzltNl9WaW82dUdBenBFRXJXWlczanpDdE5XSV8ySFhRNll4djNVOW04aW1Jam5LTkNOS3dB?oc=5",
+      "date": "Sat, 01 Aug 2026 02:35:17 GMT",
+      "desc": "South Korea exports beat forecasts in July on AI chip demand&nbsp;&nbsp;Investing.com"
     },
     {
-      "title": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back - CNBC",
+      "title": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back - cnbc.com",
       "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1QSWFIbG5ZZC1Tdm0zNVB0UHptVnhRMmpoWkpXbVJDV01VWW0zZHhDRXF2U2lEQ2JiX205NmZOaUt0RkEwSW1rdEx2amg5UDVYLUgwdGR0bHlrU1NzTVBlaTRWdFdpWllGWTNleGNQM3FxckR6Rml4ZHV4SzZud9IBgwFBVV95cUxNc0tPRFNqMy0wNzBYRGRrYUpCZ1NvdHU1MGlUaFpIX0xEMnBqOTZOTW9oMmZWOFN2a0JQeldPN0h2c2tiM3BLcWZ1UE4zQ1hydFlGT3U1Y1h3eUNMT1VDUXFycWFHazBXdjRkUzlLdlJjYTFQeS1Sc0tRWWxrVng0aURNWQ?oc=5",
       "date": "Fri, 31 Jul 2026 00:14:00 GMT",
-      "desc": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back&nbsp;&nbsp;CNBC"
+      "desc": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back&nbsp;&nbsp;cnbc.com"
     },
     {
       "title": "Samsung’s chip workers are jumping ship to rival SK Hynix - MIT Technology Review",
@@ -75,10 +75,10 @@
       "desc": "Samsung’s chip workers are jumping ship to rival SK Hynix&nbsp;&nbsp;MIT Technology Review"
     },
     {
-      "title": "SK Hynix Files Nasdaq Listing Prospectus, Reigniting 'Samsung-Hynix' Undervaluation Debate - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1nbEdHcWk1Q1hVazIzeWlQZC1CcVVLOTZsZ291SDhRNEtTZ2VFVzQ2Rk1mekNKbGk2TGN4bEZRdlI1ZVh0VC1nM1ZzeEhOeXlSYTdONHUtRzVUd2Uxem1xaTV0ck5XUWZrbkhYZF9kLVhZVnhkRmc?oc=5",
-      "date": "Sun, 02 Aug 2026 01:25:00 GMT",
-      "desc": "SK Hynix Files Nasdaq Listing Prospectus, Reigniting 'Samsung-Hynix' Undervaluation Debate&nbsp;&nbsp;finance.biggo.com"
+      "title": "Samsung, SK Hynix Semiconductors Power South Korea's $44.8B Export Record - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPOGlnOEowQ0lGVlhZYS1qTUs5X3NhRnV0WmloVFlZanVmbmNZdE1SZHVTTTJkUnpwUkdMOGxtX085Z0xUSXo4ZVZ6X19xOEpvTS16Y3BobXhfd1pEY3dveE82WWNaRlRJb29ZWUxFRlV2WVFJalJsNEM5ZWsyZDNoZ08yUFZva3FD?oc=5",
+      "date": "Fri, 31 Jul 2026 15:44:52 GMT",
+      "desc": "Samsung, SK Hynix Semiconductors Power South Korea's $44.8B Export Record&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1436.6,
-      "change": -5.68,
-      "pct": -0.39,
+      "price": 1437.22,
+      "change": -5.06,
+      "pct": -0.35,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-02 14:53 UTC"
+  "updatedAt": "2026-08-02 22:51 UTC"
 }
