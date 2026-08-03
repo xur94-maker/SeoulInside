@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Iran denies Trump's claim that new talks will begin on Monday",
+      "title": "Rhine falls to record low levels as drought strains Europe's rivers",
+      "link": "https://www.bbc.co.uk/news/articles/c78gn8zvrx4o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 03 Aug 2026 14:38:48 GMT",
+      "desc": "Low water levels in the Rhine, Danube and Po have curtailed the transport of goods and reduced electricity output."
+    },
+    {
+      "title": "Iran says it is in talks with Oman but not the US after Trump says negotiations to resume",
       "link": "https://www.bbc.co.uk/news/articles/c23579jzv08o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 03 Aug 2026 10:23:35 GMT",
-      "desc": "While Iran denies that talks with the US are taking place, it is currently in negotiations with Oman over Strait of Hormuz access."
+      "date": "Mon, 03 Aug 2026 15:59:48 GMT",
+      "desc": "Iran's remarks that there were no talks with the US prompts Donald Trump to issue a strong condemnation of its leadership."
+    },
+    {
+      "title": "Threat to oil tankers in Middle East  worst since start of Iran war, analysts say",
+      "link": "https://www.bbc.co.uk/news/articles/cjrv0dy2e90o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 03 Aug 2026 15:57:27 GMT",
+      "desc": "Fresh attacks on alternative shipping routes have left tankers facing an increasingly complex situation, analysts say."
     },
     {
       "title": "'My only son was shot standing up for justice' - inside city gripped by deadly protests in Pakistan-administered Kashmir",
@@ -13,22 +25,10 @@
       "desc": "The BBC gains unique access to Rawalakot, scene of violent clashes between security forces and protesters in Pakistan-administered Kashmir."
     },
     {
-      "title": "Aung San Suu Kyi appears healthy in first confirmed outside contact for 2.5 years",
-      "link": "https://www.bbc.co.uk/news/articles/c1e1d5j6660o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 03 Aug 2026 10:58:48 GMT",
-      "desc": "Photos newly released by Myanmar's military government show Suu Kyi meeting with an ICRC official."
-    },
-    {
-      "title": "Two workers killed in blast after re-entering quake-hit Japan mall on boss' order",
-      "link": "https://www.bbc.co.uk/news/articles/c24mr09r99eo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 03 Aug 2026 08:40:22 GMT",
-      "desc": "The two women's employer has apologised for sending them back to Aeon Mall to secure cash."
-    },
-    {
-      "title": "US and Japan take action to prop up yen in rare joint move",
-      "link": "https://www.bbc.co.uk/news/articles/cglj1pr0wjwo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 03 Aug 2026 07:30:52 GMT",
-      "desc": "Both countries have said that they will not hesitate to conduct joint interventions in the future."
+      "title": "Russian anti-war politician says he has fled the country",
+      "link": "https://www.bbc.co.uk/news/articles/c70gjw60033o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 03 Aug 2026 15:41:08 GMT",
+      "desc": "Boris Nadezhdin, who was recently designated as a foreign agent, posted a video in front of the Eiffel Tower."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,10 @@
       "desc": "AI reckoning makes South Korean economy run for cover&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "South Korea’s Exports Extend Momentum as Chip Boom Persists - bloomberg.com",
+      "title": "South Korea’s Exports Extend Momentum as Chip Boom Persists - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOUEVsZ09zWGQ3YUJZWVZ4MzR4R2NhZG9vMzF5UHk1bGExRFRZVGZWWkVDVXM0aFBMbERDRjduV2tWc0k4aklHYWU5VEd0REZmUXIyRUZWRWZDNTVOM3RLdDJFTzhGb3oxaWlqMG1BOEdQSzB4TWlEbmJ4ZV9keFQxaTdOQ003NlBPVG5MdHFwd0Zuak9PaV85OV9LVTZhbWtuMUNlX0N2OVhRektqWHpPUlotNXNiQQ?oc=5",
       "date": "Sat, 01 Aug 2026 00:41:00 GMT",
-      "desc": "South Korea’s Exports Extend Momentum as Chip Boom Persists&nbsp;&nbsp;bloomberg.com"
-    },
-    {
-      "title": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOVGMyMGZFeEtYaWlCQjRHaG5nWGpVTHR0RTkzZVN4b3BLekFUdzBrT2EtRDVXT3plTWpvTG5LYmhNYTV4RXYtdno3X3hrREVMM3dOYVJvVWtGNTZTZWxnYWxHUVV1UFJ5QVJlYm5SVlR5WEJMQnZHdWRBa2lyS3lLeVdzMnV2d0xKVW12THpsalR1QWJpOWZXLWc4ZzNET1NzRWUxYnJIUmQ0SHFETVU4bWJHa044OU91d3AwSExXX2xmRnNMX1FONl9oQmJVcms?oc=5",
-      "date": "Fri, 31 Jul 2026 03:04:00 GMT",
-      "desc": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says&nbsp;&nbsp;Reuters"
+      "desc": "South Korea’s Exports Extend Momentum as Chip Boom Persists&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "Lee returns from overseas trip with economic security gains, domestic tests ahead - The Korea Times",
@@ -57,22 +51,28 @@
       "desc": "Lee returns from overseas trip with economic security gains, domestic tests ahead&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "South Korea exports beat forecasts in July on AI chip demand - Investing.com",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOMExVQ1NZaDAxTWxvTmo5YUFRR3BKdEJBNHlPdV9zMS1ZSHRKdldWS1NQZWdTTE11Y3Z4UHljQk0xclRtM2hJd3lNbDhheDhlWHhpenRhYjc5MnFYYm1zMDhkd1NmZmVROXBKVi1RYWczckdtdjdLanZvWktsTzltNl9WaW82dUdBenBFRXJXWlczanpDdE5XSV8ySFhRNll4djNVOW04aW1Jam5LTkNOS3dB?oc=5",
-      "date": "Sat, 01 Aug 2026 02:35:17 GMT",
-      "desc": "South Korea exports beat forecasts in July on AI chip demand&nbsp;&nbsp;Investing.com"
+      "title": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea - Japan Wire by Kyodo News",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1JMUlHZHVTQUxFamR6YkpzcjA2bmU0NFVjQ1hDaUo2SmxQdDdQdkFSZ1otdHFEQVQ3YjEwWXBLZXZmS0k5QWZNcFVQWDJHWEpqLTRnYWhhckxqdw?oc=5",
+      "date": "Fri, 31 Jul 2026 07:32:24 GMT",
+      "desc": "N. Korea economy believed to have grown in 2025, 3rd straight yr: S. Korea&nbsp;&nbsp;Japan Wire by Kyodo News"
     },
     {
-      "title": "Samsung, SK Hynix Plunge 7% as Kioxia Surges - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObXdDUloyME41eGphY0lHMDFwT0FEcFZkalNtSUJBT0FzN1hDdmxyeDU0dHFLdjFWQnVSb0dZVVg1YzNrdWVUdkx3SU1SSjVSWTJWN2F0bjZrSlMyTVg4QURKYXFPUWtPOHJQRnZBZXpyYU5RTVU4U0FtMHg1MTFIdUF0aU81V1FwTDRXbTJ3?oc=5",
-      "date": "Mon, 03 Aug 2026 05:43:32 GMT",
-      "desc": "Samsung, SK Hynix Plunge 7% as Kioxia Surges&nbsp;&nbsp;조선일보"
+      "title": "N. Korean economy grows over 3% for 3rd consecutive year in 2025: BOK - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNaGl2ZFBsVUhIeTVqSEdHRno0ZHV1LXh4VnZESXd3T0R5WnRPUnJEdU9YeWpfbHl6Wm5jQzNJNzV2Q01Fc25uVWFJNlhQZnlhU1FSWFZlQkE4UXZLYkx5dDhROEgyb3BFQVBxSk1ZZUhKY0FFT19RTnZxOEhBN3VQSjl2MEx6bjE3aVpTZ1I0d3dhYTE0eTNTTzFjM0VNeFVNTnRBRmRnNnZrM0otc1JXR3dlNWtER1VvNU5DbnBmMVREYXRBV1B6Wi1R0gHPAUFVX3lxTE14RXRyZE1pYUlSN0F1U2tBZVdVNm8wWEZCeDBaSTZoeXp1eG9McjVXV0RLQmZMVDVKTW5DODhhTGJpUDY4VV9PMmRkaUNZc0NsbWtYWmgwSTNYSzVkX0hKRURXWVJsVXdiWGZSQXdqSWxoeGJ1aHlRTmJ2VXk1NEN3T05pZ1dFQ3lETTgxTkxyTFNGSWRuYzgwTkRDRlJRYVY5MDdZSFYxdGJPRXpFejJwbkE4ODFEb2JSRVZwdW16ZGpDT0dlTUVaMmlFTkd2Yw?oc=5",
+      "date": "Fri, 31 Jul 2026 04:16:03 GMT",
+      "desc": "N. Korean economy grows over 3% for 3rd consecutive year in 2025: BOK&nbsp;&nbsp;The Korea Times"
     },
     {
       "title": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back - CNBC",
       "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1QSWFIbG5ZZC1Tdm0zNVB0UHptVnhRMmpoWkpXbVJDV01VWW0zZHhDRXF2U2lEQ2JiX205NmZOaUt0RkEwSW1rdEx2amg5UDVYLUgwdGR0bHlrU1NzTVBlaTRWdFdpWllGWTNleGNQM3FxckR6Rml4ZHV4SzZud9IBgwFBVV95cUxNc0tPRFNqMy0wNzBYRGRrYUpCZ1NvdHU1MGlUaFpIX0xEMnBqOTZOTW9oMmZWOFN2a0JQeldPN0h2c2tiM3BLcWZ1UE4zQ1hydFlGT3U1Y1h3eUNMT1VDUXFycWFHazBXdjRkUzlLdlJjYTFQeS1Sc0tRWWxrVng0aURNWQ?oc=5",
       "date": "Fri, 31 Jul 2026 00:14:00 GMT",
       "desc": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back&nbsp;&nbsp;CNBC"
+    },
+    {
+      "title": "Samsung, SK Hynix Plunge 7% as Kioxia Surges - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObXdDUloyME41eGphY0lHMDFwT0FEcFZkalNtSUJBT0FzN1hDdmxyeDU0dHFLdjFWQnVSb0dZVVg1YzNrdWVUdkx3SU1SSjVSWTJWN2F0bjZrSlMyTVg4QURKYXFPUWtPOHJQRnZBZXpyYU5RTVU4U0FtMHg1MTFIdUF0aU81V1FwTDRXbTJ3?oc=5",
+      "date": "Mon, 03 Aug 2026 05:43:32 GMT",
+      "desc": "Samsung, SK Hynix Plunge 7% as Kioxia Surges&nbsp;&nbsp;조선일보"
     },
     {
       "title": "KOSPI Extends Historic Selloff After Worst Month Since 2008 as Samsung, SK Hynix Tumble Nearly 8% - Benzinga",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 200.75,
-      "change": 10.74,
-      "pct": 5.65,
+      "price": 206.95,
+      "change": 11.91,
+      "pct": 6.11,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 404.25,
-      "change": 29.58,
-      "pct": 7.89,
+      "price": 403.2,
+      "change": -0.11,
+      "pct": -0.03,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 476.15,
-      "change": 46.59,
-      "pct": 10.85,
+      "price": 480.58,
+      "change": -4.81,
+      "pct": -0.99,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 90.2,
-      "change": 8.32,
-      "pct": 10.16,
+      "price": 90.42,
+      "change": -0.71,
+      "pct": -0.78,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 147.61,
-      "change": -8.07,
-      "pct": -5.18,
+      "price": 149.11,
+      "change": -2.49,
+      "pct": -1.64,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 239.69,
-      "change": 14.8,
-      "pct": 6.58,
+      "price": 235.82,
+      "change": -5.72,
+      "pct": -2.37,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 356.13,
-      "change": 19.42,
-      "pct": 5.77,
+      "price": 375.12,
+      "change": 41.46,
+      "pct": 12.43,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 308.91,
-      "change": -29.28,
-      "pct": -8.66,
+      "price": 303.8,
+      "change": -29.63,
+      "pct": -8.89,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 464.72,
-      "change": 74.18,
-      "pct": 18.99,
+      "price": 486.82,
+      "change": 35.72,
+      "pct": 7.92,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7489.72,
-      "change": 173.57,
-      "pct": 2.37,
+      "price": 7582.77,
+      "change": 145.14,
+      "pct": 1.95,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25373.85,
-      "change": 930.91,
-      "pct": 3.81,
+      "price": 25863.07,
+      "change": 740.89,
+      "pct": 2.95,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1426.88,
-      "change": 6.28,
-      "pct": 0.44,
+      "price": 1430.18,
+      "change": 9.58,
+      "pct": 0.67,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-03 12:30 UTC"
+  "updatedAt": "2026-08-03 16:13 UTC"
 }
