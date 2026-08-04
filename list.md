@@ -1,14 +1,5 @@
-# 모아봐
-http://www.moabbs.com/board/cboard
-
-# 모아모아
-https://moamoa.kr/
-
 # aagag.com
 https://aagag.com/
-
-# 오늘의베스트
-https://todaybeststory.com/
 
 #threads.com/
 https://www.threads.com/@seoul_letter?hl=ko
