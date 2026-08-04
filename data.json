@@ -1,15 +1,21 @@
 {
   "globalNews": [
     {
+      "title": "Video shows Russian drone chasing Ukrainian street vendor in 'human safari' attack",
+      "link": "https://www.bbc.co.uk/news/articles/cn4n03xg981o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 04 Aug 2026 17:26:06 GMT",
+      "desc": "Ukraine said the video - showing a terrified civilian being hounded by a remotely-controlled drone - amounted to a war crime."
+    },
+    {
       "title": "Oil prices fall on hopes Strait of Hormuz could reopen",
       "link": "https://www.bbc.co.uk/news/articles/cpw9v0gnzxwo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 04 Aug 2026 15:33:03 GMT",
+      "date": "Tue, 04 Aug 2026 19:00:43 GMT",
       "desc": "US Secretary of State Marco Rubio and Treasury Secretary Scott Bessent both announced talks had progressed to allow shipments to resume."
     },
     {
       "title": "EU commends Spain's 'swift response' to Ceuta migrant crisis",
       "link": "https://www.bbc.co.uk/news/articles/c80n3j55g0do?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 04 Aug 2026 15:36:53 GMT",
+      "date": "Tue, 04 Aug 2026 21:45:20 GMT",
       "desc": "About 70,000 of the 72,000 people who came to Ceuta illegally last week have been returned to Morocco, Spain says."
     },
     {
@@ -19,16 +25,10 @@
       "desc": "Facilities operated by Russia's largest online retailer were also hit in St Petersburg and Tver."
     },
     {
-      "title": "More than 150 migrants rescued after boat catches fire in Channel",
-      "link": "https://www.bbc.co.uk/news/articles/c4gkpeppjyqo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 04 Aug 2026 14:37:42 GMT",
-      "desc": "The boat was attempting to cross to the UK when its engine caught fire, according to French authorities."
-    },
-    {
-      "title": "Analysis: Trump challenged by cold reality from top allies",
-      "link": "https://www.bbc.co.uk/news/articles/cgjed2q2l0xo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 04 Aug 2026 09:11:39 GMT",
-      "desc": "A president used to bending US politics to his will faces two stinging losses in a matter of days, writes the BBC's Anthony Zurcher."
+      "title": "Arrests in Egypt after people allegedly impersonate judges",
+      "link": "https://www.bbc.co.uk/news/articles/cn0n9wpvlwpo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 04 Aug 2026 19:25:00 GMT",
+      "desc": "Egyptian authorities say the alleged scam involved fabricated scenes in court as part of a plot to defraud people."
     }
   ],
   "koreaNews": [
@@ -37,12 +37,6 @@
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNTDl4bXlua0ZDWUNhb1VaeEt5T3pUZFFnaGl5U3lvd1JKMnZGVmhKeG1oaGM2SW5samY4cjdkZTcweUVQU1V6VUdVSmFLdzdQb2h2LWZQUnJuWTI5eTJGQ3BLNHhkdEtoY1B1TXowUFJSY0xZZno2dF8xVVlMNjJMZ185MHNIRGJ2WFdrcms0T0stbDVjaU0xZlgwdFRONjZKXzZBWg?oc=5",
       "date": "Tue, 04 Aug 2026 15:46:47 GMT",
       "desc": "From Recovery to Development: North Korea’s New Five-Year Economic Plan&nbsp;&nbsp;38 North"
-    },
-    {
-      "title": "South Korea plans tax breaks to revive economic growth - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPMUVEbFJmR3NUWUJoSlllemZ3UHJFUWUtbFZHMzk4Tk1kc01KTk9TVTZ0ZjVsUEhnLTNLQXprZ0thazVDRkFqMGhLWEFsSGxSSDdaX253dDFmeXYyd3QtVWpESEZoanQ4dWVwZG1uM1JWOGUyNUhhRG5XQUY0SkpXTmhTWkFHMTZjS08ydGpJSGhMM3FseXU3Rm1YblJod9IBowFBVV95cUxQQ1RDdm4tZXdWRE1BTG9ySGtxdVpEZERtd29FRldlZGhLMmN5MGtCZEJoVEg2aml4S3pRWXJxalIxTVFNLXhkZXZ2Y3MtNWc0aFdSZEF1cVByM2N3dlgtUnVBR3RpNWdoWElEazZ6YXdHZ3oyWnZYeW11OVFvR2NpYm1yanAtbHM0ay1FYXgxbDZUUkcyS0I3R1FnTlpXN2ZfLXR3?oc=5",
-      "date": "Tue, 04 Aug 2026 02:10:48 GMT",
-      "desc": "South Korea plans tax breaks to revive economic growth&nbsp;&nbsp;upi.com"
     },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
@@ -57,117 +51,123 @@
       "desc": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says&nbsp;&nbsp;Reuters"
     },
     {
+      "title": "South Korea plans tax breaks to revive economic growth - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPMUVEbFJmR3NUWUJoSlllemZ3UHJFUWUtbFZHMzk4Tk1kc01KTk9TVTZ0ZjVsUEhnLTNLQXprZ0thazVDRkFqMGhLWEFsSGxSSDdaX253dDFmeXYyd3QtVWpESEZoanQ4dWVwZG1uM1JWOGUyNUhhRG5XQUY0SkpXTmhTWkFHMTZjS08ydGpJSGhMM3FseXU3Rm1YblJod9IBowFBVV95cUxQQ1RDdm4tZXdWRE1BTG9ySGtxdVpEZERtd29FRldlZGhLMmN5MGtCZEJoVEg2aml4S3pRWXJxalIxTVFNLXhkZXZ2Y3MtNWc0aFdSZEF1cVByM2N3dlgtUnVBR3RpNWdoWElEazZ6YXdHZ3oyWnZYeW11OVFvR2NpYm1yanAtbHM0ay1FYXgxbDZUUkcyS0I3R1FnTlpXN2ZfLXR3?oc=5",
+      "date": "Tue, 04 Aug 2026 02:10:48 GMT",
+      "desc": "South Korea plans tax breaks to revive economic growth&nbsp;&nbsp;upi.com"
+    },
+    {
       "title": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors - The Diplomat – Asia-Pacific",
       "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQ29DUHpKZmZzb29VMUNpeDEzNkF0SDliX25fXzhVdUQxWXQ0SW5UcEhTX3Y1TDd4MzFPWU1oZ2hsLWg0Uk1JdlpnVDlfYzNkdWRnbVM0V0Y0WldvZ1Zsc0E2N096elJhS0I1OVpNVm9PSW1JdWpvQk1PSVYzeTZQTzhJUWpKVzAxNGZTbnVScmtjWFFRTF96MWJaQ2FYdlBwSGctbXYwU21XeGRRQWdTaHVOTWJKWHIy?oc=5",
       "date": "Thu, 30 Jul 2026 07:14:02 GMT",
       "desc": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors&nbsp;&nbsp;The Diplomat – Asia-Pacific"
     },
     {
-      "title": "Samsung, SK Hynix Plunge 7% as Kioxia Surges - 조선일보",
+      "title": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1QSWFIbG5ZZC1Tdm0zNVB0UHptVnhRMmpoWkpXbVJDV01VWW0zZHhDRXF2U2lEQ2JiX205NmZOaUt0RkEwSW1rdEx2amg5UDVYLUgwdGR0bHlrU1NzTVBlaTRWdFdpWllGWTNleGNQM3FxckR6Rml4ZHV4SzZud9IBgwFBVV95cUxNc0tPRFNqMy0wNzBYRGRrYUpCZ1NvdHU1MGlUaFpIX0xEMnBqOTZOTW9oMmZWOFN2a0JQeldPN0h2c2tiM3BLcWZ1UE4zQ1hydFlGT3U1Y1h3eUNMT1VDUXFycWFHazBXdjRkUzlLdlJjYTFQeS1Sc0tRWWxrVng0aURNWQ?oc=5",
+      "date": "Fri, 31 Jul 2026 00:14:00 GMT",
+      "desc": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back&nbsp;&nbsp;CNBC"
+    },
+    {
+      "title": "Why Samsung and SK Hynix stocks are failing to follow Wall Street’s chip rebound - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPZmN4VmJIbHA5V3dtSmhGSy1JSFVIODJrS3B6cFMtM0dpWHR5Q3lLV2E3RlJUMEtNOXloRzltRVNpUTkzRkdMeU1rV3dPenJZREY3MUtQeXlvTmJ0OUNRNDZ0ZWVsWGkweElOLWtGQ3hpRW5hZmlsMWlXWDRHSloyNkp3c3RvcUtQZGdsMkNnX0RqSXhHbWVjMVFfcC1xRjhZc0UxUERpS1Y4RXoyZ0VKcF9vVDJaYXdScVpPTU4tX2xBLXVTQkQzZ184dURzdllpWVYw?oc=5",
+      "date": "Tue, 04 Aug 2026 03:54:00 GMT",
+      "desc": "Why Samsung and SK Hynix stocks are failing to follow Wall Street’s chip rebound&nbsp;&nbsp;TradingView"
+    },
+    {
+      "title": "Samsung, SK Hynix Plunge 7% as Kioxia Surges - chosun.com",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObXdDUloyME41eGphY0lHMDFwT0FEcFZkalNtSUJBT0FzN1hDdmxyeDU0dHFLdjFWQnVSb0dZVVg1YzNrdWVUdkx3SU1SSjVSWTJWN2F0bjZrSlMyTVg4QURKYXFPUWtPOHJQRnZBZXpyYU5RTVU4U0FtMHg1MTFIdUF0aU81V1FwTDRXbTJ3?oc=5",
       "date": "Mon, 03 Aug 2026 05:43:32 GMT",
-      "desc": "Samsung, SK Hynix Plunge 7% as Kioxia Surges&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "'Korean IRA' Production Tax Credit Out of Reach for Samsung, SK hynix - Seoul Economic Daily",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQbDRLQTFId0x1UEVlVUJhRjNVRnR2bktlZkJBekxZTngyOGhmakhYMkJqUUJ1WWN5b1gtc0t0T2xCZEVON3ZmMl9YbDRJN25BWmo4bU1sMExPSG9qR2l5SnNaNnBKNlZ2UjV3VXlNTGktelJPQzhSLUREOThNY2E2ZTRzeV90aFI1SnZ0R2lTWkZlSnNSaEdwbS1qRGdodGlx?oc=5",
-      "date": "Tue, 04 Aug 2026 04:16:14 GMT",
-      "desc": "'Korean IRA' Production Tax Credit Out of Reach for Samsung, SK hynix&nbsp;&nbsp;Seoul Economic Daily"
-    },
-    {
-      "title": "Samsung’s chip workers are jumping ship to rival SK Hynix - MIT Technology Review",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPTFIxaG5HN3FIZUhnYXFoVWtqM1UxTFE3SWxFZjZUWHplNDV5NUdvV2hzMXN6cVZXMUNnazNkV1paYzl2cjdXQXl5ZkdWU1NiZkRSQVVUQV94U25oRllpQThYV0gyQ1hFLTh0bTB6MUpJVTktR3dsU0tEWDN6VkhwSndEc20zNlNDV05aQWFCdHkxczjSAZgBQVVfeXFMT0M4U3Awb3U1OC13LUV4QWU1M09pQl90NzZEZnFFd21jY2xteFVIRGpGdTNyVkhLRTJjcmVkSVdUTE5zcDU4TTh2UjRKLUJyOHRidE1BTTAyMDhPZlRsRjd6WEdabnA3cVY5ZkZ0SzVMaGdUUkhOMXJsNEo4aW1uNE53S3JIdUY0ODhGOEVlbmJVMmRSTElBcEI?oc=5",
-      "date": "Tue, 28 Jul 2026 09:18:57 GMT",
-      "desc": "Samsung’s chip workers are jumping ship to rival SK Hynix&nbsp;&nbsp;MIT Technology Review"
+      "desc": "Samsung, SK Hynix Plunge 7% as Kioxia Surges&nbsp;&nbsp;chosun.com"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 210.75,
-      "change": 10.0,
-      "pct": 4.98,
+      "price": 211.94,
+      "change": 11.19,
+      "pct": 5.57,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 415.97,
-      "change": 11.72,
-      "pct": 2.9,
+      "price": 417.17,
+      "change": 12.92,
+      "pct": 3.2,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 522.95,
-      "change": 46.8,
-      "pct": 9.83,
+      "price": 518.58,
+      "change": 42.43,
+      "pct": 8.91,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 99.96,
-      "change": 9.76,
-      "pct": 10.82,
+      "price": 100.86,
+      "change": 10.66,
+      "pct": 11.82,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 162.79,
-      "change": 15.18,
-      "pct": 10.28,
+      "price": 162.67,
+      "change": 15.06,
+      "pct": 10.2,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 274.78,
-      "change": 35.09,
-      "pct": 14.64,
+      "price": 280.56,
+      "change": 40.87,
+      "pct": 17.05,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 376.17,
-      "change": 20.04,
-      "pct": 5.63,
+      "price": 377.65,
+      "change": 21.52,
+      "pct": 6.04,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 305.89,
-      "change": -3.02,
-      "pct": -0.98,
+      "price": 309.38,
+      "change": 0.47,
+      "pct": 0.15,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 497.24,
-      "change": 32.51,
-      "pct": 7.0,
+      "price": 492.81,
+      "change": 28.09,
+      "pct": 6.04,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7711.36,
-      "change": 221.64,
-      "pct": 2.96,
+      "price": 7736.52,
+      "change": 246.8,
+      "pct": 3.3,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26445.96,
-      "change": 1072.11,
-      "pct": 4.23,
+      "price": 26584.99,
+      "change": 1211.14,
+      "pct": 4.77,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1427.62,
-      "change": -8.08,
-      "pct": -0.56,
+      "price": 1429.43,
+      "change": -6.27,
+      "pct": -0.44,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-04 16:06 UTC"
+  "updatedAt": "2026-08-04 22:58 UTC"
 }
