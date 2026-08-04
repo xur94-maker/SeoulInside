@@ -1,9 +1,15 @@
 {
   "globalNews": [
     {
+      "title": "EU calls for stronger borders after Ceuta migrant crossings",
+      "link": "https://www.bbc.co.uk/news/articles/cyvl84zmgyro?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 03 Aug 2026 21:43:10 GMT",
+      "desc": "Ursula von der Leyen has called for action ahead of an urgent EU interior ministers meeting to discuss the issue."
+    },
+    {
       "title": "Russia says seven killed and 40 injured by Ukrainian drone hitting busy beach",
       "link": "https://www.bbc.co.uk/news/articles/cr7kmnyrdn7o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 03 Aug 2026 18:04:30 GMT",
+      "date": "Tue, 04 Aug 2026 03:37:14 GMT",
       "desc": "Three children were killed when the drone crashed at a popular resort on the Black Sea."
     },
     {
@@ -13,25 +19,25 @@
       "desc": "Iran's remarks that there were no talks with the US prompts Donald Trump to issue a strong condemnation of its leadership."
     },
     {
-      "title": "Threat to oil tankers in Middle East  worst since start of Iran war, analysts say",
-      "link": "https://www.bbc.co.uk/news/articles/cjrv0dy2e90o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 03 Aug 2026 15:57:27 GMT",
-      "desc": "Fresh attacks on alternative shipping routes have left tankers facing an increasingly complex situation, analysts say."
+      "title": "Ariana Grande has had enough of body comments, but 'scrutiny' will linger",
+      "link": "https://www.bbc.co.uk/news/articles/c3ek7g857q4o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 03 Aug 2026 23:25:14 GMT",
+      "desc": "The star has taken a \"step back\" from the spotlight after appearances led to \"endless, ongoing public scrutiny\"."
     },
     {
-      "title": "Rhine falls to record low levels as drought strains Europe's rivers",
-      "link": "https://www.bbc.co.uk/news/articles/c78gn8zvrx4o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 03 Aug 2026 16:27:43 GMT",
-      "desc": "Low water levels in the Rhine, Danube and Po have curtailed the transport of goods and reduced electricity output."
-    },
-    {
-      "title": "US reports first two deaths linked to  'explosive diarrhoea' outbreak",
-      "link": "https://www.bbc.co.uk/news/articles/c2k7px317eeo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 03 Aug 2026 20:05:46 GMT",
-      "desc": "The illness caused by parasitic infection that spreads through contaminated food or water is not generally life-threatening, health officials say."
+      "title": "France wildfires reveal hundreds of WW2 shells in village",
+      "link": "https://www.bbc.co.uk/news/articles/cgmkxjrrwdvo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 04 Aug 2026 04:22:12 GMT",
+      "desc": "Explosions heard in Le Porge as the wildfires raged are believed to have have been the old munitions."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea’s July Inflation Eases From 30-Month High - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQTEJMenhUWW5QdlhCeEhxUzg3UXJSQkV1RHhmRF83RnVZZkVxTFZrM2pHZW1VOHNQd05ZS3g0aFRMT2p3ZGQydGxQZWFseEtwb2k0aGVjYzVkeEhsRzN5VmdMTko0MXAzLXREd1psZElLTk53eVdkaUxqN0JiVFZrbW54ZUwwYWxiR3RlOWtVZGNqVmM?oc=5",
+      "date": "Mon, 03 Aug 2026 23:56:00 GMT",
+      "desc": "South Korea’s July Inflation Eases From 30-Month High&nbsp;&nbsp;WSJ"
+    },
     {
       "title": "South Korea’s Exports Extend Momentum as Chip Boom Persists - bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOUEVsZ09zWGQ3YUJZWVZ4MzR4R2NhZG9vMzF5UHk1bGExRFRZVGZWWkVDVXM0aFBMbERDRjduV2tWc0k4aklHYWU5VEd0REZmUXIyRUZWRWZDNTVOM3RLdDJFTzhGb3oxaWlqMG1BOEdQSzB4TWlEbmJ4ZV9keFQxaTdOQ003NlBPVG5MdHFwd0Zuak9PaV85OV9LVTZhbWtuMUNlX0N2OVhRektqWHpPUlotNXNiQQ?oc=5",
@@ -39,28 +45,22 @@
       "desc": "South Korea’s Exports Extend Momentum as Chip Boom Persists&nbsp;&nbsp;bloomberg.com"
     },
     {
-      "title": "Lee returns from overseas trip with economic security gains, domestic tests ahead - The Korea Times",
+      "title": "South Korea plans tax breaks to revive economic growth - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPMUVEbFJmR3NUWUJoSlllemZ3UHJFUWUtbFZHMzk4Tk1kc01KTk9TVTZ0ZjVsUEhnLTNLQXprZ0thazVDRkFqMGhLWEFsSGxSSDdaX253dDFmeXYyd3QtVWpESEZoanQ4dWVwZG1uM1JWOGUyNUhhRG5XQUY0SkpXTmhTWkFHMTZjS08ydGpJSGhMM3FseXU3Rm1YblJod9IBowFBVV95cUxQQ1RDdm4tZXdWRE1BTG9ySGtxdVpEZERtd29FRldlZGhLMmN5MGtCZEJoVEg2aml4S3pRWXJxalIxTVFNLXhkZXZ2Y3MtNWc0aFdSZEF1cVByM2N3dlgtUnVBR3RpNWdoWElEazZ6YXdHZ3oyWnZYeW11OVFvR2NpYm1yanAtbHM0ay1FYXgxbDZUUkcyS0I3R1FnTlpXN2ZfLXR3?oc=5",
+      "date": "Tue, 04 Aug 2026 02:10:48 GMT",
+      "desc": "South Korea plans tax breaks to revive economic growth&nbsp;&nbsp;upi.com"
+    },
+    {
+      "title": "Lee returns from overseas trip with economic security gains, domestic tests ahead - koreatimes.co.kr",
       "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNZG1TaXFTNC1kcFI1VEZlajBFd3I5UVVVQ2lnTTJCVWF5UHpKcDY5N3NVRU9nQURwY1o3MWVJM3ZQdzFSeTlxZDJaQWFsamE2U3FJS3JqSXBfdE5YUlRzb010MjVDRWJUVk9FaGphRW4wQWtrN3NvcllGeEtCRk5FYUU4VFRFQ2NQVm9MbnhaaDE4R0J1ckdjNFJaejBRMGYwWXBCbFk1am5ZdkZ3Wlo4OUgxNXp4emFxMWVwRDU5S1RQRU5Qd1hURk1TZEc3SF9KNW5Jc9IB2gFBVV95cUxNOW9WbVQ3SjE4OHJXT0syXzE4YW4yVXBja204RG51Vi1rTkdYSzk5YW1neTBmcFJHb1NhZ1pOZnBCMDhncUpvNXVwOFc1ak1OTW1fSkU1YjBpMFV3UGhoOG5tZUk1THd2NlFXZDNDaVU2M3poWFQ1RXQwWUFVS3F0VGIxOFFsTWFxT3hBSHY2WWF5VW1xaEI2YUEwZWRhS3EyUDl1ZG1fbDhDVVBOVkc4eFZFR1llb2Q1UndrMmRxeGRrQmYtbmU0S29nM2F1cUMxTWx5c2p5SzJmUQ?oc=5",
       "date": "Sun, 02 Aug 2026 07:20:03 GMT",
-      "desc": "Lee returns from overseas trip with economic security gains, domestic tests ahead&nbsp;&nbsp;The Korea Times"
+      "desc": "Lee returns from overseas trip with economic security gains, domestic tests ahead&nbsp;&nbsp;koreatimes.co.kr"
     },
     {
-      "title": "62% of young Koreans expect country to be worse off in 20 years - The Korea Times",
+      "title": "62% of young Koreans expect country to be worse off in 20 years - koreatimes.co.kr",
       "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQV0hiSURYU0Z2YXdfblQ2YnhDamRwZXlOSm4zU3ZxRHVrQzZ1Q1U3UlJyRlNweTVVZVhLTWloRXp3eEdHMFhBQ3c2Zm4xY0NUODZYam9xV1hWM3ZXR3pGbnpPUGVNRV93aWdNZmJyRjRYdFpNLVUwUS1kYlpWSGRXLUMxemNXTXVkZmJ2RXdLaHBfYU9ES2pKM1ctUDZvNVE5MUw0SlhISWgxWHpNWXJqakQ4V0M4d1Jvd1NJ0gHAAUFVX3lxTE9xQTg2TGRremJ3ZjVUVGhzUjMtVlA2NEp2V0NBT0xuZy1UeHZSU1ZBdHVtYjZEY2VqZkdxRm1vR1AtMkhDRWZVdUd1eGRkOGJic1Y3TGN5VjlMRmlPYnNXWTVaR2dRWm1xQjdrNjVUbTRIWFFnUGhMSTk4dWZjYTVNQ1Q1c0pjdk1WdTNENXJDUFM0RDNraXZLV3EwZjcwV2J4aGdCT24zc3pVcDJRbzNBb21VckxqMi13amV1VW9KYw?oc=5",
       "date": "Fri, 31 Jul 2026 23:00:00 GMT",
-      "desc": "62% of young Koreans expect country to be worse off in 20 years&nbsp;&nbsp;The Korea Times"
-    },
-    {
-      "title": "BTS-mania poised to boost South Korea's economy well into the future - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPbjRzeVZxdXVWY0VLY3pSTDJoNDVVdzVRNHlJYlNkMXlYdXcwMzQwNGJlTXRxWktENDdRc3lIOC11TkVtTlZhTjlIc0FLSkk2YVU1ekdqM0xkbU52RHdmSzFwQ2lzU3RuU2FiQmg2NldhYTlhb245X1VzN1BXNks0bVRxU0o0dEZYMER6RXIyV1B3Q1ZHMjUyanlPONIBoAFBVV95cUxOTU1xbnR4aktFbkV5b05yZUZwenlFNDF6ODNYalR2T1dKamxRdE1pOG9DaWRQRG43T0VKTmJFd25SaXg1a2NqcHQ1ZVplcjBuSWItWG9iMHg3RGhzRzl6bTZFQWJvVHBzSVNxbGlYLUxfRFAxTndXUUZSREp1azVkSXE3Y1BCV2VDMV9yRTNWTE9MOVgxY2hKOWZIcTRBM0p3?oc=5",
-      "date": "Thu, 11 Jun 2026 07:00:00 GMT",
-      "desc": "BTS-mania poised to boost South Korea's economy well into the future&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOVGMyMGZFeEtYaWlCQjRHaG5nWGpVTHR0RTkzZVN4b3BLekFUdzBrT2EtRDVXT3plTWpvTG5LYmhNYTV4RXYtdno3X3hrREVMM3dOYVJvVWtGNTZTZWxnYWxHUVV1UFJ5QVJlYm5SVlR5WEJMQnZHdWRBa2lyS3lLeVdzMnV2d0xKVW12THpsalR1QWJpOWZXLWc4ZzNET1NzRWUxYnJIUmQ0SHFETVU4bWJHa044OU91d3AwSExXX2xmRnNMX1FONl9oQmJVcms?oc=5",
-      "date": "Fri, 31 Jul 2026 03:04:00 GMT",
-      "desc": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says&nbsp;&nbsp;Reuters"
+      "desc": "62% of young Koreans expect country to be worse off in 20 years&nbsp;&nbsp;koreatimes.co.kr"
     },
     {
       "title": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back - CNBC",
@@ -69,16 +69,16 @@
       "desc": "SK Hynix, Samsung shares skyrocket to clock best days as AI rally roars back&nbsp;&nbsp;CNBC"
     },
     {
+      "title": "'Korean IRA' Production Tax Credit Out of Reach for Samsung, SK hynix - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQbDRLQTFId0x1UEVlVUJhRjNVRnR2bktlZkJBekxZTngyOGhmakhYMkJqUUJ1WWN5b1gtc0t0T2xCZEVON3ZmMl9YbDRJN25BWmo4bU1sMExPSG9qR2l5SnNaNnBKNlZ2UjV3VXlNTGktelJPQzhSLUREOThNY2E2ZTRzeV90aFI1SnZ0R2lTWkZlSnNSaEdwbS1qRGdodGlx?oc=5",
+      "date": "Tue, 04 Aug 2026 04:16:14 GMT",
+      "desc": "'Korean IRA' Production Tax Credit Out of Reach for Samsung, SK hynix&nbsp;&nbsp;Seoul Economic Daily"
+    },
+    {
       "title": "Samsung, SK Hynix Plunge 7% as Kioxia Surges - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObXdDUloyME41eGphY0lHMDFwT0FEcFZkalNtSUJBT0FzN1hDdmxyeDU0dHFLdjFWQnVSb0dZVVg1YzNrdWVUdkx3SU1SSjVSWTJWN2F0bjZrSlMyTVg4QURKYXFPUWtPOHJQRnZBZXpyYU5RTVU4U0FtMHg1MTFIdUF0aU81V1FwTDRXbTJ3?oc=5",
       "date": "Mon, 03 Aug 2026 05:43:32 GMT",
       "desc": "Samsung, SK Hynix Plunge 7% as Kioxia Surges&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "KOSPI Extends Historic Selloff After Worst Month Since 2008 as Samsung, SK Hynix Tumble Nearly 8% - Benzinga",
-      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxORDZ1VFVjdXduWTBndlFjc1hwcDdRSlpzWEYwZ3JySlg3V0xiNU1fQm0tUkpIZmlIVmtrVTMxZmNkT2JzLVp1NEpaT3c4Vl9rbkRUa3BCTEpBODZIaXl2T1VnaGo4dVRMUThOckhYYlgtRF9VQTZPOVRLNjBOdVFubW0wWVRnMTJGQVNGS3oxUWJTd29TR01jV3E1aHZsT1VLVDB4clZ4NkNkQ05RWEpSanFxUGhZUXdwMXk3VnJRUG5LbjdpWjdhQnNzdTMyNTNTTXlDWTFsb2U5SUtvZnpKS09n?oc=5",
-      "date": "Mon, 03 Aug 2026 05:23:37 GMT",
-      "desc": "KOSPI Extends Historic Selloff After Worst Month Since 2008 as Samsung, SK Hynix Tumble Nearly 8%&nbsp;&nbsp;Benzinga"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 239500.0,
-      "change": 32500.0,
-      "pct": 15.7,
+      "price": 230000.0,
+      "change": -32500.0,
+      "pct": -12.38,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1567000.0,
-      "change": 245000.0,
-      "pct": 18.53,
+      "price": 1503000.0,
+      "change": -215000.0,
+      "pct": -12.51,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 393000.0,
-      "change": 42000.0,
-      "pct": 11.97,
+      "price": 383500.0,
+      "change": -4500.0,
+      "pct": -1.16,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 129600.0,
-      "change": 8800.0,
-      "pct": 7.28,
+      "price": 128100.0,
+      "change": -3800.0,
+      "pct": -2.88,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 207500.0,
-      "change": 12800.0,
-      "pct": 6.57,
+      "price": 225500.0,
+      "change": 17500.0,
+      "pct": 8.41,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6257.45,
-      "change": 663.89,
-      "pct": 11.87,
+      "price": 6174.15,
+      "change": -421.3,
+      "pct": -6.39,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1428.91,
-      "change": 8.31,
-      "pct": 0.58,
+      "price": 1429.86,
+      "change": -5.84,
+      "pct": -0.41,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-04 01:25 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-08-04 05:40 UTC"
 }
