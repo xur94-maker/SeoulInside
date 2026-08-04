@@ -84,48 +84,62 @@
 
 
 
-SeoulInside 프로젝트
-Link1 — https://xur94-maker.github.io/SeoulInside/link1.html
-Link2 — https://xur94-maker.github.io/SeoulInside/link2.html
-WordPress (뉴스) — https://seoulinside.wordpress.com/2026/05/18/news/
-Medium (news1) — https://medium.com/@Seoulinside/news1-fb946ec27af9
-GitHub Repository — https://github.com/xur94-maker/SeoulInside
-GitHub Pages 설정 — https://github.com/xur94-maker/SeoulInside/settings/pages
-WordPress 대시보드 — https://wordpress.com/home/seoulinside.wordpress.com
-Medium (Import) — https://medium.com/p/import
-소셜 / 개인 채널
-YouTube — https://www.youtube.com/
-Instagram (apt_lap) — https://www.instagram.com/apt_lap/
-Bluesky Social — https://bsky.app/
-Facebook — https://www.facebook.com/?locale=ko_KR
-Ko-fi (Manage) — https://ko-fi.com/Manage/
-500px (Manager) — https://500px.com/manager?view=photos&filter=all
-Google Photos — https://photos.google.com/u/2/?pageId=none&pli=1
-메일 / 메시지
-네이버 메일 (나에게 쓰기) — https://mail.naver.com/v2/new?type=toMe
-Gmail 받은편지함 — https://mail.google.com/mail/u/1/#inbox
-Google Messages Web — http://messages.google.com/web/conversations
-쇼핑 / 결제 / 클라우드
-Naver Shopping — https://shopping.naver.com/ns/home
-Naver Pay 이용내역 — https://pay.naver.com/pc/history?page=1
-Naver MyBox — https://mybox.naver.com/main/web/my
-Coupang Play — https://www.coupangplay.com/home
-부동산 / 재건축
-Naver 부동산 (관심매물) — https://new.land.naver.com/interests
-Naver 부동산 검색 (재건축) — https://new.land.naver.com/search?ms=2AHO5s,3zdsC3,16&a=APT:PRE:ABYG:JGC&b=A1&e=RETAIL&h=33&i=66&ad=true
-구글 뉴스 검색 (재건축) — https://www.google.com/search?q=%EC%9E%AC%EA%B1%B4%EC%B6%95&tbm=nws
-네이버 카페 검색 (재건축) — https://search.naver.com/search.naver?ssc=tab.cafe.all&sm=tab_jum&query=%EC%9E%AC%EA%B1%B4%EC%B6%95
-네이버 블로그 검색 (재건축) — https://search.naver.com/search.naver?ssc=tab.blog.all&sm=tab_jum&query=%EC%9E%AC%EA%B1%B4%EC%B6%95
-네이버 뉴스 검색 (재건축) — https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=%EC%9E%AC%EA%B1%B4%EC%B6%95
-Ppomppu 부동산 인기글 — https://www.ppomppu.co.kr/zboard/zboard.php?id=house&hotlist_flag=999
-증권 / 금융
-AlphaSquare (삼성전자) — https://alphasquare.co.kr/home/stock-summary?code=005930
-Investing.com (미국 증시) — https://kr.investing.com/markets/united-states
-기타
-aagag.com — https://aagag.com/
-서울대학교 포털 로그인 — https://my.snu.ac.kr/login.jsp
-네이버 모바일 홈 — https://m.naver.com/
+ # 링크 모음
 
+## SeoulInside 프로젝트
+
+- **Link1** — https://xur94-maker.github.io/SeoulInside/link1.html
+- **Link2** — https://xur94-maker.github.io/SeoulInside/link2.html
+- **WordPress (뉴스)** — https://seoulinside.wordpress.com/2026/05/18/news/
+- **Medium (news1)** — https://medium.com/@Seoulinside/news1-fb946ec27af9
+- **GitHub Repository** — https://github.com/xur94-maker/SeoulInside
+- **GitHub Pages 설정** — https://github.com/xur94-maker/SeoulInside/settings/pages
+- **WordPress 대시보드** — https://wordpress.com/home/seoulinside.wordpress.com
+- **Medium (Import)** — https://medium.com/p/import
+
+## 소셜 / 개인 채널
+
+- **YouTube** — https://www.youtube.com/
+- **Instagram (apt_lap)** — https://www.instagram.com/apt_lap/
+- **Bluesky Social** — https://bsky.app/
+- **Facebook** — https://www.facebook.com/?locale=ko_KR
+- **Ko-fi (Manage)** — https://ko-fi.com/Manage/
+- **500px (Manager)** — https://500px.com/manager?view=photos&filter=all
+- **Google Photos** — https://photos.google.com/u/2/?pageId=none&pli=1
+
+## 메일 / 메시지
+
+- **네이버 메일 (나에게 쓰기)** — https://mail.naver.com/v2/new?type=toMe
+- **Gmail 받은편지함** — https://mail.google.com/mail/u/1/#inbox
+- **Google Messages Web** — http://messages.google.com/web/conversations
+
+## 쇼핑 / 결제 / 클라우드
+
+- **Naver Shopping** — https://shopping.naver.com/ns/home
+- **Naver Pay 이용내역** — https://pay.naver.com/pc/history?page=1
+- **Naver MyBox** — https://mybox.naver.com/main/web/my
+- **Coupang Play** — https://www.coupangplay.com/home
+
+## 부동산 / 재건축
+
+- **Naver 부동산 (관심매물)** — https://new.land.naver.com/interests
+- **Naver 부동산 검색 (재건축)** — https://new.land.naver.com/search?ms=2AHO5s,3zdsC3,16&a=APT:PRE:ABYG:JGC&b=A1&e=RETAIL&h=33&i=66&ad=true
+- **구글 뉴스 검색 (재건축)** — https://www.google.com/search?q=%EC%9E%AC%EA%B1%B4%EC%B6%95&tbm=nws
+- **네이버 카페 검색 (재건축)** — https://search.naver.com/search.naver?ssc=tab.cafe.all&sm=tab_jum&query=%EC%9E%AC%EA%B1%B4%EC%B6%95
+- **네이버 블로그 검색 (재건축)** — https://search.naver.com/search.naver?ssc=tab.blog.all&sm=tab_jum&query=%EC%9E%AC%EA%B1%B4%EC%B6%95
+- **네이버 뉴스 검색 (재건축)** — https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=%EC%9E%AC%EA%B1%B4%EC%B6%95
+- **Ppomppu 부동산 인기글** — https://www.ppomppu.co.kr/zboard/zboard.php?id=house&hotlist_flag=999
+
+## 증권 / 금융
+
+- **AlphaSquare (삼성전자)** — https://alphasquare.co.kr/home/stock-summary?code=005930
+- **Investing.com (미국 증시)** — https://kr.investing.com/markets/united-states
+
+## 기타
+
+- **aagag.com** — https://aagag.com/
+- **서울대학교 포털 로그인** — https://my.snu.ac.kr/login.jsp
+- **네이버 모바일 홈** — https://m.naver.com/
 
 
 
