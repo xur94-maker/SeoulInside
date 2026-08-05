@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "Russian strike kills at least 17 as Zelensky says interceptors could have saved lives",
+      "title": "Left-wing political outsider wins Democratic Senate primary in Michigan",
+      "link": "https://www.bbc.co.uk/news/articles/ckgdkpz07kvo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 15:05:30 GMT",
+      "desc": "Abdul El-Sayed, the son of Egyptian immigrants, would be the first Muslim US senator if elected in November."
+    },
+    {
+      "title": "Drone carrying explosives found at German airport, police say",
+      "link": "https://www.bbc.co.uk/news/articles/cyvlg4q48l3o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 15:41:55 GMT",
+      "desc": "The drone was found near Ukrainian cargo planes before another object collided with a cargo aircraft in mid-air."
+    },
+    {
+      "title": "Russia strike kills 21 as Ukraine says it needs more missile interceptors",
       "link": "https://www.bbc.co.uk/news/articles/c330pxyvzzyo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 11:19:37 GMT",
+      "date": "Wed, 05 Aug 2026 12:26:26 GMT",
       "desc": "The Russia defence ministry said it had struck logistics hubs and supply centres in Kyiv and the surrounding region."
     },
     {
-      "title": "Trump says Iran will be 'hit very hard' if Hormuz Strait not open soon as oil prices fall",
-      "link": "https://www.bbc.co.uk/news/articles/cpw9v0gnzxwo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 03:44:30 GMT",
-      "desc": "US Secretary of State Marco Rubio and Treasury Secretary Scott Bessent both announced talks had progressed to allow shipments to resume."
+      "title": "What can scientists learn from a stray SpaceX rocket hitting the Moon?",
+      "link": "https://www.bbc.co.uk/news/articles/c62q0xerzrno?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 11:19:24 GMT",
+      "desc": "While the collision was an accident, it is a unique scientific gift for planetary geologists that could provide important data for future space missions."
     },
     {
-      "title": "Perez Hilton recovering in hospital after reports he self-harmed during livestream",
-      "link": "https://www.bbc.co.uk/news/articles/cly5kvdkyjro?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 08:29:30 GMT",
-      "desc": "Miami police told US media outlets the celebrity blogger had been \"safely recovered\" from his home."
-    },
-    {
-      "title": "Mexican influencer shot dead during livestream",
-      "link": "https://www.bbc.co.uk/news/articles/cx2kg709qd9o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 11:00:47 GMT",
-      "desc": "César Gastélum, who was known for comedy and lifestyle posts, was killed at close range by a man on a motorbike."
-    },
-    {
-      "title": "Police raid Starbucks Korea headquarters over 'Tank Day' fiasco",
-      "link": "https://www.bbc.co.uk/news/articles/c0kmd4xpr46o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 07:04:45 GMT",
-      "desc": "People have filed complaints against Starbucks for allegedly making light of the deadly Gwangju Uprising."
+      "title": "UN rights chief alarmed by rise in Iran executions since March",
+      "link": "https://www.bbc.co.uk/news/articles/c75gvzxrz49o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 14:04:09 GMT",
+      "desc": "Volker Türk says 56 people have been executed on national security-related charges, including 27 in cases linked to January's protests."
     }
   ],
   "koreaNews": [
+    {
+      "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
+      "date": "Tue, 04 Aug 2026 16:46:37 GMT",
+      "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
+    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -45,10 +51,10 @@
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "From Recovery to Development: North Korea’s New Five-Year Economic Plan - 38 North",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNTDl4bXlua0ZDWUNhb1VaeEt5T3pUZFFnaGl5U3lvd1JKMnZGVmhKeG1oaGM2SW5samY4cjdkZTcweUVQU1V6VUdVSmFLdzdQb2h2LWZQUnJuWTI5eTJGQ3BLNHhkdEtoY1B1TXowUFJSY0xZZno2dF8xVVlMNjJMZ185MHNIRGJ2WFdrcms0T0stbDVjaU0xZlgwdFRONjZKXzZBWg?oc=5",
-      "date": "Tue, 04 Aug 2026 15:46:47 GMT",
-      "desc": "From Recovery to Development: North Korea’s New Five-Year Economic Plan&nbsp;&nbsp;38 North"
+      "title": "South Korea’s stock market plunges as AI-driven boom fades - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmZNcEtQUnpRbHdtRWpiVng1dnhxVlJCM1VVdzZRQUpwMjh0cGJDLVRuWnZpSDdjc1Q5VkpYaUF3OWRZU0NPYjZzSUxvakwtMjBVLVdRSjdLOVI0QmpockFtQTIwamJHNW1TREJsZXBrN1ZQX001VHBfMldwUEQtTGVIMG5YTGN6aEdQeU9mOEsxTU51Y3NlRjI2UVFlbTZZTGVv0gGoAUFVX3lxTE8tVjBGU2Mtb3BsRTVwU3BZWmVua0ZBS3ZFT012R0JuTkgwQ0M3UlFTaEdRdURyYnM0X0lPTlBCQjFmVEpKYXBqOGhJR0RiRHRoZXpFdEk4eENJT0QtaXBTMXNHN3g5alF3T0FMU0U4RkJQTUlrWXJFODNkRVlVdUJOQTRyTFpScExfUHdYRjRUSUlWTERBNDNOazdneHlEZXhGTHVWUU1RVg?oc=5",
+      "date": "Wed, 29 Jul 2026 17:54:32 GMT",
+      "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;Al Jazeera"
     },
     {
       "title": "South Korea plans tax breaks to revive economic growth - upi.com",
@@ -57,117 +63,111 @@
       "desc": "South Korea plans tax breaks to revive economic growth&nbsp;&nbsp;upi.com"
     },
     {
-      "title": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors - thediplomat.com",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQ29DUHpKZmZzb29VMUNpeDEzNkF0SDliX25fXzhVdUQxWXQ0SW5UcEhTX3Y1TDd4MzFPWU1oZ2hsLWg0Uk1JdlpnVDlfYzNkdWRnbVM0V0Y0WldvZ1Zsc0E2N096elJhS0I1OVpNVm9PSW1JdWpvQk1PSVYzeTZQTzhJUWpKVzAxNGZTbnVScmtjWFFRTF96MWJaQ2FYdlBwSGctbXYwU21XeGRRQWdTaHVOTWJKWHIy?oc=5",
-      "date": "Thu, 30 Jul 2026 07:14:02 GMT",
-      "desc": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors&nbsp;&nbsp;thediplomat.com"
-    },
-    {
       "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
       "date": "Wed, 05 Aug 2026 02:02:00 GMT",
       "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
     },
     {
+      "title": "Samsung and SK Hynix evaluate Chinese chip equipment as U.S. restrictions remain a concern - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNcmUxWk9EbDhZN20wUlJJRXp4bFdwcWNITE8zYzk4MG1ZSWhJODFPZnh1V0VtdDR2SnBlUEJfczJ5UmpzaTRncEVRSVlaaGQ1XzdQLW5WaWhncTZrYmR4NWhLU1BjNnhFLTIzR0toMW1WRVoyeE1KclY1NWxwMy1MVl9RZ3dENFRfM2duR0haUzAzYnhRenl3Rld3?oc=5",
+      "date": "Wed, 05 Aug 2026 10:51:14 GMT",
+      "desc": "Samsung and SK Hynix evaluate Chinese chip equipment as U.S. restrictions remain a concern&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
       "title": "Samsung, SK Hynix reportedly test AMEC tools to guard against tighter US curbs - digitimes",
       "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQak1Belp6YXU3NHhYN3paY09HeldoU1Bha3Y4bVViRm85cnpNc3NTcVdya3FOVXBBWDQ5YXVvWWs4OUQtZkN3eURCeFlSb1VTYnVsMG1TZmc0TEJfVnhKRTlnSGpaeDFsaDFaQnBHMC1CRTMwY0d4V2tfa1FZbzZNN21rdklpLXY4MTg3eUlzWjhrTi1X?oc=5",
       "date": "Wed, 05 Aug 2026 06:02:28 GMT",
       "desc": "Samsung, SK Hynix reportedly test AMEC tools to guard against tighter US curbs&nbsp;&nbsp;digitimes"
-    },
-    {
-      "title": "Korea to retain memory chip lead through 2031 on Samsung, SK hynix investment: Yole Group - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPLXRNaDZiclFDalhsb20tVFI4Qkx5ZjRvSFJGOUc1elBBSGNCQUtfTUJYWWlKSXZhRXN5eXg0T2c2MlhxTFlhY0FnMWtuV011SnBHSkg5WFYzMUFrSDdoSjFnR2dSRE0tV3ZJV0NjRVNBWGg3UnRoWWg5Z3FPYk0wM3EzX00takR6OGFjS2MxRlZqM0xlR1R0UHo2X3NCUmwzalNscmFhRmdoNEJvSS1lUE1tb0ktUWg4em1PTmFBYkJsd29IX1NOeE45WWQzLTlhZU8wYTRYcw?oc=5",
-      "date": "Wed, 05 Aug 2026 06:03:47 GMT",
-      "desc": "Korea to retain memory chip lead through 2031 on Samsung, SK hynix investment: Yole Group&nbsp;&nbsp;Korea JoongAng Daily"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 211.94,
-      "change": 11.19,
-      "pct": 5.57,
+      "price": 219.42,
+      "change": 12.78,
+      "pct": 6.19,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 417.17,
-      "change": 12.92,
-      "pct": 3.2,
+      "price": 415.98,
+      "change": 9.87,
+      "pct": 2.43,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 518.58,
-      "change": 42.43,
-      "pct": 8.91,
+      "price": 483.72,
+      "change": -0.92,
+      "pct": -0.19,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 100.86,
-      "change": 10.66,
-      "pct": 11.82,
+      "price": 100.44,
+      "change": 9.44,
+      "pct": 10.37,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 162.67,
-      "change": 15.06,
-      "pct": 10.2,
+      "price": 157.72,
+      "change": 6.15,
+      "pct": 4.06,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 280.56,
-      "change": 40.87,
-      "pct": 17.05,
+      "price": 277.0,
+      "change": 37.94,
+      "pct": 15.87,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 377.65,
-      "change": 21.52,
-      "pct": 6.04,
+      "price": 377.33,
+      "change": 3.82,
+      "pct": 1.02,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 309.38,
-      "change": 0.47,
-      "pct": 0.15,
+      "price": 308.44,
+      "change": 5.01,
+      "pct": 1.65,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 492.81,
-      "change": 28.09,
-      "pct": 6.04,
+      "price": 488.26,
+      "change": 0.62,
+      "pct": 0.13,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7736.52,
-      "change": 246.8,
-      "pct": 3.3,
+      "price": 7738.08,
+      "change": 137.58,
+      "pct": 1.81,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26584.99,
-      "change": 1211.14,
-      "pct": 4.77,
+      "price": 26518.39,
+      "change": 604.49,
+      "pct": 2.33,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1424.92,
-      "change": -3.58,
-      "pct": -0.25,
+      "price": 1423.7,
+      "change": -4.8,
+      "pct": -0.34,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-05 11:24 UTC"
+  "updatedAt": "2026-08-05 15:53 UTC"
 }
