@@ -1,10 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "Video shows Russian drone chasing Ukrainian street vendor in 'human safari' attack",
-      "link": "https://www.bbc.co.uk/news/articles/cn4n03xg981o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 04 Aug 2026 17:26:06 GMT",
-      "desc": "Ukraine said the video - showing a terrified civilian being hounded by a remotely controlled drone - amounted to a war crime."
+      "title": "Russian strike kills at least 17 as Zelensky says interceptors could have saved lives",
+      "link": "https://www.bbc.co.uk/news/articles/c330pxyvzzyo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 11:19:37 GMT",
+      "desc": "The Russia defence ministry said it had struck logistics hubs and supply centres in Kyiv and the surrounding region."
     },
     {
       "title": "Trump says Iran will be 'hit very hard' if Hormuz Strait not open soon as oil prices fall",
@@ -13,31 +13,25 @@
       "desc": "US Secretary of State Marco Rubio and Treasury Secretary Scott Bessent both announced talks had progressed to allow shipments to resume."
     },
     {
-      "title": "Russian ballistic missile strike on Kyiv kills 14 and injures 22, officials say",
-      "link": "https://www.bbc.co.uk/news/articles/c330pxyvzzyo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 05:08:43 GMT",
-      "desc": "The head of Kyiv's military administration says Russia is \"once again massively attacking\" the region around the city."
+      "title": "Perez Hilton recovering in hospital after reports he self-harmed during livestream",
+      "link": "https://www.bbc.co.uk/news/articles/cly5kvdkyjro?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 08:29:30 GMT",
+      "desc": "Miami police told US media outlets the celebrity blogger had been \"safely recovered\" from his home."
     },
     {
-      "title": "EU commends Spain's 'swift response' to Ceuta migrant crisis",
-      "link": "https://www.bbc.co.uk/news/articles/c80n3j55g0do?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 04 Aug 2026 21:45:20 GMT",
-      "desc": "About 70,000 of the 72,000 people who came to Ceuta illegally last week have been returned to Morocco, Spain says."
+      "title": "Mexican influencer shot dead during livestream",
+      "link": "https://www.bbc.co.uk/news/articles/cx2kg709qd9o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 11:00:47 GMT",
+      "desc": "César Gastélum, who was known for comedy and lifestyle posts, was killed at close range by a man on a motorbike."
     },
     {
-      "title": "Armed man arrested near Trump's golf course ahead of president's visit",
-      "link": "https://www.bbc.co.uk/news/articles/c20jp3mp7lyo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 00:19:04 GMT",
-      "desc": "The arrest happened shortly before President Trump was due to host a fundraising dinner at the coastal golf course in California."
+      "title": "Police raid Starbucks Korea headquarters over 'Tank Day' fiasco",
+      "link": "https://www.bbc.co.uk/news/articles/c0kmd4xpr46o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 07:04:45 GMT",
+      "desc": "People have filed complaints against Starbucks for allegedly making light of the deadly Gwangju Uprising."
     }
   ],
   "koreaNews": [
-    {
-      "title": "From Recovery to Development: North Korea’s New Five-Year Economic Plan - 38 North",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNTDl4bXlua0ZDWUNhb1VaeEt5T3pUZFFnaGl5U3lvd1JKMnZGVmhKeG1oaGM2SW5samY4cjdkZTcweUVQU1V6VUdVSmFLdzdQb2h2LWZQUnJuWTI5eTJGQ3BLNHhkdEtoY1B1TXowUFJSY0xZZno2dF8xVVlMNjJMZ185MHNIRGJ2WFdrcms0T0stbDVjaU0xZlgwdFRONjZKXzZBWg?oc=5",
-      "date": "Tue, 04 Aug 2026 15:46:47 GMT",
-      "desc": "From Recovery to Development: North Korea’s New Five-Year Economic Plan&nbsp;&nbsp;38 North"
-    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -45,16 +39,16 @@
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says - reuters.com",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOVGMyMGZFeEtYaWlCQjRHaG5nWGpVTHR0RTkzZVN4b3BLekFUdzBrT2EtRDVXT3plTWpvTG5LYmhNYTV4RXYtdno3X3hrREVMM3dOYVJvVWtGNTZTZWxnYWxHUVV1UFJ5QVJlYm5SVlR5WEJMQnZHdWRBa2lyS3lLeVdzMnV2d0xKVW12THpsalR1QWJpOWZXLWc4ZzNET1NzRWUxYnJIUmQ0SHFETVU4bWJHa044OU91d3AwSExXX2xmRnNMX1FONl9oQmJVcms?oc=5",
-      "date": "Fri, 31 Jul 2026 03:04:00 GMT",
-      "desc": "North Korea's economy grew 3.5% last year as China, Russia drew closer, Seoul says&nbsp;&nbsp;reuters.com"
+      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
+      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
+      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors - The Diplomat – Asia-Pacific",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQ29DUHpKZmZzb29VMUNpeDEzNkF0SDliX25fXzhVdUQxWXQ0SW5UcEhTX3Y1TDd4MzFPWU1oZ2hsLWg0Uk1JdlpnVDlfYzNkdWRnbVM0V0Y0WldvZ1Zsc0E2N096elJhS0I1OVpNVm9PSW1JdWpvQk1PSVYzeTZQTzhJUWpKVzAxNGZTbnVScmtjWFFRTF96MWJaQ2FYdlBwSGctbXYwU21XeGRRQWdTaHVOTWJKWHIy?oc=5",
-      "date": "Thu, 30 Jul 2026 07:14:02 GMT",
-      "desc": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors&nbsp;&nbsp;The Diplomat – Asia-Pacific"
+      "title": "From Recovery to Development: North Korea’s New Five-Year Economic Plan - 38 North",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNTDl4bXlua0ZDWUNhb1VaeEt5T3pUZFFnaGl5U3lvd1JKMnZGVmhKeG1oaGM2SW5samY4cjdkZTcweUVQU1V6VUdVSmFLdzdQb2h2LWZQUnJuWTI5eTJGQ3BLNHhkdEtoY1B1TXowUFJSY0xZZno2dF8xVVlMNjJMZ185MHNIRGJ2WFdrcms0T0stbDVjaU0xZlgwdFRONjZKXzZBWg?oc=5",
+      "date": "Tue, 04 Aug 2026 15:46:47 GMT",
+      "desc": "From Recovery to Development: North Korea’s New Five-Year Economic Plan&nbsp;&nbsp;38 North"
     },
     {
       "title": "South Korea plans tax breaks to revive economic growth - upi.com",
@@ -63,22 +57,28 @@
       "desc": "South Korea plans tax breaks to revive economic growth&nbsp;&nbsp;upi.com"
     },
     {
-      "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - reuters.com",
+      "title": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors - thediplomat.com",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQ29DUHpKZmZzb29VMUNpeDEzNkF0SDliX25fXzhVdUQxWXQ0SW5UcEhTX3Y1TDd4MzFPWU1oZ2hsLWg0Uk1JdlpnVDlfYzNkdWRnbVM0V0Y0WldvZ1Zsc0E2N096elJhS0I1OVpNVm9PSW1JdWpvQk1PSVYzeTZQTzhJUWpKVzAxNGZTbnVScmtjWFFRTF96MWJaQ2FYdlBwSGctbXYwU21XeGRRQWdTaHVOTWJKWHIy?oc=5",
+      "date": "Thu, 30 Jul 2026 07:14:02 GMT",
+      "desc": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors&nbsp;&nbsp;thediplomat.com"
+    },
+    {
+      "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
       "date": "Wed, 05 Aug 2026 02:02:00 GMT",
-      "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;reuters.com"
+      "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung, SK hynix wage next battle for AI memory leadership at FMS - ajupress.com",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8yVi1yYVE1WmQ1MTJfbHhpdTh4a3VvcnNXZTdNeTR0NzI0M0lvdi1FNThlWWNicldmbG5LcUU2bGstbWZCUURTQUhvaEd4UEJxWnR5Rkg2M0xBOW_SAVdBVV95cUxPNkJQdGN2MXV4ODZ0YlBaTW1SeUhDRVg2ZEdJVF9wcHNOclcyeUVvdjBITFA3dWozR3BxX2RLa1otZ2dXMTV2bU1tNWFybFRkMmZfTkdIcU0?oc=5",
-      "date": "Wed, 05 Aug 2026 01:22:41 GMT",
-      "desc": "Samsung, SK hynix wage next battle for AI memory leadership at FMS&nbsp;&nbsp;ajupress.com"
+      "title": "Samsung, SK Hynix reportedly test AMEC tools to guard against tighter US curbs - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQak1Belp6YXU3NHhYN3paY09HeldoU1Bha3Y4bVViRm85cnpNc3NTcVdya3FOVXBBWDQ5YXVvWWs4OUQtZkN3eURCeFlSb1VTYnVsMG1TZmc0TEJfVnhKRTlnSGpaeDFsaDFaQnBHMC1CRTMwY0d4V2tfa1FZbzZNN21rdklpLXY4MTg3eUlzWjhrTi1X?oc=5",
+      "date": "Wed, 05 Aug 2026 06:02:28 GMT",
+      "desc": "Samsung, SK Hynix reportedly test AMEC tools to guard against tighter US curbs&nbsp;&nbsp;digitimes"
     },
     {
-      "title": "Samsung, SK Hynix Unveil zHBM, HBF at FMS 2026 - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQNDk0dnNRZHhfeTB0VGFURFJYNTZQdU1ub1dXclQ2VlBqc3hVTW5jdms1RlBzbkttdlEteU0yUk5QcXpsRVh0WUZJOW5QSld2SnlDZmFlVUNKdFRpOV9pR3JfaVBjNnVwZS0wNHFFOUkxV3BqR2MxSWJ3LXBiWHkySGxVRjhPcnpM?oc=5",
-      "date": "Wed, 05 Aug 2026 05:15:00 GMT",
-      "desc": "Samsung, SK Hynix Unveil zHBM, HBF at FMS 2026&nbsp;&nbsp;조선일보"
+      "title": "Korea to retain memory chip lead through 2031 on Samsung, SK hynix investment: Yole Group - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPLXRNaDZiclFDalhsb20tVFI4Qkx5ZjRvSFJGOUc1elBBSGNCQUtfTUJYWWlKSXZhRXN5eXg0T2c2MlhxTFlhY0FnMWtuV011SnBHSkg5WFYzMUFrSDdoSjFnR2dSRE0tV3ZJV0NjRVNBWGg3UnRoWWg5Z3FPYk0wM3EzX00takR6OGFjS2MxRlZqM0xlR1R0UHo2X3NCUmwzalNscmFhRmdoNEJvSS1lUE1tb0ktUWg4em1PTmFBYkJsd29IX1NOeE45WWQzLTlhZU8wYTRYcw?oc=5",
+      "date": "Wed, 05 Aug 2026 06:03:47 GMT",
+      "desc": "Korea to retain memory chip lead through 2031 on Samsung, SK hynix investment: Yole Group&nbsp;&nbsp;Korea JoongAng Daily"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 249250.0,
-      "change": 9750.0,
-      "pct": 4.07,
+      "price": 246000.0,
+      "change": 6500.0,
+      "pct": 2.71,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1694000.0,
-      "change": 127000.0,
-      "pct": 8.1,
+      "price": 1668000.0,
+      "change": 101000.0,
+      "pct": 6.45,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 406500.0,
-      "change": 13500.0,
-      "pct": 3.44,
+      "price": 404500.0,
+      "change": 11500.0,
+      "pct": 2.93,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 133300.0,
-      "change": 3700.0,
-      "pct": 2.85,
+      "price": 133000.0,
+      "change": 3400.0,
+      "pct": 2.62,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 230500.0,
-      "change": 23000.0,
-      "pct": 11.08,
+      "price": 229000.0,
+      "change": 21500.0,
+      "pct": 10.36,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6647.36,
-      "change": 389.91,
-      "pct": 6.23,
+      "price": 6598.26,
+      "change": 340.81,
+      "pct": 5.45,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1424.18,
-      "change": -4.32,
-      "pct": -0.3,
+      "price": 1424.92,
+      "change": -3.58,
+      "pct": -0.25,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-05 05:38 UTC"
+  "updatedAt": "2026-08-05 11:24 UTC"
 }
