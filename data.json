@@ -1,37 +1,49 @@
 {
   "globalNews": [
     {
-      "title": "Iran says it has agreed Strait of Hormuz shipping route with Oman",
+      "title": "Iran says deal with Oman on Strait of Hormuz is in final stages",
       "link": "https://www.bbc.co.uk/news/articles/ckg9d3eyeggo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 21:21:51 GMT",
-      "desc": "A foreign ministry spokesman did not give details but said an agreement with the Gulf nation was \"in the final stages\"."
-    },
-    {
-      "title": "After deadly Kyiv strike, Ukraine warns interceptor shortage is costing lives",
-      "link": "https://www.bbc.co.uk/news/articles/cyvlgq2gp2eo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 18:19:51 GMT",
-      "desc": "Without Patriot interceptors, Ukraine's skies are wide open and people are fully exposed to Russia's missile barrages."
-    },
-    {
-      "title": "Drone carrying explosives found at German airport, police say",
-      "link": "https://www.bbc.co.uk/news/articles/cyvlg4q48l3o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 20:01:51 GMT",
-      "desc": "The drone was found near Ukrainian cargo planes before another object collided with a cargo aircraft in mid-air."
-    },
-    {
-      "title": "Israel strikes south Lebanon after first evacuation warning in weeks",
-      "link": "https://www.bbc.co.uk/news/articles/c998711dyjvo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 05 Aug 2026 20:03:36 GMT",
-      "desc": "Lebanon's health ministry says one person was killed in the strikes, which the Israeli military says were a response to a Hezbollah ceasefire violation."
+      "date": "Thu, 06 Aug 2026 01:19:59 GMT",
+      "desc": "Neither the US or Oman have commented on the proposed agreement on the vital waterway."
     },
     {
       "title": "Infantino sorry for errors but stays Fifa president",
       "link": "https://www.bbc.co.uk/sport/football/articles/clyq3el5gkqo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 05 Aug 2026 21:37:08 GMT",
       "desc": "Gianni Infantino will remain as Fifa president after receiving the backing of senior executives, but \"sincerely apologises\" for errors made in his controversial private investment plans."
+    },
+    {
+      "title": "Rihanna is 'in the studio', says partner A$AP Rocky",
+      "link": "https://www.bbc.co.uk/news/articles/c4gwvvw9k1xo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 06 Aug 2026 04:44:22 GMT",
+      "desc": "The singer, who last released a full album in 2016, is in the studio and \"cooking\", her partner said."
+    },
+    {
+      "title": "Nigerian security forces rescue more than 300 abductees",
+      "link": "https://www.bbc.co.uk/news/articles/cn4ndd8nr8lo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 06 Aug 2026 04:35:33 GMT",
+      "desc": "Nigeria's government says the rescue is the country's largest single-day operation by joint security forces."
+    },
+    {
+      "title": "After deadly Kyiv strike, Ukraine warns interceptor shortage is costing lives",
+      "link": "https://www.bbc.co.uk/news/articles/cyvlgq2gp2eo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 05 Aug 2026 18:19:51 GMT",
+      "desc": "Without Patriot interceptors, Ukraine's skies are wide open and people are fully exposed to Russia's missile barrages."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea says the chance of 3% economic growth has risen sharply - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNM2pTQTZzbEVIRTVZbWoxQ0s4amE4aHBxRG1pSkl5TFQ0enNoQnBXWjhJVm5qajNsRHV0VFRCa0hteU9odnEtOUlmOUZlVDJJb0RzTjluQlM3OGlkX0FjeFhFcmE2cm1aWUJTVkJqeEMwVkFKRjBaanJsN013MkF4c051ZC1SV1NfaEdzLUd3SEpOaXFxUEJjZ1BSdVQ5WDg3dGpTYk90VktqdEl6QlJkUFR5VG4?oc=5",
+      "date": "Thu, 06 Aug 2026 00:21:00 GMT",
+      "desc": "South Korea says the chance of 3% economic growth has risen sharply&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
+      "date": "Tue, 04 Aug 2026 16:46:37 GMT",
+      "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
+    },
     {
       "title": "The Method in North Korea’s Madness - American Enterprise Institute - AEI",
       "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5RT3JZMHBQMEtzVEJIUmRuaW5FbVkwV1lKNWlfNW9QZ0twUUpCSWlwbUc3bTdzbnROSkF2RzZONHl5NlNoMV91MWdvR1ExaURwbTVtT1dSQWExQVBuT0VrUE1sTmRETDl4RTFCdXV6ZjRDQ3Fh?oc=5",
@@ -39,46 +51,34 @@
       "desc": "The Method in North Korea’s Madness&nbsp;&nbsp;American Enterprise Institute - AEI"
     },
     {
-      "title": "Can America and South Korea strengthen ties amid economic frictions? - brookings.edu",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
-      "date": "Tue, 04 Aug 2026 16:46:37 GMT",
-      "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;brookings.edu"
+      "title": "South Korea says the chance of 3% economic growth has risen sharply By Reuters - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQMDJwSmk1bmd4NVFfZldFaWROR1Q5anc0czRiUDdWV1BMZUtzbEhRaE9QQVNuRFZUeEpsN3pNNE92YkJvbUJWcTJLekt1UldSS2lncEZ3V1BhTjBoeFBFRkh6ZklKQktjM3dDaHJMY1pKTUtRdnFXa0dGeWFVbUJoMjQ5Z3JSdkZYZVhkTjFEMTJrU2lldXcyNlo4Szl2d0tEcEc1SzZGTUttZmZCbFA1TGE4cnlTWXhqT2c?oc=5",
+      "date": "Thu, 06 Aug 2026 01:04:22 GMT",
+      "desc": "South Korea says the chance of 3% economic growth has risen sharply By Reuters&nbsp;&nbsp;Investing.com"
     },
     {
-      "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - wsj.com",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
-      "date": "Thu, 23 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;wsj.com"
+      "title": "Korean-developed apps drive Google’s $69 billion economic impact - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBTaGRYTHNnbzNzTDNKYlJhNml5N0dxMDYwZ1J1dGZLel9oSjNLRWNHSkdkSDlKTDNuNFhEREVOdk9mUVdQdF9zWkgybk1hbUxNdnRjUml1NEpBZERYLVRFVDVwazJKb1A4R2JIeTFLbFo4aDVnNUlz?oc=5",
+      "date": "Thu, 06 Aug 2026 02:15:40 GMT",
+      "desc": "Korean-developed apps drive Google’s $69 billion economic impact&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
+      "title": "Samsung, SK Hynix shareholders call for bigger payouts from AI cash mountain - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxORDlfSGtmdml4LXVkSG82NWxERmJrZmlhM0xUbHY2UUxQVV9JUlVBMzhLZHAxQkZJOHU2aUJlejVIQ0F3VzAtOTRBT093b21HMldEUVQxVXZDdWIxczJ6bFhWTTFlaWJ1S0lIejhwc1FONEEzZG11NmxPWjNXdzRwTGxGMkZoUU9vaVRISWE2Xy1qYlBjenpKQTg2bzlFWmdmck5ULWQtM0xLQjMtUWs0aExZV05hRVFXNkpyaXhB?oc=5",
+      "date": "Thu, 06 Aug 2026 04:28:00 GMT",
+      "desc": "Samsung, SK Hynix shareholders call for bigger payouts from AI cash mountain&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea’s stock market plunges as AI-driven boom fades - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmZNcEtQUnpRbHdtRWpiVng1dnhxVlJCM1VVdzZRQUpwMjh0cGJDLVRuWnZpSDdjc1Q5VkpYaUF3OWRZU0NPYjZzSUxvakwtMjBVLVdRSjdLOVI0QmpockFtQTIwamJHNW1TREJsZXBrN1ZQX001VHBfMldwUEQtTGVIMG5YTGN6aEdQeU9mOEsxTU51Y3NlRjI2UVFlbTZZTGVv0gGoAUFVX3lxTE8tVjBGU2Mtb3BsRTVwU3BZWmVua0ZBS3ZFT012R0JuTkgwQ0M3UlFTaEdRdURyYnM0X0lPTlBCQjFmVEpKYXBqOGhJR0RiRHRoZXpFdEk4eENJT0QtaXBTMXNHN3g5alF3T0FMU0U4RkJQTUlrWXJFODNkRVlVdUJOQTRyTFpScExfUHdYRjRUSUlWTERBNDNOazdneHlEZXhGTHVWUU1RVg?oc=5",
-      "date": "Wed, 29 Jul 2026 17:54:32 GMT",
-      "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;Al Jazeera"
-    },
-    {
-      "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
-      "date": "Wed, 05 Aug 2026 02:02:00 GMT",
-      "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
+      "title": "DRAM price surge lifts Samsung and Micron as SK Hynix loses share - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOVHhqdWZjRmVuc1N1RzJwcUhiQzVzTVJCb2Z4QjdzdXE5OVBLTXhZaGg5OFQxR2Y2R2s2WnN5c0FiUGREamtIbnkyY3lmajMtWFR3WU50dXZ3cEFiZF9rR09xRmtvdWdVSDZLeFIxc3pDSjVCNm1JdWFJRjVPVkg3N3d1RHRkMFY5R1hRWHdn?oc=5",
+      "date": "Thu, 06 Aug 2026 00:00:42 GMT",
+      "desc": "DRAM price surge lifts Samsung and Micron as SK Hynix loses share&nbsp;&nbsp;digitimes"
     },
     {
       "title": "Samsung and SK Hynix evaluate Chinese chip equipment as U.S. restrictions remain a concern - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNcmUxWk9EbDhZN20wUlJJRXp4bFdwcWNITE8zYzk4MG1ZSWhJODFPZnh1V0VtdDR2SnBlUEJfczJ5UmpzaTRncEVRSVlaaGQ1XzdQLW5WaWhncTZrYmR4NWhLU1BjNnhFLTIzR0toMW1WRVoyeE1KclY1NWxwMy1MVl9RZ3dENFRfM2duR0haUzAzYnhRenl3Rld3?oc=5",
       "date": "Wed, 05 Aug 2026 10:51:14 GMT",
       "desc": "Samsung and SK Hynix evaluate Chinese chip equipment as U.S. restrictions remain a concern&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "Korea to retain memory chip lead through 2031 on Samsung, SK hynix investment: Yole Group - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPLXRNaDZiclFDalhsb20tVFI4Qkx5ZjRvSFJGOUc1elBBSGNCQUtfTUJYWWlKSXZhRXN5eXg0T2c2MlhxTFlhY0FnMWtuV011SnBHSkg5WFYzMUFrSDdoSjFnR2dSRE0tV3ZJV0NjRVNBWGg3UnRoWWg5Z3FPYk0wM3EzX00takR6OGFjS2MxRlZqM0xlR1R0UHo2X3NCUmwzalNscmFhRmdoNEJvSS1lUE1tb0ktUWg4em1PTmFBYkJsd29IX1NOeE45WWQzLTlhZU8wYTRYcw?oc=5",
-      "date": "Wed, 05 Aug 2026 06:03:47 GMT",
-      "desc": "Korea to retain memory chip lead through 2031 on Samsung, SK hynix investment: Yole Group&nbsp;&nbsp;Korea JoongAng Daily"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 246000.0,
-      "change": 6500.0,
-      "pct": 2.71,
+      "price": 231500.0,
+      "change": -8500.0,
+      "pct": -3.54,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1668000.0,
-      "change": 101000.0,
-      "pct": 6.45,
+      "price": 1514000.0,
+      "change": -63000.0,
+      "pct": -3.99,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 404500.0,
-      "change": 11500.0,
-      "pct": 2.93,
+      "price": 401000.0,
+      "change": 8500.0,
+      "pct": 2.17,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 133000.0,
-      "change": 3400.0,
-      "pct": 2.62,
+      "price": 133800.0,
+      "change": 4200.0,
+      "pct": 3.24,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 229000.0,
-      "change": 21500.0,
-      "pct": 10.36,
+      "price": 227500.0,
+      "change": 1000.0,
+      "pct": 0.44,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6598.26,
-      "change": 340.81,
-      "pct": 5.45,
+      "price": 6329.99,
+      "change": -28.96,
+      "pct": -0.46,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1422.19,
-      "change": -6.31,
-      "pct": -0.44,
+      "price": 1416.08,
+      "change": -12.35,
+      "pct": -0.86,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-06 01:28 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-08-06 05:40 UTC"
 }
