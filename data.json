@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Seven killed after Thai teen shooter opens fire at home and school",
-      "link": "https://www.bbc.co.uk/news/articles/c980j3j578do?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 07 Aug 2026 14:05:47 GMT",
-      "desc": "Authorities say the teen killed his grandparents at home before opening fire and killing five teachers at his school."
+      "title": "Spain imposes border controls against Italy as row over Ceuta migrant influx intensifies",
+      "link": "https://www.bbc.co.uk/news/articles/c5yv5l6yr5ko?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 07 Aug 2026 22:13:55 GMT",
+      "desc": "Italy introduced border controls following an influx of about 78,000 migrants from neighbouring Morocco into the Spanish exclave of Ceuta."
     },
     {
-      "title": "Meta fined $567m in largest child safety ruling against social media giant",
-      "link": "https://www.bbc.co.uk/news/articles/cd7lz3wr2rlo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 07 Aug 2026 09:22:03 GMT",
-      "desc": "The ruling is in addition to $375m in fines Meta was already ordered to pay in the case, for a total of $942m."
+      "title": "Thai PM vows to introduce stricter gun laws after eight killed in shooting",
+      "link": "https://www.bbc.co.uk/news/articles/cdewx6rew04o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 07 Aug 2026 21:19:27 GMT",
+      "desc": "Eight people were killed when a 14-year-old opened fire at his home and school before shooting himself dead."
+    },
+    {
+      "title": "I was standing in front of my teacher when she was shot, Thai pupil says",
+      "link": "https://www.bbc.co.uk/news/articles/c07rxz03034o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 07 Aug 2026 14:20:27 GMT",
+      "desc": "The student says she feared never seeing her mother again after the attack killed five teachers."
     },
     {
       "title": "Saudi Arabia, Turkey and Pakistan sign defence pact",
       "link": "https://www.bbc.co.uk/news/articles/c30418m4mj4o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 07 Aug 2026 14:41:15 GMT",
+      "date": "Fri, 07 Aug 2026 17:42:54 GMT",
       "desc": "Pakistan says an attack on any of the three will amount to an attack against all, amid conflict in the Middle East."
     },
     {
-      "title": "Trump again tries to limit US birthright citizenship with new executive orders",
-      "link": "https://www.bbc.co.uk/news/articles/cj63966j95yo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 07 Aug 2026 00:34:14 GMT",
-      "desc": "The executive orders ban birth tourism and expand the existing definition of people whose children are not eligible for US birthright citizenship."
-    },
-    {
-      "title": "Australian aviation crew carries out daring midwinter Antarctica rescue",
-      "link": "https://www.bbc.co.uk/news/articles/c89nqlz5p4qo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 07 Aug 2026 05:44:29 GMT",
-      "desc": "Team evacuated a patient from McMurdo Station after landing plane in total darkness and temperature of -43°C."
+      "title": "Spanish police arrest 78 people in bust of 'one of largest' smuggling networks",
+      "link": "https://www.bbc.co.uk/news/articles/clylejzkkx4o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 07 Aug 2026 16:13:45 GMT",
+      "desc": "The group moved synthetic drugs from Spain to Algeria, then used the return journey to smuggle migrants and weapons."
     }
   ],
   "koreaNews": [
@@ -39,12 +39,6 @@
       "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
     },
     {
-      "title": "How the AI Chip Boom Is Reshaping South Korea’s Markets, Economy and Society - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOMzl3VFBPVngtY2Q4dmxIeGJsaXJNSDB6aEVzTzhGS1RnN2E4bDFwaTYzbmEzeWpDb1lvR3Yxam9VQVZaT3hGdVdxY3UyLV8tNGwzWUhmTmJoajJGd29Tc0hZZFBxSFFTZ19ZaHJmWVdUcnpNNFFqZ2g4V0NVb2xaZWU3QTlSSXNaRkhhYXRESHZYcFdqOEt2YnNMb21DU3ZrUDFXZWhXbHVDQWhIaFdFMWVvSU4wLUJWQXZVdUtSMFc3Xy1PaVhtOA?oc=5",
-      "date": "Thu, 06 Aug 2026 21:26:36 GMT",
-      "desc": "How the AI Chip Boom Is Reshaping South Korea’s Markets, Economy and Society&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
       "date": "Thu, 23 Jul 2026 07:00:00 GMT",
@@ -53,14 +47,20 @@
     {
       "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Thu, 23 Jul 2026 07:00:00 GMT",
+      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
       "title": "South Korea overtakes Japan in H1 exports on AI chip boom - KED Global",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9DZWZEY2wyTzdHdnh2VHZHdGlReW9Qd3VlTjhiM1kzNTBhZzBCYjA5bF9IRFBhaHZiU0pYRHZYTkw1XzM5RHduOXJHMkEzVEFGb3Rpc3lyM3FyTnViS2hVLXQwZDFETWFNNmc?oc=5",
-      "date": "Fri, 07 Aug 2026 13:34:05 GMT",
+      "date": "Fri, 07 Aug 2026 19:34:05 GMT",
       "desc": "South Korea overtakes Japan in H1 exports on AI chip boom&nbsp;&nbsp;KED Global"
+    },
+    {
+      "title": "How the AI Chip Boom Is Reshaping South Korea’s Markets, Economy and Society - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOMzl3VFBPVngtY2Q4dmxIeGJsaXJNSDB6aEVzTzhGS1RnN2E4bDFwaTYzbmEzeWpDb1lvR3Yxam9VQVZaT3hGdVdxY3UyLV8tNGwzWUhmTmJoajJGd29Tc0hZZFBxSFFTZ19ZaHJmWVdUcnpNNFFqZ2g4V0NVb2xaZWU3QTlSSXNaRkhhYXRESHZYcFdqOEt2YnNMb21DU3ZrUDFXZWhXbHVDQWhIaFdFMWVvSU4wLUJWQXZVdUtSMFc3Xy1PaVhtOA?oc=5",
+      "date": "Thu, 06 Aug 2026 21:26:36 GMT",
+      "desc": "How the AI Chip Boom Is Reshaping South Korea’s Markets, Economy and Society&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
@@ -69,105 +69,105 @@
       "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Asian tech stocks drop with SK Hynix plunging 10% after Wall Street AI names fall - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPb1VJU0stOGEwNEVYRm5ybXhhWUpqeGprZ3IzMFJ6djQtZFRxVHVfYVN4RVRfVFVlV0tUcDZoVTlSRFBoUEJub1hfejNfdzFjd3dWaE5jUm9uMV9NbTNYT2V4WFNsVFdhQ09ENkd5N3VnRFU2aGpWRFBUZVgtM2pCNUttNTNyMk1kdndB?oc=5",
-      "date": "Thu, 06 Aug 2026 05:27:12 GMT",
-      "desc": "Asian tech stocks drop with SK Hynix plunging 10% after Wall Street AI names fall&nbsp;&nbsp;CNBC"
+      "title": "Korean IRA Semiconductor Credit Skips Samsung, SK Hynix: Parts Suppliers Win - Tech Times",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNandoOVlnUGEtUlJpa0F3bXVjVWpoUEwyQlVUMFh6MUJvU2NrNFJqUFYwN1NVLTRQU21tMFlnZnZINmlQQkdra1pJQXRfTy1CYUw1ZzNralR4MGk4NXJ5Tm9lZWpkWjBZUjY2LXJqekZ4eDM5cmhBTlRvcFREWnctbk5Kd2ZSZDQ0cjNXSk5IMGdCbXpXc241NlBlbm8wbmFOdDlDdDFXMWJDLWtQMWpMcjNVNFFvSS0waDRPQ012enFzTGRmOTM3Ng?oc=5",
+      "date": "Fri, 07 Aug 2026 19:11:44 GMT",
+      "desc": "Korean IRA Semiconductor Credit Skips Samsung, SK Hynix: Parts Suppliers Win&nbsp;&nbsp;Tech Times"
     },
     {
-      "title": "Samsung, SK Hynix Advance HBM, HBF for AI Era - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOWV93Vk83SXRfTGxuYkJZeVVfX2VhNENnNDRNeEoyVmVPZXJNUGpheFl1eHpXc3FkOUthM0pGdWlYWU9wVUdmVnpIQndwWVpwTGtnN0taYlpsd0t6RUpkYVRtdUFkb19FYlFhWElPZTMySzJEUWUwSVdKZ0pRck1kcGc5MTRaUm5M?oc=5",
-      "date": "Fri, 07 Aug 2026 07:37:55 GMT",
-      "desc": "Samsung, SK Hynix Advance HBM, HBF for AI Era&nbsp;&nbsp;조선일보"
+      "title": "SK Hynix to invest $38 billion building new memory chip plants as demand soars - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5OWHRLdGVPZnRBSWh0Uy1XVFNaMFplajBFQ2VzS0ZTWTBNUXNVMEFVRk51bWxTVFl5TndPbkpmbWVlcExBcGsxTXlBWHRNWmh2aHU3d0FJdXBVSkdHN1ZJRXdxUmZpXzBOQVNnSVZMcFB0RE1ITnEw0gF8QVVfeXFMT0tjTHJQUUxsczVuWng3NDQyM1ZNZkpXenYyZDRYRUZHMUlvektWWkFYMThZTGNBdW9hVWtzN0t4N0VxSjlEanBEOHVxeFYwaGxCd1JNalNEa3BXbTZ0UjZOc2R4NjJUalJZRWxnVjlscVJNUnlpcWM2RnZaUg?oc=5",
+      "date": "Fri, 07 Aug 2026 08:40:13 GMT",
+      "desc": "SK Hynix to invest $38 billion building new memory chip plants as demand soars&nbsp;&nbsp;CNBC"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 222.87,
-      "change": 3.65,
-      "pct": 1.66,
+      "price": 223.96,
+      "change": 4.74,
+      "pct": 2.16,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 413.32,
-      "change": -0.68,
-      "pct": -0.16,
+      "price": 420.04,
+      "change": 6.04,
+      "pct": 1.46,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 476.69,
-      "change": -5.36,
-      "pct": -1.11,
+      "price": 483.36,
+      "change": 1.31,
+      "pct": 0.27,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 98.44,
-      "change": -2.62,
-      "pct": -2.6,
+      "price": 101.65,
+      "change": 0.59,
+      "pct": 0.58,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 163.85,
-      "change": 6.32,
-      "pct": 4.02,
+      "price": 167.86,
+      "change": 10.33,
+      "pct": 6.56,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 278.23,
-      "change": 3.65,
-      "pct": 1.33,
+      "price": 282.57,
+      "change": 7.99,
+      "pct": 2.91,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 354.96,
-      "change": -7.47,
-      "pct": -2.06,
+      "price": 354.3,
+      "change": -8.13,
+      "pct": -2.24,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 314.28,
-      "change": 3.28,
-      "pct": 1.05,
+      "price": 313.33,
+      "change": 2.33,
+      "pct": 0.75,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 502.94,
-      "change": 15.48,
-      "pct": 3.17,
+      "price": 499.99,
+      "change": 12.53,
+      "pct": 2.57,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7743.16,
-      "change": 19.61,
-      "pct": 0.25,
+      "price": 7757.64,
+      "change": 34.09,
+      "pct": 0.44,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26593.75,
-      "change": 230.31,
-      "pct": 0.87,
+      "price": 26690.62,
+      "change": 327.18,
+      "pct": 1.24,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1409.44,
-      "change": -11.72,
-      "pct": -0.82,
+      "price": 1407.45,
+      "change": -13.71,
+      "pct": -0.96,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-07 14:44 UTC"
+  "updatedAt": "2026-08-07 22:29 UTC"
 }
