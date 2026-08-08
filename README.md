@@ -1,4 +1,83 @@
- Playlist: Bugs Top 20 [2026.07.28] | #1 RESCENE - “LOVE ATTACK”, #2 I.O.I - “갑자기(Suddenly)”, #3 aespa - “LEMONADE”, #4 CORTIS - “REDRED”, #5… | 2026-07-28 | https://seoulinside.substack.com/p/playlist-bugs-top-20-20260728-1-rescene
+Seoul inside 2026.05 - 2026.07
+----
+
+Seoul Inside
+
+This is a newsletter about the Seoul Capital Area — its land, its money, its people, and the systems that connect them.
+
+Most coverage of Korea explains what happened. This newsletter tries to explain why the official explanation is usually incomplete.
+
+Real estate is the core. Not because property is more important than people, but because in the Seoul Capital Area, land is where economics, politics, corporate history, and demographic pressure all leave a visible mark. To understand why a neighborhood costs what it costs, you often have to understand which company anchors the local economy, what the redevelopment association has been arguing about for eleven years, and what happened on this land five hundred years ago.
+
+The same question — what is the standard account missing? — runs through everything else here: market analysis, corporate history, monetary theory, urban geography, and occasionally physics and mathematics, which turn out to reward the same kind of reading.
+
+Seoul Inside is written by one person. It is not investment advice. It is not affiliated with any institution. It is an archive, built in public, by someone who finds this place genuinely difficult to stop thinking about.
+
+----
+Stacking of Infrastructure: A Prologue
+→ https://seoulinside.substack.com/p/stacking-of-infrastructure-a-prologue
+: Stacking of Infrastructure, Trickle-Dry Effect
+
+Urban Layer Stacking: How Cities Survive — and How They Don’t
+→ https://seoulinside.substack.com/p/urban-layer-stacking-how-cities-survive
+: Urban Layer Stacking, Active Layers, Passive Layers, Trickle-Dry Effect
+
+The Trickle-Dry Effect
+→ https://seoulinside.substack.com/p/the-trickle-dry-effect
+: Trickle-Dry Effect / 절수효과
+
+The Rubber Ruler Problem
+→ https://seoulinside.substack.com/p/the-rubber-ruler-problem
+: Rubber Ruler Problem
+
+The Legibility Paradox: Why the “Broken” Currency Sees Clearly
+→ https://seoulinside.substack.com/p/the-legibility-paradox-why-the-broken
+: Legibility Paradox / 가독성의 역설, Rubber Ruler Problem
+
+The Four Notation System — A Navier–Stokes Archive
+→ https://seoulinside.substack.com/p/navierstokes-equations-an-archive
+: Four Notation System, 4수식 표기법
+
+The Address That Ate the University
+→ https://seoulinside.substack.com/p/the-address-that-ate-the-university-bde
+: Fragmented Ownership, Stacking of Infrastructure, Urban Layer Stacking, Passive Layers, Trickle-Dry Effect
+
+History : King Sejong the Great (1397–1450, r. 1418–1450) | Hunmin Jeongeum Haerye (1446) Born Yi Do (이도)
+https://seoulinside.substack.com/p/history-king-sejong-the-great-13971450
+
+History : Lee Jung-seop | The Unfortunate Genius Painter
+https://seoulinside.substack.com/p/history-lee-jung-seop-the-unfortunate
+
+History : Yoon Dong-ju (1917–1945) | A Poet Who Looked Up at the Sky
+https://seoulinside.substack.com/p/history-yoon-dong-ju-19171945-a-poet
+
+History : Chunhyangjeon (18th c.) | 5. Keeping Faith
+https://seoulinside.substack.com/p/history-chunhyangjeon-18th-c-5-keeping-faith
+
+History : Yi Hyo-seok (1907–1942) | When the Buckwheat Blooms [메밀꽃 필 무렵]
+
+History : Hyun Jin-geon (1900–1943) | A Lucky Day (1924)
+
+History : Admiral Yi Sun-sin (1545–1598) | Nanjung Ilgi [이순신 난중일기]
+
+History : Yi Sang (1910–1937) | Wings — grow back. Fly. Fly. Just once more, let me fly. Just once more. Let me try.
+
+History : Kim Sowol (1902–1934) | A Poet Who Made Sorrow Into Song
+
+History : Kim Yu-jeong (1908–1937) | Camellia Flowers [김유정 동백꽃]
+
+History : Heungbujeon (18th c.) | The Brother Who Had One Gut Too Many [흥부전]
+
+History : Simcheongga, a Pansori Chant (18th c.) | Three Hundred Sacks of Rice, One Priceless Daughter [심청가]
+
+K-Defense : KF-21 | Not a Stealth Fighter. That’s Not the Point.
+
+
+Written by B. Sun · @seoulinside · xur94@snu.ac.kr
+
+
+----
+Playlist: Bugs Top 20 [2026.07.28] | #1 RESCENE - “LOVE ATTACK”, #2 I.O.I - “갑자기(Suddenly)”, #3 aespa - “LEMONADE”, #4 CORTIS - “REDRED”, #5… | 2026-07-28 | https://seoulinside.substack.com/p/playlist-bugs-top-20-20260728-1-rescene
 
 Brief: Nam Joo-hyuk’s “Dong Gung” Dominates OTT Charts, Tops Rankings in 14 Countries | 2026-07-24 | https://seoulinside.substack.com/p/brief-nam-joo-hyuks-dong-gung-dominates
 
