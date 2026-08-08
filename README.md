@@ -1,3 +1,5 @@
+<meta name="google-site-verification" content="BLaxb5-av3LfgSpI_z5PFgEmP0mQ56WCW1TZSHRC5v8" />
+
 Seoul inside 2026.05 - 2026.07
 ----
 
