@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "Israel rejects Trump's 15-point plan for Gaza, Netanyahu says",
+      "link": "https://www.bbc.co.uk/news/articles/c5yw4lpe0yeo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 09 Aug 2026 14:18:10 GMT",
+      "desc": "Israel's PM says its military will not pull-out from Gaza until Hamas is \"genuinely\" disarmed."
+    },
+    {
+      "title": "Suspected crime boss Daniel Kinahan returning to Ireland in high-security operation",
+      "link": "https://www.bbc.co.uk/news/articles/c62qd5plzp6o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 09 Aug 2026 12:39:18 GMT",
+      "desc": "The Irish Prison Service bought a bulletproof and bombproof van to transport the 49-year-old to court after his extradition from Dubai."
+    },
+    {
+      "title": "Ancient Roman shipwreck discovered off Sicily coast",
+      "link": "https://www.bbc.co.uk/news/articles/cvgx1kpz17go?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 09 Aug 2026 12:27:26 GMT",
+      "desc": "Italy's culture minister says it is one of the most important underwater archaeological finds in years."
+    },
+    {
+      "title": "Fifa criticises campaign to oust president Infantino",
+      "link": "https://www.bbc.co.uk/sport/football/articles/cj03drn965do?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 08 Aug 2026 22:06:44 GMT",
+      "desc": "Fifa strongly criticises what it calls a \"concerted and ongoing effort\" to \"undermine\" the organisation and its president Gianni Infantino."
+    },
+    {
       "title": "Israel accused of weaponising archaeology at ancient West Bank sites",
       "link": "https://www.bbc.co.uk/news/articles/c20d8qre98do?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 08 Aug 2026 23:43:44 GMT",
       "desc": "Israel is planning large-scale land expropriations in historic, Palestinian areas of the West Bank."
-    },
-    {
-      "title": "Hundreds arrested over French wildfires, but who is to blame?",
-      "link": "https://www.bbc.co.uk/news/articles/cvgxjn92x9jo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 08 Aug 2026 23:59:23 GMT",
-      "desc": "The government is trying to attribute blame for the unprecedented fires which tore through the country last month."
-    },
-    {
-      "title": "Hormuz talks positive, Oman says, as Iran warns deal would not open strait",
-      "link": "https://www.bbc.co.uk/news/articles/c934j5y2lq9o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 08 Aug 2026 19:18:57 GMT",
-      "desc": "Both sides suggest progress in talks to agree a new shipping route through the strait, but a breakthrough remains unclear."
-    },
-    {
-      "title": "Perez Hilton faces long recovery after reports he self-harmed during livestream",
-      "link": "https://www.bbc.co.uk/news/articles/cg5lnqjz497o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 09 Aug 2026 04:32:06 GMT",
-      "desc": "The US blogger is in a \"serious but stable\" condition in hospital, according to his family."
-    },
-    {
-      "title": "Trump's ex-lawyer Todd Blanche narrowly confirmed as US attorney general",
-      "link": "https://www.bbc.co.uk/news/articles/cewr898jy8go?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 08 Aug 2026 15:56:39 GMT",
-      "desc": "The vote cements Trump's former criminal defence lawyer as the nation's top law enforcement official despite a rare pushback from some Republicans."
     }
   ],
   "koreaNews": [
@@ -51,21 +51,21 @@
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea's stock market crash: Why AI wasn't the real story - The New Indian Express",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOOGxyU0NCZFE4Yk5wWkhVSFRzVlE2TFFQaW5mN01MVWNwMWtFX1V1S1BHT2VQUXB3YzdIbUNuSW1hR2ppREl5dURvdkpoMENudHJVZktqMGc1Q0Q4bnA3TWpvM0xRTVNzSVBZOXdzclJSSTFvMEN5STRTVzFfYnI0SURTYXZpXzZONlktWEoybWxER3YxcWRveS1oVmZSa3FyWVV1ZndDSmRiRTl0c3E5TXJxS3RNUdIBwwFBVV95cUxNT2JzUFJwSk9lX2M2TmRMaE9sVGpOYTdvY1RJUGpqRnZEUFFaN3V3UWZOQmwydGw0ZUJ1T01KdGV5cWwzS01RVFRvazBzb0M0WWFpaFhuRE1Gd2k3amJjcUQzMDVhc1BGU205MGd3WXExMkZmbDlKcFBEZkJGN251NVZvcUhYV0xla3ZWNVhoNmdTQnEwQ01nZklSNUJScnNWcDFNdy1fOEVFc0xZdldsZ0EyYi00SXp4T216dTkyWHRjR2c?oc=5",
-      "date": "Fri, 07 Aug 2026 14:01:18 GMT",
-      "desc": "South Korea's stock market crash: Why AI wasn't the real story&nbsp;&nbsp;The New Indian Express"
-    },
-    {
       "title": "South Korea’s stock market plunges as AI-driven boom fades - Al Jazeera",
       "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmZNcEtQUnpRbHdtRWpiVng1dnhxVlJCM1VVdzZRQUpwMjh0cGJDLVRuWnZpSDdjc1Q5VkpYaUF3OWRZU0NPYjZzSUxvakwtMjBVLVdRSjdLOVI0QmpockFtQTIwamJHNW1TREJsZXBrN1ZQX001VHBfMldwUEQtTGVIMG5YTGN6aEdQeU9mOEsxTU51Y3NlRjI2UVFlbTZZTGVv0gGoAUFVX3lxTE8tVjBGU2Mtb3BsRTVwU3BZWmVua0ZBS3ZFT012R0JuTkgwQ0M3UlFTaEdRdURyYnM0X0lPTlBCQjFmVEpKYXBqOGhJR0RiRHRoZXpFdEk4eENJT0QtaXBTMXNHN3g5alF3T0FMU0U4RkJQTUlrWXJFODNkRVlVdUJOQTRyTFpScExfUHdYRjRUSUlWTERBNDNOazdneHlEZXhGTHVWUU1RVg?oc=5",
       "date": "Wed, 29 Jul 2026 07:00:00 GMT",
       "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;Al Jazeera"
     },
     {
+      "title": "South Korea's stock market crash: Why AI wasn't the real story - The New Indian Express",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOOGxyU0NCZFE4Yk5wWkhVSFRzVlE2TFFQaW5mN01MVWNwMWtFX1V1S1BHT2VQUXB3YzdIbUNuSW1hR2ppREl5dURvdkpoMENudHJVZktqMGc1Q0Q4bnA3TWpvM0xRTVNzSVBZOXdzclJSSTFvMEN5STRTVzFfYnI0SURTYXZpXzZONlktWEoybWxER3YxcWRveS1oVmZSa3FyWVV1ZndDSmRiRTl0c3E5TXJxS3RNUdIBwwFBVV95cUxNT2JzUFJwSk9lX2M2TmRMaE9sVGpOYTdvY1RJUGpqRnZEUFFaN3V3UWZOQmwydGw0ZUJ1T01KdGV5cWwzS01RVFRvazBzb0M0WWFpaFhuRE1Gd2k3amJjcUQzMDVhc1BGU205MGd3WXExMkZmbDlKcFBEZkJGN251NVZvcUhYV0xla3ZWNVhoNmdTQnEwQ01nZklSNUJScnNWcDFNdy1fOEVFc0xZdldsZ0EyYi00SXp4T216dTkyWHRjR2c?oc=5",
+      "date": "Fri, 07 Aug 2026 14:01:18 GMT",
+      "desc": "South Korea's stock market crash: Why AI wasn't the real story&nbsp;&nbsp;The New Indian Express"
+    },
+    {
       "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
-      "date": "Wed, 05 Aug 2026 19:13:06 GMT",
+      "date": "Wed, 05 Aug 2026 13:41:33 GMT",
       "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
     },
     {
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-09 09:45 UTC"
+  "updatedAt": "2026-08-09 14:24 UTC"
 }
