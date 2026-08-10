@@ -117,3 +117,16 @@
 
 - **서울대학교 포털 로그인** — https://my.snu.ac.kr/login.jsp
 - **네이버 모바일 홈** — https://m.naver.com/
+
+
+
+
+
+
+https://claude.ai
+https://mistral.ai
+https://grok.com
+https://chatgpt.com
+https://llama.meta.com
+https://www.perplexity.ai
+https://gemini.google.com
