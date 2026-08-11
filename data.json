@@ -1,6 +1,24 @@
 {
   "globalNews": [
     {
+      "title": "At least 132 killed in Colombia's largest  earthquake in years",
+      "link": "https://www.bbc.co.uk/news/articles/c20e360lx0vo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 11 Aug 2026 04:06:07 GMT",
+      "desc": "More than 480 people were injured in the quakes, with more feared trapped under collapsed buildings."
+    },
+    {
+      "title": "Canada flight cancelled after child refuses to wear seat belt",
+      "link": "https://www.bbc.co.uk/news/articles/cj6307x3wdgo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 10 Aug 2026 21:06:27 GMT",
+      "desc": "The incident has sparked a debate over child safety and discipline on commercial planes."
+    },
+    {
+      "title": "Watch: What we know about Tupac murder suspect Duane 'Keffe D' Davis",
+      "link": "https://www.bbc.co.uk/news/videos/cjd48zkg5n9o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 10 Aug 2026 20:45:29 GMT",
+      "desc": "The trial of the 63-year-old former gang boss kicked off on Monday, and he has entered a not guilty plea."
+    },
+    {
       "title": "At least 13 killed in Ukrainian drone strike deep into Russia",
       "link": "https://www.bbc.co.uk/news/articles/cvgjvgv926po?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 10 Aug 2026 14:34:25 GMT",
@@ -11,24 +29,6 @@
       "link": "https://www.bbc.co.uk/news/articles/ce3q5282ep3o?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 10 Aug 2026 14:43:08 GMT",
       "desc": "The Trump administration is said to be unbothered by the Israeli prime minister's rejection of the deal, viewing it as campaign rhetoric ahead of a general election."
-    },
-    {
-      "title": "'We've had a lot of close calls': Canada wildfire evacuees wonder if they still have homes",
-      "link": "https://www.bbc.co.uk/news/articles/cx2lwv032j9o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 10 Aug 2026 19:17:11 GMT",
-      "desc": "More than 12,000 people have been forced to evacuate and some homes have been lost after a wildfire tore through Canada's picturesque Okanagan region."
-    },
-    {
-      "title": "Canada flight cancelled after child refuses to wear seat belt",
-      "link": "https://www.bbc.co.uk/news/articles/cj6307x3wdgo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 10 Aug 2026 21:06:27 GMT",
-      "desc": "The incident has sparked a debate over child safety and discipline on commercial planes."
-    },
-    {
-      "title": "30 years later, a former gang member will stand trial for Tupac's murder",
-      "link": "https://www.bbc.co.uk/news/articles/cgmkl1j3dwvo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 10 Aug 2026 16:52:47 GMT",
-      "desc": "It’s been three decades since Tupac was killed, and since then, his reputation has only grown."
     }
   ],
   "koreaNews": [
@@ -63,22 +63,22 @@
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "The Dating Scene That’s Suddenly Dominated by Chip Nerds - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNQk9QRG9BOW05VkRvZTlTZ2p0aTF0NThjMElnZEtoX0RRbWktUFJySktic2RWXzFxR0g0eHp1VE9ySGljUEdCVlJBNmZOOC13enlneWZsX2ppSHFlMXBXZjU3bzQ1dU5FSXA2d2t4RjRIbE16VWNZdmh5aWVqUktoblFMSi1ROFc3Mk9fZ280MldxVmhSMGFmZ2IxQ3pnclhVNUdqSDJn?oc=5",
-      "date": "Mon, 10 Aug 2026 09:30:00 GMT",
-      "desc": "The Dating Scene That’s Suddenly Dominated by Chip Nerds&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "Samsung, SK Hynix LTAs: Stability vs. Growth Limits - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPWmVzbVNSS1c5YVd6UDdiODhhUzhiZzdaVXV3ZDBQbEoxUy0yZ3pyV0sxMS11Z01nb0VPbWtPMDNMT0FLX0Y3SG5Vb3ZFOGFuNGF1ZGlwQmsxTWZsQ2FFdDN6b1BQQUVoZXE3ZFFQN3RIb04wTFVsUzFGMHpZbnJSYklNd2I1dE1HM2NIcFF3?oc=5",
-      "date": "Mon, 10 Aug 2026 05:20:15 GMT",
-      "desc": "Samsung, SK Hynix LTAs: Stability vs. Growth Limits&nbsp;&nbsp;조선일보"
+      "title": "Samsung, SK Hynix Contracts: Safety Net or Shackle? - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOT2RRVEhfTVFBYlVFNWx1a0ltNnhCdzhoZXBneU12cF9pUmE5aFY2bnZ4Y0ZzYUhEYk9sTXFYc0pkczc1bnBmRU8zMTFGcmhZZDc3ZjI2alVtcnJOMTdQZEhCeFdFckRUcEU3eTB1eGtWUVpPOHZCWFRVQVlUMExhRVBQV241UUVOTllBVDJn?oc=5",
+      "date": "Mon, 10 Aug 2026 21:42:51 GMT",
+      "desc": "Samsung, SK Hynix Contracts: Safety Net or Shackle?&nbsp;&nbsp;조선일보"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
       "date": "Wed, 05 Aug 2026 19:13:06 GMT",
       "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "The Dating Scene That’s Suddenly Dominated by Chip Nerds - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNQk9QRG9BOW05VkRvZTlTZ2p0aTF0NThjMElnZEtoX0RRbWktUFJySktic2RWXzFxR0g0eHp1VE9ySGljUEdCVlJBNmZOOC13enlneWZsX2ppSHFlMXBXZjU3bzQ1dU5FSXA2d2t4RjRIbE16VWNZdmh5aWVqUktoblFMSi1ROFc3Mk9fZ280MldxVmhSMGFmZ2IxQ3pnclhVNUdqSDJn?oc=5",
+      "date": "Mon, 10 Aug 2026 09:30:00 GMT",
+      "desc": "The Dating Scene That’s Suddenly Dominated by Chip Nerds&nbsp;&nbsp;WSJ"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 230000.0,
-      "change": -500.0,
-      "pct": -0.22,
+      "price": 240250.0,
+      "change": 9250.0,
+      "pct": 4.0,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1420000.0,
-      "change": -75000.0,
-      "pct": -5.02,
+      "price": 1437000.0,
+      "change": 15000.0,
+      "pct": 1.05,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 408000.0,
-      "change": 8000.0,
-      "pct": 2.0,
+      "price": 404500.0,
+      "change": 9000.0,
+      "pct": 2.28,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 135500.0,
-      "change": 1900.0,
-      "pct": 1.42,
+      "price": 135900.0,
+      "change": 1000.0,
+      "pct": 0.74,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 211500.0,
-      "change": -14500.0,
-      "pct": -6.42,
+      "price": 212500.0,
+      "change": 2500.0,
+      "pct": 1.19,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6299.66,
-      "change": 3.28,
-      "pct": 0.05,
+      "price": 6371.59,
+      "change": 112.82,
+      "pct": 1.8,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1417.69,
-      "change": -4.61,
-      "pct": -0.32,
+      "price": 1414.58,
+      "change": 7.58,
+      "pct": 0.54,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-11 00:55 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-08-11 04:13 UTC"
 }
