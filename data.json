@@ -1,12 +1,6 @@
 {
   "globalNews": [
     {
-      "title": "Rescuers scramble for survivors with 180 dead in Colombia earthquake",
-      "link": "https://www.bbc.co.uk/news/articles/c20dqd9qwq4o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 11 Aug 2026 19:09:52 GMT",
-      "desc": "Colombia experienced a number of aftershocks on Tuesday, as efforts continued to free survivors trapped in rubble and buildings."
-    },
-    {
       "title": "Trump confirms he switched planes after Nato summit because of possible threat",
       "link": "https://www.bbc.co.uk/news/articles/c980r4wpl9lo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 12 Aug 2026 03:44:55 GMT",
@@ -19,25 +13,25 @@
       "desc": "It marks another striking episode in the turbulent history of his relationship with Iran, writes the BBC's Anthony Zurcher."
     },
     {
-      "title": "Singapore and S Korea pull Trader Joe's seasoning over poppy seeds",
-      "link": "https://www.bbc.co.uk/news/articles/cdewpklnzwxo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 07:44:44 GMT",
-      "desc": "Trader Joe's Everything But the Bagel seasoning contains poppy seeds which are banned in both countries."
+      "title": "Woman pulled alive from rubble 36 hours after Colombia quake",
+      "link": "https://www.bbc.co.uk/news/articles/cz7d2e5wlgno?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 12 Aug 2026 11:28:02 GMT",
+      "desc": "Following a 10-hour rescue operation, emergency workers pulled the 32-year-old from beneath slabs of concrete."
     },
     {
-      "title": "Wisconsin result halts winning streak for Democratic Party's left wing",
-      "link": "https://www.bbc.co.uk/news/articles/c9347ezzwljo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 09:55:40 GMT",
-      "desc": "Centrist David Crowley is projected to have beaten democratic socialist Francesca Hong, breaking a recent nationwide trend."
+      "title": "Israeli settlers besieging Palestinian families in West Bank village",
+      "link": "https://www.bbc.co.uk/news/articles/cn0npjkqrleo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 12 Aug 2026 14:03:48 GMT",
+      "desc": "Israeli security forces have reportedly withdrawn and about a dozen settlers are said to remain at the site where two families have been besieged since Sunday."
+    },
+    {
+      "title": "US inflation eases as food and fuel costs cool",
+      "link": "https://www.bbc.co.uk/news/articles/c0qv2nn1gpeo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 12 Aug 2026 14:09:48 GMT",
+      "desc": "Annual US inflation dipped to 3.4% in July, with food costs slowing and housing keeping prices slightly higher."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea's Economic Future: Focus on Seven Key Industries - GuruFocus",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQYzMwUGxSSW1CS01oTW9MSWZwYmN2SUpZZWlZVUQzNzFxRFBqc29VNGFLamdNNEc2YThmTzVmUmZNWkJNVzRILUszUTFFalRTLWtKTHFNdDN4VEJSWDNlWkhuMm9xckNpX1VoeEhSUWJ0anBNemdDMkNGXzZrZzRuYUtLWlpJR0hxSm1BU3lrRThtT0VlRld4M2tXbEtNZw?oc=5",
-      "date": "Wed, 12 Aug 2026 07:34:02 GMT",
-      "desc": "South Korea's Economic Future: Focus on Seven Key Industries&nbsp;&nbsp;GuruFocus"
-    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -49,6 +43,12 @@
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPbFA3NjVSaGhEWXFBRk5NdmNVdFg2eXc4ZHBDeVF1a3FkSUdQa3pwQzU1OEkyMmFJSWxHMUZlOWljMEo0WWNhSE85N3RBMjJ6X1pxNlU1dFJxYklHa3NaZnJUWXRPUEpkdGFtX1RtZ2JwVGEtSUNGV1dEU1FZS2l1cy10empFLU5DTXkwRmdPX2pwZFhhYzNTRg?oc=5",
       "date": "Mon, 10 Aug 2026 12:38:06 GMT",
       "desc": "Why South Korea Cannot Reach Carbon Neutrality on Renewables Alone&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "South Korea's Economic Future: Focus on Seven Key Industries - GuruFocus",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQYzMwUGxSSW1CS01oTW9MSWZwYmN2SUpZZWlZVUQzNzFxRFBqc29VNGFLamdNNEc2YThmTzVmUmZNWkJNVzRILUszUTFFalRTLWtKTHFNdDN4VEJSWDNlWkhuMm9xckNpX1VoeEhSUWJ0anBNemdDMkNGXzZrZzRuYUtLWlpJR0hxSm1BU3lrRThtT0VlRld4M2tXbEtNZw?oc=5",
+      "date": "Wed, 12 Aug 2026 07:34:02 GMT",
+      "desc": "South Korea's Economic Future: Focus on Seven Key Industries&nbsp;&nbsp;GuruFocus"
     },
     {
       "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
@@ -77,7 +77,7 @@
     {
       "title": "Semiconductor Talent and Equipment Race: Samsung, SK Hynix Accelerate Ahead of New Fab Launches - finance.biggo.com",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9uX19ITTd6T0ZOcFZxOHltM2FRX0hLWS1hNnFHdXo5RENURVVjM1hRdzd3ek9fakhsXzgyN0MyaHlpQ1lNZlQxc0M2Rnd2MU82OXZlR3AwX3JSbkswVlpsNXM2TzF3X3B4WVUxRUxyaUpKLW5hd1E?oc=5",
-      "date": "Wed, 12 Aug 2026 07:25:00 GMT",
+      "date": "Wed, 12 Aug 2026 07:36:11 GMT",
       "desc": "Semiconductor Talent and Equipment Race: Samsung, SK Hynix Accelerate Ahead of New Fab Launches&nbsp;&nbsp;finance.biggo.com"
     }
   ],
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 217.5,
-      "change": -6.46,
-      "pct": -2.88,
+      "price": 224.44,
+      "change": 6.88,
+      "pct": 3.16,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 422.06,
-      "change": 2.02,
-      "pct": 0.48,
+      "price": 430.24,
+      "change": 11.77,
+      "pct": 2.81,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 474.32,
-      "change": -9.04,
-      "pct": -1.87,
+      "price": 490.95,
+      "change": 21.39,
+      "pct": 4.56,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 97.71,
-      "change": -3.94,
-      "pct": -3.88,
+      "price": 101.58,
+      "change": 4.06,
+      "pct": 4.17,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 162.68,
-      "change": -5.18,
-      "pct": -3.09,
+      "price": 162.33,
+      "change": 0.16,
+      "pct": 0.1,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 268.93,
-      "change": -13.64,
-      "pct": -4.83,
+      "price": 270.19,
+      "change": 2.34,
+      "pct": 0.87,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 343.8,
-      "change": -10.5,
-      "pct": -2.96,
+      "price": 342.72,
+      "change": -14.8,
+      "pct": -4.14,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 304.91,
-      "change": -8.42,
-      "pct": -2.69,
+      "price": 302.56,
+      "change": -5.7,
+      "pct": -1.85,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 503.81,
-      "change": 3.82,
-      "pct": 0.76,
+      "price": 494.42,
+      "change": -11.64,
+      "pct": -2.3,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7728.2,
-      "change": -29.44,
-      "pct": -0.38,
+      "price": 7747.47,
+      "change": -5.64,
+      "pct": -0.07,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26445.44,
-      "change": -245.17,
-      "pct": -0.92,
+      "price": 26597.43,
+      "change": -7.93,
+      "pct": -0.03,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1415.28,
-      "change": -2.03,
-      "pct": -0.14,
+      "price": 1415.88,
+      "change": -1.43,
+      "pct": -0.1,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-12 10:12 UTC"
+  "updatedAt": "2026-08-12 14:49 UTC"
 }
