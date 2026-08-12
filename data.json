@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "Trump confirms he switched planes after Nato summit because of possible threat",
-      "link": "https://www.bbc.co.uk/news/articles/c980r4wpl9lo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 03:44:55 GMT",
-      "desc": "Journalists and White House staff who were on board the jet were unaware the president had left."
-    },
-    {
-      "title": "Trump's dramatic plane swap hints at personal stakes of Iran war",
-      "link": "https://www.bbc.co.uk/news/articles/cly8jexn1z9o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 00:14:42 GMT",
-      "desc": "It marks another striking episode in the turbulent history of his relationship with Iran, writes the BBC's Anthony Zurcher."
-    },
-    {
-      "title": "Woman pulled alive from rubble 36 hours after Colombia quake",
-      "link": "https://www.bbc.co.uk/news/articles/cz7d2e5wlgno?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 11:28:02 GMT",
-      "desc": "Following a 10-hour rescue operation, emergency workers pulled the 32-year-old from beneath slabs of concrete."
+      "title": "Major Russian grain export terminals hit in Ukraine Black Sea port attack",
+      "link": "https://www.bbc.co.uk/news/articles/c5y49xp2wrno?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 12 Aug 2026 17:47:01 GMT",
+      "desc": "Grain exports from both Russia and Ukraine are falling as both countries attack each other's shipping facilities and ports."
     },
     {
       "title": "Israeli settlers besieging Palestinian families in West Bank village",
       "link": "https://www.bbc.co.uk/news/articles/cn0npjkqrleo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 14:03:48 GMT",
+      "date": "Wed, 12 Aug 2026 16:14:08 GMT",
       "desc": "Israeli security forces have reportedly withdrawn and about a dozen settlers are said to remain at the site where two families have been besieged since Sunday."
     },
     {
-      "title": "US inflation eases as food and fuel costs cool",
-      "link": "https://www.bbc.co.uk/news/articles/c0qv2nn1gpeo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 14:09:48 GMT",
-      "desc": "Annual US inflation dipped to 3.4% in July, with food costs slowing and housing keeping prices slightly higher."
+      "title": "ICE plans to equip agents with gloves that can deliver electric shocks",
+      "link": "https://www.bbc.co.uk/news/articles/c20d292gdp4o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 12 Aug 2026 21:53:26 GMT",
+      "desc": "The US immigration agency is spending $20m on gloves that deliver a sharp electric shock intended to compel subjects to comply."
+    },
+    {
+      "title": "Trump says White House press secretary Karoline Leavitt to leave post",
+      "link": "https://www.bbc.co.uk/news/articles/cvglzrvyrz3o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 12 Aug 2026 20:57:47 GMT",
+      "desc": "Leavitt will depart from her role to spend time with her young children and family, the president says."
+    },
+    {
+      "title": "Why are 'human fridges' being sold in Japan?",
+      "link": "https://www.bbc.co.uk/news/videos/cjej4y3gvzlo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 12 Aug 2026 22:07:47 GMT",
+      "desc": "As Japan swelters through extreme summer heat, BBC Tokyo correspondent Kurumi Mori tries out a new way to cool down."
     }
   ],
   "koreaNews": [
+    {
+      "title": "North Korea Doubles Down on Its Alliance With Russia, For Now - keia.org",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOYlBZMm1PU0tIcEVHdUg2Z3R2d20wUjFOMkxSRWczLUVpSEY0S2tOVXVwT1RfMkl3UWRLeEd3X0xLT0RuRVBONUIzN1dDVWJBbzJkd2pBUWRVVjVjM1oxdnJPTmhlTHE1WEx5b3hoOXVMUmFOLUpQQW5ROHI5ME9XSmp0cWpjRmVlald2WG1GQ08?oc=5",
+      "date": "Wed, 12 Aug 2026 17:30:28 GMT",
+      "desc": "North Korea Doubles Down on Its Alliance With Russia, For Now&nbsp;&nbsp;keia.org"
+    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -39,21 +45,15 @@
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Why South Korea Cannot Reach Carbon Neutrality on Renewables Alone - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPbFA3NjVSaGhEWXFBRk5NdmNVdFg2eXc4ZHBDeVF1a3FkSUdQa3pwQzU1OEkyMmFJSWxHMUZlOWljMEo0WWNhSE85N3RBMjJ6X1pxNlU1dFJxYklHa3NaZnJUWXRPUEpkdGFtX1RtZ2JwVGEtSUNGV1dEU1FZS2l1cy10empFLU5DTXkwRmdPX2pwZFhhYzNTRg?oc=5",
-      "date": "Mon, 10 Aug 2026 12:38:06 GMT",
-      "desc": "Why South Korea Cannot Reach Carbon Neutrality on Renewables Alone&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "South Korea's Economic Future: Focus on Seven Key Industries - GuruFocus",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQYzMwUGxSSW1CS01oTW9MSWZwYmN2SUpZZWlZVUQzNzFxRFBqc29VNGFLamdNNEc2YThmTzVmUmZNWkJNVzRILUszUTFFalRTLWtKTHFNdDN4VEJSWDNlWkhuMm9xckNpX1VoeEhSUWJ0anBNemdDMkNGXzZrZzRuYUtLWlpJR0hxSm1BU3lrRThtT0VlRld4M2tXbEtNZw?oc=5",
-      "date": "Wed, 12 Aug 2026 07:34:02 GMT",
-      "desc": "South Korea's Economic Future: Focus on Seven Key Industries&nbsp;&nbsp;GuruFocus"
+      "title": "Global Climate Shocks Threaten South Korea's Export-Driven Economy - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUV9taDU2aTFRUEtIVVpnOHZ1TEctay1qaExnakwzZjNIbmhXOGhUVDRQY0k2OElWck9uOVg3OWo5ZmVyNURlM0dCQ2pPRDdiQVJkLU54cXJ1Zlh0UEpaWFJ6aDlQeDRtR2g1MHVOMzc1a01VeE9sYzE1V2hSaVVlTXV4WUU?oc=5",
+      "date": "Wed, 12 Aug 2026 15:52:20 GMT",
+      "desc": "Global Climate Shocks Threaten South Korea's Export-Driven Economy&nbsp;&nbsp;조선일보"
     },
     {
       "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Thu, 23 Jul 2026 07:00:00 GMT",
+      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
@@ -69,105 +69,105 @@
       "desc": "Samsung, SK hynix chip clusters get new power supply road map&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "MU, SNDK, SKHY: Memory Stocks Rise As Report Of Temasek’s Planned Investments In Samsung, SK Hynix Boosts KOSPI - Stocktwits",
-      "link": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQSE5xMldQSUxFdHhUVVRVbFJyRE84Yy0zNjIza0Fsby1oZTN2RG1YY1FQSnFCVTlERGdLMjhPanNBaVJyeGJoU1RWRkhOR0dNbjZTNVoyVTd2cTRtemVtWUNBczNtdFhyNTBTc0JxVlZuYWJYejRxRnZwcU1hRl82RmQ2WWJheEUydlh2VE05SkZRQlpPVngyT1hoMWwzQ2d1VW9oMk1Mb0psUlZxckl1VnRwZXRYTzJtMDh4NTE4X3ZHVkVzZ3ZvTVhBdkltT0ZsMVBfblZ1TFRJT3BhVkMtaEpWVU9XUHBybF90dUliRkxPem9ac19QaEpGQzhaWTRn?oc=5",
-      "date": "Wed, 12 Aug 2026 06:27:27 GMT",
-      "desc": "MU, SNDK, SKHY: Memory Stocks Rise As Report Of Temasek’s Planned Investments In Samsung, SK Hynix Boosts KOSPI&nbsp;&nbsp;Stocktwits"
+      "title": "Why Korean chip stocks could be primed for a comeback - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMEFmSDNVTWZLWWk1WXUyS2NlSDhYb1R0QXR3SGZVcnNPaWc1RE1JMVpzNmlIUU9SYjhHMkxlZ0lEUGJMemozTEpfLWJBRF92VElnTFJleFFIOGJmMkozQUkyaW1QdnJGRUhVUXBIeV9PUEZETnI5NFhrNXZ0RnlLN2dEaExRSk5sbi1RVmczTHFuV1dTVzBsX1AzaGtVSjhnZndhVHpmQk1Kdw?oc=5",
+      "date": "Wed, 12 Aug 2026 15:05:58 GMT",
+      "desc": "Why Korean chip stocks could be primed for a comeback&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Semiconductor Talent and Equipment Race: Samsung, SK Hynix Accelerate Ahead of New Fab Launches - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9uX19ITTd6T0ZOcFZxOHltM2FRX0hLWS1hNnFHdXo5RENURVVjM1hRdzd3ek9fakhsXzgyN0MyaHlpQ1lNZlQxc0M2Rnd2MU82OXZlR3AwX3JSbkswVlpsNXM2TzF3X3B4WVUxRUxyaUpKLW5hd1E?oc=5",
-      "date": "Wed, 12 Aug 2026 07:36:11 GMT",
-      "desc": "Semiconductor Talent and Equipment Race: Samsung, SK Hynix Accelerate Ahead of New Fab Launches&nbsp;&nbsp;finance.biggo.com"
+      "title": "The Dating Scene That’s Suddenly Dominated by Chip Nerds - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNQk9QRG9BOW05VkRvZTlTZ2p0aTF0NThjMElnZEtoX0RRbWktUFJySktic2RWXzFxR0g0eHp1VE9ySGljUEdCVlJBNmZOOC13enlneWZsX2ppSHFlMXBXZjU3bzQ1dU5FSXA2d2t4RjRIbE16VWNZdmh5aWVqUktoblFMSi1ROFc3Mk9fZ280MldxVmhSMGFmZ2IxQ3pnclhVNUdqSDJn?oc=5",
+      "date": "Mon, 10 Aug 2026 09:30:00 GMT",
+      "desc": "The Dating Scene That’s Suddenly Dominated by Chip Nerds&nbsp;&nbsp;WSJ"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 224.44,
-      "change": 6.88,
-      "pct": 3.16,
+      "price": 224.09,
+      "change": 6.54,
+      "pct": 3.01,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 430.24,
-      "change": 11.77,
-      "pct": 2.81,
+      "price": 429.15,
+      "change": 10.68,
+      "pct": 2.55,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 490.95,
-      "change": 21.39,
-      "pct": 4.56,
+      "price": 482.93,
+      "change": 13.37,
+      "pct": 2.85,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 101.58,
-      "change": 4.06,
-      "pct": 4.17,
+      "price": 100.95,
+      "change": 3.43,
+      "pct": 3.52,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 162.33,
-      "change": 0.16,
-      "pct": 0.1,
+      "price": 163.07,
+      "change": 0.9,
+      "pct": 0.55,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 270.19,
-      "change": 2.34,
-      "pct": 0.87,
+      "price": 271.87,
+      "change": 4.02,
+      "pct": 1.5,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 342.72,
-      "change": -14.8,
-      "pct": -4.14,
+      "price": 343.54,
+      "change": -13.98,
+      "pct": -3.91,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 302.56,
-      "change": -5.7,
-      "pct": -1.85,
+      "price": 302.25,
+      "change": -6.01,
+      "pct": -1.95,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 494.42,
-      "change": -11.64,
-      "pct": -2.3,
+      "price": 492.43,
+      "change": -13.63,
+      "pct": -2.69,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7747.47,
-      "change": -5.64,
-      "pct": -0.07,
+      "price": 7748.5,
+      "change": -4.61,
+      "pct": -0.06,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26597.43,
-      "change": -7.93,
-      "pct": -0.03,
+      "price": 26588.49,
+      "change": -16.87,
+      "pct": -0.06,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1415.88,
-      "change": -1.43,
-      "pct": -0.1,
+      "price": 1416.88,
+      "change": -0.43,
+      "pct": -0.03,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-12 14:49 UTC"
+  "updatedAt": "2026-08-12 22:34 UTC"
 }
