@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Major Russian grain export terminals hit in Ukraine Black Sea port attack",
-      "link": "https://www.bbc.co.uk/news/articles/c5y49xp2wrno?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 13 Aug 2026 03:28:56 GMT",
-      "desc": "Grain exports from both Russia and Ukraine are falling as both countries attack each other's shipping facilities and ports."
+      "title": "Putin can no longer claim victory in Ukraine, Nobel Peace Prize winner tells BBC",
+      "link": "https://www.bbc.co.uk/news/articles/c74grmy2v7ko?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 13 Aug 2026 04:55:58 GMT",
+      "desc": "In an exclusive interview with the BBC’s Steve Rosenberg, Dmitry Muratov says the Kremlin leader can only \"destroy Ukraine, not conquer it\", with the war now in its fifth year."
     },
     {
-      "title": "Israeli settlers besieging Palestinian families in West Bank village",
-      "link": "https://www.bbc.co.uk/news/articles/cn0npjkqrleo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 16:14:08 GMT",
-      "desc": "Israeli security forces have reportedly withdrawn and about a dozen settlers are said to remain at the site where two families have been besieged since Sunday."
+      "title": "UK defends seizing shadow fleet tanker after Putin threat",
+      "link": "https://www.bbc.co.uk/news/articles/cn0npn249qvo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 13 Aug 2026 09:52:30 GMT",
+      "desc": "The UK government says it is \"disrupting and deterring shadow fleet vessels\" in accordance with the law."
+    },
+    {
+      "title": "More troops to be sent to West Bank village besieged by Israeli settlers",
+      "link": "https://www.bbc.co.uk/news/articles/cj4kppdk2qwo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 13 Aug 2026 08:12:53 GMT",
+      "desc": "Two Palestinian families in the village of Qusra say they have been trapped in their homes, with water and power cut off, since Sunday."
     },
     {
       "title": "Ebola outbreak on track to be deadliest ever, WHO chief says",
@@ -19,68 +25,13 @@
       "desc": "The outbreak, declared on 15 May, has caused more than 2,000 deaths, with thousands more reported cases."
     },
     {
-      "title": "Three men will be executed on the same day as death penalties rise in US",
-      "link": "https://www.bbc.co.uk/news/articles/cn5n399n6zvo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 20:52:20 GMT",
-      "desc": "Despite growing opposition to the death penalty, one state is behind the rising numbers."
-    },
-    {
-      "title": "Why are 'human fridges' being sold in Japan?",
-      "link": "https://www.bbc.co.uk/news/videos/cjej4y3gvzlo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 12 Aug 2026 22:07:47 GMT",
-      "desc": "As Japan swelters through extreme summer heat, BBC Tokyo correspondent Kurumi Mori tries out a new way to cool down."
+      "title": "Indian actor's video with endangered gibbon sparks investigation",
+      "link": "https://www.bbc.co.uk/news/articles/c9q9351yp1xo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 13 Aug 2026 07:05:35 GMT",
+      "desc": "A deleted video of Tamil star Vikram cuddling an endangered gibbon has triggered an inquiry into how the animal entered India."
     }
   ],
-  "koreaNews": [
-    {
-      "title": "North Korea Doubles Down on Its Alliance With Russia, For Now - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOYlBZMm1PU0tIcEVHdUg2Z3R2d20wUjFOMkxSRWczLUVpSEY0S2tOVXVwT1RfMkl3UWRLeEd3X0xLT0RuRVBONUIzN1dDVWJBbzJkd2pBUWRVVjVjM1oxdnJPTmhlTHE1WEx5b3hoOXVMUmFOLUpQQW5ROHI5ME9XSmp0cWpjRmVlald2WG1GQ08?oc=5",
-      "date": "Wed, 12 Aug 2026 17:30:28 GMT",
-      "desc": "North Korea Doubles Down on Its Alliance With Russia, For Now&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "Rep. Young Kim leads U.S. delegation to Asia that focuses on economic, military partnerships - Orange County Register",
-      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQUnZQSGFDRXJGdC1oSzVzNng4QVhqdWs0aGhKYWVMRVQ5SmpRRy1hNm1RSVY4T3B2THNmQU1VYVRBekVGeWJnMm42anFEZ2pab1N0akdhc3doUTMyYXNIQnM3eHExZFgwdjR5U2JrUS1oQnY4VWZEUWMwVTlibmt6NjBLNDA4ZEdHSUZNemlMbFl2WkRSNng0c2FWcFQzLTF2ZFRqbnJJWkdfYmdlY3pYempqdWZDaWN5VjQ0aldEQTVtaVlxNGJJ?oc=5",
-      "date": "Wed, 12 Aug 2026 22:51:52 GMT",
-      "desc": "Rep. Young Kim leads U.S. delegation to Asia that focuses on economic, military partnerships&nbsp;&nbsp;Orange County Register"
-    },
-    {
-      "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
-      "date": "Thu, 23 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "Global Climate Shocks Threaten South Korea's Export-Driven Economy - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNUV9taDU2aTFRUEtIVVpnOHZ1TEctay1qaExnakwzZjNIbmhXOGhUVDRQY0k2OElWck9uOVg3OWo5ZmVyNURlM0dCQ2pPRDdiQVJkLU54cXJ1Zlh0UEpaWFJ6aDlQeDRtR2g1MHVOMzc1a01VeE9sYzE1V2hSaVVlTXV4WUU?oc=5",
-      "date": "Wed, 12 Aug 2026 19:41:48 GMT",
-      "desc": "Global Climate Shocks Threaten South Korea's Export-Driven Economy&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "KOSPI Surges 3% with Samsung, SK Hynix - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQYzdpTHZCNEhTekdZeFQ0TW9qeklBT2l6YzRWSl9MT2lvNEZFU2dDVTZDWXdUeGJhbTl5ek1FZFNxY0VRNWNWbW1VWVVXX3JLOU1TSXdQYXBURkh0SFc2MDRPUmROYjZUbDhPbjBiM21TYUVFd3d4S2xNcGFuU3dHTWEtNGkxaGxkcDhHdmtR?oc=5",
-      "date": "Thu, 13 Aug 2026 01:07:51 GMT",
-      "desc": "KOSPI Surges 3% with Samsung, SK Hynix&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Why Korean chip stocks could be primed for a comeback - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMEFmSDNVTWZLWWk1WXUyS2NlSDhYb1R0QXR3SGZVcnNPaWc1RE1JMVpzNmlIUU9SYjhHMkxlZ0lEUGJMemozTEpfLWJBRF92VElnTFJleFFIOGJmMkozQUkyaW1QdnJGRUhVUXBIeV9PUEZETnI5NFhrNXZ0RnlLN2dEaExRSk5sbi1RVmczTHFuV1dTVzBsX1AzaGtVSjhnZndhVHpmQk1Kdw?oc=5",
-      "date": "Wed, 12 Aug 2026 15:05:58 GMT",
-      "desc": "Why Korean chip stocks could be primed for a comeback&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "Samsung, SK hynix chip clusters get new power supply road map - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5RV3RMbXVRcnUxLTNEZWFfdjR0VjA0RVRNaDZYaVl0Mi1OaG9UQUFhUml1YTRSbkJWM0puRm9idFhFZXF5TTEzNjhZeVIteXpzOVBfV0E2OA?oc=5",
-      "date": "Wed, 12 Aug 2026 07:40:02 GMT",
-      "desc": "Samsung, SK hynix chip clusters get new power supply road map&nbsp;&nbsp;The Korea Herald"
-    }
-  ],
+  "koreaNews": [],
   "worldStocks": [
     {
       "symbol": "NVDA",
@@ -175,59 +126,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 267500.0,
-      "change": 28000.0,
-      "pct": 11.69,
+      "price": 268000.0,
+      "change": 28500.0,
+      "pct": 11.9,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1612000.0,
-      "change": 187000.0,
-      "pct": 13.12,
+      "price": 1593000.0,
+      "change": 168000.0,
+      "pct": 11.79,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 419000.0,
-      "change": 16000.0,
-      "pct": 3.97,
+      "price": 418500.0,
+      "change": 15500.0,
+      "pct": 3.85,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 137000.0,
-      "change": 2700.0,
-      "pct": 2.01,
+      "price": 137400.0,
+      "change": 3100.0,
+      "pct": 2.31,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 225000.0,
-      "change": 11000.0,
-      "pct": 5.14,
+      "price": 226500.0,
+      "change": 12500.0,
+      "pct": 5.84,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6825.12,
-      "change": 479.59,
-      "pct": 7.56,
+      "price": 6813.34,
+      "change": 467.81,
+      "pct": 7.37,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1415.08,
-      "change": 2.9,
-      "pct": 0.21,
+      "price": 1421.31,
+      "change": 9.13,
+      "pct": 0.65,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-13 04:45 UTC"
+  "updatedAt": "2026-08-13 10:14 UTC"
 }
