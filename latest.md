@@ -134,25 +134,67 @@ https://gemini.google.com
 
 
 ----
-The Gravitational Echo of Mass That No Longer Exists : https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal
-I Added a Black Hole to a Particle Collider — and an Accretion Disk Appeared : https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
-When Something Curved Becomes Flat, It Becomes Larger : https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
-Why Didn’t All the Antimatter Disappear? : https://seoulinside.substack.com/p/long-term-survival-of-antimatter
-The Textbook Got It Backwards : https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
-One Law of Physics. Three Unsolved Problems. : https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
-A Numerical Confirmation of General Relativity via Special Relativity and Newtonian Gravity: Observations from Yang-Mills Collider v3.2 : https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
-I Built a Particle Collider. An Accretion Disk Appeared. Then I Found the Missing Term. : https://seoulinside.substack.com/p/the-passive-layer
-I Started With a Particle Collider in a Browser. It Led Here. : https://seoulinside.substack.com/p/physics-series-full
-The Passive Layer — Core Document : https://seoulinside.substack.com/p/the-passive-layer-core-document
-Passive Layer — Essential Citations : https://seoulinside.substack.com/p/passive-layer-essential-citations
-High-Energy Particle Generation and Dynamic Gravity Systems Near Black Holes : https://seoulinside.substack.com/p/high-energy-particle-generation-and
-Black Hole Displacement and the Default State of Spiral Galaxies : https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
-A Unified Technical Framework — Simulation Evidence and Theoretical Foundations : https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
-Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe : https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity
-I Added a Black Hole to the LHC — and Something Unexpected Happened : https://seoulinside.substack.com/p/i-added-a-black-hole-to-the-lhc-and
-Delayed Gravitational Interaction as a Mechanism for Spiral Arm Formation in Disk Galaxies : https://seoulinside.substack.com/p/delayed-gravitational-interaction
-Black Hole Physics in Yang-Mills Collider v3.2 : https://seoulinside.substack.com/p/black-hole-physics-in-yang-mills
-LHC Simulation: Physics Formulas and Explanations : https://seoulinside.substack.com/p/lhc-simulation-physics-formulas-and
-Yang-Mills Collider v3.0 — A technical inventory : https://seoulinside.substack.com/p/yang-mills-collider-v30-a-technical
-A Relativistic Particle Collider, Built in Pure JavaScript — Making the Yang-Mills Collider : https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making
-YANG-MILLS THEORY ARCHIVE. B. Sun | Seoul Inside : https://seoulinside.substack.com/p/yang-mills-theory-archive
+  0 | One Law of Physics. Three Unsolved Problems.
+https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
+
+ 1 | The Passive Layer — Core Document
+https://seoulinside.substack.com/p/the-passive-layer-core-document
+
+ 2 | The Gravitational Echo of Mass That No Longer Exists
+https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal
+
+ 3 | Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe
+https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity
+
+ 4 | Why Didn’t All the Antimatter Disappear?
+https://seoulinside.substack.com/p/long-term-survival-of-antimatter
+
+ 5 | The Textbook Got It Backwards
+https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
+
+ 6 | Black Hole Physics in Yang-Mills Collider v3.2
+https://seoulinside.substack.com/p/black-hole-physics-in-yang-mills
+
+ 7 | Delayed Gravitational Interaction as a Mechanism for Spiral Arm Formation in Disk Galaxies
+https://seoulinside.substack.com/p/delayed-gravitational-interaction
+
+ 8 | Black Hole Displacement and the Default State of Spiral Galaxies
+https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
+
+ 9 | When Something Curved Becomes Flat, It Becomes Larger
+https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
+
+ 10 | I Started With a Particle Collider in a Browser. It Led Here.
+https://seoulinside.substack.com/p/physics-series-full
+
+ 11 | I Built a Particle Collider. An Accretion Disk Appeared. Then I Found the Missing Term.
+https://seoulinside.substack.com/p/the-passive-layer
+
+ 12 | I Added a Black Hole to the LHC — and Something Unexpected Happened
+https://seoulinside.substack.com/p/i-added-a-black-hole-to-the-lhc-and
+
+ 13 | I Added a Black Hole to a Particle Collider — and an Accretion Disk Appeared
+https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
+
+ 14 | High-Energy Particle Generation and Dynamic Gravity Systems Near Black Holes
+https://seoulinside.substack.com/p/high-energy-particle-generation-and
+
+ 15 | A Unified Technical Framework — Simulation Evidence and Theoretical Foundations
+https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
+
+ 16 | A Numerical Confirmation of General Relativity via Special Relativity and Newtonian Gravity: Observations from Yang-Mills Collider v3.2
+https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
+
+ 17 | Yang-Mills Collider v3.0 — A technical inventory
+https://seoulinside.substack.com/p/yang-mills-collider-v30-a-technical
+
+ 18 | LHC Simulation: Physics Formulas and Explanations
+https://seoulinside.substack.com/p/lhc-simulation-physics-formulas-and
+
+ 19 | A Relativistic Particle Collider, Built in Pure JavaScript — Making the Yang-Mills Collider
+https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making
+
+ 20 | Passive Layer — Essential Citations
+https://seoulinside.substack.com/p/passive-layer-essential-citations
+
+ 
