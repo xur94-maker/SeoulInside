@@ -135,6 +135,7 @@ https://gemini.google.com
 
 ----
  
+ 
 1	I Started With a Particle Collider in a Browser. It Led Here.	https://seoulinside.substack.com/p/physics-series-full
 2	One Law of Physics. Three Unsolved Problems.	https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
 3	The Gravitational Echo of Mass That No Longer Exists	https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal
@@ -157,6 +158,5 @@ S7	LHC Simulation: Physics Formulas and Explanations	https://seoulinside.substac
 S8	A Relativistic Particle Collider, Built in Pure JavaScript — Making the Yang-Mills Collider	https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making	
 S9	Passive Layer — Essential Citations	https://seoulinside.substack.com/p/passive-layer-essential-citations	
 
-https://seoulinside.substack.com/p/passive-layer-essential-citations
 
  
