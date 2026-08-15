@@ -1,37 +1,86 @@
 {
   "globalNews": [
     {
-      "title": "Powerful magnitude 7.7 earthquake kills at least 47 in Indonesia",
-      "link": "https://www.bbc.co.uk/news/articles/c5y0zz63gero?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 13:35:57 GMT",
-      "desc": "A search and rescue operation is under way to find survivors in Flores, an island in eastern Indonesia."
+      "title": "Rescuers search for survivors of powerful Indonesia earthquake",
+      "link": "https://www.bbc.co.uk/news/articles/c3v00w5ylw9o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 15 Aug 2026 21:49:12 GMT",
+      "desc": "Officials say a rapid assessment into the impact of the earthquake that destroyed hundreds of buildings and killed 47 is under way."
     },
     {
-      "title": "BBC seeks to subpoena Trump's family members in Panorama lawsuit",
-      "link": "https://www.bbc.co.uk/news/articles/cd69ely319eo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 00:01:53 GMT",
-      "desc": "The BBC's lawyers argue Trump's family members \"have personal knowledge\" of his intentions in the speech he gave outside the US Capitol on 6 January 2021."
-    },
-    {
-      "title": "US aircraft carrier on way to relieve USS Lincoln after issues reported aboard",
-      "link": "https://www.bbc.co.uk/news/articles/c171yp5zdrxo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 14 Aug 2026 17:36:27 GMT",
-      "desc": "Thousands of sailors on the Lincoln have reportedly faced food shortages and broken plumbing, with some considering jumping overboard."
+      "title": "Morocco detains dozens of migrants trying to cross into Ceuta, reports say",
+      "link": "https://www.bbc.co.uk/news/articles/ckg44x2ey1ro?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 15 Aug 2026 20:58:31 GMT",
+      "desc": "Security had been stepped up amid suggestions on social media of a second mass crossing on Saturday."
     },
     {
       "title": "Eleven killed in Israeli strikes on southern Lebanon, authorities say",
       "link": "https://www.bbc.co.uk/news/articles/c4gjygx4gjeo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 13:38:53 GMT",
-      "desc": "Israel's military said it had struck \"Hezbollah terror infrastructure\" in response to what it described as an earlier action against its soldiers."
+      "date": "Sat, 15 Aug 2026 20:21:14 GMT",
+      "desc": "Israel's military said it had struck \"Hezbollah terror infrastructure\" in response to what it described as earlier action against its soldiers."
     },
     {
-      "title": "South Korea proposes talks to officially end war with North",
-      "link": "https://www.bbc.co.uk/news/articles/c8en2z9jp2xo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 09:35:23 GMT",
-      "desc": "Lee Jae Myung offers chance to end the conflict, which has been frozen since an armistice in 1953."
+      "title": "Liechtenstein changes succession rule to allow women to ascend the throne",
+      "link": "https://www.bbc.co.uk/news/articles/cn9nnxrxg4qo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 15 Aug 2026 19:41:57 GMT",
+      "desc": "The declaration was made on the national day of the central European country, which has a population of just 44,000."
+    },
+    {
+      "title": "Qatar denies capturing three Iranian pilots after downing fighter jets",
+      "link": "https://www.bbc.co.uk/news/articles/cj4kk8kz271o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 15 Aug 2026 21:03:57 GMT",
+      "desc": "Iran claims they have been held since Qatar downed two fighter jets at the start of the US-Iran war."
     }
   ],
-  "koreaNews": [],
+  "koreaNews": [
+    {
+      "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - wsj.com",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
+      "date": "Wed, 22 Jul 2026 23:38:10 GMT",
+      "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;wsj.com"
+    },
+    {
+      "title": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever - Forbes",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQLWxXU3FxWXJiczJtZGVvQ28yRDZIVVlLSlcwS0g4UGFOWnl3QVVEMlJVZm9QX2llVkJ1SXBGVWlGMnZkMmx0ZUsxSDM0aDYyWUQ1Ump5dWpMM2RHdTBfVVdiYW1JX0dzTjdKRE96ekpOUUNtb0xKMzlOcXl6UGNEYlFwRFVQbXgxYm5HZUdXUHk5cy1sMTY4aXIwQUxPcDVtTWtYekYxS1lJR0VGN3N6ZWFmRFhQU3pBYWFWbXFvWQ?oc=5",
+      "date": "Thu, 13 Aug 2026 17:49:24 GMT",
+      "desc": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever&nbsp;&nbsp;Forbes"
+    },
+    {
+      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
+      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
+      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília - Carnegie Endowment for International Peace",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNT1lNajBvbGpIMHdXRXlfMkJoajNmZVY0N3AwUXdLYVhmRnZUeURXVlRRdjRpdkdtQm5QMS1aLVE3R0ZidVFpNGptbzRVUHBTQ056X2FGdXU1dTkyMnVKLUhyQ0gwdXU0Rjh0Tk16YTcySjgyaXdhN0t5RGRBRXRHc2pwZ0xvWWhWSWhIb0pydEZ5UFlfTElYbTRn?oc=5",
+      "date": "Thu, 13 Aug 2026 16:43:53 GMT",
+      "desc": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília&nbsp;&nbsp;Carnegie Endowment for International Peace"
+    },
+    {
+      "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
+      "date": "Tue, 04 Aug 2026 07:00:00 GMT",
+      "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
+    },
+    {
+      "title": "Temasek's first-ever direct bet on Samsung and SK Hynix sent shares soaring - Startup Fortune",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPZzEzY3lnbFctc0NQMTN6YWJsc0ROTmlTVnFOX3JxS0ZHaE9jQ055Z3dDYWk2MG1QUnZyRkxzTUtjdFktRzRoM240STFOTk8wMk5vcEIxMVhRaDNobElOSFdIUFJhejR3MWo0eGo5ZFpnWmlMOFU5MC1LRkZBQkNLV2d3UTlJYndweW9GUVpxN09lYVVrdks3b0hGU0FLSXBMTi1MWA?oc=5",
+      "date": "Sat, 15 Aug 2026 11:58:55 GMT",
+      "desc": "Temasek's first-ever direct bet on Samsung and SK Hynix sent shares soaring&nbsp;&nbsp;Startup Fortune"
+    },
+    {
+      "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
+      "date": "Wed, 05 Aug 2026 07:00:00 GMT",
+      "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "The Dating Scene That’s Suddenly Dominated by Chip Nerds - wsj.com",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNQk9QRG9BOW05VkRvZTlTZ2p0aTF0NThjMElnZEtoX0RRbWktUFJySktic2RWXzFxR0g0eHp1VE9ySGljUEdCVlJBNmZOOC13enlneWZsX2ppSHFlMXBXZjU3bzQ1dU5FSXA2d2t4RjRIbE16VWNZdmh5aWVqUktoblFMSi1ROFc3Mk9fZ280MldxVmhSMGFmZ2IxQ3pnclhVNUdqSDJn?oc=5",
+      "date": "Mon, 10 Aug 2026 09:30:00 GMT",
+      "desc": "The Dating Scene That’s Suddenly Dominated by Chip Nerds&nbsp;&nbsp;wsj.com"
+    }
+  ],
   "worldStocks": [
     {
       "symbol": "NVDA",
@@ -180,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-15 14:12 UTC"
+  "updatedAt": "2026-08-15 22:15 UTC"
 }
