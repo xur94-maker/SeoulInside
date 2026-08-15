@@ -1,16 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "Powerful 7.7-magnitude earthquake kills at least 38 in Indonesia",
+      "title": "Powerful magnitude 7.7 earthquake kills at least 47 in Indonesia",
       "link": "https://www.bbc.co.uk/news/articles/c5y0zz63gero?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 08:52:55 GMT",
+      "date": "Sat, 15 Aug 2026 13:35:57 GMT",
       "desc": "A search and rescue operation is under way to find survivors in Flores, an island in eastern Indonesia."
-    },
-    {
-      "title": "'I shot Mr Thompson'- What it was like inside court as Mangione pleaded guilty",
-      "link": "https://www.bbc.co.uk/news/articles/c4gkyez7195o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 14 Aug 2026 18:54:58 GMT",
-      "desc": "It marked the first time a court had heard Mangione describe how he committed a crime that garnered worldwide attention."
     },
     {
       "title": "BBC seeks to subpoena Trump's family members in Panorama lawsuit",
@@ -25,62 +19,19 @@
       "desc": "Thousands of sailors on the Lincoln have reportedly faced food shortages and broken plumbing, with some considering jumping overboard."
     },
     {
-      "title": "Activists try to deliver aid to Palestinians in homes besieged by Israeli settlers",
-      "link": "https://www.bbc.co.uk/news/articles/c1w1ylw0p3no?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 14 Aug 2026 17:03:17 GMT",
-      "desc": "Two families have been trapped in their homes in the occupied West Bank for several days."
+      "title": "Eleven killed in Israeli strikes on southern Lebanon, authorities say",
+      "link": "https://www.bbc.co.uk/news/articles/c4gjygx4gjeo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 15 Aug 2026 13:38:53 GMT",
+      "desc": "Israel's military said it had struck \"Hezbollah terror infrastructure\" in response to what it described as an earlier action against its soldiers."
+    },
+    {
+      "title": "South Korea proposes talks to officially end war with North",
+      "link": "https://www.bbc.co.uk/news/articles/c8en2z9jp2xo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 15 Aug 2026 09:35:23 GMT",
+      "desc": "Lee Jae Myung offers chance to end the conflict, which has been frozen since an armistice in 1953."
     }
   ],
-  "koreaNews": [
-    {
-      "title": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília - Carnegie Endowment for International Peace",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNT1lNajBvbGpIMHdXRXlfMkJoajNmZVY0N3AwUXdLYVhmRnZUeURXVlRRdjRpdkdtQm5QMS1aLVE3R0ZidVFpNGptbzRVUHBTQ056X2FGdXU1dTkyMnVKLUhyQ0gwdXU0Rjh0Tk16YTcySjgyaXdhN0t5RGRBRXRHc2pwZ0xvWWhWSWhIb0pydEZ5UFlfTElYbTRn?oc=5",
-      "date": "Thu, 13 Aug 2026 16:43:53 GMT",
-      "desc": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília&nbsp;&nbsp;Carnegie Endowment for International Peace"
-    },
-    {
-      "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
-      "date": "Wed, 22 Jul 2026 23:38:10 GMT",
-      "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever - forbes.com",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQLWxXU3FxWXJiczJtZGVvQ28yRDZIVVlLSlcwS0g4UGFOWnl3QVVEMlJVZm9QX2llVkJ1SXBGVWlGMnZkMmx0ZUsxSDM0aDYyWUQ1Ump5dWpMM2RHdTBfVVdiYW1JX0dzTjdKRE96ekpOUUNtb0xKMzlOcXl6UGNEYlFwRFVQbXgxYm5HZUdXUHk5cy1sMTY4aXIwQUxPcDVtTWtYekYxS1lJR0VGN3N6ZWFmRFhQU3pBYWFWbXFvWQ?oc=5",
-      "date": "Thu, 13 Aug 2026 17:49:24 GMT",
-      "desc": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever&nbsp;&nbsp;forbes.com"
-    },
-    {
-      "title": "South Korea’s stock market plunges as AI-driven boom fades - aljazeera.com",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmZNcEtQUnpRbHdtRWpiVng1dnhxVlJCM1VVdzZRQUpwMjh0cGJDLVRuWnZpSDdjc1Q5VkpYaUF3OWRZU0NPYjZzSUxvakwtMjBVLVdRSjdLOVI0QmpockFtQTIwamJHNW1TREJsZXBrN1ZQX001VHBfMldwUEQtTGVIMG5YTGN6aEdQeU9mOEsxTU51Y3NlRjI2UVFlbTZZTGVv0gGoAUFVX3lxTE8tVjBGU2Mtb3BsRTVwU3BZWmVua0ZBS3ZFT012R0JuTkgwQ0M3UlFTaEdRdURyYnM0X0lPTlBCQjFmVEpKYXBqOGhJR0RiRHRoZXpFdEk4eENJT0QtaXBTMXNHN3g5alF3T0FMU0U4RkJQTUlrWXJFODNkRVlVdUJOQTRyTFpScExfUHdYRjRUSUlWTERBNDNOazdneHlEZXhGTHVWUU1RVg?oc=5",
-      "date": "Wed, 29 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;aljazeera.com"
-    },
-    {
-      "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
-      "date": "Wed, 05 Aug 2026 07:00:00 GMT",
-      "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Samsung, SK hynix chip clusters get new power supply road map - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5RV3RMbXVRcnUxLTNEZWFfdjR0VjA0RVRNaDZYaVl0Mi1OaG9UQUFhUml1YTRSbkJWM0puRm9idFhFZXF5TTEzNjhZeVIteXpzOVBfV0E2OA?oc=5",
-      "date": "Wed, 12 Aug 2026 07:40:02 GMT",
-      "desc": "Samsung, SK hynix chip clusters get new power supply road map&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "KOSPI Surges 3% with Samsung, SK Hynix - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQYzdpTHZCNEhTekdZeFQ0TW9qeklBT2l6YzRWSl9MT2lvNEZFU2dDVTZDWXdUeGJhbTl5ek1FZFNxY0VRNWNWbW1VWVVXX3JLOU1TSXdQYXBURkh0SFc2MDRPUmROYjZUbDhPbjBiM21TYUVFd3d4S2xNcGFuU3dHTWEtNGkxaGxkcDhHdmtR?oc=5",
-      "date": "Thu, 13 Aug 2026 01:07:51 GMT",
-      "desc": "KOSPI Surges 3% with Samsung, SK Hynix&nbsp;&nbsp;조선일보"
-    }
-  ],
+  "koreaNews": [],
   "worldStocks": [
     {
       "symbol": "NVDA",
@@ -229,5 +180,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-15 09:30 UTC"
+  "updatedAt": "2026-08-15 14:12 UTC"
 }
