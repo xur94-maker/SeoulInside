@@ -1,28 +1,28 @@
 {
   "globalNews": [
     {
-      "title": "Mangione admits killing healthcare CEO and pleads guilty to federal charges",
-      "link": "https://www.bbc.co.uk/news/articles/cwy0nlq1l2wo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 14 Aug 2026 19:20:43 GMT",
-      "desc": "\"I shot Mr Thompson in Manhattan and he died,\" the 28-year-old said after pleading guilty to charges of stalking resulting in death."
+      "title": "Powerful 7.7-magnitude earthquake kills at least 38 in Indonesia",
+      "link": "https://www.bbc.co.uk/news/articles/c5y0zz63gero?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 15 Aug 2026 08:52:55 GMT",
+      "desc": "A search and rescue operation is under way to find survivors in Flores, an island in eastern Indonesia."
     },
     {
-      "title": "Afghan women tell the BBC their lives are unrecognisable after five years of Taliban rule",
-      "link": "https://www.bbc.co.uk/news/articles/clyje43dz4eo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 14 Aug 2026 18:25:38 GMT",
-      "desc": "Women across the country speak of public floggings, losing their jobs, and barriers to healthcare that endanger lives."
+      "title": "'I shot Mr Thompson'- What it was like inside court as Mangione pleaded guilty",
+      "link": "https://www.bbc.co.uk/news/articles/c4gkyez7195o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 14 Aug 2026 18:54:58 GMT",
+      "desc": "It marked the first time a court had heard Mangione describe how he committed a crime that garnered worldwide attention."
     },
     {
-      "title": "US aircraft carrier on way to relieve USS Lincoln after issues reported on board",
+      "title": "BBC seeks to subpoena Trump's family members in Panorama lawsuit",
+      "link": "https://www.bbc.co.uk/news/articles/cd69ely319eo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 15 Aug 2026 00:01:53 GMT",
+      "desc": "The BBC's lawyers argue Trump's family members \"have personal knowledge\" of his intentions in the speech he gave outside the US Capitol on 6 January 2021."
+    },
+    {
+      "title": "US aircraft carrier on way to relieve USS Lincoln after issues reported aboard",
       "link": "https://www.bbc.co.uk/news/articles/c171yp5zdrxo?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 14 Aug 2026 17:36:27 GMT",
       "desc": "Thousands of sailors on the Lincoln have reportedly faced food shortages and broken plumbing, with some considering jumping overboard."
-    },
-    {
-      "title": "Instagram accounts fuelling Ceuta crisis with paid advice for help to cross",
-      "link": "https://www.bbc.co.uk/news/articles/c89n20wj9kko?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 14 Aug 2026 12:19:21 GMT",
-      "desc": "BBC's Top Comment podcast has found a network of Instagram profiles glamourising the swim around the Morocco-Ceuta border fence."
     },
     {
       "title": "Activists try to deliver aid to Palestinians in homes besieged by Israeli settlers",
@@ -32,12 +32,6 @@
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea bets on industrial policy again - The Japan Times",
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOeHNCMVJRRFZsUEY1NWxFR0d5YUQtc0NVWlJ2c3hrT25xU2daRmc4V0Vsd283S1ItT3U2c3dHZ0R0QXd1MWozMkFMT1AwNTQ0cXdqTU42SEFWOU1IbW1xdFdkaWhlSXp6T2tEbkV0QmdNaEdHeUpxMDRFRmRBLXFPcWhKOEJuMjluYmFHNTVvUWI?oc=5",
-      "date": "Fri, 14 Aug 2026 08:56:00 GMT",
-      "desc": "South Korea bets on industrial policy again&nbsp;&nbsp;The Japan Times"
-    },
     {
       "title": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília - Carnegie Endowment for International Peace",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNT1lNajBvbGpIMHdXRXlfMkJoajNmZVY0N3AwUXdLYVhmRnZUeURXVlRRdjRpdkdtQm5QMS1aLVE3R0ZidVFpNGptbzRVUHBTQ056X2FGdXU1dTkyMnVKLUhyQ0gwdXU0Rjh0Tk16YTcySjgyaXdhN0t5RGRBRXRHc2pwZ0xvWWhWSWhIb0pydEZ5UFlfTElYbTRn?oc=5",
@@ -57,10 +51,16 @@
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever - Forbes",
+      "title": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever - forbes.com",
       "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQLWxXU3FxWXJiczJtZGVvQ28yRDZIVVlLSlcwS0g4UGFOWnl3QVVEMlJVZm9QX2llVkJ1SXBGVWlGMnZkMmx0ZUsxSDM0aDYyWUQ1Ump5dWpMM2RHdTBfVVdiYW1JX0dzTjdKRE96ekpOUUNtb0xKMzlOcXl6UGNEYlFwRFVQbXgxYm5HZUdXUHk5cy1sMTY4aXIwQUxPcDVtTWtYekYxS1lJR0VGN3N6ZWFmRFhQU3pBYWFWbXFvWQ?oc=5",
       "date": "Thu, 13 Aug 2026 17:49:24 GMT",
-      "desc": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever&nbsp;&nbsp;Forbes"
+      "desc": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever&nbsp;&nbsp;forbes.com"
+    },
+    {
+      "title": "South Korea’s stock market plunges as AI-driven boom fades - aljazeera.com",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmZNcEtQUnpRbHdtRWpiVng1dnhxVlJCM1VVdzZRQUpwMjh0cGJDLVRuWnZpSDdjc1Q5VkpYaUF3OWRZU0NPYjZzSUxvakwtMjBVLVdRSjdLOVI0QmpockFtQTIwamJHNW1TREJsZXBrN1ZQX001VHBfMldwUEQtTGVIMG5YTGN6aEdQeU9mOEsxTU51Y3NlRjI2UVFlbTZZTGVv0gGoAUFVX3lxTE8tVjBGU2Mtb3BsRTVwU3BZWmVua0ZBS3ZFT012R0JuTkgwQ0M3UlFTaEdRdURyYnM0X0lPTlBCQjFmVEpKYXBqOGhJR0RiRHRoZXpFdEk4eENJT0QtaXBTMXNHN3g5alF3T0FMU0U4RkJQTUlrWXJFODNkRVlVdUJOQTRyTFpScExfUHdYRjRUSUlWTERBNDNOazdneHlEZXhGTHVWUU1RVg?oc=5",
+      "date": "Wed, 29 Jul 2026 07:00:00 GMT",
+      "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;aljazeera.com"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1416.48,
-      "change": 0.02,
-      "pct": 0.0,
+      "price": 1412.0,
+      "change": -4.46,
+      "pct": -0.31,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-15 03:31 UTC"
+  "updatedAt": "2026-08-15 09:30 UTC"
 }
