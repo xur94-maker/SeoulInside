@@ -1,7 +1,11 @@
 
+----
 
 # aagag 
 https://aagag.com/
+
+# FB 
+https://www.facebook.com/sun.vonxu?locale=ko_KR
 
 #threads 
 https://www.threads.com/@seoul_letter?hl=ko
