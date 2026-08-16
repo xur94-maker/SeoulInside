@@ -1,11 +1,14 @@
 
-----
+ 
 
-# aagag 
+#aagag 
 https://aagag.com/
 
-# FB 
+#FB 
 https://www.facebook.com/sun.vonxu?locale=ko_KR
+
+#bsky
+https://bsky.app/profile/seoulinside.bsky.social
 
 #threads 
 https://www.threads.com/@seoul_letter?hl=ko
