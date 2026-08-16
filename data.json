@@ -1,42 +1,48 @@
 {
   "globalNews": [
     {
-      "title": "Five killed as Russia launches fresh aerial attacks across Ukraine",
+      "title": "Trump says US to scale back military drills with South Korea after it stayed out of Iran war",
+      "link": "https://www.bbc.co.uk/news/articles/cx2lll7zvn0o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 16 Aug 2026 21:57:13 GMT",
+      "desc": "His decision to reduce the partnership came after South Korea recently declined to aid his war effort in Iran."
+    },
+    {
+      "title": "Trump envoy Kushner meets Hamas leader to push Gaza peace plan",
+      "link": "https://www.bbc.co.uk/news/articles/c77gg5vn44yo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 16 Aug 2026 19:58:14 GMT",
+      "desc": "The rare meeting comes a week after Israel rejected Donald Trump's peace plan for Gaza."
+    },
+    {
+      "title": "Russia says at least seven killed in largest Ukrainian attack of 2026",
       "link": "https://www.bbc.co.uk/news/articles/c1411pgje8xo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 16 Aug 2026 10:52:08 GMT",
-      "desc": "Ukrainian President Volodymyr Zelensky accuses Russia of targeting civilian infrastructure, while Moscow reports that a warehouse was hit."
+      "date": "Sun, 16 Aug 2026 19:03:04 GMT",
+      "desc": "Moscow also launched deadly strikes against Ukraine overnight, sparking fires across the capital Kyiv."
     },
     {
-      "title": "Thousands displaced by deadly Indonesia earthquake as rescue efforts continue",
-      "link": "https://www.bbc.co.uk/news/articles/c3v00w5ylw9o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 16 Aug 2026 12:37:21 GMT",
-      "desc": "Hundreds of homes and public buildings have been severely damaged with at least 53 people killed."
+      "title": "Two dead and hundreds evacuated after twin fires break out on Greek island",
+      "link": "https://www.bbc.co.uk/news/articles/c87nnwlpe5no?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 16 Aug 2026 19:50:36 GMT",
+      "desc": "About 200 firefighters worked to keep the fires from converging on Salamina, with one now under control."
     },
     {
-      "title": "Hurricane Lala sparks flash floods in Hawaii as strong winds and rain persist",
-      "link": "https://www.bbc.co.uk/news/articles/crmrr7kjy9vo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 16 Aug 2026 12:53:43 GMT",
-      "desc": "Officials say flash flooding may have swept away homes with people in them in worst-hit areas."
-    },
-    {
-      "title": "Twelve killed as Polish bus veers off Hungarian motorway",
-      "link": "https://www.bbc.co.uk/news/articles/ckg4424zd7go?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 16 Aug 2026 10:53:50 GMT",
-      "desc": "Dozens more are seriously injured after the tourist bus overturned in the early hours of Sunday morning."
-    },
-    {
-      "title": "Europe's tallest Virgin Mary statue unveiled in rural Poland",
-      "link": "https://www.bbc.co.uk/news/articles/cn5nnlq2pwpo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 16 Aug 2026 11:35:25 GMT",
-      "desc": "The 55.6-metre (182ft) concrete figure is head-and-shoulders above Rio de Jaineiro's Christ the Redeemer."
+      "title": "Four 'extraordinary' Renaissance paintings stolen from Italian museum",
+      "link": "https://www.bbc.co.uk/news/articles/cqjxx2gzd9qo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 16 Aug 2026 13:34:38 GMT",
+      "desc": "The works were taken overnight without alarms being triggered, raising suspicion of a professional hit."
     }
   ],
   "koreaNews": [
     {
-      "title": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever - forbes.com",
+      "title": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever - Forbes",
       "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQLWxXU3FxWXJiczJtZGVvQ28yRDZIVVlLSlcwS0g4UGFOWnl3QVVEMlJVZm9QX2llVkJ1SXBGVWlGMnZkMmx0ZUsxSDM0aDYyWUQ1Ump5dWpMM2RHdTBfVVdiYW1JX0dzTjdKRE96ekpOUUNtb0xKMzlOcXl6UGNEYlFwRFVQbXgxYm5HZUdXUHk5cy1sMTY4aXIwQUxPcDVtTWtYekYxS1lJR0VGN3N6ZWFmRFhQU3pBYWFWbXFvWQ?oc=5",
       "date": "Thu, 13 Aug 2026 17:49:24 GMT",
-      "desc": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever&nbsp;&nbsp;forbes.com"
+      "desc": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever&nbsp;&nbsp;Forbes"
+    },
+    {
+      "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - wsj.com",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
+      "date": "Wed, 22 Jul 2026 23:38:10 GMT",
+      "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;wsj.com"
     },
     {
       "title": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília - Carnegie Endowment for International Peace",
@@ -45,10 +51,10 @@
       "desc": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília&nbsp;&nbsp;Carnegie Endowment for International Peace"
     },
     {
-      "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
-      "date": "Wed, 22 Jul 2026 23:38:10 GMT",
-      "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
+      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
+      "date": "Thu, 23 Jul 2026 07:00:00 GMT",
+      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
       "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
@@ -57,10 +63,10 @@
       "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
     },
     {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
+      "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
+      "date": "Wed, 05 Aug 2026 07:00:00 GMT",
+      "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
     },
     {
       "title": "Samsung, SK Hynix HBM4 hiring war drains South Korea's chip design talent - digitimes",
@@ -69,16 +75,10 @@
       "desc": "Samsung, SK Hynix HBM4 hiring war drains South Korea's chip design talent&nbsp;&nbsp;digitimes"
     },
     {
-      "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
-      "date": "Wed, 05 Aug 2026 07:00:00 GMT",
-      "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Samsung, SK hynix Eye Record Shareholder Payouts on Chip Boom - Seoul Economic Daily",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPdGc3MjhXQWNHZHE3MnZ5LUpwQmFDT0hVVDZ3dm9USnFKaHR2amFIems5ODZYTkh6TW13N1Rjd0J1WmMtem9ZMWlCM3ZvbWFDX1ZaYjVscVliU2FxbUNhZURUbEdFSnpyUklrVzFjX1kzUklPRjhOY254OFlLS1UyX1VoTm9mbXlROUd5YWVXNWphcFZ2ckdMWnZOdjB1VG05ZmhlYg?oc=5",
-      "date": "Sun, 16 Aug 2026 04:01:56 GMT",
-      "desc": "Samsung, SK hynix Eye Record Shareholder Payouts on Chip Boom&nbsp;&nbsp;Seoul Economic Daily"
+      "title": "Temasek's first-ever direct bet on Samsung and SK Hynix sent shares soaring - Startup Fortune",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPZzEzY3lnbFctc0NQMTN6YWJsc0ROTmlTVnFOX3JxS0ZHaE9jQ055Z3dDYWk2MG1QUnZyRkxzTUtjdFktRzRoM240STFOTk8wMk5vcEIxMVhRaDNobElOSFdIUFJhejR3MWo0eGo5ZFpnWmlMOFU5MC1LRkZBQkNLV2d3UTlJYndweW9GUVpxN09lYVVrdks3b0hGU0FLSXBMTi1MWA?oc=5",
+      "date": "Sat, 15 Aug 2026 11:58:55 GMT",
+      "desc": "Temasek's first-ever direct bet on Samsung and SK Hynix sent shares soaring&nbsp;&nbsp;Startup Fortune"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1412.0,
-      "change": -4.46,
-      "pct": -0.31,
+      "price": 1416.48,
+      "change": 0.02,
+      "pct": 0.0,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-16 14:12 UTC"
+  "updatedAt": "2026-08-16 22:15 UTC"
 }
