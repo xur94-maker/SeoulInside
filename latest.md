@@ -1,20 +1,25 @@
 ## 커뮤니티 / 유머 사이트
 
-- **모아봐** — http://www.moabbs.com/board/cboard
-- **모아모아** — https://moamoa.kr/
+- **모아봐** — http://www.moabbs.com/board/cboard?cid=21 
 - **aagag.com** — https://aagag.com/
+
+## 뉴스 / 트렌드 포털
+- **다음뉴스 실시간 트렌드** — https://news.daum.net/
+- **네이버 뉴스 (랭킹)** — https://news.naver.com/
+- **구글 뉴스 (한국)** — https://news.google.com/home?hl=ko&gl=KR&ceid=KR%3Ako
+
+----
+
+- **모아모아** — https://moamoa.kr/
+
 - **오늘의베스트** — https://todaybeststory.com/
 - **하비스페이스** — https://bbs.hobbyspace.org
 - **Hotbest7** — https://hotbest7.com/issue/
 - **더쿠** — https://theqoo.net/hot
 - **Link1** — https://xur94-maker.github.io/SeoulInside/link1.html
 - **Link2** — https://xur94-maker.github.io/SeoulInside/link2.html
+----
 
-## 뉴스 / 트렌드 포털
-
-- **다음뉴스 실시간 트렌드** — https://news.daum.net/
-- **네이버 뉴스 (랭킹)** — https://news.naver.com/
-- **구글 뉴스 (한국)** — https://news.google.com/home?hl=ko&gl=KR&ceid=KR%3Ako
 - **구글 트렌드 실시간 인기** — https://trends.google.co.kr/trending
 - **네이버 데이터랩 (검색어 트렌드)** — https://datalab.naver.com/
 - **YTN** — https://ytn.co.kr/
