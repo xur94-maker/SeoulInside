@@ -1,48 +1,42 @@
 {
   "globalNews": [
     {
-      "title": "Rescuers search for survivors of powerful Indonesia earthquake",
+      "title": "Five killed as Russia launches fresh aerial attacks across Ukraine",
+      "link": "https://www.bbc.co.uk/news/articles/c1411pgje8xo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 16 Aug 2026 09:04:14 GMT",
+      "desc": "Ukrainian President Volodymyr Zelensky accuses Russia of targeting civilian infrastructure, while Moscow reports that a warehouse was hit."
+    },
+    {
+      "title": "Thousands displaced by deadly Indonesia earthquake as rescue efforts continue",
       "link": "https://www.bbc.co.uk/news/articles/c3v00w5ylw9o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 21:49:12 GMT",
-      "desc": "Officials say a rapid assessment into the impact of the earthquake that destroyed hundreds of buildings and killed 47 is under way."
+      "date": "Sun, 16 Aug 2026 08:23:38 GMT",
+      "desc": "Hundreds of homes and public buildings have been severely damaged with at least 51 people killed."
+    },
+    {
+      "title": "Hurricane Lala lashes Hawaii with strong winds and torrential rain",
+      "link": "https://www.bbc.co.uk/news/articles/crmrr7kjy9vo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 16 Aug 2026 08:49:32 GMT",
+      "desc": "If the storm makes landfall, it will be Hawaii's first direct hit by a hurricane in 34 years."
+    },
+    {
+      "title": "Twelve killed as Polish bus veers off Hungarian motorway",
+      "link": "https://www.bbc.co.uk/news/articles/ckg4424zd7go?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 16 Aug 2026 07:04:17 GMT",
+      "desc": "Dozens more are seriously injured after the tourist bus overturned in the early hours of Sunday morning."
     },
     {
       "title": "Morocco detains dozens of migrants trying to cross into Ceuta, reports say",
       "link": "https://www.bbc.co.uk/news/articles/ckg44x2ey1ro?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 15 Aug 2026 20:58:31 GMT",
       "desc": "Security had been stepped up amid suggestions on social media of a second mass crossing on Saturday."
-    },
-    {
-      "title": "Eleven killed in Israeli strikes on southern Lebanon, authorities say",
-      "link": "https://www.bbc.co.uk/news/articles/c4gjygx4gjeo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 20:21:14 GMT",
-      "desc": "Israel's military said it had struck \"Hezbollah terror infrastructure\" in response to what it described as earlier action against its soldiers."
-    },
-    {
-      "title": "Liechtenstein changes succession rule to allow women to ascend the throne",
-      "link": "https://www.bbc.co.uk/news/articles/cn9nnxrxg4qo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 19:41:57 GMT",
-      "desc": "The declaration was made on the national day of the central European country, which has a population of just 44,000."
-    },
-    {
-      "title": "Qatar denies capturing three Iranian pilots after downing fighter jets",
-      "link": "https://www.bbc.co.uk/news/articles/cj4kk8kz271o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 15 Aug 2026 21:03:57 GMT",
-      "desc": "Iran claims they have been held since Qatar downed two fighter jets at the start of the US-Iran war."
     }
   ],
   "koreaNews": [
     {
-      "title": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever - Forbes",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQLWxXU3FxWXJiczJtZGVvQ28yRDZIVVlLSlcwS0g4UGFOWnl3QVVEMlJVZm9QX2llVkJ1SXBGVWlGMnZkMmx0ZUsxSDM0aDYyWUQ1Ump5dWpMM2RHdTBfVVdiYW1JX0dzTjdKRE96ekpOUUNtb0xKMzlOcXl6UGNEYlFwRFVQbXgxYm5HZUdXUHk5cy1sMTY4aXIwQUxPcDVtTWtYekYxS1lJR0VGN3N6ZWFmRFhQU3pBYWFWbXFvWQ?oc=5",
-      "date": "Thu, 13 Aug 2026 17:49:24 GMT",
-      "desc": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever&nbsp;&nbsp;Forbes"
-    },
-    {
-      "title": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília - Carnegie Endowment for International Peace",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNT1lNajBvbGpIMHdXRXlfMkJoajNmZVY0N3AwUXdLYVhmRnZUeURXVlRRdjRpdkdtQm5QMS1aLVE3R0ZidVFpNGptbzRVUHBTQ056X2FGdXU1dTkyMnVKLUhyQ0gwdXU0Rjh0Tk16YTcySjgyaXdhN0t5RGRBRXRHc2pwZ0xvWWhWSWhIb0pydEZ5UFlfTElYbTRn?oc=5",
-      "date": "Thu, 13 Aug 2026 16:43:53 GMT",
-      "desc": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília&nbsp;&nbsp;Carnegie Endowment for International Peace"
+      "title": "North Korea Doubles Down on Its Alliance With Russia, For Now - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOYlBZMm1PU0tIcEVHdUg2Z3R2d20wUjFOMkxSRWczLUVpSEY0S2tOVXVwT1RfMkl3UWRLeEd3X0xLT0RuRVBONUIzN1dDVWJBbzJkd2pBUWRVVjVjM1oxdnJPTmhlTHE1WEx5b3hoOXVMUmFOLUpQQW5ROHI5ME9XSmp0cWpjRmVlald2WG1GQ08?oc=5",
+      "date": "Wed, 12 Aug 2026 17:30:28 GMT",
+      "desc": "North Korea Doubles Down on Its Alliance With Russia, For Now&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
@@ -51,34 +45,40 @@
       "desc": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports&nbsp;&nbsp;WSJ"
     },
     {
+      "title": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever - Forbes",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQLWxXU3FxWXJiczJtZGVvQ28yRDZIVVlLSlcwS0g4UGFOWnl3QVVEMlJVZm9QX2llVkJ1SXBGVWlGMnZkMmx0ZUsxSDM0aDYyWUQ1Ump5dWpMM2RHdTBfVVdiYW1JX0dzTjdKRE96ekpOUUNtb0xKMzlOcXl6UGNEYlFwRFVQbXgxYm5HZUdXUHk5cy1sMTY4aXIwQUxPcDVtTWtYekYxS1lJR0VGN3N6ZWFmRFhQU3pBYWFWbXFvWQ?oc=5",
+      "date": "Thu, 13 Aug 2026 17:49:24 GMT",
+      "desc": "As North Korea’s Economy Grows, Kim Jong Un Is Stronger Than Ever&nbsp;&nbsp;Forbes"
+    },
+    {
       "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
       "date": "Wed, 22 Jul 2026 07:00:00 GMT",
       "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
-      "date": "Tue, 04 Aug 2026 07:00:00 GMT",
-      "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
+      "title": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília - Carnegie Endowment for International Peace",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNT1lNajBvbGpIMHdXRXlfMkJoajNmZVY0N3AwUXdLYVhmRnZUeURXVlRRdjRpdkdtQm5QMS1aLVE3R0ZidVFpNGptbzRVUHBTQ056X2FGdXU1dTkyMnVKLUhyQ0gwdXU0Rjh0Tk16YTcySjgyaXdhN0t5RGRBRXRHc2pwZ0xvWWhWSWhIb0pydEZ5UFlfTElYbTRn?oc=5",
+      "date": "Thu, 13 Aug 2026 16:43:53 GMT",
+      "desc": "Why Korea’s President Skipped Washington for Silicon Valley and Brasília&nbsp;&nbsp;Carnegie Endowment for International Peace"
     },
     {
-      "title": "Samsung, SK Hynix HBM4 hiring war drains South Korea's chip design talent - digitimes.com",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPUFNIUy01NnFPb2R3N24wTFIzS0hnSmRHMDVxSDVsMHI0TjJRSEFaNzJhZUp3MHZ4V2FEQ3lwaU5sYmFidzlJOFd4dVBnRTRFbFEtY1doZXhVRUVNMVNfRVNEZEU5LXc5MF9tMEN3Nmg5Uldzc0ZvUG5XSVBxenY5TGtxNndSNHRlRGRKeG9IMA?oc=5",
-      "date": "Sat, 15 Aug 2026 22:41:24 GMT",
-      "desc": "Samsung, SK Hynix HBM4 hiring war drains South Korea's chip design talent&nbsp;&nbsp;digitimes.com"
-    },
-    {
-      "title": "Samsung, SK Hynix to Unveil 300 Trillion Won Shareholder Returns - 조선일보",
+      "title": "Samsung, SK Hynix to Unveil 300 Trillion Won Shareholder Returns - chosun.com",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPWWZTYm9ZNVZ1Rld6X0dyYnEzbVZncjBJVmh2UTVtN3RiUzlveHJnRnJnZjRnMXhFWElaYkZESG9ZMDlDdUhTSlJLNUFSWkFsZ2ZXekc2M2pCeDVxSjJNVzBKZmwtMWJIeUszcWdwc2xNaHgzWlQtSXRRLTRKNHAzNTMxSU1heF9FN0d1Y1BB?oc=5",
       "date": "Sun, 16 Aug 2026 02:57:34 GMT",
-      "desc": "Samsung, SK Hynix to Unveil 300 Trillion Won Shareholder Returns&nbsp;&nbsp;조선일보"
+      "desc": "Samsung, SK Hynix to Unveil 300 Trillion Won Shareholder Returns&nbsp;&nbsp;chosun.com"
     },
     {
-      "title": "KOSPI Attempts to Reclaim 7,000 Level... Foreign Return to 'Samsung-SK Hynix' Raises KOSDAQ Supply Concerns - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBhZEd4Nm9IcFdIOGI2ZTJvU3FvYlpySkcwRzF0Sk1FSnY4dHZ4YXNqaWZ3V1VjZmY5RVdEUThRZkJNUTFvQzRNWFgtVzdoTnhMWkZqdmVtZnRMaEVCcDF5WXBESy1mb3Z2QWY0MEttVDVVck9BVVE?oc=5",
-      "date": "Sat, 15 Aug 2026 22:56:00 GMT",
-      "desc": "KOSPI Attempts to Reclaim 7,000 Level... Foreign Return to 'Samsung-SK Hynix' Raises KOSDAQ Supply Concerns&nbsp;&nbsp;finance.biggo.com"
+      "title": "Samsung, SK Hynix HBM4 hiring war drains South Korea's chip design talent - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPUFNIUy01NnFPb2R3N24wTFIzS0hnSmRHMDVxSDVsMHI0TjJRSEFaNzJhZUp3MHZ4V2FEQ3lwaU5sYmFidzlJOFd4dVBnRTRFbFEtY1doZXhVRUVNMVNfRVNEZEU5LXc5MF9tMEN3Nmg5Uldzc0ZvUG5XSVBxenY5TGtxNndSNHRlRGRKeG9IMA?oc=5",
+      "date": "Sat, 15 Aug 2026 22:41:24 GMT",
+      "desc": "Samsung, SK Hynix HBM4 hiring war drains South Korea's chip design talent&nbsp;&nbsp;digitimes"
+    },
+    {
+      "title": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeU9NVTFKTDhzZ3Rxa3dWbk9vSktaSE5xd3p3TG5KTlpNRFpLY0IyNEZuRzVTWFV0LWx0LURCdkRvcjdCVE9pU3lGSktXampPUUtZWExRSlNLZ0pzU2thX2pXQWRDLVBUd2JYRGh5RGplLWdsb0tOek8zdXk5elBiZlZwbTd2X0dDSU5hWFRKWHBLZkUteDBSR2VndEpxREMwYTUzY1pJcllRSUZPci1vOQ?oc=5",
+      "date": "Wed, 05 Aug 2026 07:00:00 GMT",
+      "desc": "EXCLUSIVE: Samsung, SK Hynix test Chinese chip tools as hedge against US risks&nbsp;&nbsp;Reuters"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-16 03:40 UTC"
+  "updatedAt": "2026-08-16 09:32 UTC"
 }
