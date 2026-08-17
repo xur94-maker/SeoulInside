@@ -1,16 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "Trump says US to reduce military drills with South Korea after it stayed out of Iran war",
-      "link": "https://www.bbc.co.uk/news/articles/cx2lll7zvn0o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 17 Aug 2026 06:24:31 GMT",
-      "desc": "Trump cites his \"very good relationship\" with North Korea's leader in deciding to downsize the exercises."
-    },
-    {
-      "title": "Trump envoy Kushner meets Netanyahu after Hamas talks on peace plan",
-      "link": "https://www.bbc.co.uk/news/articles/c77gg5vn44yo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 17 Aug 2026 13:58:38 GMT",
-      "desc": "US President Trump's son-in-law Jared Kushner is seeking to gain Israeli backing for the US-backed Gaza peace plan."
+      "title": "Trump threatens to bomb US ally Oman if it 'gets in the way' over Iran deal",
+      "link": "https://www.bbc.co.uk/news/articles/cy5dzk0ryzdo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 17 Aug 2026 19:25:05 GMT",
+      "desc": "Trump's threat on Oman, which has been holding its own talks with Iran to reopen the Strait of Hormuz, comes as a 60-day window for peace negotiations expires."
     },
     {
       "title": "Russia and Ukraine trade more deadly strikes",
@@ -19,19 +13,43 @@
       "desc": "Moscow says nine people have been killed in the past 24 hours, while Kyiv reports four deaths."
     },
     {
-      "title": "Aid shortages and fears of starvation as Indonesia reels from deadly earthquake",
-      "link": "https://www.bbc.co.uk/news/articles/crl7686r71yo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 17 Aug 2026 10:39:24 GMT",
-      "desc": "Some 53 people were killed and thousands displaced by the earthquake, which struck early on Saturday."
+      "title": "Russia's prominent anti-war politician jailed for 11 years",
+      "link": "https://www.bbc.co.uk/news/articles/cj4kjnle2neo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 17 Aug 2026 16:17:34 GMT",
+      "desc": "Lev Schlosberg is found guilty of \"discrediting\" Russia's army - a verdict he condemns as punishment for his political position."
     },
     {
-      "title": "Ebola outbreak in DR Congo becomes deadliest in its history",
-      "link": "https://www.bbc.co.uk/news/articles/cvgll74vvydo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 17 Aug 2026 04:41:31 GMT",
-      "desc": "The outbreak was already the fastest growing on record, caused by a rare species of Ebola called Bundibugyo."
+      "title": "French PM heckled over wildfire response as blazes continue across Europe",
+      "link": "https://www.bbc.co.uk/news/articles/cx2rzx5g5yro?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 17 Aug 2026 18:00:55 GMT",
+      "desc": "The prime minister announced on Monday €12m worth of aid to French regions that had been worst affected by the fires."
+    },
+    {
+      "title": "Mushroom murderer Erin Patterson is appealing - here's what you need to know",
+      "link": "https://www.bbc.co.uk/news/articles/cj9dx03jrgjo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 17 Aug 2026 18:03:23 GMT",
+      "desc": "The Australian, who notoriously poisoned her family members, is trying to overturn her conviction."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea, US continue talks on investment commitment – report - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQOHNPaG04YXVlNDZtd0liZlE2TXVaOUZnOVc0V0FVSVVET0Qydk5QbDBXaUZvaGI3OHFGeHhEQlNZRFJJTlJ2VkpoRVJ6TFkzaWc1aXJKdmNDemVPSF8xNnExeHB0bGt1ZGxGQ1hyYUlSdWY1OF9ONHZxQmJ3LTVGeWV5ZFY1YWRHVDY2bXNHQWsyMGRxQkRmT3FR?oc=5",
+      "date": "Mon, 17 Aug 2026 16:10:30 GMT",
+      "desc": "South Korea, US continue talks on investment commitment – report&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
+      "title": "Trump rips allies Oman, South Korea amid escalating tensions with Iran - The Hill",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNWGctSDl5MXNUWWMxQ1hGSHJxaWV2Z3diT0V2alNkQ3dEdkk1VUdYb3BzWDNDejdrZHJSZTYtSFRRVFdqblJsbG9McWIwLXctZVFYMVItTmJ3eDJtck5sZzBLNWRKVXQ5LTZkbTM0SGo0LUtmVTNHLS02a2RRbkt4NVNJZm1aOS1hNk9MRk5zRUPSAZYBQVVfeXFMTkdMSEcwLW91UnhZem1CTkJJM25HZEJoaXp0Zm5DbUN5YUVLaEQyR1M1VmpjNEZkbkl4SWczbXBCVnZWUGtvRldjQ0c5a0oxTlpLZk5YRGJZNWcxYWdQS2I4SHJydHdEVmJ5SVltU1J3cTBqTlJ0QmRVYkdxbzljVkdfbFdQSXNKb1RFMUN1SVA2VUVwcVZ3?oc=5",
+      "date": "Mon, 17 Aug 2026 22:00:00 GMT",
+      "desc": "Trump rips allies Oman, South Korea amid escalating tensions with Iran&nbsp;&nbsp;The Hill"
+    },
+    {
+      "title": "Containing North Korea Requires an 'Economy of Force' - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOeGFod0V5NlVUQlJ6VGR2dUJhQlBxR0ROT29LcUFfeDAtY3czTVQwWnd0Z3NwM2JvZ1JNSkFLaU5vekNvZk5EeFJHZGpoSHB2S1lLZ25uNFh6N29iQzkyZlV4UDl0WXJ2dU5mcXR5ZE5QZThYS3RCLVpyYnlYVG1SbjBPWWZYRVczWVBiSFFsUFRxakZkb2Q5UnpMNkVJSXVCOTllWm5COXZRR0ZyblVfMVZGRV95ZldfRFJISktxWmNjdjZ3WUE?oc=5",
+      "date": "Mon, 17 Aug 2026 20:13:05 GMT",
+      "desc": "Containing North Korea Requires an 'Economy of Force'&nbsp;&nbsp;Bloomberg.com"
+    },
     {
       "title": "South Korea’s Economic Growth Beats Expectations, Supported by Chip Exports - WSJ",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPbkJJcngzSFlXTktLdGxvS2FLRklYYW9JUWJqd2lYSXlwajlFaWUyVGU0SXM0bXhYOWlic0tVOVJIcWJkQmNaUndwUUxRS0xhTUlBWGFyWTRmMEQ1dFhncExRQTk2Q2lMaWdCMU5TQ0FlVEYtcVEzbW9zWHdtcHdsQlZwekVxSDhHbkVzX3pzNWVmcWs?oc=5",
@@ -43,24 +61,6 @@
       "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
       "date": "Tue, 04 Aug 2026 07:00:00 GMT",
       "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
-    },
-    {
-      "title": "South Korea's Q2 GDP beats estimates on chip export boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRHBwYWFFV3JCRVBNT0lMSUwzbEdGdVZ5VUh2SXRCRlp2bnJYNDR6MU9KOEN5dWw5MkZVX0k0Z1FVWlExMjRjYmYxVTVPWVFqZGpjeHY5Ty1SbnVkVTY5ZFRrclFwQ0VxSWNEc3VuYTVWRnozd3F2RlNPNERwbXdhZWFTclpGNzdWVjFsbWo3UHNUdTZ6S1dvQ0NFc1hXWFByZ3NpTmVYb2R0OUQzYzMwYk5n?oc=5",
-      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea's Q2 GDP beats estimates on chip export boom&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "South Korea’s stock market plunges as AI-driven boom fades - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRmZNcEtQUnpRbHdtRWpiVng1dnhxVlJCM1VVdzZRQUpwMjh0cGJDLVRuWnZpSDdjc1Q5VkpYaUF3OWRZU0NPYjZzSUxvakwtMjBVLVdRSjdLOVI0QmpockFtQTIwamJHNW1TREJsZXBrN1ZQX001VHBfMldwUEQtTGVIMG5YTGN6aEdQeU9mOEsxTU51Y3NlRjI2UVFlbTZZTGVv0gGoAUFVX3lxTE8tVjBGU2Mtb3BsRTVwU3BZWmVua0ZBS3ZFT012R0JuTkgwQ0M3UlFTaEdRdURyYnM0X0lPTlBCQjFmVEpKYXBqOGhJR0RiRHRoZXpFdEk4eENJT0QtaXBTMXNHN3g5alF3T0FMU0U4RkJQTUlrWXJFODNkRVlVdUJOQTRyTFpScExfUHdYRjRUSUlWTERBNDNOazdneHlEZXhGTHVWUU1RVg?oc=5",
-      "date": "Wed, 29 Jul 2026 07:00:00 GMT",
-      "desc": "South Korea’s stock market plunges as AI-driven boom fades&nbsp;&nbsp;Al Jazeera"
-    },
-    {
-      "title": "Explaining South Korea’s Stock Market Boom - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5zSDN5Y0x6ZDZPNThLcDR1VXJITlNsSExkZXVlbDRFVzhZOFoyX2t0dWNMTmpGbWN4MkdoT0tjWFZTY1d5UEdlU2g0eWpfVGlzZVlHdTdUcm43aVVudDdraFJTZWZmeUU2ZGZJZHRGZkNQVEJJZjJR?oc=5",
-      "date": "Wed, 22 Jul 2026 07:00:00 GMT",
-      "desc": "Explaining South Korea’s Stock Market Boom&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "[News] Samsung, SK hynix 1H26 Chip Facility Investment Up 35%; NVIDIA Not Among Samsung’s Top Five Customers - TrendForce",
@@ -75,99 +75,99 @@
       "desc": "Samsung Electronics, SK Hynix Cash Surge 117 Trillion Won&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Samsung, SK Hynix May Unveil $109 Billion Shareholder Return Plan This Month - en.bloomingbit.io",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1GVkFoMmo2RnFiNXpud0hFTjJjek51cU1DTmNQNW9kdkx2T3lCNl9jckt0X3pSa2RVQUppRzlZZFJiNXNpOUFhb3VOZXZIRkZiQlVITA?oc=5",
-      "date": "Mon, 17 Aug 2026 12:48:01 GMT",
-      "desc": "Samsung, SK Hynix May Unveil $109 Billion Shareholder Return Plan This Month&nbsp;&nbsp;en.bloomingbit.io"
+      "title": "KOSPI Eyes 7,000 as Samsung, SK hynix Rebound; FOMC Minutes in Focus - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNNXZjTHcwWG5DUlhFUy1iRGItM29RczhiQkU2c0JxUTlFZjNsa19ERVFFcDZId2VOdjB6YVN4RF9nRG9hSDlkQnNyUnVENV91YmFxb2p5VzM4bmdtMjV5THNfZndYU2ZNSWROTlhjNm5IaVdTdWdNcXRYOUpEU3gyWUlrYVRheVZUcE9IVmZMaG04eWctQ0ZYNGJFZWFYb2k3YUZV?oc=5",
+      "date": "Mon, 17 Aug 2026 20:40:05 GMT",
+      "desc": "KOSPI Eyes 7,000 as Samsung, SK hynix Rebound; FOMC Minutes in Focus&nbsp;&nbsp;Seoul Economic Daily"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 226.19,
-      "change": 0.89,
-      "pct": 0.4,
+      "price": 225.01,
+      "change": -0.29,
+      "pct": -0.13,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 429.38,
-      "change": -1.12,
-      "pct": -0.26,
+      "price": 430.97,
+      "change": 0.48,
+      "pct": 0.11,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 510.79,
-      "change": 27.78,
-      "pct": 5.75,
+      "price": 506.0,
+      "change": 22.99,
+      "pct": 4.76,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 103.54,
-      "change": -1.02,
-      "pct": -0.98,
+      "price": 103.49,
+      "change": -1.07,
+      "pct": -1.02,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 164.16,
-      "change": -0.63,
-      "pct": -0.39,
+      "price": 162.18,
+      "change": -2.61,
+      "pct": -1.58,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 278.38,
-      "change": -0.27,
-      "pct": -0.1,
+      "price": 271.43,
+      "change": -7.22,
+      "pct": -2.59,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 344.73,
-      "change": -1.63,
-      "pct": -0.47,
+      "price": 344.0,
+      "change": -2.36,
+      "pct": -0.68,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 304.95,
-      "change": -0.31,
-      "pct": -0.1,
+      "price": 305.59,
+      "change": 0.33,
+      "pct": 0.11,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 484.94,
-      "change": -11.94,
-      "pct": -2.4,
+      "price": 480.35,
+      "change": -16.53,
+      "pct": -3.33,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7774.08,
-      "change": -24.91,
-      "pct": -0.32,
+      "price": 7745.06,
+      "change": -53.93,
+      "pct": -0.69,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26745.09,
-      "change": -57.94,
-      "pct": -0.22,
+      "price": 26644.91,
+      "change": -158.12,
+      "pct": -0.59,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1411.69,
-      "change": -5.16,
-      "pct": -0.36,
+      "price": 1416.43,
+      "change": -0.42,
+      "pct": -0.03,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-17 14:17 UTC"
+  "updatedAt": "2026-08-17 22:18 UTC"
 }
