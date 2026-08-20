@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Israel confirms soldiers fired at car in which Hind Rajab was killed and opens criminal investigation",
-      "link": "https://www.bbc.co.uk/news/articles/crl7yjlpx2po?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 19 Aug 2026 15:33:32 GMT",
-      "desc": "The five-year-old Palestinian girl initially survived the attack and pleaded for help but her body was recovered later with those of six of her relatives."
+      "title": "At least 13 killed in Kyiv as Ukraine grapples with air defence shortages",
+      "link": "https://www.bbc.co.uk/news/articles/c98vzmden5yo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 20 Aug 2026 09:37:31 GMT",
+      "desc": "Apartment blocks and warehouses were targeted in the \"massive attack\" on Thursday, officials say."
     },
     {
-      "title": "Australia 'outraged' after Israeli decision not to prosecute over killing of aid worker in Gaza",
-      "link": "https://www.bbc.co.uk/news/articles/cp87g29r718o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 20 Aug 2026 03:12:07 GMT",
-      "desc": "Australia's foreign minister summoned the Israeli ambassador over 'insulting' Zomi Frankcom decision."
+      "title": "Founder of collapsed Chinese property giant Evergrande sentenced to life in prison",
+      "link": "https://www.bbc.co.uk/news/articles/cd0x9mjjmgjo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 20 Aug 2026 06:08:02 GMT",
+      "desc": "Hui's sentencing marks a key moment in the fallout from Evergrande's collapse, which shook China's property sector."
     },
     {
-      "title": "Trump threatens 'tremendous economic consequences' on any country helping Iran",
+      "title": "Trump vows tougher economic measures on Iran and supporting countries",
       "link": "https://www.bbc.co.uk/news/articles/c2k7e83ynj4o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 20 Aug 2026 03:22:57 GMT",
+      "date": "Thu, 20 Aug 2026 09:13:18 GMT",
       "desc": "It comes after a 60-day ceasefire expired on Monday, with no sign of a diplomatic or military off-ramp to the conflict."
     },
     {
-      "title": "Giant whales move into Greenland waters as ice disappears",
-      "link": "https://www.bbc.co.uk/news/articles/cq6dn9gj7eno?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 20 Aug 2026 02:05:20 GMT",
-      "desc": "Melting sea ice from climate change has opened up the region for giant whales to undertake 'feeding frenzies'."
+      "title": "Mushroom killer must stay in jail forever for 'truly dreadful' crime, appeal court told",
+      "link": "https://www.bbc.co.uk/news/articles/ckg3j3yn4exo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 20 Aug 2026 07:08:35 GMT",
+      "desc": "Prosecutors say Erin Patterson's sentence was \"manifestly inadequate\" as it allows for the possibility of parole."
     },
     {
-      "title": "Former Liberian vice president charged in drug-trafficking probe",
-      "link": "https://www.bbc.co.uk/news/articles/clyx028ryy6o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 20 Aug 2026 03:09:24 GMT",
-      "desc": "Jewel Howard-Taylor faces charges of illegally facilitating, importing and selling drugs, alongside money laundering."
+      "title": "Australia 'outraged' after Israel decides not to open criminal investigation into killing of aid worker in Gaza",
+      "link": "https://www.bbc.co.uk/news/articles/cp87g29r718o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 20 Aug 2026 07:33:11 GMT",
+      "desc": "Australia's foreign minister summoned the Israeli ambassador over \"insulting\" Zomi Frankcom decision."
     }
   ],
   "koreaNews": [
@@ -39,10 +39,16 @@
       "desc": "South Korea’s rookie investors lose small fortunes amid AI stocks frenzy&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "S.Korea’s state-run KDI ups economic growth forecasts on AI chip boom, warns of weak hiring - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9EUlV4ekJkVzhaSWNKSGVqZl9OYnM0eFZtS0pKT282TEluQmZnbnlGbUFKZy1vMVlmX0o3c3M3TXRLVDZhRU9FRTQ1b3RDenBxdThFOWpJMmNSNDMxV2h2UlBwZ09lV2xUNmc?oc=5",
-      "date": "Wed, 19 Aug 2026 21:43:32 GMT",
-      "desc": "S.Korea’s state-run KDI ups economic growth forecasts on AI chip boom, warns of weak hiring&nbsp;&nbsp;KED Global"
+      "title": "Getting entrepreneurial in Korea (Summer School) : Planet Money - NPR",
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFAtcDBQb0hTS0hiVldBSHhQaENRVXFadkdNRnNnYmZjYWU5dEsyVk9YRG5Hd1BOWGw3VEt1dWxabjF2WWVyRGh1Z21hd2RsdEg1Rnl6Q3JRUXk?oc=5",
+      "date": "Wed, 19 Aug 2026 07:30:00 GMT",
+      "desc": "Getting entrepreneurial in Korea (Summer School) : Planet Money&nbsp;&nbsp;NPR"
+    },
+    {
+      "title": "DW News. . US President Donald Trump has described North Korea as \"unthreatening,\" pointing to his \"very good relationship\" with Kim Jong Un. But as Pyongyang expands its nuclear arsenal, tests missiles and deepens military ties with Russia, how serious - facebook.com",
+      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPcURtaUNNTklwX0dNQXRTSzFMVThtWmF5cHE0b3lHMU84OTZ1S19hTlRtcXFKN29YcUZiNjhoZTZwemhvZ3ZoLW00aUw0OW55NWZSMlpnN3QyUmpraHhmSm9GT1ZmRmxCTzZQTWdvLUZLZHNqSm53Y1dMOVp3VXNiOWNCVzVVZnZrdWFiZmt0Z09ONDZ2NUZaendxNUJvLWJKNUdfWUs1d1l3X2w4T1RnSDNmb2pPd0RMLXlXc0NhbThTYml5ZG82UnZxTEEtYl9aTk92ckdXMmVydnhSMHFJWFRB?oc=5",
+      "date": "Thu, 20 Aug 2026 02:45:06 GMT",
+      "desc": "DW News. . US President Donald Trump has described North Korea as \"unthreatening,\" pointing to his \"very good relationship\" with Kim Jong Un. But as Pyongyang expands its nuclear arsenal, tests missil"
     },
     {
       "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
@@ -51,34 +57,28 @@
       "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
     },
     {
-      "title": "AI reckoning makes South Korean economy run for cover - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQVR4RkFyTlYydG8yM3hrTWI5SmJxUlI4ZXFRODRYM1BqQjZjQUVYbHNqcjdSVldtYlJSSlNiWWxGalBZbkxEejlpNXdZMWxhcWpUQmFGZ0JDNm5CVlJua0JoeWI3T05XcTY5N2lXZ2NjbVphalFtRnZ4VmVjN3k2UElVdXY4TDRLUWpBNw?oc=5",
-      "date": "Fri, 31 Jul 2026 07:00:00 GMT",
-      "desc": "AI reckoning makes South Korean economy run for cover&nbsp;&nbsp;Asia Times"
+      "title": "S.Korea’s state-run KDI ups economic growth forecasts on AI chip boom, warns of weak hiring - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9EUlV4ekJkVzhaSWNKSGVqZl9OYnM0eFZtS0pKT282TEluQmZnbnlGbUFKZy1vMVlmX0o3c3M3TXRLVDZhRU9FRTQ1b3RDenBxdThFOWpJMmNSNDMxV2h2UlBwZ09lV2xUNmc?oc=5",
+      "date": "Wed, 19 Aug 2026 21:43:32 GMT",
+      "desc": "S.Korea’s state-run KDI ups economic growth forecasts on AI chip boom, warns of weak hiring&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors - The Diplomat – Asia",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQ29DUHpKZmZzb29VMUNpeDEzNkF0SDliX25fXzhVdUQxWXQ0SW5UcEhTX3Y1TDd4MzFPWU1oZ2hsLWg0Uk1JdlpnVDlfYzNkdWRnbVM0V0Y0WldvZ1Zsc0E2N096elJhS0I1OVpNVm9PSW1JdWpvQk1PSVYzeTZQTzhJUWpKVzAxNGZTbnVScmtjWFFRTF96MWJaQ2FYdlBwSGctbXYwU21XeGRRQWdTaHVOTWJKWHIy?oc=5",
-      "date": "Thu, 30 Jul 2026 07:00:00 GMT",
-      "desc": "A Stock Market Correction Reveals South Korea’s Economic Dependency on Semiconductors&nbsp;&nbsp;The Diplomat – Asia"
+      "title": "Samsung, SK Hynix Plan Record Shareholder Returns in AI Boom - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQVUZJQjhhUGVPSmJCTjY5djZLS0xFYmlfSWZMX0RBM2JUSG9ORURqSG1yOTlCS2tNc25hWDJScVJQLTR4UXN5TU9LRmZDRlFuZ01ZR2NGUVcySDBxRm80LVl1U1pzd3hqOGdTSUNyM3JOOHZDdDJuZEJGMGt4a2wyZVE3Q1BZNTZvTzVLS2NYZ2FCWUlzZjlOaVFuSGdqMFgxMXRVNWZrbHVTZVBtcV81Sk5R?oc=5",
+      "date": "Thu, 20 Aug 2026 05:38:00 GMT",
+      "desc": "Samsung, SK Hynix Plan Record Shareholder Returns in AI Boom&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korean shares tumble as yield spike, Middle East tensions hit Samsung, SK Hynix - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1oWUZSUXZXd09UUzJ6S1pfUkhYbkVsSGU0WFRCZktRSjVHSlg2eU1OY3hQdURkNkNxUFZBenloWnZ1WWgwbWlMZlkzb040X3pNUXh6VDNnb0JrdkFjVzVKMl94ODhsanY4TXFjZ04ya3lfNncxUHJENUdR?oc=5",
-      "date": "Wed, 19 Aug 2026 14:42:23 GMT",
-      "desc": "South Korean shares tumble as yield spike, Middle East tensions hit Samsung, SK Hynix&nbsp;&nbsp;KED Global"
+      "title": "Kospi snaps back, led by Samsung, SK Hynix on share buyback hopes - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE00Y0tPeDN5MHJnbDBMUk1BaEd5a2xkR1EweTBMVVBmRUNUVm51V005R1FJamRLTUFJZ2Qxc1pBaDRzM3lONnhMYXNWR0QzUVQ4OGFXRXJTSlplV3RDWXZNODA3bzgxZlJFLWdmWXBHQmNnTUF1U2RDcGF3?oc=5",
+      "date": "Thu, 20 Aug 2026 08:46:36 GMT",
+      "desc": "Kospi snaps back, led by Samsung, SK Hynix on share buyback hopes&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "KOSPI Operating Profit Jumps 75% Excluding Samsung, SK Hynix - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNTExTWnFqNjIyWldwYVA2YnNKb0tERGFTcTZXcTc5d2UzUmhBT3Z6VGxFZG9NTkMtRHJFdllFREJuYnBnekdCdFEwTnRQUElDQXJQNTVQMGp3bGN4RE5xa3ZEVGJVZmZaVXJGVEdRcVRqT1hNQXk0TVRqdi1qVkdROXNtdmJhVGFxTnh4eWZB?oc=5",
-      "date": "Wed, 19 Aug 2026 15:36:08 GMT",
-      "desc": "KOSPI Operating Profit Jumps 75% Excluding Samsung, SK Hynix&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Recently, as semiconductor stocks such as Samsung Electronics (Samsung Electronics, SK Hynix) have s.. - 매일경제",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5uRjU4Wi15UzZ4MldwY3czREZmZXRCMl9oZjZoZnBrakVvWFhwOWZyTzc0bmRxSWgwZnhkVGYtXzMyaXhQOFQ3cGgwSjl5Vjg?oc=5",
-      "date": "Wed, 19 Aug 2026 22:19:32 GMT",
-      "desc": "Recently, as semiconductor stocks such as Samsung Electronics (Samsung Electronics, SK Hynix) have s..&nbsp;&nbsp;매일경제"
+      "title": "After Samsung, SK Hynix Reportedly Reaches Tentative Wage Deal With Union: SKHY Stock Pops Premarket - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNa0ZjZWpGdTlweHgtel9CUi12MThNdGlzbTlkcEVFUW5yU29ocURNR1A4dWZJa0U3Zld1bHZHSkJzTVBKa2t2cGhnZTJFMW5RZm9QWXY0R3V1T1BTdkRDU29fNV81bGJka0lMR2JWeUt6clp2UW5UVmFPdGdKQkpCVEhuYjA5NVE3ZjdqSXFvaFpPY3AxXzBFQ2JzQnZJU3c4SkJnQXBmci1mZUZRbFBkRXBXcm53MXA1eWRkUHFUQ3dUaFFnam1aaXpkTDRreHNyTDdYME5PQ3NoR2pvSmhHbU11Sl9TSHNJbWhSSlVseWI?oc=5",
+      "date": "Thu, 20 Aug 2026 08:29:15 GMT",
+      "desc": "After Samsung, SK Hynix Reportedly Reaches Tentative Wage Deal With Union: SKHY Stock Pops Premarket&nbsp;&nbsp;TradingView"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 269750.0,
-      "change": 1250.0,
-      "pct": 0.47,
+      "price": 271000.0,
+      "change": 2500.0,
+      "pct": 0.93,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1692000.0,
-      "change": 30000.0,
-      "pct": 1.81,
+      "price": 1691000.0,
+      "change": 29000.0,
+      "pct": 1.74,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 421000.0,
-      "change": -14000.0,
-      "pct": -3.22,
+      "price": 417500.0,
+      "change": -17500.0,
+      "pct": -4.02,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 133100.0,
-      "change": -4100.0,
-      "pct": -2.99,
+      "price": 131100.0,
+      "change": -6100.0,
+      "pct": -4.45,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 220000.0,
-      "change": 3000.0,
-      "pct": 1.38,
+      "price": 219500.0,
+      "change": 2500.0,
+      "pct": 1.15,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6865.25,
-      "change": -4.58,
-      "pct": -0.07,
+      "price": 6852.58,
+      "change": -17.25,
+      "pct": -0.25,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1394.88,
-      "change": -18.7,
-      "pct": -1.32,
+      "price": 1394.38,
+      "change": -19.2,
+      "pct": -1.36,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-20 03:39 UTC"
+  "updatedAt": "2026-08-20 09:40 UTC"
 }
