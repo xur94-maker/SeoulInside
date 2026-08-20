@@ -6,6 +6,7 @@ Archive | https://seoulinside.substack.com/archive
 
 About | https://seoulinside.substack.com/about
 
+
 Map: Reconstruction | Part 5S — 29 Complexes, Integrated Analysis (Seoul & Capital Area, March 2026) | https://seoulinside.substack.com/p/map-reconstruction-part-5s-29-complexes
 
 Map: Reconstruction | Part 5A — Stage-by-Stage Duration Data (Seoul & Capital Area, March 2026) | https://seoulinside.substack.com/p/map-reconstruction-part-5a-stage
@@ -545,3 +546,13 @@ Map: What the Numbers Don’t Tell You | Biyereyul (비례율) Data from 34 Kore
 Industry : Samsung vs. SK Hynix | The Chip War Nobody Saw Coming: How a Once-Bankrupt Underdog Quietly Dethroned the World’s Largest Memory… | https://seoulinside.substack.com/p/the-chip-war-nobody-saw-coming-how
 
 Jeonse 전세 (jeon-se): The Korean Housing System That Makes No Sense — Until It Does | https://seoulinside.substack.com/p/jeonse-jeon-se-the-korean-housing
+
+
+----
+https://xur94-maker.github.io/SeoulInside/Galaxy.html
+
+https://xur94-maker.github.io/SeoulInside/Galaxy_Finxyz.html
+
+https://xur94-maker.github.io/SeoulInside/LHCkerr.html
+
+https://xur94-maker.github.io/SeoulInside/LHC_kerr_finxyz.html
