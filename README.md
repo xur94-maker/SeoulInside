@@ -1,4 +1,72 @@
- Seoul Inside Home | https://seoulinside.substack.com/
+=== 패시브 레이어 물리학 시리즈 (본편 20편) ===
+
+[01] A Relativistic Particle Collider, Built in Pure JavaScript
+https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making
+
+[02] Yang-Mills Collider v3.0 — A technical inventory
+https://seoulinside.substack.com/p/yang-mills-collider-v30-a-technical
+
+[03] LHC Simulation: Physics Formulas and Explanations
+https://seoulinside.substack.com/p/lhc-simulation-physics-formulas-and
+
+[04] Black Hole Physics in Yang-Mills Collider v3.2
+https://seoulinside.substack.com/p/black-hole-physics-in-yang-mills
+
+[05] I Added a Black Hole to the LHC — and Something Unexpected Happened
+https://seoulinside.substack.com/p/i-added-a-black-hole-to-the-lhc-and
+
+[06] Delayed Gravitational Interaction as a Mechanism for Spiral Arm Formation
+https://seoulinside.substack.com/p/delayed-gravitational-interaction
+
+[07] Black Hole Displacement and the Default State of Spiral Galaxies
+https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
+
+[08] A Unified Technical Framework — Simulation Evidence and Theoretical Foundations
+https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
+
+[09] Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe
+https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity
+
+[10] High-Energy Particle Generation and Dynamic Gravity Systems Near Black Holes
+https://seoulinside.substack.com/p/high-energy-particle-generation-and
+
+[11] Passive Layer — Essential Citations
+https://seoulinside.substack.com/p/passive-layer-essential-citations
+
+[12] The Passive Layer — Core Document
+https://seoulinside.substack.com/p/the-passive-layer-core-document
+
+[13] Physics Series Full (Index)
+https://seoulinside.substack.com/p/physics-series-full
+
+[14] The Passive Layer (missing term)
+https://seoulinside.substack.com/p/the-passive-layer
+
+[15] The Passive Layer and the Reversal of the Burden of Proof
+https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal
+
+[16] Long-Term Survival of Antimatter and the Matter-Antimatter Asymmetry
+https://seoulinside.substack.com/p/long-term-survival-of-antimatter
+
+[17] Dark Energy Reinterpreted — Cosmic Expansion as the Relaxation of Curvature
+https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
+
+[18] The Black Hole Mass Variability — Complete Research Archive
+https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
+
+[19] A Numerical Confirmation of General Relativity
+https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
+
+[20] Pair Annihilation as a Special Case
+https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
+
+[21] The Connected Framework: How the Suppression of Pair Annihilation Links the Big Bang, the CMB, and Black Hole Mass Variability
+https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
+
+
+
+----
+Seoul Inside Home | https://seoulinside.substack.com/
 
 Notes | https://seoulinside.substack.com/notes
 
