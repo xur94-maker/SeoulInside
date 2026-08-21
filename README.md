@@ -1,4 +1,3 @@
-=== 패시브 레이어 물리학 시리즈 (본편 20편) ===
 
 [01] A Relativistic Particle Collider, Built in Pure JavaScript
 https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making
