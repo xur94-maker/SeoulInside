@@ -1,48 +1,42 @@
 {
   "globalNews": [
     {
-      "title": "US says sanctions will 'squash' Iran's economy and 'collapse' its regime",
-      "link": "https://www.bbc.co.uk/news/articles/c87n90eg0p2o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 20 Aug 2026 19:52:48 GMT",
-      "desc": "US Treasury Secretary Scott Bessent  says allies will need to decide whether they \"are with us or against us\"."
-    },
-    {
       "title": "UK, France, Germany, Italy and Canada condemn Israel's West Bank settlement project",
       "link": "https://www.bbc.co.uk/news/articles/c998evlgz8ko?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 20 Aug 2026 18:55:14 GMT",
       "desc": "European countries and Canada pile on pressure over Israel's plans to expand settlements in a strategically vital part of the occupied West Bank."
     },
     {
-      "title": "Russia 'purposefully' hit critical infrastructure in latest strikes, Kyiv mayor says",
-      "link": "https://www.bbc.co.uk/news/articles/c98vzmden5yo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 20 Aug 2026 17:14:55 GMT",
-      "desc": "At least 17 people were killed in the \"massive attack\" overnight on Ukraine's capital, as mayor Vitali Klitschko warns hot water supply has been disrupted."
+      "title": "How much could Trump's 'economic D-Day' hurt Iran?",
+      "link": "https://www.bbc.co.uk/news/articles/cre4gdvlj9ro?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 20 Aug 2026 23:16:45 GMT",
+      "desc": "Iran has so far proved adept at finding ways around years of already punishing sanctions on its economy."
     },
     {
-      "title": "Dozens dead after boat capsizes in north-western Nigeria",
-      "link": "https://www.bbc.co.uk/news/articles/cj035jg256no?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 20 Aug 2026 20:27:36 GMT",
-      "desc": "The incident took place in the country's northwest ​Sokoto state, with many of the victims feared to be children."
+      "title": "El Niño set to be 'strongest in living memory', says Met Office",
+      "link": "https://www.bbc.co.uk/weather/articles/c3ekg93vjz9o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 21 Aug 2026 00:33:21 GMT",
+      "desc": "Scientists say the growing El Niño weather pattern is an \"unprecedented event\" and means 2027 is likely to be the world's hottest year on record."
     },
     {
-      "title": "Como mayor hit by electric bike and issues blanket ban in Italian city",
-      "link": "https://www.bbc.co.uk/news/articles/cn8n077vxd7o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 20 Aug 2026 20:08:29 GMT",
-      "desc": "Alessandro Rapinese said the prohibition was for public safety, adding \"I know what it's like to be hit by one of these beasts\"."
+      "title": "Why the US economy is ringing alarm bells",
+      "link": "https://www.bbc.co.uk/news/articles/c9d8z72nn02o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 20 Aug 2026 23:15:15 GMT",
+      "desc": "The US hit a debt milestone this week, but just how worried should we be about the world's largest economy?"
+    },
+    {
+      "title": "Hong Kong's Tiananmen activists guilty in national security trial",
+      "link": "https://www.bbc.co.uk/news/articles/c1l10mdrld5o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 21 Aug 2026 02:59:46 GMT",
+      "desc": "Three activists were accused of inciting others to subvert state power under the China-introduced law."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us - MacroMicro",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQbHJQYzB0a3N1T3kwaDBSek9lc1lMQ1RMN3Q1c2JXak1OYVZ2a3RxVFZMQV9EOThOVUtTaWZEWEFBRXN0UDlOY1d1aFVMUjRSanBnR3g3OHY1YlJtUkZyaGJPejNuLW1zVkFOMzZWOXp1d2NsWXBxZUNuQVpBZW1yQmhJaDhPX3VWcmV2RTNzTkxTTHc1UTYxRTA3OVdGaUNiQzBvbmlsaE1ld2g0LWtR?oc=5",
-      "date": "Thu, 20 Aug 2026 12:09:03 GMT",
-      "desc": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us&nbsp;&nbsp;MacroMicro"
-    },
-    {
-      "title": "Kim Jong Un Has No Interest in Meeting Donald Trump - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOMjRQX3FQTGNsWEFJOXM3Y0c3OEJ0TzdlRkEyVVhieUJRMHVqR3dvTnQxTHpuQVN3Q0lYUVZqajZldE5sOGZPUmU2MDc4dzJVX19yWkV0ek1La25aRDRmNURrMTlIeGlocmcxOTNGdVdHTjZVYjdHandnVDdKLWJOc3M5bHo?oc=5",
-      "date": "Thu, 20 Aug 2026 15:40:34 GMT",
-      "desc": "Kim Jong Un Has No Interest in Meeting Donald Trump&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "Korea Early Exports Extend Gains, Supporting Rate Hike Case - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOYkMtdlpkZGlzRk9UNHJiN2RlQWl2UjhOTmNwNjBVanJIbjRXd2NfUnUyeVZKdlpLY01jSDVYeFBxSTRxdHhXV0RyeFZKRVFabnhKZE00MHZWTU1LOUk3dlN5cW00QzB1T2JBZ1RIcm4tQTRUNm9URnJCQnJDZXlYTkE2dS1OTjlwX254ZlpTeWFYelpCaVNzaXlZTU1hT2t4VDJneW9UYmVyTVhwWTRtUjY5Tjg?oc=5",
+      "date": "Fri, 21 Aug 2026 00:17:00 GMT",
+      "desc": "Korea Early Exports Extend Gains, Supporting Rate Hike Case&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "South Korea’s rookie investors lose small fortunes amid AI stocks frenzy - Al Jazeera",
@@ -51,16 +45,28 @@
       "desc": "South Korea’s rookie investors lose small fortunes amid AI stocks frenzy&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "Getting entrepreneurial in Korea (Summer School) : Planet Money - NPR",
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFAtcDBQb0hTS0hiVldBSHhQaENRVXFadkdNRnNnYmZjYWU5dEsyVk9YRG5Hd1BOWGw3VEt1dWxabjF2WWVyRGh1Z21hd2RsdEg1Rnl6Q3JRUXk?oc=5",
-      "date": "Wed, 19 Aug 2026 07:30:00 GMT",
-      "desc": "Getting entrepreneurial in Korea (Summer School) : Planet Money&nbsp;&nbsp;NPR"
+      "title": "South Korean progressives' 'Park Chung-hee' coalition in the AI era - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOVUlibDlYdnN3UWV1cnlCUEFEY1pXVzNVdlZKWjZhLUhrVGJXcWY5ckNTLTNFSmt3SENsUV9QbnNRTnhRc3lXSlljWXNXbUJwMzFJRFJ6WlE0UEpoZUNSYkxnUHFpUkUxZWI2REh0VGt4TVg3ZmVqN0pHbjEyT0hzYmVFbmFoXzFVQ05BRTUxQU5DYnJXUWN5cklwQm0?oc=5",
+      "date": "Wed, 19 Aug 2026 20:05:00 GMT",
+      "desc": "South Korean progressives' 'Park Chung-hee' coalition in the AI era&nbsp;&nbsp;Nikkei Asia"
     },
     {
-      "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
-      "date": "Tue, 04 Aug 2026 07:00:00 GMT",
-      "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
+      "title": "S. Korea pitches AI, investment to US firms - The Star",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOUnJNOG8wSWF5a2xGalNmcHdJV2VXcW5WWUJwMzRDSTV5ajljVEtkc0hzM21XOTZNZl9IZXdLTnRERFF4YTZBMkt3LV84TlNtaVBYREo3bzVZSTVvbm1VOElrQzR0U3NCTVNwelNCQUdvUTQ2cmZBdlBQRGY1LTFlWGI0Q3NVT2pXRGxPV2dmV2JwOFRGazZKWVpuNGFmc1Y3VE1RcQ?oc=5",
+      "date": "Thu, 20 Aug 2026 23:04:15 GMT",
+      "desc": "S. Korea pitches AI, investment to US firms&nbsp;&nbsp;The Star"
+    },
+    {
+      "title": "Trump rips allies Oman, South Korea amid escalating tensions with Iran - The Hill",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPeDVCUmdnVkVKUS1MOHFjTTQtWVBKbjNRR2VyRE9Qelhsb3lhOEZfRjRWYkw2TndaQklXeDRkNkdsNHpBTnd1d3k5ZS1YNXQwMXlSdlhsYjExM2NGX0JYTG9mY0NvLTRINDlnNG0tLU02UkRtUGpQUXlmY1JUSTZnSTdPLUk5RkhoTV90SkJxX3RFWHVyYkVMWtIBngFBVV95cUxOLVVUY0c4NjBYZF9IMjIyMGd6djJlZnU0VVplUHVoNFQ3dWZlSWxWU0xDc3RXWjRPQkRxWlA0S0ZKMHF5YnFaaWdaNFcwMHJVRTdySThKSkIwV2lDaXpBQjl1QXdRRU94MGJBaElfODZFN3BPZUFvd1B2eTIyM3JQNDhLYWdQNUdET3U5NEhpZGtRXzhmZTlaS3dfR2F4Zw?oc=5",
+      "date": "Mon, 17 Aug 2026 22:00:00 GMT",
+      "desc": "Trump rips allies Oman, South Korea amid escalating tensions with Iran&nbsp;&nbsp;The Hill"
+    },
+    {
+      "title": "Watch Equity Markets: Chip Selloff Extends to Asia as Samsung, SK Hynix Slump - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZkFFY05MTm1NU08tQllCQ0FkT19ramtvbmxGbWk0LWFCRWs4Xzk3Qkp2WEk2QTdrSi1ZaUNtT3pFU2pfX1RGNXJ2WUFBenpZZ240SGo3NTdLaXhxYmw2X2M1WW1nd1FLUlBJT19LZDJUdUpQMk14ZDdaV1QzQUVET0dydktmdVFudUx6ZlR5U1dtMFJHNnpQNDZwTml5ODNZeXdrU0lJZnV3N0RyT2c?oc=5",
+      "date": "Wed, 19 Aug 2026 00:00:00 GMT",
+      "desc": "Watch Equity Markets: Chip Selloff Extends to Asia as Samsung, SK Hynix Slump&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "Kospi snaps back, led by Samsung, SK Hynix on share buyback hopes - KED Global",
@@ -69,16 +75,10 @@
       "desc": "Kospi snaps back, led by Samsung, SK Hynix on share buyback hopes&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "Watch Equity Markets: Chip Selloff Extends to Asia as Samsung, SK Hynix Slump - Bloomberg",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQZkFFY05MTm1NU08tQllCQ0FkT19ramtvbmxGbWk0LWFCRWs4Xzk3Qkp2WEk2QTdrSi1ZaUNtT3pFU2pfX1RGNXJ2WUFBenpZZ240SGo3NTdLaXhxYmw2X2M1WW1nd1FLUlBJT19LZDJUdUpQMk14ZDdaV1QzQUVET0dydktmdVFudUx6ZlR5U1dtMFJHNnpQNDZwTml5ODNZeXdrU0lJZnV3N0RyT2c?oc=5",
-      "date": "Wed, 19 Aug 2026 00:00:00 GMT",
-      "desc": "Watch Equity Markets: Chip Selloff Extends to Asia as Samsung, SK Hynix Slump&nbsp;&nbsp;Bloomberg"
-    },
-    {
-      "title": "Samsung’s cash pile raises stakes for shareholder returns after SK hynix buyback - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNUzhNT2QwVExkTEpzSHlnUVhyX3Z6QlZ2R0E2Ml9wSS1EWW81MHB5MmdTYjdDWndrWWNyUVNkU2dTRTc2Yi13UTQ1ajlGekJlc0V3cXNFNlBvSTlGZ2dUcUxQRFdrUjZ5X21EN0tNQ2hYTEE0NXVzZHpHdmtScUN0QndxSWhGSER6STZSUDZSeVVpNXJZMFFnN3JWaTZnRldkOU0zRVZ5STQxX3VfaHpIdzh3OXdSSVZuemh4MTRDUkc0ZDZrYTJ0Vm8wT00?oc=5",
-      "date": "Thu, 20 Aug 2026 08:20:20 GMT",
-      "desc": "Samsung’s cash pile raises stakes for shareholder returns after SK hynix buyback&nbsp;&nbsp;Korea JoongAng Daily"
+      "title": "Samsung, SK Hynix stocks sink 9%: why Micron’s rout is spreading to South Korea - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOSlU0cVZuN05IVGdVTndIWTVJdmVWWXVWUzJzaGNNcmVxNlNrY1JYNDJxZFFKQkhJTWtzbGRURHhlcHNteUJoTE9DVDFYUk8za0dNQlVSSDJEYVo0WlVJd253c1c4RVVIWkhZZFR3TDZMVXBhcTVQaGJlVUZJcGlnc3o4YTJuTlBWZUtDaVdqMVg2ckZrVklzRFNaT1RyV2tSSEJyM2xCNnNHU056Xzd6Yl9nYW56alhMNW83QzB4dGVySkFSS1BXNTdhdk83dw?oc=5",
+      "date": "Wed, 19 Aug 2026 03:34:00 GMT",
+      "desc": "Samsung, SK Hynix stocks sink 9%: why Micron’s rout is spreading to South Korea&nbsp;&nbsp;TradingView"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 271000.0,
-      "change": 2500.0,
-      "pct": 0.93,
+      "price": 278750.0,
+      "change": 31250.0,
+      "pct": 12.63,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1691000.0,
-      "change": 29000.0,
-      "pct": 1.74,
+      "price": 1753000.0,
+      "change": 253000.0,
+      "pct": 16.87,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 417500.0,
-      "change": -17500.0,
-      "pct": -4.02,
+      "price": 419000.0,
+      "change": 5000.0,
+      "pct": 1.21,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 131100.0,
-      "change": -6100.0,
-      "pct": -4.45,
+      "price": 131400.0,
+      "change": -1600.0,
+      "pct": -1.2,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 219500.0,
-      "change": 2500.0,
-      "pct": 1.15,
+      "price": 220000.0,
+      "change": 12000.0,
+      "pct": 5.77,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6852.58,
-      "change": -17.25,
-      "pct": -0.25,
+      "price": 6910.28,
+      "change": 439.11,
+      "pct": 6.79,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1394.02,
-      "change": -19.56,
-      "pct": -1.38,
+      "price": 1382.88,
+      "change": -6.52,
+      "pct": -0.47,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-21 00:39 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-08-21 03:42 UTC"
 }
