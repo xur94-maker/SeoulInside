@@ -1,3 +1,16 @@
+High-Energy Particle Generation and Dynamic Gravity Systems Near Black Holes | https://seoulinside.substack.com/p/high-energy-particle-generation-and
+A Unified Technical Framework — Simulation Evidence and Theoretical Foundations | https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
+Pair Annihilation as a Special Case | https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
+Long-Term Survival of Antimatter and the Matter-Antimatter Asymmetry | https://seoulinside.substack.com/p/long-term-survival-of-antimatter
+The Black Hole Mass Variability — Complete Research Archive | https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
+The Connected Framework: How the Suppression of Pair Annihilation Links the Big Bang, the CMB, and Black Hole Mass Variability | https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
+Dark Energy Reinterpreted — Cosmic Expansion as the Relaxation of Curvature | https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
+A Numerical Confirmation of General Relativity | https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
+
+
+----
+
+
 
 [01] A Relativistic Particle Collider, Built in Pure JavaScript
 https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making
