@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Trump says Canada wants 'benefits' of being US state after trade talks collapse",
-      "link": "https://www.bbc.co.uk/news/articles/cx272np7vgyo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 23 Aug 2026 05:46:43 GMT",
-      "desc": "Canada's PM said he was \"reluctantly\" announcing retaliatory tariffs and accused the US of starting a trade war."
-    },
-    {
       "title": "Zelensky should be asked what he knew about government corruption, sacked minister tells BBC",
       "link": "https://www.bbc.co.uk/news/articles/cwy4ypzvd7po?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 23 Aug 2026 12:56:43 GMT",
       "desc": "Mykhailo Fedorov has also called for wartime elections to be held in Ukraine."
+    },
+    {
+      "title": "Trump says Canada wants 'benefits' of being US state after trade talks collapse",
+      "link": "https://www.bbc.co.uk/news/articles/cx272np7vgyo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 23 Aug 2026 19:11:30 GMT",
+      "desc": "Canada's PM said he was \"reluctantly\" announcing retaliatory tariffs and accused the US of starting a trade war."
+    },
+    {
+      "title": "Guinea rubbish landfill collapse kills 30",
+      "link": "https://www.bbc.co.uk/news/articles/c4g3g36z7p6o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 23 Aug 2026 18:17:37 GMT",
+      "desc": "A mound of rubbish at a major waste site buried several homes in the capital, the government says."
     },
     {
       "title": "DR Congo and M23 rebels agree roadmap for peace talks",
@@ -19,16 +25,10 @@
       "desc": "Representatives met in Switzerland to work out next steps to resolve the conflict."
     },
     {
-      "title": "Dozens of co-ordinated arson attacks hit southern Thailand",
-      "link": "https://www.bbc.co.uk/news/articles/c8enegx4xy3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 23 Aug 2026 11:50:59 GMT",
-      "desc": "No group has claimed responsibility for the attacks, which the military said \"aimed at creating unrest\"."
-    },
-    {
-      "title": "The hotel booking mix-up that could free mushroom murderer",
-      "link": "https://www.bbc.co.uk/news/articles/c9w09dj7qk5o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 22 Aug 2026 19:03:03 GMT",
-      "desc": "A table tennis tournament and a throat lozenge could help Erin Patterson's lawyers overturn her convictions."
+      "title": "France links sharp rise in drownings to heatwaves",
+      "link": "https://www.bbc.co.uk/news/articles/cqlxlp4lx9yo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 23 Aug 2026 17:39:33 GMT",
+      "desc": "A government minister says people have been taking risks by going into the water, with 301 deaths since 19 June."
     }
   ],
   "koreaNews": [
@@ -37,6 +37,12 @@
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
       "date": "Fri, 21 Aug 2026 06:46:36 GMT",
       "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "Japan and South Korea Pledge Closer FX Cooperation After Rare Joint Move - Briefs Finance",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNYlV2NHBldkhWTWNNZlA1Z1RSUG1iQWVxQ3I2Tk1rZVNjcDR0Qk93MWM1SzlqanRMeTc0dlJuV2tiNGFxWG5OZTA2T3N3N19ZRzk0WkZMdkJXNlFZXzA5SkZFUFY2T3dvYkU3UlU4RXA3UXF0azdadWs3ZkhzNmJ6dXRhangxVkNlRVViZ3hmUTg5dw?oc=5",
+      "date": "Sun, 23 Aug 2026 16:04:39 GMT",
+      "desc": "Japan and South Korea Pledge Closer FX Cooperation After Rare Joint Move&nbsp;&nbsp;Briefs Finance"
     },
     {
       "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
@@ -57,22 +63,16 @@
       "desc": "Getting entrepreneurial in Korea (Summer School) : Planet Money&nbsp;&nbsp;NPR"
     },
     {
-      "title": "BOK expected to raise S. Korea's 2026 growth estimate to over 3 pct: experts - Yonhap News Agency",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1xeUtKRDE5SkxQSHhpZnB6UTN0alZEd1lzMHJnR1Z0MTBDejRIT3haaHJYeWdHczlSb1NUazdETkFIV1dfN3pOamR3dWxqMlVTZUljWHVyR0QyUQ?oc=5",
-      "date": "Sun, 23 Aug 2026 01:43:20 GMT",
-      "desc": "BOK expected to raise S. Korea's 2026 growth estimate to over 3 pct: experts&nbsp;&nbsp;Yonhap News Agency"
+      "title": "Samsung, SK hynix pour fresh investment into aging China factories despite U.S. curbs - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNUXM5N3h5aWpSM0p5bHFValNmeURuUjItTjVGX1hiTjVJQUtINnlmd2Q4RUpDSjM4LWctUlZqRDRJeUlVakJmYU1oVWNMMkhsdVRzenBDNnF0Ri1IbE0ySUVmTHpoY2l0d05panpVZ3Y5NHV2ZGdORHRnNU5VaHM3Uko4bXZmUTJsaTRFNnpKNTRWTXg5cGNSX0ZDVDFXOWVrOVhDekdPRmhna1gwaUlVanE4UlRrdjlLRmdLSGNMSjBOcENaQnFHWHVROE1tb25x?oc=5",
+      "date": "Sun, 23 Aug 2026 20:00:41 GMT",
+      "desc": "Samsung, SK hynix pour fresh investment into aging China factories despite U.S. curbs&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Inside South Korea’s chipmaking cram schools - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNeGtoNHVaekVNcG02SGs2bGhEYi0xa1YwSU9USmFYaGZPYWowUEREV0JRTkN3d2FmNTZpbk5IMnhXNVl2X2U0d2FvNFFHMEhHaXVtWWFPeG5CRGZmOWFWYklBd0x4WGhnYmkydUpwVjlES2szdU1YMTZyR3pIY3ZCRmJnWUw?oc=5",
-      "date": "Sun, 23 Aug 2026 06:57:39 GMT",
-      "desc": "Inside South Korea’s chipmaking cram schools&nbsp;&nbsp;Financial Times"
-    },
-    {
-      "title": "Micron to Build First U.S. Memory Lab to Chase Samsung, SK hynix - Seoul Economic Daily",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQbkZIelJHb2tHSk9yWm9SZnd5R1Z6RTQxaFdHdENOdXZUWE1JZnFKcFppc1VPU1d0MXowVVBfSW15dENQMVhObDJSc20tVEZzV3h0Z09HeEEtdndJTzNEd2N1YlhoM2o5VGdWRUFKTU9qam5qemFSQnhOcGtlaHNFSlN2aGJzTVgzRjVneU56bmpXZ2hncmx5dkdUNWx0TzFveUIyN3Fn?oc=5",
-      "date": "Sat, 22 Aug 2026 22:49:05 GMT",
-      "desc": "Micron to Build First U.S. Memory Lab to Chase Samsung, SK hynix&nbsp;&nbsp;Seoul Economic Daily"
+      "title": "As Samsung Electronics and SK Hynix began to return their largest shareholders in history, the marke.. - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5VWF81MTlyclJMbHpjOVJ0a0V1YXMyRlE1SGV1dEh1MDJ3T3NvWi0yM3oxT2RqblJDMFMtbkpPcWxwRHhQel9TWVpCX3RkMU0?oc=5",
+      "date": "Sun, 23 Aug 2026 21:07:38 GMT",
+      "desc": "As Samsung Electronics and SK Hynix began to return their largest shareholders in history, the marke..&nbsp;&nbsp;매일경제"
     },
     {
       "title": "Watch Equity Markets: Chip Selloff Extends to Asia as Samsung, SK Hynix Slump - Bloomberg.com",
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1385.98,
-      "change": -3.42,
-      "pct": -0.25,
+      "price": 1386.11,
+      "change": -3.29,
+      "pct": -0.24,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-23 14:13 UTC"
+  "updatedAt": "2026-08-23 22:16 UTC"
 }
