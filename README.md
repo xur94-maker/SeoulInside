@@ -1,8 +1,17 @@
+----
+Passive Layer — Essential Citations (Central Hub) | https://seoulinside.substack.com/p/passive-layer-essential-citations
 
-High-Energy Particle Generation and Dynamic Gravity Systems Near Black Holes | https://seoulinside.substack.com/p/high-energy-particle-generation-and
+
+High-Energy Particle Generation and Dynamic Gravity Systems Near Black Hives | https://seoulinside.substack.com/p/high-energy-particle-generation-and
 
 
 A Unified Technical Framework — Simulation Evidence and Theoretical Foundations | https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
+
+
+Black Hole Displacement and the Default State of Spiral Galaxies | https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
+
+
+Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe | https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity
 
 
 Pair Annihilation as a Special Case | https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
@@ -11,8 +20,7 @@ Pair Annihilation as a Special Case | https://seoulinside.substack.com/p/pair-an
 Long-Term Survival of Antimatter and the Matter-Antimatter Asymmetry | https://seoulinside.substack.com/p/long-term-survival-of-antimatter
 
 
-The Connected Framework: How the Suppression of Pair Annihilation Links the Big Bang, the CMB, and Black Hole Mass Variability | 
-https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
+The Connected Framework: How the Suppression of Pair Annihilation Links the Big Bang, the CMB, and Black Hole Mass Variability | https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
 
 
 The Black Hole Mass Variability — Complete Research Archive | https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
@@ -22,6 +30,7 @@ Dark Energy Reinterpreted — Cosmic Expansion as the Relaxation of Curvature | 
 
 
 A Numerical Confirmation of General Relativity | https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
+
 
 ----
 
