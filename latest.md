@@ -138,34 +138,38 @@ https://gemini.google.com
 
 
 
+
+High-Energy Particle Generation and Dynamic Gravity Systems Near Black Holes | https://seoulinside.substack.com/p/high-energy-particle-generation-and
+
+
+
+A Unified Technical Framework — Simulation Evidence and Theoretical Foundations | https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
+
+
+
+Pair Annihilation as a Special Case | https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
+
+
+Long-Term Survival of Antimatter and the Matter-Antimatter Asymmetry | https://seoulinside.substack.com/p/long-term-survival-of-antimatter
+
+
+The Connected Framework: How the Suppression of Pair Annihilation Links the Big Bang, the CMB, and Black Hole Mass Variability | https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
+
+
+The Black Hole Mass Variability — Complete Research Archive | https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
+
+
+Dark Energy Reinterpreted — Cosmic Expansion as the Relaxation of Curvature | https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
+
+
+A Numerical Confirmation of General Relativity | https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
+
+
 ----
 ** | Passive Layer — Essential Citations**  
 [https://seoulinside.substack.com/p/passive-layer-essential-citations](https://seoulinside.substack.com/p/passive-layer-essential-citations)
 
-** | Why Didn’t All the Antimatter Disappear?**  
-[https://seoulinside.substack.com/p/long-term-survival-of-antimatter](https://seoulinside.substack.com/p/long-term-survival-of-antimatter)
-
-** | The Textbook Got It Backwards**  
-[https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case](https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case)
-
-** | Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe**  
-[https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity](https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity)
  
-** | I Added a Black Hole to a Particle Collider — and an Accretion Disk Appeared**  
-[https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete](https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete)
-
-
-
-----
-
-** | One Law of Physics. Three Unsolved Problems.**  
-[https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression](https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression)
-
-** | The Passive Layer — Core Document**  
-[https://seoulinside.substack.com/p/the-passive-layer-core-document](https://seoulinside.substack.com/p/the-passive-layer-core-document)
-
-** | The Gravitational Echo of Mass That No Longer Exists**  
-[https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal](https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal)
 
 ----
 ----
