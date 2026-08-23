@@ -25,12 +25,7 @@ The Connected Framework: How the Suppression of Pair Annihilation Links the Big 
 
 The Black Hole Mass Variability — Complete Research Archive | https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
 
-
-Dark Energy Reinterpreted — Cosmic Expansion as the Relaxation of Curvature | https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
-
-
-A Numerical Confirmation of General Relativity | https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
-
+ 
 
 ----
 
