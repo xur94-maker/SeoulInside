@@ -139,12 +139,23 @@ https://gemini.google.com
 
 
 
-High-Energy Particle Generation and Dynamic Gravity Systems Near Black Holes | https://seoulinside.substack.com/p/high-energy-particle-generation-and
 
+ 
+
+----
+Passive Layer — Essential Citations (Central Hub) | https://seoulinside.substack.com/p/passive-layer-essential-citations
+
+
+High-Energy Particle Generation and Dynamic Gravity Systems Near Black Hives | https://seoulinside.substack.com/p/high-energy-particle-generation-and
 
 
 A Unified Technical Framework — Simulation Evidence and Theoretical Foundations | https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
 
+
+Black Hole Displacement and the Default State of Spiral Galaxies | https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
+
+
+Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe | https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity
 
 
 Pair Annihilation as a Special Case | https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
@@ -164,14 +175,6 @@ Dark Energy Reinterpreted — Cosmic Expansion as the Relaxation of Curvature | 
 
 A Numerical Confirmation of General Relativity | https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
 
-
-----
-** | Passive Layer — Essential Citations**  
-[https://seoulinside.substack.com/p/passive-layer-essential-citations](https://seoulinside.substack.com/p/passive-layer-essential-citations)
-
- 
-
-----
 ----
 ----
 
