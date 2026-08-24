@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Burnham to visit Kyiv on first foreign trip and reaffirm UK support for Ukraine",
-      "link": "https://www.bbc.co.uk/news/articles/clyqypkrzq5o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 23 Aug 2026 23:07:10 GMT",
-      "desc": "It comes after Moscow warned of \"consequences\" over the reported use of British drones by Ukraine."
+      "title": "Divorce, smartphones and control - BBC sees how Taliban run Afghanistan",
+      "link": "https://www.bbc.co.uk/news/articles/ckgvk9p2n7ko?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 24 Aug 2026 05:00:22 GMT",
+      "desc": "Five years after the Taliban’s return, the BBC follows senior figures as the group reshapes the country."
+    },
+    {
+      "title": "Nearly 90,000 told to evacuate as wildfire approaches Reno, Nevada",
+      "link": "https://www.bbc.co.uk/news/articles/c4gqlp0yzyjo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 24 Aug 2026 08:34:26 GMT",
+      "desc": "The fire has burned around 10,500 acres and is completely uncontained, officials say."
     },
     {
       "title": "Trump says Canada wants 'benefits' of being US state after trade talks collapse",
@@ -13,22 +19,16 @@
       "desc": "Canada's PM said he was \"reluctantly\" announcing retaliatory tariffs and accused the US of starting a trade war."
     },
     {
-      "title": "Shein aims for almost $27bn valuation in stock market debut",
-      "link": "https://www.bbc.co.uk/news/articles/cdeweewjdxno?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 24 Aug 2026 02:05:04 GMT",
-      "desc": "The fast-fashion giant's shares are due to start trading in Hong Kong on 1 September."
-    },
-    {
-      "title": "Guinea rubbish landfill collapse kills 30",
-      "link": "https://www.bbc.co.uk/news/articles/c4g3g36z7p6o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 23 Aug 2026 18:17:37 GMT",
-      "desc": "A mound of rubbish at a major waste site buried several homes in the capital, the government says."
-    },
-    {
-      "title": "Nearly 3 million Teslas recalled in China over hidden door handles",
+      "title": "Nearly three million Teslas recalled in China over hidden door handles",
       "link": "https://www.bbc.co.uk/news/articles/c4g6ggdg030o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 24 Aug 2026 03:27:11 GMT",
+      "date": "Mon, 24 Aug 2026 05:01:17 GMT",
       "desc": "Other brands affected by the recall include Chinese carmakers XPeng, Xiaomi and Geely."
+    },
+    {
+      "title": "King of Norway's health has worsened, palace says",
+      "link": "https://www.bbc.co.uk/news/articles/c36lnekj659o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 24 Aug 2026 08:31:55 GMT",
+      "desc": "Norway's King Harald remains in hospital receiving antibiotics for a bloodstream bacterial infection."
     }
   ],
   "koreaNews": [
@@ -37,12 +37,6 @@
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
       "date": "Fri, 21 Aug 2026 06:46:36 GMT",
       "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
-    },
-    {
-      "title": "Japan and South Korea Pledge Closer FX Cooperation After Rare Joint Move - Briefs Finance",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNYlV2NHBldkhWTWNNZlA1Z1RSUG1iQWVxQ3I2Tk1rZVNjcDR0Qk93MWM1SzlqanRMeTc0dlJuV2tiNGFxWG5OZTA2T3N3N19ZRzk0WkZMdkJXNlFZXzA5SkZFUFY2T3dvYkU3UlU4RXA3UXF0azdadWs3ZkhzNmJ6dXRhangxVkNlRVViZ3hmUTg5dw?oc=5",
-      "date": "Mon, 24 Aug 2026 01:36:34 GMT",
-      "desc": "Japan and South Korea Pledge Closer FX Cooperation After Rare Joint Move&nbsp;&nbsp;Briefs Finance"
     },
     {
       "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
@@ -57,6 +51,12 @@
       "desc": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us&nbsp;&nbsp;MacroMicro"
     },
     {
+      "title": "Japan and South Korea Pledge Closer FX Cooperation After Rare Joint Move - Briefs Finance",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNYlV2NHBldkhWTWNNZlA1Z1RSUG1iQWVxQ3I2Tk1rZVNjcDR0Qk93MWM1SzlqanRMeTc0dlJuV2tiNGFxWG5OZTA2T3N3N19ZRzk0WkZMdkJXNlFZXzA5SkZFUFY2T3dvYkU3UlU4RXA3UXF0azdadWs3ZkhzNmJ6dXRhangxVkNlRVViZ3hmUTg5dw?oc=5",
+      "date": "Sun, 23 Aug 2026 16:04:39 GMT",
+      "desc": "Japan and South Korea Pledge Closer FX Cooperation After Rare Joint Move&nbsp;&nbsp;Briefs Finance"
+    },
+    {
       "title": "Bank of Korea's Growth Forecasts Miss the Mark Again... August Revision to 3% Range Gains Weight - finance.biggo.com",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1xOTVwOTVWb0NETUI2eWNfTkl4U3ZiWEtkVXM3aG5yRngySXBSd3N5Q0QwZzZsX0lwdGcwUk5vYmloM09WNm5pVEFMRkZoZFJSTEMwNFkwbFpSamdXbC1KalhTMUV3dmQ5N2ZCZ0lWaFFTVHhENGc?oc=5",
       "date": "Sun, 23 Aug 2026 23:30:51 GMT",
@@ -69,16 +69,16 @@
       "desc": "Samsung, SK hynix pour fresh investment into aging China factories despite U.S. curbs&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Samsung, SK Hynix Returns Trail U.S. Firms - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNVpJeG9WQ3NMRTBMcDM3X1hDZk5FSThZTEdaMXF5LW5KZkRKZHZwbkd0RGxOTXlrYmZSR1FZb21VLTA4YXFlRDF0V3ZhZ21yOThTRnluREY0UDRBZEE2VERfMkJNQ0dJcngxVlVDRHZEUVVGektWSGRRVUNxcDlQcjR4cVZCN2Fv?oc=5",
-      "date": "Mon, 24 Aug 2026 02:00:03 GMT",
-      "desc": "Samsung, SK Hynix Returns Trail U.S. Firms&nbsp;&nbsp;조선일보"
+      "title": "Samsung, SK hynix Diverge On Shareholder Returns - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE54akhmY3h1Y1dJNUxXRjBJMjdnLWh5SjhXdDBBVDRZWEdaUEE5dXBoSnZFdG0wZkV6VldOVkxXQjU0M180RjdWTDg1RW4zanBJend6VTVBdk85VWFHSjVUWDRsQjV2dUNNQ09PUXJqc0ctNXMx?oc=5",
+      "date": "Mon, 24 Aug 2026 04:31:14 GMT",
+      "desc": "Samsung, SK hynix Diverge On Shareholder Returns&nbsp;&nbsp;Businesskorea"
     },
     {
-      "title": "Inside South Korea’s chipmaking cram schools - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNeGtoNHVaekVNcG02SGs2bGhEYi0xa1YwSU9USmFYaGZPYWowUEREV0JRTkN3d2FmNTZpbk5IMnhXNVl2X2U0d2FvNFFHMEhHaXVtWWFPeG5CRGZmOWFWYklBd0x4WGhnYmkydUpwVjlES2szdU1YMTZyR3pIY3ZCRmJnWUw?oc=5",
-      "date": "Sun, 23 Aug 2026 06:57:39 GMT",
-      "desc": "Inside South Korea’s chipmaking cram schools&nbsp;&nbsp;Financial Times"
+      "title": "Samsung, SK Hynix Shareholder Returns Lag U.S. Peers - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNVpJeG9WQ3NMRTBMcDM3X1hDZk5FSThZTEdaMXF5LW5KZkRKZHZwbkd0RGxOTXlrYmZSR1FZb21VLTA4YXFlRDF0V3ZhZ21yOThTRnluREY0UDRBZEE2VERfMkJNQ0dJcngxVlVDRHZEUVVGektWSGRRVUNxcDlQcjR4cVZCN2Fv?oc=5",
+      "date": "Mon, 24 Aug 2026 04:57:08 GMT",
+      "desc": "Samsung, SK Hynix Shareholder Returns Lag U.S. Peers&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 257500.0,
-      "change": -13500.0,
-      "pct": -4.98,
+      "price": 257000.0,
+      "change": -14000.0,
+      "pct": -5.17,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1681000.0,
-      "change": -10000.0,
-      "pct": -0.59,
+      "price": 1671000.0,
+      "change": -20000.0,
+      "pct": -1.18,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 410000.0,
-      "change": -7500.0,
-      "pct": -1.8,
+      "price": 414000.0,
+      "change": -3500.0,
+      "pct": -0.84,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 129900.0,
-      "change": -1200.0,
-      "pct": -0.92,
+      "price": 131500.0,
+      "change": 400.0,
+      "pct": 0.31,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 222500.0,
-      "change": 3000.0,
-      "pct": 1.37,
+      "price": 223500.0,
+      "change": 4000.0,
+      "pct": 1.82,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6688.1,
-      "change": -164.48,
-      "pct": -2.4,
+      "price": 6696.96,
+      "change": -155.62,
+      "pct": -2.27,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1379.68,
-      "change": -11.11,
-      "pct": -0.8,
+      "price": 1382.32,
+      "change": -8.47,
+      "pct": -0.61,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-24 03:46 UTC"
+  "updatedAt": "2026-08-24 09:54 UTC"
 }
