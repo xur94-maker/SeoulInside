@@ -25,7 +25,65 @@ The Connected Framework: How the Suppression of Pair Annihilation Links the Big 
 
 The Black Hole Mass Variability — Complete Research Archive | https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
 
- 
+----
+# Passive Layer — Physics Series
+
+&gt; B. Sun | Seoul Inside  
+&gt; A browser-based particle collider simulation that led to a new framework for delayed gravity, black hole mass variability, and the matter-antimatter asymmetry.
+
+---
+
+## Part 0: Building the Collider
+
+| # | Title | URL |
+|---|-------|-----|
+| 0-1 | A Relativistic Particle Collider, Built in Pure JavaScript | [Read](https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making) |
+| 0-2 | Yang-Mills Collider v3.0 — A Technical Inventory | [Read](https://seoulinside.substack.com/p/yang-mills-collider-v30-a-technical) |
+| 0-3 | LHC Simulation: Physics Formulas and Explanations | [Read](https://seoulinside.substack.com/p/lhc-simulation-physics-formulas-and) |
+| 0-4 | Black Hole Physics in Yang-Mills Collider v3.2 | [Read](https://seoulinside.substack.com/p/black-hole-physics-in-yang-mills) |
+| 0-5 | I Added a Black Hole to the LHC — and Something Unexpected Happened | [Read](https://seoulinside.substack.com/p/i-added-a-black-hole-to-the-lhc-and) |
+| 0-6 | Delayed Gravitational Interaction as a Mechanism for Spiral Arm Formation | [Read](https://seoulinside.substack.com/p/delayed-gravitational-interaction) |
+
+---
+
+## Part 1: Core Framework
+
+| # | Title | URL |
+|---|-------|-----|
+| 1-1 | Black Hole Displacement and the Default State of Spiral Galaxies | [Read](https://seoulinside.substack.com/p/black-hole-displacement-and-the-default) |
+| 1-2 | A Unified Technical Framework — Simulation Evidence and Theoretical Foundations | [Read](https://seoulinside.substack.com/p/a-unified-technical-framework-simulation) |
+| 1-3 | Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe | [Read](https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity) |
+| 1-4 | High-Energy Particle Generation and Dynamic Gravity Systems Near Black Holes | [Read](https://seoulinside.substack.com/p/high-energy-particle-generation-and) |
+
+---
+
+## Central Documents
+
+| ID | Title | URL |
+|----|-------|-----|
+| a | Passive Layer — Essential Citations | [Read](https://seoulinside.substack.com/p/passive-layer-essential-citations) |
+| b | The Passive Layer — Core Document | [Read](https://seoulinside.substack.com/p/the-passive-layer-core-document) |
+| c | Physics Series Full (Index) | [Read](https://seoulinside.substack.com/p/physics-series-full) |
+| d | The Passive Layer (Missing Term) | [Read](https://seoulinside.substack.com/p/the-passive-layer) |
+| e | The Passive Layer and the Reversal of the Burden of Proof | [Read](https://seoulinside.substack.com/p/the-passive-layer-and-the-reversal) |
+
+---
+
+## Part 2: Cosmological Implications
+
+| # | Title | URL |
+|---|-------|-----|
+| 2-1 | Long-Term Survival of Antimatter and the Matter-Antimatter Asymmetry | [Read](https://seoulinside.substack.com/p/long-term-survival-of-antimatter) |
+| 2-2 | Dark Energy Reinterpreted — Cosmic Expansion as the Relaxation of Curvature | [Read](https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic) |
+| 2-3 | The Black Hole Mass Variability — Complete Research Archive | [Read](https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete) |
+| 2-4 | A Numerical Confirmation of General Relativity | [Read](https://seoulinside.substack.com/p/a-numerical-confirmation-of-general) |
+| 2-5 | Pair Annihilation as a Special Case | [Read](https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case) |
+| 2-6 | The Connected Framework: How the Suppression of Pair Annihilation Links the Big Bang, the CMB, and Black Hole Mass Variability | [Read](https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression) |
+
+---
+
+## Reading Order
+
 
 ----
 
