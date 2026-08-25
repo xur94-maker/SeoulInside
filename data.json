@@ -1,124 +1,173 @@
 {
   "globalNews": [
     {
+      "title": "Canada announces 'dollar-for-dollar' retaliatory tariffs on US as high as 50%",
+      "link": "https://www.bbc.co.uk/news/articles/c3v4xg5klx7o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 25 Aug 2026 19:50:57 GMT",
+      "desc": "The latest escalation in an ongoing trade war between the US and Canada will see new levies on goods from steel to furniture, fresh tuna and makeup."
+    },
+    {
       "title": "China hits out at 'illegal' new US sanctions on Iran and trading partners",
       "link": "https://www.bbc.co.uk/news/articles/clyl8965j5go?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 25 Aug 2026 11:53:36 GMT",
       "desc": "The US has threatened to isolate nations that continue to do business with Tehran, which sells much of its oil to Beijing."
     },
     {
-      "title": "Lockerbie bombing trial postponed days before it was due to start",
-      "link": "https://www.bbc.co.uk/news/articles/cq63rmj1zl1o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 25 Aug 2026 11:54:03 GMT",
-      "desc": "The trial of a Libyan man is delayed for a third time, after new evidence on the 37-year-old case came to light three days ago."
+      "title": "CIA chief travels to Moscow for unannounced talks, US media reports",
+      "link": "https://www.bbc.co.uk/news/articles/c87vg9x5d7do?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 25 Aug 2026 19:48:14 GMT",
+      "desc": "Flight tracking data confirms an American military aircraft travelled to Russia from the US via Latvia on Tuesday."
+    },
+    {
+      "title": "Mass arrests in global crackdown on West African cyber-crime networks",
+      "link": "https://www.bbc.co.uk/news/articles/cq5xdnxppl4o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 25 Aug 2026 19:30:37 GMT",
+      "desc": "The operation included the arrest of 39 people in South Africa for romance and investment scams."
     },
     {
       "title": "Brain disease in dead NFL players 'higher than previously shown'",
       "link": "https://www.bbc.co.uk/sport/american-football/articles/cew9l95kyp0o?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 25 Aug 2026 11:54:40 GMT",
       "desc": "A new study says at least one in four ex-NFL players who died between 2016 and 2021 had a degenerative brain disease but the true figure could be much higher."
-    },
-    {
-      "title": "Tornado tears through French village, leaving dozens hurt and homes ravaged",
-      "link": "https://www.bbc.co.uk/news/articles/c0m3npvpgdno?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 25 Aug 2026 08:52:17 GMT",
-      "desc": "The south-western village of Pomas was hardest hit, with hundreds of homes damaged and fifteen people taken to hospital."
-    },
-    {
-      "title": "Kit Harington replaces Nicholas Hoult in HBO's Harry Potter series",
-      "link": "https://www.bbc.co.uk/news/articles/c783lnz12vlo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 25 Aug 2026 07:39:25 GMT",
-      "desc": "Hoult was announced as Gilderoy Lockhart two weeks ago but has dropped out due to scheduling issues."
     }
   ],
-  "koreaNews": [],
+  "koreaNews": [
+    {
+      "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
+      "date": "Fri, 21 Aug 2026 06:46:36 GMT",
+      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
+      "date": "Tue, 04 Aug 2026 07:00:00 GMT",
+      "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
+    },
+    {
+      "title": "South Korea Denies Report US Proposed It Buy Stake in Westinghouse - Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVjdmTWJZSE1NeWFJc0NVZVpqaV9rQkFzMDRqeUs2UWh0TFhUYXdRZzk1WHlOYUhVZHExNzJwUl9ZZmlwYmtXdGRZUnVrTzJ6OXBSSl8zOW8xUnhVU21aNWVhX3dadUtGYTYxcjNWa2RUR19VYkRCQmItQmZTYjR1Zk56MkxlZFNtWExnZGJHSDVLTnZST1hVREI2ek9zdnozNTlyblJrWERnTG9uaVU5aU5uZw?oc=5",
+      "date": "Tue, 25 Aug 2026 00:30:00 GMT",
+      "desc": "South Korea Denies Report US Proposed It Buy Stake in Westinghouse&nbsp;&nbsp;Bloomberg"
+    },
+    {
+      "title": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us - MacroMicro",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQbHJQYzB0a3N1T3kwaDBSek9lc1lMQ1RMN3Q1c2JXak1OYVZ2a3RxVFZMQV9EOThOVUtTaWZEWEFBRXN0UDlOY1d1aFVMUjRSanBnR3g3OHY1YlJtUkZyaGJPejNuLW1zVkFOMzZWOXp1d2NsWXBxZUNuQVpBZW1yQmhJaDhPX3VWcmV2RTNzTkxTTHc1UTYxRTA3OVdGaUNiQzBvbmlsaE1ld2g0LWtR?oc=5",
+      "date": "Thu, 20 Aug 2026 07:00:00 GMT",
+      "desc": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us&nbsp;&nbsp;MacroMicro"
+    },
+    {
+      "title": "Trapped in K-shaped economy - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9uVkpqUGp3RDlOajJIOGVBTy15WWVBeGhRZnFpbl92YkZ4a2d2d3Y5MzBHSEgwcFpfSUYzNVFTZDJQenhKcXA4Ykh3ekh3c2tWQUl4Y2d6MWh4OVMxZ1NTUGFGMW5xTmtLRjdjMnQxMF9xcmVaejc5Q19tcUpnd9IBgwFBVV95cUxNNEtsYlR3Y1ZYc0ZvWlhvY2FROC1XS1I1MmtuaDVEQ2ZHUDVRVVU1WHpQQUM4QkZTT3NramhyWnY4OHh3MkRxWWVSOUpvNWozQUM4NHdxS1FzYjhQY2N5dGVZMlp2ZlZpLWtuZkoyY01nRXFEQzVqWExUandSQ0p4dW1ZYw?oc=5",
+      "date": "Tue, 25 Aug 2026 03:30:05 GMT",
+      "desc": "Trapped in K-shaped economy&nbsp;&nbsp;The Korea Times"
+    },
+    {
+      "title": "Washington Demands Samsung, SK Hynix Build US Memory Fabs After Korea's $577B Chip Bet - Tech Times",
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOOUozUzBrdkh5NUxBM3FXUXhtWGozMUZZS0JKaVdmQ0p6YXlkZnI1SU4ydndUal9PVzJOWXZvNklWNkpjYlRkb2lNd08yRzNSVnk3bnROdXRQM19TUURVWG5Ec1FtSlZKRnh3Q3JDOTlxaWxzUWNsaHp4VjFWLWVieElBM1BkaWpISWF5S0NCekUybmtMVE53TktDV1gweW56Ri0wa2JkTVZoQjVXdkZfeE11OUtYTzBNOUVQemU5RVowRnFBZkpRYTNIZFVObjJsSjFYRA?oc=5",
+      "date": "Tue, 25 Aug 2026 14:21:39 GMT",
+      "desc": "Washington Demands Samsung, SK Hynix Build US Memory Fabs After Korea's $577B Chip Bet&nbsp;&nbsp;Tech Times"
+    },
+    {
+      "title": "Samsung and SK Hynix Come Under Growing Pressure to Invest in US Chip Plants - SammyGuru",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQUnJzcTNGaHA4Sk1QSGtsTVJmTWEta0ZjVGVITVUtMUZiMXAtMHA0SndrZTdxYzRhbzk5Vm1PaEYyMDJ2N3VfMElCVlBDYXNLR3o3aDBTQnBBbmtYX29oTjJRYldWUFltRmxzcWJFaWl4TEhZTDlMemxjVG81TjJTV0N3WnRkQVB4cnc?oc=5",
+      "date": "Tue, 25 Aug 2026 07:26:46 GMT",
+      "desc": "Samsung and SK Hynix Come Under Growing Pressure to Invest in US Chip Plants&nbsp;&nbsp;SammyGuru"
+    },
+    {
+      "title": "US Semiconductor Demands Burden Samsung, SK Hynix - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRWRqRmwxcWtURTNkTDBTcjNYYS1BcDMxODFGYUhld3lVTl92MVEzLUVCUjVuN2RQWlVOUHd3OTRQWjVyVTduNElYZ01CeUdnTE1sQXE0MkdsLU92WVVvQ2hsTFRqd2NCcmdTb2NBS2pCUklfWXdpX3dwTnBqZzE3RWY0YXdrZE5N?oc=5",
+      "date": "Mon, 24 Aug 2026 20:43:15 GMT",
+      "desc": "US Semiconductor Demands Burden Samsung, SK Hynix&nbsp;&nbsp;조선일보"
+    }
+  ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 211.72,
-      "change": -3.0,
-      "pct": -1.39,
+      "price": 213.05,
+      "change": -1.67,
+      "pct": -0.78,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 415.83,
-      "change": -3.12,
-      "pct": -0.74,
+      "price": 417.41,
+      "change": -1.54,
+      "pct": -0.37,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 475.35,
-      "change": 2.1,
-      "pct": 0.44,
+      "price": 479.18,
+      "change": 5.93,
+      "pct": 1.25,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 88.64,
-      "change": -1.43,
-      "pct": -1.59,
+      "price": 87.48,
+      "change": -2.59,
+      "pct": -2.88,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 160.41,
-      "change": -0.34,
-      "pct": -0.21,
+      "price": 160.56,
+      "change": -0.19,
+      "pct": -0.12,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 244.01,
-      "change": 0.69,
-      "pct": 0.28,
+      "price": 241.56,
+      "change": -1.76,
+      "pct": -0.72,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 347.16,
-      "change": 2.34,
-      "pct": 0.68,
+      "price": 346.96,
+      "change": 2.14,
+      "pct": 0.62,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 310.36,
-      "change": 1.01,
-      "pct": 0.33,
+      "price": 309.9,
+      "change": 0.55,
+      "pct": 0.18,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 486.7,
-      "change": 3.46,
-      "pct": 0.72,
+      "price": 491.71,
+      "change": 8.47,
+      "pct": 1.75,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7665.35,
-      "change": -9.02,
-      "pct": -0.12,
+      "price": 7677.28,
+      "change": 2.91,
+      "pct": 0.04,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26096.16,
-      "change": -84.3,
-      "pct": -0.32,
+      "price": 26151.3,
+      "change": -29.16,
+      "pct": -0.11,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -174,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1384.57,
-      "change": -0.41,
-      "pct": -0.03,
+      "price": 1381.91,
+      "change": -3.07,
+      "pct": -0.22,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-25 14:34 UTC"
+  "updatedAt": "2026-08-25 22:20 UTC"
 }
