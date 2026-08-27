@@ -1,43 +1,37 @@
 {
   "globalNews": [
     {
+      "title": "Collapsed glacier likely caused devastating Nepal-Tibet floods, scientists say",
+      "link": "https://www.bbc.co.uk/news/articles/cly464k252yo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 27 Aug 2026 09:50:10 GMT",
+      "desc": "Preliminary investigations by scientists have pointed to a collapsed glacier as the cause, highlighting the issue of rapidly melting Himalayan ice."
+    },
+    {
+      "title": "What we know about deadly Nepal-Tibet floods",
+      "link": "https://www.bbc.co.uk/news/articles/cd948kn02e5o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 27 Aug 2026 09:55:02 GMT",
+      "desc": "Hundreds have died in flooding and landslides on the border of Nepal and Tibet."
+    },
+    {
+      "title": "Norway's royal family gathers at King Harald's bedside as his condition worsens",
+      "link": "https://www.bbc.co.uk/news/articles/cqxvrnvrr5do?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 27 Aug 2026 11:20:49 GMT",
+      "desc": "The 89-year-old has been in hospital for over a week receiving treatment for a rare blood condition."
+    },
+    {
+      "title": "Man who attacked nun on CCTV in Jerusalem acquitted on grounds of mental health",
+      "link": "https://www.bbc.co.uk/news/articles/cpwl54kddeko?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 27 Aug 2026 11:23:28 GMT",
+      "desc": "A Jerusalem court said the Jewish attacker was having a psychotic episode when he assaulted the nun, in an incident which caused outrage."
+    },
+    {
       "title": "Heart, hope and a steely determination: Dolly Parton's musical legacy",
       "link": "https://www.bbc.co.uk/news/articles/c74k8zwvez0o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 26 Aug 2026 11:32:11 GMT",
       "desc": "BBC music correspondent Mark Savage looks back on the legacy of the \"irreplaceable\" late singer."
-    },
-    {
-      "title": "Door was locked at Pakistan hospital where fire killed 14 babies, witnesses say",
-      "link": "https://www.bbc.co.uk/news/articles/czdz13elezlo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 26 Aug 2026 14:42:03 GMT",
-      "desc": "The hospital tells the BBC the ward door was not locked but manned with security guards, to protect the babies."
-    },
-    {
-      "title": "Trump officials threaten Kennedy Center demolition if court blocks renovations",
-      "link": "https://www.bbc.co.uk/news/articles/c62mr97n936o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 26 Aug 2026 15:42:45 GMT",
-      "desc": "The justice department has also asked for Trump's name to be put back on the building after it was removed in June following a court order."
-    },
-    {
-      "title": "At least 12 dead as wildfires sweep through northern Algeria",
-      "link": "https://www.bbc.co.uk/news/articles/cvgyd4x6nj4o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 27 Aug 2026 02:10:18 GMT",
-      "desc": "Northern Africa has experienced severe heatwaves this summer, leading to hundreds of fires across the region."
-    },
-    {
-      "title": "US drug agency approves breakthrough treatment for pancreatic cancer",
-      "link": "https://www.bbc.co.uk/news/articles/clyq4ge4wk9o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 26 Aug 2026 22:02:18 GMT",
-      "desc": "Experts have hailed the drug, daraxonrasib, as a game changer for one of the world's deadliest cancers."
     }
   ],
   "koreaNews": [
-    {
-      "title": "Bank of Korea Delivers Back-to-Back Rate Increase - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPQnIxQS1OclNvY1dLNVIwb0had3hCZ2hYWHowUVdIQV9aTEVBa1BrMW9kbEhLMWZnekpPRGdONmZmZFFnN1FLNkViUGE1WGhHTENRd1ZIVVhJWVFCYzhYdmRNTUVSdmp3dkFYV012OHFwMl9OdG43eTNxZmJUOHhROWd1LTVtM21KbHp6UF9KVGFFLS1oVkdwTFFoUWljbG5CY2VYUg?oc=5",
-      "date": "Thu, 27 Aug 2026 01:09:00 GMT",
-      "desc": "Bank of Korea Delivers Back-to-Back Rate Increase&nbsp;&nbsp;WSJ"
-    },
     {
       "title": "Bank of Korea delivers back-to-back rate hikes as core inflation stays elevated - CNBC",
       "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE0welR5VmFkX2tZc04zZHFBeWFrOVRzN3RXMmxlcFA3cEhlcENTY1VueGFLSzc2UlpjT2Frb3UyZ3FUell5TkNjNVQyUklEWDkzc2FUeTVabUNjeFpsbTlON2FjcEtvUlV5ZURnMVA5M3ptWXdF0gF6QVVfeXFMTTJfOGVlMTRIcTNjOHhZeW9iajM5ckFORmY1OEVJVFhfZDc3UXlQZkNJemE2VmgtbXZnODBlczRLNEZqbDVYbkk1NnVpc0ZOcVdYY2JiMzlxLTRueVdBaGNoQi1FaEplWFplVlFReGJ5UmpmN0x3ZGpwcVE?oc=5",
@@ -45,16 +39,16 @@
       "desc": "Bank of Korea delivers back-to-back rate hikes as core inflation stays elevated&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Continued Anticipation for Strategic Projects Under the U.S.-South Korea Investment MOU - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNX3dLU2Nha0VQQlNaVi11eXhhWVRJWVdPQzktdmZBMXZQaGh4dTV1VkJWbGxNMDRxMmZIQy1JNEVCMy1jbjRObVdWWG9uUE92NmRqZ0VJbzBpWnZpMXhMV3hRVmpNbERPeU1YdEFmSE9WcXB4VlEyZVQ0V3ppRHVHdWVEOGotUDJIMndDUE5ScEtjV1cxaUFOdXJZSllwa2NYbTlvMTlpWi0yYk43cjlXWjVGWQ?oc=5",
-      "date": "Wed, 26 Aug 2026 16:46:32 GMT",
-      "desc": "Continued Anticipation for Strategic Projects Under the U.S.-South Korea Investment MOU&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "Bank of Korea Hikes Again as It Raises Growth, Inflation Forecasts - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPQnIxQS1OclNvY1dLNVIwb0had3hCZ2hYWHowUVdIQV9aTEVBa1BrMW9kbEhLMWZnekpPRGdONmZmZFFnN1FLNkViUGE1WGhHTENRd1ZIVVhJWVFCYzhYdmRNTUVSdmp3dkFYV012OHFwMl9OdG43eTNxZmJUOHhROWd1LTVtM21KbHp6UF9KVGFFLS1oVkdwTFFoUWljbG5CY2VYUg?oc=5",
+      "date": "Thu, 27 Aug 2026 05:33:00 GMT",
+      "desc": "Bank of Korea Hikes Again as It Raises Growth, Inflation Forecasts&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
-      "date": "Fri, 21 Aug 2026 06:46:36 GMT",
-      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
+      "title": "‘Strong signal’: South Korea raises rates again to fight inflation, rising home prices - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNMGZPdVBfRUl2N19PRXVqV1dqT3Z5UnJWZElEQktocVZGUUcxeDVubDluclZ1ellMd0UtUXotY3owSEd3UGE5aXkyUU8wdC1uM0tuUmEyNy1CVy1aSDlKUFM3ZkVhQkRSRDU1eXFPQ3NLcEFMaHh1ZmNpczhlS0Y0d1VGMk4zYk85bTN4Vm5TLWh5bVBoRkRlbEZvampKbXU1bEI5NG9SaWhaUU15czdYRlNhb1B3ZWowUE9qQmNIQmh0VDJxWEdhT1VpM3VORFlib3c?oc=5",
+      "date": "Thu, 27 Aug 2026 11:35:53 GMT",
+      "desc": "‘Strong signal’: South Korea raises rates again to fight inflation, rising home prices&nbsp;&nbsp;South China Morning Post"
     },
     {
       "title": "Bank of Korea delivers back-to-back rate hikes to cope with inflation - Nikkei Asia",
@@ -63,22 +57,28 @@
       "desc": "Bank of Korea delivers back-to-back rate hikes to cope with inflation&nbsp;&nbsp;Nikkei Asia"
     },
     {
-      "title": "Samsung, SK Hynix Soar on NVIDIA Earnings Boost - 조선일보",
+      "title": "S Korea’s AI economy can’t compete with China through conformity - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPVFE3MDZubk9CMmhhSzFYNTBFZkwyMzZXa1RXTm56QVNuRjV0Skc1SVNubmpfemFyLUVsbHRXaHF5RnFQdWZVRjJwSTIzNFZlSmNBZG0ydUdJWS1MWkt4dUprVkREUllWN0NrMVBId2VRLTgzbHZlSjhuNm1fWDVnZmV0Zk4yc0NXNnJPbjRRaEFuZHVjdVkxTg?oc=5",
+      "date": "Wed, 26 Aug 2026 05:59:12 GMT",
+      "desc": "S Korea’s AI economy can’t compete with China through conformity&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "Qualcomm Says Samsung, SK hynix Back HBC Development Alongside HBM - thelec.net",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9Vb1lsSllPMHM5YTlhMGlPb3htY1lSN1VlUjlyeUFCRVZyeGliU1FicVdHa01fcExRMUNzOHQzODVYWnp3eUp4WThVRnBJbC04THdrUlJSNXdaQjZyMDE4UmVJZTVjcms?oc=5",
+      "date": "Thu, 27 Aug 2026 08:02:54 GMT",
+      "desc": "Qualcomm Says Samsung, SK hynix Back HBC Development Alongside HBM&nbsp;&nbsp;thelec.net"
+    },
+    {
+      "title": "Samsung, SK Hynix Surge After NVIDIA Earnings Boost - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQVmpzVm1OQWZYZ2ZvOEdLODkxNUQydVBlUXcyUHQ3U0ZvOXgwcXhENjh5djEwZEYyV2lEZVZGUW4taWJVQ3hiUnZFRElRQlY1VVJOZkFrbkZOV2h5bUxzc1RJUzdHOV9XSUFZVkhnZWdWVVh2Y29HOXJQNEdrSld5T3Y1aHB3TWdqd1BTQ2ln?oc=5",
-      "date": "Thu, 27 Aug 2026 00:59:29 GMT",
-      "desc": "Samsung, SK Hynix Soar on NVIDIA Earnings Boost&nbsp;&nbsp;조선일보"
+      "date": "Thu, 27 Aug 2026 02:48:51 GMT",
+      "desc": "Samsung, SK Hynix Surge After NVIDIA Earnings Boost&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Samsung Electronics, SK Hynix Gain After Nvidia Earnings Blowout Lifts Chip Stocks - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8xNXJzSFhhNHZPUko5SHhrSlRISVFPa3JLdTVsSTFrRFB1RTBUOGg1dTJ3bzJRelBINmhjeUdfcFFOdXJ2bTJ6U1NsRFl3VUxmNFN3Qw?oc=5",
-      "date": "Thu, 27 Aug 2026 00:33:22 GMT",
-      "desc": "Samsung Electronics, SK Hynix Gain After Nvidia Earnings Blowout Lifts Chip Stocks&nbsp;&nbsp;bloomingbit"
-    },
-    {
-      "title": "Samsung, SK hynix Clash Over Next-Gen AI Memory at ‘Hot Chips 2026’ - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE0tTzUxZUtDNl9ST3BtT2hTNF9Uenc3c3dsR0dhMUpTQV9LU3UtYWR0S0dFV2NxOFhBa1BYeHFOQkx4aXB3c0xpYnpxUmdXZXF2a0F5SGNpblFlaDlHUFhBd1Qxa3JVNXlHZmZyYnFWUzdkZmNm?oc=5",
-      "date": "Wed, 26 Aug 2026 10:33:18 GMT",
-      "desc": "Samsung, SK hynix Clash Over Next-Gen AI Memory at ‘Hot Chips 2026’&nbsp;&nbsp;Businesskorea"
+      "title": "Samsung and SK hynix stand to gain as Nvidia locks in memory supply - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQNzUyRTdCd2NOOVJHNHZiTkJyNW5KeTBIYmxKUHBzQ1BYV3JJZjh0bzA2WXhNTXo4ekQwSk9jTk1WbGJ3cW50VUFjVWQtMXMzTWw3UWQ2Qkp6eXppRkFvdVBtQUJlenAyVWN6MDJYdnRDWFRrS09WTGxpOHZiQklOUFNVeDZxMC0xMFFfS2xhU2ZYNHNENHozd3VWM3JTX2lrMHhPMzh4bXdFaWh0Nnh4ODBfUWdZUmNzZDdjbEZSb1pjUQ?oc=5",
+      "date": "Thu, 27 Aug 2026 09:00:07 GMT",
+      "desc": "Samsung and SK hynix stand to gain as Nvidia locks in memory supply&nbsp;&nbsp;Korea JoongAng Daily"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 267250.0,
-      "change": 10250.0,
-      "pct": 3.99,
+      "price": 266000.0,
+      "change": 9000.0,
+      "pct": 3.5,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1740000.0,
-      "change": 62000.0,
-      "pct": 3.69,
+      "price": 1730000.0,
+      "change": 52000.0,
+      "pct": 3.1,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 400000.0,
-      "change": -21000.0,
-      "pct": -4.99,
+      "price": 398000.0,
+      "change": -23000.0,
+      "pct": -5.46,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 127300.0,
-      "change": -7600.0,
-      "pct": -5.63,
+      "price": 126100.0,
+      "change": -8800.0,
+      "pct": -6.52,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 218500.0,
-      "change": -2000.0,
-      "pct": -0.91,
+      "price": 216500.0,
+      "change": -4000.0,
+      "pct": -1.81,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6924.0,
-      "change": 181.26,
-      "pct": 2.69,
+      "price": 6912.37,
+      "change": 169.63,
+      "pct": 2.52,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1380.58,
-      "change": -0.91,
-      "pct": -0.07,
+      "price": 1383.12,
+      "change": 1.63,
+      "pct": 0.12,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-27 05:41 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-08-27 13:24 UTC"
 }
