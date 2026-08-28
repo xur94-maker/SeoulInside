@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Footage of Tibet floods isn't being shown in China - and we know little about victims there",
+      "link": "https://www.bbc.co.uk/news/articles/cx2z415w2gpo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 28 Aug 2026 22:05:41 GMT",
+      "desc": "Some of the most dramatic footage from the deadly flash flooding is hidden from public view in China."
+    },
+    {
       "title": "Norway mourns King Harald as Haakon VIII ascends throne",
       "link": "https://www.bbc.co.uk/news/articles/cm2rzxrdr71o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 28 Aug 2026 19:40:45 GMT",
@@ -21,14 +27,8 @@
     {
       "title": "Right-wing commentator Milo Yiannopoulos detained by ICE",
       "link": "https://www.bbc.co.uk/news/articles/cj06jgq62v9o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 28 Aug 2026 19:45:00 GMT",
+      "date": "Fri, 28 Aug 2026 21:01:39 GMT",
       "desc": "The British citizen, who lives and works in the US, has supported Trump and ICE agents in the past."
-    },
-    {
-      "title": "Thieves steal 600-diamond necklace from Vienna museum in broad daylight",
-      "link": "https://www.bbc.co.uk/news/articles/cqxvwpe0plro?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 28 Aug 2026 17:29:16 GMT",
-      "desc": "Police are hunting two suspects they believe bought a ticket for the exhibition to get at the jewellery."
     }
   ],
   "koreaNews": [
@@ -57,10 +57,16 @@
       "desc": "From military alliance to economic partnership: How Trump is redefining U.S.-South Korea ties&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "Bank of Korea Hikes Again as It Raises Growth, Inflation Forecasts - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPQnIxQS1OclNvY1dLNVIwb0had3hCZ2hYWHowUVdIQV9aTEVBa1BrMW9kbEhLMWZnekpPRGdONmZmZFFnN1FLNkViUGE1WGhHTENRd1ZIVVhJWVFCYzhYdmRNTUVSdmp3dkFYV012OHFwMl9OdG43eTNxZmJUOHhROWd1LTVtM21KbHp6UF9KVGFFLS1oVkdwTFFoUWljbG5CY2VYUg?oc=5",
-      "date": "Thu, 27 Aug 2026 05:33:00 GMT",
-      "desc": "Bank of Korea Hikes Again as It Raises Growth, Inflation Forecasts&nbsp;&nbsp;WSJ"
+      "title": "“High Costs, Low Growth, and the Rise of China and Japan” — South Korea’s MMORPG Growth Formula Falters as Game Industry Seeks New Growth Engine in Poland - economy.ac",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE14LU9zTW5Yd05lUThRYzBDV1hPSEVpRF9HaEw3aXJCcnJZaXlXbVdnam1HeV9KUFVKSmVTX0VqOWdhZVZJcTRkbmJRUE13ejVjSnRIeEZRTQ?oc=5",
+      "date": "Fri, 28 Aug 2026 22:38:02 GMT",
+      "desc": "“High Costs, Low Growth, and the Rise of China and Japan” — South Korea’s MMORPG Growth Formula Falters as Game Industry Seeks New Growth Engine in Poland&nbsp;&nbsp;economy.ac"
+    },
+    {
+      "title": "Samsung, SK hynix Buybacks Top 10 Trillion Won, Cushioning KOSPI - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNY0JFcGxnN1MzM0I0ajBZOGRGNHkzNFFnU0NHRXV4NWsyWG1EUGUzTnlDUnNKYjZocldoNGh4UVdRcHE5dE0tZUI2Tk0zamRzRnZyZTVzQzdxMWxrVUU1bmdwenNhY01wcWtKUTVfU0tiaUFPMEhxVGVQWXdzY3M2NHI1ZndxWm9HMUY0ajc1VUV1WjhONjI0aktYNA?oc=5",
+      "date": "Fri, 28 Aug 2026 22:00:05 GMT",
+      "desc": "Samsung, SK hynix Buybacks Top 10 Trillion Won, Cushioning KOSPI&nbsp;&nbsp;Seoul Economic Daily"
     },
     {
       "title": "Micron workers increasingly support strike over bonus pay — labor union wants profit-sharing scheme, as employees at Samsung, SK hynix enjoy bonuses worth hundreds of thousands of dollars - Tom's Hardware",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9Vb1lsSllPMHM5YTlhMGlPb3htY1lSN1VlUjlyeUFCRVZyeGliU1FicVdHa01fcExRMUNzOHQzODVYWnp3eUp4WThVRnBJbC04THdrUlJSNXdaQjZyMDE4UmVJZTVjcms?oc=5",
       "date": "Thu, 27 Aug 2026 08:02:54 GMT",
       "desc": "Qualcomm Says Samsung, SK hynix Back HBC Development Alongside HBM&nbsp;&nbsp;thelec.net"
-    },
-    {
-      "title": "Samsung, SK Hynix Surge After NVIDIA Earnings Boost - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQVmpzVm1OQWZYZ2ZvOEdLODkxNUQydVBlUXcyUHQ3U0ZvOXgwcXhENjh5djEwZEYyV2lEZVZGUW4taWJVQ3hiUnZFRElRQlY1VVJOZkFrbkZOV2h5bUxzc1RJUzdHOV9XSUFZVkhnZWdWVVh2Y29HOXJQNEdrSld5T3Y1aHB3TWdqd1BTQ2ln?oc=5",
-      "date": "Thu, 27 Aug 2026 02:48:51 GMT",
-      "desc": "Samsung, SK Hynix Surge After NVIDIA Earnings Boost&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1377.66,
-      "change": -5.83,
-      "pct": -0.42,
+      "price": 1375.67,
+      "change": -7.82,
+      "pct": -0.57,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-28 20:47 UTC"
+  "updatedAt": "2026-08-28 23:16 UTC"
 }
