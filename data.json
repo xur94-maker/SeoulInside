@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Collapsed glacier likely caused devastating Nepal-Tibet floods, scientists say",
-      "link": "https://www.bbc.co.uk/news/articles/cly464k252yo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 27 Aug 2026 09:50:10 GMT",
-      "desc": "Preliminary investigations by scientists have pointed to a collapsed glacier as the cause, highlighting the issue of rapidly melting Himalayan ice."
+      "title": "Tracing the deadly path of the Nepal-Tibet flash flood",
+      "link": "https://www.bbc.co.uk/news/videos/cp80m87pez3o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 27 Aug 2026 16:13:39 GMT",
+      "desc": "BBC Verify traces the path of the destructive Nepal-Tibet flash flood using verified video."
     },
     {
-      "title": "What we know about deadly Nepal-Tibet floods",
-      "link": "https://www.bbc.co.uk/news/articles/cd948kn02e5o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 27 Aug 2026 22:54:28 GMT",
-      "desc": "Hundreds have died or are missing in Wednesday's flooding and landslides on the border of Nepal and Tibet."
+      "title": "Trump administration illegally retaliated against Anthropic, judge rules",
+      "link": "https://www.bbc.co.uk/news/articles/cm2q7z5mlrmo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 28 Aug 2026 03:41:59 GMT",
+      "desc": "The AI startup has been at loggerheads with the Pentagon over the use of AI by the US military."
     },
     {
-      "title": "Convicted Bosnian Serb war criminal Mladić dies aged 84",
-      "link": "https://www.bbc.co.uk/news/articles/c5ywxpryj95o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 27 Aug 2026 17:05:22 GMT",
-      "desc": "He was jailed for life in 2017 for genocide, war crimes and crimes against  humanity during the wars in the ex-Yugoslavia in 1992-95."
+      "title": "Tate brothers blast US jail conditions as they seek bail in UK extradition fight",
+      "link": "https://www.bbc.co.uk/news/articles/c9v9nndjznvo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 28 Aug 2026 01:43:41 GMT",
+      "desc": "Andrew and Tristan Tate's legal team argued in a Miami court that the two were not a flight risk."
+    },
+    {
+      "title": "What we know after the big Grand Theft Auto 6 preview",
+      "link": "https://www.bbc.co.uk/news/articles/c3d7exngd5no?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 27 Aug 2026 22:10:05 GMT",
+      "desc": "The official look at the blockbuster video game leaves fans and critics impressed."
     },
     {
       "title": "Jury deliberating in trial of Lindsay Clancy, US woman accused of killing her children",
       "link": "https://www.bbc.co.uk/news/articles/c33keeyyv70o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 27 Aug 2026 20:39:16 GMT",
       "desc": "Prosecutors argued Clancy made a calculated decision to murder the children, while the defence argued that she was suffering from postpartum psychosis."
-    },
-    {
-      "title": "Norwegians lay flowers at palace as King Harald's condition worsens",
-      "link": "https://www.bbc.co.uk/news/articles/cqxvrnvrr5do?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 27 Aug 2026 17:42:04 GMT",
-      "desc": "The 89-year-old's condition is described as \"extremely serious\" and members of his family have visited him in hospital."
     }
   ],
   "koreaNews": [
@@ -63,22 +63,22 @@
       "desc": "Bank of Korea delivers back-to-back rate hikes to cope with inflation&nbsp;&nbsp;Nikkei Asia"
     },
     {
+      "title": "Samsung bets on PIM while SK hynix keeps eye on HBM - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxObkQ2ZzNEUVVyajh5em9FVXZMS0M3aHpaMEYyeUhmbWZlVXozYTJ6YUFoRWdPSGJ2NTFfM25KZmVaTXdLbnB5QlZXMXcweWU3QWNlY2c1cVVocUZCMGZDdnlXQzNQV1FjMG5kckxQOWpZWHBQUU9jb2Z4SlhINWtNLVdqa3ZPM01fRlFNa0ZXWmN0RFJ2bnlLNjJWdVkxaDN5dkZGUHRMQQ?oc=5",
+      "date": "Thu, 27 Aug 2026 11:39:11 GMT",
+      "desc": "Samsung bets on PIM while SK hynix keeps eye on HBM&nbsp;&nbsp;Korea JoongAng Daily"
+    },
+    {
       "title": "Qualcomm Says Samsung, SK hynix Back HBC Development Alongside HBM - thelec.net",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9Vb1lsSllPMHM5YTlhMGlPb3htY1lSN1VlUjlyeUFCRVZyeGliU1FicVdHa01fcExRMUNzOHQzODVYWnp3eUp4WThVRnBJbC04THdrUlJSNXdaQjZyMDE4UmVJZTVjcms?oc=5",
       "date": "Thu, 27 Aug 2026 08:02:54 GMT",
       "desc": "Qualcomm Says Samsung, SK hynix Back HBC Development Alongside HBM&nbsp;&nbsp;thelec.net"
     },
     {
-      "title": "Samsung and SK hynix stand to gain as Nvidia locks in memory supply - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQNzUyRTdCd2NOOVJHNHZiTkJyNW5KeTBIYmxKUHBzQ1BYV3JJZjh0bzA2WXhNTXo4ekQwSk9jTk1WbGJ3cW50VUFjVWQtMXMzTWw3UWQ2Qkp6eXppRkFvdVBtQUJlenAyVWN6MDJYdnRDWFRrS09WTGxpOHZiQklOUFNVeDZxMC0xMFFfS2xhU2ZYNHNENHozd3VWM3JTX2lrMHhPMzh4bXdFaWh0Nnh4ODBfUWdZUmNzZDdjbEZSb1pjUQ?oc=5",
-      "date": "Thu, 27 Aug 2026 09:00:07 GMT",
-      "desc": "Samsung and SK hynix stand to gain as Nvidia locks in memory supply&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "Samsung, SK Hynix Surge After NVIDIA Earnings Boost - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQVmpzVm1OQWZYZ2ZvOEdLODkxNUQydVBlUXcyUHQ3U0ZvOXgwcXhENjh5djEwZEYyV2lEZVZGUW4taWJVQ3hiUnZFRElRQlY1VVJOZkFrbkZOV2h5bUxzc1RJUzdHOV9XSUFZVkhnZWdWVVh2Y29HOXJQNEdrSld5T3Y1aHB3TWdqd1BTQ2ln?oc=5",
-      "date": "Thu, 27 Aug 2026 02:48:51 GMT",
-      "desc": "Samsung, SK Hynix Surge After NVIDIA Earnings Boost&nbsp;&nbsp;조선일보"
+      "title": "The non-semiconductor industry, which had been overshadowed by Samsung Electronics and SK Hynix, whi.. - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5zaFV5VnVWcl8ycVdmeG1wV0c1dVpROGdBeE15QXpTX3o0Y1FZWjktc2ZRbFA5SUlodFpfcjJJVWpHTVFkc1Z3UVZJaU1CNTQ?oc=5",
+      "date": "Fri, 28 Aug 2026 04:30:43 GMT",
+      "desc": "The non-semiconductor industry, which had been overshadowed by Samsung Electronics and SK Hynix, whi..&nbsp;&nbsp;매일경제"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 266000.0,
-      "change": 9000.0,
-      "pct": 3.5,
+      "price": 257500.0,
+      "change": -4000.0,
+      "pct": -1.53,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1730000.0,
-      "change": 52000.0,
-      "pct": 3.1,
+      "price": 1674000.0,
+      "change": -14000.0,
+      "pct": -0.83,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
       "price": 398000.0,
-      "change": -23000.0,
-      "pct": -5.46,
+      "change": -10000.0,
+      "pct": -2.45,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 126100.0,
-      "change": -8800.0,
-      "pct": -6.52,
+      "price": 127500.0,
+      "change": -3900.0,
+      "pct": -2.97,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 216500.0,
-      "change": -4000.0,
-      "pct": -1.81,
+      "price": 220000.0,
+      "change": 0.0,
+      "pct": 0.0,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6912.37,
-      "change": 169.63,
-      "pct": 2.52,
+      "price": 6796.1,
+      "change": -12.11,
+      "pct": -0.18,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1381.2,
-      "change": -2.29,
-      "pct": -0.17,
+      "price": 1375.08,
+      "change": -8.41,
+      "pct": -0.61,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-27 23:20 UTC"
+  "updatedAt": "2026-08-28 05:55 UTC"
 }
