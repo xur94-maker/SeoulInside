@@ -46,6 +46,37 @@ def fetch_rss(url, max_items=8):
         return []
 
 
+def fetch_sitemap(url, max_items=300):
+    """Substack sitemap.xml에서 전체 글 목록(URL + lastmod)을 가져옵니다.
+    RSS(20개 제한)와 달리 전체 글을 다 가져올 수 있습니다."""
+    try:
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "application/xml, text/xml, */*",
+        })
+        with urllib.request.urlopen(req, timeout=15) as r:
+            raw = r.read()
+
+        raw = strip_namespaces(raw)
+        root = ET.fromstring(raw)
+        items = []
+        for url_el in root.iter('url'):
+            loc = (url_el.findtext('loc') or '').strip()
+            lastmod = (url_el.findtext('lastmod') or '').strip()
+            if '/p/' not in loc:   # archive, about 페이지 제외 (실제 글만)
+                continue
+            title = loc.rstrip('/').split('/')[-1].replace('-', ' ').title()
+            items.append({'title': title, 'link': loc, 'date': lastmod, 'desc': ''})
+            if len(items) >= max_items:
+                break
+        # 최신순 정렬
+        items.sort(key=lambda x: x['date'], reverse=True)
+        return items
+    except Exception as e:
+        print(f'  Sitemap error ({url[:60]}): {e}')
+        return []
+
+
 def fetch_stock(symbol, label, url=None):
     try:
         api_url = f'https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=2d'
@@ -81,7 +112,13 @@ def fetch_stock(symbol, label, url=None):
 
 
 def parse_date(date_str):
-    """pubDate 문자열에서 날짜만 추출 (예: Thu, 21 May 2026 → 2026-05-21)"""
+    """pubDate 문자열에서 날짜만 추출 (예: Thu, 21 May 2026 → 2026-05-21)
+    sitemap의 lastmod(YYYY-MM-DD)는 이미 그 형식이라 그대로 통과됩니다."""
+    if not date_str:
+        return ''
+    # sitemap lastmod 형식 (YYYY-MM-DD)은 그대로 반환
+    if re.match(r'^\d{4}-\d{2}-\d{2}$', date_str.strip()):
+        return date_str.strip()
     try:
         dt = datetime.strptime(date_str[:25].strip(), '%a, %d %b %Y %H:%M:%S')
         return dt.strftime('%Y-%m-%d')
@@ -107,17 +144,24 @@ print('=== SeoulInside Data Collection Start ===')
 data = {}
 
 SUBSTACK_RSS = 'https://seoulinside.substack.com/feed'
+SUBSTACK_SITEMAP = 'https://seoulinside.substack.com/sitemap.xml'
 
-# 1) Substack RSS → list.md 자동 생성
+# 1) Substack sitemap → list.md 자동 생성 (RSS는 20개 제한, sitemap은 전체 글)
 print('[1/4] Fetching Substack posts...')
-substack_posts = fetch_rss(SUBSTACK_RSS, max_items=20)
+substack_posts = fetch_sitemap(SUBSTACK_SITEMAP, max_items=300)
+if substack_posts:
+    print(f'  Sitemap: {len(substack_posts)}개 글 확보')
+else:
+    print('  Sitemap 실패 → RSS로 폴백')
+    substack_posts = fetch_rss(SUBSTACK_RSS, max_items=20)
+
 if substack_posts:
     list_md = generate_list_md(substack_posts)
     with open('list.md', 'w', encoding='utf-8') as f:
         f.write(list_md)
     print(f'  Substack: {len(substack_posts)} posts → list.md 생성 완료')
 else:
-    print('  Substack RSS 실패 — list.md 유지')
+    print('  Substack 완전 실패 — list.md 유지')
 
 # 2) Global news
 print('[2/4] Fetching global news...')
