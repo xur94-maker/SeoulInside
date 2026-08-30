@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "Footage of Tibet floods isn't being shown in China - and we know little about victims there",
-      "link": "https://www.bbc.co.uk/news/articles/cx2z415w2gpo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 29 Aug 2026 03:54:11 GMT",
-      "desc": "Some of the most dramatic footage from the deadly flash flooding is hidden from public view in China."
-    },
-    {
-      "title": "Manhunt after woman, 22, killed and five injured in Swiss shooting",
-      "link": "https://www.bbc.co.uk/news/articles/c9qr750je1go?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 30 Aug 2026 08:17:11 GMT",
-      "desc": "Swiss media reported shots were fired at a rave overnight, with all the victims in their twenties."
-    },
-    {
-      "title": "At least 37 dead and hundreds evacuated after strike on Kyiv weapons depot",
-      "link": "https://www.bbc.co.uk/news/articles/c86xwqez4npo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 29 Aug 2026 20:13:16 GMT",
-      "desc": "An investigation has begun into the storage of weapons for Ukraine's military near a residential area."
-    },
-    {
-      "title": "Iceland on track to reject EU referendum as counting nears end",
+      "title": "Iceland votes against restarting talks on joining EU",
       "link": "https://www.bbc.co.uk/news/articles/c70le8ed1plo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 30 Aug 2026 08:08:30 GMT",
-      "desc": "Broadcaster RUV reports the nation is on track to reject resuming EU membership talks as the final votes are tallied."
+      "date": "Sun, 30 Aug 2026 10:49:11 GMT",
+      "desc": "Broadcaster RUV reports that 52.8% of voters rejected the government's proposal to resume talks."
+    },
+    {
+      "title": "Manhunt after shooting at Swiss rave kills woman, 22, and injures five",
+      "link": "https://www.bbc.co.uk/news/articles/c9qr750je1go?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 30 Aug 2026 12:44:08 GMT",
+      "desc": "Five others in their twenties were injured after shots were fired at a techno event near Zurich."
+    },
+    {
+      "title": "Canada installs large Lake Ontario sign in latest jab at US",
+      "link": "https://www.bbc.co.uk/news/articles/cpq09594vw7o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 30 Aug 2026 00:17:25 GMT",
+      "desc": "Ontario Premier Doug Ford unveiled a billboard on Canada's shoreline with the message: \"Lake Ontario. Now and Always.\""
     },
     {
       "title": "WhatsApp chat used to send cash for crime and extremism",
       "link": "https://www.bbc.co.uk/news/articles/cgk57lg7566o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 30 Aug 2026 04:59:56 GMT",
       "desc": "The WhatsApp money launderers arranged cash transfers in the UK and around the world with no paper trail."
+    },
+    {
+      "title": "At least 37 dead and hundreds evacuated after strike on Kyiv weapons depot",
+      "link": "https://www.bbc.co.uk/news/articles/c86xwqez4npo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 29 Aug 2026 20:13:16 GMT",
+      "desc": "An investigation has begun into the storage of weapons for Ukraine's military near a residential area."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea may be getting too old to take advantage of its AI boom - Fortune",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZG9QazFXQW11Zzlqd2x2VGtZampWdTNYVlVvNlpTenlCXzV0M24ydUplQks4M05vaS16NW1QMEFMQ2FlS1pkbUtDUjNzem5pc0Z0S0ROMlFiY0hmSzV4S3I5VGxrVUxNeU5ycWpCcFE2NFY2S2UyY3hNcjZVZmFSVEE5a0NuU204V0RFR0FYMkV3N1NlSG9n?oc=5",
+      "date": "Sun, 30 Aug 2026 11:00:00 GMT",
+      "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
+    },
     {
       "title": "September 17, 2026 The Political Economy of Korea’s Economic Growth – Center for Korean Studies - University of Hawaiʻi at Mānoa",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNY2NCVXhldDhPZ1JwaHhWSWlBSHZPWjBlc2lnSkZvbURYd0sySktyQ215QVVwcmpfLWluUWtWZFhpX2MwRWRZaW90RkloYVZTejZsaWRxb2xBZzNKTkhfT0d2VlJmV2FScWdGczh1ajd4WXFzTDkwNWRxUDJEcE5pZGJ5a3FJM2xKUVFreExya3p5TkhnTkUzRnFRSDB0S1BNVnpOWTdHM1pjQVRvNjF5VHZkWmQ5ZGM?oc=5",
@@ -45,16 +51,10 @@
       "desc": "South Korea names veteran technocrat Lee Hyoung-il as new finance chief in cabinet reshuffle&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea Vice Finance Minister Lee Hyoung-il named finance minister, Yonhap says - Al-Monitor",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOZW00dWt0Z285cGZhNVh3TkNNd1pweDlKOW9rOEdxZllDeURCSXBpbWZTckNILW04X2M2VFoxQWxQTjdlb2ZqbUpYVkd6ZGgxZHY2YnVPYjBWOFI4T1F2c3F2MWNWNzVHZ2F0NG53cFF6U01LWWptTHZWMDJFVGJWUVRYRmFDeEZUcjlRODlOMFE4V1JUa3cwa1JmVTU1MUR0VW13cnQwT2ZwbWdZTFVDWTludTNJNVktaFBaVTZ1QQ?oc=5",
-      "date": "Sun, 30 Aug 2026 02:44:09 GMT",
-      "desc": "South Korea Vice Finance Minister Lee Hyoung-il named finance minister, Yonhap says&nbsp;&nbsp;Al-Monitor"
-    },
-    {
-      "title": "South Korea’s Lee Nominates New Finance, Defense Ministers - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPUjZoYmRNa0M2UWNycVB3YkhHYXd1ODNqbXVtRVFUWlBGUkplWUlMNXI4WWcwQkpJai04VnVuOElQOGNZMnd6UVpFQjVWNVlLQU1IYTYzVlM3X3h4RlB0STJoUGFwcWw0T2xIQUpJam1VQnczaUJBd2JwTTNJdVprNkY4TTMyd1N1MkZYa3FmNU41RWI3a2RMZFpjRmVIUHFQMGo5elZubk0yWklT?oc=5",
-      "date": "Sun, 30 Aug 2026 04:49:00 GMT",
-      "desc": "South Korea’s Lee Nominates New Finance, Defense Ministers&nbsp;&nbsp;Bloomberg.com"
+      "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
+      "date": "Fri, 21 Aug 2026 06:46:36 GMT",
+      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
     },
     {
       "title": "Veteran technocrat tapped as finance minister - The Korea Herald",
@@ -75,10 +75,10 @@
       "desc": "Samsung, SK hynix tax payments surge 167% on chip boom&nbsp;&nbsp;theinvestor.co.kr"
     },
     {
-      "title": "Samsung, SK Hynix Pay ₩11.21 Trillion in Corporate Tax in H1 — Is the ₩100 Trillion Era Coming? - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE15TWtORkx3WTJycmJHcUsxQTNQNURyS21mWEN5WU4zMEJZQ20zS2FrQlowZ3E5UTNaQU9ZekM1T3JOb0ZkVUtVZEhiamc1VE5RdzVaUnIyMFJySkktRHU2S3BEQjIxZzl5eG4zclFkTk9fWG5oY3c?oc=5",
-      "date": "Sun, 30 Aug 2026 01:55:00 GMT",
-      "desc": "Samsung, SK Hynix Pay ₩11.21 Trillion in Corporate Tax in H1 — Is the ₩100 Trillion Era Coming?&nbsp;&nbsp;finance.biggo.com"
+      "title": "Samsung, SK Hynix Tax Bills Surge as AI Chip Boom Fuels Record Profits - Koreabizwire",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxORHB2cnlTRnZwbVpPdzhEem9HbUhkTGF1REF2MlUzeXFNWTFzcF9tOHJTQ1dEc25vV3Foa1NmZW85aHdDNnp0RGx5cXJ5UldUSnVONm5JVkhlaWZVbFctblgxem45dFFaQVlQZWZZX0czMnlkVTlqUTFJSlhnY3dnVlB6Z090d01ENjFpN1VOMFdhbS1iZnVpOVVyTExRTnozWUE?oc=5",
+      "date": "Sun, 30 Aug 2026 08:56:28 GMT",
+      "desc": "Samsung, SK Hynix Tax Bills Surge as AI Chip Boom Fuels Record Profits&nbsp;&nbsp;Koreabizwire"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1371.5,
-      "change": -11.99,
-      "pct": -0.87,
+      "price": 1375.67,
+      "change": -7.82,
+      "pct": -0.57,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-30 08:45 UTC"
+  "updatedAt": "2026-08-30 14:21 UTC"
 }
