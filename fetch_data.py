@@ -46,18 +46,25 @@ def fetch_rss(url, max_items=8):
         return []
 
 
-def fetch_sitemap(url, max_items=300):
+def fetch_sitemap(url, max_items=300, save_path=None):
     """Substack sitemap.xml에서 전체 글 목록(URL + lastmod)을 가져옵니다.
-    RSS(20개 제한)와 달리 전체 글을 다 가져올 수 있습니다."""
+    RSS(20개 제한)와 달리 전체 글을 다 가져올 수 있습니다.
+    save_path를 주면, 가져온 원본 XML을 그 경로에 그대로 저장합니다
+    (레포에 이미 있는 sitemap.xml을 최신 상태로 덮어쓰는 용도)."""
     try:
         req = urllib.request.Request(url, headers={
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
             "Accept": "application/xml, text/xml, */*",
         })
         with urllib.request.urlopen(req, timeout=15) as r:
-            raw = r.read()
+            raw_original = r.read()
 
-        raw = strip_namespaces(raw)
+        if save_path:
+            with open(save_path, 'wb') as f:
+                f.write(raw_original)
+            print(f'  Sitemap 원본 저장 완료 → {save_path}')
+
+        raw = strip_namespaces(raw_original)
         root = ET.fromstring(raw)
         items = []
         for url_el in root.iter('url'):
@@ -148,7 +155,7 @@ SUBSTACK_SITEMAP = 'https://seoulinside.substack.com/sitemap.xml'
 
 # 1) Substack sitemap → list.md 자동 생성 (RSS는 20개 제한, sitemap은 전체 글)
 print('[1/4] Fetching Substack posts...')
-substack_posts = fetch_sitemap(SUBSTACK_SITEMAP, max_items=300)
+substack_posts = fetch_sitemap(SUBSTACK_SITEMAP, max_items=300, save_path='sitemap.xml')
 if substack_posts:
     print(f'  Sitemap: {len(substack_posts)}개 글 확보')
 else:
