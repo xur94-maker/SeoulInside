@@ -1,6 +1,18 @@
 {
   "globalNews": [
     {
+      "title": "Eight killed and others missing after ferry capsizes off northern Cyprus",
+      "link": "https://www.bbc.co.uk/news/articles/c770jyd4l7lo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 30 Aug 2026 20:02:43 GMT",
+      "desc": "A search and rescue operation is under way after a ferry carrying nearly 270 people turns over after leaving port."
+    },
+    {
+      "title": "US strikes Iranian launchers on Larak Island in first known attack in weeks",
+      "link": "https://www.bbc.co.uk/news/articles/cx2z72x5z1po?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 30 Aug 2026 23:53:03 GMT",
+      "desc": "Iran says the attack killed some civilians and is the first known US strike on Iran since late July."
+    },
+    {
       "title": "Iceland votes against restarting EU membership talks",
       "link": "https://www.bbc.co.uk/news/articles/c70le8ed1plo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 30 Aug 2026 16:11:44 GMT",
@@ -13,22 +25,10 @@
       "desc": "Five others in their twenties were injured after shots were fired at a techno event near Zurich."
     },
     {
-      "title": "Canada installs large Lake Ontario sign in latest jab at US",
-      "link": "https://www.bbc.co.uk/news/articles/cpq09594vw7o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 30 Aug 2026 14:25:43 GMT",
-      "desc": "Ontario Premier Doug Ford unveiled a billboard on Canada's shoreline with the message: \"Lake Ontario. Now and Always.\""
-    },
-    {
-      "title": "WhatsApp chat used to send cash for crime and extremism",
-      "link": "https://www.bbc.co.uk/news/articles/cgk57lg7566o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 30 Aug 2026 04:59:56 GMT",
-      "desc": "The WhatsApp money launderers arranged cash transfers in the UK and around the world with no paper trail."
-    },
-    {
-      "title": "Russia says it helped to repel Niger attempted coup",
-      "link": "https://www.bbc.co.uk/news/articles/c5ye8egg596o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 30 Aug 2026 16:33:17 GMT",
-      "desc": "Soldiers tried to attack a key military base early on Saturday morning, authorities say, but were thwarted."
+      "title": "15 hikers feared missing after 'terrifying' flash flooding hits Grand Canyon",
+      "link": "https://www.bbc.co.uk/news/articles/clylkjyez1do?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 30 Aug 2026 23:52:27 GMT",
+      "desc": "\"It was a beautiful day - and then people were screaming,\" one hiker who was airlifted to safety tells the BBC."
     }
   ],
   "koreaNews": [
@@ -57,10 +57,16 @@
       "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "South Korea’s Lee Nominates New Finance, Defense Ministers - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPUjZoYmRNa0M2UWNycVB3YkhHYXd1ODNqbXVtRVFUWlBGUkplWUlMNXI4WWcwQkpJai04VnVuOElQOGNZMnd6UVpFQjVWNVlLQU1IYTYzVlM3X3h4RlB0STJoUGFwcWw0T2xIQUpJam1VQnczaUJBd2JwTTNJdVprNkY4TTMyd1N1MkZYa3FmNU41RWI3a2RMZFpjRmVIUHFQMGo5elZubk0yWklT?oc=5",
-      "date": "Sun, 30 Aug 2026 04:49:00 GMT",
-      "desc": "South Korea’s Lee Nominates New Finance, Defense Ministers&nbsp;&nbsp;Bloomberg.com"
+      "title": "Can America and South Korea strengthen ties amid economic frictions? - Brookings",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORFVuWDEtaWM5djhkX210M3BtclllaHJHWWNtMlVrN2lqUl9yUE9tclZDTWU5Z244eUxqZnZwWUhveG9iU0pVV1JHYkk5Y2c0aXpuUllCLU5ZTUFzYXZHVDl3Y0hHbXgzZWhJaU84cjhPMXZRUnhIRzFvSHVaSjlmbmRrSU10bTg5bU85MThOVGtoV2pmaGlIUlJLOVo0S200QUxsY2x3?oc=5",
+      "date": "Tue, 04 Aug 2026 07:00:00 GMT",
+      "desc": "Can America and South Korea strengthen ties amid economic frictions?&nbsp;&nbsp;Brookings"
+    },
+    {
+      "title": "Samsung, SK hynix Fall About 2% in Premarket as Chip Sentiment Cools - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQdW4xdjFGamF5R3B3by1CNXFYNTNVU2RIT0x1eDdLX1FZZlk5cnJqTnkxX2psLXYtcGxRTnZWZ05Ibi1ITmx1SmNNY3Rjb1pEQlBsbkFFbnY3U1pjbkoyNnpuV3oyQ1NweUhaSExMNGpPWXFGRWo5eFV6THZKYmZVTk5EUnpiTEZmWU5zZ0Qxcm51Q21ocndJb0h1STJaSlFBYnc?oc=5",
+      "date": "Sun, 30 Aug 2026 23:30:03 GMT",
+      "desc": "Samsung, SK hynix Fall About 2% in Premarket as Chip Sentiment Cools&nbsp;&nbsp;Seoul Economic Daily"
     },
     {
       "title": "Chinese CXMT's Earnings Surprise Challenges Samsung, SK Hynix - 조선일보",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxORHB2cnlTRnZwbVpPdzhEem9HbUhkTGF1REF2MlUzeXFNWTFzcF9tOHJTQ1dEc25vV3Foa1NmZW85aHdDNnp0RGx5cXJ5UldUSnVONm5JVkhlaWZVbFctblgxem45dFFaQVlQZWZZX0czMnlkVTlqUTFJSlhnY3dnVlB6Z090d01ENjFpN1VOMFdhbS1iZnVpOVVyTExRTnozWUE?oc=5",
       "date": "Sun, 30 Aug 2026 08:56:28 GMT",
       "desc": "Samsung, SK Hynix Tax Bills Surge as AI Chip Boom Fuels Record Profits&nbsp;&nbsp;Koreabizwire"
-    },
-    {
-      "title": "Samsung, SK hynix tax payments surge 167% on chip boom - theinvestor.co.kr",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9RUVlaMDN0UU1oMW5UZjhGcTdxbC1UMlJhM1ZYN2ktb2tzVGVXbWtjNnVPbXBFVWVPX1U0bHUwd056RkI2YnhLUmJDczY5NUJqUVZsaV93RDRaUQ?oc=5",
-      "date": "Sun, 30 Aug 2026 07:12:24 GMT",
-      "desc": "Samsung, SK hynix tax payments surge 167% on chip boom&nbsp;&nbsp;theinvestor.co.kr"
     }
   ],
   "worldStocks": [
@@ -176,58 +176,58 @@
       "symbol": "005930.KS",
       "label": "Samsung",
       "price": 257000.0,
-      "change": -4500.0,
-      "pct": -1.72,
+      "change": -9000.0,
+      "pct": -3.38,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
       "price": 1653000.0,
-      "change": -35000.0,
-      "pct": -2.07,
+      "change": -77000.0,
+      "pct": -4.45,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
       "price": 399500.0,
-      "change": -8500.0,
-      "pct": -2.08,
+      "change": 1500.0,
+      "pct": 0.38,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
       "price": 128000.0,
-      "change": -3400.0,
-      "pct": -2.59,
+      "change": 1900.0,
+      "pct": 1.51,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
       "price": 220500.0,
-      "change": 500.0,
-      "pct": 0.23,
+      "change": 4000.0,
+      "pct": 1.85,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
       "price": 6788.88,
-      "change": -19.33,
-      "pct": -0.28,
+      "change": -123.49,
+      "pct": -1.79,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1375.67,
-      "change": -7.82,
-      "pct": -0.57,
+      "price": 1376.48,
+      "change": -3.97,
+      "pct": -0.29,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-30 17:50 UTC"
+  "updatedAt": "2026-08-31 00:09 UTC"
 }
