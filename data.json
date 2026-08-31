@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Nepal rescuers blast hillside in search of hydropower workers as families wait anxiously",
+      "link": "https://www.bbc.co.uk/news/articles/c5ylvgq9q71o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 31 Aug 2026 17:30:47 GMT",
+      "desc": "Rescuers have resorted to explosives as they struggle to reach trapped workers, as the flooding death toll reaches 939."
+    },
+    {
       "title": "US and Iran trade strikes for first time in weeks",
       "link": "https://www.bbc.co.uk/news/articles/cx2z72x5z1po?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 31 Aug 2026 13:47:30 GMT",
@@ -11,12 +17,6 @@
       "link": "https://www.bbc.co.uk/news/articles/cddv92n194vo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 31 Aug 2026 13:11:35 GMT",
       "desc": "A 22-year-old Italian woman was killed and several injured at a techno rave in Aarau."
-    },
-    {
-      "title": "South African airline defends low-altitude aerial stunt over packed stadium",
-      "link": "https://www.bbc.co.uk/news/articles/c3rew8jqny5o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 31 Aug 2026 10:18:07 GMT",
-      "desc": "Airlink says the manoeuvre with two planes in close formation involved careful and precise planning."
     },
     {
       "title": "The jury's options in Lindsay Clancy's murder trial",
@@ -33,10 +33,10 @@
   ],
   "koreaNews": [
     {
-      "title": "September 17, 2026 The Political Economy of Korea’s Economic Growth – Center for Korean Studies - University of Hawaiʻi at Mānoa",
+      "title": "September 17, 2026 The Political Economy of Korea’s Economic Growth – Center for Korean Studies - manoa.hawaii.edu",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNY2NCVXhldDhPZ1JwaHhWSWlBSHZPWjBlc2lnSkZvbURYd0sySktyQ215QVVwcmpfLWluUWtWZFhpX2MwRWRZaW90RkloYVZTejZsaWRxb2xBZzNKTkhfT0d2VlJmV2FScWdGczh1ajd4WXFzTDkwNWRxUDJEcE5pZGJ5a3FJM2xKUVFreExya3p5TkhnTkUzRnFRSDB0S1BNVnpOWTdHM1pjQVRvNjF5VHZkWmQ5ZGM?oc=5",
       "date": "Thu, 27 Aug 2026 21:55:16 GMT",
-      "desc": "September 17, 2026 The Political Economy of Korea’s Economic Growth – Center for Korean Studies&nbsp;&nbsp;University of Hawaiʻi at Mānoa"
+      "desc": "September 17, 2026 The Political Economy of Korea’s Economic Growth – Center for Korean Studies&nbsp;&nbsp;manoa.hawaii.edu"
     },
     {
       "title": "South Korea may be getting too old to take advantage of its AI boom - Fortune",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 220.01,
-      "change": -7.97,
-      "pct": -3.5,
+      "price": 219.93,
+      "change": -8.05,
+      "pct": -3.53,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 417.88,
-      "change": -9.43,
-      "pct": -2.21,
+      "price": 415.01,
+      "change": -12.29,
+      "pct": -2.88,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 468.89,
-      "change": -7.78,
-      "pct": -1.63,
+      "price": 469.31,
+      "change": -7.37,
+      "pct": -1.55,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 89.89,
-      "change": -2.2,
-      "pct": -2.39,
+      "price": 89.77,
+      "change": -2.33,
+      "pct": -2.52,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 168.64,
-      "change": 3.86,
-      "pct": 2.34,
+      "price": 170.47,
+      "change": 5.69,
+      "pct": 3.45,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 239.28,
-      "change": -15.93,
-      "pct": -6.24,
+      "price": 241.62,
+      "change": -13.59,
+      "pct": -5.33,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 338.59,
-      "change": -2.06,
-      "pct": -0.6,
+      "price": 339.15,
+      "change": -1.5,
+      "pct": -0.44,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 313.75,
-      "change": -0.83,
-      "pct": -0.26,
+      "price": 316.35,
+      "change": 1.77,
+      "pct": 0.56,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 511.46,
-      "change": 6.4,
-      "pct": 1.27,
+      "price": 509.86,
+      "change": 4.8,
+      "pct": 0.95,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7677.06,
-      "change": -53.93,
-      "pct": -0.7,
+      "price": 7687.69,
+      "change": -43.3,
+      "pct": -0.56,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26318.93,
-      "change": -222.42,
-      "pct": -0.84,
+      "price": 26343.35,
+      "change": -198.0,
+      "pct": -0.75,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1367.87,
-      "change": -12.58,
-      "pct": -0.91,
+      "price": 1367.79,
+      "change": -12.66,
+      "pct": -0.92,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-08-31 16:57 UTC"
+  "updatedAt": "2026-08-31 19:44 UTC"
 }
