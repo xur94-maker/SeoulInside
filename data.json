@@ -1,49 +1,37 @@
 {
   "globalNews": [
     {
-      "title": "Iran attacks US bases in Middle East after reports US strike killed five at wedding party",
-      "link": "https://www.bbc.co.uk/news/articles/cj06q4ynpmjo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 02 Sep 2026 06:26:35 GMT",
-      "desc": "The Iranian Red Crescent says a child was among those killed when shrapnel from a US strike hit a home. The US military says it is aware of the reports and it never targets civilians."
+      "title": "US sailors arrive in Thailand's Pattaya after record 250 days at sea",
+      "link": "https://www.bbc.co.uk/news/articles/cg7k09z4lj9o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 02 Sep 2026 10:04:28 GMT",
+      "desc": "The USS Abraham Lincoln is docking close to Pattaya, known for its neon-lit nightlife, and for sex tourism."
+    },
+    {
+      "title": "Why US troops have a history in this raucous Thai city",
+      "link": "https://www.bbc.co.uk/news/videos/c5yw03jr892o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 02 Sep 2026 07:18:39 GMT",
+      "desc": "The BBC's Jonathan Head looks at the historical echoes of US troops arriving in Pattaya, a beach resort famous for its racy bars."
     },
     {
       "title": "Zelensky says airlines should avoid Russian airspace as Ukraine escalates drone operations",
       "link": "https://www.bbc.co.uk/news/articles/c9v9yydy2wvo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 02 Sep 2026 04:23:23 GMT",
+      "date": "Wed, 02 Sep 2026 13:16:26 GMT",
       "desc": "Chinese and Gulf state airlines are among those still using Russian airspace. Meanwhile, Russia says it will intensify its own attacks on Ukraine."
     },
     {
-      "title": "BBC travels inside occupied Lebanon as officials say Israel expanding positions",
-      "link": "https://www.bbc.co.uk/news/articles/cge41d19gq9o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 02 Sep 2026 05:03:09 GMT",
-      "desc": "A BBC team joined a humanitarian mission of the UN peacekeeping force, which says Israeli troops are fortifying positions and continuing demolitions."
+      "title": "Rosenberg: Putin's veiled threat to UK part of Russia's campaign against West",
+      "link": "https://www.bbc.co.uk/news/articles/c62j50n131mo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 02 Sep 2026 11:47:11 GMT",
+      "desc": "The Russian president wants to keep Britain guessing - and stressing - over Moscow's real intentions."
     },
     {
-      "title": "Why do US troops have history with this Thai city?",
-      "link": "https://www.bbc.co.uk/news/videos/c5yw03jr892o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 02 Sep 2026 07:18:39 GMT",
-      "desc": "The BBC’s Jonathan Head looks at the links between the US troops and the resort city of Pattaya as an aircraft carrier arrives nearby after 250 days at sea."
-    },
-    {
-      "title": "South Korea jails care home head for sexually assaulting disabled residents",
-      "link": "https://www.bbc.co.uk/news/articles/cn74vzl52l4o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 02 Sep 2026 05:56:44 GMT",
-      "desc": "The man, surnamed Kim, was handed a 15-year prison term for abusing three residents at the facility near Seoul."
+      "title": "EU and Nato vow to step up pressure on Russia after 'new escalation' in Germany",
+      "link": "https://www.bbc.co.uk/news/articles/ce9e810pg7ko?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 02 Sep 2026 13:04:47 GMT",
+      "desc": "Russia is accused of growing increasingly reckless after Berlin blamed Russia for a failed drone attack on Leipzig airport."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korean finance minister nominee vows to advance AI projects - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOOGJYcmhsaE1mTkdZS3hxRV81V1EyYUVkUlNIN3dDZjlnZkpmVXp2MHFZaXdFd0hYUjR0RFlXSmw1b0VHdjNiMi1rcWc3OVp0YUc3a2c0ckt2VWRnUlQ4cHVkem5OUm1TYVd3TW81c1RwT2hyMWlVR3VlLVExUjNGQXJ5R0dLcHg3NHp3N0FBSjZKMGltZk5GQnpDTTZRa3BvZ1BRRG9YdTBKVGg4aThsMVFMTUpvQW84?oc=5",
-      "date": "Wed, 02 Sep 2026 02:52:35 GMT",
-      "desc": "South Korean finance minister nominee vows to advance AI projects&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Understanding the economic impact of BTS — and its ARMY of fans - marketplace.org",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPQkN4dnFKenZ1OVJ3VUhIMFNpRzA5aTJCWVlZRGNGb3hTSUtCRmRnMUg3RVh4SFlBeDVsaUhXMS1PcFF2LWRNUWZ6SjBsR0p6a0s4djd1SnVOcEtnTGdrbmNCVUY4S20zZi1uanIxeTFpZE1Xb3FjbmY2endtaWRyVHRXTGZOd0V3OFRCSUFtbXJ4aU9EbFhjUUVTcEhzblBsTnhiQVh3?oc=5",
-      "date": "Tue, 01 Sep 2026 14:30:00 GMT",
-      "desc": "Understanding the economic impact of BTS — and its ARMY of fans&nbsp;&nbsp;marketplace.org"
-    },
     {
       "title": "September 17, 2026 The Political Economy of Korea’s Economic Growth – Center for Korean Studies - University of Hawaiʻi at Mānoa",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNY2NCVXhldDhPZ1JwaHhWSWlBSHZPWjBlc2lnSkZvbURYd0sySktyQ215QVVwcmpfLWluUWtWZFhpX2MwRWRZaW90RkloYVZTejZsaWRxb2xBZzNKTkhfT0d2VlJmV2FScWdGczh1ajd4WXFzTDkwNWRxUDJEcE5pZGJ5a3FJM2xKUVFreExya3p5TkhnTkUzRnFRSDB0S1BNVnpOWTdHM1pjQVRvNjF5VHZkWmQ5ZGM?oc=5",
@@ -63,22 +51,34 @@
       "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
     },
     {
-      "title": "Samsung, SK Hynix Drop as US Chip Selloff, China CXMT's HBM3E Progress Weigh - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBkNUJCalNOWndfN2tfSkhWYzJZM2o4UURYXzk5X1htN1hZOWpOX25rYmdkcnRPUlhRemF0OHZZYlJfaXVkU3lXNVRWWlktbDJLVkJqOA?oc=5",
-      "date": "Wed, 02 Sep 2026 01:37:28 GMT",
-      "desc": "Samsung, SK Hynix Drop as US Chip Selloff, China CXMT's HBM3E Progress Weigh&nbsp;&nbsp;bloomingbit"
+      "title": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us - en.macromicro.me",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQbHJQYzB0a3N1T3kwaDBSek9lc1lMQ1RMN3Q1c2JXak1OYVZ2a3RxVFZMQV9EOThOVUtTaWZEWEFBRXN0UDlOY1d1aFVMUjRSanBnR3g3OHY1YlJtUkZyaGJPejNuLW1zVkFOMzZWOXp1d2NsWXBxZUNuQVpBZW1yQmhJaDhPX3VWcmV2RTNzTkxTTHc1UTYxRTA3OVdGaUNiQzBvbmlsaE1ld2g0LWtR?oc=5",
+      "date": "Thu, 20 Aug 2026 07:00:00 GMT",
+      "desc": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us&nbsp;&nbsp;en.macromicro.me"
+    },
+    {
+      "title": "South Korea unveils record budget increase to cash in on AI boom - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPNi1FMXhLOFBqXzRScHk2UXdPSG5KdkR3VEhQOUlVTW1YQWxhQWVOYU1rX2pBSkp2UzAtNnJGRGRoZEh0TTNMYmJaaUNLWUY1aVA1cFBBOHVCYzhMUzkyNVVhcXh2TUtDalM4MGVHak1FamZMbkFYaWlibGRiSEpsVzJ5TkE?oc=5",
+      "date": "Tue, 01 Sep 2026 05:33:26 GMT",
+      "desc": "South Korea unveils record budget increase to cash in on AI boom&nbsp;&nbsp;Financial Times"
+    },
+    {
+      "title": "Samsung, SK Hynix inventories surge as valuation reserves fall - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTVRoVlN2THc3SHRMR0xQZkFZd0lvem9kN1gtdDVXbURpVTUwTm1pSFluVlhqdlFzZS1JMnZobkJaUHgzVmhvaVh1eGRNWnpzY1VBcFh0bGpHS2JldkNSaTduTlZtY3hXdWdjUW83M0ZBdGpsVGwzLWtFaW1TT0hIbW1QMmJuOGp3YnZUUlQ1TkcyT2ZLOF9QeEo1Zw?oc=5",
+      "date": "Wed, 02 Sep 2026 07:41:00 GMT",
+      "desc": "Samsung, SK Hynix inventories surge as valuation reserves fall&nbsp;&nbsp;digitimes"
     },
     {
       "title": "Samsung, SK hynix Slide 3% in Premarket as U.S. Yields, Oil Jump - Seoul Economic Daily",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPYU1hb1Z5OGZEQ3ZlbzFyOVg2LWdwa3o3YzZDTERKbHhqcExDakNVRjJQcjBzN1p2cVVxUU1EV1RaWWNFX1l0QjFPUTdkRGNUUlRtQi1mMk9teW1iV01ZVnZsVXFFdWEzWHJBbkVFYXJFWkVndnpIVUNmbERabzJZM0JFOHE2NjRtcktGMXlYdUx5cEJqMkNrT0RXSHdyTVRnekE?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPVjh3MHpBYUpQSXdzdHA4Snc5U2MtU2FUV0UxLUVhTTMzbE5lcDlqY3pjbUFuS1Y2M1pPWTJkYnl6a1RWOWMtandlLVR5Q2gwQ1FmWkRFcFFPeEFOemYwblpjdHhuaE5vZUppZGhnejBlb25UNnB4X0dXZDNLUzgxN093Z0FoSGhzc21udEJ5OHg5aExCVVA2VUpWN0Y3Z2daQnc?oc=5",
       "date": "Tue, 01 Sep 2026 23:27:02 GMT",
       "desc": "Samsung, SK hynix Slide 3% in Premarket as U.S. Yields, Oil Jump&nbsp;&nbsp;Seoul Economic Daily"
     },
     {
-      "title": "Samsung, SK hynix Unveil Next-Gen Memory Strategies in Taiwan - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBfd09NV25FWjhtcndZQ0VyQ0hkV0MyVk9hN2NmdmYzSnFQeEdpMHZDdGt2dmEya2xBTWE5TjBEckF2WE9uaVEwVkdjTXZUNVJhV1MxS2RBTkx2R0FuejJGc2Q1d284dFVib2w2TF94UVJOd3Iy?oc=5",
-      "date": "Tue, 01 Sep 2026 10:57:36 GMT",
-      "desc": "Samsung, SK hynix Unveil Next-Gen Memory Strategies in Taiwan&nbsp;&nbsp;Businesskorea"
+      "title": "CXMT's Earnings Surprise Tests Samsung, SK Hynix - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQZmp6X1kzLVdXUlBFVmpFR1pWV2pCRzNzdDZGRXNjR0tjZTNXREZSOWZ0QzJTdUJSQTNYVU4xejdMMmlpWTJuZlE5VkRrb2ZfbGxFdHZ4SW5UZGY0VlhqZTRTLTV3ZVd4RUkzam5QYWlHaEhVajcwTU1sWkxVMjZPSXBwek5SeUFRa004VWln?oc=5",
+      "date": "Mon, 31 Aug 2026 03:39:32 GMT",
+      "desc": "CXMT's Earnings Surprise Tests Samsung, SK Hynix&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1367.28,
-      "change": 0.66,
-      "pct": 0.05,
+      "price": 1357.28,
+      "change": -9.34,
+      "pct": -0.68,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-02 07:28 UTC"
+  "updatedAt": "2026-09-02 13:29 UTC"
 }
