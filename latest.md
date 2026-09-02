@@ -9,6 +9,10 @@
 - **구글 뉴스 (한국)** — https://news.google.com/home?hl=ko&gl=KR&ceid=KR%3Ako
 
 ----
+**medium** - https://medium.com/p/import
+**medium** - https://seoulinside.medium.com/sitemap/sitemap.xml
+
+----
 
 - **모아모아** — https://moamoa.kr/
 
