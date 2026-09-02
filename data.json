@@ -1,42 +1,48 @@
 {
   "globalNews": [
     {
-      "title": "Germany says Russia behind Leipzig airport drone attack",
-      "link": "https://www.bbc.co.uk/news/articles/c5ylm3m67n2o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 01 Sep 2026 21:05:22 GMT",
-      "desc": "A drone carrying an explosive device was discovered at the airport close to Ukrainian cargo planes on 4 August."
-    },
-    {
-      "title": "US strikes Iran as state media reports four killed at wedding party",
+      "title": "Iran attacks US bases in Middle East after reports US strike killed five at wedding party",
       "link": "https://www.bbc.co.uk/news/articles/cj06q4ynpmjo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 01 Sep 2026 21:48:28 GMT",
-      "desc": "Iranian news agencies said retaliatory missile and drone attacks on US targets had begun."
+      "date": "Wed, 02 Sep 2026 06:26:35 GMT",
+      "desc": "The Iranian Red Crescent says a child was among those killed when shrapnel from a US strike hit a home. The US military says it is aware of the reports and it never targets civilians."
     },
     {
-      "title": "'I've never been to Afghanistan': Six million deportees forced to start over under the Taliban",
-      "link": "https://www.bbc.co.uk/news/articles/c2e074nn8eko?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 01 Sep 2026 05:00:34 GMT",
-      "desc": "As of August, the number forced to return this year from Pakistan and Iran had reached another million."
+      "title": "Zelensky says airlines should avoid Russian airspace as Ukraine escalates drone operations",
+      "link": "https://www.bbc.co.uk/news/articles/c9v9yydy2wvo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 02 Sep 2026 04:23:23 GMT",
+      "desc": "Chinese and Gulf state airlines are among those still using Russian airspace. Meanwhile, Russia says it will intensify its own attacks on Ukraine."
     },
     {
-      "title": "River water smashed into tunnel and chased me for 20 minutes, Nepal worker tells BBC",
-      "link": "https://www.bbc.co.uk/news/articles/cg49590v6k1o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 01 Sep 2026 16:11:18 GMT",
-      "desc": "Major efforts to rescue hydropower workers continue as Nepal's death toll exceeds 1,000."
+      "title": "BBC travels inside occupied Lebanon as officials say Israel expanding positions",
+      "link": "https://www.bbc.co.uk/news/articles/cge41d19gq9o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 02 Sep 2026 05:03:09 GMT",
+      "desc": "A BBC team joined a humanitarian mission of the UN peacekeeping force, which says Israeli troops are fortifying positions and continuing demolitions."
     },
     {
-      "title": "Sexual assaults happening almost every day in Ceuta, prosecutors say",
-      "link": "https://www.bbc.co.uk/news/articles/c3v4pgk7gweo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 01 Sep 2026 15:33:14 GMT",
-      "desc": "Most migrants have returned to neighbouring Morocco, but as many as 5,000 remain in the Spanish exclave."
+      "title": "Why do US troops have history with this Thai city?",
+      "link": "https://www.bbc.co.uk/news/videos/c5yw03jr892o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 02 Sep 2026 07:18:39 GMT",
+      "desc": "The BBC’s Jonathan Head looks at the links between the US troops and the resort city of Pattaya as an aircraft carrier arrives nearby after 250 days at sea."
+    },
+    {
+      "title": "South Korea jails care home head for sexually assaulting disabled residents",
+      "link": "https://www.bbc.co.uk/news/articles/cn74vzl52l4o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 02 Sep 2026 05:56:44 GMT",
+      "desc": "The man, surnamed Kim, was handed a 15-year prison term for abusing three residents at the facility near Seoul."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s Exports Extend Chip-Led Growth in August - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNWjAwN1JYMTBCdl9lSTN6TGd0bG5VWG9xNzNuSnd0MFRaS254M3JjblQ0RG5tRFZreC0wLVRJYmRjLUNyU3ZYSnFjQmNwN18tLTY3Ym9CRTN4UlNJUE1uQ19FQ0xHaXI5bW1ZVExUYmVILXk4SkN0Y0NBSWt6b2MySFRwQ0hObGhwRUlDWFF5eFYtOHh4THd2S1JaVnc?oc=5",
-      "date": "Tue, 01 Sep 2026 01:35:00 GMT",
-      "desc": "South Korea’s Exports Extend Chip-Led Growth in August&nbsp;&nbsp;WSJ"
+      "title": "South Korean finance minister nominee vows to advance AI projects - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOOGJYcmhsaE1mTkdZS3hxRV81V1EyYUVkUlNIN3dDZjlnZkpmVXp2MHFZaXdFd0hYUjR0RFlXSmw1b0VHdjNiMi1rcWc3OVp0YUc3a2c0ckt2VWRnUlQ4cHVkem5OUm1TYVd3TW81c1RwT2hyMWlVR3VlLVExUjNGQXJ5R0dLcHg3NHp3N0FBSjZKMGltZk5GQnpDTTZRa3BvZ1BRRG9YdTBKVGg4aThsMVFMTUpvQW84?oc=5",
+      "date": "Wed, 02 Sep 2026 02:52:35 GMT",
+      "desc": "South Korean finance minister nominee vows to advance AI projects&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "Understanding the economic impact of BTS — and its ARMY of fans - marketplace.org",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPQkN4dnFKenZ1OVJ3VUhIMFNpRzA5aTJCWVlZRGNGb3hTSUtCRmRnMUg3RVh4SFlBeDVsaUhXMS1PcFF2LWRNUWZ6SjBsR0p6a0s4djd1SnVOcEtnTGdrbmNCVUY4S20zZi1uanIxeTFpZE1Xb3FjbmY2endtaWRyVHRXTGZOd0V3OFRCSUFtbXJ4aU9EbFhjUUVTcEhzblBsTnhiQVh3?oc=5",
+      "date": "Tue, 01 Sep 2026 14:30:00 GMT",
+      "desc": "Understanding the economic impact of BTS — and its ARMY of fans&nbsp;&nbsp;marketplace.org"
     },
     {
       "title": "September 17, 2026 The Political Economy of Korea’s Economic Growth – Center for Korean Studies - University of Hawaiʻi at Mānoa",
@@ -45,40 +51,34 @@
       "desc": "September 17, 2026 The Political Economy of Korea’s Economic Growth – Center for Korean Studies&nbsp;&nbsp;University of Hawaiʻi at Mānoa"
     },
     {
+      "title": "South Korea’s Exports Extend Chip-Led Growth in August - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNWjAwN1JYMTBCdl9lSTN6TGd0bG5VWG9xNzNuSnd0MFRaS254M3JjblQ0RG5tRFZreC0wLVRJYmRjLUNyU3ZYSnFjQmNwN18tLTY3Ym9CRTN4UlNJUE1uQ19FQ0xHaXI5bW1ZVExUYmVILXk4SkN0Y0NBSWt6b2MySFRwQ0hObGhwRUlDWFF5eFYtOHh4THd2S1JaVnc?oc=5",
+      "date": "Tue, 01 Sep 2026 01:35:00 GMT",
+      "desc": "South Korea’s Exports Extend Chip-Led Growth in August&nbsp;&nbsp;WSJ"
+    },
+    {
       "title": "South Korea may be getting too old to take advantage of its AI boom - Fortune",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZG9QazFXQW11Zzlqd2x2VGtZampWdTNYVlVvNlpTenlCXzV0M24ydUplQks4M05vaS16NW1QMEFMQ2FlS1pkbUtDUjNzem5pc0Z0S0ROMlFiY0hmSzV4S3I5VGxrVUxNeU5ycWpCcFE2NFY2S2UyY3hNcjZVZmFSVEE5a0NuU204V0RFR0FYMkV3N1NlSG9n?oc=5",
       "date": "Sun, 30 Aug 2026 11:00:00 GMT",
       "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
     },
     {
-      "title": "South Korea names veteran technocrat Lee Hyoung-il as new finance chief in cabinet reshuffle - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPVHRkTGtkeEdMVDNXUFBNVzM1MnExNlhHYmhEMHlvVEhkV2VBd0xCX0MyOXBmT3N5cER6aV9uS19Ub2tnUUg1clZmNEJnQUFmVzNHMDJwcVExeHBqdno5T1QzWEpHWUtnNFNTLUVid1k5OFdUQU9ESzA1M0J6c04tT0Rrbm1rY0hpZFhRQW1sNlFQMl95bmpyZEhOYVUzYV9oV1IxN0xVVG5xLVVqbTBBY21maHdhcTZNb0R4UFV6UXBMRG9lb01rRjdyaHk?oc=5",
-      "date": "Sun, 30 Aug 2026 02:44:00 GMT",
-      "desc": "South Korea names veteran technocrat Lee Hyoung-il as new finance chief in cabinet reshuffle&nbsp;&nbsp;Reuters"
+      "title": "Samsung, SK Hynix Drop as US Chip Selloff, China CXMT's HBM3E Progress Weigh - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBkNUJCalNOWndfN2tfSkhWYzJZM2o4UURYXzk5X1htN1hZOWpOX25rYmdkcnRPUlhRemF0OHZZYlJfaXVkU3lXNVRWWlktbDJLVkJqOA?oc=5",
+      "date": "Wed, 02 Sep 2026 01:37:28 GMT",
+      "desc": "Samsung, SK Hynix Drop as US Chip Selloff, China CXMT's HBM3E Progress Weigh&nbsp;&nbsp;bloomingbit"
     },
     {
-      "title": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us - MacroMicro",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQbHJQYzB0a3N1T3kwaDBSek9lc1lMQ1RMN3Q1c2JXak1OYVZ2a3RxVFZMQV9EOThOVUtTaWZEWEFBRXN0UDlOY1d1aFVMUjRSanBnR3g3OHY1YlJtUkZyaGJPejNuLW1zVkFOMzZWOXp1d2NsWXBxZUNuQVpBZW1yQmhJaDhPX3VWcmV2RTNzTkxTTHc1UTYxRTA3OVdGaUNiQzBvbmlsaE1ld2g0LWtR?oc=5",
-      "date": "Thu, 20 Aug 2026 07:00:00 GMT",
-      "desc": "South Korea’s Bull Market Return: What the Economy and Leverage Data Tell Us&nbsp;&nbsp;MacroMicro"
+      "title": "Samsung, SK hynix Slide 3% in Premarket as U.S. Yields, Oil Jump - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPYU1hb1Z5OGZEQ3ZlbzFyOVg2LWdwa3o3YzZDTERKbHhqcExDakNVRjJQcjBzN1p2cVVxUU1EV1RaWWNFX1l0QjFPUTdkRGNUUlRtQi1mMk9teW1iV01ZVnZsVXFFdWEzWHJBbkVFYXJFWkVndnpIVUNmbERabzJZM0JFOHE2NjRtcktGMXlYdUx5cEJqMkNrT0RXSHdyTVRnekE?oc=5",
+      "date": "Tue, 01 Sep 2026 23:27:02 GMT",
+      "desc": "Samsung, SK hynix Slide 3% in Premarket as U.S. Yields, Oil Jump&nbsp;&nbsp;Seoul Economic Daily"
     },
     {
       "title": "Samsung, SK hynix Unveil Next-Gen Memory Strategies in Taiwan - Businesskorea",
       "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBfd09NV25FWjhtcndZQ0VyQ0hkV0MyVk9hN2NmdmYzSnFQeEdpMHZDdGt2dmEya2xBTWE5TjBEckF2WE9uaVEwVkdjTXZUNVJhV1MxS2RBTkx2R0FuejJGc2Q1d284dFVib2w2TF94UVJOd3Iy?oc=5",
       "date": "Tue, 01 Sep 2026 10:57:36 GMT",
       "desc": "Samsung, SK hynix Unveil Next-Gen Memory Strategies in Taiwan&nbsp;&nbsp;Businesskorea"
-    },
-    {
-      "title": "CXMT's Earnings Surprise Tests Samsung, SK Hynix - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQZmp6X1kzLVdXUlBFVmpFR1pWV2pCRzNzdDZGRXNjR0tjZTNXREZSOWZ0QzJTdUJSQTNYVU4xejdMMmlpWTJuZlE5VkRrb2ZfbGxFdHZ4SW5UZGY0VlhqZTRTLTV3ZVd4RUkzam5QYWlHaEhVajcwTU1sWkxVMjZPSXBwek5SeUFRa004VWln?oc=5",
-      "date": "Mon, 31 Aug 2026 03:39:32 GMT",
-      "desc": "CXMT's Earnings Surprise Tests Samsung, SK Hynix&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Samsung, SK Hynix Accelerate U.S. Plant Construction; Korean Media Say U.S. Investment Takes Priority Over Honam Cluster - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE56UDhkNGtHV2NHd0FTU0xQZGpFanJyTUFwMXp5TThUQmhDUE5XekVjWXRfTXBRRnRTdFFpcHpJQjhfYTVxTXB4bXRCM3FDUWxaMHUweFJZS3dsN3dvN1I2RzZoSDJmMmFXd011Y1l1QnlRZlN6MEE?oc=5",
-      "date": "Mon, 31 Aug 2026 18:06:00 GMT",
-      "desc": "Samsung, SK Hynix Accelerate U.S. Plant Construction; Korean Media Say U.S. Investment Takes Priority Over Honam Cluster&nbsp;&nbsp;finance.biggo.com"
     }
   ],
   "worldStocks": [
@@ -118,16 +118,16 @@
       "symbol": "QCOM",
       "label": "Qualcomm",
       "price": 166.61,
-      "change": 2.42,
-      "pct": 1.47,
+      "change": -3.87,
+      "pct": -2.27,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
       "price": 234.82,
-      "change": -4.23,
-      "pct": -1.77,
+      "change": -7.09,
+      "pct": -2.93,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
@@ -158,16 +158,16 @@
       "symbol": "^GSPC",
       "label": "S&P 500",
       "price": 7631.47,
-      "change": -80.29,
-      "pct": -1.04,
+      "change": -54.67,
+      "pct": -0.71,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
       "price": 26099.77,
-      "change": -302.65,
-      "pct": -1.15,
+      "change": -271.12,
+      "pct": -1.03,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 261000.0,
-      "change": 4000.0,
-      "pct": 1.56,
+      "price": 250500.0,
+      "change": -9500.0,
+      "pct": -3.65,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1693000.0,
-      "change": 40000.0,
-      "pct": 2.42,
+      "price": 1613000.0,
+      "change": -61000.0,
+      "pct": -3.64,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 400500.0,
-      "change": 1000.0,
-      "pct": 0.25,
+      "price": 378000.0,
+      "change": -25500.0,
+      "pct": -6.32,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 131200.0,
-      "change": 3200.0,
-      "pct": 2.5,
+      "price": 124400.0,
+      "change": -6600.0,
+      "pct": -5.04,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 215000.0,
-      "change": -5500.0,
-      "pct": -2.49,
+      "price": 209000.0,
+      "change": -8000.0,
+      "pct": -3.69,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6835.8,
-      "change": 46.92,
-      "pct": 0.69,
+      "price": 6562.72,
+      "change": -257.3,
+      "pct": -3.77,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1373.82,
-      "change": 7.2,
-      "pct": 0.53,
+      "price": 1367.28,
+      "change": 0.66,
+      "pct": 0.05,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-02 01:55 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-09-02 07:28 UTC"
 }
