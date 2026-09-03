@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydrogen Atom</title>
+<style>
+  :root {
+    --bg:            #050b1a;
+    --panel-bg:      rgba(9,13,26,0.92);
+    --panel-border:  rgba(255,255,255,0.09);
+    --text-primary:  #dbe4f2;
+    --text-dim:      #96a2b8;
+    --text-faint:    #5c6785;
+    --accent:        #4c8dfa;
+    --accent-soft:   rgba(76,141,250,0.14);
+    --value:         #ffb673;
+    --spin-up:       #5eeb96;
+    --spin-down:     #ff5d78;
+    --uv:            #b483ff;
+    --vis:           #ffd85c;
+    --ir:            #ff9260;
+    --radius-sm: 7px; --radius-md: 11px; --radius-lg: 16px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { overflow:hidden; background:var(--bg); font-family:'Segoe UI',sans-serif; }
+  
+  #ui-overlay {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    pointer-events:none; z-index:10;
+  }
+  #ui-overlay > * { pointer-events:auto; }
+  
+  #header {
+    position:absolute; top:10px; left:50%; transform:translateX(-50%);
+    background:var(--panel-bg); backdrop-filter:blur(12px);
+    padding:9px 22px; border-radius:var(--radius-md); border:1px solid var(--panel-border);
+    text-align:center; color:var(--text-primary); font-size:12px; z-index:30;
+    box-shadow:0 8px 32px rgba(0,0,0,0.6); max-width:92vw;
+  }
+  #header h1 { font-size:15px; color:var(--accent); letter-spacing:0.5px; font-weight:600; }
+  #header span { color:var(--value); }
+
+  #headerInfo { margin-top:4px; }
+  #headerInfo summary {
+    list-style:none; cursor:pointer; font-size:11px; color:var(--text-dim);
+    display:inline-flex; align-items:center; gap:4px; user-select:none;
+  }
+  #headerInfo summary::-webkit-details-marker { display:none; }
+  #headerInfo summary::before { content:'ⓘ'; color:var(--accent); }
+  #headerInfo summary::after { content:'▾'; font-size:8px; margin-left:2px; color:var(--text-faint); transition:transform 0.15s; }
+  #headerInfo[open] summary::after { transform:rotate(180deg); }
+  #headerInfo .header-formula {
+    margin-top:6px; font-size:11px; color:var(--text-dim); line-height:1.7;
+    text-align:left; border-top:1px solid var(--panel-border); padding-top:6px;
+  }
+  
+  #info-panel {
+    position:absolute; top:82px; left:12px; z-index:25;
+    background:var(--panel-bg); backdrop-filter:blur(12px);
+    padding:14px 18px; border-radius:var(--radius-md); border:1px solid var(--panel-border);
+    color:var(--text-primary); font-size:12px; font-family:'Consolas',monospace;
+    max-width:340px; line-height:1.85; max-height:calc(100vh - 320px);
+    overflow-y:auto; min-width:220px;
+    box-shadow:0 4px 24px rgba(0,0,0,0.5);
+  }
+  #info-panel::-webkit-scrollbar { width:4px; }
+  #info-panel::-webkit-scrollbar-thumb { background:#3a4463; border-radius:2px; }
+  .info-label { color:#7fb4e8; font-weight:bold; font-size:10.5px; letter-spacing:0.6px; }
+  .info-value { color:var(--value); }
+  .info-sub { color:var(--text-dim); font-size:11px; }
+  .spin-up { color:var(--spin-up); }
+  .spin-down { color:var(--spin-down); }
+  .highlight-uv { color:var(--uv); }
+  .highlight-vis { color:var(--vis); }
+  .highlight-ir { color:var(--ir); }
+
+  #info-panel details.info-advanced { margin-top:6px; }
+  #info-panel details.info-advanced summary {
+    list-style:none; cursor:pointer; font-size:10.5px; color:var(--accent);
+    font-weight:600; letter-spacing:0.3px; user-select:none;
+    display:flex; align-items:center; gap:5px;
+    border-top:1px solid var(--panel-border); padding-top:6px;
+  }
+  #info-panel details.info-advanced summary::-webkit-details-marker { display:none; }
+  #info-panel details.info-advanced summary::after { content:'▾'; font-size:8px; color:var(--text-faint); transition:transform 0.15s; margin-left:auto; }
+  #info-panel details.info-advanced[open] summary::after { transform:rotate(180deg); }
+  #info-panel details.info-advanced[open] summary { margin-bottom:4px; }
+  
+  #controls {
+    position:absolute; bottom:10px; left:10px; right:10px;
+    background:rgba(11,13,28,0.95); backdrop-filter:blur(16px);
+    padding:12px 14px; border-radius:var(--radius-lg); border:1px solid var(--panel-border);
+    display:flex; flex-wrap:wrap; gap:6px; justify-content:center;
+    z-index:20; font-size:11px; max-height:52vh; overflow-y:auto;
+    box-shadow:0 -4px 32px rgba(0,0,0,0.6);
+  }
+  #controls::-webkit-scrollbar { width:4px; }
+  #controls::-webkit-scrollbar-thumb { background:#3a4463; border-radius:2px; }
+  
+  .ctrl-group {
+    display:flex; flex-direction:column; gap:3px;
+    background:rgba(255,255,255,0.03); padding:6px 8px; border-radius:var(--radius-sm);
+    border:1px solid rgba(255,255,255,0.05); min-width:68px;
+  }
+  .ctrl-group.wide { min-width:130px; }
+  .ctrl-group label { font-size:10px; color:var(--text-dim); font-weight:600; letter-spacing:0.2px; }
+  .ctrl-group .sub { font-size:9px; color:var(--text-faint); }
+
+  #controls > details {
+    flex-basis:100%; width:100%;
+    border-top:1px solid var(--panel-border); margin-top:2px; padding-top:8px;
+  }
+  #controls > details summary {
+    list-style:none; cursor:pointer; font-size:10.5px; color:var(--text-dim);
+    font-weight:600; letter-spacing:0.3px; user-select:none;
+    display:flex; align-items:center; gap:5px; justify-content:center;
+  }
+  #controls > details summary::-webkit-details-marker { display:none; }
+  #controls > details summary::before { content:'▸'; color:var(--accent); font-size:9px; transition:transform 0.15s; }
+  #controls > details[open] summary::before { transform:rotate(90deg); }
+  #controls > details .details-body {
+    display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:8px;
+  }
+  
+  input[type=range] { width:100%; height:20px; background:transparent; cursor:pointer; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; margin-top:-7px; border-radius:50%; background:var(--accent); cursor:pointer; box-shadow:0 0 8px rgba(76,141,250,0.4); }
+  input[type=range]::-webkit-slider-runnable-track { height:3px; background:#2a3350; border-radius:2px; }
+  input[type=range]::-moz-range-thumb { width:16px; height:16px; border:none; border-radius:50%; background:var(--accent); cursor:pointer; box-shadow:0 0 8px rgba(76,141,250,0.4); }
+  input[type=range]::-moz-range-track { height:3px; background:#2a3350; border-radius:2px; }
+  
+  .qbtns { display:flex; flex-wrap:wrap; gap:3px; }
+  .qbtns button, .toggle-btn, .action-btn {
+    background:#1b2036; border:1px solid #333e5c; padding:5px 9px;
+    border-radius:var(--radius-sm); color:var(--text-dim); cursor:pointer; font-size:10.5px;
+    min-height:26px; transition:all 0.15s; font-family:inherit;
+  }
+  .qbtns button:hover, .toggle-btn:hover { background:#262c48; border-color:#4a5680; }
+  .qbtns button.active, .toggle-btn.active {
+    background:var(--accent); color:#fff; border-color:var(--accent);
+  }
+  .qbtns button.warn { border-color:var(--spin-down); }
+  .action-btn { background:var(--accent); color:#fff; border-color:var(--accent); padding:6px 14px; font-size:11px; font-weight:600; }
+  .action-btn:hover { background:#5f9bfb; }
+  .action-btn.danger { background:#d44; border-color:#d44; }
+  .action-btn.danger:hover { background:#e55; }
+  
+  .val-display { font-size:10.5px; color:var(--value); font-family:monospace; }
+  
+  .hidden { display:none !important; }
+
+  body.ui-hidden .ui-panel { display:none !important; }
+
+  #uiToggleBtn {
+    position:fixed; top:12px; right:12px; z-index:50;
+    width:40px; height:40px; border-radius:50%;
+    background:var(--panel-bg); backdrop-filter:blur(12px);
+    border:1px solid var(--panel-border); color:var(--text-primary);
+    font-size:17px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 18px rgba(0,0,0,0.5); transition:background 0.15s, transform 0.1s;
+  }
+  #uiToggleBtn:hover { background:rgba(20,26,48,0.95); }
+  #uiToggleBtn:active { transform:scale(0.93); }
+  body.ui-hidden #uiToggleBtn { background:var(--accent); border-color:var(--accent); color:#fff; }
+  
+  #legend {
+    position:absolute; bottom:80px; right:12px; z-index:15;
+    background:rgba(9,13,26,0.75); backdrop-filter:blur(8px);
+    padding:9px 13px; border-radius:var(--radius-sm); border:1px solid var(--panel-border);
+    font-size:10px; color:var(--text-dim); text-align:right; line-height:1.7;
+  }
+  #legend .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px; vertical-align:middle; }
+  
+  .badge {
+    display:inline-block; padding:1px 7px; border-radius:3px;
+    font-size:9px; font-weight:bold; margin-left:4px;
+  }
+  .badge.uv { background:#432868; color:var(--uv); }
+  .badge.vis { background:#4a3a12; color:var(--vis); }
+  .badge.ir { background:#4a2414; color:var(--ir); }
+  .badge.new { background:#123822; color:var(--spin-up); }
+
+  @media (max-width: 640px) {
+    #info-panel { max-width:min(78vw, 340px); }
+    #legend { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 헤더 ===== -->
+<button id="uiToggleBtn" title="UI 표시/숨김">📊</button>
+
+<div id="header" class="ui-panel">
+  <h1>⚛️ 수소 원자 — 완전 양자 시뮬레이터</h1>
+  <details id="headerInfo">
+    <summary>물리 모델 정보</summary>
+    <div class="header-formula">
+      ψ(r,t) = R<sub>nl</sub>(r)Y<sub>lm</sub>(θ,φ)e<sup>-iEt/ℏ</sup><br>
+      스핀-궤도 결합 · 초미세구조(21cm) · Stark · Zeeman · Rydberg(n≤30)
+    </div>
+  </details>
+</div>
+
+<!-- ===== 정보 패널 ===== -->
+<div id="info-panel" class="ui-panel">
+  <div class="info-label">┃ 양자 상태</div>
+  <span id="dispOrbital">2p</span> &nbsp;|&nbsp; n=<span id="dispN">2</span>, l=<span id="dispL">1</span>, m=<span id="dispM">0</span>
+  <br><span class="info-sub">j = <span id="dispJ">1.5</span>, F = <span id="dispF">1</span></span>
+
+  <div class="info-label" style="margin-top:6px;">┃ 에너지</div>
+  E = <span id="dispE">-3.401</span> eV
+
+  <div class="info-label" style="margin-top:6px;">┃ 스핀</div>
+  s=½, m<sub>s</sub>=<span id="dispMs" class="spin-up">+½ ↑</span>
+
+  <div class="info-label" style="margin-top:6px;">┃ 시간</div>
+  t = <span id="dispT">0.00</span> fs &nbsp;|&nbsp; 위상 = <span id="dispPhase">0.00</span> rad
+
+  <div class="info-label" style="margin-top:6px;display:none;" id="superLabel">┃ 중첩</div>
+  <div id="dispSuper" style="display:none;font-size:11px;color:#88ccff;"></div>
+
+  <div class="info-label" style="margin-top:6px;display:none;" id="transLabel">┃ 전이</div>
+  <div id="dispTrans" style="display:none;font-size:11px;color:#88ccff;"></div>
+
+  <div class="info-label" style="margin-top:6px;display:none;" id="bohmLabel">┃ 봄 역학</div>
+  <div id="dispBohm" style="display:none;font-size:11px;color:#88ccff;"></div>
+
+  <details class="info-advanced">
+    <summary>고급 물리량 (미세구조 · 외부장 · QED · 불확정성)</summary>
+
+    <span id="dispFS" style="font-size:11px;color:#96a2b8;">FS 보정: +<span id="dispFSVal">0.000</span> eV</span>
+    <br><span class="info-sub">초미세: ΔE = <span id="dispHFS">0.000</span> eV (21cm = <span id="disp21cm">0.00</span> mm)</span>
+
+    <div class="info-label" style="margin-top:6px;">┃ 외부장</div>
+    B = <span id="dispB">0.0000</span> T &nbsp;|&nbsp; E = <span id="dispEfield">0.00</span> V/m
+    <br><span class="info-sub">Zeeman (<span id="dispZeemanMode">강한장(Paschen-Back)</span>): ΔE = <span id="dispZeeman">0.000</span> eV</span>
+    <br><span class="info-sub">Stark (근사): ΔE = <span id="dispStark">0.000</span> eV</span>
+
+    <div class="info-label" style="margin-top:6px;">┃ QED 보정</div>
+    <span class="info-sub">Lamb shift (l=0만): ΔE = <span id="dispLamb">0.000</span> eV</span>
+
+    <div class="info-label" style="margin-top:6px;">┃ 불확정성 원리</div>
+    <span class="info-sub" id="dispUncertainty">Δr=0 a₀, Δp=0 ħ/a₀, Δr·Δp=0 ħ</span>
+  </details>
+
+  <div style="margin-top:6px;border-top:1px solid #334;padding-top:5px;font-size:10px;color:#5c6785;">
+    점: <span id="dispPoints">0</span> | 반경: <span id="dispRmax">30</span> a₀
+  </div>
+</div>
+
+<!-- ===== 범례 ===== -->
+<div id="legend" class="ui-panel">
+  <div><span class="dot" style="background:#3b82f6;"></span> 확률밀도 (|ψ|²)</div>
+  <div><span class="dot" style="background:#66ff88;"></span> 스핀-업 (↑)</div>
+  <div><span class="dot" style="background:#ff4466;"></span> 스핀-다운 (↓)</div>
+  <div style="font-size:7px;color:#445;margin-top:4px;">🖱 드래그: 회전 | 휠: 확대</div>
+</div>
+
+<!-- ===== 에너지 준위 다이어그램 (전이 모드) ===== -->
+<div id="energyDiagram" class="hidden ui-panel" style="position:absolute; top:75px; right:12px; z-index:25; background:rgba(0,0,0,0.85); backdrop-filter:blur(12px); padding:8px 10px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); box-shadow:0 4px 24px rgba(0,0,0,0.5);">
+  <div class="info-label" style="margin-bottom:4px;">┃ 에너지 준위</div>
+  <svg id="energyDiagramSvg" width="150" height="260" viewBox="0 0 150 260"></svg>
+</div>
+
+<!-- ===== 컨트롤 ===== -->
+<div id="controls" class="ui-panel">
+
+  <!-- 탭 -->
+  <div class="ctrl-group wide" style="border-color:#3b82f6;background:rgba(59,130,246,0.08);">
+    <label>📑 모드</label>
+    <div class="qbtns" id="modeTabs">
+      <button data-mode="single" class="active">단일</button>
+      <button data-mode="super">중첩</button>
+      <button data-mode="transition">전이</button>
+      <button data-mode="bohm">봄</button>
+      <button data-mode="spectrum">스펙트럼</button>
+    </div>
+  </div>
+
+  <!-- ===== 단일 상태 ===== -->
+  <div id="singleCtrls">
+    <div class="ctrl-group"><label>🎯 n</label><div class="qbtns" id="nBtns"></div></div>
+    <div class="ctrl-group"><label>🌀 l</label><div class="qbtns" id="lBtns"></div></div>
+    <div class="ctrl-group"><label>🧭 m</label><div class="qbtns" id="mBtns"></div></div>
+    <div class="ctrl-group"><label>🔄 mₛ</label>
+      <div class="qbtns" id="spinBtns">
+        <button data-ms="0.5" class="active">↑+½</button>
+        <button data-ms="-0.5">↓-½</button>
+      </div>
+    </div>
+    <div class="ctrl-group"><label>⚛ j</label><div class="qbtns" id="jBtns"></div></div>
+  </div>
+
+  <!-- ===== 중첩 ===== -->
+  <div id="superCtrls" class="hidden">
+    <div class="ctrl-group wide"><label>상태 A (n,l,m)</label>
+      <div class="qbtns" id="nBtnsA"></div><div class="qbtns" id="lBtnsA"></div><div class="qbtns" id="mBtnsA"></div>
+    </div>
+    <div class="ctrl-group wide"><label>상태 B (n,l,m)</label>
+      <div class="qbtns" id="nBtnsB"></div><div class="qbtns" id="lBtnsB"></div><div class="qbtns" id="mBtnsB"></div>
+    </div>
+    <div class="ctrl-group"><label>혼합비 |c₁|²</label>
+      <input type="range" id="mixRatio" min="0" max="1" step="0.01" value="0.5">
+      <span class="val-display" id="mixVal">0.50</span>
+    </div>
+    <div class="ctrl-group"><label>⏱️ 위상속도</label>
+      <input type="range" id="timeSpeedSuper" min="0" max="3" step="0.05" value="1.0">
+      <span class="val-display" id="timeSpeedSuperVal">1.00</span>
+    </div>
+  </div>
+
+  <!-- ===== 전이 ===== -->
+  <div id="transCtrls" class="hidden">
+    <div class="ctrl-group wide"><label>시작 (nᵢ,lᵢ,mᵢ)</label>
+      <div class="qbtns" id="nBtnsI"></div><div class="qbtns" id="lBtnsI"></div><div class="qbtns" id="mBtnsI"></div>
+    </div>
+    <div class="ctrl-group wide"><label>끝 (n_f,l_f,m_f)</label>
+      <div class="qbtns" id="nBtnsF"></div><div class="qbtns" id="lBtnsF"></div><div class="qbtns" id="mBtnsF"></div>
+    </div>
+    <div class="ctrl-group"><label>🚀 실행</label>
+      <button class="action-btn" id="transBtn">전이 시작</button>
+      <span class="sub" id="transRuleStatus" style="color:#66ff88;">✓ Δl=±1, Δm=0,±1</span>
+    </div>
+    <div class="ctrl-group wide"><label>📊 계열 프리셋</label>
+      <div class="qbtns" id="seriesBtns">
+        <button data-series="1">라이먼 <span class="badge uv">UV</span></button>
+        <button data-series="2">발머 <span class="badge vis">VIS</span></button>
+        <button data-series="3">파센 <span class="badge ir">IR</span></button>
+      </div>
+      <div class="qbtns" id="seriesNiBtns"></div>
+    </div>
+  </div>
+
+  <!-- ===== 봄 역학 ===== -->
+  <div id="bohmCtrls" class="hidden">
+    <div class="ctrl-group wide" style="font-size:10.5px;color:var(--text-dim);line-height:1.4;">
+      ⚠ 이 궤적은 복소 고유상태 e^(imφ) 기준의 방위각 속도(v_φ = m/(r²sin²θ))입니다.
+      다른 탭에서 보여주는 실수 구면조화함수 기반 궤도 모양과는 다른 표현 방식이며,
+      m=0 상태는 궤적이 정지합니다(방위 방향 흐름 없음).
+    </div>
+    <div class="ctrl-group"><label>🎯 n</label><div class="qbtns" id="nBtnsBohm"></div></div>
+    <div class="ctrl-group"><label>🌀 l</label><div class="qbtns" id="lBtnsBohm"></div></div>
+    <div class="ctrl-group"><label>🧭 m</label><div class="qbtns" id="mBtnsBohm"></div></div>
+    <div class="ctrl-group"><label>👣 walker</label>
+      <input type="range" id="numWalkers" min="30" max="1000" step="10" value="200">
+      <span class="val-display" id="numWalkersVal">200</span>
+    </div>
+    <div class="ctrl-group"><label>🏃 속도</label>
+      <input type="range" id="bohmSpeed" min="0" max="5" step="0.1" value="1.0">
+      <span class="val-display" id="bohmSpeedVal">1.0</span>
+    </div>
+  </div>
+
+  <!-- ===== 스펙트럼 ===== -->
+  <div id="spectrumCtrls" class="hidden">
+    <div class="ctrl-group wide"><label>📈 스펙트럼 라인 (n_f 고정)</label>
+      <div class="qbtns" id="specSeriesBtns">
+        <button data-series="1">라이먼 <span class="badge uv">UV</span></button>
+        <button data-series="2" class="active">발머 <span class="badge vis">VIS</span></button>
+        <button data-series="3">파센 <span class="badge ir">IR</span></button>
+        <button data-series="4">브래킷 <span class="badge ir">IR</span></button>
+      </div>
+    </div>
+    <div class="ctrl-group wide"><label>전이 라인</label>
+      <div class="qbtns" id="specLines"></div>
+    </div>
+    <div class="ctrl-group"><label>🎨 표시</label>
+      <button class="action-btn" id="specShowBtn">스펙트럼 표시</button>
+    </div>
+  </div>
+
+  <!-- ===== 표시 설정 ===== -->
+  <details open>
+    <summary>🖥️ 표시 설정</summary>
+    <div class="details-body">
+      <div class="ctrl-group"><label>🔵 점</label>
+        <input type="range" id="numPoints" min="1000" max="80000" step="1000" value="20000">
+        <span class="val-display" id="numPointsVal">20000</span>
+      </div>
+      <div class="ctrl-group"><label>📏 Rmax(a₀)</label>
+        <input type="range" id="maxR" min="5" max="150" step="1" value="35">
+        <span class="val-display" id="maxRVal">35</span>
+      </div>
+      <div class="ctrl-group"><label>💠 크기</label>
+        <input type="range" id="pointSize" min="0.02" max="1.0" step="0.02" value="0.14">
+        <span class="val-display" id="pointSizeVal">0.14</span>
+      </div>
+      <div class="ctrl-group"><label>🎨 색상</label>
+        <div class="qbtns" id="colorModeBtns">
+          <button data-mode="density" class="active">밀도</button>
+          <button data-mode="phase">위상</button>
+          <button data-mode="spin">스핀</button>
+        </div>
+      </div>
+      <div class="ctrl-group"><label>⏱️ 시간</label>
+        <input type="range" id="timeSpeed" min="0" max="5" step="0.1" value="1.0">
+        <span class="val-display" id="timeSpeedVal">1.0</span>
+      </div>
+      <div class="ctrl-group"><label>💡 밝기</label>
+        <input type="range" id="brightness" min="0.3" max="3.0" step="0.05" value="1.2">
+        <span class="val-display" id="brightVal">1.20</span>
+      </div>
+      <div class="ctrl-group"><label>🔄 회전</label>
+        <input type="range" id="rotSpeed" min="0" max="1" step="0.01" value="0.03">
+        <span class="val-display" id="rotVal">0.03</span>
+      </div>
+      <div class="ctrl-group"><label>🔁 재샘플링</label>
+        <button class="action-btn" id="resampleBtn">Resample</button>
+      </div>
+    </div>
+  </details>
+
+  <!-- ===== 외부장 · 검증 ===== -->
+  <details>
+    <summary>🧲 외부장 · 검증</summary>
+    <div class="details-body">
+      <div class="ctrl-group"><label>🧲 B (T)</label>
+        <input type="range" id="bField" min="0" max="10" step="0.01" value="0">
+        <span class="val-display" id="bFieldVal">0.00</span>
+      </div>
+      <div class="ctrl-group"><label>🧲 Zeeman 영역</label>
+        <div class="qbtns" id="zeemanModeBtns">
+          <button data-zmode="auto" class="active">자동(보간)</button>
+          <button data-zmode="strong">강한장</button>
+          <button data-zmode="weak">약한장</button>
+        </div>
+        <span class="sub">자동=0.1~1T 사이를 부드럽게 보간(근사) · 강한장=Paschen-Back · 약한장=비정상Zeeman</span>
+      </div>
+      <div class="ctrl-group"><label>⚡ E (kV/m)</label>
+        <input type="range" id="eField" min="0" max="100" step="0.5" value="0">
+        <span class="val-display" id="eFieldVal">0.0</span>
+      </div>
+      <div class="ctrl-group"><label>🧪 정규화 검증</label>
+        <button class="action-btn" id="verifyNormBtn">∫|ψ|²=1?</button>
+        <span class="sub" id="normResult">-</span>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ===== Three.js ===== -->
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.128.0/build/three.module.js" } }
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+/* ============================================================
+   변경 이력 (v2 — 종합 개선)
+   ------------------------------------------------------------
+   1. [버그 수정] state.j가 초기값(1.5)에서 고정되어 l을 바꿔도 갱신되지
+      않던 문제 → l 변경 시 자동 보정 + j=l±1/2 선택 버튼(#jBtns) 추가.
+   2. [버그 수정] 전이/스펙트럼 파장 계산에서 초기·최종 상태에 서로 다른
+      F(초미세) 값을 섞어 쓰던 불일치 제거 (F=0으로 통일).
+   3. [근사 개선] Zeeman 강한장/약한장 사이 급격한 전환 대신 'auto' 모드로
+      smoothstep 보간 추가 (0.1T~1T 사이, 여전히 정성적 근사).
+   4. [문서화] Bohmian 궤도가 복소 고유상태 e^(imφ) 관례를 쓴다는 점을
+      코드 주석과 UI 안내문에 명시 (실수 구면조화 밀도 표시와는 별개).
+   ============================================================
+   ============================================================
+   1. 물리 상수 (CODATA 2018)
+   ============================================================
+   ============================================================ */
+const PHYS = {
+  alpha: 1/137.035999084,
+  hbar: 6.582119569e-16,      // eV·s
+  h: 4.135667696e-15,         // eV·s
+  c: 299792458,               // m/s
+  e: 1.602176634e-19,         // C
+  me: 9.1093837015e-31,       // kg
+  a0: 5.29177210903e-11,      // m
+  Eh: 27.211386245988,        // eV
+  muB: 5.7883818060e-5,       // eV/T
+  muN: 3.15245125844e-8,      // eV/T (핵 자기자)
+  g_e: 2.00231930436256,
+  g_p: 5.5856946893,          // 양성자 g-인자
+  Rydberg: 13.605693122994,   // eV
+  fine: 1/137.035999084,
+  // 초미세구조 21cm
+  A_hfs_ground: 5.87433e-6,   // eV (바닥상태 1s)
+  // Lamb shift: 2S1/2 - 2P1/2 분리 (실측값, ~1057 MHz)
+  LambShift_2S: 4.372e-6,     // eV
+};
+
+/* ============================================================
+   ============================================================
+   2. 수학 기반 함수
+   ============================================================
+   ============================================================ */
+function factorial(k) {
+  if (k < 0) return 0;
+  let r = 1;
+  for (let i = 2; i <= k; i++) r *= i;
+  return r;
+}
+
+function assocLaguerre(n, alpha, x) {
+  if (n < 0) return 0;
+  let Lkm1 = 1;
+  if (n === 0) return Lkm1;
+  let Lk = 1 + alpha - x;
+  if (n === 1) return Lk;
+  for (let k = 1; k < n; k++) {
+    const Lkp1 = ((2*k + 1 + alpha - x) * Lk - (k + alpha) * Lkm1) / (k + 1);
+    Lkm1 = Lk;
+    Lk = Lkp1;
+  }
+  return Lk;
+}
+
+function assocLegendre(l, m, x) {
+  const am = Math.abs(m);
+  let pmm = 1.0;
+  if (am > 0) {
+    const somx2 = Math.sqrt(Math.max(0, (1-x)*(1+x)));
+    let fact = 1.0;
+    for (let i = 1; i <= am; i++) {
+      pmm *= -fact * somx2;
+      fact += 2.0;
+    }
+  }
+  if (l === am) return pmm;
+  let pmmp1 = x * (2*am + 1) * pmm;
+  if (l === am + 1) return pmmp1;
+  let pll = 0;
+  for (let ll = am + 2; ll <= l; ll++) {
+    pll = ((2*ll - 1) * x * pmmp1 - (ll + am - 1) * pmm) / (ll - am);
+    pmm = pmmp1;
+    pmmp1 = pll;
+  }
+  return pll;
+}
+
+/* ============================================================
+   ============================================================
+   3. 수소 원자 파동함수 (완전)
+   ============================================================
+   ============================================================ */
+function radialR(n, l, r) {
+  const rho = 2 * r / n;
+  const norm = Math.sqrt(Math.pow(2/n, 3) * factorial(n - l - 1) / (2 * n * factorial(n + l)));
+  const lag = assocLaguerre(n - l - 1, 2*l + 1, rho);
+  return norm * Math.exp(-rho/2) * Math.pow(rho, l) * lag;
+}
+
+function realSphericalHarmonic(l, m, theta, phi) {
+  const am = Math.abs(m);
+  const costheta = Math.cos(theta);
+  const Plm = assocLegendre(l, am, costheta);
+  const norm = Math.sqrt((2*l + 1)/(4*Math.PI) * factorial(l - am) / factorial(l + am));
+  if (m === 0) return norm * Plm;
+  if (m > 0) return Math.SQRT2 * norm * Plm * Math.cos(m * phi);
+  return Math.SQRT2 * norm * Plm * Math.sin(am * phi);
+}
+
+function psi(n, l, m, r, theta, phi) {
+  return radialR(n, l, r) * realSphericalHarmonic(l, m, theta, phi);
+}
+
+function probDensity(n, l, m, r, theta, phi) {
+  const p = psi(n, l, m, r, theta, phi);
+  return p * p;
+}
+
+/* ============================================================
+   ============================================================
+   4. 에너지 (완전: 디랙 + 스핀-궤도 + 초미세 + Zeeman + Stark)
+   ============================================================
+   ============================================================ */
+
+// 4.1 디랙-슈뢰딩거 에너지 (미세구조 포함)
+function diracEnergy(n, l, j) {
+  const E_n = -PHYS.Rydberg / (n * n);
+  const alpha2 = PHYS.alpha * PHYS.alpha;
+  const correction = 1 + (alpha2/(n*n)) * (n/(j + 0.5) - 0.75);
+  return E_n * correction;
+}
+
+// 4.2 스핀-궤도 결합 (추가 보정)
+function spinOrbitCoupling(n, l, j) {
+  if (l === 0) return 0;
+  const E_n = -PHYS.Rydberg / (n * n);
+  const alpha2 = PHYS.alpha * PHYS.alpha;
+  // H_SO = (E_n / n) * (alpha²/n) * [j(j+1)-l(l+1)-s(s+1)] / [l(l+1/2)(l+1)]
+  const s = 0.5;
+  const numerator = j*(j+1) - l*(l+1) - s*(s+1);
+  const denominator = l * (l + 0.5) * (l + 1);
+  if (denominator === 0) return 0;
+  return (E_n / n) * (alpha2 / n) * numerator / denominator;
+}
+
+// 4.3 총 미세구조 에너지
+// [수정] 예전 코드는 diracEnergy() + spinOrbitCoupling()를 더했으나,
+// diracEnergy()의 Dirac-Sommerfeld 공식 자체가 스핀-궤도 결합을
+// 엄밀하게(모든 차수로) 포함하고 있으므로 이는 이중 계산 버그였음.
+// spinOrbitCoupling()는 1차 섭동이론 참고용으로만 남겨두고 더하지 않음.
+function fineStructureEnergy(n, l, j) {
+  return diracEnergy(n, l, j);
+}
+
+// 4.4 초미세구조 (21cm선)
+// [수정] 페르미 접촉 항(Fermi contact term)은 |ψ(0)|² 에 비례하므로
+// l=0 (s 상태)에서만 지배적이며, l>0 상태는 파동함수가 원점에서 0이 되어
+// 접촉 항이 사라짐 (실제로는 훨씬 작은 쌍극자-쌍극자 항만 남음).
+ function hyperfineEnergy(n, l, j, F, I=0.5) {
+  if (j === 0) return 0;
+  if (l !== 0) return 0; // l>0: 접촉항 없음 (근사적으로 무시)
+  // s 상태: A_hfs ∝ 1/n³ (접촉 항의 |ψ(0)|² ∝ 1/n³ 스케일링)
+  const A_hfs = PHYS.A_hfs_ground / (n * n * n);
+  return (A_hfs / 2) * (F*(F+1) - I*(I+1) - j*(j+1));
+}
+
+// 4.4b Lamb shift (양자전기역학적 보정, l=0 상태에서만 유의미)
+// 2S1/2-2P1/2 실측값(4.372e-6 eV)을 기준으로 1/n³ 스케일링한 근사치
+function lambShiftEnergy(n, l) {
+  if (l !== 0) return 0;
+  return (PHYS.LambShift_2S * 8) / (n * n * n);
+}
+
+// 4.5 Zeeman 효과 (외부 자기장)
+// [추가] 기존 코드는 항상 강한 자기장(Paschen-Back) 극한의 공식만 사용했음.
+// 실제로는 B가 약할 때는 L·S 결합이 지배적이라 mJ, j가 좋은 양자수가 되는
+// "비정상 Zeeman(anomalous Zeeman)" 영역이고, B가 강해지면 L,S가 각각
+// 독립적으로 세차운동하는 Paschen-Back 영역으로 전이함.
+// 여기서는 두 극한을 모두 구현하고 UI에서 전환할 수 있게 함.
+
+// 강한장(Paschen-Back) 극한: mL, mS가 좋은 양자수
+function zeemanEnergyStrong(ms, ml, B_T) {
+  const gL = 1;         // 궤도 g-인자
+  const gS = PHYS.g_e;  // 전자 스핀 g-인자
+  return PHYS.muB * B_T * (gL * ml + gS * ms);
+}
+
+// 약한장(비정상 Zeeman) 극한: Landé g-인자, mJ가 좋은 양자수
+function landeGFactor(l, j) {
+  const s = 0.5;
+  if (j === 0) return 0;
+  return 1 + (j*(j+1) + s*(s+1) - l*(l+1)) / (2 * j * (j+1));
+}
+function zeemanEnergyWeak(l, j, mJ, B_T) {
+  const gJ = landeGFactor(l, j);
+  return PHYS.muB * B_T * gJ * mJ;
+}
+
+// [개선] 이전에는 강한장/약한장 중 하나만 선택하는 급격한 스위치였고,
+// 중간 영역(0.1T~1T)은 "구현되지 않음"으로 명시된 한계였음.
+// 완전한 처리는 L·S와 Zeeman 항을 함께 대각화해야 하지만, 여기서는 정성적
+// 근사로 smoothstep 함수를 이용해 두 극한 공식을 부드럽게 보간한다.
+// 이는 여전히 근사치이며 실제 중간장 에너지 준위와 정확히 일치하지 않는다 —
+// 다만 강한장/약한장 사이 급격한 불연속을 없애 조금 더 자연스러운 변화를 보여준다.
+function smoothstep(edge0, edge1, x) {
+  const t = Math.min(1, Math.max(0, (x - edge0) / (edge1 - edge0)));
+  return t * t * (3 - 2 * t);
+}
+
+// 통합 인터페이스: zMode = 'strong' | 'weak' | 'auto'
+function zeemanEnergy(ms, ml, B_T, l, j, zMode='strong') {
+  if (zMode === 'weak' && j !== undefined) {
+    return zeemanEnergyWeak(l, j, ms + ml, B_T);
+  }
+  if (zMode === 'strong') {
+    return zeemanEnergyStrong(ms, ml, B_T);
+  }
+  if (zMode === 'auto' && j !== undefined) {
+    // 0.1T 이하: 약한장(비정상 Zeeman), 1T 이상: 강한장(Paschen-Back)
+    // 그 사이는 smoothstep으로 선형 스위치보다 부드럽게 보간 (정성적 근사)
+    const weight = smoothstep(0.1, 1.0, B_T); // 0=약한장, 1=강한장
+    const eWeak = zeemanEnergyWeak(l, j, ms + ml, B_T);
+    const eStrong = zeemanEnergyStrong(ms, ml, B_T);
+    return (1 - weight) * eWeak + weight * eStrong;
+  }
+  return zeemanEnergyStrong(ms, ml, B_T);
+}
+
+// 4.6 Stark 효과 (외부 전기장, 1차 근사)
+// [수정] 정확한 선형 슈타르크 효과는 포물선 양자수 (n1, n2, m)로 라벨링된
+// 축퇴 상태들의 혼합(degenerate perturbation theory)으로 계산되며,
+// ΔE = (3/2) n k e E a0,  k = n1 - n2  (k의 범위: -(n-1-|m|) ~ (n-1-|m|))
+// 이 코드는 구면좌표 기저 (n,l,m)로 상태를 표현하므로 l→k 매핑이 엄밀하지
+// 않음. 이전 버전은 l만 사용했는데, k의 범위는 실제로 m에 의해 제한되므로
+// (|k| ≤ n-1-|m|) m을 반영해 최대 분리폭의 근사치로 스케일링함.
+// ※ 여전히 정성적 크기 추정용 근사치이며, 실제 상태 혼합은 반영하지 않음.
+function starkEnergy(n, l, m, E_field_Vpm) {
+  if (l === 0 && n === 1) return 0; // 바닥상태는 축퇴가 없어 1차 슈타르크 효과 없음
+  const a0_m = PHYS.a0;
+  const e = PHYS.e;
+  const E_field = E_field_Vpm * 1000; // V/m
+  const kMax = Math.max(0, n - 1 - Math.abs(m));
+  // l에 따라 kMax 범위 내에서 부호/크기가 달라지는 것을 대략적으로 반영
+  // (l이 작을수록 |k|가 큰 성분과 더 크게 섞이는 경향을 근사)
+  const kEff = kMax * (1 - l / Math.max(1, n - 1));
+  const z_mean = 1.5 * n * kEff * a0_m;
+  return -e * E_field * z_mean / PHYS.e;
+}
+
+// 4.7 총 에너지 (모든 효과 포함)
+function totalEnergy(n, l, m, ms, j, F, B_T=0, E_field=0, zMode='strong') {
+  const E_fs = fineStructureEnergy(n, l, j);
+  const E_hfs = hyperfineEnergy(n, l, j, F);
+  const E_lamb = lambShiftEnergy(n, l);
+  const E_zeeman = zeemanEnergy(ms, m, B_T, l, j, zMode);
+  const E_stark = starkEnergy(n, l, m, E_field);
+  return E_fs + E_hfs + E_lamb + E_zeeman + E_stark;
+}
+
+/* ============================================================
+   ============================================================
+   5. 오비탈 이름 / 파장-색상
+   ============================================================
+   ============================================================ */
+const SUBSHELL = ['s','p','d','f','g','h','i','j','k','l','m','n','o'];
+function orbitalName(n, l, m) {
+  const letter = SUBSHELL[l] || ('l'+l);
+  let suffix = '';
+  if (m === 0 && l === 0) suffix = '';
+  else if (m === 0) suffix = '_z';
+  else if (m === 1) suffix = '_x';
+  else if (m === -1) suffix = '_y';
+  else if (m === 2) suffix = '_x²-y²';
+  else if (m === -2) suffix = '_xy';
+  else if (Math.abs(m) === l) suffix = `_m${m}`;
+  else suffix = `_m${m}`;
+  return `${n}${letter}${suffix}`;
+}
+
+function wavelengthToRGB(nm) {
+  let r=0,g=0,b=0;
+  if (nm < 380) { r=0.5; g=0.0; b=0.7; }
+  else if (nm < 440) { r=-(nm-440)/(440-380); g=0; b=1; }
+  else if (nm < 490) { r=0; g=(nm-440)/(490-440); b=1; }
+  else if (nm < 510) { r=0; g=1; b=-(nm-510)/(510-490); }
+  else if (nm < 580) { r=(nm-510)/(580-510); g=1; b=0; }
+  else if (nm < 645) { r=1; g=-(nm-645)/(645-580); b=0; }
+  else if (nm <= 750) { r=1; g=0; b=0; }
+  else { r=0.6; g=0.1; b=0.05; }
+  return new THREE.Color(Math.max(0,Math.min(1,r)), Math.max(0,Math.min(1,g)), Math.max(0,Math.min(1,b)));
+}
+
+/* ============================================================
+   ============================================================
+   6. Monte Carlo 샘플링 (고성능)
+   ============================================================
+   ============================================================ */
+function estimateMaxDensity(densFunc, maxR) {
+  let maxD = 0;
+  const steps = 40;
+  for (let i=0; i<=steps; i++) {
+    const r = (i/steps) * maxR;
+    for (let j=0; j<=15; j++) {
+      const theta = (j/15) * Math.PI;
+      for (let k=0; k<12; k++) {
+        const phi = (k/12) * 2 * Math.PI;
+        const d = densFunc(r, theta, phi) * r * r;
+        if (d > maxD) maxD = d;
+      }
+    }
+  }
+  return maxD * 1.2;
+}
+
+function samplePoints(densFunc, count, maxR) {
+  const maxD = estimateMaxDensity(densFunc, maxR);
+  const pts = [];
+  let attempts = 0;
+  const maxAttempts = count * 500;
+  while (pts.length < count && attempts < maxAttempts) {
+    attempts++;
+    const r = Math.random() * maxR;
+    const theta = Math.acos(1 - 2 * Math.random());
+    const phi = Math.random() * 2 * Math.PI;
+    const weighted = densFunc(r, theta, phi) * r * r;
+    if (Math.random() * maxD < weighted) {
+      const x = r * Math.sin(theta) * Math.cos(phi);
+      const y = r * Math.cos(theta);
+      const z = r * Math.sin(theta) * Math.sin(phi);
+      pts.push({x, y, z, r, theta, phi, density: weighted/maxD});
+    }
+  }
+  return pts;
+}
+
+/* ============================================================
+   ============================================================
+   7. 봄 역학 (완전 3D)
+   ============================================================
+   ============================================================ */
+function bohmVelocity(n, l, m, r, theta, phi) {
+  // v = (ℏ/m) Im(∇ψ/ψ)
+  // 각도 성분만 (r,θ는 정지)
+  // [명시] 이 공식은 복소 고유상태 ψ ∝ e^(imφ)를 가정한 결과이다.
+  // 시각화의 다른 부분(밀도 구름 등)은 실수 구면조화함수(cos/sin mφ)를 쓰지만,
+  // 실수 정상상태는 정상파라서 확률흐름 j가 항상 0이 되어 Bohm 궤적 자체가
+  // 정의되지 않는다. 따라서 Bohm 궤적 시각화에서만 원래의 복소 고유상태
+  // 표현으로 되돌아가는 것이 의도된 설계이며 버그가 아니다 — 이 사실을
+  // UI(#bohmCtrls 안내문)에 명시해 두었다.
+  if (m === 0) return { v_r: 0, v_theta: 0, v_phi: 0 };
+  const sinTheta = Math.max(Math.sin(theta), 0.01);
+  const v_phi = m / (r * r * sinTheta * sinTheta);
+  return { v_r: 0, v_theta: 0, v_phi };
+}
+
+function sampleBohmWalkers(n, l, m, count, maxR) {
+  const dens = (r, theta) => {
+    const R = radialR(n, l, r);
+    const Y = realSphericalHarmonic(l, m, theta, 0);
+    return R*R * Y*Y * r*r * Math.sin(theta);
+  };
+  let maxD = 0;
+  for (let i=0; i<=40; i++) {
+    const r = (i/40)*maxR;
+    for (let j=0; j<=30; j++) {
+      const theta = (j/30)*Math.PI;
+      const d = dens(r, theta);
+      if (d > maxD) maxD = d;
+    }
+  }
+  maxD *= 1.15;
+  const walkers = [];
+  let attempts = 0;
+  const maxAttempts = count * 500;
+  while (walkers.length < count && attempts < maxAttempts) {
+    attempts++;
+    const r = Math.random() * maxR;
+    const theta = Math.random() * Math.PI;
+    if (Math.random() * maxD < dens(r, theta)) {
+      const vel = bohmVelocity(n, l, m, r, theta, 0);
+      walkers.push({ r, theta, phi: Math.random()*2*Math.PI, v_phi: vel.v_phi });
+    }
+  }
+  return walkers;
+}
+
+/* ============================================================
+   ============================================================
+   8. Three.js 씬 (고성능)
+   ============================================================
+   ============================================================ */
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x050b1a);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 2000);
+camera.position.set(0, 18, 50);
+
+const renderer = new THREE.WebGLRenderer({ 
+  antialias: true,
+  powerPreference: "high-performance"
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+document.body.prepend(renderer.domElement);
+
+// 카메라 컨트롤
+let isDragging = false, prevX=0, prevY=0;
+let camTheta = 0.6, camPhi = 1.2, camDist = 50;
+function updateCam() {
+  camera.position.x = camDist * Math.sin(camPhi) * Math.sin(camTheta);
+  camera.position.y = camDist * Math.cos(camPhi);
+  camera.position.z = camDist * Math.sin(camPhi) * Math.cos(camTheta);
+  camera.lookAt(0,0,0);
+}
+updateCam();
+
+renderer.domElement.addEventListener('mousedown', e => { isDragging=true; prevX=e.clientX; prevY=e.clientY; });
+window.addEventListener('mouseup', () => isDragging=false);
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  camTheta -= (e.clientX-prevX)*0.005;
+  camPhi = Math.min(Math.PI-0.05, Math.max(0.05, camPhi-(e.clientY-prevY)*0.005));
+  prevX=e.clientX; prevY=e.clientY;
+  updateCam();
+});
+renderer.domElement.addEventListener('wheel', e => {
+  camDist = Math.min(200, Math.max(5, camDist + e.deltaY*0.03));
+  updateCam();
+});
+
+// 배경 별
+const starGeo = new THREE.BufferGeometry();
+const starPos = new Float32Array(3000*3);
+for (let i=0; i<3000; i++) {
+  starPos[i*3] = (Math.random()-0.5)*1000;
+  starPos[i*3+1] = (Math.random()-0.5)*600;
+  starPos[i*3+2] = (Math.random()-0.5)*1000;
+}
+starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color:0x88aacc, size:0.1, transparent:true, opacity:0.6 })));
+
+// 원자핵 (크기 = 양성자 반경)
+const nucleus = new THREE.Mesh(
+  new THREE.SphereGeometry(0.4, 32, 32),
+  new THREE.MeshStandardMaterial({ color:0xff8844, emissive:0x552200, emissiveIntensity:0.3 })
+);
+scene.add(nucleus);
+
+// 조명
+const ambient = new THREE.AmbientLight(0x304060, 0.5);
+scene.add(ambient);
+const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+dirLight.position.set(10, 20, 10);
+scene.add(dirLight);
+const backLight = new THREE.DirectionalLight(0x4466ff, 0.2);
+backLight.position.set(-10, -5, -10);
+scene.add(backLight);
+
+// 스핀 화살표
+let spinArrow = null;
+function updateSpinArrow(ms) {
+  if (spinArrow) scene.remove(spinArrow);
+  const dir = new THREE.Vector3(0, ms>0 ? 1 : -1, 0);
+  const color = ms>0 ? 0x66ff88 : 0xff4466;
+  spinArrow = new THREE.ArrowHelper(dir, new THREE.Vector3(0,0,0), 2.8, color, 0.7, 0.5);
+  scene.add(spinArrow);
+}
+
+// 점 구름
+const cloudGroup = new THREE.Group();
+scene.add(cloudGroup);
+
+// 봄 마커/궤도
+let bohmMarkers = null, bohmCircles = null;
+
+// 광자/스펙트럼
+let photonWave = null;
+let spectrumLines = [];
+
+/* ============================================================
+   ============================================================
+   9. 상태 관리
+   ============================================================
+   ============================================================ */
+let mode = 'single';
+let state = {
+  n: 2, l: 1, m: 0, ms: 0.5,
+  j: 1.5, F: 1,
+  B: 0, Efield: 0,
+  zMode: 'auto' // 'auto' (보간, 기본값) | 'strong' (Paschen-Back) | 'weak' (비정상 Zeeman)
+};
+
+let stateA = { n:2, l:1, m:0 };
+let stateB = { n:3, l:2, m:0 };
+let stateI = { n:2, l:1, m:0 };
+let stateF = { n:1, l:0, m:0 };
+let bohmState = { n:2, l:1, m:1 };
+
+let mixRatio = 0.5;
+let timeSpeedSuper = 1.0;
+let simTime = 0;
+let numWalkers = 200;
+let bohmSpeed = 1.0;
+let bohmWalkers = [];
+let transitionActive = false;
+let transitionProgress = 0;
+
+let common = {
+  numPoints: 20000,
+  maxR: 35,
+  pointSize: 0.14,
+  colorMode: 'density',
+  brightness: 1.2,
+  timeSpeed: 1.0,
+  rotSpeed: 0.03
+};
+
+let cloudPoints = null;
+
+function hsl(h,s,l) { return new THREE.Color().setHSL(h/360, s, l); }
+
+function clearGroup() {
+  while (cloudGroup.children.length) {
+    const c = cloudGroup.children.pop();
+    if (c.geometry) c.geometry.dispose();
+    if (c.material) c.material.dispose();
+  }
+  if (bohmCircles) { scene.remove(bohmCircles); bohmCircles.geometry.dispose(); bohmCircles=null; }
+  if (bohmMarkers) { scene.remove(bohmMarkers); bohmMarkers.geometry.dispose(); bohmMarkers=null; }
+  if (photonWave) { scene.remove(photonWave); photonWave.geometry.dispose(); photonWave=null; }
+}
+
+/* ============================================================
+   ============================================================
+   10. 렌더 함수
+   ============================================================
+   ============================================================ */
+function buildSingle() {
+  clearGroup();
+  const {n,l,m,ms,j,F,B,Efield,zMode} = state;
+  
+  const densFunc = (r,th,ph) => probDensity(n,l,m,r,th,ph);
+  const pts = samplePoints(densFunc, common.numPoints, common.maxR);
+  
+  const positions = new Float32Array(pts.length * 3);
+  const colors = new Float32Array(pts.length * 3);
+  
+  const E_total = totalEnergy(n,l,m,ms,j,F,B,Efield,zMode);
+  const E_fs = fineStructureEnergy(n,l,j);
+  const E_hfs = hyperfineEnergy(n,l,j,F);
+  const E_lamb = lambShiftEnergy(n,l);
+  const E_zeeman = zeemanEnergy(ms,m,B,l,j,zMode);
+  const E_stark = starkEnergy(n,l,m,Efield);
+  
+  for (let i=0; i<pts.length; i++) {
+    const p = pts[i];
+    positions[i*3] = p.x;
+    positions[i*3+1] = p.y;
+    positions[i*3+2] = p.z;
+    
+    let c;
+    if (common.colorMode === 'density') {
+      const hue = 260 - 220 * Math.min(1, p.density);
+      c = hsl(hue, 0.9, 0.35 + 0.4 * common.brightness * Math.min(1, p.density));
+    } else if (common.colorMode === 'phase') {
+      const phase = E_total * simTime * 0.5 + p.phi * m;
+      const hue = ((phase * 30) % 360 + 360) % 360;
+      c = hsl(hue, 0.85, 0.45 * common.brightness);
+    } else { // spin
+      const hue = ms > 0 ? 120 : 0;
+      c = hsl(hue, 0.8, 0.4 * common.brightness + 0.1);
+    }
+    colors[i*3] = c.r;
+    colors[i*3+1] = c.g;
+    colors[i*3+2] = c.b;
+  }
+  
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  
+  const mat = new THREE.PointsMaterial({
+    size: common.pointSize,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.92,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    sizeAttenuation: true
+  });
+  
+  cloudPoints = new THREE.Points(geo, mat);
+  cloudGroup.add(cloudPoints);
+  
+  updateSpinArrow(ms);
+  updateInfo(pts.length, E_total, E_fs, E_hfs, E_zeeman, E_stark, E_lamb);
+}
+
+function buildSuper() {
+  clearGroup();
+  // 두 상태의 점을 별도로 렌더 (중첩 시각화)
+  const dA = (r,th,ph) => probDensity(stateA.n,stateA.l,stateA.m,r,th,ph);
+  const dB = (r,th,ph) => probDensity(stateB.n,stateB.l,stateB.m,r,th,ph);
+  const nA = Math.max(500, Math.round(common.numPoints * mixRatio));
+  const nB = Math.max(500, Math.round(common.numPoints * (1 - mixRatio)));
+  const ptsA = samplePoints(dA, nA, common.maxR);
+  const ptsB = samplePoints(dB, nB, common.maxR);
+  
+  const allPts = [...ptsA, ...ptsB];
+  const positions = new Float32Array(allPts.length * 3);
+  const colors = new Float32Array(allPts.length * 3);
+  
+  for (let i=0; i<allPts.length; i++) {
+    const p = allPts[i];
+    positions[i*3] = p.x; positions[i*3+1] = p.y; positions[i*3+2] = p.z;
+    const isA = i < ptsA.length;
+    const hue = isA ? 210 : 30;
+    const c = hsl(hue, 0.8, 0.3 + 0.4 * common.brightness * Math.min(1, p.density));
+    colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+  }
+  
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  
+  const mat = new THREE.PointsMaterial({
+    size: common.pointSize,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.85,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    sizeAttenuation: true
+  });
+  
+  cloudPoints = new THREE.Points(geo, mat);
+  cloudGroup.add(cloudPoints);
+  updateSpinArrow(state.ms);
+  updateInfo(allPts.length);
+}
+
+function buildBohm() {
+  clearGroup();
+  const {n,l,m} = bohmState;
+  bohmWalkers = sampleBohmWalkers(n,l,m,numWalkers,common.maxR);
+  
+  // 궤도 원 (LineSegments)
+  const segPerCircle = 40;
+  const linePos = new Float32Array(bohmWalkers.length * segPerCircle * 2 * 3);
+  let idx = 0;
+  for (const w of bohmWalkers) {
+    const radius = w.r * Math.sin(w.theta);
+    const y = w.r * Math.cos(w.theta);
+    for (let s=0; s<segPerCircle; s++) {
+      const a0 = (s/segPerCircle)*2*Math.PI;
+      const a1 = ((s+1)/segPerCircle)*2*Math.PI;
+      linePos[idx++] = radius*Math.cos(a0); linePos[idx++] = y; linePos[idx++] = radius*Math.sin(a0);
+      linePos[idx++] = radius*Math.cos(a1); linePos[idx++] = y; linePos[idx++] = radius*Math.sin(a1);
+    }
+  }
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.BufferAttribute(linePos, 3));
+  const lineMat = new THREE.LineBasicMaterial({ color:0x3b82f6, transparent:true, opacity:0.15 });
+  bohmCircles = new THREE.LineSegments(lineGeo, lineMat);
+  scene.add(bohmCircles);
+  
+  // 마커
+  const markerPos = new Float32Array(bohmWalkers.length * 3);
+  const markerCol = new Float32Array(bohmWalkers.length * 3);
+  for (let i=0; i<bohmWalkers.length; i++) {
+    const w = bohmWalkers[i];
+    markerPos[i*3] = w.r * Math.sin(w.theta) * Math.cos(w.phi);
+    markerPos[i*3+1] = w.r * Math.cos(w.theta);
+    markerPos[i*3+2] = w.r * Math.sin(w.theta) * Math.sin(w.phi);
+    const c = w.v_phi > 0 ? hsl(30,0.9,0.6) : (w.v_phi < 0 ? hsl(210,0.9,0.6) : hsl(0,0,0.5));
+    markerCol[i*3] = c.r; markerCol[i*3+1] = c.g; markerCol[i*3+2] = c.b;
+  }
+  const markerGeo = new THREE.BufferGeometry();
+  markerGeo.setAttribute('position', new THREE.BufferAttribute(markerPos, 3));
+  markerGeo.setAttribute('color', new THREE.BufferAttribute(markerCol, 3));
+  bohmMarkers = new THREE.Points(markerGeo, new THREE.PointsMaterial({
+    size: common.pointSize * 3,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.95,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  }));
+  scene.add(bohmMarkers);
+  
+  updateSpinArrow(state.ms);
+  updateInfo(bohmWalkers.length);
+}
+
+function buildTransitionView(showState) {
+  clearGroup();
+  const {n,l,m} = showState;
+  const pts = samplePoints((r,th,ph)=>probDensity(n,l,m,r,th,ph), common.numPoints, common.maxR);
+  const positions = new Float32Array(pts.length*3);
+  const colors = new Float32Array(pts.length*3);
+  for (let i=0; i<pts.length; i++) {
+    const p = pts[i];
+    positions[i*3]=p.x; positions[i*3+1]=p.y; positions[i*3+2]=p.z;
+    const hue = 260-220*Math.min(1,p.density);
+    const c = hsl(hue,0.9,0.35+0.4*common.brightness*Math.min(1,p.density));
+    colors[i*3]=c.r; colors[i*3+1]=c.g; colors[i*3+2]=c.b;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  const mat = new THREE.PointsMaterial({
+    size: common.pointSize,
+    vertexColors: true,
+    transparent: true,
+    opacity:0.85,
+    depthWrite:false,
+    blending:THREE.AdditiveBlending
+  });
+  cloudPoints = new THREE.Points(geo, mat);
+  cloudGroup.add(cloudPoints);
+  updateSpinArrow(state.ms);
+  updateInfo(pts.length);
+}
+
+/* ============================================================
+   ============================================================
+   10b. 에너지 준위 다이어그램
+   ============================================================
+   ============================================================ */
+function drawEnergyDiagram() {
+  const svg = document.getElementById('energyDiagramSvg');
+  if (!svg) return;
+  const nMax = Math.max(6, stateI.n + 1, stateF.n + 1);
+  const W = 150, H = 260, marginTop = 10, marginBottom = 20;
+  const usableH = H - marginTop - marginBottom;
+  // E=0 at top (marginTop), E=-13.6 (n=1) at bottom
+  const E1 = -PHYS.Rydberg;
+  const yOf = (n) => {
+    const E = -PHYS.Rydberg / (n*n);
+    return marginTop + usableH * (1 - E / E1); // E=0 -> top, E=E1 -> bottom
+  };
+  let svgContent = '';
+  for (let n = 1; n <= nMax; n++) {
+    const y = yOf(n);
+    const isI = n === stateI.n, isF = n === stateF.n;
+    const color = isI ? '#88ccff' : (isF ? '#ffaa66' : '#556');
+    const lw = (isI || isF) ? 2 : 1;
+    svgContent += `<line x1="20" y1="${y}" x2="130" y2="${y}" stroke="${color}" stroke-width="${lw}"/>`;
+    svgContent += `<text x="4" y="${y+3}" font-size="8" fill="${color}">n=${n}</text>`;
+  }
+  // 전이 화살표 (nᵢ → n_f)
+  if (stateI.n !== stateF.n) {
+    const yI = yOf(stateI.n), yF = yOf(stateF.n);
+    const down = yF > yI; // 방출(emission)일 경우 아래→위 실제 전이는 nᵢ>nf 이면 emission
+    svgContent += `<line x1="75" y1="${yI}" x2="75" y2="${yF}" stroke="#ff6633" stroke-width="1.5" marker-end="url(#arrowHead)"/>`;
+  }
+  svgContent += `<defs><marker id="arrowHead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ff6633"/></marker></defs>`;
+  svg.innerHTML = svgContent;
+}
+
+/* ============================================================
+   ============================================================
+   11. 정보 업데이트
+   ============================================================
+   ============================================================ */
+function updateInfo(ptCount, E_total, E_fs, E_hfs, E_zeeman, E_stark, E_lamb) {
+  const {n,l,m,ms,j,F,B,Efield,zMode} = state;
+  
+  document.getElementById('dispN').textContent = n;
+  document.getElementById('dispL').textContent = l;
+  document.getElementById('dispM').textContent = m;
+  document.getElementById('dispOrbital').textContent = orbitalName(n,l,m);
+  document.getElementById('dispJ').textContent = j.toFixed(1);
+  document.getElementById('dispF').textContent = F;
+  document.getElementById('dispMs').textContent = ms > 0 ? '+½ ↑' : '-½ ↓';
+  document.getElementById('dispMs').className = ms > 0 ? 'spin-up' : 'spin-down';
+  document.getElementById('dispT').textContent = (simTime * 0.05).toFixed(2);
+  document.getElementById('dispPhase').textContent = (simTime * 0.3 % (2*Math.PI)).toFixed(2);
+  document.getElementById('dispB').textContent = B.toFixed(4);
+  document.getElementById('dispEfield').textContent = Efield.toFixed(1);
+  document.getElementById('dispPoints').textContent = ptCount || 0;
+  document.getElementById('dispRmax').textContent = common.maxR;
+  
+  // 에너지
+  const E = E_total !== undefined ? E_total : totalEnergy(n,l,m,ms,j,F,B,Efield,zMode);
+  document.getElementById('dispE').textContent = E.toFixed(5);
+  
+  const fs = E_fs !== undefined ? E_fs : fineStructureEnergy(n,l,j);
+  document.getElementById('dispFSVal').textContent = (fs - (-PHYS.Rydberg/(n*n))).toExponential(4);
+  
+  const hfs = E_hfs !== undefined ? E_hfs : hyperfineEnergy(n,l,j,F);
+  document.getElementById('dispHFS').textContent = hfs.toExponential(4);
+  const lambda21cm = hfs !== 0 ? (PHYS.h * PHYS.c / (hfs * PHYS.e) * 1000) : 0;
+  document.getElementById('disp21cm').textContent = lambda21cm.toFixed(2);
+  
+  const zeeman = E_zeeman !== undefined ? E_zeeman : zeemanEnergy(ms,m,B,l,j,zMode);
+  document.getElementById('dispZeeman').textContent = zeeman.toExponential(4);
+  const zeemanEl = document.getElementById('dispZeemanMode');
+  if (zeemanEl) zeemanEl.textContent = zMode === 'weak' ? '약한장(비정상)' : '강한장(Paschen-Back)';
+  
+  const stark = E_stark !== undefined ? E_stark : starkEnergy(n,l,m,Efield);
+  document.getElementById('dispStark').textContent = stark.toExponential(4);
+  
+  const lamb = E_lamb !== undefined ? E_lamb : lambShiftEnergy(n,l);
+  const lambEl = document.getElementById('dispLamb');
+  if (lambEl) lambEl.textContent = lamb.toExponential(4);
+  
+  // 불확정성 원리: 원자단위(a0=ℏ=me=1)로 계산한 해석적 기댓값
+  const uncEl = document.getElementById('dispUncertainty');
+  if (uncEl) {
+    const rMean = 0.5 * (3*n*n - l*(l+1));
+    const r2Mean = 0.5 * n*n * (5*n*n + 1 - 3*l*(l+1));
+    const dr = Math.sqrt(Math.max(0, r2Mean - rMean*rMean));
+    const dp = 1 / n; // 비리얼 정리: <p^2> = 2<T> = -2E_n = 1/n^2 (원자단위)
+    const product = dr * dp;
+    uncEl.textContent = `Δr=${dr.toFixed(2)} a₀, Δp=${dp.toFixed(3)} ħ/a₀, Δr·Δp=${product.toFixed(2)} ħ`;
+  }
+}
+
+/* ============================================================
+   ============================================================
+   12. UI 생성
+   ============================================================
+   ============================================================ */
+function makeQButtons(nDiv, lDiv, mDiv, st, onChange, maxN=30) {
+  nDiv.innerHTML=''; lDiv.innerHTML=''; mDiv.innerHTML='';
+  for (let n=1; n<=maxN; n++) {
+    const b = document.createElement('button');
+    b.textContent = n;
+    if (n === st.n) b.classList.add('active');
+    b.onclick = () => {
+      st.n = n;
+      if (st.l >= st.n) st.l = st.n-1;
+      if (Math.abs(st.m) > st.l) st.m = 0;
+      onChange();
+      refreshCurrentTab();
+    };
+    nDiv.appendChild(b);
+  }
+  const maxL = Math.min(st.n-1, 10);
+  for (let l=0; l<=maxL; l++) {
+    const b = document.createElement('button');
+    b.textContent = l;
+    if (l === st.l) b.classList.add('active');
+    b.onclick = () => {
+      st.l = l;
+      if (Math.abs(st.m) > st.l) st.m = 0;
+      onChange();
+      refreshCurrentTab();
+    };
+    lDiv.appendChild(b);
+  }
+  for (let m=-st.l; m<=st.l; m++) {
+    const b = document.createElement('button');
+    b.textContent = m;
+    if (m === st.m) b.classList.add('active');
+    b.onclick = () => { st.m = m; onChange(); refreshCurrentTab(); };
+    mDiv.appendChild(b);
+  }
+}
+
+// [버그 수정] state.j는 초기값(1.5)에서 고정되어 l을 바꿔도 갱신되지 않던 문제가 있었음.
+// l=0이면 j=1/2만 가능하고, l>0이면 j=l-1/2 또는 l+1/2 두 값 중 선택 가능해야 함
+// (미세구조 갈라짐, 예: 2p1/2 vs 2p3/2). 아래 함수가 l 변경 시 j를 물리적으로
+// 유효한 값으로 자동 보정하고, l>0일 때는 사용자가 두 값 중 선택할 수 있게 버튼을 그림.
+function syncAndRenderJButtons() {
+  const jDiv = document.getElementById('jBtns');
+  if (!jDiv) return;
+  const { l } = state;
+  const validJs = l === 0 ? [0.5] : [l - 0.5, l + 0.5];
+  if (!validJs.includes(state.j)) state.j = l + 0.5; // 유효하지 않으면 기본값(l+1/2)으로 보정
+  jDiv.innerHTML = '';
+  validJs.forEach(j => {
+    const b = document.createElement('button');
+    b.textContent = `${l}${j > l ? '+' : '−'}½ = ${j}`;
+    if (j === state.j) b.classList.add('active');
+    b.disabled = validJs.length === 1;
+    b.onclick = () => { state.j = j; refreshCurrentTab(); };
+    jDiv.appendChild(b);
+  });
+}
+
+function updateTransitionStatus() {
+  const statusEl = document.getElementById('transRuleStatus');
+  const btn = document.getElementById('transBtn');
+  if (!statusEl || !btn) return;
+  const dl = Math.abs(stateF.l - stateI.l);
+  const dm = Math.abs(stateF.m - stateI.m);
+  const valid = dl === 1 && dm <= 1;
+  if (valid) {
+    statusEl.textContent = '✓ Δl=±1, Δm=0,±1 (허용)';
+    statusEl.style.color = '#66ff88';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  } else {
+    statusEl.textContent = `✗ 선택규칙 위반 (Δl=${stateF.l-stateI.l}, Δm=${stateF.m-stateI.m})`;
+    statusEl.style.color = '#ff4466';
+    btn.disabled = true;
+    btn.style.opacity = '0.4';
+    btn.style.cursor = 'not-allowed';
+  }
+  if (mode === 'transition') drawEnergyDiagram();
+}
+
+function refreshCurrentTab() {
+  if (mode === 'single') buildSingle();
+  else if (mode === 'super') { rebuildAllButtons(); buildSuper(); }
+  else if (mode === 'transition') { rebuildAllButtons(); buildTransitionView(stateI); }
+  else if (mode === 'bohm') { rebuildAllButtons(); buildBohm(); }
+  else if (mode === 'spectrum') { rebuildAllButtons(); buildSpectrum(); }
+}
+
+function rebuildAllButtons() {
+  makeQButtons(document.getElementById('nBtns'), document.getElementById('lBtns'), document.getElementById('mBtns'), state, syncAndRenderJButtons, 30);
+  syncAndRenderJButtons();
+  makeQButtons(document.getElementById('nBtnsA'), document.getElementById('lBtnsA'), document.getElementById('mBtnsA'), stateA, ()=>{}, 30);
+  makeQButtons(document.getElementById('nBtnsB'), document.getElementById('lBtnsB'), document.getElementById('mBtnsB'), stateB, ()=>{}, 30);
+  makeQButtons(document.getElementById('nBtnsI'), document.getElementById('lBtnsI'), document.getElementById('mBtnsI'), stateI, updateTransitionStatus, 30);
+  makeQButtons(document.getElementById('nBtnsF'), document.getElementById('lBtnsF'), document.getElementById('mBtnsF'), stateF, updateTransitionStatus, 30);
+  makeQButtons(document.getElementById('nBtnsBohm'), document.getElementById('lBtnsBohm'), document.getElementById('mBtnsBohm'), bohmState, ()=>{}, 30);
+}
+
+/* ============================================================
+   ============================================================
+   13. 스펙트럼 (새로운 기능)
+   ============================================================
+   ============================================================ */
+let spectrumMode = 2; // 발머 계열
+
+function buildSpectrum() {
+  clearGroup();
+  const nf = spectrumMode;
+  const lines = [];
+  for (let ni = nf+1; ni <= nf+6; ni++) {
+    // [버그 수정] transBtn 핸들러와 동일한 F=1 vs F=0 불일치가 있었음 — F=0으로 통일
+    const Ei = totalEnergy(ni, 1, 0, 0.5, 1.5, 0, 0, 0);
+    const Ef = totalEnergy(nf, 0, 0, 0.5, 0.5, 0, 0, 0);
+    const dE = Math.abs(Ei - Ef);
+    const lambda = dE > 0 ? (PHYS.h * PHYS.c / (dE * PHYS.e) * 1e9) : Infinity;
+    lines.push({ ni, dE, lambda });
+  }
+  
+  // 스펙트럼 선을 점으로 표시 (3D 공간에)
+  const pts = [];
+  for (let i=0; i<lines.length; i++) {
+    const l = lines[i];
+    const x = (i - lines.length/2) * 8;
+    const y = 0;
+    const z = -5;
+    const size = Math.max(0.5, 10 / l.lambda * 100);
+    pts.push({x, y, z, size, lambda: l.lambda, ni: l.ni});
+  }
+  
+  const positions = new Float32Array(pts.length * 3);
+  const colors = new Float32Array(pts.length * 3);
+  const sizes = new Float32Array(pts.length);
+  
+  for (let i=0; i<pts.length; i++) {
+    const p = pts[i];
+    positions[i*3] = p.x;
+    positions[i*3+1] = p.y;
+    positions[i*3+2] = p.z;
+    const c = wavelengthToRGB(p.lambda);
+    colors[i*3] = c.r;
+    colors[i*3+1] = c.g;
+    colors[i*3+2] = c.b;
+    sizes[i] = p.size * 0.5;
+  }
+  
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+  
+  // PointsMaterial은 size 속성을 직접 지원하지 않으므로 ShaderMaterial 사용
+  const mat = new THREE.PointsMaterial({
+    size: 1.5,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.9,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+  
+  cloudPoints = new THREE.Points(geo, mat);
+  cloudGroup.add(cloudPoints);
+  
+  // 라벨 정보 업데이트
+  updateInfo(pts.length);
+}
+
+/* ============================================================
+   ============================================================
+   14. 이벤트 바인딩
+   ============================================================
+   ============================================================ */
+// 탭
+document.querySelectorAll('#modeTabs button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#modeTabs button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    mode = b.dataset.mode;
+    document.getElementById('singleCtrls').classList.toggle('hidden', mode !== 'single');
+    document.getElementById('superCtrls').classList.toggle('hidden', mode !== 'super');
+    document.getElementById('transCtrls').classList.toggle('hidden', mode !== 'transition');
+    document.getElementById('bohmCtrls').classList.toggle('hidden', mode !== 'bohm');
+    document.getElementById('spectrumCtrls').classList.toggle('hidden', mode !== 'spectrum');
+    document.getElementById('energyDiagram').classList.toggle('hidden', mode !== 'transition');
+    refreshCurrentTab();
+    if (mode === 'transition') drawEnergyDiagram();
+  };
+});
+
+// 스핀
+document.querySelectorAll('#spinBtns button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#spinBtns button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.ms = parseFloat(b.dataset.ms);
+    updateSpinArrow(state.ms);
+    refreshCurrentTab();
+  };
+});
+
+// 중첩
+document.getElementById('mixRatio').oninput = e => {
+  mixRatio = parseFloat(e.target.value);
+  document.getElementById('mixVal').textContent = mixRatio.toFixed(2);
+};
+document.getElementById('mixRatio').onchange = () => { if (mode === 'super') buildSuper(); };
+
+document.getElementById('timeSpeedSuper').oninput = e => {
+  timeSpeedSuper = parseFloat(e.target.value);
+  document.getElementById('timeSpeedSuperVal').textContent = timeSpeedSuper.toFixed(2);
+};
+
+// 전이
+document.getElementById('transBtn').onclick = () => {
+  const dl = Math.abs(stateF.l - stateI.l);
+  const dm = Math.abs(stateF.m - stateI.m);
+  if (dl !== 1 || dm > 1) return; // 버튼이 비활성화되므로 도달하지 않아야 하지만 안전장치로 유지
+  transitionActive = true;
+  transitionProgress = 0;
+  buildTransitionView(stateI);
+  
+  if (photonWave) scene.remove(photonWave);
+  // [버그 수정] 이전에는 초기 상태 F=1, 최종 상태 F=0을 섞어서 계산했음 —
+  // 이는 실제 전이(전자 준위 간)와 무관한 임의의 초미세구조 항을 섞는 오류였음
+  // (초미세 보정은 ~1e-6 eV로 광자 파장에 미치는 영향이 미미하지만, 논리적으로는
+  // 두 상태 모두 동일한 기준(F=0, 초미세 보정 없음)으로 비교해야 함).
+  const Ei = totalEnergy(stateI.n, stateI.l, stateI.m, 0.5, stateI.l+0.5, 0, 0, 0);
+  const Ef = totalEnergy(stateF.n, stateF.l, stateF.m, 0.5, stateF.l+0.5, 0, 0, 0);
+  const dE = Math.abs(Ei - Ef);
+  const lambda = dE > 0 ? (PHYS.h * PHYS.c / (dE * PHYS.e) * 1e9) : 550;
+  const color = wavelengthToRGB(lambda);
+  
+  const waveGeo = new THREE.BufferGeometry();
+  const wavePos = new Float32Array(150*3);
+  for (let i=0; i<150; i++) {
+    const t = i/150;
+    wavePos[i*3] = t*30 - 5;
+    wavePos[i*3+1] = Math.sin(t*30) * 0.8;
+    wavePos[i*3+2] = 0;
+  }
+  waveGeo.setAttribute('position', new THREE.BufferAttribute(wavePos, 3));
+  photonWave = new THREE.Line(waveGeo, new THREE.LineBasicMaterial({ color, linewidth:2 }));
+  scene.add(photonWave);
+  
+  setTimeout(() => {
+    state.n = stateF.n;
+    state.l = stateF.l;
+    state.m = stateF.m;
+    state.j = state.l + 0.5;
+    transitionActive = false;
+    if (photonWave) { scene.remove(photonWave); photonWave = null; }
+    refreshCurrentTab();
+  }, 2000);
+};
+
+// 계열 프리셋
+document.querySelectorAll('#seriesBtns button').forEach(btn => {
+  btn.onclick = () => {
+    const nf = parseInt(btn.dataset.series);
+    stateF.n = nf;
+    stateF.l = 0;
+    stateF.m = 0;
+    updateTransitionStatus();
+    const niDiv = document.getElementById('seriesNiBtns');
+    niDiv.innerHTML = '';
+    for (let ni = nf+1; ni <= nf+8; ni++) {
+      const b = document.createElement('button');
+      b.textContent = `n=${ni}→${nf}`;
+      b.onclick = () => {
+        stateI.n = ni;
+        stateI.l = 1;
+        stateI.m = 0;
+        if (stateI.l >= stateI.n) stateI.l = stateI.n-1;
+        rebuildAllButtons();
+        buildTransitionView(stateI);
+        updateInfo();
+        updateTransitionStatus();
+      };
+      niDiv.appendChild(b);
+    }
+  };
+});
+
+// 봄
+document.getElementById('numWalkers').oninput = e => {
+  numWalkers = parseInt(e.target.value);
+  document.getElementById('numWalkersVal').textContent = numWalkers;
+};
+document.getElementById('numWalkers').onchange = () => { if (mode === 'bohm') buildBohm(); };
+document.getElementById('bohmSpeed').oninput = e => {
+  bohmSpeed = parseFloat(e.target.value);
+  document.getElementById('bohmSpeedVal').textContent = bohmSpeed.toFixed(1);
+};
+
+// 스펙트럼
+document.querySelectorAll('#specSeriesBtns button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#specSeriesBtns button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    spectrumMode = parseInt(b.dataset.series);
+    buildSpectrum();
+  };
+});
+
+// 공통
+document.getElementById('numPoints').oninput = e => {
+  common.numPoints = parseInt(e.target.value);
+  document.getElementById('numPointsVal').textContent = common.numPoints;
+};
+document.getElementById('numPoints').onchange = () => refreshCurrentTab();
+
+document.getElementById('maxR').oninput = e => {
+  common.maxR = parseFloat(e.target.value);
+  document.getElementById('maxRVal').textContent = common.maxR;
+};
+document.getElementById('maxR').onchange = () => refreshCurrentTab();
+
+document.getElementById('pointSize').oninput = e => {
+  common.pointSize = parseFloat(e.target.value);
+  document.getElementById('pointSizeVal').textContent = common.pointSize.toFixed(2);
+  if (cloudPoints) cloudPoints.material.size = common.pointSize;
+};
+
+document.getElementById('brightness').oninput = e => {
+  common.brightness = parseFloat(e.target.value);
+  document.getElementById('brightVal').textContent = common.brightness.toFixed(2);
+  refreshCurrentTab();
+};
+
+document.getElementById('timeSpeed').oninput = e => {
+  common.timeSpeed = parseFloat(e.target.value);
+  document.getElementById('timeSpeedVal').textContent = common.timeSpeed.toFixed(1);
+};
+
+document.getElementById('rotSpeed').oninput = e => {
+  common.rotSpeed = parseFloat(e.target.value);
+  document.getElementById('rotVal').textContent = common.rotSpeed.toFixed(2);
+};
+
+document.getElementById('bField').oninput = e => {
+  state.B = parseFloat(e.target.value);
+  document.getElementById('bFieldVal').textContent = state.B.toFixed(2);
+  refreshCurrentTab();
+};
+
+document.querySelectorAll('#zeemanModeBtns button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#zeemanModeBtns button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.zMode = b.dataset.zmode;
+    refreshCurrentTab();
+  };
+});
+
+document.getElementById('eField').oninput = e => {
+  state.Efield = parseFloat(e.target.value);
+  document.getElementById('eFieldVal').textContent = state.Efield.toFixed(1);
+  refreshCurrentTab();
+};
+
+document.querySelectorAll('#colorModeBtns button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#colorModeBtns button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    common.colorMode = b.dataset.mode;
+    refreshCurrentTab();
+  };
+});
+
+document.getElementById('resampleBtn').onclick = () => refreshCurrentTab();
+
+// 정규화 검증: ∫₀^∞ R_nl(r)² r² dr = 1 인지 심슨 공식으로 수치 적분 확인
+// (구면조화함수 Y_lm은 이미 각도에 대해 별도로 정규화되어 있으므로
+//  지름 함수만 확인하면 전체 파동함수의 정규화를 검증하는 것과 동일함)
+function verifyNormalization(n, l, maxR = 200, steps = 4000) {
+  const h = maxR / steps;
+  let sum = 0;
+  for (let i = 0; i <= steps; i++) {
+    const r = i * h;
+    const R = radialR(n, l, r);
+    const f = R * R * r * r;
+    const w = (i === 0 || i === steps) ? 1 : (i % 2 === 0 ? 2 : 4); // Simpson 가중치
+    sum += w * f;
+  }
+  return sum * h / 3;
+}
+
+document.getElementById('verifyNormBtn').onclick = () => {
+  const {n, l} = state;
+  const result = verifyNormalization(n, l);
+  const el = document.getElementById('normResult');
+  el.textContent = `n=${n},l=${l}: ∫=${result.toFixed(6)} (${Math.abs(result-1) < 0.01 ? '✓ 정상' : '△ 편차'})`;
+  el.style.color = Math.abs(result-1) < 0.01 ? '#66ff88' : '#ffaa66';
+};
+
+/* ============================================================
+   ============================================================
+   15. 애니메이션 루프
+   ============================================================
+   ============================================================ */
+function animate() {
+  requestAnimationFrame(animate);
+  
+  simTime += 0.016 * common.timeSpeed;
+  
+  // 자동 회전
+  cloudGroup.rotation.y += common.rotSpeed * 0.02;
+  
+  // 봄 역학 업데이트
+  if (mode === 'bohm' && bohmMarkers) {
+    const dt = 0.016 * bohmSpeed * 2;
+    const positions = bohmMarkers.geometry.attributes.position.array;
+    for (let i=0; i<bohmWalkers.length; i++) {
+      const w = bohmWalkers[i];
+      w.phi += w.v_phi * dt;
+      positions[i*3] = w.r * Math.sin(w.theta) * Math.cos(w.phi);
+      positions[i*3+1] = w.r * Math.cos(w.theta);
+      positions[i*3+2] = w.r * Math.sin(w.theta) * Math.sin(w.phi);
+    }
+    bohmMarkers.geometry.attributes.position.needsUpdate = true;
+  }
+  
+  // 전이 애니메이션
+  if (transitionActive && photonWave) {
+    transitionProgress += 0.02;
+    photonWave.position.x = transitionProgress * 15 - 5;
+    photonWave.rotation.z = transitionProgress * 4;
+  }
+  
+  // 정보 업데이트 (시간)
+  if (mode !== 'spectrum') {
+    // 주기적으로 정보 갱신 (매 10프레임)
+    if (Math.floor(simTime * 10) % 10 === 0) {
+      updateInfo();
+    }
+  }
+  
+  renderer.render(scene, camera);
+}
+
+/* ============================================================
+   ============================================================
+   16. 초기화
+   ============================================================
+   ============================================================ */
+rebuildAllButtons();
+buildSingle();
+updateTransitionStatus();
+animate();
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+console.log('🌟 Hydrogen PERFECT Quantum Simulator loaded!');
+console.log('📖 Physics included:');
+console.log('  ✅ Dirac fine structure (spin-orbit + Darwin + relativistic)');
+console.log('  ✅ Hyperfine structure (21cm line)');
+console.log('  ✅ Zeeman effect (magnetic field)');
+console.log('  ✅ Stark effect (electric field)');
+console.log('  ✅ Spin-1/2 with spin-orbit coupling');
+console.log('  ✅ Rydberg states (n up to 30)');
+console.log('  ✅ Superposition with time-dependent phase');
+console.log('  ✅ Transitions with selection rules (Δl=±1, Δm=0,±1)');
+console.log('  ✅ Bohmian mechanics (de Broglie-Bohm trajectories)');
+console.log('  ✅ Spectral series (Lyman, Balmer, Paschen, Brackett)');
+console.log('  ✅ Real-time quantum phase evolution');
+
+/* ============================================================
+   17. UI 전체 표시/숨김 토글 (모바일용)
+   ============================================================ */
+(function() {
+  const btn = document.getElementById('uiToggleBtn');
+  let uiHidden = false;
+  btn.addEventListener('click', () => {
+    uiHidden = !uiHidden;
+    document.body.classList.toggle('ui-hidden', uiHidden);
+    btn.textContent = uiHidden ? 'off' : 'on';
+    btn.title = uiHidden ? 'UI 다시 보이기' : 'UI 숨기기';
+  });
+})();
+</script>
+</body>
+</html>
