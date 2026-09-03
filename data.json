@@ -1,124 +1,173 @@
 {
   "globalNews": [
     {
+      "title": "Trump hints US would not back UK over Falkland Islands due to lack of Iran war support",
+      "link": "https://www.bbc.co.uk/news/articles/c1kx4m70l4yo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 03 Sep 2026 16:16:49 GMT",
+      "desc": "The US president says the UK was not \"there to help me\" in his ongoing war with Iran."
+    },
+    {
+      "title": "US investigating if missile hit Iran wedding, Vance says",
+      "link": "https://www.bbc.co.uk/news/articles/cy4zvk3z2k1o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 03 Sep 2026 22:19:59 GMT",
+      "desc": "The Iranian Red Crescent Society (IRCS) said shrapnel from a missile hit the ceremony and killed four people on Tuesday."
+    },
+    {
       "title": "UN warns of 'supersized' El Niño as countries prepare for impact",
       "link": "https://www.bbc.co.uk/news/articles/c17jqp0xzpzo?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 03 Sep 2026 06:01:54 GMT",
       "desc": "The WMO has warned that the natural weather phenomenon could bring disruption to global economies."
     },
     {
-      "title": "Toxic wildfire haze spreads across South East Asia as 'super' El Niño intensifies",
-      "link": "https://www.bbc.co.uk/news/articles/clyqw44w142o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 03 Sep 2026 11:35:52 GMT",
-      "desc": "Millions of people have been exposed to the smog, with more than 12,000 children suffering respiratory issues."
+      "title": "Transplanted pig kidney works in US man's body for record 271 days",
+      "link": "https://www.bbc.co.uk/news/articles/c305qn2jeggo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 03 Sep 2026 22:31:23 GMT",
+      "desc": "A man has lived for a record nine months with a transplanted pig kidney while waiting for a human transplant."
     },
     {
       "title": "Feminist activist and journalist Gloria Steinem dies, aged 92",
       "link": "https://www.bbc.co.uk/news/articles/clyeq3ngwe4o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 03 Sep 2026 13:52:18 GMT",
+      "date": "Thu, 03 Sep 2026 18:04:34 GMT",
       "desc": "Her foundation said she \"passed away peacefully\" at her home in New York City, \"surrounded by many who loved her\"."
-    },
-    {
-      "title": "Channel smuggling gangs resort to 'mega-dinghies' as crackdown limits small boat supply",
-      "link": "https://www.bbc.co.uk/news/articles/ce3rn93de9eo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 03 Sep 2026 05:00:04 GMT",
-      "desc": "Once-rival criminal groups are being forced to work together because of a shortage of small boats, a BBC investigation has found."
-    },
-    {
-      "title": "Palestinian teens killed during settler attack on West Bank village, officials say",
-      "link": "https://www.bbc.co.uk/news/articles/cj6482r6yl4o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 03 Sep 2026 15:05:57 GMT",
-      "desc": "Al-Mughayyir's council says they were trying to stop settlers stealing sheep, but the Israeli military says they threw stones at its troops."
     }
   ],
-  "koreaNews": [],
+  "koreaNews": [
+    {
+      "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
+      "date": "Fri, 21 Aug 2026 07:00:00 GMT",
+      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "South Korea's Semiconductor Surge Risks Economic Imbalance - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZ2JzXzJVa2psTVBDTWdjM1JHU0xIVWNMRjJHQ2ZXcUFlamUwcURKS2pPczN1WEk3UFhXM0hRdFc4ZlpmbWdNemVyTm43bUl3OXUyX3FXLTUzb1czR1hSNzd5cWRyZW9uYVpBZlFjVE55bE5KcFM4cms0Wks5MHltb2taVTYzNmlxXzR2QzVn?oc=5",
+      "date": "Thu, 03 Sep 2026 22:13:15 GMT",
+      "desc": "South Korea's Semiconductor Surge Risks Economic Imbalance&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "South Korea unveils record budget increase to cash in on AI boom - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPNi1FMXhLOFBqXzRScHk2UXdPSG5KdkR3VEhQOUlVTW1YQWxhQWVOYU1rX2pBSkp2UzAtNnJGRGRoZEh0TTNMYmJaaUNLWUY1aVA1cFBBOHVCYzhMUzkyNVVhcXh2TUtDalM4MGVHak1FamZMbkFYaWlibGRiSEpsVzJ5TkE?oc=5",
+      "date": "Tue, 01 Sep 2026 05:33:26 GMT",
+      "desc": "South Korea unveils record budget increase to cash in on AI boom&nbsp;&nbsp;Financial Times"
+    },
+    {
+      "title": "South Korea's semiconductor exports just tripled year-over-year. Is it too much of a good thing? - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOMGt1RUZabzhVeWNyQWp6WVgtcENBVTJacHBaSlBDLUlKQjlLZ3YyQjNwTGsxRzFsLUdtQkdfQzVmV1QyNDBOQnQ0N3h2U0JBRlNueXVDU1A3S1JxSDdsbUZaUlV1MlVnT3pESUdtN3JQaHVFbndVR2RsV1lyNFJGcXRWeFl0Z1loN2VPS1JvN2XSAZYBQVVfeXFMTkdUUVEzWlRZcjZ4d1F2bnZVYmtGaUxaeGx4MzVneGxvQkhjcDBueEh0Tl82eTNfUTcyTHd4ZG51ejVtZ0JMNHdQUU1lbEd3SUFpa2IwbFptLTNabWE4ZjlPU3FlZUViXzdEQVNDWEJNVGozcEhMQjEzN0VtbVdBbUpQMjFUZk9RNXhKaE5pWXFqdUZPMVhB?oc=5",
+      "date": "Thu, 03 Sep 2026 01:11:00 GMT",
+      "desc": "South Korea's semiconductor exports just tripled year-over-year. Is it too much of a good thing?&nbsp;&nbsp;CNBC"
+    },
+    {
+      "title": "South Korea’s Exports Extend Chip-Led Growth in August - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNWjAwN1JYMTBCdl9lSTN6TGd0bG5VWG9xNzNuSnd0MFRaS254M3JjblQ0RG5tRFZreC0wLVRJYmRjLUNyU3ZYSnFjQmNwN18tLTY3Ym9CRTN4UlNJUE1uQ19FQ0xHaXI5bW1ZVExUYmVILXk4SkN0Y0NBSWt6b2MySFRwQ0hObGhwRUlDWFF5eFYtOHh4THd2S1JaVnc?oc=5",
+      "date": "Tue, 01 Sep 2026 01:35:00 GMT",
+      "desc": "South Korea’s Exports Extend Chip-Led Growth in August&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "Micron, Samsung, SK Hynix Suffer Drop In DRAM Market Share As China’s CXMT Pulls Ahead - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQUGt2OVJsb2NrNHZ3Y1FSUldUa1VhRlNrMWNCQ0NEcllXbkRweElsZkt2bmQyRE9qWWcwZ0YwX05kOThTMk1URVFVTGtGYlJIUUdRVWhRMVRPSlZNR1dfTmVxSlBPNTBqUUdwUHgwZ1VuRkpiczJ3Z0h6dTNpR0tvcmV6aXRzcUZtcUtkYV9zUzdTR2hydE1UWWdtUQ?oc=5",
+      "date": "Thu, 03 Sep 2026 07:59:01 GMT",
+      "desc": "Micron, Samsung, SK Hynix Suffer Drop In DRAM Market Share As China’s CXMT Pulls Ahead&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
+      "title": "Kepco Seeks Billions from Samsung, SK Hynix to Finance Grid - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQV1ZhXzVFOXEyd0ZrSVhfOFl6dDh0SU9QY2RtemhqWTJDOHdZREw2WUxyOFpBQUhTMGRTY3d2STgxdnZlb0UtU21TbW91eHBGWWFWUm5PbmVDWnE4WU0yRU1MR1NDZm51N0IyaDU0bzV1bmR6ZTlNN2VPM2dRWlpWa0hUaTh5LTZLN2VTLUhESEpCNEZNdmh2RmlRX1JLX3NlVnVTMVdaa3p2THNZU0E?oc=5",
+      "date": "Thu, 03 Sep 2026 06:03:00 GMT",
+      "desc": "Kepco Seeks Billions from Samsung, SK Hynix to Finance Grid&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "Samsung and SK Hynix Asked to Prepay $18B in Power Bills to Fund Korea’s Chip Grid - Tech Times",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNVE5BOFh2ZWZPNHFFTXBITVF2b3diRFBmS3hBQ3N0SVpGU0o1RDNCbDNHdnpVNmVJSVpEWjdNaHgtektKWnJDc0hRV2ZBLW9RRjREZ2hzUlE4T1o0YTBmNFBETjRiTmNERXIwV0ZLeEYzR0Fvc3VFZ1ZWN2twRldWeEF1QVlBSm9tblJmMk5yVlVncHA2LVAxS0x3WGtzM19IeldYWVJhSW5WZzVXUW5VNnBubFlyZl9ER3BsR0IwTQ?oc=5",
+      "date": "Thu, 03 Sep 2026 20:48:51 GMT",
+      "desc": "Samsung and SK Hynix Asked to Prepay $18B in Power Bills to Fund Korea’s Chip Grid&nbsp;&nbsp;Tech Times"
+    }
+  ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 227.2,
-      "change": 9.76,
-      "pct": 4.49,
+      "price": 228.45,
+      "change": 11.01,
+      "pct": 5.06,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 414.61,
-      "change": 0.61,
-      "pct": 0.15,
+      "price": 417.01,
+      "change": 3.01,
+      "pct": 0.73,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 457.55,
-      "change": -2.06,
-      "pct": -0.45,
+      "price": 456.16,
+      "change": -3.45,
+      "pct": -0.75,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 91.12,
-      "change": 2.15,
-      "pct": 2.42,
+      "price": 91.67,
+      "change": 2.7,
+      "pct": 3.03,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 169.09,
-      "change": 2.48,
-      "pct": 1.49,
+      "price": 168.57,
+      "change": 1.96,
+      "pct": 1.18,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 240.49,
-      "change": 5.67,
-      "pct": 2.41,
+      "price": 242.59,
+      "change": 7.77,
+      "pct": 3.31,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 342.08,
-      "change": 7.06,
-      "pct": 2.11,
+      "price": 342.48,
+      "change": 7.46,
+      "pct": 2.23,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 327.56,
-      "change": 2.43,
-      "pct": 0.75,
+      "price": 328.21,
+      "change": 3.08,
+      "pct": 0.95,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 510.53,
-      "change": 9.51,
-      "pct": 1.9,
+      "price": 510.12,
+      "change": 9.1,
+      "pct": 1.82,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7738.2,
-      "change": 106.73,
-      "pct": 1.4,
+      "price": 7747.71,
+      "change": 116.24,
+      "pct": 1.52,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26542.9,
-      "change": 443.13,
-      "pct": 1.7,
+      "price": 26584.06,
+      "change": 484.29,
+      "pct": 1.86,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -174,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1355.39,
-      "change": -17.47,
-      "pct": -1.27,
+      "price": 1356.32,
+      "change": -2.07,
+      "pct": -0.15,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-03 17:22 UTC"
+  "updatedAt": "2026-09-03 23:44 UTC"
 }
