@@ -1,0 +1,904 @@
+ <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coin Flips + Random Walk — Feynman</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card: #14141e;
+    --text: #e8e6f0;
+    --text2: #8a88a0;
+    --border: #2a2a3a;
+    --accent: #ff6b4a;
+    --accent2: #3a3a4a;
+    --curve: #7c6df0;
+    --grid: #1a1a2a;
+    --glow: rgba(255, 107, 74, 0.15);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 20px 12px;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 600; margin: 0 0 2px; letter-spacing: -0.3px; }
+  .sub { color: var(--text2); font-size: 13px; margin: 0 0 20px; }
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .row:last-child { margin-bottom: 0; }
+  label { width: 130px; font-size: 12px; color: var(--text2); flex-shrink: 0; }
+  input[type=range] { flex: 1; min-width: 100px; accent-color: var(--accent); background: var(--border); height: 4px; border-radius: 2px; }
+  .val { width: 80px; text-align: right; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+  .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+  button {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  button:hover { background: var(--border); }
+  button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  button.primary:hover { filter: brightness(1.1); box-shadow: 0 0 20px var(--glow); }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .stat .label { font-size: 10px; color: var(--text2); text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat .value { font-size: 18px; font-weight: 600; margin-top: 2px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 14px; margin-bottom: 14px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1.15fr; gap: 14px; margin-bottom: 14px; }
+  @media (max-width: 900px) { .three-col { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+  @media (max-width: 550px) { .three-col { grid-template-columns: 1fr; } }
+  canvas { width: 100%; display: block; image-rendering: pixelated; }
+  #gridCanvas { height: 200px; }
+  #chart { height: 200px; }
+  #spagCanvas { height: 220px; }
+  #pileCanvas { height: 220px; }
+  #fluctCanvas { height: 210px; }
+  .legend {
+    display: flex;
+    gap: 18px;
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+  .line { display: inline-block; width: 16px; height: 2px; margin-right: 4px; vertical-align: middle; }
+  .panel-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .progress-wrap { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: 12px; }
+  .progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width .05s linear; }
+  .badge {
+    font-size: 10px;
+    background: var(--border);
+    padding: 2px 10px;
+    border-radius: 12px;
+    color: var(--text2);
+  }
+  .walk-info {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text2);
+    flex-wrap: wrap;
+  }
+  .walk-info b { color: var(--text); }
+  .hint {
+    font-size: 11px;
+    color: var(--text2);
+    background: var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎲 Coin Flips + Random Walk</h1>
+  <p class="sub">"A grid is just one random walk" — checking Feynman's insight in real time</p>
+
+  <div class="panel">
+    <div class="row">
+      <label for="coinSlider">Grid size (k×k)</label>
+      <input type="range" id="coinSlider" min="2" max="28" value="14" step="1">
+      <span class="val" id="coinVal">14×14</span>
+    </div>
+    <div class="row">
+      <label for="probSlider">P(heads) — p</label>
+      <input type="range" id="probSlider" min="5" max="95" value="50" step="1">
+      <span class="val" id="probVal">0.50</span>
+    </div>
+    <div class="row">
+      <label for="sampleSlider">Number of trials</label>
+      <input type="range" id="sampleSlider" min="0" max="60" value="30" step="1">
+      <span class="val" id="sampleVal">1,000</span>
+    </div>
+    <div class="row">
+      <label>Run</label>
+      <div class="btns">
+        <button onclick="runFromSlider()" class="primary" id="runBtn">▶ Run</button>
+        <button onclick="resetSim()" id="resetBtn">⟳ Reset</button>
+        <span class="badge" id="statusBadge">Idle</span>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat"><div class="label">Trials</div><div class="value" id="statTrials">0</div></div>
+    <div class="stat"><div class="label">Theoretical mean (np)</div><div class="value" id="statMeanTheo">—</div></div>
+    <div class="stat"><div class="label">Absolute SD (never shrinks)</div><div class="value" id="statSdTheo">—</div></div>
+    <div class="stat"><div class="label">Relative SD σ/n (shrinks as n↑)</div><div class="value" id="statSdRel">—</div></div>
+    <div class="stat"><div class="label">Observed mean</div><div class="value" id="statMeanObs">—</div></div>
+    <div class="stat"><div class="label">Observed SD</div><div class="value" id="statSdObs">—</div></div>
+    <div class="stat"><div class="label">Last trial's walk position</div><div class="value" id="walkPosDisplay">0</div></div>
+  </div>
+
+  <!-- Grid + Distribution -->
+  <div class="two-col">
+    <div class="panel">
+      <p class="panel-title">⬛ Coin grid (this trial)</p>
+      <canvas id="gridCanvas"></canvas>
+      <div class="legend">
+        <span><span class="dot" style="background:var(--accent)"></span>Heads (+1)</span>
+        <span><span class="dot" style="background:var(--accent2)"></span>Tails (-1)</span>
+        <span style="color:var(--text2); font-size:10px;">→ Read in time order, this is a walk's path</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">📊 Distribution of head counts</p>
+      <canvas id="chart"></canvas>
+      <div class="legend">
+        <span><span class="dot" style="background:var(--accent)"></span>Actual trial results</span>
+        <span><span class="line" style="background:var(--curve)"></span>Normal approximation (accurate only for large n)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spaghetti accumulation + pile-up -->
+  <div class="two-col">
+    <div class="panel">
+      <p class="panel-title">🍝 Accumulated random walks (last <span id="spagCountLabel">0</span> trials)</p>
+      <canvas id="spagCanvas"></canvas>
+      <div class="walk-info">
+        <span>Last trial's position: <b id="walkFinalPos">0</b></span>
+        <span>Theoretical drift (n(2p−1)): <b id="walkDriftDisplay">0</b></span>
+        <span>Walk SD (2√(np(1−p))): <b id="walkSqrtN">0</b></span>
+        <span>Theoretical range (±2SD): <b id="walkRange">0</b></span>
+      </div>
+      <div class="legend">
+        <span><span class="line" style="background:var(--curve); opacity:0.6"></span>Theoretical drift line + √k-widening envelope</span>
+        <span style="color:var(--text2); font-size:10px;">Each line = one trial (n steps); colors cycle per trial</span>
+      </div>
+      <div class="hint">💡 Every individual path is different, but the dashed envelope always follows the same √k rule. If p≠0.5, the envelope's center tilts (drift).</div>
+    </div>
+
+    <div class="panel">
+      <p class="panel-title">🧱 Final-position pile-up — stacking on the other side</p>
+      <canvas id="pileCanvas"></canvas>
+      <div class="legend">
+        <span style="color:var(--text2); font-size:10px;">Each trial's final position adds one block (Galton-board style)</span>
+      </div>
+      <div class="hint" id="pileUnitHint">💡 1 block = 1 trial</div>
+    </div>
+  </div>
+
+  <!-- Persistence of fluctuation -->
+  <div class="panel">
+    <p class="panel-title">📉 Fluctuation never disappears — Feynman's key point</p>
+    <canvas id="fluctCanvas"></canvas>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--accent)"></span>Individual-trial deviation (never shrinks, stays scattered within ±σ)</span>
+      <span><span class="line" style="background:var(--curve)"></span>Error of the running average (converges to 0 as trials pile up, ±σ/√t)</span>
+    </div>
+    <div class="hint">💡 The histogram looking like a perfect bell curve is the "error of the running average" shrinking — not the "randomness of each individual trial" shrinking. The dots in the graph above stay spread across the same width (±σ) no matter how many trials pile up. This is Feynman's key point: order does not appear because disorder disappears — it only looks smaller by comparison.</div>
+  </div>
+</div>
+
+<script>
+// ===== State =====
+let side = 14, n = side * side, p = 0.5;
+let counts = {};
+let trialCount = 0;
+let sumX = 0, sumX2 = 0;
+let lastFlips = new Uint8Array(n);
+let animating = false;
+
+// Last trial's walk (for the grid panel)
+let walkPath = [0];
+let walkFinal = 0;
+
+// Spaghetti accumulation + pile-up
+let walkPathsAccum = []; // { path:number[], hue:number }
+const MAX_SPAG = 150;
+let globalTrialIndex = 0;
+
+// Persistence-of-fluctuation data
+let devPoints = [];  // { t, dev } individual-trial deviation (sample)
+let meanTrack = [];  // { t, meanObs } running average over time
+
+// ===== DOM =====
+const coinSlider = document.getElementById('coinSlider');
+const probSlider = document.getElementById('probSlider');
+const sampleSlider = document.getElementById('sampleSlider');
+const coinVal = document.getElementById('coinVal');
+const probVal = document.getElementById('probVal');
+const sampleVal = document.getElementById('sampleVal');
+const progressBar = document.getElementById('progressBar');
+const statusBadge = document.getElementById('statusBadge');
+
+function sliderToSamples(v) {
+  const maxLog = Math.log10(100000);
+  return Math.max(1, Math.round(Math.pow(10, (v / 60) * maxLog)));
+}
+function currentSamples() { return sliderToSamples(parseInt(sampleSlider.value)); }
+
+function updateSampleLabel() {
+  const s = currentSamples();
+  sampleVal.textContent = s.toLocaleString();
+}
+sampleSlider.addEventListener('input', updateSampleLabel);
+
+coinSlider.addEventListener('input', () => {
+  side = parseInt(coinSlider.value);
+  n = side * side;
+  coinVal.textContent = `${side}×${side}`;
+  updateSampleLabel();
+  resetSim();
+});
+probSlider.addEventListener('input', () => {
+  p = parseInt(probSlider.value) / 100;
+  probVal.textContent = p.toFixed(2);
+  resetSim();
+});
+
+// ===== Manual roundRect implementation (compatibility) =====
+function drawRoundedRect(ctx, x, y, w, h, r) {
+  const radius = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + w - radius, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+  ctx.lineTo(x + w, y + h - radius);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+  ctx.lineTo(x + radius, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+}
+
+// ===== Core functions =====
+function flipOnce() {
+  let heads = 0;
+  const flips = new Uint8Array(n);
+  for (let i = 0; i < n; i++) {
+    const isHead = Math.random() < p;
+    flips[i] = isHead ? 1 : 0;
+    if (isHead) heads++;
+  }
+  lastFlips = flips;
+  return heads;
+}
+
+function computeWalk(flips) {
+  const path = [0];
+  let pos = 0;
+  for (let i = 0; i < flips.length; i++) {
+    pos += flips[i] === 1 ? 1 : -1;
+    path.push(pos);
+  }
+  return path;
+}
+
+function recordTrial(heads) {
+  counts[heads] = (counts[heads] || 0) + 1;
+  sumX += heads;
+  sumX2 += heads * heads;
+  trialCount++;
+}
+
+function setButtonsDisabled(disabled) {
+  document.querySelectorAll('button').forEach(b => b.disabled = disabled);
+  statusBadge.textContent = disabled ? 'Running...' : 'Idle';
+}
+
+function maybeDecimate(arr) {
+  if (arr.length > 4000) {
+    for (let i = arr.length - 1; i > 0; i -= 2) arr.splice(i, 1);
+  }
+}
+
+// ===== Run =====
+function runFromSlider() {
+  if (animating) return;
+  const target = currentSamples();
+  if (target === 0) return;
+  animating = true;
+  setButtonsDisabled(true);
+
+  const durMs = 4000;
+  const startTime = performance.now();
+  let completed = 0;
+
+  function frame(now) {
+    const elapsed = now - startTime;
+    const t = Math.min(elapsed / durMs, 1);
+    const shouldHaveCompleted = Math.min(target, Math.ceil(target * t));
+    const toRun = shouldHaveCompleted - completed;
+
+    let last = null;
+    for (let i = 0; i < toRun; i++) {
+      const heads = flipOnce();
+      recordTrial(heads);
+      walkPath = computeWalk(lastFlips);
+      walkFinal = walkPath[walkPath.length - 1];
+      globalTrialIndex++;
+      walkPathsAccum.push({ path: walkPath, hue: (globalTrialIndex * 47) % 360 });
+      if (walkPathsAccum.length > MAX_SPAG) walkPathsAccum.shift();
+      last = heads;
+    }
+    completed = shouldHaveCompleted;
+
+    if (last !== null) {
+      const meanTheoNow = n * p;
+      devPoints.push({ t: completed, dev: last - meanTheoNow });
+      maybeDecimate(devPoints);
+    }
+    if (trialCount > 0) {
+      meanTrack.push({ t: completed, meanObs: sumX / trialCount });
+      maybeDecimate(meanTrack);
+    }
+
+    progressBar.style.width = (t * 100).toFixed(0) + '%';
+    updateStats();
+    drawGrid();
+    drawChart();
+    drawSpaghetti();
+    drawPileup();
+    drawFluctuation();
+
+    if (t < 1 && completed < target) {
+      requestAnimationFrame(frame);
+    } else {
+      progressBar.style.width = '0%';
+      animating = false;
+      setButtonsDisabled(false);
+      statusBadge.textContent = 'Done ✓';
+      setTimeout(() => { if (!animating) statusBadge.textContent = 'Idle'; }, 2000);
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+function resetSim() {
+  if (animating) return;
+  counts = {};
+  trialCount = 0;
+  sumX = 0; sumX2 = 0;
+  lastFlips = new Uint8Array(n);
+  walkPath = [0];
+  walkFinal = 0;
+  walkPathsAccum = [];
+  globalTrialIndex = 0;
+  devPoints = [];
+  meanTrack = [];
+  progressBar.style.width = '0%';
+  statusBadge.textContent = 'Reset';
+  updateStats();
+  drawGrid();
+  drawChart();
+  drawSpaghetti();
+  drawPileup();
+  drawFluctuation();
+  setTimeout(() => { if (!animating) statusBadge.textContent = 'Idle'; }, 1000);
+}
+
+// ===== Stats =====
+function updateStats() {
+  const meanTheo = n * p;
+  const sdTheo = Math.sqrt(n * p * (1 - p)) || 0.01;
+  document.getElementById('statMeanTheo').textContent = meanTheo.toFixed(1);
+  document.getElementById('statSdTheo').textContent = sdTheo.toFixed(2);
+  document.getElementById('statSdRel').textContent = (sdTheo / n * 100).toFixed(2) + '%';
+  document.getElementById('statTrials').textContent = trialCount.toLocaleString();
+
+  if (trialCount > 0) {
+    const meanObs = sumX / trialCount;
+    const varObs = sumX2 / trialCount - meanObs * meanObs;
+    document.getElementById('statMeanObs').textContent = meanObs.toFixed(2);
+    document.getElementById('statSdObs').textContent = Math.sqrt(Math.max(varObs, 0)).toFixed(2);
+  } else {
+    document.getElementById('statMeanObs').textContent = '—';
+    document.getElementById('statSdObs').textContent = '—';
+  }
+
+  const driftTheo = n * (2 * p - 1);
+  const sdWalkTheo = 2 * Math.sqrt(n * p * (1 - p)) || 0.01;
+  document.getElementById('walkPosDisplay').textContent = walkFinal;
+  document.getElementById('walkFinalPos').textContent = walkFinal;
+  document.getElementById('walkDriftDisplay').textContent = driftTheo.toFixed(1);
+  document.getElementById('walkSqrtN').textContent = sdWalkTheo.toFixed(2);
+  document.getElementById('walkRange').textContent =
+    driftTheo.toFixed(1) + ' ± ' + (2 * sdWalkTheo).toFixed(1);
+}
+
+// ===== Drawing =====
+function normalPdf(x, mean, sd) {
+  return Math.exp(-0.5 * Math.pow((x - mean) / sd, 2)) / (sd * Math.sqrt(2 * Math.PI));
+}
+
+function drawGrid() {
+  const canvas = document.getElementById('gridCanvas');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const W = rect.width, H = rect.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const style = getComputedStyle(document.documentElement);
+  const cAccent = style.getPropertyValue('--accent').trim() || '#ff6b4a';
+  const cAccent2 = style.getPropertyValue('--accent2').trim() || '#3a3a4a';
+
+  const size = Math.min(W, H);
+  const offsetX = (W - size) / 2, offsetY = (H - size) / 2;
+  const cell = size / side;
+  const gap = cell > 6 ? 1.5 : (cell > 3 ? 1 : 0.5);
+
+  for (let row = 0; row < side; row++) {
+    for (let col = 0; col < side; col++) {
+      const idx = row * side + col;
+      const isHead = lastFlips[idx] === 1;
+      ctx.fillStyle = isHead ? cAccent : cAccent2;
+      const x = offsetX + col * cell + gap / 2;
+      const y = offsetY + row * cell + gap / 2;
+      const size2 = cell - gap;
+      const r = Math.min(3, size2 / 4);
+      drawRoundedRect(ctx, x, y, size2, size2, r);
+      ctx.fill();
+    }
+  }
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i <= side; i++) {
+    ctx.beginPath();
+    ctx.moveTo(offsetX + i * cell, offsetY);
+    ctx.lineTo(offsetX + i * cell, offsetY + size);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(offsetX, offsetY + i * cell);
+    ctx.lineTo(offsetX + size, offsetY + i * cell);
+    ctx.stroke();
+  }
+}
+
+function drawChart() {
+  const canvas = document.getElementById('chart');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const W = rect.width, H = rect.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const style = getComputedStyle(document.documentElement);
+  const cBorder = style.getPropertyValue('--border').trim() || '#2a2a3a';
+  const cCurve = style.getPropertyValue('--curve').trim() || '#7c6df0';
+  const cText2 = style.getPropertyValue('--text2').trim() || '#8a88a0';
+
+  const meanTheo = n * p;
+  const sdTheo = Math.sqrt(n * p * (1 - p)) || 0.5;
+  const minV = Math.max(0, Math.floor(meanTheo - 4 * sdTheo));
+  const maxV = Math.min(n, Math.ceil(meanTheo + 4 * sdTheo));
+  const range = maxV - minV;
+
+  const padL = 32, padB = 24, padT = 8, padR = 8;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const barW = plotW / (range + 1);
+
+  const peakPdf = normalPdf(meanTheo, meanTheo, sdTheo);
+  let maxFreq = 0;
+  if (trialCount > 0) {
+    for (let v = minV; v <= maxV; v++) {
+      const f = (counts[v] || 0) / trialCount;
+      if (f > maxFreq) maxFreq = f;
+    }
+  }
+  const yMax = Math.max(peakPdf, maxFreq) * 1.2 || 0.1;
+
+  ctx.strokeStyle = cBorder;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(padL, padT);
+  ctx.lineTo(padL, H - padB);
+  ctx.lineTo(W - padR, H - padB);
+  ctx.stroke();
+
+  for (let v = minV; v <= maxV; v++) {
+    const freq = trialCount > 0 ? (counts[v] || 0) / trialCount : 0;
+    const h = (freq / yMax) * plotH;
+    const x = padL + (v - minV) * barW;
+    const intensity = freq / (maxFreq || 1);
+    const r = 200 + 55 * intensity;
+    const g = 80 - 40 * intensity;
+    const b = 50 - 30 * intensity;
+    ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+    ctx.fillRect(x + 0.5, H - padB - h, Math.max(barW - 1, 1), h);
+  }
+
+  ctx.strokeStyle = cCurve;
+  ctx.lineWidth = 2;
+  ctx.fillStyle = 'rgba(124, 109, 240, 0.08)';
+  ctx.beginPath();
+  let first = true;
+  for (let v = minV; v <= maxV; v += Math.max(range / 200, 0.1)) {
+    const pdf = normalPdf(v, meanTheo, sdTheo);
+    const h = (pdf / yMax) * plotH;
+    const x = padL + (v - minV) * barW + barW / 2;
+    const y = H - padB - h;
+    if (first) { ctx.moveTo(x, y); first = false; }
+    else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.lineTo(padL + (maxV - minV) * barW + barW / 2, H - padB);
+  ctx.lineTo(padL, H - padB);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.fillStyle = cText2;
+  ctx.font = '10px sans-serif';
+  ctx.textAlign = 'center';
+  const step = Math.max(Math.round(range / 6), 1);
+  for (let v = minV; v <= maxV; v += step) {
+    const x = padL + (v - minV) * barW + barW / 2;
+    ctx.fillText(Math.round(v), x, H - padB + 14);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  ctx.fillText((yMax * 0.5).toFixed(2), padL - 6, padT + plotH * 0.25);
+  ctx.fillText(yMax.toFixed(2), padL - 6, padT + 2);
+}
+
+function drawSpaghetti() {
+  const canvas = document.getElementById('spagCanvas');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const W = rect.width, H = rect.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const style = getComputedStyle(document.documentElement);
+  const cCurve = style.getPropertyValue('--curve').trim() || '#7c6df0';
+  const cText2 = style.getPropertyValue('--text2').trim() || '#8a88a0';
+  const cBorder = style.getPropertyValue('--border').trim() || '#2a2a3a';
+
+  const pad = { top: 10, bottom: 18, left: 32, right: 10 };
+  const plotW = W - pad.left - pad.right;
+  const plotH = H - pad.top - pad.bottom;
+
+  const drift = n * (2 * p - 1);
+  let maxAbs = Math.abs(drift) + 4 * Math.sqrt(n * p * (1 - p)) + 1;
+  for (const item of walkPathsAccum) {
+    const last = item.path[item.path.length - 1];
+    if (Math.abs(last) > maxAbs) maxAbs = Math.abs(last);
+  }
+  const yMax = maxAbs * 1.05;
+
+  function xOf(k) { return pad.left + (k / n) * plotW; }
+  function yOf(v) { return pad.top + plotH / 2 - (v / yMax) * (plotH / 2); }
+
+  ctx.strokeStyle = cBorder;
+  ctx.lineWidth = 0.5;
+  ctx.beginPath();
+  ctx.moveTo(pad.left, yOf(0));
+  ctx.lineTo(W - pad.right, yOf(0));
+  ctx.stroke();
+
+  // Envelope widening as √k (±2SD), including drift center from p
+  const kStep = Math.max(1, Math.round(n / 120));
+  ctx.strokeStyle = cCurve;
+  ctx.globalAlpha = 0.55;
+  ctx.lineWidth = 1.3;
+  ctx.setLineDash([4, 5]);
+  ctx.beginPath();
+  for (let k = 0; k <= n; k += kStep) {
+    const center = drift * (k / n);
+    const sd = 2 * Math.sqrt(k * p * (1 - p));
+    const x = xOf(k), y = yOf(center + 2 * sd);
+    if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.beginPath();
+  for (let k = 0; k <= n; k += kStep) {
+    const center = drift * (k / n);
+    const sd = 2 * Math.sqrt(k * p * (1 - p));
+    const x = xOf(k), y = yOf(center - 2 * sd);
+    if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Drift center line
+  ctx.globalAlpha = 0.35;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(xOf(0), yOf(0));
+  ctx.lineTo(xOf(n), yOf(drift));
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  // Paths (color cycles, newest highlighted)
+  const count = walkPathsAccum.length;
+  walkPathsAccum.forEach((item, idx) => {
+    const isNewest = idx === count - 1;
+    ctx.strokeStyle = `hsl(${item.hue}, 70%, ${isNewest ? 65 : 55}%)`;
+    ctx.globalAlpha = isNewest ? 0.95 : Math.max(0.1, 0.5 * (idx + 1) / count);
+    ctx.lineWidth = isNewest ? 2 : 1;
+    ctx.beginPath();
+    const path = item.path;
+    const step = path.length > 400 ? Math.ceil(path.length / 400) : 1;
+    for (let i = 0; i < path.length; i += step) {
+      const x = xOf(i), y = yOf(path[i]);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  });
+  ctx.globalAlpha = 1;
+
+  ctx.fillStyle = cText2;
+  ctx.font = '9px sans-serif';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(Math.round(yMax), pad.left - 4, pad.top + 2);
+  ctx.fillText('0', pad.left - 4, yOf(0));
+  ctx.fillText(Math.round(-yMax), pad.left - 4, H - pad.bottom - 2);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.fillText('0', pad.left, H - pad.bottom + 3);
+  ctx.fillText(n, W - pad.right, H - pad.bottom + 3);
+
+  document.getElementById('spagCountLabel').textContent = count;
+}
+
+function drawPileup() {
+  const canvas = document.getElementById('pileCanvas');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const W = rect.width, H = rect.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const style = getComputedStyle(document.documentElement);
+  const cBorder = style.getPropertyValue('--border').trim() || '#2a2a3a';
+  const cText2 = style.getPropertyValue('--text2').trim() || '#8a88a0';
+
+  const meanTheo = n * p;
+  const sdTheo = Math.sqrt(n * p * (1 - p)) || 0.5;
+  const minV = Math.max(0, Math.floor(meanTheo - 4 * sdTheo));
+  const maxV = Math.min(n, Math.ceil(meanTheo + 4 * sdTheo));
+  const range = maxV - minV;
+
+  const padL = 34, padB = 20, padT = 8, padR = 8;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const colW = plotW / (range + 1);
+
+  let maxCount = 0;
+  for (let v = minV; v <= maxV; v++) maxCount = Math.max(maxCount, counts[v] || 0);
+  const MAX_BLOCKS = 40;
+  const unit = Math.max(1, Math.ceil(maxCount / MAX_BLOCKS));
+  const blockH = Math.max(2, Math.min(10, plotH / MAX_BLOCKS));
+
+  ctx.strokeStyle = cBorder;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(padL, padT);
+  ctx.lineTo(padL, H - padB);
+  ctx.lineTo(W - padR, H - padB);
+  ctx.stroke();
+
+  for (let v = minV; v <= maxV; v++) {
+    const c = counts[v] || 0;
+    const blocks = Math.round(c / unit);
+    const x = padL + (v - minV) * colW;
+    const dist = Math.abs(v - meanTheo) / (sdTheo || 1);
+    const intensity = Math.max(0, 1 - dist / 3);
+    const r = 200 + 55 * intensity, g = 80 - 40 * intensity, b = 50 - 30 * intensity;
+    ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+    for (let bIdx = 0; bIdx < blocks; bIdx++) {
+      const y = H - padB - (bIdx + 1) * blockH;
+      ctx.fillRect(x + 1, y + 0.5, Math.max(colW - 2, 1), blockH - 1);
+    }
+  }
+
+  ctx.fillStyle = cText2;
+  ctx.font = '9px sans-serif';
+  ctx.textAlign = 'center';
+  const step = Math.max(Math.round(range / 6), 1);
+  for (let v = minV; v <= maxV; v += step) {
+    const finalPos = 2 * v - n;
+    const x = padL + (v - minV) * colW + colW / 2;
+    ctx.fillText(finalPos, x, H - padB + 12);
+  }
+
+  document.getElementById('pileUnitHint').textContent =
+    `💡 1 block = ${unit} trial(s) (tallest column: ${maxCount.toLocaleString()}) — x-axis is the walk's final position`;
+}
+
+function drawFluctuation() {
+  const canvas = document.getElementById('fluctCanvas');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const W = rect.width, H = rect.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const style = getComputedStyle(document.documentElement);
+  const cAccent = style.getPropertyValue('--accent').trim() || '#ff6b4a';
+  const cCurve = style.getPropertyValue('--curve').trim() || '#7c6df0';
+  const cText2 = style.getPropertyValue('--text2').trim() || '#8a88a0';
+  const cBorder = style.getPropertyValue('--border').trim() || '#2a2a3a';
+
+  const pad = { top: 10, bottom: 20, left: 44, right: 10 };
+  const plotW = W - pad.left - pad.right;
+  const plotH = H - pad.top - pad.bottom;
+
+  const sdTheo = Math.sqrt(n * p * (1 - p)) || 0.5;
+  const maxT = Math.max(trialCount, 1);
+  const yMax = sdTheo * 2.6;
+
+  function xOf(t) { return pad.left + (t / maxT) * plotW; }
+  function yOf(v) { return pad.top + plotH / 2 - (v / yMax) * (plotH / 2); }
+
+  ctx.strokeStyle = cBorder;
+  ctx.lineWidth = 0.5;
+  ctx.beginPath();
+  ctx.moveTo(pad.left, yOf(0));
+  ctx.lineTo(W - pad.right, yOf(0));
+  ctx.stroke();
+
+  // Fixed-width band (individual-trial deviation — never shrinks)
+  ctx.strokeStyle = cAccent;
+  ctx.globalAlpha = 0.3;
+  ctx.lineWidth = 1;
+  ctx.setLineDash([3, 4]);
+  [sdTheo, -sdTheo].forEach(v => {
+    ctx.beginPath();
+    ctx.moveTo(pad.left, yOf(v));
+    ctx.lineTo(W - pad.right, yOf(v));
+    ctx.stroke();
+  });
+  ctx.setLineDash([]);
+  ctx.globalAlpha = 1;
+
+  // Narrowing funnel (running-average error — ±σ/√t)
+  const tStep = Math.max(1, Math.round(maxT / 150));
+  ctx.strokeStyle = cCurve;
+  ctx.globalAlpha = 0.5;
+  ctx.lineWidth = 1.3;
+  ctx.beginPath();
+  let first = true;
+  for (let t = Math.max(1, Math.round(maxT * 0.01)); t <= maxT; t += tStep) {
+    const env = sdTheo / Math.sqrt(t);
+    const x = xOf(t), y = yOf(env);
+    if (first) { ctx.moveTo(x, y); first = false; } else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  first = true;
+  ctx.beginPath();
+  for (let t = Math.max(1, Math.round(maxT * 0.01)); t <= maxT; t += tStep) {
+    const env = -sdTheo / Math.sqrt(t);
+    const x = xOf(t), y = yOf(env);
+    if (first) { ctx.moveTo(x, y); first = false; } else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  // Individual-trial deviation (dots)
+  ctx.fillStyle = cAccent;
+  devPoints.forEach(pt => {
+    const clamped = Math.max(-yMax, Math.min(yMax, pt.dev));
+    const x = xOf(pt.t), y = yOf(clamped);
+    ctx.globalAlpha = 0.55;
+    ctx.beginPath();
+    ctx.arc(x, y, 1.6, 0, 2 * Math.PI);
+    ctx.fill();
+  });
+  ctx.globalAlpha = 1;
+
+  // Running-average error (line)
+  if (meanTrack.length > 1) {
+    const meanTheo = n * p;
+    ctx.strokeStyle = cCurve;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    meanTrack.forEach((pt, i) => {
+      const dev = pt.meanObs - meanTheo;
+      const clamped = Math.max(-yMax, Math.min(yMax, dev));
+      const x = xOf(pt.t), y = yOf(clamped);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  }
+
+  ctx.fillStyle = cText2;
+  ctx.font = '9px sans-serif';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('+σ ' + sdTheo.toFixed(1), pad.left - 4, yOf(sdTheo));
+  ctx.fillText('0', pad.left - 4, yOf(0));
+  ctx.fillText('−σ', pad.left - 4, yOf(-sdTheo));
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.fillText('0', pad.left, H - pad.bottom + 4);
+  ctx.fillText(trialCount.toLocaleString() + ' trials', W - pad.right, H - pad.bottom + 4);
+}
+
+// ===== Init =====
+updateSampleLabel();
+resetSim();
+window.addEventListener('resize', () => {
+  drawGrid();
+  drawChart();
+  drawSpaghetti();
+  drawPileup();
+  drawFluctuation();
+});
+</script>
+</body>
+</html>
