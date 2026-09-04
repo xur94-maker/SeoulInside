@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Mistrial declared in Lindsay Clancy murder case, after jury deadlocks",
+      "link": "https://www.bbc.co.uk/news/articles/cpwlrj2je1po?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 04 Sep 2026 22:48:38 GMT",
+      "desc": "The mistrial now puts the murder case - and Clancy's future - in limbo as to whether she will be held criminally liable in the deaths of her three kids."
+    },
+    {
       "title": "Europe targeted by spiralling campaign of sabotage - and Russia is the chief suspect",
       "link": "https://www.bbc.co.uk/news/articles/c5y4g6meekro?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 04 Sep 2026 16:49:15 GMT",
@@ -13,42 +19,36 @@
       "desc": "There are still hundreds of workers trapped in a network of tunnels that run along the Trishuli river."
     },
     {
-      "title": "UK support for Falkland Islands 'unwavering' after Argentina restates claims, No 10 says",
-      "link": "https://www.bbc.co.uk/news/articles/cn45jg3zlz4o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 04 Sep 2026 11:54:51 GMT",
-      "desc": "The comments come as Argentinian president Javier Milei says the \"winds of change\" favoured his country's claim on the British overseas territory."
+      "title": "Germany's far-right AfD bids for first taste of power in eastern vote",
+      "link": "https://www.bbc.co.uk/news/articles/cvgypkzgy4wo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 04 Sep 2026 23:07:23 GMT",
+      "desc": "If it wins an outright majority in Saxony-Anhalt, it would be the first time a far-right party has held state-level power in Germany since World War Two."
     },
     {
       "title": "Russia hits Ukrainian security headquarters in drone attack, Zelensky says",
       "link": "https://www.bbc.co.uk/news/articles/c5yep7y48x2o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 04 Sep 2026 16:02:32 GMT",
       "desc": "The unmanned aerial vehicle struck without warning in the heart of the Ukrainian capital."
-    },
-    {
-      "title": "Steve Irwin's family celebrates 'superhero' dad, 20 years after shock death",
-      "link": "https://www.bbc.co.uk/news/articles/cjrx75ldydwo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 04 Sep 2026 04:06:41 GMT",
-      "desc": "The Australian icon was killed in 2006, after a stingray's barb pierced his chest during filming."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s economy at risk as Trump throws it under bus - asiatimes.com",
+      "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
       "date": "Fri, 21 Aug 2026 07:00:00 GMT",
-      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;asiatimes.com"
+      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "U.S. 'Economic Outcast’ operation gains momentum as EU joins sanctions; South Korea weighs military backing - CNBC",
+      "title": "North Korea’s Recent Economic Recovery and the Sustainability of the Regional Development Policy - 38 North",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNSW9GWGREZFpCWmhXckR6TEx0ZW1aQjd0TmRvd1BQaHJFZS1vbXpqUTRnRGlNWlJTbEU2V1ppbi1qajRFUnpxN2M1Mlh1MEZfSXp5ekRwUHJnQVF0TzBFRHAzOUlkRWx2U296U2ZRZGN0RVIwMW1kU0lIdFNDQXBVX2JOdTlRZFhHUDJaZ25HbEZ1UzBrYWh1MXVVMlJ1UHFERmswSnVYWW9MZ1VHYkEtR0dJQnZ2Q3Z3RTN5MDZWNmdBT3lDc1Rz?oc=5",
+      "date": "Fri, 04 Sep 2026 19:21:18 GMT",
+      "desc": "North Korea’s Recent Economic Recovery and the Sustainability of the Regional Development Policy&nbsp;&nbsp;38 North"
+    },
+    {
+      "title": "U.S. 'Economic Outcast’ operation gains momentum as EU joins sanctions; South Korea weighs military backing - cnbc.com",
       "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQX2J4YmRsQjhNWG93RGdSR0dsUlBxeDZNWkNteDhGSVJQenpxTWlVemUtVFdVNzk4RTBJa2lpaFhRdnk5QlNBUlByN3c1N1pYam9yTE83cHJhX1k1cFVNVUdpWlFiVHliQmd3Nzl4cUVlaGxMTzJjcVd6TC1DUHp5blZMRGEwdDZEbkVYa2JNc05rNVRsam1ZTGg5VVlkd0tGNlFMTmVQdDJxOGvSAbABQVVfeXFMUFF4OWRySnJuRWh1aTRFZ09OQlY3R2k5UzNuRGhjcWQwODZYWnctS0FlRzlIaVVMQVU5dHQwQk94c2prVTF2UXM0ZHhPRkdkanhkV0c1Sy1pZUtZdWRTVXBqYmpPMC1LQ0t2T1pRLWpHZmRQYmJackJyS0tHbTB6bHZCS1JUZWZ5T09uQV8zWl9acmxIaXA4RHNYYmJrcHVpX2lBT3VPVFVNNHpvQlVFUV8?oc=5",
       "date": "Fri, 04 Sep 2026 02:45:00 GMT",
-      "desc": "U.S. 'Economic Outcast’ operation gains momentum as EU joins sanctions; South Korea weighs military backing&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "South Korea's Semiconductor Surge Risks Economic Imbalance - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZ2JzXzJVa2psTVBDTWdjM1JHU0xIVWNMRjJHQ2ZXcUFlamUwcURKS2pPczN1WEk3UFhXM0hRdFc4ZlpmbWdNemVyTm43bUl3OXUyX3FXLTUzb1czR1hSNzd5cWRyZW9uYVpBZlFjVE55bE5KcFM4cms0Wks5MHltb2taVTYzNmlxXzR2QzVn?oc=5",
-      "date": "Fri, 04 Sep 2026 12:01:39 GMT",
-      "desc": "South Korea's Semiconductor Surge Risks Economic Imbalance&nbsp;&nbsp;조선일보"
+      "desc": "U.S. 'Economic Outcast’ operation gains momentum as EU joins sanctions; South Korea weighs military backing&nbsp;&nbsp;cnbc.com"
     },
     {
       "title": "South Korea unveils record budget increase to cash in on AI boom - Financial Times",
@@ -57,10 +57,10 @@
       "desc": "South Korea unveils record budget increase to cash in on AI boom&nbsp;&nbsp;Financial Times"
     },
     {
-      "title": "South Korea’s Strategic Economic Shift Due to the Iran War: From Crisis Management to Greater Resilience - Emirates Policy Center (EPC)",
-      "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPOFVLVV9sMzUyeVdYSWRXNld5UDZjVVlSX09XQnNjWXNqVVRjVzBhN3ljbmlqaF9mQlJGb0F4ZGk5Z2ZWZlctU3FvaTFfd2ZEOV9OS1FjSE1UNXB2OTZERWpsMURCb2VDazVyaThpcXZ1MWhIYjE3WnE2ZnByUXVrR05yOWVEeXVaNEZsN2dudHBfLXVpZHRjdmVJRC1pNk8tcTY3SWNxVVd2UVg4Rzc2c0tteVN5Z1k3SGdCamFsVjF1UW8zdGlrZkdidTIzVDY1WlBzeTNuOUhmQQ?oc=5",
-      "date": "Fri, 04 Sep 2026 05:27:02 GMT",
-      "desc": "South Korea’s Strategic Economic Shift Due to the Iran War: From Crisis Management to Greater Resilience&nbsp;&nbsp;Emirates Policy Center (EPC)"
+      "title": "South Korea's Semiconductor Surge Risks Economic Imbalance - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZ2JzXzJVa2psTVBDTWdjM1JHU0xIVWNMRjJHQ2ZXcUFlamUwcURKS2pPczN1WEk3UFhXM0hRdFc4ZlpmbWdNemVyTm43bUl3OXUyX3FXLTUzb1czR1hSNzd5cWRyZW9uYVpBZlFjVE55bE5KcFM4cms0Wks5MHltb2taVTYzNmlxXzR2QzVn?oc=5",
+      "date": "Fri, 04 Sep 2026 12:01:39 GMT",
+      "desc": "South Korea's Semiconductor Surge Risks Economic Imbalance&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Kepco Seeks Billions from Samsung, SK Hynix to Finance Grid - Energy Connects",
@@ -69,105 +69,105 @@
       "desc": "Kepco Seeks Billions from Samsung, SK Hynix to Finance Grid&nbsp;&nbsp;Energy Connects"
     },
     {
-      "title": "[News] U.S. Chip Tariffs Could Hinge on Investment Scale: What’s at Stake for TSMC, Samsung, SK hynix? - TrendForce",
-      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNM3pJSGRFRWg2WDZqbVNETmE3NDQ0akdCR25xRWlNeU4zNGlkLWk2WmsxbnJ2TUd1bHNtUndBd3d2U19aU3ctTHJsbG1YSW1jSmNBOVVlRzROMHpIeklvaXZqUklZS3Y4YXYtZVdWSUJESU5vbWRsOG52Y1FkYzVqVkNjV19lM0t0RUFGT1owOVFJdHVkSWc2NjNvYXFENnhCZjU0S1RLOHd3MjY3anZaUE1laEdZcVNwTUpkQUJuWnkxdVM0NDBZUjd3c3J0cnQ2NXR2WQ?oc=5",
-      "date": "Fri, 04 Sep 2026 10:29:40 GMT",
-      "desc": "[News] U.S. Chip Tariffs Could Hinge on Investment Scale: What’s at Stake for TSMC, Samsung, SK hynix?&nbsp;&nbsp;TrendForce"
-    },
-    {
       "title": "Micron, Samsung, SK Hynix Suffer Drop In DRAM Market Share As China’s CXMT Pulls Ahead - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQUGt2OVJsb2NrNHZ3Y1FSUldUa1VhRlNrMWNCQ0NEcllXbkRweElsZkt2bmQyRE9qWWcwZ0YwX05kOThTMk1URVFVTGtGYlJIUUdRVWhRMVRPSlZNR1dfTmVxSlBPNTBqUUdwUHgwZ1VuRkpiczJ3Z0h6dTNpR0tvcmV6aXRzcUZtcUtkYV9zUzdTR2hydE1UWWdtUQ?oc=5",
       "date": "Thu, 03 Sep 2026 07:59:01 GMT",
       "desc": "Micron, Samsung, SK Hynix Suffer Drop In DRAM Market Share As China’s CXMT Pulls Ahead&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
+      "title": "Kepco Seeks Billions from Samsung, SK Hynix to Finance Grid - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQV1ZhXzVFOXEyd0ZrSVhfOFl6dDh0SU9QY2RtemhqWTJDOHdZREw2WUxyOFpBQUhTMGRTY3d2STgxdnZlb0UtU21TbW91eHBGWWFWUm5PbmVDWnE4WU0yRU1MR1NDZm51N0IyaDU0bzV1bmR6ZTlNN2VPM2dRWlpWa0hUaTh5LTZLN2VTLUhESEpCNEZNdmh2RmlRX1JLX3NlVnVTMVdaa3p2THNZU0E?oc=5",
+      "date": "Thu, 03 Sep 2026 06:03:00 GMT",
+      "desc": "Kepco Seeks Billions from Samsung, SK Hynix to Finance Grid&nbsp;&nbsp;Bloomberg.com"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 231.04,
-      "change": 6.63,
-      "pct": 2.95,
+      "price": 230.36,
+      "change": 5.95,
+      "pct": 2.65,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 428.15,
-      "change": 12.65,
-      "pct": 3.04,
+      "price": 428.91,
+      "change": 13.41,
+      "pct": 3.23,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 475.0,
-      "change": 17.94,
-      "pct": 3.93,
+      "price": 477.57,
+      "change": 20.51,
+      "pct": 4.49,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 95.17,
-      "change": 5.12,
-      "pct": 5.69,
+      "price": 95.8,
+      "change": 5.75,
+      "pct": 6.39,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 167.91,
-      "change": -2.05,
-      "pct": -1.21,
+      "price": 168.74,
+      "change": -1.22,
+      "pct": -0.72,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 251.12,
-      "change": 16.25,
-      "pct": 6.92,
+      "price": 252.09,
+      "change": 17.23,
+      "pct": 7.34,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 338.63,
-      "change": 1.51,
-      "pct": 0.45,
+      "price": 338.46,
+      "change": 1.34,
+      "pct": 0.4,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 321.34,
-      "change": -3.62,
-      "pct": -1.11,
+      "price": 319.97,
+      "change": -4.99,
+      "pct": -1.54,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 501.0,
-      "change": 4.18,
-      "pct": 0.84,
+      "price": 499.7,
+      "change": 2.88,
+      "pct": 0.58,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7719.88,
-      "change": 53.28,
-      "pct": 0.69,
+      "price": 7718.6,
+      "change": 52.0,
+      "pct": 0.68,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26494.73,
-      "change": 276.9,
-      "pct": 1.06,
+      "price": 26506.99,
+      "change": 289.16,
+      "pct": 1.1,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1345.48,
-      "change": -12.91,
-      "pct": -0.95,
+      "price": 1345.99,
+      "change": -12.4,
+      "pct": -0.91,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-04 17:15 UTC"
+  "updatedAt": "2026-09-04 23:39 UTC"
 }
