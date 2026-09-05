@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coin Flips and Random Walks, Part 2: The Drunken Sailor in the Complex Plane</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#14171c;
+  --panel:#1b1f27;
+  --panel-border:#2a2f3a;
+  --grid-line:#242a34;
+  --text:#e8e6df;
+  --text-dim:#8b93a1;
+  --text-faint:#5a6270;
+  --amber:#ffb238;
+  --amber-dim:rgba(255,178,56,0.35);
+  --cyan:#5ec8d8;
+  --cyan-dim:rgba(94,200,216,0.35);
+  --rose:#e8779e;
+  --white-accent:#f4f2ea;
+  --serif:'Spectral', Georgia, serif;
+  --mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--mono);
+  line-height:1.6;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important;}
+}
+
+.wrap{
+  max-width:1080px;
+  margin:0 auto;
+  padding:48px 24px 80px;
+}
+
+header h1{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:2rem;
+  line-height:1.25;
+  margin:0 0 14px;
+  max-width:640px;
+}
+
+header p{
+  color:var(--text-dim);
+  max-width:600px;
+  font-size:0.95rem;
+  margin:0 0 8px;
+}
+
+.formula{
+  color:var(--cyan);
+  font-size:0.9rem;
+  margin:18px 0 0;
+}
+
+.controls{
+  margin-top:36px;
+  padding:20px 22px;
+  background:var(--panel);
+  border:1px solid var(--panel-border);
+  border-radius:6px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:28px;
+  align-items:center;
+}
+
+.control{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-width:200px;
+}
+
+.control label{
+  font-size:0.78rem;
+  color:var(--text-dim);
+}
+
+.control .value{
+  color:var(--amber);
+}
+
+input[type=range]{
+  -webkit-appearance:none;
+  width:100%;
+  height:2px;
+  background:var(--panel-border);
+  border-radius:1px;
+  outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:14px;height:14px;
+  border-radius:50%;
+  background:var(--amber);
+  cursor:pointer;
+  border:2px solid var(--bg);
+}
+input[type=range]::-moz-range-thumb{
+  width:14px;height:14px;
+  border-radius:50%;
+  background:var(--amber);
+  cursor:pointer;
+  border:2px solid var(--bg);
+}
+input[type=range]:focus-visible::-webkit-slider-thumb{
+  outline:2px solid var(--cyan);
+  outline-offset:2px;
+}
+
+.radio-group{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-width:220px;
+}
+.radio-group .group-label{
+  font-size:0.78rem;
+  color:var(--text-dim);
+}
+.radio-option{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:0.82rem;
+  color:var(--text);
+  cursor:pointer;
+}
+.radio-option input{ accent-color: var(--amber); cursor:pointer; }
+
+button#runBtn, button#clearMineBtn{
+  font-family:var(--mono);
+  font-size:0.85rem;
+  font-weight:600;
+  border:none;
+  padding:12px 22px;
+  border-radius:5px;
+  cursor:pointer;
+}
+button#runBtn{
+  color:var(--bg);
+  background:var(--amber);
+  margin-left:auto;
+}
+button#runBtn:hover{ filter:brightness(1.08); }
+button#runBtn:focus-visible{ outline:2px solid var(--cyan); outline-offset:2px; }
+button#runBtn:disabled{ opacity:0.5; cursor:progress; }
+
+button#clearMineBtn{
+  color:var(--text);
+  background:transparent;
+  border:1px solid var(--panel-border);
+}
+button#clearMineBtn:hover{ border-color:var(--text-dim); }
+button#clearMineBtn:focus-visible{ outline:2px solid var(--cyan); outline-offset:2px; }
+
+.status{
+  color:var(--text-faint);
+  font-size:0.78rem;
+  margin-top:10px;
+  min-height:1.2em;
+}
+
+.stage{
+  margin-top:28px;
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  grid-template-rows:auto auto;
+  gap:22px;
+}
+
+.panel{
+  background:var(--panel);
+  border:1px solid var(--panel-border);
+  border-radius:6px;
+  padding:18px 18px 16px;
+}
+
+.panel h2{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:1.05rem;
+  margin:0 0 4px;
+}
+
+.panel .caption{
+  color:var(--text-dim);
+  font-size:0.82rem;
+  margin:0 0 12px;
+  max-width:56ch;
+}
+
+canvas{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+#scatterPanel{ grid-row:1 / 3; }
+#radiusPanel{ grid-row:1; }
+#anglePanel{ grid-row:2; }
+
+.scatter-wrap{
+  position:relative;
+}
+.scatter-wrap canvas{
+  position:absolute;
+  top:0; left:0;
+}
+.scatter-wrap canvas#scatterCanvas{
+  position:relative;
+  cursor:crosshair;
+}
+.scatter-wrap canvas#myCanvas{
+  pointer-events:none;
+}
+
+.legend{
+  display:flex;
+  gap:18px;
+  margin-top:10px;
+  font-size:0.76rem;
+  color:var(--text-dim);
+  flex-wrap:wrap;
+}
+.legend span{ display:inline-flex; align-items:center; gap:6px; }
+.swatch{ width:10px; height:10px; border-radius:2px; display:inline-block; }
+.swatch.dash{ border-radius:0; height:2px; width:14px; margin-top:4px; }
+
+.stats{
+  margin-top:22px;
+  background:var(--panel);
+  border:1px solid var(--panel-border);
+  border-radius:6px;
+  padding:20px 22px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+  gap:18px;
+}
+.stat dt{ color:var(--text-dim); font-size:0.74rem; margin-bottom:6px; }
+.stat dd{ margin:0; font-size:1.05rem; color:var(--text); }
+.stat dd.theory{ color:var(--cyan); font-size:0.82rem; margin-top:2px; }
+
+.note{
+  margin-top:36px;
+  color:var(--text-dim);
+  font-size:0.88rem;
+  max-width:640px;
+}
+.note strong{ color:var(--text); font-weight:600; }
+
+@media (max-width: 840px){
+  .stage{ grid-template-columns:1fr; }
+  #scatterPanel{ grid-row:auto; }
+  button#runBtn{ margin-left:0; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>The Drunken Sailor in the Complex Plane</h1>
+  <p>Feynman's own version of the 2D random walk: instead of stepping north, south, east, or west, each step points in a uniformly random direction between 0&deg; and 360&deg;. Represent a step as a unit complex number and the whole walk falls out of one line of algebra.</p>
+  <p class="formula">z = e^(i&theta;), &theta; ~ Uniform(0, 2&pi;) &nbsp;&mdash;&nbsp; position after n steps: Z_n = &sum; e^(i&theta;<sub>k</sub>)</p>
+</header>
+
+<div class="controls">
+  <div class="control">
+    <label for="particles">particles (trials) &mdash; <span class="value" id="particlesVal">20000</span></label>
+    <input type="range" id="particles" min="1" max="80000" step="10" value="20000">
+  </div>
+  <div class="control">
+    <label for="steps">steps per walk (n) &mdash; <span class="value" id="stepsVal">1000</span></label>
+    <input type="range" id="steps" min="1" max="10000" step="1" value="1000">
+  </div>
+  <div class="control">
+    <label for="dotSize">dot size (px) &mdash; <span class="value" id="dotSizeVal">2.0</span></label>
+    <input type="range" id="dotSize" min="0.0" max="4.0" step="0.1" value="2.0">
+  </div>
+  <div class="control">
+    <label for="tailLen">tail length (segments) &mdash; <span class="value" id="tailLenVal">140</span></label>
+    <input type="range" id="tailLen" min="0" max="300" step="20" value="140">
+  </div>
+  <div class="radio-group">
+    <span class="group-label">step direction</span>
+    <label class="radio-option"><input type="radio" name="stepMode" value="complex" checked> complex plane (uniform angle)</label>
+    <label class="radio-option"><input type="radio" name="stepMode" value="lattice"> lattice (N / S / E / W only)</label>
+  </div>
+  <button id="runBtn">Run trials</button>
+</div>
+<div class="status" id="status">Ready. Press "Run trials" to watch 20,000 walkers take 1,000 random-angle steps over roughly 20 seconds &mdash; try pushing the sliders to 80,000 particles and 10,000 steps. Click anywhere in the swarm panel to drop your own sailor.</div>
+
+<div class="stage">
+  <div class="panel" id="scatterPanel">
+    <h2>Every walker, moving at once</h2>
+    <p class="caption">All particles step together in real time over about 20 seconds. Each leaves a short fading trail; three walkers are traced in full so you can follow one journey end to end. Click anywhere to drop your own sailor &mdash; it keeps walking on its own, even after the run finishes.</p>
+    <div class="scatter-wrap">
+      <canvas id="scatterCanvas"></canvas>
+      <canvas id="myCanvas"></canvas>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background:linear-gradient(90deg,#e8779e,#ffb238,#a6e35c,#5ec8d8,#c792ea)"></span>swarm, colored by each walker's first step direction</span>
+      <span style="color:var(--text-faint)">&mdash; 8 traced walkers get a bright comet tail; the swarm's hue wheel shows &theta;&#8320; has no preferred direction</span>
+    </div>
+    <div class="legend" style="margin-top:6px;">
+      <span><span class="swatch" style="background:var(--white-accent)"></span>your sailors</span>
+      <button id="clearMineBtn">Clear my sailors</button>
+    </div>
+  </div>
+
+  <div class="panel" id="radiusPanel">
+    <h2>Distance from the origin</h2>
+    <p class="caption">Histogram of R = |Z<sub>n</sub>| across all walkers, against the Rayleigh curve the 2D Gaussian predicts. <span id="exactNote"></span></p>
+    <canvas id="radiusCanvas"></canvas>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--amber)"></span>observed</span>
+      <span><span class="swatch" style="background:var(--cyan)"></span>Rayleigh(&sigma;)</span>
+      <span><span class="swatch dash" style="background:var(--rose)"></span>exact solution for small n</span>
+    </div>
+  </div>
+
+  <div class="panel" id="anglePanel">
+    <h2>Final heading</h2>
+    <p class="caption">Histogram of arg(Z<sub>n</sub>), the angle of the final position. Circular symmetry predicts this stays flat.</p>
+    <canvas id="angleCanvas"></canvas>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--amber)"></span>observed</span>
+      <span><span class="swatch" style="background:var(--cyan)"></span>uniform</span>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="surfacePanel" style="margin-top:22px;">
+  <h2>The bell, as a solid</h2>
+  <p class="caption">Bin the same final positions into a grid and stack density up as height: two independent Gaussians multiplied together make a circularly symmetric hill. The radius histogram above is what you get if you spin this hill around its own peak and only track height against distance from center &mdash; that's where the missing symmetry of the Rayleigh curve comes from.</p>
+  <canvas id="surfaceCanvas"></canvas>
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--amber)"></span>density (dark = sparse, bright = dense)</span>
+  </div>
+</div>
+
+<div class="panel" id="passagePanel" style="margin-top:22px;">
+  <h2>First passage time</h2>
+  <p class="caption">Step at which each walker first wanders farther than 2&sigma; from the bar door. <span id="passageSummary">&mdash;</span></p>
+  <canvas id="passageCanvas"></canvas>
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--amber)"></span>fraction of all walkers crossing at that step</span>
+  </div>
+</div>
+
+<dl class="stats" id="statsBlock">
+  <div class="stat"><dt>Var(Re Z), Var(Im Z), observed</dt><dd id="statVarXY">&mdash;</dd><dd class="theory" id="statVarXYtheory">&mdash;</dd></div>
+  <div class="stat"><dt>Corr(Re Z, Im Z)</dt><dd id="statCorr">&mdash;</dd><dd class="theory">theory: 0</dd></div>
+  <div class="stat"><dt>mean R, observed</dt><dd id="statMeanR">&mdash;</dd><dd class="theory" id="statMeanRtheory">&mdash;</dd></div>
+  <div class="stat"><dt>&sigma; per axis (&radic;(n/2))</dt><dd id="statSigma">&mdash;</dd></div>
+  <div class="stat"><dt>peak density, observed</dt><dd id="statPeak">&mdash;</dd><dd class="theory" id="statPeakTheory">&mdash;</dd></div>
+</dl>
+
+<p class="note"><strong>Why this is the cleaner setup than a 4-direction grid.</strong> On a north/south/east/west lattice, every step spends itself entirely on one axis, so the number of horizontal versus vertical steps is itself random, and the set of reachable points is only every other lattice cell (a checkerboard). Here, every single step contributes to both axes at once via cos&theta; and sin&theta;, so Var(Re&nbsp;Z<sub>n</sub>) and Var(Im&nbsp;Z<sub>n</sub>) come out to exactly n/2 each, and Cov = 0 falls out of &int;cos&theta;sin&theta;&nbsp;d&theta; = 0 over a full circle &mdash; no conditioning arguments required. Both step directions still give the same n/2, n/2, 0 covariance structure, so both converge to the same circular Gaussian &mdash; switch the toggle above to compare the checkerboard pattern against the smooth swarm directly.</p>
+
+<div class="panel" id="engPanel" style="margin-top:22px;">
+  <h2>Same numbers, three engineering names</h2>
+  <p class="caption">No new math here &mdash; just relabeling the R and R&sup2; you already computed above, the way three different fields actually read this exact distribution.</p>
+  <dl class="stats" id="engStatsBlock" style="margin-top:0;">
+    <div class="stat">
+      <dt>GPS &mdash; Circular Error Probable (median R)</dt>
+      <dd id="statCEP">&mdash;</dd>
+      <dd class="theory" id="statCEPtheory">&mdash;</dd>
+    </div>
+    <div class="stat">
+      <dt>Speckle / signal power &mdash; mean of R&sup2;</dt>
+      <dd id="statPower">&mdash;</dd>
+      <dd class="theory" id="statPowerTheory">theory: R&sup2; ~ Exponential, mean = 2&sigma;&sup2;</dd>
+    </div>
+    <div class="stat">
+      <dt>Rayleigh fading &mdash; deep fades (R &lt; 0.5&nbsp;&times;&nbsp;mean R)</dt>
+      <dd id="statFade">&mdash;</dd>
+      <dd class="theory" id="statFadeTheory">&mdash;</dd>
+    </div>
+  </dl>
+  <p class="caption" style="margin-top:14px;">
+    <strong>GPS:</strong> if every walker were a GPS fix scattered around the true position by independent, equal-variance north/south and east/west errors, the median R above is exactly the receiver's quoted CEP &mdash; the radius that half your fixes fall inside.
+    <strong>Speckle:</strong> R is the light's amplitude; what a sensor or your eye actually measures is intensity, R&sup2;, which is why speckle brightness follows an Exponential curve even though the underlying field is Rayleigh.
+    <strong>Fading:</strong> a mobile receiver sees signal envelope R fluctuate as it moves through a multipath field; the fraction of walkers landing well below the mean R is exactly the receiver's outage probability at that fade depth.
+  </p>
+</div>
+
+</div>
+
+<script>
+(function(){
+  const particlesInput = document.getElementById('particles');
+  const stepsInput = document.getElementById('steps');
+  const particlesVal = document.getElementById('particlesVal');
+  const stepsVal = document.getElementById('stepsVal');
+  const runBtn = document.getElementById('runBtn');
+  const clearMineBtn = document.getElementById('clearMineBtn');
+  const statusEl = document.getElementById('status');
+  const exactNoteEl = document.getElementById('exactNote');
+  const passageSummaryEl = document.getElementById('passageSummary');
+
+  const dotSizeInput = document.getElementById('dotSize');
+  const dotSizeVal = document.getElementById('dotSizeVal');
+  dotSizeInput.addEventListener('input', () => dotSizeVal.textContent = dotSizeInput.value);
+
+  const tailLenInput = document.getElementById('tailLen');
+  const tailLenVal = document.getElementById('tailLenVal');
+  tailLenInput.addEventListener('input', () => tailLenVal.textContent = tailLenInput.value);
+
+  particlesInput.addEventListener('input', () => particlesVal.textContent = particlesInput.value);
+  stepsInput.addEventListener('input', () => stepsVal.textContent = stepsInput.value);
+
+  // ---- Feature 2: step mode toggle (complex plane vs 4-direction lattice) ----
+  let stepMode = 'complex';
+  document.querySelectorAll('input[name="stepMode"]').forEach(el => {
+    el.addEventListener('change', (e) => { if (e.target.checked) stepMode = e.target.value; });
+  });
+
+  function nextStep(mode){
+    if (mode === 'lattice'){
+      const r = Math.random();
+      let dx = 0, dy = 0;
+      if (r < 0.25) dx = 1;
+      else if (r < 0.5) dx = -1;
+      else if (r < 0.75) dy = 1;
+      else dy = -1;
+      return { dx, dy };
+    }
+    const theta = Math.random() * 2 * Math.PI;
+    return { dx: Math.cos(theta), dy: Math.sin(theta) };
+  }
+
+  function setupCanvas(canvas, cssW, cssH){
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = cssW * dpr;
+    canvas.height = cssH * dpr;
+    canvas.style.width = cssW + 'px';
+    canvas.style.height = cssH + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    return ctx;
+  }
+
+  const scatterCanvas = document.getElementById('scatterCanvas');
+  const myCanvas = document.getElementById('myCanvas');
+  const radiusCanvas = document.getElementById('radiusCanvas');
+  const angleCanvas = document.getElementById('angleCanvas');
+  const surfaceCanvas = document.getElementById('surfaceCanvas');
+  const passageCanvas = document.getElementById('passageCanvas');
+
+  const SCATTER_W = 520, SCATTER_H = 520;
+  const HIST_W = 380, HIST_H = 230;
+  const SURF_W = 1000, SURF_H = 440;
+  const PASSAGE_W = 1000, PASSAGE_H = 220;
+
+  const ctxScatter = setupCanvas(scatterCanvas, SCATTER_W, SCATTER_H);
+  const ctxMine = setupCanvas(myCanvas, SCATTER_W, SCATTER_H);
+  const ctxRadius = setupCanvas(radiusCanvas, HIST_W, HIST_H);
+  const ctxAngle = setupCanvas(angleCanvas, HIST_W, HIST_H);
+  const ctxSurface = setupCanvas(surfaceCanvas, SURF_W, SURF_H);
+  const ctxPassage = setupCanvas(passageCanvas, PASSAGE_W, PASSAGE_H);
+
+  const colors = {
+    bgRGB: '20,23,28',
+    grid: '#242a34',
+    axis: '#3a4150',
+    text: '#8b93a1',
+    amber: '#ffb238',
+    amberFill: 'rgba(255,178,56,0.55)',
+    cyan: '#5ec8d8',
+    rose: '#e8779e',
+    green: '#a6e35c',
+    mine: '#f4f2ea'
+  };
+  const HUE_BUCKETS = 24;
+  function bucketColor(b, sat, light){
+    const hue = (b + 0.5) / HUE_BUCKETS * 360;
+    return 'hsl(' + hue.toFixed(1) + ',' + sat + '%,' + light + '%)';
+  }
+  const pathColors = ['#5ec8d8', '#e8779e', '#a6e35c', '#c792ea', '#ff8a5c', '#4fd8b0', '#ffd166', '#7cd3ff'];
+  const swarmBucketFill = [];
+  const pathBucketColor = [];
+  for (let b=0;b<HUE_BUCKETS;b++){
+    swarmBucketFill.push(bucketColor(b, 78, 62));
+    pathBucketColor.push(bucketColor(b, 85, 68));
+  }
+
+  const TOTAL_MS = 20000;
+  const FADE_ALPHA = 0.12;
+  let animId = null;
+  let reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // current display transform, kept up to date across runs so click-to-add and
+  // the "my sailors" overlay always line up with whatever is on screen
+  let currentGeom = { cx: SCATTER_W/2, cy: SCATTER_H/2, scale: 1 };
+  let currentSigma = 1;
+
+  function drawGrid(ctx, sigma){
+    const range = sigma * 5;
+    const cx = SCATTER_W/2, cy = SCATTER_H/2;
+    const scale = (SCATTER_W/2 - 20) / range;
+    ctx.strokeStyle = colors.grid;
+    ctx.lineWidth = 1;
+    for (let g=-4; g<=4; g++){
+      const gx = cx + g*sigma*scale;
+      const gy = cy + g*sigma*scale;
+      ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,SCATTER_H); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(SCATTER_W,gy); ctx.stroke();
+    }
+    ctx.strokeStyle = colors.axis;
+    ctx.beginPath(); ctx.moveTo(cx,0); ctx.lineTo(cx,SCATTER_H); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,cy); ctx.lineTo(SCATTER_W,cy); ctx.stroke();
+    return { cx, cy, scale };
+  }
+
+  function mean(arr){
+    let s=0; for (let i=0;i<arr.length;i++) s+=arr[i];
+    return s/arr.length;
+  }
+  function variance(arr, m){
+    let s=0; for (let i=0;i<arr.length;i++){ const d=arr[i]-m; s+=d*d; }
+    return s/arr.length;
+  }
+
+  function histogram(values, min, max, bins){
+    const counts = new Array(bins).fill(0);
+    const w = (max-min)/bins;
+    for (let i=0;i<values.length;i++){
+      let b = Math.floor((values[i]-min)/w);
+      if (b<0) b=0; if (b>=bins) b=bins-1;
+      counts[b]++;
+    }
+    return counts.map(c => c / values.length / w);
+  }
+
+  // ---- Feature 1: exact small-n distributions (Rayleigh 1919) ----
+  // n=1: the resultant is always exactly length 1 (a delta function).
+  // n=2: f_R(r) = 2 / (pi * sqrt(4 - r^2)), 0 <= r < 2, derived from the
+  // difference of two independent uniform phases.
+  function drawRadiusHist(R, sigma, n){
+    const ctx = ctxRadius;
+    ctx.clearRect(0,0,HIST_W,HIST_H);
+    ctx.fillStyle = 'rgb(' + colors.bgRGB + ')';
+    ctx.fillRect(0,0,HIST_W,HIST_H);
+    const maxR = Math.max(sigma * 4.2, 2.2);
+    const bins = 36;
+    const density = histogram(R, 0, maxR, bins);
+    const maxDensity = Math.max(...density, sigma>0 ? (1/(sigma*Math.sqrt(Math.E))) : 0.01);
+    const padL=8, padB=22, padT=10, padR=8;
+    const plotW = HIST_W - padL - padR;
+    const plotH = HIST_H - padT - padB;
+    const barW = plotW/bins;
+    ctx.fillStyle = colors.amberFill;
+    for (let b=0;b<bins;b++){
+      const h = (density[b]/maxDensity) * plotH;
+      ctx.fillRect(padL + b*barW, padT + plotH - h, barW-1, h);
+    }
+    ctx.strokeStyle = colors.cyan;
+    ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    for (let px=0; px<=plotW; px++){
+      const r = (px/plotW) * maxR;
+      const f = sigma>0 ? (r / (sigma*sigma)) * Math.exp(-(r*r)/(2*sigma*sigma)) : 0;
+      const py = padT + plotH - (f/maxDensity)*plotH;
+      if (px===0) ctx.moveTo(padL+px, py); else ctx.lineTo(padL+px, py);
+    }
+    ctx.stroke();
+
+    if (n === 1){
+      const markerX = padL + Math.min(1/maxR,1)*plotW;
+      ctx.strokeStyle = colors.rose;
+      ctx.setLineDash([4,3]);
+      ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.moveTo(markerX, padT); ctx.lineTo(markerX, padT+plotH); ctx.stroke();
+      ctx.setLineDash([]);
+      exactNoteEl.textContent = 'n=1: with a single step, R is always exactly 1 (dashed marker) — no distribution to speak of yet.';
+    } else if (n === 2){
+      ctx.strokeStyle = colors.rose;
+      ctx.setLineDash([4,3]);
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      let started = false;
+      for (let px=0; px<=plotW; px++){
+        const r = (px/plotW) * maxR;
+        if (r <= 0 || r >= 1.995) continue;
+        const f = 2/(Math.PI*Math.sqrt(4-r*r));
+        const py = padT + plotH - Math.min(f/maxDensity, 1.35)*plotH;
+        if (!started){ ctx.moveTo(padL+px, py); started = true; } else ctx.lineTo(padL+px, py);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+      exactNoteEl.textContent = 'n=2: dashed curve is Rayleigh\'s exact 1919 solution, 2 / (\u03c0\u221a(4\u2212r\u00b2)) \u2014 U-shaped, nothing like the bell it becomes at large n.';
+    } else {
+      exactNoteEl.textContent = 'n=3 already needs an elliptic integral with no simple closed form (Rayleigh 1919) \u2014 shown here only as the CLT/Rayleigh approximation.';
+    }
+
+    ctx.strokeStyle = colors.axis;
+    ctx.beginPath(); ctx.moveTo(padL, padT+plotH); ctx.lineTo(padL+plotW, padT+plotH); ctx.stroke();
+  }
+
+  function drawAngleHist(Theta){
+    const ctx = ctxAngle;
+    ctx.clearRect(0,0,HIST_W,HIST_H);
+    ctx.fillStyle = 'rgb(' + colors.bgRGB + ')';
+    ctx.fillRect(0,0,HIST_W,HIST_H);
+    const bins = 24;
+    const density = histogram(Theta, -Math.PI, Math.PI, bins);
+    const uniformDensity = 1/(2*Math.PI);
+    const maxDensity = Math.max(...density, uniformDensity) * 1.15;
+    const padL=8, padB=22, padT=10, padR=8;
+    const plotW = HIST_W - padL - padR;
+    const plotH = HIST_H - padT - padB;
+    const barW = plotW/bins;
+    ctx.fillStyle = colors.amberFill;
+    for (let b=0;b<bins;b++){
+      const h = (density[b]/maxDensity) * plotH;
+      ctx.fillRect(padL + b*barW, padT + plotH - h, barW-1, h);
+    }
+    const uy = padT + plotH - (uniformDensity/maxDensity)*plotH;
+    ctx.strokeStyle = colors.cyan;
+    ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(padL, uy); ctx.lineTo(padL+plotW, uy); ctx.stroke();
+    ctx.strokeStyle = colors.axis;
+    ctx.beginPath(); ctx.moveTo(padL, padT+plotH); ctx.lineTo(padL+plotW, padT+plotH); ctx.stroke();
+  }
+
+  // ---- Feature 3: first passage time histogram ----
+  function drawPassageHist(values, nTotal, totalN){
+    const ctx = ctxPassage;
+    ctx.clearRect(0,0,PASSAGE_W,PASSAGE_H);
+    ctx.fillStyle = 'rgb(' + colors.bgRGB + ')';
+    ctx.fillRect(0,0,PASSAGE_W,PASSAGE_H);
+    const bins = 44;
+    const padL=10, padB=24, padT=10, padR=10;
+    const plotW = PASSAGE_W-padL-padR, plotH = PASSAGE_H-padT-padB;
+    const w = nTotal>0 ? nTotal/bins : 1;
+    const counts = new Array(bins).fill(0);
+    for (let k=0;k<values.length;k++){
+      let b = Math.floor(values[k]/w);
+      if (b<0) b=0; if (b>=bins) b=bins-1;
+      counts[b]++;
+    }
+    const density = counts.map(c => totalN>0 ? c/totalN : 0);
+    const maxD = Math.max(...density, 0.001) * 1.15;
+    const barW = plotW/bins;
+    ctx.fillStyle = colors.amberFill;
+    for (let b=0;b<bins;b++){
+      const h = (density[b]/maxD)*plotH;
+      ctx.fillRect(padL+b*barW, padT+plotH-h, barW-1, h);
+    }
+    ctx.strokeStyle = colors.axis;
+    ctx.beginPath(); ctx.moveTo(padL, padT+plotH); ctx.lineTo(padL+plotW, padT+plotH); ctx.stroke();
+  }
+
+  function fmt(x){ return Number(x).toFixed(2); }
+
+  const GRID_N = 48;
+  let surfaceAnimId = null;
+
+  function computeDensityGrid(X, Y, sigma){
+    const range = sigma * 4;
+    const cell = (2*range) / GRID_N;
+    const counts = [];
+    for (let i=0;i<=GRID_N;i++) counts.push(new Float64Array(GRID_N+1));
+    const N = X.length;
+    for (let p=0;p<N;p++){
+      let xi = Math.floor((X[p]+range)/cell);
+      let yi = Math.floor((Y[p]+range)/cell);
+      if (xi<0) xi=0; if (xi>=GRID_N) xi=GRID_N-1;
+      if (yi<0) yi=0; if (yi>=GRID_N) yi=GRID_N-1;
+      counts[xi][yi]++;
+    }
+    const area = cell*cell;
+    const nodes = [];
+    let maxDensity = 0;
+    for (let i=0;i<=GRID_N;i++){
+      const row = new Float64Array(GRID_N+1);
+      for (let j=0;j<=GRID_N;j++){
+        let sum=0, n=0;
+        for (const di of [-1,0]) for (const dj of [-1,0]){
+          const ii=i+di, jj=j+dj;
+          if (ii>=0 && ii<GRID_N && jj>=0 && jj<GRID_N){ sum += counts[ii][jj]; n++; }
+        }
+        const d = n>0 ? (sum/n)/N/area : 0;
+        row[j] = d;
+        if (d>maxDensity) maxDensity = d;
+      }
+      nodes.push(row);
+    }
+    return { nodes, range, cell, maxDensity, sigma };
+  }
+
+  function project3D(x, y, z, azimuth, elevation){
+    const ca = Math.cos(azimuth), sa = Math.sin(azimuth);
+    const x1 = x*ca - y*sa;
+    const y1 = x*sa + y*ca;
+    const ce = Math.cos(elevation), se = Math.sin(elevation);
+    const y2 = y1*ce - z*se;
+    const z2 = y1*se + z*ce;
+    return { sx: x1, sy: z2, depth: y2 };
+  }
+
+  function lerpColor(t){
+    const stops = [
+      [42,24,14],
+      [255,178,56],
+      [255,238,196]
+    ];
+    const seg = t < 0.55 ? 0 : 1;
+    const localT = seg===0 ? t/0.55 : (t-0.55)/0.45;
+    const a = stops[seg], b = stops[seg+1];
+    const r = Math.round(a[0]+(b[0]-a[0])*localT);
+    const g = Math.round(a[1]+(b[1]-a[1])*localT);
+    const bch = Math.round(a[2]+(b[2]-a[2])*localT);
+    return 'rgb('+r+','+g+','+bch+')';
+  }
+
+  function drawSurface(grid, azimuth, elevation){
+    const ctx = ctxSurface;
+    ctx.clearRect(0,0,SURF_W,SURF_H);
+    ctx.fillStyle = 'rgb(' + colors.bgRGB + ')';
+    ctx.fillRect(0,0,SURF_W,SURF_H);
+
+    const { nodes, range, maxDensity } = grid;
+    const planeScale = (SURF_W*0.34) / range;
+    const heightScale = SURF_H * 0.62 / (maxDensity || 1);
+    const cx = SURF_W/2, cy = SURF_H*0.62;
+
+    const proj = [];
+    for (let i=0;i<=GRID_N;i++){
+      const rowProj = [];
+      const x = -range + i*(2*range/GRID_N);
+      for (let j=0;j<=GRID_N;j++){
+        const y = -range + j*(2*range/GRID_N);
+        const z = nodes[i][j]*heightScale;
+        const p = project3D(x*planeScale, y*planeScale, z, azimuth, elevation);
+        rowProj.push({ sx: cx + p.sx, sy: cy - p.sy, depth: p.depth, d: nodes[i][j]/(maxDensity||1) });
+      }
+      proj.push(rowProj);
+    }
+
+    const quads = [];
+    for (let i=0;i<GRID_N;i++){
+      for (let j=0;j<GRID_N;j++){
+        const p00=proj[i][j], p10=proj[i+1][j], p11=proj[i+1][j+1], p01=proj[i][j+1];
+        const depth = (p00.depth+p10.depth+p11.depth+p01.depth)/4;
+        const dval = (p00.d+p10.d+p11.d+p01.d)/4;
+        quads.push({ pts:[p00,p10,p11,p01], depth, dval });
+      }
+    }
+    quads.sort((a,b) => b.depth - a.depth);
+
+    for (const q of quads){
+      ctx.beginPath();
+      ctx.moveTo(q.pts[0].sx, q.pts[0].sy);
+      for (let k=1;k<4;k++) ctx.lineTo(q.pts[k].sx, q.pts[k].sy);
+      ctx.closePath();
+      ctx.fillStyle = lerpColor(q.dval);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(20,23,28,0.45)';
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+    }
+  }
+
+  function startSurfaceRotation(grid){
+    if (surfaceAnimId) cancelAnimationFrame(surfaceAnimId);
+    let azimuth = -0.7;
+    const elevation = 0.55;
+    function loop(){
+      drawSurface(grid, azimuth, elevation);
+      if (!reduceMotion) azimuth += 0.0025;
+      surfaceAnimId = requestAnimationFrame(loop);
+    }
+    loop();
+  }
+
+  // ---- Feature 4: click-to-add personal walkers, on their own persistent loop ----
+  let myWalkers = [];
+  const MAX_MY_WALKERS = 8;
+  const MY_HISTORY_CAP = 600;
+  const MY_STEP_INTERVAL_MS = 70;
+  let lastMyStepTs = 0;
+
+  scatterCanvas.addEventListener('click', (e) => {
+    const x = (e.offsetX - currentGeom.cx) / currentGeom.scale;
+    const y = (currentGeom.cy - e.offsetY) / currentGeom.scale;
+    myWalkers.push({ x, y, history: [{x, y}] });
+    if (myWalkers.length > MAX_MY_WALKERS) myWalkers.shift();
+    statusEl.textContent = 'Dropped a sailor at (' + fmt(x) + ', ' + fmt(y) + '). It keeps taking steps on its own — add up to ' + MAX_MY_WALKERS + '.';
+  });
+
+  clearMineBtn.addEventListener('click', () => {
+    myWalkers = [];
+    ctxMine.clearRect(0,0,SCATTER_W,SCATTER_H);
+  });
+
+  function drawMyWalkers(){
+    ctxMine.clearRect(0,0,SCATTER_W,SCATTER_H);
+    if (!myWalkers.length) return;
+    const { cx, cy, scale } = currentGeom;
+    for (const w of myWalkers){
+      const h = w.history;
+      if (h.length > 1){
+        ctxMine.strokeStyle = colors.mine;
+        ctxMine.globalAlpha = 0.55;
+        ctxMine.lineWidth = 1.4;
+        ctxMine.beginPath();
+        ctxMine.moveTo(cx + h[0].x*scale, cy - h[0].y*scale);
+        for (let k=1;k<h.length;k++) ctxMine.lineTo(cx + h[k].x*scale, cy - h[k].y*scale);
+        ctxMine.stroke();
+        ctxMine.globalAlpha = 1;
+      }
+      const last = h[h.length-1];
+      const hx = cx + last.x*scale, hy = cy - last.y*scale;
+      ctxMine.fillStyle = colors.mine;
+      ctxMine.shadowColor = colors.mine;
+      ctxMine.shadowBlur = 8;
+      ctxMine.beginPath(); ctxMine.arc(hx, hy, 3.4, 0, 2*Math.PI); ctxMine.fill();
+      ctxMine.shadowBlur = 0;
+    }
+  }
+
+  function myWalkerLoop(ts){
+    if (myWalkers.length && ts - lastMyStepTs > MY_STEP_INTERVAL_MS){
+      lastMyStepTs = ts;
+      for (const w of myWalkers){
+        const { dx, dy } = nextStep(stepMode);
+        w.x += dx; w.y += dy;
+        w.history.push({ x: w.x, y: w.y });
+        if (w.history.length > MY_HISTORY_CAP) w.history.shift();
+      }
+    }
+    drawMyWalkers();
+    requestAnimationFrame(myWalkerLoop);
+  }
+  requestAnimationFrame(myWalkerLoop);
+
+  function run(){
+    const N = parseInt(particlesInput.value, 10);
+    const n = parseInt(stepsInput.value, 10);
+    if (animId) cancelAnimationFrame(animId);
+    if (surfaceAnimId) { cancelAnimationFrame(surfaceAnimId); surfaceAnimId = null; }
+    ctxSurface.fillStyle = 'rgb(' + colors.bgRGB + ')';
+    ctxSurface.fillRect(0,0,SURF_W,SURF_H);
+
+    runBtn.disabled = true;
+    particlesInput.disabled = true;
+    stepsInput.disabled = true;
+    statusEl.textContent = `Animating ${N.toLocaleString()} walkers over ~20s (${n.toLocaleString()} steps each)...`;
+
+    const X = new Float64Array(N);
+    const Y = new Float64Array(N);
+    const sampleCount = Math.min(8, N);
+    const samplePathX = [], samplePathY = [];
+    for (let s=0; s<sampleCount; s++){
+      samplePathX.push(new Float64Array(n+1));
+      samplePathY.push(new Float64Array(n+1));
+    }
+
+    const bucketOf = new Uint8Array(N);
+    const bucketMembers = [];
+    for (let b=0;b<HUE_BUCKETS;b++) bucketMembers.push([]);
+    let bucketsBuilt = false;
+
+    const sigma = Math.sqrt(n/2);
+    currentSigma = sigma;
+    const geom = drawGrid(ctxScatter, sigma);
+    currentGeom = geom;
+    ctxScatter.save();
+    ctxScatter.globalCompositeOperation = 'destination-over';
+    ctxScatter.fillStyle = 'rgb(' + colors.bgRGB + ')';
+    ctxScatter.fillRect(0,0,SCATTER_W,SCATTER_H);
+    ctxScatter.restore();
+
+    // first-passage tracking: has each walker gone farther than 2*sigma yet?
+    const passThresh2 = (2*sigma)*(2*sigma);
+    const hasPassed = new Uint8Array(N);
+    const firstPassageStep = new Int32Array(N).fill(-1);
+
+    let currentStep = 0;
+    let startTime = null;
+    const effectiveDuration = reduceMotion ? 1 : TOTAL_MS;
+
+    function renderFrame(){
+      const ctx = ctxScatter;
+      const { cx, cy, scale } = geom;
+      const ds = parseFloat(dotSizeInput.value);
+      const tailSeg = parseInt(tailLenInput.value, 10);
+
+      ctx.fillStyle = 'rgba(' + colors.bgRGB + ',' + FADE_ALPHA + ')';
+      ctx.fillRect(0,0,SCATTER_W,SCATTER_H);
+
+      ctx.strokeStyle = colors.grid;
+      ctx.lineWidth = 1;
+      for (let g=-4; g<=4; g++){
+        const gx = cx + g*sigma*scale;
+        const gy = cy + g*sigma*scale;
+        ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,SCATTER_H); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(SCATTER_W,gy); ctx.stroke();
+      }
+      ctx.strokeStyle = colors.axis;
+      ctx.beginPath(); ctx.moveTo(cx,0); ctx.lineTo(cx,SCATTER_H); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0,cy); ctx.lineTo(SCATTER_W,cy); ctx.stroke();
+
+      if (bucketsBuilt){
+        for (let b=0;b<HUE_BUCKETS;b++){
+          const members = bucketMembers[b];
+          if (!members.length) continue;
+          ctx.fillStyle = swarmBucketFill[b];
+          ctx.beginPath();
+          for (let m=0;m<members.length;m++){
+            const i = members[m];
+            const px = cx + X[i]*scale;
+            const py = cy - Y[i]*scale;
+            if (px<-2||px>SCATTER_W+2||py<-2||py>SCATTER_H+2) continue;
+            ctx.rect(px - ds/2, py - ds/2, ds, ds);
+          }
+          ctx.fill();
+        }
+      } else {
+        ctx.fillStyle = colors.amber;
+        ctx.beginPath();
+        for (let i=0;i<N;i++){
+          const px = cx + X[i]*scale;
+          const py = cy - Y[i]*scale;
+          if (px<-2||px>SCATTER_W+2||py<-2||py>SCATTER_H+2) continue;
+          ctx.rect(px - ds/2, py - ds/2, ds, ds);
+        }
+        ctx.fill();
+      }
+
+      for (let s=0; s<sampleCount; s++){
+        const col = bucketsBuilt ? pathBucketColor[bucketOf[s]] : pathColors[s % pathColors.length];
+
+        ctx.globalAlpha = 0.32;
+        ctx.strokeStyle = col;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(cx + samplePathX[s][0]*scale, cy - samplePathY[s][0]*scale);
+        for (let k=1;k<=currentStep;k++){
+          ctx.lineTo(cx + samplePathX[s][k]*scale, cy - samplePathY[s][k]*scale);
+        }
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+
+        const tailStart = Math.max(0, currentStep - tailSeg);
+        ctx.strokeStyle = col;
+        ctx.lineWidth = 2.1;
+        ctx.shadowColor = col;
+        ctx.shadowBlur = 7;
+        ctx.beginPath();
+        ctx.moveTo(cx + samplePathX[s][tailStart]*scale, cy - samplePathY[s][tailStart]*scale);
+        for (let k=tailStart+1;k<=currentStep;k++){
+          ctx.lineTo(cx + samplePathX[s][k]*scale, cy - samplePathY[s][k]*scale);
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        const hx = cx + samplePathX[s][currentStep]*scale;
+        const hy = cy - samplePathY[s][currentStep]*scale;
+        const headR = Math.max(1.5, ds * 1.2);
+        ctx.fillStyle = col;
+        ctx.beginPath(); ctx.arc(hx, hy, headR, 0, 2*Math.PI); ctx.fill();
+      }
+
+      const originR = Math.max(2, ds);
+      ctx.fillStyle = colors.text;
+      ctx.beginPath(); ctx.arc(cx, cy, originR, 0, 2*Math.PI); ctx.fill();
+    }
+
+    function finalize(){
+      const R = new Float64Array(N);
+      const Theta = new Float64Array(N);
+      for (let i=0;i<N;i++){
+        R[i] = Math.hypot(X[i], Y[i]);
+        Theta[i] = Math.atan2(Y[i], X[i]);
+      }
+      const mx = mean(X), my = mean(Y);
+      const vx = variance(X, mx), vy = variance(Y, my);
+      let cov = 0;
+      for (let i=0;i<N;i++) cov += (X[i]-mx)*(Y[i]-my);
+      cov /= N;
+      const corr = cov / Math.sqrt(vx*vy);
+      const meanR = mean(R);
+      const meanRtheory = sigma * Math.sqrt(Math.PI/2);
+
+      const ctx = ctxScatter;
+      ctx.clearRect(0,0,SCATTER_W,SCATTER_H);
+      ctx.fillStyle = 'rgb(' + colors.bgRGB + ')';
+      ctx.fillRect(0,0,SCATTER_W,SCATTER_H);
+      drawGrid(ctx, sigma);
+      const { cx, cy, scale } = geom;
+      const ds = parseFloat(dotSizeInput.value);
+      for (let b=0;b<HUE_BUCKETS;b++){
+        const members = bucketMembers[b];
+        if (!members.length) continue;
+        ctx.fillStyle = swarmBucketFill[b];
+        ctx.beginPath();
+        for (let m=0;m<members.length;m++){
+          const i = members[m];
+          const px = cx + X[i]*scale;
+          const py = cy - Y[i]*scale;
+          if (px<0||px>SCATTER_W||py<0||py>SCATTER_H) continue;
+          ctx.rect(px - ds/2, py - ds/2, ds, ds);
+        }
+        ctx.fill();
+      }
+      for (let s=0; s<sampleCount; s++){
+        const col = pathBucketColor[bucketOf[s]];
+        ctx.strokeStyle = col;
+        ctx.lineWidth = 1.5;
+        ctx.shadowColor = col;
+        ctx.shadowBlur = 4;
+        ctx.beginPath();
+        ctx.moveTo(cx + samplePathX[s][0]*scale, cy - samplePathY[s][0]*scale);
+        for (let k=1;k<samplePathX[s].length;k++){
+          ctx.lineTo(cx + samplePathX[s][k]*scale, cy - samplePathY[s][k]*scale);
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+      }
+      const originR = Math.max(2, ds);
+      ctx.fillStyle = colors.text;
+      ctx.beginPath(); ctx.arc(cx, cy, originR, 0, 2*Math.PI); ctx.fill();
+
+      drawRadiusHist(R, sigma, n);
+      drawAngleHist(Theta);
+
+      document.getElementById('statVarXY').textContent = fmt(vx) + ', ' + fmt(vy);
+      document.getElementById('statVarXYtheory').textContent = 'theory: n/2 = ' + fmt(n/2);
+      document.getElementById('statCorr').textContent = fmt(corr);
+      document.getElementById('statMeanR').textContent = fmt(meanR);
+      document.getElementById('statMeanRtheory').textContent = 'theory: \u03C3\u221A(\u03C0/2) = ' + fmt(meanRtheory);
+      document.getElementById('statSigma').textContent = fmt(sigma);
+
+      const grid = computeDensityGrid(X, Y, sigma);
+      const peakTheory = 1/(2*Math.PI*sigma*sigma);
+      document.getElementById('statPeak').textContent = grid.maxDensity.toFixed(4);
+      document.getElementById('statPeakTheory').textContent = 'theory: 1/(2\u03C0\u03C3\u00B2) = ' + peakTheory.toFixed(4);
+      startSurfaceRotation(grid);
+
+      const sortedR = Array.from(R).sort((a,b) => a-b);
+      const medianR = sortedR[Math.floor(N/2)];
+      const cepTheory = sigma * Math.sqrt(2*Math.log(2));
+
+      let sumR2 = 0;
+      for (let i=0;i<N;i++) sumR2 += R[i]*R[i];
+      const meanPower = sumR2 / N;
+      const meanPowerTheory = 2*sigma*sigma;
+
+      const fadeThresh = 0.5*meanR;
+      let deepFadeCount = 0;
+      for (let i=0;i<N;i++) if (R[i] < fadeThresh) deepFadeCount++;
+      const fadeFracObs = deepFadeCount / N;
+      const fadeFracTheory = 1 - Math.exp(-(fadeThresh*fadeThresh)/(2*sigma*sigma));
+
+      document.getElementById('statCEP').textContent = fmt(medianR);
+      document.getElementById('statCEPtheory').textContent = 'theory: \u03C3\u221A(2 ln 2) = ' + fmt(cepTheory);
+      document.getElementById('statPower').textContent = fmt(meanPower);
+      document.getElementById('statPowerTheory').textContent = 'theory: 2\u03C3\u00B2 = ' + fmt(meanPowerTheory);
+      document.getElementById('statFade').textContent = (fadeFracObs*100).toFixed(1) + '% of walkers';
+      document.getElementById('statFadeTheory').textContent = 'theory: ' + (fadeFracTheory*100).toFixed(1) + '% (Rayleigh CDF at 0.5\u00D7mean)';
+
+      // first-passage summary + histogram
+      const crossed = [];
+      for (let i=0;i<N;i++) if (hasPassed[i]) crossed.push(firstPassageStep[i]);
+      const fracCrossed = crossed.length / N;
+      drawPassageHist(crossed, n, N);
+      let summary = (fracCrossed*100).toFixed(1) + '% of walkers passed 2\u03C3 (' + fmt(2*sigma) + ') within ' + n.toLocaleString() + ' steps';
+      if (crossed.length) summary += '; mean crossing step ' + Math.round(mean(crossed)).toLocaleString();
+      passageSummaryEl.textContent = summary;
+
+      statusEl.textContent = 'Done. ' + N.toLocaleString() + ' walkers, ' + n.toLocaleString() + ' steps each (' + (N*n).toLocaleString() + ' random steps drawn).';
+      runBtn.disabled = false;
+      particlesInput.disabled = false;
+      stepsInput.disabled = false;
+      animId = null;
+    }
+
+    function frame(ts){
+      if (startTime === null) startTime = ts;
+      const elapsed = ts - startTime;
+      const targetStep = Math.min(n, Math.floor((elapsed/effectiveDuration) * n));
+      while (currentStep < targetStep){
+        currentStep++;
+        const isFirstStep = (currentStep === 1);
+        for (let i=0;i<N;i++){
+          const { dx, dy } = nextStep(stepMode);
+          X[i] += dx;
+          Y[i] += dy;
+          if (!hasPassed[i]){
+            const r2 = X[i]*X[i] + Y[i]*Y[i];
+            if (r2 >= passThresh2){ hasPassed[i] = 1; firstPassageStep[i] = currentStep; }
+          }
+          if (isFirstStep){
+            let theta0 = Math.atan2(dy, dx);
+            if (theta0 < 0) theta0 += 2*Math.PI;
+            bucketOf[i] = Math.floor((theta0 / (2*Math.PI)) * HUE_BUCKETS) % HUE_BUCKETS;
+          }
+          if (i < sampleCount){
+            samplePathX[i][currentStep] = X[i];
+            samplePathY[i][currentStep] = Y[i];
+          }
+        }
+        if (isFirstStep){
+          for (let i=0;i<N;i++) bucketMembers[bucketOf[i]].push(i);
+          bucketsBuilt = true;
+        }
+      }
+      renderFrame();
+      if (currentStep < n){
+        animId = requestAnimationFrame(frame);
+      } else {
+        finalize();
+      }
+    }
+
+    animId = requestAnimationFrame(frame);
+  }
+
+  runBtn.addEventListener('click', run);
+  run();
+})();
+</script>
+
+</div>
+</body>
+</html>
