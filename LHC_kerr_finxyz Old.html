@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Yang-Mills Collider v3.2 + Kerr Black Hole</title>
+    <title>Yang-Mills Collider — Ultimate v3.2 + Kerr Black Hole (Frame Dragging)</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
@@ -90,87 +90,9 @@
             font-size: 9px; color: #8af; font-family: monospace; z-index: 30;
             backdrop-filter: blur(4px);
         }
-
-        /* ============================================================ */
-        /* 모바일용: UI 전체 온오프 + 최소 컨트롤 바                     */
-        /* ============================================================ */
-        #uiToggleBtn {
-            position: fixed; top: 14px; right: 14px; z-index: 200;
-            width: 38px; height: 38px; border-radius: 50%;
-            background: rgba(6, 12, 28, 0.85); border: 1px solid #0ff;
-            color: #0ff; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-            transition: 0.2s;
-        }
-        #uiToggleBtn:active { background: #0ff; color: #000; }
-
-        /* UI 오프 상태: 메인 패널/모듈/로그/배지 숨김 */
-        body.ui-hidden .glass-panel,
-        body.ui-hidden .module-panel,
-        body.ui-hidden .log-area,
-        body.ui-hidden .badge {
-            display: none !important;
-        }
-
-        #mobileBar {
-            position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%);
-            z-index: 200; display: none;
-            align-items: center; gap: 6px;
-            background: rgba(6, 12, 28, 0.85); backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 40px;
-            padding: 7px 10px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.55);
-        }
-        body.ui-hidden #mobileBar { display: flex; }
-
-        .mobile-group {
-            display: flex; align-items: center; gap: 3px;
-            padding: 0 4px; border-right: 1px solid rgba(0,255,255,0.2);
-        }
-        .mobile-group:last-of-type { border-right: none; }
-        .mobile-label { font-size: 8px; color: #8ab; font-family: 'JetBrains Mono', monospace; padding: 0 2px; white-space: nowrap; }
-        .mobile-mini-btn {
-            width: 26px; height: 26px; border-radius: 50%;
-            background: rgba(0,20,40,0.9); border: 1px solid #0ff; color: #0ff;
-            font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; padding: 0; margin: 0;
-        }
-        .mobile-mini-btn:active { background: #0ff; color: #000; }
-        #mobileCollideBtn {
-            border-color: #f90; color: #f90; border-radius: 30px;
-            padding: 0 14px; height: 26px; font-size: 10px; margin: 0;
-        }
-        #mobileCollideBtn:active { background: #f90; color: #000; }
-        #mobileClearBtn {
-            border-color: #f77; color: #f77; border-radius: 30px;
-            padding: 0 12px; height: 26px; font-size: 10px; margin: 0;
-        }
-        #mobileClearBtn:active { background: #f77; color: #000; }
     </style>
 </head>
 <body>
-
-<!-- ============================================================ -->
-<!-- 모바일용: UI 온오프 버튼 + 최소 컨트롤 바 (거리/질량 ±, 충돌)  -->
-<!-- ============================================================ -->
-<div id="uiToggleBtn" title="UI 켜기/끄기">O</div>
-
-<div id="mobileBar">
-    <div class="mobile-group">
-        <span class="mobile-label">거리</span>
-        <button class="mobile-mini-btn" id="mBhDistMinus">−</button>
-        <button class="mobile-mini-btn" id="mBhDistPlus">+</button>
-    </div>
-    <div class="mobile-group">
-        <span class="mobile-label">질량</span>
-        <button class="mobile-mini-btn" id="mBhMassMinus">−</button>
-        <button class="mobile-mini-btn" id="mBhMassPlus">+</button>
-    </div>
-    <button id="mobileCollideBtn">🔥 충돌</button>
-    <button id="mobileClearBtn">◀ 클리어</button>
-</div>
 
 <!-- ============================================================ -->
 <!-- MAIN HUD (same as original, kept intact)                    -->
@@ -206,8 +128,8 @@
     </div>
     <div class="slider-group">
         <span>⚫ BH 거리</span>
-        <input type="range" id="bhDistSlide" min="0" max="200" step="5" value="128">
-        <span id="bhDistVal" class="val">128</span>
+        <input type="range" id="bhDistSlide" min="0" max="200" step="5" value="80">
+        <span id="bhDistVal" class="val">80</span>
     </div>
     <div class="slider-group">
         <span>↕ BH Z축</span>
@@ -221,9 +143,9 @@
     </div>
     <div class="slider-group">
         <span>🌀 BH 질량</span>
-        <input type="range" id="bhMassSlide" min="0" max="450" step="0.1" value="81">
+        <input type="range" id="bhMassSlide" min="0" max="450" step="0.1" value="0">
 
-        <span id="bhMassVal" class="val">81</span>
+        <span id="bhMassVal" class="val">0</span>
     </div>
     <div class="slider-group">
         <span>🔄 BH 스핀 (a*)</span>
@@ -246,7 +168,7 @@
     </div>
     <div style="font-size:8px; margin-top:10px; color:#8ab; text-align:right;">
         Boris integrator · 4-운동량 보존 · αs 2-loop · PDG2022 분기비<br>
-        Tsallis pT · γτ 시간팽창 · NSD 다중도 · 39종 입자 + 쿼크/글루온 하드로나이제이션
+        Tsallis pT · γτ 시간팽창 · NSD 다중도 · 39종 입자
         <br>✅ v3.2 + ⚫ Kerr Black Hole (Frame Dragging)
     </div>
 </div>
@@ -355,7 +277,7 @@
     <div id="logEntries"></div>
 </div>
 
-<div class="badge">⚛️ Yang-Mills Ultimate v3.2 + Kerr BH (Frame Dragging, Ergosphere) · PDG2022 · 39종 입자+쿼크/글루온 제트 | B. Sun</div>
+<div class="badge">⚛️ Yang-Mills Ultimate v3.2 + Kerr BH (Frame Dragging, Ergosphere) · PDG2022 · 39종 입자 | B. Sun</div>
 
 <!-- ============================================================ -->
 <!-- Three.js import and core simulation (original + patches)    -->
@@ -411,38 +333,32 @@ class FourVector {
 }
 
 // ============================================================
-// [3] 입자 데이터베이스 (PDG 2022, 39종 강입자/경입자/보손 + 하단 쿼크 5종/글루온 추가)
+// [3] 입자 데이터베이스 (PDG 2022, 39종) - unchanged
 // ============================================================
 const PDG = {
     photon:    { sym:"γ",      mass:0.0,       charge:0,  color:"#ffffaa", life_SI:Infinity, decays:[] },
-    // W/Z 하드론 채널: 실제로는 쿼크-반쿼크 쌍으로 붕괴한 뒤 색가둠 때문에
-    // 즉시 하드로나이제이션(아래 [3b] 참조)되어 제트가 된다. 특정 메존 쌍으로
-    // "직접" 붕괴하는 채널은 실제 PDG에 존재하지 않으므로 쿼크쌍으로 교체함.
     W_plus:    { sym:"W⁺",    mass:80.377,    charge:+1, color:"#ff4488", life_SI:lifeFromWidth(2.085),
-        // 경입자 채널(합 32.72%)은 PDG 실측값 그대로. 강입자 채널(합 67.60%)은
-        // CKM 지배적인 두 채널(ud̄, cs̄)로 근사 (CKM-억제 채널 us̄/cd̄는 각 <2%라 생략)
-        decays:[{br:0.1071,products:["electron","nue"]},{br:0.1063,products:["muon_p","numu"]},{br:0.1138,products:["tau_p","nutau"]},{br:0.3380,products:["quark_u","quark_dbar"]},{br:0.3380,products:["quark_c","quark_sbar"]}] },
+        decays:[{br:0.1071,products:["electron","nue"]},{br:0.1063,products:["muon_p","numu"]},{br:0.1138,products:["tau_p","nutau"]},{br:0.2247,products:["pion_p","pion_0"]},{br:0.2247,products:["kaon_p","K0S"]},{br:0.2234,products:["proton","neutron"]}] },
     W_minus:   { sym:"W⁻",    mass:80.377,    charge:-1, color:"#ff4488", life_SI:lifeFromWidth(2.085),
-        decays:[{br:0.1071,products:["positron","antinue"]},{br:0.1063,products:["muon_m","antinumu"]},{br:0.1138,products:["tau_m","antinutau"]},{br:0.3380,products:["quark_ubar","quark_d"]},{br:0.3380,products:["quark_cbar","quark_s"]}] },
+        decays:[{br:0.1071,products:["positron","antinue"]},{br:0.1063,products:["muon_m","antinumu"]},{br:0.1138,products:["tau_m","antinutau"]},{br:0.2247,products:["pion_m","pion_0"]},{br:0.2247,products:["kaon_m","K0S"]},{br:0.2234,products:["antiproton","neutron"]}] },
     Z0:        { sym:"Z⁰",    mass:91.1876,   charge:0,  color:"#ff88cc", life_SI:lifeFromWidth(2.4952),
-        // 강입자 채널(합 69.9%)을 5종 쿼크 플레이버로 분해.
-        // down형(d,s,b)이 up형(u,c)보다 분기비가 큰 것은 약한 아이소스핀·전하 결합상수 차이 때문
-        // (실제 Rb=Γ(bb̄)/Γ(had)≈0.216 등 LEP 측정치에 근사)
-        decays:[{br:0.03366,products:["electron","positron"]},{br:0.03366,products:["muon_m","muon_p"]},{br:0.03370,products:["tau_m","tau_p"]},{br:0.06667,products:["nue","antinue"]},{br:0.06667,products:["numu","antinumu"]},{br:0.06667,products:["nutau","antinutau"]},{br:0.1160,products:["quark_u","quark_ubar"]},{br:0.1160,products:["quark_c","quark_cbar"]},{br:0.1566,products:["quark_d","quark_dbar"]},{br:0.1566,products:["quark_s","quark_sbar"]},{br:0.1512,products:["quark_b","quark_bbar"]}] },
+        decays:[{br:0.03366,products:["electron","positron"]},{br:0.03366,products:["muon_m","muon_p"]},{br:0.03370,products:["tau_m","tau_p"]},{br:0.06667,products:["nue","antinue"]},{br:0.06667,products:["numu","antinumu"]},{br:0.06667,products:["nutau","antinutau"]},{br:0.14232,products:["pion_p","pion_m","pion_0"]},{br:0.14232,products:["kaon_p","kaon_m","pion_0"]},{br:0.14232,products:["proton","antiproton"]},{br:0.12000,products:["D_plus","D_minus"]},{br:0.07600,products:["B_plus","B_minus"]},{br:0.07600,products:["B0","B0bar"]}] },
     higgs:     { sym:"H⁰",    mass:125.20,    charge:0,  color:"#ffffff", life_SI:lifeFromWidth(3.2e-3),
-        // PDG 2022 Higgs branching ratios. bb̄/cc̄/gg는 파톤 레벨(쿼크·글루온)로
-        // 직접 붕괴시키고, 그 쿼크/글루온이 [3b]의 하드로나이제이션 루틴을 거쳐
-        // 실제로 다수 강입자로 이루어진 제트가 되도록 함 (2단계 프로세스가 물리적으로 정확함).
-        // ττ(6.3%), μμ(0.022%), sš̄(<0.03%) 등 극소 채널 중 μμ/sš̄는 생략(단순화).
+        // PDG 2022 Higgs branching ratios — b쿼크/c쿼크는 B/D 메존으로 하드로나이제이션
         decays:[
             {br:0.2137, products:["W_plus","W_minus"]},
             {br:0.0262, products:["Z0","Z0"]},
             {br:0.0627, products:["tau_p","tau_m"]},
             {br:0.0023, products:["photon","photon"]},
-            {br:0.0015, products:["Z0","photon"]},
-            {br:0.5824, products:["quark_b","quark_bbar"]},
-            {br:0.0289, products:["quark_c","quark_cbar"]},
-            {br:0.0818, products:["gluon","gluon"]}
+            // H→bb̄ (58.24%): b쿼크 → B메존 페어 (B⁺B⁻ / B⁰B̄⁰ 각 ~50%)
+            {br:0.2912, products:["B_plus","B_minus"]},
+            {br:0.2912, products:["B0","B0bar"]},
+            // H→cc̄ (2.89%): c쿼크 → D메존 페어
+            {br:0.0145, products:["D_plus","D_minus"]},
+            {br:0.0144, products:["D0","D0bar"]},
+            // H→gg (8.18%): 글루온 제트 → 하드로닉 최종 상태 근사
+            {br:0.0409, products:["kaon_p","kaon_m","pion_0"]},
+            {br:0.0409, products:["pion_p","pion_m","pion_0"]}
         ] },
     electron:  { sym:"e⁻",    mass:0.000511,  charge:-1, color:"#e8e8ff", life_SI:Infinity, decays:[] },
     positron:  { sym:"e⁺",    mass:0.000511,  charge:+1, color:"#ffe8ff", life_SI:Infinity, decays:[] },
@@ -514,22 +430,6 @@ const PDG = {
         decays:[{br:0.9987,products:["lambda","pion_m"]}] },
     omega_b:   { sym:"Ω⁻",   mass:1.67245,   charge:-1, color:"#22cc99", life_SI:8.21e-11,
         decays:[{br:0.678,products:["lambda","kaon_m"]},{br:0.322,products:["xi_m","pion_0"]}] },
-
-    // ── 파톤(쿼크·글루온) ────────────────────────────────────────
-    // 색가둠(color confinement)으로 인해 자유 입자로 존재할 수 없고, 생성 즉시
-    // (~10⁻²⁴초, QCD 스케일) 하드로나이제이션되어 강입자 제트가 된다.
-    // decays:[]로 두고 [3b]의 hadronizeParton()이 별도로 처리한다.
-    gluon:     { sym:"g",     mass:0.0,       charge:0,     color:"#66ff99", life_SI:1e-24, parton:true, decays:[] },
-    quark_u:   { sym:"u",     mass:0.0022,    charge:+2/3,  color:"#ff9944", life_SI:1e-24, parton:true, decays:[] },
-    quark_ubar:{ sym:"ū",     mass:0.0022,    charge:-2/3,  color:"#ffbb77", life_SI:1e-24, parton:true, decays:[] },
-    quark_d:   { sym:"d",     mass:0.0047,    charge:-1/3,  color:"#44ccff", life_SI:1e-24, parton:true, decays:[] },
-    quark_dbar:{ sym:"d̄",    mass:0.0047,    charge:+1/3,  color:"#77ddff", life_SI:1e-24, parton:true, decays:[] },
-    quark_s:   { sym:"s",     mass:0.095,     charge:-1/3,  color:"#33ffcc", life_SI:1e-24, parton:true, decays:[] },
-    quark_sbar:{ sym:"s̄",    mass:0.095,     charge:+1/3,  color:"#66ffdd", life_SI:1e-24, parton:true, decays:[] },
-    quark_c:   { sym:"c",     mass:1.27,      charge:+2/3,  color:"#ff66cc", life_SI:1e-24, parton:true, decays:[] },
-    quark_cbar:{ sym:"c̄",    mass:1.27,      charge:-2/3,  color:"#ff99dd", life_SI:1e-24, parton:true, decays:[] },
-    quark_b:   { sym:"b",     mass:4.18,      charge:-1/3,  color:"#9966ff", life_SI:1e-24, parton:true, decays:[] },
-    quark_bbar:{ sym:"b̄",    mass:4.18,      charge:+1/3,  color:"#bb99ff", life_SI:1e-24, parton:true, decays:[] },
 };
 
 // ============================================================
@@ -619,44 +519,6 @@ function trySpawnHeavy(sqrtS) {
     if(sqrtS>=3000 && Math.random()<0.0004) return "D0";
     if(sqrtS>=8000 && Math.random()<0.00001) return "higgs";
     return null;
-}
-
-// ============================================================
-// [3b] 파톤 하드로나이제이션 (쿼크/글루온 → 제트)
-// ============================================================
-// 완전한 Lund string / cluster 프래그멘테이션 모델(Pythia/Herwig 수준)은
-// 이 시뮬레이터의 범위를 벗어나므로, e+e-→jets 관측 데이터에 대략 맞춘
-// 로그형 다중도 근사 + 기존 PRIMARY_WEIGHTS(실제 LHC 입자 생성비 기반)
-// 하드론 조성을 사용한 단순화 모델을 쓴다. 4-운동량은 기존 N-body 분할
-// 루틴(연속 2체 붕괴)을 그대로 재사용하므로 완전히 보존된다.
-function jetMultiplicity(E_GeV) {
-    // <n_ch> ≈ a + b·ln(E)  (LEP e+e- 제트 다중도 관측치에 대략 맞춘 근사)
-    const a = 1.2, b = 2.35;
-    const mean = Math.max(2, a + b * Math.log(Math.max(1.0, E_GeV)));
-    const L = Math.exp(-Math.min(mean, 700));
-    let n = 0, p_prod = 1.0;
-    do { n++; p_prod *= Math.random(); } while (p_prod > L && n < 40);
-    return Math.max(2, Math.min(16, n - 1));
-}
-function pickPrimaryHadron() {
-    const totalW = PRIMARY_WEIGHTS.reduce((a, b) => a + b.w, 0);
-    let r = Math.random() * totalW, key = PRIMARY_WEIGHTS[PRIMARY_WEIGHTS.length - 1].key;
-    for (const pw of PRIMARY_WEIGHTS) { r -= pw.w; if (r <= 0) { key = pw.key; break; } }
-    return key;
-}
-function hadronizeParton(p) {
-    let n = jetMultiplicity(p.p4.E);
-    const products = [];
-    // 무거운 플레이버(b, c)는 선행 강입자로 B/D 메존을 남겨 heavy-flavor 태깅,
-    // 변위 정점(displaced vertex), B⁰ CP 위반 모듈과 자연스럽게 연결되게 함
-    // (실제로는 프래그멘테이션 함수에 따라 확률적으로 결정되며, 여기서는
-    // B⁺/B⁰, D⁰/D⁻ 각각 50:50으로 단순화)
-    if (p.type === 'quark_b')       { products.push(Math.random() < 0.5 ? 'B_minus' : 'B0bar'); n--; }
-    else if (p.type === 'quark_bbar') { products.push(Math.random() < 0.5 ? 'B_plus' : 'B0');    n--; }
-    else if (p.type === 'quark_c')    { products.push(Math.random() < 0.5 ? 'D0' : 'D_minus');    n--; }
-    else if (p.type === 'quark_cbar') { products.push(Math.random() < 0.5 ? 'D0bar' : 'D_plus');  n--; }
-    for (let i = 0; i < n; i++) products.push(pickPrimaryHadron());
-    return products;
 }
 
 function sampleDecayTime(typeKey, p4) {
@@ -901,10 +763,10 @@ let decayCount=0, rareCount=0, heavyCount=0;
 let Bfield=6.2, sqrtS=13000, trailMax=22, colliding=false;
 
 // ── 블랙홀 설정 ──────────────────────────────────────────────
-let BH_DIST   = 128;   // 슬라이더 초기값(bhDistSlide=128)과 동기화
+let BH_DIST   = 80;
 let BH_Z      = 0;     // z축 위치 (충돌 빔라인을 따라 이동)
 let BH_Y      = 0;     // y축 위치 (위/아래 이동)
-let BH_MASS   = 81;    // 슬라이더 초기값(bhMassSlide=81)과 동기화 → 시작부터 BH가 보이도록 수정
+let BH_MASS   = 0;
 let BH_SPIN   = 0.0;   // 무차원 스핀 파라미터 a* = a/M, 0~1 (커 파라미터)
 let bhMesh    = null;
 let bhAccDisk = null;
@@ -1245,33 +1107,21 @@ function updateParticle(p, dt) {
 }
 
 function decayParticle(p) {
-    const isParton = PDG[p.type] && PDG[p.type].parton;
-    let chosen;
-    if (isParton) {
-        // 쿼크/글루온: 정적 분기비 테이블 대신 [3b]의 하드로나이제이션으로 제트 생성
-        const products = hadronizeParton(p);
-        if (!products.length) return [];
-        chosen = { br: 1.0, products, isHadronization: true };
-    } else {
-        if(!p.decays.length) return [];
-        let totalBr=0; for(let d of p.decays) totalBr+=d.br;
-        let r=Math.random()*totalBr, ch=null;
-        for(let d of p.decays){ r -= d.br; if(r <= 0){ ch=d; break; } }
-        if(!ch) ch = p.decays[p.decays.length-1];
-        chosen = ch;
-    }
-    const isRare=!chosen.isHadronization && chosen.br<0.01, isHeavy=p.isHeavy||p.mass>3.0;
-    // Higgs 붕괴 채널별 표시 (파톤 레벨 — 실제 하드로나이제이션은 쿼크/글루온이
-    // 별도 입자로 전파된 뒤 다음 프레임에서 [3b]를 거쳐 제트로 나타남)
-    const isHiggsToBB = p.type==='higgs' && chosen.products.includes('quark_b');
-    const isHiggsToCC = p.type==='higgs' && chosen.products.includes('quark_c');
-    const isHiggsToGG = p.type==='higgs' && chosen.products.includes('gluon');
+    if(!p.decays.length) return [];
+    let totalBr=0; for(let d of p.decays) totalBr+=d.br;
+    let r=Math.random()*totalBr, chosen=null;
+    for(let d of p.decays){ r -= d.br; if(r <= 0){ chosen=d; break; } }
+    if(!chosen) chosen = p.decays[p.decays.length-1];
+    const isRare=chosen.br<0.01, isHeavy=p.isHeavy||p.mass>3.0;
+    // Higgs 붕괴 채널별 표시
+    const isHiggsToBB = p.type==='higgs' && chosen.products.some(k=>k.startsWith('B'));
+    const isHiggsToCC = p.type==='higgs' && chosen.products.some(k=>k.startsWith('D'));
+    const isHiggsToGG = p.type==='higgs' && chosen.products.includes('kaon_p') && !isHiggsToBB;
     const isHiggsToWW = p.type==='higgs' && chosen.products.includes('W_plus');
-    const isHiggsToZZ = p.type==='higgs' && chosen.products.includes('Z0') && chosen.products.length===2 && chosen.products[1]!=='photon';
-    if(chosen.isHadronization){ addLog(`🌀 하드로나이제이션: ${p.sym} → ${chosen.products.length}개 강입자 (제트)`, 'heavy'); }
-    else if(isHiggsToBB){ heavyCount++; addLog(`🔵 H→bb̄: ${p.sym} → b + b̄ [파톤, 곧 제트로 하드로나이즈]`, 'heavy');}
-    else if(isHiggsToCC){ heavyCount++; addLog(`🟢 H→cc̄: ${p.sym} → c + c̄ [파톤, 곧 제트로 하드로나이즈]`, 'heavy');}
-    else if(isHiggsToGG){ heavyCount++; addLog(`🟡 H→gg: ${p.sym} → g + g [글루온, 곧 제트로 하드로나이즈]`, 'heavy');}
+    const isHiggsToZZ = p.type==='higgs' && chosen.products.includes('Z0');
+    if(isHiggsToBB){ heavyCount++; addLog(`🔵 H→bb̄: ${p.sym} → ${chosen.products.join(' ')} [B메존 하드로나이제이션]`, 'heavy');}
+    else if(isHiggsToCC){ heavyCount++; addLog(`🟢 H→cc̄: ${p.sym} → ${chosen.products.join(' ')} [D메존 하드로나이제이션]`, 'heavy');}
+    else if(isHiggsToGG){ heavyCount++; addLog(`🟡 H→gg: ${p.sym} → ${chosen.products.join(' ')} [글루온 제트]`, 'heavy');}
     else if(isHiggsToWW){ heavyCount++; addLog(`🔴 H→WW*: ${p.sym} → W(on-shell) + W*(off-shell) [가상 W 보존]`, 'heavy');}
     else if(isHiggsToZZ){ heavyCount++; addLog(`🟠 H→ZZ*: ${p.sym} → Z(on-shell) + Z*(off-shell) [가상 Z 보존]`, 'heavy');}
     else if(isRare){rareCount++; addLog(`⚡ RARE: ${p.sym} → ${chosen.products.join(' ')}`, 'rare');}
@@ -1352,28 +1202,10 @@ function decayParticle(p) {
         const validProducts = oscillatedProducts.filter(k => PDG[k]);
         if(validProducts.length === 0) return [];
         const totalChildMass = validProducts.reduce((s,k) => s+PDG[k].mass, 0);
-
-        // 하드로나이제이션 특수 처리: 파톤(쿼크/글루온) 자체의 불변질량은
-        // 극히 작지만(예: u쿼크 0.0022 GeV) 실험실계 에너지는 크다(제트 에너지,
-        // 수십 GeV). 실제 물리에서는 색끈(color string)이 끊어지며 그 운동
-        // 에너지가 강입자 질량으로 바뀌는데, 이는 "쿼크 하나가 자기 정지질량
-        // 예산 안에서 붕괴"하는 것과는 다른 메커니즘이다. 여기서는 총 에너지 E와
-        // 방향은 그대로 유지하되, 하드론들을 담을 수 있을 만큼만 유효 불변질량을
-        // 높인 4-벡터를 만들어 기존 N-body 분할 루틴에 넘긴다(운동량 크기만
-        // 미세하게 줄어들고, 에너지·방향은 보존 — 초상대론적 파톤에서 그 보정은
-        // 무시할 수준으로 작다).
-        let basisP4 = p.p4;
-        if (PDG[p.type] && PDG[p.type].parton) {
-            const E = p.p4.E, pMag = p.p4.pMag();
-            const Meff = Math.min(totalChildMass * 1.15, E * 0.9);
-            const pNewMag = Math.sqrt(Math.max(0, E*E - Meff*Meff));
-            const scale = pMag > 1e-9 ? pNewMag / pMag : 0;
-            basisP4 = new FourVector(E, p.p4.px*scale, p.p4.py*scale, p.p4.pz*scale);
-        }
-        if(basisP4.mass() < totalChildMass) return [];
+        if(p.p4.mass() < totalChildMass) return [];
 
         // Build children 4-momenta by successive 2-body decays in rest frame
-        let remainP4 = basisP4.clone();
+        let remainP4 = p.p4.clone();
         const child4Vs = [];
         for(let ci = 0; ci < validProducts.length - 1; ci++) {
             const k = validProducts[ci];
@@ -1821,32 +1653,6 @@ document.getElementById('applyFilterBtn').addEventListener('click',()=>{
     document.querySelectorAll('#decayFilters input:checked').forEach(cb=>activeFilters.add(cb.value));
     passedEvents=0; rejectedEvents=0; updateFilterStats();
 });
-// ============================================================
-// 모바일용: UI 온오프 + 최소 컨트롤 바
-// ============================================================
-document.getElementById('uiToggleBtn').addEventListener('click', ()=>{
-    document.body.classList.toggle('ui-hidden');
-});
-
-// 슬라이더 값을 delta만큼 바꾸고 기존 'input' 이벤트를 그대로 발생시켜
-// BH_DIST/BH_MASS 등 실제 물리 변수와 100% 동일한 로직으로 갱신되게 함
-function nudgeSlider(id, delta){
-    const el = document.getElementById(id);
-    if(!el) return;
-    const min = parseFloat(el.min), max = parseFloat(el.max);
-    let v = parseFloat(el.value) + delta;
-    v = Math.max(min, Math.min(max, v));
-    el.value = v;
-    el.dispatchEvent(new Event('input'));
-}
-
-document.getElementById('mBhDistMinus').addEventListener('click', ()=> nudgeSlider('bhDistSlide', -5));
-document.getElementById('mBhDistPlus').addEventListener('click',  ()=> nudgeSlider('bhDistSlide', 5));
-document.getElementById('mBhMassMinus').addEventListener('click', ()=> nudgeSlider('bhMassSlide', -2));
-document.getElementById('mBhMassPlus').addEventListener('click',  ()=> nudgeSlider('bhMassSlide', 2));
-document.getElementById('mobileCollideBtn').addEventListener('click', ()=> document.getElementById('collideBtn').click());
-document.getElementById('mobileClearBtn').addEventListener('click', ()=> document.getElementById('clearBtn').click());
-
 window.addEventListener('resize',()=>{
     camera.aspect=window.innerWidth/window.innerHeight;
     camera.updateProjectionMatrix();
@@ -1858,10 +1664,6 @@ window.addEventListener('resize',()=>{
         1 / (window.innerHeight * Math.min(devicePixelRatio, 2))
     );
 });
-
-// 슬라이더 초기값(거리 128, 질량 81)으로 블랙홀을 즉시 렌더링
-bhPos.set(BH_DIST, BH_Y, BH_Z);
-updateBHVisual();
 
 // ============================================================
 // Animation loop
@@ -1992,7 +1794,7 @@ generateCollision();
     setTimeout(patchCalorimeterHit, 50);
     setTimeout(patchCalorimeterHit, 200);
     if(window.HCAL) window.HCAL.init();
-    console.log('✅ PhysicsExtensions v1.0 - All 8 modules injected safely');
+    console.log('✅ PhysicsExtensions v1.0 - All 8 modules injected safely (Patched version)');
 })();
 </script>
 </html>
