@@ -150,12 +150,14 @@
         #mobileClearBtn:active { background: #f77; color: #000; }
     </style>
 </head>
-<body>
+<body class="ui-hidden">
 
 <!-- ============================================================ -->
 <!-- 모바일용: UI 온오프 버튼 + 최소 컨트롤 바 (거리/질량 ±, 충돌 클리어)  -->
+<!-- 디폴트: 모바일 모드(UI 숨김). 💻 누르면 PC(전체 UI) 모드로,     -->
+<!-- 다시 📱 누르면 모바일 모드로 돌아감                              -->
 <!-- ============================================================ -->
-<div id="uiToggleBtn" title="UI 켜기/끄기">O</div>
+<div id="uiToggleBtn" title="PC 화면 보기">💻</div>
 
 <div id="mobileBar">
     <div class="mobile-group">
@@ -1825,7 +1827,17 @@ document.getElementById('applyFilterBtn').addEventListener('click',()=>{
 // 모바일용: UI 온오프 + 최소 컨트롤 바
 // ============================================================
 document.getElementById('uiToggleBtn').addEventListener('click', ()=>{
-    document.body.classList.toggle('ui-hidden');
+    const isHidden = document.body.classList.toggle('ui-hidden');
+    const btn = document.getElementById('uiToggleBtn');
+    if (isHidden) {
+        // 모바일 모드로 전환됨 → 다시 PC 모드로 갈 수 있도록 💻 표시
+        btn.textContent = '💻';
+        btn.title = 'PC 화면 보기';
+    } else {
+        // PC(전체 UI) 모드로 전환됨 → 다시 모바일로 갈 수 있도록 📱 표시
+        btn.textContent = '📱';
+        btn.title = '모바일 화면 보기';
+    }
 });
 
 // 슬라이더 값을 delta만큼 바꾸고 기존 'input' 이벤트를 그대로 발생시켜
