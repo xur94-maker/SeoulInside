@@ -169,7 +169,6 @@
         <span class="mobile-label">🌌</span>   
         <button class="mobile-mini-btn" id="mBhMassMinus">−</button>
         <button class="mobile-mini-btn" id="mBhMassPlus">+</button>
-        <button class="mobile-mini-btn" id="mBhMassToggle" title="블랙홀 끄기/켜기">⚫</button>
     </div>
     <button id="mobileCollideBtn">🔥</button>  
     <button id="mobileClearBtn">◀</button>  
@@ -1793,18 +1792,6 @@ document.getElementById('bhMassSlide').addEventListener('input',e=>{
     BH_MASS=+e.target.value;
     document.getElementById('bhMassVal').innerHTML=(+e.target.value).toLocaleString();
     updateBHVisual();
-    // 모바일 온오프 토글 버튼 상태/저장값 동기화 (어디서 질량을 바꾸든 일관되게)
-    const toggleBtn = document.getElementById('mBhMassToggle');
-    if (toggleBtn) {
-        if (BH_MASS > 0) {
-            savedBhMass = BH_MASS;
-            toggleBtn.textContent = '⚫';
-            toggleBtn.title = '블랙홀 끄기';
-        } else {
-            toggleBtn.textContent = '⚪';
-            toggleBtn.title = '블랙홀 켜기';
-        }
-    }
 });
 document.getElementById('bhSpinSlide').addEventListener('input',e=>{
     BH_SPIN=+e.target.value;
@@ -1869,29 +1856,6 @@ document.getElementById('mBhDistMinus').addEventListener('click', ()=> nudgeSlid
 document.getElementById('mBhDistPlus').addEventListener('click',  ()=> nudgeSlider('bhDistSlide', 5));
 document.getElementById('mBhMassMinus').addEventListener('click', ()=> nudgeSlider('bhMassSlide', -2));
 document.getElementById('mBhMassPlus').addEventListener('click',  ()=> nudgeSlider('bhMassSlide', 2));
-
-// 블랙홀 질량 온/오프 토글: 끄면 0으로, 다시 켜면 직전 값으로 복원
-let savedBhMass = null;
-document.getElementById('mBhMassToggle').addEventListener('click', ()=>{
-    const massSlide = document.getElementById('bhMassSlide');
-    const toggleBtn = document.getElementById('mBhMassToggle');
-    const current = parseFloat(massSlide.value);
-
-    if (current > 0) {
-        // 현재 켜져 있음 → 값을 저장하고 0으로 (블랙홀 제거)
-        savedBhMass = current;
-        massSlide.value = 0;
-        massSlide.dispatchEvent(new Event('input'));
-        toggleBtn.textContent = '⚪';
-        toggleBtn.title = '블랙홀 켜기';
-    } else {
-        // 현재 꺼져 있음 → 저장된 값(없으면 기본 81)으로 복원
-        massSlide.value = (savedBhMass && savedBhMass > 0) ? savedBhMass : 81;
-        massSlide.dispatchEvent(new Event('input'));
-        toggleBtn.textContent = '⚫';
-        toggleBtn.title = '블랙홀 끄기';
-    }
-});
 document.getElementById('mobileCollideBtn').addEventListener('click', ()=> document.getElementById('collideBtn').click());
 document.getElementById('mobileClearBtn').addEventListener('click', ()=> document.getElementById('clearBtn').click());
 
