@@ -199,7 +199,7 @@
     </div>
     <div class="slider-group">
         <span>💥 √s (GeV)</span>
-        <input type="range" id="eSlide" min="30" max="14000" step="100" value="13000">
+        <input type="range" id="eSlide" min="30" max="100000" step="100" value="13000">
         <span id="eVal" class="val">13000</span>
     </div>
     <div class="slider-group">
@@ -1194,7 +1194,7 @@ function applyBlackHoleGravity(p, dt) {
     p.p4.py -= gAcc * (dy / r) * dt;
     p.p4.pz -= gAcc * (dz / r) * dt;
 
-    // ── 틀 끌림 (Lense-Thirring / 커 메트릭) ────────────────────
+    // ── 틀 끌림 (Lense-Thirring / 커 메트릭) ──────────────────── 
     //////if (BH_SPIN > 0) {
     //////    const FD_SIM = 55.0;
     //////    const r_xz   = Math.sqrt(dx*dx + dz*dz) + 0.01;
