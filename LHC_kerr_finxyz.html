@@ -138,6 +138,7 @@
             cursor: pointer; padding: 0; margin: 0;
         }
         .mobile-mini-btn:active { background: #0ff; color: #000; }
+        .mobile-mini-btn.off { opacity: 0.35; filter: grayscale(1); border-color: #778; color: #778; }
         #mobileCollideBtn {
             border-color: #f90; color: #f90; border-radius: 30px;
             padding: 0 14px; height: 26px; font-size: 10px; margin: 0;
@@ -160,6 +161,9 @@
 <div id="uiToggleBtn" title="PC 화면 보기">💻</div>
 
 <div id="mobileBar">
+    <div class="mobile-group">
+        <button class="mobile-mini-btn" id="mBFieldToggle" title="자기장 끄기">🧲</button>
+    </div>
     <div class="mobile-group">
         <span class="mobile-label">📏</span>    
         <button class="mobile-mini-btn" id="mBhDistMinus">−</button>
@@ -1194,7 +1198,7 @@ function applyBlackHoleGravity(p, dt) {
     p.p4.py -= gAcc * (dy / r) * dt;
     p.p4.pz -= gAcc * (dz / r) * dt;
 
-    // ── 틀 끌림 (Lense-Thirring / 커 메트릭) ──────────────────── 
+    // ── 틀 끌림 (Lense-Thirring / 커 메트릭) ──────────────────── 주석 처리한 두 부분은 핵심 구조를 먼저 드러내기 위해 비활성화한 것입니다. 언제라도 다시 활성화하여 비교해서 볼 수 있습니다..
     //////if (BH_SPIN > 0) {
     //////    const FD_SIM = 55.0;
     //////    const r_xz   = Math.sqrt(dx*dx + dz*dz) + 0.01;
@@ -1767,7 +1771,22 @@ window.hideModule=function(id){
 // ============================================================
 // UI event bindings
 // ============================================================
-document.getElementById('bSlide').addEventListener('input',e=>{Bfield=parseFloat(e.target.value); document.getElementById('bVal').innerHTML=Bfield.toFixed(1);});
+document.getElementById('bSlide').addEventListener('input',e=>{
+    Bfield=parseFloat(e.target.value);
+    document.getElementById('bVal').innerHTML=Bfield.toFixed(1);
+    // 모바일 자기장 온오프 토글 버튼 상태/저장값 동기화 (어디서 값을 바꾸든 일관되게)
+    const bToggleBtn = document.getElementById('mBFieldToggle');
+    if (bToggleBtn) {
+        if (Bfield > 0) {
+            savedBfield = Bfield;
+            bToggleBtn.classList.remove('off');
+            bToggleBtn.title = '자기장 끄기';
+        } else {
+            bToggleBtn.classList.add('off');
+            bToggleBtn.title = '자기장 켜기';
+        }
+    }
+});
 document.getElementById('eSlide').addEventListener('input',e=>{sqrtS=parseInt(e.target.value); document.getElementById('eVal').innerHTML=sqrtS;});
 document.getElementById('trailSlide').addEventListener('input',e=>{trailMax=parseInt(e.target.value); document.getElementById('trailVal').innerHTML=trailMax; if(trailManager) trailManager.setMaxLength(trailMax);});
 document.getElementById('bloomSlide').addEventListener('input',e=>{ bloomPass.strength=parseFloat(e.target.value); document.getElementById('bloomVal').innerHTML=e.target.value; });
@@ -1890,6 +1909,24 @@ document.getElementById('mBhMassToggle').addEventListener('click', ()=>{
         massSlide.dispatchEvent(new Event('input'));
         toggleBtn.textContent = '⚫';
         toggleBtn.title = '블랙홀 끄기';
+    }
+});
+// 자기장 온/오프 토글: 끄면 0T로, 다시 켜면 직전 값(없으면 6.2T)으로 복원
+let savedBfield = null;
+document.getElementById('mBFieldToggle').addEventListener('click', ()=>{
+    const bSlide = document.getElementById('bSlide');
+    const bToggleBtn = document.getElementById('mBFieldToggle');
+    const current = parseFloat(bSlide.value);
+
+    if (current > 0) {
+        // 현재 켜져 있음 → 값을 저장하고 0으로 (자기장 제거)
+        savedBfield = current;
+        bSlide.value = 0;
+        bSlide.dispatchEvent(new Event('input'));
+    } else {
+        // 현재 꺼져 있음 → 저장된 값(없으면 기본 6.2T)으로 복원
+        bSlide.value = (savedBfield && savedBfield > 0) ? savedBfield : 6.2;
+        bSlide.dispatchEvent(new Event('input'));
     }
 });
 document.getElementById('mobileCollideBtn').addEventListener('click', ()=> document.getElementById('collideBtn').click());
