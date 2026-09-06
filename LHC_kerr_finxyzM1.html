@@ -139,19 +139,6 @@
         }
         .mobile-mini-btn:active { background: #0ff; color: #000; }
         .mobile-mini-btn.off { opacity: 0.35; filter: grayscale(1); border-color: #778; color: #778; }
-        .mobile-mini-btn.dragging { background: #0ff; color: #000; transform: scale(1.15); box-shadow: 0 0 14px #0ff; touch-action: none; }
-        .mobile-mini-btn.drag-handle { border-style: dashed; touch-action: none; }
-        #mBFieldToggle, #mBhMassToggle { touch-action: manipulation; }
-
-        #mobileDragTooltip {
-            position: fixed; left: 50%; bottom: 60px; transform: translateX(-50%);
-            z-index: 210; display: none;
-            background: rgba(0,0,0,0.8); border: 1px solid #0ff; border-radius: 20px;
-            padding: 6px 18px; font-family: 'JetBrains Mono', monospace; font-size: 12px;
-            color: #0ff; font-weight: 700; letter-spacing: 0.5px;
-            pointer-events: none; white-space: nowrap;
-        }
-        #mobileDragTooltip.show { display: block; }
         #mobileCollideBtn {
             border-color: #f90; color: #f90; border-radius: 30px;
             padding: 0 14px; height: 26px; font-size: 10px; margin: 0;
@@ -173,16 +160,19 @@
 <!-- ============================================================ -->
 <div id="uiToggleBtn" title="PC 화면 보기">💻</div>
 
-<div id="mobileDragTooltip"></div>
-
 <div id="mobileBar">
     <div class="mobile-group">
-        <button class="mobile-mini-btn" id="mBFieldToggle" title="자기장 끄기/켜기">🧲</button>
-        <button class="mobile-mini-btn drag-handle" id="mBFieldDrag" title="자기장 세기 (드래그: 위/오른쪽 ↑, 아래/왼쪽 ↓)">🎚️</button>
+        <button class="mobile-mini-btn" id="mBFieldToggle" title="자기장 끄기">🧲</button>
     </div>
     <div class="mobile-group">
-        <button class="mobile-mini-btn drag-handle" id="mBhDistHandle" title="블랙홀 거리 (드래그: 위/오른쪽 ↑, 아래/왼쪽 ↓)">📏</button>
-        <button class="mobile-mini-btn drag-handle" id="mBhMassDrag" title="블랙홀 질량 (드래그: 위/오른쪽 ↑, 아래/왼쪽 ↓)">🌌</button>
+        <span class="mobile-label">📏</span>    
+        <button class="mobile-mini-btn" id="mBhDistMinus">−</button>
+        <button class="mobile-mini-btn" id="mBhDistPlus">+</button>
+    </div>
+    <div class="mobile-group">
+        <span class="mobile-label">🌌</span>   
+        <button class="mobile-mini-btn" id="mBhMassMinus">−</button>
+        <button class="mobile-mini-btn" id="mBhMassPlus">+</button>
         <button class="mobile-mini-btn" id="mBhMassToggle" title="블랙홀 끄기/켜기">⚫</button>
     </div>
     <button id="mobileCollideBtn">🔥</button>  
@@ -1882,99 +1872,63 @@ document.getElementById('uiToggleBtn').addEventListener('click', ()=>{
     }
 });
 
-// 온오프 토글: 자기장 끄면 0T로, 다시 켜면 직전 값(없으면 6.2T)으로 복원
-let savedBfield = null;
-function toggleBField(){
-    const bSlide = document.getElementById('bSlide');
-    const current = parseFloat(bSlide.value);
-    if (current > 0) {
-        savedBfield = current;
-        bSlide.value = 0;
-        bSlide.dispatchEvent(new Event('input'));
-    } else {
-        bSlide.value = (savedBfield && savedBfield > 0) ? savedBfield : 6.2;
-        bSlide.dispatchEvent(new Event('input'));
-    }
+// 슬라이더 값을 delta만큼 바꾸고 기존 'input' 이벤트를 그대로 발생시켜
+// BH_DIST/BH_MASS 등 실제 물리 변수와 100% 동일한 로직으로 갱신되게 함
+function nudgeSlider(id, delta){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const min = parseFloat(el.min), max = parseFloat(el.max);
+    let v = parseFloat(el.value) + delta;
+    v = Math.max(min, Math.min(max, v));
+    el.value = v;
+    el.dispatchEvent(new Event('input'));
 }
-document.getElementById('mBFieldToggle').addEventListener('click', toggleBField);
 
-// 온오프 토글: 블랙홀 질량 끄면 0으로, 다시 켜면 직전 값으로 복원
+document.getElementById('mBhDistMinus').addEventListener('click', ()=> nudgeSlider('bhDistSlide', -5));
+document.getElementById('mBhDistPlus').addEventListener('click',  ()=> nudgeSlider('bhDistSlide', 5));
+document.getElementById('mBhMassMinus').addEventListener('click', ()=> nudgeSlider('bhMassSlide', -2));
+document.getElementById('mBhMassPlus').addEventListener('click',  ()=> nudgeSlider('bhMassSlide', 2));
+
+// 블랙홀 질량 온/오프 토글: 끄면 0으로, 다시 켜면 직전 값으로 복원
 let savedBhMass = null;
-function toggleBhMass(){
+document.getElementById('mBhMassToggle').addEventListener('click', ()=>{
     const massSlide = document.getElementById('bhMassSlide');
     const toggleBtn = document.getElementById('mBhMassToggle');
     const current = parseFloat(massSlide.value);
+
     if (current > 0) {
+        // 현재 켜져 있음 → 값을 저장하고 0으로 (블랙홀 제거)
         savedBhMass = current;
         massSlide.value = 0;
         massSlide.dispatchEvent(new Event('input'));
         toggleBtn.textContent = '⚪';
         toggleBtn.title = '블랙홀 켜기';
     } else {
+        // 현재 꺼져 있음 → 저장된 값(없으면 기본 81)으로 복원
         massSlide.value = (savedBhMass && savedBhMass > 0) ? savedBhMass : 81;
         massSlide.dispatchEvent(new Event('input'));
         toggleBtn.textContent = '⚫';
         toggleBtn.title = '블랙홀 끄기';
     }
-}
-document.getElementById('mBhMassToggle').addEventListener('click', toggleBhMass);
+});
+// 자기장 온/오프 토글: 끄면 0T로, 다시 켜면 직전 값(없으면 6.2T)으로 복원
+let savedBfield = null;
+document.getElementById('mBFieldToggle').addEventListener('click', ()=>{
+    const bSlide = document.getElementById('bSlide');
+    const bToggleBtn = document.getElementById('mBFieldToggle');
+    const current = parseFloat(bSlide.value);
 
-// ============================================================
-// 드래그 전용 핸들: 누른 채 위/오른쪽 = 증가, 아래/왼쪽 = 감소
-// 온오프 버튼과 완전히 분리되어 있어 드래그하다 실수로 꺼질 일이 없음
-// ============================================================
-function attachDragAdjust(btnId, sliderId, opts = {}){
-    const btn = document.getElementById(btnId);
-    const slider = document.getElementById(sliderId);
-    const tooltip = document.getElementById('mobileDragTooltip');
-    if (!btn || !slider) return;
-
-    const { label = '', unit = '', decimals = 1 } = opts;
-    const min = parseFloat(slider.min), max = parseFloat(slider.max);
-    const range = max - min;
-    const sensitivity = opts.sensitivity || (range / 140); // 드래그 140px ≈ 전체 범위
-
-    let startX = 0, startY = 0, startVal = 0, pointerId = null;
-
-    btn.addEventListener('pointerdown', (e)=>{
-        startX = e.clientX; startY = e.clientY;
-        startVal = parseFloat(slider.value);
-        pointerId = e.pointerId;
-        btn.setPointerCapture(pointerId);
-        btn.classList.add('dragging');
-        if (tooltip) {
-            tooltip.classList.add('show');
-            tooltip.textContent = `${label}${label ? ': ' : ''}${startVal.toFixed(decimals)}${unit}`;
-        }
-    });
-
-    btn.addEventListener('pointermove', (e)=>{
-        if (e.pointerId !== pointerId || e.buttons === 0) return;
-        e.preventDefault();
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        const combined = dx - dy; // 오른쪽(+dx) 또는 위(-dy) = 증가
-        let newVal = startVal + combined * sensitivity;
-        newVal = Math.max(min, Math.min(max, newVal));
-        slider.value = newVal;
-        slider.dispatchEvent(new Event('input'));
-        if (tooltip) tooltip.textContent = `${label}${label ? ': ' : ''}${newVal.toFixed(decimals)}${unit}`;
-    });
-
-    const endDrag = (e)=>{
-        if (pointerId !== null && e.pointerId !== pointerId) return;
-        pointerId = null;
-        btn.classList.remove('dragging');
-        if (tooltip) tooltip.classList.remove('show');
-    };
-    btn.addEventListener('pointerup', endDrag);
-    btn.addEventListener('pointercancel', endDrag);
-}
-
-attachDragAdjust('mBFieldDrag',   'bSlide',      { label: '🧲 B',    unit: 'T', decimals: 1 });
-attachDragAdjust('mBhDistHandle', 'bhDistSlide', { label: '📏 거리', unit: '',  decimals: 0 });
-attachDragAdjust('mBhMassDrag',   'bhMassSlide', { label: '🌌 질량', unit: '',  decimals: 0 });
-
+    if (current > 0) {
+        // 현재 켜져 있음 → 값을 저장하고 0으로 (자기장 제거)
+        savedBfield = current;
+        bSlide.value = 0;
+        bSlide.dispatchEvent(new Event('input'));
+    } else {
+        // 현재 꺼져 있음 → 저장된 값(없으면 기본 6.2T)으로 복원
+        bSlide.value = (savedBfield && savedBfield > 0) ? savedBfield : 6.2;
+        bSlide.dispatchEvent(new Event('input'));
+    }
+});
 document.getElementById('mobileCollideBtn').addEventListener('click', ()=> document.getElementById('collideBtn').click());
 document.getElementById('mobileClearBtn').addEventListener('click', ()=> document.getElementById('clearBtn').click());
 
