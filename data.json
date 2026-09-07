@@ -7,28 +7,28 @@
       "desc": "The far-right party is trying to form a government in the state after falling three seats short of a majority."
     },
     {
+      "title": "Thousands turn out in Serbia for funeral of  'Butcher of Bosnia' Ratko Mladić",
+      "link": "https://www.bbc.co.uk/news/articles/cn5dkk7yw74o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 07 Sep 2026 14:50:50 GMT",
+      "desc": "Mladić was jailed for genocide during the 1990s Bosnian war and the EU warned Serbia not to glorify the convicted war criminal."
+    },
+    {
       "title": "Israeli strikes in southern Lebanese village kill 12",
       "link": "https://www.bbc.co.uk/news/articles/c5yl96vz0edo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 07 Sep 2026 13:39:23 GMT",
       "desc": "Lebanon says a recent Israeli escalation is jeopardising a US-brokered ceasefire meant to end the conflict between Israel and Hezbollah."
     },
     {
-      "title": "New videos of man in 9/11 lawsuit reveal extremist links",
-      "link": "https://www.bbc.co.uk/news/articles/cr4vn1e207go?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 07 Sep 2026 05:31:06 GMT",
-      "desc": "The footage and other evidence the FBI failed to share undermine Omar al-Bayoumi's 25 years of denials."
-    },
-    {
-      "title": "Probe begins into why cargo plane overran Miami runway",
+      "title": "Investigators begin work on why cargo plane overran Miami runway",
       "link": "https://www.bbc.co.uk/news/articles/c0e3p1j7n3ro?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 07 Sep 2026 09:54:40 GMT",
+      "date": "Mon, 07 Sep 2026 17:46:25 GMT",
       "desc": "Five people died and five others were injured as the Amazon plane overshot the runway after landing at Miami International Airport."
     },
     {
-      "title": "Kyiv air raid alerts at record high as Russia launches round-the-clock strikes",
-      "link": "https://www.bbc.co.uk/news/articles/cjdvx9pz44ro?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 07 Sep 2026 07:03:44 GMT",
-      "desc": "Schools, businesses and public transport are all struggling with the surge in Russian air attacks."
+      "title": "Grindr to pay £26m to settle claims it allegedly shared users' HIV status",
+      "link": "https://www.bbc.co.uk/news/articles/cn8e63qdqwzo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 07 Sep 2026 15:27:50 GMT",
+      "desc": "The long-running claim alleges Grindr breached UK privacy laws by sharing data with third parties."
     }
   ],
   "koreaNews": [
@@ -57,16 +57,16 @@
       "desc": "S. Korea, France to set up cooperation channel on strategic industries, trade&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "South Korea's KDI Downgrades Economic Assessment from 'Expanding Improvement' to 'Maintaining Momentum' as Consumption Recovery Lags - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFB3dWx6cVM0azlqU1JwWXdyTy1DWTgyU2JoYXRYS2Vjc292NHBlRVc2YnIxODB3NDBkRkVwbURoUXltN2N4dk9Bc1VhaFkyMHUtZFZiMDdhVDlncXh2ZWlNMTkybGdCM0dOWjhnRExXanFqS190ZVE?oc=5",
-      "date": "Mon, 07 Sep 2026 04:55:00 GMT",
-      "desc": "South Korea's KDI Downgrades Economic Assessment from 'Expanding Improvement' to 'Maintaining Momentum' as Consumption Recovery Lags&nbsp;&nbsp;finance.biggo.com"
+      "title": "Tehran-Seoul Relations: Joint Chamber Prepares for Post-Sanctions Era - financialtribune.com",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB2aVZfeEhyOWgwZjdyWWQ4dGQ4bWlzMk54a3g0RjEtZmNmUXVGMVFZdlN5VG94cXRoZmtTa1EtNmlQQktPWVhjb3pRblFsNUwxYlE?oc=5",
+      "date": "Mon, 07 Sep 2026 11:01:19 GMT",
+      "desc": "Tehran-Seoul Relations: Joint Chamber Prepares for Post-Sanctions Era&nbsp;&nbsp;financialtribune.com"
     },
     {
-      "title": "Samsung, SK Hynix Set for Rerating as Unprecedented Memory Shortage Looms - chosun.com",
+      "title": "Samsung, SK Hynix Set for Rerating as Unprecedented Memory Shortage Looms - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQY0V0R1ZBRzRNcmdGRnpaU2Z6SGhDclAxS3BVUUJvU2g3MlE5ZFozS2wxRzQyUFJKZkhTSVZPdlJqbmFtQzN6bXdkWlBQUTREdW5QTXdWdElLbDRTMWJSMU5sREpJdE4tMm03QTVIS3A5QXpleE8wWFZWTFBwVDByUk0waGJJSDVPdzBxZEpB?oc=5",
       "date": "Mon, 07 Sep 2026 06:43:30 GMT",
-      "desc": "Samsung, SK Hynix Set for Rerating as Unprecedented Memory Shortage Looms&nbsp;&nbsp;chosun.com"
+      "desc": "Samsung, SK Hynix Set for Rerating as Unprecedented Memory Shortage Looms&nbsp;&nbsp;조선일보"
     },
     {
       "title": "HBM4 squeezes DRAM supply as Samsung, SK Hynix inventories fall below 10 days - Digitimes",
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1345.48,
-      "change": -9.93,
-      "pct": -0.73,
+      "price": 1344.89,
+      "change": -10.52,
+      "pct": -0.78,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-07 14:57 UTC"
+  "updatedAt": "2026-09-07 18:28 UTC"
 }
