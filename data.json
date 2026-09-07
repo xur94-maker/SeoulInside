@@ -1,6 +1,18 @@
 {
   "globalNews": [
     {
+      "title": "Flight recorders recovered from 'devastating' Amazon cargo plane crash",
+      "link": "https://www.bbc.co.uk/news/articles/ce8e32n8epeo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 07 Sep 2026 22:23:03 GMT",
+      "desc": "Five people were killed and five others seriously injured when the Boeing 767-300 overshot the runway at Miami International Airport."
+    },
+    {
+      "title": "Palestinian parents fear for children's lives at school as settler attacks grow",
+      "link": "https://www.bbc.co.uk/news/articles/c3wj45g73g1o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 07 Sep 2026 21:12:37 GMT",
+      "desc": "A headteacher in the occupied West Bank has installed new barbed wire fencing after three pupils were killed this year."
+    },
+    {
       "title": "Germany's far-right AfD says 'democracy demands' parties work with them after state election win",
       "link": "https://www.bbc.co.uk/news/articles/cpd0113082eo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 07 Sep 2026 14:04:01 GMT",
@@ -17,50 +29,38 @@
       "link": "https://www.bbc.co.uk/news/articles/c5yl96vz0edo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 07 Sep 2026 13:39:23 GMT",
       "desc": "Lebanon says a recent Israeli escalation is jeopardising a US-brokered ceasefire meant to end the conflict between Israel and Hezbollah."
-    },
-    {
-      "title": "Investigators begin work on why cargo plane overran Miami runway",
-      "link": "https://www.bbc.co.uk/news/articles/c0e3p1j7n3ro?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 07 Sep 2026 17:46:25 GMT",
-      "desc": "Five people died and five others were injured as the Amazon plane overshot the runway after landing at Miami International Airport."
-    },
-    {
-      "title": "Grindr to pay £26m to settle claims it allegedly shared users' HIV status",
-      "link": "https://www.bbc.co.uk/news/articles/cn8e63qdqwzo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 07 Sep 2026 15:27:50 GMT",
-      "desc": "The long-running claim alleges Grindr breached UK privacy laws by sharing data with third parties."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
+      "title": "South Korea’s economy grew by 0.6% in the second quarter - UA.NEWS",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOTE5YclVEZTBsUHFYY1g3TlVySGNGMVZGNkdFQ1pacTdrVk44dXlHUlhxOExEZkYyQUZrNHhsTlY3Ty1LVzdrb0JicnROOTBwcjh4TlBYTm5OelVoV1VXU0pDNzR3d3dHd2ExSHRoaUk4dE1UMGtsS0hmUVhsSGlEUkN2NC1CVkR2YnZMaUR3?oc=5",
+      "date": "Mon, 07 Sep 2026 23:40:27 GMT",
+      "desc": "South Korea’s economy grew by 0.6% in the second quarter&nbsp;&nbsp;UA.NEWS"
+    },
+    {
+      "title": "S. Korea's nominal GDP grows at fastest pace in 47 years in Q2 - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5qTzZXTS1qUy1vd0xNZTBCMlBiS0xsMzR1X0pzU1BLd2NpbE9fNnFaM1FBaGFYQkxiajVvNzlvZ0JuVE9Wa1A0OWpiOWZoR0N5Zkx2VFZwNA?oc=5",
+      "date": "Mon, 07 Sep 2026 23:27:51 GMT",
+      "desc": "S. Korea's nominal GDP grows at fastest pace in 47 years in Q2&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "South Korea Q2 GDP Growth Confirmed at 0.6% - TradingView",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQcmRRVjRNNUx1dm9PQ0hINUlLaUhsMDd0czJYbHFvN3gxOWx5NEtQSDR3amNyZWNyUFdJQXpMUEM5aU8xSGZvS3NuWWg1NHMtM2EybU1fdFU2M0xnRVVON25BeVd3NktnNGU4Q1oydDJ0bTY5OWNRMTRydHJmQjMzRl95OVpReGwwWVhReXRaeDR5aVhqRWZiNg?oc=5",
+      "date": "Mon, 07 Sep 2026 23:07:02 GMT",
+      "desc": "South Korea Q2 GDP Growth Confirmed at 0.6%&nbsp;&nbsp;TradingView"
+    },
+    {
+      "title": "South Korea’s economy at risk as Trump throws it under bus - asiatimes.com",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
       "date": "Fri, 21 Aug 2026 07:00:00 GMT",
-      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
+      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;asiatimes.com"
     },
     {
-      "title": "Domestic demand drives business sentiment turnaround in South Korea - Staffing Industry Analysts",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNRXJPbEtnZXl0WW5KSjlYWE1YcnliSElDQWpDQTVjYnpVbUVpQXVXeDhsVFBfMGNqa1JCLVhkMk9ZV0NFa0w1VmFnLXJEelFlTTFtZVVNZ3NJeFB0MUNqbXRhOGxjNUhidlZiT3JpZVlLSHJYdHo3OHhuYVVxSGZKWnhzd1lqMFJ0dXB6NXpmUzctVHdnbElTYV8tVF9qV1Fia3lGcGRtTy1TZE9BMXo4QTNOb0pXel8tTElHUGxZUmw?oc=5",
-      "date": "Mon, 07 Sep 2026 12:29:54 GMT",
-      "desc": "Domestic demand drives business sentiment turnaround in South Korea&nbsp;&nbsp;Staffing Industry Analysts"
-    },
-    {
-      "title": "AI Investment, Chip Exports Propel South Korea’s Economy, KDI Says - Koreabizwire",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPb0JQek9jVnBEc19zTU13VTd1SGxsaTcxdkxMQ1hhZjA2X3JvaUtzdV9kVEptUV9tTnFjWkpDSWNLcHpQMUIwWGV4Z1BDMzZxcm9fY19tejRFM2hIYXRva2ZBaXFTRzRGUHVNVXdGSUV3ZU1OYWNYTDJMaVl1UzJoN0xMcDNyNlNNQ1M5OXQzZEVVSHY3eFQ0SjBB?oc=5",
-      "date": "Mon, 07 Sep 2026 03:55:45 GMT",
-      "desc": "AI Investment, Chip Exports Propel South Korea’s Economy, KDI Says&nbsp;&nbsp;Koreabizwire"
-    },
-    {
-      "title": "S. Korea, France to set up cooperation channel on strategic industries, trade - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9JZlVJTW1QQTV2dG5XQVNGa1VTX3JucjQ4cXVSZmN6Y0lUcVJzUnY1STEza1Q2VGtLY3U4QS1OWnFKOTB3aF94NnU0LVVRWWxPWl91bW0xcw?oc=5",
-      "date": "Mon, 07 Sep 2026 13:20:51 GMT",
-      "desc": "S. Korea, France to set up cooperation channel on strategic industries, trade&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "Tehran-Seoul Relations: Joint Chamber Prepares for Post-Sanctions Era - financialtribune.com",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB2aVZfeEhyOWgwZjdyWWQ4dGQ4bWlzMk54a3g0RjEtZmNmUXVGMVFZdlN5VG94cXRoZmtTa1EtNmlQQktPWVhjb3pRblFsNUwxYlE?oc=5",
-      "date": "Mon, 07 Sep 2026 11:01:19 GMT",
-      "desc": "Tehran-Seoul Relations: Joint Chamber Prepares for Post-Sanctions Era&nbsp;&nbsp;financialtribune.com"
+      "title": "S. Korea's economy growth confirmed at 0.6% in Q2 - breakingthenews.net",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNeU5Zb0ZabWlKYnExRWwyN3hCRHNSQVYwcm1HWmJneGoteXRtdk40cG5OUnFOeF8yQ3Fza05PVkY4TDY0aGliazBCZHBqNUJQX0lCTFIzbG9QM05hMktod2RSdjhyaTY0dDVRZHFuM1hBVWpXR1hTa1dEVEJScWV5Sl9wZ0JvMzRHTmgzQnpja091eTZrNEJqOQ?oc=5",
+      "date": "Mon, 07 Sep 2026 23:04:00 GMT",
+      "desc": "S. Korea's economy growth confirmed at 0.6% in Q2&nbsp;&nbsp;breakingthenews.net"
     },
     {
       "title": "Samsung, SK Hynix Set for Rerating as Unprecedented Memory Shortage Looms - 조선일보",
@@ -69,16 +69,16 @@
       "desc": "Samsung, SK Hynix Set for Rerating as Unprecedented Memory Shortage Looms&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "HBM4 squeezes DRAM supply as Samsung, SK Hynix inventories fall below 10 days - Digitimes",
+      "title": "HBM4 squeezes DRAM supply as Samsung, SK Hynix inventories fall below 10 days - digitimes",
       "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPaVNPd3RyWkcwa01DellWM1pMZFRzZ2dGOWQ1XzlzRVhDWTk0QS1fOUhmOXVSZ3oyQXMyejktN3Jjc0VGc2c3OEkwaEk5M0s1Ti1hRnpqTktUTjU2Y0NEUXl4eFFFakxRY1dPTS1iaE9RazhfYzBibE8zd21uWElpN2hMTW1VMTh3MGtzaw?oc=5",
       "date": "Mon, 07 Sep 2026 08:57:27 GMT",
-      "desc": "HBM4 squeezes DRAM supply as Samsung, SK Hynix inventories fall below 10 days&nbsp;&nbsp;Digitimes"
+      "desc": "HBM4 squeezes DRAM supply as Samsung, SK Hynix inventories fall below 10 days&nbsp;&nbsp;digitimes"
     },
     {
-      "title": "Samsung and SK hynix Inventories Fall Below 10 Days - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9tQU54OUlVV1FvQjAxN29nZ3M3b3JyaWh6R3ZadnJmZ0taWEFub3VVTGlhdklSd1Y5NTJXbnN5Tzlld3Q5WXMzV19FZWhCZGJBeS1ZbkcxQmdYSkNudUEtSzRhdGNDSVNJN3FUQVllTG52OGxl?oc=5",
-      "date": "Mon, 07 Sep 2026 01:29:39 GMT",
-      "desc": "Samsung and SK hynix Inventories Fall Below 10 Days&nbsp;&nbsp;Businesskorea"
+      "title": "Micron, Samsung, SK Hynix Suffer Drop In DRAM Market Share As China’s CXMT Pulls Ahead - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQUGt2OVJsb2NrNHZ3Y1FSUldUa1VhRlNrMWNCQ0NEcllXbkRweElsZkt2bmQyRE9qWWcwZ0YwX05kOThTMk1URVFVTGtGYlJIUUdRVWhRMVRPSlZNR1dfTmVxSlBPNTBqUUdwUHgwZ1VuRkpiczJ3Z0h6dTNpR0tvcmV6aXRzcUZtcUtkYV9zUzdTR2hydE1UWWdtUQ?oc=5",
+      "date": "Thu, 03 Sep 2026 07:59:01 GMT",
+      "desc": "Micron, Samsung, SK Hynix Suffer Drop In DRAM Market Share As China’s CXMT Pulls Ahead&nbsp;&nbsp;Yahoo Finance"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1344.89,
-      "change": -10.52,
-      "pct": -0.78,
+      "price": 1344.45,
+      "change": -0.61,
+      "pct": -0.05,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-07 18:28 UTC"
+  "updatedAt": "2026-09-07 23:55 UTC"
 }
