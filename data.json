@@ -1,48 +1,42 @@
 {
   "globalNews": [
     {
-      "title": "US strikes Iranian oil tankers as Tehran targets American base in Jordan",
+      "title": "Germany's Merz attacks AfD in stormy debate after far-right election win",
+      "link": "https://www.bbc.co.uk/news/articles/c98679wr78do?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 09 Sep 2026 13:29:33 GMT",
+      "desc": "Germany's chancellor clashes with AfD leader Alice Weidel, saying her migration policy amounts to \"ethnic cleansing\" for skilled workers."
+    },
+    {
+      "title": "Oil hits $100 a barrel for first time since July after US and Houthi strikes",
       "link": "https://www.bbc.co.uk/news/articles/cyvznqypz0yo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 04:26:38 GMT",
-      "desc": "Oil prices edged closer to $100 a barrel after an escalation in the tit-for-tat strikes between the US and Iran."
+      "date": "Wed, 09 Sep 2026 09:47:39 GMT",
+      "desc": "Brent crude - the global benchmark for prices - rises after the US hit five Iranian tankers on Tuesday"
     },
     {
-      "title": "Paul Adams: British-Israeli relations at lowest ebb in decades",
-      "link": "https://www.bbc.co.uk/news/articles/c5ydlex9yn3o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 08 Sep 2026 21:46:31 GMT",
-      "desc": "Israel's response to London's trade ban with Israeli settlements in the occupied West Bank shows how important this moment is."
-    },
-    {
-      "title": "US slaps import ban on Canadian alcohol, motorbikes and other goods",
+      "title": "US to ban imports of some Canadian alcohol, dairy goods and motorbikes",
       "link": "https://www.bbc.co.uk/news/articles/c99dm1000p7o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 06:28:57 GMT",
-      "desc": "It is the latest strike in a long trade war, and comes as Canadian counter-tariffs on US goods come into force."
+      "date": "Wed, 09 Sep 2026 10:20:40 GMT",
+      "desc": "It is the latest strike in a long trade war, and comes after Canadian counter-tariffs on US goods come into force."
     },
     {
-      "title": "'Constantly on my mind' - 9/11 agony endures for bereaved, 25 years on",
-      "link": "https://www.bbc.co.uk/news/articles/clyrjw1yj75o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 08 Sep 2026 23:11:32 GMT",
-      "desc": "As the 25th anniversary approaches, the wait for the alleged mastermind of the attack to be put on trial goes on."
+      "title": "Russia and Ukraine exchange strikes as two killed at Moldova border",
+      "link": "https://www.bbc.co.uk/news/articles/cvgyvpxe3yjo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 09 Sep 2026 10:59:18 GMT",
+      "desc": "Meanwhile, four people, including a child, were killed in the southern Russian city of Novorossiysk."
     },
     {
-      "title": "South Park creators rename show 'South America' in apparent dig at Trump",
-      "link": "https://www.bbc.co.uk/news/articles/cp9340rg7k8o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 05:39:16 GMT",
-      "desc": "Since beginning his second term, the US president has said he wanted to use the word 'America' to rename a lake, a gulf and even a US state."
+      "title": "N Korea has built two-storey uranium enrichment facility, says watchdog",
+      "link": "https://www.bbc.co.uk/news/articles/cy0zqk2w92lo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 09 Sep 2026 11:29:59 GMT",
+      "desc": "The International Atomic Energy Agency's says the facility is cause for \"serious concern\"."
     }
   ],
   "koreaNews": [
     {
       "title": "S.Korea maintains steady job growth in August on gains in arts, recreation sectors - KED Global",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9rRnJSVGplR0FUNmJKbHo0eENFY2VEU19ncjBHMGN0UHI1RGhkSkpwMnhYNTNRaFF1cDdXRGRNYi1OS3h4QWN2NUpWSkY4UTVmejBBVE5BT3dFcDFwZGM0QmhPMXp1dk9ya3c?oc=5",
-      "date": "Wed, 09 Sep 2026 06:59:50 GMT",
+      "date": "Wed, 09 Sep 2026 12:59:50 GMT",
       "desc": "S.Korea maintains steady job growth in August on gains in arts, recreation sectors&nbsp;&nbsp;KED Global"
-    },
-    {
-      "title": "South Korea's per capita income poised to top $40,000 - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQaGVGejl4ZWt4MlZ4ajk0MmE3NU9OUGlUZmZqZFlaUGtyVHFIU3VhV3RWM0JpQUJpaUVJRnpiTndLSU1DTWN0UmNfaS1NQ1BwTHR6djdJTzNKM0pQaTM0bzhkcl9QSVpCcjVNWXBRb05yYVZTel96UUp6VERZVUs2V0dRZndLcGhYNFA3cjFvd1NfQkh6S3fSAZsBQVVfeXFMT01XdXUweVMxRGYtQzZCN2Q2UmUyX1FZbGliTTdiNnkySXFtYl9RU3ctMm5VTVY1anp4UjlPOWhsWGw2OUpvaHpBUmxoZW4wWm9adlNXOEVzX3NGNEFwVmtLdE02YnE1SXh0YWVKTVBORWZSdnQ0V0dlRnN1MVY3V0VOSjJTNHlxaWJiMElNVXQ3VEJudDE2ODVBZlE?oc=5",
-      "date": "Tue, 08 Sep 2026 23:35:02 GMT",
-      "desc": "South Korea's per capita income poised to top $40,000&nbsp;&nbsp;upi.com"
     },
     {
       "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
@@ -51,22 +45,22 @@
       "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
     },
     {
+      "title": "South Korea's per capita income poised to top $40,000 - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQaGVGejl4ZWt4MlZ4ajk0MmE3NU9OUGlUZmZqZFlaUGtyVHFIU3VhV3RWM0JpQUJpaUVJRnpiTndLSU1DTWN0UmNfaS1NQ1BwTHR6djdJTzNKM0pQaTM0bzhkcl9QSVpCcjVNWXBRb05yYVZTel96UUp6VERZVUs2V0dRZndLcGhYNFA3cjFvd1NfQkh6S3fSAZsBQVVfeXFMT01XdXUweVMxRGYtQzZCN2Q2UmUyX1FZbGliTTdiNnkySXFtYl9RU3ctMm5VTVY1anp4UjlPOWhsWGw2OUpvaHpBUmxoZW4wWm9adlNXOEVzX3NGNEFwVmtLdE02YnE1SXh0YWVKTVBORWZSdnQ0V0dlRnN1MVY3V0VOSjJTNHlxaWJiMElNVXQ3VEJudDE2ODVBZlE?oc=5",
+      "date": "Tue, 08 Sep 2026 23:35:02 GMT",
+      "desc": "South Korea's per capita income poised to top $40,000&nbsp;&nbsp;upi.com"
+    },
+    {
+      "title": "From Forums to a Summit: Why Seoul Is Elevating Central Asia to a New Level - Caspian Post",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNZmtSUFVrOHdPejh4U1dyOHRSX29YejJzQUF1RjF3a05JTHYxSjhuaGRMQTZZMjUyNGJCaG5feFZFWUJWbWYwSldPVzVaT2FLX0NKX2c0SGE4elVON2dUM0NtZGFjRU1sMzFmS2tGSk02dXh1ZmFXN0dRbGJnMnBMbTQyUmI3b2VBcGNHY0JsM0RDelpfMDhKZ0tESXpZczl1Znl4bzA4T2l5UQ?oc=5",
+      "date": "Wed, 09 Sep 2026 09:36:00 GMT",
+      "desc": "From Forums to a Summit: Why Seoul Is Elevating Central Asia to a New Level&nbsp;&nbsp;Caspian Post"
+    },
+    {
       "title": "North Korean Traders Are Quietly Engaging Chinese Capitalists - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNNEtPWjhTUG1WQ2c4Wl9DNUpKOGRqMms2VnQyT2lVa2hHcXNveGEyWmx0aThyd3JURkdZclU0YnloREZ4a1pfRkpMR0Faa01ydkZxdnZQdEhCNEtBSWQtMERlWVVfRTNqMG1RZmV1QWlQYXdURURFZV95NXdzc293MTZjeWhQMlF5cHRMdVRYRk1CUQ?oc=5",
       "date": "Tue, 08 Sep 2026 13:55:16 GMT",
       "desc": "North Korean Traders Are Quietly Engaging Chinese Capitalists&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "Atop a tower, a taxi driver exposes South Korea's wage divide - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOdVBUOVpRdkJwcXMyTFh1T1N4T0dkU1FaWG9xcHk4TFlOdkx6bmNyM3hzdlhhdWV4ZWJ4Ylg1S01GQVB0TmxBd2ttSEs5cTNpZ0lkQXg2VUJhZ3EwQXBDQ3RRN3U5cERVN3RQNnVHOHpXQnFrc2J1djlSNmdXeXQyc3pwUnNkdjF6b3NXd1RuZF80d3JyQ00w?oc=5",
-      "date": "Wed, 09 Sep 2026 03:37:00 GMT",
-      "desc": "Atop a tower, a taxi driver exposes South Korea's wage divide&nbsp;&nbsp;Nikkei Asia"
-    },
-    {
-      "title": "Semiconductor MP&E Firms Strike Over Bonuses Amid Boom - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNTlF5VTBrQXM4cnBnR2hBUFFkS3AwbnQ3bE1GTHFpekZPMExuQUU4ZUZweHFrczZiSnh5R2tnYjVXVHNvc1lTSVhmNUVsM0VOejVZQ09ESUI0VWRtYjI5V2kwSkVYRm1sWjVYNU82TVNPYlVlZkl5YVJQenhRcVhnVnEzd2NjR2h2?oc=5",
-      "date": "Wed, 09 Sep 2026 02:11:41 GMT",
-      "desc": "Semiconductor MP&E Firms Strike Over Bonuses Amid Boom&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Samsung, SK Hynix Edge Higher on US Chip Rally as Oil Surge Limits Gains - bloomingbit",
@@ -75,99 +69,105 @@
       "desc": "Samsung, SK Hynix Edge Higher on US Chip Rally as Oil Surge Limits Gains&nbsp;&nbsp;bloomingbit"
     },
     {
-      "title": "Samsung, SK hynix Target High-NA EUV DRAM Mass-Production - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1UQVRTRmlYOFZmYnpvaUhfOEpPMWw4VDFOMl95dHhDa25xWXFfNDRHajdvbWFZLWVwSlRFSDVuc3hQVGsyNXA4S2V3QzlBaGwzbng2Wk9ZRlpnMkprcVJqZUJDS1RRd19mZU4wSnNtdUU0N0ZP?oc=5",
-      "date": "Tue, 08 Sep 2026 10:10:35 GMT",
-      "desc": "Samsung, SK hynix Target High-NA EUV DRAM Mass-Production&nbsp;&nbsp;Businesskorea"
+      "title": "Samsung and SK hynix Inventories Fall Below 10 Days - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9tQU54OUlVV1FvQjAxN29nZ3M3b3JyaWh6R3ZadnJmZ0taWEFub3VVTGlhdklSd1Y5NTJXbnN5Tzlld3Q5WXMzV19FZWhCZGJBeS1ZbkcxQmdYSkNudUEtSzRhdGNDSVNJN3FUQVllTG52OGxl?oc=5",
+      "date": "Mon, 07 Sep 2026 01:29:39 GMT",
+      "desc": "Samsung and SK hynix Inventories Fall Below 10 Days&nbsp;&nbsp;Businesskorea"
+    },
+    {
+      "title": "Samsung Electronics, SK hynix rise on strength in U.S. chip stocks - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9ILWpTWkNaWFBxVE5rdWtyRWVkVkVFVExkSU44T1BrMFNnQ0VMajZ4bEotUHd0Y184LW5qOXpUcGNuOUhVbE9VQUZDejJzWFRPaWNqdzVnUQ?oc=5",
+      "date": "Wed, 09 Sep 2026 01:37:55 GMT",
+      "desc": "Samsung Electronics, SK hynix rise on strength in U.S. chip stocks&nbsp;&nbsp;매일경제"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 225.73,
-      "change": -2.72,
-      "pct": -1.19,
+      "price": 225.45,
+      "change": -4.91,
+      "pct": -2.13,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 439.0,
-      "change": 21.99,
-      "pct": 5.27,
+      "price": 437.17,
+      "change": 8.26,
+      "pct": 1.93,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 505.74,
-      "change": 49.58,
-      "pct": 10.87,
+      "price": 514.93,
+      "change": 37.36,
+      "pct": 7.82,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 104.47,
-      "change": 12.8,
-      "pct": 13.96,
+      "price": 104.03,
+      "change": 8.23,
+      "pct": 8.59,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 174.09,
-      "change": 5.52,
-      "pct": 3.27,
+      "price": 180.03,
+      "change": 11.29,
+      "pct": 6.69,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 261.53,
-      "change": 18.94,
-      "pct": 7.81,
+      "price": 271.55,
+      "change": 19.46,
+      "pct": 7.72,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 338.36,
-      "change": -4.12,
-      "pct": -1.2,
+      "price": 329.32,
+      "change": -9.14,
+      "pct": -2.7,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 316.22,
-      "change": -11.99,
-      "pct": -3.65,
+      "price": 315.86,
+      "change": -4.11,
+      "pct": -1.28,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 493.95,
-      "change": -16.17,
-      "pct": -3.17,
+      "price": 493.19,
+      "change": -6.5,
+      "pct": -1.3,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7673.52,
-      "change": -74.19,
-      "pct": -0.96,
+      "price": 7653.39,
+      "change": -65.21,
+      "pct": -0.84,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26421.41,
-      "change": -162.65,
-      "pct": -0.61,
+      "price": 26327.81,
+      "change": -179.18,
+      "pct": -0.68,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.18,
-      "change": -9.39,
-      "pct": -0.7,
+      "price": 1336.38,
+      "change": -7.19,
+      "pct": -0.54,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-09 07:42 UTC"
+  "updatedAt": "2026-09-09 13:37 UTC"
 }
