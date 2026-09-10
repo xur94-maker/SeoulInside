@@ -1,15 +1,21 @@
 {
   "globalNews": [
     {
-      "title": "Trump says every adult American would get $5,000 if Republicans win midterms",
+      "title": "Trump says every adult American will get $5,000 if Republicans win midterms",
       "link": "https://www.bbc.co.uk/news/articles/c62kzr1jg0jo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 10 Sep 2026 06:56:38 GMT",
+      "date": "Thu, 10 Sep 2026 13:23:37 GMT",
       "desc": "Speaking at a party convention, the US president gave no details on how the plan would work or where the money would come from."
+    },
+    {
+      "title": "Watch: Is Trump's $5,000 election pledge legal?",
+      "link": "https://www.bbc.co.uk/news/videos/czxzwge59w8o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 10 Sep 2026 07:12:32 GMT",
+      "desc": "The US president has said every American will get $5,000 (£3,700) if the Republican Party wins November's midterms."
     },
     {
       "title": "Iran war won't end until after crucial November elections, says Trump",
       "link": "https://www.bbc.co.uk/news/articles/c5ydld0gykpo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 10 Sep 2026 05:56:38 GMT",
+      "date": "Thu, 10 Sep 2026 10:43:53 GMT",
       "desc": "The president also said oil prices won't come down until after the November races, claiming without evidence that Iran wants to impact the election."
     },
     {
@@ -19,19 +25,31 @@
       "desc": "The fire broke out as the vessel nearing its destination at the tourist hotspot of Coron in Palawan."
     },
     {
-      "title": "Spanish intelligence warned of Ceuta mass crossing plans before surge",
-      "link": "https://www.bbc.co.uk/news/articles/ced7vj2gv82o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 21:23:45 GMT",
-      "desc": "Declassified documents show Spanish and Moroccan authorities were alerted to social media calls for a mass migrant crossing the day before tens of thousands entered Ceuta."
-    },
-    {
-      "title": "Apple's new boss starts with big gamble on costly first folding iPhone",
-      "link": "https://www.bbc.co.uk/news/articles/clyjd1jnd03o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 20:00:33 GMT",
-      "desc": "Apple showed off at an event the first major design change to the iPhone in almost 20 years."
+      "title": "Royal family rift after popular TV news presenter chosen to succeed Ugandan king",
+      "link": "https://www.bbc.co.uk/news/articles/c8jdpj4ydm2o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 10 Sep 2026 13:12:40 GMT",
+      "desc": "King Oyo's family say he left a will naming his young son as heir to the Tooro kingdom."
     }
   ],
   "koreaNews": [
+    {
+      "title": "How To Measure An Innovation Economy: South Korea - Crunchbase News",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNSm9jbG9QR2hLRUMybS0xelpVVDhDNEhiOEhvRFgyd0Z1cHh6ODRiZUd0cExNOFEteXZrdUlsaG5LNFROLUxUejdxNnIyY2JPZjZYQTNnQ21VajlXMkRGYXRXOVFmM0RhSng1VW9tVE1RTUtlempOMThaeE5STy01RkI3Sm93WjUzQks1bHRfb2NtZ2hPTHpJTXJUaExfRmVJRUE?oc=5",
+      "date": "Thu, 10 Sep 2026 11:00:27 GMT",
+      "desc": "How To Measure An Innovation Economy: South Korea&nbsp;&nbsp;Crunchbase News"
+    },
+    {
+      "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
+      "date": "Fri, 21 Aug 2026 07:00:00 GMT",
+      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "Will South Korea follow through on $350bn deal with Trump? - ft.com",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQY2tmRERiSXBxWGZwcTFWS19NSGRaSUM1bDktMG1BekxvVWZIX293YUlKaDlGTWcwV21xdTI2eUVxdm9SZEw0Z0QwaWZmVlVoZWNwNzBiYUNaMTAxQ2Q2dmRxZmowNW1VMFpvQ2VfaXRGS1labkJaOE0zdFAzdkRIRDRpSkM?oc=5",
+      "date": "Thu, 10 Sep 2026 01:29:37 GMT",
+      "desc": "Will South Korea follow through on $350bn deal with Trump?&nbsp;&nbsp;ft.com"
+    },
     {
       "title": "Why South Korea Is Giving 51 Million People Unlimited AI - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOU3RfcG9QUExzRmlpc0dRWkM1TDhNSXJHck9wcEN1U085anpWaFJtOVBoeEJ2Wm8yTWx1V2JXN25zWUlybk9JZjBjU09lSWFlaWhjX2NDbkFIT3A3eWxoMHNRMTRtdDBqTXl3ekJpU3M3elNsLTZUVG5vcTlNMEZ0SWM1WkkxV3RGaDlB?oc=5",
@@ -39,28 +57,10 @@
       "desc": "Why South Korea Is Giving 51 Million People Unlimited AI&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "Will South Korea follow through on $350bn deal with Trump? - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFA0ZEtidWt2YjdwTjR5ZmZqZS1ZSlZYSWdfWFduSUZ4RTc1RFlidVF5eUszRTdBeHljQ1VVZFUyaThJLWhmdHk5bVFGMlZlQjdHLV91RlpqeHlNSzdXanpWRWEyMU5VdXlUWEllaVotZG8?oc=5",
-      "date": "Thu, 10 Sep 2026 01:32:05 GMT",
-      "desc": "Will South Korea follow through on $350bn deal with Trump?&nbsp;&nbsp;Financial Times"
-    },
-    {
-      "title": "South Korea’s economy at risk as Trump throws it under bus - asiatimes.com",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
-      "date": "Fri, 21 Aug 2026 07:00:00 GMT",
-      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;asiatimes.com"
-    },
-    {
-      "title": "South Korea’s finance minister sees signs of economic recovery - UA.NEWS",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQVjYxajFpa1ZJaWctbWl4NFJ4c3U5aEpJZkJ1YWhyWC1vcFh2allSOGptZERJYVJpcENadVgybEhzaGtiT19oUXktY1FUSXMyc3FHaTJIanRObTNCNnZ0c2V3NUJzeDBGSUl3b1pmUUpFM3otcUNLam4yZm9BeWN1Q1lUMWEzTjl3b1k1ZVlyZzdBLU84Q3JMaHF1T0xIREJTNkRR?oc=5",
-      "date": "Thu, 10 Sep 2026 01:10:05 GMT",
-      "desc": "South Korea’s finance minister sees signs of economic recovery&nbsp;&nbsp;UA.NEWS"
-    },
-    {
-      "title": "South Korea's Koo Yun-cheol Says Economic Recovery Is Clear, GNI Per Capita of $40,000 Increasingly Likely - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBHMWhLOFVwX0lyYzVrNkNNcUp2UDFPWnQtTEx5M2sycXJYWG1CaS0yaWZ4clRXbnNUY2VBSENxdTVickRCZHlEVWZUTXNpaXlDZGY2V18zMmJhejFWaGs5NmR6cmZCM0M4R2RUS3FqbUZrWTFGT0E?oc=5",
-      "date": "Thu, 10 Sep 2026 00:36:00 GMT",
-      "desc": "South Korea's Koo Yun-cheol Says Economic Recovery Is Clear, GNI Per Capita of $40,000 Increasingly Likely&nbsp;&nbsp;finance.biggo.com"
+      "title": "South Korea may be getting too old to take advantage of its AI boom - fortune.com",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZG9QazFXQW11Zzlqd2x2VGtZampWdTNYVlVvNlpTenlCXzV0M24ydUplQks4M05vaS16NW1QMEFMQ2FlS1pkbUtDUjNzem5pc0Z0S0ROMlFiY0hmSzV4S3I5VGxrVUxNeU5ycWpCcFE2NFY2S2UyY3hNcjZVZmFSVEE5a0NuU204V0RFR0FYMkV3N1NlSG9n?oc=5",
+      "date": "Sun, 30 Aug 2026 07:00:00 GMT",
+      "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;fortune.com"
     },
     {
       "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
@@ -69,16 +69,16 @@
       "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Mirae Asset launches Samsung, SK Hynix-heavy ETF in Japan, nears brokerage deal - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HVnk1WXlHelV1VGIwbnhoeGlxbzNsSE5FeGVFSklDUHU5STBtUWVYVi1xSnJzMkhjNUxPOFlwQUUxWDI2WlJwN0ZOTlMzY19SYklrdjRFUVhWQXdxelp0TjJ3S0pTZVZqVjBGdmludVJfUWtxNWc?oc=5",
-      "date": "Thu, 10 Sep 2026 02:59:30 GMT",
-      "desc": "Mirae Asset launches Samsung, SK Hynix-heavy ETF in Japan, nears brokerage deal&nbsp;&nbsp;KED Global"
+      "title": "South Korea's Semiconductor Equipment ETFs Post 30% Monthly Returns, Far Outpacing Samsung Electronics and SK Hynix - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBoTEhzMXZZMkNGRmpTdGZEY01rSEhmbWhRUDB2NTR1dWoyYXdLcXdidXI4dWVOTGstdzBsR0REeW9ZeG9kdG5LY3htMTk4WEstSlV3NHhMaXhkV055SDBNcFdlUHZIRU9YNE1sVzZoU1p5OHY0bXc?oc=5",
+      "date": "Thu, 10 Sep 2026 07:35:00 GMT",
+      "desc": "South Korea's Semiconductor Equipment ETFs Post 30% Monthly Returns, Far Outpacing Samsung Electronics and SK Hynix&nbsp;&nbsp;finance.biggo.com"
     },
     {
-      "title": "South Korea's KOSPI Swings Driven by Samsung-SK Hynix Concentration, Debt-Fueled Trading, and Leveraged ETFs - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9vX2lhWVFiaE1pYUJETFhwVG5ZNldZV0xHVW94R3d6Y2RYNHlMZnFtS3lYQ0JJa3Y1UkF2X0tsdmlBQTUxS09reUpTVGRDbWRjMkdIdV9rYnNfQ09scHp1ZUZHZE1oblRyc3FKOVR0VlNWTjU3RHc?oc=5",
-      "date": "Thu, 10 Sep 2026 04:05:00 GMT",
-      "desc": "South Korea's KOSPI Swings Driven by Samsung-SK Hynix Concentration, Debt-Fueled Trading, and Leveraged ETFs&nbsp;&nbsp;finance.biggo.com"
+      "title": "Mirae Asset launches Samsung, SK Hynix-heavy ETF in Japan, nears brokerage deal - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HVnk1WXlHelV1VGIwbnhoeGlxbzNsSE5FeGVFSklDUHU5STBtUWVYVi1xSnJzMkhjNUxPOFlwQUUxWDI2WlJwN0ZOTlMzY19SYklrdjRFUVhWQXdxelp0TjJ3S0pTZVZqVjBGdmludVJfUWtxNWc?oc=5",
+      "date": "Thu, 10 Sep 2026 08:10:14 GMT",
+      "desc": "Mirae Asset launches Samsung, SK Hynix-heavy ETF in Japan, nears brokerage deal&nbsp;&nbsp;KED Global"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1341.08,
-      "change": 1.87,
-      "pct": 0.14,
+      "price": 1346.42,
+      "change": 7.21,
+      "pct": 0.54,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-10 07:41 UTC"
+  "updatedAt": "2026-09-10 13:28 UTC"
 }
