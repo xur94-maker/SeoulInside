@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "Trump says every adult American would get $5,000 if Republicans win midterms",
+      "link": "https://www.bbc.co.uk/news/articles/c62kzr1jg0jo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 10 Sep 2026 06:56:38 GMT",
+      "desc": "Speaking at a party convention, the US president gave no details on how the plan would work or where the money would come from."
+    },
+    {
+      "title": "Iran war won't end until after crucial November elections, says Trump",
+      "link": "https://www.bbc.co.uk/news/articles/c5ydld0gykpo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 10 Sep 2026 05:56:38 GMT",
+      "desc": "The president also said oil prices won't come down until after the November races, claiming without evidence that Iran wants to impact the election."
+    },
+    {
+      "title": "Five dead and 86 missing as 'heartbreaking' fire breaks out on Philippines ferry",
+      "link": "https://www.bbc.co.uk/news/articles/cy4zd4dn9n9o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 10 Sep 2026 06:30:19 GMT",
+      "desc": "The fire broke out as the vessel nearing its destination at the tourist hotspot of Coron in Palawan."
+    },
+    {
       "title": "Spanish intelligence warned of Ceuta mass crossing plans before surge",
       "link": "https://www.bbc.co.uk/news/articles/ced7vj2gv82o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 09 Sep 2026 21:23:45 GMT",
       "desc": "Declassified documents show Spanish and Moroccan authorities were alerted to social media calls for a mass migrant crossing the day before tens of thousands entered Ceuta."
     },
     {
-      "title": "Google picks Finland for its largest single investment in Europe",
-      "link": "https://www.bbc.co.uk/news/articles/c8r6y4me2g6o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 17:06:48 GMT",
-      "desc": "The US tech giant says the €13bn data centre project will create tens of thousands of jobs."
-    },
-    {
-      "title": "Oil hits $100 a barrel for first time since July after US and Houthi strikes",
-      "link": "https://www.bbc.co.uk/news/articles/cyvznqypz0yo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 16:46:53 GMT",
-      "desc": "Brent crude - the global benchmark for prices - rises after the US hit five Iranian tankers on Tuesday"
-    },
-    {
-      "title": "Iran referred to UN Security Council for nuclear non-compliance",
-      "link": "https://www.bbc.co.uk/news/articles/ckgwj4kl5lno?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 20:22:51 GMT",
-      "desc": "Tehran condemns the resolution, blaming US and Israeli strikes on its nuclear facilities for disrupting inspections."
-    },
-    {
-      "title": "Germany's Merz attacks AfD in stormy debate after far-right election win",
-      "link": "https://www.bbc.co.uk/news/articles/c98679wr78do?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 09 Sep 2026 13:29:33 GMT",
-      "desc": "Germany's chancellor clashes with AfD leader Alice Weidel, saying her migration policy amounts to \"ethnic cleansing\" for skilled workers."
+      "title": "Apple's new boss starts with big gamble on costly first folding iPhone",
+      "link": "https://www.bbc.co.uk/news/articles/clyjd1jnd03o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 09 Sep 2026 20:00:33 GMT",
+      "desc": "Apple showed off at an event the first major design change to the iPhone in almost 20 years."
     }
   ],
   "koreaNews": [
@@ -39,10 +39,10 @@
       "desc": "Why South Korea Is Giving 51 Million People Unlimited AI&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "S.Korea maintains steady job growth in August on gains in arts, recreation sectors - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9rRnJSVGplR0FUNmJKbHo0eENFY2VEU19ncjBHMGN0UHI1RGhkSkpwMnhYNTNRaFF1cDdXRGRNYi1OS3h4QWN2NUpWSkY4UTVmejBBVE5BT3dFcDFwZGM0QmhPMXp1dk9ya3c?oc=5",
-      "date": "Wed, 09 Sep 2026 16:13:30 GMT",
-      "desc": "S.Korea maintains steady job growth in August on gains in arts, recreation sectors&nbsp;&nbsp;KED Global"
+      "title": "Will South Korea follow through on $350bn deal with Trump? - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFA0ZEtidWt2YjdwTjR5ZmZqZS1ZSlZYSWdfWFduSUZ4RTc1RFlidVF5eUszRTdBeHljQ1VVZFUyaThJLWhmdHk5bVFGMlZlQjdHLV91RlpqeHlNSzdXanpWRWEyMU5VdXlUWEllaVotZG8?oc=5",
+      "date": "Thu, 10 Sep 2026 01:32:05 GMT",
+      "desc": "Will South Korea follow through on $350bn deal with Trump?&nbsp;&nbsp;Financial Times"
     },
     {
       "title": "South Korea’s economy at risk as Trump throws it under bus - asiatimes.com",
@@ -51,34 +51,34 @@
       "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;asiatimes.com"
     },
     {
-      "title": "Japan-Korea: Working Together as Like-Minded Countries? - The Diplomat – Asia-Pacific Current Affairs Magazine",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTjc5eW5KS0Q3eXhBdjZyMVhsSmtYNkkyV0RtOHphV1RpWU9PZlBIRzZHVWoydjlRenZIaXFWMWFnZG40NDlVLVRVX1lyVmc1LUpWMDlkdmNVYUJnMC1neEpPU3BxOGh0RENha2RsWGItUl9odFZwbm9PS3hFZXI4S1YxaE45TFYyTVUybThtWQ?oc=5",
-      "date": "Wed, 09 Sep 2026 10:09:18 GMT",
-      "desc": "Japan-Korea: Working Together as Like-Minded Countries?&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
+      "title": "South Korea’s finance minister sees signs of economic recovery - UA.NEWS",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQVjYxajFpa1ZJaWctbWl4NFJ4c3U5aEpJZkJ1YWhyWC1vcFh2allSOGptZERJYVJpcENadVgybEhzaGtiT19oUXktY1FUSXMyc3FHaTJIanRObTNCNnZ0c2V3NUJzeDBGSUl3b1pmUUpFM3otcUNLam4yZm9BeWN1Q1lUMWEzTjl3b1k1ZVlyZzdBLU84Q3JMaHF1T0xIREJTNkRR?oc=5",
+      "date": "Thu, 10 Sep 2026 01:10:05 GMT",
+      "desc": "South Korea’s finance minister sees signs of economic recovery&nbsp;&nbsp;UA.NEWS"
     },
     {
-      "title": "South Korea recovery yet to lift household spending, KDI says - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPVV9FTEFlWjkxNjl4a2hkSVpnWjdPekI5YmpsV1RIallSYTRneThEemx6OFlaYXlfS2tzanRPNjJiLS1pUm1xOVlUVm9scGVPdm1fUE1oRGxONDYtMlRkUmF6S1VOdTJEcmVvTHFtVGN6ZTlHa2FMbjFkeEN0cFFIbWg5WjVqdUhyeGRHTUtjWDg1OGVvOXB0djNhdVJvTDhqMTRHd0JZMVA4SmvSAbABQVVfeXFMTXFRN0VFTmEwcWlkY2pJS3d3eG5fbncxemRJRTZqV29PRmJ1c0ljU21rLXUxZmI2bkNrT1h5cm9Rc1haYmR6WVZIY0plWFpQRHllV1d1a2tGWGtWc3RjWVk5ZXlhX2owa2VucF9pNWsxVkE0Z281WHJ3SGt5RUs4SmhhWURPV2VwR1BKZDQtWFFfcmh5b0FjTVNsYk42MVVqNlpTMzFKYzRZLVBua09fWkI?oc=5",
-      "date": "Tue, 08 Sep 2026 00:32:02 GMT",
-      "desc": "South Korea recovery yet to lift household spending, KDI says&nbsp;&nbsp;upi.com"
+      "title": "South Korea's Koo Yun-cheol Says Economic Recovery Is Clear, GNI Per Capita of $40,000 Increasingly Likely - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBHMWhLOFVwX0lyYzVrNkNNcUp2UDFPWnQtTEx5M2sycXJYWG1CaS0yaWZ4clRXbnNUY2VBSENxdTVickRCZHlEVWZUTXNpaXlDZGY2V18zMmJhejFWaGs5NmR6cmZCM0M4R2RUS3FqbUZrWTFGT0E?oc=5",
+      "date": "Thu, 10 Sep 2026 00:36:00 GMT",
+      "desc": "South Korea's Koo Yun-cheol Says Economic Recovery Is Clear, GNI Per Capita of $40,000 Increasingly Likely&nbsp;&nbsp;finance.biggo.com"
     },
     {
       "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPTFRIYzlpZmdmblB0WC10ZXBVZFM4R1dUMlRjNUozLWJDVFEwbHB2VnpYTmVlX1AxQ0dPa0tvQ24wRkR6YV95VnZ2RmxFZUtWUGxoemJSZ0NoeDZCS3l1OC11SUNRZHFpVG5nNEFmeVpvZWw3UzliWWhNcGZ2a0dPUUlIWkJ0d3Q2Rnp3V3dyY3VZWUw0ekdaZzNyaEFja3pqQVAtVWR3ZWw3eGo0QnY2NnpVN3NjT29IODA3UmdNM0EtRjdfRjMtd2VB?oc=5",
-      "date": "Wed, 09 Sep 2026 23:40:19 GMT",
+      "date": "Wed, 09 Sep 2026 23:40:00 GMT",
       "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung, SK Hynix Edge Higher on US Chip Rally as Oil Surge Limits Gains - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1La3E5ckxIcG16NUduZXRDbGJ5UUF6dmx1aF9uT1B6NE8waE90Q3pqRVM2anBHU1NJaXdxZGg1V0ZTeWtjWjNha3FGS09udld3VFRYMA?oc=5",
-      "date": "Wed, 09 Sep 2026 01:03:43 GMT",
-      "desc": "Samsung, SK Hynix Edge Higher on US Chip Rally as Oil Surge Limits Gains&nbsp;&nbsp;bloomingbit"
+      "title": "Mirae Asset launches Samsung, SK Hynix-heavy ETF in Japan, nears brokerage deal - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HVnk1WXlHelV1VGIwbnhoeGlxbzNsSE5FeGVFSklDUHU5STBtUWVYVi1xSnJzMkhjNUxPOFlwQUUxWDI2WlJwN0ZOTlMzY19SYklrdjRFUVhWQXdxelp0TjJ3S0pTZVZqVjBGdmludVJfUWtxNWc?oc=5",
+      "date": "Thu, 10 Sep 2026 02:59:30 GMT",
+      "desc": "Mirae Asset launches Samsung, SK Hynix-heavy ETF in Japan, nears brokerage deal&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "AI chip boom mints a new class of tech millionaires in South Korea - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE83NFp6SndJb2J0Q3MwaHpaZTNIVUVCbDJ2ZDdwalFGQkFUNzY1anhJeDF0NTJ4QjJqLWxoX1BJXzZfWlZFRE0yX2NNM3VfTmJXcS04QmtBamxmSmtjWnNiOWdYeWVTeEo5d3BqeFFhY0Vsdw?oc=5",
-      "date": "Wed, 09 Sep 2026 15:50:02 GMT",
-      "desc": "AI chip boom mints a new class of tech millionaires in South Korea&nbsp;&nbsp;KED Global"
+      "title": "South Korea's KOSPI Swings Driven by Samsung-SK Hynix Concentration, Debt-Fueled Trading, and Leveraged ETFs - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9vX2lhWVFiaE1pYUJETFhwVG5ZNldZV0xHVW94R3d6Y2RYNHlMZnFtS3lYQ0JJa3Y1UkF2X0tsdmlBQTUxS09reUpTVGRDbWRjMkdIdV9rYnNfQ09scHp1ZUZHZE1oblRyc3FKOVR0VlNWTjU3RHc?oc=5",
+      "date": "Thu, 10 Sep 2026 04:05:00 GMT",
+      "desc": "South Korea's KOSPI Swings Driven by Samsung-SK Hynix Concentration, Debt-Fueled Trading, and Leveraged ETFs&nbsp;&nbsp;finance.biggo.com"
     }
   ],
   "worldStocks": [
@@ -175,7 +175,7 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 269500.0,
+      "price": 269000.0,
       "change": -500.0,
       "pct": -0.19,
       "url": "https://finance.yahoo.com/quote/005930.KS"
@@ -183,53 +183,51 @@
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1856000.0,
-      "change": 73000.0,
-      "pct": 4.09,
+      "price": 1853000.0,
+      "change": 60000.0,
+      "pct": 3.35,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 388000.0,
-      "change": -5000.0,
-      "pct": -1.27,
+      "price": 389000.0,
+      "change": 4000.0,
+      "pct": 1.04,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 126800.0,
-      "change": -1600.0,
-      "pct": -1.25,
+      "price": 127000.0,
+      "change": 1600.0,
+      "pct": 1.28,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 210000.0,
-      "change": -8000.0,
-      "pct": -3.67,
+      "price": 208000.0,
+      "change": -6500.0,
+      "pct": -3.03,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 7051.64,
-      "change": 56.25,
-      "pct": 0.8,
+      "price": 7033.92,
+      "change": 79.4,
+      "pct": 1.14,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1339.54,
-      "change": 0.33,
-      "pct": 0.02,
+      "price": 1341.08,
+      "change": 1.87,
+      "pct": 0.14,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-10 02:01 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-09-10 07:41 UTC"
 }
