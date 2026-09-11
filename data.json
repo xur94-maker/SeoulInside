@@ -1,21 +1,21 @@
 {
   "globalNews": [
     {
+      "title": "Houthis claim major advance in Yemen and tighten grip on Red Sea shipping lane",
+      "link": "https://www.bbc.co.uk/news/articles/c23x72yx2rvo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 11 Sep 2026 16:58:34 GMT",
+      "desc": "The Iran-backed Houthis are also reported to have seized Perim - a strategic island on the major shipping route."
+    },
+    {
       "title": "Anthropic blocks possible attempt to use AI to make biological weapons",
       "link": "https://www.bbc.co.uk/news/articles/cx2zrrpkx20o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 11 Sep 2026 08:15:25 GMT",
       "desc": "The revelations in Anthropic's threat intelligence report come after a former top researcher at the company warned of the risks of AI to humanity."
     },
     {
-      "title": "Hong Kong's Tiananmen activists sentenced to up to seven years in prison",
-      "link": "https://www.bbc.co.uk/news/articles/cvgyvk2djk4o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 11 Sep 2026 05:41:54 GMT",
-      "desc": "Hong Kong used to be one of the only places in Chinese territory where people could gather to mark the 1989 crackdown."
-    },
-    {
       "title": "Israel says it has destroyed major underground Hezbollah base",
       "link": "https://www.bbc.co.uk/news/articles/c4gl92lw8vpo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 11 Sep 2026 11:34:07 GMT",
+      "date": "Fri, 11 Sep 2026 15:50:23 GMT",
       "desc": "The powerful blast registered as the equivalent of a magnitude 4.1 earthquake, according to the US Geological Survey."
     },
     {
@@ -51,16 +51,16 @@
       "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "South Korea Sees Recovery Amid War, Tariff Risks - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5fVlRDN3hlQms1MlRkMXUtRWVFS1E3R0VOazBJRnNraFRYR1N1QXgtTnRtcmhlNG9LRXVaMFYtdjc4V3JseFJGR2U4N1JsWXE4emtURVE2QThkTXh2cGJHWnlaYm9jV2R0ZmJMc1N0S1RTaE5K?oc=5",
-      "date": "Fri, 11 Sep 2026 05:55:05 GMT",
-      "desc": "South Korea Sees Recovery Amid War, Tariff Risks&nbsp;&nbsp;Businesskorea"
+      "title": "South Korea may be getting too old to take advantage of its AI boom - Fortune",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZG9QazFXQW11Zzlqd2x2VGtZampWdTNYVlVvNlpTenlCXzV0M24ydUplQks4M05vaS16NW1QMEFMQ2FlS1pkbUtDUjNzem5pc0Z0S0ROMlFiY0hmSzV4S3I5VGxrVUxNeU5ycWpCcFE2NFY2S2UyY3hNcjZVZmFSVEE5a0NuU204V0RFR0FYMkV3N1NlSG9n?oc=5",
+      "date": "Sun, 30 Aug 2026 07:00:00 GMT",
+      "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
     },
     {
-      "title": "South Korea’s economy retains signs of recovery thanks to exports - UA.NEWS",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNRXZRWGpDZnQ2aV84VkEzemlDWDVuQ3ZZY0trLXE5M2JYam5CdWg0QnU1TnluRGZpR3VZSERnTC1MZFdJaUs3MnVjR0w0VVRQZWZjVVN3ZG1QdnZkdUdZM3JzVU1fanJZT1RoOWE1Q1VPX3o5OThLUlB6ZnZFeWdoekVDMnk3NmdSOVlNTk5PMzYzMGk0X3phVGgxNUthWFp3SXc?oc=5",
-      "date": "Fri, 11 Sep 2026 01:59:06 GMT",
-      "desc": "South Korea’s economy retains signs of recovery thanks to exports&nbsp;&nbsp;UA.NEWS"
+      "title": "How To Measure An Innovation Economy: South Korea - Crunchbase News",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNSm9jbG9QR2hLRUMybS0xelpVVDhDNEhiOEhvRFgyd0Z1cHh6ODRiZUd0cExNOFEteXZrdUlsaG5LNFROLUxUejdxNnIyY2JPZjZYQTNnQ21VajlXMkRGYXRXOVFmM0RhSng1VW9tVE1RTUtlempOMThaeE5STy01RkI3Sm93WjUzQks1bHRfb2NtZ2hPTHpJTXJUaExfRmVJRUE?oc=5",
+      "date": "Thu, 10 Sep 2026 11:00:27 GMT",
+      "desc": "How To Measure An Innovation Economy: South Korea&nbsp;&nbsp;Crunchbase News"
     },
     {
       "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 218.36,
-      "change": -7.37,
-      "pct": -3.26,
+      "price": 219.33,
+      "change": -4.34,
+      "pct": -1.94,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 428.03,
-      "change": -10.97,
-      "pct": -2.5,
+      "price": 433.3,
+      "change": -2.06,
+      "pct": -0.47,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 503.6,
-      "change": -2.14,
-      "pct": -0.42,
+      "price": 515.07,
+      "change": -6.03,
+      "pct": -1.16,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 100.32,
-      "change": -4.15,
-      "pct": -3.97,
+      "price": 103.06,
+      "change": -3.18,
+      "pct": -3.0,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 176.88,
-      "change": 2.79,
-      "pct": 1.6,
+      "price": 184.78,
+      "change": 8.38,
+      "pct": 4.75,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 254.18,
-      "change": -7.35,
-      "pct": -2.81,
+      "price": 263.79,
+      "change": -0.44,
+      "pct": -0.17,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 332.6,
-      "change": -5.76,
-      "pct": -1.7,
+      "price": 341.32,
+      "change": 10.67,
+      "pct": 3.23,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 326.57,
-      "change": 10.35,
-      "pct": 3.27,
+      "price": 334.14,
+      "change": 18.8,
+      "pct": 5.96,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 492.44,
-      "change": -1.51,
-      "pct": -0.31,
+      "price": 495.49,
+      "change": 3.84,
+      "pct": 0.78,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7591.7,
-      "change": -81.82,
-      "pct": -1.07,
+      "price": 7674.84,
+      "change": 38.48,
+      "pct": 0.5,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26081.72,
-      "change": -339.69,
-      "pct": -1.29,
+      "price": 26406.62,
+      "change": 153.28,
+      "pct": 0.58,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1339.72,
-      "change": 0.55,
-      "pct": 0.04,
+      "price": 1339.98,
+      "change": 0.81,
+      "pct": 0.06,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-11 13:26 UTC"
+  "updatedAt": "2026-09-11 17:24 UTC"
 }
