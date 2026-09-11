@@ -3,32 +3,32 @@
     {
       "title": "Houthis claim major advance in Yemen and tighten grip on Red Sea shipping lane",
       "link": "https://www.bbc.co.uk/news/articles/c23x72yx2rvo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 11 Sep 2026 16:58:34 GMT",
+      "date": "Fri, 11 Sep 2026 22:17:45 GMT",
       "desc": "The Iran-backed Houthis are also reported to have seized Perim - a strategic island on the major shipping route."
     },
     {
-      "title": "Anthropic blocks possible attempt to use AI to make biological weapons",
-      "link": "https://www.bbc.co.uk/news/articles/cx2zrrpkx20o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 11 Sep 2026 08:15:25 GMT",
-      "desc": "The revelations in Anthropic's threat intelligence report come after a former top researcher at the company warned of the risks of AI to humanity."
+      "title": "Tragic death of woman who testified against father in notorious mafia murder of mother",
+      "link": "https://www.bbc.co.uk/news/articles/c39mr81j2j1o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 11 Sep 2026 20:34:29 GMT",
+      "desc": "Denise Cosco testified against the powerful 'Ndrangheta clan and her own father over the murder of her mother in Italy."
     },
     {
-      "title": "Israel says it has destroyed major underground Hezbollah base",
-      "link": "https://www.bbc.co.uk/news/articles/c4gl92lw8vpo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 11 Sep 2026 15:50:23 GMT",
-      "desc": "The powerful blast registered as the equivalent of a magnitude 4.1 earthquake, according to the US Geological Survey."
+      "title": "Passenger train derails in France leaving at least 44 injured",
+      "link": "https://www.bbc.co.uk/news/articles/c8d37dm8d8mo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 11 Sep 2026 21:25:32 GMT",
+      "desc": "France's transport minister says 180 passengers were on board the train operating the Rouen-Caen route in Normandy."
     },
     {
-      "title": "Buddhist monk arrested in suspected $3m embezzlement scandal",
-      "link": "https://www.bbc.co.uk/news/articles/c5yjkxlngjyo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 11 Sep 2026 10:50:04 GMT",
-      "desc": "Thai police also arrested a suspected female accomplice with whom the monk, who had taken a vow of celibacy, was filmed having sex."
+      "title": "Arrest made over the death of black woman found hanged from tree",
+      "link": "https://www.bbc.co.uk/news/articles/cqjkejq5750o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 11 Sep 2026 22:57:42 GMT",
+      "desc": "Tasia Fortune's body was found  in the lot of an abandoned home in Mississippi in August."
     },
     {
-      "title": "Princess Diana's 'revenge dress' goes up for auction",
-      "link": "https://www.bbc.co.uk/news/articles/c0lrk7d7j0no?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 11 Sep 2026 12:04:46 GMT",
-      "desc": "Auction house Sotheby's expects the dress to sell for up to $300,000 (£220,000) when it goes under the hammer on 9 December."
+      "title": "Norway's Princess Astrid dies two days after attending brother King Harald's funeral",
+      "link": "https://www.bbc.co.uk/news/articles/cgjq1qy98vjo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 11 Sep 2026 16:00:59 GMT",
+      "desc": "Princess Astrid \"represented the Royal House in a warm and dutiful manner\", the new king, Haakon VIII, said in a tribute to his aunt."
     }
   ],
   "koreaNews": [
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 219.33,
-      "change": -4.34,
-      "pct": -1.94,
+      "price": 218.29,
+      "change": -5.38,
+      "pct": -2.41,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 433.3,
-      "change": -2.06,
-      "pct": -0.47,
+      "price": 433.24,
+      "change": -2.12,
+      "pct": -0.49,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 515.07,
-      "change": -6.03,
-      "pct": -1.16,
+      "price": 516.13,
+      "change": -4.97,
+      "pct": -0.95,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 103.06,
-      "change": -3.18,
-      "pct": -3.0,
+      "price": 102.94,
+      "change": -3.3,
+      "pct": -3.11,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 184.78,
-      "change": 8.38,
-      "pct": 4.75,
+      "price": 181.97,
+      "change": 5.57,
+      "pct": 3.16,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 263.79,
-      "change": -0.44,
-      "pct": -0.17,
+      "price": 264.79,
+      "change": 0.56,
+      "pct": 0.21,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 341.32,
-      "change": 10.67,
-      "pct": 3.23,
+      "price": 338.5,
+      "change": 7.85,
+      "pct": 2.37,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 334.14,
-      "change": 18.8,
-      "pct": 5.96,
+      "price": 332.27,
+      "change": 16.93,
+      "pct": 5.37,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 495.49,
-      "change": 3.84,
-      "pct": 0.78,
+      "price": 495.63,
+      "change": 3.98,
+      "pct": 0.81,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7674.84,
-      "change": 38.48,
-      "pct": 0.5,
+      "price": 7656.98,
+      "change": 20.62,
+      "pct": 0.27,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26406.62,
-      "change": 153.28,
-      "pct": 0.58,
+      "price": 26333.03,
+      "change": 79.69,
+      "pct": 0.3,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1339.98,
-      "change": 0.81,
-      "pct": 0.06,
+      "price": 1341.05,
+      "change": 1.88,
+      "pct": 0.14,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-11 17:24 UTC"
+  "updatedAt": "2026-09-11 23:49 UTC"
 }
