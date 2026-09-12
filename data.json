@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Anthropic boss Dario Amodei calls for AI development to slow down",
+      "link": "https://www.bbc.co.uk/news/articles/c14dpgm0rg4o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 12 Sep 2026 15:53:43 GMT",
+      "desc": "Amodei's call comes amid growing concerns that AI models may become able to inflict serious damage worldwide."
+    },
+    {
       "title": "Saudi Arabia shuts key oil pipeline after drone attack launched from Iraq",
       "link": "https://www.bbc.co.uk/news/articles/c62m933465eo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 12 Sep 2026 12:15:50 GMT",
@@ -9,26 +15,20 @@
     {
       "title": "A united Ireland would be 'fantastic' says Trump during Irish visit",
       "link": "https://www.bbc.co.uk/news/articles/cy0zvx15rywo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 12 Sep 2026 11:27:44 GMT",
-      "desc": "Trump is holding meetings in Dublin before attending the Irish Open golf tournament in Doonbeg, County Clare."
+      "date": "Sat, 12 Sep 2026 13:56:20 GMT",
+      "desc": "Trump made the comments during a meeting with Irish leader Micheál Martin, but Downing Street says it will \"stick to the Good Friday Agreement\"."
+    },
+    {
+      "title": "French officials investigate if malicious act caused train derailment",
+      "link": "https://www.bbc.co.uk/news/articles/c33kp533nn6o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 12 Sep 2026 15:05:53 GMT",
+      "desc": "Officials say a rail fragment was found on the tracks after Friday's crash of a passenger train that left 44 people injured."
     },
     {
       "title": "Ukraine faces 'toughest winter' since Russia's full-scale invasion, UN official tells BBC",
       "link": "https://www.bbc.co.uk/news/articles/cwyz59yyqk4o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 12 Sep 2026 05:55:15 GMT",
       "desc": "A senior UN official tells the BBC there is a race against the clock to ensure access to power and water through winter."
-    },
-    {
-      "title": "Tragic death of woman who testified against father in notorious mafia murder of mother",
-      "link": "https://www.bbc.co.uk/news/articles/c39mr81j2j1o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 11 Sep 2026 20:34:29 GMT",
-      "desc": "Denise Cosco testified against the powerful 'Ndrangheta clan and her own father over the murder of her mother in Italy."
-    },
-    {
-      "title": "Death toll from Philippines ferry fire climbs to 35, with dozens still missing",
-      "link": "https://www.bbc.co.uk/news/articles/cwyz755yeg9o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 12 Sep 2026 03:02:28 GMT",
-      "desc": "Access to the burnt-out boat has been slowed by toxic fumes and lingering heat, the country's coast guard says."
     }
   ],
   "koreaNews": [
@@ -51,22 +51,22 @@
       "desc": "S. Korea's economic recovery remains solid, led by exports: finance ministry&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "South Korea arms itself to protect chip secrets from foreign spies - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB4bWEwdE9Hc3lZUmVGS0Y3dzNXR2dGSUZ0d0laeHgwWExDZl94WkNjNlZ2dXhvdzBma1dyOWR6dVlkZUZXbnFsUzhJYmRGX21ESjBQVWItV3QzaDIxM2NnWHF4V1VpLVVNMFY1QmM2eEg?oc=5",
-      "date": "Sat, 12 Sep 2026 04:00:32 GMT",
-      "desc": "South Korea arms itself to protect chip secrets from foreign spies&nbsp;&nbsp;Financial Times"
-    },
-    {
       "title": "South Korea may be getting too old to take advantage of its AI boom - Fortune",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZG9QazFXQW11Zzlqd2x2VGtZampWdTNYVlVvNlpTenlCXzV0M24ydUplQks4M05vaS16NW1QMEFMQ2FlS1pkbUtDUjNzem5pc0Z0S0ROMlFiY0hmSzV4S3I5VGxrVUxNeU5ycWpCcFE2NFY2S2UyY3hNcjZVZmFSVEE5a0NuU204V0RFR0FYMkV3N1NlSG9n?oc=5",
       "date": "Sun, 30 Aug 2026 07:00:00 GMT",
       "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
     },
     {
-      "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
+      "title": "South Korea arms itself to protect chip secrets from foreign spies - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB4bWEwdE9Hc3lZUmVGS0Y3dzNXR2dGSUZ0d0laeHgwWExDZl94WkNjNlZ2dXhvdzBma1dyOWR6dVlkZUZXbnFsUzhJYmRGX21ESjBQVWItV3QzaDIxM2NnWHF4V1VpLVVNMFY1QmM2eEg?oc=5",
+      "date": "Sat, 12 Sep 2026 04:00:32 GMT",
+      "desc": "South Korea arms itself to protect chip secrets from foreign spies&nbsp;&nbsp;Financial Times"
+    },
+    {
+      "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - reuters.com",
       "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPTFRIYzlpZmdmblB0WC10ZXBVZFM4R1dUMlRjNUozLWJDVFEwbHB2VnpYTmVlX1AxQ0dPa0tvQ24wRkR6YV95VnZ2RmxFZUtWUGxoemJSZ0NoeDZCS3l1OC11SUNRZHFpVG5nNEFmeVpvZWw3UzliWWhNcGZ2a0dPUUlIWkJ0d3Q2Rnp3V3dyY3VZWUw0ekdaZzNyaEFja3pqQVAtVWR3ZWw3eGo0QnY2NnpVN3NjT29IODA3UmdNM0EtRjdfRjMtd2VB?oc=5",
       "date": "Wed, 09 Sep 2026 23:40:00 GMT",
-      "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;Reuters"
+      "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;reuters.com"
     },
     {
       "title": "South Korea's semiconductor exports top 400 trillion won for first time; CXMT's profit margin overtakes Samsung and SK Hynix - finance.biggo.com",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-12 12:46 UTC"
+  "updatedAt": "2026-09-12 16:37 UTC"
 }
