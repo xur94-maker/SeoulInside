@@ -1,42 +1,42 @@
 {
   "globalNews": [
     {
-      "title": "Russia struck train near Poland border shortly after Boris Johnson and top European officials passed through",
+      "title": "Russia hits Ukrainian train shortly after Boris Johnson and top European officials leave station",
       "link": "https://www.bbc.co.uk/news/articles/cy5zg41dkqwo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 13 Sep 2026 16:33:57 GMT",
+      "date": "Sun, 13 Sep 2026 19:14:21 GMT",
       "desc": "The former UK PM said \"I don't know what warped logic drove Putin to blow up a stationary Ukrainian locomotive on the Polish border this morning\"."
     },
     {
-      "title": "Trump downplays AI risks after dire expert warnings and calls to slow development down",
+      "title": "Trump downplays warnings of AI risks, citing rivalry with China",
       "link": "https://www.bbc.co.uk/news/articles/c7v48vp31mdo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 13 Sep 2026 16:29:27 GMT",
-      "desc": "The US President said \"negative forces\" were airing concerns about \"things that won't happen\"."
+      "date": "Sun, 13 Sep 2026 18:49:37 GMT",
+      "desc": "The US president said \"negative forces\" were airing concerns about \"things that won't happen\"."
+    },
+    {
+      "title": "Questions mount over what an AI 'slowdown' would look like",
+      "link": "https://www.bbc.co.uk/news/articles/cwyzp47py48o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 13 Sep 2026 18:20:22 GMT",
+      "desc": "While pacing AI development might sound like a quick fix, it is far from an easy solution."
+    },
+    {
+      "title": "Swedish party blocs tied after Sunday vote, projections say",
+      "link": "https://www.bbc.co.uk/news/articles/c0qx5d79kdeo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 13 Sep 2026 22:27:54 GMT",
+      "desc": "A partial count by Sweden's election authority projected that left-wing opposition bloc would win a one-seat majority."
     },
     {
       "title": "Six dead, 130 missing after Indonesian ferry capsizes in Java Sea",
       "link": "https://www.bbc.co.uk/news/articles/cvgykzgljlyo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 13 Sep 2026 13:30:38 GMT",
       "desc": "Ships and helicopters are searching for those missing from the Virgo Transport 8 ship, which had encountered bad weather."
-    },
-    {
-      "title": "Turkish police detain dozens in raids on gay bars and homes of LGBTQ+ activists",
-      "link": "https://www.bbc.co.uk/news/articles/cpve191wy47o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 13 Sep 2026 14:25:56 GMT",
-      "desc": "Human rights groups in Turkey have accused the government of using a family- values campaign to target the LGBTQ+ community."
-    },
-    {
-      "title": "Iran war reshapes Brics ties but also exposes divisions",
-      "link": "https://www.bbc.co.uk/news/articles/ce8767g4jdpo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 13 Sep 2026 11:23:42 GMT",
-      "desc": "Brics members agree they need a new global order but it's harder to answer what should replace it and how to get there."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s Antitrust Fines Hit Record as Regulator Steps Up Chaebol Scrutiny - PYMNTS.com",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNSjNhTUNEWlZDdDZBLWl2enFNRklTNTBxQ3hHVDBiNjdSTXVkRDMwTnZXZFE5NWZLcllnSXM2ZEl1MHBLYXp3RWFDZDhpNWp2MC1QN3NoTnRmbkhlOVR0U2NIaVRCaUJDdnZzd0N4TTdHcTlFa2NCS0NhdGp6aDVjSXU3U0VSYWVSeEtHVm53c3V0c3cwemdEUEsya05neGp3Y1puZzVIZk5NeFNWTGVUWXJB?oc=5",
-      "date": "Sun, 13 Sep 2026 13:58:42 GMT",
-      "desc": "South Korea’s Antitrust Fines Hit Record as Regulator Steps Up Chaebol Scrutiny&nbsp;&nbsp;PYMNTS.com"
+      "title": "How South Korea Can Turn Its AI-Memory Boom Into Systemic Strength in the Face of China’s Scale Pressure - Information Technology and Innovation Foundation",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNcUlxRGtDaXRNekY1OGpkbFdzVEJOaDlwRklTc0d0MDdaQ1VfRldrVVRRMEJjcFlMT1lmMlhmYzVJMy1vQm9WcnhJOExLalZGZ1VwdnV1alRJdW9uNHU1MVdRV0htUnJ2OUNtbU9LUWd6azV0U0F1VTQxVEVXbzVwQ1VuMnJDX25aaFMyc2VMS0JSYTliZmxhcUtLeGJ5b3d6SjF3VXlTMA?oc=5",
+      "date": "Sun, 13 Sep 2026 21:04:29 GMT",
+      "desc": "How South Korea Can Turn Its AI-Memory Boom Into Systemic Strength in the Face of China’s Scale Pressure&nbsp;&nbsp;Information Technology and Innovation Foundation"
     },
     {
       "title": "South Korea says economy in 'solid recovery' despite risks - upi.com",
@@ -63,10 +63,10 @@
       "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
     },
     {
-      "title": "The chip boom and a currency paradox: How a stronger won may soften Samsung, SK hynix earnings - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOYVRUX1JRTFFnNUQzZFJWdk5NbnRqbzFCUUQzSEFMblg5V3c1bjJnR3dFZ2trY052N3ZrRTRROVRSb0V0Tlo2VWoxTVF6MWI0d0lZaDBvNkpFZHd3V1ZLS25tT1gyWVJfR0t6aUtvZFlUZmF3cFo3ejJEYS1MV00xVW5EWXhTRUFiR0VMUDBhUzRQTjJfc0NuQzFxczZ1TVIyVkd6QjRqdFNjb2VGbFhrNFFxOWVPanVwWlFSdDN6UmhhN0o0Y2FIb21vbG1lc1Z3YnlnY1FyQU1xbjRreVE?oc=5",
-      "date": "Sun, 13 Sep 2026 10:01:21 GMT",
-      "desc": "The chip boom and a currency paradox: How a stronger won may soften Samsung, SK hynix earnings&nbsp;&nbsp;Korea JoongAng Daily"
+      "title": "Exclusive: Samsung, SK Hynix Reject KEPCO's 25 Trillion Won Prepayment - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQUzc5c1UxZGxOWmxnUVp3T3ZiMzJPWVJIZXp2ZEpxYUZOTUdrbVg0SmR0NHk4cE1fb0VpQ3Z2OUl2T3NLS0FSOWpOR0lpbDd0ZE4tNDF3UFFCNXBPeXhBeEZvaWdBd0ZHSWJqbVhIVXdlLXBJSzRoNzdIbEpMM2M0QkVMTTBDZGJH?oc=5",
+      "date": "Sun, 13 Sep 2026 22:52:30 GMT",
+      "desc": "Exclusive: Samsung, SK Hynix Reject KEPCO's 25 Trillion Won Prepayment&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
@@ -75,10 +75,10 @@
       "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "DeepSeek efficiency gain sparks new volatility for South Korean chipmakers Samsung, SK Hynix - TradingView",
-      "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOZmg0QWlzMVFSYlRpQjFPZEdpLWNoZmszWUw0dFdNRGZNek4xRk9CYm1tMm1LeWZqcGhnTE1NMTh6eFladEo4QkV5Z3hNbW5Fc2ZuMkZGRnVMU2JCTktYNC0zNGMwY2dzZTg3S0dvSmtLR0U3MHE2OTRpa3NrU3RjbkljemVYaW0tZEZJb2JneVJ3UHFnbTQ4QUxEeklWNm1xNHFoVzE3LUU4UkgxTnkyenE3WDFxb2ZlTGhKRU9GLXg0cVctTXlpdy1ITXhkV0M5VnpmdVluaU16WDZ0N0dtbUNFTDBFUHJydkE?oc=5",
-      "date": "Fri, 11 Sep 2026 06:36:00 GMT",
-      "desc": "DeepSeek efficiency gain sparks new volatility for South Korean chipmakers Samsung, SK Hynix&nbsp;&nbsp;TradingView"
+      "title": "The chip boom and a currency paradox: How a stronger won may soften Samsung, SK hynix earnings - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOYVRUX1JRTFFnNUQzZFJWdk5NbnRqbzFCUUQzSEFMblg5V3c1bjJnR3dFZ2trY052N3ZrRTRROVRSb0V0Tlo2VWoxTVF6MWI0d0lZaDBvNkpFZHd3V1ZLS25tT1gyWVJfR0t6aUtvZFlUZmF3cFo3ejJEYS1MV00xVW5EWXhTRUFiR0VMUDBhUzRQTjJfc0NuQzFxczZ1TVIyVkd6QjRqdFNjb2VGbFhrNFFxOWVPanVwWlFSdDN6UmhhN0o0Y2FIb21vbG1lc1Z3YnlnY1FyQU1xbjRreVE?oc=5",
+      "date": "Sun, 13 Sep 2026 10:01:21 GMT",
+      "desc": "The chip boom and a currency paradox: How a stronger won may soften Samsung, SK hynix earnings&nbsp;&nbsp;Korea JoongAng Daily"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1342.4,
-      "change": 3.23,
-      "pct": 0.24,
+      "price": 1343.17,
+      "change": -5.0,
+      "pct": -0.37,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-13 17:08 UTC"
+  "updatedAt": "2026-09-13 23:51 UTC"
 }
