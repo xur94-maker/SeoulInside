@@ -1,54 +1,54 @@
 {
   "globalNews": [
     {
+      "title": "OpenAI boss says world 'right to be afraid' but should trust AI firms",
+      "link": "https://www.bbc.co.uk/news/articles/cqx2zpj4y525o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 16 Sep 2026 06:57:32 GMT",
+      "desc": "Sam Altman and other tech CEOs say there are incentives to limit advancements in AI, as fears grow over the threats it poses to humanity."
+    },
+    {
       "title": "All support acts on Ed Sheeran's US tour quit after Macklemore dropped",
       "link": "https://www.bbc.co.uk/news/articles/c3vgyn49y4l7o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 15 Sep 2026 21:07:13 GMT",
+      "date": "Wed, 16 Sep 2026 01:29:20 GMT",
       "desc": "The star said he was not responsible for Macklemore being dropped from the line-up after he made pro-Palestinian statements on stage."
     },
     {
-      "title": "Denmark says Russian warship fired flares at military helicopter",
-      "link": "https://www.bbc.co.uk/news/articles/cwn8mjl31p5yo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 15 Sep 2026 11:40:00 GMT",
-      "desc": "The Danish prime minister has accused Russia of \"reckless\" behaviour, while the Kremlin is yet to comment."
+      "title": "Three killed after LA news helicopter crashes while covering deadly bus collision",
+      "link": "https://www.bbc.co.uk/news/articles/cw4gq0j5jg10o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 16 Sep 2026 07:00:58 GMT",
+      "desc": "The NBCLA news helicopter was flying near the scene of a fatal bus crash."
     },
     {
-      "title": "What weapon could the US have put into space?",
-      "link": "https://www.bbc.co.uk/news/articles/cmy4zqgk97wlo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 15 Sep 2026 14:23:14 GMT",
-      "desc": "The announcement by the US points to a developing field of modern warfare in the Earth's orbit."
+      "title": "At least 12 killed after war-damaged Gaza building collapses",
+      "link": "https://www.bbc.co.uk/news/articles/cvp8d00j9gg5o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 16 Sep 2026 07:58:22 GMT",
+      "desc": "Dozens of people are missing beneath the rubble of the building in Gaza City, where 10 families had reportedly been living."
     },
     {
-      "title": "South African president vows justice as more women's bodies found near Johannesburg",
-      "link": "https://www.bbc.co.uk/news/articles/crgqde1nex2vo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 15 Sep 2026 18:01:51 GMT",
-      "desc": "Police have not linked the deaths to a serial killer but are investigating this possibility."
-    },
-    {
-      "title": "Two sailors missing after tanker attacked in Strait of Hormuz, Oman says",
-      "link": "https://www.bbc.co.uk/news/articles/c3n07ydqdzlvo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 15 Sep 2026 16:13:41 GMT",
-      "desc": "Iran says El Gaia caught fire after hitting mines, but the US says the oil tanker was struck by a missile and then a drone."
+      "title": "US limits visas for South African officials over alleged anti-white discrimination",
+      "link": "https://www.bbc.co.uk/news/articles/cqy0z5y7wnp2o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 16 Sep 2026 06:12:04 GMT",
+      "desc": "Secretary of State Marco Rubio says South Africa has not addressed US concerns over racial inequality."
     }
   ],
   "koreaNews": [
     {
-      "title": "Whitmer travels to South Korea with economic and military officials - wemu.org",
+      "title": "Whitmer travels to South Korea with economic and military officials - WEMU",
       "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVlNkZ0Z2V25FcWtVUUhkQ2x4QmlCalkxNmF5Zi1CWDNXNXdtUVdHcWUzdC1WMldxR2RqMmtPWkxtaTNfdTBWQURITVJlMWxYemctLXhjZDREam52V3Q4WHFnTkxzajl2RmtNcTR1TEY5Y01oeHNqbjJhWFBwTFRBZTdUYVZDVENzc1Z4ck9xVEdDUnNTcW5OT2MtQjd2STd6bVlPM3VMb2JidHRkU1ZJZkxoQQ?oc=5",
       "date": "Tue, 15 Sep 2026 09:48:00 GMT",
-      "desc": "Whitmer travels to South Korea with economic and military officials&nbsp;&nbsp;wemu.org"
+      "desc": "Whitmer travels to South Korea with economic and military officials&nbsp;&nbsp;WEMU"
     },
     {
-      "title": "South Korea Finance Chief Nominee Says Economy at Turning Point - bloomberg.com",
+      "title": "Middle East War, U.S. Elections, AI Investments Key Risks for Korean Economy - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOLWlQcDAwMl9KR2FubGhkWmtSWkljNlFOWnMxb1AxalFWR29DRi1PWmhqOGpEOUZnNkZ4ZURNSHRWckR5QURlY3hMWnExQm1mRmhMdHFNS0NETXJWUUVYWGw2WHpKakNraFY5SUdCVGpvajVGXzlFVWRJUmsxM2IwUlM4YU5DZEVlTEtlNlB3?oc=5",
+      "date": "Wed, 16 Sep 2026 04:49:09 GMT",
+      "desc": "Middle East War, U.S. Elections, AI Investments Key Risks for Korean Economy&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "South Korea Finance Chief Nominee Says Economy at Turning Point - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPQ0MyckEtZ1FLQzFNVTlzYlFKX3hldEZocXA5LV9GVGZ4dFRqSE1GNndxMXBMbUFoSTlHQ1VDeHlTajN3Zm9wU2NjTEVIX29BYWQ4MllqaG1mcERCOW9XektPbmhobmZyWmFMYWF4Ym9vNklDVkc3TUxXQ21tOFFzSzJFSXR4d1hkN2RxYlJkeWU2UG1tckVveXdRMVBHZFY4NXNLd2dGZTNjWW56amJxVTZRejM?oc=5",
       "date": "Tue, 15 Sep 2026 02:53:00 GMT",
-      "desc": "South Korea Finance Chief Nominee Says Economy at Turning Point&nbsp;&nbsp;bloomberg.com"
-    },
-    {
-      "title": "South Korea says economy in 'solid recovery' despite risks - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOM2xGOVk0ZlpWMFFoTU1nVV9wUUQ0bFhFZklBeVJWOUhGV2JSMUdMVG5ZdTc2OFFzTzdoS2hBV1p1YVJQY3V1NFItR2ZzanNQeFJ0N25HeHBZYXYyME1aVWFOSDdmNHBtTlp4bkNXazZ5bG5oaF9UXzJzTG1fMTNqQ0lYODJKbEd2ZjBzVHRwN0lraTRLVFhBMkxjbVA2UUV2OG55WFBFYlUtTVEtcDFDQ2ZIVGU2U1BDaTE4cjFQLThRcVg4NWdnTE1UVUIyQUhXdnhDeUVPaHJyQlB0OHJTT9IB5gFBVV95cUxPZHZQVXd1dXI0S1A0QmlpdDVjTEsyOEFCVVY1TGRmaFR4UDlwUnRxSWJDOWZUS3pYZFB1VVVpMzNoblBaM2I0VGRLSXZpSWpxYzhtWG5vaV9VTC1OTTFJRjI0emJIQnplYzQ0aEhVMnM4QnlDa0hhSzRQai1YZWhYT0JsOXRxNm5qTDdaS2hTZ0NSb2xjQlc4SmQtcVpRTnRzMUc3TG41aXRTR1d5ZTJkVmhTUGhmbHI0Sm1CYXFneFktQy1GRTVibE9PQjdlNWJzRHl3Ulo0dnJ2N1ExTExWaGVQVzNVQQ?oc=5",
-      "date": "Fri, 11 Sep 2026 10:13:22 GMT",
-      "desc": "South Korea says economy in 'solid recovery' despite risks&nbsp;&nbsp;upi.com"
+      "desc": "South Korea Finance Chief Nominee Says Economy at Turning Point&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
@@ -57,10 +57,10 @@
       "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "South Korea may be getting too old to take advantage of its AI boom - Fortune",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZG9QazFXQW11Zzlqd2x2VGtZampWdTNYVlVvNlpTenlCXzV0M24ydUplQks4M05vaS16NW1QMEFMQ2FlS1pkbUtDUjNzem5pc0Z0S0ROMlFiY0hmSzV4S3I5VGxrVUxNeU5ycWpCcFE2NFY2S2UyY3hNcjZVZmFSVEE5a0NuU204V0RFR0FYMkV3N1NlSG9n?oc=5",
-      "date": "Sun, 30 Aug 2026 07:00:00 GMT",
-      "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
+      "title": "Africa–Korea: a strengthened partnership to accelerate innovation, investment and the continent’s digital transformation - afdb.org",
+      "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQZEowS3Y1MVlQNjFEWlFVVUg1RUJTZG9VZ3l0UGFFdFdWaUZJWXdTQXExd2hUSlZRR1dNVmlMY3NWeHJlX0VsSkF2UXgwcHdiOEd3REVtWGpGTTdwNXRzOFpfcVB6c20waHMxbW9BdVhuTlhJenNoWjVNQk53M0hySnJvZUtYMmlVUHYzZHJXNTFpMUk3SU5Wb2ZzUElRaGRFNjZfWk9tUll3VTUzSDNpbU9RSThQX0FVLUpYaTV1REFkS0xXWVRyZF9mNXFuMFl4ZGpzOHI5TzFXN2hSWERPVWlxREFld2lpOGZZSEdDbzRKdFNRNE8zWXcwdExYdw?oc=5",
+      "date": "Wed, 16 Sep 2026 00:20:33 GMT",
+      "desc": "Africa–Korea: a strengthened partnership to accelerate innovation, investment and the continent’s digital transformation&nbsp;&nbsp;afdb.org"
     },
     {
       "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - Reuters",
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 248500.0,
-      "change": -11000.0,
-      "pct": -4.24,
+      "price": 253500.0,
+      "change": 4500.0,
+      "pct": 1.81,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1690000.0,
-      "change": -122000.0,
-      "pct": -6.73,
+      "price": 1759000.0,
+      "change": 62000.0,
+      "pct": 3.65,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 367000.0,
-      "change": -15500.0,
-      "pct": -4.05,
+      "price": 362000.0,
+      "change": -9500.0,
+      "pct": -2.56,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 121800.0,
-      "change": -4800.0,
-      "pct": -3.79,
+      "price": 120700.0,
+      "change": -3500.0,
+      "pct": -2.82,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 206000.0,
-      "change": -500.0,
-      "pct": -0.24,
+      "price": 201500.0,
+      "change": -2500.0,
+      "pct": -1.23,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6627.26,
-      "change": -282.65,
-      "pct": -4.09,
+      "price": 6717.97,
+      "change": 33.6,
+      "pct": 0.5,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1363.4,
-      "change": 17.79,
-      "pct": 1.32,
+      "price": 1367.52,
+      "change": 21.91,
+      "pct": 1.63,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-16 02:17 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-09-16 08:07 UTC"
 }
