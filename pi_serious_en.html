@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actually Computing π</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f1eee6; --panel:#ffffff; --panel-2:#f7f4ec;
+  --ink:#1c1d1f; --muted:#6c6a63; --border:#ddd7c8;
+  --accent:#2b3d54; --accent-bg:#e2e7ee; --accent-soft:#5a7091;
+  --good:#1f8a4c; --bad:#b3432b;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14161a; --panel:#1b1e23; --panel-2:#20242a;
+    --ink:#eae7dd; --muted:#93918a; --border:#2c2f36;
+    --accent:#7fa1cc; --accent-bg:#1e2a3a; --accent-soft:#5a7091;
+    --good:#7be39a; --bad:#e08a72;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161a; --panel:#1b1e23; --panel-2:#20242a;
+  --ink:#eae7dd; --muted:#93918a; --border:#2c2f36;
+  --accent:#7fa1cc; --accent-bg:#1e2a3a; --accent-soft:#5a7091;
+  --good:#7be39a; --bad:#e08a72;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Space Grotesk','Segoe UI',sans-serif; line-height:1.6;
+}
+.wrap{max-width:720px; margin:0 auto; padding:2.75rem 1.25rem 4rem;}
+h1{
+  font-size:clamp(1.55rem,4.4vw,2.15rem); font-weight:700;
+  margin:0 0 .55rem; letter-spacing:-0.01em;
+}
+.sub{color:var(--muted); font-size:.98rem; max-width:56ch; margin:0 0 2rem;}
+
+.segmented{
+  display:inline-flex; background:var(--panel-2); border:1px solid var(--border);
+  border-radius:10px; padding:.25rem; margin-bottom:1.25rem; gap:.15rem;
+}
+.segmented button{
+  font-family:inherit; font-size:.88rem; font-weight:500; color:var(--muted);
+  background:transparent; border:none; border-radius:7px; padding:.5rem 1rem;
+  cursor:pointer; transition:background-color .15s ease, color .15s ease;
+}
+.segmented button.active{background:var(--panel); color:var(--ink); box-shadow:0 1px 2px rgba(0,0,0,.08);}
+
+.controls{
+  display:flex; align-items:flex-end; gap:.75rem; flex-wrap:wrap;
+  background:var(--panel); border:1px solid var(--border); border-radius:12px;
+  padding:1.25rem; margin-bottom:1.25rem;
+}
+.field{display:flex; flex-direction:column; gap:.35rem;}
+.field label{font-size:.78rem; color:var(--muted);}
+.field .input-row{display:flex; align-items:center; gap:.5rem;}
+.field input[type=number]{
+  font-family:'IBM Plex Mono',monospace; font-size:1.05rem;
+  width:9.5rem; padding:.5rem .6rem; border:1px solid var(--border);
+  border-radius:8px; background:var(--panel-2); color:var(--ink);
+}
+.field .unit{font-size:.85rem; color:var(--muted);}
+.hint{font-size:.76rem; color:var(--muted); max-width:32ch;}
+.estimate{font-size:.76rem; color:var(--accent-soft);}
+.run-btn{
+  font-family:inherit; font-size:.95rem; font-weight:600; color:#fff;
+  background:var(--accent); border:none; border-radius:8px;
+  padding:.72rem 1.4rem; cursor:pointer; transition:opacity .15s ease, transform .1s ease;
+  margin-left:auto;
+}
+.run-btn:hover:not(:disabled){transform:translateY(-1px);}
+.run-btn:disabled{opacity:.55; cursor:default;}
+.run-btn.confirm{background:var(--bad);}
+.cancel-btn{
+  font-family:inherit; font-size:.88rem; font-weight:500; color:var(--muted);
+  background:transparent; border:1px solid var(--border); border-radius:8px;
+  padding:.7rem 1.1rem; cursor:pointer;
+}
+.cancel-btn:hover{color:var(--ink);}
+
+.readout{
+  background:var(--panel); border:1px solid var(--border); border-radius:12px;
+  padding:1.4rem 1.4rem; margin-bottom:1.1rem; min-height:6.5rem;
+}
+.readout .status{font-size:.84rem; color:var(--muted); margin-bottom:.6rem; min-height:1.2em;}
+.readout .status.err{color:var(--bad);}
+.digits{
+  font-family:'IBM Plex Mono',monospace; font-size:clamp(1rem,2.6vw,1.22rem);
+  word-break:break-all; letter-spacing:.01em; color:var(--ink);
+}
+.digits .whole{color:var(--accent); font-weight:600;}
+.digits .fade-in{animation:fadeIn .5s ease both;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(2px);} to{opacity:1; transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){ .digits .fade-in{animation:none;} }
+
+.dl-btn{
+  display:inline-flex; align-items:center; gap:.4em; margin-top:1rem; margin-right:.6rem;
+  font-family:inherit; font-size:.85rem; font-weight:500; color:var(--accent);
+  background:var(--accent-bg); border:1px solid var(--border); border-radius:8px;
+  padding:.5rem .9rem; cursor:pointer; transition:opacity .15s ease;
+}
+.dl-btn:hover:not(:disabled){opacity:.85;}
+.dl-btn:disabled{opacity:.5; cursor:default;}
+
+.log-panel{
+  background:var(--panel-2); border:1px solid var(--border); border-radius:12px;
+  padding:1rem 1.1rem; margin-bottom:1.25rem; display:none;
+}
+.log-panel.show{display:block;}
+.log-title{font-size:.78rem; color:var(--muted); margin-bottom:.5rem; font-weight:500;}
+.log-body{
+  max-height:220px; overflow-y:auto; font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem; line-height:1.75;
+}
+.log-line{opacity:0; animation:logIn .25s ease forwards;}
+.log-t{color:var(--accent-soft); margin-right:.5em;}
+@keyframes logIn{from{opacity:0; transform:translateY(-2px);} to{opacity:1; transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){ .log-line{animation:none; opacity:1;} }
+
+.stats{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:.75rem; margin-bottom:1.5rem;
+}
+.stat{
+  background:var(--panel-2); border:1px solid var(--border); border-radius:10px;
+  padding:.85rem 1rem;
+}
+.stat .label{font-size:.72rem; color:var(--muted); margin-bottom:.25rem;}
+.stat .value{font-family:'IBM Plex Mono',monospace; font-size:1.08rem; font-weight:500;}
+
+.compare{
+  font-size:.86rem; color:var(--ink); background:var(--accent-bg);
+  border-left:3px solid var(--accent); border-radius:0 8px 8px 0;
+  padding:.7rem .95rem; margin-bottom:1.75rem; display:none;
+}
+.compare.show{display:block;}
+.compare b{font-family:'IBM Plex Mono',monospace; color:var(--accent);}
+
+details{
+  background:var(--panel); border:1px solid var(--border); border-radius:12px;
+  padding:1rem 1.25rem;
+}
+details summary{cursor:pointer; font-weight:500; font-size:.92rem;}
+details .body{margin-top:.85rem; font-size:.88rem; color:var(--muted);}
+details .formula{
+  font-family:'IBM Plex Mono',monospace; font-size:.82rem; color:var(--ink);
+  background:var(--panel-2); border-radius:8px; padding:.7rem .85rem;
+  margin:.7rem 0; overflow-x:auto; white-space:pre;
+}
+details p{margin:.5rem 0;}
+
+@media (max-width:480px){
+  .controls{flex-direction:column; align-items:stretch;}
+  .run-btn{margin-left:0; width:100%;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Actually Computing π</h1>
+  <p class="sub">Enter a target digit count, or a time budget, and this page will actually compute π to arbitrary precision in your browser — using the Chudnovsky algorithm and binary splitting.</p>
+
+  <div class="segmented" role="tablist">
+    <button id="modeDigits" class="active" role="tab" aria-selected="true">By digit count</button>
+    <button id="modeTime" role="tab" aria-selected="false">By time budget</button>
+  </div>
+
+  <div class="controls">
+    <div class="field" id="fieldDigits">
+      <label for="inputDigits">Target digits (after the decimal point)</label>
+      <div class="input-row">
+        <input type="number" id="inputDigits" min="1" step="1" value="1000">
+        <span class="unit">digits</span>
+      </div>
+      <span class="estimate" id="estimateText"></span>
+    </div>
+    <div class="field" id="fieldTime" style="display:none;">
+      <label for="inputTime">Time budget</label>
+      <div class="input-row">
+        <input type="number" id="inputTime" min="1" max="10" step="0.5" value="3">
+        <span class="unit">seconds</span>
+      </div>
+    </div>
+    <span class="hint" id="hintText">No digit limit. Larger targets just take longer — you'll see an estimate before running.</span>
+    <button class="run-btn" id="runBtn">Calculate</button>
+    <button class="cancel-btn" id="cancelBtn" style="display:none;">Cancel</button>
+  </div>
+
+  <div class="readout">
+    <div class="status" id="statusText">Waiting… click "Calculate" to start.</div>
+    <div class="digits" id="digitsOut"><span class="whole">3</span>.14159265…</div>
+    <button class="dl-btn" id="downloadBtn" style="display:none;">⬇ Download (.txt)</button>
+    <button class="dl-btn" id="copyBtn" style="display:none;">⧉ Copy</button>
+  </div>
+
+  <div class="log-panel" id="logPanel">
+    <div class="log-title">Calculation log</div>
+    <div class="log-body" id="logBody"></div>
+  </div>
+
+  <div class="stats" id="statsRow" style="display:none;">
+    <div class="stat"><div class="label">Time taken</div><div class="value" id="statTime">—</div></div>
+    <div class="stat"><div class="label">Digits computed</div><div class="value" id="statDigits">—</div></div>
+    <div class="stat"><div class="label">Terms used</div><div class="value" id="statTerms">—</div></div>
+    <div class="stat"><div class="label">Digits per second</div><div class="value" id="statRate">—</div></div>
+  </div>
+
+  <div class="compare" id="compareBox">
+    Reaching the same digit count with the Leibniz series (π/4 = 1 − 1/3 + 1/5 − …) would have taken roughly <b id="compareVal">—</b> terms. Chudnovsky locks in about 14 digits per term.
+  </div>
+
+  <details>
+    <summary>How does this work?</summary>
+    <div class="body">
+      <p>The Chudnovsky algorithm computes 1/π from the series below. Each extra term locks in about 14 more correct digits — this is the same formula used in real world-record π computations.</p>
+      <div class="formula">1/π = 12 · Σ (-1)^k (6k)!(13591409+545140134k) / [(3k)!(k!)³ · 640320^(3k+3/2)]</div>
+      <p>Summing this series term by term would need a huge division at every step, so the terms are instead combined recursively in halves — a technique called <b>binary splitting</b>. All arithmetic runs as arbitrary-precision integers via JavaScript's <code>BigInt</code>, and the computation runs on a separate worker thread so the page never freezes.</p>
+    </div>
+  </details>
+</div>
+
+<script>
+(function(){
+  const modeDigitsBtn = document.getElementById('modeDigits');
+  const modeTimeBtn = document.getElementById('modeTime');
+  const fieldDigits = document.getElementById('fieldDigits');
+  const fieldTime = document.getElementById('fieldTime');
+  const hintText = document.getElementById('hintText');
+  const inputDigits = document.getElementById('inputDigits');
+  const inputTime = document.getElementById('inputTime');
+  const runBtn = document.getElementById('runBtn');
+  const statusText = document.getElementById('statusText');
+  const digitsOut = document.getElementById('digitsOut');
+  const statsRow = document.getElementById('statsRow');
+  const statTime = document.getElementById('statTime');
+  const statDigits = document.getElementById('statDigits');
+  const statTerms = document.getElementById('statTerms');
+  const statRate = document.getElementById('statRate');
+  const compareBox = document.getElementById('compareBox');
+  const compareVal = document.getElementById('compareVal');
+  const logPanel = document.getElementById('logPanel');
+  const logBody = document.getElementById('logBody');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const copyBtn = document.getElementById('copyBtn');
+  const estimateText = document.getElementById('estimateText');
+  const cancelBtn = document.getElementById('cancelBtn');
+
+  // Rough fit from measured scaling (300k–2M digits): time_ms ≈ k * digits^1.5
+  const TIME_K = 7.83e-6;
+  function estimateMs(digits){ return TIME_K * Math.pow(digits, 1.5); }
+  function formatDuration(ms){
+    if(ms < 800) return 'under 1s';
+    const s = ms/1000;
+    if(s < 60) return '~'+s.toFixed(s<10?1:0)+'s';
+    const m = Math.floor(s/60);
+    const rem = Math.round(s%60);
+    return '~'+m+'m'+(rem>0 ? ' '+rem+'s' : '');
+  }
+  function updateEstimate(){
+    const d = parseInt(inputDigits.value,10);
+    if(!Number.isFinite(d) || d<1){ estimateText.textContent=''; return; }
+    const ms = estimateMs(d);
+    estimateText.textContent = 'Estimated time: '+formatDuration(ms)+(ms>4000 ? ' — this could take a while' : '');
+  }
+  inputDigits.addEventListener('input', updateEstimate);
+  updateEstimate();
+
+  let downloadsCap = null;
+  let downloadsChecked = false;
+  let lastResult = null;
+  function updateDownloadVisibility(){
+    // Always show once a result exists; if unsupported, clicking explains why instead of the button silently staying hidden.
+    downloadBtn.style.display = lastResult ? 'inline-flex' : 'none';
+    copyBtn.style.display = lastResult ? 'inline-flex' : 'none';
+  }
+  (async function initDownloads(){
+    const start = Date.now();
+    while(Date.now()-start < 8000){
+      if(window.claude && typeof window.claude.use === 'function'){
+        try{
+          downloadsCap = await window.claude.use('downloads');
+        }catch(err){
+          downloadsCap = null;
+        }
+        downloadsChecked = true;
+        return;
+      }
+      await new Promise(r=>setTimeout(r, 200));
+    }
+    downloadsChecked = true; // window.claude never appeared — capability unavailable
+  })();
+  downloadBtn.addEventListener('click', async function(){
+    if(!lastResult) return;
+    if(!downloadsChecked){
+      downloadBtn.disabled = true;
+      downloadBtn.textContent = 'Checking…';
+      const start = Date.now();
+      while(!downloadsChecked && Date.now()-start < 8000){
+        await new Promise(r=>setTimeout(r, 150));
+      }
+      downloadBtn.disabled = false;
+      downloadBtn.textContent = '⬇ Download (.txt)';
+    }
+    if(!downloadsCap){
+      showError('File downloads aren\'t available in this view. (Try reopening this from the claude.ai artifact panel.)');
+      return;
+    }
+    const {digits, result} = lastResult;
+    const whole = result[0];
+    const decimals = result.slice(1);
+    const wrapped = (decimals.match(/.{1,100}/g)||[]).join('\n');
+    const content = 'π, '+digits.toLocaleString('en-US')+' decimal digits\n'
+      + 'Computed with the Chudnovsky algorithm + binary splitting\n\n'
+      + whole+'.\n'+wrapped+'\n';
+    downloadBtn.disabled = true;
+    downloadBtn.textContent = 'Saving…';
+    try{
+      await downloadsCap.save({filename:'pi_'+digits+'_digits.txt', data:content});
+    }catch(err){
+      showError('Download failed: '+(err && err.message ? err.message : String(err)));
+    } finally {
+      downloadBtn.disabled = false;
+      downloadBtn.textContent = '⬇ Download (.txt)';
+    }
+  });
+
+  copyBtn.addEventListener('click', async function(){
+    if(!lastResult) return;
+    const {digits, result} = lastResult;
+    const text = result[0]+'.'+result.slice(1);
+    const originalLabel = copyBtn.textContent;
+    async function fallbackCopy(){
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      let ok = false;
+      try{ ok = document.execCommand('copy'); }catch(e){ ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ok = await fallbackCopy();
+        if(!ok) throw new Error('Clipboard copy is not supported in this environment.');
+      }
+      copyBtn.textContent = '✓ Copied';
+      setTimeout(()=>{ copyBtn.textContent = originalLabel; }, 1600);
+    }catch(err){
+      const ok = await fallbackCopy();
+      if(ok){
+        copyBtn.textContent = '✓ Copied';
+        setTimeout(()=>{ copyBtn.textContent = originalLabel; }, 1600);
+      } else {
+        showError('Copy failed: '+(err && err.message ? err.message : String(err)));
+      }
+    }
+  });
+
+  let runStartTime = 0;
+  function resetLog(){
+    logBody.innerHTML = '';
+    logPanel.classList.remove('show');
+    runStartTime = performance.now();
+  }
+  function appendLog(message){
+    logPanel.classList.add('show');
+    const line = document.createElement('div');
+    line.className = 'log-line';
+    const tSpan = document.createElement('span');
+    tSpan.className = 'log-t';
+    tSpan.textContent = '['+((performance.now()-runStartTime)/1000).toFixed(2)+'s]';
+    const mSpan = document.createElement('span');
+    mSpan.textContent = message;
+    line.appendChild(tSpan);
+    line.appendChild(mSpan);
+    logBody.appendChild(line);
+    logBody.scrollTop = logBody.scrollHeight;
+  }
+
+  let mode = 'digits';
+  function setMode(m){
+    mode = m;
+    awaitingConfirm = false;
+    clearTimeout(confirmResetTimer);
+    runBtn.classList.remove('confirm');
+    runBtn.textContent = 'Calculate';
+    modeDigitsBtn.classList.toggle('active', m==='digits');
+    modeTimeBtn.classList.toggle('active', m==='time');
+    modeDigitsBtn.setAttribute('aria-selected', m==='digits');
+    modeTimeBtn.setAttribute('aria-selected', m==='time');
+    fieldDigits.style.display = m==='digits' ? 'flex' : 'none';
+    fieldTime.style.display = m==='time' ? 'flex' : 'none';
+    hintText.textContent = m==='digits'
+      ? 'No digit limit. Larger targets just take longer \u2014 you\'ll see an estimate before running.'
+      : 'Computes as many digits as possible within the time you give (max 10s).';
+  }
+  modeDigitsBtn.addEventListener('click', ()=>setMode('digits'));
+  modeTimeBtn.addEventListener('click', ()=>setMode('time'));
+
+  /* ===== Worker code (Chudnovsky + binary splitting) ===== */
+  const workerSrc = `
+    function isqrt(n) {
+      if (n < 0n) throw new RangeError('negative');
+      if (n < 2n) return n;
+      let bits = n.toString(2).length;
+      let x = 1n << BigInt(Math.ceil(bits/2));
+      let y = (x + n/x) >> 1n;
+      while (y < x) { x = y; y = (x + n/x) >> 1n; }
+      return x;
+    }
+    const C3_24 = 640320n ** 3n / 24n;
+    function bs(a, b) {
+      if (b - a === 1n) {
+        let Pab, Qab;
+        if (a === 0n) { Pab = 1n; Qab = 1n; }
+        else {
+          Pab = (6n*a - 5n) * (2n*a - 1n) * (6n*a - 1n);
+          Qab = a*a*a*C3_24;
+        }
+        let Tab = Pab * (13591409n + 545140134n*a);
+        if (a % 2n === 1n) Tab = -Tab;
+        return [Pab, Qab, Tab];
+      } else {
+        const m = (a+b)/2n;
+        const L = bs(a,m), R = bs(m,b);
+        const Pab = L[0]*R[0];
+        const Qab = L[1]*R[1];
+        const Tab = R[1]*L[2] + L[0]*R[2];
+        return [Pab,Qab,Tab];
+      }
+    }
+    function piChudnovsky(digits) {
+      const guard = 15;
+      const totalDigits = digits + guard;
+      const digitsPerTerm = Math.log10(151931373056000);
+      const n = BigInt(Math.floor(totalDigits/digitsPerTerm) + 2);
+      let t0 = performance.now();
+      const r = bs(0n, n);
+      const bsTime = performance.now()-t0;
+      const p = r[0], q = r[1], t = r[2];
+      const scale = 10n ** BigInt(2*totalDigits);
+      t0 = performance.now();
+      const sqrtC = isqrt(10005n * scale);
+      const sqrtTime = performance.now()-t0;
+      t0 = performance.now();
+      let pi = (q * 426880n * sqrtC) / t;
+      if (pi < 0n) pi = -pi;
+      let s = pi.toString();
+      s = s.slice(0, 1 + digits);
+      const divTime = performance.now()-t0;
+      return { str: s, n: Number(n), bsTime, sqrtTime, divTime };
+    }
+    function log(message){ self.postMessage({type:'log', message:message}); }
+    self.onmessage = function(e){
+      const data = e.data;
+      try{
+        if(data.mode==='digits'){
+          log('Starting: target '+data.digits.toLocaleString('en-US')+' digits (+ 15 guard digits)');
+          const t0 = performance.now();
+          const r = piChudnovsky(data.digits);
+          const dt = performance.now()-t0;
+          log('Number of terms needed: n = '+r.n.toLocaleString('en-US')+' (~14 digits confirmed per term)');
+          log('Computed P, Q, T via binary splitting: '+r.bsTime.toFixed(1)+'ms');
+          log('Computed integer square root of 10005×10^k (Newton\\'s method): '+r.sqrtTime.toFixed(1)+'ms');
+          log('Divided π = Q×426880×√C / T and truncated to '+data.digits.toLocaleString('en-US')+' digits: '+r.divTime.toFixed(1)+'ms');
+          log('Total time: '+dt.toFixed(1)+'ms');
+          self.postMessage({type:'done', ok:true, digits:data.digits, result:r.str, terms:r.n, timeMs:dt});
+        } else if(data.mode==='time'){
+          log('Starting adaptive search with a '+data.seconds+'s time budget');
+          const budgetMs = data.seconds*1000;
+          let targetDigits = 200;
+          let best=null;
+          const totalStart = performance.now();
+          let iterations=0;
+          while(iterations<14){
+            iterations++;
+            const t0=performance.now();
+            const r = piChudnovsky(targetDigits);
+            const dt=performance.now()-t0;
+            const elapsedTotal = performance.now()-totalStart;
+            if(elapsedTotal<=budgetMs){
+              best={digits:targetDigits, result:r.str, terms:r.n, totalMs:elapsedTotal};
+              log('Attempt '+iterations+': '+targetDigits.toLocaleString('en-US')+' digits → '+dt.toFixed(1)+'ms (total '+elapsedTotal.toFixed(0)+'ms) — within budget, growing');
+            } else {
+              log('Attempt '+iterations+': '+targetDigits.toLocaleString('en-US')+' digits would total '+elapsedTotal.toFixed(0)+'ms, over budget → keeping previous result');
+              break;
+            }
+            if(elapsedTotal > budgetMs*0.97){ log('Close to the budget — stopping the search'); break; }
+            if(targetDigits>=100000000){ log('Reached the safety ceiling (100,000,000 digits) — stopping'); break; }
+            const remaining = budgetMs-elapsedTotal;
+            const growthFactor = Math.min(4, Math.max(1.3, Math.pow((remaining*0.9)/Math.max(dt,1)+1, 1/1.55)));
+            let nextDigits = Math.floor(targetDigits*growthFactor);
+            if(nextDigits<=targetDigits) nextDigits = targetDigits*2;
+            targetDigits = Math.min(nextDigits, 100000000);
+            log('Next target: '+targetDigits.toLocaleString('en-US')+' digits');
+          }
+          if(best){
+            log('Final result: '+best.digits.toLocaleString('en-US')+' digits (total '+best.totalMs.toFixed(1)+'ms)');
+            self.postMessage({type:'done', ok:true, digits:best.digits, result:best.result, terms:best.terms, timeMs:best.totalMs});
+          } else {
+            self.postMessage({type:'done', ok:false, error:'Could not finish the computation within the given time.'});
+          }
+        }
+      }catch(err){
+        self.postMessage({type:'done', ok:false, error:String(err && err.message || err)});
+      }
+    };
+  `;
+
+  let worker = null;
+  function getWorker(){
+    if(worker) return worker;
+    try{
+      const blob = new Blob([workerSrc], {type:'application/javascript'});
+      worker = new Worker(URL.createObjectURL(blob));
+      return worker;
+    }catch(err){
+      return null;
+    }
+  }
+
+  function fmtNumber(n){ return n.toLocaleString('en-US'); }
+
+  function showResult(data){
+    const {digits, result, terms, timeMs} = data;
+    lastResult = {digits, result};
+    updateDownloadVisibility();
+    const whole = result[0];
+    const decimals = result.slice(1);
+    digitsOut.innerHTML = '<span class="whole">'+whole+'</span>.<span class="fade-in">'+decimals+'</span>';
+    statsRow.style.display = 'grid';
+    statTime.textContent = (timeMs/1000).toFixed(3)+'s';
+    statDigits.textContent = fmtNumber(digits);
+    statTerms.textContent = fmtNumber(terms);
+    const rate = timeMs>0 ? Math.round(digits/(timeMs/1000)) : digits;
+    statRate.textContent = fmtNumber(rate);
+    // Leibniz comparison: error ~ 1/(2n) -> need n ~ 10^digits terms for `digits` correct digits
+    if(digits <= 12){
+      compareBox.classList.add('show');
+      compareVal.textContent = '10^'+digits+' (approx. '+fmtNumber(Math.round(Math.pow(10,digits)))+')';
+    } else {
+      compareBox.classList.add('show');
+      compareVal.textContent = '10^'+digits;
+    }
+    statusText.classList.remove('err');
+    statusText.textContent = mode==='time'
+      ? ('Reached '+fmtNumber(digits)+' digits within the time budget.')
+      : (fmtNumber(digits)+' digits computed.');
+  }
+
+  function showError(msg){
+    statusText.classList.add('err');
+    statusText.textContent = msg;
+  }
+
+  let awaitingConfirm = false;
+  let confirmResetTimer = null;
+
+  runBtn.addEventListener('click', function(){
+    let payload;
+    if(mode==='digits'){
+      let d = parseInt(inputDigits.value,10);
+      if(!Number.isFinite(d) || d<1) d=1;
+      inputDigits.value = d;
+      payload = {mode:'digits', digits:d};
+
+      const ms = estimateMs(d);
+      if(ms > 4000 && !awaitingConfirm){
+        awaitingConfirm = true;
+        runBtn.classList.add('confirm');
+        runBtn.textContent = formatDuration(ms)+' estimated — click again to continue';
+        statusText.classList.remove('err');
+        statusText.textContent = 'That\'s a lot of digits — it may take a while. Click again to continue.';
+        clearTimeout(confirmResetTimer);
+        confirmResetTimer = setTimeout(function(){
+          awaitingConfirm = false;
+          runBtn.classList.remove('confirm');
+          runBtn.textContent = 'Calculate';
+          statusText.textContent = 'Waiting… click "Calculate" to start.';
+        }, 6000);
+        return;
+      }
+      awaitingConfirm = false;
+      clearTimeout(confirmResetTimer);
+      runBtn.classList.remove('confirm');
+    } else {
+      let s = parseFloat(inputTime.value);
+      if(!Number.isFinite(s) || s<0.5) s=0.5;
+      if(s>10) s=10;
+      inputTime.value = s;
+      payload = {mode:'time', seconds:s};
+    }
+    startComputation(payload);
+  });
+
+  cancelBtn.addEventListener('click', function(){
+    if(worker){
+      worker.terminate();
+      worker = null; // getWorker() creates a fresh one next run
+    }
+    runBtn.disabled = false;
+    runBtn.textContent = 'Calculate';
+    cancelBtn.style.display = 'none';
+    statusText.classList.remove('err');
+    statusText.textContent = 'Cancelled.';
+  });
+
+  function startComputation(payload){
+    runBtn.disabled = true;
+    runBtn.textContent = 'Calculating…';
+    cancelBtn.style.display = 'inline-flex';
+    statusText.classList.remove('err');
+    statusText.textContent = 'Calculating… (running on a background thread)';
+    statsRow.style.display = 'none';
+    compareBox.classList.remove('show');
+    downloadBtn.style.display = 'none';
+    copyBtn.style.display = 'none';
+    resetLog();
+
+    const w = getWorker();
+    if(w){
+      const handler = function(e){
+        const d = e.data;
+        if(!d) return;
+        if(d.type === 'log'){
+          appendLog(d.message);
+          return;
+        }
+        // type === 'done'
+        w.removeEventListener('message', handler);
+        runBtn.disabled = false;
+        runBtn.textContent = 'Calculate';
+        cancelBtn.style.display = 'none';
+        if(d.ok){
+          showResult(d);
+        } else {
+          showError(d.error ? d.error : 'An error occurred during the computation.');
+        }
+      };
+      w.addEventListener('message', handler);
+      w.postMessage(payload);
+    } else {
+      // Environment can't create a Worker — compute synchronously on the main thread (short delay lets the UI paint first)
+      cancelBtn.style.display = 'none'; // can't cancel a synchronous run
+      setTimeout(function(){
+        try{
+          runFallback(payload);
+        }catch(err){
+          runBtn.disabled = false;
+          runBtn.textContent = 'Calculate';
+          showError('This browser cannot run the computation: '+err.message);
+        }
+      }, 30);
+    }
+  }
+
+  /* Main-thread fallback (used if Worker creation fails) */
+  function isqrtMain(n){
+    if(n<0n) throw new RangeError('negative');
+    if(n<2n) return n;
+    let bits = n.toString(2).length;
+    let x = 1n << BigInt(Math.ceil(bits/2));
+    let y = (x+n/x)>>1n;
+    while(y<x){ x=y; y=(x+n/x)>>1n; }
+    return x;
+  }
+  const C3_24_main = 640320n ** 3n / 24n;
+  function bsMain(a,b){
+    if(b-a===1n){
+      let Pab, Qab;
+      if(a===0n){ Pab=1n; Qab=1n; }
+      else { Pab=(6n*a-5n)*(2n*a-1n)*(6n*a-1n); Qab=a*a*a*C3_24_main; }
+      let Tab = Pab*(13591409n+545140134n*a);
+      if(a%2n===1n) Tab=-Tab;
+      return [Pab,Qab,Tab];
+    } else {
+      const m=(a+b)/2n;
+      const L=bsMain(a,m), R=bsMain(m,b);
+      return [L[0]*R[0], L[1]*R[1], R[1]*L[2]+L[0]*R[2]];
+    }
+  }
+  function piChudnovskyMain(digits){
+    const guard=15;
+    const totalDigits=digits+guard;
+    const digitsPerTerm=Math.log10(151931373056000);
+    const n=BigInt(Math.floor(totalDigits/digitsPerTerm)+2);
+    let t0=performance.now();
+    const r=bsMain(0n,n);
+    const bsTime=performance.now()-t0;
+    const scale=10n**BigInt(2*totalDigits);
+    t0=performance.now();
+    const sqrtC=isqrtMain(10005n*scale);
+    const sqrtTime=performance.now()-t0;
+    t0=performance.now();
+    let pi=(r[1]*426880n*sqrtC)/r[2];
+    if(pi<0n) pi=-pi;
+    let s=pi.toString().slice(0,1+digits);
+    const divTime=performance.now()-t0;
+    return {str:s, n:Number(n), bsTime, sqrtTime, divTime};
+  }
+  function runFallback(payload){
+    if(payload.mode==='digits'){
+      appendLog('Starting: target '+payload.digits.toLocaleString('en-US')+' digits (+ 15 guard digits)');
+      const t0=performance.now();
+      const r=piChudnovskyMain(payload.digits);
+      const dt=performance.now()-t0;
+      appendLog('Number of terms needed: n = '+r.n.toLocaleString('en-US')+' (~14 digits confirmed per term)');
+      appendLog('Computed P, Q, T via binary splitting: '+r.bsTime.toFixed(1)+'ms');
+      appendLog('Computed integer square root of 10005×10^k (Newton\'s method): '+r.sqrtTime.toFixed(1)+'ms');
+      appendLog('Divided π = Q×426880×√C / T and truncated to '+payload.digits.toLocaleString('en-US')+' digits: '+r.divTime.toFixed(1)+'ms');
+      appendLog('Total time: '+dt.toFixed(1)+'ms');
+      runBtn.disabled=false; runBtn.textContent='Calculate';
+      showResult({digits:payload.digits, result:r.str, terms:r.n, timeMs:dt});
+    } else {
+      appendLog('Starting adaptive search with a '+payload.seconds+'s time budget');
+      const budgetMs=payload.seconds*1000;
+      let targetDigits=200, best=null;
+      const totalStart=performance.now();
+      let iterations=0;
+      while(iterations<14){
+        iterations++;
+        const t0=performance.now();
+        const r=piChudnovskyMain(targetDigits);
+        const dt=performance.now()-t0;
+        const elapsedTotal=performance.now()-totalStart;
+        if(elapsedTotal<=budgetMs){
+          best={digits:targetDigits, result:r.str, terms:r.n, totalMs:elapsedTotal};
+          appendLog('Attempt '+iterations+': '+targetDigits.toLocaleString('en-US')+' digits → '+dt.toFixed(1)+'ms (total '+elapsedTotal.toFixed(0)+'ms) — within budget, growing');
+        } else {
+          appendLog('Attempt '+iterations+': '+targetDigits.toLocaleString('en-US')+' digits would total '+elapsedTotal.toFixed(0)+'ms, over budget → keeping previous result');
+          break;
+        }
+        if(elapsedTotal>budgetMs*0.97){ appendLog('Close to the budget — stopping the search'); break; }
+        if(targetDigits>=100000000){ appendLog('Reached the safety ceiling (100,000,000 digits) — stopping'); break; }
+        const remaining=budgetMs-elapsedTotal;
+        const growthFactor=Math.min(4, Math.max(1.3, Math.pow((remaining*0.9)/Math.max(dt,1)+1, 1/1.55)));
+        let nextDigits=Math.floor(targetDigits*growthFactor);
+        if(nextDigits<=targetDigits) nextDigits=targetDigits*2;
+        targetDigits=Math.min(nextDigits,100000000);
+        appendLog('Next target: '+targetDigits.toLocaleString('en-US')+' digits');
+      }
+      runBtn.disabled=false; runBtn.textContent='Calculate';
+      if(best){
+        appendLog('Final result: '+best.digits.toLocaleString('en-US')+' digits (total '+best.totalMs.toFixed(1)+'ms)');
+        showResult({digits:best.digits, result:best.result, terms:best.terms, timeMs:best.totalMs});
+      } else {
+        showError('Could not finish the computation within the given time.');
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>
