@@ -605,3 +605,152 @@ Had this article covered **π** instead, it would have discussed the Machin seri
 ## D-8. Conclusion
 
 **"√2 = Newton's method" is shorthand for "Newton's method is the best choice for √2,"** not **"the only one."** Making this distinction is what can take this article's completeness up a notch.
+
+---
+
+# E. Mathematical Appendix — Rigorous Derivations
+
+> Sections B and C above state the results ("take the average," "digits double each time") somewhat informally. This appendix derives the same facts formally, with calculus and algebra, so the article can stand on its own as a self-contained mathematical reference rather than relying on intuition alone.
+
+## E-1. Deriving the Update Formula From First Principles
+
+### E-1.1 Setting Up the Problem
+
+We want a root of
+
+```
+f(x) = x² - 2 = 0
+```
+
+Newton's method is defined by drawing the **tangent line** to `f` at the current point `x_n` and using the tangent line's x-intercept as the next guess `x_{n+1}`.
+
+### E-1.2 The Tangent Line
+
+The tangent line to `f` at `x = x_n` is, by definition of the derivative, the best linear approximation to `f` near `x_n`:
+
+```
+L(x) = f(x_n) + f'(x_n) (x - x_n)
+```
+
+For `f(x) = x² - 2`, we have `f'(x) = 2x`, so:
+
+```
+L(x) = (x_n² - 2) + 2x_n (x - x_n)
+```
+
+### E-1.3 Finding Where the Tangent Line Crosses the x-Axis
+
+Setting `L(x) = 0` and solving for `x` gives the next approximation `x_{n+1}`:
+
+```
+0 = (x_n² - 2) + 2x_n (x_{n+1} - x_n)
+2x_n (x_n - x_{n+1}) = x_n² - 2
+x_n - x_{n+1} = (x_n² - 2) / (2x_n)
+x_{n+1} = x_n - (x_n² - 2) / (2x_n)
+```
+
+This is just the general Newton's-method formula `x_{n+1} = x_n - f(x_n)/f'(x_n)` written out for this specific `f`.
+
+### E-1.4 Simplifying Into the "Average" Form
+
+Put the right-hand side over a common denominator:
+
+```
+x_{n+1} = (2x_n² - (x_n² - 2)) / (2x_n)
+        = (x_n² + 2) / (2x_n)
+        = (1/2) · (x_n + 2/x_n)
+```
+
+So:
+
+```
+x_{n+1} = (x_n + 2/x_n) / 2
+```
+
+which is exactly the "average `x_n` with `2/x_n`" rule used in the main article. Nothing was assumed beyond the definition of the derivative — this is a full derivation, not just a pattern that happens to work.
+
+### E-1.5 The Geometric Picture, One More Time
+
+Picture the parabola `y = x² - 2`. At the point `(x_n, x_n² - 2)`, draw the tangent line. Because the parabola curves upward (`f'' = 2 > 0`), the tangent line always sits **below** the parabola except at the point of tangency. This means the tangent line crosses the x-axis **before** the parabola does (i.e., closer to the true root `√2`, on the side the parabola is bending away from) — which is exactly why the Newton step always lands strictly between the old guess and the truth, and never overshoots past the root on the correct side, for this particular convex function.
+
+## E-2. An Exact Identity for the Error (Not Just an Approximation)
+
+Section C-4.1 uses a Taylor-series *approximation* to argue that error shrinks quadratically. For `f(x) = x² - N` specifically, we can actually derive an **exact** identity — no approximation needed.
+
+### E-2.1 Derivation
+
+Let `r = √2` (the true root) and define the error `e_n = x_n - r`. Start from the update formula:
+
+```
+x_{n+1} - r = (x_n + 2/x_n)/2 - r
+```
+
+Put everything over `2x_n`:
+
+```
+x_{n+1} - r = (x_n² + 2 - 2·r·x_n) / (2x_n)
+```
+
+Since `r² = 2`, replace the `2` in the numerator with `r²`:
+
+```
+x_{n+1} - r = (x_n² - 2·r·x_n + r²) / (2x_n)
+            = (x_n - r)² / (2x_n)
+```
+
+So we obtain the **exact** identity:
+
+```
+e_{n+1} = e_n² / (2x_n)
+```
+
+### E-2.2 Why This Is Better Than the Taylor Argument
+
+- It holds **exactly**, for any `x_n ≠ 0`, not just "approximately when `e_n` is small."
+- It immediately shows `e_{n+1} ≥ 0` whenever `x_n > 0` — i.e., after the first step every subsequent guess is a slight **over-estimate** of `√2` (approaches from above), which is a fact the numerical table in the tool actually exhibits.
+- When `x_n` is close to `r = √2`, the denominator `2x_n ≈ 2√2 ≈ 2.828`, so `e_{n+1} ≈ e_n² / 2.828`. This recovers the Taylor result with an explicit, computable constant instead of a vague "proportional to."
+- It confirms **quadratic convergence** directly: if `e_n` has `d` correct digits (`e_n ≈ 10^-d`), then `e_{n+1} ≈ 10^-2d / 2.828`, i.e., **about `2d` correct digits** — the doubling claim, proven exactly rather than sketched.
+
+## E-3. Order of Convergence — A Quantitative Comparison Table
+
+Section D already compares methods qualitatively. Here is the same comparison made quantitative, using the standard definition of **order of convergence** `p`, where `e_{n+1} ≈ C · e_n^p`.
+
+- **Bisection** — order `p = 1` (linear). Halves the interval each step. Iterations for ~1,000 digits: **≈ 3,322** (= 1000 / log₁₀2).
+- **Continued fraction** — order `p = 1` (linear). About 1 digit per convergent. Iterations for ~1,000 digits: **≈ 1,000**.
+- **CORDIC** — order `p = 1` (linear). About 1 bit per step. Iterations for ~1,000 digits: **≈ 3,322**.
+- **Secant method** — order `p ≈ 1.618` (the golden ratio). Superlinear; needs no derivative. Iterations for ~1,000 digits: **≈ 20**.
+- **Newton's method** — order `p = 2` (quadratic). `e_{n+1} ≈ C·e_n²`. Iterations for ~1,000 digits: **≈ 10**.
+- **Goldschmidt's algorithm** — order `p = 2` (quadratic, same order as Newton, multiplication-only). Iterations for ~1,000 digits: **≈ 10**.
+- **Householder's method** — order `p = 3` (cubic). `e_{n+1} ≈ C·e_n³`. Iterations for ~1,000 digits: **≈ 7**.
+- **Halley's method** — order `p = 3` (cubic). `e_{n+1} ≈ C·e_n³`. Iterations for ~1,000 digits: **≈ 7**.
+
+Two things stand out:
+
+1. **Order 1 → 2 is the single biggest jump.** Going from bisection/continued fractions (linear) to Newton (quadratic) cuts the iteration count by roughly two orders of magnitude (3,322 → 10).
+2. **Order 2 → 3 barely matters here.** Going from Newton (quadratic) to Householder/Halley (cubic) only saves about 3 iterations, at the cost of a noticeably more complex update formula (it needs `f''` as well as `f'`). This is exactly why, as Section D-9 notes, cubic methods are rarely used just to compute √2 — the marginal benefit doesn't justify the added complexity once you already have quadratic convergence.
+
+## E-4. Is √2 Really Irrational? — A Proof
+
+The whole article rests on the premise that √2 cannot be written as a fraction. Here is the classical proof (attributed to the Pythagorean school), by contradiction.
+
+**Claim:** `√2` is not a rational number.
+
+**Proof:** Suppose, for contradiction, that `√2 = p/q` for some integers `p, q` with `q ≠ 0` and `p/q` written in lowest terms (i.e., `p` and `q` share no common factor).
+
+1. Squaring both sides: `2 = p²/q²`, so `p² = 2q²`.
+2. This means `p²` is even. Since the square of an odd number is always odd, `p` itself must be even. Write `p = 2k` for some integer `k`.
+3. Substituting: `(2k)² = 2q²`, i.e., `4k² = 2q²`, i.e., `q² = 2k²`.
+4. By the same reasoning as step 2, `q²` is even, so `q` is also even.
+5. But now both `p` and `q` are even — contradicting the assumption that `p/q` was in lowest terms (they'd share the common factor 2).
+
+This contradiction means the original assumption was false: `√2` cannot be written as a ratio of integers. **∎**
+
+### E-4.1 Where √2 Sits in the Bigger Picture
+
+- `√2` is a root of the polynomial `x² - 2 = 0`, which has **integer coefficients**. Any number that satisfies such a polynomial is called an **algebraic number**. So `√2` is irrational, but it *is* algebraic (degree 2, specifically).
+- The continued-fraction expansion of `√2` is the simplest possible non-terminating one: `√2 = [1; 2, 2, 2, 2, ...]` (a 1, followed by 2's forever). This periodicity is itself a theorem (Lagrange's theorem: a real number has an eventually periodic continued fraction if and only if it is a root of a quadratic with integer coefficients — i.e., a "quadratic irrational"). This is the deeper reason Section D-3(4) could say the continued fraction of √2 has "a clear pattern": it's not a coincidence, it's guaranteed by √2 being algebraic of degree 2.
+- `π` and `e`, by contrast, are **transcendental**: no polynomial with integer (or even rational) coefficients has them as a root. This is precisely why Section D-5's claim — "Newton's method doesn't work for π or e" — is exactly right in a technical sense: Newton's method finds roots of equations `f(x) = 0`, and `π`/`e` are not naturally the root of any simple algebraic `f`. (One *can* apply Newton's method to a transcendental equation like `sin(x) = 0` to approach `π`, but this converges no faster, and is far more delicate to set up correctly, than the dedicated series methods already covered in Section D-5.)
+
+## E-5. A Closing Note on Rounding Error (Tying Back to Section C-5.1)
+
+The exact identity in E-2.1 assumed **infinite-precision** arithmetic. In the tool's actual `BigInt` fixed-point implementation, every multiplication and division is rounded to `P + GUARD` digits, introducing a small extra error of at most about `10^-(P+GUARD)` per operation (one "unit in the last place," or ULP, of the internal representation). Over the roughly `log₂(digits)` iterations needed, these per-step rounding errors can, in the worst case, accumulate roughly linearly — which is precisely why a **fixed buffer of extra digits (`GUARD = 30`)**, rather than zero buffer, is kept internally and only stripped off at the very end (Section C-5.1). The quadratic convergence proved in E-2 guarantees the *mathematical* error shrinks fast; the `GUARD` digits are what keep the *implementation's* rounding error from quietly eating into that guarantee.
