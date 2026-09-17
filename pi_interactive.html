@@ -126,7 +126,17 @@ header p{color:var(--muted); font-size:.98rem; max-width:62ch; margin:0 0 1.6rem
   background:var(--panel-2); border:1px solid var(--border);
   border-radius:10px; padding:1.5rem 1.3rem; margin-bottom:1rem;
   min-height:108px; overflow-x:auto; overflow-y:hidden;
+  position:relative;
 }
+.formula-live-wrap::after{
+  content:'';
+  position:absolute; top:0; right:0; bottom:0; width:28px;
+  background:linear-gradient(to right, transparent, var(--panel-2));
+  pointer-events:none; border-radius:0 10px 10px 0;
+  opacity:0; transition:opacity .2s ease;
+}
+.formula-live-wrap.has-overflow::after{opacity:1;}
+.formula-live-wrap.scrolled-end::after{opacity:0;}
 .formula-live-wrap.hidden{display:none;}
 .formula-live{
   font-size:1.28rem; white-space:nowrap;
@@ -215,6 +225,9 @@ header p{color:var(--muted); font-size:.98rem; max-width:62ch; margin:0 0 1.6rem
 }
 .viz-wrap.hidden{display:none;}
 canvas.viz{width:100%; height:240px; display:block; border-radius:6px;}
+@media (max-width:520px){
+  canvas.viz{height:min(60vw,190px);}
+}
 
 .stats{
   display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
@@ -247,6 +260,10 @@ button.action{
 button.action:hover{border-color:var(--cat-color);}
 button.action.primary{
   background:var(--cat-color); border-color:var(--cat-color); color:var(--panel);
+}
+@media (max-width:480px){
+  .controls{flex-direction:column;}
+  button.action{padding:.75rem 1.1rem; font-size:.9rem; width:100%;}
 }
 footer{margin-top:2rem; font-size:.78rem; color:var(--muted); max-width:62ch;}
 </style>
@@ -1150,6 +1167,15 @@ function renderLiveFormula(){
       if(deltaLeft > 0) wrapEl.scrollLeft -= deltaLeft;
     }
   }
+  updateFlOverflowHint();
+}
+
+/* ★ 모바일 등에서 "가로로 더 있음"을 옅은 그라데이션으로 알려주기 */
+function updateFlOverflowHint(){
+  const hasOverflow = flWrap.scrollWidth > flWrap.clientWidth + 2;
+  flWrap.classList.toggle('has-overflow', hasOverflow);
+  const atEnd = flWrap.scrollLeft + flWrap.clientWidth >= flWrap.scrollWidth - 2;
+  flWrap.classList.toggle('scrolled-end', atEnd);
 }
 
 /* ============================================================
@@ -1527,6 +1553,7 @@ function frame(now){
    ============================================================ */
 pRun.addEventListener('click', startRun);
 pReset.addEventListener('click', ()=>{ stopRun(); resetRun(); });
+flWrap.addEventListener('scroll', updateFlOverflowHint, {passive:true});
 
 let resizeTimer=null;
 window.addEventListener('resize', ()=>{
@@ -1542,6 +1569,7 @@ window.addEventListener('resize', ()=>{
       if(offCtx) offCtx.clearRect(0,0,offCanvas.width,offCanvas.height);
       drawViz();
     }
+    updateFlOverflowHint();
   }, 120);
 });
 
