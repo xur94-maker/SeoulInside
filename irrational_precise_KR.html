@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>무리수 정밀 계산기 — 진짜 임의정밀도 뉴턴법</title>
+<style>
+  :root {
+    --bg: #f5f6fb;
+    --panel: #ffffff;
+    --text: #1b1d2b;
+    --muted: #6b7290;
+    --border: #e2e4f0;
+    --accent: #3a5cff;
+    --accent2: #8a5cff;
+    --good: #1f9d5c;
+    --bad: #d1455b;
+    --input-bg: #ffffff;
+    --track: #eef0fa;
+    --mono-bg: #f0f1f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1220;
+      --panel: #1a1e33;
+      --text: #e6e6f0;
+      --muted: #9aa3c7;
+      --border: #2c3355;
+      --accent: #5b7bff;
+      --accent2: #b088ff;
+      --good: #3ddc84;
+      --bad: #ff6b6b;
+      --input-bg: #0b0e1a;
+      --track: #232847;
+      --mono-bg: #0b0e1a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1220;
+    --panel: #1a1e33;
+    --text: #e6e6f0;
+    --muted: #9aa3c7;
+    --border: #2c3355;
+    --accent: #5b7bff;
+    --accent2: #b088ff;
+    --good: #3ddc84;
+    --bad: #ff6b6b;
+    --input-bg: #0b0e1a;
+    --track: #232847;
+    --mono-bg: #0b0e1a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Malgun Gothic", sans-serif;
+    margin: 0; padding: 16px; background: var(--bg); color: var(--text);
+  }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  p.sub { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+  .layout {
+    display: grid; grid-template-columns: 380px 1fr; gap: 14px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px;
+  }
+  label { display: block; font-size: 12px; margin: 10px 0 4px; color: var(--muted); }
+  select, input[type=number] {
+    width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--input-bg); color: var(--text); font-size: 14px;
+  }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button {
+    padding: 10px; border-radius: 8px; border: none; cursor: pointer;
+    background: var(--accent); color: white; font-size: 13px; font-weight: 600;
+    width: 100%; margin-top: 12px;
+  }
+  button.ghost { background: var(--track); color: var(--text); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .status { margin-top: 12px; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .status b { color: var(--text); }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .badge {
+    display: inline-block; padding: 3px 9px; border-radius: 999px;
+    font-size: 11px; background: var(--track); color: var(--text);
+  }
+  .badge.good { background: var(--good); color: #06210f; }
+  .badge.bad  { background: var(--bad); color: #2a0508; }
+  .hint { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+  .result-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .result-head h2 { font-size: 14px; margin: 0; }
+  textarea#digitsOut {
+    width: 100%; height: 220px; margin-top: 8px; resize: vertical;
+    background: var(--mono-bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px; font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; line-height: 1.5; word-break: break-all;
+  }
+  .smallbtns { display: flex; gap: 8px; }
+  .smallbtns button { margin-top: 8px; }
+  table#iterTbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+  table#iterTbl th, table#iterTbl td {
+    text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+  }
+  table#iterTbl th:first-child, table#iterTbl td:first-child { text-align: left; }
+  canvas#growth { width: 100%; height: 160px; background: var(--mono-bg); border-radius: 8px; margin-top: 10px; }
+  .footnote { font-size: 11.5px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<h1>🔢 무리수 정밀 계산기 — 진짜 임의정밀도 뉴턴법</h1>
+<p class="sub">
+  더블 실수(double)는 약 15~16자리에서 한계에 부딪히지만, 이 페이지는 <b>BigInt 기반 고정소수점 산술</b>로
+  실제로 원하는 자릿수만큼 뉴턴법을 반복 계산합니다. 자릿수를 늘려도 "이론상 그럴 것이다"가 아니라
+  브라우저가 실제로 그 자릿수를 전부 계산해서 보여줍니다.
+</p>
+
+<div class="layout">
+  <div class="panel">
+    <label>계산할 무리수</label>
+    <select id="kind">
+      <option value="sqrt" data-n="2">√2  (x² = 2)</option>
+      <option value="sqrt" data-n="3">√3  (x² = 3)</option>
+      <option value="sqrt" data-n="5" selected>√5  (x² = 5)</option>
+      <option value="sqrt" data-n="7">√7  (x² = 7)</option>
+      <option value="sqrt" data-n="10">√10 (x² = 10)</option>
+      <option value="cbrt" data-n="2">∛2  (x³ = 2)</option>
+      <option value="cbrt" data-n="5">∛5  (x³ = 5)</option>
+      <option value="cbrt" data-n="7">∛7  (x³ = 7)</option>
+      <option value="phi"  data-n="0">φ  황금비 (x² = x+1)</option>
+      <option value="custom" data-n="0">직접 입력: N의 k제곱근</option>
+    </select>
+
+    <div id="customBox" style="display:none">
+      <div class="row2">
+        <div>
+          <label>N (양의 정수)</label>
+          <input id="customN" type="number" min="1" value="2" step="1">
+        </div>
+        <div>
+          <label>k (제곱근 차수, 2~15)</label>
+          <input id="customK" type="number" min="2" max="15" value="2" step="1">
+        </div>
+      </div>
+      <div class="hint">예: N=7, k=4 → 7의 네제곱근 (x⁴ = 7)</div>
+    </div>
+
+    <label>목표 자릿수 (소수점 이하)</label>
+    <input id="digits" type="number" min="1" max="500000" value="200" step="1">
+    <div class="hint">
+      뉴턴법은 매 반복마다 정확한 자릿수가 약 2배로 늘어납니다.
+      1,000자리 정도는 거의 즉시, 20,000자리도 수십 ms, 100,000자리도 1초 내외면 계산됩니다
+      (기기 성능에 따라 다름). 값이 매우 크면 계산 중 화면이 잠깐 멎을 수 있어 단계별로 나누어 계산합니다.
+    </div>
+
+    <button id="run">정밀 계산 시작</button>
+    <button id="cancel" class="ghost" disabled>중단</button>
+
+    <div class="status" id="status">아직 계산하지 않았습니다.</div>
+    <div class="badges" id="badges"></div>
+  </div>
+
+  <div class="panel">
+    <div class="result-head">
+      <h2 id="resultTitle">결과</h2>
+      <span class="hint" id="resultMeta"></span>
+    </div>
+    <textarea id="digitsOut" readonly placeholder="계산 결과가 여기에 표시됩니다."></textarea>
+    <div class="smallbtns">
+      <button class="ghost" id="selectAll" style="margin-top:0">전체 선택 (복사용)</button>
+    </div>
+
+    <h2 style="font-size:14px;margin:16px 0 0">반복 단계별 실제 수렴 기록</h2>
+    <div class="table-wrap" style="max-height:220px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;margin-top:6px">
+      <table id="iterTbl">
+        <thead><tr><th>반복 n</th><th>서로 일치하는 자릿수(추정)</th><th>이 단계 소요시간</th><th>누적시간</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <canvas id="growth" width="700" height="160"></canvas>
+    <div class="footnote">
+      "일치하는 자릿수"는 이번 반복 결과와 직전 반복 결과 문자열을 앞에서부터 비교해 처음 달라지는 위치까지의 길이입니다.
+      뉴턴법이 2차 수렴하므로 이 값이 반복마다 대략 두 배씩 늘어나는 것을 표에서 직접 확인할 수 있습니다.
+    </div>
+  </div>
+</div>
+
+<div class="panel" style="max-width:1200px;margin:14px auto 0">
+  <div class="result-head">
+    <h2 id="graphTitle" style="font-size:14px">뉴턴법 근사 과정 (그래프)</h2>
+    <span class="hint">가는 선 하나하나가 한 번의 뉴턴 접선(tangent line)입니다</span>
+  </div>
+  <canvas id="newtonGraph" width="1000" height="380" style="width:100%;height:380px;background:var(--mono-bg);border-radius:8px;margin-top:8px"></canvas>
+  <div class="smallbtns">
+    <button id="playGraph" style="margin-top:8px">▶ 줌인 애니메이션 재생</button>
+    <button id="resetGraph" class="ghost" style="margin-top:8px">리셋 (전체 보기)</button>
+  </div>
+  <div class="footnote">
+    파란 곡선은 f(x), 초록 점은 실제 근(정답)입니다. "줌인 애니메이션 재생"을 누르면 접선이 하나씩 나타날 때마다
+    카메라가 근 쪽으로 점점 확대되어 들어가며, 매 반복마다 근사값이 얼마나 빠르게(제곱으로) 근에 가까워지는지
+    시각적으로 체감할 수 있습니다. 이 그래프는 시각적 직관을 위해 배정밀도(double)로만 계산하며,
+    위쪽의 실제 임의정밀도 계산과는 별개입니다.
+  </div>
+</div>
+
+<script>
+// ============== 고정소수점 BigInt 유틸 ==============
+// 실수 r 은 정수 R = round(r * 10^P) 로 표현한다 (P = 자릿수 + 여유자리)
+const GUARD = 30; // 계산 중 오차 누적 방지용 여유 자릿수
+
+function initialGuess(approxDouble, P) {
+  const initDigits = 15;
+  const initScale = 10n ** BigInt(initDigits);
+  let X = BigInt(Math.round(approxDouble * Number(initScale)));
+  if (P > initDigits) {
+    X = X * (10n ** BigInt(P - initDigits));
+  } else if (P < initDigits) {
+    X = X / (10n ** BigInt(initDigits - P));
+  }
+  return X;
+}
+
+function toDigitString(X, P) {
+  const scale = 10n ** BigInt(P);
+  const neg = X < 0n;
+  const Xa = neg ? -X : X;
+  const intPart = Xa / scale;
+  const fracPart = Xa % scale;
+  return (neg ? '-' : '') + intPart.toString() + '.' + fracPart.toString().padStart(P, '0');
+}
+
+function commonPrefixLen(a, b) {
+  const n = Math.min(a.length, b.length);
+  let i = 0;
+  while (i < n && a[i] === b[i]) i++;
+  return i;
+}
+
+// k제곱근 뉴턴 업데이트: x_{n+1} = ((k-1)x^k + N) / (k * x^(k-1))
+function nthRootStep(X, k, Nfp_asInt, scale) {
+  // x^(k-1), x^k 를 고정소수점으로 계산
+  let pk1 = X; // x^1
+  for (let i = 2; i <= k - 1; i++) pk1 = (pk1 * X) / scale;
+  const pk = (pk1 * X) / scale; // x^k
+
+  const numerator = BigInt(k - 1) * pk + Nfp_asInt; // (k-1)x^k + N  (고정소수점)
+  const denom = BigInt(k) * pk1;                    // k * x^(k-1)  (고정소수점)
+  return (numerator * scale) / denom;
+}
+
+// 황금비 뉴턴 업데이트: x_{n+1} = (x^2+1) / (2x-1)
+function phiStep(X, scale) {
+  const x2 = (X * X) / scale;
+  const numerator = x2 + scale;      // x^2 + 1
+  const denom = 2n * X - scale;      // 2x - 1
+  return (numerator * scale) / denom;
+}
+
+// ============== 계산 컨트롤러 ==============
+const kindSel = document.getElementById('kind');
+const customBox = document.getElementById('customBox');
+const customN = document.getElementById('customN');
+const customK = document.getElementById('customK');
+const digitsInput = document.getElementById('digits');
+const runBtn = document.getElementById('run');
+const cancelBtn = document.getElementById('cancel');
+const statusEl = document.getElementById('status');
+const badgesEl = document.getElementById('badges');
+const outEl = document.getElementById('digitsOut');
+const resultTitle = document.getElementById('resultTitle');
+const resultMeta = document.getElementById('resultMeta');
+const tbody = document.querySelector('#iterTbl tbody');
+const growth = document.getElementById('growth');
+const gctx = growth.getContext('2d');
+const selectAllBtn = document.getElementById('selectAll');
+
+kindSel.addEventListener('change', () => {
+  customBox.style.display = kindSel.value === 'custom' ? 'block' : 'none';
+  drawNewtonGraph();
+});
+customN.addEventListener('input', drawNewtonGraph);
+customK.addEventListener('input', drawNewtonGraph);
+
+selectAllBtn.addEventListener('click', () => { outEl.focus(); outEl.select(); });
+
+let cancelled = false;
+
+function describeTarget() {
+  if (kindSel.value === 'custom') {
+    const N = parseInt(customN.value, 10);
+    const k = parseInt(customK.value, 10);
+    return { label: `${N}의 ${k}제곱근`, kind: 'nthroot', N, k };
+  }
+  const opt = kindSel.options[kindSel.selectedIndex];
+  const N = parseInt(opt.dataset.n, 10);
+  if (kindSel.value === 'sqrt') return { label: opt.textContent.trim(), kind: 'nthroot', N, k: 2 };
+  if (kindSel.value === 'cbrt') return { label: opt.textContent.trim(), kind: 'nthroot', N, k: 3 };
+  if (kindSel.value === 'phi')  return { label: 'φ (황금비)', kind: 'phi', N: 0, k: 0 };
+}
+
+function drawGrowth(points, targetDigits) {
+  gctx.clearRect(0, 0, growth.width, growth.height);
+  gctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--mono-bg') || '#0b0e1a';
+  gctx.fillRect(0, 0, growth.width, growth.height);
+  if (points.length === 0) return;
+  const padL = 40, padR = 10, padT = 10, padB = 20;
+  const w = growth.width - padL - padR, h = growth.height - padT - padB;
+  const maxY = Math.max(targetDigits, ...points) * 1.05;
+  const textColor = getComputedStyle(document.body).getPropertyValue('--muted') || '#9aa3c7';
+  const lineColor = getComputedStyle(document.body).getPropertyValue('--accent') || '#3a5cff';
+  gctx.strokeStyle = '#88889955';
+  gctx.beginPath(); gctx.moveTo(padL, padT); gctx.lineTo(padL, padT + h); gctx.lineTo(padL + w, padT + h); gctx.stroke();
+  gctx.fillStyle = textColor; gctx.font = '10px system-ui';
+  gctx.fillText('0', padL - 14, padT + h + 4);
+  gctx.fillText(String(Math.round(maxY)), padL - 34, padT + 8);
+  gctx.fillText('반복 n →', padL + w - 44, padT + h + 14);
+  gctx.strokeStyle = lineColor; gctx.lineWidth = 2;
+  gctx.beginPath();
+  points.forEach((p, i) => {
+    const px = padL + (points.length === 1 ? 0 : (w * i) / (points.length - 1));
+    const py = padT + h - (p / maxY) * h;
+    if (i === 0) gctx.moveTo(px, py); else gctx.lineTo(px, py);
+  });
+  gctx.stroke();
+  gctx.fillStyle = lineColor;
+  points.forEach((p, i) => {
+    const px = padL + (points.length === 1 ? 0 : (w * i) / (points.length - 1));
+    const py = padT + h - (p / maxY) * h;
+    gctx.beginPath(); gctx.arc(px, py, 2.5, 0, Math.PI * 2); gctx.fill();
+  });
+}
+
+// ============== 뉴턴 접선 그래프 (배정밀도, 시각화 전용) ==============
+const newtonGraph = document.getElementById('newtonGraph');
+const ngctx = newtonGraph.getContext('2d');
+const graphTitle = document.getElementById('graphTitle');
+const playGraphBtn = document.getElementById('playGraph');
+const resetGraphBtn = document.getElementById('resetGraph');
+
+function funcsFor(target) {
+  if (target.kind === 'phi') {
+    return {
+      f: x => x * x - x - 1,
+      df: x => 2 * x - 1,
+      root: (1 + Math.sqrt(5)) / 2,
+    };
+  }
+  const N = target.N, k = target.k;
+  return {
+    f: x => Math.pow(x, k) - N,
+    df: x => k * Math.pow(x, k - 1),
+    root: Math.pow(N, 1 / k),
+  };
+}
+
+function computeGraphIterates(target) {
+  const { f, df, root } = funcsFor(target);
+  const x0 = Math.max(0.2, root * 1.7 + 0.5);
+  const xs = [x0];
+  for (let i = 0; i < 8; i++) {
+    const x = xs[xs.length - 1];
+    const d = df(x);
+    if (!isFinite(d) || Math.abs(d) < 1e-12) break;
+    const nx = x - f(x) / d;
+    xs.push(nx);
+    if (Math.abs(nx - x) < 1e-13) break;
+  }
+  return { xs, f, df, root };
+}
+
+function yRangeFor(xmin, xmax, f) {
+  let ymin = Infinity, ymax = -Infinity;
+  const SAMPLES = 200;
+  for (let i = 0; i <= SAMPLES; i++) {
+    const x = xmin + (xmax - xmin) * i / SAMPLES;
+    const y = f(x);
+    if (isFinite(y)) { ymin = Math.min(ymin, y); ymax = Math.max(ymax, y); }
+  }
+  ymin = Math.max(ymin, -Math.abs(ymax) * 0.7);
+  if (ymax === ymin) { ymax += 1; ymin -= 1; }
+  return { ymin, ymax };
+}
+
+// 전체(줌 없음) 뷰 + 반복마다 점점 좁아지는 줌 뷰들을 미리 계산
+function buildGraphData(target) {
+  const { xs, f, df, root } = computeGraphIterates(target);
+  const xmax0 = Math.max(xs[0] * 1.08, root * 1.25);
+  const xmin0 = Math.min(-0.3 * xmax0, root * 0.15, 0);
+  const { ymin: ymin0, ymax: ymax0 } = yRangeFor(xmin0, xmax0, f);
+  const fullView = { xmin: xmin0, xmax: xmax0, ymin: ymin0, ymax: ymax0 };
+  const fullHalf = (xmax0 - xmin0) / 2;
+
+  const views = [];
+  for (let i = 0; i < xs.length - 1; i++) {
+    let halfWidth = Math.max(Math.abs(xs[i] - root), Math.abs(xs[i + 1] - root)) * 1.9;
+    halfWidth = Math.max(halfWidth, fullHalf * 1e-6);
+    halfWidth = Math.min(halfWidth, fullHalf);
+    const xmin = root - halfWidth, xmax = root + halfWidth;
+    const { ymin, ymax } = yRangeFor(xmin, xmax, f);
+    views.push({ xmin, xmax, ymin, ymax });
+  }
+  return { xs, f, df, root, fullView, views };
+}
+
+let gdata = null; // 현재 선택된 무리수에 대한 그래프 데이터
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+function lerpView(v0, v1, t) {
+  return {
+    xmin: lerp(v0.xmin, v1.xmin, t), xmax: lerp(v0.xmax, v1.xmax, t),
+    ymin: lerp(v0.ymin, v1.ymin, t), ymax: lerp(v0.ymax, v1.ymax, t),
+  };
+}
+function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+function tangentAlpha(j, n) { return 0.25 + 0.55 * (j / Math.max(1, n - 1)); }
+
+// index: 지금 "나타나는 중"인 접선의 인덱스 (0-based). fadeT: 그 접선의 등장 진행도(0~1)
+// index가 xs.length-1 이상이면 모든 접선이 이미 완성된 상태로 표시
+function renderGraphFrame(view, index, fadeT) {
+  const { xs, f, root } = gdata;
+  const n = xs.length - 1; // 총 접선 개수
+  const W = newtonGraph.width, H = newtonGraph.height;
+  ngctx.clearRect(0, 0, W, H);
+  const monoBg = getComputedStyle(document.body).getPropertyValue('--mono-bg') || '#0b0e1a';
+  const textColor = getComputedStyle(document.body).getPropertyValue('--muted') || '#9aa3c7';
+  const curveColor = getComputedStyle(document.body).getPropertyValue('--accent') || '#3a5cff';
+  const rootColor = getComputedStyle(document.body).getPropertyValue('--good') || '#3ddc84';
+  ngctx.fillStyle = monoBg; ngctx.fillRect(0, 0, W, H);
+
+  const { xmin, xmax, ymin, ymax } = view;
+  const padT = 20, padB = 20, padL = 10, padR = 10;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const X = x => padL + (x - xmin) / (xmax - xmin) * plotW;
+  const Y = y => padT + plotH - (y - ymin) / (ymax - ymin) * plotH;
+
+  ngctx.strokeStyle = '#88889955'; ngctx.lineWidth = 1;
+  if (ymin < 0 && ymax > 0) { ngctx.beginPath(); ngctx.moveTo(X(xmin), Y(0)); ngctx.lineTo(X(xmax), Y(0)); ngctx.stroke(); }
+  if (xmin < 0 && xmax > 0) { ngctx.beginPath(); ngctx.moveTo(X(0), padT); ngctx.lineTo(X(0), padT + plotH); ngctx.stroke(); }
+
+  ngctx.strokeStyle = curveColor; ngctx.lineWidth = 2;
+  ngctx.beginPath();
+  const SAMPLES = 300;
+  for (let i = 0; i <= SAMPLES; i++) {
+    const x = xmin + (xmax - xmin) * i / SAMPLES;
+    const y = f(x);
+    if (!isFinite(y)) continue;
+    const px = X(x), py = Y(y);
+    if (i === 0) ngctx.moveTo(px, py); else ngctx.lineTo(px, py);
+  }
+  ngctx.stroke();
+
+  ngctx.fillStyle = rootColor;
+  ngctx.beginPath(); ngctx.arc(X(root), Y(0), 5, 0, Math.PI * 2); ngctx.fill();
+  ngctx.fillStyle = textColor; ngctx.font = '11px system-ui';
+  ngctx.fillText(`근 = ${root.toPrecision(8)}`, X(root) + 8, Y(0) - 8);
+
+  const span = (xmax - xmin) * 0.6;
+  for (let j = 0; j <= Math.min(index, n - 1); j++) {
+    const isCurrent = j === index;
+    const alpha = isCurrent ? tangentAlpha(j, n) * fadeT : tangentAlpha(j, n);
+    if (alpha <= 0.001) continue;
+    const x = xs[j], y = f(x), slope = gdata.df(x);
+    ngctx.strokeStyle = `rgba(255,107,107,${alpha})`;
+    ngctx.lineWidth = 1;
+    const xL = x - span, xR = x + span;
+    ngctx.beginPath();
+    ngctx.moveTo(X(xL), Y(y - slope * (x - xL)));
+    ngctx.lineTo(X(xR), Y(y + slope * (xR - x)));
+    ngctx.stroke();
+
+    ngctx.strokeStyle = `rgba(255,107,107,${alpha * 0.5})`;
+    ngctx.setLineDash([2, 3]);
+    ngctx.beginPath(); ngctx.moveTo(X(x), Y(y)); ngctx.lineTo(X(x), Y(0)); ngctx.stroke();
+    ngctx.setLineDash([]);
+
+    ngctx.fillStyle = curveColor;
+    ngctx.beginPath(); ngctx.arc(X(x), Y(y), 3, 0, Math.PI * 2); ngctx.fill();
+    ngctx.fillStyle = `rgba(255,107,107,${Math.min(1, alpha + 0.2)})`;
+    ngctx.beginPath(); ngctx.arc(X(xs[j + 1]), Y(0), 3, 0, Math.PI * 2); ngctx.fill();
+  }
+
+  ngctx.fillStyle = textColor; ngctx.font = '11px system-ui';
+  ngctx.fillText(`x₀ = ${xs[0].toPrecision(6)}`, 10, H - 6);
+  const shownUpto = Math.min(index + (fadeT >= 1 ? 1 : 0), n);
+  ngctx.fillText(`${shownUpto}번의 접선까지 진행 · x${shownUpto} = ${xs[shownUpto].toPrecision(10)}`, padL, 14);
+}
+
+function drawNewtonGraph() {
+  const target = describeTarget();
+  if (!target) return;
+  stopAnimation();
+  graphTitle.textContent = `뉴턴법 근사 과정 — ${target.label}`;
+  gdata = buildGraphData(target);
+  renderGraphFrame(gdata.fullView, gdata.xs.length - 1, 1); // 전체 다 그려진 정적 상태
+}
+
+// ---------- 줌인 애니메이션 ----------
+let animRafId = null;
+let animPlaying = false;
+const ZOOM_MS = 900, PAUSE_MS = 350;
+
+function stopAnimation() {
+  animPlaying = false;
+  if (animRafId) cancelAnimationFrame(animRafId);
+  animRafId = null;
+  playGraphBtn.textContent = '▶ 줌인 애니메이션 재생';
+}
+
+function playAnimation() {
+  if (!gdata) return;
+  stopAnimation();
+  animPlaying = true;
+  playGraphBtn.textContent = '⏸ 정지';
+  const n = gdata.xs.length - 1;
+  let i = 0;
+  let phase = 'zoom';
+  let phaseStart = performance.now();
+
+  function frame(now) {
+    if (!animPlaying) return;
+    const prevView = i === 0 ? gdata.fullView : gdata.views[i - 1];
+    const targetView = gdata.views[i];
+
+    if (phase === 'zoom') {
+      const t = Math.min(1, (now - phaseStart) / ZOOM_MS);
+      const te = easeInOutCubic(t);
+      const view = lerpView(prevView, targetView, te);
+      renderGraphFrame(view, i, te);
+      if (t >= 1) { phase = 'pause'; phaseStart = now; }
+    } else {
+      renderGraphFrame(targetView, i, 1);
+      if (now - phaseStart >= PAUSE_MS) {
+        i++;
+        if (i >= n) { stopAnimation(); return; }
+        phase = 'zoom'; phaseStart = now;
+      }
+    }
+    animRafId = requestAnimationFrame(frame);
+  }
+  animRafId = requestAnimationFrame(frame);
+}
+
+playGraphBtn.addEventListener('click', () => {
+  if (animPlaying) stopAnimation();
+  else playAnimation();
+});
+resetGraphBtn.addEventListener('click', () => {
+  stopAnimation();
+  if (gdata) renderGraphFrame(gdata.fullView, gdata.xs.length - 1, 1);
+});
+
+function formatGrouped(str) {
+  // 소수점 이후를 10자리씩 묶어 가독성 향상 (전체가 매우 길 수 있음)
+  const dot = str.indexOf('.');
+  if (dot === -1) return str;
+  const head = str.slice(0, dot + 1);
+  const frac = str.slice(dot + 1);
+  const groups = [];
+  for (let i = 0; i < frac.length; i += 10) groups.push(frac.slice(i, i + 10));
+  return head + groups.join(' ');
+}
+
+async function runComputation() {
+  cancelled = false;
+  runBtn.disabled = true;
+  cancelBtn.disabled = false;
+  tbody.innerHTML = '';
+  badgesEl.innerHTML = '';
+  outEl.value = '';
+
+  const target = describeTarget();
+  const digits = Math.max(1, Math.min(500000, parseInt(digitsInput.value, 10) || 100));
+  const P = digits + GUARD;
+  const scale = 10n ** BigInt(P);
+
+  resultTitle.textContent = target.label + ' 의 값 (' + digits + '자리)';
+  statusEl.innerHTML = '초기값 준비 중...';
+
+  let approxDouble;
+  if (target.kind === 'phi') approxDouble = (1 + Math.sqrt(5)) / 2;
+  else approxDouble = Math.pow(target.N, 1 / target.k);
+
+  let X = initialGuess(approxDouble, P);
+  const NfpAsInt = target.kind === 'nthroot' ? BigInt(target.N) * scale : 0n;
+
+  const t0 = performance.now();
+  let prevStr = toDigitString(X, P);
+  let iter = 0;
+  const growthPoints = [];
+  let converged = false;
+
+  while (iter < 200) {
+    if (cancelled) { statusEl.innerHTML = '사용자에 의해 중단되었습니다.'; break; }
+    iter++;
+    const tStepStart = performance.now();
+
+    let next;
+    if (target.kind === 'phi') next = phiStep(X, scale);
+    else next = nthRootStep(X, target.k, NfpAsInt, scale);
+
+    const tStepEnd = performance.now();
+    const nextStr = toDigitString(next, P);
+    const matched = commonPrefixLen(prevStr, nextStr);
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${iter}</td><td>${matched.toLocaleString('ko-KR')}</td>` +
+      `<td>${(tStepEnd - tStepStart).toFixed(1)} ms</td><td>${(tStepEnd - t0).toFixed(1)} ms</td>`;
+    tbody.appendChild(tr);
+    growthPoints.push(Math.min(matched, digits));
+    drawGrowth(growthPoints, digits);
+
+    const done = next === X || matched >= digits + 5;
+    X = next;
+    prevStr = nextStr;
+
+    if (done) { converged = true; break; }
+
+    // UI가 멎지 않도록 한 프레임 양보
+    await new Promise(r => setTimeout(r, 0));
+  }
+
+  const totalTime = performance.now() - t0;
+  const finalStr = toDigitString(X, P).slice(0, digits + 2); // 정수부 + '.' + digits자리
+  outEl.value = formatGrouped(finalStr);
+  resultMeta.textContent = `반복 ${iter}회 · 총 ${totalTime.toFixed(1)} ms`;
+
+  statusEl.innerHTML =
+    `<b>${target.label}</b> 를 소수점 아래 <b>${digits.toLocaleString('ko-KR')}자리</b>까지 실제로 계산했습니다.<br>` +
+    `내부적으로는 여유자리를 포함해 ${P.toLocaleString('ko-KR')}자리 정밀도(BigInt 고정소수점)로 연산했습니다.`;
+
+  badgesEl.innerHTML =
+    (converged ? '<span class="badge good">수렴 완료</span>' : (cancelled ? '<span class="badge bad">중단됨</span>' : '<span class="badge bad">최대 반복 도달</span>')) +
+    `<span class="badge">반복 ${iter}회</span>` +
+    `<span class="badge">${totalTime.toFixed(0)} ms</span>`;
+
+  runBtn.disabled = false;
+  cancelBtn.disabled = true;
+}
+
+runBtn.addEventListener('click', runComputation);
+cancelBtn.addEventListener('click', () => { cancelled = true; });
+
+// 초기 자동 실행
+drawNewtonGraph();
+runComputation();
+</script>
+</body>
+</html>

@@ -1,0 +1,654 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irrational Number Precision Calculator — True Arbitrary-Precision Newton's Method</title>
+<style>
+  :root {
+    --bg: #f5f6fb;
+    --panel: #ffffff;
+    --text: #1b1d2b;
+    --muted: #6b7290;
+    --border: #e2e4f0;
+    --accent: #3a5cff;
+    --accent2: #8a5cff;
+    --good: #1f9d5c;
+    --bad: #d1455b;
+    --input-bg: #ffffff;
+    --track: #eef0fa;
+    --mono-bg: #f0f1f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1220;
+      --panel: #1a1e33;
+      --text: #e6e6f0;
+      --muted: #9aa3c7;
+      --border: #2c3355;
+      --accent: #5b7bff;
+      --accent2: #b088ff;
+      --good: #3ddc84;
+      --bad: #ff6b6b;
+      --input-bg: #0b0e1a;
+      --track: #232847;
+      --mono-bg: #0b0e1a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1220;
+    --panel: #1a1e33;
+    --text: #e6e6f0;
+    --muted: #9aa3c7;
+    --border: #2c3355;
+    --accent: #5b7bff;
+    --accent2: #b088ff;
+    --good: #3ddc84;
+    --bad: #ff6b6b;
+    --input-bg: #0b0e1a;
+    --track: #232847;
+    --mono-bg: #0b0e1a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0; padding: 16px; background: var(--bg); color: var(--text);
+  }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  p.sub { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+  .layout {
+    display: grid; grid-template-columns: 380px 1fr; gap: 14px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px;
+  }
+  label { display: block; font-size: 12px; margin: 10px 0 4px; color: var(--muted); }
+  select, input[type=number] {
+    width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--input-bg); color: var(--text); font-size: 14px;
+  }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button {
+    padding: 10px; border-radius: 8px; border: none; cursor: pointer;
+    background: var(--accent); color: white; font-size: 13px; font-weight: 600;
+    width: 100%; margin-top: 12px;
+  }
+  button.ghost { background: var(--track); color: var(--text); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .status { margin-top: 12px; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .status b { color: var(--text); }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .badge {
+    display: inline-block; padding: 3px 9px; border-radius: 999px;
+    font-size: 11px; background: var(--track); color: var(--text);
+  }
+  .badge.good { background: var(--good); color: #06210f; }
+  .badge.bad  { background: var(--bad); color: #2a0508; }
+  .hint { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+  .result-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .result-head h2 { font-size: 14px; margin: 0; }
+  textarea#digitsOut {
+    width: 100%; height: 220px; margin-top: 8px; resize: vertical;
+    background: var(--mono-bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px; font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; line-height: 1.5; word-break: break-all;
+  }
+  .smallbtns { display: flex; gap: 8px; }
+  .smallbtns button { margin-top: 8px; }
+  table#iterTbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+  table#iterTbl th, table#iterTbl td {
+    text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+  }
+  table#iterTbl th:first-child, table#iterTbl td:first-child { text-align: left; }
+  canvas#growth { width: 100%; height: 160px; background: var(--mono-bg); border-radius: 8px; margin-top: 10px; }
+  .footnote { font-size: 11.5px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<h1>🔢 Irrational Number Precision Calculator — True Arbitrary-Precision Newton's Method</h1>
+<p class="sub">
+  The double-precision floating-point type hits its limit at about 15–16 digits, but this page uses
+  <b>BigInt-based fixed-point arithmetic</b> to actually run Newton's method as many times as needed to
+  reach the number of digits you want. It's not "in theory it should be accurate" — your browser really
+  computes and displays every one of those digits.
+</p>
+
+<div class="layout">
+  <div class="panel">
+    <label>Irrational number to compute</label>
+    <select id="kind">
+      <option value="sqrt" data-n="2">√2  (x² = 2)</option>
+      <option value="sqrt" data-n="3">√3  (x² = 3)</option>
+      <option value="sqrt" data-n="5" selected>√5  (x² = 5)</option>
+      <option value="sqrt" data-n="7">√7  (x² = 7)</option>
+      <option value="sqrt" data-n="10">√10 (x² = 10)</option>
+      <option value="cbrt" data-n="2">∛2  (x³ = 2)</option>
+      <option value="cbrt" data-n="5">∛5  (x³ = 5)</option>
+      <option value="cbrt" data-n="7">∛7  (x³ = 7)</option>
+      <option value="phi"  data-n="0">φ  Golden ratio (x² = x+1)</option>
+      <option value="custom" data-n="0">Custom: k-th root of N</option>
+    </select>
+
+    <div id="customBox" style="display:none">
+      <div class="row2">
+        <div>
+          <label>N (positive integer)</label>
+          <input id="customN" type="number" min="1" value="2" step="1">
+        </div>
+        <div>
+          <label>k (root degree, 2–15)</label>
+          <input id="customK" type="number" min="2" max="15" value="2" step="1">
+        </div>
+      </div>
+      <div class="hint">Example: N=7, k=4 → fourth root of 7 (x⁴ = 7)</div>
+    </div>
+
+    <label>Target digits (after the decimal point)</label>
+    <input id="digits" type="number" min="1" max="500000" value="200" step="1">
+    <div class="hint">
+      Newton's method roughly doubles the number of correct digits with each iteration.
+      About 1,000 digits is nearly instant, 20,000 digits takes tens of ms, and 100,000 digits
+      takes around a second (depending on your device). For very large values the screen may
+      freeze briefly during computation, so the work is split into stages.
+    </div>
+
+    <button id="run">Start Precision Computation</button>
+    <button id="cancel" class="ghost" disabled>Stop</button>
+
+    <div class="status" id="status">No computation has been run yet.</div>
+    <div class="badges" id="badges"></div>
+  </div>
+
+  <div class="panel">
+    <div class="result-head">
+      <h2 id="resultTitle">Result</h2>
+      <span class="hint" id="resultMeta"></span>
+    </div>
+    <textarea id="digitsOut" readonly placeholder="The computed result will appear here."></textarea>
+    <div class="smallbtns">
+      <button class="ghost" id="selectAll" style="margin-top:0">Select All (for copying)</button>
+    </div>
+
+    <h2 style="font-size:14px;margin:16px 0 0">Actual Convergence Record per Iteration</h2>
+    <div class="table-wrap" style="max-height:220px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;margin-top:6px">
+      <table id="iterTbl">
+        <thead><tr><th>Iteration n</th><th>Matching digits (est.)</th><th>Time for this step</th><th>Cumulative time</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <canvas id="growth" width="700" height="160"></canvas>
+    <div class="footnote">
+      "Matching digits" is the length of the common prefix between this iteration's result and the
+      previous one, up to the first differing character. Because Newton's method converges quadratically,
+      you can see this value roughly double with each iteration directly in the table.
+    </div>
+  </div>
+</div>
+
+<div class="panel" style="max-width:1200px;margin:14px auto 0">
+  <div class="result-head">
+    <h2 id="graphTitle" style="font-size:14px">Newton's Method Approximation Process (Graph)</h2>
+    <span class="hint">Each thin line is one Newton tangent line</span>
+  </div>
+  <canvas id="newtonGraph" width="1000" height="380" style="width:100%;height:380px;background:var(--mono-bg);border-radius:8px;margin-top:8px"></canvas>
+  <div class="smallbtns">
+    <button id="playGraph" style="margin-top:8px">▶ Play Zoom-In Animation</button>
+    <button id="resetGraph" class="ghost" style="margin-top:8px">Reset (Full View)</button>
+  </div>
+  <div class="footnote">
+    The blue curve is f(x), and the green dot is the actual root (the answer). When you press
+    "Play Zoom-In Animation," the camera gradually zooms in toward the root as each tangent line
+    appears, letting you feel visually how fast (quadratically) the approximation approaches the
+    root with each iteration. This graph is computed only in double precision for visual intuition,
+    and is separate from the actual arbitrary-precision computation above.
+  </div>
+</div>
+
+<script>
+// ============== Fixed-point BigInt utilities ==============
+// A real number r is represented as the integer R = round(r * 10^P)  (P = digits + guard digits)
+const GUARD = 30; // Guard digits to prevent error accumulation during computation
+
+function initialGuess(approxDouble, P) {
+  const initDigits = 15;
+  const initScale = 10n ** BigInt(initDigits);
+  let X = BigInt(Math.round(approxDouble * Number(initScale)));
+  if (P > initDigits) {
+    X = X * (10n ** BigInt(P - initDigits));
+  } else if (P < initDigits) {
+    X = X / (10n ** BigInt(initDigits - P));
+  }
+  return X;
+}
+
+function toDigitString(X, P) {
+  const scale = 10n ** BigInt(P);
+  const neg = X < 0n;
+  const Xa = neg ? -X : X;
+  const intPart = Xa / scale;
+  const fracPart = Xa % scale;
+  return (neg ? '-' : '') + intPart.toString() + '.' + fracPart.toString().padStart(P, '0');
+}
+
+function commonPrefixLen(a, b) {
+  const n = Math.min(a.length, b.length);
+  let i = 0;
+  while (i < n && a[i] === b[i]) i++;
+  return i;
+}
+
+// k-th root Newton update: x_{n+1} = ((k-1)x^k + N) / (k * x^(k-1))
+function nthRootStep(X, k, Nfp_asInt, scale) {
+  // Compute x^(k-1), x^k in fixed-point
+  let pk1 = X; // x^1
+  for (let i = 2; i <= k - 1; i++) pk1 = (pk1 * X) / scale;
+  const pk = (pk1 * X) / scale; // x^k
+
+  const numerator = BigInt(k - 1) * pk + Nfp_asInt; // (k-1)x^k + N  (fixed-point)
+  const denom = BigInt(k) * pk1;                    // k * x^(k-1)  (fixed-point)
+  return (numerator * scale) / denom;
+}
+
+// Golden ratio Newton update: x_{n+1} = (x^2+1) / (2x-1)
+function phiStep(X, scale) {
+  const x2 = (X * X) / scale;
+  const numerator = x2 + scale;      // x^2 + 1
+  const denom = 2n * X - scale;      // 2x - 1
+  return (numerator * scale) / denom;
+}
+
+// ============== Computation controller ==============
+const kindSel = document.getElementById('kind');
+const customBox = document.getElementById('customBox');
+const customN = document.getElementById('customN');
+const customK = document.getElementById('customK');
+const digitsInput = document.getElementById('digits');
+const runBtn = document.getElementById('run');
+const cancelBtn = document.getElementById('cancel');
+const statusEl = document.getElementById('status');
+const badgesEl = document.getElementById('badges');
+const outEl = document.getElementById('digitsOut');
+const resultTitle = document.getElementById('resultTitle');
+const resultMeta = document.getElementById('resultMeta');
+const tbody = document.querySelector('#iterTbl tbody');
+const growth = document.getElementById('growth');
+const gctx = growth.getContext('2d');
+const selectAllBtn = document.getElementById('selectAll');
+
+kindSel.addEventListener('change', () => {
+  customBox.style.display = kindSel.value === 'custom' ? 'block' : 'none';
+  drawNewtonGraph();
+});
+customN.addEventListener('input', drawNewtonGraph);
+customK.addEventListener('input', drawNewtonGraph);
+
+selectAllBtn.addEventListener('click', () => { outEl.focus(); outEl.select(); });
+
+let cancelled = false;
+
+function describeTarget() {
+  if (kindSel.value === 'custom') {
+    const N = parseInt(customN.value, 10);
+    const k = parseInt(customK.value, 10);
+    return { label: `${k}-th root of ${N}`, kind: 'nthroot', N, k };
+  }
+  const opt = kindSel.options[kindSel.selectedIndex];
+  const N = parseInt(opt.dataset.n, 10);
+  if (kindSel.value === 'sqrt') return { label: opt.textContent.trim(), kind: 'nthroot', N, k: 2 };
+  if (kindSel.value === 'cbrt') return { label: opt.textContent.trim(), kind: 'nthroot', N, k: 3 };
+  if (kindSel.value === 'phi')  return { label: 'φ (Golden ratio)', kind: 'phi', N: 0, k: 0 };
+}
+
+function drawGrowth(points, targetDigits) {
+  gctx.clearRect(0, 0, growth.width, growth.height);
+  gctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--mono-bg') || '#0b0e1a';
+  gctx.fillRect(0, 0, growth.width, growth.height);
+  if (points.length === 0) return;
+  const padL = 40, padR = 10, padT = 10, padB = 20;
+  const w = growth.width - padL - padR, h = growth.height - padT - padB;
+  const maxY = Math.max(targetDigits, ...points) * 1.05;
+  const textColor = getComputedStyle(document.body).getPropertyValue('--muted') || '#9aa3c7';
+  const lineColor = getComputedStyle(document.body).getPropertyValue('--accent') || '#3a5cff';
+  gctx.strokeStyle = '#88889955';
+  gctx.beginPath(); gctx.moveTo(padL, padT); gctx.lineTo(padL, padT + h); gctx.lineTo(padL + w, padT + h); gctx.stroke();
+  gctx.fillStyle = textColor; gctx.font = '10px system-ui';
+  gctx.fillText('0', padL - 14, padT + h + 4);
+  gctx.fillText(String(Math.round(maxY)), padL - 34, padT + 8);
+  gctx.fillText('iteration n →', padL + w - 56, padT + h + 14);
+  gctx.strokeStyle = lineColor; gctx.lineWidth = 2;
+  gctx.beginPath();
+  points.forEach((p, i) => {
+    const px = padL + (points.length === 1 ? 0 : (w * i) / (points.length - 1));
+    const py = padT + h - (p / maxY) * h;
+    if (i === 0) gctx.moveTo(px, py); else gctx.lineTo(px, py);
+  });
+  gctx.stroke();
+  gctx.fillStyle = lineColor;
+  points.forEach((p, i) => {
+    const px = padL + (points.length === 1 ? 0 : (w * i) / (points.length - 1));
+    const py = padT + h - (p / maxY) * h;
+    gctx.beginPath(); gctx.arc(px, py, 2.5, 0, Math.PI * 2); gctx.fill();
+  });
+}
+
+// ============== Newton tangent graph (double precision, visualization only) ==============
+const newtonGraph = document.getElementById('newtonGraph');
+const ngctx = newtonGraph.getContext('2d');
+const graphTitle = document.getElementById('graphTitle');
+const playGraphBtn = document.getElementById('playGraph');
+const resetGraphBtn = document.getElementById('resetGraph');
+
+function funcsFor(target) {
+  if (target.kind === 'phi') {
+    return {
+      f: x => x * x - x - 1,
+      df: x => 2 * x - 1,
+      root: (1 + Math.sqrt(5)) / 2,
+    };
+  }
+  const N = target.N, k = target.k;
+  return {
+    f: x => Math.pow(x, k) - N,
+    df: x => k * Math.pow(x, k - 1),
+    root: Math.pow(N, 1 / k),
+  };
+}
+
+function computeGraphIterates(target) {
+  const { f, df, root } = funcsFor(target);
+  const x0 = Math.max(0.2, root * 1.7 + 0.5);
+  const xs = [x0];
+  for (let i = 0; i < 8; i++) {
+    const x = xs[xs.length - 1];
+    const d = df(x);
+    if (!isFinite(d) || Math.abs(d) < 1e-12) break;
+    const nx = x - f(x) / d;
+    xs.push(nx);
+    if (Math.abs(nx - x) < 1e-13) break;
+  }
+  return { xs, f, df, root };
+}
+
+function yRangeFor(xmin, xmax, f) {
+  let ymin = Infinity, ymax = -Infinity;
+  const SAMPLES = 200;
+  for (let i = 0; i <= SAMPLES; i++) {
+    const x = xmin + (xmax - xmin) * i / SAMPLES;
+    const y = f(x);
+    if (isFinite(y)) { ymin = Math.min(ymin, y); ymax = Math.max(ymax, y); }
+  }
+  ymin = Math.max(ymin, -Math.abs(ymax) * 0.7);
+  if (ymax === ymin) { ymax += 1; ymin -= 1; }
+  return { ymin, ymax };
+}
+
+// Precompute the full (no-zoom) view and the progressively narrowing zoom views for each iteration
+function buildGraphData(target) {
+  const { xs, f, df, root } = computeGraphIterates(target);
+  const xmax0 = Math.max(xs[0] * 1.08, root * 1.25);
+  const xmin0 = Math.min(-0.3 * xmax0, root * 0.15, 0);
+  const { ymin: ymin0, ymax: ymax0 } = yRangeFor(xmin0, xmax0, f);
+  const fullView = { xmin: xmin0, xmax: xmax0, ymin: ymin0, ymax: ymax0 };
+  const fullHalf = (xmax0 - xmin0) / 2;
+
+  const views = [];
+  for (let i = 0; i < xs.length - 1; i++) {
+    let halfWidth = Math.max(Math.abs(xs[i] - root), Math.abs(xs[i + 1] - root)) * 1.9;
+    halfWidth = Math.max(halfWidth, fullHalf * 1e-6);
+    halfWidth = Math.min(halfWidth, fullHalf);
+    const xmin = root - halfWidth, xmax = root + halfWidth;
+    const { ymin, ymax } = yRangeFor(xmin, xmax, f);
+    views.push({ xmin, xmax, ymin, ymax });
+  }
+  return { xs, f, df, root, fullView, views };
+}
+
+let gdata = null; // Graph data for the currently selected irrational number
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+function lerpView(v0, v1, t) {
+  return {
+    xmin: lerp(v0.xmin, v1.xmin, t), xmax: lerp(v0.xmax, v1.xmax, t),
+    ymin: lerp(v0.ymin, v1.ymin, t), ymax: lerp(v0.ymax, v1.ymax, t),
+  };
+}
+function easeInOutCubic(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+function tangentAlpha(j, n) { return 0.25 + 0.55 * (j / Math.max(1, n - 1)); }
+
+// index: the index of the tangent currently "appearing" (0-based). fadeT: its appearance progress (0–1)
+// If index >= xs.length-1, all tangents are shown fully completed
+function renderGraphFrame(view, index, fadeT) {
+  const { xs, f, root } = gdata;
+  const n = xs.length - 1; // total number of tangents
+  const W = newtonGraph.width, H = newtonGraph.height;
+  ngctx.clearRect(0, 0, W, H);
+  const monoBg = getComputedStyle(document.body).getPropertyValue('--mono-bg') || '#0b0e1a';
+  const textColor = getComputedStyle(document.body).getPropertyValue('--muted') || '#9aa3c7';
+  const curveColor = getComputedStyle(document.body).getPropertyValue('--accent') || '#3a5cff';
+  const rootColor = getComputedStyle(document.body).getPropertyValue('--good') || '#3ddc84';
+  ngctx.fillStyle = monoBg; ngctx.fillRect(0, 0, W, H);
+
+  const { xmin, xmax, ymin, ymax } = view;
+  const padT = 20, padB = 20, padL = 10, padR = 10;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const X = x => padL + (x - xmin) / (xmax - xmin) * plotW;
+  const Y = y => padT + plotH - (y - ymin) / (ymax - ymin) * plotH;
+
+  ngctx.strokeStyle = '#88889955'; ngctx.lineWidth = 1;
+  if (ymin < 0 && ymax > 0) { ngctx.beginPath(); ngctx.moveTo(X(xmin), Y(0)); ngctx.lineTo(X(xmax), Y(0)); ngctx.stroke(); }
+  if (xmin < 0 && xmax > 0) { ngctx.beginPath(); ngctx.moveTo(X(0), padT); ngctx.lineTo(X(0), padT + plotH); ngctx.stroke(); }
+
+  ngctx.strokeStyle = curveColor; ngctx.lineWidth = 2;
+  ngctx.beginPath();
+  const SAMPLES = 300;
+  for (let i = 0; i <= SAMPLES; i++) {
+    const x = xmin + (xmax - xmin) * i / SAMPLES;
+    const y = f(x);
+    if (!isFinite(y)) continue;
+    const px = X(x), py = Y(y);
+    if (i === 0) ngctx.moveTo(px, py); else ngctx.lineTo(px, py);
+  }
+  ngctx.stroke();
+
+  ngctx.fillStyle = rootColor;
+  ngctx.beginPath(); ngctx.arc(X(root), Y(0), 5, 0, Math.PI * 2); ngctx.fill();
+  ngctx.fillStyle = textColor; ngctx.font = '11px system-ui';
+  ngctx.fillText(`root = ${root.toPrecision(8)}`, X(root) + 8, Y(0) - 8);
+
+  const span = (xmax - xmin) * 0.6;
+  for (let j = 0; j <= Math.min(index, n - 1); j++) {
+    const isCurrent = j === index;
+    const alpha = isCurrent ? tangentAlpha(j, n) * fadeT : tangentAlpha(j, n);
+    if (alpha <= 0.001) continue;
+    const x = xs[j], y = f(x), slope = gdata.df(x);
+    ngctx.strokeStyle = `rgba(255,107,107,${alpha})`;
+    ngctx.lineWidth = 1;
+    const xL = x - span, xR = x + span;
+    ngctx.beginPath();
+    ngctx.moveTo(X(xL), Y(y - slope * (x - xL)));
+    ngctx.lineTo(X(xR), Y(y + slope * (xR - x)));
+    ngctx.stroke();
+
+    ngctx.strokeStyle = `rgba(255,107,107,${alpha * 0.5})`;
+    ngctx.setLineDash([2, 3]);
+    ngctx.beginPath(); ngctx.moveTo(X(x), Y(y)); ngctx.lineTo(X(x), Y(0)); ngctx.stroke();
+    ngctx.setLineDash([]);
+
+    ngctx.fillStyle = curveColor;
+    ngctx.beginPath(); ngctx.arc(X(x), Y(y), 3, 0, Math.PI * 2); ngctx.fill();
+    ngctx.fillStyle = `rgba(255,107,107,${Math.min(1, alpha + 0.2)})`;
+    ngctx.beginPath(); ngctx.arc(X(xs[j + 1]), Y(0), 3, 0, Math.PI * 2); ngctx.fill();
+  }
+
+  ngctx.fillStyle = textColor; ngctx.font = '11px system-ui';
+  ngctx.fillText(`x₀ = ${xs[0].toPrecision(6)}`, 10, H - 6);
+  const shownUpto = Math.min(index + (fadeT >= 1 ? 1 : 0), n);
+  ngctx.fillText(`${shownUpto} tangents shown · x${shownUpto} = ${xs[shownUpto].toPrecision(10)}`, padL, 14);
+}
+
+function drawNewtonGraph() {
+  const target = describeTarget();
+  if (!target) return;
+  stopAnimation();
+  graphTitle.textContent = `Newton's Method Approximation Process — ${target.label}`;
+  gdata = buildGraphData(target);
+  renderGraphFrame(gdata.fullView, gdata.xs.length - 1, 1); // static state with everything drawn
+}
+
+// ---------- Zoom-in animation ----------
+let animRafId = null;
+let animPlaying = false;
+const ZOOM_MS = 900, PAUSE_MS = 350;
+
+function stopAnimation() {
+  animPlaying = false;
+  if (animRafId) cancelAnimationFrame(animRafId);
+  animRafId = null;
+  playGraphBtn.textContent = '▶ Play Zoom-In Animation';
+}
+
+function playAnimation() {
+  if (!gdata) return;
+  stopAnimation();
+  animPlaying = true;
+  playGraphBtn.textContent = '⏸ Stop';
+  const n = gdata.xs.length - 1;
+  let i = 0;
+  let phase = 'zoom';
+  let phaseStart = performance.now();
+
+  function frame(now) {
+    if (!animPlaying) return;
+    const prevView = i === 0 ? gdata.fullView : gdata.views[i - 1];
+    const targetView = gdata.views[i];
+
+    if (phase === 'zoom') {
+      const t = Math.min(1, (now - phaseStart) / ZOOM_MS);
+      const te = easeInOutCubic(t);
+      const view = lerpView(prevView, targetView, te);
+      renderGraphFrame(view, i, te);
+      if (t >= 1) { phase = 'pause'; phaseStart = now; }
+    } else {
+      renderGraphFrame(targetView, i, 1);
+      if (now - phaseStart >= PAUSE_MS) {
+        i++;
+        if (i >= n) { stopAnimation(); return; }
+        phase = 'zoom'; phaseStart = now;
+      }
+    }
+    animRafId = requestAnimationFrame(frame);
+  }
+  animRafId = requestAnimationFrame(frame);
+}
+
+playGraphBtn.addEventListener('click', () => {
+  if (animPlaying) stopAnimation();
+  else playAnimation();
+});
+resetGraphBtn.addEventListener('click', () => {
+  stopAnimation();
+  if (gdata) renderGraphFrame(gdata.fullView, gdata.xs.length - 1, 1);
+});
+
+function formatGrouped(str) {
+  // Group digits after the decimal point in blocks of 10 for readability (the whole string can be very long)
+  const dot = str.indexOf('.');
+  if (dot === -1) return str;
+  const head = str.slice(0, dot + 1);
+  const frac = str.slice(dot + 1);
+  const groups = [];
+  for (let i = 0; i < frac.length; i += 10) groups.push(frac.slice(i, i + 10));
+  return head + groups.join(' ');
+}
+
+async function runComputation() {
+  cancelled = false;
+  runBtn.disabled = true;
+  cancelBtn.disabled = false;
+  tbody.innerHTML = '';
+  badgesEl.innerHTML = '';
+  outEl.value = '';
+
+  const target = describeTarget();
+  const digits = Math.max(1, Math.min(500000, parseInt(digitsInput.value, 10) || 100));
+  const P = digits + GUARD;
+  const scale = 10n ** BigInt(P);
+
+  resultTitle.textContent = target.label + ' to ' + digits + ' digits';
+  statusEl.innerHTML = 'Preparing initial value...';
+
+  let approxDouble;
+  if (target.kind === 'phi') approxDouble = (1 + Math.sqrt(5)) / 2;
+  else approxDouble = Math.pow(target.N, 1 / target.k);
+
+  let X = initialGuess(approxDouble, P);
+  const NfpAsInt = target.kind === 'nthroot' ? BigInt(target.N) * scale : 0n;
+
+  const t0 = performance.now();
+  let prevStr = toDigitString(X, P);
+  let iter = 0;
+  const growthPoints = [];
+  let converged = false;
+
+  while (iter < 200) {
+    if (cancelled) { statusEl.innerHTML = 'Stopped by the user.'; break; }
+    iter++;
+    const tStepStart = performance.now();
+
+    let next;
+    if (target.kind === 'phi') next = phiStep(X, scale);
+    else next = nthRootStep(X, target.k, NfpAsInt, scale);
+
+    const tStepEnd = performance.now();
+    const nextStr = toDigitString(next, P);
+    const matched = commonPrefixLen(prevStr, nextStr);
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${iter}</td><td>${matched.toLocaleString('en-US')}</td>` +
+      `<td>${(tStepEnd - tStepStart).toFixed(1)} ms</td><td>${(tStepEnd - t0).toFixed(1)} ms</td>`;
+    tbody.appendChild(tr);
+    growthPoints.push(Math.min(matched, digits));
+    drawGrowth(growthPoints, digits);
+
+    const done = next === X || matched >= digits + 5;
+    X = next;
+    prevStr = nextStr;
+
+    if (done) { converged = true; break; }
+
+    // Yield one frame so the UI doesn't freeze    await new Promise(r => setTimeout(r, 0));
+  }
+
+  const totalTime = performance.now() - t0;
+  const finalStr = toDigitString(X, P).slice(0, digits + 2); // integer part + '.' + digits places
+  outEl.value = formatGrouped(finalStr);
+  resultMeta.textContent = `${iter} iterations · ${totalTime.toFixed(1)} ms total`;
+
+  statusEl.innerHTML =
+    `Computed <b>${target.label}</b> to <b>${digits.toLocaleString('en-US')} digits</b> after the decimal point.<br>` +
+    `Internally it was calculated with ${P.toLocaleString('en-US')}-digit precision (BigInt fixed-point), including guard digits.`;
+
+  badgesEl.innerHTML =
+    (converged ? '<span class="badge good">Converged</span>' : (cancelled ? '<span class="badge bad">Stopped</span>' : '<span class="badge bad">Reached max iterations</span>')) +
+    `<span class="badge">${iter} iterations</span>` +
+    `<span class="badge">${totalTime.toFixed(0)} ms</span>`;
+
+  runBtn.disabled = false;
+  cancelBtn.disabled = true;
+}
+
+runBtn.addEventListener('click', runComputation);
+cancelBtn.addEventListener('click', () => { cancelled = true; });
+
+// Auto-run on load
+drawNewtonGraph();
+runComputation();
+</script>
+</body>
+</html>
