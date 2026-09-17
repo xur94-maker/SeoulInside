@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Actually Computing π</title>
+<title>π를 진짜로 계산하기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -162,64 +162,64 @@ details p{margin:.5rem 0;}
 </head>
 <body>
 <div class="wrap">
-  <h1>Actually Computing π</h1>
-  <p class="sub">Enter a target digit count, or a time budget, and this page will actually compute π to arbitrary precision in your browser — using the Chudnovsky algorithm and binary splitting.</p>
+  <h1>π를 진짜로 계산하기</h1>
+  <p class="sub">원하는 자릿수, 혹은 원하는 시간을 입력하면 브라우저에서 임의 정밀도로 π를 실제로 계산합니다. Chudnovsky 알고리즘과 이진 분할(binary splitting)을 사용합니다.</p>
 
   <div class="segmented" role="tablist">
-    <button id="modeDigits" class="active" role="tab" aria-selected="true">By digit count</button>
-    <button id="modeTime" role="tab" aria-selected="false">By time budget</button>
+    <button id="modeDigits" class="active" role="tab" aria-selected="true">자릿수 지정</button>
+    <button id="modeTime" role="tab" aria-selected="false">시간 지정</button>
   </div>
 
   <div class="controls">
     <div class="field" id="fieldDigits">
-      <label for="inputDigits">Target digits (after the decimal point)</label>
+      <label for="inputDigits">목표 자릿수 (소수점 이하)</label>
       <div class="input-row">
         <input type="number" id="inputDigits" min="1" step="1" value="1000">
-        <span class="unit">digits</span>
+        <span class="unit">자리</span>
       </div>
       <span class="estimate" id="estimateText"></span>
     </div>
     <div class="field" id="fieldTime" style="display:none;">
-      <label for="inputTime">Time budget</label>
+      <label for="inputTime">계산 시간 예산</label>
       <div class="input-row">
         <input type="number" id="inputTime" min="1" max="10" step="0.5" value="3">
-        <span class="unit">seconds</span>
+        <span class="unit">초</span>
       </div>
     </div>
-    <span class="hint" id="hintText">No digit limit. Larger targets just take longer — you'll see an estimate before running.</span>
-    <button class="run-btn" id="runBtn">Calculate</button>
-    <button class="cancel-btn" id="cancelBtn" style="display:none;">Cancel</button>
+    <span class="hint" id="hintText">자릿수 제한은 없습니다. 다만 자릿수가 클수록 계산 시간이 늘어나요 — 예상 시간을 미리 보여드려요.</span>
+    <button class="run-btn" id="runBtn">계산하기</button>
+    <button class="cancel-btn" id="cancelBtn" style="display:none;">취소</button>
   </div>
 
   <div class="readout">
-    <div class="status" id="statusText">Waiting… click "Calculate" to start.</div>
+    <div class="status" id="statusText">대기 중… "계산하기"를 눌러보세요.</div>
     <div class="digits" id="digitsOut"><span class="whole">3</span>.14159265…</div>
-    <button class="dl-btn" id="downloadBtn" style="display:none;">⬇ Download (.txt)</button>
-    <button class="dl-btn" id="copyBtn" style="display:none;">⧉ Copy</button>
+    <button class="dl-btn" id="downloadBtn" style="display:none;">⬇ 다운로드 (.txt)</button>
+    <button class="dl-btn" id="copyBtn" style="display:none;">⧉ 복사하기</button>
   </div>
 
   <div class="log-panel" id="logPanel">
-    <div class="log-title">Calculation log</div>
+    <div class="log-title">계산 과정</div>
     <div class="log-body" id="logBody"></div>
   </div>
 
   <div class="stats" id="statsRow" style="display:none;">
-    <div class="stat"><div class="label">Time taken</div><div class="value" id="statTime">—</div></div>
-    <div class="stat"><div class="label">Digits computed</div><div class="value" id="statDigits">—</div></div>
-    <div class="stat"><div class="label">Terms used</div><div class="value" id="statTerms">—</div></div>
-    <div class="stat"><div class="label">Digits per second</div><div class="value" id="statRate">—</div></div>
+    <div class="stat"><div class="label">걸린 시간</div><div class="value" id="statTime">—</div></div>
+    <div class="stat"><div class="label">계산된 자릿수</div><div class="value" id="statDigits">—</div></div>
+    <div class="stat"><div class="label">사용한 항의 수</div><div class="value" id="statTerms">—</div></div>
+    <div class="stat"><div class="label">초당 자릿수</div><div class="value" id="statRate">—</div></div>
   </div>
 
   <div class="compare" id="compareBox">
-    Reaching the same digit count with the Leibniz series (π/4 = 1 − 1/3 + 1/5 − …) would have taken roughly <b id="compareVal">—</b> terms. Chudnovsky locks in about 14 digits per term.
+    같은 자릿수를 라이프니츠 급수(π/4 = 1 − 1/3 + 1/5 − …)로 구하려면 대략 <b id="compareVal">—</b>개의 항이 필요했을 것입니다. Chudnovsky는 항 하나당 자릿수를 약 14개씩 확정합니다.
   </div>
 
   <details>
-    <summary>How does this work?</summary>
+    <summary>어떻게 계산하나요?</summary>
     <div class="body">
-      <p>The Chudnovsky algorithm computes 1/π from the series below. Each extra term locks in about 14 more correct digits — this is the same formula used in real world-record π computations.</p>
+      <p>Chudnovsky 알고리즘은 아래 급수를 이용해 1/π를 구합니다. 항이 하나 늘어날 때마다 정확한 자릿수가 약 14개씩 늘어나는, 실제 세계기록급 π 계산에도 쓰이는 공식입니다.</p>
       <div class="formula">1/π = 12 · Σ (-1)^k (6k)!(13591409+545140134k) / [(3k)!(k!)³ · 640320^(3k+3/2)]</div>
-      <p>Summing this series term by term would need a huge division at every step, so the terms are instead combined recursively in halves — a technique called <b>binary splitting</b>. All arithmetic runs as arbitrary-precision integers via JavaScript's <code>BigInt</code>, and the computation runs on a separate worker thread so the page never freezes.</p>
+      <p>이 급수를 항 순서대로 하나씩 더하면 매번 거대한 나눗셈이 필요해 느려지므로, 항들을 재귀적으로 절반씩 나눠 계산하는 <b>이진 분할</b> 기법을 함께 사용합니다. 실제 연산은 자바스크립트의 <code>BigInt</code>로 임의 정밀도 정수 연산을 수행하며, 계산은 별도 워커 스레드에서 실행되어 화면이 멈추지 않습니다.</p>
     </div>
   </details>
 </div>
@@ -250,22 +250,22 @@ details p{margin:.5rem 0;}
   const estimateText = document.getElementById('estimateText');
   const cancelBtn = document.getElementById('cancelBtn');
 
-  // Rough fit from measured scaling (300k–2M digits): time_ms ≈ k * digits^1.5
+  // 실측 스케일링(300k~2M 자리)을 바탕으로 한 근사치: time_ms ≈ k * digits^1.5
   const TIME_K = 7.83e-6;
   function estimateMs(digits){ return TIME_K * Math.pow(digits, 1.5); }
   function formatDuration(ms){
-    if(ms < 800) return 'under 1s';
+    if(ms < 800) return '1초 미만';
     const s = ms/1000;
-    if(s < 60) return '~'+s.toFixed(s<10?1:0)+'s';
+    if(s < 60) return '약 '+s.toFixed(s<10?1:0)+'초';
     const m = Math.floor(s/60);
     const rem = Math.round(s%60);
-    return '~'+m+'m'+(rem>0 ? ' '+rem+'s' : '');
+    return '약 '+m+'분'+(rem>0 ? ' '+rem+'초' : '');
   }
   function updateEstimate(){
     const d = parseInt(inputDigits.value,10);
     if(!Number.isFinite(d) || d<1){ estimateText.textContent=''; return; }
     const ms = estimateMs(d);
-    estimateText.textContent = 'Estimated time: '+formatDuration(ms)+(ms>4000 ? ' — this could take a while' : '');
+    estimateText.textContent = '예상 소요 시간: '+formatDuration(ms)+(ms>4000 ? ' — 다소 오래 걸릴 수 있어요' : '');
   }
   inputDigits.addEventListener('input', updateEstimate);
   updateEstimate();
@@ -274,7 +274,7 @@ details p{margin:.5rem 0;}
   let downloadsChecked = false;
   let lastResult = null;
   function updateDownloadVisibility(){
-    // Always show once a result exists; if unsupported, clicking explains why instead of the button silently staying hidden.
+    // 결과가 있으면 항상 버튼을 보여준다. 지원되지 않으면 클릭했을 때 이유를 알려준다.
     downloadBtn.style.display = lastResult ? 'inline-flex' : 'none';
     copyBtn.style.display = lastResult ? 'inline-flex' : 'none';
   }
@@ -296,36 +296,37 @@ details p{margin:.5rem 0;}
   })();
   downloadBtn.addEventListener('click', async function(){
     if(!lastResult) return;
+    // 아직 확인 중이면 잠깐 기다렸다가 다시 시도
     if(!downloadsChecked){
       downloadBtn.disabled = true;
-      downloadBtn.textContent = 'Checking…';
+      downloadBtn.textContent = '확인 중…';
       const start = Date.now();
       while(!downloadsChecked && Date.now()-start < 8000){
         await new Promise(r=>setTimeout(r, 150));
       }
       downloadBtn.disabled = false;
-      downloadBtn.textContent = '⬇ Download (.txt)';
+      downloadBtn.textContent = '⬇ 다운로드 (.txt)';
     }
     if(!downloadsCap){
-      showError('File downloads aren\'t available in this view. (Try reopening this from the claude.ai artifact panel.)');
+      showError('이 화면에서는 파일 다운로드 기능을 사용할 수 없습니다. (claude.ai 아티팩트 화면에서 다시 열어보세요)');
       return;
     }
     const {digits, result} = lastResult;
     const whole = result[0];
     const decimals = result.slice(1);
     const wrapped = (decimals.match(/.{1,100}/g)||[]).join('\n');
-    const content = 'π, '+digits.toLocaleString('en-US')+' decimal digits\n'
-      + 'Computed with the Chudnovsky algorithm + binary splitting\n\n'
+    const content = 'π, 소수점 이하 '+digits.toLocaleString('en-US')+'자리\n'
+      + 'Chudnovsky 알고리즘 + 이진 분할로 계산\n\n'
       + whole+'.\n'+wrapped+'\n';
     downloadBtn.disabled = true;
-    downloadBtn.textContent = 'Saving…';
+    downloadBtn.textContent = '저장 중…';
     try{
       await downloadsCap.save({filename:'pi_'+digits+'_digits.txt', data:content});
     }catch(err){
-      showError('Download failed: '+(err && err.message ? err.message : String(err)));
+      showError('다운로드에 실패했습니다: '+(err && err.message ? err.message : String(err)));
     } finally {
       downloadBtn.disabled = false;
-      downloadBtn.textContent = '⬇ Download (.txt)';
+      downloadBtn.textContent = '⬇ 다운로드 (.txt)';
     }
   });
 
@@ -352,17 +353,17 @@ details p{margin:.5rem 0;}
         await navigator.clipboard.writeText(text);
       } else {
         const ok = await fallbackCopy();
-        if(!ok) throw new Error('Clipboard copy is not supported in this environment.');
+        if(!ok) throw new Error('클립보드 복사를 지원하지 않는 환경입니다.');
       }
-      copyBtn.textContent = '✓ Copied';
+      copyBtn.textContent = '✓ 복사됨';
       setTimeout(()=>{ copyBtn.textContent = originalLabel; }, 1600);
     }catch(err){
       const ok = await fallbackCopy();
       if(ok){
-        copyBtn.textContent = '✓ Copied';
+        copyBtn.textContent = '✓ 복사됨';
         setTimeout(()=>{ copyBtn.textContent = originalLabel; }, 1600);
       } else {
-        showError('Copy failed: '+(err && err.message ? err.message : String(err)));
+        showError('복사에 실패했습니다: '+(err && err.message ? err.message : String(err)));
       }
     }
   });
@@ -394,7 +395,7 @@ details p{margin:.5rem 0;}
     awaitingConfirm = false;
     clearTimeout(confirmResetTimer);
     runBtn.classList.remove('confirm');
-    runBtn.textContent = 'Calculate';
+    runBtn.textContent = '계산하기';
     modeDigitsBtn.classList.toggle('active', m==='digits');
     modeTimeBtn.classList.toggle('active', m==='time');
     modeDigitsBtn.setAttribute('aria-selected', m==='digits');
@@ -402,13 +403,13 @@ details p{margin:.5rem 0;}
     fieldDigits.style.display = m==='digits' ? 'flex' : 'none';
     fieldTime.style.display = m==='time' ? 'flex' : 'none';
     hintText.textContent = m==='digits'
-      ? 'No digit limit. Larger targets just take longer \u2014 you\'ll see an estimate before running.'
-      : 'Computes as many digits as possible within the time you give (max 10s).';
+      ? '자릿수 제한은 없습니다. 다만 자릿수가 클수록 계산 시간이 늘어나요 — 예상 시간을 미리 보여드려요.'
+      : '입력한 시간 안에서 최대한 많은 자릿수를 계산합니다 (최대 10초).';
   }
   modeDigitsBtn.addEventListener('click', ()=>setMode('digits'));
   modeTimeBtn.addEventListener('click', ()=>setMode('time'));
 
-  /* ===== Worker code (Chudnovsky + binary splitting) ===== */
+  /* ===== 워커 코드 (Chudnovsky + 이진 분할) ===== */
   const workerSrc = `
     function isqrt(n) {
       if (n < 0n) throw new RangeError('negative');
@@ -466,18 +467,18 @@ details p{margin:.5rem 0;}
       const data = e.data;
       try{
         if(data.mode==='digits'){
-          log('Starting: target '+data.digits.toLocaleString('en-US')+' digits (+ 15 guard digits)');
+          log('목표 '+data.digits.toLocaleString('en-US')+'자리 (+ 가드 15자리) 계산 시작');
           const t0 = performance.now();
           const r = piChudnovsky(data.digits);
           const dt = performance.now()-t0;
-          log('Number of terms needed: n = '+r.n.toLocaleString('en-US')+' (~14 digits confirmed per term)');
-          log('Computed P, Q, T via binary splitting: '+r.bsTime.toFixed(1)+'ms');
-          log('Computed integer square root of 10005×10^k (Newton\\'s method): '+r.sqrtTime.toFixed(1)+'ms');
-          log('Divided π = Q×426880×√C / T and truncated to '+data.digits.toLocaleString('en-US')+' digits: '+r.divTime.toFixed(1)+'ms');
-          log('Total time: '+dt.toFixed(1)+'ms');
+          log('필요한 항 개수 결정: n = '+r.n.toLocaleString('en-US')+' (항 하나당 약 14자리 확정)');
+          log('이진 분할(binary splitting)로 P, Q, T 계산: '+r.bsTime.toFixed(1)+'ms');
+          log('10005 × 10^k 의 정수 제곱근 계산 (Newton\\'s method): '+r.sqrtTime.toFixed(1)+'ms');
+          log('π = Q×426880×√C / T 나눗셈 및 '+data.digits.toLocaleString('en-US')+'자리 절단: '+r.divTime.toFixed(1)+'ms');
+          log('총 소요 시간: '+dt.toFixed(1)+'ms');
           self.postMessage({type:'done', ok:true, digits:data.digits, result:r.str, terms:r.n, timeMs:dt});
         } else if(data.mode==='time'){
-          log('Starting adaptive search with a '+data.seconds+'s time budget');
+          log('시간 예산 '+data.seconds+'초로 자동 확장 탐색 시작');
           const budgetMs = data.seconds*1000;
           let targetDigits = 200;
           let best=null;
@@ -491,25 +492,25 @@ details p{margin:.5rem 0;}
             const elapsedTotal = performance.now()-totalStart;
             if(elapsedTotal<=budgetMs){
               best={digits:targetDigits, result:r.str, terms:r.n, totalMs:elapsedTotal};
-              log('Attempt '+iterations+': '+targetDigits.toLocaleString('en-US')+' digits → '+dt.toFixed(1)+'ms (total '+elapsedTotal.toFixed(0)+'ms) — within budget, growing');
+              log(iterations+'차: '+targetDigits.toLocaleString('en-US')+'자리 → '+dt.toFixed(1)+'ms (누적 '+elapsedTotal.toFixed(0)+'ms) — 예산 내, 확장 시도');
             } else {
-              log('Attempt '+iterations+': '+targetDigits.toLocaleString('en-US')+' digits would total '+elapsedTotal.toFixed(0)+'ms, over budget → keeping previous result');
+              log(iterations+'차: '+targetDigits.toLocaleString('en-US')+'자리 시도는 누적 '+elapsedTotal.toFixed(0)+'ms로 예산 초과 → 이전 결과로 확정');
               break;
             }
-            if(elapsedTotal > budgetMs*0.97){ log('Close to the budget — stopping the search'); break; }
-            if(targetDigits>=100000000){ log('Reached the safety ceiling (100,000,000 digits) — stopping'); break; }
+            if(elapsedTotal > budgetMs*0.97){ log('예산에 근접하여 탐색 종료'); break; }
+            if(targetDigits>=100000000){ log('안전 상한(1억 자리)에 도달하여 탐색 종료'); break; }
             const remaining = budgetMs-elapsedTotal;
             const growthFactor = Math.min(4, Math.max(1.3, Math.pow((remaining*0.9)/Math.max(dt,1)+1, 1/1.55)));
             let nextDigits = Math.floor(targetDigits*growthFactor);
             if(nextDigits<=targetDigits) nextDigits = targetDigits*2;
             targetDigits = Math.min(nextDigits, 100000000);
-            log('Next target: '+targetDigits.toLocaleString('en-US')+' digits');
+            log('다음 목표: '+targetDigits.toLocaleString('en-US')+'자리');
           }
           if(best){
-            log('Final result: '+best.digits.toLocaleString('en-US')+' digits (total '+best.totalMs.toFixed(1)+'ms)');
+            log('최종 확정: '+best.digits.toLocaleString('en-US')+'자리 (총 '+best.totalMs.toFixed(1)+'ms)');
             self.postMessage({type:'done', ok:true, digits:best.digits, result:best.result, terms:best.terms, timeMs:best.totalMs});
           } else {
-            self.postMessage({type:'done', ok:false, error:'Could not finish the computation within the given time.'});
+            self.postMessage({type:'done', ok:false, error:'주어진 시간 안에 계산을 완료하지 못했습니다.'});
           }
         }
       }catch(err){
@@ -548,15 +549,15 @@ details p{margin:.5rem 0;}
     // Leibniz comparison: error ~ 1/(2n) -> need n ~ 10^digits terms for `digits` correct digits
     if(digits <= 12){
       compareBox.classList.add('show');
-      compareVal.textContent = '10^'+digits+' (approx. '+fmtNumber(Math.round(Math.pow(10,digits)))+')';
+      compareVal.textContent = '10^'+digits+' (약 '+fmtNumber(Math.round(Math.pow(10,digits)))+')';
     } else {
       compareBox.classList.add('show');
       compareVal.textContent = '10^'+digits;
     }
     statusText.classList.remove('err');
     statusText.textContent = mode==='time'
-      ? ('Reached '+fmtNumber(digits)+' digits within the time budget.')
-      : (fmtNumber(digits)+' digits computed.');
+      ? ('시간 예산 안에서 '+fmtNumber(digits)+'자리까지 도달했습니다.')
+      : (fmtNumber(digits)+'자리 계산 완료.');
   }
 
   function showError(msg){
@@ -579,15 +580,15 @@ details p{margin:.5rem 0;}
       if(ms > 4000 && !awaitingConfirm){
         awaitingConfirm = true;
         runBtn.classList.add('confirm');
-        runBtn.textContent = formatDuration(ms)+' estimated — click again to continue';
+        runBtn.textContent = formatDuration(ms)+' 예상 — 계속하려면 한번 더';
         statusText.classList.remove('err');
-        statusText.textContent = 'That\'s a lot of digits — it may take a while. Click again to continue.';
+        statusText.textContent = '자릿수가 커서 시간이 걸릴 수 있어요. 계속하려면 버튼을 다시 눌러주세요.';
         clearTimeout(confirmResetTimer);
         confirmResetTimer = setTimeout(function(){
           awaitingConfirm = false;
           runBtn.classList.remove('confirm');
-          runBtn.textContent = 'Calculate';
-          statusText.textContent = 'Waiting… click "Calculate" to start.';
+          runBtn.textContent = '계산하기';
+          statusText.textContent = '대기 중… "계산하기"를 눌러보세요.';
         }, 6000);
         return;
       }
@@ -607,21 +608,21 @@ details p{margin:.5rem 0;}
   cancelBtn.addEventListener('click', function(){
     if(worker){
       worker.terminate();
-      worker = null; // getWorker() creates a fresh one next run
+      worker = null; // getWorker()가 다음 실행 때 새로 만든다
     }
     runBtn.disabled = false;
-    runBtn.textContent = 'Calculate';
+    runBtn.textContent = '계산하기';
     cancelBtn.style.display = 'none';
     statusText.classList.remove('err');
-    statusText.textContent = 'Cancelled.';
+    statusText.textContent = '취소했습니다.';
   });
 
   function startComputation(payload){
     runBtn.disabled = true;
-    runBtn.textContent = 'Calculating…';
+    runBtn.textContent = '계산 중…';
     cancelBtn.style.display = 'inline-flex';
     statusText.classList.remove('err');
-    statusText.textContent = 'Calculating… (running on a background thread)';
+    statusText.textContent = '계산 중… (백그라운드 스레드에서 실행 중)';
     statsRow.style.display = 'none';
     compareBox.classList.remove('show');
     downloadBtn.style.display = 'none';
@@ -640,32 +641,32 @@ details p{margin:.5rem 0;}
         // type === 'done'
         w.removeEventListener('message', handler);
         runBtn.disabled = false;
-        runBtn.textContent = 'Calculate';
+        runBtn.textContent = '계산하기';
         cancelBtn.style.display = 'none';
         if(d.ok){
           showResult(d);
         } else {
-          showError(d.error ? d.error : 'An error occurred during the computation.');
+          showError(d.error ? d.error : '계산 중 오류가 발생했습니다.');
         }
       };
       w.addEventListener('message', handler);
       w.postMessage(payload);
     } else {
-      // Environment can't create a Worker — compute synchronously on the main thread (short delay lets the UI paint first)
-      cancelBtn.style.display = 'none'; // can't cancel a synchronous run
+      // 워커를 만들 수 없는 환경 — 메인 스레드에서 동기 계산 (짧은 지연으로 UI를 먼저 그림)
+      cancelBtn.style.display = 'none'; // 동기 실행이라 취소 불가
       setTimeout(function(){
         try{
           runFallback(payload);
         }catch(err){
           runBtn.disabled = false;
-          runBtn.textContent = 'Calculate';
-          showError('This browser cannot run the computation: '+err.message);
+          runBtn.textContent = '계산하기';
+          showError('이 브라우저에서는 계산을 실행할 수 없습니다: '+err.message);
         }
       }, 30);
     }
   }
 
-  /* Main-thread fallback (used if Worker creation fails) */
+  /* 메인 스레드 폴백 (워커 생성 실패 시) */
   function isqrtMain(n){
     if(n<0n) throw new RangeError('negative');
     if(n<2n) return n;
@@ -711,19 +712,19 @@ details p{margin:.5rem 0;}
   }
   function runFallback(payload){
     if(payload.mode==='digits'){
-      appendLog('Starting: target '+payload.digits.toLocaleString('en-US')+' digits (+ 15 guard digits)');
+      appendLog('목표 '+payload.digits.toLocaleString('en-US')+'자리 (+ 가드 15자리) 계산 시작');
       const t0=performance.now();
       const r=piChudnovskyMain(payload.digits);
       const dt=performance.now()-t0;
-      appendLog('Number of terms needed: n = '+r.n.toLocaleString('en-US')+' (~14 digits confirmed per term)');
-      appendLog('Computed P, Q, T via binary splitting: '+r.bsTime.toFixed(1)+'ms');
-      appendLog('Computed integer square root of 10005×10^k (Newton\'s method): '+r.sqrtTime.toFixed(1)+'ms');
-      appendLog('Divided π = Q×426880×√C / T and truncated to '+payload.digits.toLocaleString('en-US')+' digits: '+r.divTime.toFixed(1)+'ms');
-      appendLog('Total time: '+dt.toFixed(1)+'ms');
-      runBtn.disabled=false; runBtn.textContent='Calculate';
+      appendLog('필요한 항 개수 결정: n = '+r.n.toLocaleString('en-US')+' (항 하나당 약 14자리 확정)');
+      appendLog('이진 분할(binary splitting)로 P, Q, T 계산: '+r.bsTime.toFixed(1)+'ms');
+      appendLog('10005 × 10^k 의 정수 제곱근 계산 (Newton\'s method): '+r.sqrtTime.toFixed(1)+'ms');
+      appendLog('π = Q×426880×√C / T 나눗셈 및 '+payload.digits.toLocaleString('en-US')+'자리 절단: '+r.divTime.toFixed(1)+'ms');
+      appendLog('총 소요 시간: '+dt.toFixed(1)+'ms');
+      runBtn.disabled=false; runBtn.textContent='계산하기';
       showResult({digits:payload.digits, result:r.str, terms:r.n, timeMs:dt});
     } else {
-      appendLog('Starting adaptive search with a '+payload.seconds+'s time budget');
+      appendLog('시간 예산 '+payload.seconds+'초로 자동 확장 탐색 시작');
       const budgetMs=payload.seconds*1000;
       let targetDigits=200, best=null;
       const totalStart=performance.now();
@@ -736,26 +737,26 @@ details p{margin:.5rem 0;}
         const elapsedTotal=performance.now()-totalStart;
         if(elapsedTotal<=budgetMs){
           best={digits:targetDigits, result:r.str, terms:r.n, totalMs:elapsedTotal};
-          appendLog('Attempt '+iterations+': '+targetDigits.toLocaleString('en-US')+' digits → '+dt.toFixed(1)+'ms (total '+elapsedTotal.toFixed(0)+'ms) — within budget, growing');
+          appendLog(iterations+'차: '+targetDigits.toLocaleString('en-US')+'자리 → '+dt.toFixed(1)+'ms (누적 '+elapsedTotal.toFixed(0)+'ms) — 예산 내, 확장 시도');
         } else {
-          appendLog('Attempt '+iterations+': '+targetDigits.toLocaleString('en-US')+' digits would total '+elapsedTotal.toFixed(0)+'ms, over budget → keeping previous result');
+          appendLog(iterations+'차: '+targetDigits.toLocaleString('en-US')+'자리 시도는 누적 '+elapsedTotal.toFixed(0)+'ms로 예산 초과 → 이전 결과로 확정');
           break;
         }
-        if(elapsedTotal>budgetMs*0.97){ appendLog('Close to the budget — stopping the search'); break; }
-        if(targetDigits>=100000000){ appendLog('Reached the safety ceiling (100,000,000 digits) — stopping'); break; }
+        if(elapsedTotal>budgetMs*0.97){ appendLog('예산에 근접하여 탐색 종료'); break; }
+        if(targetDigits>=100000000){ appendLog('안전 상한(1억 자리)에 도달하여 탐색 종료'); break; }
         const remaining=budgetMs-elapsedTotal;
         const growthFactor=Math.min(4, Math.max(1.3, Math.pow((remaining*0.9)/Math.max(dt,1)+1, 1/1.55)));
         let nextDigits=Math.floor(targetDigits*growthFactor);
         if(nextDigits<=targetDigits) nextDigits=targetDigits*2;
         targetDigits=Math.min(nextDigits,100000000);
-        appendLog('Next target: '+targetDigits.toLocaleString('en-US')+' digits');
+        appendLog('다음 목표: '+targetDigits.toLocaleString('en-US')+'자리');
       }
-      runBtn.disabled=false; runBtn.textContent='Calculate';
+      runBtn.disabled=false; runBtn.textContent='계산하기';
       if(best){
-        appendLog('Final result: '+best.digits.toLocaleString('en-US')+' digits (total '+best.totalMs.toFixed(1)+'ms)');
+        appendLog('최종 확정: '+best.digits.toLocaleString('en-US')+'자리 (총 '+best.totalMs.toFixed(1)+'ms)');
         showResult({digits:best.digits, result:best.result, terms:best.terms, timeMs:best.totalMs});
       } else {
-        showError('Could not finish the computation within the given time.');
+        showError('주어진 시간 안에 계산을 완료하지 못했습니다.');
       }
     }
   }
