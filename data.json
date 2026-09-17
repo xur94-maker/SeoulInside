@@ -1,6 +1,18 @@
 {
   "globalNews": [
     {
+      "title": "US interest rates raised for first time in three years",
+      "link": "https://www.bbc.co.uk/news/articles/cw4gmlyvj422o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 16 Sep 2026 22:16:51 GMT",
+      "desc": "Rates were hiked in a unanimous decision despite fierce opposition from President Donald Trump, who had called for a cut."
+    },
+    {
+      "title": "Photos show widespread damage at US sites from Iranian attacks",
+      "link": "https://www.bbc.co.uk/news/articles/c8g49e0gwxeno?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 16 Sep 2026 18:36:16 GMT",
+      "desc": "A wrecked air force plane and destroyed buildings are among the images obtained by the BBC's partner CBS News."
+    },
+    {
       "title": "EU chief backs plan for Canada to become 'associate member'",
       "link": "https://www.bbc.co.uk/news/articles/cjwyzrr9d3dko?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 16 Sep 2026 12:36:51 GMT",
@@ -13,22 +25,10 @@
       "desc": "Some 10 families had reportedly been living in the six-storey building in Gaza City that was hit by an Israeli strike last year."
     },
     {
-      "title": "US accuses Russia of trying to kill Ukrainian allies overseas",
-      "link": "https://www.bbc.co.uk/news/articles/cjp3077led9qo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 16 Sep 2026 12:26:00 GMT",
-      "desc": "The FBI says five men \"conspired to intimidate, threaten, or murder people on US soil and around the world\"."
-    },
-    {
-      "title": "OpenAI boss says world 'right to be afraid' but should trust AI firms",
-      "link": "https://www.bbc.co.uk/news/articles/cqx2zpj4y525o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 16 Sep 2026 10:02:05 GMT",
-      "desc": "Sam Altman and other tech CEOs say there are incentives to limit advancements in AI, as fears grow over the threats it poses to humanity."
-    },
-    {
-      "title": "Eight German state premiers back Merz amid speculation over future",
-      "link": "https://www.bbc.co.uk/news/articles/c6dj4nn0n97ro?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 16 Sep 2026 14:50:26 GMT",
-      "desc": "Christian Democratic Union leadership throws its weight behind the chancellor ahead of two state elections this weekend."
+      "title": "US House votes to hold billionaire Epstein associate Leon Black in contempt",
+      "link": "https://www.bbc.co.uk/news/articles/c62l8g8qlr0ko?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 16 Sep 2026 19:59:57 GMT",
+      "desc": "Black - who had business ties to Epstein - declined to appear and provide documents related to the convicted sex offender."
     }
   ],
   "koreaNews": [
@@ -51,10 +51,10 @@
       "desc": "Whitmer travels to South Korea on trade mission with economic and military officials&nbsp;&nbsp;Michigan Public"
     },
     {
-      "title": "South Korea Embraces the Silk Road Spirit With Central Asian Leaders - The Diplomat – Asia-Pacific Current Affairs Magazine",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPcE9kZ3ZDQWR5RmJMSUY2UXJXSUVIX1pidzNwZVJCeEhWaFkyc1pobElXUWhFd2VBWGVBTk9tOEdTSkFVRU95Y1MxOWZ1d2dDV0JJS043dy1SXy1aZWVfY2k5SU5hTWcxM0dGT0s1QnpFSFI0QkVHbER6Zmw2SmZ2cTRTT3N3Vi12Yi1pbnl3MUZkNmhMR21rdmw4Yld1V3Y4V2pZ?oc=5",
-      "date": "Wed, 16 Sep 2026 14:38:40 GMT",
-      "desc": "South Korea Embraces the Silk Road Spirit With Central Asian Leaders&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
+      "title": "South Korea Finance Chief Nominee Says Economy at Turning Point - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPQ0MyckEtZ1FLQzFNVTlzYlFKX3hldEZocXA5LV9GVGZ4dFRqSE1GNndxMXBMbUFoSTlHQ1VDeHlTajN3Zm9wU2NjTEVIX29BYWQ4MllqaG1mcERCOW9XektPbmhobmZyWmFMYWF4Ym9vNklDVkc3TUxXQ21tOFFzSzJFSXR4d1hkN2RxYlJkeWU2UG1tckVveXdRMVBHZFY4NXNLd2dGZTNjWW56amJxVTZRejM?oc=5",
+      "date": "Tue, 15 Sep 2026 02:53:00 GMT",
+      "desc": "South Korea Finance Chief Nominee Says Economy at Turning Point&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "South Korea says economy in 'solid recovery' despite risks - upi.com",
@@ -63,111 +63,111 @@
       "desc": "South Korea says economy in 'solid recovery' despite risks&nbsp;&nbsp;upi.com"
     },
     {
-      "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - reuters.com",
+      "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQQjJHWHN4NlplMGhFY2FHN0tkOURPOEFjSlRzZFhZaDB1bWpEcFRKam93VnNscllYSkxHT1lKcVJhZVBpSkN4VlNRZG1CazRCMjZkUkFhYkcwV29kU1BzR3NLeTV5MU1BdDd2SHpMQnhYR0llVVFreXpTVXZsX3hvUkNXX0J6NnFzYktONVRNVWE5eDlNN0hGQ1JYaEZvUFJOcmJLUVBoTkVNQ3JObFFFQ0MydFpBZHJUdFU0dy1LLVFqd1NydjZ6M3dTdw?oc=5",
-      "date": "Mon, 14 Sep 2026 02:45:00 GMT",
-      "desc": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows&nbsp;&nbsp;reuters.com"
+      "date": "Mon, 14 Sep 2026 02:48:46 GMT",
+      "desc": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Kospi snaps four-day slide as chip giants draw bargain hunters - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQUFBmbkNUVWw3QzB0elZfOFd2NnYtWXJOamFSM2FzU1hfQXhYOTZPTHluWUFMQnJfZ0hRTC1ZbzExRFc4eXdHUEFja19rek8tSUp0WmkwSjBCRkxOS2dNX3I0MTNFN3RtcXlVOTVZSnFNb0ZhdzdndGpPSjhvN21VbnZHNlBMTlhNOWNhRTRpUXROUXFSM3h4WG9YM2liMGtKZE1oTWIxeGNHZGoyeTI4NTllTzA?oc=5",
-      "date": "Wed, 16 Sep 2026 08:25:20 GMT",
-      "desc": "Kospi snaps four-day slide as chip giants draw bargain hunters&nbsp;&nbsp;Korea JoongAng Daily"
+      "title": "Guaranteed chip firm jobs fuel record university application surge - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNNWN5cGhQM0JBX00tck56OHFZbTQ5QVdVbE9tMEc5VFNhUktTNVpVYnRmeEVGU0dIYmNrRlBOUnh2Rm5uWEFYLXBQSHlpU2hEclo1ZnUzMWstdDc5cEFpV2JxLWJHaXBYOHlBTFJOaEdIRjVJNUZiSmlEQk9MVUlMSWkwcmFqMmJ5LXFkd1dRM2lQNzUyQmJNcG5zX05NT1VRZEI5enZVRklNXzlLbmp0bmhZUFRMMjA?oc=5",
+      "date": "Wed, 16 Sep 2026 22:01:07 GMT",
+      "desc": "Guaranteed chip firm jobs fuel record university application surge&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "South Korea's Top 1% Traders Pile Into G2G Bio; Take Profits on Samsung, SK Hynix - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9jUmQ5MG9DVnFIdWVFWDRlcHhmWjBaUG1xQ0tmWWVMRktBR21URk8tZmFtTTkxZWN2U1RET25qVy1XQmRhMVprU0NOMnNJRDdRZkRBUy00M0taWnpYVEJYSk1wYVVlaTZ3S1lUcVVfSnA5SUJteHc?oc=5",
-      "date": "Wed, 16 Sep 2026 07:55:00 GMT",
-      "desc": "South Korea's Top 1% Traders Pile Into G2G Bio; Take Profits on Samsung, SK Hynix&nbsp;&nbsp;finance.biggo.com"
+      "title": "SK Hynix Follows Samsung With U.S. AI Memory Push - SAMSUNG ELECT LTD by Samsung Electronics Co., Ltd. (O - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxON1pyWGU4THhzaHJEWU9HUDEySTR0bF9vM1ZoeDNXSnJ4Mk5VY1lCTzBkTmdUY3J2SjhjT3dTd2dLTG1vX2xvdG15ajNac3NkUkxDTUZsVW00RWctbHBNOC10cUhwSl9zc1BEZU12a21qLWsteUdRV2VqZmxPc2lDM0RzYjk5YnI2a1B3NXQzUQ?oc=5",
+      "date": "Wed, 16 Sep 2026 14:52:11 GMT",
+      "desc": "SK Hynix Follows Samsung With U.S. AI Memory Push - SAMSUNG ELECT LTD by Samsung Electronics Co., Ltd. (O&nbsp;&nbsp;Benzinga"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 214.91,
-      "change": 3.95,
-      "pct": 1.87,
+      "price": 213.9,
+      "change": 2.94,
+      "pct": 1.39,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 417.73,
-      "change": -0.28,
+      "price": 417.72,
+      "change": -0.29,
       "pct": -0.07,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 520.88,
-      "change": 27.47,
-      "pct": 5.57,
+      "price": 512.5,
+      "change": 19.09,
+      "pct": 3.87,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 101.56,
-      "change": 4.38,
-      "pct": 4.5,
+      "price": 101.05,
+      "change": 3.86,
+      "pct": 3.97,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 187.22,
-      "change": 7.06,
-      "pct": 3.92,
+      "price": 184.84,
+      "change": 4.69,
+      "pct": 2.6,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 246.53,
-      "change": 7.52,
-      "pct": 3.14,
+      "price": 243.98,
+      "change": 4.97,
+      "pct": 2.08,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 344.73,
-      "change": -4.66,
-      "pct": -1.33,
+      "price": 342.87,
+      "change": -6.52,
+      "pct": -1.87,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 333.07,
-      "change": -0.01,
-      "pct": -0.0,
+      "price": 332.41,
+      "change": -0.67,
+      "pct": -0.2,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 493.4,
-      "change": -12.01,
-      "pct": -2.38,
+      "price": 490.3,
+      "change": -15.11,
+      "pct": -2.99,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7606.12,
-      "change": -13.86,
-      "pct": -0.18,
+      "price": 7551.81,
+      "change": -68.17,
+      "pct": -0.89,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26127.15,
-      "change": -59.26,
-      "pct": -0.23,
+      "price": 25978.42,
+      "change": -207.99,
+      "pct": -0.79,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -176,58 +176,58 @@
       "symbol": "005930.KS",
       "label": "Samsung",
       "price": 253500.0,
-      "change": 4500.0,
-      "pct": 1.81,
+      "change": 5000.0,
+      "pct": 2.01,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
       "price": 1759000.0,
-      "change": 62000.0,
-      "pct": 3.65,
+      "change": 69000.0,
+      "pct": 4.08,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
       "price": 362000.0,
-      "change": -9500.0,
-      "pct": -2.56,
+      "change": -5000.0,
+      "pct": -1.36,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
       "price": 120700.0,
-      "change": -3500.0,
-      "pct": -2.82,
+      "change": -1100.0,
+      "pct": -0.9,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
       "price": 201500.0,
-      "change": -2500.0,
-      "pct": -1.23,
+      "change": -4500.0,
+      "pct": -2.18,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
       "price": 6717.97,
-      "change": 33.6,
-      "pct": 0.5,
+      "change": 90.71,
+      "pct": 1.37,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1367.21,
-      "change": 21.6,
-      "pct": 1.61,
+      "price": 1378.28,
+      "change": 14.71,
+      "pct": 1.08,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-16 17:50 UTC"
+  "updatedAt": "2026-09-17 00:01 UTC"
 }
