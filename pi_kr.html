@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5초 안에 π에 도달하기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+:root{
+  --bg:#f1eee6; --panel:#ffffff; --panel-2:#f7f4ec;
+  --ink:#1c1d1f; --muted:#6c6a63; --border:#ddd7c8;
+  --accent-fast:#0e8f83; --accent-fast-bg:#dff2ef;
+  --accent-slow:#a86618; --accent-slow-bg:#f6e9d5;
+  --accent-random:#9c3f78; --accent-random-bg:#f6e2ee;
+  --good:#1f8a4c; --pending:#a6a296; --track:#e3ddcc;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14161a; --panel:#1b1e23; --panel-2:#20242a;
+    --ink:#eae7dd; --muted:#93918a; --border:#2c2f36;
+    --accent-fast:#5fe4d3; --accent-fast-bg:#123833;
+    --accent-slow:#f0ac4e; --accent-slow-bg:#3a2b12;
+    --accent-random:#e58cc4; --accent-random-bg:#3a1f30;
+    --good:#7be39a; --pending:#5c5f66; --track:#2a2d33;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161a; --panel:#1b1e23; --panel-2:#20242a;
+  --ink:#eae7dd; --muted:#93918a; --border:#2c2f36;
+  --accent-fast:#5fe4d3; --accent-fast-bg:#123833;
+  --accent-slow:#f0ac4e; --accent-slow-bg:#3a2b12;
+  --accent-random:#e58cc4; --accent-random-bg:#3a1f30;
+  --good:#7be39a; --pending:#5c5f66; --track:#2a2d33;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Space Grotesk','Segoe UI',sans-serif; line-height:1.55;
+}
+.wrap{max-width:920px; margin:0 auto; padding:2.5rem 1.25rem 4rem;}
+header h1{
+  font-size:clamp(1.5rem,4vw,2.05rem); font-weight:600;
+  margin:0 0 .6rem; letter-spacing:-0.01em;
+}
+header p{color:var(--muted); font-size:.98rem; max-width:62ch; margin:0 0 1.6rem;}
+.legend{display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem;}
+.legend span{
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-size:.82rem; color:var(--muted); background:var(--panel);
+  border:1px solid var(--border); border-radius:999px;
+  padding:.35rem .75rem .35rem .6rem;
+}
+.dot{width:.55rem; height:.55rem; border-radius:50%; flex:none;}
+.dot.fast{background:var(--accent-fast);}
+.dot.slow{background:var(--accent-slow);}
+.dot.random{background:var(--accent-random);}
+
+.grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:.75rem; margin-bottom:1.75rem;
+}
+.cat-heading{
+  grid-column:1/-1;
+  font-size:.76rem; font-weight:600; color:var(--cat-color);
+  letter-spacing:.03em; margin:.5rem 0 -.15rem;
+  padding-top:.7rem; border-top:1px solid var(--border);
+}
+.cat-heading:first-of-type{border-top:none; padding-top:0; margin-top:0;}
+.card{
+  text-align:left; background:var(--panel); border:1px solid var(--border);
+  border-left:3px solid var(--cat-color); border-radius:10px;
+  padding:.85rem 1rem; cursor:pointer; font-family:inherit; color:var(--ink);
+  transition:transform .12s ease, border-color .12s ease; position:relative;
+}
+.card:hover{transform:translateY(-2px);}
+.card:focus-visible{outline:2px solid var(--cat-color); outline-offset:2px;}
+.card.active{border-color:var(--cat-color); box-shadow:0 0 0 1px var(--cat-color) inset;}
+.card .name{font-weight:500; font-size:.97rem; margin-bottom:.3rem; padding-right:3.2rem;}
+.card .formula{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+  color:var(--muted); word-break:break-word;
+}
+.card .rate{
+  position:absolute; top:.7rem; right:.8rem;
+  font-family:'IBM Plex Mono',monospace; font-size:.66rem;
+  color:var(--cat-color); background:var(--panel-2);
+  border:1px solid var(--border); border-radius:4px;
+  padding:.1rem .35rem; white-space:nowrap;
+}
+
+.panel{
+  display:none; background:var(--panel); border:1px solid var(--border);
+  border-radius:14px; padding:1.5rem 1.5rem 1.75rem; margin-bottom:2rem;
+}
+.panel.show{display:block;}
+.panel-head{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  gap:1rem; margin-bottom:.3rem;
+}
+.panel-head h2{font-size:1.15rem; font-weight:600; margin:0;}
+.panel-head .cat-badge{
+  font-size:.72rem; font-weight:500; padding:.2rem .6rem;
+  border-radius:999px; white-space:nowrap;
+  color:var(--cat-text); background:var(--cat-bg);
+}
+.panel .formula-line{
+  font-family:'IBM Plex Mono',monospace; font-size:.84rem;
+  color:var(--muted); margin:.2rem 0 .6rem;
+}
+.why{
+  font-size:.82rem; color:var(--ink); background:var(--panel-2);
+  border-left:3px solid var(--cat-color); border-radius:0 8px 8px 0;
+  padding:.55rem .8rem; margin:.2rem 0 1.1rem;
+}
+.note{
+  font-size:.8rem; color:var(--muted); margin:.2rem 0 1.2rem;
+  border-left:2px solid var(--border); padding-left:.6rem;
+}
+
+/* ===== 살아있는 수식 영역 ===== */
+.formula-live-wrap{
+  background:var(--panel-2); border:1px solid var(--border);
+  border-radius:10px; padding:1rem 1.15rem; margin-bottom:1rem;
+  min-height:64px; overflow-x:auto; overflow-y:hidden;
+}
+.formula-live-wrap.hidden{display:none;}
+.formula-live{
+  font-size:1.05rem; white-space:nowrap;
+  display:flex; align-items:center; gap:.15em;
+  min-height:2.2em;
+}
+.formula-live .katex{font-size:1.05em;}
+.formula-live .fl-label{
+  font-family:'IBM Plex Mono',monospace; color:var(--muted);
+  margin-right:.4em; font-size:.92em;
+}
+.formula-live .fl-eq{
+  font-family:'IBM Plex Mono',monospace; color:var(--muted);
+  margin:0 .35em;
+}
+.formula-live .fl-term{
+  display:inline-block;
+  padding:0 .18em;
+  border-radius:5px;
+  transition:background-color .18s ease, color .18s ease, transform .18s ease, opacity .18s ease;
+}
+.formula-live .fl-term.entering{
+  opacity:0; transform:translateX(14px) scale(.85);
+}
+.formula-live .fl-term.active{
+  background:var(--cat-color);
+  color:var(--panel);
+  animation:fl-pulse 0.7s ease-in-out infinite alternate;
+}
+.formula-live .fl-term.active .katex{color:var(--panel);}
+@keyframes fl-pulse{
+  from{ box-shadow:0 0 0 0 var(--cat-color); }
+  to{ box-shadow:0 0 0 4px transparent; }
+}
+.formula-live .fl-dots{
+  color:var(--muted); font-family:'IBM Plex Mono',monospace;
+  margin-left:.25em; letter-spacing:.08em;
+}
+
+.readout{
+  background:var(--panel-2); border:1px solid var(--border);
+  border-radius:10px; padding:1.1rem 1.25rem; margin-bottom:1rem;
+}
+.readout .value{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:clamp(1.6rem,5vw,2.3rem); font-weight:500;
+  letter-spacing:.01em; word-break:break-all;
+}
+.value .good{color:var(--good);}
+.value .pending{color:var(--pending);}
+
+.viz-wrap{
+  background:var(--panel-2); border:1px solid var(--border);
+  border-radius:10px; padding:.5rem; margin-bottom:.75rem;
+}
+.viz-wrap.hidden{display:none;}
+canvas.viz{width:100%; height:240px; display:block; border-radius:6px;}
+
+.stats{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:.75rem; margin:1rem 0;
+}
+.stat{background:var(--panel-2); border-radius:10px; padding:.7rem .9rem;}
+.stat .label{font-size:.72rem; color:var(--muted); margin-bottom:.25rem;}
+.stat .num{font-family:'IBM Plex Mono',monospace; font-size:1.1rem; font-weight:500;}
+
+.timebar{
+  height:6px; background:var(--track); border-radius:999px;
+  overflow:hidden; margin:1rem 0 .5rem;
+}
+.timebar-fill{
+  height:100%; width:0%; background:var(--cat-color);
+  transition:width .05s linear;
+}
+.sparkline{width:100%; height:90px; display:block; margin:.4rem 0 .6rem;}
+
+.status-line{font-size:.86rem; color:var(--muted); min-height:1.3em;}
+.status-line.done{color:var(--ink); font-weight:500;}
+
+.controls{display:flex; gap:.6rem; margin-top:1.1rem;}
+button.action{
+  font-family:inherit; font-size:.85rem; font-weight:500;
+  padding:.55rem 1.1rem; border-radius:8px;
+  border:1px solid var(--border); background:var(--panel);
+  color:var(--ink); cursor:pointer;
+}
+button.action:hover{border-color:var(--cat-color);}
+button.action.primary{
+  background:var(--cat-color); border-color:var(--cat-color); color:var(--panel);
+}
+footer{margin-top:2rem; font-size:.78rem; color:var(--muted); max-width:62ch;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>5초 동안 얼마나 빨리 π에 도달할까</h1>
+<p>공식을 하나 고르면 5초 동안 실제로 연산을 실행합니다. 반복 횟수와 근사값이 실시간으로 바뀌는 걸 지켜보세요. 같은 5초라도 공식마다 결과가 크게 다릅니다.</p>
+</header>
+
+<div class="legend">
+<span><span class="dot fast"></span>빠른 수렴 — 몇 번 만에 컴퓨터 정밀도 한계에 닿음</span>
+<span><span class="dot slow"></span>느린 수렴 — 수백만 번을 반복해도 자릿수가 거의 안 늘어남</span>
+<span><span class="dot random"></span>확률적 방법 — 무작위 시행으로 근사</span>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="panel" id="panel">
+  <div class="panel-head">
+    <h2 id="p-name"></h2>
+    <span class="cat-badge" id="p-badge"></span>
+  </div>
+  <div class="formula-line" id="p-formula"></div>
+  <div class="why" id="p-why"></div>
+  <div class="note" id="p-note" style="display:none;"></div>
+
+  <!-- ★ 살아있는 수식 -->
+  <div class="formula-live-wrap" id="p-formula-live-wrap">
+    <div class="formula-live" id="p-formula-live"></div>
+  </div>
+
+  <div class="readout">
+    <div class="value" id="p-value">3</div>
+  </div>
+
+  <div class="viz-wrap hidden" id="p-viz-wrap">
+    <canvas class="viz" id="p-viz"></canvas>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="label">반복 횟수</div><div class="num" id="p-iter">0</div></div>
+    <div class="stat"><div class="label">경과 시간</div><div class="num" id="p-time">0.00초</div></div>
+    <div class="stat"><div class="label">오차 (|근사값 − π|)</div><div class="num" id="p-error">—</div></div>
+    <div class="stat"><div class="label">맞은 소수 자리</div><div class="num" id="p-digits">0자리</div></div>
+  </div>
+
+  <div class="timebar"><div class="timebar-fill" id="p-timebar"></div></div>
+  <canvas class="sparkline" id="p-spark"></canvas>
+
+  <div class="status-line" id="p-status">대기 중… "5초 실행"을 눌러보세요.</div>
+
+  <div class="controls">
+    <button class="action primary" id="p-run">5초 실행</button>
+    <button class="action" id="p-reset">초기화</button>
+  </div>
+</div>
+
+<footer>
+숫자는 자바스크립트 배정밀도 실수(64비트, 약 15~16자리)로 계산합니다. 그래서 라마누잔·추드노프스키·가우스-르장드르·보웨인 공식처럼 이론상 훨씬 더 빠르게 수렴하는 방법은 몇 번 만에 이 그래프 상의 한계에 닿아 버립니다. 뷔퐁의 바늘 문제에서 무작위 각도를 만들 때 쓰는 π는 계산 결과가 아니라 라디안 단위를 만들기 위한 값이라, 답을 미리 알고 계산하는 것은 아닙니다.
+</footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ============================================================
+   0. 환경 감지
+   ============================================================ */
+const reduceMotion = window.matchMedia &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================================================
+   1. 유틸
+   ============================================================ */
+function factorialCache(){
+  const cache=[1];
+  return function(n){
+    for(let i=cache.length;i<=n;i++) cache[i]=cache[i-1]*i;
+    return cache[n];
+  };
+}
+const fact = factorialCache();
+
+function cssVar(name, fallback){
+  const v = getComputedStyle(document.body).getPropertyValue(name).trim();
+  return v || fallback;
+}
+
+/* KaTeX 준비 확인 (defer 스크립트라 늦게 로드될 수 있음) */
+function katexReady(cb){
+  if(window.katex){ cb(); return; }
+  let tries=0;
+  const iv=setInterval(()=>{
+    if(window.katex || tries++>40){ clearInterval(iv); cb(); }
+  }, 50);
+}
+function tex(expr, display){
+  if(!window.katex) return `<code>${expr}</code>`;
+  try{
+    return window.katex.renderToString(expr, {
+      throwOnError:false, displayMode:!!display
+    });
+  }catch(e){
+    return `<code>${expr}</code>`;
+  }
+}
+
+/* ============================================================
+   2. 공식 정의
+   ------------------------------------------------------------
+   live: 'leibniz' | 'nilakantha' | 'machin' | 'archimedes' |
+         'chudnovsky' | 'bbp' | 'montecarlo' | 'buffon' | null
+   live: 살아있는 수식 렌더러 종류
+   viz:  캔버스 시각화 종류
+   ============================================================ */
+const formulas = [
+{
+  id:'leibniz', name:'라이프니츠 급수', category:'slow', batch:9000,
+  unicode:'π/4 = 1 − 1/3 + 1/5 − 1/7 + 1/9 − ⋯',
+  rate:'O(1/n)',
+  why:'arctan(1)=π/4의 테일러 전개입니다. 항이 1/n로 줄어 수렴이 매우 느립니다.',
+  viz:'oscillate',
+  live:'leibniz',
+  init:()=>({n:0,sum:0,_hist:[],_histIdx:0}),
+  step(s){
+    const sign = s.n%2===0?1:-1;
+    s.sum += sign/(2*s.n+1);
+    s.n++;
+    const value = 4*s.sum;
+    pushHist(s, value);
+    return {value, done:false, partial:value, target:Math.PI};
+  }
+},
+{
+  id:'nilakantha', name:'니라칸타 급수', category:'slow', batch:9000,
+  unicode:'π = 3 + 4/(2·3·4) − 4/(4·5·6) + 4/(6·7·8) − ⋯',
+  rate:'O(1/n³)',
+  why:'15세기 인도 수학자의 급수. 라이프니츠보다 훨씬 빠르게 수렴합니다.',
+  viz:'oscillate',
+  live:'nilakantha',
+  init:()=>({n:1,sum:3,sign:1,_hist:[],_histIdx:0}),
+  step(s){
+    s.sum += s.sign*4/((2*s.n)*(2*s.n+1)*(2*s.n+2));
+    s.sign*=-1; s.n++;
+    pushHist(s, s.sum);
+    return {value:s.sum, done:false, partial:s.sum, target:Math.PI};
+  }
+},
+{
+  id:'basel', name:'바젤 문제', category:'slow', batch:9000,
+  unicode:'1/1² + 1/2² + 1/3² + ⋯ = π²/6',
+  rate:'O(1/n)',
+  why:'오일러가 1735년에 푼 문제. 역제곱 합이 π²/6에 수렴합니다.',
+  viz:'oscillate',
+  live:'basel',
+  init:()=>({n:1,sum:0,_hist:[],_histIdx:0}),
+  step(s){
+    s.sum += 1/(s.n*s.n); s.n++;
+    const value = Math.sqrt(6*s.sum);
+    pushHist(s, value);
+    return {value, done:false, partial:value, target:Math.PI};
+  }
+},
+{
+  id:'wallis', name:'월리스 곱', category:'slow', batch:9000,
+  unicode:'π/2 = (2/1)·(2/3)·(4/3)·(4/5)·(6/5)·(6/7)·⋯',
+  rate:'O(1/n)',
+  why:'1655년 월리스가 발견한 무한곱. 분수 항이 1에 가까워져 수렴이 느립니다.',
+  viz:'oscillate',
+  live:'wallis',
+  init:()=>({n:1,product:1,_hist:[],_histIdx:0}),
+  step(s){
+    const n=s.n;
+    s.product *= (4*n*n)/(4*n*n-1);
+    s.n++;
+    const value = 2*s.product;
+    pushHist(s, value);
+    return {value, done:false, partial:value, target:Math.PI};
+  }
+},
+{
+  id:'machin', name:'마친 공식', category:'fast', batch:1,
+  unicode:'π/4 = 4·arctan(1/5) − arctan(1/239)',
+  rate:'O(1/25ⁿ)',
+  why:'1706년 마친이 100자리를 계산한 공식. arctan(1/5)가 빠르게 수렴합니다.',
+  viz:'converge',
+  live:'machin',
+  init:()=>({n:0,sum5:0,sum239:0}),
+  step(s){
+    const n=s.n;
+    const sign = n%2===0?1:-1;
+    const t5 = sign*Math.pow(1/5,2*n+1)/(2*n+1);
+    const t239 = sign*Math.pow(1/239,2*n+1)/(2*n+1);
+    s.sum5+=t5; s.sum239+=t239; s.n++;
+    const value = 4*(4*s.sum5 - s.sum239);
+    return {value, done: n>2 && Math.abs(t5)<1e-17};
+  }
+},
+{
+  id:'sharp', name:'샤프의 급수', category:'fast', batch:1,
+  unicode:'π = Σ 2·(−1)^k·√3 / (3^k·(2k+1))',
+  rate:'O(1/3ⁿ)',
+  why:'arctan(1/√3)=π/6을 이용. 3의 거듭제곱으로 빠르게 줄어듭니다.',
+  viz:'converge',
+  live:'sharp',
+  init:()=>({k:0,sum:0}),
+  step(s){
+    const k=s.k;
+    const term = 2*((k%2===0)?1:-1)*Math.sqrt(3)/(Math.pow(3,k)*(2*k+1));
+    s.sum+=term; s.k++;
+    return {value:s.sum, done: k>2 && Math.abs(term)<1e-17};
+  }
+},
+{
+  id:'ramanujan', name:'라마누잔 급수', category:'fast', batch:1,
+  unicode:'1/π = (2√2/9801)·Σ (4k)!(1103+26390k) / ((k!)⁴·396^4k)',
+  rate:'O(1/396⁴ⁿ)',
+  why:'1910년 라마누잔의 급수. 항 하나가 약 8자리를 추가합니다.',
+  viz:'converge',
+  live:'ramanujan',
+  init:()=>({k:0,sum:0}),
+  step(s){
+    const k=s.k;
+    const num = fact(4*k)*(1103+26390*k);
+    const den = Math.pow(fact(k),4)*Math.pow(396,4*k);
+    const term = num/den;
+    s.sum += term; s.k++;
+    const invPi = (2*Math.sqrt(2)/9801)*s.sum;
+    const value = 1/invPi;
+    return {value, done: k>0 && (!isFinite(term) || term===0)};
+  }
+},
+{
+  id:'chudnovsky', name:'추드노프스키 알고리즘', category:'fast', batch:1,
+  unicode:'1/π = 12·Σ (−1)^k(6k)!(13591409+545140134k) / ((3k)!(k!)³·640320^(3k+1.5))',
+  rate:'O(1/15193ⁿ)',
+  why:'1988년 추드노프스키 형제. 항당 약 14자리를 추가하는 최강 급수입니다.',
+  viz:'converge',
+  live:'chudnovsky',
+  init:()=>({k:0,sum:0}),
+  step(s){
+    const k=s.k;
+    const num = (k%2===0?1:-1)*fact(6*k)*(13591409+545140134*k);
+    const den = fact(3*k)*Math.pow(fact(k),3)*Math.pow(640320,3*k+1.5);
+    const term = num/den;
+    if(isFinite(term)) s.sum += term;
+    s.k++;
+    const invPi = 12*s.sum;
+    const value = 1/invPi;
+    return {value, done: k>0 && (!isFinite(den) || term===0)};
+  }
+},
+{
+  id:'viete', name:'비에트의 공식', category:'fast', batch:1,
+  unicode:'2/π = √(1/2)·√(1/2+1/2√(1/2))·⋯',
+  rate:'2차 수렴',
+  why:'1593년 비에트가 발견한 최초의 무한곱. 반각 공식이 겹겹이 쌓입니다.',
+  viz:'converge',
+  live:'viete',
+  init:()=>({a:Math.sqrt(2)/2, product:Math.sqrt(2)/2, n:0}),
+  step(s){
+    const prevA = s.a;
+    s.a = Math.sqrt((1+s.a)/2);
+    s.product *= s.a;
+    s.n++;
+    const value = 2/s.product;
+    return {value, done: s.n>3 && Math.abs(s.a-prevA)<1e-17};
+  }
+},
+{
+  id:'brouncker', name:'브롱커의 연분수', category:'fast', batch:1,
+  unicode:'4/π = 1 + 1²/(2 + 3²/(2 + 5²/(2 + ⋯)))',
+  rate:'연분수',
+  why:'1655년 브롱커가 월리스 곱을 연분수로 바꾼 형태. 홀수 제곱이 분자에 옵니다.',
+  viz:'converge',
+  live:'brouncker',
+  init:()=>({hp2:1,hp1:1,kp2:0,kp1:1,n:0,lastValue:4}),
+  step(s){
+    const n=s.n+1;
+    const a=Math.pow(2*n-1,2), b=2;
+    const hN=b*s.hp1+a*s.hp2, kN=b*s.kp1+a*s.kp2;
+    if(!isFinite(hN)||!isFinite(kN)||kN===0){
+      return {value:s.lastValue, done:true};
+    }
+    s.hp2=s.hp1; s.hp1=hN; s.kp2=s.kp1; s.kp1=kN; s.n=n;
+    const value = 4/(hN/kN);
+    s.lastValue=value;
+    return {value, done: n>55};
+  }
+},
+{
+  id:'archimedes', name:'아르키메데스의 다각형법', category:'fast', batch:1,
+  unicode:'2ᵏ·n·sin(π/2ᵏn) < π < 2ᵏ·n·tan(π/2ᵏn)',
+  rate:'2차 수렴',
+  why:'BC 250년. 정육각형에서 시작해 변을 두 배로 늘리며 π를 협공합니다.',
+  viz:'polygon',
+  live:'archimedes',
+  init:()=>({n:6,k:0,t:1,sides:6}),
+  step(s){
+    const tNext = Math.sqrt(2 - Math.sqrt(4 - s.t*s.t));
+    s.k++;
+    s.sides = s.n*Math.pow(2,s.k);
+    const value = (s.sides*tNext)/2;
+    const done = !isFinite(tNext) || tNext<=0 || Math.abs(tNext-s.t)<1e-18 || s.k>44;
+    s.t = tNext;
+    return {value, done, sides:s.sides};
+  }
+},
+{
+  id:'gauss', name:'가우스-르장드르 알고리즘', category:'fast', batch:1,
+  unicode:'aₙ₊₁=(aₙ+bₙ)/2, bₙ₊₁=√(aₙbₙ), π ≈ (aₙ+bₙ)²/4tₙ',
+  rate:'2차 수렴',
+  why:'산술-기하 평균을 이용. 반복마다 맞은 자릿수가 두 배가 됩니다.',
+  viz:'converge',
+  live:'gauss',
+  init:()=>({a:1,b:1/Math.sqrt(2),t:0.25,p:1,n:0}),
+  step(s){
+    const aN=(s.a+s.b)/2, bN=Math.sqrt(s.a*s.b);
+    const tN=s.t - s.p*Math.pow(s.a-aN,2), pN=s.p*2;
+    const converged = Math.abs(s.a-s.b)<1e-16;
+    s.a=aN; s.b=bN; s.t=tN; s.p=pN; s.n++;
+    const value = Math.pow(s.a+s.b,2)/(4*s.t);
+    return {value, done:converged};
+  }
+},
+{
+  id:'borwein', name:'보웨인 4차 수렴 알고리즘', category:'fast', batch:1,
+  unicode:'aₖ₊₁=aₖ(1+yₖ₊₁)⁴ − 2^(2k+3)yₖ₊₁(1+yₖ₊₁+yₖ₊₁²)',
+  rate:'4차 수렴',
+  why:'1985년 보웨인 형제. 반복마다 맞은 자릿수가 네 배가 됩니다.',
+  viz:'converge',
+  live:'borwein',
+  init:()=>({a:6-4*Math.sqrt(2), y:Math.sqrt(2)-1, k:0}),
+  step(s){
+    const root = Math.pow(1-Math.pow(s.y,4), 0.25);
+    const yN = (1-root)/(1+root);
+    const pow2 = (2*s.k+3) < 1000 ? Math.pow(2, 2*s.k+3) : Infinity;
+    const aN = s.a*Math.pow(1+yN,4) - pow2*yN*(1+yN+yN*yN);
+    s.a=aN; s.y=yN; s.k++;
+    const value = 1/s.a;
+    const precisionLimit = !isFinite(value) || Math.abs(yN)<1e-12;
+    return {value: isFinite(value)? value : s.a, done: precisionLimit, reason: precisionLimit ? 'precision' : null};
+  }
+},
+{
+  id:'bbp', name:'BBP 공식', category:'fast', batch:1,
+  unicode:'π = Σ (1/16^k)(4/(8k+1) − 2/(8k+4) − 1/(8k+5) − 1/(8k+6))',
+  rate:'O(1/16ⁿ)',
+  why:'1995년 발견. 16진수 자릿수를 앞에서부터 건너뛰어 뽑을 수 있습니다.',
+  viz:'converge',
+  live:'bbp',
+  init:()=>({k:0,sum:0}),
+  step(s){
+    const k=s.k;
+    const term=(1/Math.pow(16,k))*(4/(8*k+1)-2/(8*k+4)-1/(8*k+5)-1/(8*k+6));
+    s.sum+=term; s.k++;
+    const done = k>1 && Math.abs(term)<1e-17;
+    return {value:s.sum, done, reason: done ? 'precision' : null};
+  }
+},
+{
+  id:'bellard', name:'벨라르 공식', category:'fast', batch:1,
+  unicode:'π = (1/2⁶)Σ((−1)^k/2^10k)(−2⁵/(4k+1) − 1/(4k+3) + 2⁸/(10k+1) − ⋯)',
+  rate:'O(1/2¹⁰ⁿ)',
+  why:'1997년 벨라르가 BBP를 개량. 2¹⁰씩 줄어 BBP보다 빠릅니다.',
+  viz:'converge',
+  live:'bellard',
+  init:()=>({k:0,sum:0}),
+  step(s){
+    const k=s.k;
+    const sign = k%2===0?1:-1;
+    const term = (sign/Math.pow(2,10*k))*(
+      -32/(4*k+1) - 1/(4*k+3) + 256/(10*k+1) - 64/(10*k+3) - 4/(10*k+5) - 4/(10*k+7) + 1/(10*k+9)
+    );
+    s.sum+=term; s.k++;
+    const done = k>0 && Math.abs(term)<1e-17;
+    return {value:s.sum/64, done, reason: done ? 'precision' : null};
+  }
+},
+{
+  id:'montecarlo', name:'몬테카를로 방법', category:'random', batch:6000,
+  unicode:'π ≈ 4·(원 안에 떨어진 점 수)/(전체 점 수)',
+  rate:'O(1/√n)',
+  why:'정사각형에 점을 무작위로 뿌려 원 안에 떨어진 비율로 π를 근사합니다.',
+  viz:'montecarlo',
+  live:'montecarlo',
+  init:()=>({inside:0,total:0,points:[],dirty:true}),
+  step(s){
+    const x=Math.random()*2-1, y=Math.random()*2-1;
+    s.total++;
+    const isIn = x*x+y*y<=1;
+    if(isIn) s.inside++;
+    s.points.push(x, y, isIn?1:0);
+    if(s.points.length > 900000) s.points.splice(0, 300000);
+    return {value: s.total>0 ? 4*s.inside/s.total : NaN, done:false};
+  }
+},
+{
+  id:'buffon', name:"뷔퐁의 바늘 문제", category:'random', batch:6000,
+  unicode:'π ≈ (2·l·n)/(t·h)',
+  rate:'O(1/√n)',
+  why:'1777년 뷔퐁이 제시한 확률 문제. 바늘이 선에 걸린 비율로 π를 근사합니다.',
+  viz:'buffon',
+  live:'buffon',
+  init:()=>({hits:0,drops:0,needles:[],dirty:true}),
+  step(s){
+    const lineGap=2, needle=1;
+    const xPos = Math.random();
+    const angle = Math.random()*(Math.PI/2);
+    const center = Math.random()*(lineGap/2);
+    const hit = center <= (needle/2)*Math.sin(angle);
+    s.drops++;
+    if(hit) s.hits++;
+    s.needles.push({x:xPos, c:center, a:angle, hit});
+    if(s.needles.length > 500) s.needles.splice(0, s.needles.length-500);
+    const value = s.hits>0 ? (2*needle*s.drops)/(lineGap*s.hits) : NaN;
+    return {value, done:false};
+  },
+  note:'각도를 만들 때 쓰는 π는 라디안 단위 변환용일 뿐, 계산 중인 답을 미리 넣는 것이 아닙니다.'
+}
+];
+
+/* ============================================================
+   3. 히스토리 링 버퍼
+   ============================================================ */
+const HIST_MAX = 1500;
+function pushHist(s, value){
+  if(!s._hist) { s._hist = []; s._histIdx = 0; }
+  if(s._hist.length < HIST_MAX){
+    s._hist.push(value);
+  } else {
+    s._hist[s._histIdx] = value;
+    s._histIdx = (s._histIdx + 1) % HIST_MAX;
+  }
+}
+
+/* ============================================================
+   4. 카테고리 메타
+   ============================================================ */
+const catMeta = {
+  fast:{color:'var(--accent-fast)', bg:'var(--accent-fast-bg)', text:'var(--accent-fast)', label:'빠른 수렴'},
+  slow:{color:'var(--accent-slow)', bg:'var(--accent-slow-bg)', text:'var(--accent-slow)', label:'느린 수렴'},
+  random:{color:'var(--accent-random)', bg:'var(--accent-random-bg)', text:'var(--accent-random)', label:'확률적 방법'}
+};
+
+/* ============================================================
+   5. 그리드 생성
+   ============================================================ */
+const grid = document.getElementById('grid');
+const CATEGORY_ORDER = ['fast','slow','random'];
+const orderedFormulas = [];
+CATEGORY_ORDER.forEach(cat=>{
+  const list = formulas.filter(f=>f.category===cat);
+  if(!list.length) return;
+  const heading = document.createElement('div');
+  heading.className='cat-heading';
+  heading.style.setProperty('--cat-color', catMeta[cat].color);
+  heading.textContent = catMeta[cat].label;
+  grid.appendChild(heading);
+  list.forEach(f=>{
+    orderedFormulas.push(f);
+    const btn = document.createElement('button');
+    btn.className='card';
+    btn.style.setProperty('--cat-color', catMeta[f.category].color);
+    btn.dataset.id=f.id;
+    btn.innerHTML = `<div class="name">${f.name}</div>` +
+      `<div class="formula">${f.unicode}</div>` +
+      (f.rate ? `<div class="rate">${f.rate}</div>` : '');
+    btn.addEventListener('click', ()=>selectFormula(f.id));
+    grid.appendChild(btn);
+  });
+});
+
+/* ============================================================
+   6. DOM 참조
+   ============================================================ */
+const panel = document.getElementById('panel');
+const pName = document.getElementById('p-name');
+const pBadge = document.getElementById('p-badge');
+const pFormula = document.getElementById('p-formula');
+const pWhy = document.getElementById('p-why');
+const pNote = document.getElementById('p-note');
+const pValue = document.getElementById('p-value');
+const pIter = document.getElementById('p-iter');
+const pTime = document.getElementById('p-time');
+const pError = document.getElementById('p-error');
+const pDigits = document.getElementById('p-digits');
+const pTimebar = document.getElementById('p-timebar');
+const pStatus = document.getElementById('p-status');
+const pRun = document.getElementById('p-run');
+const pReset = document.getElementById('p-reset');
+const spark = document.getElementById('p-spark');
+const sparkCtx = spark.getContext('2d');
+const vizWrap = document.getElementById('p-viz-wrap');
+const viz = document.getElementById('p-viz');
+const vizCtx = viz.getContext('2d');
+const flWrap = document.getElementById('p-formula-live-wrap');
+const flBox  = document.getElementById('p-formula-live');
+
+/* ============================================================
+   7. 상태
+   ============================================================ */
+let current=null, state=null, iterCount=0, startTime=0, running=false;
+let errHist=[], rafId=null;
+let offCanvas=null, offCtx=null, offDirty=false, offDrawn=0;
+let lastFV={digits:0, error:NaN};
+
+/* 살아있는 수식: 마지막 렌더 시각 */
+let flLastRender = 0;
+
+/* ============================================================
+   8. 값 포맷
+   ============================================================ */
+function formatValue(value){
+  if(value===undefined || value===null || isNaN(value)){
+    return {html:'<span class="pending">계산 대기 중…</span>', digits:0, error:NaN};
+  }
+  if(!isFinite(value)){
+    return {html:'<span class="pending">오버플로 (정밀도 한계)</span>', digits:0, error:NaN};
+  }
+  const error = Math.abs(value - Math.PI);
+  let digits = 0;
+  if(error > 0){
+    digits = Math.max(0, Math.floor(-Math.log10(error)));
+    digits = Math.min(digits, 15);
+  } else {
+    digits = 15;
+  }
+  const target = Math.PI.toFixed(15);
+  const val = value.toFixed(15);
+  let i=0;
+  const n = Math.min(target.length, val.length);
+  while(i<n && val[i]===target[i]) i++;
+  if(i===n && val!==target) i = Math.max(0, i-1);
+  const good = val.slice(0,i);
+  const rest = val.slice(i);
+  return {
+    html:`<span class="good">${good}</span><span class="pending">${rest}</span>`,
+    digits,
+    error
+  };
+}
+
+/* ============================================================
+   9. ★ 살아있는 수식 렌더러
+   ------------------------------------------------------------
+   각 live 타입은 (state, activeIndex) → HTML 문자열을 반환
+   activeIndex: 현재 하이라이트할 항의 인덱스
+   ============================================================ */
+const liveRenderers = {
+  /* 라이프니츠: π/4 = 1 − 1/3 + 1/5 − ⋯ */
+  leibniz(s){
+    const n = Math.min(s.n, 40);          // 화면엔 최대 40항
+    const active = s.n - 1;
+    let parts = [`<span class="fl-label">π/4</span><span class="fl-eq">=</span>`];
+    for(let i=0;i<n;i++){
+      const sign = (i%2===0) ? '+' : '−';
+      const denom = 2*i+1;
+      const cls = (i===active) ? 'fl-term active' : 'fl-term';
+      const signStr = (i===0 && sign==='+') ? '' : sign;
+      parts.push(
+        `<span class="${cls}">` +
+        (signStr ? `<span class="fl-eq">${signStr}</span>` : '') +
+        tex(`\\dfrac{1}{${denom}}`) +
+        `</span>`
+      );
+    }
+    if(s.n > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 니라칸타: π = 3 + 4/(2·3·4) − 4/(4·5·6) + ⋯ */
+  nilakantha(s){
+    const n = Math.min(s.n, 40);
+    const active = s.n - 1;
+    let parts = [`<span class="fl-label">π</span><span class="fl-eq">=</span>`,
+                 `<span class="fl-term">3</span>`];
+    for(let i=1;i<n;i++){
+      const sign = (i%2===1) ? '+' : '−';
+      const a = 2*i, b = 2*i+1, c = 2*i+2;
+      const cls = (i===active) ? 'fl-term active' : 'fl-term';
+      parts.push(
+        `<span class="${cls}">` +
+        `<span class="fl-eq">${sign}</span>` +
+        tex(`\\dfrac{4}{${a}\\cdot${b}\\cdot${c}}`) +
+        `</span>`
+      );
+    }
+    if(s.n > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 바젤: 1/1² + 1/2² + 1/3² + ⋯ = π²/6 */
+  basel(s){
+    const n = Math.min(s.n, 40);
+    const active = s.n - 1;
+    let parts = [];
+    for(let i=1;i<=n;i++){
+      const sign = (i===1) ? '' : '+';
+      const cls = (i-1===active) ? 'fl-term active' : 'fl-term';
+      parts.push(
+        `<span class="${cls}">` +
+        (sign ? `<span class="fl-eq">+</span>` : '') +
+        tex(`\\dfrac{1}{${i}^2}`) +
+        `</span>`
+      );
+    }
+    if(s.n > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    parts.push(`<span class="fl-eq">=</span><span class="fl-label">π²/6</span>`);
+    return parts.join('');
+  },
+
+  /* 월리스: π/2 = (2/1)·(2/3)·(4/3)·(4/5)·⋯ */
+  wallis(s){
+    const n = Math.min(s.n, 30);
+    const active = s.n - 1;
+    let parts = [`<span class="fl-label">π/2</span><span class="fl-eq">=</span>`];
+    for(let i=1;i<=n;i++){
+      const cls = (i-1===active) ? 'fl-term active' : 'fl-term';
+      const num = 2*Math.ceil(i/2) + (i%2===1 ? 0 : 0); // 2,2,4,4,6,6...
+      // 실제 월리스: i=1 → 4·1²/(4·1²-1) = 4/3 ... 항별 분수는 다음과 같이 표기
+      // 항을 (2i)/(2i-1) · (2i)/(2i+1) 로 분해
+      const a = 2*i, b = 2*i-1, c = 2*i+1;
+      const mul = (i===1) ? '' : '<span class="fl-eq">·</span>';
+      parts.push(
+        `<span class="${cls}">` +
+        mul +
+        tex(`\\dfrac{${a}}{${b}}`) +
+        `<span class="fl-eq">·</span>` +
+        tex(`\\dfrac{${a}}{${c}}`) +
+        `</span>`
+      );
+    }
+    if(s.n > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 마친: π/4 = 4·arctan(1/5) − arctan(1/239) */
+  machin(s){
+    const active = Math.min(s.n-1, 3);
+    /* 두 arctan의 항을 나란히 보여주기 */
+    const mk = (coef, arg, maxN, label) => {
+      let inner = [];
+      const n = Math.min(s.n, maxN);
+      for(let i=0;i<n;i++){
+        const sign = (i%2===0) ? '+' : '−';
+        const cls = (i===active) ? 'fl-term active' : 'fl-term';
+        inner.push(
+          `<span class="${cls}">` +
+          (i===0 ? '' : `<span class="fl-eq">${sign}</span>`) +
+          tex(`\\dfrac{${arg}^{${2*i+1}}}{${2*i+1}}`) +
+          `</span>`
+        );
+      }
+      return `<span class="fl-label">${coef}</span>` +
+             `<span class="fl-eq">·</span>` +
+             tex(`\\arctan\\!\\left(${arg}\\right)`) +
+             `<span class="fl-eq">=</span>` + inner.join('');
+    };
+    return `<span class="fl-label">π/4</span><span class="fl-eq">=</span>` +
+           mk('4', '\\tfrac{1}{5}', 6) +
+           `<span class="fl-eq">−</span>` +
+           mk('', '\\tfrac{1}{239}', 3);
+  },
+
+  /* 샤프 */
+  sharp(s){
+    const n = Math.min(s.k, 20);
+    const active = s.k - 1;
+    let parts = [`<span class="fl-label">π</span><span class="fl-eq">=</span>`];
+    for(let i=0;i<n;i++){
+      const sign = (i%2===0) ? '+' : '−';
+      const cls = (i===active) ? 'fl-term active' : 'fl-term';
+      parts.push(
+        `<span class="${cls}">` +
+        (i===0 ? '' : `<span class="fl-eq">${sign}</span>`) +
+        tex(`\\dfrac{2\\sqrt{3}}{3^{${i}}\\,(${2*i+1})}`) +
+        `</span>`
+      );
+    }
+    if(s.k > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 라마누잔 — 항이 커서 3~5개만 보여줌 */
+  ramanujan(s){
+    const n = Math.min(s.k, 4);
+    const active = s.k - 1;
+    let parts = [`<span class="fl-label">1/π</span><span class="fl-eq">=</span>`,
+                 tex(`\\dfrac{2\\sqrt{2}}{9801}`),
+                 `<span class="fl-eq">·</span>`];
+    for(let i=0;i<n;i++){
+      const cls = (i===active) ? 'fl-term active' : 'fl-term';
+      parts.push(
+        `<span class="${cls}">` +
+        tex(`\\dfrac{(4\\cdot${i})!\\,(1103+26390\\cdot${i})}{(${i}!)^4\\,396^{4\\cdot${i}}}`) +
+        `</span>`
+      );
+      if(i<n-1) parts.push(`<span class="fl-eq">+</span>`);
+    }
+    if(s.k > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 추드노프스키 — 매우 큰 수라 2개까지만 */
+  chudnovsky(s){
+    const n = Math.min(s.k, 2);
+    const active = s.k - 1;
+    let parts = [`<span class="fl-label">1/π</span><span class="fl-eq">=</span>`,
+                 `<span class="fl-term">12</span>`,
+                 `<span class="fl-eq">·</span>`];
+    for(let i=0;i<n;i++){
+      const cls = (i===active) ? 'fl-term active' : 'fl-term';
+      parts.push(
+        `<span class="${cls}">` +
+        tex(`\\dfrac{(-1)^{${i}}(6\\cdot${i})!\\,(13591409+545140134\\cdot${i})}{(3\\cdot${i})!\\,(${i}!)^3\\,640320^{3\\cdot${i}+1.5}}`) +
+        `</span>`
+      );
+      if(i<n-1) parts.push(`<span class="fl-eq">+</span>`);
+    }
+    if(s.k > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 비에트 */
+  viete(s){
+    const n = Math.min(s.n, 5);
+    const active = s.n - 1;
+    let parts = [`<span class="fl-label">2/π</span><span class="fl-eq">=</span>`];
+    /* 첫 항: √(1/2) */
+    parts.push(`<span class="${active===0?'fl-term active':'fl-term'}">` +
+               tex(`\\sqrt{\\tfrac{1}{2}}`) + `</span>`);
+    /* 이후 항: √(1/2 + 1/2·√(...)) 을 점층적으로 중첩 표기 */
+    for(let i=1;i<n;i++){
+      const cls = (i===active) ? 'fl-term active' : 'fl-term';
+      let inner = tex(`\\tfrac{1}{2}`);
+      for(let j=0;j<i;j++){}
+      /* 중첩을 간단히 표현 */
+      let expr = `\\sqrt{\\tfrac{1}{2}+\\tfrac{1}{2}\\sqrt{\\tfrac{1}{2}}}`;
+      if(i>=2) expr = `\\sqrt{\\tfrac{1}{2}+\\tfrac{1}{2}\\sqrt{\\tfrac{1}{2}+\\tfrac{1}{2}\\sqrt{\\tfrac{1}{2}}}}`;
+      parts.push(`<span class="${cls}"><span class="fl-eq">·</span>` +
+                 tex(expr) + `</span>`);
+    }
+    if(s.n > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 브롱커 연분수 */
+  brouncker(s){
+    const depth = Math.min(s.n, 6);
+    /* 위에서 아래로 중첩 */
+    let inner = tex(`2`);
+    for(let i=depth;i>=1;i--){
+      const a = 2*i-1;
+      inner = tex(`2+\\dfrac{${a}^2}{`) + inner + tex(`}`);
+    }
+    return `<span class="fl-label">4/π</span><span class="fl-eq">=</span>` +
+           `<span class="fl-term active">` + tex(`1+\\dfrac{1^2}{`) + inner + tex(`}`) + `</span>`;
+  },
+
+  /* 아르키메데스: k가 커지면 수식 안 숫자가 바뀜 */
+  archimedes(s){
+    const k = s.k;
+    const sides = s.sides;
+    return `<span class="fl-label">π</span><span class="fl-eq">≈</span>` +
+           `<span class="fl-term active">` +
+           tex(`\\dfrac{${sides}}{2}\\,\\sin\\!\\left(\\dfrac{2\\pi}{${sides}}\\right)`) +
+           `</span>` +
+           `<span class="fl-eq">,</span>` +
+           `<span class="fl-label">k=${k}</span>`;
+  },
+
+  /* 가우스-르장드르 */
+  gauss(s){
+    const n = s.n;
+    return `<span class="fl-label">a<sub>${n}</sub></span><span class="fl-eq">=</span>` +
+           `<span class="fl-term active">${s.a.toFixed(12)}</span>` +
+           `<span class="fl-eq">,</span>` +
+           `<span class="fl-label">b<sub>${n}</sub></span><span class="fl-eq">=</span>` +
+           `<span class="fl-term">${s.b.toFixed(12)}</span>` +
+           `<span class="fl-eq">,</span>` +
+           `<span class="fl-label">t<sub>${n}</sub></span><span class="fl-eq">=</span>` +
+           `<span class="fl-term">${s.t.toExponential(6)}</span>`;
+  },
+
+  /* 보웨인 */
+  borwein(s){
+    const n = s.k;
+    return `<span class="fl-label">y<sub>${n}</sub></span><span class="fl-eq">=</span>` +
+           `<span class="fl-term active">${s.y.toExponential(6)}</span>` +
+           `<span class="fl-eq">,</span>` +
+           `<span class="fl-label">a<sub>${n}</sub></span><span class="fl-eq">=</span>` +
+           `<span class="fl-term">${s.a.toExponential(6)}</span>`;
+  },
+
+  /* BBP */
+  bbp(s){
+    const n = Math.min(s.k, 12);
+    const active = s.k - 1;
+    let parts = [`<span class="fl-label">π</span><span class="fl-eq">=</span>`];
+    for(let i=0;i<n;i++){
+      const cls = (i===active) ? 'fl-term active' : 'fl-term';
+      parts.push(
+        `<span class="${cls}">` +
+        (i===0 ? '' : `<span class="fl-eq">+</span>`) +
+        tex(`\\dfrac{1}{16^{${i}}}\\!\\left(\\dfrac{4}{8\\cdot${i}+1}-\\dfrac{2}{8\\cdot${i}+4}-\\dfrac{1}{8\\cdot${i}+5}-\\dfrac{1}{8\\cdot${i}+6}\\right)`) +
+        `</span>`
+      );
+    }
+    if(s.k > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 벨라르 */
+  bellard(s){
+    const n = Math.min(s.k, 4);
+    const active = s.k - 1;
+    let parts = [`<span class="fl-label">π</span><span class="fl-eq">=</span>`,
+                 tex(`\\dfrac{1}{2^6}`),
+                 `<span class="fl-eq">·</span>`];
+    for(let i=0;i<n;i++){
+      const cls = (i===active) ? 'fl-term active' : 'fl-term';
+      parts.push(
+        `<span class="${cls}">` +
+        tex(`\\dfrac{(-1)^{${i}}}{2^{10\\cdot${i}}}`) +
+        `</span>`
+      );
+      if(i<n-1) parts.push(`<span class="fl-eq">+</span>`);
+    }
+    if(s.k > n) parts.push(`<span class="fl-dots">⋯</span>`);
+    return parts.join('');
+  },
+
+  /* 몬테카를로 */
+  montecarlo(s){
+    const inside = s.inside, total = s.total;
+    const ratio = total>0 ? (inside/total) : 0;
+    return `<span class="fl-label">π</span><span class="fl-eq">≈</span>` +
+           `<span class="fl-term">4</span>` +
+           `<span class="fl-eq">·</span>` +
+           `<span class="fl-term active">` +
+           tex(`\\dfrac{${inside}}{${total}}`) +
+           `</span>` +
+           `<span class="fl-eq">=</span>` +
+           `<span class="fl-term">${(4*ratio).toFixed(8)}</span>`;
+  },
+
+  /* 뷔퐁 */
+  buffon(s){
+    const drops = s.drops, hits = s.hits;
+    return `<span class="fl-label">π</span><span class="fl-eq">≈</span>` +
+           `<span class="fl-term">` +
+           tex(`\\dfrac{2\\cdot 1\\cdot ${drops}}{2\\cdot ${hits}}`) +
+           `</span>` +
+           `<span class="fl-eq">=</span>` +
+           `<span class="fl-term active">${hits>0 ? ((2*drops)/(2*hits)).toFixed(8) : '—'}</span>`;
+  }
+};
+
+function renderLiveFormula(){
+  if(!current || !current.live) {
+    flWrap.classList.add('hidden');
+    return;
+  }
+  flWrap.classList.remove('hidden');
+  const fn = liveRenderers[current.live];
+  if(!fn) { flWrap.classList.add('hidden'); return; }
+  const html = fn(state);
+  /* DOM 재사용: 매번 innerHTML 갈아끼우면 애니메이션 끊김.
+     대신 전체를 새로 그리되, entering 클래스는 CSS가 처리 */
+  flBox.innerHTML = html;
+  /* entering 클래스 제거 → 다음 프레임에 transition */
+  const entering = flBox.querySelectorAll('.fl-term.entering');
+  if(entering.length){
+    requestAnimationFrame(()=>{
+      entering.forEach(el=>el.classList.remove('entering'));
+    });
+  }
+}
+
+/* ============================================================
+   10. 스파크라인
+   ============================================================ */
+function resizeSpark(){
+  const rect = spark.getBoundingClientRect();
+  if(rect.width<1 || rect.height<1) return;
+  spark.width = rect.width * devicePixelRatio;
+  spark.height = rect.height * devicePixelRatio;
+}
+
+function drawSpark(){
+  if(spark.width<1) return;
+  const w=spark.width, h=spark.height;
+  sparkCtx.clearRect(0,0,w,h);
+  const border = cssVar('--border', '#ddd7c8');
+  sparkCtx.strokeStyle = border;
+  sparkCtx.lineWidth = 1*devicePixelRatio;
+  sparkCtx.strokeRect(0.5,0.5,w-1,h-1);
+  if(errHist.length<2) return;
+  const cssColor = cssVar('--cat-color', '#0e8f83');
+  sparkCtx.strokeStyle = cssColor;
+  sparkCtx.lineWidth = 2*devicePixelRatio;
+  sparkCtx.beginPath();
+  const maxT = 5000;
+  const minLog=-17, maxLog=1;
+  errHist.forEach((p,idx)=>{
+    const x = (p.t/maxT)*w;
+    let logv = p.err>0 ? Math.log10(p.err) : minLog;
+    logv = Math.max(minLog, Math.min(maxLog, logv));
+    const y = h - ((logv-minLog)/(maxLog-minLog))*h;
+    if(idx===0) sparkCtx.moveTo(x,y); else sparkCtx.lineTo(x,y);
+  });
+  sparkCtx.stroke();
+}
+
+/* ============================================================
+   11. 시각화 (캔버스)
+   ============================================================ */
+function resizeViz(){
+  const rect = viz.getBoundingClientRect();
+  if(rect.width<1 || rect.height<1) return;
+  viz.width = rect.width * devicePixelRatio;
+  viz.height = rect.height * devicePixelRatio;
+  if(!offCanvas){
+    offCanvas = document.createElement('canvas');
+    offCtx = offCanvas.getContext('2d');
+  }
+  offCanvas.width = viz.width;
+  offCanvas.height = viz.height;
+  offDirty = true;
+  offDrawn = 0;
+}
+
+function drawViz(){
+  if(!current || !current.viz) return;
+  const w=viz.width, h=viz.height;
+  if(w<1||h<1) return;
+  const border = cssVar('--border', '#ddd7c8');
+  const accent = cssVar('--cat-color', '#0e8f83');
+  const good = cssVar('--good', '#1f8a4c');
+  const muted = cssVar('--muted', '#6c6a63');
+  const dpr = devicePixelRatio;
+  vizCtx.clearRect(0,0,w,h);
+
+  if(current.viz === 'montecarlo'){
+    if(!offCanvas) { resizeViz(); }
+    const size = Math.min(w,h) * 0.9;
+    const cx = w/2, cy = h/2;
+    const half = size/2;
+    const pts = state.points;
+    const total = pts.length/3;
+    if(offDrawn < total){
+      for(let i=offDrawn;i<total;i++){
+        const x=pts[i*3], y=pts[i*3+1], isIn=pts[i*3+2];
+        const px = cx + x*half;
+        const py = cy - y*half;
+        offCtx.fillStyle = isIn ? good : muted;
+        offCtx.fillRect(px, py, 1.5*dpr, 1.5*dpr);
+      }
+      offDrawn = total;
+    }
+    vizCtx.strokeStyle = border;
+    vizCtx.lineWidth = 1*dpr;
+    vizCtx.strokeRect(cx-half, cy-half, size, size);
+    vizCtx.beginPath();
+    vizCtx.arc(cx, cy, half, 0, Math.PI*2);
+    vizCtx.strokeStyle = accent;
+    vizCtx.lineWidth = 1.5*dpr;
+    vizCtx.stroke();
+    vizCtx.drawImage(offCanvas, 0, 0);
+    vizCtx.fillStyle = cssVar('--ink', '#1c1d1f');
+    vizCtx.font = `${11*dpr}px 'IBM Plex Mono', monospace`;
+    vizCtx.textAlign = 'left';
+    vizCtx.fillText(`n = ${state.total.toLocaleString('ko-KR')}`, 8*dpr, 16*dpr);
+  }
+  else if(current.viz === 'buffon'){
+    const gap = h/4;
+    vizCtx.strokeStyle = border;
+    vizCtx.lineWidth = 1*dpr;
+    for(let i=0;i<=4;i++){
+      const y = i*gap + 0.5;
+      vizCtx.beginPath();
+      vizCtx.moveTo(0, y);
+      vizCtx.lineTo(w, y);
+      vizCtx.stroke();
+    }
+    const nds = state.needles;
+    const needlePx = (h/4) * 0.5;
+    const half = needlePx/2;
+    nds.forEach(n=>{
+      const cx = n.x * w;
+      const lineIdx = Math.floor(n.x * 4);
+      const baseY = lineIdx * gap;
+      const dir = (n.a < Math.PI/4) ? 1 : -1;
+      const cy = baseY + dir * n.c * (gap/2);
+      const dx = Math.cos(n.a) * half;
+      const dy = Math.sin(n.a) * half;
+      vizCtx.strokeStyle = n.hit ? accent : muted;
+      vizCtx.lineWidth = (n.hit ? 1.6 : 1) * dpr;
+      vizCtx.beginPath();
+      vizCtx.moveTo(cx-dx, cy-dy);
+      vizCtx.lineTo(cx+dx, cy+dy);
+      vizCtx.stroke();
+    });
+    vizCtx.fillStyle = cssVar('--ink', '#1c1d1f');
+    vizCtx.font = `${11*dpr}px 'IBM Plex Mono', monospace`;
+    vizCtx.fillText(`drops = ${state.drops.toLocaleString('ko-KR')}, hits = ${state.hits.toLocaleString('ko-KR')}`, 8*dpr, 16*dpr);
+  }
+  else if(current.viz === 'polygon'){
+    const size = Math.min(w,h) * 0.85;
+    const cx = w/2, cy = h/2;
+    const r = size/2;
+    vizCtx.beginPath();
+    vizCtx.arc(cx, cy, r, 0, Math.PI*2);
+    vizCtx.strokeStyle = accent;
+    vizCtx.lineWidth = 1.5*dpr;
+    vizCtx.stroke();
+    const sides = state.sides || 6;
+    vizCtx.beginPath();
+    for(let i=0;i<=sides;i++){
+      const ang = (i/sides)*Math.PI*2 - Math.PI/2;
+      const x = cx + r*Math.cos(ang);
+      const y = cy + r*Math.sin(ang);
+      if(i===0) vizCtx.moveTo(x,y); else vizCtx.lineTo(x,y);
+    }
+    vizCtx.strokeStyle = good;
+    vizCtx.lineWidth = 1.4*dpr;
+    vizCtx.stroke();
+    const rOut = r / Math.cos(Math.PI/sides);
+    vizCtx.beginPath();
+    for(let i=0;i<=sides;i++){
+      const ang = (i/sides)*Math.PI*2 - Math.PI/2 + Math.PI/sides;
+      const x = cx + rOut*Math.cos(ang);
+      const y = cy + rOut*Math.sin(ang);
+      if(i===0) vizCtx.moveTo(x,y); else vizCtx.lineTo(x,y);
+    }
+    vizCtx.strokeStyle = muted;
+    vizCtx.lineWidth = 1.2*dpr;
+    vizCtx.stroke();
+    vizCtx.fillStyle = cssVar('--ink', '#1c1d1f');
+    vizCtx.font = `${11*dpr}px 'IBM Plex Mono', monospace`;
+    vizCtx.fillText(`sides = ${sides}`, 8*dpr, 16*dpr);
+  }
+  else if(current.viz === 'converge'){
+    const maxDigits = 16;
+    const digits = lastFV ? Math.min(lastFV.digits, maxDigits) : 0;
+    const pad = 14*dpr;
+    const barH = Math.min(h*0.32, 36*dpr);
+    const barY = h/2 - barH/2 + 6*dpr;
+    const barW = w - pad*2;
+    vizCtx.strokeStyle = border;
+    vizCtx.lineWidth = 1*dpr;
+    vizCtx.strokeRect(pad, barY, barW, barH);
+    const fillW = barW * (digits/maxDigits);
+    vizCtx.fillStyle = good;
+    vizCtx.fillRect(pad, barY, fillW, barH);
+    vizCtx.strokeStyle = cssVar('--panel', '#ffffff');
+    vizCtx.lineWidth = 1*dpr;
+    for(let d=4; d<maxDigits; d+=4){
+      const x = pad + barW*(d/maxDigits);
+      vizCtx.beginPath();
+      vizCtx.moveTo(x, barY);
+      vizCtx.lineTo(x, barY+barH);
+      vizCtx.stroke();
+    }
+    vizCtx.fillStyle = cssVar('--ink', '#1c1d1f');
+    vizCtx.font = `${13*dpr}px 'IBM Plex Mono', monospace`;
+    vizCtx.textAlign = 'center';
+    vizCtx.fillText(`맞은 자릿수 ${digits} / ${maxDigits}`, w/2, barY - 12*dpr);
+    const errTxt = (lastFV && !isNaN(lastFV.error)) ? lastFV.error.toExponential(2) : '—';
+    vizCtx.font = `${11*dpr}px 'IBM Plex Mono', monospace`;
+    vizCtx.fillStyle = muted;
+    vizCtx.fillText(`|근사값 − π| ≈ ${errTxt}`, w/2, barY+barH+18*dpr);
+    vizCtx.textAlign = 'left';
+  }
+  else if(current.viz === 'oscillate'){
+    const target = state._target !== undefined ? state._target : Math.PI;
+    const hist = state._hist || [];
+    const hh = h;
+    vizCtx.strokeStyle = accent;
+    vizCtx.lineWidth = 1*dpr;
+    vizCtx.setLineDash([4*dpr, 4*dpr]);
+    vizCtx.beginPath();
+    vizCtx.moveTo(0, hh/2);
+    vizCtx.lineTo(w, hh/2);
+    vizCtx.stroke();
+    vizCtx.setLineDash([]);
+    if(hist.length < 2){ return; }
+    let maxDev = 0;
+    for(let i=0;i<hist.length;i++){
+      const d = Math.abs(hist[i] - target);
+      if(d > maxDev) maxDev = d;
+    }
+    if(maxDev < 1e-12) maxDev = 1e-12;
+    const range = maxDev * 1.2;
+    vizCtx.strokeStyle = good;
+    vizCtx.lineWidth = 1.6*dpr;
+    vizCtx.beginPath();
+    for(let i=0;i<hist.length;i++){
+      const x = (i/(hist.length-1))*w;
+      const dev = (hist[i] - target);
+      const y = hh/2 - (dev/range)*(hh/2 - 4*dpr);
+      if(i===0) vizCtx.moveTo(x,y); else vizCtx.lineTo(x,y);
+    }
+    vizCtx.stroke();
+    vizCtx.fillStyle = cssVar('--ink', '#1c1d1f');
+    vizCtx.font = `${11*dpr}px 'IBM Plex Mono', monospace`;
+    vizCtx.fillText(`target = π,  max|dev| = ${maxDev.toExponential(2)}`, 8*dpr, 16*dpr);
+  }
+}
+
+/* ============================================================
+   12. 선택/초기화
+   ============================================================ */
+function selectFormula(id){
+  stopRun();
+  current = formulas.find(f=>f.id===id);
+  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('active', c.dataset.id===id));
+  const meta = catMeta[current.category];
+  panel.style.setProperty('--cat-color', meta.color);
+  panel.style.setProperty('--cat-bg', meta.bg);
+  panel.style.setProperty('--cat-text', meta.text);
+  pName.textContent = current.name;
+  pBadge.textContent = meta.label;
+  pFormula.textContent = current.unicode;
+  pWhy.textContent = current.why || '';
+  if(current.note){
+    pNote.style.display='block';
+    pNote.textContent = current.note;
+  } else {
+    pNote.style.display='none';
+  }
+  if(current.viz){
+    vizWrap.classList.remove('hidden');
+    resizeViz();
+  } else {
+    vizWrap.classList.add('hidden');
+  }
+  resetRun();
+  panel.classList.add('show');
+  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function resetRun(){
+  state = current.init();
+  iterCount=0;
+  errHist=[];
+  lastFV={digits:0, error:NaN};
+  offDirty=true;
+  offDrawn=0;
+  if(offCtx) offCtx.clearRect(0,0,offCanvas.width,offCanvas.height);
+  pValue.innerHTML='3';
+  pIter.textContent='0';
+  pTime.textContent='0.00초';
+  pError.textContent='—';
+  pDigits.textContent='0자리';
+  pTimebar.style.width='0%';
+  pStatus.textContent='대기 중… "5초 실행"을 눌러보세요.';
+  pStatus.classList.remove('done');
+  pRun.textContent='5초 실행';
+  pRun.disabled=false;
+  if(current.viz){
+    resizeViz();
+    drawViz();
+  }
+  resizeSpark();
+  drawSpark();
+  /* 살아있는 수식 초기 렌더 */
+  renderLiveFormula();
+}
+
+function stopRun(){
+  running=false;
+  if(rafId) cancelAnimationFrame(rafId);
+}
+
+function startRun(){
+  if(!current) return;
+  resetRun();
+  running=true;
+  startTime=performance.now();
+  pStatus.textContent='진행 중…';
+  pRun.disabled=true;
+  rafId = requestAnimationFrame(frame);
+}
+
+/* ============================================================
+   13. 메인 루프
+   ============================================================ */
+function frame(now){
+  if(!running) return;
+  const elapsed = now-startTime;
+  let done=false, doneReason=null;
+
+  if(elapsed>=5000){
+    done=true;
+  } else {
+    const batch = current.batch;
+    for(let i=0;i<batch;i++){
+      const res = current.step(state);
+      iterCount++;
+      const fv = formatValue(res.value);
+      lastFV = fv;
+      pValue.innerHTML = fv.html;
+      if(!isNaN(fv.error)){
+        const last = errHist[errHist.length-1];
+        if(!last || now-last.t > 8){
+          errHist.push({t:now-startTime, err:fv.error});
+        }
+      }
+      pError.textContent = isNaN(fv.error) ? '—' : fv.error.toExponential(2);
+      pDigits.textContent = fv.digits + '자리';
+      if(res.partial !== undefined) state._partial = res.partial;
+      if(res.target !== undefined) state._target = res.target;
+      if(res.done){ done=true; doneReason=res.reason||null; break; }
+    }
+  }
+  pIter.textContent = iterCount.toLocaleString('ko-KR');
+  const secs = Math.min(elapsed,5000)/1000;
+  pTime.textContent = secs.toFixed(2)+'초';
+  pTimebar.style.width = Math.min(100,(elapsed/5000)*100)+'%';
+  drawSpark();
+  drawViz();
+
+  /* ★ 살아있는 수식: 80ms 간격으로만 재렌더 (KaTeX 비용 절감) */
+  if(now - flLastRender > 80){
+    flLastRender = now;
+    renderLiveFormula();
+  }
+
+  if(done){
+    running=false;
+    pStatus.classList.add('done');
+    if(doneReason==='precision' && elapsed<4900){
+      pStatus.textContent = secs.toFixed(2)+'초, '+iterCount.toLocaleString('ko-KR')+'번 만에 배정밀도 한계(약 15자리)에 도달해 종료했습니다.';
+    } else if(elapsed<4900){
+      pStatus.textContent = secs.toFixed(2)+'초, '+iterCount.toLocaleString('ko-KR')+'번 만에 이 정밀도(64비트)의 한계에 도달했습니다.';
+    } else {
+      pStatus.textContent = '5초 동안 '+iterCount.toLocaleString('ko-KR')+'번 반복했습니다.';
+    }
+    pRun.disabled=false;
+    pRun.textContent='다시 실행';
+    /* 최종 수식 한 번 더 */
+    renderLiveFormula();
+    return;
+  }
+  rafId = requestAnimationFrame(frame);
+}
+
+/* ============================================================
+   14. 이벤트
+   ============================================================ */
+pRun.addEventListener('click', startRun);
+pReset.addEventListener('click', ()=>{ stopRun(); resetRun(); });
+
+let resizeTimer=null;
+window.addEventListener('resize', ()=>{
+  if(resizeTimer) clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(()=>{
+    if(!current) return;
+    resizeSpark();
+    drawSpark();
+    if(current.viz){
+      resizeViz();
+      offDirty=true;
+      offDrawn=0;
+      if(offCtx) offCtx.clearRect(0,0,offCanvas.width,offCanvas.height);
+      drawViz();
+    }
+  }, 120);
+});
+
+/* ============================================================
+   15. 시작
+   ============================================================ */
+if(reduceMotion){
+  vizWrap.classList.add('hidden');
+}
+katexReady(()=>{
+  selectFormula(orderedFormulas[0].id);
+});
+})();
+</script>
+</body>
+</html>
