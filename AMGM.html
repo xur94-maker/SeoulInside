@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Circle of Balance — AM · GM · HM · QM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #11141c;
+    --bg-deep: #0b0d13;
+    --line-faint: #33394a;
+    --line-dim: #4a5266;
+    --ivory: #ece6d6;
+    --muted: #8b93a8;
+    --am: #e2b04f;
+    --gm: #5fc7b3;
+    --hm: #e08a71;
+    --qm: #93a4e8;
+    --gold-glow: #f6da86;
+  }
+  *{ box-sizing: border-box; }
+  html,body{
+    margin:0; padding:0; min-height:100%;
+    background: radial-gradient(120% 90% at 50% -10%, #1a2030 0%, var(--bg) 45%, var(--bg-deep) 100%);
+    color: var(--ivory);
+    font-family: 'Inter', 'Noto Serif KR', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .stage{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 24px 72px;
+    perspective: 1400px;
+  }
+  header{
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(28px, 5vw, 44px);
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    color: var(--ivory);
+  }
+  .sub{
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .sub b{ color: var(--ivory); font-weight: 500; }
+
+  /* ---------- 탭 전환 ---------- */
+  nav.tabs{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 32px auto 0;
+    max-width: 720px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 0;
+  }
+  nav.tabs button{
+    flex: 0 0 auto;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 18px 12px;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+  nav.tabs button::after{
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: -1px;
+    height: 2px;
+    background: transparent;
+    transition: background 0.25s ease;
+  }
+  nav.tabs button:hover{ color: var(--ivory); }
+  nav.tabs button.active{ color: var(--gold-glow); }
+  nav.tabs button.active::after{ background: var(--gold-glow); }
+  nav.tabs button .num{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    opacity: 0.55;
+    margin-right: 6px;
+    font-size: 12px;
+  }
+
+  /* ---------- 탭 패널 ---------- */
+  section.panel{ display: none; }
+  section.panel.active{ display: block; }
+
+  .diagram-card{
+    margin-top: 28px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.02) inset;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+    overflow: hidden;
+  }
+  svg{ display:block; width: 100%; height: auto; touch-action: none; }
+
+  .handle{ cursor: grab; }
+  .handle:active{ cursor: grabbing; }
+
+  .seg{ stroke-linecap: round; fill:none; }
+  .seg-am{ stroke: var(--am); }
+  .seg-gm{ stroke: var(--gm); }
+  .seg-hm{ stroke: var(--hm); }
+  .seg-qm{ stroke: var(--qm); }
+  .construction{ stroke: var(--line-faint); stroke-dasharray: 2 5; fill:none; }
+  .diameter{ stroke: var(--line-dim); fill:none; }
+  .arc{ stroke: var(--line-dim); fill:none; }
+  .tick{ stroke: var(--line-dim); }
+
+  .lbl{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .lbl-am{ fill: var(--am); }
+  .lbl-gm{ fill: var(--gm); }
+  .lbl-hm{ fill: var(--hm); }
+  .lbl-qm{ fill: var(--qm); }
+  .lbl-ab{ fill: var(--muted); font-family:'Inter',sans-serif; font-style: normal; font-size: 13px; }
+
+  .glow{
+    filter: drop-shadow(0 0 8px var(--gold-glow));
+  }
+
+  /* ---------- 프리셋 칩 ---------- */
+  .presets{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .presets .label{
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 6px;
+  }
+  .presets button{
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.09);
+    color: var(--ivory);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    font-variant-numeric: tabular-nums;
+  }
+  .presets button:hover{
+    border-color: var(--gold-glow);
+    color: var(--gold-glow);
+  }
+  .presets button.active{
+    background: rgba(246,218,134,0.10);
+    border-color: var(--gold-glow);
+    color: var(--gold-glow);
+  }
+
+  .readout{
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 22px;
+  }
+  .stat{
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .dot{
+    width: 8px; height: 8px; border-radius: 50%;
+    display: inline-block;
+    transform: translateY(-1px);
+  }
+  .stat b{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ivory);
+    font-size: 15px;
+  }
+  .stat .num{
+    font-variant-numeric: tabular-nums;
+    color: var(--ivory);
+    font-weight: 500;
+  }
+
+  .chain{
+    text-align:center;
+    margin-top: 30px;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    color: var(--muted);
+    transition: color 0.4s ease;
+  }
+  .chain span{ padding: 0 4px; }
+  .chain .qm{ color: var(--qm); }
+  .chain .am{ color: var(--am); }
+  .chain .gm{ color: var(--gm); }
+  .chain .hm{ color: var(--hm); }
+
+  .eq-banner{
+    text-align:center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--gold-glow);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    letter-spacing: 0.02em;
+  }
+  .eq-banner.show{ opacity: 1; transform: translateY(0); }
+
+  footer{
+    text-align:center;
+    margin-top: 44px;
+    font-size: 12.5px;
+    color: #5c6480;
+    line-height: 1.7;
+  }
+
+  /* ---------- 공통 카드 (탭 2·3·4) ---------- */
+  .invest-intro{
+    margin-top: 28px;
+    padding: 0 4px;
+  }
+  .invest-intro h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--ivory);
+    margin: 0 0 10px;
+    text-align: center;
+  }
+  .invest-intro p{
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .invest-intro p b{ color: var(--ivory); font-weight: 500; }
+
+  .invest-card{
+    margin-top: 22px;
+    padding: 24px 22px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,0.5);
+  }
+
+  .invest-btn{
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: var(--ivory);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .invest-btn:hover{
+    border-color: var(--gold-glow);
+    color: var(--gold-glow);
+  }
+  .invest-btn.primary{
+    background: rgba(246,218,134,0.10);
+    border-color: rgba(246,218,134,0.4);
+    color: var(--gold-glow);
+  }
+
+  .invest-stats{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  @media (max-width: 520px){
+    .invest-stats{ grid-template-columns: 1fr; }
+  }
+  .invest-stat{
+    text-align: center;
+    padding: 12px 8px;
+  }
+  .invest-stat .k{
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .invest-stat .v{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+  .invest-stat.am .v{ color: var(--am); }
+  .invest-stat.gm .v{ color: var(--gm); }
+  .invest-stat.gap .v{ color: var(--gold-glow); }
+  .invest-stat .hint{
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .invest-chart-wrap{
+    background: var(--bg-deep);
+    border-radius: 14px;
+    padding: 14px 8px 8px;
+    overflow: hidden;
+  }
+  .invest-chart-wrap svg{ display: block; width: 100%; height: auto; }
+
+  .invest-legend{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .invest-legend .item{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .invest-legend .swatch{
+    width: 14px;
+    height: 3px;
+    border-radius: 2px;
+  }
+  .invest-legend .swatch.dashed{
+    background-image: linear-gradient(90deg, currentColor 60%, transparent 60%);
+    background-size: 7px 100%;
+  }
+
+  .invest-warning{
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: rgba(246,218,134,0.06);
+    border: 1px solid rgba(246,218,134,0.20);
+    color: var(--gold-glow);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .invest-warning b{ color: var(--ivory); }
+
+  .invest-note{
+    margin-top: 14px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--muted);
+    text-align: center;
+    font-style: italic;
+  }
+  .invest-note .approx{
+    color: var(--gold-glow);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- 투자수익 탭 전용 ---------- */
+  .invest-rows{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .invest-row{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .invest-row .yr{
+    width: 56px;
+    color: var(--muted);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  .invest-row input[type=number]{
+    flex: 1;
+    background: var(--bg-deep);
+    border: 1px solid rgba(255,255,255,0.09);
+    color: var(--ivory);
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.2s ease;
+  }
+  .invest-row input[type=number]:focus{
+    outline: none;
+    border-color: var(--gold-glow);
+  }
+  .invest-row .pct{
+    color: var(--muted);
+    font-size: 13px;
+    width: 14px;
+    text-align: center;
+  }
+  .invest-row .rm{
+    background: none;
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 6px 10px;
+    transition: all 0.2s ease;
+  }
+  .invest-row .rm:hover{
+    color: var(--hm);
+    border-color: var(--hm);
+  }
+  .invest-btn-row{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  /* ---------- 표면적 상자 탭 전용 ---------- */
+  .box-slider-wrap{
+    margin-bottom: 22px;
+  }
+  .box-slider-label{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .box-slider-label em{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ivory);
+    font-size: 16px;
+  }
+  .box-slider-label .val{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--gold-glow);
+    font-size: 20px;
+    font-variant-numeric: tabular-nums;
+  }
+  #sliderX{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    outline: none;
+  }
+  #sliderX::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ivory);
+    border: 2px solid var(--gold-glow);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  #sliderX::-webkit-slider-thumb:active{ transform: scale(1.15); }
+  #sliderX::-moz-range-thumb{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ivory);
+    border: 2px solid var(--gold-glow);
+    cursor: pointer;
+  }
+  #sliderX:focus-visible{
+    outline: 2px solid var(--gold-glow);
+    outline-offset: 4px;
+  }
+
+  .box-stats{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  @media (max-width: 600px){
+    .box-stats{ grid-template-columns: repeat(2, 1fr); }
+  }
+  .box-stat{
+    text-align: center;
+    padding: 10px 6px;
+  }
+  .box-stat .k{
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .box-stat .v{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+    color: var(--ivory);
+  }
+
+  .box-shape-wrap{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  .box-shape-wrap svg{
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+  }
+  .box-shape-caption{
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 4px 0 0;
+    font-style: italic;
+  }
+
+  /* ---------- 가우스 AGM 탭 전용 ---------- */
+  .agm-inputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  @media (max-width: 520px){
+    .agm-inputs{ grid-template-columns: 1fr; }
+  }
+  .agm-field label{
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .agm-field input[type=number]{
+    width: 100%;
+    background: var(--bg-deep);
+    border: 1px solid rgba(255,255,255,0.09);
+    color: var(--ivory);
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.2s ease;
+  }
+  .agm-field input[type=number]:focus{
+    outline: none;
+    border-color: var(--gold-glow);
+  }
+
+  .agm-table-wrap{
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: var(--bg-deep);
+  }
+  .agm-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  .agm-table th,
+  .agm-table td{
+    padding: 9px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .agm-table th{
+    position: sticky;
+    top: 0;
+    background: var(--bg-deep);
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .agm-table tbody tr:last-child td{ border-bottom: none; }
+  .agm-table td:nth-child(1){ color: var(--muted); width: 40px; }
+  .agm-table td:nth-child(2){ color: var(--qm); }
+  .agm-table td:nth-child(3){ color: var(--hm); }
+  .agm-table td:nth-child(4){ color: var(--gold-glow); }
+  .agm-table tbody tr:last-child{
+    background: rgba(246,218,134,0.06);
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <header>
+    <h1>Circle of Balance</h1>
+    <p class="sub">With a single classical semicircle construction, see all four means of two numbers <b>a</b> and <b>b</b> at once. Drag the center point C left and right.</p>
+  </header>
+
+  <!-- 탭 전환 -->
+  <nav class="tabs" role="tablist" aria-label="Switch topic">
+    <button class="active" data-tab="circle" role="tab" aria-selected="true">
+      <span class="num">01</span>Circle of Balance
+    </button>
+    <button data-tab="invest" role="tab" aria-selected="false">
+      <span class="num">02</span>Investment Returns
+    </button>
+    <button data-tab="box" role="tab" aria-selected="false">
+      <span class="num">03</span>Surface-Area Box
+    </button>
+    <button data-tab="agm" role="tab" aria-selected="false">
+      <span class="num">04</span>Gauss AGM
+    </button>
+  </nav>
+
+  <!-- ===================== TAB 1: 균형의 원 ===================== -->
+  <section class="panel active" id="tab-circle">
+
+    <div class="diagram-card" id="card">
+      <svg id="svg" viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg">
+        <path id="arc" class="arc" stroke-width="1.4"></path>
+        <line id="diameter" class="diameter" stroke-width="1.4"></line>
+
+        <line id="lineOE" class="construction" stroke-width="1.2"></line>
+
+        <line id="segQM" class="seg seg-qm" stroke-width="2.4"></line>
+        <line id="segAM" class="seg seg-am" stroke-width="3"></line>
+        <line id="segGM" class="seg seg-gm" stroke-width="2.6"></line>
+        <line id="segHM" class="seg seg-hm" stroke-width="4"></line>
+
+        <line id="tickA" class="tick" stroke-width="1"></line>
+        <line id="tickC" class="tick" stroke-width="1"></line>
+        <line id="tickB" class="tick" stroke-width="1"></line>
+        <text id="labelA" class="lbl-ab" text-anchor="middle">a</text>
+        <text id="labelB" class="lbl-ab" text-anchor="middle">b</text>
+
+        <circle id="ptO" r="2.6" fill="#5c6480"></circle>
+        <circle id="ptD" r="4.5" fill="var(--am)"></circle>
+        <circle id="ptE" r="4.5" fill="var(--gm)"></circle>
+        <circle id="ptF" r="3.6" fill="var(--hm)"></circle>
+
+        <text id="lblAM" class="lbl lbl-am">AM</text>
+        <text id="lblGM" class="lbl lbl-gm">GM</text>
+        <text id="lblHM" class="lbl lbl-hm">HM</text>
+        <text id="lblQM" class="lbl lbl-qm">QM</text>
+
+        <circle id="ptC" class="handle" r="9" fill="#ece6d6"></circle>
+      </svg>
+    </div>
+
+    <!-- 프리셋 칩 -->
+    <div class="presets" id="presets">
+      <span class="label">Quick ratios</span>
+      <button data-a="5" data-b="5">1 : 1</button>
+      <button data-a="4" data-b="4">Equal</button>
+      <button data-a="4" data-b="9">4 : 9</button>
+      <button data-a="1" data-b="4">1 : 4</button>
+      <button data-a="1" data-b="16">1 : 16</button>
+      <button data-a="1" data-b="100">1 : 100</button>
+    </div>
+
+    <div class="chain" id="chain">
+      <span class="qm">QM</span>≥<span class="am">AM</span>≥<span class="gm">GM</span>≥<span class="hm">HM</span>
+    </div>
+    <div class="eq-banner" id="eqBanner">a = b — all four segments collapse into a single radius</div>
+
+    <div class="readout">
+      <div class="stat"><span class="dot" style="background:var(--muted)"></span><b>a</b><span class="num" id="valA">5.00</span></div>
+      <div class="stat"><span class="dot" style="background:var(--muted)"></span><b>b</b><span class="num" id="valB">5.00</span></div>
+      <div class="stat"><span class="dot" style="background:var(--qm)"></span><b>QM</b><span class="num" id="valQM">5.00</span></div>
+      <div class="stat"><span class="dot" style="background:var(--am)"></span><b>AM</b><span class="num" id="valAM">5.00</span></div>
+      <div class="stat"><span class="dot" style="background:var(--gm)"></span><b>GM</b><span class="num" id="valGM">5.00</span></div>
+      <div class="stat"><span class="dot" style="background:var(--hm)"></span><b>HM</b><span class="num" id="valHM">5.00</span></div>
+    </div>
+
+    <footer>
+      OD = AM · CE = GM · EF = HM · CD = QM — a classical compass-and-straightedge construction.<br>
+      The farther C moves from the center, the more the four segment lengths diverge; the moment it reaches the center, they all become equal.
+    </footer>
+  </section>
+
+  <!-- ===================== TAB 2: 투자수익 ===================== -->
+  <section class="panel" id="tab-invest">
+    <div class="invest-intro">
+      <h2>Why the Arithmetic Mean Isn’t Your Real Return</h2>
+      <p>Enter yearly returns. The gap between the <b>arithmetic mean (AM)</b> and the <b>geometric mean (GM, CAGR)</b> — the so-called <b>volatility drag</b> — is the financial face of the AM ≥ GM inequality.</p>
+    </div>
+
+    <div class="invest-card">
+      <div class="invest-rows" id="investRows"></div>
+      <div class="invest-btn-row">
+        <button class="invest-btn" id="addYear">+ Add year</button>
+        <button class="invest-btn" id="resetInvest">Defaults (40, −30, 20)</button>
+      </div>
+
+      <div class="invest-stats">
+        <div class="invest-stat am">
+          <div class="k">Arithmetic Mean (AM)</div>
+          <div class="v" id="investAM">–</div>
+          <span class="hint">Sum divided by count</span>
+        </div>
+        <div class="invest-stat gm">
+          <div class="k">Geometric Mean (GM) = CAGR</div>
+          <div class="v" id="investGM">–</div>
+          <span class="hint">The return you actually get</span>
+        </div>
+        <div class="invest-stat gap">
+          <div class="k">Volatility Drag</div>
+          <div class="v" id="investGap">–</div>
+          <span class="hint">AM − GM</span>
+        </div>
+      </div>
+
+      <div class="invest-chart-wrap">
+        <svg id="investChart" viewBox="0 0 620 260" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+
+      <div class="invest-legend">
+        <span class="item">
+          <span class="swatch" style="background:var(--gm)"></span>Actual assets (start at 10,000)
+        </span>
+        <span class="item" style="color:var(--am)">
+          <span class="swatch dashed" style="color:var(--am)"></span>AM scenario (AM% every year)
+        </span>
+        <span class="item" style="color:var(--gm)">
+          <span class="swatch dashed" style="color:var(--gm)"></span>GM scenario (CAGR% every year)
+        </span>
+      </div>
+
+      <div class="invest-warning" id="investWarning" style="display:none;"></div>
+
+      <div class="invest-note" id="investNote"></div>
+    </div>
+  </section>
+
+  <!-- ===================== TAB 3: 표면적 상자 ===================== -->
+  <section class="panel" id="tab-box">
+    <div class="invest-intro">
+      <h2>Equal Perimeter Maximizes a Square; Equal Surface Area Maximizes a Cube</h2>
+      <p>Surface area is fixed at <b>600</b>. Set width = length = <b>x</b> and move the slider; the height <b>c</b> is calculated automatically. The volume is always maximized at the <b>cube point (x = c = 10)</b>.</p>
+    </div>
+
+    <div class="invest-card">
+      <div class="box-slider-wrap">
+        <label for="sliderX" class="box-slider-label">
+          <span>width = length <em>x</em></span>
+          <span class="val" id="valX">6.00</span>
+        </label>
+        <input type="range" id="sliderX" min="1" max="16.5" step="0.05" value="6">
+      </div>
+
+      <div class="box-stats">
+        <div class="box-stat">
+          <div class="k">width = length</div>
+          <div class="v" id="boxX">6.00</div>
+        </div>
+        <div class="box-stat">
+          <div class="k">Height (auto)</div>
+          <div class="v" id="boxC">—</div>
+        </div>
+        <div class="box-stat">
+          <div class="k">Volume V</div>
+          <div class="v" id="boxV" style="color:var(--gold-glow);">—</div>
+        </div>
+        <div class="box-stat">
+          <div class="k">Max volume (cube)</div>
+          <div class="v" style="color:var(--muted);">1000.0</div>
+        </div>
+      </div>
+
+      <div class="invest-chart-wrap">
+        <svg id="boxChart" viewBox="0 0 620 240" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+
+      <div class="invest-legend">
+        <span class="item" style="color:var(--gold-glow)">
+          <span class="swatch" style="background:var(--gold-glow)"></span>Volume curve V(x)
+        </span>
+        <span class="item" style="color:var(--hm)">
+          <span class="swatch" style="background:var(--hm)"></span>Current position
+        </span>
+        <span class="item" style="color:var(--gm)">
+          <span class="swatch dashed" style="color:var(--gm)"></span>Cube point (x = 10)
+        </span>
+      </div>
+
+      <div class="invest-warning" id="boxWarning" style="display:none;">
+        <b>⚠️ In this range, the height is zero or negative.</b> This ratio isn’t achievable with a surface area of 600.
+      </div>
+
+      <div class="invest-note" id="boxNote"></div>
+    </div>
+
+    <div class="invest-card" style="margin-top:18px;">
+      <div class="box-shape-wrap">
+        <svg id="boxShape" viewBox="0 0 320 240" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <p class="box-shape-caption" id="boxShapeCaption">Current box shape — same surface area, different ratio</p>
+    </div>
+  </section>
+
+  <!-- ===================== TAB 4: 가우스 AGM ===================== -->
+  <section class="panel" id="tab-agm">
+    <div class="invest-intro">
+      <h2>Alternating AM and GM Converges to a Single Value</h2>
+      <p>This is an iterative method discovered by Gauss. Starting from two numbers <b>a₀</b> and <b>b₀</b>, alternately computing the arithmetic and geometric means makes the two sequences converge toward each other rapidly. This convergence is called <b>quadratic convergence</b> and is used to compute π.</p>
+    </div>
+
+    <div class="invest-card">
+      <div class="agm-inputs">
+        <div class="agm-field">
+          <label for="agmA0">Starting value a₀</label>
+          <input type="number" id="agmA0" value="1.41421356" step="0.01" min="0.001">
+        </div>
+        <div class="agm-field">
+          <label for="agmB0">Starting value b₀</label>
+          <input type="number" id="agmB0" value="1" step="0.01" min="0.001">
+        </div>
+      </div>
+
+      <div class="invest-btn-row">
+        <button class="invest-btn primary" id="agmStepBtn">Next step →</button>
+        <button class="invest-btn" id="agmResetBtn">Reset</button>
+        <button class="invest-btn" id="agmAutoBtn">Auto play</button>
+      </div>
+
+      <div class="invest-chart-wrap">
+        <svg id="agmChart" viewBox="0 0 620 240" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+
+      <div class="invest-legend">
+        <span class="item" style="color:var(--qm)">
+          <span class="swatch" style="background:var(--qm)"></span>aₙ (arithmetic mean)
+        </span>
+        <span class="item" style="color:var(--hm)">
+          <span class="swatch" style="background:var(--hm)"></span>bₙ (geometric mean)
+        </span>
+        <span class="item" style="color:var(--gold-glow)">
+          <span class="swatch dashed" style="color:var(--gold-glow)"></span>Converged value agm(a₀, b₀)
+        </span>
+      </div>
+
+      <div class="agm-table-wrap">
+        <table class="agm-table" id="agmTable">
+          <thead>
+            <tr>
+              <th>n</th>
+              <th>aₙ</th>
+              <th>bₙ</th>
+              <th>aₙ − bₙ</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="invest-note" id="agmResult"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  /* =========================================================
+     공통: SVG 헬퍼
+     ========================================================= */
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, attrs, parent){
+    const e = document.createElementNS(SVGNS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function svgClear(node){
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  /* =========================================================
+     TAB 1: 균형의 원
+     ========================================================= */
+  const svg = document.getElementById('svg');
+  const CX0 = 320, CY0 = 210, R = 150;
+
+  const els = {
+    arc: document.getElementById('arc'),
+    diameter: document.getElementById('diameter'),
+    lineOE: document.getElementById('lineOE'),
+    segQM: document.getElementById('segQM'),
+    segAM: document.getElementById('segAM'),
+    segGM: document.getElementById('segGM'),
+    segHM: document.getElementById('segHM'),
+    tickA: document.getElementById('tickA'),
+    tickC: document.getElementById('tickC'),
+    tickB: document.getElementById('tickB'),
+    labelA: document.getElementById('labelA'),
+    labelB: document.getElementById('labelB'),
+    ptO: document.getElementById('ptO'),
+    ptD: document.getElementById('ptD'),
+    ptE: document.getElementById('ptE'),
+    ptF: document.getElementById('ptF'),
+    ptC: document.getElementById('ptC'),
+    lblAM: document.getElementById('lblAM'),
+    lblGM: document.getElementById('lblGM'),
+    lblHM: document.getElementById('lblHM'),
+    lblQM: document.getElementById('lblQM'),
+    valA: document.getElementById('valA'),
+    valB: document.getElementById('valB'),
+    valQM: document.getElementById('valQM'),
+    valAM: document.getElementById('valAM'),
+    valGM: document.getElementById('valGM'),
+    valHM: document.getElementById('valHM'),
+    eqBanner: document.getElementById('eqBanner'),
+    chain: document.getElementById('chain'),
+    presets: document.getElementById('presets'),
+  };
+
+  (function drawArc(){
+    const N = 64;
+    let d = '';
+    for(let i=0;i<=N;i++){
+      const theta = Math.PI * (i/N);
+      const x = CX0 + R*Math.cos(theta);
+      const y = CY0 - R*Math.sin(theta);
+      d += (i===0? 'M':'L') + x.toFixed(2) + ',' + y.toFixed(2) + ' ';
+    }
+    els.arc.setAttribute('d', d);
+  })();
+
+  els.diameter.setAttribute('x1', CX0-R); els.diameter.setAttribute('y1', CY0);
+  els.diameter.setAttribute('x2', CX0+R); els.diameter.setAttribute('y2', CY0);
+  els.ptO.setAttribute('cx', CX0); els.ptO.setAttribute('cy', CY0);
+
+  const UNIT = R / 5;
+  let cx = 0;
+
+  function renderCircle(){
+    const a = (R + cx) / UNIT;
+    const b = (R - cx) / UNIT;
+    const r = R;
+
+    const gmPx = Math.sqrt(Math.max(0,(R+cx)*(R-cx)));
+    const D = { x: CX0, y: CY0 - r };
+    const E = { x: CX0 + cx, y: CY0 - gmPx };
+    const t = (r*r === 0) ? 0 : (cx*cx) / (r*r);
+    const F = { x: CX0 + t*cx, y: CY0 - t*gmPx };
+    const C = { x: CX0 + cx, y: CY0 };
+
+    els.segAM.setAttribute('x1', CX0); els.segAM.setAttribute('y1', CY0);
+    els.segAM.setAttribute('x2', D.x); els.segAM.setAttribute('y2', D.y);
+
+    els.segGM.setAttribute('x1', C.x); els.segGM.setAttribute('y1', C.y);
+    els.segGM.setAttribute('x2', E.x); els.segGM.setAttribute('y2', E.y);
+
+    els.segHM.setAttribute('x1', E.x); els.segHM.setAttribute('y1', E.y);
+    els.segHM.setAttribute('x2', F.x); els.segHM.setAttribute('y2', F.y);
+
+    els.segQM.setAttribute('x1', C.x); els.segQM.setAttribute('y1', C.y);
+    els.segQM.setAttribute('x2', D.x); els.segQM.setAttribute('y2', D.y);
+
+    els.lineOE.setAttribute('x1', CX0); els.lineOE.setAttribute('y1', CY0);
+    els.lineOE.setAttribute('x2', E.x); els.lineOE.setAttribute('y2', E.y);
+
+    els.ptD.setAttribute('cx', D.x); els.ptD.setAttribute('cy', D.y);
+    els.ptE.setAttribute('cx', E.x); els.ptE.setAttribute('cy', E.y);
+    els.ptF.setAttribute('cx', F.x); els.ptF.setAttribute('cy', F.y);
+    els.ptC.setAttribute('cx', C.x); els.ptC.setAttribute('cy', C.y);
+
+    els.tickA.setAttribute('x1', CX0-R); els.tickA.setAttribute('y1', CY0-6);
+    els.tickA.setAttribute('x2', CX0-R); els.tickA.setAttribute('y2', CY0+6);
+    els.tickC.setAttribute('x1', C.x); els.tickC.setAttribute('y1', CY0-6);
+    els.tickC.setAttribute('x2', C.x); els.tickC.setAttribute('y2', CY0+6);
+    els.tickB.setAttribute('x1', CX0+R); els.tickB.setAttribute('y1', CY0-6);
+    els.tickB.setAttribute('x2', CX0+R); els.tickB.setAttribute('y2', CY0+6);
+    els.labelA.setAttribute('x', (CX0-R + C.x)/2); els.labelA.setAttribute('y', CY0+22);
+    els.labelB.setAttribute('x', (CX0+R + C.x)/2); els.labelB.setAttribute('y', CY0+22);
+
+    els.lblAM.setAttribute('x', D.x + 12); els.lblAM.setAttribute('y', (CY0+D.y)/2);
+    els.lblGM.setAttribute('x', E.x + (cx<=0?10:-34)); els.lblGM.setAttribute('y', E.y - 8);
+    els.lblHM.setAttribute('x', F.x + 10); els.lblHM.setAttribute('y', F.y + 16);
+    els.lblQM.setAttribute('x', (C.x+D.x)/2 + (cx<=0? -34:10)); els.lblQM.setAttribute('y', (C.y+D.y)/2 - 6);
+
+    els.valA.textContent = a.toFixed(2);
+    els.valB.textContent = b.toFixed(2);
+    els.valAM.textContent = (r/UNIT).toFixed(2);
+    els.valGM.textContent = (gmPx/UNIT).toFixed(2);
+    els.valHM.textContent = (Math.hypot(E.x-F.x, E.y-F.y)/UNIT).toFixed(2);
+    els.valQM.textContent = (Math.hypot(C.x-D.x, C.y-D.y)/UNIT).toFixed(2);
+
+    const near = Math.abs(cx) < 3;
+    [els.segAM, els.segGM, els.segHM, els.segQM, els.ptD, els.ptE, els.ptF].forEach(el=>{
+      el.classList.toggle('glow', near);
+    });
+    els.eqBanner.classList.toggle('show', near);
+    els.chain.style.color = near ? 'var(--gold-glow)' : '';
+
+    const aVal = parseFloat(a.toFixed(2));
+    const bVal = parseFloat(b.toFixed(2));
+    els.presets.querySelectorAll('button').forEach(btn=>{
+      const pa = parseFloat(btn.dataset.a);
+      const pb = parseFloat(btn.dataset.b);
+      const match = Math.abs(aVal - pa) < 0.05 && Math.abs(bVal - pb) < 0.05;
+      btn.classList.toggle('active', match);
+    });
+  }
+
+  renderCircle();
+
+  let dragging = false;
+  function clientToLocalX(clientX){
+    const rect = svg.getBoundingClientRect();
+    const scaleX = 640 / rect.width;
+    return (clientX - rect.left) * scaleX;
+  }
+  function setFromPointer(clientX){
+    const localX = clientToLocalX(clientX);
+    let newCx = localX - CX0;
+    const margin = 6;
+    newCx = Math.max(-R+margin, Math.min(R-margin, newCx));
+    if (Math.abs(newCx) < 4) newCx = 0;
+    cx = newCx;
+    renderCircle();
+  }
+  els.ptC.addEventListener('pointerdown', (e)=>{
+    dragging = true;
+    els.ptC.setPointerCapture(e.pointerId);
+  });
+  els.ptC.addEventListener('pointermove', (e)=>{
+    if(!dragging) return;
+    setFromPointer(e.clientX);
+  });
+  els.ptC.addEventListener('pointerup', ()=>{ dragging = false; });
+  els.ptC.addEventListener('pointercancel', ()=>{ dragging = false; });
+
+  svg.addEventListener('pointerdown', (e)=>{
+    if (e.target === els.ptC) return;
+    dragging = true;
+    setFromPointer(e.clientX);
+  });
+  svg.addEventListener('pointermove', (e)=>{ if(dragging) setFromPointer(e.clientX); });
+  window.addEventListener('pointerup', ()=>{ dragging = false; });
+
+  els.presets.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    const a = parseFloat(btn.dataset.a);
+    const b = parseFloat(btn.dataset.b);
+    const sum = a + b;
+    const aNorm = a * 10 / sum;
+    cx = aNorm * UNIT - R;
+    renderCircle();
+  });
+
+  /* =========================================================
+     탭 전환
+     ========================================================= */
+  const tabButtons = document.querySelectorAll('nav.tabs button');
+  const card = document.getElementById('card');
+  const stage = document.getElementById('stage');
+
+  tabButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabButtons.forEach(b=>{
+        b.classList.remove('active');
+        b.setAttribute('aria-selected','false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      document.querySelectorAll('section.panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+  });
+
+  stage.addEventListener('pointermove', (e)=>{
+    if (dragging) return;
+    const activeTab = document.querySelector('nav.tabs button.active').dataset.tab;
+    if (activeTab !== 'circle') return;
+    const rect = card.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    const rx = (0.5 - py) * 6;
+    const ry = (px - 0.5) * 8;
+    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  stage.addEventListener('pointerleave', ()=>{
+    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+  });
+
+  /* =========================================================
+     TAB 2: 투자수익
+     ========================================================= */
+  const investEls = {
+    rows: document.getElementById('investRows'),
+    addYear: document.getElementById('addYear'),
+    resetInvest: document.getElementById('resetInvest'),
+    am: document.getElementById('investAM'),
+    gm: document.getElementById('investGM'),
+    gap: document.getElementById('investGap'),
+    chart: document.getElementById('investChart'),
+    warning: document.getElementById('investWarning'),
+    note: document.getElementById('investNote'),
+  };
+
+  let returns = [40, -30, 20];
+
+  function computeInvest(rs){
+    const n = rs.length;
+    if (n === 0) return null;
+    const am = rs.reduce((a, b) => a + b, 0) / n;
+    let prod = 1;
+    let valid = true;
+    for (const r of rs){
+      const f = 1 + r / 100;
+      if (f <= 0) { valid = false; break; }
+      prod *= f;
+    }
+    const gm = valid ? (Math.pow(prod, 1/n) - 1) * 100 : NaN;
+    const drag = valid ? (am - gm) : NaN;
+    let logVar = NaN;
+    if (valid){
+      const logs = rs.map(r => Math.log(1 + r/100));
+      const meanLog = logs.reduce((a,b)=>a+b, 0) / n;
+      logVar = logs.reduce((a,b)=>a + (b - meanLog)**2, 0) / n;
+    }
+    return { am, gm, drag, valid, n, prod, logVar };
+  }
+
+  function buildCurves(rs, start = 10000){
+    const n = rs.length;
+    const { am, gm, valid } = computeInvest(rs);
+    const actual = [start];
+    let v = start;
+    for (const r of rs){
+      v *= (1 + r/100);
+      actual.push(v);
+    }
+    const amPath = [start];
+    if (isFinite(am)){
+      for (let i = 1; i <= n; i++){
+        amPath.push(start * Math.pow(1 + am/100, i));
+      }
+    }
+    const gmPath = [start];
+    if (valid && isFinite(gm)){
+      for (let i = 1; i <= n; i++){
+        gmPath.push(start * Math.pow(1 + gm/100, i));
+      }
+    }
+    return { actual, amPath, gmPath, am, gm, valid };
+  }
+
+  function renderInvestRows(){
+    investEls.rows.innerHTML = '';
+    returns.forEach((r, i) => {
+      const row = document.createElement('div');
+      row.className = 'invest-row';
+
+      const yr = document.createElement('div');
+      yr.className = 'yr';
+      yr.textContent = 'Year ' + (i + 1);
+
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.value = r;
+      input.step = '1';
+      input.min = '-99';
+      input.addEventListener('input', () => {
+        returns[i] = parseFloat(input.value) || 0;
+        updateInvest();
+      });
+
+      const pct = document.createElement('div');
+      pct.className = 'pct';
+      pct.textContent = '%';
+
+      const rm = document.createElement('button');
+      rm.className = 'rm';
+      rm.textContent = '✕';
+      rm.title = 'Delete this year';
+      rm.addEventListener('click', () => {
+        if (returns.length > 1){
+          returns.splice(i, 1);
+          renderInvestRows();
+          updateInvest();
+        }
+      });
+
+      row.appendChild(yr);
+      row.appendChild(input);
+      row.appendChild(pct);
+      row.appendChild(rm);
+      investEls.rows.appendChild(row);
+    });
+  }
+
+  function renderInvestChart(){
+    const chart = investEls.chart;
+    svgClear(chart);
+    const n = returns.length;
+    const curves = buildCurves(returns);
+    if (n === 0) return;
+
+    const W = 620, H = 260;
+    const padL = 72, padR = 20, padT = 20, padB = 34;
+
+    const all = [...curves.actual, ...curves.amPath, ...curves.gmPath].filter(isFinite);
+    if (all.length === 0) return;
+    const vMax = Math.max(...all) * 1.08;
+    const vMin = Math.min(...all) * 0.90;
+    const range = vMax - vMin || 1;
+
+    const X = i => padL + (i / n) * (W - padL - padR);
+    const Y = v => H - padB - ((v - vMin) / range) * (H - padT - padB);
+
+    const gridLevels = 4;
+    for (let g = 0; g <= gridLevels; g++){
+      const val = vMin + (range * g / gridLevels);
+      const y = Y(val);
+      svgEl('line', {
+        x1: padL, x2: W - padR, y1: y, y2: y,
+        stroke: 'rgba(255,255,255,0.05)', 'stroke-width': 1
+      }, chart);
+      svgEl('text', {
+        x: padL - 10, y: y + 4,
+        fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'end',
+        'font-family': 'Inter, sans-serif', 'font-variant-numeric': 'tabular-nums'
+      }, chart).textContent = Math.round(val).toLocaleString();
+    }
+
+    for (let i = 0; i <= n; i++){
+      svgEl('text', {
+        x: X(i), y: H - padB + 20,
+        fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'middle',
+        'font-family': 'Inter, sans-serif'
+      }, chart).textContent = i === 0 ? 'Start' : (i + 'yr');
+    }
+
+    function drawPath(values, color, dashed, width){
+      const d = values.map((v, i) => isFinite(v) ? ((i === 0 ? 'M' : 'L') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1)) : '').join(' ');
+      const attrs = {
+        d, fill: 'none', stroke: color, 'stroke-width': width || 2.4,
+        'stroke-linejoin': 'round', 'stroke-linecap': 'round'
+      };
+      if (dashed) attrs['stroke-dasharray'] = '5 5';
+      svgEl('path', attrs, chart);
+    }
+
+    drawPath(curves.amPath, 'var(--am)', true, 2);
+    if (curves.valid && curves.gmPath.length > 1){
+      drawPath(curves.gmPath, 'var(--gm)', true, 2);
+    }
+    drawPath(curves.actual, 'var(--gm)', false, 3);
+
+    curves.actual.forEach((v, i) => {
+      svgEl('circle', {
+        cx: X(i), cy: Y(v), r: 4,
+        fill: 'var(--gm)', stroke: 'var(--bg-deep)', 'stroke-width': 1.5
+      }, chart);
+    });
+
+    const lastIdx = n;
+    const actualEnd = curves.actual[lastIdx];
+    const amEnd = curves.amPath[lastIdx];
+    if (isFinite(actualEnd) && isFinite(amEnd)){
+      svgEl('text', {
+        x: X(lastIdx) - 8, y: Y(actualEnd) - 10,
+        fill: 'var(--gm)', 'font-size': 11, 'text-anchor': 'end',
+        'font-family': 'Inter, sans-serif', 'font-variant-numeric': 'tabular-nums',
+        'font-weight': 600
+      }, chart).textContent = Math.round(actualEnd).toLocaleString();
+
+      svgEl('text', {
+        x: X(lastIdx) - 8, y: Y(amEnd) - 10,
+        fill: 'var(--am)', 'font-size': 11, 'text-anchor': 'end',
+        'font-family': 'Inter, sans-serif', 'font-variant-numeric': 'tabular-nums',
+        'font-weight': 600
+      }, chart).textContent = Math.round(amEnd).toLocaleString();
+    }
+  }
+
+  function updateInvest(){
+    const r = computeInvest(returns);
+
+    if (!r || !r.valid){
+      investEls.am.textContent = '–';
+      investEls.gm.textContent = 'Not computable';
+      investEls.gap.textContent = '–';
+      investEls.warning.style.display = 'block';
+      investEls.warning.innerHTML = '<b>⚠️ A return of −100% or lower is included.</b> The geometric mean (compounding) is undefined.';
+      investEls.note.textContent = '';
+      renderInvestChart();
+      return;
+    }
+
+    investEls.am.textContent = r.am.toFixed(2) + '%';
+    investEls.gm.textContent = r.gm.toFixed(2) + '%';
+    investEls.gap.textContent = r.drag.toFixed(2) + '%p';
+
+    if (r.drag > 0.5){
+      investEls.warning.style.display = 'block';
+      investEls.warning.innerHTML = '<b>⚠️ Don’t be fooled by this number.</b> The arithmetic mean of ' + r.am.toFixed(2) + '% is easy to compute and looks larger, but the return investors actually earn is the geometric mean (CAGR) of <b>' + r.gm.toFixed(2) + '%</b>.';
+    } else {
+      investEls.warning.style.display = 'none';
+    }
+
+    if (isFinite(r.logVar) && r.logVar > 0.0001){
+      const approx = r.logVar / 2 * 100;
+      investEls.note.innerHTML = 'Note: the volatility drag is approximately σ²/2 ≈ <span class="approx">' + approx.toFixed(2) + '%p</span>, where σ² is the variance of the log returns.';
+    } else {
+      investEls.note.textContent = 'If all returns are equal, the volatility drag is zero.';
+    }
+
+    renderInvestChart();
+  }
+
+  investEls.addYear.addEventListener('click', () => {
+    returns.push(0);
+    renderInvestRows();
+    updateInvest();
+  });
+  investEls.resetInvest.addEventListener('click', () => {
+    returns = [40, -30, 20];
+    renderInvestRows();
+    updateInvest();
+  });
+
+  renderInvestRows();
+  updateInvest();
+
+  /* =========================================================
+     TAB 3: 표면적 상자
+     ========================================================= */
+  const S_BOX = 600;
+  const boxEls = {
+    slider: document.getElementById('sliderX'),
+    valX: document.getElementById('valX'),
+    boxX: document.getElementById('boxX'),
+    boxC: document.getElementById('boxC'),
+    boxV: document.getElementById('boxV'),
+    chart: document.getElementById('boxChart'),
+    shape: document.getElementById('boxShape'),
+    shapeCaption: document.getElementById('boxShapeCaption'),
+    warning: document.getElementById('boxWarning'),
+    note: document.getElementById('boxNote'),
+  };
+
+  function computeC(x){
+    return (S_BOX/2 - x*x) / (2*x);
+  }
+  function computeV(x){
+    const c = computeC(x);
+    return c > 0 ? x*x*c : NaN;
+  }
+
+  function renderBoxChart(currentX){
+    const chart = boxEls.chart;
+    svgClear(chart);
+
+    const W = 620, H = 240;
+    const padL = 72, padR = 20, padT = 20, padB = 34;
+    const xMax = 17.32;
+    const vMax = 1050;
+
+    const xs = [], vs = [];
+    const steps = 160;
+    for (let i = 0; i <= steps; i++){
+      const x = 0.3 + (17.2 - 0.3) * i / steps;
+      const v = computeV(x);
+      if (isFinite(v) && v > 0){ xs.push(x); vs.push(v); }
+    }
+
+    const X = x => padL + (x / xMax) * (W - padL - padR);
+    const Y = v => H - padB - (v / vMax) * (H - padT - padB);
+
+    const gridLevels = 4;
+    for (let g = 0; g <= gridLevels; g++){
+      const val = vMax * g / gridLevels;
+      const y = Y(val);
+      svgEl('line', {
+        x1: padL, x2: W - padR, y1: y, y2: y,
+        stroke: 'rgba(255,255,255,0.05)', 'stroke-width': 1
+      }, chart);
+      svgEl('text', {
+        x: padL - 10, y: y + 4,
+        fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'end',
+        'font-family': 'Inter, sans-serif', 'font-variant-numeric': 'tabular-nums'
+      }, chart).textContent = Math.round(val);
+    }
+
+    [0, 5, 10, 15].forEach(v => {
+      svgEl('text', {
+        x: X(v), y: H - padB + 20,
+        fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'middle',
+        'font-family': 'Inter, sans-serif'
+      }, chart).textContent = v;
+    });
+
+    const xCube = 10;
+    svgEl('line', {
+      x1: X(xCube), x2: X(xCube), y1: padT, y2: H - padB,
+      stroke: 'var(--gm)', 'stroke-width': 1.2,
+      'stroke-dasharray': '4 4', opacity: 0.7
+    }, chart);
+    svgEl('text', {
+      x: X(xCube), y: padT - 4,
+      fill: 'var(--gm)', 'font-size': 11, 'text-anchor': 'middle',
+      'font-family': 'Inter, sans-serif', 'font-weight': 600
+    }, chart).textContent = 'x = 10';
+
+    let d = '';
+    xs.forEach((x, i) => {
+      d += (i === 0 ? 'M' : 'L') + X(x).toFixed(1) + ' ' + Y(vs[i]).toFixed(1) + ' ';
+    });
+    svgEl('path', {
+      d, fill: 'none', stroke: 'var(--gold-glow)', 'stroke-width': 2.6,
+      'stroke-linejoin': 'round', 'stroke-linecap': 'round'
+    }, chart);
+
+    svgEl('circle', {
+      cx: X(10), cy: Y(1000), r: 5,
+      fill: 'var(--gm)', stroke: 'var(--bg-deep)', 'stroke-width': 2
+    }, chart);
+
+    const cv = computeV(currentX);
+    if (isFinite(cv)){
+      svgEl('circle', {
+        cx: X(currentX), cy: Y(cv), r: 6,
+        fill: 'var(--hm)', stroke: 'var(--bg-deep)', 'stroke-width': 2
+      }, chart);
+
+      svgEl('text', {
+        x: X(currentX) + 10, y: Y(cv) - 8,
+        fill: 'var(--hm)', 'font-size': 12, 'text-anchor': 'start',
+        'font-family': 'Inter, sans-serif', 'font-variant-numeric': 'tabular-nums',
+        'font-weight': 600
+      }, chart).textContent = cv.toFixed(1);
+    }
+
+    svgEl('text', {
+      x: W - padR, y: H - 6,
+      fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'end',
+      'font-family': 'Inter, sans-serif'
+    }, chart).textContent = 'x →';
+    svgEl('text', {
+      x: padL, y: 12,
+      fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'start',
+      'font-family': 'Inter, sans-serif'
+    }, chart).textContent = 'V';
+  }
+
+  function renderBoxShape(x, c){
+    const svg = boxEls.shape;
+    svgClear(svg);
+
+    const maxDim = Math.max(x, c, 1);
+    const scale = 100 / maxDim;
+    const w = x * scale;
+    const h = c * scale;
+    const depth = x * scale * 0.55;
+    const dx = depth * 0.65;
+    const dy = -depth * 0.42;
+
+    const totalW = w + dx;
+    const totalH = h - dy;
+    const ox = (320 - totalW) / 2;
+    const baseY = 240 - (240 - totalH) / 2;
+
+    const flb = [ox, baseY];
+    const frb = [ox + w, baseY];
+    const flt = [ox, baseY - h];
+    const frt = [ox + w, baseY - h];
+    const blb = [ox + dx, baseY + dy];
+    const brb = [ox + w + dx, baseY + dy];
+    const blt = [ox + dx, baseY - h + dy];
+    const brt = [ox + w + dx, baseY - h + dy];
+
+    function poly(pts, fill, opacity){
+      svgEl('polygon', {
+        points: pts.map(p => p.join(',')).join(' '),
+        fill, 'fill-opacity': opacity,
+        stroke: 'rgba(255,255,255,0.12)',
+        'stroke-width': 1,
+        'stroke-linejoin': 'round'
+      }, svg);
+    }
+
+    poly([blt, brt, brb, blb], 'var(--gm)', 0.35);
+    poly([frb, brb, brt, frt], 'var(--qm)', 0.35);
+    poly([flb, frb, frt, flt], 'var(--am)', 0.55);
+
+    svgEl('text', {
+      x: ox + w/2, y: baseY + 18,
+      fill: 'var(--muted)', 'font-size': 11, 'text-anchor': 'middle',
+      'font-family': 'Inter, sans-serif'
+    }, svg).textContent = 'x = ' + x.toFixed(1);
+    svgEl('text', {
+      x: ox - 8, y: baseY - h/2,
+      fill: 'var(--muted)', 'font-size': 11, 'text-anchor': 'end',
+      'font-family': 'Inter, sans-serif', 'dominant-baseline': 'middle'
+    }, svg).textContent = 'c = ' + c.toFixed(1);
+  }
+
+  function updateBox(){
+    const x = parseFloat(boxEls.slider.value);
+    const c = computeC(x);
+    const v = computeV(x);
+
+    boxEls.valX.textContent = x.toFixed(2);
+    boxEls.boxX.textContent = x.toFixed(2);
+
+    const nearCube = Math.abs(x - 10) < 0.15;
+
+    if (isFinite(v) && v > 0){
+      boxEls.boxC.textContent = c.toFixed(2);
+      boxEls.boxV.textContent = v.toFixed(1);
+      boxEls.warning.style.display = 'none';
+      renderBoxShape(x, c);
+
+      const diff = 1000 - v;
+      if (nearCube){
+        boxEls.note.innerHTML = '<b>This is the cube point.</b> The volume has reached its maximum value of 1000 — the equality condition of AM-GM.';
+      } else {
+        const pct = (diff / 1000 * 100).toFixed(1);
+        boxEls.note.innerHTML = 'By AM-GM, V ≤ (S/6)<sup>3/2</sup> = 1000. Currently <b>' + pct + '%</b> short of the maximum.';
+      }
+    } else {
+      boxEls.boxC.textContent = '—';
+      boxEls.boxV.textContent = '—';
+      boxEls.warning.style.display = 'block';
+      boxEls.note.textContent = '';
+      svgClear(boxEls.shape);
+    }
+
+    renderBoxChart(x);
+  }
+
+  boxEls.slider.addEventListener('input', updateBox);
+  updateBox();
+
+  /* =========================================================
+     TAB 4: 가우스 AGM
+     ========================================================= */
+  const agmEls = {
+    a0: document.getElementById('agmA0'),
+    b0: document.getElementById('agmB0'),
+    stepBtn: document.getElementById('agmStepBtn'),
+    resetBtn: document.getElementById('agmResetBtn'),
+    autoBtn: document.getElementById('agmAutoBtn'),
+    chart: document.getElementById('agmChart'),
+    table: document.getElementById('agmTable'),
+    tbody: document.querySelector('#agmTable tbody'),
+    result: document.getElementById('agmResult'),
+  };
+
+  let agmSeries = [];
+  let agmAutoTimer = null;
+  const AGM_MAX_STEPS = 12;
+  const AGM_EPS = 1e-12;
+
+  function agmStep(a, b){
+    return {
+      a: (a + b) / 2,
+      b: Math.sqrt(a * b)
+    };
+  }
+
+  function agmInit(){
+    if (agmAutoTimer){ clearInterval(agmAutoTimer); agmAutoTimer = null; }
+    agmEls.autoBtn.textContent = 'Auto play';
+
+    let a0 = parseFloat(agmEls.a0.value);
+    let b0 = parseFloat(agmEls.b0.value);
+
+    if (!isFinite(a0) || a0 <= 0) a0 = 1.41421356;
+    if (!isFinite(b0) || b0 <= 0) b0 = 1;
+    if (b0 > a0){ const tmp = a0; a0 = b0; b0 = tmp; }
+
+    agmSeries = [{ a: a0, b: b0 }];
+    renderAgmAll();
+  }
+
+  function agmAdvance(){
+    if (agmSeries.length >= AGM_MAX_STEPS) return;
+    const last = agmSeries[agmSeries.length - 1];
+    const diff = Math.abs(last.a - last.b);
+    if (diff < AGM_EPS) return;
+    agmSeries.push(agmStep(last.a, last.b));
+    renderAgmAll();
+  }
+
+  function renderAgmTable(){
+    const tbody = agmEls.tbody;
+    tbody.innerHTML = '';
+    agmSeries.forEach((s, i) => {
+      const tr = document.createElement('tr');
+      const tdN = document.createElement('td');
+      tdN.textContent = i;
+      tr.appendChild(tdN);
+      const tdA = document.createElement('td');
+      tdA.textContent = s.a.toFixed(10);
+      tr.appendChild(tdA);
+      const tdB = document.createElement('td');
+      tdB.textContent = s.b.toFixed(10);
+      tr.appendChild(tdB);
+      const tdD = document.createElement('td');
+      const d = Math.abs(s.a - s.b);
+      tdD.textContent = d < 1e-15 ? '0' : d.toExponential(3);
+      tr.appendChild(tdD);
+      tbody.appendChild(tr);
+    });
+    if (agmSeries.length > 1 && tbody.lastElementChild){
+      tbody.lastElementChild.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }
+
+  function renderAgmChart(){
+    const chart = agmEls.chart;
+    svgClear(chart);
+
+    const n = agmSeries.length - 1;
+    const W = 620, H = 240;
+    const padL = 90, padR = 30, padT = 24, padB = 36;
+
+    const allVals = agmSeries.flatMap(s => [s.a, s.b]);
+    const vMax0 = Math.max(...allVals);
+    const vMin0 = Math.min(...allVals);
+    const margin = (vMax0 - vMin0) * 0.15 || 0.05;
+    const vMax = vMax0 + margin;
+    const vMin = vMin0 - margin;
+
+    const xMax = Math.max(5, n);
+
+    const X = i => padL + (i / xMax) * (W - padL - padR);
+    const Y = v => H - padB - ((v - vMin) / (vMax - vMin)) * (H - padT - padB);
+
+    const gridLevels = 4;
+    for (let g = 0; g <= gridLevels; g++){
+      const val = vMin + (vMax - vMin) * g / gridLevels;
+      const y = Y(val);
+      svgEl('line', {
+        x1: padL, x2: W - padR, y1: y, y2: y,
+        stroke: 'rgba(255,255,255,0.05)', 'stroke-width': 1
+      }, chart);
+      svgEl('text', {
+        x: padL - 10, y: y + 4,
+        fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'end',
+        'font-family': 'Inter, sans-serif', 'font-variant-numeric': 'tabular-nums'
+      }, chart).textContent = val.toFixed(4);
+    }
+
+    for (let i = 0; i <= xMax; i++){
+      svgEl('text', {
+        x: X(i), y: H - padB + 20,
+        fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'middle',
+        'font-family': 'Inter, sans-serif'
+      }, chart).textContent = i;
+    }
+
+    svgEl('text', {
+      x: (padL + W - padR) / 2, y: H - 8,
+      fill: '#8b93a8', 'font-size': 11, 'text-anchor': 'middle',
+      'font-family': 'Inter, sans-serif'
+    }, chart).textContent = 'Iteration n';
+
+    const last = agmSeries[agmSeries.length - 1];
+    const near = Math.abs(last.a - last.b) < 1e-9;
+    if (near){
+      const conv = (last.a + last.b) / 2;
+      const yConv = Y(conv);
+      svgEl('line', {
+        x1: padL, x2: W - padR, y1: yConv, y2: yConv,
+        stroke: 'var(--gold-glow)', 'stroke-width': 1.2,
+        'stroke-dasharray': '4 4', opacity: 0.5
+      }, chart);
+      svgEl('text', {
+        x: W - padR - 6, y: yConv - 6,
+        fill: 'var(--gold-glow)', 'font-size': 11, 'text-anchor': 'end',
+        'font-family': 'Inter, sans-serif', 'font-weight': 600
+      }, chart).textContent = 'agm ≈ ' + conv.toFixed(10);
+    }
+
+    function drawSeries(key, color){
+      if (agmSeries.length === 0) return;
+      let d = '';
+      agmSeries.forEach((s, i) => {
+        d += (i === 0 ? 'M' : 'L') + X(i).toFixed(1) + ' ' + Y(s[key]).toFixed(1) + ' ';
+      });
+      svgEl('path', {
+        d, fill: 'none', stroke: color, 'stroke-width': 2.4,
+        'stroke-linejoin': 'round', 'stroke-linecap': 'round'
+      }, chart);
+      agmSeries.forEach((s, i) => {
+        svgEl('circle', {
+          cx: X(i), cy: Y(s[key]), r: 4,
+          fill: color, stroke: 'var(--bg-deep)', 'stroke-width': 1.5
+        }, chart);
+      });
+      agmSeries.forEach((s, i) => {
+        svgEl('text', {
+          x: X(i), y: Y(s[key]) - 10,
+          fill: color, 'font-size': 10, 'text-anchor': 'middle',
+          'font-family': 'Inter, sans-serif', 'font-variant-numeric': 'tabular-nums'
+        }, chart).textContent = s[key].toFixed(4);
+      });
+    }
+
+    drawSeries('a', 'var(--qm)');
+    drawSeries('b', 'var(--hm)');
+  }
+
+  function renderAgmResult(){
+    const last = agmSeries[agmSeries.length - 1];
+    const diff = Math.abs(last.a - last.b);
+
+    if (diff < 1e-9){
+      const conv = (last.a + last.b) / 2;
+      agmEls.result.innerHTML = '<b>' + (agmSeries.length - 1) + ' iterations</b> and the two sequences have effectively converged to one: <b style="color:var(--gold-glow)">agm ≈ ' + conv.toFixed(12) + '</b>';
+    } else if (diff < 1e-4){
+      agmEls.result.innerHTML = 'Almost converged. One or two more steps will greatly improve precision.';
+    } else {
+      agmEls.result.innerHTML = 'Difference <b>' + diff.toExponential(2) + '</b> — the gap shrinks quadratically with each iteration.';
+    }
+  }
+
+  function renderAgmAll(){
+    renderAgmChart();
+    renderAgmTable();
+    renderAgmResult();
+
+    const last = agmSeries[agmSeries.length - 1];
+    const converged = Math.abs(last.a - last.b) < 1e-9;
+    const maxedOut = agmSeries.length >= AGM_MAX_STEPS;
+    agmEls.stepBtn.disabled = converged || maxedOut;
+    agmEls.stepBtn.style.opacity = (converged || maxedOut) ? '0.4' : '1';
+  }
+
+  agmEls.stepBtn.addEventListener('click', () => { agmAdvance(); });
+
+  agmEls.resetBtn.addEventListener('click', () => { agmInit(); });
+
+  agmEls.autoBtn.addEventListener('click', () => {
+    if (agmAutoTimer){
+      clearInterval(agmAutoTimer);
+      agmAutoTimer = null;
+      agmEls.autoBtn.textContent = 'Auto play';
+    } else {
+      agmEls.autoBtn.textContent = '⏸ Pause';
+      agmAutoTimer = setInterval(() => {
+        const last = agmSeries[agmSeries.length - 1];
+        if (Math.abs(last.a - last.b) < 1e-9 || agmSeries.length >= AGM_MAX_STEPS){
+          clearInterval(agmAutoTimer);
+          agmAutoTimer = null;
+          agmEls.autoBtn.textContent = 'Auto play';
+          return;
+        }
+        agmAdvance();
+      }, 700);
+    }
+  });
+
+  agmEls.a0.addEventListener('change', agmInit);
+  agmEls.b0.addEventListener('change', agmInit);
+
+  agmInit();
+
+})();
+</script>
+</body>
+</html>
