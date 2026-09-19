@@ -7,9 +7,6 @@ https://bsky.app/profile/seoulinside.bsky.social
 #threads 
 https://www.threads.com/@seoul_letter?hl=ko
 
-#@seoulinside Note
-https://substack.com/@seoulinside/note/
-
 #@seoulinside
 https://substack.com/@seoulinside
 
