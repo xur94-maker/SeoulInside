@@ -236,8 +236,8 @@ footer{margin-top:2rem; font-size:.78rem; color:var(--muted); max-width:64ch;}
 <section class="tabpage active" id="tabMethods">
 
 <div class="legend">
-<span><span class="dot fast"></span>Fast convergence — reaches the 15-digit floating-point limit within a few dozen terms</span>
-<span><span class="dot slow"></span>Slow convergence — barely gains a digit even after millions of iterations in 5 seconds</span>
+<span><span class="dot fast"></span>Fast convergence — reaches 11–15 correct digits within a few dozen terms</span>
+<span><span class="dot slow"></span>Slow convergence — stalls far short of the 15-digit limit within 5 seconds</span>
 <span><span class="dot random"></span>Probabilistic method — approximates using random trials</span>
 </div>
 
@@ -276,7 +276,7 @@ footer{margin-top:2rem; font-size:.78rem; color:var(--muted); max-width:64ch;}
 <div class="hint-empty" id="emptyHint">Pick a method above and it will run live here for 5 seconds.</div>
 
 <footer>
-Numbers are computed using JavaScript's 64-bit double-precision floats (about 15–16 digits). So even theoretically very fast methods like Pippenger's product or the continued fraction hit this precision ceiling within a few dozen terms. The uniform-sum experiment uses fresh random numbers each run, so the result varies slightly every time.
+Numbers are computed using JavaScript's 64-bit double-precision floats (about 15–16 digits). So even very fast methods like the Taylor series or the continued fraction hit this precision ceiling within a few dozen terms (Pippenger's product reaches about 11 digits before this demo runs out of terms). The uniform-sum experiment uses fresh random numbers each run, so the result varies slightly every time.
 </footer>
 </section>
 
@@ -451,7 +451,7 @@ const formulas = [
   id:'limit', name:'Limit Definition (1+1/n)ⁿ', category:'slow',
   unicode:'e = lim[n→∞] (1 + 1/n)ⁿ',
   rate:'O(1/n) — very slow',
-  why:'Discovered by Jacob Bernoulli in 1683 while studying continuous compound interest. Larger n gets closer to e, but even after millions of iterations in 5 seconds, only a handful of digits are gained.',
+  why:'Discovered by Jacob Bernoulli in 1683 while studying continuous compound interest. Larger n gets closer to e, but only slowly — and beyond n ≈ 10⁸ floating-point rounding error starts to dominate, so the value actually gets worse again.',
   init:()=>({n:2}),
   step(s){
     s.n *= 1.10;
@@ -545,7 +545,7 @@ const spark = document.getElementById('p-spark');
 const sparkCtx = spark.getContext('2d');
 
 let current=null, state=null, iterCount=0, startTime=0, running=false;
-let errHist=[], rafId=null, prevGoodLen=0, lastStepAt=0;
+let errHist=[], rafId=null, prevGoodLen=0, lastStepAt=0, lastDigits=0;
 
 function formatValue(value){
   if(value===undefined||value===null||isNaN(value)){
@@ -616,7 +616,7 @@ function selectFormula(id){
 
 function resetRun(){
   state = current.init();
-  iterCount=0; errHist=[]; prevGoodLen=0; lastStepAt=0;
+  iterCount=0; errHist=[]; prevGoodLen=0; lastStepAt=0; lastDigits=0;
   pValue.innerHTML='2';
   pIter.textContent='0';
   pTime.textContent='0.00s';
@@ -656,6 +656,7 @@ function applyStepResult(res){
   }
   pError.textContent = isNaN(fv.error) ? '—' : fv.error.toExponential(2);
   pDigits.textContent = fv.digits+' digits';
+  lastDigits = fv.digits;
   return res.done;
 }
 
@@ -690,7 +691,9 @@ function frame(now){
     running=false;
     pStatus.classList.add('done');
     if(elapsed<4900){
-      pStatus.textContent = secs.toFixed(2)+'s, reached the floating-point precision limit (~15 digits) after '+iterCount.toLocaleString('en-US')+' iterations.';
+      pStatus.textContent = lastDigits>=14
+        ? secs.toFixed(2)+'s, reached the floating-point precision limit (~15 digits) after '+iterCount.toLocaleString('en-US')+' iterations.'
+        : secs.toFixed(2)+'s, used all of its terms after '+iterCount.toLocaleString('en-US')+' iterations, reaching about '+lastDigits+' correct digits.';
     } else {
       pStatus.textContent = 'Ran '+iterCount.toLocaleString('en-US')+' iterations in 5 seconds.';
     }
@@ -822,10 +825,10 @@ function updateDownloadVisibility(){
 downloadBtn.addEventListener('click', ()=>{
   if(!lastResult) return;
   const {digits, whole, decimals} = lastResult;
-  const wrapped = (decimals.match(/.{1,100}/g)||[]).join('\\n');
-  const content = 'e, '+digits.toLocaleString('en-US')+' decimal digits\\n'
-    + 'Computed with binary splitting + BigInt: Σ 1/k!\\n\\n'
-    + whole+'.\\n'+wrapped+'\\n';
+  const wrapped = (decimals.match(/.{1,100}/g)||[]).join('\n');
+  const content = 'e, '+digits.toLocaleString('en-US')+' decimal digits\n'
+    + 'Computed with binary splitting + BigInt: Σ 1/k!\n\n'
+    + whole+'.\n'+wrapped+'\n';
   const blob = new Blob([content], {type:'text/plain'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
