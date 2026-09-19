@@ -6,8 +6,10 @@ https://bsky.app/profile/seoulinside.bsky.social
 
 #threads 
 https://www.threads.com/@seoul_letter?hl=ko
+
 #@seoulinside Note
 https://substack.com/@seoulinside/note/
+
 #@seoulinside
 https://substack.com/@seoulinside
 
@@ -17,9 +19,6 @@ https://www.google.com/search?q=seoulinside.substack&sca_esv=5cd892c2b13a5520&bi
 
 #site:seoulinside 
 https://www.google.com/search?q=site%3Aseoulinside.substack.com&sourceid=chrome&source=chrome.ob&ie=UTF-8
-
-#Haerye
-https://www.google.com/search?q=King+Sejong+the+Great+%281397%E2%80%931450%2C+r.+1418%E2%80%931450%29+%7C+Hunmin+Jeongeum+Haerye+%281446%29&sca_esv=a707d86a229c684a&sxsrf=APpeQnszta8CvodLGMSxsRKnHySA_20AzQ%3A1783860401155&ei=sYxTatbaCLC12roPxfOkkQk&biw=1014&bih=788&ved=0ahUKEwiW96fslc2VAxWwmlYBHcU5KZIQ4dUDCBA&uact=5&oq=King+Sejong+the+Great+%281397%E2%80%931450%2C+r.+1418%E2%80%931450%29+%7C+Hunmin+Jeongeum+Haerye+%281446%29&gs_lp=Egxnd3Mtd2l6LXNlcnAiU0tpbmcgU2Vqb25nIHRoZSBHcmVhdCAoMTM5N-KAkzE0NTAsIHIuIDE0MTjigJMxNDUwKSB8IEh1bm1pbiBKZW9uZ2V1bSBIYWVyeWUgKDE0NDYpSABQAFgAcAB4AZABAJgBAKABAKoBALgBA8gBAPgBAZgCAKACAJgDAJIHAKAHALIHALgHAMIHAMgHAIAIAQ&sclient=gws-wiz-serp
 
 #Trickle-Dry
 https://www.google.com/search?q=The+Trickle-Dry+Effect&sourceid=chrome&ie=UTF-8&source=chrome.ob
