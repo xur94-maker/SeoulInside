@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watching a Geometric Series Become e</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[
+    {left:'$$',right:'$$',display:true},
+    {left:'\\(',right:'\\)',display:false}
+  ]});"></script>
+
+<style>
+  :root {
+    --bg: #12141c;
+    --bg-panel: #1a1e2a;
+    --bg-panel-raised: #20253346;
+    --line: #2c3142;
+    --text: #e9e6dd;
+    --text-dim: #9096a8;
+    --gold: #c9a227;
+    --gold-dim: #7a6a3a;
+    --teal: #4fb6a8;
+    --teal-dim: #35706a;
+    --violet: #9086c9;
+    --font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  :root:not([data-theme="light"]) { color-scheme: dark; }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f6f4ee;
+      --bg-panel: #ffffff;
+      --bg-panel-raised: #eeece3aa;
+      --line: #ddd8c8;
+      --text: #201d16;
+      --text-dim: #6b6656;
+      --gold: #a17c0c;
+      --gold-dim: #c9b878;
+      --teal: #227a6d;
+      --teal-dim: #9dcfc7;
+      --violet: #5d51a8;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f6f4ee;
+    --bg-panel: #ffffff;
+    --bg-panel-raised: #eeece3aa;
+    --line: #ddd8c8;
+    --text: #201d16;
+    --text-dim: #6b6656;
+    --gold: #a17c0c;
+    --gold-dim: #c9b878;
+    --teal: #227a6d;
+    --teal-dim: #9dcfc7;
+    --violet: #5d51a8;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  body { padding: 0 0 5rem; }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
+
+  header.hero {
+    padding: 4.5rem 0 3rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 3rem;
+  }
+  header.hero .kicker {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: var(--text-dim);
+    margin: 0 0 1rem;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 4.4vw, 2.8rem);
+    line-height: 1.18;
+    margin: 0 0 1rem;
+    max-width: 18ch;
+  }
+  header.hero p.lede {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-dim);
+    max-width: 60ch;
+    margin: 0;
+  }
+  .eq {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--gold);
+  }
+  .eq.teal { color: var(--teal); }
+
+  section.module { margin-bottom: 5rem; }
+  section.module .module-head {
+    display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.5rem;
+  }
+  section.module .module-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 1.1rem;
+  }
+  section.module h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  section.module p.intro {
+    color: var(--text-dim);
+    line-height: 1.65;
+    max-width: 62ch;
+    margin: 0 0 2rem;
+  }
+
+  .panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.75rem;
+  }
+
+  .formula-row {
+    background: var(--bg-panel-raised);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.9rem 1.1rem;
+    margin: 0 0 1.5rem;
+    font-size: 0.98rem;
+    overflow-x: auto;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 1.5rem;
+  }
+  @media (max-width: 720px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  .chart-box {
+    background: var(--bg-panel-raised);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1rem 1rem 0.5rem;
+  }
+  canvas, svg { display: block; width: 100%; height: auto; }
+
+  .controls { display: flex; flex-direction: column; gap: 1.4rem; }
+  .control label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+  }
+  .control label .val {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: var(--line);
+    border-radius: 2px;
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+    border: 2px solid var(--bg);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+    border: 2px solid var(--bg);
+  }
+  section.module.gbm input[type="range"]::-webkit-slider-thumb { background: var(--teal); }
+  section.module.gbm input[type="range"]::-moz-range-thumb { background: var(--teal); }
+  section.module.converge input[type="range"]::-webkit-slider-thumb { background: var(--teal); }
+  section.module.converge input[type="range"]::-moz-range-thumb { background: var(--teal); }
+
+  .stat-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .stat { font-size: 0.85rem; color: var(--text-dim); }
+  .stat .num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-top: 0.1rem;
+  }
+  .stat.gold .num { color: var(--gold); }
+  .stat.teal .num { color: var(--teal); }
+
+  button.action {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--bg);
+    background: var(--teal);
+    border: none;
+    border-radius: 3px;
+    padding: 0.7rem 1.1rem;
+    cursor: pointer;
+  }
+  button.action:hover { filter: brightness(1.08); }
+  button.action:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+  .toggle {
+    display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line);
+    border-radius: 4px; overflow: hidden; margin: 0 0 1.4rem;
+  }
+  .toggle button {
+    background: transparent; border: 0; color: var(--text-dim);
+    font-family: var(--font-body); font-size: 0.8rem; font-weight: 500;
+    padding: 0.55rem 0.9rem; cursor: pointer; border-right: 1px solid var(--line);
+  }
+  .toggle button:last-child { border-right: none; }
+  .toggle button.on { background: var(--gold); color: var(--bg); font-weight: 600; }
+  section.module.converge .toggle button.on,
+  section.module.gbm .toggle button.on { background: var(--teal); }
+
+  .legend { display: flex; gap: 1.2rem; font-size: 0.78rem; color: var(--text-dim); margin-top: 0.6rem; flex-wrap: wrap; }
+  .legend span.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 0.4rem; vertical-align: middle; }
+
+  .note {
+    font-size: 0.85rem; color: var(--text-dim); margin-top: 1.1rem;
+    border-left: 2px solid var(--line); padding-left: 0.9rem; line-height: 1.6;
+  }
+  .note .hl { color: var(--gold); font-weight: 600; }
+
+  footer.note {
+    max-width: 62ch;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">Interactive companion · Geometric Series → Continuous Compounding → Black–Scholes</p>
+    <h1>Watching a Geometric Series Become <span class="eq">e</span></h1>
+    <p class="lede">A journey in four steps. Derive the sum of a geometric series, watch that sum become the future value of a savings account, split the compounding period infinitely finer until <span class="eq">e</span> appears, and finally add randomness to that smooth curve to arrive at the probabilistic model actual finance runs on.</p>
+  </header>
+
+  <!-- ============ MODULE 1 : SUM OF A GEOMETRIC SERIES ============ -->
+  <section class="module sum">
+    <div class="module-head"><span class="module-num">1</span><h2>The sum of a geometric series</h2></div>
+    <p class="intro">Shift the series by one slot and subtract, and every middle term cancels — only the two ends survive. Move the sliders to change the first term, the common ratio, and the number of terms, and watch that cancellation happen.</p>
+
+    <div class="panel">
+      <div class="formula-row">
+        $$S_n=\dfrac{a(1-\rho^{n})}{1-\rho}=\dfrac{a(\rho^{n}-1)}{\rho-1}$$
+      </div>
+      <div class="grid-2">
+        <div class="chart-box">
+          <svg id="svg1" viewBox="0 0 800 260" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+        <div class="controls">
+          <div class="control">
+            <label>First term a <span class="val" id="a1Val">3</span></label>
+            <input type="range" id="a1" min="1" max="10" step="0.5" value="3">
+          </div>
+          <div class="control">
+            <label>Common ratio ρ <span class="val" id="r1Val">2.00</span></label>
+            <input type="range" id="r1" min="1.05" max="2.5" step="0.05" value="2">
+          </div>
+          <div class="control">
+            <label>Number of terms n <span class="val" id="n1Val">7</span></label>
+            <input type="range" id="n1" min="2" max="12" step="1" value="7">
+          </div>
+          <div class="legend">
+            <div><span class="dot" style="background:var(--gold)"></span>First · last term</div>
+            <div><span class="dot" style="background:var(--violet)"></span>Middle terms</div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat gold">S<sub>n</sub><span class="num" id="s1sum">—</span></div>
+        <div class="stat">ρS<sub>n</sub><span class="num" id="s1rho">—</span></div>
+        <div class="stat">ρS<sub>n</sub> − S<sub>n</sub> = aρⁿ − a<span class="num" id="s1diff">—</span></div>
+      </div>
+      <p class="note" id="s1note"></p>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 2 : ρ = 1+r, SAVINGS FUTURE VALUE ============ -->
+  <section class="module savings">
+    <div class="module-head"><span class="module-num">2</span><h2>ρ = 1 + r — the substitution that turns a series into a savings plan</h2></div>
+    <p class="intro">Drop (1+r) into the ratio's place, and the same formula starts paying interest. Deposit a fixed amount every period and see how much accumulates by maturity.</p>
+
+    <div class="panel">
+      <div class="formula-row">
+        $$S=a\dfrac{(1+r)^{n}-1}{r}\quad\text{(end-of-period payments)}$$
+      </div>
+      <div class="toggle" id="mode2">
+        <button data-mode="end" class="on">End of period</button>
+        <button data-mode="begin">Beginning of period</button>
+      </div>
+      <div class="grid-2">
+        <div class="chart-box">
+          <svg id="svg2" viewBox="0 0 800 260" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+        <div class="controls">
+          <div class="control">
+            <label>Rate per period r <span class="val" id="r2Val">0.400%</span></label>
+            <input type="range" id="r2" min="0" max="0.02" step="0.0001" value="0.004">
+          </div>
+          <div class="control">
+            <label>Number of payments n <span class="val" id="n2Val">24</span></label>
+            <input type="range" id="n2" min="1" max="60" step="1" value="24">
+          </div>
+          <div class="control">
+            <label>Payment per period a <span class="val" id="p2Val">200,000</span></label>
+            <input type="range" id="p2" min="10000" max="500000" step="10000" value="200000">
+          </div>
+          <div class="legend">
+            <div><span class="dot" style="background:var(--text-dim)"></span>Principal paid in</div>
+            <div><span class="dot" style="background:var(--gold)"></span>Interest</div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat">ρ = 1 + r<span class="num" id="s2rho">—</span></div>
+        <div class="stat gold">Future value at maturity S<span class="num" id="s2fv">—</span></div>
+        <div class="stat">Total paid in<span class="num" id="s2paid">—</span></div>
+        <div class="stat teal">Interest earned<span class="num" id="s2int">—</span></div>
+      </div>
+      <p class="note">Beginning-of-period payments equal the end-of-period result multiplied once more by (1+r) — every payment gets to compound for one extra period.</p>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 3 : m → ∞, CONVERGENCE TO e ============ -->
+  <section class="module converge">
+    <div class="module-head"><span class="module-num">3</span><h2>m → ∞ — the staircase becomes a curve, and e appears</h2></div>
+    <p class="intro">Split the year into m compounding periods, and the staircase gets finer and finer, hugging the smooth exponential curve <span class="eq">e^(rt)</span> ever more closely. Increase m and watch how fast the gap between the two vanishes.</p>
+
+    <div class="panel">
+      <div class="formula-row">
+        $$\left(1+\dfrac{r}{m}\right)^{mt}\ \xrightarrow{\ m\to\infty\ }\ e^{rt}$$
+      </div>
+      <div class="toggle" id="mode3">
+        <button data-m="1">Annual</button>
+        <button data-m="2">Semi-annual</button>
+        <button data-m="4">Quarterly</button>
+        <button data-m="12" class="on">Monthly</button>
+        <button data-m="365">Daily</button>
+        <button data-m="-1">∞ (continuous)</button>
+      </div>
+      <div class="grid-2">
+        <div class="chart-box">
+          <canvas id="convCanvas" width="1200" height="560"></canvas>
+        </div>
+        <div class="controls">
+          <div class="control">
+            <label>Annual rate r <span class="val" id="r3Val">6.0%</span></label>
+            <input type="range" id="r3" min="1" max="30" step="0.5" value="6">
+          </div>
+          <div class="control">
+            <label>Years t <span class="val" id="t3Val">10</span></label>
+            <input type="range" id="t3" min="1" max="30" step="1" value="10">
+          </div>
+          <div class="control">
+            <label>Splits per year m <span class="val" id="m3Val">12</span></label>
+            <input type="range" id="m3" min="1" max="365" step="1" value="12">
+          </div>
+          <div class="legend">
+            <div><span class="dot" style="background:var(--gold)"></span>Discrete staircase (1+r/m)^mt</div>
+            <div><span class="dot" style="background:var(--text-dim)"></span>Continuous curve e^(rt)</div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat gold">(1+r/m)^(mt)<span class="num" id="s3disc">—</span></div>
+        <div class="stat">e^(rt)<span class="num" id="s3cont">—</span></div>
+        <div class="stat">Gap<span class="num" id="s3gap">—</span></div>
+        <div class="stat teal">Effective annual rate<span class="num" id="s3eff">—</span></div>
+      </div>
+      <p class="note">(1+r/m)<sup>m</sup> increases monotonically in m and converges to e<sup>r</sup>. The gap between daily and continuous compounding depends on the nominal rate — at 6% it's only about 0.0006 percentage points, and the gap widens as the rate rises.</p>
+    </div>
+  </section>
+
+  <!-- ============ MODULE 4 : GEOMETRIC BROWNIAN MOTION ============ -->
+  <section class="module gbm">
+    <div class="module-head"><span class="module-num">4</span><h2>Adding randomness to the exponent</h2></div>
+    <p class="intro">Geometric Brownian motion keeps the same continuous-compounding engine but adds a random term to the exponent: <span class="eq teal">Sₜ = a·exp[(r − σ²/2)t + σWₜ]</span>. Each teal line below is one possible future. Redraw to generate a new set of paths and watch the ending values pile up into a log-normal distribution.</p>
+
+    <div class="panel">
+      <div class="grid-2">
+        <div class="chart-box">
+          <canvas id="gbmCanvas" width="1200" height="480"></canvas>
+        </div>
+        <div class="controls">
+          <div class="control">
+            <label>Drift (r) <span class="val" id="gRVal">6%</span></label>
+            <input type="range" id="gRSlider" min="0" max="20" step="0.5" value="6">
+          </div>
+          <div class="control">
+            <label>Volatility (σ) <span class="val" id="gSVal">20%</span></label>
+            <input type="range" id="gSSlider" min="1" max="60" step="1" value="20">
+          </div>
+          <div class="control">
+            <label>Horizon (T, years) <span class="val" id="gTVal">1</span></label>
+            <input type="range" id="gTSlider" min="1" max="5" step="1" value="1">
+          </div>
+          <button class="action" id="resimBtn">Redraw random paths</button>
+          <div class="legend">
+            <div><span class="dot" style="background:var(--teal)"></span>Simulated paths</div>
+            <div><span class="dot" style="background:var(--gold)"></span>Mean drift, e^(rt)</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-box" style="margin-top:1.25rem;">
+        <canvas id="histCanvas" width="1200" height="260"></canvas>
+      </div>
+      <div class="stat-row">
+        <div class="stat teal">Median ending value<span class="num" id="medianEnd">—</span></div>
+        <div class="stat">Mean ending value E[Sₜ]=a·e^(rt)<span class="num" id="meanEnd">—</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="note">
+    From the sum of a geometric series, to the future value of a savings account, to a smooth exponential as the compounding period splits infinitely finer, to the probabilistic model that underlies Black–Scholes once randomness is added to that exponent — follow one idea's whole journey by moving the sliders yourself.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const fmtNum = (v,d=2) => Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const fmtWon = v => Math.round(v).toLocaleString('en-US');
+  const fmtPct = (v,d=2) => (v*100).toFixed(d)+'%';
+
+  /* ================= MODULE 1 : SUM OF SERIES ================= */
+  const svg1 = $('svg1');
+  function drawModule1(){
+    const a = +$('a1').value;
+    const rho = +$('r1').value;
+    const n = +$('n1').value;
+    $('a1Val').textContent = a;
+    $('r1Val').textContent = rho.toFixed(2);
+    $('n1Val').textContent = n;
+
+    const terms = [];
+    let p = a;
+    for(let k=0;k<n;k++){ terms.push(p); p*=rho; }
+    const S = terms.reduce((x,y)=>x+y,0);
+
+    const W=800,H=260,padL=20,padR=20,padT=24,padB=32;
+    const innerW=W-padL-padR, innerH=H-padT-padB;
+    const maxV = Math.max(...terms);
+    const bw = innerW/n;
+
+    const gold = css('--gold'), violet = css('--violet'), line = css('--line'), dim = css('--text-dim');
+    let svg = `<line x1="${padL}" y1="${padT+innerH}" x2="${W-padR}" y2="${padT+innerH}" stroke="${line}"/>`;
+    terms.forEach((v,i)=>{
+      const h = (v/maxV)*innerH;
+      const x = padL + i*bw + bw*0.15;
+      const y = padT + innerH - h;
+      const w = bw*0.7;
+      const isEnd = i===0 || i===n-1;
+      const fill = isEnd ? gold : violet;
+      svg += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="${fill}" opacity="${isEnd?0.95:0.55}"/>`;
+      if(n<=12) svg += `<text x="${(x+w/2).toFixed(1)}" y="${(padT+innerH+18).toFixed(1)}" fill="${dim}" font-size="11" font-family="Inter,sans-serif" text-anchor="middle">${i+1}</text>`;
+    });
+    svg += `<text x="${padL}" y="${padT-8}" fill="${dim}" font-size="11" font-family="Inter,sans-serif">terms: a·ρᵏ  (k = 0 … ${n-1})</text>`;
+    svg1.innerHTML = svg;
+
+    $('s1sum').textContent = fmtNum(S,2);
+    $('s1rho').textContent = fmtNum(S*rho,2);
+    $('s1diff').textContent = fmtNum(S*rho-S,2);
+
+    const d = S*rho - S;
+    $('s1note').innerHTML = `Shift by one slot: ρS<sub>n</sub> − S<sub>n</sub> = ${fmtNum(S*rho,2)} − ${fmtNum(S,2)} = <span class="hl">${fmtNum(d,2)}</span>. The middle terms all cancel, leaving only aρⁿ − a = ${fmtNum(a*Math.pow(rho,n)-a,2)}.`;
+  }
+  ['a1','r1','n1'].forEach(id=>$(id).addEventListener('input',drawModule1));
+
+  /* ================= MODULE 2 : SAVINGS FV ================= */
+  const svg2 = $('svg2');
+  let mode2 = 'end';
+  $('mode2').addEventListener('click', e=>{
+    const b = e.target.closest('button'); if(!b) return;
+    [...$('mode2').children].forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); mode2 = b.dataset.mode; drawModule2();
+  });
+  function drawModule2(){
+    const r = +$('r2').value;
+    const n = +$('n2').value;
+    const a = +$('p2').value;
+    $('r2Val').textContent = fmtPct(r,3);
+    $('n2Val').textContent = n;
+    $('p2Val').textContent = fmtWon(a);
+
+    const rho = 1+r;
+    const endFV = a*(Math.pow(rho,n)-1)/r;
+    const beginFV = endFV*rho;
+    const fv = mode2==='end' ? endFV : beginFV;
+    const paid = a*n;
+    const interest = fv-paid;
+
+    const W=800,H=260,padL=50,padR=20,padT=20,padB=40;
+    const innerW=W-padL-padR, innerH=H-padT-padB;
+    const maxV = Math.max(fv,paid)*1.05;
+    const bh = v => (v/maxV)*innerH;
+
+    const gold = css('--gold'), dim = css('--text-dim'), line = css('--line'), muted = css('--bg-panel-raised');
+    let svg = `<line x1="${padL}" y1="${padT+innerH}" x2="${W-padR}" y2="${padT+innerH}" stroke="${line}"/>`;
+    const barW = innerW*0.26;
+    const x1 = padL + innerW*0.16;
+    const x2 = padL + innerW*0.56;
+    svg += `<rect x="${x1.toFixed(1)}" y="${(padT+innerH-bh(paid)).toFixed(1)}" width="${barW.toFixed(1)}" height="${bh(paid).toFixed(1)}" fill="${dim}" rx="2" opacity="0.55"/>`;
+    svg += `<rect x="${x2.toFixed(1)}" y="${(padT+innerH-bh(paid)).toFixed(1)}" width="${barW.toFixed(1)}" height="${bh(paid).toFixed(1)}" fill="${dim}" rx="2" opacity="0.55"/>`;
+    svg += `<rect x="${x2.toFixed(1)}" y="${(padT+innerH-bh(fv)).toFixed(1)}" width="${barW.toFixed(1)}" height="${bh(interest).toFixed(1)}" fill="${gold}" rx="2" opacity="0.9"/>`;
+    svg += `<text x="${(x1+barW/2).toFixed(1)}" y="${(padT+innerH+18).toFixed(1)}" fill="${dim}" font-size="12" font-family="Inter,sans-serif" text-anchor="middle">Paid in</text>`;
+    svg += `<text x="${(x2+barW/2).toFixed(1)}" y="${(padT+innerH+18).toFixed(1)}" fill="${dim}" font-size="12" font-family="Inter,sans-serif" text-anchor="middle">Maturity</text>`;
+    svg += `<text x="${(x2+barW+10).toFixed(1)}" y="${(padT+innerH-bh(fv)-6).toFixed(1)}" fill="${gold}" font-size="12" font-family="Inter,sans-serif">FV ${fmtWon(fv)}</text>`;
+
+    // growth curve inset
+    const cw = innerW*0.28, ch = innerH*0.8;
+    const cx = padL+innerW*0.7, cy = padT+innerH-ch;
+    svg += `<rect x="${cx.toFixed(1)}" y="${cy.toFixed(1)}" width="${cw.toFixed(1)}" height="${ch.toFixed(1)}" fill="none" stroke="${line}" rx="2"/>`;
+    let pts = [];
+    for(let k=0;k<=n;k++){
+      const v = mode2==='end'
+        ? (k===0?0:a*(Math.pow(rho,k)-1)/r)
+        : (k===0?0:a*rho*(Math.pow(rho,k)-1)/r);
+      const x = cx + (k/n)*cw;
+      const y = cy + ch - (v/maxV)*ch*0.9;
+      pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+    }
+    svg += `<polyline points="${pts.join(' ')}" fill="none" stroke="${css('--teal')}" stroke-width="2"/>`;
+    svg += `<text x="${(cx+6).toFixed(1)}" y="${(cy-6).toFixed(1)}" fill="${dim}" font-size="11" font-family="Inter,sans-serif">growth over ${n} periods</text>`;
+
+    svg2.innerHTML = svg;
+
+    $('s2rho').textContent = rho.toFixed(6);
+    $('s2fv').textContent = fmtWon(fv);
+    $('s2paid').textContent = fmtWon(paid);
+    $('s2int').textContent = fmtWon(interest);
+  }
+  ['r2','n2','p2'].forEach(id=>$(id).addEventListener('input',drawModule2));
+
+  /* ================= MODULE 3 : CONVERGENCE TO e ================= */
+  const convCanvas = $('convCanvas');
+  const r3Slider=$('r3'), t3Slider=$('t3'), m3Slider=$('m3');
+  let continuous3 = false;
+
+  $('mode3').addEventListener('click', e=>{
+    const b = e.target.closest('button'); if(!b) return;
+    [...$('mode3').children].forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const m = +b.dataset.m;
+    if(m===-1){ continuous3 = true; m3Slider.value = 3650; $('m3Val').textContent = '∞'; }
+    else { continuous3 = false; m3Slider.value = m; $('m3Val').textContent = m; }
+    drawModule3();
+  });
+
+  function drawModule3(){
+    const r = +r3Slider.value/100;
+    const t = +t3Slider.value;
+    const m = +m3Slider.value;
+    $('r3Val').textContent = (+r3Slider.value).toFixed(1)+'%';
+    $('t3Val').textContent = t;
+    if(!continuous3) $('m3Val').textContent = m;
+
+    const disc = Math.pow(1+r/m, m*t);
+    const cont = Math.exp(r*t);
+    const gap = cont-disc;
+
+    const canvas = convCanvas, ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+    const padL=60,padR=30,padT=20,padB=40;
+    const plotW=W-padL-padR, plotH=H-padT-padB;
+    const yMax = Math.exp(r*t)*1.08;
+    const xPix = time => padL + (time/t)*plotW;
+    const yPix = val => padT + plotH - (val/yMax)*plotH;
+
+    ctx.strokeStyle = css('--line'); ctx.lineWidth = 1;
+    ctx.font = '13px Inter, sans-serif'; ctx.fillStyle = css('--text-dim');
+    for(let i=0;i<=4;i++){
+      const val=(yMax/4)*i, y=yPix(val);
+      ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke();
+      ctx.fillText(val.toFixed(2), 8, y+4);
+    }
+    for(let i=0;i<=t;i+=Math.max(1,Math.round(t/5))){
+      ctx.fillText(i+'y', xPix(i)-10, H-padB+20);
+    }
+
+    // continuous curve
+    ctx.strokeStyle = css('--text-dim'); ctx.lineWidth=2; ctx.setLineDash([5,4]);
+    ctx.beginPath();
+    for(let i=0;i<=400;i++){
+      const time=(i/400)*t, val=Math.exp(r*time);
+      const x=xPix(time), y=yPix(val);
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+
+    // discrete staircase
+    if(!continuous3 || m < 3650){
+      ctx.strokeStyle = css('--gold'); ctx.lineWidth=2.5;
+      ctx.beginPath();
+      const totalSteps = Math.min(m*t, 20000);
+      const dt = t/totalSteps;
+      let curVal=1, curTime=0;
+      ctx.moveTo(xPix(0), yPix(curVal));
+      for(let k=1;k<=totalSteps;k++){
+        const nextTime = k*dt;
+        ctx.lineTo(xPix(nextTime), yPix(curVal));
+        curVal = curVal*(1+r*dt);
+        ctx.lineTo(xPix(nextTime), yPix(curVal));
+        curTime = nextTime;
+      }
+      ctx.stroke();
+    }
+
+    $('s3disc').textContent = disc.toFixed(6);
+    $('s3cont').textContent = cont.toFixed(6);
+    $('s3gap').textContent = gap.toFixed(6);
+    $('s3eff').textContent = fmtPct(Math.pow(1+r/m,m)-1, 4);
+  }
+  [r3Slider,t3Slider].forEach(el=>el.addEventListener('input',drawModule3));
+  m3Slider.addEventListener('input', ()=>{ continuous3=false; $('m3Val').textContent = +m3Slider.value; drawModule3(); });
+
+  /* ================= MODULE 4 : GBM ================= */
+  const gbmCanvas = $('gbmCanvas'), histCanvas = $('histCanvas');
+  const gRSlider=$('gRSlider'), gSSlider=$('gSSlider'), gTSlider=$('gTSlider');
+  const resimBtn=$('resimBtn');
+
+  function randNormal(){
+    let u=0,v=0;
+    while(u===0) u=Math.random();
+    while(v===0) v=Math.random();
+    return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+  }
+  function simulatePaths(r,sigma,T,nPaths,nSteps){
+    const dt=T/nSteps, paths=[];
+    for(let p=0;p<nPaths;p++){
+      const path=new Float64Array(nSteps+1);
+      path[0]=100;
+      for(let i=1;i<=nSteps;i++){
+        const z=randNormal();
+        path[i]=path[i-1]*Math.exp((r-sigma*sigma/2)*dt+sigma*Math.sqrt(dt)*z);
+      }
+      paths.push(path);
+    }
+    return paths;
+  }
+  let currentPaths=null;
+  function drawGBM(){
+    const r=+gRSlider.value/100, sigma=+gSSlider.value/100, T=+gTSlider.value;
+    $('gRVal').textContent=(r*100).toFixed(1)+'%';
+    $('gSVal').textContent=(sigma*100).toFixed(0)+'%';
+    $('gTVal').textContent=T;
+
+    const nSteps=Math.max(60,T*90);
+    currentPaths = simulatePaths(r,sigma,T,28,nSteps);
+
+    const canvas=gbmCanvas, ctx=canvas.getContext('2d');
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    const padL=55,padR=20,padT=15,padB=30;
+    const plotW=W-padL-padR, plotH=H-padT-padB;
+
+    let yMax=100; currentPaths.forEach(p=>{for(const v of p) if(v>yMax) yMax=v;}); yMax*=1.05;
+    let yMin=100; currentPaths.forEach(p=>{for(const v of p) if(v<yMin) yMin=v;}); yMin=Math.max(0,yMin*0.95);
+
+    const xPix=(i,n)=>padL+(i/n)*plotW;
+    const yPix=v=>padT+plotH-((v-yMin)/(yMax-yMin))*plotH;
+
+    ctx.strokeStyle=css('--line'); ctx.lineWidth=1;
+    ctx.font='12px Inter, sans-serif'; ctx.fillStyle=css('--text-dim');
+    for(let i=0;i<=4;i++){
+      const val=yMin+((yMax-yMin)/4)*i, y=yPix(val);
+      ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke();
+      ctx.fillText(val.toFixed(0),6,y+4);
+    }
+
+    ctx.lineWidth=1.3; ctx.globalAlpha=0.55; ctx.strokeStyle=css('--teal');
+    currentPaths.forEach(path=>{
+      ctx.beginPath();
+      const n=path.length-1;
+      for(let i=0;i<=n;i++){
+        const x=xPix(i,n), y=yPix(path[i]);
+        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+    ctx.globalAlpha=1;
+
+    ctx.strokeStyle=css('--gold'); ctx.lineWidth=2.5;
+    ctx.beginPath();
+    for(let i=0;i<=200;i++){
+      const time=(i/200)*T, val=100*Math.exp(r*time);
+      const x=padL+(i/200)*plotW, y=yPix(val);
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    drawHistogram(currentPaths, r, T);
+  }
+  function drawHistogram(paths,r,T){
+    const ends = paths.map(p=>p[p.length-1]).sort((a,b)=>a-b);
+    const median = ends[Math.floor(ends.length/2)];
+    $('medianEnd').textContent = median.toFixed(1);
+    $('meanEnd').textContent = (100*Math.exp(r*T)).toFixed(1);
+
+    const canvas=histCanvas, ctx=canvas.getContext('2d');
+    const W=canvas.width,H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    const padL=55,padR=20,padT=15,padB=25;
+    const plotW=W-padL-padR, plotH=H-padT-padB;
+
+    const minV=Math.min(...ends)*0.95, maxV=Math.max(...ends)*1.05;
+    const nBins=22, binW=(maxV-minV)/nBins;
+    const bins=new Array(nBins).fill(0);
+    ends.forEach(v=>{
+      let idx=Math.floor((v-minV)/binW);
+      if(idx>=nBins) idx=nBins-1; if(idx<0) idx=0;
+      bins[idx]++;
+    });
+    const maxCount=Math.max(...bins,1);
+
+    ctx.fillStyle=css('--teal'); ctx.globalAlpha=0.75;
+    bins.forEach((count,i)=>{
+      const x0=padL+(i/nBins)*plotW, bw=plotW/nBins;
+      const barH=(count/maxCount)*plotH;
+      ctx.fillRect(x0+1, padT+plotH-barH, bw-2, barH);
+    });
+    ctx.globalAlpha=1;
+
+    ctx.fillStyle=css('--text-dim'); ctx.font='12px Inter, sans-serif';
+    ctx.fillText(minV.toFixed(0), padL, H-6);
+    ctx.textAlign='right'; ctx.fillText(maxV.toFixed(0), W-padR, H-6);
+    ctx.textAlign='left';
+    ctx.fillText('distribution of ending values across simulated paths', padL, padT+10);
+  }
+  [gRSlider,gSSlider,gTSlider].forEach(el=>el.addEventListener('input',drawGBM));
+  resimBtn.addEventListener('click',drawGBM);
+
+  /* ---------- boot ---------- */
+  drawModule1();
+  drawModule2();
+  drawModule3();
+  drawGBM();
+  window.addEventListener('resize', ()=>{ drawModule3(); drawGBM(); });
+})();
+</script>
+</body>
+</html>
