@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>자연상수 e — 모든 방법과 초정밀 계산</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f1eee6; --panel:#ffffff; --panel-2:#f7f4ec;
+  --ink:#1c1d1f; --muted:#6c6a63; --border:#ddd7c8;
+  --accent:#2b3d54; --accent-bg:#e2e7ee; --accent-soft:#5a7091;
+  --accent-fast:#0e8f83; --accent-fast-bg:#dff2ef;
+  --accent-slow:#a86618; --accent-slow-bg:#f6e9d5;
+  --accent-random:#9c3f78; --accent-random-bg:#f6e2ee;
+  --good:#1f8a4c; --bad:#b3432b; --pending:#a6a296; --track:#e3ddcc;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14161a; --panel:#1b1e23; --panel-2:#20242a;
+    --ink:#eae7dd; --muted:#93918a; --border:#2c2f36;
+    --accent:#7fa1cc; --accent-bg:#1e2a3a; --accent-soft:#5a7091;
+    --accent-fast:#5fe4d3; --accent-fast-bg:#123833;
+    --accent-slow:#f0ac4e; --accent-slow-bg:#3a2b12;
+    --accent-random:#e58cc4; --accent-random-bg:#3a1f30;
+    --good:#7be39a; --bad:#e08a72; --pending:#5c5f66; --track:#2a2d33;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161a; --panel:#1b1e23; --panel-2:#20242a;
+  --ink:#eae7dd; --muted:#93918a; --border:#2c2f36;
+  --accent:#7fa1cc; --accent-bg:#1e2a3a; --accent-soft:#5a7091;
+  --accent-fast:#5fe4d3; --accent-fast-bg:#123833;
+  --accent-slow:#f0ac4e; --accent-slow-bg:#3a2b12;
+  --accent-random:#e58cc4; --accent-random-bg:#3a1f30;
+  --good:#7be39a; --bad:#e08a72; --pending:#5c5f66; --track:#2a2d33;
+}
+*{box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Space Grotesk','Segoe UI',sans-serif; line-height:1.6;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+.wrap{max-width:920px; margin:0 auto; padding:2.5rem 1.25rem 4rem;}
+h1{font-size:clamp(1.55rem,4.4vw,2.2rem); font-weight:700; margin:0 0 .5rem; letter-spacing:-0.01em;}
+.sub{color:var(--muted); font-size:.98rem; max-width:64ch; margin:0 0 1.5rem;}
+
+.toptabs{
+  display:inline-flex; background:var(--panel-2); border:1px solid var(--border);
+  border-radius:10px; padding:.25rem; margin-bottom:1.75rem; gap:.15rem;
+}
+.toptabs button{
+  font-family:inherit; font-size:.92rem; font-weight:600; color:var(--muted);
+  background:transparent; border:none; border-radius:7px; padding:.6rem 1.15rem;
+  cursor:pointer; transition:background-color .15s ease, color .15s ease;
+}
+.toptabs button.active{background:var(--panel); color:var(--ink); box-shadow:0 1px 2px rgba(0,0,0,.08);}
+
+.tabpage{display:none;}
+.tabpage.active{display:block;}
+
+/* ---------- 방법 그리드 (탭 1) ---------- */
+.legend{display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.5rem;}
+.legend span{
+  display:inline-flex; align-items:center; gap:.4em; font-size:.8rem; color:var(--muted);
+  background:var(--panel); border:1px solid var(--border); border-radius:999px; padding:.3rem .7rem;
+}
+.dot{width:.55rem; height:.55rem; border-radius:50%; flex:none;}
+.dot.fast{background:var(--accent-fast);}
+.dot.slow{background:var(--accent-slow);}
+.dot.random{background:var(--accent-random);}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:.7rem; margin-bottom:1.5rem;}
+.cat-heading{
+  grid-column:1/-1; font-size:.78rem; font-weight:600; color:var(--cat-color,var(--muted));
+  text-transform:uppercase; letter-spacing:.04em; border-top:1px solid var(--border);
+  padding-top:1rem; margin-top:.5rem;
+}
+.cat-heading:first-of-type{border-top:none; padding-top:0; margin-top:0;}
+.card{
+  position:relative; text-align:left; font-family:inherit; cursor:pointer;
+  background:var(--panel); border:1px solid var(--border); border-radius:12px;
+  padding:.9rem 1rem; transition:transform .12s ease, border-color .12s ease;
+}
+.card:hover{transform:translateY(-2px);}
+.card.active{border-color:var(--cat-color); box-shadow:0 0 0 1px var(--cat-color) inset;}
+.card .name{font-weight:600; font-size:.95rem; margin-bottom:.3rem;}
+.card .formula{
+  font-family:'IBM Plex Mono',monospace; font-size:.78rem; color:var(--muted);
+  word-break:break-word; line-height:1.5;
+}
+.card .rate{
+  display:inline-block; margin-top:.5rem; font-size:.72rem; font-weight:600;
+  color:var(--cat-color); background:var(--cat-bg); border-radius:6px; padding:.15rem .45rem;
+}
+
+.panel{display:none; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.4rem 1.6rem;}
+.panel.show{display:block;}
+.panel-head{display:flex; align-items:center; gap:.6rem; margin-bottom:.4rem;}
+.panel-head h2{font-size:1.15rem; font-weight:700; margin:0;}
+.cat-badge{
+  font-size:.72rem; font-weight:600; color:var(--cat-color); background:var(--cat-bg);
+  border-radius:999px; padding:.2rem .6rem;
+}
+.formula-line{
+  font-family:'IBM Plex Mono',monospace; font-size:.92rem; color:var(--ink);
+  background:var(--panel-2); border-radius:8px; padding:.65rem .85rem; margin:.6rem 0;
+  overflow-x:auto; white-space:pre;
+}
+.why{font-size:.88rem; color:var(--muted); margin-bottom:1rem;}
+
+.readout{background:var(--panel-2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.1rem; margin-bottom:1rem;}
+.value{font-family:'IBM Plex Mono',monospace; font-size:clamp(1.15rem,3vw,1.5rem); word-break:break-all;}
+.value .digit{display:inline-block;}
+.value .good .digit{color:var(--good); font-weight:600;}
+.value .pending .digit{color:var(--pending);}
+.pending .plabel{color:var(--muted); font-size:.85rem; font-weight:400;}
+
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:.6rem; margin-bottom:1rem;}
+.stat{background:var(--panel-2); border-radius:10px; padding:.65rem .85rem;}
+.stat .label{font-size:.7rem; color:var(--muted); margin-bottom:.2rem;}
+.stat .num{font-family:'IBM Plex Mono',monospace; font-size:1.02rem; font-weight:600;}
+
+.timebar{width:100%; height:5px; background:var(--track); border-radius:999px; overflow:hidden; margin-bottom:.6rem;}
+.timebar-fill{height:100%; width:0%; background:var(--cat-color,var(--accent)); transition:width .05s linear;}
+.sparkline{width:100%; height:80px; display:block; margin:0 0 .7rem; background:var(--panel-2); border-radius:8px;}
+
+.status-line{font-size:.85rem; color:var(--muted); min-height:1.3em; margin-bottom:.9rem;}
+.status-line.done{color:var(--ink); font-weight:500;}
+
+.controls-row{display:flex; gap:.6rem; flex-wrap:wrap;}
+button.action{
+  font-family:inherit; font-size:.88rem; font-weight:600; border-radius:8px;
+  padding:.6rem 1.1rem; border:1px solid var(--border); background:var(--panel); color:var(--ink); cursor:pointer;
+}
+button.action:hover{border-color:var(--cat-color,var(--accent));}
+button.action.primary{background:var(--cat-color,var(--accent)); border-color:var(--cat-color,var(--accent)); color:#fff;}
+button.action:disabled{opacity:.55; cursor:default;}
+
+.hint-empty{color:var(--muted); font-size:.9rem; padding:2rem 0; text-align:center;}
+
+/* ---------- 정밀 계산 (탭 2) ---------- */
+.segmented{
+  display:inline-flex; background:var(--panel-2); border:1px solid var(--border);
+  border-radius:10px; padding:.25rem; margin-bottom:1.25rem; gap:.15rem;
+}
+.segmented button{
+  font-family:inherit; font-size:.88rem; font-weight:500; color:var(--muted);
+  background:transparent; border:none; border-radius:7px; padding:.5rem 1rem;
+  cursor:pointer; transition:background-color .15s ease, color .15s ease;
+}
+.segmented button.active{background:var(--panel); color:var(--ink); box-shadow:0 1px 2px rgba(0,0,0,.08);}
+.controls{
+  display:flex; align-items:flex-end; gap:.75rem; flex-wrap:wrap;
+  background:var(--panel); border:1px solid var(--border); border-radius:12px;
+  padding:1.25rem; margin-bottom:1.25rem;
+}
+.field{display:flex; flex-direction:column; gap:.35rem;}
+.field label{font-size:.78rem; color:var(--muted);}
+.field .input-row{display:flex; align-items:center; gap:.5rem;}
+.field input[type=number]{
+  font-family:'IBM Plex Mono',monospace; font-size:1.05rem;
+  width:9.5rem; padding:.5rem .6rem; border:1px solid var(--border);
+  border-radius:8px; background:var(--panel-2); color:var(--ink);
+}
+.field .unit{font-size:.85rem; color:var(--muted);}
+.hint{font-size:.76rem; color:var(--muted); max-width:34ch;}
+.estimate{font-size:.76rem; color:var(--accent-soft);}
+.run-btn{
+  font-family:inherit; font-size:.95rem; font-weight:600; color:#fff;
+  background:var(--accent); border:none; border-radius:8px;
+  padding:.72rem 1.4rem; cursor:pointer; transition:opacity .15s ease, transform .1s ease;
+  margin-left:auto;
+}
+.run-btn:hover:not(:disabled){transform:translateY(-1px);}
+.run-btn:disabled{opacity:.55; cursor:default;}
+
+.readout2{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:1.4rem; margin-bottom:1.1rem; min-height:6.5rem;}
+.readout2 .status{font-size:.84rem; color:var(--muted); margin-bottom:.6rem; min-height:1.2em;}
+.readout2 .status.err{color:var(--bad);}
+.digits2{font-family:'IBM Plex Mono',monospace; font-size:clamp(1rem,2.6vw,1.22rem); word-break:break-all; letter-spacing:.01em;}
+.digits2 .whole{color:var(--accent); font-weight:600;}
+
+.dl-btn{
+  display:inline-flex; align-items:center; gap:.4em; margin-top:1rem; margin-right:.6rem;
+  font-family:inherit; font-size:.85rem; font-weight:500; color:var(--accent);
+  background:var(--accent-bg); border:1px solid var(--border); border-radius:8px;
+  padding:.5rem .9rem; cursor:pointer; transition:opacity .15s ease;
+}
+.dl-btn:hover:not(:disabled){opacity:.85;}
+.dl-btn:disabled{opacity:.5; cursor:default;}
+
+.log-panel{
+  background:var(--panel-2); border:1px solid var(--border); border-radius:12px;
+  padding:1rem 1.1rem; margin-bottom:1.25rem; display:none;
+}
+.log-panel.show{display:block;}
+.log-title{font-size:.78rem; color:var(--muted); margin-bottom:.5rem; font-weight:500;}
+.log-body{max-height:200px; overflow-y:auto; font-family:'IBM Plex Mono',monospace; font-size:.78rem; line-height:1.75;}
+.log-line{opacity:0; animation:logIn .25s ease forwards;}
+.log-t{color:var(--accent-soft); margin-right:.5em;}
+@keyframes logIn{from{opacity:0; transform:translateY(-2px);} to{opacity:1; transform:translateY(0);}}
+
+details{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:1rem 1.25rem;}
+details summary{cursor:pointer; font-weight:500; font-size:.92rem;}
+details .body{margin-top:.85rem; font-size:.88rem; color:var(--muted);}
+details .formula{
+  font-family:'IBM Plex Mono',monospace; font-size:.82rem; color:var(--ink);
+  background:var(--panel-2); border-radius:8px; padding:.7rem .85rem; margin:.7rem 0; overflow-x:auto; white-space:pre;
+}
+details p{margin:.5rem 0;}
+
+@media (max-width:480px){
+  .controls{flex-direction:column; align-items:stretch;}
+  .run-btn{margin-left:0; width:100%;}
+}
+footer{margin-top:2rem; font-size:.78rem; color:var(--muted); max-width:64ch;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>자연상수 e — 모든 방법과 초정밀 계산</h1>
+<p class="sub">첫 번째 탭에서는 e를 구하는 7가지 방법을 직접 5초간 실행하며 눈으로 비교하고, 두 번째 탭에서는 실제로 브라우저에서 e를 임의 정밀도(수천~수만 자리)까지 정확히 계산합니다.</p>
+</header>
+
+<div class="toptabs" role="tablist">
+  <button id="tabBtnMethods" class="active">① 다양한 방법 체험</button>
+  <button id="tabBtnPrecision">② 초정밀 계산</button>
+</div>
+
+<!-- ===================== 탭 1: 다양한 방법 ===================== -->
+<section class="tabpage active" id="tabMethods">
+
+<div class="legend">
+<span><span class="dot fast"></span>빠른 수렴 — 몇 십 항 만에 실수 정밀도 한계(15자리)에 도달</span>
+<span><span class="dot slow"></span>느린 수렴 — 5초 동안 수백만 번 반복해도 자릿수를 거의 못 늘림</span>
+<span><span class="dot random"></span>확률적 방법 — 무작위 시행으로 근사</span>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="panel" id="panel">
+  <div class="panel-head">
+    <h2 id="p-name"></h2>
+    <span class="cat-badge" id="p-badge"></span>
+  </div>
+  <div class="formula-line" id="p-formula"></div>
+  <div class="why" id="p-why"></div>
+
+  <div class="readout">
+    <div class="value" id="p-value">2</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="label">반복 횟수</div><div class="num" id="p-iter">0</div></div>
+    <div class="stat"><div class="label">경과 시간</div><div class="num" id="p-time">0.00s</div></div>
+    <div class="stat"><div class="label">오차 |근사값 − e|</div><div class="num" id="p-error">—</div></div>
+    <div class="stat"><div class="label">일치 자릿수</div><div class="num" id="p-digits">0자리</div></div>
+  </div>
+
+  <div class="timebar"><div class="timebar-fill" id="p-timebar"></div></div>
+  <canvas class="sparkline" id="p-spark"></canvas>
+
+  <div class="status-line" id="p-status">대기 중… "5초간 실행"을 눌러보세요.</div>
+
+  <div class="controls-row">
+    <button class="action primary" id="p-run">5초간 실행</button>
+    <button class="action" id="p-reset">초기화</button>
+  </div>
+</div>
+
+<div class="hint-empty" id="emptyHint">위에서 방법을 하나 선택하면 여기서 5초간 실시간으로 실행됩니다.</div>
+
+<footer>
+숫자는 자바스크립트의 64비트 배정밀도 실수(약 15~16자리)로 계산됩니다. 그래서 이론적으로 매우 빠르게 수렴하는 피핀저 곱이나 연분수 같은 방법도 몇 십 항 만에 이 정밀도 한계에 부딪힙니다. 균일분포 합 실험은 매 실행마다 난수가 다르므로 결과가 조금씩 달라집니다.
+</footer>
+</section>
+
+<!-- ===================== 탭 2: 초정밀 계산 ===================== -->
+<section class="tabpage" id="tabPrecision">
+  <p class="sub" style="margin-top:-.5rem;">목표 자릿수(또는 시간 예산)를 입력하면, 이진 분할법(binary splitting)으로 <code>Σ 1/k!</code> 급수를 결합해 e를 정수 연산(BigInt)만으로 임의 정밀도까지 정확히 계산합니다. 계산은 별도 워커 스레드에서 실행되어 화면이 멈추지 않습니다.</p>
+
+  <div class="segmented" role="tablist">
+    <button id="modeDigits" class="active">자릿수로</button>
+    <button id="modeTime">시간 예산으로</button>
+  </div>
+
+  <div class="controls">
+    <div class="field" id="fieldDigits">
+      <label for="inputDigits">목표 자릿수 (소수점 이하)</label>
+      <div class="input-row">
+        <input type="number" id="inputDigits" min="1" step="1" value="1000">
+        <span class="unit">자리</span>
+      </div>
+      <span class="estimate" id="estimateText"></span>
+    </div>
+    <div class="field" id="fieldTime" style="display:none;">
+      <label for="inputTime">시간 예산</label>
+      <div class="input-row">
+        <input type="number" id="inputTime" min="1" max="10" step="0.5" value="3">
+        <span class="unit">초</span>
+      </div>
+    </div>
+    <span class="hint" id="hintText">자릿수 제한은 없습니다. 목표가 클수록 오래 걸리며, 실행 전 예상 시간을 보여드립니다.</span>
+    <button class="run-btn" id="runBtn">계산하기</button>
+    <button class="action" id="cancelBtn" style="display:none;">취소</button>
+  </div>
+
+  <div class="readout2">
+    <div class="status" id="statusText">대기 중… "계산하기"를 클릭하세요.</div>
+    <div class="digits2" id="digitsOut"><span class="whole">2</span>.71828…</div>
+    <button class="dl-btn" id="downloadBtn" style="display:none;">⬇ 다운로드 (.txt)</button>
+    <button class="dl-btn" id="copyBtn" style="display:none;">⧉ 복사</button>
+  </div>
+
+  <div class="log-panel" id="logPanel">
+    <div class="log-title">계산 로그</div>
+    <div class="log-body" id="logBody"></div>
+  </div>
+
+  <div class="stats" id="statsRow" style="display:none;">
+    <div class="stat"><div class="label">소요 시간</div><div class="num" id="statTime">—</div></div>
+    <div class="stat"><div class="label">계산된 자릿수</div><div class="num" id="statDigits">—</div></div>
+    <div class="stat"><div class="label">사용한 항 개수</div><div class="num" id="statTerms">—</div></div>
+    <div class="stat"><div class="label">초당 자릿수</div><div class="num" id="statRate">—</div></div>
+  </div>
+
+  <details>
+    <summary>어떻게 계산되나요?</summary>
+    <div class="body">
+      <p>e를 계산하는 가장 실용적인 급수는 테일러 급수입니다.</p>
+      <div class="formula">e = Σ[k=0,∞] 1/k! = 1 + 1 + 1/2! + 1/3! + ⋯</div>
+      <p>항을 하나씩 순서대로 더하면 매번 커다란 나눗셈이 필요해 느려지므로, 구간을 절반씩 나눠 재귀적으로 결합하는 <b>이진 분할법</b>을 사용합니다. 모든 연산은 자바스크립트 <code>BigInt</code>를 이용한 임의 정밀도 정수 연산으로 이루어지며, 실제 e 세계기록(2023년 12월, y-cruncher, 35조 자리)도 바로 이 방식의 배경 기술을 사용합니다. π의 Chudnovsky 알고리즘과 달리 e의 급수는 제곱근이 필요 없는 순수 정수 연산이라 상대적으로 더 간단합니다.</p>
+    </div>
+  </details>
+</section>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ============================================================
+   공통: 상단 탭 전환
+   ============================================================ */
+const tabBtnMethods = document.getElementById('tabBtnMethods');
+const tabBtnPrecision = document.getElementById('tabBtnPrecision');
+const tabMethods = document.getElementById('tabMethods');
+const tabPrecision = document.getElementById('tabPrecision');
+tabBtnMethods.addEventListener('click', ()=>{
+  tabBtnMethods.classList.add('active'); tabBtnPrecision.classList.remove('active');
+  tabMethods.classList.add('active'); tabPrecision.classList.remove('active');
+});
+tabBtnPrecision.addEventListener('click', ()=>{
+  tabBtnPrecision.classList.add('active'); tabBtnMethods.classList.remove('active');
+  tabPrecision.classList.add('active'); tabMethods.classList.remove('active');
+});
+
+function cssVar(name, fallback){
+  const v = getComputedStyle(document.body).getPropertyValue(name).trim();
+  return v || fallback;
+}
+
+/* ============================================================
+   탭 1: 다양한 방법 — 공식 정의
+   ============================================================ */
+const E_VAL = Math.E;
+
+function continuedFractionPattern(i){
+  if(i===0) return 1;
+  if((i-1)%3===1) return 2*(((i-1)/3|0)+1);
+  return 1;
+}
+function continuedFractionValue(depth){
+  let value = continuedFractionPattern(depth);
+  for(let i=depth-1;i>0;i--){
+    value = continuedFractionPattern(i) + 1/value;
+  }
+  return 2 + 1/value;
+}
+
+const formulas = [
+{
+  id:'taylor', name:'테일러 급수 Σ1/k!', category:'fast', periodMs:150,
+  unicode:'e = Σ[k=0,∞] 1/k! = 1 + 1 + 1/2! + 1/3! + ⋯',
+  rate:'초고속 수렴',
+  why:'뉴턴(~1665)과 오일러(1727)가 정식화. k!이 폭발적으로 커지므로 20항 만으로 실수 정밀도 한계에 도달합니다.',
+  init:()=>({k:0, sum:0, fact:1}),
+  step(s){
+    if(s.k>0) s.fact*=s.k;
+    const term = 1/s.fact;
+    s.sum += term;
+    s.k++;
+    return {value:s.sum, done: term<1e-17};
+  }
+},
+{
+  id:'contfrac', name:'오일러의 연분수', category:'fast', periodMs:220,
+  unicode:'e = 2 + 1/(1+1/(2+1/(1+1/(1+1/(4+⋯)))))',
+  rate:'빠른 수렴',
+  why:'오일러가 1737년 유도. 분모가 2; 1,2,1,1,4,1,1,6,… 로 규칙적으로 반복되며, 이 비주기성으로 e가 무리수임이 최초로 증명되었습니다.',
+  init:()=>({depth:1}),
+  step(s){
+    const value = continuedFractionValue(s.depth);
+    s.depth++;
+    return {value, done: s.depth>28};
+  }
+},
+{
+  id:'pippenger', name:'피핀저의 무한곱 (1980)', category:'fast', periodMs:220,
+  unicode:'e/2 = (2/1)^½·(2/3·4/3)^¼·(4/5·6/5·6/7·8/7)^⅛·⋯',
+  rate:'빠른 수렴 (1/2ⁿ)',
+  why:"월리스 곱의 'e 버전'. 지수가 1/2ⁿ로 줄어들어 카탈랑의 곱보다 훨씬 빠르게 수렴합니다.",
+  init:()=>({k:1, product:1}),
+  step(s){
+    const k=s.k;
+    let term;
+    if(k===1) term=2.0;
+    else{
+      term=1.0;
+      let d=Math.pow(2,k-1)+1;
+      const hi=Math.pow(2,k)-1;
+      while(d<=hi){ term*= (d-1)/d * (d+1)/d; d+=2; }
+    }
+    s.product *= Math.pow(term, 1/Math.pow(2,k));
+    s.k++;
+    return {value:s.product*2, done: s.k>18};
+  }
+},
+{
+  id:'derangement', name:'교란순열 확률 n!/Dₙ', category:'fast', periodMs:170,
+  unicode:'lim[n→∞] n!/Dₙ = e   (Dₙ: 고정점 없는 순열의 개수)',
+  rate:'빠른 수렴',
+  why:'몽모르(1708)가 다룬 문제. 무작위 순열에 고정점이 하나도 없을 확률이 1/e로 수렴합니다.',
+  init:()=>({n:1, d2:1, d1:0, fact:1}),
+  step(s){
+    s.n++;
+    s.fact*=s.n;
+    const nd = (s.n-1)*(s.d1+s.d2);
+    s.d2=s.d1; s.d1=nd;
+    const value = s.d1>0 ? s.fact/s.d1 : NaN;
+    return {value, done: s.n>=20};
+  }
+},
+{
+  id:'limit', name:'극한 정의 (1+1/n)ⁿ', category:'slow',
+  unicode:'e = lim[n→∞] (1 + 1/n)ⁿ',
+  rate:'O(1/n) — 매우 느림',
+  why:'야코프 베르누이가 1683년 연속복리 문제에서 발견. n을 키울수록 e에 가까워지지만, 5초 동안 아무리 반복해도 자릿수가 몇 개밖에 늘지 않습니다.',
+  init:()=>({n:2}),
+  step(s){
+    s.n *= 1.10;
+    const value = Math.pow(1+1/s.n, s.n);
+    return {value, done: !isFinite(value) || s.n>1e17};
+  }
+},
+{
+  id:'catalan', name:'카탈랑의 무한곱 (1873)', category:'slow', periodMs:220,
+  unicode:'e = (2/1)·(4/3)^½·(6/5·8/7)^¼·⋯',
+  rate:'상대적으로 느린 수렴',
+  why:'카탈랑이 스털링 공식으로 증명(1873). 지수가 1/2ⁿ로 줄어들긴 하지만 피핀저 곱보다 훨씬 느리게 수렴합니다.',
+  init:()=>({n:1, product:2, pairIndex:1}),
+  step(s){
+    const numPairs = Math.pow(2, s.n-1);
+    let groupProduct=1;
+    for(let i=0;i<numPairs;i++){
+      const numerator = 2*(s.pairIndex+1);
+      groupProduct *= numerator/(numerator-1);
+      s.pairIndex++;
+    }
+    s.product *= Math.pow(groupProduct, 1/Math.pow(2,s.n));
+    s.n++;
+    return {value:s.product, done: s.n>16};
+  }
+},
+{
+  id:'stochastic', name:'균일분포 합의 기댓값', category:'random', batch:400,
+  unicode:'E[min{n : X₁+⋯+Xₙ > 1}] = e,  Xᵢ ~ Uniform(0,1)',
+  rate:'O(1/√n) — 통계적 수렴',
+  why:'(0,1) 구간에서 난수를 계속 더할 때, 합이 1을 넘기기까지 필요한 개수의 평균이 e로 수렴합니다. 시행할 때마다 결과가 조금씩 달라집니다.',
+  init:()=>({trials:0, totalCount:0}),
+  step(s){
+    let sum=0, count=0;
+    while(sum<=1){ sum+=Math.random(); count++; }
+    s.trials++;
+    s.totalCount+=count;
+    return {value: s.totalCount/s.trials, done:false};
+  }
+}
+];
+
+const catMeta = {
+  fast:{color:cssVar('--accent-fast','#0e8f83'), bg:cssVar('--accent-fast-bg','#dff2ef'), label:'빠른 수렴'},
+  slow:{color:cssVar('--accent-slow','#a86618'), bg:cssVar('--accent-slow-bg','#f6e9d5'), label:'느린 수렴'},
+  random:{color:cssVar('--accent-random','#9c3f78'), bg:cssVar('--accent-random-bg','#f6e2ee'), label:'확률적 방법'}
+};
+
+const grid = document.getElementById('grid');
+const CATEGORY_ORDER = ['fast','slow','random'];
+const orderedFormulas = [];
+CATEGORY_ORDER.forEach(cat=>{
+  const list = formulas.filter(f=>f.category===cat);
+  if(!list.length) return;
+  const heading = document.createElement('div');
+  heading.className='cat-heading';
+  heading.style.setProperty('--cat-color', catMeta[cat].color);
+  heading.textContent = catMeta[cat].label;
+  grid.appendChild(heading);
+  list.forEach(f=>{
+    orderedFormulas.push(f);
+    const btn = document.createElement('button');
+    btn.className='card';
+    btn.style.setProperty('--cat-color', catMeta[f.category].color);
+    btn.style.setProperty('--cat-bg', catMeta[f.category].bg);
+    btn.dataset.id=f.id;
+    btn.innerHTML = `<div class="name">${f.name}</div>`+
+      `<div class="formula">${f.unicode}</div>`+
+      (f.rate ? `<div class="rate">${f.rate}</div>` : '');
+    btn.addEventListener('click', ()=>{ selectFormula(f.id); startRun(); });
+    grid.appendChild(btn);
+  });
+});
+
+const panel = document.getElementById('panel');
+const emptyHint = document.getElementById('emptyHint');
+const pName = document.getElementById('p-name');
+const pBadge = document.getElementById('p-badge');
+const pFormula = document.getElementById('p-formula');
+const pWhy = document.getElementById('p-why');
+const pValue = document.getElementById('p-value');
+const pIter = document.getElementById('p-iter');
+const pTime = document.getElementById('p-time');
+const pError = document.getElementById('p-error');
+const pDigits = document.getElementById('p-digits');
+const pTimebar = document.getElementById('p-timebar');
+const pStatus = document.getElementById('p-status');
+const pRun = document.getElementById('p-run');
+const pReset = document.getElementById('p-reset');
+const spark = document.getElementById('p-spark');
+const sparkCtx = spark.getContext('2d');
+
+let current=null, state=null, iterCount=0, startTime=0, running=false;
+let errHist=[], rafId=null, prevGoodLen=0, lastStepAt=0;
+
+function formatValue(value){
+  if(value===undefined||value===null||isNaN(value)){
+    return {html:'<span class="pending">계산 대기 중…</span>', digits:0, error:NaN};
+  }
+  if(!isFinite(value)){
+    return {html:'<span class="pending">오버플로 (정밀도 한계)</span>', digits:0, error:NaN};
+  }
+  const error = Math.abs(value-E_VAL);
+  let digits = error>0 ? Math.max(0, Math.floor(-Math.log10(error))) : 15;
+  digits = Math.min(digits, 15);
+  const target = E_VAL.toFixed(15);
+  const val = value.toFixed(15);
+  let i=0;
+  const n = Math.min(target.length, val.length);
+  while(i<n && val[i]===target[i]) i++;
+  if(i===n && val!==target) i=Math.max(0,i-1);
+  const good = val.slice(0,i), rest = val.slice(i);
+  const goodHtml = good.split('').map(c=>`<span class="digit">${c}</span>`).join('');
+  const restHtml = rest.split('').map(c=>`<span class="digit">${c}</span>`).join('');
+  return {html:`<span class="good">${goodHtml}</span><span class="pending">${restHtml}</span>`, digits, error};
+}
+
+function resizeSpark(){
+  const rect = spark.getBoundingClientRect();
+  if(rect.width<1||rect.height<1) return;
+  spark.width = rect.width*devicePixelRatio;
+  spark.height = rect.height*devicePixelRatio;
+}
+function drawSpark(){
+  if(spark.width<1) return;
+  const w=spark.width, h=spark.height;
+  sparkCtx.clearRect(0,0,w,h);
+  sparkCtx.strokeStyle = cssVar('--border','#ddd7c8');
+  sparkCtx.lineWidth = 1*devicePixelRatio;
+  sparkCtx.strokeRect(0.5,0.5,w-1,h-1);
+  if(errHist.length<2) return;
+  sparkCtx.strokeStyle = getComputedStyle(panel).getPropertyValue('--cat-color') || '#0e8f83';
+  sparkCtx.lineWidth = 2*devicePixelRatio;
+  sparkCtx.beginPath();
+  const maxT=5000, minLog=-17, maxLog=1;
+  errHist.forEach((p,idx)=>{
+    const x=(p.t/maxT)*w;
+    let logv = p.err>0 ? Math.log10(p.err) : minLog;
+    logv = Math.max(minLog, Math.min(maxLog, logv));
+    const y = h - ((logv-minLog)/(maxLog-minLog))*h;
+    if(idx===0) sparkCtx.moveTo(x,y); else sparkCtx.lineTo(x,y);
+  });
+  sparkCtx.stroke();
+}
+
+function selectFormula(id){
+  current = formulas.find(f=>f.id===id);
+  document.querySelectorAll('#grid .card').forEach(el=>{
+    el.classList.toggle('active', el.dataset.id===id);
+  });
+  emptyHint.style.display='none';
+  panel.style.setProperty('--cat-color', catMeta[current.category].color);
+  panel.style.setProperty('--cat-bg', catMeta[current.category].bg);
+  pName.textContent = current.name;
+  pBadge.textContent = catMeta[current.category].label;
+  pFormula.textContent = current.unicode;
+  pWhy.textContent = current.why||'';
+  resetRun();
+  panel.classList.add('show');
+  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function resetRun(){
+  state = current.init();
+  iterCount=0; errHist=[]; prevGoodLen=0; lastStepAt=0;
+  pValue.innerHTML='2';
+  pIter.textContent='0';
+  pTime.textContent='0.00s';
+  pError.textContent='—';
+  pDigits.textContent='0자리';
+  pTimebar.style.width='0%';
+  pStatus.textContent='대기 중… "5초간 실행"을 눌러보세요.';
+  pStatus.classList.remove('done');
+  pRun.textContent='5초간 실행';
+  pRun.disabled=false;
+  resizeSpark();
+  drawSpark();
+}
+
+function stopRun(){ running=false; if(rafId) cancelAnimationFrame(rafId); }
+
+function startRun(){
+  if(!current) return;
+  resetRun();
+  running=true;
+  startTime=performance.now();
+  pStatus.textContent='실행 중…';
+  pRun.disabled=true;
+  rafId=requestAnimationFrame(frame);
+}
+
+function applyStepResult(res){
+  iterCount++;
+  const fv = formatValue(res.value);
+  pValue.innerHTML = fv.html;
+  const now = performance.now();
+  if(!isNaN(fv.error)){
+    const last = errHist[errHist.length-1];
+    if(!last || now-startTime-last.t>8){
+      errHist.push({t:now-startTime, err:fv.error});
+    }
+  }
+  pError.textContent = isNaN(fv.error) ? '—' : fv.error.toExponential(2);
+  pDigits.textContent = fv.digits+'자리';
+  return res.done;
+}
+
+function frame(now){
+  if(!running) return;
+  const elapsed = now-startTime;
+  let done=false;
+
+  if(elapsed>=5000){
+    done=true;
+  } else if(current.periodMs){
+    if(now-lastStepAt >= current.periodMs || lastStepAt===0){
+      lastStepAt = now;
+      const res = current.step(state);
+      if(applyStepResult(res)) done=true;
+    }
+  } else {
+    const batch = current.batch||1;
+    for(let i=0;i<batch;i++){
+      const res = current.step(state);
+      if(applyStepResult(res)){ done=true; break; }
+    }
+  }
+
+  pIter.textContent = iterCount.toLocaleString('ko-KR');
+  const secs = Math.min(elapsed,5000)/1000;
+  pTime.textContent = secs.toFixed(2)+'s';
+  pTimebar.style.width = Math.min(100,(elapsed/5000)*100)+'%';
+  drawSpark();
+
+  if(done){
+    running=false;
+    pStatus.classList.add('done');
+    if(elapsed<4900){
+      pStatus.textContent = secs.toFixed(2)+'초 만에 실수 정밀도 한계(약 15자리)에 도달, 총 '+iterCount.toLocaleString('ko-KR')+'회 반복.';
+    } else {
+      pStatus.textContent = '5초 동안 총 '+iterCount.toLocaleString('ko-KR')+'회 반복했습니다.';
+    }
+    pRun.disabled=false;
+    pRun.textContent='다시 실행';
+    return;
+  }
+  rafId = requestAnimationFrame(frame);
+}
+
+pRun.addEventListener('click', startRun);
+pReset.addEventListener('click', ()=>{ stopRun(); resetRun(); });
+
+let resizeTimer=null;
+window.addEventListener('resize', ()=>{
+  if(resizeTimer) clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(()=>{ if(current){ resizeSpark(); drawSpark(); } }, 120);
+});
+
+/* ============================================================
+   탭 2: 초정밀 계산 (BigInt 이진 분할법)
+   참고: claude.ai에 게시된 아티팩트 페이지는 보안 정책상
+   blob: Worker 생성이 차단될 수 있어, 메인 스레드에서
+   setTimeout으로 한 프레임 양보한 뒤 직접 계산합니다.
+   ============================================================ */
+function computeEDigits(digits){
+  const guard = 15;
+  const threshold = 10n ** BigInt(digits+guard);
+  let fact = 1n, N = 0n;
+  while (fact < threshold) { N += 1n; fact *= N; }
+  function bs(a,b){
+    if(b-a===1n){
+      const q = a===0n ? 1n : a;
+      return [1n, q, 1n];
+    }
+    const m = (a+b)/2n;
+    const L = bs(a,m), R = bs(m,b);
+    return [L[0]*R[0], L[1]*R[1], L[2]*R[1] + L[0]*R[2]];
+  }
+  const res = bs(0n, N);
+  const q = res[1], t = res[2];
+  const intPart = t / q;
+  const remainder = t % q;
+  const scale = 10n ** BigInt(digits+guard);
+  const decScaled = (remainder * scale) / q;
+  const decStr = decScaled.toString().padStart(digits+guard, '0').slice(0, digits);
+  return {whole: intPart.toString(), decimals: decStr, terms: N.toString()};
+}
+
+const modeDigitsBtn = document.getElementById('modeDigits');
+const modeTimeBtn = document.getElementById('modeTime');
+const fieldDigits = document.getElementById('fieldDigits');
+const fieldTime = document.getElementById('fieldTime');
+const hintText = document.getElementById('hintText');
+const inputDigits = document.getElementById('inputDigits');
+const inputTime = document.getElementById('inputTime');
+const runBtn = document.getElementById('runBtn');
+const cancelBtn = document.getElementById('cancelBtn');
+const statusText = document.getElementById('statusText');
+const digitsOut = document.getElementById('digitsOut');
+const statsRow = document.getElementById('statsRow');
+const statTime = document.getElementById('statTime');
+const statDigits = document.getElementById('statDigits');
+const statTerms = document.getElementById('statTerms');
+const statRate = document.getElementById('statRate');
+const logPanel = document.getElementById('logPanel');
+const logBody = document.getElementById('logBody');
+const downloadBtn = document.getElementById('downloadBtn');
+const copyBtn = document.getElementById('copyBtn');
+const estimateText = document.getElementById('estimateText');
+
+const TIME_K = 5.2e-6; // digits^1.55 근사 (측정 기반 대략치)
+function estimateMs(digits){ return TIME_K * Math.pow(digits, 1.55); }
+function formatDuration(ms){
+  if(ms<800) return '1초 미만';
+  const s = ms/1000;
+  if(s<60) return '약 '+s.toFixed(s<10?1:0)+'초';
+  const m=Math.floor(s/60), rem=Math.round(s%60);
+  return '약 '+m+'분'+(rem>0?' '+rem+'초':'');
+}
+function updateEstimate(){
+  const d = parseInt(inputDigits.value,10);
+  if(!Number.isFinite(d)||d<1){ estimateText.textContent=''; return; }
+  const ms = estimateMs(d);
+  estimateText.textContent = '예상 소요 시간: '+formatDuration(ms)+(ms>4000?' — 다소 시간이 걸릴 수 있습니다':'');
+}
+inputDigits.addEventListener('input', updateEstimate);
+updateEstimate();
+
+let mode='digits';
+function setMode(m){
+  mode=m;
+  modeDigitsBtn.classList.toggle('active', m==='digits');
+  modeTimeBtn.classList.toggle('active', m==='time');
+  fieldDigits.style.display = m==='digits' ? 'flex' : 'none';
+  fieldTime.style.display = m==='time' ? 'flex' : 'none';
+  hintText.textContent = m==='digits'
+    ? '자릿수 제한은 없습니다. 목표가 클수록 오래 걸리며, 실행 전 예상 시간을 보여드립니다.'
+    : '주어진 시간 동안 도달 가능한 자릿수를 예측해 한 번에 계산합니다.';
+}
+modeDigitsBtn.addEventListener('click', ()=>setMode('digits'));
+modeTimeBtn.addEventListener('click', ()=>setMode('time'));
+
+let runStartTime=0;
+function resetLog(){ logBody.innerHTML=''; logPanel.classList.remove('show'); runStartTime=performance.now(); }
+function appendLog(message){
+  logPanel.classList.add('show');
+  const line=document.createElement('div');
+  line.className='log-line';
+  const t=document.createElement('span'); t.className='log-t';
+  t.textContent='['+((performance.now()-runStartTime)/1000).toFixed(2)+'s]';
+  const m=document.createElement('span'); m.textContent=message;
+  line.appendChild(t); line.appendChild(m);
+  logBody.appendChild(line);
+  logBody.scrollTop = logBody.scrollHeight;
+}
+function showError(msg){
+  statusText.textContent = msg;
+  statusText.classList.add('err');
+}
+
+let lastResult=null;
+
+function updateDownloadVisibility(){
+  downloadBtn.style.display = lastResult ? 'inline-flex' : 'none';
+  copyBtn.style.display = lastResult ? 'inline-flex' : 'none';
+}
+
+downloadBtn.addEventListener('click', ()=>{
+  if(!lastResult) return;
+  const {digits, whole, decimals} = lastResult;
+  const wrapped = (decimals.match(/.{1,100}/g)||[]).join('\\n');
+  const content = 'e, 소수점 이하 '+digits.toLocaleString('ko-KR')+'자리\\n'
+    + '이진 분할법(binary splitting) + BigInt 로 계산: Σ 1/k!\\n\\n'
+    + whole+'.\\n'+wrapped+'\\n';
+  const blob = new Blob([content], {type:'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href=url; a.download='e_'+digits+'_digits.txt';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+copyBtn.addEventListener('click', async ()=>{
+  if(!lastResult) return;
+  const text = lastResult.whole+'.'+lastResult.decimals;
+  const original = copyBtn.textContent;
+  async function fallbackCopy(){
+    const ta=document.createElement('textarea');
+    ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    let ok=false;
+    try{ ok=document.execCommand('copy'); }catch(e){ ok=false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  try{
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      await navigator.clipboard.writeText(text);
+    } else {
+      const ok = await fallbackCopy();
+      if(!ok) throw new Error('클립보드 복사가 지원되지 않습니다.');
+    }
+    copyBtn.textContent='✓ 복사됨';
+    setTimeout(()=>{ copyBtn.textContent=original; }, 1600);
+  }catch(err){
+    const ok = await fallbackCopy();
+    if(ok){
+      copyBtn.textContent='✓ 복사됨';
+      setTimeout(()=>{ copyBtn.textContent=original; }, 1600);
+    } else {
+      showError('복사 실패: '+(err&&err.message?err.message:String(err)));
+    }
+  }
+});
+
+function formatGrouped(text){
+  return (text.match(/.{1,10}/g)||[]).join(' ');
+}
+
+let cancelRequested = false;
+
+function runComputation(digits){
+  statusText.classList.remove('err');
+  statusText.textContent = '계산 준비 중…';
+  digitsOut.innerHTML = '<span class="whole">2</span>.71828…';
+  statsRow.style.display='none';
+  resetLog();
+  lastResult=null;
+  cancelRequested = false;
+  updateDownloadVisibility();
+  runBtn.disabled=true;
+  runBtn.textContent='계산 중…';
+  cancelBtn.style.display='inline-flex';
+  appendLog('필요한 항 개수를 찾고 이진 분할법으로 결합합니다…');
+
+  const wallStart = performance.now();
+
+  // setTimeout으로 한 프레임 양보해 "계산 중…" 메시지가 먼저 화면에 그려지게 한다.
+  setTimeout(function(){
+    if(cancelRequested){ cleanup(); return; }
+    try{
+      const data = computeEDigits(digits);
+      const elapsedMs = performance.now()-wallStart;
+      appendLog('완료. 총 소요 시간 '+(elapsedMs/1000).toFixed(2)+'초.');
+      lastResult = {digits, whole:data.whole, decimals:data.decimals};
+      digitsOut.innerHTML = '<span class="whole">'+data.whole+'</span>.'+formatGrouped(data.decimals)+'…';
+      statusText.textContent = '완료: '+digits.toLocaleString('ko-KR')+'자리까지 정확히 계산되었습니다.';
+      statTime.textContent = (elapsedMs/1000).toFixed(2)+'s';
+      statDigits.textContent = digits.toLocaleString('ko-KR');
+      statTerms.textContent = Number(data.terms).toLocaleString('ko-KR');
+      statRate.textContent = Math.round(digits/Math.max(elapsedMs/1000,0.001)).toLocaleString('ko-KR')+' /s';
+      statsRow.style.display='grid';
+      updateDownloadVisibility();
+    }catch(err){
+      showError('계산 오류: '+(err && err.message ? err.message : String(err)));
+    }
+    cleanup();
+  }, 30);
+
+  function cleanup(){
+    runBtn.disabled=false;
+    runBtn.textContent='계산하기';
+    cancelBtn.style.display='none';
+  }
+}
+
+runBtn.addEventListener('click', ()=>{
+  let digits;
+  if(mode==='digits'){
+    digits = parseInt(inputDigits.value,10);
+    if(!Number.isFinite(digits) || digits<1){ showError('올바른 자릿수를 입력하세요.'); return; }
+  } else {
+    const secs = parseFloat(inputTime.value);
+    if(!Number.isFinite(secs) || secs<=0){ showError('올바른 시간을 입력하세요.'); return; }
+    // estimateMs(d) = TIME_K * d^1.55  =>  d = (secs*1000/TIME_K)^(1/1.55)
+    digits = Math.max(1, Math.floor(Math.pow((secs*1000)/TIME_K, 1/1.55)));
+  }
+  runComputation(digits);
+});
+
+cancelBtn.addEventListener('click', ()=>{
+  // 계산이 메인 스레드에서 동기적으로 실행되므로, 이미 시작된 계산 자체를
+  // 중간에 멈출 수는 없지만 그 결과를 화면에 반영하지 않도록 표시한다.
+  cancelRequested = true;
+  statusText.textContent = '취소 요청됨 — 진행 중인 계산이 끝나는 대로 반영되지 않습니다.';
+  cancelBtn.style.display='none';
+});
+
+})();
+</script>
+</body>
+</html>
