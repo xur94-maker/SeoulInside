@@ -220,7 +220,7 @@
         <div class="stat"><div class="k">Effective temperature T / T₀</div><div class="v" id="statTemp">—</div></div>
         <div class="stat"><div class="k">Cumulative collisions / particle</div><div class="v" id="statColl">—</div><div class="sub" id="statWall">—</div></div>
         <div class="stat"><div class="k">Speed dist. D<sub>KL</sub>(‖MB)</div><div class="v" id="statKL">—</div><div class="sub" id="statKLfloor">—</div></div>
-        <div class="stat"><div class="k">Remaining ΔS/k<sub>B</sub> to uniform-random placement</div><div class="v" id="statDS">—</div></div>
+        <div class="stat"><div class="k">Remaining ΔS/k<sub>B</sub> to equilibrium</div><div class="v" id="statDS">—</div></div>
         <div class="stat"><div class="k">Entropy growth rate dH/dt</div><div class="v" id="statDH">—</div><div class="sub" id="statDHDir">—</div></div>
         <div class="stat"><div class="k">Wall pressure P·V/(N k<sub>B</sub>T)</div><div class="v" id="statP">—</div><div class="sub" id="statPsub">—</div></div>
         <div class="stat"><div class="k">Overlapping pairs (approx.)</div><div class="v" id="statOverlap">—</div></div>
@@ -389,18 +389,18 @@
             <option value="1e-4">10⁻⁴</option>
           </select>
         </div>
-        <div class="hint newton-only">Conditions for good recovery: shorter wait before reversal (within a few dozen collisions per particle), smaller dt, and smaller perturbation ε. Note: to see a clear Loschmidt “echo”, t·v/L must be large enough (order 10–100) that particles actually spread out and collide before reversal.</div>
+        <div class="hint newton-only">Conditions for good recovery: shorter wait before reversal (within a few dozen collisions per particle), smaller dt, and smaller perturbation ε.</div>
 
         <div class="auto-panel">
           <h3>🔬 Auto experiment (reproduce Loschmidt’s paradox)</h3>
           <div class="row">
             <span>t₁ (forward)</span>
-            <input type="number" id="autoT1" value="100" step="10" min="0.1">
+            <input type="number" id="autoT1" value="0.5" step="0.1" min="0.1">
             <span>t₂ (after reversal)</span>
-            <input type="number" id="autoT2" value="100" step="10" min="0.1">
+            <input type="number" id="autoT2" value="0.5" step="0.1" min="0.1">
             <button class="action" id="autoRunBtn" style="padding:6px 12px;font-size:12.5px;">Run automatically</button>
           </div>
-          <div class="hint" style="margin-top:6px;">Corner start → run to t₁ → reverse velocities → run to t₂ → auto-pause. Uses t·v/L units; t₁ = t₂ = 100 is a good default.</div>
+          <div class="hint" style="margin-top:6px;">Corner start → run to t₁ → reverse velocities → run to t₂ → auto-pause</div>
         </div>
       </div>
 
@@ -447,7 +447,6 @@
     <div class="note"><b>Physics model.</b> Newtonian mode uses elastic hard disks of equal mass. The collision instant is computed exactly within a step (the contact time τ is found by solving a quadratic, the particles are rewound, and the normal velocity components are exchanged), so momentum and energy are conserved, and wall reflection is a reversible mirror reflection. It is not a fully event-driven scheme, so multiple collisions overlapping within one step are approximated; increasing the collision passes removes almost all residual overlap (2 passes: 0.02% overlapping pairs even at 100,000 particles and high density, maximum penetration about 7%). Reducing dt lowers the error further.</div>
     <div class="note"><b>Velocity reversal (Loschmidt).</b> After reversal, the entropy retraces its path back down. However, because of chaos, errors grow exponentially, so the longer you wait before reversing, the less well the initial state is recovered, and the entropy soon rises again. Increasing the perturbation ε makes this breakdown come much sooner. It is an experiment that lets you see Boltzmann’s interpretation that “entropy increase is not a law but overwhelming probability”.</div>
     <div class="note"><b>Try turning collisions off.</b> The gas becomes ideal and the speed distribution stays at its initial value (it never reaches thermal equilibrium). Positional entropy, however, still rises through wall reflections alone. In other words, the increase in positional entropy and the thermalization of the speed distribution are different processes.</div>
-    <div class="note"><b>Wall pressure.</b> The pressure readout is computed from the <b>impulse</b> delivered to the walls: every reflection transfers 2m|v<sub>n</sub>| (v<sub>n</sub> = velocity component normal to the wall). With this definition, an ideal gas gives P·V/(N k<sub>B</sub>T) = 1 exactly. Counting only the <i>number</i> of wall hits would give ≈1.13–1.27 instead, depending on the speed distribution, so impulse-based estimation is required. The readout is only defined for reflecting walls (no wall pressure exists under periodic boundaries).</div>
     <div class="note"><b>Limitations.</b> As the packing fraction approaches φ≈0.70 (the hard-disk crystallization region), the system is no longer a simple fluid. For this reason the upper limit of N is capped at φ≤0.55. The stochastic random-walk mode is for comparison, and relaxation becomes very slow as the radius gets smaller. The irreversibility in this mode is produced by injecting random numbers, not by the dynamics.</div>
     <div class="note refs"><b>References.</b>
       Orban &amp; Bellemans, "Velocity-inversion and irreversibility in a dilute gas of hard disks", Phys. Lett. A 24, 620 (1967) — hard-disk velocity-reversal experiment ·
@@ -540,8 +539,8 @@
   let N = 0;
   let x = new Float64Array(0), y = new Float64Array(0);
   let vx = new Float64Array(0), vy = new Float64Array(0), ang = new Float64Array(0);
-  let stepCount = 0, tHat = 0, collCount = 0, wallCollCount = 0, wallImpulseSum = 0;
-  let E0 = 1, vrms0 = 1;
+  let stepCount = 0, tHat = 0, collCount = 0, wallCollCount = 0;
+  let E0 = 1, vrms0 = 1, wallHitsBuffer = 0;
   let rsaFails = 0, latticeControl = false;
   let autoExpRunning = false;
 
@@ -747,36 +746,21 @@
 
   function stepNewton() {
     const dt = S.dt, rr = S.r, Lm = L - rr, per = S.boundary === 'periodic';
-    // Wall pressure is defined only for reflecting walls.
-    // For each reflection, the impulse transferred to the wall is 2*m*|v_n| with m = 1.
-    // We accumulate the impulse per unit time (J) and later convert it to P*V/(N k_B T).
-    let wallHits = 0, impulseAcc = 0;
+    let wallHits = 0;
     for (let i = 0; i < N; i++) {
       let px = x[i] + vx[i] * dt, py = y[i] + vy[i] * dt;
       if (per) {
         if (px < 0) px += L; else if (px >= L) px -= L;
         if (py < 0) py += L; else if (py >= L) py -= L;
       } else {
-        if (px < rr) {
-          // impulse = 2 * |vx[i]| (m = 1)
-          impulseAcc += 2 * Math.abs(vx[i]);
-          px = 2 * rr - px; vx[i] = -vx[i]; wallHits++;
-        } else if (px > Lm) {
-          impulseAcc += 2 * Math.abs(vx[i]);
-          px = 2 * Lm - px; vx[i] = -vx[i]; wallHits++;
-        }
-        if (py < rr) {
-          impulseAcc += 2 * Math.abs(vy[i]);
-          py = 2 * rr - py; vy[i] = -vy[i]; wallHits++;
-        } else if (py > Lm) {
-          impulseAcc += 2 * Math.abs(vy[i]);
-          py = 2 * Lm - py; vy[i] = -vy[i]; wallHits++;
-        }
+        if (px < rr) { px = 2 * rr - px; vx[i] = -vx[i]; wallHits++; }
+        else if (px > Lm) { px = 2 * Lm - px; vx[i] = -vx[i]; wallHits++; }
+        if (py < rr) { py = 2 * rr - py; vy[i] = -vy[i]; wallHits++; }
+        else if (py > Lm) { py = 2 * Lm - py; vy[i] = -vy[i]; wallHits++; }
       }
       x[i] = px; y[i] = py;
     }
     wallCollCount += wallHits;
-    wallImpulseSum += impulseAcc;
     if (S.collide) {
       buildGrid();
       cD = 2 * S.r; cD2 = cD * cD; cdt = dt; cper = per; cColl = 0;
@@ -824,11 +808,6 @@
       vx[i] = -vx[i]; vy[i] = -vy[i];
       if (eps) { vx[i] += eps * vrms0 * randn(); vy[i] += eps * vrms0 * randn(); }
     }
-    // Reset wall-collision accumulators so that post-reversal pressure reflects
-    // only the dynamics after the reversal (the pre-reversal wall history would
-    // otherwise contaminate the pressure estimate).
-    wallCollCount = 0;
-    wallImpulseSum = 0;
     addMarker(tHat);
   }
 
@@ -1164,7 +1143,7 @@
     currentVrms = vrms0;
     computeTheoryBins();
     updateDt();
-    stepCount = 0; tHat = 0; collCount = 0; wallCollCount = 0; wallImpulseSum = 0;
+    stepCount = 0; tHat = 0; collCount = 0; wallCollCount = 0;
     lastH_med = null; lastT = 0; lastDH = 0;
     buildLogFact(N);
     allocCounts();
@@ -1384,21 +1363,18 @@
       $('statWall').textContent = 'Wall ' + fmt(wallCollCount);
       $('statKL').textContent = lastKL === null ? '—' : fmtSci(lastKL);
       $('statKLfloor').textContent = 'noise floor ≈ ' + fmtSci((NB - 1) / (2 * N));
-      // Pressure P·V/(N k_B T) from the impulse delivered to the walls.
-      // In 2D with a square box of side L (perimeter 4L), m = 1, and N k_B T = N m v_rms^2 / 2:
-      //   P * 4L = J  (J = impulse per unit time)
-      //   PV/(N k_B T) = (J * L) / (2 * N * m * v_rms^2)
-      // This gives exactly 1 for an ideal gas (impulse-based, not collision-count-based).
+      // Pressure P·V/(N k_B T) = 1 + (collision density correction)
+      // 2D ideal gas: P·V/(N k_B T) = 1
+      // Approximated here from the wall collision rate
       const tElapsed = tHat;
-      if (tElapsed > 0.001 && S.boundary === 'reflect') {
-        const J = wallImpulseSum / tElapsed;                // impulse per unit time
-        const vrms2 = Math.max(currentVrms * currentVrms, 1e-12);
-        const pv = (J * L) / (2 * N * vrms2);               // m = 1
+      if (tElapsed > 0.001) {
+        // Wall collisions per unit time: dN_wall/dt
+        const wallRate = wallCollCount / tElapsed;
+        // In a 2D ideal gas P = (N k_B T)/V. Wall collision rate ≈ N * v_rms / (2L) (approx.)
+        // P·V/(N k_B T) ≈ (wallRate * L) / (N * vrms)
+        const pv = (wallRate * L) / (N * Math.max(currentVrms, 1e-6));
         $('statP').textContent = pv.toFixed(3);
-        $('statPsub').textContent = 'impulse-based, ideal gas ≈ 1.00';
-      } else if (S.boundary === 'periodic') {
-        $('statP').textContent = '—';
-        $('statPsub').textContent = 'no wall pressure under periodic boundaries';
+        $('statPsub').textContent = 'ideal gas ≈ 1.00';
       } else {
         $('statP').textContent = '—'; $('statPsub').textContent = '';
       }
@@ -1489,7 +1465,7 @@
   $('boundarySeg').addEventListener('click', e => {
     const b = e.target.closest('button[data-mode]'); if (!b) return;
     document.querySelectorAll('#boundarySeg button').forEach(x2 => x2.classList.remove('active'));
-    b.classList.add('active'); S.boundary = b.dataset.mode; refreshNotices(); updateStats(true);
+    b.classList.add('active'); S.boundary = b.dataset.mode;
   });
   $('modelSeg').addEventListener('click', e => {
     const b = e.target.closest('button[data-model]'); if (!b || b.dataset.model === S.model) return;
@@ -1521,8 +1497,8 @@
   // Auto experiment
   $('autoRunBtn').addEventListener('click', () => {
     if (S.model !== 'newton') { alert('The auto experiment only works in Newtonian mode.'); return; }
-    const t1 = parseFloat($('autoT1').value) || 100;
-    const t2 = parseFloat($('autoT2').value) || 100;
+    const t1 = parseFloat($('autoT1').value) || 0.5;
+    const t2 = parseFloat($('autoT2').value) || 0.5;
     resetAll('corner');
     S.running = true; $('playBtn').textContent = 'Pause';
     autoExpRunning = { phase: 'forward', t1: t1, t2: t2 };
@@ -1675,7 +1651,7 @@
     stats: computePositionStats, speed: speedStats, expectedSums: expectedSums,
     get: () => ({
       N: N, x: x, y: y, vx: vx, vy: vy, tHat: tHat,
-      coll: collCount, wallColl: wallCollCount, wallImpulse: wallImpulseSum,
+      coll: collCount, wallColl: wallCollCount,
       E0: E0, vrms0: vrms0, currentVrms: currentVrms,
       eqH: eqH, eqW: eqW, rsaFails: rsaFails,
       lastKL: lastKL, lastDH: lastDH
