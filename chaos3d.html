@@ -1,0 +1,2181 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaos 3D — Interactive Chaos Simulator v2.7</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e8;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  #canvas-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 1;
+  }
+
+  #title-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 20px 30px;
+    background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0) 100%);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  #title-bar h1 {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(100, 200, 255, 0.5);
+  }
+
+  #title-bar h1 span {
+    color: #4fc3f7;
+    font-weight: 600;
+  }
+
+  #title-bar p {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  #control-panel {
+    position: fixed;
+    top: 90px; left: 20px;
+    width: 280px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    background: rgba(15, 15, 25, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+
+  #control-panel::-webkit-scrollbar { width: 6px; }
+  #control-panel::-webkit-scrollbar-thumb {
+    background: rgba(79, 195, 247, 0.3);
+    border-radius: 3px;
+  }
+
+  .panel-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #4fc3f7;
+    margin-bottom: 12px;
+    margin-top: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .panel-title:first-child { margin-top: 0; }
+
+  .model-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .model-btn {
+    padding: 8px 6px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: #ccc;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .model-btn:hover {
+    background: rgba(79, 195, 247, 0.15);
+    border-color: rgba(79, 195, 247, 0.4);
+    color: #fff;
+  }
+
+  .model-btn.active {
+    background: rgba(79, 195, 247, 0.25);
+    border-color: #4fc3f7;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
+  }
+
+  .slider-group { margin-bottom: 14px; }
+
+  .slider-group label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 6px;
+  }
+
+  .slider-group label span:first-child {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #4fc3f7;
+  }
+
+  .slider-group label span:last-child {
+    font-family: monospace;
+    color: #fff;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 14px; height: 14px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
+  }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 36px; height: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .toggle-switch.on { background: #4fc3f7; }
+
+  .toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 16px; height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+
+  .toggle-switch.on::after { transform: translateX(16px); }
+
+  .action-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    background: rgba(79, 195, 247, 0.15);
+    border: 1px solid rgba(79, 195, 247, 0.4);
+    border-radius: 6px;
+    color: #4fc3f7;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .action-btn:hover {
+    background: rgba(79, 195, 247, 0.3);
+    color: #fff;
+  }
+
+  .view-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .view-grid .model-btn {
+    font-size: 10px;
+    padding: 7px 4px;
+    letter-spacing: 1px;
+  }
+
+  .theme-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .theme-btn {
+    padding: 8px 6px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: #ccc;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .theme-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+
+  .theme-btn.active {
+    background: rgba(79, 195, 247, 0.2);
+    border-color: #4fc3f7;
+    color: #fff;
+  }
+
+  .theme-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  /* ============================================================
+     Info Panel (top-right)
+     ============================================================ */
+  #info-panel {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    width: 300px;
+    background: rgba(15, 15, 25, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    overflow-y: auto;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+  }
+
+  #info-panel::-webkit-scrollbar { width: 6px; }
+  #info-panel::-webkit-scrollbar-thumb {
+    background: rgba(79, 195, 247, 0.3);
+    border-radius: 3px;
+  }
+
+  body:not(.calc-hidden):not(.menu-closed) #info-panel {
+    max-height: calc(100vh - 120px - 420px);
+    min-height: 220px;
+  }
+
+  body.calc-hidden #info-panel {
+    max-height: calc(100vh - 120px);
+  }
+
+  body.menu-closed #info-panel {
+    transform: translateX(calc(100% + 30px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #model-name {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  #model-desc {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .equation-box {
+    background: rgba(0,0,0,0.4);
+    border-left: 3px solid #4fc3f7;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .equation-box .eq-title {
+    font-size: 10px;
+    color: #4fc3f7;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .equation-box .eq-content {
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    color: #e0e0e8;
+    line-height: 1.8;
+    white-space: pre-wrap;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .stat-row span:first-child { color: #888; }
+  .stat-row span:last-child {
+    color: #4fc3f7;
+    font-family: monospace;
+  }
+
+  /* ============================================================
+     Live Calculation Panel (bottom-right)
+     ============================================================ */
+  #calc-panel {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    width: 300px;
+    background: rgba(10, 15, 25, 0.92);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(79, 195, 247, 0.3);
+    border-radius: 12px;
+    padding: 14px;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7),
+                0 0 60px rgba(79, 195, 247, 0.1);
+    font-family: 'Courier New', 'Monaco', monospace;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+    max-height: 55vh;
+    overflow-y: auto;
+  }
+
+  #calc-panel::-webkit-scrollbar { width: 4px; }
+  #calc-panel::-webkit-scrollbar-thumb {
+    background: rgba(79, 195, 247, 0.3);
+    border-radius: 2px;
+  }
+
+  body.calc-hidden #calc-panel {
+    transform: translateY(calc(100% + 50px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  body.menu-closed #calc-panel {
+    transform: translateY(calc(100% + 50px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .calc-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(79, 195, 247, 0.15);
+    margin-bottom: 12px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #4fc3f7;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+  }
+
+  .calc-dot {
+    width: 6px;
+    height: 6px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4fc3f7;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .calc-model {
+    margin-left: auto;
+    font-size: 9px;
+    color: #888;
+    letter-spacing: 1px;
+    font-weight: 400;
+  }
+
+  .calc-section {
+    margin-bottom: 14px;
+  }
+
+  .calc-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 6px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .calc-values {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .calc-val {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 8px;
+    background: rgba(79, 195, 247, 0.05);
+    border-left: 2px solid rgba(79, 195, 247, 0.3);
+    border-radius: 3px;
+    transition: all 0.15s;
+  }
+
+  .calc-val.next {
+    background: rgba(100, 255, 200, 0.05);
+    border-left-color: rgba(100, 255, 200, 0.5);
+  }
+
+  .calc-var {
+    font-size: 11px;
+    color: #4fc3f7;
+    font-style: italic;
+  }
+
+  .calc-num {
+    font-size: 12px;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  .calc-num.flash {
+    animation: flash 0.3s ease-out;
+  }
+
+  @keyframes flash {
+    0% { color: #4fc3f7; text-shadow: 0 0 10px #4fc3f7; }
+    100% { color: #fff; text-shadow: none; }
+  }
+
+  .calc-equation {
+    padding: 6px 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .eq-line {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #e0e0e8;
+  }
+
+  .eq-var {
+    color: #4fc3f7;
+    font-style: italic;
+    font-size: 11px;
+    min-width: 20px;
+  }
+
+  .eq-equals {
+    color: #666;
+  }
+
+  .eq-formula {
+    color: #aaa;
+    font-size: 10px;
+  }
+
+  .eq-sub {
+    color: #ffb74d;
+    font-size: 9px;
+    margin-top: 3px;
+    padding-left: 26px;
+    letter-spacing: 0.2px;
+    word-break: break-all;
+    line-height: 1.4;
+  }
+
+  .calc-arrow {
+    text-align: center;
+    color: #4fc3f7;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin: 6px 0;
+    opacity: 0.7;
+  }
+
+  /* ============================================================
+     Toggle buttons (top-right)
+     ============================================================ */
+  #menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(15, 15, 25, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(79, 195, 247, 0.4);
+    border-radius: 10px;
+    color: #4fc3f7;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    padding: 0;
+    line-height: 1;
+  }
+
+  #menu-toggle:hover {
+    background: rgba(79, 195, 247, 0.25);
+    border-color: #4fc3f7;
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(79, 195, 247, 0.4);
+  }
+
+  #menu-toggle:active {
+    transform: scale(0.95);
+  }
+
+  #menu-toggle .menu-icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    font-weight: 300;
+  }
+
+  #menu-toggle.closed .menu-icon {
+    transform: rotate(90deg);
+  }
+
+  #calc-toggle {
+    position: fixed;
+    top: 74px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    background: rgba(15, 15, 25, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(79, 195, 247, 0.4);
+    border-radius: 8px;
+    color: #4fc3f7;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #calc-toggle:hover {
+    background: rgba(79, 195, 247, 0.25);
+    transform: scale(1.05);
+  }
+
+  #calc-toggle.off {
+    opacity: 0.4;
+    color: #666;
+  }
+
+  #control-panel {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+  }
+
+  body.menu-closed #control-panel {
+    transform: translateX(calc(-100% - 30px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #status-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    padding: 8px 20px;
+    background: rgba(10,10,15,0.9);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(79, 195, 247, 0.1);
+    font-size: 11px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    letter-spacing: 1px;
+  }
+
+  #status-bar span { color: #4fc3f7; }
+
+  #loading {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.5s;
+  }
+
+  #loading.hidden { opacity: 0; pointer-events: none; }
+
+  .loader {
+    width: 50px; height: 50px;
+    border: 2px solid rgba(79, 195, 247, 0.2);
+    border-top-color: #4fc3f7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #loading p {
+    color: #4fc3f7;
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  @media (max-width: 1300px) {
+    #calc-panel { width: 280px; }
+  }
+
+  @media (max-width: 1100px) {
+    #calc-panel { display: none; }
+    #calc-toggle { display: none; }
+    body:not(.calc-hidden) #info-panel {
+      max-height: calc(100vh - 120px);
+    }
+  }
+
+  @media (max-width: 900px) {
+    #control-panel, #info-panel {
+      width: 240px;
+      padding: 14px;
+    }
+    #title-bar h1 { font-size: 16px; }
+    #title-bar p { font-size: 10px; }
+    #menu-toggle {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      top: 16px;
+      right: 16px;
+    }
+    #calc-toggle {
+      top: 62px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="loader"></div>
+  <p>LOADING CHAOS...</p>
+</div>
+
+<button id="menu-toggle" title="Toggle Menu (H)">
+  <span class="menu-icon">☰</span>
+</button>
+
+<button id="calc-toggle" title="Toggle Calculation View (C)">
+  <span>∑</span>
+</button>
+
+<div id="canvas-container"></div>
+
+<div id="title-bar">
+  <h1>CHAOS <span>3D</span></h1>
+  <p>INTERACTIVE DYNAMICAL SYSTEMS EXPLORER · v2.7</p>
+</div>
+
+<div id="control-panel">
+  <div class="panel-title">Model</div>
+  <div class="model-grid" id="model-grid"></div>
+
+  <div class="panel-title">Camera</div>
+  <div class="slider-group">
+    <label>
+      <span>Distance</span>
+      <span id="val-camera-dist">8.0</span>
+    </label>
+    <input type="range" id="camera-dist-slider" min="2" max="60" step="0.5" value="8">
+  </div>
+  <button class="action-btn" id="btn-fit" style="margin-bottom: 10px;">⊙ Fit to View</button>
+  <div class="view-grid">
+    <button class="model-btn" id="view-front">FRONT</button>
+    <button class="model-btn" id="view-top">TOP</button>
+    <button class="model-btn" id="view-side">SIDE</button>
+    <button class="model-btn" id="view-iso">ISO</button>
+  </div>
+
+  <div class="panel-title">Motion</div>
+  <div class="slider-group">
+    <label>
+      <span>Speed</span>
+      <span id="val-speed">0.01x</span>
+    </label>
+    <input type="range" id="speed-slider" min="0.01" max="20" step="0.01" value="0.01">
+  </div>
+  <div class="slider-group">
+    <label>
+      <span>Tail Length</span>
+      <span id="val-tail">0.10%</span>
+    </label>
+    <input type="range" id="tail-slider" min="-3" max="2" step="0.01" value="-1">
+  </div>
+  <div class="slider-group">
+    <label>
+      <span>Head Size</span>
+      <span id="val-head-size">0.02</span>
+    </label>
+    <input type="range" id="head-size-slider" min="0.02" max="1.5" step="0.01" value="0.02">
+  </div>
+  <div class="slider-group">
+    <label>
+      <span>Smoothness</span>
+      <span id="val-resolution">8x</span>
+    </label>
+    <input type="range" id="resolution-slider" min="1" max="16" step="1" value="8">
+  </div>
+
+  <div class="panel-title">Color Theme</div>
+  <div class="theme-grid" id="theme-grid"></div>
+
+  <div class="panel-title">Parameters</div>
+  <div id="params-container"></div>
+
+  <div class="panel-title">Options</div>
+  <div class="toggle-row">
+    <span>Live Motion</span>
+    <div class="toggle-switch on" id="toggle-trail"></div>
+  </div>
+  <div class="toggle-row">
+    <span>Head Pulse</span>
+    <div class="toggle-switch on" id="toggle-pulse"></div>
+  </div>
+  <div class="toggle-row">
+    <span>Auto Rotate</span>
+    <div class="toggle-switch" id="toggle-rotate"></div>
+  </div>
+  <div class="toggle-row">
+    <span>Glow Effect</span>
+    <div class="toggle-switch" id="toggle-glow"></div>
+  </div>
+
+  <button class="action-btn" id="btn-reset">↻ Reset</button>
+</div>
+
+<div id="info-panel">
+  <div id="model-name">Chen System</div>
+  <div id="model-desc">A double-helix structured chaotic system</div>
+
+  <div class="equation-box">
+    <div class="eq-title">Equations</div>
+    <div class="eq-content" id="equation-content"></div>
+  </div>
+
+  <div class="panel-title">Statistics</div>
+  <div class="stat-row"><span>Lyapunov λ₁</span><span id="stat-lyap">2.027</span></div>
+  <div class="stat-row"><span>Dimension D_KY</span><span id="stat-dim">2.110</span></div>
+  <div class="stat-row"><span>Raw Points</span><span id="stat-raw">0</span></div>
+  <div class="stat-row"><span>Render Points</span><span id="stat-points">0</span></div>
+  <div class="stat-row"><span>FPS</span><span id="stat-fps">60</span></div>
+</div>
+
+<div id="calc-panel">
+  <div class="calc-header">
+    <span class="calc-dot"></span>
+    <span>LIVE CALCULATION</span>
+    <span class="calc-model" id="calc-model-name">Chen</span>
+  </div>
+  <div class="calc-body">
+    <div class="calc-section">
+      <div class="calc-label">STATE</div>
+      <div class="calc-values">
+        <div class="calc-val">
+          <span class="calc-var" id="calc-var-0">x₁</span>
+          <span class="calc-num" id="calc-x1">1.0000</span>
+        </div>
+        <div class="calc-val">
+          <span class="calc-var" id="calc-var-1">x₂</span>
+          <span class="calc-num" id="calc-x2">1.0000</span>
+        </div>
+        <div class="calc-val">
+          <span class="calc-var" id="calc-var-2">x₃</span>
+          <span class="calc-num" id="calc-x3">1.0000</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <div class="calc-label">DERIVATIVE</div>
+      <div class="calc-equation">
+        <div class="eq-line">
+          <span class="eq-var">ẋ₁</span>
+          <span class="eq-equals">=</span>
+          <span class="eq-formula" id="eq-formula-1">a(x₂ − x₁)</span>
+        </div>
+        <div class="eq-sub" id="eq-sub-1">= ...</div>
+      </div>
+      <div class="calc-equation">
+        <div class="eq-line">
+          <span class="eq-var">ẋ₂</span>
+          <span class="eq-equals">=</span>
+          <span class="eq-formula" id="eq-formula-2">(c−a)x₁ − x₁x₃ + c x₂</span>
+        </div>
+        <div class="eq-sub" id="eq-sub-2">= ...</div>
+      </div>
+      <div class="calc-equation">
+        <div class="eq-line">
+          <span class="eq-var">ẋ₃</span>
+          <span class="eq-equals">=</span>
+          <span class="eq-formula" id="eq-formula-3">x₁x₂ − b x₃</span>
+        </div>
+        <div class="eq-sub" id="eq-sub-3">= ...</div>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <div class="calc-label">NEXT STEP</div>
+      <div class="calc-arrow">↓ dt = 0.0050</div>
+      <div class="calc-values">
+        <div class="calc-val next">
+          <span class="calc-var" id="calc-var-3">x₁′</span>
+          <span class="calc-num" id="calc-nx1">1.0000</span>
+        </div>
+        <div class="calc-val next">
+          <span class="calc-var" id="calc-var-4">x₂′</span>
+          <span class="calc-num" id="calc-nx2">1.0000</span>
+        </div>
+        <div class="calc-val next">
+          <span class="calc-var" id="calc-var-5">x₃′</span>
+          <span class="calc-num" id="calc-nx3">1.0000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="status-bar">
+  <span>Drag · Scroll · Double-click · H: menu · C: calc</span>
+  <span>Chaos 3D <span>v2.7</span></span>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ============================================================
+// Model definitions (v2.7 — recalibrated values)
+//
+// Value sources and conditions:
+//  - Lorenz:      λ₁ = 0.906, D_KY = 2.062  (σ=10, ρ=28, β=8/3)
+//  - Rössler:     λ₁ = 0.0714, D_KY = 2.01  (a=0.2, b=0.2, c=5.7)
+//  - Chen:        λ₁ = 2.027, D_KY = 2.11   (a=35, b=3, c=28)
+//  - Rabinovich:  λ₁ = 0.5   (baseline for self-excited chaotic attractor.
+//                 hidden attractors can have λ < 0 — strange nonchaotic)
+//  - Yu-Wang:     λ₁ = 1.4247 (4D Yu-Wang LE1, literature value)
+//  - Duffing:     λ₁ = 0.15  (approximate value under α=-1, β=1, δ=0.3, γ=0.5, ω=1.2 conditions)
+//  - Van der Pol: λ₁ = 0     (★ limit-cycle oscillator — not chaotic)
+//                 D_KY = 1.0 (a limit cycle is a 1D curve)
+//  - Hénon:       λ₁ = 0.419, D_KY = 1.26   (a=1.4, b=0.3)
+//  - Arnold Cat:  λ₁ = 0.962 = ln((3+√5)/2)
+//  - Standard:    λ₁ = 0.3   (K = 0.971635, per Greene)
+//  - Ikeda:       λ₁ = 0.68  (maximum value Λ_max of periodic orbit distribution)
+// ============================================================
+const MODELS = {
+  lorenz: {
+    name: 'Lorenz Attractor',
+    desc: 'Butterfly-wing shaped strange attractor (σ=10, ρ=28, β=8/3)',
+    type: 'ode',
+    dim: 3,
+    equations: 'ẋ = σ(y − x)\nẏ = x(ρ − z) − y\nż = xy − βz',
+    params: [
+      { key: 'sigma', label: 'σ', min: 1, max: 20, step: 0.1, value: 10 },
+      { key: 'rho', label: 'ρ', min: 1, max: 50, step: 0.1, value: 28 },
+      { key: 'beta', label: 'β', min: 0.5, max: 5, step: 0.01, value: 8/3 }
+    ],
+    initial: [1, 1, 1],
+    lyap: 0.906,
+    dimKY: 2.062,
+    f: (s, p) => [
+      p.sigma * (s[1] - s[0]),
+      s[0] * (p.rho - s[2]) - s[1],
+      s[0] * s[1] - p.beta * s[2]
+    ],
+    scale: 1.5,
+    center: [0, 0, 25],
+    cameraDist: 12
+  },
+  rossler: {
+    name: 'Rössler Attractor',
+    desc: 'Spiral-band structured attractor (a=0.2, b=0.2, c=5.7)',
+    type: 'ode',
+    dim: 3,
+    equations: 'ẋ = −y − z\nẏ = x + ay\nż = b + z(x − c)',
+    params: [
+      { key: 'a', label: 'a', min: 0.1, max: 0.5, step: 0.01, value: 0.2 },
+      { key: 'b', label: 'b', min: 0.1, max: 2, step: 0.01, value: 0.2 },
+      { key: 'c', label: 'c', min: 1, max: 15, step: 0.1, value: 5.7 }
+    ],
+    initial: [1, 1, 1],
+    lyap: 0.0714,
+    dimKY: 2.01,
+    f: (s, p) => [
+      -s[1] - s[2],
+      s[0] + p.a * s[1],
+      p.b + s[2] * (s[0] - p.c)
+    ],
+    scale: 1.0,
+    center: [0, 0, 10],
+    cameraDist: 10
+  },
+  chen: {
+    name: 'Chen System',
+    desc: 'Double-helix structured chaotic system (a=35, b=3, c=28)',
+    type: 'ode',
+    dim: 3,
+    equations: 'ẋ₁ = a(x₂ − x₁)\nẋ₂ = (c−a)x₁ − x₁x₃ + c x₂\nẋ₃ = x₁x₂ − b x₃',
+    params: [
+      { key: 'a', label: 'a', min: 20, max: 45, step: 0.5, value: 35 },
+      { key: 'b', label: 'b', min: 1, max: 10, step: 0.1, value: 3 },
+      { key: 'c', label: 'c', min: 15, max: 35, step: 0.5, value: 28 }
+    ],
+    initial: [1, 1, 1],
+    lyap: 2.027,
+    dimKY: 2.11,
+    f: (s, p) => [
+      p.a * (s[1] - s[0]),
+      (p.c - p.a) * s[0] - s[0] * s[2] + p.c * s[1],
+      s[0] * s[1] - p.b * s[2]
+    ],
+    scale: 1.2,
+    center: [0, 0, 20],
+    cameraDist: 15
+  },
+  rabinovich: {
+    name: 'Rabinovich-Fabrikant',
+    desc: 'Baseline for self-excited chaotic attractor (hidden attractors can have λ<0)',
+    type: 'ode',
+    dim: 3,
+    equations: 'ẋ₁ = x₂(x₃ − 1 + x₁²) + a x₁\nẋ₂ = x₁(3x₃ + 1 − x₁²) + a x₂\nẋ₃ = −2x₃(b + x₁x₂)',
+    params: [
+      { key: 'a', label: 'a', min: 0.05, max: 0.3, step: 0.005, value: 0.14 },
+      { key: 'b', label: 'b', min: 0.05, max: 0.3, step: 0.005, value: 0.10 }
+    ],
+    initial: [-1, 0, 0.5],
+    lyap: 0.5,
+    dimKY: 2.2,
+    f: (s, p) => [
+      s[1] * (s[2] - 1 + s[0]*s[0]) + p.a * s[0],
+      s[0] * (3*s[2] + 1 - s[0]*s[0]) + p.a * s[1],
+      -2 * s[2] * (p.b + s[0]*s[1])
+    ],
+    scale: 1.5,
+    center: [0, 0, 0],
+    cameraDist: 6
+  },
+  yuwang: {
+    name: 'Yu-Wang System',
+    desc: 'Nonlinear system with exponential term (see 4D version LE1 = 1.4247)',
+    type: 'ode',
+    dim: 3,
+    equations: 'ẋ₁ = a(x₂ − x₁)\nẋ₂ = b x₁ − c x₁x₃ + k x₂\nẋ₃ = e^(x₁x₂) − d x₃',
+    params: [
+      { key: 'a', label: 'a', min: 5, max: 25, step: 0.5, value: 15 },
+      { key: 'b', label: 'b', min: 15, max: 45, step: 0.5, value: 30 },
+      { key: 'c', label: 'c', min: 1, max: 6, step: 0.1, value: 3.2 },
+      { key: 'd', label: 'd', min: 1, max: 5, step: 0.1, value: 2 },
+      { key: 'k', label: 'k', min: -10, max: 0, step: 0.1, value: -5.2 }
+    ],
+    initial: [1, 1, 1],
+    lyap: 1.4247,
+    dimKY: 2.3,
+    f: (s, p) => [
+      p.a * (s[1] - s[0]),
+      p.b * s[0] - p.c * s[0] * s[2] + p.k * s[1],
+      Math.exp(Math.max(-10, Math.min(10, s[0] * s[1]))) - p.d * s[2]
+    ],
+    scale: 1.0,
+    center: [0, 0, 5],
+    cameraDist: 8
+  },
+  duffing: {
+    name: 'Duffing Oscillator',
+    desc: 'Nonlinear oscillator (approximate value under α=-1, β=1, δ=0.3, γ=0.5, ω=1.2 conditions)',
+    type: 'ode-forced',
+    dim: 3,
+    equations: 'ẍ + δẋ + αx + βx³ = γ cos(ωt)',
+    params: [
+      { key: 'alpha', label: 'α', min: -2, max: 0, step: 0.1, value: -1 },
+      { key: 'beta', label: 'β', min: 0.5, max: 2, step: 0.1, value: 1 },
+      { key: 'delta', label: 'δ', min: 0.1, max: 0.5, step: 0.01, value: 0.3 },
+      { key: 'gamma', label: 'γ', min: 0.1, max: 1, step: 0.05, value: 0.5 },
+      { key: 'omega', label: 'ω', min: 0.5, max: 2, step: 0.05, value: 1.2 }
+    ],
+    initial: [0.1, 0],
+    lyap: 0.15,
+    dimKY: 2.0,
+    f: (s, p, t) => [
+      s[1],
+      -p.delta * s[1] - p.alpha * s[0] - p.beta * s[0]**3 + p.gamma * Math.cos(p.omega * t)
+    ],
+    scale: 1.5,
+    center: [0, 0, 100],
+    cameraDist: 10
+  },
+  vanderpol: {
+    name: 'Van der Pol',
+    desc: '★ Limit-cycle oscillator — not chaotic (λ = 0)',
+    type: 'ode-forced',
+    dim: 3,
+    equations: 'ẍ − μ(1−x²)ẋ + x = 0',
+    params: [
+      { key: 'mu', label: 'μ', min: 0.1, max: 5, step: 0.1, value: 1.0 }
+    ],
+    initial: [0.1, 0],
+    lyap: 0,       // ★ limit cycle — not chaotic
+    dimKY: 1.0,    // ★ a limit cycle is a 1D curve
+    f: (s, p, t) => [
+      s[1],
+      p.mu * (1 - s[0]*s[0]) * s[1] - s[0]
+    ],
+    scale: 2.0,
+    center: [0, 0, 25],
+    cameraDist: 10
+  },
+  henon: {
+    name: 'Hénon Map',
+    desc: 'Banana-shaped fractal attractor (a=1.4, b=0.3)',
+    type: 'map',
+    dim: 2,
+    equations: 'x_{n+1} = 1 − a xₙ² + yₙ\ny_{n+1} = b xₙ',
+    params: [
+      { key: 'a', label: 'a', min: 1.0, max: 1.5, step: 0.01, value: 1.4 },
+      { key: 'b', label: 'b', min: 0.1, max: 0.4, step: 0.01, value: 0.3 }
+    ],
+    initial: [0.1, 0.1],
+    lyap: 0.419,
+    dimKY: 1.26,
+    f: (s, p) => [
+      1 - p.a * s[0]*s[0] + s[1],
+      p.b * s[0]
+    ],
+    scale: 1.2,
+    center: [0, 0, 2500],
+    cameraDist: 10
+  },
+  arnold: {
+    name: "Arnold's Cat Map",
+    desc: 'Lattice-pattern ergodic map (λ = ln((3+√5)/2) ≈ 0.962)',
+    type: 'map',
+    dim: 2,
+    equations: '(x,y)ᵀ ← [[1,1],[1,2]](x,y)ᵀ mod 1',
+    params: [],
+    initial: [0.1, 0.1],
+    lyap: 0.962,   // = ln((3+√5)/2)
+    dimKY: 2.0,
+    f: (s, p) => [
+      (s[0] + s[1]) % 1,
+      (s[0] + 2 * s[1]) % 1
+    ],
+    scale: 3.0,
+    center: [0.5, 0.5, 2500],
+    cameraDist: 8
+  },
+  standard: {
+    name: 'Chirikov Standard Map',
+    desc: 'KAM tori and chaotic sea (K = 0.971635, per Greene)',
+    type: 'map',
+    dim: 2,
+    equations: 'p_{n+1} = pₙ + K sin(θₙ)\nθ_{n+1} = θₙ + p_{n+1}',
+    params: [
+      { key: 'K', label: 'K', min: 0.1, max: 3, step: 0.01, value: 0.971635 }
+    ],
+    initial: [0.1, 0.1],
+    lyap: 0.3,
+    dimKY: 2.0,
+    f: (s, p) => {
+      const newP = s[1] + p.K * Math.sin(s[0]);
+      const newTheta = (s[0] + newP) % (2 * Math.PI);
+      return [newTheta, newP];
+    },
+    scale: 3.0,
+    center: [Math.PI, 0, 2500],
+    cameraDist: 10
+  },
+  ikeda: {
+    name: 'Ikeda Map',
+    desc: 'Optical resonator model (λ_max ≈ 0.68, literature-reported value)',
+    type: 'map-complex',
+    dim: 2,
+    equations: 'z_{n+1} = A + B zₙ exp(i(|zₙ|² + φ))',
+    params: [
+      { key: 'A', label: 'A', min: 0.5, max: 1.5, step: 0.05, value: 1.0 },
+      { key: 'B', label: 'B', min: 0.5, max: 1.0, step: 0.01, value: 0.9 },
+      { key: 'phi', label: 'φ', min: 0, max: 1, step: 0.05, value: 0.4 }
+    ],
+    initial: [0.1, 0.1],
+    lyap: 0.68,    // maximum value Λ_max of periodic orbit distribution
+    dimKY: 1.8,
+    f: (s, p) => {
+      const r2 = s[0]*s[0] + s[1]*s[1];
+      const theta = r2 + p.phi;
+      const cos = Math.cos(theta), sin = Math.sin(theta);
+      return [
+        p.A + p.B * (s[0] * cos - s[1] * sin),
+        p.B * (s[0] * sin + s[1] * cos)
+      ];
+    },
+    scale: 2.0,
+    center: [1, 0, 2500],
+    cameraDist: 10
+  }
+};
+
+// ============================================================
+// Color themes
+// ============================================================
+const COLOR_THEMES = {
+  duotone: {
+    name: 'Duotone',
+    swatch: 'linear-gradient(135deg, #4fc3f7, #e91e63)',
+    getColor: (t) => {
+      const mix = t;
+      const r = 0.2 * (1 - mix) + 1.0 * mix;
+      const g = 0.8 * (1 - mix) + 0.3 * mix;
+      const b = 1.0 * (1 - mix) + 0.9 * mix;
+      return new THREE.Color(r, g, b);
+    }
+  },
+  cyan: {
+    name: 'Cyan',
+    swatch: 'linear-gradient(135deg, #0a0a0f, #4fc3f7)',
+    getColor: (t) => {
+      const brightness = 0.35 + t * 0.65;
+      return new THREE.Color(
+        0.3 * brightness,
+        0.8 * brightness,
+        1.0 * brightness
+      );
+    }
+  },
+  goldblue: {
+    name: 'Gold-Blue',
+    swatch: 'linear-gradient(135deg, #ffc107, #2196f3)',
+    getColor: (t) => {
+      const mix = t;
+      const r = 1.0 * (1 - mix) + 0.2 * mix;
+      const g = 0.8 * (1 - mix) + 0.4 * mix;
+      const b = 0.3 * (1 - mix) + 1.0 * mix;
+      return new THREE.Color(r, g, b);
+    }
+  },
+  rainbow: {
+    name: 'Rainbow',
+    swatch: 'linear-gradient(135deg, #ff0000, #00ff00, #0000ff)',
+    getColor: (t) => {
+      const r = Math.sin(t * Math.PI * 2) * 0.5 + 0.5;
+      const g = Math.sin(t * Math.PI * 2 + 2.094) * 0.5 + 0.5;
+      const b = Math.sin(t * Math.PI * 2 + 4.188) * 0.5 + 0.5;
+      return new THREE.Color(
+        0.2 + r * 0.8,
+        0.4 + g * 0.6,
+        0.6 + b * 0.4
+      );
+    }
+  }
+};
+
+// ============================================================
+// Formulas for the live calculation panel
+// ============================================================
+const CALC_FORMULAS = {
+  lorenz: {
+    eq1: 'σ(y − x)',
+    eq2: 'x(ρ − z) − y',
+    eq3: 'xy − βz',
+    format1: (s, p) => `= ${p.sigma.toFixed(2)} × (${s[1].toFixed(4)} − ${s[0].toFixed(4)})`,
+    format2: (s, p) => `= ${s[0].toFixed(4)} × (${p.rho.toFixed(2)} − ${s[2].toFixed(4)}) − ${s[1].toFixed(4)}`,
+    format3: (s, p) => `= ${s[0].toFixed(4)} × ${s[1].toFixed(4)} − ${p.beta.toFixed(2)} × ${s[2].toFixed(4)}`,
+    vars: ['x', 'y', 'z']
+  },
+  chen: {
+    eq1: 'a(x₂ − x₁)',
+    eq2: '(c−a)x₁ − x₁x₃ + c x₂',
+    eq3: 'x₁x₂ − b x₃',
+    format1: (s, p) => `= ${p.a.toFixed(1)} × (${s[1].toFixed(4)} − ${s[0].toFixed(4)})`,
+    format2: (s, p) => `= (${p.c.toFixed(1)}−${p.a.toFixed(1)}) × ${s[0].toFixed(4)} − ${s[0].toFixed(4)}×${s[2].toFixed(4)} + ${p.c.toFixed(1)} × ${s[1].toFixed(4)}`,
+    format3: (s, p) => `= ${s[0].toFixed(4)} × ${s[1].toFixed(4)} − ${p.b.toFixed(2)} × ${s[2].toFixed(4)}`,
+    vars: ['x₁', 'x₂', 'x₃']
+  },
+  rossler: {
+    eq1: '−y − z',
+    eq2: 'x + ay',
+    eq3: 'b + z(x − c)',
+    format1: (s, p) => `= −${s[1].toFixed(4)} − ${s[2].toFixed(4)}`,
+    format2: (s, p) => `= ${s[0].toFixed(4)} + ${p.a.toFixed(2)} × ${s[1].toFixed(4)}`,
+    format3: (s, p) => `= ${p.b.toFixed(2)} + ${s[2].toFixed(4)} × (${s[0].toFixed(4)} − ${p.c.toFixed(1)})`,
+    vars: ['x', 'y', 'z']
+  },
+  rabinovich: {
+    eq1: 'x₂(x₃−1+x₁²) + a x₁',
+    eq2: 'x₁(3x₃+1−x₁²) + a x₂',
+    eq3: '−2x₃(b + x₁x₂)',
+    format1: (s, p) => `= ${s[1].toFixed(4)}×(${s[2].toFixed(4)}−1+${s[0].toFixed(4)}²) + ${p.a.toFixed(3)}×${s[0].toFixed(4)}`,
+    format2: (s, p) => `= ${s[0].toFixed(4)}×(3×${s[2].toFixed(4)}+1−${s[0].toFixed(4)}²) + ${p.a.toFixed(3)}×${s[1].toFixed(4)}`,
+    format3: (s, p) => `= −2×${s[2].toFixed(4)}×(${p.b.toFixed(3)} + ${s[0].toFixed(4)}×${s[1].toFixed(4)})`,
+    vars: ['x₁', 'x₂', 'x₃']
+  },
+  yuwang: {
+    eq1: 'a(x₂ − x₁)',
+    eq2: 'b x₁ − c x₁x₃ + k x₂',
+    eq3: 'e^(x₁x₂) − d x₃',
+    format1: (s, p) => `= ${p.a.toFixed(1)} × (${s[1].toFixed(4)} − ${s[0].toFixed(4)})`,
+    format2: (s, p) => `= ${p.b.toFixed(1)}×${s[0].toFixed(4)} − ${p.c.toFixed(2)}×${s[0].toFixed(4)}×${s[2].toFixed(4)} + ${p.k.toFixed(1)}×${s[1].toFixed(4)}`,
+    format3: (s, p) => `= e^(${s[0].toFixed(4)}×${s[1].toFixed(4)}) − ${p.d.toFixed(1)}×${s[2].toFixed(4)}`,
+    vars: ['x₁', 'x₂', 'x₃']
+  },
+  default: {
+    eq1: 'f₁(x)',
+    eq2: 'f₂(x)',
+    eq3: 'f₃(x)',
+    format1: (s, p) => `= (${s[0].toFixed(4)}, ${s[1].toFixed(4)}, ${s[2].toFixed(4)})`,
+    format2: (s, p) => '= calculating...',
+    format3: (s, p) => '= calculating...',
+    vars: ['x', 'y', 'z']
+  }
+};
+
+// ============================================================
+// State
+// ============================================================
+let currentModel = 'chen';
+let currentParams = {};
+let trailEnabled = true;
+let autoRotate = false;
+let glowEnabled = false;
+let cameraAnimationId = null;
+
+let motionSpeed = 0.01;
+let tailLength = 0.001;
+let headPosition = 0;
+let headSize = 0.02;
+let headPulseEnabled = true;
+let interpolationFactor = 8;
+let currentColorTheme = 'duotone';
+
+let lastFrameTime = performance.now();
+
+let calcEnabled = true;
+let calcLastUpdate = 0;
+
+// ============================================================
+// Three.js initialization
+// ============================================================
+const container = document.getElementById('canvas-container');
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x0a0a0f, 0.008);
+
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(8, 5.2, 10.4);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+container.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.autoRotate = false;
+controls.autoRotateSpeed = 0.5;
+
+const ambientLight = new THREE.AmbientLight(0x404060);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0x4fc3f7, 2, 200);
+pointLight.position.set(20, 20, 20);
+scene.add(pointLight);
+
+const gridHelper = new THREE.GridHelper(200, 40, 0x1a1a2e, 0x1a1a2e);
+gridHelper.position.y = -30;
+scene.add(gridHelper);
+
+let trajectoryLine = null;
+let glowPoints = null;
+let headMarker = null;
+let fullTrajectory = [];
+
+// ============================================================
+// RK4 integrator
+// ============================================================
+function rk4Step(f, s, p, t, dt) {
+  const k1 = f(s, p, t);
+  const s2 = s.map((v, i) => v + k1[i] * dt / 2);
+  const k2 = f(s2, p, t + dt / 2);
+  const s3 = s.map((v, i) => v + k2[i] * dt / 2);
+  const k3 = f(s3, p, t + dt / 2);
+  const s4 = s.map((v, i) => v + k3[i] * dt);
+  const k4 = f(s4, p, t + dt);
+  return s.map((v, i) => v + (k1[i] + 2*k2[i] + 2*k3[i] + k4[i]) * dt / 6);
+}
+
+// ============================================================
+// Trajectory calculation
+// ============================================================
+function computeTrajectory(modelKey, params) {
+  const model = MODELS[modelKey];
+  const points = [];
+
+  if (model.type === 'ode' || model.type === 'ode-forced') {
+    const steps = model.type === 'ode' ? 40000 : 20000;
+    const dt = model.type === 'ode' ? 0.005 : 0.01;
+    let s = [...model.initial];
+    let t = 0;
+
+    for (let i = 0; i < steps; i++) {
+      if (model.type === 'ode-forced') {
+        points.push({ x: s[0], y: s[1], z: t, t: i / steps });
+      } else {
+        points.push({ x: s[0], y: s[1], z: s[2], t: i / steps });
+      }
+      s = rk4Step(model.f, s, params, t, dt);
+      t += dt;
+
+      if (!isFinite(s[0]) || Math.abs(s[0]) > 1e6) break;
+    }
+  } else if (model.type === 'map' || model.type === 'map-complex') {
+    const steps = 8000;
+    let s = [...model.initial];
+
+    for (let i = 0; i < steps; i++) {
+      points.push({ x: s[0], y: s[1], z: i, t: i / steps });
+      s = model.f(s, params);
+      if (!isFinite(s[0]) || Math.abs(s[0]) > 1e6) break;
+    }
+  }
+
+  return points;
+}
+
+// ============================================================
+// Trajectory interpolation
+// ============================================================
+function interpolateTrajectory(trajectory, factor = 8) {
+  if (factor <= 1 || trajectory.length < 2) return trajectory;
+
+  const result = [];
+  const len = trajectory.length;
+
+  for (let i = 0; i < len - 1; i++) {
+    const a = trajectory[i];
+    const b = trajectory[i + 1];
+
+    for (let j = 0; j < factor; j++) {
+      const t = j / factor;
+      result.push({
+        x: a.x + (b.x - a.x) * t,
+        y: a.y + (b.y - a.y) * t,
+        z: a.z + (b.z - a.z) * t,
+        t: a.t + (b.t - a.t) * t
+      });
+    }
+  }
+  result.push(trajectory[len - 1]);
+  return result;
+}
+
+// ============================================================
+// Color
+// ============================================================
+function getColor(t) {
+  return COLOR_THEMES[currentColorTheme].getColor(t);
+}
+
+// ============================================================
+// Trajectory rendering
+// ============================================================
+function buildTrajectory(modelKey) {
+  if (trajectoryLine) { scene.remove(trajectoryLine); trajectoryLine.geometry.dispose(); }
+  if (glowPoints) { scene.remove(glowPoints); glowPoints.geometry.dispose(); }
+  if (headMarker) { scene.remove(headMarker); headMarker.geometry.dispose(); }
+
+  const model = MODELS[modelKey];
+  const rawTrajectory = computeTrajectory(modelKey, currentParams);
+  fullTrajectory = interpolateTrajectory(rawTrajectory, interpolationFactor);
+
+  if (fullTrajectory.length < 2) return;
+
+  document.getElementById('stat-raw').textContent = rawTrajectory.length.toLocaleString();
+
+  const cx = model.center[0], cy = model.center[1], cz = model.center[2];
+  const scale = model.scale;
+
+  const positions = new Float32Array(fullTrajectory.length * 3);
+  const colors = new Float32Array(fullTrajectory.length * 3);
+
+  for (let i = 0; i < fullTrajectory.length; i++) {
+    const p = fullTrajectory[i];
+    positions[i*3] = (p.x - cx) * scale / 20;
+    positions[i*3+1] = (p.y - cy) * scale / 20;
+    positions[i*3+2] = (p.z - cz) * scale / 20;
+
+    const c = getColor(p.t);
+    colors[i*3] = c.r;
+    colors[i*3+1] = c.g;
+    colors[i*3+2] = c.b;
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  const material = new THREE.LineBasicMaterial({
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.9,
+    linewidth: 1
+  });
+
+  trajectoryLine = new THREE.Line(geometry, material);
+  scene.add(trajectoryLine);
+
+  if (glowEnabled) {
+    const sampleRate = Math.max(1, Math.floor(fullTrajectory.length / 3000));
+    const sampledCount = Math.floor(fullTrajectory.length / sampleRate);
+    const glowPos = new Float32Array(sampledCount * 3);
+    const glowCol = new Float32Array(sampledCount * 3);
+
+    for (let i = 0, j = 0; i < fullTrajectory.length; i += sampleRate, j++) {
+      glowPos[j*3] = positions[i*3];
+      glowPos[j*3+1] = positions[i*3+1];
+      glowPos[j*3+2] = positions[i*3+2];
+      glowCol[j*3] = colors[i*3];
+      glowCol[j*3+1] = colors[i*3+1];
+      glowCol[j*3+2] = colors[i*3+2];
+    }
+
+    const glowGeo = new THREE.BufferGeometry();
+    glowGeo.setAttribute('position', new THREE.BufferAttribute(glowPos, 3));
+    glowGeo.setAttribute('color', new THREE.BufferAttribute(glowCol, 3));
+
+    const glowMat = new THREE.PointsMaterial({
+      size: 0.15,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+
+    glowPoints = new THREE.Points(glowGeo, glowMat);
+    scene.add(glowPoints);
+  }
+
+  const headGeo = new THREE.SphereGeometry(headSize, 16, 16);
+  const headMat = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 1.0,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+  headMarker = new THREE.Mesh(headGeo, headMat);
+  headMarker.visible = false;
+  scene.add(headMarker);
+
+  const glowHeadGeo = new THREE.SphereGeometry(headSize * 2.5, 16, 16);
+  const glowHeadMat = new THREE.MeshBasicMaterial({
+    color: 0x4fc3f7,
+    transparent: true,
+    opacity: 0.15,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+  const headGlow = new THREE.Mesh(glowHeadGeo, glowHeadMat);
+  headMarker.add(headGlow);
+
+  headPosition = 0;
+}
+
+// ============================================================
+// Automatic camera adjustment
+// ============================================================
+function fitCameraToTrajectory(animate = false) {
+  if (!trajectoryLine) return;
+
+  trajectoryLine.geometry.computeBoundingBox();
+  const bbox = trajectoryLine.geometry.boundingBox;
+  const center = new THREE.Vector3();
+  bbox.getCenter(center);
+  const size = new THREE.Vector3();
+  bbox.getSize(size);
+
+  const maxDim = Math.max(size.x, size.y, size.z);
+  let fitDistance = maxDim * 1.8;
+  fitDistance = Math.max(5, Math.min(60, fitDistance));
+
+  const dir = new THREE.Vector3(1, 0.7, 1.3).normalize();
+  const targetPos = center.clone().add(dir.multiplyScalar(fitDistance));
+
+  animateCameraTo(targetPos, center, animate);
+  syncCameraDistSlider();
+}
+
+function animateCameraTo(targetPos, targetLookAt, animate = true) {
+  if (cameraAnimationId) {
+    cancelAnimationFrame(cameraAnimationId);
+    cameraAnimationId = null;
+  }
+
+  if (!animate) {
+    camera.position.copy(targetPos);
+    controls.target.copy(targetLookAt);
+    controls.update();
+    return;
+  }
+
+  const startPos = camera.position.clone();
+  const startTarget = controls.target.clone();
+  const duration = 600;
+  const startTime = performance.now();
+
+  function updateCamera() {
+    const elapsed = performance.now() - startTime;
+    const t = Math.min(elapsed / duration, 1);
+    const ease = t * t * (3 - 2 * t);
+
+    camera.position.lerpVectors(startPos, targetPos, ease);
+    controls.target.lerpVectors(startTarget, targetLookAt, ease);
+    controls.update();
+
+    if (t < 1) {
+      cameraAnimationId = requestAnimationFrame(updateCamera);
+    } else {
+      cameraAnimationId = null;
+    }
+  }
+  updateCamera();
+}
+
+// ============================================================
+// Animation
+// ============================================================
+function updateAnimation() {
+  if (!trajectoryLine || fullTrajectory.length === 0) return;
+
+  const model = MODELS[currentModel];
+  const cx = model.center[0], cy = model.center[1], cz = model.center[2];
+  const scale = model.scale;
+  const N = fullTrajectory.length;
+
+  if (!trailEnabled) {
+    trajectoryLine.geometry.setDrawRange(0, N);
+    if (glowPoints) {
+      glowPoints.geometry.setDrawRange(0, glowPoints.geometry.attributes.position.count);
+    }
+    if (headMarker) headMarker.visible = false;
+    return;
+  }
+
+  const now = performance.now();
+  const realDt = Math.min((now - lastFrameTime) / 1000, 0.1);
+  lastFrameTime = now;
+
+  const baseSpeed = 0.15;
+  headPosition += baseSpeed * motionSpeed * realDt;
+
+  if (headPosition >= 1) {
+    headPosition = headPosition - Math.floor(headPosition);
+  }
+
+  const tailLen = Math.max(2, Math.floor(N * tailLength));
+  const headIdx = Math.floor(headPosition * N);
+  const tailStartIdx = headIdx - tailLen;
+
+  if (tailStartIdx >= 0) {
+    trajectoryLine.geometry.setDrawRange(tailStartIdx, tailLen);
+  } else {
+    trajectoryLine.geometry.setDrawRange(0, headIdx);
+  }
+
+  if (glowPoints) {
+    const glowN = glowPoints.geometry.attributes.position.count;
+    const glowTail = Math.max(1, Math.floor(glowN * tailLength));
+    const glowHead = Math.floor(headPosition * glowN);
+    const glowStart = glowHead - glowTail;
+
+    if (glowStart >= 0) {
+      glowPoints.geometry.setDrawRange(glowStart, glowTail);
+    } else {
+      glowPoints.geometry.setDrawRange(0, glowHead);
+    }
+  }
+
+  if (headMarker) {
+    headMarker.visible = true;
+    const p = fullTrajectory[headIdx];
+    headMarker.position.set(
+      (p.x - cx) * scale / 20,
+      (p.y - cy) * scale / 20,
+      (p.z - cz) * scale / 20
+    );
+    headMarker.material.color.copy(getColor(p.t));
+
+    if (headPulseEnabled) {
+      const pulseFreq = 0.004 * Math.max(motionSpeed, 0.5);
+      const pulseAmp = 0.2 * Math.min(motionSpeed, 2);
+      const pulse = 1 + Math.sin(performance.now() * pulseFreq) * pulseAmp;
+      headMarker.scale.setScalar(pulse);
+    } else {
+      headMarker.scale.setScalar(1);
+    }
+  }
+}
+
+// ============================================================
+// Live calculation panel update
+// ============================================================
+function updateCalcPanel() {
+  if (!calcEnabled || !trajectoryLine || fullTrajectory.length === 0) return;
+
+  const now = performance.now();
+  if (now - calcLastUpdate < 40) return;
+  calcLastUpdate = now;
+
+  const N = fullTrajectory.length;
+  const headIdx = Math.floor(headPosition * N);
+  const headIdxNext = Math.min(headIdx + 10, N - 1);
+
+  const state = fullTrajectory[headIdx];
+  const nextState = fullTrajectory[headIdxNext];
+
+  const model = MODELS[currentModel];
+  const p = currentParams;
+  const formulas = CALC_FORMULAS[currentModel] || CALC_FORMULAS.default;
+
+  document.getElementById('calc-model-name').textContent = model.name.split(' ')[0];
+
+  const vars = formulas.vars;
+  for (let i = 0; i < 3; i++) {
+    document.getElementById(`calc-var-${i}`).textContent = vars[i];
+    document.getElementById(`calc-var-${i+3}`).textContent = vars[i] + '′';
+  }
+
+  const s = [state.x, state.y, state.z];
+  document.getElementById('calc-x1').textContent = s[0].toFixed(4);
+  document.getElementById('calc-x2').textContent = s[1].toFixed(4);
+  document.getElementById('calc-x3').textContent = s[2].toFixed(4);
+
+  document.getElementById('eq-formula-1').textContent = formulas.eq1;
+  document.getElementById('eq-formula-2').textContent = formulas.eq2;
+  document.getElementById('eq-formula-3').textContent = formulas.eq3;
+
+  document.getElementById('eq-sub-1').textContent = formulas.format1(s, p);
+  document.getElementById('eq-sub-2').textContent = formulas.format2(s, p);
+  document.getElementById('eq-sub-3').textContent = formulas.format3(s, p);
+
+  document.getElementById('calc-nx1').textContent = nextState.x.toFixed(4);
+  document.getElementById('calc-nx2').textContent = nextState.y.toFixed(4);
+  document.getElementById('calc-nx3').textContent = nextState.z.toFixed(4);
+
+  ['calc-x1', 'calc-x2', 'calc-x3'].forEach(id => {
+    const el = document.getElementById(id);
+    el.classList.remove('flash');
+    void el.offsetWidth;
+    el.classList.add('flash');
+  });
+}
+
+// ============================================================
+// UI initialization
+// ============================================================
+const modelGrid = document.getElementById('model-grid');
+const paramsContainer = document.getElementById('params-container');
+const cameraDistSlider = document.getElementById('camera-dist-slider');
+const cameraDistValue = document.getElementById('val-camera-dist');
+const speedSlider = document.getElementById('speed-slider');
+const speedValue = document.getElementById('val-speed');
+const tailSlider = document.getElementById('tail-slider');
+const tailValue = document.getElementById('val-tail');
+const headSizeSlider = document.getElementById('head-size-slider');
+const headSizeValue = document.getElementById('val-head-size');
+const resolutionSlider = document.getElementById('resolution-slider');
+const resolutionValue = document.getElementById('val-resolution');
+const themeGrid = document.getElementById('theme-grid');
+
+const modelIcons = {
+  lorenz: '🦋', rossler: '🌀', chen: '🌊', rabinovich: '🌌',
+  yuwang: '⚡', duffing: '🌊', vanderpol: '💓', henon: '🍌',
+  arnold: '🐱', standard: '🎯', ikeda: '💡'
+};
+
+function buildModelButtons() {
+  modelGrid.innerHTML = '';
+  Object.keys(MODELS).forEach(key => {
+    const btn = document.createElement('button');
+    btn.className = 'model-btn' + (key === currentModel ? ' active' : '');
+    btn.textContent = (modelIcons[key] || '◆') + ' ' + MODELS[key].name.split(' ')[0];
+    btn.onclick = () => selectModel(key);
+    modelGrid.appendChild(btn);
+  });
+}
+
+function buildThemeButtons() {
+  themeGrid.innerHTML = '';
+  Object.keys(COLOR_THEMES).forEach(key => {
+    const theme = COLOR_THEMES[key];
+    const btn = document.createElement('button');
+    btn.className = 'theme-btn' + (key === currentColorTheme ? ' active' : '');
+    btn.innerHTML = `<span class="theme-swatch" style="background: ${theme.swatch};"></span>${theme.name}`;
+    btn.onclick = () => selectTheme(key);
+    themeGrid.appendChild(btn);
+  });
+}
+
+function selectTheme(key) {
+  currentColorTheme = key;
+  document.querySelectorAll('#theme-grid .theme-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', Object.keys(COLOR_THEMES)[i] === key);
+  });
+  buildTrajectory(currentModel);
+}
+
+function buildParams() {
+  paramsContainer.innerHTML = '';
+  const model = MODELS[currentModel];
+  currentParams = {};
+
+  model.params.forEach(p => {
+    currentParams[p.key] = p.value;
+
+    const group = document.createElement('div');
+    group.className = 'slider-group';
+
+    const label = document.createElement('label');
+    label.innerHTML = `<span>${p.label}</span><span id="val-${p.key}">${p.value.toFixed(2)}</span>`;
+
+    const slider = document.createElement('input');
+    slider.type = 'range';
+    slider.min = p.min;
+    slider.max = p.max;
+    slider.step = p.step;
+    slider.value = p.value;
+
+    slider.oninput = () => {
+      currentParams[p.key] = parseFloat(slider.value);
+      document.getElementById(`val-${p.key}`).textContent = parseFloat(slider.value).toFixed(2);
+      clearTimeout(slider._timeout);
+      slider._timeout = setTimeout(() => buildTrajectory(currentModel), 150);
+    };
+
+    group.appendChild(label);
+    group.appendChild(slider);
+    paramsContainer.appendChild(group);
+  });
+}
+
+function updateInfoPanel() {
+  const model = MODELS[currentModel];
+  document.getElementById('model-name').textContent = model.name;
+  document.getElementById('model-desc').textContent = model.desc;
+  document.getElementById('equation-content').textContent = model.equations;
+  document.getElementById('stat-lyap').textContent = model.lyap.toFixed(3);
+  document.getElementById('stat-dim').textContent = model.dimKY.toFixed(3);
+}
+
+// ============================================================
+// Camera distance slider
+// ============================================================
+function getCurrentDirection() {
+  const dir = new THREE.Vector3();
+  camera.getWorldDirection(dir);
+  return dir.negate().normalize();
+}
+
+cameraDistSlider.oninput = () => {
+  const dist = parseFloat(cameraDistSlider.value);
+  cameraDistValue.textContent = dist.toFixed(1);
+
+  const dir = getCurrentDirection();
+  const target = controls.target.clone();
+
+  camera.position.copy(target).add(dir.multiplyScalar(dist));
+  controls.update();
+};
+
+function syncCameraDistSlider() {
+  const dist = camera.position.distanceTo(controls.target);
+  cameraDistSlider.value = Math.max(2, Math.min(60, dist));
+  cameraDistValue.textContent = dist.toFixed(1);
+}
+
+// ============================================================
+// Motion slider
+// ============================================================
+function formatSpeed(speed) {
+  if (speed < 0.1) return speed.toFixed(2) + 'x';
+  if (speed < 1) return speed.toFixed(2) + 'x';
+  return speed.toFixed(1) + 'x';
+}
+
+speedSlider.oninput = () => {
+  motionSpeed = parseFloat(speedSlider.value);
+  speedValue.textContent = formatSpeed(motionSpeed);
+};
+
+function logToTail(logVal) {
+  return Math.pow(10, logVal);
+}
+
+function tailToLog(tailPercent) {
+  return Math.log10(tailPercent);
+}
+
+function formatTail(percent) {
+  if (percent < 0.01) return percent.toFixed(3) + '%';
+  if (percent < 0.1) return percent.toFixed(2) + '%';
+  if (percent < 1) return percent.toFixed(2) + '%';
+  if (percent < 10) return percent.toFixed(1) + '%';
+  return Math.round(percent) + '%';
+}
+
+tailSlider.oninput = () => {
+  const logVal = parseFloat(tailSlider.value);
+  const percent = logToTail(logVal);
+  tailLength = percent / 100;
+  tailValue.textContent = formatTail(percent);
+};
+
+headSizeSlider.oninput = () => {
+  headSize = parseFloat(headSizeSlider.value);
+  headSizeValue.textContent = headSize.toFixed(2);
+
+  if (headMarker) {
+    headMarker.geometry.dispose();
+    headMarker.geometry = new THREE.SphereGeometry(headSize, 16, 16);
+
+    const glowChild = headMarker.children[0];
+    if (glowChild) {
+      glowChild.geometry.dispose();
+      glowChild.geometry = new THREE.SphereGeometry(headSize * 2.5, 16, 16);
+    }
+  }
+};
+
+resolutionSlider.oninput = () => {
+  interpolationFactor = parseInt(resolutionSlider.value);
+  resolutionValue.textContent = interpolationFactor + 'x';
+  clearTimeout(resolutionSlider._timeout);
+  resolutionSlider._timeout = setTimeout(() => buildTrajectory(currentModel), 250);
+};
+
+// ============================================================
+// View presets
+// ============================================================
+function setView(preset) {
+  const dist = camera.position.distanceTo(controls.target);
+  const target = controls.target.clone();
+  const views = {
+    front: new THREE.Vector3(0, 0, 1),
+    top:   new THREE.Vector3(0, 1, 0.001),
+    side:  new THREE.Vector3(1, 0, 0),
+    iso:   new THREE.Vector3(1, 0.7, 1).normalize()
+  };
+  const dir = views[preset];
+  const newPos = target.clone().add(dir.multiplyScalar(dist));
+
+  animateCameraTo(newPos, target, true);
+}
+
+document.getElementById('view-front').onclick = () => setView('front');
+document.getElementById('view-top').onclick = () => setView('top');
+document.getElementById('view-side').onclick = () => setView('side');
+document.getElementById('view-iso').onclick = () => setView('iso');
+
+// ============================================================
+// Model selection
+// ============================================================
+function selectModel(key) {
+  currentModel = key;
+  document.querySelectorAll('#model-grid .model-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', Object.keys(MODELS)[i] === key);
+  });
+  buildParams();
+  updateInfoPanel();
+  buildTrajectory(key);
+
+  headPosition = 0;
+
+  const dist = MODELS[key].cameraDist || 12;
+  const dir = new THREE.Vector3(1, 0.65, 1.3).normalize();
+  const target = new THREE.Vector3(0, 0, 0);
+  const newPos = target.clone().add(dir.multiplyScalar(dist));
+
+  animateCameraTo(newPos, target, true);
+
+  cameraDistSlider.value = dist;
+  cameraDistValue.textContent = dist.toFixed(1);
+}
+
+// ============================================================
+// Toggles & buttons
+// ============================================================
+document.getElementById('toggle-trail').onclick = function() {
+  this.classList.toggle('on');
+  trailEnabled = this.classList.contains('on');
+  if (trailEnabled) headPosition = 0;
+};
+
+document.getElementById('toggle-pulse').onclick = function() {
+  this.classList.toggle('on');
+  headPulseEnabled = this.classList.contains('on');
+};
+
+document.getElementById('toggle-rotate').onclick = function() {
+  this.classList.toggle('on');
+  autoRotate = this.classList.contains('on');
+  controls.autoRotate = autoRotate;
+};
+
+document.getElementById('toggle-glow').onclick = function() {
+  this.classList.toggle('on');
+  glowEnabled = this.classList.contains('on');
+  buildTrajectory(currentModel);
+};
+
+document.getElementById('btn-reset').onclick = () => {
+  buildParams();
+  buildTrajectory(currentModel);
+  headPosition = 0;
+
+  const dist = MODELS[currentModel].cameraDist || 12;
+  const dir = new THREE.Vector3(1, 0.65, 1.3).normalize();
+  const target = new THREE.Vector3(0, 0, 0);
+  const newPos = target.clone().add(dir.multiplyScalar(dist));
+  animateCameraTo(newPos, target, true);
+  cameraDistSlider.value = dist;
+  cameraDistValue.textContent = dist.toFixed(1);
+};
+
+document.getElementById('btn-fit').onclick = () => {
+  fitCameraToTrajectory(true);
+};
+
+renderer.domElement.addEventListener('dblclick', () => {
+  fitCameraToTrajectory(true);
+});
+
+// ============================================================
+// Menu toggle
+// ============================================================
+const menuToggle = document.getElementById('menu-toggle');
+
+menuToggle.onclick = () => {
+  document.body.classList.toggle('menu-closed');
+  menuToggle.classList.toggle('closed');
+
+  const icon = menuToggle.querySelector('.menu-icon');
+  if (document.body.classList.contains('menu-closed')) {
+    icon.textContent = '✕';
+  } else {
+    icon.textContent = '☰';
+  }
+};
+
+// ============================================================
+// Calc panel toggle
+// ============================================================
+const calcToggle = document.getElementById('calc-toggle');
+
+calcToggle.onclick = () => {
+  document.body.classList.toggle('calc-hidden');
+  calcToggle.classList.toggle('off');
+  calcEnabled = !document.body.classList.contains('calc-hidden');
+};
+
+// ============================================================
+// Keyboard shortcuts
+// ============================================================
+window.addEventListener('keydown', (e) => {
+  if (e.target.matches('input, textarea')) return;
+
+  if (e.key === 'h' || e.key === 'H') {
+    menuToggle.click();
+  } else if (e.key === 'c' || e.key === 'C') {
+    calcToggle.click();
+  }
+});
+
+// ============================================================
+// Render loop
+// ============================================================
+let frameCount = 0;
+let fpsUpdateTime = 0;
+let lastSliderSync = 0;
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  const now = performance.now();
+  const dt = (now - lastFrameTime) / 1000;
+
+  controls.update();
+  updateAnimation();
+  updateCalcPanel();
+
+  if (now - lastSliderSync > 200) {
+    const currentDist = camera.position.distanceTo(controls.target);
+    const sliderVal = parseFloat(cameraDistSlider.value);
+    if (Math.abs(sliderVal - currentDist) > 0.5 && !cameraAnimationId) {
+      cameraDistSlider.value = Math.max(2, Math.min(60, currentDist));
+      cameraDistValue.textContent = currentDist.toFixed(1);
+    }
+    lastSliderSync = now;
+  }
+
+  frameCount++;
+  fpsUpdateTime += dt;
+  if (fpsUpdateTime >= 0.5) {
+    document.getElementById('stat-fps').textContent = Math.round(frameCount / fpsUpdateTime);
+    frameCount = 0;
+    fpsUpdateTime = 0;
+  }
+
+  if (trajectoryLine) {
+    const drawn = trajectoryLine.geometry.drawRange.count;
+    document.getElementById('stat-points').textContent = drawn.toLocaleString();
+  }
+
+  renderer.render(scene, camera);
+}
+
+// ============================================================
+// Resize
+// ============================================================
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ============================================================
+// Init
+// ============================================================
+function init() {
+  buildModelButtons();
+  buildThemeButtons();
+  buildParams();
+  updateInfoPanel();
+  buildTrajectory(currentModel);
+
+  const dist = 8.0;
+  const dir = new THREE.Vector3(1, 0.65, 1.3).normalize();
+  const target = new THREE.Vector3(0, 0, 0);
+  const newPos = target.clone().add(dir.multiplyScalar(dist));
+  camera.position.copy(newPos);
+  controls.target.copy(target);
+  controls.update();
+
+  cameraDistSlider.value = dist;
+  cameraDistValue.textContent = dist.toFixed(1);
+
+  speedSlider.value = motionSpeed;
+  speedValue.textContent = formatSpeed(motionSpeed);
+
+  const defaultTailPercent = 0.1;
+  tailLength = defaultTailPercent / 100;
+  tailSlider.value = tailToLog(defaultTailPercent);
+  tailValue.textContent = formatTail(defaultTailPercent);
+
+  headSizeSlider.value = headSize;
+  headSizeValue.textContent = headSize.toFixed(2);
+
+  resolutionSlider.value = interpolationFactor;
+  resolutionValue.textContent = interpolationFactor + 'x';
+
+  document.getElementById('toggle-trail').classList.toggle('on', trailEnabled);
+  document.getElementById('toggle-pulse').classList.toggle('on', headPulseEnabled);
+  document.getElementById('toggle-rotate').classList.toggle('on', autoRotate);
+  document.getElementById('toggle-glow').classList.toggle('on', glowEnabled);
+
+  lastFrameTime = performance.now();
+
+  setTimeout(() => {
+    document.getElementById('loading').classList.add('hidden');
+  }, 800);
+
+  animate();
+}
+
+init();
+</script>
+</body>
+</html>
