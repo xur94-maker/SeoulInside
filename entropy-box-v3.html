@@ -1,9 +1,9 @@
  <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>엔트로피 상자 v3 — 하드디스크 기체 시뮬레이션</title>
+<title>Entropy Box v3 — Hard-Disk Gas Simulation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -171,7 +171,7 @@
   footer.notes a:hover { text-decoration: underline; }
   code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.92em; }
 
-  /* 자동 실험 패널 */
+  /* Auto experiment panel */
   .auto-panel {
     background: linear-gradient(135deg, rgba(31,143,160,0.08), rgba(185,122,31,0.08));
     border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-top: 12px;
@@ -193,13 +193,13 @@
 
   <header class="top">
     <div class="title-block">
-      <h1>엔트로피 상자 v3</h1>
-      <p>에너지가 보존되는 탄성 하드디스크 기체를 시뮬레이션합니다. 좁은 모서리에 모여 있던 입자가 퍼지면서 위치 엔트로피가 올라가고, 속력 분포가 2차원 맥스웰–볼츠만 분포로 수렴하는 과정을 함께 봅니다. 「속도 반전」으로 뉴턴 역학의 가역성(Loschmidt 역설)도 직접 시험할 수 있습니다.</p>
+      <h1>Entropy Box v3</h1>
+      <p>Simulates an energy-conserving gas of elastic hard disks. As particles packed into a small corner spread out, the positional entropy rises and the speed distribution converges to the 2D Maxwell–Boltzmann distribution. Use “Reverse velocities” to test the reversibility of Newtonian mechanics (Loschmidt’s paradox) yourself.</p>
     </div>
     <div class="top-actions">
-      <button class="icon-btn" id="exportCsvBtn" title="히스토리 CSV 다운로드">CSV 내보내기</button>
-      <button class="icon-btn" id="shareBtn" title="현재 설정을 URL로 복사">설정 공유</button>
-      <button class="theme-toggle" id="themeToggle">다크 / 라이트</button>
+      <button class="icon-btn" id="exportCsvBtn" title="Download history as CSV">Export CSV</button>
+      <button class="icon-btn" id="shareBtn" title="Copy current settings as a URL">Share settings</button>
+      <button class="theme-toggle" id="themeToggle">Dark / Light</button>
     </div>
   </header>
 
@@ -212,25 +212,25 @@
       </div>
 
       <div class="sim-readout">
-        <div class="stat"><div class="k">입자 수 N</div><div class="v" id="statN">—</div></div>
-        <div class="stat"><div class="k">충전율 φ (면적 비)</div><div class="v" id="statPhi">—</div></div>
-        <div class="stat"><div class="k">시간 t·v/L</div><div class="v" id="statT">—</div><div class="sub" id="statSteps">—</div></div>
-        <div class="stat"><div class="k">계산 속도</div><div class="v" id="statSps">—</div><div class="sub" id="statDt">—</div></div>
-        <div class="stat"><div class="k">에너지 E / E₀</div><div class="v" id="statE">—</div></div>
-        <div class="stat"><div class="k">유효 온도 T / T₀</div><div class="v" id="statTemp">—</div></div>
-        <div class="stat"><div class="k">누적 충돌 / 입자</div><div class="v" id="statColl">—</div><div class="sub" id="statWall">—</div></div>
-        <div class="stat"><div class="k">속력분포 D<sub>KL</sub>(‖MB)</div><div class="v" id="statKL">—</div><div class="sub" id="statKLfloor">—</div></div>
-        <div class="stat"><div class="k">평형 대비 남은 ΔS/k<sub>B</sub></div><div class="v" id="statDS">—</div></div>
-        <div class="stat"><div class="k">엔트로피 증가율 dH/dt</div><div class="v" id="statDH">—</div><div class="sub" id="statDHDir">—</div></div>
-        <div class="stat"><div class="k">벽 압력 P·V/(N k<sub>B</sub>T)</div><div class="v" id="statP">—</div><div class="sub" id="statPsub">—</div></div>
-        <div class="stat"><div class="k">겹침 쌍 (근사)</div><div class="v" id="statOverlap">—</div></div>
+        <div class="stat"><div class="k">Particle count N</div><div class="v" id="statN">—</div></div>
+        <div class="stat"><div class="k">Packing fraction φ (area ratio)</div><div class="v" id="statPhi">—</div></div>
+        <div class="stat"><div class="k">Time t·v/L</div><div class="v" id="statT">—</div><div class="sub" id="statSteps">—</div></div>
+        <div class="stat"><div class="k">Compute speed</div><div class="v" id="statSps">—</div><div class="sub" id="statDt">—</div></div>
+        <div class="stat"><div class="k">Energy E / E₀</div><div class="v" id="statE">—</div></div>
+        <div class="stat"><div class="k">Effective temperature T / T₀</div><div class="v" id="statTemp">—</div></div>
+        <div class="stat"><div class="k">Cumulative collisions / particle</div><div class="v" id="statColl">—</div><div class="sub" id="statWall">—</div></div>
+        <div class="stat"><div class="k">Speed dist. D<sub>KL</sub>(‖MB)</div><div class="v" id="statKL">—</div><div class="sub" id="statKLfloor">—</div></div>
+        <div class="stat"><div class="k">Remaining ΔS/k<sub>B</sub> to equilibrium</div><div class="v" id="statDS">—</div></div>
+        <div class="stat"><div class="k">Entropy growth rate dH/dt</div><div class="v" id="statDH">—</div><div class="sub" id="statDHDir">—</div></div>
+        <div class="stat"><div class="k">Wall pressure P·V/(N k<sub>B</sub>T)</div><div class="v" id="statP">—</div><div class="sub" id="statPsub">—</div></div>
+        <div class="stat"><div class="k">Overlapping pairs (approx.)</div><div class="v" id="statOverlap">—</div></div>
       </div>
 
       <div class="sim-controls-row">
-        <button class="action primary" id="playBtn">일시정지</button>
-        <button class="action" id="resetCornerBtn">모서리에서 다시 시작</button>
-        <button class="action" id="resetRandomBtn">무작위로 다시 시작 (대조군)</button>
-        <button class="action loschmidt" id="reverseBtn">속도 반전 (v → −v)</button>
+        <button class="action primary" id="playBtn">Pause</button>
+        <button class="action" id="resetCornerBtn">Restart from corner</button>
+        <button class="action" id="resetRandomBtn">Restart randomly (control)</button>
+        <button class="action loschmidt" id="reverseBtn">Reverse velocities (v → −v)</button>
       </div>
 
       <div class="notice" id="msg"></div>
@@ -238,82 +238,82 @@
 
     <!-- RIGHT: controls -->
     <div class="card panel-card">
-      <h2>조건 설정</h2>
+      <h2>Settings</h2>
 
       <div class="group">
-        <h3>물리 모델</h3>
+        <h3>Physics model</h3>
         <div class="field">
           <div class="seg" id="modelSeg">
-            <button data-model="newton" class="active">뉴턴 하드디스크</button>
-            <button data-model="stoch">확률적 랜덤워크</button>
+            <button data-model="newton" class="active">Newtonian hard disks</button>
+            <button data-model="stoch">Stochastic random walk</button>
           </div>
         </div>
-        <div class="hint" id="modelHint">탄성 충돌·에너지 보존·시간 반전 대칭. 불가역성은 난수가 아니라 초기 조건과 충돌의 혼돈에서 나옵니다.</div>
+        <div class="hint" id="modelHint">Elastic collisions, energy conservation, time-reversal symmetry. Irreversibility comes not from random numbers but from the initial conditions and the chaos of collisions.</div>
         <div class="toggle-row">
-          <span>입자 간 충돌 (배타 규칙)</span>
+          <span>Particle–particle collisions (exclusion rule)</span>
           <label class="switch"><input type="checkbox" id="toggleCollide" checked><span class="slider-pill"></span></label>
         </div>
         <div class="field">
-          <label style="margin-bottom:8px;">경계 조건</label>
+          <label style="margin-bottom:8px;">Boundary condition</label>
           <div class="seg" id="boundarySeg">
-            <button data-mode="reflect" class="active">반사 벽</button>
-            <button data-mode="periodic">주기적</button>
+            <button data-mode="reflect" class="active">Reflecting walls</button>
+            <button data-mode="periodic">Periodic</button>
           </div>
         </div>
       </div>
 
       <div class="group">
-        <h3>입자</h3>
+        <h3>Particles</h3>
         <div class="field">
-          <label>입자 수 <span class="val" id="lblN">4,000</span></label>
+          <label>Particle count <span class="val" id="lblN">4,000</span></label>
           <input type="range" id="rangeN" min="0" max="1000" step="1" value="458">
         </div>
         <div class="field">
-          <label>입자 반지름 <span class="val" id="lblR">1.0</span></label>
+          <label>Particle radius <span class="val" id="lblR">1.0</span></label>
           <input type="range" id="rangeR" min="0.5" max="10" step="0.1" value="1">
         </div>
         <div class="field newton-only">
-          <label>평균 속력 v<sub>rms</sub> <span class="val" id="lblV">1.0</span></label>
+          <label>RMS speed v<sub>rms</sub> <span class="val" id="lblV">1.0</span></label>
           <input type="range" id="rangeV" min="0.2" max="5" step="0.1" value="1">
         </div>
         <div class="field newton-only">
-          <label style="margin-bottom:8px;">초기 속력 분포</label>
+          <label style="margin-bottom:8px;">Initial speed distribution</label>
           <select id="selInitVel">
-            <option value="single">모두 같은 속력 (방향만 무작위)</option>
-            <option value="mb">맥스웰–볼츠만 (열평형 분포)</option>
+            <option value="single">All same speed (random direction only)</option>
+            <option value="mb">Maxwell–Boltzmann (thermal equilibrium)</option>
           </select>
         </div>
         <div class="field newton-only">
-          <label style="margin-bottom:8px;">시간 적분 정확도 (dt = 계수 × r / v<sub>rms</sub>)</label>
+          <label style="margin-bottom:8px;">Time-integration accuracy (dt = factor × r / v<sub>rms</sub>)</label>
           <select id="selDt">
-            <option value="0.05">정밀 (0.05)</option>
-            <option value="0.10" selected>표준 (0.10)</option>
-            <option value="0.20">빠름 (0.20)</option>
+            <option value="0.05">Fine (0.05)</option>
+            <option value="0.10" selected>Standard (0.10)</option>
+            <option value="0.20">Fast (0.20)</option>
           </select>
         </div>
         <div class="field newton-only">
-          <label style="margin-bottom:8px;">충돌 처리 패스 (한 스텝 안의 다중 충돌 보정)</label>
+          <label style="margin-bottom:8px;">Collision passes (corrects multiple collisions within one step)</label>
           <select id="selPass">
-            <option value="1">1패스 (빠름)</option>
-            <option value="2" selected>2패스 (정밀, 겹침 거의 0)</option>
-            <option value="3">3패스 (가장 정밀)</option>
-            <option value="4">4패스 (최정밀, 느림)</option>
+            <option value="1">1 pass (fast)</option>
+            <option value="2" selected>2 passes (precise, near-zero overlap)</option>
+            <option value="3">3 passes (most precise)</option>
+            <option value="4">4 passes (finest, slow)</option>
           </select>
         </div>
         <div class="field stoch-only" style="display:none;">
-          <label>스텝 길이 <span class="val" id="lblStep">0.6</span></label>
+          <label>Step length <span class="val" id="lblStep">0.6</span></label>
           <input type="range" id="rangeStep" min="0.05" max="5" step="0.05" value="0.6">
         </div>
         <div class="field stoch-only" style="display:none;">
-          <label>방향 지속성 <span class="val" id="lblPersist">0.00</span></label>
+          <label>Direction persistence <span class="val" id="lblPersist">0.00</span></label>
           <input type="range" id="rangePersist" min="0" max="0.98" step="0.02" value="0">
         </div>
       </div>
 
       <div class="group">
-        <h3>시간</h3>
+        <h3>Time</h3>
         <div class="field">
-          <label style="margin-bottom:8px;">시뮬레이션 배속 (프레임당 스텝 수)</label>
+          <label style="margin-bottom:8px;">Simulation speed (steps per frame)</label>
           <select id="selMult">
             <option value="1">1×</option>
             <option value="4">4×</option>
@@ -322,57 +322,57 @@
             <option value="256">256×</option>
             <option value="1024">1,024×</option>
             <option value="4096">4,096×</option>
-            <option value="max">최대 (프레임 예산 내 전력)</option>
+            <option value="max">Max (full power within frame budget)</option>
           </select>
         </div>
         <div class="field">
-          <label style="margin-bottom:8px;">프레임 예산 (ms)</label>
+          <label style="margin-bottom:8px;">Frame budget (ms)</label>
           <select id="selBudget">
-            <option value="8">8ms (배터리 절약)</option>
-            <option value="13" selected>13ms (표준, 60fps)</option>
-            <option value="20">20ms (고성능)</option>
-            <option value="33">33ms (최대 처리량, 30fps)</option>
+            <option value="8">8ms (battery saver)</option>
+            <option value="13" selected>13ms (standard, 60fps)</option>
+            <option value="20">20ms (high performance)</option>
+            <option value="33">33ms (max throughput, 30fps)</option>
           </select>
         </div>
-        <div class="hint">프레임당 예산 안에서 가능한 만큼만 계산합니다. 입자가 많으면 선택한 배속보다 낮게 나올 수 있으며, 실제 속도는 「계산 속도」에 표시됩니다.</div>
+        <div class="hint">Only as much as fits in the per-frame budget is computed. With many particles the actual speed may be lower than selected; the real speed is shown under “Compute speed”.</div>
       </div>
 
       <div class="group">
-        <h3>꼬리 · 표시</h3>
+        <h3>Trails · Display</h3>
         <div class="toggle-row">
-          <span>입자 꼬리(궤적) 표시</span>
+          <span>Show particle trails</span>
           <label class="switch"><input type="checkbox" id="toggleTrail"><span class="slider-pill"></span></label>
         </div>
         <div class="toggle-row">
-          <span>속도 벡터 표시</span>
+          <span>Show velocity vectors</span>
           <label class="switch"><input type="checkbox" id="toggleVelVec"><span class="slider-pill"></span></label>
         </div>
         <div class="toggle-row">
-          <span>밀도 히트맵 오버레이</span>
+          <span>Density heatmap overlay</span>
           <label class="switch"><input type="checkbox" id="toggleHeat"><span class="slider-pill"></span></label>
         </div>
         <div class="field">
-          <label>추적 입자 수 <span class="val" id="lblTK">40</span></label>
+          <label>Tracked particles <span class="val" id="lblTK">40</span></label>
           <input type="range" id="rangeTK" min="1" max="300" step="1" value="40">
         </div>
         <div class="field">
-          <label>꼬리 길이 (기록점 수) <span class="val" id="lblTL">120</span></label>
+          <label>Trail length (recorded points) <span class="val" id="lblTL">120</span></label>
           <input type="range" id="rangeTL" min="10" max="600" step="10" value="120">
         </div>
         <div class="field">
-          <label>기록 간격 (스텝) <span class="val" id="lblTE">4</span></label>
+          <label>Record interval (steps) <span class="val" id="lblTE">4</span></label>
           <input type="range" id="rangeTE" min="1" max="100" step="1" value="4">
         </div>
         <div class="toggle-row">
-          <span>엔트로피 측정 격자선 표시</span>
+          <span>Show entropy measurement grid lines</span>
           <label class="switch"><input type="checkbox" id="toggleGrid" checked><span class="slider-pill"></span></label>
         </div>
       </div>
 
       <div class="group">
-        <h3>엔트로피 측정 · 가역성 실험</h3>
+        <h3>Entropy measurement · Reversibility experiment</h3>
         <div class="field">
-          <label style="margin-bottom:8px;">조대화 격자 세트 (변 방향 칸 수)</label>
+          <label style="margin-bottom:8px;">Coarse-graining grid set (cells per side)</label>
           <select id="selGrid">
             <option value="2,4,8">2 · 4 · 8</option>
             <option value="2,8,32" selected>2 · 8 · 32</option>
@@ -381,33 +381,33 @@
           </select>
         </div>
         <div class="field newton-only">
-          <label style="margin-bottom:8px;">속도 반전 시 섞어 넣는 교란 ε (v<sub>rms</sub> 대비)</label>
+          <label style="margin-bottom:8px;">Perturbation ε added on reversal (relative to v<sub>rms</sub>)</label>
           <select id="selEps">
-            <option value="0">0 (부동소수점 오차만)</option>
+            <option value="0">0 (floating-point error only)</option>
             <option value="1e-12">10⁻¹²</option>
             <option value="1e-8">10⁻⁸</option>
             <option value="1e-4">10⁻⁴</option>
           </select>
         </div>
-        <div class="hint newton-only">복원이 잘 되는 조건: 반전 전 대기 시간이 짧을수록(입자당 충돌 수십 회 이내), dt가 작을수록, 교란 ε가 작을수록입니다.</div>
+        <div class="hint newton-only">Conditions for good recovery: shorter wait before reversal (within a few dozen collisions per particle), smaller dt, and smaller perturbation ε.</div>
 
         <div class="auto-panel">
-          <h3>🔬 자동 실험 (Loschmidt 역설 재현)</h3>
+          <h3>🔬 Auto experiment (reproduce Loschmidt’s paradox)</h3>
           <div class="row">
-            <span>t₁ (전진)</span>
+            <span>t₁ (forward)</span>
             <input type="number" id="autoT1" value="0.5" step="0.1" min="0.1">
-            <span>t₂ (반전 후)</span>
+            <span>t₂ (after reversal)</span>
             <input type="number" id="autoT2" value="0.5" step="0.1" min="0.1">
-            <button class="action" id="autoRunBtn" style="padding:6px 12px;font-size:12.5px;">자동 실행</button>
+            <button class="action" id="autoRunBtn" style="padding:6px 12px;font-size:12.5px;">Run automatically</button>
           </div>
-          <div class="hint" style="margin-top:6px;">모서리 배치 → t₁까지 진행 → 속도 반전 → t₂까지 진행 → 자동 일시정지</div>
+          <div class="hint" style="margin-top:6px;">Corner start → run to t₁ → reverse velocities → run to t₂ → auto-pause</div>
         </div>
       </div>
 
       <div class="group">
-        <h3>⌨️ 단축키</h3>
+        <h3>⌨️ Keyboard shortcuts</h3>
         <div class="hint">
-          <kbd>Space</kbd> 재생/일시정지 · <kbd>R</kbd> 재시작 · <kbd>V</kbd> 속도 반전 · <kbd>G</kbd> 격자선 토글 · <kbd>T</kbd> 꼬리 토글 · <kbd>C</kbd> CSV 내보내기
+          <kbd>Space</kbd> Play/Pause · <kbd>R</kbd> Restart · <kbd>V</kbd> Reverse velocities · <kbd>G</kbd> Toggle grid · <kbd>T</kbd> Toggle trails · <kbd>C</kbd> Export CSV
         </div>
       </div>
     </div>
@@ -417,42 +417,42 @@
   <div class="charts">
     <div class="card">
       <div class="chart-head">
-        <h2>위치 엔트로피 H / H<sub>max</sub> (조대화 격자별)</h2>
+        <h2>Positional entropy H / H<sub>max</sub> (per coarse-graining grid)</h2>
         <div class="legend" id="legendA"></div>
       </div>
-      <p class="chart-sub">실선은 측정값, 점선은 같은 N에서 <b>완전히 균일한 무작위 배치</b>가 갖는 기댓값(유한 표본 편향 포함)입니다. 실선이 점선에 닿으면 평형입니다. 세로 점선은 속도 반전 시점입니다.</p>
+      <p class="chart-sub">The solid line is the measured value; the dashed line is the expected value for a <b>perfectly uniform random placement</b> with the same N (including finite-sample bias). Equilibrium is reached when the solid line meets the dashed line. The vertical dashed line marks the moment of velocity reversal.</p>
       <div class="chart-wrap"><canvas id="chA"></canvas></div>
     </div>
     <div class="card">
       <div class="chart-head">
-        <h2>볼츠만 엔트로피 S/k<sub>B</sub> = ln W</h2>
+        <h2>Boltzmann entropy S/k<sub>B</sub> = ln W</h2>
         <div class="legend" id="legendB"></div>
       </div>
-      <p class="chart-sub">중간 격자의 점유수 배치 (n₁, n₂, …)에 대한 미시상태 수 W = N! / ∏ nᵢ! 의 로그입니다. N에 비례해 커지는 <b>가산적(extensive)</b> 양이며 점선은 평형 기댓값입니다.</p>
+      <p class="chart-sub">The logarithm of the number of microstates W = N! / ∏ nᵢ! for the occupation numbers (n₁, n₂, …) of the middle grid. It is an <b>extensive</b> quantity that grows in proportion to N; the dashed line is the equilibrium expectation.</p>
       <div class="chart-wrap"><canvas id="chB"></canvas></div>
     </div>
     <div class="card" id="cardC">
       <div class="chart-head">
-        <h2>속력 분포 vs 2차원 맥스웰–볼츠만</h2>
-        <div class="legend"><span><i class="dot" style="background:var(--accent-3)"></i>측정 (충돌로 열린 분포)</span><span><i class="dot" style="background:var(--accent-2)"></i>이론 (레일리 분포)</span></div>
+        <h2>Speed distribution vs 2D Maxwell–Boltzmann</h2>
+        <div class="legend"><span><i class="dot" style="background:var(--accent-3)"></i>Measured (distribution shaped by collisions)</span><span><i class="dot" style="background:var(--accent-2)"></i>Theory (Rayleigh distribution)</span></div>
       </div>
-      <p class="chart-sub">가로축은 속력/v<sub>rms</sub>, 세로축은 구간 확률입니다. 에너지가 보존되므로 이론 곡선은 <b>현재 순간의 에너지</b>로부터 재계산됩니다. 처음에 모든 입자 속력이 같으면 막대 하나에서 시작해, 충돌을 거치며 이론 곡선으로 퍼져 갑니다 (볼츠만 H-정리).</p>
+      <p class="chart-sub">The x-axis is speed/v<sub>rms</sub> and the y-axis is the bin probability. Since energy is conserved, the theoretical curve is recomputed from the <b>current energy</b>. If all particles start with the same speed, the histogram starts as a single bar and spreads toward the theoretical curve through collisions (Boltzmann’s H-theorem).</p>
       <div class="chart-wrap"><canvas id="chC"></canvas></div>
     </div>
   </div>
 
   <footer class="notes">
-    <div class="note"><b>무엇을 재나요.</b> 상자를 n×n 칸으로 나눠 각 칸의 입자 비율 p<sub>i</sub>로 섀넌 엔트로피 H = −Σ p<sub>i</sub> ln p<sub>i</sub> 를 계산합니다. 큰 N에서 ln W ≈ N·H 이므로 위 그래프 둘은 같은 정보를 정규화(H/H<sub>max</sub>)와 비정규화(ln W)로 보여 줍니다. 칸 크기(조대화)가 곧 "어떤 거시 상태를 구분하는가"이며, 격자에 따라 곡선이 다른 것이 정상입니다.</div>
-    <div class="note"><b>왜 점선이 1이 아닌가.</b> 표본이 유한하면 plug-in 엔트로피는 평균적으로 약 (M−1)/(2N) 만큼 낮게 나옵니다(M은 칸 수; Miller–Madow 보정항). 예를 들어 N=180, 8×8이면 평형에서도 H/H<sub>max</sub>≈0.95입니다. 이 페이지의 점선은 근사식이 아니라 이항분포 정확합으로 계산한 값입니다. 밀도가 높으면 하드코어가 밀도 요동을 줄여서 실제 평형선이 점선보다 조금 위에 놓일 수 있습니다. 「무작위로 다시 시작」 대조군으로 확인하세요.</div>
-    <div class="note"><b>물리 모델.</b> 뉴턴 모드는 같은 질량의 탄성 하드디스크입니다. 충돌 순간을 스텝 안에서 정확히 계산(접촉 시각 τ를 이차방정식으로 풀어 되돌린 뒤 법선 속도 성분 교환)해서 운동량·에너지를 보존하고 벽 반사도 거울 반사로 가역입니다. 완전한 사건 구동(event-driven) 방식은 아니므로 한 스텝에 겹치는 다중 충돌은 근사되며, 충돌 처리 패스를 늘리면 남은 겹침이 거의 사라집니다(2패스: 10만 입자 고밀도에서도 겹치는 쌍 0.02%, 최대 침투 약 7%). dt를 줄이면 오차가 더 줄어듭니다.</div>
-    <div class="note"><b>속도 반전(Loschmidt).</b> 반전하면 엔트로피가 왔던 길을 되짚어 내려갑니다. 그러나 혼돈 때문에 오차가 지수적으로 커져서 오래 기다린 뒤 반전할수록 처음 상태를 복원하지 못하고, 곧 다시 상승합니다. 교란 ε를 키우면 이 붕괴가 훨씬 빨리 옵니다. "엔트로피 증가는 법칙이 아니라 압도적 확률"이라는 볼츠만의 해석을 눈으로 보는 실험입니다.</div>
-    <div class="note"><b>충돌을 꺼 보세요.</b> 이상기체가 되어 속력 분포는 초기값 그대로 남습니다(열평형에 이르지 못함). 반면 위치 엔트로피는 벽 반사만으로도 올라갑니다. 즉 위치 엔트로피 증가와 속도 분포의 열평형화는 서로 다른 과정입니다.</div>
-    <div class="note"><b>한계.</b> 충전율이 φ≈0.70(하드디스크 결정화 영역)에 가까워지면 더는 단순 유체가 아닙니다. 그래서 N의 상한을 φ≤0.55로 제한합니다. 확률적 랜덤워크 모드는 비교용이며 반경이 작을수록 완화가 매우 느립니다. 이 모드의 불가역성은 난수를 넣어서 만든 것이지 역학에서 나온 것이 아닙니다.</div>
-    <div class="note refs"><b>참고 문헌.</b>
-      Orban &amp; Bellemans, "Velocity-inversion and irreversibility in a dilute gas of hard disks", Phys. Lett. A 24, 620 (1967) — 하드디스크 속도 반전 실험 ·
-      <a href="https://arxiv.org/abs/2011.12792" target="_blank" rel="noopener">Megías &amp; Santos, 탄성 하드디스크의 속도 반전 실험과 D<sub>KL</sub> 분석</a> ·
-      <a href="https://arxiv.org/abs/1406.6956" target="_blank" rel="noopener">Jiao 외, plug-in 엔트로피 편향과 Miller–Madow 보정</a> ·
-      <a href="https://arxiv.org/abs/1009.3111" target="_blank" rel="noopener">하드디스크 유체의 결정화(φ≈0.70–0.72)</a> ·
+    <div class="note"><b>What is measured.</b> The box is divided into n×n cells, and the Shannon entropy H = −Σ p<sub>i</sub> ln p<sub>i</sub> is computed from the fraction p<sub>i</sub> of particles in each cell. For large N, ln W ≈ N·H, so the two graphs above show the same information, normalized (H/H<sub>max</sub>) and unnormalized (ln W). The cell size (coarse-graining) defines “which macrostates are distinguished”, so it is normal for the curves to differ between grids.</div>
+    <div class="note"><b>Why isn’t the dashed line at 1?</b> With a finite sample, the plug-in entropy comes out lower by about (M−1)/(2N) on average (M is the number of cells; the Miller–Madow correction term). For example, with N=180 and an 8×8 grid, H/H<sub>max</sub>≈0.95 even at equilibrium. The dashed line on this page is computed from an exact binomial sum, not an approximation. At high density the hard core suppresses density fluctuations, so the true equilibrium line may sit slightly above the dashed line. Check this with the “Restart randomly” control.</div>
+    <div class="note"><b>Physics model.</b> Newtonian mode uses elastic hard disks of equal mass. The collision instant is computed exactly within a step (the contact time τ is found by solving a quadratic, the particles are rewound, and the normal velocity components are exchanged), so momentum and energy are conserved, and wall reflection is a reversible mirror reflection. It is not a fully event-driven scheme, so multiple collisions overlapping within one step are approximated; increasing the collision passes removes almost all residual overlap (2 passes: 0.02% overlapping pairs even at 100,000 particles and high density, maximum penetration about 7%). Reducing dt lowers the error further.</div>
+    <div class="note"><b>Velocity reversal (Loschmidt).</b> After reversal, the entropy retraces its path back down. However, because of chaos, errors grow exponentially, so the longer you wait before reversing, the less well the initial state is recovered, and the entropy soon rises again. Increasing the perturbation ε makes this breakdown come much sooner. It is an experiment that lets you see Boltzmann’s interpretation that “entropy increase is not a law but overwhelming probability”.</div>
+    <div class="note"><b>Try turning collisions off.</b> The gas becomes ideal and the speed distribution stays at its initial value (it never reaches thermal equilibrium). Positional entropy, however, still rises through wall reflections alone. In other words, the increase in positional entropy and the thermalization of the speed distribution are different processes.</div>
+    <div class="note"><b>Limitations.</b> As the packing fraction approaches φ≈0.70 (the hard-disk crystallization region), the system is no longer a simple fluid. For this reason the upper limit of N is capped at φ≤0.55. The stochastic random-walk mode is for comparison, and relaxation becomes very slow as the radius gets smaller. The irreversibility in this mode is produced by injecting random numbers, not by the dynamics.</div>
+    <div class="note refs"><b>References.</b>
+      Orban &amp; Bellemans, "Velocity-inversion and irreversibility in a dilute gas of hard disks", Phys. Lett. A 24, 620 (1967) — hard-disk velocity-reversal experiment ·
+      <a href="https://arxiv.org/abs/2011.12792" target="_blank" rel="noopener">Megías &amp; Santos, velocity-reversal experiments on elastic hard disks and D<sub>KL</sub> analysis</a> ·
+      <a href="https://arxiv.org/abs/1406.6956" target="_blank" rel="noopener">Jiao et al., plug-in entropy bias and the Miller–Madow correction</a> ·
+      <a href="https://arxiv.org/abs/1009.3111" target="_blank" rel="noopener">Crystallization of the hard-disk fluid (φ≈0.70–0.72)</a> ·
       Holian, Hoover &amp; Posch, "Resolution of Loschmidt's Paradox", PRL 59, 10 (1987)
     </div>
   </footer>
@@ -477,7 +477,7 @@
   const fmt = n => Number(n).toLocaleString('en-US');
   const root = document.documentElement;
 
-  // 프레임 예산 (사용자 선택 가능)
+  // Frame budget (user-selectable)
   let FRAME_BUDGET_MS = 13;
 
   function randn() {
@@ -672,7 +672,7 @@
     }
   }
 
-  // 겹침 카운트용 (통계 표시)
+  // For overlap count (stats display)
   function countOverlaps() {
     overlapCount = 0;
     cD = 2 * S.r; cD2 = cD * cD; cper = S.boundary === 'periodic';
@@ -885,11 +885,11 @@
     };
   }
 
-  // 동적 이론 곡선: 현재 순간의 vrms 사용
+  // Dynamic theory curve: uses current vrms
   const speedHist = new Float64Array(NB), qTheory = new Float64Array(NB);
   let vmaxH = 3.6, currentVrms = 1;
   function computeTheoryBins() {
-    // 현재 순간의 vrms 재계산
+    // Recompute current vrms
     if (S.model === 'newton' && N) {
       let e = 0;
       for (let i = 0; i < N; i++) e += vx[i] * vx[i] + vy[i] * vy[i];
@@ -955,7 +955,7 @@
   function buildCharts() {
     if (typeof Chart === 'undefined') {
       document.querySelectorAll('.chart-wrap').forEach(el => {
-        el.innerHTML = '<div class="notice">그래프 라이브러리를 불러오지 못했어요. 시뮬레이션은 계속 동작합니다.</div>';
+        el.innerHTML = '<div class="notice">Could not load the chart library. The simulation continues to run.</div>';
       });
       return;
     }
@@ -998,7 +998,7 @@
       },
       options: Object.assign({}, common, {
         scales: {
-          x: { ticks: Object.assign({ maxTicksLimit: 9, maxRotation: 0 }, tick), grid: { display: false }, title: { display: true, text: '속력 / v_rms', color: COL.faint, font: { size: 11 } } },
+          x: { ticks: Object.assign({ maxTicksLimit: 9, maxRotation: 0 }, tick), grid: { display: false }, title: { display: true, text: 'Speed / v_rms', color: COL.faint, font: { size: 11 } } },
           y: { min: 0, ticks: tick, grid: grid }
         }
       })
@@ -1031,8 +1031,8 @@
       '<span><i class="dot" style="background:' + cols[k] + '"></i>' + n + '×' + n + '</span>').join('');
     const g = S.gridSet[1];
     $('legendB').innerHTML =
-      '<span><i class="dot" style="background:var(--accent)"></i>측정 (' + g + '×' + g + ')</span>' +
-      '<span><i class="dot" style="background:var(--accent-2)"></i>평형 기댓값</span>';
+      '<span><i class="dot" style="background:var(--accent)"></i>Measured (' + g + '×' + g + ')</span>' +
+      '<span><i class="dot" style="background:var(--accent-2)"></i>Equilibrium expectation</span>';
   }
 
   function resetCharts() {
@@ -1047,7 +1047,7 @@
     for (let b = 0; b < NB; b++) labels.push(((b + 0.5) * w / Math.max(currentVrms, 1e-9)).toFixed(2));
     chC.data.labels = labels;
     chC.data.datasets[0].data = []; chC.data.datasets[1].data = [];
-    chA.options.scales.x.title.text = S.model === 'newton' ? 't·v_rms / L' : '스텝';
+    chA.options.scales.x.title.text = S.model === 'newton' ? 't·v_rms / L' : 'Steps';
     chB.options.scales.x.title.text = chA.options.scales.x.title.text;
     chA.update('none'); chB.update('none'); chC.update('none');
   }
@@ -1080,7 +1080,7 @@
     if (lnW0 === null) lnW0 = ps.lnW;
     lastLnW = ps.lnW;
 
-    // dH/dt 계산
+    // Compute dH/dt
     const hNow = ps.ratio[1];
     if (lastH_med !== null && t > lastT) lastDH = (hNow - lastH_med) / (t - lastT);
     lastH_med = hNow; lastT = t;
@@ -1232,18 +1232,18 @@
     }
   }
 
-  // 히트맵 그리기 (gridSet[1] 격자)
+  // Draw heatmap (gridSet[1] grid)
   function drawHeatmap() {
     const g = S.gridSet[1];
     const cell = CW / g;
-    // 최대 밀도 찾기
+    // Find max density
     let maxV = 1;
     for (let i = 0; i < cnt1.length; i++) if (cnt1[i] > maxV) maxV = cnt1[i];
     for (let gy = 0; gy < g; gy++) {
       for (let gx = 0; gx < g; gx++) {
         const v = cnt1[gy * g + gx] / maxV;
         if (v < 0.02) continue;
-        // accent 색조를 밝기로 사용
+        // Use accent hue as brightness
         const a = 0.10 + 0.45 * v;
         ov.fillStyle = rgba(COL.accRGB, a);
         ov.fillRect(gx * cell, gy * cell, cell + 1, cell + 1);
@@ -1251,7 +1251,7 @@
     }
   }
 
-  // 속도 벡터 (샘플링: 60개만)
+  // Velocity vectors (sampled: 60 only)
   function drawVelocityVectors() {
     const maxVecs = 60;
     const step = Math.max(1, Math.floor(N / maxVecs));
@@ -1346,35 +1346,35 @@
     $('statPhi').textContent = (phi * 100).toFixed(1) + '%';
     $('statPhi').className = 'v' + (phi > 0.5 ? ' warn' : '');
     $('statT').textContent = S.model === 'newton' ? tHat.toFixed(3) : '—';
-    $('statSteps').textContent = fmt(stepCount) + ' 스텝';
+    $('statSteps').textContent = fmt(stepCount) + ' steps';
     $('statSps').textContent = fmt(Math.round(spsVal)) + ' /s';
-    $('statDt').textContent = S.model === 'newton' ? 'dt = ' + S.dt.toFixed(4) : '스텝 = ' + S.stepLen.toFixed(2);
+    $('statDt').textContent = S.model === 'newton' ? 'dt = ' + S.dt.toFixed(4) : 'step = ' + S.stepLen.toFixed(2);
     if (S.model === 'newton') {
       let e = 0;
       for (let i = 0; i < N; i++) e += vx[i] * vx[i] + vy[i] * vy[i];
       const eRatio = 0.5 * e / E0;
       $('statE').textContent = eRatio.toFixed(6);
       $('statE').className = 'v' + (Math.abs(eRatio - 1) > 1e-3 ? ' warn' : ' ok');
-      // 유효 온도
+      // Effective temperature
       const tempRatio = eRatio; // T ∝ E
       $('statTemp').textContent = tempRatio.toFixed(4);
       $('statTemp').className = 'v' + (Math.abs(tempRatio - 1) > 1e-3 ? ' warn' : ' ok');
       $('statColl').textContent = (2 * collCount / N).toFixed(1);
-      $('statWall').textContent = '벽 ' + fmt(wallCollCount);
+      $('statWall').textContent = 'Wall ' + fmt(wallCollCount);
       $('statKL').textContent = lastKL === null ? '—' : fmtSci(lastKL);
-      $('statKLfloor').textContent = '노이즈 바닥 ≈ ' + fmtSci((NB - 1) / (2 * N));
-      // 압력 P·V/(N k_B T) = 1 + (충돌 밀도 보정)
-      // 2D 이상기체: P·V/(N k_B T) = 1
-      // 여기서는 벽 충돌 빈도로부터 근사 계산
+      $('statKLfloor').textContent = 'noise floor ≈ ' + fmtSci((NB - 1) / (2 * N));
+      // Pressure P·V/(N k_B T) = 1 + (collision density correction)
+      // 2D ideal gas: P·V/(N k_B T) = 1
+      // Approximated here from the wall collision rate
       const tElapsed = tHat;
       if (tElapsed > 0.001) {
-        // 단위 시간당 벽 충돌 수: dN_wall/dt
+        // Wall collisions per unit time: dN_wall/dt
         const wallRate = wallCollCount / tElapsed;
-        // 2D 이상기체에서 P = (N k_B T)/V. 벽 충돌률 = N * v_rms / (2L) 정도 (근사)
+        // In a 2D ideal gas P = (N k_B T)/V. Wall collision rate ≈ N * v_rms / (2L) (approx.)
         // P·V/(N k_B T) ≈ (wallRate * L) / (N * vrms)
         const pv = (wallRate * L) / (N * Math.max(currentVrms, 1e-6));
         $('statP').textContent = pv.toFixed(3);
-        $('statPsub').textContent = '이상기체 ≈ 1.00';
+        $('statPsub').textContent = 'ideal gas ≈ 1.00';
       } else {
         $('statP').textContent = '—'; $('statPsub').textContent = '';
       }
@@ -1386,9 +1386,9 @@
     }
     $('statDS').textContent = (eqW - lastLnW).toFixed(1);
     $('statDH').textContent = lastDH.toFixed(4);
-    $('statDHDir').textContent = lastDH > 0 ? '↑ 증가 (비가역)' : (lastDH < 0 ? '↓ 감소 (가역 근처)' : '—');
+    $('statDHDir').textContent = lastDH > 0 ? '↑ increasing (irreversible)' : (lastDH < 0 ? '↓ decreasing (near reversible)' : '—');
 
-    // 겹침 카운트 (1초마다)
+    // Overlap count (every second)
     if (now - lastOverlapT > 1000) {
       lastOverlapT = now;
       if (S.collide && N > 0) {
@@ -1404,16 +1404,16 @@
   function refreshNotices() {
     const m = [];
     const phi = N * Math.PI * S.r * S.r / (L * L);
-    if (N < S.N) m.push('요청한 ' + fmt(S.N) + '개 대신 <b>' + fmt(N) + '개</b>로 시작했어요 (충전율 상한 φ≤' + PHI_CAP + ' 또는 초기 배치 한계).');
-    if (phi > 0.45) m.push('<span class="w">충전율이 높습니다.</span> 하드디스크는 φ≈0.70 부근에서 결정화하므로 이 영역에서는 완화가 매우 느리고 액체 근사가 약해집니다.');
+    if (N < S.N) m.push('Started with <b>' + fmt(N) + '</b> particles instead of the requested ' + fmt(S.N) + ' (packing-fraction cap φ≤' + PHI_CAP + ' or initial placement limit).');
+    if (phi > 0.45) m.push('<span class="w">High packing fraction.</span> Hard disks crystallize near φ≈0.70, so relaxation is very slow in this regime and the liquid approximation weakens.');
     if (S.initMode === 'random') {
-      if (latticeControl) m.push('대조군: 밀도가 높아 무작위 배치가 불가능해 <b>격자 + 지터</b>로 시작했습니다. 위치 요동이 진짜 평형보다 작을 수 있습니다.');
-      else if (rsaFails > 0) m.push('대조군: ' + fmt(rsaFails) + '개 입자는 겹침 없이 놓지 못해 충돌 처리로 밀어냅니다.');
+      if (latticeControl) m.push('Control: the density is too high for random placement, so it started from a <b>lattice + jitter</b>. Positional fluctuations may be smaller than in true equilibrium.');
+      else if (rsaFails > 0) m.push('Control: ' + fmt(rsaFails) + ' particles could not be placed without overlap and are pushed apart by collision handling.');
     }
-    if (S.model === 'stoch' && S.stepLen > 0.6 * S.r) m.push('<span class="w">스텝 길이가 반경에 비해 커서</span> 입자가 서로 스쳐 지나가는 터널링 오류가 생길 수 있어요.');
-    if (S.model === 'stoch') m.push('확률적 모델은 매 스텝 난수로 방향을 바꾸므로 시간 반전 대칭이 없고 에너지 개념도 없습니다. 비교용입니다.');
-    if (S.model === 'newton' && !S.collide) m.push('충돌이 꺼져 있어 이상기체입니다. 속력 분포는 초기값 그대로 남습니다.');
-    if (N > 100000) m.push('입자가 많아 프레임당 계산이 무겁습니다. 배속은 프레임 예산 안에서 자동 제한됩니다.');
+    if (S.model === 'stoch' && S.stepLen > 0.6 * S.r) m.push('<span class="w">The step length is large relative to the radius,</span> so particles may pass through each other (tunneling error).');
+    if (S.model === 'stoch') m.push('The stochastic model changes direction with a random number every step, so it has no time-reversal symmetry and no notion of energy. It is for comparison only.');
+    if (S.model === 'newton' && !S.collide) m.push('Collisions are off, so this is an ideal gas. The speed distribution stays at its initial value.');
+    if (N > 100000) m.push('Many particles make each frame heavy to compute. Speed is automatically limited within the frame budget.');
     $('msg').innerHTML = m.join('<br>');
   }
 
@@ -1435,8 +1435,8 @@
     $('cardC').style.display = nw ? '' : 'none';
     $('reverseBtn').disabled = !nw;
     $('modelHint').textContent = nw
-      ? '탄성 충돌·에너지 보존·시간 반전 대칭. 불가역성은 난수가 아니라 초기 조건과 충돌의 혼돈에서 나옵니다.'
-      : '매 스텝 난수로 방향을 새로 뽑는 확률 과정입니다. 위치 엔트로피 증가만 보이며 반경이 작으면 완화가 매우 느립니다.';
+      ? 'Elastic collisions, energy conservation, time-reversal symmetry. Irreversibility comes not from random numbers but from the initial conditions and the chaos of collisions.'
+      : 'A stochastic process that draws a new random direction every step. Only the positional entropy increase is visible, and relaxation is very slow for small radii.';
   }
 
   S.N = sliderToN(parseInt($('rangeN').value, 10));
@@ -1488,23 +1488,23 @@
   $('rangeTE').addEventListener('input', e => { S.trailEvery = parseInt(e.target.value, 10); $('lblTE').textContent = S.trailEvery; });
 
   $('playBtn').addEventListener('click', () => {
-    S.running = !S.running; $('playBtn').textContent = S.running ? '일시정지' : '재생';
+    S.running = !S.running; $('playBtn').textContent = S.running ? 'Pause' : 'Play';
   });
   $('resetCornerBtn').addEventListener('click', () => resetAll('corner'));
   $('resetRandomBtn').addEventListener('click', () => resetAll('random'));
   $('reverseBtn').addEventListener('click', reverseVelocities);
 
-  // 자동 실험
+  // Auto experiment
   $('autoRunBtn').addEventListener('click', () => {
-    if (S.model !== 'newton') { alert('자동 실험은 뉴턴 모드에서만 동작합니다.'); return; }
+    if (S.model !== 'newton') { alert('The auto experiment only works in Newtonian mode.'); return; }
     const t1 = parseFloat($('autoT1').value) || 0.5;
     const t2 = parseFloat($('autoT2').value) || 0.5;
     resetAll('corner');
-    S.running = true; $('playBtn').textContent = '일시정지';
+    S.running = true; $('playBtn').textContent = 'Pause';
     autoExpRunning = { phase: 'forward', t1: t1, t2: t2 };
   });
 
-  // CSV 내보내기
+  // CSV export
   $('exportCsvBtn').addEventListener('click', () => {
     const rows = ['t,H_2,H_8,H_32,lnW'];
     const len = hist.t.length;
@@ -1524,7 +1524,7 @@
     URL.revokeObjectURL(a.href);
   });
 
-  // 설정 공유 (URL)
+  // Share settings (URL)
   $('shareBtn').addEventListener('click', () => {
     const p = new URLSearchParams({
       N: S.N, r: S.r, v: S.vrms, model: S.model,
@@ -1536,14 +1536,14 @@
     navigator.clipboard.writeText(url).then(() => {
       const btn = $('shareBtn');
       const orig = btn.textContent;
-      btn.textContent = '✓ 복사됨';
+      btn.textContent = '✓ Copied';
       setTimeout(() => { btn.textContent = orig; }, 1500);
     }).catch(() => {
-      prompt('아래 URL을 복사하세요:', url);
+      prompt('Copy the URL below:', url);
     });
   });
 
-  // URL 파라미터 로드
+  // Load URL parameters
   function loadFromURL() {
     const p = new URLSearchParams(location.search);
     if (p.has('N')) {
@@ -1577,13 +1577,13 @@
     if (p.has('passes')) { S.passes = parseInt(p.get('passes'), 10); $('selPass').value = String(S.passes); }
   }
 
-  // 키보드 단축키
+  // Keyboard shortcuts
   document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
     switch (e.key.toLowerCase()) {
       case ' ':
         e.preventDefault();
-        S.running = !S.running; $('playBtn').textContent = S.running ? '일시정지' : '재생';
+        S.running = !S.running; $('playBtn').textContent = S.running ? 'Pause' : 'Play';
         break;
       case 'r': resetAll(S.initMode); break;
       case 'v': reverseVelocities(); break;
@@ -1606,7 +1606,7 @@
       reverseVelocities();
       autoExpRunning.phase = 'backward';
     } else if (autoExpRunning.phase === 'backward' && tHat >= autoExpRunning.t1 + autoExpRunning.t2) {
-      S.running = false; $('playBtn').textContent = '재생';
+      S.running = false; $('playBtn').textContent = 'Play';
       autoExpRunning = false;
     }
   }
@@ -1623,7 +1623,7 @@
       const now = performance.now();
       if (now - lastSampleT > 100) {
         lastSampleT = now; pushSample(); checkAutoExperiment();
-        // 동적 이론 곡선 재계산 (에너지 보존 확인)
+        // Recompute dynamic theory curve (verifies energy conservation)
         if (S.model === 'newton') computeTheoryBins();
       }
       if (now - spsT >= 500) { spsVal = spsAcc * 1000 / (now - spsT); spsAcc = 0; spsT = now; }
@@ -1645,7 +1645,7 @@
   resetAll(S.initMode);
   requestAnimationFrame(frame);
 
-  // headless 테스트 훅
+  // Headless test hook
   window.__sim = {
     S: S, resetAll: resetAll, stepOnce: stepOnce, reverse: reverseVelocities,
     stats: computePositionStats, speed: speedStats, expectedSums: expectedSums,
