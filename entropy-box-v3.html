@@ -1,0 +1,1663 @@
+ <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>엔트로피 상자 v3 — 하드디스크 기체 시뮬레이션</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f2f4f6;
+    --panel: #ffffff;
+    --panel-2: #eef1f4;
+    --border: #d9dee4;
+    --text: #1b2027;
+    --text-dim: #565f6c;
+    --text-faint: #838c98;
+    --accent: #1f8fa0;
+    --accent-2: #b97a1f;
+    --accent-3: #7c4fae;
+    --warn: #c14b4e;
+    --ok: #3f8a52;
+    --radius-card: 14px;
+    --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', Roboto, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1013;
+      --panel: #161a20;
+      --panel-2: #1b212a;
+      --border: #262c36;
+      --text: #e7eaee;
+      --text-dim: #97a1af;
+      --text-faint: #6b7480;
+      --accent: #57c7d4;
+      --accent-2: #e3a857;
+      --accent-3: #b98ae0;
+      --warn: #e0777a;
+      --ok: #7fbf8f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1013;
+    --panel: #161a20;
+    --panel-2: #1b212a;
+    --border: #262c36;
+    --text: #e7eaee;
+    --text-dim: #97a1af;
+    --text-faint: #6b7480;
+    --accent: #57c7d4;
+    --accent-2: #e3a857;
+    --accent-3: #b98ae0;
+    --warn: #e0777a;
+    --ok: #7fbf8f;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100%;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 28px 20px 60px; }
+  header.top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 16px; margin-bottom: 22px; flex-wrap: wrap;
+  }
+  .title-block h1 {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(24px, 3.4vw, 32px); margin: 0 0 8px; letter-spacing: -0.01em;
+  }
+  .title-block p { margin: 0; max-width: 72ch; color: var(--text-dim); font-size: 14.5px; line-height: 1.65; }
+  .top-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .theme-toggle, .icon-btn {
+    border: 1px solid var(--border); background: var(--panel); color: var(--text-dim);
+    border-radius: 999px; padding: 7px 14px; font-size: 13px; cursor: pointer; white-space: nowrap;
+  }
+  .theme-toggle:hover, .icon-btn:hover { color: var(--text); }
+
+  .grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr); gap: 18px; align-items: start; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 18px; }
+  .sim-card { display: flex; flex-direction: column; gap: 12px; }
+  .canvas-frame {
+    position: relative; width: 100%; aspect-ratio: 1 / 1;
+    background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  .canvas-frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  .sim-readout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  @media (max-width: 640px) { .sim-readout { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; padding: 9px 10px; min-width: 0; }
+  .stat .k { font-size: 11px; color: var(--text-faint); margin-bottom: 3px; }
+  .stat .v { font-family: var(--font-display); font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stat .v.warn { color: var(--warn); }
+  .stat .v.ok { color: var(--ok); }
+  .stat .sub { font-size: 10.5px; color: var(--text-faint); margin-top: 2px; font-variant-numeric: tabular-nums; }
+
+  .sim-controls-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  button.action {
+    font-family: var(--font-body); font-size: 13.5px; font-weight: 600; padding: 9px 16px;
+    border-radius: 9px; border: 1px solid var(--border); background: var(--panel-2); color: var(--text); cursor: pointer;
+  }
+  button.action.primary { background: var(--accent); border-color: var(--accent); color: #08141a; }
+  button.action.loschmidt { border-color: var(--accent-2); color: var(--accent-2); }
+  button.action.export { border-color: var(--accent-3); color: var(--accent-3); }
+  button.action:hover { filter: brightness(1.08); }
+  button.action:disabled { opacity: .4; cursor: not-allowed; }
+
+  .notice {
+    font-size: 12.5px; line-height: 1.6; padding: 9px 11px; border-radius: 9px;
+    border: 1px dashed var(--border); color: var(--text-dim);
+  }
+  .notice:empty { display: none; }
+  .notice .w { color: var(--warn); }
+
+  .panel-card h2 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin: 0 0 12px; }
+  .group { border-top: 1px solid var(--border); padding-top: 14px; margin-top: 14px; }
+  .group:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .group h3 { font-size: 12.5px; font-weight: 600; margin: 0 0 12px; color: var(--text); }
+  .field { margin-bottom: 14px; }
+  .field label { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--text-dim); margin-bottom: 6px; }
+  .field label .val { color: var(--text); font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type="range"] { width: 100%; accent-color: var(--accent); }
+  .toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+  .switch { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+  .switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+  .slider-pill { position: absolute; inset: 0; background: var(--border); border-radius: 999px; cursor: pointer; transition: background .15s; }
+  .slider-pill::before { content: ""; position: absolute; height: 16px; width: 16px; left: 3px; top: 3px; background: var(--panel); border-radius: 50%; transition: transform .15s; }
+  .switch input:checked + .slider-pill { background: var(--accent); }
+  .switch input:checked + .slider-pill::before { transform: translateX(18px); background: #08141a; }
+  .switch input:focus-visible + .slider-pill { outline: 2px solid var(--accent); outline-offset: 2px; }
+  select {
+    width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--panel-2); color: var(--text); font-family: var(--font-body); font-size: 13px;
+  }
+  .seg { display: flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .seg button {
+    flex: 1; border: none; background: var(--panel-2); color: var(--text-dim); padding: 8px 6px;
+    font-size: 12.5px; font-family: var(--font-body); cursor: pointer; border-right: 1px solid var(--border);
+  }
+  .seg button:last-child { border-right: none; }
+  .seg button.active { background: var(--accent); color: #08141a; font-weight: 600; }
+  .hint { font-size: 11.5px; color: var(--text-faint); line-height: 1.55; margin-top: -6px; margin-bottom: 12px; }
+
+  .charts { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 18px; }
+  .chart-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 2px; }
+  .chart-head h2 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin: 0; }
+  .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text-dim); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .chart-sub { font-size: 12px; color: var(--text-faint); line-height: 1.55; margin: 4px 0 0; }
+  .chart-wrap { position: relative; height: 250px; margin-top: 10px; }
+
+  footer.notes { margin-top: 18px; display: grid; gap: 14px 22px; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 760px) { footer.notes { grid-template-columns: 1fr; } }
+  footer.notes .note { font-size: 12.5px; line-height: 1.65; color: var(--text-dim); border-top: 1px solid var(--border); padding-top: 10px; }
+  footer.notes .note b { color: var(--text); font-weight: 600; }
+  footer.notes .refs { grid-column: 1 / -1; }
+  footer.notes a { color: var(--accent); text-decoration: none; }
+  footer.notes a:hover { text-decoration: underline; }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.92em; }
+
+  /* 자동 실험 패널 */
+  .auto-panel {
+    background: linear-gradient(135deg, rgba(31,143,160,0.08), rgba(185,122,31,0.08));
+    border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-top: 12px;
+  }
+  .auto-panel h3 { margin: 0 0 8px; font-size: 13px; font-family: var(--font-display); }
+  .auto-panel .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 12.5px; color: var(--text-dim); }
+  .auto-panel input[type="number"] {
+    width: 70px; padding: 5px 7px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--panel-2); color: var(--text); font-size: 12.5px;
+  }
+  kbd {
+    background: var(--panel-2); border: 1px solid var(--border); border-bottom-width: 2px;
+    border-radius: 4px; padding: 1px 5px; font-size: 11px; font-family: ui-monospace, monospace;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="title-block">
+      <h1>엔트로피 상자 v3</h1>
+      <p>에너지가 보존되는 탄성 하드디스크 기체를 시뮬레이션합니다. 좁은 모서리에 모여 있던 입자가 퍼지면서 위치 엔트로피가 올라가고, 속력 분포가 2차원 맥스웰–볼츠만 분포로 수렴하는 과정을 함께 봅니다. 「속도 반전」으로 뉴턴 역학의 가역성(Loschmidt 역설)도 직접 시험할 수 있습니다.</p>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="exportCsvBtn" title="히스토리 CSV 다운로드">CSV 내보내기</button>
+      <button class="icon-btn" id="shareBtn" title="현재 설정을 URL로 복사">설정 공유</button>
+      <button class="theme-toggle" id="themeToggle">다크 / 라이트</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <!-- LEFT: simulation -->
+    <div class="card sim-card">
+      <div class="canvas-frame">
+        <canvas id="gl"></canvas>
+        <canvas id="ov"></canvas>
+      </div>
+
+      <div class="sim-readout">
+        <div class="stat"><div class="k">입자 수 N</div><div class="v" id="statN">—</div></div>
+        <div class="stat"><div class="k">충전율 φ (면적 비)</div><div class="v" id="statPhi">—</div></div>
+        <div class="stat"><div class="k">시간 t·v/L</div><div class="v" id="statT">—</div><div class="sub" id="statSteps">—</div></div>
+        <div class="stat"><div class="k">계산 속도</div><div class="v" id="statSps">—</div><div class="sub" id="statDt">—</div></div>
+        <div class="stat"><div class="k">에너지 E / E₀</div><div class="v" id="statE">—</div></div>
+        <div class="stat"><div class="k">유효 온도 T / T₀</div><div class="v" id="statTemp">—</div></div>
+        <div class="stat"><div class="k">누적 충돌 / 입자</div><div class="v" id="statColl">—</div><div class="sub" id="statWall">—</div></div>
+        <div class="stat"><div class="k">속력분포 D<sub>KL</sub>(‖MB)</div><div class="v" id="statKL">—</div><div class="sub" id="statKLfloor">—</div></div>
+        <div class="stat"><div class="k">평형 대비 남은 ΔS/k<sub>B</sub></div><div class="v" id="statDS">—</div></div>
+        <div class="stat"><div class="k">엔트로피 증가율 dH/dt</div><div class="v" id="statDH">—</div><div class="sub" id="statDHDir">—</div></div>
+        <div class="stat"><div class="k">벽 압력 P·V/(N k<sub>B</sub>T)</div><div class="v" id="statP">—</div><div class="sub" id="statPsub">—</div></div>
+        <div class="stat"><div class="k">겹침 쌍 (근사)</div><div class="v" id="statOverlap">—</div></div>
+      </div>
+
+      <div class="sim-controls-row">
+        <button class="action primary" id="playBtn">일시정지</button>
+        <button class="action" id="resetCornerBtn">모서리에서 다시 시작</button>
+        <button class="action" id="resetRandomBtn">무작위로 다시 시작 (대조군)</button>
+        <button class="action loschmidt" id="reverseBtn">속도 반전 (v → −v)</button>
+      </div>
+
+      <div class="notice" id="msg"></div>
+    </div>
+
+    <!-- RIGHT: controls -->
+    <div class="card panel-card">
+      <h2>조건 설정</h2>
+
+      <div class="group">
+        <h3>물리 모델</h3>
+        <div class="field">
+          <div class="seg" id="modelSeg">
+            <button data-model="newton" class="active">뉴턴 하드디스크</button>
+            <button data-model="stoch">확률적 랜덤워크</button>
+          </div>
+        </div>
+        <div class="hint" id="modelHint">탄성 충돌·에너지 보존·시간 반전 대칭. 불가역성은 난수가 아니라 초기 조건과 충돌의 혼돈에서 나옵니다.</div>
+        <div class="toggle-row">
+          <span>입자 간 충돌 (배타 규칙)</span>
+          <label class="switch"><input type="checkbox" id="toggleCollide" checked><span class="slider-pill"></span></label>
+        </div>
+        <div class="field">
+          <label style="margin-bottom:8px;">경계 조건</label>
+          <div class="seg" id="boundarySeg">
+            <button data-mode="reflect" class="active">반사 벽</button>
+            <button data-mode="periodic">주기적</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>입자</h3>
+        <div class="field">
+          <label>입자 수 <span class="val" id="lblN">4,000</span></label>
+          <input type="range" id="rangeN" min="0" max="1000" step="1" value="458">
+        </div>
+        <div class="field">
+          <label>입자 반지름 <span class="val" id="lblR">1.0</span></label>
+          <input type="range" id="rangeR" min="0.5" max="10" step="0.1" value="1">
+        </div>
+        <div class="field newton-only">
+          <label>평균 속력 v<sub>rms</sub> <span class="val" id="lblV">1.0</span></label>
+          <input type="range" id="rangeV" min="0.2" max="5" step="0.1" value="1">
+        </div>
+        <div class="field newton-only">
+          <label style="margin-bottom:8px;">초기 속력 분포</label>
+          <select id="selInitVel">
+            <option value="single">모두 같은 속력 (방향만 무작위)</option>
+            <option value="mb">맥스웰–볼츠만 (열평형 분포)</option>
+          </select>
+        </div>
+        <div class="field newton-only">
+          <label style="margin-bottom:8px;">시간 적분 정확도 (dt = 계수 × r / v<sub>rms</sub>)</label>
+          <select id="selDt">
+            <option value="0.05">정밀 (0.05)</option>
+            <option value="0.10" selected>표준 (0.10)</option>
+            <option value="0.20">빠름 (0.20)</option>
+          </select>
+        </div>
+        <div class="field newton-only">
+          <label style="margin-bottom:8px;">충돌 처리 패스 (한 스텝 안의 다중 충돌 보정)</label>
+          <select id="selPass">
+            <option value="1">1패스 (빠름)</option>
+            <option value="2" selected>2패스 (정밀, 겹침 거의 0)</option>
+            <option value="3">3패스 (가장 정밀)</option>
+            <option value="4">4패스 (최정밀, 느림)</option>
+          </select>
+        </div>
+        <div class="field stoch-only" style="display:none;">
+          <label>스텝 길이 <span class="val" id="lblStep">0.6</span></label>
+          <input type="range" id="rangeStep" min="0.05" max="5" step="0.05" value="0.6">
+        </div>
+        <div class="field stoch-only" style="display:none;">
+          <label>방향 지속성 <span class="val" id="lblPersist">0.00</span></label>
+          <input type="range" id="rangePersist" min="0" max="0.98" step="0.02" value="0">
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>시간</h3>
+        <div class="field">
+          <label style="margin-bottom:8px;">시뮬레이션 배속 (프레임당 스텝 수)</label>
+          <select id="selMult">
+            <option value="1">1×</option>
+            <option value="4">4×</option>
+            <option value="16">16×</option>
+            <option value="64" selected>64×</option>
+            <option value="256">256×</option>
+            <option value="1024">1,024×</option>
+            <option value="4096">4,096×</option>
+            <option value="max">최대 (프레임 예산 내 전력)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label style="margin-bottom:8px;">프레임 예산 (ms)</label>
+          <select id="selBudget">
+            <option value="8">8ms (배터리 절약)</option>
+            <option value="13" selected>13ms (표준, 60fps)</option>
+            <option value="20">20ms (고성능)</option>
+            <option value="33">33ms (최대 처리량, 30fps)</option>
+          </select>
+        </div>
+        <div class="hint">프레임당 예산 안에서 가능한 만큼만 계산합니다. 입자가 많으면 선택한 배속보다 낮게 나올 수 있으며, 실제 속도는 「계산 속도」에 표시됩니다.</div>
+      </div>
+
+      <div class="group">
+        <h3>꼬리 · 표시</h3>
+        <div class="toggle-row">
+          <span>입자 꼬리(궤적) 표시</span>
+          <label class="switch"><input type="checkbox" id="toggleTrail"><span class="slider-pill"></span></label>
+        </div>
+        <div class="toggle-row">
+          <span>속도 벡터 표시</span>
+          <label class="switch"><input type="checkbox" id="toggleVelVec"><span class="slider-pill"></span></label>
+        </div>
+        <div class="toggle-row">
+          <span>밀도 히트맵 오버레이</span>
+          <label class="switch"><input type="checkbox" id="toggleHeat"><span class="slider-pill"></span></label>
+        </div>
+        <div class="field">
+          <label>추적 입자 수 <span class="val" id="lblTK">40</span></label>
+          <input type="range" id="rangeTK" min="1" max="300" step="1" value="40">
+        </div>
+        <div class="field">
+          <label>꼬리 길이 (기록점 수) <span class="val" id="lblTL">120</span></label>
+          <input type="range" id="rangeTL" min="10" max="600" step="10" value="120">
+        </div>
+        <div class="field">
+          <label>기록 간격 (스텝) <span class="val" id="lblTE">4</span></label>
+          <input type="range" id="rangeTE" min="1" max="100" step="1" value="4">
+        </div>
+        <div class="toggle-row">
+          <span>엔트로피 측정 격자선 표시</span>
+          <label class="switch"><input type="checkbox" id="toggleGrid" checked><span class="slider-pill"></span></label>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>엔트로피 측정 · 가역성 실험</h3>
+        <div class="field">
+          <label style="margin-bottom:8px;">조대화 격자 세트 (변 방향 칸 수)</label>
+          <select id="selGrid">
+            <option value="2,4,8">2 · 4 · 8</option>
+            <option value="2,8,32" selected>2 · 8 · 32</option>
+            <option value="4,16,64">4 · 16 · 64</option>
+            <option value="8,32,128">8 · 32 · 128</option>
+          </select>
+        </div>
+        <div class="field newton-only">
+          <label style="margin-bottom:8px;">속도 반전 시 섞어 넣는 교란 ε (v<sub>rms</sub> 대비)</label>
+          <select id="selEps">
+            <option value="0">0 (부동소수점 오차만)</option>
+            <option value="1e-12">10⁻¹²</option>
+            <option value="1e-8">10⁻⁸</option>
+            <option value="1e-4">10⁻⁴</option>
+          </select>
+        </div>
+        <div class="hint newton-only">복원이 잘 되는 조건: 반전 전 대기 시간이 짧을수록(입자당 충돌 수십 회 이내), dt가 작을수록, 교란 ε가 작을수록입니다.</div>
+
+        <div class="auto-panel">
+          <h3>🔬 자동 실험 (Loschmidt 역설 재현)</h3>
+          <div class="row">
+            <span>t₁ (전진)</span>
+            <input type="number" id="autoT1" value="0.5" step="0.1" min="0.1">
+            <span>t₂ (반전 후)</span>
+            <input type="number" id="autoT2" value="0.5" step="0.1" min="0.1">
+            <button class="action" id="autoRunBtn" style="padding:6px 12px;font-size:12.5px;">자동 실행</button>
+          </div>
+          <div class="hint" style="margin-top:6px;">모서리 배치 → t₁까지 진행 → 속도 반전 → t₂까지 진행 → 자동 일시정지</div>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>⌨️ 단축키</h3>
+        <div class="hint">
+          <kbd>Space</kbd> 재생/일시정지 · <kbd>R</kbd> 재시작 · <kbd>V</kbd> 속도 반전 · <kbd>G</kbd> 격자선 토글 · <kbd>T</kbd> 꼬리 토글 · <kbd>C</kbd> CSV 내보내기
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="charts">
+    <div class="card">
+      <div class="chart-head">
+        <h2>위치 엔트로피 H / H<sub>max</sub> (조대화 격자별)</h2>
+        <div class="legend" id="legendA"></div>
+      </div>
+      <p class="chart-sub">실선은 측정값, 점선은 같은 N에서 <b>완전히 균일한 무작위 배치</b>가 갖는 기댓값(유한 표본 편향 포함)입니다. 실선이 점선에 닿으면 평형입니다. 세로 점선은 속도 반전 시점입니다.</p>
+      <div class="chart-wrap"><canvas id="chA"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="chart-head">
+        <h2>볼츠만 엔트로피 S/k<sub>B</sub> = ln W</h2>
+        <div class="legend" id="legendB"></div>
+      </div>
+      <p class="chart-sub">중간 격자의 점유수 배치 (n₁, n₂, …)에 대한 미시상태 수 W = N! / ∏ nᵢ! 의 로그입니다. N에 비례해 커지는 <b>가산적(extensive)</b> 양이며 점선은 평형 기댓값입니다.</p>
+      <div class="chart-wrap"><canvas id="chB"></canvas></div>
+    </div>
+    <div class="card" id="cardC">
+      <div class="chart-head">
+        <h2>속력 분포 vs 2차원 맥스웰–볼츠만</h2>
+        <div class="legend"><span><i class="dot" style="background:var(--accent-3)"></i>측정 (충돌로 열린 분포)</span><span><i class="dot" style="background:var(--accent-2)"></i>이론 (레일리 분포)</span></div>
+      </div>
+      <p class="chart-sub">가로축은 속력/v<sub>rms</sub>, 세로축은 구간 확률입니다. 에너지가 보존되므로 이론 곡선은 <b>현재 순간의 에너지</b>로부터 재계산됩니다. 처음에 모든 입자 속력이 같으면 막대 하나에서 시작해, 충돌을 거치며 이론 곡선으로 퍼져 갑니다 (볼츠만 H-정리).</p>
+      <div class="chart-wrap"><canvas id="chC"></canvas></div>
+    </div>
+  </div>
+
+  <footer class="notes">
+    <div class="note"><b>무엇을 재나요.</b> 상자를 n×n 칸으로 나눠 각 칸의 입자 비율 p<sub>i</sub>로 섀넌 엔트로피 H = −Σ p<sub>i</sub> ln p<sub>i</sub> 를 계산합니다. 큰 N에서 ln W ≈ N·H 이므로 위 그래프 둘은 같은 정보를 정규화(H/H<sub>max</sub>)와 비정규화(ln W)로 보여 줍니다. 칸 크기(조대화)가 곧 "어떤 거시 상태를 구분하는가"이며, 격자에 따라 곡선이 다른 것이 정상입니다.</div>
+    <div class="note"><b>왜 점선이 1이 아닌가.</b> 표본이 유한하면 plug-in 엔트로피는 평균적으로 약 (M−1)/(2N) 만큼 낮게 나옵니다(M은 칸 수; Miller–Madow 보정항). 예를 들어 N=180, 8×8이면 평형에서도 H/H<sub>max</sub>≈0.95입니다. 이 페이지의 점선은 근사식이 아니라 이항분포 정확합으로 계산한 값입니다. 밀도가 높으면 하드코어가 밀도 요동을 줄여서 실제 평형선이 점선보다 조금 위에 놓일 수 있습니다. 「무작위로 다시 시작」 대조군으로 확인하세요.</div>
+    <div class="note"><b>물리 모델.</b> 뉴턴 모드는 같은 질량의 탄성 하드디스크입니다. 충돌 순간을 스텝 안에서 정확히 계산(접촉 시각 τ를 이차방정식으로 풀어 되돌린 뒤 법선 속도 성분 교환)해서 운동량·에너지를 보존하고 벽 반사도 거울 반사로 가역입니다. 완전한 사건 구동(event-driven) 방식은 아니므로 한 스텝에 겹치는 다중 충돌은 근사되며, 충돌 처리 패스를 늘리면 남은 겹침이 거의 사라집니다(2패스: 10만 입자 고밀도에서도 겹치는 쌍 0.02%, 최대 침투 약 7%). dt를 줄이면 오차가 더 줄어듭니다.</div>
+    <div class="note"><b>속도 반전(Loschmidt).</b> 반전하면 엔트로피가 왔던 길을 되짚어 내려갑니다. 그러나 혼돈 때문에 오차가 지수적으로 커져서 오래 기다린 뒤 반전할수록 처음 상태를 복원하지 못하고, 곧 다시 상승합니다. 교란 ε를 키우면 이 붕괴가 훨씬 빨리 옵니다. "엔트로피 증가는 법칙이 아니라 압도적 확률"이라는 볼츠만의 해석을 눈으로 보는 실험입니다.</div>
+    <div class="note"><b>충돌을 꺼 보세요.</b> 이상기체가 되어 속력 분포는 초기값 그대로 남습니다(열평형에 이르지 못함). 반면 위치 엔트로피는 벽 반사만으로도 올라갑니다. 즉 위치 엔트로피 증가와 속도 분포의 열평형화는 서로 다른 과정입니다.</div>
+    <div class="note"><b>한계.</b> 충전율이 φ≈0.70(하드디스크 결정화 영역)에 가까워지면 더는 단순 유체가 아닙니다. 그래서 N의 상한을 φ≤0.55로 제한합니다. 확률적 랜덤워크 모드는 비교용이며 반경이 작을수록 완화가 매우 느립니다. 이 모드의 불가역성은 난수를 넣어서 만든 것이지 역학에서 나온 것이 아닙니다.</div>
+    <div class="note refs"><b>참고 문헌.</b>
+      Orban &amp; Bellemans, "Velocity-inversion and irreversibility in a dilute gas of hard disks", Phys. Lett. A 24, 620 (1967) — 하드디스크 속도 반전 실험 ·
+      <a href="https://arxiv.org/abs/2011.12792" target="_blank" rel="noopener">Megías &amp; Santos, 탄성 하드디스크의 속도 반전 실험과 D<sub>KL</sub> 분석</a> ·
+      <a href="https://arxiv.org/abs/1406.6956" target="_blank" rel="noopener">Jiao 외, plug-in 엔트로피 편향과 Miller–Madow 보정</a> ·
+      <a href="https://arxiv.org/abs/1009.3111" target="_blank" rel="noopener">하드디스크 유체의 결정화(φ≈0.70–0.72)</a> ·
+      Holian, Hoover &amp; Posch, "Resolution of Loschmidt's Paradox", PRL 59, 10 (1987)
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ============================================================
+  // Constants & helpers
+  // ============================================================
+  const L = 500;
+  const TAU = Math.PI * 2;
+  const H3 = 0.8660254037844386;
+  const CW = 1024;
+  const SC = CW / L;
+  const PHI_CAP = 0.55;
+  const NB = 40;
+  const $ = id => document.getElementById(id);
+  const fmt = n => Number(n).toLocaleString('en-US');
+  const root = document.documentElement;
+
+  // 프레임 예산 (사용자 선택 가능)
+  let FRAME_BUDGET_MS = 13;
+
+  function randn() {
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random();
+    v = Math.random();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * v);
+  }
+
+  // ============================================================
+  // Theme / colors
+  // ============================================================
+  let COL = {};
+  const cssVar = n => getComputedStyle(root).getPropertyValue(n).trim();
+  function hex2rgb(h) {
+    h = (h || '#888888').replace('#', '');
+    if (h.length === 3) h = h.split('').map(c => c + c).join('');
+    const n = parseInt(h, 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  const rgba = (c, a) => 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')';
+  function refreshColors() {
+    COL = {
+      bg: cssVar('--panel-2'), accent: cssVar('--accent'), a2: cssVar('--accent-2'),
+      a3: cssVar('--accent-3'), text: cssVar('--text'), faint: cssVar('--text-faint'),
+      border: cssVar('--border'), warn: cssVar('--warn'), ok: cssVar('--ok')
+    };
+    COL.bgRGB = hex2rgb(COL.bg); COL.accRGB = hex2rgb(COL.accent);
+    COL.a2RGB = hex2rgb(COL.a2); COL.a3RGB = hex2rgb(COL.a3);
+    COL.txtRGB = hex2rgb(COL.text);
+  }
+  function isDark() {
+    const t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  function onThemeChange() { refreshColors(); styleCharts(); draw(); }
+  $('themeToggle').addEventListener('click', () => {
+    root.setAttribute('data-theme', isDark() ? 'light' : 'dark');
+    onThemeChange();
+  });
+  if (window.matchMedia) {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    if (mq.addEventListener) mq.addEventListener('change', onThemeChange);
+  }
+
+  // ============================================================
+  // State
+  // ============================================================
+  const S = {
+    N: 4000, r: 1.0, vrms: 1.0, model: 'newton', collide: true, boundary: 'reflect',
+    initVel: 'single', persist: 0, dtFactor: 0.10, stepLen: 0.6, dt: 0.1,
+    mult: 64, running: true, initMode: 'corner',
+    trailOn: false, trailK: 40, trailLen: 120, trailEvery: 4,
+    velVecOn: false, heatOn: false,
+    gridLines: true, gridSet: [2, 8, 32], phi0: 0.45, passes: 2
+  };
+
+  let N = 0;
+  let x = new Float64Array(0), y = new Float64Array(0);
+  let vx = new Float64Array(0), vy = new Float64Array(0), ang = new Float64Array(0);
+  let stepCount = 0, tHat = 0, collCount = 0, wallCollCount = 0;
+  let E0 = 1, vrms0 = 1, wallHitsBuffer = 0;
+  let rsaFails = 0, latticeControl = false;
+  let autoExpRunning = false;
+
+  // ============================================================
+  // Initial placement
+  // ============================================================
+  function nMaxPack(r) { return Math.floor(PHI_CAP * L * L / (Math.PI * r * r)); }
+
+  function planLattice(n, r, phi0, full) {
+    const amin = 2.02 * r;
+    let a = full ? L : r * Math.sqrt(2 * Math.PI / (Math.sqrt(3) * phi0));
+    a = Math.max(a, amin);
+    for (let guard = 0; guard < 20000; guard++) {
+      const jm = 0.17 * (a - 2 * r);
+      const avail = L - 2 * r - 2 * jm - 1e-6;
+      const nc = Math.max(1, Math.ceil(Math.sqrt(n / H3)));
+      const rows = Math.ceil(n / nc);
+      const w = (nc - 1) * a + a * 0.5, h = (rows - 1) * a * H3;
+      if (w <= avail && h <= avail) return { a: a, nc: nc, rows: rows, N: n };
+      if (a > amin * 1.0001) a = Math.max(amin, a * 0.985);
+      else n = Math.max(1, Math.floor(n * 0.98));
+    }
+    return { a: amin, nc: 1, rows: 1, N: 1 };
+  }
+
+  function placeLattice(pl, r) {
+    const a = pl.a, nc = pl.nc, n = pl.N;
+    const jm = 0.17 * (a - 2 * r);
+    const perm = new Int32Array(n);
+    for (let i = 0; i < n; i++) perm[i] = i;
+    for (let i = n - 1; i > 0; i--) {
+      const j = (Math.random() * (i + 1)) | 0;
+      const t = perm[i]; perm[i] = perm[j]; perm[j] = t;
+    }
+    for (let i = 0; i < n; i++) {
+      const k = perm[i];
+      const row = (k / nc) | 0, col = k - row * nc;
+      x[i] = r + jm + col * a + ((row & 1) ? a * 0.5 : 0) + (Math.random() * 2 - 1) * jm;
+      y[i] = r + jm + row * a * H3 + (Math.random() * 2 - 1) * jm;
+    }
+  }
+
+  function rsaPlace(n, r) {
+    const cols = Math.max(1, Math.floor(L / (2 * r)));
+    const cell = L / cols;
+    const head = new Int32Array(cols * cols).fill(-1);
+    const next = new Int32Array(n);
+    const D2 = 4 * r * r;
+    let fails = 0;
+    for (let i = 0; i < n; i++) {
+      let ok = false, px = 0, py = 0, cx = 0, cy = 0;
+      for (let t = 0; t < 60 && !ok; t++) {
+        px = r + Math.random() * (L - 2 * r);
+        py = r + Math.random() * (L - 2 * r);
+        cx = Math.min(cols - 1, (px / cell) | 0);
+        cy = Math.min(cols - 1, (py / cell) | 0);
+        ok = true;
+        outer:
+        for (let dy = -1; dy <= 1; dy++) {
+          const ny = cy + dy; if (ny < 0 || ny >= cols) continue;
+          for (let dx = -1; dx <= 1; dx++) {
+            const nx = cx + dx; if (nx < 0 || nx >= cols) continue;
+            for (let j = head[ny * cols + nx]; j !== -1; j = next[j]) {
+              const ddx = x[j] - px, ddy = y[j] - py;
+              if (ddx * ddx + ddy * ddy < D2) { ok = false; break outer; }
+            }
+          }
+        }
+      }
+      if (!ok) fails++;
+      x[i] = px; y[i] = py;
+      const c = cy * cols + cx;
+      next[i] = head[c]; head[c] = i;
+    }
+    return fails;
+  }
+
+  // ============================================================
+  // Spatial grid
+  // ============================================================
+  let gCols = 1, cellStart = new Int32Array(2), cellFill = new Int32Array(1);
+  let cellItems = new Int32Array(1), cellOf = new Int32Array(1);
+
+  function buildGrid() {
+    const cols = Math.max(1, Math.floor(L / (2 * S.r)));
+    gCols = cols;
+    const cell = L / cols, inv = 1 / cell, nc = cols * cols;
+    if (cellStart.length !== nc + 1) { cellStart = new Int32Array(nc + 1); cellFill = new Int32Array(nc); }
+    else cellStart.fill(0);
+    if (cellItems.length < N) { cellItems = new Int32Array(N); cellOf = new Int32Array(N); }
+    for (let i = 0; i < N; i++) {
+      let cx = (x[i] * inv) | 0, cy = (y[i] * inv) | 0;
+      if (cx >= cols) cx = cols - 1; else if (cx < 0) cx = 0;
+      if (cy >= cols) cy = cols - 1; else if (cy < 0) cy = 0;
+      const c = cy * cols + cx;
+      cellOf[i] = c; cellStart[c + 1]++;
+    }
+    for (let c = 0; c < nc; c++) cellStart[c + 1] += cellStart[c];
+    for (let c = 0; c < nc; c++) cellFill[c] = cellStart[c];
+    for (let i = 0; i < N; i++) cellItems[cellFill[cellOf[i]]++] = i;
+  }
+
+  const OX = [1, -1, 0, 1], OY = [0, 1, 1, 1];
+  let cD = 2, cD2 = 4, cdt = 0.1, cper = false, cHalf = L * 0.5, cColl = 0;
+  let overlapCount = 0;
+
+  function forPairs(fn) {
+    const cols = gCols, per = cper;
+    for (let cy = 0; cy < cols; cy++) {
+      for (let cx = 0; cx < cols; cx++) {
+        const c = cy * cols + cx, s = cellStart[c], e = cellStart[c + 1];
+        if (s === e) continue;
+        for (let a = s; a < e; a++) {
+          const i = cellItems[a];
+          for (let b = a + 1; b < e; b++) fn(i, cellItems[b]);
+        }
+        for (let k = 0; k < 4; k++) {
+          let nx = cx + OX[k], ny = cy + OY[k];
+          if (nx < 0 || nx >= cols) { if (!per) continue; nx = (nx + cols) % cols; }
+          if (ny >= cols) { if (!per) continue; ny = 0; }
+          const c2 = ny * cols + nx, s2 = cellStart[c2], e2 = cellStart[c2 + 1];
+          if (s2 === e2) continue;
+          for (let a = s; a < e; a++) {
+            const i = cellItems[a];
+            for (let b = s2; b < e2; b++) fn(i, cellItems[b]);
+          }
+        }
+      }
+    }
+  }
+
+  // 겹침 카운트용 (통계 표시)
+  function countOverlaps() {
+    overlapCount = 0;
+    cD = 2 * S.r; cD2 = cD * cD; cper = S.boundary === 'periodic';
+    cHalf = L * 0.5;
+    forPairs((i, j) => {
+      let dx = x[j] - x[i], dy = y[j] - y[i];
+      if (cper) {
+        if (dx > cHalf) dx -= L; else if (dx < -cHalf) dx += L;
+        if (dy > cHalf) dy -= L; else if (dy < -cHalf) dy += L;
+      }
+      const d2 = dx * dx + dy * dy;
+      if (d2 < cD2 * 0.98) overlapCount++;
+    });
+  }
+
+  function pairNewton(i, j) {
+    let dx = x[j] - x[i], dy = y[j] - y[i];
+    if (cper) {
+      if (dx > cHalf) dx -= L; else if (dx < -cHalf) dx += L;
+      if (dy > cHalf) dy -= L; else if (dy < -cHalf) dy += L;
+    }
+    const d2 = dx * dx + dy * dy;
+    if (d2 >= cD2) return;
+    const dvx = vx[j] - vx[i], dvy = vy[j] - vy[i];
+    const dot = dx * dvx + dy * dvy, u2 = dvx * dvx + dvy * dvy;
+    if (u2 > 1e-24) {
+      const disc = dot * dot - u2 * (d2 - cD2);
+      const tau = (dot + Math.sqrt(disc)) / u2;
+      if (tau <= cdt * 1.000001) {
+        const nx = (dx - dvx * tau) / cD, ny = (dy - dvy * tau) / cD;
+        const un = dvx * nx + dvy * ny;
+        if (un < 0) {
+          const ax = un * nx, ay = un * ny;
+          vx[i] += ax; vy[i] += ay; vx[j] -= ax; vy[j] -= ay;
+          x[i] += ax * tau; y[i] += ay * tau; x[j] -= ax * tau; y[j] -= ay * tau;
+          cColl++;
+          return;
+        }
+      }
+    }
+    const d = Math.sqrt(d2);
+    if (d < 1e-12) { x[i] -= cD * 0.5; x[j] += cD * 0.5; return; }
+    const ux = dx / d, uy = dy / d, ov = (cD - d) * 0.5;
+    x[i] -= ux * ov; y[i] -= uy * ov; x[j] += ux * ov; y[j] += uy * ov;
+    const un2 = dvx * ux + dvy * uy;
+    if (un2 < 0) {
+      const ax = un2 * ux, ay = un2 * uy;
+      vx[i] += ax; vy[i] += ay; vx[j] -= ax; vy[j] -= ay;
+      cColl++;
+    }
+  }
+
+  function pairSep(i, j) {
+    let dx = x[j] - x[i], dy = y[j] - y[i];
+    if (cper) {
+      if (dx > cHalf) dx -= L; else if (dx < -cHalf) dx += L;
+      if (dy > cHalf) dy -= L; else if (dy < -cHalf) dy += L;
+    }
+    const d2 = dx * dx + dy * dy;
+    if (d2 >= cD2 || d2 < 1e-18) return;
+    const d = Math.sqrt(d2), ov = (cD - d) * 0.5, ux = dx / d, uy = dy / d;
+    x[i] -= ux * ov; y[i] -= uy * ov; x[j] += ux * ov; y[j] += uy * ov;
+  }
+
+  // ============================================================
+  // Time stepping
+  // ============================================================
+  function updateDt() {
+    S.dt = S.model === 'newton' ? S.dtFactor * S.r / S.vrms : 1;
+  }
+
+  function stepNewton() {
+    const dt = S.dt, rr = S.r, Lm = L - rr, per = S.boundary === 'periodic';
+    let wallHits = 0;
+    for (let i = 0; i < N; i++) {
+      let px = x[i] + vx[i] * dt, py = y[i] + vy[i] * dt;
+      if (per) {
+        if (px < 0) px += L; else if (px >= L) px -= L;
+        if (py < 0) py += L; else if (py >= L) py -= L;
+      } else {
+        if (px < rr) { px = 2 * rr - px; vx[i] = -vx[i]; wallHits++; }
+        else if (px > Lm) { px = 2 * Lm - px; vx[i] = -vx[i]; wallHits++; }
+        if (py < rr) { py = 2 * rr - py; vy[i] = -vy[i]; wallHits++; }
+        else if (py > Lm) { py = 2 * Lm - py; vy[i] = -vy[i]; wallHits++; }
+      }
+      x[i] = px; y[i] = py;
+    }
+    wallCollCount += wallHits;
+    if (S.collide) {
+      buildGrid();
+      cD = 2 * S.r; cD2 = cD * cD; cdt = dt; cper = per; cColl = 0;
+      for (let ps = 0; ps < S.passes; ps++) forPairs(pairNewton);
+      collCount += cColl;
+    }
+    stepCount++;
+    tHat += dt * S.vrms / L;
+  }
+
+  function stepStoch() {
+    const ell = S.stepLen, p = S.persist, rr = S.r, Lm = L - rr, per = S.boundary === 'periodic';
+    for (let i = 0; i < N; i++) {
+      if (Math.random() >= p) ang[i] = Math.random() * TAU;
+      let px = x[i] + Math.cos(ang[i]) * ell, py = y[i] + Math.sin(ang[i]) * ell;
+      if (per) {
+        if (px < 0) px += L; else if (px >= L) px -= L;
+        if (py < 0) py += L; else if (py >= L) py -= L;
+      } else {
+        if (px < rr) { px = 2 * rr - px; ang[i] = Math.PI - ang[i]; }
+        else if (px > Lm) { px = 2 * Lm - px; ang[i] = Math.PI - ang[i]; }
+        if (py < rr) { py = 2 * rr - py; ang[i] = -ang[i]; }
+        else if (py > Lm) { py = 2 * Lm - py; ang[i] = -ang[i]; }
+      }
+      x[i] = px; y[i] = py;
+    }
+    if (S.collide) {
+      buildGrid();
+      cD = 2 * rr; cD2 = cD * cD; cper = per;
+      forPairs(pairSep); forPairs(pairSep);
+    }
+    stepCount++;
+    tHat = stepCount;
+  }
+
+  function stepOnce() {
+    if (S.model === 'newton') stepNewton(); else stepStoch();
+    if (S.trailOn && (stepCount % S.trailEvery) === 0) recordTrail();
+  }
+
+  function reverseVelocities() {
+    if (S.model !== 'newton' || !N) return;
+    const eps = parseFloat($('selEps').value) || 0;
+    for (let i = 0; i < N; i++) {
+      vx[i] = -vx[i]; vy[i] = -vy[i];
+      if (eps) { vx[i] += eps * vrms0 * randn(); vy[i] += eps * vrms0 * randn(); }
+    }
+    addMarker(tHat);
+  }
+
+  function rescaleSpeed(nv) {
+    if (S.model !== 'newton' || !N) { S.vrms = nv; updateDt(); return; }
+    const ratio = nv / S.vrms;
+    for (let i = 0; i < N; i++) { vx[i] *= ratio; vy[i] *= ratio; }
+    vrms0 *= ratio;
+    S.vrms = nv; updateDt(); computeTheoryBins();
+  }
+
+  // ============================================================
+  // Entropy statistics
+  // ============================================================
+  let logFact = new Float64Array(2);
+  let cnt0 = new Int32Array(1), cnt1 = new Int32Array(1), cnt2 = new Int32Array(1);
+  let eqH = [1, 1, 1], eqW = 0, lnW0 = null, lastLnW = 0, lastKL = null;
+  let lastH_med = null, lastT = 0, lastDH = 0;
+
+  function buildLogFact(n) {
+    logFact = new Float64Array(n + 2);
+    for (let k = 1; k <= n + 1; k++) logFact[k] = logFact[k - 1] + Math.log(k);
+  }
+  function allocCounts() {
+    const g = S.gridSet;
+    cnt0 = new Int32Array(g[0] * g[0]); cnt1 = new Int32Array(g[1] * g[1]); cnt2 = new Int32Array(g[2] * g[2]);
+  }
+  function expectedSums(n, M) {
+    const p = 1 / M, mu = n * p, sd = Math.sqrt(n * p * (1 - p));
+    const lo = Math.max(0, Math.floor(mu - 12 * sd - 12)), hi = Math.min(n, Math.ceil(mu + 12 * sd + 12));
+    const lp = Math.log(p), lq = Math.log1p(-p);
+    let sH = 0, sLF = 0;
+    for (let k = lo; k <= hi; k++) {
+      const P = Math.exp(logFact[n] - logFact[k] - logFact[n - k] + k * lp + (n - k) * lq);
+      if (k > 0) sH += P * (-(k / n) * Math.log(k / n));
+      sLF += P * logFact[k];
+    }
+    return { H: M * sH, lnW: logFact[n] - M * sLF };
+  }
+  function computeBaselines() {
+    const g = S.gridSet;
+    eqH = g.map(n => expectedSums(N, n * n).H / Math.log(n * n));
+    eqW = expectedSums(N, g[1] * g[1]).lnW;
+  }
+  function calcH(c, M, lnN) {
+    let s = 0;
+    for (let k = 0; k < M; k++) { const v = c[k]; if (v > 0) s += v * Math.log(v); }
+    return (lnN - s / N) / Math.log(M);
+  }
+  function calcLnW(c, M) {
+    let s = 0;
+    for (let k = 0; k < M; k++) s += logFact[c[k]];
+    return logFact[N] - s;
+  }
+  function computePositionStats() {
+    const g0 = S.gridSet[0], g1 = S.gridSet[1], g2 = S.gridSet[2];
+    cnt0.fill(0); cnt1.fill(0); cnt2.fill(0);
+    const k0 = g0 / L, k1 = g1 / L, k2 = g2 / L;
+    for (let i = 0; i < N; i++) {
+      const xi = x[i], yi = y[i];
+      let a = (xi * k0) | 0, b = (yi * k0) | 0;
+      if (a >= g0) a = g0 - 1; else if (a < 0) a = 0; if (b >= g0) b = g0 - 1; else if (b < 0) b = 0;
+      cnt0[b * g0 + a]++;
+      a = (xi * k1) | 0; b = (yi * k1) | 0;
+      if (a >= g1) a = g1 - 1; else if (a < 0) a = 0; if (b >= g1) b = g1 - 1; else if (b < 0) b = 0;
+      cnt1[b * g1 + a]++;
+      a = (xi * k2) | 0; b = (yi * k2) | 0;
+      if (a >= g2) a = g2 - 1; else if (a < 0) a = 0; if (b >= g2) b = g2 - 1; else if (b < 0) b = 0;
+      cnt2[b * g2 + a]++;
+    }
+    const lnN = Math.log(N);
+    return {
+      ratio: [calcH(cnt0, g0 * g0, lnN), calcH(cnt1, g1 * g1, lnN), calcH(cnt2, g2 * g2, lnN)],
+      lnW: calcLnW(cnt1, g1 * g1)
+    };
+  }
+
+  // 동적 이론 곡선: 현재 순간의 vrms 사용
+  const speedHist = new Float64Array(NB), qTheory = new Float64Array(NB);
+  let vmaxH = 3.6, currentVrms = 1;
+  function computeTheoryBins() {
+    // 현재 순간의 vrms 재계산
+    if (S.model === 'newton' && N) {
+      let e = 0;
+      for (let i = 0; i < N; i++) e += vx[i] * vx[i] + vy[i] * vy[i];
+      currentVrms = Math.sqrt(e / N);
+    } else {
+      currentVrms = vrms0;
+    }
+    vmaxH = 4.2 * Math.max(currentVrms, 1e-9);
+    const w = vmaxH / NB;
+    // Rayleigh CDF: P(v < x) = 1 - exp(-x^2 / vrms^2)
+    const sig2 = currentVrms * currentVrms;
+    for (let b = 0; b < NB; b++) {
+      const a = b * w, c = (b + 1) * w;
+      const ea = Math.exp(-(a * a) / sig2);
+      const ec = (b === NB - 1) ? 0 : Math.exp(-(c * c) / sig2);
+      qTheory[b] = ea - ec;
+    }
+  }
+  function speedStats() {
+    speedHist.fill(0);
+    const inv = NB / vmaxH;
+    for (let i = 0; i < N; i++) {
+      let b = (Math.sqrt(vx[i] * vx[i] + vy[i] * vy[i]) * inv) | 0;
+      if (b >= NB) b = NB - 1;
+      speedHist[b]++;
+    }
+    let kl = 0;
+    for (let b = 0; b < NB; b++) {
+      const p = speedHist[b] / N;
+      if (p > 0 && qTheory[b] > 0) kl += p * Math.log(p / qTheory[b]);
+    }
+    return kl;
+  }
+
+  // ============================================================
+  // Trails
+  // ============================================================
+  let trailBuf = new Float32Array(0), trailHead = 0, trailCount = 0, trailKeff = 0;
+  function allocTrail(reset = true) {
+    trailKeff = Math.min(S.trailK, N);
+    trailBuf = new Float32Array(Math.max(1, trailKeff * S.trailLen * 2));
+    if (reset) { trailHead = 0; trailCount = 0; }
+  }
+  function recordTrail() {
+    const K = trailKeff, len = S.trailLen, base = trailHead * K * 2;
+    for (let p = 0; p < K; p++) { trailBuf[base + 2 * p] = x[p]; trailBuf[base + 2 * p + 1] = y[p]; }
+    trailHead = (trailHead + 1) % len;
+    if (trailCount < len) trailCount++;
+  }
+
+  // ============================================================
+  // Charts
+  // ============================================================
+  let chA = null, chB = null, chC = null;
+  let hist = { H: [[], [], []], W: [], t: [] };
+
+  function lineDs(color, dashed) {
+    return {
+      data: [], borderColor: color, backgroundColor: 'transparent', borderWidth: dashed ? 1.2 : 2,
+      borderDash: dashed ? [5, 4] : [], pointRadius: 0, tension: 0, spanGaps: true
+    };
+  }
+  function buildCharts() {
+    if (typeof Chart === 'undefined') {
+      document.querySelectorAll('.chart-wrap').forEach(el => {
+        el.innerHTML = '<div class="notice">그래프 라이브러리를 불러오지 못했어요. 시뮬레이션은 계속 동작합니다.</div>';
+      });
+      return;
+    }
+    const tick = { color: COL.faint }, grid = { color: COL.border };
+    const common = {
+      responsive: true, maintainAspectRatio: false, animation: false,
+      interaction: { intersect: false },
+      plugins: { legend: { display: false }, tooltip: { enabled: false } }
+    };
+    chA = new Chart($('chA').getContext('2d'), {
+      type: 'line',
+      data: { datasets: [lineDs(COL.accent), lineDs(COL.a2), lineDs(COL.a3), lineDs(COL.accent, true), lineDs(COL.a2, true), lineDs(COL.a3, true)] },
+      options: Object.assign({}, common, {
+        parsing: false, normalized: true,
+        scales: {
+          x: { type: 'linear', min: 0, ticks: Object.assign({ maxTicksLimit: 7 }, tick), grid: grid, title: { display: true, text: 't·v_rms / L', color: COL.faint, font: { size: 11 } } },
+          y: { min: 0, max: 1.05, ticks: Object.assign({ stepSize: 0.25 }, tick), grid: grid }
+        }
+      })
+    });
+    chB = new Chart($('chB').getContext('2d'), {
+      type: 'line',
+      data: { datasets: [lineDs(COL.accent), lineDs(COL.a2, true)] },
+      options: Object.assign({}, common, {
+        parsing: false, normalized: true,
+        scales: {
+          x: { type: 'linear', min: 0, ticks: Object.assign({ maxTicksLimit: 7 }, tick), grid: grid, title: { display: true, text: 't·v_rms / L', color: COL.faint, font: { size: 11 } } },
+          y: { ticks: tick, grid: grid, title: { display: true, text: 'ln W (nats)', color: COL.faint, font: { size: 11 } } }
+        }
+      })
+    });
+    chC = new Chart($('chC').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [
+          { type: 'bar', data: [], backgroundColor: rgba(hex2rgb(COL.a3), 0.75), borderWidth: 0, barPercentage: 1, categoryPercentage: 1 },
+          { type: 'line', data: [], borderColor: COL.a2, backgroundColor: 'transparent', borderWidth: 2, pointRadius: 0, tension: 0.3 }
+        ]
+      },
+      options: Object.assign({}, common, {
+        scales: {
+          x: { ticks: Object.assign({ maxTicksLimit: 9, maxRotation: 0 }, tick), grid: { display: false }, title: { display: true, text: '속력 / v_rms', color: COL.faint, font: { size: 11 } } },
+          y: { min: 0, ticks: tick, grid: grid }
+        }
+      })
+    });
+    styleCharts();
+  }
+
+  function styleCharts() {
+    if (!chA) return;
+    const cols = [COL.accent, COL.a2, COL.a3];
+    for (let k = 0; k < 3; k++) { chA.data.datasets[k].borderColor = cols[k]; chA.data.datasets[k + 3].borderColor = cols[k]; }
+    for (let k = 6; k < chA.data.datasets.length; k++) chA.data.datasets[k].borderColor = COL.warn;
+    chB.data.datasets[0].borderColor = COL.accent; chB.data.datasets[1].borderColor = COL.a2;
+    chC.data.datasets[0].backgroundColor = rgba(hex2rgb(COL.a3), 0.75);
+    chC.data.datasets[1].borderColor = COL.a2;
+    [chA, chB, chC].forEach(c => {
+      Object.keys(c.options.scales).forEach(k => {
+        const ax = c.options.scales[k];
+        ax.ticks.color = COL.faint;
+        if (ax.grid) ax.grid.color = COL.border;
+        if (ax.title) ax.title.color = COL.faint;
+      });
+      c.update('none');
+    });
+  }
+
+  function legendHTML() {
+    const cols = ['var(--accent)', 'var(--accent-2)', 'var(--accent-3)'];
+    $('legendA').innerHTML = S.gridSet.map((n, k) =>
+      '<span><i class="dot" style="background:' + cols[k] + '"></i>' + n + '×' + n + '</span>').join('');
+    const g = S.gridSet[1];
+    $('legendB').innerHTML =
+      '<span><i class="dot" style="background:var(--accent)"></i>측정 (' + g + '×' + g + ')</span>' +
+      '<span><i class="dot" style="background:var(--accent-2)"></i>평형 기댓값</span>';
+  }
+
+  function resetCharts() {
+    hist = { H: [[], [], []], W: [], t: [] };
+    lnW0 = null;
+    if (!chA) return;
+    chA.data.datasets.length = 6;
+    for (let k = 0; k < 3; k++) { chA.data.datasets[k].data = hist.H[k]; chA.data.datasets[k + 3].data = []; }
+    chB.data.datasets[0].data = hist.W; chB.data.datasets[1].data = [];
+    const labels = [];
+    const w = vmaxH / NB;
+    for (let b = 0; b < NB; b++) labels.push(((b + 0.5) * w / Math.max(currentVrms, 1e-9)).toFixed(2));
+    chC.data.labels = labels;
+    chC.data.datasets[0].data = []; chC.data.datasets[1].data = [];
+    chA.options.scales.x.title.text = S.model === 'newton' ? 't·v_rms / L' : '스텝';
+    chB.options.scales.x.title.text = chA.options.scales.x.title.text;
+    chA.update('none'); chB.update('none'); chC.update('none');
+  }
+
+  function addMarker(t) {
+    if (!chA) return;
+    const ds = lineDs(COL.warn, true);
+    ds.borderWidth = 1; ds.borderDash = [2, 3];
+    ds.data = [{ x: t, y: 0 }, { x: t, y: 1.05 }];
+    chA.data.datasets.push(ds);
+    chA.update('none');
+  }
+
+  function decimate() {
+    const f = a => a.filter((_, i) => i % 2 === 0 || i === a.length - 1);
+    hist.H = hist.H.map(f); hist.W = f(hist.W); hist.t = f(hist.t);
+    if (chA) {
+      for (let k = 0; k < 3; k++) chA.data.datasets[k].data = hist.H[k];
+      chB.data.datasets[0].data = hist.W;
+    }
+  }
+
+  function pushSample() {
+    if (!N) return;
+    const ps = computePositionStats();
+    const t = tHat;
+    for (let k = 0; k < 3; k++) hist.H[k].push({ x: t, y: ps.ratio[k] });
+    hist.W.push({ x: t, y: ps.lnW });
+    hist.t.push(t);
+    if (lnW0 === null) lnW0 = ps.lnW;
+    lastLnW = ps.lnW;
+
+    // dH/dt 계산
+    const hNow = ps.ratio[1];
+    if (lastH_med !== null && t > lastT) lastDH = (hNow - lastH_med) / (t - lastT);
+    lastH_med = hNow; lastT = t;
+
+    lastKL = (S.model === 'newton') ? speedStats() : null;
+    if (hist.W.length > 3000) decimate();
+    if (!chA) return;
+    const tx = Math.max(t, 1e-9);
+    for (let k = 0; k < 3; k++) chA.data.datasets[k + 3].data = [{ x: 0, y: eqH[k] }, { x: tx, y: eqH[k] }];
+    chA.update('none');
+    chB.data.datasets[1].data = [{ x: 0, y: eqW }, { x: tx, y: eqW }];
+    chB.update('none');
+    if (lastKL !== null) {
+      const d = new Array(NB), q = new Array(NB);
+      for (let b = 0; b < NB; b++) { d[b] = speedHist[b] / N; q[b] = qTheory[b]; }
+      chC.data.datasets[0].data = d; chC.data.datasets[1].data = q;
+      chC.update('none');
+    }
+  }
+
+  // ============================================================
+  // Reset
+  // ============================================================
+  function resetAll(mode) {
+    S.initMode = mode || S.initMode;
+    const r = S.r;
+    const want = Math.max(10, Math.min(S.N, nMaxPack(r)));
+    let lattice = null;
+    latticeControl = false;
+    if (S.initMode === 'corner') {
+      lattice = planLattice(want, r, S.phi0, false);
+    } else if (want * Math.PI * r * r / (L * L) > 0.30) {
+      lattice = planLattice(want, r, 1, true);
+      latticeControl = true;
+    }
+    N = lattice ? lattice.N : want;
+    x = new Float64Array(N); y = new Float64Array(N);
+    vx = new Float64Array(N); vy = new Float64Array(N); ang = new Float64Array(N);
+    rsaFails = 0;
+    if (lattice) placeLattice(lattice, r); else rsaFails = rsaPlace(N, r);
+
+    S.vrms = parseFloat($('rangeV').value);
+    if (S.model === 'newton') {
+      const sig = S.vrms / Math.SQRT2;
+      for (let i = 0; i < N; i++) {
+        if (S.initVel === 'single') {
+          const a = Math.random() * TAU;
+          vx[i] = S.vrms * Math.cos(a); vy[i] = S.vrms * Math.sin(a);
+        } else {
+          vx[i] = sig * randn(); vy[i] = sig * randn();
+        }
+      }
+      let e = 0;
+      for (let i = 0; i < N; i++) e += vx[i] * vx[i] + vy[i] * vy[i];
+      E0 = 0.5 * e; vrms0 = Math.sqrt(e / N);
+    } else {
+      for (let i = 0; i < N; i++) ang[i] = Math.random() * TAU;
+      E0 = 1; vrms0 = 1;
+    }
+    currentVrms = vrms0;
+    computeTheoryBins();
+    updateDt();
+    stepCount = 0; tHat = 0; collCount = 0; wallCollCount = 0;
+    lastH_med = null; lastT = 0; lastDH = 0;
+    buildLogFact(N);
+    allocCounts();
+    computeBaselines();
+    allocTrail();
+    glPos = new Float32Array(N * 2);
+    resetCharts();
+    pushSample();
+    refreshNotices();
+    updateStats(true);
+    autoExpRunning = false;
+  }
+
+  // ============================================================
+  // Rendering
+  // ============================================================
+  const glCanvas = $('gl'), ovCanvas = $('ov');
+  glCanvas.width = glCanvas.height = CW; ovCanvas.width = ovCanvas.height = CW;
+  const ov = ovCanvas.getContext('2d');
+  let gl = null, glProg = null, glBuf = null, glPos = new Float32Array(0), uL, uSize, uColor, ptMax = 64;
+
+  function initGL() {
+    try {
+      gl = glCanvas.getContext('webgl', { antialias: false, alpha: false });
+    } catch (e) { gl = null; }
+    if (!gl) return false;
+    function sh(type, src) {
+      const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+      return s;
+    }
+    try {
+      const vs = sh(gl.VERTEX_SHADER,
+        'attribute vec2 aPos; uniform float uL; uniform float uSize;' +
+        'void main(){ vec2 c = aPos / uL * 2.0 - 1.0; gl_Position = vec4(c.x, -c.y, 0.0, 1.0); gl_PointSize = uSize; }');
+      const fs = sh(gl.FRAGMENT_SHADER,
+        'precision mediump float; uniform vec4 uColor;' +
+        'void main(){ float d = length(gl_PointCoord - vec2(0.5)); if (d > 0.5) discard;' +
+        ' float a = 1.0 - smoothstep(0.38, 0.5, d); gl_FragColor = vec4(uColor.rgb, uColor.a * a); }');
+      glProg = gl.createProgram();
+      gl.attachShader(glProg, vs); gl.attachShader(glProg, fs); gl.linkProgram(glProg);
+      if (!gl.getProgramParameter(glProg, gl.LINK_STATUS)) throw new Error('link');
+      gl.useProgram(glProg);
+      uL = gl.getUniformLocation(glProg, 'uL');
+      uSize = gl.getUniformLocation(glProg, 'uSize');
+      uColor = gl.getUniformLocation(glProg, 'uColor');
+      glBuf = gl.createBuffer();
+      const loc = gl.getAttribLocation(glProg, 'aPos');
+      gl.bindBuffer(gl.ARRAY_BUFFER, glBuf);
+      gl.enableVertexAttribArray(loc);
+      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+      gl.viewport(0, 0, CW, CW);
+      const rg = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
+      if (rg && rg[1]) ptMax = rg[1];
+      return true;
+    } catch (e) { gl = null; return false; }
+  }
+  let GL_OK = initGL();
+
+  function drawParticlesGL() {
+    const c = COL.bgRGB;
+    gl.clearColor(c[0] / 255, c[1] / 255, c[2] / 255, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    for (let i = 0, j = 0; i < N; i++, j += 2) { glPos[j] = x[i]; glPos[j + 1] = y[i]; }
+    gl.bindBuffer(gl.ARRAY_BUFFER, glBuf);
+    gl.bufferData(gl.ARRAY_BUFFER, glPos, gl.DYNAMIC_DRAW);
+    gl.uniform1f(uL, L);
+    gl.uniform1f(uSize, Math.min(ptMax, Math.max(2, 2 * S.r * SC)));
+    const a = COL.accRGB;
+    gl.uniform4f(uColor, a[0] / 255, a[1] / 255, a[2] / 255, 0.92);
+    gl.drawArrays(gl.POINTS, 0, N);
+  }
+
+  function drawParticles2D() {
+    ov.fillStyle = COL.bg; ov.fillRect(0, 0, CW, CW);
+    ov.fillStyle = rgba(COL.accRGB, 0.92);
+    const s = Math.max(2, 2 * S.r * SC);
+    if (s <= 3) {
+      for (let i = 0; i < N; i++) ov.fillRect(x[i] * SC - s / 2, y[i] * SC - s / 2, s, s);
+    } else {
+      ov.beginPath();
+      for (let i = 0; i < N; i++) { const px = x[i] * SC, py = y[i] * SC; ov.moveTo(px + s / 2, py); ov.arc(px, py, s / 2, 0, TAU); }
+      ov.fill();
+    }
+  }
+
+  // 히트맵 그리기 (gridSet[1] 격자)
+  function drawHeatmap() {
+    const g = S.gridSet[1];
+    const cell = CW / g;
+    // 최대 밀도 찾기
+    let maxV = 1;
+    for (let i = 0; i < cnt1.length; i++) if (cnt1[i] > maxV) maxV = cnt1[i];
+    for (let gy = 0; gy < g; gy++) {
+      for (let gx = 0; gx < g; gx++) {
+        const v = cnt1[gy * g + gx] / maxV;
+        if (v < 0.02) continue;
+        // accent 색조를 밝기로 사용
+        const a = 0.10 + 0.45 * v;
+        ov.fillStyle = rgba(COL.accRGB, a);
+        ov.fillRect(gx * cell, gy * cell, cell + 1, cell + 1);
+      }
+    }
+  }
+
+  // 속도 벡터 (샘플링: 60개만)
+  function drawVelocityVectors() {
+    const maxVecs = 60;
+    const step = Math.max(1, Math.floor(N / maxVecs));
+    const scale = 30 / Math.max(currentVrms, 1e-6);
+    ov.strokeStyle = rgba(COL.a2RGB, 0.85);
+    ov.lineWidth = 1.6;
+    ov.beginPath();
+    for (let i = 0; i < N; i += step) {
+      const px = x[i] * SC, py = y[i] * SC;
+      const qx = px + vx[i] * scale, qy = py + vy[i] * scale;
+      ov.moveTo(px, py); ov.lineTo(qx, qy);
+    }
+    ov.stroke();
+  }
+
+  function drawOverlay() {
+    if (GL_OK) ov.clearRect(0, 0, CW, CW);
+    else drawParticles2D();
+
+    if (S.heatOn && N) drawHeatmap();
+
+    if (S.gridLines) {
+      const n = S.gridSet[1];
+      ov.strokeStyle = rgba(COL.txtRGB, 0.16); ov.lineWidth = 1;
+      ov.beginPath();
+      for (let i = 1; i < n; i++) {
+        const p = Math.round(i * CW / n) + 0.5;
+        ov.moveTo(p, 0); ov.lineTo(p, CW); ov.moveTo(0, p); ov.lineTo(CW, p);
+      }
+      ov.stroke();
+      const g0 = S.gridSet[0];
+      if (g0 !== n) {
+        ov.strokeStyle = rgba(COL.txtRGB, 0.30);
+        ov.beginPath();
+        for (let i = 1; i < g0; i++) {
+          const p = Math.round(i * CW / g0) + 0.5;
+          ov.moveTo(p, 0); ov.lineTo(p, CW); ov.moveTo(0, p); ov.lineTo(CW, p);
+        }
+        ov.stroke();
+      }
+    }
+
+    if (S.trailOn && trailCount > 1) {
+      const K = trailKeff, len = S.trailLen, n = trailCount, bands = 6, jump = CW * 0.5;
+      ov.lineWidth = 1.4; ov.lineJoin = 'round'; ov.lineCap = 'round';
+      for (let b = 0; b < bands; b++) {
+        const s0 = Math.floor(b * (n - 1) / bands), s1 = Math.floor((b + 1) * (n - 1) / bands);
+        if (s1 <= s0) continue;
+        ov.strokeStyle = rgba(COL.a2RGB, 0.12 + 0.78 * (b + 1) / bands);
+        ov.beginPath();
+        for (let p = 0; p < K; p++) {
+          let px = 0, py = 0, has = false;
+          for (let s = s0; s <= s1; s++) {
+            const idx = (((trailHead - n + s) % len) + len) % len;
+            const qx = trailBuf[(idx * K + p) * 2] * SC, qy = trailBuf[(idx * K + p) * 2 + 1] * SC;
+            if (!has || Math.abs(qx - px) > jump || Math.abs(qy - py) > jump) ov.moveTo(qx, qy);
+            else ov.lineTo(qx, qy);
+            px = qx; py = qy; has = true;
+          }
+        }
+        ov.stroke();
+      }
+      const hr = Math.max(3.2, S.r * SC);
+      ov.fillStyle = rgba(COL.a2RGB, 1); ov.strokeStyle = rgba(COL.txtRGB, 0.9); ov.lineWidth = 1;
+      for (let p = 0; p < K; p++) {
+        ov.beginPath(); ov.arc(x[p] * SC, y[p] * SC, hr, 0, TAU); ov.fill(); ov.stroke();
+      }
+    }
+
+    if (S.velVecOn && N) drawVelocityVectors();
+  }
+
+  function draw() {
+    if (GL_OK) drawParticlesGL();
+    drawOverlay();
+  }
+
+  // ============================================================
+  // Stats / notices
+  // ============================================================
+  let spsAcc = 0, spsT = performance.now(), spsVal = 0;
+  let lastStatT = 0, lastSampleT = 0;
+  let lastOverlapT = 0;
+
+  function fmtSci(v) { return v === 0 ? '0' : v.toExponential(1); }
+  function updateStats(force) {
+    const now = performance.now();
+    if (!force && now - lastStatT < 250) return;
+    lastStatT = now;
+    const phi = N * Math.PI * S.r * S.r / (L * L);
+    $('statN').textContent = fmt(N);
+    $('statPhi').textContent = (phi * 100).toFixed(1) + '%';
+    $('statPhi').className = 'v' + (phi > 0.5 ? ' warn' : '');
+    $('statT').textContent = S.model === 'newton' ? tHat.toFixed(3) : '—';
+    $('statSteps').textContent = fmt(stepCount) + ' 스텝';
+    $('statSps').textContent = fmt(Math.round(spsVal)) + ' /s';
+    $('statDt').textContent = S.model === 'newton' ? 'dt = ' + S.dt.toFixed(4) : '스텝 = ' + S.stepLen.toFixed(2);
+    if (S.model === 'newton') {
+      let e = 0;
+      for (let i = 0; i < N; i++) e += vx[i] * vx[i] + vy[i] * vy[i];
+      const eRatio = 0.5 * e / E0;
+      $('statE').textContent = eRatio.toFixed(6);
+      $('statE').className = 'v' + (Math.abs(eRatio - 1) > 1e-3 ? ' warn' : ' ok');
+      // 유효 온도
+      const tempRatio = eRatio; // T ∝ E
+      $('statTemp').textContent = tempRatio.toFixed(4);
+      $('statTemp').className = 'v' + (Math.abs(tempRatio - 1) > 1e-3 ? ' warn' : ' ok');
+      $('statColl').textContent = (2 * collCount / N).toFixed(1);
+      $('statWall').textContent = '벽 ' + fmt(wallCollCount);
+      $('statKL').textContent = lastKL === null ? '—' : fmtSci(lastKL);
+      $('statKLfloor').textContent = '노이즈 바닥 ≈ ' + fmtSci((NB - 1) / (2 * N));
+      // 압력 P·V/(N k_B T) = 1 + (충돌 밀도 보정)
+      // 2D 이상기체: P·V/(N k_B T) = 1
+      // 여기서는 벽 충돌 빈도로부터 근사 계산
+      const tElapsed = tHat;
+      if (tElapsed > 0.001) {
+        // 단위 시간당 벽 충돌 수: dN_wall/dt
+        const wallRate = wallCollCount / tElapsed;
+        // 2D 이상기체에서 P = (N k_B T)/V. 벽 충돌률 = N * v_rms / (2L) 정도 (근사)
+        // P·V/(N k_B T) ≈ (wallRate * L) / (N * vrms)
+        const pv = (wallRate * L) / (N * Math.max(currentVrms, 1e-6));
+        $('statP').textContent = pv.toFixed(3);
+        $('statPsub').textContent = '이상기체 ≈ 1.00';
+      } else {
+        $('statP').textContent = '—'; $('statPsub').textContent = '';
+      }
+    } else {
+      $('statE').textContent = '—'; $('statTemp').textContent = '—';
+      $('statColl').textContent = '—'; $('statWall').textContent = '';
+      $('statKL').textContent = '—'; $('statKLfloor').textContent = '';
+      $('statP').textContent = '—'; $('statPsub').textContent = '';
+    }
+    $('statDS').textContent = (eqW - lastLnW).toFixed(1);
+    $('statDH').textContent = lastDH.toFixed(4);
+    $('statDHDir').textContent = lastDH > 0 ? '↑ 증가 (비가역)' : (lastDH < 0 ? '↓ 감소 (가역 근처)' : '—');
+
+    // 겹침 카운트 (1초마다)
+    if (now - lastOverlapT > 1000) {
+      lastOverlapT = now;
+      if (S.collide && N > 0) {
+        countOverlaps();
+        $('statOverlap').textContent = fmt(overlapCount);
+        $('statOverlap').className = 'v' + (overlapCount > N * 0.001 ? ' warn' : ' ok');
+      } else {
+        $('statOverlap').textContent = '—';
+      }
+    }
+  }
+
+  function refreshNotices() {
+    const m = [];
+    const phi = N * Math.PI * S.r * S.r / (L * L);
+    if (N < S.N) m.push('요청한 ' + fmt(S.N) + '개 대신 <b>' + fmt(N) + '개</b>로 시작했어요 (충전율 상한 φ≤' + PHI_CAP + ' 또는 초기 배치 한계).');
+    if (phi > 0.45) m.push('<span class="w">충전율이 높습니다.</span> 하드디스크는 φ≈0.70 부근에서 결정화하므로 이 영역에서는 완화가 매우 느리고 액체 근사가 약해집니다.');
+    if (S.initMode === 'random') {
+      if (latticeControl) m.push('대조군: 밀도가 높아 무작위 배치가 불가능해 <b>격자 + 지터</b>로 시작했습니다. 위치 요동이 진짜 평형보다 작을 수 있습니다.');
+      else if (rsaFails > 0) m.push('대조군: ' + fmt(rsaFails) + '개 입자는 겹침 없이 놓지 못해 충돌 처리로 밀어냅니다.');
+    }
+    if (S.model === 'stoch' && S.stepLen > 0.6 * S.r) m.push('<span class="w">스텝 길이가 반경에 비해 커서</span> 입자가 서로 스쳐 지나가는 터널링 오류가 생길 수 있어요.');
+    if (S.model === 'stoch') m.push('확률적 모델은 매 스텝 난수로 방향을 바꾸므로 시간 반전 대칭이 없고 에너지 개념도 없습니다. 비교용입니다.');
+    if (S.model === 'newton' && !S.collide) m.push('충돌이 꺼져 있어 이상기체입니다. 속력 분포는 초기값 그대로 남습니다.');
+    if (N > 100000) m.push('입자가 많아 프레임당 계산이 무겁습니다. 배속은 프레임 예산 안에서 자동 제한됩니다.');
+    $('msg').innerHTML = m.join('<br>');
+  }
+
+  // ============================================================
+  // UI wiring
+  // ============================================================
+  function niceN(n) {
+    if (n < 1000) return Math.round(n / 10) * 10;
+    if (n < 10000) return Math.round(n / 100) * 100;
+    if (n < 100000) return Math.round(n / 1000) * 1000;
+    return Math.round(n / 5000) * 5000;
+  }
+  const sliderToN = v => niceN(Math.pow(10, 2 + 3.5 * v / 1000));
+
+  function syncModelUI() {
+    const nw = S.model === 'newton';
+    document.querySelectorAll('.newton-only').forEach(e => e.style.display = nw ? '' : 'none');
+    document.querySelectorAll('.stoch-only').forEach(e => e.style.display = nw ? 'none' : '');
+    $('cardC').style.display = nw ? '' : 'none';
+    $('reverseBtn').disabled = !nw;
+    $('modelHint').textContent = nw
+      ? '탄성 충돌·에너지 보존·시간 반전 대칭. 불가역성은 난수가 아니라 초기 조건과 충돌의 혼돈에서 나옵니다.'
+      : '매 스텝 난수로 방향을 새로 뽑는 확률 과정입니다. 위치 엔트로피 증가만 보이며 반경이 작으면 완화가 매우 느립니다.';
+  }
+
+  S.N = sliderToN(parseInt($('rangeN').value, 10));
+  $('rangeN').addEventListener('input', e => { $('lblN').textContent = fmt(sliderToN(parseInt(e.target.value, 10))); });
+  $('rangeN').addEventListener('change', e => { S.N = sliderToN(parseInt(e.target.value, 10)); resetAll(S.initMode); });
+
+  $('rangeR').addEventListener('input', e => { $('lblR').textContent = parseFloat(e.target.value).toFixed(1); });
+  $('rangeR').addEventListener('change', e => { S.r = parseFloat(e.target.value); resetAll(S.initMode); });
+
+  $('rangeV').addEventListener('input', e => {
+    const v = parseFloat(e.target.value);
+    $('lblV').textContent = v.toFixed(1);
+    rescaleSpeed(v); refreshNotices();
+  });
+  $('selInitVel').addEventListener('change', e => { S.initVel = e.target.value; resetAll(S.initMode); });
+  $('selDt').addEventListener('change', e => { S.dtFactor = parseFloat(e.target.value); updateDt(); });
+  $('selPass').addEventListener('change', e => { S.passes = parseInt(e.target.value, 10); });
+  $('selBudget').addEventListener('change', e => { FRAME_BUDGET_MS = parseInt(e.target.value, 10); });
+  $('rangeStep').addEventListener('input', e => {
+    S.stepLen = parseFloat(e.target.value); $('lblStep').textContent = S.stepLen.toFixed(2); refreshNotices();
+  });
+  $('rangePersist').addEventListener('input', e => {
+    S.persist = parseFloat(e.target.value); $('lblPersist').textContent = S.persist.toFixed(2);
+  });
+  $('toggleCollide').addEventListener('change', e => { S.collide = e.target.checked; refreshNotices(); });
+  $('boundarySeg').addEventListener('click', e => {
+    const b = e.target.closest('button[data-mode]'); if (!b) return;
+    document.querySelectorAll('#boundarySeg button').forEach(x2 => x2.classList.remove('active'));
+    b.classList.add('active'); S.boundary = b.dataset.mode;
+  });
+  $('modelSeg').addEventListener('click', e => {
+    const b = e.target.closest('button[data-model]'); if (!b || b.dataset.model === S.model) return;
+    document.querySelectorAll('#modelSeg button').forEach(x2 => x2.classList.remove('active'));
+    b.classList.add('active'); S.model = b.dataset.model;
+    syncModelUI(); resetAll(S.initMode);
+  });
+  $('selMult').addEventListener('change', e => { S.mult = e.target.value === 'max' ? Infinity : parseInt(e.target.value, 10); });
+  $('selGrid').addEventListener('change', e => {
+    S.gridSet = e.target.value.split(',').map(Number);
+    allocCounts(); computeBaselines(); legendHTML(); resetCharts(); pushSample(); updateStats(true);
+  });
+
+  $('toggleTrail').addEventListener('change', e => { S.trailOn = e.target.checked; allocTrail(); });
+  $('toggleVelVec').addEventListener('change', e => { S.velVecOn = e.target.checked; });
+  $('toggleHeat').addEventListener('change', e => { S.heatOn = e.target.checked; });
+  $('toggleGrid').addEventListener('change', e => { S.gridLines = e.target.checked; });
+  $('rangeTK').addEventListener('input', e => { S.trailK = parseInt(e.target.value, 10); $('lblTK').textContent = S.trailK; allocTrail(); });
+  $('rangeTL').addEventListener('input', e => { S.trailLen = parseInt(e.target.value, 10); $('lblTL').textContent = S.trailLen; allocTrail(); });
+  $('rangeTE').addEventListener('input', e => { S.trailEvery = parseInt(e.target.value, 10); $('lblTE').textContent = S.trailEvery; });
+
+  $('playBtn').addEventListener('click', () => {
+    S.running = !S.running; $('playBtn').textContent = S.running ? '일시정지' : '재생';
+  });
+  $('resetCornerBtn').addEventListener('click', () => resetAll('corner'));
+  $('resetRandomBtn').addEventListener('click', () => resetAll('random'));
+  $('reverseBtn').addEventListener('click', reverseVelocities);
+
+  // 자동 실험
+  $('autoRunBtn').addEventListener('click', () => {
+    if (S.model !== 'newton') { alert('자동 실험은 뉴턴 모드에서만 동작합니다.'); return; }
+    const t1 = parseFloat($('autoT1').value) || 0.5;
+    const t2 = parseFloat($('autoT2').value) || 0.5;
+    resetAll('corner');
+    S.running = true; $('playBtn').textContent = '일시정지';
+    autoExpRunning = { phase: 'forward', t1: t1, t2: t2 };
+  });
+
+  // CSV 내보내기
+  $('exportCsvBtn').addEventListener('click', () => {
+    const rows = ['t,H_2,H_8,H_32,lnW'];
+    const len = hist.t.length;
+    for (let i = 0; i < len; i++) {
+      const t = hist.t[i];
+      const h0 = hist.H[0][i] ? hist.H[0][i].y : '';
+      const h1 = hist.H[1][i] ? hist.H[1][i].y : '';
+      const h2 = hist.H[2][i] ? hist.H[2][i].y : '';
+      const w = hist.W[i] ? hist.W[i].y : '';
+      rows.push([t.toFixed(6), h0, h1, h2, w].join(','));
+    }
+    const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'entropy_box_' + Date.now() + '.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  // 설정 공유 (URL)
+  $('shareBtn').addEventListener('click', () => {
+    const p = new URLSearchParams({
+      N: S.N, r: S.r, v: S.vrms, model: S.model,
+      collide: S.collide ? 1 : 0, boundary: S.boundary,
+      init: S.initMode, grid: S.gridSet.join(','),
+      mult: String(S.mult), passes: S.passes
+    });
+    const url = location.origin + location.pathname + '?' + p.toString();
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = $('shareBtn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ 복사됨';
+      setTimeout(() => { btn.textContent = orig; }, 1500);
+    }).catch(() => {
+      prompt('아래 URL을 복사하세요:', url);
+    });
+  });
+
+  // URL 파라미터 로드
+  function loadFromURL() {
+    const p = new URLSearchParams(location.search);
+    if (p.has('N')) {
+      S.N = parseInt(p.get('N'), 10) || S.N;
+      const v = Math.log10(S.N / 100) / 3.5 * 1000;
+      $('rangeN').value = Math.max(0, Math.min(1000, v));
+      $('lblN').textContent = fmt(S.N);
+    }
+    if (p.has('r')) { S.r = parseFloat(p.get('r')); $('rangeR').value = S.r; $('lblR').textContent = S.r.toFixed(1); }
+    if (p.has('v')) { S.vrms = parseFloat(p.get('v')); $('rangeV').value = S.vrms; $('lblV').textContent = S.vrms.toFixed(1); }
+    if (p.has('model')) {
+      S.model = p.get('model');
+      document.querySelectorAll('#modelSeg button').forEach(b => b.classList.toggle('active', b.dataset.model === S.model));
+    }
+    if (p.has('collide')) { S.collide = p.get('collide') === '1'; $('toggleCollide').checked = S.collide; }
+    if (p.has('boundary')) {
+      S.boundary = p.get('boundary');
+      document.querySelectorAll('#boundarySeg button').forEach(b => b.classList.toggle('active', b.dataset.mode === S.boundary));
+    }
+    if (p.has('init')) S.initMode = p.get('init');
+    if (p.has('grid')) {
+      S.gridSet = p.get('grid').split(',').map(Number);
+      const val = S.gridSet.join(',');
+      const opt = Array.from($('selGrid').options).find(o => o.value === val);
+      if (opt) $('selGrid').value = val;
+    }
+    if (p.has('mult')) {
+      const v = p.get('mult');
+      S.mult = v === 'max' || v === 'Infinity' ? Infinity : parseInt(v, 10);
+    }
+    if (p.has('passes')) { S.passes = parseInt(p.get('passes'), 10); $('selPass').value = String(S.passes); }
+  }
+
+  // 키보드 단축키
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+    switch (e.key.toLowerCase()) {
+      case ' ':
+        e.preventDefault();
+        S.running = !S.running; $('playBtn').textContent = S.running ? '일시정지' : '재생';
+        break;
+      case 'r': resetAll(S.initMode); break;
+      case 'v': reverseVelocities(); break;
+      case 'g':
+        S.gridLines = !S.gridLines; $('toggleGrid').checked = S.gridLines;
+        break;
+      case 't':
+        S.trailOn = !S.trailOn; $('toggleTrail').checked = S.trailOn; allocTrail();
+        break;
+      case 'c': $('exportCsvBtn').click(); break;
+    }
+  });
+
+  // ============================================================
+  // Main loop
+  // ============================================================
+  function checkAutoExperiment() {
+    if (!autoExpRunning || S.model !== 'newton') return;
+    if (autoExpRunning.phase === 'forward' && tHat >= autoExpRunning.t1) {
+      reverseVelocities();
+      autoExpRunning.phase = 'backward';
+    } else if (autoExpRunning.phase === 'backward' && tHat >= autoExpRunning.t1 + autoExpRunning.t2) {
+      S.running = false; $('playBtn').textContent = '재생';
+      autoExpRunning = false;
+    }
+  }
+
+  function frame() {
+    if (S.running && N) {
+      const t0 = performance.now(), target = S.mult;
+      let n = 0;
+      while (n < target) {
+        stepOnce(); n++;
+        if ((n & 3) === 0 || n === 1) { if (performance.now() - t0 > FRAME_BUDGET_MS) break; }
+      }
+      spsAcc += n;
+      const now = performance.now();
+      if (now - lastSampleT > 100) {
+        lastSampleT = now; pushSample(); checkAutoExperiment();
+        // 동적 이론 곡선 재계산 (에너지 보존 확인)
+        if (S.model === 'newton') computeTheoryBins();
+      }
+      if (now - spsT >= 500) { spsVal = spsAcc * 1000 / (now - spsT); spsAcc = 0; spsT = now; }
+    }
+    updateStats(false);
+    draw();
+    requestAnimationFrame(frame);
+  }
+
+  // ============================================================
+  // Init
+  // ============================================================
+  refreshColors();
+  legendHTML();
+  syncModelUI();
+  loadFromURL();
+  buildCharts();
+  $('lblN').textContent = fmt(S.N);
+  resetAll(S.initMode);
+  requestAnimationFrame(frame);
+
+  // headless 테스트 훅
+  window.__sim = {
+    S: S, resetAll: resetAll, stepOnce: stepOnce, reverse: reverseVelocities,
+    stats: computePositionStats, speed: speedStats, expectedSums: expectedSums,
+    get: () => ({
+      N: N, x: x, y: y, vx: vx, vy: vy, tHat: tHat,
+      coll: collCount, wallColl: wallCollCount,
+      E0: E0, vrms0: vrms0, currentVrms: currentVrms,
+      eqH: eqH, eqW: eqW, rsaFails: rsaFails,
+      lastKL: lastKL, lastDH: lastDH
+    })
+  };
+})();
+</script>
+</body>
+</html>
