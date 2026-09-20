@@ -1,6 +1,24 @@
 {
   "globalNews": [
     {
+      "title": "Two killed in 'massive' Ukrainian drone attack on Moscow region, says Russia",
+      "link": "https://www.bbc.co.uk/news/articles/c34gdjk1ne8yo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 20 Sep 2026 07:22:04 GMT",
+      "desc": "An oil refinery was also reportedly hit in Moscow, and flights were suspended at two capital airports."
+    },
+    {
+      "title": "Ed Sheeran admits 'mistakes' at first show since Macklemore controversy",
+      "link": "https://www.bbc.co.uk/news/articles/cm780ll1de18o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 20 Sep 2026 04:49:11 GMT",
+      "desc": "The singer spoke about Israel and Gaza after Macklemore was dropped from his tour for making pro-Palestinian remarks on stage."
+    },
+    {
+      "title": "German elections under way which could decide fate of Chancellor Merz",
+      "link": "https://www.bbc.co.uk/news/articles/cme8xj6g2ny7o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 20 Sep 2026 07:57:32 GMT",
+      "desc": "The chancellor is facing intense political pressure which will increase if his party struggles in Sunday's polls."
+    },
+    {
       "title": "Houthis say they targeted Saudi capital with ballistic missiles",
       "link": "https://www.bbc.co.uk/news/articles/cwly5d9v7r43o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 19 Sep 2026 23:49:26 GMT",
@@ -11,56 +29,38 @@
       "link": "https://www.bbc.co.uk/news/articles/c63d7lexyym1o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 19 Sep 2026 23:00:27 GMT",
       "desc": "Denmark and the US have reached an agreement after months of threats from Donald Trump to annex the territory."
-    },
-    {
-      "title": "Our head teacher was an abuser. We joined forces to get justice - now we're married",
-      "link": "https://www.bbc.co.uk/news/articles/cg4d9vly636o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 19 Sep 2026 23:01:38 GMT",
-      "desc": "Students spent years collecting evidence against their Indonesian principal, before falling in love."
-    },
-    {
-      "title": "Journalists denied White House access after Trump banned some media outlets",
-      "link": "https://www.bbc.co.uk/news/articles/cj4gklz9dxplo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 19 Sep 2026 19:13:49 GMT",
-      "desc": "CNN, MS NOW and Politico reporters' White House press badges were confiscated, the outlets reported."
-    },
-    {
-      "title": "Cultural treasures are being destroyed by war, and people want justice",
-      "link": "https://www.bbc.co.uk/news/articles/cvgy1q2k2z0o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 19 Sep 2026 23:18:18 GMT",
-      "desc": "A cauldron of conflicts is bubbling across the world, with cultural monuments being destroyed. These people are fighting against it."
     }
   ],
   "koreaNews": [
     {
-      "title": "The trickle-down economics of the AI boom - The Economist",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOaGQ4Yi1JcVFIUDdlUk0yUkFVd1gtX1lDU20yemd5VEx3cDVTMV9qZEF0dFRzQ2I1M3RHRkJJejFnUGdma1B5WjBKX29BNU5pbkZSQ3hzSjN4TkpjMlYtalVvbXl5WEk5NzBfZkV3bVE0TVcyQ2hBdmhaX19YdjFSS0p3ZVBlZG9FTjR1cWUwRm9ST2RtczRJM3pGc1gwQmRWRVE?oc=5",
-      "date": "Thu, 17 Sep 2026 09:27:11 GMT",
-      "desc": "The trickle-down economics of the AI boom&nbsp;&nbsp;The Economist"
-    },
-    {
-      "title": "South Korea may be getting too old to take advantage of its AI boom - Fortune",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZG9QazFXQW11Zzlqd2x2VGtZampWdTNYVlVvNlpTenlCXzV0M24ydUplQks4M05vaS16NW1QMEFMQ2FlS1pkbUtDUjNzem5pc0Z0S0ROMlFiY0hmSzV4S3I5VGxrVUxNeU5ycWpCcFE2NFY2S2UyY3hNcjZVZmFSVEE5a0NuU204V0RFR0FYMkV3N1NlSG9n?oc=5",
-      "date": "Sun, 30 Aug 2026 07:00:00 GMT",
-      "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
-    },
-    {
-      "title": "To Succeed in AI, South Korea Is Reinventing Its Developmental State Model - The Diplomat – Asia-Pacific Current Affairs Magazine",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPeU92WUE2WGc3a2ZDVG1DcUVweF93ZGYxdDhaRW5Xa1VPcmx3MmNfNm5CTXl2ckFic291ZURrdzVpWGhkVm1RZ3E3b1lKdXhIYTJFWHc2eEVUZUc0ZUMwSk90aEpZV3dRaFBMbzBpUm1fNW42VUZzbXlPM1EwZE9DR2hUSG5BeWkyTDJ4WWVKSkd2c1FCMkNvM3dEcHpfaUxhS0daQno1ZENrUQ?oc=5",
-      "date": "Fri, 18 Sep 2026 14:30:45 GMT",
-      "desc": "To Succeed in AI, South Korea Is Reinventing Its Developmental State Model&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
-    },
-    {
-      "title": "Enter East Asian Tiger: South Korea to boost its economic footprint in Central Asia - Eurasianet",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQRC04OHVkdHRaQW1rdFB6NDhSVUZtSy1PNWdpbnIyRC00ZzRTWWozT0N6alk4ZnUzQWpERUlQb05HY2JWc1Y5TU1Ubl9GZFlheXN3TUUxZW9jc09yWFd6a2oxWmo2ajZISVVBaVk1UDJSZVh6TFBiX2Zwbk1ST09VRlVWMFVTbmF2MWVZZmRLQS1zR0xPUzlpX1FPaU5jMEw3M05FTjltSmQ?oc=5",
-      "date": "Wed, 16 Sep 2026 16:39:29 GMT",
-      "desc": "Enter East Asian Tiger: South Korea to boost its economic footprint in Central Asia&nbsp;&nbsp;Eurasianet"
+      "title": "South Korea’s Economy Is Growing. Its Redistribution System Remains an Outlier. - Koreabizwire",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNTnJRWTdXNWtJUWoxejRBRlZ2RjFKZzdpckFwQVVJa2dMNVdXdDZPUnZDQzJKcF8zTnRxZFBjN2Ricmp6QzJOcFhIaHl3UzBCSm9YbDJYTHJDV2dZdUpQV3p6VklsbTJNdHk4eXQ5Tm8wbkVRQXAzd29aMmQ1MmdRTzFMV0kxM2duT2JqLTBTQmdWYVcxUnRBTzdwYXVSbkR2bzdCaEZ1cFptR3c?oc=5",
+      "date": "Sun, 20 Sep 2026 05:36:20 GMT",
+      "desc": "South Korea’s Economy Is Growing. Its Redistribution System Remains an Outlier.&nbsp;&nbsp;Koreabizwire"
     },
     {
       "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
       "date": "Fri, 21 Aug 2026 07:00:00 GMT",
       "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "South Korea-US Long-Term Rate Synchronization Driven Primarily by US Inflation Shocks, Contributing 41% - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBqY2IzTmZtMHU5Y1ZqcUJKZE5nR25TUTZWSklISkhGZmp5aVlIRTlyUUJXZnJZWGVkV0VkRUFjbzB2UTFPZG80aEQtSVNGQTB4VloyaGh2dWZ2Rm5YZVgyM2cyMkQ2a3M4N19NSGxhYll3dG4tSFE?oc=5",
+      "date": "Sun, 20 Sep 2026 04:05:00 GMT",
+      "desc": "South Korea-US Long-Term Rate Synchronization Driven Primarily by US Inflation Shocks, Contributing 41%&nbsp;&nbsp;finance.biggo.com"
+    },
+    {
+      "title": "S. Korea ranks near bottom of OECD for income redistribution - Yonhap News Agency",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5WMGp6VW9yS1BsOWROSTZrS19OZjRKQmVGTDZHczZqQ01aVmpWSlQ1S0FOVzNFTko4dGpfeVdWNmdWTXZmYXFpR21ud3NZU3VyTzMwZ3VXQndrZw?oc=5",
+      "date": "Sun, 20 Sep 2026 01:33:13 GMT",
+      "desc": "S. Korea ranks near bottom of OECD for income redistribution&nbsp;&nbsp;Yonhap News Agency"
+    },
+    {
+      "title": "The trickle-down economics of the AI boom - The Economist",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOaGQ4Yi1JcVFIUDdlUk0yUkFVd1gtX1lDU20yemd5VEx3cDVTMV9qZEF0dFRzQ2I1M3RHRkJJejFnUGdma1B5WjBKX29BNU5pbkZSQ3hzSjN4TkpjMlYtalVvbXl5WEk5NzBfZkV3bVE0TVcyQ2hBdmhaX19YdjFSS0p3ZVBlZG9FTjR1cWUwRm9ST2RtczRJM3pGc1gwQmRWRVE?oc=5",
+      "date": "Thu, 17 Sep 2026 09:27:11 GMT",
+      "desc": "The trickle-down economics of the AI boom&nbsp;&nbsp;The Economist"
     },
     {
       "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - Reuters",
@@ -75,10 +75,10 @@
       "desc": "Samsung Electronics, SK Hynix Rally Alongside U.S. Semiconductor Rebound&nbsp;&nbsp;finance.biggo.com"
     },
     {
-      "title": "China backs chipmakers as 'one team,' while Korean firms go it alone - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOdGU3Rng2TGxPQXFsWUlRYnk4SHJDUzFzaVFVWG5aM1oyNURUaGxOZldjbjN4dC1IUHVPYVpVajZ3S2JYS2tVUk1fbUFCNEhFN3BIaElxQm1kUVcwNVhuem9WeDcxa2xsanRfVTJDSDZOY2F0RVZER1pqenAwZmlFM1d2UC05VXVuTnFITVBRYzZDTlJvdTh6WjJwR2FKOFZzZ3lCQ21JcjI0QS1ER1VUYW9RbDVRQnA3SGc?oc=5",
-      "date": "Mon, 14 Sep 2026 22:03:29 GMT",
-      "desc": "China backs chipmakers as 'one team,' while Korean firms go it alone&nbsp;&nbsp;Korea JoongAng Daily"
+      "title": "Samsung, SK hynix government-affairs chiefs attend US founding anniversary dinner amid semiconductor investment pressure - 헤럴드경제",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBVTTVzc3F6c09HMG9ha29oS2pIREJ1aF9GUS1IczdGRndCN2tfWTk1X2NNVDl3N0l0ZUVDQndvRXVLdHRiWGtpM01zSkdjMzRMNmRqSUhTUQ?oc=5",
+      "date": "Thu, 17 Sep 2026 09:44:00 GMT",
+      "desc": "Samsung, SK hynix government-affairs chiefs attend US founding anniversary dinner amid semiconductor investment pressure&nbsp;&nbsp;헤럴드경제"
     }
   ],
   "worldStocks": [
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-20 02:17 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-09-20 08:08 UTC"
 }
