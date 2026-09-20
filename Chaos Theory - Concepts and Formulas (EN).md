@@ -2098,13 +2098,20 @@ Source: Maldacena, J., Shenker, S. H., & Stanford, D. (2016). "A bound on chaos.
 ## E.8 Summary: How the Main Text and This Appendix Relate
 
 | Main text | Main text's conclusion       | Appendix E's deeper dive                         |
-|-----------|-------------------------------|---------------------------------------------------|
+
+
 | 21.9      | Doubly transient chaos exists | E.1: the structure of the saddle, diagnostics       |
+
 | 31        | Homoclinic → chaos            | E.2: diagnosing it with the Melnikov function       |
+
 | 38        | The OGY formula               | E.3: why a single parameter suffices                |
+
 | 40        | Rosenstein recommended        | E.4: pitfalls, neural-network methods               |
+
 | (none)    | —                              | E.5: SNAs (a counterexample to chaos)               |
+
 | 14        | Cardiac chaos = arrhythmia    | E.6: the (debated) chaoticity of a healthy heart    |
+
 | 22-23     | OTOC, MSS                     | E.7: the meaning of scrambling                      |
 
 ---
