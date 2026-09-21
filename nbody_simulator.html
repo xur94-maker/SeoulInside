@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>N-Body Orbit Simulator — Exact Solutions &amp; Chaos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Spectral+SC:wght@500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0c14;
+    --bg-panel: #0e1120;
+    --line: #232744;
+    --line-soft: #171a2e;
+    --ink: #e9e6da;
+    --ink-dim: #8b8fae;
+    --ink-faint: #565a78;
+    --gold: #d9a441;
+    --rose: #d17f6e;
+    --teal: #5fb8ac;
+    --violet: #9d8cd6;
+    --amber-glow: rgba(217,164,65,0.35);
+    --danger: #c2604f;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: border-box;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="light"]){
+      --bg: #0a0c14; --bg-panel: #0e1120; --line: #232744; --line-soft: #171a2e;
+      --ink: #e9e6da; --ink-dim: #8b8fae; --ink-faint: #565a78;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #0a0c14; --bg-panel: #0e1120; --line: #232744; --line-soft: #171a2e;
+    --ink: #e9e6da; --ink-dim: #8b8fae; --ink-faint: #565a78;
+  }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); height:100%; }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0; height:100%; min-height:100vh;
+    background: radial-gradient(ellipse at 20% 0%, #10142a 0%, var(--bg) 55%);
+    color: var(--ink);
+    font-family: 'Spectral', Georgia, 'Nanum Myeongjo', serif;
+    display:flex; flex-direction:column;
+  }
+  .topbar{
+    display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+    padding: 18px clamp(16px,3vw,32px) 12px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .topbar h1{
+    font-family: 'Spectral SC', 'Spectral', serif;
+    font-weight:500; letter-spacing: 0.02em;
+    font-size: clamp(18px, 2.4vw, 24px);
+    margin:0; color: var(--ink);
+  }
+  .topbar .sub{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11.5px; color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+  .layout{
+    flex:1; display:grid;
+    grid-template-columns: 1fr 340px;
+    min-height:0;
+  }
+  @media (max-width: 860px){
+    .layout{ grid-template-columns: 1fr; }
+  }
+  .stage{
+    position:relative; min-height: 46vh;
+    border-right: 1px solid var(--line-soft);
+    overflow:hidden;
+  }
+  @media (max-width: 860px){ .stage{ border-right:none; border-bottom:1px solid var(--line-soft);} }
+  canvas{ display:block; width:100%; height:100%; touch-action: none; }
+
+  .stage-caption{
+    position:absolute; left:18px; bottom:14px; right:18px;
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap: 10px; pointer-events:none;
+  }
+  .stage-caption .name{
+    font-family:'Spectral', serif; font-style:italic; font-weight:500;
+    font-size: clamp(14px,2vw,17px); color: var(--ink);
+    text-shadow: 0 0 18px rgba(0,0,0,0.6);
+  }
+  .stage-caption .time{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--ink-dim);
+    text-align:right; line-height:1.5;
+  }
+
+  .panel{
+    background: var(--bg-panel);
+    padding: 20px 20px 28px;
+    overflow-y:auto;
+    display:flex; flex-direction:column; gap: 22px;
+  }
+  .block-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px; color: var(--ink-faint);
+    letter-spacing: 0.12em;
+    margin: 0 0 10px;
+  }
+  .presets{ display:flex; flex-direction:column; gap:6px; }
+  .preset-btn{
+    all:unset; cursor:pointer;
+    display:flex; align-items:center; gap:10px;
+    padding: 9px 10px; border-radius: 3px;
+    border-left: 2px solid transparent;
+    font-family:'Spectral', serif; font-size: 14.5px; color: var(--ink-dim);
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .preset-btn .dot{ width:7px; height:7px; border-radius:50%; background: var(--ink-faint); flex-shrink:0; }
+  .preset-btn:hover{ color: var(--ink); background: rgba(255,255,255,0.02); }
+  .preset-btn.active{
+    color: var(--ink); border-left-color: var(--gold);
+    background: rgba(217,164,65,0.06);
+  }
+  .preset-btn.active .dot{ background: var(--gold); box-shadow: 0 0 8px var(--amber-glow); }
+  .preset-desc{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; line-height:1.7;
+    color: var(--ink-dim); margin-top: 10px; padding: 12px 13px;
+    background: var(--line-soft); border-radius: 3px;
+    min-height: 64px;
+  }
+
+  .controls-row{ display:flex; flex-direction:column; gap:14px; }
+  .ctrl{ display:flex; flex-direction:column; gap:6px; }
+  .ctrl-label{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--ink-dim);
+  }
+  .ctrl-label b{ color: var(--ink); font-weight:600; }
+  input[type=range]{
+    -webkit-appearance:none; width:100%; height:2px; background: var(--line);
+    border-radius: 2px; outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:12px; height:12px; border-radius:50%;
+    background: var(--gold); cursor:pointer; border: 2px solid #16182a;
+  }
+  input[type=range]::-moz-range-thumb{
+    width:12px; height:12px; border-radius:50%; background: var(--gold);
+    cursor:pointer; border: 2px solid #16182a;
+  }
+
+  .btn-row{ display:flex; gap:8px; }
+  .btn{
+    all:unset; cursor:pointer; flex:1; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.04em;
+    padding: 10px 8px; border:1px solid var(--line); border-radius:3px;
+    color: var(--ink-dim); transition: all .15s;
+  }
+  .btn:hover{ border-color: var(--gold); color: var(--ink); }
+  .btn.primary{ border-color: var(--gold); color: var(--gold); }
+  .btn.primary:hover{ background: rgba(217,164,65,0.1); }
+
+  .toggle-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 8px 0; border-top: 1px solid var(--line-soft);
+  }
+  .toggle-row:first-child{ border-top:none; }
+  .toggle-row .label{ font-family:'Spectral', serif; font-size:13.5px; color: var(--ink); }
+  .toggle-row .label small{ display:block; font-family:'IBM Plex Mono', monospace; font-size:10px; color: var(--ink-faint); margin-top:2px; }
+  .switch{
+    position:relative; width:34px; height:18px; flex-shrink:0; cursor:pointer;
+  }
+  .switch input{ opacity:0; width:0; height:0; position:absolute; }
+  .switch .track{
+    position:absolute; inset:0; background: var(--line); border-radius:10px; transition:.15s;
+  }
+  .switch .thumb{
+    position:absolute; top:2px; left:2px; width:14px; height:14px; border-radius:50%;
+    background: var(--ink-faint); transition:.15s;
+  }
+  .switch input:checked + .track{ background: rgba(217,164,65,0.28); }
+  .switch input:checked + .track .thumb{ transform: translateX(16px); background: var(--gold); }
+
+  .readout-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 10px 14px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .readout{ display:flex; flex-direction:column; gap:2px; }
+  .readout .k{ font-size:10px; color: var(--ink-faint); letter-spacing:0.05em; }
+  .readout .v{ font-size:14px; color: var(--ink); }
+  .readout .v.warn{ color: var(--rose); }
+  .readout .v.ok{ color: var(--teal); }
+
+  .chaos-chart{
+    width:100%; height:64px; display:block;
+    background: var(--line-soft); border-radius:3px;
+  }
+  .legend{ display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
+  .legend .item{ display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color: var(--ink-dim); }
+  .legend .sw{ width:8px; height:8px; border-radius:50%; }
+
+  footer{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color: var(--ink-faint);
+    line-height:1.7; padding-top: 6px; border-top:1px solid var(--line-soft);
+  }
+  footer a{ color: var(--ink-dim); }
+
+  ::-webkit-scrollbar{ width:8px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+  ::-webkit-scrollbar-thumb{ background: var(--line); border-radius:4px; }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <h1>N-Body Orbit Simulator</h1>
+    <span class="sub">Exact analytic solutions · Symplectic integration (velocity&nbsp;Verlet) · Chaos sensitivity experiment</span>
+  </div>
+
+  <div class="layout">
+    <div class="stage">
+      <canvas id="cv"></canvas>
+      <div class="stage-caption">
+        <div class="name" id="presetName">Lagrange Equilateral Triangle Solution</div>
+        <div class="time" id="timeReadout">t = 0.00</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div>
+        <div class="block-title">PRESET · Initial Conditions</div>
+        <div class="presets" id="presetList"></div>
+        <div class="preset-desc" id="presetDesc"></div>
+      </div>
+
+      <div>
+        <div class="block-title">CONTROL</div>
+        <div class="controls-row">
+          <div class="btn-row">
+            <button class="btn primary" id="playBtn">Pause</button>
+            <button class="btn" id="resetBtn">Reset</button>
+          </div>
+          <div class="ctrl">
+            <div class="ctrl-label"><span>Playback Speed</span><b id="speedVal">×1.0</b></div>
+            <input type="range" id="speedSlider" min="0" max="60" value="20">
+          </div>
+          <div class="ctrl" id="nCtrl" style="display:none;">
+            <div class="ctrl-label"><span>Number of Bodies N</span><b id="nVal">4</b></div>
+            <input type="range" id="nSlider" min="3" max="20" value="4">
+          </div>
+          <div class="toggle-row">
+            <div class="label">Show Trails<small>trail</small></div>
+            <label class="switch"><input type="checkbox" id="trailToggle" checked><span class="track"><span class="thumb"></span></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="label">Chaos Twin<small>10⁻⁵ initial perturbation → Lyapunov sensitivity</small></div>
+            <label class="switch"><input type="checkbox" id="chaosToggle"><span class="track"><span class="thumb"></span></span></label>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="block-title">Conservation Check (3 of the 10 Integrals)</div>
+        <div class="readout-grid">
+          <div class="readout"><span class="k">ENERGY  E</span><span class="v" id="rE">—</span></div>
+          <div class="readout"><span class="k">ANG. MOM.  L</span><span class="v" id="rL">—</span></div>
+          <div class="readout"><span class="k">Energy Drift</span><span class="v" id="rEd">—</span></div>
+          <div class="readout"><span class="k">Ang. Mom. Drift</span><span class="v" id="rLd">—</span></div>
+        </div>
+      </div>
+
+      <div id="chaosBlock" style="display:none;">
+        <div class="block-title">SEPARATION log₁₀‖δZ(t)‖ — Lyapunov Sensitivity</div>
+        <canvas class="chaos-chart" id="chaosChart"></canvas>
+        <div class="legend">
+          <div class="item"><span class="sw" style="background:var(--gold)"></span>Original orbit</div>
+          <div class="item"><span class="sw" style="background:var(--rose)"></span>Perturbed twin</div>
+        </div>
+      </div>
+
+      <footer>
+        Equations of motion: m·r̈ᵢ = G Σⱼ mᵢmⱼ(rⱼ−rᵢ)/rᵢⱼ³ · G=1 units, softening applied.<br>
+        <b style="color:var(--ink-dim)">Reflecting current research:</b> Butterfly, Moth and Bumblebee are among the 13 new periodic solutions discovered by Šuvakov &amp; Dmitrašinović (2013) using shape-sphere topological classification. Since then, Li &amp; Liao's group has used supercomputers and artificial neural networks (2017–2025) to find ~600 new equal-mass orbits, ~130,000 unequal-mass orbits, ~300 free-fall orbits, and in 2025 alone 10,059 new three-dimensional periodic orbits (including 1,996 linearly stable ones and 273 "piano-trio" orbits) — showing that this remains a very active area of research.
+      </footer>
+    </div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- Canvas setup ----------
+  const canvas = document.getElementById('cv');
+  const ctx = canvas.getContext('2d');
+  const stage = document.querySelector('.stage');
+  let dpr = Math.max(1, window.devicePixelRatio || 1);
+
+  function resizeCanvas(){
+    dpr = Math.max(1, window.devicePixelRatio || 1);
+    const rect = stage.getBoundingClientRect();
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // ---------- Palette ----------
+  const COLORS = ['#d9a441', '#d17f6e', '#5fb8ac', '#9d8cd6', '#7ea1d1', '#c2c26a'];
+
+  function hslToHex(h,s,l){
+    s/=100; l/=100;
+    const k = n => (n + h/30) % 12;
+    const a = s * Math.min(l, 1-l);
+    const f = n => l - a*Math.max(-1, Math.min(k(n)-3, Math.min(9-k(n),1)));
+    const toHex = x => Math.round(255*x).toString(16).padStart(2,'0');
+    return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+  }
+  // golden-angle hue distribution so any N of bodies stays visually distinct
+  function colorFor(i, n){
+    if(n <= COLORS.length) return COLORS[i % COLORS.length];
+    const hue = (i * 137.508) % 360;
+    return hslToHex(hue, 62, 62);
+  }
+
+  // ---------- Physics core ----------
+  const G = 1.0;
+
+  function makeState(bodies, eps, dt, tag){
+    const n = bodies.length;
+    return {
+      bodies: bodies.map((b,i)=>({
+        m: b.m, x: b.x, y: b.y, vx: b.vx, vy: b.vy,
+        color: colorFor(i, n),
+        trail: []
+      })),
+      eps, dt, t: 0, tag
+    };
+  }
+
+  function accelerations(bodies, eps){
+    const n = bodies.length;
+    const ax = new Array(n).fill(0), ay = new Array(n).fill(0);
+    for(let i=0;i<n;i++){
+      for(let j=i+1;j<n;j++){
+        const dx = bodies[j].x - bodies[i].x;
+        const dy = bodies[j].y - bodies[i].y;
+        const r2 = dx*dx + dy*dy + eps*eps;
+        const r = Math.sqrt(r2);
+        const invr3 = 1/(r2*r);
+        const fx = G*dx*invr3, fy = G*dy*invr3;
+        ax[i] += bodies[j].m * fx;  ay[i] += bodies[j].m * fy;
+        ax[j] -= bodies[i].m * fx;  ay[j] -= bodies[i].m * fy;
+      }
+    }
+    return {ax, ay};
+  }
+
+  function stepVerlet(state){
+    const {bodies, eps, dt} = state;
+    const n = bodies.length;
+    if(!state._a) state._a = accelerations(bodies, eps);
+    const a0 = state._a;
+    for(let i=0;i<n;i++){
+      bodies[i].vx += 0.5*a0.ax[i]*dt;
+      bodies[i].vy += 0.5*a0.ay[i]*dt;
+      bodies[i].x  += bodies[i].vx*dt;
+      bodies[i].y  += bodies[i].vy*dt;
+    }
+    const a1 = accelerations(bodies, eps);
+    for(let i=0;i<n;i++){
+      bodies[i].vx += 0.5*a1.ax[i]*dt;
+      bodies[i].vy += 0.5*a1.ay[i]*dt;
+    }
+    state._a = a1;
+    state.t += dt;
+  }
+
+  function energyAndL(bodies, eps){
+    let T=0, U=0, L=0;
+    const n = bodies.length;
+    for(let i=0;i<n;i++){
+      T += 0.5*bodies[i].m*(bodies[i].vx**2 + bodies[i].vy**2);
+      L += bodies[i].m*(bodies[i].x*bodies[i].vy - bodies[i].y*bodies[i].vx);
+    }
+    for(let i=0;i<n;i++) for(let j=i+1;j<n;j++){
+      const dx=bodies[j].x-bodies[i].x, dy=bodies[j].y-bodies[i].y;
+      const r = Math.sqrt(dx*dx+dy*dy+eps*eps);
+      U -= G*bodies[i].m*bodies[j].m/r;
+    }
+    return {E: T+U, L};
+  }
+
+  function centerOfMass(bodies){
+    let M=0,x=0,y=0;
+    for(const b of bodies){ M+=b.m; x+=b.m*b.x; y+=b.m*b.y; }
+    return {x:x/M, y:y/M, M};
+  }
+
+  // ---------- Presets ----------
+  function presetFigureEight(){
+    const m=1;
+    const p1={x:-0.97000436, y:0.24308753};
+    const v3={x:0.93240737, y:0.86473146};
+    const bodies = [
+      {m, x:p1.x, y:p1.y, vx:-v3.x/2, vy:-v3.y/2},
+      {m, x:-p1.x, y:-p1.y, vx:-v3.x/2, vy:-v3.y/2},
+      {m, x:0, y:0, vx:v3.x, vy:v3.y},
+    ];
+    return {bodies, eps:0.0015, dt:0.0008, viewHalf:1.4};
+  }
+
+  function presetLagrange(){
+    const m=1, r=1, M=3*m;
+    const omega = Math.sqrt(G*M/(r*r*r));
+    const R = r/Math.sqrt(3);
+    const bodies=[];
+    for(let k=0;k<3;k++){
+      const ang = Math.PI/2 + k*2*Math.PI/3;
+      const x = R*Math.cos(ang), y = R*Math.sin(ang);
+      const vx = -omega*y, vy = omega*x;
+      bodies.push({m,x,y,vx,vy});
+    }
+    return {bodies, eps:0.002, dt:0.0015, viewHalf:1.5};
+  }
+
+  function presetEuler(){
+    const m=1, d=1;
+    const omega2 = G*(m + m/4)/(d*d*d);
+    const omega = Math.sqrt(omega2);
+    const bodies=[
+      {m, x:-d, y:0, vx:0, vy:-omega*d},
+      {m, x:0,  y:0, vx:0, vy:0},
+      {m, x:d,  y:0, vx:0, vy:omega*d},
+    ];
+    return {bodies, eps:0.003, dt:0.0015, viewHalf:1.8};
+  }
+
+  function presetSuvakov(vx1, vy1, viewHalf, eps, dt){
+    const m = 1;
+    const bodies = [
+      {m, x:-1, y:0, vx:vx1,      vy:vy1},
+      {m, x: 1, y:0, vx:vx1,      vy:vy1},
+      {m, x: 0, y:0, vx:-2*vx1,   vy:-2*vy1},
+    ];
+    return {bodies, eps, dt, viewHalf};
+  }
+
+  function presetChaos(seed, n){
+    let s = seed || 12345;
+    n = n || 4;
+    function rnd(){ s = (s*1103515245+12345)&0x7fffffff; return s/0x7fffffff; }
+    // spread radius grows with N so bodies aren't packed too densely (fewer close encounters)
+    const baseRad = 0.5 + 0.09*n;
+    const bodies=[];
+    for(let i=0;i<n;i++){
+      const ang = rnd()*Math.PI*2;
+      const rad = baseRad*0.5 + rnd()*baseRad;
+      bodies.push({
+        m: 0.5 + rnd()*1.0,
+        x: rad*Math.cos(ang), y: rad*Math.sin(ang),
+        vx: (rnd()-0.5)*0.5, vy: (rnd()-0.5)*0.5
+      });
+    }
+    const com = centerOfMass(bodies);
+    let px=0,py=0;
+    for(const b of bodies){ px+=b.m*b.vx; py+=b.m*b.vy; }
+    for(const b of bodies){
+      b.x -= com.x; b.y -= com.y;
+      b.vx -= px/com.M; b.vy -= py/com.M;
+    }
+    // softening scales gently with N: more bodies -> more frequent close passes -> a touch more regularization
+    const eps = 0.04 + 0.006*n;
+    // more substeps-equivalent stability headroom needed as N grows -> slightly smaller dt
+    const dt = Math.max(0.0008, 0.0028 - 0.00012*n);
+    return {bodies, eps, dt, viewHalf: 1.6 + 0.22*n};
+  }
+
+  const PRESETS = [
+    { key:'eight', name:'Figure-Eight Orbit',
+      desc:'The choreography solution whose existence was proven by Chenciner & Montgomery (2000). Three equal masses with zero angular momentum chase each other along a single figure-eight curve. No closed-form expression is known — only a precise numerical initial condition.',
+      build: presetFigureEight },
+    { key:'lagrange', name:'Lagrange Equilateral Triangle',
+      desc:'A fully analytic solution in which three bodies — regardless of mass — always form an equilateral triangle, rotating about their common center of mass according to Kepler\'s third law (ω² = GM/r³).',
+      build: presetLagrange },
+    { key:'euler', name:'Euler Collinear Solution',
+      desc:'A solution in which three bodies stay on a single line while rotating. For equal masses, Euler\'s quintic equation has the symmetric root λ=1, so the middle body stays fixed while the outer two rotate like a rigid rod.',
+      build: presetEuler },
+    { key:'butterfly', name:'Butterfly I (2013)',
+      desc:'One of 13 new periodic solutions discovered by Šuvakov & Dmitrašinović (PRL 2013) using shape-sphere topological classification. It belongs to the same topological class (I.A) as the figure-eight, but wraps twice around the shape sphere with the more complex free-group element (ab)²(AB)².',
+      build: ()=>presetSuvakov(0.30689, 0.12551, 1.6, 0.0015, 0.0008) },
+    { key:'moth', name:'Moth I (2013)',
+      desc:'A solution from class I.B of the same paper. It has two orthogonal reflection symmetry axes and traces a more intricate path on the shape sphere than the figure-eight or butterfly (free-group element ba(BAB)ab(ABA)).',
+      build: ()=>presetSuvakov(0.46444, 0.39606, 1.7, 0.0015, 0.0006) },
+    { key:'bumblebee', name:'Bumblebee (2013)',
+      desc:'An intricate solution with a period T≈63.5 — about 10× the figure-eight\'s. It still belongs to the reflection-symmetric class I.A, but its free-group element is far longer and more complex, tracing a densely tangled path on the shape sphere — try increasing the playback speed to see a full period.',
+      build: ()=>presetSuvakov(0.18428, 0.58719, 2.1, 0.0012, 0.0005) },
+    { key:'chaos', name:'Random N-Body — Chaos',
+      desc:'An N-body system with random initial conditions (adjust N=3–20 with the slider below). A typical non-integrable system with no general solution — as N grows, the system explores a denser phase space, and toggling the chaos-twin switch lets you watch a 10⁻⁵ initial perturbation get exponentially amplified: Lyapunov sensitivity in action.',
+      build: ()=>presetChaos(Date.now()%100000, chaosN) },
+  ];
+  let chaosN = 4;
+
+  // ---------- Simulation state ----------
+  let state = null;
+  let twinState = null;
+  let running = true;
+  let currentPresetIdx = 1; // start on Lagrange (visually calm)
+  let substeps = 20;
+  let trailsOn = true;
+  let chaosOn = false;
+  const TRAIL_MAX = 900;
+  const chaosHistory = []; // {t, logsep}
+  const CHAOS_HIST_MAX = 400;
+
+  function initTwin(){
+    const cloned = state._initialSnapshot;
+    const perturbed = cloned.map((b,i)=> i===0 ? {...b, x:b.x+1e-5} : {...b});
+    twinState = makeState(perturbed, state.eps, state.dt, 'twin');
+    twinState.t = 0;
+  }
+
+  function loadPreset(idx){
+    currentPresetIdx = idx;
+    const p = PRESETS[idx].build();
+    state = makeState(p.bodies, p.eps, p.dt, 'main');
+    state._initialSnapshot = p.bodies.map(b=>({...b}));
+    state.viewHalf = p.viewHalf;
+    state.viewCenter = {x:0,y:0};
+    state.viewHalfSmoothed = p.viewHalf;
+    const e0 = energyAndL(state.bodies, state.eps);
+    state.E0 = e0.E; state.L0 = e0.L;
+
+    twinState = null;
+    chaosHistory.length = 0;
+    if(chaosOn) initTwin();
+
+    document.getElementById('presetName').textContent = PRESETS[idx].name;
+    document.getElementById('presetDesc').textContent = PRESETS[idx].desc;
+    document.getElementById('nCtrl').style.display = (PRESETS[idx].key === 'chaos') ? 'flex' : 'none';
+    renderPresetButtons();
+  }
+
+  // ---------- UI: preset list ----------
+  const presetListEl = document.getElementById('presetList');
+  function renderPresetButtons(){
+    presetListEl.innerHTML = '';
+    PRESETS.forEach((p, idx)=>{
+      const btn = document.createElement('button');
+      btn.className = 'preset-btn' + (idx===currentPresetIdx ? ' active' : '');
+      btn.innerHTML = '<span class="dot"></span>' + p.name;
+      btn.addEventListener('click', ()=> loadPreset(idx));
+      presetListEl.appendChild(btn);
+    });
+  }
+
+  // ---------- UI wiring ----------
+  const playBtn = document.getElementById('playBtn');
+  playBtn.addEventListener('click', ()=>{
+    running = !running;
+    playBtn.textContent = running ? 'Pause' : 'Play';
+  });
+  document.getElementById('resetBtn').addEventListener('click', ()=> loadPreset(currentPresetIdx));
+
+  const speedSlider = document.getElementById('speedSlider');
+  const speedVal = document.getElementById('speedVal');
+  function updateSpeed(){
+    substeps = Math.max(1, parseInt(speedSlider.value,10));
+    speedVal.textContent = '×' + (substeps/20).toFixed(1);
+  }
+  speedSlider.addEventListener('input', updateSpeed);
+  updateSpeed();
+
+  const nSlider = document.getElementById('nSlider');
+  const nVal = document.getElementById('nVal');
+  nSlider.addEventListener('input', ()=>{
+    chaosN = parseInt(nSlider.value, 10);
+    nVal.textContent = chaosN;
+  });
+  nSlider.addEventListener('change', ()=>{
+    if(PRESETS[currentPresetIdx].key === 'chaos') loadPreset(currentPresetIdx);
+  });
+
+  document.getElementById('trailToggle').addEventListener('change', (e)=>{
+    trailsOn = e.target.checked;
+    if(!trailsOn){ state.bodies.forEach(b=>b.trail.length=0); if(twinState) twinState.bodies.forEach(b=>b.trail.length=0); }
+  });
+
+  const chaosBlock = document.getElementById('chaosBlock');
+  document.getElementById('chaosToggle').addEventListener('change', (e)=>{
+    chaosOn = e.target.checked;
+    chaosBlock.style.display = chaosOn ? 'block' : 'none';
+    chaosHistory.length = 0;
+    if(chaosOn) initTwin(); else twinState = null;
+  });
+
+  // ---------- Main loop ----------
+  function tick(){
+    if(running && state){
+      for(let s=0; s<substeps; s++){
+        stepVerlet(state);
+        if(twinState) stepVerlet(twinState);
+      }
+      // trails — total segment budget stays roughly constant regardless of N
+      if(trailsOn){
+        const cap = Math.max(120, Math.floor(5000 / state.bodies.length));
+        for(const b of state.bodies){
+          b.trail.push({x:b.x, y:b.y});
+          if(b.trail.length > cap) b.trail.shift();
+        }
+        if(twinState) for(const b of twinState.bodies){
+          b.trail.push({x:b.x, y:b.y});
+          if(b.trail.length > cap) b.trail.shift();
+        }
+      }
+      // chaos separation history
+      if(twinState){
+        let sep2 = 0;
+        for(let i=0;i<state.bodies.length;i++){
+          const dx = state.bodies[i].x - twinState.bodies[i].x;
+          const dy = state.bodies[i].y - twinState.bodies[i].y;
+          sep2 += dx*dx+dy*dy;
+        }
+        const sep = Math.sqrt(sep2) || 1e-12;
+        chaosHistory.push({t: state.t, logsep: Math.log10(sep)});
+        if(chaosHistory.length > CHAOS_HIST_MAX) chaosHistory.shift();
+      }
+      // readouts (every frame is fine, cheap)
+      const eL = energyAndL(state.bodies, state.eps);
+      const Ed = state.E0 !== 0 ? Math.abs((eL.E-state.E0)/state.E0)*100 : Math.abs(eL.E-state.E0)*100;
+      const Ld = Math.abs(state.L0) > 1e-9 ? Math.abs((eL.L-state.L0)/state.L0)*100 : Math.abs(eL.L-state.L0)*100;
+      document.getElementById('rE').textContent = eL.E.toFixed(4);
+      document.getElementById('rL').textContent = eL.L.toFixed(4);
+      const rEd = document.getElementById('rEd');
+      const rLd = document.getElementById('rLd');
+      rEd.textContent = Ed.toFixed(3)+'%';
+      rEd.className = 'v ' + (Ed<1 ? 'ok' : (Ed<5?'':'warn'));
+      rLd.textContent = Ld.toFixed(3)+'%';
+      rLd.className = 'v ' + (Ld<1 ? 'ok' : (Ld<5?'':'warn'));
+      document.getElementById('timeReadout').textContent = 't = ' + state.t.toFixed(2);
+    }
+    draw();
+  }
+
+  function draw(){
+    const w = canvas.width, h = canvas.height;
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,w,h);
+    if(!state) return;
+
+    // background subtle vignette
+    ctx.fillStyle = '#0a0c14';
+    ctx.fillRect(0,0,w,h);
+
+    // camera: fit to bodies around COM
+    const com = centerOfMass(state.bodies);
+    let maxR = 0.6;
+    for(const b of state.bodies){
+      const dx=b.x-com.x, dy=b.y-com.y;
+      maxR = Math.max(maxR, Math.hypot(dx,dy));
+    }
+    const targetHalf = Math.max(maxR*1.6, 0.5);
+    state.viewHalfSmoothed += (targetHalf - state.viewHalfSmoothed) * 0.02;
+    state.viewCenter = state.viewCenter || {x:0,y:0};
+    state.viewCenter.x += (com.x - state.viewCenter.x) * 0.03;
+    state.viewCenter.y += (com.y - state.viewCenter.y) * 0.03;
+
+    const scale = Math.min(w,h) / (2*state.viewHalfSmoothed) * 0.92;
+    const cx = w/2, cy = h/2;
+    function toPx(x,y){
+      return [cx + (x-state.viewCenter.x)*scale, cy - (y-state.viewCenter.y)*scale];
+    }
+
+    // faint grid
+    ctx.strokeStyle = 'rgba(120,130,180,0.05)';
+    ctx.lineWidth = 1;
+    const gridStep = niceGridStep(state.viewHalfSmoothed);
+    for(let gx = Math.ceil((state.viewCenter.x-state.viewHalfSmoothed)/gridStep)*gridStep; gx < state.viewCenter.x+state.viewHalfSmoothed; gx+=gridStep){
+      const [px] = toPx(gx,0);
+      ctx.beginPath(); ctx.moveTo(px,0); ctx.lineTo(px,h); ctx.stroke();
+    }
+    for(let gy = Math.ceil((state.viewCenter.y-state.viewHalfSmoothed)/gridStep)*gridStep; gy < state.viewCenter.y+state.viewHalfSmoothed; gy+=gridStep){
+      const [,py] = toPx(0,gy);
+      ctx.beginPath(); ctx.moveTo(0,py); ctx.lineTo(w,py); ctx.stroke();
+    }
+
+    // COM marker
+    {
+      const [px,py] = toPx(com.x, com.y);
+      ctx.strokeStyle = 'rgba(200,200,220,0.25)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(px-6,py); ctx.lineTo(px+6,py); ctx.moveTo(px,py-6); ctx.lineTo(px,py+6); ctx.stroke();
+    }
+
+    // twin (draw first, underneath, faint)
+    if(twinState){
+      drawSystem(twinState, toPx, scale, 0.35, true);
+    }
+    drawSystem(state, toPx, scale, 1.0, false);
+  }
+
+  function niceGridStep(half){
+    const raw = half/3;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const norm = raw/mag;
+    let step;
+    if(norm < 1.5) step = 1*mag;
+    else if(norm < 3.5) step = 2*mag;
+    else if(norm < 7.5) step = 5*mag;
+    else step = 10*mag;
+    return step;
+  }
+
+  function drawSystem(st, toPx, scale, alphaMul, isTwin){
+    // trails
+    if(trailsOn){
+      for(const b of st.bodies){
+        if(b.trail.length < 2) continue;
+        for(let k=1;k<b.trail.length;k++){
+          const a = (k/b.trail.length) * 0.55 * alphaMul;
+          ctx.strokeStyle = hexToRgba(b.color, a);
+          ctx.lineWidth = isTwin ? 1 : 1.4;
+          const [x0,y0] = toPx(b.trail[k-1].x, b.trail[k-1].y);
+          const [x1,y1] = toPx(b.trail[k].x, b.trail[k].y);
+          ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x1,y1); ctx.stroke();
+        }
+      }
+    }
+    // bodies
+    for(const b of st.bodies){
+      const [px,py] = toPx(b.x,b.y);
+      const rad = Math.max(3, Math.min(11, 3 + Math.sqrt(b.m)*4)) * (isTwin?0.75:1);
+      if(!isTwin){
+        const grad = ctx.createRadialGradient(px,py,0,px,py,rad*3.2);
+        grad.addColorStop(0, hexToRgba(b.color, 0.55*alphaMul));
+        grad.addColorStop(1, hexToRgba(b.color, 0));
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(px,py,rad*3.2,0,Math.PI*2); ctx.fill();
+      }
+      if(isTwin){
+        ctx.strokeStyle = hexToRgba(b.color, 0.85*alphaMul);
+        ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.arc(px,py,rad,0,Math.PI*2); ctx.stroke();
+      } else {
+        ctx.fillStyle = hexToRgba(b.color, alphaMul);
+        ctx.beginPath(); ctx.arc(px,py,rad,0,Math.PI*2); ctx.fill();
+      }
+    }
+  }
+
+  function hexToRgba(hex, a){
+    const v = hex.replace('#','');
+    const r = parseInt(v.substring(0,2),16);
+    const g = parseInt(v.substring(2,4),16);
+    const b = parseInt(v.substring(4,6),16);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  // ---------- Chaos chart ----------
+  const chaosCanvas = document.getElementById('chaosChart');
+  const cctx = chaosCanvas.getContext('2d');
+  function drawChaosChart(){
+    const rect = chaosCanvas.getBoundingClientRect();
+    if(rect.width===0) return;
+    const cdpr = Math.max(1, window.devicePixelRatio||1);
+    chaosCanvas.width = rect.width*cdpr;
+    chaosCanvas.height = rect.height*cdpr;
+    cctx.setTransform(cdpr,0,0,cdpr,0,0);
+    const w = rect.width, h = rect.height;
+    cctx.clearRect(0,0,w,h);
+    if(chaosHistory.length < 2) return;
+    let minY = Infinity, maxY = -Infinity;
+    for(const p of chaosHistory){ minY=Math.min(minY,p.logsep); maxY=Math.max(maxY,p.logsep); }
+    if(maxY-minY < 1) { const mid=(maxY+minY)/2; minY=mid-0.5; maxY=mid+0.5; }
+    const t0 = chaosHistory[0].t, t1 = chaosHistory[chaosHistory.length-1].t;
+    function X(t){ return 6 + (t-t0)/((t1-t0)||1) * (w-12); }
+    function Y(v){ return h-6 - (v-minY)/(maxY-minY) * (h-12); }
+    cctx.strokeStyle = '#d9a441';
+    cctx.lineWidth = 1.5;
+    cctx.beginPath();
+    chaosHistory.forEach((p,i)=>{
+      const x=X(p.t), y=Y(p.logsep);
+      if(i===0) cctx.moveTo(x,y); else cctx.lineTo(x,y);
+    });
+    cctx.stroke();
+  }
+
+  // ---------- kick off ----------
+  loadPreset(currentPresetIdx);
+  requestAnimationFrame(function loop(){
+    tick();
+    drawChaosChart();
+    requestAnimationFrame(loop);
+  });
+
+})();
+</script>
+</body>
+</html>

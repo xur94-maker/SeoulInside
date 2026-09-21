@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N-Body 3D — v2.2 · COM Tracking · Lagrange · Lyapunov</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e8;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  #canvas-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 1;
+  }
+
+  #title-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 20px 30px;
+    background: linear-gradient(180deg, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0) 100%);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  #title-bar h1 {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(100, 200, 255, 0.5);
+  }
+
+  #title-bar h1 span { color: #4fc3f7; font-weight: 600; }
+  #title-bar p { font-size: 12px; color: #888; margin-top: 4px; letter-spacing: 1px; }
+
+  #control-panel {
+    position: fixed;
+    top: 90px; left: 20px;
+    width: 280px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    background: rgba(15, 15, 25, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+  }
+
+  #control-panel::-webkit-scrollbar { width: 6px; }
+  #control-panel::-webkit-scrollbar-thumb {
+    background: rgba(79, 195, 247, 0.3);
+    border-radius: 3px;
+  }
+
+  body.menu-closed #control-panel {
+    transform: translateX(calc(-100% - 30px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .panel-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #4fc3f7;
+    margin-bottom: 12px;
+    margin-top: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .panel-title:first-child { margin-top: 0; }
+
+  .model-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .model-btn {
+    padding: 8px 6px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: #ccc;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .model-btn:hover {
+    background: rgba(79, 195, 247, 0.15);
+    border-color: rgba(79, 195, 247, 0.4);
+    color: #fff;
+  }
+
+  .model-btn.active {
+    background: rgba(79, 195, 247, 0.25);
+    border-color: #4fc3f7;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
+  }
+
+  .preset-badge {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+    font-family: monospace;
+  }
+  .preset-badge.exact { color: #81c784; }
+  .preset-badge.approx { color: #ffb74d; }
+  .preset-badge.unstable { color: #e57373; }
+
+  .slider-group { margin-bottom: 14px; }
+
+  .slider-group label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 6px;
+  }
+
+  .slider-group label span:first-child {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #4fc3f7;
+  }
+
+  .slider-group label span:last-child {
+    font-family: monospace;
+    color: #fff;
+  }
+
+  .slider-ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: #666;
+    margin-top: 4px;
+    font-family: monospace;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 14px; height: 14px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
+  }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  .toggle-switch {
+    position: relative;
+    width: 36px; height: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    flex-shrink: 0;
+  }
+
+  .toggle-switch.on { background: #4fc3f7; }
+
+  .toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 16px; height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+
+  .toggle-switch.on::after { transform: translateX(16px); }
+
+  .action-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    background: rgba(79, 195, 247, 0.15);
+    border: 1px solid rgba(79, 195, 247, 0.4);
+    border-radius: 6px;
+    color: #4fc3f7;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: inherit;
+  }
+
+  .action-btn:hover {
+    background: rgba(79, 195, 247, 0.3);
+    color: #fff;
+  }
+
+  .view-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .view-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .view-grid .model-btn,
+  .view-grid-3 .model-btn {
+    font-size: 10px;
+    padding: 7px 4px;
+    letter-spacing: 1px;
+  }
+
+  .speed-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .speed-grid .model-btn {
+    font-size: 9px;
+    padding: 6px 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .theme-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .theme-btn {
+    padding: 8px 6px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: #ccc;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-family: inherit;
+  }
+
+  .theme-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  .theme-btn.active {
+    background: rgba(79, 195, 247, 0.2);
+    border-color: #4fc3f7;
+    color: #fff;
+  }
+
+  .theme-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  #info-panel {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    width: 300px;
+    background: rgba(15, 15, 25, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    overflow-y: auto;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+  }
+
+  #info-panel::-webkit-scrollbar { width: 6px; }
+  #info-panel::-webkit-scrollbar-thumb {
+    background: rgba(79, 195, 247, 0.3);
+    border-radius: 3px;
+  }
+
+  body:not(.calc-hidden):not(.menu-closed) #info-panel {
+    max-height: calc(100vh - 120px - 420px);
+    min-height: 220px;
+  }
+
+  body.calc-hidden #info-panel {
+    max-height: calc(100vh - 120px);
+  }
+
+  body.menu-closed #info-panel {
+    transform: translateX(calc(100% + 30px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #model-name {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  #model-desc {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .equation-box {
+    background: rgba(0,0,0,0.4);
+    border-left: 3px solid #4fc3f7;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .equation-box .eq-title {
+    font-size: 10px;
+    color: #4fc3f7;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .equation-box .eq-content {
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    color: #e0e0e8;
+    line-height: 1.8;
+    white-space: pre-wrap;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .stat-row span:first-child { color: #888; }
+  .stat-row span:last-child { color: #4fc3f7; font-family: monospace; }
+
+  #energy-canvas, #lyap-canvas {
+    width: 100%;
+    height: 90px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+    margin-top: 10px;
+    display: block;
+  }
+
+  #lyap-canvas { height: 70px; }
+
+  .energy-legend {
+    display: flex;
+    justify-content: space-around;
+    font-size: 9px;
+    margin-top: 4px;
+    font-family: monospace;
+  }
+
+  .energy-legend span:nth-child(1) { color: #4fc3f7; }
+  .energy-legend span:nth-child(2) { color: #ffb74d; }
+  .energy-legend span:nth-child(3) { color: #81c784; }
+
+  .lyap-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    margin-top: 4px;
+    font-family: monospace;
+    color: #ff8a65;
+  }
+
+  #calc-panel {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    width: 300px;
+    background: rgba(10, 15, 25, 0.92);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(79, 195, 247, 0.3);
+    border-radius: 12px;
+    padding: 14px;
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7),
+                0 0 60px rgba(79, 195, 247, 0.1);
+    font-family: 'Courier New', 'Monaco', monospace;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+    max-height: 55vh;
+    overflow-y: auto;
+  }
+
+  #calc-panel::-webkit-scrollbar { width: 4px; }
+  #calc-panel::-webkit-scrollbar-thumb {
+    background: rgba(79, 195, 247, 0.3);
+    border-radius: 2px;
+  }
+
+  body.calc-hidden #calc-panel,
+  body.menu-closed #calc-panel {
+    transform: translateY(calc(100% + 50px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .calc-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(79, 195, 247, 0.15);
+    margin-bottom: 12px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #4fc3f7;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 600;
+  }
+
+  .calc-dot {
+    width: 6px;
+    height: 6px;
+    background: #4fc3f7;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4fc3f7;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .calc-model {
+    margin-left: auto;
+    font-size: 9px;
+    color: #888;
+    letter-spacing: 1px;
+    font-weight: 400;
+  }
+
+  .calc-section { margin-bottom: 14px; }
+
+  .calc-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 6px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .calc-values {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .calc-val {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 8px;
+    background: rgba(79, 195, 247, 0.05);
+    border-left: 2px solid rgba(79, 195, 247, 0.3);
+    border-radius: 3px;
+  }
+
+  .calc-val.next {
+    background: rgba(100, 255, 200, 0.05);
+    border-left-color: rgba(100, 255, 200, 0.5);
+  }
+
+  .calc-var { font-size: 11px; color: #4fc3f7; font-style: italic; }
+  .calc-num { font-size: 12px; color: #fff; font-family: 'Courier New', monospace; letter-spacing: 0.5px; }
+
+  .calc-equation {
+    padding: 6px 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin-bottom: 6px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .eq-line { display: flex; align-items: center; gap: 4px; color: #e0e0e8; }
+  .eq-var { color: #4fc3f7; font-style: italic; font-size: 11px; min-width: 20px; }
+  .eq-equals { color: #666; }
+  .eq-formula { color: #aaa; font-size: 10px; }
+  .eq-sub {
+    color: #ffb74d;
+    font-size: 9px;
+    margin-top: 3px;
+    padding-left: 26px;
+    letter-spacing: 0.2px;
+    word-break: break-all;
+    line-height: 1.4;
+  }
+
+  .calc-arrow {
+    text-align: center;
+    color: #4fc3f7;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin: 6px 0;
+    opacity: 0.7;
+  }
+
+  #menu-toggle, #calc-toggle {
+    position: fixed;
+    background: rgba(15, 15, 25, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(79, 195, 247, 0.4);
+    color: #4fc3f7;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+
+  #menu-toggle {
+    top: 20px; right: 20px;
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+
+  #calc-toggle {
+    top: 74px; right: 20px;
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+  }
+
+  #menu-toggle:hover, #calc-toggle:hover {
+    background: rgba(79, 195, 247, 0.25);
+    border-color: #4fc3f7;
+    transform: scale(1.05);
+  }
+
+  #calc-toggle.off { opacity: 0.4; color: #666; }
+
+  #status-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    padding: 8px 20px;
+    background: rgba(10,10,15,0.9);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(79, 195, 247, 0.1);
+    font-size: 11px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    letter-spacing: 1px;
+  }
+
+  #status-bar span { color: #4fc3f7; }
+
+  #loading {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.5s;
+  }
+
+  #loading.hidden { opacity: 0; pointer-events: none; }
+
+  .loader {
+    width: 50px; height: 50px;
+    border: 2px solid rgba(79, 195, 247, 0.2);
+    border-top-color: #4fc3f7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  #loading p { color: #4fc3f7; font-size: 12px; letter-spacing: 3px; }
+
+  @media (max-width: 1300px) { #calc-panel { width: 280px; } }
+
+  @media (max-width: 1100px) {
+    #calc-panel { display: none; }
+    #calc-toggle { display: none; }
+    body:not(.calc-hidden) #info-panel { max-height: calc(100vh - 120px); }
+  }
+
+  @media (max-width: 900px) {
+    #control-panel, #info-panel { width: 240px; padding: 14px; }
+    #title-bar h1 { font-size: 16px; }
+    #title-bar p { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="loader"></div>
+  <p>LOADING N-BODY v2.2...</p>
+</div>
+
+<button id="menu-toggle" title="Toggle Menu (H)">
+  <span class="menu-icon">☰</span>
+</button>
+
+<button id="calc-toggle" title="Toggle Calculation View (C)">
+  <span>∑</span>
+</button>
+
+<div id="canvas-container"></div>
+
+<div id="title-bar">
+  <h1>N-BODY <span>3D</span></h1>
+  <p>INTERACTIVE GRAVITY SIMULATOR · v2.2 · LAGRANGE · LYAPUNOV</p>
+</div>
+
+<div id="control-panel">
+  <div class="panel-title">Preset</div>
+  <div class="model-grid" id="model-grid"></div>
+
+  <div class="panel-title">Camera Target</div>
+  <div class="view-grid-3">
+    <button class="model-btn active" id="cam-free">FREE</button>
+    <button class="model-btn" id="cam-com">COM</button>
+    <button class="model-btn" id="cam-body">BODY</button>
+  </div>
+  <div class="toggle-row">
+    <span>Follow Smooth</span>
+    <div class="toggle-switch on" id="toggle-follow-smooth"></div>
+  </div>
+  <div class="toggle-row">
+    <span>Show COM Marker</span>
+    <div class="toggle-switch on" id="toggle-com-marker"></div>
+  </div>
+
+  <div class="panel-title">Camera</div>
+  <div class="slider-group">
+    <label>
+      <span>Distance</span>
+      <span id="val-camera-dist">20.0</span>
+    </label>
+    <input type="range" id="camera-dist-slider" min="2" max="200" step="0.5" value="20">
+  </div>
+  <button class="action-btn" id="btn-fit" style="margin-bottom: 10px;">⊙ Fit to View</button>
+  <div class="view-grid">
+    <button class="model-btn" id="view-front">FRONT</button>
+    <button class="model-btn" id="view-top">TOP</button>
+    <button class="model-btn" id="view-side">SIDE</button>
+    <button class="model-btn" id="view-iso">ISO</button>
+  </div>
+
+  <div class="panel-title">Simulation</div>
+  <div class="slider-group">
+    <label>
+      <span>N (body count)</span>
+      <span id="val-n">8</span>
+    </label>
+    <input type="range" id="n-slider" min="2" max="500" step="1" value="8">
+  </div>
+
+  <div class="toggle-row">
+    <span>Barnes-Hut (fast)</span>
+    <div class="toggle-switch on" id="toggle-bh"></div>
+  </div>
+  <div class="slider-group">
+    <label>
+      <span>BH θ (accuracy)</span>
+      <span id="val-theta">0.5</span>
+    </label>
+    <input type="range" id="theta-slider" min="0.1" max="1.5" step="0.05" value="0.5">
+  </div>
+
+  <div class="slider-group">
+    <label>
+      <span>Speed (log)</span>
+      <span id="val-speed">1.00x</span>
+    </label>
+    <input type="range" id="speed-slider" min="0" max="1" step="0.001" value="0.5">
+    <div class="slider-ticks">
+      <span>10⁻⁴</span>
+      <span>10⁻²</span>
+      <span>10⁰</span>
+      <span>10²</span>
+      <span>10³</span>
+    </div>
+  </div>
+  <div class="speed-grid">
+    <button class="model-btn" data-speed="0.0001">×0.0001</button>
+    <button class="model-btn" data-speed="0.01">×0.01</button>
+    <button class="model-btn" data-speed="1">×1</button>
+    <button class="model-btn" data-speed="10">×10</button>
+    <button class="model-btn" data-speed="100">×100</button>
+    <button class="model-btn" data-speed="1000">×1000</button>
+  </div>
+
+  <div class="slider-group" style="margin-top:14px;">
+    <label>
+      <span>Trail Length</span>
+      <span id="val-tail">50</span>
+    </label>
+    <input type="range" id="tail-slider" min="10" max="500" step="10" value="50">
+  </div>
+  <div class="slider-group">
+    <label>
+      <span>Head Size</span>
+      <span id="val-head-size">0.15</span>
+    </label>
+    <input type="range" id="head-size-slider" min="0.05" max="1.0" step="0.05" value="0.15">
+  </div>
+  <div class="slider-group">
+    <label>
+      <span>Softening ε</span>
+      <span id="val-softening">0.05</span>
+    </label>
+    <input type="range" id="softening-slider" min="0.01" max="0.5" step="0.01" value="0.05">
+  </div>
+
+  <div class="panel-title">Collision Mode</div>
+  <div class="toggle-row">
+    <span>Elastic</span>
+    <div class="toggle-switch on" id="toggle-elastic"></div>
+  </div>
+  <div class="toggle-row">
+    <span>Inelastic (merge)</span>
+    <div class="toggle-switch" id="toggle-inelastic"></div>
+  </div>
+  <div class="toggle-row">
+    <span>Collision Particles</span>
+    <div class="toggle-switch on" id="toggle-particles"></div>
+  </div>
+
+  <div class="panel-title">External Injection</div>
+  <div class="toggle-row">
+    <span>Auto Inject</span>
+    <div class="toggle-switch" id="toggle-inject"></div>
+  </div>
+  <div class="slider-group">
+    <label>
+      <span>Target N</span>
+      <span id="val-target-n">12</span>
+    </label>
+    <input type="range" id="target-n-slider" min="2" max="500" step="1" value="12">
+  </div>
+
+  <div class="panel-title">Color Theme</div>
+  <div class="theme-grid" id="theme-grid"></div>
+
+  <div class="panel-title">Analysis</div>
+  <div class="toggle-row">
+    <span>Lyapunov Twin</span>
+    <div class="toggle-switch" id="toggle-lyap"></div>
+  </div>
+
+  <div class="panel-title">Options</div>
+  <div class="toggle-row">
+    <span>Show Trails</span>
+    <div class="toggle-switch on" id="toggle-trail"></div>
+  </div>
+  <div class="toggle-row">
+    <span>Auto Rotate</span>
+    <div class="toggle-switch" id="toggle-rotate"></div>
+  </div>
+  <div class="toggle-row">
+    <span>Show Velocity</span>
+    <div class="toggle-switch" id="toggle-velocity"></div>
+  </div>
+
+  <button class="action-btn" id="btn-reset">↻ Reset</button>
+  <button class="action-btn" id="btn-pause">⏸ Pause</button>
+</div>
+
+<div id="info-panel">
+  <div id="model-name">Random Cluster</div>
+  <div id="model-desc">N-body gravitational simulation with Barnes-Hut tree</div>
+
+  <div class="equation-box">
+    <div class="eq-title">Equations</div>
+    <div class="eq-content" id="equation-content"></div>
+  </div>
+
+  <div class="panel-title">Statistics</div>
+  <div class="stat-row"><span>N (current)</span><span id="stat-n">8</span></div>
+  <div class="stat-row"><span>Total Mass</span><span id="stat-mass">0.000</span></div>
+  <div class="stat-row"><span>Kinetic T</span><span id="stat-T">0.000</span></div>
+  <div class="stat-row"><span>Potential V</span><span id="stat-V">0.000</span></div>
+  <div class="stat-row"><span>Total Energy E</span><span id="stat-E">0.000</span></div>
+  <div class="stat-row"><span>Angular Mom |L|</span><span id="stat-L">0.000</span></div>
+  <div class="stat-row"><span>L Drift %</span><span id="stat-Ld">0.00</span></div>
+  <div class="stat-row"><span>Mergers</span><span id="stat-merge">0</span></div>
+  <div class="stat-row"><span>Injections</span><span id="stat-inject">0</span></div>
+  <div class="stat-row"><span>Substeps</span><span id="stat-substeps">1</span></div>
+  <div class="stat-row"><span>Accel Method</span><span id="stat-method">BH</span></div>
+  <div class="stat-row"><span>FPS</span><span id="stat-fps">60</span></div>
+
+  <div class="panel-title">Energy Graph</div>
+  <canvas id="energy-canvas" width="260" height="90"></canvas>
+  <div class="energy-legend">
+    <span>— T</span>
+    <span>— V</span>
+    <span>— E</span>
+  </div>
+
+  <div class="panel-title">Lyapunov Sensitivity (log₁₀|δZ|)</div>
+  <canvas id="lyap-canvas" width="260" height="70"></canvas>
+  <div class="lyap-legend">
+    <span id="lyap-status">OFF</span>
+    <span>↗ chaos</span>
+  </div>
+</div>
+
+<div id="calc-panel">
+  <div class="calc-header">
+    <span class="calc-dot"></span>
+    <span>LIVE CALCULATION</span>
+    <span class="calc-model" id="calc-model-name">N-Body</span>
+  </div>
+  <div class="calc-body">
+    <div class="calc-section">
+      <div class="calc-label">FOCUSED BODY (largest mass)</div>
+      <div class="calc-values">
+        <div class="calc-val"><span class="calc-var">x</span><span class="calc-num" id="calc-x">0.0000</span></div>
+        <div class="calc-val"><span class="calc-var">y</span><span class="calc-num" id="calc-y">0.0000</span></div>
+        <div class="calc-val"><span class="calc-var">z</span><span class="calc-num" id="calc-z">0.0000</span></div>
+        <div class="calc-val"><span class="calc-var">m</span><span class="calc-num" id="calc-m">0.0000</span></div>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <div class="calc-label">CENTER OF MASS</div>
+      <div class="calc-values">
+        <div class="calc-val"><span class="calc-var">X</span><span class="calc-num" id="calc-com-x">0.0000</span></div>
+        <div class="calc-val"><span class="calc-var">Y</span><span class="calc-num" id="calc-com-y">0.0000</span></div>
+        <div class="calc-val"><span class="calc-var">Z</span><span class="calc-num" id="calc-com-z">0.0000</span></div>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <div class="calc-label">ACCELERATION (focus)</div>
+      <div class="calc-equation">
+        <div class="eq-line">
+          <span class="eq-var">aₓ</span>
+          <span class="eq-equals">=</span>
+          <span class="eq-formula">G Σ mⱼ Δxⱼ / (r²+ε²)^(3/2)</span>
+        </div>
+        <div class="eq-sub" id="eq-sub-ax">= ...</div>
+      </div>
+      <div class="calc-equation">
+        <div class="eq-line">
+          <span class="eq-var">a_y</span>
+          <span class="eq-equals">=</span>
+          <span class="eq-formula">G Σ mⱼ Δyⱼ / (r²+ε²)^(3/2)</span>
+        </div>
+        <div class="eq-sub" id="eq-sub-ay">= ...</div>
+      </div>
+      <div class="calc-equation">
+        <div class="eq-line">
+          <span class="eq-var">a_z</span>
+          <span class="eq-equals">=</span>
+          <span class="eq-formula">G Σ mⱼ Δzⱼ / (r²+ε²)^(3/2)</span>
+        </div>
+        <div class="eq-sub" id="eq-sub-az">= ...</div>
+      </div>
+    </div>
+
+    <div class="calc-section">
+      <div class="calc-label">NEXT STEP (Verlet)</div>
+      <div class="calc-arrow">↓ dt = <span id="calc-dt">0.0050</span></div>
+      <div class="calc-values">
+        <div class="calc-val next"><span class="calc-var">x′</span><span class="calc-num" id="calc-nx">0.0000</span></div>
+        <div class="calc-val next"><span class="calc-var">y′</span><span class="calc-num" id="calc-ny">0.0000</span></div>
+        <div class="calc-val next"><span class="calc-var">z′</span><span class="calc-num" id="calc-nz">0.0000</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="status-bar">
+  <span>Drag · Scroll · H: menu · C: calc · Space: pause · F: COM · L: Lyapunov</span>
+  <span>N-Body 3D <span>v2.2</span></span>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ============================================================
+// Config
+// ============================================================
+const CONFIG = {
+  G: 1.0,
+  SOFTENING: 0.05,
+  COLLISION_DIST: 0.3,
+  N_INITIAL: 8,
+  N_TARGET: 12,
+  MASS_MIN: 0.5,
+  MASS_MAX: 2.0,
+  R_INIT: 6.0,
+  V_SCALE: 0.4,
+  INJECT_PROB: 0.01,
+  INJECT_RADIUS: 14.0,
+  INJECT_MASS: 1.0,
+  INJECT_NOISE: 0.2,
+  TRAIL_MAX: 500,
+  BASE_DT: 0.005
+};
+
+// ============================================================
+// Log-scale speed
+// ============================================================
+const SPEED_MIN = 0.0001;
+const SPEED_MAX = 1000;
+const LOG_RANGE = Math.log(SPEED_MAX / SPEED_MIN);
+const MAX_DT = 0.02;
+const MAX_SUBSTEPS = 64;
+
+let speedMultiplier = 1.0;
+let lastSubsteps = 1;
+
+function sliderToSpeed(s) { return SPEED_MIN * Math.exp(s * LOG_RANGE); }
+function speedToSlider(v) {
+  v = Math.max(SPEED_MIN, Math.min(SPEED_MAX, v));
+  return Math.log(v / SPEED_MIN) / LOG_RANGE;
+}
+function formatSpeed(v) {
+  if (v < 0.001) return v.toExponential(2) + 'x';
+  if (v < 0.01)  return v.toFixed(4) + 'x';
+  if (v < 0.1)   return v.toFixed(3) + 'x';
+  if (v < 1)     return v.toFixed(2) + 'x';
+  if (v < 10)    return v.toFixed(2) + 'x';
+  if (v < 1000)  return Math.round(v) + 'x';
+  return v.toExponential(1) + 'x';
+}
+
+// ============================================================
+// Color themes
+// ============================================================
+const COLOR_THEMES = {
+  duotone: {
+    name: 'Duotone',
+    swatch: 'linear-gradient(135deg, #4fc3f7, #e91e63)',
+    getColor: (i, n) => {
+      const t = i / Math.max(1, n - 1);
+      return new THREE.Color(0.2 + 0.8 * t, 0.5 + 0.3 * (1 - t), 1.0 - 0.3 * t);
+    }
+  },
+  rainbow: {
+    name: 'Rainbow',
+    swatch: 'linear-gradient(135deg, #ff0000, #00ff00, #0000ff)',
+    getColor: (i, n) => {
+      const h = (i / Math.max(1, n)) * 360;
+      return new THREE.Color().setHSL(h / 360, 0.8, 0.6);
+    }
+  },
+  fire: {
+    name: 'Fire',
+    swatch: 'linear-gradient(135deg, #ffeb3b, #f44336)',
+    getColor: (i, n) => {
+      const t = i / Math.max(1, n - 1);
+      return new THREE.Color(1.0, 0.3 + 0.5 * (1 - t), 0.1 + 0.2 * (1 - t));
+    }
+  },
+  ice: {
+    name: 'Ice',
+    swatch: 'linear-gradient(135deg, #e0f7fa, #0288d1)',
+    getColor: (i, n) => {
+      const t = i / Math.max(1, n - 1);
+      return new THREE.Color(0.4 + 0.5 * t, 0.7 + 0.3 * t, 1.0);
+    }
+  }
+};
+
+// ============================================================
+// Three.js setup
+// ============================================================
+const container = document.getElementById('canvas-container');
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x0a0a0f, 0.005);
+
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 3000);
+camera.position.set(20, 15, 25);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+container.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.autoRotate = false;
+
+scene.add(new THREE.AmbientLight(0x404060));
+const pointLight = new THREE.PointLight(0x4fc3f7, 2, 500);
+pointLight.position.set(50, 50, 50);
+scene.add(pointLight);
+
+const gridHelper = new THREE.GridHelper(300, 60, 0x1a1a2e, 0x1a1a2e);
+gridHelper.position.y = -30;
+scene.add(gridHelper);
+
+// COM marker
+const comMarker = new THREE.Mesh(
+  new THREE.SphereGeometry(0.3, 12, 12),
+  new THREE.MeshBasicMaterial({
+    color: 0xffeb3b,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  })
+);
+comMarker.visible = false;
+scene.add(comMarker);
+
+const comMarkerGlow = new THREE.Mesh(
+  new THREE.SphereGeometry(0.7, 12, 12),
+  new THREE.MeshBasicMaterial({
+    color: 0xffeb3b,
+    transparent: true,
+    opacity: 0.15,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  })
+);
+comMarker.add(comMarkerGlow);
+
+// ============================================================
+// State
+// ============================================================
+let bodies = [];
+let currentColorTheme = 'duotone';
+let trailEnabled = true;
+let autoRotate = false;
+let showVelocity = false;
+let collisionMode = 'elastic';
+let autoInject = false;
+let paused = false;
+let targetN = CONFIG.N_TARGET;
+let currentN = CONFIG.N_INITIAL;
+
+let softening = CONFIG.SOFTENING;
+let headSize = 0.15;
+
+let mergeCount = 0;
+let injectCount = 0;
+
+let velocityArrows = [];
+let bodyIdCounter = 0;
+
+// Camera tracking
+let cameraTargetMode = 'free';
+let followSmooth = true;
+let showComMarker = true;
+let targetBodyId = null;
+
+// Barnes-Hut
+let useBarnesHut = true;
+let theta = 0.5;
+
+// Collision particles
+let particlesEnabled = true;
+
+// Lyapunov twin
+let lyapEnabled = false;
+let twinBodies = [];
+const LYAP_EPS = 1e-5;
+const lyapHistory = [];
+const LYAP_MAX = 200;
+
+// Angular momentum reference
+let L0 = null;
+
+// Energy history
+const energyHistory = { T: [], V: [], E: [], maxLen: 300 };
+
+// ============================================================
+// Body class
+// ============================================================
+class Body {
+  constructor(x, y, z, vx, vy, vz, mass, colorIndex, totalBodies) {
+    this.id = bodyIdCounter++;
+    this.pos = new THREE.Vector3(x, y, z);
+    this.vel = new THREE.Vector3(vx, vy, vz);
+    this.acc = new THREE.Vector3(0, 0, 0);
+    this.mass = mass;
+    this.radius = Math.max(0.15, Math.cbrt(mass) * 0.35);
+    this.color = COLOR_THEMES[currentColorTheme].getColor(colorIndex, totalBodies);
+
+    this.mesh = new THREE.Mesh(
+      new THREE.SphereGeometry(this.radius, 12, 12),
+      new THREE.MeshBasicMaterial({ color: this.color })
+    );
+    scene.add(this.mesh);
+
+    this.trailGeom = new THREE.BufferGeometry();
+    this.trailGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(CONFIG.TRAIL_MAX * 3), 3));
+    this.trailGeom.setDrawRange(0, 0);
+    this.trailLine = new THREE.Line(
+      this.trailGeom,
+      new THREE.LineBasicMaterial({ color: this.color, transparent: true, opacity: 0.5 })
+    );
+    scene.add(this.trailLine);
+
+    this.trailPositions = new Float32Array(CONFIG.TRAIL_MAX * 3);
+    this.trailCount = 0;
+    this.trailMax = CONFIG.TRAIL_MAX;
+  }
+
+  updateMesh() { this.mesh.position.copy(this.pos); }
+
+  pushTrail() {
+    if (this.trailCount >= this.trailMax) {
+      this.trailPositions.copyWithin(0, 3, this.trailMax * 3);
+      this.trailCount = this.trailMax - 1;
+    }
+    const i = this.trailCount * 3;
+    this.trailPositions[i] = this.pos.x;
+    this.trailPositions[i + 1] = this.pos.y;
+    this.trailPositions[i + 2] = this.pos.z;
+    this.trailCount++;
+
+    const arr = this.trailGeom.attributes.position.array;
+    arr.set(this.trailPositions.subarray(0, this.trailCount * 3));
+    this.trailGeom.attributes.position.needsUpdate = true;
+    this.trailGeom.setDrawRange(0, this.trailCount);
+  }
+
+  clearTrail() { this.trailCount = 0; this.trailGeom.setDrawRange(0, 0); }
+  setTrailMax(n) { this.trailMax = n; if (this.trailCount > n) this.trailCount = n; }
+
+  dispose() {
+    scene.remove(this.mesh);
+    scene.remove(this.trailLine);
+    this.mesh.geometry.dispose();
+    this.mesh.material.dispose();
+    this.trailGeom.dispose();
+    this.trailLine.material.dispose();
+  }
+}
+
+// ============================================================
+// Body generation
+// ============================================================
+function randomBodies(n) {
+  const result = [];
+  for (let i = 0; i < n; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    const r = Math.pow(Math.random(), 0.5) * CONFIG.R_INIT;
+    const x = r * Math.sin(phi) * Math.cos(angle);
+    const y = r * Math.sin(phi) * Math.sin(angle);
+    const z = r * Math.cos(phi);
+    const vx = -y * CONFIG.V_SCALE + (Math.random() - 0.5) * 0.1;
+    const vy =  x * CONFIG.V_SCALE + (Math.random() - 0.5) * 0.1;
+    const vz = (Math.random() - 0.5) * 0.1;
+    const m = CONFIG.MASS_MIN + Math.random() * (CONFIG.MASS_MAX - CONFIG.MASS_MIN);
+    result.push(new Body(x, y, z, vx, vy, vz, m, i, n));
+  }
+  return result;
+}
+
+function clearBodies() {
+  bodies.forEach(b => b.dispose());
+  bodies = [];
+  velocityArrows.forEach(a => scene.remove(a));
+  velocityArrows = [];
+  clearParticles();
+}
+
+function rebuildBodies(n) {
+  clearBodies();
+  bodies = randomBodies(n);
+  mergeCount = 0;
+  injectCount = 0;
+  currentN = n;
+  L0 = null;
+  lyapHistory.length = 0;
+  if (lyapEnabled) initLyapunovTwin();
+}
+
+// ============================================================
+// Barnes-Hut
+// ============================================================
+class OctreeNode {
+  constructor(center, size) {
+    this.center = center;
+    this.size = size;
+    this.mass = 0;
+    this.com = new THREE.Vector3();
+    this.body = null;
+    this.children = null;
+    this.isLeaf = true;
+  }
+
+  insert(body) {
+    if (this.mass === 0) {
+      this.body = body;
+      this.mass = body.mass;
+      this.com.copy(body.pos);
+      return;
+    }
+    const totalMass = this.mass + body.mass;
+    this.com.multiplyScalar(this.mass / totalMass)
+            .addScaledVector(body.pos, body.mass / totalMass);
+    this.mass = totalMass;
+
+    if (this.isLeaf) {
+      this.children = [];
+      const half = this.size / 2;
+      const quarter = this.size / 4;
+      for (let i = 0; i < 8; i++) {
+        const dx = (i & 1) ? quarter : -quarter;
+        const dy = (i & 2) ? quarter : -quarter;
+        const dz = (i & 4) ? quarter : -quarter;
+        this.children.push(new OctreeNode(
+          new THREE.Vector3(this.center.x + dx, this.center.y + dy, this.center.z + dz),
+          half
+        ));
+      }
+      this.isLeaf = false;
+      if (this.body) {
+        const b = this.body;
+        this.body = null;
+        this.children[this.getOctant(b.pos)].insert(b);
+      }
+    }
+    this.children[this.getOctant(body.pos)].insert(body);
+  }
+
+  getOctant(pos) {
+    let idx = 0;
+    if (pos.x >= this.center.x) idx |= 1;
+    if (pos.y >= this.center.y) idx |= 2;
+    if (pos.z >= this.center.z) idx |= 4;
+    return idx;
+  }
+
+  computeForce(body, G, eps2, theta, acc) {
+    if (this.mass === 0) return;
+    const dx = this.com.x - body.pos.x;
+    const dy = this.com.y - body.pos.y;
+    const dz = this.com.z - body.pos.z;
+    const dist2 = dx*dx + dy*dy + dz*dz;
+    if (dist2 < 1e-12) return;
+    const d = Math.sqrt(dist2);
+
+    if (this.isLeaf || (this.size / d < theta)) {
+      if (this.body === body) return;
+      const invDist3 = 1 / ((dist2 + eps2) * Math.sqrt(dist2 + eps2));
+      const f = G * this.mass * invDist3;
+      acc.x += f * dx;
+      acc.y += f * dy;
+      acc.z += f * dz;
+    } else {
+      for (const child of this.children) {
+        child.computeForce(body, G, eps2, theta, acc);
+      }
+    }
+  }
+}
+
+function computeAccelerationsBH() {
+  if (bodies.length === 0) return;
+  const box = new THREE.Box3();
+  for (const b of bodies) box.expandByPoint(b.pos);
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3());
+  const maxDim = Math.max(size.x, size.y, size.z, 1);
+  const root = new OctreeNode(center, maxDim * 1.1);
+  for (const b of bodies) root.insert(b);
+  const eps2 = softening * softening;
+  for (const b of bodies) {
+    b.acc.set(0, 0, 0);
+    root.computeForce(b, CONFIG.G, eps2, theta, b.acc);
+  }
+}
+
+function computeAccelerationsDirect() {
+  const G = CONFIG.G;
+  const eps2 = softening * softening;
+  const n = bodies.length;
+  for (let i = 0; i < n; i++) bodies[i].acc.set(0, 0, 0);
+  for (let i = 0; i < n; i++) {
+    const bi = bodies[i];
+    for (let j = i + 1; j < n; j++) {
+      const bj = bodies[j];
+      const dx = bj.pos.x - bi.pos.x;
+      const dy = bj.pos.y - bi.pos.y;
+      const dz = bj.pos.z - bi.pos.z;
+      const dist2 = dx*dx + dy*dy + dz*dz + eps2;
+      const invDist3 = 1 / (dist2 * Math.sqrt(dist2));
+      const f = G * invDist3;
+      bi.acc.x += f * bj.mass * dx;
+      bi.acc.y += f * bj.mass * dy;
+      bi.acc.z += f * bj.mass * dz;
+      bj.acc.x -= f * bi.mass * dx;
+      bj.acc.y -= f * bi.mass * dy;
+      bj.acc.z -= f * bi.mass * dz;
+    }
+  }
+}
+
+function computeAccelerations() {
+  if (useBarnesHut && bodies.length > 20) computeAccelerationsBH();
+  else computeAccelerationsDirect();
+}
+
+// ============================================================
+// Verlet
+// ============================================================
+function integrateVerlet(dt) {
+  for (const b of bodies) {
+    b.pos.x += b.vel.x * dt + 0.5 * b.acc.x * dt * dt;
+    b.pos.y += b.vel.y * dt + 0.5 * b.acc.y * dt * dt;
+    b.pos.z += b.vel.z * dt + 0.5 * b.acc.z * dt * dt;
+  }
+  for (const b of bodies) {
+    b.vel.x += b.acc.x * dt;
+    b.vel.y += b.acc.y * dt;
+    b.vel.z += b.acc.z * dt;
+  }
+}
+
+// ============================================================
+// Collisions
+// ============================================================
+function detectCollisions() {
+  const pairs = [];
+  const n = bodies.length;
+  const r2 = CONFIG.COLLISION_DIST * CONFIG.COLLISION_DIST;
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) {
+      const d2 = bodies[i].pos.distanceToSquared(bodies[j].pos);
+      if (d2 < r2) pairs.push([i, j]);
+    }
+  }
+  return pairs;
+}
+
+function resolveElastic(bi, bj) {
+  const dx = bj.pos.x - bi.pos.x;
+  const dy = bj.pos.y - bi.pos.y;
+  const dz = bj.pos.z - bi.pos.z;
+  const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+  if (dist < 1e-9) return;
+  const nx = dx / dist, ny = dy / dist, nz = dz / dist;
+  const dvx = bj.vel.x - bi.vel.x;
+  const dvy = bj.vel.y - bi.vel.y;
+  const dvz = bj.vel.z - bi.vel.z;
+  const vn = dvx * nx + dvy * ny + dvz * nz;
+  if (vn > 0) return;
+  const m1 = bi.mass, m2 = bj.mass;
+  const impulse = -2 * vn / (1/m1 + 1/m2);
+  bi.vel.x -= impulse / m1 * nx;
+  bi.vel.y -= impulse / m1 * ny;
+  bi.vel.z -= impulse / m1 * nz;
+  bj.vel.x += impulse / m2 * nx;
+  bj.vel.y += impulse / m2 * ny;
+  bj.vel.z += impulse / m2 * nz;
+  if (particlesEnabled) {
+    const mid = new THREE.Vector3().addVectors(bi.pos, bj.pos).multiplyScalar(0.5);
+    spawnParticles(mid, 6, 0x4fc3f7);
+  }
+}
+
+function resolveInelastic(bi, bj) {
+  const m = bi.mass + bj.mass;
+  const pos = new THREE.Vector3()
+    .addScaledVector(bi.pos, bi.mass / m)
+    .addScaledVector(bj.pos, bj.mass / m);
+  const vel = new THREE.Vector3()
+    .addScaledVector(bi.vel, bi.mass / m)
+    .addScaledVector(bj.vel, bj.mass / m);
+  const colorIndex = bodies.indexOf(bi);
+  const merged = new Body(pos.x, pos.y, pos.z, vel.x, vel.y, vel.z, m, colorIndex, bodies.length);
+  if (particlesEnabled) spawnParticles(pos, 12, 0xffb74d);
+  bi.dispose();
+  bj.dispose();
+  return merged;
+}
+
+function handleCollisions() {
+  const pairs = detectCollisions();
+  if (pairs.length === 0) return;
+  if (collisionMode === 'elastic') {
+    for (const [i, j] of pairs) {
+      if (bodies[i] && bodies[j]) resolveElastic(bodies[i], bodies[j]);
+    }
+  } else {
+    const toRemove = new Set();
+    const newBodies = [];
+    for (const [i, j] of pairs) {
+      if (toRemove.has(i) || toRemove.has(j)) continue;
+      const merged = resolveInelastic(bodies[i], bodies[j]);
+      newBodies.push(merged);
+      toRemove.add(i);
+      toRemove.add(j);
+      mergeCount++;
+    }
+    bodies = bodies.filter((_, k) => !toRemove.has(k)).concat(newBodies);
+    reassignColors();
+  }
+}
+
+function reassignColors() {
+  bodies.forEach((b, i) => {
+    b.color = COLOR_THEMES[currentColorTheme].getColor(i, bodies.length);
+    b.mesh.material.color.copy(b.color);
+    b.trailLine.material.color.copy(b.color);
+  });
+}
+
+// ============================================================
+// Particles
+// ============================================================
+let particleSystem = null;
+let particleData = [];
+
+function initParticleSystem() {
+  const geom = new THREE.BufferGeometry();
+  const maxParticles = 500;
+  const positions = new Float32Array(maxParticles * 3);
+  const colors = new Float32Array(maxParticles * 3);
+  geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geom.setDrawRange(0, 0);
+
+  const mat = new THREE.PointsMaterial({
+    size: 0.3,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.9,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+    sizeAttenuation: true
+  });
+
+  particleSystem = new THREE.Points(geom, mat);
+  particleSystem.frustumCulled = false;
+  scene.add(particleSystem);
+
+  for (let i = 0; i < maxParticles; i++) {
+    particleData.push({ life: 0, vel: new THREE.Vector3(), pos: new THREE.Vector3() });
+  }
+}
+
+function spawnParticles(pos, count, color) {
+  if (!particleSystem) return;
+  const geom = particleSystem.geometry;
+  const positions = geom.attributes.position.array;
+  const colors = geom.attributes.color.array;
+  let active = geom.drawRange.count;
+  const c = new THREE.Color(color);
+  for (let i = 0; i < count && active < particleData.length; i++) {
+    const idx = active;
+    particleData[idx].pos.copy(pos);
+    particleData[idx].vel.set(
+      (Math.random() - 0.5) * 3,
+      (Math.random() - 0.5) * 3,
+      (Math.random() - 0.5) * 3
+    );
+    particleData[idx].life = 1.0;
+    positions[idx*3] = pos.x;
+    positions[idx*3+1] = pos.y;
+    positions[idx*3+2] = pos.z;
+    colors[idx*3] = c.r;
+    colors[idx*3+1] = c.g;
+    colors[idx*3+2] = c.b;
+    active++;
+  }
+  geom.setDrawRange(0, active);
+  geom.attributes.position.needsUpdate = true;
+  geom.attributes.color.needsUpdate = true;
+}
+
+function updateParticles(realDt) {
+  if (!particleSystem) return;
+  const geom = particleSystem.geometry;
+  const positions = geom.attributes.position.array;
+  let active = geom.drawRange.count;
+  if (active === 0) return;
+  const dt = realDt * Math.min(speedMultiplier, 5);
+  for (let i = 0; i < active; i++) {
+    const p = particleData[i];
+    if (p.life <= 0) continue;
+    p.life -= dt * 1.5;
+    p.pos.addScaledVector(p.vel, dt);
+    p.vel.multiplyScalar(0.98);
+    positions[i*3] = p.pos.x;
+    positions[i*3+1] = p.pos.y;
+    positions[i*3+2] = p.pos.z;
+  }
+  let newActive = 0;
+  for (let i = 0; i < active; i++) {
+    if (particleData[i].life > 0) {
+      if (i !== newActive) {
+        particleData[newActive] = particleData[i];
+        positions[newActive*3] = positions[i*3];
+        positions[newActive*3+1] = positions[i*3+1];
+        positions[newActive*3+2] = positions[i*3+2];
+      }
+      newActive++;
+    }
+  }
+  geom.setDrawRange(0, newActive);
+  geom.attributes.position.needsUpdate = true;
+}
+
+function clearParticles() {
+  if (!particleSystem) return;
+  particleSystem.geometry.setDrawRange(0, 0);
+}
+
+// ============================================================
+// Injection
+// ============================================================
+function injectBody() {
+  const angle = Math.random() * Math.PI * 2;
+  const phi = Math.acos(2 * Math.random() - 1);
+  const x = CONFIG.INJECT_RADIUS * Math.sin(phi) * Math.cos(angle);
+  const y = CONFIG.INJECT_RADIUS * Math.sin(phi) * Math.sin(angle);
+  const z = CONFIG.INJECT_RADIUS * Math.cos(phi);
+  const vx = -y * CONFIG.V_SCALE + (Math.random() - 0.5) * CONFIG.INJECT_NOISE;
+  const vy =  x * CONFIG.V_SCALE + (Math.random() - 0.5) * CONFIG.INJECT_NOISE;
+  const vz = (Math.random() - 0.5) * CONFIG.INJECT_NOISE;
+  const b = new Body(x, y, z, vx, vy, vz, CONFIG.INJECT_MASS, bodies.length, bodies.length + 1);
+  bodies.push(b);
+  injectCount++;
+}
+
+// ============================================================
+// Energy & Angular Momentum
+// ============================================================
+function computeEnergy() {
+  let T = 0, V = 0;
+  const n = bodies.length;
+  for (let i = 0; i < n; i++) {
+    const bi = bodies[i];
+    T += 0.5 * bi.mass * (bi.vel.x**2 + bi.vel.y**2 + bi.vel.z**2);
+    for (let j = i + 1; j < n; j++) {
+      const bj = bodies[j];
+      const d = bi.pos.distanceTo(bj.pos) + 1e-6;
+      V -= CONFIG.G * bi.mass * bj.mass / d;
+    }
+  }
+  return { T, V, E: T + V };
+}
+
+function computeAngularMomentum() {
+  const L = new THREE.Vector3();
+  for (const b of bodies) {
+    L.x += b.mass * (b.pos.y * b.vel.z - b.pos.z * b.vel.y);
+    L.y += b.mass * (b.pos.z * b.vel.x - b.pos.x * b.vel.z);
+    L.z += b.mass * (b.pos.x * b.vel.y - b.pos.y * b.vel.x);
+  }
+  return L;
+}
+
+// ============================================================
+// COM
+// ============================================================
+const _com = new THREE.Vector3();
+function computeCenterOfMass() {
+  if (bodies.length === 0) return _com.set(0, 0, 0);
+  _com.set(0, 0, 0);
+  let totalMass = 0;
+  for (const b of bodies) {
+    _com.addScaledVector(b.pos, b.mass);
+    totalMass += b.mass;
+  }
+  return _com.divideScalar(totalMass);
+}
+
+function findHeaviestBody() {
+  if (bodies.length === 0) return null;
+  let heaviest = bodies[0];
+  for (const b of bodies) if (b.mass > heaviest.mass) heaviest = b;
+  return heaviest;
+}
+
+// ============================================================
+// Camera tracking
+// ============================================================
+const _targetPos = new THREE.Vector3();
+function updateCameraTarget(realDt) {
+  if (cameraTargetMode === 'free') { comMarker.visible = false; return; }
+  let hasTarget = false;
+  if (cameraTargetMode === 'com') {
+    computeCenterOfMass();
+    _targetPos.copy(_com);
+    hasTarget = true;
+    if (showComMarker) { comMarker.position.copy(_com); comMarker.visible = true; }
+  } else if (cameraTargetMode === 'body') {
+    let focus = bodies.find(b => b.id === targetBodyId);
+    if (!focus) { focus = findHeaviestBody(); targetBodyId = focus ? focus.id : null; }
+    if (focus) { _targetPos.copy(focus.pos); hasTarget = true; }
+    comMarker.visible = false;
+  }
+  if (!hasTarget) return;
+  if (followSmooth) {
+    const speedPenalty = Math.min(1, 1 / Math.sqrt(Math.max(1, speedMultiplier)));
+    const baseLerp = 0.002 + 0.998 * speedPenalty;
+    const lerpFactor = 1 - Math.pow(baseLerp, realDt);
+    controls.target.lerp(_targetPos, lerpFactor);
+  } else {
+    controls.target.copy(_targetPos);
+  }
+}
+
+// ============================================================
+// Velocity arrows
+// ============================================================
+function updateVelocityArrows() {
+  if (!showVelocity) {
+    velocityArrows.forEach(a => scene.remove(a));
+    velocityArrows = [];
+    return;
+  }
+  while (velocityArrows.length < bodies.length) {
+    const arrow = new THREE.ArrowHelper(
+      new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, 0), 1, 0x4fc3f7, 0.3, 0.15
+    );
+    scene.add(arrow);
+    velocityArrows.push(arrow);
+  }
+  while (velocityArrows.length > bodies.length) scene.remove(velocityArrows.pop());
+  for (let i = 0; i < bodies.length; i++) {
+    const b = bodies[i];
+    const v = b.vel.clone();
+    const len = v.length();
+    if (len < 1e-6) velocityArrows[i].visible = false;
+    else {
+      velocityArrows[i].visible = true;
+      velocityArrows[i].position.copy(b.pos);
+      velocityArrows[i].setDirection(v.normalize());
+      velocityArrows[i].setLength(len * 0.5, 0.2, 0.1);
+    }
+  }
+}
+
+// ============================================================
+// Lyapunov Twin
+// ============================================================
+function initLyapunovTwin() {
+  twinBodies = bodies.map(b => ({
+    pos: b.pos.clone().addScaledVector(
+      new THREE.Vector3(Math.random()-0.5, Math.random()-0.5, Math.random()-0.5),
+      LYAP_EPS
+    ),
+    vel: b.vel.clone(),
+    acc: new THREE.Vector3(),
+    mass: b.mass
+  }));
+  lyapHistory.length = 0;
+}
+
+function stepLyapunovTwin(dt) {
+  if (!lyapEnabled || twinBodies.length !== bodies.length) return;
+  const G = CONFIG.G;
+  const eps2 = softening * softening;
+  const n = twinBodies.length;
+  for (let i = 0; i < n; i++) twinBodies[i].acc.set(0, 0, 0);
+  for (let i = 0; i < n; i++) {
+    const bi = twinBodies[i];
+    for (let j = i+1; j < n; j++) {
+      const bj = twinBodies[j];
+      const dx = bj.pos.x - bi.pos.x;
+      const dy = bj.pos.y - bi.pos.y;
+      const dz = bj.pos.z - bi.pos.z;
+      const d2 = dx*dx + dy*dy + dz*dz + eps2;
+      const inv = 1 / (d2 * Math.sqrt(d2));
+      const f = G * inv;
+      bi.acc.x += f * bj.mass * dx;
+      bi.acc.y += f * bj.mass * dy;
+      bi.acc.z += f * bj.mass * dz;
+      bj.acc.x -= f * bi.mass * dx;
+      bj.acc.y -= f * bi.mass * dy;
+      bj.acc.z -= f * bi.mass * dz;
+    }
+  }
+  for (const b of twinBodies) {
+    b.pos.x += b.vel.x*dt + 0.5*b.acc.x*dt*dt;
+    b.pos.y += b.vel.y*dt + 0.5*b.acc.y*dt*dt;
+    b.pos.z += b.vel.z*dt + 0.5*b.acc.z*dt*dt;
+  }
+  for (const b of twinBodies) {
+    b.vel.x += b.acc.x*dt;
+    b.vel.y += b.acc.y*dt;
+    b.vel.z += b.acc.z*dt;
+  }
+  let maxD = 0;
+  for (let i = 0; i < n; i++) {
+    const d = bodies[i].pos.distanceTo(twinBodies[i].pos);
+    if (d > maxD) maxD = d;
+  }
+  lyapHistory.push(Math.log10(Math.max(maxD, 1e-16)));
+  if (lyapHistory.length > LYAP_MAX) lyapHistory.shift();
+}
+
+const lyapCanvas = document.getElementById('lyap-canvas');
+const lyapCtx = lyapCanvas.getContext('2d');
+
+function drawLyapGraph() {
+  const w = lyapCanvas.width, h = lyapCanvas.height;
+  lyapCtx.clearRect(0, 0, w, h);
+  const n = lyapHistory.length;
+  if (n < 2) return;
+  let mn = Infinity, mx = -Infinity;
+  for (const v of lyapHistory) { mn = Math.min(mn, v); mx = Math.max(mx, v); }
+  const range = Math.max(mx - mn, 1e-6);
+  lyapCtx.beginPath();
+  lyapCtx.strokeStyle = '#ff8a65';
+  lyapCtx.lineWidth = 1.5;
+  for (let i = 0; i < n; i++) {
+    const x = (i / (n-1)) * w;
+    const y = h - ((lyapHistory[i] - mn) / range) * (h-4) - 2;
+    if (i === 0) lyapCtx.moveTo(x, y);
+    else lyapCtx.lineTo(x, y);
+  }
+  lyapCtx.stroke();
+}
+
+// ============================================================
+// Step
+// ============================================================
+function stepSimulation(realDt) {
+  const targetSimDt = realDt * speedMultiplier;
+  let steps = Math.ceil(targetSimDt / MAX_DT);
+  steps = Math.max(1, Math.min(steps, MAX_SUBSTEPS));
+  const subDt = targetSimDt / steps;
+  lastSubsteps = steps;
+  for (let s = 0; s < steps; s++) {
+    computeAccelerations();
+    integrateVerlet(subDt);
+    handleCollisions();
+    if (lyapEnabled) stepLyapunovTwin(subDt);
+  }
+}
+
+// ============================================================
+// Energy graph
+// ============================================================
+const energyCanvas = document.getElementById('energy-canvas');
+const energyCtx = energyCanvas.getContext('2d');
+
+function pushEnergyHistory(T, V, E) {
+  energyHistory.T.push(T);
+  energyHistory.V.push(V);
+  energyHistory.E.push(E);
+  if (energyHistory.T.length > energyHistory.maxLen) {
+    energyHistory.T.shift();
+    energyHistory.V.shift();
+    energyHistory.E.shift();
+  }
+}
+
+function drawEnergyGraph() {
+  const w = energyCanvas.width, h = energyCanvas.height;
+  energyCtx.clearRect(0, 0, w, h);
+  const n = energyHistory.T.length;
+  if (n < 2) return;
+  let minV = Infinity, maxV = -Infinity;
+  for (let i = 0; i < n; i++) {
+    minV = Math.min(minV, energyHistory.T[i], energyHistory.V[i], energyHistory.E[i]);
+    maxV = Math.max(maxV, energyHistory.T[i], energyHistory.V[i], energyHistory.E[i]);
+  }
+  const range = Math.max(maxV - minV, 1e-6);
+  function drawLine(data, color) {
+    energyCtx.beginPath();
+    energyCtx.strokeStyle = color;
+    energyCtx.lineWidth = 1.5;
+    for (let i = 0; i < n; i++) {
+      const x = (i / (n - 1)) * w;
+      const y = h - ((data[i] - minV) / range) * (h - 4) - 2;
+      if (i === 0) energyCtx.moveTo(x, y);
+      else energyCtx.lineTo(x, y);
+    }
+    energyCtx.stroke();
+  }
+  drawLine(energyHistory.T, '#4fc3f7');
+  drawLine(energyHistory.V, '#ffb74d');
+  drawLine(energyHistory.E, '#81c784');
+}
+
+// ============================================================
+// Main loop
+// ============================================================
+let lastTime = performance.now();
+let frameCount = 0;
+let fpsTime = 0;
+
+function animate() {
+  requestAnimationFrame(animate);
+  const now = performance.now();
+  const realDt = Math.min((now - lastTime) / 1000, 0.1);
+  lastTime = now;
+
+  if (!paused) {
+    stepSimulation(realDt);
+    if (autoInject && bodies.length < targetN) {
+      const prob = CONFIG.INJECT_PROB * Math.min(speedMultiplier, 10);
+      if (Math.random() < prob) injectBody();
+    }
+    if (trailEnabled) for (const b of bodies) b.pushTrail();
+    for (const b of bodies) b.updateMesh();
+    updateVelocityArrows();
+    updateParticles(realDt);
+  }
+
+  updateCameraTarget(realDt);
+  controls.update();
+
+  frameCount++;
+  fpsTime += realDt;
+  if (fpsTime >= 0.5) {
+    document.getElementById('stat-fps').textContent = Math.round(frameCount / fpsTime);
+    document.getElementById('stat-substeps').textContent = lastSubsteps;
+    document.getElementById('stat-method').textContent =
+      (useBarnesHut && bodies.length > 20) ? 'BH' : 'O(N²)';
+    frameCount = 0;
+    fpsTime = 0;
+    updateStats();
+    updateCalcPanel();
+    drawEnergyGraph();
+    if (lyapEnabled) drawLyapGraph();
+  }
+
+  renderer.render(scene, camera);
+}
+
+function updateStats() {
+  const mass = bodies.reduce((s, b) => s + b.mass, 0);
+  const { T, V, E } = computeEnergy();
+  const L = computeAngularMomentum();
+
+  document.getElementById('stat-n').textContent = bodies.length;
+  document.getElementById('stat-mass').textContent = mass.toFixed(3);
+  document.getElementById('stat-T').textContent = T.toFixed(3);
+  document.getElementById('stat-V').textContent = V.toFixed(3);
+  document.getElementById('stat-E').textContent = E.toFixed(3);
+  document.getElementById('stat-L').textContent = L.length().toFixed(3);
+
+  if (L0 === null && bodies.length > 0) L0 = L.clone();
+  if (L0) {
+    const drift = Math.abs(L.length() - L0.length()) / Math.max(L0.length(), 1e-9) * 100;
+    document.getElementById('stat-Ld').textContent = drift.toFixed(2);
+  }
+
+  document.getElementById('stat-merge').textContent = mergeCount;
+  document.getElementById('stat-inject').textContent = injectCount;
+  pushEnergyHistory(T, V, E);
+}
+
+function updateCalcPanel() {
+  if (bodies.length === 0) return;
+  let focus = bodies[0];
+  for (const b of bodies) if (b.mass > focus.mass) focus = b;
+
+  document.getElementById('calc-x').textContent = focus.pos.x.toFixed(4);
+  document.getElementById('calc-y').textContent = focus.pos.y.toFixed(4);
+  document.getElementById('calc-z').textContent = focus.pos.z.toFixed(4);
+  document.getElementById('calc-m').textContent = focus.mass.toFixed(4);
+
+  const com = computeCenterOfMass();
+  document.getElementById('calc-com-x').textContent = com.x.toFixed(4);
+  document.getElementById('calc-com-y').textContent = com.y.toFixed(4);
+  document.getElementById('calc-com-z').textContent = com.z.toFixed(4);
+
+  document.getElementById('eq-sub-ax').textContent = `= ${focus.acc.x.toFixed(4)}`;
+  document.getElementById('eq-sub-ay').textContent = `= ${focus.acc.y.toFixed(4)}`;
+  document.getElementById('eq-sub-az').textContent = `= ${focus.acc.z.toFixed(4)}`;
+
+  const dtUsed = CONFIG.BASE_DT;
+  const nx = focus.pos.x + focus.vel.x * dtUsed + 0.5 * focus.acc.x * dtUsed * dtUsed;
+  const ny = focus.pos.y + focus.vel.y * dtUsed + 0.5 * focus.acc.y * dtUsed * dtUsed;
+  const nz = focus.pos.z + focus.vel.z * dtUsed + 0.5 * focus.acc.z * dtUsed * dtUsed;
+  document.getElementById('calc-nx').textContent = nx.toFixed(4);
+  document.getElementById('calc-ny').textContent = ny.toFixed(4);
+  document.getElementById('calc-nz').textContent = nz.toFixed(4);
+  document.getElementById('calc-dt').textContent = CONFIG.BASE_DT.toFixed(4);
+}
+
+// ============================================================
+// Presets
+// ============================================================
+const PRESETS = {
+  random8:    { name: 'Random 8',        n: 8,   ref: '§25',       build: () => rebuildBodies(8) },
+  random16:   { name: 'Random 16',       n: 16,  ref: '§23',       build: () => rebuildBodies(16) },
+  random100:  { name: 'Random 100',      n: 100, ref: '§27',       build: () => rebuildBodies(100) },
+  pythagoras: {
+    name: 'Pythagoras', n: 3, ref: '§25',
+    build: () => {
+      clearBodies();
+      bodies = [
+        new Body( 1,  3, 0, 0, 0, 0, 3, 0, 3),
+        new Body(-2, -1, 0, 0, 0, 0, 4, 1, 3),
+        new Body( 1, -1, 0, 0, 0, 0, 5, 2, 3)
+      ];
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
+      if (lyapEnabled) initLyapunovTwin();
+    }
+  },
+  figure8: {
+    name: 'Figure 8', n: 3, ref: '§10',
+    build: () => {
+      clearBodies();
+      const x1 = 0.97000436, y1 = -0.24308753;
+      const vx1 = 0.93240737, vy1 = 0.86473146;
+      bodies = [
+        new Body( x1, y1, 0,  vx1,  vy1, 0, 1, 0, 3),
+        new Body(-x1, -y1, 0,  vx1,  vy1, 0, 1, 1, 3),
+        new Body(0, 0, 0, -2*vx1, -2*vy1, 0, 1, 2, 3)
+      ];
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
+      if (lyapEnabled) initLyapunovTwin();
+    }
+  },
+  lagrange: {
+    name: 'Lagrange', n: 3, ref: '§8.2',
+    build: () => {
+      clearBodies();
+      const r = 1;
+      const M = 3;
+      const omega = Math.sqrt(M / (r * r * r));
+      const sqrt3_2 = Math.sqrt(3) / 2;
+      const pos = [[1, 0], [-0.5, sqrt3_2], [-0.5, -sqrt3_2]];
+      bodies = pos.map(([x, y], i) => {
+        const vx = -omega * y;
+        const vy =  omega * x;
+        return new Body(x, y, 0, vx, vy, 0, 1, i, 3);
+      });
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
+      if (lyapEnabled) initLyapunovTwin();
+    }
+  },
+  euler: {
+    name: 'Euler Collinear', n: 3, ref: '§8.1',
+    build: () => {
+      clearBodies();
+      bodies = [
+        new Body(-1, 0, 0, 0, 0, 0, 1, 0, 3),
+        new Body( 0, 0, 0, 0, 0, 0, 1, 1, 3),
+        new Body( 1, 0, 0, 0, 0, 0, 1, 2, 3)
+      ];
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
+      if (lyapEnabled) initLyapunovTwin();
+    }
+  },
+  rotating8: {
+    name: 'Rotating 8', n: 3, ref: '§10.3',
+    build: () => {
+      clearBodies();
+      const x1 = 0.97000436, y1 = -0.24308753;
+      const vx1 = 0.93240737, vy1 = 0.86473146;
+      const dL = 0.05;
+      bodies = [
+        new Body( x1, y1, 0,  vx1,  vy1 + dL*(-x1), 0, 1, 0, 3),
+        new Body(-x1, -y1, 0,  vx1,  vy1 + dL*( x1), 0, 1, 1, 3),
+        new Body(0, 0, 0, -2*vx1, -2*vy1, 0, 1, 2, 3)
+      ];
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
+      if (lyapEnabled) initLyapunovTwin();
+    }
+  },
+  solar: {
+    name: 'Solar System', n: 9, ref: '§13',
+    build: () => {
+      clearBodies();
+      bodies = [new Body(0, 0, 0, 0, 0, 0, 100, 0, 9)];
+      const planets = [
+        { r: 3, m: 0.5 }, { r: 4.5, m: 1.0 }, { r: 6, m: 1.0 }, { r: 7.5, m: 0.6 },
+        { r: 11, m: 4.0 }, { r: 14, m: 3.0 }, { r: 17, m: 1.5 }, { r: 20, m: 1.5 }
+      ];
+      planets.forEach((p, i) => {
+        const angle = Math.random() * Math.PI * 2;
+        const x = p.r * Math.cos(angle);
+        const y = p.r * Math.sin(angle);
+        const v = Math.sqrt(100 / p.r);
+        const vx = -y / p.r * v;
+        const vy =  x / p.r * v;
+        bodies.push(new Body(x, y, 0, vx, vy, 0, p.m, i + 1, 9));
+      });
+      mergeCount = 0; injectCount = 0; currentN = 9;
+      L0 = null; lyapHistory.length = 0;
+      if (lyapEnabled) initLyapunovTwin();
+    }
+  },
+  sunEarth: {
+    name: 'Sun+Planets', n: 5, ref: '§13',
+    build: () => {
+      clearBodies();
+      bodies = [new Body(0, 0, 0, 0, 0, 0, 50, 0, 5)];
+      const planets = [{ r: 4, m: 1 }, { r: 6, m: 1.5 }, { r: 8, m: 1 }, { r: 10, m: 2 }];
+      planets.forEach((p, i) => {
+        const angle = Math.random() * Math.PI * 2;
+        const x = p.r * Math.cos(angle);
+        const y = p.r * Math.sin(angle);
+        const v = Math.sqrt(50 / p.r) * 0.9;
+        const vx = -y / p.r * v;
+        const vy =  x / p.r * v;
+        bodies.push(new Body(x, y, 0, vx, vy, 0, p.m, i + 1, 5));
+      });
+      mergeCount = 0; injectCount = 0; currentN = 5;
+      L0 = null; lyapHistory.length = 0;
+      if (lyapEnabled) initLyapunovTwin();
+    }
+  },
+  cluster: {
+    name: 'Cluster 50', n: 50, ref: '§27',
+    build: () => rebuildBodies(50)
+  },
+  galaxy: {
+    name: 'Galaxy 200', n: 200, ref: '§27',
+    build: () => {
+      clearBodies();
+      const n = 200;
+      bodies = [];
+      bodies.push(new Body(0, 0, 0, 0, 0, 0, 100, 0, n));
+      for (let i = 1; i < n; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const r = 3 + Math.pow(Math.random(), 0.5) * 20;
+        const x = r * Math.cos(angle);
+        const y = r * Math.sin(angle);
+        const z = (Math.random() - 0.5) * 2;
+        const v = Math.sqrt(100 / r);
+        const vx = -y / r * v + (Math.random() - 0.5) * 0.1;
+        const vy =  x / r * v + (Math.random() - 0.5) * 0.1;
+        const vz = (Math.random() - 0.5) * 0.05;
+        bodies.push(new Body(x, y, z, vx, vy, vz, 0.1, i, n));
+      }
+      mergeCount = 0; injectCount = 0; currentN = n;
+      L0 = null; lyapHistory.length = 0;
+      if (lyapEnabled) initLyapunovTwin();
+    }
+  }
+};
+
+const PRESET_BADGES = {
+  figure8:   'EXACT',
+  lagrange:  'EXACT',
+  rotating8: 'APPROX',
+  euler:     'UNSTABLE',
+  pythagoras:'UNSTABLE'
+};
+
+function buildPresetButtons() {
+  const grid = document.getElementById('model-grid');
+  grid.innerHTML = '';
+  Object.keys(PRESETS).forEach(key => {
+    const btn = document.createElement('button');
+    btn.className = 'model-btn';
+    const badge = PRESET_BADGES[key];
+    const badgeClass = badge === 'EXACT' ? 'exact' : badge === 'APPROX' ? 'approx' : 'unstable';
+    btn.innerHTML = badge
+      ? `${PRESETS[key].name}<span class="preset-badge ${badgeClass}">${badge}</span>`
+      : PRESETS[key].name;
+    btn.onclick = () => {
+      document.querySelectorAll('#model-grid .model-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      PRESETS[key].build();
+      document.getElementById('n-slider').value = Math.min(currentN, 500);
+      document.getElementById('val-n').textContent = currentN;
+      updateStats();
+    };
+    grid.appendChild(btn);
+  });
+  grid.children[0].classList.add('active');
+}
+
+function buildThemeButtons() {
+  const grid = document.getElementById('theme-grid');
+  grid.innerHTML = '';
+  Object.keys(COLOR_THEMES).forEach(key => {
+    const t = COLOR_THEMES[key];
+    const btn = document.createElement('button');
+    btn.className = 'theme-btn' + (key === currentColorTheme ? ' active' : '');
+    btn.innerHTML = `<span class="theme-swatch" style="background: ${t.swatch};"></span>${t.name}`;
+    btn.onclick = () => {
+      currentColorTheme = key;
+      document.querySelectorAll('#theme-grid .theme-btn').forEach((b, i) => {
+        b.classList.toggle('active', Object.keys(COLOR_THEMES)[i] === key);
+      });
+      reassignColors();
+    };
+    grid.appendChild(btn);
+  });
+}
+
+// ============================================================
+// Sliders
+// ============================================================
+document.getElementById('n-slider').oninput = (e) => {
+  const n = parseInt(e.target.value);
+  document.getElementById('val-n').textContent = n;
+  rebuildBodies(n);
+};
+
+const speedSlider = document.getElementById('speed-slider');
+speedSlider.oninput = (e) => {
+  const s = parseFloat(e.target.value);
+  speedMultiplier = sliderToSpeed(s);
+  document.getElementById('val-speed').textContent = formatSpeed(speedMultiplier);
+};
+
+document.querySelectorAll('.speed-grid .model-btn').forEach(btn => {
+  btn.onclick = () => {
+    const v = parseFloat(btn.dataset.speed);
+    speedMultiplier = v;
+    speedSlider.value = speedToSlider(v);
+    document.getElementById('val-speed').textContent = formatSpeed(v);
+  };
+});
+
+document.getElementById('theta-slider').oninput = (e) => {
+  theta = parseFloat(e.target.value);
+  document.getElementById('val-theta').textContent = theta.toFixed(2);
+};
+
+document.getElementById('tail-slider').oninput = (e) => {
+  const len = parseInt(e.target.value);
+  document.getElementById('val-tail').textContent = len;
+  for (const b of bodies) b.setTrailMax(len);
+};
+
+document.getElementById('head-size-slider').oninput = (e) => {
+  headSize = parseFloat(e.target.value);
+  document.getElementById('val-head-size').textContent = headSize.toFixed(2);
+  for (const b of bodies) {
+    b.mesh.geometry.dispose();
+    b.mesh.geometry = new THREE.SphereGeometry(Math.max(headSize, b.radius), 12, 12);
+  }
+};
+
+document.getElementById('softening-slider').oninput = (e) => {
+  softening = parseFloat(e.target.value);
+  document.getElementById('val-softening').textContent = softening.toFixed(2);
+};
+
+document.getElementById('target-n-slider').oninput = (e) => {
+  targetN = parseInt(e.target.value);
+  document.getElementById('val-target-n').textContent = targetN;
+};
+
+// ============================================================
+// Camera controls
+// ============================================================
+const cameraDistSlider = document.getElementById('camera-dist-slider');
+cameraDistSlider.oninput = (e) => {
+  const d = parseFloat(e.target.value);
+  document.getElementById('val-camera-dist').textContent = d.toFixed(1);
+  const dir = camera.position.clone().sub(controls.target).normalize();
+  camera.position.copy(controls.target).addScaledVector(dir, d);
+};
+
+function setView(preset) {
+  const dist = camera.position.distanceTo(controls.target);
+  const views = {
+    front: new THREE.Vector3(0, 0, 1),
+    top:   new THREE.Vector3(0, 1, 0.001),
+    side:  new THREE.Vector3(1, 0, 0),
+    iso:   new THREE.Vector3(1, 0.7, 1).normalize()
+  };
+  const dir = views[preset];
+  camera.position.copy(controls.target).addScaledVector(dir, dist);
+  controls.update();
+}
+
+document.getElementById('view-front').onclick = () => setView('front');
+document.getElementById('view-top').onclick = () => setView('top');
+document.getElementById('view-side').onclick = () => setView('side');
+document.getElementById('view-iso').onclick = () => setView('iso');
+
+document.getElementById('btn-fit').onclick = () => {
+  if (bodies.length === 0) return;
+  const com = computeCenterOfMass().clone();
+  const box = new THREE.Box3();
+  for (const b of bodies) box.expandByPoint(b.pos);
+  const size = box.getSize(new THREE.Vector3());
+  const maxDim = Math.max(size.x, size.y, size.z);
+  const dist = Math.max(5, maxDim * 2);
+  const dir = new THREE.Vector3(1, 0.7, 1).normalize();
+  camera.position.copy(com).addScaledVector(dir, dist);
+  controls.target.copy(com);
+  controls.update();
+  cameraDistSlider.value = dist;
+  document.getElementById('val-camera-dist').textContent = dist.toFixed(1);
+};
+
+// ============================================================
+// Camera mode
+// ============================================================
+const camButtons = {
+  free: document.getElementById('cam-free'),
+  com: document.getElementById('cam-com'),
+  body: document.getElementById('cam-body')
+};
+
+function setCameraMode(mode) {
+  cameraTargetMode = mode;
+  Object.keys(camButtons).forEach(k => {
+    camButtons[k].classList.toggle('active', k === mode);
+  });
+  if (mode === 'body') {
+    const focus = findHeaviestBody();
+    targetBodyId = focus ? focus.id : null;
+  }
+  if (mode !== 'com') comMarker.visible = false;
+}
+
+camButtons.free.onclick = () => setCameraMode('free');
+camButtons.com.onclick = () => setCameraMode('com');
+camButtons.body.onclick = () => setCameraMode('body');
+
+document.getElementById('toggle-follow-smooth').onclick = function() {
+  this.classList.toggle('on');
+  followSmooth = this.classList.contains('on');
+};
+
+document.getElementById('toggle-com-marker').onclick = function() {
+  this.classList.toggle('on');
+  showComMarker = this.classList.contains('on');
+  if (!showComMarker) comMarker.visible = false;
+};
+
+// ============================================================
+// Toggles
+// ============================================================
+document.getElementById('toggle-trail').onclick = function() {
+  this.classList.toggle('on');
+  trailEnabled = this.classList.contains('on');
+  if (!trailEnabled) for (const b of bodies) b.clearTrail();
+};
+
+document.getElementById('toggle-rotate').onclick = function() {
+  this.classList.toggle('on');
+  autoRotate = this.classList.contains('on');
+  controls.autoRotate = autoRotate;
+};
+
+document.getElementById('toggle-velocity').onclick = function() {
+  this.classList.toggle('on');
+  showVelocity = this.classList.contains('on');
+};
+
+document.getElementById('toggle-bh').onclick = function() {
+  this.classList.toggle('on');
+  useBarnesHut = this.classList.contains('on');
+};
+
+document.getElementById('toggle-elastic').onclick = function() {
+  this.classList.toggle('on');
+  if (this.classList.contains('on')) {
+    document.getElementById('toggle-inelastic').classList.remove('on');
+    collisionMode = 'elastic';
+  } else this.classList.add('on');
+};
+
+document.getElementById('toggle-inelastic').onclick = function() {
+  this.classList.toggle('on');
+  if (this.classList.contains('on')) {
+    document.getElementById('toggle-elastic').classList.remove('on');
+    collisionMode = 'inelastic';
+  } else this.classList.add('on');
+};
+
+document.getElementById('toggle-particles').onclick = function() {
+  this.classList.toggle('on');
+  particlesEnabled = this.classList.contains('on');
+};
+
+document.getElementById('toggle-inject').onclick = function() {
+  this.classList.toggle('on');
+  autoInject = this.classList.contains('on');
+};
+
+document.getElementById('toggle-lyap').onclick = function() {
+  this.classList.toggle('on');
+  lyapEnabled = this.classList.contains('on');
+  document.getElementById('lyap-status').textContent = lyapEnabled ? 'ON' : 'OFF';
+  if (lyapEnabled) initLyapunovTwin();
+  else lyapHistory.length = 0;
+};
+
+// ============================================================
+// Buttons
+// ============================================================
+document.getElementById('btn-reset').onclick = () => {
+  rebuildBodies(currentN);
+  updateStats();
+};
+
+document.getElementById('btn-pause').onclick = function() {
+  paused = !paused;
+  this.textContent = paused ? '▶ Resume' : '⏸ Pause';
+};
+
+// ============================================================
+// Menu
+// ============================================================
+const menuToggle = document.getElementById('menu-toggle');
+menuToggle.onclick = () => {
+  document.body.classList.toggle('menu-closed');
+  menuToggle.classList.toggle('closed');
+  menuToggle.querySelector('.menu-icon').textContent =
+    document.body.classList.contains('menu-closed') ? '✕' : '☰';
+};
+
+const calcToggle = document.getElementById('calc-toggle');
+calcToggle.onclick = () => {
+  document.body.classList.toggle('calc-hidden');
+  calcToggle.classList.toggle('off');
+};
+
+// ============================================================
+// Keyboard
+// ============================================================
+window.addEventListener('keydown', (e) => {
+  if (e.target.matches('input, textarea')) return;
+  if (e.key === 'h' || e.key === 'H') menuToggle.click();
+  else if (e.key === 'c' || e.key === 'C') calcToggle.click();
+  else if (e.key === 'f' || e.key === 'F') {
+    setCameraMode(cameraTargetMode === 'com' ? 'free' : 'com');
+  }
+  else if (e.key === 'l' || e.key === 'L') {
+    document.getElementById('toggle-lyap').click();
+  }
+  else if (e.key === ' ') {
+    e.preventDefault();
+    document.getElementById('btn-pause').click();
+  }
+});
+
+// ============================================================
+// Resize
+// ============================================================
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ============================================================
+// Init
+// ============================================================
+function init() {
+  buildPresetButtons();
+  buildThemeButtons();
+  initParticleSystem();
+  rebuildBodies(CONFIG.N_INITIAL);
+
+  document.getElementById('n-slider').value = CONFIG.N_INITIAL;
+  document.getElementById('val-n').textContent = CONFIG.N_INITIAL;
+  document.getElementById('target-n-slider').value = CONFIG.N_TARGET;
+  document.getElementById('val-target-n').textContent = CONFIG.N_TARGET;
+
+  document.getElementById('equation-content').textContent =
+    'aᵢ = G Σ_{j≠i} mⱼ (rⱼ − rᵢ) / (|rⱼ−rᵢ|² + ε²)^(3/2)';
+
+  speedMultiplier = 1.0;
+  speedSlider.value = speedToSlider(speedMultiplier);
+  document.getElementById('val-speed').textContent = formatSpeed(speedMultiplier);
+
+  cameraDistSlider.value = 20;
+  document.getElementById('val-camera-dist').textContent = '20.0';
+
+  updateStats();
+  lastTime = performance.now();
+
+  setTimeout(() => {
+    document.getElementById('loading').classList.add('hidden');
+  }, 600);
+
+  animate();
+}
+
+init();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
