@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N-Body 3D — v2.3 · COM Tracking · Lagrange · Lyapunov</title>
+<title>N-Body 3D — v2.2 · COM Tracking · Lagrange · Lyapunov</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -671,7 +671,7 @@
 
 <div id="loading">
   <div class="loader"></div>
-  <p>LOADING N-BODY v2.3...</p>
+  <p>LOADING N-BODY v2.2...</p>
 </div>
 
 <button id="menu-toggle" title="Toggle Menu (H)">
@@ -686,7 +686,7 @@
 
 <div id="title-bar">
   <h1>N-BODY <span>3D</span></h1>
-  <p>INTERACTIVE GRAVITY SIMULATOR · v2.3 · LAGRANGE · LYAPUNOV</p>
+  <p>INTERACTIVE GRAVITY SIMULATOR · v2.2 · LAGRANGE · LYAPUNOV</p>
 </div>
 
 <div id="control-panel">
@@ -868,7 +868,7 @@
   <div class="stat-row"><span>FPS</span><span id="stat-fps">60</span></div>
 
   <div class="panel-title">Energy Graph</div>
-  <canvas id="energy-canvas"></canvas>
+  <canvas id="energy-canvas" width="260" height="90"></canvas>
   <div class="energy-legend">
     <span>— T</span>
     <span>— V</span>
@@ -876,7 +876,7 @@
   </div>
 
   <div class="panel-title">Lyapunov Sensitivity (log₁₀|δZ|)</div>
-  <canvas id="lyap-canvas"></canvas>
+  <canvas id="lyap-canvas" width="260" height="70"></canvas>
   <div class="lyap-legend">
     <span id="lyap-status">OFF</span>
     <span>↗ chaos</span>
@@ -951,7 +951,7 @@
 
 <div id="status-bar">
   <span>Drag · Scroll · H: menu · C: calc · Space: pause · F: COM · L: Lyapunov</span>
-  <span>N-Body 3D <span>v2.3</span></span>
+  <span>N-Body 3D <span>v2.2</span></span>
 </div>
 
 <script type="importmap">
@@ -1000,7 +1000,6 @@ const MAX_SUBSTEPS = 64;
 
 let speedMultiplier = 1.0;
 let lastSubsteps = 1;
-let lastSubDt = CONFIG.BASE_DT;  // [FIX] 실제 사용된 substep dt 추적
 
 function sliderToSpeed(s) { return SPEED_MIN * Math.exp(s * LOG_RANGE); }
 function speedToSlider(v) {
@@ -1233,7 +1232,7 @@ function randomBodies(n) {
   for (let i = 0; i < n; i++) {
     const angle = Math.random() * Math.PI * 2;
     const phi = Math.acos(2 * Math.random() - 1);
-    const r = Math.sqrt(Math.random()) * CONFIG.R_INIT;
+    const r = Math.pow(Math.random(), 0.5) * CONFIG.R_INIT;
     const x = r * Math.sin(phi) * Math.cos(angle);
     const y = r * Math.sin(phi) * Math.sin(angle);
     const z = r * Math.cos(phi);
@@ -1252,17 +1251,16 @@ function clearBodies() {
   velocityArrows.forEach(a => scene.remove(a));
   velocityArrows = [];
   clearParticles();
-  // [FIX] 카운터 리셋을 여기로 통합
-  mergeCount = 0;
-  injectCount = 0;
-  L0 = null;
-  lyapHistory.length = 0;
 }
 
 function rebuildBodies(n) {
   clearBodies();
   bodies = randomBodies(n);
+  mergeCount = 0;
+  injectCount = 0;
   currentN = n;
+  L0 = null;
+  lyapHistory.length = 0;
   if (lyapEnabled) initLyapunovTwin();
 }
 
@@ -1459,7 +1457,8 @@ function resolveInelastic(bi, bj) {
   const vel = new THREE.Vector3()
     .addScaledVector(bi.vel, bi.mass / m)
     .addScaledVector(bj.vel, bj.mass / m);
-  const merged = new Body(pos.x, pos.y, pos.z, vel.x, vel.y, vel.z, m, 0, 1);
+  const colorIndex = bodies.indexOf(bi);
+  const merged = new Body(pos.x, pos.y, pos.z, vel.x, vel.y, vel.z, m, colorIndex, bodies.length);
   if (particlesEnabled) spawnParticles(pos, 12, 0xffb74d);
   bi.dispose();
   bj.dispose();
@@ -1486,8 +1485,6 @@ function handleCollisions() {
     }
     bodies = bodies.filter((_, k) => !toRemove.has(k)).concat(newBodies);
     reassignColors();
-    // [FIX] 병합으로 N이 바뀌면 Lyapunov twin 재초기화
-    if (lyapEnabled && twinBodies.length !== bodies.length) initLyapunovTwin();
   }
 }
 
@@ -1669,10 +1666,8 @@ function findHeaviestBody() {
 
 // ============================================================
 // Camera tracking
-// [FIX] COM 이동 시 camera.position도 같이 이동해 줌 왜곡 방지
 // ============================================================
 const _targetPos = new THREE.Vector3();
-const _camDelta = new THREE.Vector3();
 function updateCameraTarget(realDt) {
   if (cameraTargetMode === 'free') { comMarker.visible = false; return; }
   let hasTarget = false;
@@ -1688,21 +1683,14 @@ function updateCameraTarget(realDt) {
     comMarker.visible = false;
   }
   if (!hasTarget) return;
-
-  const clampedDt = Math.min(realDt, 0.05);  // [FIX] 프레임 드랍 대비
-  let lerpFactor;
   if (followSmooth) {
     const speedPenalty = Math.min(1, 1 / Math.sqrt(Math.max(1, speedMultiplier)));
     const baseLerp = 0.002 + 0.998 * speedPenalty;
-    lerpFactor = 1 - Math.pow(baseLerp, clampedDt);
+    const lerpFactor = 1 - Math.pow(baseLerp, realDt);
+    controls.target.lerp(_targetPos, lerpFactor);
   } else {
-    lerpFactor = 1;
+    controls.target.copy(_targetPos);
   }
-
-  // [FIX] 타겟과 카메라를 함께 이동시켜 거리 유지
-  _camDelta.copy(_targetPos).sub(controls.target).multiplyScalar(lerpFactor);
-  controls.target.add(_camDelta);
-  camera.position.add(_camDelta);
 }
 
 // ============================================================
@@ -1799,17 +1787,7 @@ const lyapCanvas = document.getElementById('lyap-canvas');
 const lyapCtx = lyapCanvas.getContext('2d');
 
 function drawLyapGraph() {
-  const rect = lyapCanvas.getBoundingClientRect();
-  if (rect.width === 0) return;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  // [FIX] 캔버스 DPI 처리
-  if (lyapCanvas.width !== Math.round(rect.width * dpr) ||
-      lyapCanvas.height !== Math.round(rect.height * dpr)) {
-    lyapCanvas.width = Math.round(rect.width * dpr);
-    lyapCanvas.height = Math.round(rect.height * dpr);
-  }
-  lyapCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const w = rect.width, h = rect.height;
+  const w = lyapCanvas.width, h = lyapCanvas.height;
   lyapCtx.clearRect(0, 0, w, h);
   const n = lyapHistory.length;
   if (n < 2) return;
@@ -1830,7 +1808,6 @@ function drawLyapGraph() {
 
 // ============================================================
 // Step
-// [FIX] lastSubDt 저장
 // ============================================================
 function stepSimulation(realDt) {
   const targetSimDt = realDt * speedMultiplier;
@@ -1838,7 +1815,6 @@ function stepSimulation(realDt) {
   steps = Math.max(1, Math.min(steps, MAX_SUBSTEPS));
   const subDt = targetSimDt / steps;
   lastSubsteps = steps;
-  lastSubDt = subDt;
   for (let s = 0; s < steps; s++) {
     computeAccelerations();
     integrateVerlet(subDt);
@@ -1865,17 +1841,7 @@ function pushEnergyHistory(T, V, E) {
 }
 
 function drawEnergyGraph() {
-  const rect = energyCanvas.getBoundingClientRect();
-  if (rect.width === 0) return;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  // [FIX] 캔버스 DPI 처리
-  if (energyCanvas.width !== Math.round(rect.width * dpr) ||
-      energyCanvas.height !== Math.round(rect.height * dpr)) {
-    energyCanvas.width = Math.round(rect.width * dpr);
-    energyCanvas.height = Math.round(rect.height * dpr);
-  }
-  energyCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const w = rect.width, h = rect.height;
+  const w = energyCanvas.width, h = energyCanvas.height;
   energyCtx.clearRect(0, 0, w, h);
   const n = energyHistory.T.length;
   if (n < 2) return;
@@ -1990,22 +1956,18 @@ function updateCalcPanel() {
   document.getElementById('eq-sub-ay').textContent = `= ${focus.acc.y.toFixed(4)}`;
   document.getElementById('eq-sub-az').textContent = `= ${focus.acc.z.toFixed(4)}`;
 
-  // [FIX] 실제 사용된 substep dt를 표시
-  const dtUsed = lastSubDt;
+  const dtUsed = CONFIG.BASE_DT;
   const nx = focus.pos.x + focus.vel.x * dtUsed + 0.5 * focus.acc.x * dtUsed * dtUsed;
   const ny = focus.pos.y + focus.vel.y * dtUsed + 0.5 * focus.acc.y * dtUsed * dtUsed;
   const nz = focus.pos.z + focus.vel.z * dtUsed + 0.5 * focus.acc.z * dtUsed * dtUsed;
   document.getElementById('calc-nx').textContent = nx.toFixed(4);
   document.getElementById('calc-ny').textContent = ny.toFixed(4);
   document.getElementById('calc-nz').textContent = nz.toFixed(4);
-  document.getElementById('calc-dt').textContent = dtUsed.toFixed(5);
+  document.getElementById('calc-dt').textContent = CONFIG.BASE_DT.toFixed(4);
 }
 
 // ============================================================
 // Presets
-// [FIX] euler: 회전하는 해
-// [FIX] figure8: 중앙 물체가 (vx3, vy3), 바깥은 -1/2배
-// [FIX] rotating8: 물리적으로 검증되지 않은 근사임을 명시
 // ============================================================
 const PRESETS = {
   random8:    { name: 'Random 8',        n: 8,   ref: '§25',       build: () => rebuildBodies(8) },
@@ -2015,13 +1977,13 @@ const PRESETS = {
     name: 'Pythagoras', n: 3, ref: '§25',
     build: () => {
       clearBodies();
-      // 변 3-4-5 직각삼각형, 질량 3/4/5, 초기 정지
       bodies = [
         new Body( 1,  3, 0, 0, 0, 0, 3, 0, 3),
         new Body(-2, -1, 0, 0, 0, 0, 4, 1, 3),
         new Body( 1, -1, 0, 0, 0, 0, 5, 2, 3)
       ];
-      currentN = 3;
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
       if (lyapEnabled) initLyapunovTwin();
     }
   },
@@ -2029,18 +1991,15 @@ const PRESETS = {
     name: 'Figure 8', n: 3, ref: '§10',
     build: () => {
       clearBodies();
-      // Simó (2000) 정확한 초기값
-      // 초기 위치: (±0.97000436, ∓0.24308753), (0,0)
-      // 세 번째(중앙) 물체 속도: (0.93240737, 0.86473146)
-      // 바깥 두 물체 속도: -1/2 × (세 번째 속도)
       const x1 = 0.97000436, y1 = -0.24308753;
-      const vx3 = 0.93240737, vy3 = 0.86473146;
+      const vx1 = 0.93240737, vy1 = 0.86473146;
       bodies = [
-        new Body( x1,  y1, 0, -vx3/2, -vy3/2, 0, 1, 0, 3),
-        new Body(-x1, -y1, 0, -vx3/2, -vy3/2, 0, 1, 1, 3),
-        new Body( 0,   0, 0,  vx3,    vy3,   0, 1, 2, 3)
+        new Body( x1, y1, 0,  vx1,  vy1, 0, 1, 0, 3),
+        new Body(-x1, -y1, 0,  vx1,  vy1, 0, 1, 1, 3),
+        new Body(0, 0, 0, -2*vx1, -2*vy1, 0, 1, 2, 3)
       ];
-      currentN = 3;
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
       if (lyapEnabled) initLyapunovTwin();
     }
   },
@@ -2048,7 +2007,6 @@ const PRESETS = {
     name: 'Lagrange', n: 3, ref: '§8.2',
     build: () => {
       clearBodies();
-      // 정삼각형 해: ω² = G·M/r³, M = 3, r = 1
       const r = 1;
       const M = 3;
       const omega = Math.sqrt(M / (r * r * r));
@@ -2059,7 +2017,8 @@ const PRESETS = {
         const vy =  omega * x;
         return new Body(x, y, 0, vx, vy, 0, 1, i, 3);
       });
-      currentN = 3;
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
       if (lyapEnabled) initLyapunovTwin();
     }
   },
@@ -2067,36 +2026,30 @@ const PRESETS = {
     name: 'Euler Collinear', n: 3, ref: '§8.1',
     build: () => {
       clearBodies();
-      // 등질량 오일러 공선해: λ=1, 중간 물체 고정
-      // 세 물체가 일직선 위에서 강체처럼 회전
-      // ω² = G·(m + m/4)/d³ = 1.25 (m=1, d=1)
-      const d = 1;
-      const omega = Math.sqrt(1.25);
-      // x축 정렬, z축 회전 (xz 평면)
       bodies = [
-        new Body(-d, 0, 0, 0, 0, -omega*d, 1, 0, 3),
-        new Body( 0, 0, 0, 0, 0,  0,       1, 1, 3),
-        new Body( d, 0, 0, 0, 0,  omega*d, 1, 2, 3)
+        new Body(-1, 0, 0, 0, 0, 0, 1, 0, 3),
+        new Body( 0, 0, 0, 0, 0, 0, 1, 1, 3),
+        new Body( 1, 0, 0, 0, 0, 0, 1, 2, 3)
       ];
-      currentN = 3;
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
       if (lyapEnabled) initLyapunovTwin();
     }
   },
   rotating8: {
-    name: 'Rotating 8 (approx)', n: 3, ref: '§10.3',
+    name: 'Rotating 8', n: 3, ref: '§10.3',
     build: () => {
       clearBodies();
-      // 주의: Kapela–Simó (2017)가 증명한 "회전 8자"의 정확한 초기값이 아님.
-      // 8자 해에 작은 각운동량을 주입한 근사일 뿐이며, 실제 주기해가 아닐 수 있음.
       const x1 = 0.97000436, y1 = -0.24308753;
-      const vx3 = 0.93240737, vy3 = 0.86473146;
+      const vx1 = 0.93240737, vy1 = 0.86473146;
       const dL = 0.05;
       bodies = [
-        new Body( x1,  y1, 0, -vx3/2, -vy3/2 + dL*( x1), 0, 1, 0, 3),
-        new Body(-x1, -y1, 0, -vx3/2, -vy3/2 + dL*( x1), 0, 1, 1, 3),
-        new Body( 0,   0, 0,  vx3,    vy3 + dL*(-2*x1),   0, 1, 2, 3)
+        new Body( x1, y1, 0,  vx1,  vy1 + dL*(-x1), 0, 1, 0, 3),
+        new Body(-x1, -y1, 0,  vx1,  vy1 + dL*( x1), 0, 1, 1, 3),
+        new Body(0, 0, 0, -2*vx1, -2*vy1, 0, 1, 2, 3)
       ];
-      currentN = 3;
+      mergeCount = 0; injectCount = 0; currentN = 3;
+      L0 = null; lyapHistory.length = 0;
       if (lyapEnabled) initLyapunovTwin();
     }
   },
@@ -2104,7 +2057,6 @@ const PRESETS = {
     name: 'Solar System', n: 9, ref: '§13',
     build: () => {
       clearBodies();
-      // 태양 질량 100 (실제 비율보다 시각화를 위해 과장)
       bodies = [new Body(0, 0, 0, 0, 0, 0, 100, 0, 9)];
       const planets = [
         { r: 3, m: 0.5 }, { r: 4.5, m: 1.0 }, { r: 6, m: 1.0 }, { r: 7.5, m: 0.6 },
@@ -2119,7 +2071,8 @@ const PRESETS = {
         const vy =  x / p.r * v;
         bodies.push(new Body(x, y, 0, vx, vy, 0, p.m, i + 1, 9));
       });
-      currentN = 9;
+      mergeCount = 0; injectCount = 0; currentN = 9;
+      L0 = null; lyapHistory.length = 0;
       if (lyapEnabled) initLyapunovTwin();
     }
   },
@@ -2127,7 +2080,6 @@ const PRESETS = {
     name: 'Sun+Planets', n: 5, ref: '§13',
     build: () => {
       clearBodies();
-      // 태양 질량 50 (시각화용)
       bodies = [new Body(0, 0, 0, 0, 0, 0, 50, 0, 5)];
       const planets = [{ r: 4, m: 1 }, { r: 6, m: 1.5 }, { r: 8, m: 1 }, { r: 10, m: 2 }];
       planets.forEach((p, i) => {
@@ -2139,7 +2091,8 @@ const PRESETS = {
         const vy =  x / p.r * v;
         bodies.push(new Body(x, y, 0, vx, vy, 0, p.m, i + 1, 5));
       });
-      currentN = 5;
+      mergeCount = 0; injectCount = 0; currentN = 5;
+      L0 = null; lyapHistory.length = 0;
       if (lyapEnabled) initLyapunovTwin();
     }
   },
@@ -2156,7 +2109,7 @@ const PRESETS = {
       bodies.push(new Body(0, 0, 0, 0, 0, 0, 100, 0, n));
       for (let i = 1; i < n; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const r = 3 + Math.sqrt(Math.random()) * 20;
+        const r = 3 + Math.pow(Math.random(), 0.5) * 20;
         const x = r * Math.cos(angle);
         const y = r * Math.sin(angle);
         const z = (Math.random() - 0.5) * 2;
@@ -2166,7 +2119,8 @@ const PRESETS = {
         const vz = (Math.random() - 0.5) * 0.05;
         bodies.push(new Body(x, y, z, vx, vy, vz, 0.1, i, n));
       }
-      currentN = n;
+      mergeCount = 0; injectCount = 0; currentN = n;
+      L0 = null; lyapHistory.length = 0;
       if (lyapEnabled) initLyapunovTwin();
     }
   }
@@ -2191,7 +2145,6 @@ function buildPresetButtons() {
     btn.innerHTML = badge
       ? `${PRESETS[key].name}<span class="preset-badge ${badgeClass}">${badge}</span>`
       : PRESETS[key].name;
-    btn.title = PRESETS[key].ref ? `See §${PRESETS[key].ref} in the document` : '';
     btn.onclick = () => {
       document.querySelectorAll('#model-grid .model-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -2515,3 +2468,13 @@ init();
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
