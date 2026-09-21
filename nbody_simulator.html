@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>N-Body Orbit Simulator — Exact Solutions &amp; Chaos</title>
+<title>N-Body Orbit Simulator — Exact Solutions &amp; Chaos (v2.1)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Spectral+SC:wght@500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -206,9 +206,45 @@
   ::-webkit-scrollbar{ width:8px; }
   ::-webkit-scrollbar-track{ background:transparent; }
   ::-webkit-scrollbar-thumb{ background: var(--line); border-radius:4px; }
+
+  /* [NEW] Mobile menu toggle */
+  .menu-toggle{
+    display:none;
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    right: 12px;
+    z-index: 60;
+    width:38px; height:38px;
+    align-items:center; justify-content:center;
+    background: rgba(14,17,32,0.88);
+    backdrop-filter: blur(4px);
+    border:1px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    font-size: 16px;
+    cursor:pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  }
+  @media (max-width: 860px){
+    .menu-toggle{ display:flex; }
+    .panel{ display:none; }
+    body.menu-open .panel{ display:flex; }
+    body.menu-open .stage{ min-height: 40vh; }
+  }
+
+  /* [NEW] Manual camera cursor states */
+  canvas.cam-manual{ cursor: grab; }
+  canvas.cam-manual.dragging{ cursor: grabbing; }
+
+  .hint{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color: var(--ink-faint);
+    margin-top:2px; line-height:1.5;
+  }
 </style>
 </head>
 <body>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" title="Toggle menu">☰</button>
 
   <div class="topbar">
     <h1>N-Body Orbit Simulator</h1>
@@ -254,6 +290,15 @@
             <div class="label">Chaos Twin<small>10⁻⁵ initial perturbation → Lyapunov sensitivity</small></div>
             <label class="switch"><input type="checkbox" id="chaosToggle"><span class="track"><span class="thumb"></span></span></label>
           </div>
+          <div class="toggle-row">
+            <div class="label">Manual Camera<small>drag to pan · scroll / pinch to zoom</small></div>
+            <label class="switch"><input type="checkbox" id="cameraToggle"><span class="track"><span class="thumb"></span></span></label>
+          </div>
+          <div class="btn-row" id="cameraBtnRow" style="display:none;">
+            <button class="btn" id="zoomInBtn">Zoom +</button>
+            <button class="btn" id="zoomOutBtn">Zoom −</button>
+            <button class="btn" id="recenterBtn">Center</button>
+          </div>
         </div>
       </div>
 
@@ -292,6 +337,7 @@
   const ctx = canvas.getContext('2d');
   const stage = document.querySelector('.stage');
   let dpr = Math.max(1, window.devicePixelRatio || 1);
+  let currentScale = 1; // [NEW] world→pixel scale from the last draw(), used for drag panning
 
   function resizeCanvas(){
     dpr = Math.max(1, window.devicePixelRatio || 1);
@@ -300,9 +346,10 @@
     canvas.height = Math.round(rect.height * dpr);
     canvas.style.width = rect.width + 'px';
     canvas.style.height = rect.height + 'px';
+    // [FIX] chaos 차트도 여기서 리사이즈 (매 프레임 X)
+    resizeChaosCanvas();
   }
   window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
 
   // ---------- Palette ----------
   const COLORS = ['#d9a441', '#d17f6e', '#5fb8ac', '#9d8cd6', '#7ea1d1', '#c2c26a'];
@@ -325,7 +372,7 @@
   // ---------- Physics core ----------
   const G = 1.0;
 
-  function makeState(bodies, eps, dt, tag){
+  function makeState(bodies, eps, dt){
     const n = bodies.length;
     return {
       bodies: bodies.map((b,i)=>({
@@ -333,7 +380,7 @@
         color: colorFor(i, n),
         trail: []
       })),
-      eps, dt, t: 0, tag
+      eps, dt, t: 0
     };
   }
 
@@ -355,24 +402,32 @@
     return {ax, ay};
   }
 
+  // [NEW] 프레임당 시뮬레이션 시간(재생 속도)은 그대로 두되, 내부적으로 더 잘게 쪼개어
+  // (MICROSTEPS배) 적분해 근접조우/카오스 구간에서도 에너지·각운동량 보존이 훨씬 정교해지고
+  // 궤적이 더 부드러워지도록 함.
+  const MICROSTEPS = 8;
+
   function stepVerlet(state){
-    const {bodies, eps, dt} = state;
+    const {bodies, eps} = state;
     const n = bodies.length;
+    const mdt = state.dt / MICROSTEPS;
     if(!state._a) state._a = accelerations(bodies, eps);
-    const a0 = state._a;
-    for(let i=0;i<n;i++){
-      bodies[i].vx += 0.5*a0.ax[i]*dt;
-      bodies[i].vy += 0.5*a0.ay[i]*dt;
-      bodies[i].x  += bodies[i].vx*dt;
-      bodies[i].y  += bodies[i].vy*dt;
+    for(let m=0; m<MICROSTEPS; m++){
+      const a0 = state._a;
+      for(let i=0;i<n;i++){
+        bodies[i].vx += 0.5*a0.ax[i]*mdt;
+        bodies[i].vy += 0.5*a0.ay[i]*mdt;
+        bodies[i].x  += bodies[i].vx*mdt;
+        bodies[i].y  += bodies[i].vy*mdt;
+      }
+      const a1 = accelerations(bodies, eps);
+      for(let i=0;i<n;i++){
+        bodies[i].vx += 0.5*a1.ax[i]*mdt;
+        bodies[i].vy += 0.5*a1.ay[i]*mdt;
+      }
+      state._a = a1;
     }
-    const a1 = accelerations(bodies, eps);
-    for(let i=0;i<n;i++){
-      bodies[i].vx += 0.5*a1.ax[i]*dt;
-      bodies[i].vy += 0.5*a1.ay[i]*dt;
-    }
-    state._a = a1;
-    state.t += dt;
+    state.t += state.dt;
   }
 
   function energyAndL(bodies, eps){
@@ -396,6 +451,18 @@
     return {x:x/M, y:y/M, M};
   }
 
+  // [NEW] chaos 차트의 Lyapunov 거리 = 최대 성분 거리 (3D 시뮬레이터와 통일)
+  function lyapunovDistance(mainBodies, twinBodies){
+    let maxD = 0;
+    for(let i=0;i<mainBodies.length;i++){
+      const dx = mainBodies[i].x - twinBodies[i].x;
+      const dy = mainBodies[i].y - twinBodies[i].y;
+      const d = Math.hypot(dx, dy);
+      if(d > maxD) maxD = d;
+    }
+    return maxD;
+  }
+
   // ---------- Presets ----------
   function presetFigureEight(){
     const m=1;
@@ -406,7 +473,7 @@
       {m, x:-p1.x, y:-p1.y, vx:-v3.x/2, vy:-v3.y/2},
       {m, x:0, y:0, vx:v3.x, vy:v3.y},
     ];
-    return {bodies, eps:0.0015, dt:0.0008, viewHalf:1.4};
+    return {bodies, eps:0.0015, dt:0.0008, viewHalf:1.4, period:6.32591398};
   }
 
   function presetLagrange(){
@@ -420,7 +487,7 @@
       const vx = -omega*y, vy = omega*x;
       bodies.push({m,x,y,vx,vy});
     }
-    return {bodies, eps:0.002, dt:0.0015, viewHalf:1.5};
+    return {bodies, eps:0.002, dt:0.0015, viewHalf:1.5, period:2*Math.PI/omega};
   }
 
   function presetEuler(){
@@ -432,24 +499,24 @@
       {m, x:0,  y:0, vx:0, vy:0},
       {m, x:d,  y:0, vx:0, vy:omega*d},
     ];
-    return {bodies, eps:0.003, dt:0.0015, viewHalf:1.8};
+    return {bodies, eps:0.003, dt:0.0015, viewHalf:1.8, period:2*Math.PI/omega};
   }
 
-  function presetSuvakov(vx1, vy1, viewHalf, eps, dt){
+  function presetSuvakov(vx1, vy1, viewHalf, eps, dt, period){
     const m = 1;
     const bodies = [
       {m, x:-1, y:0, vx:vx1,      vy:vy1},
       {m, x: 1, y:0, vx:vx1,      vy:vy1},
       {m, x: 0, y:0, vx:-2*vx1,   vy:-2*vy1},
     ];
-    return {bodies, eps, dt, viewHalf};
+    return {bodies, eps, dt, viewHalf, period};
   }
 
   function presetChaos(seed, n){
     let s = seed || 12345;
     n = n || 4;
     function rnd(){ s = (s*1103515245+12345)&0x7fffffff; return s/0x7fffffff; }
-    // spread radius grows with N so bodies aren't packed too densely (fewer close encounters)
+    // N이 커질수록 초기 분포를 넓게 퍼뜨려 밀집을 방지
     const baseRad = 0.5 + 0.09*n;
     const bodies=[];
     for(let i=0;i<n;i++){
@@ -468,11 +535,10 @@
       b.x -= com.x; b.y -= com.y;
       b.vx -= px/com.M; b.vy -= py/com.M;
     }
-    // softening scales gently with N: more bodies -> more frequent close passes -> a touch more regularization
+    // N이 커질수록 근접조우가 잦아지므로 softening을 살짝 키우고 dt를 줄임
     const eps = 0.04 + 0.006*n;
-    // more substeps-equivalent stability headroom needed as N grows -> slightly smaller dt
     const dt = Math.max(0.0008, 0.0028 - 0.00012*n);
-    return {bodies, eps, dt, viewHalf: 1.6 + 0.22*n};
+    return {bodies, eps, dt, viewHalf: 1.6 + 0.22*n, period: null};
   }
 
   const PRESETS = [
@@ -487,13 +553,13 @@
       build: presetEuler },
     { key:'butterfly', name:'Butterfly I (2013)',
       desc:'One of 13 new periodic solutions discovered by Šuvakov & Dmitrašinović (PRL 2013) using shape-sphere topological classification. It belongs to the same topological class (I.A) as the figure-eight, but wraps twice around the shape sphere with the more complex free-group element (ab)²(AB)².',
-      build: ()=>presetSuvakov(0.30689, 0.12551, 1.6, 0.0015, 0.0008) },
+      build: ()=>presetSuvakov(0.30689, 0.12551, 1.6, 0.0015, 0.0008, 6.2356) },
     { key:'moth', name:'Moth I (2013)',
       desc:'A solution from class I.B of the same paper. It has two orthogonal reflection symmetry axes and traces a more intricate path on the shape sphere than the figure-eight or butterfly (free-group element ba(BAB)ab(ABA)).',
-      build: ()=>presetSuvakov(0.46444, 0.39606, 1.7, 0.0015, 0.0006) },
+      build: ()=>presetSuvakov(0.46444, 0.39606, 1.7, 0.0015, 0.0006, 14.8891) },
     { key:'bumblebee', name:'Bumblebee (2013)',
       desc:'An intricate solution with a period T≈63.5 — about 10× the figure-eight\'s. It still belongs to the reflection-symmetric class I.A, but its free-group element is far longer and more complex, tracing a densely tangled path on the shape sphere — try increasing the playback speed to see a full period.',
-      build: ()=>presetSuvakov(0.18428, 0.58719, 2.1, 0.0012, 0.0005) },
+      build: ()=>presetSuvakov(0.18428, 0.58719, 2.1, 0.0012, 0.0005, 63.5347) },
     { key:'chaos', name:'Random N-Body — Chaos',
       desc:'An N-body system with random initial conditions (adjust N=3–20 with the slider below). A typical non-integrable system with no general solution — as N grows, the system explores a denser phase space, and toggling the chaos-twin switch lets you watch a 10⁻⁵ initial perturbation get exponentially amplified: Lyapunov sensitivity in action.',
       build: ()=>presetChaos(Date.now()%100000, chaosN) },
@@ -508,27 +574,48 @@
   let substeps = 20;
   let trailsOn = true;
   let chaosOn = false;
-  const TRAIL_MAX = 900;
+  let currentPeriod = null;  // [NEW] 주기 대비 시간 표시용
   const chaosHistory = []; // {t, logsep}
   const CHAOS_HIST_MAX = 400;
 
+  // [NEW] Manual camera state
+  let cameraMode = 'auto'; // 'auto' | 'manual'
+  const manualView = { half: 1.5, cx: 0, cy: 0 };
+  const VIEW_HALF_MIN = 0.02, VIEW_HALF_MAX = 500;
+  function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+
   function initTwin(){
+    if(!state || !state._initialSnapshot) return;
+    // [FIX] 모든 물체를 무작위로 미세 교란 (3D 시뮬레이터와 통일)
     const cloned = state._initialSnapshot;
-    const perturbed = cloned.map((b,i)=> i===0 ? {...b, x:b.x+1e-5} : {...b});
-    twinState = makeState(perturbed, state.eps, state.dt, 'twin');
+    const perturbed = cloned.map((b)=>{
+      return {
+        ...b,
+        x: b.x + (Math.random()-0.5) * 2e-5,
+        y: b.y + (Math.random()-0.5) * 2e-5,
+        vx: b.vx + (Math.random()-0.5) * 2e-5,
+        vy: b.vy + (Math.random()-0.5) * 2e-5
+      };
+    });
+    twinState = makeState(perturbed, state.eps, state.dt);
     twinState.t = 0;
   }
 
   function loadPreset(idx){
     currentPresetIdx = idx;
     const p = PRESETS[idx].build();
-    state = makeState(p.bodies, p.eps, p.dt, 'main');
+    state = makeState(p.bodies, p.eps, p.dt);
     state._initialSnapshot = p.bodies.map(b=>({...b}));
-    state.viewHalf = p.viewHalf;
-    state.viewCenter = {x:0,y:0};
     state.viewHalfSmoothed = p.viewHalf;
+    state.viewCenter = {x:0,y:0};
+    manualView.half = p.viewHalf;
+    manualView.cx = 0;
+    manualView.cy = 0;
     const e0 = energyAndL(state.bodies, state.eps);
     state.E0 = e0.E; state.L0 = e0.L;
+    state.E0abs = Math.max(Math.abs(e0.E), 1e-9);  // [FIX] 0 나눗셈 방지
+
+    currentPeriod = p.period || null;  // [NEW]
 
     twinState = null;
     chaosHistory.length = 0;
@@ -582,7 +669,10 @@
 
   document.getElementById('trailToggle').addEventListener('change', (e)=>{
     trailsOn = e.target.checked;
-    if(!trailsOn){ state.bodies.forEach(b=>b.trail.length=0); if(twinState) twinState.bodies.forEach(b=>b.trail.length=0); }
+    if(!trailsOn){
+      state.bodies.forEach(b=>b.trail.length=0);
+      if(twinState) twinState.bodies.forEach(b=>b.trail.length=0);
+    }
   });
 
   const chaosBlock = document.getElementById('chaosBlock');
@@ -592,6 +682,97 @@
     chaosHistory.length = 0;
     if(chaosOn) initTwin(); else twinState = null;
   });
+
+  // ---------- [NEW] Mobile menu toggle ----------
+  const menuToggleBtn = document.getElementById('menuToggle');
+  menuToggleBtn.addEventListener('click', ()=>{
+    const open = document.body.classList.toggle('menu-open');
+    menuToggleBtn.textContent = open ? '✕' : '☰';
+  });
+
+  // ---------- [NEW] Manual camera ----------
+  const cameraToggle = document.getElementById('cameraToggle');
+  const cameraBtnRow = document.getElementById('cameraBtnRow');
+
+  function setCameraMode(manual){
+    cameraMode = manual ? 'manual' : 'auto';
+    cameraBtnRow.style.display = manual ? 'flex' : 'none';
+    canvas.classList.toggle('cam-manual', manual);
+    if(manual && state){
+      // sync from whatever the auto camera currently shows, so there's no jump
+      manualView.half = state.viewHalfSmoothed;
+      manualView.cx = state.viewCenter.x;
+      manualView.cy = state.viewCenter.y;
+    }
+  }
+  cameraToggle.addEventListener('change', (e)=> setCameraMode(e.target.checked));
+
+  document.getElementById('zoomInBtn').addEventListener('click', ()=>{
+    manualView.half = clamp(manualView.half*0.8, VIEW_HALF_MIN, VIEW_HALF_MAX);
+  });
+  document.getElementById('zoomOutBtn').addEventListener('click', ()=>{
+    manualView.half = clamp(manualView.half*1.25, VIEW_HALF_MIN, VIEW_HALF_MAX);
+  });
+  document.getElementById('recenterBtn').addEventListener('click', ()=>{
+    if(!state) return;
+    manualView.half = state.viewHalfSmoothed;
+    manualView.cx = state.viewCenter.x;
+    manualView.cy = state.viewCenter.y;
+  });
+
+  // Drag to pan + pinch to zoom (pointer events cover mouse & touch)
+  const activePointers = new Map(); // pointerId -> {x,y in client px}
+  let dragAnchor = null;   // {x,y client px, cx,cy world} for 1-finger pan
+  let pinchStartDist = 0;
+  let pinchStartHalf = 0;
+
+  canvas.addEventListener('pointerdown', (e)=>{
+    if(cameraMode !== 'manual') return;
+    canvas.setPointerCapture(e.pointerId);
+    activePointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if(activePointers.size === 1){
+      dragAnchor = {x:e.clientX, y:e.clientY, cx:manualView.cx, cy:manualView.cy};
+      canvas.classList.add('dragging');
+    } else if(activePointers.size === 2){
+      dragAnchor = null;
+      const pts = [...activePointers.values()];
+      pinchStartDist = Math.hypot(pts[0].x-pts[1].x, pts[0].y-pts[1].y) || 1;
+      pinchStartHalf = manualView.half;
+    }
+  });
+
+  canvas.addEventListener('pointermove', (e)=>{
+    if(cameraMode !== 'manual' || !activePointers.has(e.pointerId)) return;
+    activePointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if(activePointers.size === 2){
+      const pts = [...activePointers.values()];
+      const dist = Math.hypot(pts[0].x-pts[1].x, pts[0].y-pts[1].y) || 1;
+      manualView.half = clamp(pinchStartHalf * (pinchStartDist/dist), VIEW_HALF_MIN, VIEW_HALF_MAX);
+      return;
+    }
+    if(dragAnchor && currentScale > 0){
+      const dx = (e.clientX - dragAnchor.x) / currentScale;
+      const dy = (e.clientY - dragAnchor.y) / currentScale;
+      manualView.cx = dragAnchor.cx - dx;
+      manualView.cy = dragAnchor.cy + dy; // screen Y is flipped vs. world Y
+    }
+  });
+
+  function endPointer(e){
+    activePointers.delete(e.pointerId);
+    if(activePointers.size < 2) pinchStartDist = 0;
+    if(activePointers.size === 0){ dragAnchor = null; canvas.classList.remove('dragging'); }
+  }
+  canvas.addEventListener('pointerup', endPointer);
+  canvas.addEventListener('pointercancel', endPointer);
+  canvas.addEventListener('pointerleave', (e)=>{ if(activePointers.size<=1) endPointer(e); });
+
+  canvas.addEventListener('wheel', (e)=>{
+    if(cameraMode !== 'manual') return;
+    e.preventDefault();
+    const factor = Math.exp(e.deltaY * 0.0012);
+    manualView.half = clamp(manualView.half * factor, VIEW_HALF_MIN, VIEW_HALF_MAX);
+  }, {passive:false});
 
   // ---------- Main loop ----------
   function tick(){
@@ -614,20 +795,14 @@
       }
       // chaos separation history
       if(twinState){
-        let sep2 = 0;
-        for(let i=0;i<state.bodies.length;i++){
-          const dx = state.bodies[i].x - twinState.bodies[i].x;
-          const dy = state.bodies[i].y - twinState.bodies[i].y;
-          sep2 += dx*dx+dy*dy;
-        }
-        const sep = Math.sqrt(sep2) || 1e-12;
+        const sep = lyapunovDistance(state.bodies, twinState.bodies) || 1e-12;
         chaosHistory.push({t: state.t, logsep: Math.log10(sep)});
         if(chaosHistory.length > CHAOS_HIST_MAX) chaosHistory.shift();
       }
-      // readouts (every frame is fine, cheap)
+      // readouts
       const eL = energyAndL(state.bodies, state.eps);
-      const Ed = state.E0 !== 0 ? Math.abs((eL.E-state.E0)/state.E0)*100 : Math.abs(eL.E-state.E0)*100;
-      const Ld = Math.abs(state.L0) > 1e-9 ? Math.abs((eL.L-state.L0)/state.L0)*100 : Math.abs(eL.L-state.L0)*100;
+      const Ed = Math.abs((eL.E - state.E0) / state.E0abs) * 100;
+      const Ld = Math.abs((eL.L - state.L0) / state.E0abs) * 100;  // L도 E0abs 기준 (스케일 유사)
       document.getElementById('rE').textContent = eL.E.toFixed(4);
       document.getElementById('rL').textContent = eL.L.toFixed(4);
       const rEd = document.getElementById('rEd');
@@ -636,7 +811,13 @@
       rEd.className = 'v ' + (Ed<1 ? 'ok' : (Ed<5?'':'warn'));
       rLd.textContent = Ld.toFixed(3)+'%';
       rLd.className = 'v ' + (Ld<1 ? 'ok' : (Ld<5?'':'warn'));
-      document.getElementById('timeReadout').textContent = 't = ' + state.t.toFixed(2);
+      // [NEW] 주기 대비 시간 표시
+      let timeStr = 't = ' + state.t.toFixed(2);
+      if(currentPeriod && currentPeriod > 0){
+        const phase = (state.t % currentPeriod) / currentPeriod;
+        timeStr += '\nT = ' + currentPeriod.toFixed(3) + '\nphase = ' + (phase*100).toFixed(1) + '%';
+      }
+      document.getElementById('timeReadout').textContent = timeStr;
     }
     draw();
   }
@@ -647,38 +828,43 @@
     ctx.clearRect(0,0,w,h);
     if(!state) return;
 
-    // background subtle vignette
     ctx.fillStyle = '#0a0c14';
     ctx.fillRect(0,0,w,h);
 
-    // camera: fit to bodies around COM
     const com = centerOfMass(state.bodies);
     let maxR = 0.6;
     for(const b of state.bodies){
       const dx=b.x-com.x, dy=b.y-com.y;
       maxR = Math.max(maxR, Math.hypot(dx,dy));
     }
+    // [NEW] auto-follow camera is always computed (even in manual mode) so that
+    // toggling back to auto — or hitting "Center" — snaps to a sensible, up-to-date fit.
     const targetHalf = Math.max(maxR*1.6, 0.5);
     state.viewHalfSmoothed += (targetHalf - state.viewHalfSmoothed) * 0.02;
-    state.viewCenter = state.viewCenter || {x:0,y:0};
     state.viewCenter.x += (com.x - state.viewCenter.x) * 0.03;
     state.viewCenter.y += (com.y - state.viewCenter.y) * 0.03;
 
-    const scale = Math.min(w,h) / (2*state.viewHalfSmoothed) * 0.92;
+    // [NEW] choose which camera drives the actual view this frame
+    const viewHalf = cameraMode === 'manual' ? manualView.half : state.viewHalfSmoothed;
+    const viewCx = cameraMode === 'manual' ? manualView.cx : state.viewCenter.x;
+    const viewCy = cameraMode === 'manual' ? manualView.cy : state.viewCenter.y;
+
+    const scale = Math.min(w,h) / (2*viewHalf) * 0.92;
     const cx = w/2, cy = h/2;
     function toPx(x,y){
-      return [cx + (x-state.viewCenter.x)*scale, cy - (y-state.viewCenter.y)*scale];
+      return [cx + (x-viewCx)*scale, cy - (y-viewCy)*scale];
     }
+    currentScale = scale; // [NEW] exposed for pointer-drag pan math
 
     // faint grid
     ctx.strokeStyle = 'rgba(120,130,180,0.05)';
     ctx.lineWidth = 1;
-    const gridStep = niceGridStep(state.viewHalfSmoothed);
-    for(let gx = Math.ceil((state.viewCenter.x-state.viewHalfSmoothed)/gridStep)*gridStep; gx < state.viewCenter.x+state.viewHalfSmoothed; gx+=gridStep){
+    const gridStep = niceGridStep(viewHalf);
+    for(let gx = Math.ceil((viewCx-viewHalf)/gridStep)*gridStep; gx < viewCx+viewHalf; gx+=gridStep){
       const [px] = toPx(gx,0);
       ctx.beginPath(); ctx.moveTo(px,0); ctx.lineTo(px,h); ctx.stroke();
     }
-    for(let gy = Math.ceil((state.viewCenter.y-state.viewHalfSmoothed)/gridStep)*gridStep; gy < state.viewCenter.y+state.viewHalfSmoothed; gy+=gridStep){
+    for(let gy = Math.ceil((viewCy-viewHalf)/gridStep)*gridStep; gy < viewCy+viewHalf; gy+=gridStep){
       const [,py] = toPx(0,gy);
       ctx.beginPath(); ctx.moveTo(0,py); ctx.lineTo(w,py); ctx.stroke();
     }
@@ -711,13 +897,19 @@
   }
 
   function drawSystem(st, toPx, scale, alphaMul, isTwin){
-    // trails
+    // trails — [NEW] 시간에 따른 색상 변화 (오래된 부분은 채도 낮춤)
     if(trailsOn){
       for(const b of st.bodies){
         if(b.trail.length < 2) continue;
-        for(let k=1;k<b.trail.length;k++){
-          const a = (k/b.trail.length) * 0.55 * alphaMul;
-          ctx.strokeStyle = hexToRgba(b.color, a);
+        const n = b.trail.length;
+        for(let k=1;k<n;k++){
+          const t = k/n;
+          const a = t * 0.55 * alphaMul;
+          // 오래된 세그먼트일수록 어둡게
+          const segColor = isTwin
+            ? hexToRgba(b.color, a*0.9)
+            : hexToRgba(shadeHex(b.color, 0.4 + 0.6*t), a);
+          ctx.strokeStyle = segColor;
           ctx.lineWidth = isTwin ? 1 : 1.4;
           const [x0,y0] = toPx(b.trail[k-1].x, b.trail[k-1].y);
           const [x1,y1] = toPx(b.trail[k].x, b.trail[k].y);
@@ -755,18 +947,39 @@
     return `rgba(${r},${g},${b},${a})`;
   }
 
+  // [NEW] hex 색상을 어둡게/밝게
+  function shadeHex(hex, factor){
+    const v = hex.replace('#','');
+    let r = parseInt(v.substring(0,2),16);
+    let g = parseInt(v.substring(2,4),16);
+    let b = parseInt(v.substring(4,6),16);
+    r = Math.min(255, Math.round(r * factor));
+    g = Math.min(255, Math.round(g * factor));
+    b = Math.min(255, Math.round(b * factor));
+    const toHex = x => x.toString(16).padStart(2,'0');
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  }
+
   // ---------- Chaos chart ----------
   const chaosCanvas = document.getElementById('chaosChart');
   const cctx = chaosCanvas.getContext('2d');
-  function drawChaosChart(){
+  let chaosDpr = 1;
+
+  // [FIX] 리사이즈는 여기서만 (매 프레임 X)
+  function resizeChaosCanvas(){
     const rect = chaosCanvas.getBoundingClientRect();
-    if(rect.width===0) return;
-    const cdpr = Math.max(1, window.devicePixelRatio||1);
-    chaosCanvas.width = rect.width*cdpr;
-    chaosCanvas.height = rect.height*cdpr;
-    cctx.setTransform(cdpr,0,0,cdpr,0,0);
-    const w = rect.width, h = rect.height;
-    cctx.clearRect(0,0,w,h);
+    if(rect.width === 0) return;
+    chaosDpr = Math.max(1, window.devicePixelRatio || 1);
+    chaosCanvas.width = Math.round(rect.width * chaosDpr);
+    chaosCanvas.height = Math.round(rect.height * chaosDpr);
+  }
+
+  function drawChaosChart(){
+    const w = chaosCanvas.width / chaosDpr;
+    const h = chaosCanvas.height / chaosDpr;
+    if(w === 0 || h === 0) return;
+    cctx.setTransform(chaosDpr, 0, 0, chaosDpr, 0, 0);
+    cctx.clearRect(0, 0, w, h);
     if(chaosHistory.length < 2) return;
     let minY = Infinity, maxY = -Infinity;
     for(const p of chaosHistory){ minY=Math.min(minY,p.logsep); maxY=Math.max(maxY,p.logsep); }
@@ -785,6 +998,7 @@
   }
 
   // ---------- kick off ----------
+  resizeCanvas();
   loadPreset(currentPresetIdx);
   requestAnimationFrame(function loop(){
     tick();
