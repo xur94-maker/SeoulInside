@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -287,14 +287,6 @@
         <div class="hint" id="eulerHint">
           E = −5/2 + 3(vx² + vy²) = <b id="eulerEnergy">—</b> · bounded when vx² + vy² &lt; 5/6 ≈ 0.8333
         </div>
-        <div class="readout-grid" style="margin-top:10px;">
-          <div class="readout"><span class="k">BEST RETURN  t</span><span class="v" id="rEulerReturnT">—</span></div>
-          <div class="readout"><span class="k">RETURN DIST.  ‖Δ‖</span><span class="v dim" id="rEulerReturnD">—</span></div>
-        </div>
-        <div class="readout-grid" style="margin-top:10px;">
-          <div class="readout"><span class="k">SCALE-INVARIANT  T* = T|E|^{3/2}</span><span class="v" id="rEulerTstar">—</span></div>
-        </div>
-        <div class="hint" id="eulerReturnHint">Tracks the closest phase-space return to the t=0 state (search for a small ‖Δ‖ at some t — that's a candidate period T). Once you've found one, T* lets you compare it against periodic orbits found at other energies.</div>
       </div>
 
       <div>
@@ -408,11 +400,7 @@
           <div class="item"><span class="sw" style="background:var(--gold)"></span>Original orbit</div>
           <div class="item"><span class="sw" style="background:var(--rose)"></span>Perturbed twin</div>
         </div>
-        <div class="readout-grid" style="margin-top:10px;">
-          <div class="readout"><span class="k">LYAPUNOV EXPONENT  λ</span><span class="v" id="rLyap">—</span></div>
-          <div class="readout"><span class="k">FIT WINDOW</span><span class="v dim" id="rLyapWin">—</span></div>
-        </div>
-        <div class="hint">Natural log (ln), per the chaos document §2.1 and the N-body doc §7.1. λ is the least-squares slope of ln‖δZ‖ vs t over the plotted window — a regular/quasi-periodic orbit gives λ≈0, a chaotic one gives λ&gt;0.</div>
+        <div class="hint">Natural log (ln), per the chaos document §2.1 and the N-body doc §7.1.</div>
       </div>
 
       <footer>
@@ -810,43 +798,6 @@
     return {bodies, eps, dt, viewHalf: 1.6 + 0.22*n, period: null};
   }
 
-  // Ouyang & Xie, "A continuum of periodic solutions to the planar four-body
-  // problem with various choices of masses" (arXiv:1310.4206), §4, case (θ,μ)=(4π/5,1).
-  // Equal masses, center of mass and total momentum verified ≈ 0 to 1e-9.
-  function presetStarPentagon(){
-    const m = 1;
-    const bodies = [
-      { m, x:-0.2997475302, y: 0.4125670813, vx: 1.114760563,   vy: 0.8099231855   },
-      { m, x: 1.1955555973, y:-0.5096218631, vx:-0.8600513847,  vy:-0.003559696213 },
-      { m, x:-1.011040523,  y: 1.391577897,  vx: 0.01444607736, vy: 0.01049661818  },
-      { m, x: 0.1152320804, y:-1.294523115,  vx:-0.2691552559,  vy:-0.8168601074   },
-    ];
-    // Minimum period of the full assembled choreography is T=4·Q·T₀ with Q=5, T₀=20
-    // in the paper's units (θ=4π/5=(4/5)π ⇒ P=4,Q=5) — too long to be a useful HUD
-    // phase readout here, so we leave it unset and let the shape speak for itself.
-    return {bodies, eps:0.002, dt:0.0006, viewHalf:2.6, period:null};
-  }
-
-  // Regular N-gon relative equilibrium: N equal masses at the vertices of a
-  // regular N-gon, rotating rigidly. ω² = (Gm/R³)·(1/4)·Σ_{k=1}^{N-1} 1/sin(kπ/N)
-  // (reduces to the Lagrange triangle formula ω²=GM/r³ at N=3).
-  function presetRegularPolygon(n){
-    const m = 1, R = 1;
-    let S = 0;
-    for(let k=1; k<n; k++) S += 1/Math.sin(k*Math.PI/n);
-    const omega2 = (G*m/(R*R*R)) * 0.25 * S;
-    const omega = Math.sqrt(omega2);
-    const bodies = [];
-    for(let k=0; k<n; k++){
-      const ang = 2*Math.PI*k/n;
-      const x = R*Math.cos(ang), y = R*Math.sin(ang);
-      bodies.push({m, x, y, vx:-omega*y, vy: omega*x});
-    }
-    const eps = 0.006 + 0.0015*n;
-    const dt = Math.max(0.0006, 0.0016 - 0.00004*n);
-    return {bodies, eps, dt, viewHalf: 1.5, period: 2*Math.PI/omega};
-  }
-
   const PRESETS = [
     { key:'eight', name:'Figure-Eight Orbit',
       desc:'The choreography solution whose existence was proven by Chenciner & Montgomery (2000). Three equal masses with zero angular momentum chase each other along a single figure-eight curve. No closed-form expression is known — only a precise numerical initial condition.',
@@ -869,12 +820,6 @@
     { key:'bumblebee', name:'Bumblebee (2013)',
       desc:'An intricate solution with a period T≈63.5 — about 10× the figure-eight\'s. It still belongs to the reflection-symmetric class I.A, but its free-group element is far longer and more complex, tracing a densely tangled path on the shape sphere — try increasing the playback speed to see a full period.',
       build: ()=>presetSuvakov(0.18428, 0.58719, 2.1, 0.0012, 0.0005, 63.5347) },
-    { key:'star-pentagon', name:'Star Pentagon (Ouyang–Xie, 2015)',
-      desc:'A stable 4-body choreography — until this family was found, the figure-eight was believed to be essentially the only stable simple choreography. All four equal masses chase one another along one star-shaped curve, weaving a 5-pointed pattern. Initial conditions from Ouyang & Xie, Physica D 307 (2015) / arXiv:1310.4206, case (θ,μ)=(4π/5,1).',
-      build: presetStarPentagon },
-    { key:'ngon', name:'Regular N-gon Relative Equilibrium',
-      desc:'N equal masses at the vertices of a regular N-gon (adjust N=3–20 below), rigidly rotating as one shape — a direct generalization of the Lagrange triangle (N=3). A central-configuration relative equilibrium exists for every N, but it becomes increasingly unstable to perturbations as N grows — try the Chaos Twin toggle to see how quickly nearby N break formation.',
-      build: ()=>presetRegularPolygon(chaosN) },
     { key:'chaos', name:'Random N-Body — Chaos',
       desc:'An N-body system with random initial conditions (adjust N=3–20 with the slider below). A typical non-integrable system with no general solution — as N grows, the system explores a denser phase space, and toggling the chaos-twin switch lets you watch a 10⁻⁵ initial perturbation get exponentially amplified: Lyapunov sensitivity in action. Enable the Poincaré section to see the regular/chaotic boundary directly.',
       build: ()=>presetChaos(Date.now()%100000, chaosN) },
@@ -883,8 +828,6 @@
 
   let eulerVx = 0.30689;
   let eulerVy = 0.12551;
-  let bestReturn = { t: null, dist: Infinity };
-  const RETURN_MIN_T = 1.0; // ignore trivial near-t=0 "returns"
 
   // ---------- Simulation state ----------
   let state = null;
@@ -944,13 +887,11 @@
     ljHistory.length = 0;
     poincarePoints.length = 0;
     lastEnergyDrift = 0;
-    bestReturn = { t: null, dist: Infinity };
     if(chaosOn) initTwin();
 
     document.getElementById('presetName').textContent = PRESETS[idx].name;
     document.getElementById('presetDesc').textContent = PRESETS[idx].desc;
-    document.getElementById('nCtrl').style.display =
-      (PRESETS[idx].key === 'chaos' || PRESETS[idx].key === 'ngon') ? 'flex' : 'none';
+    document.getElementById('nCtrl').style.display = (PRESETS[idx].key === 'chaos') ? 'flex' : 'none';
     document.getElementById('eulerParamsBlock').style.display =
       (PRESETS[idx].key === 'euler-half-twist') ? 'block' : 'none';
     updateEulerHint();
@@ -1027,8 +968,7 @@
     nVal.textContent = chaosN;
   });
   nSlider.addEventListener('change', ()=>{
-    const k = PRESETS[currentPresetIdx].key;
-    if(k === 'chaos' || k === 'ngon') loadPreset(currentPresetIdx);
+    if(PRESETS[currentPresetIdx].key === 'chaos') loadPreset(currentPresetIdx);
   });
 
   document.getElementById('trailToggle').addEventListener('change', (e)=>{
@@ -1178,18 +1118,6 @@
         const sep = lyapunovDistance(state.bodies, twinState.bodies) || 1e-12;
         chaosHistory.push({t: state.t, logsep: Math.log(sep)});
         if(chaosHistory.length > CHAOS_HIST_MAX) chaosHistory.shift();
-        const lam = lyapunovSlope(chaosHistory);
-        const rLyap = document.getElementById('rLyap');
-        const rLyapWin = document.getElementById('rLyapWin');
-        if(lam === null){
-          rLyap.textContent = '—'; rLyap.className = 'v';
-          rLyapWin.textContent = '—';
-        } else {
-          rLyap.textContent = (lam>=0?'+':'') + lam.toFixed(4);
-          rLyap.className = 'v ' + (lam > 0.05 ? 'warn' : (Math.abs(lam) < 0.02 ? 'ok' : ''));
-          rLyapWin.textContent = 't∈[' + chaosHistory[0].t.toFixed(2) + ', ' +
-            chaosHistory[chaosHistory.length-1].t.toFixed(2) + ']  (n=' + chaosHistory.length + ')';
-        }
       }
       const eL = energyAndL(state.bodies, state.eps);
       const lj = 4*eL.T + 2*eL.U;
@@ -1439,19 +1367,6 @@
     b = Math.min(255, Math.round(b * factor));
     const toHex = x => x.toString(16).padStart(2,'0');
     return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-  }
-
-  // ---------- Lyapunov exponent (least-squares slope of ln‖δZ(t)‖ vs t) ----------
-  function lyapunovSlope(history){
-    const n = history.length;
-    if(n < 10) return null;
-    let sumT=0, sumY=0, sumTT=0, sumTY=0;
-    for(const p of history){
-      sumT += p.t; sumY += p.logsep; sumTT += p.t*p.t; sumTY += p.t*p.logsep;
-    }
-    const denom = n*sumTT - sumT*sumT;
-    if(Math.abs(denom) < 1e-12) return null;
-    return (n*sumTY - sumT*sumY) / denom;
   }
 
   // ---------- Chaos chart ----------
