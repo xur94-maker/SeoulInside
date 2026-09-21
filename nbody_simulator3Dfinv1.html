@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N-Body 3D — v2.8 · Velocity Color · Body Scale · Glow Particles</title>
+<title>N-Body 3D — v2.6 · COM Tracking · Lagrange · Lyapunov</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -691,7 +691,7 @@
 
 <div id="loading">
   <div class="loader"></div>
-  <p>LOADING N-BODY v2.8...</p>
+  <p>LOADING N-BODY v2.6...</p>
 </div>
 
 <button id="menu-toggle" title="Toggle Menu (H)">
@@ -706,7 +706,7 @@
 
 <div id="title-bar">
   <h1>N-BODY <span>3D</span></h1>
-  <p>INTERACTIVE GRAVITY SIMULATOR · v2.8 · VELOCITY COLOR · BODY SCALE</p>
+  <p>INTERACTIVE GRAVITY SIMULATOR · v2.6 · LAGRANGE · LYAPUNOV · SUNDMAN</p>
 </div>
 
 
@@ -802,22 +802,10 @@
   </div>
   <div class="slider-group">
     <label>
-      <span>Body Scale</span>
-      <span id="val-body-scale">1.00x</span>
+      <span>Head Size</span>
+      <span id="val-head-size">0.15</span>
     </label>
-    <input type="range" id="body-scale-slider" min="0.3" max="3.0" step="0.05" value="1.0">
-    <div class="slider-ticks">
-      <span>0.3x</span>
-      <span>1x</span>
-      <span>3x</span>
-    </div>
-  </div>
-  <div class="slider-group">
-    <label>
-      <span>Head Size (particles)</span>
-      <span id="val-head-size">0.4</span>
-    </label>
-    <input type="range" id="head-size-slider" min="0.1" max="2.0" step="0.1" value="0.4">
+    <input type="range" id="head-size-slider" min="0.05" max="1.0" step="0.05" value="0.15">
   </div>
   <div class="slider-group">
     <label>
@@ -857,12 +845,6 @@
   <div class="panel-title">Color Theme</div>
   <div class="theme-grid" id="theme-grid"></div>
 
-  <div class="panel-title">Color Mode</div>
-  <div class="toggle-row">
-    <span>Velocity Color</span>
-    <div class="toggle-switch" id="toggle-velocity-color"></div>
-  </div>
-
   <div class="panel-title">Analysis</div>
   <div class="toggle-row">
     <span>Lyapunov Twin</span>
@@ -879,7 +861,7 @@
     <div class="toggle-switch" id="toggle-rotate"></div>
   </div>
   <div class="toggle-row">
-    <span>Show Velocity Arrows</span>
+    <span>Show Velocity</span>
     <div class="toggle-switch" id="toggle-velocity"></div>
   </div>
 
@@ -1017,7 +999,7 @@
 
 <div id="status-bar">
   <span>Drag · Scroll · H: menu · C: calc · Space: pause · F: COM · L: Lyapunov</span>
-  <span>N-Body 3D <span>v2.8</span></span>
+  <span>N-Body 3D <span>v2.6</span></span>
 </div>
 
 <script type="importmap">
@@ -1189,9 +1171,7 @@ let targetN = CONFIG.N_TARGET;
 let currentN = CONFIG.N_INITIAL;
 
 let softening = CONFIG.SOFTENING;
-let headSize = 0.4;               // [CHANGED] 파티클 크기 (기본값 상향)
-let bodyScale = 1.0;              // [NEW] 모든 body의 시각적 배율
-let velocityColorEnabled = false; // [NEW] 속도 기반 색상 모드
+let headSize = 0.15;
 
 let mergeCount = 0;
 let injectCount = 0;
@@ -1218,10 +1198,8 @@ const LYAP_MAX = 200;
 let L0 = null;
 
 const energyHistory = { T: [], V: [], E: [], LJ: [], maxLen: 300 };
-const sundmanHistory = [];
+const sundmanHistory = [];  // [NEW] slack = I·K − J² − |C|²
 const SUNDMAN_HIST_MAX = 300;
-
-let currentPresetKey = 'random8';
 
 // ============================================================
 // Body class
@@ -1233,18 +1211,13 @@ class Body {
     this.vel = new THREE.Vector3(vx, vy, vz);
     this.acc = new THREE.Vector3(0, 0, 0);
     this.mass = mass;
-    // [CHANGED] baseRadius 저장 (물리적 크기)
-    this.baseRadius = Math.max(0.15, Math.cbrt(mass) * 0.35);
-    this.radius = this.baseRadius;
+    this.radius = Math.max(0.15, Math.cbrt(mass) * 0.35);
     this.color = COLOR_THEMES[currentColorTheme].getColor(colorIndex, totalBodies);
-    this.collisionCount = 0;   // [NEW] 충돌 횟수
 
     this.mesh = new THREE.Mesh(
-      new THREE.SphereGeometry(this.baseRadius, 12, 12),
+      new THREE.SphereGeometry(this.radius, 12, 12),
       new THREE.MeshBasicMaterial({ color: this.color })
     );
-    // [NEW] 초기 bodyScale 적용
-    this.mesh.scale.setScalar(bodyScale);
     scene.add(this.mesh);
 
     this.trailGeom = new THREE.BufferGeometry();
@@ -1462,7 +1435,8 @@ function computeAccelerations() {
 }
 
 // ============================================================
-// Verlet
+// Verlet (position-first form; equivalent to the kick-drift-kick
+// velocity Verlet of the N-body doc §26.2)
 // ============================================================
 function integrateVerlet(dt) {
   for (const b of bodies) {
@@ -1513,9 +1487,6 @@ function resolveElastic(bi, bj) {
   bj.vel.x += impulse / m2 * nx;
   bj.vel.y += impulse / m2 * ny;
   bj.vel.z += impulse / m2 * nz;
-  // [NEW] 충돌 횟수 누적
-  bi.collisionCount++;
-  bj.collisionCount++;
   if (particlesEnabled) {
     const mid = new THREE.Vector3().addVectors(bi.pos, bj.pos).multiplyScalar(0.5);
     spawnParticles(mid, 6, 0x4fc3f7);
@@ -1531,8 +1502,6 @@ function resolveInelastic(bi, bj) {
     .addScaledVector(bi.vel, bi.mass / m)
     .addScaledVector(bj.vel, bj.mass / m);
   const merged = new Body(pos.x, pos.y, pos.z, vel.x, vel.y, vel.z, m, 0, 1);
-  // [NEW] 병합 시 충돌 횟수 합산
-  merged.collisionCount = bi.collisionCount + bj.collisionCount + 1;
   if (particlesEnabled) spawnParticles(pos, 12, 0xffb74d);
   bi.dispose();
   bj.dispose();
@@ -1575,59 +1544,28 @@ function reassignColors() {
 }
 
 // ============================================================
-// Particles — [NEW] 원형 텍스처 + Soft Glow
+// Particles
 // ============================================================
 let particleSystem = null;
 let particleData = [];
 
 function initParticleSystem() {
   const geom = new THREE.BufferGeometry();
-  const maxParticles = 1500;   // [CHANGED] 늘림
+  const maxParticles = 500;
   const positions = new Float32Array(maxParticles * 3);
   const colors = new Float32Array(maxParticles * 3);
   geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
   geom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
   geom.setDrawRange(0, 0);
 
-  // [NEW] 부드러운 원형 glow 텍스처
-  const particleTexture = (() => {
-    const size = 128;
-    const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = size;
-    const ctx = canvas.getContext('2d');
-    const cx = size / 2, cy = size / 2;
-
-    // 바깥쪽 후광
-    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, size / 2);
-    glow.addColorStop(0.0, 'rgba(255,255,255,0.95)');
-    glow.addColorStop(0.2, 'rgba(220,235,255,0.55)');
-    glow.addColorStop(0.5, 'rgba(150,180,255,0.15)');
-    glow.addColorStop(1.0, 'rgba(0,0,0,0)');
-    ctx.fillStyle = glow;
-    ctx.fillRect(0, 0, size, size);
-
-    // 중심 밝은 코어
-    const core = ctx.createRadialGradient(cx, cy, 0, cx, cy, size / 8);
-    core.addColorStop(0.0, 'rgba(255,255,255,1.0)');
-    core.addColorStop(1.0, 'rgba(255,255,255,0.0)');
-    ctx.fillStyle = core;
-    ctx.fillRect(0, 0, size, size);
-
-    const tex = new THREE.CanvasTexture(canvas);
-    tex.needsUpdate = true;
-    return tex;
-  })();
-
   const mat = new THREE.PointsMaterial({
-    size: headSize * 2,       // [CHANGED] headSize와 연동
-    map: particleTexture,     // [NEW] 원형 텍스처
+    size: 0.3,
     vertexColors: true,
     transparent: true,
     opacity: 0.9,
     blending: THREE.AdditiveBlending,
     depthWrite: false,
-    sizeAttenuation: true,
-    alphaTest: 0.01           // [NEW] 투명 픽셀 제거
+    sizeAttenuation: true
   });
 
   particleSystem = new THREE.Points(geom, mat);
@@ -1678,7 +1616,7 @@ function updateParticles(realDt) {
   for (let i = 0; i < active; i++) {
     const p = particleData[i];
     if (p.life <= 0) continue;
-    p.life -= dt * 0.8;   // [CHANGED] 더 오래 유지
+    p.life -= dt * 1.5;
     p.pos.addScaledVector(p.vel, dt);
     p.vel.multiplyScalar(0.98);
     positions[i*3] = p.pos.x;
@@ -1704,22 +1642,6 @@ function updateParticles(realDt) {
 function clearParticles() {
   if (!particleSystem) return;
   particleSystem.geometry.setDrawRange(0, 0);
-}
-
-// ============================================================
-// Velocity-based color — [NEW]
-// ============================================================
-// 속도를 파랑(느림) → 빨강(빠름) 으로 매핑
-// 충돌 횟수를 밝기로 인코딩
-const _velColorTmp = new THREE.Color();
-function computeVelocityColor(speed, vMin, vMax, collisionCount, cMax) {
-  const t_v = Math.max(0, Math.min(1, (speed - vMin) / (vMax - vMin + 1e-9)));
-  // Hue: 240° (파랑) → 0° (빨강)
-  const hue = (1 - t_v) * 240 / 360;
-  // Lightness: 충돌 많을수록 밝게
-  const t_c = Math.max(0, Math.min(1, collisionCount / (cMax + 1e-9)));
-  const light = 0.4 + 0.35 * t_c;
-  return _velColorTmp.setHSL(hue, 0.9, light);
 }
 
 // ============================================================
@@ -1796,12 +1718,16 @@ function findHeaviestBody() {
 }
 
 // ============================================================
-// Sundman inequality
+// Sundman inequality  I·K − J² ≥ |C|²  (main text §7.1)
+// [NEW] with  I = Σ mᵢ|rᵢ − R_cm|²,  K = Σ mᵢ|vᵢ − V_cm|²,
+//            J = Σ mᵢ (rᵢ − R_cm)·(vᵢ − V_cm),  C = total angular momentum.
+// Returns {I, K, J, lhs, rhs, slack}.
 // ============================================================
 const _comVel = new THREE.Vector3();
 function sundmanQuantities() {
   const n = bodies.length;
   if (n === 0) return { I: 0, K: 0, J: 0, lhs: 0, rhs: 0, slack: 0 };
+  // CM position and velocity
   computeCenterOfMass();
   _comVel.set(0, 0, 0);
   let M = 0;
@@ -1811,7 +1737,8 @@ function sundmanQuantities() {
   }
   _comVel.divideScalar(M);
   let I = 0, K = 0, J = 0;
-  const C = computeAngularMomentum();
+  const C = computeAngularMomentum();  // about the origin
+  // angular momentum about CM = L_origin − M R_cm × V_cm
   const Ccm = new THREE.Vector3().copy(C).sub(
     new THREE.Vector3().crossVectors(_com, _comVel).multiplyScalar(M)
   );
@@ -1986,7 +1913,7 @@ function drawLyapGraph() {
 }
 
 // ============================================================
-// Lagrange–Jacobi graph
+// Lagrange–Jacobi graph  ( Ï = 4T + 2U  should be constant )
 // ============================================================
 const ljCanvas = document.getElementById('lj-canvas');
 const ljCtx = ljCanvas.getContext('2d');
@@ -2021,7 +1948,7 @@ function drawLJGraph() {
 }
 
 // ============================================================
-// Sundman graph
+// [NEW] Sundman inequality graph — slack = I·K − J² − |C|²
 // ============================================================
 const sundmanCanvas = document.getElementById('sundman-canvas');
 const sundmanCtx = sundmanCanvas.getContext('2d');
@@ -2131,35 +2058,6 @@ function drawEnergyGraph() {
 }
 
 // ============================================================
-// Velocity color update — [NEW]
-// ============================================================
-function updateVelocityColors() {
-  if (!velocityColorEnabled || bodies.length === 0) return;
-  // 속도 및 충돌 횟수 범위 계산
-  let vMin = Infinity, vMax = -Infinity;
-  let cMax = 0;
-  for (const b of bodies) {
-    const sp = b.vel.length();
-    if (sp < vMin) vMin = sp;
-    if (sp > vMax) vMax = sp;
-    if (b.collisionCount > cMax) cMax = b.collisionCount;
-  }
-  // 최소 범위 보장 (색이 요동치는 것 방지)
-  if (vMax - vMin < 0.1) {
-    vMin -= 0.05;
-    vMax += 0.05;
-  }
-  if (cMax < 1) cMax = 1;
-
-  for (const b of bodies) {
-    const sp = b.vel.length();
-    const c = computeVelocityColor(sp, vMin, vMax, b.collisionCount, cMax);
-    b.mesh.material.color.copy(c);
-    // trail 색은 건드리지 않음 (과거 궤적 유지)
-  }
-}
-
-// ============================================================
 // Main loop
 // ============================================================
 let lastTime = performance.now();
@@ -2182,11 +2080,6 @@ function animate() {
     for (const b of bodies) b.updateMesh();
     updateVelocityArrows();
     updateParticles(realDt);
-
-    // [NEW] 속도 기반 색상 (3프레임마다 갱신 - 성능 최적화)
-    if (velocityColorEnabled && frameCount % 3 === 0) {
-      updateVelocityColors();
-    }
   }
 
   updateCameraTarget(realDt);
@@ -2233,6 +2126,7 @@ function updateStats() {
   document.getElementById('stat-soft').textContent = softening.toFixed(3);
   document.getElementById('stat-LJ').textContent = (4 * T + 2 * V).toFixed(3);
 
+  // [NEW] Sundman inequality
   const sd = sundmanQuantities();
   document.getElementById('stat-SundLHS').textContent = sd.lhs.toExponential(3);
   document.getElementById('stat-SundRHS').textContent = sd.rhs.toExponential(3);
@@ -2372,53 +2266,6 @@ const PRESETS = {
       if (lyapEnabled) initLyapunovTwin();
     }
   },
-  starPentagon: {
-    name: 'Star Pentagon', n: 4, ref: '§4.3',
-    build: () => {
-      clearBodies();
-      const m = 1;
-      const positions = [
-        { x:-0.2997475302, y: 0.4125670813, vx: 1.114760563,   vy: 0.8099231855   },
-        { x: 1.1955555973, y:-0.5096218631, vx:-0.8600513847,  vy:-0.003559696213 },
-        { x:-1.011040523,  y: 1.391577897,  vx: 0.01444607736, vy: 0.01049661818  },
-        { x: 0.1152320804, y:-1.294523115,  vx:-0.2691552559,  vy:-0.8168601074   },
-      ];
-      bodies = positions.map((p, i) =>
-        new Body(p.x, p.y, 0, p.vx, p.vy, 0, m, i, 4)
-      );
-      currentN = 4;
-      softening = 0.002;
-      document.getElementById('softening-slider').value = 0.002;
-      document.getElementById('val-softening').textContent = '0.002';
-      document.getElementById('stat-soft').textContent = '0.002';
-      if (lyapEnabled) initLyapunovTwin();
-    }
-  },
-  regularNgon: {
-    name: 'Regular N-gon', n: 5, ref: '§5.3',
-    build: () => {
-      clearBodies();
-      const N = Math.max(4, Math.min(20, currentN >= 4 ? currentN : 5));
-      const m = 1, R = 1;
-      let S = 0;
-      for (let k = 1; k < N; k++) S += 1 / Math.sin(k * Math.PI / N);
-      const omega = Math.sqrt((m / (R * R * R)) * 0.25 * S);
-      bodies = [];
-      for (let k = 0; k < N; k++) {
-        const ang = 2 * Math.PI * k / N;
-        const x = R * Math.cos(ang);
-        const y = R * Math.sin(ang);
-        bodies.push(new Body(x, y, 0, -omega * y, omega * x, 0, m, k, N));
-      }
-      currentN = N;
-      softening = 0.005;
-      document.getElementById('softening-slider').value = 0.005;
-      document.getElementById('val-softening').textContent = '0.005';
-      document.getElementById('stat-soft').textContent = '0.005';
-      setTimeout(() => setView('top'), 100);
-      if (lyapEnabled) initLyapunovTwin();
-    }
-  },
   solar: {
     name: 'Solar System', n: 9, ref: '§13',
     build: () => {
@@ -2490,30 +2337,12 @@ const PRESETS = {
 };
 
 const PRESET_BADGES = {
-  figure8:      'EXACT',
-  lagrange:     'EXACT',
-  starPentagon: 'EXACT',
-  rotating8:    'APPROX',
-  euler:        'UNSTABLE',
-  pythagoras:   'UNSTABLE',
-  regularNgon:  'UNSTABLE'
+  figure8:   'EXACT',
+  lagrange:  'EXACT',
+  rotating8: 'APPROX',
+  euler:     'UNSTABLE',
+  pythagoras:'UNSTABLE'
 };
-
-function setupNSliderMode() {
-  const slider = document.getElementById('n-slider');
-  if (currentPresetKey === 'regularNgon') {
-    slider.min = 4;
-    slider.max = 20;
-    slider.step = 1;
-    slider.value = currentN;
-  } else {
-    slider.min = 2;
-    slider.max = 500;
-    slider.step = 1;
-    slider.value = Math.min(currentN, 500);
-  }
-  document.getElementById('val-n').textContent = currentN;
-}
 
 function buildPresetButtons() {
   const grid = document.getElementById('model-grid');
@@ -2530,9 +2359,9 @@ function buildPresetButtons() {
     btn.onclick = () => {
       document.querySelectorAll('#model-grid .model-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      currentPresetKey = key;
       PRESETS[key].build();
-      setupNSliderMode();
+      document.getElementById('n-slider').value = Math.min(currentN, 500);
+      document.getElementById('val-n').textContent = currentN;
       updateStats();
     };
     grid.appendChild(btn);
@@ -2553,8 +2382,7 @@ function buildThemeButtons() {
       document.querySelectorAll('#theme-grid .theme-btn').forEach((b, i) => {
         b.classList.toggle('active', Object.keys(COLOR_THEMES)[i] === key);
       });
-      // 테마 변경 시 속도 색상이 꺼져 있을 때만 재할당
-      if (!velocityColorEnabled) reassignColors();
+      reassignColors();
     };
     grid.appendChild(btn);
   });
@@ -2566,13 +2394,7 @@ function buildThemeButtons() {
 document.getElementById('n-slider').oninput = (e) => {
   const n = parseInt(e.target.value);
   document.getElementById('val-n').textContent = n;
-  if (currentPresetKey === 'regularNgon') {
-    currentN = n;
-    PRESETS.regularNgon.build();
-    updateStats();
-  } else {
-    rebuildBodies(n);
-  }
+  rebuildBodies(n);
 };
 
 const speedSlider = document.getElementById('speed-slider');
@@ -2602,30 +2424,18 @@ document.getElementById('tail-slider').oninput = (e) => {
   for (const b of bodies) b.setTrailMax(len);
 };
 
-// [CHANGED] head-size → 파티클 크기
 document.getElementById('head-size-slider').oninput = (e) => {
   headSize = parseFloat(e.target.value);
   document.getElementById('val-head-size').textContent = headSize.toFixed(2);
-  if (particleSystem) {
-    particleSystem.material.size = headSize * 2;
-    particleSystem.material.needsUpdate = true;
-  }
-};
-
-// [NEW] Body Scale 슬라이더
-document.getElementById('body-scale-slider').oninput = (e) => {
-  bodyScale = parseFloat(e.target.value);
-  document.getElementById('val-body-scale').textContent = bodyScale.toFixed(2) + 'x';
   for (const b of bodies) {
-    b.mesh.scale.setScalar(bodyScale);
+    b.mesh.geometry.dispose();
+    b.mesh.geometry = new THREE.SphereGeometry(Math.max(headSize, b.radius), 12, 12);
   }
 };
 
 document.getElementById('softening-slider').oninput = (e) => {
   softening = parseFloat(e.target.value);
-  const el = document.getElementById('val-softening');
-  el.textContent = softening.toFixed(2);
-  el.style.color = softening <= 0.01 ? '#e57373' : '#fff';
+  document.getElementById('val-softening').textContent = softening.toFixed(2);
   document.getElementById('stat-soft').textContent = softening.toFixed(3);
 };
 
@@ -2774,25 +2584,11 @@ document.getElementById('toggle-lyap').onclick = function() {
   else lyapHistory.length = 0;
 };
 
-// [NEW] Velocity color 토글
-document.getElementById('toggle-velocity-color').onclick = function() {
-  this.classList.toggle('on');
-  velocityColorEnabled = this.classList.contains('on');
-  if (!velocityColorEnabled) {
-    // 원래 테마 색으로 복원
-    reassignColors();
-  }
-};
-
 // ============================================================
 // Buttons
 // ============================================================
 document.getElementById('btn-reset').onclick = () => {
-  if (currentPresetKey === 'regularNgon') {
-    PRESETS.regularNgon.build();
-  } else {
-    rebuildBodies(currentN);
-  }
+  rebuildBodies(currentN);
   updateStats();
 };
 
@@ -2830,9 +2626,6 @@ window.addEventListener('keydown', (e) => {
   }
   else if (e.key === 'l' || e.key === 'L') {
     document.getElementById('toggle-lyap').click();
-  }
-  else if (e.key === 'v' || e.key === 'V') {
-    document.getElementById('toggle-velocity-color').click();
   }
   else if (e.key === ' ') {
     e.preventDefault();
@@ -2873,16 +2666,6 @@ function init() {
   cameraDistSlider.value = 20;
   document.getElementById('val-camera-dist').textContent = '20.0';
 
-  // [NEW] Body Scale 초기화
-  bodyScale = 1.0;
-  document.getElementById('body-scale-slider').value = 1.0;
-  document.getElementById('val-body-scale').textContent = '1.00x';
-
-  // [NEW] Head Size 초기화
-  headSize = 0.4;
-  document.getElementById('head-size-slider').value = 0.4;
-  document.getElementById('val-head-size').textContent = '0.40';
-
   updateStats();
   lastTime = performance.now();
 
@@ -2897,3 +2680,5 @@ init();
 </script>
 </body>
 </html>
+
+
