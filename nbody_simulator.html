@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>N-Body Orbit Simulator — Exact Solutions &amp; Chaos (v2.1)</title>
+<title>N-Body Orbit Simulator — Exact Solutions &amp; Chaos (v2.5)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Spectral+SC:wght@500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -89,7 +89,10 @@
   }
   .stage-caption .time{
     font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--ink-dim);
-    text-align:right; line-height:1.5;
+    text-align:right; line-height:1.5; white-space:pre-line;
+  }
+  .stage-caption .time .trim-hud{
+    color: var(--gold); display:block; margin-top:2px;
   }
 
   .panel{
@@ -188,6 +191,7 @@
   .readout .v{ font-size:14px; color: var(--ink); }
   .readout .v.warn{ color: var(--rose); }
   .readout .v.ok{ color: var(--teal); }
+  .readout .v.dim{ color: var(--ink-faint); font-size:12px; }
 
   .chaos-chart{
     width:100%; height:64px; display:block;
@@ -196,6 +200,12 @@
   .legend{ display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
   .legend .item{ display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color: var(--ink-dim); }
   .legend .sw{ width:8px; height:8px; border-radius:50%; }
+
+  .hint{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color: var(--ink-faint);
+    margin-top:2px; line-height:1.5;
+  }
+  .hint.warn{ color: var(--rose); }
 
   footer{
     font-family:'IBM Plex Mono', monospace; font-size:10.5px; color: var(--ink-faint);
@@ -207,7 +217,6 @@
   ::-webkit-scrollbar-track{ background:transparent; }
   ::-webkit-scrollbar-thumb{ background: var(--line); border-radius:4px; }
 
-  /* [NEW] Mobile menu toggle */
   .menu-toggle{
     display:none;
     position: fixed;
@@ -232,14 +241,8 @@
     body.menu-open .stage{ min-height: 40vh; }
   }
 
-  /* [NEW] Manual camera cursor states */
   canvas.cam-manual{ cursor: grab; }
   canvas.cam-manual.dragging{ cursor: grabbing; }
-
-  .hint{
-    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color: var(--ink-faint);
-    margin-top:2px; line-height:1.5;
-  }
 </style>
 </head>
 <body>
@@ -248,7 +251,7 @@
 
   <div class="topbar">
     <h1>N-Body Orbit Simulator</h1>
-    <span class="sub">Exact analytic solutions · Symplectic integration (velocity&nbsp;Verlet) · Chaos sensitivity experiment</span>
+    <span class="sub">Exact analytic solutions · Symplectic integration (velocity&nbsp;Verlet) · Chaos sensitivity experiment · Adaptive resolution · Robust camera</span>
   </div>
 
   <div class="layout">
@@ -265,6 +268,21 @@
         <div class="block-title">PRESET · Initial Conditions</div>
         <div class="presets" id="presetList"></div>
         <div class="preset-desc" id="presetDesc"></div>
+      </div>
+
+      <div id="eulerParamsBlock" style="display:none;">
+        <div class="block-title">EULER HALF-TWIST · Search Parameters</div>
+        <div class="ctrl">
+          <div class="ctrl-label"><span>v<sub>x</sub></span><b id="vxVal">0.30689</b></div>
+          <input type="range" id="vxSlider" min="0" max="0.913" step="0.00001" value="0.30689">
+        </div>
+        <div class="ctrl" style="margin-top:8px;">
+          <div class="ctrl-label"><span>v<sub>y</sub></span><b id="vyVal">0.12551</b></div>
+          <input type="range" id="vySlider" min="0" max="0.913" step="0.00001" value="0.12551">
+        </div>
+        <div class="hint" id="eulerHint">
+          E = −5/2 + 3(vx² + vy²) = <b id="eulerEnergy">—</b> · bounded when vx² + vy² &lt; 5/6 ≈ 0.8333
+        </div>
       </div>
 
       <div>
@@ -294,6 +312,14 @@
             <div class="label">Manual Camera<small>drag to pan · scroll / pinch to zoom</small></div>
             <label class="switch"><input type="checkbox" id="cameraToggle"><span class="track"><span class="thumb"></span></span></label>
           </div>
+          <div class="toggle-row">
+            <div class="label">Robust Camera<small>ignore runaway bodies · trim up to 30% outliers</small></div>
+            <label class="switch"><input type="checkbox" id="robustCameraToggle" checked><span class="track"><span class="thumb"></span></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="label">Adaptive Resolution<small>auto-boost microsteps during near encounters (8→512)</small></div>
+            <label class="switch"><input type="checkbox" id="adaptiveToggle" checked><span class="track"><span class="thumb"></span></span></label>
+          </div>
           <div class="btn-row" id="cameraBtnRow" style="display:none;">
             <button class="btn" id="zoomInBtn">Zoom +</button>
             <button class="btn" id="zoomOutBtn">Zoom −</button>
@@ -303,26 +329,60 @@
       </div>
 
       <div>
-        <div class="block-title">Conservation Check (3 of the 10 Integrals)</div>
+        <div class="block-title">Conservation Check — The 10 Classical Integrals (§5)</div>
         <div class="readout-grid">
-          <div class="readout"><span class="k">ENERGY  E</span><span class="v" id="rE">—</span></div>
-          <div class="readout"><span class="k">ANG. MOM.  L</span><span class="v" id="rL">—</span></div>
-          <div class="readout"><span class="k">Energy Drift</span><span class="v" id="rEd">—</span></div>
-          <div class="readout"><span class="k">Ang. Mom. Drift</span><span class="v" id="rLd">—</span></div>
+          <div class="readout"><span class="k">① ENERGY  E</span><span class="v" id="rE">—</span></div>
+          <div class="readout"><span class="k">② ANG. MOM.  L</span><span class="v" id="rL">—</span></div>
+          <div class="readout"><span class="k">③ MOMENTUM  P<sub>x</sub></span><span class="v dim" id="rPx">—</span></div>
+          <div class="readout"><span class="k">④ MOMENTUM  P<sub>y</sub></span><span class="v dim" id="rPy">—</span></div>
+          <div class="readout"><span class="k">⑤ CM VELOCITY  V<sub>cm,x</sub></span><span class="v dim" id="rVx">—</span></div>
+          <div class="readout"><span class="k">⑥ CM VELOCITY  V<sub>cm,y</sub></span><span class="v dim" id="rVy">—</span></div>
+          <div class="readout"><span class="k">⑦ CM POSITION  R<sub>cm,x</sub></span><span class="v dim" id="rRx">—</span></div>
+          <div class="readout"><span class="k">⑧ CM POSITION  R<sub>cm,y</sub></span><span class="v dim" id="rRy">—</span></div>
+          <div class="readout"><span class="k">⑨ Energy Drift</span><span class="v" id="rEd">—</span></div>
+          <div class="readout"><span class="k">⑩ Ang. Mom. Drift</span><span class="v" id="rLd">—</span></div>
+        </div>
+        <div class="readout-grid" style="margin-top:10px;">
+          <div class="readout"><span class="k">SOFTENING  ε</span><span class="v dim" id="rEps">—</span></div>
+          <div class="readout"><span class="k">LAGRANGE–JACOBI  4T+2U</span><span class="v dim" id="rLJ">—</span></div>
+        </div>
+        <div class="readout-grid" style="margin-top:10px;">
+          <div class="readout"><span class="k">MICROSTEPS (current)</span><span class="v dim" id="rMicro">—</span></div>
+          <div class="readout"><span class="k">TRACKED BODIES</span><span class="v dim" id="rTracked">—</span></div>
+        </div>
+      </div>
+
+      <div id="ljBlock">
+        <div class="block-title">LAGRANGE–JACOBI  Ï = 4T + 2U  (§6.2)</div>
+        <canvas class="chaos-chart" id="ljChart"></canvas>
+        <div class="hint">Should be constant along the trajectory (Newtonian gravity). Drift means numerical error.</div>
+      </div>
+
+      <div id="sundmanBlock">
+        <div class="block-title">SUNDMAN INEQUALITY  I·K − J² ≥ |C|²  (§7.1)</div>
+        <div class="readout-grid">
+          <div class="readout"><span class="k">I·K − J²</span><span class="v dim" id="rSundLHS">—</span></div>
+          <div class="readout"><span class="k">|C|²</span><span class="v dim" id="rSundRHS">—</span></div>
+          <div class="readout"><span class="k">Slack  (LHS − RHS)</span><span class="v" id="rSundSlack">—</span></div>
+          <div class="readout"><span class="k">Triple-Collision Possible?</span><span class="v dim" id="rSundTC">—</span></div>
+        </div>
+        <div class="hint" id="sundmanHint">
+          Equality (slack → 0) means the system is approaching a triple collision.
         </div>
       </div>
 
       <div id="chaosBlock" style="display:none;">
-        <div class="block-title">SEPARATION log₁₀‖δZ(t)‖ — Lyapunov Sensitivity</div>
+        <div class="block-title">SEPARATION ln‖δZ(t)‖ — Lyapunov Sensitivity</div>
         <canvas class="chaos-chart" id="chaosChart"></canvas>
         <div class="legend">
           <div class="item"><span class="sw" style="background:var(--gold)"></span>Original orbit</div>
           <div class="item"><span class="sw" style="background:var(--rose)"></span>Perturbed twin</div>
         </div>
+        <div class="hint">Natural log (ln), per the chaos document §2.1 and the N-body doc §7.1.</div>
       </div>
 
       <footer>
-        Equations of motion: m·r̈ᵢ = G Σⱼ mᵢmⱼ(rⱼ−rᵢ)/rᵢⱼ³ · G=1 units, softening applied.<br>
+        Equations of motion: m·r̈ᵢ = G Σⱼ mᵢmⱼ(rⱼ−rᵢ)/rᵢⱼ³ · G=1 units, softening applied (ε shown above). Sundman inequality I·K − J² ≥ |C|² is tracked above (§7.1). Adaptive resolution auto-boosts velocity-Verlet microsteps during near encounters. Robust camera trims up to 30% outliers so runaway bodies no longer hijack the view.<br>
         <b style="color:var(--ink-dim)">Reflecting current research:</b> Butterfly, Moth and Bumblebee are among the 13 new periodic solutions discovered by Šuvakov &amp; Dmitrašinović (2013) using shape-sphere topological classification. Since then, Li &amp; Liao's group has used supercomputers and artificial neural networks (2017–2025) to find ~600 new equal-mass orbits, ~130,000 unequal-mass orbits, ~300 free-fall orbits, and in 2025 alone 10,059 new three-dimensional periodic orbits (including 1,996 linearly stable ones and 273 "piano-trio" orbits) — showing that this remains a very active area of research.
       </footer>
     </div>
@@ -337,7 +397,7 @@
   const ctx = canvas.getContext('2d');
   const stage = document.querySelector('.stage');
   let dpr = Math.max(1, window.devicePixelRatio || 1);
-  let currentScale = 1; // [NEW] world→pixel scale from the last draw(), used for drag panning
+  let currentScale = 1;
 
   function resizeCanvas(){
     dpr = Math.max(1, window.devicePixelRatio || 1);
@@ -346,8 +406,8 @@
     canvas.height = Math.round(rect.height * dpr);
     canvas.style.width = rect.width + 'px';
     canvas.style.height = rect.height + 'px';
-    // [FIX] chaos 차트도 여기서 리사이즈 (매 프레임 X)
     resizeChaosCanvas();
+    resizeLJCanvas();
   }
   window.addEventListener('resize', resizeCanvas);
 
@@ -362,7 +422,6 @@
     const toHex = x => Math.round(255*x).toString(16).padStart(2,'0');
     return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
   }
-  // golden-angle hue distribution so any N of bodies stays visually distinct
   function colorFor(i, n){
     if(n <= COLORS.length) return COLORS[i % COLORS.length];
     const hue = (i * 137.508) % 360;
@@ -380,7 +439,10 @@
         color: colorFor(i, n),
         trail: []
       })),
-      eps, dt, t: 0
+      eps, dt, t: 0,
+      _a: null,              // acceleration cache
+      _microsteps: 8,        // current adaptive microsteps (for readout)
+      _prevMicrosteps: 8     // to detect step-size changes
     };
   }
 
@@ -402,17 +464,59 @@
     return {ax, ay};
   }
 
-  // [NEW] 프레임당 시뮬레이션 시간(재생 속도)은 그대로 두되, 내부적으로 더 잘게 쪼개어
-  // (MICROSTEPS배) 적분해 근접조우/카오스 구간에서도 에너지·각운동량 보존이 훨씬 정교해지고
-  // 궤적이 더 부드러워지도록 함.
-  const MICROSTEPS = 8;
+  // ---------- Adaptive microsteps ----------
+  const MICROSTEPS_BASE = 8;
+  const MICROSTEPS_MAX  = 512;
+  let adaptiveMicrosteps = true;
+
+  // 최소 근접 거리 기반으로 microsteps 결정
+  function computeMicrosteps(bodies, eps){
+    if(!adaptiveMicrosteps) return MICROSTEPS_BASE;
+
+    const n = bodies.length;
+    if(n <= 1) return MICROSTEPS_BASE;
+
+    let minR2 = Infinity;
+    for(let i=0;i<n;i++){
+      for(let j=i+1;j<n;j++){
+        const dx = bodies[j].x - bodies[i].x;
+        const dy = bodies[j].y - bodies[i].y;
+        const r2 = dx*dx + dy*dy + eps*eps;
+        if(r2 < minR2) minR2 = r2;
+      }
+    }
+    const minR = Math.sqrt(minR2);
+
+    // 참조 스케일: 프리셋 초기의 전형적인 근접 거리. ε에 비례하게 잡음.
+    // minR이 작을수록 boost가 커짐.
+    const refR = Math.max(eps * 8, 1e-3);
+    const ratio = refR / Math.max(minR, 1e-9);
+    // ratio=1 → base, ratio=10 → 약 4배, ratio=100 → 약 16배 … (지수 0.6)
+    const boost = Math.pow(ratio, 0.6);
+    let steps = Math.round(MICROSTEPS_BASE * boost);
+    if(!isFinite(steps) || steps < MICROSTEPS_BASE) steps = MICROSTEPS_BASE;
+    if(steps > MICROSTEPS_MAX) steps = MICROSTEPS_MAX;
+    return steps;
+  }
 
   function stepVerlet(state){
     const {bodies, eps} = state;
     const n = bodies.length;
-    const mdt = state.dt / MICROSTEPS;
+
+    // 적응적 microsteps 결정
+    const micro = computeMicrosteps(bodies, eps);
+    state._microsteps = micro;
+
+    // microsteps가 바뀌면 _a 캐시가 이전 스텝 크기 기준이라 미묘한 불일치 → 재계산
+    if(micro !== state._prevMicrosteps){
+      state._a = null;
+      state._prevMicrosteps = micro;
+    }
+
+    const mdt = state.dt / micro;
     if(!state._a) state._a = accelerations(bodies, eps);
-    for(let m=0; m<MICROSTEPS; m++){
+
+    for(let m=0; m<micro; m++){
       const a0 = state._a;
       for(let i=0;i<n;i++){
         bodies[i].vx += 0.5*a0.ax[i]*mdt;
@@ -442,7 +546,13 @@
       const r = Math.sqrt(dx*dx+dy*dy+eps*eps);
       U -= G*bodies[i].m*bodies[j].m/r;
     }
-    return {E: T+U, L};
+    return {E: T+U, L, T, U};
+  }
+
+  function linearMomentum(bodies){
+    let px=0, py=0;
+    for(const b of bodies){ px += b.m*b.vx; py += b.m*b.vy; }
+    return {px, py};
   }
 
   function centerOfMass(bodies){
@@ -451,7 +561,24 @@
     return {x:x/M, y:y/M, M};
   }
 
-  // [NEW] chaos 차트의 Lyapunov 거리 = 최대 성분 거리 (3D 시뮬레이터와 통일)
+  // Sundman inequality  I·K − J² ≥ |C|²  (main text §7.1)
+  function sundmanQuantities(bodies){
+    const com = centerOfMass(bodies);
+    let M = 0, Vcx = 0, Vcy = 0;
+    for(const b of bodies){ M += b.m; Vcx += b.m*b.vx; Vcy += b.m*b.vy; }
+    Vcx /= M; Vcy /= M;
+    let I = 0, K = 0, J = 0, C = 0;
+    for(const b of bodies){
+      const rx = b.x - com.x, ry = b.y - com.y;
+      const ux = b.vx - Vcx,  uy = b.vy - Vcy;
+      I += b.m*(rx*rx + ry*ry);
+      K += b.m*(ux*ux + uy*uy);
+      J += b.m*(rx*ux + ry*uy);
+      C += b.m*(rx*uy - ry*ux);
+    }
+    return { I, K, J, C, lhs: I*K - J*J, rhs: C*C };
+  }
+
   function lyapunovDistance(mainBodies, twinBodies){
     let maxD = 0;
     for(let i=0;i<mainBodies.length;i++){
@@ -461,6 +588,62 @@
       if(d > maxD) maxD = d;
     }
     return maxD;
+  }
+
+  // ---------- Robust camera ----------
+  let robustCameraOn = true;
+
+  function computeCameraFit(bodies, com, opts){
+    const trimFraction = (opts && opts.trimFraction) || 0.30;
+    const outlierK     = (opts && opts.outlierK)     || 2.5;
+    const minKeep      = (opts && opts.minKeep)      || 1;
+    const n = bodies.length;
+
+    // 안전장치 1: N ≤ 2 → outlier 개념 없음
+    if(n <= 2){
+      let maxR = 0.5;
+      for(const b of bodies) maxR = Math.max(maxR, Math.hypot(b.x-com.x, b.y-com.y));
+      return { half: maxR*1.6, cx: com.x, cy: com.y, keptCount: n };
+    }
+
+    const dists = bodies.map((b,i)=>({
+      i, r: Math.hypot(b.x - com.x, b.y - com.y)
+    }));
+
+    const sortedR = dists.map(d=>d.r).sort((a,b)=>a-b);
+    const medianR = sortedR[Math.floor(n/2)] || 1e-6;
+
+    const outliers = dists.filter(d => d.r > outlierK * medianR);
+
+    // 안전장치 2: 최소 1개는 유지, 최대 30%까지 버림
+    const maxTrim = Math.max(0, Math.min(n - minKeep, Math.floor(n * trimFraction)));
+
+    let kept;
+    if(outliers.length <= maxTrim){
+      const outSet = new Set(outliers.map(d=>d.i));
+      kept = dists.filter(d => !outSet.has(d.i));
+    } else {
+      const byR = [...dists].sort((a,b)=>b.r - a.r);
+      const dropSet = new Set(byR.slice(0, maxTrim).map(d=>d.i));
+      kept = dists.filter(d => !dropSet.has(d.i));
+    }
+
+    // 안전장치 3: kept 비었으면 fallback
+    if(kept.length === 0){
+      let maxR = 0.5;
+      for(const b of bodies) maxR = Math.max(maxR, Math.hypot(b.x-com.x, b.y-com.y));
+      return { half: maxR*1.6, cx: com.x, cy: com.y, keptCount: n };
+    }
+
+    let maxKeptR = 0.5;
+    for(const d of kept) maxKeptR = Math.max(maxKeptR, d.r);
+
+    return {
+      half: maxKeptR * 1.6,
+      cx: com.x,   // 중심은 진짜 CM 유지 (정직성)
+      cy: com.y,
+      keptCount: kept.length
+    };
   }
 
   // ---------- Presets ----------
@@ -512,11 +695,20 @@
     return {bodies, eps, dt, viewHalf, period};
   }
 
+  function presetEulerHalfTwist(vx, vy, viewHalf, eps, dt, period){
+    const m = 1;
+    const bodies = [
+      {m, x:-1, y:0, vx: vx,      vy: vy},
+      {m, x: 0, y:0, vx:-2*vx,    vy:-2*vy},
+      {m, x: 1, y:0, vx: vx,      vy: vy},
+    ];
+    return {bodies, eps, dt, viewHalf, period};
+  }
+
   function presetChaos(seed, n){
     let s = seed || 12345;
     n = n || 4;
     function rnd(){ s = (s*1103515245+12345)&0x7fffffff; return s/0x7fffffff; }
-    // N이 커질수록 초기 분포를 넓게 퍼뜨려 밀집을 방지
     const baseRad = 0.5 + 0.09*n;
     const bodies=[];
     for(let i=0;i<n;i++){
@@ -535,7 +727,6 @@
       b.x -= com.x; b.y -= com.y;
       b.vx -= px/com.M; b.vy -= py/com.M;
     }
-    // N이 커질수록 근접조우가 잦아지므로 softening을 살짝 키우고 dt를 줄임
     const eps = 0.04 + 0.006*n;
     const dt = Math.max(0.0008, 0.0028 - 0.00012*n);
     return {bodies, eps, dt, viewHalf: 1.6 + 0.22*n, period: null};
@@ -551,6 +742,9 @@
     { key:'euler', name:'Euler Collinear Solution',
       desc:'A solution in which three bodies stay on a single line while rotating. For equal masses, Euler\'s quintic equation has the symmetric root λ=1, so the middle body stays fixed while the outer two rotate like a rigid rod.',
       build: presetEuler },
+    { key:'euler-half-twist', name:'Euler Half-Twist (search IC)',
+      desc:'The two-parameter initial condition used in periodic-orbit searches (main text §31.2). Bodies are collinear at t=0 with v₁=v₃=(vx,vy) and v₂=−2(vx,vy); energy is E=−5/2+3(vx²+vy²), bounded when vx²+vy²<5/6. Use the sliders below to hunt for new families.',
+      build: ()=>presetEulerHalfTwist(eulerVx, eulerVy, 1.6, 0.0015, 0.0008, null) },
     { key:'butterfly', name:'Butterfly I (2013)',
       desc:'One of 13 new periodic solutions discovered by Šuvakov & Dmitrašinović (PRL 2013) using shape-sphere topological classification. It belongs to the same topological class (I.A) as the figure-eight, but wraps twice around the shape sphere with the more complex free-group element (ab)²(AB)².',
       build: ()=>presetSuvakov(0.30689, 0.12551, 1.6, 0.0015, 0.0008, 6.2356) },
@@ -566,27 +760,30 @@
   ];
   let chaosN = 4;
 
+  let eulerVx = 0.30689;
+  let eulerVy = 0.12551;
+
   // ---------- Simulation state ----------
   let state = null;
   let twinState = null;
   let running = true;
-  let currentPresetIdx = 1; // start on Lagrange (visually calm)
+  let currentPresetIdx = 1;
   let substeps = 20;
   let trailsOn = true;
   let chaosOn = false;
-  let currentPeriod = null;  // [NEW] 주기 대비 시간 표시용
-  const chaosHistory = []; // {t, logsep}
+  let currentPeriod = null;
+  const chaosHistory = [];
   const CHAOS_HIST_MAX = 400;
+  const ljHistory = [];
+  const LJ_HIST_MAX = 400;
 
-  // [NEW] Manual camera state
-  let cameraMode = 'auto'; // 'auto' | 'manual'
+  let cameraMode = 'auto';
   const manualView = { half: 1.5, cx: 0, cy: 0 };
   const VIEW_HALF_MIN = 0.02, VIEW_HALF_MAX = 500;
   function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
 
   function initTwin(){
     if(!state || !state._initialSnapshot) return;
-    // [FIX] 모든 물체를 무작위로 미세 교란 (3D 시뮬레이터와 통일)
     const cloned = state._initialSnapshot;
     const perturbed = cloned.map((b)=>{
       return {
@@ -612,20 +809,59 @@
     manualView.cx = 0;
     manualView.cy = 0;
     const e0 = energyAndL(state.bodies, state.eps);
-    state.E0 = e0.E; state.L0 = e0.L;
-    state.E0abs = Math.max(Math.abs(e0.E), 1e-9);  // [FIX] 0 나눗셈 방지
+    state.E0 = e0.E;
+    state.L0 = e0.L;
+    state.E0abs = Math.max(Math.abs(e0.E), 1e-9);
+    state.L0abs = Math.max(Math.abs(e0.L), 1e-9);
 
-    currentPeriod = p.period || null;  // [NEW]
+    currentPeriod = p.period || null;
 
     twinState = null;
     chaosHistory.length = 0;
+    ljHistory.length = 0;
     if(chaosOn) initTwin();
 
     document.getElementById('presetName').textContent = PRESETS[idx].name;
     document.getElementById('presetDesc').textContent = PRESETS[idx].desc;
     document.getElementById('nCtrl').style.display = (PRESETS[idx].key === 'chaos') ? 'flex' : 'none';
+    document.getElementById('eulerParamsBlock').style.display =
+      (PRESETS[idx].key === 'euler-half-twist') ? 'block' : 'none';
+    updateEulerHint();
     renderPresetButtons();
   }
+
+  // ---------- Euler half-twist UI ----------
+  const eulerEnergyEl = document.getElementById('eulerEnergy');
+  const eulerHintEl = document.getElementById('eulerHint');
+  function updateEulerHint(){
+    const v2 = eulerVx*eulerVx + eulerVy*eulerVy;
+    const E = -2.5 + 3*v2;
+    eulerEnergyEl.textContent = E.toFixed(4);
+    if(v2 >= 5/6){
+      eulerHintEl.className = 'hint warn';
+      eulerHintEl.innerHTML =
+        'E = −5/2 + 3(vx² + vy²) = <b>' + E.toFixed(4) +
+        '</b> · <b>UNBOUNDED</b> (vx² + vy² ≥ 5/6 ≈ 0.8333)';
+    } else {
+      eulerHintEl.className = 'hint';
+      eulerHintEl.innerHTML =
+        'E = −5/2 + 3(vx² + vy²) = <b>' + E.toFixed(4) +
+        '</b> · bounded when vx² + vy² &lt; 5/6 ≈ 0.8333';
+    }
+  }
+
+  document.getElementById('vxSlider').addEventListener('input', (e)=>{
+    eulerVx = parseFloat(e.target.value);
+    document.getElementById('vxVal').textContent = eulerVx.toFixed(5);
+    updateEulerHint();
+    if(PRESETS[currentPresetIdx].key === 'euler-half-twist') loadPreset(currentPresetIdx);
+  });
+  document.getElementById('vySlider').addEventListener('input', (e)=>{
+    eulerVy = parseFloat(e.target.value);
+    document.getElementById('vyVal').textContent = eulerVy.toFixed(5);
+    updateEulerHint();
+    if(PRESETS[currentPresetIdx].key === 'euler-half-twist') loadPreset(currentPresetIdx);
+  });
 
   // ---------- UI: preset list ----------
   const presetListEl = document.getElementById('presetList');
@@ -683,14 +919,23 @@
     if(chaosOn) initTwin(); else twinState = null;
   });
 
-  // ---------- [NEW] Mobile menu toggle ----------
+  document.getElementById('robustCameraToggle').addEventListener('change', (e)=>{
+    robustCameraOn = e.target.checked;
+  });
+
+  document.getElementById('adaptiveToggle').addEventListener('change', (e)=>{
+    adaptiveMicrosteps = e.target.checked;
+    // 캐시 무효화: 다음 스텝에서 새 microsteps로 재계산되도록
+    if(state){ state._a = null; state._prevMicrosteps = -1; }
+    if(twinState){ twinState._a = null; twinState._prevMicrosteps = -1; }
+  });
+
   const menuToggleBtn = document.getElementById('menuToggle');
   menuToggleBtn.addEventListener('click', ()=>{
     const open = document.body.classList.toggle('menu-open');
     menuToggleBtn.textContent = open ? '✕' : '☰';
   });
 
-  // ---------- [NEW] Manual camera ----------
   const cameraToggle = document.getElementById('cameraToggle');
   const cameraBtnRow = document.getElementById('cameraBtnRow');
 
@@ -699,7 +944,6 @@
     cameraBtnRow.style.display = manual ? 'flex' : 'none';
     canvas.classList.toggle('cam-manual', manual);
     if(manual && state){
-      // sync from whatever the auto camera currently shows, so there's no jump
       manualView.half = state.viewHalfSmoothed;
       manualView.cx = state.viewCenter.x;
       manualView.cy = state.viewCenter.y;
@@ -720,9 +964,8 @@
     manualView.cy = state.viewCenter.y;
   });
 
-  // Drag to pan + pinch to zoom (pointer events cover mouse & touch)
-  const activePointers = new Map(); // pointerId -> {x,y in client px}
-  let dragAnchor = null;   // {x,y client px, cx,cy world} for 1-finger pan
+  const activePointers = new Map();
+  let dragAnchor = null;
   let pinchStartDist = 0;
   let pinchStartHalf = 0;
 
@@ -754,7 +997,7 @@
       const dx = (e.clientX - dragAnchor.x) / currentScale;
       const dy = (e.clientY - dragAnchor.y) / currentScale;
       manualView.cx = dragAnchor.cx - dx;
-      manualView.cy = dragAnchor.cy + dy; // screen Y is flipped vs. world Y
+      manualView.cy = dragAnchor.cy + dy;
     }
   });
 
@@ -781,7 +1024,6 @@
         stepVerlet(state);
         if(twinState) stepVerlet(twinState);
       }
-      // trails — total segment budget stays roughly constant regardless of N
       if(trailsOn){
         const cap = Math.max(120, Math.floor(5000 / state.bodies.length));
         for(const b of state.bodies){
@@ -793,25 +1035,58 @@
           if(b.trail.length > cap) b.trail.shift();
         }
       }
-      // chaos separation history
       if(twinState){
         const sep = lyapunovDistance(state.bodies, twinState.bodies) || 1e-12;
-        chaosHistory.push({t: state.t, logsep: Math.log10(sep)});
+        chaosHistory.push({t: state.t, logsep: Math.log(sep)});
         if(chaosHistory.length > CHAOS_HIST_MAX) chaosHistory.shift();
       }
-      // readouts
       const eL = energyAndL(state.bodies, state.eps);
+      const lj = 4*eL.T + 2*eL.U;
+      ljHistory.push(lj);
+      if(ljHistory.length > LJ_HIST_MAX) ljHistory.shift();
+
+      const mom = linearMomentum(state.bodies);
+      const cm = centerOfMass(state.bodies);
       const Ed = Math.abs((eL.E - state.E0) / state.E0abs) * 100;
-      const Ld = Math.abs((eL.L - state.L0) / state.E0abs) * 100;  // L도 E0abs 기준 (스케일 유사)
+      const Ld = Math.abs((eL.L - state.L0) / state.L0abs) * 100;
+      const Vcx = mom.px / cm.M;
+      const Vcy = mom.py / cm.M;
+
       document.getElementById('rE').textContent = eL.E.toFixed(4);
       document.getElementById('rL').textContent = eL.L.toFixed(4);
+      document.getElementById('rPx').textContent = mom.px.toFixed(3);
+      document.getElementById('rPy').textContent = mom.py.toFixed(3);
+      document.getElementById('rVx').textContent = Vcx.toFixed(3);
+      document.getElementById('rVy').textContent = Vcy.toFixed(3);
+      document.getElementById('rRx').textContent = cm.x.toFixed(3);
+      document.getElementById('rRy').textContent = cm.y.toFixed(3);
+      document.getElementById('rLJ').textContent = lj.toFixed(4);
       const rEd = document.getElementById('rEd');
       const rLd = document.getElementById('rLd');
       rEd.textContent = Ed.toFixed(3)+'%';
       rEd.className = 'v ' + (Ed<1 ? 'ok' : (Ed<5?'':'warn'));
       rLd.textContent = Ld.toFixed(3)+'%';
       rLd.className = 'v ' + (Ld<1 ? 'ok' : (Ld<5?'':'warn'));
-      // [NEW] 주기 대비 시간 표시
+      document.getElementById('rEps').textContent = state.eps.toFixed(4);
+
+      // Sundman inequality
+      const sd = sundmanQuantities(state.bodies);
+      const slack = sd.lhs - sd.rhs;
+      document.getElementById('rSundLHS').textContent = sd.lhs.toExponential(3);
+      document.getElementById('rSundRHS').textContent = sd.rhs.toExponential(3);
+      const slackEl = document.getElementById('rSundSlack');
+      slackEl.textContent = slack.toExponential(3);
+      const slackRatio = Math.abs(sd.rhs) > 1e-12 ? slack / Math.abs(sd.rhs) : Infinity;
+      slackEl.className = 'v ' + (slackRatio < 0.01 ? 'warn' : (slackRatio < 0.1 ? '' : 'ok'));
+      const tcEl = document.getElementById('rSundTC');
+      const tcPossible = Math.abs(sd.C) < 1e-9;
+      tcEl.textContent = tcPossible ? 'YES (C ≈ 0)' : 'NO (C ≠ 0)';
+      tcEl.className = 'v ' + (tcPossible ? 'warn' : 'dim');
+
+      // Adaptive microsteps readout
+      document.getElementById('rMicro').textContent =
+        state._microsteps + ' / ' + MICROSTEPS_MAX;
+
       let timeStr = 't = ' + state.t.toFixed(2);
       if(currentPeriod && currentPeriod > 0){
         const phase = (state.t % currentPeriod) / currentPeriod;
@@ -832,19 +1107,48 @@
     ctx.fillRect(0,0,w,h);
 
     const com = centerOfMass(state.bodies);
-    let maxR = 0.6;
-    for(const b of state.bodies){
-      const dx=b.x-com.x, dy=b.y-com.y;
-      maxR = Math.max(maxR, Math.hypot(dx,dy));
-    }
-    // [NEW] auto-follow camera is always computed (even in manual mode) so that
-    // toggling back to auto — or hitting "Center" — snaps to a sensible, up-to-date fit.
-    const targetHalf = Math.max(maxR*1.6, 0.5);
-    state.viewHalfSmoothed += (targetHalf - state.viewHalfSmoothed) * 0.02;
-    state.viewCenter.x += (com.x - state.viewCenter.x) * 0.03;
-    state.viewCenter.y += (com.y - state.viewCenter.y) * 0.03;
 
-    // [NEW] choose which camera drives the actual view this frame
+    let targetHalf, targetCx, targetCy;
+    let trackedCount = state.bodies.length;
+
+    if(cameraMode === 'manual'){
+      // Manual 모드: 자동 fit 완전 무시
+      targetHalf = manualView.half;
+      targetCx = manualView.cx;
+      targetCy = manualView.cy;
+    } else if(robustCameraOn){
+      const fit = computeCameraFit(state.bodies, com, {
+        trimFraction: 0.30,
+        outlierK: 2.5,
+        minKeep: 1
+      });
+      targetHalf = Math.max(fit.half, 0.5);
+      targetCx = fit.cx;
+      targetCy = fit.cy;
+      trackedCount = fit.keptCount;
+    } else {
+      // 기존 auto 동작 (outlier 무시 없음)
+      let maxR = 0.6;
+      for(const b of state.bodies){
+        const dx=b.x-com.x, dy=b.y-com.y;
+        maxR = Math.max(maxR, Math.hypot(dx,dy));
+      }
+      targetHalf = Math.max(maxR*1.6, 0.5);
+      targetCx = com.x;
+      targetCy = com.y;
+    }
+
+    // 스무딩 (manual 모드에서는 즉시 반영)
+    if(cameraMode === 'manual'){
+      state.viewHalfSmoothed = targetHalf;
+      state.viewCenter.x = targetCx;
+      state.viewCenter.y = targetCy;
+    } else {
+      state.viewHalfSmoothed += (targetHalf - state.viewHalfSmoothed) * 0.02;
+      state.viewCenter.x += (targetCx - state.viewCenter.x) * 0.03;
+      state.viewCenter.y += (targetCy - state.viewCenter.y) * 0.03;
+    }
+
     const viewHalf = cameraMode === 'manual' ? manualView.half : state.viewHalfSmoothed;
     const viewCx = cameraMode === 'manual' ? manualView.cx : state.viewCenter.x;
     const viewCy = cameraMode === 'manual' ? manualView.cy : state.viewCenter.y;
@@ -854,9 +1158,8 @@
     function toPx(x,y){
       return [cx + (x-viewCx)*scale, cy - (y-viewCy)*scale];
     }
-    currentScale = scale; // [NEW] exposed for pointer-drag pan math
+    currentScale = scale;
 
-    // faint grid
     ctx.strokeStyle = 'rgba(120,130,180,0.05)';
     ctx.lineWidth = 1;
     const gridStep = niceGridStep(viewHalf);
@@ -869,7 +1172,6 @@
       ctx.beginPath(); ctx.moveTo(0,py); ctx.lineTo(w,py); ctx.stroke();
     }
 
-    // COM marker
     {
       const [px,py] = toPx(com.x, com.y);
       ctx.strokeStyle = 'rgba(200,200,220,0.25)';
@@ -877,11 +1179,21 @@
       ctx.beginPath(); ctx.moveTo(px-6,py); ctx.lineTo(px+6,py); ctx.moveTo(px,py-6); ctx.lineTo(px,py+6); ctx.stroke();
     }
 
-    // twin (draw first, underneath, faint)
     if(twinState){
       drawSystem(twinState, toPx, scale, 0.35, true);
     }
     drawSystem(state, toPx, scale, 1.0, false);
+
+    // HUD: tracked bodies
+    const hud = document.getElementById('trimHUD');
+    if(hud){
+      if(cameraMode !== 'manual' && robustCameraOn && trackedCount < state.bodies.length){
+        hud.textContent = 'tracking ' + trackedCount + '/' + state.bodies.length +
+                          ' (' + (state.bodies.length - trackedCount) + ' off-screen)';
+      } else {
+        hud.textContent = '';
+      }
+    }
   }
 
   function niceGridStep(half){
@@ -897,7 +1209,6 @@
   }
 
   function drawSystem(st, toPx, scale, alphaMul, isTwin){
-    // trails — [NEW] 시간에 따른 색상 변화 (오래된 부분은 채도 낮춤)
     if(trailsOn){
       for(const b of st.bodies){
         if(b.trail.length < 2) continue;
@@ -905,7 +1216,6 @@
         for(let k=1;k<n;k++){
           const t = k/n;
           const a = t * 0.55 * alphaMul;
-          // 오래된 세그먼트일수록 어둡게
           const segColor = isTwin
             ? hexToRgba(b.color, a*0.9)
             : hexToRgba(shadeHex(b.color, 0.4 + 0.6*t), a);
@@ -917,7 +1227,6 @@
         }
       }
     }
-    // bodies
     for(const b of st.bodies){
       const [px,py] = toPx(b.x,b.y);
       const rad = Math.max(3, Math.min(11, 3 + Math.sqrt(b.m)*4)) * (isTwin?0.75:1);
@@ -947,7 +1256,6 @@
     return `rgba(${r},${g},${b},${a})`;
   }
 
-  // [NEW] hex 색상을 어둡게/밝게
   function shadeHex(hex, factor){
     const v = hex.replace('#','');
     let r = parseInt(v.substring(0,2),16);
@@ -965,7 +1273,6 @@
   const cctx = chaosCanvas.getContext('2d');
   let chaosDpr = 1;
 
-  // [FIX] 리사이즈는 여기서만 (매 프레임 X)
   function resizeChaosCanvas(){
     const rect = chaosCanvas.getBoundingClientRect();
     if(rect.width === 0) return;
@@ -997,12 +1304,49 @@
     cctx.stroke();
   }
 
+  // ---------- Lagrange–Jacobi chart ----------
+  const ljCanvas = document.getElementById('ljChart');
+  const ljCtx = ljCanvas.getContext('2d');
+  let ljDpr = 1;
+
+  function resizeLJCanvas(){
+    const rect = ljCanvas.getBoundingClientRect();
+    if(rect.width === 0) return;
+    ljDpr = Math.max(1, window.devicePixelRatio || 1);
+    ljCanvas.width = Math.round(rect.width * ljDpr);
+    ljCanvas.height = Math.round(rect.height * ljDpr);
+  }
+
+  function drawLJChart(){
+    const w = ljCanvas.width / ljDpr;
+    const h = ljCanvas.height / ljDpr;
+    if(w === 0 || h === 0) return;
+    ljCtx.setTransform(ljDpr, 0, 0, ljDpr, 0, 0);
+    ljCtx.clearRect(0, 0, w, h);
+    if(ljHistory.length < 2) return;
+    let minY = Infinity, maxY = -Infinity;
+    for(const v of ljHistory){ minY=Math.min(minY,v); maxY=Math.max(maxY,v); }
+    if(maxY-minY < 1e-6) { const mid=(maxY+minY)/2; minY=mid-5e-7; maxY=mid+5e-7; }
+    const n = ljHistory.length;
+    function X(i){ return 6 + (i/(n-1)) * (w-12); }
+    function Y(v){ return h-6 - (v-minY)/(maxY-minY) * (h-12); }
+    ljCtx.strokeStyle = '#9d8cd6';
+    ljCtx.lineWidth = 1.5;
+    ljCtx.beginPath();
+    for(let i=0;i<n;i++){
+      const x=X(i), y=Y(ljHistory[i]);
+      if(i===0) ljCtx.moveTo(x,y); else ljCtx.lineTo(x,y);
+    }
+    ljCtx.stroke();
+  }
+
   // ---------- kick off ----------
   resizeCanvas();
   loadPreset(currentPresetIdx);
   requestAnimationFrame(function loop(){
     tick();
     drawChaosChart();
+    drawLJChart();
     requestAnimationFrame(loop);
   });
 

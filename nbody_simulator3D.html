@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N-Body 3D — v2.3 · COM Tracking · Lagrange · Lyapunov</title>
+<title>N-Body 3D — v2.6 · COM Tracking · Lagrange · Lyapunov</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -402,8 +402,10 @@
 
   .stat-row span:first-child { color: #888; }
   .stat-row span:last-child { color: #4fc3f7; font-family: monospace; }
+  .stat-row .warn { color: #e57373; }
+  .stat-row .dim { color: #666; }
 
-  #energy-canvas, #lyap-canvas {
+  #energy-canvas, #lyap-canvas, #lj-canvas, #sundman-canvas {
     width: 100%;
     height: 90px;
     background: rgba(0,0,0,0.3);
@@ -413,6 +415,8 @@
   }
 
   #lyap-canvas { height: 70px; }
+  #lj-canvas { height: 70px; }
+  #sundman-canvas { height: 70px; }
 
   .energy-legend {
     display: flex;
@@ -433,6 +437,22 @@
     margin-top: 4px;
     font-family: monospace;
     color: #ff8a65;
+  }
+  .lj-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    margin-top: 4px;
+    font-family: monospace;
+    color: #9d8cd6;
+  }
+  .sundman-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    margin-top: 4px;
+    font-family: monospace;
+    color: #81c784;
   }
 
   #calc-panel {
@@ -671,7 +691,7 @@
 
 <div id="loading">
   <div class="loader"></div>
-  <p>LOADING N-BODY v2.3...</p>
+  <p>LOADING N-BODY v2.6...</p>
 </div>
 
 <button id="menu-toggle" title="Toggle Menu (H)">
@@ -686,8 +706,9 @@
 
 <div id="title-bar">
   <h1>N-BODY <span>3D</span></h1>
-  <p>INTERACTIVE GRAVITY SIMULATOR · v2.3 · LAGRANGE · LYAPUNOV</p>
+  <p>INTERACTIVE GRAVITY SIMULATOR · v2.6 · LAGRANGE · LYAPUNOV · SUNDMAN</p>
 </div>
+
 
 <div id="control-panel">
   <div class="panel-title">Preset</div>
@@ -743,6 +764,10 @@
       <span id="val-theta">0.5</span>
     </label>
     <input type="range" id="theta-slider" min="0.1" max="1.5" step="0.05" value="0.5">
+    <div class="slider-ticks">
+      <span>N≤20: O(N²) forced</span>
+      <span>N&gt;20: BH active</span>
+    </div>
   </div>
 
   <div class="slider-group">
@@ -858,9 +883,18 @@
   <div class="stat-row"><span>Total Mass</span><span id="stat-mass">0.000</span></div>
   <div class="stat-row"><span>Kinetic T</span><span id="stat-T">0.000</span></div>
   <div class="stat-row"><span>Potential V</span><span id="stat-V">0.000</span></div>
-  <div class="stat-row"><span>Total Energy E</span><span id="stat-E">0.000</span></div>
-  <div class="stat-row"><span>Angular Mom |L|</span><span id="stat-L">0.000</span></div>
+  <div class="stat-row"><span>① Energy E</span><span id="stat-E">0.000</span></div>
+  <div class="stat-row"><span>② Angular Mom L</span><span id="stat-L">0.000</span></div>
+  <div class="stat-row"><span>③ Momentum P</span><span id="stat-P">0.000</span></div>
+  <div class="stat-row"><span>④ CM velocity V_cm</span><span id="stat-Vcm">0.000</span></div>
+  <div class="stat-row"><span>⑤ CM position R_cm</span><span id="stat-Rcm">(0, 0, 0)</span></div>
   <div class="stat-row"><span>L Drift %</span><span id="stat-Ld">0.00</span></div>
+  <div class="stat-row"><span>Softening ε</span><span id="stat-soft">0.050</span></div>
+  <div class="stat-row"><span>Lagrange–Jacobi 4T+2U</span><span id="stat-LJ">0.000</span></div>
+  <div class="stat-row"><span>Sundman I·K − J²</span><span id="stat-SundLHS">0.000</span></div>
+  <div class="stat-row"><span>Sundman |C|²</span><span id="stat-SundRHS">0.000</span></div>
+  <div class="stat-row"><span>Sundman slack</span><span id="stat-SundSlack">0.000</span></div>
+  <div class="stat-row"><span>Triple collision?</span><span id="stat-SundTC">—</span></div>
   <div class="stat-row"><span>Mergers</span><span id="stat-merge">0</span></div>
   <div class="stat-row"><span>Injections</span><span id="stat-inject">0</span></div>
   <div class="stat-row"><span>Substeps</span><span id="stat-substeps">1</span></div>
@@ -875,11 +909,25 @@
     <span>— E</span>
   </div>
 
-  <div class="panel-title">Lyapunov Sensitivity (log₁₀|δZ|)</div>
+  <div class="panel-title">Lyapunov Sensitivity (ln|δZ|)</div>
   <canvas id="lyap-canvas"></canvas>
   <div class="lyap-legend">
     <span id="lyap-status">OFF</span>
-    <span>↗ chaos</span>
+    <span>↗ chaos · natural log</span>
+  </div>
+
+  <div class="panel-title">Lagrange–Jacobi  Ï = 4T + 2U  (§6.2)</div>
+  <canvas id="lj-canvas"></canvas>
+  <div class="lj-legend">
+    <span>constant → numerical accuracy OK</span>
+    <span>drift → error</span>
+  </div>
+
+  <div class="panel-title">Sundman inequality  I·K − J² ≥ |C|²  (§7.1)</div>
+  <canvas id="sundman-canvas"></canvas>
+  <div class="sundman-legend">
+    <span>slack = I·K − J² − |C|²</span>
+    <span>→ 0 means triple collision</span>
   </div>
 </div>
 
@@ -951,7 +999,7 @@
 
 <div id="status-bar">
   <span>Drag · Scroll · H: menu · C: calc · Space: pause · F: COM · L: Lyapunov</span>
-  <span>N-Body 3D <span>v2.3</span></span>
+  <span>N-Body 3D <span>v2.6</span></span>
 </div>
 
 <script type="importmap">
@@ -962,6 +1010,7 @@
   }
 }
 </script>
+
 
 
 <script type="module">
@@ -989,9 +1038,6 @@ const CONFIG = {
   BASE_DT: 0.005
 };
 
-// ============================================================
-// Log-scale speed
-// ============================================================
 const SPEED_MIN = 0.0001;
 const SPEED_MAX = 1000;
 const LOG_RANGE = Math.log(SPEED_MAX / SPEED_MIN);
@@ -1000,7 +1046,7 @@ const MAX_SUBSTEPS = 64;
 
 let speedMultiplier = 1.0;
 let lastSubsteps = 1;
-let lastSubDt = CONFIG.BASE_DT;  // [FIX] 실제 사용된 substep dt 추적
+let lastSubDt = CONFIG.BASE_DT;
 
 function sliderToSpeed(s) { return SPEED_MIN * Math.exp(s * LOG_RANGE); }
 function speedToSlider(v) {
@@ -1085,7 +1131,6 @@ const gridHelper = new THREE.GridHelper(300, 60, 0x1a1a2e, 0x1a1a2e);
 gridHelper.position.y = -30;
 scene.add(gridHelper);
 
-// COM marker
 const comMarker = new THREE.Mesh(
   new THREE.SphereGeometry(0.3, 12, 12),
   new THREE.MeshBasicMaterial({
@@ -1134,31 +1179,27 @@ let injectCount = 0;
 let velocityArrows = [];
 let bodyIdCounter = 0;
 
-// Camera tracking
 let cameraTargetMode = 'free';
 let followSmooth = true;
 let showComMarker = true;
 let targetBodyId = null;
 
-// Barnes-Hut
 let useBarnesHut = true;
 let theta = 0.5;
 
-// Collision particles
 let particlesEnabled = true;
 
-// Lyapunov twin
 let lyapEnabled = false;
 let twinBodies = [];
 const LYAP_EPS = 1e-5;
 const lyapHistory = [];
 const LYAP_MAX = 200;
 
-// Angular momentum reference
 let L0 = null;
 
-// Energy history
-const energyHistory = { T: [], V: [], E: [], maxLen: 300 };
+const energyHistory = { T: [], V: [], E: [], LJ: [], maxLen: 300 };
+const sundmanHistory = [];  // [NEW] slack = I·K − J² − |C|²
+const SUNDMAN_HIST_MAX = 300;
 
 // ============================================================
 // Body class
@@ -1252,11 +1293,11 @@ function clearBodies() {
   velocityArrows.forEach(a => scene.remove(a));
   velocityArrows = [];
   clearParticles();
-  // [FIX] 카운터 리셋을 여기로 통합
   mergeCount = 0;
   injectCount = 0;
   L0 = null;
   lyapHistory.length = 0;
+  sundmanHistory.length = 0;
 }
 
 function rebuildBodies(n) {
@@ -1394,7 +1435,8 @@ function computeAccelerations() {
 }
 
 // ============================================================
-// Verlet
+// Verlet (position-first form; equivalent to the kick-drift-kick
+// velocity Verlet of the N-body doc §26.2)
 // ============================================================
 function integrateVerlet(dt) {
   for (const b of bodies) {
@@ -1486,8 +1528,10 @@ function handleCollisions() {
     }
     bodies = bodies.filter((_, k) => !toRemove.has(k)).concat(newBodies);
     reassignColors();
-    // [FIX] 병합으로 N이 바뀌면 Lyapunov twin 재초기화
-    if (lyapEnabled && twinBodies.length !== bodies.length) initLyapunovTwin();
+    if (lyapEnabled && twinBodies.length !== bodies.length) {
+      initLyapunovTwin();
+      lyapHistory.length = 0;
+    }
   }
 }
 
@@ -1618,7 +1662,7 @@ function injectBody() {
 }
 
 // ============================================================
-// Energy & Angular Momentum
+// Energy, Angular Momentum, Momentum
 // ============================================================
 function computeEnergy() {
   let T = 0, V = 0;
@@ -1645,6 +1689,12 @@ function computeAngularMomentum() {
   return L;
 }
 
+function computeLinearMomentum() {
+  const P = new THREE.Vector3();
+  for (const b of bodies) P.addScaledVector(b.vel, b.mass);
+  return P;
+}
+
 // ============================================================
 // COM
 // ============================================================
@@ -1668,8 +1718,44 @@ function findHeaviestBody() {
 }
 
 // ============================================================
+// Sundman inequality  I·K − J² ≥ |C|²  (main text §7.1)
+// [NEW] with  I = Σ mᵢ|rᵢ − R_cm|²,  K = Σ mᵢ|vᵢ − V_cm|²,
+//            J = Σ mᵢ (rᵢ − R_cm)·(vᵢ − V_cm),  C = total angular momentum.
+// Returns {I, K, J, lhs, rhs, slack}.
+// ============================================================
+const _comVel = new THREE.Vector3();
+function sundmanQuantities() {
+  const n = bodies.length;
+  if (n === 0) return { I: 0, K: 0, J: 0, lhs: 0, rhs: 0, slack: 0 };
+  // CM position and velocity
+  computeCenterOfMass();
+  _comVel.set(0, 0, 0);
+  let M = 0;
+  for (const b of bodies) {
+    _comVel.addScaledVector(b.vel, b.mass);
+    M += b.mass;
+  }
+  _comVel.divideScalar(M);
+  let I = 0, K = 0, J = 0;
+  const C = computeAngularMomentum();  // about the origin
+  // angular momentum about CM = L_origin − M R_cm × V_cm
+  const Ccm = new THREE.Vector3().copy(C).sub(
+    new THREE.Vector3().crossVectors(_com, _comVel).multiplyScalar(M)
+  );
+  for (const b of bodies) {
+    const rx = b.pos.x - _com.x, ry = b.pos.y - _com.y, rz = b.pos.z - _com.z;
+    const ux = b.vel.x - _comVel.x, uy = b.vel.y - _comVel.y, uz = b.vel.z - _comVel.z;
+    I += b.mass * (rx*rx + ry*ry + rz*rz);
+    K += b.mass * (ux*ux + uy*uy + uz*uz);
+    J += b.mass * (rx*ux + ry*uy + rz*uz);
+  }
+  const lhs = I*K - J*J;
+  const rhs = Ccm.lengthSq();
+  return { I, K, J, lhs, rhs, slack: lhs - rhs, Ccm };
+}
+
+// ============================================================
 // Camera tracking
-// [FIX] COM 이동 시 camera.position도 같이 이동해 줌 왜곡 방지
 // ============================================================
 const _targetPos = new THREE.Vector3();
 const _camDelta = new THREE.Vector3();
@@ -1689,17 +1775,16 @@ function updateCameraTarget(realDt) {
   }
   if (!hasTarget) return;
 
-  const clampedDt = Math.min(realDt, 0.05);  // [FIX] 프레임 드랍 대비
+  const clampedDt = Math.min(realDt, 0.05);
   let lerpFactor;
   if (followSmooth) {
     const speedPenalty = Math.min(1, 1 / Math.sqrt(Math.max(1, speedMultiplier)));
     const baseLerp = 0.002 + 0.998 * speedPenalty;
     lerpFactor = 1 - Math.pow(baseLerp, clampedDt);
   } else {
-    lerpFactor = 1;
+    lerpFactor = Math.min(1, 0.15 / Math.max(clampedDt, 1e-4));
   }
 
-  // [FIX] 타겟과 카메라를 함께 이동시켜 거리 유지
   _camDelta.copy(_targetPos).sub(controls.target).multiplyScalar(lerpFactor);
   controls.target.add(_camDelta);
   camera.position.add(_camDelta);
@@ -1791,7 +1876,7 @@ function stepLyapunovTwin(dt) {
     const d = bodies[i].pos.distanceTo(twinBodies[i].pos);
     if (d > maxD) maxD = d;
   }
-  lyapHistory.push(Math.log10(Math.max(maxD, 1e-16)));
+  lyapHistory.push(Math.log(Math.max(maxD, 1e-16)));
   if (lyapHistory.length > LYAP_MAX) lyapHistory.shift();
 }
 
@@ -1802,7 +1887,6 @@ function drawLyapGraph() {
   const rect = lyapCanvas.getBoundingClientRect();
   if (rect.width === 0) return;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  // [FIX] 캔버스 DPI 처리
   if (lyapCanvas.width !== Math.round(rect.width * dpr) ||
       lyapCanvas.height !== Math.round(rect.height * dpr)) {
     lyapCanvas.width = Math.round(rect.width * dpr);
@@ -1829,8 +1913,77 @@ function drawLyapGraph() {
 }
 
 // ============================================================
+// Lagrange–Jacobi graph  ( Ï = 4T + 2U  should be constant )
+// ============================================================
+const ljCanvas = document.getElementById('lj-canvas');
+const ljCtx = ljCanvas.getContext('2d');
+
+function drawLJGraph() {
+  const rect = ljCanvas.getBoundingClientRect();
+  if (rect.width === 0) return;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  if (ljCanvas.width !== Math.round(rect.width * dpr) ||
+      ljCanvas.height !== Math.round(rect.height * dpr)) {
+    ljCanvas.width = Math.round(rect.width * dpr);
+    ljCanvas.height = Math.round(rect.height * dpr);
+  }
+  ljCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const w = rect.width, h = rect.height;
+  ljCtx.clearRect(0, 0, w, h);
+  const n = energyHistory.LJ.length;
+  if (n < 2) return;
+  let mn = Infinity, mx = -Infinity;
+  for (const v of energyHistory.LJ) { mn = Math.min(mn, v); mx = Math.max(mx, v); }
+  if (mx - mn < 1e-6) { const mid = (mx + mn) / 2; mn = mid - 5e-7; mx = mid + 5e-7; }
+  ljCtx.beginPath();
+  ljCtx.strokeStyle = '#9d8cd6';
+  ljCtx.lineWidth = 1.5;
+  for (let i = 0; i < n; i++) {
+    const x = (i / (n - 1)) * w;
+    const y = h - ((energyHistory.LJ[i] - mn) / (mx - mn)) * (h - 4) - 2;
+    if (i === 0) ljCtx.moveTo(x, y);
+    else ljCtx.lineTo(x, y);
+  }
+  ljCtx.stroke();
+}
+
+// ============================================================
+// [NEW] Sundman inequality graph — slack = I·K − J² − |C|²
+// ============================================================
+const sundmanCanvas = document.getElementById('sundman-canvas');
+const sundmanCtx = sundmanCanvas.getContext('2d');
+
+function drawSundmanGraph() {
+  const rect = sundmanCanvas.getBoundingClientRect();
+  if (rect.width === 0) return;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  if (sundmanCanvas.width !== Math.round(rect.width * dpr) ||
+      sundmanCanvas.height !== Math.round(rect.height * dpr)) {
+    sundmanCanvas.width = Math.round(rect.width * dpr);
+    sundmanCanvas.height = Math.round(rect.height * dpr);
+  }
+  sundmanCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const w = rect.width, h = rect.height;
+  sundmanCtx.clearRect(0, 0, w, h);
+  const n = sundmanHistory.length;
+  if (n < 2) return;
+  let mn = Infinity, mx = -Infinity;
+  for (const v of sundmanHistory) { mn = Math.min(mn, v); mx = Math.max(mx, v); }
+  if (mx - mn < 1e-12) { const mid = (mx + mn) / 2; mn = mid - 5e-13; mx = mid + 5e-13; }
+  sundmanCtx.beginPath();
+  sundmanCtx.strokeStyle = '#81c784';
+  sundmanCtx.lineWidth = 1.5;
+  for (let i = 0; i < n; i++) {
+    const x = (i / (n - 1)) * w;
+    const y = h - ((sundmanHistory[i] - mn) / (mx - mn)) * (h - 4) - 2;
+    if (i === 0) sundmanCtx.moveTo(x, y);
+    else sundmanCtx.lineTo(x, y);
+  }
+  sundmanCtx.stroke();
+}
+
+// ============================================================
 // Step
-// [FIX] lastSubDt 저장
 // ============================================================
 function stepSimulation(realDt) {
   const targetSimDt = realDt * speedMultiplier;
@@ -1854,13 +2007,16 @@ const energyCanvas = document.getElementById('energy-canvas');
 const energyCtx = energyCanvas.getContext('2d');
 
 function pushEnergyHistory(T, V, E) {
+  const LJ = 4 * T + 2 * V;
   energyHistory.T.push(T);
   energyHistory.V.push(V);
   energyHistory.E.push(E);
+  energyHistory.LJ.push(LJ);
   if (energyHistory.T.length > energyHistory.maxLen) {
     energyHistory.T.shift();
     energyHistory.V.shift();
     energyHistory.E.shift();
+    energyHistory.LJ.shift();
   }
 }
 
@@ -1868,7 +2024,6 @@ function drawEnergyGraph() {
   const rect = energyCanvas.getBoundingClientRect();
   if (rect.width === 0) return;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  // [FIX] 캔버스 DPI 처리
   if (energyCanvas.width !== Math.round(rect.width * dpr) ||
       energyCanvas.height !== Math.round(rect.height * dpr)) {
     energyCanvas.width = Math.round(rect.width * dpr);
@@ -1943,6 +2098,8 @@ function animate() {
     updateCalcPanel();
     drawEnergyGraph();
     if (lyapEnabled) drawLyapGraph();
+    drawLJGraph();
+    drawSundmanGraph();
   }
 
   renderer.render(scene, camera);
@@ -1952,6 +2109,9 @@ function updateStats() {
   const mass = bodies.reduce((s, b) => s + b.mass, 0);
   const { T, V, E } = computeEnergy();
   const L = computeAngularMomentum();
+  const P = computeLinearMomentum();
+  const cm = computeCenterOfMass();
+  const Vcm = P.clone().divideScalar(Math.max(mass, 1e-9));
 
   document.getElementById('stat-n').textContent = bodies.length;
   document.getElementById('stat-mass').textContent = mass.toFixed(3);
@@ -1959,6 +2119,28 @@ function updateStats() {
   document.getElementById('stat-V').textContent = V.toFixed(3);
   document.getElementById('stat-E').textContent = E.toFixed(3);
   document.getElementById('stat-L').textContent = L.length().toFixed(3);
+  document.getElementById('stat-P').textContent = P.length().toFixed(3);
+  document.getElementById('stat-Vcm').textContent = Vcm.length().toFixed(3);
+  document.getElementById('stat-Rcm').textContent =
+    '(' + cm.x.toFixed(2) + ', ' + cm.y.toFixed(2) + ', ' + cm.z.toFixed(2) + ')';
+  document.getElementById('stat-soft').textContent = softening.toFixed(3);
+  document.getElementById('stat-LJ').textContent = (4 * T + 2 * V).toFixed(3);
+
+  // [NEW] Sundman inequality
+  const sd = sundmanQuantities();
+  document.getElementById('stat-SundLHS').textContent = sd.lhs.toExponential(3);
+  document.getElementById('stat-SundRHS').textContent = sd.rhs.toExponential(3);
+  const slackEl = document.getElementById('stat-SundSlack');
+  slackEl.textContent = sd.slack.toExponential(3);
+  const ratio = sd.rhs > 1e-12 ? sd.slack / sd.rhs : Infinity;
+  slackEl.className = (ratio < 0.01 ? 'warn' : (ratio < 0.1 ? '' : ''));
+  const tcEl = document.getElementById('stat-SundTC');
+  const tcPossible = Math.abs(sd.rhs) < 1e-9;
+  tcEl.textContent = tcPossible ? 'YES (C ≈ 0)' : 'NO (C ≠ 0)';
+  tcEl.className = tcPossible ? 'warn' : 'dim';
+
+  sundmanHistory.push(sd.slack);
+  if (sundmanHistory.length > SUNDMAN_HIST_MAX) sundmanHistory.shift();
 
   if (L0 === null && bodies.length > 0) L0 = L.clone();
   if (L0) {
@@ -1990,7 +2172,6 @@ function updateCalcPanel() {
   document.getElementById('eq-sub-ay').textContent = `= ${focus.acc.y.toFixed(4)}`;
   document.getElementById('eq-sub-az').textContent = `= ${focus.acc.z.toFixed(4)}`;
 
-  // [FIX] 실제 사용된 substep dt를 표시
   const dtUsed = lastSubDt;
   const nx = focus.pos.x + focus.vel.x * dtUsed + 0.5 * focus.acc.x * dtUsed * dtUsed;
   const ny = focus.pos.y + focus.vel.y * dtUsed + 0.5 * focus.acc.y * dtUsed * dtUsed;
@@ -2003,9 +2184,6 @@ function updateCalcPanel() {
 
 // ============================================================
 // Presets
-// [FIX] euler: 회전하는 해
-// [FIX] figure8: 중앙 물체가 (vx3, vy3), 바깥은 -1/2배
-// [FIX] rotating8: 물리적으로 검증되지 않은 근사임을 명시
 // ============================================================
 const PRESETS = {
   random8:    { name: 'Random 8',        n: 8,   ref: '§25',       build: () => rebuildBodies(8) },
@@ -2015,7 +2193,6 @@ const PRESETS = {
     name: 'Pythagoras', n: 3, ref: '§25',
     build: () => {
       clearBodies();
-      // 변 3-4-5 직각삼각형, 질량 3/4/5, 초기 정지
       bodies = [
         new Body( 1,  3, 0, 0, 0, 0, 3, 0, 3),
         new Body(-2, -1, 0, 0, 0, 0, 4, 1, 3),
@@ -2029,10 +2206,6 @@ const PRESETS = {
     name: 'Figure 8', n: 3, ref: '§10',
     build: () => {
       clearBodies();
-      // Simó (2000) 정확한 초기값
-      // 초기 위치: (±0.97000436, ∓0.24308753), (0,0)
-      // 세 번째(중앙) 물체 속도: (0.93240737, 0.86473146)
-      // 바깥 두 물체 속도: -1/2 × (세 번째 속도)
       const x1 = 0.97000436, y1 = -0.24308753;
       const vx3 = 0.93240737, vy3 = 0.86473146;
       bodies = [
@@ -2048,7 +2221,6 @@ const PRESETS = {
     name: 'Lagrange', n: 3, ref: '§8.2',
     build: () => {
       clearBodies();
-      // 정삼각형 해: ω² = G·M/r³, M = 3, r = 1
       const r = 1;
       const M = 3;
       const omega = Math.sqrt(M / (r * r * r));
@@ -2067,12 +2239,8 @@ const PRESETS = {
     name: 'Euler Collinear', n: 3, ref: '§8.1',
     build: () => {
       clearBodies();
-      // 등질량 오일러 공선해: λ=1, 중간 물체 고정
-      // 세 물체가 일직선 위에서 강체처럼 회전
-      // ω² = G·(m + m/4)/d³ = 1.25 (m=1, d=1)
       const d = 1;
       const omega = Math.sqrt(1.25);
-      // x축 정렬, z축 회전 (xz 평면)
       bodies = [
         new Body(-d, 0, 0, 0, 0, -omega*d, 1, 0, 3),
         new Body( 0, 0, 0, 0, 0,  0,       1, 1, 3),
@@ -2086,8 +2254,6 @@ const PRESETS = {
     name: 'Rotating 8 (approx)', n: 3, ref: '§10.3',
     build: () => {
       clearBodies();
-      // 주의: Kapela–Simó (2017)가 증명한 "회전 8자"의 정확한 초기값이 아님.
-      // 8자 해에 작은 각운동량을 주입한 근사일 뿐이며, 실제 주기해가 아닐 수 있음.
       const x1 = 0.97000436, y1 = -0.24308753;
       const vx3 = 0.93240737, vy3 = 0.86473146;
       const dL = 0.05;
@@ -2104,7 +2270,6 @@ const PRESETS = {
     name: 'Solar System', n: 9, ref: '§13',
     build: () => {
       clearBodies();
-      // 태양 질량 100 (실제 비율보다 시각화를 위해 과장)
       bodies = [new Body(0, 0, 0, 0, 0, 0, 100, 0, 9)];
       const planets = [
         { r: 3, m: 0.5 }, { r: 4.5, m: 1.0 }, { r: 6, m: 1.0 }, { r: 7.5, m: 0.6 },
@@ -2127,7 +2292,6 @@ const PRESETS = {
     name: 'Sun+Planets', n: 5, ref: '§13',
     build: () => {
       clearBodies();
-      // 태양 질량 50 (시각화용)
       bodies = [new Body(0, 0, 0, 0, 0, 0, 50, 0, 5)];
       const planets = [{ r: 4, m: 1 }, { r: 6, m: 1.5 }, { r: 8, m: 1 }, { r: 10, m: 2 }];
       planets.forEach((p, i) => {
@@ -2272,6 +2436,7 @@ document.getElementById('head-size-slider').oninput = (e) => {
 document.getElementById('softening-slider').oninput = (e) => {
   softening = parseFloat(e.target.value);
   document.getElementById('val-softening').textContent = softening.toFixed(2);
+  document.getElementById('stat-soft').textContent = softening.toFixed(3);
 };
 
 document.getElementById('target-n-slider').oninput = (e) => {
@@ -2515,3 +2680,5 @@ init();
 </script>
 </body>
 </html>
+
+
