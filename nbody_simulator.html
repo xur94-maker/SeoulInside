@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>N-Body Orbit Simulator — Exact Solutions &amp; Chaos (v2.5)</title>
+<title>N-Body Orbit Simulator — Exact Solutions, Chaos &amp; Poincaré Sections (v2.6)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Spectral+SC:wght@500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -197,6 +197,10 @@
     width:100%; height:64px; display:block;
     background: var(--line-soft); border-radius:3px;
   }
+  .poincare-chart{
+    width:100%; height:180px; display:block;
+    background: var(--line-soft); border-radius:3px;
+  }
   .legend{ display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
   .legend .item{ display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color: var(--ink-dim); }
   .legend .sw{ width:8px; height:8px; border-radius:50%; }
@@ -251,7 +255,7 @@
 
   <div class="topbar">
     <h1>N-Body Orbit Simulator</h1>
-    <span class="sub">Exact analytic solutions · Symplectic integration (velocity&nbsp;Verlet) · Chaos sensitivity experiment · Adaptive resolution · Robust camera</span>
+    <span class="sub">Exact solutions · Symplectic Verlet · Chaos sensitivity · Adaptive resolution · Robust camera · Poincaré sections</span>
   </div>
 
   <div class="layout">
@@ -317,8 +321,12 @@
             <label class="switch"><input type="checkbox" id="robustCameraToggle" checked><span class="track"><span class="thumb"></span></span></label>
           </div>
           <div class="toggle-row">
-            <div class="label">Adaptive Resolution<small>auto-boost microsteps during near encounters (8→512)</small></div>
+            <div class="label">Adaptive Resolution<small>auto-boost microsteps (distance + energy feedback, 8→512)</small></div>
             <label class="switch"><input type="checkbox" id="adaptiveToggle" checked><span class="track"><span class="thumb"></span></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="label">Poincaré Section<small>record y=0, vy&gt;0 crossings of body 0</small></div>
+            <label class="switch"><input type="checkbox" id="poincareToggle"><span class="track"><span class="thumb"></span></span></label>
           </div>
           <div class="btn-row" id="cameraBtnRow" style="display:none;">
             <button class="btn" id="zoomInBtn">Zoom +</button>
@@ -350,6 +358,10 @@
           <div class="readout"><span class="k">MICROSTEPS (current)</span><span class="v dim" id="rMicro">—</span></div>
           <div class="readout"><span class="k">TRACKED BODIES</span><span class="v dim" id="rTracked">—</span></div>
         </div>
+        <div class="readout-grid" style="margin-top:10px;">
+          <div class="readout"><span class="k">POINCARÉ POINTS</span><span class="v dim" id="rPoincareCount">—</span></div>
+          <div class="readout"><span class="k">LAST CROSSING  t</span><span class="v dim" id="rPoincareT">—</span></div>
+        </div>
       </div>
 
       <div id="ljBlock">
@@ -371,6 +383,16 @@
         </div>
       </div>
 
+      <div id="poincareBlock" style="display:none;">
+        <div class="block-title">POINCARÉ SECTION — (x−x<sub>cm</sub>, v<sub>x</sub>−v<sub>cm,x</sub>) at y=0, v<sub>y</sub>&gt;0</div>
+        <canvas class="poincare-chart" id="poincareChart"></canvas>
+        <div class="legend">
+          <div class="item"><span class="sw" style="background:var(--teal)"></span>Regular (closed curve)</div>
+          <div class="item"><span class="sw" style="background:var(--rose)"></span>Chaotic (scattered)</div>
+        </div>
+        <div class="hint">Points are plotted in the CM frame to remove drift. Regular orbits trace closed invariant curves (KAM tori); chaotic orbits fill areas.</div>
+      </div>
+
       <div id="chaosBlock" style="display:none;">
         <div class="block-title">SEPARATION ln‖δZ(t)‖ — Lyapunov Sensitivity</div>
         <canvas class="chaos-chart" id="chaosChart"></canvas>
@@ -382,7 +404,7 @@
       </div>
 
       <footer>
-        Equations of motion: m·r̈ᵢ = G Σⱼ mᵢmⱼ(rⱼ−rᵢ)/rᵢⱼ³ · G=1 units, softening applied (ε shown above). Sundman inequality I·K − J² ≥ |C|² is tracked above (§7.1). Adaptive resolution auto-boosts velocity-Verlet microsteps during near encounters. Robust camera trims up to 30% outliers so runaway bodies no longer hijack the view.<br>
+        Equations of motion: m·r̈ᵢ = G Σⱼ mᵢmⱼ(rⱼ−rᵢ)/rᵢⱼ³ · G=1 units, softening applied (ε shown above). Sundman inequality I·K − J² ≥ |C|² is tracked above (§7.1). Adaptive resolution auto-boosts velocity-Verlet microsteps during near encounters, with energy-drift feedback. Robust camera trims up to 30% outliers. Poincaré section records y=0 crossings (§2.4).<br>
         <b style="color:var(--ink-dim)">Reflecting current research:</b> Butterfly, Moth and Bumblebee are among the 13 new periodic solutions discovered by Šuvakov &amp; Dmitrašinović (2013) using shape-sphere topological classification. Since then, Li &amp; Liao's group has used supercomputers and artificial neural networks (2017–2025) to find ~600 new equal-mass orbits, ~130,000 unequal-mass orbits, ~300 free-fall orbits, and in 2025 alone 10,059 new three-dimensional periodic orbits (including 1,996 linearly stable ones and 273 "piano-trio" orbits) — showing that this remains a very active area of research.
       </footer>
     </div>
@@ -408,6 +430,7 @@
     canvas.style.height = rect.height + 'px';
     resizeChaosCanvas();
     resizeLJCanvas();
+    resizePoincareCanvas();
   }
   window.addEventListener('resize', resizeCanvas);
 
@@ -440,9 +463,13 @@
         trail: []
       })),
       eps, dt, t: 0,
-      _a: null,              // acceleration cache
-      _microsteps: 8,        // current adaptive microsteps (for readout)
-      _prevMicrosteps: 8     // to detect step-size changes
+      _a: null,
+      _microsteps: 8,
+      _prevMicrosteps: 8,
+      // Poincaré 추적용 이전 y 부호 (body 0 기준)
+      _prevBody0Y: null,
+      _prevBody0X: null,
+      _prevBody0Vx: null
     };
   }
 
@@ -468,14 +495,15 @@
   const MICROSTEPS_BASE = 8;
   const MICROSTEPS_MAX  = 512;
   let adaptiveMicrosteps = true;
+  let lastEnergyDrift = 0;   // 최근 에너지 드리프트 (%)
 
-  // 최소 근접 거리 기반으로 microsteps 결정
-  function computeMicrosteps(bodies, eps){
+  function computeMicrosteps(bodies, eps, energyDrift){
     if(!adaptiveMicrosteps) return MICROSTEPS_BASE;
 
     const n = bodies.length;
     if(n <= 1) return MICROSTEPS_BASE;
 
+    // (1) 근접 거리 기반 boost
     let minR2 = Infinity;
     for(let i=0;i<n;i++){
       for(let j=i+1;j<n;j++){
@@ -486,14 +514,19 @@
       }
     }
     const minR = Math.sqrt(minR2);
-
-    // 참조 스케일: 프리셋 초기의 전형적인 근접 거리. ε에 비례하게 잡음.
-    // minR이 작을수록 boost가 커짐.
     const refR = Math.max(eps * 8, 1e-3);
     const ratio = refR / Math.max(minR, 1e-9);
-    // ratio=1 → base, ratio=10 → 약 4배, ratio=100 → 약 16배 … (지수 0.6)
     const boost = Math.pow(ratio, 0.6);
     let steps = Math.round(MICROSTEPS_BASE * boost);
+
+    // (2) 에너지 드리프트 기반 boost (OR 결합)
+    //     Ed > 0.5%  → 2배씩 추가 상향
+    //     Ed < 0.05% → 그대로 (하향은 안 함; 근접 거리 로직이 자연스럽게 줄임)
+    if(energyDrift > 0.5){
+      const edBoost = Math.pow(2, Math.min(4, Math.floor((energyDrift - 0.5) / 0.5) + 1));
+      steps = steps * edBoost;
+    }
+
     if(!isFinite(steps) || steps < MICROSTEPS_BASE) steps = MICROSTEPS_BASE;
     if(steps > MICROSTEPS_MAX) steps = MICROSTEPS_MAX;
     return steps;
@@ -503,11 +536,9 @@
     const {bodies, eps} = state;
     const n = bodies.length;
 
-    // 적응적 microsteps 결정
-    const micro = computeMicrosteps(bodies, eps);
+    const micro = computeMicrosteps(bodies, eps, lastEnergyDrift);
     state._microsteps = micro;
 
-    // microsteps가 바뀌면 _a 캐시가 이전 스텝 크기 기준이라 미묘한 불일치 → 재계산
     if(micro !== state._prevMicrosteps){
       state._a = null;
       state._prevMicrosteps = micro;
@@ -530,8 +561,48 @@
         bodies[i].vy += 0.5*a1.ay[i]*mdt;
       }
       state._a = a1;
+
+      // Poincaré crossing 감지 (body 0, y=0, vy>0)
+      if(poincareOn && n >= 1){
+        checkPoincareCrossing(state, bodies[0]);
+      }
     }
     state.t += state.dt;
+  }
+
+  // ---------- Poincaré section ----------
+  let poincareOn = false;
+  const poincarePoints = [];  // {x, vx, t}  (CM frame)
+  const POINCARE_MAX = 2000;
+
+  function checkPoincareCrossing(state, b0){
+    const yPrev = state._prevBody0Y;
+    const yNow  = b0.y;
+    if(yPrev === null){ state._prevBody0Y = yNow; return; }
+
+    // 아래 → 위 통과 && vy > 0
+    if(yPrev < 0 && yNow >= 0 && b0.vy > 0){
+      // 선형 보간으로 정확한 교차 시점 추정
+      const frac = (0 - yPrev) / (yNow - yPrev || 1e-12);
+      const xCross  = state._prevBody0X + (b0.x  - state._prevBody0X) * frac;
+      const vxCross = state._prevBody0Vx + (b0.vx - state._prevBody0Vx) * frac;
+
+      // CM 기준으로 변환
+      const com = centerOfMass(state.bodies);
+      const mom = linearMomentum(state.bodies);
+      const Vcx = mom.px / com.M;
+      poincarePoints.push({
+        x: xCross - com.x,
+        vx: vxCross - Vcx,
+        t: state.t
+      });
+      if(poincarePoints.length > POINCARE_MAX) poincarePoints.shift();
+    }
+
+    // 업데이트
+    state._prevBody0Y  = yNow;
+    state._prevBody0X  = b0.x;
+    state._prevBody0Vx = b0.vx;
   }
 
   function energyAndL(bodies, eps){
@@ -561,7 +632,6 @@
     return {x:x/M, y:y/M, M};
   }
 
-  // Sundman inequality  I·K − J² ≥ |C|²  (main text §7.1)
   function sundmanQuantities(bodies){
     const com = centerOfMass(bodies);
     let M = 0, Vcx = 0, Vcy = 0;
@@ -599,7 +669,6 @@
     const minKeep      = (opts && opts.minKeep)      || 1;
     const n = bodies.length;
 
-    // 안전장치 1: N ≤ 2 → outlier 개념 없음
     if(n <= 2){
       let maxR = 0.5;
       for(const b of bodies) maxR = Math.max(maxR, Math.hypot(b.x-com.x, b.y-com.y));
@@ -614,8 +683,6 @@
     const medianR = sortedR[Math.floor(n/2)] || 1e-6;
 
     const outliers = dists.filter(d => d.r > outlierK * medianR);
-
-    // 안전장치 2: 최소 1개는 유지, 최대 30%까지 버림
     const maxTrim = Math.max(0, Math.min(n - minKeep, Math.floor(n * trimFraction)));
 
     let kept;
@@ -628,7 +695,6 @@
       kept = dists.filter(d => !dropSet.has(d.i));
     }
 
-    // 안전장치 3: kept 비었으면 fallback
     if(kept.length === 0){
       let maxR = 0.5;
       for(const b of bodies) maxR = Math.max(maxR, Math.hypot(b.x-com.x, b.y-com.y));
@@ -640,7 +706,7 @@
 
     return {
       half: maxKeptR * 1.6,
-      cx: com.x,   // 중심은 진짜 CM 유지 (정직성)
+      cx: com.x,
       cy: com.y,
       keptCount: kept.length
     };
@@ -755,7 +821,7 @@
       desc:'An intricate solution with a period T≈63.5 — about 10× the figure-eight\'s. It still belongs to the reflection-symmetric class I.A, but its free-group element is far longer and more complex, tracing a densely tangled path on the shape sphere — try increasing the playback speed to see a full period.',
       build: ()=>presetSuvakov(0.18428, 0.58719, 2.1, 0.0012, 0.0005, 63.5347) },
     { key:'chaos', name:'Random N-Body — Chaos',
-      desc:'An N-body system with random initial conditions (adjust N=3–20 with the slider below). A typical non-integrable system with no general solution — as N grows, the system explores a denser phase space, and toggling the chaos-twin switch lets you watch a 10⁻⁵ initial perturbation get exponentially amplified: Lyapunov sensitivity in action.',
+      desc:'An N-body system with random initial conditions (adjust N=3–20 with the slider below). A typical non-integrable system with no general solution — as N grows, the system explores a denser phase space, and toggling the chaos-twin switch lets you watch a 10⁻⁵ initial perturbation get exponentially amplified: Lyapunov sensitivity in action. Enable the Poincaré section to see the regular/chaotic boundary directly.',
       build: ()=>presetChaos(Date.now()%100000, chaosN) },
   ];
   let chaosN = 4;
@@ -819,6 +885,8 @@
     twinState = null;
     chaosHistory.length = 0;
     ljHistory.length = 0;
+    poincarePoints.length = 0;
+    lastEnergyDrift = 0;
     if(chaosOn) initTwin();
 
     document.getElementById('presetName').textContent = PRESETS[idx].name;
@@ -919,13 +987,24 @@
     if(chaosOn) initTwin(); else twinState = null;
   });
 
+  const poincareBlock = document.getElementById('poincareBlock');
+  document.getElementById('poincareToggle').addEventListener('change', (e)=>{
+    poincareOn = e.target.checked;
+    poincareBlock.style.display = poincareOn ? 'block' : 'none';
+    poincarePoints.length = 0;
+    if(state){
+      state._prevBody0Y = null;
+      state._prevBody0X = null;
+      state._prevBody0Vx = null;
+    }
+  });
+
   document.getElementById('robustCameraToggle').addEventListener('change', (e)=>{
     robustCameraOn = e.target.checked;
   });
 
   document.getElementById('adaptiveToggle').addEventListener('change', (e)=>{
     adaptiveMicrosteps = e.target.checked;
-    // 캐시 무효화: 다음 스텝에서 새 microsteps로 재계산되도록
     if(state){ state._a = null; state._prevMicrosteps = -1; }
     if(twinState){ twinState._a = null; twinState._prevMicrosteps = -1; }
   });
@@ -1049,6 +1128,7 @@
       const cm = centerOfMass(state.bodies);
       const Ed = Math.abs((eL.E - state.E0) / state.E0abs) * 100;
       const Ld = Math.abs((eL.L - state.L0) / state.L0abs) * 100;
+      lastEnergyDrift = Ed;   // ← 피드백용
       const Vcx = mom.px / cm.M;
       const Vcy = mom.py / cm.M;
 
@@ -1069,7 +1149,6 @@
       rLd.className = 'v ' + (Ld<1 ? 'ok' : (Ld<5?'':'warn'));
       document.getElementById('rEps').textContent = state.eps.toFixed(4);
 
-      // Sundman inequality
       const sd = sundmanQuantities(state.bodies);
       const slack = sd.lhs - sd.rhs;
       document.getElementById('rSundLHS').textContent = sd.lhs.toExponential(3);
@@ -1083,9 +1162,16 @@
       tcEl.textContent = tcPossible ? 'YES (C ≈ 0)' : 'NO (C ≠ 0)';
       tcEl.className = 'v ' + (tcPossible ? 'warn' : 'dim');
 
-      // Adaptive microsteps readout
       document.getElementById('rMicro').textContent =
         state._microsteps + ' / ' + MICROSTEPS_MAX;
+
+      document.getElementById('rPoincareCount').textContent = poincarePoints.length;
+      if(poincarePoints.length > 0){
+        document.getElementById('rPoincareT').textContent =
+          poincarePoints[poincarePoints.length-1].t.toFixed(3);
+      } else {
+        document.getElementById('rPoincareT').textContent = '—';
+      }
 
       let timeStr = 't = ' + state.t.toFixed(2);
       if(currentPeriod && currentPeriod > 0){
@@ -1112,7 +1198,6 @@
     let trackedCount = state.bodies.length;
 
     if(cameraMode === 'manual'){
-      // Manual 모드: 자동 fit 완전 무시
       targetHalf = manualView.half;
       targetCx = manualView.cx;
       targetCy = manualView.cy;
@@ -1127,7 +1212,6 @@
       targetCy = fit.cy;
       trackedCount = fit.keptCount;
     } else {
-      // 기존 auto 동작 (outlier 무시 없음)
       let maxR = 0.6;
       for(const b of state.bodies){
         const dx=b.x-com.x, dy=b.y-com.y;
@@ -1138,7 +1222,6 @@
       targetCy = com.y;
     }
 
-    // 스무딩 (manual 모드에서는 즉시 반영)
     if(cameraMode === 'manual'){
       state.viewHalfSmoothed = targetHalf;
       state.viewCenter.x = targetCx;
@@ -1172,6 +1255,16 @@
       ctx.beginPath(); ctx.moveTo(0,py); ctx.lineTo(w,py); ctx.stroke();
     }
 
+    // y=0 라인 강조 (Poincaré 조건 시각화)
+    if(poincareOn){
+      const [,py0] = toPx(0,0);
+      ctx.strokeStyle = 'rgba(95,184,172,0.25)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4,4]);
+      ctx.beginPath(); ctx.moveTo(0,py0); ctx.lineTo(w,py0); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
     {
       const [px,py] = toPx(com.x, com.y);
       ctx.strokeStyle = 'rgba(200,200,220,0.25)';
@@ -1184,7 +1277,15 @@
     }
     drawSystem(state, toPx, scale, 1.0, false);
 
-    // HUD: tracked bodies
+    // Body 0 강조 (Poincaré 추적 대상)
+    if(poincareOn && state.bodies.length >= 1){
+      const b0 = state.bodies[0];
+      const [px,py] = toPx(b0.x, b0.y);
+      ctx.strokeStyle = 'rgba(95,184,172,0.7)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(px,py,14,0,Math.PI*2); ctx.stroke();
+    }
+
     const hud = document.getElementById('trimHUD');
     if(hud){
       if(cameraMode !== 'manual' && robustCameraOn && trackedCount < state.bodies.length){
@@ -1340,6 +1441,99 @@
     ljCtx.stroke();
   }
 
+  // ---------- Poincaré chart ----------
+  const poincareCanvas = document.getElementById('poincareChart');
+  const pctx = poincareCanvas.getContext('2d');
+  let poincareDpr = 1;
+
+  function resizePoincareCanvas(){
+    const rect = poincareCanvas.getBoundingClientRect();
+    if(rect.width === 0) return;
+    poincareDpr = Math.max(1, window.devicePixelRatio || 1);
+    poincareCanvas.width = Math.round(rect.width * poincareDpr);
+    poincareCanvas.height = Math.round(rect.height * poincareDpr);
+  }
+
+  function drawPoincareChart(){
+    const w = poincareCanvas.width / poincareDpr;
+    const h = poincareCanvas.height / poincareDpr;
+    if(w === 0 || h === 0) return;
+    pctx.setTransform(poincareDpr, 0, 0, poincareDpr, 0, 0);
+    pctx.clearRect(0, 0, w, h);
+
+    if(poincarePoints.length === 0){
+      pctx.fillStyle = 'rgba(139,143,174,0.35)';
+      pctx.font = '10px "IBM Plex Mono", monospace';
+      pctx.textAlign = 'center';
+      pctx.fillText('waiting for crossings…', w/2, h/2);
+      return;
+    }
+
+    // 좌표 범위 계산
+    let minX = Infinity, maxX = -Infinity, minVx = Infinity, maxVx = -Infinity;
+    for(const p of poincarePoints){
+      if(p.x < minX) minX = p.x;
+      if(p.x > maxX) maxX = p.x;
+      if(p.vx < minVx) minVx = p.vx;
+      if(p.vx > maxVx) maxVx = p.vx;
+    }
+    // 여유
+    const padX = Math.max(0.1, (maxX-minX)*0.1);
+    const padV = Math.max(0.1, (maxVx-minVx)*0.1);
+    minX -= padX; maxX += padX;
+    minVx -= padV; maxVx += padV;
+    if(maxX - minX < 1e-6){ minX -= 0.5; maxX += 0.5; }
+    if(maxVx - minVx < 1e-6){ minVx -= 0.5; maxVx += 0.5; }
+
+    // 축 (0 기준선)
+    function X(x){ return 8 + (x-minX)/(maxX-minX) * (w-16); }
+    function Y(v){ return h-8 - (v-minVx)/(maxVx-minVx) * (h-16); }
+
+    pctx.strokeStyle = 'rgba(120,130,180,0.15)';
+    pctx.lineWidth = 1;
+    if(minX < 0 && maxX > 0){
+      const x0 = X(0);
+      pctx.beginPath(); pctx.moveTo(x0,0); pctx.lineTo(x0,h); pctx.stroke();
+    }
+    if(minVx < 0 && maxVx > 0){
+      const y0 = Y(0);
+      pctx.beginPath(); pctx.moveTo(0,y0); pctx.lineTo(w,y0); pctx.stroke();
+    }
+
+    // 점 (오래된 것 → 흐리게, 최근 것 → 진하게)
+    const n = poincarePoints.length;
+    for(let i=0;i<n;i++){
+      const p = poincarePoints[i];
+      const ageT = i / Math.max(1, n-1);
+      const alpha = 0.25 + 0.65 * ageT;
+      // 색상: 밀도 대신 시간에 따라 teal → rose 그라디언트
+      pctx.fillStyle = `rgba(95,184,172,${alpha})`;
+      const px = X(p.x), py = Y(p.vx);
+      pctx.beginPath();
+      pctx.arc(px, py, 2, 0, Math.PI*2);
+      pctx.fill();
+    }
+
+    // 최근 점 강조
+    const last = poincarePoints[n-1];
+    pctx.fillStyle = 'rgba(217,164,65,0.95)';
+    pctx.beginPath();
+    pctx.arc(X(last.x), Y(last.vx), 3.5, 0, Math.PI*2);
+    pctx.fill();
+
+    // 축 라벨
+    pctx.fillStyle = 'rgba(139,143,174,0.6)';
+    pctx.font = '9px "IBM Plex Mono", monospace';
+    pctx.textAlign = 'left';
+    pctx.fillText('x−x_cm', w-52, h-2);
+    pctx.save();
+    pctx.translate(10, 12);
+    pctx.rotate(-Math.PI/2);
+    pctx.textAlign = 'left';
+    pctx.fillText('v_x−v_cm,x', -52, 0);
+    pctx.restore();
+  }
+
   // ---------- kick off ----------
   resizeCanvas();
   loadPreset(currentPresetIdx);
@@ -1347,6 +1541,7 @@
     tick();
     drawChaosChart();
     drawLJChart();
+    drawPoincareChart();
     requestAnimationFrame(loop);
   });
 
