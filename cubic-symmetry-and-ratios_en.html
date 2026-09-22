@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Symmetry and Ratios in Cubic Functions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F5EE;
+    --paper-raised: #FCFBF6;
+    --ink: #202A1C;
+    --ink-soft: #55604B;
+    --muted: #7C8570;
+    --grid: #E2DECB;
+    --border: #D8D3BE;
+    --green: #2E6B4C;
+    --green-soft: #E4EDE3;
+    --gold: #A6760F;
+    --gold-soft: #F3E7CA;
+    --brick: #8B3A2B;
+    --brick-soft: #F1E0D9;
+    --shadow: rgba(32, 42, 28, 0.08);
+    font-family: "IBM Plex Sans KR", "Noto Sans KR", -apple-system, sans-serif;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #161911;
+      --paper-raised: #1D2116;
+      --ink: #E8E6D8;
+      --ink-soft: #B6BDA6;
+      --muted: #8B937C;
+      --grid: #2A2E20;
+      --border: #333726;
+      --green: #6FBF95;
+      --green-soft: #1F2A20;
+      --gold: #D9AE55;
+      --gold-soft: #2B2515;
+      --brick: #D68870;
+      --brick-soft: #2C1E19;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #161911;
+    --paper-raised: #1D2116;
+    --ink: #E8E6D8;
+    --ink-soft: #B6BDA6;
+    --muted: #8B937C;
+    --grid: #2A2E20;
+    --border: #333726;
+    --green: #6FBF95;
+    --green-soft: #1F2A20;
+    --gold: #D9AE55;
+    --gold-soft: #2B2515;
+    --brick: #D68870;
+    --brick-soft: #2C1E19;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    line-height: 1.75;
+  }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 64px 24px 100px; }
+  .wide { max-width: 880px; }
+
+  h1, h2, h3 {
+    font-family: "Newsreader", "Noto Serif KR", serif;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.28;
+  }
+  h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin: 0 0 6px; }
+  .subtitle { font-family: "Newsreader", serif; font-style: italic; font-weight: 500; font-size: 1.2rem; color: var(--ink-soft); margin: 0 0 40px; }
+  h2 { font-size: 1.55rem; margin: 64px 0 18px; padding-top: 4px; border-top: 1px solid var(--border); padding-top: 28px; }
+  h3 { font-size: 1.1rem; margin: 32px 0 12px; color: var(--green); }
+  p { margin: 0 0 18px; font-size: 1.02rem; }
+  .lede { font-size: 1.08rem; color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 600; }
+  em.eq { font-style: normal; font-family: "IBM Plex Mono", monospace; }
+
+  .formula {
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin: 18px 0;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.9;
+    white-space: pre;
+  }
+  blockquote {
+    margin: 24px 0;
+    padding: 16px 20px;
+    background: var(--green-soft);
+    border-radius: 6px;
+    font-family: "Newsreader", serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .tldr {
+    background: var(--gold-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin: 28px 0 40px;
+  }
+  .tldr .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--gold); display:block; margin-bottom:8px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  th { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; color: var(--muted); font-weight: 500; text-transform: none; }
+  tr.hi td { color: var(--green); font-weight: 600; }
+
+  ul, ol { padding-left: 22px; margin: 0 0 18px; }
+  li { margin-bottom: 6px; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+
+  .proof {
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin: 20px 0;
+  }
+  .proof h3 { margin-top: 0; }
+
+  .graphlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--green);
+    background: var(--green-soft);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin: 4px 0 20px;
+    transition: transform 0.15s ease;
+  }
+  .graphlink:hover { transform: translateY(-1px); }
+
+  /* --- Widget --- */
+  .widget {
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    margin: 32px 0 40px;
+    box-shadow: 0 2px 14px var(--shadow);
+  }
+  .widget-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .widget-head .label { font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; color: var(--muted); letter-spacing: 0.03em; }
+  .widget-head h3 { margin: 0; }
+
+  .canvas-box {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 23px, var(--grid) 23px, var(--grid) 24px),
+      repeating-linear-gradient(90deg, transparent, transparent 23px, var(--grid) 23px, var(--grid) 24px);
+    background-color: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  canvas { width: 100%; height: 100%; display: block; }
+
+  .modes { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+  .mode-btn {
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-size: 0.82rem;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--ink-soft);
+    padding: 7px 13px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .mode-btn.active { background: var(--green); color: var(--paper-raised); border-color: var(--green); font-weight: 600; }
+
+  .sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px 18px; margin: 16px 0 6px; }
+  .slider-row label { display:flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; }
+  .slider-row .val { color: var(--green); font-weight: 600; }
+  input[type="range"] { width: 100%; accent-color: var(--green); }
+
+  .readout {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.86rem;
+    background: var(--paper);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-top: 14px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    white-space: pre-wrap;
+  }
+  .readout .ok { color: var(--green); font-weight: 600; }
+
+  .reset-btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.76rem;
+    border: none;
+    background: none;
+    color: var(--muted);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* Simulator */
+  .sim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .sim-field label { display:block; font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; color: var(--muted); margin-bottom: 5px; }
+  .sim-field input[type="number"] {
+    width: 100%; padding: 9px 10px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--paper); color: var(--ink); font-family: "IBM Plex Mono", monospace; font-size: 0.92rem;
+  }
+  .sim-btn {
+    background: var(--green); color: var(--paper-raised); border: none; padding: 11px 20px;
+    border-radius: 999px; font-family: "IBM Plex Sans KR", sans-serif; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .step { border-left: 2px solid var(--border); padding: 4px 0 4px 16px; margin: 10px 0; }
+  .step .step-label { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--gold); display: block; margin-bottom: 3px; }
+  .answer { font-family: "Newsreader", serif; font-size: 1.5rem; color: var(--green); margin: 14px 0 4px; }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.82rem; margin-top: 80px; font-family: "IBM Plex Mono", monospace; }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 40px 16px 80px; }
+    h2 { margin: 48px 0 16px; }
+    .canvas-box { height: 280px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Symmetry and Ratios in Cubic Functions</h1>
+  <p class="subtitle">Why does this happen?</p>
+
+  <p class="lede">Over dinner with a close friend, the conversation drifted, oddly enough, into the properties of cubic functions. My friend's question was whether cubic functions have some kind of consistent symmetry, the way quadratic functions do.</p>
+  <p>Quadratic functions show symmetry intuitively. Cubic functions may not show it as intuitively, but because the quadratic function you get by differentiating them clearly has symmetry, the cubic function — being in an integral relationship with it — also turns out to be symmetric. Interestingly, this topic apparently shows up often in Korea's college entrance exams.</p>
+  <p>So today, just for fun, I decided to write it up.</p>
+
+  <div class="tldr">
+    <span class="tag">TL;DR</span>
+    A cubic function is point-symmetric about the point whose x-value is the x-coordinate of the vertex of its derivative (a quadratic function) — that is, about the point (x, f(x)) at that x-value. That point is also exactly where the line connecting the two extrema of the cubic meets the cubic itself.
+  </div>
+
+  <!-- ================= EXPLORER WIDGET ================= -->
+  <div class="widget wide" id="explorer">
+    <div class="widget-head">
+      <h3>Try it yourself</h3>
+      <span class="label">See whether the properties still hold when you change the coefficients</span>
+    </div>
+    <div class="canvas-box"><canvas id="explorer-canvas"></canvas></div>
+    <div class="modes" id="explorer-modes">
+      <button class="mode-btn active" data-mode="sym">Check symmetry</button>
+      <button class="mode-btn" data-mode="triple">1:1:1</button>
+      <button class="mode-btn" data-mode="sqrt3">1:√3</button>
+      <button class="mode-btn" data-mode="five">5 equal points</button>
+      <button class="mode-btn" data-mode="area">Area</button>
+      <button class="mode-btn" data-mode="diff">Extrema diff</button>
+    </div>
+    <div class="sliders" id="explorer-sliders">
+      <div class="slider-row"><label>a <span class="val" id="v-a">1.0</span></label><input type="range" id="s-a" min="-3" max="3" step="0.1" value="1"></div>
+      <div class="slider-row"><label>b <span class="val" id="v-b">-6.0</span></label><input type="range" id="s-b" min="-12" max="12" step="0.5" value="-6"></div>
+      <div class="slider-row"><label>c <span class="val" id="v-c">9.0</span></label><input type="range" id="s-c" min="-16" max="16" step="0.5" value="9"></div>
+      <div class="slider-row"><label>d <span class="val" id="v-d">2.0</span></label><input type="range" id="s-d" min="-10" max="10" step="0.5" value="2"></div>
+    </div>
+    <div class="slider-row" id="t-row" style="max-width:260px; margin-top:4px;">
+      <label>t (drag to explore) <span class="val" id="v-t">1.0</span></label>
+      <input type="range" id="s-t" min="0.1" max="4" step="0.1" value="1">
+    </div>
+    <div style="margin-top:10px;"><button class="reset-btn" id="reset-btn">Reset to example function (f(x) = x³ − 6x² + 9x + 2)</button></div>
+    <div class="readout" id="explorer-readout"></div>
+  </div>
+
+  <hr>
+
+  <h2>1. Why Only Cubics? — A Comparison Across Degrees</h2>
+  <p>Before understanding the symmetry of cubic functions, you should first ask this question.</p>
+  <blockquote>"Why is it specifically cubic functions that are point-symmetric? Why are linear, quadratic, and quartic functions different?"</blockquote>
+  <p>Answering this question first gives every proof that follows the context of "so this is why cubics are special."</p>
+
+  <table>
+    <tr><th>Degree</th><th>Symmetry</th><th>Reason</th></tr>
+    <tr><td>Linear</td><td>Point symmetry (about every point)</td><td>A straight line</td></tr>
+    <tr><td>Quadratic</td><td>Line symmetry (about an axis)</td><td>Only x² term survives</td></tr>
+    <tr class="hi"><td>Cubic</td><td>Point symmetry (about inflection point)</td><td>x³ is odd, x² term can be eliminated</td></tr>
+    <tr><td>Quartic</td><td>No symmetry in general</td><td>x³ term remains, breaking symmetry</td></tr>
+  </table>
+
+  <p>The key question is: <strong>"What's left after you remove the lower-degree term?"</strong></p>
+  <p>For a cubic function, if you eliminate the x² term by translation, the x term stays behind. What's left is "x³ + x — only odd-degree terms," and that's an odd function. Hence point symmetry holds.</p>
+  <p>For a quartic function, even after eliminating the x³ term by translation, the x term generally stays behind, so the function generally remains asymmetric. It becomes an even function — with the x term vanishing too, leaving only "x⁴ + x², only even-degree terms" — only in the special case where a specific relationship holds among the coefficients (namely, that the extrema are equally spaced, i.e., that the derivative's center of symmetry lies on the x-axis). So a quartic function generally isn't even guaranteed to have y-axis symmetry, let alone point symmetry.</p>
+  <p>In other words, cubics always end up with "only odd-degree terms left," while quartics end up that way only under a special condition. This difference — whether removing one term always drags another term down with it, or only does so when an extra condition among the coefficients is met — is the real reason cubic and quartic functions are symmetric in different ways. (The concrete substitution calculation is worked out directly in the proof in Chapter 1 below.)</p>
+  <p>In short, a cubic function is <strong>"the simplest nonlinear function, and the first example where symmetry and nonlinearity coexist."</strong> This position is exactly what makes cubic functions special, both on exams and in mathematics as a whole.</p>
+
+  <hr>
+
+  <h2>2. The Big Picture: Two Perspectives</h2>
+  <p>The point symmetry of cubic functions can be proven from <strong>two completely different sets of ingredients</strong>. What matters is that arriving at the same conclusion by two entirely different routes is itself evidence that "this symmetry isn't a coincidence — it's baked deep into the structure."</p>
+
+  <h3>Perspective 1: The Algebraic View — Erasing the x² Term</h3>
+  <p>For a general cubic f(x) = ax³ + bx² + cx + d, an appropriate translation can eliminate the x² term entirely. The function then takes the form <strong>"odd function + constant."</strong> An odd function is symmetric about the origin, and adding a constant just shifts the center of symmetry upward without destroying the symmetry itself.</p>
+
+  <h3>Perspective 2: The Differential View — The Derivative Is a Parabola</h3>
+  <p>The derivative f'(x) = 3ax² + 2bx + c is a quadratic function — a parabola. A parabola is always left-right symmetric about its own vertex (axis of symmetry). And the x-coordinate of that vertex is −b/(3a), which is exactly the x-coordinate of the inflection point.</p>
+
+  <p><strong>How the two perspectives relate</strong>: Perspective 1 is an algebraic approach — "shift the function itself to the origin to make it an odd function." Perspective 2 is a differential approach — "start from the symmetry of the derivative." Two completely different sets of ingredients arrive at the same place.</p>
+
+  <hr>
+
+  <h2>3. What Follows From Symmetry</h2>
+  <p>Point symmetry is beautiful on its own, but the real reason it's powerful on exams is that <strong>a huge number of proportional relationships derive from it</strong>. Symmetry is the seed; the proportional relationships are the stems that grow out of it.</p>
+
+  <h3>(1) Symmetry of function values</h3>
+  <p>Let the center of symmetry be x₀. Then the following always holds.</p>
+  <div class="formula">f(x₀ − t) + f(x₀ + t) = 2f(x₀)</div>
+  <p>If a problem gives you a condition like f(p − q) = f(p + q), that's a signal that "the function has an inflection point at x = p."</p>
+
+  <h3>(2) Symmetry of the derivative's values</h3>
+  <div class="formula">f'(x₀ − t) = f'(x₀ + t)</div>
+
+  <h3>(3) Symmetry of the extrema</h3>
+  <div class="formula">x₁ + x₂ = 2x₀</div>
+  <p>This is the starting point for every proportional-relationship problem. From here, the "1:1:1 trisection," the "1:√3 ratio," and the "5 equally spaced points" all follow.</p>
+
+  <h3>(4) Symmetry of integrals</h3>
+  <p>Integrals over intervals symmetric about the inflection point simplify dramatically. In area problems, this property cuts the computation down enormously.</p>
+
+  <hr>
+
+  <h2>4. A Map of the Proportional Relationships That Follow</h2>
+  <p>Let's sketch, in advance, what stems grow out of the seed of symmetry.</p>
+
+  <h3>① The 1:1:1 trisection</h3>
+  <p>For a cubic with extrema, the four important x-coordinates adjacent to the inflection point form an arithmetic sequence.</p>
+  <div class="formula">−2k, −k, 0, k  (with the inflection point at the origin)</div>
+
+  <h3>② The 1:√3 ratio</h3>
+  <p>Between the x-coordinate of the point where the horizontal line through the inflection point meets the cubic's graph, and the x-coordinate of the extremum, there's a 1:√3 relationship.</p>
+
+  <h3>③ The 2:1 relationship via tangent lines</h3>
+  <p>Measured from the inflection point, the distance to where a horizontal tangent through an extremum meets the curve again is twice the distance between the extremum and the inflection point. (That second point is not a point of tangency — just a simple intersection.)</p>
+
+  <h3>④ 5 equally spaced points (the 1:2 extension)</h3>
+  <div class="formula">−2k, −k, 0, k, 2k</div>
+
+  <h3>⑤ The area formula</h3>
+  <div class="formula">S = |a|/12 × |β − α|⁴</div>
+
+  <h3>⑥ The formula for the difference in height between the extrema</h3>
+  <div class="formula">Difference of extrema = |a| · d³ / 2</div>
+
+  <hr>
+
+  <h2>5. Why This Is Powerful on Exams</h2>
+  <p>This symmetry and these proportional relationships are decisive on exams for three reasons.</p>
+  <p><strong>First, the amount of computation drops dramatically.</strong> In a complicated extremum problem, setting up your unknowns directly with the 1:1:1 ratio wraps things up in a few lines, without solving a system of equations.</p>
+  <p><strong>Second, it demands an integrated grasp of several concepts at once.</strong> Differentiation, integration, and the relationship between roots and coefficients are all tangled together in a single problem, making it a strong discriminator.</p>
+  <p><strong>Third, the approach is highly standardized.</strong> Whenever a symmetry signal shows up in the problem's conditions, nearly every type can be solved with a single procedure below.</p>
+  <blockquote>See a symmetry condition → move the inflection point to the origin → arrange as an odd function → factor</blockquote>
+
+  <hr>
+
+  <p class="lede" style="text-align:center; font-family:'Newsreader', serif; font-style:italic;">Now let's reuse one specific cubic function from start to finish, checking each property with numbers first and then proving why.</p>
+
+  <h2>0. One Running Example We'll Keep Using</h2>
+  <p>We'll base everything on the following function.</p>
+  <div class="formula">f(x) = x³ − 6x² + 9x + 2</div>
+  <ul>
+    <li>At x = 0, f(0) = 2</li>
+    <li>At x = 1, f(1) = 6  ← local maximum</li>
+    <li>At x = 2, f(2) = 4  ← inflection point</li>
+    <li>At x = 3, f(3) = 2  ← local minimum</li>
+  </ul>
+  <p>x = 0, 1, 2, 3 are equally spaced (spacing 1), and the values are 2, 6, 4, 2 — keep those numbers in mind, since they'll keep coming back later.</p>
+
+  <h2>1. Every Cubic Function Is Symmetric</h2>
+  <h3>Checking with our eyes first</h3>
+  <p>Look at the two points 1 unit away from the inflection point x = 2, on either side.</p>
+  <ul>
+    <li>f(2 − 1) = f(1) = 6</li>
+    <li>f(2 + 1) = f(3) = 2</li>
+    <li>Average: (6 + 2) / 2 = 4 = f(2)</li>
+  </ul>
+  <button class="graphlink" data-target="sym" data-t="1">↑ Check it on the graph</button>
+  <p>f(2 − t) + f(2 + t) = 2 × f(2) — this relationship holds for every t. This is precisely "point symmetry."</p>
+
+  <div class="proof">
+    <h3>Proof 1: The algebraic proof — erasing the x² term</h3>
+    <p>Substituting x = t − m (where m = b/(3a)) into f(x) = ax³ + bx² + cx + d, the coefficients by degree in t are:</p>
+    <div class="formula">Coefficient of t³: a
+Coefficient of t²: −3am + b
+Coefficient of t¹: 3am² − 2bm + c
+Coefficient of t⁰: −am³ + bm² − cm + d</div>
+    <p>Checking the t² coefficient: −3am + b = −3a·(b/3a) + b = −b + b = 0. It comes out to exactly 0 symbolically too — this substitution makes the t² term vanish for <strong>every cubic function</strong>.</p>
+    <p>After substitution we get g(t) = a·t³ + p·t + q, and since g(−t) = −at³ − pt + q, we have g(t) + g(−t) = 2q. This means the graph of g(t) is point-symmetric about the point (0, q).</p>
+  </div>
+
+  <div class="proof">
+    <h3>Proof 2: The differential proof — using the symmetry of the derivative (a parabola)</h3>
+    <p>f'(x) = 3ax² + 2bx + c is a parabola, whose vertex x-coordinate −b/(3a) is exactly the x-coordinate of the inflection point.</p>
+    <p>Letting x₀ = −b/(3a), we get f'(x₀+t) − f'(x₀−t) = 4t(3a·x₀ + b) = 4t(−b+b) = 0, which holds for all a, b, c, t.</p>
+    <p>Defining k(t) = f(x₀+t) + f(x₀−t) − 2f(x₀), we get k'(t) = f'(x₀+t) − f'(x₀−t) = 0, so k(t) is constant, and since k(0)=0, k(t) is always 0 — arriving at the same conclusion as Proof 1.</p>
+  </div>
+
+  <h2>2. The "1:1:1" Trisection</h2>
+  <h3>Checking with our eyes first</h3>
+  <p>x = 0, 1, 2, 3 are all spaced 1 apart. x = 0 → f(0) = 2, x = 3 → f(3) = 2 (the local minimum). There's a point, exactly at an equally-spaced position, whose value matches an extremum's value.</p>
+  <button class="graphlink" data-target="triple">↑ Check it on the graph</button>
+  <div class="proof">
+    <h3>Why it happens (proof)</h3>
+    <p>g(t) = at³ + pt, extrema at t=±k. Solving g(t)=g(k) gives (t−k)[a(t²+tk+k²)+p]=0; substituting the extremum condition p=−3ak² gives t²+tk−2k²=0 → (t−k)(t+2k)=0.</p>
+    <p>So we get the solution t = −2k, and the x-coordinates of the four points are −2k, −k, 0, k — spaced exactly k apart. (Combining the original factor (t−k) with the one just found, the full factorization is (t−k)²(t+2k)=0 — t=k being a double root makes sense since it's "the point whose value equals its own," so the only new root is t=−2k.)</p>
+  </div>
+
+  <h2>3. "1 : √3"</h2>
+  <h3>Checking with our eyes first</h3>
+  <p>Finding where the horizontal line y=4 through the inflection point (x=2, y=4) meets the curve gives x = 2, 2−√3, 2+√3. The distance to the extremum is 1, and the distance to the intersection is √3 — exactly a 1:√3 ratio.</p>
+  <button class="graphlink" data-target="sqrt3">↑ Check it on the graph</button>
+  <div class="proof">
+    <h3>Why it happens (proof)</h3>
+    <p>g(t)=at³−3ak²t=0 → t=0, t=±√3k. Extremum condition: t²=k²; intersection condition: t²=3k². Since the ratio of t² values is 1:3, the ratio of t itself is 1:√3.</p>
+  </div>
+
+  <h2>4. The Area Formula — Finding the Area Without Computation</h2>
+  <p style="color:var(--muted); font-size:0.92rem;">(The relationship here — "point of tangency x=1, re-intersection x=4" — is the map's <strong>③ 2:1 relationship via tangent lines</strong>. Measured from the inflection point (x=2), the distance to the re-intersection is 2, and to the extremum is 1 — exactly 2:1.)</p>
+  <h3>Checking with our eyes first</h3>
+  <p>The tangent y=6 at the local maximum (x=1, y=6) meets the curve at x=1 (point of tangency) and x=4 (intersection).</p>
+  <button class="graphlink" data-target="area">↑ Check it on the graph</button>
+  <div class="formula">S = |a| / 12 × |β − α|⁴
+= 1/12 × 3⁴ = 81/12 = 6.75</div>
+  <div class="proof">
+    <h3>Full proof — actually carrying out the integral</h3>
+    <p>Substituting u = x−α with d=β−α into ∫[α→β] a(x−α)²(x−β) dx:</p>
+    <div class="formula">= a ∫[0→d] (u³ − du²) du = a(d⁴/4 − d⁴/3) = −a·d⁴/12</div>
+    <p>Taking the absolute value for area: S = |a|/12 × |β−α|⁴. This holds for any α, β, a.</p>
+  </div>
+
+  <h2>5. The 1:√3 Extension — Up to 5 Equally Spaced Points</h2>
+  <h3>Checking with our eyes first</h3>
+  <p>The horizontal tangent through the local minimum (x=3, y=2) meets the curve again at x=0. Altogether, x = 0, 1, 2, 3, 4 are five points, all spaced 1 apart.</p>
+  <button class="graphlink" data-target="five">↑ Check it on the graph</button>
+  <p>In the end, applying the 1:1:1 relationship on both sides naturally produces a structure of 5 equally-spaced points. It's not a new principle — just the same principle applied on both sides.</p>
+
+  <h2>6. The Extrema-Difference Formula — Finding the Height Without Computation</h2>
+  <h3>Checking with our eyes first</h3>
+  <p>Local maximum f(1)=6, local minimum f(3)=2, difference 4. Distance between extrema is 2.</p>
+  <button class="graphlink" data-target="diff">↑ Check it on the graph</button>
+  <div class="formula">Difference of extrema = |a| × (distance between extrema)³ / 2
+= |1| × 2³ / 2 = 4</div>
+  <div class="proof">
+    <h3>Why it happens (proof)</h3>
+    <p>For g(t)=at³+pt, g(k)=−g(−k) (since g is odd). Which one is the max vs. min depends on the sign of a, but looking only at the absolute difference: |g(k)−g(−k)| = |2ak³+2pk|. Substituting the extremum condition p=−3ak² gives |−4ak³| = 4|a|k³. With distance d=2k, k=d/2, this becomes 4|a|(d/2)³ = |a|·d³/2.</p>
+  </div>
+
+  <hr>
+
+  <h2>7. Practice-Problem Simulator</h2>
+  <p>Let's actually use the tools we've learned. Try changing the conditions and solving it yourself.</p>
+
+  <div class="widget wide" id="simulator">
+    <div class="widget-head">
+      <h3>Practice Simulator</h3>
+      <span class="label">Leading coefficient · inflection point · extrema difference → area</span>
+    </div>
+    <p style="margin-top:0;">A cubic function f(x) with leading coefficient <strong>a</strong> has an inflection point at <strong>(x₀, y₀)</strong>. Given that the difference between its two extrema is <strong>Δ</strong>, find the area enclosed between the tangent at the local maximum and the curve y=f(x).</p>
+
+    <div class="sim-grid">
+      <div class="sim-field"><label>a (leading coeff.)</label><input type="number" id="sim-a" value="1" step="0.5"></div>
+      <div class="sim-field"><label>x₀ (inflection x)</label><input type="number" id="sim-x0" value="2" step="0.5"></div>
+      <div class="sim-field"><label>y₀ (inflection y)</label><input type="number" id="sim-y0" value="4" step="0.5"></div>
+      <div class="sim-field"><label>Δ (extrema diff.)</label><input type="number" id="sim-diff" value="4" step="0.5" min="0.01"></div>
+    </div>
+    <button class="sim-btn" id="sim-btn">Solve</button>
+
+    <div id="sim-output" style="margin-top:18px;"></div>
+
+    <div class="canvas-box" style="margin-top:16px; display:none;" id="sim-canvas-box"><canvas id="sim-canvas"></canvas></div>
+  </div>
+
+  <hr>
+
+  <h2>8. Summary</h2>
+  <p>Summarizing the properties we've seen, one line each:</p>
+  <ul>
+    <li><strong>Point symmetry</strong>: Occurs necessarily because eliminating the x² term by translation gives an odd function + constant</li>
+    <li><strong>1:1:1</strong>: Occurs because the cubic equation g(t)=g(k) factors as (t−k)(t+2k)</li>
+    <li><strong>1:√3</strong>: Occurs because the squared ratio of the extremum condition (t²=k²) to the condition for intersecting the horizontal line through the inflection point (t²=3k²) is 1:3</li>
+    <li><strong>Area formula</strong>: Occurs because integrating the double-root structure (x−α)²(x−β) always simplifies to a fourth-power form</li>
+    <li><strong>5 equally spaced points</strong>: Occurs because applying the horizontal tangents at both extrema gives −2k,−k,0,k,2k</li>
+    <li><strong>Extrema difference</strong>: Occurs because extrema come out as ±2ak³, and substituting d=2k simplifies it to |a|d³/2</li>
+  </ul>
+  <p>All six of these derive from a single principle: "moving the inflection point to the origin turns the function into an odd function."</p>
+  <blockquote>See a symmetry condition → move the inflection point to the origin → arrange as an odd function → factor</blockquote>
+
+  <footer>Symmetry and Ratios in Cubic Functions</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function fmt(n){ if(!isFinite(n)) return "—"; return (Math.round(n*1000)/1000).toString(); }
+
+  function computeGeom(a,b,c,d){
+    if (a===0) a = 0.0001;
+    const x0 = -b/(3*a);
+    const y0 = a*x0**3+b*x0**2+c*x0+d;
+    const disc = 4*b*b - 12*a*c;
+    let hasExtrema=false, k=0, xMax=null, yMax=null, xMin=null, yMin=null;
+    if (disc > 1e-9) {
+      const s = Math.sqrt(disc);
+      const r1 = (-2*b - s)/(6*a), r2 = (-2*b + s)/(6*a);
+      const f2 = x => 6*a*x + 2*b;
+      if (f2(r1) < f2(r2)) { xMax=r1; xMin=r2; } else { xMax=r2; xMin=r1; }
+      yMax = a*xMax**3+b*xMax**2+c*xMax+d;
+      yMin = a*xMin**3+b*xMin**2+c*xMin+d;
+      k = Math.abs(xMax - x0);
+      hasExtrema = true;
+    }
+    return {a,b,c,d,x0,y0,hasExtrema,k,xMax,yMax,xMin,yMin};
+  }
+  function fval(g,x){ return g.a*x**3+g.b*x**2+g.c*x+g.d; }
+
+  function niceStep(range){
+    const raw = range/8;
+    if (raw<=0) return 1;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const norm = raw/mag;
+    let step;
+    if (norm<1.5) step=1; else if (norm<3) step=2; else if (norm<7) step=5; else step=10;
+    return step*mag;
+  }
+
+  function setupCanvas(canvas){
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.round(rect.width*dpr));
+    canvas.height = Math.max(1, Math.round(rect.height*dpr));
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    return {ctx, w: rect.width, h: rect.height};
+  }
+
+  function drawGraph(canvas, geom, mode, t){
+    const {ctx,w,h} = setupCanvas(canvas);
+    if (w<10 || h<10) return;
+    ctx.clearRect(0,0,w,h);
+
+    const inkColor = cssVar('--ink');
+    const curveColor = cssVar('--green');
+    const goldColor = cssVar('--gold');
+    const brickColor = cssVar('--brick');
+    const mutedColor = cssVar('--muted');
+    const paperColor = cssVar('--paper-raised');
+
+    let xMin, xMax;
+    if (geom.hasExtrema) {
+      const span = Math.max(geom.k*2.2, 1.0);
+      xMin = geom.x0-span-0.4; xMax = geom.x0+span+0.4;
+    } else {
+      xMin = geom.x0-5; xMax = geom.x0+5;
+    }
+
+    const N = 200;
+    const samples = [];
+    let yLo=Infinity, yHi=-Infinity;
+    for (let i=0;i<=N;i++){
+      const x = xMin + (xMax-xMin)*i/N;
+      const y = fval(geom,x);
+      samples.push([x,y]);
+      if (y<yLo) yLo=y; if (y>yHi) yHi=y;
+    }
+    const pad = (yHi-yLo)*0.06 || 1;
+    yLo -= pad; yHi += pad;
+
+    const marginL=44, marginR=16, marginT=16, marginB=30;
+    const plotW = Math.max(10, w-marginL-marginR), plotH = Math.max(10, h-marginT-marginB);
+    const toPx = x => marginL + (x-xMin)/(xMax-xMin)*plotW;
+    const toPy = y => marginT + (1-(y-yLo)/(yHi-yLo))*plotH;
+
+    const stepX = niceStep(xMax-xMin), stepY = niceStep(yHi-yLo);
+    ctx.strokeStyle = mutedColor; ctx.lineWidth = 1;
+    ctx.font = '10px "IBM Plex Mono", monospace';
+    ctx.fillStyle = mutedColor;
+    for (let gx=Math.ceil(xMin/stepX)*stepX; gx<=xMax; gx+=stepX){
+      const px = toPx(gx);
+      ctx.globalAlpha = 0.35;
+      ctx.beginPath(); ctx.moveTo(px,marginT); ctx.lineTo(px,marginT+plotH); ctx.stroke();
+      ctx.globalAlpha = 1;
+      ctx.fillText(fmt(gx), px-8, marginT+plotH+15);
+    }
+    for (let gy=Math.ceil(yLo/stepY)*stepY; gy<=yHi; gy+=stepY){
+      const py = toPy(gy);
+      ctx.globalAlpha = 0.35;
+      ctx.beginPath(); ctx.moveTo(marginL,py); ctx.lineTo(marginL+plotW,py); ctx.stroke();
+      ctx.globalAlpha = 1;
+      ctx.fillText(fmt(gy), 4, py+3);
+    }
+
+    ctx.strokeStyle = inkColor; ctx.lineWidth = 1.3; ctx.globalAlpha=0.55;
+    if (0>=xMin && 0<=xMax){ const px=toPx(0); ctx.beginPath(); ctx.moveTo(px,marginT); ctx.lineTo(px,marginT+plotH); ctx.stroke(); }
+    if (0>=yLo && 0<=yHi){ const py=toPy(0); ctx.beginPath(); ctx.moveTo(marginL,py); ctx.lineTo(marginL+plotW,py); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+
+    function point(x,y,color,label,above){
+      const px=toPx(x), py=toPy(y);
+      ctx.beginPath(); ctx.arc(px,py,4.5,0,Math.PI*2);
+      ctx.fillStyle=color; ctx.fill();
+      ctx.strokeStyle=paperColor; ctx.lineWidth=1.6; ctx.stroke();
+      if (label){
+        ctx.font = '600 11px "IBM Plex Mono", monospace';
+        ctx.fillStyle = inkColor;
+        ctx.fillText(label, px+7, above===false ? py+15 : py-8);
+      }
+    }
+    function dashed(x1,y1,x2,y2,color){
+      ctx.strokeStyle=color; ctx.setLineDash([4,4]); ctx.lineWidth=1.4;
+      ctx.beginPath(); ctx.moveTo(toPx(x1),toPy(y1)); ctx.lineTo(toPx(x2),toPy(y2)); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    if (mode==='area' && geom.hasExtrema){
+      const xE=geom.xMax, yE=geom.yMax;
+      const xM = 3*geom.x0 - 2*xE;
+      const lo=Math.min(xE,xM), hi=Math.max(xE,xM);
+      ctx.beginPath();
+      const steps=50;
+      for (let i=0;i<=steps;i++){ const x=lo+(hi-lo)*i/steps; const y=fval(geom,x); const px=toPx(x),py=toPy(y); if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py); }
+      ctx.lineTo(toPx(hi), toPy(yE));
+      ctx.lineTo(toPx(lo), toPy(yE));
+      ctx.closePath();
+      ctx.globalAlpha=0.16; ctx.fillStyle=goldColor; ctx.fill(); ctx.globalAlpha=1;
+      dashed(lo,yE,hi,yE,goldColor);
+    }
+
+    ctx.beginPath();
+    samples.forEach(([x,y],i)=>{ const px=toPx(x),py=toPy(y); if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py); });
+    ctx.strokeStyle = curveColor; ctx.lineWidth = 2.4; ctx.stroke();
+
+    point(geom.x0, geom.y0, brickColor, 'inflection pt', false);
+
+    switch(mode){
+      case 'sym': {
+        const tt = geom.hasExtrema ? Math.min(t, Math.max(1.5*geom.k,0.3)) : t;
+        const xL=geom.x0-tt, xR=geom.x0+tt;
+        dashed(xL, fval(geom,xL), xR, fval(geom,xR), mutedColor);
+        point(xL, fval(geom,xL), goldColor, 'x₀−t');
+        point(xR, fval(geom,xR), goldColor, 'x₀+t');
+        break;
+      }
+      case 'triple': {
+        if (geom.hasExtrema){
+          [geom.x0-2*geom.k, geom.x0-geom.k, geom.x0].forEach(x => point(x, fval(geom,x), goldColor, fmt(x), false));
+        }
+        break;
+      }
+      case 'five': {
+        if (geom.hasExtrema){
+          [geom.x0-2*geom.k, geom.x0-geom.k, geom.x0, geom.x0+geom.k, geom.x0+2*geom.k].forEach(x => point(x, fval(geom,x), goldColor, fmt(x), false));
+        }
+        break;
+      }
+      case 'sqrt3': {
+        if (geom.hasExtrema){
+          const s3 = Math.sqrt(3)*geom.k;
+          dashed(geom.x0-s3, geom.y0, geom.x0+s3, geom.y0, mutedColor);
+          point(geom.x0-s3, geom.y0, goldColor, '−√3k');
+          point(geom.x0+s3, geom.y0, goldColor, '+√3k');
+          point(geom.xMax, geom.yMax, brickColor, '', true);
+          point(geom.xMin, geom.yMin, brickColor, '', true);
+        }
+        break;
+      }
+      case 'area': {
+        if (geom.hasExtrema){
+          point(geom.xMax, geom.yMax, brickColor, 'tangent pt (α)');
+          const xM = 3*geom.x0-2*geom.xMax;
+          point(xM, fval(geom,xM), goldColor, 'intersect (β)');
+        }
+        break;
+      }
+      case 'diff': {
+        if (geom.hasExtrema){
+          point(geom.xMax, geom.yMax, brickColor, 'extremum 1');
+          point(geom.xMin, geom.yMin, goldColor, 'extremum 2');
+          dashed(geom.xMax, geom.yMax, geom.xMax, geom.yMin, mutedColor);
+        }
+        break;
+      }
+    }
+  }
+
+  function readoutFor(mode, geom, t){
+    if (!geom.hasExtrema && mode!=='sym'){
+      return 'This coefficient combination has no extrema (a and p have the same sign). Adjust the sliders so extrema appear.';
+    }
+    const g0 = geom.y0;
+    switch(mode){
+      case 'sym': {
+        const tt = geom.hasExtrema ? Math.min(t, Math.max(1.5*geom.k,0.3)) : t;
+        const l = fval(geom, geom.x0-tt), r = fval(geom, geom.x0+tt);
+        const ok = Math.abs((l+r) - 2*g0) < 1e-6;
+        return `f(x₀−t) + f(x₀+t) = ${fmt(l)} + ${fmt(r)} = ${fmt(l+r)}\n2f(x₀) = 2 × ${fmt(g0)} = ${fmt(2*g0)}\n${ok? '✓ Matches (' : 'Difference: '}${ok? 'always holds)' : fmt((l+r)-2*g0)}`;
+      }
+      case 'triple': {
+        const xs = [geom.x0-2*geom.k, geom.x0-geom.k, geom.x0];
+        return xs.map(x=>`x=${fmt(x)} → f(x)=${fmt(fval(geom,x))}`).join('\n') + `\nSpacing: k = ${fmt(geom.k)} (all equal)`;
+      }
+      case 'five': {
+        const xs = [geom.x0-2*geom.k, geom.x0-geom.k, geom.x0, geom.x0+geom.k, geom.x0+2*geom.k];
+        return xs.map(x=>`x=${fmt(x)} → f(x)=${fmt(fval(geom,x))}`).join('\n') + `\nSpacing: k = ${fmt(geom.k)} (all five points equally spaced)`;
+      }
+      case 'sqrt3': {
+        const s3 = Math.sqrt(3)*geom.k;
+        return `Distance to extremum: k = ${fmt(geom.k)}\nDistance to intersection: √3k = ${fmt(s3)}\nRatio ≈ 1 : ${fmt(s3/geom.k)}`;
+      }
+      case 'area': {
+        const xE=geom.xMax, yE=geom.yMax;
+        const xM = 3*geom.x0-2*xE;
+        const beta_alpha = Math.abs(xM-xE);
+        const S = Math.abs(geom.a)/12 * Math.pow(beta_alpha,4);
+        // numeric check
+        const lo=Math.min(xE,xM), hi=Math.max(xE,xM);
+        let numS=0; const steps=4000; const dx=(hi-lo)/steps;
+        for (let i=0;i<steps;i++){ const x=lo+dx*(i+0.5); numS += Math.abs(fval(geom,x)-yE)*dx; }
+        return `α=${fmt(xE)}, β=${fmt(xM)}, |β−α|=${fmt(beta_alpha)}\nFormula: S = |a|/12 × |β−α|⁴ = ${fmt(S)}\nNumeric integration check: ${fmt(numS)}`;
+      }
+      case 'diff': {
+        const diff = Math.abs(geom.yMax - geom.yMin);
+        const d = Math.abs(geom.xMax - geom.xMin);
+        const formula = Math.abs(geom.a) * Math.pow(d,3) / 2;
+        return `Direct calc: |extremum 1 − extremum 2| = ${fmt(diff)}\nFormula: |a|·d³/2 = ${fmt(formula)}  (d = ${fmt(d)})`;
+      }
+    }
+    return '';
+  }
+
+  // ---------- Explorer widget ----------
+  const ex = {
+    canvas: document.getElementById('explorer-canvas'),
+    readout: document.getElementById('explorer-readout'),
+    state: { a:1, b:-6, c:9, d:2, mode:'sym', t:1 },
+    sliders: { a: document.getElementById('s-a'), b: document.getElementById('s-b'), c: document.getElementById('s-c'), d: document.getElementById('s-d'), t: document.getElementById('s-t') },
+    vals: { a: document.getElementById('v-a'), b: document.getElementById('v-b'), c: document.getElementById('v-c'), d: document.getElementById('v-d'), t: document.getElementById('v-t') },
+  };
+
+  function render(){
+    const geom = computeGeom(ex.state.a, ex.state.b, ex.state.c, ex.state.d);
+    drawGraph(ex.canvas, geom, ex.state.mode, ex.state.t);
+    ex.readout.textContent = readoutFor(ex.state.mode, geom, ex.state.t);
+    document.getElementById('t-row').style.display = ex.state.mode==='sym' ? 'block' : 'none';
+  }
+
+  ['a','b','c','d'].forEach(key=>{
+    ex.sliders[key].addEventListener('input', e=>{
+      ex.state[key] = parseFloat(e.target.value);
+      ex.vals[key].textContent = fmt(ex.state[key]);
+      render();
+    });
+  });
+  ex.sliders.t.addEventListener('input', e=>{
+    ex.state.t = parseFloat(e.target.value);
+    ex.vals.t.textContent = fmt(ex.state.t);
+    render();
+  });
+
+  document.getElementById('explorer-modes').addEventListener('click', e=>{
+    const btn = e.target.closest('.mode-btn');
+    if (!btn) return;
+    document.querySelectorAll('#explorer-modes .mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    ex.state.mode = btn.dataset.mode;
+    render();
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', ()=>{
+    ex.state.a=1; ex.state.b=-6; ex.state.c=9; ex.state.d=2; ex.state.t=1;
+    ex.sliders.a.value=1; ex.sliders.b.value=-6; ex.sliders.c.value=9; ex.sliders.d.value=2; ex.sliders.t.value=1;
+    ex.vals.a.textContent='1'; ex.vals.b.textContent='-6'; ex.vals.c.textContent='9'; ex.vals.d.textContent='2'; ex.vals.t.textContent='1';
+    render();
+  });
+
+  document.querySelectorAll('.graphlink').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = btn.dataset.target;
+      document.querySelectorAll('#explorer-modes .mode-btn').forEach(b=>b.classList.toggle('active', b.dataset.mode===target));
+      ex.state.mode = target;
+      if (btn.dataset.t) { ex.state.t = parseFloat(btn.dataset.t); ex.sliders.t.value = ex.state.t; ex.vals.t.textContent = fmt(ex.state.t); }
+      render();
+      document.getElementById('explorer').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  window.addEventListener('resize', render);
+  render();
+
+  // ---------- Simulator ----------
+  const simBtn = document.getElementById('sim-btn');
+  const simOut = document.getElementById('sim-output');
+  const simCanvasBox = document.getElementById('sim-canvas-box');
+  const simCanvas = document.getElementById('sim-canvas');
+
+  simBtn.addEventListener('click', ()=>{
+    const a = parseFloat(document.getElementById('sim-a').value);
+    const x0 = parseFloat(document.getElementById('sim-x0').value);
+    const y0 = parseFloat(document.getElementById('sim-y0').value);
+    const diff = Math.abs(parseFloat(document.getElementById('sim-diff').value));
+
+    if (!a || a===0 || !isFinite(diff) || diff<=0){
+      simOut.innerHTML = '<p style="color:var(--brick)">a must be nonzero, and the extrema difference must be greater than 0.</p>';
+      simCanvasBox.style.display='none';
+      return;
+    }
+
+    const k = Math.cbrt(diff/(4*Math.abs(a)));
+    const xMaxPt = a>0 ? x0-k : x0+k; // location of local maximum
+    const beta = 3*x0 - 2*xMaxPt;
+    const yMaxPt = a>0 ? (2*a*Math.pow(k,3)+y0) : (-2*a*Math.pow(k,3)+y0); // g(-k)=2ak^3 (a>0 case), symmetric for a<0
+    const betaAlpha = Math.abs(beta-xMaxPt);
+    const S = Math.abs(a)/12 * Math.pow(betaAlpha,4);
+
+    // standard coefficients: f(x) = a(x-x0)^3 + p(x-x0) + y0, p = -3a k^2
+    const p = -3*a*k*k;
+    const b = -3*a*x0;
+    const c = 3*a*x0*x0 + p;
+    const dConst = -a*Math.pow(x0,3) - p*x0 + y0;
+    const sign = v => v>=0 ? '+' : '−';
+
+    simOut.innerHTML = `
+      <div class="step"><span class="step-label">Step 1 — Distance between extrema</span>Difference of extrema = |a|·d³/2 → d³ = 2Δ/|a| = ${fmt(2*diff/Math.abs(a))} → d = ${fmt(2*k)} (k = ${fmt(k)})</div>
+      <div class="step"><span class="step-label">Step 2 — Where the max's tangent meets the curve again</span>Local max at x = ${fmt(xMaxPt)}, tangent re-meets curve at x = ${fmt(beta)}</div>
+      <div class="step"><span class="step-label">Step 3 — Applying the area formula</span>S = |a|/12 × |β−α|⁴ = ${fmt(Math.abs(a))}/12 × ${fmt(betaAlpha)}⁴ = <strong>${fmt(S)}</strong></div>
+      <div class="answer">Answer: ${fmt(S)}</div>
+      <div class="readout">The function satisfying these conditions is unique:
+f(x) = ${fmt(a)}x³ ${sign(b)} ${fmt(Math.abs(b))}x² ${sign(c)} ${fmt(Math.abs(c))}x ${sign(dConst)} ${fmt(Math.abs(dConst))}</div>
+    `;
+
+    simCanvasBox.style.display = 'block';
+    const geom = computeGeom(a,b,c,dConst);
+    requestAnimationFrame(()=> drawGraph(simCanvas, geom, 'area', 1));
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>삼차함수의 대칭성과 비율</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F5EE;
+    --paper-raised: #FCFBF6;
+    --ink: #202A1C;
+    --ink-soft: #55604B;
+    --muted: #7C8570;
+    --grid: #E2DECB;
+    --border: #D8D3BE;
+    --green: #2E6B4C;
+    --green-soft: #E4EDE3;
+    --gold: #A6760F;
+    --gold-soft: #F3E7CA;
+    --brick: #8B3A2B;
+    --brick-soft: #F1E0D9;
+    --shadow: rgba(32, 42, 28, 0.08);
+    font-family: "IBM Plex Sans KR", "Noto Sans KR", -apple-system, sans-serif;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #161911;
+      --paper-raised: #1D2116;
+      --ink: #E8E6D8;
+      --ink-soft: #B6BDA6;
+      --muted: #8B937C;
+      --grid: #2A2E20;
+      --border: #333726;
+      --green: #6FBF95;
+      --green-soft: #1F2A20;
+      --gold: #D9AE55;
+      --gold-soft: #2B2515;
+      --brick: #D68870;
+      --brick-soft: #2C1E19;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #161911;
+    --paper-raised: #1D2116;
+    --ink: #E8E6D8;
+    --ink-soft: #B6BDA6;
+    --muted: #8B937C;
+    --grid: #2A2E20;
+    --border: #333726;
+    --green: #6FBF95;
+    --green-soft: #1F2A20;
+    --gold: #D9AE55;
+    --gold-soft: #2B2515;
+    --brick: #D68870;
+    --brick-soft: #2C1E19;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    line-height: 1.75;
+  }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 64px 24px 100px; }
+  .wide { max-width: 880px; }
+
+  h1, h2, h3 {
+    font-family: "Newsreader", "Noto Serif KR", serif;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.28;
+  }
+  h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin: 0 0 6px; }
+  .subtitle { font-family: "Newsreader", serif; font-style: italic; font-weight: 500; font-size: 1.2rem; color: var(--ink-soft); margin: 0 0 40px; }
+  h2 { font-size: 1.55rem; margin: 64px 0 18px; padding-top: 4px; border-top: 1px solid var(--border); padding-top: 28px; }
+  h3 { font-size: 1.1rem; margin: 32px 0 12px; color: var(--green); }
+  p { margin: 0 0 18px; font-size: 1.02rem; }
+  .lede { font-size: 1.08rem; color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 600; }
+  em.eq { font-style: normal; font-family: "IBM Plex Mono", monospace; }
+
+  .formula {
+    font-family: "IBM Plex Mono", monospace;
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin: 18px 0;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.9;
+    white-space: pre;
+  }
+  blockquote {
+    margin: 24px 0;
+    padding: 16px 20px;
+    background: var(--green-soft);
+    border-radius: 6px;
+    font-family: "Newsreader", serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .tldr {
+    background: var(--gold-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin: 28px 0 40px;
+  }
+  .tldr .tag { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--gold); display:block; margin-bottom:8px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  th { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; color: var(--muted); font-weight: 500; text-transform: none; }
+  tr.hi td { color: var(--green); font-weight: 600; }
+
+  ul, ol { padding-left: 22px; margin: 0 0 18px; }
+  li { margin-bottom: 6px; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+
+  .proof {
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin: 20px 0;
+  }
+  .proof h3 { margin-top: 0; }
+
+  .graphlink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--green);
+    background: var(--green-soft);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    margin: 4px 0 20px;
+    transition: transform 0.15s ease;
+  }
+  .graphlink:hover { transform: translateY(-1px); }
+
+  /* --- Widget --- */
+  .widget {
+    background: var(--paper-raised);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    margin: 32px 0 40px;
+    box-shadow: 0 2px 14px var(--shadow);
+  }
+  .widget-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .widget-head .label { font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; color: var(--muted); letter-spacing: 0.03em; }
+  .widget-head h3 { margin: 0; }
+
+  .canvas-box {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 23px, var(--grid) 23px, var(--grid) 24px),
+      repeating-linear-gradient(90deg, transparent, transparent 23px, var(--grid) 23px, var(--grid) 24px);
+    background-color: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  canvas { width: 100%; height: 100%; display: block; }
+
+  .modes { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+  .mode-btn {
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-size: 0.82rem;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--ink-soft);
+    padding: 7px 13px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .mode-btn.active { background: var(--green); color: var(--paper-raised); border-color: var(--green); font-weight: 600; }
+
+  .sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px 18px; margin: 16px 0 6px; }
+  .slider-row label { display:flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; }
+  .slider-row .val { color: var(--green); font-weight: 600; }
+  input[type="range"] { width: 100%; accent-color: var(--green); }
+
+  .readout {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.86rem;
+    background: var(--paper);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-top: 14px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    white-space: pre-wrap;
+  }
+  .readout .ok { color: var(--green); font-weight: 600; }
+
+  .reset-btn {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.76rem;
+    border: none;
+    background: none;
+    color: var(--muted);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* Simulator */
+  .sim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .sim-field label { display:block; font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; color: var(--muted); margin-bottom: 5px; }
+  .sim-field input[type="number"] {
+    width: 100%; padding: 9px 10px; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--paper); color: var(--ink); font-family: "IBM Plex Mono", monospace; font-size: 0.92rem;
+  }
+  .sim-btn {
+    background: var(--green); color: var(--paper-raised); border: none; padding: 11px 20px;
+    border-radius: 999px; font-family: "IBM Plex Sans KR", sans-serif; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .step { border-left: 2px solid var(--border); padding: 4px 0 4px 16px; margin: 10px 0; }
+  .step .step-label { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--gold); display: block; margin-bottom: 3px; }
+  .answer { font-family: "Newsreader", serif; font-size: 1.5rem; color: var(--green); margin: 14px 0 4px; }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.82rem; margin-top: 80px; font-family: "IBM Plex Mono", monospace; }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 40px 16px 80px; }
+    h2 { margin: 48px 0 16px; }
+    .canvas-box { height: 280px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>삼차함수의 대칭성과 비율</h1>
+  <p class="subtitle">왜 이런 일이 일어나는가</p>
+
+  <p class="lede">친한 친구와 식사하면서 대화 중 엉뚱하게도 3차 함수의 성질에 관한 대화를 하게 되었습니다. 친구의 질문은 3차 함수도 2차 함수처럼 일정한 대칭성이 있는가라는 부분이었습니다.</p>
+  <p>2차 함수의 경우는 직관적으로 대칭성을 보입니다. 3차 함수의 경우는 직관적으로 보이지 않을 수는 있지만, 그것을 미분한 2차 함수의 대칭성이 명확하기 때문에 그 적분 관계에 있는 3차 함수 또한 대칭성을 보이게 됩니다. 재미있게도 이 문제는 대한민국 입시에서 자주 등장하는 것으로 알려져 있습니다.</p>
+  <p>그래서 오늘은 재미삼아 이 문제에 대해 써보게 되었습니다.</p>
+
+  <div class="tldr">
+    <span class="tag">TL;DR</span>
+    삼차함수는 그것을 미분한 2차함수의 꼭짓점의 x값을 기준으로, (x, f(x)) 값을 기준으로 점대칭성을 보이게 됩니다. 그 지점은 삼차함수의 양쪽 극값을 연결한 선과 삼차함수가 만나는 점이기도 합니다.
+  </div>
+
+  <!-- ================= EXPLORER WIDGET ================= -->
+  <div class="widget wide" id="explorer">
+    <div class="widget-head">
+      <h3>직접 만져보세요</h3>
+      <span class="label">계수를 바꿔도 성질이 항상 성립하는지 확인해보세요</span>
+    </div>
+    <div class="canvas-box"><canvas id="explorer-canvas"></canvas></div>
+    <div class="modes" id="explorer-modes">
+      <button class="mode-btn active" data-mode="sym">대칭 확인</button>
+      <button class="mode-btn" data-mode="triple">1:1:1</button>
+      <button class="mode-btn" data-mode="sqrt3">1:√3</button>
+      <button class="mode-btn" data-mode="five">5점 등간격</button>
+      <button class="mode-btn" data-mode="area">넓이</button>
+      <button class="mode-btn" data-mode="diff">극값의 차</button>
+    </div>
+    <div class="sliders" id="explorer-sliders">
+      <div class="slider-row"><label>a <span class="val" id="v-a">1.0</span></label><input type="range" id="s-a" min="-3" max="3" step="0.1" value="1"></div>
+      <div class="slider-row"><label>b <span class="val" id="v-b">-6.0</span></label><input type="range" id="s-b" min="-12" max="12" step="0.5" value="-6"></div>
+      <div class="slider-row"><label>c <span class="val" id="v-c">9.0</span></label><input type="range" id="s-c" min="-16" max="16" step="0.5" value="9"></div>
+      <div class="slider-row"><label>d <span class="val" id="v-d">2.0</span></label><input type="range" id="s-d" min="-10" max="10" step="0.5" value="2"></div>
+    </div>
+    <div class="slider-row" id="t-row" style="max-width:260px; margin-top:4px;">
+      <label>t (움직여서 확인) <span class="val" id="v-t">1.0</span></label>
+      <input type="range" id="s-t" min="0.1" max="4" step="0.1" value="1">
+    </div>
+    <div style="margin-top:10px;"><button class="reset-btn" id="reset-btn">예시 함수로 초기화 (f(x) = x³ − 6x² + 9x + 2)</button></div>
+    <div class="readout" id="explorer-readout"></div>
+  </div>
+
+  <hr>
+
+  <h2>1. 왜 삼차함수만 이런가 — 차수별 비교</h2>
+  <p>삼차함수의 대칭성을 이해하기 전에, 먼저 이런 의문이 들어야 합니다.</p>
+  <blockquote>"왜 하필 삼차함수만 점대칭인가? 일차, 이차, 사차는 왜 다른가?"</blockquote>
+  <p>이 질문에 먼저 답해두면, 이후의 모든 증명이 "그래서 삼차는 특별하다"는 맥락을 얻습니다.</p>
+
+  <table>
+    <tr><th>차수</th><th>대칭성</th><th>이유</th></tr>
+    <tr><td>일차</td><td>점대칭 (모든 점)</td><td>직선</td></tr>
+    <tr><td>이차</td><td>선대칭 (축)</td><td>x² 계수만 남음</td></tr>
+    <tr class="hi"><td>삼차</td><td>점대칭 (변곡점)</td><td>x³이 기함수, x² 제거 가능</td></tr>
+    <tr><td>사차</td><td>일반적으로 대칭 없음</td><td>x³ 항이 남아 비대칭</td></tr>
+  </table>
+
+  <p>핵심은 <strong>"낮은 차수 항을 제거한 뒤 무엇이 남는가"</strong>입니다.</p>
+  <p>삼차함수는 x² 항을 평행이동으로 제거하면 x 항은 그대로 남습니다. 남는 건 "x³ + x, 즉 홀수 차수 항들"이고, 이건 기함수입니다. 그래서 점대칭이 성립합니다.</p>
+  <p>사차함수는 x³ 항을 평행이동으로 제거해도, 일반적으로는 x 항까지 남아 비대칭이 됩니다. x 항까지 함께 사라져서 "x⁴ + x², 즉 짝수 차수 항들"만 남는 우함수가 되는 경우는, 계수들 사이에 특정 관계(극값이 등간격, 즉 도함수인 삼차함수의 대칭 중심이 x축 위에 있는 경우)가 성립하는 특수한 경우뿐입니다. 그래서 사차함수는 일반적으로 y축 대칭(선대칭)조차 보장되지 않고, 점대칭은 더더욱 일반적으로 성립하지 않습니다.</p>
+  <p>즉 삼차는 "항상 홀수 차수만 남는" 형태가 되지만, 사차는 "특정 조건에서만 짝수 차수만 남는" 형태가 됩니다. 이 차이 — 항 하나를 제거했을 때 다른 항이 항상 같이 사라지느냐, 아니면 계수들 사이의 추가 조건이 있어야만 사라지느냐 — 가 삼차와 사차의 대칭 방식을 가르는 진짜 이유입니다. (구체적인 치환 계산은 아래 1장의 증명에서 직접 확인합니다.)</p>
+  <p>즉, 삼차함수는 <strong>"가장 단순한 비선형 함수이면서, 대칭성과 비선형성이 공존하는 첫 번째 예"</strong>입니다. 이 위치가 삼차함수를 입시에서도, 수학 전체에서도 특별하게 만듭니다.</p>
+
+  <hr>
+
+  <h2>2. 큰 그림: 두 개의 관점</h2>
+  <p>삼차함수의 점대칭성은 <strong>완전히 다른 두 재료</strong>로 각각 증명할 수 있습니다. 이게 중요한 이유는, 같은 결론에 전혀 다른 길로 도착한다는 사실 자체가 "이 대칭성이 우연이 아니라 구조 깊숙이 박혀있다"는 증거이기 때문입니다.</p>
+
+  <h3>관점 1: 대수적 관점 — x² 항을 지워버리기</h3>
+  <p>일반적인 삼차함수 f(x) = ax³ + bx² + cx + d에서, 적절히 평행이동하면 x² 항을 완전히 소거할 수 있습니다. 그러면 함수는 <strong>"기함수 + 상수"</strong> 형태가 됩니다. 기함수는 원점 대칭이고, 상수를 더해도 대칭 중심이 위로 올라갈 뿐 대칭성 자체는 유지됩니다.</p>
+
+  <h3>관점 2: 미분적 관점 — 도함수는 포물선이다</h3>
+  <p>f(x)를 미분한 f'(x) = 3ax² + 2bx + c는 이차함수, 즉 포물선입니다. 포물선은 자기 꼭짓점(대칭축)에 대해 항상 좌우대칭입니다. 그리고 그 꼭짓점의 x좌표는 −b/(3a)로, 변곡점의 x좌표와 정확히 일치합니다.</p>
+
+  <p><strong>두 관점의 관계</strong>: 관점 1은 "함수 자체를 원점으로 옮겨서 홀함수로 만드는" 대수적 접근이고, 관점 2는 "도함수의 대칭성에서 출발하는" 미분적 접근입니다. 완전히 다른 재료로 같은 곳에 도착합니다.</p>
+
+  <hr>
+
+  <h2>3. 대칭성이 있으면 무엇이 따라오는가</h2>
+  <p>점대칭성은 그 자체로도 아름답지만, 입시에서 강력한 진짜 이유는 <strong>여기서 수많은 비례 관계가 파생</strong>되기 때문입니다. 대칭성은 씨앗이고, 비례 관계는 그 씨앗에서 자라나는 줄기들입니다.</p>
+
+  <h3>(1) 함수값의 대칭 관계</h3>
+  <p>대칭 중심을 x₀라 하면, 다음이 항상 성립합니다.</p>
+  <div class="formula">f(x₀ − t) + f(x₀ + t) = 2f(x₀)</div>
+  <p>문제에서 f(p − q) = f(p + q) 같은 조건이 주어지면, 이건 "함수가 x = p에서 변곡점을 가진다"는 신호입니다.</p>
+
+  <h3>(2) 미분값의 대칭 관계</h3>
+  <div class="formula">f'(x₀ − t) = f'(x₀ + t)</div>
+
+  <h3>(3) 극값점의 대칭</h3>
+  <div class="formula">x₁ + x₂ = 2x₀</div>
+  <p>이것이 모든 비례 관계 문제의 출발점입니다. 여기서 "1:1:1 삼등분"도, "1:√3"도, "5점 등간격"도 전부 파생됩니다.</p>
+
+  <h3>(4) 적분의 대칭 관계</h3>
+  <p>변곡점 기준으로 좌우 대칭 구간의 적분 차이가 단순해집니다. 넓이 문제에서 이 성질이 계산을 극적으로 줄여줍니다.</p>
+
+  <hr>
+
+  <h2>4. 파생되는 비례 관계들의 지도</h2>
+  <p>대칭성이라는 씨앗에서 어떤 줄기들이 자라나는지 미리 지도를 그려두겠습니다.</p>
+
+  <h3>① 1:1:1 삼등분 관계</h3>
+  <p>극값을 가지는 삼차함수에서, 변곡점의 가로 좌표를 중심으로 인접한 네 개의 중요한 가로 좌표는 등차수열을 이룹니다.</p>
+  <div class="formula">−2k, −k, 0, k  (변곡점을 원점으로 뒀을 때)</div>
+
+  <h3>② 1:√3 비율</h3>
+  <p>변곡점을 지나고 x축에 평행한 직선과 삼차함수 그래프의 교점의 가로 좌표와 극값점의 가로 좌표 사이에는 1:√3 관계가 존재합니다.</p>
+
+  <h3>③ 접선에 의한 2:1 관계</h3>
+  <p>극값점을 지나는 수평 접선이 함수와 다시 만나는 점까지, 변곡점을 기준으로 잰 거리는 극값점과 변곡점 사이 거리의 2배가 됩니다. (다시 만나는 그 점은 접점이 아니라 단순 교점입니다.)</p>
+
+  <h3>④ 5점 등간격 (1:2 확장판)</h3>
+  <div class="formula">−2k, −k, 0, k, 2k</div>
+
+  <h3>⑤ 넓이 공식</h3>
+  <div class="formula">S = |a|/12 × |β − α|⁴</div>
+
+  <h3>⑥ 극값의 높이 차 공식</h3>
+  <div class="formula">극값의 차 = |a| · d³ / 2</div>
+
+  <hr>
+
+  <h2>5. 시험에서 이게 강력한 이유</h2>
+  <p>이 대칭성과 비례 관계가 입시에서 결정적인 이유는 세 가지입니다.</p>
+  <p><strong>첫째, 계산량이 극적으로 줄어듭니다.</strong> 복잡한 극값 계산 문제에서 1:1:1 비율을 직접 사용하여 미지수를 설정하면, 연립방정식을 풀 필요 없이 몇 줄로 끝납니다.</p>
+  <p><strong>둘째, 여러 개념을 통합적으로 요구합니다.</strong> 미분, 적분, 방정식의 근과 계수의 관계가 한 문제 안에서 얽혀 있어, 변별력이 높습니다.</p>
+  <p><strong>셋째, 접근 방식이 정형화되어 있습니다.</strong> 문제 조건에서 대칭 신호가 보이면, 아래 한 가지 절차로 거의 모든 유형이 풀립니다.</p>
+  <blockquote>대칭 조건이 보인다 → 변곡점을 원점으로 이동 → 기함수 형태로 정리 → 인수분해</blockquote>
+
+  <hr>
+
+  <p class="lede" style="text-align:center; font-family:'Newsreader', serif; font-style:italic;">이제 하나의 구체적인 삼차함수를 끝까지 재사용하면서, 매 성질마다 숫자로 먼저 확인하고 왜 그런지 증명해봅니다.</p>
+
+  <h2>0. 앞으로 계속 쓸 예시 하나</h2>
+  <p>다음 함수를 기준으로 삼겠습니다.</p>
+  <div class="formula">f(x) = x³ − 6x² + 9x + 2</div>
+  <ul>
+    <li>x = 0 일 때, f(0) = 2</li>
+    <li>x = 1 일 때, f(1) = 6  ← 극댓값</li>
+    <li>x = 2 일 때, f(2) = 4  ← 변곡점</li>
+    <li>x = 3 일 때, f(3) = 2  ← 극솟값</li>
+  </ul>
+  <p>x = 0, 1, 2, 3 이 등간격(간격 1)으로 놓여 있고, 값은 2, 6, 4, 2 라는 걸 기억해두세요. 이 숫자들이 뒤에서 계속 등장합니다.</p>
+
+  <h2>1. 모든 삼차함수는 대칭이다</h2>
+  <h3>눈으로 먼저 확인하기</h3>
+  <p>변곡점 x = 2 를 기준으로 좌우로 1만큼 떨어진 두 점을 봅시다.</p>
+  <ul>
+    <li>f(2 − 1) = f(1) = 6</li>
+    <li>f(2 + 1) = f(3) = 2</li>
+    <li>평균: (6 + 2) / 2 = 4 = f(2)</li>
+  </ul>
+  <button class="graphlink" data-target="sym" data-t="1">↑ 그래프에서 확인하기</button>
+  <p>f(2 − t) + f(2 + t) = 2 × f(2) — 이 관계가 모든 t에 대해 성립합니다. 이게 바로 "점대칭"입니다.</p>
+
+  <div class="proof">
+    <h3>증명 1: 대수적 증명 — x² 항을 지워버리기</h3>
+    <p>f(x) = ax³ + bx² + cx + d 에서 x = t − m (단, m = b/(3a))으로 치환하면, t의 각 차수별 계수는:</p>
+    <div class="formula">t³ 의 계수: a
+t² 의 계수: −3am + b
+t¹ 의 계수: 3am² − 2bm + c
+t⁰ 의 계수: −am³ + bm² − cm + d</div>
+    <p>t² 계수를 확인하면 −3am + b = −3a·(b/3a) + b = −b + b = 0. 문자로 계산해도 정확히 0입니다 — <strong>모든 삼차함수</strong>에서 이 치환을 하면 t² 항이 사라집니다.</p>
+    <p>치환 결과 g(t) = a·t³ + p·t + q 형태가 되고, g(−t) = −at³ − pt + q 이므로 g(t) + g(−t) = 2q. 이건 g(t)의 그래프가 점 (0, q) 에 대해 점대칭이라는 뜻입니다.</p>
+  </div>
+
+  <div class="proof">
+    <h3>증명 2: 미분적 증명 — 도함수(포물선)의 대칭성 이용</h3>
+    <p>f'(x) = 3ax² + 2bx + c는 포물선이고, 꼭짓점 x좌표는 −b/(3a) — 변곡점의 x좌표와 정확히 같습니다.</p>
+    <p>x₀ = −b/(3a) 라 하면 f'(x₀+t) − f'(x₀−t) = 4t(3a·x₀ + b) = 4t(−b+b) = 0 이 모든 a, b, c, t에 대해 성립합니다.</p>
+    <p>k(t) = f(x₀+t) + f(x₀−t) − 2f(x₀) 로 두면, k'(t) = f'(x₀+t) − f'(x₀−t) = 0 이므로 k(t)는 상수함수이고 k(0)=0 이니 k(t)는 항상 0 — 증명 1과 똑같은 결론에 도착합니다.</p>
+  </div>
+
+  <h2>2. "1:1:1" 삼등분</h2>
+  <h3>눈으로 먼저 확인하기</h3>
+  <p>x = 0, 1, 2, 3 은 간격이 전부 1로 똑같습니다. x = 0 → f(0) = 2, x = 3 → f(3) = 2 (극솟값). 극값과 똑같은 함숫값을 가지는 점이, 정확히 등간격 위치에 하나 더 있습니다.</p>
+  <button class="graphlink" data-target="triple">↑ 그래프에서 확인하기</button>
+  <div class="proof">
+    <h3>왜 그런가 (증명)</h3>
+    <p>g(t) = at³ + pt, 극값점 t=±k. g(t)=g(k) 를 풀면 (t−k)[a(t²+tk+k²)+p]=0, 극값 조건 p=−3ak² 대입하면 t²+tk−2k²=0 → (t−k)(t+2k)=0.</p>
+    <p>따라서 t = −2k 라는 해가 나오고, 네 점의 가로 좌표는 −2k, −k, 0, k — 간격이 전부 k로 똑같습니다. (원래 인수 (t−k)와 방금 나온 (t−k)를 합치면 전체는 (t−k)²(t+2k)=0 — t=k가 중근인 건 "자기 자신과 값이 같은 점"이니 당연하고, 그래서 새로 나오는 근은 t=−2k 하나뿐입니다.)</p>
+  </div>
+
+  <h2>3. "1 : √3"</h2>
+  <h3>눈으로 먼저 확인하기</h3>
+  <p>변곡점 (x=2, y=4)를 지나는 수평선 y=4 와 곡선의 교점을 구하면 x = 2, 2−√3, 2+√3. 극값점까지의 거리는 1, 교점까지의 거리는 √3 — 정확히 1:√3 비율입니다.</p>
+  <button class="graphlink" data-target="sqrt3">↑ 그래프에서 확인하기</button>
+  <div class="proof">
+    <h3>왜 그런가 (증명)</h3>
+    <p>g(t)=at³−3ak²t=0 → t=0, t=±√3k. 극값 조건 t²=k², 교점 조건 t²=3k². t²의 비율이 1:3이니 t 자체의 비율은 1:√3 입니다.</p>
+  </div>
+
+  <h2>4. 넓이 공식 — 계산 없이 넓이 구하기</h2>
+  <p style="color:var(--muted); font-size:0.92rem;">(여기서 나오는 "접점 x=1, 재교점 x=4" 관계가 위 지도의 <strong>③ 접선에 의한 2:1 관계</strong>입니다 — 변곡점(x=2) 기준으로 재교점까지 거리는 2, 극값점까지 거리는 1이니 정확히 2:1이죠.)</p>
+  <h3>눈으로 먼저 확인하기</h3>
+  <p>극댓값 (x=1, y=6)에서의 접선 y=6 은 x=1(접점)과 x=4(교점)에서 곡선과 만납니다.</p>
+  <button class="graphlink" data-target="area">↑ 그래프에서 확인하기</button>
+  <div class="formula">S = |a| / 12 × |β − α|⁴
+= 1/12 × 3⁴ = 81/12 = 6.75</div>
+  <div class="proof">
+    <h3>완전한 증명 — 실제로 적분하기</h3>
+    <p>∫[α→β] a(x−α)²(x−β) dx 를 u = x−α 로 치환하고 d=β−α 라 하면:</p>
+    <div class="formula">= a ∫[0→d] (u³ − du²) du = a(d⁴/4 − d⁴/3) = −a·d⁴/12</div>
+    <p>넓이는 절댓값을 씌워 S = |a|/12 × |β−α|⁴. α, β, a가 무엇이든 항상 성립합니다.</p>
+  </div>
+
+  <h2>5. 1:√3의 확장판 — 등간격 점이 5개까지 늘어난다</h2>
+  <h3>눈으로 먼저 확인하기</h3>
+  <p>극솟값(x=3, y=2)을 지나는 수평 접선은 x=0에서 다시 만납니다. 정리하면 x = 0, 1, 2, 3, 4 다섯 점이 전부 간격 1로 등간격입니다.</p>
+  <button class="graphlink" data-target="five">↑ 그래프에서 확인하기</button>
+  <p>결국 1:1:1을 좌우 양쪽에서 각각 적용했더니, 자연스럽게 5점 등간격 구조가 됩니다. 새로운 원리가 아니라, 같은 원리를 양쪽에 다 적용한 결과입니다.</p>
+
+  <h2>6. 극값의 차 공식 — 계산 없이 높이 구하기</h2>
+  <h3>눈으로 먼저 확인하기</h3>
+  <p>극댓값 f(1)=6, 극솟값 f(3)=2, 차이는 4. 극값점 사이 거리는 2.</p>
+  <button class="graphlink" data-target="diff">↑ 그래프에서 확인하기</button>
+  <div class="formula">극값의 차 = |a| × (극값점 사이 거리)³ / 2
+= |1| × 2³ / 2 = 4</div>
+  <div class="proof">
+    <h3>왜 그런가 (증명)</h3>
+    <p>g(t)=at³+pt 에서 g(k)=−g(−k) (기함수이므로). 어느 쪽이 극댓값·극솟값인지는 a의 부호에 따라 달라지지만, "차이"의 절댓값만 보면 |g(k)−g(−k)| = |2ak³+2pk|. 극값 조건 p=−3ak² 대입 → |−4ak³| = 4|a|k³. 거리 d=2k, k=d/2 대입하면 4|a|(d/2)³ = |a|·d³/2.</p>
+  </div>
+
+  <hr>
+
+  <h2>7. 실전 문제 시뮬레이터</h2>
+  <p>지금까지 배운 도구들을 실제로 써봅시다. 조건을 바꿔가며 직접 풀어보세요.</p>
+
+  <div class="widget wide" id="simulator">
+    <div class="widget-head">
+      <h3>실전 시뮬레이터</h3>
+      <span class="label">최고차항 계수 · 변곡점 · 극값의 차 → 넓이</span>
+    </div>
+    <p style="margin-top:0;">최고차항의 계수가 <strong>a</strong>인 삼차함수 f(x)의 그래프가 점 <strong>(x₀, y₀)</strong>에서 변곡점을 가진다. 이 함수의 두 극값의 차가 <strong>Δ</strong>일 때, 극댓값에서의 접선과 곡선 y=f(x)로 둘러싸인 부분의 넓이를 구하시오.</p>
+
+    <div class="sim-grid">
+      <div class="sim-field"><label>a (최고차항 계수)</label><input type="number" id="sim-a" value="1" step="0.5"></div>
+      <div class="sim-field"><label>x₀ (변곡점 x)</label><input type="number" id="sim-x0" value="2" step="0.5"></div>
+      <div class="sim-field"><label>y₀ (변곡점 y)</label><input type="number" id="sim-y0" value="4" step="0.5"></div>
+      <div class="sim-field"><label>Δ (극값의 차)</label><input type="number" id="sim-diff" value="4" step="0.5" min="0.01"></div>
+    </div>
+    <button class="sim-btn" id="sim-btn">풀이 계산하기</button>
+
+    <div id="sim-output" style="margin-top:18px;"></div>
+
+    <div class="canvas-box" style="margin-top:16px; display:none;" id="sim-canvas-box"><canvas id="sim-canvas"></canvas></div>
+  </div>
+
+  <hr>
+
+  <h2>8. 정리</h2>
+  <p>지금까지 본 성질들을 한 줄씩 요약하면:</p>
+  <ul>
+    <li><strong>점대칭</strong>: x² 항을 평행이동으로 없애면 기함수+상수가 되기 때문에 필연적으로 발생</li>
+    <li><strong>1:1:1</strong>: g(t)=g(k) 라는 삼차방정식이 (t−k)(t+2k)로 인수분해되기 때문에 발생</li>
+    <li><strong>1:√3</strong>: 극값 조건(t²=k²)과 변곡점을 지나는 수평선과의 교점 조건(t²=3k²)의 제곱 비율이 1:3이기 때문에 발생</li>
+    <li><strong>넓이 공식</strong>: 접점의 중근 구조 (x−α)²(x−β) 를 적분하면 항상 4제곱 형태로 정리되기 때문에 발생</li>
+    <li><strong>5점 등간격</strong>: 좌우 극값의 수평 접선을 각각 적용하면 −2k,−k,0,k,2k 다섯 점이 나오기 때문에 발생</li>
+    <li><strong>극값의 차</strong>: 극값이 ±2ak³ 형태로 나오고, 거리 d=2k를 대입하면 |a|d³/2 로 정리되기 때문에 발생</li>
+  </ul>
+  <p>이 여섯 가지가 전부 "변곡점을 원점으로 옮기면 기함수가 된다"는 단 하나의 원리에서 파생됩니다.</p>
+  <blockquote>대칭 조건이 보인다 → 변곡점을 원점으로 이동 → 기함수 형태로 정리 → 인수분해</blockquote>
+
+  <footer>삼차함수의 대칭성과 비율</footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function fmt(n){ if(!isFinite(n)) return "—"; return (Math.round(n*1000)/1000).toString(); }
+
+  function computeGeom(a,b,c,d){
+    if (a===0) a = 0.0001;
+    const x0 = -b/(3*a);
+    const y0 = a*x0**3+b*x0**2+c*x0+d;
+    const disc = 4*b*b - 12*a*c;
+    let hasExtrema=false, k=0, xMax=null, yMax=null, xMin=null, yMin=null;
+    if (disc > 1e-9) {
+      const s = Math.sqrt(disc);
+      const r1 = (-2*b - s)/(6*a), r2 = (-2*b + s)/(6*a);
+      const f2 = x => 6*a*x + 2*b;
+      if (f2(r1) < f2(r2)) { xMax=r1; xMin=r2; } else { xMax=r2; xMin=r1; }
+      yMax = a*xMax**3+b*xMax**2+c*xMax+d;
+      yMin = a*xMin**3+b*xMin**2+c*xMin+d;
+      k = Math.abs(xMax - x0);
+      hasExtrema = true;
+    }
+    return {a,b,c,d,x0,y0,hasExtrema,k,xMax,yMax,xMin,yMin};
+  }
+  function fval(g,x){ return g.a*x**3+g.b*x**2+g.c*x+g.d; }
+
+  function niceStep(range){
+    const raw = range/8;
+    if (raw<=0) return 1;
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const norm = raw/mag;
+    let step;
+    if (norm<1.5) step=1; else if (norm<3) step=2; else if (norm<7) step=5; else step=10;
+    return step*mag;
+  }
+
+  function setupCanvas(canvas){
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.round(rect.width*dpr));
+    canvas.height = Math.max(1, Math.round(rect.height*dpr));
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    return {ctx, w: rect.width, h: rect.height};
+  }
+
+  function drawGraph(canvas, geom, mode, t){
+    const {ctx,w,h} = setupCanvas(canvas);
+    if (w<10 || h<10) return;
+    ctx.clearRect(0,0,w,h);
+
+    const inkColor = cssVar('--ink');
+    const curveColor = cssVar('--green');
+    const goldColor = cssVar('--gold');
+    const brickColor = cssVar('--brick');
+    const mutedColor = cssVar('--muted');
+    const paperColor = cssVar('--paper-raised');
+
+    let xMin, xMax;
+    if (geom.hasExtrema) {
+      const span = Math.max(geom.k*2.2, 1.0);
+      xMin = geom.x0-span-0.4; xMax = geom.x0+span+0.4;
+    } else {
+      xMin = geom.x0-5; xMax = geom.x0+5;
+    }
+
+    const N = 200;
+    const samples = [];
+    let yLo=Infinity, yHi=-Infinity;
+    for (let i=0;i<=N;i++){
+      const x = xMin + (xMax-xMin)*i/N;
+      const y = fval(geom,x);
+      samples.push([x,y]);
+      if (y<yLo) yLo=y; if (y>yHi) yHi=y;
+    }
+    const pad = (yHi-yLo)*0.06 || 1;
+    yLo -= pad; yHi += pad;
+
+    const marginL=44, marginR=16, marginT=16, marginB=30;
+    const plotW = Math.max(10, w-marginL-marginR), plotH = Math.max(10, h-marginT-marginB);
+    const toPx = x => marginL + (x-xMin)/(xMax-xMin)*plotW;
+    const toPy = y => marginT + (1-(y-yLo)/(yHi-yLo))*plotH;
+
+    const stepX = niceStep(xMax-xMin), stepY = niceStep(yHi-yLo);
+    ctx.strokeStyle = mutedColor; ctx.lineWidth = 1;
+    ctx.font = '10px "IBM Plex Mono", monospace';
+    ctx.fillStyle = mutedColor;
+    for (let gx=Math.ceil(xMin/stepX)*stepX; gx<=xMax; gx+=stepX){
+      const px = toPx(gx);
+      ctx.globalAlpha = 0.35;
+      ctx.beginPath(); ctx.moveTo(px,marginT); ctx.lineTo(px,marginT+plotH); ctx.stroke();
+      ctx.globalAlpha = 1;
+      ctx.fillText(fmt(gx), px-8, marginT+plotH+15);
+    }
+    for (let gy=Math.ceil(yLo/stepY)*stepY; gy<=yHi; gy+=stepY){
+      const py = toPy(gy);
+      ctx.globalAlpha = 0.35;
+      ctx.beginPath(); ctx.moveTo(marginL,py); ctx.lineTo(marginL+plotW,py); ctx.stroke();
+      ctx.globalAlpha = 1;
+      ctx.fillText(fmt(gy), 4, py+3);
+    }
+
+    ctx.strokeStyle = inkColor; ctx.lineWidth = 1.3; ctx.globalAlpha=0.55;
+    if (0>=xMin && 0<=xMax){ const px=toPx(0); ctx.beginPath(); ctx.moveTo(px,marginT); ctx.lineTo(px,marginT+plotH); ctx.stroke(); }
+    if (0>=yLo && 0<=yHi){ const py=toPy(0); ctx.beginPath(); ctx.moveTo(marginL,py); ctx.lineTo(marginL+plotW,py); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+
+    function point(x,y,color,label,above){
+      const px=toPx(x), py=toPy(y);
+      ctx.beginPath(); ctx.arc(px,py,4.5,0,Math.PI*2);
+      ctx.fillStyle=color; ctx.fill();
+      ctx.strokeStyle=paperColor; ctx.lineWidth=1.6; ctx.stroke();
+      if (label){
+        ctx.font = '600 11px "IBM Plex Mono", monospace';
+        ctx.fillStyle = inkColor;
+        ctx.fillText(label, px+7, above===false ? py+15 : py-8);
+      }
+    }
+    function dashed(x1,y1,x2,y2,color){
+      ctx.strokeStyle=color; ctx.setLineDash([4,4]); ctx.lineWidth=1.4;
+      ctx.beginPath(); ctx.moveTo(toPx(x1),toPy(y1)); ctx.lineTo(toPx(x2),toPy(y2)); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    if (mode==='area' && geom.hasExtrema){
+      const xE=geom.xMax, yE=geom.yMax;
+      const xM = 3*geom.x0 - 2*xE;
+      const lo=Math.min(xE,xM), hi=Math.max(xE,xM);
+      ctx.beginPath();
+      const steps=50;
+      for (let i=0;i<=steps;i++){ const x=lo+(hi-lo)*i/steps; const y=fval(geom,x); const px=toPx(x),py=toPy(y); if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py); }
+      ctx.lineTo(toPx(hi), toPy(yE));
+      ctx.lineTo(toPx(lo), toPy(yE));
+      ctx.closePath();
+      ctx.globalAlpha=0.16; ctx.fillStyle=goldColor; ctx.fill(); ctx.globalAlpha=1;
+      dashed(lo,yE,hi,yE,goldColor);
+    }
+
+    ctx.beginPath();
+    samples.forEach(([x,y],i)=>{ const px=toPx(x),py=toPy(y); if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py); });
+    ctx.strokeStyle = curveColor; ctx.lineWidth = 2.4; ctx.stroke();
+
+    point(geom.x0, geom.y0, brickColor, '변곡점', false);
+
+    switch(mode){
+      case 'sym': {
+        const tt = geom.hasExtrema ? Math.min(t, Math.max(1.5*geom.k,0.3)) : t;
+        const xL=geom.x0-tt, xR=geom.x0+tt;
+        dashed(xL, fval(geom,xL), xR, fval(geom,xR), mutedColor);
+        point(xL, fval(geom,xL), goldColor, 'x₀−t');
+        point(xR, fval(geom,xR), goldColor, 'x₀+t');
+        break;
+      }
+      case 'triple': {
+        if (geom.hasExtrema){
+          [geom.x0-2*geom.k, geom.x0-geom.k, geom.x0].forEach(x => point(x, fval(geom,x), goldColor, fmt(x), false));
+        }
+        break;
+      }
+      case 'five': {
+        if (geom.hasExtrema){
+          [geom.x0-2*geom.k, geom.x0-geom.k, geom.x0, geom.x0+geom.k, geom.x0+2*geom.k].forEach(x => point(x, fval(geom,x), goldColor, fmt(x), false));
+        }
+        break;
+      }
+      case 'sqrt3': {
+        if (geom.hasExtrema){
+          const s3 = Math.sqrt(3)*geom.k;
+          dashed(geom.x0-s3, geom.y0, geom.x0+s3, geom.y0, mutedColor);
+          point(geom.x0-s3, geom.y0, goldColor, '−√3k');
+          point(geom.x0+s3, geom.y0, goldColor, '+√3k');
+          point(geom.xMax, geom.yMax, brickColor, '', true);
+          point(geom.xMin, geom.yMin, brickColor, '', true);
+        }
+        break;
+      }
+      case 'area': {
+        if (geom.hasExtrema){
+          point(geom.xMax, geom.yMax, brickColor, '접점(α)');
+          const xM = 3*geom.x0-2*geom.xMax;
+          point(xM, fval(geom,xM), goldColor, '교점(β)');
+        }
+        break;
+      }
+      case 'diff': {
+        if (geom.hasExtrema){
+          point(geom.xMax, geom.yMax, brickColor, '극값1');
+          point(geom.xMin, geom.yMin, goldColor, '극값2');
+          dashed(geom.xMax, geom.yMax, geom.xMax, geom.yMin, mutedColor);
+        }
+        break;
+      }
+    }
+  }
+
+  function readoutFor(mode, geom, t){
+    if (!geom.hasExtrema && mode!=='sym'){
+      return '이 계수 조합에서는 극값이 존재하지 않습니다 (a, p 부호가 같음). 슬라이더를 조절해 극값이 생기도록 바꿔보세요.';
+    }
+    const g0 = geom.y0;
+    switch(mode){
+      case 'sym': {
+        const tt = geom.hasExtrema ? Math.min(t, Math.max(1.5*geom.k,0.3)) : t;
+        const l = fval(geom, geom.x0-tt), r = fval(geom, geom.x0+tt);
+        const ok = Math.abs((l+r) - 2*g0) < 1e-6;
+        return `f(x₀−t) + f(x₀+t) = ${fmt(l)} + ${fmt(r)} = ${fmt(l+r)}\n2f(x₀) = 2 × ${fmt(g0)} = ${fmt(2*g0)}\n${ok? '✓ 일치합니다 (' : '차이: '}${ok? '항상 성립)' : fmt((l+r)-2*g0)}`;
+      }
+      case 'triple': {
+        const xs = [geom.x0-2*geom.k, geom.x0-geom.k, geom.x0];
+        return xs.map(x=>`x=${fmt(x)} → f(x)=${fmt(fval(geom,x))}`).join('\n') + `\n간격: k = ${fmt(geom.k)} (전부 동일)`;
+      }
+      case 'five': {
+        const xs = [geom.x0-2*geom.k, geom.x0-geom.k, geom.x0, geom.x0+geom.k, geom.x0+2*geom.k];
+        return xs.map(x=>`x=${fmt(x)} → f(x)=${fmt(fval(geom,x))}`).join('\n') + `\n간격: k = ${fmt(geom.k)} (다섯 점 전부 등간격)`;
+      }
+      case 'sqrt3': {
+        const s3 = Math.sqrt(3)*geom.k;
+        return `극값점까지 거리: k = ${fmt(geom.k)}\n교점까지 거리: √3k = ${fmt(s3)}\n비율 ≈ 1 : ${fmt(s3/geom.k)}`;
+      }
+      case 'area': {
+        const xE=geom.xMax, yE=geom.yMax;
+        const xM = 3*geom.x0-2*xE;
+        const beta_alpha = Math.abs(xM-xE);
+        const S = Math.abs(geom.a)/12 * Math.pow(beta_alpha,4);
+        // numeric check
+        const lo=Math.min(xE,xM), hi=Math.max(xE,xM);
+        let numS=0; const steps=4000; const dx=(hi-lo)/steps;
+        for (let i=0;i<steps;i++){ const x=lo+dx*(i+0.5); numS += Math.abs(fval(geom,x)-yE)*dx; }
+        return `α=${fmt(xE)}, β=${fmt(xM)}, |β−α|=${fmt(beta_alpha)}\n공식: S = |a|/12 × |β−α|⁴ = ${fmt(S)}\n수치적분 검산: ${fmt(numS)}`;
+      }
+      case 'diff': {
+        const diff = Math.abs(geom.yMax - geom.yMin);
+        const d = Math.abs(geom.xMax - geom.xMin);
+        const formula = Math.abs(geom.a) * Math.pow(d,3) / 2;
+        return `직접 계산: |극값1 − 극값2| = ${fmt(diff)}\n공식: |a|·d³/2 = ${fmt(formula)}  (d = ${fmt(d)})`;
+      }
+    }
+    return '';
+  }
+
+  // ---------- Explorer widget ----------
+  const ex = {
+    canvas: document.getElementById('explorer-canvas'),
+    readout: document.getElementById('explorer-readout'),
+    state: { a:1, b:-6, c:9, d:2, mode:'sym', t:1 },
+    sliders: { a: document.getElementById('s-a'), b: document.getElementById('s-b'), c: document.getElementById('s-c'), d: document.getElementById('s-d'), t: document.getElementById('s-t') },
+    vals: { a: document.getElementById('v-a'), b: document.getElementById('v-b'), c: document.getElementById('v-c'), d: document.getElementById('v-d'), t: document.getElementById('v-t') },
+  };
+
+  function render(){
+    const geom = computeGeom(ex.state.a, ex.state.b, ex.state.c, ex.state.d);
+    drawGraph(ex.canvas, geom, ex.state.mode, ex.state.t);
+    ex.readout.textContent = readoutFor(ex.state.mode, geom, ex.state.t);
+    document.getElementById('t-row').style.display = ex.state.mode==='sym' ? 'block' : 'none';
+  }
+
+  ['a','b','c','d'].forEach(key=>{
+    ex.sliders[key].addEventListener('input', e=>{
+      ex.state[key] = parseFloat(e.target.value);
+      ex.vals[key].textContent = fmt(ex.state[key]);
+      render();
+    });
+  });
+  ex.sliders.t.addEventListener('input', e=>{
+    ex.state.t = parseFloat(e.target.value);
+    ex.vals.t.textContent = fmt(ex.state.t);
+    render();
+  });
+
+  document.getElementById('explorer-modes').addEventListener('click', e=>{
+    const btn = e.target.closest('.mode-btn');
+    if (!btn) return;
+    document.querySelectorAll('#explorer-modes .mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    ex.state.mode = btn.dataset.mode;
+    render();
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', ()=>{
+    ex.state.a=1; ex.state.b=-6; ex.state.c=9; ex.state.d=2; ex.state.t=1;
+    ex.sliders.a.value=1; ex.sliders.b.value=-6; ex.sliders.c.value=9; ex.sliders.d.value=2; ex.sliders.t.value=1;
+    ex.vals.a.textContent='1'; ex.vals.b.textContent='-6'; ex.vals.c.textContent='9'; ex.vals.d.textContent='2'; ex.vals.t.textContent='1';
+    render();
+  });
+
+  document.querySelectorAll('.graphlink').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = btn.dataset.target;
+      document.querySelectorAll('#explorer-modes .mode-btn').forEach(b=>b.classList.toggle('active', b.dataset.mode===target));
+      ex.state.mode = target;
+      if (btn.dataset.t) { ex.state.t = parseFloat(btn.dataset.t); ex.sliders.t.value = ex.state.t; ex.vals.t.textContent = fmt(ex.state.t); }
+      render();
+      document.getElementById('explorer').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  window.addEventListener('resize', render);
+  render();
+
+  // ---------- Simulator ----------
+  const simBtn = document.getElementById('sim-btn');
+  const simOut = document.getElementById('sim-output');
+  const simCanvasBox = document.getElementById('sim-canvas-box');
+  const simCanvas = document.getElementById('sim-canvas');
+
+  simBtn.addEventListener('click', ()=>{
+    const a = parseFloat(document.getElementById('sim-a').value);
+    const x0 = parseFloat(document.getElementById('sim-x0').value);
+    const y0 = parseFloat(document.getElementById('sim-y0').value);
+    const diff = Math.abs(parseFloat(document.getElementById('sim-diff').value));
+
+    if (!a || a===0 || !isFinite(diff) || diff<=0){
+      simOut.innerHTML = '<p style="color:var(--brick)">a는 0이 아니어야 하고, 극값의 차는 0보다 커야 합니다.</p>';
+      simCanvasBox.style.display='none';
+      return;
+    }
+
+    const k = Math.cbrt(diff/(4*Math.abs(a)));
+    const xMaxPt = a>0 ? x0-k : x0+k; // 극댓값 위치
+    const beta = 3*x0 - 2*xMaxPt;
+    const yMaxPt = a>0 ? (2*a*Math.pow(k,3)+y0) : (-2*a*Math.pow(k,3)+y0); // g(-k)=2ak^3 (a>0 case), symmetric for a<0
+    const betaAlpha = Math.abs(beta-xMaxPt);
+    const S = Math.abs(a)/12 * Math.pow(betaAlpha,4);
+
+    // standard coefficients: f(x) = a(x-x0)^3 + p(x-x0) + y0, p = -3a k^2
+    const p = -3*a*k*k;
+    const b = -3*a*x0;
+    const c = 3*a*x0*x0 + p;
+    const dConst = -a*Math.pow(x0,3) - p*x0 + y0;
+    const sign = v => v>=0 ? '+' : '−';
+
+    simOut.innerHTML = `
+      <div class="step"><span class="step-label">1단계 — 극값점 사이의 거리</span>극값의 차 = |a|·d³/2 → d³ = 2Δ/|a| = ${fmt(2*diff/Math.abs(a))} → d = ${fmt(2*k)} (k = ${fmt(k)})</div>
+      <div class="step"><span class="step-label">2단계 — 극댓값 접선이 다시 만나는 점</span>극댓값 x = ${fmt(xMaxPt)}, 접선이 다시 만나는 점 x = ${fmt(beta)}</div>
+      <div class="step"><span class="step-label">3단계 — 넓이 공식 적용</span>S = |a|/12 × |β−α|⁴ = ${fmt(Math.abs(a))}/12 × ${fmt(betaAlpha)}⁴ = <strong>${fmt(S)}</strong></div>
+      <div class="answer">답: ${fmt(S)}</div>
+      <div class="readout">이 조건을 만족하는 함수는 유일합니다:
+f(x) = ${fmt(a)}x³ ${sign(b)} ${fmt(Math.abs(b))}x² ${sign(c)} ${fmt(Math.abs(c))}x ${sign(dConst)} ${fmt(Math.abs(dConst))}</div>
+    `;
+
+    simCanvasBox.style.display = 'block';
+    const geom = computeGeom(a,b,c,dConst);
+    requestAnimationFrame(()=> drawGraph(simCanvas, geom, 'area', 1));
+  });
+
+})();
+</script>
+</body>
+</html>
