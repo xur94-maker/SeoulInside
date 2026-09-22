@@ -1,21 +1,9 @@
 {
   "globalNews": [
     {
-      "title": "Major US outlets boycott shared Trump coverage in protest at media ban",
-      "link": "https://www.bbc.co.uk/news/articles/cje3rezd92y3o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 22 Sep 2026 08:17:15 GMT",
-      "desc": "Regular coverage of the president has been disrupted after he banned CNN, MS NOW and Politico from the White House."
-    },
-    {
-      "title": "Lithuania ready to 'fight back' but has evacuation plans in face of Russia threats, PM tells BBC",
-      "link": "https://www.bbc.co.uk/news/articles/ck5yw8npxzrlo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 22 Sep 2026 13:49:22 GMT",
-      "desc": "Sinkevičius told BBC Newsnight Lithuanians feel \"constantly threatened\" by Moscow, but the nation was prepared to \"fight back\" if attacked."
-    },
-    {
       "title": "Sri Lanka court convicts 15 men over deadly Easter Sunday bombings",
       "link": "https://www.bbc.co.uk/news/articles/cqy7z275yx65o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 22 Sep 2026 13:17:39 GMT",
+      "date": "Tue, 22 Sep 2026 14:03:20 GMT",
       "desc": "Three churches and three luxury hotels were targeted in the 2019 attacks which killed 270."
     },
     {
@@ -25,10 +13,22 @@
       "desc": "Scientists say the developing El Niño is now the strongest on record with weather impacts already being felt around the world."
     },
     {
-      "title": "Iran must stop arming Houthis in Yemen, G7 says ahead of UN General Assembly",
-      "link": "https://www.bbc.co.uk/news/articles/cwm2qpmepmlzo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 22 Sep 2026 13:39:09 GMT",
-      "desc": "The G7 also condemns \"in the strongest terms\" Houthi attacks on Saudi Arabia, saying that the escalation in fighting in Yemen jeopardises global energy security."
+      "title": "Eleven injured in shooting outside Turkish school",
+      "link": "https://www.bbc.co.uk/news/articles/c6y0z4gv0le4o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 22 Sep 2026 10:42:47 GMT",
+      "desc": "Footage appears to show a male in the area carrying a firearm, while officials say the attacker has been captured."
+    },
+    {
+      "title": "Lindsay Clancy's lawyer asks judge to investigate juror and check his phone",
+      "link": "https://www.bbc.co.uk/news/articles/cm4gvyw80dp2o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 22 Sep 2026 13:58:42 GMT",
+      "desc": "The attorney wants the court to look at the juror's mobile phone use and answers on questionnaires."
+    },
+    {
+      "title": "Top South African policeman charged with sexual offences",
+      "link": "https://www.bbc.co.uk/news/articles/cwjdvgx77n0zo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 22 Sep 2026 16:54:41 GMT",
+      "desc": "Shadrack Sibiya, who has made no comment, is alleged to have groomed a 16-year-old and raped an 18-year-old."
     }
   ],
   "koreaNews": [
@@ -57,10 +57,10 @@
       "desc": "“South Korea’s Semiconductor Moat Runs Deep” — Wall Street CEO Sees Decade-Plus Golden Era for Korean Economy&nbsp;&nbsp;finance.biggo.com"
     },
     {
-      "title": "Seoul picks $22.3B Texas gas plant as 1st project under US investment package - Anadolu Ajansı",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbXFpRGpsWGtLbEVfb2wtVGRLdjZ4UEpvLUlONVBUYXhtRkhRMUVtX3NESUVTZWt5a0ZaUXc1d3d4dWhMZ085RGpTME9JZC1iYXVUUDBQdFJ1cGR2b043dmtPVkhNVk10WFlCb3UxSUc3VUNpRlVCSi1LQVpSZ0lRT0E0VU9HRVY2OFlacGhIVmZHaFFqS0plWDJ1QUxtOG53MXRNSHFYcjhpZ2VQSUNIYnZiWG5jXy05?oc=5",
-      "date": "Tue, 22 Sep 2026 06:54:03 GMT",
-      "desc": "Seoul picks $22.3B Texas gas plant as 1st project under US investment package&nbsp;&nbsp;Anadolu Ajansı"
+      "title": "South Korea may be getting too old to take advantage of its AI boom - Fortune",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQZG9QazFXQW11Zzlqd2x2VGtZampWdTNYVlVvNlpTenlCXzV0M24ydUplQks4M05vaS16NW1QMEFMQ2FlS1pkbUtDUjNzem5pc0Z0S0ROMlFiY0hmSzV4S3I5VGxrVUxNeU5ycWpCcFE2NFY2S2UyY3hNcjZVZmFSVEE5a0NuU204V0RFR0FYMkV3N1NlSG9n?oc=5",
+      "date": "Sun, 30 Aug 2026 07:00:00 GMT",
+      "desc": "South Korea may be getting too old to take advantage of its AI boom&nbsp;&nbsp;Fortune"
     },
     {
       "title": "Samsung Electronics, SK Hynix Gain as U.S. AI, Chip Stocks Surge - bloomingbit",
@@ -69,105 +69,105 @@
       "desc": "Samsung Electronics, SK Hynix Gain as U.S. AI, Chip Stocks Surge&nbsp;&nbsp;bloomingbit"
     },
     {
+      "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQQjJHWHN4NlplMGhFY2FHN0tkOURPOEFjSlRzZFhZaDB1bWpEcFRKam93VnNscllYSkxHT1lKcVJhZVBpSkN4VlNRZG1CazRCMjZkUkFhYkcwV29kU1BzR3NLeTV5MU1BdDd2SHpMQnhYR0llVVFreXpTVXZsX3hvUkNXX0J6NnFzYktONVRNVWE5eDlNN0hGQ1JYaEZvUFJOcmJLUVBoTkVNQ3JObFFFQ0MydFpBZHJUdFU0dy1LLVFqd1NydjZ6M3dTdw?oc=5",
+      "date": "Sun, 13 Sep 2026 07:00:00 GMT",
+      "desc": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows&nbsp;&nbsp;Reuters"
+    },
+    {
       "title": "South Korea's Top 1% Traders Dump SK Hynix in a Day, Pivot to Samsung Electro-Mechanics and Samsung Electronics — Sorting Winners in Semiconductor Stocks - finance.biggo.com",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5EX3V2eVp5WnVSSDF0LXJReVYtOTRTby1GSHFDTGgxcDQxM1FOWEs1Z3lEdVI1STh4anViR2tHaU5JQjcxQllVcGdDS2NncklMZ1NWVkZobVI5eHpNUlRGNFZrVVgxWjhKYUJmNG52emQtWTBiaFE?oc=5",
       "date": "Tue, 22 Sep 2026 03:25:00 GMT",
       "desc": "South Korea's Top 1% Traders Dump SK Hynix in a Day, Pivot to Samsung Electro-Mechanics and Samsung Electronics — Sorting Winners in Semiconductor Stocks&nbsp;&nbsp;finance.biggo.com"
-    },
-    {
-      "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - reuters.com",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQQjJHWHN4NlplMGhFY2FHN0tkOURPOEFjSlRzZFhZaDB1bWpEcFRKam93VnNscllYSkxHT1lKcVJhZVBpSkN4VlNRZG1CazRCMjZkUkFhYkcwV29kU1BzR3NLeTV5MU1BdDd2SHpMQnhYR0llVVFreXpTVXZsX3hvUkNXX0J6NnFzYktONVRNVWE5eDlNN0hGQ1JYaEZvUFJOcmJLUVBoTkVNQ3JObFFFQ0MydFpBZHJUdFU0dy1LLVFqd1NydjZ6M3dTdw?oc=5",
-      "date": "Sun, 13 Sep 2026 07:00:00 GMT",
-      "desc": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows&nbsp;&nbsp;reuters.com"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 227.51,
-      "change": 5.24,
-      "pct": 2.36,
+      "price": 228.82,
+      "change": 6.55,
+      "pct": 2.95,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 446.44,
-      "change": 11.77,
-      "pct": 2.71,
+      "price": 447.94,
+      "change": 13.27,
+      "pct": 3.05,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 614.57,
-      "change": 54.75,
-      "pct": 9.78,
+      "price": 618.54,
+      "change": 58.72,
+      "pct": 10.49,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 121.06,
-      "change": 12.46,
-      "pct": 11.47,
+      "price": 121.84,
+      "change": 13.24,
+      "pct": 12.19,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 193.4,
-      "change": 15.68,
-      "pct": 8.82,
+      "price": 195.7,
+      "change": 17.98,
+      "pct": 10.12,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 323.77,
-      "change": 48.16,
-      "pct": 17.47,
+      "price": 333.3,
+      "change": 57.69,
+      "pct": 20.93,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 361.08,
-      "change": 11.54,
-      "pct": 3.3,
+      "price": 352.04,
+      "change": 2.5,
+      "pct": 0.71,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 340.84,
-      "change": 4.71,
-      "pct": 1.4,
+      "price": 341.36,
+      "change": 5.23,
+      "pct": 1.56,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 496.48,
-      "change": 2.7,
-      "pct": 0.55,
+      "price": 496.65,
+      "change": 2.88,
+      "pct": 0.58,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7770.3,
-      "change": 119.8,
-      "pct": 1.57,
+      "price": 7763.9,
+      "change": 113.4,
+      "pct": 1.48,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27226.94,
-      "change": 704.4,
-      "pct": 2.66,
+      "price": 27204.57,
+      "change": 682.03,
+      "pct": 2.57,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1353.28,
-      "change": -31.58,
-      "pct": -2.28,
+      "price": 1358.3,
+      "change": -26.56,
+      "pct": -1.92,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-22 13:58 UTC"
+  "updatedAt": "2026-09-22 17:49 UTC"
 }
