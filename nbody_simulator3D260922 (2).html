@@ -188,25 +188,6 @@
     box-shadow: 0 0 10px rgba(79, 195, 247, 0.6);
   }
 
-  input[type="range"]:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
-  input[type="range"]:disabled::-webkit-slider-thumb {
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  input[type="range"]:disabled::-moz-range-thumb {
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-
-  #n-slider-note {
-    color: #ffb74d;
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.4;
-  }
-
   .toggle-row {
     display: flex;
     align-items: center;
@@ -765,15 +746,12 @@
   </div>
 
   <div class="panel-title">Simulation</div>
-  <div class="slider-group" id="n-slider-group">
+  <div class="slider-group">
     <label>
       <span>N (body count)</span>
       <span id="val-n">8</span>
     </label>
     <input type="range" id="n-slider" min="2" max="500" step="1" value="8">
-    <div class="slider-ticks" id="n-slider-note" style="display:none;">
-      <span>Fixed by this preset — pick a random/N-gon preset to change N</span>
-    </div>
   </div>
 
   <div class="toggle-row">
@@ -1254,7 +1232,6 @@ class Body {
     this.pos = new THREE.Vector3(x, y, z);
     this.vel = new THREE.Vector3(vx, vy, vz);
     this.acc = new THREE.Vector3(0, 0, 0);
-    this.prevAcc = new THREE.Vector3(0, 0, 0); // [FIX] a(t) 저장용 — 진짜 velocity Verlet에 필요
     this.mass = mass;
     // [CHANGED] baseRadius 저장 (물리적 크기)
     this.baseRadius = Math.max(0.15, Math.cbrt(mass) * 0.35);
@@ -1485,35 +1462,18 @@ function computeAccelerations() {
 }
 
 // ============================================================
-// Velocity Verlet (진짜 버전) — [FIX]
-// 기존 코드는 a(t)로 위치를 옮긴 뒤 "같은" a(t)로 속도까지 갱신해서
-// 사실상 에너지 보존이 안 되는 반-Euler 방식이었음.
-// 진짜 velocity Verlet은 위치 이동 → a(t+dt) 재계산 → a(t)와 a(t+dt)의
-// 평균으로 속도를 갱신해야 함. PC 성능은 충분하다고 하셨으니
-// 가속도를 서브스텝당 2회 계산하는 정석적인 방식으로 교체.
+// Verlet
 // ============================================================
 function integrateVerlet(dt) {
-  // 1) 현재 가속도 a(t)는 이미 이 함수 호출 전에 computeAccelerations()로
-  //    계산되어 b.acc에 들어있다고 가정. 이걸 prevAcc에 백업.
-  for (const b of bodies) {
-    b.prevAcc.copy(b.acc);
-  }
-
-  // 2) x(t+dt) = x(t) + v(t)·dt + 0.5·a(t)·dt²
   for (const b of bodies) {
     b.pos.x += b.vel.x * dt + 0.5 * b.acc.x * dt * dt;
     b.pos.y += b.vel.y * dt + 0.5 * b.acc.y * dt * dt;
     b.pos.z += b.vel.z * dt + 0.5 * b.acc.z * dt * dt;
   }
-
-  // 3) 새 위치에서 a(t+dt)를 다시 계산 (핵심 수정 지점)
-  computeAccelerations();
-
-  // 4) v(t+dt) = v(t) + 0.5·(a(t) + a(t+dt))·dt
   for (const b of bodies) {
-    b.vel.x += 0.5 * (b.prevAcc.x + b.acc.x) * dt;
-    b.vel.y += 0.5 * (b.prevAcc.y + b.acc.y) * dt;
-    b.vel.z += 0.5 * (b.prevAcc.z + b.acc.z) * dt;
+    b.vel.x += b.acc.x * dt;
+    b.vel.y += b.acc.y * dt;
+    b.vel.z += b.acc.z * dt;
   }
 }
 
@@ -1523,16 +1483,10 @@ function integrateVerlet(dt) {
 function detectCollisions() {
   const pairs = [];
   const n = bodies.length;
-  // [FIX] 고정 거리(CONFIG.COLLISION_DIST) 대신, 실제 렌더링되는 반지름
-  // (baseRadius * bodyScale)의 합으로 판정. 질량이 크면 시각적으로도 커지므로
-  // 눈에 보이는 겹침 시점과 충돌 판정 시점이 일치하게 됨.
-  const minGap = CONFIG.COLLISION_DIST; // 최소 여유 거리(너무 작은 바디끼리도 어느 정도 거리에서 충돌하도록)
+  const r2 = CONFIG.COLLISION_DIST * CONFIG.COLLISION_DIST;
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j < n; j++) {
-      const bi = bodies[i], bj = bodies[j];
-      const rSum = Math.max(minGap, (bi.baseRadius + bj.baseRadius) * bodyScale);
-      const r2 = rSum * rSum;
-      const d2 = bi.pos.distanceToSquared(bj.pos);
+      const d2 = bodies[i].pos.distanceToSquared(bodies[j].pos);
       if (d2 < r2) pairs.push([i, j]);
     }
   }
@@ -1789,21 +1743,15 @@ function injectBody() {
 // Energy, Angular Momentum, Momentum
 // ============================================================
 function computeEnergy() {
-  // [FIX] 힘/가속도가 softened potential U = -G m_i m_j / sqrt(r² + ε²) 에서
-  // 유도된 것이므로, 보존되어야 할 에너지도 반드시 같은 퍼텐셜로 계산해야
-  // 의미가 있음. 이전 코드는 ε 없는 순수 1/r 퍼텐셜을 써서, 특히 softening을
-  // 크게 올렸을 때(슬라이더 최대 0.5) 실제로는 잘 보존되고 있는 에너지가
-  // 그래프상으로는 계속 drift 하는 것처럼 보이는 오해를 유발했음.
   let T = 0, V = 0;
-  const eps2 = softening * softening;
   const n = bodies.length;
   for (let i = 0; i < n; i++) {
     const bi = bodies[i];
     T += 0.5 * bi.mass * (bi.vel.x**2 + bi.vel.y**2 + bi.vel.z**2);
     for (let j = i + 1; j < n; j++) {
       const bj = bodies[j];
-      const d2 = bi.pos.distanceToSquared(bj.pos) + eps2;
-      V -= CONFIG.G * bi.mass * bj.mass / Math.sqrt(d2);
+      const d = bi.pos.distanceTo(bj.pos) + 1e-6;
+      V -= CONFIG.G * bi.mass * bj.mass / d;
     }
   }
   return { T, V, E: T + V };
@@ -1957,13 +1905,13 @@ function initLyapunovTwin() {
     ),
     vel: b.vel.clone(),
     acc: new THREE.Vector3(),
-    prevAcc: new THREE.Vector3(),
     mass: b.mass
   }));
   lyapHistory.length = 0;
 }
 
-function computeTwinAccelerations() {
+function stepLyapunovTwin(dt) {
+  if (!lyapEnabled || twinBodies.length !== bodies.length) return;
   const G = CONFIG.G;
   const eps2 = softening * softening;
   const n = twinBodies.length;
@@ -1986,31 +1934,16 @@ function computeTwinAccelerations() {
       bj.acc.z -= f * bi.mass * dz;
     }
   }
-}
-
-function stepLyapunovTwin(dt) {
-  if (!lyapEnabled || twinBodies.length !== bodies.length) return;
-  const n = twinBodies.length;
-
-  // [FIX] 메인 바디와 동일한 진짜 velocity Verlet 사용.
-  // a(t)는 이전 프레임 끝에서 이미 계산되어 있어야 하므로 최초 1회는 여기서 계산.
-  computeTwinAccelerations();
-  for (const b of twinBodies) b.prevAcc.copy(b.acc);
-
   for (const b of twinBodies) {
     b.pos.x += b.vel.x*dt + 0.5*b.acc.x*dt*dt;
     b.pos.y += b.vel.y*dt + 0.5*b.acc.y*dt*dt;
     b.pos.z += b.vel.z*dt + 0.5*b.acc.z*dt*dt;
   }
-
-  computeTwinAccelerations(); // a(t+dt)
-
   for (const b of twinBodies) {
-    b.vel.x += 0.5*(b.prevAcc.x + b.acc.x)*dt;
-    b.vel.y += 0.5*(b.prevAcc.y + b.acc.y)*dt;
-    b.vel.z += 0.5*(b.prevAcc.z + b.acc.z)*dt;
+    b.vel.x += b.acc.x*dt;
+    b.vel.y += b.acc.y*dt;
+    b.vel.z += b.acc.z*dt;
   }
-
   let maxD = 0;
   for (let i = 0; i < n; i++) {
     const d = bodies[i].pos.distanceTo(twinBodies[i].pos);
@@ -2556,35 +2489,6 @@ const PRESETS = {
   }
 };
 
-// [FIX] 프리셋을 바꿔도 정보 패널(#model-name, #model-desc)이 갱신되는 코드가
-// 어디에도 없어서 항상 초기 HTML의 "Random Cluster" 텍스트만 보였음.
-const PRESET_DESC = {
-  random8:     'Randomly distributed bodies with a shared center-of-mass rotation. No special structure — a generic chaotic N-body cluster.',
-  random16:    'Randomly distributed bodies with a shared center-of-mass rotation. No special structure — a generic chaotic N-body cluster.',
-  random100:   'A larger random cluster. Barnes-Hut approximation activates automatically once N exceeds 20.',
-  pythagoras:  'The classic Pythagorean three-body problem: masses 3, 4, 5 starting from rest. Famously chaotic — extremely sensitive to initial conditions and integration error.',
-  figure8:     'Chenciner–Montgomery figure-eight orbit: three equal masses chasing each other around a single figure-eight curve. An exact periodic solution of the three-body problem.',
-  lagrange:    'Equilateral (Lagrange) configuration: three equal masses at the corners of a rigidly rotating equilateral triangle. An exact periodic central configuration.',
-  euler:       'Euler collinear configuration: three bodies on a straight line. An exact but unstable solution — any small perturbation grows over time.',
-  rotating8:   'A perturbed figure-eight orbit with an extra rotational term added. No longer an exact solution, so it slowly drifts away from the ideal figure-eight.',
-  starPentagon:'A choreographic four-body orbit tracing a self-intersecting star path. An exact periodic solution, but numerically delicate — hence the reduced softening.',
-  regularNgon: 'N equal masses evenly spaced on a circle, rotating rigidly together. An exact central configuration for any N ≥ 4, using a closed-form angular velocity.',
-  solar:       'A toy Sun + 8 "planets" system. Each planet is seeded on a circular two-body orbit, but planet–planet gravity (ignored during seeding) makes the full system a genuine, mildly chaotic N-body problem.',
-  sunEarth:    'A smaller Sun + 4 planets system — same idea as Solar System, with fewer bodies.',
-  cluster:     'A 50-body random cluster. Barnes-Hut is active by default at this size.',
-  galaxy:      'A simple 200-body toy galaxy: one massive central body with a rotating disk of low-mass "stars" orbiting it.'
-};
-
-function updatePresetInfo(key) {
-  const preset = PRESETS[key];
-  if (!preset) return;
-  document.getElementById('model-name').textContent = preset.name;
-  document.getElementById('model-desc').textContent =
-    PRESET_DESC[key] || 'N-body gravitational simulation with Barnes-Hut tree.';
-  const calcName = document.getElementById('calc-model-name');
-  if (calcName) calcName.textContent = preset.name;
-}
-
 const PRESET_BADGES = {
   figure8:      'EXACT',
   lagrange:     'EXACT',
@@ -2595,36 +2499,18 @@ const PRESET_BADGES = {
   regularNgon:  'UNSTABLE'
 };
 
-// [FIX] 몸체 개수와 초기조건이 서로 얽혀서 "정확한 해"를 이루는 프리셋들.
-// 이 프리셋들이 선택된 상태에서 N 슬라이더를 움직이면 그 정확한 해가
-// 깨지고 그냥 랜덤 바디로 바뀌어버리는데, 프리셋 이름/뱃지는 그대로 남아
-// 사용자가 눈치채기 어려웠음. → 슬라이더 자체를 비활성화.
-const PRESET_FIXED_N = new Set([
-  'pythagoras', 'figure8', 'lagrange', 'euler', 'rotating8',
-  'starPentagon', 'solar', 'sunEarth'
-]);
-
 function setupNSliderMode() {
   const slider = document.getElementById('n-slider');
-  const note = document.getElementById('n-slider-note');
   if (currentPresetKey === 'regularNgon') {
-    slider.disabled = false;
     slider.min = 4;
     slider.max = 20;
     slider.step = 1;
     slider.value = currentN;
-    note.style.display = 'none';
-  } else if (PRESET_FIXED_N.has(currentPresetKey)) {
-    slider.disabled = true;
-    slider.value = currentN;
-    note.style.display = 'flex';
   } else {
-    slider.disabled = false;
     slider.min = 2;
     slider.max = 500;
     slider.step = 1;
     slider.value = Math.min(currentN, 500);
-    note.style.display = 'none';
   }
   document.getElementById('val-n').textContent = currentN;
 }
@@ -2647,7 +2533,6 @@ function buildPresetButtons() {
       currentPresetKey = key;
       PRESETS[key].build();
       setupNSliderMode();
-      updatePresetInfo(key);
       updateStats();
     };
     grid.appendChild(btn);
@@ -2679,7 +2564,6 @@ function buildThemeButtons() {
 // Sliders
 // ============================================================
 document.getElementById('n-slider').oninput = (e) => {
-  if (PRESET_FIXED_N.has(currentPresetKey)) return; // 방어적 가드 (평소엔 disabled로 막힘)
   const n = parseInt(e.target.value);
   document.getElementById('val-n').textContent = n;
   if (currentPresetKey === 'regularNgon') {
@@ -2856,25 +2740,21 @@ document.getElementById('toggle-bh').onclick = function() {
   useBarnesHut = this.classList.contains('on');
 };
 
-// [FIX] collisionMode는 항상 'elastic' 또는 'inelastic' 둘 중 하나여야 하고
-// "둘 다 꺼짐" 상태가 존재하지 않음(handleCollisions의 else 분기가 항상
-// inelastic으로 처리됨). 기존 코드는 이걸 두 개의 독립 토글로 구현해서,
-// 이미 켜져 있는 쪽을 클릭하면 toggle('on')으로 껐다가 else 분기에서
-// 바로 add('on')으로 강제로 다시 켜버리는 부자연스러운 방식이었음.
-// → 라디오 버튼처럼 동작이 명시적으로 드러나는 헬퍼 함수로 정리.
-const collisionToggles = {
-  elastic:   document.getElementById('toggle-elastic'),
-  inelastic: document.getElementById('toggle-inelastic')
+document.getElementById('toggle-elastic').onclick = function() {
+  this.classList.toggle('on');
+  if (this.classList.contains('on')) {
+    document.getElementById('toggle-inelastic').classList.remove('on');
+    collisionMode = 'elastic';
+  } else this.classList.add('on');
 };
 
-function setCollisionMode(mode) {
-  collisionMode = mode;
-  collisionToggles.elastic.classList.toggle('on', mode === 'elastic');
-  collisionToggles.inelastic.classList.toggle('on', mode === 'inelastic');
-}
-
-collisionToggles.elastic.onclick = () => setCollisionMode('elastic');
-collisionToggles.inelastic.onclick = () => setCollisionMode('inelastic');
+document.getElementById('toggle-inelastic').onclick = function() {
+  this.classList.toggle('on');
+  if (this.classList.contains('on')) {
+    document.getElementById('toggle-elastic').classList.remove('on');
+    collisionMode = 'inelastic';
+  } else this.classList.add('on');
+};
 
 document.getElementById('toggle-particles').onclick = function() {
   this.classList.toggle('on');
@@ -2985,9 +2865,6 @@ function init() {
 
   document.getElementById('equation-content').textContent =
     'aᵢ = G Σ_{j≠i} mⱼ (rⱼ − rᵢ) / (|rⱼ−rᵢ|² + ε²)^(3/2)';
-
-  updatePresetInfo(currentPresetKey);
-  setupNSliderMode();
 
   speedMultiplier = 1.0;
   speedSlider.value = speedToSlider(speedMultiplier);
