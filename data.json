@@ -1,22 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "US and Iran hold first talks since June after Trump's 'annihilation' threat",
-      "link": "https://www.bbc.co.uk/news/articles/ck62m1631d7po?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 23 Sep 2026 06:12:56 GMT",
-      "desc": "The talks are the first since a ceasefire collapsed in June, with the sides exchanging fire intermittently."
-    },
-    {
-      "title": "Reports of violence against women in Gaza surge, UN agency finds",
-      "link": "https://www.bbc.co.uk/news/articles/c94gm7dp40y0o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 23 Sep 2026 05:02:26 GMT",
-      "desc": "The UN Population Fund also says there has been a \"severe escalation\" in the number of early and forced marriages."
+      "title": "Iran's president tells Trump it will never 'bend the knee'",
+      "link": "https://www.bbc.co.uk/news/articles/cqvgyjy23ggjo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 23 Sep 2026 17:34:44 GMT",
+      "desc": "Masoud Pezeshkian's defiant speech to the UN comes after the US president threatened to \"annihilate\" Iran if a peace deal is not agreed soon."
     },
     {
       "title": "Ethiopia and Tigray accuse each of launching offensives, fuelling fears of new war",
       "link": "https://www.bbc.co.uk/news/articles/cry8zwwq21pxo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 23 Sep 2026 13:17:11 GMT",
+      "date": "Wed, 23 Sep 2026 16:53:37 GMT",
       "desc": "The local authorities reportedly seize Tigray's airports following reports of recent drone strikes."
+    },
+    {
+      "title": "White House rolling out red carpet for historic Xi Jinping visit",
+      "link": "https://www.bbc.co.uk/news/articles/c6n9w410v3vzo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 23 Sep 2026 14:32:37 GMT",
+      "desc": "Trump and Xi are expected to discuss a range of issues from trade to AI during the latter's multi-day visit to Washington."
     },
     {
       "title": "Dramatic eviction of woman aged 87 highlights Spain's housing shortage",
@@ -33,6 +33,12 @@
   ],
   "koreaNews": [
     {
+      "title": "OECD raises S. Korea's 2026 growth forecast to 3.7 pct - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQdU91MzJUN21YN1ROalJadmhjY1BmVWVTSGJweHZSTUs1elRFMHBuaU4ycnhSdENUZjIybkotdjdFdEhVMTBUalM1YnhoY1pXTnBjbHRrUzg3eWhLUnJ4eVpWazlZRnhBb1pmelhuc0VCUEpjR1JzbUg0U3hPWldtdmhyTmJydEVaUDBlaU0zQ3IxOVVhaElnMmJ5Qk4xd1hPdlFCVW5FYzJSLUVlWHZ0bjNFOWVlQTVWQW12N2M0NXRzem05eHfSAcsBQVVfeXFMTVBPUmt2OEYtQmZoWUhmNGtzYXZCY192NWthYzJ5cnFDT2czWk5TT0VoSEdOS1pKY1ZBNUNaOGxHWHZTWTVmcVMwTXpOWC1TOXg0YklXNlhycXBJQTJzMnpIZnVSU1hHdm1aclU5MTZ1U01xUEhaTUZKelNRamNPTDdVS2xxRTlZQXltSXJIRFdIZkYtYmtkWURlUGZSUkRraWJwcFlOWGZmMjBSREQ1Q291c0tDU3EtT1IzRXI2ejBBYWpDcVQwb0pTV2c?oc=5",
+      "date": "Wed, 23 Sep 2026 09:32:12 GMT",
+      "desc": "OECD raises S. Korea's 2026 growth forecast to 3.7 pct&nbsp;&nbsp;upi.com"
+    },
+    {
       "title": "South Korea says Trump welcomes progress in US strategic investment projects - Reuters",
       "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPZlB0RThSZWlTb2UyS2NubkVBc19za21lQjVVV2V3bWhuTGgwSGhQbzl1cVhzYVFRS281M0pLaVMwZGRVUHlaWWl6VGpSTEk0Nm13cVdQUTZhdS1xSkQ1SldhTXducmF5T04tR0xNU25YdWF3eXdmRDNiUXN4UDVnTEdwZkhkWnQ0Rk0zUDc5b05SZmo1c053RkpfTFppMk9YSEllNFhtQzA1djhYdmdtcFdIXzlnSTdZWFlBNA?oc=5",
       "date": "Wed, 23 Sep 2026 01:56:00 GMT",
@@ -47,7 +53,7 @@
     {
       "title": "South Korea bets on Texas gas plant to satisfy Donald Trump - Financial Times",
       "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPMHM2dTljTWlaT3ZlVUdOVjNUWC1TcWMyeS1POHFCWmZHNnhJQ2V3TjhPdmxITFlVM1dKSzB0eF9PNzNqRVV1azFtVmFkaUdmcnRmV1pYZ2hteTlUMzd5X0trRUZxNzVqQkF1UkZoWkk3NkU4QV9tRlhWQ3hfQ3l1cng3M3Q?oc=5",
-      "date": "Wed, 23 Sep 2026 04:30:52 GMT",
+      "date": "Wed, 23 Sep 2026 04:28:42 GMT",
       "desc": "South Korea bets on Texas gas plant to satisfy Donald Trump&nbsp;&nbsp;Financial Times"
     },
     {
@@ -57,117 +63,111 @@
       "desc": "South Korea keeps fuel cheap for holidays as fiscal cost mounts&nbsp;&nbsp;The Japan Times"
     },
     {
-      "title": "US and South Korea Advance $350 Billion Investment Deal as Alliance Talks Deepen - Modern Diplomacy",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQY2dXUjlVUDVFV2hqWGRNbElHbGI1dkVGUUdZdEdZNEhjNDJvbXpVUVZmaHF3N056ZzgyRm1fMTc4MWdzY19pZ0syS2tMUEotbUNTYVJXVFNlb0FMMllmRnZTZld5NVVXaUQ0NmVsaVJrS2NQNkxaRkQ1RUlfMkltQkFJS1ZfSUFUOEExVDg5WTNDTUtHamozU2NwVEZOU0tpRWxraGl4cFdkYTQ5S3g5Y0xqX0pQREJVOWc?oc=5",
-      "date": "Wed, 23 Sep 2026 07:30:07 GMT",
-      "desc": "US and South Korea Advance $350 Billion Investment Deal as Alliance Talks Deepen&nbsp;&nbsp;Modern Diplomacy"
-    },
-    {
       "title": "Samsung, SK hynix's 800 trillion won chip cluster targets mass production by 2030 - Korea JoongAng Daily",
       "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOZGZxWXdWZHBUOU9vNlktcEp1NGxuT1IzYVVtTlFXNFA3YjRkQ2R2UTM3aHpKQnNGMTZzb0JWc1hWdXZCbk9pT2hkZ1VuT2ZpXzVNcG9PUEFQV0I5VlVCek9IX2RmZDRVUlIxU2l4Z3BEU2t6a0QzWkQ1MXhqbDBqNUVqc2R5OUd2VTJrRS16djIwVU80NGtBZHdRZkVGTHBqLVZ5X2d6RXZURTRHTTRKeXlDN3NkS3loUXZ6VERON3FlV0dVeGxUSWdPVng?oc=5",
       "date": "Wed, 23 Sep 2026 04:21:41 GMT",
       "desc": "Samsung, SK hynix's 800 trillion won chip cluster targets mass production by 2030&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
+      "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQQjJHWHN4NlplMGhFY2FHN0tkOURPOEFjSlRzZFhZaDB1bWpEcFRKam93VnNscllYSkxHT1lKcVJhZVBpSkN4VlNRZG1CazRCMjZkUkFhYkcwV29kU1BzR3NLeTV5MU1BdDd2SHpMQnhYR0llVVFreXpTVXZsX3hvUkNXX0J6NnFzYktONVRNVWE5eDlNN0hGQ1JYaEZvUFJOcmJLUVBoTkVNQ3JObFFFQ0MydFpBZHJUdFU0dy1LLVFqd1NydjZ6M3dTdw?oc=5",
+      "date": "Sun, 13 Sep 2026 07:00:00 GMT",
+      "desc": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows&nbsp;&nbsp;Reuters"
+    },
+    {
       "title": "South Korea's Samsung Electronics, SK Hynix Rally Over 2% as AI Agent Boom Lifts Semiconductor Stocks - finance.biggo.com",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9VdGxidDExYXYwNkdPSElMeHlvcGx4Z0MtaE5McjZZZUw5cEYzcnpmR1NicEY4RnVOXzJuQVJYekJwcFZYT3ZoNGNTVElDd1N1VmtXQWdVaTRseGhpRENSS3NKLWplRzlJaW1vSjM1eXRNNno5Ync?oc=5",
       "date": "Wed, 23 Sep 2026 01:25:00 GMT",
       "desc": "South Korea's Samsung Electronics, SK Hynix Rally Over 2% as AI Agent Boom Lifts Semiconductor Stocks&nbsp;&nbsp;finance.biggo.com"
-    },
-    {
-      "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPTFRIYzlpZmdmblB0WC10ZXBVZFM4R1dUMlRjNUozLWJDVFEwbHB2VnpYTmVlX1AxQ0dPa0tvQ24wRkR6YV95VnZ2RmxFZUtWUGxoemJSZ0NoeDZCS3l1OC11SUNRZHFpVG5nNEFmeVpvZWw3UzliWWhNcGZ2a0dPUUlIWkJ0d3Q2Rnp3V3dyY3VZWUw0ekdaZzNyaEFja3pqQVAtVWR3ZWw3eGo0QnY2NnpVN3NjT29IODA3UmdNM0EtRjdfRjMtd2VB?oc=5",
-      "date": "Wed, 09 Sep 2026 07:00:00 GMT",
-      "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;Reuters"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 227.18,
-      "change": -0.2,
-      "pct": -0.09,
+      "price": 225.32,
+      "change": -2.06,
+      "pct": -0.9,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 446.34,
-      "change": 1.2,
-      "pct": 0.27,
+      "price": 446.46,
+      "change": 1.32,
+      "pct": 0.3,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 613.79,
-      "change": -1.73,
-      "pct": -0.28,
+      "price": 613.48,
+      "change": -2.04,
+      "pct": -0.33,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 120.82,
-      "change": -0.96,
-      "pct": -0.79,
+      "price": 120.69,
+      "change": -1.09,
+      "pct": -0.9,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 195.49,
-      "change": 1.26,
-      "pct": 0.65,
+      "price": 197.05,
+      "change": 2.82,
+      "pct": 1.45,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 332.04,
-      "change": 9.14,
-      "pct": 2.83,
+      "price": 330.65,
+      "change": 7.75,
+      "pct": 2.4,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 342.0,
-      "change": -12.97,
-      "pct": -3.65,
+      "price": 338.96,
+      "change": -16.01,
+      "pct": -4.51,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 337.86,
-      "change": -1.12,
-      "pct": -0.33,
+      "price": 337.41,
+      "change": -1.57,
+      "pct": -0.46,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 498.92,
-      "change": -2.69,
-      "pct": -0.54,
+      "price": 499.45,
+      "change": -2.16,
+      "pct": -0.43,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7729.72,
-      "change": -34.98,
-      "pct": -0.45,
+      "price": 7715.59,
+      "change": -49.11,
+      "pct": -0.63,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27017.81,
-      "change": -104.28,
-      "pct": -0.38,
+      "price": 26951.43,
+      "change": -170.66,
+      "pct": -0.63,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1366.67,
-      "change": -7.01,
-      "pct": -0.51,
+      "price": 1365.8,
+      "change": -7.88,
+      "pct": -0.57,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-23 14:10 UTC"
+  "updatedAt": "2026-09-23 18:03 UTC"
 }
