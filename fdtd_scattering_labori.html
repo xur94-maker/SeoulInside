@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FDTD Scattering Lab v3.2 — Cinematic 3D Wave</title>
+<title>FDTD Scattering Lab v3.0 — Physics Absolute</title>
 <style>
   :root{
     --bg:#08080d; --panel:rgba(14,14,22,0.92); --line:rgba(79,195,247,0.22);
@@ -15,7 +15,7 @@
   body{font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text);
     overflow:hidden; height:100vh;
     padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);}
-  #canvas-wrap{position:fixed; inset:0; z-index:1; transition:opacity .3s;}
+  #canvas-wrap{position:fixed; inset:0; z-index:1;}
   canvas#field{width:100%; height:100%; display:block; background:#000;}
   #title-bar{position:fixed; top:env(safe-area-inset-top,0px); left:0; right:0; padding:12px 22px;
     background:linear-gradient(180deg, rgba(8,8,13,.96) 0%, rgba(8,8,13,0) 100%);
@@ -34,7 +34,8 @@
   #diag{top:60px; right:12px; width:262px;}
   body.closed #panel{transform:translateX(calc(-100% - 30px)); opacity:0; pointer-events:none;}
   body.closed #diag{transform:translateX(calc(100% + 30px)); opacity:0; pointer-events:none;}
-  body.closed #wave3DPanel{opacity:0; transform:translateY(30px); pointer-events:none;}
+  body.closed #iqPanel{opacity:0; transform:translateX(-50%) translateY(-20px); pointer-events:none;}
+  body.closed #helixPanel{opacity:0; transform:translateY(20px); pointer-events:none;}
   ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-thumb{background:rgba(79,195,247,.3); border-radius:3px;}
   .ptitle{font-size:9px; letter-spacing:1.6px; color:var(--accent); margin:10px 0 5px;
     text-transform:uppercase; font-weight:600; border-bottom:1px solid rgba(79,195,247,.1);
@@ -76,32 +77,9 @@
   .drow span:last-child{color:var(--accent); font-family:monospace; font-size:9px;}
   .drow .ok{color:var(--ok);} .drow .warn{color:var(--warn);}
   .drow .amber{color:var(--amber);} .drow .purple{color:var(--purple);}
-  #wave3DPanel{
-    left:12px; right:12px; top:auto;
-    bottom:calc(28px + env(safe-area-inset-bottom,0px));
-    max-height:none; padding:9px 12px;
-    transition:all .4s cubic-bezier(.4,0,.2,1);
-  }
-  #wave3DPanel.expanded{
-    top:70px; bottom:40px; left:12px; right:12px;
-    padding:12px 16px;
-  }
-  body.expanded3D #panel,
-  body.expanded3D #diag{
-    opacity:0; pointer-events:none;
-    transition:opacity .3s;
-  }
-  body.expanded3D #canvas-wrap{
-    opacity:0.15;
-  }
-  #expand3D{
-    padding:2px 8px; background:rgba(79,195,247,.15);
-    border:1px solid rgba(79,195,247,.4); border-radius:4px;
-    color:var(--accent); font-size:9px; cursor:pointer;
-    font-family:monospace; letter-spacing:.5px;
-    transition:all .2s;
-  }
-  #expand3D:hover{background:rgba(79,195,247,.3); color:#fff;}
+  #iqPanel{top:60px; left:50%; transform:translateX(-50%); width:168px; padding:9px;}
+  #helixPanel{left:12px; right:12px; top:auto; bottom:calc(28px + env(safe-area-inset-bottom,0px));
+    max-height:none; padding:7px 12px;}
   #status{position:fixed; bottom:0; left:0; right:0; padding:5px 14px calc(5px + env(safe-area-inset-bottom,0px));
     background:rgba(8,8,13,.92); border-top:1px solid rgba(79,195,247,.1); font-size:8.5px;
     color:var(--sub); display:flex; justify-content:space-between; z-index:10;}
@@ -118,10 +96,18 @@
 <div id="canvas-wrap"><canvas id="field"></canvas></div>
 
 <div id="title-bar">
-  <h1>FDTD <span>Scattering Lab</span> <em>v3.2 CINEMATIC 3D</em></h1>
-  <p>CPML · Subpixel (Bruggeman) · TF/SF · NTFF·RCS·σ_scat · Dispersive (ADE) · Poynting · Resonance Scanner · Richardson · Cinematic 3D Ψ=Ez+iH[Ez]</p>
+  <h1>FDTD <span>Scattering Lab</span> <em>v3.0 PHYSICS-ABSOLUTE</em></h1>
+  <p>CPML · Subpixel (Bruggeman) · TF/SF · NTFF·RCS·σ_scat · Dispersive (ADE) · Poynting · Resonance Scanner · Richardson Convergence · SI Units</p>
 </div>
 <button id="menu-toggle">☰</button>
+
+<div class="panel" id="iqPanel">
+  <div style="font-size:8.5px; letter-spacing:1.4px; color:var(--accent);
+    text-transform:uppercase; font-weight:600; text-align:center; margin-bottom:3px;">IQ Plane (Re–Im)</div>
+  <canvas id="iqCanvas" style="width:100%; aspect-ratio:1/1; display:block;"></canvas>
+  <div style="font-size:7.5px; color:var(--sub); text-align:center; margin-top:2px;">
+    Cross-section ⊥ propagation axis</div>
+</div>
 
 <div class="panel" id="panel">
   <div class="ptitle">Medium / Scatterer</div>
@@ -278,35 +264,18 @@
   <button class="btn" id="runValidation" style="margin-top:6px;">Run Validation Suite</button>
   <button class="btn" id="runRichardson" style="margin-top:4px;">Richardson Convergence (2× refine)</button>
 
-  <div class="ptitle">3D Complex Wave (Cinematic)</div>
+  <div class="ptitle">Complex Wave (Spring View)</div>
   <div class="row">Display<div class="sw on" id="tHelix"></div></div>
-  <div class="row">Auto-rotate camera<div class="sw on" id="tRotate"></div></div>
-  <div class="row">Flow particles<div class="sw on" id="tParticles"></div></div>
-  <div class="row">Floor reflection<div class="sw on" id="tReflection"></div></div>
-  <div class="row">Cinematic bob<div class="sw on" id="tCinematic"></div></div>
+  <div class="row">Auto-rotate<div class="sw on" id="tRotate"></div></div>
 </div>
 
-<div class="panel" id="wave3DPanel">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-    <span style="font-size:9px; letter-spacing:1.6px; color:var(--accent);
-      text-transform:uppercase; font-weight:600;">Ψ(x)=Ez+i·H[Ez] — 3D Complex Wave</span>
-    <div style="display:flex; gap:8px; align-items:center;">
-      <span style="font-size:8px; color:var(--sub);">
-        <span style="color:var(--ok);">●</span> Re &nbsp;
-        <span style="color:var(--purple);">●</span> Im
-      </span>
-      <button id="expand3D" title="Theater Mode">⛶ EXPAND</button>
-    </div>
+<div class="panel" id="helixPanel">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1px;">
+    <span style="font-size:8.5px; letter-spacing:1.4px; color:var(--accent);
+      text-transform:uppercase; font-weight:600;">Ψ(x)=Ez+iH[Ez] · Circular motion along propagation</span>
+    <span style="font-size:7.5px; color:var(--sub);">Center line = propagation axis</span>
   </div>
-  <canvas id="wave3DCanvas" style="width:100%; height:260px; display:block;
-    background:radial-gradient(ellipse at center, rgba(20,25,45,0.65) 0%, rgba(5,5,10,0.95) 100%);
-    border-radius:6px; cursor:grab; touch-action:none;"></canvas>
-  <div style="display:flex; justify-content:space-between; font-size:8px;
-    color:var(--sub); margin-top:3px;">
-    <span>x: propagation →</span>
-    <span>y: Re[Ψ] · z: Im[Ψ]</span>
-    <span>camera: <span id="camInfo" style="color:var(--accent); font-family:monospace;">auto</span></span>
-  </div>
+  <canvas id="helixCanvas" style="width:100%; height:96px; display:block;"></canvas>
 </div>
 
 <div id="status">
@@ -343,16 +312,20 @@ const Ez = new Float64Array(N);
 const Hx = new Float64Array(NX*(NY-1));
 const Hy = new Float64Array((NX-1)*NY);
 
+// Media
 const epsR  = new Float64Array(N).fill(1.0);
 const sigma = new Float64Array(N).fill(0.0);
 
+// [v3.0 PATCH 3] Dispersive medium mask
 const dispMask = new Uint8Array(N);
 let useDispMask = true;
 
+// Dispersive (Lorentz/Drude/Debye)
 const Pz     = new Float64Array(N);
 const Pz_old = new Float64Array(N);
 const Jp     = new Float64Array(N);
 
+// [v3.0] Poynting flux diagnostics
 const Sz = new Float64Array(N);
 
 // =============================================================================
@@ -378,6 +351,7 @@ const R_TARGET = 1e-7;
 const ALPHA_MAX = 0.05;
 const KAPPA_MAX = 5.0;
 
+// [v3.0 PATCH 1] σ_max·dt normalization
 let sigma_max = 0;
 function recomputeSigmaMax(){
   sigma_max = -(M_PML+1)*Math.log(R_TARGET) / (2*ETA0_NORM*NPML*dt);
@@ -586,7 +560,7 @@ function buildMedium(){
 }
 
 // =============================================================================
-// 7. Dispersive Coefficients
+// 7. Dispersive Coefficients — Model-Specific Branch
 // =============================================================================
 function buildDispersionCoeffs() {
   if (dispModel === 'none') return null;
@@ -618,9 +592,10 @@ function buildDispersionCoeffs() {
 }
 
 // =============================================================================
-// 8. Field Update
+// 8. Field Update (CPML + TF/SF)
 // =============================================================================
 function stepFields(){
+  // ----- Hx (time n+1/2) -----
   const tH = t + 0.5*dt;
   for (let j = 0; j < NY-1; j++){
     for (let i = 0; i < NX; i++){
@@ -637,6 +612,7 @@ function stepFields(){
     }
   }
 
+  // ----- Hy (time n+1/2) -----
   for (let j = 0; j < NY; j++){
     for (let i = 0; i < NX-1; i++){
       const k = idxHy(i,j);
@@ -652,6 +628,7 @@ function stepFields(){
     }
   }
 
+  // ----- Dispersive ADE (mask applied) -----
   if (dispModel !== 'none'){
     const coef = buildDispersionCoeffs();
     if (coef.order === 2){
@@ -672,6 +649,7 @@ function stepFields(){
     }
   }
 
+  // ----- Ez (time n+1) -----
   const tE = t + dt;
   for (let j = 1; j < NY-1; j++){
     for (let i = 1; i < NX-1; i++){
@@ -848,7 +826,7 @@ function measurePMLReflection(){
 }
 
 // =============================================================================
-// 11. NTFF
+// 11. NTFF — Stratton-Chu
 // =============================================================================
 function computeFarField(theta){
   const cosT = Math.cos(theta), sinT = Math.sin(theta);
@@ -898,7 +876,7 @@ function updateFarField(){
 }
 
 // =============================================================================
-// 12. Bessel & Mie
+// 12. Bessel & Mie — A&S 9.4.5/9.4.6 with (2/π) factor
 // =============================================================================
 const BESSEL_GAMMA = 0.5772156649015329;
 
@@ -1048,7 +1026,7 @@ function computeMieScatteringWidth(kR, m){
 }
 
 // =============================================================================
-// 13. Rendering (Main Field)
+// 13. Rendering
 // =============================================================================
 const canvas = document.getElementById('field');
 const ctx = canvas.getContext('2d');
@@ -1307,343 +1285,132 @@ function drawRCS(){
 }
 
 // =============================================================================
-// 16. [v3.2] Cinematic 3D Complex Wave Visualization
+// 16. Complex Wave View
 // =============================================================================
 const J_SLICE = Math.round(NY*0.5);
-const RINGLEN = 60;
-const sliceRing = [];
-for (let r = 0; r < RINGLEN; r++) sliceRing.push(new Float64Array(NX));
+const RINGLEN = 40;
+const sliceRing = []; for (let r = 0; r < RINGLEN; r++) sliceRing.push(new Float64Array(NX));
 let ringPtr = 0;
-const IQ_X = 55;
+let helixOn = true, autoRotate = true, rotAngle = 0.6;
 
-let camAngle = 0.6;
-let camTilt = 0.25;
-let autoRotateCam = true;
-let autoRotateSpeed = 0.4;
-let showParticles = true;
-let showReflection = true;
-let cinematicBob = true;
-
-const wave3DCanvas = document.getElementById('wave3DCanvas');
-const w3ctx = wave3DCanvas.getContext('2d');
-const camInfoEl = document.getElementById('camInfo');
-
-function resizeWave3D(){
-  const dpr = window.devicePixelRatio || 1;
-  const cw = wave3DCanvas.clientWidth;
-  const ch = wave3DCanvas.clientHeight;
-  wave3DCanvas.width = cw * dpr;
-  wave3DCanvas.height = ch * dpr;
+const helixCanvas = document.getElementById('helixCanvas');
+const hctx = helixCanvas.getContext('2d');
+function resizeHelix(){
+  helixCanvas.width = helixCanvas.clientWidth;
+  helixCanvas.height = helixCanvas.clientHeight;
 }
-window.addEventListener('resize', resizeWave3D);
+window.addEventListener('resize', resizeHelix);
 
-let isDragging = false, lastMouseX = 0;
-wave3DCanvas.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  lastMouseX = e.clientX;
-  wave3DCanvas.style.cursor = 'grabbing';
-  autoRotateCam = false;
-  camInfoEl.textContent = 'manual';
-});
-window.addEventListener('mouseup', () => {
-  isDragging = false;
-  wave3DCanvas.style.cursor = 'grab';
-});
-window.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  const dx = e.clientX - lastMouseX;
-  camAngle += dx * 0.012;
-  lastMouseX = e.clientX;
-});
-wave3DCanvas.addEventListener('touchstart', (e) => {
-  isDragging = true;
-  lastMouseX = e.touches[0].clientX;
-  autoRotateCam = false;
-  camInfoEl.textContent = 'manual';
-  e.preventDefault();
-}, {passive:false});
-wave3DCanvas.addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
-  const dx = e.touches[0].clientX - lastMouseX;
-  camAngle += dx * 0.012;
-  lastMouseX = e.touches[0].clientX;
-  e.preventDefault();
-}, {passive:false});
-wave3DCanvas.addEventListener('touchend', () => { isDragging = false; });
-
-let wave3DVisible = true;
-let expanded3D = false;
-
-function renderWave3D(){
-  if (!wave3DVisible || ringPtr < 2) return;
-  const W = wave3DCanvas.width;
-  const H = wave3DCanvas.height;
-  if (W < 20 || H < 20) return;
-
-  w3ctx.clearRect(0, 0, W, H);
-
-  // Cinematic camera bob
-  const timeNow = performance.now() * 0.001;
-  const bobTilt = cinematicBob
-    ? camTilt + Math.sin(timeNow * 0.3) * 0.06
-    : camTilt;
-  const camDist = 6.5;
-  const yzScale = 1.2;
-
-  const quarterSteps = Math.min(RINGLEN-1,
-    Math.max(2, Math.round((Math.PI/2/omega)/dt)));
+function getAnalyticRows(){
+  const quarterSteps = Math.min(RINGLEN-1, Math.max(2, Math.round((Math.PI/2/omega)/dt)));
   const reRow = sliceRing[(ringPtr-1+RINGLEN)%RINGLEN];
   const imRow = sliceRing[(ringPtr-1-quarterSteps+2*RINGLEN)%RINGLEN];
+  return {reRow, imRow};
+}
 
-  let maxAmp = 0;
-  for (let i = 20; i < NX-4; i++){
-    const a = Math.abs(reRow[i]);
-    if (a > maxAmp) maxAmp = a;
-    const b = Math.abs(imRow[i]);
-    if (b > maxAmp) maxAmp = b;
-  }
-  maxAmp = Math.max(maxAmp, 1e-6);
-  const baseAmp = 0.9 / maxAmp;
+function renderHelix(){
+  if (!helixOn || ringPtr < 2) return;
+  const W = helixCanvas.width, H = helixCanvas.height;
+  if (W < 10 || H < 10) return;
+  hctx.clearRect(0, 0, W, H);
 
-  const sampleStep = 3;
-  const x0 = 20, x1 = NX - 4;
+  const {reRow, imRow} = getAnalyticRows();
+  const x0 = 20, x1 = NX-4;
+  const cx0 = 16, cx1 = W-16, cy = H/2;
+  const amp = H*0.34/0.9;
+  const rot = rotAngle;
+  const cr = Math.cos(rot), sr = Math.sin(rot);
 
-  function proj(x, y, z){
-    const ca = Math.cos(camAngle), sa = Math.sin(camAngle);
-    const y1 = y*ca - z*sa;
-    const z1 = y*sa + z*ca;
-    const ct = Math.cos(bobTilt), st = Math.sin(bobTilt);
-    const x1 = x*ct + z1*st;
-    const z2 = -x*st + z1*ct;
-    const depth = camDist + z2;
-    if (depth < 0.1) return null;
-    const focal = Math.min(W, H) * 1.15;
-    const scale = focal / depth;
-    return { sx: W/2 + x1 * scale, sy: H/2 + 12 - y1 * scale, depth: z2 };
-  }
+  hctx.strokeStyle = 'rgba(255,255,255,.12)';
+  hctx.lineWidth = 1;
+  hctx.beginPath();
+  hctx.moveTo(cx0, cy);
+  hctx.lineTo(cx1, cy);
+  hctx.stroke();
 
-  // Arena floor
-  const floorY = -1.5;
-  w3ctx.strokeStyle = 'rgba(79,195,247,0.06)';
-  w3ctx.lineWidth = 1;
-  for (let gx = -3; gx <= 9; gx += 1.5){
-    const p0 = proj(gx-4, floorY, -2.2, W, H);
-    const p1 = proj(gx-4, floorY, +2.2, W, H);
-    if (p0 && p1){
-      w3ctx.beginPath(); w3ctx.moveTo(p0.sx, p0.sy);
-      w3ctx.lineTo(p1.sx, p1.sy); w3ctx.stroke();
-    }
+  const pts = [];
+  for (let i = x0; i <= x1; i += 2){
+    const Re = reRow[i]*amp, Im = imRow[i]*amp;
+    const ry = Re*cr - Im*sr;
+    const rz = Re*sr + Im*cr;
+    const sx = cx0 + (i-x0)*(cx1-cx0)/(x1-x0);
+    const sy = cy - ry;
+    const depth = (rz/(amp||1) + 1)/2;
+    pts.push([sx, sy, depth]);
   }
-  for (let gz = -2.2; gz <= 2.2; gz += 0.55){
-    const p0 = proj(-4, floorY, gz, W, H);
-    const p1 = proj(+4.5, floorY, gz, W, H);
-    if (p0 && p1){
-      w3ctx.beginPath(); w3ctx.moveTo(p0.sx, p0.sy);
-      w3ctx.lineTo(p1.sx, p1.sy); w3ctx.stroke();
-    }
+  for (let p = 0; p < pts.length; p += 3){
+    const [sx, sy, depth] = pts[p];
+    hctx.strokeStyle = `rgba(79,195,247,${0.12+0.32*depth})`;
+    hctx.lineWidth = 1;
+    hctx.beginPath();
+    hctx.moveTo(sx, cy);
+    hctx.lineTo(sx, sy);
+    hctx.stroke();
   }
+  hctx.beginPath();
+  for (let p = 0; p < pts.length; p++){
+    const [sx, sy, depth] = pts[p];
+    const c = depth > 0.5 ? '255,213,74' : '79,195,247';
+    hctx.strokeStyle = `rgba(${c},${0.4+0.5*Math.abs(depth-0.5)*2})`;
+    if (p === 0) hctx.moveTo(sx, sy);
+    else hctx.lineTo(sx, sy);
+  }
+  hctx.lineWidth = 1.6;
+  hctx.stroke();
+}
 
-  // Central axis
-  const pxa = proj(-4.2, 0, 0, W, H);
-  const pxb = proj(+4.5, 0, 0, W, H);
-  if (pxa && pxb){
-    w3ctx.strokeStyle = 'rgba(255,255,255,0.15)';
-    w3ctx.lineWidth = 1;
-    w3ctx.setLineDash([3, 4]);
-    w3ctx.beginPath(); w3ctx.moveTo(pxa.sx, pxa.sy);
-    w3ctx.lineTo(pxb.sx, pxb.sy); w3ctx.stroke();
-    w3ctx.setLineDash([]);
-  }
+const iqCanvas = document.getElementById('iqCanvas');
+const iqctx = iqCanvas.getContext('2d');
+const iqTrail = [];
+const IQ_TRAIL_LEN = 140;
+const IQ_X = 55;
+function resizeIQ(){
+  iqCanvas.width = iqCanvas.clientWidth;
+  iqCanvas.height = iqCanvas.clientHeight;
+}
+window.addEventListener('resize', resizeIQ);
 
-  // Sample points
-  const points = [];
-  const nSamples = Math.floor((x1 - x0) / sampleStep);
-  for (let k = 0; k <= nSamples; k++){
-    const i = x0 + k*sampleStep;
-    if (i >= x1) break;
-    const xn = (i - x0) / (x1 - x0) * 8 - 4;
-    const yn = reRow[i] * baseAmp * yzScale;
-    const zn = imRow[i] * baseAmp * yzScale;
-    const p = proj(xn, yn, zn, W, H);
-    if (!p) continue;
-    const amp = Math.hypot(yn, zn) / (baseAmp * yzScale * 1.2);
-    points.push({sx:p.sx, sy:p.sy, depth:p.depth, amp:amp, idx:i, xn:xn, yn:yn, zn:zn});
-  }
-  points.sort((a,b) => a.depth - b.depth);
+function renderIQ(){
+  if (!helixOn || ringPtr < 2) return;
+  const W = iqCanvas.width, H = iqCanvas.height;
+  if (W < 10 || H < 10) return;
+  const {reRow, imRow} = getAnalyticRows();
+  const cx = W/2, cy = H/2, R = Math.min(W, H)*0.38;
+  const amp = R/0.9;
+  iqTrail.push([reRow[IQ_X]*amp, imRow[IQ_X]*amp]);
+  if (iqTrail.length > IQ_TRAIL_LEN) iqTrail.shift();
 
-  // Floor reflection
-  if (showReflection){
-    w3ctx.lineCap = 'round';
-    w3ctx.globalAlpha = 0.18;
-    for (let k = 1; k < points.length; k++){
-      const p = points[k], prev = points[k-1];
-      if (Math.abs(p.idx - prev.idx) > sampleStep*2) continue;
-      const mirrorY_p = -p.yn - 3.0;
-      const mirrorY_prev = -prev.yn - 3.0;
-      const mp = proj(p.xn, mirrorY_p, p.zn, W, H);
-      const mpPrev = proj(prev.xn, mirrorY_prev, prev.zn, W, H);
-      if (!mp || !mpPrev) continue;
-      const fog = Math.exp(-Math.max(0, mp.depth) * 0.25);
-      const xn = (p.idx - x0) / (x1 - x0);
-      const hue = 180 + xn * 140;
-      w3ctx.strokeStyle = `hsla(${hue}, 80%, 60%, ${fog * 0.5})`;
-      w3ctx.lineWidth = 2;
-      w3ctx.beginPath(); w3ctx.moveTo(mpPrev.sx, mpPrev.sy);
-      w3ctx.lineTo(mp.sx, mp.sy); w3ctx.stroke();
-    }
-    w3ctx.globalAlpha = 1;
-  }
+  iqctx.clearRect(0, 0, W, H);
+  iqctx.strokeStyle = 'rgba(255,255,255,.1)';
+  iqctx.lineWidth = 1;
+  iqctx.beginPath();
+  iqctx.arc(cx, cy, R, 0, Math.PI*2);
+  iqctx.stroke();
+  iqctx.beginPath();
+  iqctx.moveTo(cx-R, cy); iqctx.lineTo(cx+R, cy);
+  iqctx.moveTo(cx, cy-R); iqctx.lineTo(cx, cy+R);
+  iqctx.stroke();
 
-  // Ribbon 3-pass
-  w3ctx.lineCap = 'round';
-  for (let k = 1; k < points.length; k++){
-    const p = points[k], prev = points[k-1];
-    if (Math.abs(p.idx - prev.idx) > sampleStep*2) continue;
-    const fog = Math.exp(-Math.max(0, p.depth) * 0.25);
-    if (fog < 0.1) continue;
-    const xn = (p.idx - x0) / (x1 - x0);
-    const hue = 180 + xn * 140;
-    w3ctx.strokeStyle = `hsla(${hue}, 100%, 55%, ${fog * 0.12})`;
-    w3ctx.lineWidth = 14;
-    w3ctx.beginPath(); w3ctx.moveTo(prev.sx, prev.sy);
-    w3ctx.lineTo(p.sx, p.sy); w3ctx.stroke();
+  for (let p = 0; p < iqTrail.length; p++){
+    const [re, im] = iqTrail[p];
+    const a = p/iqTrail.length;
+    iqctx.fillStyle = `rgba(79,195,247,${0.06+0.5*a})`;
+    iqctx.beginPath();
+    iqctx.arc(cx+re, cy-im, 1.6, 0, Math.PI*2);
+    iqctx.fill();
   }
-  for (let k = 1; k < points.length; k++){
-    const p = points[k], prev = points[k-1];
-    if (Math.abs(p.idx - prev.idx) > sampleStep*2) continue;
-    const fog = Math.exp(-Math.max(0, p.depth) * 0.25);
-    if (fog < 0.1) continue;
-    const xn = (p.idx - x0) / (x1 - x0);
-    const hue = 180 + xn * 140;
-    const ampAlpha = Math.max(0.35, Math.min(1, 0.4 + p.amp*0.8));
-    w3ctx.strokeStyle = `hsla(${hue}, 95%, 65%, ${fog * ampAlpha * 0.55})`;
-    w3ctx.lineWidth = (p.depth > 0) ? 6 : 4;
-    w3ctx.beginPath(); w3ctx.moveTo(prev.sx, prev.sy);
-    w3ctx.lineTo(p.sx, p.sy); w3ctx.stroke();
-  }
-  for (let k = 1; k < points.length; k++){
-    const p = points[k], prev = points[k-1];
-    if (Math.abs(p.idx - prev.idx) > sampleStep*2) continue;
-    const fog = Math.exp(-Math.max(0, p.depth) * 0.25);
-    if (fog < 0.1) continue;
-    const xn = (p.idx - x0) / (x1 - x0);
-    const hue = 180 + xn * 140;
-    const ampAlpha = Math.max(0.5, Math.min(1, 0.5 + p.amp*0.7));
-    w3ctx.strokeStyle = `hsla(${hue}, 100%, 85%, ${fog * ampAlpha})`;
-    w3ctx.lineWidth = (p.depth > 0) ? 2.2 : 1.5;
-    w3ctx.beginPath(); w3ctx.moveTo(prev.sx, prev.sy);
-    w3ctx.lineTo(p.sx, p.sy); w3ctx.stroke();
-  }
-
-  // Flow particles
-  if (showParticles){
-    const nParticles = 20;
-    const flowPhase = (performance.now() * 0.00015) % 1;
-    for (let n = 0; n < nParticles; n++){
-      const frac = (n / nParticles + flowPhase) % 1;
-      const iF = x0 + frac * (x1 - x0);
-      const i = Math.round(iF);
-      if (i < x0 || i >= x1) continue;
-      const xn = (iF - x0) / (x1 - x0) * 8 - 4;
-      const yn = reRow[i] * baseAmp * yzScale;
-      const zn = imRow[i] * baseAmp * yzScale;
-      const pp = proj(xn, yn, zn, W, H);
-      if (!pp) continue;
-      const fog = Math.exp(-Math.max(0, pp.depth) * 0.25);
-      if (fog < 0.15) continue;
-      const hue = 180 + frac * 140;
-      const glowR = Math.max(5, 8 * fog);
-      const grad = w3ctx.createRadialGradient(pp.sx, pp.sy, 0, pp.sx, pp.sy, glowR);
-      grad.addColorStop(0, `hsla(${hue}, 100%, 90%, ${fog * 0.9})`);
-      grad.addColorStop(0.5, `hsla(${hue}, 100%, 70%, ${fog * 0.4})`);
-      grad.addColorStop(1, `hsla(${hue}, 100%, 60%, 0)`);
-      w3ctx.fillStyle = grad;
-      w3ctx.beginPath(); w3ctx.arc(pp.sx, pp.sy, glowR, 0, Math.PI*2); w3ctx.fill();
-      w3ctx.fillStyle = `hsla(${hue}, 100%, 95%, ${fog})`;
-      w3ctx.beginPath(); w3ctx.arc(pp.sx, pp.sy, 1.8, 0, Math.PI*2); w3ctx.fill();
-    }
-  }
-
-  // Current position marker
-  const curX = (IQ_X - x0) / (x1 - x0) * 8 - 4;
-  const curRe = reRow[IQ_X] * baseAmp * yzScale;
-  const curIm = imRow[IQ_X] * baseAmp * yzScale;
-  const curP = proj(curX, curRe, curIm, W, H);
-  const originP = proj(curX, 0, 0, W, H);
-  if (curP && originP){
-    w3ctx.strokeStyle = 'rgba(255,213,74,0.55)';
-    w3ctx.lineWidth = 1.5;
-    w3ctx.beginPath(); w3ctx.moveTo(originP.sx, originP.sy);
-    w3ctx.lineTo(curP.sx, curP.sy); w3ctx.stroke();
-    const glowR = Math.max(10, 20 * (curP.depth + 6) / 12);
-    const grad = w3ctx.createRadialGradient(curP.sx, curP.sy, 0, curP.sx, curP.sy, glowR);
-    grad.addColorStop(0, 'rgba(255,213,74,1)');
-    grad.addColorStop(0.4, 'rgba(255,213,74,0.5)');
-    grad.addColorStop(1, 'rgba(255,213,74,0)');
-    w3ctx.fillStyle = grad;
-    w3ctx.beginPath(); w3ctx.arc(curP.sx, curP.sy, glowR, 0, Math.PI*2); w3ctx.fill();
-    w3ctx.fillStyle = '#ffd54a';
-    w3ctx.beginPath(); w3ctx.arc(curP.sx, curP.sy, 3.5, 0, Math.PI*2); w3ctx.fill();
-  }
-
-  // IQ inset
-  const iqSize = Math.min(W*0.16, H*0.5);
-  const iqCx = W - iqSize/2 - 14;
-  const iqCy = iqSize/2 + 14;
-  const iqR = iqSize * 0.42;
-  w3ctx.fillStyle = 'rgba(0,0,0,0.55)';
-  w3ctx.beginPath(); w3ctx.arc(iqCx, iqCy, iqR + 8, 0, Math.PI*2); w3ctx.fill();
-  w3ctx.strokeStyle = 'rgba(79,195,247,0.3)';
-  w3ctx.lineWidth = 1;
-  w3ctx.beginPath(); w3ctx.arc(iqCx, iqCy, iqR, 0, Math.PI*2); w3ctx.stroke();
-  w3ctx.beginPath();
-  w3ctx.moveTo(iqCx-iqR, iqCy); w3ctx.lineTo(iqCx+iqR, iqCy);
-  w3ctx.moveTo(iqCx, iqCy-iqR); w3ctx.lineTo(iqCx, iqCy+iqR);
-  w3ctx.stroke();
-
-  const trailLen = Math.min(RINGLEN-1, 50);
-  for (let tr = 0; tr < trailLen; tr++){
-    const ringIdx = (ringPtr - 1 - tr + 2*RINGLEN) % RINGLEN;
-    const row = sliceRing[ringIdx];
-    const re = row[IQ_X] * baseAmp;
-    const alpha = (1 - tr/trailLen) * 0.55;
-    const ang = tr * 0.28;
-    const rad = Math.min(1, Math.abs(re)) * iqR;
-    const px = iqCx + rad * Math.cos(ang);
-    const py = iqCy - rad * Math.sin(ang);
-    w3ctx.fillStyle = `rgba(79,195,247,${alpha})`;
-    w3ctx.beginPath(); w3ctx.arc(px, py, 1.8, 0, Math.PI*2); w3ctx.fill();
-  }
-  const iqRe = reRow[IQ_X] * baseAmp;
-  const iqIm = imRow[IQ_X] * baseAmp;
-  const iqPx = iqCx + iqRe * iqR;
-  const iqPy = iqCy - iqIm * iqR;
-  w3ctx.strokeStyle = 'rgba(255,213,74,0.85)';
-  w3ctx.lineWidth = 1.3;
-  w3ctx.beginPath(); w3ctx.moveTo(iqCx, iqCy);
-  w3ctx.lineTo(iqPx, iqPy); w3ctx.stroke();
-  w3ctx.fillStyle = '#ffd54a';
-  w3ctx.beginPath(); w3ctx.arc(iqPx, iqPy, 3.5, 0, Math.PI*2); w3ctx.fill();
-  w3ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  w3ctx.font = `${Math.max(9, iqSize*0.1)}px monospace`;
-  w3ctx.fillText('IQ', iqCx - iqSize*0.08, iqCy - iqR - 4);
-
-  // Axis labels
-  w3ctx.font = `${Math.max(9, W*0.012)}px monospace`;
-  const xEnd = proj(4.8, 0, 0, W, H);
-  if (xEnd){
-    w3ctx.fillStyle = 'rgba(79,195,247,0.75)';
-    w3ctx.fillText('x →', xEnd.sx - 8, xEnd.sy + 5);
-  }
-  const reEnd = proj(-4.4, 1.3, 0, W, H);
-  if (reEnd){
-    w3ctx.fillStyle = 'rgba(129,199,132,0.85)';
-    w3ctx.fillText('Re', reEnd.sx, reEnd.sy);
-  }
-  const imEnd = proj(-4.4, 0, 1.3, W, H);
-  if (imEnd){
-    w3ctx.fillStyle = 'rgba(179,136,255,0.85)';
-    w3ctx.fillText('Im', imEnd.sx, imEnd.sy);
+  if (iqTrail.length){
+    const [re, im] = iqTrail[iqTrail.length-1];
+    iqctx.strokeStyle = 'rgba(255,213,74,.85)';
+    iqctx.lineWidth = 1.3;
+    iqctx.beginPath();
+    iqctx.moveTo(cx, cy);
+    iqctx.lineTo(cx+re, cy-im);
+    iqctx.stroke();
+    iqctx.fillStyle = '#ffd54a';
+    iqctx.beginPath();
+    iqctx.arc(cx+re, cy-im, 3, 0, Math.PI*2);
+    iqctx.fill();
   }
 }
 
@@ -1697,7 +1464,9 @@ function renderPPI(){
     const rr = Math.min(1, e.range/MAX_RANGE_CELLS)*maxR;
     const px = cx+rr*Math.cos(rad), py = cy+rr*Math.sin(rad);
     pctx.fillStyle = `rgba(129,199,132,${0.25+0.65*alpha})`;
-    pctx.beginPath(); pctx.arc(px, py, 3.5, 0, Math.PI*2); pctx.fill();
+    pctx.beginPath();
+    pctx.arc(px, py, 3.5, 0, Math.PI*2);
+    pctx.fill();
   }
 }
 
@@ -1711,7 +1480,10 @@ function runEnergyValidation(){
   const drift = Math.abs((U-energyRef)/energyRef)*100;
   return drift.toFixed(3)+'%';
 }
-function runDivValidation(){ return computeDivergence(); }
+
+function runDivValidation(){
+  return computeDivergence();
+}
 
 function runMieValidation(){
   if (objType !== 'circle') return 'N/A';
@@ -1722,13 +1494,16 @@ function runMieValidation(){
   let mieMax = 0;
   for (let k = 0; k < NFFT_THETA; k++) mieMax = Math.max(mieMax, miePat[k]);
   if (mieMax < 1e-12) return '—';
+
   let err = 0, norm = 0;
   for (let k = 0; k < NFFT_THETA; k++){
     const a = farFieldPattern[k]/farFieldMax;
     const b = miePat[k]/mieMax;
-    err += (a-b)**2; norm += b*b;
+    err += (a-b)**2;
+    norm += b*b;
   }
-  return (Math.sqrt(err/Math.max(1e-12, norm))*100).toFixed(2)+'%';
+  const rel = Math.sqrt(err/Math.max(1e-12, norm))*100;
+  return rel.toFixed(2)+'%';
 }
 
 function runSscatValidation(){
@@ -1766,17 +1541,20 @@ function runRichardsonValidation(){
 
 function updateValidationDisplay(){
   document.getElementById('v-energy').textContent = runEnergyValidation();
+
   const div = runDivValidation();
   const divEl = document.getElementById('v-divH');
   divEl.textContent = div.max.toExponential(2);
   divEl.style.color = div.max < 1e-12 ? 'var(--ok)' :
                       div.max < 1e-8  ? 'var(--amber)' : 'var(--warn)';
+
   const mieStr = runMieValidation();
   const mieEl = document.getElementById('v-mie');
   mieEl.textContent = mieStr;
   const mieNum = parseFloat(mieStr);
   mieEl.style.color = (!isNaN(mieNum) && mieNum < 5)  ? 'var(--ok)' :
                       (!isNaN(mieNum) && mieNum < 10) ? 'var(--amber)' : 'var(--warn)';
+
   const sscat = runSscatValidation();
   const sscatEl = document.getElementById('v-sscat');
   if (typeof sscat === 'object'){
@@ -1785,13 +1563,18 @@ function updateValidationDisplay(){
                           sscat.err < 30 ? 'var(--amber)' : 'var(--warn)';
     document.getElementById('d-sscat-fdtd').textContent = sscat.fdtd.toExponential(3);
     document.getElementById('d-sscat-mie').textContent = sscat.mie.toExponential(3);
-  } else { sscatEl.textContent = sscat; sscatEl.style.color = 'var(--sub)'; }
+  } else {
+    sscatEl.textContent = sscat;
+    sscatEl.style.color = 'var(--sub)';
+  }
+
   const recipStr = runReciprocityValidation();
   document.getElementById('v-recip').textContent = recipStr;
   const recipNum = parseFloat(recipStr);
   document.getElementById('v-recip').style.color =
     (!isNaN(recipNum) && recipNum < 5) ? 'var(--ok)' :
     (!isNaN(recipNum) && recipNum < 15) ? 'var(--amber)' : 'var(--sub)';
+
   const bal = computePoyntingBalance();
   const balEl = document.getElementById('v-bal');
   if (balEl){
@@ -1799,6 +1582,7 @@ function updateValidationDisplay(){
     balEl.style.color = bal.divS < 1e-8 ? 'var(--ok)' :
                         bal.divS < 1e-6 ? 'var(--amber)' : 'var(--warn)';
   }
+
   const convStr = runRichardsonValidation();
   document.getElementById('v-conv').textContent = convStr;
   document.getElementById('v-conv').style.color = 'var(--ok)';
@@ -1807,6 +1591,7 @@ function updateValidationDisplay(){
 document.getElementById('runValidation').addEventListener('click', () => {
   updateValidationDisplay();
 });
+
 document.getElementById('runRichardson').addEventListener('click', () => {
   alert('Richardson Convergence Measurement:\n' +
         'Estimated order at current grid = ' + runRichardsonValidation() + '\n\n' +
@@ -1842,7 +1627,10 @@ function updateDiag(){
       deAbs.textContent = absDrift.toExponential(2);
       deAbs.className = absDrift < 1e-10 ? 'ok' : (absDrift < 1e-6 ? 'amber' : 'warn');
     }
-  } else { de.textContent = '(initializing)'; de.className = ''; }
+  } else {
+    de.textContent = '(initializing)';
+    de.className = '';
+  }
 
   const pmlR = 20*Math.log10(R_TARGET);
   document.getElementById('d-pmlR').textContent = pmlR.toFixed(0)+' dB (theory)';
@@ -1860,7 +1648,9 @@ function updateDiag(){
   if (srcMode === 'tfsf' && tfsfLeak !== null){
     tfsfEl.textContent = tfsfLeak.toFixed(1)+' dB';
     tfsfEl.className = tfsfLeak < -40 ? 'ok' : (tfsfLeak < -20 ? 'amber' : 'warn');
-  } else { tfsfEl.textContent = srcMode === 'tfsf' ? 'measuring...' : 'N/A'; }
+  } else {
+    tfsfEl.textContent = srcMode === 'tfsf' ? 'measuring...' : 'N/A';
+  }
 
   const freq_SI = omega / dt_si / (2*Math.PI);
   const lambda_SI = C0_SI / freq_SI;
@@ -1895,7 +1685,10 @@ function updateDiag(){
 
   const ade = checkADEStability();
   const adeEl = document.getElementById('d-ade');
-  if (adeEl){ adeEl.textContent = ade.msg; adeEl.className = ade.ok ? 'ok' : 'warn'; }
+  if (adeEl){
+    adeEl.textContent = ade.msg;
+    adeEl.className = ade.ok ? 'ok' : 'warn';
+  }
 
   const poynt = computePoyntingDivergence();
   const poyntEl = document.getElementById('d-poynt');
@@ -1933,6 +1726,7 @@ function reset(){
   lastPulseStepIdx = 0;
   rangeBuckets.fill(null);
   measured.t1 = null; measured.t2 = null;
+  iqTrail.length = 0;
   resetCPML();
   recomputeSigmaMax();
   buildMedium();
@@ -1940,7 +1734,7 @@ function reset(){
 }
 
 // =============================================================================
-// 21. Export
+// 21. Export (PNG, CSV)
 // =============================================================================
 document.getElementById('savePng').addEventListener('click', () => {
   const link = document.createElement('a');
@@ -1952,7 +1746,7 @@ document.getElementById('savePng').addEventListener('click', () => {
 
 document.getElementById('saveCsv').addEventListener('click', () => {
   const lines = [];
-  lines.push('# FDTD Scattering Lab v3.2 — Export');
+  lines.push('# FDTD Scattering Lab v3.0 — Export');
   lines.push(`# step,t=${step},${t.toFixed(4)}`);
   lines.push(`# grid,${NX}x${NY},dx=${dx_si},dt=${dt_si}`);
   lines.push(`# params,omega=${omega},eps_r=${epsRVal},sigma=${sigVal}`);
@@ -1994,6 +1788,7 @@ document.getElementById('saveCsv').addEventListener('click', () => {
     const e = rangeBuckets[b];
     if (e) lines.push(`${b-60},${e.range.toFixed(2)},${e.strength.toExponential(6)}`);
   }
+
   const blob = new Blob([lines.join('\n')], {type:'text/csv'});
   const link = document.createElement('a');
   const ts = new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);
@@ -2015,9 +1810,11 @@ document.getElementById('runFreqScan').addEventListener('click', async () => {
   btn.disabled = true;
   btn.textContent = 'Scanning...';
   freqScanData = [];
+
   const N_SCAN = 60;
   const omegaMin = 0.15, omegaMax = 0.65;
   const origOmega = omega;
+
   for (let i = 0; i < N_SCAN; i++){
     omega = omegaMin + (omegaMax - omegaMin) * i/(N_SCAN-1);
     for (let s = 0; s < 60; s++) stepFields();
@@ -2026,12 +1823,18 @@ document.getElementById('runFreqScan').addEventListener('click', async () => {
     for (let k = 0; k < NFFT_THETA; k++)
       if (farFieldPattern[k] > maxFF) maxFF = farFieldPattern[k];
     freqScanData.push({omega, rcsMax:maxFF});
-    if (i % 5 === 0){ drawFreqScan(); await new Promise(r => setTimeout(r, 0)); }
+
+    if (i % 5 === 0){
+      drawFreqScan();
+      await new Promise(r => setTimeout(r, 0));
+    }
   }
+
   omega = origOmega;
   btn.disabled = false;
   btn.textContent = 'Run Frequency Sweep (60 pts)';
   drawFreqScan();
+
   if (freqScanData.length > 3){
     let maxIdx = 0;
     for (let i = 1; i < freqScanData.length; i++)
@@ -2046,13 +1849,19 @@ function drawFreqScan(){
   const W = freqScanCanvas.width, H = freqScanCanvas.height;
   fscCtx.clearRect(0, 0, W, H);
   if (freqScanData.length < 2) return;
+
   let maxV = 0;
   for (const d of freqScanData) if (d.rcsMax > maxV) maxV = d.rcsMax;
   if (maxV < 1e-12) return;
+
   fscCtx.strokeStyle = 'rgba(79,195,247,.15)';
   fscCtx.beginPath();
-  for (let g = 1; g < 4; g++){ const y = H*g/4; fscCtx.moveTo(0, y); fscCtx.lineTo(W, y); }
+  for (let g = 1; g < 4; g++){
+    const y = H*g/4;
+    fscCtx.moveTo(0, y); fscCtx.lineTo(W, y);
+  }
   fscCtx.stroke();
+
   fscCtx.strokeStyle = '#4fc3f7';
   fscCtx.lineWidth = 1.5;
   fscCtx.beginPath();
@@ -2064,13 +1873,17 @@ function drawFreqScan(){
     else fscCtx.lineTo(x, y);
   }
   fscCtx.stroke();
+
   let maxIdx = 0;
   for (let i = 1; i < freqScanData.length; i++)
     if (freqScanData[i].rcsMax > freqScanData[maxIdx].rcsMax) maxIdx = i;
   const px = maxIdx/(freqScanData.length-1)*W;
   const py = H - (freqScanData[maxIdx].rcsMax/maxV)*(H-6) - 3;
   fscCtx.fillStyle = '#ffd54a';
-  fscCtx.beginPath(); fscCtx.arc(px, py, 3, 0, Math.PI*2); fscCtx.fill();
+  fscCtx.beginPath();
+  fscCtx.arc(px, py, 3, 0, Math.PI*2);
+  fscCtx.fill();
+
   fscCtx.fillStyle = 'rgba(138,143,154,.8)';
   fscCtx.font = '8px monospace';
   fscCtx.fillText('ω=0.15', 3, H-3);
@@ -2134,15 +1947,19 @@ document.getElementById('rot2').addEventListener('input', e => {
   buildMedium();
 });
 document.getElementById('tRot1').addEventListener('click', function(){
-  this.classList.toggle('on'); T1.autoRot = this.classList.contains('on');
+  this.classList.toggle('on');
+  T1.autoRot = this.classList.contains('on');
 });
 document.getElementById('tRot2').addEventListener('click', function(){
-  this.classList.toggle('on'); T2.autoRot = this.classList.contains('on');
+  this.classList.toggle('on');
+  T2.autoRot = this.classList.contains('on');
 });
 document.getElementById('tRadar').addEventListener('click', function(){
   this.classList.toggle('on');
   radarMode = this.classList.contains('on');
-  lastPulseTime = t; lastPulseStepIdx = step; pulseRx = [];
+  lastPulseTime = t;
+  lastPulseStepIdx = step;
+  pulseRx = [];
 });
 document.getElementById('prf').addEventListener('input', e => {
   prfSteps = parseInt(e.target.value);
@@ -2166,30 +1983,36 @@ document.getElementById('menu-toggle').addEventListener('click', () => {
 });
 
 document.getElementById('tSubpixel').addEventListener('click', function(){
-  this.classList.toggle('on'); useSubpixel = this.classList.contains('on'); buildMedium();
+  this.classList.toggle('on');
+  useSubpixel = this.classList.contains('on');
+  buildMedium();
 });
 document.getElementById('tDispMask').addEventListener('click', function(){
-  this.classList.toggle('on'); useDispMask = this.classList.contains('on');
+  this.classList.toggle('on');
+  useDispMask = this.classList.contains('on');
 });
 document.getElementById('tSI').addEventListener('click', function(){
   this.classList.toggle('on');
 });
 document.getElementById('tMie').addEventListener('click', function(){
-  this.classList.toggle('on'); mieEnabled = this.classList.contains('on');
+  this.classList.toggle('on');
+  mieEnabled = this.classList.contains('on');
 });
 document.getElementById('tEpsView').addEventListener('click', function(){
   this.classList.toggle('on');
   viewMode = this.classList.contains('on') ? 'eps' : 'field';
 });
 document.getElementById('tPoynting').addEventListener('click', function(){
-  this.classList.toggle('on'); showPoynting = this.classList.contains('on');
+  this.classList.toggle('on');
+  showPoynting = this.classList.contains('on');
 });
 
 document.getElementById('dxSlider').addEventListener('input', e => {
   dx_si = parseFloat(e.target.value) * 1e-3;
   dt_si = CFL * dx_si / (C0_SI * Math.sqrt(2));
   document.getElementById('dxVal').textContent = (dx_si*1000).toFixed(2)+' mm';
-  recomputeSigmaMax(); buildCPMLCoeffs();
+  recomputeSigmaMax();
+  buildCPMLCoeffs();
 });
 
 // Scatterer buttons
@@ -2246,33 +2069,15 @@ document.getElementById('tScan').addEventListener('click', function(){
   autoScan = this.classList.contains('on');
   steerSlider.disabled = autoScan;
 });
-
-// [v3.2] 3D panel switches
 document.getElementById('tHelix').addEventListener('click', function(){
   this.classList.toggle('on');
-  wave3DVisible = this.classList.contains('on');
-  document.getElementById('wave3DPanel').style.display = wave3DVisible ? 'block' : 'none';
+  helixOn = this.classList.contains('on');
+  document.getElementById('helixPanel').style.display = helixOn ? 'block' : 'none';
+  document.getElementById('iqPanel').style.display = helixOn ? 'block' : 'none';
 });
 document.getElementById('tRotate').addEventListener('click', function(){
   this.classList.toggle('on');
-  autoRotateCam = this.classList.contains('on');
-  camInfoEl.textContent = autoRotateCam ? 'auto' : 'manual';
-});
-document.getElementById('tParticles').addEventListener('click', function(){
-  this.classList.toggle('on'); showParticles = this.classList.contains('on');
-});
-document.getElementById('tReflection').addEventListener('click', function(){
-  this.classList.toggle('on'); showReflection = this.classList.contains('on');
-});
-document.getElementById('tCinematic').addEventListener('click', function(){
-  this.classList.toggle('on'); cinematicBob = this.classList.contains('on');
-});
-document.getElementById('expand3D').addEventListener('click', () => {
-  expanded3D = !expanded3D;
-  document.getElementById('wave3DPanel').classList.toggle('expanded', expanded3D);
-  document.body.classList.toggle('expanded3D', expanded3D);
-  document.getElementById('expand3D').textContent = expanded3D ? '✕ EXIT' : '⛶ EXPAND';
-  setTimeout(resizeWave3D, 450);
+  autoRotate = this.classList.contains('on');
 });
 
 // Dispersive buttons
@@ -2290,14 +2095,21 @@ Object.keys(DISPS).forEach(key => {
     document.querySelectorAll('#dispGrid .mbtn').forEach(x => x.classList.remove('active'));
     b.classList.add('active');
     if (key === 'none'){
-      wpWrap.style.display = 'none'; w0Wrap.style.display = 'none'; gdWrap.style.display = 'none';
+      wpWrap.style.display = 'none';
+      w0Wrap.style.display = 'none';
+      gdWrap.style.display = 'none';
       buildMedium();
     } else {
-      wpWrap.style.display = 'block'; gdWrap.style.display = 'block';
+      wpWrap.style.display = 'block';
+      gdWrap.style.display = 'block';
       w0Wrap.style.display = (key === 'lorentz') ? 'block' : 'none';
-      if (key === 'debye'){ omega_p = 0.30; omega_0 = 0; gamma_d = 0.05; }
-      else if (key === 'lorentz'){ omega_p = 0.30; omega_0 = 0.35; gamma_d = 0.02; }
-      else if (key === 'drude'){ omega_p = 0.35; omega_0 = 0; gamma_d = 0.02; }
+      if (key === 'debye'){
+        omega_p = 0.30; omega_0 = 0; gamma_d = 0.05;
+      } else if (key === 'lorentz'){
+        omega_p = 0.30; omega_0 = 0.35; gamma_d = 0.02;
+      } else if (key === 'drude'){
+        omega_p = 0.35; omega_0 = 0; gamma_d = 0.02;
+      }
       document.getElementById('wp').value = omega_p;
       document.getElementById('w0').value = omega_0;
       document.getElementById('gd').value = gamma_d;
@@ -2344,13 +2156,13 @@ function loop(){
       document.getElementById('steerVal').textContent = Math.round(steerDeg)+'°';
       steerSlider.value = steerDeg;
     }
+
     for (let s = 0; s < speed; s++){
       stepFields();
       updateDetection();
     }
-    if (autoRotateCam && !isDragging){
-      camAngle += autoRotateSpeed * dtms;
-    }
+
+    if (autoRotate) rotAngle += dtms*0.5;
     if (T1.autoRot){
       T1.rotDeg = (T1.rotDeg + dtms*50) % 360;
       document.getElementById('rot1').value = T1.rotDeg % 180;
@@ -2365,7 +2177,8 @@ function loop(){
 
     render();
     drawDetection();
-    renderWave3D();
+    renderHelix();
+    renderIQ();
     renderPPI();
 
     if (step % 3 === 0){
@@ -2392,14 +2205,16 @@ function loop(){
 // =============================================================================
 // 25. Initialization
 // =============================================================================
-resizeWave3D();
+resizeHelix();
 resizePPI();
+resizeIQ();
 recomputeSigmaMax();
 buildCPMLCoeffs();
 buildMedium();
 render();
 updateDiag();
-renderWave3D();
+renderHelix();
+renderIQ();
 renderPPI();
 drawRCS();
 drawFreqScan();
