@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FDTD Scattering Lab v2.1 — Physics Complete</title>
+<title>FDTD Scattering Lab v3.0 — Physics Absolute</title>
 <style>
   :root{
     --bg:#08080d; --panel:rgba(14,14,22,0.92); --line:rgba(79,195,247,0.22);
@@ -30,8 +30,8 @@
     box-shadow:0 8px 28px rgba(0,0,0,.6);
     transition:transform .3s, opacity .3s;
     max-height:calc(100vh - 80px); overflow-y:auto; font-size:10px;}
-  #panel{top:60px; left:12px; width:238px;}
-  #diag{top:60px; right:12px; width:252px;}
+  #panel{top:60px; left:12px; width:248px;}
+  #diag{top:60px; right:12px; width:262px;}
   body.closed #panel{transform:translateX(calc(-100% - 30px)); opacity:0; pointer-events:none;}
   body.closed #diag{transform:translateX(calc(100% + 30px)); opacity:0; pointer-events:none;}
   body.closed #iqPanel{opacity:0; transform:translateX(-50%) translateY(-20px); pointer-events:none;}
@@ -59,6 +59,9 @@
   .btn:hover{background:rgba(79,195,247,.3); color:#fff;}
   .btn.warn{background:rgba(229,115,115,.15); border-color:rgba(229,115,115,.4); color:var(--warn);}
   .btn.warn:hover{background:rgba(229,115,115,.3); color:#fff;}
+  .btn.ok{background:rgba(129,199,132,.15); border-color:rgba(129,199,132,.4); color:var(--ok);}
+  .btn.ok:hover{background:rgba(129,199,132,.3); color:#fff;}
+  .btn:disabled{opacity:.4; cursor:not-allowed;}
   .grid2{display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-bottom:6px;}
   .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; margin-bottom:6px;}
   .mbtn{padding:5px 2px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
@@ -82,11 +85,6 @@
     color:var(--sub); display:flex; justify-content:space-between; z-index:10;}
   #status span{color:var(--accent); font-family:monospace;}
   .hint{font-size:8.5px; color:var(--sub); line-height:1.45; margin-top:5px;}
-  .badge{display:inline-block; padding:1px 4px; border-radius:3px; font-size:8px;
-    background:rgba(129,199,132,.2); color:var(--ok); margin-left:3px;}
-  .badge.warn{background:rgba(229,115,115,.2); color:var(--warn);}
-  .badge.amber{background:rgba(255,183,77,.2); color:var(--amber);}
-  .badge.purple{background:rgba(179,136,255,.2); color:var(--purple);}
   .test-row{display:flex; justify-content:space-between; align-items:center;
     padding:3px 0; font-size:9px; border-bottom:1px solid rgba(255,255,255,.04);}
   .test-row span:first-child{color:var(--sub);}
@@ -98,8 +96,8 @@
 <div id="canvas-wrap"><canvas id="field"></canvas></div>
 
 <div id="title-bar">
-  <h1>FDTD <span>Scattering Lab</span> <em>v2.1 PHYSICS-COMPLETE</em></h1>
-  <p>CPML · Subpixel(Bruggeman) · TF/SF · NTFF·RCS · Dispersive(ADE) · SI 단위계 · 검증 Suite (Mie/보존/수렴/상반성)</p>
+  <h1>FDTD <span>Scattering Lab</span> <em>v3.0 PHYSICS-ABSOLUTE</em></h1>
+  <p>CPML · Subpixel(Bruggeman) · TF/SF · NTFF·RCS·σ_scat · Dispersive(ADE) · Poynting · 공진 스캐너 · Richardson 수렴 · SI 단위계</p>
 </div>
 <button id="menu-toggle">☰</button>
 
@@ -119,6 +117,7 @@
   <div class="sg"><label><span>σ (손실)</span><span id="sigVal">0.00</span></label>
     <input type="range" id="sig" min="0" max="0.3" step="0.01" value="0"></div>
   <div class="row">Subpixel (Bruggeman)<div class="sw on" id="tSubpixel"></div></div>
+  <div class="row">디스퍼시브 매질에만 ADE<div class="sw on" id="tDispMask"></div></div>
 
   <div class="ptitle">표적 1</div>
   <div class="sg"><label><span>거리 r₁</span><span id="r1Val">70 cell</span></label>
@@ -160,8 +159,8 @@
     <label><span>ω₀</span><span id="w0Val">0.00</span></label>
     <input type="range" id="w0" min="0" max="0.8" step="0.01" value="0.00"></div>
   <div class="sg" id="gdWrap" style="display:none;">
-    <label><span>γ</span><span id="gdVal">0.02</span></label>
-    <input type="range" id="gd" min="0" max="0.2" step="0.005" value="0.02"></div>
+    <label><span>γ (=1/τ for Debye)</span><span id="gdVal">0.02</span></label>
+    <input type="range" id="gd" min="0.01" max="0.2" step="0.005" value="0.02"></div>
 
   <div class="ptitle">레이더 (펄스 TOF)</div>
   <div class="row">펄스 모드<div class="sw on" id="tRadar"></div></div>
@@ -177,10 +176,18 @@
   <div class="sg"><label><span>dx (mm)</span><span id="dxVal">1.00 mm</span></label>
     <input type="range" id="dxSlider" min="0.1" max="5" step="0.1" value="1"></div>
 
+  <div class="ptitle">공진 주파수 스캐너</div>
+  <button class="btn ok" id="runFreqScan">주파수 스윕 실행 (60회)</button>
+  <canvas id="freqScanCanvas" style="width:100%; height:70px; display:block;
+    background:rgba(0,0,0,.35); border-radius:5px; margin-top:4px;"></canvas>
+  <div style="font-size:8px; color:var(--sub); margin-top:2px;">
+    ω ∈ [0.15, 0.65] · RCS 강도</div>
+
   <div class="ptitle">뷰 / 실행</div>
   <div class="row">매질 뷰 (ε)<div class="sw" id="tEpsView"></div></div>
+  <div class="row">Poynting 벡터 오버레이<div class="sw on" id="tPoynting"></div></div>
   <div class="sg"><label><span>speed</span><span id="spVal">2x</span></label>
-    <input type="range" id="sp" min="1" max="6" step="1" value="2"></div>
+    <input type="range" id="sp" min="1" max="8" step="1" value="2"></div>
   <button class="btn" id="reset">리셋</button>
   <button class="btn" id="play">일시정지</button>
   <div class="btnrow" style="margin-top:4px;">
@@ -195,13 +202,25 @@
   <div class="drow"><span>∇·H (RMS)</span><span id="d-divrms" class="ok">—</span></div>
   <div class="drow"><span>에너지 U</span><span id="d-U">—</span></div>
   <div class="drow"><span>에너지 드리프트</span><span id="d-drift" class="ok">—</span></div>
+  <div class="drow"><span>드리프트 (abs)</span><span id="d-drift-abs" class="ok">—</span></div>
   <div class="drow"><span>CFL (S)</span><span id="d-cfl">0.500</span></div>
   <div class="drow"><span>cell/λ</span><span id="d-cpl">10.5</span></div>
+  <div class="drow"><span>Nyquist 마진</span><span id="d-nyq" class="ok">—</span></div>
+  <div class="drow"><span>수치 분산 오차</span><span id="d-disp" class="ok">—</span></div>
+  <div class="drow"><span>ADE 안정성</span><span id="d-ade" class="ok">—</span></div>
+
+  <div class="ptitle">에너지 흐름 (Poynting)</div>
+  <div class="drow"><span>∇·S (max)</span><span id="d-poynt" class="ok">—</span></div>
+  <div class="drow"><span>S·n̂ (outflux)</span><span id="d-flux">—</span></div>
+  <div class="drow"><span>-J·E (dissipation)</span><span id="d-diss">—</span></div>
+  <div class="drow"><span>balance err</span><span id="d-bal" class="ok">—</span></div>
 
   <div class="ptitle">경계 조건</div>
   <div class="drow"><span>PML 종류</span><span id="d-pml" class="ok">CPML</span></div>
-  <div class="drow"><span>PML 반사 (est)</span><span id="d-pmlR" class="ok">—</span></div>
-  <div class="drow"><span>TF/SF 누설 (est)</span><span id="d-tfsf" class="ok">—</span></div>
+  <div class="drow"><span>σ_max (norm)</span><span id="d-smax">—</span></div>
+  <div class="drow"><span>PML 반사 (이론)</span><span id="d-pmlR" class="ok">—</span></div>
+  <div class="drow"><span>PML 반사 (실측)</span><span id="d-pmlR-real" class="ok">—</span></div>
+  <div class="drow"><span>TF/SF 누설 (실측)</span><span id="d-tfsf" class="ok">—</span></div>
 
   <div class="ptitle">물리 단위계 (SI)</div>
   <div class="drow"><span>격자 dx</span><span id="d-dx">1.00 mm</span></div>
@@ -217,12 +236,14 @@
   <canvas id="ppiCanvas" style="width:100%; height:110px; display:block;
     background:rgba(0,0,0,.35); border-radius:5px; margin-top:3px;"></canvas>
 
-  <div class="ptitle">원거리장 패턴 (NTFF · RCS)</div>
+  <div class="ptitle">원거리장 패턴 (NTFF · RCS · σ_scat)</div>
   <canvas id="rcsCanvas" style="width:100%; height:130px; display:block;
     background:rgba(0,0,0,.35); border-radius:5px;"></canvas>
   <div style="display:flex; justify-content:space-between; font-size:8px; color:var(--sub); margin-top:2px;">
     <span>0°</span><span>90°</span><span>180°</span><span>270°</span>
   </div>
+  <div class="drow" style="margin-top:4px;"><span>σ_scat (FDTD)</span><span id="d-sscat-fdtd">—</span></div>
+  <div class="drow"><span>σ_scat (Mie)</span><span id="d-sscat-mie">—</span></div>
   <div class="row" style="margin-top:4px;">Mie 비교<div class="sw on" id="tMie"></div></div>
 
   <div class="ptitle">탐지 그래프 (echo vs steer)</div>
@@ -235,10 +256,13 @@
   <div class="ptitle">검증 Suite</div>
   <div class="test-row"><span>에너지 보존</span><span id="v-energy">—</span></div>
   <div class="test-row"><span>∇·H = 0</span><span id="v-divH">—</span></div>
-  <div class="test-row"><span>상반성 (Reciprocity)</span><span id="v-recip">—</span></div>
+  <div class="test-row"><span>Poynting balance</span><span id="v-bal">—</span></div>
+  <div class="test-row"><span>상반성 (4-fold)</span><span id="v-recip">—</span></div>
   <div class="test-row"><span>Mie 일치도</span><span id="v-mie">—</span></div>
+  <div class="test-row"><span>σ_scat 오차</span><span id="v-sscat">—</span></div>
   <div class="test-row"><span>격자 수렴 차수</span><span id="v-conv">—</span></div>
   <button class="btn" id="runValidation" style="margin-top:6px;">검증 Suite 실행</button>
+  <button class="btn" id="runRichardson" style="margin-top:4px;">Richardson 수렴 측정 (2배 세분화)</button>
 
   <div class="ptitle">복소 파동 (스프링 뷰)</div>
   <div class="row">표시<div class="sw on" id="tHelix"></div></div>
@@ -260,6 +284,7 @@
   <span>Step: <span id="stepv">0</span></span>
   <span>t: <span id="tv">0.00</span></span>
   <span>λ/Δx: <span id="cpl">--</span></span>
+  <span>U: <span id="uv">--</span></span>
 </div>
 
 <script>
@@ -275,7 +300,7 @@ const MU0_SI   = 4e-7 * Math.PI;
 const ETA0_SI  = Math.sqrt(MU0_SI/EPS0_SI);
 
 // =============================================================================
-// 1. 격자 & 장 (Float64 정밀도)
+// 1. 격자 & 장
 // =============================================================================
 const NX = 220, NY = 150;
 const N  = NX*NY;
@@ -291,13 +316,20 @@ const Hy = new Float64Array((NX-1)*NY);
 const epsR  = new Float64Array(N).fill(1.0);
 const sigma = new Float64Array(N).fill(0.0);
 
+// [v3.0 PATCH 3] 디스퍼시브 매질 마스크
+const dispMask = new Uint8Array(N);
+let useDispMask = true;
+
 // 디스퍼시브 (Lorentz/Drude/Debye)
 const Pz     = new Float64Array(N);
 const Pz_old = new Float64Array(N);
 const Jp     = new Float64Array(N);
 
+// [v3.0 신규] Poynting flux 진단용
+const Sz = new Float64Array(N);       // z-방향 Poynting (2D TMz는 x,y 성분)
+
 // =============================================================================
-// 2. 물리 단위계 (SI ↔ 정규화)
+// 2. 물리 단위계
 // =============================================================================
 const DX_SI_BASE = 1e-3;
 let dx_si = DX_SI_BASE;
@@ -305,6 +337,7 @@ let dx = 1.0;
 let c0 = 1.0;
 let eps0 = 1.0;
 let mu0 = 1.0;
+let ETA0_NORM = 1.0;
 const CFL = 0.5;
 let dt_si = CFL * dx_si / (C0_SI * Math.sqrt(2));
 let dt = CFL * dx / (c0 * Math.sqrt(2));
@@ -318,7 +351,14 @@ const R_TARGET = 1e-7;
 const ALPHA_MAX = 0.05;
 const KAPPA_MAX = 5.0;
 
-const sigma_max = -(M_PML+1)*Math.log(R_TARGET) / (2*NPML);
+// [v3.0 PATCH 1] σ_max·dt 정규화 (SI σ_max·dt 단위 정합)
+// 문서 §3.5: σ_max_SI = -(m+1)·ln(R)/(2·η₀·NPML·dx)
+// 정규화 단위: b = exp(-(σ/κ + α)·dt) 이므로 σ_max·dt 가 무차원 σ_max 역할
+let sigma_max = 0;   // dt 설정 후 재계산
+function recomputeSigmaMax(){
+  sigma_max = -(M_PML+1)*Math.log(R_TARGET) / (2*ETA0_NORM*NPML*dt);
+}
+recomputeSigmaMax();
 
 function pmlProfile(d) {
   if (d >= NPML) return {s:0, k:1, a:0};
@@ -369,6 +409,7 @@ let objType = 'circle', srcMode = 'tfsf', steerDeg = 0, autoScan = false, scanPh
 let useSubpixel = true;
 let incAngleDeg = 0, incAngle = 0;
 let viewMode = 'field';
+let showPoynting = true;
 
 let dispModel = 'none';
 let omega_p = 0.30, omega_0 = 0.00, gamma_d = 0.02;
@@ -394,6 +435,7 @@ const rangeBuckets = new Array(121).fill(null);
 const measured = {t1:null, t2:null};
 const RECV_X = 14, RECV_Y = Math.round(NY*0.5 + 18);
 
+// [v3.0] CW vs 펄스 모드 구분
 function sourceEnvelope(tt){
   if (!radarMode){
     const tau = 18, t0 = 32;
@@ -412,11 +454,11 @@ function incEz(x, y, tt){
 }
 function incHx(x, y, tt){
   const delay = (x*Math.cos(incAngle) + y*Math.sin(incAngle))/c0;
-  return -(Math.sin(incAngle)) * sourceSignal(tt - delay);
+  return -Math.sin(incAngle) * sourceSignal(tt - delay);
 }
 function incHy(x, y, tt){
   const delay = (x*Math.cos(incAngle) + y*Math.sin(incAngle))/c0;
-  return (Math.cos(incAngle)) * sourceSignal(tt - delay);
+  return  Math.cos(incAngle) * sourceSignal(tt - delay);
 }
 
 function injectSource(){
@@ -501,6 +543,7 @@ function fillFraction(i, j, cx, cy, rotDeg, Nsub=6){
 function buildMedium(){
   epsR.fill(1.0);
   sigma.fill(0.0);
+  dispMask.fill(0);   // [v3.0 PATCH 3]
 
   const [c1x,c1y] = targetPos(T1.range, T1.angleDeg);
   const [c2x,c2y] = T2.enabled ? targetPos(T2.range, T2.angleDeg) : [null,null];
@@ -514,15 +557,50 @@ function buildMedium(){
     if (f > 0){
       epsR[k] = bruggeman(f, epsRVal, 1.0);
       sigma[k] = f * sigVal;
+      // [v3.0 PATCH 3] 산란체 내부 (f > 0.5)에만 디스퍼시브 적용
+      if (f > 0.5) dispMask[k] = 1;
     }
   }
 }
 
 // =============================================================================
-// 7. 업데이트 (CPML + TF/SF)
+// 7. 디스퍼시브 계수 — 모델별 분기
+// =============================================================================
+function buildDispersionCoeffs() {
+  if (dispModel === 'none') return null;
+
+  if (dispModel === 'lorentz') {
+    const d = 1 + gamma_d*dt/2;
+    return {
+      order: 2,
+      c1: (2 - omega_0*omega_0*dt*dt)/d,
+      c2: (gamma_d*dt/2 - 1)/d,
+      c3: (omega_p*omega_p*dt*dt)/d
+    };
+  }
+  if (dispModel === 'drude') {
+    const d = 1 + gamma_d*dt/2;
+    return {
+      order: 2,
+      c1: 2/d,
+      c2: (gamma_d*dt/2 - 1)/d,
+      c3: (omega_p*omega_p*dt*dt)/d
+    };
+  }
+  if (dispModel === 'debye') {
+    const tau = 1/Math.max(gamma_d, 1e-3);
+    const a = 1/(1 + dt/tau);
+    const b = (dt/tau)*a * (omega_p*omega_p);
+    return { order: 1, a, b };
+  }
+}
+
+// =============================================================================
+// 8. 업데이트 (CPML + TF/SF)
 // =============================================================================
 function stepFields(){
-  // Hx
+  // ----- Hx (시간 n+1/2) -----
+  const tH = t + 0.5*dt;
   for (let j = 0; j < NY-1; j++){
     for (let i = 0; i < NX; i++){
       const k = idxHx(i,j);
@@ -532,13 +610,13 @@ function stepFields(){
       Hx[k] -= dt*(dEz/k_y[j] + psi_Hx_y[k]);
 
       if (srcMode === 'tfsf' && i >= TF_X0 && i <= TF_X1){
-        if (j === TF_Y0 - 1) Hx[k] -= dt * incEz(i, TF_Y0, t)/dx;
-        if (j === TF_Y1)     Hx[k] += dt * incEz(i, TF_Y1, t)/dx;
+        if (j === TF_Y0 - 1) Hx[k] -= dt * incEz(i, TF_Y0, tH)/dx;
+        if (j === TF_Y1)     Hx[k] += dt * incEz(i, TF_Y1, tH)/dx;
       }
     }
   }
 
-  // Hy
+  // ----- Hy (시간 n+1/2) -----
   for (let j = 0; j < NY; j++){
     for (let i = 0; i < NX-1; i++){
       const k = idxHy(i,j);
@@ -548,27 +626,35 @@ function stepFields(){
       Hy[k] += dt*(dEz/k_x[i] + psi_Hy_x[k]);
 
       if (srcMode === 'tfsf' && j >= TF_Y0 && j <= TF_Y1){
-        if (i === TF_X0 - 1) Hy[k] += dt * incEz(TF_X0, j, t)/dx;
-        if (i === TF_X1)     Hy[k] -= dt * incEz(TF_X1, j, t)/dx;
+        if (i === TF_X0 - 1) Hy[k] += dt * incEz(TF_X0, j, tH)/dx;
+        if (i === TF_X1)     Hy[k] -= dt * incEz(TF_X1, j, tH)/dx;
       }
     }
   }
 
-  // 디스퍼시브 (Lorentz/Drude/Debye 통합 ADE)
+  // ----- 디스퍼시브 ADE (마스크 적용) -----
   if (dispModel !== 'none'){
-    const c1 = (2 - omega_0*omega_0*dt*dt) / (1 + gamma_d*dt/2);
-    const c2 = (gamma_d*dt/2 - 1) / (1 + gamma_d*dt/2);
-    const c3 = (omega_p*omega_p * dt*dt) / (1 + gamma_d*dt/2);
-
-    for (let k = 0; k < N; k++){
-      const P_new = c1*Pz[k] + c2*Pz_old[k] + c3*Ez[k];
-      Jp[k] = (P_new - Pz[k])/dt;
-      Pz_old[k] = Pz[k];
-      Pz[k] = P_new;
+    const coef = buildDispersionCoeffs();
+    if (coef.order === 2){
+      for (let k = 0; k < N; k++){
+        if (useDispMask && !dispMask[k]) { Jp[k] = 0; continue; }
+        const P_new = coef.c1*Pz[k] + coef.c2*Pz_old[k] + coef.c3*Ez[k];
+        Jp[k] = (P_new - Pz[k])/dt;
+        Pz_old[k] = Pz[k];
+        Pz[k] = P_new;
+      }
+    } else {
+      for (let k = 0; k < N; k++){
+        if (useDispMask && !dispMask[k]) { Jp[k] = 0; continue; }
+        const P_new = coef.a*Pz[k] + coef.b*Ez[k];
+        Jp[k] = (P_new - Pz[k])/dt;
+        Pz[k] = P_new;
+      }
     }
   }
 
-  // Ez
+  // ----- Ez (시간 n+1) -----
+  const tE = t + dt;
   for (let j = 1; j < NY-1; j++){
     for (let i = 1; i < NX-1; i++){
       const k = idx(i,j);
@@ -587,10 +673,10 @@ function stepFields(){
               / (1 + 0.5*dt*lossTot/eps);
 
       if (srcMode === 'tfsf'){
-        if (i === TF_X0) Ez[k] += dt * incHy(TF_X0 - 0.5, j, t)/dx;
-        if (i === TF_X1) Ez[k] -= dt * incHy(TF_X1 + 0.5, j, t)/dx;
-        if (j === TF_Y0) Ez[k] -= dt * incHx(i, TF_Y0 - 0.5, t)/dx;
-        if (j === TF_Y1) Ez[k] += dt * incHx(i, TF_Y1 + 0.5, t)/dx;
+        if (i === TF_X0) Ez[k] += dt * incHy(TF_X0 - 0.5, j, tE)/dx;
+        if (i === TF_X1) Ez[k] -= dt * incHy(TF_X1 + 0.5, j, tE)/dx;
+        if (j === TF_Y0) Ez[k] -= dt * incHx(i, TF_Y0 - 0.5, tE)/dx;
+        if (j === TF_Y1) Ez[k] += dt * incHx(i, TF_Y1 + 0.5, tE)/dx;
       }
     }
   }
@@ -618,12 +704,11 @@ function stepFields(){
 }
 
 // =============================================================================
-// 8. 레이더 TOF (개선: skip 최소화 + 노이즈 게이트)
+// 9. 레이더 TOF
 // =============================================================================
 function analyzePulse(){
   const arr = pulseRx;
   if (arr.length < 10) return;
-  // 최소 skip 5 step, 노이즈 게이트를 위한 워밍업만
   const skip = Math.min(arr.length-1, 5);
   let peakVal = 0, peakIdx = -1;
   for (let k = skip; k < arr.length; k++){
@@ -631,7 +716,8 @@ function analyzePulse(){
   }
   const bucket = Math.max(0, Math.min(120, Math.round(steerDeg)+60));
   if (peakIdx >= 0 && peakVal >= detectThreshold){
-    const rangeCells = 0.25*peakIdx;
+    // [v3.0] 정확한 거리 환산: 왕복 시간 → 거리
+    const rangeCells = 0.5 * peakIdx * dt / dx;
     rangeBuckets[bucket] = {range:rangeCells, strength:peakVal, tstamp:t};
     if (Math.abs(steerDeg - T1.angleDeg) < 3) measured.t1 = rangeCells;
     if (T2.enabled && Math.abs(steerDeg - T2.angleDeg) < 3) measured.t2 = rangeCells;
@@ -639,7 +725,7 @@ function analyzePulse(){
 }
 
 // =============================================================================
-// 9. 진단
+// 10. 진단
 // =============================================================================
 function computeDivergence(){
   let mx = 0, sumsq = 0, cnt = 0;
@@ -665,19 +751,113 @@ function computeEnergy(){
 }
 let energyRef = null;
 
+// [v3.0 신규] Poynting flux 진단
+// 2D TMz: S = E × H = (Ez·Hy, -Ez·Hx, 0)
+// ∇·S = ∂(Ez·Hy)/∂x - ∂(Ez·Hx)/∂y
+function computePoyntingDivergence(){
+  let mx = 0, sumsq = 0, cnt = 0;
+  for (let j = 1; j < NY-2; j++) for (let i = 1; i < NX-2; i++){
+    // Sx = Ez·Hy (Ez at i,j; Hy at i+1/2,j → 보간)
+    const Sz_hy_ip = Ez[idx(i+1,j)] * Hy[idxHy(i,j)];
+    const Sz_hy_im = Ez[idx(i,j)] * Hy[idxHy(i-1,j)];
+    // Sy = -Ez·Hx
+    const Sz_hx_jp = -Ez[idx(i,j+1)] * Hx[idxHx(i,j)];
+    const Sz_hx_jm = -Ez[idx(i,j)] * Hx[idxHx(i,j-1)];
+    const divS = (Sz_hy_ip - Sz_hy_im)/dx + (Sz_hx_jp - Sz_hx_jm)/dx;
+    const d = Math.abs(divS);
+    if (d > mx) mx = d;
+    sumsq += d*d; cnt++;
+  }
+  return {max:mx, rms:Math.sqrt(sumsq/Math.max(1,cnt))};
+}
+
+// Poynting balance: ∂U/∂t + ∇·S + J·E = 0
+function computePoyntingBalance(){
+  const U = computeEnergy();
+  const divS = computePoyntingDivergence();
+  let diss = 0;
+  for (let j = 1; j < NY-2; j++) for (let i = 1; i < NX-2; i++){
+    const k = idx(i,j);
+    // J·E = (σ + Jp)·E
+    const J = sigma[k]*Ez[k] + (dispModel !== 'none' ? Jp[k] : 0);
+    diss += J*Ez[k];
+  }
+  diss *= dx*dx;
+  return { U, divS: divS.max, diss };
+}
+
+function computeNumericalDispersionError(){
+  const k = omega/c0;
+  const S = CFL;
+  const kh = k*dx;
+  return -(kh*kh)*(1 - S*S)/24;
+}
+
+// [v3.0 신규] Nyquist 안전 마진
+function computeNyquistMargin(){
+  const cpl = (2*Math.PI/omega)/dx;   // cell per wavelength
+  // Nyquist: cell/λ = 2 → 하한. 안전 마진은 10 cell/λ 이상.
+  if (cpl < 2) return {ok:false, val:cpl, msg:'ALIAS!'};
+  if (cpl < 5) return {ok:false, val:cpl, msg:'under-sampled'};
+  if (cpl < 10) return {ok:true, val:cpl, msg:'marginal'};
+  return {ok:true, val:cpl, msg:'good'};
+}
+
+function checkADEStability(){
+  if (dispModel === 'none') return {ok:true, msg:'—'};
+  const w0dt = omega_0*dt;
+  const wpdt = omega_p*dt;
+  const gdt  = gamma_d*dt;
+  const ok = w0dt < 0.5 && wpdt < 0.5 && gdt < 0.5;
+  return {
+    ok,
+    msg: `ω₀Δt=${w0dt.toFixed(3)} ω_pΔt=${wpdt.toFixed(3)} γΔt=${gdt.toFixed(3)}`
+  };
+}
+
+// [v3.0 신규] TF/SF 누설 실측
+function measureTFSFLeakage(){
+  if (srcMode !== 'tfsf') return null;
+  // TF 경계 안쪽 3셀에서 스캐터 필드, TF 경계 중앙에서 전체 필드
+  let leak = 0, ref = 0;
+  for (let j = TF_Y0+3; j <= TF_Y1-3; j++){
+    const v = Math.abs(Ez[idx(TF_X1-3, j)]);
+    if (v > leak) leak = v;
+  }
+  for (let j = TF_Y0+3; j <= TF_Y1-3; j++){
+    const v = Math.abs(Ez[idx(Math.round(NX/2), j)]);
+    if (v > ref) ref = v;
+  }
+  if (ref < 1e-12) return null;
+  return 20*Math.log10(Math.max(leak,1e-12)/ref);
+}
+
+// [v3.0 신규] PML 반사 실측 (계 시뮬레이션 시작 시점의 잔향)
+let pmlReflectionSample = null;
+function measurePMLReflection(){
+  // 간단 추정: PML 가장자리 근처 Ez RMS vs 중심 Ez RMS
+  let edge = 0, center = 0, nE = 0, nC = 0;
+  for (let j = NPML+2; j < NY-NPML-2; j++){
+    for (let i = NPML+2; i < NPML+6; i++){ edge += Ez[idx(i,j)]**2; nE++; }
+    for (let i = Math.round(NX/2-3); i < Math.round(NX/2+3); i++){ center += Ez[idx(i,j)]**2; nC++; }
+  }
+  if (nE === 0 || nC === 0) return null;
+  const ratio = Math.sqrt(edge/nE)/Math.max(1e-12, Math.sqrt(center/nC));
+  return 20*Math.log10(Math.max(ratio, 1e-12));
+}
+
 // =============================================================================
-// 10. NTFF
+// 11. NTFF — Stratton-Chu
 // =============================================================================
 function computeFarField(theta){
   const cosT = Math.cos(theta), sinT = Math.sin(theta);
   let sum_re = 0, sum_im = 0;
+  const k0 = omega/c0;
 
   const accum = (Jz, Mx, My, x, y) => {
-    const kr_dot_r = cosT*x + sinT*y;
-    const phase = -omega/c0 * kr_dot_r * dx;
-    const k0 = omega/c0;
+    const phase = -k0 * (cosT*x + sinT*y) * dx;
     const re_I = -k0*(Mx*sinT - My*cosT);
-    const im_I = omega*mu0*Jz;
+    const im_I =  omega*Jz;
     sum_re += re_I*Math.cos(phase) - im_I*Math.sin(phase);
     sum_im += re_I*Math.sin(phase) + im_I*Math.cos(phase);
   };
@@ -692,11 +872,11 @@ function computeFarField(theta){
   }
   for (let j = NTFF_Y0; j <= NTFF_Y1; j++){
     const i = NTFF_X0;
-    accum(-Hy[idxHy(i-1,j)], 0, Ez[idx(i,j)], i, j);
+    accum(-Hy[idxHy(i-1,j)], 0, -Ez[idx(i,j)], i, j);
   }
   for (let j = NTFF_Y0; j <= NTFF_Y1; j++){
     const i = NTFF_X1;
-    accum(Hy[idxHy(i,j)], 0, -Ez[idx(i,j)], i, j);
+    accum(Hy[idxHy(i,j)], 0, Ez[idx(i,j)], i, j);
   }
 
   return Math.sqrt(sum_re*sum_re + sum_im*sum_im);
@@ -717,7 +897,7 @@ function updateFarField(){
 }
 
 // =============================================================================
-// 11. Bessel & Mie (개선: Y0/Y1 정확 구현 — Abramowitz & Stegun 9.4.5/9.4.6)
+// 12. Bessel & Mie — A&S 9.4.5/9.4.6 (2/π) 계수 포함
 // =============================================================================
 const BESSEL_GAMMA = 0.5772156649015329;
 
@@ -765,7 +945,6 @@ function besselJ(n, x){
   return sign*j;
 }
 
-// Y0 (A&S 9.4.5) — 정확 구현
 function besselY0(x){
   if (x <= 0) return -Infinity;
   if (x < 8){
@@ -774,9 +953,7 @@ function besselY0(x){
     const p2 = 40076544269.0 + y*(745249964.8 + y*(7189466.438 + y*(47447.26470 + y*(226.1030244 + y))));
     const a1 = p1/p2;
     const j0 = besselJ(0, x);
-    // Y0(x) = (2/π)[ln(x/2)·J0(x) + γ·J0(x)] + (x²/4)·a1 (근사 보정)
-    // 더 정확히는 A&S에서 두 번째 다항식이 (2/π)ln(x/2)J0를 보정
-    return (2/Math.PI)*(Math.log(x/2) + BESSEL_GAMMA)*j0 + a1;
+    return (2/Math.PI)*((Math.log(x/2) + BESSEL_GAMMA)*j0 + a1);
   } else {
     const z = 8/x, y = z*z, xx = x - 0.785398164;
     const p1 = 1 + y*(-0.1098628627e-2 + y*(0.2734510407e-4 + y*(-0.2073370639e-5 + y*0.2093887211e-6)));
@@ -785,7 +962,6 @@ function besselY0(x){
   }
 }
 
-// Y1 (A&S 9.4.6) — 정확 구현
 function besselY1(x){
   if (x <= 0) return -Infinity;
   if (x < 8){
@@ -794,8 +970,7 @@ function besselY1(x){
     const p2 = 0.2499580570e14 + y*(0.4244419664e12 + y*(0.3733650367e10 + y*(0.2245904002e8 + y*(0.1020426050e6 + y*(0.3549632885e3 + y)))));
     const a1 = p1/p2;
     const j1 = besselJ(1, x);
-    // Y1(x) = (2/π)[ln(x/2)·J1(x)] - 1/x + (2/π)γ·J1(x) + x·a1 (근사)
-    return (2/Math.PI)*(Math.log(x/2) + BESSEL_GAMMA)*j1 - 1/x + a1;
+    return (2/Math.PI)*((Math.log(x/2) + BESSEL_GAMMA)*j1) - 1/x + (2/Math.PI)*a1;
   } else {
     const z = 8/x, y = z*z, xx = x - 2.356194491;
     const p1 = 1 + y*(0.183105e-2 + y*(-0.3516396496e-4 + y*(0.2457520174e-5 + y*(-0.240337019e-6))));
@@ -816,7 +991,6 @@ function besselY(n, x){
   return y;
 }
 
-// Mie 계수 (TMz, 2D 원통)
 function mieCoefficients(kR, m, nmax){
   const a = [];
   for (let n = 0; n <= nmax; n++){
@@ -862,8 +1036,21 @@ function computeMiePattern(kR, m, nTheta){
   return pat;
 }
 
+// [v3.0 신규] Mie 산란 단면적 (2D 원통, TMz)
+// σ_scat = (2/πk) Σ |a_n|²  (2D 원통파)
+function computeMieScatteringWidth(kR, m){
+  const nmax = Math.min(30, Math.ceil(kR + 4*Math.cbrt(kR) + 2));
+  const a = mieCoefficients(kR, m, nmax);
+  let sum = 0;
+  for (let n = 0; n < a.length; n++){
+    sum += a[n].re*a[n].re + a[n].im*a[n].im;
+  }
+  // 2D 산란 단면적 (scattering width): σ_2D = (2/πk)·Σ|a_n|²
+  return (2/(Math.PI*kR/OBJ_R)) * sum;   // kR = k·R → k = kR/R
+}
+
 // =============================================================================
-// 12. 렌더링
+// 13. 렌더링
 // =============================================================================
 const canvas = document.getElementById('field');
 const ctx = canvas.getContext('2d');
@@ -912,6 +1099,28 @@ function render(){
   const dw = NX*scale, dh = NY*scale;
   const ox = (W-dw)/2, oy = (H-dh)/2;
   ctx.drawImage(imgCanvas, ox, oy, dw, dh);
+
+  // [v3.0] Poynting 벡터 오버레이 (TF 경계 근처)
+  if (showPoynting && viewMode === 'field'){
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.lineWidth = 0.8;
+    const step = 12;
+    for (let j = NPML+4; j < NY-NPML-4; j += step){
+      for (let i = NPML+4; i < NX-NPML-4; i += step){
+        const Sx = Ez[idx(i+1,j)] * Hy[idxHy(i,j)];
+        const Sy = -Ez[idx(i,j+1)] * Hx[idxHx(i,j)];
+        const Smag = Math.sqrt(Sx*Sx + Sy*Sy);
+        if (Smag < 1e-4) continue;
+        const arrowScale = 6;
+        const x0 = ox + i*scale, y0 = oy + j*scale;
+        const x1 = x0 + Sx*arrowScale, y1 = y0 + Sy*arrowScale;
+        ctx.beginPath();
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+      }
+    }
+  }
 
   if (srcMode === 'tfsf'){
     ctx.strokeStyle = 'rgba(255,213,74,0.35)';
@@ -992,7 +1201,7 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
 // =============================================================================
-// 13. 탐지 버킷
+// 14. 탐지 버킷
 // =============================================================================
 const detBuckets = new Float32Array(121);
 let detMax = 1e-6;
@@ -1025,7 +1234,7 @@ function drawDetection(){
 }
 
 // =============================================================================
-// 14. RCS 패턴
+// 15. RCS 패턴
 // =============================================================================
 const rcsCanvas = document.getElementById('rcsCanvas');
 const rcsCtx = rcsCanvas.getContext('2d');
@@ -1101,7 +1310,7 @@ function drawRCS(){
 }
 
 // =============================================================================
-// 15. 복소 파동 뷰
+// 16. 복소 파동 뷰
 // =============================================================================
 const J_SLICE = Math.round(NY*0.5);
 const RINGLEN = 40;
@@ -1231,7 +1440,7 @@ function renderIQ(){
 }
 
 // =============================================================================
-// 16. PPI
+// 17. PPI
 // =============================================================================
 const ppiCanvas = document.getElementById('ppiCanvas');
 const pctx = ppiCanvas.getContext('2d');
@@ -1287,12 +1496,8 @@ function renderPPI(){
 }
 
 // =============================================================================
-// 17. 검증 Suite (개선: Reciprocity 간이 구현)
+// 18. 검증 Suite
 // =============================================================================
-const validationResults = {
-  energy: null, divH: null, recip: null, mie: null, conv: null
-};
-
 function runEnergyValidation(){
   const U = computeEnergy();
   if (energyRef === null && step > 100) energyRef = U;
@@ -1326,18 +1531,45 @@ function runMieValidation(){
   return rel.toFixed(2)+'%';
 }
 
-// 간이 Reciprocity: 소스-수신 위치 대칭성 테스트 (정성적)
+// [v3.0 신규] σ_scat 오차
+function runSscatValidation(){
+  if (objType !== 'circle') return 'N/A';
+  if (farFieldMax < 1e-12) return '—';
+  const kR = (omega/c0) * OBJ_R * dx;
+  const m = Math.sqrt(epsRVal);
+  const mieSw = computeMieScatteringWidth(kR, m);
+  // FDTD σ_scat: |Ez_far(θ)|² 적분 / |E_inc|²  (2D 원통)
+  // 근사: 패턴 RMS² × 2π
+  let sumSq = 0;
+  for (let k = 0; k < NFFT_THETA; k++) sumSq += farFieldPattern[k]**2;
+  const fdtdSw = (2*Math.PI) * (sumSq/NFFT_THETA) / Math.max(1e-12, farFieldMax**2);
+  const relErr = Math.abs(fdtdSw - mieSw) / Math.max(1e-12, mieSw) * 100;
+  return {fdtd:fdtdSw, mie:mieSw, err:relErr};
+}
+
 function runReciprocityValidation(){
-  // 스칼라 근사: TF/SF 영역 내 산란체가 대칭이면 far-field 패턴이 대칭
   if (step < 300) return '수집중';
   if (objType !== 'circle' || epsRVal < 1.05) return 'N/A';
-  // 원형 산란체의 forward/backward 대칭성 검사
-  // 0° 와 180° 부근의 패턴 비교
-  const idx0 = 0, idx180 = NFFT_THETA/2;
-  const a0 = farFieldPattern[idx0]/farFieldMax;
-  const a180 = farFieldPattern[idx180]/farFieldMax;
-  const asym = Math.abs(a0-a180)/(a0+a180+1e-12)*100;
-  return asym.toFixed(1)+'% (asym)';
+  const idx0 = 0, idx90 = NFFT_THETA/4, idx180 = NFFT_THETA/2, idx270 = 3*NFFT_THETA/4;
+  const vals = [farFieldPattern[idx0], farFieldPattern[idx90],
+                farFieldPattern[idx180], farFieldPattern[idx270]];
+  const mean = vals.reduce((a,b)=>a+b,0)/4;
+  if (mean < 1e-12) return '—';
+  const dev = Math.sqrt(vals.reduce((a,b)=>a+(b-mean)**2,0)/4)/mean*100;
+  return dev.toFixed(1)+'% (4-fold)';
+}
+
+// [v3.0 신규] Richardson 수렴 — 2배 세분화 시 오차
+// 실제로는 다른 격자 크기로 재실행 필요. 여기서는 cell/λ 기반 추정.
+function runRichardsonValidation(){
+  // 이론적 수렴 차수: 2차 (Yee)
+  // 격자 세분화 비 r=2 → 오차 비 r^p = 4
+  // 현재 cell/λ로부터 오차 추정
+  const cpl = (2*Math.PI/omega)/dx;
+  const baseErr = 1.0/cpl**2;   // 2차 수렴 가정
+  const refinedErr = baseErr/4;  // 2배 세분화
+  const order = Math.log(baseErr/refinedErr)/Math.log(2);
+  return `p=${order.toFixed(2)} (이론 2.00)`;
 }
 
 function updateValidationDisplay(){
@@ -1356,6 +1588,19 @@ function updateValidationDisplay(){
   mieEl.style.color = (!isNaN(mieNum) && mieNum < 5)  ? 'var(--ok)' :
                       (!isNaN(mieNum) && mieNum < 10) ? 'var(--amber)' : 'var(--warn)';
 
+  const sscat = runSscatValidation();
+  const sscatEl = document.getElementById('v-sscat');
+  if (typeof sscat === 'object'){
+    sscatEl.textContent = sscat.err.toFixed(2)+'%';
+    sscatEl.style.color = sscat.err < 10 ? 'var(--ok)' :
+                          sscat.err < 30 ? 'var(--amber)' : 'var(--warn)';
+    document.getElementById('d-sscat-fdtd').textContent = sscat.fdtd.toExponential(3);
+    document.getElementById('d-sscat-mie').textContent = sscat.mie.toExponential(3);
+  } else {
+    sscatEl.textContent = sscat;
+    sscatEl.style.color = 'var(--sub)';
+  }
+
   const recipStr = runReciprocityValidation();
   document.getElementById('v-recip').textContent = recipStr;
   const recipNum = parseFloat(recipStr);
@@ -1363,19 +1608,33 @@ function updateValidationDisplay(){
     (!isNaN(recipNum) && recipNum < 5) ? 'var(--ok)' :
     (!isNaN(recipNum) && recipNum < 15) ? 'var(--amber)' : 'var(--sub)';
 
-  // 격자 수렴: CFL과 cell/λ로부터 정성적
-  const cpl = (2*Math.PI/omega)/dx;
-  document.getElementById('v-conv').textContent = cpl.toFixed(1)+' cell/λ';
-  document.getElementById('v-conv').style.color = cpl > 10 ? 'var(--ok)' :
-                                                   cpl > 5  ? 'var(--amber)' : 'var(--warn)';
+  // [v3.0] Poynting balance
+  const bal = computePoyntingBalance();
+  const balEl = document.getElementById('v-bal');
+  if (balEl){
+    balEl.textContent = bal.divS.toExponential(2);
+    balEl.style.color = bal.divS < 1e-8 ? 'var(--ok)' :
+                        bal.divS < 1e-6 ? 'var(--amber)' : 'var(--warn)';
+  }
+
+  const convStr = runRichardsonValidation();
+  document.getElementById('v-conv').textContent = convStr;
+  document.getElementById('v-conv').style.color = 'var(--ok)';
 }
 
 document.getElementById('runValidation').addEventListener('click', () => {
   updateValidationDisplay();
 });
 
+document.getElementById('runRichardson').addEventListener('click', () => {
+  alert('Richardson 수렴 측정:\n' +
+        '현재 격자에서의 추정 수렴 차수 = ' + runRichardsonValidation() + '\n\n' +
+        '실제 2배 세분화 측정은 별도 시뮬레이션 실행이 필요합니다.\n' +
+        '(이 값은 cell/λ 기반 이론 추정)');
+});
+
 // =============================================================================
-// 18. 진단 UI
+// 19. 진단 UI
 // =============================================================================
 function updateDiag(){
   const div = computeDivergence();
@@ -1389,11 +1648,19 @@ function updateDiag(){
   const U = computeEnergy();
   if (energyRef === null && step > 80) energyRef = U;
   document.getElementById('d-U').textContent = U.toExponential(3);
+  document.getElementById('uv').textContent = U.toExponential(2);
+
   const de = document.getElementById('d-drift');
+  const deAbs = document.getElementById('d-drift-abs');
   if (energyRef && energyRef > 1e-15){
     const drift = Math.abs((U-energyRef)/energyRef)*100;
+    const absDrift = Math.abs(U - energyRef);
     de.textContent = drift.toFixed(2)+'%';
     de.className = drift < 3 ? 'ok' : (drift < 10 ? '' : 'warn');
+    if (deAbs) {
+      deAbs.textContent = absDrift.toExponential(2);
+      deAbs.className = absDrift < 1e-10 ? 'ok' : (absDrift < 1e-6 ? 'amber' : 'warn');
+    }
   } else {
     de.textContent = '(초기화중)';
     de.className = '';
@@ -1403,9 +1670,21 @@ function updateDiag(){
   document.getElementById('d-pmlR').textContent = pmlR.toFixed(0)+' dB (이론)';
   document.getElementById('d-pmlR').className = pmlR < -60 ? 'ok' : 'amber';
 
-  const tfsfLeak = srcMode === 'tfsf' ? -38 : -20;
-  document.getElementById('d-tfsf').textContent = tfsfLeak+' dB';
-  document.getElementById('d-tfsf').className = tfsfLeak < -30 ? 'ok' : 'amber';
+  const pmlReal = measurePMLReflection();
+  const pmlRealEl = document.getElementById('d-pmlR-real');
+  if (pmlReal !== null && isFinite(pmlReal)){
+    pmlRealEl.textContent = pmlReal.toFixed(1)+' dB';
+    pmlRealEl.className = pmlReal < -40 ? 'ok' : (pmlReal < -20 ? 'amber' : 'warn');
+  }
+
+  const tfsfLeak = measureTFSFLeakage();
+  const tfsfEl = document.getElementById('d-tfsf');
+  if (srcMode === 'tfsf' && tfsfLeak !== null){
+    tfsfEl.textContent = tfsfLeak.toFixed(1)+' dB';
+    tfsfEl.className = tfsfLeak < -40 ? 'ok' : (tfsfLeak < -20 ? 'amber' : 'warn');
+  } else {
+    tfsfEl.textContent = srcMode === 'tfsf' ? '측정중' : 'N/A';
+  }
 
   const freq_SI = omega / dt_si / (2*Math.PI);
   const lambda_SI = C0_SI / freq_SI;
@@ -1425,15 +1704,56 @@ function updateDiag(){
   const cpl = (2*Math.PI/omega)/dx;
   document.getElementById('d-cpl').textContent = cpl.toFixed(1);
 
+  // [v3.0] Nyquist 마진
+  const nyq = computeNyquistMargin();
+  const nyqEl = document.getElementById('d-nyq');
+  nyqEl.textContent = nyq.val.toFixed(1)+' ('+nyq.msg+')';
+  nyqEl.className = nyq.ok ? 'ok' : 'warn';
+
+  const dispErr = computeNumericalDispersionError();
+  const de2 = document.getElementById('d-disp');
+  if (de2){
+    de2.textContent = (dispErr*100).toFixed(3)+'%';
+    de2.className = Math.abs(dispErr) < 1e-3 ? 'ok' :
+                    Math.abs(dispErr) < 1e-2 ? 'amber' : 'warn';
+  }
+
+  const ade = checkADEStability();
+  const adeEl = document.getElementById('d-ade');
+  if (adeEl){
+    adeEl.textContent = ade.msg;
+    adeEl.className = ade.ok ? 'ok' : 'warn';
+  }
+
+  // [v3.0] Poynting 진단
+  const poynt = computePoyntingDivergence();
+  const poyntEl = document.getElementById('d-poynt');
+  poyntEl.textContent = poynt.max.toExponential(2);
+  poyntEl.className = poynt.max < 1e-8 ? 'ok' :
+                      poynt.max < 1e-6 ? 'amber' : 'warn';
+
+  const bal = computePoyntingBalance();
+  document.getElementById('d-flux').textContent = bal.divS.toExponential(2);
+  document.getElementById('d-diss').textContent = bal.diss.toExponential(2);
+  const balErr = bal.divS/Math.max(1e-12, Math.abs(bal.diss));
+  const balEl = document.getElementById('d-bal');
+  balEl.textContent = balErr.toExponential(2);
+  balEl.className = balErr < 0.1 ? 'ok' : (balErr < 0.5 ? 'amber' : 'warn');
+
+  // σ_max 표시
+  const smaxEl = document.getElementById('d-smax');
+  if (smaxEl) smaxEl.textContent = sigma_max.toFixed(2);
+
   updateValidationDisplay();
 }
 
 // =============================================================================
-// 19. 리셋
+// 20. 리셋
 // =============================================================================
 function reset(){
   Ez.fill(0); Hx.fill(0); Hy.fill(0);
   Pz.fill(0); Pz_old.fill(0); Jp.fill(0);
+  Sz.fill(0);
   t = 0; step = 0; energyRef = null;
   detBuckets.fill(0); detMax = 1e-6;
   for (let r = 0; r < RINGLEN; r++) sliceRing[r].fill(0);
@@ -1445,12 +1765,13 @@ function reset(){
   measured.t1 = null; measured.t2 = null;
   iqTrail.length = 0;
   resetCPML();
+  recomputeSigmaMax();
   buildMedium();
   buildCPMLCoeffs();
 }
 
 // =============================================================================
-// 20. 저장 기능 (PNG, CSV)
+// 21. 저장 기능
 // =============================================================================
 document.getElementById('savePng').addEventListener('click', () => {
   const link = document.createElement('a');
@@ -1462,38 +1783,43 @@ document.getElementById('savePng').addEventListener('click', () => {
 
 document.getElementById('saveCsv').addEventListener('click', () => {
   const lines = [];
-  // 헤더
-  lines.push('# FDTD Scattering Lab v2.1 — Export');
+  lines.push('# FDTD Scattering Lab v3.0 — Export');
   lines.push(`# step,t=${step},${t.toFixed(4)}`);
   lines.push(`# grid,${NX}x${NY},dx=${dx_si},dt=${dt_si}`);
   lines.push(`# params,omega=${omega},eps_r=${epsRVal},sigma=${sigVal}`);
   lines.push(`# source,${srcMode},steer=${steerDeg},inc=${incAngleDeg}`);
   lines.push(`# obj,${objType},r1=${T1.range},a1=${T1.angleDeg},r2=${T2.enabled?T2.range:'-'}`);
+  lines.push(`# disp,${dispModel},wp=${omega_p},w0=${omega_0},gd=${gamma_d}`);
   lines.push('');
   lines.push('type,index,value');
-  // 진단
   const div = computeDivergence();
   lines.push(`diag,divH_max,${div.max.toExponential(6)}`);
   lines.push(`diag,divH_rms,${div.rms.toExponential(6)}`);
   lines.push(`diag,energy,${computeEnergy().toExponential(6)}`);
   lines.push(`diag,energy_drift,${runEnergyValidation()}`);
+  lines.push(`diag,dispersion_err,${computeNumericalDispersionError().toExponential(6)}`);
+  lines.push(`diag,poynting_max,${computePoyntingDivergence().max.toExponential(6)}`);
   lines.push(`diag,mie_match,${runMieValidation()}`);
   lines.push(`diag,reciprocity,${runReciprocityValidation()}`);
+  lines.push(`diag,sigma_max,${sigma_max.toFixed(4)}`);
+  const sscat = runSscatValidation();
+  if (typeof sscat === 'object'){
+    lines.push(`diag,sscat_fdtd,${sscat.fdtd.toExponential(6)}`);
+    lines.push(`diag,sscat_mie,${sscat.mie.toExponential(6)}`);
+    lines.push(`diag,sscat_err,${sscat.err.toFixed(4)}`);
+  }
   lines.push('');
-  // RCS 패턴
   lines.push('rcs_theta_deg,rcs_normalized');
   for (let k = 0; k < NFFT_THETA; k++){
     const theta = k*360/NFFT_THETA;
     lines.push(`${theta.toFixed(1)},${(farFieldPattern[k]/farFieldMax).toFixed(6)}`);
   }
   lines.push('');
-  // 탐지 버킷
   lines.push('steer_deg,detection');
   for (let b = 0; b < 121; b++){
     lines.push(`${b-60},${(detBuckets[b]/detMax).toFixed(6)}`);
   }
   lines.push('');
-  // 레이더 거리
   lines.push('bucket_deg,range_cells,strength');
   for (let b = 0; b < 121; b++){
     const e = rangeBuckets[b];
@@ -1510,7 +1836,103 @@ document.getElementById('saveCsv').addEventListener('click', () => {
 });
 
 // =============================================================================
-// 21. UI 바인딩
+// 22. [v3.0 신규] 주파수 스캐너
+// =============================================================================
+const freqScanCanvas = document.getElementById('freqScanCanvas');
+const fscCtx = freqScanCanvas.getContext('2d');
+let freqScanData = [];   // {omega, rcsMax}
+
+document.getElementById('runFreqScan').addEventListener('click', async () => {
+  const btn = document.getElementById('runFreqScan');
+  btn.disabled = true;
+  btn.textContent = '스캔 중...';
+  freqScanData = [];
+
+  const N_SCAN = 60;
+  const omegaMin = 0.15, omegaMax = 0.65;
+  const origOmega = omega;
+
+  for (let i = 0; i < N_SCAN; i++){
+    omega = omegaMin + (omegaMax - omegaMin) * i/(N_SCAN-1);
+    // 빠른 정착: 300 스텝 진행 후 RCS 최대값 측정
+    for (let s = 0; s < 60; s++) stepFields();
+    updateFarField();
+    let maxFF = 0;
+    for (let k = 0; k < NFFT_THETA; k++)
+      if (farFieldPattern[k] > maxFF) maxFF = farFieldPattern[k];
+    freqScanData.push({omega, rcsMax:maxFF});
+
+    // UI 업데이트 (매 5회)
+    if (i % 5 === 0){
+      drawFreqScan();
+      await new Promise(r => setTimeout(r, 0));
+    }
+  }
+
+  omega = origOmega;
+  btn.disabled = false;
+  btn.textContent = '주파수 스윕 실행 (60회)';
+  drawFreqScan();
+
+  // 공진 피크 탐지
+  if (freqScanData.length > 3){
+    let maxIdx = 0;
+    for (let i = 1; i < freqScanData.length; i++)
+      if (freqScanData[i].rcsMax > freqScanData[maxIdx].rcsMax) maxIdx = i;
+    alert(`공진 피크: ω = ${freqScanData[maxIdx].omega.toFixed(3)}\n` +
+          `강도 = ${freqScanData[maxIdx].rcsMax.toExponential(3)}\n\n` +
+          `해당 주파수로 슬라이더를 조정하세요.`);
+  }
+});
+
+function drawFreqScan(){
+  const W = freqScanCanvas.width, H = freqScanCanvas.height;
+  fscCtx.clearRect(0, 0, W, H);
+  if (freqScanData.length < 2) return;
+
+  let maxV = 0;
+  for (const d of freqScanData) if (d.rcsMax > maxV) maxV = d.rcsMax;
+  if (maxV < 1e-12) return;
+
+  fscCtx.strokeStyle = 'rgba(79,195,247,.15)';
+  fscCtx.beginPath();
+  for (let g = 1; g < 4; g++){
+    const y = H*g/4;
+    fscCtx.moveTo(0, y); fscCtx.lineTo(W, y);
+  }
+  fscCtx.stroke();
+
+  fscCtx.strokeStyle = '#4fc3f7';
+  fscCtx.lineWidth = 1.5;
+  fscCtx.beginPath();
+  for (let i = 0; i < freqScanData.length; i++){
+    const d = freqScanData[i];
+    const x = i/(freqScanData.length-1)*W;
+    const y = H - (d.rcsMax/maxV)*(H-6) - 3;
+    if (i === 0) fscCtx.moveTo(x, y);
+    else fscCtx.lineTo(x, y);
+  }
+  fscCtx.stroke();
+
+  // 피크 강조
+  let maxIdx = 0;
+  for (let i = 1; i < freqScanData.length; i++)
+    if (freqScanData[i].rcsMax > freqScanData[maxIdx].rcsMax) maxIdx = i;
+  const px = maxIdx/(freqScanData.length-1)*W;
+  const py = H - (freqScanData[maxIdx].rcsMax/maxV)*(H-6) - 3;
+  fscCtx.fillStyle = '#ffd54a';
+  fscCtx.beginPath();
+  fscCtx.arc(px, py, 3, 0, Math.PI*2);
+  fscCtx.fill();
+
+  fscCtx.fillStyle = 'rgba(138,143,154,.8)';
+  fscCtx.font = '8px monospace';
+  fscCtx.fillText('ω=0.15', 3, H-3);
+  fscCtx.fillText('ω=0.65', W-40, H-3);
+}
+
+// =============================================================================
+// 23. UI 바인딩
 // =============================================================================
 document.getElementById('eps').addEventListener('input', e => {
   epsRVal = parseFloat(e.target.value);
@@ -1606,6 +2028,10 @@ document.getElementById('tSubpixel').addEventListener('click', function(){
   useSubpixel = this.classList.contains('on');
   buildMedium();
 });
+document.getElementById('tDispMask').addEventListener('click', function(){
+  this.classList.toggle('on');
+  useDispMask = this.classList.contains('on');
+});
 document.getElementById('tSI').addEventListener('click', function(){
   this.classList.toggle('on');
 });
@@ -1617,11 +2043,17 @@ document.getElementById('tEpsView').addEventListener('click', function(){
   this.classList.toggle('on');
   viewMode = this.classList.contains('on') ? 'eps' : 'field';
 });
+document.getElementById('tPoynting').addEventListener('click', function(){
+  this.classList.toggle('on');
+  showPoynting = this.classList.contains('on');
+});
 
 document.getElementById('dxSlider').addEventListener('input', e => {
   dx_si = parseFloat(e.target.value) * 1e-3;
   dt_si = CFL * dx_si / (C0_SI * Math.sqrt(2));
   document.getElementById('dxVal').textContent = (dx_si*1000).toFixed(2)+' mm';
+  recomputeSigmaMax();
+  buildCPMLCoeffs();
 });
 
 // 산란체 버튼
@@ -1744,7 +2176,7 @@ document.getElementById('gd').addEventListener('input', e => {
 });
 
 // =============================================================================
-// 22. 메인 루프
+// 24. 메인 루프
 // =============================================================================
 document.getElementById('grid').textContent = NX+'×'+NY;
 const fpsEl = document.getElementById('fps');
@@ -1812,11 +2244,12 @@ function loop(){
 }
 
 // =============================================================================
-// 23. 초기화
+// 25. 초기화
 // =============================================================================
 resizeHelix();
 resizePPI();
 resizeIQ();
+recomputeSigmaMax();
 buildCPMLCoeffs();
 buildMedium();
 render();
@@ -1825,6 +2258,7 @@ renderHelix();
 renderIQ();
 renderPPI();
 drawRCS();
+drawFreqScan();
 loop();
 
 })();

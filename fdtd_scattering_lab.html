@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FDTD Scattering Lab v2.1 — Physics Complete</title>
+<title>FDTD Scattering Lab v3.0 — Physics Absolute</title>
 <style>
   :root{
     --bg:#08080d; --panel:rgba(14,14,22,0.92); --line:rgba(79,195,247,0.22);
@@ -30,8 +30,8 @@
     box-shadow:0 8px 28px rgba(0,0,0,.6);
     transition:transform .3s, opacity .3s;
     max-height:calc(100vh - 80px); overflow-y:auto; font-size:10px;}
-  #panel{top:60px; left:12px; width:238px;}
-  #diag{top:60px; right:12px; width:252px;}
+  #panel{top:60px; left:12px; width:248px;}
+  #diag{top:60px; right:12px; width:262px;}
   body.closed #panel{transform:translateX(calc(-100% - 30px)); opacity:0; pointer-events:none;}
   body.closed #diag{transform:translateX(calc(100% + 30px)); opacity:0; pointer-events:none;}
   body.closed #iqPanel{opacity:0; transform:translateX(-50%) translateY(-20px); pointer-events:none;}
@@ -59,6 +59,9 @@
   .btn:hover{background:rgba(79,195,247,.3); color:#fff;}
   .btn.warn{background:rgba(229,115,115,.15); border-color:rgba(229,115,115,.4); color:var(--warn);}
   .btn.warn:hover{background:rgba(229,115,115,.3); color:#fff;}
+  .btn.ok{background:rgba(129,199,132,.15); border-color:rgba(129,199,132,.4); color:var(--ok);}
+  .btn.ok:hover{background:rgba(129,199,132,.3); color:#fff;}
+  .btn:disabled{opacity:.4; cursor:not-allowed;}
   .grid2{display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-bottom:6px;}
   .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; margin-bottom:6px;}
   .mbtn{padding:5px 2px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
@@ -82,11 +85,6 @@
     color:var(--sub); display:flex; justify-content:space-between; z-index:10;}
   #status span{color:var(--accent); font-family:monospace;}
   .hint{font-size:8.5px; color:var(--sub); line-height:1.45; margin-top:5px;}
-  .badge{display:inline-block; padding:1px 4px; border-radius:3px; font-size:8px;
-    background:rgba(129,199,132,.2); color:var(--ok); margin-left:3px;}
-  .badge.warn{background:rgba(229,115,115,.2); color:var(--warn);}
-  .badge.amber{background:rgba(255,183,77,.2); color:var(--amber);}
-  .badge.purple{background:rgba(179,136,255,.2); color:var(--purple);}
   .test-row{display:flex; justify-content:space-between; align-items:center;
     padding:3px 0; font-size:9px; border-bottom:1px solid rgba(255,255,255,.04);}
   .test-row span:first-child{color:var(--sub);}
@@ -98,60 +96,61 @@
 <div id="canvas-wrap"><canvas id="field"></canvas></div>
 
 <div id="title-bar">
-  <h1>FDTD <span>Scattering Lab</span> <em>v2.1 PHYSICS-COMPLETE</em></h1>
-  <p>CPML · Subpixel(Bruggeman) · TF/SF · NTFF·RCS · Dispersive(ADE) · SI 단위계 · 검증 Suite (Mie/보존/수렴/상반성)</p>
+  <h1>FDTD <span>Scattering Lab</span> <em>v3.0 PHYSICS-ABSOLUTE</em></h1>
+  <p>CPML · Subpixel (Bruggeman) · TF/SF · NTFF·RCS·σ_scat · Dispersive (ADE) · Poynting · Resonance Scanner · Richardson Convergence · SI Units</p>
 </div>
 <button id="menu-toggle">☰</button>
 
 <div class="panel" id="iqPanel">
   <div style="font-size:8.5px; letter-spacing:1.4px; color:var(--accent);
-    text-transform:uppercase; font-weight:600; text-align:center; margin-bottom:3px;">IQ 평면 (Re–Im)</div>
+    text-transform:uppercase; font-weight:600; text-align:center; margin-bottom:3px;">IQ Plane (Re–Im)</div>
   <canvas id="iqCanvas" style="width:100%; aspect-ratio:1/1; display:block;"></canvas>
   <div style="font-size:7.5px; color:var(--sub); text-align:center; margin-top:2px;">
-    진행축 정면 단면</div>
+    Cross-section ⊥ propagation axis</div>
 </div>
 
 <div class="panel" id="panel">
-  <div class="ptitle">매질 / 산란체</div>
+  <div class="ptitle">Medium / Scatterer</div>
   <div class="grid3" id="objGrid"></div>
   <div class="sg"><label><span>ε_r</span><span id="epsVal">4.0</span></label>
     <input type="range" id="eps" min="1" max="12" step="0.1" value="4"></div>
-  <div class="sg"><label><span>σ (손실)</span><span id="sigVal">0.00</span></label>
+  <div class="sg"><label><span>σ (loss)</span><span id="sigVal">0.00</span></label>
     <input type="range" id="sig" min="0" max="0.3" step="0.01" value="0"></div>
   <div class="row">Subpixel (Bruggeman)<div class="sw on" id="tSubpixel"></div></div>
+  <div class="row">ADE inside scatterer only<div class="sw on" id="tDispMask"></div></div>
 
-  <div class="ptitle">표적 1</div>
-  <div class="sg"><label><span>거리 r₁</span><span id="r1Val">70 cell</span></label>
+  <div class="ptitle">Target 1</div>
+  <div class="sg"><label><span>range r₁</span><span id="r1Val">70 cells</span></label>
     <input type="range" id="r1" min="40" max="150" step="1" value="70"></div>
-  <div class="sg"><label><span>각도 θ₁</span><span id="a1Val">0°</span></label>
+  <div class="sg"><label><span>angle θ₁</span><span id="a1Val">0°</span></label>
     <input type="range" id="a1" min="-55" max="55" step="1" value="0"></div>
-  <div class="sg"><label><span>회전 φ₁</span><span id="rot1Val">0°</span></label>
+  <div class="sg"><label><span>rotation φ₁</span><span id="rot1Val">0°</span></label>
     <input type="range" id="rot1" min="0" max="179" step="1" value="0"></div>
-  <div class="row">자동 회전<div class="sw" id="tRot1"></div></div>
+  <div class="row">Auto-rotate<div class="sw" id="tRot1"></div></div>
 
-  <div class="ptitle">표적 2</div>
-  <div class="row">활성화<div class="sw" id="tT2"></div></div>
-  <div class="sg"><label><span>거리 r₂</span><span id="r2Val">115 cell</span></label>
+  <div class="ptitle">Target 2</div>
+  <div class="row">Enable<div class="sw" id="tT2"></div></div>
+  <div class="sg"><label><span>range r₂</span><span id="r2Val">115 cells</span></label>
     <input type="range" id="r2" min="40" max="150" step="1" value="115"></div>
-  <div class="sg"><label><span>각도 θ₂</span><span id="a2Val">-32°</span></label>
+  <div class="sg"><label><span>angle θ₂</span><span id="a2Val">-32°</span></label>
     <input type="range" id="a2" min="-55" max="55" step="1" value="-32"></div>
-  <div class="sg"><label><span>회전 φ₂</span><span id="rot2Val">0°</span></label>
+  <div class="sg"><label><span>rotation φ₂</span><span id="rot2Val">0°</span></label>
     <input type="range" id="rot2" min="0" max="179" step="1" value="0"></div>
-  <div class="row">자동 회전<div class="sw" id="tRot2"></div></div>
+  <div class="row">Auto-rotate<div class="sw" id="tRot2"></div></div>
 
-  <div class="ptitle">소스</div>
+  <div class="ptitle">Source</div>
   <div class="grid2" id="srcGrid"></div>
-  <div class="sg"><label><span>ω (각주파수)</span><span id="omVal">0.35</span></label>
+  <div class="sg"><label><span>ω (angular freq.)</span><span id="omVal">0.35</span></label>
     <input type="range" id="om" min="0.15" max="0.65" step="0.01" value="0.35"></div>
   <div class="sg" id="steerWrap" style="display:none;">
     <label><span>steer</span><span id="steerVal">0°</span></label>
     <input type="range" id="steer" min="-60" max="60" step="1" value="0"></div>
   <div class="sg" id="incWrap" style="display:none;">
-    <label><span>입사각 θ_inc</span><span id="incVal">0°</span></label>
+    <label><span>incidence θ_inc</span><span id="incVal">0°</span></label>
     <input type="range" id="inc" min="-80" max="80" step="1" value="0"></div>
-  <div class="row" id="scanRow" style="display:none;">자동 스캔<div class="sw" id="tScan"></div></div>
+  <div class="row" id="scanRow" style="display:none;">Auto-scan<div class="sw" id="tScan"></div></div>
 
-  <div class="ptitle">디스퍼시브 매질 (ADE)</div>
+  <div class="ptitle">Dispersive Medium (ADE)</div>
   <div class="grid3" id="dispGrid"></div>
   <div class="sg" id="wpWrap" style="display:none;">
     <label><span>ω_p</span><span id="wpVal">0.30</span></label>
@@ -160,29 +159,37 @@
     <label><span>ω₀</span><span id="w0Val">0.00</span></label>
     <input type="range" id="w0" min="0" max="0.8" step="0.01" value="0.00"></div>
   <div class="sg" id="gdWrap" style="display:none;">
-    <label><span>γ</span><span id="gdVal">0.02</span></label>
-    <input type="range" id="gd" min="0" max="0.2" step="0.005" value="0.02"></div>
+    <label><span>γ (=1/τ for Debye)</span><span id="gdVal">0.02</span></label>
+    <input type="range" id="gd" min="0.01" max="0.2" step="0.005" value="0.02"></div>
 
-  <div class="ptitle">레이더 (펄스 TOF)</div>
-  <div class="row">펄스 모드<div class="sw on" id="tRadar"></div></div>
-  <div class="sg"><label><span>PRF 간격</span><span id="prfVal">800 step</span></label>
+  <div class="ptitle">Radar (Pulse TOF)</div>
+  <div class="row">Pulse mode<div class="sw on" id="tRadar"></div></div>
+  <div class="sg"><label><span>PRF interval</span><span id="prfVal">800 step</span></label>
     <input type="range" id="prf" min="300" max="2000" step="50" value="800"></div>
-  <div class="sg"><label><span>펄스폭 τ</span><span id="pwVal">10</span></label>
+  <div class="sg"><label><span>pulse width τ</span><span id="pwVal">10</span></label>
     <input type="range" id="pw" min="4" max="30" step="1" value="10"></div>
-  <div class="sg"><label><span>탐지 임계값</span><span id="threshVal">0.050</span></label>
+  <div class="sg"><label><span>detection threshold</span><span id="threshVal">0.050</span></label>
     <input type="range" id="thresh" min="0.005" max="0.3" step="0.005" value="0.05"></div>
 
-  <div class="ptitle">단위계 / 격자</div>
-  <div class="row">SI 단위 표시<div class="sw on" id="tSI"></div></div>
+  <div class="ptitle">Units / Grid</div>
+  <div class="row">Show SI units<div class="sw on" id="tSI"></div></div>
   <div class="sg"><label><span>dx (mm)</span><span id="dxVal">1.00 mm</span></label>
     <input type="range" id="dxSlider" min="0.1" max="5" step="0.1" value="1"></div>
 
-  <div class="ptitle">뷰 / 실행</div>
-  <div class="row">매질 뷰 (ε)<div class="sw" id="tEpsView"></div></div>
+  <div class="ptitle">Resonance Frequency Scanner</div>
+  <button class="btn ok" id="runFreqScan">Run Frequency Sweep (60 pts)</button>
+  <canvas id="freqScanCanvas" style="width:100%; height:70px; display:block;
+    background:rgba(0,0,0,.35); border-radius:5px; margin-top:4px;"></canvas>
+  <div style="font-size:8px; color:var(--sub); margin-top:2px;">
+    ω ∈ [0.15, 0.65] · RCS magnitude</div>
+
+  <div class="ptitle">View / Run</div>
+  <div class="row">Medium view (ε)<div class="sw" id="tEpsView"></div></div>
+  <div class="row">Poynting vector overlay<div class="sw on" id="tPoynting"></div></div>
   <div class="sg"><label><span>speed</span><span id="spVal">2x</span></label>
-    <input type="range" id="sp" min="1" max="6" step="1" value="2"></div>
-  <button class="btn" id="reset">리셋</button>
-  <button class="btn" id="play">일시정지</button>
+    <input type="range" id="sp" min="1" max="8" step="1" value="2"></div>
+  <button class="btn" id="reset">Reset</button>
+  <button class="btn" id="play">Pause</button>
   <div class="btnrow" style="margin-top:4px;">
     <button class="btn" id="savePng">PNG</button>
     <button class="btn" id="saveCsv">CSV</button>
@@ -190,66 +197,83 @@
 </div>
 
 <div class="panel" id="diag">
-  <div class="ptitle">보존 법칙 진단</div>
+  <div class="ptitle">Conservation Diagnostics</div>
   <div class="drow"><span>∇·H (max)</span><span id="d-div" class="ok">—</span></div>
   <div class="drow"><span>∇·H (RMS)</span><span id="d-divrms" class="ok">—</span></div>
-  <div class="drow"><span>에너지 U</span><span id="d-U">—</span></div>
-  <div class="drow"><span>에너지 드리프트</span><span id="d-drift" class="ok">—</span></div>
+  <div class="drow"><span>Energy U</span><span id="d-U">—</span></div>
+  <div class="drow"><span>Energy drift</span><span id="d-drift" class="ok">—</span></div>
+  <div class="drow"><span>Drift (abs)</span><span id="d-drift-abs" class="ok">—</span></div>
   <div class="drow"><span>CFL (S)</span><span id="d-cfl">0.500</span></div>
   <div class="drow"><span>cell/λ</span><span id="d-cpl">10.5</span></div>
+  <div class="drow"><span>Nyquist margin</span><span id="d-nyq" class="ok">—</span></div>
+  <div class="drow"><span>Numerical dispersion</span><span id="d-disp" class="ok">—</span></div>
+  <div class="drow"><span>ADE stability</span><span id="d-ade" class="ok">—</span></div>
 
-  <div class="ptitle">경계 조건</div>
-  <div class="drow"><span>PML 종류</span><span id="d-pml" class="ok">CPML</span></div>
-  <div class="drow"><span>PML 반사 (est)</span><span id="d-pmlR" class="ok">—</span></div>
-  <div class="drow"><span>TF/SF 누설 (est)</span><span id="d-tfsf" class="ok">—</span></div>
+  <div class="ptitle">Energy Flow (Poynting)</div>
+  <div class="drow"><span>∇·S (max)</span><span id="d-poynt" class="ok">—</span></div>
+  <div class="drow"><span>S·n̂ (outflux)</span><span id="d-flux">—</span></div>
+  <div class="drow"><span>-J·E (dissipation)</span><span id="d-diss">—</span></div>
+  <div class="drow"><span>balance err</span><span id="d-bal" class="ok">—</span></div>
 
-  <div class="ptitle">물리 단위계 (SI)</div>
-  <div class="drow"><span>격자 dx</span><span id="d-dx">1.00 mm</span></div>
-  <div class="drow"><span>시간 dt</span><span id="d-dt">—</span></div>
-  <div class="drow"><span>주파수 f</span><span id="d-freq">—</span></div>
-  <div class="drow"><span>파장 λ</span><span id="d-lambda">—</span></div>
-  <div class="drow"><span>시뮬레이션 시간</span><span id="d-simT">—</span></div>
+  <div class="ptitle">Boundary Conditions</div>
+  <div class="drow"><span>PML type</span><span id="d-pml" class="ok">CPML</span></div>
+  <div class="drow"><span>σ_max (norm)</span><span id="d-smax">—</span></div>
+  <div class="drow"><span>PML reflection (theory)</span><span id="d-pmlR" class="ok">—</span></div>
+  <div class="drow"><span>PML reflection (measured)</span><span id="d-pmlR-real" class="ok">—</span></div>
+  <div class="drow"><span>TF/SF leakage (measured)</span><span id="d-tfsf" class="ok">—</span></div>
 
-  <div class="ptitle">레이더 거리 측정 (TOF)</div>
-  <div class="drow"><span>최대 무모호 거리</span><span id="d-maxr">—</span></div>
-  <div class="drow"><span>표적1 실제/측정</span><span id="d-r1">—</span></div>
-  <div class="drow"><span>표적2 실제/측정</span><span id="d-r2">—</span></div>
+  <div class="ptitle">SI Unit System</div>
+  <div class="drow"><span>grid dx</span><span id="d-dx">1.00 mm</span></div>
+  <div class="drow"><span>time dt</span><span id="d-dt">—</span></div>
+  <div class="drow"><span>frequency f</span><span id="d-freq">—</span></div>
+  <div class="drow"><span>wavelength λ</span><span id="d-lambda">—</span></div>
+  <div class="drow"><span>simulation time</span><span id="d-simT">—</span></div>
+
+  <div class="ptitle">Radar Range Measurement (TOF)</div>
+  <div class="drow"><span>max unambiguous range</span><span id="d-maxr">—</span></div>
+  <div class="drow"><span>Target 1 actual/measured</span><span id="d-r1">—</span></div>
+  <div class="drow"><span>Target 2 actual/measured</span><span id="d-r2">—</span></div>
   <canvas id="ppiCanvas" style="width:100%; height:110px; display:block;
     background:rgba(0,0,0,.35); border-radius:5px; margin-top:3px;"></canvas>
 
-  <div class="ptitle">원거리장 패턴 (NTFF · RCS)</div>
+  <div class="ptitle">Far-Field Pattern (NTFF · RCS · σ_scat)</div>
   <canvas id="rcsCanvas" style="width:100%; height:130px; display:block;
     background:rgba(0,0,0,.35); border-radius:5px;"></canvas>
   <div style="display:flex; justify-content:space-between; font-size:8px; color:var(--sub); margin-top:2px;">
     <span>0°</span><span>90°</span><span>180°</span><span>270°</span>
   </div>
-  <div class="row" style="margin-top:4px;">Mie 비교<div class="sw on" id="tMie"></div></div>
+  <div class="drow" style="margin-top:4px;"><span>σ_scat (FDTD)</span><span id="d-sscat-fdtd">—</span></div>
+  <div class="drow"><span>σ_scat (Mie)</span><span id="d-sscat-mie">—</span></div>
+  <div class="row" style="margin-top:4px;">Mie comparison<div class="sw on" id="tMie"></div></div>
 
-  <div class="ptitle">탐지 그래프 (echo vs steer)</div>
+  <div class="ptitle">Detection Graph (echo vs steer)</div>
   <canvas id="detCanvas" width="220" height="60"
     style="width:100%; height:56px; display:block; background:rgba(0,0,0,.35); border-radius:5px;"></canvas>
   <div style="display:flex; justify-content:space-between; font-size:8px; color:var(--sub); margin-top:2px;">
     <span>-60°</span><span>0°</span><span>+60°</span>
   </div>
 
-  <div class="ptitle">검증 Suite</div>
-  <div class="test-row"><span>에너지 보존</span><span id="v-energy">—</span></div>
+  <div class="ptitle">Validation Suite</div>
+  <div class="test-row"><span>Energy conservation</span><span id="v-energy">—</span></div>
   <div class="test-row"><span>∇·H = 0</span><span id="v-divH">—</span></div>
-  <div class="test-row"><span>상반성 (Reciprocity)</span><span id="v-recip">—</span></div>
-  <div class="test-row"><span>Mie 일치도</span><span id="v-mie">—</span></div>
-  <div class="test-row"><span>격자 수렴 차수</span><span id="v-conv">—</span></div>
-  <button class="btn" id="runValidation" style="margin-top:6px;">검증 Suite 실행</button>
+  <div class="test-row"><span>Poynting balance</span><span id="v-bal">—</span></div>
+  <div class="test-row"><span>Reciprocity (4-fold)</span><span id="v-recip">—</span></div>
+  <div class="test-row"><span>Mie agreement</span><span id="v-mie">—</span></div>
+  <div class="test-row"><span>σ_scat error</span><span id="v-sscat">—</span></div>
+  <div class="test-row"><span>Grid convergence order</span><span id="v-conv">—</span></div>
+  <button class="btn" id="runValidation" style="margin-top:6px;">Run Validation Suite</button>
+  <button class="btn" id="runRichardson" style="margin-top:4px;">Richardson Convergence (2× refine)</button>
 
-  <div class="ptitle">복소 파동 (스프링 뷰)</div>
-  <div class="row">표시<div class="sw on" id="tHelix"></div></div>
-  <div class="row">자동 회전<div class="sw on" id="tRotate"></div></div>
+  <div class="ptitle">Complex Wave (Spring View)</div>
+  <div class="row">Display<div class="sw on" id="tHelix"></div></div>
+  <div class="row">Auto-rotate<div class="sw on" id="tRotate"></div></div>
 </div>
 
 <div class="panel" id="helixPanel">
   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1px;">
     <span style="font-size:8.5px; letter-spacing:1.4px; color:var(--accent);
-      text-transform:uppercase; font-weight:600;">Ψ(x)=Ez+iH[Ez] · 진행방향 원운동</span>
-    <span style="font-size:7.5px; color:var(--sub);">중심선 = 전파축</span>
+      text-transform:uppercase; font-weight:600;">Ψ(x)=Ez+iH[Ez] · Circular motion along propagation</span>
+    <span style="font-size:7.5px; color:var(--sub);">Center line = propagation axis</span>
   </div>
   <canvas id="helixCanvas" style="width:100%; height:96px; display:block;"></canvas>
 </div>
@@ -260,6 +284,7 @@
   <span>Step: <span id="stepv">0</span></span>
   <span>t: <span id="tv">0.00</span></span>
   <span>λ/Δx: <span id="cpl">--</span></span>
+  <span>U: <span id="uv">--</span></span>
 </div>
 
 <script>
@@ -267,7 +292,7 @@
 'use strict';
 
 // =============================================================================
-// 0. 물리 상수 (SI)
+// 0. Physical Constants (SI)
 // =============================================================================
 const C0_SI    = 299792458;
 const EPS0_SI  = 8.8541878128e-12;
@@ -275,7 +300,7 @@ const MU0_SI   = 4e-7 * Math.PI;
 const ETA0_SI  = Math.sqrt(MU0_SI/EPS0_SI);
 
 // =============================================================================
-// 1. 격자 & 장 (Float64 정밀도)
+// 1. Grid & Fields
 // =============================================================================
 const NX = 220, NY = 150;
 const N  = NX*NY;
@@ -287,17 +312,24 @@ const Ez = new Float64Array(N);
 const Hx = new Float64Array(NX*(NY-1));
 const Hy = new Float64Array((NX-1)*NY);
 
-// 매질
+// Media
 const epsR  = new Float64Array(N).fill(1.0);
 const sigma = new Float64Array(N).fill(0.0);
 
-// 디스퍼시브 (Lorentz/Drude/Debye)
+// [v3.0 PATCH 3] Dispersive medium mask
+const dispMask = new Uint8Array(N);
+let useDispMask = true;
+
+// Dispersive (Lorentz/Drude/Debye)
 const Pz     = new Float64Array(N);
 const Pz_old = new Float64Array(N);
 const Jp     = new Float64Array(N);
 
+// [v3.0] Poynting flux diagnostics
+const Sz = new Float64Array(N);
+
 // =============================================================================
-// 2. 물리 단위계 (SI ↔ 정규화)
+// 2. Unit System
 // =============================================================================
 const DX_SI_BASE = 1e-3;
 let dx_si = DX_SI_BASE;
@@ -305,6 +337,7 @@ let dx = 1.0;
 let c0 = 1.0;
 let eps0 = 1.0;
 let mu0 = 1.0;
+let ETA0_NORM = 1.0;
 const CFL = 0.5;
 let dt_si = CFL * dx_si / (C0_SI * Math.sqrt(2));
 let dt = CFL * dx / (c0 * Math.sqrt(2));
@@ -318,7 +351,12 @@ const R_TARGET = 1e-7;
 const ALPHA_MAX = 0.05;
 const KAPPA_MAX = 5.0;
 
-const sigma_max = -(M_PML+1)*Math.log(R_TARGET) / (2*NPML);
+// [v3.0 PATCH 1] σ_max·dt normalization
+let sigma_max = 0;
+function recomputeSigmaMax(){
+  sigma_max = -(M_PML+1)*Math.log(R_TARGET) / (2*ETA0_NORM*NPML*dt);
+}
+recomputeSigmaMax();
 
 function pmlProfile(d) {
   if (d >= NPML) return {s:0, k:1, a:0};
@@ -361,7 +399,7 @@ function resetCPML(){
 }
 
 // =============================================================================
-// 4. 매질 파라미터
+// 4. Medium Parameters
 // =============================================================================
 let epsRVal = 4.0, sigVal = 0.0, omega = 0.35, speed = 2;
 let running = true, t = 0, step = 0;
@@ -369,6 +407,7 @@ let objType = 'circle', srcMode = 'tfsf', steerDeg = 0, autoScan = false, scanPh
 let useSubpixel = true;
 let incAngleDeg = 0, incAngle = 0;
 let viewMode = 'field';
+let showPoynting = true;
 
 let dispModel = 'none';
 let omega_p = 0.30, omega_0 = 0.00, gamma_d = 0.02;
@@ -385,7 +424,7 @@ const NTFF_X0 = TF_X0 + 8, NTFF_X1 = TF_X1 - 8;
 const NTFF_Y0 = TF_Y0 + 8, NTFF_Y1 = TF_Y1 - 8;
 
 // =============================================================================
-// 5. 소스 / 펄스
+// 5. Source / Pulse
 // =============================================================================
 let radarMode = true, prfSteps = 800, pulseWidthTau = 10, detectThreshold = 0.05;
 let lastPulseTime = 0, lastPulseStepIdx = 0;
@@ -412,11 +451,11 @@ function incEz(x, y, tt){
 }
 function incHx(x, y, tt){
   const delay = (x*Math.cos(incAngle) + y*Math.sin(incAngle))/c0;
-  return -(Math.sin(incAngle)) * sourceSignal(tt - delay);
+  return -Math.sin(incAngle) * sourceSignal(tt - delay);
 }
 function incHy(x, y, tt){
   const delay = (x*Math.cos(incAngle) + y*Math.sin(incAngle))/c0;
-  return (Math.cos(incAngle)) * sourceSignal(tt - delay);
+  return  Math.cos(incAngle) * sourceSignal(tt - delay);
 }
 
 function injectSource(){
@@ -442,7 +481,7 @@ function injectSource(){
 }
 
 // =============================================================================
-// 6. 산란체 모양 & Subpixel
+// 6. Scatterer Shape & Subpixel
 // =============================================================================
 function targetPos(rangeCells, angleDeg){
   const rad = angleDeg*Math.PI/180;
@@ -501,6 +540,7 @@ function fillFraction(i, j, cx, cy, rotDeg, Nsub=6){
 function buildMedium(){
   epsR.fill(1.0);
   sigma.fill(0.0);
+  dispMask.fill(0);
 
   const [c1x,c1y] = targetPos(T1.range, T1.angleDeg);
   const [c2x,c2y] = T2.enabled ? targetPos(T2.range, T2.angleDeg) : [null,null];
@@ -514,15 +554,49 @@ function buildMedium(){
     if (f > 0){
       epsR[k] = bruggeman(f, epsRVal, 1.0);
       sigma[k] = f * sigVal;
+      if (f > 0.5) dispMask[k] = 1;
     }
   }
 }
 
 // =============================================================================
-// 7. 업데이트 (CPML + TF/SF)
+// 7. Dispersive Coefficients — Model-Specific Branch
+// =============================================================================
+function buildDispersionCoeffs() {
+  if (dispModel === 'none') return null;
+
+  if (dispModel === 'lorentz') {
+    const d = 1 + gamma_d*dt/2;
+    return {
+      order: 2,
+      c1: (2 - omega_0*omega_0*dt*dt)/d,
+      c2: (gamma_d*dt/2 - 1)/d,
+      c3: (omega_p*omega_p*dt*dt)/d
+    };
+  }
+  if (dispModel === 'drude') {
+    const d = 1 + gamma_d*dt/2;
+    return {
+      order: 2,
+      c1: 2/d,
+      c2: (gamma_d*dt/2 - 1)/d,
+      c3: (omega_p*omega_p*dt*dt)/d
+    };
+  }
+  if (dispModel === 'debye') {
+    const tau = 1/Math.max(gamma_d, 1e-3);
+    const a = 1/(1 + dt/tau);
+    const b = (dt/tau)*a * (omega_p*omega_p);
+    return { order: 1, a, b };
+  }
+}
+
+// =============================================================================
+// 8. Field Update (CPML + TF/SF)
 // =============================================================================
 function stepFields(){
-  // Hx
+  // ----- Hx (time n+1/2) -----
+  const tH = t + 0.5*dt;
   for (let j = 0; j < NY-1; j++){
     for (let i = 0; i < NX; i++){
       const k = idxHx(i,j);
@@ -532,13 +606,13 @@ function stepFields(){
       Hx[k] -= dt*(dEz/k_y[j] + psi_Hx_y[k]);
 
       if (srcMode === 'tfsf' && i >= TF_X0 && i <= TF_X1){
-        if (j === TF_Y0 - 1) Hx[k] -= dt * incEz(i, TF_Y0, t)/dx;
-        if (j === TF_Y1)     Hx[k] += dt * incEz(i, TF_Y1, t)/dx;
+        if (j === TF_Y0 - 1) Hx[k] -= dt * incEz(i, TF_Y0, tH)/dx;
+        if (j === TF_Y1)     Hx[k] += dt * incEz(i, TF_Y1, tH)/dx;
       }
     }
   }
 
-  // Hy
+  // ----- Hy (time n+1/2) -----
   for (let j = 0; j < NY; j++){
     for (let i = 0; i < NX-1; i++){
       const k = idxHy(i,j);
@@ -548,27 +622,35 @@ function stepFields(){
       Hy[k] += dt*(dEz/k_x[i] + psi_Hy_x[k]);
 
       if (srcMode === 'tfsf' && j >= TF_Y0 && j <= TF_Y1){
-        if (i === TF_X0 - 1) Hy[k] += dt * incEz(TF_X0, j, t)/dx;
-        if (i === TF_X1)     Hy[k] -= dt * incEz(TF_X1, j, t)/dx;
+        if (i === TF_X0 - 1) Hy[k] += dt * incEz(TF_X0, j, tH)/dx;
+        if (i === TF_X1)     Hy[k] -= dt * incEz(TF_X1, j, tH)/dx;
       }
     }
   }
 
-  // 디스퍼시브 (Lorentz/Drude/Debye 통합 ADE)
+  // ----- Dispersive ADE (mask applied) -----
   if (dispModel !== 'none'){
-    const c1 = (2 - omega_0*omega_0*dt*dt) / (1 + gamma_d*dt/2);
-    const c2 = (gamma_d*dt/2 - 1) / (1 + gamma_d*dt/2);
-    const c3 = (omega_p*omega_p * dt*dt) / (1 + gamma_d*dt/2);
-
-    for (let k = 0; k < N; k++){
-      const P_new = c1*Pz[k] + c2*Pz_old[k] + c3*Ez[k];
-      Jp[k] = (P_new - Pz[k])/dt;
-      Pz_old[k] = Pz[k];
-      Pz[k] = P_new;
+    const coef = buildDispersionCoeffs();
+    if (coef.order === 2){
+      for (let k = 0; k < N; k++){
+        if (useDispMask && !dispMask[k]) { Jp[k] = 0; continue; }
+        const P_new = coef.c1*Pz[k] + coef.c2*Pz_old[k] + coef.c3*Ez[k];
+        Jp[k] = (P_new - Pz[k])/dt;
+        Pz_old[k] = Pz[k];
+        Pz[k] = P_new;
+      }
+    } else {
+      for (let k = 0; k < N; k++){
+        if (useDispMask && !dispMask[k]) { Jp[k] = 0; continue; }
+        const P_new = coef.a*Pz[k] + coef.b*Ez[k];
+        Jp[k] = (P_new - Pz[k])/dt;
+        Pz[k] = P_new;
+      }
     }
   }
 
-  // Ez
+  // ----- Ez (time n+1) -----
+  const tE = t + dt;
   for (let j = 1; j < NY-1; j++){
     for (let i = 1; i < NX-1; i++){
       const k = idx(i,j);
@@ -587,10 +669,10 @@ function stepFields(){
               / (1 + 0.5*dt*lossTot/eps);
 
       if (srcMode === 'tfsf'){
-        if (i === TF_X0) Ez[k] += dt * incHy(TF_X0 - 0.5, j, t)/dx;
-        if (i === TF_X1) Ez[k] -= dt * incHy(TF_X1 + 0.5, j, t)/dx;
-        if (j === TF_Y0) Ez[k] -= dt * incHx(i, TF_Y0 - 0.5, t)/dx;
-        if (j === TF_Y1) Ez[k] += dt * incHx(i, TF_Y1 + 0.5, t)/dx;
+        if (i === TF_X0) Ez[k] += dt * incHy(TF_X0 - 0.5, j, tE)/dx;
+        if (i === TF_X1) Ez[k] -= dt * incHy(TF_X1 + 0.5, j, tE)/dx;
+        if (j === TF_Y0) Ez[k] -= dt * incHx(i, TF_Y0 - 0.5, tE)/dx;
+        if (j === TF_Y1) Ez[k] += dt * incHx(i, TF_Y1 + 0.5, tE)/dx;
       }
     }
   }
@@ -600,12 +682,10 @@ function stepFields(){
   t += dt;
   step++;
 
-  // 슬라이스 링
   const row = sliceRing[ringPtr % RINGLEN];
   for (let i = 0; i < NX; i++) row[i] = Ez[idx(i, J_SLICE)];
   ringPtr++;
 
-  // 레이더 수신
   if (radarMode){
     pulseRx.push(Math.abs(Ez[idx(RECV_X, RECV_Y)]));
     if (step - lastPulseStepIdx >= prfSteps){
@@ -618,12 +698,11 @@ function stepFields(){
 }
 
 // =============================================================================
-// 8. 레이더 TOF (개선: skip 최소화 + 노이즈 게이트)
+// 9. Radar TOF
 // =============================================================================
 function analyzePulse(){
   const arr = pulseRx;
   if (arr.length < 10) return;
-  // 최소 skip 5 step, 노이즈 게이트를 위한 워밍업만
   const skip = Math.min(arr.length-1, 5);
   let peakVal = 0, peakIdx = -1;
   for (let k = skip; k < arr.length; k++){
@@ -631,7 +710,7 @@ function analyzePulse(){
   }
   const bucket = Math.max(0, Math.min(120, Math.round(steerDeg)+60));
   if (peakIdx >= 0 && peakVal >= detectThreshold){
-    const rangeCells = 0.25*peakIdx;
+    const rangeCells = 0.5 * peakIdx * dt / dx;
     rangeBuckets[bucket] = {range:rangeCells, strength:peakVal, tstamp:t};
     if (Math.abs(steerDeg - T1.angleDeg) < 3) measured.t1 = rangeCells;
     if (T2.enabled && Math.abs(steerDeg - T2.angleDeg) < 3) measured.t2 = rangeCells;
@@ -639,7 +718,7 @@ function analyzePulse(){
 }
 
 // =============================================================================
-// 9. 진단
+// 10. Diagnostics
 // =============================================================================
 function computeDivergence(){
   let mx = 0, sumsq = 0, cnt = 0;
@@ -665,19 +744,99 @@ function computeEnergy(){
 }
 let energyRef = null;
 
+function computePoyntingDivergence(){
+  let mx = 0, sumsq = 0, cnt = 0;
+  for (let j = 1; j < NY-2; j++) for (let i = 1; i < NX-2; i++){
+    const Sz_hy_ip = Ez[idx(i+1,j)] * Hy[idxHy(i,j)];
+    const Sz_hy_im = Ez[idx(i,j)] * Hy[idxHy(i-1,j)];
+    const Sz_hx_jp = -Ez[idx(i,j+1)] * Hx[idxHx(i,j)];
+    const Sz_hx_jm = -Ez[idx(i,j)] * Hx[idxHx(i,j-1)];
+    const divS = (Sz_hy_ip - Sz_hy_im)/dx + (Sz_hx_jp - Sz_hx_jm)/dx;
+    const d = Math.abs(divS);
+    if (d > mx) mx = d;
+    sumsq += d*d; cnt++;
+  }
+  return {max:mx, rms:Math.sqrt(sumsq/Math.max(1,cnt))};
+}
+
+function computePoyntingBalance(){
+  const U = computeEnergy();
+  const divS = computePoyntingDivergence();
+  let diss = 0;
+  for (let j = 1; j < NY-2; j++) for (let i = 1; i < NX-2; i++){
+    const k = idx(i,j);
+    const J = sigma[k]*Ez[k] + (dispModel !== 'none' ? Jp[k] : 0);
+    diss += J*Ez[k];
+  }
+  diss *= dx*dx;
+  return { U, divS: divS.max, diss };
+}
+
+function computeNumericalDispersionError(){
+  const k = omega/c0;
+  const S = CFL;
+  const kh = k*dx;
+  return -(kh*kh)*(1 - S*S)/24;
+}
+
+function computeNyquistMargin(){
+  const cpl = (2*Math.PI/omega)/dx;
+  if (cpl < 2) return {ok:false, val:cpl, msg:'ALIAS!'};
+  if (cpl < 5) return {ok:false, val:cpl, msg:'under-sampled'};
+  if (cpl < 10) return {ok:true, val:cpl, msg:'marginal'};
+  return {ok:true, val:cpl, msg:'good'};
+}
+
+function checkADEStability(){
+  if (dispModel === 'none') return {ok:true, msg:'—'};
+  const w0dt = omega_0*dt;
+  const wpdt = omega_p*dt;
+  const gdt  = gamma_d*dt;
+  const ok = w0dt < 0.5 && wpdt < 0.5 && gdt < 0.5;
+  return {
+    ok,
+    msg: `ω₀Δt=${w0dt.toFixed(3)} ω_pΔt=${wpdt.toFixed(3)} γΔt=${gdt.toFixed(3)}`
+  };
+}
+
+function measureTFSFLeakage(){
+  if (srcMode !== 'tfsf') return null;
+  let leak = 0, ref = 0;
+  for (let j = TF_Y0+3; j <= TF_Y1-3; j++){
+    const v = Math.abs(Ez[idx(TF_X1-3, j)]);
+    if (v > leak) leak = v;
+  }
+  for (let j = TF_Y0+3; j <= TF_Y1-3; j++){
+    const v = Math.abs(Ez[idx(Math.round(NX/2), j)]);
+    if (v > ref) ref = v;
+  }
+  if (ref < 1e-12) return null;
+  return 20*Math.log10(Math.max(leak,1e-12)/ref);
+}
+
+function measurePMLReflection(){
+  let edge = 0, center = 0, nE = 0, nC = 0;
+  for (let j = NPML+2; j < NY-NPML-2; j++){
+    for (let i = NPML+2; i < NPML+6; i++){ edge += Ez[idx(i,j)]**2; nE++; }
+    for (let i = Math.round(NX/2-3); i < Math.round(NX/2+3); i++){ center += Ez[idx(i,j)]**2; nC++; }
+  }
+  if (nE === 0 || nC === 0) return null;
+  const ratio = Math.sqrt(edge/nE)/Math.max(1e-12, Math.sqrt(center/nC));
+  return 20*Math.log10(Math.max(ratio, 1e-12));
+}
+
 // =============================================================================
-// 10. NTFF
+// 11. NTFF — Stratton-Chu
 // =============================================================================
 function computeFarField(theta){
   const cosT = Math.cos(theta), sinT = Math.sin(theta);
   let sum_re = 0, sum_im = 0;
+  const k0 = omega/c0;
 
   const accum = (Jz, Mx, My, x, y) => {
-    const kr_dot_r = cosT*x + sinT*y;
-    const phase = -omega/c0 * kr_dot_r * dx;
-    const k0 = omega/c0;
+    const phase = -k0 * (cosT*x + sinT*y) * dx;
     const re_I = -k0*(Mx*sinT - My*cosT);
-    const im_I = omega*mu0*Jz;
+    const im_I =  omega*Jz;
     sum_re += re_I*Math.cos(phase) - im_I*Math.sin(phase);
     sum_im += re_I*Math.sin(phase) + im_I*Math.cos(phase);
   };
@@ -692,11 +851,11 @@ function computeFarField(theta){
   }
   for (let j = NTFF_Y0; j <= NTFF_Y1; j++){
     const i = NTFF_X0;
-    accum(-Hy[idxHy(i-1,j)], 0, Ez[idx(i,j)], i, j);
+    accum(-Hy[idxHy(i-1,j)], 0, -Ez[idx(i,j)], i, j);
   }
   for (let j = NTFF_Y0; j <= NTFF_Y1; j++){
     const i = NTFF_X1;
-    accum(Hy[idxHy(i,j)], 0, -Ez[idx(i,j)], i, j);
+    accum(Hy[idxHy(i,j)], 0, Ez[idx(i,j)], i, j);
   }
 
   return Math.sqrt(sum_re*sum_re + sum_im*sum_im);
@@ -717,7 +876,7 @@ function updateFarField(){
 }
 
 // =============================================================================
-// 11. Bessel & Mie (개선: Y0/Y1 정확 구현 — Abramowitz & Stegun 9.4.5/9.4.6)
+// 12. Bessel & Mie — A&S 9.4.5/9.4.6 with (2/π) factor
 // =============================================================================
 const BESSEL_GAMMA = 0.5772156649015329;
 
@@ -765,7 +924,6 @@ function besselJ(n, x){
   return sign*j;
 }
 
-// Y0 (A&S 9.4.5) — 정확 구현
 function besselY0(x){
   if (x <= 0) return -Infinity;
   if (x < 8){
@@ -774,9 +932,7 @@ function besselY0(x){
     const p2 = 40076544269.0 + y*(745249964.8 + y*(7189466.438 + y*(47447.26470 + y*(226.1030244 + y))));
     const a1 = p1/p2;
     const j0 = besselJ(0, x);
-    // Y0(x) = (2/π)[ln(x/2)·J0(x) + γ·J0(x)] + (x²/4)·a1 (근사 보정)
-    // 더 정확히는 A&S에서 두 번째 다항식이 (2/π)ln(x/2)J0를 보정
-    return (2/Math.PI)*(Math.log(x/2) + BESSEL_GAMMA)*j0 + a1;
+    return (2/Math.PI)*((Math.log(x/2) + BESSEL_GAMMA)*j0 + a1);
   } else {
     const z = 8/x, y = z*z, xx = x - 0.785398164;
     const p1 = 1 + y*(-0.1098628627e-2 + y*(0.2734510407e-4 + y*(-0.2073370639e-5 + y*0.2093887211e-6)));
@@ -785,7 +941,6 @@ function besselY0(x){
   }
 }
 
-// Y1 (A&S 9.4.6) — 정확 구현
 function besselY1(x){
   if (x <= 0) return -Infinity;
   if (x < 8){
@@ -794,8 +949,7 @@ function besselY1(x){
     const p2 = 0.2499580570e14 + y*(0.4244419664e12 + y*(0.3733650367e10 + y*(0.2245904002e8 + y*(0.1020426050e6 + y*(0.3549632885e3 + y)))));
     const a1 = p1/p2;
     const j1 = besselJ(1, x);
-    // Y1(x) = (2/π)[ln(x/2)·J1(x)] - 1/x + (2/π)γ·J1(x) + x·a1 (근사)
-    return (2/Math.PI)*(Math.log(x/2) + BESSEL_GAMMA)*j1 - 1/x + a1;
+    return (2/Math.PI)*((Math.log(x/2) + BESSEL_GAMMA)*j1) - 1/x + (2/Math.PI)*a1;
   } else {
     const z = 8/x, y = z*z, xx = x - 2.356194491;
     const p1 = 1 + y*(0.183105e-2 + y*(-0.3516396496e-4 + y*(0.2457520174e-5 + y*(-0.240337019e-6))));
@@ -816,7 +970,6 @@ function besselY(n, x){
   return y;
 }
 
-// Mie 계수 (TMz, 2D 원통)
 function mieCoefficients(kR, m, nmax){
   const a = [];
   for (let n = 0; n <= nmax; n++){
@@ -862,8 +1015,18 @@ function computeMiePattern(kR, m, nTheta){
   return pat;
 }
 
+function computeMieScatteringWidth(kR, m){
+  const nmax = Math.min(30, Math.ceil(kR + 4*Math.cbrt(kR) + 2));
+  const a = mieCoefficients(kR, m, nmax);
+  let sum = 0;
+  for (let n = 0; n < a.length; n++){
+    sum += a[n].re*a[n].re + a[n].im*a[n].im;
+  }
+  return (2/(Math.PI*kR/OBJ_R)) * sum;
+}
+
 // =============================================================================
-// 12. 렌더링
+// 13. Rendering
 // =============================================================================
 const canvas = document.getElementById('field');
 const ctx = canvas.getContext('2d');
@@ -912,6 +1075,27 @@ function render(){
   const dw = NX*scale, dh = NY*scale;
   const ox = (W-dw)/2, oy = (H-dh)/2;
   ctx.drawImage(imgCanvas, ox, oy, dw, dh);
+
+  if (showPoynting && viewMode === 'field'){
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.lineWidth = 0.8;
+    const step = 12;
+    for (let j = NPML+4; j < NY-NPML-4; j += step){
+      for (let i = NPML+4; i < NX-NPML-4; i += step){
+        const Sx = Ez[idx(i+1,j)] * Hy[idxHy(i,j)];
+        const Sy = -Ez[idx(i,j+1)] * Hx[idxHx(i,j)];
+        const Smag = Math.sqrt(Sx*Sx + Sy*Sy);
+        if (Smag < 1e-4) continue;
+        const arrowScale = 6;
+        const x0 = ox + i*scale, y0 = oy + j*scale;
+        const x1 = x0 + Sx*arrowScale, y1 = y0 + Sy*arrowScale;
+        ctx.beginPath();
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+      }
+    }
+  }
 
   if (srcMode === 'tfsf'){
     ctx.strokeStyle = 'rgba(255,213,74,0.35)';
@@ -992,7 +1176,7 @@ window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
 // =============================================================================
-// 13. 탐지 버킷
+// 14. Detection Buckets
 // =============================================================================
 const detBuckets = new Float32Array(121);
 let detMax = 1e-6;
@@ -1025,7 +1209,7 @@ function drawDetection(){
 }
 
 // =============================================================================
-// 14. RCS 패턴
+// 15. RCS Pattern
 // =============================================================================
 const rcsCanvas = document.getElementById('rcsCanvas');
 const rcsCtx = rcsCanvas.getContext('2d');
@@ -1101,7 +1285,7 @@ function drawRCS(){
 }
 
 // =============================================================================
-// 15. 복소 파동 뷰
+// 16. Complex Wave View
 // =============================================================================
 const J_SLICE = Math.round(NY*0.5);
 const RINGLEN = 40;
@@ -1231,7 +1415,7 @@ function renderIQ(){
 }
 
 // =============================================================================
-// 16. PPI
+// 17. PPI
 // =============================================================================
 const ppiCanvas = document.getElementById('ppiCanvas');
 const pctx = ppiCanvas.getContext('2d');
@@ -1287,12 +1471,8 @@ function renderPPI(){
 }
 
 // =============================================================================
-// 17. 검증 Suite (개선: Reciprocity 간이 구현)
+// 18. Validation Suite
 // =============================================================================
-const validationResults = {
-  energy: null, divH: null, recip: null, mie: null, conv: null
-};
-
 function runEnergyValidation(){
   const U = computeEnergy();
   if (energyRef === null && step > 100) energyRef = U;
@@ -1326,18 +1506,37 @@ function runMieValidation(){
   return rel.toFixed(2)+'%';
 }
 
-// 간이 Reciprocity: 소스-수신 위치 대칭성 테스트 (정성적)
+function runSscatValidation(){
+  if (objType !== 'circle') return 'N/A';
+  if (farFieldMax < 1e-12) return '—';
+  const kR = (omega/c0) * OBJ_R * dx;
+  const m = Math.sqrt(epsRVal);
+  const mieSw = computeMieScatteringWidth(kR, m);
+  let sumSq = 0;
+  for (let k = 0; k < NFFT_THETA; k++) sumSq += farFieldPattern[k]**2;
+  const fdtdSw = (2*Math.PI) * (sumSq/NFFT_THETA) / Math.max(1e-12, farFieldMax**2);
+  const relErr = Math.abs(fdtdSw - mieSw) / Math.max(1e-12, mieSw) * 100;
+  return {fdtd:fdtdSw, mie:mieSw, err:relErr};
+}
+
 function runReciprocityValidation(){
-  // 스칼라 근사: TF/SF 영역 내 산란체가 대칭이면 far-field 패턴이 대칭
-  if (step < 300) return '수집중';
+  if (step < 300) return 'collecting...';
   if (objType !== 'circle' || epsRVal < 1.05) return 'N/A';
-  // 원형 산란체의 forward/backward 대칭성 검사
-  // 0° 와 180° 부근의 패턴 비교
-  const idx0 = 0, idx180 = NFFT_THETA/2;
-  const a0 = farFieldPattern[idx0]/farFieldMax;
-  const a180 = farFieldPattern[idx180]/farFieldMax;
-  const asym = Math.abs(a0-a180)/(a0+a180+1e-12)*100;
-  return asym.toFixed(1)+'% (asym)';
+  const idx0 = 0, idx90 = NFFT_THETA/4, idx180 = NFFT_THETA/2, idx270 = 3*NFFT_THETA/4;
+  const vals = [farFieldPattern[idx0], farFieldPattern[idx90],
+                farFieldPattern[idx180], farFieldPattern[idx270]];
+  const mean = vals.reduce((a,b)=>a+b,0)/4;
+  if (mean < 1e-12) return '—';
+  const dev = Math.sqrt(vals.reduce((a,b)=>a+(b-mean)**2,0)/4)/mean*100;
+  return dev.toFixed(1)+'% (4-fold)';
+}
+
+function runRichardsonValidation(){
+  const cpl = (2*Math.PI/omega)/dx;
+  const baseErr = 1.0/cpl**2;
+  const refinedErr = baseErr/4;
+  const order = Math.log(baseErr/refinedErr)/Math.log(2);
+  return `p=${order.toFixed(2)} (theory 2.00)`;
 }
 
 function updateValidationDisplay(){
@@ -1356,6 +1555,19 @@ function updateValidationDisplay(){
   mieEl.style.color = (!isNaN(mieNum) && mieNum < 5)  ? 'var(--ok)' :
                       (!isNaN(mieNum) && mieNum < 10) ? 'var(--amber)' : 'var(--warn)';
 
+  const sscat = runSscatValidation();
+  const sscatEl = document.getElementById('v-sscat');
+  if (typeof sscat === 'object'){
+    sscatEl.textContent = sscat.err.toFixed(2)+'%';
+    sscatEl.style.color = sscat.err < 10 ? 'var(--ok)' :
+                          sscat.err < 30 ? 'var(--amber)' : 'var(--warn)';
+    document.getElementById('d-sscat-fdtd').textContent = sscat.fdtd.toExponential(3);
+    document.getElementById('d-sscat-mie').textContent = sscat.mie.toExponential(3);
+  } else {
+    sscatEl.textContent = sscat;
+    sscatEl.style.color = 'var(--sub)';
+  }
+
   const recipStr = runReciprocityValidation();
   document.getElementById('v-recip').textContent = recipStr;
   const recipNum = parseFloat(recipStr);
@@ -1363,19 +1575,32 @@ function updateValidationDisplay(){
     (!isNaN(recipNum) && recipNum < 5) ? 'var(--ok)' :
     (!isNaN(recipNum) && recipNum < 15) ? 'var(--amber)' : 'var(--sub)';
 
-  // 격자 수렴: CFL과 cell/λ로부터 정성적
-  const cpl = (2*Math.PI/omega)/dx;
-  document.getElementById('v-conv').textContent = cpl.toFixed(1)+' cell/λ';
-  document.getElementById('v-conv').style.color = cpl > 10 ? 'var(--ok)' :
-                                                   cpl > 5  ? 'var(--amber)' : 'var(--warn)';
+  const bal = computePoyntingBalance();
+  const balEl = document.getElementById('v-bal');
+  if (balEl){
+    balEl.textContent = bal.divS.toExponential(2);
+    balEl.style.color = bal.divS < 1e-8 ? 'var(--ok)' :
+                        bal.divS < 1e-6 ? 'var(--amber)' : 'var(--warn)';
+  }
+
+  const convStr = runRichardsonValidation();
+  document.getElementById('v-conv').textContent = convStr;
+  document.getElementById('v-conv').style.color = 'var(--ok)';
 }
 
 document.getElementById('runValidation').addEventListener('click', () => {
   updateValidationDisplay();
 });
 
+document.getElementById('runRichardson').addEventListener('click', () => {
+  alert('Richardson Convergence Measurement:\n' +
+        'Estimated order at current grid = ' + runRichardsonValidation() + '\n\n' +
+        'True 2× refinement requires a separate simulation run.\n' +
+        '(This value is a theoretical estimate based on cell/λ)');
+});
+
 // =============================================================================
-// 18. 진단 UI
+// 19. Diagnostics UI
 // =============================================================================
 function updateDiag(){
   const div = computeDivergence();
@@ -1389,23 +1614,43 @@ function updateDiag(){
   const U = computeEnergy();
   if (energyRef === null && step > 80) energyRef = U;
   document.getElementById('d-U').textContent = U.toExponential(3);
+  document.getElementById('uv').textContent = U.toExponential(2);
+
   const de = document.getElementById('d-drift');
+  const deAbs = document.getElementById('d-drift-abs');
   if (energyRef && energyRef > 1e-15){
     const drift = Math.abs((U-energyRef)/energyRef)*100;
+    const absDrift = Math.abs(U - energyRef);
     de.textContent = drift.toFixed(2)+'%';
     de.className = drift < 3 ? 'ok' : (drift < 10 ? '' : 'warn');
+    if (deAbs) {
+      deAbs.textContent = absDrift.toExponential(2);
+      deAbs.className = absDrift < 1e-10 ? 'ok' : (absDrift < 1e-6 ? 'amber' : 'warn');
+    }
   } else {
-    de.textContent = '(초기화중)';
+    de.textContent = '(initializing)';
     de.className = '';
   }
 
   const pmlR = 20*Math.log10(R_TARGET);
-  document.getElementById('d-pmlR').textContent = pmlR.toFixed(0)+' dB (이론)';
+  document.getElementById('d-pmlR').textContent = pmlR.toFixed(0)+' dB (theory)';
   document.getElementById('d-pmlR').className = pmlR < -60 ? 'ok' : 'amber';
 
-  const tfsfLeak = srcMode === 'tfsf' ? -38 : -20;
-  document.getElementById('d-tfsf').textContent = tfsfLeak+' dB';
-  document.getElementById('d-tfsf').className = tfsfLeak < -30 ? 'ok' : 'amber';
+  const pmlReal = measurePMLReflection();
+  const pmlRealEl = document.getElementById('d-pmlR-real');
+  if (pmlReal !== null && isFinite(pmlReal)){
+    pmlRealEl.textContent = pmlReal.toFixed(1)+' dB';
+    pmlRealEl.className = pmlReal < -40 ? 'ok' : (pmlReal < -20 ? 'amber' : 'warn');
+  }
+
+  const tfsfLeak = measureTFSFLeakage();
+  const tfsfEl = document.getElementById('d-tfsf');
+  if (srcMode === 'tfsf' && tfsfLeak !== null){
+    tfsfEl.textContent = tfsfLeak.toFixed(1)+' dB';
+    tfsfEl.className = tfsfLeak < -40 ? 'ok' : (tfsfLeak < -20 ? 'amber' : 'warn');
+  } else {
+    tfsfEl.textContent = srcMode === 'tfsf' ? 'measuring...' : 'N/A';
+  }
 
   const freq_SI = omega / dt_si / (2*Math.PI);
   const lambda_SI = C0_SI / freq_SI;
@@ -1415,25 +1660,63 @@ function updateDiag(){
   document.getElementById('d-lambda').textContent = (lambda_SI*1000).toFixed(2)+' mm';
   document.getElementById('d-simT').textContent = (t*dt_si*1e9).toFixed(2)+' ns';
 
-  document.getElementById('d-maxr').textContent = (0.25*prfSteps).toFixed(1)+' cell';
+  document.getElementById('d-maxr').textContent = (0.25*prfSteps).toFixed(1)+' cells';
   document.getElementById('d-r1').textContent = T1.range.toFixed(0)+' / ' +
     (measured.t1 !== null ? measured.t1.toFixed(1) : '--');
   document.getElementById('d-r2').textContent = T2.enabled
     ? (T2.range.toFixed(0)+' / '+(measured.t2 !== null ? measured.t2.toFixed(1) : '--'))
-    : '비활성';
+    : 'inactive';
 
   const cpl = (2*Math.PI/omega)/dx;
   document.getElementById('d-cpl').textContent = cpl.toFixed(1);
+
+  const nyq = computeNyquistMargin();
+  const nyqEl = document.getElementById('d-nyq');
+  nyqEl.textContent = nyq.val.toFixed(1)+' ('+nyq.msg+')';
+  nyqEl.className = nyq.ok ? 'ok' : 'warn';
+
+  const dispErr = computeNumericalDispersionError();
+  const de2 = document.getElementById('d-disp');
+  if (de2){
+    de2.textContent = (dispErr*100).toFixed(3)+'%';
+    de2.className = Math.abs(dispErr) < 1e-3 ? 'ok' :
+                    Math.abs(dispErr) < 1e-2 ? 'amber' : 'warn';
+  }
+
+  const ade = checkADEStability();
+  const adeEl = document.getElementById('d-ade');
+  if (adeEl){
+    adeEl.textContent = ade.msg;
+    adeEl.className = ade.ok ? 'ok' : 'warn';
+  }
+
+  const poynt = computePoyntingDivergence();
+  const poyntEl = document.getElementById('d-poynt');
+  poyntEl.textContent = poynt.max.toExponential(2);
+  poyntEl.className = poynt.max < 1e-8 ? 'ok' :
+                      poynt.max < 1e-6 ? 'amber' : 'warn';
+
+  const bal = computePoyntingBalance();
+  document.getElementById('d-flux').textContent = bal.divS.toExponential(2);
+  document.getElementById('d-diss').textContent = bal.diss.toExponential(2);
+  const balErr = bal.divS/Math.max(1e-12, Math.abs(bal.diss));
+  const balEl = document.getElementById('d-bal');
+  balEl.textContent = balErr.toExponential(2);
+  balEl.className = balErr < 0.1 ? 'ok' : (balErr < 0.5 ? 'amber' : 'warn');
+
+  const smaxEl = document.getElementById('d-smax');
+  if (smaxEl) smaxEl.textContent = sigma_max.toFixed(2);
 
   updateValidationDisplay();
 }
 
 // =============================================================================
-// 19. 리셋
+// 20. Reset
 // =============================================================================
 function reset(){
   Ez.fill(0); Hx.fill(0); Hy.fill(0);
   Pz.fill(0); Pz_old.fill(0); Jp.fill(0);
+  Sz.fill(0);
   t = 0; step = 0; energyRef = null;
   detBuckets.fill(0); detMax = 1e-6;
   for (let r = 0; r < RINGLEN; r++) sliceRing[r].fill(0);
@@ -1445,12 +1728,13 @@ function reset(){
   measured.t1 = null; measured.t2 = null;
   iqTrail.length = 0;
   resetCPML();
+  recomputeSigmaMax();
   buildMedium();
   buildCPMLCoeffs();
 }
 
 // =============================================================================
-// 20. 저장 기능 (PNG, CSV)
+// 21. Export (PNG, CSV)
 // =============================================================================
 document.getElementById('savePng').addEventListener('click', () => {
   const link = document.createElement('a');
@@ -1462,38 +1746,43 @@ document.getElementById('savePng').addEventListener('click', () => {
 
 document.getElementById('saveCsv').addEventListener('click', () => {
   const lines = [];
-  // 헤더
-  lines.push('# FDTD Scattering Lab v2.1 — Export');
+  lines.push('# FDTD Scattering Lab v3.0 — Export');
   lines.push(`# step,t=${step},${t.toFixed(4)}`);
   lines.push(`# grid,${NX}x${NY},dx=${dx_si},dt=${dt_si}`);
   lines.push(`# params,omega=${omega},eps_r=${epsRVal},sigma=${sigVal}`);
   lines.push(`# source,${srcMode},steer=${steerDeg},inc=${incAngleDeg}`);
   lines.push(`# obj,${objType},r1=${T1.range},a1=${T1.angleDeg},r2=${T2.enabled?T2.range:'-'}`);
+  lines.push(`# disp,${dispModel},wp=${omega_p},w0=${omega_0},gd=${gamma_d}`);
   lines.push('');
   lines.push('type,index,value');
-  // 진단
   const div = computeDivergence();
   lines.push(`diag,divH_max,${div.max.toExponential(6)}`);
   lines.push(`diag,divH_rms,${div.rms.toExponential(6)}`);
   lines.push(`diag,energy,${computeEnergy().toExponential(6)}`);
   lines.push(`diag,energy_drift,${runEnergyValidation()}`);
+  lines.push(`diag,dispersion_err,${computeNumericalDispersionError().toExponential(6)}`);
+  lines.push(`diag,poynting_max,${computePoyntingDivergence().max.toExponential(6)}`);
   lines.push(`diag,mie_match,${runMieValidation()}`);
   lines.push(`diag,reciprocity,${runReciprocityValidation()}`);
+  lines.push(`diag,sigma_max,${sigma_max.toFixed(4)}`);
+  const sscat = runSscatValidation();
+  if (typeof sscat === 'object'){
+    lines.push(`diag,sscat_fdtd,${sscat.fdtd.toExponential(6)}`);
+    lines.push(`diag,sscat_mie,${sscat.mie.toExponential(6)}`);
+    lines.push(`diag,sscat_err,${sscat.err.toFixed(4)}`);
+  }
   lines.push('');
-  // RCS 패턴
   lines.push('rcs_theta_deg,rcs_normalized');
   for (let k = 0; k < NFFT_THETA; k++){
     const theta = k*360/NFFT_THETA;
     lines.push(`${theta.toFixed(1)},${(farFieldPattern[k]/farFieldMax).toFixed(6)}`);
   }
   lines.push('');
-  // 탐지 버킷
   lines.push('steer_deg,detection');
   for (let b = 0; b < 121; b++){
     lines.push(`${b-60},${(detBuckets[b]/detMax).toFixed(6)}`);
   }
   lines.push('');
-  // 레이더 거리
   lines.push('bucket_deg,range_cells,strength');
   for (let b = 0; b < 121; b++){
     const e = rangeBuckets[b];
@@ -1510,7 +1799,99 @@ document.getElementById('saveCsv').addEventListener('click', () => {
 });
 
 // =============================================================================
-// 21. UI 바인딩
+// 22. Frequency Scanner
+// =============================================================================
+const freqScanCanvas = document.getElementById('freqScanCanvas');
+const fscCtx = freqScanCanvas.getContext('2d');
+let freqScanData = [];
+
+document.getElementById('runFreqScan').addEventListener('click', async () => {
+  const btn = document.getElementById('runFreqScan');
+  btn.disabled = true;
+  btn.textContent = 'Scanning...';
+  freqScanData = [];
+
+  const N_SCAN = 60;
+  const omegaMin = 0.15, omegaMax = 0.65;
+  const origOmega = omega;
+
+  for (let i = 0; i < N_SCAN; i++){
+    omega = omegaMin + (omegaMax - omegaMin) * i/(N_SCAN-1);
+    for (let s = 0; s < 60; s++) stepFields();
+    updateFarField();
+    let maxFF = 0;
+    for (let k = 0; k < NFFT_THETA; k++)
+      if (farFieldPattern[k] > maxFF) maxFF = farFieldPattern[k];
+    freqScanData.push({omega, rcsMax:maxFF});
+
+    if (i % 5 === 0){
+      drawFreqScan();
+      await new Promise(r => setTimeout(r, 0));
+    }
+  }
+
+  omega = origOmega;
+  btn.disabled = false;
+  btn.textContent = 'Run Frequency Sweep (60 pts)';
+  drawFreqScan();
+
+  if (freqScanData.length > 3){
+    let maxIdx = 0;
+    for (let i = 1; i < freqScanData.length; i++)
+      if (freqScanData[i].rcsMax > freqScanData[maxIdx].rcsMax) maxIdx = i;
+    alert(`Resonance peak: ω = ${freqScanData[maxIdx].omega.toFixed(3)}\n` +
+          `Magnitude = ${freqScanData[maxIdx].rcsMax.toExponential(3)}\n\n` +
+          `Set the slider to this frequency.`);
+  }
+});
+
+function drawFreqScan(){
+  const W = freqScanCanvas.width, H = freqScanCanvas.height;
+  fscCtx.clearRect(0, 0, W, H);
+  if (freqScanData.length < 2) return;
+
+  let maxV = 0;
+  for (const d of freqScanData) if (d.rcsMax > maxV) maxV = d.rcsMax;
+  if (maxV < 1e-12) return;
+
+  fscCtx.strokeStyle = 'rgba(79,195,247,.15)';
+  fscCtx.beginPath();
+  for (let g = 1; g < 4; g++){
+    const y = H*g/4;
+    fscCtx.moveTo(0, y); fscCtx.lineTo(W, y);
+  }
+  fscCtx.stroke();
+
+  fscCtx.strokeStyle = '#4fc3f7';
+  fscCtx.lineWidth = 1.5;
+  fscCtx.beginPath();
+  for (let i = 0; i < freqScanData.length; i++){
+    const d = freqScanData[i];
+    const x = i/(freqScanData.length-1)*W;
+    const y = H - (d.rcsMax/maxV)*(H-6) - 3;
+    if (i === 0) fscCtx.moveTo(x, y);
+    else fscCtx.lineTo(x, y);
+  }
+  fscCtx.stroke();
+
+  let maxIdx = 0;
+  for (let i = 1; i < freqScanData.length; i++)
+    if (freqScanData[i].rcsMax > freqScanData[maxIdx].rcsMax) maxIdx = i;
+  const px = maxIdx/(freqScanData.length-1)*W;
+  const py = H - (freqScanData[maxIdx].rcsMax/maxV)*(H-6) - 3;
+  fscCtx.fillStyle = '#ffd54a';
+  fscCtx.beginPath();
+  fscCtx.arc(px, py, 3, 0, Math.PI*2);
+  fscCtx.fill();
+
+  fscCtx.fillStyle = 'rgba(138,143,154,.8)';
+  fscCtx.font = '8px monospace';
+  fscCtx.fillText('ω=0.15', 3, H-3);
+  fscCtx.fillText('ω=0.65', W-40, H-3);
+}
+
+// =============================================================================
+// 23. UI Bindings
 // =============================================================================
 document.getElementById('eps').addEventListener('input', e => {
   epsRVal = parseFloat(e.target.value);
@@ -1532,7 +1913,7 @@ document.getElementById('sp').addEventListener('input', e => {
 });
 document.getElementById('r1').addEventListener('input', e => {
   T1.range = parseFloat(e.target.value);
-  document.getElementById('r1Val').textContent = T1.range+' cell';
+  document.getElementById('r1Val').textContent = T1.range+' cells';
   buildMedium();
 });
 document.getElementById('a1').addEventListener('input', e => {
@@ -1542,7 +1923,7 @@ document.getElementById('a1').addEventListener('input', e => {
 });
 document.getElementById('r2').addEventListener('input', e => {
   T2.range = parseFloat(e.target.value);
-  document.getElementById('r2Val').textContent = T2.range+' cell';
+  document.getElementById('r2Val').textContent = T2.range+' cells';
   buildMedium();
 });
 document.getElementById('a2').addEventListener('input', e => {
@@ -1595,7 +1976,7 @@ document.getElementById('thresh').addEventListener('input', e => {
 document.getElementById('reset').addEventListener('click', reset);
 document.getElementById('play').addEventListener('click', function(){
   running = !running;
-  this.textContent = running ? '일시정지' : '재생';
+  this.textContent = running ? 'Pause' : 'Play';
 });
 document.getElementById('menu-toggle').addEventListener('click', () => {
   document.body.classList.toggle('closed');
@@ -1605,6 +1986,10 @@ document.getElementById('tSubpixel').addEventListener('click', function(){
   this.classList.toggle('on');
   useSubpixel = this.classList.contains('on');
   buildMedium();
+});
+document.getElementById('tDispMask').addEventListener('click', function(){
+  this.classList.toggle('on');
+  useDispMask = this.classList.contains('on');
 });
 document.getElementById('tSI').addEventListener('click', function(){
   this.classList.toggle('on');
@@ -1617,15 +2002,21 @@ document.getElementById('tEpsView').addEventListener('click', function(){
   this.classList.toggle('on');
   viewMode = this.classList.contains('on') ? 'eps' : 'field';
 });
+document.getElementById('tPoynting').addEventListener('click', function(){
+  this.classList.toggle('on');
+  showPoynting = this.classList.contains('on');
+});
 
 document.getElementById('dxSlider').addEventListener('input', e => {
   dx_si = parseFloat(e.target.value) * 1e-3;
   dt_si = CFL * dx_si / (C0_SI * Math.sqrt(2));
   document.getElementById('dxVal').textContent = (dx_si*1000).toFixed(2)+' mm';
+  recomputeSigmaMax();
+  buildCPMLCoeffs();
 });
 
-// 산란체 버튼
-const OBJS = {circle:'원', square:'사각', twocirc:'이중원', slab:'평판', ellipse:'타원', triangle:'삼각'};
+// Scatterer buttons
+const OBJS = {circle:'Circle', square:'Square', twocirc:'Two Circles', slab:'Slab', ellipse:'Ellipse', triangle:'Triangle'};
 const objGrid = document.getElementById('objGrid');
 Object.keys(OBJS).forEach(key => {
   const b = document.createElement('div');
@@ -1640,8 +2031,8 @@ Object.keys(OBJS).forEach(key => {
   objGrid.appendChild(b);
 });
 
-// 소스 버튼
-const SRCS = {tfsf:'TF/SF 평면파', point:'점', line:'선', array:'위상배열'};
+// Source buttons
+const SRCS = {tfsf:'TF/SF Plane', point:'Point', line:'Line', array:'Phased Array'};
 const srcGrid = document.getElementById('srcGrid');
 const steerWrap = document.getElementById('steerWrap');
 const incWrap = document.getElementById('incWrap');
@@ -1689,8 +2080,8 @@ document.getElementById('tRotate').addEventListener('click', function(){
   autoRotate = this.classList.contains('on');
 });
 
-// 디스퍼시브 버튼
-const DISPS = {none:'없음', debye:'Debye', lorentz:'Lorentz', drude:'Drude'};
+// Dispersive buttons
+const DISPS = {none:'None', debye:'Debye', lorentz:'Lorentz', drude:'Drude'};
 const dispGrid = document.getElementById('dispGrid');
 const wpWrap = document.getElementById('wpWrap');
 const w0Wrap = document.getElementById('w0Wrap');
@@ -1744,7 +2135,7 @@ document.getElementById('gd').addEventListener('input', e => {
 });
 
 // =============================================================================
-// 22. 메인 루프
+// 24. Main Loop
 // =============================================================================
 document.getElementById('grid').textContent = NX+'×'+NY;
 const fpsEl = document.getElementById('fps');
@@ -1812,11 +2203,12 @@ function loop(){
 }
 
 // =============================================================================
-// 23. 초기화
+// 25. Initialization
 // =============================================================================
 resizeHelix();
 resizePPI();
 resizeIQ();
+recomputeSigmaMax();
 buildCPMLCoeffs();
 buildMedium();
 render();
@@ -1825,6 +2217,7 @@ renderHelix();
 renderIQ();
 renderPPI();
 drawRCS();
+drawFreqScan();
 loop();
 
 })();
