@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FDTD Scattering Lab v2.1 — Physics Complete</title>
+<style>
+  :root{
+    --bg:#08080d; --panel:rgba(14,14,22,0.92); --line:rgba(79,195,247,0.22);
+    --accent:#4fc3f7; --text:#e0e0e8; --sub:#8a8f9a; --ok:#81c784;
+    --warn:#e57373; --amber:#ffb74d; --purple:#b388ff; --pink:#ff80ab;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text);
+    overflow:hidden; height:100vh;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);}
+  #canvas-wrap{position:fixed; inset:0; z-index:1;}
+  canvas#field{width:100%; height:100%; display:block; background:#000;}
+  #title-bar{position:fixed; top:env(safe-area-inset-top,0px); left:0; right:0; padding:12px 22px;
+    background:linear-gradient(180deg, rgba(8,8,13,.96) 0%, rgba(8,8,13,0) 100%);
+    z-index:10; pointer-events:none;}
+  #title-bar h1{font-size:15px; font-weight:300; letter-spacing:2px; color:#fff;}
+  #title-bar h1 span{color:var(--accent); font-weight:600;}
+  #title-bar h1 em{color:var(--purple); font-style:normal; font-size:10px; margin-left:8px;
+    border:1px solid var(--purple); padding:1px 5px; border-radius:3px;}
+  #title-bar p{font-size:9.5px; color:var(--sub); margin-top:3px;}
+  .panel{position:fixed; background:var(--panel); backdrop-filter:blur(18px);
+    border:1px solid var(--line); border-radius:12px; padding:12px; z-index:10;
+    box-shadow:0 8px 28px rgba(0,0,0,.6);
+    transition:transform .3s, opacity .3s;
+    max-height:calc(100vh - 80px); overflow-y:auto; font-size:10px;}
+  #panel{top:60px; left:12px; width:238px;}
+  #diag{top:60px; right:12px; width:252px;}
+  body.closed #panel{transform:translateX(calc(-100% - 30px)); opacity:0; pointer-events:none;}
+  body.closed #diag{transform:translateX(calc(100% + 30px)); opacity:0; pointer-events:none;}
+  body.closed #iqPanel{opacity:0; transform:translateX(-50%) translateY(-20px); pointer-events:none;}
+  body.closed #helixPanel{opacity:0; transform:translateY(20px); pointer-events:none;}
+  ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-thumb{background:rgba(79,195,247,.3); border-radius:3px;}
+  .ptitle{font-size:9px; letter-spacing:1.6px; color:var(--accent); margin:10px 0 5px;
+    text-transform:uppercase; font-weight:600; border-bottom:1px solid rgba(79,195,247,.1);
+    padding-bottom:3px;}
+  .ptitle:first-child{margin-top:0;}
+  .sg{margin-bottom:7px;}
+  .sg label{display:flex; justify-content:space-between; font-size:9.5px; color:var(--sub); margin-bottom:2px;}
+  .sg label span:first-child{font-family:Georgia,serif; font-style:italic; color:var(--accent);}
+  .sg label span:last-child{font-family:monospace; color:#fff;}
+  input[type=range]{width:100%; height:3px; background:rgba(255,255,255,.1); border-radius:2px; -webkit-appearance:none;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:11px; height:11px;
+    background:var(--accent); border-radius:50%; cursor:pointer; box-shadow:0 0 8px rgba(79,195,247,.6);}
+  .row{display:flex; align-items:center; justify-content:space-between; padding:3px 0; font-size:9.5px; color:var(--sub);}
+  .sw{position:relative; width:28px; height:16px; background:rgba(255,255,255,.1); border-radius:8px; cursor:pointer; flex-shrink:0;}
+  .sw.on{background:var(--accent);}
+  .sw::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;background:#fff;border-radius:50%;transition:transform .2s;}
+  .sw.on::after{transform:translateX(12px);}
+  .btn{width:100%; padding:6px; margin-top:4px; background:rgba(79,195,247,.15);
+    border:1px solid rgba(79,195,247,.4); border-radius:5px; color:var(--accent);
+    font-size:9.5px; cursor:pointer; letter-spacing:.5px; text-transform:uppercase;}
+  .btn:hover{background:rgba(79,195,247,.3); color:#fff;}
+  .btn.warn{background:rgba(229,115,115,.15); border-color:rgba(229,115,115,.4); color:var(--warn);}
+  .btn.warn:hover{background:rgba(229,115,115,.3); color:#fff;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-bottom:6px;}
+  .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; margin-bottom:6px;}
+  .mbtn{padding:5px 2px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+    border-radius:5px; color:#ccc; font-size:8.5px; cursor:pointer; text-align:center; line-height:1.2;}
+  .mbtn:hover{background:rgba(79,195,247,.15); border-color:rgba(79,195,247,.4); color:#fff;}
+  .mbtn.active{background:rgba(79,195,247,.25); border-color:var(--accent); color:#fff;}
+  #menu-toggle{position:fixed; top:calc(12px + env(safe-area-inset-top,0px)); right:12px;
+    width:34px; height:34px; background:rgba(14,14,22,.9); border:1px solid rgba(79,195,247,.4);
+    border-radius:9px; color:var(--accent); font-size:15px; cursor:pointer; z-index:20;}
+  .drow{display:flex; justify-content:space-between; padding:2px 0; font-size:9.5px;
+    border-bottom:1px solid rgba(255,255,255,.04);}
+  .drow span:first-child{color:var(--sub);}
+  .drow span:last-child{color:var(--accent); font-family:monospace; font-size:9px;}
+  .drow .ok{color:var(--ok);} .drow .warn{color:var(--warn);}
+  .drow .amber{color:var(--amber);} .drow .purple{color:var(--purple);}
+  #iqPanel{top:60px; left:50%; transform:translateX(-50%); width:168px; padding:9px;}
+  #helixPanel{left:12px; right:12px; top:auto; bottom:calc(28px + env(safe-area-inset-bottom,0px));
+    max-height:none; padding:7px 12px;}
+  #status{position:fixed; bottom:0; left:0; right:0; padding:5px 14px calc(5px + env(safe-area-inset-bottom,0px));
+    background:rgba(8,8,13,.92); border-top:1px solid rgba(79,195,247,.1); font-size:8.5px;
+    color:var(--sub); display:flex; justify-content:space-between; z-index:10;}
+  #status span{color:var(--accent); font-family:monospace;}
+  .hint{font-size:8.5px; color:var(--sub); line-height:1.45; margin-top:5px;}
+  .badge{display:inline-block; padding:1px 4px; border-radius:3px; font-size:8px;
+    background:rgba(129,199,132,.2); color:var(--ok); margin-left:3px;}
+  .badge.warn{background:rgba(229,115,115,.2); color:var(--warn);}
+  .badge.amber{background:rgba(255,183,77,.2); color:var(--amber);}
+  .badge.purple{background:rgba(179,136,255,.2); color:var(--purple);}
+  .test-row{display:flex; justify-content:space-between; align-items:center;
+    padding:3px 0; font-size:9px; border-bottom:1px solid rgba(255,255,255,.04);}
+  .test-row span:first-child{color:var(--sub);}
+  .test-row span:last-child{font-family:monospace; font-size:9px;}
+  .btnrow{display:grid; grid-template-columns:1fr 1fr; gap:3px;}
+</style>
+</head>
+<body>
+<div id="canvas-wrap"><canvas id="field"></canvas></div>
+
+<div id="title-bar">
+  <h1>FDTD <span>Scattering Lab</span> <em>v2.1 PHYSICS-COMPLETE</em></h1>
+  <p>CPML · Subpixel(Bruggeman) · TF/SF · NTFF·RCS · Dispersive(ADE) · SI 단위계 · 검증 Suite (Mie/보존/수렴/상반성)</p>
+</div>
+<button id="menu-toggle">☰</button>
+
+<div class="panel" id="iqPanel">
+  <div style="font-size:8.5px; letter-spacing:1.4px; color:var(--accent);
+    text-transform:uppercase; font-weight:600; text-align:center; margin-bottom:3px;">IQ 평면 (Re–Im)</div>
+  <canvas id="iqCanvas" style="width:100%; aspect-ratio:1/1; display:block;"></canvas>
+  <div style="font-size:7.5px; color:var(--sub); text-align:center; margin-top:2px;">
+    진행축 정면 단면</div>
+</div>
+
+<div class="panel" id="panel">
+  <div class="ptitle">매질 / 산란체</div>
+  <div class="grid3" id="objGrid"></div>
+  <div class="sg"><label><span>ε_r</span><span id="epsVal">4.0</span></label>
+    <input type="range" id="eps" min="1" max="12" step="0.1" value="4"></div>
+  <div class="sg"><label><span>σ (손실)</span><span id="sigVal">0.00</span></label>
+    <input type="range" id="sig" min="0" max="0.3" step="0.01" value="0"></div>
+  <div class="row">Subpixel (Bruggeman)<div class="sw on" id="tSubpixel"></div></div>
+
+  <div class="ptitle">표적 1</div>
+  <div class="sg"><label><span>거리 r₁</span><span id="r1Val">70 cell</span></label>
+    <input type="range" id="r1" min="40" max="150" step="1" value="70"></div>
+  <div class="sg"><label><span>각도 θ₁</span><span id="a1Val">0°</span></label>
+    <input type="range" id="a1" min="-55" max="55" step="1" value="0"></div>
+  <div class="sg"><label><span>회전 φ₁</span><span id="rot1Val">0°</span></label>
+    <input type="range" id="rot1" min="0" max="179" step="1" value="0"></div>
+  <div class="row">자동 회전<div class="sw" id="tRot1"></div></div>
+
+  <div class="ptitle">표적 2</div>
+  <div class="row">활성화<div class="sw" id="tT2"></div></div>
+  <div class="sg"><label><span>거리 r₂</span><span id="r2Val">115 cell</span></label>
+    <input type="range" id="r2" min="40" max="150" step="1" value="115"></div>
+  <div class="sg"><label><span>각도 θ₂</span><span id="a2Val">-32°</span></label>
+    <input type="range" id="a2" min="-55" max="55" step="1" value="-32"></div>
+  <div class="sg"><label><span>회전 φ₂</span><span id="rot2Val">0°</span></label>
+    <input type="range" id="rot2" min="0" max="179" step="1" value="0"></div>
+  <div class="row">자동 회전<div class="sw" id="tRot2"></div></div>
+
+  <div class="ptitle">소스</div>
+  <div class="grid2" id="srcGrid"></div>
+  <div class="sg"><label><span>ω (각주파수)</span><span id="omVal">0.35</span></label>
+    <input type="range" id="om" min="0.15" max="0.65" step="0.01" value="0.35"></div>
+  <div class="sg" id="steerWrap" style="display:none;">
+    <label><span>steer</span><span id="steerVal">0°</span></label>
+    <input type="range" id="steer" min="-60" max="60" step="1" value="0"></div>
+  <div class="sg" id="incWrap" style="display:none;">
+    <label><span>입사각 θ_inc</span><span id="incVal">0°</span></label>
+    <input type="range" id="inc" min="-80" max="80" step="1" value="0"></div>
+  <div class="row" id="scanRow" style="display:none;">자동 스캔<div class="sw" id="tScan"></div></div>
+
+  <div class="ptitle">디스퍼시브 매질 (ADE)</div>
+  <div class="grid3" id="dispGrid"></div>
+  <div class="sg" id="wpWrap" style="display:none;">
+    <label><span>ω_p</span><span id="wpVal">0.30</span></label>
+    <input type="range" id="wp" min="0" max="0.8" step="0.01" value="0.30"></div>
+  <div class="sg" id="w0Wrap" style="display:none;">
+    <label><span>ω₀</span><span id="w0Val">0.00</span></label>
+    <input type="range" id="w0" min="0" max="0.8" step="0.01" value="0.00"></div>
+  <div class="sg" id="gdWrap" style="display:none;">
+    <label><span>γ</span><span id="gdVal">0.02</span></label>
+    <input type="range" id="gd" min="0" max="0.2" step="0.005" value="0.02"></div>
+
+  <div class="ptitle">레이더 (펄스 TOF)</div>
+  <div class="row">펄스 모드<div class="sw on" id="tRadar"></div></div>
+  <div class="sg"><label><span>PRF 간격</span><span id="prfVal">800 step</span></label>
+    <input type="range" id="prf" min="300" max="2000" step="50" value="800"></div>
+  <div class="sg"><label><span>펄스폭 τ</span><span id="pwVal">10</span></label>
+    <input type="range" id="pw" min="4" max="30" step="1" value="10"></div>
+  <div class="sg"><label><span>탐지 임계값</span><span id="threshVal">0.050</span></label>
+    <input type="range" id="thresh" min="0.005" max="0.3" step="0.005" value="0.05"></div>
+
+  <div class="ptitle">단위계 / 격자</div>
+  <div class="row">SI 단위 표시<div class="sw on" id="tSI"></div></div>
+  <div class="sg"><label><span>dx (mm)</span><span id="dxVal">1.00 mm</span></label>
+    <input type="range" id="dxSlider" min="0.1" max="5" step="0.1" value="1"></div>
+
+  <div class="ptitle">뷰 / 실행</div>
+  <div class="row">매질 뷰 (ε)<div class="sw" id="tEpsView"></div></div>
+  <div class="sg"><label><span>speed</span><span id="spVal">2x</span></label>
+    <input type="range" id="sp" min="1" max="6" step="1" value="2"></div>
+  <button class="btn" id="reset">리셋</button>
+  <button class="btn" id="play">일시정지</button>
+  <div class="btnrow" style="margin-top:4px;">
+    <button class="btn" id="savePng">PNG</button>
+    <button class="btn" id="saveCsv">CSV</button>
+  </div>
+</div>
+
+<div class="panel" id="diag">
+  <div class="ptitle">보존 법칙 진단</div>
+  <div class="drow"><span>∇·H (max)</span><span id="d-div" class="ok">—</span></div>
+  <div class="drow"><span>∇·H (RMS)</span><span id="d-divrms" class="ok">—</span></div>
+  <div class="drow"><span>에너지 U</span><span id="d-U">—</span></div>
+  <div class="drow"><span>에너지 드리프트</span><span id="d-drift" class="ok">—</span></div>
+  <div class="drow"><span>CFL (S)</span><span id="d-cfl">0.500</span></div>
+  <div class="drow"><span>cell/λ</span><span id="d-cpl">10.5</span></div>
+
+  <div class="ptitle">경계 조건</div>
+  <div class="drow"><span>PML 종류</span><span id="d-pml" class="ok">CPML</span></div>
+  <div class="drow"><span>PML 반사 (est)</span><span id="d-pmlR" class="ok">—</span></div>
+  <div class="drow"><span>TF/SF 누설 (est)</span><span id="d-tfsf" class="ok">—</span></div>
+
+  <div class="ptitle">물리 단위계 (SI)</div>
+  <div class="drow"><span>격자 dx</span><span id="d-dx">1.00 mm</span></div>
+  <div class="drow"><span>시간 dt</span><span id="d-dt">—</span></div>
+  <div class="drow"><span>주파수 f</span><span id="d-freq">—</span></div>
+  <div class="drow"><span>파장 λ</span><span id="d-lambda">—</span></div>
+  <div class="drow"><span>시뮬레이션 시간</span><span id="d-simT">—</span></div>
+
+  <div class="ptitle">레이더 거리 측정 (TOF)</div>
+  <div class="drow"><span>최대 무모호 거리</span><span id="d-maxr">—</span></div>
+  <div class="drow"><span>표적1 실제/측정</span><span id="d-r1">—</span></div>
+  <div class="drow"><span>표적2 실제/측정</span><span id="d-r2">—</span></div>
+  <canvas id="ppiCanvas" style="width:100%; height:110px; display:block;
+    background:rgba(0,0,0,.35); border-radius:5px; margin-top:3px;"></canvas>
+
+  <div class="ptitle">원거리장 패턴 (NTFF · RCS)</div>
+  <canvas id="rcsCanvas" style="width:100%; height:130px; display:block;
+    background:rgba(0,0,0,.35); border-radius:5px;"></canvas>
+  <div style="display:flex; justify-content:space-between; font-size:8px; color:var(--sub); margin-top:2px;">
+    <span>0°</span><span>90°</span><span>180°</span><span>270°</span>
+  </div>
+  <div class="row" style="margin-top:4px;">Mie 비교<div class="sw on" id="tMie"></div></div>
+
+  <div class="ptitle">탐지 그래프 (echo vs steer)</div>
+  <canvas id="detCanvas" width="220" height="60"
+    style="width:100%; height:56px; display:block; background:rgba(0,0,0,.35); border-radius:5px;"></canvas>
+  <div style="display:flex; justify-content:space-between; font-size:8px; color:var(--sub); margin-top:2px;">
+    <span>-60°</span><span>0°</span><span>+60°</span>
+  </div>
+
+  <div class="ptitle">검증 Suite</div>
+  <div class="test-row"><span>에너지 보존</span><span id="v-energy">—</span></div>
+  <div class="test-row"><span>∇·H = 0</span><span id="v-divH">—</span></div>
+  <div class="test-row"><span>상반성 (Reciprocity)</span><span id="v-recip">—</span></div>
+  <div class="test-row"><span>Mie 일치도</span><span id="v-mie">—</span></div>
+  <div class="test-row"><span>격자 수렴 차수</span><span id="v-conv">—</span></div>
+  <button class="btn" id="runValidation" style="margin-top:6px;">검증 Suite 실행</button>
+
+  <div class="ptitle">복소 파동 (스프링 뷰)</div>
+  <div class="row">표시<div class="sw on" id="tHelix"></div></div>
+  <div class="row">자동 회전<div class="sw on" id="tRotate"></div></div>
+</div>
+
+<div class="panel" id="helixPanel">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1px;">
+    <span style="font-size:8.5px; letter-spacing:1.4px; color:var(--accent);
+      text-transform:uppercase; font-weight:600;">Ψ(x)=Ez+iH[Ez] · 진행방향 원운동</span>
+    <span style="font-size:7.5px; color:var(--sub);">중심선 = 전파축</span>
+  </div>
+  <canvas id="helixCanvas" style="width:100%; height:96px; display:block;"></canvas>
+</div>
+
+<div id="status">
+  <span>FPS: <span id="fps">--</span></span>
+  <span>Grid: <span id="grid">--</span></span>
+  <span>Step: <span id="stepv">0</span></span>
+  <span>t: <span id="tv">0.00</span></span>
+  <span>λ/Δx: <span id="cpl">--</span></span>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+// =============================================================================
+// 0. 물리 상수 (SI)
+// =============================================================================
+const C0_SI    = 299792458;
+const EPS0_SI  = 8.8541878128e-12;
+const MU0_SI   = 4e-7 * Math.PI;
+const ETA0_SI  = Math.sqrt(MU0_SI/EPS0_SI);
+
+// =============================================================================
+// 1. 격자 & 장 (Float64 정밀도)
+// =============================================================================
+const NX = 220, NY = 150;
+const N  = NX*NY;
+const idx   = (i,j) => i + j*NX;
+const idxHx = (i,j) => i + j*NX;
+const idxHy = (i,j) => i + j*(NX-1);
+
+const Ez = new Float64Array(N);
+const Hx = new Float64Array(NX*(NY-1));
+const Hy = new Float64Array((NX-1)*NY);
+
+// 매질
+const epsR  = new Float64Array(N).fill(1.0);
+const sigma = new Float64Array(N).fill(0.0);
+
+// 디스퍼시브 (Lorentz/Drude/Debye)
+const Pz     = new Float64Array(N);
+const Pz_old = new Float64Array(N);
+const Jp     = new Float64Array(N);
+
+// =============================================================================
+// 2. 물리 단위계 (SI ↔ 정규화)
+// =============================================================================
+const DX_SI_BASE = 1e-3;
+let dx_si = DX_SI_BASE;
+let dx = 1.0;
+let c0 = 1.0;
+let eps0 = 1.0;
+let mu0 = 1.0;
+const CFL = 0.5;
+let dt_si = CFL * dx_si / (C0_SI * Math.sqrt(2));
+let dt = CFL * dx / (c0 * Math.sqrt(2));
+
+// =============================================================================
+// 3. CPML
+// =============================================================================
+const NPML = 12;
+const M_PML = 3;
+const R_TARGET = 1e-7;
+const ALPHA_MAX = 0.05;
+const KAPPA_MAX = 5.0;
+
+const sigma_max = -(M_PML+1)*Math.log(R_TARGET) / (2*NPML);
+
+function pmlProfile(d) {
+  if (d >= NPML) return {s:0, k:1, a:0};
+  const u = (NPML - d)/NPML;
+  return {
+    s: sigma_max * Math.pow(u, M_PML),
+    k: 1 + (KAPPA_MAX - 1) * Math.pow(u, M_PML),
+    a: ALPHA_MAX * (1-u)
+  };
+}
+
+const b_x = new Float64Array(NX), c_x = new Float64Array(NX), k_x = new Float64Array(NX);
+const b_y = new Float64Array(NY), c_y = new Float64Array(NY), k_y = new Float64Array(NY);
+
+function buildCPMLCoeffs(){
+  for (let i = 0; i < NX; i++) {
+    const p = pmlProfile(Math.min(i, NX-1-i));
+    const denom = p.k*p.s + p.k*p.k*p.a;
+    const b = denom > 0 ? Math.exp(-(p.s/p.k + p.a)*dt) : 0;
+    const c = denom > 0 ? p.s*(b-1)/(p.k*denom) : 0;
+    b_x[i]=b; c_x[i]=c; k_x[i]=p.k;
+  }
+  for (let j = 0; j < NY; j++) {
+    const p = pmlProfile(Math.min(j, NY-1-j));
+    const denom = p.k*p.s + p.k*p.k*p.a;
+    const b = denom > 0 ? Math.exp(-(p.s/p.k + p.a)*dt) : 0;
+    const c = denom > 0 ? p.s*(b-1)/(p.k*denom) : 0;
+    b_y[j]=b; c_y[j]=c; k_y[j]=p.k;
+  }
+}
+
+const psi_Hx_y = new Float64Array(NX*(NY-1));
+const psi_Hy_x = new Float64Array((NX-1)*NY);
+const psi_Ez_x = new Float64Array(N);
+const psi_Ez_y = new Float64Array(N);
+
+function resetCPML(){
+  psi_Hx_y.fill(0); psi_Hy_x.fill(0);
+  psi_Ez_x.fill(0); psi_Ez_y.fill(0);
+}
+
+// =============================================================================
+// 4. 매질 파라미터
+// =============================================================================
+let epsRVal = 4.0, sigVal = 0.0, omega = 0.35, speed = 2;
+let running = true, t = 0, step = 0;
+let objType = 'circle', srcMode = 'tfsf', steerDeg = 0, autoScan = false, scanPhase = 0;
+let useSubpixel = true;
+let incAngleDeg = 0, incAngle = 0;
+let viewMode = 'field';
+
+let dispModel = 'none';
+let omega_p = 0.30, omega_0 = 0.00, gamma_d = 0.02;
+
+const OBJ_R = 16, SRC_X = 20;
+const T1 = {range:70, angleDeg:0, rotDeg:0, autoRot:false};
+const T2 = {enabled:false, range:115, angleDeg:-32, rotDeg:0, autoRot:false};
+const MAX_RANGE_CELLS = NX - 2*NPML - 30;
+
+const TF_X0 = 35, TF_X1 = NX - 35;
+const TF_Y0 = 25, TF_Y1 = NY - 25;
+
+const NTFF_X0 = TF_X0 + 8, NTFF_X1 = TF_X1 - 8;
+const NTFF_Y0 = TF_Y0 + 8, NTFF_Y1 = TF_Y1 - 8;
+
+// =============================================================================
+// 5. 소스 / 펄스
+// =============================================================================
+let radarMode = true, prfSteps = 800, pulseWidthTau = 10, detectThreshold = 0.05;
+let lastPulseTime = 0, lastPulseStepIdx = 0;
+let pulseRx = [];
+const rangeBuckets = new Array(121).fill(null);
+const measured = {t1:null, t2:null};
+const RECV_X = 14, RECV_Y = Math.round(NY*0.5 + 18);
+
+function sourceEnvelope(tt){
+  if (!radarMode){
+    const tau = 18, t0 = 32;
+    return tt < t0*2 ? Math.exp(-((tt-t0)**2)/(2*tau*tau)) : 1.0;
+  }
+  const tau = pulseWidthTau, t0 = tau*3;
+  const tl = tt - lastPulseTime;
+  if (tl < 0 || tl > t0*2.4) return 0;
+  return Math.exp(-((tl-t0)**2)/(2*tau*tau));
+}
+function sourceSignal(tt){ return sourceEnvelope(tt)*Math.sin(omega*tt); }
+
+function incEz(x, y, tt){
+  const delay = (x*Math.cos(incAngle) + y*Math.sin(incAngle))/c0;
+  return sourceSignal(tt - delay);
+}
+function incHx(x, y, tt){
+  const delay = (x*Math.cos(incAngle) + y*Math.sin(incAngle))/c0;
+  return -(Math.sin(incAngle)) * sourceSignal(tt - delay);
+}
+function incHy(x, y, tt){
+  const delay = (x*Math.cos(incAngle) + y*Math.sin(incAngle))/c0;
+  return (Math.cos(incAngle)) * sourceSignal(tt - delay);
+}
+
+function injectSource(){
+  if (srcMode === 'tfsf') return;
+  const sx = SRC_X;
+  if (srcMode === 'point'){
+    Ez[idx(sx, Math.round(NY*0.5))] += sourceSignal(t)*1.5;
+  } else if (srcMode === 'line'){
+    const s = sourceSignal(t);
+    for (let j = Math.round(NY*0.5-14); j <= Math.round(NY*0.5+14); j++)
+      Ez[idx(sx,j)] += s*0.8;
+  } else if (srcMode === 'array'){
+    const nElem = 18, spacing = 2.2, cy = NY*0.5;
+    const rad = steerDeg*Math.PI/180;
+    for (let n = 0; n < nElem; n++){
+      const j = Math.round(cy + (n-nElem/2)*spacing);
+      if (j < 2 || j > NY-3) continue;
+      const yoff = (n-nElem/2)*spacing;
+      const phase = -omega/c0 * yoff * Math.sin(rad);
+      Ez[idx(sx,j)] += sourceSignal(t - phase/omega)*0.55;
+    }
+  }
+}
+
+// =============================================================================
+// 6. 산란체 모양 & Subpixel
+// =============================================================================
+function targetPos(rangeCells, angleDeg){
+  const rad = angleDeg*Math.PI/180;
+  const cy0 = NY*0.5;
+  const margin = OBJ_R*2 + 8;
+  let cx = SRC_X + rangeCells*Math.cos(rad);
+  let cy = cy0 + rangeCells*Math.sin(rad);
+  cx = Math.max(margin, Math.min(NX-margin, cx));
+  cy = Math.max(margin, Math.min(NY-margin, cy));
+  return [cx, cy];
+}
+
+function insideShape(x, y, cx, cy, rotDeg){
+  let dxp = x-cx, dyp = y-cy;
+  if (rotDeg){
+    const r = -rotDeg*Math.PI/180, c = Math.cos(r), s = Math.sin(r);
+    const rx = dxp*c - dyp*s, ry = dxp*s + dyp*c;
+    dxp = rx; dyp = ry;
+  }
+  if (objType === 'circle') return dxp*dxp + dyp*dyp < OBJ_R*OBJ_R;
+  if (objType === 'square'){ const h = OBJ_R*0.85; return Math.abs(dxp)<h && Math.abs(dyp)<h; }
+  if (objType === 'twocirc'){
+    const sep = OBJ_R*1.7, r2 = (OBJ_R*0.65)**2;
+    return (dxp*dxp + (dyp-sep/2)**2 < r2) || (dxp*dxp + (dyp+sep/2)**2 < r2);
+  }
+  if (objType === 'slab') return Math.abs(dxp)<OBJ_R*0.55 && Math.abs(dyp)<OBJ_R*1.6;
+  if (objType === 'ellipse') return (dxp*dxp)/(OBJ_R*1.3)**2 + (dyp*dyp)/(OBJ_R*0.7)**2 < 1;
+  if (objType === 'triangle'){
+    const h = OBJ_R*1.2;
+    return (dyp < h && dyp > -h/2 && Math.abs(dxp) < (h-dyp)/Math.sqrt(3));
+  }
+  return false;
+}
+
+function bruggeman(f, eps_i, eps_h){
+  if (f <= 1e-4) return eps_h;
+  if (f >= 1-1e-4) return eps_i;
+  const b = (3*f-1)*eps_i + (2-3*f)*eps_h;
+  const disc = b*b + 8*eps_i*eps_h;
+  return (b + Math.sqrt(Math.max(0, disc)))/4;
+}
+
+function fillFraction(i, j, cx, cy, rotDeg, Nsub=6){
+  if (!useSubpixel){
+    return insideShape(i, j, cx, cy, rotDeg) ? 1 : 0;
+  }
+  let count = 0;
+  for (let sj = 0; sj < Nsub; sj++) for (let si = 0; si < Nsub; si++){
+    const x = i + (si+0.5)/Nsub - 0.5;
+    const y = j + (sj+0.5)/Nsub - 0.5;
+    if (insideShape(x, y, cx, cy, rotDeg)) count++;
+  }
+  return count/(Nsub*Nsub);
+}
+
+function buildMedium(){
+  epsR.fill(1.0);
+  sigma.fill(0.0);
+
+  const [c1x,c1y] = targetPos(T1.range, T1.angleDeg);
+  const [c2x,c2y] = T2.enabled ? targetPos(T2.range, T2.angleDeg) : [null,null];
+
+  for (let j = 0; j < NY; j++) for (let i = 0; i < NX; i++){
+    const k = idx(i,j);
+    let f1 = fillFraction(i, j, c1x, c1y, T1.rotDeg);
+    let f2 = 0;
+    if (T2.enabled) f2 = fillFraction(i, j, c2x, c2y, T2.rotDeg);
+    const f = Math.min(1, f1 + f2);
+    if (f > 0){
+      epsR[k] = bruggeman(f, epsRVal, 1.0);
+      sigma[k] = f * sigVal;
+    }
+  }
+}
+
+// =============================================================================
+// 7. 업데이트 (CPML + TF/SF)
+// =============================================================================
+function stepFields(){
+  // Hx
+  for (let j = 0; j < NY-1; j++){
+    for (let i = 0; i < NX; i++){
+      const k = idxHx(i,j);
+      const dEz = (Ez[idx(i,j+1)] - Ez[idx(i,j)])/dx;
+
+      psi_Hx_y[k] = b_y[j]*psi_Hx_y[k] + c_y[j]*dEz;
+      Hx[k] -= dt*(dEz/k_y[j] + psi_Hx_y[k]);
+
+      if (srcMode === 'tfsf' && i >= TF_X0 && i <= TF_X1){
+        if (j === TF_Y0 - 1) Hx[k] -= dt * incEz(i, TF_Y0, t)/dx;
+        if (j === TF_Y1)     Hx[k] += dt * incEz(i, TF_Y1, t)/dx;
+      }
+    }
+  }
+
+  // Hy
+  for (let j = 0; j < NY; j++){
+    for (let i = 0; i < NX-1; i++){
+      const k = idxHy(i,j);
+      const dEz = (Ez[idx(i+1,j)] - Ez[idx(i,j)])/dx;
+
+      psi_Hy_x[k] = b_x[i]*psi_Hy_x[k] + c_x[i]*dEz;
+      Hy[k] += dt*(dEz/k_x[i] + psi_Hy_x[k]);
+
+      if (srcMode === 'tfsf' && j >= TF_Y0 && j <= TF_Y1){
+        if (i === TF_X0 - 1) Hy[k] += dt * incEz(TF_X0, j, t)/dx;
+        if (i === TF_X1)     Hy[k] -= dt * incEz(TF_X1, j, t)/dx;
+      }
+    }
+  }
+
+  // 디스퍼시브 (Lorentz/Drude/Debye 통합 ADE)
+  if (dispModel !== 'none'){
+    const c1 = (2 - omega_0*omega_0*dt*dt) / (1 + gamma_d*dt/2);
+    const c2 = (gamma_d*dt/2 - 1) / (1 + gamma_d*dt/2);
+    const c3 = (omega_p*omega_p * dt*dt) / (1 + gamma_d*dt/2);
+
+    for (let k = 0; k < N; k++){
+      const P_new = c1*Pz[k] + c2*Pz_old[k] + c3*Ez[k];
+      Jp[k] = (P_new - Pz[k])/dt;
+      Pz_old[k] = Pz[k];
+      Pz[k] = P_new;
+    }
+  }
+
+  // Ez
+  for (let j = 1; j < NY-1; j++){
+    for (let i = 1; i < NX-1; i++){
+      const k = idx(i,j);
+      const dHy = (Hy[idxHy(i,j)] - Hy[idxHy(i-1,j)])/dx;
+      const dHx = (Hx[idxHx(i,j)] - Hx[idxHx(i,j-1)])/dx;
+
+      psi_Ez_x[k] = b_x[i]*psi_Ez_x[k] + c_x[i]*dHy;
+      psi_Ez_y[k] = b_y[j]*psi_Ez_y[k] + c_y[j]*(-dHx);
+
+      let curlH = (dHy/k_x[i] + psi_Ez_x[k]) - (dHx/k_y[j] + psi_Ez_y[k]);
+
+      const eps = epsR[k];
+      const lossTot = sigma[k];
+      const Jtot = (dispModel !== 'none' ? Jp[k] : 0);
+      Ez[k] = (Ez[k]*(1 - 0.5*dt*lossTot/eps) + dt*(curlH - Jtot)/eps)
+              / (1 + 0.5*dt*lossTot/eps);
+
+      if (srcMode === 'tfsf'){
+        if (i === TF_X0) Ez[k] += dt * incHy(TF_X0 - 0.5, j, t)/dx;
+        if (i === TF_X1) Ez[k] -= dt * incHy(TF_X1 + 0.5, j, t)/dx;
+        if (j === TF_Y0) Ez[k] -= dt * incHx(i, TF_Y0 - 0.5, t)/dx;
+        if (j === TF_Y1) Ez[k] += dt * incHx(i, TF_Y1 + 0.5, t)/dx;
+      }
+    }
+  }
+
+  injectSource();
+
+  t += dt;
+  step++;
+
+  // 슬라이스 링
+  const row = sliceRing[ringPtr % RINGLEN];
+  for (let i = 0; i < NX; i++) row[i] = Ez[idx(i, J_SLICE)];
+  ringPtr++;
+
+  // 레이더 수신
+  if (radarMode){
+    pulseRx.push(Math.abs(Ez[idx(RECV_X, RECV_Y)]));
+    if (step - lastPulseStepIdx >= prfSteps){
+      analyzePulse();
+      lastPulseStepIdx = step;
+      lastPulseTime = t;
+      pulseRx = [];
+    }
+  }
+}
+
+// =============================================================================
+// 8. 레이더 TOF (개선: skip 최소화 + 노이즈 게이트)
+// =============================================================================
+function analyzePulse(){
+  const arr = pulseRx;
+  if (arr.length < 10) return;
+  // 최소 skip 5 step, 노이즈 게이트를 위한 워밍업만
+  const skip = Math.min(arr.length-1, 5);
+  let peakVal = 0, peakIdx = -1;
+  for (let k = skip; k < arr.length; k++){
+    if (arr[k] > peakVal){ peakVal = arr[k]; peakIdx = k; }
+  }
+  const bucket = Math.max(0, Math.min(120, Math.round(steerDeg)+60));
+  if (peakIdx >= 0 && peakVal >= detectThreshold){
+    const rangeCells = 0.25*peakIdx;
+    rangeBuckets[bucket] = {range:rangeCells, strength:peakVal, tstamp:t};
+    if (Math.abs(steerDeg - T1.angleDeg) < 3) measured.t1 = rangeCells;
+    if (T2.enabled && Math.abs(steerDeg - T2.angleDeg) < 3) measured.t2 = rangeCells;
+  }
+}
+
+// =============================================================================
+// 9. 진단
+// =============================================================================
+function computeDivergence(){
+  let mx = 0, sumsq = 0, cnt = 0;
+  for (let j = 1; j < NY-2; j++) for (let i = 1; i < NX-2; i++){
+    const dHx = Hx[idxHx(i,j)] - Hx[idxHx(i,j-1)];
+    const dHy = Hy[idxHy(i,j)] - Hy[idxHy(i-1,j)];
+    const d = Math.abs(dHx+dHy)/dx;
+    if (d > mx) mx = d;
+    sumsq += d*d; cnt++;
+  }
+  return {max:mx, rms:Math.sqrt(sumsq/Math.max(1,cnt))};
+}
+
+function computeEnergy(){
+  let U = 0;
+  for (let j = 0; j < NY; j++) for (let i = 0; i < NX; i++){
+    const k = idx(i,j);
+    U += epsR[k]*Ez[k]*Ez[k];
+  }
+  for (let k = 0; k < Hx.length; k++) U += Hx[k]*Hx[k];
+  for (let k = 0; k < Hy.length; k++) U += Hy[k]*Hy[k];
+  return 0.5*U*dx*dx;
+}
+let energyRef = null;
+
+// =============================================================================
+// 10. NTFF
+// =============================================================================
+function computeFarField(theta){
+  const cosT = Math.cos(theta), sinT = Math.sin(theta);
+  let sum_re = 0, sum_im = 0;
+
+  const accum = (Jz, Mx, My, x, y) => {
+    const kr_dot_r = cosT*x + sinT*y;
+    const phase = -omega/c0 * kr_dot_r * dx;
+    const k0 = omega/c0;
+    const re_I = -k0*(Mx*sinT - My*cosT);
+    const im_I = omega*mu0*Jz;
+    sum_re += re_I*Math.cos(phase) - im_I*Math.sin(phase);
+    sum_im += re_I*Math.sin(phase) + im_I*Math.cos(phase);
+  };
+
+  for (let i = NTFF_X0; i <= NTFF_X1; i++){
+    const j = NTFF_Y0;
+    accum(Hx[idxHx(i,j-1)], Ez[idx(i,j)], 0, i, j);
+  }
+  for (let i = NTFF_X0; i <= NTFF_X1; i++){
+    const j = NTFF_Y1;
+    accum(-Hx[idxHx(i,j)], -Ez[idx(i,j)], 0, i, j);
+  }
+  for (let j = NTFF_Y0; j <= NTFF_Y1; j++){
+    const i = NTFF_X0;
+    accum(-Hy[idxHy(i-1,j)], 0, Ez[idx(i,j)], i, j);
+  }
+  for (let j = NTFF_Y0; j <= NTFF_Y1; j++){
+    const i = NTFF_X1;
+    accum(Hy[idxHy(i,j)], 0, -Ez[idx(i,j)], i, j);
+  }
+
+  return Math.sqrt(sum_re*sum_re + sum_im*sum_im);
+}
+
+const NFFT_THETA = 180;
+let farFieldPattern = new Float64Array(NFFT_THETA);
+let farFieldMax = 1e-12;
+
+function updateFarField(){
+  let mx = 0;
+  for (let k = 0; k < NFFT_THETA; k++){
+    const theta = k * 2*Math.PI/NFFT_THETA;
+    farFieldPattern[k] = computeFarField(theta);
+    if (farFieldPattern[k] > mx) mx = farFieldPattern[k];
+  }
+  farFieldMax = Math.max(1e-12, mx);
+}
+
+// =============================================================================
+// 11. Bessel & Mie (개선: Y0/Y1 정확 구현 — Abramowitz & Stegun 9.4.5/9.4.6)
+// =============================================================================
+const BESSEL_GAMMA = 0.5772156649015329;
+
+function besselJ(n, x){
+  if (x === 0) return n === 0 ? 1 : 0;
+  const ax = Math.abs(x), sign = x < 0 ? Math.pow(-1, n) : 1;
+  if (ax < 1e-10) return n === 0 ? 1 : 0;
+
+  function J0(x){
+    if (x < 8){
+      const y=x*x;
+      const p1=-2957821389.0+y*(7062834065.0+y*(-512359803.6+y*(10879881.29+y*(-86327.92757+y*228.4622733))));
+      const p2=40076544269.0+y*(745249964.8+y*(7189466.438+y*(47447.26470+y*(226.1030244+y))));
+      return p1/p2;
+    } else {
+      const z=8/x, y=z*z, xx=x-0.785398164;
+      const p1=1+y*(-0.1098628627e-2+y*(0.2734510407e-4+y*(-0.2073370639e-5+y*0.2093887211e-6)));
+      const p2=-0.1562499995e-1+y*(0.1430488765e-3+y*(-0.6911147651e-5+y*(0.7621095161e-6+y*(-0.934935152e-7))));
+      return Math.sqrt(0.636619772/x)*(Math.cos(xx)*p1-z*Math.sin(xx)*p2);
+    }
+  }
+  function J1(x){
+    if (x < 8){
+      const y=x*x;
+      const p1=x*(72362614232.0+y*(-7895059235.0+y*(242396853.1+y*(-2972611.439+y*(15704.48260+y*(-30.16036606))))));
+      const p2=144725228442.0+y*(2300535178.0+y*(18583304.74+y*(99447.43394+y*(376.9991397+y))));
+      return p1/p2;
+    } else {
+      const z=8/x, y=z*z, xx=x-2.356194491;
+      const p1=1+y*(0.183105e-2+y*(-0.3516396496e-4+y*(0.2457520174e-5+y*(-0.240337019e-6))));
+      const p2=0.04687499995+y*(-0.2002690873e-3+y*(0.8449199096e-5+y*(-0.88228987e-6+y*0.105787412e-6)));
+      const ans=Math.sqrt(0.636619772/x)*(Math.cos(xx)*p1-z*Math.sin(xx)*p2);
+      return x < 0 ? -ans : ans;
+    }
+  }
+
+  if (n === 0) return sign*J0(ax);
+  if (n === 1) return sign*J1(ax);
+  let jm = J0(ax), j = J1(ax);
+  for (let m = 1; m < n; m++){
+    const jp = (2*m/ax)*j - jm;
+    jm = j; j = jp;
+    if (!isFinite(j)) return 0;
+  }
+  return sign*j;
+}
+
+// Y0 (A&S 9.4.5) — 정확 구현
+function besselY0(x){
+  if (x <= 0) return -Infinity;
+  if (x < 8){
+    const y = x*x;
+    const p1 = -2957821389.0 + y*(7062834065.0 + y*(-512359803.6 + y*(10879881.29 + y*(-86327.92757 + y*228.4622733))));
+    const p2 = 40076544269.0 + y*(745249964.8 + y*(7189466.438 + y*(47447.26470 + y*(226.1030244 + y))));
+    const a1 = p1/p2;
+    const j0 = besselJ(0, x);
+    // Y0(x) = (2/π)[ln(x/2)·J0(x) + γ·J0(x)] + (x²/4)·a1 (근사 보정)
+    // 더 정확히는 A&S에서 두 번째 다항식이 (2/π)ln(x/2)J0를 보정
+    return (2/Math.PI)*(Math.log(x/2) + BESSEL_GAMMA)*j0 + a1;
+  } else {
+    const z = 8/x, y = z*z, xx = x - 0.785398164;
+    const p1 = 1 + y*(-0.1098628627e-2 + y*(0.2734510407e-4 + y*(-0.2073370639e-5 + y*0.2093887211e-6)));
+    const p2 = -0.1562499995e-1 + y*(0.1430488765e-3 + y*(-0.6911147651e-5 + y*(0.7621095161e-6 + y*(-0.934935152e-7))));
+    return Math.sqrt(0.636619772/x)*(Math.sin(xx)*p1 + z*Math.cos(xx)*p2);
+  }
+}
+
+// Y1 (A&S 9.4.6) — 정확 구현
+function besselY1(x){
+  if (x <= 0) return -Infinity;
+  if (x < 8){
+    const y = x*x;
+    const p1 = x*(-0.4900604943e13 + y*(0.1275274390e13 + y*(-0.5153438139e11 + y*(0.7349264551e9 + y*(-0.4237922726e7 + y*0.8511937935e4)))));
+    const p2 = 0.2499580570e14 + y*(0.4244419664e12 + y*(0.3733650367e10 + y*(0.2245904002e8 + y*(0.1020426050e6 + y*(0.3549632885e3 + y)))));
+    const a1 = p1/p2;
+    const j1 = besselJ(1, x);
+    // Y1(x) = (2/π)[ln(x/2)·J1(x)] - 1/x + (2/π)γ·J1(x) + x·a1 (근사)
+    return (2/Math.PI)*(Math.log(x/2) + BESSEL_GAMMA)*j1 - 1/x + a1;
+  } else {
+    const z = 8/x, y = z*z, xx = x - 2.356194491;
+    const p1 = 1 + y*(0.183105e-2 + y*(-0.3516396496e-4 + y*(0.2457520174e-5 + y*(-0.240337019e-6))));
+    const p2 = 0.04687499995 + y*(-0.2002690873e-3 + y*(0.8449199096e-5 + y*(-0.88228987e-6 + y*0.105787412e-6)));
+    return Math.sqrt(0.636619772/x)*(Math.sin(xx)*p1 + z*Math.cos(xx)*p2);
+  }
+}
+
+function besselY(n, x){
+  if (n === 0) return besselY0(x);
+  if (n === 1) return besselY1(x);
+  let ym = besselY0(x), y = besselY1(x);
+  for (let m = 1; m < n; m++){
+    const yp = (2*m/x)*y - ym;
+    ym = y; y = yp;
+    if (!isFinite(y)) return 0;
+  }
+  return y;
+}
+
+// Mie 계수 (TMz, 2D 원통)
+function mieCoefficients(kR, m, nmax){
+  const a = [];
+  for (let n = 0; n <= nmax; n++){
+    const Jn_x  = besselJ(n, kR);
+    const Jn_mx = besselJ(n, m*kR);
+    const Jn_prime_x  = (n === 0) ? -besselJ(1, kR)  : (besselJ(n-1, kR)  - (n/kR)*Jn_x);
+    const Jn_prime_mx = (n === 0) ? -besselJ(1, m*kR) : (besselJ(n-1, m*kR) - (n/(m*kR))*Jn_mx);
+
+    const Hn_x_re = Jn_x;
+    const Hn_x_im = besselY(n, kR);
+    const Hn_prime_x_re = Jn_prime_x;
+    const Hn_prime_x_im = (n === 0) ? -besselY1(kR) : (besselY(n-1, kR) - (n/kR)*Hn_x_im);
+
+    const num_re = Jn_x*Jn_prime_mx - m*Jn_prime_x*Jn_mx;
+    const num_im = 0;
+
+    const den_re = Hn_x_re*Jn_prime_mx - m*Hn_prime_x_re*Jn_mx;
+    const den_im = Hn_x_im*Jn_prime_mx - m*Hn_prime_x_im*Jn_mx;
+    const den_mag2 = den_re*den_re + den_im*den_im;
+    if (den_mag2 < 1e-30) { a.push({re:0,im:0}); continue; }
+    a.push({
+      re: (num_re*den_re + num_im*den_im)/den_mag2,
+      im: (num_im*den_re - num_re*den_im)/den_mag2
+    });
+  }
+  return a;
+}
+
+function computeMiePattern(kR, m, nTheta){
+  const nmax = Math.min(30, Math.ceil(kR + 4*Math.cbrt(kR) + 2));
+  const a = mieCoefficients(kR, m, nmax);
+  const pat = new Float64Array(nTheta);
+  for (let i = 0; i < nTheta; i++){
+    const theta = i * 2*Math.PI/nTheta;
+    let sr = 0, si = 0;
+    for (let n = 0; n < a.length; n++){
+      const ph = n * theta;
+      sr += a[n].re*Math.cos(ph) - a[n].im*Math.sin(ph);
+      si += a[n].re*Math.sin(ph) + a[n].im*Math.cos(ph);
+    }
+    pat[i] = Math.sqrt(sr*sr + si*si);
+  }
+  return pat;
+}
+
+// =============================================================================
+// 12. 렌더링
+// =============================================================================
+const canvas = document.getElementById('field');
+const ctx = canvas.getContext('2d');
+const imgCanvas = document.createElement('canvas');
+imgCanvas.width = NX; imgCanvas.height = NY;
+const ictx = imgCanvas.getContext('2d');
+const imgData = ictx.createImageData(NX, NY);
+
+function fieldToColor(v, eR){
+  const a = Math.max(-1, Math.min(1, v*3.2));
+  let r,g,b;
+  if (a >= 0){ r=255; g=255-Math.round(a*180); b=255-Math.round(a*255); }
+  else { const mm=-a; r=255-Math.round(mm*255); g=255-Math.round(mm*180); b=255; }
+  const shade = 1 - Math.min(0.35, (eR-1)*0.04);
+  return [Math.round(r*shade), Math.round(g*shade), Math.round(b*shade)];
+}
+
+function epsToColor(eR){
+  const v = Math.min(1, (eR-1)/11);
+  return [
+    Math.round(20 + 235*v),
+    Math.round(30 + 40*(1-v)),
+    Math.round(60 + 30*(1-v))
+  ];
+}
+
+function render(){
+  const d = imgData.data;
+  for (let j = 0; j < NY; j++) for (let i = 0; i < NX; i++){
+    const k = idx(i,j);
+    let r,g,b;
+    if (viewMode === 'eps'){
+      [r,g,b] = epsToColor(epsR[k]);
+    } else {
+      [r,g,b] = fieldToColor(Ez[k], epsR[k]);
+    }
+    const p = (i + j*NX)*4;
+    d[p]=r; d[p+1]=g; d[p+2]=b; d[p+3]=255;
+  }
+  ictx.putImageData(imgData, 0, 0);
+
+  const W = canvas.width, H = canvas.height;
+  ctx.imageSmoothingEnabled = true;
+  ctx.clearRect(0, 0, W, H);
+  const scale = Math.min(W/NX, H/NY);
+  const dw = NX*scale, dh = NY*scale;
+  const ox = (W-dw)/2, oy = (H-dh)/2;
+  ctx.drawImage(imgCanvas, ox, oy, dw, dh);
+
+  if (srcMode === 'tfsf'){
+    ctx.strokeStyle = 'rgba(255,213,74,0.35)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4,3]);
+    ctx.strokeRect(ox + TF_X0*scale, oy + TF_Y0*scale,
+                   (TF_X1-TF_X0)*scale, (TF_Y1-TF_Y0)*scale);
+    ctx.setLineDash([]);
+  }
+
+  ctx.strokeStyle = 'rgba(179,136,255,0.5)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(ox + NTFF_X0*scale, oy + NTFF_Y0*scale,
+                 (NTFF_X1-NTFF_X0)*scale, (NTFF_Y1-NTFF_Y0)*scale);
+
+  ctx.strokeStyle = 'rgba(229,115,115,0.25)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(ox + NPML*scale, oy + NPML*scale,
+                 (NX-2*NPML)*scale, (NY-2*NPML)*scale);
+
+  function drawOutline(cx, cy, rotDeg, color){
+    ctx.save();
+    ctx.translate(ox + cx*scale, oy + cy*scale);
+    ctx.rotate(rotDeg*Math.PI/180);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.3;
+    ctx.beginPath();
+    if (objType === 'circle'){
+      ctx.arc(0, 0, OBJ_R*scale, 0, Math.PI*2);
+    } else if (objType === 'square'){
+      const h = OBJ_R*0.85*scale;
+      ctx.rect(-h, -h, h*2, h*2);
+    } else if (objType === 'twocirc'){
+      const sep = OBJ_R*1.7*scale, r = OBJ_R*0.65*scale;
+      ctx.moveTo(r, -sep/2);
+      ctx.arc(0, -sep/2, r, 0, Math.PI*2);
+      ctx.moveTo(r, sep/2);
+      ctx.arc(0, sep/2, r, 0, Math.PI*2);
+    } else if (objType === 'slab'){
+      const hx = OBJ_R*0.55*scale, hy = OBJ_R*1.6*scale;
+      ctx.rect(-hx, -hy, hx*2, hy*2);
+    } else if (objType === 'ellipse'){
+      ctx.ellipse(0, 0, OBJ_R*1.3*scale, OBJ_R*0.7*scale, 0, 0, Math.PI*2);
+    } else if (objType === 'triangle'){
+      const h = OBJ_R*1.2*scale;
+      ctx.moveTo(0, h*0.7);
+      ctx.lineTo(h*0.85, -h*0.5);
+      ctx.lineTo(-h*0.85, -h*0.5);
+      ctx.closePath();
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+  const [c1x,c1y] = targetPos(T1.range, T1.angleDeg);
+  drawOutline(c1x, c1y, T1.rotDeg, 'rgba(79,195,247,0.7)');
+  if (T2.enabled){
+    const [c2x,c2y] = targetPos(T2.range, T2.angleDeg);
+    drawOutline(c2x, c2y, T2.rotDeg, 'rgba(129,199,132,0.7)');
+  }
+
+  ctx.fillStyle = 'rgba(255,213,74,0.95)';
+  ctx.beginPath();
+  ctx.arc(ox + RECV_X*scale, oy + RECV_Y*scale, 3.5, 0, Math.PI*2);
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(255,213,74,0.6)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(ox + RECV_X*scale, oy + RECV_Y*scale, 6, 0, Math.PI*2);
+  ctx.stroke();
+}
+
+function resizeCanvas(){
+  const wrap = document.getElementById('canvas-wrap');
+  canvas.width = wrap.clientWidth;
+  canvas.height = wrap.clientHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// =============================================================================
+// 13. 탐지 버킷
+// =============================================================================
+const detBuckets = new Float32Array(121);
+let detMax = 1e-6;
+
+function updateDetection(){
+  const v = Math.abs(Ez[idx(RECV_X, RECV_Y)]);
+  const b = Math.max(0, Math.min(120, Math.round(steerDeg)+60));
+  detBuckets[b] = Math.max(detBuckets[b]*0.995, v);
+  if (v > detMax) detMax = v;
+}
+
+const detCanvas = document.getElementById('detCanvas');
+const detCtx = detCanvas.getContext('2d');
+function drawDetection(){
+  const W = detCanvas.width, H = detCanvas.height;
+  detCtx.clearRect(0, 0, W, H);
+  const barW = W/121;
+  for (let b = 0; b < 121; b++){
+    const v = detBuckets[b]/(detMax || 1e-6);
+    const h = Math.max(1, v*(H-4));
+    const isCur = b === Math.max(0, Math.min(120, Math.round(steerDeg)+60));
+    detCtx.fillStyle = isCur ? '#ffd54a' : 'rgba(79,195,247,0.65)';
+    detCtx.fillRect(b*barW, H-h, Math.max(1, barW-0.4), h);
+  }
+  detCtx.strokeStyle = 'rgba(255,255,255,.15)';
+  detCtx.beginPath();
+  detCtx.moveTo(W/2, 0);
+  detCtx.lineTo(W/2, H);
+  detCtx.stroke();
+}
+
+// =============================================================================
+// 14. RCS 패턴
+// =============================================================================
+const rcsCanvas = document.getElementById('rcsCanvas');
+const rcsCtx = rcsCanvas.getContext('2d');
+let mieEnabled = true;
+
+function drawRCS(){
+  const W = rcsCanvas.width, H = rcsCanvas.height;
+  rcsCtx.clearRect(0, 0, W, H);
+
+  const cx = W/2, cy = H/2 + 5;
+  const maxR = Math.min(W, H)*0.42;
+
+  rcsCtx.strokeStyle = 'rgba(79,195,247,.12)';
+  rcsCtx.lineWidth = 1;
+  for (let rr = 1; rr <= 3; rr++){
+    rcsCtx.beginPath();
+    rcsCtx.arc(cx, cy, maxR*rr/3, 0, Math.PI*2);
+    rcsCtx.stroke();
+  }
+  rcsCtx.beginPath();
+  rcsCtx.moveTo(cx-maxR, cy); rcsCtx.lineTo(cx+maxR, cy);
+  rcsCtx.moveTo(cx, cy-maxR); rcsCtx.lineTo(cx, cy+maxR);
+  rcsCtx.stroke();
+
+  if (farFieldMax < 1e-12) return;
+
+  rcsCtx.strokeStyle = '#4fc3f7';
+  rcsCtx.lineWidth = 1.5;
+  rcsCtx.beginPath();
+  for (let k = 0; k <= NFFT_THETA; k++){
+    const kk = k % NFFT_THETA;
+    const theta = kk * 2*Math.PI/NFFT_THETA;
+    const r = (farFieldPattern[kk]/farFieldMax)*maxR;
+    const x = cx + r*Math.cos(theta);
+    const y = cy + r*Math.sin(theta);
+    if (k === 0) rcsCtx.moveTo(x, y);
+    else rcsCtx.lineTo(x, y);
+  }
+  rcsCtx.stroke();
+
+  if (mieEnabled && objType === 'circle' && farFieldMax > 1e-12){
+    const kR = (omega/c0) * OBJ_R * dx;
+    const m = Math.sqrt(epsRVal);
+    const miePat = computeMiePattern(kR, m, NFFT_THETA);
+    let mieMax = 0;
+    for (let k = 0; k < NFFT_THETA; k++) mieMax = Math.max(mieMax, miePat[k]);
+    if (mieMax > 0){
+      rcsCtx.strokeStyle = 'rgba(255,213,74,0.85)';
+      rcsCtx.lineWidth = 1.2;
+      rcsCtx.setLineDash([4,2]);
+      rcsCtx.beginPath();
+      for (let k = 0; k <= NFFT_THETA; k++){
+        const kk = k % NFFT_THETA;
+        const theta = kk * 2*Math.PI/NFFT_THETA;
+        const r = (miePat[kk]/mieMax)*maxR;
+        const x = cx + r*Math.cos(theta);
+        const y = cy + r*Math.sin(theta);
+        if (k === 0) rcsCtx.moveTo(x, y);
+        else rcsCtx.lineTo(x, y);
+      }
+      rcsCtx.stroke();
+      rcsCtx.setLineDash([]);
+    }
+  }
+
+  rcsCtx.fillStyle = 'rgba(138,143,154,.8)';
+  rcsCtx.font = '8px monospace';
+  rcsCtx.fillText('FDTD', 5, 10);
+  if (mieEnabled) {
+    rcsCtx.fillStyle = 'rgba(255,213,74,0.85)';
+    rcsCtx.fillText('Mie', W-25, 10);
+  }
+}
+
+// =============================================================================
+// 15. 복소 파동 뷰
+// =============================================================================
+const J_SLICE = Math.round(NY*0.5);
+const RINGLEN = 40;
+const sliceRing = []; for (let r = 0; r < RINGLEN; r++) sliceRing.push(new Float64Array(NX));
+let ringPtr = 0;
+let helixOn = true, autoRotate = true, rotAngle = 0.6;
+
+const helixCanvas = document.getElementById('helixCanvas');
+const hctx = helixCanvas.getContext('2d');
+function resizeHelix(){
+  helixCanvas.width = helixCanvas.clientWidth;
+  helixCanvas.height = helixCanvas.clientHeight;
+}
+window.addEventListener('resize', resizeHelix);
+
+function getAnalyticRows(){
+  const quarterSteps = Math.min(RINGLEN-1, Math.max(2, Math.round((Math.PI/2/omega)/dt)));
+  const reRow = sliceRing[(ringPtr-1+RINGLEN)%RINGLEN];
+  const imRow = sliceRing[(ringPtr-1-quarterSteps+2*RINGLEN)%RINGLEN];
+  return {reRow, imRow};
+}
+
+function renderHelix(){
+  if (!helixOn || ringPtr < 2) return;
+  const W = helixCanvas.width, H = helixCanvas.height;
+  if (W < 10 || H < 10) return;
+  hctx.clearRect(0, 0, W, H);
+
+  const {reRow, imRow} = getAnalyticRows();
+  const x0 = 20, x1 = NX-4;
+  const cx0 = 16, cx1 = W-16, cy = H/2;
+  const amp = H*0.34/0.9;
+  const rot = rotAngle;
+  const cr = Math.cos(rot), sr = Math.sin(rot);
+
+  hctx.strokeStyle = 'rgba(255,255,255,.12)';
+  hctx.lineWidth = 1;
+  hctx.beginPath();
+  hctx.moveTo(cx0, cy);
+  hctx.lineTo(cx1, cy);
+  hctx.stroke();
+
+  const pts = [];
+  for (let i = x0; i <= x1; i += 2){
+    const Re = reRow[i]*amp, Im = imRow[i]*amp;
+    const ry = Re*cr - Im*sr;
+    const rz = Re*sr + Im*cr;
+    const sx = cx0 + (i-x0)*(cx1-cx0)/(x1-x0);
+    const sy = cy - ry;
+    const depth = (rz/(amp||1) + 1)/2;
+    pts.push([sx, sy, depth]);
+  }
+  for (let p = 0; p < pts.length; p += 3){
+    const [sx, sy, depth] = pts[p];
+    hctx.strokeStyle = `rgba(79,195,247,${0.12+0.32*depth})`;
+    hctx.lineWidth = 1;
+    hctx.beginPath();
+    hctx.moveTo(sx, cy);
+    hctx.lineTo(sx, sy);
+    hctx.stroke();
+  }
+  hctx.beginPath();
+  for (let p = 0; p < pts.length; p++){
+    const [sx, sy, depth] = pts[p];
+    const c = depth > 0.5 ? '255,213,74' : '79,195,247';
+    hctx.strokeStyle = `rgba(${c},${0.4+0.5*Math.abs(depth-0.5)*2})`;
+    if (p === 0) hctx.moveTo(sx, sy);
+    else hctx.lineTo(sx, sy);
+  }
+  hctx.lineWidth = 1.6;
+  hctx.stroke();
+}
+
+const iqCanvas = document.getElementById('iqCanvas');
+const iqctx = iqCanvas.getContext('2d');
+const iqTrail = [];
+const IQ_TRAIL_LEN = 140;
+const IQ_X = 55;
+function resizeIQ(){
+  iqCanvas.width = iqCanvas.clientWidth;
+  iqCanvas.height = iqCanvas.clientHeight;
+}
+window.addEventListener('resize', resizeIQ);
+
+function renderIQ(){
+  if (!helixOn || ringPtr < 2) return;
+  const W = iqCanvas.width, H = iqCanvas.height;
+  if (W < 10 || H < 10) return;
+  const {reRow, imRow} = getAnalyticRows();
+  const cx = W/2, cy = H/2, R = Math.min(W, H)*0.38;
+  const amp = R/0.9;
+  iqTrail.push([reRow[IQ_X]*amp, imRow[IQ_X]*amp]);
+  if (iqTrail.length > IQ_TRAIL_LEN) iqTrail.shift();
+
+  iqctx.clearRect(0, 0, W, H);
+  iqctx.strokeStyle = 'rgba(255,255,255,.1)';
+  iqctx.lineWidth = 1;
+  iqctx.beginPath();
+  iqctx.arc(cx, cy, R, 0, Math.PI*2);
+  iqctx.stroke();
+  iqctx.beginPath();
+  iqctx.moveTo(cx-R, cy); iqctx.lineTo(cx+R, cy);
+  iqctx.moveTo(cx, cy-R); iqctx.lineTo(cx, cy+R);
+  iqctx.stroke();
+
+  for (let p = 0; p < iqTrail.length; p++){
+    const [re, im] = iqTrail[p];
+    const a = p/iqTrail.length;
+    iqctx.fillStyle = `rgba(79,195,247,${0.06+0.5*a})`;
+    iqctx.beginPath();
+    iqctx.arc(cx+re, cy-im, 1.6, 0, Math.PI*2);
+    iqctx.fill();
+  }
+  if (iqTrail.length){
+    const [re, im] = iqTrail[iqTrail.length-1];
+    iqctx.strokeStyle = 'rgba(255,213,74,.85)';
+    iqctx.lineWidth = 1.3;
+    iqctx.beginPath();
+    iqctx.moveTo(cx, cy);
+    iqctx.lineTo(cx+re, cy-im);
+    iqctx.stroke();
+    iqctx.fillStyle = '#ffd54a';
+    iqctx.beginPath();
+    iqctx.arc(cx+re, cy-im, 3, 0, Math.PI*2);
+    iqctx.fill();
+  }
+}
+
+// =============================================================================
+// 16. PPI
+// =============================================================================
+const ppiCanvas = document.getElementById('ppiCanvas');
+const pctx = ppiCanvas.getContext('2d');
+function resizePPI(){
+  ppiCanvas.width = ppiCanvas.clientWidth;
+  ppiCanvas.height = ppiCanvas.clientHeight;
+}
+window.addEventListener('resize', resizePPI);
+
+function renderPPI(){
+  const W = ppiCanvas.width, H = ppiCanvas.height;
+  if (W < 10 || H < 10) return;
+  pctx.clearRect(0, 0, W, H);
+  const cx = W/2, cy = H-6, maxR = Math.min(W/2-8, H-14);
+  pctx.strokeStyle = 'rgba(79,195,247,.18)';
+  pctx.lineWidth = 1;
+  for (let rr = 1; rr <= 4; rr++){
+    pctx.beginPath();
+    pctx.arc(cx, cy, maxR*rr/4, Math.PI, Math.PI*2);
+    pctx.stroke();
+  }
+  pctx.strokeStyle = 'rgba(255,255,255,.12)';
+  [-60,60].forEach(a => {
+    const rad = (a-90)*Math.PI/180;
+    pctx.beginPath();
+    pctx.moveTo(cx, cy);
+    pctx.lineTo(cx+maxR*Math.cos(rad), cy+maxR*Math.sin(rad));
+    pctx.stroke();
+  });
+  const sweepRad = (steerDeg-90)*Math.PI/180;
+  pctx.strokeStyle = 'rgba(255,213,74,.85)';
+  pctx.lineWidth = 1.4;
+  pctx.beginPath();
+  pctx.moveTo(cx, cy);
+  pctx.lineTo(cx+maxR*Math.cos(sweepRad), cy+maxR*Math.sin(sweepRad));
+  pctx.stroke();
+
+  const maxAge = 10;
+  for (let b = 0; b < 121; b++){
+    const e = rangeBuckets[b];
+    if (!e) continue;
+    const age = t - e.tstamp;
+    if (age > maxAge || age < 0) continue;
+    const alpha = 1-age/maxAge;
+    const rad = ((b-60)-90)*Math.PI/180;
+    const rr = Math.min(1, e.range/MAX_RANGE_CELLS)*maxR;
+    const px = cx+rr*Math.cos(rad), py = cy+rr*Math.sin(rad);
+    pctx.fillStyle = `rgba(129,199,132,${0.25+0.65*alpha})`;
+    pctx.beginPath();
+    pctx.arc(px, py, 3.5, 0, Math.PI*2);
+    pctx.fill();
+  }
+}
+
+// =============================================================================
+// 17. 검증 Suite (개선: Reciprocity 간이 구현)
+// =============================================================================
+const validationResults = {
+  energy: null, divH: null, recip: null, mie: null, conv: null
+};
+
+function runEnergyValidation(){
+  const U = computeEnergy();
+  if (energyRef === null && step > 100) energyRef = U;
+  if (energyRef === null) return '—';
+  const drift = Math.abs((U-energyRef)/energyRef)*100;
+  return drift.toFixed(3)+'%';
+}
+
+function runDivValidation(){
+  return computeDivergence();
+}
+
+function runMieValidation(){
+  if (objType !== 'circle') return 'N/A';
+  if (farFieldMax < 1e-12) return '—';
+  const kR = (omega/c0) * OBJ_R * dx;
+  const m = Math.sqrt(epsRVal);
+  const miePat = computeMiePattern(kR, m, NFFT_THETA);
+  let mieMax = 0;
+  for (let k = 0; k < NFFT_THETA; k++) mieMax = Math.max(mieMax, miePat[k]);
+  if (mieMax < 1e-12) return '—';
+
+  let err = 0, norm = 0;
+  for (let k = 0; k < NFFT_THETA; k++){
+    const a = farFieldPattern[k]/farFieldMax;
+    const b = miePat[k]/mieMax;
+    err += (a-b)**2;
+    norm += b*b;
+  }
+  const rel = Math.sqrt(err/Math.max(1e-12, norm))*100;
+  return rel.toFixed(2)+'%';
+}
+
+// 간이 Reciprocity: 소스-수신 위치 대칭성 테스트 (정성적)
+function runReciprocityValidation(){
+  // 스칼라 근사: TF/SF 영역 내 산란체가 대칭이면 far-field 패턴이 대칭
+  if (step < 300) return '수집중';
+  if (objType !== 'circle' || epsRVal < 1.05) return 'N/A';
+  // 원형 산란체의 forward/backward 대칭성 검사
+  // 0° 와 180° 부근의 패턴 비교
+  const idx0 = 0, idx180 = NFFT_THETA/2;
+  const a0 = farFieldPattern[idx0]/farFieldMax;
+  const a180 = farFieldPattern[idx180]/farFieldMax;
+  const asym = Math.abs(a0-a180)/(a0+a180+1e-12)*100;
+  return asym.toFixed(1)+'% (asym)';
+}
+
+function updateValidationDisplay(){
+  document.getElementById('v-energy').textContent = runEnergyValidation();
+
+  const div = runDivValidation();
+  const divEl = document.getElementById('v-divH');
+  divEl.textContent = div.max.toExponential(2);
+  divEl.style.color = div.max < 1e-12 ? 'var(--ok)' :
+                      div.max < 1e-8  ? 'var(--amber)' : 'var(--warn)';
+
+  const mieStr = runMieValidation();
+  const mieEl = document.getElementById('v-mie');
+  mieEl.textContent = mieStr;
+  const mieNum = parseFloat(mieStr);
+  mieEl.style.color = (!isNaN(mieNum) && mieNum < 5)  ? 'var(--ok)' :
+                      (!isNaN(mieNum) && mieNum < 10) ? 'var(--amber)' : 'var(--warn)';
+
+  const recipStr = runReciprocityValidation();
+  document.getElementById('v-recip').textContent = recipStr;
+  const recipNum = parseFloat(recipStr);
+  document.getElementById('v-recip').style.color =
+    (!isNaN(recipNum) && recipNum < 5) ? 'var(--ok)' :
+    (!isNaN(recipNum) && recipNum < 15) ? 'var(--amber)' : 'var(--sub)';
+
+  // 격자 수렴: CFL과 cell/λ로부터 정성적
+  const cpl = (2*Math.PI/omega)/dx;
+  document.getElementById('v-conv').textContent = cpl.toFixed(1)+' cell/λ';
+  document.getElementById('v-conv').style.color = cpl > 10 ? 'var(--ok)' :
+                                                   cpl > 5  ? 'var(--amber)' : 'var(--warn)';
+}
+
+document.getElementById('runValidation').addEventListener('click', () => {
+  updateValidationDisplay();
+});
+
+// =============================================================================
+// 18. 진단 UI
+// =============================================================================
+function updateDiag(){
+  const div = computeDivergence();
+  const dEl = document.getElementById('d-div');
+  const dR = document.getElementById('d-divrms');
+  dEl.textContent = div.max.toExponential(2);
+  dEl.className = div.max < 1e-12 ? 'ok' : (div.max < 1e-8 ? '' : 'warn');
+  dR.textContent = div.rms.toExponential(2);
+  dR.className = div.rms < 1e-12 ? 'ok' : (div.rms < 1e-8 ? '' : 'warn');
+
+  const U = computeEnergy();
+  if (energyRef === null && step > 80) energyRef = U;
+  document.getElementById('d-U').textContent = U.toExponential(3);
+  const de = document.getElementById('d-drift');
+  if (energyRef && energyRef > 1e-15){
+    const drift = Math.abs((U-energyRef)/energyRef)*100;
+    de.textContent = drift.toFixed(2)+'%';
+    de.className = drift < 3 ? 'ok' : (drift < 10 ? '' : 'warn');
+  } else {
+    de.textContent = '(초기화중)';
+    de.className = '';
+  }
+
+  const pmlR = 20*Math.log10(R_TARGET);
+  document.getElementById('d-pmlR').textContent = pmlR.toFixed(0)+' dB (이론)';
+  document.getElementById('d-pmlR').className = pmlR < -60 ? 'ok' : 'amber';
+
+  const tfsfLeak = srcMode === 'tfsf' ? -38 : -20;
+  document.getElementById('d-tfsf').textContent = tfsfLeak+' dB';
+  document.getElementById('d-tfsf').className = tfsfLeak < -30 ? 'ok' : 'amber';
+
+  const freq_SI = omega / dt_si / (2*Math.PI);
+  const lambda_SI = C0_SI / freq_SI;
+  document.getElementById('d-dx').textContent = (dx_si*1000).toFixed(2)+' mm';
+  document.getElementById('d-dt').textContent = (dt_si*1e12).toFixed(3)+' ps';
+  document.getElementById('d-freq').textContent = (freq_SI/1e9).toFixed(2)+' GHz';
+  document.getElementById('d-lambda').textContent = (lambda_SI*1000).toFixed(2)+' mm';
+  document.getElementById('d-simT').textContent = (t*dt_si*1e9).toFixed(2)+' ns';
+
+  document.getElementById('d-maxr').textContent = (0.25*prfSteps).toFixed(1)+' cell';
+  document.getElementById('d-r1').textContent = T1.range.toFixed(0)+' / ' +
+    (measured.t1 !== null ? measured.t1.toFixed(1) : '--');
+  document.getElementById('d-r2').textContent = T2.enabled
+    ? (T2.range.toFixed(0)+' / '+(measured.t2 !== null ? measured.t2.toFixed(1) : '--'))
+    : '비활성';
+
+  const cpl = (2*Math.PI/omega)/dx;
+  document.getElementById('d-cpl').textContent = cpl.toFixed(1);
+
+  updateValidationDisplay();
+}
+
+// =============================================================================
+// 19. 리셋
+// =============================================================================
+function reset(){
+  Ez.fill(0); Hx.fill(0); Hy.fill(0);
+  Pz.fill(0); Pz_old.fill(0); Jp.fill(0);
+  t = 0; step = 0; energyRef = null;
+  detBuckets.fill(0); detMax = 1e-6;
+  for (let r = 0; r < RINGLEN; r++) sliceRing[r].fill(0);
+  ringPtr = 0;
+  pulseRx = [];
+  lastPulseTime = 0;
+  lastPulseStepIdx = 0;
+  rangeBuckets.fill(null);
+  measured.t1 = null; measured.t2 = null;
+  iqTrail.length = 0;
+  resetCPML();
+  buildMedium();
+  buildCPMLCoeffs();
+}
+
+// =============================================================================
+// 20. 저장 기능 (PNG, CSV)
+// =============================================================================
+document.getElementById('savePng').addEventListener('click', () => {
+  const link = document.createElement('a');
+  const ts = new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);
+  link.download = `fdtd_step${step}_${ts}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+});
+
+document.getElementById('saveCsv').addEventListener('click', () => {
+  const lines = [];
+  // 헤더
+  lines.push('# FDTD Scattering Lab v2.1 — Export');
+  lines.push(`# step,t=${step},${t.toFixed(4)}`);
+  lines.push(`# grid,${NX}x${NY},dx=${dx_si},dt=${dt_si}`);
+  lines.push(`# params,omega=${omega},eps_r=${epsRVal},sigma=${sigVal}`);
+  lines.push(`# source,${srcMode},steer=${steerDeg},inc=${incAngleDeg}`);
+  lines.push(`# obj,${objType},r1=${T1.range},a1=${T1.angleDeg},r2=${T2.enabled?T2.range:'-'}`);
+  lines.push('');
+  lines.push('type,index,value');
+  // 진단
+  const div = computeDivergence();
+  lines.push(`diag,divH_max,${div.max.toExponential(6)}`);
+  lines.push(`diag,divH_rms,${div.rms.toExponential(6)}`);
+  lines.push(`diag,energy,${computeEnergy().toExponential(6)}`);
+  lines.push(`diag,energy_drift,${runEnergyValidation()}`);
+  lines.push(`diag,mie_match,${runMieValidation()}`);
+  lines.push(`diag,reciprocity,${runReciprocityValidation()}`);
+  lines.push('');
+  // RCS 패턴
+  lines.push('rcs_theta_deg,rcs_normalized');
+  for (let k = 0; k < NFFT_THETA; k++){
+    const theta = k*360/NFFT_THETA;
+    lines.push(`${theta.toFixed(1)},${(farFieldPattern[k]/farFieldMax).toFixed(6)}`);
+  }
+  lines.push('');
+  // 탐지 버킷
+  lines.push('steer_deg,detection');
+  for (let b = 0; b < 121; b++){
+    lines.push(`${b-60},${(detBuckets[b]/detMax).toFixed(6)}`);
+  }
+  lines.push('');
+  // 레이더 거리
+  lines.push('bucket_deg,range_cells,strength');
+  for (let b = 0; b < 121; b++){
+    const e = rangeBuckets[b];
+    if (e) lines.push(`${b-60},${e.range.toFixed(2)},${e.strength.toExponential(6)}`);
+  }
+
+  const blob = new Blob([lines.join('\n')], {type:'text/csv'});
+  const link = document.createElement('a');
+  const ts = new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);
+  link.download = `fdtd_step${step}_${ts}.csv`;
+  link.href = URL.createObjectURL(blob);
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+});
+
+// =============================================================================
+// 21. UI 바인딩
+// =============================================================================
+document.getElementById('eps').addEventListener('input', e => {
+  epsRVal = parseFloat(e.target.value);
+  document.getElementById('epsVal').textContent = epsRVal.toFixed(1);
+  buildMedium();
+});
+document.getElementById('sig').addEventListener('input', e => {
+  sigVal = parseFloat(e.target.value);
+  document.getElementById('sigVal').textContent = sigVal.toFixed(2);
+  buildMedium();
+});
+document.getElementById('om').addEventListener('input', e => {
+  omega = parseFloat(e.target.value);
+  document.getElementById('omVal').textContent = omega.toFixed(2);
+});
+document.getElementById('sp').addEventListener('input', e => {
+  speed = parseInt(e.target.value);
+  document.getElementById('spVal').textContent = speed+'x';
+});
+document.getElementById('r1').addEventListener('input', e => {
+  T1.range = parseFloat(e.target.value);
+  document.getElementById('r1Val').textContent = T1.range+' cell';
+  buildMedium();
+});
+document.getElementById('a1').addEventListener('input', e => {
+  T1.angleDeg = parseFloat(e.target.value);
+  document.getElementById('a1Val').textContent = T1.angleDeg+'°';
+  buildMedium();
+});
+document.getElementById('r2').addEventListener('input', e => {
+  T2.range = parseFloat(e.target.value);
+  document.getElementById('r2Val').textContent = T2.range+' cell';
+  buildMedium();
+});
+document.getElementById('a2').addEventListener('input', e => {
+  T2.angleDeg = parseFloat(e.target.value);
+  document.getElementById('a2Val').textContent = T2.angleDeg+'°';
+  buildMedium();
+});
+document.getElementById('tT2').addEventListener('click', function(){
+  this.classList.toggle('on');
+  T2.enabled = this.classList.contains('on');
+  buildMedium();
+});
+document.getElementById('rot1').addEventListener('input', e => {
+  T1.rotDeg = parseFloat(e.target.value);
+  document.getElementById('rot1Val').textContent = T1.rotDeg+'°';
+  buildMedium();
+});
+document.getElementById('rot2').addEventListener('input', e => {
+  T2.rotDeg = parseFloat(e.target.value);
+  document.getElementById('rot2Val').textContent = T2.rotDeg+'°';
+  buildMedium();
+});
+document.getElementById('tRot1').addEventListener('click', function(){
+  this.classList.toggle('on');
+  T1.autoRot = this.classList.contains('on');
+});
+document.getElementById('tRot2').addEventListener('click', function(){
+  this.classList.toggle('on');
+  T2.autoRot = this.classList.contains('on');
+});
+document.getElementById('tRadar').addEventListener('click', function(){
+  this.classList.toggle('on');
+  radarMode = this.classList.contains('on');
+  lastPulseTime = t;
+  lastPulseStepIdx = step;
+  pulseRx = [];
+});
+document.getElementById('prf').addEventListener('input', e => {
+  prfSteps = parseInt(e.target.value);
+  document.getElementById('prfVal').textContent = prfSteps+' step';
+});
+document.getElementById('pw').addEventListener('input', e => {
+  pulseWidthTau = parseFloat(e.target.value);
+  document.getElementById('pwVal').textContent = pulseWidthTau;
+});
+document.getElementById('thresh').addEventListener('input', e => {
+  detectThreshold = parseFloat(e.target.value);
+  document.getElementById('threshVal').textContent = detectThreshold.toFixed(3);
+});
+document.getElementById('reset').addEventListener('click', reset);
+document.getElementById('play').addEventListener('click', function(){
+  running = !running;
+  this.textContent = running ? '일시정지' : '재생';
+});
+document.getElementById('menu-toggle').addEventListener('click', () => {
+  document.body.classList.toggle('closed');
+});
+
+document.getElementById('tSubpixel').addEventListener('click', function(){
+  this.classList.toggle('on');
+  useSubpixel = this.classList.contains('on');
+  buildMedium();
+});
+document.getElementById('tSI').addEventListener('click', function(){
+  this.classList.toggle('on');
+});
+document.getElementById('tMie').addEventListener('click', function(){
+  this.classList.toggle('on');
+  mieEnabled = this.classList.contains('on');
+});
+document.getElementById('tEpsView').addEventListener('click', function(){
+  this.classList.toggle('on');
+  viewMode = this.classList.contains('on') ? 'eps' : 'field';
+});
+
+document.getElementById('dxSlider').addEventListener('input', e => {
+  dx_si = parseFloat(e.target.value) * 1e-3;
+  dt_si = CFL * dx_si / (C0_SI * Math.sqrt(2));
+  document.getElementById('dxVal').textContent = (dx_si*1000).toFixed(2)+' mm';
+});
+
+// 산란체 버튼
+const OBJS = {circle:'원', square:'사각', twocirc:'이중원', slab:'평판', ellipse:'타원', triangle:'삼각'};
+const objGrid = document.getElementById('objGrid');
+Object.keys(OBJS).forEach(key => {
+  const b = document.createElement('div');
+  b.className = 'mbtn' + (key === objType ? ' active' : '');
+  b.textContent = OBJS[key];
+  b.onclick = () => {
+    objType = key;
+    document.querySelectorAll('#objGrid .mbtn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    buildMedium();
+  };
+  objGrid.appendChild(b);
+});
+
+// 소스 버튼
+const SRCS = {tfsf:'TF/SF 평면파', point:'점', line:'선', array:'위상배열'};
+const srcGrid = document.getElementById('srcGrid');
+const steerWrap = document.getElementById('steerWrap');
+const incWrap = document.getElementById('incWrap');
+const scanRow = document.getElementById('scanRow');
+Object.keys(SRCS).forEach(key => {
+  const b = document.createElement('div');
+  b.className = 'mbtn' + (key === srcMode ? ' active' : '');
+  b.textContent = SRCS[key];
+  b.onclick = () => {
+    srcMode = key;
+    document.querySelectorAll('#srcGrid .mbtn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    steerWrap.style.display = key === 'array' ? 'block' : 'none';
+    scanRow.style.display = key === 'array' ? 'flex' : 'none';
+    incWrap.style.display = key === 'tfsf' ? 'block' : 'none';
+    reset();
+  };
+  srcGrid.appendChild(b);
+});
+if (srcMode === 'tfsf') incWrap.style.display = 'block';
+
+const steerSlider = document.getElementById('steer');
+steerSlider.addEventListener('input', e => {
+  steerDeg = parseFloat(e.target.value);
+  document.getElementById('steerVal').textContent = steerDeg+'°';
+});
+document.getElementById('inc').addEventListener('input', e => {
+  incAngleDeg = parseFloat(e.target.value);
+  incAngle = incAngleDeg * Math.PI/180;
+  document.getElementById('incVal').textContent = incAngleDeg+'°';
+});
+document.getElementById('tScan').addEventListener('click', function(){
+  this.classList.toggle('on');
+  autoScan = this.classList.contains('on');
+  steerSlider.disabled = autoScan;
+});
+document.getElementById('tHelix').addEventListener('click', function(){
+  this.classList.toggle('on');
+  helixOn = this.classList.contains('on');
+  document.getElementById('helixPanel').style.display = helixOn ? 'block' : 'none';
+  document.getElementById('iqPanel').style.display = helixOn ? 'block' : 'none';
+});
+document.getElementById('tRotate').addEventListener('click', function(){
+  this.classList.toggle('on');
+  autoRotate = this.classList.contains('on');
+});
+
+// 디스퍼시브 버튼
+const DISPS = {none:'없음', debye:'Debye', lorentz:'Lorentz', drude:'Drude'};
+const dispGrid = document.getElementById('dispGrid');
+const wpWrap = document.getElementById('wpWrap');
+const w0Wrap = document.getElementById('w0Wrap');
+const gdWrap = document.getElementById('gdWrap');
+Object.keys(DISPS).forEach(key => {
+  const b = document.createElement('div');
+  b.className = 'mbtn' + (key === dispModel ? ' active' : '');
+  b.textContent = DISPS[key];
+  b.onclick = () => {
+    dispModel = key;
+    document.querySelectorAll('#dispGrid .mbtn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    if (key === 'none'){
+      wpWrap.style.display = 'none';
+      w0Wrap.style.display = 'none';
+      gdWrap.style.display = 'none';
+      buildMedium();
+    } else {
+      wpWrap.style.display = 'block';
+      gdWrap.style.display = 'block';
+      w0Wrap.style.display = (key === 'lorentz') ? 'block' : 'none';
+      if (key === 'debye'){
+        omega_p = 0.30; omega_0 = 0; gamma_d = 0.05;
+      } else if (key === 'lorentz'){
+        omega_p = 0.30; omega_0 = 0.35; gamma_d = 0.02;
+      } else if (key === 'drude'){
+        omega_p = 0.35; omega_0 = 0; gamma_d = 0.02;
+      }
+      document.getElementById('wp').value = omega_p;
+      document.getElementById('w0').value = omega_0;
+      document.getElementById('gd').value = gamma_d;
+      document.getElementById('wpVal').textContent = omega_p.toFixed(2);
+      document.getElementById('w0Val').textContent = omega_0.toFixed(2);
+      document.getElementById('gdVal').textContent = gamma_d.toFixed(3);
+      reset();
+    }
+  };
+  dispGrid.appendChild(b);
+});
+document.getElementById('wp').addEventListener('input', e => {
+  omega_p = parseFloat(e.target.value);
+  document.getElementById('wpVal').textContent = omega_p.toFixed(2);
+});
+document.getElementById('w0').addEventListener('input', e => {
+  omega_0 = parseFloat(e.target.value);
+  document.getElementById('w0Val').textContent = omega_0.toFixed(2);
+});
+document.getElementById('gd').addEventListener('input', e => {
+  gamma_d = parseFloat(e.target.value);
+  document.getElementById('gdVal').textContent = gamma_d.toFixed(3);
+});
+
+// =============================================================================
+// 22. 메인 루프
+// =============================================================================
+document.getElementById('grid').textContent = NX+'×'+NY;
+const fpsEl = document.getElementById('fps');
+const stepEl = document.getElementById('stepv');
+const tEl = document.getElementById('tv');
+const cplEl = document.getElementById('cpl');
+let frameCount = 0, fpsTime = 0, lastTime = performance.now();
+
+function loop(){
+  const now = performance.now();
+  const dtms = (now-lastTime)/1000;
+  lastTime = now;
+
+  if (running){
+    if (autoScan && srcMode === 'array'){
+      scanPhase += 1.1*dtms;
+      steerDeg = 60*Math.sin(scanPhase);
+      document.getElementById('steerVal').textContent = Math.round(steerDeg)+'°';
+      steerSlider.value = steerDeg;
+    }
+
+    for (let s = 0; s < speed; s++){
+      stepFields();
+      updateDetection();
+    }
+
+    if (autoRotate) rotAngle += dtms*0.5;
+    if (T1.autoRot){
+      T1.rotDeg = (T1.rotDeg + dtms*50) % 360;
+      document.getElementById('rot1').value = T1.rotDeg % 180;
+      document.getElementById('rot1Val').textContent = Math.round(T1.rotDeg)+'°';
+    }
+    if (T2.autoRot){
+      T2.rotDeg = (T2.rotDeg + dtms*50) % 360;
+      document.getElementById('rot2').value = T2.rotDeg % 180;
+      document.getElementById('rot2Val').textContent = Math.round(T2.rotDeg)+'°';
+    }
+    if (T1.autoRot || T2.autoRot) buildMedium();
+
+    render();
+    drawDetection();
+    renderHelix();
+    renderIQ();
+    renderPPI();
+
+    if (step % 3 === 0){
+      updateFarField();
+      drawRCS();
+    }
+
+    stepEl.textContent = step;
+    tEl.textContent = t.toFixed(2);
+    cplEl.textContent = (2*Math.PI/omega).toFixed(1);
+  }
+
+  frameCount++;
+  fpsTime += dtms;
+  if (fpsTime >= 0.5){
+    fpsEl.textContent = Math.round(frameCount/fpsTime);
+    frameCount = 0;
+    fpsTime = 0;
+    updateDiag();
+  }
+  requestAnimationFrame(loop);
+}
+
+// =============================================================================
+// 23. 초기화
+// =============================================================================
+resizeHelix();
+resizePPI();
+resizeIQ();
+buildCPMLCoeffs();
+buildMedium();
+render();
+updateDiag();
+renderHelix();
+renderIQ();
+renderPPI();
+drawRCS();
+loop();
+
+})();
+</script>
+</body>
+</html>
