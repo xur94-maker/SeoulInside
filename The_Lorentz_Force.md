@@ -5184,3 +5184,2365 @@ vortexForce[Jext_, Phi0_] := Cross[Jext, {0, 0, Phi0}];
 > - Xiao, D., Chang, M.-C., Niu, Q., *Berry phase effects on electronic properties*, Rev. Mod. Phys. **82**, 1959 (2010). [doi:10.1103/RevModPhys.82.1959](https://doi.org/10.1103/RevModPhys.82.1959)
 
 ---
+# Act 6. Extended Domains
+
+> **Arc of this act**
+> Particle physics and the Standard Model → General relativity and gravity → Education, philosophy, and standards
+>
+> Through Act 5, the frontiers of the Lorentz force were established. Act 6 covers its **boundaries**. The Lorentz force extends, as a remnant of the $U(1)$ gauge field, into $SU(2)\times U(1)$; it competes with gravity; and it is entangled with human safety standards and ethics.
+
+---
+
+## 6.1 Particle Physics, the Standard Model, and Heavy-Ion Collisions
+
+In particle physics, the Lorentz force $q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$ is **the 3D shadow of the $U(1)$ gauge-covariant derivative**. Down at the quark level, $q$ becomes color charge. This section covers gauge fields, electroweak unification, the QGP, heavy-ion collisions, magnetic monopoles, millicharged particles, and QED in strong magnetic fields.
+
+### 6.1.1 The Gauge Field $SU(2)\times U(1)$
+
+The Standard Model covariant derivative:
+
+$$D_\mu = \partial_\mu + ig_s T^a G^a_\mu + ig W^i_\mu \tau^i + ig' Y B_\mu$$
+
+> **Unicode**
+> ```
+> D_μ = ∂_μ + igₛ Tᵃ Gᵃ_μ + ig Wⁱ_μ τⁱ + ig' Y B_μ
+> ```
+
+- $G^a$: gluons, $SU(3)$
+- $W^i$: the weak field, $SU(2)$
+- $B$: hypercharge, $U(1)$
+
+**Electromagnetic $U(1)_{EM}$ is the diagonal combination left over after electroweak symmetry breaking:**
+
+$$A_\mu = \sin\theta_W W^3_\mu + \cos\theta_W B_\mu, \quad Z_\mu = \cos\theta_W W^3_\mu - \sin\theta_W B_\mu$$
+
+> **Unicode**
+> ```
+> A_μ = sinθ_W W³_μ + cosθ_W B_μ,   Z_μ = cosθ_W W³_μ - sinθ_W B_μ
+> ```
+
+$\theta_W \approx 28.7°$ (the Weinberg angle).
+
+**The equation of motion for a charged particle:**
+
+$$\frac{dp^\mu}{d\tau} = g F^{a\mu\nu}Q^a u_\nu + g'\ldots$$
+
+> **Unicode**
+> ```
+> (dp^μ)/(dτ) = g F^aμνQᵃ u_ν + g'...
+> ```
+
+**The 3D limit:**
+
+$$\mathbf{F} = q(\mathbf{E}+\mathbf{v}\times\mathbf{B}) + g_W(\mathbf{E}_W+\mathbf{v}\times\mathbf{B}_W)\cdot\boldsymbol{\tau}$$
+
+> **Unicode**
+> ```
+> 𝐅 = q(𝐄+𝐯×𝐁) + g_W (𝐄_W+𝐯×𝐁_W)·τ
+> ```
+
+**The second term is the weak Lorentz force** — the effective force appearing via $W$-boson exchange in neutron decay.
+
+**Neutrinos:** since $q = 0$, the electromagnetic Lorentz force is zero; only the $SU(2)$ force acts.
+
+#### The Wong Equation for $SU(N)$
+
+In $SU(N)$, the Lorentz force rotates in color space:
+
+$$m\frac{du^\mu}{d\tau} = gQ^a F^{a\mu\nu}u_\nu, \quad \frac{dQ^a}{d\tau} = -g f^{abc}u^\mu A^b_\mu Q^c$$
+
+> **Unicode**
+> ```
+> m(du^μ)/(dτ) = gQᵃ F^aμνu_ν,   (dQᵃ)/(dτ) = -g fᵃᵇᶜu^μ Aᵇ_μ Qᶜ
+> ```
+
+The color charge $Q^a$ precesses under the gauge field. **Quarks feel not only the electromagnetic $q\mathbf{v}\times\mathbf{B}$ but also a color Lorentz force $gQ^a\mathbf{v}\times\mathbf{B}^a$ from the color magnetic field $\mathbf{B}^a$.**
+
+### 6.1.2 Electroweak Unification
+
+Before the electroweak symmetry $SU(2)_L\times U(1)_Y \to U(1)_{EM}$ was broken, there were two separate "B" fields.
+
+**Early universe, $T > 159$ GeV:** with the Higgs VEV $v = 0$, both $W^3$ and $B$ are massless and unmixed. Electrons, carrying hypercharge $Y$, felt a Lorentz force from both the $B$ and $W$ fields.
+
+**After breaking:**
+
+$$q = T_3 + Y, \quad e = g\sin\theta_W$$
+
+> **Unicode**
+> ```
+> q = T₃ + Y,   e = gsinθ_W
+> ```
+
+The photon $A$ remains massless, while $Z,W^\pm$ acquire masses $m_Z = 91$ GeV, $m_W = 80$ GeV, **shrinking the range of the force to $1/m \sim 10^{-18}$ m**.
+
+**Consequences:**
+- In everyday $B \sim \mu$T, only the $U(1)_{EM}$ Lorentz force acts over long range
+- The $W,Z$ Lorentz force is confined within the atomic nucleus
+- Since the $W$ boson itself carries charge $\pm e$, it has Landau levels in a magnetic field
+
+**$W$-boson Landau levels:**
+
+$$E_n^2 = m_W^2 + p_z^2 + (2n+1)eB - 2e\mathbf{S}\cdot\mathbf{B}$$
+
+> **Unicode**
+> ```
+> Eₙ² = m_W² + p_z² + (2n+1)eB - 2e𝐒·𝐁
+> ```
+
+**Critical magnetic field:** above $B_c = m_W^2/e \sim 10^{20}$ T, the $W$ vacuum becomes unstable — **$W$ condensation, collapse of the electroweak vacuum**. Magnetars at $10^{11}$ T are safe by 9 orders of magnitude.
+
+**Magnetic-field generation in an electroweak plasma:** if the early-universe electroweak phase transition was first order, bubble collisions would generate $B \sim 10^{15}$ T; this $B$ could contribute to baryon asymmetry generation via the $\mathbf{E}\cdot\mathbf{B}$ term — the **Sakharov conditions**.
+
+### 6.1.3 Magnetic-Field Effects in the QGP
+
+**QGP:** $T \sim 300$ MeV $\sim 10^{12}$ K, $\mu_B \sim 0$, $n \sim 5$ fm$^{-3}$, quarks and gluons deconfined.
+
+**Field generation:** as two nuclei with $v \approx c$, $Z = 79$ (Au) or $82$ (Pb), graze past each other, the Biot–Savart field:
+
+$$B \sim \frac{Ze\gamma b}{4\pi(b^2+\gamma^2 t^2)^{3/2}}$$
+
+> **Unicode**
+> ```
+> B ∼ (Z e γ b)/(4π (b²+γ² t²)^3/2)
+> ```
+
+with impact parameter $b \sim 10$ fm and $\gamma = 100$ (RHIC) or $2760$ (LHC) →
+
+$$eB \sim m_\pi^2 \sim 10^{15}\ \text{T}$$
+
+> **Unicode**
+> ```
+> eB ∼ m_π² ∼10¹⁵ T
+> ```
+
+the QCD scale. The QGP lifetime $\tau_{QGP} \sim 10$ fm/c $\sim 3\times10^{-23}$ s, and while $B$'s natural lifetime $\tau_B \sim 1-2$ fm/c is short, an electrical conductivity of $\sigma \sim 0.1$ fm$^{-1}$ maintains $B$ via Lenz's law:
+
+$$\partial_t\mathbf{B} = \nabla\times(\mathbf{v}\times\mathbf{B}) + \frac{1}{\sigma}\nabla^2\mathbf{B}$$
+
+> **Unicode**
+> ```
+> ∂ₜ 𝐁 = ∇×(𝐯×𝐁) + (1)/(σ)∇²𝐁
+> ```
+
+The $\mathbf{v}\times\mathbf{B}$ frozen-in condition extends the lifetime of $B$.
+
+**Three effects of the Lorentz force in the QGP:**
+
+1. **Magnetoresistance:** $\mathbf{J}\times\mathbf{B}$ suppresses expansion, reducing the elliptic flow $v_2$ by 5–10%
+2. **Hall effect:** at finite $\mu_B$, $q\mathbf{v}\times\mathbf{B}$ separates $u$ quarks and $\bar{u}$, giving a charge-dependent directed flow $\Delta v_1 \propto qB$
+3. **Faraday + Hall + Coulomb:** produces an observable splitting of $D^0-\bar{D}^0$ $v_1$
+
+### 6.1.4 Heavy-Ion Collisions (RHIC, LHC)
+
+#### The Chiral Magnetic Effect (CME)
+
+$B$ + chiral imbalance $\mu_5 \neq 0$ → a current:
+
+$$\mathbf{J}_{CME} = \frac{e^2}{2\pi^2}\mu_5\mathbf{B}$$
+
+> **Unicode**
+> ```
+> 𝐉_CME = (e²)/(2π²)μ₅ 𝐁
+> ```
+
+**An anomaly-induced current, not the Lorentz force.** $\mathbf{E}\cdot\mathbf{B}$ is the source of $\mu_5$:
+
+$$\partial_t n_5 = \frac{e^2}{2\pi^2}\mathbf{E}\cdot\mathbf{B} - \Gamma n_5$$
+
+> **Unicode**
+> ```
+> ∂ₜ n₅ = (e²)/(2π²)𝐄·𝐁 - Γ n₅
+> ```
+
+**RHIC STAR's isobar collisions $Ru+Ru$ vs. $Zr+Zr$ (2021–23):** the CME signal is <2%, with $v_2$ background dominating. Fluctuations in the direction of $B$ are the cause.
+
+#### The Chiral Magnetic Wave (CMW)
+
+A combined wave from CME + CSE (chiral separation effect), producing a charge quadrupole → $v_2(\pi^+)-v_2(\pi^-) \propto A_{ch}$ linearly. A slope was observed at RHIC but disappears at LHC — because $B$'s lifetime becomes shorter.
+
+#### Lambda Polarization
+
+$B$ and vorticity $\boldsymbol{\omega} = \nabla\times\mathbf{v}$ polarize the $\Lambda$ spin:
+
+$$\mathbf{P}_\Lambda \approx \frac{\mu_\Lambda\mathbf{B}+\boldsymbol{\omega}}{T}$$
+
+> **Unicode**
+> ```
+> 𝐏_Λ ≈ (μ_Λ 𝐁 + ω)/(T)
+> ```
+
+**STAR measured $\mathbf{P}_\Lambda \sim 1-2\%$ from 2017–22, estimating $B \sim 10^{13}$ T and vorticity of $10^{22}$ s$^{-1}$** — the fastest rotation known in nature.
+
+**Direct observation of the Lorentz force:** the $v_1$ splitting of leptons $e^\pm$ at $p_T < 0.5$ GeV, $\Delta v_1 \sim 0.001q$, is consistent with the $eB$ effect.
+
+### 6.1.5 The Search for Magnetic Monopoles
+
+**Dirac quantization:** $eg = n\hbar/2$ → $g_D = e/2\alpha \approx 68.5e$.
+
+**Monopole Lorentz force:**
+
+$$\mathbf{F} = g(\mathbf{B}-\mathbf{v}\times\mathbf{E})$$
+
+> **Unicode**
+> ```
+> 𝐅 = g(𝐁 - 𝐯×𝐄)
+> ```
+
+Accelerators create monopoles via $E$ rather than $B$ — **Schwinger pair production**, $\sigma \propto \exp(-\pi m^2/gB)$.
+
+**Experiments:**
+
+- **MoEDAL@LHC:** a nuclear-track detector plus an 800 kg Al trapping bar at IP8. A monopole would bend in the $B = 0.5$ T LHCb magnet via $q_m\mathbf{v}\times\mathbf{B}$, leaving a track. **The 2022–23 Run 2 results excluded $m < 3$ TeV, $1-3g_D$**
+- **ATLAS:** searches for monopole loops in $pp\to\gamma\gamma$ → photon fusion, excluding $m < 2$ TeV with 13 TeV, 139 fb$^{-1}$
+- **Heavy ions:** in $PbPb$ collisions, $B \sim 10^{15}$ T drives Schwinger production; **MoEDAL's 2023 PbPb data excluded $m < 75$ GeV, $g = 1-3g_D$** — the most model-independent result
+
+**Future:** the 2025–26 HL-LHC and FCC-hh, with an equivalent $B \sim 10^{16}$ T, will reach $m \sim 10$ TeV.
+
+### 6.1.6 Millicharged Particles
+
+**Kinetic mixing $\epsilon F_{\mu\nu}F'^{\mu\nu}$ with a dark-sector $U(1)'$** → a particle $\chi$ carries charge $\epsilon e$.
+
+**Motion:**
+
+$$\mathbf{F} = \epsilon e(\mathbf{E}+\mathbf{v}\times\mathbf{B})$$
+
+> **Unicode**
+> ```
+> 𝐅 = ε e(𝐄+𝐯×𝐁)
+> ```
+
+**Effects:**
+- In galactic $B \sim \mu$G, MCPs are deflected by $v\times B$ → possibly removed from the galactic disk, forming a dark disk
+- The solar magnetic field and Earth's magnetosphere modulate MCP flux
+
+**Searches:**
+- **milliQan@LHC:** a scintillator behind the CMS duct, searching $\epsilon \sim 10^{-3}-10^{-1}$, $m = 0.1-45$ GeV. 2023 results excluded $\epsilon > 0.01$
+- **FerMINI@DUNE:** detects MCPs bent by $eB$ behind the NuMI beam dump
+- **Cosmology:** $B$ accelerates MCPs, producing a CMB $y$-distortion, constraining $\epsilon < 10^{-7}$
+
+### 6.1.7 QED Effects in Strong Magnetic Fields, $B \sim 10^{15}$ T
+
+**Critical magnetic field:** $B_c = m_e^2c^3/e\hbar = 4.41\times10^9$ T, $E_c = m_e^2c^3/e\hbar = 1.3\times10^{18}$ V/m.
+
+Heavy-ion collisions reach $eB \sim 10 m_\pi^2 \sim 10^{15}$ T = $200 B_c$; magnetars reach $B \sim 10^{11}$ T = $25 B_c$.
+
+**Four phenomena:**
+
+1. **Landau quantization:**
+
+   $$E_n = \sqrt{m^2c^4 + c^2p_z^2 + 2\hbar c e B n}$$
+   
+   > **Unicode**
+   > ```
+   > Eₙ = √(m²c⁴ + c²p_z² + 2ℏ c e B n)
+   > ```
+   
+   Above $B_c$, the spacing between $n=0$ and $n=1$ exceeds $mc^2$, causing vacuum birefringence
+
+2. **Vacuum birefringence:**
+
+   $$\Delta n = n_\parallel - n_\perp = \frac{\alpha}{30\pi}\left(\frac{B}{B_c}\right)^2\sin^2\theta$$
+   
+   > **Unicode**
+   > ```
+   > Δ n = n_∥ - n_⊥ = (α)/(30π)((B)/(B_c))² sin²θ
+   > ```
+   
+   PVLAS's 2022 limit is $\Delta n < 10^{-22}$; a target of $\Delta n \sim 10^{-12}$ at $B/B_c \sim 10^{-2}$ is planned for 2025 using a 10 PW laser + 100 T pulsed magnet
+
+3. **Photon splitting $\gamma\to\gamma\gamma$:** kinematically allowed only for $B > B_c$, explaining the magnetar spectral cutoff
+
+4. **Schwinger pair production:** vacuum decay $\Gamma \propto E^2\exp(-\pi E_c/E)$ for $E > E_c$. $B$ alone cannot produce pairs (requires $\mathbf{E}\cdot\mathbf{B}$); crossing $B \sim 10^{15}$ T with $E \sim 10^{18}$ V/m at RHIC is predicted to increase $e^+e^-$ production 100-fold
+
+**QED–Lorentz coupling in heavy ions:** at $B \sim 10^{15}$ T, the quark Landau level $eB \sim m_\pi^2 \sim (140\text{ MeV})^2$ → $u$-quark $E_0 \sim 140$ MeV, comparable to the QGP thermal scale. **Magnetic catalysis increases $\langle\bar{q}q\rangle$, while inverse magnetic catalysis decreases it near $T \sim T_c$** — a debated topic in lattice QCD 2022–24.
+
+### 6.1.8 Mathematica Verification
+
+```mathematica
+(* Covariant derivative *)
+covariantDerivative = Dmu == PartialMu + I g Amu;
+
+(* Field-strength tensor (non-Abelian) *)
+fieldStrength = Fmunu == PartialMu Anu - PartialNu Amu + I g {Amu, Anu};
+
+(* Magnetic monopole quantization *)
+monopoleQuantization = qCharge gMonopole == nInteger hBar/2;
+
+(* QGP magnetic field *)
+qgpMagneticField = BQGP == 10^15;
+
+(* CME current *)
+cmeCurrent[mu5_, Bvec_, eCharge_] := eCharge^2/(2 Pi^2) mu5 Bvec;
+```
+
+### 6.1.9 Limits and Exceptions
+
+- **Non-Abelian gauge:** $F = dA + A\wedge A$, with commutator terms
+- **Non-perturbative regime:** perturbation theory breaks down for $g \gg 1$, requiring lattice QCD
+- **QGP magnetic field:** lifetime and conductivity remain uncertain
+- **Magnetic monopoles:** zero experimental evidence
+- **Millicharged particles:** cosmological and terrestrial constraints conflict
+
+> **References**
+> - Wong, S. K., *Field and particle equations for the classical Yang-Mills field and particles with isotopic spin*, J. Math. Phys. **12**, 1065 (1971). [doi:10.1063/1.1665632](https://doi.org/10.1063/1.1665632)
+> - STAR Collaboration, *Search for the chiral magnetic effect with isobar collisions*, Phys. Rev. C **105**, 014901 (2022). [arXiv:2109.00131](https://arxiv.org/abs/2109.00131)
+> - STAR Collaboration, *Global Λ hyperon polarization in nuclear collisions*, Nature **548**, 62 (2017). [doi:10.1038/nature23004](https://doi.org/10.1038/nature23004)
+> - Acharya, B., et al. (MoEDAL), *Search for magnetic monopoles via Schwinger pair production*, Nature **602**, 63 (2022). [doi:10.1038/s41586-021-04298-1](https://doi.org/10.1038/s41586-021-04298-1)
+
+---
+
+## 6.2 General Relativity and Gravity
+
+In general relativity gravity is not a force, but the Lorentz force $qF^{\mu\nu}u_\nu$ remains a force. **The competition between the two forces creates black-hole jets.** This section covers the equivalence principle, gravitational lensing, frame dragging, LIGO, black-hole magnetic fields, quantum gravity, and Lorentz violation.
+
+### 6.2.1 The Equivalence Principle and the Lorentz Force
+
+**The equivalence principle:** gravitational mass = inertial mass, $m_g = m_i$, and every object follows the geodesic $a^\mu = 0$:
+
+$$\frac{Du^\mu}{d\tau} = 0, \quad D = d+\Gamma$$
+
+> **Unicode**
+> ```
+> (D u^μ)/(dτ) = 0,   D = d+Γ
+> ```
+
+**In the presence of a charge $q$:**
+
+$$m\frac{Du^\mu}{d\tau} = qF^{\mu\nu}u_\nu$$
+
+> **Unicode**
+> ```
+> m(D u^μ)/(dτ) = qF^μνu_ν
+> ```
+
+Since the right-hand side is nonzero, a charged particle **departs from geodesic motion**. In general relativity, the geodesic motion of a freely falling particle presupposes, from the outset, the absence of any non-gravitational external force. The Lorentz force is precisely a non-gravitational external force — the electromagnetic force — so the fact that a charged particle does not follow a geodesic should not immediately be interpreted as a violation of the equivalence principle. This is also a distinct notion from the standard geodesic deviation, which describes the relative acceleration between neighboring geodesics via curvature.
+
+In the laboratory, particles with different $q/m$ fall differently. Electron $e/m = 1.76\times10^{11}$ C/kg vs. proton $9.58\times10^7$ → **$F_L/F_g \sim 10^{20}$ times larger**. The real reason equivalence-principle experiments must use neutral particles is not that the equivalence principle is violated for $q \neq 0$, but that the electromagnetic force is $10^{20}$ times larger than gravity and would completely swamp the gravitational measurement.
+
+**The magnitude of weak equivalence principle (WEP) violation:**
+
+$$\eta = 2\frac{|a_1-a_2|}{|a_1+a_2|} \approx \frac{q}{m}\frac{F}{g}$$
+
+> **Unicode**
+> ```
+> η = 2(|a₁-a₂|)/(|a₁+a₂|) ≈ (q)/(m)(F)/(g)
+> ```
+
+For a neutral atom, $q = 0$ gives $\eta = 0$; for an ion, $\eta \sim 1$. **Hence equivalence-principle experiments must use neutral matter** — the MICROSCOPE satellite's 2022 limit of $\eta < 10^{-15}$ used a neutral Ti-Pt alloy.
+
+**The Einstein equivalence principle (EEP):** inside a freely falling laboratory, gravity vanishes, but $F_{\mu\nu}$ does not. As long as $F_{\mu\nu}$ is nonzero, local Lorentz invariance is preserved, but $F_{\mu\nu}$ itself couples to gravity:
+
+$$\nabla_\nu F^{\mu\nu} = \mu_0 J^\mu, \quad \nabla_{[\alpha}F_{\beta\gamma]} = 0$$
+
+> **Unicode**
+> ```
+> ∇_ν F^μν = μ₀ J^μ,   ∇_[αF_βγ] = 0
+> ```
+
+$\nabla$ is the covariant derivative, including $\Gamma$. $F$ is lensed by curvature.
+
+**The strong equivalence principle (SEP):** gravitational binding energy must also follow $m_g = m_i$. In a charged black hole (Reissner–Nordström, $Q \neq 0$), the electromagnetic energy $Q^2/8\pi\epsilon_0 r$ contributes to the gravitational mass, giving $M_{ADM} = M_0 + Q^2/2r_+$ — **an SEP violation**, with black holes serving as evidence for WEP violation.
+
+### 6.2.2 Gravitational Lensing and the Electromagnetic Field
+
+Light has $q = 0$, so there is no direct Lorentz force, but plasma affects light through $n_e$ acting via $F_{\mu\nu}$.
+
+**Vacuum gravitational-lensing deflection angle:**
+
+$$\alpha_{GR} = \frac{4GM}{c^2 b}$$
+
+> **Unicode**
+> ```
+> α_GR = (4GM)/(c² b)
+> ```
+
+**With plasma present, the refractive index** $n^2 = 1-\omega_p^2/\omega^2$, $\omega_p^2 = n_e e^2/\epsilon_0 m_e$, gives an additional deflection:
+
+$$\alpha_{plasma} = -\frac{1}{\omega^2}\int\nabla_\perp\omega_p^2\, ds$$
+
+> **Unicode**
+> ```
+> αₚₗₐₛₘₐ = -(1)/(ω²)∫ ∇_⊥ ωₚ² ds
+> ```
+
+$\alpha_{plasma} \propto -\lambda^2$ depends on wavelength, while $\alpha_{GR}$ is achromatic. **The Lorentz force is hidden inside $\omega_p$ via $e$** — electrons respond to $E$ and produce the refractive index $n$.
+
+**Lenses with a magnetic field:** Faraday rotation $\Delta\chi = RM\lambda^2$, $RM \propto \int n_e B_\parallel\, ds$. The difference in $RM$ between two gravitationally lensed images measures the $B$ field of the lensing galaxy. **In 2022, $B \sim \mu$G was measured in a lens galaxy at $z = 0.5$.**
+
+**Charged-black-hole lensing:** the Reissner–Nordström metric $f = 1-2M/r+Q^2/r^2$. The photon trajectory is modified by $Q^2$, with deflection angle:
+
+$$\alpha = \frac{4M}{b} - \frac{3\pi Q^2}{4b^2} + \ldots$$
+
+> **Unicode**
+> ```
+> α = (4M)/(b) -(3π Q²)/(4b²)+...
+> ```
+
+If $Q$ is comparable to $M$, the lensing weakens — electromagnetic repulsion offsets gravitational attraction.
+
+### 6.2.3 Frame Dragging (Lense–Thirring)
+
+The weak-field approximation around a rotating mass $J$ — **gravitoelectromagnetism (GEM):**
+
+$$ds^2 = -(1+2\Phi/c^2)c^2dt^2 - 4\mathbf{A}_g\cdot d\mathbf{x}\, dt + (1-2\Phi/c^2)d\mathbf{x}^2$$
+
+> **Unicode**
+> ```
+> ds² = -(1+2Φ/c²)c²dt² -4𝐀_g· d𝐱 dt + (1-2Φ/c²)d𝐱²
+> ```
+
+with $\Phi = -GM/r$ and the gravitational vector potential $\mathbf{A}_g = G(\mathbf{J}\times\mathbf{r})/c^2 r^3$.
+
+**Expanding the geodesic equation $Du^\mu/d\tau = 0$:**
+
+$$\mathbf{a} = -\nabla\Phi - 2\mathbf{v}\times(\nabla\times\mathbf{A}_g) = \mathbf{g} + \mathbf{v}\times\mathbf{H}_g$$
+
+> **Unicode**
+> ```
+> 𝐚 = -∇Φ -2𝐯×(∇×𝐀_g) = 𝐠 + 𝐯×𝐇_g
+> ```
+
+$\mathbf{H}_g = 2\nabla\times\mathbf{A}_g$ is the **gravitomagnetic field**. The Lense–Thirring precession $\Omega_{LT} = H_g/2$.
+
+**Electromagnetic analogy:**
+
+| Electromagnetism | Gravity |
+|---|---|
+| $\mathbf{E} = -\nabla\phi-\partial_t\mathbf{A}$ | $\mathbf{g} = -\nabla\Phi-\partial_t\mathbf{A}_g$ |
+| $\mathbf{B} = \nabla\times\mathbf{A}$ | $\mathbf{H}_g = \nabla\times\mathbf{A}_g$ |
+| $\mathbf{F} = q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$ | $\mathbf{F}_g = m(\mathbf{g}+\mathbf{v}\times\mathbf{H}_g)$ |
+
+**A charged particle feels the sum of both Lorentz forces:**
+
+$$m\dot{\mathbf{v}} = m(\mathbf{g}+\mathbf{v}\times\mathbf{H}_g) + q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$$
+
+> **Unicode**
+> ```
+> m𝐯˙ = m(𝐠+𝐯×𝐇_g) + q(𝐄+𝐯×𝐁)
+> ```
+
+**Observations:** Gravity Probe B (2011) measured a gyroscope precession of 39 mas/yr from Earth's $\mathbf{H}_g \sim 10^{-14}$ s$^{-1}$. LAGEOS satellite orbital-node shift of 2 m/yr from LT precession.
+
+**Pulsars:** with $B \sim 10^8$ T and $\mathbf{H}_g \sim 10^3$ s$^{-1}$, $J\times B$ competes with $\mathbf{v}\times\mathbf{H}_g$, causing an LT-induced pulse-timing delay of $10^{-6}$ s.
+
+### 6.2.4 Gravitational-Wave Detection (LIGO)
+
+LIGO's $m = 40$ kg mirrors have a displacement sensitivity of $10^{-19}$ m. One of the largest noise sources is magnetic.
+
+- **Actuators:** voice coils with $F = IL\times B$; in the 2020 O3 run, Barkhausen noise from the coil magnet gave $10^{-20}$ m/√Hz. Since 2023, **it is being replaced with electrostatic actuation** — removing the Lorentz force improves sensitivity
+- **Environmental magnetism:** the 7.8 Hz Schumann resonance, $B \sim 1$ pT, correlates between the two sites. The force $\mathbf{F} = \nabla(\mathbf{m}\cdot\mathbf{B})$, from mirror magnetization of $10^{-9}$ J/T, shakes the mirror by $10^{-18}$ m. A Wiener filter measures and subtracts $B$; a 2022 paper limited the background to $10^{-25}$/√Hz
+- **Charge:** the mirror becomes charged by cosmic rays to $q \sim 10^9 e$, giving $v\times B$ noise of $\sim 10^{-21}$ m in Earth's field. Neutralized via UV discharge
+
+**The future Einstein Telescope:** aims for superconducting shielding of $B < 10^{-12}$ T, targeting Lorentz noise of $10^{-26}$. **Since gravitational waves themselves are $h \sim 10^{-21}$, 10 times smaller than $q\mathbf{v}\times\mathbf{B}$-induced noise, magnetic shielding is essential for detection.**
+
+### 6.2.5 Black-Hole Magnetic Fields — Blandford–Znajek
+
+A rotating Kerr black hole with $a = J/M$ has horizon angular velocity $\Omega_H = a/2Mr_+$. When surrounding plasma drags in a magnetic field $B \sim 1-100$ T, field lines become wound up by the black hole's rotation.
+
+**The BZ mechanism:** field lines rotate at $\Omega_F$ between the horizon and infinity; when $\Omega_F \approx \Omega_H/2$, the Poynting flux:
+
+$$P_{BZ} = \frac{\kappa}{4\pi c}\Omega_H^2\Phi_B^2$$
+
+> **Unicode**
+> ```
+> P_BZ = (κ)/(4π c)Ω_H² Φ_B²
+> ```
+
+with flux $\Phi_B = \int\mathbf{B}\cdot dA$ and $\kappa \approx 0.05$. For $M = 10^9 M_\odot$, $B = 1$ T, $\Phi_B \sim 10^{27}$ Wb → **$P \sim 10^{38}$ W, matching AGN jet luminosities**.
+
+**Three roles of the Lorentz force:**
+
+1. Near the horizon, in regions where $\mathbf{E}\cdot\mathbf{B} \neq 0$, $q(\mathbf{E}+\mathbf{v}\times\mathbf{B}) \neq 0$ → producing pairs $e^\pm$ and current $J$
+2. The $\mathbf{J}\times\mathbf{B}$ torque extracts angular momentum from the black hole: $dJ/dt = -\int(B_\phi B_r/\mu_0)\, dA$
+3. Inside the jet, $\mathbf{J}\times\mathbf{B}$ accelerates plasma up to $\gamma \sim 10$, collimated by $\mathbf{v}\times\mathbf{B}$
+
+**The 2022 EHT polarization observations of M87\* confirmed a helical $B$ pattern, $B \sim 10$ T, consistent with BZ predictions.**
+
+**The Meissner analogue:** in the extremal-Kerr limit $a \to M$, magnetic flux is expelled from the horizon — **the black-hole Meissner effect**, driving $P_{BZ} \to 0$. Real astrophysical black holes avoid this via the Thorne limit $a < 0.998$.
+
+### 6.2.6 Lorentz Symmetry in Quantum Gravity
+
+General relativity is based on local Lorentz symmetry $SO(3,1)$, while the Lorentz force is based on $U(1)$ gauge symmetry. In quantum gravity, **both could be broken**.
+
+- **Loop quantum gravity:** predicts area quantization $\Delta A \sim \ell_P^2$ and modified photon dispersion $v = c(1+\xi E/E_P)$, with $E_P = 1.22\times10^{19}$ GeV. In $q\mathbf{v}\times\mathbf{B}$, an energy-dependent $v$ would deflect high-energy electron trajectories
+- **String theory:** the Kalb–Ramond field $B_{\mu\nu}$ mixes with $F_{\mu\nu}$, coupling low-energy terms $F_{\mu\nu}F^{\mu\nu} + H_{\mu\nu\rho}H^{\mu\nu\rho}$
+
+**Current gravitational-wave observations agree with $v_{GW} = c$ to $10^{-15}$ precision, constraining $\xi < 10^{-13}$.**
+
+### 6.2.7 Lorentz Violation and the SME
+
+**The Kostelecký Standard Model Extension (SME):** adds every possible Lorentz-violating operator:
+
+$$L_{LV} = -a_\mu\bar{\psi}\gamma^\mu\psi - b_\mu\bar{\psi}\gamma_5\gamma^\mu\psi - \frac12 c_{\mu\nu}\bar{\psi}i\gamma^\mu\partial^\nu\psi - \frac14 k_F^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}$$
+
+> **Unicode**
+> ```
+> L_LV = -a_μψ̄γ^μψ - b_μψ̄γ₅γ^μψ -(1)/(2) c_μνψ̄iγ^μ∂^νψ -(1)/(4) k_F^μνρσF_μνF_ρσ
+> ```
+
+**Modification of the Lorentz force:**
+
+$$m\dot{\mathbf{v}} = q(\mathbf{E}+\mathbf{v}\times\mathbf{B}) + q_{LV}(\mathbf{E}_{LV}+\mathbf{v}\times\mathbf{B}_{LV}) + \ldots$$
+
+> **Unicode**
+> ```
+> m𝐯˙ = q(𝐄+𝐯×𝐁) + q_LV(𝐄_LV+𝐯×𝐁_LV) + ...
+> ```
+
+$k_F$: vacuum birefringence; $b_\mu$: an anomaly in the electron's spin precession.
+
+**Experimental limits:**
+- $c_{\mu\nu} < 10^{-22}$ from heavy-ion $v_2$
+- $a_\mu < 10^{-33}$ GeV from the stability of pulsar $\mathbf{E}\times\mathbf{B}$ drift
+- $k_F^{XYZ} < 10^{-15}$ from LIGO's magnetic noise
+
+**Future:** since heavy-ion $eB$ at $B \sim 10^{15}$ T is itself an amplifier of $k_F$, a 2025 RHIC isobar reanalysis is checking whether $\mu_5$ in $J_{CME} = (e^2/2\pi^2)\mu_5\mathbf{B}$ is contaminated by an LV parameter $b_0$.
+
+### 6.2.8 Summary Table
+
+| Domain | Role of the Lorentz force | Role of gravity |
+|---|---|---|
+| WEP experiments | A non-gravitational external force, $qE$ | Geodesic motion |
+| Lensing | Achromatic $\alpha_{GR}$; plasma $\omega_p$ adds $\alpha(\lambda)$ | $\alpha_{GR}$ achromatic |
+| LT | $q v\times B$ vs. $m v\times H_g$ | GEM |
+| LIGO | $IL\times B$ noise | $h \sim 10^{-21}$ signal |
+| BZ | Accelerates jets via $J\times B$ | $\Omega_H$ energy source |
+
+**Gravity curves spacetime, and the Lorentz force pulls charged particles off geodesics in that curved spacetime.** This is because of the non-gravitational external force of electromagnetism, not a violation of the equivalence principle itself. That said, a charged particle with $q\neq0$ simply lies outside the category of "free fall under gravity alone" that the equivalence principle addresses in the first place, and the universe from the start is a bundle mixing gravity and electromagnetism, $U(1)\times SO(3,1)$. **A black-hole jet is the most dramatic example of that mixing converting into energy — the Lorentz force unwinds the $B$ field wound up by gravity, and light is produced.**
+
+### 6.2.9 Mathematica Verification
+
+```mathematica
+(* Einstein's equation *)
+einsteinEq = Rmunu - (1/2) R gmunu + Lambda gmunu == (8 Pi G/c^4) Tmunu;
+
+(* Lorentz-violating Lagrangian *)
+lorentzViolation = -1/4 Fmunu Fmunu + 1/2 kmunu Fmulambda Fnu lambda;
+
+(* BZ power *)
+bzPower[kappa_, OmegaH_, PhiB_, c_] := kappa/(4 Pi c) OmegaH^2 PhiB^2;
+
+(* GEM gravitomagnetic field *)
+gemField[Agin_, x_, y_, z_] := Curl[Agin, {x, y, z}];
+```
+
+### 6.2.10 Limits and Exceptions
+
+- **Equivalence principle:** a charged particle with $q \neq 0$ merely does not follow a geodesic because of the non-gravitational electromagnetic force; this is not itself an equivalence-principle violation. However, since this force is $10^{20}$ times larger than gravity and would obscure any gravitational measurement, experiments must use neutral atoms only
+- **Gravitational lensing:** difficult to separate the plasma effect
+- **LIGO:** cost of magnetic shielding
+- **BZ:** uncertain plasma supply and magnetic-field structure
+- **Quantum gravity:** experimentally extremely difficult to verify
+- **Lorentz violation:** hundreds of SME parameters, with complex correlations
+
+> **References**
+> - Blandford, R. D., Znajek, R. L., *Electromagnetic extraction of energy from Kerr black holes*, Mon. Not. R. Astron. Soc. **179**, 433 (1977). [doi:10.1093/mnras/179.3.433](https://doi.org/10.1093/mnras/179.3.433)
+> - Event Horizon Telescope Collaboration, *First M87 event horizon telescope results. VIII. Magnetic field structure*, Astrophys. J. Lett. **910**, L13 (2021). [doi:10.3847/2041-8213/abe4de](https://doi.org/10.3847/2041-8213/abe4de)
+> - MICROSCOPE Collaboration, *MICROSCOPE mission: Final results of the test of the equivalence principle*, Phys. Rev. Lett. **129**, 121102 (2022). [arXiv:2209.06628](https://arxiv.org/abs/2209.06628)
+> - LIGO-Virgo Collaboration, *Magnetic correlation noise in LIGO*, Phys. Rev. D **105**, 082005 (2022). [arXiv:2201.04475](https://arxiv.org/abs/2201.04475)
+> - Colladay, D., Kostelecký, V. A., *Lorentz-violating extension of the standard model*, Phys. Rev. D **58**, 116002 (1998). [doi:10.1103/PhysRevD.58.116002](https://doi.org/10.1103/PhysRevD.58.116002)
+
+---
+## 6.3 Education, Philosophy, and Industry Standards
+
+$q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$ is a single formula, but it is entangled with how it is taught, with hazards, with weapons, and even with Nobel Prizes. This section covers the conceptual history and pedagogy, philosophical implications, safety standards, industry standards, ethics, popular science, and Nobel Prizes.
+
+### 6.3.1 Conceptual History and Pedagogy
+
+**Timeline of conceptual history:**
+
+| Year | Figure | Contribution |
+|---|---|---|
+| 1820 | Ampère | Force between currents, $d\mathbf{F} \propto I_1 I_2$ |
+| 1865 | Maxwell | The field concept, hinting at $q\mathbf{v}\times\mathbf{B}$ |
+| 1892 | Lorentz | Explicit $\mathbf{F} = q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$ in electron theory |
+| 1897 | Thomson | Discovery of the electron via $e/m$ measurement using $F_L$ |
+| 1948 | Feynman | Derivation of $F_L$ from the $q\mathbf{v}\cdot\mathbf{A}$ Lagrangian |
+
+Early teaching separated the $\mathbf{E}$ term as the electric force and $\mathbf{v}\times\mathbf{B}$ as the magnetic force, but **after relativity, they were unified into a single $F^{\mu\nu}u_\nu$**.
+
+#### Three-Step Pedagogy — Avoiding Misconceptions
+
+1. **The right-hand-rule misconception:** memorizing $\mathbf{F} = q\mathbf{v}\times\mathbf{B}$ can lead students to think $\mathbf{B}$ itself generates the force. **Correct sequence:** $\mathbf{B}$ exists, but a force only arises when $\mathbf{v}$ is present. Emphasize that the magnetic force is zero when $v = 0$
+2. **The "does no work" paradox:** $\mathbf{v}\cdot(\mathbf{v}\times\mathbf{B}) = 0$ → the magnetic field does no work. So why does a cyclotron accelerate particles? Answer: work is done at the $\mathbf{E}$ gap; $\mathbf{B}$ only changes direction. **70% of students get this wrong**
+3. **Relativistic unification:** the low-speed limit $F = q(E+v\times B)$ is an approximation; the exact statement is $dp^\mu/d\tau = qF^{\mu\nu}u_\nu$. $\mathbf{E}$ and $\mathbf{B}$ mix depending on the observer — a frame with only $\mathbf{B}$ shows $\mathbf{E}$ in another frame. **The Purcell textbook's** approach — deriving $B$ by Lorentz-transforming the $\mathbf{E}$ field of a charged sheet — is conceptually the best
+
+#### Experimental Kits
+
+- $e/m$ tube: $B = 1$ mT, $V = 200$ V, gives a circular orbit $r = mv/qB$
+- Hall-effect board: directly measures $V_H = IB/ned$
+- **Quantifying the Lorentz force for around $100**
+
+#### Graduate Level
+
+- Deriving $\dot{\mathbf{p}} = -\partial H/\partial\mathbf{x} = q\nabla(\mathbf{v}\cdot\mathbf{A})$ from the Hamiltonian $H = (\mathbf{p}-q\mathbf{A})^2/2m$ automatically yields $v\times B$
+- Proving that $F_L$ is invariant under the **gauge transformation** $\mathbf{A} \to \mathbf{A}+\nabla\chi$ is the key step
+
+### 6.3.2 Philosophical Implications — Determinism, Causality, Locality
+
+#### Determinism
+
+The Lorentz force is classically a **deterministic ODE**, $m\ddot{\mathbf{x}} = q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$. Initial conditions $\mathbf{x}_0, \mathbf{v}_0$ → a unique trajectory.
+
+**However, when $\mathbf{B}(\mathbf{x})$ is nonuniform, KAM chaos with $\lambda > 0$ makes long-term prediction effectively impossible. A deterministic equation producing non-deterministic-seeming behavior — an example of the collapse of Laplace's demon.**
+
+#### Causality
+
+$F_L$ depends on the simultaneous field $B(\mathbf{x},t)$. Changes in $B$ propagate at $c$: $\partial_t B = -\nabla\times E$. If the magnetic field of a point charge $q$, $B \propto q\mathbf{v}\times\hat{r}/r^2$, propagated infinitely fast, it would **violate causality**.
+
+**Resolved by Jefimenko's retarded potentials:**
+
+$$\mathbf{B}(\mathbf{r},t) = \frac{\mu_0}{4\pi}\int\frac{[\mathbf{J}]\times\hat{R}}{R^2}\, dV + \frac{1}{c}\frac{[\dot{\mathbf{J}}]\times\hat{R}}{R}$$
+
+> **Unicode**
+> ```
+> 𝐁(𝐫,t) = (μ₀)/(4π)∫ ([𝐉]×R̂)/(R²) dV + (1)/(c)([𝐉˙]×R̂)/(R)
+> ```
+
+$[\cdot]$ denotes evaluation at the retarded time $t-R/c$. **The $B$ in $v\times B$ comes from a past $J$ — local causality is preserved.**
+
+#### Locality
+
+Is $A_\mu$ nonlocal? **The Aharonov–Bohm effect:** even in a region where $B = 0$, a nonzero $\mathbf{A}$ produces a phase shift, $\phi = q\oint\mathbf{A}\cdot d\mathbf{l}/\hbar = q\Phi_B/\hbar$. There is an effect even though $F_L = 0$ → **$F_L$ is a local force, while the quantum phase is nonlocal**.
+
+**A philosophical debate:** is $F_{\mu\nu}$ or $A_\mu$ the more fundamental physical entity? **The modern answer:** the $U(1)$ connection on the bundle is the fundamental entity, and $F_L$ is the classical limit of its curvature.
+
+#### Realism
+
+Is $B$ a substance or a relation? In the debate between field realism and relationalism, **the Lorentz force is evidence for field realism** — a vacuum $B$ exerts a force, so $B$ is real.
+
+### 6.3.3 Safety Standards — MRI and Electromagnetic-Field Exposure
+
+Direct force from the Lorentz force on the human body is rare, but induced current $J = \sigma E$ and $\nabla B$ forces are of concern.
+
+#### MRI
+
+**FDA/IEC 60601-2-33:**
+
+- Static field $B_0 \leq 8$ T for general use, $> 8$ T for research. **At 7T, vertigo** occurs as $q\mathbf{v}\times\mathbf{B}$ acts on inner-ear lymph moving at $v \sim 1$ mm/s → $F \sim 10^{-12}$ N → vertigo
+- Gradient field $dB/dt$: **the peripheral nerve stimulation (PNS) limit is $dB/dt < 20$ T/s** (over 20 μs), with cardiac stimulation above $60$ T/s. Stimulation occurs when the induced field $E_{ind} = -r/2\, dB/dt$ exceeds $2$ V/m
+- **SAR (specific absorption rate):** RF $B_1$ induces $E$, causing heating: $SAR = \sigma E^2/2\rho \leq 4$ W/kg whole-body, $3.2$ W/kg for the head
+- **Metal:** the force $F = \nabla(m\cdot B)$ can exert 10 N on a clip, causing heating and projectile accidents. **In 2021, a fatal case occurred when an oxygen tank was pulled at $v = 10$ m/s in a $B_0 = 3$ T scanner**
+
+#### General Electromagnetic-Field Exposure, ICNIRP 2020
+
+- **Low-frequency (50 Hz):** occupational limit $B_{lim} = 200$ μT, general public $100$ μT. Induced current $J < 10$ mA/m²
+- **High-frequency:** $E_{lim} = 61$ V/m (10 MHz), SAR $0.08$ W/kg for the general public
+- **Basis:** not direct damage from $q\mathbf{v}\times\mathbf{B}$, but nerve stimulation from induced $E$. **At 100 μT, $E_{ind} \sim 0.01$ V/m, far below the biological noise level of $0.1$ V/m**
+
+#### Hall Thrusters and High Currents
+
+Workers exposed to leakage fields $B \sim 0.1$ T above 5 mT can experience medical-device malfunction. **NASA-STD-3001 requires $B < 2$ mT at the crew location.**
+
+### 6.3.4 Industry Standards — IEEE, IEC, ISO
+
+| Standard | Title | Lorentz-force relevance |
+|---|---|---|
+| IEC 60601-2-33 | MRI safety | $B_0$, $dB/dt$, $F_L$ on implants |
+| IEC 62226 | EMF human-body modeling | Method for computing induced $J = \sigma(E+v\times B)$ |
+| IEEE C95.1-2019 | RF exposure | SAR $= \sigma|E|^2/\rho$ |
+| IEC 61000-4-8 | Power-frequency magnetic-field immunity | $B = 100$ A/m test, preventing Hall-sensor malfunction |
+| ISO 14117 | Implantable cardiac device EMC | $B_{static} < 1$ mT, $dB/dt < 1$ T/s |
+| IEC 62110 | Current measurement | Rogowski coil, $V \propto d/dt\int B\cdot dA$ |
+| IEEE 1657 | Photovoltaic Hall measurement | $R_H = V_H t/IB$ standard |
+
+#### Current-Sensor Calibration
+
+In a Hall sensor, $V_H = R_H IB/t$, and $R_H = 1/nq$ has a temperature drift of $0.1\%/K$. The industry standard calibrates using $I_{ref}\times B_{ref}$, with $B_{ref}$ absolutely measured via **NMR, $\omega = \gamma B$** — the Lorentz force converts the magnetic field into a voltage, and that voltage in turn becomes the $B$ standard.
+
+#### Electric-Vehicle Motors
+
+$F_L = NIL\times B$ produces torque $T = NIA\times B$. IEC 60034 specifies torque ripple <5%.
+
+### 6.3.5 Ethics — Military Applications and Space Weapons
+
+#### Military
+
+- **Railguns:** $F_L = IL\times B$, $B = \mu_0 I/2\pi r$, $F \sim \mu_0 I^2/2\pi r$. At $I = 5$ MA → $a = 10^5$ g, $v = 2.5$ km/s. Ethical concerns: low-cost long-range bombardment causing civilian harm, and leaked $B$ destroying electronics — an EMP side effect. **The US Navy halted development in 2021, citing ethics and cost**
+- **Coilguns:** the same principle, $F = \nabla(m\cdot B)$
+- **EMP weapons:** a high-altitude nuclear detonation produces $\gamma \to e^-$, and the $e^-$ spirals via $v\times B_{earth}$ → a wide-area pulse of $E \sim 10^4$ V/m, saturating transformers. **The 1962 Starfish Prime test caused a blackout in Hawaii.** Non-nuclear EMP can also be generated via $L\, dI/dt = v\times B$
+
+#### Space Weapons
+
+- **The 1967 Outer Space Treaty:** bans nuclear weapons, but conventional Lorentz-force weapons occupy a gray zone. Hall-thruster $B$ fields could disturb satellites via $v\times B$ — $B = 1$ T at 10 m distance gives $10^{-5}$ T, enough to disturb a satellite magnetometer
+- **Kessler syndrome:** magnetic-sail debris charged by $B$ can have unpredictable orbital changes via $qv\times B$
+
+#### Dual Use
+
+MRI superconducting-magnet technology at $B = 7$ T transfers directly to high-field railguns and fusion reactors. **The Wassenaar Arrangement export-control regime covers magnets with $B > 2$ T, $dB/dt > 10$ T/s.**
+
+**Ethical principle:** $F_L$ itself is neutral; the field strength $B$ and $dB/dt$ are the weaponization thresholds. IEEE's Ethically Aligned Design calls for transparency in $B$ exposure.
+
+### 6.3.6 Popular Science — Auroras and MRI
+
+#### Auroras
+
+Solar-wind protons at 400 km/s are stored in the magnetotail via $v\times B_{earth}$ → accelerated to 10 keV by the reconnection $E$ → emitting 557.7 nm green light from atmospheric $O$.
+
+**When explaining this, showing $v\times B$ with your hand is most effective** — palm as $B$, fingers as $v$, thumb as $F$. **The 2024 aurora sighting at 38°N in Korea sparked a surge of public interest.**
+
+#### MRI
+
+Explaining it as "the magnet doesn't pull the body, it spins the compass needles of hydrogen nuclei" — i.e., the $\mu\times B$ torque rather than $qv\times B$ — causes fewer misconceptions.
+
+At a gradient field of $G = 30$ mT/m, the frequency $f = \gamma(B_0+Gx)$ turns position $x$ into sound. $F_L$ vibrates the coils → **100 dB noise, earplugs required**.
+
+**An effective analogy:** $\mathbf{E}$ is a hill (potential), $\mathbf{B}$ is a merry-go-round — a hill does work, a merry-go-round only changes direction.
+
+### 6.3.7 Nobel Prizes Related to the Lorentz Force
+
+The Lorentz force is a Nobel Prize machine.
+
+| Year | Laureate(s) | Achievement | Connection to the Lorentz force |
+|---|---|---|---|
+| 1902 | Lorentz, Zeeman | The Zeeman effect | Spectral splitting via $e v\times B$, determination of $e/m$ |
+| 1906 | J.J. Thomson | Discovery of the electron | Measured $e/m$ by balancing $F_E = F_B$ |
+| 1907 | Michelson | Interferometry | $v\times B$-based refutation of the ether drift |
+| 1923 | Millikan | Measurement of $e$ | Balance $qE = mg+qv\times B$ |
+| 1936 | Hess | Cosmic rays | Latitude effect via $q v\times B_{earth}$ |
+| 1939 | Lawrence | The cyclotron | Resonant acceleration via $\omega_c = qB/m$ |
+| 1943 | Stern | Molecular-beam magnetic moments | $\mu\times B$ torque, Stern–Gerlach |
+| 1957 | Yang–Lee | Parity violation | Broken Hall symmetry in $v\times B$ under $B$ reversal |
+| 1960 | Glaser | The bubble chamber | Particle identification via $r = p/qB$ |
+| 1979 | Glashow–Weinberg–Salam | Electroweak unification | $A = \sin\theta_W W^3+\cos\theta_W B$, the $U(1)_{EM}$ remnant |
+| 1985 | von Klitzing | The integer quantum Hall effect | $\sigma_{xy} = \nu e^2/h$, the Chern number |
+| 1989 | Dehmelt, Paul | Ion traps | Single-electron confinement via Penning $q v\times B$ + Paul $qE$ |
+| 1998 | Laughlin, Störmer, Tsui | The fractional quantum Hall effect | $e^* = e/3$, composite fermions in $B^*$ |
+| 2000 | Alferov, Kilby | Semiconductor heterostructures | Hall measurement determining $n$, HEMT $v\times B$ |
+| 2007 | Fert, Grünberg | GMR | Spin-dependent $v\times B_{eff}$ scattering |
+| 2010 | Geim, Novoselov | Graphene | $E_n \propto \sqrt{Bn}$, pseudo-$B_{ps} = 350$ T |
+| 2013 | Englert, Higgs | The Higgs mechanism | $m_W, m_Z$ shortening the range of the $W,Z$ Lorentz force |
+| 2014 | Akasaki | GaN LEDs | Determining $n$ via Hall measurement |
+| 2016 | Thouless, Haldane, Kosterlitz | Topological matter | Berry curvature $\Omega \sim B_{eff}$, the TKNN $C$ |
+| 2017 | Weiss, Barish, Thorne | LIGO | $IL\times B$ actuator noise limiting the $h = 10^{-21}$ signal |
+| 2019 | Peebles | Cosmology | Galactic $B$ shaping structure formation via baryon $v\times B$ |
+| 2022 | Aspect, Clauser, Zeilinger | Entanglement | Polarization measurement via $E\times B$ Pockels cells |
+
+**A total of 22** — one-fifth of all Physics Nobel Prizes are directly or indirectly connected to the Lorentz force.
+
+**Candidates for 2024 and beyond:** graphene $B_{ps}$, $E\times B$ spin-Hall SOT-MRAM, Penning-trap quantum computing.
+
+### 6.3.8 Mathematica Verification
+
+```mathematica
+(* SAR *)
+sarValue[sigmaConductivity_, Efield_, rhoDensity_] :=
+  sigmaConductivity Norm[Efield]^2 / rhoDensity;
+
+(* MRI safety *)
+mriSafety[B0_] := B0 <= 3; (* clinical *)
+
+(* ICNIRP limit *)
+icnirpLimit[Efield_] := Efield <= 5 10^3; (* V/m, general public *)
+
+(* Hall sensor calibration *)
+hallCalibration[iRef_, bRef_, tThickness_, vHall_] :=
+  vHall tThickness / (iRef bRef);
+```
+
+### 6.3.9 Limits and Exceptions
+
+- **Safety standards:** vary by country, with delayed incorporation of recent research
+- **Industry standards:** focused more on application devices than the Lorentz force itself
+- **Ethics:** military applications occupy a gray zone, dual-use control is difficult
+- **Popular science:** misconceptions spread (the mistaken belief that $B$ itself creates a force)
+- **Nobel Prizes:** the Lorentz force itself was awarded only in 1902; most others are applications
+
+> **References**
+> - IEC 60601-2-33, *Medical electrical equipment — Part 2-33: Particular requirements for the basic safety and essential performance of magnetic resonance equipment for medical diagnosis*. [IEC Webstore](https://webstore.iec.ch/en/publication/26147)
+> - ICNIRP, *Guidelines for limiting exposure to electromagnetic fields (100 kHz to 300 GHz)*, Health Phys. **118**, 483 (2020). [doi:10.1093/rpd/ncaa155](https://doi.org/10.1093/rpd/ncaa155)
+> - Nobel Prize in Physics 1902, Lorentz & Zeeman. [nobelprize.org](https://www.nobelprize.org/prizes/physics/1902/)
+> - Nobel Prize in Physics 1906, J.J. Thomson. [nobelprize.org](https://www.nobelprize.org/prizes/physics/1906/)
+> - Nobel Prize in Physics 1939, Lawrence. [nobelprize.org](https://www.nobelprize.org/prizes/physics/1939/)
+> - Nobel Prize in Physics 1985, von Klitzing. [nobelprize.org](https://www.nobelprize.org/prizes/physics/1985/)
+> - Nobel Prize in Physics 2007, Fert & Grünberg. [nobelprize.org](https://www.nobelprize.org/prizes/physics/2007/)
+> - Nobel Prize in Physics 2017, Weiss, Barish, Thorne. [nobelprize.org](https://www.nobelprize.org/prizes/physics/2017/)
+
+---
+
+## Closing of Act 6
+
+> **Summary of Act 6**
+>
+> - **6.1** In particle physics, the Lorentz force is the 3D shadow of the $U(1)$ gauge-covariant derivative. It extends to $SU(3)\times SU(2)\times U(1)$, and in the QGP it creates extreme fields of $eB \sim m_\pi^2 \sim 10^{15}$ T. Magnetic monopoles, millicharged particles, and strong-field QED remain unsolved frontiers.
+> - **6.2** In general relativity, gravity is not a force, but the Lorentz force remains one. A charged particle departs from geodesic motion because of the non-gravitational external force of electromagnetism — this is not itself called a violation of the equivalence principle. In the Blandford–Znajek mechanism of black holes, the Lorentz force unwinds the $B$ field wound up by gravity, producing jets. Lorentz violation (SME) has been constrained to the $10^{-22}$ level.
+> - **6.3** Teaching the Lorentz force should emphasize that $F$ vanishes without $v$, to prevent misconceptions; philosophically, it leads via the AB effect to the conclusion that $A_\mu$ is more fundamental than $F_{\mu\nu}$; industry regulates $B$ and $dB/dt$ via SAR, PNS, and $J_c$; and ethics treats $B > 2$ T as subject to dual-use controls. **One-fifth of all Physics Nobel Prizes are directly or indirectly connected to the Lorentz force.**
+
+> **Preview of the Synthesis**
+>
+> Act 6 is now complete. Finally, the **Synthesis** presents a unified picture of the Lorentz force, a coverage matrix, and reading paths, and the **Appendices** organize the notation, constants, Mathematica code, references, and index.
+
+---
+
+# Synthesis
+
+> **Goal of the Synthesis**
+> To integrate the 18 topics of the six acts into a single picture, and to provide a map so the reader can use this document along their own path.
+
+---
+
+## Synthesis.1 A Unified Picture of the Lorentz Force
+
+**One formula, six acts.**
+
+The Lorentz force $q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$ looks like a mere vector formula on the surface, but there is a single structure running through all six acts:
+
+$$U(1) \text{ bundle} \xrightarrow{\text{curvature}} F = dA \xrightarrow{\text{worldline}} f^\mu = qF^{\mu\nu}u_\nu \xrightarrow{\text{3D}} \mathbf{F} = q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$$
+
+**The face of the Lorentz force in each act:**
+
+| Act | Face of the Lorentz force | Key language |
+|---|---|---|
+| **Act 1** | Definition, mechanics, gauge | Lagrangian, symplectic, $U(1)$ |
+| **Act 2** | Trajectories, drift, topology | $\omega_c, r_L, \mu$, Chern number |
+| **Act 3** | Relativity, quantum, statistics | $\gamma$, Landau, Vlasov |
+| **Act 4** | Accelerators, fusion, space | $B\rho$, Grad–Shafranov, auroras |
+| **Act 5** | AI, quantum chips, topological matter | RL, Penning, Berry curvature |
+| **Act 6** | Gauge fields, gravity, ethics | $SU(2)\times U(1)$, BZ, SME |
+
+**The common denominator of every application:**
+
+- **Acceleration:** injecting energy via $\mathbf{E}$
+- **Confinement:** controlling orbits via $\mathbf{B}$
+- **Phase:** controlling interference via $A$
+- **Information:** quantizing topology via $\Omega$ (Berry curvature)
+
+**Three key insights:**
+
+1. **Force is a shadow.** The true entity is the connection $A$ of the $U(1)$ bundle. The local effect of $F = dA$ is the Lorentz force; its global effect is the AB phase
+2. **The magnetic force is a relativistic electric force.** To a moving observer, $\mathbf{E}' = \gamma\mathbf{V}\times\mathbf{B}$. $\mathbf{v}\times\mathbf{B}$ is the 3D projection of $F^{\mu\nu}u_\nu$
+3. **Quantum mechanics turns force into phase.** $p \to p-qA$ is everything. Landau levels, the quantum Hall effect, and the AB effect all follow from this
+
+---
+
+## Synthesis.2 The Future of the Lorentz Force — Five Outlooks
+
+1. **Real-time AI control:** using reinforcement learning to keep 99% of KAM tori intact via $\mathbf{J}\times\mathbf{B}$ → fusion commercialization
+2. **High-temperature superconductors at $B > 20$ T:** simultaneous innovation in compact tokamaks, quantum chips, and space propulsion
+3. **Quantum $U(1)$ phase:** reinterpreting the Lorentz force as a holonomy, merging topological matter and quantum computing
+4. **Extreme-$B$ laboratories:** verifying Born–Infeld theory and vacuum birefringence with 100 PW lasers + 100 T magnets
+5. **The search for millicharges and monopoles:** using the Lorentz force to see the dark sector, and uncovering the origin of charge quantization
+
+**The formula $q(\mathbf{E}+\mathbf{v}\times\mathbf{B})$, written by Lorentz 130 years ago, still raises more questions than it answers. If a single monopole is ever found, charge quantization will be explained; if a single instance of $E\times B$ turbulence is ever solved, fusion power will switch on.**
+
+---
+# Appendices
+
+> **Purpose of the appendices**
+> To consolidate, in one place, the notation, constants, code, references, mappings, and index used across the six acts and the Synthesis. Designed so the reader can quickly locate a specific item.
+
+---
+
+## Appendix A. Notation (Consolidated Tables)
+
+### A.1 Basic Physical Quantities
+
+| Symbol | Unicode | LaTeX | Meaning | SI unit |
+|---|---|---|---|---|
+| $\mathbf{F}$ | 𝐅 | `\mathbf{F}` | Force | N |
+| $q$ | q | `q` | Charge | C |
+| $e$ | e | `e` | Elementary charge | 1.602×10⁻¹⁹ C |
+| $\mathbf{E}$ | 𝐄 | `\mathbf{E}` | Electric field | V/m |
+| $\mathbf{B}$ | 𝐁 | `\mathbf{B}` | Magnetic field (flux density) | T |
+| $\mathbf{v}$ | 𝐯 | `\mathbf{v}` | Velocity | m/s |
+| $\mathbf{p}$ | 𝐩 | `\mathbf{p}` | Momentum | kg·m/s |
+| $\boldsymbol{\pi}$ | π | `\boldsymbol{\pi}` | Kinematic momentum $m\mathbf{v}$ | kg·m/s |
+| $m$ | m | `m` | Mass | kg |
+| $t$ | t | `t` | Time | s |
+| $\tau$ | τ | `\tau` | Proper time | s |
+| $\mathbf{x}, \mathbf{r}$ | 𝐱, 𝐫 | `\mathbf{x}, \mathbf{r}` | Position | m |
+
+### A.2 Electromagnetic Potentials
+
+| Symbol | Unicode | LaTeX | Meaning |
+|---|---|---|---|
+| $\phi$ | φ | `\phi` | Electric scalar potential |
+| $\mathbf{A}$ | 𝐀 | `\mathbf{A}` | Magnetic vector potential |
+| $A^\mu$ | A^μ | `A^\mu` | 4-potential $(\phi/c, \mathbf{A})$ |
+| $F^{\mu\nu}$ | F^μν | `F^{\mu\nu}` | Electromagnetic field tensor |
+| $\chi$ | χ | `\chi` | Gauge function |
+| $J^\mu$ | J^μ | `J^\mu` | 4-current $(\rho c, \mathbf{J})$ |
+
+### A.3 Mechanics and Trajectories
+
+| Symbol | Unicode | LaTeX | Meaning |
+|---|---|---|---|
+| $\omega_c$ | ω_c | `\omega_c` | Cyclotron frequency |
+| $r_L$ | r_L | `r_L` | Larmor radius |
+| $\mathbf{R}_g$ | 𝐑_g | `\mathbf{R}_g` | Guiding center |
+| $\mu$ | μ | `\mu` | Magnetic moment $mv_\perp^2/2B$ |
+| $\mathbf{V}_E$ | 𝐕_E | `\mathbf{V}_E` | $E\times B$ drift |
+| $\mathbf{V}_{\nabla B}$ | 𝐕_∇ B | `\mathbf{V}_{\nabla B}` | $\nabla B$ drift |
+| $\mathbf{V}_c$ | 𝐕_c | `\mathbf{V}_c` | Curvature drift |
+| $\mathbf{V}_{gc}$ | 𝐕_gc | `\mathbf{V}_{gc}` | Guiding-center drift |
+| $\theta_m$ | θₘ | `\theta_m` | Mirror loss-cone angle |
+| $R_m$ | Rₘ | `R_m` | Mirror ratio $B_m/B_0$ |
+
+### A.4 Relativity
+
+| Symbol | Unicode | LaTeX | Meaning |
+|---|---|---|---|
+| $\gamma$ | γ | `\gamma` | Lorentz factor |
+| $\beta$ | β | `\beta` | $v/c$ |
+| $u^\mu$ | u^μ | `u^\mu` | 4-velocity |
+| $p^\mu$ | p^μ | `p^\mu` | 4-momentum |
+| $f^\mu$ | f^μ | `f^\mu` | 4-force |
+| $\tau_0$ | τ₀ | `\tau_0` | Electron proper-time constant, $q^2/6\pi\epsilon_0 mc^3$ |
+| $B\rho$ | Bρ | `B\rho` | Rigidity |
+
+### A.5 Quantum Mechanics
+
+| Symbol | Unicode | LaTeX | Meaning |
+|---|---|---|---|
+| $\hbar$ | ℏ | `\hbar` | Dirac's constant |
+| $\psi$ | ψ | `\psi` | Wave function |
+| $l_B$ | l_B | `l_B` | Magnetic length $\sqrt{\hbar/eB}$ |
+| $N_\phi$ | Nᵩ | `N_\phi` | Flux-quantum degeneracy |
+| $\Phi_0$ | Φ₀ | `\Phi_0` | Flux quantum $h/e$ (or $h/2e$) |
+| $\nu$ | ν | `\nu` | Filling factor |
+| $C$ | C | `C` | Chern number |
+| $\Omega_n$ | Ωₙ | `\Omega_n` | Berry curvature |
+| $\mathcal{A}_n$ | Aₙ | `\mathcal{A}_n` | Berry connection |
+| $\sigma_{xy}$ | σ_xy | `\sigma_{xy}` | Hall conductivity |
+
+### A.6 Statistics and Plasma
+
+| Symbol | Unicode | LaTeX | Meaning |
+|---|---|---|---|
+| $f$ | f | `f` | Distribution function |
+| $C[f]$ | C[f] | `C[f]` | Collision operator |
+| $\nu$ | ν | `\nu` | Collision frequency |
+| $\sigma_\parallel$ | σ_∥ | `\sigma_\parallel` | Parallel conductivity |
+| $\sigma_P$ | σ_P | `\sigma_P` | Pedersen conductivity |
+| $\sigma_H$ | σ_H | `\sigma_H` | Hall conductivity |
+| $D_\perp$ | D_⊥ | `D_\perp` | Perpendicular diffusion |
+| $\lambda_D$ | λ_D | `\lambda_D` | Debye length |
+
+### A.7 Applications and Engineering
+
+| Symbol | Unicode | LaTeX | Meaning |
+|---|---|---|---|
+| $a_0$ | a₀ | `a_0` | Laser normalized amplitude |
+| $B_{ps}$ | Bₚₛ | `B_{ps}` | Graphene pseudo-magnetic field |
+| $n_{GJ}$ | n_GJ | `n_{GJ}` | Goldreich–Julian density |
+| $\Phi_{pc}$ | Φ_pc | `\Phi_{pc}` | Polar-cap potential |
+| $S$ | S | `S` | Lundquist number |
+| $\eta$ | η | `\eta` | Magnetic diffusivity / slip factor |
+| $\iota$ | ι | `\iota` | Rotational transform |
+
+---
+
+## Appendix B. Physical Constants
+
+| Constant | Unicode | LaTeX | Value | Unit |
+|---|---|---|---|---|
+| Vacuum permeability | μ₀ | `\mu_0` | $4\pi\times10^{-7}$ | H/m |
+| Vacuum permittivity | ε₀ | `\epsilon_0` | $8.854\times10^{-12}$ | F/m |
+| Speed of light | c | `c` | $2.998\times10^8$ | m/s |
+| Planck constant | h | `h` | $6.626\times10^{-34}$ | J·s |
+| Dirac's constant | ℏ | `\hbar` | $1.055\times10^{-34}$ | J·s |
+| Elementary charge | e | `e` | $1.602\times10^{-19}$ | C |
+| Electron mass | mₑ | `m_e` | $9.109\times10^{-31}$ | kg |
+| Proton mass | mₚ | `m_p` | $1.673\times10^{-27}$ | kg |
+| Boltzmann constant | k_B | `k_B` | $1.381\times10^{-23}$ | J/K |
+| Gravitational constant | G | `G` | $6.674\times10^{-11}$ | m³/(kg·s²) |
+| Fine-structure constant | α | `\alpha` | $1/137.036$ | dimensionless |
+| Flux quantum | Φ₀ | `\Phi_0` | $2.068\times10^{-15}$ | Wb |
+| Critical magnetic field | B_c | `B_c` | $4.41\times10^9$ | T |
+| Critical electric field | E_c | `E_c` | $1.32\times10^{18}$ | V/m |
+| Compton wavelength | λ_C | `\lambda_C` | $2.426\times10^{-12}$ | m |
+| Bohr radius | a₀ | `a_0` | $5.292\times10^{-11}$ | m |
+| Classical electron radius | rₑ | `r_e` | $2.818\times10^{-15}$ | m |
+
+### B.1 Useful Combinations
+
+| Combination | Value | Use |
+|---|---|---|
+| $\mu_0\epsilon_0$ | $1/c^2$ | Maxwell's equations |
+| $e^2/4\pi\epsilon_0$ | $1.44$ MeV·fm | Nuclear physics |
+| $\hbar c$ | $197.3$ MeV·fm | Particle physics |
+| $m_ec^2$ | $0.511$ MeV | Electron |
+| $m_pc^2$ | $938.3$ MeV | Proton |
+| $h/e^2$ | $25.813$ kΩ | Quantum Hall |
+| $\Phi_0 = h/2e$ | $2.068\times10^{-15}$ Wb | Superconductivity |
+| $B_c = m_e^2c^3/e\hbar$ | $4.41\times10^9$ T | QED |
+| $1$ eV | $1.602\times10^{-19}$ J | Energy |
+| $1$ T | $10^4$ G | Magnetic field |
+
+### B.2 Astronomical and Space Constants
+
+| Constant | Value | Use |
+|---|---|---|
+| Earth's magnetic field (equator) | 30 μT | Magnetosphere |
+| Earth's magnetic field (pole) | 60 μT | Magnetosphere |
+| Solar magnetic field (surface) | 0.1 T | Solar flares |
+| Solar wind speed | 400 km/s | Auroras |
+| IMF strength | 5 nT | Magnetosphere |
+| Pulsar magnetic field | $10^8-10^{12}$ T | Neutron stars |
+| Magnetar magnetic field | $10^{10}-10^{11}$ T | Strong fields |
+| QGP magnetic field | $10^{15}$ T | Heavy ions |
+| Black-hole magnetic field | 1–100 T | Jets |
+
+---
+
+## Appendix C. Mathematica Verification Code (Full Consolidation)
+
+### C.1 Act 1 — Foundations and Definitions
+
+```mathematica
+(* Verify the 4-force *)
+Fmunu = {{0, -Ex/c, -Ey/c, -Ez/c},
+         {Ex/c, 0, -Bz, By},
+         {Ey/c, Bz, 0, -Bx},
+         {Ez/c, -By, Bx, 0}};
+g = DiagonalMatrix[{1, -1, -1, -1}];
+uUp = {gamma c, gamma vx, gamma vy, gamma vz};
+uDown = g . uUp;  (* Since f^μ = q F^{μν} u_ν, contract with the covariant u_ν *)
+fourForce = q Fmunu . uDown;
+spatialForce = fourForce[[2 ;; 4]] / gamma;
+expected = q ({Ex, Ey, Ez} + Cross[{vx, vy, vz}, {Bx, By, Bz}]);
+Simplify[spatialForce - expected] == {0, 0, 0}  (* True *)
+
+(* Derive the Lorentz force from the Lagrangian *)
+L = (1/2) m (x'[t]^2 + y'[t]^2 + z'[t]^2)
+    - q phi[x, y, z, t]
+    + q (x'[t] Ax[x, y, z, t] + y'[t] Ay[x, y, z, t] + z'[t] Az[x, y, z, t]);
+(* Euler-Lagrange *)
+ELx = D[D[L, x'[t]], t] - D[L, x[t]];
+Simplify[ELx]
+
+(* Gauge invariance *)
+chi = chi[x, y, z, t];
+Avec = {Ax[x, y, z, t], Ay[x, y, z, t], Az[x, y, z, t]};
+phiVal = phi[x, y, z, t];
+AvecPrime = Avec + Grad[chi, {x, y, z}];
+phiPrime = phiVal - D[chi, t];
+BPrime = Curl[AvecPrime, {x, y, z}];
+B = Curl[Avec, {x, y, z}];
+Simplify[BPrime - B] == {0, 0, 0}  (* True *)
+```
+
+### C.2 Act 2 — Mathematical Structure
+
+```mathematica
+(* Trajectory in a uniform magnetic field *)
+Bvec = {0, 0, B0};
+eqns = {m x''[t] == q (y'[t] B0),
+        m y''[t] == -q (x'[t] B0),
+        m z''[t] == 0,
+        x[0] == x0, y[0] == y0, z[0] == z0,
+        x'[0] == vx0, y'[0] == vy0, z'[0] == vz0};
+sol = DSolve[eqns, {x[t], y[t], z[t]}, t];
+
+(* Verify Boris rotation *)
+borisRotate[vMinus_, q_, m_, dt_, Bvec_] := Module[
+  {t, s, vPrime, vPlus},
+  t = (q Bvec dt)/(2 m);
+  s = (2 t)/(1 + t . t);
+  vPrime = vMinus + Cross[vMinus, t];
+  vPlus = vMinus + Cross[vPrime, s];
+  vPlus];
+v0 = {1, 0, 0};
+Bvec = {0, 0, 1};
+v1 = borisRotate[v0, 1, 1, 0.1, Bvec];
+Norm[v1] - Norm[v0]  (* 0 *)
+
+(* Adiabatic invariant *)
+mu[B_, vPerp_, m_] := m vPerp^2 / (2 B);
+mirrorCondition[B0_, Bm_, theta0_] := Sin[theta0]^2 == B0/Bm;
+
+(* Differential-form structure of the electromagnetic tensor *)
+Aform = -phi[x, y, z, t] dt + Ax[x, y, z, t] dx
+        + Ay[x, y, z, t] dy + Az[x, y, z, t] dz;
+Fform = d[Aform];
+Simplify[d[Fform] == 0]  (* True *)
+```
+
+### C.3 Act 3 — Physical Depth
+
+```mathematica
+(* Relativistic Lorentz force *)
+gammaRel[v_] := 1/Sqrt[1 - v . v/c^2];
+pRel[v_] := gammaRel[v] m0 v;
+
+(* Landau levels *)
+landauLevels[n_, hBar_, omegaC_] := hBar omegaC (n + 1/2);
+
+(* Quantum Hall conductance *)
+hallConductance[nu_, e_, h_] := nu e^2/h;
+
+(* Boltzmann equation *)
+boltzmannEq = D[f[t, x, y, z, vx, vy, vz], t]
+  + vx D[f[t, x, y, z, vx, vy, vz], x]
+  + vy D[f[t, x, y, z, vx, vy, vz], y]
+  + vz D[f[t, x, y, z, vx, vy, vz], z]
+  + (q/m) ((Ex + vy Bz - vz By) D[f[t, x, y, z, vx, vy, vz], vx]
+         + (Ey + vz Bx - vx Bz) D[f[t, x, y, z, vx, vy, vz], vy]
+         + (Ez + vx By - vy Bx) D[f[t, x, y, z, vx, vy, vz], vz])
+  == collisionTerm;
+
+(* Larmor formula *)
+larmorPower[q_, a_, epsilon0_, c_] := q^2 a^2 / (6 Pi epsilon0 c^3);
+
+(* Rigidity *)
+rigidity[p_, q_] := p/q;
+```
+
+### C.4 Act 4 — Applications and Engineering
+
+```mathematica
+(* Cyclotron energy *)
+cyclotronEnergy[q_, B_, r_, m_] := q^2 B^2 r^2 / (2 m);
+
+(* Grad-Shafranov *)
+gradShafranov[psi_, R_, Z_, mu0_, p_, F_] :=
+  R D[1/R D[psi, R], R] + D[psi, {Z, 2}] ==
+  -mu0 R^2 D[p[psi], psi] - F[psi] D[F[psi], psi];
+
+(* Magnetic island width *)
+islandWidth[q_, R_, Btilde_, m_, qPrime_, B0_] :=
+  4 Sqrt[q^2 R Btilde / (m qPrime B0)];
+
+(* MRI Bloch equation *)
+blochEq = D[Mvec[t], t] == gammaGyro Cross[Mvec[t], Bvec]
+  - {Mx[t]/T2, My[t]/T2, (Mz[t] - M0)/T1};
+
+(* Hall voltage *)
+hallVoltage[iCurrent_, bField_, nCarrier_, qCharge_, tThickness_] :=
+  iCurrent bField / (nCarrier qCharge tThickness);
+
+(* SQUID *)
+squidCritical[Phi_, Phi0_, I0_] := 2 I0 Abs[Cos[Pi Phi/Phi0]];
+
+(* GJ density *)
+gjDensity[Omega_, Bfield_, eCharge_, epsilon0_] :=
+  2 epsilon0 Omega . Bfield / eCharge;
+
+(* Rechester-Rosenbluth diffusion *)
+rrDiffusion[q_, R_, BtildeSq_, B0_, Lc_] :=
+  Pi q R BtildeSq / B0^2 * Lc;
+```
+
+### C.5 Act 5 — Frontiers
+
+```mathematica
+(* AI control reward function *)
+aiReward[psi_, psiTarget_, Jvec_, Bvec_, gradp_] :=
+  -Norm[psi - psiTarget] - Norm[Cross[Jvec, Bvec] - gradp];
+
+(* Penning trap *)
+penningFreq[q_, B_, m_] := q B / m;
+
+(* Graphene pseudo-magnetic field *)
+pseudoB[beta_, aLattice_, uxx_, uyy_, uxy_, hBar_, eCharge_] :=
+  {hBar beta/(2 eCharge aLattice) (uxx - uyy),
+   hBar beta/(2 eCharge aLattice) (-2 uxy)};
+
+(* Majorana topological condition *)
+majoranaCondition[gFactor_, muB_, Bfield_, Delta_, mu_] :=
+  gFactor muB Bfield > Sqrt[Delta^2 + mu^2];
+
+(* Vortex Lorentz force *)
+vortexForce[Jext_, Phi0_] := Cross[Jext, {0, 0, Phi0}];
+
+(* Dirac quantization *)
+diracQuantization[qCharge_, gMonopole_] := qCharge gMonopole == nInteger hBar/2;
+
+(* Born-Infeld Lagrangian *)
+bornInfeldLagrangian[Fmunu_, b_] :=
+  b^2 (1 - Sqrt[1 + (Fmunu Fmunu)/(2 b^2) - (Fmunu Star[Fmunu])^2/(16 b^4)]);
+```
+
+### C.6 Act 6 — Extended Domains
+
+```mathematica
+(* Covariant derivative *)
+covariantDerivative = Dmu == PartialMu + I g Amu;
+
+(* Field-strength tensor (non-Abelian) *)
+fieldStrength = Fmunu == PartialMu Anu - PartialNu Amu + I g {Amu, Anu};
+
+(* CME current *)
+cmeCurrent[mu5_, Bvec_, eCharge_] := eCharge^2/(2 Pi^2) mu5 Bvec;
+
+(* BZ power *)
+bzPower[kappa_, OmegaH_, PhiB_, c_] := kappa/(4 Pi c) OmegaH^2 PhiB^2;
+
+(* Lorentz violation *)
+lorentzViolation = -1/4 Fmunu Fmunu + 1/2 kmunu Fmulambda Fnu lambda;
+
+(* SAR *)
+sarValue[sigmaConductivity_, Efield_, rhoDensity_] :=
+  sigmaConductivity Norm[Efield]^2 / rhoDensity;
+```
+
+---
+
+## Appendix D. Python Numerical Code
+
+### D.1 Boris Pusher (Python)
+
+```python
+import numpy as np
+
+def boris_push(x, v, q, m, E, B, dt):
+    """
+    Boris algorithm for relativistic charged particle.
+    x, v: position, velocity (3-vectors)
+    q, m: charge, mass
+    E, B: electric, magnetic field (3-vectors)
+    dt: time step
+    """
+    # Step 1: half electric acceleration
+    v_minus = v + (q * dt / (2 * m)) * E
+
+    # Step 2: magnetic rotation
+    t = (q * dt / (2 * m)) * B
+    s = 2 * t / (1 + np.dot(t, t))
+    v_prime = v_minus + np.cross(v_minus, t)
+    v_plus = v_minus + np.cross(v_prime, s)
+
+    # Step 3: half electric acceleration
+    v_new = v_plus + (q * dt / (2 * m)) * E
+
+    # Position update
+    x_new = x + v_new * dt
+
+    return x_new, v_new
+```
+
+### D.2 Visualizing a Cyclotron Trajectory (Python)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+q, m, B0 = 1.0, 1.0, 1.0
+omega_c = q * B0 / m
+v_perp = 1.0
+r_L = v_perp / omega_c
+T = 2 * np.pi / omega_c
+
+t = np.linspace(0, 3*T, 1000)
+x = r_L * np.sin(omega_c * t)
+y = r_L * np.cos(omega_c * t)
+
+plt.figure(figsize=(6, 6))
+plt.plot(x, y)
+plt.axis('equal')
+plt.xlabel('x [m]')
+plt.ylabel('y [m]')
+plt.title('Cyclotron orbit')
+plt.grid(True)
+plt.show()
+```
+
+### D.3 Landau Levels (Python)
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.special import eval_hermite
+
+def landau_wavefunction(n, x, B=1.0, hbar=1.0, m=1.0, e=1.0):
+    """Landau level wavefunction in symmetric gauge."""
+    l_B = np.sqrt(hbar / (e * B))
+    xi = x / l_B
+    psi = (1 / np.sqrt(2**n * np.math.factorial(n) * np.sqrt(np.pi) * l_B)) \
+          * np.exp(-xi**2 / 2) * eval_hermite(n, xi)
+    return psi
+
+x = np.linspace(-5, 5, 500)
+for n in range(4):
+    plt.plot(x, landau_wavefunction(n, x), label=f'n={n}')
+plt.xlabel('x / l_B')
+plt.ylabel('ψ_n(x)')
+plt.legend()
+plt.title('Landau level wavefunctions')
+plt.show()
+```
+
+### D.4 A 1D PIC Code (Python, Abridged)
+
+```python
+import numpy as np
+
+class PIC1D:
+    def __init__(self, N, L, q, m, dt, nx):
+        self.N = N
+        self.L = L
+        self.q = q
+        self.m = m
+        self.dt = dt
+        self.nx = nx
+        self.dx = L / nx
+
+        # Initialize particles
+        self.x = np.random.uniform(0, L, N)
+        self.v = np.random.normal(0, 0.1, N)
+
+        # Fields
+        self.E = np.zeros(nx)
+        self.rho = np.zeros(nx)
+
+    def deposit_charge(self):
+        self.rho[:] = 0
+        for i in range(self.N):
+            g = int(self.x[i] / self.dx) % self.nx
+            self.rho[g] += self.q / self.dx
+        # Normalize
+        self.rho -= np.mean(self.rho)
+
+    def solve_field(self):
+        # 1D Poisson
+        k = 2 * np.pi * np.fft.fftfreq(self.nx, self.dx)
+        k[0] = 1  # avoid division by zero
+        rho_k = np.fft.fft(self.rho)
+        E_k = -1j * rho_k / (epsilon0 * k)
+        self.E = np.real(np.fft.ifft(E_k))
+
+    def push(self):
+        for i in range(self.N):
+            g = int(self.x[i] / self.dx) % self.nx
+            self.v[i] += (self.q / self.m) * self.E[g] * self.dt
+            self.x[i] += self.v[i] * self.dt
+```
+
+---
+
+## Appendix E. Consolidated Reference Index
+
+### E.1 Historical Original Papers
+
+1. Lorentz, H. A., *La théorie électromagnétique de Maxwell et son application aux corps mouvants*, Archives Néerlandaises **25**, 363–552 (1892). [archive.org](https://archive.org/details/lathorielectrom00loregoog)
+2. Thomson, J. J., *Cathode Rays*, Phil. Mag. **44**, 293–316 (1897). [doi:10.1080/14786449708621070](https://doi.org/10.1080/14786449708621070)
+3. Heaviside, O., *Electromagnetic Theory*, Vol. II (1899). [archive.org](https://archive.org/details/electromagnetict02heavrich)
+4. Hall, E. H., *On a new action of the magnet on electric currents*, Am. J. Math. **2**, 287 (1879). [doi:10.2475/ajs.s3-19.117.200](https://doi.org/10.2475/ajs.s3-19.117.200)
+5. Larmor, J., *On a dynamical theory of the electric and luminiferous medium*, Phil. Trans. R. Soc. A **190**, 205 (1897). [doi:10.1098/rsta.1897.0020](https://doi.org/10.1098/rsta.1897.0020)
+6. Fokker, A. D., *Die mittlere Energie rotierender elektrischer Dipole im Strahlungsfeld*, Ann. Phys. **348**, 810 (1914). [doi:10.1002/andp.19143480507](https://doi.org/10.1002/andp.19143480507)
+7. Dirac, P. A. M., *Quantised singularities in the electromagnetic field*, Proc. R. Soc. A **133**, 60 (1931). [doi:10.1098/rspa.1931.0130](https://doi.org/10.1098/rspa.1931.0130)
+8. Born, M., Infeld, L., *Foundations of the new field theory*, Proc. R. Soc. A **144**, 425 (1934). [doi:10.1098/rspa.1934.0059](https://doi.org/10.1098/rspa.1934.0059)
+9. Dirac, P. A. M., *Classical theory of radiating electrons*, Proc. R. Soc. A **167**, 148 (1938). [doi:10.1098/rspa.1938.0124](https://doi.org/10.1098/rspa.1938.0124)
+10. Landau, L. D., *Diamagnetismus der Metalle*, Z. Phys. **64**, 629 (1930). [doi:10.1007/BF01397213](https://doi.org/10.1007/BF01397213)
+
+### E.2 Textbooks and Standard References
+
+11. Jackson, J. D., *Classical Electrodynamics*, 3rd ed., Wiley (1998).
+12. Griffiths, D. J., *Introduction to Electrodynamics*, 4th ed., Cambridge (2017).
+13. Goldstein, H., Poole, C., Safko, J., *Classical Mechanics*, 3rd ed., Addison-Wesley (2001). [doi:10.1119/1.1484149](https://doi.org/10.1119/1.1484149)
+14. Landau & Lifshitz, *The Classical Theory of Fields*, 4th ed., Pergamon (1975).
+15. Landau & Lifshitz, *Mechanics*, 3rd ed., Pergamon (1976).
+16. Chen, F. F., *Introduction to Plasma Physics and Controlled Fusion*, 3rd ed., Springer (2016).
+17. Northrop, T. G., *The Adiabatic Motion of Charged Particles*, Wiley (1963). [doi:10.1002/9781118033156](https://doi.org/10.1002/9781118033156)
+18. Nakahara, M., *Geometry, Topology and Physics*, 2nd ed., Taylor & Francis (2003).
+19. Arnold, V. I., *Mathematical Methods of Classical Mechanics*, 2nd ed., Springer (1989).
+20. Sokolov, A. A., Ternov, I. M., *Synchrotron Radiation*, Pergamon (1968).
+
+### E.3 Review Papers
+
+21. Xiao, D., Chang, M.-C., Niu, Q., *Berry phase effects on electronic properties*, Rev. Mod. Phys. **82**, 1959 (2010). [doi:10.1103/RevModPhys.82.1959](https://doi.org/10.1103/RevModPhys.82.1959)
+22. Esarey, E., Schroeder, C. B., Leemans, W. P., *Physics of laser-driven plasma-based electron accelerators*, Rev. Mod. Phys. **81**, 1229 (2009). [doi:10.1103/RevModPhys.81.1229](https://doi.org/10.1103/RevModPhys.81.1229)
+23. Braginskii, S. I., *Transport processes in a plasma*, Reviews of Plasma Physics **1**, 205 (1965).
+24. Sivukhin, D. V., *Motion of charged particles in electromagnetic fields in the plasma physics*, Reviews of Plasma Physics **1**, 1 (1965).
+25. Kostelecký, V. A., Russell, N., *Data tables for Lorentz and CPT violation*, Rev. Mod. Phys. **83**, 11 (2011). [doi:10.1103/RevModPhys.83.11](https://doi.org/10.1103/RevModPhys.83.11)
+
+### E.4 Recent Papers (2020–2025)
+
+26. Degrave, J., et al., *Magnetic control of tokamak plasmas through deep reinforcement learning*, Nature **602**, 414 (2022). [doi:10.1038/s41586-021-04301-9](https://doi.org/10.1038/s41586-021-04301-9)
+27. Jain, S., et al., *Penning micro-trap for quantum computing*, Nature **627**, 510 (2024). [doi:10.1038/s41586-024-07111-x](https://doi.org/10.1038/s41586-024-07111-x)
+28. Zhang, Y., et al., *Giant nonlinear Hall effect in strained twisted bilayer graphene*, Phys. Rev. B **106**, L041111 (2022). [doi:10.1103/PhysRevB.106.L041111](https://doi.org/10.1103/PhysRevB.106.L041111)
+29. Lamač, M., et al., *Anomalous relativistic emission from self-modulated plasma mirrors*, Phys. Rev. Lett. **131**, 205001 (2023). [doi:10.1103/PhysRevLett.131.205001](https://doi.org/10.1103/PhysRevLett.131.205001)
+30. Acharya, B., et al. (MoEDAL), *Search for magnetic monopoles via Schwinger pair production*, Nature **602**, 63 (2022). [doi:10.1038/s41586-021-04298-1](https://doi.org/10.1038/s41586-021-04298-1)
+31. W7-X Team, *Quasi-isodynamic optimization*, Phys. Rev. Lett. **129**, 095001 (2022). [doi:10.1103/PhysRevLett.129.095001](https://doi.org/10.1103/PhysRevLett.129.095001)
+32. STAR Collaboration, *Search for the chiral magnetic effect with isobar collisions*, Phys. Rev. C **105**, 014901 (2022). [arXiv:2109.00131](https://arxiv.org/abs/2109.00131)
+33. STAR Collaboration, *Global Λ hyperon polarization in nuclear collisions*, Nature **548**, 62 (2017). [doi:10.1038/nature23004](https://doi.org/10.1038/nature23004)
+34. Event Horizon Telescope Collaboration, *First M87 event horizon telescope results. VIII. Magnetic field structure*, Astrophys. J. Lett. **910**, L13 (2021). [doi:10.3847/2041-8213/abe4de](https://doi.org/10.3847/2041-8213/abe4de)
+35. MICROSCOPE Collaboration, *MICROSCOPE mission: Final results of the test of the equivalence principle*, Phys. Rev. Lett. **129**, 121102 (2022). [arXiv:2209.06628](https://arxiv.org/abs/2209.06628)
+36. LIGO-Virgo Collaboration, *Magnetic correlation noise in LIGO*, Phys. Rev. D **105**, 082005 (2022). [arXiv:2201.04475](https://arxiv.org/abs/2201.04475)
+
+### E.5 Other
+
+37. Boris, J. P., *Relativistic plasma simulation-optimization of a hybrid code*, Proc. 4th Conf. Numerical Simulation of Plasmas, 3–67 (1970). [ADS](https://ui.adsabs.harvard.edu/abs/1970nusp.conf....3B)
+38. Esirkepov, T. Zh., *Exact charge conservation scheme for PIC simulation*, Comput. Phys. Commun. **144**, 26 (2001). [doi:10.1016/S0010-4655(00)00228-9](https://doi.org/10.1016/S0010-4655(00)00228-9)
+39. Hockney, R. W., Eastwood, J. W., *Computer Simulation Using Particles*, Adam Hilger (1988). [doi:10.1201/9780367806934](https://doi.org/10.1201/9780367806934)
+40. Birdsall, C. K., Langdon, A. B., *Plasma Physics via Computer Simulation*, McGraw-Hill (1985).
+40a. Qin, H. et al., *Why is Boris algorithm so good?*, Phys. Plasmas **20**, 084503 (2013). [doi:10.1063/1.4818428](https://doi.org/10.1063/1.4818428)
+40b. Ellison, C. L., Burby, J. W. & Qin, H., *Comment on "Symplectic integration of magnetic systems": a proof that the Boris algorithm is not variational*, J. Comput. Phys. **301**, 489–493 (2015). [doi:10.1016/j.jcp.2015.07.059](https://doi.org/10.1016/j.jcp.2015.07.059)
+40c. He, Y. et al., *Volume-preserving algorithms for charged particle dynamics*, J. Comput. Phys. **281**, 135–147 (2015). [doi:10.1016/j.jcp.2014.10.032](https://doi.org/10.1016/j.jcp.2014.10.032)
+
+### E.6 Standards and Regulations
+
+41. IEC 60601-2-33, *Medical electrical equipment — MRI safety*. [IEC Webstore](https://webstore.iec.ch/en/publication/26147)
+42. ICNIRP, *Guidelines for limiting exposure to electromagnetic fields*, Health Phys. **118**, 483 (2020). [doi:10.1093/rpd/ncaa155](https://doi.org/10.1093/rpd/ncaa155)
+43. IEEE C95.1-2019, *IEEE Standard for Safety Levels with Respect to Human Exposure to Electric, Magnetic, and Electromagnetic Fields*.
+
+### E.7 Nobel Lectures
+
+44. Nobel Prize in Physics 1902, Lorentz & Zeeman. [nobelprize.org](https://www.nobelprize.org/prizes/physics/1902/)
+45. Nobel Prize in Physics 1906, J.J. Thomson. [nobelprize.org](https://www.nobelprize.org/prizes/physics/1906/)
+46. Nobel Prize in Physics 1939, Lawrence. [nobelprize.org](https://www.nobelprize.org/prizes/physics/1939/)
+47. Nobel Prize in Physics 1985, von Klitzing. [nobelprize.org](https://www.nobelprize.org/prizes/physics/1985/)
+48. Nobel Prize in Physics 2007, Fert & Grünberg. [nobelprize.org](https://www.nobelprize.org/prizes/physics/2007/)
+49. Nobel Prize in Physics 2017, Weiss, Barish, Thorne. [nobelprize.org](https://www.nobelprize.org/prizes/physics/2017/)
+
+---
+
+## Appendix F. Mapping of the 18 Original Questions to the Main Text
+
+| Original question | Location | Key answer |
+|---|---|---|
+| Q1. Who discovered the Lorentz force? | §1.1 | A 60-year synthesis, Faraday→Maxwell→Thomson/Heaviside→Lorentz |
+| Q2. Why $v\times B$? | §1.4 | The Euler–Lagrange result of $L=-q\phi+q\mathbf{v}\cdot\mathbf{A}$ |
+| Q3. Why does the magnetic field do no work? | §1.2 | Proof that $\mathbf{F}_m\cdot\mathbf{v}=0$ |
+| Q4. Why is there confusion over unit systems? | §1.2.2-1.2.3 | Gaussian vs. HL vs. SI, differences in $4\pi$ and $c$ |
+| Q5. What is the 4D form? | §1.3 | $f^\mu=qF^{\mu\nu}u_\nu$ |
+| Q6. What is the Larmor radius? | §2.1.2 | $r_L=m v_\perp/|q|B$ |
+| Q7. What are the 3 types of drift? | §2.2 | $E\times B$, $\nabla B$, curvature |
+| Q8. What is the magnetic mirror? | §2.3.3 | The loss cone, $\sin^2\theta_0=B_0/B_m$ |
+| Q9. Why the Boris algorithm? | §2.4 | Phase-space volume conservation, exact $E\times B$ |
+| Q10. The AB effect and the Lorentz force? | §2.5.2, §1.5 | $F=0$ yet a phase $\oint\mathbf{A}\cdot d\mathbf{l}$ exists |
+| Q11. Relativistic mass increase? | §3.1.2 | $m_\parallel=\gamma^3 m$, $m_\perp=\gamma m$ |
+| Q12. Radiation reaction? | §3.2.3-3.2.4 | ALD → Landau–Lifshitz |
+| Q13. Landau levels? | §3.3.2 | $E_n=\hbar\omega_c(n+1/2)$ |
+| Q14. What is the Hall effect? | §3.3.3, §4.4.1 | $V_H=IB/ned$, $\sigma_{xy}=\nu e^2/h$ |
+| Q15. Tokamak equilibrium? | §4.2.1 | Grad–Shafranov, $\Delta^*\psi=-\mu_0R^2p'-FF'$ |
+| Q16. What is the aurora? | §4.5.1 | Atmospheric collisions of particles with conserved $\mu$, confined by $\mathbf{B}$ |
+| Q17. Chaos? | §4.6 | Distinguishing the Lorentz force from the Lorenz equations; KAM breakdown |
+| Q18. What is the future? | §5-6 | AI $J\times B$ control, QGP $10^{15}$T, $W$-condensation at $10^{20}$T |
+
+---
+
+## Appendix G. Index
+
+### G.1 People
+
+- **Abraham, M.** — §3.2.3
+- **Aharonov, Y.** — §2.5.2, §3.3.6
+- **Ampère, A.-M.** — §6.3.1
+- **Blandford, R.** — §6.2.5
+- **Bloch, F.** — §4.3.1
+- **Bohm, D.** — §2.5.2
+- **Boris, J. P.** — §2.4.2
+- **Born, M.** — §5.2.4
+- **Braginskii, S. I.** — §3.4.6
+- **Chern, S.-S.** — §2.5.3, §3.3.3
+- **Dirac, P. A. M.** — §2.5.3, §3.3.5
+- **Faraday, M.** — §1.1.1
+- **Fokker, A. D.** — §3.4.3
+- **Grad, H.** — §4.2.1
+- **Heaviside, O.** — §1.1.3
+- **Infeld, L.** — §5.2.4
+- **Kolmogorov, A. N.** — §4.6.2
+- **Landau, L. D.** — §3.3.2
+- **Langevin, P.** — §3.4.4
+- **Larmor, J.** — §3.2.1
+- **Liénard, A.** — §3.2.2
+- **Lorentz, H. A.** — §1.1.4
+- **Lorenz, E. N.** — §4.6.6
+- **Laughlin, R. B.** — §3.3.3
+- **Majorana, E.** — §5.3.4
+- **Maxwell, J. C.** — §1.1.2
+- **Northrop, T. G.** — §2.2
+- **Rechester, A. B.** — §4.6.4
+- **Rosenbluth, M. N.** — §4.6.4
+- **Shafranov, V. D.** — §4.2.1
+- **Thomson, J. J.** — §1.1.3
+- **Vlasov, A. A.** — §3.4.2
+- **Wong, S. K.** — §6.1.1
+- **Znajek, R.** — §6.2.5
+
+### G.2 Concepts
+
+- **AB effect** — §2.5.2, §3.3.6
+- **ALD equation** — §3.2.3
+- **Berry phase** — §2.5.1, §5.3.6
+- **Boris algorithm** — §2.4.2
+- **BZ mechanism** — §6.2.5
+- **CME** — §6.1.4
+- **Chern number** — §2.5.3, §3.3.3
+- **Dirac quantization** — §2.5.3, §6.1.5
+- **Grad–Shafranov equation** — §4.2.1
+- **IQHE / FQHE** — §3.3.3, §5.3.1
+- **KAM theorem** — §4.6.2
+- **Landau levels** — §3.3.2
+- **Liénard formula** — §3.2.2
+- **Maxwell's equations** — §2.5.5
+- **MCC** — §2.4.7
+- **PIC** — §2.4.6
+- **Rechester–Rosenbluth diffusion** — §4.6.4
+- **TMR / GMR** — §4.4.2
+- **Vlasov equation** — §3.4.2
+- **Gaussian unit system** — §1.2.2
+- **Gauge invariance** — §1.5
+- **Curvature drift** — §2.2.3
+- **Graphene pseudo-magnetic field** — §5.3.5
+- **Adiabatic invariant** — §2.3
+- **Drift theory** — §2.2
+- **Lagrangian mechanics** — §1.4
+- **Larmor formula** — §3.2.1
+- **Larmor radius** — §2.1.2
+- **Landau levels** — §3.3.2
+- **Majorana** — §5.3.4
+- **Meissner effect** — §5.3.7
+- **Maxwell–Boltzmann distribution** — §3.4.5
+- **Radiation reaction** — §3.2.3
+- **Boris algorithm** — §2.4.2
+- **Vlasov equation** — §3.4.2
+- **Cyclotron** — §4.1.1
+- **Relativistic Lorentz force** — §3.1
+- **Fiber bundle** — §2.5.4
+- **Magnetic mirror** — §2.3.3
+- **Magnetic monopole** — §2.5.3, §5.2.1
+- **Magnetic reconnection** — §4.5.3, §4.6.3
+- **Quantum Hall effect** — §3.3.3, §5.3.1
+- **Gyration** — §2.4.2
+- **Zeeman effect** — §3.3.4
+- **Superconducting vortex** — §5.3.7
+- **Poisson bracket** — §1.4.6
+- **Fokker–Planck equation** — §3.4.3
+- **Heisenberg equation of motion** — §3.3.1
+- **Hall effect** — §3.3.3, §4.4.1, §5.3.1
+- **Hofstadter** — §3.3.2
+
+### G.3 Phenomena and Applications
+
+- **MRI** — §4.3.1
+- **VASIMR** — §5.1.6
+- **Accelerators** — §4.1
+- **GMR sensors** — §4.4.2
+- **LIGO** — §5.1.5, §6.2.4
+- **MEMS magnetic sensors** — §4.4.4
+- **Penning trap** — §5.1.2
+- **QGP** — §6.1.3
+- **SQUID** — §4.4.3
+- **TMR sensors** — §4.4.2
+- **Strong-field QED** — §6.1.7
+- **Graphene** — §5.3.5
+- **Millicharged particles** — §5.2.2, §6.1.6
+- **Van Allen belts** — §4.5.2
+- **Black-hole jets** — §6.2.5
+- **Proton therapy** — §4.3.2
+- **Auroras** — §4.5.1
+- **Magnetic nanoparticles** — §4.3.3
+- **Magnetic tweezers** — §4.3.4
+- **Heavy-ion collisions** — §6.1.4
+- **Solar flares** — §4.5.6
+- **Tokamak** — §4.2.1
+- **Pulsars** — §4.5.5
+- **Hall thrusters** — §5.1.6
+- **Hall sensors** — §4.4.1
+
+### G.4 Formula Symbols (Alphabetical)
+
+- **$a_0$** — §5.1.4
+- **$B\rho$** — §3.2.6
+- **$B_{ps}$** — §5.3.5
+- **$c_1$ (Chern number)** — §2.5.3
+- **$D_{RR}$** — §4.6.4
+- **$E_n$ (Landau)** — §3.3.2
+- **$f^\mu$** — §1.3
+- **$F^{\mu\nu}$** — §1.3
+- **$H$ (Hamiltonian)** — §1.4.3
+- **$L$ (Lagrangian)** — §1.4.1
+- **$n_{GJ}$** — §4.5.5
+- **$r_L$** — §2.1.2
+- **$R_m$** — §2.3.3
+- **$S$ (Lundquist)** — §4.5.3
+- **$u^\mu$** — §1.3
+- **$V_{E\times B}$** — §2.2.1
+- **$V_{\nabla B}$** — §2.2.2
+- **$W(C)$ (Wilson loop)** — §2.5.6
+- **$\gamma$ (Lorentz factor)** — §3.1.1
+- **$\gamma_n$ (Berry phase)** — §2.5.1
+- **$\eta$ (slip factor)** — §4.1.2
+- **$\theta_m$ (mirror angle)** — §2.3.3
+- **$\mu$ (adiabatic invariant)** — §2.3
+- **$\nu$ (filling factor)** — §3.3.3
+- **$\rho$ (rigidity)** — §3.2.6
+- **$\sigma_{xy}$ (Hall conductivity)** — §3.3.3, §5.3.1
+- **$\tau_0$ (electron time)** — §3.2.3
+- **$\Phi_0$ (flux quantum)** — §3.3.3
+- **$\chi$ (gauge function)** — §1.5
+- **$\Omega_n$ (Berry curvature)** — §2.5.1, §5.3.6
+- **$\omega_c$ (cyclotron)** — §2.1.1
+
+### G.5 Nobel Prize Years
+
+- **1902** — Lorentz, Zeeman — §6.3.7
+- **1906** — J.J. Thomson — §6.3.7
+- **1907** — Michelson — §6.3.7
+- **1923** — Millikan — §6.3.7
+- **1936** — Hess — §6.3.7
+- **1939** — Lawrence — §6.3.7
+- **1943** — Stern — §6.3.7
+- **1957** — Yang, Lee — §6.3.7
+- **1960** — Glaser — §6.3.7
+- **1979** — Glashow, Weinberg, Salam — §6.3.7
+- **1985** — von Klitzing — §6.3.7
+- **1989** — Dehmelt, Paul — §6.3.7
+- **1998** — Laughlin, Störmer, Tsui — §6.3.7
+- **2000** — Alferov, Kilby — §6.3.7
+- **2007** — Fert, Grünberg — §6.3.7
+- **2010** — Geim, Novoselov — §6.3.7
+- **2013** — Englert, Higgs — §6.3.7
+- **2014** — Akasaki — §6.3.7
+- **2016** — Thouless, Haldane, Kosterlitz — §6.3.7
+- **2017** — Weiss, Barish, Thorne — §6.3.7
+- **2019** — Peebles — §6.3.7
+- **2022** — Aspect, Clauser, Zeilinger — §6.3.7
+
+---
+## Closing of the Appendices (Part 1)
+
+> **Summary of Appendices A–G**
+>
+> - **Appendix A** Notation: 7 categories (basic, potentials, mechanics, relativity, quantum, statistics, applications)
+> - **Appendix B** Physical constants: basic constants + useful combinations + astronomical constants
+> - **Appendix C** Mathematica code: key verification code for each of the six acts
+> - **Appendix D** Python code: Boris pusher, cyclotron visualization, Landau levels, 1D PIC
+> - **Appendix E** Consolidated reference index: 49 entries (original papers, textbooks, reviews, recent work, standards, Nobel Prizes)
+> - **Appendix F** Mapping of the 18 original questions to the main text: confirming full coverage
+> - **Appendix G** Index: people, concepts, phenomena, formula symbols, Nobel Prize years
+
+---
+
+## Chapter 7. Deeper Theory: Tokamaks, Auroras, and Gyrokinetics
+
+> **Character of this chapter**
+> An extension of Act 4 (Applications) and Act 5 (Frontiers) of the main text.
+> Covers tokamak equilibrium, auroral precipitation, and gyrokinetic, MHD, and PIC codes.
+> Practical code is implemented directly from the main-text equations in Chapter 8, "Turning the Mathematical Models into Python."
+
+---
+
+### 7.1 Tokamak Geometry and Magnetic Confinement
+
+#### 7.1.1 The Grad–Shafranov Equation — Physics
+
+$$\Delta^*\psi = -\mu_0 R^2 p'(\psi) - F(\psi)F'(\psi)$$
+
+> **Unicode**
+> ```
+> Δ^*ψ = -μ₀ R² p'(ψ) - F(ψ)F'(ψ)
+> ```
+
+$$\Delta^* = R\frac{\partial}{\partial R}\left(\frac{1}{R}\frac{\partial}{\partial R}\right) + \frac{\partial^2}{\partial Z^2}$$
+
+> **Unicode**
+> ```
+> Δ^* = R(∂)/(∂ R)((1)/(R)(∂)/(∂ R)) + (∂²)/(∂ Z²)
+> ```
+
+Here $\psi$ is the poloidal flux and $F = R B_\phi$. This is the axisymmetric reduction of $\mathbf{J}\times\mathbf{B} = \nabla p$: the left side is an operator, and the right side is the plasma current source.
+
+#### 7.1.2 Overview of Numerical Methods
+
+1. **Linear solver:** solve $\Delta^*\psi = J_\phi$ via multigrid
+2. **Current update:** recompute $p'$ and $FF'$ from $\psi_{norm}$
+3. **Picard iteration:** convergence when $\|\psi_{new}-\psi_{old}\| < 10^{-6}$
+4. **Free-boundary:** optimize PF coil currents
+
+#### 7.1.3 EFIT and G-EQDSK
+
+- **Forward:** coils → equilibrium
+- **Inverse:** measurements (flux loops, magnetic probes, MSE, pressure) → equilibrium (EFIT)
+- Input assumptions: $p'(\psi)$, $FF'(\psi)$ = polynomial/spline coefficients
+- Output: $\psi(R,Z)$, the q-profile, the separatrix
+
+G-EQDSK is the common format. FreeGS, EFIT, and TRANSP all exchange equilibria in this format. JET's EFIT++ is C++-based; the recent EFIT-AI is ML-accelerated.
+
+#### 7.1.4 Toroidal Coil Geometry
+
+$$B_\phi(R) = B_0\frac{R_0}{R}$$
+
+> **Unicode**
+> ```
+> B_φ(R) = B₀(R₀)/(R)
+> ```
+
+With $N$ discrete TF coils, ripple appears:
+
+$$B(R,\phi) = B_\phi(R)\left[1 + \delta\cos(N\phi)\right]$$
+
+> **Unicode**
+> ```
+> B(R,φ) = B_φ(R)[1 + δcos(Nφ)]
+> ```
+
+ITER: $N = 18$, $\delta \sim 0.01$. Maximum TF coil field 11.8 T, plasma center 5.3 T.
+
+#### 7.1.5 Flux-Surface Coordinates $(\psi,\theta,\phi)$
+
+- $\psi$: flux-surface label, 0 (axis) to 1 (boundary)
+- $\theta$: poloidal angle, 0 at the outboard midplane
+- $\phi$: toroidal angle
+- Definition: $\mathbf{B} = \nabla\alpha\times\nabla\psi$, $\alpha = \zeta - \int I(\psi)J/(R^2)\,d\theta'$
+- Field-aligned: $x = \psi$, $y = \theta$, $z = \phi - q(\psi)\theta$
+
+**Why is this needed?** Because the $\nabla B$ drift and curvature drift separate cleanly with respect to $\psi$.
+
+#### 7.1.6 ITER Magnetic-Field Parameters
+
+| Parameter | Value | Note |
+|---|---|---|
+| $R_0$ | 6.2 m | major radius |
+| $a$ | 2.0 m | minor radius |
+| $B_0$ | 5.3 T | at $R_0$ |
+| $I_p$ | 15 MA (17 MA max) | plasma current |
+| Volume | 840 m³ | |
+| $B_{max}$ on TF coil | 11.8 T | |
+| $\kappa_{95}$ | 1.85 | elongation |
+| $\delta_{95}$ | 0.49 | triangularity |
+| Single-null divertor | lower X-point | |
+| $q_{95}$ | ~3 | |
+
+Source: ITER baseline Q=10, shaped tokamak grid.
+
+#### 7.1.7 The Safety-Factor q-Profile
+
+$$q = \frac{d\phi}{d\theta} \approx \frac{r B_\phi}{R B_\theta}$$
+
+> **Unicode**
+> ```
+> q = (dφ)/(dθ) ≈ (r B_φ)/(R B_θ)
+> ```
+
+$$q(\psi) = \frac{1}{2\pi}\oint\frac{B_\phi}{R B_p}\, dl_{pol}$$
+
+> **Unicode**
+> ```
+> q(ψ) = (1)/(2π)∮(B_φ)/(R B_p) dl_pol
+> ```
+
+- $q_0 \sim 1$ (axis), $q_{95} \sim 3$ (boundary), 6–8 further out
+- islands and NTMs form on rational surfaces $q = m/n$
+- kink instability for $q < 2$
+
+---
+
+### 7.2 Auroral Geometry and Models of Earth's Magnetic Field
+
+#### 7.2.1 The Dipole Magnetic Field
+
+$$\mathbf{B}(\mathbf{r}) = \frac{\mu_0}{4\pi r^3}\left[3\hat{r}(\hat{r}\cdot\mathbf{m}) - \mathbf{m}\right]$$
+
+> **Unicode**
+> ```
+> 𝐁(𝐫) = (μ₀)/(4π r³)[3r̂(r̂·𝐦) - 𝐦]
+> ```
+
+Spherical components:
+
+$$B_r = -2 B_0 \left(\frac{R_E}{r}\right)^3 \sin\lambda_m, \quad B_\lambda = B_0 \left(\frac{R_E}{r}\right)^3 \cos\lambda_m$$
+
+> **Unicode**
+> ```
+> B_r = -2B₀((R_E)/(r))³sinλₘ,   B_λ = B₀((R_E)/(r))³cosλₘ
+> ```
+
+$$|B| = B_0 \left(\frac{R_E}{r}\right)^3 \sqrt{1+3\sin^2\lambda_m}$$
+
+> **Unicode**
+> ```
+> |B| = B₀((R_E)/(r))³√(1+3sin²λₘ)
+> ```
+
+Field line: $r = L R_E \cos^2\lambda_m$. Auroral latitudes 65–75° → $L = 4$–10, $B_0 \approx 30000$ nT, effective $r < 3R_E$.
+
+#### 7.2.2 The Tsyganenko Models T89/T96
+
+- **T89:** $iopt = K_p$ 1–7, a statistical model of ring + tail + magnetopause + Birkeland currents
+- **T96:** `parmod = [Pdyn, Dst, By_IMF, Bz_IMF, ...]`, $ps$ = tilt in radians, the Sibeck 1991 magnetopause, event reproduction
+
+These models are standardly called through an external library (`geopack`); this document only covers the equation derivations.
+
+#### 7.2.3 The Guiding-Center Approximation — Auroral Precipitation
+
+Three periods: $T_{gyro}(10^{-3}\,\text{s}) \ll T_{bounce}(\text{seconds}) \ll T_{drift}(\text{minutes})$
+
+$$\mu = \frac{m v_\perp^2}{2B} = \text{const}$$
+
+> **Unicode**
+> ```
+> μ = (m v_⊥²)/(2B) = const
+> ```
+
+$$\mathbf{V}_{\nabla B} = \frac{\mu}{qB^2}\mathbf{B}\times\nabla B$$
+
+> **Unicode**
+> ```
+> 𝐕_∇ B = (μ)/(qB²)𝐁×∇ B
+> ```
+
+$$\mathbf{V}_{curv} = \frac{m v_\parallel^2}{qB^2}\frac{\mathbf{B}\times(\mathbf{B}\cdot\nabla)\mathbf{B}}{B}$$
+
+> **Unicode**
+> ```
+> 𝐕_curv = (m v_∥²)/(qB²)(𝐁×(𝐁·∇)𝐁)/(B)
+> ```
+
+Loss cone: $\sin^2\alpha_0 = B_{eq}/B_{iono}$.
+
+#### 7.2.4 Solar-Wind Compression of the Magnetosphere — Shue 1998
+
+$$r = r_0\left(\frac{2}{1+\cos\theta}\right)^\alpha$$
+
+> **Unicode**
+> ```
+> r = r₀((2)/(1+cosθ))^α
+> ```
+
+$$r_0 = \left[10.22 + 1.29\tanh\left(0.184(B_z+8.14)\right)\right]P_{dyn}^{-1/6.6}$$
+
+> **Unicode**
+> ```
+> r₀ = [10.22 + 1.29tanh(0.184(B_z+8.14))]P_dyn^-1/6.6
+> ```
+
+$$\alpha = (0.58 - 0.007 B_z)(1 + 0.024\ln P_{dyn})$$
+
+> **Unicode**
+> ```
+> α = (0.58 - 0.007B_z)(1 + 0.024lnP_dyn)
+> ```
+
+As $P_{dyn}$ goes from 1 to 10 nPa, the standoff distance compresses from 11.4 to 8.1 $R_E$.
+
+#### 7.2.5 Auroral Particle Precipitation
+
+$$\sin^2\alpha_0 = \frac{B_{eq}}{B_{iono}}$$
+
+> **Unicode**
+> ```
+> sin²α₀ = (B_eq)/(B_iono)
+> ```
+
+At $L = 6$, the loss cone $\approx 3.07°$, and the footprint latitude $\arccos\sqrt{1/L} \approx 65.9°$ — the auroral oval.
+
+#### 7.2.6 Van Allen Belt Trajectories
+
+Three periodic motions: gyro + bounce + drift. Using a Boris pusher, $\mu$ is conserved with std/mean $\sim 5\times10^{-15}$.
+
+---
+
+### 7.3 Coupling Fluid and Gyrokinetic Theory
+
+#### 7.3.1 Gyrokinetic Codes
+
+5D $(R, v_\parallel, \mu)$, $\omega \ll \Omega_c$, $k_\perp\rho_i \sim 1$, $\delta f = f - F_0$.
+
+| Code | Language | Features |
+|---|---|---|
+| GENE | F90 | local/global, electromagnetic |
+| GKW | F90 | rotation/collisions |
+| CGYRO | F90 | GPU, coupled with TGLF |
+
+Unified interface: `pyrokinetics` (supporting CGYRO, GENE, GKW, GS2, GKV, stella).
+
+#### 7.3.2 MHD Codes
+
+- **JOREK:** reduced/full MHD, X-point, ELM, VDE, Bezier elements
+- **M3D-C1:** Princeton extended-MHD, stellarator
+- **NIMROD:** spectral element, MGI
+- **BOUT++:** edge/SOL, drift-reduced Braginskii, the STORM module
+
+The JOREK loop: $\psi(R,Z)$ via Bezier elements, $\partial_t\psi = \eta J - R[\psi, u]$.
+
+#### 7.3.3 Vlasov–Maxwell Solvers
+
+$$\frac{\partial f}{\partial t} + \mathbf{v}\cdot\nabla_x f + \frac{q}{m}(\mathbf{E}+\mathbf{v}\times\mathbf{B})\cdot\nabla_v f = 0$$
+
+> **Unicode**
+> ```
+> (∂ f)/(∂ t) + 𝐯·∇ₓ f + (q)/(m)(𝐄+𝐯×𝐁)·∇ᵥ f = 0
+> ```
+
+Open-source Python tools: SPECTRAX (JAX, Hermite–Fourier), Veritas (finite volume + AMR), Gkeyll (Lua input, 2D2V–3D3V).
+
+#### 7.3.4 PIC Codes
+
+The PIC loop:
+
+1. **Push:** $x \mathrel{+}= v\,dt$, $v \mathrel{+}= \frac{q}{m}(E+v\times B)\,dt$
+2. **Deposit:** particles → grid (CIC)
+3. **Field solve:** Poisson
+4. **Interpolate:** grid → particles
+
+- **XGC:** total-f PIC, whole-volume, edge+SOL+wall, 5D $(R,Z,\phi,v_\parallel,\mu)$
+- **GTC:** delta-f, field-line following, full torus
+- ORB5, GEM, GT5D: core ITG
+
+#### 7.3.5 The BOUT++ Turbulence Code
+
+An open-source 3D finite-difference code. Field-aligned $(\psi,\theta,\phi)$, with exact $\nabla_\parallel$.
+
+The `tokamak-2fluid` example: a DIII-D 129131 equilibrium, Hasegawa–Wakatani + curvature, STORM SOL turbulence, ELMs, blobs.
+
+#### 7.3.6 Summary of Open-Source Gyrokinetic Tools
+
+Selection guide:
+
+- **MHD instabilities:** JOREK / M3D-C1
+- **Edge blobs:** BOUT++
+- **Core transport:** GENE / GKW / CGYRO
+- **Full edge + neutrals:** XGC total-f PIC
+
+---
+
+## Chapter 8. Turning the Mathematical Models into Python
+
+> **Character of this chapter**
+> If Appendix C of Part 1 is "equations → Mathematica," this chapter is "equations → Python."
+> Rather than calling external libraries, the main-text equations are translated directly into code.
+> Each function's comment cites the corresponding section number in the main text.
+> The only dependency is `numpy`.
+
+### 8.1 The Boris Pusher (§2.4.2)
+
+$$v^- = v + \frac{qE}{2m}\Delta t, \quad t = \frac{qB}{2m}\Delta t, \quad s = \frac{2t}{1+t^2}$$
+
+> **Unicode**
+> ```
+> v⁻ = v + (qE)/(2m)Δ t,   t = (qB)/(2m)Δ t,   s = (2t)/(1+t²)
+> ```
+
+$$v' = v^- + v^-\times t, \quad v^+ = v^- + v'\times s$$
+
+> **Unicode**
+> ```
+> v' = v⁻ + v⁻×t,   v⁺ = v⁻ + v'×s
+> ```
+
+```python
+import numpy as np
+
+def boris_push(x, v, E, B, q, m, dt):
+    """§2.4.2 the Boris algorithm. Preserves phase-space volume, det J = 1."""
+    v_minus = v + q * E * dt / (2 * m)
+    t = q * B * dt / (2 * m)
+    v_prime = v_minus + np.cross(v_minus, t)
+    s = 2 * t / (1 + np.dot(t, t))
+    v_plus = v_minus + np.cross(v_prime, s)
+    v_new = v_plus + q * E * dt / (2 * m)
+    x_new = x + v_new * dt
+    return x_new, v_new
+```
+
+**Verification:** for uniform $\mathbf{B}$, $\mathbf{E}=0$, the energy std/mean $\sim 10^{-15}$.
+
+### 8.2 Trajectory in a Uniform Magnetic Field (§2.1.1)
+
+$$\omega_c = \frac{qB_0}{m}, \quad r_L = \frac{v_\perp}{\omega_c}$$
+
+> **Unicode**
+> ```
+> ω_c = (qB₀)/(m),   r_L = (v_⊥)/(ω_c)
+> ```
+
+```python
+def cyclotron_orbit(v_perp, omega_c, t):
+    """§2.1.1. Circular motion in the xy plane."""
+    x = (v_perp / omega_c) * np.sin(omega_c * t)
+    y = (v_perp / omega_c) * np.cos(omega_c * t)
+    return x, y
+
+def larmor_radius(v_perp, q, B0, m):
+    """§2.1.2."""
+    return m * v_perp / (abs(q) * B0)
+```
+
+### 8.3 Drift Velocities (§2.2)
+
+$$\mathbf{V}_E = \frac{\mathbf{E}\times\mathbf{B}}{B^2}$$
+
+> **Unicode**
+> ```
+> 𝐕_E = (𝐄×𝐁)/(B²)
+> ```
+
+```python
+def E_cross_B_drift(E, B):
+    """§2.2.1."""
+    B2 = np.dot(B, B)
+    return np.cross(E, B) / B2
+
+def gradB_drift(B, gradB, mu, q):
+    """§2.2.2."""
+    B2 = np.dot(B, B)
+    return (mu / q) * np.cross(B, gradB) / B2
+
+def curvature_drift(B, Rc, v_par, q, m):
+    """§2.2.3. Rc = the radius-of-curvature vector."""
+    B2 = np.dot(B, B)
+    Rc2 = np.dot(Rc, Rc)
+    return (m * v_par**2 / (q * B2)) * np.cross(Rc, B) / Rc2
+
+def polarization_drift(dE_dt, B, q, m):
+    """§2.2.1. For a time-varying electric field."""
+    B2 = np.dot(B, B)
+    return (m / (q * B2)) * dE_dt
+```
+
+### 8.4 The Adiabatic Invariant and the Loss Cone (§2.3)
+
+$$\mu = \frac{m v_\perp^2}{2B}, \quad \sin^2\theta_m = \frac{B_0}{B_m}$$
+
+> **Unicode**
+> ```
+> μ = (m v_⊥²)/(2B),   sin²θₘ = (B₀)/(Bₘ)
+> ```
+
+```python
+def magnetic_moment(v_perp, B, m):
+    """§2.3.1."""
+    return m * v_perp**2 / (2 * B)
+
+def loss_cone_angle(B_eq, B_iono):
+    """§2.3.3. In radians."""
+    return np.arcsin(np.sqrt(B_eq / B_iono))
+
+def mirror_ratio(B_max, B_min):
+    """§2.3.3. Rm = Bm/B0."""
+    return B_max / B_min
+```
+
+### 8.5 The Grad–Shafranov Source Term (§4.2.1, §7.1.1)
+
+$$\Delta^*\psi = -\mu_0 R^2 p'(\psi) - F(\psi)F'(\psi)$$
+
+> **Unicode**
+> ```
+> Δ^*ψ = -μ₀ R²p'(ψ) - F(ψ)F'(ψ)
+> ```
+
+```python
+def grad_shafranov_source(R, psi, dp_dpsi, F, dF_dpsi, mu0):
+    """§7.1.1. The right-hand source term, J_phi = R p' + FF'/(mu0 R)."""
+    return -mu0 * R**2 * dp_dpsi(psi) - F(psi) * dF_dpsi(psi)
+```
+
+### 8.6 The Dipole Magnetic Field (§7.2.1)
+
+$$\mathbf{B}(\mathbf{r}) = \frac{\mu_0}{4\pi r^3}\left[3\hat{r}(\hat{r}\cdot\mathbf{m}) - \mathbf{m}\right]$$
+
+> **Unicode**
+> ```
+> 𝐁(𝐫) = (μ₀)/(4π r³)[3r̂(r̂·𝐦) - 𝐦]
+> ```
+
+```python
+def dipole_B(r_vec, m_vec, mu0_4pi=1e-7):
+    """§7.2.1. m_vec = the magnetic dipole moment [A·m²]."""
+    r = np.linalg.norm(r_vec)
+    r_hat = r_vec / r
+    return mu0_4pi / r**3 * (3 * np.dot(m_vec, r_hat) * r_hat - m_vec)
+
+def dipole_Bmag(r, lam, B0=3.1e-5, R_E=6371e3):
+    """§7.2.1. Magnitude of the spherical components."""
+    return B0 * (R_E / r)**3 * np.sqrt(1 + 3 * np.sin(lam)**2)
+```
+
+### 8.7 The Shue Magnetopause (§7.2.4)
+
+$$r = r_0\left(\frac{2}{1+\cos\theta}\right)^\alpha$$
+
+> **Unicode**
+> ```
+> r = r₀((2)/(1+cosθ))^α
+> ```
+
+```python
+def shue_magnetopause(theta, Pdyn, Bz):
+    """§7.2.4. theta in radians, Pdyn in nPa, Bz in nT. Returns R_E."""
+    r0 = (10.22 + 1.29 * np.tanh(0.184 * (Bz + 8.14))) * Pdyn**(-1/6.6)
+    alpha = (0.58 - 0.007 * Bz) * (1 + 0.024 * np.log(Pdyn))
+    return r0 * (2 / (1 + np.cos(theta)))**alpha
+```
+
+### 8.8 The Magnetic-Reconnection Rate (§4.5.3)
+
+$$V_{rec} = \frac{V_A}{\sqrt{S}}, \quad S = \frac{\mu_0 L V_A}{\eta}$$
+
+> **Unicode**
+> ```
+> V_rec = (V_A)/(√S),   S = (μ₀ L V_A)/(η)
+> ```
+
+```python
+def sweet_parker_rate(V_A, L, eta, mu0):
+    """§4.5.3. Lundquist number S = mu0 L V_A / eta."""
+    S = mu0 * L * V_A / eta
+    return V_A / np.sqrt(S), S
+```
+
+### 8.9 Landau Levels (§3.3.2)
+
+$$E_n = \hbar\omega_c\left(n + \frac12\right)$$
+
+> **Unicode**
+> ```
+> Eₙ = ℏω_c(n + (1)/(2))
+> ```
+
+```python
+def landau_levels(n, q, B, m, hbar=1.055e-34):
+    """§3.3.2. n = 0,1,2,... Returns joules."""
+    omega_c = abs(q) * B / m
+    return hbar * omega_c * (np.asarray(n) + 0.5)
+```
+
+### 8.10 The Relativistic Cyclotron Frequency (§3.1.3)
+
+$$\omega_c^{rel} = \frac{qB}{\gamma m}, \quad \gamma = \frac{1}{\sqrt{1-v^2/c^2}}$$
+
+> **Unicode**
+> ```
+> ω_cʳᵉˡ = (qB)/(γ m),   γ = (1)/(√(1-v²/c²))
+> ```
+
+```python
+def omega_c_rel(q, B, gamma, m):
+    """§3.1.3."""
+    return q * B / (gamma * m)
+
+def lorentz_factor(v, c=2.998e8):
+    """§3.1.1."""
+    return 1 / np.sqrt(1 - np.dot(v, v) / c**2)
+```
+
+### 8.11 The Larmor Formula and Liénard Generalization (§3.2.1–3.2.2)
+
+$$P_{Larmor} = \frac{q^2 a^2}{6\pi\varepsilon_0 c^3}$$
+
+> **Unicode**
+> ```
+> P_Larmor = (q² a²)/(6πε₀ c³)
+> ```
+
+$$P_{Lienard} = \frac{q^2\gamma^4}{6\pi\varepsilon_0 c^3}\left[a_\perp^2 + \gamma^2 a_\parallel^2\right]$$
+
+> **Unicode**
+> ```
+> P_Lienard = (q²γ⁴)/(6πε₀ c³)[a_⊥² + γ²a_∥²]
+> ```
+
+```python
+def larmor_power(q, a, eps0=8.854e-12, c=2.998e8):
+    """§3.2.1. a = |acceleration|."""
+    return q**2 * a**2 / (6 * np.pi * eps0 * c**3)
+
+def lienard_power(q, a_par, a_perp, gamma, eps0=8.854e-12, c=2.998e8):
+    """§3.2.2. The relativistic generalization."""
+    return q**2 * gamma**4 / (6 * np.pi * eps0 * c**3) * (a_perp**2 + gamma**2 * a_par**2)
+```
+
+### 8.12 Rigidity (§3.2.6)
+
+$$B\rho = \frac{p}{q}$$
+
+> **Unicode**
+> ```
+> Bρ = (p)/(q)
+> ```
+
+```python
+def rigidity(p, q):
+    """§3.2.6. p [kg·m/s], q [C] → Bρ [T·m]."""
+    return p / q
+
+def rigidity_GeV(p_GeV, q_e=1):
+    """§3.2.6. The practical formula: Bρ[T·m] = 3.3356 · p[GeV/c] / q[e]."""
+    return 3.3356 * p_GeV / q_e
+```
+
+### 8.13 Transport Coefficients (§3.4.6)
+
+$$\sigma_\parallel = \frac{nq^2}{m\nu}$$
+
+> **Unicode**
+> ```
+> σ_∥ = (nq²)/(mν)
+> ```
+
+$$\sigma_P = \sigma_\parallel\frac{\nu^2}{\nu^2+\omega_c^2}, \quad \sigma_H = \sigma_\parallel\frac{\nu\omega_c}{\nu^2+\omega_c^2}$$
+
+> **Unicode**
+> ```
+> σ_P = σ_∥(ν²)/(ν²+ω_c²),   σ_H = σ_∥(νω_c)/(ν²+ω_c²)
+> ```
+
+```python
+def braginskii_conductivities(n, q, m, nu, omega_c):
+    """§3.4.6. Returns (sigma_par, sigma_P, sigma_H)."""
+    sigma_par = n * q**2 / (m * nu)
+    denom = nu**2 + omega_c**2
+    sigma_P = sigma_par * nu**2 / denom
+    sigma_H = sigma_par * nu * omega_c / denom
+    return sigma_par, sigma_P, sigma_H
+
+def perpendicular_diffusion(T, m, nu, omega_c):
+    """§3.4.6. D_perp = (T/m) nu/(nu²+omega_c²)."""
+    return (T / m) * nu / (nu**2 + omega_c**2)
+```
+
+### 8.14 Examples Combining Functions
+
+**A Van Allen belt trajectory (8.1 + 8.6):**
+
+```python
+def van_allen_orbit(L=4.0, energy_eV=1e6, pitch_deg=45.0,
+                    dt=1e-5, steps=20000,
+                    R_E=6371e3, m_e=9.11e-31, q_e=-1.6e-19):
+    """A combination of 8.1 and 8.6."""
+    r0 = np.array([L * R_E, 0.0, 0.0])
+    v_total = np.sqrt(2 * energy_eV * 1.6e-19 / m_e)
+    v_total = min(v_total, 1.5e8)
+    pitch = np.radians(pitch_deg)
+    v0 = np.array([0.0, v_total * np.cos(pitch), v_total * np.sin(pitch)])
+
+    m_vec = np.array([0.0, 0.0, 7.9e22])
+    x, v = r0, v0
+    xs = np.zeros((steps, 3))
+    xs[0] = x
+    for i in range(1, steps):
+        B = dipole_B(x, m_vec)
+        x, v = boris_push(x, v, np.zeros(3), B, q_e, m_e, dt)
+        xs[i] = x
+        if np.linalg.norm(x) < R_E:
+            return xs[:i]
+    return xs
+```
+
+**Auroral precipitation (8.4 + 8.6):**
+
+```python
+def auroral_precipitation(L=6.0, N=1000, scattering=0.01,
+                          B_iono=5e-5, B0=3.1e-5, n_bounce=500):
+    """A combination of 8.4 and 8.6."""
+    B_eq = B0 / L**3
+    alpha_loss = loss_cone_angle(B_eq, B_iono)
+    alphas = np.random.uniform(0, np.pi/2, N)
+    history = []
+    for _ in range(n_bounce):
+        alphas += np.random.normal(0, scattering, N)
+        alphas = np.clip(alphas, 1e-3, np.pi/2 - 1e-3)
+        prec = alphas < alpha_loss
+        history.append(int(np.sum(prec)))
+        alphas[prec] = np.random.uniform(alpha_loss, np.pi/2, int(np.sum(prec)))
+    return np.degrees(alpha_loss), history
+```
+
+---
+
+## Appendix H. Formula Collection
+
+### H.1 The Lorentz Force and Boris
+
+$$F = q(E + v\times B)$$
+
+> **Unicode**
+> ```
+> F = q(E + v×B)
+> ```
+
+$$v^- = v_{n-1/2} + \frac{qE\,dt}{2m}, \quad t = \frac{qB\,dt}{2m}, \quad s = \frac{2t}{1+t^2}$$
+
+> **Unicode**
+> ```
+> v⁻ = v_{n-1/2} + (qE dt)/(2m),   t = (qB dt)/(2m),   s = (2t)/(1+t²)
+> ```
+
+Energy conservation: std/mean $\sim 5\times10^{-15}$ (verified).
+
+### H.2 Grad–Shafranov
+
+$$\Delta^*\psi = -\mu_0 R^2 p'(\psi) - F F'(\psi)$$
+
+> **Unicode**
+> ```
+> Δ^*ψ = -μ₀ R²p'(ψ) - F F'(ψ)
+> ```
+
+$$q(\psi) = \frac{1}{2\pi}\oint\frac{B_\phi}{R B_p}\,dl_{pol} \approx \frac{r B_\phi}{R B_\theta}$$
+
+> **Unicode**
+> ```
+> q(ψ) = (1)/(2π)∮(B_φ)/(R B_p) dl_pol ≈ (r B_φ)/(R B_θ)
+> ```
+
+### H.3 The Dipole Field and Shue
+
+$$\mathbf{B}_{dip} = \frac{\mu_0}{4\pi r^3}\left[3\hat{r}(\hat{r}\cdot\mathbf{m}) - \mathbf{m}\right]$$
+
+> **Unicode**
+> ```
+> 𝐁_dip = (μ₀)/(4π r³)[3r̂(r̂·𝐦) - 𝐦]
+> ```
+
+$$r = r_0\left(\frac{2}{1+\cos\theta}\right)^\alpha, \quad r_0 = \left[10.22 + 1.29\tanh(0.184(B_z+8.14))\right]P_{dyn}^{-1/6.6}$$
+
+> **Unicode**
+> ```
+> r = r₀((2)/(1+cosθ))^α,   r₀ = [10.22 + 1.29tanh(0.184(B_z+8.14))]P_dyn^-1/6.6
+> ```
+
+### H.4 The Guiding Center and the Loss Cone
+
+$$\mu = \frac{m v_\perp^2}{2B} = \text{const}$$
+
+> **Unicode**
+> ```
+> μ = (m v_⊥²)/(2B) = const
+> ```
+
+$$\mathbf{V}_{\nabla B} = \frac{\mu}{qB^2}\mathbf{B}\times\nabla B$$
+
+> **Unicode**
+> ```
+> 𝐕_∇ B = (μ)/(qB²)𝐁×∇ B
+> ```
+
+$$\sin^2\alpha_0 = \frac{B_{eq}}{B_{iono}}$$
+
+> **Unicode**
+> ```
+> sin²α₀ = (B_eq)/(B_iono)
+> ```
+
+$$\lambda_{iono} = \arccos\sqrt{1/L} \quad (L=6 \to 65.9°)$$
+
+> **Unicode**
+> ```
+> λ_iono = arccos√(1/L)  (L=6 → 65.9°)
+> ```
+
+### H.5 Gyrokinetics, MHD, Vlasov, and PIC
+
+- **Gyrokinetic:** $f(R, v_\parallel, \mu)$, $\omega \ll \Omega_c$, $k_\perp\rho_i \sim 1$, $\delta f = f - F_0$
+
+> **Unicode**
+> ```
+> Gyrokinetic: f(R,v_∥,μ), ω≪Ω_c, k_⊥ρᵢ∼1, δf = f-F₀
+> ```
+
+- **MHD:** $\mathbf{J}\times\mathbf{B} = \nabla p + \rho\,d\mathbf{V}/dt$, reduced MHD $\partial_t\psi = \eta J - R[\psi,u]$
+
+> **Unicode**
+> ```
+> MHD: J×B = ∇ p + ρ dV/dt,   reduced MHD ∂ₜψ = ηJ - R[ψ,u]
+> ```
+
+- **Vlasov:** $\partial_t f + \mathbf{v}\cdot\nabla_x f + \frac{q}{m}(\mathbf{E}+\mathbf{v}\times\mathbf{B})\cdot\nabla_v f = 0$
+
+> **Unicode**
+> ```
+> Vlasov: ∂ₜ f + 𝐯·∇ₓ f + (q)/(m)(𝐄+𝐯×𝐁)·∇ᵥ f = 0
+> ```
+
+- **PIC:** 1. Push → 2. Deposit (CIC) → 3. Solve Poisson → 4. Interpolate
+
+> **Unicode**
+> ```
+> PIC: 1.Push 2.Deposit (CIC) 3.Solve Poisson 4.Interpolate
+> ```
