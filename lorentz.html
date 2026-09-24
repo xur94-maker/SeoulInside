@@ -1,0 +1,3024 @@
+ <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Magnetic Lab v2.0 — Lorentz Force · Boris Pusher · Trapped Orbits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Spectral+SC:wght@500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #07090f;
+    --bg-panel:  #0c0f1a;
+    --bg-module: #0a0d18;
+    --line:      #1d2136;
+    --line-soft: #14172a;
+    --ink:       #e9e6da;
+    --ink-dim:   #8b8fae;
+    --ink-faint: #565a78;
+    --gold:      #d9a441;
+    --rose:      #d17f6e;
+    --teal:      #5fb8ac;
+    --violet:    #9d8cd6;
+    --amber-glow:rgba(217,164,65,0.35);
+    --cyan:      #4fc3f7;
+    --danger:    #c2604f;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ height:100%; }
+  body{
+    height:100vh; min-height:100vh; overflow:hidden;
+    background: radial-gradient(ellipse at 20% 0%, #0d1226 0%, var(--bg) 60%);
+    color: var(--ink);
+    font-family: 'Spectral', Georgia, 'Nanum Myeongjo', serif;
+    display:flex; flex-direction:column;
+    user-select:none;
+  }
+
+  /* ============================================================
+     TOP BAR
+     ============================================================ */
+  .topbar{
+    display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+    padding: 14px clamp(14px,2.5vw,26px) 10px;
+    border-bottom: 1px solid var(--line-soft);
+    z-index: 20;
+    background: linear-gradient(180deg, rgba(7,9,15,0.95), rgba(7,9,15,0.7));
+    backdrop-filter: blur(8px);
+  }
+  .topbar h1{
+    font-family: 'Spectral SC', 'Spectral', serif;
+    font-weight:500; letter-spacing: 0.02em;
+    font-size: clamp(15px, 1.9vw, 20px);
+    color: var(--ink);
+  }
+  .topbar h1 span{ color: var(--gold); }
+  .topbar .sub{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px; color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  .layout{
+    flex:1; display:grid;
+    grid-template-columns: 1fr 340px;
+    min-height:0;
+    overflow:hidden;
+  }
+  @media (max-width: 960px){
+    .layout{ grid-template-columns: 1fr; }
+  }
+
+  .stage{
+    position:relative; min-height: 46vh;
+    border-right: 1px solid var(--line-soft);
+    overflow:hidden;
+  }
+  @media (max-width: 960px){ .stage{ border-right:none; border-bottom:1px solid var(--line-soft);} }
+  #cv{ display:block; width:100%; height:100%; touch-action: none; }
+
+  /* Stage HUD */
+  .stage-caption{
+    position:absolute; left:18px; bottom:14px; right:18px;
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:10px; pointer-events:none; z-index: 5;
+  }
+  .stage-caption .name{
+    font-family:'Spectral', serif; font-style:italic; font-weight:500;
+    font-size: clamp(13px,1.8vw,16px); color: var(--ink);
+    text-shadow: 0 0 18px rgba(0,0,0,0.75);
+    max-width: 60%;
+  }
+  .stage-caption .time{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--ink-dim);
+    text-align:right; line-height:1.55; white-space:pre-line;
+    text-shadow: 0 0 12px rgba(0,0,0,0.8);
+  }
+  .stage-caption .time .trim-hud{ color: var(--gold); display:block; margin-top:2px; }
+
+  /* Model chips (top-left of stage) */
+  .model-chips{
+    position:absolute; top:14px; left:14px;
+    display:flex; gap:6px; z-index: 6;
+    pointer-events:auto;
+  }
+  .chip{
+    all:unset; cursor:pointer;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px; letter-spacing:0.06em;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink-dim);
+    background: rgba(10,13,24,0.72);
+    backdrop-filter: blur(8px);
+    transition: all 0.15s;
+    display:flex; align-items:center; gap:6px;
+  }
+  .chip:hover{ border-color: var(--gold); color: var(--ink); }
+  .chip.active{
+    border-color: var(--gold); color: var(--gold);
+    background: rgba(217,164,65,0.10);
+    box-shadow: 0 0 12px rgba(217,164,65,0.18);
+  }
+  .chip .ico{ font-size: 12px; }
+
+  /* HUD numeric readouts (top-right of stage) */
+  .stage-hud{
+    position:absolute; top:14px; right:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--ink-dim);
+    text-align:right; line-height: 1.7;
+    background: rgba(10,13,24,0.72);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 8px 12px;
+    z-index: 6;
+    pointer-events:none;
+  }
+  .stage-hud .row{ display:flex; justify-content:space-between; gap:16px; }
+  .stage-hud .row .v{ color: var(--gold); font-weight:600; }
+  .stage-hud .row .v.ok{ color: var(--teal); }
+  .stage-hud .row .v.warn{ color: var(--rose); }
+
+  /* ============================================================
+     RIGHT PANEL
+     ============================================================ */
+  .panel{
+    background: var(--bg-panel);
+    padding: 18px 18px 26px;
+    overflow-y:auto;
+    display:flex; flex-direction:column; gap: 20px;
+  }
+  .panel::-webkit-scrollbar{ width:8px; }
+  .panel::-webkit-scrollbar-track{ background:transparent; }
+  .panel::-webkit-scrollbar-thumb{ background: var(--line); border-radius:4px; }
+
+  .block-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--ink-faint);
+    letter-spacing: 0.14em;
+    margin: 0 0 9px;
+    text-transform: uppercase;
+  }
+
+  /* Preset / model buttons */
+  .presets{ display:flex; flex-direction:column; gap:5px; }
+  .preset-btn{
+    all:unset; cursor:pointer;
+    display:flex; align-items:center; gap:10px;
+    padding: 8px 10px; border-radius: 3px;
+    border-left: 2px solid transparent;
+    font-family:'Spectral', serif; font-size: 13.5px; color: var(--ink-dim);
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .preset-btn .dot{ width:7px; height:7px; border-radius:50%; background: var(--ink-faint); flex-shrink:0; }
+  .preset-btn .ico{ font-size: 13px; flex-shrink:0; }
+  .preset-btn:hover{ color: var(--ink); background: rgba(255,255,255,0.02); }
+  .preset-btn.active{
+    color: var(--ink); border-left-color: var(--gold);
+    background: rgba(217,164,65,0.06);
+  }
+  .preset-btn.active .dot{ background: var(--gold); box-shadow: 0 0 8px var(--amber-glow); }
+  .preset-desc{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; line-height:1.75;
+    color: var(--ink-dim); margin-top: 9px; padding: 11px 12px;
+    background: var(--line-soft); border-radius: 3px;
+    min-height: 60px;
+  }
+
+  /* Sliders */
+  .controls-row{ display:flex; flex-direction:column; gap:12px; }
+  .ctrl{ display:flex; flex-direction:column; gap:5px; }
+  .ctrl-label{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color: var(--ink-dim);
+  }
+  .ctrl-label b{ color: var(--ink); font-weight:600; font-size: 11.5px; }
+  input[type=range]{
+    -webkit-appearance:none; appearance:none;
+    width:100%; height:2px; background: var(--line);
+    border-radius: 2px; outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:12px; height:12px; border-radius:50%;
+    background: var(--gold); cursor:pointer; border: 2px solid #16182a;
+    box-shadow: 0 0 8px rgba(217,164,65,0.5);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:12px; height:12px; border-radius:50%; background: var(--gold);
+    cursor:pointer; border: 2px solid #16182a;
+    box-shadow: 0 0 8px rgba(217,164,65,0.5);
+  }
+
+  /* Buttons */
+  .btn-row{ display:flex; gap:7px; }
+  .btn{
+    all:unset; cursor:pointer; flex:1; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.05em;
+    padding: 9px 8px; border:1px solid var(--line); border-radius:3px;
+    color: var(--ink-dim); transition: all .15s;
+  }
+  .btn:hover{ border-color: var(--gold); color: var(--ink); }
+  .btn.primary{ border-color: var(--gold); color: var(--gold); }
+  .btn.primary:hover{ background: rgba(217,164,65,0.1); }
+  .btn.danger{ border-color: var(--danger); color: var(--danger); }
+  .btn.danger:hover{ background: rgba(194,96,79,0.1); }
+
+  /* Toggle rows */
+  .toggle-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 7px 0; border-top: 1px solid var(--line-soft);
+  }
+  .toggle-row:first-child{ border-top:none; }
+  .toggle-row .label{ font-family:'Spectral', serif; font-size:13px; color: var(--ink); }
+  .toggle-row .label small{
+    display:block; font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px; color: var(--ink-faint); margin-top:2px; letter-spacing:0.02em;
+  }
+  .switch{ position:relative; width:34px; height:18px; flex-shrink:0; cursor:pointer; }
+  .switch input{ opacity:0; width:0; height:0; position:absolute; }
+  .switch .track{
+    position:absolute; inset:0; background: var(--line); border-radius:10px; transition:.15s;
+  }
+  .switch .thumb{
+    position:absolute; top:2px; left:2px; width:14px; height:14px; border-radius:50%;
+    background: var(--ink-faint); transition:.15s;
+  }
+  .switch input:checked + .track{ background: rgba(217,164,65,0.28); }
+  .switch input:checked + .track .thumb{ transform: translateX(16px); background: var(--gold); }
+
+  /* Readout grid */
+  .readout-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 8px 14px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .readout{ display:flex; flex-direction:column; gap:2px; }
+  .readout .k{ font-size:9.5px; color: var(--ink-faint); letter-spacing:0.05em; }
+  .readout .v{ font-size:13px; color: var(--ink); }
+  .readout .v.warn{ color: var(--rose); }
+  .readout .v.ok{ color: var(--teal); }
+  .readout .v.accent{ color: var(--gold); }
+  .readout .v.dim{ color: var(--ink-faint); font-size:11.5px; }
+
+  /* Charts */
+  .chart{
+    width:100%; height:64px; display:block;
+    background: var(--line-soft); border-radius:3px;
+  }
+  .chart-tall{ height:170px; }
+
+  /* Loss cone panel */
+  .loss-panel{
+    padding: 10px 12px;
+    background: var(--line-soft);
+    border-radius: 3px;
+    border-left: 2px solid var(--teal);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    line-height: 1.6;
+  }
+  .loss-panel.lost{ border-left-color: var(--rose); }
+  .loss-panel .status{ font-weight:600; font-size: 11.5px; }
+  .loss-panel .status.trapped{ color: var(--teal); }
+  .loss-panel .status.lost{ color: var(--rose); }
+
+  /* Legend */
+  .legend{ display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; }
+  .legend .item{
+    display:flex; align-items:center; gap:6px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; color: var(--ink-dim);
+  }
+  .legend .sw{ width:8px; height:8px; border-radius:50%; }
+
+  /* Hint */
+  .hint{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color: var(--ink-faint);
+    margin-top:6px; line-height:1.55;
+  }
+  .hint.warn{ color: var(--rose); }
+  .hint em{ color: var(--gold); font-style:normal; font-weight:600; }
+
+  /* Footer */
+  footer{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; color: var(--ink-faint);
+    line-height:1.7; padding-top: 8px; border-top:1px solid var(--line-soft);
+  }
+  footer b{ color: var(--ink-dim); }
+
+  /* Mobile menu toggle */
+  .menu-toggle{
+    display:none;
+    position: fixed;
+    top: calc(10px + env(safe-area-inset-top, 0px));
+    right: 12px;
+    z-index: 60;
+    width:36px; height:36px;
+    align-items:center; justify-content:center;
+    background: rgba(12,15,26,0.92);
+    backdrop-filter: blur(8px);
+    border:1px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    font-size: 15px;
+    cursor:pointer;
+  }
+  @media (max-width: 960px){
+    .menu-toggle{ display:flex; }
+    .panel{
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(340px, 88vw);
+      z-index: 55; transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: -8px 0 24px rgba(0,0,0,0.5);
+    }
+    body.menu-open .panel{ transform: translateX(0); }
+    .stage{ min-height: 100vh; }
+    .layout{ grid-template-columns: 1fr; }
+  }
+
+  /* Mobile mini-bar (LHC style, when UI hidden) */
+  #mobileBar{
+    position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%);
+    z-index: 200; display: none;
+    align-items: center; gap: 6px;
+    background: rgba(12,15,26,0.92); backdrop-filter: blur(10px);
+    border: 1px solid var(--line); border-radius: 40px;
+    padding: 6px 9px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.55);
+  }
+  body.ui-hidden #mobileBar{ display: flex; }
+  body.ui-hidden .panel,
+  body.ui-hidden .topbar,
+  body.ui-hidden .stage-hud{ display: none; }
+
+  .mobile-group{
+    display:flex; align-items:center; gap:3px;
+    padding: 0 4px; border-right: 1px solid var(--line);
+  }
+  .mobile-group:last-of-type{ border-right: none; }
+  .mobile-mini-btn{
+    width:28px; height:28px; border-radius:50%;
+    background: rgba(14,17,32,0.95); border: 1px solid var(--gold); color: var(--gold);
+    font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; padding:0; margin:0;
+    transition: 0.15s;
+  }
+  .mobile-mini-btn:active{ background: var(--gold); color:#000; }
+  .mobile-mini-btn.off{ opacity:0.35; filter:grayscale(1); border-color:#778; color:#778; }
+  .mobile-mini-btn.dragging{ background: var(--gold); color:#000; transform: scale(1.12); box-shadow: 0 0 14px var(--gold); touch-action:none; }
+  .mobile-mini-btn.drag-handle{ border-style: dashed; touch-action:none; }
+
+  #mobileDragTooltip{
+    position: fixed; left: 50%; bottom: 58px; transform: translateX(-50%);
+    z-index: 210; display: none;
+    background: rgba(0,0,0,0.88); border: 1px solid var(--gold); border-radius: 20px;
+    padding: 5px 16px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;
+    color: var(--gold); font-weight: 600; letter-spacing: 0.4px;
+    pointer-events: none; white-space: nowrap;
+  }
+  #mobileDragTooltip.show{ display: block; }
+
+  /* Loading */
+  #loading{
+    position: fixed; inset: 0; z-index: 999;
+    background: var(--bg);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition: opacity 0.5s;
+  }
+  #loading.hidden{ opacity: 0; pointer-events:none; }
+  .loader{
+    width:44px; height:44px;
+    border: 2px solid rgba(217,164,65,0.15);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 18px;
+  }
+  @keyframes spin{ to { transform: rotate(360deg); } }
+  #loading p{
+    color: var(--gold);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="loader"></div>
+  <p>INITIALIZING MAGNETIC LAB v2.0</p>
+</div>
+
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" title="Toggle menu">☰</button>
+
+<!-- Mobile mini-bar -->
+<div id="mobileBar">
+  <div class="mobile-group">
+    <button class="mobile-mini-btn" id="mPlayToggle" title="Play/Pause">⏸</button>
+    <button class="mobile-mini-btn" id="mResetBtn" title="Reset">↻</button>
+  </div>
+  <div class="mobile-group">
+    <button class="mobile-mini-btn drag-handle" id="mParticlesDrag" title="입자 수 (드래그)">👥</button>
+    <button class="mobile-mini-btn drag-handle" id="mSpeedDrag" title="속도 (드래그)">⚡</button>
+  </div>
+  <div class="mobile-group">
+    <button class="mobile-mini-btn" id="mFieldToggle" title="자기장 끄기/켜기">🧲</button>
+  </div>
+</div>
+
+<div id="mobileDragTooltip"></div>
+
+<!-- ============================================================
+     TOP BAR
+     ============================================================ -->
+<div class="topbar">
+  <h1>MAGNETIC <span>LAB</span> v2.0</h1>
+  <span class="sub">Lorentz Force · Boris Pusher · Adaptive Steps · Trapped Orbits · Chaos Diagnosis</span>
+</div>
+
+<!-- ============================================================
+     MAIN LAYOUT
+     ============================================================ -->
+<div class="layout">
+
+  <!-- LEFT: CANVAS STAGE -->
+  <div class="stage">
+    <canvas id="cv"></canvas>
+
+    <div class="model-chips" id="modelChips"></div>
+
+    <div class="stage-hud" id="stageHud">
+      <div class="row"><span>FPS</span><span class="v" id="hFps">60</span></div>
+      <div class="row"><span>N</span><span class="v" id="hN">0</span></div>
+      <div class="row"><span>t</span><span class="v" id="hT">0.00</span></div>
+      <div class="row"><span>steps</span><span class="v" id="hSteps">8</span></div>
+    </div>
+
+    <div class="stage-caption">
+      <div class="name" id="stageName">Aurora</div>
+      <div class="time" id="stageTime">t = 0.00
+<span class="trim-hud" id="trimHud"></span></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: CONTROL PANEL -->
+  <div class="panel">
+
+    <!-- MODEL SELECTION -->
+    <div>
+      <div class="block-title">MODEL · 자기장 환경</div>
+      <div class="presets" id="modelList"></div>
+      <div class="preset-desc" id="modelDesc"></div>
+    </div>
+
+    <!-- PARTICLE TYPE -->
+    <div>
+      <div class="block-title">PARTICLE TYPE · 입자 종류 (PDG)</div>
+      <div class="presets" id="particleList"></div>
+      <div class="preset-desc" id="particleDesc">사용자 지정 — 아래 PARAMETERS의 q·m 슬라이더를 직접 조절하세요.</div>
+      <div class="toggle-row" style="border-top:none; padding-top:0; margin-top:9px;">
+        <div class="label">물리적 질량비<small>끄면 시각적으로 조절된 비율 사용</small></div>
+        <label class="switch"><input type="checkbox" id="tglMassPhysical"><span class="track"><span class="thumb"></span></span></label>
+      </div>
+    </div>
+
+    <!-- PARTICLES -->
+    <div>
+      <div class="block-title">PARTICLES · 입자 앙상블</div>
+      <div class="controls-row">
+        <div class="ctrl">
+          <div class="ctrl-label"><span>입자 수  N</span><b id="nPartVal">10</b></div>
+          <input type="range" id="nPartSlider" min="1" max="1000" step="1" value="10">
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-label"><span>피치각 분포 폭  Δθ</span><b id="pitchSpreadVal">30°</b></div>
+          <input type="range" id="pitchSpreadSlider" min="0" max="80" step="1" value="30">
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-label"><span>속도  v₀</span><b id="v0Val">1.00</b></div>
+          <input type="range" id="v0Slider" min="0.05" max="3.0" step="0.05" value="1.0">
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-label"><span>입자 크기  size</span><b id="pSizeVal">1.00</b></div>
+          <input type="range" id="pSizeSlider" min="0.1" max="4" step="0.05" value="1.0">
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-label"><span>꼬리 길이  tail</span><b id="tailLenVal">400</b></div>
+          <input type="range" id="tailLenSlider" min="10" max="3000" step="10" value="400">
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="btnRegen">↻ Regenerate</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHYSICS PARAMS (model-specific, filled dynamically) -->
+    <div id="paramBlock">
+      <div class="block-title">PARAMETERS · 모델별 물리량</div>
+      <div class="controls-row" id="paramContainer"></div>
+    </div>
+
+    <!-- SIMULATION CONTROL -->
+    <div>
+      <div class="block-title">SIMULATION · 시뮬레이션 제어</div>
+      <div class="controls-row">
+        <div class="btn-row">
+          <button class="btn primary" id="btnPlay">⏸ Pause</button>
+          <button class="btn" id="btnReset">↻ Reset</button>
+          <button class="btn danger" id="btnClear">◀ Clear</button>
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-label"><span>Playback Speed  ×</span><b id="speedVal">1.0</b></div>
+          <input type="range" id="speedSlider" min="0" max="8" step="0.1" value="1.0">
+        </div>
+        <div class="toggle-row">
+          <div class="label">Live Motion<small>실시간 이동</small></div>
+          <label class="switch"><input type="checkbox" id="tglLive" checked><span class="track"><span class="thumb"></span></span></label>
+        </div>
+        <div class="toggle-row">
+          <div class="label">Field Lines<small>자기장선 표시</small></div>
+          <label class="switch"><input type="checkbox" id="tglField" checked><span class="track"><span class="thumb"></span></span></label>
+        </div>
+        <div class="toggle-row">
+          <div class="label">Auto Rotate<small>카메라 자동 회전</small></div>
+          <label class="switch"><input type="checkbox" id="tglRotate"><span class="track"><span class="thumb"></span></span></label>
+        </div>
+        <div class="toggle-row">
+          <div class="label">Boris · Adaptive<small>에너지 드리프트 기반 substep 자동 조절</small></div>
+          <label class="switch"><input type="checkbox" id="tglAdaptive" checked><span class="track"><span class="thumb"></span></span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOSS CONE (Aurora only, hidden otherwise) -->
+    <div id="lossBlock" style="display:none;">
+      <div class="block-title">LOSS CONE · 자기 거울 갇힘 판정</div>
+      <div class="loss-panel" id="lossPanel">
+        <div>α_eq &nbsp;= <span id="lcAlphaEq">—</span></div>
+        <div>α_loss = <span id="lcAlphaLoss">—</span></div>
+        <div class="status trapped" id="lcStatus">TRAPPED</div>
+      </div>
+      <div class="hint">피치각 α &lt; α_loss 이면 자기 거울에서 반사되지 못하고 대기로 손실됩니다.</div>
+    </div>
+
+    <!-- DIAGNOSTICS -->
+    <div>
+      <div class="block-title">DIAGNOSTICS · 불변량 진단</div>
+      <div class="readout-grid">
+        <div class="readout"><span class="k">μ / μ₀</span><span class="v accent" id="rMu">—</span></div>
+        <div class="readout"><span class="k">J / J₀</span><span class="v accent" id="rJ">—</span></div>
+        <div class="readout"><span class="k">E / E₀</span><span class="v" id="rE">—</span></div>
+        <div class="readout"><span class="k">Φ / Φ₀</span><span class="v accent" id="rPhi">—</span></div>
+        <div class="readout"><span class="k">μ drift</span><span class="v ok" id="rMuDrift">—</span></div>
+        <div class="readout"><span class="k">E drift</span><span class="v ok" id="rEDrift">—</span></div>
+        <div class="readout"><span class="k">자이로반경  r<sub>g</sub></span><span class="v dim" id="rRg">—</span></div>
+        <div class="readout"><span class="k">자이로주파수  ω</span><span class="v dim" id="rOmega">—</span></div>
+        <div class="readout"><span class="k">피치각  θ</span><span class="v dim" id="rPitch">—</span></div>
+        <div class="readout"><span class="k">|B| 국소</span><span class="v dim" id="rBmag">—</span></div>
+        <div class="readout"><span class="k">단열성  Λ = r<sub>g</sub>/L<sub>B</sub></span><span class="v dim" id="rLambda">—</span></div>
+        <div class="readout"><span class="k">바운스 주기  T<sub>b</sub></span><span class="v dim" id="rTb">—</span></div>
+      </div>
+      <div class="hint">μ, J, Φ는 단열 불변량입니다. 이들이 보존되면 궤적이 규칙적, 깨지면 카오스입니다.</div>
+    </div>
+
+    <!-- μ CONSERVATION CHART -->
+    <div>
+      <div class="block-title">μ CONSERVATION · 실시간 곡선</div>
+      <canvas class="chart" id="muChart"></canvas>
+      <div class="hint">Boris pusher의 검증 지표. 평평하면 정확, 흔들리면 스텝 부족.</div>
+    </div>
+
+    <!-- CHAOS TWIN -->
+    <div>
+      <div class="block-title">CHAOS TWIN · Lyapunov 민감도</div>
+      <div class="toggle-row" style="border-top:none; padding-top:0;">
+        <div class="label">Chaos Twin<small>10⁻⁵ perturbation → 쌍둥이 궤적</small></div>
+        <label class="switch"><input type="checkbox" id="tglChaos"><span class="track"><span class="thumb"></span></span></label>
+      </div>
+      <canvas class="chart" id="chaosChart" style="margin-top:8px;"></canvas>
+      <div class="readout-grid" style="margin-top:8px;">
+        <div class="readout"><span class="k">Lyapunov λ</span><span class="v" id="rLyap">—</span></div>
+        <div class="readout"><span class="k">ln‖δZ‖ 최종</span><span class="v dim" id="rLogSep">—</span></div>
+      </div>
+      <div class="hint">λ ≈ 0 → 규칙적 궤도 / λ &gt; 0 → 카오스 (탈출 예정).</div>
+    </div>
+
+    <!-- POINCARÉ SECTION -->
+    <div>
+      <div class="block-title">POINCARÉ SECTION · 적도면 통과점</div>
+      <div class="toggle-row" style="border-top:none; padding-top:0;">
+        <div class="label">Poincaré Record<small>y=0, v_y&gt;0 통과 기록</small></div>
+        <label class="switch"><input type="checkbox" id="tglPoincare"><span class="track"><span class="thumb"></span></span></label>
+      </div>
+      <canvas class="chart chart-tall" id="poincareChart" style="margin-top:8px;"></canvas>
+      <div class="readout-grid" style="margin-top:8px;">
+        <div class="readout"><span class="k">POINTS</span><span class="v" id="rPoincareCount">—</span></div>
+        <div class="readout"><span class="k">LAST t</span><span class="v dim" id="rPoincareT">—</span></div>
+      </div>
+      <div class="legend">
+        <div class="item"><span class="sw" style="background:var(--teal)"></span>규칙 (KAM 토러스)</div>
+        <div class="item"><span class="sw" style="background:var(--rose)"></span>카오스 (산개)</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <b>Boris pusher</b> — 자기장 회전이 정확히 에너지 보존. RK4 대체.<br>
+      <b>적응형 substep</b> — 에너지 드리프트 기반 자동 boost (8 → 512).<br>
+      <b>단열 불변량</b> — μ, J, Φ가 보존되는 동안 궤적 규칙.<br>
+      <b>Chaos Twin</b> — 10⁻⁵ 초기 섭동이 지수적으로 증폭.<br>
+      <b>무차원 정규화 단위계</b> — q, m, B, v는 상대적 비율로만 의미.
+    </footer>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     SCRIPT IMPORTS
+     ============================================================ -->
+<script type="importmap">
+{
+  "imports": {
+    "three":         "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+/* ═══════════════════════════════════════════════════════════════
+   [1] 4-VECTOR CLASS (LHC_kerr 이식, 순수 운동학만 유지)
+   ═══════════════════════════════════════════════════════════════ */
+class FourVector {
+    constructor(E, px, py, pz) { this.E=E; this.px=px; this.py=py; this.pz=pz; }
+    mass2() { return this.E*this.E - this.px*this.px - this.py*this.py - this.pz*this.pz; }
+    mass()  { const m2=this.mass2(); return m2>=0 ? Math.sqrt(m2) : 0; }
+    pMag()  { return Math.sqrt(this.px*this.px + this.py*this.py + this.pz*this.pz); }
+    beta()  { return this.pMag() / this.E; }
+    gamma() { const m=this.mass(); return m>0 ? this.E/m : Infinity; }
+    clone() { return new FourVector(this.E, this.px, this.py, this.pz); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [2] BORIS PUSHER — 순수 자기장 (LHC_kerr에서 dE/dx 제거, 정제)
+   ═══════════════════════════════════════════════════════════════
+   Boris 알고리즘의 핵심:
+     v⁻ = vⁿ + (q/2m)·E·dt          // 전기장 half-step
+     t  = (q/2m)·B·dt
+     v' = v⁻ + v⁻ × t
+     s  = 2t / (1 + |t|²)
+     v⁺ = v⁻ + v' × s
+     vⁿ⁺¹ = v⁺ + (q/2m)·E·dt        // 전기장 half-step
+   
+   순수 B장에서는 |v|가 정확히 보존됨 (기계 정밀도).
+   이게 RK4 대비 결정적 우위.
+   ═══════════════════════════════════════════════════════════════ */
+function borisStep(p4, q, m, Bx, By, Bz, dt) {
+    if (q === 0 || m <= 0) {
+        // 중성 입자: 직선 운동 (에너지·운동량 변화 없음)
+        return p4.clone();
+    }
+    
+    // 입자 속도 추출 (v = p/(γm) 이지만 Boris는 p에 직접 작용)
+    const px = p4.px, py = p4.py, pz = p4.pz;
+    const E_ = p4.E;
+    const gamma = E_ / m;
+    const vx = px / (gamma * m);
+    const vy = py / (gamma * m);
+    const vz = pz / (gamma * m);
+    
+    // t vector = (q·dt/2m)·B
+    const tc = (q * dt * 0.5) / (gamma * m);
+    const tx = tc * Bx;
+    const ty = tc * By;
+    const tz = tc * Bz;
+    
+    // 자기장 회전 (E=0이므로 half-step 불필요)
+    const t2 = tx*tx + ty*ty + tz*tz;
+    
+    // v' = v + v × t
+    const vpx = vx + (vy*tz - vz*ty);
+    const vpy = vy + (vz*tx - vx*tz);
+    const vpz = vz + (vx*ty - vy*tx);
+    
+    // s = 2t / (1 + t²)
+    const sx = 2*tx / (1 + t2);
+    const sy = 2*ty / (1 + t2);
+    const sz = 2*tz / (1 + t2);
+    
+    // v⁺ = v + v' × s
+    const vpxx = vx + (vpy*sz - vpz*sy);
+    const vpyy = vy + (vpz*sx - vpx*sz);
+    const vpzz = vz + (vpx*sy - vpy*sx);
+    
+    // 새 운동량 (|v| 보존됨 → |p|도 보존됨)
+    const newPx = gamma * m * vpxx;
+    const newPy = gamma * m * vpyy;
+    const newPz = gamma * m * vpzz;
+    
+    return new FourVector(E_, newPx, newPy, newPz);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [3] 적응형 SUBSTEP (nbody_sim에서 이식)
+   ═══════════════════════════════════════════════════════════════
+   nbody의 "energy drift 기반 boost" 철학을 플라스마에 이식.
+   - 에너지 드리프트 > 0.5% → 2배씩 substep 상향
+   - 자이로반경 vs 국소 B 스케일 → 추가 boost
+   ═══════════════════════════════════════════════════════════════ */
+const MICROSTEPS_BASE = 8;
+const MAX_TAIL_LENGTH = 3000;   // 궤적 버퍼 최대 길이 (렌더 버퍼 크기 상한)
+const MICROSTEPS_MAX  = 512;
+let adaptiveMicrosteps = true;
+let lastEnergyDrift = 0;   // 최근 에너지 드리프트 (%)
+
+function computeMicrosteps(rg, LB, energyDrift) {
+    if (!adaptiveMicrosteps) return MICROSTEPS_BASE;
+    
+    let steps = MICROSTEPS_BASE;
+    
+    // (1) 자이로반경 / 자기장 변화 길이 비율
+    if (LB > 1e-9 && rg > 1e-9) {
+        const lambda = rg / LB;
+        if (lambda > 0.5)       steps = Math.round(steps * 4);
+        else if (lambda > 0.2)  steps = Math.round(steps * 2);
+        else if (lambda > 0.05) steps = Math.round(steps * 1.5);
+    }
+    
+    // (2) 에너지 드리프트 기반 boost (nbody 방식)
+    if (energyDrift > 0.5) {
+        const edBoost = Math.pow(2, Math.min(4, Math.floor((energyDrift - 0.5) / 0.5) + 1));
+        steps = steps * edBoost;
+    }
+    
+    steps = Math.max(MICROSTEPS_BASE, Math.min(MICROSTEPS_MAX, Math.round(steps)));
+    return steps;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [4] 자기장 모델 4종
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 4.1 Cyclotron ──────────────────────────────────────────────
+   균일 B (z 방향). 입자는 xy 평면에서 원운동.
+   가장 기본적인 로렌츠 힘 검증 케이스.
+   ────────────────────────────────────────────────────────────── */
+function fieldCyclotron(pos, p) {
+    return { E: [0, 0, 0], B: [0, 0, p.B] };
+}
+
+/* ── 4.2 Aurora — 지구 쌍극자 자기장 (부호 수정) ────────────────
+   ★ 이전 코드의 치명적 오류: 적도에서 B가 -z를 향했음.
+   실제 지구 자기장은 적도에서 +z (북쪽)을 향함.
+   
+   쌍극자 자기장 공식 (자기 모멘트 m이 -z 방향):
+     B = (μ₀/4π) · [3(m·r̂)r̂ - m] / r³
+   
+   자기 모멘트가 -z이면 m = (0,0,-M):
+     Bx = -3·M·x·z / r⁵
+     By = -3·M·y·z / r⁵
+     Bz = M·(r² - 3z²) / r⁵ = -M·(3z² - r²) / r⁵
+   
+   적도 (z=0)에서: Bz = M·r² / r⁵ = M/r³ > 0  ✓ 북쪽
+   극 (x=y=0, z=±r): Bz = -M·(3r²-r²)/r⁵ = -2M/r³ (북극은 아래, 남극은 위)
+   
+   이제 자기장선을 따라가는 입자는 실제 자기 거울 반사를 겪음.
+   ────────────────────────────────────────────────────────────── */
+function dipoleB(pos, M) {
+    const x = pos[0], y = pos[1], z = pos[2];
+    const r2 = x*x + y*y + z*z;
+    const r = Math.sqrt(r2);
+    if (r < 0.15) return [0, 0, 0];   // 특이점 회피 (지구 내부)
+    const r5 = r2 * r2 * r;
+    
+    // ★ 부호 수정: 자기 모멘트 -z 방향
+    const Bx = -3 * M * x * z / r5;
+    const By = -3 * M * y * z / r5;
+    const Bz =  M * (r2 - 3 * z * z) / r5;
+    return [Bx, By, Bz];
+}
+
+function fieldAurora(pos, p) {
+    return { E: [0, 0, 0], B: dipoleB(pos, p.M || 100) };
+}
+
+/* ── 4.3 Tokamak — 원환체 + 폴로이달 (강화) ────────────────────
+   이전 코드의 문제:
+     - Bp/Bt ≈ 0.05 (너무 약함) → ∇B drift 누적 → 탈출
+     - q_safety = 2.0 (너무 큼)
+   
+   수정:
+     - q_safety = 0.8 (실제 토카막 범위)
+     - 폴로이달 자기장을 충분히 강화
+     - 초기 r = 0.3·R₀ (축에서 벗어남)
+   
+   토로이달: B_t = B₀·R₀/R  (φ 방향)
+   폴로이달: B_p = B_t · r/(q_s·R₀)  (θ 방향)
+   ────────────────────────────────────────────────────────────── */
+function tokamakB(pos, p) {
+    const x = pos[0], y = pos[1], z = pos[2];
+    const R = Math.sqrt(x*x + z*z);
+    if (R < 0.2) return [0, 0, 0];
+    
+    const R0 = p.R0 || 5.0;
+    const B0 = p.B0 || 5.0;
+    const qs = p.qSafety || 0.8;   // ★ 2.0 → 0.8
+    
+    // 토로이달 방향 (y축 주위로 감김): φ̂ = (-z, 0, x)/R
+    const phiHatX = -z / R;
+    const phiHatZ =  x / R;
+    const Bt = B0 * R0 / R;
+    
+    // 폴로이달 반경 (R-R₀, y) 평면
+    const rPol = Math.sqrt((R - R0)*(R - R0) + y*y);
+    
+    // 폴로이달 방향 단위벡터
+    // eR = (x, 0, z)/R, ey = (0,1,0)
+    // θ̂ = (-y·eR + (R-R₀)·ey) / rPol
+    const thetaHatX = rPol > 1e-6 ? -y * (x/R) / rPol : 0;
+    const thetaHatY = rPol > 1e-6 ? (R - R0) / rPol : 0;
+    const thetaHatZ = rPol > 1e-6 ? -y * (z/R) / rPol : 0;
+    
+    const Bp = Bt * rPol / (qs * R0);
+    
+    const Bx = Bt * phiHatX + Bp * thetaHatX;
+    const By =                 Bp * thetaHatY;
+    const Bz = Bt * phiHatZ + Bp * thetaHatZ;
+    
+    return [Bx, By, Bz];
+}
+
+function fieldTokamak(pos, p) {
+    return { E: [0, 0, 0], B: tokamakB(pos, p) };
+}
+
+/* ── 4.4 E×B Drift ─────────────────────────────────────────────
+   균일 E (y 방향), B (z 방향). 드리프트 속도 v_d = E×B/B².
+   완전한 로렌츠 힘 (E + v×B)의 검증 케이스.
+   ────────────────────────────────────────────────────────────── */
+function fieldExB(pos, p) {
+    return { E: [0, p.E, 0], B: [0, 0, p.B] };
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [5] 모델 정의 — 파라미터 + 초기 조건 생성기
+   ═══════════════════════════════════════════════════════════════ */
+const MODELS = {
+    cyclotron: {
+        key: 'cyclotron',
+        name: 'Cyclotron',
+        icon: '⚛️',
+        desc: '균일 자기장 내 하전 입자의 원운동. 자이로반경 r_g = mv⊥/qB, 자이로주파수 ω = qB/m. Boris pusher의 에너지 보존 특성을 가장 명확히 보여주는 케이스.',
+        fieldAt: fieldCyclotron,
+        params: [
+            { key: 'B',   label: 'B · 자기장',     min: 0.1, max: 3,  step: 0.05, value: 1.0 },
+            { key: 'q',   label: 'q · 전하',       min: -2,  max: 2,  step: 0.25, value: 1.0 },
+            { key: 'm',   label: 'm · 질량',       min: 0.5, max: 5,  step: 0.1,  value: 1.0 }
+        ],
+        // 초기 조건: 원점에서 v₀·x̂ 방향으로 출발 (xy 평면 원운동)
+        init: (p, v0, pitchDeg) => ({
+            pos: [0, 0, 0],
+            vel: [v0, 0, 0]
+        }),
+        cameraDist: 8,
+        viewHalf: 3.0,
+        timescale: 1.0,
+        jitterScale: 0.12   // 입자별 초기 위치 미세 분산 (겹침 방지)
+    },
+    
+    aurora: {
+        key: 'aurora',
+        name: 'Aurora',
+        icon: '🌌',
+        desc: '지구 쌍극자 자기장 내 하전 입자의 왕복 운동 (자기 거울). 적도에서 +z를 향하는 실제 방향 반영. μ = mv⊥²/2B 보존이 자기 거울 반사의 원리.',
+        fieldAt: fieldAurora,
+        params: [
+            { key: 'M',   label: 'M · 자기 모멘트', min: 20,  max: 300, step: 5,   value: 100 },
+            { key: 'q',   label: 'q · 전하',         min: -2,  max: 2,   step: 0.25, value: 1.0 },
+            { key: 'm',   label: 'm · 질량',         min: 0.5, max: 5,   step: 0.1,  value: 1.0 }
+        ],
+        init: (p, v0, pitchDeg) => ({
+            pos: [3.0, 0, 0],           // 적도면, r=3
+            vel: [v0 * Math.cos(pitchDeg*Math.PI/180),  // v⊥ (x 방향)
+                  0,
+                  v0 * Math.sin(pitchDeg*Math.PI/180)]  // v∥ (z 방향, B 방향)
+        }),
+        cameraDist: 14,
+        viewHalf: 5.0,
+        timescale: 0.5,
+        jitterScale: 0.2   // 입자별 초기 위치 미세 분산 (겹침 방지)
+    },
+    
+    tokamak: {
+        key: 'tokamak',
+        name: 'Tokamak',
+        icon: '🔥',
+        desc: '원환체 자기장 내 플라스마 — 토로이달 + 폴로이달 성분. 폴로이달 자기장이 ∇B 드리프트를 단락시켜 입자를 가둡니다. q_safety = 0.8로 실제 토카막 범위.',
+        fieldAt: fieldTokamak,
+        params: [
+            { key: 'B0',      label: 'B₀ · 토로이달 세기', min: 1,  max: 10, step: 0.2, value: 5.0 },
+            { key: 'R0',      label: 'R₀ · 주반경',         min: 3,  max: 10, step: 0.2, value: 5.0 },
+            { key: 'qSafety', label: 'q_s · 안전계수',      min: 0.5,max: 3,  step: 0.05,value: 0.8 },
+            { key: 'q',       label: 'q · 전하',            min: -2, max: 2,  step: 0.25,value: 1.0 },
+            { key: 'm',       label: 'm · 질량',            min: 0.5,max: 5,  step: 0.1, value: 1.0 }
+        ],
+        init: (p, v0, pitchDeg) => {
+            const R0 = p.R0 || 5.0;
+            const pos0 = [R0 + R0*0.3, 0, 0];   // ★ 축에서 0.3·R₀ 벗어남
+            // 실제 국소 자기장 벡터 방향을 그대로 따라가도록 발사
+            // (토로이달 성분만 쓰면 폴로이달 성분(Bp/Bt가 상당히 큼)을 무시하게 되어
+            //  그려지는 나선형 자기장선과 입자 궤적 방향이 어긋나 보임)
+            const B = tokamakB(pos0, p);
+            const Bmag = Math.hypot(B[0], B[1], B[2]) || 1;
+            return {
+                pos: pos0,
+                vel: [v0 * B[0]/Bmag, v0 * B[1]/Bmag, v0 * B[2]/Bmag]
+            };
+        },
+        jitterScale: 0.35,   // 입자별 초기 위치 미세 분산 (겹침 방지)
+        cameraDist: 16,
+        viewHalf: 10.0,
+        timescale: 0.3
+    },
+    
+    exb: {
+        key: 'exb',
+        name: 'E×B Drift',
+        icon: '↗️',
+        desc: '균일 E ⊥ B. 입자는 자이로 운동 + E×B 드리프트 (v_d = E×B/B²). 드리프트 속도는 전하·질량과 무관 — 양이온과 전자가 같은 방향으로 함께 이동.',
+        fieldAt: fieldExB,
+        params: [
+            { key: 'B',   label: 'B · 자기장',   min: 0.3, max: 3,   step: 0.05, value: 1.0 },
+            { key: 'E',   label: 'E · 전기장',   min: -1.5,max: 1.5, step: 0.05, value: 0.3 },
+            { key: 'q',   label: 'q · 전하',     min: -2,  max: 2,   step: 0.25, value: 1.0 },
+            { key: 'm',   label: 'm · 질량',     min: 0.5, max: 5,   step: 0.1,  value: 1.0 }
+        ],
+        init: (p, v0, pitchDeg) => ({
+            pos: [0, 0, 0],
+            vel: [0, v0, 0]
+        }),
+        cameraDist: 12,
+        viewHalf: 5.0,
+        timescale: 0.8,
+        jitterScale: 0.15   // 입자별 초기 위치 미세 분산 (겹침 방지)
+    }
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   [5.5] 입자 프리셋 — PDG 데이터베이스 서브셋 (LHC_kerr_finxyz.html 기반)
+   실제 우주선·방사선대 구성 입자 위주로 추림.
+   질량은 양성자(proton) 질량 대비 비율로 정규화 (시뮬레이션은 q=1,m=1 기준 단위계).
+   ═══════════════════════════════════════════════════════════════ */
+const PROTON_MASS_GEV = 0.938272;   // GeV/c², 정규화 기준
+
+const PARTICLE_PRESETS = {
+    proton:     { label: '양성자 p',        sym: 'p',   charge: +1, massGeV: 0.938272, color: [255,119,136], note: '태양풍·우주선의 주성분' },
+    antiproton: { label: '반양성자 p̄',      sym: 'p̄',  charge: -1, massGeV: 0.938272, color: [255,68,85],   note: '우주선 중 극소량' },
+    electron:   { label: '전자 e⁻',         sym: 'e⁻',  charge: -1, massGeV: 0.000511, color: [232,232,255], note: '오로라 전자, 밴앨런대 외대' },
+    positron:   { label: '양전자 e⁺',       sym: 'e⁺',  charge: +1, massGeV: 0.000511, color: [255,232,255], note: '우주선 중 소량' },
+    muon_m:     { label: '뮤온 μ⁻',         sym: 'μ⁻',  charge: -1, massGeV: 0.105658, color: [136,187,255], note: '우주선-대기 충돌로 생기는 2차 입자' },
+    muon_p:     { label: '뮤온 μ⁺',         sym: 'μ⁺',  charge: +1, massGeV: 0.105658, color: [153,204,255], note: '우주선-대기 충돌로 생기는 2차 입자' },
+    alpha:      { label: '알파입자 α (He²⁺)', sym: 'α',  charge: +2, massGeV: 3.7273,   color: [255,204,68],  note: '태양풍 중 두 번째로 많은 성분 (LHC 목록엔 없어 직접 추가)' }
+};
+
+/* 시각적 조절 모드 — 극단적 질량비를 완만한 곡선으로 압축 (순서는 보존)
+   m_visual = ratio^0.18   (electron: 0.000545 → 0.32,  alpha: 3.97 → 1.28) */
+function visualMassRatio(ratio) {
+    return Math.pow(Math.max(ratio, 1e-9), 0.18);
+}
+
+/* 프리셋 키 → 현재 질량 모드에 맞는 {q, m} 계산 */
+function particleQM(key, massMode) {
+    const pd = PARTICLE_PRESETS[key];
+    const ratio = pd.massGeV / PROTON_MASS_GEV;
+    const m = massMode === 'physical' ? ratio : visualMassRatio(ratio);
+    return { q: pd.charge, m, ratio };
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [6] 진단 유틸리티
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 4-벡터 → 3-속도 */
+function velFromP4(p4, m) {
+    const gamma = p4.E / m;
+    return [p4.px / (gamma*m), p4.py / (gamma*m), p4.pz / (gamma*m)];
+}
+
+/* 국소 자기장에 대한 v∥, v⊥, 피치각 분해 */
+function decomposeV(vel, B) {
+    const Bmag = Math.hypot(B[0], B[1], B[2]);
+    if (Bmag < 1e-12) return { vpar: 0, vperp: Math.hypot(...vel), pitch: Math.PI/2, Bmag: 0 };
+    const bHat = [B[0]/Bmag, B[1]/Bmag, B[2]/Bmag];
+    const vpar = vel[0]*bHat[0] + vel[1]*bHat[1] + vel[2]*bHat[2];
+    const vmag = Math.hypot(...vel);
+    const vperp = Math.sqrt(Math.max(0, vmag*vmag - vpar*vpar));
+    const pitch = Math.atan2(vperp, vpar);
+    return { vpar, vperp, pitch, Bmag };
+}
+
+/* 자기장 기울기 스케일 L_B = |B| / |∇B| (수치 미분) */
+function fieldGradientScale(pos, p, fieldAt, h = 0.05) {
+    const B0 = fieldAt(pos, p).B;
+    const B0mag = Math.hypot(...B0);
+    if (B0mag < 1e-12) return Infinity;
+    
+    let gradMag = 0;
+    for (let i = 0; i < 3; i++) {
+        const posP = [...pos], posM = [...pos];
+        posP[i] += h; posM[i] -= h;
+        const Bp = fieldAt(posP, p).B;
+        const Bm = fieldAt(posM, p).B;
+        const dB = [
+            (Bp[0]-Bm[0])/(2*h),
+            (Bp[1]-Bm[1])/(2*h),
+            (Bp[2]-Bm[2])/(2*h)
+        ];
+        gradMag += dB[0]*dB[0] + dB[1]*dB[1] + dB[2]*dB[2];
+    }
+    gradMag = Math.sqrt(gradMag);
+    if (gradMag < 1e-12) return Infinity;
+    return B0mag / gradMag;
+}
+
+/* 단열 불변량 계산 */
+function invariants(p4, pos, m, q, fieldAt, params) {
+    const vel = velFromP4(p4, m);
+    const { E, B } = fieldAt(pos, params);
+    const { vpar, vperp, pitch, Bmag } = decomposeV(vel, B);
+    
+    const mu = Bmag > 1e-12 ? 0.5 * m * vperp * vperp / Bmag : 0;
+    const omega = Bmag > 1e-12 ? Math.abs(q) * Bmag / m : 0;
+    const rg = omega > 1e-12 ? vperp / omega : 0;
+    
+    // J (바운스 불변량) — 근사적으로 v∥ · L_B (정확한 적분은 아님, 스케일 지표)
+    const LB = fieldGradientScale(pos, params, fieldAt);
+    const J_approx = Math.abs(vpar) * LB;
+    
+    return { mu, omega, rg, vpar, vperp, pitch, Bmag, J_approx, LB };
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [7] 전역 상태 (시뮬레이션)
+   ═══════════════════════════════════════════════════════════════ */
+const SIM = {
+    modelKey: 'aurora',
+    params: {},              // 모델별 파라미터 (슬라이더에서 채움)
+    particles: [],           // 입자 배열 (Particle 인스턴스)
+    twinParticles: [],       // Chaos Twin (섬동 궤적)
+    N: 10,                   // 입자 수
+    v0: 1.0,                 // 기준 속도
+    particleSize: 1.0,       // 입자 렌더 크기 배율
+    tailLength: 400,         // 궤적(꼬리) 길이 (슬라이더로 조절)
+    pitchSpread: 30,         // 피치각 분포 폭 (도)
+    selectedParticle: 'proton',  // 현재 선택된 입자 프리셋 키 ('custom'이면 슬라이더 직접 조절)
+    massMode: 'visual',      // 'physical'(실제 질량비) | 'visual'(시각적으로 조절된 비율)
+    t: 0,
+    running: true,
+    speed: 1.0,
+    dtBase: 0.004,           // 기본 타임스텝 (모델별 조정)
+    liveMotion: true,
+    fieldLines: true,
+    autoRotate: false,
+    chaosOn: false,
+    poincareOn: false,
+    // 진단 이력
+    muHistory: [],           // [{t, mu, mu0, ratio}]
+    chaosHistory: [],        // [{t, logsep}]
+    poincarePoints: [],      // [{x, vx, t}]
+    // 초기값 (drift 계산용)
+    E0: 0,
+    mu0_avg: 0,
+    // 통계
+    activeCount: 0,
+    lostCount: 0,
+    microSteps: MICROSTEPS_BASE
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   [8] Particle 클래스
+   ═══════════════════════════════════════════════════════════════ */
+class Particle {
+    constructor(id, model, params, v0, pitchRad, q, m, seedPos, seedVel) {
+        this.id = id;
+        this.model = model;
+        this.params = params;
+        this.q = q;
+        this.m = m;
+        this.pitchInit = pitchRad;
+        
+        // 위치·속도 → 4-운동량
+        this.pos = [...seedPos];
+        this.vel = [...seedVel];
+        const vmag = Math.hypot(...seedVel);
+        const gamma = 1 / Math.sqrt(Math.max(1e-12, 1 - Math.min(0.999, vmag*vmag)));
+        // 무차원 단위계에서 c=1이지만, 속도는 상대론적 보정 없이 사용 (v << 1 가정)
+        // E = m (정지 에너지) + 운동에너지 근사
+        this.p4 = new FourVector(
+            Math.sqrt(m*m + vmag*vmag),  // 상대론적 E
+            m * seedVel[0] * 1.0,
+            m * seedVel[1] * 1.0,
+            m * seedVel[2] * 1.0
+        );
+        
+        // 궤적 이력 (렌더링용) — trailMax는 SIM.tailLength를 실시간 참조
+        this.trail = [];
+        
+        // 진단
+        this.mu0 = 0;              // 초기 μ
+        this.E0 = this.p4.E;       // 초기 에너지
+        this.trapped = true;       // 자기 거울 상태 (aurora)
+        this.lost = false;         // 손실콘 탈출
+        this.alive = true;
+        
+        // Chaos twin이면 twinParticle 참조
+        this.twin = null;
+        
+        // 색상 (입자별 고유)
+        this.color = this._colorFromId(id);
+        
+        // 초기 진단 (μ0 설정을 위해 한 번 계산)
+        const inv = invariants(this.p4, this.pos, this.m, this.q, model.fieldAt, params);
+        this.mu0 = Math.max(1e-9, inv.mu);
+        this.omega0 = inv.omega;
+        this.rg0 = inv.rg;
+    }
+    
+    _colorFromId(id) {
+        // 황금비 해싱 → 균일 색상 분포
+        const hue = (id * 137.508) % 360;
+        const s = 0.65, l = 0.58;
+        // HSL → RGB
+        const c = (1 - Math.abs(2*l - 1)) * s;
+        const x = c * (1 - Math.abs(((hue/60) % 2) - 1));
+        const m_ = l - c/2;
+        let r=0, g=0, b=0;
+        if (hue < 60)       { r=c; g=x; b=0; }
+        else if (hue < 120) { r=x; g=c; b=0; }
+        else if (hue < 180) { r=0; g=c; b=x; }
+        else if (hue < 240) { r=0; g=x; b=c; }
+        else if (hue < 300) { r=x; g=0; b=c; }
+        else                { r=c; g=0; b=x; }
+        return [
+            Math.round((r+m_)*255),
+            Math.round((g+m_)*255),
+            Math.round((b+m_)*255)
+        ];
+    }
+    
+    /* 한 스텝 진행 (Boris + 적응형 substep) */
+    step(dt) {
+        if (!this.alive) return;
+        
+        // 국소 자기장
+        const { B } = this.model.fieldAt(this.pos, this.params);
+        const Bmag = Math.hypot(...B);
+        
+        // 국소 진단
+        const inv = invariants(this.p4, this.pos, this.m, this.q, this.model.fieldAt, this.params);
+        
+        // 적응형 substep 수 계산
+        const microsteps = computeMicrosteps(inv.rg, inv.LB, lastEnergyDrift);
+        const mdt = dt / microsteps;
+        
+        // substep 루프
+        for (let i = 0; i < microsteps; i++) {
+            // 국소 자기장 재계산 (위치가 바뀌므로)
+            const { B: Bloc } = this.model.fieldAt(this.pos, this.params);
+            
+            // Boris push
+            this.p4 = borisStep(this.p4, this.q, this.m, Bloc[0], Bloc[1], Bloc[2], mdt);
+            
+            // 위치 업데이트 (v = p·c²/E, 무차원 c=1)
+            const inv2 = velFromP4(this.p4, this.m);
+            this.pos[0] += inv2[0] * mdt;
+            this.pos[1] += inv2[1] * mdt;
+            this.pos[2] += inv2[2] * mdt;
+            
+            // Poincaré 교차 감지 (모든 입자 공통: y=0, v_y>0)
+            if (SIM.poincareOn) this._checkPoincareCrossing();
+        }
+        
+        // 자기 거울 손실 판정 (Aurora)
+        if (this.model.key === 'aurora') this._checkLossCone();
+        
+        // 궤적 기록 (렌더링용)
+        if (SIM.liveMotion) {
+            this.trail.push([this.pos[0], this.pos[1], this.pos[2]]);
+            const tmax = Math.min(SIM.tailLength, MAX_TAIL_LENGTH);
+            if (this.trail.length > tmax) this.trail.splice(0, this.trail.length - tmax);
+        }
+        
+        // 경계 이탈 처리
+        const r = Math.hypot(...this.pos);
+        if (r > 500 || !isFinite(r)) {
+            this.alive = false;
+            this.lost = true;
+            SIM.lostCount++;
+        }
+    }
+    
+    /* Poincaré 교차 감지 */
+    _checkPoincareCrossing() {
+        if (this._prevY === undefined) {
+            this._prevY = this.pos[1];
+            this._prevX = this.pos[0];
+            this._prevVx = velFromP4(this.p4, this.m)[0];
+            return;
+        }
+        const yPrev = this._prevY;
+        const yNow = this.pos[1];
+        const vNow = velFromP4(this.p4, this.m);
+        
+        // 아래 → 위 통과 && vy > 0
+        if (yPrev < 0 && yNow >= 0 && vNow[1] > 0) {
+            const frac = (0 - yPrev) / (yNow - yPrev || 1e-12);
+            const xCross = this._prevX + (this.pos[0] - this._prevX) * frac;
+            const vxCross = this._prevVx + (vNow[0] - this._prevVx) * frac;
+            
+            SIM.poincarePoints.push({
+                x: xCross,
+                vx: vxCross,
+                t: SIM.t,
+                particleId: this.id
+            });
+            if (SIM.poincarePoints.length > 3000) SIM.poincarePoints.shift();
+        }
+        
+        this._prevY = yNow;
+        this._prevX = this.pos[0];
+        this._prevVx = vNow[0];
+    }
+    
+    /* 자기 거울 손실콘 판정 (Aurora 전용) */
+    _checkLossCone() {
+        const { B } = this.model.fieldAt(this.pos, this.params);
+        const Bmag = Math.hypot(...B);
+        const inv = invariants(this.p4, this.pos, this.m, this.q, this.model.fieldAt, this.params);
+        
+        // 적도 자기장 (r=3, z=0 위치의 B)
+        const Beq = this.params.M / Math.pow(3, 3);
+        // 최대 자기장 (r=1 위치)
+        const Bmax = this.params.M / Math.pow(1, 3);
+        
+        // 손실콘 각도: sin²α_loss = B_eq / B_max
+        const sin2Loss = Beq / Bmax;
+        const alphaLoss = Math.asin(Math.sqrt(Math.max(0, Math.min(1, sin2Loss))));
+        
+        // 현재 피치각
+        const pitch = inv.pitch;
+        const alphaEq = Math.PI/2 - pitch;  // 적도 기준 각도
+        
+        this.trapped = Math.abs(alphaEq) > alphaLoss;
+    }
+    
+    /* 현재 상태 진단 반환 (UI용) */
+    diagnose() {
+        const inv = invariants(this.p4, this.pos, this.m, this.q, this.model.fieldAt, this.params);
+        return {
+            ...inv,
+            muRatio: this.mu0 > 1e-9 ? inv.mu / this.mu0 : 1,
+            ERatio: this.E0 > 1e-9 ? this.p4.E / this.E0 : 1
+        };
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [9] 앙상블 생성 — N개 입자를 피치각 분포로 초기화
+   ═══════════════════════════════════════════════════════════════ */
+function createEnsemble(modelKey, params, N, v0, pitchSpreadDeg) {
+    const model = MODELS[modelKey];
+    const q = params.q || 1.0;
+    const m = params.m || 1.0;
+    
+    const particles = [];
+    const twinParticles = [];
+    
+    // 피치각을 균일 분포로 샘플 (spread 범위 내)
+    // 중심 피치 = 45° (자기 거울에 갇히기 좋은 각도)
+    const pitchCenter = Math.PI / 4;
+    const pitchSpread = pitchSpreadDeg * Math.PI / 180;
+    
+    for (let i = 0; i < N; i++) {
+        // 균일 분포 (중심 ± spread/2)
+        let pitch;
+        if (N === 1) {
+            pitch = pitchCenter;
+        } else {
+            const u = i / (N - 1);  // 0 ~ 1
+            pitch = pitchCenter - pitchSpread/2 + u * pitchSpread;
+            pitch = Math.max(0.05, Math.min(Math.PI/2 - 0.05, pitch));
+        }
+        
+        // 초기 조건
+        const initCond = model.init(params, v0, pitch * 180 / Math.PI);
+        
+        // 입자별 초기 위치를 살짝 분산 (완전히 같은 지점에서 출발하면
+        // 서로 완벽히 겹치는 궤적이 되어버려 민감도·분산이 안 보임)
+        const js = model.jitterScale || 0;
+        let seedPos = initCond.pos;
+        if (js > 0 && N > 1) {
+            const golden = i * 2.399963;  // 황금각(rad) — 입자들을 고르게 분산
+            seedPos = [
+                initCond.pos[0] + js * Math.cos(golden) * (0.3 + 0.7*Math.random()),
+                initCond.pos[1] + js * Math.sin(golden * 1.3) * (0.3 + 0.7*Math.random()),
+                initCond.pos[2] + js * Math.sin(golden) * (0.3 + 0.7*Math.random())
+            ];
+        }
+        
+        const p = new Particle(i, model, params, v0, pitch, q, m, seedPos, initCond.vel);
+        particles.push(p);
+        
+        // Chaos Twin (10⁻⁵ 섭동)
+        if (SIM.chaosOn) {
+            const perturbedPos = seedPos.map(x => x + (Math.random()-0.5) * 2e-5);
+            const perturbedVel = initCond.vel.map(v => v + (Math.random()-0.5) * 2e-5);
+            const twin = new Particle(i, model, params, v0, pitch, q, m, perturbedPos, perturbedVel);
+            twin.color = p.color;      // 색상 동일 (구분은 스타일로)
+            p.twin = twin;
+            twinParticles.push(twin);
+        }
+    }
+    
+    return { particles, twinParticles };
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [10] 시뮬레이션 스텝 — 앙상블 전체 진행
+   ═══════════════════════════════════════════════════════════════ */
+function simStep(dtGlobal) {
+    if (!SIM.running) return;
+    
+    const dt = dtGlobal * SIM.speed * MODELS[SIM.modelKey].timescale;
+    
+    let activeCount = 0;
+    let sumMu = 0, sumE = 0, sumERatio = 0, countForStats = 0;
+    
+    for (const p of SIM.particles) {
+        if (!p.alive) continue;
+        p.step(dt);
+        if (p.alive) activeCount++;
+        
+        if (p.alive) {
+            const diag = p.diagnose();
+            sumMu += diag.muRatio;
+            sumE += p.p4.E;
+            sumERatio += diag.ERatio;
+            countForStats++;
+        }
+    }
+    
+    // Chaos twin
+    if (SIM.chaosOn && SIM.twinParticles.length > 0) {
+        for (const t of SIM.twinParticles) {
+            if (!t.alive) continue;
+            t.step(dt);
+        }
+    }
+    
+    SIM.t += dt;
+    SIM.activeCount = activeCount;
+    SIM.microSteps = MICROSTEPS_BASE;   // 실제값은 각 입자가 계산
+    
+    // 진단 이력 누적 (일정 간격)
+    if (countForStats > 0) {
+        const muAvg = sumMu / countForStats;
+        const eAvg = sumE / countForStats;
+        const eRatioAvg = sumERatio / countForStats;
+        
+        // 첫 스텝에서 mu0_avg, E0 설정
+        if (SIM.muHistory.length === 0) {
+            SIM.mu0_avg = muAvg;
+            SIM.E0 = eAvg;
+        }
+        
+        SIM.muHistory.push({ t: SIM.t, muRatio: muAvg, eRatio: eRatioAvg });
+        if (SIM.muHistory.length > 500) SIM.muHistory.shift();
+        
+        // 에너지 드리프트 계산 (적응형 피드백용)
+        if (SIM.E0 > 1e-9) {
+            lastEnergyDrift = Math.abs((eAvg - SIM.E0) / SIM.E0) * 100;
+        }
+    }
+    
+    // Chaos 진단
+    if (SIM.chaosOn) {
+        let sumLogSep = 0, countSep = 0;
+        for (const p of SIM.particles) {
+            if (!p.alive || !p.twin || !p.twin.alive) continue;
+            const dx = p.pos[0] - p.twin.pos[0];
+            const dy = p.pos[1] - p.twin.pos[1];
+            const dz = p.pos[2] - p.twin.pos[2];
+            const sep = Math.hypot(dx, dy, dz);
+            if (sep > 1e-15) {
+                sumLogSep += Math.log(sep);
+                countSep++;
+            }
+        }
+        if (countSep > 0) {
+            const avgLogSep = sumLogSep / countSep;
+            SIM.chaosHistory.push({ t: SIM.t, logsep: avgLogSep });
+            if (SIM.chaosHistory.length > 500) SIM.chaosHistory.shift();
+        }
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [11] Lyapunov 지수 (최소자승 기울기, nbody_sim 이식)
+   ═══════════════════════════════════════════════════════════════ */
+function lyapunovSlope(history) {
+    const n = history.length;
+    if (n < 10) return null;
+    let sumT=0, sumY=0, sumTT=0, sumTY=0;
+    for (const p of history) {
+        sumT += p.t; sumY += p.logsep; sumTT += p.t*p.t; sumTY += p.t*p.logsep;
+    }
+    const denom = n*sumTT - sumT*sumT;
+    if (Math.abs(denom) < 1e-12) return null;
+    return (n*sumTY - sumT*sumY) / denom;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [12] 내보내기 (Part 3, 4에서 사용)
+   ═══════════════════════════════════════════════════════════════ */
+// (하나의 모듈 스크립트로 병합됨)
+/* ═══════════════════════════════════════════════════════════════
+   [13] THREE.JS 씬 초기화
+   ═══════════════════════════════════════════════════════════════ */
+const container = document.getElementById('cv').parentElement;
+const canvas3D = document.getElementById('cv');
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x07090f);
+scene.fog = new THREE.FogExp2(0x07090f, 0.008);
+
+const camera = new THREE.PerspectiveCamera(
+    50,
+    canvas3D.clientWidth / canvas3D.clientHeight,
+    0.1,
+    2000
+);
+camera.position.set(8, 6, 12);
+
+const renderer = new THREE.WebGLRenderer({
+    canvas: canvas3D,
+    antialias: true,
+    alpha: false
+});
+renderer.setSize(canvas3D.clientWidth, canvas3D.clientHeight, false);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.autoRotate = false;
+controls.autoRotateSpeed = 0.6;
+controls.minDistance = 1;
+controls.maxDistance = 300;
+
+/* ── 조명 ── */
+scene.add(new THREE.AmbientLight(0x404a66, 0.9));
+const keyLight = new THREE.PointLight(0xd9a441, 1.2, 500);
+keyLight.position.set(30, 40, 30);
+scene.add(keyLight);
+const fillLight = new THREE.PointLight(0x5fb8ac, 0.5, 500);
+fillLight.position.set(-30, -20, -20);
+scene.add(fillLight);
+
+/* ── 별 배경 ── */
+(function buildStars() {
+    const N = 1500;
+    const pos = new Float32Array(N * 3);
+    for (let i = 0; i < N; i++) {
+        pos[i*3]   = (Math.random() - 0.5) * 1200;
+        pos[i*3+1] = (Math.random() - 0.5) * 1200;
+        pos[i*3+2] = (Math.random() - 0.5) * 1200;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const mat = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.35,
+        transparent: true,
+        opacity: 0.55,
+        depthWrite: false
+    });
+    scene.add(new THREE.Points(geo, mat));
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   [14] 자기장 시각화 — 모델별 4종
+   ═══════════════════════════════════════════════════════════════ */
+let fieldGroup = null;
+
+function clearField() {
+    if (fieldGroup) {
+        scene.remove(fieldGroup);
+        fieldGroup.traverse(obj => {
+            if (obj.geometry) obj.geometry.dispose();
+            if (obj.material) {
+                if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
+                else obj.material.dispose();
+            }
+        });
+        fieldGroup = null;
+    }
+}
+
+/* ── Cyclotron: 균일 B (z 방향) — 수직 화살표 격자 ── */
+function buildCyclotronField(Bmag) {
+    clearField();
+    fieldGroup = new THREE.Group();
+    const gridN = 5;
+    const spacing = 1.6;
+    const halfH = 3.5;
+    const opacity = 0.10 + Math.min(0.35, Bmag / 3 * 0.35);
+    
+    for (let ix = -gridN; ix <= gridN; ix++) {
+        for (let iy = -gridN; iy <= gridN; iy++) {
+            const x = ix * spacing;
+            const y = iy * spacing;
+            const geo = new THREE.BufferGeometry().setFromPoints([
+                new THREE.Vector3(x, y, -halfH),
+                new THREE.Vector3(x, y,  halfH)
+            ]);
+            const mat = new THREE.LineBasicMaterial({
+                color: 0x5fb8ac,
+                transparent: true,
+                opacity: opacity,
+                depthWrite: false
+            });
+            fieldGroup.add(new THREE.Line(geo, mat));
+        }
+    }
+    
+    // 중앙 화살표 3개
+    for (let k = -1; k <= 1; k++) {
+        const arrowGeo = new THREE.ConeGeometry(0.14, 0.42, 8);
+        const arrowMat = new THREE.MeshBasicMaterial({
+            color: 0x5fb8ac,
+            transparent: true,
+            opacity: 0.55
+        });
+        const arrow = new THREE.Mesh(arrowGeo, arrowMat);
+        arrow.position.set(k * 2, 0, halfH - 0.4);
+        fieldGroup.add(arrow);
+    }
+    
+    scene.add(fieldGroup);
+}
+
+/* ── Aurora: 쌍극자 자기장선 (r = r₀·sin²θ) ── */
+function buildAuroraField(params) {
+    clearField();
+    fieldGroup = new THREE.Group();
+    const M = params.M || 100;
+    
+    // 지구 (와이어프레임 구체)
+    const earthGeo = new THREE.SphereGeometry(0.6, 24, 18);
+    const earthMat = new THREE.MeshBasicMaterial({
+        color: 0x3a5a8a,
+        transparent: true,
+        opacity: 0.35,
+        wireframe: true
+    });
+    const earth = new THREE.Mesh(earthGeo, earthMat);
+    fieldGroup.add(earth);
+    
+    // 적도 자기장 방향 화살표 (북쪽, +y)
+    const arrowLen = 1.2;
+    const arrowGeo = new THREE.ConeGeometry(0.12, 0.4, 8);
+    const arrowMat = new THREE.MeshBasicMaterial({ color: 0xd9a441, opacity: 0.8, transparent: true });
+    const arrowN = new THREE.Mesh(arrowGeo, arrowMat);
+    arrowN.position.set(0, arrowLen, 0);
+    fieldGroup.add(arrowN);
+    
+    const arrowS = new THREE.Mesh(arrowGeo, arrowMat.clone());
+    arrowS.position.set(0, -arrowLen, 0);
+    arrowS.rotation.z = Math.PI;
+    fieldGroup.add(arrowS);
+    
+    // 자기장선 (r = r₀·sin²θ)
+    const r0List = [1.5, 2.2, 3.0, 4.0, 5.2, 6.8];
+    const phiSamples = 8;
+    
+    for (const r0 of r0List) {
+        for (let phiIdx = 0; phiIdx < phiSamples; phiIdx++) {
+            const phi = (phiIdx / phiSamples) * Math.PI * 2;
+            const pts = [];
+            for (let theta = 0.02; theta < Math.PI - 0.02; theta += Math.PI / 60) {
+                const r = r0 * Math.sin(theta) ** 2;
+                if (r < 0.65) continue;
+                const x = r * Math.sin(theta) * Math.cos(phi);
+                const z = r * Math.sin(theta) * Math.sin(phi);
+                const y = r * Math.cos(theta);
+                pts.push(new THREE.Vector3(x, y, z));
+            }
+            if (pts.length > 1) {
+                const geo = new THREE.BufferGeometry().setFromPoints(pts);
+                const mat = new THREE.LineBasicMaterial({
+                    color: 0x5fb8ac,
+                    transparent: true,
+                    opacity: 0.20,
+                    depthWrite: false
+                });
+                fieldGroup.add(new THREE.Line(geo, mat));
+            }
+        }
+    }
+    
+    // 적도면 링
+    const ringPts = [];
+    for (let i = 0; i <= 80; i++) {
+        const a = i / 80 * Math.PI * 2;
+        ringPts.push(new THREE.Vector3(0.6 * Math.cos(a), 0, 0.6 * Math.sin(a)));
+    }
+    const ringGeo = new THREE.BufferGeometry().setFromPoints(ringPts);
+    const ringMat = new THREE.LineBasicMaterial({ color: 0xd9a441, opacity: 0.4, transparent: true });
+    fieldGroup.add(new THREE.Line(ringGeo, ringMat));
+    
+    scene.add(fieldGroup);
+}
+
+/* ── Tokamak: 원환체 + 나선 자기장선 ── */
+function buildTokamakField(params) {
+    clearField();
+    fieldGroup = new THREE.Group();
+    const R0 = params.R0 || 5.0;
+    const qs = params.qSafety || 0.8;
+    const a = R0 * 0.3;
+    
+    // 토러스 와이어프레임 (경계)
+    const torusGeo = new THREE.TorusGeometry(R0, a, 12, 60);
+    const torusMat = new THREE.MeshBasicMaterial({
+        color: 0x5fb8ac,
+        transparent: true,
+        opacity: 0.06,
+        wireframe: true
+    });
+    const torus = new THREE.Mesh(torusGeo, torusMat);
+    torus.rotation.x = Math.PI / 2;
+    fieldGroup.add(torus);
+    
+    // 중심 자기축 (y축)
+    const axisGeo = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(0, -R0*1.3, 0),
+        new THREE.Vector3(0,  R0*1.3, 0)
+    ]);
+    const axisMat = new THREE.LineBasicMaterial({ color: 0xd9a441, opacity: 0.3, transparent: true, dashed: true });
+    const axisLine = new THREE.Line(axisGeo, axisMat);
+    fieldGroup.add(axisLine);
+    
+    // 나선 자기장선 — 여러 개의 flux surface
+    const surfaces = [0.5, 0.75, 1.0];
+    const linesPerSurface = 6;
+    const turns = 3;   // 토로이달 3바퀴당 폴로이달 1/q_s 바퀴
+    
+    for (const sFrac of surfaces) {
+        const minorR = a * sFrac;
+        for (let k = 0; k < linesPerSurface; k++) {
+            const phiOffset = (k / linesPerSurface) * Math.PI * 2;
+            const pts = [];
+            const N = 240;
+            for (let i = 0; i <= N; i++) {
+                const t = i / N;
+                const phi = phiOffset + t * Math.PI * 2 * turns;
+                const theta = t * Math.PI * 2 * turns / qs;   // 비틀림
+                const r = R0 + minorR * Math.cos(theta);
+                const x = r * Math.cos(phi);
+                const z = r * Math.sin(phi);
+                const y = minorR * Math.sin(theta);
+                pts.push(new THREE.Vector3(x, y, z));
+            }
+            const geo = new THREE.BufferGeometry().setFromPoints(pts);
+            const mat = new THREE.LineBasicMaterial({
+                color: 0x5fb8ac,
+                transparent: true,
+                opacity: 0.18 + 0.15 * sFrac,
+                depthWrite: false
+            });
+            fieldGroup.add(new THREE.Line(geo, mat));
+        }
+    }
+    
+    // 폴로이달 단면 링 (R₀ 위치에서)
+    const poloidalRingPts = [];
+    for (let i = 0; i <= 60; i++) {
+        const th = i / 60 * Math.PI * 2;
+        poloidalRingPts.push(new THREE.Vector3(
+            R0 + a * 0.5 * Math.cos(th),
+            a * 0.5 * Math.sin(th),
+            0
+        ));
+    }
+    const prGeo = new THREE.BufferGeometry().setFromPoints(poloidalRingPts);
+    const prMat = new THREE.LineBasicMaterial({ color: 0xd9a441, opacity: 0.35, transparent: true });
+    fieldGroup.add(new THREE.Line(prGeo, prMat));
+    
+    scene.add(fieldGroup);
+}
+
+/* ── E×B: 균일 B(z) + 균일 E(y) ── */
+function buildExBField(params) {
+    clearField();
+    fieldGroup = new THREE.Group();
+    const B = params.B || 1.0;
+    const E = params.E || 0.3;
+    
+    const gridN = 4;
+    const spacing = 1.6;
+    const halfH = 3.0;
+    
+    // B장 (z 방향, 청록색)
+    for (let ix = -gridN; ix <= gridN; ix++) {
+        for (let iy = -gridN; iy <= gridN; iy++) {
+            const x = ix * spacing;
+            const y = iy * spacing;
+            const geo = new THREE.BufferGeometry().setFromPoints([
+                new THREE.Vector3(x, y, -halfH),
+                new THREE.Vector3(x, y,  halfH)
+            ]);
+            const mat = new THREE.LineBasicMaterial({
+                color: 0x5fb8ac,
+                transparent: true,
+                opacity: 0.10 + Math.min(0.28, B / 3 * 0.28),
+                depthWrite: false
+            });
+            fieldGroup.add(new THREE.Line(geo, mat));
+        }
+    }
+    
+    // E장 (y 방향, 주황색) — 일부 위치에만
+    const eColor = E > 0 ? 0xd9a441 : 0xd17f6e;
+    for (let ix = -2; ix <= 2; ix++) {
+        for (let iz = -2; iz <= 2; iz++) {
+            const x = ix * spacing * 2;
+            const z = iz * spacing * 2;
+            const arrowLen = Math.min(0.8, Math.abs(E) * 1.5);
+            if (arrowLen < 0.05) continue;
+            const dir = E > 0 ? 1 : -1;
+            const geo = new THREE.BufferGeometry().setFromPoints([
+                new THREE.Vector3(x, -arrowLen*dir, z),
+                new THREE.Vector3(x,  arrowLen*dir, z)
+            ]);
+            const mat = new THREE.LineBasicMaterial({
+                color: eColor,
+                transparent: true,
+                opacity: 0.35,
+                depthWrite: false
+            });
+            fieldGroup.add(new THREE.Line(geo, mat));
+        }
+    }
+    
+    scene.add(fieldGroup);
+}
+
+/* 자기장 시각화 디스패처 */
+function rebuildField() {
+    if (!SIM.fieldLines) {
+        clearField();
+        return;
+    }
+    const model = MODELS[SIM.modelKey];
+    const p = SIM.params;
+    
+    if (SIM.modelKey === 'cyclotron')   buildCyclotronField(p.B || 1.0);
+    else if (SIM.modelKey === 'aurora')  buildAuroraField(p);
+    else if (SIM.modelKey === 'tokamak') buildTokamakField(p);
+    else if (SIM.modelKey === 'exb')     buildExBField(p);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [15] 입자 렌더링 — 다중 입자 궤적 (Line per particle)
+   ═══════════════════════════════════════════════════════════════ */
+class ParticleRenderer {
+    constructor() {
+        this.group = new THREE.Group();
+        scene.add(this.group);
+        this.trailLines = new Map();   // particleId → THREE.Line
+        this.headSpheres = new Map();  // particleId → THREE.Mesh
+        this.twinLines = new Map();
+    }
+    
+    /* 입자 등록 */
+    register(particle) {
+        // 궤적 라인
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(MAX_TAIL_LENGTH * 3), 3));
+        geo.setDrawRange(0, 0);
+        const mat = new THREE.LineBasicMaterial({
+            color: new THREE.Color(particle.color[0]/255, particle.color[1]/255, particle.color[2]/255),
+            transparent: true,
+            opacity: 0.75,
+            linewidth: 1
+        });
+        const line = new THREE.Line(geo, mat);
+        line.frustumCulled = false;
+        this.group.add(line);
+        this.trailLines.set(particle.id, line);
+        
+        // 헤드 (발광 구체) — 기본 반지름에 SIM.particleSize 배율 적용
+        const headGeo = new THREE.SphereGeometry(0.10, 12, 12);
+        const headMat = new THREE.MeshBasicMaterial({
+            color: new THREE.Color(particle.color[0]/255, particle.color[1]/255, particle.color[2]/255),
+            transparent: true,
+            opacity: 0.95
+        });
+        const head = new THREE.Mesh(headGeo, headMat);
+        // 발광 후광
+        const glowGeo = new THREE.SphereGeometry(0.20, 12, 12);
+        const glowMat = new THREE.MeshBasicMaterial({
+            color: new THREE.Color(particle.color[0]/255, particle.color[1]/255, particle.color[2]/255),
+            transparent: true,
+            opacity: 0.22,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+        head.add(new THREE.Mesh(glowGeo, glowMat));
+        head.scale.setScalar(SIM.particleSize || 1.0);
+        this.group.add(head);
+        this.headSpheres.set(particle.id, head);
+        
+        // Chaos Twin
+        if (particle.twin) {
+            const tgeo = new THREE.BufferGeometry();
+            tgeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(MAX_TAIL_LENGTH * 3), 3));
+            tgeo.setDrawRange(0, 0);
+            const tmat = new THREE.LineBasicMaterial({
+                color: 0xd17f6e,
+                transparent: true,
+                opacity: 0.55,
+                linewidth: 1
+            });
+            const tline = new THREE.Line(tgeo, tmat);
+            tline.frustumCulled = false;
+            this.group.add(tline);
+            this.twinLines.set(particle.id, tline);
+        }
+    }
+    
+    /* 매 프레임 업데이트 */
+    update(particles, twinParticles) {
+        // ★ 좌표축 변환 버그 수정 (2024 리뷰 반영):
+        // (x,y,z)→(x,z,y) 스왑은 dipoleB가 "물리 z = 극축"을 쓰는 aurora 모델 전용 변환이다.
+        // tokamakB는 애초에 "물리 y = 폴로이달/수직축, x·z = 원환체 평면"을 쓰므로
+        // 자기면(buildTokamakField)이 x,y,z를 스왑 없이 그대로 그리는 것과 맞추려면
+        // 입자 렌더링도 스왑을 걸면 안 된다. 이 불일치가 "도넛 모양과 입자 운동 방향이
+        // 90도 어긋나 보이는" 원인이었다.
+        const swapYZ = SIM.modelKey !== 'tokamak';
+
+        for (const p of particles) {
+            const line = this.trailLines.get(p.id);
+            const head = this.headSpheres.get(p.id);
+            
+            if (!p.alive) {
+                if (line) line.visible = false;
+                if (head) head.visible = false;
+                continue;
+            }
+            
+            // 궤적 업데이트
+            if (line && p.trail.length > 1) {
+                const positions = line.geometry.attributes.position.array;
+                const count = Math.min(p.trail.length, MAX_TAIL_LENGTH);
+                const start = Math.max(0, p.trail.length - count);
+                for (let i = 0; i < count; i++) {
+                    const pt = p.trail[start + i];
+                    positions[i*3]   = pt[0];
+                    positions[i*3+1] = swapYZ ? pt[2] : pt[1];   // y-up 변환은 모델별 축 관례에 맞을 때만
+                    positions[i*3+2] = swapYZ ? pt[1] : pt[2];
+                }
+                line.geometry.setDrawRange(0, count);
+                line.geometry.attributes.position.needsUpdate = true;
+                line.geometry.computeBoundingSphere();
+            }
+            
+            // 헤드 위치
+            if (head) {
+                if (swapYZ) head.position.set(p.pos[0], p.pos[2], p.pos[1]);
+                else        head.position.set(p.pos[0], p.pos[1], p.pos[2]);
+            }
+        }
+        
+        // Twin
+        for (const p of twinParticles) {
+            const line = this.twinLines.get(p.id);
+            if (!line) continue;
+            if (!p.alive || !p.trail || p.trail.length < 2) {
+                line.visible = false;
+                continue;
+            }
+            line.visible = true;
+            const positions = line.geometry.attributes.position.array;
+            const count = Math.min(p.trail.length, MAX_TAIL_LENGTH);
+            const start = Math.max(0, p.trail.length - count);
+            for (let i = 0; i < count; i++) {
+                const pt = p.trail[start + i];
+                positions[i*3]   = pt[0];
+                positions[i*3+1] = swapYZ ? pt[2] : pt[1];
+                positions[i*3+2] = swapYZ ? pt[1] : pt[2];
+            }
+            line.geometry.setDrawRange(0, count);
+            line.geometry.attributes.position.needsUpdate = true;
+            line.geometry.computeBoundingSphere();
+        }
+    }
+    
+    /* 모든 헤드 크기 실시간 재조정 */
+    setParticleSize(scale) {
+        for (const head of this.headSpheres.values()) {
+            head.scale.setScalar(scale);
+        }
+    }
+    
+    /* 전체 해제 */
+    clear() {
+        for (const [id, line] of this.trailLines) {
+            this.group.remove(line);
+            line.geometry.dispose();
+            line.material.dispose();
+        }
+        this.trailLines.clear();
+        
+        for (const [id, head] of this.headSpheres) {
+            this.group.remove(head);
+            head.traverse(o => {
+                if (o.geometry) o.geometry.dispose();
+                if (o.material) o.material.dispose();
+            });
+        }
+        this.headSpheres.clear();
+        
+        for (const [id, line] of this.twinLines) {
+            this.group.remove(line);
+            line.geometry.dispose();
+            line.material.dispose();
+        }
+        this.twinLines.clear();
+    }
+}
+
+const particleRenderer = new ParticleRenderer();
+
+/* ═══════════════════════════════════════════════════════════════
+   [16] Robust Camera (nbody_sim 이식, 3D 적응)
+   ═══════════════════════════════════════════════════════════════ */
+let robustCameraOn = true;
+
+function computeRobustFit(particles) {
+    if (particles.length === 0) {
+        return { center: new THREE.Vector3(0, 0, 0), radius: 3 };
+    }
+    
+    // 살아있는 입자만
+    const alive = particles.filter(p => p.alive);
+    if (alive.length === 0) {
+        return { center: new THREE.Vector3(0, 0, 0), radius: 3 };
+    }
+    
+    // 무게중심
+    let cx = 0, cy = 0, cz = 0;
+    for (const p of alive) {
+        cx += p.pos[0]; cy += p.pos[1]; cz += p.pos[2];
+    }
+    cx /= alive.length; cy /= alive.length; cz /= alive.length;
+    const center = new THREE.Vector3(cx, cy, cz);
+    
+    // 각 입자까지의 거리
+    const dists = alive.map((p, i) => ({
+        i,
+        r: Math.sqrt(
+            (p.pos[0]-cx)**2 + (p.pos[1]-cy)**2 + (p.pos[2]-cz)**2
+        )
+    }));
+    
+    if (dists.length <= 2) {
+        const maxR = Math.max(0.5, ...dists.map(d => d.r));
+        return { center, radius: maxR * 1.8 };
+    }
+    
+    // 이상치 트림 (nbody 방식)
+    const sortedR = dists.map(d => d.r).sort((a, b) => a - b);
+    const medianR = sortedR[Math.floor(dists.length / 2)] || 1e-6;
+    const outlierK = 2.5;
+    const outliers = dists.filter(d => d.r > outlierK * medianR);
+    const maxTrim = Math.max(0, Math.min(alive.length - 1, Math.floor(alive.length * 0.30)));
+    
+    let kept;
+    if (outliers.length <= maxTrim) {
+        const outSet = new Set(outliers.map(d => d.i));
+        kept = dists.filter(d => !outSet.has(d.i));
+    } else {
+        const byR = [...dists].sort((a, b) => b.r - a.r);
+        const dropSet = new Set(byR.slice(0, maxTrim).map(d => d.i));
+        kept = dists.filter(d => !dropSet.has(d.i));
+    }
+    
+    if (kept.length === 0) kept = dists;
+    const maxKeptR = Math.max(0.5, ...kept.map(d => d.r));
+    return { center, radius: maxKeptR * 1.8 };
+}
+
+let cameraTarget = new THREE.Vector3(0, 0, 0);
+let cameraRadiusTarget = 8;
+
+function updateCamera(dt, particles) {
+    const model = MODELS[SIM.modelKey];
+    
+    let center, radius;
+    if (robustCameraOn && particles.length > 0) {
+        const fit = computeRobustFit(particles);
+        center = fit.center;
+        radius = Math.max(model.viewHalf || 3, fit.radius);
+    } else {
+        center = new THREE.Vector3(0, 0, 0);
+        radius = model.viewHalf || 3;
+    }
+    
+    cameraTarget.lerp(center, 0.05);
+    cameraRadiusTarget += (radius - cameraRadiusTarget) * 0.05;
+    controls.target.copy(cameraTarget);
+    
+    // 카메라 거리 자동 조절 (수동 조작 방해하지 않도록 살짝만)
+    const currentDist = camera.position.distanceTo(controls.target);
+    const desiredDist = cameraRadiusTarget * 1.6;
+    if (Math.abs(currentDist - desiredDist) > 0.5) {
+        const dir = camera.position.clone().sub(controls.target).normalize();
+        const newDist = currentDist + (desiredDist - currentDist) * 0.03;
+        camera.position.copy(controls.target).add(dir.multiplyScalar(newDist));
+    }
+    
+    controls.update();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [17] 리사이즈 핸들러
+   ═══════════════════════════════════════════════════════════════ */
+function resizeRenderer() {
+    const w = canvas3D.clientWidth;
+    const h = canvas3D.clientHeight;
+    if (w === 0 || h === 0) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+}
+
+window.addEventListener('resize', () => {
+    resizeRenderer();
+    // 차트 캔버스 리사이즈도 여기서 트리거 (Part 4에서 정의)
+    if (window._resizeCharts) window._resizeCharts();
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   [18] 렌더 루프 (Part 4의 simStep과 연결)
+   ═══════════════════════════════════════════════════════════════ */
+let lastFrameTime = performance.now();
+let fpsCounter = 0;
+let fpsTimeAccum = 0;
+let currentFps = 60;
+
+function renderLoop() {
+    requestAnimationFrame(renderLoop);
+    
+    const now = performance.now();
+    const dt = Math.min(0.033, (now - lastFrameTime) / 1000);
+    lastFrameTime = now;
+    
+    // FPS 계산
+    fpsCounter++;
+    fpsTimeAccum += dt;
+    if (fpsTimeAccum >= 0.5) {
+        currentFps = Math.round(fpsCounter / fpsTimeAccum);
+        fpsCounter = 0;
+        fpsTimeAccum = 0;
+        document.getElementById('hFps').textContent = currentFps;
+    }
+    
+    // 물리 스텝 (Part 4에서 정의된 simStep)
+    if (typeof simStep === 'function' && SIM.running) {
+        simStep(dt);
+    }
+    
+    // 카메라
+    updateCamera(dt, SIM.particles);
+    
+    // 렌더링
+    particleRenderer.update(SIM.particles, SIM.twinParticles);
+    
+    renderer.render(scene, camera);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [19] 카메라 프리셋 (모델 전환 시 부드럽게 이동)
+   ═══════════════════════════════════════════════════════════════ */
+function flyCameraTo(targetPos, targetLook, duration = 600) {
+    const startPos = camera.position.clone();
+    const startTarget = controls.target.clone();
+    const startTime = performance.now();
+    
+    function step() {
+        const t = Math.min(1, (performance.now() - startTime) / duration);
+        const ease = t * t * (3 - 2 * t);
+        camera.position.lerpVectors(startPos, targetPos, ease);
+        controls.target.lerpVectors(startTarget, targetLook, ease);
+        cameraTarget.copy(controls.target);
+        cameraRadiusTarget = camera.position.distanceTo(controls.target);
+        if (t < 1) requestAnimationFrame(step);
+    }
+    step();
+}
+
+function applyViewPreset(view) {
+    const dist = cameraRadiusTarget * 1.6;
+    const target = controls.target.clone();
+    const dirs = {
+        front: new THREE.Vector3(0, 0.001, 1),
+        top:   new THREE.Vector3(0, 1, 0.001),
+        side:  new THREE.Vector3(1, 0, 0),
+        iso:   new THREE.Vector3(1, 0.7, 1).normalize()
+    };
+    const newPos = target.clone().add(dirs[view].clone().multiplyScalar(dist));
+    flyCameraTo(newPos, target, 500);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [20] 내보내기 (Part 4에서 사용)
+   ═══════════════════════════════════════════════════════════════ */
+// (하나의 모듈 스크립트로 병합됨)
+/* ═══════════════════════════════════════════════════════════════
+   [21] UI — 모델 칩 렌더링
+   ═══════════════════════════════════════════════════════════════ */
+const modelChipsEl = document.getElementById('modelChips');
+const modelListEl = document.getElementById('modelList');
+
+function renderModelChips() {
+    modelChipsEl.innerHTML = '';
+    modelListEl.innerHTML = '';
+    
+    Object.keys(MODELS).forEach(key => {
+        const m = MODELS[key];
+        
+        // 상단 칩
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (key === SIM.modelKey ? ' active' : '');
+        chip.innerHTML = `<span class="ico">${m.icon}</span>${m.name}`;
+        chip.addEventListener('click', () => selectModel(key));
+        modelChipsEl.appendChild(chip);
+        
+        // 우측 패널 리스트
+        const btn = document.createElement('button');
+        btn.className = 'preset-btn' + (key === SIM.modelKey ? ' active' : '');
+        btn.innerHTML = `<span class="dot"></span><span class="ico">${m.icon}</span>${m.name}`;
+        btn.addEventListener('click', () => selectModel(key));
+        modelListEl.appendChild(btn);
+    });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [21.5] UI — 입자 프리셋 렌더링 · 선택
+   ═══════════════════════════════════════════════════════════════ */
+const particleListEl = document.getElementById('particleList');
+const particleDescEl = document.getElementById('particleDesc');
+
+function renderParticleList() {
+    particleListEl.innerHTML = '';
+
+    // "사용자 지정" 옵션 — 프리셋을 끄고 슬라이더로 직접 조절
+    const customBtn = document.createElement('button');
+    customBtn.className = 'preset-btn' + (SIM.selectedParticle === 'custom' ? ' active' : '');
+    customBtn.innerHTML = `<span class="dot"></span><span class="ico">🎛️</span>사용자 지정`;
+    customBtn.addEventListener('click', () => selectParticle('custom'));
+    particleListEl.appendChild(customBtn);
+
+    Object.keys(PARTICLE_PRESETS).forEach(key => {
+        const pd = PARTICLE_PRESETS[key];
+        const btn = document.createElement('button');
+        btn.className = 'preset-btn' + (SIM.selectedParticle === key ? ' active' : '');
+        btn.innerHTML = `<span class="dot"></span><span class="ico">${pd.sym}</span>${pd.label}`;
+        btn.addEventListener('click', () => selectParticle(key));
+        particleListEl.appendChild(btn);
+    });
+}
+
+/* 슬라이더(q, m)에 값 반영 — 필요시 min/max 범위도 넓혀줌 (전자 등 극단값 대응) */
+function applyQMToSliders(q, m) {
+    SIM.params.q = q;
+    SIM.params.m = m;
+
+    const qs = document.getElementById('slider-q');
+    if (qs) {
+        qs.min = Math.min(parseFloat(qs.min), q);
+        qs.max = Math.max(parseFloat(qs.max), q);
+        qs.value = q;
+        const qv = document.getElementById('val-q');
+        if (qv) qv.textContent = q.toFixed(2);
+    }
+    const ms = document.getElementById('slider-m');
+    if (ms) {
+        ms.min = Math.min(parseFloat(ms.min), m / 2);
+        ms.max = Math.max(parseFloat(ms.max), m * 2);
+        ms.value = m;
+        const mv = document.getElementById('val-m');
+        if (mv) mv.textContent = m < 0.01 ? m.toExponential(2) : m.toFixed(3);
+    }
+}
+
+function selectParticle(key) {
+    SIM.selectedParticle = key;
+
+    document.querySelectorAll('#particleList .preset-btn').forEach(b => b.classList.remove('active'));
+    const idx = key === 'custom' ? 0 : Object.keys(PARTICLE_PRESETS).indexOf(key) + 1;
+    if (particleListEl.children[idx]) particleListEl.children[idx].classList.add('active');
+
+    if (key === 'custom') {
+        particleDescEl.textContent = '사용자 지정 — 아래 PARAMETERS의 q·m 슬라이더를 직접 조절하세요.';
+        return;
+    }
+
+    const pd = PARTICLE_PRESETS[key];
+    const { q, m, ratio } = particleQM(key, SIM.massMode);
+    applyQMToSliders(q, m);
+
+    const modeTxt = SIM.massMode === 'physical'
+        ? `물리적 질량비 그대로 (m/m_p = ${ratio < 0.01 ? ratio.toExponential(2) : ratio.toFixed(3)})`
+        : `시각적으로 조절된 비율 사용 중 (실제 m/m_p = ${ratio < 0.01 ? ratio.toExponential(2) : ratio.toFixed(3)})`;
+    particleDescEl.textContent =
+        `${pd.label} — 실제 질량 ${pd.massGeV} GeV, 전하 ${pd.charge > 0 ? '+' : ''}${pd.charge}. ${pd.note}. ${modeTxt}`;
+
+    regenerateEnsemble();
+    rebuildField();
+}
+
+document.getElementById('tglMassPhysical').addEventListener('change', (e) => {
+    SIM.massMode = e.target.checked ? 'physical' : 'visual';
+    if (SIM.selectedParticle && SIM.selectedParticle !== 'custom') {
+        selectParticle(SIM.selectedParticle);   // 현재 프리셋을 새 모드로 재적용
+    }
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   [22] UI — 모델별 파라미터 슬라이더 동적 생성
+   ═══════════════════════════════════════════════════════════════ */
+const paramContainer = document.getElementById('paramContainer');
+
+function buildParamSliders() {
+    paramContainer.innerHTML = '';
+    SIM.params = {};
+    
+    const model = MODELS[SIM.modelKey];
+    model.params.forEach(p => {
+        SIM.params[p.key] = p.value;
+        
+        const ctrl = document.createElement('div');
+        ctrl.className = 'ctrl';
+        
+        const label = document.createElement('div');
+        label.className = 'ctrl-label';
+        label.innerHTML = `<span>${p.label}</span><b id="val-${p.key}">${p.value}</b>`;
+        
+        const slider = document.createElement('input');
+        slider.type = 'range';
+        slider.min = p.min;
+        slider.max = p.max;
+        slider.step = p.step;
+        slider.value = p.value;
+        slider.id = `slider-${p.key}`;
+        
+        slider.addEventListener('input', () => {
+            SIM.params[p.key] = parseFloat(slider.value);
+            document.getElementById(`val-${p.key}`).textContent =
+                parseFloat(slider.value).toFixed(p.step < 0.1 ? 2 : 1);
+            
+            // 디바운스 후 재생성
+            clearTimeout(slider._timeout);
+            slider._timeout = setTimeout(() => {
+                regenerateEnsemble();
+                rebuildField();
+            }, 120);
+        });
+        
+        ctrl.appendChild(label);
+        ctrl.appendChild(slider);
+        paramContainer.appendChild(ctrl);
+    });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [23] 앙상블 생성 + 초기화
+   ═══════════════════════════════════════════════════════════════ */
+function regenerateEnsemble() {
+    // 기존 입자 렌더러 클리어
+    particleRenderer.clear();
+    
+    // 새 앙상블 생성
+    const { particles, twinParticles } = createEnsemble(
+        SIM.modelKey,
+        SIM.params,
+        SIM.N,
+        SIM.v0,
+        SIM.pitchSpread
+    );
+    
+    SIM.particles = particles;
+    SIM.twinParticles = twinParticles;
+    SIM.t = 0;
+    SIM.lostCount = 0;
+    SIM.activeCount = particles.length;
+    SIM.muHistory = [];
+    SIM.chaosHistory = [];
+    SIM.poincarePoints = [];
+    SIM.mu0_avg = 0;
+    SIM.E0 = 0;
+    lastEnergyDrift = 0;
+    
+    // 각 입자 렌더러에 등록
+    for (const p of SIM.particles) {
+        particleRenderer.register(p);
+    }
+    
+    // Loss cone 패널 표시 여부
+    document.getElementById('lossBlock').style.display =
+        SIM.modelKey === 'aurora' ? 'block' : 'none';
+    
+    updateStageCaption();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [24] 모델 전환
+   ═══════════════════════════════════════════════════════════════ */
+function selectModel(key) {
+    SIM.modelKey = key;
+    
+    // 칩/버튼 active 상태
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    
+    const chipIdx = Object.keys(MODELS).indexOf(key);
+    if (modelChipsEl.children[chipIdx]) modelChipsEl.children[chipIdx].classList.add('active');
+    if (modelListEl.children[chipIdx]) modelListEl.children[chipIdx].classList.add('active');
+    
+    // 설명 업데이트
+    document.getElementById('modelDesc').textContent = MODELS[key].desc;
+    
+    // 슬라이더 재생성
+    buildParamSliders();
+    
+    // 앙상블 재생성
+    regenerateEnsemble();
+    
+    // 자기장 시각화
+    rebuildField();
+    
+    // 카메라를 새 모델에 맞춤
+    const model = MODELS[key];
+    const dist = model.cameraDist || 10;
+    const target = new THREE.Vector3(0, 0, 0);
+    const dir = new THREE.Vector3(1, 0.7, 1.3).normalize();
+    const newPos = target.clone().add(dir.multiplyScalar(dist));
+    flyCameraTo(newPos, target, 700);
+    cameraRadiusTarget = model.viewHalf || 3;
+    
+    updateStageCaption();
+}
+
+function updateStageCaption() {
+    const m = MODELS[SIM.modelKey];
+    document.getElementById('stageName').textContent = m.name;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [25] 진단 차트 3종 (Canvas 2D)
+   ═══════════════════════════════════════════════════════════════ */
+const muChart = document.getElementById('muChart');
+const chaosChart = document.getElementById('chaosChart');
+const poincareChart = document.getElementById('poincareChart');
+
+function setupChartCanvas(cv, heightCSS = null) {
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    const rect = cv.getBoundingClientRect();
+    if (rect.width === 0) return { ctx: cv.getContext('2d'), w: 0, h: 0, dpr: 1 };
+    const h = heightCSS || rect.height;
+    cv.width = Math.round(rect.width * dpr);
+    cv.height = Math.round(h * dpr);
+    const ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx, w: rect.width, h, dpr };
+}
+
+window._resizeCharts = function() {
+    setupChartCanvas(muChart);
+    setupChartCanvas(chaosChart);
+    setupChartCanvas(poincareChart, 170);
+};
+
+/* ── μ 보존 차트 ── */
+function drawMuChart() {
+    const { ctx, w, h } = setupChartCanvas(muChart);
+    if (w === 0 || h === 0) return;
+    
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(20, 23, 42, 0.5)';
+    ctx.fillRect(0, 0, w, h);
+    
+    // μ/μ₀ = 1 기준선
+    const midY = h / 2;
+    ctx.strokeStyle = 'rgba(217, 164, 65, 0.35)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(0, midY);
+    ctx.lineTo(w, midY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    
+    if (SIM.muHistory.length < 2) {
+        ctx.fillStyle = 'rgba(139,143,174,0.5)';
+        ctx.font = '10px "IBM Plex Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('μ 데이터 수집 중…', w/2, h/2);
+        return;
+    }
+    
+    // μ/μ₀ 값 범위 (대부분 1 근처)
+    const ratios = SIM.muHistory.map(p => p.muRatio);
+    const minR = Math.min(...ratios, 0.95);
+    const maxR = Math.max(...ratios, 1.05);
+    const span = Math.max(0.02, maxR - minR);
+    
+    // 곡선
+    ctx.strokeStyle = '#5fb8ac';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    const N = SIM.muHistory.length;
+    for (let i = 0; i < N; i++) {
+        const x = (i / (N - 1)) * w;
+        const y = h - ((SIM.muHistory[i].muRatio - minR) / span) * h;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    
+    // 최신 값 표시
+    const latest = SIM.muHistory[N-1].muRatio;
+    ctx.fillStyle = '#d9a441';
+    ctx.font = '9px "IBM Plex Mono", monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText(`μ/μ₀ = ${latest.toFixed(4)}`, w - 5, 12);
+}
+
+/* ── Chaos 차트 ── */
+function drawChaosChart() {
+    const { ctx, w, h } = setupChartCanvas(chaosChart);
+    if (w === 0 || h === 0) return;
+    
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(20, 23, 42, 0.5)';
+    ctx.fillRect(0, 0, w, h);
+    
+    if (!SIM.chaosOn || SIM.chaosHistory.length < 2) {
+        ctx.fillStyle = 'rgba(139,143,174,0.5)';
+        ctx.font = '10px "IBM Plex Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('Chaos Twin OFF', w/2, h/2);
+        return;
+    }
+    
+    let minY = Infinity, maxY = -Infinity;
+    for (const p of SIM.chaosHistory) {
+        minY = Math.min(minY, p.logsep);
+        maxY = Math.max(maxY, p.logsep);
+    }
+    if (maxY - minY < 1) {
+        const mid = (maxY + minY) / 2;
+        minY = mid - 0.5; maxY = mid + 0.5;
+    }
+    
+    const t0 = SIM.chaosHistory[0].t;
+    const t1 = SIM.chaosHistory[SIM.chaosHistory.length - 1].t;
+    
+    ctx.strokeStyle = '#d17f6e';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    SIM.chaosHistory.forEach((p, i) => {
+        const x = 4 + ((p.t - t0) / (t1 - t0 || 1)) * (w - 8);
+        const y = h - 4 - ((p.logsep - minY) / (maxY - minY)) * (h - 8);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+}
+
+/* ── Poincaré 단면 ── */
+function drawPoincareChart() {
+    const { ctx, w, h } = setupChartCanvas(poincareChart, 170);
+    if (w === 0 || h === 0) return;
+    
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = 'rgba(20, 23, 42, 0.5)';
+    ctx.fillRect(0, 0, w, h);
+    
+    if (SIM.poincarePoints.length === 0) {
+        ctx.fillStyle = 'rgba(139,143,174,0.5)';
+        ctx.font = '10px "IBM Plex Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('y=0 통과 대기 중…', w/2, h/2);
+        return;
+    }
+    
+    // 좌표 범위
+    let minX = Infinity, maxX = -Infinity;
+    let minVx = Infinity, maxVx = -Infinity;
+    for (const pt of SIM.poincarePoints) {
+        if (pt.x < minX) minX = pt.x;
+        if (pt.x > maxX) maxX = pt.x;
+        if (pt.vx < minVx) minVx = pt.vx;
+        if (pt.vx > maxVx) maxVx = pt.vx;
+    }
+    const padX = Math.max(0.1, (maxX - minX) * 0.1);
+    const padV = Math.max(0.1, (maxVx - minVx) * 0.1);
+    minX -= padX; maxX += padX;
+    minVx -= padV; maxVx += padV;
+    if (maxX - minX < 1e-6) { minX -= 0.5; maxX += 0.5; }
+    if (maxVx - minVx < 1e-6) { minVx -= 0.5; maxVx += 0.5; }
+    
+    const X = (x) => 8 + ((x - minX) / (maxX - minX)) * (w - 16);
+    const Y = (v) => h - 8 - ((v - minVx) / (maxVx - minVx)) * (h - 16);
+    
+    // 축
+    ctx.strokeStyle = 'rgba(120, 130, 180, 0.15)';
+    ctx.lineWidth = 1;
+    if (minX < 0 && maxX > 0) {
+        const x0 = X(0);
+        ctx.beginPath(); ctx.moveTo(x0, 0); ctx.lineTo(x0, h); ctx.stroke();
+    }
+    if (minVx < 0 && maxVx > 0) {
+        const y0 = Y(0);
+        ctx.beginPath(); ctx.moveTo(0, y0); ctx.lineTo(w, y0); ctx.stroke();
+    }
+    
+    // 점 (오래된 → 흐리게)
+    const N = SIM.poincarePoints.length;
+    for (let i = 0; i < N; i++) {
+        const pt = SIM.poincarePoints[i];
+        const ageT = i / Math.max(1, N - 1);
+        const alpha = 0.20 + 0.65 * ageT;
+        ctx.fillStyle = `rgba(95, 184, 172, ${alpha})`;
+        ctx.beginPath();
+        ctx.arc(X(pt.x), Y(pt.vx), 1.8, 0, Math.PI * 2);
+        ctx.fill();
+    }
+    
+    // 최신 강조
+    const last = SIM.poincarePoints[N-1];
+    ctx.fillStyle = 'rgba(217, 164, 65, 0.95)';
+    ctx.beginPath();
+    ctx.arc(X(last.x), Y(last.vx), 3.2, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // 라벨
+    ctx.fillStyle = 'rgba(139,143,174,0.6)';
+    ctx.font = '9px "IBM Plex Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('x', w - 12, h - 2);
+    ctx.save();
+    ctx.translate(10, 12);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('v_x', -20, 0);
+    ctx.restore();
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [26] 진단 패널 업데이트 (Stage HUD + 우측 패널)
+   ═══════════════════════════════════════════════════════════════ */
+function updateDiagnostics() {
+    // Stage HUD
+    document.getElementById('hN').textContent = SIM.activeCount + ' / ' + SIM.N;
+    document.getElementById('hT').textContent = SIM.t.toFixed(2);
+    document.getElementById('hSteps').textContent = SIM.microSteps;
+    
+    // 앙상블 평균 진단
+    if (SIM.particles.length === 0) return;
+    
+    let muSum = 0, muDriftSum = 0, eDriftSum = 0, rgSum = 0, omegaSum = 0;
+    let pitchSum = 0, bmagSum = 0, lambdaSum = 0, jSum = 0, phiSum = 0;
+    let count = 0;
+    
+    for (const p of SIM.particles) {
+        if (!p.alive) continue;
+        const d = p.diagnose();
+        muSum += d.muRatio;
+        muDriftSum += Math.abs(d.muRatio - 1) * 100;
+        eDriftSum += Math.abs(d.ERatio - 1) * 100;
+        rgSum += d.rg;
+        omegaSum += d.omega;
+        pitchSum += d.pitch * 180 / Math.PI;
+        bmagSum += d.Bmag;
+        if (d.LB > 1e-9 && d.rg > 1e-9) lambdaSum += d.rg / d.LB;
+        jSum += d.J_approx;
+        count++;
+    }
+    
+    if (count === 0) return;
+    
+    const muAvg = muSum / count;
+    const muDriftAvg = muDriftSum / count;
+    const eDriftAvg = eDriftSum / count;
+    const rgAvg = rgSum / count;
+    const omegaAvg = omegaSum / count;
+    const pitchAvg = pitchSum / count;
+    const bmagAvg = bmagSum / count;
+    const lambdaAvg = lambdaSum / count;
+    const jAvg = jSum / count;
+    
+    // 초기 J (첫 diagnose에서 캡처 못했으므로 단순화)
+    if (SIM.J0 === undefined) SIM.J0 = jAvg || 1;
+    const jRatio = SIM.J0 > 1e-9 ? jAvg / SIM.J0 : 1;
+    
+    // 패널 표시
+    const rMu = document.getElementById('rMu');
+    rMu.textContent = muAvg.toFixed(4);
+    rMu.className = 'v ' + (Math.abs(muAvg - 1) < 0.02 ? 'ok' : (Math.abs(muAvg - 1) < 0.1 ? 'accent' : 'warn'));
+    
+    document.getElementById('rJ').textContent = jRatio.toFixed(3);
+    document.getElementById('rE').textContent = (1 + eDriftAvg / 100).toFixed(4);
+    document.getElementById('rPhi').textContent = '—';  // Φ는 향후 확장
+    
+    const rMuD = document.getElementById('rMuDrift');
+    rMuD.textContent = muDriftAvg.toFixed(3) + '%';
+    rMuD.className = 'v ' + (muDriftAvg < 1 ? 'ok' : (muDriftAvg < 5 ? '' : 'warn'));
+    
+    const rED = document.getElementById('rEDrift');
+    rED.textContent = eDriftAvg.toFixed(3) + '%';
+    rED.className = 'v ' + (eDriftAvg < 1 ? 'ok' : (eDriftAvg < 5 ? '' : 'warn'));
+    
+    document.getElementById('rRg').textContent = rgAvg.toFixed(4);
+    document.getElementById('rOmega').textContent = omegaAvg.toFixed(3);
+    document.getElementById('rPitch').textContent = pitchAvg.toFixed(1) + '°';
+    document.getElementById('rBmag').textContent = bmagAvg.toFixed(3);
+    
+    const rLam = document.getElementById('rLambda');
+    rLam.textContent = lambdaAvg.toFixed(4);
+    rLam.className = 'v ' + (lambdaAvg < 0.05 ? 'ok' : (lambdaAvg < 0.2 ? '' : 'warn'));
+    
+    document.getElementById('rTb').textContent = '—';
+    
+    // Loss Cone (Aurora)
+    if (SIM.modelKey === 'aurora' && SIM.particles.length > 0) {
+        const p0 = SIM.particles.find(p => p.alive);
+        if (p0) {
+            const Beq = (SIM.params.M || 100) / 27;
+            const Bmax = (SIM.params.M || 100) / 1;
+            const sin2Loss = Beq / Bmax;
+            const alphaLoss = Math.asin(Math.sqrt(Math.max(0, Math.min(1, sin2Loss))));
+            const alphaEq = Math.abs(Math.PI / 2 - p0.pitchInit);
+            
+            document.getElementById('lcAlphaEq').textContent = (alphaEq * 180 / Math.PI).toFixed(1) + '°';
+            document.getElementById('lcAlphaLoss').textContent = (alphaLoss * 180 / Math.PI).toFixed(1) + '°';
+            
+            const lcPanel = document.getElementById('lossPanel');
+            const lcStatus = document.getElementById('lcStatus');
+            if (alphaEq > alphaLoss) {
+                lcStatus.textContent = '✓ TRAPPED';
+                lcStatus.className = 'status trapped';
+                lcPanel.className = 'loss-panel';
+            } else {
+                lcStatus.textContent = '✗ LOST';
+                lcStatus.className = 'status lost';
+                lcPanel.className = 'loss-panel lost';
+            }
+        }
+    }
+    
+    // Chaos 진단
+    if (SIM.chaosOn && SIM.chaosHistory.length > 10) {
+        const lam = lyapunovSlope(SIM.chaosHistory);
+        const rLyap = document.getElementById('rLyap');
+        if (lam !== null) {
+            rLyap.textContent = (lam >= 0 ? '+' : '') + lam.toFixed(4);
+            rLyap.className = 'v ' + (lam > 0.05 ? 'warn' : (Math.abs(lam) < 0.02 ? 'ok' : ''));
+        }
+        const last = SIM.chaosHistory[SIM.chaosHistory.length - 1];
+        document.getElementById('rLogSep').textContent = last.logsep.toFixed(2);
+    } else {
+        document.getElementById('rLyap').textContent = '—';
+        document.getElementById('rLogSep').textContent = '—';
+    }
+    
+    // Poincaré 카운트
+    document.getElementById('rPoincareCount').textContent = SIM.poincarePoints.length;
+    document.getElementById('rPoincareT').textContent =
+        SIM.poincarePoints.length > 0
+            ? SIM.poincarePoints[SIM.poincarePoints.length - 1].t.toFixed(2)
+            : '—';
+    
+    // Stage caption 시간
+    document.getElementById('stageTime').textContent =
+        `t = ${SIM.t.toFixed(2)}\n` +
+        `N = ${SIM.activeCount} / ${SIM.N}\n` +
+        `μ/μ₀ = ${muAvg.toFixed(3)}`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [27] UI 바인딩
+   ═══════════════════════════════════════════════════════════════ */
+
+// 입자 수 슬라이더
+document.getElementById('nPartSlider').addEventListener('input', (e) => {
+    SIM.N = parseInt(e.target.value);
+    document.getElementById('nPartVal').textContent = SIM.N;
+    clearTimeout(e.target._t);
+    e.target._t = setTimeout(() => regenerateEnsemble(), 100);
+});
+
+// 피치각 분포 슬라이더
+document.getElementById('pitchSpreadSlider').addEventListener('input', (e) => {
+    SIM.pitchSpread = parseInt(e.target.value);
+    document.getElementById('pitchSpreadVal').textContent = SIM.pitchSpread + '°';
+    clearTimeout(e.target._t);
+    e.target._t = setTimeout(() => regenerateEnsemble(), 100);
+});
+
+// 속도 슬라이더
+document.getElementById('v0Slider').addEventListener('input', (e) => {
+    SIM.v0 = parseFloat(e.target.value);
+    document.getElementById('v0Val').textContent = SIM.v0.toFixed(2);
+    clearTimeout(e.target._t);
+    e.target._t = setTimeout(() => regenerateEnsemble(), 100);
+});
+
+// 입자 크기 슬라이더 (즉시 반영, 재생성 불필요)
+document.getElementById('pSizeSlider').addEventListener('input', (e) => {
+    SIM.particleSize = parseFloat(e.target.value);
+    document.getElementById('pSizeVal').textContent = SIM.particleSize.toFixed(2);
+    particleRenderer.setParticleSize(SIM.particleSize);
+});
+
+// 꼬리 길이 슬라이더 (즉시 반영, 재생성 불필요 — 기존 궤적은 다음 프레임부터 서서히 맞춰짐)
+document.getElementById('tailLenSlider').addEventListener('input', (e) => {
+    SIM.tailLength = parseInt(e.target.value);
+    document.getElementById('tailLenVal').textContent = SIM.tailLength;
+});
+
+// 재생성 버튼
+document.getElementById('btnRegen').addEventListener('click', () => regenerateEnsemble());
+
+// 재생/일시정지
+const btnPlay = document.getElementById('btnPlay');
+btnPlay.addEventListener('click', () => {
+    SIM.running = !SIM.running;
+    btnPlay.textContent = SIM.running ? '⏸ Pause' : '▶ Play';
+    document.getElementById('mPlayToggle').textContent = SIM.running ? '⏸' : '▶';
+});
+
+// 리셋
+document.getElementById('btnReset').addEventListener('click', () => {
+    regenerateEnsemble();
+    rebuildField();
+});
+
+// 클리어
+document.getElementById('btnClear').addEventListener('click', () => {
+    particleRenderer.clear();
+    SIM.particles = [];
+    SIM.twinParticles = [];
+    SIM.t = 0;
+    SIM.activeCount = 0;
+    SIM.lostCount = 0;
+    SIM.muHistory = [];
+    SIM.chaosHistory = [];
+    SIM.poincarePoints = [];
+});
+
+// 속도
+document.getElementById('speedSlider').addEventListener('input', (e) => {
+    SIM.speed = parseFloat(e.target.value);
+    document.getElementById('speedVal').textContent = SIM.speed.toFixed(1);
+});
+
+// Live Motion
+document.getElementById('tglLive').addEventListener('change', (e) => {
+    SIM.liveMotion = e.target.checked;
+});
+
+// Field Lines
+document.getElementById('tglField').addEventListener('change', (e) => {
+    SIM.fieldLines = e.target.checked;
+    rebuildField();
+});
+
+// Auto Rotate
+document.getElementById('tglRotate').addEventListener('change', (e) => {
+    SIM.autoRotate = e.target.checked;
+    controls.autoRotate = SIM.autoRotate;
+});
+
+// Adaptive
+document.getElementById('tglAdaptive').addEventListener('change', (e) => {
+    adaptiveMicrosteps = e.target.checked;
+});
+
+// Chaos Twin
+document.getElementById('tglChaos').addEventListener('change', (e) => {
+    SIM.chaosOn = e.target.checked;
+    SIM.chaosHistory = [];
+    if (SIM.chaosOn) {
+        regenerateEnsemble();
+    } else {
+        // 트윈 제거
+        for (const line of particleRenderer.twinLines.values()) {
+            line.visible = false;
+        }
+        SIM.twinParticles = [];
+    }
+});
+
+// Poincaré
+document.getElementById('tglPoincare').addEventListener('change', (e) => {
+    SIM.poincareOn = e.target.checked;
+    SIM.poincarePoints = [];
+    // 각 입자의 이전 y 초기화
+    for (const p of SIM.particles) {
+        p._prevY = undefined;
+    }
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   [28] 모바일 메뉴 토글
+   ═══════════════════════════════════════════════════════════════ */
+const menuToggle = document.getElementById('menuToggle');
+menuToggle.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    menuToggle.textContent = open ? '✕' : '☰';
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   [29] 모바일 mini-bar 바인딩
+   ═══════════════════════════════════════════════════════════════ */
+document.getElementById('mPlayToggle').addEventListener('click', () => {
+    document.getElementById('btnPlay').click();
+});
+
+document.getElementById('mResetBtn').addEventListener('click', () => {
+    document.getElementById('btnReset').click();
+});
+
+document.getElementById('mFieldToggle').addEventListener('click', function() {
+    const tgl = document.getElementById('tglField');
+    tgl.checked = !tgl.checked;
+    tgl.dispatchEvent(new Event('change'));
+    this.classList.toggle('off', !tgl.checked);
+});
+
+/* ── 드래그 핸들 (LHC 스타일) ── */
+function attachDragAdjust(btnId, targetType, opts = {}) {
+    const btn = document.getElementById(btnId);
+    const tooltip = document.getElementById('mobileDragTooltip');
+    if (!btn) return;
+    
+    const { label = '', unit = '', min = 0, max = 50, decimals = 0 } = opts;
+    const range = max - min;
+    const sensitivity = range / 140;
+    
+    let startX = 0, startY = 0, startVal = 0, pointerId = null;
+    
+    btn.addEventListener('pointerdown', (e) => {
+        startX = e.clientX;
+        startY = e.clientY;
+        startVal = targetType === 'particles' ? SIM.N : SIM.v0;
+        pointerId = e.pointerId;
+        btn.setPointerCapture(pointerId);
+        btn.classList.add('dragging');
+        if (tooltip) {
+            tooltip.classList.add('show');
+            tooltip.textContent = `${label}: ${startVal.toFixed(decimals)}${unit}`;
+        }
+    });
+    
+    btn.addEventListener('pointermove', (e) => {
+        if (e.pointerId !== pointerId || e.buttons === 0) return;
+        e.preventDefault();
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const combined = dx - dy;
+        let newVal = startVal + combined * sensitivity;
+        newVal = Math.max(min, Math.min(max, newVal));
+        
+        if (targetType === 'particles') {
+            SIM.N = Math.round(newVal);
+            document.getElementById('nPartSlider').value = SIM.N;
+            document.getElementById('nPartVal').textContent = SIM.N;
+        } else if (targetType === 'speed') {
+            SIM.v0 = newVal;
+            document.getElementById('v0Slider').value = SIM.v0;
+            document.getElementById('v0Val').textContent = SIM.v0.toFixed(2);
+        }
+        if (tooltip) {
+            tooltip.textContent = `${label}: ${newVal.toFixed(decimals)}${unit}`;
+        }
+    });
+    
+    const endDrag = (e) => {
+        if (pointerId !== null && e.pointerId !== pointerId) return;
+        pointerId = null;
+        btn.classList.remove('dragging');
+        if (tooltip) tooltip.classList.remove('show');
+        if (targetType === 'particles' || targetType === 'speed') {
+            regenerateEnsemble();
+        }
+    };
+    
+    btn.addEventListener('pointerup', endDrag);
+    btn.addEventListener('pointercancel', endDrag);
+}
+
+attachDragAdjust('mParticlesDrag', 'particles', { label: '👥 N', unit: '', min: 1, max: 50, decimals: 0 });
+attachDragAdjust('mSpeedDrag', 'speed', { label: '⚡ v₀', unit: '', min: 0.05, max: 3.0, decimals: 2 });
+
+/* ═══════════════════════════════════════════════════════════════
+   [30] 초기화 + 렌더 루프 시작
+   ═══════════════════════════════════════════════════════════════ */
+function init() {
+    // 모델 칩 렌더링
+    renderModelChips();
+    
+    // 초기 설명
+    document.getElementById('modelDesc').textContent = MODELS[SIM.modelKey].desc;
+    
+    // 파라미터 슬라이더
+    buildParamSliders();
+    
+    // 앙상블 생성
+    regenerateEnsemble();
+    
+    // 자기장 시각화
+    rebuildField();
+    
+    // 초기 카메라
+    const model = MODELS[SIM.modelKey];
+    const dir = new THREE.Vector3(1, 0.7, 1.3).normalize();
+    camera.position.copy(dir.multiplyScalar(model.cameraDist));
+    controls.target.set(0, 0, 0);
+    cameraTarget.set(0, 0, 0);
+    cameraRadiusTarget = model.viewHalf;
+    
+    // 차트 초기화
+    window._resizeCharts();
+    drawMuChart();
+    drawChaosChart();
+    drawPoincareChart();
+    
+    // 리사이즈
+    resizeRenderer();
+    
+    // 로딩 숨김
+    setTimeout(() => {
+        document.getElementById('loading').classList.add('hidden');
+    }, 500);
+    
+    // 애니메이션 루프 시작
+    renderLoop();
+    
+    // 진단·차트 주기적 업데이트 (30Hz)
+    setInterval(() => {
+        updateDiagnostics();
+        drawMuChart();
+        drawChaosChart();
+        drawPoincareChart();
+    }, 33);
+}
+
+// DOMContentLoaded 후 init
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
+
+// 창 크기 변경 시 차트 재조정
+window.addEventListener('resize', () => {
+    window._resizeCharts();
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   [31] 모듈 스코프 종료
+   ═══════════════════════════════════════════════════════════════ */
+</script>
+</body>
+</html>
