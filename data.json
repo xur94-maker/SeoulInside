@@ -1,16 +1,16 @@
 {
   "globalNews": [
     {
+      "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first",
+      "link": "https://www.bbc.co.uk/news/articles/c6vgy0333dppo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 24 Sep 2026 07:10:58 GMT",
+      "desc": "Australia criticised OpenAI for taking \"too long\" to tell them about the breach which happened in June."
+    },
+    {
       "title": "AI superpower ambitions take centre stage as Trump and Xi meet",
       "link": "https://www.bbc.co.uk/news/articles/c6gqdgg8w59xo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 23 Sep 2026 22:01:17 GMT",
       "desc": "The US and China are vying for AI supremacy while seeking to keep it under human control."
-    },
-    {
-      "title": "OpenAI agent 'infiltrated' Australian government website, PM says",
-      "link": "https://www.bbc.co.uk/news/articles/c6vgy0333dppo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 23 Sep 2026 23:44:58 GMT",
-      "desc": "Albanese said he expressed \"concern\" to OpenAI founder Sam Altman, after authorities were informed three months after the breach in June."
     },
     {
       "title": "Iran's president tells Trump it will never 'bend the knee'",
@@ -21,7 +21,7 @@
     {
       "title": "Ethiopia and Tigray accuse each of launching offensives, fuelling fears of new war",
       "link": "https://www.bbc.co.uk/news/articles/cry8zwwq21pxo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 23 Sep 2026 16:53:37 GMT",
+      "date": "Thu, 24 Sep 2026 04:37:47 GMT",
       "desc": "The local authorities reportedly seize Tigray's airports following reports of recent drone strikes."
     },
     {
@@ -33,16 +33,28 @@
   ],
   "koreaNews": [
     {
-      "title": "OECD raises S. Korea's 2026 growth forecast to 3.7 pct - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQdU91MzJUN21YN1ROalJadmhjY1BmVWVTSGJweHZSTUs1elRFMHBuaU4ycnhSdENUZjIybkotdjdFdEhVMTBUalM1YnhoY1pXTnBjbHRrUzg3eWhLUnJ4eVpWazlZRnhBb1pmelhuc0VCUEpjR1JzbUg0U3hPWldtdmhyTmJydEVaUDBlaU0zQ3IxOVVhaElnMmJ5Qk4xd1hPdlFCVW5FYzJSLUVlWHZ0bjNFOWVlQTVWQW12N2M0NXRzem05eHfSAcsBQVVfeXFMTVBPUmt2OEYtQmZoWUhmNGtzYXZCY192NWthYzJ5cnFDT2czWk5TT0VoSEdOS1pKY1ZBNUNaOGxHWHZTWTVmcVMwTXpOWC1TOXg0YklXNlhycXBJQTJzMnpIZnVSU1hHdm1aclU5MTZ1U01xUEhaTUZKelNRamNPTDdVS2xxRTlZQXltSXJIRFdIZkYtYmtkWURlUGZSUkRraWJwcFlOWGZmMjBSREQ1Q291c0tDU3EtT1IzRXI2ejBBYWpDcVQwb0pTV2c?oc=5",
-      "date": "Wed, 23 Sep 2026 09:32:12 GMT",
-      "desc": "OECD raises S. Korea's 2026 growth forecast to 3.7 pct&nbsp;&nbsp;upi.com"
+      "title": "South Korea bets on Texas gas plant to satisfy Donald Trump - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPMHM2dTljTWlaT3ZlVUdOVjNUWC1TcWMyeS1POHFCWmZHNnhJQ2V3TjhPdmxITFlVM1dKSzB0eF9PNzNqRVV1azFtVmFkaUdmcnRmV1pYZ2hteTlUMzd5X0trRUZxNzVqQkF1UkZoWkk3NkU4QV9tRlhWQ3hfQ3l1cng3M3Q?oc=5",
+      "date": "Wed, 23 Sep 2026 04:30:52 GMT",
+      "desc": "South Korea bets on Texas gas plant to satisfy Donald Trump&nbsp;&nbsp;Financial Times"
     },
     {
-      "title": "European chambers urge deeper investment cooperation in South Korea - Yahoo Finance",
+      "title": "US, Japan and South Korea launch economic-security talks before Xi summit - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOcl9zcUZOZzE2TjNJckdHeUJaUmZSMTBxYXl3OGM5eldnd1BnVzM5RU9JS2p4TEpMZVRfcjFjbFV2VEVEeWZlZ05MVHZTSy1taUM3bE1Qb3o1bm9FT180MzgydXQzMWZNeUFaR1pwejY1RnBLR3kyUDktcVpGY1NfNFFOTjF1STFrb19WNTE0QnZqNGdTTVdWQVhIOHZaMXRVSGFlbWRQczNES3FGR3NORzBsLTlWX1o3My0tUdIBvAFBVV95cUxPZ3NHWlBYcTRuREJ6cExqTGNYWHdjOTJpbFVLT2xVS0VaU1BpV1RVbGZZcElHeVVmVmtKa0pKTWRBZldvbVhUdGVac0I1b3VranRoV2ZwUzd2Q29hREJpbzJYajNaNW5ROWtVTWNnVVBoaG1HNmh5RXFEMGRFSWxTWUtDdnBSRlFjY2NEbFVzSVdJTnBOaHV0bVVaenZGZ1BvUXR1M25MbG1HcXJoZDdXLWpncDR5cmxKTnAweg?oc=5",
+      "date": "Mon, 21 Sep 2026 20:22:31 GMT",
+      "desc": "US, Japan and South Korea launch economic-security talks before Xi summit&nbsp;&nbsp;South China Morning Post"
+    },
+    {
+      "title": "European chambers urge deeper investment cooperation in South Korea - finance.yahoo.com",
       "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdnZqdGJNdVFsOHdpS0RhajJoZ2RuSU9CblZYbTJ2djBoSzY0RDZNTm1VaG5STHFfV2ZsZlp1QUpwV0RfVnBTQk9fcXVxWjRNTkFCSmlRd3ZrMkJvODEtQzA2WUVQRktjWHpGSTNsV2lHS2Izem0xLUVyNnRZdUtNWlJQQ3ZTZHR1emVKVjMzOFhFWWFpb3JRaHB6VXJoeEVhckNuOFpwYXM?oc=5",
       "date": "Wed, 23 Sep 2026 13:50:49 GMT",
-      "desc": "European chambers urge deeper investment cooperation in South Korea&nbsp;&nbsp;Yahoo Finance"
+      "desc": "European chambers urge deeper investment cooperation in South Korea&nbsp;&nbsp;finance.yahoo.com"
+    },
+    {
+      "title": "Why South Korea Is Giving 51 Million People Unlimited AI - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOU3RfcG9QUExzRmlpc0dRWkM1TDhNSXJHck9wcEN1U085anpWaFJtOVBoeEJ2Wm8yTWx1V2JXN25zWUlybk9JZjBjU09lSWFlaWhjX2NDbkFIT3A3eWxoMHNRMTRtdDBqTXl3ekJpU3M3elNsLTZUVG5vcTlNMEZ0SWM1WkkxV3RGaDlB?oc=5",
+      "date": "Wed, 09 Sep 2026 07:00:00 GMT",
+      "desc": "Why South Korea Is Giving 51 Million People Unlimited AI&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "OECD sharply raises South Korea growth forecast to 3.7% — largest upgrade among G20 - finance.biggo.com",
@@ -51,16 +63,10 @@
       "desc": "OECD sharply raises South Korea growth forecast to 3.7% — largest upgrade among G20&nbsp;&nbsp;finance.biggo.com"
     },
     {
-      "title": "US and South Korea Advance $350 Billion Investment Deal as Alliance Talks Deepen - Modern Diplomacy",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQY2dXUjlVUDVFV2hqWGRNbElHbGI1dkVGUUdZdEdZNEhjNDJvbXpVUVZmaHF3N056ZzgyRm1fMTc4MWdzY19pZ0syS2tMUEotbUNTYVJXVFNlb0FMMllmRnZTZld5NVVXaUQ0NmVsaVJrS2NQNkxaRkQ1RUlfMkltQkFJS1ZfSUFUOEExVDg5WTNDTUtHamozU2NwVEZOU0tpRWxraGl4cFdkYTQ5S3g5Y0xqX0pQREJVOWc?oc=5",
-      "date": "Wed, 23 Sep 2026 07:30:07 GMT",
-      "desc": "US and South Korea Advance $350 Billion Investment Deal as Alliance Talks Deepen&nbsp;&nbsp;Modern Diplomacy"
-    },
-    {
-      "title": "US, Japan and South Korea launch economic-security talks before Xi summit - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOcl9zcUZOZzE2TjNJckdHeUJaUmZSMTBxYXl3OGM5eldnd1BnVzM5RU9JS2p4TEpMZVRfcjFjbFV2VEVEeWZlZ05MVHZTSy1taUM3bE1Qb3o1bm9FT180MzgydXQzMWZNeUFaR1pwejY1RnBLR3kyUDktcVpGY1NfNFFOTjF1STFrb19WNTE0QnZqNGdTTVdWQVhIOHZaMXRVSGFlbWRQczNES3FGR3NORzBsLTlWX1o3My0tUdIBvAFBVV95cUxPZ3NHWlBYcTRuREJ6cExqTGNYWHdjOTJpbFVLT2xVS0VaU1BpV1RVbGZZcElHeVVmVmtKa0pKTWRBZldvbVhUdGVac0I1b3VranRoV2ZwUzd2Q29hREJpbzJYajNaNW5ROWtVTWNnVVBoaG1HNmh5RXFEMGRFSWxTWUtDdnBSRlFjY2NEbFVzSVdJTnBOaHV0bVVaenZGZ1BvUXR1M25MbG1HcXJoZDdXLWpncDR5cmxKTnAweg?oc=5",
-      "date": "Mon, 21 Sep 2026 20:22:31 GMT",
-      "desc": "US, Japan and South Korea launch economic-security talks before Xi summit&nbsp;&nbsp;South China Morning Post"
+      "title": "CXMT’s newest DRAM narrows the gap with Samsung and SK hynix, without EUV tools - Tech Wire Asia",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPeGVxQjlGem0yX2lyb09zU3pXOXpmODNMTC0yRmduWnZsWWpPeFlIaDEtRnd6ZjM5STMtRDhGM01CTkRXa0s2UEJqQUgtblVobFhNWDJiSFdZazlETnhLRzlYdnpXeDloUzNnclRHX2pBQjZkSC05MDlkSVBSaHhMRQ?oc=5",
+      "date": "Wed, 23 Sep 2026 18:14:09 GMT",
+      "desc": "CXMT’s newest DRAM narrows the gap with Samsung and SK hynix, without EUV tools&nbsp;&nbsp;Tech Wire Asia"
     },
     {
       "title": "Samsung, SK hynix's 800 trillion won chip cluster targets mass production by 2030 - Korea JoongAng Daily",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQQjJHWHN4NlplMGhFY2FHN0tkOURPOEFjSlRzZFhZaDB1bWpEcFRKam93VnNscllYSkxHT1lKcVJhZVBpSkN4VlNRZG1CazRCMjZkUkFhYkcwV29kU1BzR3NLeTV5MU1BdDd2SHpMQnhYR0llVVFreXpTVXZsX3hvUkNXX0J6NnFzYktONVRNVWE5eDlNN0hGQ1JYaEZvUFJOcmJLUVBoTkVNQ3JObFFFQ0MydFpBZHJUdFU0dy1LLVFqd1NydjZ6M3dTdw?oc=5",
       "date": "Sun, 13 Sep 2026 07:00:00 GMT",
       "desc": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "CXMT’s newest DRAM narrows the gap with Samsung and SK hynix, without EUV tools - Tech Wire Asia",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPeGVxQjlGem0yX2lyb09zU3pXOXpmODNMTC0yRmduWnZsWWpPeFlIaDEtRnd6ZjM5STMtRDhGM01CTkRXa0s2UEJqQUgtblVobFhNWDJiSFdZazlETnhLRzlYdnpXeDloUzNnclRHX2pBQjZkSC05MDlkSVBSaHhMRQ?oc=5",
-      "date": "Mon, 21 Sep 2026 08:04:27 GMT",
-      "desc": "CXMT’s newest DRAM narrows the gap with Samsung and SK hynix, without EUV tools&nbsp;&nbsp;Tech Wire Asia"
     }
   ],
   "worldStocks": [
@@ -223,13 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1365.97,
-      "change": 15.61,
-      "pct": 1.16,
+      "price": 1365.51,
+      "change": 15.15,
+      "pct": 1.12,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-24 02:09 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-09-24 07:59 UTC"
 }
