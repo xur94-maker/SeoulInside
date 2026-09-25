@@ -1,48 +1,54 @@
 {
   "globalNews": [
     {
+      "title": "Trump and Xi exchange warm words at state dinner but little progress on key issues",
+      "link": "https://www.bbc.co.uk/news/articles/cxq63dqp93n1o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 25 Sep 2026 08:09:26 GMT",
+      "desc": "Despite diplomatic niceties and gifts, little was shared on substantial issues separating the leaders."
+    },
+    {
+      "title": "Xi got Trump's red carpet welcome - but not everything he wanted",
+      "link": "https://www.bbc.co.uk/news/articles/cr93e4x7kdjjo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 25 Sep 2026 03:57:09 GMT",
+      "desc": "China wanted progress on trade, technology and Taiwan - but hasn't got as much as it would have hoped for."
+    },
+    {
       "title": "Netanyahu defends Israeli military action as delegates walk out before UN speech",
       "link": "https://www.bbc.co.uk/news/articles/c3y0z7kxlegdo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 24 Sep 2026 23:32:51 GMT",
+      "date": "Fri, 25 Sep 2026 00:44:04 GMT",
       "desc": "The Israeli leader labels those who left his speech at the UN General Assembly as \"moral cowards\"."
     },
     {
-      "title": "White House restores access to media outlets banned by Trump after judge's order",
+      "title": "Media outlets banned by Trump denied access to White House dinner despite judge's order",
       "link": "https://www.bbc.co.uk/news/articles/cqe8ek7608mlo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 24 Sep 2026 17:49:20 GMT",
-      "desc": "CNN, Politico and MS NOW were allowed back into the White House after some of their staff were earlier turned away."
+      "date": "Fri, 25 Sep 2026 01:10:35 GMT",
+      "desc": "CNN and MS NOW reporters say they were barred from covering a state dinner after a judge ruled their passes should be restored."
     },
     {
       "title": "Hundreds of thousands expected in Paris for Pope's visit",
       "link": "https://www.bbc.co.uk/news/articles/cmq8j904212po?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 24 Sep 2026 23:17:00 GMT",
       "desc": "The highpoint of his time in Paris will be a giant Mass attended by more than half a million people."
-    },
-    {
-      "title": "Why Australia chose the world's biggest political stage to reveal OpenAI hack",
-      "link": "https://www.bbc.co.uk/news/articles/cr3eqk15ld14o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 24 Sep 2026 18:06:40 GMT",
-      "desc": "Australia, which has strict social media restrictions and has proposed controls on algorithms and smart glasses, announced the breach at the UN."
-    },
-    {
-      "title": "Four civilians killed in Pakistani strikes in Afghanistan, Taliban says",
-      "link": "https://www.bbc.co.uk/news/articles/cm86xn0nnw58o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 24 Sep 2026 19:02:36 GMT",
-      "desc": "Pakistan says it struck 10 targets, adding the strikes were \"strictly limited to identified military objectives\"."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea bets on Texas gas plant to satisfy Donald Trump - ft.com",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPMHM2dTljTWlaT3ZlVUdOVjNUWC1TcWMyeS1POHFCWmZHNnhJQ2V3TjhPdmxITFlVM1dKSzB0eF9PNzNqRVV1azFtVmFkaUdmcnRmV1pYZ2hteTlUMzd5X0trRUZxNzVqQkF1UkZoWkk3NkU4QV9tRlhWQ3hfQ3l1cng3M3Q?oc=5",
-      "date": "Wed, 23 Sep 2026 04:30:52 GMT",
-      "desc": "South Korea bets on Texas gas plant to satisfy Donald Trump&nbsp;&nbsp;ft.com"
+      "title": "Kansas City’s Competitive Edge for South Korean Investors - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPU21JeWtmU3dxVTQtWk5Ib2NlemJEWTAxR0w5YmRUSGRxQ1E1b1hpb1JNSFVtYnJUWkpYN3c2VEZDOERaRHpKdVNQbGo2eVlMdFowb0ZlMWdORnYwQVBRb1ViMUtrdy1iU3dFRXlWVDNGbndaNUxVcU5vSExYdFFURTZmeWFVS0JfX21J?oc=5",
+      "date": "Mon, 21 Sep 2026 19:35:44 GMT",
+      "desc": "Kansas City’s Competitive Edge for South Korean Investors&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "South Korea & U.S. Advance Warship Construction Cooperation Under $350 Billion Investment - Marine Insight",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNOVRMMVVfZ1dDQXBGSnN6UEJHRno5WkRZbGdUSFMtM1Y5cU9TTXR0QlowaVp3anhaYXdQYlJNOEhqYWpieTlvLTBObmwzVnFBUDl0bWJpU2FQZkxRbzBZR1ZrNFZrYjg2QXoxV1VadE13YkttdnR1X3doeXk0TGhIdVhndXoxTzJ3SEFCOU40VXBtWDBtUk5GcnJEdTRGcFdfOUVZMGhPUmM5dWZ1emZCd2h2ZlJJSkE?oc=5",
-      "date": "Thu, 24 Sep 2026 12:12:36 GMT",
-      "desc": "South Korea & U.S. Advance Warship Construction Cooperation Under $350 Billion Investment&nbsp;&nbsp;Marine Insight"
+      "title": "South Korea bets on Texas gas plant to satisfy Donald Trump - Financial Times",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPMHM2dTljTWlaT3ZlVUdOVjNUWC1TcWMyeS1POHFCWmZHNnhJQ2V3TjhPdmxITFlVM1dKSzB0eF9PNzNqRVV1azFtVmFkaUdmcnRmV1pYZ2hteTlUMzd5X0trRUZxNzVqQkF1UkZoWkk3NkU4QV9tRlhWQ3hfQ3l1cng3M3Q?oc=5",
+      "date": "Wed, 23 Sep 2026 04:30:52 GMT",
+      "desc": "South Korea bets on Texas gas plant to satisfy Donald Trump&nbsp;&nbsp;Financial Times"
+    },
+    {
+      "title": "South Korea says Trump welcomes progress in US strategic investment projects - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPZlB0RThSZWlTb2UyS2NubkVBc19za21lQjVVV2V3bWhuTGgwSGhQbzl1cVhzYVFRS281M0pLaVMwZGRVUHlaWWl6VGpSTEk0Nm13cVdQUTZhdS1xSkQ1SldhTXducmF5T04tR0xNU25YdWF3eXdmRDNiUXN4UDVnTEdwZkhkWnQ0Rk0zUDc5b05SZmo1c053RkpfTFppMk9YSEllNFhtQzA1djhYdmdtcFdIXzlnSTdZWFlBNA?oc=5",
+      "date": "Wed, 23 Sep 2026 01:56:00 GMT",
+      "desc": "South Korea says Trump welcomes progress in US strategic investment projects&nbsp;&nbsp;Reuters"
     },
     {
       "title": "US, Japan and South Korea launch economic-security talks before Xi summit - South China Morning Post",
@@ -51,34 +57,28 @@
       "desc": "US, Japan and South Korea launch economic-security talks before Xi summit&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "Why South Korea Is Giving 51 Million People Unlimited AI - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOU3RfcG9QUExzRmlpc0dRWkM1TDhNSXJHck9wcEN1U085anpWaFJtOVBoeEJ2Wm8yTWx1V2JXN25zWUlybk9JZjBjU09lSWFlaWhjX2NDbkFIT3A3eWxoMHNRMTRtdDBqTXl3ekJpU3M3elNsLTZUVG5vcTlNMEZ0SWM1WkkxV3RGaDlB?oc=5",
-      "date": "Wed, 09 Sep 2026 07:00:00 GMT",
-      "desc": "Why South Korea Is Giving 51 Million People Unlimited AI&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "South Korea keeps fuel cheap for holidays as fiscal cost mounts - The Japan Times",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPTUQwWUhPXzJaR2RseTRIRklCUjBjRHQxUDVTbnpTSXpaQW1XWnFoN3NfZ0tSdElkZEVoREFOal85dWZXQ2t1Q2xEcFBCV3N3MkduV0YxelVUMmN3MWRJZ05TcVloUjM5TGtFVS16Uzk2bjducVhUOG01endMdmV5X3EwYkhLWkdnYmJj?oc=5",
+      "date": "Wed, 23 Sep 2026 01:10:00 GMT",
+      "desc": "South Korea keeps fuel cheap for holidays as fiscal cost mounts&nbsp;&nbsp;The Japan Times"
     },
     {
-      "title": "Lee Says South Korea-Mexico Trade Agreement Is Essential to Expand Bilateral Commerce - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBvVWRzckNTUUhmN3NkcnVjdE5UR2dFc2dnc2lQY3Z0aVFpbUtjZFZXa3FocEEyd3BxUEhCRDBWZl84TjdBU1p1cmhvd1pCOEZBU0NodA?oc=5",
-      "date": "Thu, 24 Sep 2026 22:10:27 GMT",
-      "desc": "Lee Says South Korea-Mexico Trade Agreement Is Essential to Expand Bilateral Commerce&nbsp;&nbsp;bloomingbit"
+      "title": "Samsung, SK hynix to unveil next-generation memory-computing chips at global semiconductor conference next month - 헤럴드경제",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1TbEZ1UEJ5dWhTU2FHVjIxRGRKVm1ZRERleGJqSlFzSFQ0ZHNuXzJKZmxrbHRCOVlua0tpejRKZ0RSTFFMNThYMW9BNUJwQm1KUFF4UUNYQQ?oc=5",
+      "date": "Thu, 24 Sep 2026 21:00:00 GMT",
+      "desc": "Samsung, SK hynix to unveil next-generation memory-computing chips at global semiconductor conference next month&nbsp;&nbsp;헤럴드경제"
+    },
+    {
+      "title": "Samsung, SK hynix Q3 Earnings to Test Durability of Memory Supercycle - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNU2x1NEdFQmhfdEdDdHZFS3ZPYmFCUDZyMUp4bWx1aXQ1d3gyZVVmZEFaUHRSNjlta0RPdmdNWTB1em1vNjNMZ2FJdE9vUmNVMzFMaDdWR2Rqei1PcXRER2RXcEd6am1KcHhLYU5GeUI1VS1sSk5kazdNN1hQM3hXaFlGalJsN1Q3V2d5LTllWHEwcnhmbms5X2VURXZYQ0V3?oc=5",
+      "date": "Fri, 25 Sep 2026 05:00:05 GMT",
+      "desc": "Samsung, SK hynix Q3 Earnings to Test Durability of Memory Supercycle&nbsp;&nbsp;Seoul Economic Daily"
     },
     {
       "title": "Samsung, SK hynix's 800 trillion won chip cluster targets mass production by 2030 - Korea JoongAng Daily",
       "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOZGZxWXdWZHBUOU9vNlktcEp1NGxuT1IzYVVtTlFXNFA3YjRkQ2R2UTM3aHpKQnNGMTZzb0JWc1hWdXZCbk9pT2hkZ1VuT2ZpXzVNcG9PUEFQV0I5VlVCek9IX2RmZDRVUlIxU2l4Z3BEU2t6a0QzWkQ1MXhqbDBqNUVqc2R5OUd2VTJrRS16djIwVU80NGtBZHdRZkVGTHBqLVZ5X2d6RXZURTRHTTRKeXlDN3NkS3loUXZ6VERON3FlV0dVeGxUSWdPVng?oc=5",
       "date": "Wed, 23 Sep 2026 04:21:41 GMT",
       "desc": "Samsung, SK hynix's 800 trillion won chip cluster targets mass production by 2030&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQQjJHWHN4NlplMGhFY2FHN0tkOURPOEFjSlRzZFhZaDB1bWpEcFRKam93VnNscllYSkxHT1lKcVJhZVBpSkN4VlNRZG1CazRCMjZkUkFhYkcwV29kU1BzR3NLeTV5MU1BdDd2SHpMQnhYR0llVVFreXpTVXZsX3hvUkNXX0J6NnFzYktONVRNVWE5eDlNN0hGQ1JYaEZvUFJOcmJLUVBoTkVNQ3JObFFFQ0MydFpBZHJUdFU0dy1LLVFqd1NydjZ6M3dTdw?oc=5",
-      "date": "Sun, 13 Sep 2026 07:00:00 GMT",
-      "desc": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "CXMT’s newest DRAM narrows the gap with Samsung and SK hynix, without EUV tools - Tech Wire Asia",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPeGVxQjlGem0yX2lyb09zU3pXOXpmODNMTC0yRmduWnZsWWpPeFlIaDEtRnd6ZjM5STMtRDhGM01CTkRXa0s2UEJqQUgtblVobFhNWDJiSFdZazlETnhLRzlYdnpXeDloUzNnclRHX2pBQjZkSC05MDlkSVBSaHhMRQ?oc=5",
-      "date": "Wed, 23 Sep 2026 18:14:09 GMT",
-      "desc": "CXMT’s newest DRAM narrows the gap with Samsung and SK hynix, without EUV tools&nbsp;&nbsp;Tech Wire Asia"
     }
   ],
   "worldStocks": [
@@ -223,13 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1368.14,
-      "change": 5.64,
-      "pct": 0.41,
+      "price": 1355.14,
+      "change": -7.36,
+      "pct": -0.54,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-25 02:26 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-09-25 08:23 UTC"
 }
