@@ -686,17 +686,6 @@ class RollingBody {
     this.maxTrail = GLOBAL_TRAIL_LENGTH;
     this.E0 = null;
     this.color = [200, 200, 200];
-    // Orbit-period tracking — lets an experiment that spawns beads at
-    // several different radii at once (see spawnRollers' radiusStep)
-    // measure an actual period per bead instead of only ever knowing its
-    // spawn radius. initialR is that spawn radius; lastPeriod fills in the
-    // first time the bead sweeps a full 2π around the primary mass (see
-    // updateOrbitTracking below).
-    this.initialR = Math.hypot(x, y);
-    this._prevTheta = null;
-    this._angleAccum = 0;
-    this._periodStartTime = 0;
-    this.lastPeriod = null;
   }
   computeAcceleration(bodies) {
     let ax = 0, ay = 0;
@@ -725,30 +714,6 @@ class RollingBody {
     return phi;
   }
   totalEnergy(bodies) { return this.kineticEnergy() + this.potentialEnergy(bodies); }
-  // Call once per rendered frame (not per physics sub-step) with the
-  // primary mass's position and the sim clock. Accumulates the signed
-  // angle swept since the last call, and once it passes a full revolution
-  // (±2π) records the elapsed sim time as lastPeriod and starts the next
-  // lap. This is what lets Kepler's third law (T² ∝ r³) be checked against
-  // *measured* periods instead of only the theoretical formula.
-  updateOrbitTracking(cx, cy, simTime) {
-    const theta = Math.atan2(this.y - cy, this.x - cx);
-    if (this._prevTheta === null) {
-      this._prevTheta = theta;
-      this._periodStartTime = simTime;
-      return;
-    }
-    let dtheta = theta - this._prevTheta;
-    if (dtheta > Math.PI) dtheta -= 2 * Math.PI;
-    if (dtheta < -Math.PI) dtheta += 2 * Math.PI;
-    this._angleAccum += dtheta;
-    this._prevTheta = theta;
-    if (Math.abs(this._angleAccum) >= 2 * Math.PI) {
-      this.lastPeriod = simTime - this._periodStartTime;
-      this._periodStartTime = simTime;
-      this._angleAccum -= Math.sign(this._angleAccum) * 2 * Math.PI;
-    }
-  }
 }
 RollingBody._nextId = 1;
 
@@ -800,50 +765,17 @@ class GravityWorld {
   addMass(c) { const b = new MassBody(c); this.bodies.push(b); return b; }
   clearBodies() { this.bodies = []; }
   clearRollers() { this.rollers = []; }
-  spawnRollers({ count, dist, speedMin, speedMax, center={x:0,y:0}, tangentialBias=0.7, ccwOnly=true, quantizeStartAngle=false, directionSpreadDeg=0, radiusStep=0 }) {
+  spawnRollers({ count, dist, speedMin, speedMax, center={x:0,y:0}, tangentialBias=0.7, ccwOnly=true, quantizeStartAngle=false, directionSpreadDeg=0 }) {
     const created = [];
-    // Reference central mass, if any — used below to give a bead spawned
-    // off the base radius its own circular-orbit speed, so that spreading
-    // beads out in radius (radiusStep) still yields near-circular orbits
-    // at *each* individual radius rather than an arbitrary mix of bound
-    // and unbound trajectories.
-    const centralMass = this.bodies[0] ? this.bodies[0].mass : null;
     for (let i = 0; i < count; i++) {
       // Start position: free/continuous around the full circle, so a burst
       // of beads spreads out in every direction rather than from fixed points.
       const theta = quantizeStartAngle
         ? Math.floor(Math.random() * 4) * (Math.PI / 2)
         : Math.random() * Math.PI * 2;
-
-      // Radial placement: bead 0 sits exactly at the base radius `dist`.
-      // Every bead after that alternates in front of / behind the base
-      // radius, one step further out each pair — index 1 → +1·radiusStep,
-      // 2 → −1·radiusStep, 3 → +2·radiusStep, 4 → −2·radiusStep, … — so
-      // raising the bead count spreads them symmetrically inward and
-      // outward around the same "standard" radius instead of piling
-      // everyone onto one ring. With radiusStep=0 (the default) this
-      // collapses back to the original single-ring layout.
-      const rung = Math.ceil(i / 2);
-      const side = (i % 2 === 1) ? 1 : -1;
-      const rOffset = i === 0 ? 0 : side * rung * radiusStep;
-      const rSpawn = Math.max(0.05, dist + rOffset);
-
-      const x = center.x + Math.cos(theta) * rSpawn;
-      const y = center.y + Math.sin(theta) * rSpawn;
-
-      // Speed: with radiusStep=0 every bead shares the same radius, so the
-      // original fixed [speedMin,speedMax] range (whatever absolute speed
-      // scale the caller chose it in) still applies unchanged. Once beads
-      // are spread across different radii, that same fixed range would
-      // make no physical sense (a speed near escape velocity at the base
-      // radius could be unbound or barely-moving at another) — so instead
-      // treat speedMin/speedMax as a factor *relative to the circular
-      // orbital speed at this bead's own radius*, keeping every ring
-      // close to a circular orbit and letting Kepler's third law (T²∝r³)
-      // be checked cleanly against each bead's measured period.
-      const speed = (radiusStep !== 0 && centralMass)
-        ? OrbitMath.orbitalSpeed(centralMass, rSpawn) * (speedMin + Math.random() * (speedMax - speedMin))
-        : speedMin + Math.random() * (speedMax - speedMin);
+      const x = center.x + Math.cos(theta) * dist;
+      const y = center.y + Math.sin(theta) * dist;
+      const speed = speedMin + Math.random() * (speedMax - speedMin);
 
       let vx, vy;
       if (directionSpreadDeg > 0) {
@@ -881,8 +813,6 @@ class GravityWorld {
     // desktop and mobile, so trade a bit of extra CPU for a smoother path.
     const subSteps = GravityWorld.SUBSTEPS;
     const subDt = dt / subSteps;
-    const simTimeNow = this.time.elapsedSim;
-    const centerBody = this.bodies[0] || null;
     for (const roller of this.rollers) {
       if (!roller.alive) continue;
       for (let s = 0; s < subSteps; s++) {
@@ -904,12 +834,6 @@ class GravityWorld {
       }
       roller.recordTrail();
       if (roller.E0 === null) roller.E0 = roller.totalEnergy(this.bodies);
-      // Sweep-angle tracking for per-bead period measurement (see
-      // RollingBody.updateOrbitTracking) — only meaningful relative to a
-      // primary mass, so skip it for experiments with no bodies at all.
-      if (roller.alive && centerBody) {
-        roller.updateOrbitTracking(centerBody.x, centerBody.y, simTimeNow);
-      }
     }
     return { dt, simTime: this.time.elapsedSim };
   }
@@ -1086,31 +1010,29 @@ const EXPERIMENTS = {
   'E01_newton': {
     key: 'E01_newton', num: '01', name: 'Newton · Inverse Square',
     ref: '제2편',
-    desc: `뉴턴 만유인력 F = Gm₁m₂/r². 반지름이 서로 다른 구슬들을 동시에 굴려서 각자의 실측 주기를 재고, T² ∝ r³(케플러 제3법칙)이 실제로 성립하는지 log-log 산점도로 검증합니다. Bead count를 올릴수록 기준 반지름 r₀ 앞뒤로 한 칸씩 번갈아 반지름이 늘어납니다(0,+1,−1,+2,−2…).`,
-    equations: ['F = Gm₁m₂/r²', 'v_esc = √(2GM/r)', 'v_orb = √(GM/r)', 'T² = (4π²/GM)·r³'],
-    chartLabel: 'T vs r (log-log) · Kepler III',
+    desc: `뉴턴 만유인력 F = Gm₁m₂/r². 구슬의 궤도가 케플러 법칙을 따르는지 실시간 검증합니다.`,
+    equations: ['F = Gm₁m₂/r²', 'v_esc = √(2GM/r)', 'v_orb = √(GM/r)'],
+    chartLabel: 'ORBITAL PERIOD · T² ∝ r³',
     setup(world) {
       world.clearBodies(); world.clearRollers();
       world.addMass({ x: 0, y: 0, preset: 'sun' });
-      world.spawnRollers({
-        count: 12, dist: 6, radiusStep: 0.6,
-        speedMin: 0.96, speedMax: 1.04, tangentialBias: 1.0
-      });
+      world.spawnRollers({ count: 12, dist: 6, speedMin: 0.9, speedMax: 1.05, tangentialBias: 1.0 });
       world.time.reset();
     },
     params: [
       { key: 'M', label: 'Central mass M', min: 10, max: 100, step: 5, value: 40 },
       { key: 'N', label: 'Bead count', min: 3, max: 40, step: 1, value: 12 },
-      { key: 'r0', label: 'Base radius r₀', min: 3, max: 12, step: 0.5, value: 6 },
-      { key: 'rStep', label: 'Radius step Δr (앞/뒤)', min: 0, max: 2, step: 0.1, value: 0.6 },
-      { key: 'vFactor', label: 'v₀ / v_circ (각자 반지름 기준)', min: 0.85, max: 1.15, step: 0.01, value: 1.0 }
+      { key: 'r0', label: 'Spawn radius r₀', min: 3, max: 12, step: 0.5, value: 6 },
+      { key: 'vFactor', label: 'v₀ / v_esc', min: 0.5, max: 1.2, step: 0.02, value: 0.95 }
     ],
     onParamChange(world, p) {
       if (world.bodies[0]) world.bodies[0].mass = p.M;
       world.clearRollers();
+      const vEsc = Math.sqrt(2*p.M/p.r0);
       world.spawnRollers({
-        count: p.N, dist: p.r0, radiusStep: p.rStep,
-        speedMin: p.vFactor * 0.98, speedMax: p.vFactor * 1.02,
+        count: p.N, dist: p.r0,
+        speedMin: vEsc * p.vFactor * 0.98,
+        speedMax: vEsc * p.vFactor * 1.02,
         tangentialBias: 1.0
       });
     },
@@ -1118,10 +1040,7 @@ const EXPERIMENTS = {
       const vEsc = Math.sqrt(2*p.M/p.r0);
       const vOrb = Math.sqrt(p.M/p.r0);
       const T = 2*Math.PI*Math.sqrt(p.r0**3 / p.M);
-      // T² = keplerConstant · r³ — the single number Kepler's third law
-      // says every bead should share, regardless of which radius it's on.
-      const keplerConstant = 4*Math.PI*Math.PI / p.M;
-      return { vEsc, vOrb, T, v0: vOrb * p.vFactor, keplerConstant };
+      return { vEsc, vOrb, T, v0: vEsc * p.vFactor };
     },
     measure(world, p) {
       const alive = world.rollers.filter(r => r.alive);
@@ -1130,21 +1049,7 @@ const EXPERIMENTS = {
       const avgV = alive.reduce((s, r) => s + Math.hypot(r.vx, r.vy), 0) / alive.length;
       // 에너지로 bound/unbound 판정
       const bound = alive.filter(r => r.totalEnergy(world.bodies) < 0).length;
-      // 케플러 제3법칙 실측: 실제로 한 바퀴를 돈 구슬들만 모아 T²/r³의
-      // 평균을 낸다 — radiusStep=0이면 전부 같은 반지름이라 산점도가
-      // 점 하나로 붕괴하므로, 여러 반지름으로 퍼뜨렸을 때만 이 값이
-      // 진짜로 "법칙을 검증"하는 의미를 갖는다.
-      const withPeriod = alive.filter(r => r.lastPeriod !== null);
-      let keplerConstant = null;
-      if (withPeriod.length > 0) {
-        const ratios = withPeriod.map(r => (r.lastPeriod * r.lastPeriod) / Math.pow(r.initialR, 3));
-        keplerConstant = ratios.reduce((a, b) => a + b, 0) / ratios.length;
-      }
-      return {
-        avgR, avgV, bound, alive: alive.length,
-        keplerConstant: keplerConstant ?? '측정중',
-        periodsSampled: withPeriod.length
-      };
+      return { avgR, avgV, bound, alive: alive.length };
     }
   },
 
@@ -2568,55 +2473,7 @@ function drawMainChart() {
     return;
   }
 
-  if (key === 'E01_newton') {
-    const M = (SIM.world.bodies[0] && SIM.world.bodies[0].mass) || SIM.params.M || 40;
-    const alive = SIM.world.rollers.filter(r => r.alive);
-    if (alive.length === 0) {
-      ctx.fillStyle = 'rgba(139,143,174,0.5)';
-      ctx.font = '10px "IBM Plex Mono", monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('—', w/2, h/2);
-      return;
-    }
-    // Theory curve T(r) = 2π√(r³/GM), plotted log-log so a true r³ law
-    // reads as a straight line of slope 3/2 — and each bead's *measured*
-    // period (once it has swept a full lap) is plotted as a point against
-    // its own spawn radius, so agreement is something you can actually see.
-    const rAll = alive.map(r => r.initialR);
-    const rMin = Math.max(0.2, Math.min(...rAll) * 0.85);
-    const rMax = Math.max(...rAll) * 1.2;
-    const Tat = (r) => 2*Math.PI*Math.sqrt(Math.pow(r,3) / Math.max(M, 1e-6));
-    const logRMin = Math.log10(rMin), logRMax = Math.log10(rMax);
-    const logTMin = Math.log10(Tat(rMin)) - 0.1;
-    const logTMax = Math.log10(Tat(rMax)) + 0.1;
-    const toX = (r) => (Math.log10(r) - logRMin) / ((logRMax - logRMin) || 1) * w;
-    const toY = (T) => h - (Math.log10(Math.max(T,1e-9)) - logTMin) / ((logTMax - logTMin) || 1) * h;
-
-    ctx.strokeStyle = 'rgba(157,140,214,0.9)'; ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    for (let i = 0; i <= 40; i++) {
-      const r = rMin * Math.pow(rMax/rMin, i/40);
-      const x = toX(r), y = toY(Tat(r));
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-
-    const pts = alive.filter(r => r.lastPeriod !== null);
-    ctx.fillStyle = '#5fb8ac';
-    for (const r of pts) {
-      const x = toX(r.initialR), y = toY(r.lastPeriod);
-      ctx.beginPath(); ctx.arc(x, y, 2.8, 0, Math.PI*2); ctx.fill();
-    }
-
-    ctx.fillStyle = 'rgba(157,140,214,0.9)'; ctx.font = '8.5px "IBM Plex Mono", monospace';
-    ctx.textAlign = 'left';
-    ctx.fillText('theory T(r)', 4, 10);
-    ctx.fillStyle = '#5fb8ac'; ctx.textAlign = 'right';
-    ctx.fillText(`measured ${pts.length}/${alive.length} laps`, w - 5, 10);
-    return;
-  }
-
-  if (key === 'E11_escape') {
+  if (key === 'E11_escape' || key === 'E01_newton') {
     const alive = SIM.world.rollers.filter(r => r.alive);
     const bound = alive.filter(r => r.totalEnergy(SIM.world.bodies) < 0).length;
     const total = alive.length;
