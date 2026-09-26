@@ -1,28 +1,28 @@
 {
   "globalNews": [
     {
+      "title": "Huge crowds greet Pope in Paris for open-air Mass",
+      "link": "https://www.bbc.co.uk/news/articles/cm4gjjwvvlzro?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 26 Sep 2026 13:23:59 GMT",
+      "desc": "More than half a million people are expected to attend the event in the heart of the French capital."
+    },
+    {
       "title": "Iran offers US deal to reopen Strait of Hormuz in seven days",
       "link": "https://www.bbc.co.uk/news/articles/cqgmrr9ekr7ko?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 26 Sep 2026 05:03:09 GMT",
       "desc": "Asked about the Iranian proposal, a US official told the BBC \"constructive discussions\" were taking place through mediators."
     },
     {
-      "title": "OpenAI bots meddled with multiple US government agency sites",
-      "link": "https://www.bbc.co.uk/news/articles/cw62jje658dlo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 26 Sep 2026 02:50:56 GMT",
-      "desc": "OpenAI said its bots accessed public data from a range of institutions during test exercises."
+      "title": "British national among six dead in building explosion close to Acropolis in Athens",
+      "link": "https://www.bbc.co.uk/news/articles/c6p3kk78l4l1o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 26 Sep 2026 12:47:25 GMT",
+      "desc": "Four Americans and a Greek national are among those killed in a suspected gas explosion, officials said."
     },
     {
       "title": "Bangkok roads submerged as flood disaster declared",
       "link": "https://www.bbc.co.uk/news/articles/ck1wxx8n2x3zo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 26 Sep 2026 07:21:30 GMT",
       "desc": "An emergency has been declared across the capital of Thailand as days of heavy rain leave the city inundated."
-    },
-    {
-      "title": "Russia targeting 'ordinary life' with attacks on Ukraine's data centres, Zelensky says",
-      "link": "https://www.bbc.co.uk/news/articles/c84gkwgk7d06o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 25 Sep 2026 20:47:49 GMT",
-      "desc": "Such strikes aim to disrupt \"people's ability to stay connected, study, work\", says Ukraine's president."
     },
     {
       "title": "South African white genocide does not exist, new ambassador to US tells BBC",
@@ -57,10 +57,10 @@
       "desc": "Experts in Seoul assess consequences of US-China rivalry — Korea Herald&nbsp;&nbsp;UA.NEWS"
     },
     {
-      "title": "'I feel sorry toward my parents': Youth job market remains a needle's eye - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOR0Z5V2xOU1d1RXJheGdkVXM5eUl1bWY0aEd5WXNtQlU3OEJyZmhSeGtRRHlGcTRFTWJiekdoSXZLdHhXZklLc0x4ZTZvdGVsWWdhNVFyVUlzV1MwYkJFVXY3NFc5UHhVbjk1WnlkVFhidTZzQVhhdjY4OGRTbjRoVkJncVJza3dnYTJKc3RrUHEtRmR0d2hVbTJnUE5LaUI4dGQwSWhDN2VkVWo1b3Z3Q1pHUXlabExBUWfSAb8BQVVfeXFMUGJjZDZTZGJ4SmY4Y0Zfa296VGtFc3Z6WGZOQTFHYU9mcC10STY0SXVuY2F6dm1JbUJMWEJzSGp6TzQwUWRtdDhNX1FrcDd2bFJXd1lZNE9FcDF6d1Z0R09YQnhqQ2xjZXJGUXVYWFpEaXVBQ2VJMDVnNTNzMk5LNkJGS3lMVzQ1cEpOUDFQUTBJMEgxT3ZSaG9YUzBoYlNlc0J4b3UxcS1fNGg5cm40QlNsMDNBWnlDa3ZvQ2tGTVE?oc=5",
-      "date": "Sat, 26 Sep 2026 02:53:02 GMT",
-      "desc": "'I feel sorry toward my parents': Youth job market remains a needle's eye&nbsp;&nbsp;The Korea Times"
+      "title": "South Korea says economy in 'solid recovery' despite risks - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOM2xGOVk0ZlpWMFFoTU1nVV9wUUQ0bFhFZklBeVJWOUhGV2JSMUdMVG5ZdTc2OFFzTzdoS2hBV1p1YVJQY3V1NFItR2ZzanNQeFJ0N25HeHBZYXYyME1aVWFOSDdmNHBtTlp4bkNXazZ5bG5oaF9UXzJzTG1fMTNqQ0lYODJKbEd2ZjBzVHRwN0lraTRLVFhBMkxjbVA2UUV2OG55WFBFYlUtTVEtcDFDQ2ZIVGU2U1BDaTE4cjFQLThRcVg4NWdnTE1UVUIyQUhXdnhDeUVPaHJyQlB0OHJTT9IB5gFBVV95cUxPZHZQVXd1dXI0S1A0QmlpdDVjTEsyOEFCVVY1TGRmaFR4UDlwUnRxSWJDOWZUS3pYZFB1VVVpMzNoblBaM2I0VGRLSXZpSWpxYzhtWG5vaV9VTC1OTTFJRjI0emJIQnplYzQ0aEhVMnM4QnlDa0hhSzRQai1YZWhYT0JsOXRxNm5qTDdaS2hTZ0NSb2xjQlc4SmQtcVpRTnRzMUc3TG41aXRTR1d5ZTJkVmhTUGhmbHI0Sm1CYXFneFktQy1GRTVibE9PQjdlNWJzRHl3Ulo0dnJ2N1ExTExWaGVQVzNVQQ?oc=5",
+      "date": "Fri, 11 Sep 2026 07:00:00 GMT",
+      "desc": "South Korea says economy in 'solid recovery' despite risks&nbsp;&nbsp;upi.com"
     },
     {
       "title": "Samsung, SK Hynix reject KEPCO's $19 billion power prepayment proposal, document shows - Reuters",
@@ -75,10 +75,10 @@
       "desc": "Samsung, SK hynix's 800 trillion won chip cluster targets mass production by 2030&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Serenity’s 10x Korean AI Small Caps: Tiny Suppliers to Samsung, SK Hynix, and Micron - KuCoin",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1aWXFDYjlDcmEwYnRYQmVGb1o0VmJxekp1LXM0U2x1S25uLWxKclRFNVB1Q0Zia3B2RjRxM05HSFFSRHVMTTZkQ3dJem43cVhSekMwODZrWFJBMHdtcHZsNmhQOHVVeW03VmJjRUpESGJxNklFaTR5eDlB?oc=5",
-      "date": "Fri, 25 Sep 2026 15:13:00 GMT",
-      "desc": "Serenity’s 10x Korean AI Small Caps: Tiny Suppliers to Samsung, SK Hynix, and Micron&nbsp;&nbsp;KuCoin"
+      "title": "Inside South Korea’s university programs offering a direct route to Samsung and SK Hynix - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNay1oSUY0Z1AwY1E0ZHdUeF9jRUNuRldkakZ2RWlnal95OVV0Y2lhREVPZDV4OUlCbHgtSUU3MlM2UE9RaVlMaXpOMjR1SGlDR0R3ZFRna3VkZWdHMl9RUDJ3NWJlTnBHdGZRaUlrb2xqTEx5aHhlWWU5SXA1azZNa09NMlEwbGszVURfal9tSHI0UDZ10gGaAUFVX3lxTE54eGd5Wlc4S2p0REozaXVHZGJrTzhyS2ZxRG4tbkxiblBqZnNGRXpIdFB5Nk5YNl9mVnVUY3g3dHp1dVF3VmV2Qm5ZQ29fUDBocWdSZzEwN3Y3T0xGS3F6aUtIbzRIZVRuWnE3eTJPQ0hRb1hSWU9jVFFFS0JwcVNVZl9xa3dhX05IWms0V2NyZTVSTjJUdnk0OUE?oc=5",
+      "date": "Tue, 15 Sep 2026 07:00:00 GMT",
+      "desc": "Inside South Korea’s university programs offering a direct route to Samsung and SK Hynix&nbsp;&nbsp;CNBC"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-26 08:09 UTC"
+  "updatedAt": "2026-09-26 13:41 UTC"
 }
