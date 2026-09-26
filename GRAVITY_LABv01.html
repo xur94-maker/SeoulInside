@@ -45,7 +45,6 @@
     font-family:'IBM Plex Mono', monospace;
     font-size:10.5px; color:var(--ink-faint); letter-spacing:0.02em;
   }
-  .panel-header-mobile{ display:none; }
 
   /* Tabs (11 experiments) */
   .tabs{
@@ -342,35 +341,14 @@
     .telemetry-stack{ max-width: 180px; font-size:9px; }
 
     /* A single mobile menu button toggles not just the settings panel but the
-       tabs, telemetry, and caption all at once — a unified toggle for
-       when a clean full-screen view is needed. The top title bar is handled
-       separately below: it's hidden outright on mobile (not just on menu-open),
-       since its text is duplicated inside the panel instead. */
-    .tabs, .telemetry-stack, .stage-caption{
+       top bar, tabs, telemetry, and caption all at once — a unified toggle for
+       when a clean full-screen view is needed. */
+    .topbar, .tabs, .telemetry-stack, .stage-caption{
       transition: opacity .2s, visibility .2s;
     }
+    body.menu-open .topbar,
     body.menu-open .stage-caption{
       opacity: 0; visibility: hidden; pointer-events: none;
-    }
-
-    /* Top title bar: hidden entirely on mobile so the stage gets the full
-       height; its text reappears as .panel-header-mobile inside the menu. */
-    .topbar{ display:none; }
-    .panel-header-mobile{
-      display:block;
-      padding-bottom: 12px;
-      margin-bottom: 2px;
-      border-bottom: 1px solid var(--line-soft);
-    }
-    .panel-header-mobile h1{
-      font-family:'Spectral SC', serif; font-weight:500; letter-spacing:0.02em;
-      font-size: 17px; margin:0 0 5px;
-    }
-    .panel-header-mobile h1 span{ color:var(--gold); }
-    .panel-header-mobile .sub{
-      font-family:'IBM Plex Mono', monospace;
-      font-size:10.5px; color:var(--ink-faint); letter-spacing:0.02em;
-      line-height:1.5; display:block;
     }
 
     /* Mobile-only slot: moves the top tabs (11 experiments) and the telemetry
@@ -529,11 +507,6 @@
   </div>
 
   <div class="panel">
-
-    <div class="panel-header-mobile">
-      <h1>GRAVITY <span>LAB</span> v2.0</h1>
-      <span class="sub">11 Experiments · Newton → Einstein → Schwarzschild → Friedmann → Hawking</span>
-    </div>
 
     <div class="panel-tabs-slot" id="panelTabsSlot">
       <div class="block-title">EXPERIMENTS</div>
