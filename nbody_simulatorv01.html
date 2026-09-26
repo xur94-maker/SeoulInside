@@ -61,29 +61,6 @@
     font-size: 11.5px; color: var(--ink-faint);
     letter-spacing: 0.02em;
   }
-  .panel-header-mobile{ display:none; }
-  @media (max-width: 860px){
-    .topbar{ display:none; }
-    .panel-header-mobile{
-      display:block;
-      padding-bottom: 16px;
-      margin-bottom: 4px;
-      border-bottom: 1px solid var(--line-soft);
-    }
-    .panel-header-mobile h1{
-      font-family: 'Spectral SC', 'Spectral', serif;
-      font-weight:500; letter-spacing: 0.02em;
-      font-size: 18px;
-      margin:0 0 6px;
-      color: var(--ink);
-    }
-    .panel-header-mobile .sub{
-      font-family:'IBM Plex Mono', monospace;
-      font-size: 11px; color: var(--ink-faint);
-      letter-spacing: 0.02em; line-height:1.6;
-      display:block;
-    }
-  }
   .layout{
     flex:1; display:grid;
     grid-template-columns: 1fr 340px;
@@ -291,11 +268,6 @@
     </div>
 
     <div class="panel">
-      <div class="panel-header-mobile">
-        <h1>N-Body Orbit Simulator</h1>
-        <span class="sub">Exact solutions · Symplectic Verlet · Chaos sensitivity · Adaptive resolution · Robust camera · Poincaré sections</span>
-      </div>
-
       <div>
         <div class="block-title">PRESET · Initial Conditions</div>
         <div class="presets" id="presetList"></div>
