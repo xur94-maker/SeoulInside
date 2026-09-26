@@ -1,5 +1,5 @@
  <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -340,8 +340,9 @@
     .layout{ grid-template-columns:1fr; }
     .telemetry-stack{ max-width: 180px; font-size:9px; }
 
-    /* 모바일 메뉴 버튼 하나로 설정 패널뿐 아니라 상단바·탭·텔레메트리·캡션까지
-       한꺼번에 켜고 끈다 — 깔끔한 전체 화면 뷰가 필요할 때를 위한 통합 토글. */
+    /* A single mobile menu button toggles not just the settings panel but the
+       top bar, tabs, telemetry, and caption all at once — a unified toggle for
+       when a clean full-screen view is needed. */
     .topbar, .tabs, .telemetry-stack, .stage-caption{
       transition: opacity .2s, visibility .2s;
     }
@@ -350,8 +351,8 @@
       opacity: 0; visibility: hidden; pointer-events: none;
     }
 
-    /* 모바일에서만 쓰는 슬롯: 상단 탭(11개 실험)과 텔레메트리 패널을
-       오른쪽 메뉴(.panel) 안으로 옮겨서 통합 표시한다. */
+    /* Mobile-only slot: moves the top tabs (11 experiments) and the telemetry
+       panel into the right-hand menu (.panel) so they display together. */
     .panel-tabs-slot{ display:block !important; }
     .panel-tabs-slot .tabs{
       position:static; border:none; background:transparent;
@@ -385,9 +386,9 @@
     font-size:11px; letter-spacing:3px;
   }
 
-  /* 화면 중앙하단 고정 — 패널을 열지 않아도(모바일 포함) 바로 쓸 수 있는
-     Burst + Gravity 플로팅 버튼 묶음. 모바일에서 사이드 패널이 열려있을 땐
-     겹치지 않게 숨김. */
+  /* Fixed at the bottom-center of the screen — a floating Burst + Gravity button
+     group usable right away without opening the panel (mobile included). Hidden
+     when the mobile side panel is open, so it doesn't overlap. */
   .fab-row{
     position:fixed; left:50%; transform:translateX(-50%);
     bottom: calc(18px + env(safe-area-inset-bottom,0px));
@@ -407,7 +408,7 @@
     font-size: 12px; letter-spacing:0.04em;
     color: var(--ink-dim);
     transition: border-color .15s, color .15s, background .15s, box-shadow .15s, transform .1s;
-    touch-action: none; /* 세로 드래그 제스처를 우리가 직접 처리한다 */
+    touch-action: none; /* we handle the vertical drag gesture ourselves */
   }
   .burst-fab:active, .gravity-fab:active{ transform: scale(0.96); }
   .burst-fab .fab-ico, .gravity-fab .fab-ico{ font-size:15px; line-height:1; }
@@ -436,8 +437,8 @@
   }
   .gravity-fab.charging .fab-dist{ background: rgba(157,140,214,0.22); }
 
-  /* 중력 추가 조준 중 화면 정중앙에 뜨는 십자선 — 카메라를 돌려 조준하는
-     동안 "여기에 떨어진다"를 보여준다. */
+  /* Crosshair shown at the exact center of the screen while aiming to add
+     gravity — shows "it will land here" while you rotate the camera to aim. */
   .add-reticle{
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
     width:28px; height:28px; z-index:7; pointer-events:none;
@@ -462,7 +463,7 @@
 <button class="menu-toggle" id="menuToggle">☰</button>
 
 <div class="fab-row" id="fabRow">
-  <button class="gravity-fab" id="btnGravityFab" title="상하 드래그: 질량 · 좌우 드래그: 배치 거리 · 짧게 눌러 배치">
+<button class="gravity-fab" id="btnGravityFab" title="Drag up/down: mass · Drag left/right: placement distance · Tap to place">
     <span class="fab-ico">🪐</span>
     <span class="fab-mass" id="fabMass">2</span>
     <span class="fab-dist" id="fabDist">↔3.0</span>
@@ -568,7 +569,7 @@
           <div class="ctrl-label"><span>Speed</span><b id="burstSpeedVal">1.0</b></div>
           <input type="range" id="burstSpeedSlider" min="0.1" max="5" step="0.1" value="1.0">
         </div>
-        <div class="hint">활성화 후 무대(3D 화면)를 <em>길게 눌러</em> 폭발을 조준하세요(모바일 롱프레스 포함). 그대로 두면 클릭 지점에서 <em>같은 회전 방향(반시계)</em>을 유지한 채 접선 기준 180° 폭으로 소용돌이치듯 터져 나가고, 누른 채로 <em>드래그</em>하면 그 방향·거리만큼 가중치가 전체 입자의 속도에 더해져 한쪽으로 쏠리는 폭발이 됩니다. 손을 떼면 발사됩니다. 색상은 임의색이 아니라 <em>초기 조건으로 계산한 궤도(원일점)</em>를 나타냅니다 — 빨강/주황은 좁고 깊은 궤도, 보라는 넓은 궤도, 흰색은 탈출(비구속) 궤적입니다. 현재 실험(모드)과 무관하게 동작합니다.</div>
+        <div class="hint">After activating, press and hold on the stage (3D view) to aim the burst (long-press works on mobile too). Just holding still bursts outward from the click point like a swirling vortex, spanning 180° around the tangential direction while keeping the same sense of rotation (counter-clockwise). Dragging while held adds that direction and distance as a shared velocity bias to every particle, giving the burst a lopsided, "aimed" push. Releasing fires it. The colors aren't random — they represent each particle's orbit (aphelion) computed from its initial conditions: red/orange = tight, deep orbits, purple = wide orbits, white = escaping (unbound) trajectories. Works regardless of the current experiment (mode).</div>
       </div>
     </div>
 
@@ -587,10 +588,10 @@
       <div class="block-title">EXCLUDED FROM THIS ENGINE</div>
       <div class="excluded-note">
         <span class="ttl">Why these are not simulated:</span>
-        <b>9편 위트-드윗</b> — infinite-dimensional functional; no well-defined numerical scheme.<br>
-        <b>13편 구멍 논증</b> — pure logical argument, not a computable quantity.<br>
-        <b>14편 AdS/CFT</b> — unproven conjecture; not applicable to our de Sitter universe.<br>
-        <b>15편 결론</b> — philosophical essay, not a physical model.
+        <b>Part 9 · Wheeler–DeWitt</b> — infinite-dimensional functional; no well-defined numerical scheme.<br>
+        <b>Part 13 · Hole Argument</b> — pure logical argument, not a computable quantity.<br>
+        <b>Part 14 · AdS/CFT</b> — unproven conjecture; not applicable to our de Sitter universe.<br>
+        <b>Part 15 · Conclusion</b> — philosophical essay, not a physical model.
       </div>
     </div>
 
@@ -621,7 +622,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 /* ═══════════════════════════════════════════════════════════════
-   [0] 상수 및 물리 (SI)
+   [0] Constants & physics (SI)
    ═══════════════════════════════════════════════════════════════ */
 const PHYS = {
   G: 6.67430e-11, c: 2.99792458e8, hbar: 1.054571817e-34,
@@ -635,7 +636,7 @@ const PHYS = {
 const G_SIM = 1.0;
 
 /* ═══════════════════════════════════════════════════════════════
-   [1] gravity-engine.js 인라인 (2편 · 4편 · 6편 근일점)
+   [1] gravity-engine.js inline (Part 2 · Part 4 · Part 6 perihelion)
    ═══════════════════════════════════════════════════════════════ */
 const PRESETS = {
   earth:       { label:'Earth',        mass: 6,   rs: 0.02, color:'#4a90d9' },
@@ -672,8 +673,8 @@ class MassBody {
 }
 MassBody._nextId = 1;
 
-// 궤적(꼬리) 길이 — UI 슬라이더로 0(꼬리 없음)까지 실시간 조절 가능.
-// 새로 태어나는 모든 RollingBody는 이 값을 기본 꼬리 길이로 사용한다.
+// Trail length — adjustable live via a UI slider, down to 0 (no trail).
+// Every newly spawned RollingBody uses this value as its default trail length.
 let GLOBAL_TRAIL_LENGTH = 400;
 
 class RollingBody {
@@ -923,7 +924,7 @@ const OrbitMath = {
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   [2] 포아송 · 라플라시안 (3편)
+   [2] Poisson · Laplacian (Part 3)
    ═══════════════════════════════════════════════════════════════ */
 function potentialField(bodies, px, py) {
   let phi = 0;
@@ -937,16 +938,16 @@ function laplacianPhi(bodies, x, y, h=0.03) {
           4 * potentialField(bodies, x, y)) / (h*h);
 }
 
-/* 이론값: ∇²Φ = 4πGρ. 점질량이면 델타함수. 수치적으로는 r→0에서 발산 */
+/* Theoretical value: ∇²Φ = 4πGρ. For a point mass this is a delta function; numerically it diverges as r→0 */
 function poissonTheoryAt(bodies, x, y, h=0.03) {
-  // 4πGρ의 "수치적" 추정: 각 질량체 기여분의 유한차분
+  // "Numerical" estimate of 4πGρ: finite-difference contribution from each mass body
   let sum = 0;
   for (const b of bodies) {
     const dx = x - b.x, dy = y - b.y;
     const r = Math.sqrt(dx*dx + dy*dy);
-    // 점질량 근사: 반지름 h 안에서만 발산
+    // Point-mass approximation: diverges only within radius h
     if (r < h) {
-      // 부피 h² 안에 질량 M이 있으면 ρ ≈ M/h²
+      // If mass M sits within volume h², then ρ ≈ M/h²
       sum += 4 * Math.PI * G_SIM * b.mass / (h*h);
     }
   }
@@ -954,10 +955,10 @@ function poissonTheoryAt(bodies, x, y, h=0.03) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [3] 슈바르츠실트 (6편)
+   [3] Schwarzschild (Part 6)
    ═══════════════════════════════════════════════════════════════ */
 const Schwarzschild = {
-  rs(M) { return 2 * M; },  // G=c=1 단위
+  rs(M) { return 2 * M; },  // units where G=c=1
   A(r, M) {
     const rs = this.rs(M);
     if (r <= rs) return 0;
@@ -973,22 +974,22 @@ const Schwarzschild = {
     if (r <= rs) return 0;
     return Math.sqrt(1 - rs / r);
   },
-  // 빛의 휘어짐 (충격 매개변수 b)
+  // Light bending (impact parameter b)
   lightDeflection(b, M) {
     // δφ = 4GM/(c²b) → G=c=1: 4M/b
     return 4 * M / b;
   },
-  // 근일점 세차: Δφ = 6πGM/(c²a(1-e²))
+  // Perihelion precession: Δφ = 6πGM/(c²a(1-e²))
   perihelionPrecession(a, e, M) {
     return 6 * Math.PI * M / (a * (1 - e*e));
   }
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   [4] 프리드만 (7편)
+   [4] Friedmann (Part 7)
    ═══════════════════════════════════════════════════════════════ */
 const Friedmann = {
-  // (ȧ/a)² = H0²[ΩM/a³ + ΩΛ]   (k=0 평평 우주)
+  // (ȧ/a)² = H0²[ΩM/a³ + ΩΛ]   (k=0 flat universe)
   H2(a, H0, OmegaM, OmegaL) {
     return H0*H0 * (OmegaM / (a*a*a) + OmegaL);
   },
@@ -996,7 +997,7 @@ const Friedmann = {
   dadt(a, H0, OmegaM, OmegaL) {
     return a * Math.sqrt(this.H2(a, H0, OmegaM, OmegaL));
   },
-  // RK4 스텝
+  // RK4 step
   step(a, H0, OmegaM, OmegaL, dt) {
     const k1 = this.dadt(a, H0, OmegaM, OmegaL);
     const k2 = this.dadt(a + 0.5*dt*k1, H0, OmegaM, OmegaL);
@@ -1007,7 +1008,7 @@ const Friedmann = {
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   [5] 호킹 (8편)
+   [5] Hawking (Part 8)
    ═══════════════════════════════════════════════════════════════ */
 const Hawking = {
   // T_H = ℏc³/(8πGMk_B)
@@ -1028,23 +1029,23 @@ const Hawking = {
     const A = this.horizonArea(M_kg);
     return PHYS.kB * PHYS.c**3 * A / (4 * PHYS.G * PHYS.hbar);
   },
-  // Stefan-Boltzmann 증발 파워 (근사)
+  // Stefan–Boltzmann evaporation power (approx.)
   power(M_kg) {
     const T = this.temperature(M_kg);
     const A = this.horizonArea(M_kg);
     return PHYS.sigma_SB * Math.pow(T, 4) * A;
   },
-  // 증발 시간 t ≈ 5120πG²M³/(ℏc⁴)
+  // Evaporation time t ≈ 5120πG²M³/(ℏc⁴)
   evaporationTime(M_kg) {
     return 5120 * Math.PI * PHYS.G*PHYS.G * M_kg**3 / (PHYS.hbar * PHYS.c**4);
   }
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   [6] 리만 텐서 (11편) — 2D 가우스 곡률
+   [6] Riemann tensor (Part 11) — 2D Gaussian curvature
    ═══════════════════════════════════════════════════════════════ */
 const Riemann = {
-  // heightAt 함수를 이용한 2D 곡면의 가우스 곡률
+  // Gaussian curvature of the 2D surface, via the heightAt function
   gaussianCurvature(heightFn, x, y, h=0.05) {
     const z = heightFn;
     const zxx = (z(x+h, y) - 2*z(x, y) + z(x-h, y)) / (h*h);
@@ -1055,46 +1056,66 @@ const Riemann = {
     const denom = 1 + zx*zx + zy*zy;
     return (zxx*zyy - zxy*zxy) / (denom*denom);
   },
-  // 리만 텐서의 2D 성분 (R^r_θrθ) — 수치적으로는 K = R/2
+  // 2D component of the Riemann tensor (R^r_θrθ) — numerically K = R/2
   riemannComponent(heightFn, x, y, h=0.05) {
     return 2 * this.gaussianCurvature(heightFn, x, y, h);
   }
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   [7] 비앙키 (12편) — ∇^μ G_μν ≈ 0 수치 검증
+   [7] Bianchi (Part 12) — numerical check that ∇^μ G_μν ≈ 0
    ═══════════════════════════════════════════════════════════════ */
 const Bianchi = {
-  // 2D 근사에서 리치 스칼라와 아인슈타인 텐서의 발산을 수치적으로 계산
-  // (완전한 4D는 아니고, 곡률 스칼라 R의 발산)
+  // Numerically computes the divergence of the Ricci scalar and Einstein
+  // tensor in the 2D approximation (not full 4D — the divergence of the
+  // curvature scalar R)
   checkDivergence(heightFn, x, y, h=0.05) {
     // R ≈ 2K (2D)
     const R = (px, py) => 2 * Riemann.gaussianCurvature(heightFn, px, py, h);
-    // ∇R = (∂R/∂x, ∂R/∂y) — 수치
+    // ∇R = (∂R/∂x, ∂R/∂y) — numerical
     const Rx = (R(x+h, y) - R(x-h, y)) / (2*h);
     const Ry = (R(x, y+h) - R(x, y-h)) / (2*h);
-    // 완전한 비앙키 항등식은 4D에서 성립하지만,
-    // 2D 근사에서도 R의 발산이 곡률과 일관성 있게 나오는지 확인
+    // The full Bianchi identity holds in 4D, but here we check whether
+    // the divergence of R stays consistent with the curvature in the 2D approximation
     return Math.hypot(Rx, Ry);
   }
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   [8] 실험 정의 — 11개
+   [7.5] Eccentricity (e) → spawnRollers speed-factor conversion
+   A bead launched with purely tangential velocity always starts at perihelion
+   or aphelion (the point where radial velocity = 0 is an extremum of r(t)).
+   Fixing r0 as perihelion gives, from the vis-viva relation,
+   v0 = v_circ(r0)·√(1+e).
+   When the eccRandom toggle is on, we simply reuse the "uniform random draw
+   between speedMin and speedMax" logic already inside spawnRollers, so each
+   bead's e is drawn independently from [ecc−jitter, ecc+jitter] — no new
+   randomness path is added; it rides on the existing structure.
+   ═══════════════════════════════════════════════════════════════ */
+function eccentricitySpeedRange(p) {
+  const jitter = p.eccRandom ? (p.eccJitter ?? 0) : 0;
+  const eLo = Math.max(0, (p.ecc ?? 0) - jitter);
+  const eHi = Math.min(0.97, (p.ecc ?? 0) + jitter); // leave a small margin, since perihelion speed diverges as e→1
+  return { speedMin: Math.sqrt(1 + eLo), speedMax: Math.sqrt(1 + eHi) };
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   [8] Experiment definitions — 11 total
    ═══════════════════════════════════════════════════════════════ */
 const EXPERIMENTS = {
   'E01_newton': {
     key: 'E01_newton', num: '01', name: 'Newton · Inverse Square',
-    ref: '제2편',
-    desc: `뉴턴 만유인력 F = Gm₁m₂/r². 반지름이 서로 다른 구슬들을 동시에 굴려서 각자의 실측 주기를 재고, T² ∝ r³(케플러 제3법칙)이 실제로 성립하는지 log-log 산점도로 검증합니다. Bead count를 올릴수록 기준 반지름 r₀ 앞뒤로 한 칸씩 번갈아 반지름이 늘어납니다(0,+1,−1,+2,−2…).`,
-    equations: ['F = Gm₁m₂/r²', 'v_esc = √(2GM/r)', 'v_orb = √(GM/r)', 'T² = (4π²/GM)·r³'],
+    ref: 'Part 2',
+    desc: `Newton's law of universal gravitation, F = Gm₁m₂/r². Rolls beads at several different radii at once, measures each one's actual period, and checks on a log-log scatter plot whether T² ∝ r³ (Kepler's third law) really holds. Raising the bead count alternately extends the radius forward/back from the base radius r₀ (0, +1, −1, +2, −2, …). The Eccentricity slider produces an elliptical orbit with r₀ as perihelion, and turning on "Randomize eccentricity" gives each bead its own random e within ±jitter.`,
+    equations: ['F = Gm₁m₂/r²', 'v_esc = √(2GM/r)', 'v_orb = √(GM/r)', 'T² = (4π²/GM)·r³', 'v₀ = v_orb·√(1+e)  (r₀ = perihelion)'],
     chartLabel: 'T vs r (log-log) · Kepler III',
     setup(world) {
       world.clearBodies(); world.clearRollers();
       world.addMass({ x: 0, y: 0, preset: 'sun' });
+      const { speedMin, speedMax } = eccentricitySpeedRange({ ecc: 0, eccRandom: 0, eccJitter: 0.15 });
       world.spawnRollers({
         count: 12, dist: 6, radiusStep: 0.6,
-        speedMin: 0.96, speedMax: 1.04, tangentialBias: 1.0
+        speedMin, speedMax, tangentialBias: 1.0
       });
       world.time.reset();
     },
@@ -1102,15 +1123,18 @@ const EXPERIMENTS = {
       { key: 'M', label: 'Central mass M', min: 10, max: 100, step: 5, value: 40 },
       { key: 'N', label: 'Bead count', min: 3, max: 40, step: 1, value: 12 },
       { key: 'r0', label: 'Base radius r₀', min: 3, max: 12, step: 0.5, value: 6 },
-      { key: 'rStep', label: 'Radius step Δr (앞/뒤)', min: 0, max: 2, step: 0.1, value: 0.6 },
-      { key: 'vFactor', label: 'v₀ / v_circ (각자 반지름 기준)', min: 0.85, max: 1.15, step: 0.01, value: 1.0 }
+      { key: 'rStep', label: 'Radius step Δr (fwd/back)', min: 0, max: 2, step: 0.1, value: 0.6 },
+      { key: 'ecc', label: 'Eccentricity e (r₀ = perihelion)', min: 0, max: 0.9, step: 0.01, value: 0 },
+      { key: 'eccJitter', label: 'Random spread ±Δe', min: 0, max: 0.4, step: 0.01, value: 0.15 },
+      { key: 'eccRandom', label: 'Randomize eccentricity', type: 'toggle', value: 0 }
     ],
     onParamChange(world, p) {
       if (world.bodies[0]) world.bodies[0].mass = p.M;
       world.clearRollers();
+      const { speedMin, speedMax } = eccentricitySpeedRange(p);
       world.spawnRollers({
         count: p.N, dist: p.r0, radiusStep: p.rStep,
-        speedMin: p.vFactor * 0.98, speedMax: p.vFactor * 1.02,
+        speedMin, speedMax,
         tangentialBias: 1.0
       });
     },
@@ -1121,19 +1145,22 @@ const EXPERIMENTS = {
       // T² = keplerConstant · r³ — the single number Kepler's third law
       // says every bead should share, regardless of which radius it's on.
       const keplerConstant = 4*Math.PI*Math.PI / p.M;
-      return { vEsc, vOrb, T, v0: vOrb * p.vFactor, keplerConstant };
+      const v0 = vOrb * Math.sqrt(1 + (p.ecc ?? 0));
+      // Aphelion radius when r0 is perihelion: a=r0/(1-e), aphelion=a(1+e)
+      const aphelion = (p.ecc ?? 0) < 1 ? p.r0 * (1 + p.ecc) / (1 - p.ecc) : Infinity;
+      return { vEsc, vOrb, T, v0, aphelion, keplerConstant };
     },
     measure(world, p) {
       const alive = world.rollers.filter(r => r.alive);
       if (alive.length === 0) return null;
       const avgR = alive.reduce((s, r) => s + Math.hypot(r.x, r.y), 0) / alive.length;
       const avgV = alive.reduce((s, r) => s + Math.hypot(r.vx, r.vy), 0) / alive.length;
-      // 에너지로 bound/unbound 판정
+      // Determine bound/unbound via energy
       const bound = alive.filter(r => r.totalEnergy(world.bodies) < 0).length;
-      // 케플러 제3법칙 실측: 실제로 한 바퀴를 돈 구슬들만 모아 T²/r³의
-      // 평균을 낸다 — radiusStep=0이면 전부 같은 반지름이라 산점도가
-      // 점 하나로 붕괴하므로, 여러 반지름으로 퍼뜨렸을 때만 이 값이
-      // 진짜로 "법칙을 검증"하는 의미를 갖는다.
+      // Measured Kepler's third law: average T²/r³ over only the beads that
+      // have actually completed one full orbit — with radiusStep=0 every bead
+      // shares the same radius, so the scatter plot collapses to a single
+      // point; this value only truly "verifies the law" once beads are spread across several radii.
       const withPeriod = alive.filter(r => r.lastPeriod !== null);
       let keplerConstant = null;
       if (withPeriod.length > 0) {
@@ -1142,7 +1169,7 @@ const EXPERIMENTS = {
       }
       return {
         avgR, avgV, bound, alive: alive.length,
-        keplerConstant: keplerConstant ?? '측정중',
+        keplerConstant: keplerConstant ?? 'measuring…',
         periodsSampled: withPeriod.length
       };
     }
@@ -1150,15 +1177,15 @@ const EXPERIMENTS = {
 
   'E02_poisson': {
     key: 'E02_poisson', num: '02', name: 'Poisson · ∇²Φ = 4πGρ',
-    ref: '제3편',
-    desc: `퍼텐셜의 라플라시안 ∇²Φ를 수치적으로 계산해서 4πGρ와 비교합니다. 질량체 위치에서만 0이 아님을 확인합니다.`,
+    ref: 'Part 3',
+    desc: `Numerically computes the Laplacian of the potential, ∇²Φ, and compares it against 4πGρ. Confirms it's nonzero only at the location of a mass body.`,
     equations: ['∇²Φ = 4πGρ', 'Φ = -GM/r'],
     chartLabel: 'LAPLACIAN vs RADIUS',
     setup(world) {
       world.clearBodies(); world.clearRollers();
       world.addMass({ x: -3, y: 0, preset: 'sun' });
       world.addMass({ x: 3, y: 0, preset: 'earth' });
-      // 1개 테스트 구슬 (움직이지 않게)
+      // One test bead (kept stationary)
       const r = new RollingBody({ x: 0, y: 8, vx: 0, vy: 0 });
       world.rollers.push(r);
     },
@@ -1168,7 +1195,7 @@ const EXPERIMENTS = {
     ],
     onParamChange() {},
     theory(world, p) {
-      // 이론: ∇²Φ = 0 (질량체 바깥), 발산 (질량체 안)
+      // Theory: ∇²Φ = 0 outside a mass body, diverges inside one
       const probeY = 0;
       const theoryVal = poissonTheoryAt(world.bodies, p.probeX, probeY, p.h);
       return { theory: theoryVal, probeX: p.probeX, probeY };
@@ -1182,8 +1209,8 @@ const EXPERIMENTS = {
 
   'E03_geodesic': {
     key: 'E03_geodesic', num: '03', name: 'Geodesic · Verlet Stability',
-    ref: '제4편',
-    desc: `측지선 방정식의 뉴턴 극한은 Verlet 적분과 동치입니다. 에너지 보존을 실시간 검증합니다.`,
+    ref: 'Part 4',
+    desc: `The Newtonian limit of the geodesic equation is equivalent to Verlet integration. Verifies energy conservation in real time.`,
     equations: ['d²x^μ/dτ² + Γ^μ_αβ dx^α/dτ dx^β/dτ = 0', 'E = ½mv² + Φ = const'],
     chartLabel: 'ENERGY CONSERVATION · E/E₀',
     setup(world) {
@@ -1202,7 +1229,7 @@ const EXPERIMENTS = {
       world.spawnRollers({ count: p.N, dist: 5, speedMin: 0.85, speedMax: 0.95, tangentialBias: 1.0 });
     },
     theory(world, p) {
-      // 이론: E = const, 즉 E/E0 = 1.000000
+      // Theory: E = const, i.e. E/E0 = 1.000000
       return { theoryE: 1.0, theorySlope: 0 };
     },
     measure(world, p) {
@@ -1217,14 +1244,14 @@ const EXPERIMENTS = {
 
   'E04_schwarzschild': {
     key: 'E04_schwarzschild', num: '04', name: 'Schwarzschild · Metric',
-    ref: '제6편',
-    desc: `슈바르츠실트 계량 A(r) = 1 - rs/r, B(r) = 1/A(r)를 시각화합니다. 구슬의 국소 시간 팽창을 실시간 표시합니다.`,
+    ref: 'Part 6',
+    desc: `Visualizes the Schwarzschild metric A(r) = 1 - rs/r, B(r) = 1/A(r). Displays each bead's local time dilation in real time.`,
     equations: ['ds² = -A(r)c²dt² + B(r)dr² + r²dΩ²', 'r_s = 2GM/c²'],
     chartLabel: 'TIME DILATION √(1-rs/r)',
     setup(world) {
       world.clearBodies(); world.clearRollers();
       const bh = world.addMass({ x: 0, y: 0, preset: 'blackHole', massOverride: 30 });
-      bh.rs = 4;   // 시각적 스케일
+      bh.rs = 4;   // visual scale
       world.spawnRollers({ count: 15, dist: 8, speedMin: 0.7, speedMax: 1.0, tangentialBias: 0.9 });
       world.useRelativisticCorrection = true;
       world.time.reset();
@@ -1257,17 +1284,17 @@ const EXPERIMENTS = {
 
   'E05_precession': {
     key: 'E05_precession', num: '05', name: 'Perihelion · Precession',
-    ref: '제6편',
-    desc: `근일점 세차 Δφ = 6πGM/(c²a(1-e²)). 상대론적 보정으로 수성 근일점 세차 43″/세기를 재현합니다.`,
-    equations: ['Δφ = 6πGM/(c²a(1-e²))', '수성: 43″/세기'],
+    ref: 'Part 6',
+    desc: `Perihelion precession Δφ = 6πGM/(c²a(1-e²)). Reproduces Mercury's 43″/century perihelion precession via a relativistic correction.`,
+    equations: ['Δφ = 6πGM/(c²a(1-e²))', 'Mercury: 43″/century'],
     chartLabel: 'PERIHELION DRIFT',
     setup(world) {
       world.clearBodies(); world.clearRollers();
       const sun = world.addMass({ x: 0, y: 0, preset: 'sun', massOverride: 60 });
-      sun.rs = 1.5;   // 세차 효과 강조
+      sun.rs = 1.5;   // exaggerated to emphasize the precession effect
       world.spawnRollers({ count: 1, dist: 6, speedMin: 0.85, speedMax: 0.87, tangentialBias: 1.0 });
       world.useRelativisticCorrection = true;
-      world.correctionFactor = 3.0;   // 효과 강조
+      world.correctionFactor = 3.0;   // exaggerated for effect
       world.time.reset();
     },
     params: [
@@ -1296,14 +1323,14 @@ const EXPERIMENTS = {
 
   'E06_friedmann': {
     key: 'E06_friedmann', num: '06', name: 'Friedmann · Expansion',
-    ref: '제7편',
-    desc: `제1 프리드만 방정식 (ȧ/a)² = H₀²[ΩM/a³ + ΩΛ]. 스케일 인자 a(t)의 시간 진화를 RK4로 적분합니다.`,
-    equations: ['(ȧ/a)² = H₀²[ΩM/a³ + ΩΛ]', 'k=0 (평평 우주)'],
+    ref: 'Part 7',
+    desc: `The first Friedmann equation, (ȧ/a)² = H₀²[ΩM/a³ + ΩΛ]. Integrates the time evolution of the scale factor a(t) with RK4.`,
+    equations: ['(ȧ/a)² = H₀²[ΩM/a³ + ΩΛ]', 'k=0 (flat universe)'],
     chartLabel: 'SCALE FACTOR a(t)',
     setup(world) {
       world.clearBodies(); world.clearRollers();
       world.addMass({ x: 0, y: 0, preset: 'galaxy' });
-      // 4개 구슬을 고정 배치 (팽창만 시각화)
+      // Four beads placed at fixed positions (visualizes expansion only)
       for (let i = 0; i < 4; i++) {
         const th = (i / 4) * Math.PI * 2;
         const r = new RollingBody({ x: Math.cos(th)*3, y: Math.sin(th)*3, vx: 0, vy: 0 });
@@ -1331,8 +1358,8 @@ const EXPERIMENTS = {
 
   'E07_hawking': {
     key: 'E07_hawking', num: '07', name: 'Hawking · Temperature',
-    ref: '제8편',
-    desc: `호킹 온도 T = ℏc³/(8πGMk_B). 질량별 블랙홀의 온도·엔트로피·증발 시간을 실시간 계산합니다.`,
+    ref: 'Part 8',
+    desc: `Hawking temperature T = ℏc³/(8πGMk_B). Computes a black hole's temperature, entropy, and evaporation time by mass, in real time.`,
     equations: ['T_H = ℏc³/(8πGMk_B)', 'S_BH = k_Bc³A/(4Gℏ)', 't_evap ∝ M³'],
     chartLabel: 'T_H vs M',
     setup(world) {
@@ -1357,22 +1384,22 @@ const EXPERIMENTS = {
       };
     },
     measure(world, p) {
-      // 시뮬레이션에서는 같은 공식을 표시 (수치 계산 vs 이론 동일)
+      // The simulation displays the same formula (numerical calc. = theory here)
       return this.theory(world, p);
     }
   },
 
   'E08_riemann': {
     key: 'E08_riemann', num: '08', name: 'Riemann · Curvature',
-    ref: '제11편',
-    desc: `높이맵 z(x,y)의 가우스 곡률 K = (z_xx z_yy - z_xy²)/(1+z_x²+z_y²)²를 수치 미분으로 계산합니다.`,
+    ref: 'Part 11',
+    desc: `Computes the Gaussian curvature K = (z_xx z_yy - z_xy²)/(1+z_x²+z_y²)² of the height map z(x,y) via numerical differentiation.`,
     equations: ['K = (z_xx z_yy - z_xy²)/(1+z_x²+z_y²)²', 'R = 2K (2D)'],
     chartLabel: 'CURVATURE PROFILE',
     setup(world) {
       world.clearBodies(); world.clearRollers();
       world.addMass({ x: -2.5, y: 0, preset: 'sun' });
       world.addMass({ x: 2.5, y: 0, preset: 'blackHole', massOverride: 100 });
-      // 테스트 구슬 정지
+      // Test bead held stationary
       world.rollers.push(new RollingBody({ x: 0, y: 5, vx: 0, vy: 0 }));
     },
     params: [
@@ -1382,7 +1409,7 @@ const EXPERIMENTS = {
     ],
     onParamChange() {},
     theory(world, p) {
-      // 이론적 기대: 질량체 위치에서 곡률 최대
+      // Theoretical expectation: curvature is maximal at a mass body's location
       const dist = Math.hypot(p.probeX, p.probeY);
       let nearest = Infinity;
       for (const b of world.bodies) nearest = Math.min(nearest, Math.hypot(p.probeX - b.x, p.probeY - b.y));
@@ -1402,8 +1429,8 @@ const EXPERIMENTS = {
 
   'E09_bianchi': {
     key: 'E09_bianchi', num: '09', name: 'Bianchi · ∇^μ G_μν ≈ 0',
-    ref: '제12편',
-    desc: `비앙키 항등식 ∇^μG_μν ≡ 0을 2D 근사에서 수치적으로 확인합니다. 곡률 스칼라 R의 발산이 곡률과 일관성 있게 나오는지 검증합니다.`,
+    ref: 'Part 12',
+    desc: `Numerically checks the Bianchi identity ∇^μG_μν ≡ 0 in the 2D approximation. Verifies whether the divergence of the curvature scalar R stays consistent with the curvature.`,
     equations: ['∇_λR_ρσμν + ∇_ρR_σλμν + ∇_σR_λρμν = 0', '∇^μG_μν ≡ 0'],
     chartLabel: 'DIVERGENCE ∇R',
     setup(world) {
@@ -1417,7 +1444,7 @@ const EXPERIMENTS = {
     ],
     onParamChange() {},
     theory(world, p) {
-      // 이론: ∇^μ G_μν ≡ 0 (항등식)
+      // Theory: ∇^μ G_μν ≡ 0 (an identity)
       return { theoryDiv: 0 };
     },
     measure(world, p) {
@@ -1433,13 +1460,13 @@ const EXPERIMENTS = {
 
   'E10_scalarTmunu': {
     key: 'E10_scalarTmunu', num: '10', name: 'Scalar Field · T_μν',
-    ref: '제10편',
-    desc: `스칼라장 φ의 에너지-운동량 텐서 T_μν = ∂_μφ∂_νφ - g_μν(½(∂φ)² + V). 수치 미분으로 T_00, T_11을 계산합니다.`,
+    ref: 'Part 10',
+    desc: `The stress-energy tensor of a scalar field φ, T_μν = ∂_μφ∂_νφ - g_μν(½(∂φ)² + V). Computes T_00 and T_11 via numerical differentiation.`,
     equations: ['T_μν = ∂_μφ∂_νφ - g_μν(½(∂φ)² + V)', '∇^μT_μν = 0'],
     chartLabel: 'T_00 (energy density)',
     setup(world) {
       world.clearBodies(); world.clearRollers();
-      // 스칼라장 진공 상태 — 별도 시각화
+      // Scalar field vacuum state — visualized separately
       world.rollers.push(new RollingBody({ x: 5, y: 0, vx: 0, vy: 0 }));
     },
     params: [
@@ -1452,7 +1479,7 @@ const EXPERIMENTS = {
       return { eq: 'T_00 = ½(∂_xφ)² + ½(∂_yφ)² + V(φ)' };
     },
     measure(world, p) {
-      // 스칼라장 φ를 배경 퍼텐셜로 근사
+      // Approximates the scalar field φ as a background potential
       const phi = (x, y) => {
         const r = Math.sqrt(x*x + y*y);
         return Math.exp(-r*r/20) * Math.cos(2*Math.atan2(y, x));
@@ -1470,8 +1497,8 @@ const EXPERIMENTS = {
 
   'E11_escape': {
     key: 'E11_escape', num: '11', name: 'Escape · v_esc = √(2GM/r)',
-    ref: '제2편',
-    desc: `탈출속도와 궤도속도의 비 v_esc/v_orb = √2를 실시간 검증합니다. v₀ 슬라이더를 임계점 근처에서 미세 조정하세요.`,
+    ref: 'Part 2',
+    desc: `Verifies in real time that the ratio of escape to orbital velocity, v_esc/v_orb = √2. Fine-tune the v₀ slider near the critical point.`,
     equations: ['v_esc = √(2GM/r)', 'v_orb = √(GM/r)', 'v_esc/v_orb = √2 ≈ 1.414'],
     chartLabel: 'BOUND vs UNBOUND',
     setup(world) {
@@ -1511,7 +1538,7 @@ const EXPERIMENTS = {
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   [9] SIM 상태
+   [9] SIM state
    ═══════════════════════════════════════════════════════════════ */
 const SIM = {
   expKey: 'E01_newton',
@@ -1525,14 +1552,14 @@ const SIM = {
   chartHistory: [],
   autoRotate: false,
   showGrid: true,
-  // 클릭 폭발(burst) 기능: 모드/실험과 무관하게 클릭 지점에서 입자를 사방으로 방출
+  // Click-burst feature: emits particles outward from the click point in all directions, regardless of mode/experiment
   burstMode: false,
   burstCount: 20,
   burstSpeed: 1.0
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   [10] Three.js 씬
+   [10] Three.js scene
    ═══════════════════════════════════════════════════════════════ */
 const canvas3D = document.getElementById('cv');
 const scene = new THREE.Scene();
@@ -1609,12 +1636,13 @@ scene.add(fillLight);
 })();
 
 /* ═══════════════════════════════════════════════════════════════
-   [10b] 실험 전환 시 카메라 자동 리프레임
-   실험마다 궤도/특이점의 실제 크기가 다른데(예: 근접 궤도 vs 넓은
-   타원 궤도) 항상 같은 초기 거리에서 시작하면 어떤 실험은 화면
-   가득, 어떤 실험은 점 하나만 보이게 된다. 씬의 "내용물"(질량체+
-   구슬)의 실제 반경을 계산해서, 현재 시점각(azimuth/elevation)은
-   유지한 채 거리만 부드럽게 줌 인/아웃한다.
+   [10b] Automatic camera reframing on experiment switch
+   Each experiment's orbits/singularities differ in actual scale (e.g. a
+   tight orbit vs. a wide elliptical one). Always starting from the same
+   initial distance would fill the screen in one experiment and shrink to a
+   single dot in another. So we compute the actual radius of the scene's
+   "contents" (mass bodies + beads) and smoothly zoom in/out on distance
+   alone, while keeping the current viewing angle (azimuth/elevation).
    ═══════════════════════════════════════════════════════════════ */
 let cameraAnim = null;
 let hasFramedOnce = false;
@@ -1674,7 +1702,7 @@ function applyCameraShake() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [11] 지형 (Height-map) + 곡률 히트맵
+   [11] Terrain (height map) + curvature heatmap
    ═══════════════════════════════════════════════════════════════ */
 const SURFACE_RES = 150;   // was 80 — finer mesh so a deep/new gravity well
                             // curves smoothly instead of showing facets
@@ -1809,10 +1837,10 @@ function buildCurvatureMesh(bodies) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [11b] 표면 스케일 그리드 — 곡률 지형 위에 얹히는 동심원 눈금 +
-   방사형 스포크. "지금 이 궤도가 실제로 얼마나 큰지" 가늠할 기준선을
-   제공하면서, 우물 안쪽(혼잡한 중심부)과 가장자리(빈 공간)는 은은하게
-   페이드시켜 딱딱한 격자가 아니라 정교한 나침반처럼 보이게 한다.
+   [11b] Surface scale grid — concentric rings overlaid on the curvature terrain, plus
+   radial spokes. Gives a reference for gauging "how big is this orbit,
+   really", while gently fading out near the well's crowded center and its
+   empty outer edge, so it reads as a delicate compass rather than a rigid grid.
    ═══════════════════════════════════════════════════════════════ */
 const GRID_RING_STEP = 2;
 const GRID_RING_SEGMENTS = 96;
@@ -1910,7 +1938,7 @@ function buildSurfaceGrid(bodies) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [12] 질량체 메쉬
+   [12] Mass-body meshes
    ═══════════════════════════════════════════════════════════════ */
 let bodyGroup = null;
 
@@ -1967,7 +1995,7 @@ function buildBodyMeshes(bodies) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [13] 구슬 렌더러
+   [13] Bead renderer
    ═══════════════════════════════════════════════════════════════ */
 const MAX_TAIL_LENGTH = 3000;
 
@@ -2137,12 +2165,13 @@ class BeadRenderer {
 const beadRenderer = new BeadRenderer();
 
 /* ═══════════════════════════════════════════════════════════════
-   [16b] 죽은/누적된 입자 정리 (메모리·성능 누수 방지)
-   - 블랙홀 등에 흡수되어 alive=false가 된 롤러는 짧게 오그라들며
-     사라지는 연출 후 배열/씬에서 완전히 제거된다(영원히 얼어붙어
-     남아있지 않도록).
-   - 클릭 폭발로 태어난 입자는 개수 상한을 두고, 넘치면 가장 오래된
-     것부터 정리한다(롱프레스를 계속 스팸해도 무한정 쌓이지 않게).
+   [16b] Cleaning up dead/accumulated particles (prevents memory & performance leaks)
+   - A roller that becomes alive=false after being absorbed by a black hole
+     etc. briefly shrinks away, then is fully removed from the array/scene
+     (so it doesn't stay frozen there forever).
+   - Particles born from a click-burst have a count cap; once exceeded, the
+     oldest ones are cleaned up first (so spamming long-presses doesn't pile
+     them up indefinitely).
    ═══════════════════════════════════════════════════════════════ */
 const DEATH_FADE_MS = 550;
 const MAX_BURST_ROLLERS = 600;
@@ -2171,7 +2200,7 @@ function reapDeadRollers() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [14] 세계 초기화
+   [14] World initialization
    ═══════════════════════════════════════════════════════════════ */
 function hslToRgb255(hue, s, l) {
   const cc = (1 - Math.abs(2*l - 1)) * s;
@@ -2228,15 +2257,15 @@ function colorFromOrbit(x, y, vx, vy, bodies) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [14b] 클릭 폭발(Burst) — 모드/실험과 무관하게 클릭 지점에서
-   입자를 사방으로 방출하되, 전체가 같은 회전 방향(CCW)을 유지한
-   채 접선 방향 기준 180도 폭으로 스월(swirl)처럼 퍼진다.
+   [14b] Click-burst — regardless of mode/experiment, from the click point
+   emits particles in all directions, but as a group they keep the same
+   sense of rotation (CCW) and spread out like a swirl across a 180°-wide cone around the tangential direction.
    ═══════════════════════════════════════════════════════════════ */
 function spawnBurstAt(x, y, bias = null) {
   if (!SIM.world) return;
-  // directionSpreadDeg: 180 → 순수 반경 방향 폭발 대신, 접선(CCW) 방향을
-  // 중심으로 ±90도 폭으로 퍼지는 소용돌이형 폭발이 된다.
-  // dist: 0 → 모든 입자가 클릭 지점 그 자체에서 태어난다.
+// directionSpreadDeg: 180 → instead of a pure radial burst, spreads as a
+// vortex-like burst spanning ±90° around the tangential (CCW) direction.
+// dist: 0 → every particle is born right at the click point itself.
   const created = SIM.world.spawnRollers({
     count: SIM.burstCount,
     dist: 0,
@@ -2262,9 +2291,9 @@ function spawnBurstAt(x, y, bias = null) {
 }
 
 function setupExperiment(key, opts = {}) {
-  // opts.preserveParams: 실험을 바꾸는 게 아니라 "리셋"할 때 쓴다 — 슬라이더로
-  // 조절해 둔 현재 파라미터 값을 실험 기본값으로 되돌리지 않고 그대로 들고
-  // 간 다음, 방금 새로 만든 세계 위에 다시 적용한다.
+// opts.preserveParams: used when "resetting" rather than switching
+// experiments — carries forward the current slider-adjusted parameter
+// values instead of reverting to the experiment's defaults, then reapplies them on top of the freshly-built world.
   const sameExp = key === SIM.expKey;
   const preserveParams = !!opts.preserveParams && sameExp && SIM.params && Object.keys(SIM.params).length > 0;
   const savedParams = preserveParams ? { ...SIM.params } : null;
@@ -2288,10 +2317,10 @@ function setupExperiment(key, opts = {}) {
   SIM.world.correctionFactor = 1.0;
 
   SIM.exp.setup(SIM.world);
-  // 저장해 둔 파라미터가 있으면(=리셋), 방금 기본값으로 만들어진 세계 위에
-  // 그 값을 즉시 재적용한다. beadRenderer에는 아직 아무것도 등록하지 않은
-  // 상태이므로(위 clear() 이후 처음) 여기서 물러난 구슬이 고아 객체로
-  // 남는 문제 없이 최종 구성만 한 번에 등록된다.
+  // If saved parameters exist (= this is a reset), reapply them immediately
+  // on top of the world that was just built with defaults. Since nothing has
+  // been registered with beadRenderer yet at this point (first time since
+  // the clear() above), only the final configuration gets registered at once, with no orphaned beads left behind.
   if (savedParams && SIM.exp.onParamChange) {
     SIM.exp.onParamChange(SIM.world, SIM.params);
   }
@@ -2314,7 +2343,7 @@ function setupExperiment(key, opts = {}) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [15] 렌더 루프
+   [15] Render loop
    ═══════════════════════════════════════════════════════════════ */
 let lastFrameTime = performance.now();
 
@@ -2354,7 +2383,7 @@ function renderLoop() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [16] UI 렌더링
+   [16] UI rendering
    ═══════════════════════════════════════════════════════════════ */
 const tabsEl = document.getElementById('tabs');
 const paramContainer = document.getElementById('paramContainer');
@@ -2389,11 +2418,43 @@ function renderExperimentInfo() {
   document.getElementById('stageName').textContent = e.name;
 }
 
+function applyLiveParamChange() {
+  // Shared by sliders and toggles: apply the value, rebuild the world, and refresh the rendering too.
+  if (SIM.exp.onParamChange) {
+    SIM.exp.onParamChange(SIM.world, SIM.params);
+    for (const r of SIM.world.rollers) r.color = colorFromOrbit(r.x, r.y, r.vx, r.vy, SIM.world.bodies);
+    for (const r of SIM.world.rollers) if (!beadRenderer.trailLines.has(r.id)) beadRenderer.register(r);
+  }
+  buildSurface(SIM.world.bodies);
+  buildCurvatureMesh(SIM.world.bodies);
+  buildSurfaceGrid(SIM.world.bodies);
+  buildBodyMeshes(SIM.world.bodies);
+}
+
 function renderParams() {
   paramContainer.innerHTML = '';
   for (const p of SIM.exp.params) {
     const ctrl = document.createElement('div');
     ctrl.className = 'ctrl';
+
+    if (p.type === 'toggle') {
+      // Rendered as an on/off switch instead of a slider (e.g. randomize eccentricity)
+      const checked = SIM.params[p.key] ? 'checked' : '';
+      ctrl.innerHTML = `
+        <div class="toggle-row">
+          <span class="label">${p.label}</span>
+          <label class="switch"><input type="checkbox" id="s_${p.key}" ${checked}><span class="track"><span class="thumb"></span></span></label>
+        </div>
+      `;
+      paramContainer.appendChild(ctrl);
+      const input = ctrl.querySelector('input');
+      input.addEventListener('change', () => {
+        SIM.params[p.key] = input.checked ? 1 : 0;
+        applyLiveParamChange();
+      });
+      continue;
+    }
+
     ctrl.innerHTML = `
       <div class="ctrl-label"><span>${p.label}</span><b id="v_${p.key}">${SIM.params[p.key]}</b></div>
       <input type="range" min="${p.min}" max="${p.max}" step="${p.step}" value="${SIM.params[p.key]}" id="s_${p.key}">
@@ -2405,23 +2466,13 @@ function renderParams() {
       SIM.params[p.key] = v;
       document.getElementById(`v_${p.key}`).textContent = p.step < 1 ? v.toFixed(2) : v;
       clearTimeout(slider._t);
-      slider._t = setTimeout(() => {
-        if (SIM.exp.onParamChange) {
-          SIM.exp.onParamChange(SIM.world, SIM.params);
-          for (const r of SIM.world.rollers) r.color = colorFromOrbit(r.x, r.y, r.vx, r.vy, SIM.world.bodies);
-          for (const r of SIM.world.rollers) if (!beadRenderer.trailLines.has(r.id)) beadRenderer.register(r);
-        }
-        buildSurface(SIM.world.bodies);
-        buildCurvatureMesh(SIM.world.bodies);
-        buildSurfaceGrid(SIM.world.bodies);
-        buildBodyMeshes(SIM.world.bodies);
-      }, 80);
+      slider._t = setTimeout(applyLiveParamChange, 80);
     });
   }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [17] 진단 업데이트
+   [17] Diagnostics update
    ═══════════════════════════════════════════════════════════════ */
 function updateDiagnostics() {
   if (!SIM.exp || !SIM.world) return;
@@ -2473,7 +2524,7 @@ function updateDiagnostics() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [18] 차트
+   [18] Chart
    ═══════════════════════════════════════════════════════════════ */
 function setupChartCanvas(cv, heightCSS=null) {
   const dpr = Math.max(1, window.devicePixelRatio || 1);
@@ -2638,16 +2689,16 @@ function drawMainChart() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   [19] UI 바인딩
+   [19] UI bindings
    ═══════════════════════════════════════════════════════════════ */
 const btnPlay = document.getElementById('btnPlay');
 btnPlay.addEventListener('click', () => {
   SIM.running = !SIM.running;
   btnPlay.textContent = SIM.running ? '⏸ Pause' : '▶ Play';
 });
-// 리셋: 같은 실험을 다시 시작하되, 사용자가 슬라이더로 바꿔둔 파라미터
-// 값(preserveParams)은 그대로 유지한다 — 예전에는 리셋할 때마다 파라미터가
-// 실험 기본값으로 되돌아갔다.
+// Reset: restarts the same experiment, but keeps whatever parameter values
+// the user has adjusted via sliders (preserveParams) — previously, every
+// reset reverted parameters back to the experiment's defaults.
 document.getElementById('btnReset').addEventListener('click', () => setupExperiment(SIM.expKey, { preserveParams: true }));
 document.getElementById('speedSlider').addEventListener('input', e => {
   SIM.speed = parseFloat(e.target.value);
@@ -2657,7 +2708,7 @@ document.getElementById('trailLengthSlider').addEventListener('input', e => {
   const val = parseInt(e.target.value, 10);
   GLOBAL_TRAIL_LENGTH = val;
   document.getElementById('trailLengthVal').textContent = val;
-  // 이미 존재하는 입자들에도 즉시 반영: 길이를 줄이면 초과분을 바로 잘라낸다.
+  // Applied immediately to existing particles too: shortening trims any excess right away.
   if (SIM.world) {
     for (const r of SIM.world.rollers) {
       r.maxTrail = val;
@@ -2666,9 +2717,9 @@ document.getElementById('trailLengthSlider').addEventListener('input', e => {
   }
 });
 document.getElementById('precisionSlider').addEventListener('input', e => {
-  // 프레임당 물리 서브스텝 수를 실시간으로 조절한다. 값이 높을수록 근접
-  // 통과·급격한 곡률에서도 궤적이 매끄러워지지만 CPU 비용도 늘어난다 —
-  // 고성능 PC/폰에서는 올리고, 저사양에서는 내릴 수 있게 슬라이더로 노출.
+  // Adjusts the number of physics substeps per frame in real time. A higher
+  // value keeps trajectories smooth even through close passes/sharp
+  // curvature, but costs more CPU — exposed as a slider so it can be raised on powerful PCs/phones and lowered on weaker ones.
   const val = parseInt(e.target.value, 10);
   GravityWorld.SUBSTEPS = val;
   document.getElementById('precisionVal').textContent = val;
@@ -2681,19 +2732,19 @@ document.getElementById('tglGrid').addEventListener('change', e => {
   if (gridGroup) gridGroup.visible = SIM.showGrid;
 });
 
-/* ── 클릭 폭발(Burst) 바인딩 — 패널 버튼과 화면 중앙하단 플로팅 버튼(모바일용)을 함께 동기화 ── */
+/* ── Click-burst bindings — keeps the panel button and the bottom-center floating button (for mobile) in sync ── */
 const btnBurstMode = document.getElementById('btnBurstMode');
 const btnBurstFab = document.getElementById('btnBurstFab');
 const fabCount = document.getElementById('fabCount');
 
 function updateBurstButtons() {
   const on = SIM.burstMode;
-  btnBurstMode.textContent = on ? '💥 Burst Click: ON (클릭!)' : '💥 Burst Click: OFF';
+  btnBurstMode.textContent = on ? '💥 Burst Click: ON (click!)' : '💥 Burst Click: OFF';
   btnBurstMode.classList.toggle('primary', on);
   btnBurstFab.classList.toggle('active', on);
   canvas3D.style.cursor = on ? 'crosshair' : '';
-  // 모바일에서 롱프레스/드래그 조준 중 브라우저 스크롤·확대가 끼어들지
-  // 않도록, 버스트 모드일 때만 이 캔버스의 기본 터치 제스처를 끈다.
+  // So that browser scroll/zoom doesn't interfere during long-press/drag
+  // aiming on mobile, this canvas's default touch gestures are disabled only while burst mode is on.
   canvas3D.style.touchAction = on ? 'none' : '';
 }
 
@@ -2715,8 +2766,8 @@ document.getElementById('burstSpeedSlider').addEventListener('input', e => {
   document.getElementById('burstSpeedVal').textContent = SIM.burstSpeed.toFixed(1);
 });
 
-// 캔버스 클릭 → 3D 레이를 실제 지형(surfaceMesh)에 투영해 정확한
-// world (x,y) 좌표를 얻고, 그 지점에서 폭발을 생성한다.
+// Canvas click → casts a 3D ray onto the actual terrain (surfaceMesh) to
+// get the precise world (x,y) coordinates, and spawns the burst there.
 const burstRaycaster = new THREE.Raycaster();
 const burstMouseNDC = new THREE.Vector2();
 const burstFallbackPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
@@ -2733,24 +2784,24 @@ function raycastCanvasToTerrain(clientX, clientY) {
     if (hits.length > 0) { hitX = hits[0].point.x; hitY = hits[0].point.z; }
   }
   if (hitX === undefined) {
-    // 지형 메시를 못 맞췄을 때(카메라 각도 등) y=0 평면으로 대체
+    // Falls back to the y=0 plane if the terrain mesh isn't hit (e.g. camera angle)
     const pt = new THREE.Vector3();
     if (burstRaycaster.ray.intersectPlane(burstFallbackPlane, pt)) { hitX = pt.x; hitY = pt.z; }
   }
   return hitX !== undefined ? { x: hitX, y: hitY } : null;
 }
 
-/* ── 길게 눌러 조준(charge & aim) ──
-   짧은 탭은 무시하고, 일정 시간 이상 누르고 있거나(롱프레스) 뚜렷하게
-   드래그해야 폭발이 발사된다. 누른 채로 드래그한 방향·거리는 전체 입자의
-   속도에 더해지는 공통 가중치가 되어, 소용돌이형 폭발 전체가 한쪽으로
-   쏠리는 "조준된 폭발"이 된다. 데스크톱 마우스와 모바일 터치 모두
-   Pointer Events 하나로 처리된다. ──*/
-const LONG_PRESS_MS = 220;      // 이 이상 누르고 있으면 드래그가 없어도 발사
-const DRAG_CONFIRM_DIST = 1.2;  // 이 이상 드래그하면 누른 시간과 무관하게 발사
-const DRAG_DEADZONE = 0.15;     // 이보다 작은 드래그는 흔들림으로 간주, 방향 편향 없음
-const DRAG_BIAS_GAIN = 0.8;     // 드래그 거리(world 단위) → 추가 속도 변환 비율
-const DRAG_BIAS_MAX = 6;        // 추가 속도 상한(너무 과한 슬링샷 방지)
+/* ── Press-and-hold aiming (charge & aim) ──
+   Short taps are ignored; the burst only fires after holding long enough
+   (long-press) or dragging noticeably. The direction and distance dragged
+   while held becomes a shared velocity bias added to every particle,
+   turning the whole vortex-style burst into an "aimed burst" pushed toward
+   one side. Both desktop mouse and mobile touch are handled through a single Pointer Events path. ──*/
+const LONG_PRESS_MS = 220;      // holding this long fires even without a drag
+const DRAG_CONFIRM_DIST = 1.2;  // dragging this far fires regardless of hold time
+const DRAG_DEADZONE = 0.15;     // drags smaller than this count as jitter, no directional bias
+const DRAG_BIAS_GAIN = 0.8;     // conversion rate from drag distance (world units) → added velocity
+const DRAG_BIAS_MAX = 6;        // cap on added velocity (prevents an overly extreme slingshot)
 
 const chargeGroup = new THREE.Group();
 chargeGroup.visible = false;
@@ -2773,13 +2824,13 @@ chargeGroup.add(aimArrow);
 
 let burstCharge = null; // { startWorld:{x,y}, startTime, pointerId, currentWorld }
 
-/* ── 조준 사운드 피드백 (Web Audio, 외부 에셋 없음) ──
-   누르고 있는 동안 낮은 톤이 서서히 올라가며 "충전"되는 느낌을 주고,
-   발사되면 짧게 튀어 오르는 blip과 함께 감쇠한다. 취소되면 그냥 죽는다.
-   AudioContext는 반드시 사용자 제스처(pointerdown) 안에서 생성/재개한다. */
+/* ── Aiming sound feedback (Web Audio, no external assets) ──
+   While held, a low tone rises gradually for a "charging" feel, and firing
+   adds a short bouncy blip before decaying away. Canceling just lets it die
+   out. The AudioContext is always created/resumed inside a user gesture (pointerdown), as required. */
 let audioCtx = null;
 let chargeOsc = null, chargeGain = null;
-const AUDIO_CHARGE_RAMP_MS = 900; // 청각적 "충전" 램프 길이(발사 판정 시간과는 별개)
+const AUDIO_CHARGE_RAMP_MS = 900; // length of the audible "charging" ramp (separate from the fire-trigger timing)
 
 function ensureAudio() {
   if (!audioCtx) {
@@ -2866,8 +2917,8 @@ function endBurstCharge(pointerId, fire) {
     const cur = burstCharge.currentWorld || burstCharge.startWorld;
     const dx = cur.x - burstCharge.startWorld.x, dy = cur.y - burstCharge.startWorld.y;
     const dragDist = Math.hypot(dx, dy);
-    // "긴 클릭"(롱프레스) 또는 뚜렷한 드래그가 있어야 발사 — 짧고 무의미한
-    // 탭은 무시한다.
+    // Firing requires a "long click" (long-press) or a clear drag — short,
+    // meaningless taps are ignored.
     if (holdMs >= LONG_PRESS_MS || dragDist >= DRAG_CONFIRM_DIST) {
       didFire = true;
       let bias = null;
@@ -2876,7 +2927,7 @@ function endBurstCharge(pointerId, fire) {
         bias = { biasX: (dx / dragDist) * biasMag, biasY: (dy / dragDist) * biasMag };
       }
       spawnBurstAt(burstCharge.startWorld.x, burstCharge.startWorld.y, bias);
-      // 폭발 규모(입자 수 + 드래그로 실은 힘)에 비례한 카메라 셰이크.
+      // Camera shake proportional to the burst's scale (particle count + force added via drag).
       const power = SIM.burstCount / 20 + Math.min(dragDist, 6) / 6;
       triggerCameraShake(0.05 + power * 0.09, 220 + power * 90);
     }
@@ -2887,11 +2938,11 @@ function endBurstCharge(pointerId, fire) {
 
 canvas3D.addEventListener('pointerdown', (e) => {
   if (!SIM.burstMode || !SIM.world) return;
-  if (e.button !== undefined && e.button !== 0) return; // 좌클릭/기본 포인터만
+  if (e.button !== undefined && e.button !== 0) return; // left-click / primary pointer only
   const hit = raycastCanvasToTerrain(e.clientX, e.clientY);
   if (!hit) return;
   burstCharge = { startWorld: hit, currentWorld: hit, startTime: performance.now(), pointerId: e.pointerId };
-  controls.enabled = false; // 조준하는 동안 카메라 궤도 회전 정지
+  controls.enabled = false; // pause camera orbit rotation while aiming
   try { canvas3D.setPointerCapture(e.pointerId); } catch (_) {}
   chargeGroup.visible = true;
   startChargeSound();
@@ -2910,36 +2961,37 @@ canvas3D.addEventListener('lostpointercapture', (e) => {
 });
 
 /* ═══════════════════════════════════════════════════════════════
-   [22] 중력체 추가(Add Gravity) — 별도의 작은 버튼 하나로 완결
-   버스트 조준이 "캔버스를 눌러서" 이루어지는 것과 완전히 분리된 입력
-   경로를 쓰기 때문에 두 기능이 서로의 제스처를 가로챌 일이 없다:
-   이 버튼 위에서 세로로 드래그하면(캔버스는 건드리지 않음) 배치할
-   질량이 커지거나 작아지고, 좌우로 드래그하면 배치 지점이 화면
-   중앙(카메라가 보는 지형)에서 얼마나 "멀리" 밀려나 떨어질지(거리)가
-   바뀐다. 드래그 없이 짧게 누르면 그 질량·거리로 새 중력체가 1회
-   추가된다. 방향 조준은 카메라를 직접 돌려서(OrbitControls) 하면 되고,
-   화면 중앙 십자선이 "이 방향 어딘가에 떨어진다"를 보여준다.
+   [22] Add Gravity — self-contained in one small separate button.
+   It uses an input path entirely separate from burst-aiming ("pressing on
+   the canvas"), so the two features can never steal each other's gestures:
+   dragging vertically on this button (without touching the canvas) grows or
+   shrinks the mass to place, and dragging horizontally changes how far
+   ("distance") the placement point gets pushed outward from the screen
+   center (the terrain the camera is looking at). A short tap with no drag
+   adds a new gravity body once, at that mass and distance. Aiming the
+   direction is done by rotating the camera itself (OrbitControls), and the
+   crosshair at the screen center shows "it will land somewhere along this direction."
    ═══════════════════════════════════════════════════════════════ */
 const btnGravityFab = document.getElementById('btnGravityFab');
 const fabMass = document.getElementById('fabMass');
 const fabDist = document.getElementById('fabDist');
 const addReticle = document.getElementById('addReticle');
 
-// 최소 질량을 5→1로, 기본(시작) 질량도 40→2로 낮췄다 — "추가 중력"은
-// 이미 있는 항성급 프리셋 위에 살짝 얹는 느낌이어야 자연스럽다.
+// Lowered the minimum mass from 5→1 and the default (starting) mass from
+// 40→2 — "adding gravity" should feel like a light touch on top of the existing star-scale presets.
 const GRAVITY_MASS_MIN = 1, GRAVITY_MASS_MAX = 150;
-const GRAVITY_MASS_PER_PIXEL = 0.35;   // 세로 1px 드래그당 질량 변화량
-const GRAVITY_TAP_MAX_DRAG = 6;        // 이보다 적게 움직였으면 "짧게 누름"(배치)으로 판정
+const GRAVITY_MASS_PER_PIXEL = 0.35;   // mass change per 1px of vertical drag
+const GRAVITY_TAP_MAX_DRAG = 6;        // movement below this counts as a "short tap" (placement)
 
-// 배치 거리(월드 단위): 화면 중앙이 가리키는 지형 지점을 기준으로,
-// 원점(0,0)에서 바깥쪽으로 이만큼 더 밀어서 배치한다. 예전에는 화면
-// 중앙 지점에 그대로 떨어뜨려서 항상 기존 중력체 바로 위/근처에
-// 겹쳐 생겼는데, 기본 거리를 둬서 더 바깥쪽에서 시작하게 한다.
+// Placement distance (world units): relative to the terrain point the
+// screen center is pointing at, pushes the placement outward from the
+// origin (0,0) by this much. Previously it dropped straight onto the
+// screen-center point, always overlapping right on/near an existing gravity body — a default distance makes it start further out.
 const GRAVITY_DIST_MIN = 0, GRAVITY_DIST_MAX = 10;
-const GRAVITY_DIST_PER_PIXEL = 0.045;  // 가로 1px 드래그당 거리 변화량
+const GRAVITY_DIST_PER_PIXEL = 0.045;  // distance change per 1px of horizontal drag
 
-SIM.pendingGravityMass = 2;   // 기본(시작) 질량
-SIM.pendingGravityDist = 3;   // 기본 배치 거리
+SIM.pendingGravityMass = 2;   // default (starting) mass
+SIM.pendingGravityDist = 3;   // default placement distance
 
 function refreshFabMass() {
   fabMass.textContent = Math.round(SIM.pendingGravityMass * 10) / 10;
@@ -2949,9 +3001,9 @@ refreshFabMass();
 
 function addGravityAt(hitX, hitY, mass, distOffset) {
   if (!SIM.world) return;
-  // 원점 → 조준 지점 방향으로 distOffset만큼 더 밀어내서 배치 지점을
-  // 구한다. 조준 지점이 원점에 거의 겹치면(카메라가 정중앙을 볼 때)
-  // 기준 방향을 잃지 않도록 기본 방향(+x)을 대신 쓴다.
+  // Finds the placement point by pushing further out by distOffset, in the
+  // direction from the origin toward the aim point. If the aim point nearly
+  // coincides with the origin (camera looking dead-center), falls back to a default direction (+x) so a reference direction isn't lost.
   let dx = hitX, dy = hitY;
   let r = Math.hypot(dx, dy);
   if (r < 1e-4) { dx = 1; dy = 0; r = 1; }
@@ -2959,17 +3011,17 @@ function addGravityAt(hitX, hitY, mass, distOffset) {
   const x = hitX + ux * distOffset;
   const y = hitY + uy * distOffset;
 
-  // 별/지구 프리셋과 비슷한 질량↔반경 비율로 새 중력체를 만들되, 색상은
-  // "플레이어가 직접 추가했다"는 걸 알아보기 쉽게 고정 앰버 톤으로 둔다.
+  // Creates the new gravity body with a mass↔radius ratio similar to the
+  // star/earth presets, but keeps its color a fixed amber tone so it's easy to tell "the player added this one directly."
   const rs = Math.max(0.05, mass * 0.0038);
   const body = SIM.world.addMass({ x, y, preset: 'sun', massOverride: mass, rsOverride: rs });
   body.color = '#e8b559';
   body.presetKey = 'userAdded';
   body.label = 'Added Mass';
 
-  // 지형/곡률/그리드/천체 메쉬만 다시 만들고, 굴러가던 입자·트레일은
-  // 그대로 둔다 — 진행 중이던 시뮬레이션 위에 새 우물이 갑자기 나타나는
-  // 느낌을 주기 위함이다.
+  // Only rebuilds the terrain/curvature/grid/body meshes, leaving the
+  // already-rolling particles and trails untouched — meant to feel like a
+  // new well suddenly appearing on top of a simulation already in progress.
   buildSurface(SIM.world.bodies);
   buildCurvatureMesh(SIM.world.bodies);
   buildSurfaceGrid(SIM.world.bodies);
@@ -2992,8 +3044,8 @@ btnGravityFab.addEventListener('pointerdown', (e) => {
 });
 btnGravityFab.addEventListener('pointermove', (e) => {
   if (!gravityCharge || e.pointerId !== gravityCharge.pointerId) return;
-  const deltaY = gravityCharge.startY - e.clientY; // 위로 움직이면 양수 → 질량 증가
-  const deltaX = e.clientX - gravityCharge.startX; // 오른쪽으로 움직이면 양수 → 거리 증가
+  const deltaY = gravityCharge.startY - e.clientY; // moving upward is positive → mass increases
+  const deltaX = e.clientX - gravityCharge.startX; // moving right is positive → distance increases
   gravityCharge.dragDist = Math.hypot(deltaX, deltaY);
   SIM.pendingGravityMass = THREE.MathUtils.clamp(
     gravityCharge.baseMass + deltaY * GRAVITY_MASS_PER_PIXEL,
@@ -3010,8 +3062,8 @@ function endGravityCharge(pointerId, place) {
   try { btnGravityFab.releasePointerCapture(pointerId); } catch (_) {}
   btnGravityFab.classList.remove('charging');
   addReticle.classList.remove('show');
-  // 뚜렷하게 드래그해서 질량/거리만 조절했다면 배치하지 않는다 — 드래그
-  // 없이 짧게 누르고 뗐을 때만 실제로 중력체가 추가된다.
+  // If the user clearly dragged just to adjust mass/distance, don't place
+  // anything — a gravity body is only actually added on a short press-and-release with no drag.
   if (place && gravityCharge.dragDist < GRAVITY_TAP_MAX_DRAG) {
     const hit = raycastCanvasToTerrain(
       canvas3D.getBoundingClientRect().left + canvas3D.getBoundingClientRect().width / 2,
@@ -3027,9 +3079,9 @@ btnGravityFab.addEventListener('lostpointercapture', (e) => {
   if (gravityCharge && gravityCharge.pointerId === e.pointerId) endGravityCharge(e.pointerId, false);
 });
 
-/* ── 모바일: 상단 탭 + 텔레메트리를 오른쪽 패널(메뉴) 안으로 이동 ──
-   960px 이하에서는 #tabs / .telemetry-stack 요소를 통째로 패널 슬롯으로
-   옮기고, 그 이상 너비에서는 원래 자리(주석 placeholder 위치)로 되돌린다. */
+/* ── Mobile: moves the top tabs + telemetry into the right-hand panel (menu) ──
+   At 960px or below, moves the #tabs / .telemetry-stack elements wholesale
+   into the panel slot; above that width, moves them back to their original spot (the comment-placeholder position). */
 (function setupMobileMenuMerge() {
   const tabsEl = document.getElementById('tabs');
   const telemetryEl = document.querySelector('.telemetry-stack');
@@ -3062,7 +3114,7 @@ menuToggle.addEventListener('click', () => {
 });
 
 /* ═══════════════════════════════════════════════════════════════
-   [20] 리사이즈
+   [20] Resize
    ═══════════════════════════════════════════════════════════════ */
 function resizeRenderer() {
   const w = canvas3D.clientWidth, h = canvas3D.clientHeight;
@@ -3075,7 +3127,7 @@ function resizeRenderer() {
 window.addEventListener('resize', resizeRenderer);
 
 /* ═══════════════════════════════════════════════════════════════
-   [21] 초기화
+   [21] Initialization
    ═══════════════════════════════════════════════════════════════ */
 function init() {
   renderTabs();

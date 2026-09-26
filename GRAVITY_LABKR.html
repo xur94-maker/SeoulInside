@@ -98,6 +98,39 @@
     z-index:6; pointer-events:none;
     max-width: 240px;
   }
+  .orbit-legend{
+    position:absolute; top:14px; left:14px;
+    z-index:6; pointer-events:none;
+    background: rgba(10,13,24,0.82);
+    backdrop-filter: blur(8px);
+    border:1px solid var(--line); border-radius:3px;
+    padding:8px 10px;
+    font-family:'IBM Plex Mono', monospace;
+    max-width:180px;
+  }
+  .orbit-legend .title{
+    color:var(--gold); font-weight:600; font-size:9px;
+    letter-spacing:0.08em; text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .orbit-legend .bar{
+    height:8px; border-radius:2px;
+    background: linear-gradient(to right, hsl(12,72%,58%), hsl(136,72%,58%), hsl(260,72%,58%));
+    margin-bottom:4px;
+  }
+  .orbit-legend .labels{
+    display:flex; justify-content:space-between;
+    font-size:8px; color:var(--ink-dim);
+  }
+  .orbit-legend .escape{
+    display:flex; align-items:center; gap:6px;
+    margin-top:6px; font-size:8.5px; color:var(--ink-dim);
+  }
+  .orbit-legend .escape .swatch{
+    width:9px; height:9px; border-radius:50%;
+    background:#fff6d6; box-shadow:0 0 6px rgba(255,246,214,0.8);
+  }
+  @media (max-width: 700px){ .orbit-legend{ display:none; } }
   .telem-panel{
     font-family:'IBM Plex Mono', monospace;
     font-size:10px; color:var(--ink-dim);
@@ -353,13 +386,16 @@
   }
 
   /* 화면 중앙하단 고정 — 패널을 열지 않아도(모바일 포함) 바로 쓸 수 있는
-     Burst 플로팅 버튼. 모바일에서 사이드 패널이 열려있을 땐 겹치지 않게 숨김. */
-  .burst-fab{
-    all:unset; cursor:pointer; box-sizing:border-box;
-    position:fixed;
-    left:50%; transform:translateX(-50%);
+     Burst + Gravity 플로팅 버튼 묶음. 모바일에서 사이드 패널이 열려있을 땐
+     겹치지 않게 숨김. */
+  .fab-row{
+    position:fixed; left:50%; transform:translateX(-50%);
     bottom: calc(18px + env(safe-area-inset-bottom,0px));
-    z-index: 58;
+    z-index: 58; display:flex; align-items:center; gap:10px;
+  }
+  body.menu-open .fab-row{ display:none; }
+  .burst-fab, .gravity-fab{
+    all:unset; cursor:pointer; box-sizing:border-box;
     display:flex; align-items:center; gap:8px;
     padding: 11px 18px;
     border-radius: 999px;
@@ -370,11 +406,12 @@
     font-family:'IBM Plex Mono', monospace;
     font-size: 12px; letter-spacing:0.04em;
     color: var(--ink-dim);
-    transition: all .15s;
+    transition: border-color .15s, color .15s, background .15s, box-shadow .15s, transform .1s;
+    touch-action: none; /* 세로 드래그 제스처를 우리가 직접 처리한다 */
   }
-  .burst-fab:active{ transform:translateX(-50%) scale(0.96); }
-  .burst-fab .fab-ico{ font-size:15px; line-height:1; }
-  .burst-fab .fab-count{
+  .burst-fab:active, .gravity-fab:active{ transform: scale(0.96); }
+  .burst-fab .fab-ico, .gravity-fab .fab-ico{ font-size:15px; line-height:1; }
+  .burst-fab .fab-count, .gravity-fab .fab-mass{
     font-weight:600; color: var(--ink);
     background: var(--line-soft); border-radius: 999px;
     padding: 2px 8px; font-variant-numeric: tabular-nums;
@@ -385,7 +422,34 @@
     box-shadow: 0 0 18px var(--amber-glow), 0 6px 20px rgba(0,0,0,0.45);
   }
   .burst-fab.active .fab-count{ background: rgba(217,164,65,0.22); color: var(--gold); }
-  body.menu-open .burst-fab{ display:none; }
+  .gravity-fab.charging{
+    border-color: var(--teal); color: var(--teal);
+    background: rgba(95,184,172,0.14);
+    box-shadow: 0 0 18px rgba(95,184,172,0.35), 0 6px 20px rgba(0,0,0,0.45);
+  }
+  .gravity-fab.charging .fab-mass{ background: rgba(95,184,172,0.22); color: var(--teal); }
+  .gravity-fab .fab-dist{
+    font-weight:600; color: var(--violet);
+    background: var(--line-soft); border-radius: 999px;
+    padding: 2px 8px; font-variant-numeric: tabular-nums;
+    font-size:10.5px;
+  }
+  .gravity-fab.charging .fab-dist{ background: rgba(157,140,214,0.22); }
+
+  /* 중력 추가 조준 중 화면 정중앙에 뜨는 십자선 — 카메라를 돌려 조준하는
+     동안 "여기에 떨어진다"를 보여준다. */
+  .add-reticle{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:28px; height:28px; z-index:7; pointer-events:none;
+    display:none;
+  }
+  .add-reticle.show{ display:block; }
+  .add-reticle::before, .add-reticle::after{
+    content:''; position:absolute; background: var(--teal);
+    box-shadow: 0 0 6px rgba(95,184,172,0.9);
+  }
+  .add-reticle::before{ left:50%; top:2px; bottom:2px; width:2px; transform:translateX(-50%); }
+  .add-reticle::after{ top:50%; left:2px; right:2px; height:2px; transform:translateY(-50%); }
 </style>
 </head>
 <body>
@@ -397,11 +461,18 @@
 
 <button class="menu-toggle" id="menuToggle">☰</button>
 
-<button class="burst-fab" id="btnBurstFab">
-  <span class="fab-ico">💥</span>
-  <span class="fab-label">Burst</span>
-  <span class="fab-count" id="fabCount">20</span>
-</button>
+<div class="fab-row" id="fabRow">
+  <button class="gravity-fab" id="btnGravityFab" title="상하 드래그: 질량 · 좌우 드래그: 배치 거리 · 짧게 눌러 배치">
+    <span class="fab-ico">🪐</span>
+    <span class="fab-mass" id="fabMass">2</span>
+    <span class="fab-dist" id="fabDist">↔3.0</span>
+  </button>
+  <button class="burst-fab" id="btnBurstFab">
+    <span class="fab-ico">💥</span>
+    <span class="fab-label">Burst</span>
+    <span class="fab-count" id="fabCount">20</span>
+  </button>
+</div>
 
 <div class="topbar">
   <h1>GRAVITY <span>LAB</span> v2.0</h1>
@@ -413,6 +484,15 @@
 <div class="layout">
   <div class="stage">
     <canvas id="cv"></canvas>
+
+    <div class="add-reticle" id="addReticle"></div>
+
+    <div class="orbit-legend">
+      <div class="title">Orbit Color = Aphelion</div>
+      <div class="bar"></div>
+      <div class="labels"><span>tight</span><span>wide</span></div>
+      <div class="escape"><span class="swatch"></span>escaping (unbound)</div>
+    </div>
 
     <div class="telemetry-stack">
       <div class="telem-panel" id="telemMain"></div>
@@ -458,6 +538,10 @@
         <div class="ctrl">
           <div class="ctrl-label"><span>Trail Length</span><b id="trailLengthVal">400</b></div>
           <input type="range" id="trailLengthSlider" min="0" max="3000" step="10" value="400">
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-label"><span>Precision (physics substeps)</span><b id="precisionVal">4</b></div>
+          <input type="range" id="precisionSlider" min="1" max="10" step="1" value="4">
         </div>
         <div class="toggle-row">
           <div class="label">Auto Rotate<small>Camera orbit</small></div>
@@ -562,13 +646,13 @@ const PRESETS = {
 };
 
 class MassBody {
-  constructor({ x, y, preset='sun', massOverride=null, id=null }) {
+  constructor({ x, y, preset='sun', massOverride=null, rsOverride=null, id=null }) {
     this.id = id ?? MassBody._nextId++;
     this.x = x; this.y = y;
     this.presetKey = preset;
     const p = PRESETS[preset] || PRESETS.sun;
     this.mass = massOverride ?? p.mass;
-    this.rs = p.rs;
+    this.rs = rsOverride ?? p.rs;
     this.color = p.color;
     this.label = p.label;
   }
@@ -602,6 +686,17 @@ class RollingBody {
     this.maxTrail = GLOBAL_TRAIL_LENGTH;
     this.E0 = null;
     this.color = [200, 200, 200];
+    // Orbit-period tracking — lets an experiment that spawns beads at
+    // several different radii at once (see spawnRollers' radiusStep)
+    // measure an actual period per bead instead of only ever knowing its
+    // spawn radius. initialR is that spawn radius; lastPeriod fills in the
+    // first time the bead sweeps a full 2π around the primary mass (see
+    // updateOrbitTracking below).
+    this.initialR = Math.hypot(x, y);
+    this._prevTheta = null;
+    this._angleAccum = 0;
+    this._periodStartTime = 0;
+    this.lastPeriod = null;
   }
   computeAcceleration(bodies) {
     let ax = 0, ay = 0;
@@ -630,6 +725,30 @@ class RollingBody {
     return phi;
   }
   totalEnergy(bodies) { return this.kineticEnergy() + this.potentialEnergy(bodies); }
+  // Call once per rendered frame (not per physics sub-step) with the
+  // primary mass's position and the sim clock. Accumulates the signed
+  // angle swept since the last call, and once it passes a full revolution
+  // (±2π) records the elapsed sim time as lastPeriod and starts the next
+  // lap. This is what lets Kepler's third law (T² ∝ r³) be checked against
+  // *measured* periods instead of only the theoretical formula.
+  updateOrbitTracking(cx, cy, simTime) {
+    const theta = Math.atan2(this.y - cy, this.x - cx);
+    if (this._prevTheta === null) {
+      this._prevTheta = theta;
+      this._periodStartTime = simTime;
+      return;
+    }
+    let dtheta = theta - this._prevTheta;
+    if (dtheta > Math.PI) dtheta -= 2 * Math.PI;
+    if (dtheta < -Math.PI) dtheta += 2 * Math.PI;
+    this._angleAccum += dtheta;
+    this._prevTheta = theta;
+    if (Math.abs(this._angleAccum) >= 2 * Math.PI) {
+      this.lastPeriod = simTime - this._periodStartTime;
+      this._periodStartTime = simTime;
+      this._angleAccum -= Math.sign(this._angleAccum) * 2 * Math.PI;
+    }
+  }
 }
 RollingBody._nextId = 1;
 
@@ -681,17 +800,50 @@ class GravityWorld {
   addMass(c) { const b = new MassBody(c); this.bodies.push(b); return b; }
   clearBodies() { this.bodies = []; }
   clearRollers() { this.rollers = []; }
-  spawnRollers({ count, dist, speedMin, speedMax, center={x:0,y:0}, tangentialBias=0.7, ccwOnly=true, quantizeStartAngle=false, directionSpreadDeg=0 }) {
+  spawnRollers({ count, dist, speedMin, speedMax, center={x:0,y:0}, tangentialBias=0.7, ccwOnly=true, quantizeStartAngle=false, directionSpreadDeg=0, radiusStep=0 }) {
     const created = [];
+    // Reference central mass, if any — used below to give a bead spawned
+    // off the base radius its own circular-orbit speed, so that spreading
+    // beads out in radius (radiusStep) still yields near-circular orbits
+    // at *each* individual radius rather than an arbitrary mix of bound
+    // and unbound trajectories.
+    const centralMass = this.bodies[0] ? this.bodies[0].mass : null;
     for (let i = 0; i < count; i++) {
       // Start position: free/continuous around the full circle, so a burst
       // of beads spreads out in every direction rather than from fixed points.
       const theta = quantizeStartAngle
         ? Math.floor(Math.random() * 4) * (Math.PI / 2)
         : Math.random() * Math.PI * 2;
-      const x = center.x + Math.cos(theta) * dist;
-      const y = center.y + Math.sin(theta) * dist;
-      const speed = speedMin + Math.random() * (speedMax - speedMin);
+
+      // Radial placement: bead 0 sits exactly at the base radius `dist`.
+      // Every bead after that alternates in front of / behind the base
+      // radius, one step further out each pair — index 1 → +1·radiusStep,
+      // 2 → −1·radiusStep, 3 → +2·radiusStep, 4 → −2·radiusStep, … — so
+      // raising the bead count spreads them symmetrically inward and
+      // outward around the same "standard" radius instead of piling
+      // everyone onto one ring. With radiusStep=0 (the default) this
+      // collapses back to the original single-ring layout.
+      const rung = Math.ceil(i / 2);
+      const side = (i % 2 === 1) ? 1 : -1;
+      const rOffset = i === 0 ? 0 : side * rung * radiusStep;
+      const rSpawn = Math.max(0.05, dist + rOffset);
+
+      const x = center.x + Math.cos(theta) * rSpawn;
+      const y = center.y + Math.sin(theta) * rSpawn;
+
+      // Speed: with radiusStep=0 every bead shares the same radius, so the
+      // original fixed [speedMin,speedMax] range (whatever absolute speed
+      // scale the caller chose it in) still applies unchanged. Once beads
+      // are spread across different radii, that same fixed range would
+      // make no physical sense (a speed near escape velocity at the base
+      // radius could be unbound or barely-moving at another) — so instead
+      // treat speedMin/speedMax as a factor *relative to the circular
+      // orbital speed at this bead's own radius*, keeping every ring
+      // close to a circular orbit and letting Kepler's third law (T²∝r³)
+      // be checked cleanly against each bead's measured period.
+      const speed = (radiusStep !== 0 && centralMass)
+        ? OrbitMath.orbitalSpeed(centralMass, rSpawn) * (speedMin + Math.random() * (speedMax - speedMin))
+        : speedMin + Math.random() * (speedMax - speedMin);
 
       let vx, vy;
       if (directionSpreadDeg > 0) {
@@ -723,28 +875,47 @@ class GravityWorld {
   }
   step(realDtSeconds) {
     const dt = this.time.nextDt(realDtSeconds);
+    // Split the frame's dt into several smaller sub-steps instead of one big
+    // leapfrog step. A single large step near a close pass/steep well is
+    // what read as the trail "stuttering" — the headroom is there on both
+    // desktop and mobile, so trade a bit of extra CPU for a smoother path.
+    const subSteps = GravityWorld.SUBSTEPS;
+    const subDt = dt / subSteps;
+    const simTimeNow = this.time.elapsedSim;
+    const centerBody = this.bodies[0] || null;
     for (const roller of this.rollers) {
       if (!roller.alive) continue;
-      integrateStep(roller, this.bodies, dt);
-      if (this.useRelativisticCorrection) {
-        let closest = null, minR = Infinity;
-        for (const b of this.bodies) {
-          const dr = Math.hypot(roller.x - b.x, roller.y - b.y);
-          if (dr < minR) { minR = dr; closest = b; }
+      for (let s = 0; s < subSteps; s++) {
+        integrateStep(roller, this.bodies, subDt);
+        if (this.useRelativisticCorrection) {
+          let closest = null, minR = Infinity;
+          for (const b of this.bodies) {
+            const dr = Math.hypot(roller.x - b.x, roller.y - b.y);
+            if (dr < minR) { minR = dr; closest = b; }
+          }
+          if (closest) {
+            const corr = relativisticCorrection(roller, closest, this.correctionFactor);
+            roller.vx += corr.ax * subDt;
+            roller.vy += corr.ay * subDt;
+          }
         }
-        if (closest) {
-          const corr = relativisticCorrection(roller, closest, this.correctionFactor);
-          roller.vx += corr.ax * dt;
-          roller.vy += corr.ay * dt;
-        }
+        roller.checkAbsorption(this.bodies);
+        if (!roller.alive) break;
       }
       roller.recordTrail();
-      roller.checkAbsorption(this.bodies);
       if (roller.E0 === null) roller.E0 = roller.totalEnergy(this.bodies);
+      // Sweep-angle tracking for per-bead period measurement (see
+      // RollingBody.updateOrbitTracking) — only meaningful relative to a
+      // primary mass, so skip it for experiments with no bodies at all.
+      if (roller.alive && centerBody) {
+        roller.updateOrbitTracking(centerBody.x, centerBody.y, simTimeNow);
+      }
     }
     return { dt, simTime: this.time.elapsedSim };
   }
 }
+// Physics sub-steps per rendered frame — see GravityWorld.step() above.
+GravityWorld.SUBSTEPS = 4;
 
 const OrbitMath = {
   orbitalSpeed(mass, r) { return Math.sqrt((G_SIM * mass) / Math.max(r, 1e-6)); },
@@ -909,35 +1080,58 @@ const Bianchi = {
 };
 
 /* ═══════════════════════════════════════════════════════════════
+   [7.5] 이심률(e) → spawnRollers 속도배율 변환
+   순수 접선 속도로 발사된 구슬의 출발 반지름은 항상 근일점/원일점이다
+   (반지름방향 속도=0인 지점 = r(t)의 극값). r0를 근일점으로 고정하면
+   비스-비바 관계에서 v0 = v_circ(r0)·√(1+e) 가 나온다.
+   eccRandom 토글이 켜져 있으면, 이미 spawnRollers 내부에 있는
+   "speedMin~speedMax 사이 균일난수" 로직을 그대로 재활용해서 구슬마다
+   e를 [ecc−jitter, ecc+jitter] 범위에서 독립적으로 뽑히게 만든다 —
+   새 난수 경로를 추가하지 않고 기존 구조에 얹는 방식.
+   ═══════════════════════════════════════════════════════════════ */
+function eccentricitySpeedRange(p) {
+  const jitter = p.eccRandom ? (p.eccJitter ?? 0) : 0;
+  const eLo = Math.max(0, (p.ecc ?? 0) - jitter);
+  const eHi = Math.min(0.97, (p.ecc ?? 0) + jitter); // e→1에 너무 가까우면 근일점 통과 속도가 발산하므로 살짝 여유를 둠
+  return { speedMin: Math.sqrt(1 + eLo), speedMax: Math.sqrt(1 + eHi) };
+}
+
+/* ═══════════════════════════════════════════════════════════════
    [8] 실험 정의 — 11개
    ═══════════════════════════════════════════════════════════════ */
 const EXPERIMENTS = {
   'E01_newton': {
     key: 'E01_newton', num: '01', name: 'Newton · Inverse Square',
     ref: '제2편',
-    desc: `뉴턴 만유인력 F = Gm₁m₂/r². 구슬의 궤도가 케플러 법칙을 따르는지 실시간 검증합니다.`,
-    equations: ['F = Gm₁m₂/r²', 'v_esc = √(2GM/r)', 'v_orb = √(GM/r)'],
-    chartLabel: 'ORBITAL PERIOD · T² ∝ r³',
+    desc: `뉴턴 만유인력 F = Gm₁m₂/r². 반지름이 서로 다른 구슬들을 동시에 굴려서 각자의 실측 주기를 재고, T² ∝ r³(케플러 제3법칙)이 실제로 성립하는지 log-log 산점도로 검증합니다. Bead count를 올릴수록 기준 반지름 r₀ 앞뒤로 한 칸씩 번갈아 반지름이 늘어납니다(0,+1,−1,+2,−2…). Eccentricity 슬라이더는 r₀를 근일점으로 하는 타원 궤도를 만들고, "이심률 랜덤화"를 켜면 구슬마다 e가 ±jitter 범위에서 제각각 무작위로 정해집니다.`,
+    equations: ['F = Gm₁m₂/r²', 'v_esc = √(2GM/r)', 'v_orb = √(GM/r)', 'T² = (4π²/GM)·r³', 'v₀ = v_orb·√(1+e)  (r₀ = 근일점)'],
+    chartLabel: 'T vs r (log-log) · Kepler III',
     setup(world) {
       world.clearBodies(); world.clearRollers();
       world.addMass({ x: 0, y: 0, preset: 'sun' });
-      world.spawnRollers({ count: 12, dist: 6, speedMin: 0.9, speedMax: 1.05, tangentialBias: 1.0 });
+      const { speedMin, speedMax } = eccentricitySpeedRange({ ecc: 0, eccRandom: 0, eccJitter: 0.15 });
+      world.spawnRollers({
+        count: 12, dist: 6, radiusStep: 0.6,
+        speedMin, speedMax, tangentialBias: 1.0
+      });
       world.time.reset();
     },
     params: [
       { key: 'M', label: 'Central mass M', min: 10, max: 100, step: 5, value: 40 },
       { key: 'N', label: 'Bead count', min: 3, max: 40, step: 1, value: 12 },
-      { key: 'r0', label: 'Spawn radius r₀', min: 3, max: 12, step: 0.5, value: 6 },
-      { key: 'vFactor', label: 'v₀ / v_esc', min: 0.5, max: 1.2, step: 0.02, value: 0.95 }
+      { key: 'r0', label: 'Base radius r₀', min: 3, max: 12, step: 0.5, value: 6 },
+      { key: 'rStep', label: 'Radius step Δr (앞/뒤)', min: 0, max: 2, step: 0.1, value: 0.6 },
+      { key: 'ecc', label: 'Eccentricity e (r₀=근일점)', min: 0, max: 0.9, step: 0.01, value: 0 },
+      { key: 'eccJitter', label: '랜덤 폭 ±Δe', min: 0, max: 0.4, step: 0.01, value: 0.15 },
+      { key: 'eccRandom', label: '이심률 랜덤화', type: 'toggle', value: 0 }
     ],
     onParamChange(world, p) {
       if (world.bodies[0]) world.bodies[0].mass = p.M;
       world.clearRollers();
-      const vEsc = Math.sqrt(2*p.M/p.r0);
+      const { speedMin, speedMax } = eccentricitySpeedRange(p);
       world.spawnRollers({
-        count: p.N, dist: p.r0,
-        speedMin: vEsc * p.vFactor * 0.98,
-        speedMax: vEsc * p.vFactor * 1.02,
+        count: p.N, dist: p.r0, radiusStep: p.rStep,
+        speedMin, speedMax,
         tangentialBias: 1.0
       });
     },
@@ -945,7 +1139,13 @@ const EXPERIMENTS = {
       const vEsc = Math.sqrt(2*p.M/p.r0);
       const vOrb = Math.sqrt(p.M/p.r0);
       const T = 2*Math.PI*Math.sqrt(p.r0**3 / p.M);
-      return { vEsc, vOrb, T, v0: vEsc * p.vFactor };
+      // T² = keplerConstant · r³ — the single number Kepler's third law
+      // says every bead should share, regardless of which radius it's on.
+      const keplerConstant = 4*Math.PI*Math.PI / p.M;
+      const v0 = vOrb * Math.sqrt(1 + (p.ecc ?? 0));
+      // r0가 근일점일 때의 원일점 반지름: a=r0/(1-e), aphelion=a(1+e)
+      const aphelion = (p.ecc ?? 0) < 1 ? p.r0 * (1 + p.ecc) / (1 - p.ecc) : Infinity;
+      return { vEsc, vOrb, T, v0, aphelion, keplerConstant };
     },
     measure(world, p) {
       const alive = world.rollers.filter(r => r.alive);
@@ -954,7 +1154,21 @@ const EXPERIMENTS = {
       const avgV = alive.reduce((s, r) => s + Math.hypot(r.vx, r.vy), 0) / alive.length;
       // 에너지로 bound/unbound 판정
       const bound = alive.filter(r => r.totalEnergy(world.bodies) < 0).length;
-      return { avgR, avgV, bound, alive: alive.length };
+      // 케플러 제3법칙 실측: 실제로 한 바퀴를 돈 구슬들만 모아 T²/r³의
+      // 평균을 낸다 — radiusStep=0이면 전부 같은 반지름이라 산점도가
+      // 점 하나로 붕괴하므로, 여러 반지름으로 퍼뜨렸을 때만 이 값이
+      // 진짜로 "법칙을 검증"하는 의미를 갖는다.
+      const withPeriod = alive.filter(r => r.lastPeriod !== null);
+      let keplerConstant = null;
+      if (withPeriod.length > 0) {
+        const ratios = withPeriod.map(r => (r.lastPeriod * r.lastPeriod) / Math.pow(r.initialR, 3));
+        keplerConstant = ratios.reduce((a, b) => a + b, 0) / ratios.length;
+      }
+      return {
+        avgR, avgV, bound, alive: alive.length,
+        keplerConstant: keplerConstant ?? '측정중',
+        periodsSampled: withPeriod.length
+      };
     }
   },
 
@@ -1357,8 +1571,14 @@ renderer.setSize(canvas3D.clientWidth, canvas3D.clientHeight, false);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.1;
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+// Nothing in the scene casts a shadow anymore (mass bodies, bead heads and
+// the terrain itself all have castShadow=false — see buildBodyMeshes/
+// BeadRenderer.register/buildSurface) precisely because a cast shadow was
+// showing up as an unwanted dark band across the terrain/tail whenever a
+// gravity body was added. With zero casters the shadow map buys nothing,
+// so it's switched off outright — frees up the GPU headroom for the finer
+// terrain mesh and extra physics substeps instead.
+renderer.shadowMap.enabled = false;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -1383,15 +1603,16 @@ const bloomPass = new UnrealBloomPass(
 composer.addPass(bloomPass);
 composer.addPass(new OutputPass());
 
-scene.add(new THREE.AmbientLight(0x404a66, 1.2));
+scene.add(new THREE.AmbientLight(0x404a66, 1.5));
+// Soft top/bottom fill so shadowed terrain never drops to near-black —
+// this is what was reading as a hard dark "line" once a new gravity body
+// (which casts a shadow) got added to the scene.
+scene.add(new THREE.HemisphereLight(0x5a6690, 0x14121a, 0.9));
 const keyLight = new THREE.PointLight(0xd9a441, 1.6, 500);
 keyLight.position.set(30, 60, 30);
-keyLight.castShadow = true;
-keyLight.shadow.mapSize.set(1024, 1024);
-keyLight.shadow.camera.near = 1;
-keyLight.shadow.camera.far = 220;
-keyLight.shadow.bias = -0.0015;
-keyLight.shadow.radius = 3; // soft edge (PCFSoftShadowMap)
+// No longer a shadow-casting light (see renderer.shadowMap.enabled above) —
+// it's still the main directional-feeling highlight via its diffuse/specular
+// contribution, just without ever punching a shadow band into the scene.
 scene.add(keyLight);
 const fillLight = new THREE.PointLight(0x5fb8ac, 0.7, 500);
 fillLight.position.set(-30, -20, -20);
@@ -1458,10 +1679,29 @@ function updateCameraAnim() {
   if (t >= 1) cameraAnim = null;
 }
 
+// Small decaying camera shake on burst release, scaled by how "big" the
+// burst felt (particle count + drag power) — applied after OrbitControls'
+// own update() each frame so it doesn't get permanently baked into the
+// controls' idea of where the camera "really" is.
+let cameraShake = null;
+function triggerCameraShake(magnitude, duration = 260) {
+  cameraShake = { start: performance.now(), duration, magnitude };
+}
+function applyCameraShake() {
+  if (!cameraShake) return;
+  const t = (performance.now() - cameraShake.start) / cameraShake.duration;
+  if (t >= 1) { cameraShake = null; return; }
+  const mag = cameraShake.magnitude * (1 - t);
+  camera.position.x += (Math.random() - 0.5) * mag;
+  camera.position.y += (Math.random() - 0.5) * mag * 0.6;
+  camera.position.z += (Math.random() - 0.5) * mag;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    [11] 지형 (Height-map) + 곡률 히트맵
    ═══════════════════════════════════════════════════════════════ */
-const SURFACE_RES = 80;
+const SURFACE_RES = 150;   // was 80 — finer mesh so a deep/new gravity well
+                            // curves smoothly instead of showing facets
 const SURFACE_HALF = 16;
 
 let surfaceMesh = null;
@@ -1515,12 +1755,32 @@ function buildSurface(bodies) {
   const mat = new THREE.MeshStandardMaterial({
     color: 0x121a30, emissive: 0x0a1024,
     metalness: 0.4, roughness: 0.6,
-    side: THREE.DoubleSide, transparent: true, opacity: 0.86
+    side: THREE.DoubleSide, transparent: true, opacity: 0.86,
+    // Tried depthWrite:true (restores correct terrain self-occlusion in a
+    // deep well) + renderOrder to keep the trail drawing after — in theory
+    // that should let both self-shadowed folds AND a visible trail coexist.
+    // In practice the trail's fixed "float above the surface" offset isn't
+    // large enough once a newly-added mass steepens the local slope, so a
+    // real depth test ends up burying bits of the trail under the ground
+    // instead. The trail/bloom is the whole point of this thing, so that
+    // trade is not worth it — back to depthWrite:false, which sacrifices
+    // some self-occlusion fidelity in exchange for the tail/bloom always
+    // reading through cleanly. renderOrder (below) still keeps the ground
+    // from sorting ahead of the grid/curvature/trail layers.
+    depthWrite: false
   });
   surfaceMesh = new THREE.Mesh(geo, mat);
   surfaceMesh.rotation.x = -Math.PI / 2;
+  surfaceMesh.renderOrder = 0; // ground drawn first — everything else layers on top
   surfaceMesh.receiveShadow = true;
-  surfaceMesh.castShadow = true; // terrain bumps can self-shadow into their own wells
+  // castShadow was true here ("terrain bumps can self-shadow into their own
+  // wells"), but a new/deep well's rim would then cast a hard shadow across
+  // a big stretch of the same terrain — that's the "screen's upper half
+  // goes dark from some angles, looks fine from below" bug: a real cast
+  // shadow only lands on the side facing away from the key light, i.e. the
+  // "upper" side of the well as seen from most camera angles, and a
+  // shadow can't fall the same way on the plane's underside. Turned off.
+  surfaceMesh.castShadow = false;
   scene.add(surfaceMesh);
 }
 
@@ -1568,6 +1828,7 @@ function buildCurvatureMesh(bodies) {
   curvatureMesh = new THREE.Mesh(geo, mat);
   curvatureMesh.rotation.x = -Math.PI / 2;
   curvatureMesh.position.y = 0.03;
+  curvatureMesh.renderOrder = 1; // layers on top of the ground (renderOrder 0)
   scene.add(curvatureMesh);
 }
 
@@ -1632,6 +1893,7 @@ function buildSurfaceGrid(bodies) {
     });
     const ring = new THREE.Line(geo, mat);
     ring.frustumCulled = false;
+    ring.renderOrder = 1; // layers on top of the ground (renderOrder 0)
     gridGroup.add(ring);
   }
 
@@ -1664,6 +1926,7 @@ function buildSurfaceGrid(bodies) {
     });
     const spoke = new THREE.Line(geo, mat);
     spoke.frustumCulled = false;
+    spoke.renderOrder = 1; // layers on top of the ground (renderOrder 0)
     gridGroup.add(spoke);
   }
 
@@ -1696,7 +1959,11 @@ function buildBodyMeshes(bodies) {
     const surfaceY = heightFn(b.x, b.y);
     const sphere = new THREE.Mesh(sphereGeo, sphereMat);
     sphere.position.set(b.x, surfaceY + radius * 0.8, b.y);
-    sphere.castShadow = true;
+    // Mass bodies no longer cast shadows: a newly-added gravity body threw a
+    // hard shadow band across the terrain/tail (the "dark line above a
+    // certain angle" issue) — these are meant to read as light sources via
+    // bloom, not as shadow-casting occluders.
+    sphere.castShadow = false;
     sphere.receiveShadow = true;
     bodyGroup.add(sphere);
     // Note: no separate translucent "glow" shell here anymore — the boosted
@@ -1710,11 +1977,13 @@ function buildBodyMeshes(bodies) {
       const rsRender = b.rs * 0.5;
       const ringGeo = new THREE.RingGeometry(rsRender * 0.95, rsRender * 1.05, 48);
       const ringMat = new THREE.MeshBasicMaterial({
-        color: 0xd9a441, side: THREE.DoubleSide, transparent: true, opacity: 0.8
+        color: 0xd9a441, side: THREE.DoubleSide, transparent: true, opacity: 0.8,
+        depthWrite: false // same ground-layering fix as buildSurface()
       });
       const ring = new THREE.Mesh(ringGeo, ringMat);
       ring.rotation.x = -Math.PI / 2;
       ring.position.set(b.x, surfaceY + 0.03, b.y);
+      ring.renderOrder = 1; // sits just above the ground plane
       bodyGroup.add(ring);
     }
   }
@@ -1770,17 +2039,27 @@ class BeadRenderer {
     });
     const line = new THREE.Line(geo, mat);
     line.frustumCulled = false;
+    // Always draw after the ground/curvature/grid (renderOrder 0/1) so a
+    // freshly-rebuilt terrain (e.g. right after adding a gravity body) can
+    // never sort ahead of the trail and clip the glow — this is the "gravity
+    // layer sits on top of bloom/tail" issue.
+    line.renderOrder = 10;
     this.group.add(line);
     this.trailLines.set(bead.id, line);
 
     const headGeo = new THREE.SphereGeometry(0.09, 10, 10);
     const headMat = new THREE.MeshBasicMaterial({
       color: new THREE.Color(bead.color[0]/255, bead.color[1]/255, bead.color[2]/255),
-      transparent: true, opacity: 0.95
+      transparent: true, opacity: 0.95,
+      depthWrite: false // same reasoning as the trail line above
     });
     const head = new THREE.Mesh(headGeo, headMat);
-    head.castShadow = true;
-    head.receiveShadow = true;
+    head.renderOrder = 10; // same fix as the trail line above
+    // Heads must stay unshadowed too — otherwise a bead passing through a
+    // mass's shadow volume dims below the bloom threshold and its glow
+    // (and the trail it's leading) visibly drops out at certain angles.
+    head.castShadow = false;
+    head.receiveShadow = false;
     this.group.add(head);
     this.headSpheres.set(bead.id, head);
   }
@@ -1810,6 +2089,7 @@ class BeadRenderer {
       if (head) {
         if (b.alive) {
           head.visible = true;
+          head.scale.setScalar(1);
           const surfaceY = heightFn(b.x, b.y);
           head.position.set(b.x, surfaceY + BEAD_RADIUS * 0.9, b.y);
 
@@ -1831,7 +2111,15 @@ class BeadRenderer {
           }
           this._lastPos.set(b.id, { x: b.x, y: b.y });
         } else {
-          head.visible = false;
+          // Absorbed/dead: shrink the head and fade the trail out over
+          // DEATH_FADE_MS instead of instantly vanishing, so getting eaten
+          // by a well actually reads as an event. reapDeadRollers() removes
+          // it from the world once this fade finishes.
+          if (b._deathAt === undefined) b._deathAt = performance.now();
+          const t = Math.min(1, (performance.now() - b._deathAt) / DEATH_FADE_MS);
+          head.visible = t < 1;
+          head.scale.setScalar(1 - t);
+          if (line) line.material.uniforms.uOpacity.value = 0.85 * (1 - t);
           this._lastPos.delete(b.id);
         }
       }
@@ -1849,9 +2137,62 @@ class BeadRenderer {
     }
     this.headSpheres.clear();
   }
+  // Remove and fully dispose a single bead's Three.js resources — used when
+  // a roller is absorbed, escapes, or ages out of a burst, so geometries
+  // and materials don't silently accumulate over a long play session.
+  unregister(id) {
+    const line = this.trailLines.get(id);
+    if (line) {
+      this.group.remove(line);
+      line.geometry.dispose();
+      line.material.dispose();
+      this.trailLines.delete(id);
+    }
+    const head = this.headSpheres.get(id);
+    if (head) {
+      this.group.remove(head);
+      head.traverse(o => { if (o.geometry) o.geometry.dispose(); if (o.material) o.material.dispose(); });
+      this.headSpheres.delete(id);
+    }
+    this._lastPos.delete(id);
+  }
 }
 
 const beadRenderer = new BeadRenderer();
+
+/* ═══════════════════════════════════════════════════════════════
+   [16b] 죽은/누적된 입자 정리 (메모리·성능 누수 방지)
+   - 블랙홀 등에 흡수되어 alive=false가 된 롤러는 짧게 오그라들며
+     사라지는 연출 후 배열/씬에서 완전히 제거된다(영원히 얼어붙어
+     남아있지 않도록).
+   - 클릭 폭발로 태어난 입자는 개수 상한을 두고, 넘치면 가장 오래된
+     것부터 정리한다(롱프레스를 계속 스팸해도 무한정 쌓이지 않게).
+   ═══════════════════════════════════════════════════════════════ */
+const DEATH_FADE_MS = 550;
+const MAX_BURST_ROLLERS = 600;
+let burstRollerQueue = []; // FIFO of ids created via spawnBurstAt
+
+function removeRollerById(id) {
+  if (!SIM.world) return;
+  const idx = SIM.world.rollers.findIndex(r => r.id === id);
+  if (idx !== -1) SIM.world.rollers.splice(idx, 1);
+  beadRenderer.unregister(id);
+}
+
+function reapDeadRollers() {
+  if (!SIM.world) return;
+  const now = performance.now();
+  for (let i = SIM.world.rollers.length - 1; i >= 0; i--) {
+    const r = SIM.world.rollers[i];
+    if (!r.alive) {
+      if (r._deathAt === undefined) r._deathAt = now; // start the fade-out clock once
+      if (now - r._deathAt >= DEATH_FADE_MS) {
+        SIM.world.rollers.splice(i, 1);
+        beadRenderer.unregister(r.id);
+      }
+    }
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    [14] 세계 초기화
@@ -1935,26 +2276,49 @@ function spawnBurstAt(x, y, bias = null) {
     if (bias) { r.vx += bias.biasX; r.vy += bias.biasY; }
     r.color = colorFromOrbit(r.x, r.y, r.vx, r.vy, SIM.world.bodies);
     beadRenderer.register(r);
+    burstRollerQueue.push(r.id);
+  }
+  // Cap total burst-spawned particles so long-press spam can't accumulate
+  // forever — evict the oldest ones (whether alive or already absorbed).
+  while (burstRollerQueue.length > MAX_BURST_ROLLERS) {
+    removeRollerById(burstRollerQueue.shift());
   }
 }
 
-function setupExperiment(key) {
+function setupExperiment(key, opts = {}) {
+  // opts.preserveParams: 실험을 바꾸는 게 아니라 "리셋"할 때 쓴다 — 슬라이더로
+  // 조절해 둔 현재 파라미터 값을 실험 기본값으로 되돌리지 않고 그대로 들고
+  // 간 다음, 방금 새로 만든 세계 위에 다시 적용한다.
+  const sameExp = key === SIM.expKey;
+  const preserveParams = !!opts.preserveParams && sameExp && SIM.params && Object.keys(SIM.params).length > 0;
+  const savedParams = preserveParams ? { ...SIM.params } : null;
+
   SIM.expKey = key;
   SIM.exp = EXPERIMENTS[key];
   SIM.params = {};
-  for (const p of SIM.exp.params) SIM.params[p.key] = p.value;
+  for (const p of SIM.exp.params) {
+    SIM.params[p.key] = (savedParams && savedParams[p.key] !== undefined) ? savedParams[p.key] : p.value;
+  }
 
   beadRenderer.clear();
   scene.remove(surfaceMesh); surfaceMesh = null;
   scene.remove(curvatureMesh); curvatureMesh = null;
   scene.remove(gridGroup); gridGroup = null;
   scene.remove(bodyGroup); bodyGroup = null;
+  burstRollerQueue = [];
 
   SIM.world = new GravityWorld({ time: { baseDt: 0.008, k: 1 } });
   SIM.world.useRelativisticCorrection = false;
   SIM.world.correctionFactor = 1.0;
 
   SIM.exp.setup(SIM.world);
+  // 저장해 둔 파라미터가 있으면(=리셋), 방금 기본값으로 만들어진 세계 위에
+  // 그 값을 즉시 재적용한다. beadRenderer에는 아직 아무것도 등록하지 않은
+  // 상태이므로(위 clear() 이후 처음) 여기서 물러난 구슬이 고아 객체로
+  // 남는 문제 없이 최종 구성만 한 번에 등록된다.
+  if (savedParams && SIM.exp.onParamChange) {
+    SIM.exp.onParamChange(SIM.world, SIM.params);
+  }
   for (const r of SIM.world.rollers) r.color = colorFromOrbit(r.x, r.y, r.vx, r.vy, SIM.world.bodies);
   for (const r of SIM.world.rollers) beadRenderer.register(r);
 
@@ -2004,10 +2368,12 @@ function renderLoop() {
   }
 
   if (SIM.world) beadRenderer.update(SIM.world.rollers, SIM.running ? dt * SIM.speed : 0);
+  reapDeadRollers();
 
   updateCameraAnim();
   controls.autoRotate = SIM.autoRotate;
   controls.update();
+  applyCameraShake();
   composer.render();
 }
 
@@ -2047,11 +2413,43 @@ function renderExperimentInfo() {
   document.getElementById('stageName').textContent = e.name;
 }
 
+function applyLiveParamChange() {
+  // 슬라이더/토글 공통: 값 반영 후 세계를 재구성하고 렌더링 쪽도 갱신한다.
+  if (SIM.exp.onParamChange) {
+    SIM.exp.onParamChange(SIM.world, SIM.params);
+    for (const r of SIM.world.rollers) r.color = colorFromOrbit(r.x, r.y, r.vx, r.vy, SIM.world.bodies);
+    for (const r of SIM.world.rollers) if (!beadRenderer.trailLines.has(r.id)) beadRenderer.register(r);
+  }
+  buildSurface(SIM.world.bodies);
+  buildCurvatureMesh(SIM.world.bodies);
+  buildSurfaceGrid(SIM.world.bodies);
+  buildBodyMeshes(SIM.world.bodies);
+}
+
 function renderParams() {
   paramContainer.innerHTML = '';
   for (const p of SIM.exp.params) {
     const ctrl = document.createElement('div');
     ctrl.className = 'ctrl';
+
+    if (p.type === 'toggle') {
+      // 슬라이더가 아니라 on/off 스위치로 렌더링 (예: 이심률 랜덤화)
+      const checked = SIM.params[p.key] ? 'checked' : '';
+      ctrl.innerHTML = `
+        <div class="toggle-row">
+          <span class="label">${p.label}</span>
+          <label class="switch"><input type="checkbox" id="s_${p.key}" ${checked}><span class="track"><span class="thumb"></span></span></label>
+        </div>
+      `;
+      paramContainer.appendChild(ctrl);
+      const input = ctrl.querySelector('input');
+      input.addEventListener('change', () => {
+        SIM.params[p.key] = input.checked ? 1 : 0;
+        applyLiveParamChange();
+      });
+      continue;
+    }
+
     ctrl.innerHTML = `
       <div class="ctrl-label"><span>${p.label}</span><b id="v_${p.key}">${SIM.params[p.key]}</b></div>
       <input type="range" min="${p.min}" max="${p.max}" step="${p.step}" value="${SIM.params[p.key]}" id="s_${p.key}">
@@ -2063,17 +2461,7 @@ function renderParams() {
       SIM.params[p.key] = v;
       document.getElementById(`v_${p.key}`).textContent = p.step < 1 ? v.toFixed(2) : v;
       clearTimeout(slider._t);
-      slider._t = setTimeout(() => {
-        if (SIM.exp.onParamChange) {
-          SIM.exp.onParamChange(SIM.world, SIM.params);
-          for (const r of SIM.world.rollers) r.color = colorFromOrbit(r.x, r.y, r.vx, r.vy, SIM.world.bodies);
-          for (const r of SIM.world.rollers) if (!beadRenderer.trailLines.has(r.id)) beadRenderer.register(r);
-        }
-        buildSurface(SIM.world.bodies);
-        buildCurvatureMesh(SIM.world.bodies);
-        buildSurfaceGrid(SIM.world.bodies);
-        buildBodyMeshes(SIM.world.bodies);
-      }, 80);
+      slider._t = setTimeout(applyLiveParamChange, 80);
     });
   }
 }
@@ -2226,7 +2614,55 @@ function drawMainChart() {
     return;
   }
 
-  if (key === 'E11_escape' || key === 'E01_newton') {
+  if (key === 'E01_newton') {
+    const M = (SIM.world.bodies[0] && SIM.world.bodies[0].mass) || SIM.params.M || 40;
+    const alive = SIM.world.rollers.filter(r => r.alive);
+    if (alive.length === 0) {
+      ctx.fillStyle = 'rgba(139,143,174,0.5)';
+      ctx.font = '10px "IBM Plex Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('—', w/2, h/2);
+      return;
+    }
+    // Theory curve T(r) = 2π√(r³/GM), plotted log-log so a true r³ law
+    // reads as a straight line of slope 3/2 — and each bead's *measured*
+    // period (once it has swept a full lap) is plotted as a point against
+    // its own spawn radius, so agreement is something you can actually see.
+    const rAll = alive.map(r => r.initialR);
+    const rMin = Math.max(0.2, Math.min(...rAll) * 0.85);
+    const rMax = Math.max(...rAll) * 1.2;
+    const Tat = (r) => 2*Math.PI*Math.sqrt(Math.pow(r,3) / Math.max(M, 1e-6));
+    const logRMin = Math.log10(rMin), logRMax = Math.log10(rMax);
+    const logTMin = Math.log10(Tat(rMin)) - 0.1;
+    const logTMax = Math.log10(Tat(rMax)) + 0.1;
+    const toX = (r) => (Math.log10(r) - logRMin) / ((logRMax - logRMin) || 1) * w;
+    const toY = (T) => h - (Math.log10(Math.max(T,1e-9)) - logTMin) / ((logTMax - logTMin) || 1) * h;
+
+    ctx.strokeStyle = 'rgba(157,140,214,0.9)'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let i = 0; i <= 40; i++) {
+      const r = rMin * Math.pow(rMax/rMin, i/40);
+      const x = toX(r), y = toY(Tat(r));
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    const pts = alive.filter(r => r.lastPeriod !== null);
+    ctx.fillStyle = '#5fb8ac';
+    for (const r of pts) {
+      const x = toX(r.initialR), y = toY(r.lastPeriod);
+      ctx.beginPath(); ctx.arc(x, y, 2.8, 0, Math.PI*2); ctx.fill();
+    }
+
+    ctx.fillStyle = 'rgba(157,140,214,0.9)'; ctx.font = '8.5px "IBM Plex Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('theory T(r)', 4, 10);
+    ctx.fillStyle = '#5fb8ac'; ctx.textAlign = 'right';
+    ctx.fillText(`measured ${pts.length}/${alive.length} laps`, w - 5, 10);
+    return;
+  }
+
+  if (key === 'E11_escape') {
     const alive = SIM.world.rollers.filter(r => r.alive);
     const bound = alive.filter(r => r.totalEnergy(SIM.world.bodies) < 0).length;
     const total = alive.length;
@@ -2255,7 +2691,10 @@ btnPlay.addEventListener('click', () => {
   SIM.running = !SIM.running;
   btnPlay.textContent = SIM.running ? '⏸ Pause' : '▶ Play';
 });
-document.getElementById('btnReset').addEventListener('click', () => setupExperiment(SIM.expKey));
+// 리셋: 같은 실험을 다시 시작하되, 사용자가 슬라이더로 바꿔둔 파라미터
+// 값(preserveParams)은 그대로 유지한다 — 예전에는 리셋할 때마다 파라미터가
+// 실험 기본값으로 되돌아갔다.
+document.getElementById('btnReset').addEventListener('click', () => setupExperiment(SIM.expKey, { preserveParams: true }));
 document.getElementById('speedSlider').addEventListener('input', e => {
   SIM.speed = parseFloat(e.target.value);
   document.getElementById('speedVal').textContent = SIM.speed.toFixed(1);
@@ -2271,6 +2710,14 @@ document.getElementById('trailLengthSlider').addEventListener('input', e => {
       if (r.trail.length > val) r.trail = val === 0 ? [] : r.trail.slice(-val);
     }
   }
+});
+document.getElementById('precisionSlider').addEventListener('input', e => {
+  // 프레임당 물리 서브스텝 수를 실시간으로 조절한다. 값이 높을수록 근접
+  // 통과·급격한 곡률에서도 궤적이 매끄러워지지만 CPU 비용도 늘어난다 —
+  // 고성능 PC/폰에서는 올리고, 저사양에서는 내릴 수 있게 슬라이더로 노출.
+  const val = parseInt(e.target.value, 10);
+  GravityWorld.SUBSTEPS = val;
+  document.getElementById('precisionVal').textContent = val;
 });
 document.getElementById('tglRotate').addEventListener('change', e => {
   SIM.autoRotate = e.target.checked;
@@ -2372,10 +2819,66 @@ chargeGroup.add(aimArrow);
 
 let burstCharge = null; // { startWorld:{x,y}, startTime, pointerId, currentWorld }
 
+/* ── 조준 사운드 피드백 (Web Audio, 외부 에셋 없음) ──
+   누르고 있는 동안 낮은 톤이 서서히 올라가며 "충전"되는 느낌을 주고,
+   발사되면 짧게 튀어 오르는 blip과 함께 감쇠한다. 취소되면 그냥 죽는다.
+   AudioContext는 반드시 사용자 제스처(pointerdown) 안에서 생성/재개한다. */
+let audioCtx = null;
+let chargeOsc = null, chargeGain = null;
+const AUDIO_CHARGE_RAMP_MS = 900; // 청각적 "충전" 램프 길이(발사 판정 시간과는 별개)
+
+function ensureAudio() {
+  if (!audioCtx) {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    audioCtx = new AC();
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+function startChargeSound() {
+  const ctx = ensureAudio();
+  if (!ctx) return;
+  chargeOsc = ctx.createOscillator();
+  chargeGain = ctx.createGain();
+  chargeOsc.type = 'sine';
+  chargeOsc.frequency.setValueAtTime(130, ctx.currentTime);
+  chargeGain.gain.setValueAtTime(0.0001, ctx.currentTime);
+  chargeGain.gain.exponentialRampToValueAtTime(0.045, ctx.currentTime + 0.1);
+  chargeOsc.connect(chargeGain).connect(ctx.destination);
+  chargeOsc.start();
+}
+function updateChargeSound(holdMs) {
+  if (!chargeOsc || !audioCtx) return;
+  const t = Math.min(1, holdMs / AUDIO_CHARGE_RAMP_MS);
+  chargeOsc.frequency.setTargetAtTime(130 + t * 260, audioCtx.currentTime, 0.05);
+}
+function stopChargeSound(didFire) {
+  if (!chargeOsc || !audioCtx) { chargeOsc = null; chargeGain = null; return; }
+  const now = audioCtx.currentTime;
+  if (didFire) {
+    const curFreq = 130; // safe base; exact current value isn't easily readable mid-ramp
+    chargeOsc.frequency.cancelScheduledValues(now);
+    chargeOsc.frequency.setValueAtTime(chargeOsc.frequency.value || curFreq, now);
+    chargeOsc.frequency.exponentialRampToValueAtTime(560, now + 0.12);
+    chargeGain.gain.cancelScheduledValues(now);
+    chargeGain.gain.setValueAtTime(chargeGain.gain.value || 0.045, now);
+    chargeGain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+    chargeOsc.stop(now + 0.32);
+  } else {
+    chargeGain.gain.cancelScheduledValues(now);
+    chargeGain.gain.setTargetAtTime(0.0001, now, 0.04);
+    chargeOsc.stop(now + 0.16);
+  }
+  chargeOsc = null; chargeGain = null;
+}
+
 function updateChargeVisual() {
   if (!burstCharge) return;
   const { startWorld, currentWorld } = burstCharge;
-  const t = Math.min(1, (performance.now() - burstCharge.startTime) / LONG_PRESS_MS);
+  const holdMs = performance.now() - burstCharge.startTime;
+  const t = Math.min(1, holdMs / LONG_PRESS_MS);
+  updateChargeSound(holdMs);
   const groundY = heightFn(startWorld.x, startWorld.y);
   chargeRing.position.set(startWorld.x, groundY + 0.02, startWorld.y);
   const ringR = 0.35 + t * 0.5;
@@ -2403,6 +2906,7 @@ function endBurstCharge(pointerId, fire) {
   chargeGroup.visible = false;
   aimArrow.visible = false;
 
+  let didFire = false;
   if (fire) {
     const holdMs = performance.now() - burstCharge.startTime;
     const cur = burstCharge.currentWorld || burstCharge.startWorld;
@@ -2411,14 +2915,19 @@ function endBurstCharge(pointerId, fire) {
     // "긴 클릭"(롱프레스) 또는 뚜렷한 드래그가 있어야 발사 — 짧고 무의미한
     // 탭은 무시한다.
     if (holdMs >= LONG_PRESS_MS || dragDist >= DRAG_CONFIRM_DIST) {
+      didFire = true;
       let bias = null;
       if (dragDist > DRAG_DEADZONE) {
         const biasMag = Math.min(dragDist * DRAG_BIAS_GAIN, DRAG_BIAS_MAX);
         bias = { biasX: (dx / dragDist) * biasMag, biasY: (dy / dragDist) * biasMag };
       }
       spawnBurstAt(burstCharge.startWorld.x, burstCharge.startWorld.y, bias);
+      // 폭발 규모(입자 수 + 드래그로 실은 힘)에 비례한 카메라 셰이크.
+      const power = SIM.burstCount / 20 + Math.min(dragDist, 6) / 6;
+      triggerCameraShake(0.05 + power * 0.09, 220 + power * 90);
     }
   }
+  stopChargeSound(didFire);
   burstCharge = null;
 }
 
@@ -2431,6 +2940,7 @@ canvas3D.addEventListener('pointerdown', (e) => {
   controls.enabled = false; // 조준하는 동안 카메라 궤도 회전 정지
   try { canvas3D.setPointerCapture(e.pointerId); } catch (_) {}
   chargeGroup.visible = true;
+  startChargeSound();
   updateChargeVisual();
   e.preventDefault();
 });
@@ -2443,6 +2953,124 @@ canvas3D.addEventListener('pointerup', (e) => endBurstCharge(e.pointerId, true))
 canvas3D.addEventListener('pointercancel', (e) => endBurstCharge(e.pointerId, false));
 canvas3D.addEventListener('lostpointercapture', (e) => {
   if (burstCharge && burstCharge.pointerId === e.pointerId) endBurstCharge(e.pointerId, false);
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   [22] 중력체 추가(Add Gravity) — 별도의 작은 버튼 하나로 완결
+   버스트 조준이 "캔버스를 눌러서" 이루어지는 것과 완전히 분리된 입력
+   경로를 쓰기 때문에 두 기능이 서로의 제스처를 가로챌 일이 없다:
+   이 버튼 위에서 세로로 드래그하면(캔버스는 건드리지 않음) 배치할
+   질량이 커지거나 작아지고, 좌우로 드래그하면 배치 지점이 화면
+   중앙(카메라가 보는 지형)에서 얼마나 "멀리" 밀려나 떨어질지(거리)가
+   바뀐다. 드래그 없이 짧게 누르면 그 질량·거리로 새 중력체가 1회
+   추가된다. 방향 조준은 카메라를 직접 돌려서(OrbitControls) 하면 되고,
+   화면 중앙 십자선이 "이 방향 어딘가에 떨어진다"를 보여준다.
+   ═══════════════════════════════════════════════════════════════ */
+const btnGravityFab = document.getElementById('btnGravityFab');
+const fabMass = document.getElementById('fabMass');
+const fabDist = document.getElementById('fabDist');
+const addReticle = document.getElementById('addReticle');
+
+// 최소 질량을 5→1로, 기본(시작) 질량도 40→2로 낮췄다 — "추가 중력"은
+// 이미 있는 항성급 프리셋 위에 살짝 얹는 느낌이어야 자연스럽다.
+const GRAVITY_MASS_MIN = 1, GRAVITY_MASS_MAX = 150;
+const GRAVITY_MASS_PER_PIXEL = 0.35;   // 세로 1px 드래그당 질량 변화량
+const GRAVITY_TAP_MAX_DRAG = 6;        // 이보다 적게 움직였으면 "짧게 누름"(배치)으로 판정
+
+// 배치 거리(월드 단위): 화면 중앙이 가리키는 지형 지점을 기준으로,
+// 원점(0,0)에서 바깥쪽으로 이만큼 더 밀어서 배치한다. 예전에는 화면
+// 중앙 지점에 그대로 떨어뜨려서 항상 기존 중력체 바로 위/근처에
+// 겹쳐 생겼는데, 기본 거리를 둬서 더 바깥쪽에서 시작하게 한다.
+const GRAVITY_DIST_MIN = 0, GRAVITY_DIST_MAX = 10;
+const GRAVITY_DIST_PER_PIXEL = 0.045;  // 가로 1px 드래그당 거리 변화량
+
+SIM.pendingGravityMass = 2;   // 기본(시작) 질량
+SIM.pendingGravityDist = 3;   // 기본 배치 거리
+
+function refreshFabMass() {
+  fabMass.textContent = Math.round(SIM.pendingGravityMass * 10) / 10;
+  fabDist.textContent = '↔' + SIM.pendingGravityDist.toFixed(1);
+}
+refreshFabMass();
+
+function addGravityAt(hitX, hitY, mass, distOffset) {
+  if (!SIM.world) return;
+  // 원점 → 조준 지점 방향으로 distOffset만큼 더 밀어내서 배치 지점을
+  // 구한다. 조준 지점이 원점에 거의 겹치면(카메라가 정중앙을 볼 때)
+  // 기준 방향을 잃지 않도록 기본 방향(+x)을 대신 쓴다.
+  let dx = hitX, dy = hitY;
+  let r = Math.hypot(dx, dy);
+  if (r < 1e-4) { dx = 1; dy = 0; r = 1; }
+  const ux = dx / r, uy = dy / r;
+  const x = hitX + ux * distOffset;
+  const y = hitY + uy * distOffset;
+
+  // 별/지구 프리셋과 비슷한 질량↔반경 비율로 새 중력체를 만들되, 색상은
+  // "플레이어가 직접 추가했다"는 걸 알아보기 쉽게 고정 앰버 톤으로 둔다.
+  const rs = Math.max(0.05, mass * 0.0038);
+  const body = SIM.world.addMass({ x, y, preset: 'sun', massOverride: mass, rsOverride: rs });
+  body.color = '#e8b559';
+  body.presetKey = 'userAdded';
+  body.label = 'Added Mass';
+
+  // 지형/곡률/그리드/천체 메쉬만 다시 만들고, 굴러가던 입자·트레일은
+  // 그대로 둔다 — 진행 중이던 시뮬레이션 위에 새 우물이 갑자기 나타나는
+  // 느낌을 주기 위함이다.
+  buildSurface(SIM.world.bodies);
+  buildCurvatureMesh(SIM.world.bodies);
+  buildSurfaceGrid(SIM.world.bodies);
+  buildBodyMeshes(SIM.world.bodies);
+  triggerCameraShake(0.05 + Math.min(mass, GRAVITY_MASS_MAX) / GRAVITY_MASS_MAX * 0.12, 260);
+}
+
+let gravityCharge = null; // { startX, startY, baseMass, baseDist, pointerId, dragDist }
+
+btnGravityFab.addEventListener('pointerdown', (e) => {
+  gravityCharge = {
+    startX: e.clientX, startY: e.clientY,
+    baseMass: SIM.pendingGravityMass, baseDist: SIM.pendingGravityDist,
+    pointerId: e.pointerId, dragDist: 0
+  };
+  try { btnGravityFab.setPointerCapture(e.pointerId); } catch (_) {}
+  btnGravityFab.classList.add('charging');
+  addReticle.classList.add('show');
+  e.preventDefault();
+});
+btnGravityFab.addEventListener('pointermove', (e) => {
+  if (!gravityCharge || e.pointerId !== gravityCharge.pointerId) return;
+  const deltaY = gravityCharge.startY - e.clientY; // 위로 움직이면 양수 → 질량 증가
+  const deltaX = e.clientX - gravityCharge.startX; // 오른쪽으로 움직이면 양수 → 거리 증가
+  gravityCharge.dragDist = Math.hypot(deltaX, deltaY);
+  SIM.pendingGravityMass = THREE.MathUtils.clamp(
+    gravityCharge.baseMass + deltaY * GRAVITY_MASS_PER_PIXEL,
+    GRAVITY_MASS_MIN, GRAVITY_MASS_MAX
+  );
+  SIM.pendingGravityDist = THREE.MathUtils.clamp(
+    gravityCharge.baseDist + deltaX * GRAVITY_DIST_PER_PIXEL,
+    GRAVITY_DIST_MIN, GRAVITY_DIST_MAX
+  );
+  refreshFabMass();
+});
+function endGravityCharge(pointerId, place) {
+  if (!gravityCharge || gravityCharge.pointerId !== pointerId) return;
+  try { btnGravityFab.releasePointerCapture(pointerId); } catch (_) {}
+  btnGravityFab.classList.remove('charging');
+  addReticle.classList.remove('show');
+  // 뚜렷하게 드래그해서 질량/거리만 조절했다면 배치하지 않는다 — 드래그
+  // 없이 짧게 누르고 뗐을 때만 실제로 중력체가 추가된다.
+  if (place && gravityCharge.dragDist < GRAVITY_TAP_MAX_DRAG) {
+    const hit = raycastCanvasToTerrain(
+      canvas3D.getBoundingClientRect().left + canvas3D.getBoundingClientRect().width / 2,
+      canvas3D.getBoundingClientRect().top + canvas3D.getBoundingClientRect().height / 2
+    );
+    if (hit) addGravityAt(hit.x, hit.y, SIM.pendingGravityMass, SIM.pendingGravityDist);
+  }
+  gravityCharge = null;
+}
+btnGravityFab.addEventListener('pointerup', (e) => endGravityCharge(e.pointerId, true));
+btnGravityFab.addEventListener('pointercancel', (e) => endGravityCharge(e.pointerId, false));
+btnGravityFab.addEventListener('lostpointercapture', (e) => {
+  if (gravityCharge && gravityCharge.pointerId === e.pointerId) endGravityCharge(e.pointerId, false);
 });
 
 /* ── 모바일: 상단 탭 + 텔레메트리를 오른쪽 패널(메뉴) 안으로 이동 ──
