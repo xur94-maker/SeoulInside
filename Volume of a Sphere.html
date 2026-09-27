@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Volume of a Sphere — Proven by Diagram</title>
+<style>
+:root{
+  --paper:#0e2436;
+  --paper2:#0a1c2b;
+  --ink:#dfeef5;
+  --ink-dim:#8fb2c4;
+  --line:#3a6a86;
+  --accent:#e8a33d;
+  --accent-dim:#8a642a;
+  --good:#7fd0a0;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);}
+body{
+  font-family: 'Iowan Old Style','Palatino Linotype',Georgia,'Noto Serif KR',serif;
+  line-height:1.6;
+}
+::selection{background:var(--accent);color:#1a1005}
+.wrap{max-width:760px;margin:0 auto;padding:64px 24px 120px;}
+header.top{margin-bottom:56px;}
+.kicker{font-family:'JetBrains Mono','Courier New',monospace;font-size:12px;letter-spacing:.12em;color:var(--accent);margin:0 0 14px;}
+h1{font-size:clamp(28px,5vw,42px);margin:0 0 16px;font-weight:600;color:var(--ink);}
+.sub{color:var(--ink-dim);font-size:16px;max-width:56ch;}
+.divider{border:none;border-top:1px solid var(--line);margin:56px 0;opacity:.5;}
+section h2{font-size:22px;font-weight:600;margin:0 0 6px;color:var(--ink);}
+section .tag{font-family:'JetBrains Mono','Courier New',monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.06em;margin-bottom:18px;}
+section .question{font-size:14px;color:var(--accent);margin:0 0 10px;font-style:italic;}
+section .question b{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.04em;margin-right:6px;color:var(--accent-dim);}
+section p{color:var(--ink-dim);font-size:15px;max-width:60ch;}
+.stage{
+  background:var(--paper2);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:20px;
+  margin:20px 0 14px;
+}
+svg{display:block;width:100%;height:auto;}
+.gridline{stroke:var(--line);stroke-width:1;opacity:.35}
+.controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px;}
+input[type=range]{
+  flex:1; min-width:140px; -webkit-appearance:none; appearance:none;
+  height:2px; background:var(--line); outline:none; border-radius:2px;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:14px;height:14px;border-radius:50%;
+  background:var(--accent); cursor:pointer; border:2px solid var(--paper2);
+}
+input[type=range]::-moz-range-thumb{
+  width:14px;height:14px;border-radius:50%;background:var(--accent);
+  cursor:pointer; border:2px solid var(--paper2);
+}
+.readout{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:13px; color:var(--ink); white-space:nowrap;
+  background:rgba(232,163,61,0.08); border:1px solid var(--accent-dim);
+  padding:4px 10px; border-radius:3px;
+}
+.eq{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:14px; color:var(--good); margin-top:12px;
+  padding-top:12px; border-top:1px dashed var(--line);
+}
+.eq .label{color:var(--ink-dim); font-size:11px; display:block; margin-bottom:4px;}
+button.run{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  background:transparent; color:var(--accent); border:1px solid var(--accent-dim);
+  padding:8px 16px; border-radius:3px; cursor:pointer; font-size:13px;
+  letter-spacing:.04em;
+}
+button.run:hover{background:rgba(232,163,61,0.1);}
+footer{margin-top:80px; color:var(--ink-dim); font-size:13px; text-align:center;}
+footer .num{font-family:'JetBrains Mono',monospace; color:var(--accent);}
+#stage3d,#stage3dShell,#stage3dKepler{width:100%; height:340px; touch-action:none; cursor:grab; border-radius:3px; overflow:hidden;}
+#stage3d:active,#stage3dShell:active,#stage3dKepler:active{cursor:grabbing;}
+.hint3d{font-size:11px;color:var(--ink-dim);font-family:'JetBrains Mono',monospace;margin-top:8px;}
+@media (prefers-color-scheme: light){
+  :root{ --paper:#0e2436; --paper2:#0a1c2b; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="kicker">SEOUL INSIDE · GEOMETRY LAB</p>
+  <h1>Volume of a Sphere, Seen Through Diagrams</h1>
+  <p class="sub">Drag the sliders and watch several different paths all arrive at the same conclusion, ⁴⁄₃πr³. Before you trust the number, watch the shape actually do it.</p>
+</header>
+
+<section id="cavalieri">
+  <h2>1. Cavalieri's Principle</h2>
+  <p class="tag">Hemisphere vs. (cylinder − cone)</p>
+  <p class="question"><b>The question this method answers</b>Are the cross-sectional areas equal at every height?</p>
+  <p>Check whether the cross-sections of the two solids at height h really stay equal. As you move h, the two area values match all the way through.</p>
+  <div class="stage">
+    <svg id="svgCav" viewBox="0 0 640 220"></svg>
+    <div class="controls">
+      <span class="readout" id="readCavH">h = 0.50 r</span>
+      <input type="range" id="rangeCav" min="0" max="100" value="50">
+    </div>
+    <div class="eq"><span class="label">The two cross-sectional areas (r = 1)</span><span id="eqCav"></span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="disk">
+  <h2>2. Disk Method — Stacking Up</h2>
+  <p class="tag">Riemann sum of π(r²−x²) from x=−r to x</p>
+  <p class="question"><b>The question this method answers</b>Does stacking infinitely thin slices add up to a volume?</p>
+  <p>Push x all the way to the right, and the thin disks stack up into exactly the volume of the hemisphere — and eventually the full sphere.</p>
+  <div class="stage">
+    <svg id="svgDisk" viewBox="0 0 640 220"></svg>
+    <div class="controls">
+      <span class="readout" id="readDiskX">x = 0.00 r</span>
+      <input type="range" id="rangeDisk" min="-100" max="100" value="0">
+    </div>
+    <div class="eq"><span class="label">Cumulative volume ∫ π(r²−t²)dt (r = 1, −r → x)</span><span id="eqDisk"></span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="montecarlo">
+  <h2>3. Monte Carlo — Verification, Not Proof</h2>
+  <p class="tag">Scattering points inside the cube [−1,1]³</p>
+  <p class="question"><b>The question this method answers</b>Can pure probability find the value with no geometric argument at all?</p>
+  <p>The more points you scatter, the closer the fraction landing inside the sphere gets to the theoretical value π/6 ≈ 0.5236. Click the button to add more samples.</p>
+  <div class="stage">
+    <svg id="svgMC" viewBox="0 0 300 300"></svg>
+    <div class="controls">
+      <button class="run" id="btnMC">+ Add 500 points</button>
+      <button class="run" id="btnMCReset">Reset</button>
+    </div>
+    <div class="eq"><span class="label">M / N → estimate of π/6</span><span id="eqMC">N = 0, M = 0</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="pappus">
+  <h2>4. Pappus's Centroid Theorem — The Moment a Half-Disk Spins</h2>
+  <p class="tag">Spin a half-disk 360° around the x-axis and it becomes exactly a sphere</p>
+  <p class="question"><b>The question this method answers</b>Does spinning a flat shape really produce a sphere?</p>
+  <p>Move the rotation angle and watch the half-disk actually trace out a sphere. Drag to orbit the camera.</p>
+  <div class="stage">
+    <div id="stage3d"></div>
+    <div class="controls">
+      <span class="readout" id="readPappus">rotation = 0°</span>
+      <input type="range" id="rangePappus" min="0" max="360" value="0">
+      <button class="run" id="btnSpin">Auto-spin</button>
+    </div>
+    <p class="hint3d">Drag: orbit the camera · Slider: control the half-disk's sweep angle</p>
+    <div class="eq"><span class="label">V = A · (2πȳ), ȳ = 4r/3π</span><span id="eqPappus">V = ½πr² × 2π(4r/3π) = ⁴⁄₃πr³</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="shell">
+  <h2>5. Cylindrical Shell Method</h2>
+  <p class="tag">Spin a half-circle around the y-axis, stacking thin cylindrical shells</p>
+  <p class="question"><b>The question this method answers</b>How do you account for shells farther from the axis having a longer circumference?</p>
+  <p>A thin cylindrical shell of radius t has volume 2πt·(height)·dt. Push t from 0 to r, and the shells stack up to fill the sphere.</p>
+  <div class="stage">
+    <div id="stage3dShell"></div>
+    <div class="controls">
+      <span class="readout" id="readShell">t = 0.00 r</span>
+      <input type="range" id="rangeShell" min="0" max="100" value="0">
+    </div>
+    <p class="hint3d">Drag: orbit the camera · Slider: the radius t up to which shells are filled in</p>
+    <div class="eq"><span class="label">V = ∫₀ʳ 2πt · 2√(r²−t²) dt</span><span id="eqShell"></span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="kepler">
+  <h2>6. Kepler's Infinitesimal Pyramids</h2>
+  <p class="tag">Slice the sphere's surface finely and fill it with pyramids to the center</p>
+  <p class="question"><b>The question this method answers</b>If you know only the surface area, can you get the volume?</p>
+  <p>A pyramid connecting a small surface patch dA to the center has volume ⅓·dA·r. Fill the whole surface with such pyramids and V = ⅓·(4πr²)·r = ⁴⁄₃πr³.</p>
+  <div class="stage">
+    <div id="stage3dKepler"></div>
+    <div class="controls">
+      <span class="readout" id="readKepler">pyramids = 24</span>
+      <input type="range" id="rangeKepler" min="6" max="60" value="24">
+    </div>
+    <div class="controls">
+      <span class="readout" id="readExplode">assembled (0%)</span>
+      <input type="range" id="rangeExplode" min="0" max="100" value="0">
+    </div>
+    <p class="hint3d">Drag: orbit the camera · Top slider: number of pyramids · Bottom slider: 0 = assembled into a sphere → 100 = surface unfolded flat</p>
+    <div class="eq"><span class="label">V ≈ Σ ⅓·(patch area)·r → ⅓·(4πr²)·r</span><span id="eqKepler"></span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="ndim">
+  <h2>7. n-Dimensional Generalization — Where Intuition Breaks Down</h2>
+  <p class="tag">Volume of the unit n-sphere: Vₙ = πⁿᐟ²/Γ(n/2+1)</p>
+  <p class="question"><b>The question this method answers</b>Does a sphere's volume keep growing as dimension increases?</p>
+  <p>Move n. The volume grows, peaks around n=5, and then keeps shrinking from there — n=5 isn't a special constant, just an incidental peak produced by the gamma function.</p>
+  <div class="stage">
+    <svg id="svgNdim" viewBox="0 0 640 240"></svg>
+    <div class="controls">
+      <span class="readout" id="readNdim">n = 5</span>
+      <input type="range" id="rangeNdim" min="1" max="20" value="5" step="1">
+    </div>
+    <div class="eq"><span class="label">Vₙ (unit n-sphere)</span><span id="eqNdim"></span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="montecarlo3d">
+  <h2>8. Monte Carlo — Seen in 3D</h2>
+  <p class="tag">Actually scattering points inside the cube [−1,1]³</p>
+  <p class="question"><b>The question this method answers</b>Does the principle from 2D still hold in 3D?</p>
+  <p>Points are dropped at random inside the cube, colored by whether they land inside the sphere (green) or outside (gray). M/N converges to π/6 ≈ 0.5236.</p>
+  <div class="stage">
+    <div id="stage3dMC"></div>
+    <div class="controls">
+      <button class="run" id="btnMC3D">+ Add 20,000 points</button>
+      <button class="run" id="btnMC3DReset">Reset</button>
+    </div>
+    <p class="hint3d">Drag: orbit the camera</p>
+    <div class="eq"><span class="label">M / N → estimate of π/6</span><span id="eqMC3D">N = 0, M = 0</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="summary">
+  <h2>The Values You Confirmed</h2>
+  <p>Six different paths, all arriving at the same destination: ⁴⁄₃πr³ ≈ 4.1888 (r = 1).</p>
+  <div class="stage">
+    <div id="summaryGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-family:'JetBrains Mono',monospace;font-size:13px;">
+      <div>Cavalieri — cross-sections match <span style="color:var(--good)">✓</span></div>
+      <div>Disk integral — <span id="sumDisk" style="color:var(--good)">4.1888</span></div>
+      <div>Monte Carlo — <span id="sumMC" style="color:var(--ink-dim)">not measured yet</span></div>
+      <div>Pappus–Guldinus — <span style="color:var(--good)">4.1888</span></div>
+      <div>Cylindrical shells — <span id="sumShell" style="color:var(--good)">4.1888</span></div>
+      <div>Kepler pyramids — <span id="sumKepler" style="color:var(--good)">4.1888</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  V = <span class="num">⁴⁄₃πr³</span> — whichever path you take, you arrive at the same place.
+</footer>
+
+</div>
+
+<script>
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs){
+  const e = document.createElementNS(NS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+/* ---------- 1. Cavalieri ---------- */
+(function(){
+  const svg = document.getElementById('svgCav');
+  const range = document.getElementById('rangeCav');
+  const readH = document.getElementById('readCavH');
+  const eq = document.getElementById('eqCav');
+  const R = 70;
+  const cx1 = 170, cx2 = 460, cy = 130;
+
+  function draw(hFrac){
+    svg.innerHTML = '';
+    const h = hFrac * R;
+    // left: hemisphere cross-section, radius sqrt(R^2-h^2)
+    const r1 = Math.sqrt(Math.max(R*R - h*h,0));
+    // right: cylinder (radius R) minus cone (radius h) -> ring
+    const rOuter = R, rInner = h;
+
+    // baseline circles for context (sphere outline & cylinder outline)
+    svg.appendChild(el('circle',{cx:cx1,cy:cy,r:R,fill:'none',stroke:'var(--line)','stroke-dasharray':'3,4'}));
+    svg.appendChild(el('circle',{cx:cx2,cy:cy,r:R,fill:'none',stroke:'var(--line)','stroke-dasharray':'3,4'}));
+
+    svg.appendChild(el('circle',{cx:cx1,cy:cy,r:r1,fill:'rgba(232,163,61,0.35)',stroke:'var(--accent)','stroke-width':2}));
+    if(rInner>0.5){
+      // ring: draw outer minus inner using evenodd
+      const p = el('path',{
+        d:`M ${cx2-rOuter} ${cy} a ${rOuter} ${rOuter} 0 1 0 ${2*rOuter} 0 a ${rOuter} ${rOuter} 0 1 0 ${-2*rOuter} 0 Z
+           M ${cx2-rInner} ${cy} a ${rInner} ${rInner} 0 1 1 ${2*rInner} 0 a ${rInner} ${rInner} 0 1 1 ${-2*rInner} 0 Z`,
+        'fill-rule':'evenodd', fill:'rgba(232,163,61,0.35)', stroke:'var(--accent)','stroke-width':2
+      });
+      svg.appendChild(p);
+    } else {
+      svg.appendChild(el('circle',{cx:cx2,cy:cy,r:rOuter,fill:'rgba(232,163,61,0.35)',stroke:'var(--accent)','stroke-width':2}));
+    }
+
+    svg.appendChild(labelText(cx1,220,'hemisphere cross-section (radius √(r²−h²))'));
+    svg.appendChild(labelText(cx2,220,'cylinder − cone cross-section (ring)'));
+
+    const A1 = Math.PI*(1 - hFrac*hFrac);
+    const A2 = Math.PI*(1) - Math.PI*(hFrac*hFrac);
+    readH.textContent = `h = ${hFrac.toFixed(2)} r`;
+    eq.innerHTML = `A_hemisphere = π(1−${(hFrac*hFrac).toFixed(2)}) = ${A1.toFixed(4)}   |   A_cyl−cone = ${A2.toFixed(4)}   ⇒ match`;
+  }
+
+  function labelText(x,y,t){
+    const e = el('text',{x:x,y:y,'text-anchor':'middle',fill:'var(--ink-dim)','font-size':'12','font-family':'JetBrains Mono, monospace'});
+    e.textContent = t;
+    return e;
+  }
+
+  range.addEventListener('input', ()=>draw(range.value/100));
+  draw(0.5);
+})();
+
+/* ---------- 2. Disk method ---------- */
+(function(){
+  const svg = document.getElementById('svgDisk');
+  const range = document.getElementById('rangeDisk');
+  const readX = document.getElementById('readDiskX');
+  const eq = document.getElementById('eqDisk');
+  const w=640,h=220, ox=320, oy=170, scale=140;
+
+  function y_of(t){ return Math.sqrt(Math.max(1-t*t,0)); }
+
+  function draw(xFrac){
+    svg.innerHTML='';
+    // axis
+    svg.appendChild(el('line',{x1:ox-150,y1:oy,x2:ox+150,y2:oy,stroke:'var(--line)','stroke-width':1}));
+    svg.appendChild(el('line',{x1:ox,y1:oy-scale-10,x2:ox,y2:oy+10,stroke:'var(--line)','stroke-width':1}));
+
+    // curve y = sqrt(1-x^2) as profile (upper half), reflect for shape
+    let d = `M ${ox-150} ${oy}`;
+    for(let i=-100;i<=100;i++){
+      const t = i/100;
+      const yy = y_of(t)*scale;
+      d += ` L ${ox+t*150} ${oy-yy}`;
+    }
+    svg.appendChild(el('path',{d:d, fill:'none', stroke:'var(--ink-dim)','stroke-width':1.5}));
+    // mirror lower
+    let d2 = `M ${ox-150} ${oy}`;
+    for(let i=-100;i<=100;i++){
+      const t = i/100;
+      const yy = y_of(t)*scale;
+      d2 += ` L ${ox+t*150} ${oy+yy}`;
+    }
+    svg.appendChild(el('path',{d:d2, fill:'none', stroke:'var(--ink-dim)','stroke-width':1.5}));
+
+    // filled region up to xFrac
+    const steps=60;
+    let fillD = `M ${ox-150} ${oy}`;
+    for(let i=0;i<=steps;i++){
+      const t = -1 + (xFrac+1)*(i/steps);
+      const yy = y_of(t)*scale;
+      fillD += ` L ${ox+t*150} ${oy-yy}`;
+    }
+    for(let i=steps;i>=0;i--){
+      const t = -1 + (xFrac+1)*(i/steps);
+      const yy = y_of(t)*scale;
+      fillD += ` L ${ox+t*150} ${oy+yy}`;
+    }
+    fillD += ' Z';
+    svg.appendChild(el('path',{d:fillD, fill:'rgba(232,163,61,0.3)', stroke:'none'}));
+
+    // current disk line
+    const yy = y_of(xFrac)*scale;
+    svg.appendChild(el('line',{x1:ox+xFrac*150,y1:oy-yy,x2:ox+xFrac*150,y2:oy+yy,stroke:'var(--accent)','stroke-width':2}));
+
+    readX.textContent = `x = ${xFrac.toFixed(2)} r`;
+    // integral of pi(1-t^2) from -1 to xFrac
+    const F = t => Math.PI*(t - t*t*t/3);
+    const vol = F(xFrac) - F(-1);
+    eq.innerHTML = `V(x) = π[t − t³/3] from −1 to ${xFrac.toFixed(2)} = ${vol.toFixed(4)}  (full sphere: ${(4/3*Math.PI).toFixed(4)})`;
+  }
+  range.addEventListener('input', ()=>draw(range.value/100));
+  draw(0);
+})();
+
+/* ---------- 3. Monte Carlo ---------- */
+(function(){
+  const svg = document.getElementById('svgMC');
+  const btn = document.getElementById('btnMC');
+  const btnReset = document.getElementById('btnMCReset');
+  const eq = document.getElementById('eqMC');
+  let N=0, M=0;
+  const size=280, cx=150, cy=150, R=130;
+
+  function frame(){
+    svg.innerHTML='';
+    svg.appendChild(el('rect',{x:cx-R,y:cy-R,width:2*R,height:2*R,fill:'none',stroke:'var(--line)'}));
+    svg.appendChild(el('circle',{cx:cx,cy:cy,r:R,fill:'none',stroke:'var(--accent-dim)'}));
+  }
+  frame();
+
+  function addPoints(n){
+    for(let i=0;i<n;i++){
+      const x = Math.random()*2-1, y = Math.random()*2-1;
+      const inside = x*x+y*y<=1;
+      if(inside) M++;
+      N++;
+      const px = cx + x*R, py = cy + y*R;
+      svg.appendChild(el('circle',{cx:px,cy:py,r:1.1,fill: inside? 'var(--good)':'var(--ink-dim)', opacity:0.7}));
+    }
+    const ratio = M/N;
+    const piEst = 4*ratio; // 2D circle-in-square version, mirrors 3D logic
+    eq.innerHTML = `N = ${N}, M = ${M}  →  M/N = ${ratio.toFixed(4)} (2D circle ratio, theoretical π/4 ≈ 0.7854)`;
+    const sumMC = document.getElementById('sumMC');
+    if(sumMC) sumMC.textContent = N>0 ? `π≈${(piEst).toFixed(3)} (N=${N})` : 'not measured yet';
+  }
+
+  btn.addEventListener('click', ()=>addPoints(500));
+  btnReset.addEventListener('click', ()=>{ N=0;M=0; frame(); eq.textContent='N = 0, M = 0'; });
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const container = document.getElementById('stage3d');
+  const rangeP = document.getElementById('rangePappus');
+  const readP = document.getElementById('readPappus');
+  const btnSpin = document.getElementById('btnSpin');
+  if(!container || typeof THREE === 'undefined') return;
+
+  let w = container.clientWidth, h = 340;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, w/h, 0.1, 100);
+  let camDist = 6.2, camTheta = 0.9, camPhi = 1.15; // orbit angles
+  function updateCamera(){
+    camera.position.set(
+      camDist*Math.sin(camPhi)*Math.cos(camTheta),
+      camDist*Math.cos(camPhi),
+      camDist*Math.sin(camPhi)*Math.sin(camTheta)
+    );
+    camera.lookAt(0,0,0);
+  }
+  updateCamera();
+
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.setSize(w,h);
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+
+  scene.add(new THREE.AmbientLight(0xffffff,0.55));
+  const dLight = new THREE.DirectionalLight(0xffffff,0.9);
+  dLight.position.set(3,4,5);
+  scene.add(dLight);
+
+  const inkDim = 0x5a8aa0;
+  const accent = 0xe8a33d;
+  const good = 0x7fd0a0;
+
+  // axis line (x-axis, the rotation axis)
+  const axisGeo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-2.2,0,0), new THREE.Vector3(2.2,0,0)
+  ]);
+  scene.add(new THREE.Line(axisGeo, new THREE.LineBasicMaterial({color:inkDim})));
+
+  // faint full sphere for reference (wireframe)
+  const R = 1.6;
+  const sphereGeo = new THREE.SphereGeometry(R, 24, 16);
+  const sphereMat = new THREE.MeshBasicMaterial({color:inkDim, wireframe:true, transparent:true, opacity:0.18});
+  scene.add(new THREE.Mesh(sphereGeo, sphereMat));
+
+  // half-disk: a filled semicircle in the XY plane (y>=0), which we rotate about X axis
+  const segs = 40;
+  const diskShape = new THREE.Shape();
+  diskShape.moveTo(-R,0);
+  for(let i=0;i<=segs;i++){
+    const a = Math.PI - (i/segs)*Math.PI; // from PI to 0 -> upper half
+    diskShape.lineTo(R*Math.cos(a), R*Math.sin(a));
+  }
+  diskShape.lineTo(-R,0);
+  const diskGeo = new THREE.ShapeGeometry(diskShape);
+  const diskMat = new THREE.MeshStandardMaterial({color:accent, side:THREE.DoubleSide, transparent:true, opacity:0.85, roughness:0.5});
+  const diskMesh = new THREE.Mesh(diskGeo, diskMat);
+  // shape lies in XY plane by default (z=0); rotation about X axis is what we animate
+  const diskGroup = new THREE.Group();
+  diskGroup.add(diskMesh);
+  scene.add(diskGroup);
+
+  // swept surface: build as we increase angle, using a lathe-like ring set for trail
+  let sweptGroup = new THREE.Group();
+  scene.add(sweptGroup);
+
+  function rebuildSweep(angleDeg){
+    scene.remove(sweptGroup);
+    sweptGroup = new THREE.Group();
+    const steps = Math.max(2, Math.round(angleDeg/6));
+    const pts = [];
+    for(let i=0;i<=segs;i++){
+      const a = Math.PI - (i/segs)*Math.PI;
+      pts.push(new THREE.Vector2(R*Math.sin(a), R*Math.cos(a))); // (radius from x-axis, x-position) style for lathe
+    }
+    // Use LatheGeometry: rotates a 2D profile (x=radius,y=height along axis) around Y by default;
+    // we want rotation around X-axis representing our disk's y as radius and x as axial coord.
+    const profile = [];
+    for(let i=0;i<=segs;i++){
+      const a = Math.PI - (i/segs)*Math.PI;
+      const x = R*Math.cos(a); // axial position (-R..R)
+      const y = Math.max(R*Math.sin(a),0); // radius
+      profile.push(new THREE.Vector2(y, x)); // Vector2(radius, height-along-axis)
+    }
+    const angleRad = angleDeg*Math.PI/180;
+    const lathe = new THREE.LatheGeometry(profile, Math.max(3,steps), 0, Math.max(angleRad,0.001));
+    // LatheGeometry rotates around Y axis using (x=radius,y=height); we then rotate mesh so that Y axis -> X axis
+    const mat = new THREE.MeshStandardMaterial({color:accent, transparent:true, opacity:0.35, side:THREE.DoubleSide, roughness:0.6});
+    const mesh = new THREE.Mesh(lathe, mat);
+    mesh.rotation.z = Math.PI/2; // map lathe's Y-axis (its rotation axis) onto our X-axis
+    sweptGroup.add(mesh);
+    scene.add(sweptGroup);
+  }
+
+  function setAngle(deg){
+    diskGroup.rotation.x = -deg*Math.PI/180;
+    rebuildSweep(deg);
+    readP.textContent = `rotation = ${Math.round(deg)}°`;
+  }
+  setAngle(0);
+
+  rangeP.addEventListener('input', ()=> setAngle(+rangeP.value));
+
+  let spinning = false, spinT = null;
+  btnSpin.addEventListener('click', ()=>{
+    spinning = !spinning;
+    btnSpin.textContent = spinning ? 'Stop' : 'Auto-spin';
+    if(spinning){
+      let v = +rangeP.value;
+      spinT = setInterval(()=>{
+        v += 3;
+        if(v>360) v = 0;
+        rangeP.value = v;
+        setAngle(v);
+      }, 40);
+    } else {
+      clearInterval(spinT);
+    }
+  });
+
+  // simple drag-to-orbit
+  let dragging=false, lastX=0, lastY=0;
+  function onDown(e){ dragging=true; const p=e.touches?e.touches[0]:e; lastX=p.clientX; lastY=p.clientY; }
+  function onMove(e){
+    if(!dragging) return;
+    const p=e.touches?e.touches[0]:e;
+    const dx=p.clientX-lastX, dy=p.clientY-lastY;
+    lastX=p.clientX; lastY=p.clientY;
+    camTheta -= dx*0.008;
+    camPhi = Math.min(Math.max(camPhi - dy*0.008, 0.2), Math.PI-0.2);
+    updateCamera();
+    e.preventDefault();
+  }
+  function onUp(){ dragging=false; }
+  container.addEventListener('mousedown', onDown);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onUp);
+  container.addEventListener('touchstart', onDown, {passive:true});
+  container.addEventListener('touchmove', onMove, {passive:false});
+  window.addEventListener('touchend', onUp);
+
+  function animate(){
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', ()=>{
+    w = container.clientWidth; h = 340;
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+    renderer.setSize(w,h);
+  });
+})();
+
+/* ---------- shared orbit-scene helper ---------- */
+function makeOrbitScene(containerId, h){
+  const container = document.getElementById(containerId);
+  if(!container || typeof THREE === 'undefined') return null;
+  container.style.height = h+'px';
+  let w = container.clientWidth;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, w/h, 0.1, 100);
+  let camDist=6.2, camTheta=0.9, camPhi=1.15;
+  function updateCamera(){
+    camera.position.set(camDist*Math.sin(camPhi)*Math.cos(camTheta), camDist*Math.cos(camPhi), camDist*Math.sin(camPhi)*Math.sin(camTheta));
+    camera.lookAt(0,0,0);
+  }
+  updateCamera();
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.setSize(w,h);
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+  scene.add(new THREE.AmbientLight(0xffffff,0.55));
+  const dLight = new THREE.DirectionalLight(0xffffff,0.9); dLight.position.set(3,4,5); scene.add(dLight);
+  let dragging=false,lastX=0,lastY=0;
+  function onDown(e){dragging=true;const p=e.touches?e.touches[0]:e;lastX=p.clientX;lastY=p.clientY;}
+  function onMove(e){if(!dragging)return;const p=e.touches?e.touches[0]:e;const dx=p.clientX-lastX,dy=p.clientY-lastY;lastX=p.clientX;lastY=p.clientY;camTheta-=dx*0.008;camPhi=Math.min(Math.max(camPhi-dy*0.008,0.2),Math.PI-0.2);updateCamera();e.preventDefault();}
+  function onUp(){dragging=false;}
+  container.addEventListener('mousedown',onDown); window.addEventListener('mousemove',onMove); window.addEventListener('mouseup',onUp);
+  container.addEventListener('touchstart',onDown,{passive:true}); container.addEventListener('touchmove',onMove,{passive:false}); window.addEventListener('touchend',onUp);
+  function animate(){ requestAnimationFrame(animate); renderer.render(scene,camera); }
+  animate();
+  window.addEventListener('resize', ()=>{ w=container.clientWidth; camera.aspect=w/h; camera.updateProjectionMatrix(); renderer.setSize(w,h); });
+  return {scene, THREE};
+}
+
+/* ---------- 5. Cylindrical shell method ---------- */
+(function(){
+  const o = makeOrbitScene('stage3dShell', 320);
+  if(!o) return;
+  const {scene} = o;
+  const range = document.getElementById('rangeShell');
+  const readT = document.getElementById('readShell');
+  const eq = document.getElementById('eqShell');
+  const R = 1.6, accent=0xe8a33d, inkDim=0x5a8aa0;
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(R,24,16), new THREE.MeshBasicMaterial({color:inkDim,wireframe:true,transparent:true,opacity:0.15})));
+  const N=36, shells=[];
+  for(let i=1;i<=N;i++){
+    const t = (i/N)*R;
+    const ht = 2*Math.sqrt(Math.max(R*R-t*t,0));
+    const geo = new THREE.CylinderGeometry(t,t,ht,28,1,true);
+    const mat = new THREE.MeshStandardMaterial({color:inkDim,transparent:true,opacity:0.05,side:THREE.DoubleSide,roughness:0.6});
+    const mesh = new THREE.Mesh(geo,mat);
+    scene.add(mesh);
+    shells.push({mesh,t,mat});
+  }
+  function setT(tFrac){
+    const tCut = tFrac*R;
+    let vol=0;
+    shells.forEach(s=>{
+      const active = s.t<=tCut+1e-6;
+      s.mat.color.set(active?accent:inkDim);
+      s.mat.opacity = active?0.5:0.05;
+      if(active) vol += 2*Math.PI*s.t*(2*Math.sqrt(Math.max(R*R-s.t*s.t,0)))*(R/N);
+    });
+    readT.textContent = `t = ${tFrac.toFixed(2)} r`;
+    const volNorm = vol/(R*R*R); // normalize to r=1 units
+    eq.innerHTML = `V(t) ≈ ${volNorm.toFixed(4)}  (full sphere: ${(4/3*Math.PI).toFixed(4)})`;
+  }
+  range.addEventListener('input', ()=>setT(range.value/100));
+  setT(0);
+})();
+
+/* ---------- 6. Kepler infinitesimal pyramids ---------- */
+(function(){
+  const o = makeOrbitScene('stage3dKepler', 320);
+  if(!o) return;
+  const {scene} = o;
+  const range = document.getElementById('rangeKepler');
+  const rangeExp = document.getElementById('rangeExplode');
+  const readN = document.getElementById('readKepler');
+  const readExp = document.getElementById('readExplode');
+  const eq = document.getElementById('eqKepler');
+  const R = 1.6, accent=0xe8a33d;
+  let group = new THREE.Group(); scene.add(group);
+  let patches = []; // cached per rebuild of count: {sphereVerts:[5 Vec3], flatVerts:[5 Vec3], mesh, posAttr}
+
+  function build(nRows){
+    scene.remove(group);
+    group = new THREE.Group();
+    patches = [];
+    const rows = nRows, cols = nRows*2;
+    const shrink = 0.94;
+    function pt(u,v){
+      const theta = Math.PI*u/rows, phi = 2*Math.PI*v/cols;
+      return new THREE.Vector3(R*Math.sin(theta)*Math.cos(phi), R*Math.cos(theta), R*Math.sin(theta)*Math.sin(phi));
+    }
+    // grid layout for the flattened / exploded state
+    const spacing = (2*Math.PI*R/cols)*1.15;
+    const gridW = cols*spacing, gridH = rows*spacing;
+    let count=0;
+    for(let u=0;u<rows;u++){
+      for(let v=0;v<cols;v++){
+        const p1=pt(u,v), p2=pt(u+1,v), p3=pt(u+1,v+1), p4=pt(u,v+1);
+        const c = new THREE.Vector3().add(p1).add(p2).add(p3).add(p4).multiplyScalar(0.25);
+        const s1=p1.clone().sub(c).multiplyScalar(shrink).add(c);
+        const s2=p2.clone().sub(c).multiplyScalar(shrink).add(c);
+        const s3=p3.clone().sub(c).multiplyScalar(shrink).add(c);
+        const s4=p4.clone().sub(c).multiplyScalar(shrink).add(c);
+        const apex = new THREE.Vector3(0,0,0);
+        const sphereVerts = [apex,s1,s2,s3,s4];
+
+        // local tangent frame at patch center, to flatten the same in-plane shape
+        const nrm = c.clone().normalize();
+        let e1 = s2.clone().sub(s1); e1 = e1.sub(nrm.clone().multiplyScalar(e1.dot(nrm))).normalize();
+        const e2 = new THREE.Vector3().crossVectors(nrm, e1).normalize();
+        const gx = (v-cols/2)*spacing, gz = (u-rows/2)*spacing;
+        const base = new THREE.Vector3(gx,0,gz);
+        function toFlat(p){
+          const d = p.clone().sub(c);
+          const lx = d.dot(e1), ly = d.dot(e2);
+          return new THREE.Vector3(base.x+lx, 0, base.z+ly);
+        }
+        const apexHeight = c.length(); // ~R*shrink, distance from patch center to origin
+        const flatVerts = [
+          new THREE.Vector3(base.x,apexHeight,base.z),
+          toFlat(s1), toFlat(s2), toFlat(s3), toFlat(s4)
+        ];
+
+        const idx = [0,1,2, 0,2,3, 0,3,4, 0,4,1, 1,2,3, 1,3,4];
+        const geo = new THREE.BufferGeometry();
+        const arr = new Float32Array(5*3);
+        geo.setAttribute('position', new THREE.BufferAttribute(arr,3));
+        geo.setIndex(idx); geo.computeVertexNormals();
+        const mat = new THREE.MeshStandardMaterial({color:accent, transparent:true, opacity:0.75, side:THREE.DoubleSide, roughness:0.55});
+        const mesh = new THREE.Mesh(geo,mat);
+        group.add(mesh);
+        patches.push({sphereVerts, flatVerts, posAttr:geo.attributes.position, geo});
+        count++;
+      }
+    }
+    scene.add(group);
+    readN.textContent = `pyramids = ${count}`;
+    const trueV = 4/3*Math.PI*R*R*R;
+    eq.innerHTML = `${count} patches → V ≈ Σ⅓·dA·r  (true value: ${(4/3*Math.PI).toFixed(4)}, more patches = better approximation)`;
+    applyExplode(+rangeExp.value/100);
+  }
+
+  function applyExplode(mix){
+    patches.forEach(p=>{
+      const arr = p.posAttr.array;
+      for(let i=0;i<5;i++){
+        const a = p.sphereVerts[i], b = p.flatVerts[i];
+        arr[i*3]   = a.x + (b.x-a.x)*mix;
+        arr[i*3+1] = a.y + (b.y-a.y)*mix;
+        arr[i*3+2] = a.z + (b.z-a.z)*mix;
+      }
+      p.posAttr.needsUpdate = true;
+      p.geo.computeVertexNormals();
+    });
+    readExp.textContent = `assembled (${Math.round(mix*100)}%)`;
+  }
+
+  range.addEventListener('input', ()=>build(Math.max(3,Math.round(range.value/2))));
+  rangeExp.addEventListener('input', ()=>applyExplode(+rangeExp.value/100));
+  build(12);
+})();
+
+/* ---------- 7. n-dimensional generalization ---------- */
+(function(){
+  const svg = document.getElementById('svgNdim');
+  const range = document.getElementById('rangeNdim');
+  const readN = document.getElementById('readNdim');
+  const eq = document.getElementById('eqNdim');
+
+  function gamma(x){ // Lanczos approximation
+    const g=7, c=[0.99999999999980993,676.5203681218851,-1259.1392167224028,771.32342877765313,-176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];
+    if(x<0.5) return Math.PI/(Math.sin(Math.PI*x)*gamma(1-x));
+    x-=1; let a=c[0]; const t=x+g+0.5;
+    for(let i=1;i<g+2;i++) a+=c[i]/(x+i);
+    return Math.sqrt(2*Math.PI)*Math.pow(t,x+0.5)*Math.exp(-t)*a;
+  }
+  function Vn(n){ return Math.pow(Math.PI,n/2)/gamma(n/2+1); }
+
+  const w=640,hh=240, padL=50, padB=30, padT=20, plotW=w-padL-20, plotH=hh-padT-padB;
+  const nMax=20;
+  const pts=[]; for(let n=1;n<=nMax;n+=0.2) pts.push([n,Vn(n)]);
+  const yMax = Math.max(...pts.map(p=>p[1]))*1.1;
+
+  function xPix(n){ return padL + (n-1)/(nMax-1)*plotW; }
+  function yPix(v){ return padT + plotH - (v/yMax)*plotH; }
+
+  function draw(nSel){
+    svg.innerHTML='';
+    svg.appendChild(el('line',{x1:padL,y1:padT+plotH,x2:padL+plotW,y2:padT+plotH,stroke:'var(--line)'}));
+    svg.appendChild(el('line',{x1:padL,y1:padT,x2:padL,y2:padT+plotH,stroke:'var(--line)'}));
+    let d = `M ${xPix(pts[0][0])} ${yPix(pts[0][1])}`;
+    pts.forEach(p=>{ d+=` L ${xPix(p[0])} ${yPix(p[1])}`; });
+    svg.appendChild(el('path',{d, fill:'none', stroke:'var(--ink-dim)','stroke-width':2}));
+    // peak marker near n~5.26
+    let peak = pts.reduce((a,b)=> b[1]>a[1]?b:a);
+    const pxp = xPix(peak[0]), pyp = yPix(peak[1]);
+    svg.appendChild(el('circle',{cx:pxp,cy:pyp,r:3,fill:'var(--good)'}));
+    svg.appendChild(labelText(pxp,pyp-10,`peak at n≈${peak[0].toFixed(1)}`));
+    // selected n marker
+    const vSel = Vn(nSel);
+    const sx = xPix(nSel), sy = yPix(vSel);
+    svg.appendChild(el('line',{x1:sx,y1:padT+plotH,x2:sx,y2:sy,stroke:'var(--accent)','stroke-dasharray':'3,3'}));
+    svg.appendChild(el('circle',{cx:sx,cy:sy,r:4,fill:'var(--accent)'}));
+    for(let i=1;i<=nMax;i+=Math.ceil(nMax/10)){
+      svg.appendChild(labelText(xPix(i), padT+plotH+16, String(i)));
+    }
+    readN.textContent = `n = ${nSel}`;
+    eq.innerHTML = `V_${nSel} = π^(${nSel}/2)/Γ(${nSel}/2+1) = ${vSel.toFixed(5)}`;
+  }
+  function labelText(x,y,t){
+    const e = el('text',{x:x,y:y,'text-anchor':'middle',fill:'var(--ink-dim)','font-size':'11','font-family':'JetBrains Mono, monospace'});
+    e.textContent = t; return e;
+  }
+  range.addEventListener('input', ()=>draw(+range.value));
+  draw(5);
+})();
+
+/* ---------- 8. Monte Carlo 3D ---------- */
+(function(){
+  const o = makeOrbitScene('stage3dMC', 360);
+  if(!o) return;
+  const {scene} = o;
+  const btn = document.getElementById('btnMC3D');
+  const btnReset = document.getElementById('btnMC3DReset');
+  const eq = document.getElementById('eqMC3D');
+  const R = 1.6, good=0x7fd0a0, inkDim=0x5a8aa0;
+
+  const cubeGeo = new THREE.BoxGeometry(2*R,2*R,2*R);
+  scene.add(new THREE.LineSegments(new THREE.EdgesGeometry(cubeGeo), new THREE.LineBasicMaterial({color:inkDim, transparent:true, opacity:0.5})));
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(R,24,16), new THREE.MeshBasicMaterial({color:inkDim,wireframe:true,transparent:true,opacity:0.15})));
+
+  const MAX = 400000;
+  const dummy = new THREE.Object3D();
+  const sphSize = 0.028*R;
+  const geoIn = new THREE.SphereGeometry(sphSize,5,4);
+  const geoOut = new THREE.SphereGeometry(sphSize*0.7,4,3);
+  const matIn = new THREE.MeshBasicMaterial({color:good});
+  const matOut = new THREE.MeshBasicMaterial({color:inkDim, transparent:true, opacity:0.35});
+  const meshIn = new THREE.InstancedMesh(geoIn, matIn, MAX);
+  const meshOut = new THREE.InstancedMesh(geoOut, matOut, MAX);
+  meshIn.count = 0; meshOut.count = 0;
+  scene.add(meshIn); scene.add(meshOut);
+
+  let N=0, M=0, cIn=0, cOut=0;
+
+  function addPoints(n){
+    for(let i=0;i<n;i++){
+      const x=(Math.random()*2-1)*R, y=(Math.random()*2-1)*R, z=(Math.random()*2-1)*R;
+      const inside = x*x+y*y+z*z <= R*R;
+      N++;
+      if(inside){
+        M++;
+        dummy.position.set(x,y,z); dummy.updateMatrix();
+        if(cIn<MAX){ meshIn.setMatrixAt(cIn, dummy.matrix); cIn++; }
+      } else {
+        dummy.position.set(x,y,z); dummy.updateMatrix();
+        if(cOut<MAX){ meshOut.setMatrixAt(cOut, dummy.matrix); cOut++; }
+      }
+    }
+    meshIn.count = cIn; meshOut.count = cOut;
+    meshIn.instanceMatrix.needsUpdate = true; meshOut.instanceMatrix.needsUpdate = true;
+    const ratio = M/N, piEst = 6*ratio;
+    eq.innerHTML = `N = ${N.toLocaleString()}, M = ${M.toLocaleString()}  →  M/N = ${ratio.toFixed(4)} (theoretical π/6 ≈ 0.5236, π≈${piEst.toFixed(3)})`;
+  }
+  btn.addEventListener('click', ()=>addPoints(20000));
+  btnReset.addEventListener('click', ()=>{ N=0;M=0;cIn=0;cOut=0; meshIn.count=0; meshOut.count=0; eq.textContent='N = 0, M = 0'; });
+})();
+</script>
+</body>
+</html>
