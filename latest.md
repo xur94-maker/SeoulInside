@@ -147,40 +147,6 @@ https://gemini.google.com
  
 
 ----
-Passive Layer — Essential Citations (Central Hub) | https://seoulinside.substack.com/p/passive-layer-essential-citations
-
-
-High-Energy Particle Generation and Dynamic Gravity Systems Near Black Hives | https://seoulinside.substack.com/p/high-energy-particle-generation-and
-
-
-A Unified Technical Framework — Simulation Evidence and Theoretical Foundations | https://seoulinside.substack.com/p/a-unified-technical-framework-simulation
-
-
-Black Hole Displacement and the Default State of Spiral Galaxies | https://seoulinside.substack.com/p/black-hole-displacement-and-the-default
-
-
-Vacuum Fluctuations, Delayed Gravity, and the Statistical Mass of the Universe | https://seoulinside.substack.com/p/vacuum-fluctuations-delayed-gravity
-
-
-Pair Annihilation as a Special Case | https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
-
-
-Long-Term Survival of Antimatter and the Matter-Antimatter Asymmetry | https://seoulinside.substack.com/p/long-term-survival-of-antimatter
-
-
-The Connected Framework: How the Suppression of Pair Annihilation Links the Big Bang, the CMB, and Black Hole Mass Variability | https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
-
-
-The Black Hole Mass Variability — Complete Research Archive | https://seoulinside.substack.com/p/the-black-hole-mass-variability-complete
-
-
-Dark Energy Reinterpreted — Cosmic Expansion as the Relaxation of Curvature | https://seoulinside.substack.com/p/dark-energy-reinterpreted-cosmic
-
-
-A Numerical Confirmation of General Relativity | https://seoulinside.substack.com/p/a-numerical-confirmation-of-general
-
-----
-----
 
 [01] A Relativistic Particle Collider, Built in Pure JavaScript
 https://seoulinside.substack.com/p/i-built-an-lhc-in-the-browser-making
@@ -246,9 +212,38 @@ https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
 https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
 
  
-----
-----
-----
+[Methods for Deriving the Volume of a Sphere V = ⁴⁄₃π r³](https://seoulinside.substack.com/p/methods-for-deriving-the-volume-of)
+
+[Map: Reconstruction | Part 10 — Right-Value & Appraisal Dispute Casebook (31 Cases + 8 Principles, March 2026)](https://seoulinside.substack.com/p/map-reconstruction-part-10-right)
+
+[What Is Gravity?](https://seoulinside.substack.com/p/what-is-gravity)
+
+[The Lorentz Force | 𝐅 = q ( 𝐄 + 𝐯 × 𝐁 ) - Why Does the Aurora Happen? — Understanding It Through the LF Archive[Part 2]](https://seoulinside.substack.com/p/the-lorentz-force-q-why-does-the-9a5)
+
+[The Lorentz Force | 𝐅 = q ( 𝐄 + 𝐯 × 𝐁 ) - Why Does the Aurora Happen? — Understanding It Through the LF [Part 1]](https://seoulinside.substack.com/p/the-lorentz-force-q-why-does-the)
+
+[Maxwell's Equations: Differential and Integral Forms](https://seoulinside.substack.com/p/maxwells-equations-differential-and)
+
+[Symmetry and Ratios in Cubic Functions — Why Does This Happen?](https://seoulinside.substack.com/p/symmetry-and-ratios-in-cubic-functions)
+
+[The Three-Body (and N-Body) Problem: Concepts and Formulas](https://seoulinside.substack.com/p/the-three-body-and-n-body-problem)
+
+[Chaos Theory: Concepts and Formulas](https://seoulinside.substack.com/p/chaos-theory-concepts-and-formulas)
+
+[Entropy Across Physics and Information: A Structured Guide](https://seoulinside.substack.com/p/entropy-across-physics-and-information)
+
+[Ways to Compute the Natural Constant e — and a Few Coincidences](https://seoulinside.substack.com/p/ways-to-compute-the-natural-constant)
+
+[The Geometric Series: From Savings Accounts to Option Pricing](https://seoulinside.substack.com/p/the-geometric-series-from-savings)
+
+[The Arithmetic Mean–Geometric Mean (AM-GM) Inequality](https://seoulinside.substack.com/p/the-arithmetic-meangeometric-mean)
+
+[How Do You Compute Irrational Numbers? — How Is √2 Calculated?](https://seoulinside.substack.com/p/how-do-you-compute-irrational-numbers)
+
+[Formulas for Calculating π and an Interactive Page](https://seoulinside.substack.com/p/formulas-for-calculating-and-an-interactive)
+
+[Yi Sun-sin (1545–1598) | War Diary in Four Lines](https://seoulinside.substack.com/p/not-a-sacred-hero-but-a-human-being)
+
 [Hangul, Understanding the Logic in One Sitting | A 600-Year-Old Guide to Hunminjeongeum, in Today's Language](https://seoulinside.substack.com/p/hangul-understanding-the-logic-in)
 
 [Fermat’s Last Theorem — Surfaces and Lattices | An Interactive Experience for Building Basic Intuition](https://seoulinside.substack.com/p/fermats-last-theorem-surfaces-and)
@@ -269,9 +264,9 @@ https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
 
 [Quantum Mechanical Modeling of the Hydrogen Atom: Formulas, Corrections, and Simulation](https://seoulinside.substack.com/p/quantum-mechanical-modeling-of-the)
 
-[Live : Kpop GG | J.S. Von (26.09.15) | Chart Watch , New Releases , Idol News](https://seoulinside.substack.com/p/live-kpop-gg-js-von-260903-chart)
+[Live : Kpop GG | J.S. Von (26.09.21) | Chart Watch , New Releases , Idol News](https://seoulinside.substack.com/p/live-kpop-gg-js-von-260903-chart)
 
-[Live : Kpop BG | J.S. Von (Update 26.09.15) | Chart Watch , New Releases , Idol News](https://seoulinside.substack.com/p/live-kpop-bg-js-von-update-260903)
+[Live : Kpop BG | J.S. Von (Update 26.09.21) | Chart Watch , New Releases , Idol News](https://seoulinside.substack.com/p/live-kpop-bg-js-von-update-260903)
 
 [Live : Issue | J.S. Von (Update 26.09.11)](https://seoulinside.substack.com/p/live-korea-as-it-happens-memes-and)
 
