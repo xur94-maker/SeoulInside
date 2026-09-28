@@ -1,28 +1,28 @@
 {
   "globalNews": [
     {
-      "title": "Iranian minister says only negotiation can end conflict after Trump rejects Hormuz deal",
-      "link": "https://www.bbc.co.uk/news/articles/cmvgyyw2jeego?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 27 Sep 2026 07:44:11 GMT",
-      "desc": "The foreign minister says Tehran is waiting for an official rejection of a deal, despite the US President's comments."
+      "title": "Inside Yemen's front-line city as Houthis battle for control",
+      "link": "https://www.bbc.co.uk/news/articles/cw98005ndz7no?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 27 Sep 2026 21:16:31 GMT",
+      "desc": "In rare access to Yemen's conflict zone the BBC travels to the front line with pro-government soldiers."
     },
     {
-      "title": "Two mass shootings in South Africa leave 27 dead",
-      "link": "https://www.bbc.co.uk/news/articles/ck5ywnp075d1o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 27 Sep 2026 14:09:22 GMT",
-      "desc": "The two attacks hours apart come as the country struggles to stop high levels of gang-related armed violence."
-    },
-    {
-      "title": "Killer Christa Pike to be executed within days - but her defence say she's a victim too",
-      "link": "https://www.bbc.co.uk/news/articles/c6pwl9g9ne1lo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 26 Sep 2026 23:04:08 GMT",
-      "desc": "Lawyers for Pike, who killed a fellow student in 1995, say she should get clemency and would not be sentenced to death if the crime happened today."
+      "title": "Embattled Serbian president resigns, paving way for early elections",
+      "link": "https://www.bbc.co.uk/news/articles/ckpq0g7z5pjjo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 27 Sep 2026 20:04:21 GMT",
+      "desc": "Aleksandar Vučić's administration has been dogged by prolonged protests over allegations of corruption."
     },
     {
       "title": "Two bodies found after avalanche hits Himalayan climbing group",
       "link": "https://www.bbc.co.uk/news/articles/cwjdvml9e897o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 27 Sep 2026 17:05:26 GMT",
       "desc": "Rescuers are looking for at least 10 Nepalese people who were preparing to take climbers up the Himlung Himal peak."
+    },
+    {
+      "title": "Two mass shootings in South Africa leave 27 dead",
+      "link": "https://www.bbc.co.uk/news/articles/ck5ywnp075d1o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 27 Sep 2026 14:09:22 GMT",
+      "desc": "The two attacks hours apart come as the country struggles to stop high levels of gang-related armed violence."
     },
     {
       "title": "Four killed in helicopter crash near Montreal",
@@ -33,22 +33,28 @@
   ],
   "koreaNews": [
     {
+      "title": "[Yoo Choon-sik] When headline growth tells only half the story - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9qWGx1Zkc5bnBHOVFvYmtmU1VNY2tZQVVjQ3pVU093ZWlKZUtfRkZZZFRwTkVidzY3ME1MRDg0OUdHZFBpdG45QXNvSlRCTUp0ZldGOFczTQ?oc=5",
+      "date": "Sun, 27 Sep 2026 20:30:00 GMT",
+      "desc": "[Yoo Choon-sik] When headline growth tells only half the story&nbsp;&nbsp;The Korea Herald"
+    },
+    {
       "title": "Korea’s Democratic Party gets behind Lee as economic challenges test his politics of compromise - East Asia Forum",
       "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPUk1lS29laWVDejRGVVJEZllLTUJwRE9RZGNqTTZRckJtSzFzdWVjZTY5dVh0Q2hiZy1zY0FZeUR6Q2FKWllPNmQ0SjFIUXVKSnRLOHBkdllWYU5BVUF4Z0Faa25IcGc4SURkdTBpRm5XOEE5T095bjR1T21CX0EtNXRpRzJzVmJ3eFdfRnV6VnRYc2ViMlo2WVJJVmpuUkJ1RHdNQ3UtV0xFem9CYnI0TldjMTN4MnNwdHhwTFFYcVVaSWhMdVNHSHFPb2E?oc=5",
       "date": "Sun, 27 Sep 2026 12:00:00 GMT",
       "desc": "Korea’s Democratic Party gets behind Lee as economic challenges test his politics of compromise&nbsp;&nbsp;East Asia Forum"
     },
     {
-      "title": "South Korea bets big on AI for all - Financial Times",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5oMmRtMngwVllBUWtFUEFIeGVoc0VGd2RRUWNhdE1YRjdIcFNnWjNqY2ZJVmNzNUhSWW5hejRFTng1TUJ1VGVlMTVjWElTSDZoVTdNeVhuOW1qaHpkTTk4TnNkdkpzYmdidEdIZWdseUs?oc=5",
-      "date": "Sun, 27 Sep 2026 04:01:32 GMT",
-      "desc": "South Korea bets big on AI for all&nbsp;&nbsp;Financial Times"
-    },
-    {
-      "title": "South Korea tax windfall could top 50tn won: Yonhap - taipeitimes.com",
+      "title": "South Korea tax windfall could top 50tn won: Yonhap - Taipei Times",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE92cjBhM19UTGx4Uk5iSkRPd0dhb1diZGVhSzJqeElURFdvNHhqRXRDN3AxZEo0RUtwSHJRNDVXcmM0Vk1hRERMdVVJbFJMbFZRZDVyXzE5Z3J4VXZtQTBNRWIwWmN2NEdXLVhKRk9NdEowYWthVHc?oc=5",
       "date": "Sun, 27 Sep 2026 16:00:00 GMT",
-      "desc": "South Korea tax windfall could top 50tn won: Yonhap&nbsp;&nbsp;taipeitimes.com"
+      "desc": "South Korea tax windfall could top 50tn won: Yonhap&nbsp;&nbsp;Taipei Times"
+    },
+    {
+      "title": "Global Affairs Lab Releases Two Interactive Games on US-South Korea Economic Ties - Bluefield Daily Telegraph",
+      "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNaWdpcFFSV3RreWtLWUFLTVlkRmVMNlF0ZG9XT01ueTZIalc3b09xOTh4LUFvel9EZmFpZ2tnZU1uWVRxcU9Gd1MxYzBzd0hWWnZiZlNXdkNJNVJEWXc0cmh4TTZmX3pVVy11YWVQQ0dSY0ZfdmpDYmxGRmFTbUFSZklxWmVqYlUwUEw1eUlBQzJjQjY1dE9pNTRibHo1VkZyOGkxa3JtOXRrSjdmVlpLX3BzMUduRDZjWHlTZWZ5bnRycERWeXRUX3N1dnExR09mZ1NEYzVSYTVyQ1cyNjlJUDRGNmt5Rlc2TFhITFpTTUNqWGI0LUtZ?oc=5",
+      "date": "Sun, 27 Sep 2026 19:15:33 GMT",
+      "desc": "Global Affairs Lab Releases Two Interactive Games on US-South Korea Economic Ties&nbsp;&nbsp;Bluefield Daily Telegraph"
     },
     {
       "title": "Energy for AI Leads South Korea’s U.S. Investment Pipeline - Korea Economic Institute of America -",
@@ -57,10 +63,10 @@
       "desc": "Energy for AI Leads South Korea’s U.S. Investment Pipeline&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "Korea, Mexico expand economic ties into advanced industries, energy, culture - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51ZlBQMjhLaEozNVNhOWRnMkJELUhGb2R2Uko1bmNZU3BkekRSWXBFYWtVZ0JmNnRXYmFKUkhiMGpXdllwOU0wSDFiaGVKdkxMdnI0emNQbw?oc=5",
-      "date": "Sun, 27 Sep 2026 04:38:48 GMT",
-      "desc": "Korea, Mexico expand economic ties into advanced industries, energy, culture&nbsp;&nbsp;The Korea Herald"
+      "title": "Samsung, SK hynix parental leave falls as bonuses loom - 동아일보",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE82SmFZNjhBamYtSGhxSWtaQzhzZVRVOVFPbmhTYlNoUy1xRWNLOXlCbC15TUdnaFIteG5TdmU5N3BEemlHTV9QUEJ0bmdUT2E4QXZtX1FkQm9jV1VzUWFQb2lFOXQwUQ?oc=5",
+      "date": "Sun, 27 Sep 2026 22:42:56 GMT",
+      "desc": "Samsung, SK hynix parental leave falls as bonuses loom&nbsp;&nbsp;동아일보"
     },
     {
       "title": "Parental leave falls at Samsung, SK hynix as hefty bonuses loom - The Korea Times",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYnpHUUJFNVd4Um40OTZXaE9PRnZ2UllOQjJkNnBTeFlVRGlGLWRpb2drSzRZcEJQSDBPaFhPUWE4NHUwemZIUnF6ZXZMbHZkdm5KWUUxejd4clBPRUhNTEhDTElvQ1BNWnJ1RkFWOGI3U2k1MFZ2T3QyMmswZTc5b2QzOXNmMmV2M1dkNTRzY0hXdTg3ZWtiZTNGR1hEWkI0ZjVxQ0RWSlVEMmNhcFJUQTM3M1g3UWNMLWc?oc=5",
       "date": "Sun, 27 Sep 2026 05:39:48 GMT",
       "desc": "Parental leave falls at chipmakers amid promises of hefty bonuses&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "Semiconductor Boom Leads to Simultaneous Drop in Parental Leave Rates at Samsung, SK Hynix - news.sbs.co.kr",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5RLWVWQWUzNUF3TV8wOEdlR3dOTHFlSGJ1eGVmdXlRbzEyMUlKYWJCUE80d1hRZUpQdGpoeWFfaGV5OHlqdjZYS3g4TkZIWElFMmF4Z2o2dlYtU3BlSDMzRWIwM040Vk51Vi1ndDB30gFmQVVfeXFMTWZFbFM2TW11d2ZVcXBtZi05ZXU3Nno4cnBHWFpkcmlJcjJWcGJGWTdmLU1mZV9OVGpyRTJ0WVVLWFJvQzhnX2lQQmljSnZ5eTNIOUpDN3R4dlNSYVVMa0t5aDlOMXV3?oc=5",
-      "date": "Sun, 27 Sep 2026 08:19:17 GMT",
-      "desc": "Semiconductor Boom Leads to Simultaneous Drop in Parental Leave Rates at Samsung, SK Hynix&nbsp;&nbsp;news.sbs.co.kr"
     }
   ],
   "worldStocks": [
@@ -176,58 +176,58 @@
       "symbol": "005930.KS",
       "label": "Samsung",
       "price": 285500.0,
-      "change": 11500.0,
-      "pct": 4.2,
+      "change": 9000.0,
+      "pct": 3.25,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
       "price": 1862000.0,
-      "change": -6000.0,
-      "pct": -0.32,
+      "change": 22000.0,
+      "pct": 1.2,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
       "price": 353500.0,
-      "change": -5500.0,
-      "pct": -1.53,
+      "change": -7000.0,
+      "pct": -1.94,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
       "price": 115400.0,
-      "change": -4600.0,
-      "pct": -3.83,
+      "change": -3100.0,
+      "pct": -2.62,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
       "price": 194700.0,
-      "change": -3200.0,
-      "pct": -1.62,
+      "change": -6300.0,
+      "pct": -3.13,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
       "price": 7080.92,
-      "change": 73.2,
-      "pct": 1.04,
+      "change": 63.01,
+      "pct": 0.9,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1355.28,
-      "change": -7.22,
-      "pct": -0.53,
+      "price": 1357.08,
+      "change": -10.28,
+      "pct": -0.75,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-27 17:58 UTC"
+  "updatedAt": "2026-09-28 00:15 UTC"
 }
