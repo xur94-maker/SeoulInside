@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Spain announces ban on evictions after protests over 87-year-old woman's removal from flat",
+      "link": "https://www.bbc.co.uk/news/articles/cwm2qmjgy93do?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 29 Sep 2026 16:23:58 GMT",
+      "desc": "The ban is part of a number of proposals that must be approved in parliament within 30 days."
+    },
+    {
       "title": "'I was lured into a trap': Evan Gershkovich on moment that led to 16 months in Russian jail",
       "link": "https://www.bbc.co.uk/news/articles/ck9qr8jy8ynyo?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 29 Sep 2026 12:43:04 GMT",
@@ -13,22 +19,16 @@
       "desc": "Two homes belonging to the al-Tubasi family were set on fire and Israeli security forces were also targeted by settlers."
     },
     {
-      "title": "Estonia blames Russia for arson at defence company supplying Ukraine",
-      "link": "https://www.bbc.co.uk/news/articles/c6m27l4er4jxo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 29 Sep 2026 13:15:51 GMT",
-      "desc": "Russia has been accused of launching sabotage attacks across a number of European Nato countries which have been helping Ukraine."
+      "title": "Dutch police arrest suspected member of group that claimed FBI hack",
+      "link": "https://www.bbc.co.uk/news/articles/cw5ym18znr0ro?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 29 Sep 2026 15:40:10 GMT",
+      "desc": "The suspect, 24, was arrested before the alleged cyber attack took place."
     },
     {
-      "title": "OpenAI scraps rollout of new model over safety concerns",
-      "link": "https://www.bbc.co.uk/news/articles/cm5y5nynl75ko?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 29 Sep 2026 09:14:13 GMT",
-      "desc": "The firm also issued an update on incidents in which its models accessed Australian government systems."
-    },
-    {
-      "title": "Spain announces ban on evictions after protests over 87-year-old woman's eviction",
-      "link": "https://www.bbc.co.uk/news/articles/cwm2qmjgy93do?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 29 Sep 2026 15:26:23 GMT",
-      "desc": "The ban is part of a number of proposals that must be approved in parliament within 30 days."
+      "title": "First female prime minister named in Morocco after winning elections",
+      "link": "https://www.bbc.co.uk/news/articles/c674kkjllw17o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 29 Sep 2026 17:14:10 GMT",
+      "desc": "Her appointment by the king makes her only the second woman to lead a government in the Arab world."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,22 @@
       "desc": "Libya and South Korea Launch Economic Forum in Tripoli&nbsp;&nbsp;Libya Herald"
     },
     {
+      "title": "Donald Trump Unlikely to Meet Kim Jong Un - Foreign Policy in Focus",
+      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5fSkc1aFZhTmNKdlR6QWc2cHhrRGx4bGZtZ1ZHZXJwQmxLT3dvUUloQ1M1NW5ZRS1uVFhUeFVMVWtiREdFaGxnQ2RuS1RWVTRDb0RXUUJSYTZiWkxzbHlLNU12Y1RxSEhILWln?oc=5",
+      "date": "Tue, 29 Sep 2026 16:41:24 GMT",
+      "desc": "Donald Trump Unlikely to Meet Kim Jong Un&nbsp;&nbsp;Foreign Policy in Focus"
+    },
+    {
       "title": "How South Korea Can Cope With Volatility in Global Bond Markets - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQd2xDQmtXV0Q1Z0tyRnhoV19KLVcyTURxLS05QXFOSjVnRVlyY3pmeXhiWWw3ZE9wZDZpNE15a25vVmVKY0pWVHl1c1ZaZld4TTdFOUp4UDRVOUhmY0IzWlBZVzhxMl9FdE00OTVUMHlzSVljY3VLbThFeUt2Q2pKVVVqRWNkWThreUhDd1N5OUpHeV94?oc=5",
       "date": "Mon, 28 Sep 2026 20:56:44 GMT",
       "desc": "How South Korea Can Cope With Volatility in Global Bond Markets&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "South Korean Ambassador On Economic Relations and Military Power at East Asian Studies Talk - wesleyanargus.com",
+      "title": "South Korean Ambassador On Economic Relations and Military Power at East Asian Studies Talk - The Wesleyan Argus",
       "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOVjFHejJvSktScWowazBoTWNNZ2M1Y0U5UnBqTUlVc2t3ekRNVjlOQnNWR01WRTIyUFBpWVZ5YWdjSzNubC1YclJYY0w0RWo5MDBwVkpEbGZQSlItMHA5T04wVzNwTU5ZRGZxbTJlZkNDUzN6UURBQjFJdDBVS180ZmdZdzJUeUZMWGFkb2RfaTVNbzFzYmhCNzNiSXk3cTh5OHNPSUZDZFZieFFYTm1CX3ZIeG9scXBGLVZaNTE5YkItSzlPZW1MNA?oc=5",
-      "date": "Tue, 29 Sep 2026 04:50:40 GMT",
-      "desc": "South Korean Ambassador On Economic Relations and Military Power at East Asian Studies Talk&nbsp;&nbsp;wesleyanargus.com"
+      "date": "Tue, 29 Sep 2026 03:50:40 GMT",
+      "desc": "South Korean Ambassador On Economic Relations and Military Power at East Asian Studies Talk&nbsp;&nbsp;The Wesleyan Argus"
     },
     {
       "title": "Why South Korea Is Moving Into Central Asia — and What China and Russia Think About It - Caspian Post",
@@ -57,117 +63,111 @@
       "desc": "Why South Korea Is Moving Into Central Asia — and What China and Russia Think About It&nbsp;&nbsp;Caspian Post"
     },
     {
-      "title": "S.Korean president cites increased exports in calling China ties ‘important’; pragmatic diplomacy yields win-win outcomes: expert - Global Times",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBnV3ZyZDNTSTlSYVVUS0xXNDA3RVR3emZVWTFya3VQWjhpSXFzdFFTbnVkYzU1ZHI4WER2VnlxREpLMlFiSTU3QjF2d3Vya0F1SFNUTVptUFpPN1VEVWVLV0pB?oc=5",
-      "date": "Tue, 29 Sep 2026 08:53:00 GMT",
-      "desc": "S.Korean president cites increased exports in calling China ties ‘important’; pragmatic diplomacy yields win-win outcomes: expert&nbsp;&nbsp;Global Times"
-    },
-    {
       "title": "Korea reopens Honam grid to support Samsung, SK chip plants - Korea JoongAng Daily",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeC1YWUp5WGd0ZDlIcWRidEd0VmRXOXNHSGR3Q21YQVpZbUJZd2FjT0h2bU5DN1RnaTlOWENHR3RFX0lhMkFjQ0xSeFZZUEh1SFpZYk5xaWRmTlBnMUpOdExtTF9TcWdlWGNMZVM1d0hXUTg2OVJUWTk3MndYVWhIbmg0dDA2UDZfV1BCcVBSeC0tMzZEVXQ1QUtCdU90NGtmRG9vQ20yQVA1dU1YaWxULQ?oc=5",
       "date": "Tue, 29 Sep 2026 07:34:26 GMT",
       "desc": "Korea reopens Honam grid to support Samsung, SK chip plants&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Parental leave falls at Samsung, SK hynix as hefty bonuses loom - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOcnp0TjRwUUlFLUFydFlPcVZuV3VtUG5GWTlkNzhEQ21kZzFrRzdSMzdHcG42WDVTRzZzam9IdVQ2VWwwMHYzeEJMQ3FjTmdCNktobDBHcHRUUHlsc1dJOTBTTlUwYkFiX2RRN0hiLW1lb2o3Um1FRzRwYm1kOTRaYjVHRTBLMkliV0pzbk04SDBqOHRTenFRajIzcmxOQTYzQ3ZRNHVMWkNVd1RIOVNiT0lIVFE2MFcxaFlhektNbmFrV3FZ0gHEAUFVX3lxTE5yenRONHBRSUUtQXJ0WU9xVm5XdW1QbkZZOWQ3OERDbWRnMWtHN1IzN0dwbjZYNVNHNnNqb0h1VDZVbDAwdjN4QkxDcWNOZ0I2S2hsMEdwdFRQeWxzV0k5MFNOVTBiQWJfZFE3SGItbWVvajdSbUVHNHBibWQ5NFpiNUdFMEsySWJXSnNuTThIMGo4dFN6cVFqMjNybE5BNjNDdlE0dUxaQ1V3VEg5U2JPSUhUUTYwVzFoWWF6S01uYWtXcVk?oc=5",
-      "date": "Sun, 27 Sep 2026 04:52:03 GMT",
-      "desc": "Parental leave falls at Samsung, SK hynix as hefty bonuses loom&nbsp;&nbsp;The Korea Times"
-    },
-    {
       "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPTFRIYzlpZmdmblB0WC10ZXBVZFM4R1dUMlRjNUozLWJDVFEwbHB2VnpYTmVlX1AxQ0dPa0tvQ24wRkR6YV95VnZ2RmxFZUtWUGxoemJSZ0NoeDZCS3l1OC11SUNRZHFpVG5nNEFmeVpvZWw3UzliWWhNcGZ2a0dPUUlIWkJ0d3Q2Rnp3V3dyY3VZWUw0ekdaZzNyaEFja3pqQVAtVWR3ZWw3eGo0QnY2NnpVN3NjT29IODA3UmdNM0EtRjdfRjMtd2VB?oc=5",
       "date": "Wed, 09 Sep 2026 07:00:00 GMT",
       "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "Samsung, SK hynix Set to Post Record Q3 Operating Profit - businesskorea.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5BU1B1NDVXRlU3ZXA5R3Q2NjlCbjJZWmtCWG5GV2p5ZmdIdmYwN2doTDBzallZLW14UnhVTXRya3JkLThfY1hseE5QR19STTRPT3BSQmlIODRNOW1wRkpqVW9zd3NueURfeGVLTnF5ckk4UHI5?oc=5",
+      "date": "Mon, 28 Sep 2026 02:30:25 GMT",
+      "desc": "Samsung, SK hynix Set to Post Record Q3 Operating Profit&nbsp;&nbsp;businesskorea.co.kr"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 230.69,
-      "change": 5.62,
-      "pct": 2.5,
+      "price": 228.56,
+      "change": 3.49,
+      "pct": 1.55,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 456.98,
-      "change": 6.37,
-      "pct": 1.41,
+      "price": 458.82,
+      "change": 8.21,
+      "pct": 1.82,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 613.21,
-      "change": -17.42,
-      "pct": -2.76,
+      "price": 610.2,
+      "change": -20.43,
+      "pct": -3.24,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 116.97,
-      "change": -6.03,
-      "pct": -4.91,
+      "price": 116.55,
+      "change": -6.45,
+      "pct": -5.24,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 187.22,
-      "change": -14.75,
-      "pct": -7.3,
+      "price": 184.84,
+      "change": -17.13,
+      "pct": -8.48,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 298.77,
-      "change": -11.55,
-      "pct": -3.72,
+      "price": 296.9,
+      "change": -13.42,
+      "pct": -4.32,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 339.25,
-      "change": -4.67,
-      "pct": -1.36,
+      "price": 340.94,
+      "change": -2.98,
+      "pct": -0.87,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 332.25,
-      "change": -8.82,
-      "pct": -2.59,
+      "price": 330.99,
+      "change": -10.08,
+      "pct": -2.96,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 509.46,
-      "change": -6.7,
-      "pct": -1.3,
+      "price": 510.84,
+      "change": -5.33,
+      "pct": -1.03,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7667.69,
-      "change": -75.72,
-      "pct": -0.98,
+      "price": 7677.68,
+      "change": -65.73,
+      "pct": -0.85,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26808.44,
-      "change": -260.28,
-      "pct": -0.96,
+      "price": 26836.93,
+      "change": -231.79,
+      "pct": -0.86,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1355.38,
-      "change": 0.87,
-      "pct": 0.06,
+      "price": 1353.05,
+      "change": -1.46,
+      "pct": -0.11,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-29 15:35 UTC"
+  "updatedAt": "2026-09-29 18:58 UTC"
 }
