@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "OpenAI scraps rollout of new model over safety concerns",
+      "link": "https://www.bbc.co.uk/news/articles/cm5y5nynl75ko?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 29 Sep 2026 01:18:24 GMT",
+      "desc": "The AI giant's safety chief said the model 'didn't quite meet the bar' of the firm's security standards."
+    },
+    {
       "title": "Inside Yemen's front-line city as Houthis battle for control",
       "link": "https://www.bbc.co.uk/news/articles/cw98005ndz7no?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 27 Sep 2026 21:16:31 GMT",
       "desc": "In rare access to Yemen's conflict zone the BBC travels to the front line with pro-government soldiers."
+    },
+    {
+      "title": "New York Times executive fatally shot allegedly by elderly in-laws",
+      "link": "https://www.bbc.co.uk/news/articles/cred737qdv2no?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 28 Sep 2026 20:50:03 GMT",
+      "desc": "Jonathan McKinsey's in-laws, who are both 77 years old, face multiple charges including first-degree murder."
     },
     {
       "title": "Seoul summons Ukraine envoy over North Korean prisoner-of-war row",
@@ -13,30 +25,30 @@
       "desc": "Last week Zelensky revealed Ukraine had sent two captured North Koreans to South Korea - which Seoul says was meant to be a secret."
     },
     {
-      "title": "Twelve women have been killed in one part of South Africa since July. Here's what we know so far",
-      "link": "https://www.bbc.co.uk/news/articles/c6m27dprvzv7o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 28 Sep 2026 17:26:21 GMT",
-      "desc": "South African President Cyril Ramaphosa says the murders are a \"stain on our national conscience\"."
-    },
-    {
-      "title": "Iran court upholds lashes sentence for singer who performed without hijab",
-      "link": "https://www.bbc.co.uk/news/articles/crn45ed1kqqgo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 28 Sep 2026 17:15:00 GMT",
-      "desc": "Parastoo Ahmadi was convicted of \"offending public decency\" after singing while wearing a sleeveless dress during a livestreamed concert."
-    },
-    {
-      "title": "Nigerian attempts to break world record by dancing non-stop for seven days",
-      "link": "https://www.bbc.co.uk/news/articles/cq8r6z2gjzd1o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 28 Sep 2026 15:39:19 GMT",
-      "desc": "Crowds have gathered in Lagos to watch Ben Dancer, who says he will carry on dancing until Tuesday morning."
+      "title": "French PM warns against escalation of school protests after 164 arrested",
+      "link": "https://www.bbc.co.uk/news/articles/cmqxvnn49rg2o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 28 Sep 2026 21:46:53 GMT",
+      "desc": "Students are protesting over issues such as overcrowded classes, but the prime minister has condemned reports of violence."
     }
   ],
   "koreaNews": [
     {
-      "title": "Energy for AI Leads South Korea’s U.S. Investment Pipeline - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQaFo3a2V2azJRR2c3cWV0VFg4cGtmV1hsWFczcjJ4eTgwSzBHLTZ2SW1fNWJuYW9SV19keWlXNUR5UHhtX2pZYlR3NXI4bXRoTWpKT2VCVDJ4d3N3OUlsaW9MOVVkaHRoQjdPZ01tQXFWYjd3Q0lCTVZZbzJaTkhlLWNOakVneWthVzdN?oc=5",
-      "date": "Fri, 25 Sep 2026 20:51:39 GMT",
-      "desc": "Energy for AI Leads South Korea’s U.S. Investment Pipeline&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "How South Korea Can Cope With Volatility in Global Bond Markets - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQd2xDQmtXV0Q1Z0tyRnhoV19KLVcyTURxLS05QXFOSjVnRVlyY3pmeXhiWWw3ZE9wZDZpNE15a25vVmVKY0pWVHl1c1ZaZld4TTdFOUp4UDRVOUhmY0IzWlBZVzhxMl9FdE00OTVUMHlzSVljY3VLbThFeUt2Q2pKVVVqRWNkWThreUhDd1N5OUpHeV94?oc=5",
+      "date": "Mon, 28 Sep 2026 20:56:44 GMT",
+      "desc": "How South Korea Can Cope With Volatility in Global Bond Markets&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "South Korean exports seen rising for 16th month on solid AI chip demand: Reuters poll - Lexington Herald Leader",
+      "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBxb2hnZWVfY09qRFUxVm9rLURUMFF1a01ueHZZQUNkdW5xOUM0TFRpbWllMmVKUUU4V0dYQnhCWjR0d181amxvcWZfN1QyemdhQVUtYUJsMnlJaVMyTm1taHQ1Wk1fTWF5ZU5VNmV5WDVsR1Z1RHdvTEtETUJnQQ?oc=5",
+      "date": "Tue, 29 Sep 2026 01:17:02 GMT",
+      "desc": "South Korean exports seen rising for 16th month on solid AI chip demand: Reuters poll&nbsp;&nbsp;Lexington Herald Leader"
+    },
+    {
+      "title": "South Korea's Overseas Direct Investment Surges 32.3% in Q2 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOUkV2SWt0NEE4WXRra1ZmUFdvYTlQNlI5RGFYOWJwYXNtdVNVcmdaSVl1blhSYjFvTUdXWUoxYU5uU3Y0NzlXdHEtSEE2S0wyUXQzUExoMkFSMDJvSV8zTV9pMl9kUTVNMFFJRW5jS1R4UjE2TEVIWlBSWF9zWWJRaUpOX2NrenYxZ0ZMQVJn?oc=5",
+      "date": "Tue, 29 Sep 2026 01:12:41 GMT",
+      "desc": "South Korea's Overseas Direct Investment Surges 32.3% in Q2&nbsp;&nbsp;조선일보"
     },
     {
       "title": "China’s Low-Cost Export Offensive Amid Weak Domestic Demand Hits Profits in South Korea’s and Japan’s Key Industries - economy.ac",
@@ -45,28 +57,16 @@
       "desc": "China’s Low-Cost Export Offensive Amid Weak Domestic Demand Hits Profits in South Korea’s and Japan’s Key Industries&nbsp;&nbsp;economy.ac"
     },
     {
-      "title": "Finance minister, BOK governor vow closer coordination on economic risks - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOTW5qVU1KRW5xcUREUVZhMGhuOFVBYzVHby1GNnZjSVFiVUNaT25fTHhjT2VWYkdFN2FseG1KUnl1OThQa3o4OW9PVUlZRDB1Rk9Xd21rV2F6TmdTa3FtSGxxanpzT1NscGhtVkJ1dkpDV0xqTVo0OFBaQlFpS2JNbVlTNmtQTDdPNE9MQmFQQkpSSGF5ekNJeEx3c0RhcHVycmtHQzQ0ZmwySnlTMy0wVVp6Q2hScmdXTWpmemtVNkx5dw?oc=5",
-      "date": "Mon, 28 Sep 2026 05:28:30 GMT",
-      "desc": "Finance minister, BOK governor vow closer coordination on economic risks&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "＜Inside N.Korea＞ Authorities blocked Chinese food imports — \"The aim is likely to push out Chinese products to protect domestic goods\" - アジアプレス・インターナショナル",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQSUtnbDdwc0xrdVpZU1BjZ3l6RFNYZDRvUTBJZU1IcnpJQjlNRGVrWGR4ZlptSFcxT1dWX2N4ckhha0VjSC1mbUUwcWFaX3JiNDZkVEJvU1BRZ0VOZkRDay1WX0NHYVJDbjZXUlEyX2ZLay0zSTNYdWgwcmNsRFhkcw?oc=5",
-      "date": "Mon, 28 Sep 2026 09:23:35 GMT",
-      "desc": "＜Inside N.Korea＞ Authorities blocked Chinese food imports — \"The aim is likely to push out Chinese products to protect domestic goods\"&nbsp;&nbsp;アジアプレス・インターナショナル"
-    },
-    {
       "title": "South Korea says economy in 'solid recovery' despite risks - upi.com",
       "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOM2xGOVk0ZlpWMFFoTU1nVV9wUUQ0bFhFZklBeVJWOUhGV2JSMUdMVG5ZdTc2OFFzTzdoS2hBV1p1YVJQY3V1NFItR2ZzanNQeFJ0N25HeHBZYXYyME1aVWFOSDdmNHBtTlp4bkNXazZ5bG5oaF9UXzJzTG1fMTNqQ0lYODJKbEd2ZjBzVHRwN0lraTRLVFhBMkxjbVA2UUV2OG55WFBFYlUtTVEtcDFDQ2ZIVGU2U1BDaTE4cjFQLThRcVg4NWdnTE1UVUIyQUhXdnhDeUVPaHJyQlB0OHJTT9IB5gFBVV95cUxPZHZQVXd1dXI0S1A0QmlpdDVjTEsyOEFCVVY1TGRmaFR4UDlwUnRxSWJDOWZUS3pYZFB1VVVpMzNoblBaM2I0VGRLSXZpSWpxYzhtWG5vaV9VTC1OTTFJRjI0emJIQnplYzQ0aEhVMnM4QnlDa0hhSzRQai1YZWhYT0JsOXRxNm5qTDdaS2hTZ0NSb2xjQlc4SmQtcVpRTnRzMUc3TG41aXRTR1d5ZTJkVmhTUGhmbHI0Sm1CYXFneFktQy1GRTVibE9PQjdlNWJzRHl3Ulo0dnJ2N1ExTExWaGVQVzNVQQ?oc=5",
       "date": "Fri, 11 Sep 2026 07:00:00 GMT",
       "desc": "South Korea says economy in 'solid recovery' despite risks&nbsp;&nbsp;upi.com"
     },
     {
-      "title": "Samsung, SK hynix Set to Post Record Q3 Operating Profit - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5BU1B1NDVXRlU3ZXA5R3Q2NjlCbjJZWmtCWG5GV2p5ZmdIdmYwN2doTDBzallZLW14UnhVTXRya3JkLThfY1hseE5QR19STTRPT3BSQmlIODRNOW1wRkpqVW9zd3NueURfeGVLTnF5ckk4UHI5?oc=5",
-      "date": "Mon, 28 Sep 2026 02:30:25 GMT",
-      "desc": "Samsung, SK hynix Set to Post Record Q3 Operating Profit&nbsp;&nbsp;Businesskorea"
+      "title": "Samsung, SK hynix Vie for CXL AI Memory Lead - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9xYy1wc0EzY29jUTd4c2doUjdkUXU3Vk1lLWE3T1M3anF1T2ZibERaakM5QldFU0FBSjF1aHFKYUFzTzdUSDI0ZmtxcmtmQl9udkRoaEE2bHVTUEZhWEVrM2Fud1BxTk5pREpzZEJFQjVhZHBf?oc=5",
+      "date": "Mon, 28 Sep 2026 09:34:25 GMT",
+      "desc": "Samsung, SK hynix Vie for CXL AI Memory Lead&nbsp;&nbsp;Businesskorea"
     },
     {
       "title": "Parental leave falls at Samsung, SK hynix as hefty bonuses loom - The Korea Times",
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 270000.0,
-      "change": -6500.0,
-      "pct": -2.35,
+      "price": 272500.0,
+      "change": -13000.0,
+      "pct": -4.55,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1768000.0,
-      "change": -72000.0,
-      "pct": -3.91,
+      "price": 1773000.0,
+      "change": -89000.0,
+      "pct": -4.78,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 354500.0,
-      "change": -6000.0,
-      "pct": -1.66,
+      "price": 349500.0,
+      "change": -4000.0,
+      "pct": -1.13,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 117600.0,
-      "change": -900.0,
-      "pct": -0.76,
+      "price": 114800.0,
+      "change": -600.0,
+      "pct": -0.52,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 197700.0,
-      "change": -3300.0,
-      "pct": -1.64,
+      "price": 195000.0,
+      "change": 300.0,
+      "pct": 0.15,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6889.74,
-      "change": -128.17,
-      "pct": -1.83,
+      "price": 6861.93,
+      "change": -218.99,
+      "pct": -3.09,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1360.19,
-      "change": -7.17,
-      "pct": -0.52,
+      "price": 1359.58,
+      "change": 5.07,
+      "pct": 0.37,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-28 20:18 UTC"
+  "updatedAt": "2026-09-29 01:25 UTC"
 }
