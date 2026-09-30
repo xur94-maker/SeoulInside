@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Israel-bound flight diverted after fight between pilots",
-      "link": "https://www.bbc.co.uk/news/articles/cqjdv7pmj9dno?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 30 Sep 2026 09:02:59 GMT",
-      "desc": "Despite a brief emergency alert signalling a hijacking, the Israeli prime minister's office confirmed this had been ruled out."
+      "title": "Execution of US murderer Christa Pike halted shortly before it was due to happen",
+      "link": "https://www.bbc.co.uk/news/articles/cw20vxxn876no?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 30 Sep 2026 15:29:11 GMT",
+      "desc": "Pike was convicted and sentenced to death in 1996 for the murder of Colleen Slemmer."
+    },
+    {
+      "title": "Russia launches largest attack on Ukraine energy infrastructure since spring",
+      "link": "https://www.bbc.co.uk/news/articles/ckjw5jx2l393o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 30 Sep 2026 14:53:02 GMT",
+      "desc": "In total 11 regions of the country were attacked overnight, with residential buildings and railways also targeted, the Ukrainian PM says."
+    },
+    {
+      "title": "Last UK and US troops leave Iraq as anti-Islamic State mission ends",
+      "link": "https://www.bbc.co.uk/news/articles/c65ym1dyn92mo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 30 Sep 2026 11:36:23 GMT",
+      "desc": "The withdrawal of coalition forces, under a deal agreed two years ago, was a key demand of the Iraqi government."
     },
     {
       "title": "Chinese AI tool told researchers how to make bioweapons",
@@ -13,31 +25,13 @@
       "desc": "Mindgard said it discovered in July that Kimi models K2.6 and K3 Swarm could evade developer's safety limits."
     },
     {
-      "title": "Three takeaways from Trump's 'Super Intelligence' summit",
-      "link": "https://www.bbc.co.uk/news/articles/cme30dz5vkzko?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 30 Sep 2026 04:01:52 GMT",
-      "desc": "The meeting at the White House came as some tech bosses and experts have called for tighter rules around AI."
-    },
-    {
       "title": "Girl has multiple surgeries to control infections after strike in Gaza",
       "link": "https://www.bbc.co.uk/news/videos/c8n5d0e0n6wdo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 30 Sep 2026 05:02:50 GMT",
       "desc": "Witnesses say Raseel's tent was hit by an Israeli helicopter strike. Israel’s military says it has no record of the attack."
-    },
-    {
-      "title": "South Korea demands apology from Pyongyang for landmine blasts that injured three",
-      "link": "https://www.bbc.co.uk/news/articles/cwj3dkvpm4e7o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 30 Sep 2026 05:24:52 GMT",
-      "desc": "Blasts in the Demilitarised Zone (DMZ) injured three South Korean personnel earlier this month."
     }
   ],
   "koreaNews": [
-    {
-      "title": "S. Korean, U.S. biz leaders highlight growing role of 2-way investment in economic ties - Yonhap News Agency",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0zMWh0UENlakpFQWhxMzFCdl96eE1xQThHNUZFTmJpWTFSSkRyajN2YmQ2UUZHcEVQYkttWTRvXzdsQm5ZakpmQTFtTzlRV1pheXRhOUROV0ZUUQ?oc=5",
-      "date": "Wed, 30 Sep 2026 07:13:33 GMT",
-      "desc": "S. Korean, U.S. biz leaders highlight growing role of 2-way investment in economic ties&nbsp;&nbsp;Yonhap News Agency"
-    },
     {
       "title": "South Korea Tax Revenue to Hit Fresh Record on Global Chip Boom - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOTEpTWTFYV25uU1Jsc1c3aS1IZFpXODVWV2ZWUVRGbWhGbXhNMDdLSVdCTWEwaEVSU0NVR3VyU1hmMWlYSnJwV0wza1lYN2VRT2kyRXVwSzlNMXdoVDZVZlBtNzhQY0JHQTRzQkRaLTc0NW1yUzBjRTdXUmhQTDJVM1VIUXpCRUZ5OGxyTExEbndlUlF6SGt6YkR2ckF0UnJHTm9hMXlKaVc0eUZnU0lURFhoUGg?oc=5",
@@ -51,16 +45,22 @@
       "desc": "How South Korea Can Cope With Volatility in Global Bond Markets&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "Libya and South Korea Launch Economic Forum in Tripoli - libyaherald.com",
-      "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNTTZxMFhocWJZWVFkakJxX0QtUEY4aGhSS1d1NGtYY2hqenpmWHVSNWFQWnlyM1JXN0N0bmVVUjI0aTlSUVhxOWhjU2xjTmF6NWtiSXpFUThGbnNXRFRaRFpVdmU5TGFEMjk5WUV0cUR4Mml1VUNTWTIxOVF6cWJCYzVTLTZqUVNVdmU0UUZibG8zQ0g3VHc2VldURDVmdFM1Qzl4ZE9EOFlHOTBiZGcteGY5WXFxd1NraEJfN0p0dmdQSURCclpMYnd3azZJUHNpM2Z2R0xsTmdxYjg?oc=5",
-      "date": "Tue, 29 Sep 2026 11:45:00 GMT",
-      "desc": "Libya and South Korea Launch Economic Forum in Tripoli&nbsp;&nbsp;libyaherald.com"
+      "title": "S. Korean, U.S. biz leaders highlight growing role of 2-way investment in economic ties - en.yna.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0zMWh0UENlakpFQWhxMzFCdl96eE1xQThHNUZFTmJpWTFSSkRyajN2YmQ2UUZHcEVQYkttWTRvXzdsQm5ZakpmQTFtTzlRV1pheXRhOUROV0ZUUQ?oc=5",
+      "date": "Wed, 30 Sep 2026 07:13:33 GMT",
+      "desc": "S. Korean, U.S. biz leaders highlight growing role of 2-way investment in economic ties&nbsp;&nbsp;en.yna.co.kr"
     },
     {
-      "title": "Donald Trump Unlikely to Meet Kim Jong Un - Foreign Policy in Focus",
-      "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5fSkc1aFZhTmNKdlR6QWc2cHhrRGx4bGZtZ1ZHZXJwQmxLT3dvUUloQ1M1NW5ZRS1uVFhUeFVMVWtiREdFaGxnQ2RuS1RWVTRDb0RXUUJSYTZiWkxzbHlLNU12Y1RxSEhILWln?oc=5",
-      "date": "Tue, 29 Sep 2026 16:41:24 GMT",
-      "desc": "Donald Trump Unlikely to Meet Kim Jong Un&nbsp;&nbsp;Foreign Policy in Focus"
+      "title": "Trump will unveil $54 billion in South Korean investment in Alaska, site of a tight Senate race - Audacy",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQV3lOalBrekhpTk1UcGV4Slg2VnNvTUZlTDBmMTgtblp1bms0SEFabHRPSUhENzl0OXlsdlBlRGNjWHFybzRGaDJaWmQ3NDBNY04xN291QmdkSHc4OVNWc056c1hDaFg1WXRBekVXTGVzWXRONFgtV2lSVEUtQXIxOUFid2JBVUg2ZHV6Z29mS3RNNVlLNlhyaW4zVGJNZm1SWkdkNG4tbENIYWVwWlZsZkxJSQ?oc=5",
+      "date": "Wed, 30 Sep 2026 13:43:00 GMT",
+      "desc": "Trump will unveil $54 billion in South Korean investment in Alaska, site of a tight Senate race&nbsp;&nbsp;Audacy"
+    },
+    {
+      "title": "Global Affairs Lab Releases Two Interactive Games on US-South Korea Economic Ties - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOLWpUTVJZbHY1MDgwQWd5LVJuX0dyWlNIOFdoY0UwcTBVVnAwNTJmWUN1LWdMMEtRTWxiU1pINE91YkZSdlFQY2hEakcyck1sdG5icThRUFNKVXhiNUd0MEZGTXNNQk5sNWZOMGM1OWQzWVFCZUgtWG1KZS03OFBuQ0d4NGdnamtfelVlZUZDUVNTN09XZGJ2cDdwZlU?oc=5",
+      "date": "Sun, 27 Sep 2026 20:49:00 GMT",
+      "desc": "Global Affairs Lab Releases Two Interactive Games on US-South Korea Economic Ties&nbsp;&nbsp;Yahoo Finance"
     },
     {
       "title": "Korean Stocks Face Early End to $40 Billion Buyback Support - Bloomberg.com",
@@ -69,105 +69,105 @@
       "desc": "Korean Stocks Face Early End to $40 Billion Buyback Support&nbsp;&nbsp;Bloomberg.com"
     },
     {
+      "title": "Korea reopens Honam grid to support Samsung, SK chip plants - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeC1YWUp5WGd0ZDlIcWRidEd0VmRXOXNHSGR3Q21YQVpZbUJZd2FjT0h2bU5DN1RnaTlOWENHR3RFX0lhMkFjQ0xSeFZZUEh1SFpZYk5xaWRmTlBnMUpOdExtTF9TcWdlWGNMZVM1d0hXUTg2OVJUWTk3MndYVWhIbmg0dDA2UDZfV1BCcVBSeC0tMzZEVXQ1QUtCdU90NGtmRG9vQ20yQVA1dU1YaWxULQ?oc=5",
+      "date": "Tue, 29 Sep 2026 07:34:26 GMT",
+      "desc": "Korea reopens Honam grid to support Samsung, SK chip plants&nbsp;&nbsp;Korea JoongAng Daily"
+    },
+    {
       "title": "Samsung, SK hynix Gain Over 1% in Premarket Despite U.S. Yield Spike - Seoul Economic Daily",
       "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOWTRWbi1STFNqQzlfWTYtSk41RU9DaDFhaFhnT05nR3V4dkRySWFuSW02YnFvVU9aNnlScUpmNldQTzNGcXIxTTBpWGhfR25ZYlpUZjFBVUVhMzhLOTNEd2ZJWDJXSXBSUkF0MGttVENHRnlGUFBVdG1QMVItRzhldjFnOWg5YTBtUk14SklfY1AwZzd5Qm5hWDB3OXBOU2Rh?oc=5",
       "date": "Tue, 29 Sep 2026 23:48:52 GMT",
       "desc": "Samsung, SK hynix Gain Over 1% in Premarket Despite U.S. Yield Spike&nbsp;&nbsp;Seoul Economic Daily"
-    },
-    {
-      "title": "Korea reopens Honam grid to support Samsung, SK chip plants - koreajoongangdaily.com",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeC1YWUp5WGd0ZDlIcWRidEd0VmRXOXNHSGR3Q21YQVpZbUJZd2FjT0h2bU5DN1RnaTlOWENHR3RFX0lhMkFjQ0xSeFZZUEh1SFpZYk5xaWRmTlBnMUpOdExtTF9TcWdlWGNMZVM1d0hXUTg2OVJUWTk3MndYVWhIbmg0dDA2UDZfV1BCcVBSeC0tMzZEVXQ1QUtCdU90NGtmRG9vQ20yQVA1dU1YaWxULQ?oc=5",
-      "date": "Tue, 29 Sep 2026 07:34:26 GMT",
-      "desc": "Korea reopens Honam grid to support Samsung, SK chip plants&nbsp;&nbsp;koreajoongangdaily.com"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 227.21,
-      "change": 2.14,
-      "pct": 0.95,
+      "price": 230.6,
+      "change": 1.74,
+      "pct": 0.76,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 456.94,
-      "change": 6.33,
-      "pct": 1.4,
+      "price": 461.23,
+      "change": 8.35,
+      "pct": 1.84,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 607.57,
-      "change": -23.06,
-      "pct": -3.66,
+      "price": 601.52,
+      "change": -6.35,
+      "pct": -1.04,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 115.93,
-      "change": -7.07,
-      "pct": -5.75,
+      "price": 118.75,
+      "change": 2.72,
+      "pct": 2.34,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 184.1,
-      "change": -17.87,
-      "pct": -8.85,
+      "price": 184.65,
+      "change": -2.83,
+      "pct": -1.51,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 293.67,
-      "change": -16.65,
-      "pct": -5.37,
+      "price": 287.02,
+      "change": 3.69,
+      "pct": 1.3,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 340.92,
-      "change": -3.0,
-      "pct": -0.87,
+      "price": 351.06,
+      "change": 8.31,
+      "pct": 2.42,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 329.4,
-      "change": -11.67,
-      "pct": -3.42,
+      "price": 337.91,
+      "change": -0.49,
+      "pct": -0.14,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 508.96,
-      "change": -7.21,
-      "pct": -1.4,
+      "price": 518.43,
+      "change": 9.21,
+      "pct": 1.81,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7670.84,
-      "change": -72.57,
-      "pct": -0.94,
+      "price": 7710.29,
+      "change": 26.6,
+      "pct": 0.35,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26797.54,
-      "change": -271.18,
-      "pct": -1.0,
+      "price": 27056.4,
+      "change": 236.01,
+      "pct": 0.88,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1353.08,
-      "change": -6.48,
-      "pct": -0.48,
+      "price": 1355.88,
+      "change": -3.68,
+      "pct": -0.27,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-09-30 09:10 UTC"
+  "updatedAt": "2026-09-30 15:46 UTC"
 }
