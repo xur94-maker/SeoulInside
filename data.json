@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
+      "title": "US death row inmate survives execution attempt after two lethal injections",
+      "link": "https://www.bbc.co.uk/news/articles/cq8r6rjdvlx6o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 01 Oct 2026 07:01:16 GMT",
+      "desc": "Killer Christa Pike's lawyer says she is being given \"life-saving measures\" in hospital after two syringes of pentobarbital."
+    },
+    {
+      "title": "Too early to say if Iran involved in Dubai-Tel Aviv flight attack, Israeli PM says",
+      "link": "https://www.bbc.co.uk/news/articles/cqgmrm7xd8wyo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 01 Oct 2026 09:22:35 GMT",
+      "desc": "A pilot who stabbed another pilot on an Israel-bound plane is being investigated in Saudi Arabia, Benjamin Netanyahu says."
+    },
+    {
       "title": "What we know about stabbing on Flydubai flight to Israel",
       "link": "https://www.bbc.co.uk/news/articles/cqjdv7pmj9dno?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 30 Sep 2026 21:36:31 GMT",
+      "date": "Thu, 01 Oct 2026 02:31:24 GMT",
       "desc": "A pilot has been arrested and is being questioned after another pilot was stabbed, officials say."
     },
     {
-      "title": "Putin shows no sign of stopping the war as Russia doubles down on Ukraine",
+      "title": "Rosenberg: Putin shows no sign of stopping the war as Russia doubles down on Ukraine",
       "link": "https://www.bbc.co.uk/news/articles/cqx2ze420kpyo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 30 Sep 2026 23:10:06 GMT",
       "desc": "A foreign policy speech by the Russian president will be keenly watched, but all signs point to the full-scale invasion continuing."
     },
     {
-      "title": "US Supreme Court allows execution of Christa Pike to go ahead",
-      "link": "https://www.bbc.co.uk/news/articles/cq8r6rjdvlx6o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 01 Oct 2026 00:19:20 GMT",
-      "desc": "The death by lethal injection was scheduled to happen earlier on Wednesday before a lower court paused the execution."
-    },
-    {
-      "title": "Swiss glaciers suffer 'disastrous' year of ice loss, threatening water supplies",
-      "link": "https://www.bbc.co.uk/news/articles/c6n9w0ypjwl9o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 01 Oct 2026 00:08:23 GMT",
-      "desc": "Scientists say such rapid melting is no longer surprising given the pace of climate change."
-    },
-    {
-      "title": "Six smugglers jailed for manslaughter over worst Channel small boats disaster",
-      "link": "https://www.bbc.co.uk/news/articles/c6n8m33pn9djo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 30 Sep 2026 17:14:03 GMT",
-      "desc": "Thirty-one migrants died when their boat went down in November 2021. The trial found that the guilty men were part of two smuggling networks."
+      "title": "Japan raises permanent residency fee by 20 times",
+      "link": "https://www.bbc.co.uk/news/articles/c6y8z8xeg8j1o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 01 Oct 2026 02:57:43 GMT",
+      "desc": "The hikes are part of immigration policy changes introduced to manage Japan's growing foreign population."
     }
   ],
   "koreaNews": [
+    {
+      "title": "AI Boom Powers South Korea’s September Exports Past $120 Billion - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOVjNaNXoxeFRWLTliQWt3blJFZzF6eTBQb0haTGFabElQV3hnbGZfMEJQbjJvS1ljdk1ncVFHUmY4dm42cHU2YWh3LTJkUHphSzV2a0JSeXZoVGh2RC1jLW9GcFEtQjdRblBlVUFmeEdCazEyY3dIeTlEeHVLckZSbE9wTjAyNnMxX1d3b2dBLS1nbHpxdlZCeXkxT0FjRWwy?oc=5",
+      "date": "Thu, 01 Oct 2026 03:14:00 GMT",
+      "desc": "AI Boom Powers South Korea’s September Exports Past $120 Billion&nbsp;&nbsp;WSJ"
+    },
     {
       "title": "Trump announces $200bn in energy investments from South Korea - Al Jazeera",
       "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcC0wOTEtTU4tbWtmX0M3TXZ4WTdlang0V0JVV0drSE9wTzVuSHNyM19Yd25TaThsRUZVSktyQldhN3JEUUE4ZEptV01sN3daOG9lbFdZa3lLX25xTlg5elFsS3N3ekozRDFMTWJuc2NvMkFCTmtQWlZGSXhaOUVuRk1Nb2pSaTZIN0lfdzNjaU5WUDNaaW1qaUlvd0k2TzcxTDZNa0V5YUhRMGN3QWF30gG0AUFVX3lxTE0zQ2ZzYWJxdllrQ1hvdVlVRTR0RUMzczEyeDdUdlZXUWdrbmJrZFFMWlV1MVdCNTg3bFcxa2YxMUg3Z1ZpX1RMeUxvQTdoOS1WRnoyU3hlaVVfZTBxUUpYeGxGNFNYRmdQUzd2Q2VnajRuX05IRDR2eWdUVnJ5R3JMbHlXV2U2NmFaRzVWSXJwOHJDb3dlUlFyTFZMd0hzcVpiVmVvbnJoS0w4UjhoSFYwLWRCRw?oc=5",
@@ -39,22 +45,16 @@
       "desc": "Trump announces $200bn in energy investments from South Korea&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "AI Boom Powers South Korea’s September Exports Past $120 Billion - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOVjNaNXoxeFRWLTliQWt3blJFZzF6eTBQb0haTGFabElQV3hnbGZfMEJQbjJvS1ljdk1ncVFHUmY4dm42cHU2YWh3LTJkUHphSzV2a0JSeXZoVGh2RC1jLW9GcFEtQjdRblBlVUFmeEdCazEyY3dIeTlEeHVLckZSbE9wTjAyNnMxX1d3b2dBLS1nbHpxdlZCeXkxT0FjRWwy?oc=5",
-      "date": "Thu, 01 Oct 2026 00:39:00 GMT",
-      "desc": "AI Boom Powers South Korea’s September Exports Past $120 Billion&nbsp;&nbsp;WSJ"
+      "title": "South Korea’s Monthly Exports Hit Record as Chip Boom Rolls on - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOeUlRNmZsd18xdW1FM3YyblM4ek9QaFVYWFNvWTZhUVdOalNEYnhTbnVySkJfSGtIR1Foa24yVzZFV2lMUDNWMTlySE1SdXdIM2xVNlZQMmplMzZOaGI5eUNZS0puRTB3SjBmVHQ5Z014NmJpdnQyR2hWS1ZLY0lBejFrdEpaRGdnU0JZV2pHTjAtd2V2TFh3bHN0OEJOZ0FpMGZ0c1l1ajJVREF4ZlNmc1daMWc?oc=5",
+      "date": "Thu, 01 Oct 2026 01:37:00 GMT",
+      "desc": "South Korea’s Monthly Exports Hit Record as Chip Boom Rolls on&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea Tax Revenue to Hit Fresh Record on Global Chip Boom - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOTEpTWTFYV25uU1Jsc1c3aS1IZFpXODVWV2ZWUVRGbWhGbXhNMDdLSVdCTWEwaEVSU0NVR3VyU1hmMWlYSnJwV0wza1lYN2VRT2kyRXVwSzlNMXdoVDZVZlBtNzhQY0JHQTRzQkRaLTc0NW1yUzBjRTdXUmhQTDJVM1VIUXpCRUZ5OGxyTExEbndlUlF6SGt6YkR2ckF0UnJHTm9hMXlKaVc0eUZnU0lURFhoUGg?oc=5",
-      "date": "Wed, 30 Sep 2026 00:00:00 GMT",
-      "desc": "South Korea Tax Revenue to Hit Fresh Record on Global Chip Boom&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "South Korea's production, consumption, investment fall in August - upi.com",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNLUhsU0hvUVp0OVY3blpjQk9EN2xVb0F3UE1SYjFndFo0cnNKcTFSbFJ2Xy04U25PQ09jMlYtajZ1WDRpRWlrS1dxZnp1TTJUR0thcVRjVFlfUU43YjUzSTBTRXFMMHhfaXdGRmJfS2t3Wm10RmhvSXYzWWRsVnQ3VG1RRjVfVmV3bjBxMl82ZjhIeXM2V09Xc2hLUdIBoAFBVV95cUxNZTJwSXRYckdNc0t3enpkUkcwbzFSRE9oZVE4VG16YzFVdElVazRicTVTQkRQaWVjd3UtWk9RZU5iWE1PazNBa3o5SEpWWk9NUTBPZmRGT1o2N2NJTHNldWJHWjYzSko2RHRfUVZ0N01YVDMzZFBUQ2hJTFZFSmtmWWxxVEJQaFRyU2RpWEhxZVIzMW1qSk00VUF5aWVIVDZO?oc=5",
-      "date": "Wed, 30 Sep 2026 22:52:52 GMT",
-      "desc": "South Korea's production, consumption, investment fall in August&nbsp;&nbsp;upi.com"
+      "title": "South Korea cuts October bond issuance by 5 trillion won to tame rates - CHOSUNBIZ - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5zMFRucWZkYjNwZzBlYkpFdFZCWFc2Y1BjSnEydnRDWDZEQkpVZFdzNGZlYll4STZyekxGYTJhU0hsUG1kaXh6aVNma013el9ZWEVBUGhHbVA3LW5jT3BDZy1QY0VzOFR2b3o2UnA5TGtQaGlFbi10ak81b2VNa0nSAZMBQVVfeXFMT3BaaFB1Q0w2eXBSRGNPYzBKSmdZMmM3eTVkdHJoVFRDU2dsdkJwVnV0Q1ZHV055TFpTSW5GTzFDWmFHRjRGT3gxTlRhbHZQQlNrN1dHYjZlU3lXeHJIN2FlX2hQbFI3MGFHX2VnOUQ0ay1ZdkNoYmZpd2M3N205emFvVHUzb1l1WkR6dVpTQWt5RkMw?oc=5",
+      "date": "Thu, 01 Oct 2026 08:51:00 GMT",
+      "desc": "South Korea cuts October bond issuance by 5 trillion won to tame rates - CHOSUNBIZ&nbsp;&nbsp;Chosunbiz"
     },
     {
       "title": "S.Korean president cites increased exports in calling China ties ‘important’; pragmatic diplomacy yields win-win outcomes: expert - Global Times",
@@ -63,22 +63,22 @@
       "desc": "S.Korean president cites increased exports in calling China ties ‘important’; pragmatic diplomacy yields win-win outcomes: expert&nbsp;&nbsp;Global Times"
     },
     {
+      "title": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNcExRMUdkalpraHpzbFRBSzhXcWJYZk42cG1jYXhaMlgzSE9XYUEzTjVwUFhVUWZyTEU0TDByZ1lSWU5kRFlDSENKSXE3RVN3VkRGeDU4SDhiWnN6d0FnLVNIdzZwN3ZfZEwxRFZXOWEzVTVyU3RCMG1yekk0aG56S2NLdHEtc2ty?oc=5",
+      "date": "Thu, 01 Oct 2026 08:26:15 GMT",
+      "desc": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion&nbsp;&nbsp;조선일보"
+    },
+    {
       "title": "Korean Stocks Face Early End to $40 Billion Buyback Support - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxONFZTMTk5clB4TXpmZnlRc1R1N2s5bGhKT2xJaWx0N0gtNjU2d2twaVRPT3oyekNyY2lZS2k5UFBBeWhlenh1aW00T29xbTdxRmZZdXZ0UjY2ZnlyYlFxNDhfTXNjR2w1UDZxTzFDdFcxVHE0aUc1WlZWWDYzOHh4WE40dmZuSTJQZW1RVUY5anBNcThsUUtENk9GZW5ia2ltbnJ6SHBzVmZubU8wUHc?oc=5",
       "date": "Wed, 30 Sep 2026 00:00:00 GMT",
       "desc": "Korean Stocks Face Early End to $40 Billion Buyback Support&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "Warning Against Semiconductor Overconcentration — \"Trim Positions at Samsung Electronics ₩320,000, SK Hynix ₩2.4 Million\" - finance.biggo.com",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1TMS1kZU1rQUg3aUk2UjJpTGtxdTBURkZnaTU2VExRX25aZWlfWnZnYkRJRkZmbUN3SEh1cndxdUpSZFlycFlVM09mTFJhcFdRQVZmSm95V21TQ2ZFNTUtcTdEZWhMNy1USUtyS3NDbVVkZ1gwYWc?oc=5",
-      "date": "Wed, 30 Sep 2026 20:55:00 GMT",
-      "desc": "Warning Against Semiconductor Overconcentration — \"Trim Positions at Samsung Electronics ₩320,000, SK Hynix ₩2.4 Million\"&nbsp;&nbsp;finance.biggo.com"
-    },
-    {
-      "title": "Exclusive: Government Allocates 200 Billion Won for Samsung, SK Worker Housing - chosun.com",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNmtRLXBubjRDOGhLZm1KSWhzcUhIZ2x5TWh5VjJST2N3cHhTMklFYnlGZmNUcHVNQXZYaTBkTFphSDBRNnBUcFlteWhLczBNbG1ndWF1ZXlZVTF1Q3NPazZzV2laNUsyNzF1aUZrbDl3c08zazNCUXNEbWlaaXQ4Q1E0VUtvQzNl?oc=5",
-      "date": "Wed, 30 Sep 2026 22:57:04 GMT",
-      "desc": "Exclusive: Government Allocates 200 Billion Won for Samsung, SK Worker Housing&nbsp;&nbsp;chosun.com"
+      "title": "South Korea's KOSPI Trims Losses on Samsung Electronics, SK Hynix Buybacks; KOSDAQ Jumps Over 2% - finance.biggo.com",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9VcjhKZ0VlNUJORnpHY2NpMkNEZnlxQXhjLUpTUl9rWUIxZ2VMcTdDRzNsQVdoakxZd200WHdLNHlDR3lEMXZiZE92Ry0tTVJON3c4RFprZ0JnVy15QVU1by05TjhHNGVEclBnUGVocTNVZllNTVE?oc=5",
+      "date": "Thu, 01 Oct 2026 03:35:00 GMT",
+      "desc": "South Korea's KOSPI Trims Losses on Samsung Electronics, SK Hynix Buybacks; KOSDAQ Jumps Over 2%&nbsp;&nbsp;finance.biggo.com"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 267000.0,
-      "change": -5500.0,
-      "pct": -2.02,
+      "price": 276000.0,
+      "change": 3500.0,
+      "pct": 1.28,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1774000.0,
-      "change": 9000.0,
-      "pct": 0.51,
+      "price": 1833000.0,
+      "change": 68000.0,
+      "pct": 3.85,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 345250.0,
-      "change": -4750.0,
-      "pct": -1.36,
+      "price": 349000.0,
+      "change": -1000.0,
+      "pct": -0.29,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 113100.0,
-      "change": -2900.0,
-      "pct": -2.5,
+      "price": 113300.0,
+      "change": -2700.0,
+      "pct": -2.33,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 191700.0,
-      "change": -3100.0,
-      "pct": -1.59,
+      "price": 191200.0,
+      "change": -3600.0,
+      "pct": -1.85,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6808.33,
-      "change": -62.48,
-      "pct": -0.91,
+      "price": 6971.35,
+      "change": 100.54,
+      "pct": 1.46,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1359.88,
-      "change": 9.38,
-      "pct": 0.69,
+      "price": 1363.3,
+      "change": 12.8,
+      "pct": 0.95,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-01 03:02 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-01 09:37 UTC"
 }
