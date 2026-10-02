@@ -1,42 +1,42 @@
 {
   "globalNews": [
     {
+      "title": "Riot police clash with students as education protests rage in France",
+      "link": "https://www.bbc.co.uk/news/articles/ck3r5dxxwqzpo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 02 Oct 2026 17:43:10 GMT",
+      "desc": "More than 600 schools have faced disruption as protests over standards and lack of teachers continue."
+    },
+    {
+      "title": "Woman at centre of Cornell rape inquiry was 'failed' by officials, says New York governor",
+      "link": "https://www.bbc.co.uk/news/articles/cqvg04718lr9o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 02 Oct 2026 17:44:08 GMT",
+      "desc": "The woman, known as Jane Doe, alleges she was raped by seven students at a fraternity house at the university in 2024."
+    },
+    {
       "title": "'I was not going to let others die' - pilot of Flydubai flight describes cockpit attack by co-pilot",
       "link": "https://www.bbc.co.uk/news/articles/c639m98gde00o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 02 Oct 2026 09:08:06 GMT",
       "desc": "Capt Smit Machchhar tells Indian Prime Minister Narendra Modi he opened the cockpit door to let others in during the attack."
     },
     {
-      "title": "Cornell students gather to voice anger over alleged gang rape",
-      "link": "https://www.bbc.co.uk/news/articles/cm0e3ed1er1yo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 02 Oct 2026 10:00:24 GMT",
-      "desc": "Students tell the BBC that the tension on campus has become palpable since allegations from 2024 resurfaced."
+      "title": "Intensified Russian strikes are tearing Kyiv apart, warns mayor",
+      "link": "https://www.bbc.co.uk/news/articles/c6wyv44y4ywjo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 02 Oct 2026 15:26:37 GMT",
+      "desc": "Vitaliy Klitschko says Ukraine's capital is in a \"very dramatic situation\" as Russia hits critical infrastructure."
     },
     {
-      "title": "I've seen nearly 500 executions - but never one like Christa Pike's",
-      "link": "https://www.bbc.co.uk/news/articles/c6d949gq47x9o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 02 Oct 2026 14:01:09 GMT",
-      "desc": "Texas reporter Michael Graczyk has seen botched executions in his time, but not one in which an inmate survived."
-    },
-    {
-      "title": "Seoul warns 'further action' if Ukraine does not apologise over prisoner-of-war row",
-      "link": "https://www.bbc.co.uk/news/articles/cm1dld14weero?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 02 Oct 2026 03:09:13 GMT",
-      "desc": "President Lee Jae Myung also accused Kyiv of \"attempting to provoke a war on the Korean Peninsula\"."
-    },
-    {
-      "title": "Japan's first mayor to take maternity leave lands on TIME100 Next list",
-      "link": "https://www.bbc.co.uk/news/articles/cqj3d3d37nxgo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 02 Oct 2026 05:53:51 GMT",
-      "desc": "Shoko Kawata's maternity leave drew mixed reactions in Japan, a country struggling to lift birth rates."
+      "title": "Spanish PM Sánchez loses key housing crisis vote after eviction of woman, 87",
+      "link": "https://www.bbc.co.uk/news/articles/c623dlk4y75mo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 02 Oct 2026 15:30:12 GMT",
+      "desc": "The defeat raises pressure on Sánchez to call a snap election, after a series of scandals affecting his party and allies."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea's monthly exports top $120 billion for the first time on record chip sales - Reuters",
+      "title": "South Korea's monthly exports top $120 billion for the first time on record chip sales - reuters.com",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPZnJyM2ZNTm1lLU0yWWdRY3VFSDFYdEZHV29NSzR4LVl3RUhpLXk2b0UtVExfM0VUYlBKbGVKWF80NVpONGdrcTNySU5IZDEwMjdHWWtkNUR6ZnRoMlNqWVFNRXM2RUtZZTRaTFQwVVVLMm9oWUpTcEd5YW4tUUFNMGpucVpnUU1oY29Lak9oMnBrSHp5V1REQ1F4OWpUaTdfNGRsb1AtUTNDZUo5cHNOMg?oc=5",
       "date": "Thu, 01 Oct 2026 00:23:00 GMT",
-      "desc": "South Korea's monthly exports top $120 billion for the first time on record chip sales&nbsp;&nbsp;Reuters"
+      "desc": "South Korea's monthly exports top $120 billion for the first time on record chip sales&nbsp;&nbsp;reuters.com"
     },
     {
       "title": "South Korea’s Inflation Eases But Stays Sticky - WSJ",
@@ -45,10 +45,10 @@
       "desc": "South Korea’s Inflation Eases But Stays Sticky&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Trump announces $200bn in energy investments from South Korea - Al Jazeera",
+      "title": "Trump announces $200bn in energy investments from South Korea - aljazeera.com",
       "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcC0wOTEtTU4tbWtmX0M3TXZ4WTdlang0V0JVV0drSE9wTzVuSHNyM19Yd25TaThsRUZVSktyQldhN3JEUUE4ZEptV01sN3daOG9lbFdZa3lLX25xTlg5elFsS3N3ekozRDFMTWJuc2NvMkFCTmtQWlZGSXhaOUVuRk1Nb2pSaTZIN0lfdzNjaU5WUDNaaW1qaUlvd0k2TzcxTDZNa0V5YUhRMGN3QWF30gG0AUFVX3lxTE0zQ2ZzYWJxdllrQ1hvdVlVRTR0RUMzczEyeDdUdlZXUWdrbmJrZFFMWlV1MVdCNTg3bFcxa2YxMUg3Z1ZpX1RMeUxvQTdoOS1WRnoyU3hlaVVfZTBxUUpYeGxGNFNYRmdQUzd2Q2VnajRuX05IRDR2eWdUVnJ5R3JMbHlXV2U2NmFaRzVWSXJwOHJDb3dlUlFyTFZMd0hzcVpiVmVvbnJoS0w4UjhoSFYwLWRCRw?oc=5",
       "date": "Thu, 01 Oct 2026 00:29:54 GMT",
-      "desc": "Trump announces $200bn in energy investments from South Korea&nbsp;&nbsp;Al Jazeera"
+      "desc": "Trump announces $200bn in energy investments from South Korea&nbsp;&nbsp;aljazeera.com"
     },
     {
       "title": "South Korea Tax Revenue to Hit Fresh Record on Global Chip Boom - Bloomberg.com",
@@ -57,10 +57,10 @@
       "desc": "South Korea Tax Revenue to Hit Fresh Record on Global Chip Boom&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea's Export Machine Is Getting A New Engine - Benzinga",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOQVhNZUNRRk5tRnlCeVZGdGVxY2o2dW1SbDhjV2MtVEVoaXVMN1g3NUd3a3JVdlJPMUQzaWtDam1JYkxLTGZoTUE4eFk5bHQzbkFaS3NJdjhzR2pVTGRLM3RvUmFHa2E0YmN2SFBod2dZWHEwUi11TWkycmF5SHJTNkZEakxOQWYwc2NMa3Izdy1ZeXpaYjV4SlZicHhkV1Rk?oc=5",
-      "date": "Wed, 30 Sep 2026 18:28:29 GMT",
-      "desc": "South Korea's Export Machine Is Getting A New Engine&nbsp;&nbsp;Benzinga"
+      "title": "Trump says South Korea trade deal adds $8.4B oil project - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNUVlxVnFNY2FUNU1uZ3RZQjlNbDJGSmNIMDlGekZ4V1YwZGxNUVJQclpJaHFIdmpEZEtDXzZISTU3b0ZSNUR4dVRwU2d3R25aWTRwMHQ1YXdoN1RxVDBfZjFVQU5LSS1KQVlVY0YwbGMyakZJSnRjWTdQTGZPZ2FjSTFidVVVTjBaS1hYMkdFRXhYV1lYQmtZZUZwQmROc1JVeG9WeFNvZjhUZzJIcWRYXw?oc=5",
+      "date": "Fri, 02 Oct 2026 13:06:44 GMT",
+      "desc": "Trump says South Korea trade deal adds $8.4B oil project&nbsp;&nbsp;Investing.com"
     },
     {
       "title": "Foreign Investors Dump $12.2 Billion in Samsung Electronics and SK Hynix, But Pour $80 Million Into South Korean Semiconductor ETFs - finance.biggo.com",
@@ -69,105 +69,105 @@
       "desc": "Foreign Investors Dump $12.2 Billion in Samsung Electronics and SK Hynix, But Pour $80 Million Into South Korean Semiconductor ETFs&nbsp;&nbsp;finance.biggo.com"
     },
     {
-      "title": "While semiconductor stocks such as Samsung Electronics and SK Hynix are taking a breather, warmth is.. - 매일경제",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBnU3VrQUx4NzBnZFRpV2dIUjlNb292QVU2clg1MERzNkUtNHJtdWtmNndjb3RzNkY0YWgwVDh2aUJkTU1RcVgwdkd3QXdZcnM?oc=5",
-      "date": "Fri, 02 Oct 2026 08:38:33 GMT",
-      "desc": "While semiconductor stocks such as Samsung Electronics and SK Hynix are taking a breather, warmth is..&nbsp;&nbsp;매일경제"
-    },
-    {
       "title": "Korean Stocks Face Early End to $40 Billion Buyback Support - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxONFZTMTk5clB4TXpmZnlRc1R1N2s5bGhKT2xJaWx0N0gtNjU2d2twaVRPT3oyekNyY2lZS2k5UFBBeWhlenh1aW00T29xbTdxRmZZdXZ0UjY2ZnlyYlFxNDhfTXNjR2w1UDZxTzFDdFcxVHE0aUc1WlZWWDYzOHh4WE40dmZuSTJQZW1RVUY5anBNcThsUUtENk9GZW5ia2ltbnJ6SHBzVmZubU8wUHc?oc=5",
       "date": "Wed, 30 Sep 2026 00:00:00 GMT",
       "desc": "Korean Stocks Face Early End to $40 Billion Buyback Support&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "While semiconductor stocks such as Samsung Electronics and SK Hynix are taking a breather, warmth is.. - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBnU3VrQUx4NzBnZFRpV2dIUjlNb292QVU2clg1MERzNkUtNHJtdWtmNndjb3RzNkY0YWgwVDh2aUJkTU1RcVgwdkd3QXdZcnM?oc=5",
+      "date": "Fri, 02 Oct 2026 08:38:33 GMT",
+      "desc": "While semiconductor stocks such as Samsung Electronics and SK Hynix are taking a breather, warmth is..&nbsp;&nbsp;매일경제"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 235.08,
-      "change": 6.7,
-      "pct": 2.93,
+      "price": 234.45,
+      "change": 6.07,
+      "pct": 2.66,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 472.17,
-      "change": 15.98,
-      "pct": 3.5,
+      "price": 471.3,
+      "change": 15.11,
+      "pct": 3.31,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 635.41,
-      "change": 23.65,
-      "pct": 3.87,
+      "price": 631.65,
+      "change": 19.89,
+      "pct": 3.25,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 122.13,
-      "change": 1.9,
-      "pct": 1.58,
+      "price": 120.06,
+      "change": -0.17,
+      "pct": -0.14,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 187.61,
-      "change": 3.57,
-      "pct": 1.94,
+      "price": 185.59,
+      "change": 1.55,
+      "pct": 0.84,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 315.94,
-      "change": 26.28,
-      "pct": 9.07,
+      "price": 307.35,
+      "change": 17.69,
+      "pct": 6.11,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 342.1,
-      "change": -1.98,
-      "pct": -0.58,
+      "price": 343.08,
+      "change": -1.0,
+      "pct": -0.29,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 332.15,
-      "change": -0.87,
-      "pct": -0.26,
+      "price": 333.85,
+      "change": 0.83,
+      "pct": 0.25,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 515.26,
-      "change": 2.36,
-      "pct": 0.46,
+      "price": 515.13,
+      "change": 2.23,
+      "pct": 0.43,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7720.71,
-      "change": 69.17,
+      "price": 7720.55,
+      "change": 69.01,
       "pct": 0.9,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27186.94,
-      "change": 325.88,
-      "pct": 1.21,
+      "price": 27175.45,
+      "change": 314.39,
+      "pct": 1.17,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1345.8,
-      "change": -11.04,
-      "pct": -0.81,
+      "price": 1345.27,
+      "change": -11.57,
+      "pct": -0.85,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-02 15:37 UTC"
+  "updatedAt": "2026-10-02 18:47 UTC"
 }
