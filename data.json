@@ -1,19 +1,25 @@
 {
   "globalNews": [
     {
+      "title": "Tennessee prison chief to resign after Christa Pike's failed execution, governor says",
+      "link": "https://www.bbc.co.uk/news/articles/c8zxl62yzxzxo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 03 Oct 2026 16:57:02 GMT",
+      "desc": "Pike survived two lethal injections on Wednesday and is currently in critical condition in hospital."
+    },
+    {
       "title": "Flydubai co-pilot attacked captain with axe, UAE official says",
       "link": "https://www.bbc.co.uk/news/articles/c61wv7lgex13o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 03 Oct 2026 11:20:21 GMT",
+      "date": "Sat, 03 Oct 2026 14:27:33 GMT",
       "desc": "The man accused of trying to take over the Israel-bound jet is named as Hamam al-Hammami by several media outlets."
     },
     {
       "title": "Russia hits second major bridge in Ukraine's capital Kyiv",
       "link": "https://www.bbc.co.uk/news/articles/c83vqxzdg1yko?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 03 Oct 2026 12:59:10 GMT",
+      "date": "Sat, 03 Oct 2026 16:16:49 GMT",
       "desc": "The strike on the Pivnichnyi (Northern) Bridge comes after repeat attacks on another major bridge in Ukraine's capital."
     },
     {
-      "title": "Protesters across Spain demand action over housing crisis",
+      "title": "'Anger in the streets': Tens of thousands protest in Spain over housing crisis",
       "link": "https://www.bbc.co.uk/news/articles/cm2kej47095no?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 03 Oct 2026 13:34:11 GMT",
       "desc": "More than 50 protests are taking place on Saturday after the government failed to get emergency legislation through parliament."
@@ -23,26 +29,20 @@
       "link": "https://www.bbc.co.uk/news/articles/ck87zg8jnwngo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 03 Oct 2026 04:38:31 GMT",
       "desc": "The co-ordinated release is aimed at heading off further price spikes and avoiding a ban on US diesel exports."
-    },
-    {
-      "title": "Women given shorts at Oktoberfest to prevent upskirting",
-      "link": "https://www.bbc.co.uk/news/articles/cjwyzyqvx1zxo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 02 Oct 2026 23:16:03 GMT",
-      "desc": "The step at the Munich festival comes after thousands of voyeuristic videos emerged on social media."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea’s Inflation Eases But Stays Sticky - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOM2NRREZEREdSV3RvbUNWWmJJZzJPLTFEcmVwNXlFZUJzRFhJVUltRXFRTW02SlVuWTMzNW1WVWR0Ul9mbmpnOWNTNGdMOHZKQnVUQTFFamdOZGJTQVQ2bG5xeU5NWmNScWlKSktma2NyUWF0a1M2dGFzTS1vTUJMVDFtenVEMEhPQ3c?oc=5",
+      "date": "Thu, 01 Oct 2026 23:56:00 GMT",
+      "desc": "South Korea’s Inflation Eases But Stays Sticky&nbsp;&nbsp;WSJ"
+    },
     {
       "title": "Trump threatens South Korea over Alaska LNG project dispute - The Japan Times",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPZlVnVVJHcHJvWVJIX2VoZlhOOUxDeUpsWXhfTXYzcFd3dkl6cWNLVVNUbTNzdVI0X3gzMk9vMU52MGZ6TE9USXBfWUZLVVpFMDlCUDY0SzZibTFvem9YeHRzSTdjQUJZOGFmbGVEODVNQlhDbzVXZml3SlpvRGNGZ1BYZV8wSk1EZUxzcFpKdERNT00?oc=5",
       "date": "Sat, 03 Oct 2026 00:34:00 GMT",
       "desc": "Trump threatens South Korea over Alaska LNG project dispute&nbsp;&nbsp;The Japan Times"
-    },
-    {
-      "title": "South Korea’s Inflation Eases But Stays Sticky - wsj.com",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOM2NRREZEREdSV3RvbUNWWmJJZzJPLTFEcmVwNXlFZUJzRFhJVUltRXFRTW02SlVuWTMzNW1WVWR0Ul9mbmpnOWNTNGdMOHZKQnVUQTFFamdOZGJTQVQ2bG5xeU5NWmNScWlKSktma2NyUWF0a1M2dGFzTS1vTUJMVDFtenVEMEhPQ3c?oc=5",
-      "date": "Thu, 01 Oct 2026 23:56:00 GMT",
-      "desc": "South Korea’s Inflation Eases But Stays Sticky&nbsp;&nbsp;wsj.com"
     },
     {
       "title": "Trump announces $200bn in energy investments from South Korea - Al Jazeera",
@@ -75,10 +75,10 @@
       "desc": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "While semiconductor stocks such as Samsung Electronics and SK Hynix are taking a breather, warmth is.. - 매일경제",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBYR1dJRnNmRkZzNmlIZkdvdnhaRklfY016YzBVekg5OV92OU55NjREanh4NzQwRU1nbzJuTEg3ZGVUTFZmLTJVLXNCYlNLNGM?oc=5",
-      "date": "Fri, 02 Oct 2026 21:15:27 GMT",
-      "desc": "While semiconductor stocks such as Samsung Electronics and SK Hynix are taking a breather, warmth is..&nbsp;&nbsp;매일경제"
+      "title": "Korea reopens Honam grid to support Samsung, SK chip plants - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNeC1YWUp5WGd0ZDlIcWRidEd0VmRXOXNHSGR3Q21YQVpZbUJZd2FjT0h2bU5DN1RnaTlOWENHR3RFX0lhMkFjQ0xSeFZZUEh1SFpZYk5xaWRmTlBnMUpOdExtTF9TcWdlWGNMZVM1d0hXUTg2OVJUWTk3MndYVWhIbmg0dDA2UDZfV1BCcVBSeC0tMzZEVXQ1QUtCdU90NGtmRG9vQ20yQVA1dU1YaWxULQ?oc=5",
+      "date": "Tue, 29 Sep 2026 07:34:26 GMT",
+      "desc": "Korea reopens Honam grid to support Samsung, SK chip plants&nbsp;&nbsp;Korea JoongAng Daily"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-03 14:13 UTC"
+  "updatedAt": "2026-10-03 17:40 UTC"
 }
