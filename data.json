@@ -1,6 +1,18 @@
 {
   "globalNews": [
     {
+      "title": "Kyiv bridge hit in further Russian drone attack as German chancellor makes surprise visit",
+      "link": "https://www.bbc.co.uk/news/articles/ckreyjzzzywqo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 04 Oct 2026 08:48:38 GMT",
+      "desc": "Unverified video shows a drone hitting the Northern Bridge as vehicles move across it, creating a large fireball."
+    },
+    {
+      "title": "Australia investigating Flydubai co-pilot's links to country",
+      "link": "https://www.bbc.co.uk/news/articles/cxly4nym57q9o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 04 Oct 2026 06:19:17 GMT",
+      "desc": "State police and the country's security agency are looking into the co-pilot, who attempted to take control of a Flydubai plane travelling to Israel."
+    },
+    {
       "title": "Tennessee prison chief to resign after Christa Pike's failed execution",
       "link": "https://www.bbc.co.uk/news/articles/c8zxl62yzxzxo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 03 Oct 2026 17:48:42 GMT",
@@ -13,21 +25,9 @@
       "desc": "Michael Kotlikoff described the allegations of a woman who says she was drugged and gang raped as \"deeply disturbing\"."
     },
     {
-      "title": "Flydubai co-pilot attacked captain with axe, UAE official says",
-      "link": "https://www.bbc.co.uk/news/articles/c61wv7lgex13o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 03 Oct 2026 14:27:33 GMT",
-      "desc": "The man accused of trying to take over the Israel-bound jet is named as Hamam al-Hammami by several media outlets."
-    },
-    {
-      "title": "Russia hits second major bridge in Ukraine's capital Kyiv",
-      "link": "https://www.bbc.co.uk/news/articles/c83vqxzdg1yko?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 03 Oct 2026 16:16:49 GMT",
-      "desc": "The strike on the Pivnichnyi (Northern) Bridge comes after repeat attacks on another major bridge in Ukraine's capital."
-    },
-    {
       "title": "'Anger in the streets': Tens of thousands protest in Spain over housing crisis",
       "link": "https://www.bbc.co.uk/news/articles/cm2kej47095no?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 03 Oct 2026 13:34:11 GMT",
+      "date": "Sun, 04 Oct 2026 03:42:15 GMT",
       "desc": "More than 50 protests took place on Saturday after the government failed to get emergency legislation through parliament."
     }
   ],
@@ -39,10 +39,16 @@
       "desc": "South Korea’s Inflation Eases But Stays Sticky&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Trump announces $200bn in energy investments from South Korea - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcC0wOTEtTU4tbWtmX0M3TXZ4WTdlang0V0JVV0drSE9wTzVuSHNyM19Yd25TaThsRUZVSktyQldhN3JEUUE4ZEptV01sN3daOG9lbFdZa3lLX25xTlg5elFsS3N3ekozRDFMTWJuc2NvMkFCTmtQWlZGSXhaOUVuRk1Nb2pSaTZIN0lfdzNjaU5WUDNaaW1qaUlvd0k2TzcxTDZNa0V5YUhRMGN3QWF30gG0AUFVX3lxTE0zQ2ZzYWJxdllrQ1hvdVlVRTR0RUMzczEyeDdUdlZXUWdrbmJrZFFMWlV1MVdCNTg3bFcxa2YxMUg3Z1ZpX1RMeUxvQTdoOS1WRnoyU3hlaVVfZTBxUUpYeGxGNFNYRmdQUzd2Q2VnajRuX05IRDR2eWdUVnJ5R3JMbHlXV2U2NmFaRzVWSXJwOHJDb3dlUlFyTFZMd0hzcVpiVmVvbnJoS0w4UjhoSFYwLWRCRw?oc=5",
-      "date": "Thu, 01 Oct 2026 00:29:54 GMT",
-      "desc": "Trump announces $200bn in energy investments from South Korea&nbsp;&nbsp;Al Jazeera"
+      "title": "South Korea’s exports hit record high on AI boom - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOX3NKUDFscG16UF9kbmVWUUdwb182Q2lOdDJweElBYTlwUE1NRXluZUdjSXp5STNweldSU1lGeUkydXhRWDctVFkxd0x2TGZNTDZneTREeENuRUVLQURJSzJzNHB5ZXFwa2VyUnM4MmtManF0M2xpY3VMM2tjOXdxNXlrazZZeC1nQzhYanNPaEtnQTdDd3fSAZsBQVVfeXFMT205N25lTE5OYnVTT2xseVhlVG9qQk01Q0ZfT2wwc3VaN3Y2V1N4UjNpZkNIVFRtbE8yeF9VQ29mRU1tUll3a056VVRXLVZhclRyeUJ4RkFGZ014WEM2MVNQREctcHY2ekpidXladzBCNEFrbFRkamdjSWdZX2xVeGNpeTEyVUsxaUlBZFlqcUF5UVNnWXZTbDdJOFk?oc=5",
+      "date": "Thu, 01 Oct 2026 04:24:48 GMT",
+      "desc": "South Korea’s exports hit record high on AI boom&nbsp;&nbsp;Al Jazeera"
+    },
+    {
+      "title": "People Power Party Criticizes Lee Jae Myung's Economic Self-Praise - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSzEwM2RwOWhmX3hic2RSWjlIWElLeVUtVVMtb3V4bHFlS2tFM2hWMFZCWkxFV3FTSzRHc0Z2NHd1SkYtQTdjTUdkNVFxMGUwNHpYb3dHNUZyM3Z5MGhzZXdUOGZpa011aVhaaWJuSzJqZ2ZBS01vc0h4bmp5Zy1EbEFEalVMMWJx?oc=5",
+      "date": "Sun, 04 Oct 2026 06:02:37 GMT",
+      "desc": "People Power Party Criticizes Lee Jae Myung's Economic Self-Praise&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Trump threatens South Korea over Alaska LNG project dispute - The Japan Times",
@@ -51,22 +57,16 @@
       "desc": "Trump threatens South Korea over Alaska LNG project dispute&nbsp;&nbsp;The Japan Times"
     },
     {
-      "title": "Trump Dangles Alaska Gas Project as Part of Korean Investment Package - The New York Times",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMVNGOGlxUUZWSTFIdWoteU9meXhraDFQcjZjMDRHMlJQX19wQXFzRG04WVJrMTdaRlozVjlOaVRHM0cwTFA4Q1NOOWxIR0otTGxUSlc1S0dOZlVVdjZPOXVBNzE1ZjVCVG1BUlBmRnBfeDlyUFRfZ3hpX09kRmJtcEJaVmpSalpwNG1RbE9n?oc=5",
-      "date": "Wed, 30 Sep 2026 22:28:32 GMT",
-      "desc": "Trump Dangles Alaska Gas Project as Part of Korean Investment Package&nbsp;&nbsp;The New York Times"
+      "title": "South Korea says economy in 'solid recovery' despite risks - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOM2xGOVk0ZlpWMFFoTU1nVV9wUUQ0bFhFZklBeVJWOUhGV2JSMUdMVG5ZdTc2OFFzTzdoS2hBV1p1YVJQY3V1NFItR2ZzanNQeFJ0N25HeHBZYXYyME1aVWFOSDdmNHBtTlp4bkNXazZ5bG5oaF9UXzJzTG1fMTNqQ0lYODJKbEd2ZjBzVHRwN0lraTRLVFhBMkxjbVA2UUV2OG55WFBFYlUtTVEtcDFDQ2ZIVGU2U1BDaTE4cjFQLThRcVg4NWdnTE1UVUIyQUhXdnhDeUVPaHJyQlB0OHJTT9IB5gFBVV95cUxPZHZQVXd1dXI0S1A0QmlpdDVjTEsyOEFCVVY1TGRmaFR4UDlwUnRxSWJDOWZUS3pYZFB1VVVpMzNoblBaM2I0VGRLSXZpSWpxYzhtWG5vaV9VTC1OTTFJRjI0emJIQnplYzQ0aEhVMnM4QnlDa0hhSzRQai1YZWhYT0JsOXRxNm5qTDdaS2hTZ0NSb2xjQlc4SmQtcVpRTnRzMUc3TG41aXRTR1d5ZTJkVmhTUGhmbHI0Sm1CYXFneFktQy1GRTVibE9PQjdlNWJzRHl3Ulo0dnJ2N1ExTExWaGVQVzNVQQ?oc=5",
+      "date": "Fri, 11 Sep 2026 07:00:00 GMT",
+      "desc": "South Korea says economy in 'solid recovery' despite risks&nbsp;&nbsp;upi.com"
     },
     {
-      "title": "South Korea to invest $200 billion in US energy - lemonde.fr",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxORmxQaVRhS2JEbUVpbjhjSGsxRTBxWldvSGt6R095LVROQTZCZDVSN0pseWZwcld3ZkdJMG1VVWRTOHhOdmxGdTBwVE50aXJiVE5PUzV1ejBhTTBzNDR0cnBidzBfS1c5MWxoYzNLMlkzUUViVFoyNkwxNHQ4YVdsQTMtUHE1WDFMMXcxODNVNXNKWDV4aUhyNlowZXdTdFhsQ2EzTjVQd1ZEUlhKYVBQaERUYzR3QQ?oc=5",
-      "date": "Wed, 30 Sep 2026 23:38:21 GMT",
-      "desc": "South Korea to invest $200 billion in US energy&nbsp;&nbsp;lemonde.fr"
-    },
-    {
-      "title": "‘Not Samsung or SK Hynix’: Retail Investors Find Gains in Chip Materials ETFs [Lee Su’s ETF Zoom In] - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE15MFVybXAxc3A1dGZhV3pUbzF3YnJFVFNpSjVUa0w4TXFyVFgwV0l4VXY3UW52b0tNN1JrMzFyR0hpQlRSM1dLd1htQWhLOS1lWTdaUg?oc=5",
-      "date": "Sat, 03 Oct 2026 06:41:26 GMT",
-      "desc": "‘Not Samsung or SK Hynix’: Retail Investors Find Gains in Chip Materials ETFs [Lee Su’s ETF Zoom In]&nbsp;&nbsp;bloomingbit"
+      "title": "Foreign investors sell W20.3tr in Korean stocks, led by SK hynix and Samsung Electronics - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1FckZBTnlqYkV4YnRqc3RMRFhHTV9uc0F3ZldiOHFucG9OdXItNlA0V0RtdEZkQzRmWFM4QUhPR0gwMDc2Ti14cHp0LWFNWGpxNnhUZ1gwcw?oc=5",
+      "date": "Sun, 04 Oct 2026 04:02:32 GMT",
+      "desc": "Foreign investors sell W20.3tr in Korean stocks, led by SK hynix and Samsung Electronics&nbsp;&nbsp;The Korea Herald"
     },
     {
       "title": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion - 조선일보",
@@ -75,10 +75,10 @@
       "desc": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPTFRIYzlpZmdmblB0WC10ZXBVZFM4R1dUMlRjNUozLWJDVFEwbHB2VnpYTmVlX1AxQ0dPa0tvQ24wRkR6YV95VnZ2RmxFZUtWUGxoemJSZ0NoeDZCS3l1OC11SUNRZHFpVG5nNEFmeVpvZWw3UzliWWhNcGZ2a0dPUUlIWkJ0d3Q2Rnp3V3dyY3VZWUw0ekdaZzNyaEFja3pqQVAtVWR3ZWw3eGo0QnY2NnpVN3NjT29IODA3UmdNM0EtRjdfRjMtd2VB?oc=5",
-      "date": "Wed, 09 Sep 2026 07:00:00 GMT",
-      "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;Reuters"
+      "title": "\"I Put 80% in Samsung, SK Hynix—Now What?\" Don't Rely on Price Targets Alone - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5FYy1rTS1qeG91em5YMGYyVFFzRENZaHpScktobkN2OVJoT0pHN2tfLWFSVmM5MnF0WmNLTGhmTlNOeF8yZVBhM1NzOE9OR2lMemJRYg?oc=5",
+      "date": "Fri, 02 Oct 2026 23:43:20 GMT",
+      "desc": "\"I Put 80% in Samsung, SK Hynix—Now What?\" Don't Rely on Price Targets Alone&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-04 03:21 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-04 09:10 UTC"
 }
