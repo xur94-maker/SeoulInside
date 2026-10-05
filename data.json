@@ -1,42 +1,54 @@
 {
   "globalNews": [
     {
-      "title": "Kyiv bridge hit in further Russian drone attack as German chancellor makes surprise visit",
-      "link": "https://www.bbc.co.uk/news/articles/ckreyjzzzywqo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 04 Oct 2026 12:09:04 GMT",
-      "desc": "Footage shows a drone hitting the Pivnichyi (Northern) Bridge as vehicles move across it, creating a large fireball."
-    },
-    {
-      "title": "Watch: What we know about Russian strikes on Kyiv bridges",
-      "link": "https://www.bbc.co.uk/news/videos/cmglwkyl9djyo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 04 Oct 2026 14:25:32 GMT",
-      "desc": "BBC Ukraine correspondent Dan Johnson is near Kyiv's Northern Bridge, which has been hit for the second day in a row."
-    },
-    {
-      "title": "Yemen's government announces all-out war to reclaim land from Houthis",
-      "link": "https://www.bbc.co.uk/news/articles/cx8dzj9vpp01o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 04 Oct 2026 16:51:30 GMT",
-      "desc": "The Yemeni president's announcement comes amid an exchange of strikes between the Houthis and the Saudi-led coalition."
-    },
-    {
-      "title": "Brazil election goes to run-off as right-wing Flávio Bolsonaro wins first round",
+      "title": "Right-wing Flávio Bolsonaro wins first round of Brazil election",
       "link": "https://www.bbc.co.uk/news/articles/ck1l34ed592no?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 05 Oct 2026 00:15:27 GMT",
+      "date": "Mon, 05 Oct 2026 03:16:16 GMT",
       "desc": "With neither candidate getting more than 50% of the vote, the election will go to a run-off on 25 October."
     },
     {
-      "title": "Ethiopian rebel forces withdraw from Tigray regional capital",
-      "link": "https://www.bbc.co.uk/news/articles/cqm249v07j4xo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 04 Oct 2026 13:33:05 GMT",
-      "desc": "Two residents in Mekelle tell the BBC pro-government forces have taken control of the city."
+      "title": "Watch: How Brazil's dramatic election unfolded",
+      "link": "https://www.bbc.co.uk/news/videos/cwp9g54v9xjlo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 05 Oct 2026 04:51:24 GMT",
+      "desc": "Millions of Brazilians took to the polls on Sunday for the first round of the country's presidential elections."
+    },
+    {
+      "title": "US air force removes all bombers from British military base RAF Fairford",
+      "link": "https://www.bbc.co.uk/news/articles/cmwyve191dlko?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 05 Oct 2026 09:20:45 GMT",
+      "desc": "No reason has been given for the withdrawal, but it follows a major incident last week when police were alerted to \"suspicious vehicles\" near the airbase."
+    },
+    {
+      "title": "'Not again': Arrest of US marine for murder reignites protests in Japan's Okinawa",
+      "link": "https://www.bbc.co.uk/news/articles/cwgkv70gg1j3o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 05 Oct 2026 08:22:41 GMT",
+      "desc": "For many locals on this island, the arrest has brought decades of frustration back to the fore."
+    },
+    {
+      "title": "France closes up to 500 schools Monday over student protests",
+      "link": "https://www.bbc.co.uk/news/articles/cwkg5n7lm3y5o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 05 Oct 2026 04:49:14 GMT",
+      "desc": "Lessons will be \"totally or partly suspended\" in some high schools after clashes between riot police and student protesters, France's education minister says."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s Inflation Eases But Stays Sticky - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOM2NRREZEREdSV3RvbUNWWmJJZzJPLTFEcmVwNXlFZUJzRFhJVUltRXFRTW02SlVuWTMzNW1WVWR0Ul9mbmpnOWNTNGdMOHZKQnVUQTFFamdOZGJTQVQ2bG5xeU5NWmNScWlKSktma2NyUWF0a1M2dGFzTS1vTUJMVDFtenVEMEhPQ3c?oc=5",
-      "date": "Thu, 01 Oct 2026 23:56:00 GMT",
-      "desc": "South Korea’s Inflation Eases But Stays Sticky&nbsp;&nbsp;WSJ"
+      "title": "AMRO revises up S. Korean economy's growth projection this year to 3.3 pct - Yonhap News Agency",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBxVGc1S1dYRkh2QjVqUGlvLVJrdXZMZ3lkZUxEbXBaaFVPZFVxSGVBOVVvTFVlZWRxTldUb1JGVFJMYU1mUWo2X3I4TE5DVGpKS1R0SEpYR0dGUQ?oc=5",
+      "date": "Mon, 05 Oct 2026 02:30:01 GMT",
+      "desc": "AMRO revises up S. Korean economy's growth projection this year to 3.3 pct&nbsp;&nbsp;Yonhap News Agency"
+    },
+    {
+      "title": "US President Trump threatens tariffs of up to 300% as Korea faces pressure over investment - Asia News Network",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNeUluYjJSQ3U1VFhQc3BtWkZlN2FKX2tOVEF1cW4tYXE5enZpSHVsVjh3TENBLWxiazVxVlIxYTJiX0s5WEVMTUtsdlZnTE9KSENjNktyamtscll5SS1RN1RtTUFlbXI4X0k5b3RqRFBBdFZ6SEJsUk9FZGlWLVZ5OEFvcHhrNml4dlkxZUYxdF9scllMbGtsalB0YTdyUGlnZk1oSDlaYVVhWFlKWFFHN2NIVFhTUQ?oc=5",
+      "date": "Mon, 05 Oct 2026 06:52:05 GMT",
+      "desc": "US President Trump threatens tariffs of up to 300% as Korea faces pressure over investment&nbsp;&nbsp;Asia News Network"
+    },
+    {
+      "title": "AMRO Raises South Korea's Growth Forecast to 3.3% - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQMW5KUVpGWGVaRU1TWHptU05FMVRRNjN2c0loTV93ZnBQT3F0SUVhNzVvN1duR2FFRkF0TEpPMG9wVWdreFljMmxwMGdUQmF0NnpwSDRSeFIxLUtyaURUNWI1VFQ1d050SHRiWVhSUFRPSVZENTJHY3pFR0RXcEw3OG9RdmJSX1dlMW9qal93?oc=5",
+      "date": "Mon, 05 Oct 2026 07:35:11 GMT",
+      "desc": "AMRO Raises South Korea's Growth Forecast to 3.3%&nbsp;&nbsp;조선일보"
     },
     {
       "title": "South Korea’s exports hit record high on AI boom - Al Jazeera",
@@ -45,40 +57,28 @@
       "desc": "South Korea’s exports hit record high on AI boom&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "Trump wants South Korea in on Alaska LNG. Here’s why Seoul is cautious - cnbc.com",
-      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOcTVWWVQwekpCcXZuX0h4WW1QNk9XRnRvREc2QlNnX1otUDRONDVaZUZtajRtZU91bFdkTUVWc2laREdCZHpDQkdETUVET2hiVHpEZVFhN1UweVR2ZTRldU9QWkxfSXJad29UeFM3b3Z3SlRPazRoc2loaFJiM2VMOTZmbWN0UkJJUGgtbk95MnJwM251TTFja3hpVjk4N2d1R183T1F2bVLSAa4BQVVfeXFMUFZncF9hYXdTRHFaWG9PVnZIX3I5TTUtc2Zidi1sRWxOdnU3b3dQc2pIRDlqT1BhM1ROSnVGbWstdnZFU3d3MThyMkUtd0dsS05jZkpKNTM5VWlQUEoxQ05wQUI2MGNsdnhMSFRzbEVlTXYwSDVuWUo2bnhadlZRRktnaEVzWXVQUGg5MjdFbU14YXlLMF9iTmx5dnZqYVRUeWdBUFk1bUhYeGxUNm5R?oc=5",
-      "date": "Fri, 02 Oct 2026 11:29:28 GMT",
-      "desc": "Trump wants South Korea in on Alaska LNG. Here’s why Seoul is cautious&nbsp;&nbsp;cnbc.com"
+      "title": "South Korea says economy in 'solid recovery' despite risks - upi.com",
+      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOM2xGOVk0ZlpWMFFoTU1nVV9wUUQ0bFhFZklBeVJWOUhGV2JSMUdMVG5ZdTc2OFFzTzdoS2hBV1p1YVJQY3V1NFItR2ZzanNQeFJ0N25HeHBZYXYyME1aVWFOSDdmNHBtTlp4bkNXazZ5bG5oaF9UXzJzTG1fMTNqQ0lYODJKbEd2ZjBzVHRwN0lraTRLVFhBMkxjbVA2UUV2OG55WFBFYlUtTVEtcDFDQ2ZIVGU2U1BDaTE4cjFQLThRcVg4NWdnTE1UVUIyQUhXdnhDeUVPaHJyQlB0OHJTT9IB5gFBVV95cUxPZHZQVXd1dXI0S1A0QmlpdDVjTEsyOEFCVVY1TGRmaFR4UDlwUnRxSWJDOWZUS3pYZFB1VVVpMzNoblBaM2I0VGRLSXZpSWpxYzhtWG5vaV9VTC1OTTFJRjI0emJIQnplYzQ0aEhVMnM4QnlDa0hhSzRQai1YZWhYT0JsOXRxNm5qTDdaS2hTZ0NSb2xjQlc4SmQtcVpRTnRzMUc3TG41aXRTR1d5ZTJkVmhTUGhmbHI0Sm1CYXFneFktQy1GRTVibE9PQjdlNWJzRHl3Ulo0dnJ2N1ExTExWaGVQVzNVQQ?oc=5",
+      "date": "Fri, 11 Sep 2026 07:00:00 GMT",
+      "desc": "South Korea says economy in 'solid recovery' despite risks&nbsp;&nbsp;upi.com"
     },
     {
-      "title": "People Power Party Criticizes Lee Jae Myung's Economic Self-Praise - chosun.com",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSzEwM2RwOWhmX3hic2RSWjlIWElLeVUtVVMtb3V4bHFlS2tFM2hWMFZCWkxFV3FTSzRHc0Z2NHd1SkYtQTdjTUdkNVFxMGUwNHpYb3dHNUZyM3Z5MGhzZXdUOGZpa011aVhaaWJuSzJqZ2ZBS01vc0h4bmp5Zy1EbEFEalVMMWJx?oc=5",
-      "date": "Sun, 04 Oct 2026 11:43:35 GMT",
-      "desc": "People Power Party Criticizes Lee Jae Myung's Economic Self-Praise&nbsp;&nbsp;chosun.com"
-    },
-    {
-      "title": "Trump threatens South Korea over Alaska LNG project dispute - The Japan Times",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPZlVnVVJHcHJvWVJIX2VoZlhOOUxDeUpsWXhfTXYzcFd3dkl6cWNLVVNUbTNzdVI0X3gzMk9vMU52MGZ6TE9USXBfWUZLVVpFMDlCUDY0SzZibTFvem9YeHRzSTdjQUJZOGFmbGVEODVNQlhDbzVXZml3SlpvRGNGZ1BYZV8wSk1EZUxzcFpKdERNT00?oc=5",
-      "date": "Sat, 03 Oct 2026 00:34:00 GMT",
-      "desc": "Trump threatens South Korea over Alaska LNG project dispute&nbsp;&nbsp;The Japan Times"
-    },
-    {
-      "title": "Foreign investors sell W20.3tr in Korean stocks, led by SK hynix and Samsung Electronics - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1FckZBTnlqYkV4YnRqc3RMRFhHTV9uc0F3ZldiOHFucG9OdXItNlA0V0RtdEZkQzRmWFM4QUhPR0gwMDc2Ti14cHp0LWFNWGpxNnhUZ1gwcw?oc=5",
-      "date": "Sun, 04 Oct 2026 04:02:32 GMT",
-      "desc": "Foreign investors sell W20.3tr in Korean stocks, led by SK hynix and Samsung Electronics&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion - chosun.com",
+      "title": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNcExRMUdkalpraHpzbFRBSzhXcWJYZk42cG1jYXhaMlgzSE9XYUEzTjVwUFhVUWZyTEU0TDByZ1lSWU5kRFlDSENKSXE3RVN3VkRGeDU4SDhiWnN6d0FnLVNIdzZwN3ZfZEwxRFZXOWEzVTVyU3RCMG1yekk0aG56S2NLdHEtc2ty?oc=5",
       "date": "Thu, 01 Oct 2026 08:35:37 GMT",
-      "desc": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion&nbsp;&nbsp;chosun.com"
+      "desc": "Micron's Record Revenue Lifts Samsung, SK Hynix Toward 200 Trillion&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "\"I Put 80% in Samsung, SK Hynix—Now What?\" Don't Rely on Price Targets Alone - bloomingbit",
+      "title": "\"I Put 80% in Samsung, SK Hynix—Now What?\" Don't Rely on Price Targets Alone - en.bloomingbit.io",
       "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5FYy1rTS1qeG91em5YMGYyVFFzRENZaHpScktobkN2OVJoT0pHN2tfLWFSVmM5MnF0WmNLTGhmTlNOeF8yZVBhM1NzOE9OR2lMemJRYg?oc=5",
       "date": "Fri, 02 Oct 2026 23:43:20 GMT",
-      "desc": "\"I Put 80% in Samsung, SK Hynix—Now What?\" Don't Rely on Price Targets Alone&nbsp;&nbsp;bloomingbit"
+      "desc": "\"I Put 80% in Samsung, SK Hynix—Now What?\" Don't Rely on Price Targets Alone&nbsp;&nbsp;en.bloomingbit.io"
+    },
+    {
+      "title": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPTFRIYzlpZmdmblB0WC10ZXBVZFM4R1dUMlRjNUozLWJDVFEwbHB2VnpYTmVlX1AxQ0dPa0tvQ24wRkR6YV95VnZ2RmxFZUtWUGxoemJSZ0NoeDZCS3l1OC11SUNRZHFpVG5nNEFmeVpvZWw3UzliWWhNcGZ2a0dPUUlIWkJ0d3Q2Rnp3V3dyY3VZWUw0ekdaZzNyaEFja3pqQVAtVWR3ZWw3eGo0QnY2NnpVN3NjT29IODA3UmdNM0EtRjdfRjMtd2VB?oc=5",
+      "date": "Wed, 09 Sep 2026 07:00:00 GMT",
+      "desc": "Samsung, SK Hynix payouts test South Korea's reform drive as investors seek more&nbsp;&nbsp;Reuters"
     }
   ],
   "worldStocks": [
@@ -223,13 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1343.4,
-      "change": -17.19,
-      "pct": -1.26,
+      "price": 1343.75,
+      "change": -16.84,
+      "pct": -1.24,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-05 02:58 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-05 09:50 UTC"
 }
