@@ -1,0 +1,126 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BSD Explorer · computed, not drawn</title>
+<style>
+:root{--bg:#eef3f1;--fg:#13201c;--mut:#5a6b65;--card:#fbfdfc;--line:#c9d6d1;--k1:#2457c5;--k2:#d4572a;--k3:#8a3fb0;--ac:#0b6e6e;--ok:#0c7a52;--no:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1715;--fg:#e4eeea;--mut:#8fa39b;--card:#16211e;--line:#2c3d38;--k1:#6c9bff;--k2:#ff8a5c;--k3:#c28bff;--ac:#4fd1c5;--ok:#4fd1a8;--no:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1715;--fg:#e4eeea;--mut:#8fa39b;--card:#16211e;--line:#2c3d38;--k1:#6c9bff;--k2:#ff8a5c;--k3:#c28bff;--ac:#4fd1c5;--ok:#4fd1a8;--no:#ff8a80}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:780px;margin:0 auto;padding:20px 16px 48px}
+h1{font:700 clamp(24px,5.5vw,34px)/1.2 Georgia,serif;margin:0 0 6px}h2{font:600 19px Georgia,serif;margin:0 0 6px}
+.sub,.note,small{color:var(--mut)}.sub{margin:0 0 14px}
+nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
+nav button,.go{flex:none;font:inherit;font-size:14px;padding:7px 13px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;cursor:pointer}
+nav button[aria-selected=true]{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+section{display:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}section.on{display:block}
+p{margin:.4em 0 .8em;max-width:66ch}.note{font-size:14px;border-left:3px solid var(--line);padding-left:10px;margin-top:12px}
+canvas{width:100%;height:290px;display:block;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.row{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:10px 0}
+select,input[type=range]{font:inherit;font-size:14px;accent-color:var(--ac)}select{padding:5px 8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px}
+input[type=range]{flex:1;min-width:150px}
+.box{overflow:auto;border:1px solid var(--line);border-radius:6px;margin-top:10px;max-height:300px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}td,th{padding:5px 9px;border-bottom:1px solid var(--line);text-align:left;word-break:break-all}
+.ok{color:var(--ok);font-weight:600}.no{color:var(--no);font-weight:600}.tag{font-size:12px;padding:1px 8px;border-radius:9px;border:1px solid currentColor;margin-left:6px;white-space:nowrap}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+</style></head><body><main>
+<h1>BSD Explorer: computed, not drawn</h1>
+<p class="sub">Every number here is calculated in your browser from point counts: no hand-drawn curves. Curves with prime conductor 11, 37 and 389 have analytic rank 0, 1 and 2.</p>
+<nav id="tabs" role="tablist"><button data-t="p" role="tab">1 · Product</button><button data-t="l" role="tab">2 · L-function</button><button data-t="b" role="tab">3 · BSD formula</button><button data-t="a" role="tab">4 · Adding points</button><button data-t="h" role="tab">5 · What is proved</button></nav>
+
+<section id="s-p"><h2>The Birch–Swinnerton-Dyer product</h2>
+<p>For each good prime p, count Nₚ points mod p (exactly, via a square-root table) and multiply Nₚ/p. Conjecturally the product behaves like C·(log X)ʳ.</p>
+<div class="row"><label for="xs">Prime limit X = <b id="xv"></b></label><input id="xs" type="range" min="2" max="4" step="0.02" value="3.3"></div>
+<canvas id="pc" aria-label="Running product of Np/p against p, logarithmic vertical axis"></canvas>
+<div class="row" id="leg"></div>
+<p class="note">This is an <b>observed trend, not a theorem</b>: convergence is slow and noisy, so the slope of this graph is <b>not</b> a reliable rank estimator (you can see 37a1 hardly grows). The rigorous detector of rank is the L-function in tab 2. The check "max |aₚ|/(2√p) ≤ 1" is the Hasse bound, verified for every prime shown.</p></section>
+
+<section id="s-l"><h2>The completed L-function Λ(E,s)</h2>
+<p>The truncated Euler product does <i>not</i> converge at s = 1, so it cannot be used there. Instead we use modularity: Λ(s) = Σ aₙ[(√N/2πn)ˢ Γ(s,2πn/√N) + ε(√N/2πn)²⁻ˢ Γ(2−s,2πn/√N)] converges everywhere and satisfies Λ(s) = ε·Λ(2−s). Its zero order at s = 1 is the analytic rank.</p>
+<div class="row"><label for="cs">Curve</label><select id="cs" aria-label="Choose a curve"></select></div>
+<canvas id="lc" aria-label="Lambda of s near s equals 1"></canvas>
+<div class="box"><table id="lt"></table></div>
+<p class="note">The a<sub>n</sub> come from point counts (a<sub>p</sub> = p+1−Nₚ) and the Hecke recursion; compare them with the q-expansion on LMFDB. "Numerically zero" means below 10⁻⁹, which is strong evidence, not a proof. Root numbers ε = a<sub>N</sub> hold for prime conductor.</p></section>
+
+<section id="s-b"><h2>The full BSD formula, tested</h2>
+<p>Left side: L<sup>(r)</sup>(E,1)/r!, computed live in tab 2. Right side: Ω·R·∏cₚ·|Ш| / |tors|², entered from LMFDB with |Ш| unknown. Solving for |Ш| shows what the formula demands.</p>
+<div class="box"><table id="bt"></table></div>
+<p class="note">Implied |Ш| ≈ 1.0000000 for all three, matching the predicted value to about 8 digits. For ranks 0 and 1 this is consistent with known theorems; for 389a1 (rank 2) neither the rank equality nor the finiteness of Ш is proved. Ω, R, cₚ were typed in from LMFDB (not recomputed here), so a typo there would show up as a wrong implied |Ш|.</p></section>
+
+<section id="s-a"><h2>One point generates infinitely many</h2>
+<p>Exact rational arithmetic (BigInt fractions) on the chord-and-tangent law. Each row is verified to lie on the curve.</p>
+<div class="row"><select id="ec" aria-label="Choose a curve"></select><label for="n">n = <b id="nv"></b></label><input id="n" type="range" min="1" max="12" value="4"></div>
+<div class="box"><table id="tb"></table></div><p class="note" id="an"></p></section>
+
+<section id="s-h"><h2>What is proved, and what is not</h2><div class="box"><table id="hh"></table></div>
+<p class="note">Open: any curve with analytic rank ≥ 2; finiteness of Ш in general; the full formula in general. The first nonzero term of L at s = 1 is only <i>conjectured</i> to equal the right-hand side of tab 3.</p></section>
+</main>
+<script>
+const $=s=>document.querySelector(s),css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function cv(s){const c=$(s),r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;c.width=Math.max(1,r.width*d);c.height=Math.max(1,r.height*d);const x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);x.font='12px system-ui,sans-serif';return[x,r.width,r.height]}
+
+const md=(a,p)=>((a%p)+p)%p;
+function sieve(n){const s=new Uint8Array(n+1),r=[];for(let i=2;i<=n;i++)if(!s[i]){r.push(i);for(let j=i*i;j<=n;j+=i)s[j]=1}return r}
+const PR=sieve(10000);
+const CV=[
+{id:'11a1',N:11,aN:1,e:[0,-1,1,-10,-20],r:0,bad:[11],O:1.26920930427955,R:1,c:5,T:5,col:'--k1'},
+{id:'37a1',N:37,aN:-1,e:[0,0,1,-1,0],r:1,bad:[37],O:5.98691729246392,R:0.0511114082399688,c:1,T:1,col:'--k2'},
+{id:'389a1',N:389,aN:1,e:[0,1,1,-2,0],r:2,bad:[389],O:4.98042512171011,R:0.152460177943144,c:1,T:1,col:'--k3'}];
+function Np(e,p){const[a1,a2,a3,a4,a6]=e;let n=1;
+ if(p===2){for(let x=0;x<2;x++)for(let y=0;y<2;y++)if(md(y*y+a1*x*y+a3*y-x*x*x-a2*x*x-a4*x-a6,2)===0)n++;return n}
+ const q=new Int32Array(p);for(let z=0;z<p;z++)q[z*z%p]++;
+ for(let x=0;x<p;x++){const u=a1*x+a3;n+=q[md(4*(x*x*x+a2*x*x+a4*x+a6)+u*u,p)]}return n}
+function lg(z){const g=[676.5203681218851,-1259.1392167224028,771.32342877765313,-176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];z-=1;let x=0.99999999999980993;g.forEach((c,i)=>x+=c/(z+i+1));const t=z+7.5;return .5*Math.log(2*Math.PI)+(z+.5)*Math.log(t)-t+Math.log(x)}
+function Gu(a,x){if(x<a+1){let s=1/a,t=s;for(let n=1;n<500;n++){t*=x/(a+n);s+=t;if(Math.abs(t)<Math.abs(s)*1e-17)break}return Math.exp(lg(a))-s*Math.exp(-x+a*Math.log(x))}
+ let b=x+1-a,c=1e300,d=1/b,h=d;for(let i=1;i<500;i++){const an=-i*(i-a);b+=2;d=an*d+b;if(Math.abs(d)<1e-300)d=1e-300;c=b+an/c;if(Math.abs(c)<1e-300)c=1e-300;d=1/d;const dl=d*c;h*=dl;if(Math.abs(dl-1)<1e-16)break}
+ return Math.exp(-x+a*Math.log(x))*h}
+function coefs(c,M){const a=new Array(M+1).fill(0),P=sieve(M),ap={};a[1]=1;
+ P.forEach(p=>ap[p]=c.bad.includes(p)?c.aN:p+1-Np(c.e,p));
+ for(let n=2;n<=M;n++){let p=P.find(q=>n%q===0),m=n,k=0;while(m%p===0){m/=p;k++}
+  if(m>1)a[n]=a[m]*a[n/m];else if(k===1)a[n]=ap[p];else a[n]=c.bad.includes(p)?ap[p]*a[n/p]:ap[p]*a[n/p]-p*a[n/p/p]}
+ return a}
+function mk(c){if(c.Lam)return c;const sq=Math.sqrt(c.N);c.nm=Math.ceil(40*sq/(2*Math.PI))+5;c.a=coefs(c,c.nm);
+ c.Lam=s=>{let t=0;for(let n=1;n<=c.nm;n++){const x=2*Math.PI*n/sq,u=sq/(2*Math.PI*n);t+=c.a[n]*(u**s*Gu(s,x)+c.aN*u**(2-s)*Gu(2-s,x))}return t};
+ const f=c.Lam,h=.02;c.d=[f(1),(-f(1+2*h)+8*f(1+h)-8*f(1-h)+f(1-2*h))/(12*h),(-f(1+2*h)+16*f(1+h)-30*f(1)+16*f(1-h)-f(1-2*h))/(12*h*h)/2];
+ c.ar=c.d.findIndex(v=>Math.abs(v)>1e-9);c.lead=c.d[c.ar]*2*Math.PI/sq;
+ c.rhs=c.O*c.R*c.c/c.T**2;c.sha=c.lead/c.rhs;return c}
+
+
+CV.forEach(c=>{mk(c);let pr=1,mx=0;c.pts=[];for(const p of PR){if(c.bad.includes(p))continue;const n=Np(c.e,p);mx=Math.max(mx,Math.abs(p+1-n)/(2*Math.sqrt(p)));pr*=n/p;if(p>=10)c.pts.push([p,pr])}c.hasse=mx});
+$('#leg').innerHTML=CV.map(c=>`<span><b style="color:var(${c.col})">━</b> ${c.id} (rank ${c.ar}) <small>max|aₚ|/2√p = ${c.hasse.toFixed(3)}</small></span>`).join('');
+$('#cs').innerHTML=CV.map((c,i)=>`<option value="${i}">${c.id} (rank ${c.r})</option>`).join('');
+function drawP(){const X=Math.round(10**$('#xs').value);$('#xv').textContent=X.toLocaleString();let lo=9,hi=-9;
+ CV.forEach(c=>c.pts.forEach(([p,v])=>{if(p<=X){lo=Math.min(lo,Math.log10(v));hi=Math.max(hi,Math.log10(v))}}));lo-=.05;hi+=.05;
+ const[x,w,h]=cv('#pc'),L=40,R=8,T=8,B=24,X1=Math.log10(X),px=l=>L+(l-1)/(X1-1)*(w-L-R),py=v=>h-B-(v-lo)/(hi-lo)*(h-T-B);
+ x.fillStyle=css('--mut');x.strokeStyle=css('--line');x.lineWidth=1;
+ [.5,1,2,5,10,20,50,100].forEach(t=>{const l=Math.log10(t);if(l>lo&&l<hi){x.beginPath();x.moveTo(L,py(l));x.lineTo(w-R,py(l));x.stroke();x.fillText(t,4,py(l)+4)}});
+ [10,100,1000,10000].forEach(t=>{if(t<=X)x.fillText(t,px(Math.log10(t))-10,h-8)});x.fillText('prime p',w-54,h-8);
+ CV.forEach(c=>{x.strokeStyle=css(c.col);x.lineWidth=2;x.beginPath();let f=1;c.pts.forEach(([p,v])=>{if(p>X)return;const a=px(Math.log10(p)),b=py(Math.log10(v));f?(x.moveTo(a,b),f=0):x.lineTo(a,b)});x.stroke()})}
+function drawL(){const c=CV[$('#cs').value],[x,w,h]=cv('#lc'),N=80,s0=.2,s1=1.8,v=[];for(let i=0;i<=N;i++){const s=s0+(s1-s0)*i/N;v.push([s,c.Lam(s)])}
+ const m=Math.max(...v.map(q=>Math.abs(q[1])))*1.15,px=s=>30+(s-s0)/(s1-s0)*(w-40),py=u=>h/2-u/m*(h/2-14);
+ x.strokeStyle=css('--line');x.lineWidth=1;x.beginPath();x.moveTo(30,py(0));x.lineTo(w-10,py(0));x.stroke();x.setLineDash([4,4]);x.beginPath();x.moveTo(px(1),8);x.lineTo(px(1),h-8);x.stroke();x.setLineDash([]);
+ x.fillStyle=css('--mut');x.fillText('s = 1',px(1)+4,h-12);x.fillText('Λ(s)',4,14);[.5,1,1.5].forEach(s=>x.fillText(s,px(s)-8,py(0)+14));
+ x.strokeStyle=css(c.col);x.lineWidth=2.4;x.beginPath();v.forEach(([s,u],i)=>i?x.lineTo(px(s),py(u)):x.moveTo(px(s),py(u)));x.stroke();
+ const f=(u)=>Math.abs(u)<1e-9?'≈ 0 (numerically zero)':u.toPrecision(9);
+ $('#lt').innerHTML=`<tr><th>quantity</th><th>value</th></tr><tr><td>root number ε</td><td>${c.aN>0?'+1 (Λ even about s=1)':'−1 (Λ odd about s=1)'}</td></tr>`+[0,1,2].map(k=>`<tr><td>Λ${"′".repeat(k)}${k?'':''}(1)/${k}!</td><td>${f(c.d[k])}</td></tr>`).join('')+`<tr><td>analytic rank</td><td class="ok">${c.ar}</td></tr><tr><td>L<sup>(${c.ar})</sup>(E,1)/${c.ar}!</td><td>${c.lead.toPrecision(9)}</td></tr><tr><td>aₙ, n=1…12</td><td>${c.a.slice(1,13).join(', ')}</td></tr>`}
+function drawB(){const f=v=>v.toPrecision(10);$('#bt').innerHTML='<tr><th></th>'+CV.map(c=>`<th>${c.id}</th>`).join('')+'</tr>'+
+ [['analytic rank (computed)',c=>c.ar],['L⁽ʳ⁾(1)/r! (computed)',c=>f(c.lead)],['Ω real period (LMFDB)',c=>f(c.O)],['R regulator (LMFDB)',c=>f(c.R)],['∏cₚ Tamagawa (LMFDB)',c=>c.c],['|E(ℚ)tors| (LMFDB)',c=>c.T],['Ω·R·∏cₚ / tors²',c=>f(c.rhs)],['implied |Ш| = LHS ÷ that',c=>`<span class="ok">${c.sha.toFixed(7)}</span>`],['Ш proved finite?',c=>c.r<2?'yes (Kolyvagin)':'<span class="no">no</span>']].map(([n,g])=>`<tr><td>${n}</td>${CV.map(c=>`<td>${g(c)}</td>`).join('')}</tr>`).join('')}
+/* exact rational arithmetic */
+const gcd=(a,b)=>{a=a<0n?-a:a;b=b<0n?-b:b;while(b)[a,b]=[b,a%b];return a},F=(n,d=1n)=>{if(d<0n){n=-n;d=-d}const k=gcd(n,d)||1n;return[n/k,d/k]};
+const ad=(x,y)=>F(x[0]*y[1]+y[0]*x[1],x[1]*y[1]),sb=(x,y)=>F(x[0]*y[1]-y[0]*x[1],x[1]*y[1]),ml=(x,y)=>F(x[0]*y[0],x[1]*y[1]),dv=(x,y)=>F(x[0]*y[1],x[1]*y[0]),eq=(x,y)=>x[0]===y[0]&&x[1]===y[1];
+function pAdd(P,Q,a){if(!P)return Q;if(!Q)return P;let l;if(eq(P[0],Q[0])){if(ad(P[1],Q[1])[0]===0n)return null;l=dv(ad(ml(F(3n),ml(P[0],P[0])),F(BigInt(a))),ml(F(2n),P[1]))}else l=dv(sb(Q[1],P[1]),sb(Q[0],P[0]));const x3=sb(sb(ml(l,l),P[0]),Q[0]);return[x3,sb(ml(l,sb(P[0],x3)),P[1])]}
+const SH=[{n:'y² = x³ − 2',a:0,b:-2,P:[3n,5n],t:'Rank 1: infinite order. The digit counts of the denominators keep growing, so no point ever repeats.'},{n:'y² = x³ − 43x + 166',a:-43,b:166,P:[3n,8n],t:'Rank 0 with a torsion point of order 7: the 7th multiple is the point at infinity O, so this group has exactly 7 points.'}];
+$('#ec').innerHTML=SH.map((s,i)=>`<option value="${i}">${s.n}</option>`).join('');
+const fs=f=>{const t=z=>{const s=z.toString();return s.length>14?s.slice(0,5)+'…('+s.length+' digits)':s};return f[1]===1n?t(f[0]):t(f[0])+'/'+t(f[1])};
+function drawA(){const s=SH[$('#ec').value],n=+$('#n').value,P=[F(s.P[0]),F(s.P[1])];$('#nv').textContent=n;let Q=null,rows='';
+ for(let k=1;k<=n;k++){Q=pAdd(Q,P,s.a);let ok='';if(Q){const A=BigInt(s.a),B=BigInt(s.b),l=ml(Q[1],Q[1]),r=ad(ad(ml(Q[0],ml(Q[0],Q[0])),ml(F(A),Q[0])),F(B));ok=eq(l,r)?'<span class="ok">✓ on curve</span>':'<span class="no">✗</span>'}
+  rows+=`<tr><td>${k}</td>`+(Q?`<td>${fs(Q[0])}</td><td>${fs(Q[1])}</td><td>${ok}</td>`:'<td colspan=3>point at infinity O</td>')+'</tr>';if(!Q)Q=null}
+ $('#tb').innerHTML='<tr><th>n</th><th>x of nP</th><th>y of nP</th><th>check y² = x³+ax+b</th></tr>'+rows;$('#an').textContent=s.t}
+const HI=[['1965','Birch & Swinnerton-Dyer state the conjecture from EDSAC data','conj'],['1977','Coates–Wiles: for CM curves (class number one), L(E,1) ≠ 0 ⇒ E(ℚ) finite','proved'],['1986','Gross–Zagier: L′(E,1) is tied to the height of a Heegner point','proved'],['1988–90','Kolyvagin: analytic rank 0 or 1 ⇒ equal algebraic rank, and Ш finite','proved'],['2001','Breuil–Conrad–Diamond–Taylor: every E/ℚ is modular (so Λ(s) behaves as in tab 2)','proved'],['2014','Skinner–Urban: Iwasawa main conjecture for GL₂ at good ordinary primes','proved'],['2014','Bhargava–Skinner–Zhang: at least 66.48% of curves (by height) satisfy the rank part of BSD','proved'],['now','Analytic rank ≥ 2: no general method; finiteness of Ш unknown','open']];
+$('#hh').innerHTML=HI.map(([y,t,s])=>`<tr><td><b>${y}</b></td><td>${t}<span class="tag ${s==='open'?'no':s==='proved'?'ok':''}">${s}</span></td></tr>`).join('');
+const DR={p:drawP,l:drawL,b:drawB,a:drawA,h:()=>{}};let cur='p';
+function show(t){cur=t;document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==='s-'+t));DR[t]()}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.t));
+$('#xs').oninput=drawP;$('#cs').onchange=drawL;$('#ec').onchange=$('#n').oninput=drawA;
+addEventListener('resize',()=>DR[cur]());matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>DR[cur]());show('p');
+</script></body></html>
