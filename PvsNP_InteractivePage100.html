@@ -63,9 +63,6 @@ input[type=range]{width:100%;accent-color:var(--blue)}
 .fm{font:700 17px "Lora",Georgia,serif;overflow-wrap:anywhere}
 footer{margin-top:26px;font-size:13px;color:var(--mute)}
 @media(prefers-reduced-motion:reduce){.bar{transition:none}}
-h3{font:700 18px/1.3 "Lora",Georgia,serif;margin:26px 0 4px}
-.mono{font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;overflow-wrap:anywhere;margin:6px 0}
-input[type=text],input[type=number]{font:inherit;padding:9px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);min-width:0}
 </style>
 </head>
 <body>
@@ -137,65 +134,6 @@ input[type=text],input[type=number]{font:inherit;padding:9px;border-radius:8px;b
   <button class="main" id="g3">Find a solution</button>
 </div>
 <p class="cap" style="margin-top:10px">It works in both directions. If an assignment satisfies the formula, you can pick one true literal per clause to form a clique of size K (the variable buttons). Conversely, if there is a clique of size K, setting those literals to true satisfies the formula (contradictory pairs have no edge, so they never clash). So if there is no clique, the formula is unsatisfiable. Because this transformation finishes in polynomial time, a fast way to solve Clique would also solve 3-SAT fast. That is what NP-complete means.</p>
-</section>
-
-<section aria-labelledby="h-e">
-<h2 id="h-e">4. Where It Matters: Cryptography</h2>
-<p>Modern cryptography is built on operations that are easy in one direction and hard to reverse. Here are three of them at toy scale. Going forward takes a moment; going backward grows exponentially with size. Real systems use sizes astronomically beyond what a browser can attack.</p>
-
-<h3>4-1. Factoring (the heart of RSA)</h3>
-<p>Multiplying two primes takes one step, and so does checking a claimed answer (p × q = N). Recovering p and q from N is the hard direction.</p>
-<div class="row">
-  <label for="fb" style="margin:0">Bits per prime <b id="fbv">20</b></label>
-  <input id="fb" type="range" min="8" max="26" value="20" style="flex:1;min-width:160px">
-  <button id="fnew">New numbers</button>
-</div>
-<div class="target">Public number N = p × q<b id="fn"></b></div>
-<div class="row">
-  <button class="alt" id="ftd">Factor by trial division</button>
-  <button id="frho">Factor with Pollard's rho</button>
-  <button id="fstop" hidden>Stop</button>
-</div>
-<div class="msg" id="fmsg" aria-live="polite"></div>
-
-<h3>4-2. Hash puzzle (proof of work)</h3>
-<p>Find a number (a nonce) so that the SHA-256 hash of your text plus the nonce starts with a given number of zero bits. Checking a nonce takes one hash. Finding one takes about 2<sup>d</sup> tries on average (assuming the hash behaves like a random function), so every extra bit doubles the work.</p>
-<div class="row">
-  <label for="hdata" style="margin:0">Text</label>
-  <input id="hdata" type="text" value="P vs NP" style="flex:1;min-width:140px">
-  <label for="hd" style="margin:0">Zero bits d <b id="hdv">16</b></label>
-  <input id="hd" type="range" min="1" max="32" value="16" style="flex:1;min-width:140px">
-</div>
-<div class="cap" id="hexp"></div>
-<div class="row" style="margin-top:10px">
-  <button class="alt" id="hmine">Search for a nonce</button>
-  <label for="hnonce" style="margin:0">Nonce</label>
-  <input id="hnonce" type="number" min="0" value="0" style="width:140px">
-  <button id="hver">Check it (1 hash)</button>
-  <button id="hstop" hidden>Stop</button>
-</div>
-<div class="sum" style="margin-top:8px">Hashes computed <b id="hcnt">0</b></div>
-<div class="mono" id="hhash" aria-live="polite"></div>
-<div class="msg" id="hmsg" aria-live="polite"></div>
-
-<h3>4-3. Discrete logarithm (Diffie-Hellman key exchange)</h3>
-<p>Alice and Bob agree on a prime p and a base g, then each keeps a secret exponent. Alice sends A = g<sup>a</sup> mod p, Bob sends B = g<sup>b</sup> mod p. Each raises the other's number to their own secret and gets the same shared key. Eve sees p, g, A and B, but to use them she must recover an exponent, which is the discrete logarithm problem.</p>
-<div class="row">
-  <label for="db" style="margin:0">Bits in p <b id="dbv">22</b></label>
-  <input id="db" type="range" min="8" max="26" value="22" style="flex:1;min-width:160px">
-  <button id="dnew">New exchange</button>
-</div>
-<div class="card" style="margin-top:12px">
-  <small>Public (Eve sees this)</small><div class="mono" id="dpub"></div>
-  <small>Private (hidden from Eve)</small><div class="mono" id="dsec"></div>
-</div>
-<div class="row" style="margin-top:12px">
-  <button class="alt" id="deve">Eve tries every exponent</button>
-  <button id="dstop" hidden>Stop</button>
-</div>
-<div class="msg" id="dmsg" aria-live="polite"></div>
-
-<div class="verdict"><b>What this does and doesn't show.</b> Neither factoring nor the discrete logarithm is known to be NP-complete, and neither is proven hard; they are only believed to be. The decision version of factoring is known to be in both NP and coNP, so it being NP-complete would imply NP = coNP, which is widely believed false. A large quantum computer running Shor's algorithm would solve both problems in polynomial time, which is why post-quantum cryptography is being deployed. The link to P vs. NP runs one way: if P = NP (with a practical algorithm), essentially no cryptography of this kind would survive, and conversely the existence of one-way functions would imply P ≠ NP. But P ≠ NP alone is not known to give one-way functions, because it is a worst-case statement while cryptography needs problems that are hard on average. The sizes here are toys: do not use them for real security, and use vetted libraries instead.</div>
 </section>
 
 <footer>A hands-on page built from the definitions and caveats in the article "The Problem That Could Break Everything" (Seoul Inside).</footer>
@@ -390,102 +328,6 @@ function fromAssign(){
 }
 $('g0').onclick();
 newPuzzle();calc();
-})();
-</script>
-
-<script>
-(function(){
-var $=function(i){return document.getElementById(i)};
-function fi(x){return x.toLocaleString('en-US')}
-function tm(l){if(l<1.7)return 'under a minute';var ly=l-7.5;if(ly<0)return 'about '+Math.max(1,Math.round(Math.pow(10,l)/3600))+' hours';if(ly<3)return 'about '+fi(Math.round(Math.pow(10,ly)))+' years';if(ly<10.1)return 'about 10^'+ly.toFixed(0)+' years';return 'about 10^'+(ly-10.1).toFixed(0)+'× the age of the universe'}
-function run(bs,sb,step,cap,fin){
-  var t0=performance.now(),go=true;
-  function lock(b){bs.forEach(function(x){x.disabled=b});sb.hidden=!b}
-  lock(true);sb.onclick=function(){go=false};
-  (function fr(){var d=step(),ms=Math.max(1,performance.now()-t0);
-    if(d||!go||ms>cap){lock(false);fin(d,ms);return}
-    requestAnimationFrame(fr)})();
-}
-function isP(n){if(n<2)return false;for(var i=2;i*i<=n;i++)if(n%i===0)return false;return true}
-function rp(b){var lo=Math.pow(2,b-1),x;do{x=lo+Math.floor(Math.random()*lo);if(x%2===0)x++}while(!isP(x));return x}
-function pw(b,e,m){var r=1;b%=m;while(e>0){if(e%2===1)r=r*b%m;b=b*b%m;e=Math.floor(e/2)}return r}
-function msg(id,t,c){$(id).textContent=t;$(id).className='msg '+(c||'')}
-
-/* 4-1 factoring */
-var P,Q,Nn,fl=[$('fnew'),$('ftd'),$('frho')];
-function newF(){var b=+$('fb').value;$('fbv').textContent=b;P=rp(b);do{Q=rp(b)}while(Q===P);Nn=P*Q;$('fn').textContent=fi(Nn);msg('fmsg','','')}
-$('fb').oninput=newF;$('fnew').onclick=newF;
-$('ftd').onclick=function(){
-  var i=3,c=0,f=0;msg('fmsg','Trial division running...','');
-  run(fl,$('fstop'),function(){for(var k=0;k<400000;k++){c++;if(Nn%i===0){f=i;return true}i+=2}return false},20000,function(d,ms){
-    if(!d){msg('fmsg','Stopped after '+fi(c)+' divisions.','');return}
-    var rate=c/(ms/1000),lg=1023*0.30103-Math.log10(rate);
-    msg('fmsg','Found '+fi(f)+' × '+fi(Nn/f)+' after '+fi(c)+' divisions ('+Math.round(ms)+' ms). Each extra bit in the primes doubles this work. At this speed, a 1024-bit prime (the size used in 2048-bit RSA) would need about 10^'+Math.round(1023*0.30103)+' divisions, which is '+tm(lg)+'.','ok');
-  });
-};
-function g(a,b){while(b){var t=a%b;a=b;b=t}return a}
-$('frho').onclick=function(){
-  if(typeof BigInt==='undefined'){msg('fmsg','This browser does not support BigInt.','bad');return}
-  var N=BigInt(Nn),c=1n,x=2n,y=2n,s=0,f=null;msg('fmsg',"Pollard's rho running...",'');
-  run(fl,$('fstop'),function(){for(var k=0;k<3000;k++){x=(x*x+c)%N;y=(y*y+c)%N;y=(y*y+c)%N;s++;var d=g(x>y?x-y:y-x,N);if(d>1n){if(d===N){c++;x=2n;y=2n}else{f=d;return true}}}return false},20000,function(d,ms){
-    if(!d){msg('fmsg','Stopped after '+fi(s)+' iterations.','');return}
-    var rate=s/(ms/1000),lg=512*0.30103-Math.log10(rate);
-    msg('fmsg',"Pollard's rho found "+f.toString()+' × '+(N/f).toString()+' in '+fi(s)+' iterations ('+Math.round(ms)+' ms). Its expected work is about √p iterations, versus about p/2 divisions for trial division (this √p figure is a heuristic from the birthday paradox, not a proven bound). It is still exponential in the number of bits: for a 1024-bit prime it would need about 10^'+Math.round(512*0.30103)+' iterations, which is '+tm(lg)+'. Real attacks use the number field sieve, which is faster than both but still not polynomial.','ok');
-  });
-};
-
-/* 4-2 hash puzzle */
-var hasC=function(){return !!(window.crypto&&crypto.subtle)};
-async function sha(t){return new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)))}
-function lz(u){var c=0;for(var i=0;i<u.length;i++){if(u[i]===0){c+=8;continue}c+=Math.clz32(u[i])-24;break}return c}
-function hex(u){return Array.from(u).map(function(x){return ('0'+x.toString(16)).slice(-2)}).join('')}
-function hexp(){var d=+$('hd').value;$('hdv').textContent=d;$('hexp').textContent='On average about 2^'+d+' = '+fi(Math.pow(2,d))+' hashes are needed to find a valid nonce; checking one takes 1 hash.'}
-$('hd').oninput=hexp;hexp();
-var hb=[$('hmine'),$('hver')];
-$('hmine').onclick=async function(){
-  if(!hasC()){msg('hmsg','SHA-256 (WebCrypto) is not available in this browser context.','bad');return}
-  var d=+$('hd').value,data=$('hdata').value,n=0,t0=performance.now(),res=null,go=true,B=256,i,k,p,hs;
-  hb.forEach(function(x){x.disabled=true});$('hstop').hidden=false;$('hstop').onclick=function(){go=false};
-  msg('hmsg','Searching...','');$('hhash').textContent='';
-  while(go&&!res&&performance.now()-t0<30000){
-    p=[];for(i=0;i<B;i++)p.push(sha(data+':'+(n+i)));
-    hs=await Promise.all(p);
-    for(k=0;k<B;k++)if(lz(hs[k])>=d){res={n:n+k,h:hs[k]};break}
-    n=res?res.n+1:n+B;$('hcnt').textContent=fi(n);
-  }
-  var ms=Math.max(1,performance.now()-t0),rate=n/(ms/1000);
-  hb.forEach(function(x){x.disabled=false});$('hstop').hidden=true;
-  if(res){$('hnonce').value=res.n;$('hhash').textContent=hex(res.h);
-    msg('hmsg','Found nonce '+fi(res.n)+' after '+fi(n)+' hashes (expected about '+fi(Math.pow(2,d))+'). Checking it takes just 1 hash.','ok')}
-  else msg('hmsg','No nonce yet after '+fi(n)+' hashes. Finding one needs about '+fi(Math.pow(2,d))+' hashes on average; at about '+fi(Math.round(rate))+' hashes per second that is '+tm(Math.log10(Math.pow(2,d)/rate))+'.','bad');
-};
-$('hver').onclick=async function(){
-  if(!hasC()){msg('hmsg','SHA-256 (WebCrypto) is not available in this browser context.','bad');return}
-  var h=await sha($('hdata').value+':'+$('hnonce').value),z=lz(h),d=+$('hd').value;
-  $('hhash').textContent=hex(h);
-  msg('hmsg',z>=d?'Valid: the hash starts with '+z+' zero bits (need '+d+'). Checking took 1 hash.':'Not valid: the hash starts with only '+z+' zero bits, and '+d+' are needed. Checking took 1 hash.',z>=d?'ok':'bad');
-};
-
-/* 4-3 Diffie-Hellman */
-var DP,DG=5,Da,Db,DA,DB,DS,dl=[$('dnew')];
-function newD(){
-  var b=+$('db').value;$('dbv').textContent=b;DP=rp(b);
-  Da=1+Math.floor(Math.random()*(DP-2));Db=1+Math.floor(Math.random()*(DP-2));
-  DA=pw(DG,Da,DP);DB=pw(DG,Db,DP);DS=pw(DB,Da,DP);
-  $('dpub').textContent='p = '+fi(DP)+',  g = '+DG+',  A = '+fi(DA)+',  B = '+fi(DB);
-  $('dsec').textContent='Alice a = '+fi(Da)+',  Bob b = '+fi(Db)+',  shared key = '+fi(DS)+'  (Alice computes B^a, Bob computes A^b, and each needs at most about '+(2*b)+' multiplications using square-and-multiply)';
-  msg('dmsg','','');
-}
-$('db').oninput=newD;$('dnew').onclick=newD;
-$('deve').onclick=function(){
-  var cur=1,x=0;dl=[$('dnew'),$('deve')];msg('dmsg','Eve is trying exponents...','');
-  run(dl,$('dstop'),function(){for(var k=0;k<500000;k++){cur=cur*DG%DP;x++;if(cur===DA)return true}return false},20000,function(d,ms){
-    if(!d){msg('dmsg','Stopped after '+fi(x)+' tries.','');return}
-    var s=pw(DB,x,DP),rate=x/(ms/1000),lg=2047*0.30103-Math.log10(rate);
-    msg('dmsg','Eve found an exponent ('+fi(x)+') after '+fi(x)+' tries ('+Math.round(ms)+' ms) and computed the shared key '+fi(s)+(s===DS?', which matches. ':'. ')+'Each extra bit in p doubles this naive search. At this speed, trying every exponent for a 2048-bit p would need about 10^'+Math.round(2047*0.30103)+' tries, which is '+tm(lg)+'. Smarter classical methods do better than this naive count (baby-step giant-step needs about √N steps in a group of order N, and index calculus is subexponential in finite fields), but none is polynomial.','ok');
-  });
-};
-newF();newD();
 })();
 </script>
 </body>
