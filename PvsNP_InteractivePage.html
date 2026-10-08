@@ -99,7 +99,7 @@ footer{margin-top:26px;font-size:13px;color:var(--mute)}
   <div class="bar v" id="bv"></div><div class="cap">Verify: n steps</div>
   <div class="bar s" id="bs"></div><div class="cap">Brute force, worst case: 2ⁿ possibilities</div>
 </div>
-<p class="cap" style="margin-top:10px">Brute force runs for at most 6 seconds; if it hasn't found the answer by then, the total time is estimated from the measured speed. Each extra number adds just one step to verification, but doubles the number of combinations to search. To be precise, though, the hardness of Subset Sum comes from the number of digits. When the numbers are small, DP only needs to fill n × target cells, so it solves the problem easily (pseudo-polynomial time). Each extra digit multiplies the target by 10, and the table grows 10-fold with it. There is also a cleverer O(2^(n/2)) algorithm than brute force, but it is still exponential time. Whether a polynomial-time algorithm that works in every case exists has not been settled, and that is exactly the P ≠ NP question.</p>
+<p class="cap" style="margin-top:10px">Brute force runs for at most 60 seconds; if it hasn't found the answer by then, the total time is estimated from the measured speed. Each extra number adds just one step to verification, but doubles the number of combinations to search. To be precise, though, the hardness of Subset Sum comes from the number of digits. When the numbers are small, DP only needs to fill n × target cells, so it solves the problem easily (pseudo-polynomial time). Each extra digit multiplies the target by 10, and the table grows 10-fold with it. There is also a cleverer O(2^(n/2)) algorithm than brute force, but it is still exponential time. Whether a polynomial-time algorithm that works in every case exists has not been settled, and that is exactly the P ≠ NP question.</p>
 </section>
 
 <section aria-labelledby="h-b">
@@ -197,8 +197,8 @@ $('bf').onclick=function(){
     $('ss').textContent=fmtInt(step);
     var ms=performance.now()-t0;
     if(found){stopBF();showFound(found);msg('Found it! It tried '+fmtInt(step)+' combinations. Verifying the same answer takes only '+st(sel.size+1)+'.','ok');return}
-    if(ms>6000){stopBF();var rate=step/(ms/1000);
-      msg('In 6 seconds it tried '+sci(step)+' combinations ('+sci(step/total*100)+'% of the total) without finding the answer. At about '+sci(rate)+' per second, scanning all '+sci(total)+' combinations would take '+dur(total/rate)+'.','bad');return}
+    if(ms>60000){stopBF();var rate=step/(ms/1000);
+      msg('In 60 seconds it tried '+sci(step)+' combinations ('+sci(step/total*100)+'% of the total) without finding the answer. At about '+sci(rate)+' per second, scanning all '+sci(total)+' combinations would take '+dur(total/rate)+'.','bad');return}
     timer=requestAnimationFrame(frame);
   }
   timer=requestAnimationFrame(frame);
