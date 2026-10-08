@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "France halts use of stun grenades after boy's hand blown off in student protests",
-      "link": "https://www.bbc.co.uk/news/articles/cqzjx7z2r4gko?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 07 Oct 2026 17:47:31 GMT",
-      "desc": "The step comes after several groups complained of police using disproportionate force towards teenagers."
+      "title": "Spanish pensioner whose eviction sparked nationwide protests dies, union says",
+      "link": "https://www.bbc.co.uk/news/articles/c6e3x21ev9wwo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 08 Oct 2026 00:09:17 GMT",
+      "desc": "Maricarmen Abascal, 87, was forcibly removed on a stretcher from her apartment of more than 70 years in September."
+    },
+    {
+      "title": "Israelis mourn 7 October attack victims three years after deadly Hamas raid",
+      "link": "https://www.bbc.co.uk/news/articles/cwkgj0g30m5jo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 07 Oct 2026 20:27:03 GMT",
+      "desc": "Memorial events have taken place in Israel on the third anniversary of the Hamas-led attack that sparked the devastating Gaza war."
     },
     {
       "title": "Israelis demand accountability over 7 October failures three years after attacks",
@@ -13,25 +19,25 @@
       "desc": "Prime Minister Benjamin Netanyahu has refused to take any personal responsibility for what happened or order a state inquiry."
     },
     {
+      "title": "France halts use of stun grenades after boy's hand blown off in student protests",
+      "link": "https://www.bbc.co.uk/news/articles/cqzjx7z2r4gko?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 07 Oct 2026 17:47:31 GMT",
+      "desc": "The step comes after several groups complained of police using disproportionate force towards teenagers."
+    },
+    {
       "title": "Canada suspends plans to expand assisted dying to people with mental illness",
       "link": "https://www.bbc.co.uk/news/articles/cqd09g0gj50ko?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 07 Oct 2026 19:30:51 GMT",
       "desc": "People with mental illness alone were to be eligible for assisted dying in Canada in March 2027, but that has now been paused indefinitely."
-    },
-    {
-      "title": "Trump to speak to Putin about plague lab worker's death in Russia",
-      "link": "https://www.bbc.co.uk/news/articles/cqgm0vrl3xp7o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 07 Oct 2026 18:27:40 GMT",
-      "desc": "Fears that the death may have been caused by pneumonic plague has prompted calls for more transparency from Russia."
-    },
-    {
-      "title": "Children killed while they slept as Russian missile kills 19 in block of flats",
-      "link": "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 07 Oct 2026 18:12:58 GMT",
-      "desc": "Five children are among the victims of a strike that destroyed 30 flats in northern Ukraine as families slept."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea unveils $747 billion energy transition plan through 2035 - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPRlBuXzYzbm5CTTctaUg1bWRZU1hvMEFPYmdRSUstNW5DRE4tNjFDTlpKZ0IwTm5EMDR2OUpHREpUUkpBSEpnaXU1UW9BUUxRWWM2elMwM3Q2YXlZS3kzQzN3T0pDV3hsWUduLW9WYUNNanh5TUVaTFZfdjR0VS1rd2V5VTl6NmlGdGd5eDAxS01IS2MyUUtHdE40QTNhTWFFWTFfMzB0Sm1vMXFxZTBtN2tEYm5kUTdFaHNF?oc=5",
+      "date": "Wed, 07 Oct 2026 14:18:46 GMT",
+      "desc": "South Korea unveils $747 billion energy transition plan through 2035&nbsp;&nbsp;Reuters"
+    },
     {
       "title": "AMRO revises up S. Korean economy's growth projection this year to 3.3 pct - upi",
       "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOS2lsMXNtNVVPbldmTWJWMXB1dEdIc0h4SXN6ZWhmOWpmZldXVV94V0J1RmRGZ25QS1RraERRaFhYRDdRVGw4Q1FKZmdXOUk2alQ1R1ZibW1rSms1X3BJLTNjSUhXT2VFV3FFdDY3OElQaEFCS2RRSlF5Um1odFBCUEFhbXVaVG1QM2pUcV9rdktMX3ZHdDVrUWE4TEtxakdkcVlyOW1PcFJ0MElrSWtSaUZ2Z2JmMjc3OVdRamNYb9IBvwFBVV95cUxOS2lsMXNtNVVPbldmTWJWMXB1dEdIc0h4SXN6ZWhmOWpmZldXVV94V0J1RmRGZ25QS1RraERRaFhYRDdRVGw4Q1FKZmdXOUk2alQ1R1ZibW1rSms1X3BJLTNjSUhXT2VFV3FFdDY3OElQaEFCS2RRSlF5Um1odFBCUEFhbXVaVG1QM2pUcV9rdktMX3ZHdDVrUWE4TEtxakdkcVlyOW1PcFJ0MElrSWtSaUZ2Z2JmMjc3OVdRamNYbw?oc=5",
@@ -57,117 +63,111 @@
       "desc": "South Korea bets $750 billion on greener economy&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "'Political dynamics in South Korea': Vance explains uncertainty over Trump’s $54B Alaska LNG project - The Economic Times",
-      "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxNbENvYldtdlhpc2FYS3JtdDdraVRZX3llVEZ2ZF9SODJFTWRpNnpuUm9zLXRrUDlmQ1oySlZldXcweUNEY3kxcHBaSEI5UGpQc2dNcnRjbXNhb3hpcTlnY3BWaDhwVHQyczJ1dnhJVHB4Nm95ZjFxaUpXNjZTUnNKR3hjM2FSckdVaTJNbXBCbmpaQWt4WktJNE1DQjZDR0lFWUhnWEhYQTQyUENSMDJWS1FuWWJMWkRFNGJIRktPSEtrMWJGUEszLUNzTWNSZXpESGNBTXVZOUUxS3RjeWM3dFB5WXQyenUxUE0yU1RoTmVGU1pRMV9iSDlyRmpLLU9MRFVfSHQ2YUbSAY4CQVVfeXFMUEpJQ2lsbmlHZ1JmWEZTTWRYVDNqT2VfYzc2VlBXV3RqMmRQcTZBc3hWSkE4bmxBZTdzbm9KZ2lWWVNac1F1enk4ODhmQ0NXWExUbGFzZGJjVzgtWG94WFd6SWpzUENuSkNkMnAxSU9Rc294UThtNEE2UDFwSTFQeDZFaUs1T1VPRUJaeWNabjNmX0hUMUtRSmZ3ZW9oMUhreHpIdWpwTWNkZGtnRFdYR0NaYjJ5LTh2OEZZZXlGalZnSVg0c0lxemtsNVBiRHlmSkgzNDMtVUhyR25BdUhNaklRdm5LT2lBZXdHb3FOZEtudGIyY1ZqVm12NDdjcFdDZ0lWUU1waGZqNmxwM0RB?oc=5",
-      "date": "Wed, 07 Oct 2026 17:56:07 GMT",
-      "desc": "'Political dynamics in South Korea': Vance explains uncertainty over Trump’s $54B Alaska LNG project&nbsp;&nbsp;The Economic Times"
-    },
-    {
       "title": "AMD CEO Discusses AI with Samsung, SK Hynix - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZWpSdnVDUzBvT3lwbnRtZkZacGczM3VfZllMZmZvdTk5dGl4VUNDa2haME9seWFqNF9Sb1Zpa3ozQXNFTW05Tm5nTFNuWjl2bjNPcmFTX2NoY241aWl5dHc5RDBTV2E4YTVCYUY3VXJVbUZqX0wyN1I1X1lqYWpLajh2OUN4OHc3?oc=5",
       "date": "Wed, 07 Oct 2026 07:00:09 GMT",
       "desc": "AMD CEO Discusses AI with Samsung, SK Hynix&nbsp;&nbsp;조선일보"
     },
     {
+      "title": "AMD’s Lisa Su Looks to Deepen Samsung, SK Hynix Ties as AI Chip Demand Surges - Koreabizwire",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOV0YzZ1lSVFV3OEN6RTZZWjV0WEVnUlMycGNQQ2NMblc1RjFqZGhSVFg5RkE2bklZMEZRVTdFZUNpanBFUk1ZblB3ZTZfaGk2RHlSTmJ1NWZfT196WlRId05DUjdGc2ZiS3dmUGdxX2I0MEZaMlpRTUpFTHR2MFFaVER6bXBEYVg5cE5MVGs5MDc1bG9HMWxzU2RuRGNCcjJpYnlUQ3UtTDM5Zw?oc=5",
+      "date": "Wed, 07 Oct 2026 22:17:49 GMT",
+      "desc": "AMD’s Lisa Su Looks to Deepen Samsung, SK Hynix Ties as AI Chip Demand Surges&nbsp;&nbsp;Koreabizwire"
+    },
+    {
       "title": "AMD CEO Meets Samsung, SK hynix Chiefs in Seoul - Businesskorea",
       "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5FaXNDV1g1NzRvOWhjZTdGT0Z2RDViX2lzcVN3RVMzQjFCME5xMGhyUXYwUFN5RUZvbDdXYTJzdzhaUWh6N0ktZUwzMUh5WXpSSG9aVjk0TkkzQ3BCNGNMMGdLbDlyREdWVTlGN0prVmo4NEtf?oc=5",
       "date": "Wed, 07 Oct 2026 09:03:32 GMT",
       "desc": "AMD CEO Meets Samsung, SK hynix Chiefs in Seoul&nbsp;&nbsp;Businesskorea"
-    },
-    {
-      "title": "Samsung, SK Hynix Leveraged Product Investors Lost $1.7 Billion in Three Months - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1QaWt3aW5jZ1BOeVlGZi1OX3pTSk1zdk9WUElGdkdZMWdmWFdyOGNtUGRsOUM1MllqTTdiVkEwcU9IUC1GVGdTZjlfY0JIQlVqVGViWQ?oc=5",
-      "date": "Wed, 07 Oct 2026 05:13:17 GMT",
-      "desc": "Samsung, SK Hynix Leveraged Product Investors Lost $1.7 Billion in Three Months&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 236.96,
-      "change": -1.94,
-      "pct": -0.81,
+      "price": 237.47,
+      "change": -1.43,
+      "pct": -0.6,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 473.45,
-      "change": -12.35,
-      "pct": -2.54,
+      "price": 472.2,
+      "change": -13.6,
+      "pct": -2.8,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 645.77,
-      "change": 14.02,
-      "pct": 2.22,
+      "price": 645.86,
+      "change": 14.11,
+      "pct": 2.23,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 113.45,
-      "change": -2.74,
-      "pct": -2.36,
+      "price": 113.12,
+      "change": -3.07,
+      "pct": -2.64,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 177.52,
-      "change": -3.27,
-      "pct": -1.81,
+      "price": 177.12,
+      "change": -3.67,
+      "pct": -2.03,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 297.26,
-      "change": -5.64,
-      "pct": -1.86,
+      "price": 294.37,
+      "change": -8.53,
+      "pct": -2.82,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 349.63,
-      "change": 3.16,
-      "pct": 0.91,
+      "price": 350.5,
+      "change": 4.03,
+      "pct": 1.16,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 335.77,
-      "change": 2.88,
-      "pct": 0.87,
+      "price": 336.67,
+      "change": 3.78,
+      "pct": 1.14,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 529.3,
-      "change": 4.12,
-      "pct": 0.78,
+      "price": 529.76,
+      "change": 4.58,
+      "pct": 0.87,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7797.31,
-      "change": 23.36,
-      "pct": 0.3,
+      "price": 7801.77,
+      "change": 27.82,
+      "pct": 0.36,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27505.7,
-      "change": 28.39,
-      "pct": 0.1,
+      "price": 27538.69,
+      "change": 61.38,
+      "pct": 0.22,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 268500.0,
-      "change": -7500.0,
-      "pct": -2.72,
+      "price": 267250.0,
+      "change": -4750.0,
+      "pct": -1.75,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1723000.0,
-      "change": -118000.0,
-      "pct": -6.41,
+      "price": 1732000.0,
+      "change": -41000.0,
+      "pct": -2.31,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 336000.0,
-      "change": -10500.0,
-      "pct": -3.03,
+      "price": 325500.0,
+      "change": -22500.0,
+      "pct": -6.47,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 109600.0,
-      "change": -3300.0,
-      "pct": -2.92,
+      "price": 106300.0,
+      "change": -6300.0,
+      "pct": -5.6,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 189000.0,
-      "change": -3200.0,
-      "pct": -1.66,
+      "price": 183800.0,
+      "change": -7300.0,
+      "pct": -3.82,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6803.9,
-      "change": -199.84,
-      "pct": -2.85,
+      "price": 6742.77,
+      "change": -198.62,
+      "pct": -2.86,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1339.02,
-      "change": -4.73,
-      "pct": -0.35,
+      "price": 1337.58,
+      "change": -2.16,
+      "pct": -0.16,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-07 19:38 UTC"
+  "updatedAt": "2026-10-08 01:31 UTC"
 }
