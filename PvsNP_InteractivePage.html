@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Easy to Check, Hard to Find — A Hands-On P vs. NP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f5;--panel:#fff;--ink:#14213d;--mute:#5b6678;--line:#d3d9e3;--blue:#2540e6;--blue-t:#dfe5ff;--amber:#c7780a;--amber-t:#fbe9cc;--ok:#127a4b;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1624;--panel:#18223a;--ink:#e8ecf6;--mute:#9aa6bd;--line:#2c3856;--blue:#8da0ff;--blue-t:#27336b;--amber:#f0b24a;--amber-t:#4a3716;--ok:#4cd08f;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#0f1624;--panel:#18223a;--ink:#e8ecf6;--mute:#9aa6bd;--line:#2c3856;--blue:#8da0ff;--blue-t:#27336b;--amber:#f0b24a;--amber-t:#4a3716;--ok:#4cd08f;--bad:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 "Inter",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 64px}
+h1{font:700 clamp(28px,6vw,44px)/1.25 "Lora",Georgia,serif;margin:8px 0 12px;letter-spacing:-.01em}
+h2{font:700 24px/1.3 "Lora",Georgia,serif;margin:0 0 6px}
+p{margin:0 0 12px;max-width:62ch}
+.lead{color:var(--mute);font-size:17px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+button{font:500 15px "Inter",system-ui,sans-serif;padding:10px 16px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+button.main{background:var(--blue);border-color:var(--blue);color:#fff}
+:root[data-theme="dark"] button.main{color:#0f1624}
+button.alt{background:var(--amber-t);border-color:var(--amber);color:var(--ink)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.target{font-size:15px;color:var(--mute)}
+.target b{font-size:30px;color:var(--ink);font-family:"Lora",Georgia,serif;margin:0 6px}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tile{min-width:54px;padding:10px 8px;font-size:16px;font-weight:700;font-variant-numeric:tabular-nums;text-align:center}
+.tile[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+:root[data-theme="dark"] .tile[aria-pressed="true"]{color:#0f1624}
+.tile.hit{background:var(--amber);border-color:var(--amber);color:#fff}
+.sum{font-size:15px;color:var(--mute)}
+.sum b{color:var(--ink);font-size:20px;font-variant-numeric:tabular-nums}
+.msg{min-height:26px;margin:8px 0 0;font-weight:500}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+.duel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+@media(max-width:560px){.duel{grid-template-columns:1fr}}
+.card{border-radius:10px;padding:14px 16px;border:1px solid var(--line)}
+.card.v{background:var(--blue-t)}.card.s{background:var(--amber-t)}
+.card small{display:block;color:var(--mute);font-size:13px}
+.num{font:700 30px/1.2 "Lora",Georgia,serif;font-variant-numeric:tabular-nums}
+.bars{margin-top:14px}
+.bar{height:12px;border-radius:6px;margin:6px 0 2px;transition:width .3s}
+.bar.v{background:var(--blue)}.bar.s{background:var(--amber)}
+.cap{font-size:13px;color:var(--mute)}
+label{display:block;font-size:15px;margin:12px 0 2px}
+label b{font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--blue)}
+.res{display:grid;gap:10px;margin-top:16px}
+.res .card{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.res .num{font-size:22px;text-align:right}
+.verdict{margin-top:14px;padding:12px 14px;border-left:4px solid var(--blue);background:var(--blue-t);border-radius:0 8px 8px 0;font-size:15px}
+#gsvg{width:100%;max-width:480px;display:block;margin:10px auto}
+.n{cursor:pointer}.n circle{fill:var(--panel);stroke:var(--ink);stroke-width:1.5}
+.n.s circle{fill:var(--blue);stroke:var(--blue)}
+.n text{fill:var(--ink);font:700 13px "Inter",system-ui,sans-serif;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.n.s text{fill:var(--bg)}.n:focus-visible circle{stroke:var(--amber);stroke-width:3}
+.cl{fill:var(--mute);font:500 12px "Inter",system-ui,sans-serif;text-anchor:middle;dominant-baseline:central}
+.fm{font:700 17px "Lora",Georgia,serif;overflow-wrap:anywhere}
+footer{margin-top:26px;font-size:13px;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){.bar{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<h1>Easy to Check, Hard to Find</h1>
+<p class="lead">P vs. NP asks whether the speed of checking an answer is truly different from the speed of finding one. Try solving it yourself, then compare with how a computer does it.</p>
+
+<section aria-labelledby="h-a">
+<h2 id="h-a">1. The Subset Sum Puzzle</h2>
+<p>Pick some of the numbers below so that their sum exactly equals the target. This problem belongs to NP: you know a solution exists, but you have to find which combination it is.</p>
+<div class="row">
+  <label for="n" style="margin:0">How many numbers <b id="nv">12</b></label>
+  <input id="n" type="range" min="6" max="50" value="12" style="flex:1;min-width:160px">
+  <label for="md" style="margin:0">Digits per number</label><select id="md" style="font:inherit;padding:9px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)"><option value="2">2 digits</option><option value="14">14 digits</option></select><button id="new">New puzzle</button>
+</div>
+<div class="target">Target<b id="tg">0</b></div>
+<div class="tiles" id="tiles" role="group" aria-label="Choose numbers"></div>
+<div class="sum">Sum of chosen numbers <b id="sm">0</b></div>
+<div class="row" style="margin-top:12px">
+  <button class="main" id="chk">Check my answer</button>
+  <button class="alt" id="bf">Let the computer try everything</button>
+  <button id="dpb">Solve with dynamic programming</button>
+  <button id="stop" hidden>Stop</button>
+</div>
+<div class="msg" id="msg" aria-live="polite"></div>
+
+<div class="duel">
+  <div class="card v"><small>Work needed to verify</small><div class="num" id="vs">–</div><small>Add up the chosen numbers and compare with the target. Done.</small></div>
+  <div class="card s"><small>Combinations the computer tried</small><div class="num" id="ss">0</div><small>Total possible combinations: <span id="tot"></span></small></div>
+</div>
+<div class="card" style="margin-top:12px"><small>Table cells dynamic programming (DP) must fill = count of numbers × target</small><div class="num" id="dp"></div><small id="dpn"></small></div>
+<div class="bars" aria-hidden="true">
+  <div class="cap">Bar lengths compared on a log scale</div>
+  <div class="bar v" id="bv"></div><div class="cap">Verify: n steps</div>
+  <div class="bar s" id="bs"></div><div class="cap">Brute force, worst case: 2ⁿ possibilities</div>
+</div>
+<p class="cap" style="margin-top:10px">Brute force runs for at most 6 seconds; if it hasn't found the answer by then, the total time is estimated from the measured speed. Each extra number adds just one step to verification, but doubles the number of combinations to search. To be precise, though, the hardness of Subset Sum comes from the number of digits. When the numbers are small, DP only needs to fill n × target cells, so it solves the problem easily (pseudo-polynomial time). Each extra digit multiplies the target by 10, and the table grows 10-fold with it. There is also a cleverer O(2^(n/2)) algorithm than brute force, but it is still exponential time. Whether a polynomial-time algorithm that works in every case exists has not been settled, and that is exactly the P ≠ NP question.</p>
+</section>
+
+<section aria-labelledby="h-b">
+<h2 id="h-b">2. Polynomial Time Isn't Always Fast</h2>
+<p>Even if P = NP were proven, encryption would not instantly break. A polynomial-time algorithm is useless if its exponent k is large. Assume a computer performing one trillion (10¹²) operations per second and compare.</p>
+<label for="cn">Input size n = <b id="cnv">100</b></label>
+<input id="cn" type="range" min="0" max="400" value="100">
+<label for="ck">Polynomial exponent k = <b id="ckv">3</b></label>
+<input id="ck" type="range" min="1" max="1000" value="3">
+<div class="res">
+  <div class="card v"><span>Polynomial time n<sup id="kk">3</sup></span><span class="num" id="r1"></span></div>
+  <div class="card s"><span>Exponential time 2ⁿ</span><span class="num" id="r2"></span></div>
+</div>
+<svg id="ch" viewBox="0 0 480 220" style="width:100%;max-width:520px;display:block;margin:14px auto 0" role="img" aria-label="Graph comparing operation counts by input size"></svg>
+<div class="cap" id="cx"></div>
+<div class="verdict" id="vd"></div>
+<p class="cap" style="margin-top:10px">This is an idealized comparison: one operation takes 10⁻¹² seconds, and constant factors, memory, and parallelism are ignored. The graph's vertical axis is the base-10 logarithm of the operation count, which is why 2ⁿ appears as a straight line.</p>
+</section>
+
+<section aria-labelledby="h-d">
+<h2 id="h-d">3. The Moment 3-SAT Turns into a Graph</h2>
+<p>This is Karp's reduction. Each literal of the formula becomes a node, and nodes in different clauses are joined by an edge unless they contradict each other (x and ¬x). If you pick one node per clause so that all of them are connected to each other, you have found a way to make the formula true. Click the nodes to choose them yourself.</p>
+<div class="fm" id="fm"></div>
+<svg id="gsvg" viewBox="0 0 440 440" role="img" aria-label="Clique graph built from a 3-SAT formula"></svg>
+<div class="cap" id="gst"></div>
+<div class="row" id="vt" role="group" aria-label="Variable assignment" style="margin-top:8px"></div>
+<div class="msg" id="gm" aria-live="polite"></div>
+<div class="row" style="margin-top:8px">
+  <button id="g0">Default example</button>
+  <button id="g1">Random formula</button>
+  <button id="g2">Unsatisfiable formula</button>
+  <button class="main" id="g3">Find a solution</button>
+</div>
+<p class="cap" style="margin-top:10px">It works in both directions. If an assignment satisfies the formula, you can pick one true literal per clause to form a clique of size K (the variable buttons). Conversely, if there is a clique of size K, setting those literals to true satisfies the formula (contradictory pairs have no edge, so they never clash). So if there is no clique, the formula is unsatisfiable. Because this transformation finishes in polynomial time, a fast way to solve Clique would also solve 3-SAT fast. That is what NP-complete means.</p>
+</section>
+
+<footer>A hands-on page built from the definitions and caveats in the article "The Problem That Could Break Everything" (Seoul Inside).</footer>
+</main>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var nums=[],sol=0,target=0,sel=new Set(),timer=null,N=12;
+function fmtInt(x){return x.toLocaleString('en-US')}
+function sci(x){return x<1?x.toExponential(1).replace('e-','×10^-'):x<1e6?fmtInt(Math.round(x)):x.toExponential(1).replace('e+','×10^')}
+function dur(t){if(t<1)return 'under 1 second';if(t<60)return Math.round(t)+' seconds';if(t<3600)return Math.round(t/60)+' minutes';if(t<86400)return Math.round(t/3600)+' hours';if(t<3.156e7)return Math.round(t/86400)+' days';return 'about '+sci(t/3.156e7)+' years'}
+function newPuzzle(){
+  stopBF();N=+$('n').value;$('nv').textContent=N;nums=[];sel.clear();
+  var D=+$('md').value,lo=Math.pow(10,D-1),i,c;
+  for(i=0;i<N;i++)nums.push(lo+Math.floor(Math.random()*lo*9));
+  do{sol=nums.map(function(){return Math.random()<.5});c=sol.filter(Boolean).length}while(c<2||c>N-2);
+  target=0;for(i=0;i<N;i++)if(sol[i])target+=nums[i];
+  $('tg').textContent=fmtInt(target);$('tot').textContent=fmtInt(Math.pow(2,N));
+  var cells=N*target;$('dp').textContent=sci(cells)+' cells';
+  $('dpn').textContent='At 1 billion cells per second, this takes '+dur(cells/1e9)+'.'+(D>5?' Every extra digit makes it 10 times bigger. Brute force\'s 2ⁿ, by contrast, doesn\'t depend on the number of digits.':' The numbers are small, so DP finds this one easily.');
+  $('ss').textContent='0';$('vs').textContent='–';msg('','');render();bars();
+}
+function st(n){return n+(n===1?' step':' steps')}
+function msg(t,c){$('msg').textContent=t;$('msg').className='msg '+(c||'')}
+function render(hit){
+  var t=$('tiles');t.innerHTML='';
+  nums.forEach(function(v,i){
+    var b=document.createElement('button');b.className='tile'+(hit&&hit[i]?' hit':'');b.textContent=fmtInt(v);
+    b.setAttribute('aria-pressed',sel.has(i));
+    b.onclick=function(){if(sel.has(i))sel.delete(i);else sel.add(i);b.setAttribute('aria-pressed',sel.has(i));sum()};
+    t.appendChild(b);
+  });sum();
+}
+function sum(){var s=0;sel.forEach(function(i){s+=nums[i]});$('sm').textContent=fmtInt(s);return s}
+function bars(){
+  var mx=50*Math.LN2;
+  $('bv').style.width=Math.max(2,100*Math.log(N+1)/mx)+'%';
+  $('bs').style.width=Math.max(2,100*N*Math.LN2/mx)+'%';
+}
+$('chk').onclick=function(){
+  var s=sum();$('vs').textContent=st(sel.size+1);
+  if(sel.size===0){msg('Pick at least one number first.','bad');return}
+  if(s===target)msg('Correct! Verifying took just '+st(sel.size+1)+'.','ok');
+  else msg('Your sum is '+fmtInt(Math.abs(s-target))+(s>target?' above':' below')+' the target. Try a different combination.','bad');
+};
+function lock(b){$('bf').disabled=b;$('dpb').disabled=b;$('stop').hidden=!b}
+function stopBF(){if(timer){cancelAnimationFrame(timer);timer=null}lock(false)}
+function showFound(arr){sel.clear();arr.forEach(function(x,j){if(x)sel.add(j)});render(arr);$('vs').textContent=st(sel.size+1)}
+$('stop').onclick=function(){stopBF();msg('Stopped.','')};
+$('bf').onclick=function(){
+  var on=[],i,step=0,sm=0,found=null,total=Math.pow(2,N),t0=performance.now();
+  for(i=0;i<N;i++)on.push(false);
+  lock(true);msg('Brute-forcing... (checking combinations one at a time, flipping a single number each step using a Gray code)','');
+  function frame(){
+    var end=Math.min(step+300000,total-1);
+    while(step<end){
+      step++;var b=0,k=step;while(k%2===0){k/=2;b++}
+      if(on[b]){on[b]=false;sm-=nums[b]}else{on[b]=true;sm+=nums[b]}
+      if(sm===target){found=on.slice();break}
+    }
+    $('ss').textContent=fmtInt(step);
+    var ms=performance.now()-t0;
+    if(found){stopBF();showFound(found);msg('Found it! It tried '+fmtInt(step)+' combinations. Verifying the same answer takes only '+st(sel.size+1)+'.','ok');return}
+    if(ms>6000){stopBF();var rate=step/(ms/1000);
+      msg('In 6 seconds it tried '+sci(step)+' combinations ('+sci(step/total*100)+'% of the total) without finding the answer. At about '+sci(rate)+' per second, scanning all '+sci(total)+' combinations would take '+dur(total/rate)+'.','bad');return}
+    timer=requestAnimationFrame(frame);
+  }
+  timer=requestAnimationFrame(frame);
+};
+$('dpb').onclick=function(){
+  stopBF();var cells=N*target;
+  if(cells>4e7){msg('The DP table has '+sci(cells)+' cells, too many to fill in a browser. This is how DP becomes powerless when the numbers have many digits.','bad');return}
+  var t0=performance.now(),best=new Int16Array(target+1).fill(-1),i,t,v;best[0]=N;
+  for(i=0;i<N;i++){v=nums[i];for(t=target;t>=v;t--)if(best[t]<0&&best[t-v]>=0)best[t]=i}
+  var ms=performance.now()-t0,arr=[];for(i=0;i<N;i++)arr.push(false);
+  t=target;while(t>0){var j=best[t];arr[j]=true;t-=nums[j]}
+  showFound(arr);
+  msg('Dynamic programming filled '+sci(cells)+' cells in '+Math.max(1,Math.round(ms))+' ms and found the answer. Even with '+N+' numbers, small numbers make it easy.','ok');
+};
+$('new').onclick=newPuzzle;$('n').oninput=newPuzzle;$('md').onchange=newPuzzle;
+
+/* calculator */
+var LN=Math.log10;
+function fmt(l){ /* l = log10(seconds) */
+  if(l<-6)return 'under 1 microsecond';
+  if(l<0)return (Math.pow(10,l)*1000).toFixed(l<-3?3:1)+' ms';
+  var s=Math.pow(10,l);
+  if(l<1.78)return s.toFixed(1)+' seconds';
+  if(s<3600)return (s/60).toFixed(1)+' minutes';
+  if(s<86400)return (s/3600).toFixed(1)+' hours';
+  if(s<3.156e7*1)return (s/86400).toFixed(1)+' days';
+  var ly=l-LN(3.156e7);
+  if(ly<4)return fmtInt(Math.round(Math.pow(10,ly)))+' years';
+  var lu=ly-10.14;
+  if(lu<0)return 'about 10^'+ly.toFixed(1)+' years';
+  if(lu<1)return Math.pow(10,lu).toFixed(1)+'× the age of the universe';
+  return 'about 10^'+lu.toFixed(0)+'× the age of the universe';
+}
+function chart(n,k){
+  var x=0,m;for(m=2;m<=200000;m++)if(k*Math.log2(m)>=m)x=m;
+  var xm=Math.max(40,Math.min(200000,Math.ceil(Math.max(x,n)*1.25))),P=[],Q=[],ym=0,i;
+  for(i=0;i<=120;i++){m=Math.max(1,Math.round(1+i*(xm-1)/120));var a=k*LN(m),b=m*LN(2);ym=Math.max(ym,a,b);P.push([m,a]);Q.push([m,b])}
+  function X(v){return 46+(v/xm)*424}function Y(v){return 190-(v/ym)*180}
+  function pl(A,c){return '<polyline fill="none" stroke="'+c+'" stroke-width="2.5" points="'+A.map(function(p){return X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)}).join(' ')+'"/>'}
+  var s='<line x1="46" y1="190" x2="470" y2="190" stroke="var(--mute)"/><line x1="46" y1="10" x2="46" y2="190" stroke="var(--mute)"/>';
+  s+=pl(P,'var(--blue)')+pl(Q,'var(--amber)');
+  s+='<line x1="'+X(n)+'" y1="10" x2="'+X(n)+'" y2="190" stroke="var(--ink)" stroke-dasharray="4 4"/><text class="cl" x="'+Math.min(440,X(n))+'" y="203">current n</text>';
+  if(x>0)s+='<line x1="'+X(x)+'" y1="10" x2="'+X(x)+'" y2="190" stroke="var(--bad)" stroke-dasharray="2 4"/><text class="cl" x="'+Math.min(440,X(x))+'" y="215" style="fill:var(--bad)">crossover</text>';
+  s+='<text class="cl" x="48" y="12" style="text-anchor:start">10^'+Math.round(ym)+'</text><text class="cl" x="470" y="203" style="text-anchor:end">n = '+fmtInt(xm)+'</text>';
+  s+='<text class="cl" x="150" y="28" style="fill:var(--blue)">n^'+k+'</text><text class="cl" x="150" y="44" style="fill:var(--amber)">2ⁿ</text>';
+  $('ch').innerHTML=s;
+  $('cx').textContent=x>0?'For n > '+fmtInt(x)+', 2ⁿ is always larger than n^'+k+'. Up to that point there are ranges where n^'+k+' is greater than or equal to 2ⁿ.':'With k = '+k+', 2ⁿ is larger than n^'+k+' for every n ≥ 1.';
+}
+function calc(){
+  var n=Math.round(Math.pow(10,1+(+$('cn').value)/100)),k=+$('ck').value;
+  $('cnv').textContent=n;$('ckv').textContent=k;$('kk').textContent=k;
+  var a=k*LN(n)-12,b=n*LN(2)-12;
+  $('r1').textContent=fmt(a);$('r2').textContent=fmt(b);chart(n,k);
+  var v=$('vd');
+  if(a>b)v.textContent='With these settings, the "polynomial-time" n^'+k+' is actually slower than exponential-time 2ⁿ. Belonging to P in theory can mean being unusable in practice, which is why a proof of P = NP alone would not immediately break encryption.';
+  else v.textContent='With these settings, polynomial time is much faster. As n grows, 2ⁿ eventually outgrows n^k for any fixed k. How far off that point is, though, depends on k.';
+}
+$('cn').oninput=calc;$('ck').oninput=calc;
+/* 3-SAT -> Clique graph */
+var SUB=['₁','₂','₃'],F=[],K=0,gs=[];
+function L(v,n){return {v:v,n:n}}
+function lt(l){return (l.n?'¬':'')+'x'+SUB[l.v]}
+function setF(f){F=f;K=f.length;gs=[];drawG('')}
+function cl(i){return Math.floor(i/3)}
+function lit(i){return F[cl(i)][i%3]}
+function gpos(i){var t=K*3+K*0.6,a=(i+cl(i)*0.6)/t*2*Math.PI-Math.PI/2;return [220+150*Math.cos(a),220+150*Math.sin(a),a]}
+function adj(a,b){if(cl(a)===cl(b))return false;var x=lit(a),y=lit(b);return !(x.v===y.v&&x.n!==y.n)}
+function drawG(msg){
+  var n=K*3,s='',r=K>5?11:17,i,j,p,q;
+  for(i=0;i<n;i++)for(j=i+1;j<n;j++){
+    var both=gs.indexOf(i)>=0&&gs.indexOf(j)>=0;
+    p=gpos(i);q=gpos(j);
+    if(adj(i,j)){s+='<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="'+(both?'var(--blue)':'var(--line)')+'" stroke-width="'+(both?3:K>5?.6:1)+'"/>'}
+    else if(both&&cl(i)!==cl(j)){s+='<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="var(--bad)" stroke-width="2" stroke-dasharray="5 4"/>'}
+  }
+  for(var c=0;c<K;c++){var m=gpos(c*3+1),a=m[2];s+='<text class="cl" x="'+(220+192*Math.cos(a))+'" y="'+(220+192*Math.sin(a))+'">Clause '+(c+1)+'</text>'}
+  for(i=0;i<n;i++){p=gpos(i);
+    s+='<g class="n'+(gs.indexOf(i)>=0?' s':'')+'" data-i="'+i+'" tabindex="0" role="button" aria-pressed="'+(gs.indexOf(i)>=0)+'" aria-label="Clause '+(cl(i)+1)+' '+lt(lit(i))+'"><circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+r+'"/><text x="'+p[0]+'" y="'+p[1]+'" style="font-size:'+(K>5?10:13)+'px">'+lt(lit(i))+'</text></g>'}
+  $('gsvg').innerHTML=s;
+  var E=0;for(i=0;i<n;i++)for(j=i+1;j<n;j++)if(adj(i,j))E++;
+  $('gst').textContent=n+' nodes, '+E+' edges. The graph is built by checking each of the '+(n*(n-1)/2)+' node pairs once, so the transformation runs in polynomial time (O(K²)).';
+  $('fm').textContent=F.map(function(c){return '('+c.map(lt).join(' ∨ ')+')'}).join(' ∧ ');
+  var g=$('gm');g.className='msg';
+  if(msg){g.textContent=msg;return}
+  if(!gs.length){g.textContent='Click nodes to pick one per clause. The goal is a clique of size '+K+'.';return}
+  var bad=null,x,y;
+  for(x=0;x<gs.length;x++)for(y=x+1;y<gs.length;y++)if(!adj(gs[x],gs[y])&&!bad)bad=[gs[x],gs[y]];
+  if(bad){g.className='msg bad';g.textContent=lt(lit(bad[0]))+' and '+lt(lit(bad[1]))+' contradict each other, so there is no edge between them. This selection is not a clique.';return}
+  if(gs.length===K){var val={};gs.forEach(function(k){var l=lit(k);val[l.v]=!l.n});
+    g.className='msg ok';g.textContent='Clique of size '+K+' complete. You found an assignment that makes the formula true: '+Object.keys(val).sort().map(function(v){return 'x'+SUB[v]+'='+(val[v]?'true':'false')}).join(', ')+(Object.keys(val).length<3?' (the remaining variables are free)':'');return}
+  g.textContent=gs.length+' / '+K+' selected. All of them are connected to each other.';
+}
+function pick(i){
+  var k=gs.indexOf(i);if(k>=0){gs.splice(k,1)}
+  else{gs=gs.filter(function(j){return cl(j)!==cl(i)});gs.push(i)}
+  drawG('');
+}
+$('gsvg').addEventListener('click',function(e){var t=e.target.closest('[data-i]');if(t)pick(+t.getAttribute('data-i'))});
+$('gsvg').addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){var t=e.target.closest('[data-i]');if(t){e.preventDefault();pick(+t.getAttribute('data-i'))}}});
+function sat(){
+  for(var m=0;m<8;m++){
+    var sel=[],ok=true;
+    for(var c=0;c<K&&ok;c++){
+      var f=-1;for(var j=0;j<3;j++){var l=F[c][j];if(!!(m>>l.v&1)===!l.n){f=c*3+j;break}}
+      if(f<0)ok=false;else sel.push(f)}
+    if(ok)return sel}
+  return null;
+}
+function rnd(){var f=[];for(var c=0;c<4;c++)f.push([L(0,Math.random()<.5),L(1,Math.random()<.5),L(2,Math.random()<.5)]);return f}
+function allSigns(){var f=[];for(var m=0;m<8;m++)f.push([L(0,!!(m&1)),L(1,!!(m&2)),L(2,!!(m&4))]);return f}
+$('g0').onclick=function(){setF([[L(0,0),L(1,1),L(2,0)],[L(0,1),L(1,0),L(2,0)],[L(0,0),L(1,0),L(2,1)]])};
+$('g1').onclick=function(){setF(rnd())};
+$('g2').onclick=function(){setF(allSigns())};
+$('g3').onclick=function(){
+  var s=sat();
+  if(s){gs=s;drawG('')}
+  else{gs=[];drawG('There is no clique of size '+K+'. Under any assignment, at least one clause comes out false, so this formula is unsatisfiable.');$('gm').className='msg bad'}
+};
+var vals=[false,false,false],vt=$('vt');
+var lb=document.createElement('span');lb.className='cap';lb.textContent='Build a clique from a variable assignment:';vt.appendChild(lb);
+[0,1,2].forEach(function(i){var b=document.createElement('button');function t(){b.textContent='x'+SUB[i]+' = '+(vals[i]?'true':'false');b.setAttribute('aria-pressed',vals[i])}t();b.onclick=function(){vals[i]=!vals[i];t();fromAssign()};vt.appendChild(b)});
+function fromAssign(){
+  var sel=[],miss=-1,c,j,f,l;
+  for(c=0;c<K;c++){f=-1;for(j=0;j<3;j++){l=F[c][j];if(vals[l.v]===!l.n){f=c*3+j;break}}if(f<0){if(miss<0)miss=c}else sel.push(f)}
+  gs=sel;drawG(miss<0?'This assignment makes every clause true. Picking one true literal per clause gives no contradictions, so you get a clique of size '+K+'.':'All literals in clause '+(miss+1)+' are false. This assignment cannot complete a clique of size '+K+'.');
+  $('gm').className='msg '+(miss<0?'ok':'bad');
+}
+$('g0').onclick();
+newPuzzle();calc();
+})();
+</script>
+</body>
+</html>
