@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>제타의 지형 — 영점을 날아서 보기</title>
+<style>
+:root{--bg:#07090f;--fg:#e9ecf5;--mut:#8f96b0;--acc:#ffc46b;--line:#2a3050;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;overflow:hidden;color-scheme:dark}
+canvas{display:block;touch-action:none;cursor:grab}
+#hd{position:fixed;left:16px;top:calc(12px + env(safe-area-inset-top,0px));max-width:min(420px,calc(100% - 32px));pointer-events:none}
+h1{font-size:22px;margin:0 0 6px;font-weight:700;letter-spacing:-.01em}
+#msg{font-size:14px;line-height:1.55;color:var(--mut);margin:0}
+#ui{position:fixed;left:0;right:0;bottom:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:linear-gradient(transparent,rgba(7,9,15,.92) 40%)}
+button{font:inherit;font-size:14px;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:6px;padding:7px 12px;cursor:pointer}
+button.on{border-color:var(--acc);color:var(--acc)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+label{font-size:13px;color:var(--mut);display:flex;gap:6px;align-items:center}
+input[type=range]{width:110px;accent-color:var(--acc)}
+#note{flex-basis:100%;font-size:12px;color:var(--mut);margin:0}
+</style></head><body>
+<div id="hd"><h1>제타의 지형</h1><p id="msg"></p></div>
+<div id="ui">
+<button id="bL" class="on">지형</button><button id="bN">뉴턴 프랙탈 산맥</button>
+<button id="bF">영점을 따라 날기</button>
+<label>높이 <input id="sc" type="range" min="0.2" max="2" step="0.05" value="1"></label>
+<label><input id="cl" type="checkbox" checked> 임계선</label>
+<p id="note">드래그로 회전, 휠로 확대. 높이와 색은 시각화 선택이며, 리만 가설의 증거가 아닙니다.</p>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const ZS=[14.1347,21.0220,25.0109,30.4249,32.9351,37.5862,40.9187,43.3271,48.0052,49.7738];
+const LN=[];for(let n=1;n<=24;n++)LN[n]=Math.log(n);
+function zeta(a,b){const N=24;let re=0,im=0;
+ for(let n=1;n<N;n++){const m=Math.exp(-a*LN[n]),p=-b*LN[n];re+=m*Math.cos(p);im+=m*Math.sin(p)}
+ const mN=Math.exp(-a*LN[N]),pN=-b*LN[N],cr=mN*Math.cos(pN),ci=mN*Math.sin(pN);
+ const xr=N*cr,xi=N*ci,dr=a-1,di=b,d=dr*dr+di*di;
+ re+=(xr*dr+xi*di)/d+cr/2;im+=(xi*dr-xr*di)/d+ci/2;
+ const B=[1/12,-1/720,1/30240,-1/1209600];let pr=a,pi=b,tr=cr/N,ti=ci/N;
+ for(let k=0;k<4;k++){re+=B[k]*(pr*tr-pi*ti);im+=B[k]*(pr*ti+pi*tr);
+  for(let j=1;j<=2;j++){const u=a+2*k+j,nr=pr*u-pi*b,ni=pr*b+pi*u;pr=nr;pi=ni}
+  tr/=N*N;ti/=N*N}
+ return[re,im]}
+const X=a=>(a-.5)*10,Z=t=>(t-25)*.5;
+const R=new THREE.WebGLRenderer({antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));
+document.body.appendChild(R.domElement);
+const S=new THREE.Scene();S.background=new THREE.Color(0x07090f);S.fog=new THREE.Fog(0x07090f,25,70);
+const C=new THREE.PerspectiveCamera(50,1,.1,200);
+S.add(new THREE.AmbientLight(0xffffff,.55));
+const dl=new THREE.DirectionalLight(0xffffff,.9);dl.position.set(8,14,6);S.add(dl);
+
+function grid(W,H,fn){const pos=[],col=[],idx=[],c=new THREE.Color();
+ for(let j=0;j<H;j++)for(let i=0;i<W;i++){const a=-.5+2*i/(W-1),b=50*j/(H-1),r=fn(a,b);
+  pos.push(X(a),r[0],Z(b));c.setHSL(r[1],.75,r[2]);col.push(c.r,c.g,c.b)}
+ for(let j=0;j<H-1;j++)for(let i=0;i<W-1;i++){const p=j*W+i;idx.push(p,p+W,p+1,p+1,p+W,p+W+1)}
+ const g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+ g.setAttribute('color',new THREE.Float32BufferAttribute(col,3));
+ g.setIndex(idx);g.computeVertexNormals();
+ return new THREE.Mesh(g,new THREE.MeshStandardMaterial({vertexColors:true,roughness:.55,side:THREE.DoubleSide}))}
+
+const land=grid(100,200,(a,b)=>{const[re,im]=zeta(a,b),m=Math.hypot(re,im);
+ return[Math.min(Math.log(1+2.5*m),3.2),(Math.atan2(im,re)/6.2832+1)%1,.07+.5*Math.min(1,m)]});
+S.add(land);
+
+let newton=null;
+function buildNewton(){return grid(70,140,(a,b)=>{let s=a,t=b,it=0,z;
+ for(;it<12;it++){z=zeta(s,t);if(Math.hypot(z[0],z[1])<1e-6)break;
+  const h=1e-4,w=zeta(s+h,t),dr=(w[0]-z[0])/h,di=(w[1]-z[1])/h,q=dr*dr+di*di||1e-9;
+  let sr=(z[0]*dr+z[1]*di)/q,si=(z[1]*dr-z[0]*di)/q,n=Math.hypot(sr,si);if(n>6){sr*=6/n;si*=6/n}
+  s-=sr;t-=si;if(Math.abs(s)>8||t<-8||t>70){it=12;break}}
+ let k=-1;if(it<12)for(let q=0;q<ZS.length;q++)if(Math.abs(t-ZS[q])<.05&&Math.abs(s-.5)<.05)k=q;
+ const f=it/12;return[.3+2.6*(1-f)**1.5,k<0?.62:(k/ZS.length+.02)%1,k<0?.12:.28+.35*(1-f)]})}
+
+const grp=new THREE.Group();S.add(grp);
+const lp=[];for(let j=0;j<=300;j++){const b=50*j/300,[re,im]=zeta(.5,b);lp.push(new THREE.Vector3(0,Math.min(Math.log(1+2.5*Math.hypot(re,im)),3.2)+.06,Z(b)))}
+const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(lp),new THREE.LineBasicMaterial({color:0xffc46b}));
+grp.add(line);
+const mk=new THREE.Group();S.add(mk);
+ZS.forEach(t=>{const m=new THREE.Mesh(new THREE.SphereGeometry(.14,16,12),new THREE.MeshBasicMaterial({color:0xffe2a8}));m.position.set(0,.14,Z(t));mk.add(m)});
+
+let mode='L',fly=false,th=.6,ph=1.0,rd=30,tgt=new THREE.Vector3(0,0,0),ft=0;
+const msg=document.getElementById('msg'),$=id=>document.getElementById(id);
+const T={L:'바닥까지 푹 꺼진 구멍이 영점입니다. 노란 선은 임계선(σ=½)이고, 구멍이 그 위에 줄지어 있습니다.',
+N:'각 점에서 영점 찾기(뉴턴 방법)를 돌렸을 때 어느 영점에 도착하는지가 색입니다. 경계가 끝없이 복잡해집니다.',
+F:'임계선을 따라 첫 번째 영점부터 날아갑니다.'};
+msg.textContent=T.L;
+function setMode(m){mode=m;
+ if(m==='N'&&!newton){msg.textContent='프랙탈 계산 중…';setTimeout(()=>{newton=buildNewton();S.add(newton);setMode('N')},30);return}
+ land.visible=m==='L';if(newton)newton.visible=m==='N';
+ line.visible=m==='L'&&$('cl').checked;
+ $('bL').classList.toggle('on',m==='L');$('bN').classList.toggle('on',m==='N');
+ msg.textContent=T[m]}
+$('bL').onclick=()=>setMode('L');$('bN').onclick=()=>setMode('N');
+$('bF').onclick=()=>{fly=!fly;ft=0;$('bF').classList.toggle('on',fly);if(fly){rd=9;ph=1.25;th=.35;msg.textContent=T.F}else{rd=30;tgt.set(0,0,0);ph=1;msg.textContent=T[mode]}};
+$('sc').oninput=e=>{const v=+e.target.value;land.scale.y=v;if(newton)newton.scale.y=v;grp.scale.y=v};
+$('cl').onchange=()=>{line.visible=mode==='L'&&$('cl').checked;mk.visible=$('cl').checked};
+
+let dn=false,lx=0,ly=0;const cv=R.domElement;
+cv.onpointerdown=e=>{dn=true;lx=e.clientX;ly=e.clientY;cv.setPointerCapture(e.pointerId)};
+cv.onpointerup=()=>dn=false;
+cv.onpointermove=e=>{if(!dn)return;th-=(e.clientX-lx)*.006;ph=Math.max(.15,Math.min(1.5,ph-(e.clientY-ly)*.006));lx=e.clientX;ly=e.clientY};
+cv.onwheel=e=>{e.preventDefault();rd=Math.max(5,Math.min(50,rd*(1+e.deltaY*.001)))};
+function rs(){R.setSize(innerWidth,innerHeight);C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix()}
+addEventListener('resize',rs);rs();
+(function loop(){requestAnimationFrame(loop);
+ if(fly){ft+=.0016;const u=Math.min(ft,1);tgt.z=-12.5+25*u;tgt.y=.5;if(ft>1.05){fly=false;$('bF').classList.remove('on')}}
+ else if(!dn)th+=.0012;
+ C.position.set(tgt.x+rd*Math.sin(ph)*Math.sin(th),tgt.y+rd*Math.cos(ph),tgt.z+rd*Math.sin(ph)*Math.cos(th));
+ C.lookAt(tgt);R.render(S,C)})();
+</script></body></html>
