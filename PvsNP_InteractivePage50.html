@@ -75,7 +75,7 @@ footer{margin-top:26px;font-size:13px;color:var(--mute)}
 <p>Pick some of the numbers below so that their sum exactly equals the target. This problem belongs to NP: you know a solution exists, but you have to find which combination it is.</p>
 <div class="row">
   <label for="n" style="margin:0">How many numbers <b id="nv">12</b></label>
-  <input id="n" type="range" min="6" max="100" value="12" style="flex:1;min-width:160px">
+  <input id="n" type="range" min="6" max="50" value="12" style="flex:1;min-width:160px">
   <label for="md" style="margin:0">Digits per number</label><select id="md" style="font:inherit;padding:9px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink)"><option value="2">2 digits</option><option value="14">14 digits</option></select><button id="new">New puzzle</button>
 </div>
 <div class="target">Target<b id="tg">0</b></div>
@@ -169,7 +169,7 @@ function render(hit){
 }
 function sum(){var s=0;sel.forEach(function(i){s+=nums[i]});$('sm').textContent=fmtInt(s);return s}
 function bars(){
-  var mx=100*Math.LN2;
+  var mx=50*Math.LN2;
   $('bv').style.width=Math.max(2,100*Math.log(N+1)/mx)+'%';
   $('bs').style.width=Math.max(2,100*N*Math.LN2/mx)+'%';
 }
