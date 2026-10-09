@@ -1,6 +1,18 @@
 {
   "globalNews": [
     {
+      "title": "Suspect linked to Monaco bomb attack on millionaire breaks silence to BBC",
+      "link": "https://www.bbc.co.uk/news/articles/ckgel9044vqeo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 08 Oct 2026 23:11:10 GMT",
+      "desc": "Vitalii Zhykovych gives his own account of the attempted assassination of Ukrainian-born businessman Vadym Yermolayev."
+    },
+    {
+      "title": "Fort Hood attacker's execution by firing squad will be livestreamed, Pentagon says",
+      "link": "https://www.bbc.co.uk/news/articles/cmy0r96xygx6o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 09 Oct 2026 01:25:33 GMT",
+      "desc": "The US Defence Secretary says the execution will be public, but a legal expert says the \"unprecedented\" decision is on \"uncertain legal terrain\"."
+    },
+    {
       "title": "Russian strike on buses kills at least 30, say officials, as deadly attacks on Ukraine surge",
       "link": "https://www.bbc.co.uk/news/articles/c875pwq134l3o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 08 Oct 2026 16:31:29 GMT",
@@ -13,22 +25,10 @@
       "desc": "A lawyer says the murderer of Colleen Slemmer is moving around her hospital room after surviving two lethal injections."
     },
     {
-      "title": "Venezuela's ex-leader Nicolás Maduro charged with conspiracy to commit torture",
-      "link": "https://www.bbc.co.uk/news/articles/c5pvgn7xvxpzo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 08 Oct 2026 17:38:59 GMT",
-      "desc": "The new accusations relate to the alleged torture of US citizens held in Venezuela while Maduro was in power."
-    },
-    {
-      "title": "Protesters blame 'vulture funds' for Spain's housing crisis",
-      "link": "https://www.bbc.co.uk/news/articles/c3j4790elkx7o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 08 Oct 2026 19:10:06 GMT",
-      "desc": "Hundreds have pitched their tents in central Madrid, while the Spanish prime minister has called a snap election."
-    },
-    {
-      "title": "Italy approves elections overhaul as opposition accuse Meloni of 'scam'",
-      "link": "https://www.bbc.co.uk/news/articles/c6zxjdw8rdl5o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 08 Oct 2026 12:32:12 GMT",
-      "desc": "Prime Minister Giorgia Meloni says the move will deliver more stable government, but opposition parties say her aim is to stay in power."
+      "title": "Adidas sues Australian label White Fox over four stripes design",
+      "link": "https://www.bbc.co.uk/news/articles/c9e8ld448km8o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 08 Oct 2026 18:17:28 GMT",
+      "desc": "The German sportswear brand wants the Sydney-based label to stop selling the clothes and pay damages."
     }
   ],
   "koreaNews": [
@@ -59,7 +59,7 @@
     {
       "title": "Trump announces $200bn in energy investments from South Korea - Al Jazeera",
       "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcC0wOTEtTU4tbWtmX0M3TXZ4WTdlang0V0JVV0drSE9wTzVuSHNyM19Yd25TaThsRUZVSktyQldhN3JEUUE4ZEptV01sN3daOG9lbFdZa3lLX25xTlg5elFsS3N3ekozRDFMTWJuc2NvMkFCTmtQWlZGSXhaOUVuRk1Nb2pSaTZIN0lfdzNjaU5WUDNaaW1qaUlvd0k2TzcxTDZNa0V5YUhRMGN3QWF30gG0AUFVX3lxTE0zQ2ZzYWJxdllrQ1hvdVlVRTR0RUMzczEyeDdUdlZXUWdrbmJrZFFMWlV1MVdCNTg3bFcxa2YxMUg3Z1ZpX1RMeUxvQTdoOS1WRnoyU3hlaVVfZTBxUUpYeGxGNFNYRmdQUzd2Q2VnajRuX05IRDR2eWdUVnJ5R3JMbHlXV2U2NmFaRzVWSXJwOHJDb3dlUlFyTFZMd0hzcVpiVmVvbnJoS0w4UjhoSFYwLWRCRw?oc=5",
-      "date": "Thu, 01 Oct 2026 00:29:54 GMT",
+      "date": "Wed, 30 Sep 2026 07:00:00 GMT",
       "desc": "Trump announces $200bn in energy investments from South Korea&nbsp;&nbsp;Al Jazeera"
     },
     {
@@ -69,10 +69,10 @@
       "desc": "Samsung, SK Hynix record earnings fuel South Korea spending on AI, youth&nbsp;&nbsp;Nikkei Asia"
     },
     {
-      "title": "AMD CEO Discusses AI with Samsung, SK Hynix - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZWpSdnVDUzBvT3lwbnRtZkZacGczM3VfZllMZmZvdTk5dGl4VUNDa2haME9seWFqNF9Sb1Zpa3ozQXNFTW05Tm5nTFNuWjl2bjNPcmFTX2NoY241aWl5dHc5RDBTV2E4YTVCYUY3VXJVbUZqX0wyN1I1X1lqYWpLajh2OUN4OHc3?oc=5",
-      "date": "Wed, 07 Oct 2026 07:00:09 GMT",
-      "desc": "AMD CEO Discusses AI with Samsung, SK Hynix&nbsp;&nbsp;조선일보"
+      "title": "Samsung, SK Hynix, Micron Post 80% Margins, Supercycle to 2030 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMUdUVkM2aHc5WmxhYnVaOXFnaXowZ0h1MHE3QzFNN21ablJsNFZrQmV2NFZhRDRKVHRxTU5Qd0R4R2pvNk1KRVF5ZDlWaGl3cW9lX3FwRkpwTWY1YTZfc1ktTEFxc2VIaGJzWjhrZndFZm9ISzI4U2ZUNFZQX0g0b3NxcC01T1VX?oc=5",
+      "date": "Thu, 08 Oct 2026 22:27:47 GMT",
+      "desc": "Samsung, SK Hynix, Micron Post 80% Margins, Supercycle to 2030&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Samsung, SK Hynix Compete in Advanced Packaging with HBM Bonding and Durability Patents - BigGo Finance",
@@ -93,81 +93,81 @@
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 455.63,
-      "change": -26.67,
-      "pct": -5.53,
+      "price": 457.99,
+      "change": -24.31,
+      "pct": -5.04,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 617.42,
-      "change": -32.0,
-      "pct": -4.93,
+      "price": 620.68,
+      "change": -28.74,
+      "pct": -4.43,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 106.88,
-      "change": -5.62,
-      "pct": -5.0,
+      "price": 107.08,
+      "change": -5.42,
+      "pct": -4.82,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 174.82,
-      "change": -6.21,
-      "pct": -3.43,
+      "price": 176.01,
+      "change": -5.02,
+      "pct": -2.77,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 273.05,
-      "change": -29.51,
-      "pct": -9.76,
+      "price": 275.29,
+      "change": -27.27,
+      "pct": -9.01,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 347.48,
-      "change": -0.2,
-      "pct": -0.06,
+      "price": 348.29,
+      "change": 0.61,
+      "pct": 0.18,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 341.16,
-      "change": 7.53,
-      "pct": 2.26,
+      "price": 340.42,
+      "change": 6.79,
+      "pct": 2.04,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 521.74,
-      "change": -7.56,
-      "pct": -1.43,
+      "price": 522.61,
+      "change": -6.69,
+      "pct": -1.26,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7758.85,
-      "change": -60.08,
-      "pct": -0.77,
+      "price": 7765.36,
+      "change": -53.57,
+      "pct": -0.69,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27166.01,
-      "change": -433.78,
-      "pct": -1.57,
+      "price": 27193.34,
+      "change": -406.45,
+      "pct": -1.47,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1342.33,
-      "change": 2.59,
-      "pct": 0.19,
+      "price": 1341.84,
+      "change": 2.76,
+      "pct": 0.21,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-08 19:33 UTC"
+  "updatedAt": "2026-10-09 01:41 UTC"
 }
