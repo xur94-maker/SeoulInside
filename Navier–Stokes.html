@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>박동 혈류 시뮬레이터</title>
+<style>
+:root{--bg:#faf9f6;--fg:#1c1b19;--mut:#6a685f;--card:#fff;--bd:#e2dfd6;--ac:#c2410c;--pos:#d9480f;--neg:#1c6ed5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--fg:#ecebe6;--mut:#9b998f;--card:#21211f;--bd:#383733;--ac:#fb923c;--pos:#ff8a4c;--neg:#5aa2ff}}
+:root[data-theme="dark"]{--bg:#161615;--fg:#ecebe6;--mut:#9b998f;--card:#21211f;--bd:#383733;--ac:#fb923c;--pos:#ff8a4c;--neg:#5aa2ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 16px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px}
+.grid{display:grid;gap:12px}.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+@media(max-width:760px){.g2{grid-template-columns:1fr}}
+.ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px 18px;align-items:end}
+label{font-size:13px;color:var(--mut);display:flex;justify-content:space-between}label b{color:var(--fg);font-weight:600}
+input[type=range]{width:100%;accent-color:var(--ac)}
+button,select{font:inherit;padding:6px 12px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--fg);cursor:pointer}
+button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+canvas{width:100%;display:block}
+.m{font-size:12px;color:var(--mut)}.v{font-size:21px;font-weight:650}.u{font-size:12px;color:var(--mut);font-weight:400}
+.ok{color:#2f9e44}.warn{color:var(--ac)}
+h2{font-size:14px;margin:0 0 6px;color:var(--mut);font-weight:600}
+small{color:var(--mut);display:block;margin-top:14px;font-size:12.5px;line-height:1.6}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}.pane{display:none}.pane.on{display:block}</style></head><body><main>
+<h1>Navier–Stokes 응용 연구실</h1>
+<p class="sub">혈류 · Rossby파 · 캐비테이션 · SST 폐합을 직접 만져 보는 4개의 실험실입니다. [혈류] 강체 원관 안의 박동 유동을 Navier–Stokes 축대칭 방정식으로 직접 풉니다. 비뉴턴(Carreau–Yasuda) 점도, 벽전단응력(WSS), TAWSS·OSI·RRT, 그리고 뉴턴 극한의 Womersley 해석해 대조를 실시간으로 계산합니다.</p>
+
+<div class="tabs" id="tabs"></div><section class="pane on" id="p0"><div class="card"><div class="row" id="presets"></div>
+<div class="ctl">
+<div><label>혈관 반경 R <b id="oR"></b></label><input id="R" type="range" min="0.5" max="15" step="0.1"></div>
+<div><label>심박수 <b id="oHR"></b></label><input id="HR" type="range" min="40" max="180" step="1"></div>
+<div><label>평균 압력구배 G₀ <b id="oG0"></b></label><input id="G0" type="range" min="0" max="3000" step="10"></div>
+<div><label>박동 진폭 G₁ <b id="oG1"></b></label><input id="G1" type="range" min="0" max="12000" step="50"></div>
+<div><label>슬로모션 <b id="oSP"></b></label><input id="SP" type="range" min="0.05" max="1" step="0.05" value="0.25"></div>
+<div><label>2차 고조파 G₂ <b id="oG2"></b></label><input id="G2" type="range" min="0" max="6000" step="50"></div><div><label>비교</label><div class="row" style="margin:2px 0 0"><button id="bK">반대 점도 모델 겹쳐 보기</button></div></div><div><label>점도 모델</label><div class="row" style="margin:2px 0 0"><button id="bN">뉴턴</button><button id="bC">Carreau–Yasuda</button></div></div>
+</div></div>
+
+<div class="grid g2" style="margin-top:12px">
+<div class="card"><h2>혈관 단면 (축 방향 속도, 주황=순방향 · 파랑=역류)</h2><canvas id="cv1" style="height:230px"></canvas></div>
+<div class="card"><h2>반경 방향 속도 프로파일 <span id="chk"></span></h2><canvas id="cv2" style="height:230px"></canvas></div>
+<div class="card"><h2>구동 압력구배 G(t) · 평균 속도 Ū(t)</h2><canvas id="cv3" style="height:200px"></canvas></div>
+<div class="card"><h2>벽전단응력 τ_w(t) (음영 = 역방향)</h2><canvas id="cv4" style="height:200px"></canvas></div>
+</div>
+
+<div class="grid g4" id="met" style="margin-top:12px"></div>
+<div class="card" id="diag" style="margin-top:12px"></div>
+
+<small><b>모델.</b> ρ∂u/∂t = G(t) + (1/r)∂/∂r[r μ(γ̇) ∂u/∂r], G(t)=G₀+G₁cos ωt, 무슬립 벽, 축에서 대칭. 반경 방향 유한체적(80셀) + 후진 오일러, 주기 정상상태가 될 때까지 반복합니다. μ(γ̇)=μ∞+(μ₀−μ∞)[1+(λγ̇)^a]^((n−1)/a), μ₀=0.16 Pa·s, μ∞=0.0035 Pa·s, λ=8.2 s, a=0.64, n=0.2128, ρ=1060 kg/m³. 뉴턴 모드의 해석해는 Womersley 해 u=G₀(R²−r²)/(4μ)+Re[(G₁/iωρ)(1−J₀(αi^{3/2}r/R)/J₀(αi^{3/2}))e^{iωt}] 입니다.<br>
+<b>한계.</b> 강체 관·완전발달·축대칭 가정으로 분기부의 이차유동, 벽 탄성, 환자별 형상은 포함하지 않습니다. 교육용이며 임상 판단에 쓸 수 없습니다. 프리셋 값은 대표 문헌값이 아닌 예시입니다. WSS 지표 기준값(예: τ_w &lt; 0.4 Pa)은 연구마다 다릅니다.</small></section>
+<section class="pane" id="p1"><div class="card"><div class="ctl">
+<div><label>동서 파수 m (둘레 당 파 개수) <b id="oK"></b></label><input id="rk" type="range" min="1" max="12" step="1" value="4"></div>
+<div><label>남북 파수 지수 n (ℓ=nπ/L_y) <b id="oL"></b></label><input id="rl" type="range" min="0" max="6" step="1" value="1"></div>
+<div><label>평균 서풍 U <b id="oU"></b></label><input id="rU" type="range" min="-5" max="40" step="0.5" value="10"></div>
+<div><label>위도 φ <b id="oPhi"></b></label><input id="rP" type="range" min="15" max="75" step="1" value="45"></div>
+<div><label>변형 반경 L_d (F=1/L_d²) <b id="oLd"></b></label><input id="rD" type="range" min="0" max="3000" step="50" value="0"></div>
+</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h2>유선함수 ψ′ (β-평면, L_y=6000 km)</h2><canvas id="cv5" style="height:230px"></canvas></div>
+<div class="card"><h2>위상속도 c_p · 군속도 c_gx 대 파수 m</h2><canvas id="cv6" style="height:230px"></canvas></div></div>
+<div class="card" id="rd" style="margin-top:12px"></div>
+<small>분산관계 ω = Uk − βk/(k²+ℓ²+F), β=2Ωcosφ/a, 동서 길이 L_x=2πa·cosφ. U를 키워 c_p=0이 되는 지점이 정상 Rossby파(블로킹 이론의 기초)입니다. 선형 단일 평면파이므로 비선형 상호작용은 포함하지 않습니다.</small></section>
+<section class="pane" id="p2"><div class="card"><div class="ctl">
+<div><label>유입속도 u_in <b id="oVu"></b></label><input id="vu" type="range" min="1" max="15" step="0.1" value="5"></div>
+<div><label>면적비 A_th/A_in <b id="oVr"></b></label><input id="vr" type="range" min="0.2" max="0.9" step="0.01" value="0.4"></div>
+<div><label>입구 압력 p_in <b id="oVp"></b></label><input id="vp" type="range" min="50" max="500" step="1" value="101"></div>
+</div></div>
+<div class="card" style="margin-top:12px"><h2>벤투리 형상(붉은 구간: p&lt;p_v)과 Bernoulli 압력</h2><canvas id="cv7" style="height:300px"></canvas></div>
+<div class="card" id="vd" style="margin-top:12px"></div>
+<small>물 20°C(p_v=2338 Pa, ρ=998 kg/m³). 인셉션 판정은 비점성 Bernoulli 압력과 p_v의 비교이며, 캐비티 성장·초킹 이후의 동역학(Schnerr–Sauer 질량전달)은 별도 계산 코드에서 다뤘습니다.</small></section>
+<section class="pane" id="p3"><div class="card"><div class="ctl">
+<div><label>레이놀즈 수 <b id="oR2"></b></label><input id="sR" type="range" min="2.3" max="5" step="0.05" value="3"></div>
+<div><label>관찰 위치 (로그 y⁺)</label><input id="sY" type="range" min="0" max="1" step="0.005" value="0.35"></div>
+</div></div>
+<div class="card" style="margin-top:12px"><h2>블렌딩 함수와 와점성 비 (로그 y⁺ 축)</h2><canvas id="cv8" style="height:260px"></canvas></div>
+<div class="card" id="sd" style="margin-top:12px"></div></section>
+<section class="pane" id="p4"><div class="card"><div class="row" id="zpre"></div><div class="ctl">
+<div><label>연소실 압력 p₀ <b id="oZp"></b></label><input id="zp" type="range" min="0.1" max="20" step="0.1" value="7"></div>
+<div><label>연소실 온도 T₀ <b id="oZt"></b></label><input id="zt" type="range" min="300" max="3600" step="50" value="3400"></div>
+<div><label>비열비 γ <b id="oZg"></b></label><input id="zg" type="range" min="1.1" max="1.67" step="0.01" value="1.2"></div>
+<div><label>면적비 A_e/A_t <b id="oZe"></b></label><input id="ze" type="range" min="1.5" max="40" step="0.5" value="8"></div>
+<div><label>외부 압력 p_a (배압) <b id="oZa"></b></label><input id="za" type="range" min="0" max="101.3" step="0.1" value="101.3"></div>
+</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h2>노즐 속 기체 입자 (색=마하수: 파랑 아음속 · 흰색 M=1 · 빨강 초음속)</h2><canvas id="cv9" style="height:270px"></canvas></div>
+<div class="card"><h2>축 방향 M · p/p₀ · T/T₀ (세로선=목)</h2><canvas id="cv10" style="height:270px"></canvas></div></div>
+<div class="card" id="zd" style="margin-top:12px"></div>
+<small>완전기체(R=345 J/kg·K, A_t=0.01 m²)의 준1차원 등엔트로피 유동 + 수직충격파 모델입니다. 입자 속도는 국소 속도 u=M·√(γRT)에 비례하며(속도 척도는 화면용), 출구 밖 제트의 모양은 정성적 표현입니다. 경계층, 화학반응, 유동 박리(Summerfield 판정)와 2차원 효과는 포함하지 않습니다.</small></section>
+<section class="pane" id="p5"><div class="card"><div class="ctl">
+<div><label>레이놀즈 수 Re=U·D/ν <b id="oLre"></b></label><input id="lre" type="range" min="20" max="200" step="1" value="100"></div>
+<div><label>프레임 당 계산 스텝 <b id="oLsp"></b></label><input id="lsp" type="range" min="1" max="16" step="1" value="8"></div>
+<div><label>&nbsp;</label><div class="row" style="margin:2px 0 0"><button id="lrst">초기화</button></div></div>
+</div></div>
+<div class="card" style="margin-top:12px"><h2>와도장 ω (빨강=반시계, 파랑=시계) — 원통 뒤 카르만 와류열</h2><canvas id="cv11" style="aspect-ratio:320/128;height:auto"></canvas></div>
+<div class="card" id="ld" style="margin-top:12px"></div>
+<small>2차원 격자 볼츠만(D2Q9, BGK) 직접 계산입니다. 320×128 격자, 원통 지름 D=22 격자(막힘률 17%), 입구 U=0.1(Ma≈0.17), 원통은 bounce-back, 상·하·입구는 자유류 평형분포, 출구는 외삽입니다. 막힘률(D/H=17%) 때문에 측정 St가 자유류 실험식보다 높게 나오며, 근사 보정 St·(1−D/H)로 비교합니다. Re≳190에서 실제 유동은 3차원 불안정이 생기므로 그 이상은 2차원 참고용입니다.</small></section>
+<section class="pane" id="p6"><div class="card"><div class="ctl">
+<div><label>초기 반경 R₀ <b id="oBr"></b></label><input id="br" type="range" min="0.1" max="5" step="0.1" value="1"></div>
+<div><label>기포 내부 기체압 p_g0 (R₀에서) <b id="oBg"></b></label><input id="bg" type="range" min="0.1" max="90" step="0.1" value="1"></div>
+<div><label>재생 속도 <b id="oBs"></b></label><input id="bsp" type="range" min="0.2" max="2" step="0.1" value="1"></div>
+</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h2>기포 (반경 R(t)/R₀에 비례)</h2><canvas id="cv12" style="height:260px"></canvas></div>
+<div class="card"><h2>R(t)/R₀ · 벽 속도 Ṙ (정규화)</h2><canvas id="cv13" style="height:260px"></canvas></div></div>
+<div class="card" id="bd" style="margin-top:12px"></div>
+<small>Rayleigh–Plesset 방정식 RṘ̈+(3/2)Ṙ²=(1/ρ)[p_v+p_g0(R₀/R)^{3κ}−p_∞−4μṘ/R−2σ/R], p_∞=101.3 kPa, κ=1.4(단열), 물 20°C. 비압축 액체 가정이므로 벽 속도가 음속의 약 30%를 넘는 최소 반경 근처는 정확하지 않고(Keller–Miksis 등 압축성 모델 필요), 열전달·상변화·기포 모양 붕괴(제트)는 포함하지 않습니다. 기체압 추정값은 모델 상한 개념으로만 보세요.</small></section>
+<section class="pane" id="p7"><div class="card"><div class="ctl">
+<div><label>레일리 수 Ra <b id="oRa"></b></label><input id="ra" type="range" min="2.5" max="4.3" step="0.01" value="3.4"></div>
+<div><label>프란틀 수 Pr <b id="oRp"></b></label><input id="rpr" type="range" min="0.7" max="7" step="0.1" value="1"></div>
+<div><label>프레임 당 스텝 <b id="oRs"></b></label><input id="rsp" type="range" min="1" max="40" step="1" value="12"></div>
+<div><label>&nbsp;</label><div class="row" style="margin:2px 0 0"><button id="rrst">초기화</button></div></div>
+</div></div>
+<div class="card" style="margin-top:12px"><h2>온도장 T (빨강=뜨거움, 파랑=차가움)과 유체 입자 — 하부 가열 Rayleigh–Bénard 대류</h2><canvas id="cv16" style="aspect-ratio:128/33;height:auto"></canvas></div>
+<div class="card" id="rbd" style="margin-top:12px"></div>
+<small>2차원 Boussinesq 방정식(와도–유선함수 형식), 상·하 경계 자유 미끄럼·고정 온도, x 방향 주기, 가로:세로=4√2:1(임계 파장 2√2의 2배). 2차 중심차분 + Heun, 푸아송 방정식은 FFT+삼중대각 직접 풀이. 자유 미끄럼 경계의 임계값 Ra_c=27π⁴/4≈657.5. 중심차분이라 Ra≳2×10⁴ 이상에서는 격자가 거칠어 부정확합니다. Nu의 근사 이론값 1+2(1−Ra_c/Ra)는 임계점 근처에서만 유효합니다.</small></section>
+<section class="pane" id="p8"><div class="card"><div class="ctl">
+<div><label>받음각 α <b id="oAa"></b></label><input id="aa" type="range" min="-5" max="20" step="0.5" value="5"></div>
+<div><label>두께 (원 중심 이동 ε) <b id="oAe"></b></label><input id="ae" type="range" min="0.03" max="0.3" step="0.01" value="0.1"></div>
+<div><label>캠버 (원 중심 높이 δ) <b id="oAc"></b></label><input id="ac" type="range" min="0" max="0.2" step="0.01" value="0.05"></div>
+</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h2>날개 단면 주위 유동 (Joukowski 포텐셜 유동 + Kutta 조건)</h2><canvas id="cv14" style="height:270px"></canvas></div>
+<div class="card"><h2>압력계수 −Cp (윗면 흡입이 위로)</h2><canvas id="cv15" style="height:270px"></canvas></div></div>
+<div class="card" id="ad" style="margin-top:12px"></div>
+<small>비점성·비압축 2차원 포텐셜 유동입니다. 원 주위 유동의 Joukowski 사상 Z=ζ+1/ζ로 단면을 만들고, 뒷전에서 속도가 유한하다는 Kutta 조건으로 순환 Γ=4πR·sin(α−φ)를 정합니다. 점성이 없으므로 <b>경계층·박리·실속·항력은 없습니다</b>(실제 날개는 대략 12–16°에서 실속). 입자 선분은 국소 속도 방향을 나타냅니다.</small></section>
+<section class="pane" id="p9"><div class="card"><div class="row" id="tpre"></div><div class="ctl">
+<div><label>동점성 ν <b id="oTn"></b></label><input id="tnu" type="range" min="0" max="0.01" step="0.0005" value="0.001"></div>
+<div><label>프레임 당 스텝 <b id="oTs"></b></label><input id="tsp" type="range" min="1" max="12" step="1" value="4"></div>
+</div></div>
+<div class="card" style="margin-top:12px"><h2>와도장 ω (빨강=반시계, 파랑=시계) — 2차원 비압축 유동</h2><canvas id="cv17" style="aspect-ratio:1/1;max-width:560px;margin:0 auto;height:auto"></canvas></div>
+<div class="card" id="td" style="margin-top:12px"></div>
+<small>2차원 와도 방정식 ∂ω/∂t+u·∇ω=ν∇²ω를 64×64 주기 영역에서 의사 스펙트럼법(2/3 비앙정, RK4)으로 풉니다. 이상 유동(ν=0)에서는 에너지 E=½⟨|u|²⟩와 엔스트로피 Z=½⟨ω²⟩가 보존되어야 하며, 화면의 E/E₀, Z/Z₀로 확인할 수 있습니다(비앙정·시간적분 때문에 약간의 감쇠가 있음).</small></section>
+<section class="pane" id="p10"><div class="card"><div class="ctl">
+<div><label>왼쪽 수심 h_l <b id="oDl"></b></label><input id="dh" type="range" min="0.5" max="5" step="0.1" value="2"></div>
+<div><label>오른쪽 수심 h_r <b id="oDr"></b></label><input id="dr" type="range" min="0.02" max="2" step="0.02" value="0.4"></div>
+<div><label>재생 속도 <b id="oDs"></b></label><input id="dsp" type="range" min="0.2" max="2" step="0.1" value="1"></div>
+<div><label>&nbsp;</label><div class="row" style="margin:2px 0 0"><button id="drst">다시 시작</button></div></div>
+</div></div>
+<div class="card" style="margin-top:12px"><h2>수면 h(x,t) — 수치해(파랑) vs Stoker 해석해(점선)</h2><canvas id="cv18" style="height:250px"></canvas></div>
+<div class="card" style="margin-top:12px"><h2>유속 u(x,t) — 수치해 vs 해석해</h2><canvas id="cv19" style="height:170px"></canvas></div>
+<div class="card" id="dmd" style="margin-top:12px"></div>
+<small>1차원 천수 방정식 h_t+(hu)_x=0, (hu)_t+(hu²+gh²/2)_x=0을 400셀 MUSCL(minmod)+Rusanov 플럭스+SSP-RK2로 풉니다. 해석해는 Stoker의 젖은 바닥 댐 붕괴(희박파 + 충격파/보어)입니다. 마찰, 바닥 경사, 2차원 효과, 비정수압 분산은 포함하지 않습니다.</small></section>
+<section class="pane" id="p11"><div class="card"><div class="ctl">
+<div><label>레일리 비 r (=Ra/Ra_c) <b id="oLr"></b></label><input id="lzr" type="range" min="0.5" max="60" step="0.5" value="28"></div>
+<div><label>두 궤적의 초기 차이 δ <b id="oLd"></b></label><input id="lzd" type="range" min="-8" max="-1" step="1" value="-5"></div>
+<div><label>프레임 당 스텝 <b id="oLs"></b></label><input id="lzs" type="range" min="1" max="30" step="1" value="8"></div>
+<div><label>&nbsp;</label><div class="row" style="margin:2px 0 0"><button id="lzrst">다시 시작</button></div></div>
+</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h2>로렌츠 끌개 (오렌지·파랑: 처음에 δ만큼만 다른 두 궤적, 천천히 회전)</h2><canvas id="cv20" style="height:300px"></canvas></div>
+<div class="card"><h2>두 궤적 사이 거리 ln|A−B| (지수적 발산)</h2><canvas id="cv21" style="height:300px"></canvas></div></div>
+<div class="card" id="lzd2" style="margin-top:12px"></div>
+<small>열대류를 3개 모드로 줄인 Lorenz(1963) 모형 ẋ=σ(y−x), ẏ=x(r−z)−y, ż=xy−βz (σ=10, β=8/3), RK4(dt=0.005). 리아푸노프 지수는 Benettin 방법(재규격화)으로 계산합니다. r=1에서 대류가 시작되고, Hopf 분기 r_H=σ(σ+β+3)/(σ−β−1)≈24.74를 넘으면 안정한 고정점이 사라지며 카오스가 나타납니다(제가 아는 한 24.74보다 낮은 r에서도 과도 카오스가 있습니다).</small></section>
+<section class="pane" id="p12"><div class="card"><div class="ctl">
+<div><label>수심 h <b id="oWh"></b></label><input id="wh" type="range" min="0.5" max="100" step="0.5" value="20"></div>
+<div><label>기준 파장 λ₁ <b id="oWl"></b></label><input id="wl" type="range" min="5" max="200" step="1" value="60"></div>
+<div><label>두 번째 파장 λ₂ <b id="oWl2"></b></label><input id="wl2" type="range" min="5" max="200" step="1" value="50"></div>
+<div><label>재생 속도 <b id="oWs"></b></label><input id="wsp" type="range" min="0.2" max="4" step="0.1" value="1"></div>
+</div></div>
+<div class="card" style="margin-top:12px"><h2>수면 η(x,t)=cos(k₁x−ω₁t)+cos(k₂x−ω₂t) — 위상속도 vs 군속도</h2><canvas id="cv22" style="height:260px"></canvas></div>
+<div class="card" style="margin-top:12px"><h2>분산관계 ω(k) (현재 파장 두 개 표시)</h2><canvas id="cv23" style="height:200px"></canvas></div>
+<div class="card" id="wd" style="margin-top:12px"></div>
+<small>선형 중력파의 분산관계 ω²=gk·tanh(kh). 위상속도 c_p=ω/k, 군속도 c_g=dω/dk(깊은 물에서 c_g=c_p/2, 얕은 물에서 c_g=c_p=√(gh)). 두 파의 합이 만드는 포락선(맥놀이)이 군속도로 움직이는 것을 볼 수 있습니다. 선형 이론이라 파고가 커지면(비선형·쇄파) 맞지 않습니다.</small></section>
+<section class="pane" id="p13"><div class="card"><div class="ctl">
+<div><label>정상 유속 V₀ <b id="oHv"></b></label><input id="hv" type="range" min="0.5" max="4" step="0.1" value="2"></div>
+<div><label>밸브 폐쇄 시간 t_c <b id="oHt"></b></label><input id="htc" type="range" min="0.01" max="8" step="0.01" value="0.05"></div>
+<div><label>압력파 속도 a <b id="oHa"></b></label><input id="ha" type="range" min="500" max="1400" step="50" value="1000"></div>
+<div><label>마찰계수 f (Darcy) <b id="oHf"></b></label><input id="hf" type="range" min="0" max="0.04" step="0.002" value="0"></div>
+<div><label>프레임 당 스텝 <b id="oHs"></b></label><input id="hs" type="range" min="1" max="10" step="1" value="2"></div>
+<div><label>&nbsp;</label><div class="row" style="margin:2px 0 0"><button id="hrst">밸브 열린 상태로 다시 시작</button></div></div>
+</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h2>관로를 따른 수두 H(x) (왼쪽=저수조, 오른쪽=밸브)</h2><canvas id="cv24" style="height:250px"></canvas></div>
+<div class="card"><h2>밸브 위치 수두 H(t) (지난 12초)</h2><canvas id="cv25" style="height:250px"></canvas></div></div>
+<div class="card" id="hd" style="margin-top:12px"></div>
+<small>L=1000 m, D=0.5 m 관로를 특성곡선법(MOC)으로 풉니다. 상류는 일정 수두 저수조(H₀=100 m), 하류 밸브는 선형으로 닫힙니다. 급폐(t_c&lt;2L/a)이면 Joukowsky 수두 상승 ΔH=aV₀/g, 완폐이면 Michaud 근사 ΔH≈2LV₀/(g·t_c)와 비교합니다. 주기는 4L/a입니다. 수주 분리(증기 공동)와 관 탄성 변화는 포함하지 않으므로, 수두가 증기압 아래로 내려가는 구간은 정성적 참고용입니다.</small></section>
+<section class="pane" id="p14"><div class="card"><div class="row" id="cpre"></div><div class="ctl">
+<div><label>프레임 당 스텝 <b id="oCs"></b></label><input id="cs" type="range" min="1" max="30" step="1" value="12"></div>
+</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h2>뚜껑 구동 공동 유동 (색=속력, 선분=유선 방향 입자)</h2><canvas id="cv26" style="aspect-ratio:1/1;height:auto"></canvas></div>
+<div class="card"><h2>수직 중심선 속도 u(y)/U — 수치해(선) vs Ghia 외(1982) 표값(점)</h2><canvas id="cv27" style="aspect-ratio:1/1;height:auto"></canvas></div></div>
+<div class="card" id="cd" style="margin-top:12px"></div>
+<small>2차원 격자 볼츠만(D2Q9, BGK) 128×128, 위 뚜껑이 U=0.1(Ma≈0.17)로 움직이고 나머지 벽은 bounce-back(이동 벽 보정 포함)입니다. 정상 상태까지 시간이 걸리며(Re가 클수록 오래), 오른쪽 점들은 Ghia, Ghia &amp; Shin(1982)의 표값(Re=100, 400, 1000)입니다. Re=1000 근처에서 BGK는 격자가 충분치 않으면 오차가 커질 수 있습니다.</small></section>
+<section class="pane" id="p15"><div class="card"><div class="ctl">
+<div><label>부력 계수 B=Pr·Ra <b id="oTb"></b></label><input id="rtB" type="range" min="3.3" max="5.6" step="0.05" value="4.6"></div>
+<div><label>교란 파수 m (파장=5.66/m) <b id="oTm"></b></label><input id="rtM" type="range" min="1" max="8" step="1" value="4"></div>
+<div><label>프란틀 수 Pr <b id="oTp"></b></label><input id="rtP" type="range" min="0.2" max="7" step="0.1" value="1"></div>
+<div><label>프레임 당 스텝 <b id="oTs2"></b></label><input id="rtS" type="range" min="1" max="40" step="1" value="10"></div>
+<div><label>&nbsp;</label><div class="row" style="margin:2px 0 0"><button id="rtRst">다시 시작</button></div></div>
+</div></div>
+<div class="card" style="margin-top:12px"><h2>밀도장 (파랑=무거운 유체가 위, 주황=가벼운 유체가 아래) — 레일리–테일러 불안정</h2><canvas id="cv29" style="aspect-ratio:128/33;height:auto"></canvas></div>
+<div class="card" id="rtd" style="margin-top:12px"></div>
+<small>열대류 탭과 같은 2차원 Boussinesq 솔버(와도–유선함수, FFT 푸아송)를 쓰되 배경 온도 구배 항을 빼고, 위층은 무겁고 아래층은 가벼운 두 층(두께 0.08의 tanh 경계)을 놓았습니다. 선형 이론의 상한(예리한 경계, 비점성)은 σ=√(A·g·k)=√(B·k/2)이며, 점성·확산·유한한 경계 두께가 성장률을 줄입니다. B가 클수록 이 상한에 접근합니다(제 계산에서 B=4×10⁵에서 약 0.85–0.88배). 중심차분이라 B≳4×10⁵ 또는 말기의 가는 필라멘트는 격자 한계로 부정확합니다.</small></section>
+<section class="pane" id="p16"><div class="card"><div class="ctl">
+<div><label>레이놀즈 수 Re (중심 속도·반높이 기준) <b id="oOr"></b></label><input id="osre" type="range" min="1000" max="20000" step="10" value="8000"></div>
+<div><label>파수 α <b id="oOa"></b></label><input id="osal" type="range" min="0.3" max="1.4" step="0.01" value="1"></div>
+<div><label>교란 진폭 ε (표시용) <b id="oOe"></b></label><input id="osep" type="range" min="0.02" max="0.3" step="0.01" value="0.12"></div>
+<div><label>&nbsp;</label><div class="row" style="margin:2px 0 0"><button id="osc">임계점으로 이동 (Re=5772, α=1.02)</button></div></div>
+</div></div>
+<div class="grid g2" style="margin-top:12px"><div class="card"><h2>Tollmien–Schlichting 파가 얹힌 평면 Poiseuille 유동 (입자)</h2><canvas id="cv30" style="height:260px"></canvas></div>
+<div class="card"><h2>선형 안정성 지도: Re–α (빨강=불안정, 파랑=안정) <span id="osp" class="m"></span></h2><canvas id="cv31" style="height:260px"></canvas></div></div>
+<div class="card" style="margin-top:12px"><h2>고유함수 |φ(y)|, |φ′(y)| (y=+1 → −1)</h2><canvas id="cv32" style="height:160px"></canvas></div>
+<div class="card" id="osd" style="margin-top:12px"></div>
+<small>Orr–Sommerfeld 방정식 (D²−α²)²φ = iαRe[(U−c)(D²−α²)φ − U″φ], U=1−y²을 체비쇼프 콜로케이션(N=48, 지도는 N=36)과 Rayleigh 몫 역반복으로 풉니다. 고유값 c=c_r+ic_i에서 선형 성장률은 αc_i입니다. 알려진 임계점은 Re_c=5772.22, α_c=1.02056, c_c=0.26400입니다(제 계산: 5772.17). <b>선형 이론에서 Re&lt;5772는 모든 파수에서 안정</b>하지만 실제 관 유동은 유한 진폭 교란과 3차원 비선형 천이 때문에 훨씬 낮은 Re에서 난류가 될 수 있으며, 입자 화면은 성장 인자를 뺀 고정 진폭 파동입니다.</small></section>
+</main>
+<script>
+const rho=1060,muI=.0035,mu0=.16,lam=8.2,aC=.64,nC=.2128;
+const muCY=g=>muI+(mu0-muI)*Math.pow(1+Math.pow(lam*g,aC),(nC-1)/aC);
+const P={R:4,HR:72,G0:700,G1:6000,G2:0,cmp:false,cy:true,SP:.25};let tab=0;
+const PRE={"경동맥":{R:4,HR:72,G0:700,G1:6000},"대동맥":{R:12,HR:72,G0:50,G1:260},"관상동맥":{R:1.5,HR:72,G0:1900,G1:4500},"역류 없음(층류 박동)":{R:4,HR:72,G0:1400,G1:1200}};
+const N=80,S=500;let sol=null,sol2=null;
+function solve(p){
+ const R=p.R*1e-3,T=60/p.HR,w=2*Math.PI/T,dt=T/S,rf=new Float64Array(N+1),rc=new Float64Array(N),V=new Float64Array(N);
+ for(let i=0;i<=N;i++)rf[i]=R*i/N;
+ for(let i=0;i<N;i++){rc[i]=.5*(rf[i]+rf[i+1]);V[i]=.5*(rf[i+1]**2-rf[i]**2);}
+ let u=new Float64Array(N);for(let i=0;i<N;i++)u[i]=p.G0*(R*R-rc[i]**2)/(4*muI);
+ const mf=new Float64Array(N+1),lo=new Float64Array(N),di=new Float64Array(N),up=new Float64Array(N),rh=new Float64Array(N),cp=new Float64Array(N),dp=new Float64Array(N);
+ const H=new Float32Array(S*N),tau=new Float64Array(S),Qm=new Float64Array(S),muw=new Float64Array(S),Gt=new Float64Array(S);
+ let prev=u.slice(),cyc=0,conv=false;
+ for(cyc=1;cyc<=80;cyc++){
+  for(let n=0;n<S;n++){
+   const G=p.G0+p.G1*Math.cos(w*(n+1)*dt)+p.G2*Math.cos(2*w*(n+1)*dt-Math.PI/2);
+   for(let i=1;i<N;i++){const g=Math.abs(u[i]-u[i-1])/(rc[i]-rc[i-1]);mf[i]=p.cy?muCY(g):muI;}
+   const gw=Math.abs(u[N-1])/(R-rc[N-1]),mw=p.cy?muCY(gw):muI;
+   for(let i=0;i<N;i++){
+    const cW=i>0?rf[i]*mf[i]/(rc[i]-rc[i-1]):0;
+    const cE=i<N-1?rf[i+1]*mf[i+1]/(rc[i+1]-rc[i]):R*mw/(R-rc[N-1]);
+    lo[i]=-cW;up[i]=i<N-1?-cE:0;di[i]=rho*V[i]/dt+cW+cE;rh[i]=rho*V[i]/dt*u[i]+G*V[i];
+   }
+   cp[0]=up[0]/di[0];dp[0]=rh[0]/di[0];
+   for(let i=1;i<N;i++){const m=di[i]-lo[i]*cp[i-1];cp[i]=up[i]/m;dp[i]=(rh[i]-lo[i]*dp[i-1])/m;}
+   u[N-1]=dp[N-1];for(let i=N-2;i>=0;i--)u[i]=dp[i]-cp[i]*u[i+1];
+   let q=0;for(let i=0;i<N;i++){H[n*N+i]=u[i];q+=u[i]*V[i];}
+   Qm[n]=q/(R*R/2);tau[n]=mw*u[N-1]/(R-rc[N-1]);muw[n]=mw;Gt[n]=G;
+  }
+  let d=0,m=0;for(let i=0;i<N;i++){d=Math.max(d,Math.abs(u[i]-prev[i]));m=Math.max(m,Math.abs(u[i]));}
+  if(cyc>1&&d<1e-4*Math.max(m,1e-9)){conv=true;break;}
+  prev=u.slice();
+ }
+ let a=0,b=0,qmax=-1e9,qmin=1e9,tmax=0,mn=1e9,mx=0;
+ for(let n=0;n<S;n++){a+=Math.abs(tau[n]);b+=tau[n];qmax=Math.max(qmax,Qm[n]);qmin=Math.min(qmin,Qm[n]);tmax=Math.max(tmax,Math.abs(tau[n]));mn=Math.min(mn,muw[n]);mx=Math.max(mx,muw[n]);}
+ const tawss=a/S,mean=Math.abs(b/S),osi=a>0?.5*(1-Math.abs(b)/a):0;
+ const al=R*Math.sqrt(w*rho/muI);
+ return{R,T,w,dt,rc,H,tau,Qm,muw,Gt,tawss,osi,rrt:mean>0?1/mean:Infinity,qmax,qmin,tmax,mn,mx,cyc,conv,al,
+  Re:rho*Math.max(Math.abs(qmax),Math.abs(qmin))*2*R/muI,ds:Math.SQRT2*R/al,p:{...p}};
+}
+function cJ0(zr,zi){let tr=1,ti=0,sr=1,si=0;const wr=-(zr*zr-zi*zi)/4,wi=-(2*zr*zi)/4;
+ for(let k=1;k<90;k++){const nr=(tr*wr-ti*wi)/(k*k),ni=(tr*wi+ti*wr)/(k*k);tr=nr;ti=ni;sr+=tr;si+=ti;}return[sr,si];}
+function wom(s,r,t){const p=s.p,R=s.R;let u=p.G0*(R*R-r*r)/(4*muI);
+ for(const[n,G,f]of[[1,p.G1,0],[2,p.G2,-Math.PI/2]]){if(!G)continue;const al=s.al*Math.sqrt(n),zr0=-al*Math.SQRT1_2,zi0=al*Math.SQRT1_2,x=r/R;
+ const A=cJ0(zr0*x,zi0*x),B=cJ0(zr0,zi0),den=B[0]*B[0]+B[1]*B[1];
+ const qr=(A[0]*B[0]+A[1]*B[1])/den,qi=(A[1]*B[0]-A[0]*B[1])/den,a=1-qr,b=-qi,k=G/(n*s.w*rho),th=n*s.w*t+f;u+=k*(b*Math.cos(th)+a*Math.sin(th));}
+ return u;}
+function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function fit(c){const r=c.getBoundingClientRect(),d=devicePixelRatio||1;c.width=Math.round(r.width*d);c.height=Math.round(r.height*d);const x=c.getContext("2d");x.setTransform(d,0,0,d,0,0);return[x,r.width,r.height];}
+function cmap(v){v=Math.max(-1,Math.min(1,v));if(v>=0){const t=v;return`rgb(${255-30*t|0},${240-150*t|0},${225-190*t|0})`;}const t=-v;return`rgb(${235-190*t|0},${240-100*t|0},${255-30*t|0})`;}
+function plot(c,series,ph,opt){const[x,W,H]=fit(c),m={l:44,r:10,t:8,b:22},fg=css("--fg"),mu=css("--mut"),bd=css("--bd");
+ let lo=1e18,hi=-1e18;series.forEach(s=>s.y.forEach(v=>{lo=Math.min(lo,v);hi=Math.max(hi,v);}));lo=Math.min(lo,0);hi=Math.max(hi,0);if(hi-lo<1e-12)hi=lo+1;
+ const sx=i=>m.l+(W-m.l-m.r)*i/(series[0].y.length-1),sy=v=>H-m.b-(H-m.t-m.b)*(v-lo)/(hi-lo);
+ x.font="11px system-ui";x.fillStyle=mu;x.strokeStyle=bd;x.lineWidth=1;
+ for(let k=0;k<=4;k++){const v=lo+(hi-lo)*k/4,y=sy(v);x.beginPath();x.moveTo(m.l,y);x.lineTo(W-m.r,y);x.stroke();x.fillText(v.toPrecision(2),2,y+4);}
+ x.fillText(opt.xa?opt.xa[0]:"0",m.l-4,H-6);x.fillText(opt.xa?opt.xa[1]:"T",W-m.r-(opt.xa?60:6),H-6);
+ if(opt.shade){x.fillStyle=css("--neg");x.globalAlpha=.22;x.beginPath();const y0=sy(0);x.moveTo(sx(0),y0);series[0].y.forEach((v,i)=>x.lineTo(sx(i),Math.min(y0+999,Math.max(sy(v),y0))));x.lineTo(sx(series[0].y.length-1),y0);x.fill();x.globalAlpha=1;}
+ series.forEach(s=>{x.strokeStyle=s.c;x.lineWidth=1.8;x.beginPath();s.y.forEach((v,i)=>i?x.lineTo(sx(i),sy(v)):x.moveTo(sx(i),sy(v)));x.stroke();});
+ x.strokeStyle=fg;x.lineWidth=1;const cx=sx(ph*(series[0].y.length-1));x.beginPath();x.moveTo(cx,m.t);x.lineTo(cx,H-m.b);x.stroke();
+ let lx=m.l+6;series.forEach(s=>{x.fillStyle=s.c;x.fillText(s.n,lx,m.t+10);lx+=x.measureText(s.n).width+14;});}
+const pts=[];for(let i=0;i<260;i++)pts.push({x:Math.random(),r:Math.random()*2-1});
+let ph=0,last=performance.now();
+function draw(now){const dt=Math.max(0,Math.min(.05,(now-last)/1e3));last=now;if(!sol||tab!=0){requestAnimationFrame(draw);return;}
+ ph=((ph+dt*P.SP/sol.T)%1+1)%1;const k=Math.floor(ph*S)%S,s=sol,off=k*N,t=(k+1)*s.dt;let vm=0;for(let i=0;i<N;i++)vm=Math.max(vm,Math.abs(s.H[off+i]));vm=Math.max(vm,1e-9);
+ const uAt=r=>{const f=Math.min(N-1,Math.abs(r)/s.R*N-.5),i=Math.max(0,Math.floor(f)),j=Math.min(N-1,i+1),w=Math.max(0,f-i);return s.H[off+i]*(1-w)+s.H[off+j]*w;};
+ {const[x,W,H]=fit(cv1),h=H*.8,y0=H*.1;for(let y=0;y<h;y+=2){const r=((y+1)/h*2-1);x.fillStyle=cmap(uAt(r*s.R)/vm);x.fillRect(0,y0+y,W,2.5);}
+  x.fillStyle="rgba(20,20,20,.55)";for(const q of pts){q.x=(q.x+uAt(q.r*s.R)*dt*P.SP/.5+1)%1;x.fillRect(q.x*W,y0+(q.r+1)/2*h,2.2,2.2);}
+  x.strokeStyle=css("--fg");x.lineWidth=3;x.beginPath();x.moveTo(0,y0);x.lineTo(W,y0);x.moveTo(0,y0+h);x.lineTo(W,y0+h);x.stroke();
+  x.fillStyle=css("--fg");x.font="12px system-ui";x.fillText(`t/T=${ph.toFixed(2)}  Ū=${s.Qm[k].toFixed(3)} m/s  τ_w=${s.tau[k].toFixed(2)} Pa`,8,H-4);}
+ {const[x,W,H]=fit(cv2),m={l:40,r:10,t:10,b:20},mx=Math.max(vm,1e-9),X=r=>m.l+(W-m.l-m.r)*(r/s.R+1)/2,Y=v=>H-m.b-(H-m.t-m.b)*(v/mx+1)/2;
+  x.strokeStyle=css("--bd");x.beginPath();x.moveTo(m.l,Y(0));x.lineTo(W-m.r,Y(0));x.stroke();x.fillStyle=css("--mut");x.font="11px system-ui";x.fillText("r: −R → +R",m.l,H-4);x.fillText(mx.toFixed(2)+" m/s",2,m.t+8);x.fillText((-mx).toFixed(2),2,H-m.b);
+  x.strokeStyle=css("--ac");x.lineWidth=2;x.beginPath();for(let q=0;q<=80;q++){const r=(q/80*2-1)*s.R,X1=X(r),Y1=Y(uAt(r));q?x.lineTo(X1,Y1):x.moveTo(X1,Y1);}x.stroke();
+  if(!s.p.cy){x.fillStyle=css("--fg");let e=0;for(let q=0;q<=40;q++){const r=(q/40*2-1)*s.R,a=wom(s,r,t);x.beginPath();x.arc(X(r),Y(a),2.3,0,7);x.fill();e=Math.max(e,Math.abs(a-uAt(r)));}chk.innerHTML=`<span class="ok">● Womersley 해석해(점) 대비 최대 오차 ${(100*e/vm).toFixed(2)}%</span>`;}
+  else chk.innerHTML=`<span class="m">비뉴턴: 해석해 없음</span>`;}
+ plot(cv3,[{n:"G(t) [Pa/m]÷1000",y:Array.from(s.Gt,v=>v/1e3),c:css("--mut")},{n:"Ū(t) [m/s]",y:Array.from(s.Qm),c:css("--ac")}],ph,{});
+ plot(cv4,[{n:"τ_w ["+(P.cy?"CY":"뉴턴")+"] Pa",y:Array.from(s.tau),c:css("--ac")}].concat(sol2?[{n:"τ_w ["+(P.cy?"뉴턴":"CY")+"]",y:Array.from(sol2.tau),c:css("--neg")}]:[]),ph,{shade:true});
+ requestAnimationFrame(draw);}
+function metrics(){const s=sol,f=(a,v,u,c)=>`<div class="card"><div class="m">${a}</div><div class="v ${c||""}">${v} <span class="u">${u}</span></div></div>`;
+ const rev=s.qmin<-1e-4;
+ met.innerHTML=f("Womersley 수 α",s.al.toFixed(2),"")+f("Stokes층 δ_S=√2R/α",(s.ds*1e3).toFixed(2),"mm")+f("피크 Re",s.Re.toFixed(0),"")+
+ f("TAWSS",s.tawss.toFixed(2),"Pa")+f("OSI",s.osi.toFixed(3),"",s.osi>.1?"warn":"")+f("RRT",isFinite(s.rrt)?s.rrt.toFixed(2):"∞","Pa⁻¹")+
+ f("최대 |τ_w|",s.tmax.toFixed(2),"Pa")+f("벽 점도 범위",s.mn.toFixed(4)+"–"+s.mx.toFixed(4),"Pa·s")+f("평균속도 범위",s.qmin.toFixed(2)+" … "+s.qmax.toFixed(2),"m/s",rev?"warn":"");
+ const L=[];L.push(`주기 정상상태: ${s.conv?s.cyc+"주기 만에 수렴":"80주기 내 미수렴(결과 참고용)"}.`);
+ L.push(rev?`평균속도가 음수가 되는 구간이 있어 <b>이완기 역류</b>가 발생합니다(OSI=${s.osi.toFixed(3)}).`:"역류가 없어 WSS 방향이 주기 내내 일정합니다(OSI≈0).");
+ L.push(s.tawss<.4?"TAWSS가 0.4 Pa 미만으로, 문헌에서 저전단(죽상경화 호발) 범위로 보는 구간입니다.":s.tawss>7?"TAWSS가 약 7 Pa를 넘어 초생리적 고전단 범위입니다.":"TAWSS가 일반적인 생리 범위(약 1–7 Pa) 안팎입니다.");
+ if(sol2)L.push(`비교(${s.p.cy?"뉴턴":"CY"}): TAWSS ${sol2.tawss.toFixed(2)} Pa, OSI ${sol2.osi.toFixed(3)}, 최대|τ_w| ${sol2.tmax.toFixed(2)} Pa — 현재 모델 대비 TAWSS ${(100*(sol2.tawss/s.tawss-1)).toFixed(1)}%`);L.push("※ 위 구간은 연구마다 기준이 다른 참고용 분류입니다.");
+ diag.innerHTML=L.join("<br>");}
+let tm=0;function update(){clearTimeout(tm);tm=setTimeout(()=>{sol=solve(P);sol2=P.cmp?solve({...P,cy:!P.cy}):null;metrics();},30);}
+const F={R:v=>v.toFixed(1)+" mm",HR:v=>v+" bpm",G0:v=>v+" Pa/m",G1:v=>v+" Pa/m",G2:v=>v+" Pa/m",SP:v=>v.toFixed(2)+"×"};
+function sync(){for(const k in F){document.getElementById(k).value=P[k];document.getElementById("o"+k).textContent=F[k](+P[k]);}bN.classList.toggle("on",!P.cy);bK.classList.toggle("on",P.cmp);bC.classList.toggle("on",P.cy);}
+for(const k in F)document.getElementById(k).addEventListener("input",e=>{P[k]=+e.target.value;sync();if(k!="SP")update();});
+bN.onclick=()=>{P.cy=false;sync();update();};bC.onclick=()=>{P.cy=true;sync();update();};
+for(const n in PRE){const b=document.createElement("button");b.textContent=n;b.onclick=()=>{Object.assign(P,{G2:0},PRE[n]);sync();update();};presets.appendChild(b);}
+const Om=7.2921e-5,aE=6.371e6;
+function rc(){const phi=+rP.value*Math.PI/180,m=+rk.value,n=+rl.value,U=+rU.value,Ld=+rD.value*1e3,be=2*Om*Math.cos(phi)/aE,Lx=2*Math.PI*aE*Math.cos(phi),Ly=6e6,F=Ld?1/(Ld*Ld):0,l=n*Math.PI/Ly,kk=q=>2*Math.PI*q/Lx;
+ const w=q=>{const k=kk(q);return U*k-be*k/(k*k+l*l+F);};
+ return{m,n,U,be,Lx,Ly,F,l,k:kk(m),w,cp:q=>w(q)/kk(q),cg:q=>{const k=kk(q),K=k*k+l*l+F;return U+be*(k*k-l*l-F)/(K*K);}};}
+function rosR(){const c=rc(),lab=(id,v)=>document.getElementById(id).textContent=v;
+ lab("oK",c.m+" (λ="+(c.Lx/c.m/1e3).toFixed(0)+" km)");lab("oL",c.n);lab("oU",c.U+" m/s");lab("oPhi",rP.value+"°");lab("oLd",+rD.value?rD.value+" km":"∞ (F=0, 순압)");
+ const w=c.w(c.m),cp=c.cp(c.m),cg=c.cg(c.m),K=c.k*c.k+c.l*c.l+c.F,Us=c.be/K;
+ rd.innerHTML=`β=${(c.be*1e11).toFixed(2)}×10⁻¹¹ m⁻¹s⁻¹ · ω=${w.toExponential(2)} s⁻¹ (주기 ${w?(2*Math.PI/Math.abs(w)/86400).toFixed(1)+"일":"∞"}) · c_p=${cp.toFixed(1)} m/s · c_gx=${cg.toFixed(1)} m/s<br>정상파 조건 U=β/(k²+ℓ²+F)=${Us.toFixed(1)} m/s, 현재 U=${c.U} m/s → ${Math.abs(cp)<.3?"<b class=ok>거의 정상파</b>":cp<0?"파가 지면 기준 서쪽으로 이동":"파가 지면 기준 동쪽으로 이동"}. 평균류 기준 위상속도는 항상 서향: −β/K=${(-Us).toFixed(1)} m/s.`;
+ const ms=[...Array(12)].map((_,i)=>i+1);plot(cv6,[{n:"c_p [m/s]",y:ms.map(c.cp),c:css("--ac")},{n:"c_gx [m/s]",y:ms.map(c.cg),c:css("--neg")}],(c.m-1)/11,{xa:["m=1","m=12"]});}
+function rosA(now){if(tab==1){const c=rc(),[x,W,H]=fit(cv5),w=c.w(c.m),t=now/1000*2*86400,nx=96,ny=48;
+ for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){x.fillStyle=cmap(Math.cos(c.k*(i+.5)/nx*c.Lx+c.l*(j+.5)/ny*c.Ly-w*t));x.fillRect(i*W/nx,(ny-1-j)*H/ny,W/nx+1,H/ny+1);}
+ x.fillStyle=css("--fg");x.font="11px system-ui";x.fillText("동 → (2 일/초)",6,H-6);}requestAnimationFrame(rosA);}
+function rVen(){const u=+vu.value,r=+vr.value,pin=+vp.value*1e3,pv=2338,rl=998;oVu.textContent=u.toFixed(1)+" m/s";oVr.textContent=r.toFixed(2);oVp.textContent=(pin/1e3).toFixed(0)+" kPa";
+ const sg=(pin-pv)/(.5*rl*u*u),si=1/(r*r)-1,A=q=>1-(1-r)*Math.exp(-(((q-.5)/.12)**2)),pf=q=>pin-.5*rl*u*u*(1/(A(q)**2)-1),pm=pf(.5),ui=Math.sqrt(2*(pin-pv)/(rl*si));
+ const[x,W,H]=fit(cv7),h1=H*.4,mx=10,pw=W-mx*2,lo=Math.min(0,pm),hi=pin,Py=v=>H-18-(H-h1-34)*(v-lo)/(hi-lo),cy=h1/2+4;
+ for(let i=0;i<=200;i++){const X=mx+pw*i/200,a=A(i/200)*h1*.45,cav=pf(i/200)<pv;x.fillStyle=cav?"#d9480f":css("--neg");x.globalAlpha=cav?.6:.3;x.fillRect(X,cy-a,pw/200+1,2*a);}
+ x.globalAlpha=1;x.strokeStyle=css("--fg");x.lineWidth=2;for(const sgn of[-1,1]){x.beginPath();for(let i=0;i<=200;i++){const X=mx+pw*i/200,Y=cy+sgn*A(i/200)*h1*.45;i?x.lineTo(X,Y):x.moveTo(X,Y);}x.stroke();}
+ x.strokeStyle=css("--mut");x.setLineDash([5,4]);x.lineWidth=1;x.beginPath();x.moveTo(mx,Py(pv));x.lineTo(W-mx,Py(pv));x.stroke();x.setLineDash([]);
+ x.fillStyle=css("--mut");x.font="11px system-ui";x.fillText("p_v = 2.34 kPa",mx+4,Py(pv)-4);x.fillText(`축 ${(lo/1e3).toFixed(0)} … ${(hi/1e3).toFixed(0)} kPa`,mx+4,H-4);
+ x.strokeStyle=css("--ac");x.lineWidth=2;x.beginPath();for(let i=0;i<=200;i++){const X=mx+pw*i/200,Y=Py(pf(i/200));i?x.lineTo(X,Y):x.moveTo(X,Y);}x.stroke();
+ vd.innerHTML=`σ=${sg.toFixed(2)} · 이상 벤투리 σ_i=(A_in/A_th)²−1=${si.toFixed(2)} · 목부 Bernoulli 압력 ${(pm/1e3).toFixed(1)} kPa · 인셉션 유입속도 u_i=${ui.toFixed(2)} m/s<br>`+(pm<pv?`<b class="warn">σ&lt;σ_i → 캐비테이션 발생.</b> 유량을 고정한 준1차원 혼합 모델에서는 목부가 초킹되어 정상해가 없습니다(실제로는 증기 캐비티가 성장해 압력이 p_v 부근으로 제한됨). 붉은 구간이 p&lt;p_v 영역입니다.`:`<b class="ok">σ&gt;σ_i → 캐비테이션 없음</b> (목부 압력이 p_v보다 높음).`)+`<br>※ σ_i는 기하(Cp_min)에 따라 달라지며, "σ&lt;1이면 항상 캐비테이션"이 아닙니다.`;}
+function rSST(){const Rt=Math.pow(10,+sR.value),n=240,y=[],U=[],k=[],w=[],bs=.09,b1=.075,a1=.31,sw2=.856,kap=.41;oR2.textContent="Re_τ="+Rt.toFixed(0);
+ for(let i=0;i<n;i++){const q=.5*Math.pow(Rt/.5,i/(n-1));y.push(q);U.push(Math.log(1+kap*q)/kap+7.8*(1-Math.exp(-q/11)-q/11*Math.exp(-q/3)));k.push(3.33*(1-Math.exp(-((q/10)**2)))*(1-.75*q/Rt));w.push(Math.hypot(6/(b1*q*q),1/(Math.sqrt(bs)*kap*q)));}
+ const D=(a,i)=>{const i0=Math.max(0,i-1),i1=Math.min(n-1,i+1);return(a[i1]-a[i0])/(y[i1]-y[i0]);};const F1=[],F2=[],Rr=[],lim=[],nu=[];
+ for(let i=0;i<n;i++){const d=y[i],CD=Math.max(2*sw2/w[i]*D(k,i)*D(w,i),1e-20),sk=Math.sqrt(k[i]);
+  F1.push(Math.tanh(Math.pow(Math.min(Math.max(sk/(bs*w[i]*d),500/(d*d*w[i])),4*sw2*k[i]/(CD*d*d)),4)));
+  const f2=Math.tanh(Math.pow(Math.max(2*sk/(bs*w[i]*d),500/(d*d*w[i])),2)),Om=Math.abs(D(U,i)),nt=a1*k[i]/Math.max(a1*w[i],Om*f2);
+  F2.push(f2);nu.push(nt);Rr.push(Math.min(1.5,nt/(kap*d)));lim.push(Om*f2>a1*w[i]);}
+ const j=Math.round(+sY.value*(n-1)),yp=y[j];
+ plot(cv8,[{n:"F₁",y:F1,c:css("--ac")},{n:"F₂",y:F2,c:css("--neg")},{n:"ν_t⁺/(κy⁺)",y:Rr,c:css("--mut")}],j/(n-1),{xa:["y⁺=0.5","y⁺="+Rt.toFixed(0)]});
+ const reg=yp<5?"점성저층":yp<30?"완충층":yp<.2*Rt?"로그층":"후류(바깥) 영역";
+ sd.innerHTML=`y⁺=${yp.toFixed(1)} (${reg}) · F₁=${F1[j].toFixed(3)} · F₂=${F2[j].toFixed(3)} · ν_t⁺=${nu[j].toFixed(2)} · 제한자 ${lim[j]?"<b class=warn>작동 (ΩF₂&gt;a₁ω)</b>":"비작동"}<br>SST 상수가 함의하는 κ=√((β₁/β*−α₁)√β*/σ_ω1)=${Math.sqrt((b1/bs-.553)*Math.sqrt(bs)/.5).toFixed(4)}. F₁→1이면 k-ω, F₁→0이면 k-ε 거동입니다. 벽 경계층 프로파일에서는 F₁≈1이 정상이며, F₁→0 구간은 자유류·자유 전단층에서 나타납니다.<br>※ 이 탭은 정준 채널 프로파일(Reichardt U⁺, 근사 k⁺·ω⁺)에서 블렌딩 함수를 평가하며, 수렴한 SST 해 자체는 아닙니다.`;}
+const ZR=345;let zS=null;const zPts=[];for(let i=0;i<700;i++)zPts.push({x:-1+2.6*Math.random(),y:Math.random()*2-1});
+const zAr=(M,g)=>Math.pow((2/(g+1))*(1+(g-1)/2*M*M),(g+1)/(2*(g-1)))/M,zPr=(M,g)=>Math.pow(1+(g-1)/2*M*M,-g/(g-1));
+function zMs(a,g,sup){let lo=sup?1:1e-6,hi=sup?80:1;for(let i=0;i<90;i++){const m=.5*(lo+hi),v=zAr(m,g);if(sup?v<a:v>a)lo=m;else hi=m;}return .5*(lo+hi);}
+const zM2=(M,g)=>Math.sqrt((1+(g-1)/2*M*M)/(g*M*M-(g-1)/2)),zP02=(M,g)=>Math.pow((g+1)*M*M/((g-1)*M*M+2),g/(g-1))*Math.pow((g+1)/(2*g*M*M-(g-1)),1/(g-1));
+function zCalc(){const p0=+zp.value*1e6,T0=+zt.value,g=+zg.value,eps=+ze.value,pa=+za.value*1e3,At=.01,r=pa/p0,n=241,xs=[],Ax=[];
+ for(let i=0;i<n;i++){const x=-1+2*i/(n-1);xs.push(x);Ax.push(x<0?1+2*x*x:1+(eps-1)*(1-Math.cos(Math.PI*x))/2);}
+ const Me1=zMs(eps,g,false),r1=zPr(Me1,g),Me3=zMs(eps,g,true),r3=zPr(Me3,g),r2=r3*(1+2*g/(g+1)*(Me3*Me3-1));
+ let reg,xsh=null,Ast=1,sub=false,p02=1,M2=0;const M=[],pp=[];
+ if(r>=r1){reg="아음속 (초킹 안 됨)";sub=true;const Me=r>=1?1e-4:Math.sqrt((Math.pow(r,-(g-1)/g)-1)*2/(g-1));Ast=eps/zAr(Me,g);for(let i=0;i<n;i++)M.push(zMs(Ax[i]/Ast,g,false));}
+ else{if(r>=r2){reg="초킹 + 노즐 내부 수직충격파";const rr=a=>{const M1=zMs(a,g,true),m2=zM2(M1,g),A2=a/zAr(m2,g);return zP02(M1,g)*zPr(zMs(eps/A2,g,false),g);};
+   let lo=1,hi=eps;for(let k=0;k<70;k++){const mid=.5*(lo+hi);if(rr(mid)>r)lo=mid;else hi=mid;}const a=.5*(lo+hi),M1=zMs(a,g,true);M2=zM2(M1,g);p02=zP02(M1,g);xsh=Math.acos(Math.max(-1,Math.min(1,1-2*(a-1)/(eps-1))))/Math.PI;
+   const A2=a/zAr(M2,g);for(let i=0;i<n;i++)M.push(xs[i]<xsh?(xs[i]<0?zMs(Ax[i],g,false):zMs(Ax[i],g,true)):zMs(Ax[i]/A2,g,false));}
+  else{reg=r>r3*1.002?"초킹, 과팽창 (충격파는 노즐 밖)":r<r3*.998?"초킹, 과소팽창 (출구 밖에서 팽창)":"설계점 (완전팽창)";for(let i=0;i<n;i++)M.push(xs[i]<0?zMs(Ax[i],g,false):zMs(Ax[i],g,true));}}
+ for(let i=0;i<n;i++)pp.push(zPr(M[i],g)*(xsh!==null&&xs[i]>=xsh?p02:1));
+ const Te=T0/(1+(g-1)/2*M[n-1]**2),ue=M[n-1]*Math.sqrt(g*ZR*Te),pe=p0*pp[n-1],md=(sub?Ast:1)*At*p0*Math.sqrt(g/(ZR*T0))*Math.pow(2/(g+1),(g+1)/(2*(g-1))),F=md*ue+(pe-pa)*eps*At;
+ const T=M.map(m=>1/(1+(g-1)/2*m*m)),u=M.map((m,i)=>m*Math.sqrt(g*ZR*T0*T[i]));
+ return{n,xs,Ax,M,pp,T,u,umax:Math.max(...u),xsh,reg,eps,g,r,r1,r2,r3,Me:M[n-1],ue,pe,md,F,Isp:F/(md*9.80665),Mmax:Math.max(...M)};}
+function zRend(){const lab=(id,v)=>document.getElementById(id).textContent=v;lab("oZp",(+zp.value).toFixed(1)+" MPa");lab("oZt",zt.value+" K");lab("oZg",zg.value);lab("oZe",ze.value);lab("oZa",(+za.value).toFixed(1)+" kPa"+(+za.value==0?" (진공)":""));
+ const s=zS=zCalc();plot(cv10,[{n:"M",y:s.M,c:css("--ac")},{n:"p/p₀",y:s.pp,c:css("--neg")},{n:"T/T₀",y:s.T,c:css("--mut")}],.5,{xa:["x=−1","x=+1"]});
+ zd.innerHTML=`<b>${s.reg}</b> · ṁ=${s.md.toFixed(1)} kg/s · M_e=${s.Me.toFixed(2)} · u_e=${s.ue.toFixed(0)} m/s · p_e=${(s.pe/1e3).toFixed(1)} kPa · 추력 F=${(s.F/1e3).toFixed(1)} kN · Isp=${s.Isp.toFixed(0)} s<br>임계 배압비: r₁=${s.r1.toFixed(4)} (이상이면 아음속), r₂=${s.r2.toFixed(4)} (충격파가 출구에 도달), r₃=${s.r3.toFixed(4)} (설계점) · 현재 p_a/p₀=${s.r.toFixed(4)}<br>`+(s.xsh!==null?`수직충격파 위치 x=${s.xsh.toFixed(2)} (확산부). 충격파 뒤는 아음속으로 감속하며 총압이 감소합니다.`:s.reg.startsWith("아음")?"목에서 M<1이므로 확산부는 감속기(디퓨저)로 작동합니다.":"목에서 M=1로 초킹되어 유량은 p₀·T₀·A_t로만 정해지고, 확산부에서 면적이 커질수록 오히려 가속합니다.");}
+function nzA(now){if(tab==4&&zS){const s=zS,[x,W,H]=fit(cv9),Amax=Math.max(s.eps,3),cy=H/2,Hh=H*.42,X=q=>(q+1)/2.6*W,hh=q=>q<=1?Hh*Math.sqrt(s.Ax[Math.max(0,Math.round((q+1)/2*(s.n-1)))]/Amax):Hh*Math.sqrt(s.eps/Amax)*(1+.3*(q-1)),dt=Math.min(.05,Math.max(0,(now-(nzA.l||now))/1e3));nzA.l=now;
+  const Mr=Math.max(1.5,s.Mmax-1),col=m=>cmap(m<1?m-1:(m-1)/Mr);
+  for(let px=0;px<W;px+=2){const q=-1+2.6*px/W,i=Math.max(0,Math.min(s.n-1,Math.round((Math.min(q,1)+1)/2*(s.n-1))));x.fillStyle=col(s.M[i]);x.globalAlpha=q>1?Math.max(.1,.5-.4*(q-1)):.85;x.fillRect(px,cy-hh(q),2.5,2*hh(q));}
+  x.globalAlpha=1;x.strokeStyle=css("--fg");x.lineWidth=3;for(const sg of[-1,1]){x.beginPath();for(let px=0;px<=X(1);px+=2){const q=-1+2.6*px/W;px?x.lineTo(px,cy+sg*hh(q)):x.moveTo(px,cy+sg*hh(q));}x.stroke();}
+  if(s.xsh!==null){x.strokeStyle="#111";x.lineWidth=2;x.beginPath();x.moveTo(X(s.xsh),cy-hh(s.xsh));x.lineTo(X(s.xsh),cy+hh(s.xsh));x.stroke();}
+  x.fillStyle=css("--fg");for(const q of zPts){const i=Math.max(0,Math.min(s.n-1,Math.round((Math.min(q.x,1)+1)/2*(s.n-1))));q.x+=s.u[i]/s.umax*dt*.9;if(q.x>1.6){q.x=-1;q.y=Math.random()*2-1;}x.fillRect(X(q.x),cy+q.y*hh(q.x)*.96,2.4,2.4);}
+  x.font="11px system-ui";x.fillText("연소실 →  목(x=0) →  출구(x=1) → 외부 제트",6,H-6);}requestAnimationFrame(nzA);}
+const ZPRE={"해면 (p_a=101 kPa)":[7,3400,1.2,8,101.3],"진공":[7,3400,1.2,8,0],"노즐 내부 충격파":[0.5,3400,1.2,8,101.3],"아음속 (초킹 X)":[0.1,3400,1.2,8,99.9]};
+for(const nm in ZPRE){const b=document.createElement("button");b.textContent=nm;b.onclick=()=>{[zp.value,zt.value,zg.value,ze.value,za.value]=ZPRE[nm];zRend();};zpre.appendChild(b);}
+const LX=320,LY=128,LN=LX*LY,CX=[0,1,0,-1,0,1,-1,-1,1],CY=[0,0,1,0,-1,1,1,-1,-1],LW=[4/9,1/9,1/9,1/9,1/9,1/36,1/36,1/36,1/36],OPP=[0,3,4,1,2,7,8,5,6],LD=22,LU=.1,LCX=70,LCY=LY/2+1;
+let lf,lg,lu,lv,ls,lT=0,lPr=[],lPrev=0;const lc=document.createElement("canvas");lc.width=LX;lc.height=LY;const lctx=lc.getContext("2d"),lim=lctx.createImageData(LX,LY);
+const lq=(i,u,v)=>{const c=CX[i]*u+CY[i]*v;return LW[i]*(1+3*c+4.5*c*c-1.5*(u*u+v*v));};
+let lnr;
+function lInit(){lf=new Float32Array(9*LN);lg=new Float32Array(9*LN);lu=new Float32Array(LN);lv=new Float32Array(LN);ls=new Uint8Array(LN);lnr=new Uint8Array(LN);lT=0;lPr=[];lPrev=0;
+ for(let y=0;y<LY;y++)for(let x=0;x<LX;x++){const k=y*LX+x;ls[k]=((x-LCX)**2+(y-LCY)**2<=(LD/2)**2)?1:0;const vv=x>LCX?.04*Math.sin((x-LCX)*2*Math.PI/(5.5*LD))*Math.exp(-(((y-LCY)/LD)**2)):0;for(let i=0;i<9;i++)lf[i*LN+k]=lq(i,LU,vv);lu[k]=ls[k]?0:LU;}
+ for(let y=1;y<LY-1;y++)for(let x=1;x<LX-1;x++){const k=y*LX+x;for(let d=-1;d<=1;d++)for(let e=-1;e<=1;e++)if(ls[k+d*LX+e])lnr[k]=1;}}
+function lStep(tau){const om=1/tau,N=LN,A=lf,B=lg,SO=[0,1,LX,-1,-LX,1+LX,-1+LX,-1-LX,1-LX];
+ for(let y=1;y<LY-1;y++)for(let x=1;x<LX-1;x++){const k=y*LX+x;if(ls[k])continue;let f0,f1,f2,f3,f4,f5,f6,f7,f8;
+  if(!lnr[k]){f0=A[k];f1=A[N+k-1];f2=A[2*N+k-LX];f3=A[3*N+k+1];f4=A[4*N+k+LX];f5=A[5*N+k-1-LX];f6=A[6*N+k+1-LX];f7=A[7*N+k+1+LX];f8=A[8*N+k-1+LX];}
+  else{const a=[];for(let i=0;i<9;i++){const sc=k-SO[i];a.push(ls[sc]?A[OPP[i]*N+k]:A[i*N+sc]);}[f0,f1,f2,f3,f4,f5,f6,f7,f8]=a;}
+  const r=f0+f1+f2+f3+f4+f5+f6+f7+f8,u=(f1-f3+f5-f6-f7+f8)/r,v=(f2-f4+f5+f6-f7-f8)/r,uu=1.5*(u*u+v*v),w1=r/9,w5=r/36;lu[k]=u;lv[k]=v;
+  B[k]=f0+om*(4/9*r*(1-uu)-f0);
+  B[N+k]=f1+om*(w1*(1+3*u+4.5*u*u-uu)-f1);B[2*N+k]=f2+om*(w1*(1+3*v+4.5*v*v-uu)-f2);B[3*N+k]=f3+om*(w1*(1-3*u+4.5*u*u-uu)-f3);B[4*N+k]=f4+om*(w1*(1-3*v+4.5*v*v-uu)-f4);
+  const s1=u+v,s2=-u+v;B[5*N+k]=f5+om*(w5*(1+3*s1+4.5*s1*s1-uu)-f5);B[6*N+k]=f6+om*(w5*(1+3*s2+4.5*s2*s2-uu)-f6);B[7*N+k]=f7+om*(w5*(1-3*s1+4.5*s1*s1-uu)-f7);B[8*N+k]=f8+om*(w5*(1-3*s2+4.5*s2*s2-uu)-f8);}
+ for(let i=0;i<9;i++){const e=lq(i,LU,0),o=i*N;for(let y=0;y<LY;y++){B[o+y*LX]=e;B[o+y*LX+LX-1]=B[o+y*LX+LX-2];}for(let x=0;x<LX;x++){B[o+x]=e;B[o+(LY-1)*LX+x]=e;}}
+ lf=B;lg=A;lT++;
+ const pv=lv[(LCY+6)*LX+LCX+Math.round(3.5*LD)];if(lPrev<0&&pv>=0)lPr.push(lT-1+(-lPrev)/(pv-lPrev));if(lPr.length>10)lPr.shift();lPrev=pv;}
+function lRend(){oLre.textContent=lre.value;oLsp.textContent=lsp.value;lPr=[];}
+let lFr=0;function lmA(now){if(tab==5){const Re=+lre.value,tau=3*LU*LD/Re+.5,n=+lsp.value;for(let s=0;s<n;s++)lStep(tau);if(!isFinite(lv[LCY*LX+LX-10]))lInit();
+ const d=lim.data;for(let y=0;y<LY;y++)for(let x=0;x<LX;x++){const k=y*LX+x,q=((LY-1-y)*LX+x)*4;let r,g,b;
+  if(ls[k]){r=g=b=70;}else{const w=(x>0&&x<LX-1&&y>0&&y<LY-1)?(lv[k+1]-lv[k-1]-(lu[k+LX]-lu[k-LX]))/2:0,t=Math.max(-1,Math.min(1,w/.02));
+   if(t>0){r=255-41*t;g=255-215*t;b=255-215*t;}else{r=255+225*t;g=255+165*t;b=255+55*t;}}
+  d[q]=r;d[q+1]=g;d[q+2]=b;d[q+3]=255;}
+ lctx.putImageData(lim,0,0);const[x,W,H]=fit(cv11);x.imageSmoothingEnabled=true;x.drawImage(lc,0,0,W,H);
+ if(++lFr%8==0){let st=Re<47?"— (정상 후류)":"측정 중…";if(Re>=47&&lPr.length>=5){const dd=[];for(let i=1;i<lPr.length;i++)dd.push(lPr[i]-lPr[i-1]);const T=dd.slice(-6).reduce((a,b)=>a+b)/Math.min(6,dd.length);const s0=LD/(LU*T);st=s0.toFixed(3)+" → 막힘 보정 ≈ <b>"+(s0*(1-LD/LY)).toFixed(3)+"</b> (St·(1−D/H))";}
+  const sw=Re>=49&&Re<=178?(-3.3265/Re+.1816+1.6e-4*Re).toFixed(3):"—";
+  ld.innerHTML=`Re=${Re} · τ=${tau.toFixed(3)} · Ma≈${(LU*Math.sqrt(3)).toFixed(2)} · 시간 ${lT} step<br>Strouhal 수 St=fD/U: 측정 ${st} · Williamson 실험식 <b>${sw}</b><br>`+(Re<47?"Re&lt;47(임계 Re≈47): 정상 후류 — 와류 방출이 없습니다(측정 중 값이 안 나오는 것이 정상).":Re<190?"2차원 층류 와류 방출(카르만 와류열) 영역입니다.":"Re≳190: 실제 유동은 3차원 불안정이 생기는 영역이며 이 2차원 계산은 참고용입니다.");}}
+ requestAnimationFrame(lmA);}
+const BR=998,BM=1e-3,BS=.0725,BV=2338,BP=101325,BK=1.4;let bS=null,bPh=0,bLast=0;
+function bCalc(){const R0=+br.value*1e-3,pg=+bg.value*1e3,tR=.915*R0*Math.sqrt(BR/Math.max(1,BP-BV-pg));
+ const acc=(R,Rd)=>((BV+pg*Math.pow(R0/R,3*BK)-BP-4*BM*Rd/R-2*BS/R)/BR-1.5*Rd*Rd)/R;
+ let tt=0,R=R0,Rd=0;const T=[0],RR=[R0],RV=[0];let steps=0;
+ while(tt<4*tR&&steps<4e5){const dt=Math.min(tR/1500,.004*R/(Math.abs(Rd)+1e-9)),f=(R,Rd)=>[Rd,acc(R,Rd)];
+  const k1=f(R,Rd),k2=f(R+dt/2*k1[0],Rd+dt/2*k1[1]),k3=f(R+dt/2*k2[0],Rd+dt/2*k2[1]),k4=f(R+dt*k3[0],Rd+dt*k3[1]);
+  R+=dt/6*(k1[0]+2*k2[0]+2*k3[0]+k4[0]);Rd+=dt/6*(k1[1]+2*k2[1]+2*k3[1]+k4[1]);if(!(R>0)){break;}tt+=dt;steps++;T.push(tt);RR.push(R);RV.push(Rd);}
+ let imin=0;for(let i=0;i<RR.length;i++)if(RR[i]<RR[imin])imin=i;
+ // 최초 최소(첫 반등) 찾기
+ let i1=1;while(i1<RV.length&&!(RV[i1]>=0&&RV[i1-1]<0))i1++;if(i1>=RV.length)i1=imin;
+ const n=500,Rs=[],Vs=[];let j=0;for(let i=0;i<n;i++){const tq=4*tR*i/(n-1);while(j<T.length-2&&T[j+1]<tq)j++;const a=(tq-T[j])/(T[j+1]-T[j]||1);Rs.push((RR[j]*(1-a)+RR[j+1]*a)/R0);Vs.push(RV[j]*(1-a)+RV[j+1]*a);}
+ const vmax=Math.max(...Vs.map(Math.abs),1e-9),vm=Math.min(...RV);
+ return{R0,pg,tR,Rs,Vs:Vs.map(v=>v/vmax),Rmin:RR[i1]/R0,tmin:T[i1],vm,pgmax:pg*Math.pow(R0/RR[i1],3*BK)};}
+function bRend(){oBr.textContent=(+br.value).toFixed(1)+" mm";oBg.textContent=(+bg.value).toFixed(1)+" kPa";oBs.textContent=(+bsp.value).toFixed(1)+"×";const s=bS=bCalc(),Mw=Math.abs(s.vm)/1482;
+ bd.innerHTML=`Rayleigh 붕괴시간 t_R=0.915R₀√(ρ/Δp)=${(s.tR*1e6).toFixed(1)} μs · 수치 최소반경 도달 ${(s.tmin*1e6).toFixed(1)} μs (t/t_R=${(s.tmin/s.tR).toFixed(3)}) · R_min/R₀=${s.Rmin.toExponential(2)}<br>최대 벽 속도 ${Math.abs(s.vm).toFixed(0)} m/s (M_w≈${Mw.toFixed(2)}) · 단열 기체압 추정 ${(s.pgmax/1e6).toFixed(1)} MPa`+(Mw>.3?`<br><b class="warn">벽 속도가 음속의 30%를 넘어 비압축 RP의 유효 범위를 벗어납니다 — 최소 반경 근처 값은 정성적 참고용입니다.</b>`:"")+`<br>기체가 적을수록 t/t_R→1(Rayleigh 극한)이며, 기체가 쿠션으로 작용해 반등·진동(여러 번 팽창/수축)이 나타납니다.`;}
+function bbA(now){if(tab==6&&bS){const s=bS,dt=Math.min(.05,Math.max(0,(now-(bbA.l||now))/1e3));bbA.l=now;bPh=(bPh+dt*(+bsp.value)/8)%1;const k=Math.floor(bPh*(s.Rs.length-1)),[x,W,H]=fit(cv12),cx=W/2,cy=H/2,Rm=Math.min(W,H)*.42;
+  x.fillStyle=css("--neg");x.globalAlpha=.18;x.fillRect(0,0,W,H);x.globalAlpha=1;const r=Math.max(1.5,s.Rs[k]*Rm);
+  const gr=x.createRadialGradient(cx-r*.3,cy-r*.3,r*.1,cx,cy,r);gr.addColorStop(0,"rgba(255,255,255,.95)");gr.addColorStop(1,"rgba(150,200,255,.55)");x.fillStyle=gr;x.beginPath();x.arc(cx,cy,r,0,7);x.fill();x.strokeStyle=css("--fg");x.lineWidth=2;x.stroke();
+  x.fillStyle=css("--fg");x.font="12px system-ui";x.fillText(`t=${(bPh*4*s.tR*1e6).toFixed(1)} μs  R/R₀=${s.Rs[k].toFixed(3)}  Ṙ=${(s.Vs[k]*Math.abs(s.vm)).toFixed(0)} m/s`,8,H-6);
+  plot(cv13,[{n:"R/R₀",y:s.Rs,c:css("--ac")},{n:"Ṙ/|Ṙ|max",y:s.Vs,c:css("--neg")}],bPh,{xa:["t=0","t=4 t_R"]});}requestAnimationFrame(bbA);}
+const RX=128,RZ=32,RL=4*Math.SQRT2,Rdx=RL/RX,Rdz=1/RZ,RN=RX*(RZ+1),RRc=27*Math.PI**4/4;
+let rth,rom,rps,ru,rw,tt,to,d1t,d1o,d2t,d2o,rT=0,rNu=1,rMw=0,rPts=[];const rWr=[],rWi=[];for(let j=0;j<=RZ;j++){rWr.push(new Float64Array(RX));rWi.push(new Float64Array(RX));}
+const rlc=document.createElement("canvas");rlc.width=RX;rlc.height=RZ+1;const rlx=rlc.getContext("2d"),rim=rlx.createImageData(RX,RZ+1);
+function fft(re,im,inv){const n=re.length;for(let i=1,j=0;i<n;i++){let b=n>>1;for(;j&b;b>>=1)j^=b;j^=b;if(i<j){[re[i],re[j]]=[re[j],re[i]];[im[i],im[j]]=[im[j],im[i]];}}
+ for(let l=2;l<=n;l<<=1){const a=(inv?2:-2)*Math.PI/l,wr=Math.cos(a),wi=Math.sin(a);for(let i=0;i<n;i+=l){let cr=1,ci=0;for(let k=0;k<l/2;k++){const x=i+k,y=x+l/2,tr=re[y]*cr-im[y]*ci,ti=re[y]*ci+im[y]*cr;re[y]=re[x]-tr;im[y]=im[x]-ti;re[x]+=tr;im[x]+=ti;const q=cr*wr-ci*wi;ci=cr*wi+ci*wr;cr=q;}}}
+ if(inv)for(let i=0;i<n;i++){re[i]/=n;im[i]/=n;}}
+function rPoisson(om){const re=new Float64Array(RX),im=new Float64Array(RX),cp=new Float64Array(RZ),dr=new Float64Array(RZ),di=new Float64Array(RZ),h=1/(Rdz*Rdz);
+ for(let j=1;j<RZ;j++){for(let i=0;i<RX;i++){re[i]=om[j*RX+i];im[i]=0;}fft(re,im,false);rWr[j].set(re);rWi[j].set(im);}
+ for(let m=0;m<RX;m++){const dg=-2*h-(2-2*Math.cos(2*Math.PI*m/RX))/(Rdx*Rdx);cp[1]=h/dg;dr[1]=rWr[1][m]/dg;di[1]=rWi[1][m]/dg;
+  for(let j=2;j<RZ;j++){const den=dg-h*cp[j-1];cp[j]=h/den;dr[j]=(rWr[j][m]-h*dr[j-1])/den;di[j]=(rWi[j][m]-h*di[j-1])/den;}
+  rWr[RZ-1][m]=dr[RZ-1];rWi[RZ-1][m]=di[RZ-1];for(let j=RZ-2;j>=1;j--){rWr[j][m]=dr[j]-cp[j]*rWr[j+1][m];rWi[j][m]=di[j]-cp[j]*rWi[j+1][m];}}
+ for(let j=1;j<RZ;j++){re.set(rWr[j]);im.set(rWi[j]);fft(re,im,true);for(let i=0;i<RX;i++)rps[j*RX+i]=re[i];}}
+function rRhs(th,om,dth,dom,Pr,Ra){rPoisson(om);let mx=0;
+ for(let j=1;j<RZ;j++)for(let i=0;i<RX;i++){const k=j*RX+i,ip=j*RX+(i+1)%RX,im=j*RX+(i+RX-1)%RX;
+  const u=-(rps[k+RX]-rps[k-RX])/(2*Rdz),w=(rps[ip]-rps[im])/(2*Rdx);ru[k]=u;rw[k]=w;mx=Math.max(mx,Math.abs(u),Math.abs(w));
+  const tx=(th[ip]-th[im])/(2*Rdx),tz=(th[k+RX]-th[k-RX])/(2*Rdz),ox=(om[ip]-om[im])/(2*Rdx),oz=(om[k+RX]-om[k-RX])/(2*Rdz);
+  const lt=(th[ip]-2*th[k]+th[im])/(Rdx*Rdx)+(th[k+RX]-2*th[k]+th[k-RX])/(Rdz*Rdz),lo=(om[ip]-2*om[k]+om[im])/(Rdx*Rdx)+(om[k+RX]-2*om[k]+om[k-RX])/(Rdz*Rdz);
+  dth[k]=-(u*tx+w*tz)+lt+(rMode?0:w);dom[k]=-(u*ox+w*oz)+Pr*lo+Pr*Ra*tx;}return mx;}
+function rInit(){const F=()=>new Float64Array(RN);rth=F();rom=F();rps=F();ru=F();rw=F();tt=F();to=F();d1t=F();d1o=F();d2t=F();d2o=F();rT=0;rNu=1;rMw=0;
+ for(let j=1;j<RZ;j++)for(let i=0;i<RX;i++)rth[j*RX+i]=.02*Math.sin(Math.PI*j*Rdz)*Math.cos(2*Math.PI*2*i*Rdx/RL)+.001*(Math.random()-.5)*Math.sin(Math.PI*j*Rdz);
+ rPts=[];for(let i=0;i<350;i++)rPts.push({x:Math.random()*RL,z:Math.random()});}
+function rStep(Pr,Ra){const mx=rRhs(rth,rom,d1t,d1o,Pr,Ra),dt=Math.min(.4/(2*Math.max(Pr,1)*(1/(Rdx*Rdx)+1/(Rdz*Rdz))),.4*Rdz/(mx+1e-9));
+ for(let k=RX;k<RN-RX;k++){tt[k]=rth[k]+dt*d1t[k];to[k]=rom[k]+dt*d1o[k];}
+ rRhs(tt,to,d2t,d2o,Pr,Ra);let s=0,m=0;for(let k=RX;k<RN-RX;k++){rth[k]+=dt/2*(d1t[k]+d2t[k]);rom[k]+=dt/2*(d1o[k]+d2o[k]);s+=rw[k]*rth[k];m=Math.max(m,Math.abs(rw[k]));}
+ rNu=1+s/(RX*(RZ-1));rMw=m;rT+=dt;return dt;}
+function rRend(){const Ra=Math.pow(10,+ra.value);oRa.textContent=Ra.toFixed(0)+(Ra<RRc?" (<Ra_c)":"");oRp.textContent=rpr.value;oRs.textContent=rsp.value;}
+let rFr=0;function rbA(now){if(tab==7){const Ra=Math.pow(10,+ra.value),Pr=+rpr.value;let sd=0;for(let s=0;s<+rsp.value;s++)sd+=rStep(Pr,Ra);
+ if(!isFinite(rMw)||rMw>1e5)rInit();
+ const d=rim.data;for(let j=0;j<=RZ;j++)for(let i=0;i<RX;i++){const q=((RZ-j)*RX+i)*4,T=1-j*Rdz+rth[j*RX+i],v=Math.max(-1,Math.min(1,(T-.5)*2)),c=cmap(v).match(/\d+/g);d[q]=+c[0];d[q+1]=+c[1];d[q+2]=+c[2];d[q+3]=255;}
+ rlx.putImageData(rim,0,0);const[x,W,H]=fit(cv16);x.imageSmoothingEnabled=true;x.drawImage(rlc,0,0,W,H);x.fillStyle="rgba(20,20,20,.75)";
+ for(const q of rPts){const i=Math.floor(q.x/Rdx)%RX,j=Math.max(1,Math.min(RZ-1,Math.round(q.z/Rdz))),k=j*RX+i;q.x=(q.x+ru[k]*sd+RL)%RL;q.z=Math.min(.995,Math.max(.005,q.z+rw[k]*sd));x.fillRect(q.x/RL*W,(1-q.z)*H,3,3);}
+ if(++rFr%8==0)rbd.innerHTML=`Ra=${Ra.toFixed(0)} · Pr=${Pr} · 무차원 시간 t=${rT.toFixed(4)} · Ra_c(자유 미끄럼)=${RRc.toFixed(1)}<br>Nu=${rNu.toFixed(3)} · 근사 이론 Nu≈${Ra>RRc?(1+2*(1-RRc/Ra)).toFixed(3):"1 (전도)"} · 최대 |w|=${rMw.toExponential(2)}<br>`+(Ra<RRc?"Ra&lt;Ra_c: 열전도가 안정 — 섭동이 감쇠하고 대류가 생기지 않습니다.":"Ra&gt;Ra_c: 부력이 점성·열확산을 이겨 대류 롤이 성장·포화합니다(상승 = 빨강 영역).");}
+ requestAnimationFrame(rbA);}
+const cmx=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]],cmd=(a,b)=>{const d=b[0]*b[0]+b[1]*b[1];return[(a[0]*b[0]+a[1]*b[1])/d,(a[1]*b[0]-a[0]*b[1])/d];};
+function csq(a){const r=Math.hypot(a[0],a[1]),th=Math.atan2(a[1],a[0]);return[Math.sqrt(r)*Math.cos(th/2),Math.sqrt(r)*Math.sin(th/2)];}
+let aS=null;const aPts=[];for(let i=0;i<700;i++)aPts.push([-3.2+Math.random()*6.8,(Math.random()-.5)*3.4]);
+function aVel(Z,s){const q=csq([Z[0]*Z[0]-Z[1]*Z[1]-4,2*Z[0]*Z[1]]),z1=[(Z[0]+q[0])/2,(Z[1]+q[1])/2],z2=[(Z[0]-q[0])/2,(Z[1]-q[1])/2];
+ const d1=Math.hypot(z1[0]-s.c[0],z1[1]-s.c[1]),d2=Math.hypot(z2[0]-s.c[0],z2[1]-s.c[1]),z=d1>d2?z1:z2,r=Math.max(d1,d2);if(r<s.R*1.001)return null;
+ const w=[z[0]-s.c[0],z[1]-s.c[1]],w2=cmx(w,w),e1=[Math.cos(-s.al),Math.sin(-s.al)],e2=[Math.cos(s.al),Math.sin(s.al)],t1=cmd([s.R*s.R*e2[0],s.R*s.R*e2[1]],w2),g=cmd([0,s.G/(2*Math.PI)],w);
+ const dW=[e1[0]-t1[0]+g[0],e1[1]-t1[1]+g[1]],z2i=cmd([1,0],cmx(z,z)),v=cmd(dW,[1-z2i[0],-z2i[1]]);return[v[0],-v[1]];}
+function aCalc(){const al=+aa.value*Math.PI/180,eps=+ae.value,del=+ac.value,c=[-eps,del],R=Math.hypot(1+eps,del),phi=Math.atan2(-del,1+eps),G=4*Math.PI*R*Math.sin(al-phi),s={al,c,R,G,eps,del},n=400,sx=[],sy=[],cp=[];let mn=1e9,mxx=-1e9;
+ for(let i=0;i<=n;i++){const th=phi+2*Math.PI*i/n,z=[c[0]+R*Math.cos(th),c[1]+R*Math.sin(th)],zi=cmd([1,0],z),Z=[z[0]+zi[0],z[1]+zi[1]];sx.push(Z[0]);sy.push(Z[1]);mn=Math.min(mn,Z[0]);mxx=Math.max(mxx,Z[0]);
+  const w=[z[0]-c[0],z[1]-c[1]],w2=cmx(w,w),e1=[Math.cos(-al),Math.sin(-al)],e2=[Math.cos(al),Math.sin(al)],t1=cmd([R*R*e2[0],R*R*e2[1]],w2),g=cmd([0,G/(2*Math.PI)],w),dW=[e1[0]-t1[0]+g[0],e1[1]-t1[1]+g[1]],z2i=cmd([1,0],cmx(z,z)),den=Math.hypot(1-z2i[0],-z2i[1]);
+  cp.push(den<1e-4&&cp.length?cp[cp.length-1]:1-(Math.hypot(dW[0],dW[1])/Math.max(den,1e-4))**2);}
+ cp[0]=cp[1];cp[n]=cp[n-1];Object.assign(s,{sx,sy,negcp:cp.map(v=>-v),chord:mxx-mn,CL:2*G/(mxx-mn)});return s;}
+function aRend(){oAa.textContent=aa.value+"°";oAe.textContent=ae.value;oAc.textContent=ac.value;const s=aS=aCalc();
+ ad.innerHTML=`순환 Γ=${s.G.toFixed(3)} (U=1, a=1) · 코드 c=${s.chord.toFixed(2)} · 양력계수 C_L=2Γ/(Uc)=<b>${s.CL.toFixed(3)}</b> · 얇은 날개 근사 dC_L/dα≈2π(=0.110/°)<br>Kutta 조건으로 뒷전에서 유한 속도가 되도록 순환을 정했고, 윗면 흡입이 양력을 만듭니다.`+(+aa.value>10?`<br><b class="warn">α&gt;10°: 실제 날개는 이 부근에서 박리·실속이 시작되어 이 포텐셜 해의 C_L은 과대평가입니다.</b>`:"");
+ plot(cv15,[{n:"−Cp",y:s.negcp,c:css("--ac")}],0,{xa:["TE → 윗면 → LE","→ 아랫면 → TE"]});}
+function apA(now){if(tab==8&&aS){const s=aS,dt=Math.min(.05,Math.max(0,(now-(apA.l||now))/1e3));apA.l=now;const[x,W,H]=fit(cv14),sc=W/6.8,X=z=>(z+3.2)*sc,Y=y=>H/2-y*sc;
+  x.lineWidth=2;for(const p of aPts){const v=aVel(p,s);if(!v||p[0]>3.6){p[0]=-3.2;p[1]=(Math.random()-.5)*3.4;continue;}const sp=Math.hypot(v[0],v[1]);p[0]+=v[0]*dt*.9;p[1]+=v[1]*dt*.9;
+   x.strokeStyle=cmap(Math.max(-1,Math.min(1,(sp-1)*1.2)));x.beginPath();x.moveTo(X(p[0]-v[0]*.1),Y(p[1]-v[1]*.1));x.lineTo(X(p[0]),Y(p[1]));x.stroke();}
+  x.fillStyle="#555";x.strokeStyle=css("--fg");x.lineWidth=2;x.beginPath();s.sx.forEach((q,i)=>i?x.lineTo(X(q),Y(s.sy[i])):x.moveTo(X(q),Y(s.sy[i])));x.closePath();x.fill();x.stroke();}
+ requestAnimationFrame(apA);}
+const TN=64,TN2=TN*TN;let twr,twi,tT=0,tE0=1,tZ0=1,tE=1,tZ=1,tdt=.01;const tkx=new Float64Array(TN2),tky=new Float64Array(TN2),tk2=new Float64Array(TN2),tmk=new Uint8Array(TN2);
+for(let y=0;y<TN;y++)for(let x=0;x<TN;x++){const k=y*TN+x,a=x<TN/2?x:x-TN,b=y<TN/2?y:y-TN;tkx[k]=a;tky[k]=b;tk2[k]=a*a+b*b;tmk[k]=(Math.abs(a)<=TN/3&&Math.abs(b)<=TN/3)?1:0;}
+const tfr=new Float64Array(TN),tfi=new Float64Array(TN);
+function fft2(re,im,inv){for(let y=0;y<TN;y++){for(let x=0;x<TN;x++){tfr[x]=re[y*TN+x];tfi[x]=im[y*TN+x];}fft(tfr,tfi,inv);for(let x=0;x<TN;x++){re[y*TN+x]=tfr[x];im[y*TN+x]=tfi[x];}}
+ for(let x=0;x<TN;x++){for(let y=0;y<TN;y++){tfr[y]=re[y*TN+x];tfi[y]=im[y*TN+x];}fft(tfr,tfi,inv);for(let y=0;y<TN;y++){re[y*TN+x]=tfr[y];im[y*TN+x]=tfi[y];}}}
+const tA=[0,1,2,3,4].map(()=>new Float64Array(TN2)),tB=[0,1,2,3,4].map(()=>new Float64Array(TN2));
+function tRhs(wr,wi,dr,di,nu){let um=0;const f=(c,ar,ai)=>{tA[c].set(ar);tB[c].set(ai);fft2(tA[c],tB[c],true);return tA[c];};
+ const pr=new Float64Array(TN2),pi=new Float64Array(TN2),ur=new Float64Array(TN2),ui=new Float64Array(TN2),vr=new Float64Array(TN2),vi=new Float64Array(TN2),xr=new Float64Array(TN2),xi=new Float64Array(TN2),yr=new Float64Array(TN2),yi=new Float64Array(TN2);
+ for(let k=0;k<TN2;k++){const q=tk2[k]?1/tk2[k]:0;pr[k]=wr[k]*q;pi[k]=wi[k]*q;ur[k]=-tky[k]*pi[k];ui[k]=tky[k]*pr[k];vr[k]=tkx[k]*pi[k];vi[k]=-tkx[k]*pr[k];xr[k]=-tkx[k]*wi[k];xi[k]=tkx[k]*wr[k];yr[k]=-tky[k]*wi[k];yi[k]=tky[k]*wr[k];}
+ const u=f(0,ur,ui),v=f(1,vr,vi),wx=f(2,xr,xi),wy=f(3,yr,yi),nr=new Float64Array(TN2),ni=new Float64Array(TN2);
+ for(let k=0;k<TN2;k++){nr[k]=u[k]*wx[k]+v[k]*wy[k];um=Math.max(um,Math.abs(u[k]),Math.abs(v[k]));}
+ fft2(nr,ni,false);for(let k=0;k<TN2;k++){const m=tmk[k];dr[k]=-m*nr[k]-nu*tk2[k]*wr[k];di[k]=-m*ni[k]-nu*tk2[k]*wi[k];}return um;}
+function tDiag(){let e=0,z=0;for(let k=1;k<TN2;k++){const a=twr[k]*twr[k]+twi[k]*twi[k];z+=a;if(tk2[k])e+=a/tk2[k];}tE=.5*e/TN2/TN2;tZ=.5*z/TN2/TN2;}
+function tIC(kind){const w=new Float64Array(TN2),z=new Float64Array(TN2),P2=2*Math.PI/TN;
+ if(kind<2){const s=kind==0?.38:.36,d=kind==0?1.15:1.3,sg=kind==0?1:-1,g=(X,Y,cx)=>{let dx=Math.abs(X-cx);dx=Math.min(dx,2*Math.PI-dx);let dy=Math.abs(Y-Math.PI);dy=Math.min(dy,2*Math.PI-dy);return Math.exp(-(dx*dx+dy*dy)/(2*s*s));};
+  for(let y=0;y<TN;y++)for(let x=0;x<TN;x++)w[y*TN+x]=4*(g(x*P2,y*P2,Math.PI-d/2)+sg*g(x*P2,y*P2,Math.PI+d/2));}
+ else if(kind==4){for(let y=0;y<TN;y++)for(let x=0;x<TN;x++)w[y*TN+x]=2*Math.sin(x*P2)*Math.sin(y*P2);}
+ else if(kind==3){const dl=.2;for(let y=0;y<TN;y++)for(let x=0;x<TN;x++){const X=x*P2,Y=y*P2,y1=Math.PI/2+.06*Math.sin(X),y2=3*Math.PI/2-.06*Math.sin(X),s1=1/Math.cosh((Y-y1)/dl),s2=1/Math.cosh((Y-y2)/dl);w[y*TN+x]=-(s1*s1-s2*s2)/dl;}}
+ else{for(let k=0;k<TN2;k++)w[k]=Math.random()-.5;fft2(w,z,false);for(let k=0;k<TN2;k++){const f=Math.exp(-tk2[k]/64)*(tk2[k]>0?1:0);w[k]*=f;z[k]*=f;}fft2(w,z,true);let s=0;for(let k=0;k<TN2;k++)s+=w[k]*w[k];s=Math.sqrt(s/TN2);for(let k=0;k<TN2;k++){w[k]*=1.2/s;z[k]=0;}}
+ twr=w;twi=new Float64Array(TN2);fft2(twr,twi,false);tT=0;tDiag();tE0=tE;tZ0=tZ;}
+function tStep(nu){const Z=()=>new Float64Array(TN2),k1r=Z(),k1i=Z(),k2r=Z(),k2i=Z(),k3r=Z(),k3i=Z(),k4r=Z(),k4i=Z(),ar=Z(),ai=Z();
+ const um=tRhs(twr,twi,k1r,k1i,nu),dt=Math.min(.5*(2*Math.PI/TN)/(um+1e-9),.05);
+ for(let k=0;k<TN2;k++){ar[k]=twr[k]+dt/2*k1r[k];ai[k]=twi[k]+dt/2*k1i[k];}tRhs(ar,ai,k2r,k2i,nu);
+ for(let k=0;k<TN2;k++){ar[k]=twr[k]+dt/2*k2r[k];ai[k]=twi[k]+dt/2*k2i[k];}tRhs(ar,ai,k3r,k3i,nu);
+ for(let k=0;k<TN2;k++){ar[k]=twr[k]+dt*k3r[k];ai[k]=twi[k]+dt*k3i[k];}tRhs(ar,ai,k4r,k4i,nu);
+ for(let k=0;k<TN2;k++){twr[k]+=dt/6*(k1r[k]+2*k2r[k]+2*k3r[k]+k4r[k]);twi[k]+=dt/6*(k1i[k]+2*k2i[k]+2*k3i[k]+k4i[k]);}tT+=dt;tdt=dt;}
+const tlc=document.createElement("canvas");tlc.width=TN;tlc.height=TN;const tlx=tlc.getContext("2d"),tim=tlx.createImageData(TN,TN);let tFr=0,tKind=0;
+function tRend(){oTn.textContent=(+tnu.value).toFixed(4)+(+tnu.value==0?" (이상 유동)":"");oTs.textContent=tsp.value;}
+function tmA(now){if(tab==9){const nu=+tnu.value;for(let s=0;s<+tsp.value;s++)tStep(nu);tDiag();
+ const w=Float64Array.from(twr),z=Float64Array.from(twi);fft2(w,z,true);const d=tim.data;for(let y=0;y<TN;y++)for(let x=0;x<TN;x++){const q=((TN-1-y)*TN+x)*4,c=cmap(Math.abs(w[y*TN+x])<.08?0:Math.max(-1,Math.min(1,w[y*TN+x]/3))).match(/\d+/g);d[q]=+c[0];d[q+1]=+c[1];d[q+2]=+c[2];d[q+3]=255;}
+ tlx.putImageData(tim,0,0);const[x,W,H]=fit(cv17);x.imageSmoothingEnabled=true;x.drawImage(tlc,0,0,W,H);
+ if(++tFr%6==0)td.innerHTML=`t=${tT.toFixed(2)} · dt=${tdt.toFixed(4)} · ν=${nu} · <b>E/E₀=${(tE/tE0).toFixed(4)}</b> · <b>Z/Z₀=${(tZ/tZ0).toFixed(4)}</b><br>`+(tKind==4?"Taylor–Green: 단일 모드라 E와 Z가 같은 비율로 감쇠합니다.":nu==0?"ν=0: E와 Z가 거의 보존됩니다(1에서 벗어난 만큼이 수치 감쇠).":"ν&gt;0: Z가 E보다 빠르게 감소합니다 — 2차원 난류에서 엔스트로피는 작은 스케일로, 에너지는 큰 스케일로 이동하는 이중 캐스케이드의 결과입니다.")+`<br>`+(tKind==4?`해석해 이론값 exp(−4νt)=<b>${Math.exp(-4*nu*tT).toFixed(4)}</b> (수치 E/E₀, Z/Z₀와 같아야 함)<br>`:"")+["같은 부호의 두 소용돌이가 서로를 돌며 하나로 합쳐집니다(합체).","반대 부호의 소용돌이 쌍(다이폴)은 서로 유도하여 한 방향으로 자체 추진합니다.","무작위 초기장은 소용돌이들이 합체·필라멘트화하며 점차 큰 구조로 모입니다.","속도가 다른 두 층 사이의 전단층은 작은 섭동이 지수적으로 자라 고양이 눈 모양의 와류 롤로 말립니다(켈빈–헬름홀츠 불안정).","Taylor–Green 소용돌이는 비선형항이 0인 정확한 해석해입니다: E와 Z가 exp(−4νt)로 감쇠해야 합니다(아래 이론값과 비교)."][tKind];}
+ requestAnimationFrame(tmA);}
+const SN=400,SLx=20,Sdx=SLx/SN,Sg=9.81;let sh,sq,sT=0,sM0=0,sHl=2,sHr=.4;
+function sInit(){sHl=+dh.value;sHr=+dr.value;sh=new Float64Array(SN);sq=new Float64Array(SN);for(let i=0;i<SN;i++){sh[i]=(-10+(i+.5)*Sdx)<0?sHl:sHr;}sT=0;sM0=sh.reduce((a,b)=>a+b)*Sdx;}
+const mm=(a,b)=>a*b<=0?0:(Math.abs(a)<Math.abs(b)?a:b);
+function sL(h,q,oh,oq){const G=2,n=SN+2*G,H=new Float64Array(n),Q=new Float64Array(n);for(let i=0;i<SN;i++){H[i+G]=h[i];Q[i+G]=q[i];}for(let g=0;g<G;g++){H[g]=h[0];Q[g]=q[0];H[SN+G+g]=h[SN-1];Q[SN+G+g]=q[SN-1];}
+ const sH=new Float64Array(n),sQ=new Float64Array(n);for(let i=1;i<n-1;i++){sH[i]=mm(H[i]-H[i-1],H[i+1]-H[i]);sQ[i]=mm(Q[i]-Q[i-1],Q[i+1]-Q[i]);}
+ const FH=new Float64Array(SN+1),FQ=new Float64Array(SN+1);let amax=0;
+ for(let f=0;f<=SN;f++){const i=f+G-1,hl=Math.max(1e-6,H[i]+.5*sH[i]),ql=Q[i]+.5*sQ[i],hr=Math.max(1e-6,H[i+1]-.5*sH[i+1]),qr=Q[i+1]-.5*sQ[i+1],ul=ql/hl,ur=qr/hr,a=Math.max(Math.abs(ul)+Math.sqrt(Sg*hl),Math.abs(ur)+Math.sqrt(Sg*hr));amax=Math.max(amax,a);
+  FH[f]=.5*(ql+qr)-.5*a*(hr-hl);FQ[f]=.5*(ql*ul+.5*Sg*hl*hl+qr*ur+.5*Sg*hr*hr)-.5*a*(qr-ql);}
+ for(let i=0;i<SN;i++){oh[i]=-(FH[i+1]-FH[i])/Sdx;oq[i]=-(FQ[i+1]-FQ[i])/Sdx;}return amax;}
+function sStep(){const a=new Float64Array(SN),b=new Float64Array(SN),c=new Float64Array(SN),d=new Float64Array(SN),h1=new Float64Array(SN),q1=new Float64Array(SN),am=sL(sh,sq,a,b),dt=.4*Sdx/am;
+ for(let i=0;i<SN;i++){h1[i]=sh[i]+dt*a[i];q1[i]=sq[i]+dt*b[i];}sL(h1,q1,c,d);for(let i=0;i<SN;i++){sh[i]=.5*sh[i]+.5*(h1[i]+dt*c[i]);sq[i]=.5*sq[i]+.5*(q1[i]+dt*d[i]);}sT+=dt;return dt;}
+function sExact(t){const hl=sHl,hr=sHr,cl=Math.sqrt(Sg*hl);let lo=hr,hi=hl;for(let k=0;k<70;k++){const hm=.5*(lo+hi),f=2*(cl-Math.sqrt(Sg*hm))-(hm-hr)*Math.sqrt(Sg*(hm+hr)/(2*hm*hr));if(f>0)lo=hm;else hi=hm;}
+ const hm=.5*(lo+hi),cm=Math.sqrt(Sg*hm),um=2*(cl-cm),S=hm*um/(hm-hr);return{hm,um,S,cl,f:x=>{const e=t>0?x/t:(x<0?-1e9:1e9);if(e<-cl)return[hl,0];if(e<um-cm){const c=(2*cl-e)/3;return[c*c/Sg,2*(e+cl)/3];}if(e<S)return[hm,um];return[hr,0];}};}
+function sRend(){oDl.textContent=(+dh.value).toFixed(1)+" m";oDr.textContent=(+dr.value).toFixed(2)+" m";oDs.textContent=(+dsp.value).toFixed(1)+"×";sInit();}
+let sLast=0,sHold=0;function dmA(now){if(tab==10){const dtf=Math.min(.05,Math.max(0,(now-(sLast||now))/1e3));sLast=now;const ex=sExact(1),tEnd=Math.min(8.5/ex.S,9/ex.cl);
+ if(sT>tEnd){sHold+=dtf;if(sHold>1.2){sInit();sHold=0;}}else{let tg=sT+dtf*(+dsp.value);while(sT<tg&&sT<tEnd)sStep();}
+ const E=sExact(Math.max(sT,1e-9)),[x,W,H]=fit(cv18),hmax=Math.max(sHl,sHr)*1.15,X=q=>(q+10)/20*W,Y=v=>H-24-(H-34)*v/hmax;
+ x.fillStyle=css("--neg");x.globalAlpha=.55;x.beginPath();x.moveTo(0,Y(0));for(let i=0;i<SN;i++)x.lineTo(X(-10+(i+.5)*Sdx),Y(sh[i]));x.lineTo(W,Y(0));x.closePath();x.fill();x.globalAlpha=1;
+ x.strokeStyle=css("--fg");x.setLineDash([4,3]);x.lineWidth=1.6;x.beginPath();for(let i=0;i<=200;i++){const q=-10+20*i/200,h=E.f(q)[0];i?x.lineTo(X(q),Y(h)):x.moveTo(X(q),Y(h));}x.stroke();x.setLineDash([]);
+ x.strokeStyle=css("--mut");x.beginPath();x.moveTo(0,Y(0));x.lineTo(W,Y(0));x.stroke();x.fillStyle=css("--fg");x.font="12px system-ui";x.fillText(`t=${sT.toFixed(2)} s`,8,16);
+ const us=[],ue=[];let e1=0,e2=0;for(let i=0;i<SN;i++){const xx=-10+(i+.5)*Sdx,ex_=E.f(xx);e1+=Math.abs(sh[i]-ex_[0]);e2+=ex_[0];}for(let i=0;i<200;i++){const k=Math.floor(i/200*SN),xx=-10+(k+.5)*Sdx;us.push(sq[k]/Math.max(sh[k],1e-6));ue.push(E.f(xx)[1]);}
+ plot(cv19,[{n:"u 수치 [m/s]",y:us,c:css("--ac")},{n:"u 해석해",y:ue,c:css("--mut")}],0,{xa:["x=−10","x=+10"]});
+ if(Math.floor(now/200)!=dmA.k){dmA.k=Math.floor(now/200);dmd.innerHTML=`t=${sT.toFixed(2)} s · 중간 수심 h_m=${E.hm.toFixed(3)} m · 중간 유속 u_m=${E.um.toFixed(3)} m/s · 충격파(보어) 속도 S=${E.S.toFixed(3)} m/s<br>h의 L1 상대오차 ${(100*e1/e2).toFixed(2)}% · 질량 보존 오차 ${(100*Math.abs(sh.reduce((a,b)=>a+b)*Sdx-sM0)/sM0).toFixed(4)}%<br>왼쪽 희박파(부드러운 하강)와 오른쪽 보어(급격한 수면 도약)가 동시에 퍼집니다. 점선이 정확한 해석해입니다.`;}}
+ requestAnimationFrame(dmA);}
+const LZS=10,LZB=8/3;let lzA,lzB,lzC,lzT=0,lzSum=0,lzTL=0,lzTrA=[],lzTrB=[],lzSep=[],lzAng=0;
+const lzF=(s,r)=>[LZS*(s[1]-s[0]),s[0]*(r-s[2])-s[1],s[0]*s[1]-LZB*s[2]];
+function lzRk(s,r,dt){const k1=lzF(s,r),k2=lzF(s.map((v,i)=>v+dt/2*k1[i]),r),k3=lzF(s.map((v,i)=>v+dt/2*k2[i]),r),k4=lzF(s.map((v,i)=>v+dt*k3[i]),r);return s.map((v,i)=>v+dt/6*(k1[i]+2*k2[i]+2*k3[i]+k4[i]));}
+function lzInit(){const d=Math.pow(10,+lzd.value);lzA=[1,1,1];lzB=[1+d,1,1];lzC=[1+1e-8,1,1];lzT=0;lzSum=0;lzTL=0;lzTrA=[];lzTrB=[];lzSep=[];}
+function lzStep(r,dt){lzA=lzRk(lzA,r,dt);lzB=lzRk(lzB,r,dt);lzC=lzRk(lzC,r,dt);lzT+=dt;
+ const dv=[lzC[0]-lzA[0],lzC[1]-lzA[1],lzC[2]-lzA[2]],d=Math.hypot(...dv);if(lzT>5){lzSum+=Math.log(d/1e-8);lzTL+=dt;}lzC=[lzA[0]+dv[0]*1e-8/d,lzA[1]+dv[1]*1e-8/d,lzA[2]+dv[2]*1e-8/d];
+ if(Math.round(lzT/dt)%2==0){lzTrA.push(lzA);lzTrB.push(lzB);if(lzTrA.length>2600){lzTrA.shift();lzTrB.shift();}}
+ if(Math.round(lzT/dt)%8==0){lzSep.push(Math.log(Math.hypot(lzA[0]-lzB[0],lzA[1]-lzB[1],lzA[2]-lzB[2])+1e-300));if(lzSep.length>700)lzSep.shift();}}
+function lzRend(){oLr.textContent=lzr.value;oLd.textContent="10^"+lzd.value;oLs.textContent=lzs.value;lzInit();}
+function lzmA(now){if(tab==11){const r=+lzr.value;for(let s=0;s<+lzs.value;s++)lzStep(r,.005);lzAng+=.004;
+ const[x,W,H]=fit(cv20),ca=Math.cos(lzAng),sa=Math.sin(lzAng),sc=Math.min(W/60,H/62),P=q=>[W/2+(q[0]*ca-q[1]*sa)*sc,H-14-(q[2])*sc*(r>45?.7:1)];
+ for(const[tr,col]of[[lzTrA,"#e8590c"],[lzTrB,"#1c7ed6"]]){for(let seg=0;seg<4;seg++){x.strokeStyle=col;x.globalAlpha=.15+.22*seg;x.lineWidth=1.3;x.beginPath();const a=Math.floor(tr.length*seg/4),b=Math.floor(tr.length*(seg+1)/4);for(let i=a;i<b;i++){const q=P(tr[i]);i>a?x.lineTo(q[0],q[1]):x.moveTo(q[0],q[1]);}x.stroke();}x.globalAlpha=1;const q=P(tr[tr.length-1]||[0,0,0]);x.fillStyle=col;x.beginPath();x.arc(q[0],q[1],4,0,7);x.fill();}
+ if(lzSep.length>2)plot(cv21,[{n:"ln|A−B|",y:lzSep,c:css("--ac")}],1,{xa:["과거","현재"]});
+ const lam=lzTL>40?lzSum/lzTL:NaN,rH=LZS*(LZS+LZB+3)/(LZS-LZB-1),fp=Math.sqrt(Math.max(0,LZB*(r-1))),d0=Math.pow(10,+lzd.value);
+ if(Math.floor(now/250)!=lzmA.k){lzmA.k=Math.floor(now/250);lzd2.innerHTML=`t=${lzT.toFixed(1)} · r=${r} · 리아푸노프 지수 λ≈<b>${isFinite(lam)?lam.toFixed(3):"계산 중…"}</b>${r==28?" (문헌값 λ≈0.906)":""} · 현재 |A−B|=${Math.hypot(lzA[0]-lzB[0],lzA[1]-lzB[1],lzA[2]-lzB[2]).toExponential(2)}<br>`+(r<1?"r&lt;1: 대류가 없는 원점(정지 상태)이 안정합니다.":r<rH?`1&lt;r&lt;r_H=${rH.toFixed(2)}: 정상 대류(고정점 x=±${fp.toFixed(2)})로 수렴합니다 — 궤적이 한 점에 모입니다.`:`r&gt;r_H: 안정한 고정점이 사라지고 이상한 끌개(카오스)가 나타납니다.`)+(isFinite(lam)&&lam>.05?`<br>초기 차이 ${d0.toExponential(0)}가 끌개 크기(~30)까지 자라는 데 약 ${(Math.log(30/d0)/lam).toFixed(0)} 시간 단위 — 이 시간을 넘으면 예측이 불가능합니다(예측 가능 시간의 한계).`:"");}}
+ requestAnimationFrame(lzmA);}
+let wPh=0;
+function wDisp(k,h){return Math.sqrt(9.81*k*Math.tanh(k*h));}
+function wCg(k,h){const e=1e-5*k;return(wDisp(k+e,h)-wDisp(k-e,h))/(2*e);}
+function wRend(){oWh.textContent=(+wh.value).toFixed(1)+" m";oWl.textContent=wl.value+" m";oWl2.textContent=wl2.value+" m";oWs.textContent=(+wsp.value).toFixed(1)+"×";
+ const h=+wh.value,k1=2*Math.PI/+wl.value,k2=2*Math.PI/+wl2.value,w1=wDisp(k1,h),w2=wDisp(k2,h),kk=[],ww=[];for(let i=1;i<=200;i++){const k=i*0.5/200*1.2+0.005;kk.push(k);ww.push(wDisp(k,h));}
+ const cp1=w1/k1,cp2=w2/k2,cg=(w2-w1)/(k2-k1),cgt=wCg((k1+k2)/2,h),reg=h/+wl.value>.5?"깊은 물(h/λ&gt;0.5): c_g≈c_p/2":h/+wl.value<.05?"얕은 물(h/λ&lt;0.05): c_g≈c_p≈√(gh)":"중간 수심";
+ wd.innerHTML=`ω₁=${w1.toFixed(3)}, ω₂=${w2.toFixed(3)} rad/s · c_p(λ₁)=${cp1.toFixed(2)} m/s, c_p(λ₂)=${cp2.toFixed(2)} m/s<br>포락선(맥놀이) 속도 Δω/Δk=<b>${cg.toFixed(2)} m/s</b> ↔ 이론 군속도 c_g=dω/dk=${cgt.toFixed(2)} m/s (c_g/c_p=${(cgt/((cp1+cp2)/2)).toFixed(2)}) · ${reg}`;
+ plot(cv23,[{n:"ω(k) [rad/s]",y:ww,c:css("--ac")}],(k1/1.2*200/0.5-.005)/199>1?1:Math.max(0,Math.min(1,(k1-0.005)/(0.5*1.2))),{xa:["k→0","k=0.6 rad/m"]});}
+function wmA(now){if(tab==12){const dt=Math.min(.05,Math.max(0,(now-(wmA.l||now))/1e3));wmA.l=now;wPh+=dt*(+wsp.value);const h=+wh.value,k1=2*Math.PI/+wl.value,k2=2*Math.PI/+wl2.value,w1=wDisp(k1,h),w2=wDisp(k2,h),[x,W,H]=fit(cv22),L=600,n=600,t=wPh*3;
+ const ys=[];for(let i=0;i<n;i++){const X=i/(n-1)*L;ys.push(Math.cos(k1*X-w1*t)+Math.cos(k2*X-w2*t));}
+ x.fillStyle=css("--neg");x.globalAlpha=.3;x.beginPath();x.moveTo(0,H);ys.forEach((v,i)=>x.lineTo(i/(n-1)*W,H/2-v*H*.2));x.lineTo(W,H);x.closePath();x.fill();x.globalAlpha=1;
+ x.strokeStyle=css("--ac");x.lineWidth=2;x.beginPath();ys.forEach((v,i)=>i?x.lineTo(i/(n-1)*W,H/2-v*H*.2):x.moveTo(0,H/2-v*H*.2));x.stroke();
+ if(k1!=k2){x.strokeStyle=css("--fg");x.setLineDash([4,3]);x.lineWidth=1.3;for(const sg of[1,-1]){x.beginPath();for(let i=0;i<n;i++){const X=i/(n-1)*L,env=2*Math.abs(Math.cos(((k1-k2)*X-(w1-w2)*t)/2));i?x.lineTo(i/(n-1)*W,H/2-sg*env*H*.2):x.moveTo(0,H/2-sg*env*H*.2);}x.stroke();}x.setLineDash([]);}
+ x.fillStyle=css("--fg");x.font="11px system-ui";x.fillText(`t=${t.toFixed(1)} s · x=0…600 m · 점선=포락선(군속도로 이동)`,8,14);}
+ requestAnimationFrame(wmA);}
+const WHN=50,WHL=1000,WHD=.5,WHA=Math.PI*WHD*WHD/4,WG=9.81;let whH,whQ,whT=0,whHist=[],whMax=0,whQ0=0,whH0=100,whP={};
+function whInit(){const V0=+hv.value,a=+ha.value,f=+hf.value,B=a/(WG*WHA);whQ0=V0*WHA;whH=new Float64Array(WHN+1);whQ=new Float64Array(WHN+1).fill(whQ0);for(let i=0;i<=WHN;i++)whH[i]=whH0-f*(i*WHL/WHN)/WHD*V0*V0/(2*WG);whT=0;whHist=[];whMax=whH[WHN];
+ whP={a,B,Rr:f*(WHL/WHN)/(2*WG*WHD*WHA*WHA),dt:WHL/(a*WHN),tc:+htc.value,V0,Hv0:whH[WHN],f};}
+function whStep(){const{B,Rr,dt,tc}=whP,H=whH,Q=whQ,Hn=new Float64Array(WHN+1),Qn=new Float64Array(WHN+1),N=WHN;
+ for(let i=1;i<N;i++){const CP=H[i-1]+Q[i-1]*(B-Rr*Math.abs(Q[i-1])),CM=H[i+1]-Q[i+1]*(B-Rr*Math.abs(Q[i+1])),BP=B+Rr*Math.abs(Q[i-1]),BM=B+Rr*Math.abs(Q[i+1]);Qn[i]=(CP-CM)/(BP+BM);Hn[i]=CP-BP*Qn[i];}
+ {const CM=H[1]-Q[1]*(B-Rr*Math.abs(Q[1])),BM=B+Rr*Math.abs(Q[1]);Hn[0]=whH0;Qn[0]=(whH0-CM)/BM;}
+ {const CP=H[N-1]+Q[N-1]*(B-Rr*Math.abs(Q[N-1])),BP=B+Rr*Math.abs(Q[N-1]);Qn[N]=whQ0*Math.max(0,1-(whT+dt)/tc);Hn[N]=CP-BP*Qn[N];}
+ whH=Hn;whQ=Qn;whT+=dt;whHist.push(Hn[N]);if(whHist.length>600)whHist.shift();if(Hn[N]>whMax)whMax=Hn[N];}
+function whRend(){oHv.textContent=(+hv.value).toFixed(1)+" m/s";oHt.textContent=(+htc.value).toFixed(2)+" s";oHa.textContent=ha.value+" m/s";oHf.textContent=hf.value;oHs.textContent=hs.value;whInit();}
+let whFr=0;function whA(now){if(tab==13){for(let s=0;s<+hs.value;s++)whStep();
+ const P=whP,jk=P.a*P.V0/WG,mich=2*WHL*P.V0/(WG*P.tc),rapid=P.tc<2*WHL/P.a;
+ plot(cv24,[{n:"H(x) [m]",y:Array.from(whH),c:css("--ac")},{n:"정상 수두",y:Array.from(whH,(_,i)=>whH0-P.f*(i*WHL/WHN)/WHD*P.V0*P.V0/(2*WG)),c:css("--mut")}],1,{xa:["x=0 (저수조)","x=L (밸브)"]});
+ if(whHist.length>2)plot(cv25,[{n:"H_valve [m]",y:whHist,c:css("--ac")}],1,{xa:["과거","현재"]});
+ if(++whFr%6==0)hd.innerHTML=`t=${whT.toFixed(2)} s (주기 4L/a=${(4*WHL/P.a).toFixed(2)} s) · 밸브 최대 수두 상승 ΔH_max=<b>${(whMax-P.Hv0).toFixed(1)} m</b><br>`+(rapid?`급폐(t_c&lt;2L/a=${(2*WHL/P.a).toFixed(2)} s): Joukowsky ΔH=aV₀/g=<b>${jk.toFixed(1)} m</b> (${(100*(whMax-P.Hv0)/jk).toFixed(1)}%)`:`완폐(t_c&gt;2L/a): Michaud 근사 ΔH≈2LV₀/(g·t_c)=<b>${mich.toFixed(1)} m</b> — Joukowsky ${jk.toFixed(1)} m보다 크게 줄어듭니다.`)+`<br>${P.f>0?"마찰이 있어 진동이 시간에 따라 감쇠합니다.":"마찰이 없어 진동이 감쇠하지 않습니다."} 1 m 수두 = 약 9.8 kPa, 최대 압력 상승 ≈ ${((whMax-P.Hv0)*9.81/1000).toFixed(2)} MPa.`;}
+ requestAnimationFrame(whA);}
+const CN=128,CNN=CN*CN;let cf,cg,cuu,cvv,cRe=100,cT=0,cRes=0,cPrev=null;const cPts=[];for(let i=0;i<500;i++)cPts.push([Math.random(),Math.random()]);
+function cInit(){cf=new Float32Array(9*CNN);cg=new Float32Array(9*CNN);cuu=new Float32Array(CNN);cvv=new Float32Array(CNN);for(let k=0;k<CNN;k++)for(let i=0;i<9;i++)cf[i*CNN+k]=LW[i];cT=0;cRes=0;cPrev=null;}
+function cStep(){const U=.1,tau=3*U*CN/cRe+.5,om=1/tau,N=CNN,A=cf,B=cg,SO=[0,1,CN,-1,-CN,1+CN,-1+CN,-1-CN,1-CN],a=new Float64Array(9);
+ for(let y=0;y<CN;y++)for(let x=0;x<CN;x++){const k=y*CN+x;
+  if(x>0&&x<CN-1&&y>0&&y<CN-1){for(let i=0;i<9;i++)a[i]=A[i*N+k-SO[i]];}
+  else{for(let i=0;i<9;i++){const sx=x-CX[i],sy=y-CY[i];a[i]=(sx>=0&&sx<CN&&sy>=0&&sy<CN)?A[i*N+sy*CN+sx]:A[OPP[i]*N+k]+(sy==CN?6*LW[i]*CX[i]*U:0);}}
+  const f0=a[0],f1=a[1],f2=a[2],f3=a[3],f4=a[4],f5=a[5],f6=a[6],f7=a[7],f8=a[8],r=f0+f1+f2+f3+f4+f5+f6+f7+f8,u=(f1-f3+f5-f6-f7+f8)/r,v=(f2-f4+f5+f6-f7-f8)/r,uu=1.5*(u*u+v*v),w1=r/9,w5=r/36;cuu[k]=u;cvv[k]=v;
+  B[k]=f0+om*(4/9*r*(1-uu)-f0);B[N+k]=f1+om*(w1*(1+3*u+4.5*u*u-uu)-f1);B[2*N+k]=f2+om*(w1*(1+3*v+4.5*v*v-uu)-f2);B[3*N+k]=f3+om*(w1*(1-3*u+4.5*u*u-uu)-f3);B[4*N+k]=f4+om*(w1*(1-3*v+4.5*v*v-uu)-f4);
+  const s1=u+v,s2=-u+v;B[5*N+k]=f5+om*(w5*(1+3*s1+4.5*s1*s1-uu)-f5);B[6*N+k]=f6+om*(w5*(1+3*s2+4.5*s2*s2-uu)-f6);B[7*N+k]=f7+om*(w5*(1-3*s1+4.5*s1*s1-uu)-f7);B[8*N+k]=f8+om*(w5*(1-3*s2+4.5*s2*s2-uu)-f8);}
+ cf=B;cg=A;cT++;}
+const GY=[1,.9766,.9688,.9609,.9531,.8516,.7344,.6172,.5,.4531,.2813,.1719,.1016,.0703,.0625,.0547,0],
+ GU={100:[1,.84123,.78871,.73722,.68717,.23151,.00332,-.13641,-.20581,-.2109,-.15662,-.1015,-.06434,-.04775,-.04192,-.03717,0],
+ 400:[1,.75837,.68439,.61756,.55892,.29093,.16256,.02135,-.11477,-.17119,-.32726,-.24299,-.14612,-.10338,-.09266,-.08186,0],
+ 1000:[1,.65928,.57492,.51117,.46604,.33304,.18719,.05702,-.0608,-.10648,-.27805,-.38289,-.2973,-.2222,-.20196,-.18109,0]};
+function cCenter(){const out=[];for(let j=0;j<CN;j++)out.push(.5*(cuu[j*CN+CN/2-1]+cuu[j*CN+CN/2])/.1);return out;}
+function cInterp(prof,y){const f=y*CN-.5,j=Math.max(0,Math.min(CN-2,Math.floor(f))),w=Math.max(0,Math.min(1,f-j));if(y>=1-.5/CN)return prof[CN-1]+(1-prof[CN-1])*((y-(1-.5/CN))/(.5/CN));if(y<=.5/CN)return prof[0]*(y/(.5/CN));return prof[j]*(1-w)+prof[j+1]*w;}
+function cRend(){oCs.textContent=cs.value;}
+const clc=document.createElement("canvas");clc.width=CN;clc.height=CN;const clx=clc.getContext("2d"),cim=clx.createImageData(CN,CN);let cFr=0;
+function cvA(now){if(tab==14){for(let s=0;s<+cs.value;s++)cStep();
+ const d=cim.data;for(let y=0;y<CN;y++)for(let x=0;x<CN;x++){const k=y*CN+x,q=((CN-1-y)*CN+x)*4,sp=Math.sqrt(Math.min(1,Math.hypot(cuu[k],cvv[k])/.1)),c=cmap(sp*2-1).match(/\d+/g);d[q]=+c[0];d[q+1]=+c[1];d[q+2]=+c[2];d[q+3]=255;}
+ clx.putImageData(cim,0,0);const[x,W,H]=fit(cv26);x.imageSmoothingEnabled=true;x.drawImage(clc,0,0,W,H);x.lineWidth=1.3;x.strokeStyle="rgba(20,20,20,.6)";const sf=+cs.value;
+ for(const p of cPts){const i=Math.max(0,Math.min(CN-1,Math.floor(p[0]*CN))),j=Math.max(0,Math.min(CN-1,Math.floor(p[1]*CN))),k=j*CN+i,u=cuu[k],v=cvv[k];x.beginPath();x.moveTo(p[0]*W,(1-p[1])*H);p[0]+=u*sf*5/CN;p[1]+=v*sf*5/CN;x.lineTo(p[0]*W,(1-p[1])*H);x.stroke();if(p[0]<0||p[0]>1||p[1]<0||p[1]>1){p[0]=Math.random();p[1]=Math.random();}}
+ if(++cFr%10==0){const prof=cCenter(),[g,GW,GH]=fit(cv27),ml=36,mb=22,X=u=>ml+(GW-ml-8)*(u+.5)/1.5,Y=y=>GH-mb-(GH-mb-8)*y;
+  g.strokeStyle=css("--bd");g.lineWidth=1;for(const u of[-.5,0,.5,1]){g.beginPath();g.moveTo(X(u),8);g.lineTo(X(u),GH-mb);g.stroke();g.fillStyle=css("--mut");g.font="11px system-ui";g.fillText(u,X(u)-6,GH-6);}g.fillText("y=1",2,14);g.fillText("y=0",2,GH-mb);
+  g.strokeStyle=css("--ac");g.lineWidth=2;g.beginPath();prof.forEach((u,j)=>{const xx=X(u),yy=Y((j+.5)/CN);j?g.lineTo(xx,yy):g.moveTo(xx,yy);});g.stroke();
+  const Gu=GU[cRe];let rms=NaN;if(Gu){g.fillStyle=css("--fg");let s=0;GY.forEach((y,i)=>{g.beginPath();g.arc(X(Gu[i]),Y(y),3.2,0,7);g.fill();s+=(cInterp(prof,y)-Gu[i])**2;});rms=Math.sqrt(s/GY.length);}
+  let res=NaN;if(cPrev){res=0;for(let j=0;j<CN;j++)res=Math.max(res,Math.abs(prof[j]-cPrev[j]));}cPrev=prof;
+  cd.innerHTML=`Re=${cRe} · τ=${(3*.1*CN/cRe+.5).toFixed(3)} · 스텝 ${cT}<br>Ghia 표값 대비 RMS 오차 <b>${isFinite(rms)?rms.toFixed(4):"—"}</b> (U 단위) · 최근 변화량(수렴 지표) ${isFinite(res)?res.toExponential(1):"—"}`+(isFinite(res)&&res<2e-4?" — <b class=ok>정상 상태에 도달</b>":" — 계산 중(정상 상태까지 수 초~수십 초)")+`<br>뚜껑 아래로 큰 주 소용돌이가 만들어지고, Re가 클수록 중심이 오른쪽 위로 이동하며 모서리에 작은 2차 소용돌이가 생깁니다.`;}}
+ requestAnimationFrame(cvA);}
+const ENTER=[];let rMode=0,rtHist=[],rtSig=NaN;
+// Orr–Sommerfeld, plane Poiseuille U=1-y^2, Chebyshev collocation + Rayleigh-quotient inverse iteration
+const OSC={};
+function osCheb(N){if(OSC[N])return OSC[N];const n=N+1,x=new Float64Array(n),c=new Float64Array(n),D=new Float64Array(n*n);
+ for(let j=0;j<n;j++){x[j]=Math.cos(Math.PI*j/N);c[j]=(j==0||j==N?2:1)*(j%2?-1:1);}
+ for(let i=0;i<n;i++){let s=0;for(let j=0;j<n;j++)if(i!=j){D[i*n+j]=(c[i]/c[j])/(x[i]-x[j]);s+=D[i*n+j];}D[i*n+i]=-s;}
+ const D2=new Float64Array(n*n);for(let i=0;i<n;i++)for(let k=0;k<n;k++){const a=D[i*n+k];if(a)for(let j=0;j<n;j++)D2[i*n+j]+=a*D[k*n+j];}
+ return OSC[N]={N,n,x,D,D2};}
+function csolve(Mr,Mi,br,bi,n){ // complex Gaussian elimination with partial pivoting; modifies copies
+ const ar=Float64Array.from(Mr),ai=Float64Array.from(Mi),xr=Float64Array.from(br),xi=Float64Array.from(bi);
+ for(let k=0;k<n;k++){let p=k,m=ar[k*n+k]**2+ai[k*n+k]**2;for(let i=k+1;i<n;i++){const q=ar[i*n+k]**2+ai[i*n+k]**2;if(q>m){m=q;p=i;}}
+  if(p!=k){for(let j=0;j<n;j++){let t=ar[k*n+j];ar[k*n+j]=ar[p*n+j];ar[p*n+j]=t;t=ai[k*n+j];ai[k*n+j]=ai[p*n+j];ai[p*n+j]=t;}let t=xr[k];xr[k]=xr[p];xr[p]=t;t=xi[k];xi[k]=xi[p];xi[p]=t;}
+  const pr=ar[k*n+k],pi=ai[k*n+k],d=pr*pr+pi*pi+1e-300;
+  for(let i=k+1;i<n;i++){const fr=(ar[i*n+k]*pr+ai[i*n+k]*pi)/d,fi=(ai[i*n+k]*pr-ar[i*n+k]*pi)/d;if(fr==0&&fi==0)continue;
+   for(let j=k;j<n;j++){ar[i*n+j]-=fr*ar[k*n+j]-fi*ai[k*n+j];ai[i*n+j]-=fr*ai[k*n+j]+fi*ar[k*n+j];}xr[i]-=fr*xr[k]-fi*xi[k];xi[i]-=fr*xi[k]+fi*xr[k];}}
+ for(let i=n-1;i>=0;i--){let sr=xr[i],si=xi[i];for(let j=i+1;j<n;j++){sr-=ar[i*n+j]*xr[j]-ai[i*n+j]*xi[j];si-=ar[i*n+j]*xi[j]+ai[i*n+j]*xr[j];}
+  const pr=ar[i*n+i],pi=ai[i*n+i],d=pr*pr+pi*pi+1e-300;xr[i]=(sr*pr+si*pi)/d;xi[i]=(si*pr-sr*pi)/d;}
+ return[xr,xi];}
+function osSetup(N,al,Re){const{n,x,D,D2}=osCheb(N),L=new Float64Array(n*n),L2=new Float64Array(n*n);
+ for(let i=0;i<n*n;i++)L[i]=D2[i];for(let i=0;i<n;i++)L[i*n+i]-=al*al;
+ for(let i=0;i<n;i++)for(let k=0;k<n;k++){const a=L[i*n+k];if(a)for(let j=0;j<n;j++)L2[i*n+j]+=a*L[k*n+j];}
+ const Ar=new Float64Array(n*n),Ai=new Float64Array(n*n),B=new Float64Array(n*n);
+ for(let i=0;i<n;i++)for(let j=0;j<n;j++){const U=1-x[i]*x[i];Ar[i*n+j]=U*L[i*n+j]+(i==j?2:0);Ai[i*n+j]=L2[i*n+j]/(al*Re);B[i*n+j]=L[i*n+j];}
+ const bc=(r,src,diff)=>{for(let j=0;j<n;j++){Ar[r*n+j]=diff?D[src*n+j]:(j==src?1:0);Ai[r*n+j]=0;B[r*n+j]=0;}};
+ bc(0,0,false);bc(1,0,true);bc(n-1,n-1,false);bc(n-2,n-1,true);return{n,x,D,Ar,Ai,B};}
+function osEig(S,mu){const{n,Ar,Ai,B}=S;let mr=mu[0],mi=mu[1],xr=new Float64Array(n).fill(1),xi=new Float64Array(n);let ev=[mr,mi];
+ for(let it=0;it<14;it++){const Mr=new Float64Array(n*n),Mi=new Float64Array(n*n);for(let i=0;i<n*n;i++){Mr[i]=Ar[i]-mr*B[i];Mi[i]=Ai[i]-mi*B[i];}
+  const br=new Float64Array(n),bi=new Float64Array(n);for(let i=0;i<n;i++){let a=0,b=0;for(let j=0;j<n;j++){a+=B[i*n+j]*xr[j];b+=B[i*n+j]*xi[j];}br[i]=a;bi[i]=b;}
+  const[yr,yi]=csolve(Mr,Mi,br,bi,n);let m=0,mx=0;for(let i=2;i<n-2;i++){const q=yr[i]*yr[i]+yi[i]*yi[i];if(q>mx){mx=q;m=i;}}
+  const xm=xr[m],xim=xi[m],d=xm*xm+xim*xim,zr=(yr[m]*xm+yi[m]*xim)/d,zi=(yi[m]*xm-yr[m]*xim)/d,z2=zr*zr+zi*zi,cr=mr+zr/z2,ci=mi-zi/z2;
+  const s=Math.sqrt(mx);for(let i=0;i<n;i++){xr[i]=yr[i]/s;xi[i]=yi[i]/s;}
+  const dc=Math.hypot(cr-ev[0],ci-ev[1]);ev=[cr,ci];mr=cr;mi=ci;if(dc<1e-11&&it>1)break;}
+ return{c:ev,xr,xi};}
+
+function rtInit(){rInit();rMode=1;rtHist=[];rtSig=NaN;const m=+rtM.value,dl=.04,amp=5e-4;
+ for(let j=0;j<=RZ;j++)for(let i=0;i<RX;i++)rth[j*RX+i]=-.5*Math.tanh((j*Rdz-.5-amp*Math.cos(2*Math.PI*m*i*Rdx/RL))/dl);
+ for(let i=0;i<RX;i++){rth[i]=.5;rth[RZ*RX+i]=-.5;}}
+function rtRend(){oTb.textContent=Math.pow(10,+rtB.value).toExponential(1);oTm.textContent=rtM.value;oTp.textContent=rtP.value;oTs2.textContent=rtS.value;}
+function rtParamChange(){rtRend();rtInit();}
+let rtFr=0;function rtA(now){if(tab==15){const B=Math.pow(10,+rtB.value),Pr=+rtP.value;let sd=0;for(let s=0;s<+rtS.value;s++){sd+=rStep(Pr,B/Pr);rtHist.push([rT,rMw]);}if(rtHist.length>6000)rtHist.splice(0,2000);
+ if(!isFinite(rMw)||rMw>1e6)rtInit();
+ if(rMw<3){const pts=rtHist.filter(q=>q[1]>.3&&q[1]<3);if(pts.length>=8){const n=pts.length,mt=pts.reduce((a,q)=>a+q[0],0)/n,ml=pts.reduce((a,q)=>a+Math.log(q[1]),0)/n;let nu=0,de=0;for(const q of pts){nu+=(q[0]-mt)*(Math.log(q[1])-ml);de+=(q[0]-mt)**2;}rtSig=nu/de;}}
+ const d=rim.data;for(let j=0;j<=RZ;j++)for(let i=0;i<RX;i++){const q=((RZ-j)*RX+i)*4,c=cmap(Math.max(-1,Math.min(1,rth[j*RX+i]*2))).match(/\d+/g);d[q]=+c[0];d[q+1]=+c[1];d[q+2]=+c[2];d[q+3]=255;}
+ rlx.putImageData(rim,0,0);const[x,W,H]=fit(cv29);x.imageSmoothingEnabled=true;x.drawImage(rlc,0,0,W,H);
+ if(++rtFr%8==0){const k=2*Math.PI*(+rtM.value)/RL,si=Math.sqrt(B*k/2);rtd.innerHTML=`B=${B.toExponential(1)} · Pr=${Pr} · m=${rtM.value} (파장 ${(RL/+rtM.value).toFixed(2)}, k=${k.toFixed(2)}) · t=${rT.toFixed(4)}<br>선형 성장률 상한 σ_이론=√(B·k/2)=<b>${si.toFixed(1)}</b> · 수치 측정 σ=<b>${isFinite(rtSig)?rtSig.toFixed(1)+" ("+(rtSig/si).toFixed(2)+"배)":"선형 구간 측정 중/이미 지남"}</b> · 최대 |w|=${rMw.toFixed(1)}<br>무거운 유체가 위에 있어 섭동이 지수적으로 자라 버블(위로 올라가는 가벼운 기둥)과 스파이크(아래로 떨어지는 무거운 기둥)로 발달합니다. 점성·확산이 클수록(작은 B) 성장률이 상한보다 줄어듭니다.`;}}
+ requestAnimationFrame(rtA);}
+let osR=null;const osPts=[];for(let i=0;i<500;i++)osPts.push([Math.random(),Math.random()*2-1]);
+function osCalc(){const Re=+osre.value,al=+osal.value,S=osSetup(OSN,al,Re);let best=null;for(const cr of[.26,.38,.5,.18]){try{const r=osEig(S,[cr,-.01]);if(r.c[0]>.05&&r.c[0]<.95&&isFinite(r.c[1])&&(!best||r.c[1]>best.c[1]))best=r;}catch(e){}}
+ if(!best)return null;const n=S.n;let mx=0;for(let i=0;i<n;i++)mx=Math.max(mx,Math.hypot(best.xr[i],best.xi[i]));const pr=new Float64Array(n),pi=new Float64Array(n),dr=new Float64Array(n),di=new Float64Array(n);
+ for(let i=0;i<n;i++){pr[i]=best.xr[i]/mx;pi[i]=best.xi[i]/mx;}for(let i=0;i<n;i++){let a=0,b=0;for(let j=0;j<n;j++){a+=S.D[i*n+j]*pr[j];b+=S.D[i*n+j]*pi[j];}dr[i]=a;di[i]=b;}
+ return{c:best.c,n,x:S.x,pr,pi,dr,di,al,Re};}
+const OSN=48;
+function osInterp(a,y){const n=OSN+1,f=Math.acos(Math.max(-1,Math.min(1,y)))/Math.PI*OSN,j=Math.max(0,Math.min(OSN-1,Math.floor(f))),w=f-j;return a[j]*(1-w)+a[j+1]*w;}
+function osRend(){oOr.textContent=osre.value;oOa.textContent=(+osal.value).toFixed(2);oOe.textContent=osep.value;const r=osR=osCalc();if(!r){osd.textContent="이 매개변수에서 TS 모드를 찾지 못했습니다.";return;}
+ const wi=r.al*r.c[1],crit=Re=>Re>5772.22;
+ osd.innerHTML=`c = ${r.c[0].toFixed(5)} ${r.c[1]<0?"−":"+"} ${Math.abs(r.c[1]).toExponential(2)}i · 위상속도 c_r=${r.c[0].toFixed(4)} · 성장률 ω_i=αc_i=<b>${wi.toExponential(2)}</b> ${wi>0?`(불안정 — 진폭이 e배가 되는 시간 ${(1/wi).toFixed(0)} · h/U_c)`:"(안정 — 교란이 감쇠)"}<br>임계점(문헌): Re_c=5772.22, α_c=1.02056, c_c=0.26400 — 현재 Re=${r.Re}는 ${r.Re>5772.22?"임계값을 넘어 일부 α에서 불안정할 수 있습니다":"임계값 아래라 모든 α에서 선형 안정합니다"}.<br>TS 파는 벽 가까이(임계층, U≈c_r인 높이)에서 진폭이 큽니다 — 아래 고유함수 그림에서 확인하세요.`;
+ const ys=[];for(let i=0;i<r.n;i++)ys.push(i);plot(cv32,[{n:"|φ|",y:Array.from(r.pr,(v,i)=>Math.hypot(v,r.pi[i])),c:css("--ac")},{n:"|φ′|",y:Array.from(r.dr,(v,i)=>Math.hypot(v,r.di[i])*.3),c:css("--neg")}],0,{xa:["y=+1","y=−1"]});}
+let osMapD=null,osBusy=false;const OSMN=36,OSMA=[.3,1.4],OSMR=[3,4.5];
+function osMapRun(){if(osMapD||osBusy)return;osBusy=true;const N=36,ci=[];let col=0;
+ const step=()=>{const al=OSMA[0]+(OSMA[1]-OSMA[0])*col/(OSMN-1),row=[];let prev=null;
+  for(let r=0;r<OSMN;r++){const Re=Math.pow(10,OSMR[0]+(OSMR[1]-OSMR[0])*r/(OSMN-1)),S=osSetup(N,al,Re);let best=null;const shifts=prev?[[prev[0],prev[1]]]:[[.26,-.01],[.38,-.01],[.5,-.01],[.18,-.01],[.6,-.01]];
+   for(const s of shifts){try{const e=osEig(S,s);if(e.c[0]>.05&&e.c[0]<.95&&isFinite(e.c[1])&&(!best||e.c[1]>best.c[1]))best=e;}catch(e){}}
+   if(best){prev=best.c;row.push(al*best.c[1]);}else row.push(NaN);}
+  ci.push(row);col++;osp.textContent=` 계산 중 ${col}/${OSMN}`;
+  if(col<OSMN)setTimeout(step,0);else{osMapD=ci;osBusy=false;osp.textContent="";osDrawMap();}};setTimeout(step,0);}
+function osDrawMap(){if(!osMapD)return;const[x,W,H]=fit(cv31),ml=40,mb=24,mt=6,mr=8,pw=W-ml-mr,ph=H-mb-mt,c=document.createElement("canvas");c.width=OSMN;c.height=OSMN;const g=c.getContext("2d"),im=g.createImageData(OSMN,OSMN);
+ for(let a=0;a<OSMN;a++)for(let r=0;r<OSMN;r++){const v=osMapD[a][r],q=((OSMN-1-a)*OSMN+r)*4;let cc=[220,220,220];if(isFinite(v)){const s=v>0?Math.min(1,v/6e-4):-Math.min(1,-v/3e-3);cc=cmap(s).match(/\d+/g).map(Number);}im.data[q]=cc[0];im.data[q+1]=cc[1];im.data[q+2]=cc[2];im.data[q+3]=255;}
+ g.putImageData(im,0,0);x.imageSmoothingEnabled=true;x.drawImage(c,ml,mt,pw,ph);x.strokeStyle=css("--bd");x.strokeRect(ml,mt,pw,ph);x.fillStyle=css("--mut");x.font="11px system-ui";
+ for(const lg of[3,3.5,4,4.5]){const X=ml+pw*(lg-OSMR[0])/(OSMR[1]-OSMR[0]);x.fillText("10^"+lg,X-14,H-8);}for(const al of[.4,.7,1,1.3]){const Y=mt+ph*(1-(al-OSMA[0])/(OSMA[1]-OSMA[0]));x.fillText(al,4,Y+4);}
+ const P=(Re,al)=>[ml+pw*(Math.log10(Re)-OSMR[0])/(OSMR[1]-OSMR[0]),mt+ph*(1-(al-OSMA[0])/(OSMA[1]-OSMA[0]))],pc=P(5772.22,1.02056);x.strokeStyle="#111";x.lineWidth=1.5;x.beginPath();x.moveTo(pc[0]-6,pc[1]);x.lineTo(pc[0]+6,pc[1]);x.moveTo(pc[0],pc[1]-6);x.lineTo(pc[0],pc[1]+6);x.stroke();
+ if(osR){const cp=P(osR.Re,osR.al);x.fillStyle="#111";x.beginPath();x.arc(cp[0],cp[1],4.5,0,7);x.fill();}x.fillStyle=css("--fg");x.fillText("x: log Re, y: α · ✕=임계점 · ●=현재",ml+4,mt+12);}
+function osA(now){if(tab==16&&osR){const r=osR,dt=Math.min(.05,Math.max(0,(now-(osA.l||now))/1e3));osA.l=now;osA.t=(osA.t||0)+dt*.5;const[x,W,H]=fit(cv30),Lx=4*Math.PI/r.al,ep=+osep.value,cr=r.c[0],X=q=>q/Lx*W,Y=y=>H/2-y*(H*.42);
+ x.fillStyle="rgba(120,120,120,.2)";x.fillRect(0,0,W,H*.08);x.fillRect(0,H*.92,W,H*.08);x.strokeStyle=css("--fg");x.lineWidth=2;x.beginPath();x.moveTo(0,H*.08);x.lineTo(W,H*.08);x.moveTo(0,H*.92);x.lineTo(W,H*.92);x.stroke();
+ x.lineWidth=1.5;for(const p of osPts){const px=p[0]*Lx,y=p[1],th=r.al*(px-cr*osA.t),c=Math.cos(th),s=Math.sin(th),pr=osInterp(r.pr,y),pi=osInterp(r.pi,y),dr=osInterp(r.dr,y),di=osInterp(r.di,y),U=1-y*y,u=U+ep*(dr*c-di*s),v=ep*r.al*(pr*s+pi*c);
+  p[0]+=u*dt*.5/Lx;p[1]+=v*dt*.5;if(p[0]>1){p[0]-=1;}if(p[1]>.99||p[1]<-.99){p[1]=Math.max(-.98,Math.min(.98,p[1]));}
+  x.strokeStyle=cmap(Math.max(-1,Math.min(1,(u-U)/(ep*1.2)))); x.beginPath();x.moveTo(X(px-u*.08),Y(y-v*.08));x.lineTo(X(px),Y(y));x.stroke();}
+  x.fillStyle=css("--fg");x.font="11px system-ui";x.fillText("흐름 →  (색: 유속 편차 u−U)",6,H-4);}
+ requestAnimationFrame(osA);}
+ENTER[7]=()=>{rMode=0;rInit();};ENTER[15]=()=>{rtRend();rtInit();};ENTER[16]=()=>{osRend();osMapRun();osDrawMap();};
+const REND=[null,rosR,rVen,rSST,zRend,lRend,bRend,rRend,aRend,tRend,sRend,lzRend,wRend,whRend,cRend,rtRend,()=>{osRend();osDrawMap();}];
+["혈류","Rossby파","캐비테이션 벤투리","SST 블렌딩","압축성 노즐","카르만 와류열","기포 붕괴","열대류","날개 단면","2D 난류","댐 붕괴","로렌츠 끌개","수면파 분산","수격 현상","공동 유동","레일리–테일러","Orr–Sommerfeld"].forEach((n,i)=>{const b=document.createElement("button");b.textContent=n;if(!i)b.className="on";b.onclick=()=>{tab=i;document.querySelectorAll(".pane").forEach((e,j)=>e.classList.toggle("on",j==i));[...tabs.children].forEach((e,j)=>e.classList.toggle("on",j==i));requestAnimationFrame(()=>{ENTER[i]&&ENTER[i]();REND[i]&&REND[i]();});};tabs.appendChild(b);});
+addEventListener("resize",()=>REND[tab]&&REND[tab]());
+[["rk","rl","rU","rP","rD"],rosR,["vu","vr","vp"],rVen,["sR","sY"],rSST,["zp","zt","zg","ze","za"],zRend,["lre","lsp"],lRend,["br","bg","bsp"],bRend,["ra","rpr","rsp"],rRend,["aa","ae","ac"],aRend,["tnu","tsp"],tRend,["dh","dr","dsp"],sRend,["lzr","lzd","lzs"],lzRend,["wh","wl","wl2","wsp"],wRend,["hv","htc","ha","hf","hs"],whRend,["cs"],cRend,["rtB","rtM","rtP"],rtParamChange,["rtS"],rtRend,["osre","osal","osep"],()=>{osRend();osDrawMap();}].forEach((v,i,a)=>{if(i%2==0)v.forEach(id=>document.getElementById(id).addEventListener("input",a[i+1]));});
+bK.onclick=()=>{P.cmp=!P.cmp;sync();update();};
+requestAnimationFrame(rosA);requestAnimationFrame(nzA);whInit();hrst.onclick=()=>{whInit();};requestAnimationFrame(whA);cInit();requestAnimationFrame(cvA);
+for(const re of [100,400,1000]){const b=document.createElement("button");b.textContent="Re="+re;b.onclick=()=>{cRe=re;cInit();};cpre.appendChild(b);}
+rtRst.onclick=()=>{rtInit();};osc.onclick=()=>{osre.value=5772;osal.value=1.02;osRend();osDrawMap();};requestAnimationFrame(rtA);requestAnimationFrame(osA);
+lzInit();lzrst.onclick=()=>{lzInit();};requestAnimationFrame(lzmA);requestAnimationFrame(wmA);tIC(0);sInit();drst.onclick=()=>{sInit();};requestAnimationFrame(tmA);requestAnimationFrame(dmA);
+for(const [i,nm] of ["소용돌이 합체","다이폴(반대 부호 쌍)","무작위 난류","켈빈–헬름홀츠(전단층)","Taylor–Green(해석해)"].entries()){const b=document.createElement("button");b.textContent=nm;b.onclick=()=>{tKind=i;tIC(i);};tpre.appendChild(b);}
+rInit();rrst.onclick=()=>{rInit();};requestAnimationFrame(rbA);requestAnimationFrame(apA);lInit();lrst.onclick=()=>{lInit();};requestAnimationFrame(lmA);requestAnimationFrame(bbA);
+sync();sol=solve(P);metrics();requestAnimationFrame(draw);
+</script></body></html>
