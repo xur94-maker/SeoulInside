@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
+      "title": "Trump announces deal for Russian diesel as Zelensky calls it a gift to Putin",
+      "link": "https://www.bbc.co.uk/news/articles/cm1dwgr666wno?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 10 Oct 2026 00:45:51 GMT",
+      "desc": "Ukraine's president sharply criticised the move, calling it an \"investment in war that must be ended, not prolonged\"."
+    },
+    {
+      "title": "Analysis: Trump's shock Russia deal highlights mounting pressure to curb fuel prices",
+      "link": "https://www.bbc.co.uk/news/articles/c5lye9z4xw4yo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 09 Oct 2026 22:30:22 GMT",
+      "desc": "The US president hopes to ease his party's pain before next month's midterm elections, writes the BBC's North America correspondent."
+    },
+    {
       "title": "US unveils sanctions on ICC in move court condemns as 'assault on rule of law'",
       "link": "https://www.bbc.co.uk/news/articles/cj20vkkx3rdvo?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 09 Oct 2026 18:40:10 GMT",
       "desc": "Several member states of the international tribunal, including the UK, say they \"strongly disagree\" with the sanctions."
     },
     {
-      "title": "Navi Pillay, former UN human rights chief, wins Nobel Peace Prize",
-      "link": "https://www.bbc.co.uk/news/articles/cm9wz5kng0x1o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 09 Oct 2026 17:37:10 GMT",
-      "desc": "Pillay is recognised for her \"efforts to promote peace and international law\", the Norwegian Nobel Committee says."
+      "title": "Thousands of security personnel deployed as Delhi braces for ‘cockroach’ protest",
+      "link": "https://www.bbc.co.uk/news/articles/cm2d6xd2g4w2o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 09 Oct 2026 23:02:07 GMT",
+      "desc": "Several trains to Delhi have been cancelled and dozens of metro stations are shut to stop protesters from gathering."
     },
     {
       "title": "JD Vance casts doubt on firing squad execution and says he will not watch it",
       "link": "https://www.bbc.co.uk/news/articles/ck20r39nl3qzo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 09 Oct 2026 18:40:05 GMT",
+      "date": "Fri, 09 Oct 2026 21:50:47 GMT",
       "desc": "The planned execution of Nidal Hasan by firing squad would be the first military execution in more than 60 years."
-    },
-    {
-      "title": "Russian search engine Yandex struggles after Ukrainian strikes on data centres",
-      "link": "https://www.bbc.co.uk/news/articles/c68xzqqn4ekro?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 09 Oct 2026 17:14:44 GMT",
-      "desc": "Often dubbed \"Russia's Google\", the tech firm admits customers may experience disruption to digital services due to the attacks."
-    },
-    {
-      "title": "Thieves steal 30,000 bottles of wine worth €5m in Italy, reports say",
-      "link": "https://www.bbc.co.uk/news/articles/cme3xl8ln2vko?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 09 Oct 2026 09:09:03 GMT",
-      "desc": "The heist at the Florence-based winery is believed to be one of the largest thefts of its kind in Italy."
     }
   ],
   "koreaNews": [
+    {
+      "title": "Trump’s push for $50B Korean investment in Alaska gasline faces familiar economic challenges - Alaska Public Media",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPcnNVUDRDRTk1aFZJR3J6ekIwa3Rzcm5IZUdlRUdGV3cxRjlldTNmZEh4c2E4MWx1VGRRbGx6eUNUS1ZxZE5ha2oxcHdvMjR4dnN2M21KWVowZEc3RHlDemg1dU9ZbDlYczBicEZDZDRDdmtoSGxGNG03R2p1OU1hQkpneVBYSTBfVlVGeEdZbFd6cmlrNDE5bnBPWXZPVV80QzFyOVhmVEROT2hvaUxkeEhTdmJyT203YUlpMXlIOElELUp1MExMT3FOQWRya2hqZ2Naem5EUndzcnUzeUtj?oc=5",
+      "date": "Sat, 10 Oct 2026 00:57:00 GMT",
+      "desc": "Trump’s push for $50B Korean investment in Alaska gasline faces familiar economic challenges&nbsp;&nbsp;Alaska Public Media"
+    },
     {
       "title": "What Americans Think of the U.S.-South Korea Alliance Before the Midterms - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaWFCY256TnhiYWdLb2dfTVpQNnhYb0E5OE9RRy1wQk1jajJxNjFTRWZxN1BCc1FDM0UtLUFkT2lfM0d1YzBRVUwzOFE1RzhzYVJqckZhOHo4bUQtZlg3bm4zTHQzRTZxd3BrTzlYX2ctT01BeGFvZ0pSdmNTUG9DSF8wcjZwV2NOa0lkUXZpWDgxbTRWNm5fYVp4ZVl2WVJ6ck5Qaw?oc=5",
@@ -51,16 +57,10 @@
       "desc": "South Korea unveils $747 billion energy transition plan through 2035&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea’s central bank is smart not to kill this boom - The Japan Times",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOdW9Sb2J4TEhMaE02RF9UajNGQ3Z6Z293S25LcFkta2JxTHQ1emxpVHYwbEJ0cFF2Y0tnVENSZDRvNGVHWDg5T1ZvNW5ZSGkwSWJNeUZyWHZYeHc5ajF4eEVlQVFEcmpwSW10UHc3aklzY2tXSmk5Qmp2R19TNlpDa2hZTmVTOEc2NjRPRHF5b0RTOUNEb0NmelNEZ0dvZw?oc=5",
-      "date": "Fri, 09 Oct 2026 02:03:00 GMT",
-      "desc": "South Korea’s central bank is smart not to kill this boom&nbsp;&nbsp;The Japan Times"
-    },
-    {
-      "title": "Yazd, South Korea Explore Investment Opportunities as Economic Diplomacy Expands - Financial Tribune",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9aNlB1M1JpNHUtYnpmQ1d5clV3VmJOaUdHcm9jX2pHbGF3UllJbVdzTjNSRHFnN0VwaVNzclRnUk42Z3dVa1FOZlhwdmcwT3N4LUE?oc=5",
-      "date": "Fri, 09 Oct 2026 12:48:11 GMT",
-      "desc": "Yazd, South Korea Explore Investment Opportunities as Economic Diplomacy Expands&nbsp;&nbsp;Financial Tribune"
+      "title": "South Korea, U.S., Japan join push against China's overcapacity - upi",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxORmI5bjl1V09LTVJNbnVHT0RNdC0zZFI2dVRhbDFmaDNZd0hlVDd6Z1VaZjdpazRpLVRNcm9wejB6Y3hRem1fcGpaQjFTRVNvN3dNd1UzdDVrOWRvY3pmSS05TmRsbWJkWHRRS3duTkJqdjRfSTE2aTRnd3lrWTVRM0tOUUdKRUZ4QjNORUVHRkVGbnBuZjF6VWV3TDBwc1XSAaQBQVVfeXFMTWVHZkh5bDhsSU5FZXluX29abU81UC1IR1Fib3ZlMGNlc3RaM0thMTVQRVFLMmpKOHRxSk8zLU9FdDF0MVNJcE0wSmgwcWlQVnNjUVZYMnc3SXcwcG00MEFxWkZvVW9yb1VCMEJPMFc5N1JmM0N6M0Vjb0tEYjZ4clJPemdqUDNodkx4c0YySzJpb2N4SWllVTFSOXJUUnA4c0UxcFI?oc=5",
+      "date": "Fri, 09 Oct 2026 23:54:31 GMT",
+      "desc": "South Korea, U.S., Japan join push against China's overcapacity&nbsp;&nbsp;upi"
     },
     {
       "title": "Samsung, SK Hynix record earnings fuel South Korea spending on AI, youth - Nikkei Asia",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 229.69,
-      "change": -7.78,
-      "pct": -3.27,
+      "price": 229.28,
+      "change": -8.19,
+      "pct": -3.45,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 451.68,
-      "change": -20.52,
-      "pct": -4.35,
+      "price": 453.31,
+      "change": -18.89,
+      "pct": -4.0,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 610.3,
-      "change": -35.56,
-      "pct": -5.51,
+      "price": 608.1,
+      "change": -37.76,
+      "pct": -5.85,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 105.12,
-      "change": -8.0,
-      "pct": -7.07,
+      "price": 104.7,
+      "change": -8.42,
+      "pct": -7.44,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 174.41,
-      "change": -2.71,
-      "pct": -1.53,
+      "price": 175.5,
+      "change": -1.62,
+      "pct": -0.91,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 267.47,
-      "change": -26.9,
-      "pct": -9.14,
+      "price": 266.28,
+      "change": -28.09,
+      "pct": -9.54,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 351.44,
-      "change": 0.94,
-      "pct": 0.27,
+      "price": 351.66,
+      "change": 1.16,
+      "pct": 0.33,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 338.1,
-      "change": 1.43,
-      "pct": 0.42,
+      "price": 336.64,
+      "change": -0.03,
+      "pct": -0.01,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 536.26,
-      "change": 6.5,
-      "pct": 1.23,
+      "price": 535.07,
+      "change": 5.31,
+      "pct": 1.0,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7816.89,
-      "change": 15.12,
-      "pct": 0.19,
+      "price": 7811.54,
+      "change": 9.77,
+      "pct": 0.13,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27375.1,
-      "change": -163.59,
-      "pct": -0.59,
+      "price": 27366.17,
+      "change": -172.52,
+      "pct": -0.63,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1340.24,
-      "change": 1.16,
-      "pct": 0.09,
+      "price": 1340.02,
+      "change": 0.94,
+      "pct": 0.07,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-09 19:08 UTC"
+  "updatedAt": "2026-10-10 01:27 UTC"
 }
