@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inflation Targeting Interactive | Seoul Inside</title>
+<style>
+:root{--bg:#fafaf7;--fg:#1d1d1b;--mu:#6b6b66;--card:#fff;--bd:#dcdcd4;--ac:#1f5fbf;--ac2:#c2410c;--ok:#2f7d4f;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#16161a;--fg:#ececea;--mu:#9a9a94;--card:#1f1f25;--bd:#33333b;--ac:#6ea0f0;--ac2:#f08a4b;--ok:#6fcf97}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif}
+body{max-width:760px;margin:0 auto;padding:16px 14px 40px}
+h1{font-size:1.35rem;margin:.2rem 0}h2{font-size:1.05rem;margin:.2rem 0 .5rem}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sub{color:var(--mu);font-size:.85rem;margin:0 0 12px}
+button{font:inherit;cursor:pointer;border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:8px;padding:7px 12px}
+button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin:10px 0}
+.note{color:var(--mu);font-size:.82rem}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.dots{display:flex;align-items:flex-end;gap:6px;height:190px;border-bottom:2px solid var(--bd);padding:0 4px;overflow-x:auto}
+.col{flex:1;min-width:44px;display:flex;flex-direction:column-reverse;align-items:center;gap:3px;cursor:pointer;height:100%;justify-content:flex-start}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--ac)}
+.col.med .dot{background:var(--ac2)}
+.lbl{display:flex;gap:6px;padding:0 4px}.lbl span{flex:1;min-width:44px;text-align:center;font-size:.78rem;color:var(--mu)}
+.fact{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--bd);padding:5px 0;font-size:.92rem}
+.fact b{white-space:nowrap}
+label{display:block;padding:4px 0;font-size:.93rem}
+.res{border-left:4px solid var(--ac);padding:6px 12px;margin-top:10px;background:color-mix(in srgb,var(--ac) 8%,transparent)}
+.bar{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:.9rem}.bar i{display:block;height:10px;border-radius:5px;background:var(--ac)}
+svg{width:100%;height:auto;display:block}
+.foot{font-size:.78rem;color:var(--mu);margin-top:18px;border-top:1px solid var(--bd);padding-top:10px}
+</style>
+</head>
+<body>
+<div class="top"><h1 id="h"></h1><div><button id="lg" aria-label="language"></button></div></div>
+<p class="sub" id="sb"></p>
+<div class="tabs" id="tabs"></div>
+<div id="app"></div>
+<div class="foot" id="ft"></div>
+<script>
+const T={
+en:{h:"Inflation Targeting: Try It Yourself",sb:"Companion to the article. Data as of Oct 12, 2026.",lang:"한국어",
+tabs:["Dot plot","You vote","Prices"],
+d_t:"How Bank of Korea board members saw the rate path (dot plot)",d_p:"Each member gives 3 dots = 21 dots. Tap a column to see its count. Orange = median.",
+may:"May 2026",aug:"Aug 2026",med:"Median",moved:"In three months the median moved from 3.00% to 3.25%, and the top dots moved from 3.25% to 3.50%.",cnt:"dots at",
+v_t:"You are on the Monetary Policy Board",v_p:"Read the facts, decide, then tick the reasons that drove you.",
+r1:"Meeting 1 · July 16, 2026",r2:"Meeting 2 · Aug 27, 2026",
+f1:[["Headline inflation (June)","3.2%"],["Core inflation (June)","2.5%"],["Oil","Fell after June, partly rebounded in July"],["Won","Weak: ~1,550 → upper 1,400s per USD"],["Growth","Strong, led by chips & exports"],["Housing / household loans","Rising in Seoul area"]],
+f2:[["Headline inflation (July)","2.8%"],["Rate now","2.75%"],["Won","Sharply stronger; foreign outflows eased"],["Growth outlook","3.3% (2026)"],["Core inflation outlook","2.5%"],["Housing / household loans","Still rising"]],
+hike:"Raise 0.25pp",hold:"Hold",why:"Your reasons (tick any):",
+rs:{A:"Wait too long and expectations may slip (credibility)",B:"This is mostly a supply shock; look through it",C:"Housing and household debt worry me",D:"Demand is building (exports, incomes)",E:"Weak won is raising costs"},
+go:"Show result",act:"What actually happened",
+a1:"Raised to 2.75%, unanimous 7–0.",a2:"Raised to 3.00%, 6–1. One member (Hwang Kunil) voted to hold: the won had recovered and it was too early to tell if demand-driven inflation was lasting.",
+lean:"Your reasons lean toward",lA:"A: restored credibility",lB:"B: look-through / flexibility",lC:"C: financial stability",lD:"Demand pressure (the 'not purely supply' point)",lE:"Exchange rate (strong in July, weaker case in August)",
+next:"Next meeting →",again:"Start over",done:"Both meetings done. Next scheduled: Oct 22 (no new dot plot; next one Nov 26).",
+p_t:"Korean consumer prices (headline, year on year)",p_p:"Target is 2%. The government estimated September would have been 3.5% without the petroleum price cap.",cap:"Show 'no price cap' estimate (Sept only)",tg:"Target 2%",
+dis:"Educational tool built from the article's data, not a forecast or advice. Sources: Bank of Korea statements and minutes as reported in the press; Statistics Korea CPI as reported. Core inflation definition not specified in the minutes."},
+ko:{h:"인플레이션 타겟팅: 직접 해보기",sb:"본문의 보조 자료입니다. 2026년 10월 12일 기준.",lang:"English",
+tabs:["점도표","내가 투표","물가"],
+d_t:"한국은행 금융통화위원들이 본 금리 경로(점도표)",d_p:"위원 1명이 점 3개, 총 21개입니다. 열을 누르면 개수가 보입니다. 주황색은 중간값입니다.",
+may:"2026년 5월",aug:"2026년 8월",med:"중간값",moved:"석 달 사이 중간값은 3.00%에서 3.25%로, 최상단 점은 3.25%에서 3.50%로 올랐습니다.",cnt:"점 개수",
+v_t:"당신은 금융통화위원입니다",v_p:"상황을 읽고 결정한 뒤, 판단 이유를 골라 보세요.",
+r1:"1차 회의 · 2026.7.16",r2:"2차 회의 · 2026.8.27",
+f1:[["소비자물가(6월)","3.2%"],["근원물가(6월)","2.5%"],["유가","6월 이후 하락, 7월 일부 반등"],["원화","약세: 달러당 약 1,550원 → 1,400원대 후반"],["성장","반도체·수출 중심으로 강함"],["집값·가계대출","수도권 상승세"]],
+f2:[["소비자물가(7월)","2.8%"],["현재 금리","2.75%"],["원화","크게 강세, 외국인 자금 유출 완화"],["성장 전망","3.3%(2026)"],["근원물가 전망","2.5%"],["집값·가계대출","여전히 상승"]],
+hike:"0.25%p 인상",hold:"동결",why:"판단 이유(복수 선택):",
+rs:{A:"너무 늦으면 물가 기대가 흔들릴 수 있다(신뢰)",B:"주로 공급충격이라 넘겨봐야 한다",C:"집값과 가계부채가 걱정된다",D:"수요 압력이 커지고 있다(수출, 소득)",E:"원화 약세가 비용 부담을 키운다"},
+go:"결과 보기",act:"실제 결과",
+a1:"2.75%로 인상, 7대 0 만장일치.",a2:"3.00%로 인상, 6대 1. 황건일 위원 1명이 동결 의견: 원화가 회복됐고 수요발 물가가 지속적인지 판단하기엔 이르다는 논리였습니다.",
+lean:"당신의 이유가 기운 방향",lA:"A: 신뢰 회복",lB:"B: 넘겨보기(유연성)",lC:"C: 금융 안정",lD:"수요 압력(‘순수한 공급충격이 아니다’라는 지점)",lE:"환율(7월엔 강한 근거, 8월엔 약해짐)",
+next:"다음 회의 →",again:"처음부터",done:"두 회의 모두 끝났습니다. 다음 일정은 10월 22일(점도표 없음, 다음 점도표는 11월 26일).",
+p_t:"한국 소비자물가(종합, 전년 동월 대비)",p_p:"목표는 2%입니다. 정부는 석유제품 최고가격제가 없었다면 9월 물가가 3.5%였을 것으로 추정했습니다.",cap:"‘최고가격제 없음’ 추정치 보기(9월만)",tg:"목표 2%",
+dis:"본문 데이터로 만든 교육용 도구이며 예측이나 조언이 아닙니다. 출처: 언론에 보도된 한국은행 결정문과 의사록, 보도된 통계청 소비자물가. 근원물가의 정의는 의사록에 명시돼 있지 않습니다."}};
+const D={may:{"2.50":2,"2.75":7,"3.00":10,"3.25":2},aug:{"3.00":5,"3.25":10,"3.50":6}},M={may:"3.00",aug:"3.25"};
+const L=["2.50","2.75","3.00","3.25","3.50"];
+const S={lang:"en",tab:0,dm:"aug",pick:null,rd:0,ch:null,rs:[],shown:false,cap:false,hist:[]};
+const t=()=>T[S.lang],$=id=>document.getElementById(id);
+function dots(){const t_=t(),d=D[S.dm];
+let h=`<div class="card"><h2>${t_.d_t}</h2><p class="note">${t_.d_p}</p><div class="row"><button class="${S.dm=="may"?"on":""}" onclick="S.dm='may';S.pick=null;R()">${t_.may}</button><button class="${S.dm=="aug"?"on":""}" onclick="S.dm='aug';S.pick=null;R()">${t_.aug}</button></div><div class="dots">`;
+L.forEach(l=>{const n=d[l]||0;h+=`<div class="col ${l==M[S.dm]?"med":""}" onclick="S.pick='${l}';R()">${"<span class=dot></span>".repeat(n)}</div>`});
+h+=`</div><div class="lbl">${L.map(l=>`<span>${l}%</span>`).join("")}</div>`;
+h+=`<p><b>${t_.med}: ${M[S.dm]}%</b>${S.pick?` · ${S.pick}% → ${t_.cnt} <b>${d[S.pick]||0}</b>`:""}</p><div class="res">${t_.moved}</div></div>`;return h}
+function vote(){const t_=t(),r=S.rd,f=r?t_.f2:t_.f1;
+let h=`<div class="card"><h2>${t_.v_t}</h2><p class="note">${t_.v_p}</p><h2 style="margin-top:12px">${r?t_.r2:t_.r1}</h2>`;
+f.forEach(x=>h+=`<div class="fact"><span>${x[0]}</span><b>${x[1]}</b></div>`);
+if(!S.shown){h+=`<div class="row"><button class="${S.ch=="hike"?"on":""}" onclick="S.ch='hike';R()">${t_.hike}</button><button class="${S.ch=="hold"?"on":""}" onclick="S.ch='hold';R()">${t_.hold}</button></div>`;
+if(S.ch){h+=`<p class="note">${t_.why}</p>`;Object.keys(t_.rs).forEach(k=>h+=`<label><input type="checkbox" ${S.rs.includes(k)?"checked":""} onchange="tg('${k}')"> ${t_.rs[k]}</label>`);h+=`<div class="row"><button class="on" onclick="S.shown=true;R()">${t_.go}</button></div>`}}
+else{const k=["A","B","C","D","E"],c=k.map(x=>S.rs.includes(x)?1:0),lb={A:t_.lA,B:t_.lB,C:t_.lC,D:t_.lD,E:t_.lE};
+h+=`<div class="res"><b>${t_.act}:</b> ${r?t_.a2:t_.a1}</div><div class="res"><b>${t_.lean}:</b>`;
+k.forEach((x,i)=>h+=`<div class="bar"><i style="width:${c[i]*60+4}px"></i>${lb[x]}${c[i]?" ✓":""}</div>`);h+=`</div><div class="row">`;
+h+=r?`<button class="on" onclick="rst()">${t_.again}</button></div><p class="note">${t_.done}</p>`:`<button class="on" onclick="nx()">${t_.next}</button></div>`}
+return h+"</div>"}
+function tg(k){const i=S.rs.indexOf(k);i<0?S.rs.push(k):S.rs.splice(i,1)}
+function nx(){S.rd=1;S.ch=null;S.rs=[];S.shown=false;R()}
+function rst(){S.rd=0;S.ch=null;S.rs=[];S.shown=false;R()}
+function cpi(){const t_=t(),m=["Apr","May","Jun","Jul","Aug","Sep"],mk=["4월","5월","6월","7월","8월","9월"],v=[2.6,3.1,3.2,2.8,3.1,2.9],lab=S.lang=="en"?m:mk;
+const X=i=>40+i*50,Y=x=>150-(x-1.5)*60;let p=v.map((x,i)=>X(i)+","+Y(x)).join(" ");
+let s=`<svg viewBox="0 0 320 175" role="img"><line x1="40" x2="290" y1="${Y(2)}" y2="${Y(2)}" stroke="var(--ok)" stroke-dasharray="4 3"/><text x="292" y="${Y(2)+4}" font-size="9" fill="var(--ok)">${t_.tg}</text>`;
+[2,3,4].forEach(y=>s+=`<text x="4" y="${Y(y)+3}" font-size="9" fill="var(--mu)">${y}%</text>`);
+s+=`<polyline points="${p}" fill="none" stroke="var(--ac)" stroke-width="2.5"/>`;
+v.forEach((x,i)=>s+=`<circle cx="${X(i)}" cy="${Y(x)}" r="3.5" fill="var(--ac)"/><text x="${X(i)-9}" y="${Y(x)-8}" font-size="9" fill="var(--fg)">${x}</text><text x="${X(i)-8}" y="168" font-size="9" fill="var(--mu)">${lab[i]}</text>`);
+if(S.cap)s+=`<circle cx="${X(5)}" cy="${Y(3.5)}" r="4" fill="var(--ac2)"/><text x="${X(5)-8}" y="${Y(3.5)-8}" font-size="9" fill="var(--ac2)">3.5</text><line x1="${X(5)}" x2="${X(5)}" y1="${Y(3.5)}" y2="${Y(2.9)}" stroke="var(--ac2)" stroke-dasharray="2 2"/>`;
+return `<div class="card"><h2>${t_.p_t}</h2><p class="note">${t_.p_p}</p><label><input type="checkbox" ${S.cap?"checked":""} onchange="S.cap=this.checked;R()"> ${t_.cap}</label>${s}</svg></div>`}
+function R(){const t_=t();document.documentElement.lang=S.lang;$("h").textContent=t_.h;$("sb").textContent=t_.sb;$("lg").textContent=t_.lang;$("ft").textContent=t_.dis;
+$("tabs").innerHTML=t_.tabs.map((x,i)=>`<button class="${S.tab==i?"on":""}" onclick="S.tab=${i};R()">${x}</button>`).join("");
+$("app").innerHTML=[dots,vote,cpi][S.tab]()}
+$("lg").onclick=()=>{S.lang=S.lang=="en"?"ko":"en";R()};
+R();
+</script>
+</body>
+</html>
