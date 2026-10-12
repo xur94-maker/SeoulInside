@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Trump's 'energy ceasefire' claim welcomed by Zelensky but Russia silent",
+      "title": "Zelensky backs Trump's 'energy ceasefire' but says Russia continues to hit power plants",
       "link": "https://www.bbc.co.uk/news/articles/c6pvg4jyz1m0o?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 11 Oct 2026 21:36:40 GMT",
-      "desc": "Zelensky says Kyiv would support such a truce. Moscow has yet to comment."
+      "desc": "Ukraine's leader says he will support such a truce if Moscow does, after initially expressing surprise at Donald Trump's announcement."
+    },
+    {
+      "title": "Documents falsified to evade tax on Abramovich's wealth, BBC finds",
+      "link": "https://www.bbc.co.uk/news/articles/c64g1l5389kvo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 12 Oct 2026 05:00:52 GMT",
+      "desc": "Backdated paperwork also made the Russian oligarch’s yachts and mansions disappear from accounts, investigation finds."
+    },
+    {
+      "title": "Trump faces growing backlash over plans to import diesel from Russia",
+      "link": "https://www.bbc.co.uk/news/articles/cjn5v21py07vo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 11 Oct 2026 23:18:45 GMT",
+      "desc": "Both Republican and Democratic lawmakers have criticised the deal, which was announced weeks before the US midterm elections."
     },
     {
       "title": "One killed, 11 injured in second Houthi strike on Riyadh airport in two days",
@@ -13,60 +25,48 @@
       "desc": "The Saudi capital has been hit by multiple attacks from the Iran-backed Yemeni group over the weekend."
     },
     {
-      "title": "Poland detains man suspected of planning assassination of PM Tusk",
-      "link": "https://www.bbc.co.uk/news/articles/c6n9rvynl5p5o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 11 Oct 2026 17:27:24 GMT",
-      "desc": "Police received credible information about possible attacks against Donald Tusk and his defence minister."
-    },
-    {
-      "title": "Dozens of gold prospectors killed in strikes on Egypt-Sudan border, rights group says",
-      "link": "https://www.bbc.co.uk/news/articles/cqy43vrk8wv8o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 11 Oct 2026 21:12:44 GMT",
-      "desc": "Neither Egypt nor Sudan has commented on the alleged strikes on an artisanal mining camp on Saturday."
-    },
-    {
-      "title": "Homes and bridges swept away as fresh floods hit Nepal",
-      "link": "https://www.bbc.co.uk/news/articles/ck86zppejjw3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 11 Oct 2026 12:03:52 GMT",
-      "desc": "Nepal is still trying to recover from catastrophic floods that hit less than two months ago, leaving thousands dead and missing."
+      "title": "American ranchers wrestle with soaring costs - and their loyalty to Trump",
+      "link": "https://www.bbc.co.uk/news/articles/c6d7q5z17gp5o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 11 Oct 2026 23:13:51 GMT",
+      "desc": "Many farmers in states that backed the president say they are being hit from all sides, with the crucial midterm elections just weeks away."
     }
   ],
   "koreaNews": [
     {
-      "title": "Trump’s push for $50B Korean investment in Alaska gasline faces familiar economic challenges - Alaska Public Media",
-      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPcnNVUDRDRTk1aFZJR3J6ekIwa3Rzcm5IZUdlRUdGV3cxRjlldTNmZEh4c2E4MWx1VGRRbGx6eUNUS1ZxZE5ha2oxcHdvMjR4dnN2M21KWVowZEc3RHlDemg1dU9ZbDlYczBicEZDZDRDdmtoSGxGNG03R2p1OU1hQkpneVBYSTBfVlVGeEdZbFd6cmlrNDE5bnBPWXZPVV80QzFyOVhmVEROT2hvaUxkeEhTdmJyT203YUlpMXlIOElELUp1MExMT3FOQWRya2hqZ2Naem5EUndzcnUzeUtj?oc=5",
-      "date": "Sat, 10 Oct 2026 00:57:00 GMT",
-      "desc": "Trump’s push for $50B Korean investment in Alaska gasline faces familiar economic challenges&nbsp;&nbsp;Alaska Public Media"
+      "title": "Korean Industry Competitiveness Declines Without Semiconductors - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPS1RFRTNLN1pUYTd5OXh4R0xJWEJEUGxRblpKZ05ZRUZySHRJdHZsWEM4U3Y0MmJ5Y1hZNXZwOVZOQ3ZZeGFNaUJXZzBpNDE4X3BUcDJmbkpGOTgzSk9MczB1dHJBT0RYQkZoVm84VHZJeXpJVTQwVVNFVFBqSVliRHJrZEd0WW03QnloQjhB?oc=5",
+      "date": "Mon, 12 Oct 2026 08:42:12 GMT",
+      "desc": "Korean Industry Competitiveness Declines Without Semiconductors&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Finance minister calls for diversification of trade network amid uncertainties - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQSHlIN2oxT3doTUYxR1BlcEVYZlRteG5VUjJfdnZYdDdmQ0FVbEhwTm82OEtRSDZqTkFQZGFsbGh4X1FvMDlLQmJQMGYxcENjd0I5eEVpY0w4eGZMYWh6dm5fQkd5VkVfSUdQeWJmYzZQUmg1VHB3N29jNERCZktEbVJQVEc5QjdOMUZVaGhDbHlHNUNNSVpBU3duWmd5SGZSRDFZa2FqSlJBN1ViX1FuT0xwR2loZjJGRm4wNlhFSFpRUdIBxwFBVV95cUxOOWdOUnpURGlfVjJEVW54Rm9BWVRSckYyN05LNFB0V0syQVBmcHFpX0VYQVFMZGVsb2JHaVc5VUx5ay10RXFrR2pUVWZSR2RFdFBOUno1Nmtmbk5KXzRzTHotdjV4TDBsZ2d4ZkFvdEFILWhGT3JNSjJYbGZkdkVxVmkxbmxnRmVJYXgzUG9OYkpmUHZ4YjNBWnJ2c1laU2NudVZscmpPSFpXb2NGbnBqN3hCNUQ4Y25BdVUyM2dsYnFyX3F4QlNn?oc=5",
-      "date": "Mon, 12 Oct 2026 00:14:03 GMT",
-      "desc": "Finance minister calls for diversification of trade network amid uncertainties&nbsp;&nbsp;The Korea Times"
+      "title": "KDI warns S.Korea risks slipping into economic contraction from 2030 - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE90djJSSl9FYlp3WFdhUXNIQ3VZRWFPRVN6UG9PQk1VcVlVMTFscXJ4YXhhR0dwR0p6S0h2cnREZFNGaVJTdGx1ODhLOGwwR0ZWVUtlZ0VyS2h5eEtuelkxSXRIcFpUQng5V3c?oc=5",
+      "date": "Mon, 12 Oct 2026 09:01:32 GMT",
+      "desc": "KDI warns S.Korea risks slipping into economic contraction from 2030&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "South Korea’s exports hit record high on AI boom - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOX3NKUDFscG16UF9kbmVWUUdwb182Q2lOdDJweElBYTlwUE1NRXluZUdjSXp5STNweldSU1lGeUkydXhRWDctVFkxd0x2TGZNTDZneTREeENuRUVLQURJSzJzNHB5ZXFwa2VyUnM4MmtManF0M2xpY3VMM2tjOXdxNXlrazZZeC1nQzhYanNPaEtnQTdDd3fSAZsBQVVfeXFMT205N25lTE5OYnVTT2xseVhlVG9qQk01Q0ZfT2wwc3VaN3Y2V1N4UjNpZkNIVFRtbE8yeF9VQ29mRU1tUll3a056VVRXLVZhclRyeUJ4RkFGZ014WEM2MVNQREctcHY2ekpidXladzBCNEFrbFRkamdjSWdZX2xVeGNpeTEyVUsxaUlBZFlqcUF5UVNnWXZTbDdJOFk?oc=5",
-      "date": "Thu, 01 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s exports hit record high on AI boom&nbsp;&nbsp;Al Jazeera"
+      "title": "S. Korea's economic recovery yet to benefit households broadly: KDI - Yonhap News Agency",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1FN0c4Rk9LeEtCLVZHek92bWlFWkJ1RENkT19SSkxwQmQxR1NMSktxN3ZTQW0xZ09Ec3R5NGJMZTQ3c2dQYWRjY2xpNnIwbS1qbFZkVGktVGoxUQ?oc=5",
+      "date": "Mon, 12 Oct 2026 03:00:07 GMT",
+      "desc": "S. Korea's economic recovery yet to benefit households broadly: KDI&nbsp;&nbsp;Yonhap News Agency"
     },
     {
-      "title": "Shafaq News..South Korea’s Iraqi oil imports fall 45.6% - شفق نيوز",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE42ZVZDX25PdnZYeDJWVUdHOUJVSWpKdzRIUXY2c3FvbHo5eVBVWVpkVmlKN2FzU0ZSTjdQckdEUC1BajZzWHg2bXVhXzMwOFRLZnItQXlySUIyRVk0RnN6bm1WcTlOMW1LUHdYTENxRVhzN0pKNHpKM0ZHaw?oc=5",
-      "date": "Sun, 11 Oct 2026 10:54:20 GMT",
-      "desc": "Shafaq News..South Korea’s Iraqi oil imports fall 45.6%&nbsp;&nbsp;شفق نيوز"
+      "title": "South Korea's AI Export and Investment Boom Fails to Lift Consumption as Real Wages Stall, KDI Says - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE95WV80X1R0TjlBWWJiSFhvOW1YczJZdmZRblF3T1JSZUJ4SzNYanJtRUxOa0JIbXB4VFRKblg5VldqRERXZHhyd2dpOU1FQ2dRQ2lrS0NwM0hkMWJqclBGSU1mNTVlVHR1YWs1M0tzcV9CX2ttOGc?oc=5",
+      "date": "Mon, 12 Oct 2026 04:25:00 GMT",
+      "desc": "South Korea's AI Export and Investment Boom Fails to Lift Consumption as Real Wages Stall, KDI Says&nbsp;&nbsp;BigGo Finance"
     },
     {
-      "title": "South Korea’s $60 Billion Semiconductor Exports to Drive the KOSPI’s Resurgence - The Diplomat – Asia-Pacific Current Affairs Magazine",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPSTMtdlZzR2M2eEJDNWhJbTVRNkIzcUZUTUdKWDVaV1lMY29IVy0xM19MTDZmNGg4V2h2ODhEMG1ncmxJOFVsQXQ1MzNOUzZRZWk0Q1BqSm91S2VFcGlYTFNRYkd1ZVlYMzlXcU0tWVBhQnZKNVRCZ2p3cGFGajZiSm9semZKWm1oT2RhVUFBSG5nYXhjazhYZkk2WWc0RnZQZmZheU1UZnFQQ0xpRHc?oc=5",
-      "date": "Tue, 06 Oct 2026 15:30:46 GMT",
-      "desc": "South Korea’s $60 Billion Semiconductor Exports to Drive the KOSPI’s Resurgence&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
+      "title": "BOK chief says early rate hike ahead of Fed's minimized economic costs - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPSkRydzk0RHFMcUhIVDkxTlJldE9GLTFUanB5NWJLQTF0NTlwR3NDM1VLbHNTQ3JQMFJHZ25wV0Rud0FyWmF5TkhKT2JCazczd0VubGZORjFiU2FzTVp0bVNMcHptdGhxR0NmVUtXWllWaXNrN0JuTnhRTURPQVdnbmotd3dfcVM3cDdScXdxSld2T0tUOG53U05DOG13TW9DaWlibkxfMWR2THR0VzREcGF6bnowZ9IBuwFBVV95cUxQbmVUSzExUzBSV0hiNlkzRmFvX1Z6Z05ZQUlkcmJXNEpxWWpOVUJDRk40bThQTmRMcTNVYVZnMGdDbzI2YUFVVEl0R1d5OTBWU0pGX0xXOS1PS01aLWstMVVyWjhoNDg0b2dsLVNKUmlfeWFFODdPdWdaeV84R0YzMXZzWjctZUNVZlhXOE5EYzlMSG5hVGhSSWtYemNtWjBGb290bGJSZmNqVWFkbzJ2WWJ3RmZubVc0ZUM4?oc=5",
+      "date": "Mon, 12 Oct 2026 07:09:03 GMT",
+      "desc": "BOK chief says early rate hike ahead of Fed's minimized economic costs&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "Samsung, SK Hynix record earnings fuel South Korea spending on AI, youth - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNMFpfSlFYZlFmNnlzcG5jZ2RTS0EyTHBObzF6TGFSZDBqZ0tiMGpCODZEWC1MbUNVd0o1NC01SV9kNGlWaU1nU3V4UlZzeXRIR21fYXdfMkhNb3hzUzVpRVk2ZXZ4YllydWtEamNYWk14RHhiVXpaVWEzUmZFZ1NCUjFkRExRRU5IOXUwS194d3p5a0dwcmNVUExXM3R2R3Bwa0RRR3VZYTI4MjlheDVUNVg3c0FuN1hmNVc5cE41NWs?oc=5",
-      "date": "Thu, 08 Oct 2026 17:41:00 GMT",
-      "desc": "Samsung, SK Hynix record earnings fuel South Korea spending on AI, youth&nbsp;&nbsp;Nikkei Asia"
+      "title": "Samsung, SK Hynix Cover 80% of Semiconductor Power Costs - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPbVI0YTlDWG0zMXZqdWRUZ3p1czJLVUJrTW9UcFJkQ0VTTjV2ZmV2aXp0aEg5VTBQTEJHOWQ2enRSRHdIa0tpQkEyaTRiZW1MMTE0ZHNhWWRXY2FaT1dtOFNyR3pZdzZ5OVhfWW9mWWJGS0lzaV96VXZrWk1IZF9FWmNwZmdvdHJB?oc=5",
+      "date": "Mon, 12 Oct 2026 09:18:33 GMT",
+      "desc": "Samsung, SK Hynix Cover 80% of Semiconductor Power Costs&nbsp;&nbsp;조선일보"
     },
     {
       "title": "China’s CXMT makes progress in chip design pursued by Samsung, SK Hynix - South China Morning Post",
@@ -75,10 +75,10 @@
       "desc": "China’s CXMT makes progress in chip design pursued by Samsung, SK Hynix&nbsp;&nbsp;South China Morning Post"
     },
     {
-      "title": "VOO Doesn't Hold SpaceX, Taiwan Semiconductor, Samsung Electronics, SK Hynix, or ASML. Meet the Vanguard ETF That Does. - The Motley Fool",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPZFAyWmdyUXVYVnB0UkVSZ0dSREVrcjV0UFBncUZEOURwdGdVT3NMcDAyc3B5dHZaQWJiSjJCSGlxc0pxZXVLSlo3Njk1UDNhNDJIRFlCMnBOMWw2eXE3SVFJUHZXUnRrTHZRaEhWdjhEbXRoZExRN2ZEYVVaUEdHeFgxTVZMc1lXVXJlN25ETEwxYVlrb3lyeA?oc=5",
-      "date": "Sat, 10 Oct 2026 21:31:00 GMT",
-      "desc": "VOO Doesn't Hold SpaceX, Taiwan Semiconductor, Samsung Electronics, SK Hynix, or ASML. Meet the Vanguard ETF That Does.&nbsp;&nbsp;The Motley Fool"
+      "title": "[News] AI Interposers Grow Larger, Raising HBM4E Cooling Challenges: How Samsung, SK hynix Are Responding - TrendForce",
+      "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQbjkzWUVQNmdLUjNDSTlZXzRoV3p3MVFTX2lMMmFrVXlDTE1nVFU4dUQyR0xXYVFRTkVYYkpXR0dEOThlcldhNTRjZUk3RjRia3FKTkY4WWthczJKQ05yckVrUUtuRktGcFlPVWxtV3hzbWdTVEpXUTJscXpiT2VidXZjc1hPT2k1aVVzRWN4NkFiZVVrdUNfV29OZE9RUmJsWEVUblZRd0xTM0xaZ3Q3a3ExblVmVVhqWXFzMFQ5X3k2ZWNSRHpYWjVveXI3LUJsb19IQ2lMOU5CWXFz?oc=5",
+      "date": "Mon, 12 Oct 2026 00:06:06 GMT",
+      "desc": "[News] AI Interposers Grow Larger, Raising HBM4E Cooling Challenges: How Samsung, SK hynix Are Responding&nbsp;&nbsp;TrendForce"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 260250.0,
-      "change": -8250.0,
-      "pct": -3.07,
+      "price": 250500.0,
+      "change": -18000.0,
+      "pct": -6.7,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1643000.0,
-      "change": -80000.0,
-      "pct": -4.64,
+      "price": 1605000.0,
+      "change": -118000.0,
+      "pct": -6.85,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 328000.0,
-      "change": -8000.0,
-      "pct": -2.38,
+      "price": 320000.0,
+      "change": -16000.0,
+      "pct": -4.76,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 109900.0,
-      "change": 300.0,
-      "pct": 0.27,
+      "price": 108100.0,
+      "change": -1500.0,
+      "pct": -1.37,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 183900.0,
-      "change": -5100.0,
-      "pct": -2.7,
+      "price": 180500.0,
+      "change": -8500.0,
+      "pct": -4.5,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6560.7,
-      "change": -243.2,
-      "pct": -3.57,
+      "price": 6384.24,
+      "change": -419.66,
+      "pct": -6.17,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.28,
-      "change": -8.71,
-      "pct": -0.65,
+      "price": 1332.09,
+      "change": -10.9,
+      "pct": -0.81,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-12 03:13 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-12 10:02 UTC"
 }
