@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vertex Practice</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#14213d;--mute:#5b6b85;--line:#d8e1ee;--acc:#2563eb;--ok:#16a34a;--bad:#dc2626;--grid:#e3eaf4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1626;--card:#16213a;--ink:#e8eefc;--mute:#9db0d2;--line:#2a3a5e;--acc:#6d9bff;--ok:#4ade80;--bad:#f87171;--grid:#1f2d4d}}
+:root[data-theme="dark"]{--bg:#0e1626;--card:#16213a;--ink:#e8eefc;--mute:#9db0d2;--line:#2a3a5e;--acc:#6d9bff;--ok:#4ade80;--bad:#f87171;--grid:#1f2d4d}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+h1{font:700 26px/1.2 Georgia,"Times New Roman",serif;margin:0 0 4px}
+.sub{color:var(--mute);margin:0 0 16px}
+.tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tabs button{flex:1;min-width:110px;padding:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;font:inherit;cursor:pointer}
+.tabs button small{display:block;color:var(--mute);font-size:12px}
+.tabs button[aria-pressed="true"]{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
+.stats{display:flex;gap:16px;color:var(--mute);font-size:14px;margin-bottom:10px}
+.stats b{color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.tag{font-size:13px;color:var(--acc);font-weight:600;margin-bottom:6px}
+.q{font:19px/1.5 Georgia,"Times New Roman",serif;margin:0 0 14px}
+.fx{display:block;font-size:22px;margin:8px 0;font-weight:600}
+.row{display:flex;gap:8px}
+input{flex:1;min-width:0;padding:11px 12px;font:inherit;font-size:18px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+input:focus,button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.go{padding:11px 18px;border:0;border-radius:10px;background:var(--acc);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.ghost{padding:8px 12px;border:1.5px solid var(--line);background:none;color:var(--ink);border-radius:10px;font:inherit;font-size:14px;cursor:pointer;margin-top:10px}
+.fb{margin-top:12px;padding:10px 12px;border-radius:10px;font-weight:600}
+.fb.ok{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+.fb.bad{background:color-mix(in srgb,var(--bad) 13%,transparent);color:var(--bad)}
+.note{color:var(--mute);font-size:15px;margin-top:10px}
+.sol{margin-top:10px;font-size:15px}
+svg{width:100%;height:auto;display:block;margin-top:12px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.curve{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw .9s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.curve{animation:none;stroke-dashoffset:0}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+<h1>Vertex Practice</h1>
+<p class="sub">Random problems built from the six paths. Answers are numbers.</p>
+<div class="tabs" id="tabs"></div>
+<div class="stats"><span>Correct <b id="sc">0</b>/<b id="at">0</b></span><span>Streak <b id="st">0</b></span></div>
+<div class="card">
+<div class="tag" id="tag"></div>
+<div class="q" id="q"></div>
+<div class="row"><input id="in" type="text" inputmode="decimal" autocomplete="off" aria-label="Your answer" placeholder="Your answer"><button class="go" id="chk">Check</button></div>
+<button class="ghost" id="hint">Show hint</button>
+<div class="note" id="hn" hidden></div>
+<div class="fb" id="fb" hidden></div>
+<div class="sol" id="sol" hidden></div>
+<div id="gr"></div>
+<button class="go" id="nx" style="margin-top:12px" hidden>Next problem</button>
+</div>
+</main>
+<script>
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a, pick=a=>a[R(0,a.length-1)];
+const sg=n=>n<0?"−"+(-n):""+n;
+function P(a,b,c){let s="";const t=(k,v)=>{if(!k)return;const ab=Math.abs(k),body=(ab===1&&v)?v:ab+v;s+=s===""?(k<0?"−":"")+body:" "+(k<0?"−":"+")+" "+body};t(a,"x²");t(b,"x");t(c,"");return s}
+function nz(a,b){let v=0;while(!v)v=R(a,b);return v}
+const G={
+axis(l){const a=l?pick([2,3,-1,-2,-3]):1,p=nz(-5,5),q=R(-6,6),b=-2*a*p,c=a*p*p+q;
+ return{tag:"Axis of symmetry",q:`Find the x-coordinate of the vertex of`,f:`f(x) = ${P(a,b,c)}`,ans:p,a,b,c,p,q,
+ hint:`x = −b/2a. Here b = ${b} and a = ${a}.`,sol:`x = −(${sg(b)}) / (2·${sg(a)}) = ${p}.`}},
+val(l){const a=l?pick([2,3,-1,-2,-3]):1,p=nz(-4,4),q=R(-7,7),b=-2*a*p,c=a*p*p+q;
+ return{tag:a>0?"Minimum value":"Maximum value",q:`Find the ${a>0?"minimum":"maximum"} value of`,f:`f(x) = ${P(a,b,c)}`,ans:q,a,b,c,p,q,
+ hint:`Complete the square${a!==1?" (factor out "+a+" first)":""}, or find x = −b/2a and substitute.`,sol:`f(x) = ${a===1?"":a===-1?"−":sg(a)}(x ${p<0?"+":"−"} ${Math.abs(p)})² ${q<0?"−":"+"} ${Math.abs(q)}, so the value is ${q}.`}},
+same(l){const p=nz(-4,5),t=R(1,3),m=p-t,n=p+t,b=-2*p,c=R(-3,5),q=c-p*p;
+ return{tag:"Same height signal",q:`For f(x) = x² + bx + c, we know f(${m}) = f(${n}) and f(0) = ${c}. Find the minimum value of f.`,f:"",ans:q,a:1,b,c,p,q,
+ hint:`Equal heights mean the axis is the midpoint of ${m} and ${n}.`,sol:`Axis x = (${m} + ${n})/2 = ${p}, so −b/2 = ${p} and b = ${b}. Then f(x) = ${P(1,b,c)} = (x ${p<0?"+":"−"} ${Math.abs(p)})² ${q<0?"−":"+"} ${Math.abs(q)}. Minimum ${q}.`}},
+roots(l){let r1,r2;do{r1=R(-6,6);r2=R(-6,6)}while(r1===r2||(r1+r2)%2);const a=pick([1,1,-1,2]),p=(r1+r2)/2,b=-a*(r1+r2),c=a*r1*r2,q=a*(p-r1)*(p-r2);
+ return{tag:"Midpoint of the roots",q:`The roots of f(x) are ${sg(r1)} and ${sg(r2)}, and f(x) = ${a===1?"":a===-1?"−":a}(x ${r1<0?"+":"−"} ${Math.abs(r1)})(x ${r2<0?"+":"−"} ${Math.abs(r2)}). Find the x-coordinate of the vertex.`,f:"",ans:p,a,b,c,p,q,
+ hint:`The axis sits exactly halfway between the two roots.`,sol:`(${sg(r1)} + ${sg(r2)}) ÷ 2 = ${p}.`}},
+other(l){const p=nz(-4,5);let r1=p+nz(-4,4);const r2=2*p-r1,a=pick([1,-1]),b=-a*(r1+r2),c=a*r1*r2,q=a*(p-r1)*(p-r2);
+ return{tag:"Mirror a root",q:`A parabola has axis x = ${p} and one root at x = ${r1}. Find the other root.`,f:"",ans:r2,a,b,c,p,q,
+ hint:`The other root is the mirror image of ${r1} across the axis.`,sol:`${r1} is ${Math.abs(r1-p)} from the axis, so the other root is 2·${sg(p)} − ${sg(r1)} = ${r2}.`}},
+ball(l){const p=R(1,4),h0=R(1,6),v=10*p,q=h0+5*p*p;const k=R(0,1);
+ return{tag:"Ball thrown upward",q:`h(t) = −5t² + ${v}t + ${h0} (meters, seconds). ${k?"What is the maximum height in meters?":"At what time t is the ball highest?"}`,f:"",ans:k?q:p,a:-5,b:v,c:h0,p,q,
+ hint:k?`Find t = −b/2a first, then substitute into h(t).`:`t = −b/2a.`,sol:`t = −${v}/(2·(−5)) = ${p} s. Then h(${p}) = ${-5*p*p} + ${v*p} + ${h0} = ${q} m.`}},
+fence(l){const L=2*R(5,14),p=L/2/2,q=p*p;
+ return{tag:"Fence problem",q:`A rectangle has perimeter ${L} m. What is the largest possible area in m²?`,f:"",ans:q,a:-1,b:L/2,c:0,p,q,
+ hint:`With width x, the length is ${L/2} − x, so area = x(${L/2} − x). Find its vertex.`,sol:`Area = −x² + ${L/2}x. Axis x = ${L/2}/2 = ${p}, so the maximum is ${p}·${L/2-p} = ${q} m² (a square).`}},
+disc(l){const a=pick([1,2,-1]),p=nz(-3,3),q=R(-5,5),b=-2*a*p,c=a*p*p+q,
+ D=`D = b² − 4a(c − k)`;
+ return{tag:"Discriminant",q:`f(x) = ${P(a,b,c)}. Set f(x) = k and require D ≥ 0. What is the boundary value of k?`,f:"",ans:q,a,b,c,p,q,
+ hint:`${D} = 0 is the instant the line y = k just touches the parabola.`,sol:`D = ${b*b} − 4·${sg(a)}·(${sg(c)} − k) = 0 gives k = ${q}. That is the ${a>0?"minimum":"maximum"} value.`}}
+};
+const LV=[{n:"Warm-up",s:"a = 1, find x or y",g:["axis","axis","val"]},
+{n:"Core",s:"a ≠ 1, signals",g:["axis","val","same","roots","other"]},
+{n:"Challenge",s:"applications",g:["ball","fence","same","disc","val"]}];
+let lv=0,cur,done=false,sc=0,at=0,st=0;
+const $=id=>document.getElementById(id);
+function tabs(){$("tabs").innerHTML="";LV.forEach((x,i)=>{const b=document.createElement("button");b.innerHTML=`${x.n}<small>${x.s}</small>`;b.setAttribute("aria-pressed",i===lv);b.onclick=()=>{lv=i;tabs();next()};$("tabs").appendChild(b)})}
+function next(){const k=pick(LV[lv].g);cur=G[k](lv>0);done=false;
+ $("tag").textContent=cur.tag;$("q").innerHTML=cur.q+(cur.f?`<span class="fx">${cur.f}</span>`:"");
+ $("in").value="";$("in").disabled=false;$("chk").disabled=false;
+ ["hn","fb","sol","nx"].forEach(i=>$(i).hidden=true);$("gr").innerHTML="";$("hint").hidden=false;$("in").focus()}
+function graph(){const{a,b,c,p,q}=cur,f=x=>a*x*x+b*x+c,w=Math.max(4,Math.abs(cur.ans-p)+2),x0=p-w,x1=p+w,N=60;
+ let ys=[];for(let i=0;i<=N;i++)ys.push(f(x0+(x1-x0)*i/N));
+ let y0=Math.min(...ys,0,q),y1=Math.max(...ys,0,q);const span=Math.min(y1-y0,Math.abs(q)+30);
+ if(a>0)y1=Math.min(y1,q+span);else y0=Math.max(y0,q-span);if(y1-y0<2){y1+=1;y0-=1}
+ const W=320,H=190,X=x=>(x-x0)/(x1-x0)*W,Y=y=>H-(y-y0)/(y1-y0)*H;
+ let d="";for(let i=0;i<=N;i++){const x=x0+(x1-x0)*i/N;d+=(i?"L":"M")+X(x).toFixed(1)+" "+Y(f(x)).toFixed(1)}
+ const ax=(x0<0&&x1>0)?`<line x1="${X(0)}" y1="0" x2="${X(0)}" y2="${H}" stroke="var(--mute)" stroke-width="1"/>`:"",
+ ay=(y0<0&&y1>0)?`<line x1="0" y1="${Y(0)}" x2="${W}" y2="${Y(0)}" stroke="var(--mute)" stroke-width="1"/>`:"";
+ $("gr").innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Parabola with vertex (${p}, ${q})"><defs><clipPath id="cp"><rect width="${W}" height="${H}"/></clipPath></defs>${ax}${ay}<line x1="${X(p)}" y1="0" x2="${X(p)}" y2="${H}" stroke="var(--ok)" stroke-dasharray="5 4"/><g clip-path="url(#cp)"><path class="curve" d="${d}" fill="none" stroke="var(--acc)" stroke-width="3"/></g><circle cx="${X(p)}" cy="${Y(q)}" r="5.5" fill="var(--bad)"/><text x="${Math.min(X(p)+9,W-70)}" y="${Math.min(Math.max(Y(q)+(a>0?-8:16),14),H-6)}" font-size="13" fill="var(--ink)">(${sg(p)}, ${sg(q)})</text></svg>`}
+function check(){if(done)return;const raw=$("in").value.replace("−","-").trim();if(raw==="")return;
+ let v=raw.includes("/")?raw.split("/").reduce((x,y)=>x/y):parseFloat(raw);
+ if(isNaN(v)){$("fb").className="fb bad";$("fb").textContent="Enter a number, like 3 or −2.";$("fb").hidden=false;return}
+ done=true;at++;const ok=Math.abs(v-cur.ans)<1e-6;ok?(sc++,st++):st=0;
+ $("fb").className="fb "+(ok?"ok":"bad");$("fb").textContent=ok?"Correct.":`Not quite. The answer is ${sg(cur.ans)}.`;
+ $("fb").hidden=false;$("sol").innerHTML=cur.sol;$("sol").hidden=false;$("hint").hidden=true;$("hn").hidden=true;
+ $("in").disabled=true;$("chk").disabled=true;$("nx").hidden=false;$("sc").textContent=sc;$("at").textContent=at;$("st").textContent=st;graph();$("nx").focus()}
+$("chk").onclick=check;$("nx").onclick=next;
+$("hint").onclick=()=>{$("hn").textContent=cur.hint;$("hn").hidden=false};
+$("in").addEventListener("keydown",e=>{if(e.key==="Enter")check()});
+tabs();next();
+</script>
+</body>
+</html>
