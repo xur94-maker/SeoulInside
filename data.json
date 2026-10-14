@@ -1,42 +1,60 @@
 {
   "globalNews": [
     {
+      "title": "Pope diagnosed with lung cancer but had successful surgery, Vatican says",
+      "link": "https://www.bbc.co.uk/news/articles/ck1wvd9dvv22o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 14 Oct 2026 00:17:00 GMT",
+      "desc": "Pope Leo had successful surgery to remove a lower lobe of his right lung, the Vatican said."
+    },
+    {
+      "title": "Saudi man charged with planting 'sophisticated' recording device in OpenAI office",
+      "link": "https://www.bbc.co.uk/news/articles/cwg5jq4vlddzo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 13 Oct 2026 21:42:49 GMT",
+      "desc": "Prosecutors say the device, wrapped in toilet paper, was found inserted in a USB port on the back of a TV in an executive conference room."
+    },
+    {
+      "title": "Germany puts Ukrainian on trial accused of blowing up Nord Stream pipelines",
+      "link": "https://www.bbc.co.uk/news/articles/cw99zpmnxzmjo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 13 Oct 2026 23:42:22 GMT",
+      "desc": "Four years after the attacks, Serhii K will appear in court accused of a plot to destroy Russia's gas pipelines to Germany."
+    },
+    {
       "title": "MI5 chief warns of threats to UK from Russia, Iran and AI",
       "link": "https://www.bbc.co.uk/news/articles/c60rl5vwpk02o?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 13 Oct 2026 15:52:15 GMT",
       "desc": "Sir Ken McCallum says operations to tackle terrorism and state threats are now roughly of an \"equal scale\"."
     },
     {
-      "title": "Ex-gang boss sentenced to 40 years for orchestrating Tupac Shakur's murder",
-      "link": "https://www.bbc.co.uk/news/articles/c60rln2jvv2zo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 13 Oct 2026 19:51:14 GMT",
-      "desc": "Davis was found guilty last month over his role in the late rap superstar's death in a drive-by shooting in 1996."
-    },
-    {
       "title": "Missiles intercepted near Riyadh after Saudi coalition hits Yemen fuel depot",
       "link": "https://www.bbc.co.uk/news/articles/crx2d60y1py3o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 13 Oct 2026 19:48:36 GMT",
+      "date": "Tue, 13 Oct 2026 22:29:55 GMT",
       "desc": "The Saudi-led coalition fighting in Yemen struck a fuel depot near the Houthi-controlled capital, Sanaa."
-    },
-    {
-      "title": "Horrified witnesses recount fatal rollercoaster incident at Six Flags",
-      "link": "https://www.bbc.co.uk/news/articles/c6n4ejx8x1z7o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 13 Oct 2026 17:10:50 GMT",
-      "desc": "Police say preliminary information suggests the man who died at the Georgia amusement park fell from a ride."
-    },
-    {
-      "title": "Cornell bans all fraternity parties over gang sex assault allegations",
-      "link": "https://www.bbc.co.uk/news/articles/cw8dzg094zd9o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 13 Oct 2026 18:25:28 GMT",
-      "desc": "The school has faced an uproar over how it handled assault allegations brought by a woman known as Jane Doe."
     }
   ],
   "koreaNews": [
     {
       "title": "North Korean escapee takes lead of defector aid group in South Korea - NK News",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNelJobXhJZm5Db1BNWV9qQzFwRjZINnhOZmJLSzhyQWlHN0dQY3JDYlk2em1Jem5uNHBNVGhTbWU2WFMxSUc5VlJNWWg3VThOazZ1QmRvMUZXQm9hbzZEZi1jeVJYODc1bG84WWQwNkNfOW1POW8tREhVWnNFOG9yVXV3R2FwVTNnY2plZGdRMXVfWEVjbEhsZ0NQZGpoOVoxU3c?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBxSWJhMExPY284cmFBWkhPenltSE5lc25ybWQwZDljZnJDYzAwcjk1NDRXZG5TZFpqeWo3ZGZqMXFEdXptXzIw?oc=5",
       "date": "Tue, 13 Oct 2026 10:38:23 GMT",
       "desc": "North Korean escapee takes lead of defector aid group in South Korea&nbsp;&nbsp;NK News"
+    },
+    {
+      "title": "South Korea’s Structural Fragility And The Risk Of A 1997-Style Crisis – Analysis - Eurasia Review",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQeldpR2lEX0dzV0dPcloyTW1IWTZNQ3A5OVp1Z20wOGdQd3FCNkQ3Y0JIRjhxVnE1OFpVOGFyMkgzVXByVWJzb0RFRTZrRkpHR0xJSVJ5OGhSZzBlUExXSHBzVzFPR3hlUENoSUN6eGJhYVY3ZXBscDFCeFRqS2pmSURoUDdzcE92WHNPeVoyZ0VlZXRGVmhFc09RQnlGUEdCMnA0dkp5elRWekMxUzRYWVNaX3RoSml0Rnc?oc=5",
+      "date": "Wed, 14 Oct 2026 00:28:13 GMT",
+      "desc": "South Korea’s Structural Fragility And The Risk Of A 1997-Style Crisis – Analysis&nbsp;&nbsp;Eurasia Review"
+    },
+    {
+      "title": "South Korea’s Lee welcomes home Arctic container ship as route faces viability tests - Arctic Today",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOSm0yaUh5aGdJdUVMektINnJVWGxLZ1UyVlpMNTBQRGloRUdDbDNTRVlXbnN1N3FHUGh6SFFDLVpXMW1ySXNabERNTUdFTklOY3FRb3dkUlNzVXZ0TDVHanJXMnY0N1R1M2tfQ2kzSTljSy1TLVFhU3hKU2RnTGtDRjBBWFUxNXdidWhzazF1aHlUZ1RkekphVkJZN3hMR1lXUjlKQ3Y1bzJPYTNEV2tFaUNn?oc=5",
+      "date": "Tue, 13 Oct 2026 15:02:11 GMT",
+      "desc": "South Korea’s Lee welcomes home Arctic container ship as route faces viability tests&nbsp;&nbsp;Arctic Today"
+    },
+    {
+      "title": "US Economic Diplomacy With Allies Becomes an Election Showcase for Trump - The Diplomat – Asia-Pacific Current Affairs Magazine",
+      "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQdXVIZ2ZLMDN0aWlrLUFRdFZHZ2xnWDZnc3NBZW9Nbkt1RHVXeDJYLW5jMFRWT09uWnM4Z0FFZldPOWp6SXJDNHFsd01MQmFHZWNUbmx5bHhtc0dYZE94eEpSVXFmeWtHZGh6bmJ2amFRVUNobkVkbTFiYldiTXl0UHlIMDFGbjZZTXRBRkw5Y2Z1dWJQeDZmeUFlZXdPSkdNQmljVVhOcEk?oc=5",
+      "date": "Tue, 13 Oct 2026 20:00:30 GMT",
+      "desc": "US Economic Diplomacy With Allies Becomes an Election Showcase for Trump&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
     },
     {
       "title": "IMF Raises Korea Growth Forecast to 3.3% - Businesskorea",
@@ -45,129 +63,111 @@
       "desc": "IMF Raises Korea Growth Forecast to 3.3%&nbsp;&nbsp;Businesskorea"
     },
     {
-      "title": "IMF Raises South Korea's Economic Growth Forecast to 3.3% for 20 - GuruFocus",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPM3hBREFXQ0ZTSTBnenE5dkJ2NFpSNVJUTkpnTVMzczF5VjZCVkVzMTRKODhieGNLU2hOcmg5WG1HdzRXWGlvakVqbV90ZWVYLWhBRXlKeTd4YU43b2FfUS0xLWV3Qjdjd1NFQUZrcExLc0VhbFVMRmVHNlhMeWJ6VE51QlVsQW53SmFmN0Q5UnNYM0tfRFNXNGhlc3BsZ1lfUWJtNQ?oc=5",
-      "date": "Tue, 13 Oct 2026 07:38:18 GMT",
-      "desc": "IMF Raises South Korea's Economic Growth Forecast to 3.3% for 20&nbsp;&nbsp;GuruFocus"
-    },
-    {
-      "title": "Lee warns of prolonged high rates, cautions against submissive diplomacy - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1CNGNJcmNLXzhMcThLd19tOFdHcU56eTFJQ0FHeGRFLURCUWFRUHdKUE9oUm1HRmVSdlVmWDhPdVNEVm9TaHZwTVN4VlJkWGJ2OW5UU0xGMXFTeDV3a2Z5bEZTNXMydWxFZnRTcUthMGdUUV82YjlJ?oc=5",
-      "date": "Tue, 13 Oct 2026 10:55:00 GMT",
-      "desc": "Lee warns of prolonged high rates, cautions against submissive diplomacy&nbsp;&nbsp;KED Global"
-    },
-    {
-      "title": "(LEAD) S. Korea, U.S. finance chiefs reaffirm bilateral economic cooperation - Yonhap News Agency",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1pekRYaFdXTUg0SFlNaTRzRUFPQXJXSWxzOFg1Qm01MG1rbVRkMHVmSVUxcC1wVGF1MmtPa20zRVlVREV2VlRFWTRJWVBxeDdNdTVTYXBOWDlnZw?oc=5",
-      "date": "Tue, 13 Oct 2026 15:56:37 GMT",
-      "desc": "(LEAD) S. Korea, U.S. finance chiefs reaffirm bilateral economic cooperation&nbsp;&nbsp;Yonhap News Agency"
-    },
-    {
-      "title": "Micron, Seagate, Western Digital sink as chip sell-off deepens - CNBC",
+      "title": "Micron sinks, other memory-linked names dip for a second day - CNBC",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNckowaE5BVEtNWm9RQkFrSWVMc0MzVzNHNFBubU9hWlJQM0gteG50U1RFWjdsU2w4RnJYemd0ZnIxVUhUeWgzd0VFTi1wMkN4bjczYjlib0Q4RXRyMnhmd3FUT1BhaHRsZHhsdUFVRTZUVkNGMG50RDNxTDA1Sm8yQ0Etdk5weDFOcEd6elpMRWhzWlA2Qnp4aDJWNmRCMkHSAaQBQVVfeXFMTjFRUXlfM2otZ1AwbmQ2RDVLQUtnNUJxUGlDS2V2V2owSmc0WGxUVmJINTRrRzhWejBqc1N4S0dNNjlhbnFJSzcyZnpqYWpRcEZmai01QndvdW9sWXBTbXcyWEFzZHA1d0VzWVZVdU1yUE9uaDZBZjFjNGl6aGs1SGFtWmpYS1dTUDZDVWtIOFJNM2xOdng0TE9YTmhsTHhnTk9XTzg?oc=5",
       "date": "Tue, 13 Oct 2026 02:08:00 GMT",
-      "desc": "Micron, Seagate, Western Digital sink as chip sell-off deepens&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "China’s CXMT makes progress in chip design pursued by Samsung, SK Hynix - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOZmZHS080emE3cTZyaHozcTJmTTBYUk1GZEhNX3drTUh1S29LZWJRaWpUMlplQWd4STZzZFRNWFZkeEp4UVdiSHdaZlZPWVdHUnFHUDRrTDlWbzIzTU9LeUpoTDZ4ZjNxY1FBemZaVnRaOFlxNjJWcm9RaVR2ZWtldTlQWWhUczc4LUxmTG8tMGpUNTNvQ2lDUHd1RGZ5b3IyYzd5MUZqcU16NnN0aUIycmVIdlhZT2NseFBCaDFhdW_SAcABQVVfeXFMTU1TVTBjV2xjdGFob3d3R3VVTE0tczZyLXA3elItTmN3OVNHUm5OeER4SUxNVVdCNEZESTBzUE41dGNqWWd2SGt3czNTUW5kcWxZN3RIblpGQWtfTHZ3UnNzYm1QWUdVckUzYkp5ZkpyMUxLLXdDNFZROHdjMGFST0tsLVcxWlVETUkyMjVZaHpkTkZEN01URzUyRjZlOWV6T1hVX0FvaHVVTVM2ME45QWI5QXdHYzQ1b1dJVElDZGNG?oc=5",
-      "date": "Mon, 12 Oct 2026 00:30:13 GMT",
-      "desc": "China’s CXMT makes progress in chip design pursued by Samsung, SK Hynix&nbsp;&nbsp;South China Morning Post"
+      "desc": "Micron sinks, other memory-linked names dip for a second day&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung, SK Hynix: 87% of Foreign KOSPI Net Sales - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQbnJqaE1EVHNJMnpnTFBhM1dnRnY4ekN6TlYwT01mYkZPWVdNZW1VMTRVMDlQZnNNMmRrbXJMOWhtUWNIem45X1g1YVFROUtoLVdRSmFwYmlUbXRTcjJxWXh2WG1ib3dfSVVZSG5zMDRyc2RyenVQalJxSF9iNGxXb1I0VlhJaTA2cXgyTnh3?oc=5",
       "date": "Tue, 13 Oct 2026 03:48:49 GMT",
       "desc": "Samsung, SK Hynix: 87% of Foreign KOSPI Net Sales&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "China’s CXMT makes progress in chip design pursued by Samsung, SK Hynix - South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOZmZHS080emE3cTZyaHozcTJmTTBYUk1GZEhNX3drTUh1S29LZWJRaWpUMlplQWd4STZzZFRNWFZkeEp4UVdiSHdaZlZPWVdHUnFHUDRrTDlWbzIzTU9LeUpoTDZ4ZjNxY1FBemZaVnRaOFlxNjJWcm9RaVR2ZWtldTlQWWhUczc4LUxmTG8tMGpUNTNvQ2lDUHd1RGZ5b3IyYzd5MUZqcU16NnN0aUIycmVIdlhZT2NseFBCaDFhdW_SAcABQVVfeXFMTU1TVTBjV2xjdGFob3d3R3VVTE0tczZyLXA3elItTmN3OVNHUm5OeER4SUxNVVdCNEZESTBzUE41dGNqWWd2SGt3czNTUW5kcWxZN3RIblpGQWtfTHZ3UnNzYm1QWUdVckUzYkp5ZkpyMUxLLXdDNFZROHdjMGFST0tsLVcxWlVETUkyMjVZaHpkTkZEN01URzUyRjZlOWV6T1hVX0FvaHVVTVM2ME45QWI5QXdHYzQ1b1dJVElDZGNG?oc=5",
+      "date": "Mon, 12 Oct 2026 00:30:13 GMT",
+      "desc": "China’s CXMT makes progress in chip design pursued by Samsung, SK Hynix&nbsp;&nbsp;South China Morning Post"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 228.38,
-      "change": -0.9,
-      "pct": -0.39,
+      "price": 228.52,
+      "change": -0.76,
+      "pct": -0.33,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 445.24,
-      "change": -8.07,
-      "pct": -1.78,
+      "price": 445.12,
+      "change": -8.19,
+      "pct": -1.81,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 605.77,
-      "change": -2.33,
-      "pct": -0.38,
+      "price": 605.53,
+      "change": -2.57,
+      "pct": -0.42,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 102.78,
-      "change": -1.92,
-      "pct": -1.83,
+      "price": 102.81,
+      "change": -1.89,
+      "pct": -1.81,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 176.99,
-      "change": 1.49,
-      "pct": 0.85,
+      "price": 176.86,
+      "change": 1.36,
+      "pct": 0.77,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 255.31,
-      "change": -10.97,
-      "pct": -4.12,
+      "price": 255.39,
+      "change": -10.89,
+      "pct": -4.09,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 353.47,
-      "change": 1.81,
-      "pct": 0.51,
+      "price": 353.78,
+      "change": 2.12,
+      "pct": 0.6,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 341.0,
-      "change": 4.36,
-      "pct": 1.3,
+      "price": 341.27,
+      "change": 4.63,
+      "pct": 1.38,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 543.47,
-      "change": 8.4,
+      "price": 543.45,
+      "change": 8.38,
       "pct": 1.57,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7805.65,
-      "change": -5.89,
+      "price": 7805.45,
+      "change": -6.09,
       "pct": -0.08,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 27201.65,
-      "change": -164.52,
-      "pct": -0.6,
+      "price": 27204.38,
+      "change": -161.79,
+      "pct": -0.59,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 232000.0,
-      "change": -30000.0,
-      "pct": -11.45,
+      "price": 240000.0,
+      "change": -10500.0,
+      "pct": -4.19,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1443000.0,
-      "change": -238000.0,
-      "pct": -14.16,
+      "price": 1483000.0,
+      "change": -122000.0,
+      "pct": -7.6,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 315000.0,
-      "change": -9500.0,
-      "pct": -2.93,
+      "price": 318000.0,
+      "change": -2000.0,
+      "pct": -0.62,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 108300.0,
-      "change": 1500.0,
-      "pct": 1.4,
+      "price": 110300.0,
+      "change": 2200.0,
+      "pct": 2.04,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 178000.0,
-      "change": -5800.0,
-      "pct": -3.16,
+      "price": 181700.0,
+      "change": 1200.0,
+      "pct": 0.66,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6035.35,
-      "change": -590.58,
-      "pct": -8.91,
+      "price": 6163.93,
+      "change": -220.31,
+      "pct": -3.45,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1340.59,
-      "change": -0.25,
-      "pct": -0.02,
+      "price": 1339.38,
+      "change": 5.25,
+      "pct": 0.39,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-13 19:59 UTC"
+  "updatedAt": "2026-10-14 00:49 UTC"
 }
