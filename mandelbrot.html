@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>z² + c 지형도 — 탈출 시간을 높이로 세우다</title>
+<title>The z² + c Landscape — Escape Time Stood Up as Height</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme: light;
@@ -31,7 +31,7 @@
 html{scroll-padding-top:env(safe-area-inset-top,0px);}
 *,*::before,*::after{box-sizing:inherit}
 body{margin:0;background:var(--bg);color:var(--ink);
-  font-family:"IBM Plex Sans KR","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   font-size:14px;line-height:1.55;-webkit-text-size-adjust:100%;}
 header{padding:16px 16px 8px;max-width:1500px;margin:0 auto}
 h1{font-size:21px;font-weight:600;margin:0 0 4px;letter-spacing:-0.01em}
@@ -100,60 +100,67 @@ details.how code{background:var(--ctl);border:1px solid var(--line);border-radiu
 </head>
 <body>
 <header>
-  <h1>z² + c 지형도 — 탈출 시간을 높이로 세우다</h1>
-  <p class="sub">같은 식 z → z² + c 를 계속 되먹였을 때 “몇 걸음 만에 탈출하는가”를 높이로 세운 만델브로 지형입니다. 지형에서 c를 고르면 그 c의 여정과 줄리아 집합이 곧바로 따라옵니다.</p>
-  <div class="presets" id="presets" role="group" aria-label="c 값 바로 고르기"></div>
+  <h1>The z² + c Landscape — Escape Time Stood Up as Height</h1>
+  <p class="sub">A Mandelbrot landscape built by feeding the same formula z → z² + c back into itself and standing up “how many steps until it escapes” as height. Pick a c on the landscape and that c’s journey and Julia set follow right away.</p>
+  <div class="presets" id="presets" role="group" aria-label="Quick-pick c values"></div>
 </header>
 
 <main>
-  <section class="panel col-terrain" aria-label="탈출 시간 지형">
+  <section class="panel col-terrain" aria-label="Escape-time landscape">
     <div class="stage" id="terrainStage">
-      <canvas id="cvTerrain" tabindex="0" aria-label="탈출 시간 지형. 클릭하면 c를 고르고, 방향키로 c를 움직입니다."></canvas>
+      <canvas id="cvTerrain" tabindex="0" aria-label="Escape-time landscape. Click to choose c; use the arrow keys to move c."></canvas>
       <div class="ov tl legend">
         <div class="bar" id="legendBar"></div>
-        <div class="row"><span>일찍 탈출</span><span>늦게 탈출</span></div>
-        <div class="alive"><span class="sw"></span><span>k단계까지 살아남음</span></div>
+        <div class="row"><span>Escapes early</span><span>Escapes late</span></div>
+        <div class="alive"><span class="sw"></span><span>Survives to step k</span></div>
       </div>
-      <div class="ov tr">가로 Re c · 세로 Im c · 높이 탈출 단계<br>드래그 회전 · 휠 확대 · 클릭으로 c 선택</div>
-      <div class="busy" id="busy" hidden>지형 계산 중…</div>
+      <div class="ov tr" id="ovTr">Horizontal Re c · Vertical Im c · Height escape step<br>Drag to rotate · Wheel to zoom · Click to pick c</div>
+      <div class="busy" id="busy" hidden>Computing landscape…</div>
     </div>
     <div class="ctl">
       <div class="row">
         <div class="grow">
-          <label for="kRange">k 단계</label>
+          <label for="kRange">Step k</label>
           <input type="range" id="kRange" min="0" max="1000" value="1000">
           <span class="val" id="kVal">k = 300</span>
-          <button class="b" id="kPlay" type="button">자라나기 재생</button>
+          <button class="b" id="kPlay" type="button">Play growth</button>
         </div>
       </div>
       <div class="row">
-        <label>높이 <select id="hmode">
-          <option value="log">로그 (경계 구조가 잘 보임)</option>
-          <option value="lin">선형 (절벽처럼 보임)</option>
-          <option value="flat">평평 (색만)</option>
+        <label>View <select id="viewSel">
+          <option value="terrain" selected>Landscape</option>
+          <option value="cloud">Orbit cloud (bifurcation)</option>
         </select></label>
-        <label>배율 <input type="range" id="hscale" min="0.2" max="3" step="0.05" value="1" style="width:110px"></label>
-        <label>실수축 <select id="cutSel">
-          <option value="off">표시 안 함</option>
-          <option value="line">선으로 표시</option>
-          <option value="cut">단면으로 자르기</option>
+        <label>Height <select id="hmode">
+          <option value="pot" selected>Potential (smooth surface)</option>
+          <option value="log">Log (boundary structure is clear)</option>
+          <option value="lin">Linear (looks like cliffs)</option>
+          <option value="flat">Flat (color only)</option>
         </select></label>
-        <button class="b" id="dragBtn" type="button" aria-pressed="false">c 끌기</button>
+        <label>Scale <input type="range" id="hscale" min="0.2" max="3" step="0.05" value="1" style="width:110px"></label>
+        <label>Real axis <select id="cutSel">
+          <option value="off">Hidden</option>
+          <option value="line">Show as line</option>
+          <option value="cut">Cut as cross-section</option>
+        </select></label>
+        <button class="b" id="dragBtn" type="button" aria-pressed="false">Drag c</button>
+        <button class="b" id="camTop" type="button">Top view</button>
+        <button class="b" id="camSide" type="button">Side view</button>
       </div>
       <div class="row">
-        <button class="b" id="zoomIn" type="button">c로 확대 ×2</button>
-        <button class="b" id="zoomOut" type="button">축소 ×2</button>
-        <button class="b" id="zoomReset" type="button">처음 영역</button>
-        <label>최대 반복 <select id="iterSel">
+        <button class="b" id="zoomIn" type="button">Zoom in ×2 at c</button>
+        <button class="b" id="zoomOut" type="button">Zoom out ×2</button>
+        <button class="b" id="zoomReset" type="button">Reset view</button>
+        <label>Max iterations <select id="iterSel">
           <option value="100">100</option><option value="300">300</option>
-          <option value="1000" selected>1000</option><option value="3000">3000</option>
-          <option value="10000">10000</option><option value="30000">3만</option>
-          <option value="100000">10만 (극한)</option>
+          <option value="1000">1000</option><option value="3000">3000</option>
+          <option value="10000" selected>10000</option><option value="30000">30k</option>
+          <option value="100000">100k (extreme)</option>
         </select></label>
-        <label>해상도 <select id="resSel">
+        <label>Resolution <select id="resSel">
           <option value="0">320×264</option><option value="1">640×528</option>
           <option value="2" selected>1024×845</option><option value="3">1536×1267</option>
-          <option value="4">2048×1690 (극한)</option>
+          <option value="4">2048×1690 (extreme)</option>
         </select></label>
         <span class="lbl" id="regionTxt"></span>
         <span class="lbl" id="perfTxt"></span>
@@ -162,55 +169,57 @@ details.how code{background:var(--ctl);border:1px solid var(--line);border-radiu
   </section>
 
   <div class="side">
-    <section class="panel" aria-label="선택한 c의 여정">
+    <section class="panel" aria-label="Journey of the selected c">
       <div class="ph">
-        <h2>c의 여정 (Re z, 단계 n, Im z)</h2>
-        <label for="nRange" class="lbl">걸음</label>
+        <h2>Journey of c (Re z, step n, Im z)</h2>
+        <label for="nRange" class="lbl">Steps</label>
         <input type="range" id="nRange" min="1" max="150" value="40" style="max-width:120px">
         <span class="val" id="nVal" style="min-width:36px">40</span>
-        <button class="b" id="nPlay" type="button">걷기</button>
+        <button class="b" id="nPlay" type="button">Walk</button>
       </div>
-      <div class="stage" id="orbitStage"><canvas id="cvOrbit" aria-label="선택한 c의 궤도를 세운 3D 그래프"></canvas></div>
+      <div class="stage" id="orbitStage"><canvas id="cvOrbit" aria-label="3D graph of the orbit of the selected c"></canvas></div>
       <div class="pb" id="orbitNote"></div>
     </section>
 
-    <section class="panel" aria-label="줄리아 집합">
-      <div class="ph"><h2>이 c의 줄리아 집합</h2><span class="lbl">시작점을 클릭하면 그 점의 여정을 봅니다</span></div>
-      <div class="juliaWrap" id="juliaWrap"><canvas id="cvJulia" aria-label="줄리아 집합"></canvas></div>
+    <section class="panel" aria-label="Julia set">
+      <div class="ph"><h2>Julia set for this c</h2><span class="lbl">Click a starting point to see its journey</span></div>
+      <div class="juliaWrap" id="juliaWrap"><canvas id="cvJulia" aria-label="Julia set"></canvas></div>
       <div class="pb" id="juliaNote"></div>
     </section>
 
-    <section class="panel" aria-label="계산 결과">
-      <div class="ph"><h2>손으로 따라가기</h2></div>
+    <section class="panel" aria-label="Results">
+      <div class="ph"><h2>Follow by hand</h2></div>
       <div class="ro">
         <div class="cin">
           <label for="cRe">c =</label>
-          <input type="number" id="cRe" step="any" aria-label="c의 실수부">
+          <input type="number" id="cRe" step="any" aria-label="Real part of c">
           <span>+</span>
-          <input type="number" id="cIm" step="any" aria-label="c의 허수부">
+          <input type="number" id="cIm" step="any" aria-label="Imaginary part of c">
           <span>i</span>
         </div>
         <p class="verdict" id="verdict"></p>
         <p class="ghost" id="ghost" hidden></p>
-        <div class="journey" id="journey" role="table" aria-label="z의 여정"></div>
+        <div class="journey" id="journey" role="table" aria-label="Journey of z"></div>
       </div>
     </section>
   </div>
 </main>
 
 <details class="how">
-  <summary>이 페이지 읽는 법</summary>
-  <p>규칙은 하나입니다. 0에서 시작해서 제곱하고 c를 더한 뒤, 그 결과로 같은 일을 되풀이합니다. 중심에서 거리 2를 넘으면 반드시 무한으로 날아가므로 그 순간을 “탈출”로 기록합니다.</p>
+  <summary>How to read this page</summary>
+  <p>There is just one rule. Start at 0, square it, add c, then repeat with the result. Once the distance from the center exceeds 2, the value is guaranteed to fly off to infinity, so that moment is recorded as an “escape.”</p>
   <ul>
-    <li><b>지형(왼쪽)</b>: 한 점이 한 개의 c입니다. 높이는 몇 걸음 만에 탈출했는지(연속값으로 부드럽게 만든 값)이고, 끝까지 살아남은 점은 평평한 고원이 됩니다. 고원이 만델브로 집합입니다.</li>
-    <li><b>k 슬라이더</b>: “k걸음까지 살아남은 점”만 고원으로 칩니다. k를 키우면 작은 원판에서 시작해 경계가 점점 복잡해지는 과정이 그대로 보입니다. 재생 버튼은 글의 7절 GIF와 같은 장면입니다.</li>
-    <li><b>실수축</b>: “단면으로 자르기”를 고르면 Im c = 0 인 선에서 지형이 잘립니다. 단면에서 고원이 이어지는 구간이 글 5절의 −2 ≤ c ≤ ¼ 입니다.</li>
-    <li><b>여정(오른쪽 위)</b>: 바닥은 복소평면이고 위로 갈수록 걸음 수가 늘어납니다. 바닥의 붉은 고리와 반투명 기둥이 거리 2의 경계입니다. 기둥을 뚫으면 탈출입니다. c = 0.25 는 한 점으로 모이는 나선, c = −1 은 두 점 사이의 왕복으로 보입니다.</li>
-    <li><b>줄리아 집합</b>: 같은 c로 시작점을 바꿔 가며 그린 그림입니다. 점선 십자가의 중심이 만델브로 여정의 시작점 0이고, 분홍 점들이 그 여정입니다. 0의 여정이 탈출하지 않으면 줄리아 집합은 한 덩어리로 이어지고, 탈출하면 흩어진 먼지가 됩니다.</li>
-    <li><b>c 끌기</b>를 켜고 지형 위를 문지르면 c가 연속으로 움직여, 줄리아 집합이 덩어리에서 먼지로 부서지는 순간을 볼 수 있습니다. 방향키(Shift 포함)로도 c를 움직일 수 있습니다.</li>
+    <li><b>Orbit cloud</b>: Choose “Orbit cloud (bifurcation)” to see the view from the Logistic Map / Mandelbrot video. The floor is the Re c / Im c plane as usual, and for every c the values Re z<sub>n</sub> that the iteration settles into are stacked vertically (points that escape are left dark). From the top it looks like the Mandelbrot set; use “Side view” and it becomes the logistic-map bifurcation diagram, because on the real axis z → z² + c is equivalent to the logistic map.</li>
+    <li><b>Height modes</b>: “Potential” uses the Douady–Hubbard potential, a smooth continuous function that is 0 on the Mandelbrot set and grows steadily outside it, so the set sits on a flat plateau at the top of a smoothly curved surface (inverted so the set is high). The other modes stand up the escape step count instead.</li>
+    <li><b>Landscape (left)</b>: Each point is one value of c. The height is how many steps it took to escape (smoothed into a continuous value), and points that survive to the end become a flat plateau. The plateau is the Mandelbrot set.</li>
+    <li><b>k slider</b>: Only points that survive k steps count as plateau. As you increase k, you can watch the boundary grow more complex, starting from a small disk. The play button is the same scene as the GIF in section 7 of the article.</li>
+    <li><b>Real axis</b>: Choose “Cut as cross-section” and the landscape is sliced along the line Im c = 0. The stretch where the plateau stays connected in the cross-section is the −2 ≤ c ≤ ¼ of section 5 of the article.</li>
+    <li><b>Journey (upper right)</b>: The floor is the complex plane, and the step count rises as you go up. The red ring and translucent wall on the floor mark the distance-2 boundary. Piercing the wall means escape. c = 0.25 looks like a spiral converging to a single point, and c = −1 looks like a back-and-forth between two points.</li>
+    <li><b>Julia set</b>: The picture you get by using the same c while varying the starting point. The center of the dashed cross is 0, the start of the Mandelbrot journey, and the pink dots are that journey. If the journey of 0 does not escape, the Julia set is a single connected piece; if it escapes, the Julia set is scattered dust.</li>
+    <li>Turn on <b>Drag c</b> and rub over the landscape: c moves continuously, so you can watch the Julia set shatter from a single piece into dust. The arrow keys (with Shift) also move c.</li>
   </ul>
-  <p><b>계산 설정</b>: 해상도는 지형 격자 수, 최대 반복은 한 점당 계산 한도입니다. 모든 CPU 스레드(Web Worker)가 나누어 계산하며, 줄리아 집합도 해상도에 맞춰 정밀해집니다. 확대하면 필요한 반복 수가 자동으로 올라갑니다. 배정밀도(64비트) 한계로 약 10¹³배 이상은 확대되지 않습니다.</p>
-  <p>3D 높이는 “보기 좋게 세운 것”입니다. 복소수의 곱셈 구조를 3차원으로 확장한 만델불브와는 다른 대상입니다.</p>
+  <p><b>Computation settings</b>: Resolution is the number of landscape grid points, and max iterations is the per-point computation limit. All CPU threads (Web Workers) share the work, and the Julia set gets sharper with the resolution too. Zooming in automatically raises the required iteration count. Because of the double-precision (64-bit) limit, you cannot zoom in beyond roughly 10¹³×.</p>
+  <p>The 3D height is “stood up to look good.” It is a different object from the Mandelbulb, which extends the multiplicative structure of complex numbers into three dimensions.</p>
 </details>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -220,12 +229,12 @@ details.how code{background:var(--ctl);border:1px solid var(--line);border-radiu
 var $ = function(id){ return document.getElementById(id); };
 
 if (typeof THREE === 'undefined') {
-  $('terrainStage').innerHTML = '<p class="fail">3D 라이브러리를 불러오지 못했습니다. 네트워크 상태를 확인하고 새로 고침해 주세요.</p>';
+  $('terrainStage').innerHTML = '<p class="fail">Failed to load the 3D library. Check your network connection and refresh the page.</p>';
   return;
 }
 
 /* ============================================================
-   보조 함수: 글의 출력 형식(아래첨자, 진짜 마이너스, 복소수 표기)
+   Helpers: output formats (subscripts, true minus sign, complex-number notation)
    ============================================================ */
 var SUBD = '₀₁₂₃₄₅₆₇₈₉';
 function sub(n){ return String(n).split('').map(function(ch){ return ch === '-' ? '₋' : SUBD[+ch]; }).join(''); }
@@ -243,7 +252,7 @@ function cx(re, im, d){
 }
 
 /* ============================================================
-   색: 지형용 고도 팔레트
+   Color: elevation palette for the landscape
    ============================================================ */
 var STOPS = [[0,'#0A2A4A'],[0.2,'#13607A'],[0.4,'#2E9C8F'],[0.6,'#9BC47A'],[0.8,'#E8C55A'],[1,'#F29E4C']];
 function hex(h){ return [parseInt(h.slice(1,3),16)/255, parseInt(h.slice(3,5),16)/255, parseInt(h.slice(5,7),16)/255]; }
@@ -269,10 +278,10 @@ function readTheme(){
 readTheme();
 
 /* ============================================================
-   계산기: 한 점의 탈출 시간 (글 4절의 escape_time 과 같은 규칙)
-   - 거리 2를 처음 넘는 단계 n2 를 돌려줌 (끝까지 살아남으면 0)
-   - 부드러운 높이를 위해 MU 에 연속 탈출 횟수를 따로 저장
-   - 주 카디오이드와 주기-2 원판은 닫힌 식으로 먼저 걸러 냄
+   Calculator: escape time of one point (same rule as escape_time in section 4 of the article)
+   - Returns the first step n2 at which the distance exceeds 2 (0 if it survives to the end)
+   - Stores the continuous escape count separately in MU for smooth heights
+   - The main cardioid and the period-2 disk are filtered out first with closed-form tests
    ============================================================ */
 var MU = 0;
 function esc(cr, ci, maxIter){
@@ -305,12 +314,12 @@ function orbitData(cr, ci, N){
 }
 
 /* ============================================================
-   상태
+   State
    ============================================================ */
 var GW = 1024, GH = Math.round((GW - 1) * 263 / 319) + 1, NV = GW * GH, WORLD_W = 6, DXW = WORLD_W / (GW - 1), HMAX = 2.0;
 var DEFAULT_VIEW = { cre:-0.7, cim:0, span:2.8 };
 var view = { cre:DEFAULT_VIEW.cre, cim:DEFAULT_VIEW.cim, span:DEFAULT_VIEW.span };
-var JQ = { R:900, M:600 }, maxIter = 1000, K = 1000, hmode = 'log', hscale = 1, cutMode = 'off', dragMode = false;
+var JQ = { R:900, M:600 }, maxIter = 10000, K = 10000, hmode = 'pot', hscale = 1, cutMode = 'off', dragMode = false;
 var C = { re:0.3, im:0.5 };
 var orbitN = 40;
 var fld = { n2:new Uint32Array(NV), mu:new Float32Array(NV) };
@@ -323,12 +332,18 @@ function sampleH(n2, mu){
   if (n2 === 0 || n2 > K) { gAlive = true; gT = 1; return hmode === 'flat' ? 0 : HMAX; }
   gAlive = false;
   var v = mu < 0 ? 0 : mu; if (v > K) v = K;
+  if (hmode === 'pot') {
+    // Douady–Hubbard potential G = log|z_n| / 2^n = 2^(1 - mu): 0 on the set, smooth and growing outside
+    var g = Math.pow(2, 1 - v);
+    gT = 1 - Math.sqrt(Math.min(1, g / 0.9));
+    return gT * HMAX;
+  }
   gT = Math.log(1 + v) / Math.log(1 + K);
   return hmode === 'flat' ? 0 : (hmode === 'lin' ? v / K : gT) * HMAX;
 }
 
 /* ============================================================
-   3D 공통: 간단한 궤도 카메라 (OrbitControls 없이 직접 구현)
+   3D common: simple orbit camera (implemented directly, without OrbitControls)
    ============================================================ */
 function makeRig(theta, phi, radius, target){
   return { theta:theta, phi:phi, radius:radius, target:target, dirty:true };
@@ -365,7 +380,7 @@ function attachControls(canvas, R, opts){
     moved += Math.abs(dx) + Math.abs(dy);
     if (mode === 'rot') {
       rig.theta -= dx * 0.006;
-      rig.phi = Math.min(1.5, Math.max(0.08, rig.phi - dy * 0.006));
+      rig.phi = Math.min(Math.PI - 0.02, Math.max(0.02, rig.phi - dy * 0.006));
       rig.dirty = true;
     } else if (mode === 'pan') {
       var k = rig.radius * 0.0016;
@@ -401,7 +416,7 @@ function clearGroup(g){
 function makeLabel(text, color, scale){
   var c = document.createElement('canvas'); c.width = 256; c.height = 96;
   var g = c.getContext('2d');
-  g.font = '600 44px "IBM Plex Sans KR", system-ui, sans-serif';
+  g.font = '600 44px "IBM Plex Sans", system-ui, sans-serif';
   g.textAlign = 'center'; g.textBaseline = 'middle';
   g.lineJoin = 'round'; g.lineWidth = 9; g.strokeStyle = T.scene; g.strokeText(text, 128, 48);
   g.fillStyle = color; g.fillText(text, 128, 48);
@@ -412,13 +427,13 @@ function makeLabel(text, color, scale){
 }
 
 /* ============================================================
-   왼쪽: 탈출 시간 지형
+   Left: escape-time landscape
    ============================================================ */
 var TR = { scene:new THREE.Scene(), cam:new THREE.PerspectiveCamera(38, 1, 0.1, 200), rig:makeRig(0.45, 0.98, 11.5, new THREE.Vector3(0, 0.6, 0)) };
 try {
   TR.r = new THREE.WebGLRenderer({ canvas:$('cvTerrain'), antialias:true });
 } catch (err) {
-  $('terrainStage').innerHTML = '<p class="fail">이 브라우저에서는 WebGL을 사용할 수 없습니다.</p>';
+  $('terrainStage').innerHTML = '<p class="fail">WebGL is not available in this browser.</p>';
   return;
 }
 TR.r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -429,7 +444,7 @@ var fill = new THREE.DirectionalLight(0xffffff, 0.25); fill.position.set(5, 3, -
 
 var clipPlane = new THREE.Plane(new THREE.Vector3(0, 0, -1), 1e6);
 var tgroup = new THREE.Group(); TR.scene.add(tgroup);
-var sgroup = new THREE.Group(); TR.scene.add(sgroup);   // 테두리·라벨(테마 따라 다시 만듦)
+var sgroup = new THREE.Group(); TR.scene.add(sgroup);   // Border and labels (rebuilt when the theme changes)
 
 var geo = new THREE.BufferGeometry();
 function buildGrid(w){
@@ -459,7 +474,7 @@ var terrainMat = new THREE.MeshPhongMaterial({ vertexColors:true, side:THREE.Dou
 var mesh = new THREE.Mesh(geo, terrainMat);
 tgroup.add(mesh);
 
-// 실수축: 표면을 따라가는 선, 단면(커튼), 바닥판
+// Real axis: line along the surface, cross-section (curtain), base plate
 var PM = 1024;
 var prof = { n2:new Uint32Array(PM), mu:new Float32Array(PM), ok:false };
 var profGeo = new THREE.BufferGeometry();
@@ -489,12 +504,66 @@ basePlane.rotation.x = -Math.PI / 2; basePlane.position.y = -0.004;
 tgroup.add(basePlane);
 buildGrid(GW);
 
-// c 표시: 구슬 + 기둥
+// c marker: bead + pillar
 var marker = new THREE.Mesh(new THREE.SphereGeometry(0.085, 20, 14), new THREE.MeshBasicMaterial({ color:0xD81B60, depthTest:false }));
 marker.renderOrder = 10;
 var beam = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 1.2, 8), new THREE.MeshBasicMaterial({ color:0xD81B60 }));
 TR.scene.add(marker); TR.scene.add(beam);
 var lblM2 = null, lblQ = null;
+
+// Orbit cloud: for every c, the values Re z_n the orbit settles into, stacked vertically
+var viewMode = 'terrain', cloudStale = true;
+var cgroup = new THREE.Group(); cgroup.visible = false; TR.scene.add(cgroup);
+var cloudGeo = new THREE.BufferGeometry();
+var cloudPts = new THREE.Points(cloudGeo, new THREE.PointsMaterial({ size:0.02, sizeAttenuation:true, transparent:true, depthWrite:false }));
+cloudPts.frustumCulled = false; cgroup.add(cloudPts);
+function styleCloud(){
+  var m = cloudPts.material, c = new THREE.Color(T.scene), lum = 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b;
+  if (lum < 0.5) { m.blending = THREE.AdditiveBlending; m.color.set('#4FD1C5'); m.opacity = 0.12; }
+  else { m.blending = THREE.NormalBlending; m.color.set('#0A3D5C'); m.opacity = 0.08; }
+  m.needsUpdate = true; TR.rig.dirty = true;
+}
+function buildCloud(){
+  var NX = 360, NY = Math.round((NX - 1) * 263 / 319) + 1, WARM = 150, REC = 32;
+  var dx = view.span / (NX - 1), wd = WORLD_W / (NX - 1);
+  var re0 = view.cre - view.span / 2, im0 = view.cim + (NY - 1) / 2 * dx;
+  var pos = new Float32Array(NX * NY * REC * 3 + 2000 * 200 * 3), p = 0;
+  for (var j = 0; j < NY; j++) {
+    var ci = im0 - j * dx, Z = (j - (NY - 1) / 2) * wd;
+    for (var i = 0; i < NX; i++) {
+      var cr = re0 + i * dx, X = (i - (NX - 1) / 2) * wd, x = 0, y = 0, xt, n, ok = true;
+      for (n = 0; n < WARM; n++) { xt = x * x - y * y + cr; y = 2 * x * y + ci; x = xt; if (x * x + y * y > 4) { ok = false; break; } }
+      if (!ok) continue;
+      for (n = 0; n < REC; n++) {
+        xt = x * x - y * y + cr; y = 2 * x * y + ci; x = xt;
+        if (x * x + y * y > 4) break;
+        pos[p++] = X; pos[p++] = x * 0.7; pos[p++] = Z;
+      }
+    }
+  }
+  // dense row on the real axis (Im c = 0) so the bifurcation diagram stays crisp from the side
+  if (Math.abs(view.cim) <= (NY - 1) / 2 * dx) {
+    var Zr = view.cim * WORLD_W / view.span;
+    for (var k = 0; k < 2000; k++) {
+      var cr2 = re0 + view.span * k / 1999, X2 = (k / 1999 - 0.5) * WORLD_W, x2 = 0, t2;
+      for (var n2 = 0; n2 < 400; n2++) { x2 = x2 * x2 + cr2; if (x2 * x2 > 4) break; }
+      if (x2 * x2 > 4) continue;
+      for (var m2 = 0; m2 < 200; m2++) { x2 = x2 * x2 + cr2; if (x2 * x2 > 4) break; pos[p++] = X2; pos[p++] = x2 * 0.7; pos[p++] = Zr; }
+    }
+  }
+  cloudGeo.dispose();
+  cloudGeo.setAttribute('position', new THREE.BufferAttribute(pos.slice(0, p), 3));
+  cloudStale = false; TR.rig.dirty = true;
+}
+var TERR_TXT = $('ovTr').innerHTML;
+var CLOUD_TXT = 'Horizontal Re c · Depth Im c · Height Re z<sub>n</sub> after settling<br>Top view = Mandelbrot set · Side view = bifurcation diagram';
+function applyView(){
+  var cl = viewMode === 'cloud';
+  tgroup.visible = !cl; cgroup.visible = cl;
+  if (cl && cloudStale) buildCloud();
+  $('ovTr').innerHTML = cl ? CLOUD_TXT : TERR_TXT;
+  updateMarker(); TR.rig.dirty = true;
+}
 
 function buildTerrainStatic(){
   clearGroup(sgroup);
@@ -536,18 +605,27 @@ function jobRun(k, a){
   return { k:'j', y0:a[1], px:juliaRows.apply(null, a) };
 }
 var POOL = [], RID = 0, HND = {}, CANC = {};
-function initPool(){
+function initPool(ready){
+  var fin = false;
+  function finish(ok){
+    if (fin) return; fin = true;
+    if (!ok) { POOL.forEach(function(w){ try { w.terminate(); } catch (e) {} }); POOL = []; }
+    ready();
+  }
   try {
     var src = 'var MU=0;' + [esc, mandelRows, juliaRows, jobRun].map(String).join('\n') +
-      ';onmessage=function(e){var m=e.data,r=jobRun(m.k,m.a);r.rid=m.rid;postMessage(r,r.k==="m"?[r.n2.buffer,r.mu.buffer]:[r.px.buffer]);};';
+      ';onmessage=function(e){var m=e.data;if(m.ping){postMessage({ping:1});return;}var r=jobRun(m.k,m.a);r.rid=m.rid;postMessage(r,r.k==="m"?[r.n2.buffer,r.mu.buffer]:[r.px.buffer]);};';
     var url = URL.createObjectURL(new Blob([src], { type:'text/javascript' }));
     var n = Math.max(1, Math.min(32, navigator.hardwareConcurrency || 4));
     for (var i = 0; i < n; i++) {
       var w = new Worker(url);
-      w.onmessage = function(e){ var h = HND[e.data.rid]; if (h) h(this, e.data); };
+      w.onmessage = function(e){ if (e.data.ping) { finish(true); return; } var h = HND[e.data.rid]; if (h) h(this, e.data); };
+      w.onerror = function(){ finish(false); };
       POOL.push(w);
     }
-  } catch (err) { POOL = []; }
+    POOL[0].postMessage({ ping:1 });
+    setTimeout(function(){ finish(false); }, 2000);
+  } catch (err) { finish(false); }
 }
 function cancelJobs(id){ if (id) { delete HND[id]; CANC[id] = 1; } }
 function runJobs(list, onRes, done){
@@ -571,6 +649,8 @@ function runJobs(list, onRes, done){
 }
 var fRun = 0;
 function updateTerrain(){
+  var fs = GW > 700 && hmode !== 'pot';
+  if (terrainMat.flatShading !== fs) { terrainMat.flatShading = fs; terrainMat.needsUpdate = true; }
   var P = geo.attributes.position.array, Cc = geo.attributes.color.array;
   for (var idx = 0; idx < NV; idx++) {
     var y = sampleH(fld.n2[idx], fld.mu[idx]), r, g, b;
@@ -644,12 +724,12 @@ function updateMarker(){
   marker.visible = beam.visible = inView;
   if (!inView) { TR.rig.dirty = true; return; }
   var n = esc(C.re, C.im, maxIter);
-  var y = sampleH(n, MU) * hscale;
+  var y = viewMode === 'cloud' ? 0 : sampleH(n, MU) * hscale;
   marker.position.set(X, y + 0.03, Z);
   beam.position.set(X, y + 0.63, Z);
   TR.rig.dirty = true;
 }
-function setScaleY(){ tgroup.scale.y = hscale; updateLabels(); updateMarker(); TR.rig.dirty = true; }
+function setScaleY(){ tgroup.scale.y = hscale; cgroup.scale.y = hscale; updateLabels(); updateMarker(); TR.rig.dirty = true; }
 
 var raycaster = new THREE.Raycaster(), ndc = new THREE.Vector2();
 function pickC(e){
@@ -660,6 +740,13 @@ function pickC(e){
   raycaster.setFromCamera(ndc, TR.cam);
   var o = raycaster.ray.origin, d = raycaster.ray.direction;
   var S = WORLD_W / view.span, Zc = view.cim * S, hw = WORLD_W / 2, hd = (GH - 1) * DXW / 2, step = Math.max(DXW * 0.5, 0.004);
+  if (viewMode === 'cloud') {
+    if (Math.abs(d.y) < 1e-9) return null;
+    var tp = -o.y / d.y; if (tp < 0) return null;
+    var px = o.x + d.x * tp, pz = o.z + d.z * tp;
+    if (Math.abs(px) > hw || Math.abs(pz) > hd) return null;
+    return { re: view.cre + px / S, im: view.cim - pz / S };
+  }
   for (var t = 0; t < 70; t += step) {
     var x = o.x + d.x * t, y = o.y + d.y * t, z = o.z + d.z * t;
     if (Math.abs(x) > hw || Math.abs(z) > hd) continue;
@@ -687,7 +774,7 @@ $('cvTerrain').addEventListener('keydown', function(e){
 });
 
 /* ============================================================
-   오른쪽 위: c의 여정을 (Re z, n, Im z) 로 세우기
+   Upper right: standing up the journey of c as (Re z, n, Im z)
    ============================================================ */
 var OR = { scene:new THREE.Scene(), cam:new THREE.PerspectiveCamera(38, 1, 0.1, 100), rig:makeRig(0.75, 1.1, 10.5, new THREE.Vector3(0, 1.6, 0)) };
 OR.r = new THREE.WebGLRenderer({ canvas:$('cvOrbit'), antialias:true });
@@ -714,7 +801,7 @@ function buildOrbitStatic(){
   ostatic.add(seg([-2.3,0,0],[2.3,0,0])); ostatic.add(seg([0,0,-2.3],[0,0,2.3])); ostatic.add(seg([0,0,0],[0,HT,0]));
   var l1 = makeLabel('Re z', T.muted, 0.36); l1.position.set(2.7, 0.05, 0);
   var l2 = makeLabel('Im z', T.muted, 0.36); l2.position.set(0, 0.05, -2.7);
-  var l3 = makeLabel('걸음 n', T.muted, 0.36); l3.position.set(0, HT + 0.3, 0);
+  var l3 = makeLabel('Step n', T.muted, 0.36); l3.position.set(0, HT + 0.3, 0);
   var l4 = makeLabel('|z| = 2', T.accent, 0.3); l4.position.set(2.0, 0.28, 2.0);
   ostatic.add(l1); ostatic.add(l2); ostatic.add(l3); ostatic.add(l4);
   OR.r.setClearColor(T.scene, 1);
@@ -746,14 +833,14 @@ function buildOrbit(){
   og.add(new THREE.Line(geoOf(flo, false), new THREE.LineBasicMaterial({ color:T.muted, transparent:true, opacity:0.7 })));
   og.add(new THREE.LineSegments(geoOf(drop, false), new THREE.LineBasicMaterial({ color:T.muted, transparent:true, opacity:0.22 })));
   var o = $('orbitNote');
-  if (d.esc) o.textContent = d.esc + '걸음째에 중심에서 거리 2를 넘었습니다. 한 번 넘으면 반드시 무한으로 갑니다.';
-  else o.textContent = orbitN + '걸음 동안 거리 2를 넘지 않았습니다. 걸음을 늘려 어디로 가는지 따라가 보세요.';
+  if (d.esc) o.textContent = 'Moved beyond distance 2 from the center at step ' + d.esc + '. Once that happens, it always goes to infinity.';
+  else o.textContent = 'Stayed within distance 2 for ' + orbitN + ' steps. Increase the steps to see where it goes.';
   OR.rig.dirty = true;
 }
 attachControls($('cvOrbit'), OR, {});
 
 /* ============================================================
-   오른쪽 가운데: 줄리아 집합 (+ 0의 여정을 겹쳐 그리기)
+   Right middle: Julia set (+ overlaying the journey of 0)
    ============================================================ */
 var JEXT = 1.8;
 var jOff = document.createElement('canvas');
@@ -773,13 +860,13 @@ function drawJulia(){
   jctx.imageSmoothingEnabled = true; jctx.imageSmoothingQuality = 'high';
   jctx.drawImage(jOff, 0, 0, W, H);
   var dpr = W / Math.max(1, jMain.clientWidth);
-  // 축(점선 십자)
+  // Axes (dashed cross)
   jctx.save();
   jctx.strokeStyle = 'rgba(255,255,255,0.55)'; jctx.lineWidth = 1 * dpr; jctx.setLineDash([4 * dpr, 4 * dpr]);
   var o = toPx(0, 0);
   jctx.beginPath(); jctx.moveTo(o[0], 0); jctx.lineTo(o[0], H); jctx.moveTo(0, o[1]); jctx.lineTo(W, o[1]); jctx.stroke();
   jctx.restore();
-  // 0의 여정(만델브로의 여정)
+  // Journey of 0 (the Mandelbrot journey)
   function path(d, color, rad){
     jctx.save(); jctx.strokeStyle = color; jctx.fillStyle = color; jctx.lineWidth = 1.4 * dpr;
     jctx.beginPath(); var pen = false;
@@ -802,11 +889,11 @@ function updateJulia(fast){
   renderJuliaImage(fast ? 200 : JQ.R, fast ? 120 : JQ.M);
   var n = esc(C.re, C.im, 5000);
   var base = n === 0
-    ? 'c가 만델브로 집합 안에 있어, 줄리아 집합은 한 덩어리로 이어져 있습니다.'
-    : 'c가 만델브로 집합 밖이라, 줄리아 집합은 흩어진 먼지로 부서졌습니다.';
+    ? 'Since c is inside the Mandelbrot set, the Julia set is a single connected piece.'
+    : 'Since c is outside the Mandelbrot set, the Julia set has shattered into scattered dust.';
   var extra = '';
-  if (jStart) extra = ' 시작점 z' + sub(0) + ' = ' + cx(jStart.re, jStart.im) + ' → ' + (jStart.esc ? jStart.esc + '걸음째에 탈출' : '탈출하지 않음 (파란 점이 그 여정)');
-  $('juliaNote').textContent = base + ' 분홍 점은 0에서 출발한 여정(왼쪽 지형과 같은 여정)입니다.' + extra;
+  if (jStart) extra = ' Starting point z' + sub(0) + ' = ' + cx(jStart.re, jStart.im) + ' → ' + (jStart.esc ? 'escapes at step ' + jStart.esc : 'does not escape (blue dots are its journey)');
+  $('juliaNote').textContent = base + ' Pink dots are the journey starting from 0 (the same journey as on the landscape at left).' + extra;
   if (fast) { clearTimeout(jTimer); jTimer = setTimeout(function(){ renderJuliaImage(JQ.R, JQ.M); }, 220); }
 }
 jMain.addEventListener('click', function(e){
@@ -824,29 +911,29 @@ jMain.addEventListener('click', function(e){
 });
 
 /* ============================================================
-   오른쪽 아래: 손으로 따라가기
+   Lower right: follow by hand
    ============================================================ */
 function updateReadout(){
   var n = esc(C.re, C.im, 20000);
   var v = $('verdict');
   var head = 'c = ' + cx(C.re, C.im, 4) + '  ';
-  if (n === 0) v.innerHTML = head + '→ <b>살아남습니다</b> (최대 20000걸음까지 확인). 만델브로 집합 안입니다.';
-  else v.innerHTML = head + '→ <b>' + n + '걸음째에 탈출</b>합니다. |z' + sub(n) + '| &gt; 2.';
+  if (n === 0) v.innerHTML = head + '→ <b>survives</b> (checked up to 20000 steps). It is inside the Mandelbrot set.';
+  else v.innerHTML = head + '→ <b>escapes at step ' + n + '</b>. |z' + sub(n) + '| &gt; 2.';
   var g = $('ghost');
   if (Math.abs(C.im) < 1e-12 && C.re > 0.25 && C.re < 0.4) {
     var act = esc(C.re, 0, 400000), apx = Math.PI / Math.sqrt(C.re - 0.25);
     g.hidden = false;
-    g.innerHTML = '0.25 바로 위의 “유령”: 실제 탈출 걸음 <b>' + act + '</b> ≈ π/√(c−¼) = <b>' + apx.toFixed(1) + '</b>. 사라진 쉼터의 흔적이 점을 붙잡고 있습니다.';
+    g.innerHTML = 'The “ghost” just above 0.25: actual escape steps <b>' + act + '</b> ≈ π/√(c−¼) = <b>' + apx.toFixed(1) + '</b>. The trace of a vanished refuge is holding the point back.';
   } else if (Math.abs(C.im) < 1e-12 && C.re >= -2 && C.re <= 0.25) {
     g.hidden = false;
-    g.innerHTML = '실수축의 생존 구간 −2 ≤ c ≤ ¼ 안에 있습니다. 지형을 실수축으로 자르면 이 구간이 고원으로 이어집니다.';
+    g.innerHTML = 'You are inside the real-axis survival interval −2 ≤ c ≤ ¼. Cut the landscape along the real axis and this interval joins up into a plateau.';
   } else g.hidden = true;
   var d = orbitData(C.re, C.im, 10), rows = '';
   for (var i = 0; i < d.re.length; i++) {
     var mod = Math.hypot(d.re[i], d.im[i]), isEsc = (i === d.esc && d.esc > 0);
     rows += '<div class="r' + (isEsc ? ' esc' : '') + '" role="row"><span>z' + sub(i) + '</span><span>' + cx(d.re[i], d.im[i]) + '</span><span>|z| = ' + big(mod, 2) + '</span></div>';
   }
-  if (!d.esc) rows += '<div class="r dim"><span class="dim">…</span><span class="dim">여정은 계속됩니다</span><span></span></div>';
+  if (!d.esc) rows += '<div class="r dim"><span class="dim">…</span><span class="dim">The journey continues</span><span></span></div>';
   $('journey').innerHTML = rows;
 }
 function syncInputs(){
@@ -861,7 +948,7 @@ function onInput(){
 $('cRe').addEventListener('input', onInput); $('cIm').addEventListener('input', onInput);
 
 /* ============================================================
-   c가 바뀔 때 한꺼번에 갱신
+   Update everything at once when c changes
    ============================================================ */
 var fastNext = false;
 function refreshC(){
@@ -875,11 +962,11 @@ function refreshC(){
 function setC(re, im, fast){ C = { re:re, im:im }; fastNext = !!fast; markPresets(); dirty.c = true; }
 
 /* ============================================================
-   프리셋
+   Presets
    ============================================================ */
 var PRESETS = [
   ['1', 1, 0], ['−1', -1, 0], ['0', 0, 0], ['0.25', 0.25, 0], ['0.2501', 0.2501, 0], ['0.26', 0.26, 0],
-  ['−2', -2, 0], ['−2.1', -2.1, 0], ['1+i', 1, 1], ['0.3+0.5i', 0.3, 0.5], ['−0.8+0.156i', -0.8, 0.156], ['토끼 −0.123+0.745i', -0.123, 0.745]
+  ['−2', -2, 0], ['−2.1', -2.1, 0], ['1+i', 1, 1], ['0.3+0.5i', 0.3, 0.5], ['−0.8+0.156i', -0.8, 0.156], ['Rabbit −0.123+0.745i', -0.123, 0.745]
 ];
 var presetBox = $('presets');
 PRESETS.forEach(function(p, i){
@@ -897,7 +984,7 @@ function markPresets(){
 }
 
 /* ============================================================
-   컨트롤 연결
+   Wiring up controls
    ============================================================ */
 var kAnim = false, nTimer = null;
 function onK(){
@@ -907,10 +994,10 @@ function onK(){
   updateTerrain(); applyProfile(); updateMarker();
 }
 $('kRange').addEventListener('input', function(){ stopK(); onK(); });
-function stopK(){ kAnim = false; $('kPlay').textContent = '자라나기 재생'; }
+function stopK(){ kAnim = false; $('kPlay').textContent = 'Play growth'; }
 $('kPlay').addEventListener('click', function(){
   if (kAnim) { stopK(); return; }
-  kAnim = true; $('kPlay').textContent = '멈춤';
+  kAnim = true; $('kPlay').textContent = 'Stop';
   var t0 = performance.now(), dur = 9000;
   (function step(now){
     if (!kAnim) return;
@@ -919,12 +1006,16 @@ $('kPlay').addEventListener('click', function(){
     if (u < 1) requestAnimationFrame(step); else stopK();
   })(t0);
 });
+$('viewSel').addEventListener('change', function(){ viewMode = this.value; applyView(); });
+function setCam(theta, phi, radius, ty){ var g = TR.rig; g.theta = theta; g.phi = phi; g.radius = radius; g.target.set(0, ty, 0); g.dirty = true; }
+$('camTop').addEventListener('click', function(){ setCam(0, 0.02, 11.5, viewMode === 'cloud' ? 0 : 0.6); });
+$('camSide').addEventListener('click', function(){ setCam(0, Math.PI / 2, 9, viewMode === 'cloud' ? 0 : 1.0); });
 $('hmode').addEventListener('change', function(){ hmode = this.value; updateTerrain(); applyProfile(); updateMarker(); });
 $('hscale').addEventListener('input', function(){ hscale = +this.value; setScaleY(); });
 $('cutSel').addEventListener('change', function(){ cutMode = this.value; applyProfile(); });
 $('dragBtn').addEventListener('click', function(){
   dragMode = !dragMode; this.setAttribute('aria-pressed', dragMode ? 'true' : 'false');
-  this.textContent = dragMode ? 'c 끌기 켜짐 (회전 잠시 끔)' : 'c 끌기';
+  this.textContent = dragMode ? 'Drag c: on (rotation paused)' : 'Drag c';
 });
 
 function describeRegion(){
@@ -940,11 +1031,12 @@ function recompute(){
   $('busy').hidden = false;
   fRun = runJobs(list, function(d){
     fld.n2.set(d.n2, d.y0 * gw); fld.mu.set(d.mu, d.y0 * gw); done += d.n2.length / gw;
-    $('busy').textContent = '지형 계산 중… ' + Math.round(done / gh * 100) + '%';
+    $('busy').textContent = 'Computing landscape… ' + Math.round(done / gh * 100) + '%';
   }, function(){
     fRun = 0; computeProfile(); onK(); describeRegion(); $('busy').hidden = true;
-    $('perfTxt').textContent = GW + '×' + GH + ' (' + (NV / 1e6).toFixed(2) + 'M점) · 최대 ' + maxIter + '회 · 스레드 ' + (POOL.length || 1) + ' · ' +
-      Math.round(performance.now() - t0) + 'ms' + (dx < 1e-13 ? ' · ⚠ 배정밀도 한계 근처' : '');
+    cloudStale = true; if (viewMode === 'cloud') buildCloud();
+    $('perfTxt').textContent = GW + '×' + GH + ' (' + (NV / 1e6).toFixed(2) + 'M points) · max ' + maxIter + ' iterations · threads ' + (POOL.length || 1) + ' · ' +
+      Math.round(performance.now() - t0) + 'ms' + (dx < 1e-13 ? ' · ⚠ near double-precision limit' : '');
   });
 }
 function setIter(v){ maxIter = v; $('iterSel').value = String(v); }
@@ -953,7 +1045,7 @@ function resetView(){
   recompute();
 }
 $('zoomIn').addEventListener('click', function(){
-  if (view.span / (GW - 1) < 4e-14) { $('perfTxt').textContent = '⚠ 배정밀도(64비트) 한계라 더 확대할 수 없습니다.'; return; }
+  if (view.span / (GW - 1) < 4e-14) { $('perfTxt').textContent = '⚠ Cannot zoom in further: double-precision (64-bit) limit reached.'; return; }
   view.cre = C.re; view.cim = C.im; view.span /= 2;
   autoIter(); recompute();
 });
@@ -975,10 +1067,10 @@ $('zoomReset').addEventListener('click', resetView);
 $('iterSel').addEventListener('change', function(){ maxIter = +this.value; recompute(); });
 
 $('nRange').addEventListener('input', function(){ stopN(); orbitN = +this.value; $('nVal').textContent = orbitN; dirty.c = true; });
-function stopN(){ if (nTimer) { clearInterval(nTimer); nTimer = null; } $('nPlay').textContent = '걷기'; }
+function stopN(){ if (nTimer) { clearInterval(nTimer); nTimer = null; } $('nPlay').textContent = 'Walk'; }
 $('nPlay').addEventListener('click', function(){
   if (nTimer) { stopN(); return; }
-  $('nPlay').textContent = '멈춤';
+  $('nPlay').textContent = 'Stop';
   orbitN = 1; $('nRange').value = 1; $('nVal').textContent = 1; dirty.c = true;
   nTimer = setInterval(function(){
     var lim = curOrbit && curOrbit.esc ? curOrbit.esc + 1 : 120;
@@ -988,7 +1080,7 @@ $('nPlay').addEventListener('click', function(){
 });
 
 /* ============================================================
-   크기 맞춤, 테마, 렌더 루프
+   Resizing, theme, render loop
    ============================================================ */
 function fit(R, stage){
   var w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
@@ -1009,7 +1101,7 @@ if (window.ResizeObserver) {
 function applyTheme(){
   readTheme();
   TR.r.setClearColor(T.scene, 1);
-  buildTerrainStatic(); buildOrbitStatic(); buildOrbit();
+  buildTerrainStatic(); buildOrbitStatic(); buildOrbit(); styleCloud();
   applyProfile(); updateMarker(); drawJulia();
   TR.rig.dirty = OR.rig.dirty = true;
 }
@@ -1032,16 +1124,14 @@ function loop(){
 }
 
 /* ============================================================
-   시작
+   Start
    ============================================================ */
 TR.r.setClearColor(T.scene, 1);
-buildTerrainStatic(); buildOrbitStatic();
+buildTerrainStatic(); buildOrbitStatic(); styleCloud();
 fit(TR, $('terrainStage')); fit(OR, $('orbitStage')); fitJulia();
 $('nVal').textContent = orbitN;
 markPresets();
-initPool();
-recompute();
-requestAnimationFrame(loop);
+initPool(function(){ recompute(); requestAnimationFrame(loop); });
 })();
 </script>
 </body>
