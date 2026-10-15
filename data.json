@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Starlink restrictions in Ukraine war linked to political situation, Zelensky aide says",
-      "link": "https://www.bbc.co.uk/news/articles/cm2d6e62p49do?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 14 Oct 2026 13:11:17 GMT",
-      "desc": "Elon Musk's system allows Kyiv to protect Ukrainian skies and effectively guide drones to Russian targets."
+      "title": "Musk says US government may be behind slowdown of Ukraine drone speeds",
+      "link": "https://www.bbc.co.uk/news/articles/c8wy9veedgygo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 14 Oct 2026 20:55:24 GMT",
+      "desc": "Ukraine says Starlink access has improved but it is still facing speed limits which are disrupting its battlefield \"missions\"."
+    },
+    {
+      "title": "Student protesters attack government buildings in Albania",
+      "link": "https://www.bbc.co.uk/news/articles/cq80zk5k2ep4o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 14 Oct 2026 20:29:05 GMT",
+      "desc": "Buildings were set alight on the second day of demonstrations from thousands of students who want better university conditions and job prospects."
     },
     {
       "title": "Pope walking and recovering 'as expected' after surgery, doctors say",
@@ -23,15 +29,27 @@
       "link": "https://www.bbc.co.uk/news/articles/cw99zpmnxzmjo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 14 Oct 2026 13:41:51 GMT",
       "desc": "Four years after the attacks, Serhii Kuznetsov appears in court accused of a plot to destroy Russia's gas pipelines to Germany."
-    },
-    {
-      "title": "Australia's first-ever Michelin stars go to 11 restaurants in one state",
-      "link": "https://www.bbc.co.uk/news/articles/crje5we583qwo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 14 Oct 2026 13:35:29 GMT",
-      "desc": "All of the spots are in South Australia, reportedly because the state government paid for incognito inspectors to visit."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPY2g2RHdMN3hpdFU1enpCT3NLblI4di1TTGxCRTk4S3FFYkJmLVpFNTJBT0RyUm9IU1ZrQ1B5QWRpbTlYcHo4Y2tuQWtNUl9WenJOcHpBOGZ4ZHFaMk5Bd2hsU3Y1d1Z6WHN1OEkyUmE2S2tRZVhueFZ3UkFyb0NXT2hxaUZEV050ZzlyUE9rSEtJenRmU1E0ak9reURnZ2gtb0dubnBn?oc=5",
+      "date": "Wed, 14 Oct 2026 19:42:05 GMT",
+      "desc": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "Ex-national security adviser Flynn says U.S.-Korea alliance increasingly economy-based - Washington Times",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQYTF1dUo0MDdoSGZtdUZFYWJQRDByZDZ5RFVJcW53TENJcEExWThyVFVXb1hjcW1QZkIxQ3NsajRNaVlRR0ZudmZNX2h5c1I3YW5DaVhsZ3E5UkVwMTRRaDFTNG1hODlGY3U5YmpOMFFlalBLa1hmQ3MxTGx3T0lONG9WVTVLMnczdFctX05Cb2RRWGpqOU9OcGVJLUw3dW9xTWMwNHRTSVNFQVNraGJVQ2d4b3B3UQ?oc=5",
+      "date": "Wed, 14 Oct 2026 21:27:40 GMT",
+      "desc": "Ex-national security adviser Flynn says U.S.-Korea alliance increasingly economy-based&nbsp;&nbsp;Washington Times"
+    },
+    {
+      "title": "Bastrop officials are in South Korea looking to attract new employers - Austin American-Statesman",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSm5WblVKUzBtUV8tQXJEck16M2pFbjktVF94T1JXVFdZVmlGTG52Tjh0NDREYzdvbmNXNHgxQWdMc0lXMHNSV2h1dDdIUHh4OU55ZGFXOFRNSGlZdkJkRklFckRJd2J2NUVrTmJmMjhILVRpeU4wMmZwN1VYRkhOMDZiWGR1Z2E5VlptUE1zbGZuanNtZzFIajdIZmpZeXVaVzN5bjB1MnNiUQ?oc=5",
+      "date": "Wed, 14 Oct 2026 15:14:30 GMT",
+      "desc": "Bastrop officials are in South Korea looking to attract new employers&nbsp;&nbsp;Austin American-Statesman"
+    },
     {
       "title": "IMF raises South Korea's 2026 growth forecast to 3.3% - upi",
       "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQcmJiNzJRNFVNQS1TRnRxTTdVLUlkOEJEclJ1RHVRRjVBZXBtTmZSN3otbDVnV1ZqVEtqazRoVE9zRjZTS1dXMkIyeEllblJBQ1JhV2VZX3VnU09yZHBHZ25JNVBkZVo3Z2owYW1lUWFvci1ScHZaNzh5dTBscXhGNjRZRUpaN3MzWmlZTk1Gamxhb3PSAZgBQVVfeXFMTmJVZ2QyaHJQV28zdWdmM2FSUkczSmE2clNrTmFjLVdtLUpYLXFzTW02dnR3bUVBQ093WVlJSlRHbUd5cl9CM0Y4VGJYVVByNVd3cGEtTXdXZmdFMGlQeU11Wi1IdHhPTGk0cExxZU5TSlZFNDZCaGo5UkMzUi1TUFRtUi1WNV8xTHMwRXlVclpjU2doeHhiV1Q?oc=5",
@@ -45,22 +63,10 @@
       "desc": "North Korean escapee takes lead of defector aid group in South Korea&nbsp;&nbsp;NK News"
     },
     {
-      "title": "South Korea’s Structural Fragility And The Risk Of A 1997-Style Crisis – Analysis - Eurasia Review",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQeldpR2lEX0dzV0dPcloyTW1IWTZNQ3A5OVp1Z20wOGdQd3FCNkQ3Y0JIRjhxVnE1OFpVOGFyMkgzVXByVWJzb0RFRTZrRkpHR0xJSVJ5OGhSZzBlUExXSHBzVzFPR3hlUENoSUN6eGJhYVY3ZXBscDFCeFRqS2pmSURoUDdzcE92WHNPeVoyZ0VlZXRGVmhFc09RQnlGUEdCMnA0dkp5elRWekMxUzRYWVNaX3RoSml0Rnc?oc=5",
-      "date": "Wed, 14 Oct 2026 00:28:13 GMT",
-      "desc": "South Korea’s Structural Fragility And The Risk Of A 1997-Style Crisis – Analysis&nbsp;&nbsp;Eurasia Review"
-    },
-    {
-      "title": "New bridge linking China and North Korea will open more than a decade late - ABC News - Breaking News, Latest News and Videos",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNU29DZjBxb0diMnhLdzFYcEhxMFloa0VTZU14b3lhV1hZc1NoQWg4em1aTk0tTVU2QWtlVGRfdkZCVUJWN2VXR2U5cmlRek1hcGpRS0taa3BEUDBwT1pqQ2RZME5hYTV4aUV1eXNkQU84OVh4MVJSbE9sbHpJdDVlNTJhU0dUTHlGMEVyRXhGcDc3VXp4RDVTd3RxUGFjd9IBowFBVV95cUxPcHUxVElURDR2NnVrQmI1Z3dyc0poMVFxX0hYNXBXQzlWaDIxeElVLWZCd1JDZ0h5R2dYdUIwRUhiZGtxLXFVc3B1Z1hZNG9sR003aVZHTVJfTVZFSWlJYnpNWUhRSlNrUDBNREtwbmcxaTdKbWtybE13dEVQU0Y4bmVWVERXZEVhMWxPdWk3SjVWQXdUaTFfVDJjWW80UzdEV0ZZ?oc=5",
-      "date": "Wed, 14 Oct 2026 06:27:01 GMT",
-      "desc": "New bridge linking China and North Korea will open more than a decade late&nbsp;&nbsp;ABC News - Breaking News, Latest News and Videos"
-    },
-    {
-      "title": "South Korea’s economy at risk as Trump throws it under bus - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSzB4bmNka05FSVExa2p2WUdIY0NHNHdIOGFEbjRWQmRQbTl4ZHFka0I0NU12MC16TU9lLVRaNUlteVR3N0pqYkhidW5iVXFGMnhXcExlX1hZTS1qbXgzTWx5dUhZRWNWcTcwMkZlaDZkclFaQXRaV2EyXzk0eFAxX1dGUDI0WWEtZ0NKQVFwaXozQQ?oc=5",
-      "date": "Fri, 21 Aug 2026 07:00:00 GMT",
-      "desc": "South Korea’s economy at risk as Trump throws it under bus&nbsp;&nbsp;Asia Times"
+      "title": "Samsung, SK Hynix Stocks Plunge on CXMT's 4F² DRAM Announcement - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNNmRJeFZyOXQ4R0RhSHhNcHdXZWlfLUlwN1B3Qk1sR0sydXpQZmVuXy13cHdWcU5XemZkcUg5cVFveGZCRTVtUnNtalBqSDQ0TExfcFE1bnJfRGJkVThCVVdreW04X19IRFB6dElnNFNqdDM3aDZGSWo1SnBvdjl6anRKWkhBdHh6?oc=5",
+      "date": "Wed, 14 Oct 2026 23:02:08 GMT",
+      "desc": "Samsung, SK Hynix Stocks Plunge on CXMT's 4F² DRAM Announcement&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Samsung, SK Hynix Semiconductor Chiefs Face Off Over Next-Gen Memory Tech at SEDEX - BigGo Finance",
@@ -73,101 +79,95 @@
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNckowaE5BVEtNWm9RQkFrSWVMc0MzVzNHNFBubU9hWlJQM0gteG50U1RFWjdsU2w4RnJYemd0ZnIxVUhUeWgzd0VFTi1wMkN4bjczYjlib0Q4RXRyMnhmd3FUT1BhaHRsZHhsdUFVRTZUVkNGMG50RDNxTDA1Sm8yQ0Etdk5weDFOcEd6elpMRWhzWlA2Qnp4aDJWNmRCMkHSAaQBQVVfeXFMTjFRUXlfM2otZ1AwbmQ2RDVLQUtnNUJxUGlDS2V2V2owSmc0WGxUVmJINTRrRzhWejBqc1N4S0dNNjlhbnFJSzcyZnpqYWpRcEZmai01QndvdW9sWXBTbXcyWEFzZHA1d0VzWVZVdU1yUE9uaDZBZjFjNGl6aGs1SGFtWmpYS1dTUDZDVWtIOFJNM2xOdng0TE9YTmhsTHhnTk9XTzg?oc=5",
       "date": "Tue, 13 Oct 2026 02:08:00 GMT",
       "desc": "Micron sinks, other memory-linked names dip for a second day&nbsp;&nbsp;CNBC"
-    },
-    {
-      "title": "‘Easy money is past’: why investors are rethinking the AI memory-chip trade - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNbTZGRWw4d0JCZU9ybHlXckhBNHdBV2h3WXNzdHJqdkNPVVBrby11aks1bVU4OEh2NkY0OGZqOU5lQlNvZzlSR1hPY2NhZm1WQjFweE9nZ1dXclZYNGJCMjF2T2sxalE0TDk4OHdMbVlGZ2drc1dhdU9TNXpuMlJUb2QweGU5UG12dUNDWlhFejJmZmExYllzUEEycXlEcGUta2h5TkNFeUdRcEloaUg1eWI5dnVoYXhhWDFiRUZJYTNSUHR0T1BRRy1JUnZYaEXSAc8BQVVfeXFMT0piY2pOT3pTVnUybnBHVGZkcEFMUi0xY2o5bFhNazFSaDhkZ0toaEd4ZXVuN3J0ZmlwakZlaUJBYTVTM1NPYk9zdFpHZW53SEZSbG9LUmNKaHE4UkhpMGg5X3BxcXFxMTU2Nmg2ZjZoU0tWWVNqNTNfMzM4UVZSSFNBblZhdlNPeHpDMEEyZUk3b194UUpVZnpYNVRQRURrYVN1STFsUzJ4UVlHOS15a1p3emxFb2xNMTJuTW5xcHJ2R1NYNm5VbDg2R2ExNEtz?oc=5",
-      "date": "Tue, 13 Oct 2026 10:30:05 GMT",
-      "desc": "‘Easy money is past’: why investors are rethinking the AI memory-chip trade&nbsp;&nbsp;South China Morning Post"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 220.74,
-      "change": -5.58,
-      "pct": -2.47,
+      "price": 221.3,
+      "change": -5.02,
+      "pct": -2.22,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 429.54,
-      "change": -14.81,
-      "pct": -3.33,
+      "price": 430.0,
+      "change": -14.35,
+      "pct": -3.23,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 571.95,
-      "change": -22.29,
-      "pct": -3.75,
+      "price": 570.82,
+      "change": -23.42,
+      "pct": -3.94,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 98.67,
-      "change": -2.68,
-      "pct": -2.64,
+      "price": 98.12,
+      "change": -3.23,
+      "pct": -3.19,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 172.08,
-      "change": -2.35,
-      "pct": -1.35,
+      "price": 172.62,
+      "change": -1.81,
+      "pct": -1.04,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 239.19,
-      "change": -16.06,
-      "pct": -6.29,
+      "price": 238.01,
+      "change": -17.23,
+      "pct": -6.75,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 347.61,
-      "change": -5.12,
-      "pct": -1.45,
+      "price": 347.64,
+      "change": -5.08,
+      "pct": -1.44,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 342.63,
-      "change": 1.66,
-      "pct": 0.49,
+      "price": 342.96,
+      "change": 1.99,
+      "pct": 0.58,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 534.16,
-      "change": -6.99,
-      "pct": -1.29,
+      "price": 533.69,
+      "change": -7.46,
+      "pct": -1.38,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7703.52,
-      "change": -103.72,
-      "pct": -1.33,
+      "price": 7718.94,
+      "change": -88.3,
+      "pct": -1.13,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26667.01,
-      "change": -578.89,
-      "pct": -2.12,
+      "price": 26692.87,
+      "change": -553.03,
+      "pct": -2.03,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -176,58 +176,58 @@
       "symbol": "005930.KS",
       "label": "Samsung",
       "price": 232000.0,
-      "change": -18500.0,
-      "pct": -7.39,
+      "change": 0.0,
+      "pct": 0.0,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
       "price": 1419000.0,
-      "change": -186000.0,
-      "pct": -11.59,
+      "change": -24000.0,
+      "pct": -1.66,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
       "price": 313500.0,
-      "change": -6500.0,
-      "pct": -2.03,
+      "change": -1500.0,
+      "pct": -0.48,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
       "price": 108600.0,
-      "change": 500.0,
-      "pct": 0.46,
+      "change": 300.0,
+      "pct": 0.28,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
       "price": 179400.0,
-      "change": -1100.0,
-      "pct": -0.61,
+      "change": 1400.0,
+      "pct": 0.79,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
       "price": 6008.81,
-      "change": -375.43,
-      "pct": -5.88,
+      "change": -26.54,
+      "pct": -0.44,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1341.81,
-      "change": 7.68,
-      "pct": 0.58,
+      "price": 1343.48,
+      "change": 3.17,
+      "pct": 0.24,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-14 18:13 UTC"
+  "updatedAt": "2026-10-15 00:15 UTC"
 }
