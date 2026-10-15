@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The z² + c Landscape — Escape Time Stood Up as Height</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#E7EDF1; --panel:#F5F8FA; --ink:#142330; --muted:#506574; --line:#C3D0D9;
+  --accent:#D81B60; --gold:#A87400; --scene:#DCE5EB; --grid:#A9BAC6; --ctl:#FFFFFF; --ctlline:#B4C3CE;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0B1520; --panel:#112130; --ink:#E6EEF4; --muted:#93AABA; --line:#23394B;
+    --accent:#FF4D8D; --gold:#F2C14E; --scene:#08111A; --grid:#2A4357; --ctl:#0D1B28; --ctlline:#2F485B;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0B1520; --panel:#112130; --ink:#E6EEF4; --muted:#93AABA; --line:#23394B;
+  --accent:#FF4D8D; --gold:#F2C14E; --scene:#08111A; --grid:#2A4357; --ctl:#0D1B28; --ctlline:#2F485B;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px;line-height:1.55;-webkit-text-size-adjust:100%;}
+header{padding:16px 16px 8px;max-width:1500px;margin:0 auto}
+h1{font-size:21px;font-weight:600;margin:0 0 4px;letter-spacing:-0.01em}
+.sub{margin:0 0 10px;color:var(--muted);max-width:76ch}
+.presets{display:flex;gap:6px;overflow-x:auto;padding:2px 0 6px;-webkit-overflow-scrolling:touch}
+.presets button{flex:none;font:inherit;font-size:13px;padding:5px 10px;border-radius:4px;cursor:pointer;
+  background:var(--ctl);color:var(--ink);border:1px solid var(--ctlline)}
+.presets button:hover{border-color:var(--accent)}
+.presets button.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+main{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(320px,1fr);gap:12px;padding:4px 16px 18px;max-width:1500px;margin:0 auto}
+@media (max-width:920px){main{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;position:relative;overflow:hidden;min-width:0}
+.col-terrain{display:flex;flex-direction:column}
+.stage{position:relative;flex:1 1 auto;background:var(--scene)}
+#terrainStage{height:min(74vh,720px);min-height:400px}
+#orbitStage{height:300px}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;user-select:none;-webkit-user-select:none;outline:none}
+.stage canvas:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+.ov{position:absolute;pointer-events:none;font-size:12px;color:var(--muted)}
+.ov.tl{top:10px;left:12px}
+.ov.tr{top:10px;right:12px;text-align:right;max-width:46%}
+.legend{display:flex;flex-direction:column;gap:3px}
+.legend .bar{width:150px;height:9px;border-radius:2px}
+.legend .row{display:flex;justify-content:space-between;width:150px}
+.legend .alive{display:flex;align-items:center;gap:6px}
+.legend .sw{width:12px;height:9px;border-radius:2px;background:#FFF6DC;border:1px solid var(--ctlline)}
+.busy{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--scene) 70%,transparent);font-weight:500;z-index:3}
+.busy[hidden]{display:none}
+.fail{padding:24px;color:var(--ink)}
+.ctl{border-top:1px solid var(--line);padding:10px 12px;display:flex;flex-direction:column;gap:9px}
+.ctl .row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.ctl label,.lbl{color:var(--muted);font-size:13px}
+.ctl .grow{flex:1 1 220px;display:flex;align-items:center;gap:10px;min-width:200px}
+input[type=range]{flex:1;min-width:80px;accent-color:var(--accent)}
+.val{min-width:68px;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:500}
+button.b,select,input[type=number]{font:inherit;font-size:13px;background:var(--ctl);color:var(--ink);
+  border:1px solid var(--ctlline);border-radius:4px;padding:5px 10px}
+button.b{cursor:pointer}
+button.b:hover{border-color:var(--accent)}
+button.b[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.ph{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 12px;border-bottom:1px solid var(--line)}
+.ph h2{font-size:14px;font-weight:600;margin:0;flex:1 1 auto}
+.pb{padding:8px 12px 10px;color:var(--muted);font-size:13px}
+.juliaWrap{position:relative;width:100%;aspect-ratio:1/1;max-height:360px;background:var(--scene)}
+.juliaWrap canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.ro{padding:10px 12px 12px;display:flex;flex-direction:column;gap:10px}
+.cin{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cin input{width:110px;font-variant-numeric:tabular-nums}
+.verdict{margin:0;color:var(--ink)}
+.verdict b{font-weight:600}
+.ghost{margin:0;padding:8px 10px;border-left:3px solid var(--gold);background:var(--ctl);border-radius:0 4px 4px 0;color:var(--ink)}
+.ghost[hidden]{display:none}
+.journey{display:grid;grid-template-columns:auto 1fr auto;column-gap:12px;row-gap:1px;font-variant-numeric:tabular-nums;font-size:13px;margin:0;padding:0}
+.journey div.r{display:contents}
+.journey span{padding:1px 0}
+.journey .esc span{color:var(--accent);font-weight:600}
+.journey .dim{color:var(--muted)}
+details.how{max-width:1500px;margin:0 auto;padding:0 16px 28px;color:var(--muted)}
+details.how summary{cursor:pointer;color:var(--ink);font-weight:500;padding:6px 0}
+details.how p,details.how li{max-width:80ch}
+details.how code{background:var(--ctl);border:1px solid var(--line);border-radius:3px;padding:0 4px;color:var(--ink)}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>The z² + c Landscape — Escape Time Stood Up as Height</h1>
+  <p class="sub">A Mandelbrot landscape built by feeding the same formula z → z² + c back into itself and standing up “how many steps until it escapes” as height. Pick a c on the landscape and that c’s journey and Julia set follow right away.</p>
+  <div class="presets" id="presets" role="group" aria-label="Quick-pick c values"></div>
+</header>
+
+<main>
+  <section class="panel col-terrain" aria-label="Escape-time landscape">
+    <div class="stage" id="terrainStage">
+      <canvas id="cvTerrain" tabindex="0" aria-label="Escape-time landscape. Click to choose c; use the arrow keys to move c."></canvas>
+      <div class="ov tl legend">
+        <div class="bar" id="legendBar"></div>
+        <div class="row"><span>Escapes early</span><span>Escapes late</span></div>
+        <div class="alive"><span class="sw"></span><span>Survives to step k</span></div>
+      </div>
+      <div class="ov tr" id="ovTr">Horizontal Re c · Vertical Im c · Height escape step<br>Drag to rotate · Wheel to zoom · Click to pick c</div>
+      <div class="busy" id="busy" hidden>Computing landscape…</div>
+    </div>
+    <div class="ctl">
+      <div class="row">
+        <div class="grow">
+          <label for="kRange">Step k</label>
+          <input type="range" id="kRange" min="0" max="1000" value="1000">
+          <span class="val" id="kVal">k = 300</span>
+          <button class="b" id="kPlay" type="button">Play growth</button>
+        </div>
+      </div>
+      <div class="row">
+        <label>View <select id="viewSel">
+          <option value="terrain">Landscape</option>
+          <option value="cloud" selected>Orbit cloud (bifurcation)</option>
+        </select></label>
+        <label>Height <select id="hmode">
+          <option value="pot" selected>Potential (smooth surface)</option>
+          <option value="log">Log (boundary structure is clear)</option>
+          <option value="lin">Linear (looks like cliffs)</option>
+          <option value="flat">Flat (color only)</option>
+        </select></label>
+        <label>Scale <input type="range" id="hscale" min="0.2" max="3" step="0.05" value="1" style="width:110px"></label>
+        <label>Real axis <select id="cutSel">
+          <option value="off">Hidden</option>
+          <option value="line">Show as line</option>
+          <option value="cut">Cut as cross-section</option>
+        </select></label>
+        <button class="b" id="dragBtn" type="button" aria-pressed="false">Drag c</button>
+        <button class="b" id="camTop" type="button">Top view</button>
+        <button class="b" id="camSide" type="button">Side view</button>
+      </div>
+      <div class="row">
+        <button class="b" id="zoomIn" type="button">Zoom in ×2 at c</button>
+        <button class="b" id="zoomOut" type="button">Zoom out ×2</button>
+        <button class="b" id="zoomReset" type="button">Reset view</button>
+        <label>Max iterations <select id="iterSel">
+          <option value="100">100</option><option value="300">300</option>
+          <option value="1000">1000</option><option value="3000">3000</option>
+          <option value="10000" selected>10000</option><option value="30000">30k</option>
+          <option value="100000">100k (extreme)</option>
+        </select></label>
+        <label>Resolution <select id="resSel">
+          <option value="0">320×264</option><option value="1">640×528</option>
+          <option value="2" selected>1024×845</option><option value="3">1536×1267</option>
+          <option value="4">2048×1690 (extreme)</option>
+        </select></label>
+        <span class="lbl" id="regionTxt"></span>
+        <span class="lbl" id="perfTxt"></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="side">
+    <section class="panel" aria-label="Journey of the selected c">
+      <div class="ph">
+        <h2>Journey of c (Re z, step n, Im z)</h2>
+        <label for="nRange" class="lbl">Steps</label>
+        <input type="range" id="nRange" min="1" max="150" value="40" style="max-width:120px">
+        <span class="val" id="nVal" style="min-width:36px">40</span>
+        <button class="b" id="nPlay" type="button">Walk</button>
+      </div>
+      <div class="stage" id="orbitStage"><canvas id="cvOrbit" aria-label="3D graph of the orbit of the selected c"></canvas></div>
+      <div class="pb" id="orbitNote"></div>
+    </section>
+
+    <section class="panel" aria-label="Julia set">
+      <div class="ph"><h2>Julia set for this c</h2><span class="lbl">Click a starting point to see its journey</span></div>
+      <div class="juliaWrap" id="juliaWrap"><canvas id="cvJulia" aria-label="Julia set"></canvas></div>
+      <div class="pb" id="juliaNote"></div>
+    </section>
+
+    <section class="panel" aria-label="Results">
+      <div class="ph"><h2>Follow by hand</h2></div>
+      <div class="ro">
+        <div class="cin">
+          <label for="cRe">c =</label>
+          <input type="number" id="cRe" step="any" aria-label="Real part of c">
+          <span>+</span>
+          <input type="number" id="cIm" step="any" aria-label="Imaginary part of c">
+          <span>i</span>
+        </div>
+        <p class="verdict" id="verdict"></p>
+        <p class="ghost" id="ghost" hidden></p>
+        <div class="journey" id="journey" role="table" aria-label="Journey of z"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<details class="how">
+  <summary>How to read this page</summary>
+  <p>There is just one rule. Start at 0, square it, add c, then repeat with the result. Once the distance from the center exceeds 2, the value is guaranteed to fly off to infinity, so that moment is recorded as an “escape.”</p>
+  <ul>
+    <li><b>Orbit cloud</b>: Choose “Orbit cloud (bifurcation)” to see the view from the Logistic Map / Mandelbrot video. The floor is the Re c / Im c plane as usual, and for every c the values Re z<sub>n</sub> that the iteration settles into are stacked vertically (points that escape are left dark). From the top it looks like the Mandelbrot set; use “Side view” and it becomes the logistic-map bifurcation diagram, because on the real axis z → z² + c is equivalent to the logistic map.</li>
+    <li><b>Height modes</b>: “Potential” uses the Douady–Hubbard potential, a smooth continuous function that is 0 on the Mandelbrot set and grows steadily outside it, so the set sits on a flat plateau at the top of a smoothly curved surface (inverted so the set is high). The other modes stand up the escape step count instead.</li>
+    <li><b>Landscape (left)</b>: Each point is one value of c. The height is how many steps it took to escape (smoothed into a continuous value), and points that survive to the end become a flat plateau. The plateau is the Mandelbrot set.</li>
+    <li><b>k slider</b>: Only points that survive k steps count as plateau. As you increase k, you can watch the boundary grow more complex, starting from a small disk. The play button is the same scene as the GIF in section 7 of the article.</li>
+    <li><b>Real axis</b>: Choose “Cut as cross-section” and the landscape is sliced along the line Im c = 0. The stretch where the plateau stays connected in the cross-section is the −2 ≤ c ≤ ¼ of section 5 of the article.</li>
+    <li><b>Journey (upper right)</b>: The floor is the complex plane, and the step count rises as you go up. The red ring and translucent wall on the floor mark the distance-2 boundary. Piercing the wall means escape. c = 0.25 looks like a spiral converging to a single point, and c = −1 looks like a back-and-forth between two points.</li>
+    <li><b>Julia set</b>: The picture you get by using the same c while varying the starting point. The center of the dashed cross is 0, the start of the Mandelbrot journey, and the pink dots are that journey. If the journey of 0 does not escape, the Julia set is a single connected piece; if it escapes, the Julia set is scattered dust.</li>
+    <li>Turn on <b>Drag c</b> and rub over the landscape: c moves continuously, so you can watch the Julia set shatter from a single piece into dust. The arrow keys (with Shift) also move c.</li>
+  </ul>
+  <p><b>Computation settings</b>: Resolution is the number of landscape grid points, and max iterations is the per-point computation limit. All CPU threads (Web Workers) share the work, and the Julia set gets sharper with the resolution too. Zooming in automatically raises the required iteration count. Because of the double-precision (64-bit) limit, you cannot zoom in beyond roughly 10¹³×.</p>
+  <p>The 3D height is “stood up to look good.” It is a different object from the Mandelbulb, which extends the multiplicative structure of complex numbers into three dimensions.</p>
+</details>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+var $ = function(id){ return document.getElementById(id); };
+
+if (typeof THREE === 'undefined') {
+  $('terrainStage').innerHTML = '<p class="fail">Failed to load the 3D library. Check your network connection and refresh the page.</p>';
+  return;
+}
+
+/* ============================================================
+   Helpers: output formats (subscripts, true minus sign, complex-number notation)
+   ============================================================ */
+var SUBD = '₀₁₂₃₄₅₆₇₈₉';
+function sub(n){ return String(n).split('').map(function(ch){ return ch === '-' ? '₋' : SUBD[+ch]; }).join(''); }
+function num(x, d){
+  if (d === undefined) d = 2;
+  var p = Math.pow(10, d), r = Math.round(x * p) / p;
+  if (r === 0) r = 0;
+  return r.toFixed(d).replace('-', '−');
+}
+function big(x, d){ return Math.abs(x) >= 1e5 ? x.toExponential(1).replace('-', '−') : num(x, d); }
+function cx(re, im, d){
+  if (d === undefined) d = 2;
+  var p = Math.pow(10, d), b = Math.round(im * p) / p;
+  return big(re, d) + (b >= 0 ? '+' : '−') + big(Math.abs(b), d) + 'i';
+}
+
+/* ============================================================
+   Color: elevation palette for the landscape
+   ============================================================ */
+var STOPS = [[0,'#0A2A4A'],[0.2,'#13607A'],[0.4,'#2E9C8F'],[0.6,'#9BC47A'],[0.8,'#E8C55A'],[1,'#F29E4C']];
+function hex(h){ return [parseInt(h.slice(1,3),16)/255, parseInt(h.slice(3,5),16)/255, parseInt(h.slice(5,7),16)/255]; }
+var LUT = new Float32Array(256 * 3);
+(function(){
+  for (var i = 0; i < 256; i++) {
+    var t = i / 255, a = 0;
+    while (a < STOPS.length - 2 && t > STOPS[a+1][0]) a++;
+    var t0 = STOPS[a][0], t1 = STOPS[a+1][0], u = (t - t0) / (t1 - t0);
+    var A = hex(STOPS[a][1]), B = hex(STOPS[a+1][1]);
+    for (var k = 0; k < 3; k++) LUT[3*i+k] = A[k] + (B[k] - A[k]) * u;
+  }
+  $('legendBar').style.background = 'linear-gradient(90deg,' + STOPS.map(function(s){ return s[1] + ' ' + (s[0]*100) + '%'; }).join(',') + ')';
+})();
+var ALIVE = hex('#FFF6DC');
+
+var T = {};
+function readTheme(){
+  var cs = getComputedStyle(document.documentElement);
+  function v(n){ return cs.getPropertyValue(n).trim(); }
+  T = { ink:v('--ink'), muted:v('--muted'), accent:v('--accent'), gold:v('--gold'), scene:v('--scene'), grid:v('--grid') };
+}
+readTheme();
+
+/* ============================================================
+   Calculator: escape time of one point (same rule as escape_time in section 4 of the article)
+   - Returns the first step n2 at which the distance exceeds 2 (0 if it survives to the end)
+   - Stores the continuous escape count separately in MU for smooth heights
+   - The main cardioid and the period-2 disk are filtered out first with closed-form tests
+   ============================================================ */
+var MU = 0;
+function esc(cr, ci, maxIter){
+  var q = (cr - 0.25) * (cr - 0.25) + ci * ci;
+  if (q * (q + (cr - 0.25)) < 0.25 * ci * ci || (cr + 1) * (cr + 1) + ci * ci < 0.0625) { MU = 0; return 0; }
+  var x = 0, y = 0, n2 = 0, bx = 0, by = 0;
+  for (var n = 1; n <= maxIter; n++) {
+    var xt = x * x - y * y + cr; y = 2 * x * y + ci; x = xt;
+    var m = x * x + y * y;
+    if (n2 === 0 && m > 4) n2 = n;
+    if (m > 65536) {
+      MU = n + 1 - Math.log(0.5 * Math.log(m)) / Math.LN2;
+      if (MU < 0) MU = 0;
+      return n2 || n;
+    }
+    if ((n & (n - 1)) === 0) { bx = x; by = y; }
+    else if (n > 64 && Math.abs(x - bx) < 1e-13 && Math.abs(y - by) < 1e-13) { MU = 0; return 0; }
+  }
+  MU = n2;
+  return n2;
+}
+function orbitData(cr, ci, N){
+  var re = [0], im = [0], x = 0, y = 0, e = 0;
+  for (var n = 1; n <= N; n++) {
+    var xt = x * x - y * y + cr; y = 2 * x * y + ci; x = xt;
+    re.push(x); im.push(y);
+    if (x * x + y * y > 4) { e = n; break; }
+  }
+  return { re:re, im:im, esc:e };
+}
+
+/* ============================================================
+   State
+   ============================================================ */
+var GW = 1024, GH = Math.round((GW - 1) * 263 / 319) + 1, NV = GW * GH, WORLD_W = 6, DXW = WORLD_W / (GW - 1), HMAX = 2.0;
+var DEFAULT_VIEW = { cre:-0.7, cim:0, span:2.8 };
+var view = { cre:DEFAULT_VIEW.cre, cim:DEFAULT_VIEW.cim, span:DEFAULT_VIEW.span };
+var JQ = { R:900, M:600 }, maxIter = 10000, K = 10000, hmode = 'pot', hscale = 1, cutMode = 'off', dragMode = false;
+var C = { re:0.3, im:0.5 };
+var orbitN = 40;
+var fld = { n2:new Uint32Array(NV), mu:new Float32Array(NV) };
+var dirty = { c:true };
+var curOrbit = null;
+var jStart = null;
+
+var gT = 0, gAlive = false;
+function sampleH(n2, mu){
+  if (n2 === 0 || n2 > K) { gAlive = true; gT = 1; return hmode === 'flat' ? 0 : HMAX; }
+  gAlive = false;
+  var v = mu < 0 ? 0 : mu; if (v > K) v = K;
+  if (hmode === 'pot') {
+    // Douady–Hubbard potential G = log|z_n| / 2^n = 2^(1 - mu): 0 on the set, smooth and growing outside
+    var g = Math.pow(2, 1 - v);
+    gT = 1 - Math.sqrt(Math.min(1, g / 0.9));
+    return gT * HMAX;
+  }
+  gT = Math.log(1 + v) / Math.log(1 + K);
+  return hmode === 'flat' ? 0 : (hmode === 'lin' ? v / K : gT) * HMAX;
+}
+
+/* ============================================================
+   3D common: simple orbit camera (implemented directly, without OrbitControls)
+   ============================================================ */
+function makeRig(theta, phi, radius, target){
+  return { theta:theta, phi:phi, radius:radius, target:target, dirty:true };
+}
+function applyRig(R){
+  var g = R.rig, s = Math.sin(g.phi);
+  R.cam.position.set(g.target.x + g.radius * s * Math.sin(g.theta), g.target.y + g.radius * Math.cos(g.phi), g.target.z + g.radius * s * Math.cos(g.theta));
+  R.cam.lookAt(g.target);
+}
+function attachControls(canvas, R, opts){
+  var rig = R.rig, ptrs = new Map(), mode = null, moved = 0, downT = 0, pinch0 = 0;
+  function dist(){ var a = Array.from(ptrs.values()); return Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y); }
+  canvas.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  canvas.addEventListener('pointerdown', function(e){
+    canvas.setPointerCapture(e.pointerId);
+    ptrs.set(e.pointerId, { x:e.clientX, y:e.clientY });
+    if (ptrs.size === 1) {
+      moved = 0; downT = performance.now();
+      mode = (e.button === 2 || e.shiftKey) ? 'pan' : 'rot';
+      if (opts.dragPick && opts.dragPick() && e.button === 0 && !e.shiftKey) { mode = 'pick'; opts.onPick(e); }
+    } else if (ptrs.size === 2) { mode = 'pinch'; pinch0 = dist(); }
+    canvas.focus({ preventScroll:true });
+  });
+  canvas.addEventListener('pointermove', function(e){
+    var p = ptrs.get(e.pointerId); if (!p) return;
+    var dx = e.clientX - p.x, dy = e.clientY - p.y;
+    if (mode === 'pinch' && ptrs.size === 2) {
+      p.x = e.clientX; p.y = e.clientY;
+      var d = dist();
+      if (pinch0 > 0 && d > 0) { rig.radius = Math.min(40, Math.max(2.5, rig.radius * pinch0 / d)); pinch0 = d; rig.dirty = true; }
+      return;
+    }
+    p.x = e.clientX; p.y = e.clientY;
+    moved += Math.abs(dx) + Math.abs(dy);
+    if (mode === 'rot') {
+      rig.theta -= dx * 0.006;
+      rig.phi = Math.min(Math.PI - 0.02, Math.max(0.02, rig.phi - dy * 0.006));
+      rig.dirty = true;
+    } else if (mode === 'pan') {
+      var k = rig.radius * 0.0016;
+      var right = new THREE.Vector3(), up = new THREE.Vector3();
+      R.cam.matrixWorld.extractBasis(right, up, new THREE.Vector3());
+      rig.target.addScaledVector(right, -dx * k).addScaledVector(up, dy * k);
+      rig.dirty = true;
+    } else if (mode === 'pick') { opts.onPick(e); }
+  });
+  function up(e){
+    var had = ptrs.delete(e.pointerId);
+    if (had && mode === 'rot' && ptrs.size === 0 && moved < 5 && performance.now() - downT < 700 && opts.onClick) opts.onClick(e);
+    if (ptrs.size === 0) mode = null;
+    else if (ptrs.size === 1) mode = 'rot';
+  }
+  canvas.addEventListener('pointerup', up);
+  canvas.addEventListener('pointercancel', up);
+  canvas.addEventListener('wheel', function(e){
+    e.preventDefault();
+    rig.radius = Math.min(40, Math.max(2.5, rig.radius * Math.exp(e.deltaY * 0.0012)));
+    rig.dirty = true;
+  }, { passive:false });
+}
+function clearGroup(g){
+  while (g.children.length) {
+    var o = g.children[g.children.length - 1]; g.remove(o);
+    o.traverse(function(n){
+      if (n.geometry) n.geometry.dispose();
+      if (n.material) { if (n.material.map) n.material.map.dispose(); n.material.dispose(); }
+    });
+  }
+}
+function makeLabel(text, color, scale){
+  var c = document.createElement('canvas'); c.width = 256; c.height = 96;
+  var g = c.getContext('2d');
+  g.font = '600 44px "IBM Plex Sans", system-ui, sans-serif';
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.lineJoin = 'round'; g.lineWidth = 9; g.strokeStyle = T.scene; g.strokeText(text, 128, 48);
+  g.fillStyle = color; g.fillText(text, 128, 48);
+  var tex = new THREE.CanvasTexture(c);
+  var sp = new THREE.Sprite(new THREE.SpriteMaterial({ map:tex, transparent:true, depthTest:false }));
+  sp.scale.set(scale * 2.667, scale, 1);
+  return sp;
+}
+
+/* ============================================================
+   Left: escape-time landscape
+   ============================================================ */
+var TR = { scene:new THREE.Scene(), cam:new THREE.PerspectiveCamera(38, 1, 0.1, 200), rig:makeRig(0, Math.PI / 2, 9, new THREE.Vector3(0, 0, 0)) };
+try {
+  TR.r = new THREE.WebGLRenderer({ canvas:$('cvTerrain'), antialias:true });
+} catch (err) {
+  $('terrainStage').innerHTML = '<p class="fail">WebGL is not available in this browser.</p>';
+  return;
+}
+TR.r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+TR.r.localClippingEnabled = true;
+TR.scene.add(new THREE.AmbientLight(0xffffff, 0.62));
+var sun = new THREE.DirectionalLight(0xffffff, 0.85); sun.position.set(-4, 7, 5); TR.scene.add(sun);
+var fill = new THREE.DirectionalLight(0xffffff, 0.25); fill.position.set(5, 3, -4); TR.scene.add(fill);
+
+var clipPlane = new THREE.Plane(new THREE.Vector3(0, 0, -1), 1e6);
+var tgroup = new THREE.Group(); TR.scene.add(tgroup);
+var sgroup = new THREE.Group(); TR.scene.add(sgroup);   // Border and labels (rebuilt when the theme changes)
+
+var geo = new THREE.BufferGeometry();
+function buildGrid(w){
+  GW = w; GH = Math.round((GW - 1) * 263 / 319) + 1; NV = GW * GH; DXW = WORLD_W / (GW - 1);
+  fld.n2 = new Uint32Array(NV); fld.mu = new Float32Array(NV);
+  geo.dispose(); geo.deleteAttribute('normal');
+  var pos = new Float32Array(NV * 3), col = new Float32Array(NV * 3);
+  for (var j = 0; j < GH; j++) for (var i = 0; i < GW; i++) {
+    var idx = j * GW + i;
+    pos[3*idx] = (i - (GW - 1) / 2) * DXW;
+    pos[3*idx + 2] = (j - (GH - 1) / 2) * DXW;
+  }
+  var ind = new Uint32Array((GW - 1) * (GH - 1) * 6), p = 0;
+  for (var j2 = 0; j2 < GH - 1; j2++) for (var i2 = 0; i2 < GW - 1; i2++) {
+    var a = j2 * GW + i2, b = a + 1, c = a + GW, d = c + 1;
+    ind[p++] = a; ind[p++] = c; ind[p++] = b;
+    ind[p++] = b; ind[p++] = c; ind[p++] = d;
+  }
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  geo.setIndex(new THREE.BufferAttribute(ind, 1));
+  geo.boundingSphere = null;
+  terrainMat.flatShading = GW > 700; terrainMat.needsUpdate = true;
+  basePlane.geometry.dispose(); basePlane.geometry = new THREE.PlaneGeometry(WORLD_W, (GH - 1) * DXW);
+}
+var terrainMat = new THREE.MeshPhongMaterial({ vertexColors:true, side:THREE.DoubleSide, clippingPlanes:[clipPlane], specular:0x000000, shininess:0 });
+var mesh = new THREE.Mesh(geo, terrainMat);
+tgroup.add(mesh);
+
+// Real axis: line along the surface, cross-section (curtain), base plate
+var PM = 1024;
+var prof = { n2:new Uint32Array(PM), mu:new Float32Array(PM), ok:false };
+var profGeo = new THREE.BufferGeometry();
+profGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(PM * 3), 3));
+profGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(PM * 3), 3));
+var profLine = new THREE.Line(profGeo, new THREE.LineBasicMaterial({ vertexColors:true }));
+profLine.frustumCulled = false;
+tgroup.add(profLine);
+var curGeo = new THREE.BufferGeometry();
+curGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(PM * 2 * 3), 3));
+curGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(PM * 2 * 3), 3));
+(function(){
+  var ind = new Uint16Array((PM - 1) * 6), p = 0;
+  for (var i = 0; i < PM - 1; i++) {
+    var a = 2*i, b = 2*i + 1, c = 2*i + 2, d = 2*i + 3;
+    ind[p++] = a; ind[p++] = c; ind[p++] = b;
+    ind[p++] = b; ind[p++] = c; ind[p++] = d;
+  }
+  curGeo.setIndex(new THREE.BufferAttribute(ind, 1));
+})();
+var curtain = new THREE.Mesh(curGeo, new THREE.MeshBasicMaterial({ vertexColors:true, side:THREE.DoubleSide }));
+curtain.frustumCulled = false;
+tgroup.add(curtain);
+var basePlane = new THREE.Mesh(new THREE.PlaneGeometry(WORLD_W, (GH - 1) * DXW),
+  new THREE.MeshBasicMaterial({ color:0x0A2A4A, side:THREE.DoubleSide, clippingPlanes:[clipPlane] }));
+basePlane.rotation.x = -Math.PI / 2; basePlane.position.y = -0.004;
+tgroup.add(basePlane);
+buildGrid(GW);
+
+// c marker: bead + pillar
+var marker = new THREE.Mesh(new THREE.SphereGeometry(0.085, 20, 14), new THREE.MeshBasicMaterial({ color:0xD81B60, depthTest:false }));
+marker.renderOrder = 10;
+var beam = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 1.2, 8), new THREE.MeshBasicMaterial({ color:0xD81B60 }));
+TR.scene.add(marker); TR.scene.add(beam);
+var lblM2 = null, lblQ = null;
+
+// Orbit cloud: for every c, the values Re z_n the orbit settles into, stacked vertically
+var viewMode = 'cloud', cloudStale = true;
+var cgroup = new THREE.Group(); cgroup.visible = false; TR.scene.add(cgroup);
+var cloudGeo = new THREE.BufferGeometry();
+var cloudPts = new THREE.Points(cloudGeo, new THREE.PointsMaterial({ size:0.02, sizeAttenuation:true, transparent:true, depthWrite:false }));
+cloudPts.frustumCulled = false; cgroup.add(cloudPts);
+function styleCloud(){
+  var m = cloudPts.material, c = new THREE.Color(T.scene), lum = 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b;
+  if (lum < 0.5) { m.blending = THREE.AdditiveBlending; m.color.set('#4FD1C5'); m.opacity = 0.12; }
+  else { m.blending = THREE.NormalBlending; m.color.set('#0A3D5C'); m.opacity = 0.08; }
+  m.needsUpdate = true; TR.rig.dirty = true;
+}
+function buildCloud(){
+  var NX = 360, NY = Math.round((NX - 1) * 263 / 319) + 1, WARM = 150, REC = 32;
+  var dx = view.span / (NX - 1), wd = WORLD_W / (NX - 1);
+  var re0 = view.cre - view.span / 2, im0 = view.cim + (NY - 1) / 2 * dx;
+  var pos = new Float32Array(NX * NY * REC * 3 + 2000 * 200 * 3), p = 0;
+  for (var j = 0; j < NY; j++) {
+    var ci = im0 - j * dx, Z = (j - (NY - 1) / 2) * wd;
+    for (var i = 0; i < NX; i++) {
+      var cr = re0 + i * dx, X = (i - (NX - 1) / 2) * wd, x = 0, y = 0, xt, n, ok = true;
+      for (n = 0; n < WARM; n++) { xt = x * x - y * y + cr; y = 2 * x * y + ci; x = xt; if (x * x + y * y > 4) { ok = false; break; } }
+      if (!ok) continue;
+      for (n = 0; n < REC; n++) {
+        xt = x * x - y * y + cr; y = 2 * x * y + ci; x = xt;
+        if (x * x + y * y > 4) break;
+        pos[p++] = X; pos[p++] = x * 0.7; pos[p++] = Z;
+      }
+    }
+  }
+  // dense row on the real axis (Im c = 0) so the bifurcation diagram stays crisp from the side
+  if (Math.abs(view.cim) <= (NY - 1) / 2 * dx) {
+    var Zr = view.cim * WORLD_W / view.span;
+    for (var k = 0; k < 2000; k++) {
+      var cr2 = re0 + view.span * k / 1999, X2 = (k / 1999 - 0.5) * WORLD_W, x2 = 0, t2;
+      for (var n2 = 0; n2 < 400; n2++) { x2 = x2 * x2 + cr2; if (x2 * x2 > 4) break; }
+      if (x2 * x2 > 4) continue;
+      for (var m2 = 0; m2 < 200; m2++) { x2 = x2 * x2 + cr2; if (x2 * x2 > 4) break; pos[p++] = X2; pos[p++] = x2 * 0.7; pos[p++] = Zr; }
+    }
+  }
+  cloudGeo.dispose();
+  cloudGeo.setAttribute('position', new THREE.BufferAttribute(pos.slice(0, p), 3));
+  cloudStale = false; TR.rig.dirty = true;
+}
+var TERR_TXT = $('ovTr').innerHTML;
+var CLOUD_TXT = 'Horizontal Re c · Depth Im c · Height Re z<sub>n</sub> after settling<br>Top view = Mandelbrot set · Side view = bifurcation diagram';
+function applyView(){
+  var cl = viewMode === 'cloud';
+  tgroup.visible = !cl; cgroup.visible = cl;
+  if (cl && cloudStale) buildCloud();
+  $('ovTr').innerHTML = cl ? CLOUD_TXT : TERR_TXT;
+  updateMarker(); TR.rig.dirty = true;
+}
+
+function buildTerrainStatic(){
+  clearGroup(sgroup);
+  var hw = WORLD_W / 2, hd = (GH - 1) * DXW / 2;
+  var pts = [new THREE.Vector3(-hw, 0, -hd), new THREE.Vector3(hw, 0, -hd), new THREE.Vector3(hw, 0, hd), new THREE.Vector3(-hw, 0, hd)];
+  sgroup.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color:T.grid })));
+  lblM2 = makeLabel('c = −2', T.ink, 0.34); lblQ = makeLabel('c = ¼', T.ink, 0.34);
+  sgroup.add(lblM2); sgroup.add(lblQ);
+  marker.material.color.set(T.accent); beam.material.color.set(T.accent);
+  basePlane.material.color.set(T.scene).multiplyScalar(0.8);
+}
+
+function mandelRows(re0, im0, dx, w, y0, y1, maxIter){
+  var n2 = new Uint32Array(w * (y1 - y0)), mu = new Float32Array(w * (y1 - y0)), p = 0;
+  for (var j = y0; j < y1; j++) { var ci = im0 - j * dx; for (var i = 0; i < w; i++) { n2[p] = esc(re0 + i * dx, ci, maxIter); mu[p++] = MU; } }
+  return { n2:n2, mu:mu };
+}
+function juliaRows(R, y0, y1, cr, ci, jmax, ext, LUT, ALIVE){
+  var out = new Uint8ClampedArray((y1 - y0) * R * 4), p = 0;
+  var rad = Math.max(2, Math.hypot(cr, ci)), rad2 = rad * rad, lr2 = Math.log(rad2), lj = Math.log(1 + jmax);
+  for (var py = y0; py < y1; py++) {
+    var zy0 = ext - (py + 0.5) / R * 2 * ext;
+    for (var px = 0; px < R; px++) {
+      var x = -ext + (px + 0.5) / R * 2 * ext, y = zy0, n = 0, m = 0, r, g, b;
+      for (; n < jmax; n++) { m = x * x + y * y; if (m > rad2) break; var xt = x * x - y * y + cr; y = 2 * x * y + ci; x = xt; }
+      if (n >= jmax) { r = ALIVE[0]; g = ALIVE[1]; b = ALIVE[2]; }
+      else {
+        var mu = n + 1 - Math.log(Math.log(m) / lr2) / Math.LN2;
+        var li = (Math.min(1, Math.log(1 + Math.max(0, mu)) / lj) * 255) | 0;
+        r = LUT[3*li]; g = LUT[3*li+1]; b = LUT[3*li+2];
+      }
+      out[p++] = r * 255; out[p++] = g * 255; out[p++] = b * 255; out[p++] = 255;
+    }
+  }
+  return out;
+}
+function jobRun(k, a){
+  if (k === 'm') { var r = mandelRows.apply(null, a); r.k = 'm'; r.y0 = a[4]; return r; }
+  return { k:'j', y0:a[1], px:juliaRows.apply(null, a) };
+}
+var POOL = [], RID = 0, HND = {}, CANC = {};
+function initPool(ready){
+  var fin = false;
+  function finish(ok){
+    if (fin) return; fin = true;
+    if (!ok) { POOL.forEach(function(w){ try { w.terminate(); } catch (e) {} }); POOL = []; }
+    ready();
+  }
+  try {
+    var src = 'var MU=0;' + [esc, mandelRows, juliaRows, jobRun].map(String).join('\n') +
+      ';onmessage=function(e){var m=e.data;if(m.ping){postMessage({ping:1});return;}var r=jobRun(m.k,m.a);r.rid=m.rid;postMessage(r,r.k==="m"?[r.n2.buffer,r.mu.buffer]:[r.px.buffer]);};';
+    var url = URL.createObjectURL(new Blob([src], { type:'text/javascript' }));
+    var n = Math.max(1, Math.min(32, navigator.hardwareConcurrency || 4));
+    for (var i = 0; i < n; i++) {
+      var w = new Worker(url);
+      w.onmessage = function(e){ if (e.data.ping) { finish(true); return; } var h = HND[e.data.rid]; if (h) h(this, e.data); };
+      w.onerror = function(){ finish(false); };
+      POOL.push(w);
+    }
+    POOL[0].postMessage({ ping:1 });
+    setTimeout(function(){ finish(false); }, 2000);
+  } catch (err) { finish(false); }
+}
+function cancelJobs(id){ if (id) { delete HND[id]; CANC[id] = 1; } }
+function runJobs(list, onRes, done){
+  var id = ++RID, next = 0, pend = 0;
+  if (!POOL.length) {
+    (function slice(){
+      if (CANC[id]) return;
+      var t = performance.now();
+      while (next < list.length && performance.now() - t < 14) onRes(jobRun(list[next].k, list[next++].a));
+      if (next < list.length) setTimeout(slice, 0); else done();
+    })();
+    return id;
+  }
+  function feed(w){
+    if (next < list.length) { pend++; w.postMessage({ rid:id, k:list[next].k, a:list[next++].a }); }
+    else if (!pend && HND[id]) { delete HND[id]; done(); }
+  }
+  HND[id] = function(w, d){ pend--; onRes(d); feed(w); };
+  POOL.forEach(feed);
+  return id;
+}
+var fRun = 0;
+function updateTerrain(){
+  var fs = GW > 700 && hmode !== 'pot';
+  if (terrainMat.flatShading !== fs) { terrainMat.flatShading = fs; terrainMat.needsUpdate = true; }
+  var P = geo.attributes.position.array, Cc = geo.attributes.color.array;
+  for (var idx = 0; idx < NV; idx++) {
+    var y = sampleH(fld.n2[idx], fld.mu[idx]), r, g, b;
+    if (gAlive) { r = ALIVE[0]; g = ALIVE[1]; b = ALIVE[2]; }
+    else {
+      var li = (gT * 255) | 0;
+      var v = fld.mu[idx]; if (v > K) v = K;
+      var band = 0.92 + 0.08 * Math.cos(v * 6.2831853);
+      r = LUT[3*li] * band; g = LUT[3*li+1] * band; b = LUT[3*li+2] * band;
+    }
+    P[3*idx + 1] = y; Cc[3*idx] = r; Cc[3*idx+1] = g; Cc[3*idx+2] = b;
+  }
+  geo.attributes.position.needsUpdate = true;
+  geo.attributes.color.needsUpdate = true;
+  if (!terrainMat.flatShading) geo.computeVertexNormals();
+  geo.computeBoundingSphere(); geo.computeBoundingBox();
+  TR.rig.dirty = true;
+}
+function computeProfile(){
+  var spanIm = (GH - 1) * view.span / (GW - 1);
+  prof.ok = Math.abs(view.cim) <= spanIm / 2;
+  if (!prof.ok) return;
+  for (var i = 0; i < PM; i++) {
+    var cr = view.cre - view.span / 2 + view.span * i / (PM - 1);
+    prof.n2[i] = esc(cr, 0, maxIter); prof.mu[i] = MU;
+  }
+}
+function applyProfile(){
+  var show = prof.ok && cutMode !== 'off';
+  profLine.visible = show;
+  curtain.visible = show && cutMode === 'cut';
+  basePlane.visible = show && cutMode === 'cut';
+  var S = WORLD_W / view.span, Zc = view.cim * S;
+  clipPlane.constant = (show && cutMode === 'cut') ? Zc : 1e6;
+  if (!show) { updateLabels(); TR.rig.dirty = true; return; }
+  var lp = profGeo.attributes.position.array, lc = profGeo.attributes.color.array;
+  var cp = curGeo.attributes.position.array, cc = curGeo.attributes.color.array;
+  var gold = new THREE.Color(T.gold), ink = new THREE.Color(T.ink);
+  for (var i = 0; i < PM; i++) {
+    var X = (i / (PM - 1) - 0.5) * WORLD_W;
+    var y = sampleH(prof.n2[i], prof.mu[i]);
+    lp[3*i] = X; lp[3*i+1] = y + 0.02; lp[3*i+2] = Zc;
+    var lcol = gAlive ? gold : ink;
+    lc[3*i] = lcol.r; lc[3*i+1] = lcol.g; lc[3*i+2] = lcol.b;
+    cp[6*i] = X; cp[6*i+1] = 0; cp[6*i+2] = Zc;
+    cp[6*i+3] = X; cp[6*i+4] = y; cp[6*i+5] = Zc;
+    cc[6*i] = LUT[0]; cc[6*i+1] = LUT[1]; cc[6*i+2] = LUT[2];
+    if (gAlive) { cc[6*i+3] = ALIVE[0]; cc[6*i+4] = ALIVE[1]; cc[6*i+5] = ALIVE[2]; }
+    else { var li = (gT * 255) | 0; cc[6*i+3] = LUT[3*li]; cc[6*i+4] = LUT[3*li+1]; cc[6*i+5] = LUT[3*li+2]; }
+  }
+  profGeo.attributes.position.needsUpdate = true; profGeo.attributes.color.needsUpdate = true;
+  curGeo.attributes.position.needsUpdate = true; curGeo.attributes.color.needsUpdate = true;
+  updateLabels();
+  TR.rig.dirty = true;
+}
+function updateLabels(){
+  if (!lblM2) return;
+  var S = WORLD_W / view.span, Zc = view.cim * S;
+  var show = prof.ok && cutMode !== 'off';
+  [[lblM2, -2], [lblQ, 0.25]].forEach(function(p){
+    var X = (p[1] - view.cre) * S;
+    var ok = show && Math.abs(X) <= WORLD_W / 2;
+    p[0].visible = ok;
+    if (ok) p[0].position.set(X, HMAX * hscale + 0.42, Zc);
+  });
+}
+function updateMarker(){
+  var S = WORLD_W / view.span;
+  var X = (C.re - view.cre) * S, Z = (view.cim - C.im) * S;
+  var inView = Math.abs(X) <= WORLD_W / 2 + 1e-9 && Math.abs(Z) <= (GH - 1) * DXW / 2 + 1e-9;
+  marker.visible = beam.visible = inView;
+  if (!inView) { TR.rig.dirty = true; return; }
+  var n = esc(C.re, C.im, maxIter);
+  var y = viewMode === 'cloud' ? 0 : sampleH(n, MU) * hscale;
+  marker.position.set(X, y + 0.03, Z);
+  beam.position.set(X, y + 0.63, Z);
+  TR.rig.dirty = true;
+}
+function setScaleY(){ tgroup.scale.y = hscale; cgroup.scale.y = hscale; updateLabels(); updateMarker(); TR.rig.dirty = true; }
+
+var raycaster = new THREE.Raycaster(), ndc = new THREE.Vector2();
+function pickC(e){
+  var cv = $('cvTerrain'), rc = cv.getBoundingClientRect();
+  ndc.x = ((e.clientX - rc.left) / rc.width) * 2 - 1;
+  ndc.y = -((e.clientY - rc.top) / rc.height) * 2 + 1;
+  TR.scene.updateMatrixWorld(true); TR.cam.updateMatrixWorld(true);
+  raycaster.setFromCamera(ndc, TR.cam);
+  var o = raycaster.ray.origin, d = raycaster.ray.direction;
+  var S = WORLD_W / view.span, Zc = view.cim * S, hw = WORLD_W / 2, hd = (GH - 1) * DXW / 2, step = Math.max(DXW * 0.5, 0.004);
+  if (viewMode === 'cloud') {
+    if (Math.abs(d.y) < 1e-9) return null;
+    var tp = -o.y / d.y; if (tp < 0) return null;
+    var px = o.x + d.x * tp, pz = o.z + d.z * tp;
+    if (Math.abs(px) > hw || Math.abs(pz) > hd) return null;
+    return { re: view.cre + px / S, im: view.cim - pz / S };
+  }
+  for (var t = 0; t < 70; t += step) {
+    var x = o.x + d.x * t, y = o.y + d.y * t, z = o.z + d.z * t;
+    if (Math.abs(x) > hw || Math.abs(z) > hd) continue;
+    if (cutMode === 'cut' && prof.ok && z > Zc) continue;
+    var i = Math.min(GW - 1, Math.max(0, Math.round((x + hw) / DXW))), j = Math.min(GH - 1, Math.max(0, Math.round((z + hd) / DXW)));
+    var id = j * GW + i;
+    if (y <= sampleH(fld.n2[id], fld.mu[id]) * hscale) return { re: view.cre + x / S, im: view.cim - z / S };
+  }
+  return null;
+}
+var pendingPick = null;
+attachControls($('cvTerrain'), TR, {
+  dragPick: function(){ return dragMode; },
+  onPick: function(e){ pendingPick = { clientX:e.clientX, clientY:e.clientY, fast:true }; },
+  onClick: function(e){ pendingPick = { clientX:e.clientX, clientY:e.clientY, fast:false }; }
+});
+$('cvTerrain').addEventListener('keydown', function(e){
+  var step = view.span / 200 * (e.shiftKey ? 10 : 1), moved = true;
+  if (e.key === 'ArrowLeft') C = { re:C.re - step, im:C.im };
+  else if (e.key === 'ArrowRight') C = { re:C.re + step, im:C.im };
+  else if (e.key === 'ArrowUp') C = { re:C.re, im:C.im + step };
+  else if (e.key === 'ArrowDown') C = { re:C.re, im:C.im - step };
+  else moved = false;
+  if (moved) { e.preventDefault(); markPresets(); dirty.c = true; }
+});
+
+/* ============================================================
+   Upper right: standing up the journey of c as (Re z, n, Im z)
+   ============================================================ */
+var OR = { scene:new THREE.Scene(), cam:new THREE.PerspectiveCamera(38, 1, 0.1, 100), rig:makeRig(0.75, 1.1, 10.5, new THREE.Vector3(0, 1.6, 0)) };
+OR.r = new THREE.WebGLRenderer({ canvas:$('cvOrbit'), antialias:true });
+OR.r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+var ostatic = new THREE.Group(), og = new THREE.Group();
+OR.scene.add(ostatic); OR.scene.add(og);
+var HT = 3.4;
+var dotTex = (function(){
+  var c = document.createElement('canvas'); c.width = c.height = 64;
+  var g = c.getContext('2d'); g.fillStyle = '#fff'; g.beginPath(); g.arc(32, 32, 28, 0, Math.PI * 2); g.fill();
+  return new THREE.CanvasTexture(c);
+})();
+function buildOrbitStatic(){
+  clearGroup(ostatic);
+  ostatic.add(new THREE.GridHelper(4.4, 11, T.grid, T.grid));
+  var ring = [];
+  for (var i = 0; i < 128; i++) { var a = i / 128 * Math.PI * 2; ring.push(new THREE.Vector3(2 * Math.cos(a), 0, 2 * Math.sin(a))); }
+  ostatic.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(ring), new THREE.LineBasicMaterial({ color:T.accent })));
+  var wall = new THREE.Mesh(new THREE.CylinderGeometry(2, 2, HT, 64, 1, true),
+    new THREE.MeshBasicMaterial({ color:T.accent, transparent:true, opacity:0.07, side:THREE.DoubleSide, depthWrite:false }));
+  wall.position.y = HT / 2; ostatic.add(wall);
+  var ax = new THREE.LineBasicMaterial({ color:T.muted });
+  function seg(a, b){ return new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(a[0],a[1],a[2]), new THREE.Vector3(b[0],b[1],b[2])]), ax); }
+  ostatic.add(seg([-2.3,0,0],[2.3,0,0])); ostatic.add(seg([0,0,-2.3],[0,0,2.3])); ostatic.add(seg([0,0,0],[0,HT,0]));
+  var l1 = makeLabel('Re z', T.muted, 0.36); l1.position.set(2.7, 0.05, 0);
+  var l2 = makeLabel('Im z', T.muted, 0.36); l2.position.set(0, 0.05, -2.7);
+  var l3 = makeLabel('Step n', T.muted, 0.36); l3.position.set(0, HT + 0.3, 0);
+  var l4 = makeLabel('|z| = 2', T.accent, 0.3); l4.position.set(2.0, 0.28, 2.0);
+  ostatic.add(l1); ostatic.add(l2); ostatic.add(l3); ostatic.add(l4);
+  OR.r.setClearColor(T.scene, 1);
+  OR.rig.dirty = true;
+}
+function buildOrbit(){
+  clearGroup(og);
+  var d = orbitData(C.re, C.im, orbitN);
+  curOrbit = d;
+  var L = d.re.length, dy = HT / Math.max(orbitN, 16);
+  var pos = new Float32Array(L * 3), col = new Float32Array(L * 3), flo = new Float32Array(L * 3), drop = new Float32Array(L * 6);
+  var c0 = new THREE.Color('#2E9C8F'), c1 = new THREE.Color(T.accent), tmp = new THREE.Color();
+  for (var i = 0; i < L; i++) {
+    var x = d.re[i], z = d.im[i], r = Math.hypot(x, z);
+    if (r > 3.2) { x *= 3.2 / r; z *= 3.2 / r; }
+    var Y = i * dy;
+    pos[3*i] = x; pos[3*i+1] = Y; pos[3*i+2] = -z;
+    flo[3*i] = x; flo[3*i+1] = 0.003; flo[3*i+2] = -z;
+    drop[6*i] = x; drop[6*i+1] = 0; drop[6*i+2] = -z; drop[6*i+3] = x; drop[6*i+4] = Y; drop[6*i+5] = -z;
+    tmp.copy(c0).lerp(c1, L > 1 ? i / (L - 1) : 0);
+    col[3*i] = tmp.r; col[3*i+1] = tmp.g; col[3*i+2] = tmp.b;
+  }
+  function geoOf(arr, withColor){
+    var g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(arr, 3));
+    if (withColor) g.setAttribute('color', new THREE.BufferAttribute(col, 3)); return g;
+  }
+  og.add(new THREE.Line(geoOf(pos, true), new THREE.LineBasicMaterial({ vertexColors:true })));
+  og.add(new THREE.Points(geoOf(pos, true), new THREE.PointsMaterial({ size:0.17, vertexColors:true, map:dotTex, alphaTest:0.4, transparent:true, sizeAttenuation:true })));
+  og.add(new THREE.Line(geoOf(flo, false), new THREE.LineBasicMaterial({ color:T.muted, transparent:true, opacity:0.7 })));
+  og.add(new THREE.LineSegments(geoOf(drop, false), new THREE.LineBasicMaterial({ color:T.muted, transparent:true, opacity:0.22 })));
+  var o = $('orbitNote');
+  if (d.esc) o.textContent = 'Moved beyond distance 2 from the center at step ' + d.esc + '. Once that happens, it always goes to infinity.';
+  else o.textContent = 'Stayed within distance 2 for ' + orbitN + ' steps. Increase the steps to see where it goes.';
+  OR.rig.dirty = true;
+}
+attachControls($('cvOrbit'), OR, {});
+
+/* ============================================================
+   Right middle: Julia set (+ overlaying the journey of 0)
+   ============================================================ */
+var JEXT = 1.8;
+var jOff = document.createElement('canvas');
+var jMain = $('cvJulia'), jctx = jMain.getContext('2d');
+var jTimer = null, jRun = 0;
+function renderJuliaImage(R, jmax){
+  cancelJobs(jRun);
+  var off = document.createElement('canvas'); off.width = off.height = R;
+  var octx = off.getContext('2d'), list = [], rp = Math.max(4, Math.ceil(R / (Math.max(1, POOL.length) * 6)));
+  for (var y = 0; y < R; y += rp) list.push({ k:'j', a:[R, y, Math.min(R, y + rp), C.re, C.im, jmax, JEXT, LUT, ALIVE] });
+  jRun = runJobs(list, function(d){ octx.putImageData(new ImageData(d.px, R, d.px.length / (4 * R)), 0, d.y0); },
+    function(){ jRun = 0; jOff = off; drawJulia(); });
+}
+function toPx(x, y){ return [ (x + JEXT) / (2 * JEXT) * jMain.width, (JEXT - y) / (2 * JEXT) * jMain.height ]; }
+function drawJulia(){
+  var W = jMain.width, H = jMain.height; if (!W || !H) return;
+  jctx.imageSmoothingEnabled = true; jctx.imageSmoothingQuality = 'high';
+  jctx.drawImage(jOff, 0, 0, W, H);
+  var dpr = W / Math.max(1, jMain.clientWidth);
+  // Axes (dashed cross)
+  jctx.save();
+  jctx.strokeStyle = 'rgba(255,255,255,0.55)'; jctx.lineWidth = 1 * dpr; jctx.setLineDash([4 * dpr, 4 * dpr]);
+  var o = toPx(0, 0);
+  jctx.beginPath(); jctx.moveTo(o[0], 0); jctx.lineTo(o[0], H); jctx.moveTo(0, o[1]); jctx.lineTo(W, o[1]); jctx.stroke();
+  jctx.restore();
+  // Journey of 0 (the Mandelbrot journey)
+  function path(d, color, rad){
+    jctx.save(); jctx.strokeStyle = color; jctx.fillStyle = color; jctx.lineWidth = 1.4 * dpr;
+    jctx.beginPath(); var pen = false;
+    for (var i = 0; i < d.re.length; i++) {
+      if (Math.abs(d.re[i]) > JEXT || Math.abs(d.im[i]) > JEXT) { pen = false; continue; }
+      var q = toPx(d.re[i], d.im[i]);
+      if (!pen) { jctx.moveTo(q[0], q[1]); pen = true; } else jctx.lineTo(q[0], q[1]);
+    }
+    jctx.stroke();
+    for (var k = 0; k < d.re.length; k++) {
+      if (Math.abs(d.re[k]) > JEXT || Math.abs(d.im[k]) > JEXT) continue;
+      var q2 = toPx(d.re[k], d.im[k]); jctx.beginPath(); jctx.arc(q2[0], q2[1], (k === 0 ? 4.5 : 3) * dpr, 0, Math.PI * 2); jctx.fill();
+    }
+    jctx.restore();
+  }
+  if (curOrbit) path(curOrbit, T.accent);
+  if (jStart) path(jStart.orbit, '#33B5FF');
+}
+function updateJulia(fast){
+  renderJuliaImage(fast ? 200 : JQ.R, fast ? 120 : JQ.M);
+  var n = esc(C.re, C.im, 5000);
+  var base = n === 0
+    ? 'Since c is inside the Mandelbrot set, the Julia set is a single connected piece.'
+    : 'Since c is outside the Mandelbrot set, the Julia set has shattered into scattered dust.';
+  var extra = '';
+  if (jStart) extra = ' Starting point z' + sub(0) + ' = ' + cx(jStart.re, jStart.im) + ' → ' + (jStart.esc ? 'escapes at step ' + jStart.esc : 'does not escape (blue dots are its journey)');
+  $('juliaNote').textContent = base + ' Pink dots are the journey starting from 0 (the same journey as on the landscape at left).' + extra;
+  if (fast) { clearTimeout(jTimer); jTimer = setTimeout(function(){ renderJuliaImage(JQ.R, JQ.M); }, 220); }
+}
+jMain.addEventListener('click', function(e){
+  var rc = jMain.getBoundingClientRect();
+  var x = ((e.clientX - rc.left) / rc.width * 2 - 1) * JEXT, y = (1 - (e.clientY - rc.top) / rc.height * 2) * JEXT;
+  var rad = Math.max(2, Math.hypot(C.re, C.im)), zx = x, zy = y, re = [x], im = [y], esc0 = 0;
+  for (var n = 1; n <= 80; n++) {
+    var xt = zx * zx - zy * zy + C.re; zy = 2 * zx * zy + C.im; zx = xt;
+    re.push(zx); im.push(zy);
+    if (zx * zx + zy * zy > rad * rad) { esc0 = n; break; }
+  }
+  jStart = { re:x, im:y, esc:esc0, orbit:{ re:re, im:im } };
+  drawJulia();
+  updateJulia(false);
+});
+
+/* ============================================================
+   Lower right: follow by hand
+   ============================================================ */
+function updateReadout(){
+  var n = esc(C.re, C.im, 20000);
+  var v = $('verdict');
+  var head = 'c = ' + cx(C.re, C.im, 4) + '  ';
+  if (n === 0) v.innerHTML = head + '→ <b>survives</b> (checked up to 20000 steps). It is inside the Mandelbrot set.';
+  else v.innerHTML = head + '→ <b>escapes at step ' + n + '</b>. |z' + sub(n) + '| &gt; 2.';
+  var g = $('ghost');
+  if (Math.abs(C.im) < 1e-12 && C.re > 0.25 && C.re < 0.4) {
+    var act = esc(C.re, 0, 400000), apx = Math.PI / Math.sqrt(C.re - 0.25);
+    g.hidden = false;
+    g.innerHTML = 'The “ghost” just above 0.25: actual escape steps <b>' + act + '</b> ≈ π/√(c−¼) = <b>' + apx.toFixed(1) + '</b>. The trace of a vanished refuge is holding the point back.';
+  } else if (Math.abs(C.im) < 1e-12 && C.re >= -2 && C.re <= 0.25) {
+    g.hidden = false;
+    g.innerHTML = 'You are inside the real-axis survival interval −2 ≤ c ≤ ¼. Cut the landscape along the real axis and this interval joins up into a plateau.';
+  } else g.hidden = true;
+  var d = orbitData(C.re, C.im, 10), rows = '';
+  for (var i = 0; i < d.re.length; i++) {
+    var mod = Math.hypot(d.re[i], d.im[i]), isEsc = (i === d.esc && d.esc > 0);
+    rows += '<div class="r' + (isEsc ? ' esc' : '') + '" role="row"><span>z' + sub(i) + '</span><span>' + cx(d.re[i], d.im[i]) + '</span><span>|z| = ' + big(mod, 2) + '</span></div>';
+  }
+  if (!d.esc) rows += '<div class="r dim"><span class="dim">…</span><span class="dim">The journey continues</span><span></span></div>';
+  $('journey').innerHTML = rows;
+}
+function syncInputs(){
+  var re = $('cRe'), im = $('cIm');
+  if (document.activeElement !== re) re.value = +C.re.toFixed(6);
+  if (document.activeElement !== im) im.value = +C.im.toFixed(6);
+}
+function onInput(){
+  var a = parseFloat($('cRe').value), b = parseFloat($('cIm').value);
+  if (isFinite(a) && isFinite(b)) { C = { re:a, im:b }; markPresets(); dirty.c = true; }
+}
+$('cRe').addEventListener('input', onInput); $('cIm').addEventListener('input', onInput);
+
+/* ============================================================
+   Update everything at once when c changes
+   ============================================================ */
+var fastNext = false;
+function refreshC(){
+  updateMarker();
+  buildOrbit();
+  updateJulia(fastNext);
+  updateReadout();
+  syncInputs();
+  fastNext = false;
+}
+function setC(re, im, fast){ C = { re:re, im:im }; fastNext = !!fast; markPresets(); dirty.c = true; }
+
+/* ============================================================
+   Presets
+   ============================================================ */
+var PRESETS = [
+  ['1', 1, 0], ['−1', -1, 0], ['0', 0, 0], ['0.25', 0.25, 0], ['0.2501', 0.2501, 0], ['0.26', 0.26, 0],
+  ['−2', -2, 0], ['−2.1', -2.1, 0], ['1+i', 1, 1], ['0.3+0.5i', 0.3, 0.5], ['−0.8+0.156i', -0.8, 0.156], ['Rabbit −0.123+0.745i', -0.123, 0.745]
+];
+var presetBox = $('presets');
+PRESETS.forEach(function(p, i){
+  var b = document.createElement('button'); b.type = 'button'; b.textContent = 'c = ' + p[0]; b.dataset.i = i;
+  b.addEventListener('click', function(){
+    if (Math.abs(p[1] - view.cre) > view.span / 2 || Math.abs(p[2] - view.cim) > (GH - 1) * view.span / (GW - 1) / 2) resetView();
+    setC(p[1], p[2], false);
+  });
+  presetBox.appendChild(b);
+});
+function markPresets(){
+  Array.prototype.forEach.call(presetBox.children, function(b){
+    var p = PRESETS[+b.dataset.i]; b.classList.toggle('on', Math.abs(p[1] - C.re) < 1e-9 && Math.abs(p[2] - C.im) < 1e-9);
+  });
+}
+
+/* ============================================================
+   Wiring up controls
+   ============================================================ */
+var kAnim = false, nTimer = null;
+function onK(){
+  var s = +$('kRange').value;
+  K = Math.max(1, Math.round(Math.pow(maxIter, s / 1000)));
+  $('kVal').textContent = 'k = ' + K;
+  updateTerrain(); applyProfile(); updateMarker();
+}
+$('kRange').addEventListener('input', function(){ stopK(); onK(); });
+function stopK(){ kAnim = false; $('kPlay').textContent = 'Play growth'; }
+$('kPlay').addEventListener('click', function(){
+  if (kAnim) { stopK(); return; }
+  kAnim = true; $('kPlay').textContent = 'Stop';
+  var t0 = performance.now(), dur = 9000;
+  (function step(now){
+    if (!kAnim) return;
+    var u = Math.min(1, (now - t0) / dur);
+    $('kRange').value = Math.round(u * 1000); onK();
+    if (u < 1) requestAnimationFrame(step); else stopK();
+  })(t0);
+});
+$('viewSel').addEventListener('change', function(){ viewMode = this.value; applyView(); });
+function setCam(theta, phi, radius, ty){ var g = TR.rig; g.theta = theta; g.phi = phi; g.radius = radius; g.target.set(0, ty, 0); g.dirty = true; }
+$('camTop').addEventListener('click', function(){ setCam(0, 0.02, 11.5, viewMode === 'cloud' ? 0 : 0.6); });
+$('camSide').addEventListener('click', function(){ setCam(0, Math.PI / 2, 9, viewMode === 'cloud' ? 0 : 1.0); });
+$('hmode').addEventListener('change', function(){ hmode = this.value; updateTerrain(); applyProfile(); updateMarker(); });
+$('hscale').addEventListener('input', function(){ hscale = +this.value; setScaleY(); });
+$('cutSel').addEventListener('change', function(){ cutMode = this.value; applyProfile(); });
+$('dragBtn').addEventListener('click', function(){
+  dragMode = !dragMode; this.setAttribute('aria-pressed', dragMode ? 'true' : 'false');
+  this.textContent = dragMode ? 'Drag c: on (rotation paused)' : 'Drag c';
+});
+
+function describeRegion(){
+  var spanIm = (GH - 1) * view.span / (GW - 1);
+  $('regionTxt').textContent = 'Re ' + num(view.cre - view.span / 2, 4) + ' ~ ' + num(view.cre + view.span / 2, 4) +
+    ' · Im ' + num(view.cim - spanIm / 2, 4) + ' ~ ' + num(view.cim + spanIm / 2, 4);
+}
+function recompute(){
+  cancelJobs(fRun);
+  var t0 = performance.now(), dx = view.span / (GW - 1), re0 = view.cre - view.span / 2, im0 = view.cim + (GH - 1) / 2 * dx;
+  var rp = Math.max(2, Math.ceil(GH / (Math.max(1, POOL.length) * 8))), list = [], done = 0, gw = GW, gh = GH;
+  for (var y = 0; y < GH; y += rp) list.push({ k:'m', a:[re0, im0, dx, GW, y, Math.min(GH, y + rp), maxIter] });
+  $('busy').hidden = false;
+  fRun = runJobs(list, function(d){
+    fld.n2.set(d.n2, d.y0 * gw); fld.mu.set(d.mu, d.y0 * gw); done += d.n2.length / gw;
+    $('busy').textContent = 'Computing landscape… ' + Math.round(done / gh * 100) + '%';
+  }, function(){
+    fRun = 0; computeProfile(); onK(); describeRegion(); $('busy').hidden = true;
+    cloudStale = true; if (viewMode === 'cloud') buildCloud();
+    $('perfTxt').textContent = GW + '×' + GH + ' (' + (NV / 1e6).toFixed(2) + 'M points) · max ' + maxIter + ' iterations · threads ' + (POOL.length || 1) + ' · ' +
+      Math.round(performance.now() - t0) + 'ms' + (dx < 1e-13 ? ' · ⚠ near double-precision limit' : '');
+  });
+}
+function setIter(v){ maxIter = v; $('iterSel').value = String(v); }
+function resetView(){
+  view.cre = DEFAULT_VIEW.cre; view.cim = DEFAULT_VIEW.cim; view.span = DEFAULT_VIEW.span;
+  recompute();
+}
+$('zoomIn').addEventListener('click', function(){
+  if (view.span / (GW - 1) < 4e-14) { $('perfTxt').textContent = '⚠ Cannot zoom in further: double-precision (64-bit) limit reached.'; return; }
+  view.cre = C.re; view.cim = C.im; view.span /= 2;
+  autoIter(); recompute();
+});
+function autoIter(){
+  var z = Math.log2(DEFAULT_VIEW.span / view.span), need = 300 + 80 * z * (1 + z / 8), o = [100,300,1000,3000,10000,30000,100000];
+  for (var i = 0; i < o.length; i++) if (o[i] >= need) { if (o[i] > maxIter) setIter(o[i]); return; }
+  setIter(100000);
+}
+var RES = [320, 640, 1024, 1536, 2048], JQS = [[400,150],[600,300],[900,600],[1200,1000],[1600,2000]];
+$('resSel').addEventListener('change', function(){
+  var i = +this.value; buildGrid(RES[i]); JQ = { R:JQS[i][0], M:JQS[i][1] }; recompute(); updateJulia(false);
+});
+$('zoomOut').addEventListener('click', function(){
+  view.span = Math.min(DEFAULT_VIEW.span, view.span * 2);
+  if (view.span >= DEFAULT_VIEW.span) { view.cre = DEFAULT_VIEW.cre; view.cim = DEFAULT_VIEW.cim; }
+  recompute();
+});
+$('zoomReset').addEventListener('click', resetView);
+$('iterSel').addEventListener('change', function(){ maxIter = +this.value; recompute(); });
+
+$('nRange').addEventListener('input', function(){ stopN(); orbitN = +this.value; $('nVal').textContent = orbitN; dirty.c = true; });
+function stopN(){ if (nTimer) { clearInterval(nTimer); nTimer = null; } $('nPlay').textContent = 'Walk'; }
+$('nPlay').addEventListener('click', function(){
+  if (nTimer) { stopN(); return; }
+  $('nPlay').textContent = 'Stop';
+  orbitN = 1; $('nRange').value = 1; $('nVal').textContent = 1; dirty.c = true;
+  nTimer = setInterval(function(){
+    var lim = curOrbit && curOrbit.esc ? curOrbit.esc + 1 : 120;
+    if (orbitN >= lim || orbitN >= 150) { stopN(); return; }
+    orbitN++; $('nRange').value = orbitN; $('nVal').textContent = orbitN; dirty.c = true;
+  }, 170);
+});
+
+/* ============================================================
+   Resizing, theme, render loop
+   ============================================================ */
+function fit(R, stage){
+  var w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
+  R.r.setSize(w, h, false); R.cam.aspect = w / h; R.cam.updateProjectionMatrix(); R.rig.dirty = true;
+}
+function fitJulia(){
+  var dpr = Math.min(window.devicePixelRatio || 1, 2), w = jMain.clientWidth, h = jMain.clientHeight;
+  if (!w || !h) return;
+  jMain.width = Math.round(w * dpr); jMain.height = Math.round(h * dpr); drawJulia();
+}
+if (window.ResizeObserver) {
+  new ResizeObserver(function(){ fit(TR, $('terrainStage')); }).observe($('terrainStage'));
+  new ResizeObserver(function(){ fit(OR, $('orbitStage')); }).observe($('orbitStage'));
+  new ResizeObserver(fitJulia).observe($('juliaWrap'));
+} else {
+  window.addEventListener('resize', function(){ fit(TR, $('terrainStage')); fit(OR, $('orbitStage')); fitJulia(); });
+}
+function applyTheme(){
+  readTheme();
+  TR.r.setClearColor(T.scene, 1);
+  buildTerrainStatic(); buildOrbitStatic(); buildOrbit(); styleCloud();
+  applyProfile(); updateMarker(); drawJulia();
+  TR.rig.dirty = OR.rig.dirty = true;
+}
+if (window.matchMedia) {
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  if (mq.addEventListener) mq.addEventListener('change', applyTheme);
+}
+new MutationObserver(applyTheme).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+
+function loop(){
+  if (pendingPick) {
+    var pp = pendingPick; pendingPick = null;
+    var hit = pickC(pp);
+    if (hit) setC(hit.re, hit.im, pp.fast);
+  }
+  if (dirty.c) { dirty.c = false; refreshC(); }
+  if (TR.rig.dirty) { applyRig(TR); TR.r.render(TR.scene, TR.cam); TR.rig.dirty = false; }
+  if (OR.rig.dirty) { applyRig(OR); OR.r.render(OR.scene, OR.cam); OR.rig.dirty = false; }
+  requestAnimationFrame(loop);
+}
+
+/* ============================================================
+   Start
+   ============================================================ */
+TR.r.setClearColor(T.scene, 1);
+tgroup.visible = false; cgroup.visible = true; $('ovTr').innerHTML = CLOUD_TXT;
+buildTerrainStatic(); buildOrbitStatic(); styleCloud();
+fit(TR, $('terrainStage')); fit(OR, $('orbitStage')); fitJulia();
+$('nVal').textContent = orbitN;
+markPresets();
+initPool(function(){ recompute(); requestAnimationFrame(loop); });
+})();
+</script>
+</body>
+</html>
