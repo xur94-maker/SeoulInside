@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "Trump calls off livestream of Fort Hood attacker's execution by firing squad",
+      "link": "https://www.bbc.co.uk/news/articles/crx23qlnj27qo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 15 Oct 2026 17:47:22 GMT",
+      "desc": "Trump said some would \"rather not watch\" the killing of Nidal Hasan, the first military execution in over 60 years."
+    },
+    {
       "title": "Russia accuses Ukraine of attacking oil refinery after Zelensky says strikes to resume",
       "link": "https://www.bbc.co.uk/news/articles/cqwyrnwd9dw1o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 15 Oct 2026 12:03:51 GMT",
+      "date": "Thu, 15 Oct 2026 16:50:18 GMT",
       "desc": "Ukraine's president says a pause on striking energy sites is over following fresh Russian attacks."
     },
     {
       "title": "At least 33 pupils and teacher killed after school roof collapses in Pakistan",
       "link": "https://www.bbc.co.uk/news/articles/cked326llddgo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 15 Oct 2026 12:28:26 GMT",
-      "desc": "Rescue officials fear more people are buried under the debris in the north-western city of Peshawar."
+      "date": "Thu, 15 Oct 2026 15:26:16 GMT",
+      "desc": "Children were buried under the debris after the roof crashed through three classrooms, police say."
     },
     {
       "title": "Two dead in Istanbul after heaviest rainfall in 84 years, governor says",
@@ -19,16 +25,10 @@
       "desc": "Residents have been told to avoid leaving their homes unless absolutely necessary."
     },
     {
-      "title": "Eight crew missing after drone attack leaves tanker ablaze off Romania's coast",
+      "title": "Seven crew missing after drone attack leaves tanker ablaze off Romania's coast",
       "link": "https://www.bbc.co.uk/news/articles/c60qkgpp592yo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 15 Oct 2026 11:12:54 GMT",
+      "date": "Thu, 15 Oct 2026 14:51:30 GMT",
       "desc": "A search and rescue operation is under way in the Black Sea after the latest attack in the area."
-    },
-    {
-      "title": "White House defends new press secretary over her legal credentials",
-      "link": "https://www.bbc.co.uk/news/articles/ckqxne2evqreo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 15 Oct 2026 08:41:04 GMT",
-      "desc": "Katie Zacharia does not appear to be registered to the legal bar in any state where she has lived."
     }
   ],
   "koreaNews": [
@@ -39,34 +39,34 @@
       "desc": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
+      "title": "South Korea’s Central Asia push: From summit diplomacy to economic partnership - Eurasianet",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPVlYzd2NVZXI0SzBjYXJseXlyU1JXVVVWNkhIOTRZQkE0bzJreDRHUHdTY0Nya1hXSmhjanZtV0JtX0dCZHU2TTU0enhxRURTZTZ6VmR4VmpidmpLc0xNRm5LYTQtenkwOWRFZkdNMkNNZGhNWTQ0elhPV04xUWVtWmZBQmRoZFZzajkyc2U3aEF1VTFINDJWaDJuQm9xU19w?oc=5",
+      "date": "Thu, 15 Oct 2026 15:12:05 GMT",
+      "desc": "South Korea’s Central Asia push: From summit diplomacy to economic partnership&nbsp;&nbsp;Eurasianet"
+    },
+    {
       "title": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help? - BeInCrypto",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5ZUWtGTG5LT2pZN3pFaXNENUZ0Nk5qaGlLTVNmU0NqTWtUeHBzRUx4bktrSFdveEFNYXFUS2pNVFpaM1c1OFFlMGpCN0ZNaHBXZ2hkQmo1YnBud0tlaFloZkswNkh2YmxmeXE0SjN5WlAwWjFFM3F3Y2JWZw?oc=5",
       "date": "Thu, 15 Oct 2026 02:03:22 GMT",
       "desc": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help?&nbsp;&nbsp;BeInCrypto"
     },
     {
-      "title": "Ex-national security adviser Flynn says U.S.-Korea alliance increasingly economy-based - Washington Times",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQYTF1dUo0MDdoSGZtdUZFYWJQRDByZDZ5RFVJcW53TENJcEExWThyVFVXb1hjcW1QZkIxQ3NsajRNaVlRR0ZudmZNX2h5c1I3YW5DaVhsZ3E5UkVwMTRRaDFTNG1hODlGY3U5YmpOMFFlalBLa1hmQ3MxTGx3T0lONG9WVTVLMnczdFctX05Cb2RRWGpqOU9OcGVJLUw3dW9xTWMwNHRTSVNFQVNraGJVQ2d4b3B3UQ?oc=5",
-      "date": "Wed, 14 Oct 2026 21:27:40 GMT",
-      "desc": "Ex-national security adviser Flynn says U.S.-Korea alliance increasingly economy-based&nbsp;&nbsp;Washington Times"
+      "title": "Mexico’s Korea Investment Push: A New Gateway to North America - Mexico Business News",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOYlhCbDN4aTE5Q0pEYVlDZ0pCeExxNk0yQk92RHFxWUlqLTltakNXZk9jcXNKWnR1YVhRZ21EUks1RDBEeTZHWUpVNk5aT1BvbFlYZDhSbmJISG9RYm01SnRoYlMtZF9RWHMzc1YzaUNLcUxybXVjMGk0QVRleHlyYzRqcEZwcHVHRE5jWU5xekpRS043UlAwSWZEZC1aQm9wWk1qT1pBcmFpNFhDcXc?oc=5",
+      "date": "Thu, 15 Oct 2026 16:30:20 GMT",
+      "desc": "Mexico’s Korea Investment Push: A New Gateway to North America&nbsp;&nbsp;Mexico Business News"
     },
     {
-      "title": "Sen. McCormick touts trade deals with Japan and South Korea - Broad + Liberty",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOWVpNazQtakNuZGVRNW1PaWhzc1pjNy12ek1nXzRZanYxVk10UzRBU05kWHdEaDBndDFVZ2ktWG5RVXREM05xb0NwczBJNDVlMmN6MHhvdVEzQnlQZVF3NEs3VFJ2a2ZPNjNTVEh1TmZDZWV0TC1aUWV3TkRmSGdkQUdwZ1Vic3BEeVkxM3BsdDVOT2FINVJLN0JZbjJtRkk?oc=5",
-      "date": "Thu, 15 Oct 2026 09:30:00 GMT",
-      "desc": "Sen. McCormick touts trade deals with Japan and South Korea&nbsp;&nbsp;Broad + Liberty"
+      "title": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help? - CryptoRank",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPR3ozNnBLSUFpOVJuNTRzRDFlRXdmSnBhZml6SWpSLUFVRnhQcFE4ME9RRUZBbHpaNmlNTV85WGw3bElRMXo4X1ljak9JYUpHVVUxNDh2ZW0tQ1Uzb2tMaUVIRWV2YVFmS01SRmtVRENyRDl2eWY1OVBhSU9jUHVZcXdRbERsU21rRXVlR2pB?oc=5",
+      "date": "Thu, 15 Oct 2026 03:19:42 GMT",
+      "desc": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help?&nbsp;&nbsp;CryptoRank"
     },
     {
-      "title": "South Korean stocks plunge as US inflation, AI concerns trigger trading halts - Anadolu Ajansı",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOU01EZ1VGTV95d19oa0IzNUQ5ZXN2aUZPbkQ4aEpkVnJwMC0zY21aOEI2M3R5eWlSTnFQX0xpcTQ5S1JsWndLLXNDdXdJbGFwNU9zLUd6SlQ2a0VRVkxuc0pzMHBTZ0JkLVA3R1pIemxuVVFubVJ0ZHJvOEExcHlyN0hic2h3d1lJVXQ4ZnBQVDhmLUdjLXRLQm1EQlY3Vk9DU2xpNU9Ca3NiazMxcVZQeDBTLTZTWE1f?oc=5",
-      "date": "Thu, 15 Oct 2026 06:48:35 GMT",
-      "desc": "South Korean stocks plunge as US inflation, AI concerns trigger trading halts&nbsp;&nbsp;Anadolu Ajansı"
-    },
-    {
-      "title": "Nvidia, AMD, Micron fall as AI stock sell-off deepens - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPaGhRTkZ4cjB1WFcxY0ZaekZ0anhJSW1MYlRMVV9pZzFacHJySWt5QkZaSEFoMmVBbVZKRzc0TmloQXkydmRSaGs5RW1vQjIyZ1hhQzFBSXN1ZGlJVmI1b2VKU1FIaXlZVTJBZHZZMUkxemJ1ZWZUY3E5Q205RWp1WFItS2FJMEx2Zjg4ejRHQy11UjRMbkFPSXJnSkluT01nMVNKbHRn0gGrAUFVX3lxTE1fQkI2UFBBMEExelZWTnRzQ1lzaE1Hdms2R3hjLW9tVmdsZ1hWNGdxRVE1VnlZWVBQU1ZZTW56SUJrYVNYX25QTFFOMExfZmpZY1RCRkpwZmFZX3d6T1BCdU5Rd3ZsME5zdHJhUFRkNG5KUHdkNUsyRHBjX3I1VWNpZkhWRVZ4eFZlS3Jhc1ZoS1dBbVpPRlFyTkRUd1pRNDNqMHNDTWgzV1VGaw?oc=5",
-      "date": "Thu, 15 Oct 2026 00:42:00 GMT",
-      "desc": "Nvidia, AMD, Micron fall as AI stock sell-off deepens&nbsp;&nbsp;CNBC"
+      "title": "Meet the Low-Cost Vanguard ETF With Taiwan Semiconductor, Samsung Electronics, SK Hynix, and ASML as Its 4 Largest Holdings - The Motley Fool",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPWUFtYzNZdy1LMWNvMTZXcTVSdUEyNnFZb21Mbjh6TTk1ZzE0aG1pSUs3TXFnb1kxQV8wLXJsMkl6UjdNa1JtUXNCVW1ablZmWjZJcmZZaFNCTEJjNVdyTG9fZDNJUHl4TXB5ekJQWWVycXJ1WmtyalJNMUdBUWwtRWRkNjkxTjBvcXNYTFFaSDR6dVotNmh6eA?oc=5",
+      "date": "Thu, 15 Oct 2026 17:45:16 GMT",
+      "desc": "Meet the Low-Cost Vanguard ETF With Taiwan Semiconductor, Samsung Electronics, SK Hynix, and ASML as Its 4 Largest Holdings&nbsp;&nbsp;The Motley Fool"
     },
     {
       "title": "Samsung, SK Hynix Stocks Plunge on CXMT's 4F² DRAM Announcement - 조선일보",
@@ -75,99 +75,99 @@
       "desc": "Samsung, SK Hynix Stocks Plunge on CXMT's 4F² DRAM Announcement&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Big Tech Moves Away from Nvidia: Chance for Samsung, SK hynix? - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBQOXR0am95QmVjZTBITUVsTjU2ZTh5S216MElEWVYwUHFCemc2SlQ2YkRsbGpVR0VPQzZaYXpZdGFhWEhpdlRNRExFRkcwbVBvYWpXeVdORGdZbklEd0xJOVlWZENiQ3ZEUnlKZzFMZDc2NWFl?oc=5",
-      "date": "Thu, 15 Oct 2026 09:29:10 GMT",
-      "desc": "Big Tech Moves Away from Nvidia: Chance for Samsung, SK hynix?&nbsp;&nbsp;Businesskorea"
+      "title": "Nvidia, AMD, Micron fall as AI stock sell-off deepens - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPaGhRTkZ4cjB1WFcxY0ZaekZ0anhJSW1MYlRMVV9pZzFacHJySWt5QkZaSEFoMmVBbVZKRzc0TmloQXkydmRSaGs5RW1vQjIyZ1hhQzFBSXN1ZGlJVmI1b2VKU1FIaXlZVTJBZHZZMUkxemJ1ZWZUY3E5Q205RWp1WFItS2FJMEx2Zjg4ejRHQy11UjRMbkFPSXJnSkluT01nMVNKbHRn0gGrAUFVX3lxTE1fQkI2UFBBMEExelZWTnRzQ1lzaE1Hdms2R3hjLW9tVmdsZ1hWNGdxRVE1VnlZWVBQU1ZZTW56SUJrYVNYX25QTFFOMExfZmpZY1RCRkpwZmFZX3d6T1BCdU5Rd3ZsME5zdHJhUFRkNG5KUHdkNUsyRHBjX3I1VWNpZkhWRVZ4eFZlS3Jhc1ZoS1dBbVpPRlFyTkRUd1pRNDNqMHNDTWgzV1VGaw?oc=5",
+      "date": "Thu, 15 Oct 2026 00:42:00 GMT",
+      "desc": "Nvidia, AMD, Micron fall as AI stock sell-off deepens&nbsp;&nbsp;CNBC"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 215.48,
-      "change": -13.04,
-      "pct": -5.71,
+      "price": 217.96,
+      "change": -10.56,
+      "pct": -4.62,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 411.15,
-      "change": -33.97,
-      "pct": -7.63,
+      "price": 420.32,
+      "change": -24.8,
+      "pct": -5.57,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 538.17,
-      "change": -67.36,
-      "pct": -11.12,
+      "price": 553.74,
+      "change": -51.79,
+      "pct": -8.55,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 91.58,
-      "change": -11.23,
-      "pct": -10.92,
+      "price": 94.32,
+      "change": -8.49,
+      "pct": -8.26,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 175.58,
-      "change": -1.28,
-      "pct": -0.72,
+      "price": 176.63,
+      "change": -0.23,
+      "pct": -0.13,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 231.18,
-      "change": -24.21,
-      "pct": -9.48,
+      "price": 241.5,
+      "change": -13.89,
+      "pct": -5.44,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 349.94,
-      "change": -3.84,
-      "pct": -1.09,
+      "price": 350.13,
+      "change": -3.65,
+      "pct": -1.03,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 345.88,
-      "change": 4.61,
-      "pct": 1.35,
+      "price": 343.88,
+      "change": 2.62,
+      "pct": 0.77,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 534.88,
-      "change": -8.57,
-      "pct": -1.58,
+      "price": 540.32,
+      "change": -3.13,
+      "pct": -0.58,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7694.76,
-      "change": -110.69,
-      "pct": -1.42,
+      "price": 7740.24,
+      "change": -65.21,
+      "pct": -0.84,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26455.38,
-      "change": -749.0,
-      "pct": -2.75,
+      "price": 26666.37,
+      "change": -538.01,
+      "pct": -1.98,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1345.68,
-      "change": 5.37,
-      "pct": 0.4,
+      "price": 1341.36,
+      "change": 1.05,
+      "pct": 0.08,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-15 14:03 UTC"
+  "updatedAt": "2026-10-15 17:55 UTC"
 }
