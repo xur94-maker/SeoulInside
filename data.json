@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Zelensky says Ukraine has right to defend itself after Trump criticism",
+      "title": "Inside Ukrainian offensive pushing Russia back - with Starlink playing a key role",
+      "link": "https://www.bbc.co.uk/news/articles/cvx284w16z1po?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 16 Oct 2026 16:00:30 GMT",
+      "desc": "The BBC joins Ukraine's Operation Vivaldi as it regains crucial territory in the Donbas, but optimism has been dampened by souring relations with President Trump."
+    },
+    {
+      "title": "Palestinians and US journalist injured by Israeli settlers in West Bank harvest attack",
+      "link": "https://www.bbc.co.uk/news/articles/c65ynk7212vqo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 16 Oct 2026 14:31:04 GMT",
+      "desc": "The BBC sees masked settlers attack Palestinians trying to harvest olives, amid a surge in similar incidents."
+    },
+    {
+      "title": "Zelensky says Ukraine has right to defend itself after Trump calls latest strikes a 'disgrace'",
       "link": "https://www.bbc.co.uk/news/articles/c58jz174w89ro?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 13:25:48 GMT",
-      "desc": "EU leaders rally around Ukraine's leader after Donald Trump says he is \"more difficult to work with than Putin\"."
+      "date": "Fri, 16 Oct 2026 15:59:30 GMT",
+      "desc": "EU leaders rally around Ukraine's president after new criticism from Donald Trump, who says Zelensky is \"more difficult to work with than Putin\"."
     },
     {
-      "title": "'It's really hard to believe' - How Oregon primary school shooting unfolded",
-      "link": "https://www.bbc.co.uk/news/videos/cwe8r29mjd05o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 08:27:16 GMT",
-      "desc": "Three children aged 5, 8 and 11 and a teacher were killed after a 16-year-old suspect opened fire in the city of Bend, local police say."
+      "title": "Pope pictured for first time since surgery and cancer diagnosis",
+      "link": "https://www.bbc.co.uk/news/articles/cw146ej00yn7o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 16 Oct 2026 14:36:39 GMT",
+      "desc": "The pontiff was diagnosed with lung cancer after having surgery at Rome's Gemelli Hospital on Tuesday."
     },
     {
-      "title": "Ship attack reports near Hormuz reach record high as oil exports slow",
-      "link": "https://www.bbc.co.uk/news/articles/cmde8dpg8g0no?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 05:00:17 GMT",
-      "desc": "BBC Verify analysis of data from a UK maritime agency shows 12 vessels were struck in a week."
-    },
-    {
-      "title": "China tells Israel to stop 'forced establishment' of West Bank settlements",
-      "link": "https://www.bbc.co.uk/news/articles/cq1j3wdxy48ro?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 08:45:54 GMT",
-      "desc": "Chinese Foreign Minister Wang Yi spoke to Israeli President Isaac Herzog on the sidelines of a conference."
-    },
-    {
-      "title": "Dad fined after son, 2, died in Cyprus hotel fall",
-      "link": "https://www.bbc.co.uk/news/articles/cvj6j1klez88o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 13:01:06 GMT",
-      "desc": "Joshua Foster \"lost control\" of his son while showing him the view of a water park from a window."
+      "title": "India's 'cockroach' party founder detained ahead of protest",
+      "link": "https://www.bbc.co.uk/news/articles/cmx237n1y9lzo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 16 Oct 2026 11:44:31 GMT",
+      "desc": "The youth-led movement had called for a Delhi protest after mass detentions last week and the jailing of two leaders."
     }
   ],
   "koreaNews": [
@@ -37,6 +37,12 @@
       "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPY2g2RHdMN3hpdFU1enpCT3NLblI4di1TTGxCRTk4S3FFYkJmLVpFNTJBT0RyUm9IU1ZrQ1B5QWRpbTlYcHo4Y2tuQWtNUl9WenJOcHpBOGZ4ZHFaMk5Bd2hsU3Y1d1Z6WHN1OEkyUmE2S2tRZVhueFZ3UkFyb0NXT2hxaUZEV050ZzlyUE9rSEtJenRmU1E0ak9reURnZ2gtb0dubnBn?oc=5",
       "date": "Wed, 14 Oct 2026 19:42:05 GMT",
       "desc": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "South Korea's AI-Driven Economy Faces IMF-Warned Risks - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxONXNaTHJmZUtwdWtxOXlUQi1fN0NWUHJNWWc3UUF6V3kweEpaQzN0YzRTWFk0MW5VV1NDbjZSUE1zZXU5MzlVSHRuS0lweWV3WFNaajBmSnk4TG5aeTZfLU5jTm9ZWVFsYXZnemhMYWs4TE84WlJIU3NqM0s1YlhRY2R2aE04UW0yX216RHZn?oc=5",
+      "date": "Fri, 16 Oct 2026 16:12:53 GMT",
+      "desc": "South Korea's AI-Driven Economy Faces IMF-Warned Risks&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Korea's economy maintains solid recovery on exports: Finance Ministry - Korea JoongAng Daily",
@@ -51,12 +57,6 @@
       "desc": "China-North Korea border bridge may do little to spur trade, experts say&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "South Korea's Economic Resilience Amid Market Volatility - GuruFocus",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOYU1TS2toblliQVZlbDVFZXBFckhMcmtBUnlZT1paZXY4Ui0yallDRElTNkNjNTNJWnJHb1psdmI2bGZraHQybEFBTWhBWk9wSUJEMXpkOUJZanQxRjlkRG1GTHpxeWFiQ0p3WGFFdllZWklPMEVYb1NwYUhfZUo4RG9TczFsS2R5R0JkUFFCZHNQLW1LRkNERkx3?oc=5",
-      "date": "Fri, 16 Oct 2026 03:04:19 GMT",
-      "desc": "South Korea's Economic Resilience Amid Market Volatility&nbsp;&nbsp;GuruFocus"
-    },
-    {
       "title": "South Korea, U.S. Hold First 2+2 Meeting at Bangkok - Businesskorea",
       "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBXcU5FdVZ2NEw2TnlGTUVNSWo3Smh4VFoyMXA0Ui1IN1VvcE95T2VtSy1UcVhDdXJkQmwybm9hMFdwS2ZnV1B3cG8tUmd6MF9iUEFTb2RMcEVERzBXTUNnbmMzdW9xc3V0Q1ZiRzhCdlJQdW1x?oc=5",
       "date": "Fri, 16 Oct 2026 10:45:47 GMT",
@@ -69,105 +69,105 @@
       "desc": "Samsung, SK hynix sell-off excessive as memory outlook stays strong: analysts&nbsp;&nbsp;The Korea Times"
     },
     {
-      "title": "Kospi rebound after 20% drop as foreigners buy; AI doubts trim Samsung, SK Hynix gains - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBYSnBNbEp5MEVxLVlZOU9VRXRIRE02UC12eG1YaHNlWXpnOG5ZSWdYMXZaSGpRSTQ4bFByUFdING56bFdNek53NUxMZjU1TmZMSHhVMmtJRngyZjBQeE5IdkxRTDVKajNHUmV0Vm5OX2c0TFVFak1jdndB?oc=5",
-      "date": "Fri, 16 Oct 2026 08:58:00 GMT",
-      "desc": "Kospi rebound after 20% drop as foreigners buy; AI doubts trim Samsung, SK Hynix gains&nbsp;&nbsp;KED Global"
-    },
-    {
       "title": "Micron sinks, other memory-linked names dip for a second day - CNBC",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNckowaE5BVEtNWm9RQkFrSWVMc0MzVzNHNFBubU9hWlJQM0gteG50U1RFWjdsU2w4RnJYemd0ZnIxVUhUeWgzd0VFTi1wMkN4bjczYjlib0Q4RXRyMnhmd3FUT1BhaHRsZHhsdUFVRTZUVkNGMG50RDNxTDA1Sm8yQ0Etdk5weDFOcEd6elpMRWhzWlA2Qnp4aDJWNmRCMkHSAaQBQVVfeXFMTjFRUXlfM2otZ1AwbmQ2RDVLQUtnNUJxUGlDS2V2V2owSmc0WGxUVmJINTRrRzhWejBqc1N4S0dNNjlhbnFJSzcyZnpqYWpRcEZmai01QndvdW9sWXBTbXcyWEFzZHA1d0VzWVZVdU1yUE9uaDZBZjFjNGl6aGs1SGFtWmpYS1dTUDZDVWtIOFJNM2xOdng0TE9YTmhsTHhnTk9XTzg?oc=5",
       "date": "Tue, 13 Oct 2026 02:08:00 GMT",
       "desc": "Micron sinks, other memory-linked names dip for a second day&nbsp;&nbsp;CNBC"
+    },
+    {
+      "title": "Kospi rebound after 20% drop as foreigners buy; AI doubts trim Samsung, SK Hynix gains - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBYSnBNbEp5MEVxLVlZOU9VRXRIRE02UC12eG1YaHNlWXpnOG5ZSWdYMXZaSGpRSTQ4bFByUFdING56bFdNek53NUxMZjU1TmZMSHhVMmtJRngyZjBQeE5IdkxRTDVKajNHUmV0Vm5OX2c0TFVFak1jdndB?oc=5",
+      "date": "Fri, 16 Oct 2026 08:58:00 GMT",
+      "desc": "Kospi rebound after 20% drop as foreigners buy; AI doubts trim Samsung, SK Hynix gains&nbsp;&nbsp;KED Global"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 215.51,
-      "change": -5.79,
-      "pct": -2.62,
+      "price": 215.98,
+      "change": -5.32,
+      "pct": -2.4,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 415.36,
-      "change": -14.64,
-      "pct": -3.4,
+      "price": 414.69,
+      "change": -15.31,
+      "pct": -3.56,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 541.11,
-      "change": -29.71,
-      "pct": -5.2,
+      "price": 536.39,
+      "change": -34.43,
+      "pct": -6.03,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 92.67,
-      "change": -5.45,
-      "pct": -5.55,
+      "price": 91.27,
+      "change": -6.86,
+      "pct": -6.99,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 174.81,
-      "change": 2.19,
-      "pct": 1.27,
+      "price": 174.6,
+      "change": 1.98,
+      "pct": 1.15,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 235.72,
-      "change": -2.29,
-      "pct": -0.96,
+      "price": 233.5,
+      "change": -4.5,
+      "pct": -1.89,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 345.9,
-      "change": -1.74,
-      "pct": -0.5,
+      "price": 342.42,
+      "change": -5.22,
+      "pct": -1.5,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 343.76,
-      "change": 0.8,
-      "pct": 0.23,
+      "price": 342.72,
+      "change": -0.24,
+      "pct": -0.07,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 537.03,
-      "change": 3.34,
-      "pct": 0.63,
+      "price": 528.06,
+      "change": -5.63,
+      "pct": -1.05,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7738.66,
-      "change": 19.72,
-      "pct": 0.26,
+      "price": 7677.09,
+      "change": -41.85,
+      "pct": -0.54,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26506.06,
-      "change": -186.81,
-      "pct": -0.7,
+      "price": 26242.03,
+      "change": -450.84,
+      "pct": -1.69,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1332.5,
-      "change": -6.85,
-      "pct": -0.51,
+      "price": 1334.08,
+      "change": -5.27,
+      "pct": -0.39,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-16 13:51 UTC"
+  "updatedAt": "2026-10-16 17:44 UTC"
 }
