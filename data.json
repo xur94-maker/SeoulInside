@@ -1,6 +1,24 @@
 {
   "globalNews": [
     {
+      "title": "Three children and teacher killed in US primary school shooting",
+      "link": "https://www.bbc.co.uk/news/articles/cm89zp48k4kzo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 16 Oct 2026 03:45:09 GMT",
+      "desc": "The suspect was shot dead by an armed bystander who followed him into the Oregon school, police said."
+    },
+    {
+      "title": "'It's really hard to believe' - How Oregon primary school shooting unfolded",
+      "link": "https://www.bbc.co.uk/news/videos/cwe8r29mjd05o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 16 Oct 2026 01:36:45 GMT",
+      "desc": "Three children aged 5, 8 and 11 and a teacher were killed after a 16-year-old suspect opened fire in the city of Bend, local police say."
+    },
+    {
+      "title": "Ship attack reports near Hormuz reach record high as oil exports slow",
+      "link": "https://www.bbc.co.uk/news/articles/cmde8dpg8g0no?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 16 Oct 2026 05:00:17 GMT",
+      "desc": "BBC Verify analysis of data from a UK maritime agency shows 12 vessels were struck in a week."
+    },
+    {
       "title": "Trump calls off livestream of Fort Hood attacker's execution by firing squad",
       "link": "https://www.bbc.co.uk/news/articles/crx23qlnj27qo?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 15 Oct 2026 17:47:22 GMT",
@@ -11,32 +29,14 @@
       "link": "https://www.bbc.co.uk/news/articles/cqwyrnwd9dw1o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 15 Oct 2026 16:50:18 GMT",
       "desc": "Ukraine's president says a pause on striking energy sites is over following fresh Russian attacks."
-    },
-    {
-      "title": "Bus hits train stopped on French side of Channel Tunnel, with 19 injured",
-      "link": "https://www.bbc.co.uk/news/articles/c6wyrnmgzn01o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 15 Oct 2026 22:37:21 GMT",
-      "desc": "Two people were airlifted to hospital but no-one's life appeared to be in danger, officials said."
-    },
-    {
-      "title": "Maduro pleads not guilty to new torture-related charges in New York",
-      "link": "https://www.bbc.co.uk/news/articles/cqwyrn1l74zro?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 15 Oct 2026 16:52:44 GMT",
-      "desc": "\"I reject this document entirely,\" Maduro said in court, responding to newly added torture-related charges."
-    },
-    {
-      "title": "At least 33 pupils and teacher killed after school roof collapses in Pakistan",
-      "link": "https://www.bbc.co.uk/news/articles/cked326llddgo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 15 Oct 2026 15:26:16 GMT",
-      "desc": "Children were buried under the debris after the roof crashed through three classrooms, police say."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korean stocks plunge as US inflation, AI concerns trigger trading halts - Anadolu Ajansı",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOU01EZ1VGTV95d19oa0IzNUQ5ZXN2aUZPbkQ4aEpkVnJwMC0zY21aOEI2M3R5eWlSTnFQX0xpcTQ5S1JsWndLLXNDdXdJbGFwNU9zLUd6SlQ2a0VRVkxuc0pzMHBTZ0JkLVA3R1pIemxuVVFubVJ0ZHJvOEExcHlyN0hic2h3d1lJVXQ4ZnBQVDhmLUdjLXRLQm1EQlY3Vk9DU2xpNU9Ca3NiazMxcVZQeDBTLTZTWE1f?oc=5",
-      "date": "Thu, 15 Oct 2026 06:48:35 GMT",
-      "desc": "South Korean stocks plunge as US inflation, AI concerns trigger trading halts&nbsp;&nbsp;Anadolu Ajansı"
+      "title": "Korea's economy maintains solid recovery on exports: Finance Ministry - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQd1NWM3MzM21aRE1DeGFzOFpZcmtOWUNZeU5ZbGdWZ1NtMUx1N0tWeFVRcjBvMmlxVWVxRi1QRWRRc2U4bFA0UVF2dUh4R2JsTEt1WXhLZnNtU1BuclFTM20xaHloeWRIZ2UxMUR4X29yb0ZzRS1wLXFnUUhMdFM2NDVZdzdXUnozbTRNUDBWbFdvRmJXY3dWUm5Xa2plaWFsWWEtbFlYRFBsejc2OHhqQUhUS3FUb2pId2RiOA?oc=5",
+      "date": "Fri, 16 Oct 2026 03:17:30 GMT",
+      "desc": "Korea's economy maintains solid recovery on exports: Finance Ministry&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
       "title": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs - Korea Economic Institute of America -",
@@ -45,40 +45,40 @@
       "desc": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
+      "title": "South Korea's Economic Resilience Amid Market Volatility - GuruFocus",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOYU1TS2toblliQVZlbDVFZXBFckhMcmtBUnlZT1paZXY4Ui0yallDRElTNkNjNTNJWnJHb1psdmI2bGZraHQybEFBTWhBWk9wSUJEMXpkOUJZanQxRjlkRG1GTHpxeWFiQ0p3WGFFdllZWklPMEVYb1NwYUhfZUo4RG9TczFsS2R5R0JkUFFCZHNQLW1LRkNERkx3?oc=5",
+      "date": "Fri, 16 Oct 2026 03:04:19 GMT",
+      "desc": "South Korea's Economic Resilience Amid Market Volatility&nbsp;&nbsp;GuruFocus"
+    },
+    {
       "title": "Africa’s second-largest economy signs new deals with one of Asia’s most technologically advanced nations on clean energy, ICT and maritime cooperation - Business Insider Africa",
       "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQUXh3aWVCWXkxSnRNNVl4MFdsLUVnWTh5THJiay0xdVpaWWRiRkhtZms5WXgwRzlVcVdfS3E4OXVjSnd4V0FLQ1lKeHRaRHZNZTdhbjFHdVdSQVFjQXdRTTFRT2Zkbjd0SGtHaUlseEZuT3hjS2VpUDBIZFQ5NXZ6bUxWekhUZkN1MzR2V3huSXBrMlNCQXdSTzNVaE9UU1FFLUJXQllreFpUa25xakplSmlSbFh5RFZaZ2JENTBCNHV2dTNNdUhKSkZzMXlERjd6SE5Lb0YwQQ?oc=5",
       "date": "Thu, 15 Oct 2026 19:21:07 GMT",
       "desc": "Africa’s second-largest economy signs new deals with one of Asia’s most technologically advanced nations on clean energy, ICT and maritime cooperation&nbsp;&nbsp;Business Insider Africa"
     },
     {
-      "title": "South Korea’s Central Asia push: From summit diplomacy to economic partnership - Eurasianet",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPVlYzd2NVZXI0SzBjYXJseXlyU1JXVVVWNkhIOTRZQkE0bzJreDRHUHdTY0Nya1hXSmhjanZtV0JtX0dCZHU2TTU0enhxRURTZTZ6VmR4VmpidmpLc0xNRm5LYTQtenkwOWRFZkdNMkNNZGhNWTQ0elhPV04xUWVtWmZBQmRoZFZzajkyc2U3aEF1VTFINDJWaDJuQm9xU19w?oc=5",
-      "date": "Thu, 15 Oct 2026 15:15:26 GMT",
-      "desc": "South Korea’s Central Asia push: From summit diplomacy to economic partnership&nbsp;&nbsp;Eurasianet"
+      "title": "IMF Warns South Korea's AI-Driven Economy Faces Rising Vulnerability - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNaWpkN3ZOVTdvbWhpeHI3V3pYZVF2cG5WSkI3eExkWDRqTkpGbS1FWWdXWG1UbmJCSTNGT01DMXlGbW9rQnJuRlB4MHdjQlNlVUtaR04zLWo4SC11cGM2dHFMZGM3TXM4dlk0a1NOZUJjN19fSS1NS0JwYmR5ZHFWcGJ2cWVya2ZudjhfVXdB?oc=5",
+      "date": "Fri, 16 Oct 2026 01:00:19 GMT",
+      "desc": "IMF Warns South Korea's AI-Driven Economy Faces Rising Vulnerability&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Mexico’s Korea Investment Push: A New Gateway to North America - Mexico Business News",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOYlhCbDN4aTE5Q0pEYVlDZ0pCeExxNk0yQk92RHFxWUlqLTltakNXZk9jcXNKWnR1YVhRZ21EUks1RDBEeTZHWUpVNk5aT1BvbFlYZDhSbmJISG9RYm01SnRoYlMtZF9RWHMzc1YzaUNLcUxybXVjMGk0QVRleHlyYzRqcEZwcHVHRE5jWU5xekpRS043UlAwSWZEZC1aQm9wWk1qT1pBcmFpNFhDcXc?oc=5",
-      "date": "Thu, 15 Oct 2026 16:30:20 GMT",
-      "desc": "Mexico’s Korea Investment Push: A New Gateway to North America&nbsp;&nbsp;Mexico Business News"
+      "title": "Samsung, SK Hynix power S.Korean stock rebound amid extended foreign selling - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBYSnBNbEp5MEVxLVlZOU9VRXRIRE02UC12eG1YaHNlWXpnOG5ZSWdYMXZaSGpRSTQ4bFByUFdING56bFdNek53NUxMZjU1TmZMSHhVMmtJRngyZjBQeE5IdkxRTDVKajNHUmV0Vm5OX2c0TFVFak1jdndB?oc=5",
+      "date": "Fri, 16 Oct 2026 07:08:59 GMT",
+      "desc": "Samsung, SK Hynix power S.Korean stock rebound amid extended foreign selling&nbsp;&nbsp;KED Global"
+    },
+    {
+      "title": "Samsung Electronics, SK Hynix Plunge Drags Down Semiconductor ETFs - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOdU1wbGQ0MkU3TGdINEZla2NUNzk2S1JWYkZrMFNvdk9yblNTWDNqc0NOclRMdTlWcHdIQnJld1pCNV9hOXhfa3FEUXJmcnkzRmVJZ3lOZGZfdGdEcnlDUThhOXVBcU1FZkwtZElfV21LeFk3dkV5cWttOUE1amVyd0Q4d0owR0VlU2gyWHNB?oc=5",
+      "date": "Thu, 15 Oct 2026 15:43:32 GMT",
+      "desc": "Samsung Electronics, SK Hynix Plunge Drags Down Semiconductor ETFs&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Meet the Low-Cost Vanguard ETF With Taiwan Semiconductor, Samsung Electronics, SK Hynix, and ASML as Its 4 Largest Holdings - The Motley Fool",
       "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPWUFtYzNZdy1LMWNvMTZXcTVSdUEyNnFZb21Mbjh6TTk1ZzE0aG1pSUs3TXFnb1kxQV8wLXJsMkl6UjdNa1JtUXNCVW1ablZmWjZJcmZZaFNCTEJjNVdyTG9fZDNJUHl4TXB5ekJQWWVycXJ1WmtyalJNMUdBUWwtRWRkNjkxTjBvcXNYTFFaSDR6dVotNmh6eA?oc=5",
       "date": "Thu, 15 Oct 2026 17:51:00 GMT",
       "desc": "Meet the Low-Cost Vanguard ETF With Taiwan Semiconductor, Samsung Electronics, SK Hynix, and ASML as Its 4 Largest Holdings&nbsp;&nbsp;The Motley Fool"
-    },
-    {
-      "title": "Fisher: Samsung, SK Hynix Remain Strong as Computing Demand Grows - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNcjM5NHNBUFZDeFRoYU9qanZ3d2ZXZUV1RmZ1b0FZODRQNEQ0UUh6S3p0cGRNOENiVzZaRjdPMG52cGdVb1dtcXBzMVZZWmhHZnUwaXRzTnQtUmNBcG11eHBXZUZhTUR4UUlIWHZsaUJVRjZaNmRscTRuVGhzbXZLS2JkQnM?oc=5",
-      "date": "Thu, 15 Oct 2026 15:45:33 GMT",
-      "desc": "Fisher: Samsung, SK Hynix Remain Strong as Computing Demand Grows&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Semiconductor \"Peak-Out\" Warning Becomes Reality as Samsung Electronics and SK Hynix Plunge on South Korea's KOSPI - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5JZUtmV1Zjal95X0hJcW9oOG1Kejhqbm5vTThtOF8yY3VIVEFIMklaRElwWkZVVEk5TTRMcnpEWnJMcDg3VWlkaENFQTdTR1NEbVhTWU5zeTRad0tlUXBRVU5YYlBxX2Qyc0ZxRl9DSld4OG5zY2c?oc=5",
-      "date": "Thu, 15 Oct 2026 18:25:00 GMT",
-      "desc": "Semiconductor \"Peak-Out\" Warning Becomes Reality as Samsung Electronics and SK Hynix Plunge on South Korea's KOSPI&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 210000.0,
-      "change": -22000.0,
-      "pct": -9.48,
+      "price": 215500.0,
+      "change": -16500.0,
+      "pct": -7.11,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1262000.0,
-      "change": -157000.0,
-      "pct": -11.06,
+      "price": 1272000.0,
+      "change": -147000.0,
+      "pct": -10.36,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 295500.0,
-      "change": -18000.0,
-      "pct": -5.74,
+      "price": 312000.0,
+      "change": -1500.0,
+      "pct": -0.48,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 105900.0,
-      "change": -2700.0,
-      "pct": -2.49,
+      "price": 110200.0,
+      "change": 1600.0,
+      "pct": 1.47,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 173600.0,
-      "change": -5800.0,
-      "pct": -3.23,
+      "price": 180000.0,
+      "change": 600.0,
+      "pct": 0.33,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5554.22,
-      "change": -454.59,
-      "pct": -7.57,
+      "price": 5668.05,
+      "change": -340.76,
+      "pct": -5.67,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1341.25,
-      "change": 1.9,
-      "pct": 0.14,
+      "price": 1331.98,
+      "change": -7.37,
+      "pct": -0.55,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-16 02:10 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-16 07:44 UTC"
 }
