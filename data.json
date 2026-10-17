@@ -1,21 +1,15 @@
 {
   "globalNews": [
     {
-      "title": "Brazil sees record fall in Amazon deforestation as key election looms",
-      "link": "https://www.bbc.co.uk/news/articles/cqe8rzg6zl00o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 17 Oct 2026 02:33:09 GMT",
-      "desc": "The Amazon rainforest is a crucial buffer against climate change - but deforestation had expanded under former president Jair Bolsonaro."
-    },
-    {
       "title": "Trump waives several Russia sanctions as row with Zelensky intensifies",
       "link": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 17 Oct 2026 06:39:40 GMT",
+      "date": "Sat, 17 Oct 2026 11:56:06 GMT",
       "desc": "The US president temporarily ends many restrictions on Moscow recently passed by Congress over \"national security\" concerns."
     },
     {
       "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
       "link": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 17 Oct 2026 06:49:48 GMT",
+      "date": "Sat, 17 Oct 2026 09:58:17 GMT",
       "desc": "The 16-year-old suspect previously attended the primary school and had targeted a special educational needs classroom, police say."
     },
     {
@@ -25,10 +19,16 @@
       "desc": "Brothers Jake and Callum Robinson and their friend Carter Rhoad were killed on a surfing trip in an apparent botched robbery."
     },
     {
-      "title": "Inside Ukrainian offensive pushing Russia back - with Starlink playing a key role",
-      "link": "https://www.bbc.co.uk/news/articles/cvx284w16z1po?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 16:00:30 GMT",
-      "desc": "The BBC joins Ukraine's Operation Vivaldi as it regains crucial territory in the Donbas, but optimism has been dampened by souring relations with President Trump."
+      "title": "Brazil sees record fall in Amazon deforestation as key election looms",
+      "link": "https://www.bbc.co.uk/news/articles/cqe8rzg6zl00o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 17 Oct 2026 02:33:09 GMT",
+      "desc": "The Amazon rainforest is a crucial buffer against climate change - but deforestation had expanded under former president Jair Bolsonaro."
+    },
+    {
+      "title": "Rare pink diamond goes on display in France 100 years after amateur heist",
+      "link": "https://www.bbc.co.uk/news/articles/c61m4zkx47vlo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 17 Oct 2026 10:46:41 GMT",
+      "desc": "The French royal jewel will be on public display for the first time since it was found hidden in an apple after a 1926 theft."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,16 @@
       "desc": "South Korea's AI-Driven Economy Grows but Faces Rising Vulnerabilities&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help? - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQSTlBMFREeXRwb2d3Uk0teDJ0SmZqQW1sN2JWMFB1V2F2Qmxpdjdya2NPMnZRMDhXQ0s5ak5ITHVLLV8wcXQyRGl6ZFo5ZG5SU3Zkb2RwRHYwNUhERWRnWUNYRzhhYjRfdjBNQ1FIaUhKR19faTBqUUpxN25nbEMwLU1sM181MVo3cDI0NnhURQ?oc=5",
-      "date": "Thu, 15 Oct 2026 02:00:00 GMT",
-      "desc": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help?&nbsp;&nbsp;Yahoo Finance"
+      "title": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help? - BeInCrypto",
+      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5ZUWtGTG5LT2pZN3pFaXNENUZ0Nk5qaGlLTVNmU0NqTWtUeHBzRUx4bktrSFdveEFNYXFUS2pNVFpaM1c1OFFlMGpCN0ZNaHBXZ2hkQmo1YnBud0tlaFloZkswNkh2YmxmeXE0SjN5WlAwWjFFM3F3Y2JWZw?oc=5",
+      "date": "Thu, 15 Oct 2026 02:03:22 GMT",
+      "desc": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help?&nbsp;&nbsp;BeInCrypto"
     },
     {
-      "title": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPY2g2RHdMN3hpdFU1enpCT3NLblI4di1TTGxCRTk4S3FFYkJmLVpFNTJBT0RyUm9IU1ZrQ1B5QWRpbTlYcHo4Y2tuQWtNUl9WenJOcHpBOGZ4ZHFaMk5Bd2hsU3Y1d1Z6WHN1OEkyUmE2S2tRZVhueFZ3UkFyb0NXT2hxaUZEV050ZzlyUE9rSEtJenRmU1E0ak9reURnZ2gtb0dubnBn?oc=5",
-      "date": "Wed, 14 Oct 2026 19:42:05 GMT",
-      "desc": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "IMF raises South Korea's 2026 growth forecast to 3.3% - upi",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQcmJiNzJRNFVNQS1TRnRxTTdVLUlkOEJEclJ1RHVRRjVBZXBtTmZSN3otbDVnV1ZqVEtqazRoVE9zRjZTS1dXMkIyeEllblJBQ1JhV2VZX3VnU09yZHBHZ25JNVBkZVo3Z2owYW1lUWFvci1ScHZaNzh5dTBscXhGNjRZRUpaN3MzWmlZTk1Gamxhb3PSAZgBQVVfeXFMTmJVZ2QyaHJQV28zdWdmM2FSUkczSmE2clNrTmFjLVdtLUpYLXFzTW02dnR3bUVBQ093WVlJSlRHbUd5cl9CM0Y4VGJYVVByNVd3cGEtTXdXZmdFMGlQeU11Wi1IdHhPTGk0cExxZU5TSlZFNDZCaGo5UkMzUi1TUFRtUi1WNV8xTHMwRXlVclpjU2doeHhiV1Q?oc=5",
+      "date": "Wed, 14 Oct 2026 02:09:39 GMT",
+      "desc": "IMF raises South Korea's 2026 growth forecast to 3.3%&nbsp;&nbsp;upi"
     },
     {
       "title": "Korea, U.S. hold first meeting of finance, monetary senior officials - Korea JoongAng Daily",
@@ -57,10 +57,10 @@
       "desc": "Korea, U.S. hold first meeting of finance, monetary senior officials&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "IMF raises South Korea's 2026 growth forecast to 3.3% - upi",
-      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQcmJiNzJRNFVNQS1TRnRxTTdVLUlkOEJEclJ1RHVRRjVBZXBtTmZSN3otbDVnV1ZqVEtqazRoVE9zRjZTS1dXMkIyeEllblJBQ1JhV2VZX3VnU09yZHBHZ25JNVBkZVo3Z2owYW1lUWFvci1ScHZaNzh5dTBscXhGNjRZRUpaN3MzWmlZTk1Gamxhb3PSAZgBQVVfeXFMTmJVZ2QyaHJQV28zdWdmM2FSUkczSmE2clNrTmFjLVdtLUpYLXFzTW02dnR3bUVBQ093WVlJSlRHbUd5cl9CM0Y4VGJYVVByNVd3cGEtTXdXZmdFMGlQeU11Wi1IdHhPTGk0cExxZU5TSlZFNDZCaGo5UkMzUi1TUFRtUi1WNV8xTHMwRXlVclpjU2doeHhiV1Q?oc=5",
-      "date": "Wed, 14 Oct 2026 02:09:39 GMT",
-      "desc": "IMF raises South Korea's 2026 growth forecast to 3.3%&nbsp;&nbsp;upi"
+      "title": "South Korea’s exports hit record high on AI boom - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOX3NKUDFscG16UF9kbmVWUUdwb182Q2lOdDJweElBYTlwUE1NRXluZUdjSXp5STNweldSU1lGeUkydXhRWDctVFkxd0x2TGZNTDZneTREeENuRUVLQURJSzJzNHB5ZXFwa2VyUnM4MmtManF0M2xpY3VMM2tjOXdxNXlrazZZeC1nQzhYanNPaEtnQTdDd3fSAZsBQVVfeXFMT205N25lTE5OYnVTT2xseVhlVG9qQk01Q0ZfT2wwc3VaN3Y2V1N4UjNpZkNIVFRtbE8yeF9VQ29mRU1tUll3a056VVRXLVZhclRyeUJ4RkFGZ014WEM2MVNQREctcHY2ekpidXladzBCNEFrbFRkamdjSWdZX2xVeGNpeTEyVUsxaUlBZFlqcUF5UVNnWXZTbDdJOFk?oc=5",
+      "date": "Thu, 01 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea’s exports hit record high on AI boom&nbsp;&nbsp;Al Jazeera"
     },
     {
       "title": "Samsung and SK Hynix Lead Chip Selloff as China Competition Fears Grow - Morningstar",
@@ -75,10 +75,10 @@
       "desc": "Samsung, SK Hynix Stocks Plunge on CXMT's 4F² DRAM Announcement&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Samsung, SK hynix Shares Fall Short of ELS Redemption Triggers - Seoul Economic Daily",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOTllaWVpSMHN6N0VmOGFyU2FpLWZuQWxHUUpnU2ItU0FLbURrUF84XzQ0M2phNTdaTGpMZ05zOG5xaGZyaG5hMnppT3dqUFRSOXQzdXl5X21LLVlRUncyaEhiX3JJVHF3RDN3X1FfMlFkTVVPNHpkdHN5d25ZSUdBb1JwNHZNdlhLQk5xdEZ3TmxTMkdhb0VqV0d3?oc=5",
-      "date": "Sat, 17 Oct 2026 05:31:33 GMT",
-      "desc": "Samsung, SK hynix Shares Fall Short of ELS Redemption Triggers&nbsp;&nbsp;Seoul Economic Daily"
+      "title": "Big Tech Moves Away from Nvidia: Chance for Samsung, SK hynix? - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBQOXR0am95QmVjZTBITUVsTjU2ZTh5S216MElEWVYwUHFCemc2SlQ2YkRsbGpVR0VPQzZaYXpZdGFhWEhpdlRNRExFRkcwbVBvYWpXeVdORGdZbklEd0xJOVlWZENiQ3ZEUnlKZzFMZDc2NWFl?oc=5",
+      "date": "Thu, 15 Oct 2026 09:29:10 GMT",
+      "desc": "Big Tech Moves Away from Nvidia: Chance for Samsung, SK hynix?&nbsp;&nbsp;Businesskorea"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-17 07:21 UTC"
+  "updatedAt": "2026-10-17 12:50 UTC"
 }
