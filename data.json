@@ -1,42 +1,48 @@
 {
   "globalNews": [
     {
-      "title": "Inside Ukrainian offensive pushing Russia back - with Starlink playing a key role",
-      "link": "https://www.bbc.co.uk/news/articles/cvx284w16z1po?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 16:00:30 GMT",
-      "desc": "The BBC joins Ukraine's Operation Vivaldi as it regains crucial territory in the Donbas, but optimism has been dampened by souring relations with President Trump."
+      "title": "Brazil sees record fall in Amazon deforestation as key election looms",
+      "link": "https://www.bbc.co.uk/news/articles/cqe8rzg6zl00o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 17 Oct 2026 02:33:09 GMT",
+      "desc": "The Amazon rainforest is a crucial buffer against climate change - but deforestation had expanded under former president Jair Bolsonaro."
+    },
+    {
+      "title": "Trump waives several Russia sanctions as row with Zelensky intensifies",
+      "link": "https://www.bbc.co.uk/news/articles/cxr5yvzv7rp0o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 17 Oct 2026 06:39:40 GMT",
+      "desc": "The US president temporarily ends many restrictions on Moscow recently passed by Congress over \"national security\" concerns."
     },
     {
       "title": "Oregon teacher fought school attacker before armed dad shot suspect 'multiple times'",
       "link": "https://www.bbc.co.uk/news/articles/cv98zw1k8kp3o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 23:07:38 GMT",
+      "date": "Sat, 17 Oct 2026 06:49:48 GMT",
       "desc": "The 16-year-old suspect previously attended the primary school and had targeted a special educational needs classroom, police say."
     },
     {
-      "title": "Palestinians and US journalist injured by Israeli settlers in West Bank harvest attack",
-      "link": "https://www.bbc.co.uk/news/articles/c65ynk7212vqo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 14:31:04 GMT",
-      "desc": "The BBC sees masked settlers attack Palestinians trying to harvest olives, amid a surge in similar incidents."
+      "title": "Three men jailed for 158 years each for murdering Australian and US surfers in Mexico",
+      "link": "https://www.bbc.co.uk/news/articles/c3kgqjkzw29wo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 17 Oct 2026 03:11:10 GMT",
+      "desc": "Brothers Jake and Callum Robinson and their friend Carter Rhoad were killed on a surfing trip in an apparent botched robbery."
     },
     {
-      "title": "Katie Zacharia leaving her White House role less than five days on the job",
-      "link": "https://www.bbc.co.uk/news/articles/c32l4ekpvzl8o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 21:05:05 GMT",
-      "desc": "Her public debut as White House press secretary on Tuesday ended with a flurry of media criticism about her credentials and preparedness."
-    },
-    {
-      "title": "Trump 'completely wrong' to restrict support for Ukraine, Italian minister tells BBC",
-      "link": "https://www.bbc.co.uk/news/articles/c64g18ljjd8do?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 16 Oct 2026 23:54:35 GMT",
-      "desc": "Defence Minister Guido Crosetto tells the BBC the US risks prolonging Russia's full-scale invasion rather than helping to end it."
+      "title": "Inside Ukrainian offensive pushing Russia back - with Starlink playing a key role",
+      "link": "https://www.bbc.co.uk/news/articles/cvx284w16z1po?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 16 Oct 2026 16:00:30 GMT",
+      "desc": "The BBC joins Ukraine's Operation Vivaldi as it regains crucial territory in the Donbas, but optimism has been dampened by souring relations with President Trump."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea's AI-Driven Economy Faces IMF-Warned Risks - 조선일보",
+      "title": "South Korea's AI-Driven Economy Grows but Faces Rising Vulnerabilities - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxONXNaTHJmZUtwdWtxOXlUQi1fN0NWUHJNWWc3UUF6V3kweEpaQzN0YzRTWFk0MW5VV1NDbjZSUE1zZXU5MzlVSHRuS0lweWV3WFNaajBmSnk4TG5aeTZfLU5jTm9ZWVFsYXZnemhMYWs4TE84WlJIU3NqM0s1YlhRY2R2aE04UW0yX216RHZn?oc=5",
-      "date": "Fri, 16 Oct 2026 16:12:53 GMT",
-      "desc": "South Korea's AI-Driven Economy Faces IMF-Warned Risks&nbsp;&nbsp;조선일보"
+      "date": "Fri, 16 Oct 2026 23:33:48 GMT",
+      "desc": "South Korea's AI-Driven Economy Grows but Faces Rising Vulnerabilities&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help? - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQSTlBMFREeXRwb2d3Uk0teDJ0SmZqQW1sN2JWMFB1V2F2Qmxpdjdya2NPMnZRMDhXQ0s5ak5ITHVLLV8wcXQyRGl6ZFo5ZG5SU3Zkb2RwRHYwNUhERWRnWUNYRzhhYjRfdjBNQ1FIaUhKR19faTBqUUpxN25nbEMwLU1sM181MVo3cDI0NnhURQ?oc=5",
+      "date": "Thu, 15 Oct 2026 02:00:00 GMT",
+      "desc": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help?&nbsp;&nbsp;Yahoo Finance"
     },
     {
       "title": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs - Korea Economic Institute of America -",
@@ -45,40 +51,34 @@
       "desc": "South Korea’s Education System Is Not Producing the Workers Its Economy Needs&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "South Korean stocks plunge as US inflation, AI concerns trigger trading halts - Anadolu Ajansı",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOU01EZ1VGTV95d19oa0IzNUQ5ZXN2aUZPbkQ4aEpkVnJwMC0zY21aOEI2M3R5eWlSTnFQX0xpcTQ5S1JsWndLLXNDdXdJbGFwNU9zLUd6SlQ2a0VRVkxuc0pzMHBTZ0JkLVA3R1pIemxuVVFubVJ0ZHJvOEExcHlyN0hic2h3d1lJVXQ4ZnBQVDhmLUdjLXRLQm1EQlY3Vk9DU2xpNU9Ca3NiazMxcVZQeDBTLTZTWE1f?oc=5",
-      "date": "Thu, 15 Oct 2026 06:48:35 GMT",
-      "desc": "South Korean stocks plunge as US inflation, AI concerns trigger trading halts&nbsp;&nbsp;Anadolu Ajansı"
+      "title": "Korea, U.S. hold first meeting of finance, monetary senior officials - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZk8ybWFVOVpjZVVFX2JxZTVRTzB5a1UzVTN1b3JkTzM3ZUFpLWFtQUJ4WmU5cDRua1F4Qm83NjhSNUdiQUhFVTdhNXpvWkRldWhkUjJZWjFPM3pHZWRVVDczc2RYM3dCT09mc0lfWWRrMUJOVVllRFpLN0hzUmNVWVgyVzJoMzBpUlNwQ0hKOXJraDB1SmVrRG9FVGJhMUd4VFRqYkhmcXE5YW1vSGQ0QmVhbWZsR245?oc=5",
+      "date": "Sat, 17 Oct 2026 01:12:12 GMT",
+      "desc": "Korea, U.S. hold first meeting of finance, monetary senior officials&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Korea's economy maintains solid recovery on exports: Finance Ministry - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQd1NWM3MzM21aRE1DeGFzOFpZcmtOWUNZeU5ZbGdWZ1NtMUx1N0tWeFVRcjBvMmlxVWVxRi1QRWRRc2U4bFA0UVF2dUh4R2JsTEt1WXhLZnNtU1BuclFTM20xaHloeWRIZ2UxMUR4X29yb0ZzRS1wLXFnUUhMdFM2NDVZdzdXUnozbTRNUDBWbFdvRmJXY3dWUm5Xa2plaWFsWWEtbFlYRFBsejc2OHhqQUhUS3FUb2pId2RiOA?oc=5",
-      "date": "Fri, 16 Oct 2026 03:17:30 GMT",
-      "desc": "Korea's economy maintains solid recovery on exports: Finance Ministry&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "China-North Korea border bridge may do little to spur trade, experts say - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNWWFBa2I0SEhoUU54YjBGWnRZYXNGNDBtMEoxTTRicjJudEdzRlpCajZXMUV5VjFYTFRGUEZnZVZHUzJ5RWtvVFJzTzY5dlZUc2xMM1VTd0hsc1B4RXhjbWZQbTBUWXJHNm1VLXB1RGgzV1ktVU51eGtQMU1ydGtqeFRRVFBaMVFwVVplUXktT1N5T2ZZb1ZkUWxlZThzNnNFdHRsUW9CQXdCMjlrVW1Eb2pMMzAxNFHSAbwBQVVfeXFMUEdBS2tIWkpjWTcyZThaN1QzMmw3RjIxZjQ0cUZnRWRVYzZyVHBtT1JYVGdvbmdNRWp1dUdLOHBfVGJleTFXNUtLelBIaERpZXVNVVFfOHM2TnpTbThVLVluYjNRdjZoV2JtNnBpaFdHdWl4NVdwX3pWX1dWMjR6NmRlcWt6UG9qMGRZdkxtZmptaWVIdWZNWjhpc0swQ2l0TERiaWtNZ3pwNDBVcEVZc29KTkRaMFBSTzFZWGU?oc=5",
-      "date": "Fri, 16 Oct 2026 09:24:53 GMT",
-      "desc": "China-North Korea border bridge may do little to spur trade, experts say&nbsp;&nbsp;Al Jazeera"
-    },
-    {
-      "title": "Samsung, SK hynix sell-off excessive as memory outlook stays strong: analysts - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOeFMtcTVoQjdONjZkdWFkbXU5UVgwOWNKUHBLWEhpeTZ3RWY3U1J4TjVKTi1oN0tSSmRKNkNfbXFoU3IyN1dVeGVrT1N1ZVE5TGtiTFMzZUsxUGZWXzVOU1IzMWlhX2I2bHd5QmdBZ1o1U1Y3LVBzZlpYNVF5YU43UTBVQUk1VDNtbkxxeVR3eFhEbGtpbjhiM0RQeDN6aHFhOUstWEtOUXNhZFVKS2VwcVFQam55aEVxeWxnQ0JleEE0QTjSAcMBQVVfeXFMTnhTLXE1aEI3TjY2ZHVhZG11OVFYMDljSlBwS1hIaXk2d0VmN1NSeE41Sk4taDdLUkpkSjZDX21xaFNyMjdXVXhla09TdWVROUxrYkxTM2VLMVBmVl81TlNSMzFpYV9iNmx3eUJnQWdaNVNWNy1Qc2ZaWDVReWFON1EwVUFJNVQzbW5McXlUd3hYRGxraW44YjNEUHgzemhxYTlLLVhLTlFzYWRVSktlcHFRUGpueWhFcXlsZ0NCZXhBNEE4?oc=5",
-      "date": "Fri, 16 Oct 2026 07:41:02 GMT",
-      "desc": "Samsung, SK hynix sell-off excessive as memory outlook stays strong: analysts&nbsp;&nbsp;The Korea Times"
-    },
-    {
-      "title": "Micron sinks, other memory-linked names dip for a second day - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNckowaE5BVEtNWm9RQkFrSWVMc0MzVzNHNFBubU9hWlJQM0gteG50U1RFWjdsU2w4RnJYemd0ZnIxVUhUeWgzd0VFTi1wMkN4bjczYjlib0Q4RXRyMnhmd3FUT1BhaHRsZHhsdUFVRTZUVkNGMG50RDNxTDA1Sm8yQ0Etdk5weDFOcEd6elpMRWhzWlA2Qnp4aDJWNmRCMkHSAaQBQVVfeXFMTjFRUXlfM2otZ1AwbmQ2RDVLQUtnNUJxUGlDS2V2V2owSmc0WGxUVmJINTRrRzhWejBqc1N4S0dNNjlhbnFJSzcyZnpqYWpRcEZmai01QndvdW9sWXBTbXcyWEFzZHA1d0VzWVZVdU1yUE9uaDZBZjFjNGl6aGs1SGFtWmpYS1dTUDZDVWtIOFJNM2xOdng0TE9YTmhsTHhnTk9XTzg?oc=5",
-      "date": "Tue, 13 Oct 2026 02:08:00 GMT",
-      "desc": "Micron sinks, other memory-linked names dip for a second day&nbsp;&nbsp;CNBC"
+      "title": "IMF raises South Korea's 2026 growth forecast to 3.3% - upi",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQcmJiNzJRNFVNQS1TRnRxTTdVLUlkOEJEclJ1RHVRRjVBZXBtTmZSN3otbDVnV1ZqVEtqazRoVE9zRjZTS1dXMkIyeEllblJBQ1JhV2VZX3VnU09yZHBHZ25JNVBkZVo3Z2owYW1lUWFvci1ScHZaNzh5dTBscXhGNjRZRUpaN3MzWmlZTk1Gamxhb3PSAZgBQVVfeXFMTmJVZ2QyaHJQV28zdWdmM2FSUkczSmE2clNrTmFjLVdtLUpYLXFzTW02dnR3bUVBQ093WVlJSlRHbUd5cl9CM0Y4VGJYVVByNVd3cGEtTXdXZmdFMGlQeU11Wi1IdHhPTGk0cExxZU5TSlZFNDZCaGo5UkMzUi1TUFRtUi1WNV8xTHMwRXlVclpjU2doeHhiV1Q?oc=5",
+      "date": "Wed, 14 Oct 2026 02:09:39 GMT",
+      "desc": "IMF raises South Korea's 2026 growth forecast to 3.3%&nbsp;&nbsp;upi"
     },
     {
       "title": "Samsung and SK Hynix Lead Chip Selloff as China Competition Fears Grow - Morningstar",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNT1o2bHJ2OW9kVzUwaHpqMjdaaTNUeE0zVjA4Y01zSXR3ZzdaSFRYd3hIVGNYeWdxbm5PdWp1a2FiQk5fc2JPc0M2N3hEVzJUam5TM1V5VHpxWHFwNjlKaDlHS1RxVDFCaUxrVTdTMVRkd085SGhwdXhXRDNCWXdlakZnUlM3U1hsTl9qTlpfR2hvNlFlblhFRzg3cDFCdw?oc=5",
       "date": "Tue, 13 Oct 2026 18:15:40 GMT",
       "desc": "Samsung and SK Hynix Lead Chip Selloff as China Competition Fears Grow&nbsp;&nbsp;Morningstar"
+    },
+    {
+      "title": "Samsung, SK Hynix Stocks Plunge on CXMT's 4F² DRAM Announcement - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNNmRJeFZyOXQ4R0RhSHhNcHdXZWlfLUlwN1B3Qk1sR0sydXpQZmVuXy13cHdWcU5XemZkcUg5cVFveGZCRTVtUnNtalBqSDQ0TExfcFE1bnJfRGJkVThCVVdreW04X19IRFB6dElnNFNqdDM3aDZGSWo1SnBvdjl6anRKWkhBdHh6?oc=5",
+      "date": "Thu, 15 Oct 2026 02:00:39 GMT",
+      "desc": "Samsung, SK Hynix Stocks Plunge on CXMT's 4F² DRAM Announcement&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Samsung, SK hynix Shares Fall Short of ELS Redemption Triggers - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOTllaWVpSMHN6N0VmOGFyU2FpLWZuQWxHUUpnU2ItU0FLbURrUF84XzQ0M2phNTdaTGpMZ05zOG5xaGZyaG5hMnppT3dqUFRSOXQzdXl5X21LLVlRUncyaEhiX3JJVHF3RDN3X1FfMlFkTVVPNHpkdHN5d25ZSUdBb1JwNHZNdlhLQk5xdEZ3TmxTMkdhb0VqV0d3?oc=5",
+      "date": "Sat, 17 Oct 2026 05:31:33 GMT",
+      "desc": "Samsung, SK hynix Shares Fall Short of ELS Redemption Triggers&nbsp;&nbsp;Seoul Economic Daily"
     }
   ],
   "worldStocks": [
@@ -223,13 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.2,
-      "change": -5.15,
-      "pct": -0.38,
+      "price": 1329.6,
+      "change": -9.75,
+      "pct": -0.73,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-17 02:04 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-17 07:21 UTC"
 }
