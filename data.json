@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Macron calls for 'calm and order' after riots across France",
-      "link": "https://www.bbc.co.uk/news/articles/cw240zl08dm5o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 18 Oct 2026 20:33:21 GMT",
-      "desc": "French President Emmanuel Macron gives a national address after widespread disorder and as some looting continued in Paris."
+      "title": "Katya Adler: France's government under pressure after weekend of widespread violence",
+      "link": "https://www.bbc.co.uk/news/articles/crwyd02yz22vo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 19 Oct 2026 07:46:54 GMT",
+      "desc": "Political tension grips France after rioting marred protests over the cost of living and struggling public services, Katya Adler writes."
     },
     {
-      "title": "'Very upsetting': Residents in shock after historic French town hall set alight",
-      "link": "https://www.bbc.co.uk/news/videos/c9dr8kem27zeo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 18 Oct 2026 22:22:51 GMT",
-      "desc": "A historic town hall in the French city of Limoges has been damaged in an apparent arson attack following a day of nationwide protests"
+      "title": "Funding shortages force World Food Programme to cut aid to Gaza",
+      "link": "https://www.bbc.co.uk/news/articles/cm79plrvpl4vo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 19 Oct 2026 06:00:18 GMT",
+      "desc": "The number of people helped by the UN agency in the Palestinian territory will drop by about a third - from 1.6 million to 1.1 million."
+    },
+    {
+      "title": "Inside the shadowy world of anti-Putin sabotage from within Russia",
+      "link": "https://www.bbc.co.uk/news/articles/c6pwgzkj8zzgo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 19 Oct 2026 00:06:25 GMT",
+      "desc": "Two men tell of the work they say they have been doing to support Ukrainian intelligence during the war."
     },
     {
       "title": "Major fire at Canada military base leaves four dead, dozens injured",
@@ -23,20 +29,14 @@
       "link": "https://www.bbc.co.uk/news/articles/c9p8gz7zx4peo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 18 Oct 2026 23:20:15 GMT",
       "desc": "The US president blocked numerous sanctions on Russia two days before they were due to take effect."
-    },
-    {
-      "title": "Inside Chicago's battle against the synthetic drugs flooding the US",
-      "link": "https://www.bbc.co.uk/news/videos/c84g166kz003o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 18 Oct 2026 21:00:22 GMT",
-      "desc": "The BBC's Quentin Sommerville reports from Chicago, where communities are battling a new wave of synthetic drugs."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea's semiconductor boom masks growing risks for small firms - upi",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPN0hQSGR2ZWVVNXF2QWVYems5Z0VZSi1qM0M2b2tuVVFJMGctNmRtOGU1eTVZX0Q5YVhZZXdSay1wTzZYTllzMURMajBpZFpYUEdndXY2bmpCdEM5S0dEbkUydF8wYzNmcGZuOVQ5TWptV0RTM0tlZHhtam5iclo1alFrTEROZ1BfQTJCQU5rNGQySnZQYTVBN0k4Z2UyUWh0ckdDZNIBqgFBVV95cUxNWmJzMFpxZUpqSTFoQ3VjS1h3NVB4ZWxmbnNkUGpIUXZIWUZPQkJYUEt3RVI0dnBkSHo5aFljVTVCb0RZLVZYYnoxM2VMVF83TmtUcktHLUdkaHdvOXF6RjFKQnkwVmo3TndwWkl6NEgxM242S3dtamk0SXQybmtxN2gySjhmb2d2cEZXeGhETnpwdnFzU2NKTW40NWZVSFQ1YkxZRmJiTzY0Zw?oc=5",
-      "date": "Sun, 18 Oct 2026 23:20:23 GMT",
-      "desc": "South Korea's semiconductor boom masks growing risks for small firms&nbsp;&nbsp;upi"
+      "title": "South Korea’s Antitrust Regime Burdens American Innovators | Reports & Briefings | Oct 19, 2026 - Information Technology and Innovation Foundation",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOTEE4ejdnVTB1blQweTc4TGEyeVRhb0xJbVF3OENfcXN3aXc5cGlzNEEtMUpOdlVTQ3VuQ3dxYzJKWXNDZEVjbl9jaFN1R29EN081R2ZKaGNZNVp1bDd6c3JyaTAwRnkwVnE3VTU1V3BpX2djdklnYVlHVWszdlE2WFA1NXpRaEhOenJFMUs1eHFpWkl1UTNVdV9KUkRsczh5?oc=5",
+      "date": "Mon, 19 Oct 2026 06:13:03 GMT",
+      "desc": "South Korea’s Antitrust Regime Burdens American Innovators | Reports & Briefings | Oct 19, 2026&nbsp;&nbsp;Information Technology and Innovation Foundation"
     },
     {
       "title": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry - Korea Economic Institute of America -",
@@ -45,22 +45,22 @@
       "desc": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
+      "title": "South Korea's semiconductor boom masks growing risks for small firms - upi",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPN0hQSGR2ZWVVNXF2QWVYems5Z0VZSi1qM0M2b2tuVVFJMGctNmRtOGU1eTVZX0Q5YVhZZXdSay1wTzZYTllzMURMajBpZFpYUEdndXY2bmpCdEM5S0dEbkUydF8wYzNmcGZuOVQ5TWptV0RTM0tlZHhtam5iclo1alFrTEROZ1BfQTJCQU5rNGQySnZQYTVBN0k4Z2UyUWh0ckdDZNIBqgFBVV95cUxNWmJzMFpxZUpqSTFoQ3VjS1h3NVB4ZWxmbnNkUGpIUXZIWUZPQkJYUEt3RVI0dnBkSHo5aFljVTVCb0RZLVZYYnoxM2VMVF83TmtUcktHLUdkaHdvOXF6RjFKQnkwVmo3TndwWkl6NEgxM242S3dtamk0SXQybmtxN2gySjhmb2d2cEZXeGhETnpwdnFzU2NKTW40NWZVSFQ1YkxZRmJiTzY0Zw?oc=5",
+      "date": "Sun, 18 Oct 2026 23:20:23 GMT",
+      "desc": "South Korea's semiconductor boom masks growing risks for small firms&nbsp;&nbsp;upi"
+    },
+    {
+      "title": "Korea growth may top IMF forecast - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPWW9oTkl3RlY5b3ZCdE1WLXhUNWZ0WVVJM3F6WUk3ZkU4ZGlORV9yaFNfbElzaFJJZFgxN2hvalpBbkNUenRMOWNvY0JheDJjeHdRUndZYlZwdl9jTVhUd0dIS3BxV3dzNGVYa3RBMDZIck9iM0JYWlBLZHF3M3AxUzkxczdEdW9fZnpUYmJGMA?oc=5",
+      "date": "Mon, 19 Oct 2026 03:04:42 GMT",
+      "desc": "Korea growth may top IMF forecast&nbsp;&nbsp;Korea JoongAng Daily"
+    },
+    {
       "title": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help? - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQSTlBMFREeXRwb2d3Uk0teDJ0SmZqQW1sN2JWMFB1V2F2Qmxpdjdya2NPMnZRMDhXQ0s5ak5ITHVLLV8wcXQyRGl6ZFo5ZG5SU3Zkb2RwRHYwNUhERWRnWUNYRzhhYjRfdjBNQ1FIaUhKR19faTBqUUpxN25nbEMwLU1sM181MVo3cDI0NnhURQ?oc=5",
       "date": "Thu, 15 Oct 2026 02:00:00 GMT",
       "desc": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help?&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "South Korea's Household Debt Surges as Corporate Profits Soar - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZzZEZU1pbG1NaUYwTElIOElOWjNTUnBfSkpZaG1HSE1taWQ1YnJJVXRmTVJ1YmhnMmUtQWxUMjNYSFFSekN0a0FIcEZDY2tuc0d4VEN3M0V1WWNjNHliQ05MdE5XZlJhajN5cXlOM2xxOVRYT2djR0hUeExrZ2ZrYUFGN0tER2s1UzlZQlVR?oc=5",
-      "date": "Sun, 18 Oct 2026 15:37:33 GMT",
-      "desc": "South Korea's Household Debt Surges as Corporate Profits Soar&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "South Korea’s exports hit record high on AI boom - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOX3NKUDFscG16UF9kbmVWUUdwb182Q2lOdDJweElBYTlwUE1NRXluZUdjSXp5STNweldSU1lGeUkydXhRWDctVFkxd0x2TGZNTDZneTREeENuRUVLQURJSzJzNHB5ZXFwa2VyUnM4MmtManF0M2xpY3VMM2tjOXdxNXlrazZZeC1nQzhYanNPaEtnQTdDd3fSAZsBQVVfeXFMT205N25lTE5OYnVTT2xseVhlVG9qQk01Q0ZfT2wwc3VaN3Y2V1N4UjNpZkNIVFRtbE8yeF9VQ29mRU1tUll3a056VVRXLVZhclRyeUJ4RkFGZ014WEM2MVNQREctcHY2ekpidXladzBCNEFrbFRkamdjSWdZX2xVeGNpeTEyVUsxaUlBZFlqcUF5UVNnWXZTbDdJOFk?oc=5",
-      "date": "Thu, 01 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s exports hit record high on AI boom&nbsp;&nbsp;Al Jazeera"
     },
     {
       "title": "Samsung to use TSMC technology for Nvidia's next-generation memory chips, Seoul newspaper reports - Reuters",
@@ -69,16 +69,16 @@
       "desc": "Samsung to use TSMC technology for Nvidia's next-generation memory chips, Seoul newspaper reports&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung, SK hynix Post Worst Weekly Drop Since 2008 Crisis - Seoul Economic Daily",
-      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPaVZHRWUxNlYtcDIxNEpScVAxaWtKenVRRm40c0ZGZ3lreHNRS1ZEQmo0Y1NwRHd4aTJ5VVdoQWNlWnVyczJmMER2aWV6NzhvRjFvUGtHajQzQXVYYWNRMTZTYU93SGoyejVuV1RZQTBrZmxUXzNqbkZGVUpyeVRXbnZNQzcxT3ZweV9QaV9ERTYycXdmNU9jUkZfUENDc2l2?oc=5",
-      "date": "Sun, 18 Oct 2026 22:00:05 GMT",
-      "desc": "Samsung, SK hynix Post Worst Weekly Drop Since 2008 Crisis&nbsp;&nbsp;Seoul Economic Daily"
+      "title": "Samsung Reportedly Taps TSMC for Nvidia's Next-Gen Memory - Taiwan Semiconductor (NYSE:TSM) - Benzinga",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQQlBoNkE2aVpqckllakV3ak9vZXBBTkUzMU9zSzJLY1RSRGhUTGRKcEV4M2lQMTg2ai1zT0VnbWI0ZkxIbGltcUxVQjg2aTg4YVFsdm5ob0haRHB5c2xnVm15aG5YLXA3N0I0dTRHNlNCU01qVnJndnVzdFdHdUpUU0dfZDBJUDRmV3Q4UjNvei1uMHBqSVE1X0tiMzZMQURZbUpnVHNSeWp6VnpNRFRZUkw1dFQ1OUd0cEE?oc=5",
+      "date": "Mon, 19 Oct 2026 07:10:01 GMT",
+      "desc": "Samsung Reportedly Taps TSMC for Nvidia's Next-Gen Memory - Taiwan Semiconductor (NYSE:TSM)&nbsp;&nbsp;Benzinga"
     },
     {
-      "title": "Musk's criticism of Samsung, SK's memory chip pricing runs counter to market logic: expert - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNd3drMmc2UnhhendDaWJFSnFMaDkwR0dyUHdXSl9pSjFMbFRDQUNEWGNkWFc3UEdULS1wV3Y2aXN1STJQU0Zhc1JzNlp0dXNrT09iYzkzQl9MekJyTGI3N0tNMUYxYnJVQnVGTF9PMXRyYjN0REMtbUJYWHA5cER1MGxZZ3NYVDRBQVhua0hQeV9TTV9hSzdzYjEybVZlRlY0Y083OHlISkNEbzVISUhadGNlXzlFbGNnd2NGLUlmOHk5Ym1zR0djX1c0TDBocHZhNDlhaFpZMm5wTXpmTmJaTNIB4AFBVV95cUxNd3drMmc2UnhhendDaWJFSnFMaDkwR0dyUHdXSl9pSjFMbFRDQUNEWGNkWFc3UEdULS1wV3Y2aXN1STJQU0Zhc1JzNlp0dXNrT09iYzkzQl9MekJyTGI3N0tNMUYxYnJVQnVGTF9PMXRyYjN0REMtbUJYWHA5cER1MGxZZ3NYVDRBQVhua0hQeV9TTV9hSzdzYjEybVZlRlY0Y083OHlISkNEbzVISUhadGNlXzlFbGNnd2NGLUlmOHk5Ym1zR0djX1c0TDBocHZhNDlhaFpZMm5wTXpmTmJaTA?oc=5",
-      "date": "Sun, 18 Oct 2026 05:52:03 GMT",
-      "desc": "Musk's criticism of Samsung, SK's memory chip pricing runs counter to market logic: expert&nbsp;&nbsp;The Korea Times"
+      "title": "[News] NVIDIA Reportedly Pushes TSMC 3nm NVHBM Base Dies for Samsung, SK hynix, Micron, Uniting Foundry Rivals - TrendForce",
+      "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNdWc0aFpWb0cxaFdWRi14V2NsbzlzRUtJaXVqcEYtWmxyN1h6aGxCX2VJakZxT2FjQlhDdDhoUjZ3bG01QV9sR1lZbUR2TldyVnB0NGxPZ2lma2tTVEoyVGVZaGxHWC1ZaVlueVNXai0yaDVWdHlDaVZ6MWduQW5La1BYOU5aaEJQeDZJM3NEZnNsZHZwZnA2LTJQQUw0SExteU16MzZfdjN1Y21QVXpFVWlJVnBkMUJIY25jbGZyNEZCOGVkVVEzZnZDTkE2ckRaNkN6bEUwVThIazlfNzdXWmlGQnJUV1Nk?oc=5",
+      "date": "Mon, 19 Oct 2026 03:12:56 GMT",
+      "desc": "[News] NVIDIA Reportedly Pushes TSMC 3nm NVHBM Base Dies for Samsung, SK hynix, Micron, Uniting Foundry Rivals&nbsp;&nbsp;TrendForce"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 215500.0,
-      "change": -16500.0,
-      "pct": -7.11,
+      "price": 218000.0,
+      "change": 8000.0,
+      "pct": 3.81,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1272000.0,
-      "change": -147000.0,
-      "pct": -10.36,
+      "price": 1277000.0,
+      "change": 15000.0,
+      "pct": 1.19,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 312000.0,
-      "change": -1500.0,
-      "pct": -0.48,
+      "price": 326000.0,
+      "change": 30500.0,
+      "pct": 10.32,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 110200.0,
-      "change": 1600.0,
-      "pct": 1.47,
+      "price": 116000.0,
+      "change": 10100.0,
+      "pct": 9.54,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 180000.0,
-      "change": 600.0,
-      "pct": 0.33,
+      "price": 182900.0,
+      "change": 9300.0,
+      "pct": 5.36,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5668.05,
-      "change": -340.76,
-      "pct": -5.67,
+      "price": 5768.01,
+      "change": 213.79,
+      "pct": 3.85,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.28,
-      "change": -6.67,
-      "pct": -0.5,
+      "price": 1330.34,
+      "change": -10.61,
+      "pct": -0.79,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-19 02:20 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-19 08:19 UTC"
 }
