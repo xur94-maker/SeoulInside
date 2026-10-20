@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "French cities calm overnight after curfews imposed to quell violence, PM says",
-      "link": "https://www.bbc.co.uk/news/articles/cw5yn5e8mezvo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 06:35:57 GMT",
-      "desc": "Sébastien Lecornu said new curfews for Tuesday night would be decided where necessary."
+      "title": "Zelensky and US envoys to hold Oslo talks as Rubio denies withholding intelligence",
+      "link": "https://www.bbc.co.uk/news/articles/ck9qzn193lrlo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 20 Oct 2026 13:51:40 GMT",
+      "desc": "The US secretary of state rejects accusations Ukrainians were dying because the US was withholding intelligence."
     },
     {
-      "title": "Ukrainians dying because US restricting intelligence sharing, Zelensky adviser tells BBC",
-      "link": "https://www.bbc.co.uk/news/articles/cmj47yx572z5o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 19 Oct 2026 20:49:00 GMT",
-      "desc": "Serhii Beskrestnov says there has not been enough time to warn people about incoming missile attacks. The White House said there had been no changes to intelligence sharing."
+      "title": "Marseille braces for more unrest after protests give way to 'apocalyptic' disorder",
+      "link": "https://www.bbc.co.uk/news/articles/cm5ynkk570pno?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 20 Oct 2026 12:08:06 GMT",
+      "desc": "France's second city saw some of the worst violence as chaos gripped the country on Saturday."
     },
     {
-      "title": "Seventh day of violent clashes between Albanian protesters and police",
-      "link": "https://www.bbc.co.uk/news/articles/cmy4xjlpqgd3o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 02:45:05 GMT",
-      "desc": "Almost 300 people have been injured, more than half of them police, as violent anti-government demonstrations show no sign of easing."
+      "title": "Man charged with attack on Australian MP as suspect's father says she is family friend",
+      "link": "https://www.bbc.co.uk/news/articles/c678pnn9mpgno?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 20 Oct 2026 11:25:35 GMT",
+      "desc": "Brendan Nugent's family say they have known Helen Haines, who remains in a critical condition, for more than 20 years."
     },
     {
-      "title": "Canadian tourist found guilty of animal cruelty after stealing Las Vegas flamingo from enclosure",
-      "link": "https://www.bbc.co.uk/news/articles/cq398rjewd1jo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 03:10:39 GMT",
-      "desc": "The man testified that he snatched Peachy from its enclosure at the Flamingo hotel and casino after drinking 30 to 40 beers, but did not mean any harm."
+      "title": "North Korea publishes photos of Kim Jong Un - why do rumours of his death keep coming back?",
+      "link": "https://www.bbc.co.uk/news/articles/cmvg6qv1jdydo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 20 Oct 2026 11:45:49 GMT",
+      "desc": "North Korean state media has published photos of the dictator with his daughter after the unsubstantiated rumour spread."
     },
     {
-      "title": "Mission blasts off for Mars to grab a piece of its moon",
-      "link": "https://www.bbc.co.uk/news/articles/cmvgxvkv54w1o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 19 Oct 2026 19:45:46 GMT",
-      "desc": "A spacecraft is set to launch on an ambitious mission to bring 10g of Martian moon dust back to Earth."
+      "title": "Kenya cult leader's children still being starved weeks before trial, son says",
+      "link": "https://www.bbc.co.uk/news/articles/c6d7q2rxqxgxo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 20 Oct 2026 13:23:32 GMT",
+      "desc": "Dan Mackenzie initially defended his father but now says he felt he had to report his own grandmother."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
+      "date": "Mon, 19 Oct 2026 15:29:22 GMT",
+      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+    },
     {
       "title": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOd1ZsUjFlbGdPaFVnaW1CRlU1TTBSXzNhV1JEMWZwTVpJcFZDR21pWGxhVjNyRHJ3RnRJV2VvUm9tcnNzNVlYRzFvR1JiY19yTHBKdTZPdm1zekFFRkdqYTR4el9ia1FiTmt5cGYzempKYUxxbzJVT2ZSd3hpT2ttTHNyMmZVUjFZb05kQkVsQ2ptc3k1aUQzN3pBRQ?oc=5",
@@ -49,12 +55,6 @@
       "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPM0xhdV9oOVFkeGNUVGlLMlRpQm9uREhPX0pOYi1EemhkV2lyNWM3WEpTZU02dEpQenRkSndUU3BoSVFzWkNNRWhtQlFCVWxSRVM5UXZxV21rMy1ibzd2dXZSUllTcTZJdTdmNUFsWXdmbmFwbjAtV2hDYmNELVFIYnBuMmtyN003MWlqVm5Id0tudWJ2THI5REhtd0FfOGpwbm9nUGxTc1VKdDc2UlJnbjVTVzFydktWUzVaeC1CcDdfak42YnRGZlBScXBkc0JOVTVFdUVhUkVCNndpS0Q5cXpn?oc=5",
       "date": "Tue, 20 Oct 2026 04:01:00 GMT",
       "desc": "Execution, Not Ambition, Now Separates AI Economies as Japan and South Korea Join the Pioneers&nbsp;&nbsp;PR Newswire"
-    },
-    {
-      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
-      "date": "Mon, 19 Oct 2026 15:29:22 GMT",
-      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
       "title": "South Korea Broadens Multifaceted Ties with Central Asia - The Jamestown Foundation",
@@ -75,99 +75,99 @@
       "desc": "Samsung to use TSMC technology for Nvidia's next-generation memory chips, Seoul newspaper reports&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Korea plans new Samsung, SK Hynix chip hub in Gwangju, risking Trump's ire - Moneycontrol.com",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPdjNjSUw2ZVFBdkExa096S3NZQUpGNEdtd1ppQnU2dGxNYWg3Q3poWC1FVFlaYTl1dW1KT19QY3RVWHJlOF9Ha3NjaENkV0Z0WGdsTDVCelhLNVJHY2MyS3R1bTQ0U1Nobklfd3hGNE5nbzluMGZpSE03UklCMlNvc29DeDlEbVdBZ18xWHIzM3J0ZGxFM3I3M2R2Wk5lSjllT19GeVlMbUFzRWN5ZEVNb1l2LUpYR1VfcEpjZ1lMX0NjRFdMNmt5SdIBzgFBVV95cUxNV1M4dWhCQzk2Nk9NRDJVQVo4Z09PWVhfUDdqUlFlNzBqUUFWcEplRjhuNTBiVHdSSnVQV0dnZF9fVjA2dDZOeHNkWWtsdXF0U3BMWFlpdVFYQWExMGRiMndVNEx2bmxEU3FDNTFwWU9VQmxJRjBadDRpQzFsNjJzWUp4MXhONjVRY1NmZWZzSkJMeWF5cHpfcnRvcDM2Ml9uZm5pbjVYZTNyWTlvQnhjcDdLajJFblNTdk54akJIbDN4OU5zZVVTa0tyX0FXZw?oc=5",
-      "date": "Tue, 20 Oct 2026 02:10:52 GMT",
-      "desc": "Korea plans new Samsung, SK Hynix chip hub in Gwangju, risking Trump's ire&nbsp;&nbsp;Moneycontrol.com"
+      "title": "Nomura Sets Samsung Electronics at ₩670,000, SK Hynix at ₩4.7 Million, Sees Memory Shortage Lasting Through 2028 - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBlODdKM0dSQVMybW16TUQ1T1BKenBLQlZZbWxRa1FIQzNEb3l4VmtTTnJHd1VBUGk4VzhBZjNkeUJJaXBtTTZoWGlfRlpnR0dCX0k1R2x3eDE5VTlqVnltaDZJbUR1b2xxb1p5eURIOTFuWmU4Unc?oc=5",
+      "date": "Tue, 20 Oct 2026 08:58:19 GMT",
+      "desc": "Nomura Sets Samsung Electronics at ₩670,000, SK Hynix at ₩4.7 Million, Sees Memory Shortage Lasting Through 2028&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 217.09,
-      "change": -0.14,
-      "pct": -0.06,
+      "price": 216.31,
+      "change": 2.18,
+      "pct": 1.02,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 420.22,
-      "change": -2.03,
-      "pct": -0.48,
+      "price": 421.85,
+      "change": 9.24,
+      "pct": 2.24,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 538.05,
-      "change": -24.18,
-      "pct": -4.3,
+      "price": 538.09,
+      "change": 9.34,
+      "pct": 1.77,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 92.03,
-      "change": -3.34,
-      "pct": -3.5,
+      "price": 91.1,
+      "change": 1.25,
+      "pct": 1.39,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 173.53,
-      "change": -4.87,
-      "pct": -2.73,
+      "price": 174.64,
+      "change": 2.53,
+      "pct": 1.47,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 228.05,
-      "change": -16.74,
-      "pct": -6.84,
+      "price": 221.78,
+      "change": -6.02,
+      "pct": -2.64,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 344.18,
-      "change": -5.04,
-      "pct": -1.44,
+      "price": 343.85,
+      "change": 3.26,
+      "pct": 0.96,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 342.94,
-      "change": 0.94,
-      "pct": 0.27,
+      "price": 342.87,
+      "change": -0.59,
+      "pct": -0.17,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 533.52,
-      "change": -5.92,
-      "pct": -1.1,
+      "price": 530.87,
+      "change": 1.82,
+      "pct": 0.34,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7690.73,
-      "change": -53.33,
-      "pct": -0.69,
+      "price": 7711.33,
+      "change": 51.89,
+      "pct": 0.68,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26430.89,
-      "change": -282.14,
-      "pct": -1.06,
+      "price": 26443.29,
+      "change": 303.26,
+      "pct": 1.16,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1325.78,
-      "change": -7.65,
-      "pct": -0.57,
+      "price": 1327.26,
+      "change": -6.17,
+      "pct": -0.46,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-20 08:03 UTC"
+  "updatedAt": "2026-10-20 14:12 UTC"
 }
