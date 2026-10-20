@@ -1,12 +1,6 @@
 {
   "globalNews": [
     {
-      "title": "Zelensky and US envoys to hold Oslo talks as Rubio denies withholding intelligence",
-      "link": "https://www.bbc.co.uk/news/articles/ck9qzn193lrlo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 13:51:40 GMT",
-      "desc": "The US secretary of state rejects accusations Ukrainians were dying because the US was withholding intelligence."
-    },
-    {
       "title": "Marseille braces for more unrest after protests give way to 'apocalyptic' disorder",
       "link": "https://www.bbc.co.uk/news/articles/cm5ynkk570pno?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 20 Oct 2026 12:08:06 GMT",
@@ -19,16 +13,22 @@
       "desc": "Brendan Nugent's family say they have known Helen Haines, who remains in a critical condition, for more than 20 years."
     },
     {
+      "title": "Sudan army drones hit mourners and fuel market killing more than 300 people, sources say",
+      "link": "https://www.bbc.co.uk/news/articles/cr3el70jz1nqo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 20 Oct 2026 17:30:15 GMT",
+      "desc": "A truck carrying people to a funeral and a market alleged to be supplying fuel to the RSF were targeted."
+    },
+    {
+      "title": "'Great result for Canada', says Carney as Alberta votes to reject separatism",
+      "link": "https://www.bbc.co.uk/news/articles/cxr5yqqd7nlpo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 20 Oct 2026 16:59:06 GMT",
+      "desc": "The Canadian province has voted overwhelmingly to remain part of Canada, though deep political divisions endure."
+    },
+    {
       "title": "North Korea publishes photos of Kim Jong Un - why do rumours of his death keep coming back?",
       "link": "https://www.bbc.co.uk/news/articles/cmvg6qv1jdydo?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 20 Oct 2026 11:45:49 GMT",
       "desc": "North Korean state media has published photos of the dictator with his daughter after the unsubstantiated rumour spread."
-    },
-    {
-      "title": "Kenya cult leader's children still being starved weeks before trial, son says",
-      "link": "https://www.bbc.co.uk/news/articles/c6d7q2rxqxgxo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 13:23:32 GMT",
-      "desc": "Dan Mackenzie initially defended his father but now says he felt he had to report his own grandmother."
     }
   ],
   "koreaNews": [
@@ -51,16 +51,22 @@
       "desc": "South Korea’s $1 trillion chip bet to revive left-behind region risks Trump’s ire&nbsp;&nbsp;The Japan Times"
     },
     {
-      "title": "Execution, Not Ambition, Now Separates AI Economies as Japan and South Korea Join the Pioneers - PR Newswire",
-      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPM0xhdV9oOVFkeGNUVGlLMlRpQm9uREhPX0pOYi1EemhkV2lyNWM3WEpTZU02dEpQenRkSndUU3BoSVFzWkNNRWhtQlFCVWxSRVM5UXZxV21rMy1ibzd2dXZSUllTcTZJdTdmNUFsWXdmbmFwbjAtV2hDYmNELVFIYnBuMmtyN003MWlqVm5Id0tudWJ2THI5REhtd0FfOGpwbm9nUGxTc1VKdDc2UlJnbjVTVzFydktWUzVaeC1CcDdfak42YnRGZlBScXBkc0JOVTVFdUVhUkVCNndpS0Q5cXpn?oc=5",
-      "date": "Tue, 20 Oct 2026 04:01:00 GMT",
-      "desc": "Execution, Not Ambition, Now Separates AI Economies as Japan and South Korea Join the Pioneers&nbsp;&nbsp;PR Newswire"
+      "title": "South Korea, US Pull Apart as the Alliance Strains - The Diplomat – Asia-Pacific Current Affairs Magazine",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOb001M1REVENMZGducG9UdmhTeFhyQXFtVVVJWXEyT09wSHFKZ2k1cGNEYzFESUU5Y3ZTaHJUMjdEcWJXU2Z3OWxZUlE5aEluYzFKYVhtY1VnVjgtTDNoNlZha3pjY3lsSXpXQkthbmdYLTdGQTc0R2F0aTZxY3NDRlQybGFKUV9TeVE?oc=5",
+      "date": "Mon, 19 Oct 2026 13:23:45 GMT",
+      "desc": "South Korea, US Pull Apart as the Alliance Strains&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
     },
     {
-      "title": "South Korea Broadens Multifaceted Ties with Central Asia - The Jamestown Foundation",
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQZ0NmZlJRUmQ4NEZwQjVFRFhLYnpRT2paaU9KZVRKM3Y2azlSWGxFb09WdWZQOVhnOG4xaEcwZFRhbTBaRkdPZTJma2o2VFB5TVdrZVh2cEgzRHhHSjJ1ck9POFd3QVlzaDJJdDBLUjhfam16WVM3eFJ2dFRNQV8wdkxRTHVzQQ?oc=5",
-      "date": "Mon, 19 Oct 2026 20:11:52 GMT",
-      "desc": "South Korea Broadens Multifaceted Ties with Central Asia&nbsp;&nbsp;The Jamestown Foundation"
+      "title": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help? - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQSTlBMFREeXRwb2d3Uk0teDJ0SmZqQW1sN2JWMFB1V2F2Qmxpdjdya2NPMnZRMDhXQ0s5ak5ITHVLLV8wcXQyRGl6ZFo5ZG5SU3Zkb2RwRHYwNUhERWRnWUNYRzhhYjRfdjBNQ1FIaUhKR19faTBqUUpxN25nbEMwLU1sM181MVo3cDI0NnhURQ?oc=5",
+      "date": "Thu, 15 Oct 2026 02:00:00 GMT",
+      "desc": "South Korea Faces a 1997-Style Economic Crisis. Can Crypto Help?&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
+      "title": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOV0Z4YUdWZXFjTWJKTHRwSlRmaGRXakpLN194V2J2RjhiU1UySVBtWTZxOXNRLUZSZHhKcVZZTkpMVmxEOXp6MlRWZXRRLXgxNkNXMFljT0ZqSXJCa1FKU0kxeWN2VDlTSDV2eUFydXhmcnczVGNEak1JQVh4TzJnWEtwUDRiQUtETENpWV9Nc1hoc09jcUF0ZjBYUkVrUG9sQlNxRkF3cmZzQkw1ZmRTeFhvanlMQW8wWUM4b3Q4M2w?oc=5",
+      "date": "Mon, 19 Oct 2026 21:00:07 GMT",
+      "desc": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "Elon Musk’s China RAM Warning Raises Questions for Samsung, SK Hynix as South Korea Faces Potential Memory Chip Oversupply and Less Time To Diversify - Yahoo Finance",
@@ -73,101 +79,95 @@
       "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQLVd3RU5QdzNwZHd0cUNCbUQxM3B6M2JOTXZZbEE4b3Y4czkxSjBuNklIRXU2S1VyRld6WTlRQUdlZkN3TGNRcng5cjR6ZEViNXNqcHh2RnlRU2hWVXRPUVFjVXRvd2FaaTVkd002aUk4WHlEQ2wxTGk3alF5S0FUTGNMUXF2dV9QUjk4eThjcWVPaVBLYzc2c0NUaUN4UUVMcVZTSERiMDE5VXp0NDdoVFpuS2E0TGZoUnBrRTExcnZDRlJia1VNcU40SUxQcE1y?oc=5",
       "date": "Sun, 18 Oct 2026 12:09:43 GMT",
       "desc": "Samsung to use TSMC technology for Nvidia's next-generation memory chips, Seoul newspaper reports&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Nomura Sets Samsung Electronics at ₩670,000, SK Hynix at ₩4.7 Million, Sees Memory Shortage Lasting Through 2028 - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBlODdKM0dSQVMybW16TUQ1T1BKenBLQlZZbWxRa1FIQzNEb3l4VmtTTnJHd1VBUGk4VzhBZjNkeUJJaXBtTTZoWGlfRlpnR0dCX0k1R2x3eDE5VTlqVnltaDZJbUR1b2xxb1p5eURIOTFuWmU4Unc?oc=5",
-      "date": "Tue, 20 Oct 2026 08:58:19 GMT",
-      "desc": "Nomura Sets Samsung Electronics at ₩670,000, SK Hynix at ₩4.7 Million, Sees Memory Shortage Lasting Through 2028&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 216.31,
-      "change": 2.18,
-      "pct": 1.02,
+      "price": 217.16,
+      "change": 3.03,
+      "pct": 1.42,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 421.85,
-      "change": 9.24,
-      "pct": 2.24,
+      "price": 427.83,
+      "change": 15.22,
+      "pct": 3.69,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 538.09,
-      "change": 9.34,
-      "pct": 1.77,
+      "price": 541.93,
+      "change": 13.18,
+      "pct": 2.49,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 91.1,
-      "change": 1.25,
-      "pct": 1.39,
+      "price": 92.58,
+      "change": 2.73,
+      "pct": 3.04,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 174.64,
-      "change": 2.53,
-      "pct": 1.47,
+      "price": 176.41,
+      "change": 4.3,
+      "pct": 2.5,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 221.78,
-      "change": -6.02,
-      "pct": -2.64,
+      "price": 223.14,
+      "change": -4.66,
+      "pct": -2.05,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 343.85,
-      "change": 3.26,
-      "pct": 0.96,
+      "price": 340.75,
+      "change": 0.16,
+      "pct": 0.05,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 342.87,
-      "change": -0.59,
-      "pct": -0.17,
+      "price": 340.18,
+      "change": -3.28,
+      "pct": -0.95,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 530.87,
-      "change": 1.82,
-      "pct": 0.34,
+      "price": 532.66,
+      "change": 3.61,
+      "pct": 0.68,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7711.33,
-      "change": 51.89,
-      "pct": 0.68,
+      "price": 7721.99,
+      "change": 62.55,
+      "pct": 0.82,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26443.29,
-      "change": 303.26,
-      "pct": 1.16,
+      "price": 26487.42,
+      "change": 347.39,
+      "pct": 1.33,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1327.26,
-      "change": -6.17,
-      "pct": -0.46,
+      "price": 1325.8,
+      "change": -7.63,
+      "pct": -0.57,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-20 14:12 UTC"
+  "updatedAt": "2026-10-20 18:10 UTC"
 }
