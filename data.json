@@ -1,22 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "US citizen Stephen Hubbard freed by Russia as Trump envoy meets Putin",
-      "link": "https://www.bbc.co.uk/news/articles/c6m24l9v3745o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 21 Oct 2026 13:49:50 GMT",
-      "desc": "The 74-year-old former teacher, who was captured, has been released without any \"swap\" required, Trump says."
+      "title": "Russia says it is ready to resume talks with Ukraine and US to end war",
+      "link": "https://www.bbc.co.uk/news/articles/cq3djn5nxx12o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 21 Oct 2026 17:42:34 GMT",
+      "desc": "The announcement came after Russian President Vladimir Putin met US President Donald Trump's special envoy Steve Witkoff in St Petersburg."
+    },
+    {
+      "title": "Macron accuses foreign leaders of exploiting French riots",
+      "link": "https://www.bbc.co.uk/news/articles/ckjrw044ggxgo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 21 Oct 2026 14:04:28 GMT",
+      "desc": "The comment is an apparent swipe at Benjamin Netanyahu and Donald Trump, who both face elections in coming weeks."
     },
     {
       "title": "Australian MP loses both legs after alleged car attack, husband says",
       "link": "https://www.bbc.co.uk/news/articles/ckwyqdqxw6d0o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 21 Oct 2026 07:56:30 GMT",
       "desc": "Her alleged attacker, 43-year-old Brendan Nugent, faces multiple charges and appeared in court for the first time on Wednesday."
-    },
-    {
-      "title": "Katya Adler: France divided over who to blame for riots and what to learn from them",
-      "link": "https://www.bbc.co.uk/news/articles/cq0me4g9p970o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 21 Oct 2026 06:50:40 GMT",
-      "desc": "In France and beyond there is widespread disagreement over what led to some of the worst unrest seen in French cities in modern history."
     },
     {
       "title": "Elon Musk confirms he is considering merging Tesla and SpaceX",
@@ -45,12 +45,6 @@
       "desc": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
-      "title": "South Korea expands intelligence agency's economic security role - upi",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNWUJ1RWJIRnBuclRsajJ2OGVyM2pzRy1OUmNkaVdTb3BDMVJKNF9jMkZBX0swVlhsUVNqLXMyU2RMT1RzTWViRmg3VWpVUXdEX2JKck1yWndYLVNheHlGVnR0YjJUVFIyZ1R2bzFjUWRuMHBVWUU0VENSM25WZmo2alZRYTRPcm1UMWZOUjJkSGptS1JxX1dqVV9zMWRKMlZEMVoyczZ0MHdwNE50d2tqalN6cTNISXJsTjRJdDRzWVkyaG5BY1HSAcsBQVVfeXFMTUJuMkFIa1p5amFsOTlqZnV3N2xqcElvOXVsbVJBM0hzWHNNQldyVlNrN19XVXU1b2cxQVJ1NUpHS05fSXNzME1WRlR5SVNUU0pmOWJNUllkdU9FZS1yT3FRems0WUZpdEpkOFltTWNHZkE4dWx3OHpqdlluazBIZk9MMndZYmQxR09ncWVkOWZmS3V3dmFLYTRNcGlfWmh4ZC1MMTZKWEpDc1NVTEVMSEtpRFNvTWV3U0dQOEdzdzMyelg1alIweUo2NEk?oc=5",
-      "date": "Tue, 20 Oct 2026 21:26:10 GMT",
-      "desc": "South Korea expands intelligence agency's economic security role&nbsp;&nbsp;upi"
-    },
-    {
       "title": "GT Voice: Chip export boom reveals deepening China-South Korea complementarity - Global Times",
       "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9EYkc4bTd3elVDeTRkY0pYenNILWstMHgycUpPdGpzQUczN09CZHJyV3k1Zl96NUVEWVhsaHJla2d1RVR4UGthM2w2dDhQcUpIZEJiRUZDNmdpdFhvZTJNaW53?oc=5",
       "date": "Wed, 21 Oct 2026 12:47:00 GMT",
@@ -63,111 +57,117 @@
       "desc": "South Korea’s Export Boom Stays Strong Ahead of BOK Rate Decision&nbsp;&nbsp;Bloomberg.com"
     },
     {
+      "title": "South Korea, US Pull Apart as the Alliance Strains - The Diplomat – Asia-Pacific Current Affairs Magazine",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOb001M1REVENMZGducG9UdmhTeFhyQXFtVVVJWXEyT09wSHFKZ2k1cGNEYzFESUU5Y3ZTaHJUMjdEcWJXU2Z3OWxZUlE5aEluYzFKYVhtY1VnVjgtTDNoNlZha3pjY3lsSXpXQkthbmdYLTdGQTc0R2F0aTZxY3NDRlQybGFKUV9TeVE?oc=5",
+      "date": "Mon, 19 Oct 2026 13:23:45 GMT",
+      "desc": "South Korea, US Pull Apart as the Alliance Strains&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
+    },
+    {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
       "date": "Wed, 21 Oct 2026 04:49:00 GMT",
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung, SK hynix Upgrade China NAND Plants to Counter Rising YMTC - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE94NS1iaVlKcGh0bVlyemZCNmFCSklyd2ZfOVpGZ0ZlMmZwWGZFblhzaWU2T0prNkNtMVBfckxhdkN0OUlLSkFWYlVXUjRFRVQtYVBjZGl5TVVfcUhTMXU0ME1fc21pekpLdlJZZ3hNMTFyXzdS?oc=5",
-      "date": "Wed, 21 Oct 2026 11:40:58 GMT",
-      "desc": "Samsung, SK hynix Upgrade China NAND Plants to Counter Rising YMTC&nbsp;&nbsp;Businesskorea"
-    },
-    {
       "title": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOV0Z4YUdWZXFjTWJKTHRwSlRmaGRXakpLN194V2J2RjhiU1UySVBtWTZxOXNRLUZSZHhKcVZZTkpMVmxEOXp6MlRWZXRRLXgxNkNXMFljT0ZqSXJCa1FKU0kxeWN2VDlTSDV2eUFydXhmcnczVGNEak1JQVh4TzJnWEtwUDRiQUtETENpWV9Nc1hoc09jcUF0ZjBYUkVrUG9sQlNxRkF3cmZzQkw1ZmRTeFhvanlMQW8wWUM4b3Q4M2w?oc=5",
       "date": "Mon, 19 Oct 2026 21:00:07 GMT",
       "desc": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "Samsung, SK hynix Upgrade China NAND Plants to Counter Rising YMTC - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE94NS1iaVlKcGh0bVlyemZCNmFCSklyd2ZfOVpGZ0ZlMmZwWGZFblhzaWU2T0prNkNtMVBfckxhdkN0OUlLSkFWYlVXUjRFRVQtYVBjZGl5TVVfcUhTMXU0ME1fc21pekpLdlJZZ3hNMTFyXzdS?oc=5",
+      "date": "Wed, 21 Oct 2026 11:40:58 GMT",
+      "desc": "Samsung, SK hynix Upgrade China NAND Plants to Counter Rising YMTC&nbsp;&nbsp;Businesskorea"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 218.43,
-      "change": 1.34,
-      "pct": 0.62,
+      "price": 221.83,
+      "change": 4.74,
+      "pct": 2.18,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 425.67,
-      "change": 5.45,
-      "pct": 1.3,
+      "price": 430.68,
+      "change": 10.45,
+      "pct": 2.49,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 544.66,
-      "change": 6.61,
-      "pct": 1.23,
+      "price": 555.12,
+      "change": 17.08,
+      "pct": 3.17,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 91.69,
-      "change": -0.34,
-      "pct": -0.37,
+      "price": 92.69,
+      "change": 0.66,
+      "pct": 0.71,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 176.26,
-      "change": 2.73,
-      "pct": 1.58,
+      "price": 177.83,
+      "change": 4.3,
+      "pct": 2.48,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 222.51,
-      "change": -5.54,
-      "pct": -2.43,
+      "price": 226.24,
+      "change": -1.81,
+      "pct": -0.79,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 331.22,
-      "change": -12.96,
-      "pct": -3.77,
+      "price": 335.0,
+      "change": -9.19,
+      "pct": -2.67,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 339.98,
-      "change": -2.96,
-      "pct": -0.86,
+      "price": 344.82,
+      "change": 1.88,
+      "pct": 0.55,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 529.12,
-      "change": -4.4,
-      "pct": -0.83,
+      "price": 532.74,
+      "change": -0.78,
+      "pct": -0.15,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7716.47,
-      "change": 25.74,
-      "pct": 0.33,
+      "price": 7769.25,
+      "change": 78.52,
+      "pct": 1.02,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26543.49,
-      "change": 112.6,
-      "pct": 0.43,
+      "price": 26763.32,
+      "change": 332.43,
+      "pct": 1.26,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1327.89,
-      "change": -2.11,
-      "pct": -0.16,
+      "price": 1325.34,
+      "change": -4.66,
+      "pct": -0.35,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-21 14:25 UTC"
+  "updatedAt": "2026-10-21 18:18 UTC"
 }
