@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Zelensky says US intelligence sharing 'works now' after talks with Trump envoy in Oslo",
+      "title": "US envoy arrives in Russia ahead of meeting with Putin as Zelensky says intelligence sharing 'works now'",
       "link": "https://www.bbc.co.uk/news/articles/cq5ynkx3xy11o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 21:27:39 GMT",
-      "desc": "Ukraine had accused the US of withholding key intelligence - a claim rejected as \"scandalous\" by Washington."
-    },
-    {
-      "title": "Marseille braces for more unrest after protests give way to 'apocalyptic' disorder",
-      "link": "https://www.bbc.co.uk/news/articles/cm5ynkk570pno?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 12:08:06 GMT",
-      "desc": "France's second city saw some of the worst violence as chaos gripped the country on Saturday."
-    },
-    {
-      "title": "Elon Musk says Tesla-SpaceX merger being considered",
-      "link": "https://www.bbc.co.uk/news/articles/cmlyl09xjke4o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 23:24:47 GMT",
-      "desc": "Musk says special committees within both companies have been formed to look at a possible mega-merger."
-    },
-    {
-      "title": "Man charged with attack on Australia MP to face court",
-      "link": "https://www.bbc.co.uk/news/articles/c678pnn9mpgno?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 20 Oct 2026 11:25:35 GMT",
-      "desc": "Brendan Nugent's family say they have known Helen Haines, who remains in a critical condition, for more than 20 years."
+      "date": "Wed, 21 Oct 2026 06:37:55 GMT",
+      "desc": "Steve Witkoff is in St Petersburg to discuss proposals on ending Russia's years-long conflict with Ukraine."
     },
     {
       "title": "Trump and Zelensky appear at loggerheads despite Oslo optimism",
       "link": "https://www.bbc.co.uk/news/articles/ckrey51jrgnro?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 20 Oct 2026 20:00:57 GMT",
       "desc": "The Ukrainian leader's hug with Steve Witkoff in the Norwegian capital is unlikely to dispel misgivings about US policy towards his country, writes Paul Adams."
+    },
+    {
+      "title": "Katya Adler: France divided over who to blame for riots and what to learn from them",
+      "link": "https://www.bbc.co.uk/news/articles/cq0me4g9p970o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 21 Oct 2026 06:50:40 GMT",
+      "desc": "In France and beyond there is widespread disagreement over what led to some of the worst unrest seen in French cities in modern history."
+    },
+    {
+      "title": "Australian MP loses both legs after alleged car attack",
+      "link": "https://www.bbc.co.uk/news/articles/ckwyqdqxw6d0o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 21 Oct 2026 07:56:30 GMT",
+      "desc": "Her alleged attacker, 43-year-old Brendan Nugent, faces multiple charges and appeared in court for the first time on Wednesday."
+    },
+    {
+      "title": "Elon Musk confirms talks to merge Tesla and SpaceX",
+      "link": "https://www.bbc.co.uk/news/articles/cmlyl09xjke4o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 21 Oct 2026 05:48:46 GMT",
+      "desc": "Musk says special committees within both companies have been formed to look at a possible mega-merger."
     }
   ],
   "koreaNews": [
@@ -45,10 +45,16 @@
       "desc": "South Korea expands intelligence agency's economic security role&nbsp;&nbsp;upi"
     },
     {
-      "title": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOd1ZsUjFlbGdPaFVnaW1CRlU1TTBSXzNhV1JEMWZwTVpJcFZDR21pWGxhVjNyRHJ3RnRJV2VvUm9tcnNzNVlYRzFvR1JiY19yTHBKdTZPdm1zekFFRkdqYTR4el9ia1FiTmt5cGYzempKYUxxbzJVT2ZSd3hpT2ttTHNyMmZVUjFZb05kQkVsQ2ptc3k1aUQzN3pBRQ?oc=5",
-      "date": "Sat, 17 Oct 2026 19:03:43 GMT",
-      "desc": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "South Korea’s Export Boom Stays Strong Ahead of BOK Rate Decision - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOMlZhcXZiOHFtY0hSWWF5Mks0bDlCLXFDR3lKZFBjYzg2enVwV184RU52UWpJb1o2VGNUYng4YXBYUldkMkExS1laeU5VbWdsTHNRU0FzSkdibFVRZzN3ckVqQ2l6eEpOd1BVdDNjZXpiNXMxOUZFNFlfcDdFbGppcF8wb2pWVjk3U3NvdE56Nnd6ZGtOWTk1T29Ed3lWYndEREVQM3Q1eWJCaUFnanBkLUtR?oc=5",
+      "date": "Wed, 21 Oct 2026 00:00:00 GMT",
+      "desc": "South Korea’s Export Boom Stays Strong Ahead of BOK Rate Decision&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "Steel Urges South Korea To Lead Indo-Pacific - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9UYzBCbjRhVF9aMC1qLUlWMkltRmdkNmdRUGRpYlluX21RUi1ER05KdlkwbmVabjZqTDlyNGp5dlA4R0x2RFV1ejRKc1hqV0Y5bzF4NWNSRmt2djZGNkc1VlFZb2dmc3lva0RYSHlFNXlqRFZv?oc=5",
+      "date": "Wed, 21 Oct 2026 06:05:42 GMT",
+      "desc": "Steel Urges South Korea To Lead Indo-Pacific&nbsp;&nbsp;Businesskorea"
     },
     {
       "title": "South Korea, US Pull Apart as the Alliance Strains - The Diplomat – Asia-Pacific Current Affairs Magazine",
@@ -57,28 +63,22 @@
       "desc": "South Korea, US Pull Apart as the Alliance Strains&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
     },
     {
-      "title": "South Korea’s Export Boom Stays Strong Ahead of BOK Rate Decision - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOMlZhcXZiOHFtY0hSWWF5Mks0bDlCLXFDR3lKZFBjYzg2enVwV184RU52UWpJb1o2VGNUYng4YXBYUldkMkExS1laeU5VbWdsTHNRU0FzSkdibFVRZzN3ckVqQ2l6eEpOd1BVdDNjZXpiNXMxOUZFNFlfcDdFbGppcF8wb2pWVjk3U3NvdE56Nnd6ZGtOWTk1T29Ed3lWYndEREVQM3Q1eWJCaUFnanBkLUtR?oc=5",
-      "date": "Wed, 21 Oct 2026 00:00:00 GMT",
-      "desc": "South Korea’s Export Boom Stays Strong Ahead of BOK Rate Decision&nbsp;&nbsp;Bloomberg.com"
+      "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
+      "date": "Wed, 21 Oct 2026 04:49:00 GMT",
+      "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOV0Z4YUdWZXFjTWJKTHRwSlRmaGRXakpLN194V2J2RjhiU1UySVBtWTZxOXNRLUZSZHhKcVZZTkpMVmxEOXp6MlRWZXRRLXgxNkNXMFljT0ZqSXJCa1FKU0kxeWN2VDlTSDV2eUFydXhmcnczVGNEak1JQVh4TzJnWEtwUDRiQUtETENpWV9Nc1hoc09jcUF0ZjBYUkVrUG9sQlNxRkF3cmZzQkw1ZmRTeFhvanlMQW8wWUM4b3Q4M2w?oc=5",
+      "date": "Mon, 19 Oct 2026 21:00:07 GMT",
+      "desc": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "Elon Musk’s China RAM Warning Raises Questions for Samsung, SK Hynix as South Korea Faces Potential Memory Chip Oversupply and Less Time To Diversify - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQcnNDV1RjMklRTVpJVFNPeDlHU1gyZDFjMFBWb1FXU3N1bThWZlNtLW01WXNrakQ0ZjVfZFd6YWI0OW83Wm9vU2RJbnBsbkwxN2piMFZjRkQ1SFBHWm8tSzNQeHpJSEtjS1hqMEZKcE5CcU9vUmdRczdPN2VHTFhUbVFmTUUwdFNBR0tsYXF6QkRldw?oc=5",
       "date": "Sat, 17 Oct 2026 03:30:00 GMT",
       "desc": "Elon Musk’s China RAM Warning Raises Questions for Samsung, SK Hynix as South Korea Faces Potential Memory Chip Oversupply and Less Time To Diversify&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "Samsung to use TSMC technology for Nvidia's next-generation memory chips, Seoul newspaper reports - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQLVd3RU5QdzNwZHd0cUNCbUQxM3B6M2JOTXZZbEE4b3Y4czkxSjBuNklIRXU2S1VyRld6WTlRQUdlZkN3TGNRcng5cjR6ZEViNXNqcHh2RnlRU2hWVXRPUVFjVXRvd2FaaTVkd002aUk4WHlEQ2wxTGk3alF5S0FUTGNMUXF2dV9QUjk4eThjcWVPaVBLYzc2c0NUaUN4UUVMcVZTSERiMDE5VXp0NDdoVFpuS2E0TGZoUnBrRTExcnZDRlJia1VNcU40SUxQcE1y?oc=5",
-      "date": "Sun, 18 Oct 2026 12:09:43 GMT",
-      "desc": "Samsung to use TSMC technology for Nvidia's next-generation memory chips, Seoul newspaper reports&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Samsung, SK hynix Rebound Over 2% in Premarket on U.S. AI Server Strength - Seoul Economic Daily",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPYS1YSlMwT2J3b2hJVDBORWZDMTR4UGZ4WFV4azdLcmlPY21yeEszak02WUhZUzRLUmFJT1NtcElvSHJOZFd6cXkzV19JaXNrMFJ6VjBDTUp6elZaSzhUT2F2ejV5cEVUbDBnOWszSDJ5OWVxZHhvVXA3OXMxbmtacGFZeTQzRWp2RjZmTXJVTEJLRHBYWnh4d2ZvbHZnVU9zM0E?oc=5",
-      "date": "Tue, 20 Oct 2026 23:21:31 GMT",
-      "desc": "Samsung, SK hynix Rebound Over 2% in Premarket on U.S. AI Server Strength&nbsp;&nbsp;Seoul Economic Daily"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 218500.0,
-      "change": 500.0,
-      "pct": 0.23,
+      "price": 223500.0,
+      "change": 5500.0,
+      "pct": 2.52,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1270000.0,
-      "change": -7000.0,
-      "pct": -0.55,
+      "price": 1294000.0,
+      "change": 17000.0,
+      "pct": 1.33,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 312000.0,
-      "change": -14000.0,
-      "pct": -4.29,
+      "price": 309500.0,
+      "change": -16500.0,
+      "pct": -5.06,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 112300.0,
-      "change": -3700.0,
-      "pct": -3.19,
+      "price": 110500.0,
+      "change": -5500.0,
+      "pct": -4.74,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 179900.0,
-      "change": -3000.0,
-      "pct": -1.64,
+      "price": 179500.0,
+      "change": -3400.0,
+      "pct": -1.86,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5666.34,
-      "change": -101.67,
-      "pct": -1.76,
+      "price": 5735.66,
+      "change": -32.35,
+      "pct": -0.56,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1324.38,
-      "change": -5.62,
-      "pct": -0.42,
+      "price": 1323.71,
+      "change": -6.29,
+      "pct": -0.47,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-21 02:28 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-21 08:08 UTC"
 }
