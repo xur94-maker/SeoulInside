@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "What is PHP and why did it spark a global cyber-security scramble?",
+      "link": "https://www.bbc.co.uk/news/articles/c3qjnwye0ep5o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 22 Oct 2026 06:24:59 GMT",
+      "desc": "AI uncovered long-hidden programming flaws, triggering a rare global cyber-security response."
+    },
+    {
+      "title": "How Arab parties could hold critical balance of power in Israeli election",
+      "link": "https://www.bbc.co.uk/news/articles/cx8dzrp768j8o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 22 Oct 2026 05:30:22 GMT",
+      "desc": "Disaffection has often driven down turnout among Arab Israelis, but there is a strong push to get rid of the right-wing governing coalition."
+    },
+    {
       "title": "Missiles hit Kyiv after Russia agrees to US call to resume Ukraine peace talks",
       "link": "https://www.bbc.co.uk/news/articles/cq3djn5nxx12o?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 21 Oct 2026 21:27:41 GMT",
       "desc": "Moscow says it is \"ready in principle\" to resume peace talks and US President Donald Trump says the world is \"the closest we've been\" to ending the war."
     },
     {
-      "title": "Rosenberg: US diplomatic push offers little hope for imminent Ukraine peace",
+      "title": "Rosenberg: Russia agrees to Ukraine talks but sees little to talk about in new peace push",
       "link": "https://www.bbc.co.uk/news/articles/cm98zn5j89kdo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 21 Oct 2026 19:58:06 GMT",
       "desc": "President Vladimir Putin does not feel under pressure right now to end the war, the BBC's Russia Editor writes."
     },
     {
-      "title": "Macron accuses foreign leaders of exploiting French riots",
-      "link": "https://www.bbc.co.uk/news/articles/ckjrw044ggxgo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 21 Oct 2026 14:04:28 GMT",
-      "desc": "The comment is an apparent swipe at Benjamin Netanyahu and Donald Trump, who both face elections in coming weeks."
-    },
-    {
-      "title": "Pope does not need further treatment after lung cancer surgery",
-      "link": "https://www.bbc.co.uk/news/articles/cqrly2dg5xzzo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 21 Oct 2026 20:09:10 GMT",
-      "desc": "Test results have confirmed his diagnosis as a lung adenocarcinoma that was localised."
-    },
-    {
-      "title": "'Targeted' attack on much-loved MP leaves Australian town heartbroken",
-      "link": "https://www.bbc.co.uk/news/articles/cmgr8q88r5eqo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 21 Oct 2026 18:10:42 GMT",
-      "desc": "Locals describe the MP, who had to have both legs amputated, as a genuinely kind person who fought for the community."
+      "title": "Meta fined $25bn for 'lies' over user data privacy",
+      "link": "https://www.bbc.co.uk/news/articles/cqdr8zxrr3dxo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 21 Oct 2026 21:49:07 GMT",
+      "desc": "The fine is the largest to date against Facebook's owner, larger than an $18bn deal with California."
     }
   ],
   "koreaNews": [
@@ -39,28 +39,28 @@
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
+      "title": "Cuba seeks deeper economic ties with South Korea amid US sanctions, energy crisis - Anadolu Ajansı",
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPNlZfcHhhRm5iSWZYQjJBWm44RS13cmh2UUJGNTVzU3lMRzJXT19xZVVKQ1lydHh3aHJQcHhEay1SRGRvdE5NSDVuYi1TakZrNEN3eGI5aUM5R0F3bi1xMTFwcUFVSy16emg2NTFYbE1IRDk0YlA0b1RUSWRidHE0b2lpaEV6blU2MUNhZWkxSEM4cldIUmF2Sk9DZ00zdzRIcmhFQmhYYUx5YnhldkRCRjhoTjNuZXFxb3hEd1VkUQ?oc=5",
+      "date": "Thu, 22 Oct 2026 04:02:52 GMT",
+      "desc": "Cuba seeks deeper economic ties with South Korea amid US sanctions, energy crisis&nbsp;&nbsp;Anadolu Ajansı"
+    },
+    {
+      "title": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQ0ptRjRFQ1N5SVdNcmZTc3E4TVRkRTR4QVAxYUZQWWc1SHFJS2pwS3NFNWxwOTE5WWotSWROS1MtSnY2TGdwWGlNMWIwaG1RcjFBalM1OFRMaFkycE9YUUI4WTlyUXhSS1pPb25MVnVvWGdEaHBkSWhaNDRac25ZSkE5UW1MQ0dhVXhTal9ZN09YTTNfcUpuN0IxSk9UcGI5REJjWDlCTHhjNEkwQmc?oc=5",
+      "date": "Thu, 22 Oct 2026 04:11:00 GMT",
+      "desc": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "Bank of Korea holds rates after President Lee calls for boosting housing supply - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE82dzUzcWI4a1JwazBkV3Q5UlZvRGdQRmUyVjNqZUV1cjE1TmV1SG5pUm43N0ZHM1RGOWVST2d3WGFMY2dVN1ZUOEg4NkdoZHRpYk1IM3lZUGZIYUZsMFdjT3M5M2JDN2RQMDBiYzNpd3AzblJZUnVvYdIBfkFVX3lxTFBtdng3NWROZ0dqVFhsZ2tsVUxweW1oNUpTdGtfc1RDUTh2WHJBd2d6czI2VTNpS1daS0xjUXJDMWhmeU5jN2YzZnVDX1pCaVVHb280X1ZHbkd4SHBONTl3ekZDQjFWSng0LXVMVkFGSXh1UTB3ZVF0bWxpcFZUdw?oc=5",
+      "date": "Thu, 22 Oct 2026 00:52:00 GMT",
+      "desc": "Bank of Korea holds rates after President Lee calls for boosting housing supply&nbsp;&nbsp;CNBC"
+    },
+    {
       "title": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry - Korea Economic Institute of America -",
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOd1ZsUjFlbGdPaFVnaW1CRlU1TTBSXzNhV1JEMWZwTVpJcFZDR21pWGxhVjNyRHJ3RnRJV2VvUm9tcnNzNVlYRzFvR1JiY19yTHBKdTZPdm1zekFFRkdqYTR4el9ia1FiTmt5cGYzempKYUxxbzJVT2ZSd3hpT2ttTHNyMmZVUjFZb05kQkVsQ2ptc3k1aUQzN3pBRQ?oc=5",
       "date": "Sat, 17 Oct 2026 19:03:43 GMT",
       "desc": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry&nbsp;&nbsp;Korea Economic Institute of America -"
-    },
-    {
-      "title": "NABO Warns High Oil Prices May Cut South Korea's Growth by 0.16 Points - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQZFNUNGtwLUpJbXJ6X1hCTEs5WjFON2pOcmJPeGtyTWtFcTFkdWJNTHJ6T0hueERYZ0RHbl83Wm9pTVgxRjU5TEZnMUIzdkR2NHdvRy1lamJ3VmJiSjFRSlVQQTN6YW9WWEJrVFE5VFludjFMckhuc2llSXhWU21uclRpb3R3dmpKbHFWT3Zn?oc=5",
-      "date": "Wed, 21 Oct 2026 23:28:10 GMT",
-      "desc": "NABO Warns High Oil Prices May Cut South Korea's Growth by 0.16 Points&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "South Korea’s exports hit record high on AI boom - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOX3NKUDFscG16UF9kbmVWUUdwb182Q2lOdDJweElBYTlwUE1NRXluZUdjSXp5STNweldSU1lGeUkydXhRWDctVFkxd0x2TGZNTDZneTREeENuRUVLQURJSzJzNHB5ZXFwa2VyUnM4MmtManF0M2xpY3VMM2tjOXdxNXlrazZZeC1nQzhYanNPaEtnQTdDd3fSAZsBQVVfeXFMT205N25lTE5OYnVTT2xseVhlVG9qQk01Q0ZfT2wwc3VaN3Y2V1N4UjNpZkNIVFRtbE8yeF9VQ29mRU1tUll3a056VVRXLVZhclRyeUJ4RkFGZ014WEM2MVNQREctcHY2ekpidXladzBCNEFrbFRkamdjSWdZX2xVeGNpeTEyVUsxaUlBZFlqcUF5UVNnWXZTbDdJOFk?oc=5",
-      "date": "Thu, 01 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s exports hit record high on AI boom&nbsp;&nbsp;Al Jazeera"
-    },
-    {
-      "title": "South Korea, US Pull Apart as the Alliance Strains - The Diplomat – Asia-Pacific Current Affairs Magazine",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOb001M1REVENMZGducG9UdmhTeFhyQXFtVVVJWXEyT09wSHFKZ2k1cGNEYzFESUU5Y3ZTaHJUMjdEcWJXU2Z3OWxZUlE5aEluYzFKYVhtY1VnVjgtTDNoNlZha3pjY3lsSXpXQkthbmdYLTdGQTc0R2F0aTZxY3NDRlQybGFKUV9TeVE?oc=5",
-      "date": "Mon, 19 Oct 2026 13:23:45 GMT",
-      "desc": "South Korea, US Pull Apart as the Alliance Strains&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -75,10 +75,10 @@
       "desc": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "Samsung, SK hynix Upgrade China NAND Plants to Counter Rising YMTC - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE94NS1iaVlKcGh0bVlyemZCNmFCSklyd2ZfOVpGZ0ZlMmZwWGZFblhzaWU2T0prNkNtMVBfckxhdkN0OUlLSkFWYlVXUjRFRVQtYVBjZGl5TVVfcUhTMXU0ME1fc21pekpLdlJZZ3hNMTFyXzdS?oc=5",
-      "date": "Wed, 21 Oct 2026 11:40:58 GMT",
-      "desc": "Samsung, SK hynix Upgrade China NAND Plants to Counter Rising YMTC&nbsp;&nbsp;Businesskorea"
+      "title": "Bank of Korea: Samsung, SK Hynix Bonuses Worth approximately $45.4 Billion to Lift South Korea's Consumption by 0.15 Percentage Point Next Year - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFAzWWctTkNPWHA0V1F4OWs4X0tCUmN1TDVuZ3E0cEo3YjRrUG1hVkt3OFdua213T0VrQVJXUmMyWUxmYmNXczBIRnVsUEJjbWVhbXF4WFk2ZS1EQ0pFVkxjLTMyalI4OEJXTGYxUG1yczd3S05vc0E?oc=5",
+      "date": "Thu, 22 Oct 2026 07:25:00 GMT",
+      "desc": "Bank of Korea: Samsung, SK Hynix Bonuses Worth approximately $45.4 Billion to Lift South Korea's Consumption by 0.15 Percentage Point Next Year&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 222500.0,
-      "change": 11000.0,
-      "pct": 5.2,
+      "price": 214500.0,
+      "change": 3000.0,
+      "pct": 1.42,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1277000.0,
-      "change": 54000.0,
-      "pct": 4.42,
+      "price": 1223000.0,
+      "change": 0.0,
+      "pct": 0.0,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 305000.0,
-      "change": -5000.0,
-      "pct": -1.61,
+      "price": 301500.0,
+      "change": -8500.0,
+      "pct": -2.74,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 108900.0,
-      "change": -3500.0,
-      "pct": -3.11,
+      "price": 108800.0,
+      "change": -3600.0,
+      "pct": -3.2,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 178000.0,
-      "change": 0.0,
-      "pct": 0.0,
+      "price": 176400.0,
+      "change": -1600.0,
+      "pct": -0.9,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5695.37,
-      "change": 142.63,
-      "pct": 2.57,
+      "price": 5533.77,
+      "change": -18.97,
+      "pct": -0.34,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1326.25,
-      "change": 2.31,
-      "pct": 0.17,
+      "price": 1321.7,
+      "change": -2.24,
+      "pct": -0.17,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-22 02:24 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-10-22 08:09 UTC"
 }
