@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Deadly shooting near Paris investigated as 'crime of terrorism', minister says",
+      "title": "Deadly shooting near Paris is a 'racist terrorist attack', Macron says",
       "link": "https://www.bbc.co.uk/news/articles/c6ev38dj1g8zo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 23 Oct 2026 16:17:02 GMT",
-      "desc": "One person is killed and five wounded in a series of attacks and the suspected gunman has been apprehended."
+      "date": "Fri, 23 Oct 2026 19:42:08 GMT",
+      "desc": "One person is killed and five wounded in a series of attacks. The suspected gunman has been apprehended."
     },
     {
       "title": "Seven shot dead by gunmen at church funeral in Jordan, officials say",
       "link": "https://www.bbc.co.uk/news/articles/ck87zlpzny15o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 23 Oct 2026 16:33:11 GMT",
+      "date": "Fri, 23 Oct 2026 19:46:30 GMT",
       "desc": "Thirty-four people are also injured in the attack in southern Karak governorate, and a manhunt is now under way."
+    },
+    {
+      "title": "Freed US citizen was tortured in Russian jail, former Ukrainian prisoners say",
+      "link": "https://www.bbc.co.uk/news/articles/cx7vpmn6qzmlo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 23 Oct 2026 20:18:13 GMT",
+      "desc": "Ukrainians held alongside the American say they witnessed beatings and sexual humiliation by Russian guards during his detention."
     },
     {
       "title": "Israeli forces begin demolishing Palestinian buildings in Hebron after two Israeli soldiers shot dead",
@@ -19,30 +25,18 @@
       "desc": "The soldiers were killed in an attack by two Palestinian gunmen at a checkpoint outside the West Bank city on Friday morning."
     },
     {
-      "title": "White House says Melania Trump brokers truce for Ukraine city 'on brink of disaster'",
+      "title": "White House says Melania Trump brokered truce for Ukraine city 'on brink of disaster'",
       "link": "https://www.bbc.co.uk/news/articles/c6vgxkvl4w5eo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 23 Oct 2026 16:59:51 GMT",
+      "date": "Fri, 23 Oct 2026 19:30:19 GMT",
       "desc": "Ukraine and Russia confirm the truce in Russian-occupied Oleshky, where residents have had to eat garden weeds to survive."
-    },
-    {
-      "title": "Ukraine says Starlink still restricted after Trump says limits lifted",
-      "link": "https://www.bbc.co.uk/news/articles/cq74pjpmx0e8o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 23 Oct 2026 16:19:36 GMT",
-      "desc": "The network is used by the Ukrainian military, sources say, and Trump says \"if there is a problem, I'll get it straightened out\"."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korean Economy's Growth Likely Picked up in Q3 on Chip Exports: Reuters Poll - U.S. News - Money",
-      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPaXVuU25XaDhsYzhfc2RlQ09uNmpFcmFfdGpPRWtSU1ctaERQd2JOQ1B1X0tEaEFpWFUzV0U3RTNtMDMzbGtXSzBtNTA4SEt5U3NxMThzM2xXOUExSDN5cHBzd0ctcGNQa0lQNEdPYUpKRm9WUW00WlMza2FJOHVSRDZrNENzeHhPTWFhTE5mbm5hdU9NUXR6b1dCc2RiRUx5aXZnOENyRTBnRnRjUWNDLWZXV3NrYzRKNjZJWTFPbmNPZVhQdnFLNy1XVnc0cjdlbmNDY1hRaw?oc=5",
-      "date": "Fri, 23 Oct 2026 06:20:42 GMT",
-      "desc": "South Korean Economy's Growth Likely Picked up in Q3 on Chip Exports: Reuters Poll&nbsp;&nbsp;U.S. News - Money"
-    },
-    {
-      "title": "Korea and Taiwan Built Economies on AI. One Failed IPO Shows Their Fragility. - Barron's",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPeFFkVDNrNDd3WGhKQ0VwUHJfYXlUV0o4OFRHY3JkMEF6LThGQkpHSklITkFxazROYVhhYjN2VnlFRUZ0RG0xMFB2cEdKSm5ETlEzN24xQ2dvVHhETFhRekxISjFleFRZUUYtMGZ4cWlqeE82NGlhZUEydmZENWZRQ2l2b1ZUdDU4QUNwb3RFOA?oc=5",
-      "date": "Fri, 23 Oct 2026 17:13:00 GMT",
-      "desc": "Korea and Taiwan Built Economies on AI. One Failed IPO Shows Their Fragility.&nbsp;&nbsp;Barron's"
+      "title": "South Korean economy's growth likely picked up in Q3 on chip exports: Reuters poll - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNejRQUWQ1N1ZQSVRfSWQ0bGVrVmdxYUV4aWVzZnFwMFZOeUtPS0RsdzJwcmV2cWlwMWpucmJtdnZmSWJOeU9Dd041SnJEZzJ6VEMwWjd0RDFwc2YzX1FaUnFQR21qZ0Fhbmlfd3BoVDFGOWtlenFJNnlMS29GREx5c0tDdFdNNktqcTQwbDYydjF2b1N5NUZ2SmdacUdVbGllcndwNHoxSGtablVISUsxem9HWUVCYk0?oc=5",
+      "date": "Fri, 23 Oct 2026 05:41:00 GMT",
+      "desc": "South Korean economy's growth likely picked up in Q3 on chip exports: Reuters poll&nbsp;&nbsp;Reuters"
     },
     {
       "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
@@ -51,16 +45,22 @@
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "The Facade of Complementarity: The Threat That Sino-Korean Tech Cooperation Poses for Seoul - The National Bureau of Asian Research",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPT3RueEppX09YN0Fpc01reXRXcjBUZUxnQ3ZzT01RSHc1RVk4QUxpXzNrTndCaWxCRWwybmlxcUI1Wm1HbFpfTlU4UWh4cDdpMEstOVR0M28tcU9JS0FhRWN1bmc2blcxVWt3UWNWaWtaeEpzdUtoZ056YU1RNGQ2QW9rOXI4dnFYRmJwTFVZN2pzajBVRkc3Q2dJSWt1ek5tN0FWbFFfNTk1UkYzUmlXTDhGYS1KWk5GX3h3S0xNM2M?oc=5",
-      "date": "Thu, 22 Oct 2026 18:59:24 GMT",
-      "desc": "The Facade of Complementarity: The Threat That Sino-Korean Tech Cooperation Poses for Seoul&nbsp;&nbsp;The National Bureau of Asian Research"
+      "title": "South Korean President Lee's approval rating returns to 40% - upi",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPVy1GR0s0TkIyeG1MZWhSU0hwOVFLQW5Ocm1yZUE3WEZZdjhYQTBYUlhEMlBXekxvWGsxcHZycXVxVUgxR0ZiaVo3a3dESDNhd3NtRVVfRnZGX3Q3YkVkTDltWWdiMFU3V21tRXdXcFo5bVlqS1o0QllmVnUxYzBtaHhwY0JCa0Vpakw2N0xrcFJnTFhoSGhCVFp1a9IBoAFBVV95cUxQX2h5QUpiRHRZNWs5Z0ZhZXM5aC16RnRiaGNvNWx3U09QVE5ENlh4Ymxjcjgwb1hHNEw5eTZWUjNBRVlTS2RQWXBvekwtQzdZNmhVb2ktZ2swem53Y3NLZmZvZlVHM1R2SHN3eHZsUi1KN0RzV05PZ3JkaFFqaHRUVmJQY2ZTd3AwRUlGZllkQ1BUN2VmOTI2UWtQWUtVWXc0?oc=5",
+      "date": "Fri, 23 Oct 2026 20:22:56 GMT",
+      "desc": "South Korean President Lee's approval rating returns to 40%&nbsp;&nbsp;upi"
     },
     {
-      "title": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQ0ptRjRFQ1N5SVdNcmZTc3E4TVRkRTR4QVAxYUZQWWc1SHFJS2pwS3NFNWxwOTE5WWotSWROS1MtSnY2TGdwWGlNMWIwaG1RcjFBalM1OFRMaFkycE9YUUI4WTlyUXhSS1pPb25MVnVvWGdEaHBkSWhaNDRac25ZSkE5UW1MQ0dhVXhTal9ZN09YTTNfcUpuN0IxSk9UcGI5REJjWDlCTHhjNEkwQmc?oc=5",
-      "date": "Thu, 22 Oct 2026 04:11:00 GMT",
-      "desc": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes&nbsp;&nbsp;WSJ"
+      "title": "Korea and Taiwan Built Economies on AI. One Failed IPO Shows Their Fragility. - Barron's",
+      "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQcWxwQXZndEhBbFVSak00WVNvb3M1bUNqUl9pcVZNZVV5Y2NnTXptT2J1MHJOV05yRExNMzZrRS16OUhHTTk3YkFhX3hfVkRFT21hM3RVZEJodnhNcGJ1OC0zR1Y5RDF5T1ltVFI0cWFIYlZkX0dIQUVIb1diRjMzXzRlR0g?oc=5",
+      "date": "Fri, 23 Oct 2026 17:13:00 GMT",
+      "desc": "Korea and Taiwan Built Economies on AI. One Failed IPO Shows Their Fragility.&nbsp;&nbsp;Barron's"
+    },
+    {
+      "title": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOd1ZsUjFlbGdPaFVnaW1CRlU1TTBSXzNhV1JEMWZwTVpJcFZDR21pWGxhVjNyRHJ3RnRJV2VvUm9tcnNzNVlYRzFvR1JiY19yTHBKdTZPdm1zekFFRkdqYTR4el9ia1FiTmt5cGYzempKYUxxbzJVT2ZSd3hpT2ttTHNyMmZVUjFZb05kQkVsQ2ptc3k1aUQzN3pBRQ?oc=5",
+      "date": "Sat, 17 Oct 2026 19:03:43 GMT",
+      "desc": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 212.09,
-      "change": -9.88,
-      "pct": -4.45,
+      "price": 210.96,
+      "change": -11.01,
+      "pct": -4.96,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 417.01,
-      "change": -14.88,
-      "pct": -3.45,
+      "price": 418.51,
+      "change": -13.38,
+      "pct": -3.1,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 517.88,
-      "change": -34.84,
-      "pct": -6.3,
+      "price": 516.79,
+      "change": -35.93,
+      "pct": -6.5,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 86.87,
-      "change": -6.09,
-      "pct": -6.55,
+      "price": 86.96,
+      "change": -6.0,
+      "pct": -6.45,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 174.94,
-      "change": -3.02,
-      "pct": -1.69,
+      "price": 175.91,
+      "change": -2.05,
+      "pct": -1.15,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 211.75,
-      "change": -14.84,
-      "pct": -6.55,
+      "price": 210.33,
+      "change": -16.26,
+      "pct": -7.18,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 322.28,
-      "change": -12.48,
-      "pct": -3.73,
+      "price": 320.21,
+      "change": -14.55,
+      "pct": -4.35,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 346.47,
-      "change": 2.48,
-      "pct": 0.72,
+      "price": 347.73,
+      "change": 3.74,
+      "pct": 1.09,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 524.49,
-      "change": -8.47,
-      "pct": -1.59,
+      "price": 524.51,
+      "change": -8.44,
+      "pct": -1.58,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7634.79,
-      "change": -122.38,
-      "pct": -1.58,
+      "price": 7623.68,
+      "change": -133.49,
+      "pct": -1.72,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26015.66,
-      "change": -687.2,
-      "pct": -2.57,
+      "price": 25955.34,
+      "change": -747.52,
+      "pct": -2.8,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1325.05,
-      "change": -0.54,
-      "pct": -0.04,
+      "price": 1323.66,
+      "change": -1.93,
+      "pct": -0.15,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-23 18:01 UTC"
+  "updatedAt": "2026-10-24 00:11 UTC"
 }
