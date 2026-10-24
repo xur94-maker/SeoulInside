@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "Almost 1,000 arrested as clashes follow another day of mass protests across France",
+      "link": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 24 Oct 2026 21:09:27 GMT",
+      "desc": "Officials have so far managed to avoid a repeat of last weekend's rioting and looting as hundreds of thousands took part in demonstrations."
+    },
+    {
       "title": "Ukraine says Starlink connection 'now stable' after network limits",
       "link": "https://www.bbc.co.uk/news/articles/cwkg5md14j8go?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 24 Oct 2026 12:12:40 GMT",
       "desc": "The slowed Starlink connections had affected the Ukraine's military and drone operations for a week."
+    },
+    {
+      "title": "Palestinian families displaced as Israeli forces demolish Hebron homes",
+      "link": "https://www.bbc.co.uk/news/articles/cqd09k1k7532o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 24 Oct 2026 23:02:06 GMT",
+      "desc": "The crackdown follows the killing of two Israeli soldiers by two Palestinian gunmen on Friday - and comes just days ahead of Israel's election."
     },
     {
       "title": "Man arrested after fire at Hitler's mountaintop Eagle's Nest retreat",
@@ -17,32 +29,26 @@
       "link": "https://www.bbc.co.uk/news/articles/crgj9ndwvj9jo?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 23 Oct 2026 22:47:07 GMT",
       "desc": "Kaylub Giamanco has been hailed as a hero for killing a teenager who fatally shot three children and a teacher."
-    },
-    {
-      "title": "British woman dies after trying to rescue sons swept away at sea in the Bahamas",
-      "link": "https://www.bbc.co.uk/news/articles/cm86z5n0yvy6o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 24 Oct 2026 09:45:47 GMT",
-      "desc": "The children were subsequently rescued from the water, police say."
-    },
-    {
-      "title": "Vanessa Trump says she is cancer-free six months after revealing diagnosis",
-      "link": "https://www.bbc.co.uk/news/articles/cm1dwzvn6227o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 24 Oct 2026 14:45:30 GMT",
-      "desc": "The ex-wife of Donald Trump Jr, with whom she shares five children, announced in May that she had been diagnosed with breast cancer."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korean economy's growth likely picked up in Q3 on chip exports: Reuters poll - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNejRQUWQ1N1ZQSVRfSWQ0bGVrVmdxYUV4aWVzZnFwMFZOeUtPS0RsdzJwcmV2cWlwMWpucmJtdnZmSWJOeU9Dd041SnJEZzJ6VEMwWjd0RDFwc2YzX1FaUnFQR21qZ0Fhbmlfd3BoVDFGOWtlenFJNnlMS29GREx5c0tDdFdNNktqcTQwbDYydjF2b1N5NUZ2SmdacUdVbGllcndwNHoxSGtablVISUsxem9HWUVCYk0?oc=5",
-      "date": "Fri, 23 Oct 2026 05:41:00 GMT",
-      "desc": "South Korean economy's growth likely picked up in Q3 on chip exports: Reuters poll&nbsp;&nbsp;Reuters"
+      "title": "Bank of Korea holds rates after President Lee calls for boosting housing supply - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE82dzUzcWI4a1JwazBkV3Q5UlZvRGdQRmUyVjNqZUV1cjE1TmV1SG5pUm43N0ZHM1RGOWVST2d3WGFMY2dVN1ZUOEg4NkdoZHRpYk1IM3lZUGZIYUZsMFdjT3M5M2JDN2RQMDBiYzNpd3AzblJZUnVvYdIBfkFVX3lxTFBtdng3NWROZ0dqVFhsZ2tsVUxweW1oNUpTdGtfc1RDUTh2WHJBd2d6czI2VTNpS1daS0xjUXJDMWhmeU5jN2YzZnVDX1pCaVVHb280X1ZHbkd4SHBONTl3ekZDQjFWSng0LXVMVkFGSXh1UTB3ZVF0bWxpcFZUdw?oc=5",
+      "date": "Thu, 22 Oct 2026 00:52:00 GMT",
+      "desc": "Bank of Korea holds rates after President Lee calls for boosting housing supply&nbsp;&nbsp;CNBC"
     },
     {
-      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
-      "date": "Mon, 19 Oct 2026 15:29:22 GMT",
-      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+      "title": "South Korean Economy's Growth Likely Picked up in Q3 on Chip Exports: Reuters Poll - U.S. News - Money",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPaXVuU25XaDhsYzhfc2RlQ09uNmpFcmFfdGpPRWtSU1ctaERQd2JOQ1B1X0tEaEFpWFUzV0U3RTNtMDMzbGtXSzBtNTA4SEt5U3NxMThzM2xXOUExSDN5cHBzd0ctcGNQa0lQNEdPYUpKRm9WUW00WlMza2FJOHVSRDZrNENzeHhPTWFhTE5mbm5hdU9NUXR6b1dCc2RiRUx5aXZnOENyRTBnRnRjUWNDLWZXV3NrYzRKNjZJWTFPbmNPZVhQdnFLNy1XVnc0cjdlbmNDY1hRaw?oc=5",
+      "date": "Fri, 23 Oct 2026 06:20:42 GMT",
+      "desc": "South Korean Economy's Growth Likely Picked up in Q3 on Chip Exports: Reuters Poll&nbsp;&nbsp;U.S. News - Money"
+    },
+    {
+      "title": "Why South Korea’s stock market represents the purest AI trade - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOX3AxWFRXTTZBbUhsR29tRE8zRHNsT2xSV25MYUpYbEJWcmV0VkV3UlJZaGwyOHJnLXk4anFrZnN0UW1aMld0c05mVGhYR056dm1YMWRINUNwVG9BZzRKOXlzb1kwSTlyVXlIcXhJTUcwRU1XTmZRenRzUEg3U2lIaUFQQ0pfV3BjN3JjMzAwYkluVWxWUFFqeThCbzhKb05pUUR1UTZVQ2wtY0ttak0xODJFQlNzX1ZN?oc=5",
+      "date": "Sat, 24 Oct 2026 22:59:06 GMT",
+      "desc": "Why South Korea’s stock market represents the purest AI trade&nbsp;&nbsp;Investing.com"
     },
     {
       "title": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes - WSJ",
@@ -51,16 +57,10 @@
       "desc": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "The Facade of Complementarity: The Threat That Sino-Korean Tech Cooperation Poses for Seoul - The National Bureau of Asian Research (NBR)",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPT3RueEppX09YN0Fpc01reXRXcjBUZUxnQ3ZzT01RSHc1RVk4QUxpXzNrTndCaWxCRWwybmlxcUI1Wm1HbFpfTlU4UWh4cDdpMEstOVR0M28tcU9JS0FhRWN1bmc2blcxVWt3UWNWaWtaeEpzdUtoZ056YU1RNGQ2QW9rOXI4dnFYRmJwTFVZN2pzajBVRkc3Q2dJSWt1ek5tN0FWbFFfNTk1UkYzUmlXTDhGYS1KWk5GX3h3S0xNM2M?oc=5",
-      "date": "Thu, 22 Oct 2026 18:59:24 GMT",
-      "desc": "The Facade of Complementarity: The Threat That Sino-Korean Tech Cooperation Poses for Seoul&nbsp;&nbsp;The National Bureau of Asian Research (NBR)"
-    },
-    {
-      "title": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry - Korea Economic Institute of America -",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOd1ZsUjFlbGdPaFVnaW1CRlU1TTBSXzNhV1JEMWZwTVpJcFZDR21pWGxhVjNyRHJ3RnRJV2VvUm9tcnNzNVlYRzFvR1JiY19yTHBKdTZPdm1zekFFRkdqYTR4el9ia1FiTmt5cGYzempKYUxxbzJVT2ZSd3hpT2ttTHNyMmZVUjFZb05kQkVsQ2ptc3k1aUQzN3pBRQ?oc=5",
-      "date": "Sat, 17 Oct 2026 19:03:43 GMT",
-      "desc": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry&nbsp;&nbsp;Korea Economic Institute of America -"
+      "title": "Asia week ahead: BoJ rates, China’s Fifth Plenum, Taiwan and Korea data - ING Think",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9hck9KbU5VYlNwZlRRblctY09FNWw1TFp5NlI1d0h6ZEhYSm1ENkNGZ29POHBVN0VmU3pJVkJHTmMyM0JTTDYzVXQ3dzgyUWlLclBGeTdwdXZoX0hRVzdoSlpQSnE?oc=5",
+      "date": "Fri, 23 Oct 2026 03:43:12 GMT",
+      "desc": "Asia week ahead: BoJ rates, China’s Fifth Plenum, Taiwan and Korea data&nbsp;&nbsp;ING Think"
     },
     {
       "title": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire - Bloomberg.com",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-24 17:04 UTC"
+  "updatedAt": "2026-10-24 23:57 UTC"
 }
