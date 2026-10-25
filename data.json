@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "Serbia's veteran ruler Vučić concedes election to student-led protest movement",
+      "link": "https://www.bbc.co.uk/news/articles/cw5yn3xlprpmo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 25 Oct 2026 22:54:57 GMT",
+      "desc": "The populist right-wing leader of 12 years says it is \"clear\" his party has lost the vote billed as a referendum on the country's future."
+    },
+    {
+      "title": "Deeply divided Israel braces for pivotal election",
+      "link": "https://www.bbc.co.uk/news/articles/ckpdgy6pl7xlo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 25 Oct 2026 22:11:13 GMT",
+      "desc": "After three years of regional war, this is a battle Israel always knew was coming, writes Lucy Williamson."
+    },
+    {
+      "title": "Venezuelan opposition leader María Machado returns after months in exile",
+      "link": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 25 Oct 2026 23:33:14 GMT",
+      "desc": "Machado had left the country just a month before the US government seized Venezuelan President Nicolás Maduro."
+    },
+    {
       "title": "Musk says SpaceX restricted Ukraine's Starlink connection as service restored",
       "link": "https://www.bbc.co.uk/news/articles/cvx28ljp8n4xo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 25 Oct 2026 09:00:00 GMT",
       "desc": "The tech billionaire accuses Ukraine of violating its terms of service by using the network for military activity."
     },
     {
-      "title": "Venezuelan opposition leader María Machado returns after months in exile",
-      "link": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 25 Oct 2026 16:21:40 GMT",
-      "desc": "Machado had left the country just a month before the US government seized Venezuelan President Nicolás Maduro."
-    },
-    {
-      "title": "Early reports suggest record high turnout in Serbia elections",
-      "link": "https://www.bbc.co.uk/news/articles/c6jdmj1ej715o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 25 Oct 2026 16:05:15 GMT",
-      "desc": "Serbia is heading to the polls as a student movement attempts to oust longtime populist leader Aleksandar Vučić."
-    },
-    {
       "title": "Suspect in deadly Paris suburb shooting sent for psychiatric observation",
       "link": "https://www.bbc.co.uk/news/articles/c6e3xek2457wo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 25 Oct 2026 15:32:51 GMT",
       "desc": "He will be observed to evaluate whether his \"psychiatric health is compatible with pursuing his interrogation\", authorities said."
-    },
-    {
-      "title": "Israel to close West Bank crossings on election day as crackdown escalates",
-      "link": "https://www.bbc.co.uk/news/articles/c6y93ylpl5p2o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 25 Oct 2026 05:15:52 GMT",
-      "desc": "The Israeli Defense Forces announces restrictions on the movement of Palestinian workers in the run-up to Tuesday's election."
     }
   ],
   "koreaNews": [
@@ -37,6 +37,12 @@
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNejRQUWQ1N1ZQSVRfSWQ0bGVrVmdxYUV4aWVzZnFwMFZOeUtPS0RsdzJwcmV2cWlwMWpucmJtdnZmSWJOeU9Dd041SnJEZzJ6VEMwWjd0RDFwc2YzX1FaUnFQR21qZ0Fhbmlfd3BoVDFGOWtlenFJNnlMS29GREx5c0tDdFdNNktqcTQwbDYydjF2b1N5NUZ2SmdacUdVbGllcndwNHoxSGtablVISUsxem9HWUVCYk0?oc=5",
       "date": "Fri, 23 Oct 2026 05:41:00 GMT",
       "desc": "South Korean economy's growth likely picked up in Q3 on chip exports: Reuters poll&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
+      "date": "Mon, 19 Oct 2026 15:29:22 GMT",
+      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
       "title": "Lee says S. Korea emerging as global economic leader on record current account surplus - Yonhap News Agency",
@@ -51,28 +57,22 @@
       "desc": "South Korea's Surplus Surpasses Combined Germany, Japan Totals&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQ0ptRjRFQ1N5SVdNcmZTc3E4TVRkRTR4QVAxYUZQWWc1SHFJS2pwS3NFNWxwOTE5WWotSWROS1MtSnY2TGdwWGlNMWIwaG1RcjFBalM1OFRMaFkycE9YUUI4WTlyUXhSS1pPb25MVnVvWGdEaHBkSWhaNDRac25ZSkE5UW1MQ0dhVXhTal9ZN09YTTNfcUpuN0IxSk9UcGI5REJjWDlCTHhjNEkwQmc?oc=5",
-      "date": "Thu, 22 Oct 2026 04:11:00 GMT",
-      "desc": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "The Facade of Complementarity: The Threat That Sino-Korean Tech Cooperation Poses for Seoul - The National Bureau of Asian Research (NBR)",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPT3RueEppX09YN0Fpc01reXRXcjBUZUxnQ3ZzT01RSHc1RVk4QUxpXzNrTndCaWxCRWwybmlxcUI1Wm1HbFpfTlU4UWh4cDdpMEstOVR0M28tcU9JS0FhRWN1bmc2blcxVWt3UWNWaWtaeEpzdUtoZ056YU1RNGQ2QW9rOXI4dnFYRmJwTFVZN2pzajBVRkc3Q2dJSWt1ek5tN0FWbFFfNTk1UkYzUmlXTDhGYS1KWk5GX3h3S0xNM2M?oc=5",
-      "date": "Thu, 22 Oct 2026 18:59:24 GMT",
-      "desc": "The Facade of Complementarity: The Threat That Sino-Korean Tech Cooperation Poses for Seoul&nbsp;&nbsp;The National Bureau of Asian Research (NBR)"
-    },
-    {
-      "title": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOV0Z4YUdWZXFjTWJKTHRwSlRmaGRXakpLN194V2J2RjhiU1UySVBtWTZxOXNRLUZSZHhKcVZZTkpMVmxEOXp6MlRWZXRRLXgxNkNXMFljT0ZqSXJCa1FKU0kxeWN2VDlTSDV2eUFydXhmcnczVGNEak1JQVh4TzJnWEtwUDRiQUtETENpWV9Nc1hoc09jcUF0ZjBYUkVrUG9sQlNxRkF3cmZzQkw1ZmRTeFhvanlMQW8wWUM4b3Q4M2w?oc=5",
-      "date": "Mon, 19 Oct 2026 21:00:07 GMT",
-      "desc": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire&nbsp;&nbsp;Bloomberg.com"
+      "title": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOd1ZsUjFlbGdPaFVnaW1CRlU1TTBSXzNhV1JEMWZwTVpJcFZDR21pWGxhVjNyRHJ3RnRJV2VvUm9tcnNzNVlYRzFvR1JiY19yTHBKdTZPdm1zekFFRkdqYTR4el9ia1FiTmt5cGYzempKYUxxbzJVT2ZSd3hpT2ttTHNyMmZVUjFZb05kQkVsQ2ptc3k1aUQzN3pBRQ?oc=5",
+      "date": "Sat, 17 Oct 2026 19:03:43 GMT",
+      "desc": "From Toledo to Seoul: What South Korea’s Economy Means for Local Industry&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
       "date": "Wed, 21 Oct 2026 07:48:20 GMT",
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "Samsung Electronics and SK hynix eye $139 billion combined Q3 profit on AI chips - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxONlhDUGRhN3lwX2NiZjFqcWVtazNVY0cxWjl3ODQyVlRrNl94SVhyOU9kelg5T2FfVURvcTNSUW9YOEFIa0NraVRmbkVuYmVHaDdCRzFPaU41d3A3bDlYRU1FWjFkWGtmWjIwUldGcWpwWnh4bEJoREQteE5jQi1nRnVJeVZzQ2VuNEdTU1VJbkw5ZzUyb3ZKXy1hRDJkanVZQVJlbU5hemh4XzVKYkVxT0pFYnZLaURkQm1qMGZPMW9qbDJPU254NDZPcjg?oc=5",
+      "date": "Sun, 25 Oct 2026 22:05:37 GMT",
+      "desc": "Samsung Electronics and SK hynix eye $139 billion combined Q3 profit on AI chips&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
       "title": "Retail Investors Resume Buying Samsung, SK Hynix Leveraged Products - 조선일보",
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1323.66,
-      "change": -1.93,
-      "pct": -0.15,
+      "price": 1323.52,
+      "change": -2.07,
+      "pct": -0.16,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-25 17:18 UTC"
+  "updatedAt": "2026-10-25 23:44 UTC"
 }
