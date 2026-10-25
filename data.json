@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "More than 1,300 arrested as clashes follow another day of mass protests across France",
-      "link": "https://www.bbc.co.uk/news/articles/c95ynd587ynzo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 25 Oct 2026 10:38:15 GMT",
-      "desc": "Hundreds of thousands took part in demonstrations in France, with protests also taking place in other European countries."
-    },
-    {
-      "title": "Israel to close West Bank crossings on election day as crackdown escalates",
-      "link": "https://www.bbc.co.uk/news/articles/c6y93ylpl5p2o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 25 Oct 2026 05:15:52 GMT",
-      "desc": "The Israeli Defense Forces announces restrictions on the movement of Palestinian workers in the run-up to Tuesday's election."
-    },
-    {
-      "title": "Voters in Brazil head to polls as Lula goes up against Bolsonaro's son",
-      "link": "https://www.bbc.co.uk/news/articles/cxp8g21j4648o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 25 Oct 2026 11:54:16 GMT",
-      "desc": "Flávio Bolsonaro, the son of Brazil's imprisoned ex-president, is challenging Lula, who is seeking a fourth term in office."
-    },
-    {
       "title": "Musk says SpaceX restricted Ukraine's Starlink connection as service restored",
       "link": "https://www.bbc.co.uk/news/articles/cvx28ljp8n4xo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 25 Oct 2026 09:00:00 GMT",
       "desc": "The tech billionaire accuses Ukraine of violating its terms of service by using the network for military activity."
     },
     {
-      "title": "Gunmen kill at least 10 villagers and loot shops in north-east Nigeria",
-      "link": "https://www.bbc.co.uk/news/articles/cq1kdlm1ze7do?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 25 Oct 2026 03:20:16 GMT",
-      "desc": "Police are searching for other casualties, with officials warning the actual death toll could rise further."
+      "title": "Venezuelan opposition leader María Machado returns after months in exile",
+      "link": "https://www.bbc.co.uk/news/articles/cq8ez592pp0eo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 25 Oct 2026 16:21:40 GMT",
+      "desc": "Machado had left the country just a month before the US government seized Venezuelan President Nicolás Maduro."
+    },
+    {
+      "title": "Early reports suggest record high turnout in Serbia elections",
+      "link": "https://www.bbc.co.uk/news/articles/c6jdmj1ej715o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 25 Oct 2026 16:05:15 GMT",
+      "desc": "Serbia is heading to the polls as a student movement attempts to oust longtime populist leader Aleksandar Vučić."
+    },
+    {
+      "title": "Suspect in deadly Paris suburb shooting sent for psychiatric observation",
+      "link": "https://www.bbc.co.uk/news/articles/c6e3xek2457wo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 25 Oct 2026 15:32:51 GMT",
+      "desc": "He will be observed to evaluate whether his \"psychiatric health is compatible with pursuing his interrogation\", authorities said."
+    },
+    {
+      "title": "Israel to close West Bank crossings on election day as crackdown escalates",
+      "link": "https://www.bbc.co.uk/news/articles/c6y93ylpl5p2o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 25 Oct 2026 05:15:52 GMT",
+      "desc": "The Israeli Defense Forces announces restrictions on the movement of Palestinian workers in the run-up to Tuesday's election."
     }
   ],
   "koreaNews": [
@@ -37,12 +37,6 @@
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNejRQUWQ1N1ZQSVRfSWQ0bGVrVmdxYUV4aWVzZnFwMFZOeUtPS0RsdzJwcmV2cWlwMWpucmJtdnZmSWJOeU9Dd041SnJEZzJ6VEMwWjd0RDFwc2YzX1FaUnFQR21qZ0Fhbmlfd3BoVDFGOWtlenFJNnlMS29GREx5c0tDdFdNNktqcTQwbDYydjF2b1N5NUZ2SmdacUdVbGllcndwNHoxSGtablVISUsxem9HWUVCYk0?oc=5",
       "date": "Fri, 23 Oct 2026 05:41:00 GMT",
       "desc": "South Korean economy's growth likely picked up in Q3 on chip exports: Reuters poll&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
-      "date": "Mon, 19 Oct 2026 15:29:22 GMT",
-      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
       "title": "Lee says S. Korea emerging as global economic leader on record current account surplus - Yonhap News Agency",
@@ -57,10 +51,22 @@
       "desc": "South Korea's Surplus Surpasses Combined Germany, Japan Totals&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "South Korea Current Account Surplus — Surpasses Germany and Japan Combined in Q2 - The Korea Daily",
-      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5wYlNOVmE0RlIxcDhDbXNCRVNPNUtWelNrVDJrR0cyX2pwOWdsQmV2elk5ZDJCNzZQZXRHbU11ZlB1WlZaRDZRTjJ5Y1g3QTBFSEdMbmR1SVFQRmpTbmZQdWFlYlliU1BUUUhsNm02SQ?oc=5",
-      "date": "Sun, 25 Oct 2026 09:09:47 GMT",
-      "desc": "South Korea Current Account Surplus — Surpasses Germany and Japan Combined in Q2&nbsp;&nbsp;The Korea Daily"
+      "title": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNQ0ptRjRFQ1N5SVdNcmZTc3E4TVRkRTR4QVAxYUZQWWc1SHFJS2pwS3NFNWxwOTE5WWotSWROS1MtSnY2TGdwWGlNMWIwaG1RcjFBalM1OFRMaFkycE9YUUI4WTlyUXhSS1pPb25MVnVvWGdEaHBkSWhaNDRac25ZSkE5UW1MQ0dhVXhTal9ZN09YTTNfcUpuN0IxSk9UcGI5REJjWDlCTHhjNEkwQmc?oc=5",
+      "date": "Thu, 22 Oct 2026 04:11:00 GMT",
+      "desc": "Bank of Korea Holds Rate Steady After Back-to-Back Hikes&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "The Facade of Complementarity: The Threat That Sino-Korean Tech Cooperation Poses for Seoul - The National Bureau of Asian Research (NBR)",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPT3RueEppX09YN0Fpc01reXRXcjBUZUxnQ3ZzT01RSHc1RVk4QUxpXzNrTndCaWxCRWwybmlxcUI1Wm1HbFpfTlU4UWh4cDdpMEstOVR0M28tcU9JS0FhRWN1bmc2blcxVWt3UWNWaWtaeEpzdUtoZ056YU1RNGQ2QW9rOXI4dnFYRmJwTFVZN2pzajBVRkc3Q2dJSWt1ek5tN0FWbFFfNTk1UkYzUmlXTDhGYS1KWk5GX3h3S0xNM2M?oc=5",
+      "date": "Thu, 22 Oct 2026 18:59:24 GMT",
+      "desc": "The Facade of Complementarity: The Threat That Sino-Korean Tech Cooperation Poses for Seoul&nbsp;&nbsp;The National Bureau of Asian Research (NBR)"
+    },
+    {
+      "title": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOV0Z4YUdWZXFjTWJKTHRwSlRmaGRXakpLN194V2J2RjhiU1UySVBtWTZxOXNRLUZSZHhKcVZZTkpMVmxEOXp6MlRWZXRRLXgxNkNXMFljT0ZqSXJCa1FKU0kxeWN2VDlTSDV2eUFydXhmcnczVGNEak1JQVh4TzJnWEtwUDRiQUtETENpWV9Nc1hoc09jcUF0ZjBYUkVrUG9sQlNxRkF3cmZzQkw1ZmRTeFhvanlMQW8wWUM4b3Q4M2w?oc=5",
+      "date": "Mon, 19 Oct 2026 21:00:07 GMT",
+      "desc": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPbmFfcHMxU3pMNmozcm1aTkNVTFNpTnpCdGprT1Z4X3VLUkJ5ak5xTWduQkZWRVlkWk5GSkMzTGxnbDhITUpEUGQyUE5HTUxpSWxEQWM5NDBuclQtSEtjdDl6cVh4anh6T0JBZWptcXVlSFlzMWF1SnJwb3M2NDVqU25CMlVNZnFGSUE5VkpR?oc=5",
       "date": "Sun, 25 Oct 2026 01:45:43 GMT",
       "desc": "Retail Investors Resume Buying Samsung, SK Hynix Leveraged Products&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOV0Z4YUdWZXFjTWJKTHRwSlRmaGRXakpLN194V2J2RjhiU1UySVBtWTZxOXNRLUZSZHhKcVZZTkpMVmxEOXp6MlRWZXRRLXgxNkNXMFljT0ZqSXJCa1FKU0kxeWN2VDlTSDV2eUFydXhmcnczVGNEak1JQVh4TzJnWEtwUDRiQUtETENpWV9Nc1hoc09jcUF0ZjBYUkVrUG9sQlNxRkF3cmZzQkw1ZmRTeFhvanlMQW8wWUM4b3Q4M2w?oc=5",
-      "date": "Mon, 19 Oct 2026 21:00:07 GMT",
-      "desc": "Korea’s $1 Trillion Chip Bet to Revive Left-Behind Region Risks Trump’s Ire&nbsp;&nbsp;Bloomberg.com"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1325.4,
-      "change": -0.19,
-      "pct": -0.01,
+      "price": 1323.66,
+      "change": -1.93,
+      "pct": -0.15,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-25 13:38 UTC"
+  "updatedAt": "2026-10-25 17:18 UTC"
 }
