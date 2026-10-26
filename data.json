@@ -3,14 +3,8 @@
     {
       "title": "Lula wins fourth term in dramatic Brazil election comeback",
       "link": "https://www.bbc.co.uk/news/articles/ckm23y3mg1yyo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 26 Oct 2026 13:54:21 GMT",
+      "date": "Mon, 26 Oct 2026 18:26:19 GMT",
       "desc": "The left-wing incumbent president had lost the first round to right-wing challenger Flávio Bolsonaro."
-    },
-    {
-      "title": "How 'Lula's Army' WhatsApp chat helped turn Brazil election around",
-      "link": "https://www.bbc.co.uk/news/articles/cwz0vg4v3ndeo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 26 Oct 2026 15:37:33 GMT",
-      "desc": "As polls pointed to defeat, millions joined a 'Lula's Army' channel \nthat is credited with helping transform online enthusiasm into real-world mobilisation."
     },
     {
       "title": "Celebrations in Serbia after veteran ruler Vučić loses election to student-led protest movement",
@@ -19,16 +13,22 @@
       "desc": "The populist right-wing leader of 12 years says it is \"clear\" his party has lost the vote billed as a referendum on the country's future."
     },
     {
+      "title": "Trump administration illegally fired James Comey's daughter, judge rules",
+      "link": "https://www.bbc.co.uk/news/articles/ck78px6glw3lo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 26 Oct 2026 19:27:21 GMT",
+      "desc": "Maurene Comey believes she was let go from her job as a federal prosecutor because her father is the former FBI director."
+    },
+    {
       "title": "Anthropic warns of 'catastrophic risk' to humankind ahead of blockbuster share listing",
       "link": "https://www.bbc.co.uk/news/articles/cq398p1wd1evo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 26 Oct 2026 15:27:54 GMT",
+      "date": "Mon, 26 Oct 2026 16:27:17 GMT",
       "desc": "The company will be the first true artificial intelligence company to go public as tech firms continue to invest heavily in AI."
     },
     {
-      "title": "US Marine indicted for murder and robbery of woman in Japan",
-      "link": "https://www.bbc.co.uk/news/articles/c3vgxjex1z9wo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 26 Oct 2026 14:13:18 GMT",
-      "desc": "Prosecutors have indicted Devin Jacob Ballard for a killing that has caused outrage in Japan, local media reports."
+      "title": "Catholic bishops apologise for 'exploited' Trump meeting",
+      "link": "https://www.bbc.co.uk/news/articles/cw8rz1d286v3o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 26 Oct 2026 15:46:31 GMT",
+      "desc": "Two bishops in images that show them praying with Trump have said they believed the meeting was private."
     }
   ],
   "koreaNews": [
@@ -51,10 +51,10 @@
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "Lee says South Korea is emerging as global economic leader on current account surplus - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQVXEzM0U5djI4c05zX2tzZjRKenF2ZjhnY1RtN3pYUEpTM0FSWTlJeWtQekhlck5sbG9ZWjJ5YjNQTHZrY0JQWVhxVnJTSWdJSkE3T1BaeGRsY19pTWpJSXpBX05uYkQxS054dWIyaXQ2b2FNYWNBbkxCcmJjSm40NUpzQ013djZqZWwyQnk4aExkXzVDZlRjeW9RaVZhZzk1OHZFR2hrcGNPa3NnRDkzT3ZCMHc0YkxHMVVJY08tcDdabkdQOWJRX2dBNHFRWnFx?oc=5",
-      "date": "Sun, 25 Oct 2026 23:50:36 GMT",
-      "desc": "Lee says South Korea is emerging as global economic leader on current account surplus&nbsp;&nbsp;Korea JoongAng Daily"
+      "title": "AI boom that has sent economy soaring on chip supercycle has worsened job prospects for youth - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNVm03Q01OYUVKSUZtMXpNdGp6Nk91enRfcXpRWjVqQWtiWkNQQVVNLUVJNE5jRDQ5LVBsWEEwOG9sVTRUUlphbEp2Z0Jxd2pyME1VYWlweUZpUUFubXl2OWFCT2J1UnU2VkZuU2FzU1hhZWg3WVhxTWN0aXVob1RTTHlwRWxiRjNEN1lsc2t1TnRuZ196TS1WZ3NkZUFQSXdnUGYzMDBrNzY5UWZsR1YxUE5tZWVub3pMaXdwVWdITDh4bVYwV0JZaVV1TDZyUmVCLWMtdXlhc0xZUDVCVVcw?oc=5",
+      "date": "Mon, 26 Oct 2026 11:21:46 GMT",
+      "desc": "AI boom that has sent economy soaring on chip supercycle has worsened job prospects for youth&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
       "title": "South Korea's Ministry of Economy and Finance to Launch Task Force in November for 2028 Budget After 44.2 Trillion Won in Spending Efficiency Measures - BigGo Finance",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 215.53,
-      "change": 3.32,
-      "pct": 1.56,
+      "price": 216.44,
+      "change": 4.22,
+      "pct": 1.99,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 425.81,
-      "change": 13.46,
-      "pct": 3.26,
+      "price": 428.06,
+      "change": 15.71,
+      "pct": 3.81,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 528.73,
-      "change": 20.8,
-      "pct": 4.1,
+      "price": 532.21,
+      "change": 24.28,
+      "pct": 4.78,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 90.63,
-      "change": 5.14,
-      "pct": 6.01,
+      "price": 91.43,
+      "change": 5.94,
+      "pct": 6.95,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 179.5,
-      "change": 6.67,
-      "pct": 3.86,
+      "price": 179.67,
+      "change": 6.84,
+      "pct": 3.96,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 221.22,
-      "change": 11.12,
-      "pct": 5.29,
+      "price": 224.97,
+      "change": 14.88,
+      "pct": 7.08,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 319.69,
-      "change": -4.53,
-      "pct": -1.4,
+      "price": 316.92,
+      "change": -7.3,
+      "pct": -2.25,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 344.57,
-      "change": -3.65,
-      "pct": -1.05,
+      "price": 344.5,
+      "change": -3.73,
+      "pct": -1.07,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 529.4,
-      "change": 8.32,
-      "pct": 1.6,
+      "price": 531.79,
+      "change": 10.71,
+      "pct": 2.06,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7676.42,
-      "change": 12.99,
-      "pct": 0.17,
+      "price": 7682.67,
+      "change": 19.24,
+      "pct": 0.25,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26199.22,
-      "change": 190.36,
-      "pct": 0.73,
+      "price": 26211.21,
+      "change": 202.35,
+      "pct": 0.78,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1327.0,
-      "change": 1.01,
-      "pct": 0.08,
+      "price": 1325.32,
+      "change": -0.67,
+      "pct": -0.05,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-26 16:00 UTC"
+  "updatedAt": "2026-10-26 19:39 UTC"
 }
