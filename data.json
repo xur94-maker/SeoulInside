@@ -1,16 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "Turnout so far highest on record as Israelis vote in pivotal election",
-      "link": "https://www.bbc.co.uk/news/articles/c3j47l4kdez4o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 27 Oct 2026 11:11:33 GMT",
-      "desc": "The elections - the first since the Hamas-led attacks on Israel and the wars which followed - are widely seen as a referendum on Benjamin Netanyahu."
-    },
-    {
       "title": "Norway and Finland leaders hold rare call with Putin",
       "link": "https://www.bbc.co.uk/news/articles/c6vgj813mlelo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 27 Oct 2026 14:23:05 GMT",
-      "desc": "This is the first time European leaders have had direct communication with Russia's president in more than a year."
+      "date": "Tue, 27 Oct 2026 18:28:23 GMT",
+      "desc": "An end to the conflict in Ukraine \"will not be achieved through silence,\" Finland's President Alexander Stubb said."
     },
     {
       "title": "Truce begins in Ukraine city where residents ate weeds to survive",
@@ -29,6 +23,12 @@
       "link": "https://www.bbc.co.uk/news/articles/cv62yg0erp8zo?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 27 Oct 2026 13:25:54 GMT",
       "desc": "The France star had referred to the former Chinese leader as a \"dictator\" during an interview about memes."
+    },
+    {
+      "title": "Lula's comeback in Brazil dents Trump's ambitions for Latin America",
+      "link": "https://www.bbc.co.uk/news/articles/cq62yg6rggj0o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 27 Oct 2026 01:46:38 GMT",
+      "desc": "The Trump-Lula relationship may have thawed, but several issues could reignite tensions between the two leaders."
     }
   ],
   "koreaNews": [
@@ -57,10 +57,10 @@
       "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "Korea's economy grows 1% in Q3 on chip exports, beating forecasts - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQZHhJTlQ1c1o0SnBFYVdFVjNVd1FlM3VlU0VnWGJLbzY4ZzVnZ1lzaVpnQ3RRSThSbzFZenZqLVBSWkNPeXdMTkh1ejBmdmlLNHFpcVhBQ3FjRUl4THBfb1ZPN1BXeEEtQkdZeTBwaXB4NUtpcU9SR1NuOHVTNEdoNk1lQW5yMTBuQXBGQTJscVJZeDUteTk5c1haaUJZWklTUDM4QmVVakxiRi1F0gGyAUFVX3lxTE5yN21YNm1oT18zVWhRQWFZMFU5Z1VUQWNxQ0RQa05TWEZLZENyZFZXb1kwdGlxcVROdkdtbFZtZ2pXOHNwRDVGU0Y2SzZIMnVqSmV0VGhNLUgxendSWVlXWDBnbC1MWklLX2pzbjhYbWp3dkU4akEtZ0hlU2ZBX0Y2cHFXbmQ4cHRlMThVeVJqZ21jeC1aQ1hEbUZXTDZ5cHNGZDRFdF9WeTJTZUp6LTk5Umc?oc=5",
-      "date": "Mon, 26 Oct 2026 23:01:00 GMT",
-      "desc": "Korea's economy grows 1% in Q3 on chip exports, beating forecasts&nbsp;&nbsp;The Korea Times"
+      "title": "Economy surprises with 1% growth in Q3 due to strong chip exports - Korea.net",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0yUF8tSXM2R3gyRHYzRlJmdnRLdThiLWlvZENHTU5WanBPektUZkpacGRIMHBtVVo4UWx4R2dLX0JUc2RpdlJrM0Y5Y19jZkpoOVZCbE14clk5LXJ6WHpkSGEwMHU5ai1ublQ0bGE0cw?oc=5",
+      "date": "Tue, 27 Oct 2026 09:36:29 GMT",
+      "desc": "Economy surprises with 1% growth in Q3 due to strong chip exports&nbsp;&nbsp;Korea.net"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 217.65,
-      "change": 6.69,
-      "pct": 3.17,
+      "price": 217.81,
+      "change": 6.85,
+      "pct": 3.25,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 436.43,
-      "change": 17.92,
-      "pct": 4.28,
+      "price": 437.41,
+      "change": 18.9,
+      "pct": 4.52,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 555.08,
-      "change": 38.29,
-      "pct": 7.41,
+      "price": 560.33,
+      "change": 43.54,
+      "pct": 8.42,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 93.04,
-      "change": 6.08,
-      "pct": 6.99,
+      "price": 93.44,
+      "change": 6.48,
+      "pct": 7.45,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 181.1,
-      "change": 5.19,
-      "pct": 2.95,
+      "price": 182.3,
+      "change": 6.39,
+      "pct": 3.63,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 225.99,
-      "change": 15.66,
-      "pct": 7.45,
+      "price": 226.88,
+      "change": 16.55,
+      "pct": 7.87,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 320.07,
-      "change": -0.13,
-      "pct": -0.04,
+      "price": 321.93,
+      "change": 1.72,
+      "pct": 0.54,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 347.54,
-      "change": -0.19,
-      "pct": -0.06,
+      "price": 345.88,
+      "change": -1.85,
+      "pct": -0.53,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 533.1,
-      "change": 8.59,
-      "pct": 1.64,
+      "price": 531.44,
+      "change": 6.93,
+      "pct": 1.32,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7717.02,
-      "change": 93.34,
-      "pct": 1.22,
+      "price": 7722.03,
+      "change": 98.35,
+      "pct": 1.29,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26428.44,
-      "change": 473.1,
-      "pct": 1.82,
+      "price": 26489.13,
+      "change": 533.79,
+      "pct": 2.06,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1326.35,
-      "change": 4.59,
-      "pct": 0.35,
+      "price": 1326.21,
+      "change": 4.45,
+      "pct": 0.34,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-27 15:14 UTC"
+  "updatedAt": "2026-10-27 19:03 UTC"
 }
