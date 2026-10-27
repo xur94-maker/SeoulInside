@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "Lula's comeback in Brazil dents Trump's ambitions for Latin America",
-      "link": "https://www.bbc.co.uk/news/articles/cq62yg6rggj0o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 27 Oct 2026 01:46:38 GMT",
-      "desc": "The Trump-Lula relationship may have thawed, but several issues could reignite tensions between the two leaders."
+      "title": "Turnout so far highest on record as Israelis vote in pivotal election",
+      "link": "https://www.bbc.co.uk/news/articles/c3j47l4kdez4o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 27 Oct 2026 11:11:33 GMT",
+      "desc": "The elections - the first since the Hamas-led attacks on Israel and the wars which followed - are widely seen as a referendum on Benjamin Netanyahu."
+    },
+    {
+      "title": "Norway and Finland leaders hold rare call with Putin",
+      "link": "https://www.bbc.co.uk/news/articles/c6vgj813mlelo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 27 Oct 2026 14:23:05 GMT",
+      "desc": "This is the first time European leaders have had direct communication with Russia's president in more than a year."
     },
     {
       "title": "Truce begins in Ukraine city where residents ate weeds to survive",
       "link": "https://www.bbc.co.uk/news/articles/ck20wjnv3w0jo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 27 Oct 2026 08:01:22 GMT",
-      "desc": "The ceasefire in Oleshky, announced by US First Lady Melania Trump, is meant to allow aid deliveries and the evacuation of civilians."
+      "date": "Tue, 27 Oct 2026 15:13:24 GMT",
+      "desc": "The Oleshky ceasefire, which the White House said was secured by US First Lady Melania Trump, is meant to allow aid to get in and civilians to get out."
     },
     {
-      "title": "Jordan carries out deadly strike in Syria in retaliation for church attack",
-      "link": "https://www.bbc.co.uk/news/articles/cq8ezg6dy6xlo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 27 Oct 2026 02:40:17 GMT",
-      "desc": "The attack on a village in Syria killed five people, including women and children, Syrian health officials said."
+      "title": "Ballon d'Or ceremony raises case of French sports journalist jailed in Algeria",
+      "link": "https://www.bbc.co.uk/news/articles/c6x2qgyqr79wo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 27 Oct 2026 14:29:39 GMT",
+      "desc": "He is in jail accused of supporting terrorism after travelling to the politically sensitive region Kabylie."
     },
     {
-      "title": "Ex-FBI chief James Comey faces federal charges for third time",
-      "link": "https://www.bbc.co.uk/news/articles/ckly0xqjnlwvo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 27 Oct 2026 02:01:27 GMT",
-      "desc": "Comey's lawyers say the case stems from alleged disclosure of classified information to the New York Times in 2016."
-    },
-    {
-      "title": "Jay-Z to perform at Super Bowl half-time show",
-      "link": "https://www.bbc.co.uk/news/articles/cq8ezg4364epo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 27 Oct 2026 05:05:15 GMT",
-      "desc": "The rapper has been involved with the show for years but has never before performed at the NFL championship game."
+      "title": "Mbappé sorry for 'ill-judged' Mao remark after backlash in China",
+      "link": "https://www.bbc.co.uk/news/articles/cv62yg0erp8zo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 27 Oct 2026 13:25:54 GMT",
+      "desc": "The France star had referred to the former Chinese leader as a \"dictator\" during an interview about memes."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
+      "date": "Tue, 27 Oct 2026 00:41:00 GMT",
+      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
+    },
     {
       "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
       "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
@@ -45,22 +51,16 @@
       "desc": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
-      "date": "Tue, 27 Oct 2026 00:41:00 GMT",
-      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
-    },
-    {
       "title": "South Korea’s GDP growth beats forecasts amid AI boom - Al Jazeera",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVkhSendFOTJpVXVneXVaSFVfdWNoY0swai14U0NiU1dCU0xmbE5Wd25Dak9DUkpEOEl1ZDd5Um1NQkg5c2V2SU9JVm1KaTgxbXNwVGRwS2ZQNlRmTm9Ea2JDS1N3VG5jWkFCbERCRjFlNjgtZmkzU0Q3cU16dnYyUXJRaG14ZEJOT1RTTGV0bzRPV3YxTC1qV2hST19DUdIBowFBVV95cUxPRl9KQ1REU214M3NQRHpBaGI5LW5QZXc5bHkwNDRDTk5NZUxtbV9zeVN5SWo1UG1fdHF6dS1PWWV4V2w1ZXRJdi1DNjIwWEJXRGJFOTM3V0hMTUp1LXFEcTB5cGx2QTlrUm14SGNYeUg4UXZNUkl2andsNXZyMW1KblFmbk5zbjFHMFloZkh4ckhkVXJiaDJoU0hTRHF5RUl6LXU0?oc=5",
       "date": "Tue, 27 Oct 2026 06:56:37 GMT",
       "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "S. Korea's GDP expands 1 pct in Q3 on strong exports, investment: BOK - upi",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSFdhTHpFdHhjb0JnQVZkOWNCWWxSWHh4N2h4NXp5R2cxdlIyTUFkV19sTWxSWDd3aHlKRlZCQWwwc0hxR2NOTE5MWjVjTnB4V0U5UUNUME56SzctQ0xEZE5KYjBUUjFYcTFNUlBMcDRmYzBVN1V1dTZZT21ySS1hSElDYTNNWlRKMzVvUFI4Z2ZHdzBmZzZVZHZqNlBvVUh3bDd0NGZzSWgtQlXSAbABQVVfeXFMTzBzQ3BfOFlBeldWa0xGS1hGNy1TUU5ELUtFZG9zaG4yUHhOVmtZMlpMbUp1UUlIdTUya1ZzV3k0TGhsUEQ4UlkyT3NNb1Q3Rkdwc3E4QXlTamZfWWg1NzhPMjdKX1NDWW9JNjl1RG0zNlNXc2VYNEJQLWppOWxPaTNoVXdJSkJsM1ZOa1JObWtVazhuXy1IaTNiM3VLVVQtdlc3cTk2S19CXzVzZXFRaEQ?oc=5",
-      "date": "Tue, 27 Oct 2026 07:33:28 GMT",
-      "desc": "S. Korea's GDP expands 1 pct in Q3 on strong exports, investment: BOK&nbsp;&nbsp;upi"
+      "title": "Korea's economy grows 1% in Q3 on chip exports, beating forecasts - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQZHhJTlQ1c1o0SnBFYVdFVjNVd1FlM3VlU0VnWGJLbzY4ZzVnZ1lzaVpnQ3RRSThSbzFZenZqLVBSWkNPeXdMTkh1ejBmdmlLNHFpcVhBQ3FjRUl4THBfb1ZPN1BXeEEtQkdZeTBwaXB4NUtpcU9SR1NuOHVTNEdoNk1lQW5yMTBuQXBGQTJscVJZeDUteTk5c1haaUJZWklTUDM4QmVVakxiRi1F0gGyAUFVX3lxTE5yN21YNm1oT18zVWhRQWFZMFU5Z1VUQWNxQ0RQa05TWEZLZENyZFZXb1kwdGlxcVROdkdtbFZtZ2pXOHNwRDVGU0Y2SzZIMnVqSmV0VGhNLUgxendSWVlXWDBnbC1MWklLX2pzbjhYbWp3dkU4akEtZ0hlU2ZBX0Y2cHFXbmQ4cHRlMThVeVJqZ21jeC1aQ1hEbUZXTDZ5cHNGZDRFdF9WeTJTZUp6LTk5Umc?oc=5",
+      "date": "Mon, 26 Oct 2026 23:01:00 GMT",
+      "desc": "Korea's economy grows 1% in Q3 on chip exports, beating forecasts&nbsp;&nbsp;The Korea Times"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -71,7 +71,7 @@
     {
       "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQR1NNS1ZjY0QxRUJaLXBTSkNHenBNQU8ySk1rT0FhbmItdVEyZFJhamF3OFdFb2kzZ0EtUW1ZV0g2SDM1cVI2TXdTMjJSNFJRZjM0NXZKbEs5OUFNZjgtSGN0RUpRemdKM2FVbzJxTm1rQkVGdldVdDdORFl0UWRDRzhNeURmWWlBUmpveXNOZk95TjBGa1dSYVB6VHJYUkdxVXptYjRtWVVfX1hTa01vTHhwa2c3QQ?oc=5",
-      "date": "Mon, 26 Oct 2026 21:00:00 GMT",
+      "date": "Tue, 27 Oct 2026 09:05:59 GMT",
       "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg.com"
     },
     {
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 216.0,
-      "change": 3.79,
-      "pct": 1.79,
+      "price": 217.65,
+      "change": 6.69,
+      "pct": 3.17,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 424.37,
-      "change": 12.02,
-      "pct": 2.91,
+      "price": 436.43,
+      "change": 17.92,
+      "pct": 4.28,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 531.28,
-      "change": 23.35,
-      "pct": 4.6,
+      "price": 555.08,
+      "change": 38.29,
+      "pct": 7.41,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 90.47,
-      "change": 4.98,
-      "pct": 5.83,
+      "price": 93.04,
+      "change": 6.08,
+      "pct": 6.99,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 179.6,
-      "change": 6.77,
-      "pct": 3.92,
+      "price": 181.1,
+      "change": 5.19,
+      "pct": 2.95,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 223.35,
-      "change": 13.25,
-      "pct": 6.31,
+      "price": 225.99,
+      "change": 15.66,
+      "pct": 7.45,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 316.8,
-      "change": -7.42,
-      "pct": -2.29,
+      "price": 320.07,
+      "change": -0.13,
+      "pct": -0.04,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 343.91,
-      "change": -4.31,
-      "pct": -1.24,
+      "price": 347.54,
+      "change": -0.19,
+      "pct": -0.06,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 532.6,
-      "change": 11.52,
-      "pct": 2.21,
+      "price": 533.1,
+      "change": 8.59,
+      "pct": 1.64,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7676.77,
-      "change": 13.34,
-      "pct": 0.17,
+      "price": 7717.02,
+      "change": 93.34,
+      "pct": 1.22,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26169.38,
-      "change": 160.52,
-      "pct": 0.62,
+      "price": 26428.44,
+      "change": 473.1,
+      "pct": 1.82,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1325.71,
-      "change": 3.95,
-      "pct": 0.3,
+      "price": 1326.35,
+      "change": 4.59,
+      "pct": 0.35,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-27 08:31 UTC"
+  "updatedAt": "2026-10-27 15:14 UTC"
 }
