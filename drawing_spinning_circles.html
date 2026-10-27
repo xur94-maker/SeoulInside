@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Drawing Pictures with Spinning Circles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f7fa;--panel:#ffffff;--ink:#16222f;--mute:#5b6b7b;--line:#d5dee7;--circ:#0e7c86;--path:#c2185b;--ghost:#8796a5;--alt:#d56a00;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a24;--panel:#16232f;--ink:#e6edf3;--mute:#9aabbb;--line:#2a3b4a;--circ:#4fd1d9;--path:#ff6b9a;--ghost:#5f7488;--alt:#ffb454}}
+:root[data-theme="dark"]{--bg:#0f1a24;--panel:#16232f;--ink:#e6edf3;--mute:#9aabbb;--line:#2a3b4a;--circ:#4fd1d9;--path:#ff6b9a;--ghost:#5f7488;--alt:#ffb454}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Inter",system-ui,sans-serif}
+main{max-width:880px;margin:0 auto;padding:20px 16px 48px}
+h1{font:700 clamp(26px,5vw,38px)/1.25 "Source Serif 4",serif;margin:8px 0 6px}
+.lead{color:var(--mute);margin:0 0 16px;max-width:60ch}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px}
+canvas{display:block;width:100%;height:auto;aspect-ratio:4/3}#cv{width:min(100%,calc(74vh*1.3333));margin:0 auto}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:12px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 12px}
+.stat b{font:700 22px "Source Serif 4",serif;display:block}
+.stat span{color:var(--mute);font-size:13px}
+.ctl{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row label,.row .lab{min-width:7.5em;font-weight:600}
+input[type=range]{flex:1;min-width:160px;accent-color:var(--circ)}
+.val{min-width:3.2em;text-align:right;font-variant-numeric:tabular-nums}
+button{min-height:44px;font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:6px 12px;cursor:pointer}
+button[aria-pressed=true]{background:var(--circ);border-color:var(--circ);color:var(--bg);font-weight:600}
+button:focus-visible,input:focus-visible{outline:3px solid var(--path);outline-offset:2px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-top:10px}.two canvas{aspect-ratio:1/1}
+.note{background:var(--panel);border-left:4px solid var(--path);padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0;min-height:3.2em}
+h2{font:700 21px "Source Serif 4",serif;margin:28px 0 6px}
+p{margin:6px 0;max-width:64ch}
+code{font-family:ui-monospace,monospace;font-size:.92em;background:var(--panel);border:1px solid var(--line);padding:1px 5px;border-radius:4px}
+@supports (height:1dvh){#cv{width:min(100%,calc(74dvh*1.3333))}}
+@media (max-width:640px){#stageMain{position:sticky;top:0;z-index:5}}
+</style>
+</head>
+<body>
+<main>
+<h1>Drawing Pictures with Spinning Circles</h1>
+<p class="lead">Each circle turns at a constant radius and a constant speed. Yet when you chain the circles tip to tail, the end point traces a path that is not a circle. Try changing the number of circles and the number of samples.</p>
+
+<div class="stage" id="stageMain"><canvas id="cv" role="img" width="960" height="720" aria-label="Animation of a shape drawn as a sum of circles"></canvas></div>
+
+<div class="stats">
+<div class="stat"><b id="sM">–</b><span>Circles in use</span></div>
+<div class="stat"><b id="sE">–</b><span>Energy ratio (share of Σ|cₙ|² kept)</span></div>
+<div class="stat"><b id="sR">–</b><span>RMS error at sample points</span></div>
+<div class="stat"><b id="sW">1.00× (constant)</b><span>Largest circle’s angular velocity ÷ target (min–max)</span></div>
+<div class="stat"><b id="sS">Real time</b><span>Computation speed (vs. real time)</span></div>
+</div>
+
+<div class="ctl">
+<div class="row" role="group" aria-label="Shape"><span class="lab">Shape</span><span id="shapes" class="row"></span></div>
+<div class="row"><label for="m">Circles M</label><input id="m" type="range" min="1" max="64" value="5"><span class="val" id="mv"></span></div>
+<div class="row"><label for="n">Samples N</label><input id="n" type="range" min="4" max="256" value="256"><span class="val" id="nv"></span></div>
+<div class="row" role="group" aria-label="Order for choosing circles"><span class="lab">Choose circles</span>
+<button id="oSize" aria-pressed="true">Largest first</button><button id="oFreq" aria-pressed="false">Slowest first</button></div>
+<div class="row"><label for="gg">Gravity (motor arm)</label><input id="gg" type="range" min="0" max="10" step="0.5" value="0"><span class="val" id="gv">0.0</span></div>
+<div class="row"><label for="wn">Motor strength (0 = off)</label><input id="wn" type="range" min="0" max="40" step="1" value="12"><span class="val" id="wnv">12</span></div>
+<p style="margin:0;color:var(--mute);font-size:14px">Raise gravity and the circles become arm segments with mass (proportional to radius), while joint motors try to follow the target angles. The motors do not compensate for gravity, so the arm sags and wobbles. The dotted line is the ideal path with no gravity; the solid line is the path the real arm draws. With gravity at 0 it is exactly the same as the sigma picture. Lowering the motor strength makes it sag more. Set the motor strength to 0 and the motors switch off completely: the arm becomes a free multi-link pendulum with only its initial angles and velocities (with gravity at 0 it moves by inertia alone).</p>
+<div class="row" role="group" aria-label="View"><span class="lab">View</span>
+<button id="play">Pause</button><button id="dots" aria-pressed="true">Sample points</button></div>
+</div>
+
+<div class="note" id="note" aria-live="polite"></div>
+
+<h2>The sum that chains arrows (Σ)</h2>
+<p><code>z(t) = Σ cₙ e^(i·n·t)</code> Each term is one circle. The radius is |cₙ| and the speed is n. The teal circles in the picture above are these terms. The number of circles M sets how many terms are added, and “Choose circles” sets which terms are picked first.</p>
+<h2>The sum that finds the circles (Σ)</h2>
+<p><code>cₙ = (1/N) Σ z(tₖ) e^(−2πi·nk/N)</code> Pick N points along the shape’s perimeter, spin them backward, add them up, and average. This is what the computer’s <code>np.fft.fft(z)/N</code> does. Lower N to 4 and there are too few points, so the shape is read as a different curve (aliasing).</p>
+<h2>Where raising N ends up (∫)</h2>
+<p><code>cₙ = (1/2π) ∫ z(t) e^(−i·n·t) dt</code> Take the points infinitely dense and the sigma above becomes an integral. The further right you push the N slider, the closer the coefficients get to this exact value.</p>
+<h2>When gravity switches on: it is an arm, not circles</h2>
+<p>In the world of sigma, terms are simply added with no relation to one another, so even the largest circle always turns at a constant speed. In a real motor arm, however, joint k supports <b>the weight of every segment attached after it</b>. That is why the base joint takes the most torque. Here each joint’s motor is also set in proportion to its maximum gravity torque, so the angular sag is similar at every joint; the sag accumulates toward the tip, and the end point wobbles the most.</p>
+<p>The equation of motion for this picture is <code>M(θ)θ̈ + C(θ,θ̇) + g(θ) = τ</code>. M is the inertia matrix through which the segments pull on one another, C holds the centrifugal and Coriolis terms, g is gravity, and τ is the motor torque. The motor is PD control tracking the target angle, plus centrifugal compensation only. Gravity compensation is deliberately left out, so the error is exactly 0 when g = 0 and sag appears when g > 0.</p>
+<p>The largest circle slows on the way up and speeds up on the way down (more clearly with a weaker motor and stronger gravity). The fourth card in the statistics at the top shows this change in speed. A weaker motor means more sag, so the shape is badly distorted. The calculation includes every visible circle (radius 0.003 or more) as a segment with real mass and solves it with a 5th-order adaptive integrator (Dormand–Prince, relative error 10⁻¹²). If the computer cannot keep up, accuracy is not cut; the display is slowed instead, and that ratio appears on the statistics card. Motor strength is applied to all joints at the same ratio as the stiffness with which a joint bears its load, and 0 means the motors are off. An arm with the motors off conserves energy and moves chaotically. In a chaotic system even a tiny numerical error pulls trajectories apart a few seconds later, so the calculation runs on a fixed grid (1/240 second) independent of screen frames, so that every device produces the same trajectory.</p>
+<h2>Circle chain vs. a real pendulum</h2>
+<p>The arm has the same shape, but the rule of motion differs. On the left is the <b>circle chain</b> (the world of sigma), where every segment turns at a set speed. On the right is a <b>multi-link pendulum</b> moved by gravity (same number of segments and lengths as the left, and the same model as the arm above: uniform rods with mass proportional to length). The more segments, the sooner chaos shows. The orange line on the right is a pendulum started with its initial angles differing by only 0.001 radian.</p>
+<div class="two"><div class="stage"><canvas id="cA" role="img" aria-label="A chain of two circles"></canvas></div><div class="stage"><canvas id="cB" role="img" aria-label="Multi-link pendulum"></canvas></div></div>
+<div class="ctl" style="margin-top:12px">
+<div class="row"><label for="l1">Segment 1 length</label><input id="l1" type="range" min="0.3" max="1.5" step="0.05" value="1"><span class="val" id="l1v"></span></div>
+<div class="row"><label for="l2">Segment 2 length</label><input id="l2" type="range" min="0.3" max="1.5" step="0.05" value="1"><span class="val" id="l2v"></span></div>
+<div class="row"><label for="wr">Segment 2 speed</label><input id="wr" type="range" min="-5" max="5" step="1" value="3"><span class="val" id="wrv"></span></div>
+<div class="row"><label for="kk">Segments (both sides)</label><input id="kk" type="range" min="1" max="6" step="1" value="2"><span class="val" id="kkv"></span></div>
+<div class="row"><label for="dd">Length from segment 3 (both)</label><input id="dd" type="range" min="0.3" max="1" step="0.05" value="0.6"><span class="val" id="ddv"></span></div>
+<div class="row"><label for="th">Pendulum start angle</label><input id="th" type="range" min="10" max="175" step="5" value="120"><span class="val" id="thv"></span></div>
+<div class="row" role="group" aria-label="Presets and playback"><span class="lab">Presets · Play</span><button id="pEq">Equal length</button><button id="pTw">2 : 1</button><button id="pRs">Restart</button><button id="pGo">Pause</button></div>
+</div>
+<p>It is most fun to <b>set the lengths yourself</b>. Equal lengths are symmetric and give tidy patterns, while unequal lengths make the chain’s pattern more complex. The pendulum moves regularly for small start angles and unpredictably for large ones. Because all the speeds are integers, the chain always returns to a closed pattern, but the pendulum does not. (From segment 3 on, the speeds form an arithmetic sequence: 1, w, 2w−1, 3w−2…)</p>
+</main>
+
+<script>
+(function(){
+var cv=document.getElementById('cv'),ctx=cv.getContext('2d');
+var S={shape:'square',M:5,N:256,order:'size',play:true,dots:true,phase:0,g:0,wn:12,vb:1.45,vt:1.45,vx:1.6,sumR:2,trail:[],msg:''};
+var cs=[],terms=[],path=[],Z=[],etot=1;
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce)S.play=false;
+
+function poly(name){
+  if(name==='square')return [[1,1],[-1,1],[-1,-1],[1,-1]];
+  if(name==='triangle'){var a=[];for(var i=0;i<3;i++){var g=Math.PI/2+i*2*Math.PI/3;a.push([1.25*Math.cos(g),1.25*Math.sin(g)]);}return a;}
+  if(name==='star'){var b=[];for(var k=0;k<10;k++){var r=k%2?0.45:1.3,g2=Math.PI/2+k*Math.PI/5;b.push([r*Math.cos(g2),r*Math.sin(g2)]);}return b;}
+  var h=[];for(var j=0;j<400;j++){var t=2*Math.PI*j/400;
+    h.push([-16*Math.pow(Math.sin(t),3)/13,(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))/13-0.05]);}
+  return h;
+}
+function resample(P,N){
+  var n=P.length,L=[0],i;
+  for(i=0;i<n;i++){var a=P[i],b=P[(i+1)%n];L.push(L[i]+Math.hypot(b[0]-a[0],b[1]-a[1]));}
+  var T=L[n],out=[],j=0;
+  for(var k=0;k<N;k++){var u=T*k/N;while(j<n-1&&L[j+1]<=u+1e-12)j++;
+    var a2=P[j],b2=P[(j+1)%n],f=(u-L[j])/((L[j+1]-L[j])||1);
+    out.push([a2[0]+(b2[0]-a2[0])*f,a2[1]+(b2[1]-a2[1])*f]);}
+  return out;
+}
+function dft(){
+  var N=S.N;Z=resample(poly(S.shape),N);cs=[];etot=0;
+  for(var k=0;k<N;k++){var re=0,im=0;
+    for(var m=0;m<N;m++){var ang=-2*Math.PI*k*m/N,c=Math.cos(ang),s=Math.sin(ang);
+      re+=Z[m][0]*c-Z[m][1]*s;im+=Z[m][0]*s+Z[m][1]*c;}
+    re/=N;im/=N;var f=k<N/2?k:k-N,a=Math.hypot(re,im);
+    cs.push({re:re,im:im,r:a,ph:Math.atan2(im,re),f:f});etot+=a*a;}
+}
+function build(){
+  var N=S.N;S.M=Math.min(S.M,N);
+  var idx=cs.map(function(_,i){return i;});
+  if(S.order==='size')idx.sort(function(a,b){return cs[b].r-cs[a].r||Math.abs(cs[a].f)-Math.abs(cs[b].f);});
+  else idx.sort(function(a,b){return Math.abs(cs[a].f)-Math.abs(cs[b].f)||cs[b].f-cs[a].f;});
+  terms=idx.slice(0,S.M).map(function(i){return cs[i];});terms.forEach(function(T){T.e=0;T.ev=0;});S.trail=[];physSetup();
+  var P=720;path=[];
+  for(var j=0;j<=P;j++){var t=2*Math.PI*j/P,x=0,y=0;
+    for(var q=0;q<terms.length;q++){var T=terms[q],g=T.f*t+T.ph;x+=T.r*Math.cos(g);y+=T.r*Math.sin(g);}
+    path.push([x,y]);}
+  var kept=0,sr=0;terms.forEach(function(T){kept+=T.r*T.r;sr+=T.r;});S.sumR=sr;
+  var lost=Math.max(0,etot-kept);
+  document.getElementById('sM').textContent=S.M;
+  document.getElementById('sE').textContent=(etot?100*kept/etot:100).toFixed(1)+'%';
+  document.getElementById('sR').textContent=Math.sqrt(lost).toFixed(4);
+  document.getElementById('mv').textContent=S.M;document.getElementById('nv').textContent=S.N;
+  var nz=cs.filter(function(c){return c.r>1e-9;}).length;
+  var msg='Of the coefficients found from '+S.N+' samples, '+nz+' are nonzero.',sy={square:4,triangle:3,star:5}[S.shape];
+  if(sy&&S.N%sy)msg+=' (This shape has '+sy+'-fold symmetry, but N is not a multiple of '+sy+', so the symmetry is broken and very small coefficients remain. Set N to a multiple of '+sy+' and most become 0.)';
+  if(S.N<=8)msg='With only '+S.N+' samples, the shape is read as a different curve (aliasing). '+msg;
+  else if(S.shape==='square'&&S.order==='size'&&S.N>=64&&S.M<=3)msg+=' For the square, one big circle holds most of the energy. The rest are the small circles at n = −3, 5, −7…';
+  else if(S.M<8)msg+=S.shape==='heart'?' Notice the notch at the top and the point at the bottom are smeared. Add circles and they sharpen.':' Notice the corners are rounded off. Add circles and they sharpen.';
+  else msg+=' The small ripples near the corners are leftovers from cutting the series short. They shrink as you add circles.';
+  S.msg=msg;showNote();
+}
+
+function fit(){var d=window.devicePixelRatio||1,w=cv.clientWidth;cv.width=Math.round(w*d);cv.height=Math.round(w*d*0.75);}
+function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+var GM='Gravity is on. Each joint’s motor supports the weight of every segment attached after it, so even the largest circle cannot turn steadily. It slows on the way up and speeds up on the way down (statistics at top right). The dotted line is the ideal path.';
+var FM='The motors are off. The arm is a free multi-link pendulum with only its initial angles and velocities, moving by gravity alone (or by inertia if gravity is 0). Energy is conserved and the motion is chaotic. The dotted line is the ideal path.';
+function showNote(){document.getElementById('note').textContent=S.wn===0?FM:(S.g>0?GM:S.msg);}
+function usePhys(){return (S.g>0||S.wn===0)&&PH.n>0;}
+function draw(){
+  var W=cv.width,H=cv.height,d=W/960,phys=usePhys(),free=S.wn===0,R=Math.min(3.4,S.sumR+0.2),j;
+  S.vt+=((free?Math.max(1.45,R):1.45)-S.vt)*0.07;S.vb+=((phys?Math.max(1.45,R):1.45)-S.vb)*0.07;S.vx+=((free?Math.max(1.6,R):1.6)-S.vx)*0.07;
+  var sc=Math.min(W/(2*S.vx),H/(S.vt+S.vb))*0.97,cx=W/2,cy=(H-sc*(S.vt+S.vb))/2+sc*S.vt;
+  var X=function(v){return cx+v*sc;},Y=function(v){return cy-v*sc;};
+  ctx.clearRect(0,0,W,H);
+  var cc=css('--circ'),cp=css('--path'),cg=css('--ghost');
+  ctx.lineWidth=2*d;ctx.strokeStyle=cg;ctx.beginPath();
+  if(draw.bk!==S.shape){draw.bk=S.shape;draw.bs=resample(poly(S.shape),600);}var base=draw.bs;
+  base.forEach(function(p,i){i?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1]));});ctx.closePath();ctx.stroke();
+  if(S.dots){ctx.fillStyle=cg;Z.forEach(function(p){ctx.beginPath();ctx.arc(X(p[0]),Y(p[1]),3*d,0,7);ctx.fill();});}
+  var P=path.length-1,upto=reduce&&!S.play?P:Math.floor(S.phase*P);
+  if(phys){
+    ctx.save();ctx.setLineDash([6*d,6*d]);ctx.globalAlpha=.4;ctx.strokeStyle=cp;ctx.lineWidth=1.6*d;ctx.beginPath();
+    for(j=0;j<=P;j++){j?ctx.lineTo(X(path[j][0]),Y(path[j][1])):ctx.moveTo(X(path[j][0]),Y(path[j][1]));}
+    ctx.stroke();ctx.restore();
+    ctx.strokeStyle=cp;ctx.lineWidth=2.6*d;ctx.beginPath();
+    S.trail.forEach(function(p,i){i?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1]));});ctx.stroke();
+  }else{
+    ctx.strokeStyle=cp;ctx.lineWidth=2.6*d;ctx.beginPath();
+    for(j=0;j<=upto;j++){j?ctx.lineTo(X(path[j][0]),Y(path[j][1])):ctx.moveTo(X(path[j][0]),Y(path[j][1]));}ctx.stroke();
+  }
+  var t=S.phase*2*Math.PI,x=0,y=0;
+  ctx.lineWidth=1*d;
+  for(var q=0;q<terms.length;q++){var T=terms[q],g=T.f*t+T.ph+(phys?T.e:0),nx=x+T.r*Math.cos(g),ny=y+T.r*Math.sin(g);
+    if(T.r*sc>1.5*d){ctx.strokeStyle=cc;ctx.globalAlpha=.35;ctx.lineWidth=1*d;ctx.beginPath();ctx.arc(X(x),Y(y),T.r*sc,0,7);ctx.stroke();}
+    ctx.globalAlpha=.95;ctx.strokeStyle=cc;ctx.lineWidth=(q<3?2.2:1.2)*d;ctx.beginPath();ctx.moveTo(X(x),Y(y));ctx.lineTo(X(nx),Y(ny));ctx.stroke();
+    x=nx;y=ny;}
+  if(phys&&S.play){S.trail.push([x,y,S.cum||0]);while(S.trail.length&&S.trail[0][2]<(S.cum||0)-9)S.trail.shift();}
+  ctx.globalAlpha=1;ctx.fillStyle=cp;ctx.beginPath();ctx.arc(X(x),Y(y),5*d,0,7);ctx.fill();
+}
+/* ---- Motor arm: Lagrangian dynamics of a planar n-link arm (no approximation) ----
+   absolute angle θk, segment mass mk=|cₖ| (uniform rod, moment of inertia included). Every circle with radius 0.003 or more is included.
+   Joint k runs PD control on the relative angle θk−θk−1 (target: the uniform rotation set by the circles), compensating centrifugal force but not gravity.
+   Motor stiffness Kp_k = (motor strength)² · (scale of the maximum gravity torque on joint k), so the sag angle is similar at every joint.
+   Motor strength 0 gives a free pendulum with torque and centrifugal compensation both off. The state is the deviation from the target, e and ė, and is
+   integrated with 5th-order adaptive Dormand–Prince (relative error 1e-9; mass matrix via diagonal scaling then Cholesky). */
+var W0=2*Math.PI/9,PH={n:0,act:[],mon:null,h:1e-3,fsal:false,speed:1};
+var DPC=[0,1/5,3/10,4/5,8/9,1];
+var DPA=[null,[1/5],[3/40,9/40],[44/45,-56/15,32/9],[19372/6561,-25360/2187,64448/6561,-212/729],[9017/3168,-355/33,46732/5247,49/176,-5103/18656]];
+var DPB=[35/384,0,500/1113,125/192,-2187/6784,11/84];
+var DPE=[71/57600,0,-71/16695,71/1920,-17253/339200,22/525,-1/40];
+function physSetup(){
+  var act=terms.filter(function(T){return T.r>3e-3;}),n=act.length,i,j,acc=0,k;
+  terms.forEach(function(T){T.e=0;T.ev=0;});
+  PH.act=act;PH.n=n;PH.mon=null;PH.h=1e-3;PH.fsal=false;PH.tsim=S.phase*9;PH.credit=0;
+  for(i=0;i<n;i++)if(act[i].f!==0&&(!PH.mon||act[i].r>PH.mon.r))PH.mon=act[i];
+  var L=new Float64Array(n),m=new Float64Array(n),R=new Float64Array(n),af=new Float64Array(n);
+  PH.Wg=new Float64Array(n);PH.Mi=new Float64Array(n);PH.H=new Float64Array(n*n);PH.Lam=new Float64Array(n);PH.d=new Float64Array(n);
+  for(i=0;i<n;i++){L[i]=act[i].r;m[i]=L[i];}
+  for(i=n-1;i>=0;i--){af[i]=acc;acc+=m[i];}
+  for(i=0;i<n;i++){R[i]=af[i]+m[i]/2;PH.Wg[i]=L[i]*R[i];PH.Mi[i]=L[i]*L[i]*(af[i]+m[i]/3);PH.d[i]=1/Math.sqrt(PH.Mi[i]);}
+  acc=0;for(i=n-1;i>=0;i--){acc+=PH.Wg[i];PH.Lam[i]=acc;}
+  for(i=0;i<n;i++)for(j=0;j<n;j++)PH.H[i*n+j]=i===j?L[i]*L[i]*(af[i]+m[i]/4):L[i]*L[j]*R[Math.max(i,j)];
+  PH.A=new Float64Array(n*n);
+  ['b','x','u','c','s','ct','st','wd','wv'].forEach(function(q){PH[q]=new Float64Array(n);});
+  PH.y=new Float64Array(2*n);PH.yn=new Float64Array(2*n);PH.tmp=new Float64Array(2*n);
+  PH.k=[];for(k=0;k<7;k++)PH.k.push(new Float64Array(2*n));
+  physGains();
+}
+function physGains(){var n=PH.n,w=S.wn,z=0.22,i;PH.Kp=new Float64Array(n);PH.Kd=new Float64Array(n);
+  for(i=0;i<n;i++){PH.Kp[i]=w*w*PH.Lam[i];PH.Kd[i]=2*z*Math.sqrt(PH.Kp[i]*PH.Mi[i]);}PH.fsal=false;}
+function physReset(){if(PH.y)PH.y.fill(0);terms.forEach(function(T){T.e=0;T.ev=0;});PH.fsal=false;PH.h=1e-3;PH.tsim=S.phase*9;PH.credit=0;}
+function chol(A,b,n,x){var i,j,k,s;
+  for(i=0;i<n;i++)for(j=0;j<=i;j++){s=A[i*n+j];for(k=0;k<j;k++)s-=A[i*n+k]*A[j*n+k];
+    if(i===j)A[i*n+i]=Math.sqrt(Math.max(s,1e-14));else A[i*n+j]=s/A[j*n+j];}
+  for(i=0;i<n;i++){s=b[i];for(k=0;k<i;k++)s-=A[i*n+k]*x[k];x[i]=s/A[i*n+i];}
+  for(i=n-1;i>=0;i--){s=x[i];for(k=i+1;k<n;k++)s-=A[k*n+i]*x[k];x[i]=s/A[i*n+i];}}
+function rhs(t,y,dy){
+  var n=PH.n,act=PH.act,H=PH.H,A=PH.A,b=PH.b,x=PH.x,u=PH.u,c=PH.c,s=PH.s,ct=PH.ct,st=PH.st,wd=PH.wd,wv=PH.wv,dd=PH.d,Kp=PH.Kp,Kd=PH.Kd,Wg=PH.Wg;
+  var G=S.g*4,motor=S.wn>0,i,j,a,ce,se,Hi,C,ff,hij,tau;
+  for(i=0;i<n;i++){a=act[i].f*W0*t+act[i].ph;ct[i]=Math.cos(a);st[i]=Math.sin(a);ce=Math.cos(y[i]);se=Math.sin(y[i]);
+    c[i]=ct[i]*ce-st[i]*se;s[i]=st[i]*ce+ct[i]*se;wd[i]=act[i].f*W0;wv[i]=wd[i]+y[n+i];}
+  if(motor)for(i=0;i<n;i++)u[i]=-Kp[i]*(y[i]-(i?y[i-1]:0))-Kd[i]*(y[n+i]-(i?y[n+i-1]:0));
+  for(i=0;i<n;i++){C=0;ff=0;Hi=i*n;
+    for(j=0;j<n;j++){hij=H[Hi+j];
+      C+=hij*(s[i]*c[j]-c[i]*s[j])*wv[j]*wv[j];
+      if(motor)ff+=hij*(st[i]*ct[j]-ct[i]*st[j])*wd[j]*wd[j];
+      A[Hi+j]=i===j?1:hij*(c[i]*c[j]+s[i]*s[j])*dd[i]*dd[j];}
+    tau=motor?u[i]-(i<n-1?u[i+1]:0)+ff:0;
+    b[i]=(tau-C-G*c[i]*Wg[i])*dd[i];}
+  chol(A,b,n,x);
+  for(i=0;i<n;i++){dy[i]=y[n+i];dy[n+i]=x[i]*dd[i];}
+}
+/* One Dormand–Prince 5(4) step: returns the error norm; on success the new state is in PH.yn */
+function dpStep(t,h){
+  var N=2*PH.n,y=PH.y,k=PH.k,tmp=PH.tmp,yn=PH.yn,i,q,r,sum,er=0,sc,e;
+  if(!PH.fsal)rhs(t,y,k[0]);
+  for(q=1;q<=5;q++){for(i=0;i<N;i++){sum=0;for(r=0;r<q;r++)sum+=DPA[q][r]*k[r][i];tmp[i]=y[i]+h*sum;}rhs(t+DPC[q]*h,tmp,k[q]);}
+  for(i=0;i<N;i++){sum=0;for(r=0;r<6;r++)sum+=DPB[r]*k[r][i];yn[i]=y[i]+h*sum;}
+  rhs(t+h,yn,k[6]);
+  for(i=0;i<N;i++){sum=0;for(r=0;r<7;r++)sum+=DPE[r]*k[r][i];sc=1e-13+1e-12*Math.max(Math.abs(y[i]),Math.abs(yn[i]));e=h*sum/sc;er+=e*e;}
+  return Math.sqrt(er/N);
+}
+function physAdvance(t,hmax){
+  for(var tries=0;tries<60;tries++){
+    var h=Math.min(PH.h,hmax),er=dpStep(t,h),fac;
+    fac=er!==er?0.2:(er===0?5:Math.min(5,Math.max(0.2,0.9*Math.pow(er,-0.2))));
+    if(er<=1){var tmp=PH.y;PH.y=PH.yn;PH.yn=tmp;tmp=PH.k[0];PH.k[0]=PH.k[6];PH.k[6]=tmp;PH.fsal=true;
+      var nh=Math.min(0.02,h*fac);PH.h=h<PH.h?Math.min(PH.h,nh):nh;return h;}
+    PH.h=h*Math.min(1,fac);
+  }
+  return -1;
+}
+function syncState(){var n=PH.n,a=PH.act;for(var i=0;i<n;i++){a[i].e=PH.y[i];a[i].ev=PH.y[n+i];}}
+var mt=0,wmin=1,wmax=1,wshow=0;
+function monitor(dt){var T=PH.mon;if(!T)return;var r=(T.f*W0+T.ev)/(T.f*W0);
+  wmin=Math.min(wmin,r);wmax=Math.max(wmax,r);mt+=dt;wshow+=dt;
+  if(wshow>0.25){document.getElementById('sW').textContent=wmin.toFixed(2)+' – '+wmax.toFixed(2)+'×';
+    var sp=PH.speed;document.getElementById('sS').textContent=sp>=0.995?'Real time (1.00×)':sp.toFixed(2)+'× (accuracy first, slowed display)';wshow=0;}
+  if(mt>4){mt=0;wmin=wmax=r;}}
+var vis=true;if(window.IntersectionObserver)new IntersectionObserver(function(e){vis=e[e.length-1].isIntersecting;}).observe(document.getElementById("stageMain"));
+var last=0;
+function loop(ts){
+  var dt=Math.min(0.05,(ts-last)/1000);last=ts;
+  if(S.play&&vis){
+    if(usePhys()){
+      /* Fixed grid (1/240 s) independent of frames: the step sequence is the same on every device, so even chaotic trajectories are reproducible */
+      var w0=performance.now(),Q=1/240,done=0,tt,te,h,ok=true;
+      PH.credit=Math.min((PH.credit||0)+dt,0.25);
+      while(ok&&PH.credit>=Q-1e-12&&performance.now()-w0<12){
+        tt=PH.tsim;te=tt+Q;
+        while(te-tt>1e-12){h=physAdvance(tt,te-tt);if(h<=0){physReset();ok=false;break;}tt+=h;}
+        if(!ok)break;
+        PH.tsim=te;PH.credit-=Q;done+=Q;if(PH.tsim>=9)PH.tsim-=9;}
+      S.cum=(S.cum||0)+done;
+      S.phase=((PH.tsim/9)%1+1)%1;syncState();
+      if(dt>0)PH.speed+=((done/dt)-PH.speed)*0.2;
+      monitor(dt);}
+    else S.phase=(S.phase+dt/9)%1;}
+  draw();requestAnimationFrame(loop);
+}
+
+function refresh(full){if(full)dft();build();}
+var sh=document.getElementById('shapes');
+[['square','Square'],['triangle','Triangle'],['star','Star'],['heart','Heart']].forEach(function(s){
+  var b=document.createElement('button');b.textContent=s[1];b.setAttribute('aria-pressed',s[0]===S.shape);
+  b.onclick=function(){S.shape=s[0];[].forEach.call(sh.children,function(c){c.setAttribute('aria-pressed',c===b);});S.phase=0;refresh(true);};
+  sh.appendChild(b);});
+var mS=document.getElementById('m'),nS=document.getElementById('n');
+mS.oninput=function(){S.M=+mS.value;refresh(false);};
+function afterCtl(){S.trail=[];if(!usePhys()){physReset();document.getElementById('sW').textContent='1.00× (constant)';document.getElementById('sS').textContent='Real time';}
+  PH.fsal=false;PH.tsim=S.phase*9;PH.credit=0;wmin=wmax=1;mt=0;PH.speed=1;showNote();}
+var gS=document.getElementById('gg');gS.oninput=function(){S.g=+gS.value;document.getElementById('gv').textContent=S.g.toFixed(1);afterCtl();};
+var wS=document.getElementById('wn');wS.oninput=function(){S.wn=+wS.value;document.getElementById('wnv').textContent=S.wn===0?'Off':S.wn;physGains();afterCtl();};
+nS.oninput=function(){S.N=+nS.value;S.M=Math.min(S.M,S.N);mS.max=Math.min(64,S.N);if(+mS.value>S.M)mS.value=S.M;refresh(true);};
+function setOrder(o){S.order=o;document.getElementById('oSize').setAttribute('aria-pressed',o==='size');document.getElementById('oFreq').setAttribute('aria-pressed',o==='freq');refresh(false);}
+document.getElementById('oSize').onclick=function(){setOrder('size');};
+document.getElementById('oFreq').onclick=function(){setOrder('freq');};
+var pb=document.getElementById('play');pb.textContent=S.play?'Pause':'Play';
+pb.onclick=function(){S.play=!S.play;pb.textContent=S.play?'Pause':'Play';};
+var db=document.getElementById('dots');
+db.onclick=function(){S.dots=!S.dots;db.setAttribute('aria-pressed',S.dots);};
+window.addEventListener('resize',fit);
+fit();refresh(true);requestAnimationFrame(loop);
+})();
+(function(){
+var A=document.getElementById('cA'),B=document.getElementById('cB'),a=A.getContext('2d'),b=B.getContext('2d');
+var P={l1:1,l2:1,w:3,K:2,d:0.6,th:120,go:!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches),t:0},pen,trA,g=9.81;
+function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function chainPts(t){var x=0,y=0,o=[];for(var j=1;j<=P.K;j++){var l=j===1?P.l1:P.l2*Math.pow(P.d,j-2),w=1+(j-1)*(P.w-1);x+=l*Math.cos(w*t);y+=l*Math.sin(w*t);o.push([x,y]);}return o;}
+function chainLen(){var s=P.l1;for(var j=2;j<=P.K;j++)s+=P.l2*Math.pow(P.d,j-2);return s;}
+function init(){var q=P.th*Math.PI/180,n=P.K,a=[],z=[],i,b;for(i=0;i<n;i++){a.push(q);z.push(0);}b=a.slice();b[0]+=0.001;pen=[{s:a.concat(z),tr:[]},{s:b.concat(z),tr:[]}];trA=[];P.t=0;P.cr=0;P.k=0;}
+/* Same model as the arm above: uniform rods with mass proportional to length (angles measured from the downward vertical) */
+/* n segments (same count and lengths as the left chain). State s = [θ1..θn, ω1..ωn], mass m = length */
+function lens(){var o=[],j;for(j=1;j<=P.K;j++)o.push(j===1?P.l1:P.l2*Math.pow(P.d,j-2));return o;}
+function solve(A,b,n){var i,j,k,m,x=[],t;for(i=0;i<n;i++)for(j=i+1;j<n;j++){m=A[j][i]/A[i][i];for(k=i;k<n;k++)A[j][k]-=m*A[i][k];b[j]-=m*b[i];}
+for(i=n-1;i>=0;i--){t=b[i];for(k=i+1;k<n;k++)t-=A[i][k]*x[k];x[i]=t/A[i][i];}return x;}
+function f(s){var n=P.K,L=lens(),th=s.slice(0,n),w=s.slice(n),AF=[],R=[],A=[],b=[],i,j,af=0,C,h;
+for(i=n-1;i>=0;i--){AF[i]=af;R[i]=af+L[i]/2;af+=L[i];}
+for(i=0;i<n;i++){A[i]=[];C=0;for(j=0;j<n;j++){if(i===j)A[i][j]=L[i]*L[i]*(AF[i]+L[i]/3);else{h=L[i]*L[j]*R[Math.max(i,j)];A[i][j]=h*Math.cos(th[i]-th[j]);C+=h*Math.sin(th[i]-th[j])*w[j]*w[j];}}
+b[i]=-C-g*L[i]*R[i]*Math.sin(th[i]);}
+return w.concat(solve(A,b,n));}
+function pend(s){var L=lens(),x=0,y=0,o=[],i;for(i=0;i<P.K;i++){x+=L[i]*Math.sin(s[i]);y-=L[i]*Math.cos(s[i]);o.push([x,y]);}return o;}
+function rk(s,h){var k1=f(s),k2=f(s.map(function(x,i){return x+h/2*k1[i];})),k3=f(s.map(function(x,i){return x+h/2*k2[i];})),k4=f(s.map(function(x,i){return x+h*k3[i];}));return s.map(function(x,i){return x+h/6*(k1[i]+2*k2[i]+2*k3[i]+k4[i]);});}
+function size(c){var w=c.clientWidth,d=window.devicePixelRatio||1;if(c.width!==Math.round(w*d)){c.width=Math.round(w*d);c.height=c.width;}return c.width;}
+function arm(ctx,W,pts,tr,col,al,sc){var cx=W/2,cy=W/2;ctx.globalAlpha=al;ctx.strokeStyle=col;ctx.lineWidth=W/300;ctx.beginPath();tr.forEach(function(p,i){i?ctx.lineTo(cx+p[0]*sc,cy-p[1]*sc):ctx.moveTo(cx+p[0]*sc,cy-p[1]*sc);});ctx.stroke();
+if(pts){ctx.lineWidth=W/150;ctx.beginPath();ctx.moveTo(cx,cy);pts.forEach(function(p){ctx.lineTo(cx+p[0]*sc,cy-p[1]*sc);});ctx.stroke();ctx.fillStyle=col;pts.forEach(function(p){ctx.beginPath();ctx.arc(cx+p[0]*sc,cy-p[1]*sc,W/90,0,7);ctx.fill();});}ctx.globalAlpha=1;}
+var vis2=true;if(window.IntersectionObserver)new IntersectionObserver(function(e){vis2=e[e.length-1].isIntersecting;}).observe(A.parentNode);
+var last=0;
+function frame(ts){var dt=Math.min(0.05,(ts-last)/1000);last=ts;
+if(P.go&&vis2){P.cr+=dt;while(P.cr>=0.001){P.cr-=0.001;P.t+=0.001;P.k++;pen.forEach(function(p){p.s=rk(p.s,0.001);});
+if(P.k%10===0){pen.forEach(function(p){p.tr.push(pend(p.s).pop());if(p.tr.length>800)p.tr.shift();});
+trA.push(chainPts(P.t).pop());if(trA.length>700)trA.shift();}}}
+var W=size(A);size(B);a.clearRect(0,0,W,W);b.clearRect(0,0,W,W);var sc=W/2/(Math.max(P.l1+P.l2,chainLen())+0.15),cc=css('--circ'),cp=css('--path'),cg=css('--alt');
+arm(a,W,chainPts(P.t),trA,cc,1,sc);
+pen.forEach(function(p,i){arm(b,W,i?null:pend(p.s),p.tr,i?cg:cp,i?0.9:1,sc);});
+requestAnimationFrame(frame);}
+function bind(id,key,fmt,reset){var e=document.getElementById(id),v=document.getElementById(id+'v');function u(){P[key]=+e.value;v.textContent=fmt(P[key]);}e.oninput=function(){u();if(reset)init();};u();}
+bind('l1','l1',function(x){return x.toFixed(2);},true);bind('l2','l2',function(x){return x.toFixed(2);},true);bind('wr','w',function(x){return x;},false);bind('kk','K',function(x){return x;},true);bind('dd','d',function(x){return x.toFixed(2);},true);['wr','kk','dd'].forEach(function(i){document.getElementById(i).addEventListener('input',function(){trA=[];});});bind('th','th',function(x){return x+'°';},true);
+function setL(x,y){var e1=document.getElementById('l1'),e2=document.getElementById('l2');e1.value=x;e2.value=y;e1.oninput();e2.oninput();}
+document.getElementById('pEq').onclick=function(){setL(1,1);};document.getElementById('pTw').onclick=function(){setL(1.2,0.6);};document.getElementById('pRs').onclick=init;
+var go=document.getElementById('pGo');go.textContent=P.go?'Pause':'Play';go.onclick=function(){P.go=!P.go;go.textContent=P.go?'Pause':'Play';};
+init();requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
