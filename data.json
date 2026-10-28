@@ -1,6 +1,18 @@
 {
   "globalNews": [
     {
+      "title": "Netanyahu's bloc leading Israel election but short of majority, partial results show",
+      "link": "https://www.bbc.co.uk/news/articles/cmdx3knq1xexo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 28 Oct 2026 16:59:47 GMT",
+      "desc": "With 85% of ballots counted, Netanyahu's Likud party and its allies are set to win 53 seats in the 120-seat Knesset."
+    },
+    {
+      "title": "How could Israel break election deadlock? Here are four scenarios",
+      "link": "https://www.bbc.co.uk/news/articles/cm62y46d97wwo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 28 Oct 2026 14:30:31 GMT",
+      "desc": "With 85% of votes counted, all signs point to an impasse. The most likely outcome may be new elections."
+    },
+    {
       "title": "Luxury cruise passengers stranded in Cambodia due to soaring fuel costs",
       "link": "https://www.bbc.co.uk/news/articles/cwj342k62exyo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 28 Oct 2026 10:31:22 GMT",
@@ -17,18 +29,6 @@
       "link": "https://www.bbc.co.uk/news/articles/c5m2dry2xwwvo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 28 Oct 2026 10:18:40 GMT",
       "desc": "The energy minister described it as a \"major milestone\" for the East African nation."
-    },
-    {
-      "title": "Anger in Kenya over extradition hearing delay for ex-British soldier accused of murdering woman",
-      "link": "https://www.bbc.co.uk/news/articles/cmly073ql392o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 28 Oct 2026 08:28:39 GMT",
-      "desc": "No official reason has been given for postponing next month’s hearing to May 2027, the family says."
-    },
-    {
-      "title": "Ceasefire extended across Ukraine's Kherson region, officials say",
-      "link": "https://www.bbc.co.uk/news/articles/c6lye1w9p2l8o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 27 Oct 2026 22:11:08 GMT",
-      "desc": "The truce was originally planned for the stranded residents of Oleshky, and Russia and Ukraine say no breaches have been reported."
     }
   ],
   "koreaNews": [
@@ -57,10 +57,10 @@
       "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "Economy surprises with 1% growth in Q3 due to strong chip exports - Korea.net",
-      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE0yUF8tSXM2R3gyRHYzRlJmdnRLdThiLWlvZENHTU5WanBPektUZkpacGRIMHBtVVo4UWx4R2dLX0JUc2RpdlJrM0Y5Y19jZkpoOVZCbE14clk5LXJ6WHpkSGEwMHU5ai1ublQ0bGE0cw?oc=5",
-      "date": "Tue, 27 Oct 2026 09:36:29 GMT",
-      "desc": "Economy surprises with 1% growth in Q3 due to strong chip exports&nbsp;&nbsp;Korea.net"
+      "title": "AI chip boom tripled South Korea's economic growth in the third quarter - Euronews.com",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNaUdSbUFHY05YNHFqUWpxOTZpYkJ2Q19YTXV2ZEdlY1A2UGtPWkZMRTdNNndmVC1pc1NHNVdGd05yLXpNMG5kQmgxdTVWelZEUFhwMjl5MTVsQVhqVXQyYUt0ZTdMYmJxWHlDM3Z1NllBTlhjakZrcUVuRFEzZE01cTI1UFVSOG8tdTBrSlhaT1hXYW1pX3BVOHVyOERSNjJBcUoyaEcwQmhjdw?oc=5",
+      "date": "Tue, 27 Oct 2026 09:19:18 GMT",
+      "desc": "AI chip boom tripled South Korea's economic growth in the third quarter&nbsp;&nbsp;Euronews.com"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -69,105 +69,105 @@
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "KOSPI Recovers 6,000 on Semiconductor Rally - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPSC1fT0hBRFdMcnVzTEFqLURNQ0loNDNfYXp4Qm9BN0xHNXdtWnRRcnpkMjdZWjQxYnVheWhjOWRHUDV3ajU1LWppMlBXVWRPNXRta0lqdDVRdEFXVlFQNTZHUTdjSVdJQ2gzUUlsdmQ0b0lGZGlON3R0ZjJieDlpSXNtdnZjVE92RmZPOVhR?oc=5",
-      "date": "Wed, 28 Oct 2026 11:18:38 GMT",
-      "desc": "KOSPI Recovers 6,000 on Semiconductor Rally&nbsp;&nbsp;조선일보"
-    },
-    {
       "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQR1NNS1ZjY0QxRUJaLXBTSkNHenBNQU8ySk1rT0FhbmItdVEyZFJhamF3OFdFb2kzZ0EtUW1ZV0g2SDM1cVI2TXdTMjJSNFJRZjM0NXZKbEs5OUFNZjgtSGN0RUpRemdKM2FVbzJxTm1rQkVGdldVdDdORFl0UWRDRzhNeURmWWlBUmpveXNOZk95TjBGa1dSYVB6VHJYUkdxVXptYjRtWVVfX1hTa01vTHhwa2c3QQ?oc=5",
       "date": "Tue, 27 Oct 2026 09:05:59 GMT",
       "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "KOSPI Recovers 6,000 on Semiconductor Rally - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPSC1fT0hBRFdMcnVzTEFqLURNQ0loNDNfYXp4Qm9BN0xHNXdtWnRRcnpkMjdZWjQxYnVheWhjOWRHUDV3ajU1LWppMlBXVWRPNXRta0lqdDVRdEFXVlFQNTZHUTdjSVdJQ2gzUUlsdmQ0b0lGZGlON3R0ZjJieDlpSXNtdnZjVE92RmZPOVhR?oc=5",
+      "date": "Wed, 28 Oct 2026 11:18:38 GMT",
+      "desc": "KOSPI Recovers 6,000 on Semiconductor Rally&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 217.28,
-      "change": 1.28,
-      "pct": 0.59,
+      "price": 215.53,
+      "change": -0.47,
+      "pct": -0.22,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 438.13,
-      "change": 13.76,
-      "pct": 3.24,
+      "price": 437.29,
+      "change": 12.92,
+      "pct": 3.04,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 566.15,
-      "change": 34.87,
-      "pct": 6.56,
+      "price": 574.11,
+      "change": 42.83,
+      "pct": 8.06,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 93.78,
-      "change": 3.31,
-      "pct": 3.65,
+      "price": 94.8,
+      "change": 4.33,
+      "pct": 4.79,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 181.51,
-      "change": 1.91,
-      "pct": 1.06,
+      "price": 181.07,
+      "change": 1.47,
+      "pct": 0.82,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 232.97,
-      "change": 9.62,
-      "pct": 4.31,
+      "price": 233.13,
+      "change": 9.78,
+      "pct": 4.38,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 323.76,
-      "change": 6.96,
-      "pct": 2.2,
+      "price": 324.76,
+      "change": 7.96,
+      "pct": 2.51,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 344.94,
-      "change": 1.02,
-      "pct": 0.3,
+      "price": 344.57,
+      "change": 0.66,
+      "pct": 0.19,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 527.16,
-      "change": -5.44,
-      "pct": -1.02,
+      "price": 528.69,
+      "change": -3.91,
+      "pct": -0.73,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7736.75,
-      "change": 59.98,
-      "pct": 0.78,
+      "price": 7727.94,
+      "change": 51.17,
+      "pct": 0.67,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26455.09,
-      "change": 285.71,
-      "pct": 1.09,
+      "price": 26462.88,
+      "change": 293.5,
+      "pct": 1.12,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1343.7,
-      "change": 18.93,
-      "pct": 1.43,
+      "price": 1341.54,
+      "change": 16.77,
+      "pct": 1.27,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-28 15:50 UTC"
+  "updatedAt": "2026-10-28 19:11 UTC"
 }
