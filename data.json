@@ -1,10 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "Audio reveals exchanges between control centre and drivers before deadly Spain train crash",
+      "title": "Audio reveals exchanges between Spain train operators and drivers moments before deadly crash",
       "link": "https://www.bbc.co.uk/news/articles/cmqxnl312v34o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 29 Oct 2026 11:07:35 GMT",
-      "desc": "The recordings appear to show one high-speed train was given clearance to move even though another up ahead had stalled."
+      "desc": "The leaked tapes appear to show one high-speed train was given clearance to move at normal speed, even though another up ahead had stalled."
     },
     {
       "title": "Russian drone attack on Ukrainian train station kills at least 14, officials say",
@@ -39,10 +39,10 @@
       "desc": "Opinion | This peninsula is an economic powder keg. A blast could cost trillions.&nbsp;&nbsp;The Washington Post"
     },
     {
-      "title": "Watch Fed's Warsh on Why He Watches Korea's Economy Closely - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOS3FjYUVEZkFvMV9VYWhtbmN2LUZsLWlJTW91X3I0VVZpSUZVUHFVX2dwVklMN2l2YUlQc3JXTTJDdUplUWZkZE81UURFaTFVb3d1UE10QVUzN3NCR3Q3eTBOSEVrTDZaT1RKaEVHLUF3RmlBZmF1SkxSaHZaczhpM1puQUpacmk3WkhpYzVvSlZuLVpuTXVLekdmdDViOFNrZlhieXZGSmpzdXRD?oc=5",
-      "date": "Thu, 29 Oct 2026 03:13:12 GMT",
-      "desc": "Watch Fed's Warsh on Why He Watches Korea's Economy Closely&nbsp;&nbsp;Bloomberg.com"
+      "title": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdkRpLUlXdXdjQkhpNEQ0WEZzN3NCSjlOSURvR0xhXzBEelFRLWUtQUFIekV3dEVpOTY5N0tROC1LMlZVQjJHTkRtZEVBQmhaWVg4c0ZMejNwVk9lWGpfTWxYY1UzNGVkZ0s3WGNFV2g4bmEyVXlkeTIxaGtfWE9uNDJTdzEwa3JycTFpdU0wR2lmWWdXYjJVejg5WGhDS3VvajV2ZnlaLUloQmRmZTA0c0JOTlQ5WjZGTTd3?oc=5",
+      "date": "Thu, 29 Oct 2026 05:21:00 GMT",
+      "desc": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll&nbsp;&nbsp;Reuters"
     },
     {
       "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 214.39,
-      "change": -3.55,
-      "pct": -1.63,
+      "price": 212.75,
+      "change": -5.19,
+      "pct": -2.38,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 436.08,
-      "change": -0.79,
-      "pct": -0.18,
+      "price": 429.73,
+      "change": -7.14,
+      "pct": -1.64,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 574.65,
-      "change": 14.39,
-      "pct": 2.57,
+      "price": 562.4,
+      "change": 2.14,
+      "pct": 0.38,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 93.32,
-      "change": -0.42,
-      "pct": -0.45,
+      "price": 91.33,
+      "change": -2.41,
+      "pct": -2.57,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 183.61,
-      "change": -0.56,
-      "pct": -0.3,
+      "price": 183.53,
+      "change": -0.64,
+      "pct": -0.35,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 231.72,
-      "change": 5.12,
-      "pct": 2.26,
+      "price": 226.56,
+      "change": -0.04,
+      "pct": -0.02,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 286.79,
-      "change": -33.79,
-      "pct": -10.54,
+      "price": 282.89,
+      "change": -37.69,
+      "pct": -11.76,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 349.19,
-      "change": 2.09,
-      "pct": 0.6,
+      "price": 350.15,
+      "change": 3.05,
+      "pct": 0.88,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 523.32,
-      "change": -8.01,
-      "pct": -1.51,
+      "price": 528.42,
+      "change": -2.91,
+      "pct": -0.55,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7725.52,
-      "change": 2.92,
-      "pct": 0.04,
+      "price": 7701.93,
+      "change": -20.67,
+      "pct": -0.27,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26257.18,
-      "change": -220.63,
-      "pct": -0.83,
+      "price": 26124.03,
+      "change": -353.78,
+      "pct": -1.34,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1338.54,
-      "change": 11.73,
-      "pct": 0.88,
+      "price": 1339.49,
+      "change": 12.68,
+      "pct": 0.96,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-29 15:58 UTC"
+  "updatedAt": "2026-10-29 19:20 UTC"
 }
