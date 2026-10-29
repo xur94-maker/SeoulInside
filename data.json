@@ -1,9 +1,27 @@
 {
   "globalNews": [
     {
+      "title": "High-speed train crash kills at least 68 people in Spain",
+      "link": "https://www.bbc.co.uk/news/articles/c6p3g84kjqjlo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 28 Oct 2026 21:38:54 GMT",
+      "desc": "The crash, between a moving train and another that was stopped further up the track, was caused by an \"inexplicable\" error, the transport minister said."
+    },
+    {
+      "title": "Bloodied, dazed and angry - how passengers' rail journey turned to disaster in Spain",
+      "link": "https://www.bbc.co.uk/news/articles/cm9qzd47ng98o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 28 Oct 2026 21:24:41 GMT",
+      "desc": "Survivors of the train crash in Spain have spoken of their shock, panic and anger at the accident in Toledo province on Wednesday."
+    },
+    {
+      "title": "Flávio Bolsonaro denies fleeing Brazil after landing in Miami",
+      "link": "https://www.bbc.co.uk/news/articles/c6kglwe4lxwzo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 29 Oct 2026 01:14:01 GMT",
+      "desc": "The defeated Brazilian candidate claims to be the victim of a coup d’état and political persecution, recycling unsubstantiated allegations of “electoral fraud”."
+    },
+    {
       "title": "Netanyahu's bloc leading Israel election but short of majority, partial results show",
       "link": "https://www.bbc.co.uk/news/articles/cmdx3knq1xexo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 28 Oct 2026 16:59:47 GMT",
+      "date": "Wed, 28 Oct 2026 20:24:39 GMT",
       "desc": "With 85% of ballots counted, Netanyahu's Likud party and its allies are set to win 53 seats in the 120-seat Knesset."
     },
     {
@@ -11,24 +29,6 @@
       "link": "https://www.bbc.co.uk/news/articles/cm62y46d97wwo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 28 Oct 2026 14:30:31 GMT",
       "desc": "With 85% of votes counted, all signs point to an impasse. The most likely outcome may be new elections."
-    },
-    {
-      "title": "Luxury cruise passengers stranded in Cambodia due to soaring fuel costs",
-      "link": "https://www.bbc.co.uk/news/articles/cwj342k62exyo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 28 Oct 2026 10:31:22 GMT",
-      "desc": "The Villa Vie Odyssey suspended its voyage and is working with passengers on \"temporary living arrangements\"."
-    },
-    {
-      "title": "Serbian shot dead after attacking officer outside Israeli embassy, minister says",
-      "link": "https://www.bbc.co.uk/news/articles/ck5ynj4eeyj2o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 28 Oct 2026 10:17:54 GMT",
-      "desc": "Authorities say the attacker in Belgrade was an underage male who was being monitored by security services."
-    },
-    {
-      "title": "Tanzania celebrates first natural gas discovery in more than 10 years",
-      "link": "https://www.bbc.co.uk/news/articles/c5m2dry2xwwvo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 28 Oct 2026 10:18:40 GMT",
-      "desc": "The energy minister described it as a \"major milestone\" for the East African nation."
     }
   ],
   "koreaNews": [
@@ -39,10 +39,16 @@
       "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom - Bloomberg",
+      "title": "AI chip boom tripled South Korea's economic growth in the third quarter - Euronews.com",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNaUdSbUFHY05YNHFqUWpxOTZpYkJ2Q19YTXV2ZEdlY1A2UGtPWkZMRTdNNndmVC1pc1NHNVdGd05yLXpNMG5kQmgxdTVWelZEUFhwMjl5MTVsQVhqVXQyYUt0ZTdMYmJxWHlDM3Z1NllBTlhjakZrcUVuRFEzZE01cTI1UFVSOG8tdTBrSlhaT1hXYW1pX3BVOHVyOERSNjJBcUoyaEcwQmhjdw?oc=5",
+      "date": "Tue, 27 Oct 2026 09:19:18 GMT",
+      "desc": "AI chip boom tripled South Korea's economic growth in the third quarter&nbsp;&nbsp;Euronews.com"
+    },
+    {
+      "title": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTnpJb2RySjVxUVBCay04SEJpbmlWMmNYaXU3Wk1Pc0lNRzJnQzA2d1pmTjM5Vm05QUx4OVhzUGZpZEJiWUhRVHFRVENFcFFoVC0xalpFM21LWTVBNEkzdHVQQ0NzcTFTdnMxdnVoYUQxWGNwSlZ0Z1dQdlZCTU1LX1dMVVhmeWthUkNNTHlWeFhnR1RjRWhLWWx1ZTNmaldzcWU5V3ZEaUlwSVI0SWJ6Wg?oc=5",
       "date": "Tue, 27 Oct 2026 00:07:00 GMT",
-      "desc": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom&nbsp;&nbsp;Bloomberg"
+      "desc": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
@@ -57,22 +63,16 @@
       "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "AI chip boom tripled South Korea's economic growth in the third quarter - Euronews.com",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNaUdSbUFHY05YNHFqUWpxOTZpYkJ2Q19YTXV2ZEdlY1A2UGtPWkZMRTdNNndmVC1pc1NHNVdGd05yLXpNMG5kQmgxdTVWelZEUFhwMjl5MTVsQVhqVXQyYUt0ZTdMYmJxWHlDM3Z1NllBTlhjakZrcUVuRFEzZE01cTI1UFVSOG8tdTBrSlhaT1hXYW1pX3BVOHVyOERSNjJBcUoyaEcwQmhjdw?oc=5",
-      "date": "Tue, 27 Oct 2026 09:19:18 GMT",
-      "desc": "AI chip boom tripled South Korea's economic growth in the third quarter&nbsp;&nbsp;Euronews.com"
-    },
-    {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
       "date": "Wed, 21 Oct 2026 07:48:20 GMT",
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg.com",
+      "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQR1NNS1ZjY0QxRUJaLXBTSkNHenBNQU8ySk1rT0FhbmItdVEyZFJhamF3OFdFb2kzZ0EtUW1ZV0g2SDM1cVI2TXdTMjJSNFJRZjM0NXZKbEs5OUFNZjgtSGN0RUpRemdKM2FVbzJxTm1rQkVGdldVdDdORFl0UWRDRzhNeURmWWlBUmpveXNOZk95TjBGa1dSYVB6VHJYUkdxVXptYjRtWVVfX1hTa01vTHhwa2c3QQ?oc=5",
       "date": "Tue, 27 Oct 2026 09:05:59 GMT",
-      "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg.com"
+      "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg"
     },
     {
       "title": "KOSPI Recovers 6,000 on Semiconductor Rally - 조선일보",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 215.53,
-      "change": -0.47,
-      "pct": -0.22,
+      "price": 215.38,
+      "change": -0.62,
+      "pct": -0.29,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 437.29,
-      "change": 12.92,
-      "pct": 3.04,
+      "price": 439.51,
+      "change": 15.14,
+      "pct": 3.57,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 574.11,
-      "change": 42.83,
-      "pct": 8.06,
+      "price": 578.44,
+      "change": 47.16,
+      "pct": 8.88,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 94.8,
-      "change": 4.33,
-      "pct": 4.79,
+      "price": 95.53,
+      "change": 5.06,
+      "pct": 5.59,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 181.07,
-      "change": 1.47,
-      "pct": 0.82,
+      "price": 182.97,
+      "change": 3.37,
+      "pct": 1.88,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 233.13,
-      "change": 9.78,
-      "pct": 4.38,
+      "price": 235.9,
+      "change": 12.55,
+      "pct": 5.62,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 324.76,
-      "change": 7.96,
-      "pct": 2.51,
+      "price": 324.89,
+      "change": 8.09,
+      "pct": 2.55,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 344.57,
-      "change": 0.66,
-      "pct": 0.19,
+      "price": 343.83,
+      "change": -0.08,
+      "pct": -0.02,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 528.69,
-      "change": -3.91,
-      "pct": -0.73,
+      "price": 531.01,
+      "change": -1.59,
+      "pct": -0.3,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7727.94,
-      "change": 51.17,
-      "pct": 0.67,
+      "price": 7743.98,
+      "change": 67.21,
+      "pct": 0.88,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 26462.88,
-      "change": 293.5,
-      "pct": 1.12,
+      "price": 26549.85,
+      "change": 380.47,
+      "pct": 1.45,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 242000.0,
-      "change": 29000.0,
-      "pct": 13.62,
+      "price": 237500.0,
+      "change": 15500.0,
+      "pct": 6.98,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1487000.0,
-      "change": 212000.0,
-      "pct": 16.63,
+      "price": 1541000.0,
+      "change": 200000.0,
+      "pct": 14.91,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 296000.0,
-      "change": 8000.0,
-      "pct": 2.78,
+      "price": 288500.0,
+      "change": -2000.0,
+      "pct": -0.69,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 107900.0,
-      "change": 2800.0,
-      "pct": 2.66,
+      "price": 106500.0,
+      "change": 0.0,
+      "pct": 0.0,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 178000.0,
-      "change": 3800.0,
-      "pct": 2.18,
+      "price": 173700.0,
+      "change": -600.0,
+      "pct": -0.34,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 6012.44,
-      "change": 542.97,
-      "pct": 9.93,
+      "price": 5965.44,
+      "change": 327.1,
+      "pct": 5.8,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1341.54,
-      "change": 16.77,
-      "pct": 1.27,
+      "price": 1332.18,
+      "change": 5.37,
+      "pct": 0.4,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-28 19:11 UTC"
+  "updatedAt": "2026-10-29 01:28 UTC"
 }
