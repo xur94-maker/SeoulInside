@@ -1,16 +1,10 @@
 {
   "globalNews": [
     {
-      "title": "US approves sale of 500 Patriot missiles to Ukraine",
-      "link": "https://www.bbc.co.uk/news/articles/c3vgxznlx7jzo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 00:40:43 GMT",
-      "desc": "The American-made interceptors are the only effective weapon for downing Russia's ballistic missiles."
-    },
-    {
-      "title": "Crypto giant Binance attempting to recover $6.3bn stolen in hack linked to North Korea",
-      "link": "https://www.bbc.co.uk/news/articles/cwe8lp7zy07zo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 30 Oct 2026 21:13:14 GMT",
-      "desc": "The cyber-attack, which the company describes as complex, is believed to be the largest ever of its kind."
+      "title": "Evacuees from Russia-occupied city where residents ate weeds arrive in Ukraine",
+      "link": "https://www.bbc.co.uk/news/articles/cqx2818elrnzo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 31 Oct 2026 14:53:34 GMT",
+      "desc": "Residents left the devastated city on Friday following a ceasefire brokered by US First Lady Melania Trump."
     },
     {
       "title": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack",
@@ -19,24 +13,30 @@
       "desc": "If the accusations are true, the record-making heist shows how powerful suspected North Korean hackers have become."
     },
     {
+      "title": "More than 5,000 die from Ebola in DR Congo's deadliest outbreak",
+      "link": "https://www.bbc.co.uk/news/articles/cj5ynryyep2yo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 31 Oct 2026 14:48:49 GMT",
+      "desc": "Government data shows that more than 10,000 people have contracted the rare virus."
+    },
+    {
       "title": "Police deployed during stand-off over control of top Poland court",
       "link": "https://www.bbc.co.uk/news/articles/crz9824d5e88o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 31 Oct 2026 01:11:43 GMT",
       "desc": "The escalation came after the government suspended two senior justices and moved to bring criminal charges against them."
     },
     {
-      "title": "Spain train disaster clouds Sánchez chances of re-election",
-      "link": "https://www.bbc.co.uk/news/articles/cmeweppr990qo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 05:44:21 GMT",
-      "desc": "The Spanish PM is hit by a succession of crises just weeks before a snap general election."
+      "title": "Ethiopian PM puts ministers through military training",
+      "link": "https://www.bbc.co.uk/news/articles/cmwyv2y7g9l8o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 31 Oct 2026 14:28:15 GMT",
+      "desc": "The prime minister has previously emphasised military preparedness as central to his government's ambitions."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdkRpLUlXdXdjQkhpNEQ0WEZzN3NCSjlOSURvR0xhXzBEelFRLWUtQUFIekV3dEVpOTY5N0tROC1LMlZVQjJHTkRtZEVBQmhaWVg4c0ZMejNwVk9lWGpfTWxYY1UzNGVkZ0s3WGNFV2g4bmEyVXlkeTIxaGtfWE9uNDJTdzEwa3JycTFpdU0wR2lmWWdXYjJVejg5WGhDS3VvajV2ZnlaLUloQmRmZTA0c0JOTlQ5WjZGTTd3?oc=5",
-      "date": "Thu, 29 Oct 2026 05:21:00 GMT",
-      "desc": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll&nbsp;&nbsp;Reuters"
+      "title": "S. Korea, US, Japan reaffirm NK denuclearization goal, bolster economic ties - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBTmdoZ0xIUDVpSFVONnZXQUV1eVZlTXNoRHFoclZZVHVMWkljSnoxR2NhaEdQZ0V0SzZZekpJNU44QkNpeGVweGxjT3JyTm1qZk5yS3d4QQ?oc=5",
+      "date": "Sat, 31 Oct 2026 01:50:27 GMT",
+      "desc": "S. Korea, US, Japan reaffirm NK denuclearization goal, bolster economic ties&nbsp;&nbsp;The Korea Herald"
     },
     {
       "title": "Korea’s semiconductor jackpot could become a costly trap - Korea JoongAng Daily",
@@ -51,10 +51,10 @@
       "desc": "Lee says migrant worker remarks aimed at prioritizing Korean hiring&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "[REPORTERSNOTEBOOK] Lee's 'migrant workers don't contribute much' remarks fall short of embracing Korea's growing diversity - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOaGVEWGVqMGNIZjdIOUR4cFN3WFktbHlnZ3RPUUhaOHdqMTg5bnVfY1Y1S3dZR2ZCT0g3cGk5WEVCa3hwdWdUZ2Y3TmZ1cUhGb1E2TVR0SHlIallPWkxzUXVUTEtaZU43cTh3TEZyanRFaDF5T0djcmo0NVNxM0xPQ0NLVHJlNl9SYWhlNTJLblhzOXBPa0tXR0ZjREVEUktFWU1lNmtXNkFjS2t2NGRfdFprUU9zeTNSdHp4Z1c0c1Y3S0pXbG9XaXNMandicHFGbHp1VEptLTU0c3RkNVNSdGhaYzZ4Yk42VGd3V9IB8gFBVV95cUxQUklUOFd3c1VTVTNQd2VKRnJiUndBWmpCRzM3alFEaHZHdFd1X1ozRXdGZ2U4T3RvWnlXNlpRczBVR2pUQkp6dkZNQmdLRXpBTDFKQmYyQUh6VlZ4TEtkWGNoaVNlSlpvdDFCbUVUQzEtZHIxc1ktbUhRb0JoU3BEVDhzS3BSckxqS19oaUhrRDlrY2g2WlRndE02d01WMmhuZDJhNGV2VnBiWGF2UHAtdkw4LVNtVW1WUEt6VE9uR29fZExQQTE1Um5sbGNQdmF1UlBNU3Jmc000WHpmZVduWVdLWjhzamY4WnA1RmpnYWJuQQ?oc=5",
-      "date": "Wed, 28 Oct 2026 06:46:03 GMT",
-      "desc": "[REPORTERSNOTEBOOK] Lee's 'migrant workers don't contribute much' remarks fall short of embracing Korea's growing diversity&nbsp;&nbsp;The Korea Times"
+      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
+      "date": "Mon, 26 Oct 2026 23:17:00 GMT",
+      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
     },
     {
       "title": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom - Bloomberg.com",
@@ -69,10 +69,10 @@
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg",
+      "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQR1NNS1ZjY0QxRUJaLXBTSkNHenBNQU8ySk1rT0FhbmItdVEyZFJhamF3OFdFb2kzZ0EtUW1ZV0g2SDM1cVI2TXdTMjJSNFJRZjM0NXZKbEs5OUFNZjgtSGN0RUpRemdKM2FVbzJxTm1rQkVGdldVdDdORFl0UWRDRzhNeURmWWlBUmpveXNOZk95TjBGa1dSYVB6VHJYUkdxVXptYjRtWVVfX1hTa01vTHhwa2c3QQ?oc=5",
       "date": "Tue, 27 Oct 2026 09:05:59 GMT",
-      "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg"
+      "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "Samsung, SK Hynix say memory crunch could drag on for years despite spending surge - digitimes",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-31 09:07 UTC"
+  "updatedAt": "2026-10-31 15:12 UTC"
 }
