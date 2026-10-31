@@ -1,9 +1,15 @@
 {
   "globalNews": [
     {
+      "title": "US approves sale of 500 Patriot missiles to Ukraine",
+      "link": "https://www.bbc.co.uk/news/articles/c3vgxznlx7jzo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 31 Oct 2026 00:40:43 GMT",
+      "desc": "The American-made interceptors are the only effective weapon for downing Russia's ballistic missiles."
+    },
+    {
       "title": "Crypto giant Binance attempting to recover $6.3bn stolen in hack linked to North Korea",
       "link": "https://www.bbc.co.uk/news/articles/cwe8lp7zy07zo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 30 Oct 2026 17:39:43 GMT",
+      "date": "Fri, 30 Oct 2026 21:13:14 GMT",
       "desc": "The cyber-attack, which the company describes as complex, is believed to be the largest ever of its kind."
     },
     {
@@ -19,24 +25,18 @@
       "desc": "Hundreds of people are also understood to have stayed in the front-line town, despite the dangers."
     },
     {
-      "title": "Prominent Russian newspaper shuts down under pressure from authorities",
-      "link": "https://www.bbc.co.uk/news/articles/cmewepdr109do?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 30 Oct 2026 11:23:06 GMT",
-      "desc": "Novaya Gazeta has been one of the most high-profile independent news outlets in Russia over the last three decades."
-    },
-    {
-      "title": "Spain transport minister says he won't resign over high-speed rail disaster",
-      "link": "https://www.bbc.co.uk/news/articles/c6zxj2e5qlxxo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 30 Oct 2026 15:03:39 GMT",
-      "desc": "Óscar Puente has been facing calls to resign after two high-speed trains collided earlier in the week, killing at least 69 people."
+      "title": "Police deployed during stand-off over control of top Poland court",
+      "link": "https://www.bbc.co.uk/news/articles/crz9824d5e88o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 31 Oct 2026 01:11:43 GMT",
+      "desc": "The escalation came after the government suspended two senior justices and moved to bring criminal charges against them."
     }
   ],
   "koreaNews": [
     {
-      "title": "Opinion | This peninsula is an economic powder keg. A blast could cost trillions. - The Washington Post",
-      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPdU83YzVjZUUyRzN6M1R5SEhsVnRsd0VVcEI5ay1PRUQ4LS02c3FmQzRDMFNvdGxXeWZyNFZvNWNRX0UyUFN3djcxSXplS1BmdnIzQVR6V3VtSm9SSWFNSVU4ZkdQdlpwS2tNeWZ4UDQ2ZWFiX2o5VXpfamx3SEk2TlZtaWJCOVFwTFZ2OC1Yd0p5NGVXUE9Faw?oc=5",
-      "date": "Tue, 27 Oct 2026 17:15:00 GMT",
-      "desc": "Opinion | This peninsula is an economic powder keg. A blast could cost trillions.&nbsp;&nbsp;The Washington Post"
+      "title": "Korea’s semiconductor jackpot could become a costly trap - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQM0JEZEtQT1cxUkNoNTZlMUlNeW8zcm9ySW14TVREQ1FJc09xQUNSREs2clVsdnVwLWZUVl9XTE5SNzlMX0FkQU5najg4NVNLMk9TcThNOHNuUUlKSEZIOEVUUDZTeHYyaThPWVJlbVRONGtNUzZFWTlPMl8tbUxJMEZiRW8yUFlSZHZBRTNZSkdKdXhwbzJ2bWZYWUZkNm9LTlZfdXp3?oc=5",
+      "date": "Thu, 29 Oct 2026 15:07:07 GMT",
+      "desc": "Korea’s semiconductor jackpot could become a costly trap&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
       "title": "South Korea’s AI Boom Has Become Too Big To Fail - Forbes",
@@ -45,22 +45,22 @@
       "desc": "South Korea’s AI Boom Has Become Too Big To Fail&nbsp;&nbsp;Forbes"
     },
     {
-      "title": "Korea’s semiconductor jackpot could become a costly trap - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQM0JEZEtQT1cxUkNoNTZlMUlNeW8zcm9ySW14TVREQ1FJc09xQUNSREs2clVsdnVwLWZUVl9XTE5SNzlMX0FkQU5najg4NVNLMk9TcThNOHNuUUlKSEZIOEVUUDZTeHYyaThPWVJlbVRONGtNUzZFWTlPMl8tbUxJMEZiRW8yUFlSZHZBRTNZSkdKdXhwbzJ2bWZYWUZkNm9LTlZfdXp3?oc=5",
-      "date": "Thu, 29 Oct 2026 15:07:07 GMT",
-      "desc": "Korea’s semiconductor jackpot could become a costly trap&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "AI chip boom tripled South Korea's economic growth in the third quarter - Euronews.com",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNaUdSbUFHY05YNHFqUWpxOTZpYkJ2Q19YTXV2ZEdlY1A2UGtPWkZMRTdNNndmVC1pc1NHNVdGd05yLXpNMG5kQmgxdTVWelZEUFhwMjl5MTVsQVhqVXQyYUt0ZTdMYmJxWHlDM3Z1NllBTlhjakZrcUVuRFEzZE01cTI1UFVSOG8tdTBrSlhaT1hXYW1pX3BVOHVyOERSNjJBcUoyaEcwQmhjdw?oc=5",
-      "date": "Tue, 27 Oct 2026 09:19:18 GMT",
-      "desc": "AI chip boom tripled South Korea's economic growth in the third quarter&nbsp;&nbsp;Euronews.com"
-    },
-    {
       "title": "[REPORTERSNOTEBOOK] Lee's 'migrant workers don't contribute much' remarks fall short of embracing Korea's growing diversity - The Korea Times",
       "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOaGVEWGVqMGNIZjdIOUR4cFN3WFktbHlnZ3RPUUhaOHdqMTg5bnVfY1Y1S3dZR2ZCT0g3cGk5WEVCa3hwdWdUZ2Y3TmZ1cUhGb1E2TVR0SHlIallPWkxzUXVUTEtaZU43cTh3TEZyanRFaDF5T0djcmo0NVNxM0xPQ0NLVHJlNl9SYWhlNTJLblhzOXBPa0tXR0ZjREVEUktFWU1lNmtXNkFjS2t2NGRfdFprUU9zeTNSdHp4Z1c0c1Y3S0pXbG9XaXNMandicHFGbHp1VEptLTU0c3RkNVNSdGhaYzZ4Yk42VGd3V9IB8gFBVV95cUxQUklUOFd3c1VTVTNQd2VKRnJiUndBWmpCRzM3alFEaHZHdFd1X1ozRXdGZ2U4T3RvWnlXNlpRczBVR2pUQkp6dkZNQmdLRXpBTDFKQmYyQUh6VlZ4TEtkWGNoaVNlSlpvdDFCbUVUQzEtZHIxc1ktbUhRb0JoU3BEVDhzS3BSckxqS19oaUhrRDlrY2g2WlRndE02d01WMmhuZDJhNGV2VnBiWGF2UHAtdkw4LVNtVW1WUEt6VE9uR29fZExQQTE1Um5sbGNQdmF1UlBNU3Jmc000WHpmZVduWVdLWjhzamY4WnA1RmpnYWJuQQ?oc=5",
       "date": "Wed, 28 Oct 2026 06:46:03 GMT",
       "desc": "[REPORTERSNOTEBOOK] Lee's 'migrant workers don't contribute much' remarks fall short of embracing Korea's growing diversity&nbsp;&nbsp;The Korea Times"
+    },
+    {
+      "title": "Lee says migrant worker remarks aimed at prioritizing Korean hiring - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9XVld2R00tSVNBdXFVbmdxVVpqTm1zeEZjR3IybFEyTjF6ckhQVjlkV1BrblVoLW92SVN6a2gzdG9ZSUhEN3RDdnN1eFFlVXctNEl5SkxROA?oc=5",
+      "date": "Wed, 28 Oct 2026 04:41:45 GMT",
+      "desc": "Lee says migrant worker remarks aimed at prioritizing Korean hiring&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
+      "date": "Mon, 26 Oct 2026 23:17:00 GMT",
+      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 201.7,
-      "change": -13.68,
-      "pct": -6.35,
+      "price": 204.64,
+      "change": -10.74,
+      "pct": -4.99,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 400.78,
-      "change": -38.73,
-      "pct": -8.81,
+      "price": 406.13,
+      "change": -33.38,
+      "pct": -7.59,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 493.37,
-      "change": -85.07,
-      "pct": -14.71,
+      "price": 504.8,
+      "change": -73.64,
+      "pct": -12.73,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 63.51,
-      "change": -32.02,
-      "pct": -33.52,
+      "price": 65.76,
+      "change": -29.77,
+      "pct": -31.16,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 162.28,
-      "change": -20.69,
-      "pct": -11.31,
+      "price": 164.79,
+      "change": -18.18,
+      "pct": -9.94,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 199.73,
-      "change": -36.17,
-      "pct": -15.33,
+      "price": 205.97,
+      "change": -29.93,
+      "pct": -12.69,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 277.1,
-      "change": -47.79,
-      "pct": -14.71,
+      "price": 279.84,
+      "change": -45.05,
+      "pct": -13.87,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 342.59,
-      "change": -1.24,
-      "pct": -0.36,
+      "price": 344.63,
+      "change": 0.8,
+      "pct": 0.23,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 518.49,
-      "change": -12.52,
-      "pct": -2.36,
+      "price": 521.91,
+      "change": -9.1,
+      "pct": -1.71,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7530.09,
-      "change": -213.89,
-      "pct": -2.76,
+      "price": 7580.07,
+      "change": -163.91,
+      "pct": -2.12,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25200.74,
-      "change": -1349.11,
-      "pct": -5.08,
+      "price": 25437.0,
+      "change": -1112.85,
+      "pct": -4.19,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1333.97,
-      "change": -6.37,
-      "pct": -0.48,
+      "price": 1333.44,
+      "change": -6.9,
+      "pct": -0.51,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-30 18:55 UTC"
+  "updatedAt": "2026-10-31 01:23 UTC"
 }
