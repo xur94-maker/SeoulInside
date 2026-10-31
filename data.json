@@ -1,21 +1,21 @@
 {
   "globalNews": [
     {
-      "title": "Evacuees from Russia-occupied city where residents ate weeds arrive in Ukraine",
+      "title": "Ukrainian evacuees reunite with family after years trapped in Russia-occupied city",
       "link": "https://www.bbc.co.uk/news/articles/cqx2818elrnzo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 14:53:34 GMT",
-      "desc": "Residents left the devastated city on Friday following a ceasefire brokered by US First Lady Melania Trump."
+      "date": "Sat, 31 Oct 2026 17:53:35 GMT",
+      "desc": "Oleshky residents had been without food, water and electricity, with many resorting to cooking garden weeds to survive."
     },
     {
-      "title": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack",
-      "link": "https://www.bbc.co.uk/news/articles/ck9dz3v7z7v3o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 02:12:19 GMT",
-      "desc": "If the accusations are true, the record-making heist shows how powerful suspected North Korean hackers have become."
+      "title": "Crypto firm Binance covers 90% of losses after $6.3bn hack",
+      "link": "https://www.bbc.co.uk/news/articles/ckpdg3ql4169o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 31 Oct 2026 16:32:08 GMT",
+      "desc": "Two analytics firms say they have robust intelligence pointing to a North Korean state-backed group as the likely culprit."
     },
     {
       "title": "More than 5,000 die from Ebola in DR Congo's deadliest outbreak",
       "link": "https://www.bbc.co.uk/news/articles/cj5ynryyep2yo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 14:48:49 GMT",
+      "date": "Sat, 31 Oct 2026 15:16:20 GMT",
       "desc": "Government data shows that more than 10,000 people have contracted the rare virus."
     },
     {
@@ -33,6 +33,12 @@
   ],
   "koreaNews": [
     {
+      "title": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdkRpLUlXdXdjQkhpNEQ0WEZzN3NCSjlOSURvR0xhXzBEelFRLWUtQUFIekV3dEVpOTY5N0tROC1LMlZVQjJHTkRtZEVBQmhaWVg4c0ZMejNwVk9lWGpfTWxYY1UzNGVkZ0s3WGNFV2g4bmEyVXlkeTIxaGtfWE9uNDJTdzEwa3JycTFpdU0wR2lmWWdXYjJVejg5WGhDS3VvajV2ZnlaLUloQmRmZTA0c0JOTlQ5WjZGTTd3?oc=5",
+      "date": "Thu, 29 Oct 2026 05:21:00 GMT",
+      "desc": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll&nbsp;&nbsp;Reuters"
+    },
+    {
       "title": "S. Korea, US, Japan reaffirm NK denuclearization goal, bolster economic ties - The Korea Herald",
       "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBTmdoZ0xIUDVpSFVONnZXQUV1eVZlTXNoRHFoclZZVHVMWkljSnoxR2NhaEdQZ0V0SzZZekpJNU44QkNpeGVweGxjT3JyTm1qZk5yS3d4QQ?oc=5",
       "date": "Sat, 31 Oct 2026 01:50:27 GMT",
@@ -45,22 +51,16 @@
       "desc": "Korea’s semiconductor jackpot could become a costly trap&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Lee says migrant worker remarks aimed at prioritizing Korean hiring - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9XVld2R00tSVNBdXFVbmdxVVpqTm1zeEZjR3IybFEyTjF6ckhQVjlkV1BrblVoLW92SVN6a2gzdG9ZSUhEN3RDdnN1eFFlVXctNEl5SkxROA?oc=5",
-      "date": "Wed, 28 Oct 2026 04:41:45 GMT",
-      "desc": "Lee says migrant worker remarks aimed at prioritizing Korean hiring&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
-      "date": "Mon, 26 Oct 2026 23:17:00 GMT",
-      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
-    },
-    {
       "title": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTnpJb2RySjVxUVBCay04SEJpbmlWMmNYaXU3Wk1Pc0lNRzJnQzA2d1pmTjM5Vm05QUx4OVhzUGZpZEJiWUhRVHFRVENFcFFoVC0xalpFM21LWTVBNEkzdHVQQ0NzcTFTdnMxdnVoYUQxWGNwSlZ0Z1dQdlZCTU1LX1dMVVhmeWthUkNNTHlWeFhnR1RjRWhLWWx1ZTNmaldzcWU5V3ZEaUlwSVI0SWJ6Wg?oc=5",
       "date": "Tue, 27 Oct 2026 00:07:00 GMT",
       "desc": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "South Korea’s GDP growth beats forecasts amid AI boom - Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVkhSendFOTJpVXVneXVaSFVfdWNoY0swai14U0NiU1dCU0xmbE5Wd25Dak9DUkpEOEl1ZDd5Um1NQkg5c2V2SU9JVm1KaTgxbXNwVGRwS2ZQNlRmTm9Ea2JDS1N3VG5jWkFCbERCRjFlNjgtZmkzU0Q3cU16dnYyUXJRaG14ZEJOT1RTTGV0bzRPV3YxTC1qV2hST19DUdIBowFBVV95cUxPRl9KQ1REU214M3NQRHpBaGI5LW5QZXc5bHkwNDRDTk5NZUxtbV9zeVN5SWo1UG1fdHF6dS1PWWV4V2w1ZXRJdi1DNjIwWEJXRGJFOTM3V0hMTUp1LXFEcTB5cGx2QTlrUm14SGNYeUg4UXZNUkl2andsNXZyMW1KblFmbk5zbjFHMFloZkh4ckhkVXJiaDJoU0hTRHF5RUl6LXU0?oc=5",
+      "date": "Tue, 27 Oct 2026 06:56:37 GMT",
+      "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-31 15:12 UTC"
+  "updatedAt": "2026-10-31 18:02 UTC"
 }
