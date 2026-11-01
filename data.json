@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "'We came back from hell', say Ukrainians after years in Russia-occupied front-line city",
+      "link": "https://www.bbc.co.uk/news/articles/cqglw3k7djp1o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 31 Oct 2026 19:22:26 GMT",
+      "desc": "One evacuated couple says they crossed minefields in Oleshky in search of food."
+    },
+    {
       "title": "Ukrainian evacuees reunite with family after years trapped in Russia-occupied city",
       "link": "https://www.bbc.co.uk/news/articles/cqx2818elrnzo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 31 Oct 2026 17:53:35 GMT",
       "desc": "Oleshky residents had been without food, water and electricity, with many resorting to cooking garden weeds to survive."
     },
     {
+      "title": "Thousands demonstrate in Paris as protests spread across Europe",
+      "link": "https://www.bbc.co.uk/news/videos/ck0j0y87j303o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 31 Oct 2026 21:29:01 GMT",
+      "desc": "More than 320,000 people demonstrated across France against the rising cost of living and poor public services, with clashes between some protesters and police."
+    },
+    {
       "title": "Crypto firm Binance covers 90% of losses after $6.3bn hack",
       "link": "https://www.bbc.co.uk/news/articles/ckpdg3ql4169o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 16:32:08 GMT",
-      "desc": "Two analytics firms say they have robust intelligence pointing to a North Korean state-backed group as the likely culprit."
+      "date": "Sat, 31 Oct 2026 22:11:45 GMT",
+      "desc": "The Federal Bureau of Investigation (FBI) says North Korea was responsible for the hack."
     },
     {
-      "title": "More than 5,000 die from Ebola in DR Congo's deadliest outbreak",
-      "link": "https://www.bbc.co.uk/news/articles/cj5ynryyep2yo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 15:16:20 GMT",
-      "desc": "Government data shows that more than 10,000 people have contracted the rare virus."
-    },
-    {
-      "title": "Police deployed during stand-off over control of top Poland court",
-      "link": "https://www.bbc.co.uk/news/articles/crz9824d5e88o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 01:11:43 GMT",
-      "desc": "The escalation came after the government suspended two senior justices and moved to bring criminal charges against them."
-    },
-    {
-      "title": "Ethiopian PM puts ministers through military training",
-      "link": "https://www.bbc.co.uk/news/articles/cmwyv2y7g9l8o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 14:28:15 GMT",
-      "desc": "The prime minister has previously emphasised military preparedness as central to his government's ambitions."
+      "title": "India's opposition set to hold mega rally seeking election chief's resignation",
+      "link": "https://www.bbc.co.uk/news/articles/c60qk92dvlwgo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 01 Nov 2026 00:12:07 GMT",
+      "desc": "It comes amid growing protests over a voter roll revision exercise feared to leave 130 million voters off rolls."
     }
   ],
   "koreaNews": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-10-31 18:02 UTC"
+  "updatedAt": "2026-11-01 00:38 UTC"
 }
