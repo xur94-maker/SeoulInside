@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Shops looted as German cost of living protests turn violent",
+      "link": "https://www.bbc.co.uk/news/articles/cqj34gnd3n30o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 01 Nov 2026 08:43:00 GMT",
+      "desc": "The protests in cities across Germany - including Berlin, Hamburg and Frankfurt - came on the same day hundreds of thousands also protested in France."
+    },
+    {
       "title": "'We came back from hell', say Ukrainians after years in Russia-occupied front-line city",
       "link": "https://www.bbc.co.uk/news/articles/cqglw3k7djp1o?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 31 Oct 2026 19:22:26 GMT",
@@ -13,30 +19,24 @@
       "desc": "Oleshky residents had been without food, water and electricity, with many resorting to cooking garden weeds to survive."
     },
     {
-      "title": "Thousands demonstrate in Paris as protests spread across Europe",
-      "link": "https://www.bbc.co.uk/news/videos/ck0j0y87j303o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 21:29:01 GMT",
-      "desc": "More than 320,000 people demonstrated across France against the rising cost of living and poor public services, with clashes between some protesters and police."
-    },
-    {
       "title": "Crypto firm Binance covers 90% of losses after $6.3bn hack",
       "link": "https://www.bbc.co.uk/news/articles/ckpdg3ql4169o?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 31 Oct 2026 22:11:45 GMT",
+      "date": "Sun, 01 Nov 2026 09:28:06 GMT",
       "desc": "The Federal Bureau of Investigation (FBI) says North Korea was responsible for the hack."
     },
     {
-      "title": "India's opposition set to hold mega rally seeking election chief's resignation",
+      "title": "India's opposition holds mega rally seeking election chief's resignation",
       "link": "https://www.bbc.co.uk/news/articles/c60qk92dvlwgo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 01 Nov 2026 00:12:07 GMT",
+      "date": "Sun, 01 Nov 2026 07:00:55 GMT",
       "desc": "It comes amid growing protests over a voter roll revision exercise feared to leave 130 million voters off rolls."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdkRpLUlXdXdjQkhpNEQ0WEZzN3NCSjlOSURvR0xhXzBEelFRLWUtQUFIekV3dEVpOTY5N0tROC1LMlZVQjJHTkRtZEVBQmhaWVg4c0ZMejNwVk9lWGpfTWxYY1UzNGVkZ0s3WGNFV2g4bmEyVXlkeTIxaGtfWE9uNDJTdzEwa3JycTFpdU0wR2lmWWdXYjJVejg5WGhDS3VvajV2ZnlaLUloQmRmZTA0c0JOTlQ5WjZGTTd3?oc=5",
-      "date": "Thu, 29 Oct 2026 05:21:00 GMT",
-      "desc": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll&nbsp;&nbsp;Reuters"
+      "title": "South Korea Exports Extend Robust Growth on AI-Fueled Chip Boom - Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQYmlObkNreWNOMXMxY1BIUkp0VmxRSHNFVUwyMlpkRUU4bTdndnA4NThvOWZYaVFLbkF2S2prZFBUNzdNVHY2SmxpM2hSSWxNS2NRazZCTFJCNWZnbjhnQUJOdlo3YktnelJxQWd0SG9wbVhJcU5pR2VOUmpKZnQ5M3RaT256WHY0WGRGdHIzWHNHTlU0R3RtUWtid09LNmVRT2p4QllheHFaeXFFS1RLeFVMU2g?oc=5",
+      "date": "Sun, 01 Nov 2026 03:21:00 GMT",
+      "desc": "South Korea Exports Extend Robust Growth on AI-Fueled Chip Boom&nbsp;&nbsp;Bloomberg"
     },
     {
       "title": "S. Korea, US, Japan reaffirm NK denuclearization goal, bolster economic ties - The Korea Herald",
@@ -45,22 +45,28 @@
       "desc": "S. Korea, US, Japan reaffirm NK denuclearization goal, bolster economic ties&nbsp;&nbsp;The Korea Herald"
     },
     {
+      "title": "South Korea exports surge 93.7% in October, fastest growth since 1974 - Investing.com",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQNzJNOWc3SWY1SlN4WHVOQW5FcTRjSS1rUGNkY3M0UWd3QzhYTDlidGlOSFdYV1BCMzFkQXV2RHFMUkJTdzhrajVqSGo2ZzB5SnpQelBaVFg1ZmNueURJalNpM3hjOUFwWUw5SHB0Z3NjOURmU2xFX0VrZVNCYmx2TlVVckNXMEJrSUJta0p1UEJuRmZkaDlaUE4wMzdLLVBRS2hwQ3RTMmpZa2RzUWxUREpfcGFoSllBU2c?oc=5",
+      "date": "Sun, 01 Nov 2026 01:42:46 GMT",
+      "desc": "South Korea exports surge 93.7% in October, fastest growth since 1974&nbsp;&nbsp;Investing.com"
+    },
+    {
       "title": "Korea’s semiconductor jackpot could become a costly trap - Korea JoongAng Daily",
       "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQM0JEZEtQT1cxUkNoNTZlMUlNeW8zcm9ySW14TVREQ1FJc09xQUNSREs2clVsdnVwLWZUVl9XTE5SNzlMX0FkQU5najg4NVNLMk9TcThNOHNuUUlKSEZIOEVUUDZTeHYyaThPWVJlbVRONGtNUzZFWTlPMl8tbUxJMEZiRW8yUFlSZHZBRTNZSkdKdXhwbzJ2bWZYWUZkNm9LTlZfdXp3?oc=5",
       "date": "Thu, 29 Oct 2026 15:07:07 GMT",
       "desc": "Korea’s semiconductor jackpot could become a costly trap&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTnpJb2RySjVxUVBCay04SEJpbmlWMmNYaXU3Wk1Pc0lNRzJnQzA2d1pmTjM5Vm05QUx4OVhzUGZpZEJiWUhRVHFRVENFcFFoVC0xalpFM21LWTVBNEkzdHVQQ0NzcTFTdnMxdnVoYUQxWGNwSlZ0Z1dQdlZCTU1LX1dMVVhmeWthUkNNTHlWeFhnR1RjRWhLWWx1ZTNmaldzcWU5V3ZEaUlwSVI0SWJ6Wg?oc=5",
-      "date": "Tue, 27 Oct 2026 00:07:00 GMT",
-      "desc": "South Korea’s Economy Beats Forecasts on AI-Driven Chip Boom&nbsp;&nbsp;Bloomberg.com"
+      "title": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdkRpLUlXdXdjQkhpNEQ0WEZzN3NCSjlOSURvR0xhXzBEelFRLWUtQUFIekV3dEVpOTY5N0tROC1LMlZVQjJHTkRtZEVBQmhaWVg4c0ZMejNwVk9lWGpfTWxYY1UzNGVkZ0s3WGNFV2g4bmEyVXlkeTIxaGtfWE9uNDJTdzEwa3JycTFpdU0wR2lmWWdXYjJVejg5WGhDS3VvajV2ZnlaLUloQmRmZTA0c0JOTlQ5WjZGTTd3?oc=5",
+      "date": "Thu, 29 Oct 2026 05:21:00 GMT",
+      "desc": "South Korea's October exports seen rising at fastest pace since 1974 - Reuters Poll&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea’s GDP growth beats forecasts amid AI boom - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVkhSendFOTJpVXVneXVaSFVfdWNoY0swai14U0NiU1dCU0xmbE5Wd25Dak9DUkpEOEl1ZDd5Um1NQkg5c2V2SU9JVm1KaTgxbXNwVGRwS2ZQNlRmTm9Ea2JDS1N3VG5jWkFCbERCRjFlNjgtZmkzU0Q3cU16dnYyUXJRaG14ZEJOT1RTTGV0bzRPV3YxTC1qV2hST19DUdIBowFBVV95cUxPRl9KQ1REU214M3NQRHpBaGI5LW5QZXc5bHkwNDRDTk5NZUxtbV9zeVN5SWo1UG1fdHF6dS1PWWV4V2w1ZXRJdi1DNjIwWEJXRGJFOTM3V0hMTUp1LXFEcTB5cGx2QTlrUm14SGNYeUg4UXZNUkl2andsNXZyMW1KblFmbk5zbjFHMFloZkh4ckhkVXJiaDJoU0hTRHF5RUl6LXU0?oc=5",
-      "date": "Tue, 27 Oct 2026 06:56:37 GMT",
-      "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
+      "title": "Record profits fail to shield Samsung, SK hynix stocks as AI spending fears rattle markets - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPYVc4aFZabjFNWnZjNGFjRnl6ZDI2NEtmQVBxU3ZXa0lHZ3pCQ05oQnd2YXpwN25mMVFIWi11blZ1U05sMnhHQU1FQlcwZlBDN1VmRm9sa2JqTVNfdE1mNW5oZjBjMGNYSThNZTE0YmRfa2pCVFN6MkhpTEZuTEp4U3pFV285LWtPYXhqUDhocTlKY2E0ZVdUX1EteGtUbkx5TXhvdGdDOU5KeExwRWJwbDV5cGpHYnozbVNISks3dXZqOE5hTHZEZnA5YjRUVkFXemRKVjFFSWNBdw?oc=5",
+      "date": "Sun, 01 Nov 2026 07:22:51 GMT",
+      "desc": "Record profits fail to shield Samsung, SK hynix stocks as AI spending fears rattle markets&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -69,16 +75,10 @@
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg.com",
+      "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg",
       "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQR1NNS1ZjY0QxRUJaLXBTSkNHenBNQU8ySk1rT0FhbmItdVEyZFJhamF3OFdFb2kzZ0EtUW1ZV0g2SDM1cVI2TXdTMjJSNFJRZjM0NXZKbEs5OUFNZjgtSGN0RUpRemdKM2FVbzJxTm1rQkVGdldVdDdORFl0UWRDRzhNeURmWWlBUmpveXNOZk95TjBGa1dSYVB6VHJYUkdxVXptYjRtWVVfX1hTa01vTHhwa2c3QQ?oc=5",
       "date": "Tue, 27 Oct 2026 09:05:59 GMT",
-      "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "Samsung, SK Hynix say memory crunch could drag on for years despite spending surge - digitimes",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOYko0QXFxLTFhY1lKOHp4SVFWNDBGWFdJRERWS0VoRERic1pwQlBPaWJRaW9NVkFfME9pczdBRUFJcEtSajVwdE42bUlaNV8yOVFIR2k3cE5Odlp6Wl9DV2RCTjhadTVTMk8zMmY5NGN2cG12Si1WNFotZFZzYU93OXNGdmNnVlpjTmRDalJhaWh1SWZOSnJoSll1a0k?oc=5",
-      "date": "Fri, 30 Oct 2026 00:09:34 GMT",
-      "desc": "Samsung, SK Hynix say memory crunch could drag on for years despite spending surge&nbsp;&nbsp;digitimes"
+      "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg"
     }
   ],
   "worldStocks": [
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-01 03:09 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-01 09:55 UTC"
 }
