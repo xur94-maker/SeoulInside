@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Shops looted as German cost-of-living protests turn violent",
-      "link": "https://www.bbc.co.uk/news/articles/cqj34gnd3n30o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 01 Nov 2026 11:57:48 GMT",
-      "desc": "The protests in cities across Germany - including Berlin, Hamburg and Frankfurt - came on the same day hundreds of thousands also protested in France."
+      "title": "Ukraine air raid app apparently hacked as users receive false radiation threat, Air Force says",
+      "link": "https://www.bbc.co.uk/news/articles/c51kdy1ew7zvo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 01 Nov 2026 22:38:24 GMT",
+      "desc": "Authorities say there is no threat and have advised the public to stay calm and follow official channels for information."
+    },
+    {
+      "title": "Russian strikes cut power to thousands in Ukraine as Kherson ceasefire ends",
+      "link": "https://www.bbc.co.uk/news/articles/c64g1y90p71eo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 01 Nov 2026 21:55:01 GMT",
+      "desc": "A rare humanitarian ceasefire allowed civilians to evacuate the Russian-occupied city of Oleshky."
+    },
+    {
+      "title": "Democrat endorses Republican candidate in key Michigan Senate race as party spat erupts",
+      "link": "https://www.bbc.co.uk/news/articles/c95ynzv88n68o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 02 Nov 2026 00:02:15 GMT",
+      "desc": "The move by Haley Stevens, who lost out on the Democratic Senate nomination to Abdul El-Sayed, was called a \"despicable betrayal\" by one top Democrat."
     },
     {
       "title": "Israeli strikes in Gaza kill eight including child, hospitals say",
@@ -13,22 +25,10 @@
       "desc": "Five officers from the Hamas-run police have been killed in Khan Younis and three people, including a child, killed in Gaza City, officials say."
     },
     {
-      "title": "University of Cambridge scientist among those who died in Spanish train crash",
-      "link": "https://www.bbc.co.uk/news/articles/cq5ynzvkn1d8o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 01 Nov 2026 17:05:18 GMT",
-      "desc": "Marta Shahbazi was an \"inspiring, talented and passionate scientist\", says the laboratory where she worked."
-    },
-    {
-      "title": "Armed police start patrols in Sydney after Bondi Beach attack",
-      "link": "https://www.bbc.co.uk/news/articles/c9kgj7k7ry0ro?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 01 Nov 2026 17:56:47 GMT",
-      "desc": "The new police unit is a security measure in response to last year's deadly shooting attack at a Hanukkah festival."
-    },
-    {
-      "title": "Democrat endorses Republican candidate in key Michigan Senate race as party spat escalates",
-      "link": "https://www.bbc.co.uk/news/articles/c95ynzv88n68o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 01 Nov 2026 18:24:08 GMT",
-      "desc": "Haley Stevens, a former congresswomen who lost out on the Democratic nomination to Abdul El-Sayed, endorses his opponent days before the vote."
+      "title": "France launches attempted murder investigation after petrol bomb thrown at police",
+      "link": "https://www.bbc.co.uk/news/articles/cwvg05z184j0o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 02 Nov 2026 00:15:30 GMT",
+      "desc": "There were hundreds of arrests as protesters took to the streets in cities across France for the third weekend in a row."
     }
   ],
   "koreaNews": [
@@ -45,16 +45,10 @@
       "desc": "South Korea exports surge 93.7% in October, fastest growth since 1974&nbsp;&nbsp;Investing.com"
     },
     {
-      "title": "S. Korea, US, Japan reaffirm NK denuclearization goal, bolster economic ties - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBTmdoZ0xIUDVpSFVONnZXQUV1eVZlTXNoRHFoclZZVHVMWkljSnoxR2NhaEdQZ0V0SzZZekpJNU44QkNpeGVweGxjT3JyTm1qZk5yS3d4QQ?oc=5",
-      "date": "Sat, 31 Oct 2026 01:50:27 GMT",
-      "desc": "S. Korea, US, Japan reaffirm NK denuclearization goal, bolster economic ties&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "Korea’s semiconductor jackpot could become a costly trap - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQM0JEZEtQT1cxUkNoNTZlMUlNeW8zcm9ySW14TVREQ1FJc09xQUNSREs2clVsdnVwLWZUVl9XTE5SNzlMX0FkQU5najg4NVNLMk9TcThNOHNuUUlKSEZIOEVUUDZTeHYyaThPWVJlbVRONGtNUzZFWTlPMl8tbUxJMEZiRW8yUFlSZHZBRTNZSkdKdXhwbzJ2bWZYWUZkNm9LTlZfdXp3?oc=5",
-      "date": "Thu, 29 Oct 2026 15:07:07 GMT",
-      "desc": "Korea’s semiconductor jackpot could become a costly trap&nbsp;&nbsp;Korea JoongAng Daily"
+      "title": "South Korea's exports to China surge 133.6% in October amid AI chip boom - Global Times",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9lWmtQZXVHVnA1b0NkZlNBTDhtVzViNVFRdUJEMVQ0c0dLb1liRmFJd1FVN1BJS1hGT0pyNHJ3VXdlcHRVMTBpTU9lQlhNcTBxTmIwVEFncWFTek96aUVtYV9n?oc=5",
+      "date": "Sun, 01 Nov 2026 14:34:00 GMT",
+      "desc": "South Korea's exports to China surge 133.6% in October amid AI chip boom&nbsp;&nbsp;Global Times"
     },
     {
       "title": "South Korea exports nearly double in October on AI investment boom - Nikkei Asia",
@@ -63,22 +57,28 @@
       "desc": "South Korea exports nearly double in October on AI investment boom&nbsp;&nbsp;Nikkei Asia"
     },
     {
+      "title": "Korea’s Stock Market Crashed $1 Trillion. What Does That Mean for the Global AI Race? - ChinaTalk | Jordan Schneider",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5FaUZ6X3pJUGlzeWEyMTRZSE1WT0QwTmFJb0Q1d3lLYUt6clBpVDNvdDhIeTEtM09UeGhoZjA4cjBBY1ZTdEhnNHVsdXh2LVFaeVRtQjJGVWhOQjlvY1lKOWRVMDFiVFkzY0VmZE1OUHhRSms4R184?oc=5",
+      "date": "Sun, 01 Nov 2026 13:33:33 GMT",
+      "desc": "Korea’s Stock Market Crashed $1 Trillion. What Does That Mean for the Global AI Race?&nbsp;&nbsp;ChinaTalk | Jordan Schneider"
+    },
+    {
+      "title": "memory semiconductor LTA — Samsung and SK Hynix Sold Out Until 2029 Amid AI Boom - The Korea Daily",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOSWpYNG9OYkRWREdwSDdUSXVRYXA5Q0xjc1NoQnpUVGhCWXB0S0tvUGdQOWU4b2kzR0NaN3RrVDNrMzVMdFV0a2lueFFfcHdUc0tyYUgzaVZUbnFiX0tPQ1EwMDZEVS1SWnJNYlFYUV81dDlzMUJPbU51OFFIaGVjTlNYVmo4SUx3TUE?oc=5",
+      "date": "Sun, 01 Nov 2026 20:11:28 GMT",
+      "desc": "memory semiconductor LTA — Samsung and SK Hynix Sold Out Until 2029 Amid AI Boom&nbsp;&nbsp;The Korea Daily"
+    },
+    {
+      "title": "Intel shock sinks Korea chip stocks as Samsung, SK hynix slide premarket - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQeGFjUUEtMXNIekhUNHdGMFhQUWtkOHdtbnE0TXVQeGFmVV81U3VLejM1NklJTkYybEltNTMyNV9ZVTljTVV2YVM2R2FPb2tURlpYSDJUM08tZVA1U2NCT19Td0tNa01ta21ETFg2TlhSc1Z0dEl4TF9MRzZwMzFzcnRNXzBNN2V4bXdVNDkzSHJJYzRU0gGUAUFVX3lxTFB4YWNRQS0xc0h6SFQ0d0YwWFBRa2Q4d21ucTRNdVB4YWZVXzVTdUt6MzU2SUlORjJsSW01MzI1X1lVOWNNVXZhUzZHYU9va1RGWlhIMlQzTy1lUDVTY0JPX1N3S01rTW1rbURMWDZOWFJzVnR0SXhMX0xHNnAzMXNydE1fME03ZXhtd1U0OTNIckljNFQ?oc=5",
+      "date": "Sun, 01 Nov 2026 23:24:00 GMT",
+      "desc": "Intel shock sinks Korea chip stocks as Samsung, SK hynix slide premarket&nbsp;&nbsp;Chosunbiz"
+    },
+    {
       "title": "Record profits fail to shield Samsung, SK hynix stocks as AI spending fears rattle markets - Korea JoongAng Daily",
       "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPYVc4aFZabjFNWnZjNGFjRnl6ZDI2NEtmQVBxU3ZXa0lHZ3pCQ05oQnd2YXpwN25mMVFIWi11blZ1U05sMnhHQU1FQlcwZlBDN1VmRm9sa2JqTVNfdE1mNW5oZjBjMGNYSThNZTE0YmRfa2pCVFN6MkhpTEZuTEp4U3pFV285LWtPYXhqUDhocTlKY2E0ZVdUX1EteGtUbkx5TXhvdGdDOU5KeExwRWJwbDV5cGpHYnozbVNISks3dXZqOE5hTHZEZnA5YjRUVkFXemRKVjFFSWNBdw?oc=5",
       "date": "Sun, 01 Nov 2026 07:22:51 GMT",
       "desc": "Record profits fail to shield Samsung, SK hynix stocks as AI spending fears rattle markets&nbsp;&nbsp;Korea JoongAng Daily"
-    },
-    {
-      "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
-      "date": "Wed, 21 Oct 2026 07:00:00 GMT",
-      "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble - Bloomberg",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQR1NNS1ZjY0QxRUJaLXBTSkNHenBNQU8ySk1rT0FhbmItdVEyZFJhamF3OFdFb2kzZ0EtUW1ZV0g2SDM1cVI2TXdTMjJSNFJRZjM0NXZKbEs5OUFNZjgtSGN0RUpRemdKM2FVbzJxTm1rQkVGdldVdDdORFl0UWRDRzhNeURmWWlBUmpveXNOZk95TjBGa1dSYVB6VHJYUkdxVXptYjRtWVVfX1hTa01vTHhwa2c3QQ?oc=5",
-      "date": "Tue, 27 Oct 2026 09:05:59 GMT",
-      "desc": "Memory Chip Giants Worth $2 Trillion Face Test to Prove AI Isn't a Bubble&nbsp;&nbsp;Bloomberg"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 225000.0,
-      "change": -17000.0,
-      "pct": -7.02,
+      "price": 223500.0,
+      "change": -8500.0,
+      "pct": -3.66,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1418000.0,
-      "change": -69000.0,
-      "pct": -4.64,
+      "price": 1438000.0,
+      "change": -88000.0,
+      "pct": -5.77,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 282000.0,
-      "change": -14000.0,
-      "pct": -4.73,
+      "price": 287000.0,
+      "change": -5500.0,
+      "pct": -1.88,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
       "price": 95600.0,
-      "change": -12300.0,
-      "pct": -11.4,
+      "change": -12700.0,
+      "pct": -11.73,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 172300.0,
-      "change": -5700.0,
-      "pct": -3.2,
+      "price": 176200.0,
+      "change": 1300.0,
+      "pct": 0.74,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5730.74,
-      "change": -281.7,
-      "pct": -4.69,
+      "price": 5771.16,
+      "change": -166.5,
+      "pct": -2.8,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1333.44,
-      "change": -6.9,
-      "pct": -0.51,
+      "price": 1338.31,
+      "change": 0.33,
+      "pct": 0.02,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-01 18:39 UTC"
+  "updatedAt": "2026-11-02 01:11 UTC"
 }
