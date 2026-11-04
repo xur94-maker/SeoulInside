@@ -7,28 +7,28 @@
       "desc": "Some Republicans tell the BBC the president's focus on his legacy and indifference to voter concerns cost them."
     },
     {
-      "title": "James Talarico becomes first Democrat to win Texas Senate seat since 1988",
-      "link": "https://www.bbc.co.uk/news/articles/c6n8dnn09jg7o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 04 Nov 2026 14:17:58 GMT",
-      "desc": "\"This wasn't just a tsunami, not just a referendum, but this was a bloodbath,\" one expert told the BBC on Democrats' historic wins in Texas."
+      "title": "US midterm results a 'victory' for Canadians hopeful of tariff relief",
+      "link": "https://www.bbc.co.uk/news/articles/cqev3mw3e0kdo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 04 Nov 2026 18:01:31 GMT",
+      "desc": "With Canada-US trade talks back on, Tuesday’s midterm Democratic wave puts pressure on the White House to come to a deal."
     },
     {
-      "title": "Left-wing Democrat Abdul El-Sayed wins in Michigan to become first Muslim senator",
-      "link": "https://www.bbc.co.uk/news/articles/c893z55pxrewo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 04 Nov 2026 10:03:19 GMT",
-      "desc": "El-Sayed bested Republican Mike Rogers to become the first Muslim senator in US history."
+      "title": "Ukraine says bodycam video shows deadly Russian double-tap bombing",
+      "link": "https://www.bbc.co.uk/news/articles/c98rz6penv86o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 04 Nov 2026 20:22:40 GMT",
+      "desc": "At least 40 people were killed and another 30 may still be under the rubble after Monday's attack on a Ukrainian village, Kyiv says."
     },
     {
-      "title": "Israel's president begins consultations with parties after election deadlock",
-      "link": "https://www.bbc.co.uk/news/articles/c6z98z5z91ppo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 04 Nov 2026 16:18:21 GMT",
-      "desc": "Herzog warns politicians that \"not every commitment and promise can be fulfilled\" if they want to avoid another election."
+      "title": "French blood storage impacted by freezer hacks as theories swirl about culprits",
+      "link": "https://www.bbc.co.uk/news/articles/c8vgxyvz6y9ro?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 04 Nov 2026 16:26:15 GMT",
+      "desc": "The French Blood Establishment (EFS) said cold rooms storing blood were impacted by hackers."
     },
     {
-      "title": "Zelensky gives Melania Trump Ukraine's highest award after Oleshky ceasefire",
-      "link": "https://www.bbc.co.uk/news/articles/cm87zvpzwq0no?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 04 Nov 2026 15:01:10 GMT",
-      "desc": "Russian and Ukrainian delegations will meet the US first lady at the White House on Thursday."
+      "title": "'Most difficult days of my life' for keeper Owono",
+      "link": "https://www.bbc.co.uk/sport/football/articles/c6zxjz40l280o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 04 Nov 2026 16:40:38 GMT",
+      "desc": "FC Andorra goalkeeper Jesus Owono puts out a statement through his club, expressing his sorrow and pain after Tenerife forward Jesus de Miguel's death."
     }
   ],
   "koreaNews": [
@@ -57,10 +57,10 @@
       "desc": "South Korea GDP Beats Forecasts at 1.0% So Why Is KOSPI Still Down?&nbsp;&nbsp;Yahoo Finance"
     },
     {
-      "title": "South Korea Inflation Holds Firm, Bolstering Case for More Hikes - Bloomberg.com",
+      "title": "South Korea Inflation Holds Firm, Bolstering Case for More Hikes - Bloomberg",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNeEplWmVaRnNwMEdCWjVhSTkxN2RiZkRiM1FJbTNwNkRKU1pUS2JiVmxtZjh5Tjl5dk1DcWxhamhERnlxT2lEcThMNFRWd3Q2cURncTdtVHhkYTFscEVFWEprOWdDNlVFbGJYMldSeTBnUXZZM1lrUXRza0JUU0xnQ2RpTG80aXE3Tk1iM3MweUk4UWwtVjlyMVF0eXpVOElIMUhSaU9iakJOMFZ1U21HaE1jU3E?oc=5",
       "date": "Tue, 03 Nov 2026 00:16:00 GMT",
-      "desc": "South Korea Inflation Holds Firm, Bolstering Case for More Hikes&nbsp;&nbsp;Bloomberg.com"
+      "desc": "South Korea Inflation Holds Firm, Bolstering Case for More Hikes&nbsp;&nbsp;Bloomberg"
     },
     {
       "title": "‘Blue Tsunami’ Hits Samsung and SK Hynix as Democrats’ Sweep Fuels Chip-Demand Fears - bloomingbit",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 204.03,
-      "change": 1.97,
-      "pct": 0.98,
+      "price": 202.17,
+      "change": 0.11,
+      "pct": 0.05,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 399.13,
-      "change": 0.5,
-      "pct": 0.13,
+      "price": 396.18,
+      "change": -2.45,
+      "pct": -0.61,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 489.1,
-      "change": 22.26,
-      "pct": 4.77,
+      "price": 484.26,
+      "change": 17.42,
+      "pct": 3.73,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 58.12,
-      "change": -1.85,
-      "pct": -3.08,
+      "price": 57.93,
+      "change": -2.04,
+      "pct": -3.4,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 168.47,
-      "change": 6.39,
-      "pct": 3.94,
+      "price": 167.45,
+      "change": 5.37,
+      "pct": 3.31,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 196.25,
-      "change": -0.54,
-      "pct": -0.28,
+      "price": 192.28,
+      "change": -4.51,
+      "pct": -2.29,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 292.26,
-      "change": 13.27,
-      "pct": 4.76,
+      "price": 291.21,
+      "change": 12.22,
+      "pct": 4.38,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 353.64,
-      "change": 15.32,
-      "pct": 4.53,
+      "price": 352.07,
+      "change": 13.75,
+      "pct": 4.06,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 557.57,
-      "change": 50.45,
-      "pct": 9.95,
+      "price": 558.09,
+      "change": 50.97,
+      "pct": 10.05,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7707.6,
-      "change": 166.2,
-      "pct": 2.2,
+      "price": 7707.8,
+      "change": 166.4,
+      "pct": 2.21,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25904.13,
-      "change": 739.82,
-      "pct": 2.94,
+      "price": 25826.48,
+      "change": 662.17,
+      "pct": 2.63,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1340.98,
-      "change": -3.83,
-      "pct": -0.28,
+      "price": 1341.2,
+      "change": -3.61,
+      "pct": -0.27,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-04 16:58 UTC"
+  "updatedAt": "2026-11-04 20:35 UTC"
 }
