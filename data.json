@@ -1,16 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "Seven flights across Europe targeted by suspected bomb threats",
-      "link": "https://www.bbc.co.uk/news/articles/c6x2wd4v04eeo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 03 Nov 2026 17:56:03 GMT",
-      "desc": "Planes in Poland, Spain, Bulgaria and Italy have been checked for explosives following separate threats."
+      "title": "Spanish transport minister resigns days after deadly train crash",
+      "link": "https://www.bbc.co.uk/news/articles/c6wydqd4yxdyo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 03 Nov 2026 22:45:59 GMT",
+      "desc": "At least 69 people were killed and dozens injured in the collision south of the capital, Madrid."
     },
     {
-      "title": "Tenerife striker De Miguel dies after on-field collision",
-      "link": "https://www.bbc.co.uk/sport/football/articles/ck62yvz046pjo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 03 Nov 2026 09:09:18 GMT",
-      "desc": "Tenerife forward Jesus de Miguel dies aged 30 after an on-field collision during a Spanish second-division match."
+      "title": "Seven flights across Europe targeted by suspected bomb threats",
+      "link": "https://www.bbc.co.uk/news/articles/c6x2wd4v04eeo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 03 Nov 2026 20:42:47 GMT",
+      "desc": "Planes in Poland, Spain, Bulgaria and Italy have been checked for explosives following separate threats."
     },
     {
       "title": "Binance says fake job interviews used as part of $6.3bn crypto hack",
@@ -19,10 +19,10 @@
       "desc": "An engineer was contacted through a legitimate job-hunting platform and invited to bogus job interviews with fake company representatives, Binance says."
     },
     {
-      "title": "Death toll rises in Ukraine after Russia attacks aid centre, hospice and hospital",
-      "link": "https://www.bbc.co.uk/news/articles/c65ynez5y599o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 03 Nov 2026 16:57:41 GMT",
-      "desc": "At least 38 people are killed in 24 hours and Ukraine's Volodymyr Zelensky warns dozens more could be trapped under rubble."
+      "title": "NTSB says crucial plane parts found three miles from Florida crash site",
+      "link": "https://www.bbc.co.uk/news/articles/c9e8lk5dpj7no?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 03 Nov 2026 21:53:38 GMT",
+      "desc": "The NTSB said because the parts were found far from the accident site, they fell off before the crash."
     },
     {
       "title": "Libya's top religious authority rules against wearing Nike clothes",
@@ -57,10 +57,16 @@
       "desc": "South Korea GDP Beats Forecasts at 1.0% So Why Is KOSPI Still Down?&nbsp;&nbsp;Yahoo Finance"
     },
     {
-      "title": "South Korea Exports Extend Robust Growth on AI-Fueled Chip Boom - Bloomberg",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQYmlObkNreWNOMXMxY1BIUkp0VmxRSHNFVUwyMlpkRUU4bTdndnA4NThvOWZYaVFLbkF2S2prZFBUNzdNVHY2SmxpM2hSSWxNS2NRazZCTFJCNWZnbjhnQUJOdlo3YktnelJxQWd0SG9wbVhJcU5pR2VOUmpKZnQ5M3RaT256WHY0WGRGdHIzWHNHTlU0R3RtUWtid09LNmVRT2p4QllheHFaeXFFS1RLeFVMU2g?oc=5",
-      "date": "Sun, 01 Nov 2026 03:21:00 GMT",
-      "desc": "South Korea Exports Extend Robust Growth on AI-Fueled Chip Boom&nbsp;&nbsp;Bloomberg"
+      "title": "South Korea exports nearly double in October on AI investment boom - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMlRLbUx1WDR5aFY1bTdmYlRZcUg0VkJWWTZoczh1YnZmMUhpaW05NEl6VmJZQ1FtejFub3NISnNoUm04MDVDM2RIdk1jU2xTUlZwOTFXY1VaN0NiU2c3RWl4NzJyOEZnSGNJU0l6d2xUdzhXTUxPNXlhWmg2NE9ONDJrbTRnT0NuRXozajBvMlhoLVpxUGdrdE1sbzN6YmZ4UnhHZWtoRQ?oc=5",
+      "date": "Sun, 01 Nov 2026 03:28:00 GMT",
+      "desc": "South Korea exports nearly double in October on AI investment boom&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
+      "title": "Samsung, SK Hynix Anchor KOSPI Amid AI Profitability Debates - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNTHdvRUpXSzMtakc3bFVmV3A2VklvQzI2TXljNFBySUxYa0Y4VmxnT3NKMW1wR01PM3hNckpMY2htaEx0UFF3MVRTSHZYSHlqb2dMbTdMZVdpbHg3ZVFiNnR3aFN1WEhhU0djajR3UFNxZ19NaWNkZG81RVFtdTNENzFDUlJQV1EzZDNpWnlB?oc=5",
+      "date": "Tue, 03 Nov 2026 23:18:07 GMT",
+      "desc": "Samsung, SK Hynix Anchor KOSPI Amid AI Profitability Debates&nbsp;&nbsp;조선일보"
     },
     {
       "title": "TSMC, Samsung, and SK Hynix: Why This Investment Trust Is Reducing Its AI Exposure - Morningstar",
@@ -73,21 +79,15 @@
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1VWDdydXZKdVozdlpNTFUwbHducVFLbXVSV0VGZHk1WHZhUEZkUFBuNVQ2bUtOQ2l0amlUUlc0RjBCSXY1SDQtdkl1Y2JsZ1FpSjRzRW90b0lhU3JQekFFTGFlWmh3M0Z6dUxKVWV4c19jVlNLbXc?oc=5",
       "date": "Tue, 03 Nov 2026 18:15:00 GMT",
       "desc": "Philadelphia Semiconductor Index Plunges 3.4%: Samsung Electronics Falls to approximately $160, SK Hynix Breaks Below 1.4 Million Won&nbsp;&nbsp;BigGo Finance"
-    },
-    {
-      "title": "Samsung, SK Hynix and Micron expand AI memory production - upi",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQejYtbllZVjZ0cXd5ZHkxS1VSSWtDc0UwUlZ2OGpHeUpzbUxvLUh1aHhaMHpCRFl0aS1mMFJyOTBZYXVKWDA4R1V2QW15MXZsbFp6TjZwWW4xR2tOTFR1bGFGVGlFbEkxR0FDZWdod1B5X0t3RkZkWTlLbkZWdTlJOF9XZGQzTnppWDYtZXFtb2Y1ZG1rcWdnU3dqcE9GVHPSAaQBQVVfeXFMT0g2dGY0TnlhWThBOUhKTnZkcTFhenIwM1VKcWh0N1VlMFRUX0pDaWdsZVJYaHVGUV9vZUwyMDRwUmQ3NG9yRmxLN1lGaWtDOVliWEZwdE54SlA1U0lXMTNmYkdTQlhYTF9iOWZpcm1ObVlJa203bGNQMFFmY1ZWWXZRY1JRcFFKZk9sT2xKekFSckZjQk9hN0d6VEJfM3p0ejNONWo?oc=5",
-      "date": "Mon, 02 Nov 2026 22:15:34 GMT",
-      "desc": "Samsung, SK Hynix and Micron expand AI memory production&nbsp;&nbsp;upi"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 206.94,
-      "change": 2.3,
-      "pct": 1.12,
+      "price": 206.69,
+      "change": 2.05,
+      "pct": 1.0,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
@@ -101,73 +101,73 @@
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 487.25,
-      "change": -17.55,
-      "pct": -3.48,
+      "price": 483.9,
+      "change": -20.9,
+      "pct": -4.14,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 60.28,
-      "change": -5.48,
-      "pct": -8.33,
+      "price": 60.55,
+      "change": -5.21,
+      "pct": -7.92,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 163.9,
-      "change": -0.89,
-      "pct": -0.54,
+      "price": 164.43,
+      "change": -0.36,
+      "pct": -0.22,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 201.3,
-      "change": -4.67,
-      "pct": -2.27,
+      "price": 202.49,
+      "change": -3.48,
+      "pct": -1.69,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 278.85,
-      "change": -0.99,
-      "pct": -0.35,
+      "price": 280.03,
+      "change": 0.19,
+      "pct": 0.07,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 331.23,
-      "change": -13.4,
-      "pct": -3.89,
+      "price": 331.9,
+      "change": -12.73,
+      "pct": -3.69,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 522.95,
-      "change": 1.04,
-      "pct": 0.2,
+      "price": 520.99,
+      "change": -0.92,
+      "pct": -0.18,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7570.04,
-      "change": -10.03,
-      "pct": -0.13,
+      "price": 7568.92,
+      "change": -11.15,
+      "pct": -0.15,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25385.1,
-      "change": -51.9,
-      "pct": -0.2,
+      "price": 25372.01,
+      "change": -64.99,
+      "pct": -0.26,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 219500.0,
-      "change": -5500.0,
-      "pct": -2.44,
+      "price": 216500.0,
+      "change": -12500.0,
+      "pct": -5.46,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1398000.0,
-      "change": -20000.0,
-      "pct": -1.41,
+      "price": 1377000.0,
+      "change": -95000.0,
+      "pct": -6.45,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 277500.0,
-      "change": -4500.0,
-      "pct": -1.6,
+      "price": 273250.0,
+      "change": -13750.0,
+      "pct": -4.79,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 96600.0,
-      "change": 1000.0,
-      "pct": 1.05,
+      "price": 93900.0,
+      "change": -1800.0,
+      "pct": -1.88,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 169000.0,
-      "change": -3300.0,
-      "pct": -1.92,
+      "price": 167000.0,
+      "change": -8400.0,
+      "pct": -4.79,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5648.79,
-      "change": -81.95,
-      "pct": -1.43,
+      "price": 5582.18,
+      "change": -276.9,
+      "pct": -4.73,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1344.15,
-      "change": 18.63,
-      "pct": 1.41,
+      "price": 1337.88,
+      "change": -6.93,
+      "pct": -0.52,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-03 20:20 UTC"
+  "updatedAt": "2026-11-04 01:50 UTC"
 }
