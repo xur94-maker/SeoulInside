@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "Major tech stocks plunge as US midterms add to fears of AI slowdown",
+      "link": "https://www.bbc.co.uk/news/articles/cmn04705rd8jo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 01:44:03 GMT",
+      "desc": "Markets have been reacting to possible tougher scrutiny of data centre construction and the AI industry following the US midterms."
+    },
+    {
+      "title": "Democratic socialist defeats incumbent Karen Bass in Los Angeles mayor's race",
+      "link": "https://www.bbc.co.uk/news/articles/c6e3xxwk3k11o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 01:28:03 GMT",
+      "desc": "The results mean America's two most populous cities - New York and Los Angeles - will be led by democratic socialists."
+    },
+    {
+      "title": "Pope begins lengthy trip to Latin America weeks after lung cancer surgery",
+      "link": "https://www.bbc.co.uk/news/articles/cqn06j0y61k6o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 00:02:57 GMT",
+      "desc": "Pope Leo, who had part of a lung removed last month, will visit Uruguay, Argentina and Peru."
+    },
+    {
       "title": "Hoax bomb threats target European airlines and airports for second time in a week",
       "link": "https://www.bbc.co.uk/news/articles/cmpqg08nz3pqo?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 05 Nov 2026 17:39:48 GMT",
       "desc": "At least 21 flights across Europe are affected in what the UK government calls a \"malicious hoax threat\"."
     },
     {
-      "title": "Who could be behind hoax bomb threats to European air travel?",
-      "link": "https://www.bbc.co.uk/news/articles/cx8dzzjg3g9zo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 05 Nov 2026 19:58:40 GMT",
-      "desc": "There is no hard evidence so far linking airline bomb threats to Russia, Iran or any proxy groups."
-    },
-    {
-      "title": "California governor commutes death sentences for all 548 people on death row",
+      "title": "California governor commutes sentences for state's 548 death row inmates",
       "link": "https://www.bbc.co.uk/news/articles/cqrkyyd2j8mvo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 05 Nov 2026 20:28:38 GMT",
-      "desc": "California has historically had the largest population of death row inmates in the US."
-    },
-    {
-      "title": "French protests see numbers surge as unions join strikes over high cost of living",
-      "link": "https://www.bbc.co.uk/news/articles/ckx2qzv835pgo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 05 Nov 2026 17:59:53 GMT",
-      "desc": "The interior ministry estimates 600,000 people joined protests across France, while the unions say the number was far higher."
-    },
-    {
-      "title": "Paraguay President Santiago Peña resigns after bank collapse",
-      "link": "https://www.bbc.co.uk/news/articles/c6p9g39vln3yo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 05 Nov 2026 17:40:40 GMT",
-      "desc": "The move follows a bank collapse and after the lower house of congress voted in favour of pursuing an impeachment trial against him."
+      "date": "Thu, 05 Nov 2026 23:09:33 GMT",
+      "desc": "California has historically had the largest population of people on death row in the US."
     }
   ],
   "koreaNews": [
@@ -37,12 +37,6 @@
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPblVEVUoxTnN5Wm9MWVVSd1FtZTdOb0NSeVh4bl9BdzRIa0VHRVBzVlRYSFlmb0R4QzBkZ28tczN2ZXRVRzFtSzd1RGI3WWE0NEVlVUE5ZkFqdjBITElBS0hjYm9ZYlUzSnVMckNNSEtHaXN6bktjVWhVY294LWpjYzg5RTJ0Yk11SkdOTV8xSDM4cFZvdDFOXzJRZ1FGd1FCbUZxSQ?oc=5",
       "date": "Thu, 05 Nov 2026 19:01:15 GMT",
       "desc": "AI Is Hiding the Cracks in South Korea’s Economy&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "South Korea: Export Nation or Ecosystem Power? - CSIS | Center for Strategic and International Studies",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBBeEl6MG8wY0VEbDdUZnVrXzBVUWRVRjRDNjN2Qm1UYW85NWNsclZ5WlE4OEV6N3AxaFo3MEhXSy1pYm9wSGlLQXBhUFl4d0xyVXh1dzZuaW94YjJBRjB6SVBIZFMtSV9CMXNnd2s4V1R3bHpnMnhkWmstWnRIbXc?oc=5",
-      "date": "Thu, 05 Nov 2026 18:19:07 GMT",
-      "desc": "South Korea: Export Nation or Ecosystem Power?&nbsp;&nbsp;CSIS | Center for Strategic and International Studies"
     },
     {
       "title": "South Korea Inflation Remained Above Target in October - WSJ",
@@ -57,117 +51,123 @@
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "South Korea targets 'world's highest performance' sovereign AI model in record new budget - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE13dTdFdkR6VjhfZURCWjJyZXdDU1k0dVFGeG56V0Z6UmQyaVhFenE5b25lck9CUUFOcW1OS0NPU2E2Y1lBck8xU1NKamVmVmlQWTN6Y09LOFYwcDVLd2FzeDNXbm1ET19QR2xUOE9VLXJKLUd2Z3fSAXtBVV95cUxQUHhib3ZEcVdNc0lDSFE3WWRqU3AxNHJZVzE3NmpWaEwxSVBHcjN4VVR0Y2Y1Mm1lMUJra1BEQ3FGN1BFNGdiUklhcWJSakJEQVhPWG9oZ3ByaThQNUJTaVZNRVZBSmhFZmhDN3VqRW9WYnBaYWstTTRFVjA?oc=5",
-      "date": "Mon, 02 Nov 2026 06:02:03 GMT",
-      "desc": "South Korea targets 'world's highest performance' sovereign AI model in record new budget&nbsp;&nbsp;CNBC"
+      "title": "North Korea - Economy, Resources, Trade - Britannica",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
+      "date": "Sat, 31 Oct 2026 05:00:00 GMT",
+      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
     },
     {
-      "title": "South Korea's KOSPI Plummets 5.28% as Samsung, SK Hynix Tumble - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNNjFsVFpMTlNxLU1JUEE4M0pNc2d6aXJrZjFQYmhLX2UyN3JoLUZ0NHFjQ1ZKb0Z5V1VCRWcwTjh0RGpMcFFHZnBOWk9VOGFNTVVSemg2ZnhxZGRqMElDN09MZ2hNR0ZSWDZPSHJHRl9XQ2xlTUdOdUFwRU1USGZDMFQzSXluSGhub0JFanZR?oc=5",
-      "date": "Thu, 05 Nov 2026 08:06:34 GMT",
-      "desc": "South Korea's KOSPI Plummets 5.28% as Samsung, SK Hynix Tumble&nbsp;&nbsp;조선일보"
+      "title": "What ‘Dead-End Job’ Knows About Korea - Book and Film Globe",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPUVR3SzU0ck5OdXFnNTFuSmVMSjdqdXhiU2FERHN2dXlFTk0wT2tNOGEybm9CeEZhT0VMZlVJTks5aE1nOF9tNHNGOVN6RHdMVV9KU29WdEVQMnVVOVdwX0Z0ZjNidF9fT3JXbDE3RjFYdlphQVRzdWdZU2c2c1VoVw?oc=5",
+      "date": "Thu, 05 Nov 2026 14:02:59 GMT",
+      "desc": "What ‘Dead-End Job’ Knows About Korea&nbsp;&nbsp;Book and Film Globe"
     },
     {
-      "title": "Why Samsung and SK Hynix shares declined heavily on Thursday? - TradingView",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxONXo1RUNrN2s2YmJsTmVtczh6WVpyY1J3TjB3dGZYUGZTRGFqd3BOX3N6MWpjZkN2WUVFYVVhOW5sajZSWlFGcWxqWGUyTjV2cVFHWWNENVlOdG52SzlzN29xYTVfbXpkTncwLTNIQXRWSzdfUHZtVG93eE02R0VVYlN2VHF1dVpiWFc0OWxkMWNBOEhVRHNoZkUzT3k3UFRhOXRqR29fTDRyaTJUc24tcFFUSHFkbVdw?oc=5",
-      "date": "Thu, 05 Nov 2026 07:47:00 GMT",
-      "desc": "Why Samsung and SK Hynix shares declined heavily on Thursday?&nbsp;&nbsp;TradingView"
+      "title": "Samsung, SK hynix slide 10% as AI data center fears spread - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5vMmUtTURCeVIzUVVLb3l5cjFpSzc2aWVuSlBzT0txa0NpLWF2bS1nWUt3V1dNdGhPWVJMdUN3SUxla3lkbU1jbnU4Sko4ZVU3LUxqUjJrdw?oc=5",
+      "date": "Fri, 06 Nov 2026 00:28:13 GMT",
+      "desc": "Samsung, SK hynix slide 10% as AI data center fears spread&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "Samsung, SK Hynix and Micron expand AI memory production - upi",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQejYtbllZVjZ0cXd5ZHkxS1VSSWtDc0UwUlZ2OGpHeUpzbUxvLUh1aHhaMHpCRFl0aS1mMFJyOTBZYXVKWDA4R1V2QW15MXZsbFp6TjZwWW4xR2tOTFR1bGFGVGlFbEkxR0FDZWdod1B5X0t3RkZkWTlLbkZWdTlJOF9XZGQzTnppWDYtZXFtb2Y1ZG1rcWdnU3dqcE9GVHPSAaQBQVVfeXFMT0g2dGY0TnlhWThBOUhKTnZkcTFhenIwM1VKcWh0N1VlMFRUX0pDaWdsZVJYaHVGUV9vZUwyMDRwUmQ3NG9yRmxLN1lGaWtDOVliWEZwdE54SlA1U0lXMTNmYkdTQlhYTF9iOWZpcm1ObVlJa203bGNQMFFmY1ZWWXZRY1JRcFFKZk9sT2xKekFSckZjQk9hN0d6VEJfM3p0ejNONWo?oc=5",
-      "date": "Mon, 02 Nov 2026 22:15:34 GMT",
-      "desc": "Samsung, SK Hynix and Micron expand AI memory production&nbsp;&nbsp;upi"
+      "title": "Samsung, SK Hynix Fall More Than 10% as Asian Markets Slide - www.tokenpost.com",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1Bc2c3SnRxdlgzREcxZmoxa3lUeHlubVJ0UlB4RkxyRmRrakZiQ1o5cEw0bkM4a2tEMXM0MGYxRGNwaC1QM2pFVXNSQ0JRN1JXYnRYaUdzREZVQQ?oc=5",
+      "date": "Thu, 05 Nov 2026 23:59:00 GMT",
+      "desc": "Samsung, SK Hynix Fall More Than 10% as Asian Markets Slide&nbsp;&nbsp;www.tokenpost.com"
+    },
+    {
+      "title": "US Chip Selloff Sends Samsung, SK Hynix Down More Than 10% in Nextrade Premarket - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1BdjJiRDZrVWRvTmxDVDUta0dLdlVSTzF1UUt1Tk1DemRycGdjTXA5eEtKVnc0dmlyM3pIcFhORUJrdFFXbEJRYmdjUld0VlRJR3BOcQ?oc=5",
+      "date": "Fri, 06 Nov 2026 00:02:28 GMT",
+      "desc": "US Chip Selloff Sends Samsung, SK Hynix Down More Than 10% in Nextrade Premarket&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 182.69,
-      "change": -24.0,
-      "pct": -11.61,
+      "price": 181.6,
+      "change": -25.09,
+      "pct": -12.14,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 356.37,
-      "change": -48.43,
-      "pct": -11.96,
+      "price": 353.1,
+      "change": -51.7,
+      "pct": -12.77,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 414.07,
-      "change": -69.83,
-      "pct": -14.43,
+      "price": 404.4,
+      "change": -79.5,
+      "pct": -16.43,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 53.52,
-      "change": -7.03,
-      "pct": -11.62,
+      "price": 52.25,
+      "change": -8.3,
+      "pct": -13.71,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 160.21,
-      "change": -4.22,
-      "pct": -2.57,
+      "price": 156.75,
+      "change": -7.68,
+      "pct": -4.67,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 169.83,
-      "change": -32.66,
-      "pct": -16.13,
+      "price": 166.72,
+      "change": -35.77,
+      "pct": -17.67,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 283.8,
-      "change": 3.77,
-      "pct": 1.34,
+      "price": 282.57,
+      "change": 2.54,
+      "pct": 0.91,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 346.35,
-      "change": 14.45,
-      "pct": 4.35,
+      "price": 344.17,
+      "change": 12.27,
+      "pct": 3.7,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 536.59,
-      "change": 15.6,
-      "pct": 2.99,
+      "price": 535.93,
+      "change": 14.94,
+      "pct": 2.87,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7383.22,
-      "change": -185.7,
-      "pct": -2.45,
+      "price": 7353.73,
+      "change": -215.19,
+      "pct": -2.84,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 24441.89,
-      "change": -930.12,
-      "pct": -3.67,
+      "price": 24315.0,
+      "change": -1057.01,
+      "pct": -4.17,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 201500.0,
-      "change": -18000.0,
-      "pct": -8.2,
+      "price": 186700.0,
+      "change": -31300.0,
+      "pct": -14.36,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1264000.0,
-      "change": -134000.0,
-      "pct": -9.59,
+      "price": 1145000.0,
+      "change": -251000.0,
+      "pct": -17.98,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 293500.0,
-      "change": 16000.0,
-      "pct": 5.77,
+      "price": 274000.0,
+      "change": -9500.0,
+      "pct": -3.35,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 100800.0,
-      "change": 4200.0,
-      "pct": 4.35,
+      "price": 98900.0,
+      "change": 3100.0,
+      "pct": 3.24,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 184900.0,
-      "change": 15900.0,
-      "pct": 9.41,
+      "price": 180600.0,
+      "change": 9800.0,
+      "pct": 5.74,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5383.8,
-      "change": -264.99,
-      "pct": -4.69,
+      "price": 5010.04,
+      "change": -673.76,
+      "pct": -11.85,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1356.09,
-      "change": 13.19,
-      "pct": 0.98,
+      "price": 1355.58,
+      "change": 15.51,
+      "pct": 1.16,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-05 20:52 UTC"
+  "updatedAt": "2026-11-06 01:57 UTC"
 }
