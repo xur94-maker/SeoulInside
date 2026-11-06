@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "AI stocks climb after trillions wiped from market values",
+      "link": "https://www.bbc.co.uk/news/articles/c35ynnpzdq51o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 16:23:16 GMT",
+      "desc": "Investors had been selling off tech shares in part due to concerns the Democrat election victory would mean slower AI development."
+    },
+    {
       "title": "White House denies Hegseth and Rubio to leave jobs after Republican election losses",
       "link": "https://www.bbc.co.uk/news/articles/cqg7xxg4jdv5o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 06 Nov 2026 02:08:57 GMT",
@@ -13,22 +19,16 @@
       "desc": "The order comes after Trump made a series of big changes to the decor of the Oval Office and tore down the White House East Wing."
     },
     {
-      "title": "'Several victims' after bus crashes in France, officials say",
+      "title": "Two dead after bus crashes in France, officials say",
       "link": "https://www.bbc.co.uk/news/articles/cmly00l4p3lwo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 06 Nov 2026 09:57:11 GMT",
-      "desc": "The local mayor says the bus \"left the road and hit a tree in the ditch\", with the education minister saying students are involved."
+      "date": "Fri, 06 Nov 2026 15:33:52 GMT",
+      "desc": "One child and one young adult were killed in the crash, local authorities say, with more injured."
     },
     {
-      "title": "Pope begins lengthy trip to Latin America weeks after lung cancer surgery",
-      "link": "https://www.bbc.co.uk/news/articles/cqn06j0y61k6o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 06 Nov 2026 00:02:57 GMT",
-      "desc": "Pope Leo, who had part of a lung removed last month, will visit Uruguay, Argentina and Peru."
-    },
-    {
-      "title": "Major construction ongoing near Iran missile bases, satellite images suggest",
-      "link": "https://www.bbc.co.uk/news/articles/ckjrwx1r2d5ro?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 06 Nov 2026 07:33:41 GMT",
-      "desc": "Evidence of digging and new buildings are visible in satellite imagery taken in November, satellite images suggest."
+      "title": "Kenyan doomsday cult leader given life sentence for murdering 191 people",
+      "link": "https://www.bbc.co.uk/news/articles/cm5yne5984l0o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 14:46:03 GMT",
+      "desc": "Paul Mackenzie ordered his followers to starve their children to death in a forest so they could \"meet Jesus\"."
     }
   ],
   "koreaNews": [
@@ -45,28 +45,22 @@
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "World Bank taps 2nd Korean vice president - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE8xTXZGSlRxamxZUHFCZ21GbGxVRlp6ZlV6ZDVPOW1VdndCV2dabFRrbjJmTmp1emNuY1djVk5pSGtQNU5KRU5MSVZ4M1hKRWFTalp1a3dDbw?oc=5",
-      "date": "Fri, 06 Nov 2026 05:20:19 GMT",
-      "desc": "World Bank taps 2nd Korean vice president&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "September sees C/A surplus smash USD 60 billion in monthly first - Korea.net",
-      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9sWWJvV1NXYXJGREtNZ3EtS0FMamlldklrLXNYNUF5ZjFOc1M0RkJZX2dPb1c4RS1YU1FqTmdvUlQxRGpyOW92X1JuWjVZZWZhN2M0MjJXeHhXeXR1TERhQ1UwcUpIcjIwd1FqVU5iOA?oc=5",
-      "date": "Fri, 06 Nov 2026 06:41:45 GMT",
-      "desc": "September sees C/A surplus smash USD 60 billion in monthly first&nbsp;&nbsp;Korea.net"
-    },
-    {
       "title": "North Korea - Economy, Resources, Trade - Britannica",
       "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
       "date": "Sat, 31 Oct 2026 05:00:00 GMT",
       "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
     },
     {
-      "title": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble - CNBC",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAwSklwR0ROYnpSbTk3dUZ4WUpNWDRfRjRzYjVGcE90U3VuNmFJRXdwXzFlTVplcEJzT3R5dUV5S21vY1JjRWZYVERSTlg4WHdGMW1hRjdvODg5R3I0MmRLQ2ZOYzFKNnJNRHZLc3dON19tUURZWGF4cUkwQUoybjjSAYQBQVVfeXFMTzQzR01kNVNEV0xUOFlPVEF6djcwZkRNU2xDZTAyRHlJcVZtNDNhd1R6b0hBc0c3ZTVwcEE3aW03N0dGXzg1bmZiSE1pVi1RXzExam5xVVE5NE50cmZkZ0F4ZzlRdXZTZmVLeWpWM3M1cm85aE9hZnloQUwtZ2hWRHNybml1?oc=5",
-      "date": "Fri, 06 Nov 2026 00:59:00 GMT",
-      "desc": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble&nbsp;&nbsp;CNBC"
+      "title": "Korea moves to avert forced stock sales as Wall Street rout rattles markets - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQc0hmMVRSUG1Kd3hBWkdpWWJNQUkybk9tQnNnQm03QTBjSkJMVWcxQ2gwb3pDOVRINV9hZEpFWHVXb0txQWxqbElITXdmN1dzWk0wZEpRVWNFQXRBcEV2WXpPQ2o2VFhJX1JTbF9LTklmRzNDY0Y3X1BlOEZyYUgyUDA4R2M4emN2cVRMbkRtakVkLUhmRnpiSjZlQjlqSjFqSkdITnVjRkhnV2ZvdVVKZXM4VWQ2dWswMWpjS3FOYzJIc2JTSXEw?oc=5",
+      "date": "Fri, 06 Nov 2026 06:43:51 GMT",
+      "desc": "Korea moves to avert forced stock sales as Wall Street rout rattles markets&nbsp;&nbsp;Korea JoongAng Daily"
+    },
+    {
+      "title": "South Korean Stocks Plunge 8.8% Intraday, Triggering Circuit Breaker; Government Waives 140% Collateral Ratio for Three Months to Shore Up Market - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9sZzNwQ1BQSTNGcWFEVEdadmloRkRJSVFldWhnRzZVT0ZlMzRZRmctR3VqdHpXaWdyWlktQkNlUWZjMmdUZlZsMHplR1Ixbm1MR2FQc05NUUlaZUhGNzZwNU9WWFgtWDl4LUgzcTNVQk9oUWIyd2c?oc=5",
+      "date": "Fri, 06 Nov 2026 07:36:00 GMT",
+      "desc": "South Korean Stocks Plunge 8.8% Intraday, Triggering Circuit Breaker; Government Waives 140% Collateral Ratio for Three Months to Shore Up Market&nbsp;&nbsp;BigGo Finance"
     },
     {
       "title": "Samsung, SK hynix slide 10% as AI data center fears spread - The Korea Herald",
@@ -79,95 +73,101 @@
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1Bc2c3SnRxdlgzREcxZmoxa3lUeHlubVJ0UlB4RkxyRmRrakZiQ1o5cEw0bkM4a2tEMXM0MGYxRGNwaC1QM2pFVXNSQ0JRN1JXYnRYaUdzREZVQQ?oc=5",
       "date": "Thu, 05 Nov 2026 23:59:00 GMT",
       "desc": "Samsung, SK Hynix Fall More Than 10% as Asian Markets Slide&nbsp;&nbsp;www.tokenpost.com"
+    },
+    {
+      "title": "Samsung, SK Hynix and Micron expand AI memory production - upi",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQejYtbllZVjZ0cXd5ZHkxS1VSSWtDc0UwUlZ2OGpHeUpzbUxvLUh1aHhaMHpCRFl0aS1mMFJyOTBZYXVKWDA4R1V2QW15MXZsbFp6TjZwWW4xR2tOTFR1bGFGVGlFbEkxR0FDZWdod1B5X0t3RkZkWTlLbkZWdTlJOF9XZGQzTnppWDYtZXFtb2Y1ZG1rcWdnU3dqcE9GVHPSAaQBQVVfeXFMT0g2dGY0TnlhWThBOUhKTnZkcTFhenIwM1VKcWh0N1VlMFRUX0pDaWdsZVJYaHVGUV9vZUwyMDRwUmQ3NG9yRmxLN1lGaWtDOVliWEZwdE54SlA1U0lXMTNmYkdTQlhYTF9iOWZpcm1ObVlJa203bGNQMFFmY1ZWWXZRY1JRcFFKZk9sT2xKekFSckZjQk9hN0d6VEJfM3p0ejNONWo?oc=5",
+      "date": "Mon, 02 Nov 2026 22:15:34 GMT",
+      "desc": "Samsung, SK Hynix and Micron expand AI memory production&nbsp;&nbsp;upi"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 181.6,
-      "change": -25.09,
-      "pct": -12.14,
+      "price": 189.14,
+      "change": -10.99,
+      "pct": -5.49,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 353.1,
-      "change": -51.7,
-      "pct": -12.77,
+      "price": 376.78,
+      "change": -18.97,
+      "pct": -4.79,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 404.4,
-      "change": -79.5,
-      "pct": -16.43,
+      "price": 443.84,
+      "change": -44.94,
+      "pct": -9.19,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 52.25,
-      "change": -8.3,
-      "pct": -13.71,
+      "price": 55.97,
+      "change": -2.3,
+      "pct": -3.95,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 156.75,
-      "change": -7.68,
-      "pct": -4.67,
+      "price": 166.79,
+      "change": -6.4,
+      "pct": -3.69,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 166.72,
-      "change": -35.77,
-      "pct": -17.67,
+      "price": 173.94,
+      "change": -17.86,
+      "pct": -9.31,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 282.57,
-      "change": 2.54,
-      "pct": 0.91,
+      "price": 287.95,
+      "change": -0.98,
+      "pct": -0.34,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 344.17,
-      "change": 12.27,
-      "pct": 3.7,
+      "price": 344.64,
+      "change": -4.87,
+      "pct": -1.39,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 535.93,
-      "change": 14.94,
-      "pct": 2.87,
+      "price": 536.6,
+      "change": -19.2,
+      "pct": -3.45,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7353.73,
-      "change": -215.19,
-      "pct": -2.84,
+      "price": 7429.55,
+      "change": -259.07,
+      "pct": -3.37,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 24315.0,
-      "change": -1057.01,
-      "pct": -4.17,
+      "price": 24751.49,
+      "change": -985.02,
+      "pct": -3.83,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1351.68,
-      "change": 11.61,
-      "pct": 0.87,
+      "price": 1362.52,
+      "change": 22.45,
+      "pct": 1.68,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-06 10:11 UTC"
+  "updatedAt": "2026-11-06 16:39 UTC"
 }
