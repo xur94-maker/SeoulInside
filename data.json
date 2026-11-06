@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Major tech stocks plunge as US midterms add to fears of AI slowdown",
-      "link": "https://www.bbc.co.uk/news/articles/cmn04705rd8jo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 06 Nov 2026 01:44:03 GMT",
-      "desc": "Markets have been reacting to possible tougher scrutiny of data centre construction and the AI industry following the US midterms."
+      "title": "White House denies Hegseth and Rubio to leave jobs after Republican election losses",
+      "link": "https://www.bbc.co.uk/news/articles/cqg7xxg4jdv5o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 02:08:57 GMT",
+      "desc": "US media reports there are calls to replace Pete Hegseth, who also faces a possible impeachment vote, while Marco Rubio is rumoured to be eyeing a presidential run."
     },
     {
-      "title": "Democratic socialist defeats incumbent Karen Bass in Los Angeles mayor's race",
-      "link": "https://www.bbc.co.uk/news/articles/c6e3xxwk3k11o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 06 Nov 2026 01:28:03 GMT",
-      "desc": "The results mean America's two most populous cities - New York and Los Angeles - will be led by democratic socialists."
+      "title": "Trump signs order to preserve Oval Office as national monument",
+      "link": "https://www.bbc.co.uk/news/articles/cmy0eeg101djo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 09:19:57 GMT",
+      "desc": "The order comes after Trump made a series of big changes to the decor of the Oval Office and tore down the White House East Wing."
+    },
+    {
+      "title": "'Several victims' after bus crashes in France, officials say",
+      "link": "https://www.bbc.co.uk/news/articles/cmly00l4p3lwo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 09:57:11 GMT",
+      "desc": "The local mayor says the bus \"left the road and hit a tree in the ditch\", with the education minister saying students are involved."
     },
     {
       "title": "Pope begins lengthy trip to Latin America weeks after lung cancer surgery",
@@ -19,16 +25,10 @@
       "desc": "Pope Leo, who had part of a lung removed last month, will visit Uruguay, Argentina and Peru."
     },
     {
-      "title": "Hoax bomb threats target European airlines and airports for second time in a week",
-      "link": "https://www.bbc.co.uk/news/articles/cmpqg08nz3pqo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 05 Nov 2026 17:39:48 GMT",
-      "desc": "At least 21 flights across Europe are affected in what the UK government calls a \"malicious hoax threat\"."
-    },
-    {
-      "title": "California governor commutes sentences for state's 548 death row inmates",
-      "link": "https://www.bbc.co.uk/news/articles/cqrkyyd2j8mvo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 05 Nov 2026 23:09:33 GMT",
-      "desc": "California has historically had the largest population of people on death row in the US."
+      "title": "Major construction ongoing near Iran missile bases, satellite images suggest",
+      "link": "https://www.bbc.co.uk/news/articles/ckjrwx1r2d5ro?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 06 Nov 2026 07:33:41 GMT",
+      "desc": "Evidence of digging and new buildings are visible in satellite imagery taken in November, satellite images suggest."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,22 @@
       "desc": "AI Is Hiding the Cracks in South Korea’s Economy&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea Inflation Remained Above Target in October - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOMHNoTTBBOVlvWk1iWVVQbHNOakVTTUlybkM5Z3h3NkFncTBnNVB1YzBPOWJ1bXNOV1IxRDVBR3lHY0t0SjJJbko3anFVaEE3MGV6OW1xTTA5UlVtdVdKdmNlR2hPSkRzRVV4dGNTNncyVkptT2Z3aVZ3TjdBaHQ4ZXR5cXJIRXJGQWk4blB6V3ZzZTl3S211V0Via3hBajV3UVdZ?oc=5",
-      "date": "Thu, 05 Nov 2026 09:36:06 GMT",
-      "desc": "South Korea Inflation Remained Above Target in October&nbsp;&nbsp;WSJ"
-    },
-    {
       "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
       "date": "Mon, 19 Oct 2026 07:00:00 GMT",
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+    },
+    {
+      "title": "World Bank taps 2nd Korean vice president - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE8xTXZGSlRxamxZUHFCZ21GbGxVRlp6ZlV6ZDVPOW1VdndCV2dabFRrbjJmTmp1emNuY1djVk5pSGtQNU5KRU5MSVZ4M1hKRWFTalp1a3dDbw?oc=5",
+      "date": "Fri, 06 Nov 2026 05:20:19 GMT",
+      "desc": "World Bank taps 2nd Korean vice president&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "September sees C/A surplus smash USD 60 billion in monthly first - Korea.net",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9sWWJvV1NXYXJGREtNZ3EtS0FMamlldklrLXNYNUF5ZjFOc1M0RkJZX2dPb1c4RS1YU1FqTmdvUlQxRGpyOW92X1JuWjVZZWZhN2M0MjJXeHhXeXR1TERhQ1UwcUpIcjIwd1FqVU5iOA?oc=5",
+      "date": "Fri, 06 Nov 2026 06:41:45 GMT",
+      "desc": "September sees C/A surplus smash USD 60 billion in monthly first&nbsp;&nbsp;Korea.net"
     },
     {
       "title": "North Korea - Economy, Resources, Trade - Britannica",
@@ -57,10 +63,10 @@
       "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
     },
     {
-      "title": "What ‘Dead-End Job’ Knows About Korea - Book and Film Globe",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPUVR3SzU0ck5OdXFnNTFuSmVMSjdqdXhiU2FERHN2dXlFTk0wT2tNOGEybm9CeEZhT0VMZlVJTks5aE1nOF9tNHNGOVN6RHdMVV9KU29WdEVQMnVVOVdwX0Z0ZjNidF9fT3JXbDE3RjFYdlphQVRzdWdZU2c2c1VoVw?oc=5",
-      "date": "Thu, 05 Nov 2026 14:02:59 GMT",
-      "desc": "What ‘Dead-End Job’ Knows About Korea&nbsp;&nbsp;Book and Film Globe"
+      "title": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAwSklwR0ROYnpSbTk3dUZ4WUpNWDRfRjRzYjVGcE90U3VuNmFJRXdwXzFlTVplcEJzT3R5dUV5S21vY1JjRWZYVERSTlg4WHdGMW1hRjdvODg5R3I0MmRLQ2ZOYzFKNnJNRHZLc3dON19tUURZWGF4cUkwQUoybjjSAYQBQVVfeXFMTzQzR01kNVNEV0xUOFlPVEF6djcwZkRNU2xDZTAyRHlJcVZtNDNhd1R6b0hBc0c3ZTVwcEE3aW03N0dGXzg1bmZiSE1pVi1RXzExam5xVVE5NE50cmZkZ0F4ZzlRdXZTZmVLeWpWM3M1cm85aE9hZnloQUwtZ2hWRHNybml1?oc=5",
+      "date": "Fri, 06 Nov 2026 00:59:00 GMT",
+      "desc": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung, SK hynix slide 10% as AI data center fears spread - The Korea Herald",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1Bc2c3SnRxdlgzREcxZmoxa3lUeHlubVJ0UlB4RkxyRmRrakZiQ1o5cEw0bkM4a2tEMXM0MGYxRGNwaC1QM2pFVXNSQ0JRN1JXYnRYaUdzREZVQQ?oc=5",
       "date": "Thu, 05 Nov 2026 23:59:00 GMT",
       "desc": "Samsung, SK Hynix Fall More Than 10% as Asian Markets Slide&nbsp;&nbsp;www.tokenpost.com"
-    },
-    {
-      "title": "US Chip Selloff Sends Samsung, SK Hynix Down More Than 10% in Nextrade Premarket - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1BdjJiRDZrVWRvTmxDVDUta0dLdlVSTzF1UUt1Tk1DemRycGdjTXA5eEtKVnc0dmlyM3pIcFhORUJrdFFXbEJRYmdjUld0VlRJR3BOcQ?oc=5",
-      "date": "Fri, 06 Nov 2026 00:02:28 GMT",
-      "desc": "US Chip Selloff Sends Samsung, SK Hynix Down More Than 10% in Nextrade Premarket&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 186700.0,
-      "change": -31300.0,
-      "pct": -14.36,
+      "price": 188700.0,
+      "change": -29300.0,
+      "pct": -13.44,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1145000.0,
-      "change": -251000.0,
-      "pct": -17.98,
+      "price": 1132000.0,
+      "change": -264000.0,
+      "pct": -18.91,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 274000.0,
-      "change": -9500.0,
-      "pct": -3.35,
+      "price": 279500.0,
+      "change": -4000.0,
+      "pct": -1.41,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 98900.0,
-      "change": 3100.0,
-      "pct": 3.24,
+      "price": 100300.0,
+      "change": 4500.0,
+      "pct": 4.7,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 180600.0,
-      "change": 9800.0,
-      "pct": 5.74,
+      "price": 190200.0,
+      "change": 19400.0,
+      "pct": 11.36,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5010.04,
-      "change": -673.76,
-      "pct": -11.85,
+      "price": 5059.69,
+      "change": -624.11,
+      "pct": -10.98,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1355.58,
-      "change": 15.51,
-      "pct": 1.16,
+      "price": 1351.68,
+      "change": 11.61,
+      "pct": 0.87,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-06 04:07 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-06 10:11 UTC"
 }
