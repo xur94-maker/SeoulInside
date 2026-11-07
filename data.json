@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Paraguay's president impeached and under house arrest after bank collapse",
+      "link": "https://www.bbc.co.uk/news/articles/c68jzzvjgdy9o?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 07 Nov 2026 07:20:00 GMT",
+      "desc": "Santiago Peña was ousted due to a banking crisis which left millions of people unable to access their money."
+    },
+    {
       "title": "AI stocks climb after trillions wiped from market values",
       "link": "https://www.bbc.co.uk/news/articles/c35ynnpzdq51o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 06 Nov 2026 21:06:25 GMT",
@@ -13,22 +19,16 @@
       "desc": "The buzz about the presidential election is already under way - here's what we learned this week."
     },
     {
-      "title": "Two dead after bus crashes in France, officials say",
-      "link": "https://www.bbc.co.uk/news/articles/cmly00l4p3lwo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 06 Nov 2026 15:33:52 GMT",
-      "desc": "One child and one young adult were killed in the crash, local authorities say, with more injured."
+      "title": "Pope in 'pretty good health' as he starts Latin America tour",
+      "link": "https://www.bbc.co.uk/news/articles/c60e0001ve9wo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 07 Nov 2026 06:59:48 GMT",
+      "desc": "Pope Leo travels to Uruguay just three weeks after having surgery for lung cancer."
     },
     {
       "title": "New wave of bomb threats hit European airlines",
       "link": "https://www.bbc.co.uk/news/articles/cq62yy064vjpo?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 06 Nov 2026 15:25:35 GMT",
       "desc": "No link has been established between the threats against the airlines and those against the media outlets."
-    },
-    {
-      "title": "Kenyan doomsday cult leader given life sentence for murdering 191 people",
-      "link": "https://www.bbc.co.uk/news/articles/cm5yne5984l0o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 06 Nov 2026 14:46:03 GMT",
-      "desc": "Paul Mackenzie ordered his followers to starve their children to death in a forest so they could \"meet Jesus\"."
     }
   ],
   "koreaNews": [
@@ -45,10 +45,10 @@
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "Two storms threaten South Korea’s economic future - 동아일보",
-      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0zNkxoUG5hYjZJRkdTYjFDd2pSV21FaE5tcllqb01KR2t2ajFGaElta0JwUkpMeFJYTmk2TTFOLXVrTllYYVpzSjdCSFMwQXJfZUtHZFVBUEtOeFlHb0VaUm1YLTFMQQ?oc=5",
-      "date": "Fri, 06 Nov 2026 23:24:51 GMT",
-      "desc": "Two storms threaten South Korea’s economic future&nbsp;&nbsp;동아일보"
+      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
+      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
     },
     {
       "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
@@ -57,22 +57,22 @@
       "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "South Korea’s GDP growth beats forecasts amid AI boom - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVkhSendFOTJpVXVneXVaSFVfdWNoY0swai14U0NiU1dCU0xmbE5Wd25Dak9DUkpEOEl1ZDd5Um1NQkg5c2V2SU9JVm1KaTgxbXNwVGRwS2ZQNlRmTm9Ea2JDS1N3VG5jWkFCbERCRjFlNjgtZmkzU0Q3cU16dnYyUXJRaG14ZEJOT1RTTGV0bzRPV3YxTC1qV2hST19DUdIBowFBVV95cUxPRl9KQ1REU214M3NQRHpBaGI5LW5QZXc5bHkwNDRDTk5NZUxtbV9zeVN5SWo1UG1fdHF6dS1PWWV4V2w1ZXRJdi1DNjIwWEJXRGJFOTM3V0hMTUp1LXFEcTB5cGx2QTlrUm14SGNYeUg4UXZNUkl2andsNXZyMW1KblFmbk5zbjFHMFloZkh4ckhkVXJiaDJoU0hTRHF5RUl6LXU0?oc=5",
-      "date": "Tue, 27 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
+      "title": "Two storms threaten South Korea’s economic future - 동아일보",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0zNkxoUG5hYjZJRkdTYjFDd2pSV21FaE5tcllqb01KR2t2ajFGaElta0JwUkpMeFJYTmk2TTFOLXVrTllYYVpzSjdCSFMwQXJfZUtHZFVBUEtOeFlHb0VaUm1YLTFMQQ?oc=5",
+      "date": "Fri, 06 Nov 2026 23:24:51 GMT",
+      "desc": "Two storms threaten South Korea’s economic future&nbsp;&nbsp;동아일보"
     },
     {
-      "title": "‘Held On Trusting Samsung and SK Hynix’—Brokerages Offer Surprise Advice After Chip Stocks Tumble [Stock+] - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9lVEtLYTZoeFJrUVJUdTBrUDUzdGxlRXVFeWx4RzBFMFBNRzZiZ1FxUV9lY3lMSEQ1Z2hLUklEY3cta05Sc09fWFp6LXZNczlLekV4bg?oc=5",
-      "date": "Fri, 06 Nov 2026 22:26:29 GMT",
-      "desc": "‘Held On Trusting Samsung and SK Hynix’—Brokerages Offer Surprise Advice After Chip Stocks Tumble [Stock+]&nbsp;&nbsp;bloomingbit"
+      "title": "OpenAI Vows to Keep Investing in Data Centers; Focus Turns to Samsung, SK Hynix Rebound - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9FeDJOR3ExSXVfLVlEWlpENk5XeHJ5a19RdlVxbFlaWUF5WkFwRUJBVGhuX1N3R21VNi1VQVpJY1FHSm9pZ0dDaE5teTZ4cFRXOWtnVg?oc=5",
+      "date": "Sat, 07 Nov 2026 00:45:45 GMT",
+      "desc": "OpenAI Vows to Keep Investing in Data Centers; Focus Turns to Samsung, SK Hynix Rebound&nbsp;&nbsp;bloomingbit"
     },
     {
-      "title": "Samsung, SK Hynix and Micron expand AI memory production - upi",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQejYtbllZVjZ0cXd5ZHkxS1VSSWtDc0UwUlZ2OGpHeUpzbUxvLUh1aHhaMHpCRFl0aS1mMFJyOTBZYXVKWDA4R1V2QW15MXZsbFp6TjZwWW4xR2tOTFR1bGFGVGlFbEkxR0FDZWdod1B5X0t3RkZkWTlLbkZWdTlJOF9XZGQzTnppWDYtZXFtb2Y1ZG1rcWdnU3dqcE9GVHPSAaQBQVVfeXFMT0g2dGY0TnlhWThBOUhKTnZkcTFhenIwM1VKcWh0N1VlMFRUX0pDaWdsZVJYaHVGUV9vZUwyMDRwUmQ3NG9yRmxLN1lGaWtDOVliWEZwdE54SlA1U0lXMTNmYkdTQlhYTF9iOWZpcm1ObVlJa203bGNQMFFmY1ZWWXZRY1JRcFFKZk9sT2xKekFSckZjQk9hN0d6VEJfM3p0ejNONWo?oc=5",
-      "date": "Mon, 02 Nov 2026 22:15:34 GMT",
-      "desc": "Samsung, SK Hynix and Micron expand AI memory production&nbsp;&nbsp;upi"
+      "title": "Samsung, SK hynix slide 10% as AI data center fears spread - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5vMmUtTURCeVIzUVVLb3l5cjFpSzc2aWVuSlBzT0txa0NpLWF2bS1nWUt3V1dNdGhPWVJMdUN3SUxla3lkbU1jbnU4Sko4ZVU3LUxqUjJrdw?oc=5",
+      "date": "Fri, 06 Nov 2026 00:28:13 GMT",
+      "desc": "Samsung, SK hynix slide 10% as AI data center fears spread&nbsp;&nbsp;The Korea Herald"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
@@ -229,7 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-07 03:41 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-07 09:27 UTC"
 }
