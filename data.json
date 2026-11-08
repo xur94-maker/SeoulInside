@@ -1,10 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "What we know about Krakow mass shooting so far",
+      "title": "What we know so far after Krakow gun attack",
       "link": "https://www.bbc.co.uk/news/articles/cmd7q15drwgeo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 07 Nov 2026 18:22:11 GMT",
-      "desc": "At least six people were killed by a gunman in military fatigues who opened fire in Poland's second largest city."
+      "date": "Sat, 07 Nov 2026 22:58:49 GMT",
+      "desc": "Six people were killed in a random shooting in the city's main square, and three bodies were later found at his home."
+    },
+    {
+      "title": "Israel's president tasks opposition leader Eisenkot with forming government",
+      "link": "https://www.bbc.co.uk/news/articles/cmy8367lj5xlo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 07 Nov 2026 22:19:59 GMT",
+      "desc": "Neither PM Benjamin Netanyahu's bloc nor that of his rival secured a majority in last week's election."
     },
     {
       "title": "No clear winner after tight New Zealand general election",
@@ -16,19 +22,13 @@
       "title": "US offers $20m reward for information about Iran's nuclear programme",
       "link": "https://www.bbc.co.uk/news/articles/c6d091ev3p0jo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 07 Nov 2026 18:14:38 GMT",
-      "desc": "Donald Trump has repeatedly raised the prospecting of renewing strikes against Iran's nuclear facilities."
+      "desc": "Donald Trump has repeatedly raised the prospect of renewing strikes against Iran's nuclear facilities."
     },
     {
       "title": "Houthis say at least 25 killed in Saudi air strike",
       "link": "https://www.bbc.co.uk/news/articles/c65yn1v99ypmo?at_medium=RSS&at_campaign=rss",
       "date": "Sat, 07 Nov 2026 17:09:24 GMT",
       "desc": "Saudi Arabia, which leads a coalition fighting the Houthis in Yemen, has not commented."
-    },
-    {
-      "title": "UK cannot 'cherry pick' EU single market deal, Barnier tells BBC",
-      "link": "https://www.bbc.co.uk/news/articles/c9kgjj206nzpo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 07 Nov 2026 15:19:35 GMT",
-      "desc": "The former Brexit negotiator says EU countries would reject any British attempts to follow economic rules \"a la carte\"."
     }
   ],
   "koreaNews": [
@@ -45,6 +45,12 @@
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
+      "title": "What the Midterms Mean for U.S.-South Korea Trade and Investment - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOdVFBZG93anpGOFdoN2Y1bjFyOVdsSl8tQjFpZ0xGSXhyeVQ1c05UVTFibUdScmVkQU9ES1ZFSFVmeDNBR0lyRlNwZm5pM2paOVVONnFIMG9MTUZaVXNDcEpnei0taGhhRFBkLUkyNDFlMnhjY0h3a3ZVUWRVejZVdXJmNHEtMkZFTzR5WDdsdFNKZnZq?oc=5",
+      "date": "Fri, 06 Nov 2026 22:57:34 GMT",
+      "desc": "What the Midterms Mean for U.S.-South Korea Trade and Investment&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
       "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
       "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
       "date": "Mon, 26 Oct 2026 07:00:00 GMT",
@@ -57,10 +63,10 @@
       "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea’s GDP growth beats forecasts amid AI boom - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVkhSendFOTJpVXVneXVaSFVfdWNoY0swai14U0NiU1dCU0xmbE5Wd25Dak9DUkpEOEl1ZDd5Um1NQkg5c2V2SU9JVm1KaTgxbXNwVGRwS2ZQNlRmTm9Ea2JDS1N3VG5jWkFCbERCRjFlNjgtZmkzU0Q3cU16dnYyUXJRaG14ZEJOT1RTTGV0bzRPV3YxTC1qV2hST19DUdIBowFBVV95cUxPRl9KQ1REU214M3NQRHpBaGI5LW5QZXc5bHkwNDRDTk5NZUxtbV9zeVN5SWo1UG1fdHF6dS1PWWV4V2w1ZXRJdi1DNjIwWEJXRGJFOTM3V0hMTUp1LXFEcTB5cGx2QTlrUm14SGNYeUg4UXZNUkl2andsNXZyMW1KblFmbk5zbjFHMFloZkh4ckhkVXJiaDJoU0hTRHF5RUl6LXU0?oc=5",
-      "date": "Tue, 27 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
+      "title": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble - CNBC",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAwSklwR0ROYnpSbTk3dUZ4WUpNWDRfRjRzYjVGcE90U3VuNmFJRXdwXzFlTVplcEJzT3R5dUV5S21vY1JjRWZYVERSTlg4WHdGMW1hRjdvODg5R3I0MmRLQ2ZOYzFKNnJNRHZLc3dON19tUURZWGF4cUkwQUoybjjSAYQBQVVfeXFMTzQzR01kNVNEV0xUOFlPVEF6djcwZkRNU2xDZTAyRHlJcVZtNDNhd1R6b0hBc0c3ZTVwcEE3aW03N0dGXzg1bmZiSE1pVi1RXzExam5xVVE5NE50cmZkZ0F4ZzlRdXZTZmVLeWpWM3M1cm85aE9hZnloQUwtZ2hWRHNybml1?oc=5",
+      "date": "Fri, 06 Nov 2026 00:59:00 GMT",
+      "desc": "Nasdaq sell-off batters Asian chip stocks as SK Hynix, Samsung, Softbank, TSMC tumble&nbsp;&nbsp;CNBC"
     },
     {
       "title": "Samsung, SK hynix slide 10% as AI data center fears spread - The Korea Herald",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
       "date": "Wed, 21 Oct 2026 07:00:00 GMT",
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Samsung, SK Hynix and Micron expand AI memory production - upi",
-      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQejYtbllZVjZ0cXd5ZHkxS1VSSWtDc0UwUlZ2OGpHeUpzbUxvLUh1aHhaMHpCRFl0aS1mMFJyOTBZYXVKWDA4R1V2QW15MXZsbFp6TjZwWW4xR2tOTFR1bGFGVGlFbEkxR0FDZWdod1B5X0t3RkZkWTlLbkZWdTlJOF9XZGQzTnppWDYtZXFtb2Y1ZG1rcWdnU3dqcE9GVHPSAaQBQVVfeXFMT0g2dGY0TnlhWThBOUhKTnZkcTFhenIwM1VKcWh0N1VlMFRUX0pDaWdsZVJYaHVGUV9vZUwyMDRwUmQ3NG9yRmxLN1lGaWtDOVliWEZwdE54SlA1U0lXMTNmYkdTQlhYTF9iOWZpcm1ObVlJa203bGNQMFFmY1ZWWXZRY1JRcFFKZk9sT2xKekFSckZjQk9hN0d6VEJfM3p0ejNONWo?oc=5",
-      "date": "Mon, 02 Nov 2026 22:15:34 GMT",
-      "desc": "Samsung, SK Hynix and Micron expand AI memory production&nbsp;&nbsp;upi"
     }
   ],
   "worldStocks": [
@@ -229,5 +229,5 @@
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-07 18:23 UTC"
+  "updatedAt": "2026-11-08 01:00 UTC"
 }
