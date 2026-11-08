@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "What we know so far after Krakow gun attack",
-      "link": "https://www.bbc.co.uk/news/articles/cmd7q15drwgeo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 08 Nov 2026 14:32:52 GMT",
-      "desc": "Six people were killed in a random shooting in Krakow's main square, and three bodies were later found at the home of the attacker."
+      "title": "Surgeon having lunch near Krakow shooting undoubtedly saved officer's life, colleague says",
+      "link": "https://www.bbc.co.uk/news/articles/c5x2vw4e1gx1o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 08 Nov 2026 18:22:53 GMT",
+      "desc": "Further details have emerged about two police officers hailed for preventing a Polish gunman from killing more."
+    },
+    {
+      "title": "Seven dead and more than 100 injured after trains collide in Egypt",
+      "link": "https://www.bbc.co.uk/news/articles/cwvgr20mmmevo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 08 Nov 2026 17:35:13 GMT",
+      "desc": "Several carriages derailed after two trains travelling in the same direction crashed outside the city of Giza."
+    },
+    {
+      "title": "Homes and temples glow across India to mark Diwali",
+      "link": "https://www.bbc.co.uk/news/articles/cm70pdwz122ro?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 08 Nov 2026 14:42:09 GMT",
+      "desc": "Millions of Indians are marking the festival of lights with glowing lamps, fireworks and traditional sweets."
+    },
+    {
+      "title": "Iran executes three men for 'armed unrest' after January protests",
+      "link": "https://www.bbc.co.uk/news/articles/ckly0ex633ydo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 08 Nov 2026 13:37:50 GMT",
+      "desc": "It is claimed Hassan Dioband, Hamid Kazemi and Reza Zanganeh were part of anti-government protests earlier this year."
     },
     {
       "title": "Houthis say at least 33 killed in Saudi air strike",
       "link": "https://www.bbc.co.uk/news/articles/c65yn1v99ypmo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 08 Nov 2026 04:03:12 GMT",
       "desc": "Saudi Arabia, which leads a coalition fighting the Houthis in Yemen, has not commented."
-    },
-    {
-      "title": "'Flat', 'tired', 'cynical': Unusually gloomy Kiwis deliver New Zealand's tightest election in years",
-      "link": "https://www.bbc.co.uk/news/articles/cxr5yyg2nj9eo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 07 Nov 2026 21:36:16 GMT",
-      "desc": "The national mood is low, and faith in politics even lower - with voters deserting the major parties at the polls."
-    },
-    {
-      "title": "Israel's president tasks opposition leader Eisenkot with forming government",
-      "link": "https://www.bbc.co.uk/news/articles/cmy8367lj5xlo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 07 Nov 2026 22:19:59 GMT",
-      "desc": "Neither PM Benjamin Netanyahu's bloc nor that of his rival secured a majority in last week's election."
-    },
-    {
-      "title": "US offers $20m reward for information about Iran's nuclear programme",
-      "link": "https://www.bbc.co.uk/news/articles/c6d091ev3p0jo?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 07 Nov 2026 18:14:38 GMT",
-      "desc": "Donald Trump has repeatedly raised the prospect of renewing strikes against Iran's nuclear facilities."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,22 @@
       "desc": "AI Is Hiding the Cracks in South Korea’s Economy&nbsp;&nbsp;Bloomberg"
     },
     {
+      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
+      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+    },
+    {
       "title": "Korea’s economic rebound may be more fragile than it looks - Korea JoongAng Daily",
       "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQNXpjMnBWU011MzF2dVd3cVE2Mk41MWJhOXlTaUhtaWM2Wm1JdmExeE5QUGEzaWxmclBKdmgwb0hZRHhTbGQ0dlVjbmV6Ym8wRnNpS1ZqY0lSb3luT3RjNHdhSDU3aWZMUVZKTXNsY1FWSEFWSi1DNWtqMUVxOHNhaVc5dm1Lcm9MU2NJTQ?oc=5",
       "date": "Sun, 08 Nov 2026 15:06:04 GMT",
       "desc": "Korea’s economic rebound may be more fragile than it looks&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
-      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+      "title": "What the Midterms Mean for U.S.-South Korea Trade and Investment - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOdVFBZG93anpGOFdoN2Y1bjFyOVdsSl8tQjFpZ0xGSXhyeVQ1c05UVTFibUdScmVkQU9ES1ZFSFVmeDNBR0lyRlNwZm5pM2paOVVONnFIMG9MTUZaVXNDcEpnei0taGhhRFBkLUkyNDFlMnhjY0h3a3ZVUWRVejZVdXJmNHEtMkZFTzR5WDdsdFNKZnZq?oc=5",
+      "date": "Fri, 06 Nov 2026 22:57:34 GMT",
+      "desc": "What the Midterms Mean for U.S.-South Korea Trade and Investment&nbsp;&nbsp;Korea Economic Institute of America -"
     },
     {
       "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
@@ -57,22 +63,16 @@
       "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
-      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
+      "title": "Samsung, SK Hynix Stocks Undervalued Despite Strong Earnings - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxON3ZGR0NsU1dPUGRNeHpPanVWQXJqTXhNTW5SQjRybXVKdTh6RjV2U21TaUJzeTE0a2FrYTZUWXIzT0hFSWRtNXVDdW5fLVg3MGJBWTBER0ZaZTZnd1hFS2E0dDhESmNFUVpTNFpNSUoyRUtucEZEZDMtY3l2cFFVNXlOQUZiemds?oc=5",
+      "date": "Sun, 08 Nov 2026 18:02:12 GMT",
+      "desc": "Samsung, SK Hynix Stocks Undervalued Despite Strong Earnings&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Samsung, SK Hynix, Micron to Unify Robot Charging Standards, Launch Standardization Effort with SEMI - BigGo Finance",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBpSV9xTEVZWlh4bTJYX01GbHJPRnoxVXFrOVJTS2RmNDVveDlmYks5Y1NOZDhwSTkzN2pTVl85YTJWUHl6WUU1VTNFaUJQNk84LVF0UVhOcGtNUFd5MDhmS3lrNGNYcFZuLWpDSlZ6UkNEM0gzc2c?oc=5",
       "date": "Sun, 08 Nov 2026 09:25:00 GMT",
       "desc": "Samsung, SK Hynix, Micron to Unify Robot Charging Standards, Launch Standardization Effort with SEMI&nbsp;&nbsp;BigGo Finance"
-    },
-    {
-      "title": "Samsung Electronics, SK Hynix Market Value Falls About 2,261 Trillion Won From June 22 - www.tokenpost.com",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAzQndVUWsxWmRoYWIxZHFPeTNEYlVfam1PZDBCOEcyc3pYZi11WDdMZlU4d0x2XzBJSEo3b1hXaHM3ZFB5QWdzR1NWbDhhLXdzblE3WVk3MUFBdw?oc=5",
-      "date": "Sat, 07 Nov 2026 23:23:13 GMT",
-      "desc": "Samsung Electronics, SK Hynix Market Value Falls About 2,261 Trillion Won From June 22&nbsp;&nbsp;www.tokenpost.com"
     },
     {
       "title": "Samsung, SK hynix slide 10% as AI data center fears spread - The Korea Herald",
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1363.65,
-      "change": 23.58,
-      "pct": 1.76,
+      "price": 1363.37,
+      "change": 23.3,
+      "pct": 1.74,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-08 15:52 UTC"
+  "updatedAt": "2026-11-08 18:34 UTC"
 }
