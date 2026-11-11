@@ -1,48 +1,54 @@
 {
   "globalNews": [
     {
+      "title": "Spain sees widespread disruption in first general strike for 14 years",
+      "link": "https://www.bbc.co.uk/news/articles/cwvg25nypmrvo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 11 Nov 2026 14:06:27 GMT",
+      "desc": "Protests are also expected in the biggest cities less than three weeks before Spaniards vote in parliamentary elections."
+    },
+    {
+      "title": "Russia-Ukraine talks turn to post-war security but end without breakthrough",
+      "link": "https://www.bbc.co.uk/news/articles/ck792we7zrz4o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 11 Nov 2026 15:05:11 GMT",
+      "desc": "Talks in Abu Dhabi centred around Europe's security framework, with US envoys due to meet Putin and Zelensky on Thursday."
+    },
+    {
+      "title": "US Treasury Secretary Scott Bessent relocated after alleged Iranian threats",
+      "link": "https://www.bbc.co.uk/news/articles/cqr7gr0010r2o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 11 Nov 2026 16:45:11 GMT",
+      "desc": "Bessent is now one of several Trump administration officials to live on military bases due to safety concerns."
+    },
+    {
+      "title": "Six thousand Italian schools hit by threats in suspected bomb hoax",
+      "link": "https://www.bbc.co.uk/news/articles/cwz0k79pr8z2o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 11 Nov 2026 12:30:29 GMT",
+      "desc": "More than 700 schools in Scotland and Northern Ireland also received hoax bomb threats. It is unclear whether the incidents are connected."
+    },
+    {
       "title": "Three Iran-backed suspects plotted attacks including RAF Fairford incident, US says",
       "link": "https://www.bbc.co.uk/news/articles/c3rryrryk59zo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 11 Nov 2026 01:01:20 GMT",
+      "date": "Wed, 11 Nov 2026 14:51:26 GMT",
       "desc": "The US Department of Justice says the men were involved in a string of plots, including a major incident near the UK airbase that is used by US armed forces."
-    },
-    {
-      "title": "US House blocks bid to impeach Defence Secretary Pete Hegseth, for now",
-      "link": "https://www.bbc.co.uk/news/articles/cxly4y5jzl0qo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 11 Nov 2026 03:26:42 GMT",
-      "desc": "Trump welcomes the outcome, praising Hegseth as a \"Great American Patriot\", but Democrats can try again next year."
-    },
-    {
-      "title": "Meghan's father Thomas Markle back in federal custody after allegedly removing ankle monitor",
-      "link": "https://www.bbc.co.uk/news/articles/c9j3433zy4vro?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 11 Nov 2026 02:41:16 GMT",
-      "desc": "The 82-year-old was placed under house detention in Florida last week after being charged over possession of child sex abuse material."
-    },
-    {
-      "title": "Vinícius Jr sends message to Sudan boy who received prosthetic legs after BBC report sparks appeal",
-      "link": "https://www.bbc.co.uk/news/articles/cqm26mmpp2p1o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 11 Nov 2026 00:19:42 GMT",
-      "desc": "Double amputee Zaher told the BBC last year about his favourite footballer and a dream of being able to walk again."
-    },
-    {
-      "title": "Headquarters of Haitian gang destroyed, El Salvador's president says",
-      "link": "https://www.bbc.co.uk/news/articles/cmvg2xdwnwezo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 11 Nov 2026 02:47:59 GMT",
-      "desc": "The infamous 400 Mawozo gang was targeted by the El Salvador military which has deployed thousands of troops to combat Haiti's gang violence crisis."
     }
   ],
   "koreaNews": [
     {
       "title": "Memory Chips Are Completely Distorting South Korea’s Economy - Foreign Policy",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQR0xzYTdBZ180MEpQcWtsNGUzUUFsbzQweno5RXptdHg3eE1CaGVocEhyc3VrczVqZEVYS2lsLTJGcXhYbVhfMk9LUlAtazY0VU5fbURRWWJPZ1dJdmVzMGdsT3c2dlJHR3F1dktyWnN1N2tRakgtOXVMQV9FSzV3b19JQUk1dmhxcXVOZXpENTZ4TFdEMGF3cl9aUmw5UQ?oc=5",
-      "date": "Wed, 11 Nov 2026 09:13:20 GMT",
+      "date": "Wed, 11 Nov 2026 09:34:32 GMT",
       "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Foreign Policy"
     },
     {
-      "title": "Finance minister calls for close monitoring of US midterms impact - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQdDEyQVI3cE13Q3NyX2N3STBGNW1Ud1ZqWlRuSzZHc3VsX0p4NG5ON3pHMElyclpMa3I1QmJxUlFDZmVWNXhSZ2VIWE4tdHFiY2lXQUVKX3hmbkM3d0puZmk3SVZpaFZ0WEllX2dxWDcyMEZXLVhEZGI4QmtnOEZ1UnNyLV90Rk9WOGVtdndSTXJQYVlhcVNUQTVGT2tMSzRGR3FsNVhXSmI5TEQwc1lxSNIBtgFBVV95cUxPNVFUMXRWRGdsZlBBVWZsRzJRU3ZGNHVjZHlaSzA2c2otYjdyY2dKVGJETGhLR1RsU0dNOHJvQU5LRm54YmJoV3M2X19pS0FsQjNjRnhmS0pIWDZDbnVFNFJYQjBhUUF5eXctOWhOcC1KaUdhVm9HQ1BoZWl0WXBjUC00UTdyeVh1Mk5uWHM5MlNCaUxiWGFIOVZtb3JxVkotbmJkamItQnp2Yzh0YWR4bTgwM2l3Zw?oc=5",
-      "date": "Wed, 11 Nov 2026 08:36:02 GMT",
-      "desc": "Finance minister calls for close monitoring of US midterms impact&nbsp;&nbsp;The Korea Times"
+      "title": "South Korea - Economy, Technology, Education - Britannica",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQSG11Q1hPWC01Y0hQX2xfaVJDYTd0NU5PdWVraFc1MWVQakRPZlpramlmYV9CcDYtNkl3V3BvZUxhcU5zQ2pDTEVKVTZ0VEhud3NRX2FFV3hqY21jeUVCbzFtbEhwLWpDeWcxcXVaOHh2clNDYVBtYmpSNTEzY1RxQ0tXcw?oc=5",
+      "date": "Fri, 06 Nov 2026 08:00:00 GMT",
+      "desc": "South Korea - Economy, Technology, Education&nbsp;&nbsp;Britannica"
+    },
+    {
+      "title": "AI is hiding the cracks in South Korea’s economy - Taipei Times",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5haFh6ZWV3YTBDZU1oeXpBT2ZZbHlueGdJZUg4NGVWdm5udzNrc3lLYzVDUjVodkpJbmFDSWg5T0w1ODBJYTIyaUtiS1NXaXZEZlVWVEJWdl94QWdWenJ6bzhRWmhCREJrazFla0kyemdvbGRxclIySk8wQnBpTEU?oc=5",
+      "date": "Mon, 09 Nov 2026 16:00:00 GMT",
+      "desc": "AI is hiding the cracks in South Korea’s economy&nbsp;&nbsp;Taipei Times"
     },
     {
       "title": "South Korea’s Jobless Rate Hits 3-Year Low Despite Weak Hiring - Bloomberg.com",
@@ -51,123 +57,117 @@
       "desc": "South Korea’s Jobless Rate Hits 3-Year Low Despite Weak Hiring&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "Million-dollar bonuses, shuttered shops: 2 sides of Korea's economy - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQdzNqRnE0Z3V0bkhqRS1MU19IZG9WbVF2RnhER3JTQWhZUElncDVZcFloZkJrUmNQZF9hNHRYVkYtb1lZZ051RWV4VHh4Wm1FbkJPeWdVX05IVG1oejN0N0V6YXh3VXdTUWEtNnhJOUFMNmpDNXBWQVhLb2trWGZNSWFRQVpseGlKLUNhejZQbWhrUUQzTldoS2E3MnFOd19vVGtFem5XV0o1bHY3MDF2SzRnRnV5eWxP0gG-AUFVX3lxTE84RmRaRkx0TFRRdFlQZG9XV0pNdUdCbGRlY2hXd1Etc19ZR2U5RTVXUlRDVVpVZmNDeEI5VXpud3d0dk9NTFU1NjRLVnZEZ2FfdURaOVBHMUhJRElabXRhVTdTbkhNRWlxWEVUTWJLbFhEQkdIdHoxTWRuN1VyVWI1SGFGOTd3c1ZhTlZEcGNtX3dFNmd6R1dOYXdOR2dEbmJUODJBRFFBek05TXpHd0k2S3Nzc2VNMmtqbUNXcnc?oc=5",
-      "date": "Tue, 10 Nov 2026 15:00:00 GMT",
-      "desc": "Million-dollar bonuses, shuttered shops: 2 sides of Korea's economy&nbsp;&nbsp;The Korea Times"
+      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
+      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "Korea's economy is booming. Why isn't President Lee's popularity? - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPYmdmOURzMUUyLW5kQ1luVzhiLXdlVHZfOGljTktGRkd4QnQ5UEpSWVVyYzAyNHZxa25IcjlYVUpva25lYm94LUpESlFZcDR6WC1JTndxd1pzMzV1NEtIeF9qZzZJOG1uY1VhbDM0YXY3VFVhNmExV2dOSUl1UzBhM2NybHZIbzBPdWJoc1NHS1VtVF81VUZLUjdsdUxmLVQwVGt6WVBjMDJYQdIBrwFBVV95cUxQVzJSN1l4ajNjVnR6ZEpPMzI4Q0FJYmtEMGFFZDlSdFIxaE9HNDJibnZlVU5XMEFkaE5CczJFMW1sLUNNSzNFd1p0VE8zczdSVU5ZeHZFODRReWpxUzNIWDVGbFp0M1dIZS12aHljV3FSVGNoclhxZGhqSVBSM3lwZ3RrSGhRLXV2OFhoYW1nc2k2WmNCazI1Wnd5a0hPcTQwdWtCN0JZSndlNnpkVDNr?oc=5",
-      "date": "Mon, 09 Nov 2026 22:02:00 GMT",
-      "desc": "Korea's economy is booming. Why isn't President Lee's popularity?&nbsp;&nbsp;The Korea Times"
-    },
-    {
-      "title": "Morgan Stanley cuts Samsung, SK hynix targets on 2028 earnings cliff risk - Chosunbiz",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOdmlCYVpBNFNrMU05emlMZHp4ZnFXX3YzNDlhdUlvcEhrOGU4TDlReGczYi1CS0dNRVVTMU9yZ2VueEhXbVk4c0xDU01XRFZhSlBHNkhYTkdwOHJPM0psUExtaFFITGJaUllpTElRYm5PaVhwRndEcXA4aG4zT0k3NdIBlAFBVV95cUxOaDVYRHUtVXpRZDVZVUJ1VjA1eWJjOUVIMXZQYWhTaU1kNnI1dEhtZnZlUmdPMVpUUGU3MjJCbmthcVdmbVFDbjc0dE1KYTJQd0Rsa1k2Z21Bc3RmWS1lNzZWRThtNENiQzBpQWdERFNwZGtjZWo2QnlrQWJwOHkyMTVNS0hnTDY0RE51S1R2WENoNDZj?oc=5",
-      "date": "Tue, 10 Nov 2026 04:33:00 GMT",
-      "desc": "Morgan Stanley cuts Samsung, SK hynix targets on 2028 earnings cliff risk&nbsp;&nbsp;Chosunbiz"
-    },
-    {
-      "title": "Kospi Reclaims 5,300 as Samsung Electronics, SK Hynix Drive Gains - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9kcFBNLTZnMVZoVElVOFRZMGF6ZEZuUFBfRl9Md1BEVTRicVJXSWdXcGpQYndqa01PN0hDZHhMNHJPY0x1VHJyU0JJVXNkT3Yzc21Dbg?oc=5",
-      "date": "Wed, 11 Nov 2026 07:14:12 GMT",
-      "desc": "Kospi Reclaims 5,300 as Samsung Electronics, SK Hynix Drive Gains&nbsp;&nbsp;bloomingbit"
+      "title": "South Korea's Top Traders Pile Into Samsung Electronics, SK Hynix as AI Chip Bets Revive - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9xX3FZQ2o2X08wUEF3LU1tU2FqZVFNX3dEc2o2RXkxXzhjOWJvVXQ4cUhDZUZ0bTdPZnBrRUNtZC0tdnB5bmVJQ21pYXNIM0xKQ0hVamc3UU5wZk5QcUNHc1NKREpuTmRXMG5NaFdla2VUOERNc2c?oc=5",
+      "date": "Wed, 11 Nov 2026 05:05:00 GMT",
+      "desc": "South Korea's Top Traders Pile Into Samsung Electronics, SK Hynix as AI Chip Bets Revive&nbsp;&nbsp;BigGo Finance"
     },
     {
       "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
       "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
       "date": "Wed, 21 Oct 2026 07:00:00 GMT",
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "Morgan Stanley cuts Samsung, SK hynix targets on 2028 earnings cliff risk - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOdmlCYVpBNFNrMU05emlMZHp4ZnFXX3YzNDlhdUlvcEhrOGU4TDlReGczYi1CS0dNRVVTMU9yZ2VueEhXbVk4c0xDU01XRFZhSlBHNkhYTkdwOHJPM0psUExtaFFITGJaUllpTElRYm5PaVhwRndEcXA4aG4zT0k3NdIBlAFBVV95cUxOaDVYRHUtVXpRZDVZVUJ1VjA1eWJjOUVIMXZQYWhTaU1kNnI1dEhtZnZlUmdPMVpUUGU3MjJCbmthcVdmbVFDbjc0dE1KYTJQd0Rsa1k2Z21Bc3RmWS1lNzZWRThtNENiQzBpQWdERFNwZGtjZWo2QnlrQWJwOHkyMTVNS0hnTDY0RE51S1R2WENoNDZj?oc=5",
+      "date": "Tue, 10 Nov 2026 04:33:00 GMT",
+      "desc": "Morgan Stanley cuts Samsung, SK hynix targets on 2028 earnings cliff risk&nbsp;&nbsp;Chosunbiz"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 168.89,
-      "change": -17.75,
-      "pct": -9.51,
+      "price": 176.41,
+      "change": -2.26,
+      "pct": -1.26,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 396.48,
-      "change": 21.04,
-      "pct": 5.6,
+      "price": 415.86,
+      "change": 27.24,
+      "pct": 7.01,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 515.21,
-      "change": 66.17,
-      "pct": 14.74,
+      "price": 556.27,
+      "change": 47.69,
+      "pct": 9.38,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 58.13,
-      "change": 1.85,
-      "pct": 3.29,
+      "price": 64.01,
+      "change": 4.64,
+      "pct": 7.81,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 173.53,
-      "change": 8.12,
-      "pct": 4.91,
+      "price": 179.0,
+      "change": 7.53,
+      "pct": 4.39,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 181.49,
-      "change": 6.87,
-      "pct": 3.93,
+      "price": 206.1,
+      "change": 19.8,
+      "pct": 10.63,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 287.38,
-      "change": 2.6,
-      "pct": 0.91,
+      "price": 293.17,
+      "change": 5.02,
+      "pct": 1.74,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 348.51,
-      "change": 6.14,
-      "pct": 1.79,
+      "price": 354.36,
+      "change": 3.67,
+      "pct": 1.05,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 533.16,
-      "change": 2.55,
-      "pct": 0.48,
+      "price": 520.91,
+      "change": -24.27,
+      "pct": -4.45,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7520.93,
-      "change": 144.07,
-      "pct": 1.95,
+      "price": 7624.4,
+      "change": 74.46,
+      "pct": 0.99,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25065.88,
-      "change": 486.44,
-      "pct": 1.98,
+      "price": 25585.04,
+      "change": 331.9,
+      "pct": 1.31,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1332.48,
-      "change": -11.36,
-      "pct": -0.85,
+      "price": 1336.54,
+      "change": -7.3,
+      "pct": -0.54,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-11 10:05 UTC"
+  "updatedAt": "2026-11-11 16:59 UTC"
 }
