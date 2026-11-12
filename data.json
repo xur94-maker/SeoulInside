@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "'No light, no water, no heat': Ukrainians struggle with blackouts as Russia hits power grid",
-      "link": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 07:59:33 GMT",
-      "desc": "For parents in parts of Ukraine, trying to lead a normal family life with just a few hours of power each day is taking its toll."
+      "title": "Ukraine says military Starlink disrupted again as US envoys meet Putin in Moscow",
+      "link": "https://www.bbc.co.uk/news/articles/cwrkgmymk55zo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 16:31:12 GMT",
+      "desc": "Later on Thursday, Jared Kushner and Steve Witkoff will travel to Dublin to meet Ukraine's Volodymyr Zelensky."
     },
     {
-      "title": "New York building collapse kills at least two, officials say",
-      "link": "https://www.bbc.co.uk/news/articles/c8zx964glvwxo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 05:12:56 GMT",
-      "desc": "A dangerous search for survivors continues after a three-storey building collapsed in Brooklyn on Wednesday afternoon."
+      "title": "'We've got to run': Inside ruined Ukraine power plant under constant drone threat",
+      "link": "https://www.bbc.co.uk/news/videos/cm93rp3gxn6qo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 13:02:46 GMT",
+      "desc": "Dan Johnson visits one of the country's largest power stations, barely left standing after a ballistic missile strike by Russia."
     },
     {
-      "title": "Democrat Scott Colom makes history as Mississippi elects first black senator in 150 years",
+      "title": "Suspected bomb hoax threats force fresh evacuations of Italian schools",
+      "link": "https://www.bbc.co.uk/news/articles/cr894w453e90o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 12:39:39 GMT",
+      "desc": "Schools across Italy have received bomb threats for the second day in a row, sparking fresh panic and evacuations."
+    },
+    {
+      "title": "Democrat Scott Colom makes history as Mississippi's first black senator since 19th Century",
       "link": "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 10:02:32 GMT",
+      "date": "Thu, 12 Nov 2026 12:56:55 GMT",
       "desc": "In a state Trump won two years ago by 22 points, Colom's victory extends a string of Democratic wins in the Senate."
     },
     {
-      "title": "Israeli strike on Gaza hospital kills six Palestinians, health ministry says",
-      "link": "https://www.bbc.co.uk/news/articles/ckzd9p7e4eqeo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 09:43:11 GMT",
-      "desc": "Witnesses say a missile hit a building containing the surgical wards and intensive care units at Nasser hospital, the largest in southern Gaza."
-    },
-    {
-      "title": "US envoys arrive in Moscow for Ukraine talks with Vladimir Putin",
-      "link": "https://www.bbc.co.uk/news/articles/cwrkgmymk55zo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 10:08:38 GMT",
-      "desc": "Later on Thursday, Jared Kushner and Steve Witkoff will travel to Dublin to meet Ukraine's Volodymyr Zelensky."
+      "title": "Pentagon backs war memorial guard who reprimanded Hegseth's group",
+      "link": "https://www.bbc.co.uk/news/articles/cmvg2r3dq7xno?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 16:52:53 GMT",
+      "desc": "The guard told the defence secretary and his companions to maintain an atmosphere of \"silence and respect\" during a Veterans Day visit."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,22 @@
       "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Foreign Policy"
     },
     {
+      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
+      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+    },
+    {
       "title": "AI is hiding the cracks in South Korea’s economy - Taipei Times",
       "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5haFh6ZWV3YTBDZU1oeXpBT2ZZbHlueGdJZUg4NGVWdm5udzNrc3lLYzVDUjVodkpJbmFDSWg5T0w1ODBJYTIyaUtiS1NXaXZEZlVWVEJWdl94QWdWenJ6bzhRWmhCREJrazFla0kyemdvbGRxclIySk8wQnBpTEU?oc=5",
       "date": "Mon, 09 Nov 2026 16:00:00 GMT",
       "desc": "AI is hiding the cracks in South Korea’s economy&nbsp;&nbsp;Taipei Times"
     },
     {
-      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
-      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+      "title": "Korean Air to add Seoul-Incheon to Newark, NJ service - Economy Class & Beyond -",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQZXBzX2NMOXY5cUZBUmpOcUttYlEwTktxVkZiaDZYYmZOeVdtVGU5Sk82djlkV0syTTJWTERPLWpDd2Z4UXJBMmlha21LUjgwX1R2VjhIN19iYkN4al9iZVlKZkFZQ0Y2S01ieThCdTl1ai1SbmxjYUM1RVRST3JZUDJvbVVYcEd1UHFzSHM0MWp0aklreFo3M1E2SkhCamYzdmtTUnd5ZVRkVFBzSXNjMA?oc=5",
+      "date": "Thu, 12 Nov 2026 16:12:47 GMT",
+      "desc": "Korean Air to add Seoul-Incheon to Newark, NJ service&nbsp;&nbsp;Economy Class & Beyond -"
     },
     {
       "title": "＜Inside N. Korea＞ Two men flee North Korea, sparking major uproar; secret police agents dispatched to China as investigation of residents continues - アジアプレス・インターナショナル",
@@ -57,16 +63,10 @@
       "desc": "＜Inside N. Korea＞ Two men flee North Korea, sparking major uproar; secret police agents dispatched to China as investigation of residents continues&nbsp;&nbsp;アジアプレス・インターナショナル"
     },
     {
-      "title": "Based on the strength of the Korean economy, we will serve as a strong bridge between developed cou.. - 매일경제",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1fRjk1Z21wd3hXVEdXQjRib0pSbV9sUnFDdkdLS25nUHA3alB5QTNzYjhhTDlLbUlGWlJ1c2NtSWJsMHZod2xxYzU4S25tMjQ?oc=5",
-      "date": "Thu, 12 Nov 2026 08:35:33 GMT",
-      "desc": "Based on the strength of the Korean economy, we will serve as a strong bridge between developed cou..&nbsp;&nbsp;매일경제"
-    },
-    {
-      "title": "Samsung, SK hynix tighten security training amid industrial espionage concerns - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcFkzNmg5RUI1cFcwdXkzY21VVGFKNnBXS0YtMGM3MDhlUm1ZS3h1MDhRc01xTFRmLWNBdGVXd1ZOOE85U2c2UXlwYjh6cXBuc3d0dUQzRFNEOHZlclhhV3VqR2EyWlhSejIwTVJKWmxtd2s1c1JNZW1sUnEyQUZNTlVFMHJmUlhlV2FIRm9LVmdJNXdWMjMwanhIRGFrSmhBQlpZZlZPNHBXV2RZajZkU2hDZHpqVFgwVm83Ty1Bai1OMFU2RS1pUjVFUUM1WkHSAdQBQVVfeXFMTUEwM3ZacEVycF9sYmV1YWhmTkpiN0dsdHBRanJXMFhRVlg2eUJBbFFCcUFFazRQc3VGU3dyNVpORUhKRmpNeG1KQ2tEYW04bVJfMS10SGdRVl9mNm4xbnFqTkxydnJSSVZheVByaGl6TUQxVHVyYWtzYnlfdlZ2djJBWU5HTzFSYkwtdG9lNmF0VDJVcVNGaE1UNU4xMUtKN01RZ3ZDLVFGTTlubHY0VEZwNDVzNDJ4SVRWM0h1R3FLaldwUmM4dmw3SzNhUVNSRkZYMG0?oc=5",
-      "date": "Thu, 12 Nov 2026 06:50:07 GMT",
-      "desc": "Samsung, SK hynix tighten security training amid industrial espionage concerns&nbsp;&nbsp;The Korea Times"
+      "title": "HyperAccel Struggles to Secure Samsung Foundry Capacity, SK hynix Memory - THE ELEC, Korea Electronics Industry Media",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ueTNRRXl2VXhiOXBNOVJheWF3S1lWbHJNQnJRM2RpQnVremt4Yzg3ZVlEd2Qxbzd2QkFYR28ycUExOFZNbEY4c0FBZy1OZ0xxYVlFbkJueUNlbl9BSkpQbXEtelgzOVk?oc=5",
+      "date": "Thu, 12 Nov 2026 15:03:14 GMT",
+      "desc": "HyperAccel Struggles to Secure Samsung Foundry Capacity, SK hynix Memory&nbsp;&nbsp;THE ELEC, Korea Electronics Industry Media"
     },
     {
       "title": "Samsung, SK hynix monitor Nvidia leadership uncertainty - Korea JoongAng Daily",
@@ -75,99 +75,99 @@
       "desc": "Samsung, SK hynix monitor Nvidia leadership uncertainty&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "US Lawmakers Push 3 China Chip Curbs, Raising Pressure on Samsung, SK Hynix Plants - bloomingbit",
-      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBtWjJOdkxFRGdwS2lobTdnaGxwVnlnRDBuZDlCa0FSZ2RvVVNPQ1V5VjdlbVZiaExnUWh0ejBqU01uX3VmMnNoSjNOenZZaVpnR2w5aw?oc=5",
-      "date": "Wed, 11 Nov 2026 22:54:16 GMT",
-      "desc": "US Lawmakers Push 3 China Chip Curbs, Raising Pressure on Samsung, SK Hynix Plants&nbsp;&nbsp;bloomingbit"
+      "title": "China's AI Chip Shortage Cuts eSSD Orders; Samsung, SK Shift Supply to U.S. - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA2QVpVcXRPX0xnQ2ZkM1dWWVJaNVZnREZUTUFTOFB5d1JpRXJmUE1pbzZ0enhkLU9nWGd6WUtlQzU2QXVPYWMtamdhX2FmY1hDUXZyMkgzUVhxVWZGTkNlQk4xRzFvRlRqMjJxblQ4V05TOTVEUkE?oc=5",
+      "date": "Thu, 12 Nov 2026 06:55:00 GMT",
+      "desc": "China's AI Chip Shortage Cuts eSSD Orders; Samsung, SK Shift Supply to U.S.&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 173.73,
-      "change": -4.94,
-      "pct": -2.76,
+      "price": 163.97,
+      "change": -4.92,
+      "pct": -2.91,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 413.35,
-      "change": 24.73,
-      "pct": 6.36,
+      "price": 405.84,
+      "change": 9.36,
+      "pct": 2.36,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 552.9,
-      "change": 44.32,
-      "pct": 8.71,
+      "price": 577.8,
+      "change": 62.59,
+      "pct": 12.15,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 62.5,
-      "change": 3.13,
-      "pct": 5.27,
+      "price": 61.44,
+      "change": 3.3,
+      "pct": 5.69,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 176.57,
-      "change": 5.1,
-      "pct": 2.97,
+      "price": 177.88,
+      "change": 4.35,
+      "pct": 2.51,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 203.36,
-      "change": 17.06,
-      "pct": 9.16,
+      "price": 199.94,
+      "change": 18.45,
+      "pct": 10.17,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 293.45,
-      "change": 5.3,
-      "pct": 1.84,
+      "price": 301.96,
+      "change": 14.58,
+      "pct": 5.07,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 355.63,
-      "change": 4.94,
-      "pct": 1.41,
+      "price": 356.45,
+      "change": 7.94,
+      "pct": 2.28,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 521.12,
-      "change": -24.05,
-      "pct": -4.41,
+      "price": 528.98,
+      "change": -4.18,
+      "pct": -0.78,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7619.38,
-      "change": 69.44,
-      "pct": 0.92,
+      "price": 7630.43,
+      "change": 109.5,
+      "pct": 1.46,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25466.19,
-      "change": 213.05,
-      "pct": 0.84,
+      "price": 25460.41,
+      "change": 394.54,
+      "pct": 1.57,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1331.14,
-      "change": -10.77,
-      "pct": -0.8,
+      "price": 1335.55,
+      "change": -6.36,
+      "pct": -0.47,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-12 10:29 UTC"
+  "updatedAt": "2026-11-12 17:29 UTC"
 }
