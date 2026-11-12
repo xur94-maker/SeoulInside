@@ -1,48 +1,42 @@
 {
   "globalNews": [
     {
-      "title": "Clashes erupt in Barcelona after thousands join Spain general strike",
-      "link": "https://www.bbc.co.uk/news/articles/cwvg25nypmrvo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 11 Nov 2026 22:07:37 GMT",
-      "desc": "Tens of thousands of people have been taking part in the strike, called by the country's main unions over housing and the high cost of living."
+      "title": "'No light, no water, no heat': Ukrainians struggle with blackouts as Russia hits power grid",
+      "link": "https://www.bbc.co.uk/news/articles/cr1ewpd95d21o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 07:59:33 GMT",
+      "desc": "For parents in parts of Ukraine, trying to lead a normal family life with just a few hours of power each day is taking its toll."
     },
     {
-      "title": "Democrat Scott Colom seals historic win in Mississippi Senate race",
+      "title": "New York building collapse kills at least two, officials say",
+      "link": "https://www.bbc.co.uk/news/articles/c8zx964glvwxo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 05:12:56 GMT",
+      "desc": "A dangerous search for survivors continues after a three-storey building collapsed in Brooklyn on Wednesday afternoon."
+    },
+    {
+      "title": "Democrat Scott Colom makes history as Mississippi elects first black senator in 150 years",
       "link": "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 02:09:08 GMT",
-      "desc": "Colom is the first black person from the southern state elected to the US Senate in over 140 years."
+      "date": "Thu, 12 Nov 2026 10:02:32 GMT",
+      "desc": "In a state Trump won two years ago by 22 points, Colom's victory extends a string of Democratic wins in the Senate."
     },
     {
-      "title": "Russia-Ukraine talks turn to post-war security but end without breakthrough",
-      "link": "https://www.bbc.co.uk/news/articles/ck792we7zrz4o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 11 Nov 2026 18:04:58 GMT",
-      "desc": "Talks in Abu Dhabi centred around Europe's security framework, with US envoys due to meet Putin and Zelensky on Thursday."
+      "title": "Israeli strike on Gaza hospital kills six Palestinians, health ministry says",
+      "link": "https://www.bbc.co.uk/news/articles/ckzd9p7e4eqeo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 09:43:11 GMT",
+      "desc": "Witnesses say a missile hit a building containing the surgical wards and intensive care units at Nasser hospital, the largest in southern Gaza."
     },
     {
-      "title": "New York building collapse kills one person and injures 12",
-      "link": "https://www.bbc.co.uk/news/videos/c60rkwjj7x7go?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 02:33:12 GMT",
-      "desc": "Rescuers are searching for people who may be trapped under the rubble of the three-story building in Brooklyn."
-    },
-    {
-      "title": "Indonesia's vice president resigns amid signs ruling alliance is fraying",
-      "link": "https://www.bbc.co.uk/news/articles/cmvgxgz87qqro?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 11 Nov 2026 16:38:07 GMT",
-      "desc": "The news comes at a turbulent time for Prabowo, who faces a growing rift with his predecessor Joko Widodo."
+      "title": "US envoys arrive in Moscow for Ukraine talks with Vladimir Putin",
+      "link": "https://www.bbc.co.uk/news/articles/cwrkgmymk55zo?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 10:08:38 GMT",
+      "desc": "Later on Thursday, Jared Kushner and Steve Witkoff will travel to Dublin to meet Ukraine's Volodymyr Zelensky."
     }
   ],
   "koreaNews": [
     {
       "title": "Memory Chips Are Completely Distorting South Korea’s Economy - Foreign Policy",
       "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPT1lWRktqbDYwbGEtbGpkMHJ4WWR3WnBWdDNKLUFYT29kVWpUSWxWZ1ZYUnd5QWhPQ1A0YlRXSU1lUXRGNDh2ZW43UmFtOGJlTm9Bd3JNZjI0OVdvYm9ZRlBYWVFBOGpEcjBIVjM2Mk8zYmloLWNyQlhIVVhBQmtHdzJYd1FQOHNBOC1sUVd2SFQwZXZjYVFSV3ZLYlZ4ZjhBSFl6NWtmcVpuX3RibjduZy1UYVNLVHZEUnhKTG5OSlhFdw?oc=5",
-      "date": "Wed, 11 Nov 2026 16:40:17 GMT",
+      "date": "Thu, 12 Nov 2026 02:07:04 GMT",
       "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Foreign Policy"
-    },
-    {
-      "title": "S. Korea holds inaugural steering group meeting of disparities task force - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBNUmktSlU1cV9WYnNSTXgyREI5NEdLSGd1WGRIb2loU3V4RTVEbTRLVVhnUXgwTGNSc1pWemR4UUNmODJKa3BmRWdiZWJNWVFFNHc4QXBwdw?oc=5",
-      "date": "Thu, 12 Nov 2026 00:43:34 GMT",
-      "desc": "S. Korea holds inaugural steering group meeting of disparities task force&nbsp;&nbsp;The Korea Herald"
     },
     {
       "title": "AI is hiding the cracks in South Korea’s economy - Taipei Times",
@@ -51,16 +45,28 @@
       "desc": "AI is hiding the cracks in South Korea’s economy&nbsp;&nbsp;Taipei Times"
     },
     {
-      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
-      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
+      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
+      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
-      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
+      "title": "＜Inside N. Korea＞ Two men flee North Korea, sparking major uproar; secret police agents dispatched to China as investigation of residents continues - アジアプレス・インターナショナル",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1xR1htX2NSMTBTRXZKaWdmRElnNUo3NlBvUld5OHhha1NXdE85NmtCTWl3YndiRDBsM3JVQ3h4eUxkOGJyTkIxYzdKekpJWDNjUVlMeUxGZHM5NUxybVU3RmxHRUZXUUxaRlRsal8zbXVLWUN4WWZN?oc=5",
+      "date": "Thu, 12 Nov 2026 04:58:18 GMT",
+      "desc": "＜Inside N. Korea＞ Two men flee North Korea, sparking major uproar; secret police agents dispatched to China as investigation of residents continues&nbsp;&nbsp;アジアプレス・インターナショナル"
+    },
+    {
+      "title": "Based on the strength of the Korean economy, we will serve as a strong bridge between developed cou.. - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1fRjk1Z21wd3hXVEdXQjRib0pSbV9sUnFDdkdLS25nUHA3alB5QTNzYjhhTDlLbUlGWlJ1c2NtSWJsMHZod2xxYzU4S25tMjQ?oc=5",
+      "date": "Thu, 12 Nov 2026 08:35:33 GMT",
+      "desc": "Based on the strength of the Korean economy, we will serve as a strong bridge between developed cou..&nbsp;&nbsp;매일경제"
+    },
+    {
+      "title": "Samsung, SK hynix tighten security training amid industrial espionage concerns - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcFkzNmg5RUI1cFcwdXkzY21VVGFKNnBXS0YtMGM3MDhlUm1ZS3h1MDhRc01xTFRmLWNBdGVXd1ZOOE85U2c2UXlwYjh6cXBuc3d0dUQzRFNEOHZlclhhV3VqR2EyWlhSejIwTVJKWmxtd2s1c1JNZW1sUnEyQUZNTlVFMHJmUlhlV2FIRm9LVmdJNXdWMjMwanhIRGFrSmhBQlpZZlZPNHBXV2RZajZkU2hDZHpqVFgwVm83Ty1Bai1OMFU2RS1pUjVFUUM1WkHSAdQBQVVfeXFMTUEwM3ZacEVycF9sYmV1YWhmTkpiN0dsdHBRanJXMFhRVlg2eUJBbFFCcUFFazRQc3VGU3dyNVpORUhKRmpNeG1KQ2tEYW04bVJfMS10SGdRVl9mNm4xbnFqTkxydnJSSVZheVByaGl6TUQxVHVyYWtzYnlfdlZ2djJBWU5HTzFSYkwtdG9lNmF0VDJVcVNGaE1UNU4xMUtKN01RZ3ZDLVFGTTlubHY0VEZwNDVzNDJ4SVRWM0h1R3FLaldwUmM4dmw3SzNhUVNSRkZYMG0?oc=5",
+      "date": "Thu, 12 Nov 2026 06:50:07 GMT",
+      "desc": "Samsung, SK hynix tighten security training amid industrial espionage concerns&nbsp;&nbsp;The Korea Times"
     },
     {
       "title": "Samsung, SK hynix monitor Nvidia leadership uncertainty - Korea JoongAng Daily",
@@ -73,12 +79,6 @@
       "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBtWjJOdkxFRGdwS2lobTdnaGxwVnlnRDBuZDlCa0FSZ2RvVVNPQ1V5VjdlbVZiaExnUWh0ejBqU01uX3VmMnNoSjNOenZZaVpnR2w5aw?oc=5",
       "date": "Wed, 11 Nov 2026 22:54:16 GMT",
       "desc": "US Lawmakers Push 3 China Chip Curbs, Raising Pressure on Samsung, SK Hynix Plants&nbsp;&nbsp;bloomingbit"
-    },
-    {
-      "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
-      "date": "Wed, 21 Oct 2026 07:00:00 GMT",
-      "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 213000.0,
-      "change": 14100.0,
-      "pct": 7.09,
+      "price": 208000.0,
+      "change": 9100.0,
+      "pct": 4.58,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1303000.0,
-      "change": 91000.0,
-      "pct": 7.51,
+      "price": 1254000.0,
+      "change": 42000.0,
+      "pct": 3.47,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 269500.0,
-      "change": -5500.0,
-      "pct": -2.0,
+      "price": 266500.0,
+      "change": -8500.0,
+      "pct": -3.09,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 93400.0,
-      "change": -2700.0,
-      "pct": -2.81,
+      "price": 93600.0,
+      "change": -2500.0,
+      "pct": -2.6,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 183300.0,
-      "change": -9700.0,
-      "pct": -5.03,
+      "price": 181800.0,
+      "change": -11200.0,
+      "pct": -5.8,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5436.32,
-      "change": 197.19,
-      "pct": 3.76,
+      "price": 5342.73,
+      "change": 103.6,
+      "pct": 1.98,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.98,
-      "change": -6.93,
-      "pct": -0.52,
+      "price": 1331.14,
+      "change": -10.77,
+      "pct": -0.8,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-12 04:50 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-12 10:29 UTC"
 }
