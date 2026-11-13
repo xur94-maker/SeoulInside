@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "US envoys head to meet Zelensky after talks with Putin in Moscow",
-      "link": "https://www.bbc.co.uk/news/articles/cwrkgmymk55zo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 21:00:42 GMT",
-      "desc": "US envoy Steve Witkoff says President Putin has agreed to European negotiators joining the next round of Ukraine talks."
+      "title": "Scandal-hit Nvidia CEO Jensen Huang quits, plunging AI chipmaking giant into turmoil",
+      "link": "https://www.bbc.co.uk/news/articles/cmq5vd1wdgz6o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 12 Nov 2026 23:34:05 GMT",
+      "desc": "US lawmakers now want to question him over whether one of his alleged relationships was with a Chinese spy."
+    },
+    {
+      "title": "Zelensky welcomes US bringing Europe into Russia-Ukraine peace talks",
+      "link": "https://www.bbc.co.uk/news/articles/ckn80j9jv3jxo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 13 Nov 2026 02:01:35 GMT",
+      "desc": "The Ukrainian president says it makes sense for European leaders to be involved as Ukraine hopes to eventually join the EU."
+    },
+    {
+      "title": "Neither war nor peace in Tigray - is Ethiopia's latest conflict really over?",
+      "link": "https://www.bbc.co.uk/news/articles/cm3egjgvp794o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 13 Nov 2026 00:20:24 GMT",
+      "desc": "The army has taken control of most of Tigray's main towns - it is unclear if the TPLF is capable of fighting back."
     },
     {
       "title": "Russian warship hit by Ukrainian drone in Gulf of Finland",
@@ -17,18 +29,6 @@
       "link": "https://www.bbc.co.uk/news/articles/cr894w453e90o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 12 Nov 2026 19:23:02 GMT",
       "desc": "Schools across Italy have received bomb threats for the second day in a row, sparking fresh panic and evacuations."
-    },
-    {
-      "title": "Democrat Scott Colom makes history as Mississippi's first black senator since 19th Century",
-      "link": "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 12:56:55 GMT",
-      "desc": "In a state Trump won two years ago by 22 points, Colom's victory extends a string of Democratic wins in the Senate."
-    },
-    {
-      "title": "Hegseth awards medal to war memorial guard who reprimanded him and group",
-      "link": "https://www.bbc.co.uk/news/articles/cmvg2r3dq7xno?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 18:47:35 GMT",
-      "desc": "Specialist Thomas Iglesias was given a Joint Service Commendation Medal for the execution of his duties after Wednesday's incident."
     }
   ],
   "koreaNews": [
@@ -37,6 +37,18 @@
       "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPT1lWRktqbDYwbGEtbGpkMHJ4WWR3WnBWdDNKLUFYT29kVWpUSWxWZ1ZYUnd5QWhPQ1A0YlRXSU1lUXRGNDh2ZW43UmFtOGJlTm9Bd3JNZjI0OVdvYm9ZRlBYWVFBOGpEcjBIVjM2Mk8zYmloLWNyQlhIVVhBQmtHdzJYd1FQOHNBOC1sUVd2SFQwZXZjYVFSV3ZLYlZ4ZjhBSFl6NWtmcVpuX3RibjduZy1UYVNLVHZEUnhKTG5OSlhFdw?oc=5",
       "date": "Thu, 12 Nov 2026 02:07:04 GMT",
       "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Foreign Policy"
+    },
+    {
+      "title": "(LEAD) S. Korean economy continues to 'grow at solid pace': finance ministry - Yonhap News Agency",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9HWVhfbGNnU005Y3JWd1hIcGlTWjYxcXQtN3dIWE5tVkE5UTllR2RWTXZsNk9JN29SUVdib1BrSlBwM25OeGNQUVNBRzlGWU9HUEhid21fcWZMUQ?oc=5",
+      "date": "Fri, 13 Nov 2026 01:37:38 GMT",
+      "desc": "(LEAD) S. Korean economy continues to 'grow at solid pace': finance ministry&nbsp;&nbsp;Yonhap News Agency"
+    },
+    {
+      "title": "Korean economy continues to 'grow at solid pace': finance ministry - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQSGlsZUkwaUxWZ0tOVksyRWR3ekpFYXhUd0t0bTBkQ2p2Vk9RUC1WbkRjV1lXR0h5VFMxZVl4d25vN2xkMV8yTDlWeVZHLVZfQ2xzazhxRm9IUzZWTlJsclYyZUppZXBlemVHMFpRZWNnNzFySkZZTlU2RTNkSGZ4VVNaSUR1NnJLcWgzXzhNM2RFT0V1RXRNU2t2LVVicXBWRDdkbHQwOGlqM0plVlHSAbMBQVVfeXFMT1RpeWNseUg3SlpDOUxsVFZ3ZThMWlExQkRScTJMS0tZbGdPd2ZUeVdPUEdOYlpXbGQtSU5SVXYzbUhFck9CUVNJTGpzaFRPekRwSWFpdzRzLWVvdlJWb0pTUUt5MGtTejQwdkpyOC1YdGlLb29XWXI1YzF2QmJTWk9VNXFMQWZjd25GQjEtd29idDFBcEZPM0w1aU9JRlhrR3h0Z0Jock9jNGlpakdNQndvZ0E?oc=5",
+      "date": "Fri, 13 Nov 2026 01:24:02 GMT",
+      "desc": "Korean economy continues to 'grow at solid pace': finance ministry&nbsp;&nbsp;The Korea Times"
     },
     {
       "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
@@ -51,34 +63,22 @@
       "desc": "AI is hiding the cracks in South Korea’s economy&nbsp;&nbsp;Taipei Times"
     },
     {
-      "title": "Korean Air to add Seoul-Incheon to Newark, NJ service - Economy Class & Beyond -",
-      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQZXBzX2NMOXY5cUZBUmpOcUttYlEwTktxVkZiaDZYYmZOeVdtVGU5Sk82djlkV0syTTJWTERPLWpDd2Z4UXJBMmlha21LUjgwX1R2VjhIN19iYkN4al9iZVlKZkFZQ0Y2S01ieThCdTl1ai1SbmxjYUM1RVRST3JZUDJvbVVYcEd1UHFzSHM0MWp0aklreFo3M1E2SkhCamYzdmtTUnd5ZVRkVFBzSXNjMA?oc=5",
-      "date": "Thu, 12 Nov 2026 16:11:20 GMT",
-      "desc": "Korean Air to add Seoul-Incheon to Newark, NJ service&nbsp;&nbsp;Economy Class & Beyond -"
-    },
-    {
-      "title": "South Korea’s economy gains from semiconductor and AI investment - سانا",
-      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBva3Nrekp4QXp0Z1FtTGw1OTZnT2dBeWlWSE9TYmxSa3JxTzRCRkwyZ0J2N2tLMzdDNGFmcXpGWXlrcGRKUWg3d3pkNWFPTV9kR0w0?oc=5",
-      "date": "Mon, 09 Nov 2026 10:20:44 GMT",
-      "desc": "South Korea’s economy gains from semiconductor and AI investment&nbsp;&nbsp;سانا"
-    },
-    {
       "title": "HyperAccel Struggles to Secure Samsung Foundry Capacity, SK hynix Memory - THE ELEC, Korea Electronics Industry Media",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ueTNRRXl2VXhiOXBNOVJheWF3S1lWbHJNQnJRM2RpQnVremt4Yzg3ZVlEd2Qxbzd2QkFYR28ycUExOFZNbEY4c0FBZy1OZ0xxYVlFbkJueUNlbl9BSkpQbXEtelgzOVk?oc=5",
       "date": "Thu, 12 Nov 2026 15:03:14 GMT",
       "desc": "HyperAccel Struggles to Secure Samsung Foundry Capacity, SK hynix Memory&nbsp;&nbsp;THE ELEC, Korea Electronics Industry Media"
     },
     {
-      "title": "Samsung, SK hynix monitor Nvidia leadership uncertainty - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQTnFEeG4zWTFWOGRNcGJ5cG9idGpERFJUeW5pS3JxQmttc0dxenRxaVJ1d1BRSWJhcFlpaU5mUjVWN3l3eUpQV2k2M0NfYVFfcmVFNEV0MG16TG92VFFDWEE4ZEpMLXBoZkFNQlA0UzlDWjJXdnZ4cEFRcDlFckw5cEwxVU1BU2hiZ2VTQVBfNXFxVHhkZERrUmY5dzlmZjNSZGwybnRWUHRTMGs?oc=5",
-      "date": "Thu, 12 Nov 2026 01:44:53 GMT",
-      "desc": "Samsung, SK hynix monitor Nvidia leadership uncertainty&nbsp;&nbsp;Korea JoongAng Daily"
+      "title": "South Korea's Samsung, SK Chip Plants Need 260,000 Construction Workers Over 5 Years - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA0ZURianR6OU52NEY5RFRmVUg5a01YT0s2NDdIbDRmTTQ1OExGVWNPQmxlOVF3WHJsRUhBOVpKY1gtWlNKM01zUVFTNDEyaEJ0eklSVHZNTWUxZ2JHVVg2MU9CbUNlNlNlem12ZzlZNmtwdHRtMFE?oc=5",
+      "date": "Fri, 13 Nov 2026 00:36:00 GMT",
+      "desc": "South Korea's Samsung, SK Chip Plants Need 260,000 Construction Workers Over 5 Years&nbsp;&nbsp;BigGo Finance"
     },
     {
-      "title": "Wobbling 'Gganbu Alliance'... Will 'Samsung-SK Hynix' HBM Supply Face Disruptions? - SBS 뉴스",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBScnVJYW1BX01GVVhXM3pfazNjR2ZIc3o4SU9BZ0kweFFTQWU3eFN5dURvbFVLaHA3akd2NG9tMHNBb0hGajJmQm5mRG5ETHh1QS1KaEU1VFk5Y01TOFRVT2c5ZEdrZXNkM053QTB30gFmQVVfeXFMTnMwVmF2d1lYZm9qOXZaT0czcFdsSnRQeG0weEVZbEszVWJPNVZLMnltVDhUTndiYlBZcnhYZE1FZDNsZ1NRanc4V1NlUEpwZlBVYWJNbHFHcEZIcjlFMTJCOEpReXF3?oc=5",
-      "date": "Thu, 12 Nov 2026 16:47:00 GMT",
-      "desc": "Wobbling 'Gganbu Alliance'... Will 'Samsung-SK Hynix' HBM Supply Face Disruptions?&nbsp;&nbsp;SBS 뉴스"
+      "title": "'Gganbu Alliance' Shaken... Will 'Samsung-SK Hynix' HBM Supplies Face Disruptions? - SBS 뉴스",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1YMTgteWtyNzhDc2k1OHVTMUpwN0xibGZjUHAyaFNnUFkxcmsyaW5NNl83WG1mcnpJaTJnTC1wOGdGS3htdi1SUUQyTmRkLTVkMzlJbWFtejFjRmM0T2tZZV9tS1gwbTV3Y3ZDS1JR0gFmQVVfeXFMTmFTRDI1ck01cHV1LVliWFg1YW05LS1WeHRGcjJsV0ZrTTlqd1FBMUpIS2lCeHJXdXREMnhNNGRhNnFjNkU5ako4ODlaSFRZMExZRkRQN0lYS1lvbF9yMG5fdXhoZFRR?oc=5",
+      "date": "Thu, 12 Nov 2026 21:17:10 GMT",
+      "desc": "'Gganbu Alliance' Shaken... Will 'Samsung-SK Hynix' HBM Supplies Face Disruptions?&nbsp;&nbsp;SBS 뉴스"
     }
   ],
   "worldStocks": [
@@ -93,9 +93,9 @@
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 405.61,
-      "change": 9.13,
-      "pct": 2.3,
+      "price": 405.49,
+      "change": 9.01,
+      "pct": 2.27,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 208000.0,
-      "change": 9100.0,
-      "pct": 4.58,
+      "price": 212750.0,
+      "change": 6750.0,
+      "pct": 3.28,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1254000.0,
-      "change": 42000.0,
-      "pct": 3.47,
+      "price": 1281000.0,
+      "change": 4000.0,
+      "pct": 0.31,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 266500.0,
-      "change": -8500.0,
-      "pct": -3.09,
+      "price": 278000.0,
+      "change": 5500.0,
+      "pct": 2.02,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 93600.0,
-      "change": -2500.0,
-      "pct": -2.6,
+      "price": 95600.0,
+      "change": 1000.0,
+      "pct": 1.06,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 181800.0,
-      "change": -11200.0,
-      "pct": -5.8,
+      "price": 181300.0,
+      "change": -13000.0,
+      "pct": -6.69,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5342.73,
-      "change": 103.6,
-      "pct": 1.98,
+      "price": 5452.35,
+      "change": 76.99,
+      "pct": 1.43,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.99,
-      "change": -6.92,
-      "pct": -0.52,
+      "price": 1333.08,
+      "change": -3.18,
+      "pct": -0.24,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-12 21:14 UTC"
+  "updatedAt": "2026-11-13 02:20 UTC"
 }
