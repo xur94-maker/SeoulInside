@@ -1,10 +1,22 @@
 {
   "globalNews": [
     {
-      "title": "Scandal-hit Nvidia CEO Jensen Huang quits, plunging AI chipmaking giant into turmoil",
+      "title": "What we know about the global Microsoft outage",
+      "link": "https://www.bbc.co.uk/news/articles/cwvg238zrnm5o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 13 Nov 2026 09:59:20 GMT",
+      "desc": "Microsoft has said the outage was not caused by a cyber-security incident, but efforts to fix the issues have so far been largely unsuccessful."
+    },
+    {
+      "title": "Watch: How Microsoft services went down around the world",
+      "link": "https://www.bbc.co.uk/news/videos/cwm2591k27e2o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 13 Nov 2026 07:18:17 GMT",
+      "desc": "Microsoft is struggling to fix a global outage, with services including Teams, Outlook and AI software Copilot affected by \"connectivity problems\"."
+    },
+    {
+      "title": "Ex-Nvidia CEO Jensen Huang summoned to testify before Congress about affair with alleged Chinese spy",
       "link": "https://www.bbc.co.uk/news/articles/cmq5vd1wdgz6o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 23:34:05 GMT",
-      "desc": "US lawmakers now want to question him over whether one of his alleged relationships was with a Chinese spy."
+      "date": "Fri, 13 Nov 2026 03:57:01 GMT",
+      "desc": "Huang abruptly quit on Thursday as head of one of the world's most valuable companies after revelations of alleged extramarital affairs."
     },
     {
       "title": "Zelensky welcomes US bringing Europe into Russia-Ukraine peace talks",
@@ -13,30 +25,30 @@
       "desc": "The Ukrainian president says it makes sense for European leaders to be involved as Ukraine hopes to eventually join the EU."
     },
     {
-      "title": "Neither war nor peace in Tigray - is Ethiopia's latest conflict really over?",
-      "link": "https://www.bbc.co.uk/news/articles/cm3egjgvp794o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 13 Nov 2026 00:20:24 GMT",
-      "desc": "The army has taken control of most of Tigray's main towns - it is unclear if the TPLF is capable of fighting back."
-    },
-    {
-      "title": "Russian warship hit by Ukrainian drone in Gulf of Finland",
-      "link": "https://www.bbc.co.uk/news/articles/cmn0d33zz34zo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 20:09:16 GMT",
-      "desc": "The attack is thought to be the first time Ukrainian drones have attacked a Russian ship in an open stretch of the Baltic Sea."
-    },
-    {
-      "title": "Suspected bomb hoax threats force fresh evacuations of Italian schools",
-      "link": "https://www.bbc.co.uk/news/articles/cr894w453e90o?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 12 Nov 2026 19:23:02 GMT",
-      "desc": "Schools across Italy have received bomb threats for the second day in a row, sparking fresh panic and evacuations."
+      "title": "North Korean hackers used fake video calls in $400m crypto hack, says FBI",
+      "link": "https://www.bbc.co.uk/news/articles/cqdj1ellpd70o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 13 Nov 2026 02:48:29 GMT",
+      "desc": "More than 900 victims are thought to have fallen prey to the FaceStealer scheme in the last 18 months."
     }
   ],
   "koreaNews": [
     {
-      "title": "Memory Chips Are Completely Distorting South Korea’s Economy - Foreign Policy",
-      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPT1lWRktqbDYwbGEtbGpkMHJ4WWR3WnBWdDNKLUFYT29kVWpUSWxWZ1ZYUnd5QWhPQ1A0YlRXSU1lUXRGNDh2ZW43UmFtOGJlTm9Bd3JNZjI0OVdvYm9ZRlBYWVFBOGpEcjBIVjM2Mk8zYmloLWNyQlhIVVhBQmtHdzJYd1FQOHNBOC1sUVd2SFQwZXZjYVFSV3ZLYlZ4ZjhBSFl6NWtmcVpuX3RibjduZy1UYVNLVHZEUnhKTG5OSlhFdw?oc=5",
-      "date": "Thu, 12 Nov 2026 02:07:04 GMT",
-      "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Foreign Policy"
+      "title": "Memory Chips Are Completely Distorting South Korea’s Economy - Asociación Almendrón",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPeFd4XzRNLUQ1UzExWUFISWtjVFd2SDVkbHY4dktvRnVoajI3NjdJN1FUT255dVZyZ1FCSFFuQVVodGplQWh5enFGaFc1dWxEYmFUTlEyMlhCUmliVGFKcnNNSFRLU3YxcDJ5d0Nta25sU2doMmpvOE50dlNwR3gtaldIM1V1VU1kbFFKNlcweVV1MzcyNHQ0czRB?oc=5",
+      "date": "Fri, 13 Nov 2026 05:08:20 GMT",
+      "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Asociación Almendrón"
+    },
+    {
+      "title": "9th Shandong-South Korea Economic and Trade Cooperation Conference & Yantai South Korea Week Opens in Yantai - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOc1hIdHYwQmFUUnptNjd5MmtzNDVqWUpXYXVuWnZ2WnJuNC1uYVNEVW1SekhXeWhybEZUWVU5aWw4U2tpYmJweFdVSFR2Zl9ZWm9xNU1VMXJhVUpqeTVLZDd4TzlkMjdtZWpMdUdyTzl3cWRBR21fMjdSdHdid1Y4YmR5aFM1T0dhemlaY2lmQjAzaTRDQXlCWXJEUXQ1WVk?oc=5",
+      "date": "Fri, 13 Nov 2026 06:09:45 GMT",
+      "desc": "9th Shandong-South Korea Economic and Trade Cooperation Conference & Yantai South Korea Week Opens in Yantai&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
+      "title": "South Korea's Government Upgrades Economic Assessment to 'Solid Growth' After a Year; Exports Near $1 Trillion - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9lM09jYlNRNTdfeV9nelhta0w4X1B1b0RUaWdiUU00NmJaWmtWcnNzSEtwSy1BUWhNVGJxQWFkalRIRjZRajBjMUtDRWZmUFBlT0t3V25Zak1WT2tzcVhwOHlfUXZydGdXVjRlNDEzX1hqd3Voanc?oc=5",
+      "date": "Fri, 13 Nov 2026 03:25:00 GMT",
+      "desc": "South Korea's Government Upgrades Economic Assessment to 'Solid Growth' After a Year; Exports Near $1 Trillion&nbsp;&nbsp;BigGo Finance"
     },
     {
       "title": "(LEAD) S. Korean economy continues to 'grow at solid pace': finance ministry - Yonhap News Agency",
@@ -45,40 +57,28 @@
       "desc": "(LEAD) S. Korean economy continues to 'grow at solid pace': finance ministry&nbsp;&nbsp;Yonhap News Agency"
     },
     {
-      "title": "Korean economy continues to 'grow at solid pace': finance ministry - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQSGlsZUkwaUxWZ0tOVksyRWR3ekpFYXhUd0t0bTBkQ2p2Vk9RUC1WbkRjV1lXR0h5VFMxZVl4d25vN2xkMV8yTDlWeVZHLVZfQ2xzazhxRm9IUzZWTlJsclYyZUppZXBlemVHMFpRZWNnNzFySkZZTlU2RTNkSGZ4VVNaSUR1NnJLcWgzXzhNM2RFT0V1RXRNU2t2LVVicXBWRDdkbHQwOGlqM0plVlHSAbMBQVVfeXFMT1RpeWNseUg3SlpDOUxsVFZ3ZThMWlExQkRScTJMS0tZbGdPd2ZUeVdPUEdOYlpXbGQtSU5SVXYzbUhFck9CUVNJTGpzaFRPekRwSWFpdzRzLWVvdlJWb0pTUUt5MGtTejQwdkpyOC1YdGlLb29XWXI1YzF2QmJTWk9VNXFMQWZjd25GQjEtd29idDFBcEZPM0w1aU9JRlhrR3h0Z0Jock9jNGlpakdNQndvZ0E?oc=5",
-      "date": "Fri, 13 Nov 2026 01:24:02 GMT",
-      "desc": "Korean economy continues to 'grow at solid pace': finance ministry&nbsp;&nbsp;The Korea Times"
-    },
-    {
       "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
       "date": "Mon, 19 Oct 2026 07:00:00 GMT",
       "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
     },
     {
-      "title": "AI is hiding the cracks in South Korea’s economy - Taipei Times",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5haFh6ZWV3YTBDZU1oeXpBT2ZZbHlueGdJZUg4NGVWdm5udzNrc3lLYzVDUjVodkpJbmFDSWg5T0w1ODBJYTIyaUtiS1NXaXZEZlVWVEJWdl94QWdWenJ6bzhRWmhCREJrazFla0kyemdvbGRxclIySk8wQnBpTEU?oc=5",
-      "date": "Mon, 09 Nov 2026 16:00:00 GMT",
-      "desc": "AI is hiding the cracks in South Korea’s economy&nbsp;&nbsp;Taipei Times"
+      "title": "Samsung, SK Hynix Rise Despite ‘Kkanbu’ Ally Jensen Huang’s Exit From Nvidia - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBPQ0djT29mUGl3WnhKYzBZNkRaVTVPdXEyNUFxTF9WNjVfUXFubTA5NTlVc0ZvdnRabF9iMTZnVXgtZUlkbW5ueXRGY3laQ255X1VEUg?oc=5",
+      "date": "Fri, 13 Nov 2026 02:24:06 GMT",
+      "desc": "Samsung, SK Hynix Rise Despite ‘Kkanbu’ Ally Jensen Huang’s Exit From Nvidia&nbsp;&nbsp;bloomingbit"
     },
     {
-      "title": "HyperAccel Struggles to Secure Samsung Foundry Capacity, SK hynix Memory - THE ELEC, Korea Electronics Industry Media",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1ueTNRRXl2VXhiOXBNOVJheWF3S1lWbHJNQnJRM2RpQnVremt4Yzg3ZVlEd2Qxbzd2QkFYR28ycUExOFZNbEY4c0FBZy1OZ0xxYVlFbkJueUNlbl9BSkpQbXEtelgzOVk?oc=5",
-      "date": "Thu, 12 Nov 2026 15:03:14 GMT",
-      "desc": "HyperAccel Struggles to Secure Samsung Foundry Capacity, SK hynix Memory&nbsp;&nbsp;THE ELEC, Korea Electronics Industry Media"
+      "title": "Samsung, SK hynix monitor Nvidia leadership uncertainty - Korea JoongAng Daily",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQTnFEeG4zWTFWOGRNcGJ5cG9idGpERFJUeW5pS3JxQmttc0dxenRxaVJ1d1BRSWJhcFlpaU5mUjVWN3l3eUpQV2k2M0NfYVFfcmVFNEV0MG16TG92VFFDWEE4ZEpMLXBoZkFNQlA0UzlDWjJXdnZ4cEFRcDlFckw5cEwxVU1BU2hiZ2VTQVBfNXFxVHhkZERrUmY5dzlmZjNSZGwybnRWUHRTMGs?oc=5",
+      "date": "Thu, 12 Nov 2026 01:44:53 GMT",
+      "desc": "Samsung, SK hynix monitor Nvidia leadership uncertainty&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
       "title": "South Korea's Samsung, SK Chip Plants Need 260,000 Construction Workers Over 5 Years - BigGo Finance",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA0ZURianR6OU52NEY5RFRmVUg5a01YT0s2NDdIbDRmTTQ1OExGVWNPQmxlOVF3WHJsRUhBOVpKY1gtWlNKM01zUVFTNDEyaEJ0eklSVHZNTWUxZ2JHVVg2MU9CbUNlNlNlem12ZzlZNmtwdHRtMFE?oc=5",
       "date": "Fri, 13 Nov 2026 00:36:00 GMT",
       "desc": "South Korea's Samsung, SK Chip Plants Need 260,000 Construction Workers Over 5 Years&nbsp;&nbsp;BigGo Finance"
-    },
-    {
-      "title": "'Gganbu Alliance' Shaken... Will 'Samsung-SK Hynix' HBM Supplies Face Disruptions? - SBS 뉴스",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1YMTgteWtyNzhDc2k1OHVTMUpwN0xibGZjUHAyaFNnUFkxcmsyaW5NNl83WG1mcnpJaTJnTC1wOGdGS3htdi1SUUQyTmRkLTVkMzlJbWFtejFjRmM0T2tZZV9tS1gwbTV3Y3ZDS1JR0gFmQVVfeXFMTmFTRDI1ck01cHV1LVliWFg1YW05LS1WeHRGcjJsV0ZrTTlqd1FBMUpIS2lCeHJXdXREMnhNNGRhNnFjNkU5ako4ODlaSFRZMExZRkRQN0lYS1lvbF9yMG5fdXhoZFRR?oc=5",
-      "date": "Thu, 12 Nov 2026 21:17:10 GMT",
-      "desc": "'Gganbu Alliance' Shaken... Will 'Samsung-SK Hynix' HBM Supplies Face Disruptions?&nbsp;&nbsp;SBS 뉴스"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 212750.0,
-      "change": 6750.0,
-      "pct": 3.28,
+      "price": 206000.0,
+      "change": 0.0,
+      "pct": 0.0,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1281000.0,
-      "change": 4000.0,
-      "pct": 0.31,
+      "price": 1216000.0,
+      "change": -61000.0,
+      "pct": -4.78,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 278000.0,
-      "change": 5500.0,
-      "pct": 2.02,
+      "price": 269500.0,
+      "change": -3000.0,
+      "pct": -1.1,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 95600.0,
-      "change": 1000.0,
-      "pct": 1.06,
+      "price": 94600.0,
+      "change": 0.0,
+      "pct": 0.0,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 181300.0,
-      "change": -13000.0,
-      "pct": -6.69,
+      "price": 172500.0,
+      "change": -21800.0,
+      "pct": -11.22,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5452.35,
-      "change": 76.99,
-      "pct": 1.43,
+      "price": 5290.53,
+      "change": -84.83,
+      "pct": -1.58,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1333.08,
-      "change": -3.18,
-      "pct": -0.24,
+      "price": 1336.0,
+      "change": -0.26,
+      "pct": -0.02,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-13 04:01 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-13 10:22 UTC"
 }
