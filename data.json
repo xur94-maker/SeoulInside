@@ -1,16 +1,16 @@
 {
   "globalNews": [
     {
-      "title": "What we know about the global Microsoft outage",
+      "title": "Why is the Microsoft outage lasting so long?",
       "link": "https://www.bbc.co.uk/news/articles/cwvg238zrnm5o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 13 Nov 2026 09:59:20 GMT",
-      "desc": "Microsoft has said the outage was not caused by a cyber-security incident, but efforts to fix the issues have so far been largely unsuccessful."
+      "date": "Fri, 13 Nov 2026 14:21:26 GMT",
+      "desc": "Microsoft says it is seeing \"improvements\" following a global outage but efforts to fully resume services are ongoing."
     },
     {
-      "title": "Watch: How Microsoft services went down around the world",
-      "link": "https://www.bbc.co.uk/news/videos/cwm2591k27e2o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 13 Nov 2026 07:18:17 GMT",
-      "desc": "Microsoft is struggling to fix a global outage, with services including Teams, Outlook and AI software Copilot affected by \"connectivity problems\"."
+      "title": "Watch: How a server outage took down Microsoft Teams and Outlook",
+      "link": "https://www.bbc.co.uk/news/videos/cqzjr903n01po?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 13 Nov 2026 11:43:27 GMT",
+      "desc": "A Microsoft outage is affecting services including Teams, Outlook and AI software Copilot."
     },
     {
       "title": "Ex-Nvidia CEO Jensen Huang summoned to testify before Congress about affair with alleged Chinese spy",
@@ -25,10 +25,10 @@
       "desc": "The Ukrainian president says it makes sense for European leaders to be involved as Ukraine hopes to eventually join the EU."
     },
     {
-      "title": "North Korean hackers used fake video calls in $400m crypto hack, says FBI",
-      "link": "https://www.bbc.co.uk/news/articles/cqdj1ellpd70o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 13 Nov 2026 02:48:29 GMT",
-      "desc": "More than 900 victims are thought to have fallen prey to the FaceStealer scheme in the last 18 months."
+      "title": "UN watchdog 'increasingly concerned' over uninspected Iran nuclear site",
+      "link": "https://www.bbc.co.uk/news/articles/cm75261e3pdko?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 13 Nov 2026 12:28:28 GMT",
+      "desc": "It says it has never been able to visit a uranium enrichment plant at Isfahan which Iran announced over a year ago."
     }
   ],
   "koreaNews": [
@@ -45,22 +45,22 @@
       "desc": "9th Shandong-South Korea Economic and Trade Cooperation Conference & Yantai South Korea Week Opens in Yantai&nbsp;&nbsp;Yahoo Finance"
     },
     {
-      "title": "South Korea's Government Upgrades Economic Assessment to 'Solid Growth' After a Year; Exports Near $1 Trillion - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9lM09jYlNRNTdfeV9nelhta0w4X1B1b0RUaWdiUU00NmJaWmtWcnNzSEtwSy1BUWhNVGJxQWFkalRIRjZRajBjMUtDRWZmUFBlT0t3V25Zak1WT2tzcVhwOHlfUXZydGdXVjRlNDEzX1hqd3Voanc?oc=5",
-      "date": "Fri, 13 Nov 2026 03:25:00 GMT",
-      "desc": "South Korea's Government Upgrades Economic Assessment to 'Solid Growth' After a Year; Exports Near $1 Trillion&nbsp;&nbsp;BigGo Finance"
-    },
-    {
       "title": "(LEAD) S. Korean economy continues to 'grow at solid pace': finance ministry - Yonhap News Agency",
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9HWVhfbGNnU005Y3JWd1hIcGlTWjYxcXQtN3dIWE5tVkE5UTllR2RWTXZsNk9JN29SUVdib1BrSlBwM25OeGNQUVNBRzlGWU9HUEhid21fcWZMUQ?oc=5",
       "date": "Fri, 13 Nov 2026 01:37:38 GMT",
       "desc": "(LEAD) S. Korean economy continues to 'grow at solid pace': finance ministry&nbsp;&nbsp;Yonhap News Agency"
     },
     {
-      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
-      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+      "title": "South Korea's Government Upgrades Economic Assessment to 'Solid Growth' After a Year; Exports Near $1 Trillion - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9lM09jYlNRNTdfeV9nelhta0w4X1B1b0RUaWdiUU00NmJaWmtWcnNzSEtwSy1BUWhNVGJxQWFkalRIRjZRajBjMUtDRWZmUFBlT0t3V25Zak1WT2tzcVhwOHlfUXZydGdXVjRlNDEzX1hqd3Voanc?oc=5",
+      "date": "Fri, 13 Nov 2026 03:25:00 GMT",
+      "desc": "South Korea's Government Upgrades Economic Assessment to 'Solid Growth' After a Year; Exports Near $1 Trillion&nbsp;&nbsp;BigGo Finance"
+    },
+    {
+      "title": "South Korea’s Options in a Fragmented World - The Diplomat – Asia-Pacific Current Affairs Magazine",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVnRXU2xqYUgzUlJDNHcxVjlGc2JWY2RVMFFNdzJwbzQ0YmhLMU02emx6dG9fYXBvUjJMb1FHR2I4dl9FbzhvSW9WaWlyMGRqSEZvUzNSY2FjQmphbnNhT1pHYndZTFIwUzNhbURxcHJUVWpoSW4yNlRlTFBTSjc2ZA?oc=5",
+      "date": "Fri, 13 Nov 2026 15:33:45 GMT",
+      "desc": "South Korea’s Options in a Fragmented World&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
     },
     {
       "title": "Samsung, SK Hynix Rise Despite ‘Kkanbu’ Ally Jensen Huang’s Exit From Nvidia - bloomingbit",
@@ -75,99 +75,99 @@
       "desc": "Samsung, SK hynix monitor Nvidia leadership uncertainty&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "South Korea's Samsung, SK Chip Plants Need 260,000 Construction Workers Over 5 Years - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA0ZURianR6OU52NEY5RFRmVUg5a01YT0s2NDdIbDRmTTQ1OExGVWNPQmxlOVF3WHJsRUhBOVpKY1gtWlNKM01zUVFTNDEyaEJ0eklSVHZNTWUxZ2JHVVg2MU9CbUNlNlNlem12ZzlZNmtwdHRtMFE?oc=5",
-      "date": "Fri, 13 Nov 2026 00:36:00 GMT",
-      "desc": "South Korea's Samsung, SK Chip Plants Need 260,000 Construction Workers Over 5 Years&nbsp;&nbsp;BigGo Finance"
+      "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
+      "date": "Wed, 21 Oct 2026 07:00:00 GMT",
+      "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 166.19,
-      "change": -2.7,
-      "pct": -1.6,
+      "price": 160.23,
+      "change": -13.5,
+      "pct": -7.77,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 405.49,
-      "change": 9.01,
-      "pct": 2.27,
+      "price": 394.45,
+      "change": -18.9,
+      "pct": -4.57,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 585.3,
-      "change": 70.09,
-      "pct": 13.6,
+      "price": 524.15,
+      "change": -28.75,
+      "pct": -5.2,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 61.2,
-      "change": 3.07,
-      "pct": 5.28,
+      "price": 58.35,
+      "change": -4.15,
+      "pct": -6.63,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 177.14,
-      "change": 3.61,
-      "pct": 2.08,
+      "price": 170.34,
+      "change": -6.23,
+      "pct": -3.53,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 199.78,
-      "change": 18.29,
-      "pct": 10.08,
+      "price": 187.09,
+      "change": -16.27,
+      "pct": -8.0,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 298.7,
-      "change": 11.32,
-      "pct": 3.94,
+      "price": 294.17,
+      "change": 0.72,
+      "pct": 0.25,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 354.88,
-      "change": 6.37,
-      "pct": 1.83,
+      "price": 357.93,
+      "change": 2.3,
+      "pct": 0.65,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 523.0,
-      "change": -10.16,
-      "pct": -1.91,
+      "price": 522.22,
+      "change": 1.09,
+      "pct": 0.21,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7592.4,
-      "change": 71.47,
-      "pct": 0.95,
+      "price": 7521.45,
+      "change": -97.93,
+      "pct": -1.29,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25366.09,
-      "change": 300.22,
-      "pct": 1.2,
+      "price": 24980.66,
+      "change": -485.53,
+      "pct": -1.91,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1336.0,
-      "change": -0.26,
-      "pct": -0.02,
+      "price": 1336.76,
+      "change": 0.5,
+      "pct": 0.04,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-13 10:22 UTC"
+  "updatedAt": "2026-11-13 17:03 UTC"
 }
