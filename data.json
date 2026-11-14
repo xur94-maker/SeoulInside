@@ -1,28 +1,28 @@
 {
   "globalNews": [
     {
+      "title": "What we know about the ground stop and what to do if you're affected",
+      "link": "https://www.bbc.co.uk/news/articles/cqx2wyvyr3zzo?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 14 Nov 2026 07:42:11 GMT",
+      "desc": "US officials say the disruption was caused by old equipment overloading and not a cyber-attack."
+    },
+    {
       "title": "'Miracle on Mississippi' - All passengers rescued after New Orleans cruise ship collision",
       "link": "https://www.bbc.co.uk/news/articles/cw20xmy0m5yyo?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 13 Nov 2026 23:40:45 GMT",
       "desc": "The collision leaves 32 people in hospital with non-critical injuries, but no-one unaccounted for."
     },
     {
-      "title": "Microsoft 'deeply sorry' for global outage after almost 24 hours of disruption",
+      "title": "Trump, Putin and Xi plan historic joint meeting in China next week, White House says",
+      "link": "https://www.bbc.co.uk/news/articles/ckz74jzpy18do?at_medium=RSS&at_campaign=rss",
+      "date": "Sat, 14 Nov 2026 05:52:31 GMT",
+      "desc": "Trump will discuss the \"reduction of nuclear weapons\" during the unprecedented talks, a spokeswoman says."
+    },
+    {
+      "title": "Microsoft says services fully restored after day-long global outage",
       "link": "https://www.bbc.co.uk/news/articles/c6rrg51rkz09o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 13 Nov 2026 21:14:22 GMT",
-      "desc": "Experts say the event is a \"stark reminder\" of how heavily the world relies on a small group of big tech providers."
-    },
-    {
-      "title": "Why is Microsoft's outage lasting so long and will emails be lost?",
-      "link": "https://www.bbc.co.uk/news/articles/cwvg238zrnm5o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 13 Nov 2026 18:36:57 GMT",
-      "desc": "Microsoft says it is continuing to restore services including Outlook and Teams following a global outage."
-    },
-    {
-      "title": "Watch: How a server outage took down Microsoft Teams and Outlook",
-      "link": "https://www.bbc.co.uk/news/videos/cqzjr903n01po?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 13 Nov 2026 11:43:27 GMT",
-      "desc": "A Microsoft outage is affecting services including Teams, Outlook and AI software Copilot."
+      "date": "Sat, 14 Nov 2026 06:42:27 GMT",
+      "desc": "Efforts to address the underlying problem with Outlook, Teams and Copilot are complete, the tech firm says."
     },
     {
       "title": "Setback for SpaceX Starship rocket's double-catch test",
@@ -33,34 +33,34 @@
   ],
   "koreaNews": [
     {
-      "title": "Memory Chips Are Completely Distorting South Korea’s Economy - Asociación Almendrón",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPeFd4XzRNLUQ1UzExWUFISWtjVFd2SDVkbHY4dktvRnVoajI3NjdJN1FUT255dVZyZ1FCSFFuQVVodGplQWh5enFGaFc1dWxEYmFUTlEyMlhCUmliVGFKcnNNSFRLU3YxcDJ5d0Nta25sU2doMmpvOE50dlNwR3gtaldIM1V1VU1kbFFKNlcweVV1MzcyNHQ0czRB?oc=5",
-      "date": "Fri, 13 Nov 2026 05:08:20 GMT",
-      "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Asociación Almendrón"
+      "title": "Memory Chips Are Completely Distorting South Korea’s Economy - Foreign Policy",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPT1lWRktqbDYwbGEtbGpkMHJ4WWR3WnBWdDNKLUFYT29kVWpUSWxWZ1ZYUnd5QWhPQ1A0YlRXSU1lUXRGNDh2ZW43UmFtOGJlTm9Bd3JNZjI0OVdvYm9ZRlBYWVFBOGpEcjBIVjM2Mk8zYmloLWNyQlhIVVhBQmtHdzJYd1FQOHNBOC1sUVd2SFQwZXZjYVFSV3ZLYlZ4ZjhBSFl6NWtmcVpuX3RibjduZy1UYVNLVHZEUnhKTG5OSlhFdw?oc=5",
+      "date": "Thu, 12 Nov 2026 02:07:04 GMT",
+      "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Foreign Policy"
     },
     {
-      "title": "South Korea’s Options in a Fragmented World - The Diplomat – Asia-Pacific Current Affairs Magazine",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVnRXU2xqYUgzUlJDNHcxVjlGc2JWY2RVMFFNdzJwbzQ0YmhLMU02emx6dG9fYXBvUjJMb1FHR2I4dl9FbzhvSW9WaWlyMGRqSEZvUzNSY2FjQmphbnNhT1pHYndZTFIwUzNhbURxcHJUVWpoSW4yNlRlTFBTSjc2ZA?oc=5",
-      "date": "Fri, 13 Nov 2026 15:36:45 GMT",
-      "desc": "South Korea’s Options in a Fragmented World&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
+      "title": "South Korea’s president whips up anti-foreigner chauvinism - World Socialist Web Site",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBjb0gzRU9ycFdTcnplMlh2bnc0ZU9OZTQ0SlBySnlVek15SUN5UmczaE53WXJHekFvSkE0Z05wQy1GZ1l3bUMxaFRKMWlfdWtVUTdManRVSjc1Zm15SDZOZkZIWTZpU2x3?oc=5",
+      "date": "Sat, 14 Nov 2026 02:46:25 GMT",
+      "desc": "South Korea’s president whips up anti-foreigner chauvinism&nbsp;&nbsp;World Socialist Web Site"
+    },
+    {
+      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
+      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
+      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
     },
     {
       "title": "9th Shandong-South Korea Economic and Trade Cooperation Conference & Yantai South Korea Week Opens in Yantai - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOc1hIdHYwQmFUUnptNjd5MmtzNDVqWUpXYXVuWnZ2WnJuNC1uYVNEVW1SekhXeWhybEZUWVU5aWw4U2tpYmJweFdVSFR2Zl9ZWm9xNU1VMXJhVUpqeTVLZDd4TzlkMjdtZWpMdUdyTzl3cWRBR21fMjdSdHdid1Y4YmR5aFM1T0dhemlaY2lmQjAzaTRDQXlCWXJEUXQ1WVk?oc=5",
       "date": "Fri, 13 Nov 2026 06:09:45 GMT",
       "desc": "9th Shandong-South Korea Economic and Trade Cooperation Conference & Yantai South Korea Week Opens in Yantai&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
-      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
-    },
-    {
-      "title": "South Korea's Government Upgrades Economic Assessment to 'Solid Growth' After a Year; Exports Near $1 Trillion - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9lM09jYlNRNTdfeV9nelhta0w4X1B1b0RUaWdiUU00NmJaWmtWcnNzSEtwSy1BUWhNVGJxQWFkalRIRjZRajBjMUtDRWZmUFBlT0t3V25Zak1WT2tzcVhwOHlfUXZydGdXVjRlNDEzX1hqd3Voanc?oc=5",
-      "date": "Fri, 13 Nov 2026 03:25:00 GMT",
-      "desc": "South Korea's Government Upgrades Economic Assessment to 'Solid Growth' After a Year; Exports Near $1 Trillion&nbsp;&nbsp;BigGo Finance"
     },
     {
       "title": "Samsung, SK hynix monitor Nvidia leadership uncertainty - Korea JoongAng Daily",
@@ -223,13 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1335.11,
-      "change": -1.15,
-      "pct": -0.09,
+      "price": 1336.2,
+      "change": -0.06,
+      "pct": -0.0,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-14 03:59 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-14 09:39 UTC"
 }
