@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Zelensky urges US and Musk to lift Starlink restrictions and be on 'right side of history'",
+      "link": "https://www.bbc.co.uk/news/articles/c6m25zg88k45o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 15 Nov 2026 18:08:20 GMT",
+      "desc": "The Ukrainian president says restrictions are still in place and making it difficult to stop Russian attacks."
+    },
+    {
       "title": "Iran targets US military base in Bahrain with drone attack",
       "link": "https://www.bbc.co.uk/news/articles/cqn4e2py48kwo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 15 Nov 2026 13:42:58 GMT",
@@ -23,12 +29,6 @@
       "link": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 15 Nov 2026 14:56:21 GMT",
       "desc": "The Nvidia scandal has raised questions over whether advanced AI chips ended up in China, despite US restrictions."
-    },
-    {
-      "title": "Israel kills Hamas commander in strike on Gaza camp, officials say",
-      "link": "https://www.bbc.co.uk/news/articles/cqrkg4r6mg7xo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 15 Nov 2026 08:17:41 GMT",
-      "desc": "Both Hamas and IDF officials confirm the death of Samir Abu Younis, commander of the Rafah Brigade."
     }
   ],
   "koreaNews": [
@@ -39,16 +39,16 @@
       "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Foreign Policy"
     },
     {
-      "title": "South Korea’s Economy Surges 1.0% on AI Chip Boom But Domestic Demand Lags Behind - Vocal",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbE9NWHdNMDJDTi1KdnRWQWxBcE9QM2ljZTY0WEtUdTczRloxbHdMZHFBVld4dEdvR0wtd3V0MzlYNEhhc0lpcUJKc3pvUldkRnBtQTgyakxrVlVoR1BjTG0zZnBOWlVYZkJreU50WTVBTm92cE5XdGhpb1g4NmdEOUwtTFpNMEo2QmMzYURjd0t0em5KcGN2akd0aHVLN0k4dUlYV1l0c0dJQQ?oc=5",
-      "date": "Sun, 15 Nov 2026 10:36:11 GMT",
-      "desc": "South Korea’s Economy Surges 1.0% on AI Chip Boom But Domestic Demand Lags Behind&nbsp;&nbsp;Vocal"
-    },
-    {
       "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
       "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
       "date": "Mon, 26 Oct 2026 07:00:00 GMT",
       "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "South Korea’s Economy Surges 1.0% on AI Chip Boom But Domestic Demand Lags Behind - Vocal",
+      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbE9NWHdNMDJDTi1KdnRWQWxBcE9QM2ljZTY0WEtUdTczRloxbHdMZHFBVld4dEdvR0wtd3V0MzlYNEhhc0lpcUJKc3pvUldkRnBtQTgyakxrVlVoR1BjTG0zZnBOWlVYZkJreU50WTVBTm92cE5XdGhpb1g4NmdEOUwtTFpNMEo2QmMzYURjd0t0em5KcGN2akd0aHVLN0k4dUlYV1l0c0dJQQ?oc=5",
+      "date": "Sun, 15 Nov 2026 10:36:11 GMT",
+      "desc": "South Korea’s Economy Surges 1.0% on AI Chip Boom But Domestic Demand Lags Behind&nbsp;&nbsp;Vocal"
     },
     {
       "title": "Netflix Korea’s anniversary exposes the fragile economics behind the global rise of K-dramas - Milwaukee Independent",
@@ -75,10 +75,10 @@
       "desc": "Samsung, SK hynix account for more than one-fourth of Korea's stock market credit loans&nbsp;&nbsp;Korea JoongAng Daily"
     },
     {
-      "title": "Samsung’s $34 Billion HBM Bet Raises Memory Glut Risks - 24/7 Wall St.",
-      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxORFNZMXJVZmhsTEVYZUlPR2h0Q3E3QXc1UmJ5ZGsxd1FudzlKTmlNVnAzY0hBLUo2bWZSX29oeWZXOWxCZlRFWUo0cm1IT0pMVk1NZ1NYV0hvcjRNTlpPYTlTZEV6RUVpSlRwYkc1RF9pajBnMzBWUGh5YzE1VUtjNkRoSmJaSnMxdHhSSktMVUw1TkkyVDBIcUh5N2Y?oc=5",
-      "date": "Sun, 15 Nov 2026 01:08:00 GMT",
-      "desc": "Samsung’s $34 Billion HBM Bet Raises Memory Glut Risks&nbsp;&nbsp;24/7 Wall St."
+      "title": "Even If Nvidia Stumbles, HBM Won't — Why Samsung and SK Hynix Are Smiling - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9nMmdDdzJtU3BiWGRQV2xpWlhSZmxXUFhUQ2tkZ0hOb0NUX0FGcWVoM0ZDb2MtcHlHeDZzVFV5UEVnZ1FyVDhQYlpGOW9lbndPS2FlX0pEd1RobHhuU1hZNTFmSWJYNVpEbGNmNkx3S0JtY1NvakE?oc=5",
+      "date": "Sun, 15 Nov 2026 18:05:00 GMT",
+      "desc": "Even If Nvidia Stumbles, HBM Won't — Why Samsung and SK Hynix Are Smiling&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1336.2,
-      "change": -0.06,
-      "pct": -0.0,
+      "price": 1334.98,
+      "change": -1.28,
+      "pct": -0.1,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-15 16:11 UTC"
+  "updatedAt": "2026-11-15 19:29 UTC"
 }
