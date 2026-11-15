@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>3D Random Walk Under Gravity: Interactive</title>
+<style>
+:root{--bg:#f5f7f9;--card:#fff;--ink:#14202e;--mute:#5d6b7a;--line:#d8dee5;--data:#1c6aa8;--theory:#c27a00;--tag:#e6eef6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f161d;--card:#18212b;--ink:#e6ecf2;--mute:#97a5b3;--line:#2b3744;--data:#59a9e6;--theory:#f0b04a;--tag:#223142;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f161d;--card:#18212b;--ink:#e6ecf2;--mute:#97a5b3;--line:#2b3744;--data:#59a9e6;--theory:#f0b04a;--tag:#223142;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:14px 14px 40px}
+h1{font-size:1.25rem;margin:0 0 10px;letter-spacing:-.01em}
+.lead{color:var(--mute);margin:0 0 10px;max-width:70ch}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+button{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--data);border-color:var(--data);color:#fff}
+button:focus-visible,input:focus-visible{outline:2px solid var(--theory);outline-offset:2px}
+.row{display:flex;gap:10px 14px;flex-wrap:wrap;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:12px}
+.row label{display:flex;gap:8px;align-items:center;font-size:.9rem}
+.row output{min-width:2.6em;font-variant-numeric:tabular-nums;color:var(--mute)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.box h2{font-size:.92rem;margin:0 0 6px;font-weight:600}
+canvas{width:100%;height:220px;display:block}
+canvas.sv{height:400px;touch-action:none;cursor:grab}
+table{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums}
+td,th{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}
+td:first-child,th:first-child{text-align:left}
+th{color:var(--mute);font-weight:500}
+.about{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}
+.about h2{font-size:1rem;margin:0 0 6px}
+.note{color:var(--ink);font-size:.92rem;margin:0 0 12px;max-width:80ch}
+details{margin-top:12px;font-size:.86rem;color:var(--mute)}
+summary{cursor:pointer;color:var(--ink)}
+@media(max-width:760px){
+ main{padding:10px 10px 32px}
+ .grid{grid-template-columns:1fr}
+ canvas.sv{height:300px}
+ nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+ nav button{white-space:nowrap;flex:0 0 auto}
+ .row label{flex:1 1 100%}
+ .row label input[type=range]{flex:1;min-width:0}
+}
+</style></head><body><main>
+<h1>3D Random Walk Under Gravity</h1>
+<nav id="tabs"></nav>
+<div class="row" id="ctl"></div>
+<div class="grid">
+<div class="box" style="grid-column:1/-1"><h2 id="h3d">3D view: drag to rotate (the yellow plane is the floor; the lines are the trajectories of 6 sailors)</h2><canvas id="sv" class="sv"></canvas></div>
+<div class="box"><h2 id="h1"></h2><canvas id="p1"></canvas></div>
+<div class="box"><h2 id="h2"></h2><canvas id="p2"></canvas></div>
+<div class="box" style="grid-column:1/-1"><h2>Measured vs. theory <span id="nv" style="color:var(--mute);font-weight:400"></span></h2><table><thead><tr><th>Quantity</th><th>Measured</th><th>Theory</th></tr></thead><tbody id="tb"></tbody></table></div>
+</div>
+<section class="about">
+<h2>About this tab</h2>
+<p class="note" id="note"></p>
+<p class="lead">This page lets you walk the Rules A, B, and C of the final article and the central gravity of Section 9 yourself. The theory curves are exact results; whether the number of steps is physical time depends on the rule. Whenever you change a control, 4,000 sailors start walking again from the beginning.</p>
+<details><summary>Basis and sources</summary>
+<p>Exponential stationary distribution at a reflecting floor: Harrison (1985); sedimentation equilibrium is the Laplace–Perrin law that Perrin confirmed. The detailed balance of Rules A and B and the tilt y = g/2 of B are the construction of Section 2 of the article. The scale height of surface air (288 K) is 8.43 km, and the height at which the density falls tenfold is 19.42 km.</p>
+<p>Absorbing floor: inverse Gaussian first-passage time (Schrödinger, Smoluchowski 1915). The discrete-time correction 0.5826 is the value of Broadie–Glasserman–Kou (1997) and holds <b>only for Gaussian increments</b>; this mode uses Gaussian increments, so it applies. For the uniform spherical walk it is 0.516σ (0.298).</p>
+<p>Return: the g = 0 limit 1 − 1/(2u − 1) = 0.50806 (u = 1.51639) follows from the half-space folding correspondence (the derivation of Section 8.5 of the article). The recurrence for g &gt; 0 follows from the conditional-independence decomposition in discrete time (Section 8.2); since p<sub>n</sub>(0) goes to 0, the return probability is 1 but the mean return time is infinite, that is, null recurrence.</p>
+<p>Central gravity (Section 9 of the article): only Rule A (Metropolis) has exact detailed balance, so this tab uses Rule A. For the constant attraction U = g·r, the radial distribution is the gamma distribution (g³/2)r²e<sup>−gr</sup> (mean 3h, mode 2h), and for the spring attraction U = b·r²/2 it is the Maxwell distribution. By Kac's lemma (E[T] = 1/π(0) for a positive recurrent chain), the mean return time on the lattice tab is Z = Σ e<sup>−g|x|</sup> (Section 9.4), and the spectral interpretation of the relaxation time (hydrogen-atom levels) is a result in the diffusive limit (Section 9.5).</p><p>Newtonian tab (Section 9.6 of the article): numerical integration of the shell weight r²e<sup>−Λ(1−R/r)</sup> on [R, X·R] with an isothermal Boltzmann factor. Λ = 755 for Earth (R = 6371 km, scale height 8.43 km). The Moon values 34, 39, and 25 are the article's own calculations from NASA data for 15 C air, 250 K, and 390 K. This is a closed-region yardstick under a constant-temperature assumption and does not replace thermal-escape (Jeans) physics.</p></details>
+</section>
+<script>
+(()=>{const $=s=>document.querySelector(s),W=4000,TAU=6.2831853,CB=.5826,LIM=.50806;
+const MD={refl:['Equilibrium: floor and ceiling',[['g','Gravity g',.05,1.5,.05,.25],['H','Ceiling height H (40 = none)',2,40,1,40]]],
+lat:['Lattice walk',[['g','Gravity g',.05,1.5,.05,.5]]],
+abs:['Absorbing floor',[['v','Falling drift v',.05,1,.05,.3],['h','Starting height h₀',5,40,1,20]]],
+ret:['Return probability',[['g','Gravity g (0 = none)',0,1.5,.1,.5]]],
+cen:['Central gravity',()=>P.cen.pot==='L'?[['g','Attraction strength g',.1,2,.05,.5]]:[['b','Spring constant b',.02,1,.02,.25]]],
+cret:['Central return (Kac)',[['g','Attraction strength g',.5,2,.1,1]]],
+new:['Newtonian: Earth vs Moon',[]]};
+const P={refl:{g:.25,H:40},lat:{g:.5},abs:{v:.3,h:20},ret:{g:.5},cen:{pot:'L',g:.5,b:.25},cret:{g:1,Z:0},new:{L:34,e:3}};
+let mode='refl',rule='A',n=0,cnt=0,sid=1,run=true,sp=20,r,TS=[],ac=0,hx=0,sT=0,c1=0,Zc={g:0,v:0};const HT=new Float32Array(31),AG=new Float32Array(4000);
+const X=new Float32Array(W),Y=new Float32Array(W),Z=new Float32Array(W),A=new Uint8Array(W),T=new Float32Array(W);
+const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const rng=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const gs=()=>Math.sqrt(-2*Math.log(r()||1e-12))*Math.cos(TAU*r());
+const erfc=x=>{const z=Math.abs(x),t=1/(1+.5*z),y=t*Math.exp(-z*z-1.26551223+t*(1.00002368+t*(.37409196+t*(.09678418+t*(-.18628806+t*(.27886807+t*(-1.13520398+t*(1.48851587+t*(-.82215223+t*.17087277)))))))));return x>=0?y:2-y};
+const Ph=x=>.5*erfc(-x/Math.SQRT2);
+const igc=(t,m,l)=>{if(t<=0)return 0;const a=Math.sqrt(l/t);return Ph(a*(t/m-1))+Math.exp(2*l/m)*Ph(-a*(t/m+1))};
+const igp=(t,m,l)=>t<=0?0:Math.sqrt(l/(TAU*t*t*t))*Math.exp(-l*(t-m)*(t-m)/(2*m*m*t));
+const f=(x,d=3)=>(+x).toFixed(d);
+function ein(g,rl){const N=4000;let v=0,m2=0;const y=rl==='W'?g:g/2,nm=y/(2*Math.sinh(y));
+ for(let i=0;i<N;i++){const c=-1+(i+.5)*2/N;let wt;if(rl==='A')wt=Math.min(1,Math.exp(-g*c))/N;else wt=nm*Math.exp(-y*c)*2/N;v+=c*wt;m2+=c*c*wt}
+ return -v/((m2-v*v)/2)}
+function Zsum(g){if(Zc.g===g)return Zc.v;const R=Math.ceil(24/g);let s=0;for(let x=-R;x<=R;x++)for(let y=-R;y<=R;y++)for(let z=-R;z<=R;z++)s+=Math.exp(-g*Math.sqrt(x*x+y*y+z*z));Zc={g,v:s};return s}
+function reset(){const q=P[mode];r=rng(sid*7919+13);n=0;if(mode==='new'){TS=[];draw();return}cnt=0;TS=[];ac=0;hx=0;sT=0;c1=0;HT.fill(0);AG.fill(0);A.fill(1);T.fill(0);if(mode==='cret')q.Z=Zsum(q.g);
+ for(let i=0;i<W;i++){X[i]=0;Y[i]=0;Z[i]=mode==='abs'?q.h:(mode==='ret'||mode==='cen'||mode==='cret')?0:mode==='lat'?Math.floor(20*r()):(q.H<40?q.H:20)*r()}draw()}
+function adv(){const q=P[mode];n++;
+ if(mode==='abs'){for(let i=0;i<W;i++)if(A[i]){X[i]+=gs();Y[i]+=gs();Z[i]+=-q.v+gs();if(Z[i]<=0){Z[i]=0;A[i]=0;T[i]=n;cnt++}}}
+ else if(mode==='lat'||mode==='ret'){const wu=Math.exp(-q.g/2),tot=4+wu+1/wu;let h=0;
+  for(let i=0;i<W;i++){if(mode==='ret'&&!A[i])continue;const u=r()*tot;
+   if(u<4)h++;if(u<1)X[i]++;else if(u<2)X[i]--;else if(u<3)Y[i]++;else if(u<4)Y[i]--;else if(u<4+wu)Z[i]++;else if(Z[i]>0)Z[i]--;
+   if(mode==='ret'&&!X[i]&&!Y[i]&&!Z[i]){A[i]=0;cnt++}}
+  hx=hx?0.95*hx+0.05*h/W:h/W}
+ else if(mode==='cen'){const L=q.pot==='L',g=q.g,b=q.b;let na=0,hh=0;
+   for(let i=0;i<W;i++){const c=2*r()-1,s=Math.sqrt(1-c*c),p=TAU*r(),nx=X[i]+s*Math.cos(p),ny=Y[i]+s*Math.sin(p),nz=Z[i]+c,
+    o2=X[i]*X[i]+Y[i]*Y[i]+Z[i]*Z[i],n2=nx*nx+ny*ny+nz*nz,dU=L?g*(Math.sqrt(n2)-Math.sqrt(o2)):.5*b*(n2-o2);
+    if(dU<=0||r()<Math.exp(-dU)){X[i]=nx;Y[i]=ny;Z[i]=nz;na++}}
+   ac=ac?0.95*ac+0.05*na/W:na/W}
+  else if(mode==='cret'){const g=q.g,D=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+   for(let i=0;i<W;i++){AG[i]++;const d=D[Math.floor(r()*6)],nx=X[i]+d[0],ny=Y[i]+d[1],nz=Z[i]+d[2],
+    dU=g*(Math.sqrt(nx*nx+ny*ny+nz*nz)-Math.sqrt(X[i]*X[i]+Y[i]*Y[i]+Z[i]*Z[i]));
+    if(dU<=0||r()<Math.exp(-dU)){X[i]=nx;Y[i]=ny;Z[i]=nz}
+    if(!X[i]&&!Y[i]&&!Z[i]){sT+=AG[i];cnt++;if(AG[i]===1)c1++;HT[Math.min(AG[i],31)-1]++;AG[i]=0}}}
+  else{const H=q.H>=40?1e9:q.H,y=rule==='W'?q.g:q.g/2;let na=0,hh=0;
+  for(let i=0;i<W;i++){let c,u=0;if(rule!=='A'){const v=r();c=-Math.log(Math.exp(y)-v*(Math.exp(y)-Math.exp(-y)))/y}else{c=2*r()-1;u=r()}
+   const s=Math.sqrt(1-c*c),p=TAU*r(),nz=Z[i]+c;if(nz<0||nz>H)continue;
+   if(rule!=='A'||c<=0||u<Math.exp(-q.g*c)){X[i]+=s*Math.cos(p);Y[i]+=s*Math.sin(p);Z[i]=nz;na++;hh+=s*s}}
+  ac=ac?0.95*ac+0.05*na/W:na/W;hx=hx?0.95*hx+0.05*hh/W:hh/W}
+ if(mode==='abs'||mode==='ret')TS.push(cnt/W);else if(mode==='cret')TS.push(cnt?sT/cnt:0);else if(mode==='cen'){let s=0;for(let i=0;i<W;i++)s+=Math.sqrt(X[i]*X[i]+Y[i]*Y[i]+Z[i]*Z[i]);TS.push(s/W)}else{let s=0;for(let i=0;i<W;i++)s+=Z[i];TS.push(s/W)}}
+function plot(c,o){const d=devicePixelRatio||1,b=c.getBoundingClientRect(),w=b.width,h=b.height;c.width=Math.round(w*d);c.height=Math.round(h*d);
+ const g=c.getContext('2d');g.setTransform(d,0,0,d,0,0);const m=[44,8,8,22],pw=w-m[0]-m[1],ph=h-m[2]-m[3],
+ PX=v=>m[0]+(v-o.x0)/(o.x1-o.x0)*pw,PY=v=>m[2]+ph-(Math.min(Math.max(v,o.y0),o.y1)-o.y0)/(o.y1-o.y0)*ph;
+ g.font='12px sans-serif';g.strokeStyle=col('--line');g.fillStyle=col('--mute');g.lineWidth=1;
+ g.textAlign='right';g.textBaseline='middle';[o.y0,(o.y0+o.y1)/2,o.y1].forEach(v=>{g.beginPath();g.moveTo(m[0],PY(v));g.lineTo(w-m[1],PY(v));g.stroke();g.fillText(o.yf(v),m[0]-5,PY(v))});
+ g.textAlign='center';g.textBaseline='top';[o.x0,(o.x0+o.x1)/2,o.x1].forEach(v=>g.fillText(o.xf(v),PX(v),m[2]+ph+5));
+ g.fillStyle=col('--data');g.globalAlpha=.6;(o.bars||[]).forEach(a=>{const y=PY(a[2]);g.fillRect(PX(a[0])+.5,y,Math.max(1,PX(a[1])-PX(a[0])-1),m[2]+ph-y)});g.globalAlpha=1;
+ (o.lines||[]).forEach(k=>{g.strokeStyle=col(k.c);g.lineWidth=2;g.setLineDash(k.d||[]);g.beginPath();k.p.forEach((p,i)=>i?g.lineTo(PX(p[0]),PY(p[1])):g.moveTo(PX(p[0]),PY(p[1])));g.stroke();g.setLineDash([])})}
+const fn=(F,a,b)=>{const p=[];for(let i=0;i<=200;i++){const x=a+(b-a)*i/200;p.push([x,F(x)])}return p};
+const ser=(a,c,off=0)=>{const s=Math.max(1,Math.floor(a.length/500)),p=[];for(let i=0;i<a.length;i+=s)p.push([i+1+off,a[i]]);return{p,c}};
+const SX=new Float32Array(W),SY=new Float32Array(W),SB=new Uint8Array(W);let TR=[],rot=.7,tilt=.5,ext=10,drag=null;
+function side(zm){const c=$('#sv'),d=devicePixelRatio||1,b=c.getBoundingClientRect(),w=b.width,h=b.height;
+ if(!side.i){side.i=1;c.onpointerdown=e=>{drag=[e.clientX,e.clientY];c.setPointerCapture(e.pointerId)};c.onpointermove=e=>{if(!drag)return;rot+=(e.clientX-drag[0])*.008;tilt=Math.max(-.2,Math.min(1.45,tilt+(e.clientY-drag[1])*.006));drag=[e.clientX,e.clientY];draw()};c.onpointerup=c.onpointercancel=()=>{drag=null}}
+ c.width=Math.round(w*d);c.height=Math.round(h*d);const g=c.getContext('2d');g.setTransform(d,0,0,d,0,0);
+ if(n<(side.n||0))TR=[];side.n=n;
+ if(side.pn!==n){side.pn=n;for(let i=0;i<6;i++){(TR[i]=TR[i]||[]).push([X[i],Y[i],Z[i]]);if(TR[i].length>(mode==='cen'||mode==='cret'?60:150))TR[i].shift()}}
+ if(!drag&&run&&!matchMedia('(prefers-reduced-motion: reduce)').matches)rot+=.004;
+ const cm=mode==='cen'||mode==='cret';let mx=cm?1:8;for(let i=0;i<400;i++){mx=Math.max(mx,Math.abs(X[i]),Math.abs(Y[i]));if(cm)mx=Math.max(mx,Math.abs(Z[i]))}ext+=(Math.max(mx*1.1,zm*.9)-ext)*.1;
+ const s=Math.min(w,h*1.3)/2*.85/ext,cx=w/2,cy=h*.55,cr=Math.cos(rot),sr=Math.sin(rot),ct=Math.cos(tilt),st=Math.sin(tilt),zc=cm?0:zm*.35;
+ const pr=(x,y,z)=>{const a=x*cr-y*sr,bb=x*sr+y*cr,dd=bb*ct-(z-zc)*st,q=1/(1+dd/(ext*6));return[cx+a*s*q,cy-((z-zc)*ct+bb*st)*s*q,dd,q]};
+ const mute=col('--mute'),th=col('--theory');g.font='12px sans-serif';g.lineWidth=1;
+ g.strokeStyle=mute;g.fillStyle=mute;g.globalAlpha=.55;[[1,0,0,'x'],[0,1,0,'y'],[0,0,1,'z']].forEach(a=>{const L=ext*.6,o=pr(0,0,0),p=pr(a[0]*L,a[1]*L,a[2]*(cm||L<zm?L:zm));g.beginPath();g.moveTo(o[0],o[1]);g.lineTo(p[0],p[1]);g.stroke();g.fillText(a[3],p[0]+4,p[1]-4)});
+ const plane=(z,al)=>{const e=ext,q=[pr(-e,-e,z),pr(e,-e,z),pr(e,e,z),pr(-e,e,z)];g.fillStyle=th;g.strokeStyle=th;g.globalAlpha=al;g.beginPath();q.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();g.fill();g.globalAlpha=.6;g.stroke()};
+  if(!cm){plane(0,.16);if(mode==='refl'&&P.refl.H<40)plane(P.refl.H,.07)}
+  else{g.strokeStyle=th;g.fillStyle=th;const o=pr(0,0,0);g.globalAlpha=1;g.beginPath();g.arc(o[0],o[1],4,0,TAU);g.fill()}
+ for(let i=0;i<W;i++){const p=pr(X[i],Y[i],Z[i]);SX[i]=p[0];SY[i]=p[1];SB[i]=Math.max(0,Math.min(3,Math.floor((.5-p[2]/(ext*3.6))*4)))}
+ g.fillStyle=col('--data');for(let k=0;k<4;k++){g.globalAlpha=.2+.2*k;g.beginPath();for(let i=0;i<W;i++)if(SB[i]===k&&(cm||Z[i]<zm*1.6))g.rect(SX[i]-1,SY[i]-1,2,2);g.fill()}
+ g.globalAlpha=cm?.4:.9;g.strokeStyle=th;g.fillStyle=th;g.lineWidth=1.3;TR.forEach(t=>{g.beginPath();t.forEach((v,i)=>{const p=pr(v[0],v[1],v[2]);i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])});g.stroke();const v=t[t.length-1],p=pr(v[0],v[1],v[2]);g.beginPath();g.arc(p[0],p[1],3.4*p[3],0,TAU);g.fill()});
+  const R0=side.R0||0;if(cm&&R0>0){g.globalAlpha=1;g.lineWidth=2.6;g.setLineDash([8,5]);g.strokeStyle='#d1495b';[[0,1],[0,2],[1,2]].forEach(([u,v])=>{g.beginPath();for(let k=0;k<=96;k++){const an=TAU*k/96,pt=[0,0,0];pt[u]=R0*Math.cos(an);pt[v]=R0*Math.sin(an);const p=pr(pt[0],pt[1],pt[2]);k?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])}g.stroke()});g.setLineDash([])}
+  g.globalAlpha=1}
+function draw(){const q=P[mode],rows=[];let o1,o2,t1,t2,zm=10,nt=Math.max(50,n);
+ side.R0=0;let sz=0;for(let i=0;i<W;i++)sz+=Z[i];const mz=sz/W;
+ const tsPlot=(eq)=>{const a=TS.length?TS:[0],mx=Math.max(eq,...a.slice(-2000))*1.1||1;return{x0:0,x1:nt,y0:0,y1:mx,xf:v=>Math.round(v),yf:v=>v.toFixed(1),lines:[{p:[[0,eq],[nt,eq]],c:'--theory',d:[5,4]},ser(TS,'--data')]}};
+ if(mode==='refl'){const g=q.g,H=q.H>=40?1e9:q.H,Zn=q.H>=40?1:1-Math.exp(-g*H),hi=Math.min(H,6/g),eq=1/g-(q.H>=40?0:H/(Math.exp(g*H)-1));zm=Math.min(H,Math.max(8/g,4));
+  const bw=hi/36,cn=new Array(36).fill(0);for(let i=0;i<W;i++){const k=Math.floor(Z[i]/bw);if(k>=0&&k<36)cn[k]++}
+  t1='Height distribution (theory: '+(q.H>=40?'g·e^(−gz)':'truncated exponential')+')';t2='Mean height ⟨z⟩ vs. steps (dashed: equilibrium value)';
+  const F=x=>g*Math.exp(-g*x)/Zn;o1={x0:0,x1:hi,y0:0,y1:F(0)*1.15,xf:v=>v.toFixed(1),yf:v=>v.toFixed(2),bars:cn.map((k,i)=>[i*bw,(i+1)*bw,k/(W*bw)]),lines:[{p:fn(F,0,hi),c:'--theory'}]};o2=tsPlot(eq);
+  rows.push(['Mean height ⟨z⟩',f(mz,2),f(eq,2)],['Step acceptance rate',n?f(ac):'—',rule!=='A'?'Rejected only at the floor':'—'],['Horizontal move/step',n?f(hx):'—','Free 0.667'],['Einstein check −v/D (exact, no floor)',f(ein(g,rule),3),f(g,3)+' (= g)']);
+  $('#note').textContent='Rule '+rule+': '+(rule==='A'?'uniform spherical proposal with Metropolis acceptance. A rejection also erases the horizontal move, so the larger g is, the slower the horizontal spreading (Section 7.2 of the article).':rule==='B'?'a step whose direction is drawn tilted downward, so only proposals below the floor are rejected (y = g/2). It gives the same equilibrium with a smaller loss of horizontal spreading.':'the WRONG rule of Section 2.7 of the article: the same tilted step, but with the tilt set to y = g instead of y = g/2. Look at the Einstein check row: the sailor falls at about twice the speed that gravity g demands (−v/D ≈ 2g), so the histogram piles up in a layer about half as thick as the theory curve and the mean height comes out near half of the equilibrium value. The shape of the rule looks plausible, and only the speedometer and the equilibrium expose the error.')+' Here one step corresponds to about '+f(8.43*g,2)+' km (for surface air).'}
+ else if(mode==='lat'){const g=q.g,ro=Math.exp(-g),mean=ro/(1-ro),K=Math.min(40,Math.ceil(5*mean)+3),c=new Array(K+1).fill(0);zm=Math.max(6,Math.min(30,5*mean+3));let z0=0;
+  for(let i=0;i<W;i++){if(Z[i]<=K)c[Z[i]]++;if(Z[i]===0)z0++}
+  t1='Fraction in layer k (theory: geometric (1−ρ)ρ^k)';t2='Mean height vs. steps (dashed: ρ/(1−ρ))';
+  o1={x0:-.5,x1:K+.5,y0:0,y1:(1-ro)*1.15,xf:v=>Math.round(v),yf:v=>v.toFixed(2),bars:c.map((k,i)=>[i-.5,i+.5,k/W]),lines:[{p:Array.from({length:K+1},(_,k)=>[k,(1-ro)*Math.pow(ro,k)]),c:'--theory'}]};o2=tsPlot(mean);
+  rows.push(['Mean height ⟨k⟩',f(mz),f(mean)],['Bottom-layer fraction',f(z0/W),f(1-ro)],['Horizontal step fraction',n?f(hx):'—',f(4/(4+2*Math.cosh(g/2)))]);
+  $('#note').textContent='This is lattice Rule C. The ratio of the up and down weights is e^(−g), and a downward step at the floor stays in place. The mean height is about half a cell below the continuous value 1/g.'}
+ else if(mode==='abs'){const he=q.h+CB,mu=he/q.v,la=he*he,hi=Math.min(20000,3*mu),bw=hi/40,cn=new Array(40).fill(0);zm=q.h*1.3;let sm=0;
+  for(let i=0;i<W;i++)if(!A[i]){sm+=T[i];const k=Math.floor(T[i]/bw);if(k>=0&&k<40)cn[k]++}
+  let ym=0;for(let i=0;i<=200;i++)ym=Math.max(ym,igp(hi*i/200,mu,la));
+  t1='Time of first touching the floor (theory: inverse Gaussian)';t2='Fraction landed vs. steps (dashed: inverse Gaussian CDF)';
+  o1={x0:0,x1:hi,y0:0,y1:ym*1.2,xf:v=>Math.round(v),yf:v=>v.toExponential(0),bars:cn.map((k,i)=>[i*bw,(i+1)*bw,k/(W*bw)]),lines:[{p:fn(t=>igp(t,mu,la),0,hi),c:'--theory'}]};
+  o2={x0:0,x1:nt,y0:0,y1:1.05,xf:v=>Math.round(v),yf:v=>v.toFixed(1),lines:[{p:fn(t=>igc(t,mu,la),0,nt),c:'--theory',d:[5,4]},ser(TS,'--data')]};
+  rows.push(['Fraction landed',f(cnt/W),f(igc(n,mu,la))],['Mean time of landed sailors',cnt?f(sm/cnt,1):'—',f(mu,1)+' (when all have landed)'],['Effective height h₀ + 0.5826','—',f(he,2)]);
+  $('#note').textContent='This is a walk with Gaussian increments (σ = 1). A discrete-time step jumps over the barrier, so the effective height must be raised by 0.5826, and this value belongs to Gaussian increments. For the uniform spherical walk it is 0.298.'}
+  else if(mode==='cen'){const L=q.pot==='L',g=q.g,b=q.b,sg=1/Math.sqrt(b),hi=L?9/g:4.6*sg,bw=hi/36,cn=new Array(36).fill(0);let s1=0,s2=0,tl=0;
+   for(let i=0;i<W;i++){const rr=Math.sqrt(X[i]*X[i]+Y[i]*Y[i]+Z[i]*Z[i]);s1+=rr;s2+=rr*rr;if(L?rr*g>3:rr>2*sg)tl++;const k=Math.floor(rr/bw);if(k>=0&&k<36)cn[k]++}
+   const pdf=L?x=>g*g*g*x*x*Math.exp(-g*x)/2:x=>Math.sqrt(2/Math.PI)*Math.pow(b,1.5)*x*x*Math.exp(-b*x*x/2);
+   let ym=0;for(let i=0;i<=200;i++)ym=Math.max(ym,pdf(hi*i/200));
+   const em=L?3/g:Math.sqrt(8/(Math.PI*b)),e2=L?12/(g*g):3/b,et=L?Math.exp(-3)*8.5:erfc(Math.SQRT2)+Math.sqrt(2/Math.PI)*2*Math.exp(-2);
+   zm=L?4/g:3.2*sg;side.R0=L?2/g:Math.SQRT2*sg;
+   t1='Radial distribution (theory: '+(L?'gamma (g³/2)r²e^(−gr)':'Maxwell')+')';t2='Mean radius ⟨r⟩ vs. steps (dashed: equilibrium value)';
+   o1={x0:0,x1:hi,y0:0,y1:ym*1.15,xf:v=>v.toFixed(1),yf:v=>v.toFixed(2),bars:cn.map((k,i)=>[i*bw,(i+1)*bw,k/(W*bw)]),lines:[{p:fn(pdf,0,hi),c:'--theory'}]};o2=tsPlot(em);
+   rows.push(['Mean radius ⟨r⟩',f(s1/W,2),f(em,2)],['⟨r²⟩',f(s2/W,2),f(e2,2)],[L?'P(r > 3h)':'P(r > 2σ)',f(tl/W,4),f(et,4)],['Step acceptance rate',n?f(ac):'—','—'],['Relaxation time 1/gap (steps)','—',f(L?32/(g*g):6/b,0)+' (diffusive limit)']);
+   $('#note').textContent=(L?'A constant-magnitude attraction (U = g·r) with Rule A (Metropolis). All sailors start at the center and spread into a shell near radius 2h = 2/g. The density per volume is highest at the center, but because of the area of the shell (r²) the probability is maximal at 2h (Section 9.2 of the article). The red dashed circles mark this most probable radius. The relaxation time 32/g² is a diffusive-limit value that comes from the hydrogen-atom spectral gap 3Dg²/16 of the Fourier–Planck operator (Section 9.5), and this simulation does not resolve the slow tail.':'A spring attraction (U = b·r²/2). The three components become independent Gaussians (σ² = 1/b), so the radius follows a Maxwell distribution, and the free walk\'s E[R²] = n saturates at 3/b in this case (Section 9.3 of the article). The red dashed circles mark the most probable radius √2·σ. The relaxation time 6/b is the diffusive limit; because of the finite step size it actually takes a little longer.')}
+  else if(mode==='new'){const L=q.L,X=Math.pow(10,q.e),lx=Math.log(X),N=1500;
+ const wf=(u,Lm)=>Math.exp(3*u-Lm*(1-Math.exp(-u)));
+ const seg=(Lm,u0,u1,M)=>{let t=0;const h=(u1-u0)/M;for(let i=0;i<=M;i++)t+=wf(u0+h*i,Lm)*((i===0||i===M)?.5:1);return t*h};
+ const frac=Lm=>{const a=seg(Lm,Math.LN2,lx,N),b=seg(Lm,0,Math.LN2,400);return a/(a+b)};
+ const fr=frac(L);let lo=.1,hi=200;for(let k=0;k<40;k++){const mid=(lo+hi)/2;if(frac(mid)>.5)lo=mid;else hi=mid}const Lc=(lo+hi)/2;
+ const c1=[];let mxv=1e-300;for(let i=0;i<=300;i++){const u=lx*i/300,v=wf(u,L);mxv=Math.max(mxv,v);c1.push([u,v])}c1.forEach(p=>p[1]/=mxv);
+ const c2=[];for(let Lm=0;Lm<=60;Lm++)c2.push([Lm,frac(Lm)]);
+ t1='Gas per shell, per ln r (dashed: r = 2R)';t2='Fraction of gas beyond 2R vs. Λ (orange: Λ_c, blue: current Λ)';
+ o1={x0:0,x1:lx,y0:0,y1:1.05,xf:v=>{const rr=Math.exp(v);return rr>=100?String(Math.round(rr)):rr.toFixed(1)},yf:v=>v.toFixed(1),lines:[{p:c1,c:'--data'},{p:[[Math.LN2,0],[Math.LN2,1.05]],c:'--theory',d:[5,4]}]};
+ o2={x0:0,x1:60,y0:0,y1:1.05,xf:v=>Math.round(v),yf:v=>v.toFixed(1),lines:[{p:c2,c:'--data'},...(Lc<=60?[{p:[[Lc,0],[Lc,1.05]],c:'--theory',d:[5,4]}]:[]),...(L<=60?[{p:[[L,0],[L,1.05]],c:'--mute',d:[2,3]}]:[])]};
+ rows.push(['Λ = R / (scale height)',String(L),'Earth about 755 for 15 C air'],['Region size X = R_max / R',String(+X.toPrecision(3)),'Set by the slider'],['Gas beyond 2R',fr<.001?fr.toExponential(2):f(fr,4),fr>.5?'More than half has spread out':'Mostly near the body'],['Threshold Λ_c (half beyond 2R)',f(Lc,1),'Article: 8.8, 15.4, 22.6, 29.8 for X = 10 to 10000'],['Λ / Λ_c',f(L/Lc,1),L>Lc?'Bound to the body':'Spreads as in open space']);
+ $('#note').textContent='This tab does no random walk. It evaluates the closed-region equilibrium of Section 9.6 of the article by numerical integration: gas in Newtonian gravity at one temperature, reflected at the surface R and at a wall at R_max = X·R. The weight of a shell is r²·e^(−Λ(1−R/r)), and Λ = R / (scale height) = m·g₀·R/kT. When Λ is well above the threshold Λ_c, which grows like 3 ln X, the gas stays bound to the body; below it, the gas spreads through the region as in open space. Earth (Λ about 755) is more than 25 times above the threshold. With the same 15 C air the Moon gives about 34, close to the threshold, and a hot lunar day (390 K, Λ about 25) moves it closer still. This is a yardstick for comparing Earth and the Moon with the same mathematics, not the real reason the Moon lost its atmosphere: that is decided by the escape of the thermal-speed tail (Jeans, 1916) and by winds.'}
+ else if(mode==='cret'){const g=q.g,Zt=q.Z||Zsum(g),K=30;zm=4/g+2;
+   let ymx=1e-9;for(let i=0;i<=K;i++)ymx=Math.max(ymx,cnt?HT[i]/cnt:0);
+   t1='Mean return time vs. steps (dashed: Z = Σ e^(−g|x|))';t2='Distribution of return time T (last bin is T ≥ 31)';
+   o1=tsPlot(Zt);o2={x0:.5,x1:K+1.5,y0:0,y1:ymx*1.15,xf:v=>Math.round(v),yf:v=>v.toFixed(2),bars:Array.from({length:K+1},(_,i)=>[i+.5,i+1.5,cnt?HT[i]/cnt:0]),lines:[]};
+   rows.push(['Mean return time',cnt?f(sT/cnt,2):'—',f(Zt,2)+' (= Z)'],['P(T = 1)',cnt?f(c1/cnt):'—',f(1-Math.exp(-g))],['Number of returns',String(cnt),'—']);
+   $('#note').textContent='This is the lattice Metropolis (Rule C′). A sailor starts at the origin, is recorded when he returns, and starts again from the same spot. This chain is positive recurrent, and by Kac\'s lemma the mean return time is exactly Z (Section 9.4 of the article). The first step from the origin is always an upward proposal, so its acceptance probability is e^(−g), and being rejected and staying in place also counts as a return. Long returns may not have finished yet, so the mean comes out small early on. Compare this with floor gravity (null recurrent, infinite mean).'}
+ else{const g=q.g,ph=4/(4+2*Math.cosh(g/2)),kp=1-Math.exp(-g),R=n?TS[n-1]:0;zm=g?Math.max(6,Math.min(30,5/g)):12;
+  t1='Returned fraction R_n vs. steps'+(g?'':' (dashed: 0.50806 − 0.3194/√n)');t2=g?'1/(1 − R_n) vs. ln n (dashed: slope κ/(πp_h))':'1/(1 − R_n) vs. ln n';
+  const a=TS.length?TS:[0];o1={x0:0,x1:nt,y0:0,y1:1,xf:v=>Math.round(v),yf:v=>v.toFixed(1),lines:[ser(TS,'--data'),...(g?[]:[{p:fn(t=>LIM-.3194/Math.sqrt(Math.max(t,1)),1,nt),c:'--theory',d:[5,4]}])]};
+  const pts=[];for(let k=10;k<=TS.length;k=Math.ceil(k*1.03)+1)pts.push([Math.log(k),1/(1-Math.min(TS[k-1],.999))]);
+  const ym=Math.max(3,...pts.map(p=>p[1]))*1.1,xe=Math.log(Math.max(nt,100));
+  o2={x0:Math.log(10),x1:xe,y0:1,y1:ym,xf:v=>Math.round(Math.exp(v)),yf:v=>v.toFixed(1),lines:[{p:pts,c:'--data'}]};
+  if(g&&n>=100){const s=kp/(Math.PI*ph),p0=1/(1-TS[99]);o2.lines.push({p:[[Math.log(100),p0],[xe,p0+s*(xe-Math.log(100))]],c:'--theory',d:[5,4]})}
+  rows.push(['Returned fraction R_n',n?f(R):'—',g?'→ 1 (very slowly)':f(LIM-.3194/Math.sqrt(Math.max(n,1)))]);
+  if(g){const sl=n>=100?(1/(1-TS[n-1])-1/(1-TS[Math.floor(n/10)-1]))/Math.log(10):NaN;rows.push(['Slope d[1/(1−R)]/d ln n',isNaN(sl)?'—':f(sl),f(kp/(Math.PI*ph))])}else rows.push(['Limit 1 − 1/(2u − 1)','—',f(LIM,5)]);
+  $('#note').textContent=g?'For g > 0 the return probability goes to 1, but so slowly that 1/(1 − R_n) grows linearly in ln n. The slope κ/(πp_h) comes from the floor probability of the vertical chain, κ = 1 − e^(−g), and the horizontal 2D walk. The measured slope approaches the theory as n grows. This chain is null recurrent, so the mean return time is infinite (Section 8.2 of the article). Compare it with the two central-gravity tabs.':'At g = 0, half-space folding gives the exact limit 0.50806, and the approach is slow, as n^(−1/2). Raise g even slightly and the curve climbs past this limit and keeps rising.'}
+ $('#h1').textContent=t1;$('#h2').textContent=t2;$('#h3d').textContent=mode==='cen'?'3D view: drag to rotate (red dashed circles: most probable radius; lines: trajectories of 6 sailors)':mode==='cret'?'3D view: drag to rotate (the dot is the origin; lines: trajectories of 6 sailors)':'3D view: drag to rotate (the yellow plane is the floor; the lines are the trajectories of 6 sailors)';$('#nv').textContent=mode==='new'?'':'· step '+n;
+ $('#tb').innerHTML=rows.map(a=>'<tr><td>'+a[0]+'</td><td>'+a[1]+'</td><td>'+a[2]+'</td></tr>').join('');
+ $('#tb').parentElement.tHead.innerHTML=mode==='new'?'<tr><th>Quantity</th><th>Value</th><th>Note</th></tr>':'<tr><th>Quantity</th><th>Measured</th><th>Theory</th></tr>';$('#nv').parentElement.firstChild.textContent=mode==='new'?'Numbers ':'Measured vs. theory ';$('#sv').parentElement.style.display=mode==='new'?'none':'';
+ plot($('#p1'),o1);plot($('#p2'),o2);if(mode!=='new')side(zm)}
+function controls(){const el=$('#ctl'),q=P[mode];el.innerHTML='';
+ if(mode==='new'){const pw=document.createElement('span');pw.style.display='flex';pw.style.gap='6px';pw.style.flexWrap='wrap';
+  [['Earth',755],['Moon, 15 C air',34],['Moon, 250 K',39],['Moon, 390 K',25]].forEach(([nm,v])=>{const b=document.createElement('button');b.textContent=nm+' (Λ = '+v+')';b.setAttribute('aria-pressed',q.L===v);b.onclick=()=>{q.L=v;controls();draw()};pw.appendChild(b)});el.appendChild(pw);
+  const l1=document.createElement('label'),i1=document.createElement('input'),o1=document.createElement('output');i1.type='range';i1.min=0;i1.max=100;i1.step=1;i1.value=Math.round((Math.log10(q.L)-.6)/.023);o1.textContent=q.L;
+  i1.oninput=()=>{q.L=Math.round(Math.pow(10,.6+.023*+i1.value));o1.textContent=q.L;draw()};l1.append('Λ (log scale)',i1,o1);el.appendChild(l1);
+  const l2=document.createElement('label'),i2=document.createElement('input'),o2=document.createElement('output');i2.type='range';i2.min=1;i2.max=4;i2.step=.5;i2.value=q.e;o2.textContent='10^'+q.e;
+  i2.oninput=()=>{q.e=+i2.value;o2.textContent='10^'+q.e;draw()};l2.append('Region size X',i2,o2);el.appendChild(l2);return}
+ if(mode==='refl'){const w=document.createElement('span');w.style.display='flex';w.style.gap='6px';['A','B','W'].forEach(k=>{const b=document.createElement('button');b.textContent=k==='W'?'Wrong rule (y = g)':'Rule '+k;b.setAttribute('aria-pressed',rule===k);b.onclick=()=>{rule=k;controls();reset()};w.appendChild(b)});el.appendChild(w)}
+ if(mode==='cen'){const w=document.createElement('span');w.style.display='flex';w.style.gap='6px';[['L','Constant attraction'],['H','Spring']].forEach(([k,nm])=>{const b=document.createElement('button');b.textContent=nm;b.setAttribute('aria-pressed',q.pot===k);b.onclick=()=>{q.pot=k;controls();reset()};w.appendChild(b)});el.appendChild(w)}
+ (typeof MD[mode][1]==='function'?MD[mode][1]():MD[mode][1]).forEach(([k,lb,a,b,s,d])=>{const l=document.createElement('label'),i=document.createElement('input'),o=document.createElement('output');i.type='range';i.min=a;i.max=b;i.step=s;i.value=q[k];o.textContent=q[k];
+  i.oninput=()=>{q[k]=+i.value;o.textContent=i.value;reset()};l.append(lb,i,o);el.appendChild(l)});
+ const l=document.createElement('label'),i=document.createElement('input');i.type='range';i.min=1;i.max=(mode==='ret'||mode==='cret')?200:60;i.value=sp;i.oninput=()=>sp=+i.value;l.append('Speed',i);el.appendChild(l);
+ const p=document.createElement('button');p.textContent=run?'Pause':'Resume';p.onclick=()=>{run=!run;p.textContent=run?'Pause':'Resume'};const rs=document.createElement('button');rs.textContent='Restart';rs.onclick=()=>{sid++;reset()};el.append(p,rs)}
+function tabs(){const el=$('#tabs');el.innerHTML='';Object.keys(MD).forEach(k=>{const b=document.createElement('button');b.textContent=MD[k][0];b.setAttribute('aria-pressed',mode===k);b.onclick=()=>{mode=k;tabs();controls();reset()};el.appendChild(b)})}
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;if(rm)run=false;
+function loop(){if(run&&mode!=='new'){const k=(mode==='ret'||mode==='cret')?sp:Math.max(1,Math.round(sp/4));for(let i=0;i<k&&n<40000;i++)adv();draw()}requestAnimationFrame(loop)}
+tabs();controls();reset();if(rm)for(let i=0;i<300;i++)adv(),0;draw();loop();addEventListener('resize',draw);
+})();
+</script></main></body></html>
