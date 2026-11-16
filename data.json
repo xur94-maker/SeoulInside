@@ -1,43 +1,37 @@
 {
   "globalNews": [
     {
-      "title": "Yemeni forces' retreat leaves Houthis in control of key area on coast of Red Sea waterway",
+      "title": "Five EU countries announce migrant deportation centre in Rwanda",
+      "link": "https://www.bbc.co.uk/news/articles/cw987343352go?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 16 Nov 2026 16:27:24 GMT",
+      "desc": "Germany, Denmark, Austria, Greece and the Netherlands have announced a \"return hub\" for failed asylum seekers."
+    },
+    {
+      "title": "Yemeni forces retreat to defend port city from Houthis",
       "link": "https://www.bbc.co.uk/news/articles/cqvg2xgyvnjpo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 07:23:23 GMT",
-      "desc": "Saudi-backed forces say they are moving troops from the Bab al-Mandab Strait to defend the interim capital Aden."
+      "date": "Mon, 16 Nov 2026 11:09:38 GMT",
+      "desc": "Saudi-backed forces say they are moving troops from the Bab al-Mandab Strait to protect the interim capital, Aden."
     },
     {
-      "title": "UK and allies call on Israel to allow rapid humanitarian access to Gaza",
-      "link": "https://www.bbc.co.uk/news/articles/cwm2mllj1pp8o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 08:56:04 GMT",
-      "desc": "The UK, Australia, Canada and Italy say Israeli authorities are holding back vital supplies at the borders, including 150,00 tents."
+      "title": "Trump backs return of ex-Nvidia boss after 'Bring Jensen Back' campaign launched",
+      "link": "https://www.bbc.co.uk/news/articles/cry49plv8v3go?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 16 Nov 2026 19:16:52 GMT",
+      "desc": "A number of tech figures want the board of the AI chip giant to give Jensen Huang his job back."
     },
     {
-      "title": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says",
-      "link": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 01:47:57 GMT",
-      "desc": "The Nvidia scandal has raised questions over whether advanced AI chips ended up in China, despite US restrictions."
+      "title": "Man sentenced over 'horrific' attempted murder of three children",
+      "link": "https://www.bbc.co.uk/news/articles/cr0qj0nzwj34o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 16 Nov 2026 12:27:15 GMT",
+      "desc": "Riad Bouchaker was sentenced after the attempted murder of three children in November 2023."
     },
     {
-      "title": "Australian MP 'full of gratitude' upon leaving hospital after alleged car attack",
-      "link": "https://www.bbc.co.uk/news/articles/cmpqr9j81888o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 03:09:49 GMT",
-      "desc": "The MP lost both of her legs after the alleged attack outside her electorate office four weeks ago."
-    },
-    {
-      "title": "Mexican drug lord Miguel Ángel Félix Gallardo dies age 80",
-      "link": "https://www.bbc.co.uk/news/articles/c51k9nkwrndxo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 03:21:56 GMT",
-      "desc": "Known as the 'Boss of Bosses', he was the head of all-powerful Guadalajara Cartel in the 1980s before his arrest broke up his drug organisation."
+      "title": "Raye, Rosalía and Dolly Parton recognised in Grammy nominations",
+      "link": "https://www.bbc.co.uk/news/articles/cq9vwkggpx73o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 16 Nov 2026 14:48:55 GMT",
+      "desc": "British singer Raye lands 11 nominations while Dolly Parton is recognised two months after her death."
     }
   ],
   "koreaNews": [
-    {
-      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
-      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
-    },
     {
       "title": "Memory Chips Are Completely Distorting South Korea’s Economy - Asociación Almendrón",
       "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPeFd4XzRNLUQ1UzExWUFISWtjVFd2SDVkbHY4dktvRnVoajI3NjdJN1FUT255dVZyZ1FCSFFuQVVodGplQWh5enFGaFc1dWxEYmFUTlEyMlhCUmliVGFKcnNNSFRLU3YxcDJ5d0Nta25sU2doMmpvOE50dlNwR3gtaldIM1V1VU1kbFFKNlcweVV1MzcyNHQ0czRB?oc=5",
@@ -45,10 +39,16 @@
       "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Asociación Almendrón"
     },
     {
-      "title": "Korea's wage, productivity gaps widen amid chip-led growth: KDI - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB4d3BHVWM0SkdpVVVONkk4aXlTS05hdUFIZkhVaG0wXzlOY1pQVngwc0JjYU1YYjEzdnk1SGY0ZU9YSWlGUER5OHV4SGdOR3A0NGhJbGFyWQ?oc=5",
-      "date": "Mon, 16 Nov 2026 05:41:51 GMT",
-      "desc": "Korea's wage, productivity gaps widen amid chip-led growth: KDI&nbsp;&nbsp;The Korea Herald"
+      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
+      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
+    },
+    {
+      "title": "South Korea Growth Seen Reaching 3.6% Next Year - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5LVHZfY2lQaERESEp4dDVJaEx3cGdYS3VLQzY4ZTNKLTdBTmRyRWV4R0hxLUJzdDlIR0RKaU9YcWI1aDFTQzlBYVNCUWJwUncxSTJfLVVna1VnTDBkZnhrYnk4X2ZGRlV0SEpMSEFhZVZfRkR3?oc=5",
+      "date": "Mon, 16 Nov 2026 10:37:18 GMT",
+      "desc": "South Korea Growth Seen Reaching 3.6% Next Year&nbsp;&nbsp;Businesskorea"
     },
     {
       "title": "South Korea’s Options in a Fragmented World - The Diplomat – Asia-Pacific Current Affairs Magazine",
@@ -63,16 +63,16 @@
       "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
     },
     {
+      "title": "Weekly news roundup: Memory giants forge rare alliance; race to secure equipment capacity - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNeHVtdVNWYkhXYVFsdTZXS1R2RVNkb1lwbTZOTW9jMDZxQkJhZ1RxaUpDV1NZU1dmdE1GU3IyeU5QS093YWxwOWdqMDFCMk8yWFpMSTM4bVIwUGp0NkRneW9ybG8tdkdwLXVrdm01dGx5TlluSVhSSGFVaGNqeVZMYl9QNUtEMm00OE4za1p5R2JIeWt0RmdjemtnZ2c4VW0xeFhucGN5Yzc5akt4clJ4YU5lejAzQQ?oc=5",
+      "date": "Mon, 16 Nov 2026 02:52:41 GMT",
+      "desc": "Weekly news roundup: Memory giants forge rare alliance; race to secure equipment capacity&nbsp;&nbsp;digitimes"
+    },
+    {
       "title": "Morgan Stanley Forecasts KOSPI 10,000 Amid Samsung, SK Hynix Target Cuts - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdktocmlSNWRXclRkak1LbkJycjZGNzBTVldpVVRBTE5uWUY1NjhweHFkSzA0Vjl3WUx1ZkhkQnBKa2JNQXJ6NmVHQm1hN1Z4ek1FbHpqeGVKdmxuNFRYWnVVSGlrRFdmSmR0VWpXLTJvdTM1d1czeFpZRmtGUVdWaXVTa1pBZy1RWHU5bXFn?oc=5",
       "date": "Mon, 16 Nov 2026 09:43:41 GMT",
       "desc": "Morgan Stanley Forecasts KOSPI 10,000 Amid Samsung, SK Hynix Target Cuts&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Samsung, SK Hynix face labor crunch threatening chip plant timelines - digitimes",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQY2pvYmV0OTFKYlBrZ21Sald2V2FtZ1ZKdURteUlSWlVzeVB2Vzc3Q3llODJxbVZhQXNhWEk1VGhnY1psYVBISjhnTF9MV1AzNWJUSHR6ZUxibzRvTV9IaU1JZlJ1NFY3bHFwdlNmdzhFLTZmRUltUG5tS0dPRHhRakwtVjM2Q3MzQllTUHFn?oc=5",
-      "date": "Mon, 16 Nov 2026 04:19:26 GMT",
-      "desc": "Samsung, SK Hynix face labor crunch threatening chip plant timelines&nbsp;&nbsp;digitimes"
     },
     {
       "title": "South Korea's Top Traders Sell Samsung Electronics, SK Hynix in Selloff, Pile Into Semiconductor Suppliers - BigGo Finance",
@@ -85,89 +85,89 @@
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 162.85,
-      "change": -10.88,
-      "pct": -6.26,
+      "price": 156.36,
+      "change": -9.83,
+      "pct": -5.91,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 398.73,
-      "change": -14.62,
-      "pct": -3.54,
+      "price": 377.27,
+      "change": -28.22,
+      "pct": -6.96,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 534.06,
-      "change": -18.84,
-      "pct": -3.41,
+      "price": 508.01,
+      "change": -77.29,
+      "pct": -13.21,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 59.66,
-      "change": -2.84,
-      "pct": -4.54,
+      "price": 55.76,
+      "change": -5.44,
+      "pct": -8.89,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 172.47,
-      "change": -4.1,
-      "pct": -2.32,
+      "price": 171.25,
+      "change": -5.88,
+      "pct": -3.32,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 190.53,
-      "change": -12.83,
-      "pct": -6.31,
+      "price": 176.98,
+      "change": -22.8,
+      "pct": -11.41,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 295.77,
-      "change": 2.32,
-      "pct": 0.79,
+      "price": 284.97,
+      "change": -13.73,
+      "pct": -4.6,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 356.27,
-      "change": 0.64,
-      "pct": 0.18,
+      "price": 351.8,
+      "change": -3.08,
+      "pct": -0.87,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 523.88,
-      "change": 2.75,
-      "pct": 0.53,
+      "price": 518.84,
+      "change": -4.16,
+      "pct": -0.8,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7561.67,
-      "change": -57.71,
-      "pct": -0.76,
+      "price": 7419.35,
+      "change": -173.05,
+      "pct": -2.28,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 25136.27,
-      "change": -329.92,
-      "pct": -1.3,
+      "price": 24543.13,
+      "change": -822.96,
+      "pct": -3.24,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.18,
-      "change": 0.4,
-      "pct": 0.03,
+      "price": 1335.74,
+      "change": 1.96,
+      "pct": 0.15,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-16 10:25 UTC"
+  "updatedAt": "2026-11-16 19:26 UTC"
 }
