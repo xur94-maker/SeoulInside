@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Zelensky urges US and Musk to lift Starlink restrictions and be on 'right side of history'",
-      "link": "https://www.bbc.co.uk/news/articles/c6m25zg88k45o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 15 Nov 2026 19:32:39 GMT",
-      "desc": "The Ukrainian president says the slowed-down internet is making it difficult to stop Russian attacks."
+      "title": "Yemeni forces' retreat leaves Houthis in control of key area on coast of Red Sea waterway",
+      "link": "https://www.bbc.co.uk/news/articles/cqvg2xgyvnjpo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 16 Nov 2026 07:23:23 GMT",
+      "desc": "Saudi-backed forces say they are moving troops from the Bab al-Mandab Strait to defend the interim capital Aden."
+    },
+    {
+      "title": "UK and allies call on Israel to allow rapid humanitarian access to Gaza",
+      "link": "https://www.bbc.co.uk/news/articles/cwm2mllj1pp8o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 16 Nov 2026 08:56:04 GMT",
+      "desc": "The UK, Australia, Canada and Italy say Israeli authorities are holding back vital supplies at the borders, including 150,00 tents."
     },
     {
       "title": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says",
       "link": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 15 Nov 2026 22:24:20 GMT",
+      "date": "Mon, 16 Nov 2026 01:47:57 GMT",
       "desc": "The Nvidia scandal has raised questions over whether advanced AI chips ended up in China, despite US restrictions."
     },
     {
-      "title": "Mexican drug lord Miguel Angel Felix Gallardo dies age 80",
+      "title": "Australian MP 'full of gratitude' upon leaving hospital after alleged car attack",
+      "link": "https://www.bbc.co.uk/news/articles/cmpqr9j81888o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 16 Nov 2026 03:09:49 GMT",
+      "desc": "The MP lost both of her legs after the alleged attack outside her electorate office four weeks ago."
+    },
+    {
+      "title": "Mexican drug lord Miguel Ángel Félix Gallardo dies age 80",
       "link": "https://www.bbc.co.uk/news/articles/c51k9nkwrndxo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 15 Nov 2026 23:52:10 GMT",
+      "date": "Mon, 16 Nov 2026 03:21:56 GMT",
       "desc": "Known as the 'Boss of Bosses', he was the head of all-powerful Guadalajara Cartel in the 1980s before his arrest broke up his drug organisation."
-    },
-    {
-      "title": "South Korea's top scorer in tax accountancy exam admits cheating",
-      "link": "https://www.bbc.co.uk/news/articles/ckvg2ezvpe08o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 15 Nov 2026 13:37:45 GMT",
-      "desc": "Han Won-seok, 34, confessed to using a hidden camera and AI to get a near-perfect mark on the significant test."
-    },
-    {
-      "title": "Pope Leo rides in helicopter cockpit during Peru trip",
-      "link": "https://www.bbc.co.uk/news/videos/c6pw4rl00lrjo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 15 Nov 2026 18:38:11 GMT",
-      "desc": "The Pope took to the skies before arriving in Cusco on the penultimate day of his Latin America tour."
     }
   ],
   "koreaNews": [
@@ -39,10 +39,22 @@
       "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "South Korea’s Economy Surges 1.0% on AI Chip Boom But Domestic Demand Lags Behind - Vocal",
-      "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQbE9NWHdNMDJDTi1KdnRWQWxBcE9QM2ljZTY0WEtUdTczRloxbHdMZHFBVld4dEdvR0wtd3V0MzlYNEhhc0lpcUJKc3pvUldkRnBtQTgyakxrVlVoR1BjTG0zZnBOWlVYZkJreU50WTVBTm92cE5XdGhpb1g4NmdEOUwtTFpNMEo2QmMzYURjd0t0em5KcGN2akd0aHVLN0k4dUlYV1l0c0dJQQ?oc=5",
-      "date": "Sun, 15 Nov 2026 10:36:11 GMT",
-      "desc": "South Korea’s Economy Surges 1.0% on AI Chip Boom But Domestic Demand Lags Behind&nbsp;&nbsp;Vocal"
+      "title": "Memory Chips Are Completely Distorting South Korea’s Economy - Asociación Almendrón",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPeFd4XzRNLUQ1UzExWUFISWtjVFd2SDVkbHY4dktvRnVoajI3NjdJN1FUT255dVZyZ1FCSFFuQVVodGplQWh5enFGaFc1dWxEYmFUTlEyMlhCUmliVGFKcnNNSFRLU3YxcDJ5d0Nta25sU2doMmpvOE50dlNwR3gtaldIM1V1VU1kbFFKNlcweVV1MzcyNHQ0czRB?oc=5",
+      "date": "Fri, 13 Nov 2026 05:08:20 GMT",
+      "desc": "Memory Chips Are Completely Distorting South Korea’s Economy&nbsp;&nbsp;Asociación Almendrón"
+    },
+    {
+      "title": "Korea's wage, productivity gaps widen amid chip-led growth: KDI - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB4d3BHVWM0SkdpVVVONkk4aXlTS05hdUFIZkhVaG0wXzlOY1pQVngwc0JjYU1YYjEzdnk1SGY0ZU9YSWlGUER5OHV4SGdOR3A0NGhJbGFyWQ?oc=5",
+      "date": "Mon, 16 Nov 2026 05:41:51 GMT",
+      "desc": "Korea's wage, productivity gaps widen amid chip-led growth: KDI&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "South Korea’s Options in a Fragmented World - The Diplomat – Asia-Pacific Current Affairs Magazine",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVnRXU2xqYUgzUlJDNHcxVjlGc2JWY2RVMFFNdzJwbzQ0YmhLMU02emx6dG9fYXBvUjJMb1FHR2I4dl9FbzhvSW9WaWlyMGRqSEZvUzNSY2FjQmphbnNhT1pHYndZTFIwUzNhbURxcHJUVWpoSW4yNlRlTFBTSjc2ZA?oc=5",
+      "date": "Fri, 13 Nov 2026 15:36:45 GMT",
+      "desc": "South Korea’s Options in a Fragmented World&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
     },
     {
       "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
@@ -51,34 +63,22 @@
       "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "South Korea: A growing national crisis and a strategic warning - Asia Times",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOUW5xQUZIOU9pU3pvTXVVVldmX0ktdTQtZkFmUnpuaEZJeTZNS21ZN2RyTE9SNmtJbVBRQWVzWHQwdm5mNTZWbWVvaG9YdVhXQ0VpSExXcjZLbWEtZldvVGJOV3ozWXoyeWNiVHlfVzZ0NmF6LXN6NHVZMFVxMmQxYm1fVkdUcFVwSms0N1pROU5XaUt0dU5B?oc=5",
-      "date": "Mon, 19 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea: A growing national crisis and a strategic warning&nbsp;&nbsp;Asia Times"
+      "title": "Morgan Stanley Forecasts KOSPI 10,000 Amid Samsung, SK Hynix Target Cuts - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdktocmlSNWRXclRkak1LbkJycjZGNzBTVldpVVRBTE5uWUY1NjhweHFkSzA0Vjl3WUx1ZkhkQnBKa2JNQXJ6NmVHQm1hN1Z4ek1FbHpqeGVKdmxuNFRYWnVVSGlrRFdmSmR0VWpXLTJvdTM1d1czeFpZRmtGUVdWaXVTa1pBZy1RWHU5bXFn?oc=5",
+      "date": "Mon, 16 Nov 2026 09:43:41 GMT",
+      "desc": "Morgan Stanley Forecasts KOSPI 10,000 Amid Samsung, SK Hynix Target Cuts&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "South Korea’s GDP growth beats forecasts amid AI boom - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVkhSendFOTJpVXVneXVaSFVfdWNoY0swai14U0NiU1dCU0xmbE5Wd25Dak9DUkpEOEl1ZDd5Um1NQkg5c2V2SU9JVm1KaTgxbXNwVGRwS2ZQNlRmTm9Ea2JDS1N3VG5jWkFCbERCRjFlNjgtZmkzU0Q3cU16dnYyUXJRaG14ZEJOT1RTTGV0bzRPV3YxTC1qV2hST19DUdIBowFBVV95cUxPRl9KQ1REU214M3NQRHpBaGI5LW5QZXc5bHkwNDRDTk5NZUxtbV9zeVN5SWo1UG1fdHF6dS1PWWV4V2w1ZXRJdi1DNjIwWEJXRGJFOTM3V0hMTUp1LXFEcTB5cGx2QTlrUm14SGNYeUg4UXZNUkl2andsNXZyMW1KblFmbk5zbjFHMFloZkh4ckhkVXJiaDJoU0hTRHF5RUl6LXU0?oc=5",
-      "date": "Tue, 27 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s GDP growth beats forecasts amid AI boom&nbsp;&nbsp;Al Jazeera"
+      "title": "Samsung, SK Hynix face labor crunch threatening chip plant timelines - digitimes",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQY2pvYmV0OTFKYlBrZ21Sald2V2FtZ1ZKdURteUlSWlVzeVB2Vzc3Q3llODJxbVZhQXNhWEk1VGhnY1psYVBISjhnTF9MV1AzNWJUSHR6ZUxibzRvTV9IaU1JZlJ1NFY3bHFwdlNmdzhFLTZmRUltUG5tS0dPRHhRakwtVjM2Q3MzQllTUHFn?oc=5",
+      "date": "Mon, 16 Nov 2026 04:19:26 GMT",
+      "desc": "Samsung, SK Hynix face labor crunch threatening chip plant timelines&nbsp;&nbsp;digitimes"
     },
     {
-      "title": "Samsung, SK hynix Account for 27% of Korea’s Margin Debt - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE8yeTBhcEZ6ZG9VVy1FY0V5VkJTckpUUi1wWV9KcGYteWFZdElrb3FJUHUtdHpsekg2aVoyQW9MTnFXczFEX1kxUW1kWTVQMnZEdWNyc0NBR2VlWFgtUDgxTktPbDNoS2VlMFdPUzJOSzRVYjkz?oc=5",
-      "date": "Mon, 16 Nov 2026 00:27:37 GMT",
-      "desc": "Samsung, SK hynix Account for 27% of Korea’s Margin Debt&nbsp;&nbsp;Businesskorea"
-    },
-    {
-      "title": "Even If Nvidia Stumbles, HBM Won't — Why Samsung and SK Hynix Are Smiling - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9nMmdDdzJtU3BiWGRQV2xpWlhSZmxXUFhUQ2tkZ0hOb0NUX0FGcWVoM0ZDb2MtcHlHeDZzVFV5UEVnZ1FyVDhQYlpGOW9lbndPS2FlX0pEd1RobHhuU1hZNTFmSWJYNVpEbGNmNkx3S0JtY1NvakE?oc=5",
-      "date": "Sun, 15 Nov 2026 18:05:00 GMT",
-      "desc": "Even If Nvidia Stumbles, HBM Won't — Why Samsung and SK Hynix Are Smiling&nbsp;&nbsp;BigGo Finance"
-    },
-    {
-      "title": "Samsung, SK hynix account for more than one-fourth of Korea's stock market credit loans - Korea JoongAng Daily",
-      "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNSWw2bENpRmhnYTFtV2NsYW0tWFhxS21HOVZVQjh1QXpBOUZoRHZDUTNzYmhESmVIa1BvQkU4MFVUVDdPX3NCdXpmSjdGNGpBZFBuV09qOUtMSXpDXzVSN1lReGdVM052WGRqU0VpNGsxM05hcXc2RkswUGxiX0U4c3RlMGdmVUxWSXM0Y05rTW9lUXVEWGNUY05DSjhidTFMLVRTaEMwYXNSTFQ0QTlhdHotODFncEZBNWhMOHhFYnFBbE9aREpCMUV5ME9NNVBNQ3hj?oc=5",
-      "date": "Sun, 15 Nov 2026 06:29:15 GMT",
-      "desc": "Samsung, SK hynix account for more than one-fourth of Korea's stock market credit loans&nbsp;&nbsp;Korea JoongAng Daily"
+      "title": "South Korea's Top Traders Sell Samsung Electronics, SK Hynix in Selloff, Pile Into Semiconductor Suppliers - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9lRG9ycWVIeFNodG0xNkNQSGJSNkRPZndNVzVtamdwX29VanRnT1N5M1ZuYy1HampkN0dObnV6TTRGMi1CUGtGX0VUNWZDaEVqaU9qWmR5Rzc3ZjVoRTlOTTR3Y1pkMUxGWWsycVpuLXJmY0N6VFE?oc=5",
+      "date": "Mon, 16 Nov 2026 06:55:00 GMT",
+      "desc": "South Korea's Top Traders Sell Samsung Electronics, SK Hynix in Selloff, Pile Into Semiconductor Suppliers&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 202250.0,
-      "change": -5750.0,
-      "pct": -2.76,
+      "price": 196800.0,
+      "change": -11200.0,
+      "pct": -5.38,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1167000.0,
-      "change": -87000.0,
-      "pct": -6.94,
+      "price": 1120000.0,
+      "change": -134000.0,
+      "pct": -10.69,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 269000.0,
-      "change": 2500.0,
-      "pct": 0.94,
+      "price": 265500.0,
+      "change": -1000.0,
+      "pct": -0.38,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 95100.0,
-      "change": 1500.0,
-      "pct": 1.6,
+      "price": 95000.0,
+      "change": 1400.0,
+      "pct": 1.5,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 172600.0,
-      "change": -9200.0,
-      "pct": -5.06,
+      "price": 172900.0,
+      "change": -8900.0,
+      "pct": -4.9,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5197.46,
-      "change": -145.27,
-      "pct": -2.72,
+      "price": 5100.5,
+      "change": -242.23,
+      "pct": -4.53,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.98,
-      "change": 1.2,
-      "pct": 0.09,
+      "price": 1334.18,
+      "change": 0.4,
+      "pct": 0.03,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-16 03:45 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-16 10:25 UTC"
 }
