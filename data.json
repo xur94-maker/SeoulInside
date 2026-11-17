@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
-      "title": "Five EU countries announce migrant deportation centre in Rwanda",
-      "link": "https://www.bbc.co.uk/news/articles/cw987343352go?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 23:20:45 GMT",
-      "desc": "Germany, Denmark, Austria, Greece and the Netherlands have announced a \"return hub\" for failed asylum seekers."
+      "title": "Crimean Bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine",
+      "link": "https://www.bbc.co.uk/news/articles/cw772jk4rvmxo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 17 Nov 2026 10:45:55 GMT",
+      "desc": "Ukraine says the attack took weeks to plan, while the Kremlin vows to rebuild the strategic bridge."
     },
     {
-      "title": "Houthi rebel advance in Yemen may further destabilise global economy",
-      "link": "https://www.bbc.co.uk/news/articles/cmy97qperq9eo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 21:40:07 GMT",
-      "desc": "The Iran-backed Houthis are gaining ground and their advance could have dangerous consequences, writes the BBC's security correspondent."
+      "title": "Ukraine accuses Russia of targeting rescue operation after 'double-tap' strike kills 72",
+      "link": "https://www.bbc.co.uk/news/articles/c30rk8x5g80qo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 17 Nov 2026 05:59:01 GMT",
+      "desc": "Efforts to recover bodies after a “double-tap” attack in southern Ukraine are being hampered by continuing Russian strikes, officials say."
     },
     {
-      "title": "Nvidia dismisses 'Bring Jensen Back' campaign as Trump backs effort to reinstate ex CEO",
+      "title": "Indian woman gang-raped while pregnant in 2002 'heartbroken' after two perpetrators bailed",
+      "link": "https://www.bbc.co.uk/news/articles/cr868wd2qg18o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 17 Nov 2026 09:27:44 GMT",
+      "desc": "Bilkis Bano has spoken of her \"pain, shock and disbelief\" at the top court order and vowed to fight back."
+    },
+    {
+      "title": "Imran Khan seeks urgent medical care fearing he 'may not return alive'",
+      "link": "https://www.bbc.co.uk/news/articles/cr894xq5yeyko?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 17 Nov 2026 01:26:01 GMT",
+      "desc": "Pakistan's ex-prime minister, who has been in prison since August 2023, says he has been denied justice."
+    },
+    {
+      "title": "Nvidia dismisses 'Bring Jensen Back' campaign as Trump backs effort to reinstate ex boss",
       "link": "https://www.bbc.co.uk/news/articles/cry49plv8v3go?at_medium=RSS&at_campaign=rss",
       "date": "Tue, 17 Nov 2026 02:37:53 GMT",
       "desc": "A number of tech figures have backed an effort asking the AI chip giant to give Jensen Huang his job back."
-    },
-    {
-      "title": "Landmark Crimea bridge hit as Russia reports biggest Ukrainian drone attack of war",
-      "link": "https://www.bbc.co.uk/news/articles/ckx27v6dpjz0o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 14:58:12 GMT",
-      "desc": "Russia said Ukraine had launched over 2,000 drones over the course of a day, while Kyiv came under a record 17 air raid alerts."
-    },
-    {
-      "title": "When will we see Robert Pattinson as Bond in cinemas?",
-      "link": "https://www.bbc.co.uk/news/videos/cmd91xjd9zk2o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 16 Nov 2026 17:18:54 GMT",
-      "desc": "Robert Pattinson has been announced as the next James Bond, becoming the seventh actor to take up the mantle of 007."
     }
   ],
   "koreaNews": [
@@ -39,28 +39,46 @@
       "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Why South Korean Households May Not Feel the Semiconductor Boom - Korea IT Times",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBjMDItWURXbjBmQXhsQUlqbG9zYlFNWlpjNzFiUjlUMFRNblB5OEljOEY5ckZsakp6Ykh3SGs5WkFPVjVqVHZzdUFTWGt1Q19DcTRBUXFIZXFUaGh6NjVLWVk2NVlXRFJMTTN3d1ZldEo?oc=5",
-      "date": "Tue, 17 Nov 2026 01:32:55 GMT",
-      "desc": "Why South Korean Households May Not Feel the Semiconductor Boom&nbsp;&nbsp;Korea IT Times"
+      "title": "IMF Lifts South Korea Growth Forecast to 3.9% in Surprise Upgrade, Citing AI Semiconductor Boom - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBxYzZlZWw4RW1ndmYzM094OWRqOE1mYm5wZ1NPdVJxUEg1Q3NrcVdTQ3ctUTUwYWs0TkIxRWFNVXRvelRnNnJmTVlfeS1SZWZoekt3TjU4RVlVc2o0MGRDVjg0ZUhEWFZMdmNYb21GTmNJQmtiWUE?oc=5",
+      "date": "Tue, 17 Nov 2026 05:25:00 GMT",
+      "desc": "IMF Lifts South Korea Growth Forecast to 3.9% in Surprise Upgrade, Citing AI Semiconductor Boom&nbsp;&nbsp;BigGo Finance"
     },
     {
-      "title": "South Korea Growth Seen Reaching 3.6% Next Year - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5LVHZfY2lQaERESEp4dDVJaEx3cGdYS3VLQzY4ZTNKLTdBTmRyRWV4R0hxLUJzdDlIR0RKaU9YcWI1aDFTQzlBYVNCUWJwUncxSTJfLVVna1VnTDBkZnhrYnk4X2ZGRlV0SEpMSEFhZVZfRkR3?oc=5",
-      "date": "Mon, 16 Nov 2026 10:37:18 GMT",
-      "desc": "South Korea Growth Seen Reaching 3.6% Next Year&nbsp;&nbsp;Businesskorea"
+      "title": "(LEAD) IMF raises S. Korea's 2026 growth forecast to 3.9 pct on chip boom - Yonhap News Agency",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9IWkhZM3hiTmhmU1FIRW1CVDhVRjJQSHl0RzczYWFmbFNlVWdVbjdpcktPZDBYZ25kWE1SRkZEWHdnc3dZTFVJcFhfdm5JWEdBbXlLcDgyNXlyQQ?oc=5",
+      "date": "Tue, 17 Nov 2026 07:06:02 GMT",
+      "desc": "(LEAD) IMF raises S. Korea's 2026 growth forecast to 3.9 pct on chip boom&nbsp;&nbsp;Yonhap News Agency"
     },
     {
-      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
-      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
+      "title": "China, Japan, South Korea discuss geopolitical disruptions at ASEAN summit - Anadolu Ajansı",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPRDB6VUg0T0l2THRYd1VjNGsybWo3dUFZa1laSWlUeFlDa2Vsc05MX2NYZEktSmV5WWZKcmNfRkJwZ2ttWlkyZFRrd0FScEZMUjhFeWpIcUlna0pfb1BFRVBURUtHQm5DT25IekVwbHM2cWhpR0NfaEI1RmJ4STRWUXZpSm9OTGhUb1kyUUY5Y1JXOUJWQ0hMc0NQSTdvMEo5alBJR3VOQWszU3VtVzZIc3JJX0EydjhhTlE?oc=5",
+      "date": "Tue, 17 Nov 2026 08:00:19 GMT",
+      "desc": "China, Japan, South Korea discuss geopolitical disruptions at ASEAN summit&nbsp;&nbsp;Anadolu Ajansı"
     },
     {
-      "title": "Bloomberg Economics Sees South Korea Growth at 3.6% Next Year, Up to 4.6% If Chip Output Accelerates - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1nc09PS0FjTUtacWRvdkptNjBFUkpHNXNBc1RfYzJOZ2VEMzYwSENMSDlNc05aRnFKeTcycG1SLWNHTWpybWtGTVdxdW5pY0Q4RmdvNW5wM2FoYjhUQ1ROSzBmNEdXQVNkWmZvWXkwV05LcDloc0E?oc=5",
-      "date": "Mon, 16 Nov 2026 09:05:00 GMT",
-      "desc": "Bloomberg Economics Sees South Korea Growth at 3.6% Next Year, Up to 4.6% If Chip Output Accelerates&nbsp;&nbsp;BigGo Finance"
+      "title": "IMF Raises South Korea's Growth Forecast to 3.9%, Urges Tightening Policies - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMW5YeWJjcUdRbk95RFhRUXNUdWlSS1B5bkszbXpoVE5ZdmFNbTRMbHcxdEFvc0daT0xFNmVXV3VmOXR6a1k1Y211WXV0WjR2VnZicHRjSTZHTkFudDZkRzlDZE1YRDZEUWIwRGh0RG9qWXdfWHZpY1pHcUdJZTZ6V08zT2RHODF3THlmdmJn?oc=5",
+      "date": "Tue, 17 Nov 2026 07:52:37 GMT",
+      "desc": "IMF Raises South Korea's Growth Forecast to 3.9%, Urges Tightening Policies&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Samsung, SK Hynix Semiconductor Sales Surge Amid High Demand - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPcWFNYXl0cjhMdmhDMUJtc2pXZVlkLWZseGJMYXFSaVE5RjBTUVVhSlRiVlZDc184N1ZMZDRaNFZDLU9WWGNVTUFDWlZsVVZkajhJWkpjWmNfYVZ0S0dzd2YtUzE0QjRsUHdrZkw4ZnY0SnNRRWhLYmYtaFNtdzlNNUtZV2FyUXBU?oc=5",
+      "date": "Tue, 17 Nov 2026 08:19:29 GMT",
+      "desc": "Samsung, SK Hynix Semiconductor Sales Surge Amid High Demand&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Anthropic IPO tests next leg of rally in Samsung, SK hynix - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFAycUxJZ244QlhqYndpZk1HTnhEb2czQzlfaXZraWpPRmVtSXh6V0ZmSDdGdnFQbVk5dFZKVXZaWEE4RTlKdG50OE82Zl9Eb1RTT01Vc3lmSQ?oc=5",
+      "date": "Tue, 17 Nov 2026 05:47:22 GMT",
+      "desc": "Anthropic IPO tests next leg of rally in Samsung, SK hynix&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "CPI | Samsung, SK Hynix and Micron Lose Bid to Dismiss US DRAM Antitrust Suit - PYMNTS.com",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQM3daenA2SGhsS09yeDlBRV9qaklMZTBoM1g2Z1p0RE1IOFpsejhZUmpPNmZvQzUtVVVhTmFROEVjZTJVXzlmVTc3OWtBYnRNTk9kcjBTSGxNOEpxS1RSa21ITnVmWDVMOFhuZXBKRXBQZkxRbzgzWWVqS0U2LXlIWERnZENhQktfYVVOdklNZ2dMSXFYcTY3Z3JBSXF1S0VzVWZJa3VnOA?oc=5",
+      "date": "Mon, 16 Nov 2026 20:47:07 GMT",
+      "desc": "CPI | Samsung, SK Hynix and Micron Lose Bid to Dismiss US DRAM Antitrust Suit&nbsp;&nbsp;PYMNTS.com"
     }
   ],
   "worldStocks": [
@@ -91,9 +109,9 @@
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 55.47,
-      "change": -5.73,
-      "pct": -9.36,
+      "price": 55.44,
+      "change": -5.76,
+      "pct": -9.41,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
@@ -157,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 191500.0,
-      "change": -14500.0,
-      "pct": -7.04,
+      "price": 190300.0,
+      "change": -15700.0,
+      "pct": -7.62,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1121000.0,
-      "change": -95000.0,
-      "pct": -7.81,
+      "price": 1098000.0,
+      "change": -118000.0,
+      "pct": -9.7,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 259500.0,
-      "change": -10000.0,
-      "pct": -3.71,
+      "price": 259000.0,
+      "change": -10500.0,
+      "pct": -3.9,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 91900.0,
-      "change": -2700.0,
-      "pct": -2.85,
+      "price": 92100.0,
+      "change": -2500.0,
+      "pct": -2.64,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 170200.0,
-      "change": -2300.0,
-      "pct": -1.33,
+      "price": 170000.0,
+      "change": -2500.0,
+      "pct": -1.45,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5021.2,
-      "change": -269.33,
-      "pct": -5.09,
+      "price": 4968.48,
+      "change": -322.05,
+      "pct": -6.09,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1337.37,
-      "change": 4.12,
-      "pct": 0.31,
+      "price": 1336.08,
+      "change": 2.83,
+      "pct": 0.21,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-17 05:40 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-17 11:22 UTC"
 }
