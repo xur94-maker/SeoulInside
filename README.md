@@ -830,4 +830,37 @@ https://seoulinside.substack.com/p/pair-annihilation-as-a-special-case
 https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
 
 ----
-  
+
+<!-- BLOG-POST-LIST:START -->
+### [Jeonse and Interest Rates: How Did Seoul Apartment Jeonse Prices Move Relative to the Policy Rate and Loan Rates, and With What Lag? (2003.11–2026.10)](https://seoulinside.substack.com/p/jeonse-and-interest-rates-how-did) `2026.11.19`
+Data as of 2026.11.19 | Seoul apartment jeonse price index (monthly), base rate, and deposit-bank mortgage and jeonse-loan rates (new-business basis)
+
+### [Brief [2026.11.18]: Melon Chart: Upset or Just Fun?](https://seoulinside.substack.com/p/melon-chart-upset-or-just-fun) `2026.11.18`
+An AI song at No. 1, a 13-year-old track at No. 5: a closer look at the Nov. 18 Top 10
+
+### [Esteemed fellow Substack writers](https://seoulinside.substack.com/p/esteemed-fellow-substack-writers) `2026.11.16`
+Six months ago, I came to Substack. Before that, I had written only in online communities in my own country.
+
+### [Brief [2026.11.16]: Recent Issues in Korea | Top Scorer on the Tax Accountant Exam Admits Using a Miniature Camera and Generative AI. Two Proctors, Seated Right in Front of Him, Never Caught It](https://seoulinside.substack.com/p/brief-20261116-recent-issues-in-korea) `2026.11.16`
+AI Cheating That Got Through the Tax Accountant Exam
+
+### [A 3D Random Walk Under Gravity: What Happens When You Give the Drunken Sailor Gravity (Part 4)](https://seoulinside.substack.com/p/a-3d-random-walk-under-gravity-what) `2026.11.15`
+Step rules, equilibrium, dynamics, the time of a simulation, and gravity that pulls toward a center
+
+### [The Drunken Sailor Walks in 3D | Random Walks (Part 3)](https://seoulinside.substack.com/p/the-drunken-sailor-walks-in-3d) `2026.11.12`
+From Rayleigh to Maxwell: Random Walks on the Sphere and the Mathematics of Direction Sets
+
+### [22 Years of Seoul Jeonse: M2, the Gangnam 3 Districts, Speed by Administration, and Weekly Turning Points](https://seoulinside.substack.com/p/22-years-of-seoul-jeonse-m2-the-gangnam) `2026.11.08`
+Seoul 2003.10–2026.10 as seen through Bank of Korea M2, the KB Housing Composite Jeonse Price Index (monthly), and the Korea Real Estate Board weekly…
+
+### [Linear Algebra and Its Applications: The Mathematics of Splitting Vectors and Transforming Space [V.2]](https://seoulinside.substack.com/p/linear-algebra-and-its-applications) `2026.11.04`
+Recap of Installment 1:
+
+### [Sigma and Integral: What a Sum of Vectors Tells You Is “Displacement” [V.1]](https://seoulinside.substack.com/p/sigma-and-integral-what-a-sum-of) `2026.11.03`
+Understanding the sum of vectors (Σ) and the integral (∫) from the viewpoint of displacement
+
+### [How to Get Your Substack Listed on Google Search](https://seoulinside.substack.com/p/how-to-get-your-substack-listed-on) `2026.11.03`
+TL;DR: Get Your Substack Found on Google
+
+> 🔄 마지막 업데이트: 2026-11-19 04:58 UTC
+<!-- BLOG-POST-LIST:END -->
