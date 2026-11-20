@@ -832,6 +832,9 @@ https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
 ----
 
 <!-- BLOG-POST-LIST:START -->
+### [A Mathematical Stroll Starting from (x+y)² | From Pascal’s Triangle to the Normal Distribution and Entropy [i.1]](https://seoulinside.substack.com/p/a-mathematical-stroll-starting-from) `2026.11.20`
+Part 1 Chapter 1.
+
 ### [Jeonse and Interest Rates: How Did Seoul Apartment Jeonse Prices Move Relative to the Policy Rate and Loan Rates, and With What Lag? (2003.11–2026.10)](https://seoulinside.substack.com/p/jeonse-and-interest-rates-how-did) `2026.11.19`
 Data as of 2026.11.19 | Seoul apartment jeonse price index (monthly), base rate, and deposit-bank mortgage and jeonse-loan rates (new-business basis)
 
@@ -859,8 +862,5 @@ Recap of Installment 1:
 ### [Sigma and Integral: What a Sum of Vectors Tells You Is “Displacement” [V.1]](https://seoulinside.substack.com/p/sigma-and-integral-what-a-sum-of) `2026.11.03`
 Understanding the sum of vectors (Σ) and the integral (∫) from the viewpoint of displacement
 
-### [How to Get Your Substack Listed on Google Search](https://seoulinside.substack.com/p/how-to-get-your-substack-listed-on) `2026.11.03`
-TL;DR: Get Your Substack Found on Google
-
-> 🔄 마지막 업데이트: 2026-11-19 04:58 UTC
+> 🔄 마지막 업데이트: 2026-11-20 04:49 UTC
 <!-- BLOG-POST-LIST:END -->
