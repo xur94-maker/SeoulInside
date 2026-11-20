@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>From the Coefficient Table to the Bell Curve</title>
+<style>
+:root{--bg:#f6f4ef;--panel:#fff;--ink:#1d2433;--mute:#667085;--line:#d9d6cc;--bar:#3b6ea5;--curve:#c2410c;--dot:#0f766e;--hot:#fde68a;--odd:#1d2433;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root:not([data-theme="light"]){color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161f;--panel:#1a2030;--ink:#e6e9f0;--mute:#9aa3b5;--line:#2c3447;--bar:#6aa3dc;--curve:#fb923c;--dot:#2dd4bf;--hot:#6b5a14;--odd:#e6e9f0}}
+:root[data-theme="dark"]{--bg:#12161f;--panel:#1a2030;--ink:#e6e9f0;--mute:#9aa3b5;--line:#2c3447;--bar:#6aa3dc;--curve:#fb923c;--dot:#2dd4bf;--hot:#6b5a14;--odd:#e6e9f0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.5rem;margin:.2em 0 .6em;letter-spacing:-.02em}
+nav{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto}
+nav button{flex:1;min-width:max-content;padding:9px 14px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;font:inherit;cursor:pointer}
+nav button[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--curve);outline-offset:2px}
+section{display:none;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+section.on{display:block}
+.ctl{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:12px 0 4px;padding-top:12px;border-top:1px solid var(--line)}
+.ctl label{display:flex;align-items:center;gap:8px;font-size:.92rem}
+.ctl input[type=range]{width:150px;accent-color:var(--curve)}
+.ctl output{min-width:3.2em;font-variant-numeric:tabular-nums;font-weight:600}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.btns button,select{padding:7px 12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;font:inherit;cursor:pointer}
+canvas{width:100%;height:280px;display:block}
+#gc{height:auto}
+#cc{height:340px}
+#kc{height:200px;margin-top:6px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.85rem;color:var(--mute);margin:6px 0}
+.legend i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:5px;border-radius:2px}
+.stat{font-size:.92rem;color:var(--mute);margin:6px 0 0}
+.stat b{color:var(--ink);font-variant-numeric:tabular-nums}
+.note{font-size:.9rem;color:var(--mute);margin-top:12px}
+.intro{font-size:.95rem;color:var(--mute);margin:22px 0 0}
+#tri{overflow-x:auto;text-align:center;padding:6px 0}
+.row{display:flex;justify-content:center;white-space:nowrap;margin:2px 0}
+.c{display:inline-block;min-width:44px;padding:3px 0;margin:0 2px;border-radius:6px;font-size:.85rem;font-variant-numeric:tabular-nums;cursor:pointer;border:1px solid transparent}
+.c.hl{background:var(--hot)}
+.c.sel{border-color:var(--curve);font-weight:700}
+.c.odd{background:var(--odd);color:var(--bg)}
+.c.ev{color:var(--mute);opacity:.35}
+ .c{transition:background .25s,color .25s}
+.c.off{visibility:hidden}
+.c.new{border-color:var(--curve);font-weight:700;animation:pop .35s ease-out}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.c.g1{background:var(--bar);color:#fff}
+.c.g2{background:var(--curve);color:#fff}
+.c.g3{background:var(--hot)}
+.c.g4{background:var(--dot);color:#fff}
+#ps{min-height:3.4em}
+.btns button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btns button:disabled{opacity:.45;cursor:default}
+.foot{color:var(--mute);font-size:.82rem;margin-top:12px}
+</style>
+</head>
+<body>
+<main>
+<h1>From the Coefficient Table to the Bell Curve</h1>
+<nav role="tablist">
+<button role="tab" aria-selected="true" data-t="g">Galton Board</button>
+<button role="tab" aria-selected="false" data-t="c">Coin Toss</button>
+<button role="tab" aria-selected="false" data-t="a">Approximations</button>
+<button role="tab" aria-selected="false" data-t="p">Pascal’s Triangle</button>
+</nav>
+
+<section id="g" class="on">
+<canvas id="gc"></canvas>
+<div class="legend"><span><i style="background:var(--bar)"></i>Stacked marbles</span><span><i style="background:var(--dot);border-radius:50%"></i>Ideal-coin binomial distribution (dots)</span><span><i style="background:var(--curve)"></i>Normal curve</span></div>
+<p class="stat" id="gs"></p>
+<div class="ctl">
+<label>Pin rows n <input type="range" id="gn" min="2" max="20" value="10"><output id="gnv">10</output></label>
+<label>Board tilt <input type="range" id="gp" min="-8" max="8" value="0"><output id="gpv">0°</output></label>
+<label>Speed <input type="range" id="gs2" min="1" max="10" value="4"></label>
+</div>
+<div class="btns"><button id="gplay">■ Pause</button><button id="g1">Drop 1</button><button id="gbulk">Drop 100</button><button id="gbulk2">Drop 500</button><button id="grst">Clear</button></div>
+<p class="note">The marbles move under a physics simulation of gravity, collisions with pins and air drag. Nothing decides in advance which way a marble bounces, yet the counts per bin pile up into a bell shape. The dots show the theory for a perfect fair coin (p = ½), so they differ slightly from the real result, because real marbles are not ideal coins. The fewer the pin rows, the bigger the gap. Tilting the board pushes the pile to one side, and the run stops automatically when a bin is full.</p>
+</section>
+
+<section id="c">
+<canvas id="cc"></canvas>
+<canvas id="kc"></canvas>
+<div class="legend"><span><i style="background:#e3b84a;border-radius:50%"></i>Heads (H)</span><span><i style="background:#aeb6c4;border-radius:50%"></i>Tails (T)</span><span><i style="background:var(--bar)"></i>Share of trials with k heads</span><span><i style="background:var(--dot);border-radius:50%"></i>Binomial (n, ½)</span><span><i style="background:var(--curve)"></i>Normal curve</span></div>
+<p class="stat" id="cst"></p>
+<div class="ctl">
+<label>Coins per trial n <input type="range" id="cn" min="1" max="10" value="10"><output id="cnv">10</output></label>
+<label>Randomness of throw <input type="range" id="cr" min="0" max="100" value="100"><output id="crv">100%</output></label>
+<label>Playback speed <input type="range" id="cs" min="1" max="20" value="6"><output id="csv">0.6×</output></label>
+</div>
+<div class="btns"><button id="cgo">Throw</button><button id="cauto">Auto-throw: off</button><button id="cfast">Run 100 trials instantly</button><button id="crst">Clear</button></div>
+<p class="note">Each coin is a thin disc simulated as a 3D rigid body: gravity, spin, gyroscopic wobble, and impulse-based collisions with bounce and friction. Nothing decides heads or tails in advance; the face you see is simply the way the coin ends up lying. Every coin starts heads up. With randomness at 0%, all coins get an identical throw and land identically, because the physics is deterministic. As the random variation in launch speed, spin and tilt grows, the outcome becomes unpredictable, and the number of heads per trial piles up into the same bell shape as on the Galton board. The coins do not collide with each other. A real coin toss is known to land on its starting face very slightly more than half the time.</p>
+</section>
+
+<section id="a">
+<canvas id="ac"></canvas>
+<div class="legend"><span><i style="background:var(--bar)"></i>Binomial</span><span><i style="background:var(--curve)"></i>Normal approximation</span><span><i style="background:var(--dot);border-radius:50%"></i>Poisson approximation (λ = np)</span></div>
+<p class="stat" id="as"></p>
+<div class="ctl">
+<label>Trials n <input type="range" id="an" min="5" max="500" value="10"><output id="anv">10</output></label>
+<label>Success probability p <input type="range" id="ap" min="1" max="99" value="50"><output id="apv">0.50</output></label>
+</div>
+<div class="btns"><button data-pre="10,50">10 coin flips</button><button data-pre="10,30">Biased coin</button><button data-pre="1000,20">1000 transactions, 0.2 error rate</button><button data-pre="100,50">100 coin flips</button></div>
+<p class="note" id="an2"></p>
+</section>
+
+<section id="p">
+<div id="tri"></div>
+<p class="stat" id="ps"></p>
+<div class="ctl">
+<label>Rows <input type="range" id="pn" min="3" max="17" value="10"><output id="pnv">10</output></label>
+<label>Speed <input type="range" id="pspd" min="1" max="10" value="5"><output id="pspdv">1.0×</output></label>
+</div>
+<div class="btns"><button id="pplay">❚❚ Pause</button><button id="pskip">Skip to end</button><button id="prebuild">Rebuild</button></div>
+<div class="btns"><span style="align-self:center;color:var(--mute);font-size:.9rem">Show a property:</span>
+<button class="pd" data-d="hockey">Hockey stick</button><button class="pd" data-d="rowsum">Row sums (2ⁿ)</button><button class="pd" data-d="symmetry">Symmetry</button><button class="pd" data-d="diagonals">Number diagonals</button><button class="pd" data-d="fibonacci">Fibonacci</button><button class="pd" data-d="pow11">Powers of 11</button><button class="pd" data-d="odd">Odd cells (Sierpiński)</button><button class="pd" data-d="expand">(x+y)ⁿ expansion</button></div>
+<p class="note">Watch each cell appear as the sum of the two cells above it. Once the triangle is complete, pick a property and it plays out step by step: the cells involved light up and the arithmetic is shown above. You can pause, change the speed or skip to the end at any time. After a demo, tap any cell to see which two cells make it.</p>
+</section>
+
+<p class="intro">See how the coefficients of (x+y)ⁿ become probabilities and then a bell curve, by playing with it yourself.</p>
+<p class="foot">Source: Seoul Inside, B. Sun, “A Math Walk Starting from (x+y)²”. The marbles on the Galton board follow an ideal-coin model.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const LF=[0];for(let i=1;i<=1100;i++)LF[i]=LF[i-1]+Math.log(i);
+const binom=(n,k,p)=>Math.exp(LF[n]-LF[k]-LF[n-k]+k*Math.log(p)+(n-k)*Math.log(1-p));
+const norm=(k,mu,v)=>Math.exp(-(k-mu)*(k-mu)/(2*v))/Math.sqrt(2*Math.PI*v);
+const pois=(k,l)=>Math.exp(-l+k*Math.log(l)-LF[k]);
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+function chart(cv,lo,hi,bars,curve,dots){
+  const dpr=window.devicePixelRatio||1,w=cv.clientWidth,h=cv.clientHeight;
+  cv.width=w*dpr;cv.height=h*dpr;const g=cv.getContext('2d');g.scale(dpr,dpr);
+  const L=34,B=24,T=8,W=w-L-4,H=h-B-T,m=hi-lo+1;
+  let mx=0;[bars,curve,dots].forEach(a=>a&&a.forEach(v=>{if(v>mx)mx=v}));mx=Math.max(mx*1.12,.01);
+  const X=k=>L+(k-lo+.5)/m*W,Y=v=>T+H-(v/mx)*H;
+  g.font='11px sans-serif';g.fillStyle=css('--mute');g.strokeStyle=css('--line');g.lineWidth=1;
+  for(let i=0;i<=4;i++){const v=mx*i/4,y=Y(v);g.beginPath();g.moveTo(L,y);g.lineTo(L+W,y);g.stroke();g.textAlign='right';g.fillText((v*100).toFixed(v*100<10?1:0)+'%',L-4,y+4)}
+  g.textAlign='center';const step=Math.max(1,Math.ceil(m/10));
+  for(let k=lo;k<=hi;k+=step)g.fillText(k,X(k),h-8);
+  const bw=Math.max(1,W/m*.78);g.fillStyle=css('--bar');
+  bars&&bars.forEach((v,i)=>{const y=Y(v);g.fillRect(X(lo+i)-bw/2,y,bw,T+H-y)});
+  if(curve){g.strokeStyle=css('--curve');g.lineWidth=2;g.beginPath();curve.forEach((v,i)=>{i?g.lineTo(X(lo+i),Y(v)):g.moveTo(X(lo+i),Y(v))});g.stroke()}
+  if(dots){g.fillStyle=css('--dot');dots.forEach((v,i)=>{g.beginPath();g.arc(X(lo+i),Y(v),Math.min(4,Math.max(2,W/m/3)),0,7);g.fill()})}
+}
+
+/* Approximations */
+function aDraw(){
+  const n=+$('an').value,p=+$('ap').value/100,mu=n*p,v=n*p*(1-p),sd=Math.sqrt(v);
+  $('anv').textContent=n;$('apv').textContent=p.toFixed(2);
+  let lo=0,hi=n;if(n>30){lo=Math.max(0,Math.floor(mu-5*sd));hi=Math.min(n,Math.ceil(mu+5*sd))}
+  const b=[],c=[],q=[];let err=0,perr=0;
+  for(let k=lo;k<=hi;k++){const x=binom(n,k,p),y=norm(k,mu,v),z=pois(k,mu);b.push(x);c.push(y);q.push(z);err=Math.max(err,Math.abs(x-y));perr=Math.max(perr,Math.abs(x-z))}
+  chart($('ac'),lo,hi,b,c,q);
+  const sk=(1-2*p)/sd;
+  $('as').innerHTML=`np=<b>${mu.toFixed(1)}</b>, n(1−p)=<b>${(n-mu).toFixed(1)}</b> · skewness <b>${sk.toFixed(3)}</b><br>Max normal error <b>${(err*100).toFixed(2)} pp</b> · Max Poisson error <b>${(perr*100).toFixed(2)} pp</b>`;
+  let t;if(mu>=5&&n-mu>=5)t=err<=perr?'Both np and n(1−p) are at least 5, so this is a range where the normal approximation fits well.':'The normal-approximation conditions are met, but at these values the Poisson approximation is closer.';
+  else if(p<=.1&&n>=20)t='Because p is small and n is large, this is a range where the Poisson approximation fits better.';
+  else t='Neither approximation meets its conditions, so the error is large. Exact binomial calculation is the safer choice.';
+  $('an2').textContent=t}
+$('an').oninput=aDraw;$('ap').oninput=aDraw;
+document.querySelectorAll('[data-pre]').forEach(b=>b.onclick=()=>{let[n,p]=b.dataset.pre.split(',').map(Number);$('an').value=n;$('ap').value=Math.round(p);aDraw()});
+
+/* Pascal's triangle: animated build, then property demos */
+let pVals=[],pCells=[],pQ=[],pI=0,pTimer=0,pPlaying=false,pBuilt=false,pMode='',pStarted=false,pDemo='';
+const sup=n=>String(n).replace(/\d/g,d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+const pDelay=k=>({e:600,i:1500,d:3200,f:1400}[k]||1500)/(+$('pspd').value);
+const pSay=t=>{$('ps').innerHTML=t};
+const pV=(n,k)=>pVals[n][k],pC=(n,k)=>pCells[n][k];
+const pUnmark=cls=>pCells.forEach(r=>r.forEach(e=>e.classList.remove(cls)));
+function pClearHl(all){pCells.forEach(r=>r.forEach(e=>{e.classList.remove('hl','sel','new');if(all)e.classList.remove('g1','g2','g3','g4','odd','ev')}))}
+function pBtns(){const act=pQ.length>0&&pI<pQ.length;
+  $('pplay').disabled=!act;$('pskip').disabled=!act;$('pplay').textContent=pPlaying?'❚❚ Pause':'▶ Resume';
+  $('pspdv').textContent=(+$('pspd').value/5).toFixed(1)+'×';
+  document.querySelectorAll('.pd').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.d===pDemo)))}
+function pInit(){
+  const N=+$('pn').value;$('pnv').textContent=N;
+  pVals=[[1]];for(let i=1;i<N;i++){const r=[1],pr=pVals[i-1];for(let k=1;k<i;k++)r.push(pr[k-1]+pr[k]);r.push(1);pVals.push(r)}
+  const t=$('tri');t.innerHTML='';pCells=[];const wd=N>13?38:44;
+  pVals.forEach((r,n)=>{const d=document.createElement('div');d.className='row';const rc=[];
+    r.forEach((v,k)=>{const s=document.createElement('span');s.className='c off';s.style.minWidth=(v>999?52:wd)+'px';s.textContent=v;s.onclick=()=>pSel(n,k);d.appendChild(s);rc.push(s)});
+    pCells.push(rc);t.appendChild(d)});
+  clearTimeout(pTimer);pQ=[];pI=0;pPlaying=false;pBuilt=false;pMode='';pDemo='';pBtns();pSay('Press Rebuild to watch the triangle grow.')}
+function pStart(q){clearTimeout(pTimer);pQ=q;pI=0;pPlaying=true;pBtns();pStep()}
+function pStep(){clearTimeout(pTimer);
+  if(pI>=pQ.length){pFinish();return}
+  const s=pQ[pI++];s.run();pBtns();
+  pTimer=setTimeout(pI>=pQ.length?pFinish:pStep,pDelay(s.d))}
+function pFinish(){clearTimeout(pTimer);pPlaying=false;
+  if(pMode==='build'){pBuilt=true;pClearHl();pSay('The triangle is complete. Pick a property below to watch it work, or tap any cell.')}
+  pMode='idle';pBtns()}
+function pSkip(){clearTimeout(pTimer);while(pI<pQ.length)pQ[pI++].run();pFinish()}
+function pBuild(){pInit();pStarted=true;pMode='build';
+  const q=[];
+  pVals.forEach((r,n)=>r.forEach((v,k)=>{q.push({d:(k===0||k===n)?'e':'i',run:()=>{
+    pClearHl();const c=pC(n,k);c.classList.remove('off');c.classList.add('new');
+    if(n===0){pSay('Start with a single <b>1</b> at the top.');return}
+    if(k>0&&k<n){const a=pV(n-1,k-1),b=pV(n-1,k);pC(n-1,k-1).classList.add('hl');pC(n-1,k).classList.add('hl');pSay(`Row ${n}, cell ${k}: ${a} + ${b} = <b>${v}</b>`)}
+    else pSay(`Row ${n}: the edges are always <b>1</b>`)}})}));
+  pStart(q)}
+function pSel(n,k){
+  if(!pBuilt||(pPlaying&&pI<pQ.length))return;
+  pClearHl();pC(n,k).classList.add('sel');
+  if(n>0&&k>0&&k<n){pC(n-1,k-1).classList.add('hl');pC(n-1,k).classList.add('hl')}
+  else if(n>0)pC(n-1,Math.min(k,n-1)).classList.add('hl');
+  pSay(n?`C(${n},${k}) = <b>${pV(n,k)}</b>`+(k>0&&k<n?` = ${pV(n-1,k-1)} + ${pV(n-1,k)}`:' (edges are always 1)')+` · Sum of row ${n} = 2^${n} = <b>${Math.pow(2,n)}</b>`:'The top cell is 1.')}
+const pList=(L,m)=>L.slice(0,m).join(', ')+(L.length>m?'…':'');
+const PDEMOS={
+  hockey(){const N=pVals.length,m=N-2,r=Math.max(0,Math.min(3,m-2)),q=[],parts=[];let sum=0;
+    q.push({d:'d',run:()=>pSay('<b>Hockey stick.</b> Add the numbers down a diagonal, starting at the edge…')});
+    for(let j=r;j<=m;j++)q.push({d:'d',run:()=>{pC(j,r).classList.add('g1');parts.push(pV(j,r));sum+=pV(j,r);pSay(`${parts.join(' + ')} = <b>${sum}</b>`)}});
+    q.push({d:'d',run:()=>{pC(m+1,r+1).classList.add('g2');pSay(`${parts.join(' + ')} = <b>${sum}</b> = C(${m+1},${r+1}), the cell just past the end of the stick. Straight line for the handle, a turn for the blade.`)}});
+    return q},
+  rowsum(){const q=[];
+    pVals.forEach((r,n)=>q.push({d:'d',run:()=>{pUnmark('g3');pCells[n].forEach(c=>c.classList.add('g3'));pSay(`Row ${n}: ${r.join(' + ')} = <b>${Math.pow(2,n)}</b> = 2${sup(n)}`)}}));
+    q.push({d:'d',run:()=>pSay('Each row is double the one before, because every cell passes its value to the two cells below it.')});return q},
+  symmetry(){const N=pVals.length,q=[];
+    for(let k=0;k<=Math.floor((N-1)/2);k++)q.push({d:'d',run:()=>{pUnmark('g1');pUnmark('g2');const L=[];
+      for(let r=k;r<N;r++){pC(r,k).classList.add('g1');pC(r,r-k).classList.add('g2');L.push(pV(r,k))}
+      pSay(`Diagonal ${k} from the left: ${pList(L,9)}. The same numbers run down diagonal ${k} from the right, so C(n,k) = C(n,n−k).`)}});
+    return q},
+  diagonals(){const N=pVals.length,names=['all 1s','the counting numbers','the triangular numbers','the tetrahedral numbers','the pentatope numbers'],q=[];
+    for(let k=0;k<Math.min(5,N);k++)q.push({d:'d',run:()=>{pUnmark('g4');const L=[];
+      for(let r=k;r<N;r++){pC(r,k).classList.add('g4');L.push(pV(r,k))}
+      pSay(`Diagonal ${k}: <b>${names[k]}</b> — ${pList(L,9)}`)}});
+    return q},
+  fibonacci(){const N=pVals.length,q=[],F=[1,1];for(let i=2;i<=N+1;i++)F.push(F[i-1]+F[i-2]);
+    for(let s=0;s<N;s++)q.push({d:'d',run:()=>{pUnmark('g1');const L=[];
+      for(let j=0;j<=Math.floor(s/2);j++){pC(s-j,j).classList.add('g1');L.push(pV(s-j,j))}
+      pSay(`Shallow diagonal ${s}: ${L.join(' + ')} = <b>${F[s]}</b>`)}});
+    q.push({d:'d',run:()=>pSay('The shallow diagonals add up to 1, 1, 2, 3, 5, 8, 13… the <b>Fibonacci numbers</b>.')});return q},
+  pow11(){const N=pVals.length,q=[];
+    for(let n=0;n<Math.min(N,9);n++)q.push({d:'d',run:()=>{pUnmark('g3');pCells[n].forEach(c=>c.classList.add('g3'));const r=pVals[n],v=Math.pow(11,n);
+      pSay(n<5?`Row ${n}: ${r.join(' ')} read as digits is <b>${v}</b> = 11${sup(n)}`:`Row ${n}: ${r.join(', ')}. Carry the tens and you get <b>${v}</b> = 11${sup(n)}`)}});
+    return q},
+  odd(){const q=[];
+    pVals.forEach((r,n)=>q.push({d:'f',run:()=>{r.forEach((v,k)=>{const c=pC(n,k);c.classList.remove('odd','ev');c.classList.add(v%2?'odd':'ev')});pSay(`Row ${n}: odd numbers dark, even numbers faded`)}}));
+    q.push({d:'d',run:()=>pSay('The odd entries form the <b>Sierpiński triangle</b>, a fractal hiding inside the table.')});return q},
+  expand(){const N=pVals.length,q=[];
+    for(let n=0;n<Math.min(N,9);n++)q.push({d:'d',run:()=>{pUnmark('g3');pCells[n].forEach(c=>c.classList.add('g3'));
+      const t=pVals[n].map((v,k)=>{const a=n-k,b=k;return(v>1||(a===0&&b===0)?v:'')+(a?'x'+(a>1?sup(a):''):'')+(b?'y'+(b>1?sup(b):''):'')}).join(' + ');
+      pSay(`(x+y)${sup(n)} = ${t}`+(n?`<br>The coefficients are exactly row ${n}.`:''))}});
+    return q}
+};
+function pDemoStart(name){
+  if(!pBuilt){if(!pStarted)pBuild();pSkip()}
+  clearTimeout(pTimer);pClearHl(true);pDemo=name;pMode='demo';pStart(PDEMOS[name]())}
+$('pn').oninput=pBuild;$('prebuild').onclick=pBuild;$('pskip').onclick=pSkip;
+$('pspd').oninput=pBtns;
+$('pplay').onclick=()=>{if(pI>=pQ.length)return;if(pPlaying){pPlaying=false;clearTimeout(pTimer)}else{pPlaying=true;pStep()}pBtns()};
+document.querySelectorAll('.pd').forEach(b=>b.onclick=()=>pDemoStart(b.dataset.d));
+
+/* Galton board: physics engine */
+let counts=[],total=0,marbles=[],running=true,acc=0,lastT=0,stk=[],P={},full=false,cvKey='';
+function geo(){const n=+$('gn').value,bw=560/(n+1),s=bw/52.7,r=7*s,pY=20+60*s,dy=.87*bw,yB=pY+n*dy,bottom=yB+250,cols=Math.max(1,Math.floor(bw/(2*r)));
+  return{n,bw,s,r,rp:3*s,dy,pY,yB,bottom,cx:300,cols,cap:cols*Math.floor(248/(2*r)),g:900*s,H0:bottom+44}}
+function initW(){P=geo();counts=Array(P.n+1).fill(0);stk=Array.from({length:P.n+1},()=>[]);total=0;marbles=[];full=false}
+function setPlayLabel(){$('gplay').textContent=full?'▶ Restart':running?'■ Pause':'▶ Resume'}
+function gReset(){initW();running=true;setPlayLabel();gDraw()}
+function spawn(d){marbles.push({x:300+(Math.random()-.5)*P.r*.8,y:20,vx:(Math.random()-.5)*4*P.s,vy:0,w:typeof d==='number'?d:0,st:0})}
+function bulk(c){for(let i=0;i<c;i++)spawn(i*.04)}
+function step(dt){const N=8,h=dt/N,{n,bw,r,rp,pY,dy,yB,cx,g,cols,bottom}=P;
+  const ax=g*Math.tan(+$('gp').value*Math.PI/180),L=cx-(n+1)/2*bw,R=cx+(n+1)/2*bw,dr=Math.exp(-3*h);
+  for(let i=marbles.length-1;i>=0;i--){const m=marbles[i];if(m.w>0){m.w-=dt;continue}
+    for(let q=0;q<N;q++){
+      m.vy+=g*h;m.vx=(m.vx+ax*h)*dr;m.x+=m.vx*h;m.y+=m.vy*h;
+      if(m.st===0){
+        if(m.x<L+r){m.x=L+r;if(m.vx<0)m.vx*=-.3}if(m.x>R-r){m.x=R-r;if(m.vx>0)m.vx*=-.3}
+        const a0=Math.max(0,Math.floor((m.y-pY)/dy)-1);
+        for(let a=a0;a<=Math.min(n-1,a0+3);a++){const py=pY+a*dy;if(Math.abs(m.y-py)>r+rp)continue;
+          const j=Math.round((m.x-cx)/bw+a/2);
+          for(let jj=j-1;jj<=j+1;jj++){if(jj<0||jj>a)continue;
+            const px=cx+(jj-a/2)*bw,dx=m.x-px,dz=m.y-py,d=Math.hypot(dx,dz),md=r+rp;
+            if(d<md&&d>1e-6){const nx=dx/d,ny=dz/d;m.x=px+nx*md;m.y=py+ny*md;const vn=m.vx*nx+m.vy*ny;if(vn<0){m.vx-=1.3*vn*nx;m.vy-=1.3*vn*ny}}}}
+        if(m.y>=yB){let k=Math.floor((m.x-cx)/bw+n/2+.5);k=Math.max(0,Math.min(n,k));
+          if(counts[k]>=P.cap){full=true;marbles.splice(i,1);break}
+          const idx=counts[k]++;total++;const row=Math.floor(idx/cols),col=idx%cols;
+          m.k=k;m.tx=cx+(k-n/2)*bw+(col-(cols-1)/2)*2*r+(Math.random()-.5)*r*.3;m.ty=bottom-(row+.5)*2*r;m.st=1;m.b=0}
+      }else{
+        const bx=cx+(m.k-n/2)*bw;
+        if(m.x<bx-bw/2+r){m.x=bx-bw/2+r;m.vx=Math.abs(m.vx)*.3}if(m.x>bx+bw/2-r){m.x=bx+bw/2-r;m.vx=-Math.abs(m.vx)*.3}
+        m.vx+=(m.tx-m.x)*20*h;
+        if(m.y>=m.ty){m.y=m.ty;if(!m.b&&m.vy>60*P.s){m.vy*=-.25;m.b=1}else{stk[m.k].push({x:m.tx,y:m.ty});marbles.splice(i,1);break}}
+      }}}}
+function gDraw(){
+  if(!P.n||counts.length!==+$('gn').value+1)initW();
+  const{n,bw,r,rp,pY,yB,bottom,cx,cols}=P,t=+$('gp').value;$('gnv').textContent=n;$('gpv').textContent=t+'°';
+  const cv=$('gc'),dpr=window.devicePixelRatio||1,w=cv.clientWidth,ch=Math.min(w*P.H0/600,680),key=w+'|'+ch+'|'+dpr;
+  if(key!==cvKey){cvKey=key;cv.style.height=ch+'px';cv.width=Math.round(w*dpr);cv.height=Math.round(ch*dpr)}
+  const sc=Math.min(w/600,ch/P.H0),g=cv.getContext('2d');
+  g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,cv.width,cv.height);
+  g.setTransform(dpr*sc,0,0,dpr*sc,dpr*(w-600*sc)/2,0);
+  const ink=css('--ink'),mute=css('--mute'),line=css('--line'),bar=css('--bar'),cur=css('--curve'),dot=css('--dot');
+  const L=cx-(n+1)/2*bw,R=cx+(n+1)/2*bw,dm=(x,y,c)=>{g.fillStyle=c;g.beginPath();g.arc(x,y,r*.94,0,7);g.fill();g.fillStyle='rgba(255,255,255,.4)';g.beginPath();g.arc(x-r*.3,y-r*.3,r*.3,0,7);g.fill()};
+  g.strokeStyle=mute;g.lineWidth=2;g.beginPath();g.moveTo(L,pY-30);g.lineTo(L,bottom);g.lineTo(R,bottom);g.lineTo(R,pY-30);g.stroke();
+  g.strokeStyle=line;g.lineWidth=1.5;g.beginPath();for(let k=1;k<=n;k++){const x=L+k*bw;g.moveTo(x,yB);g.lineTo(x,bottom)}g.stroke();
+  g.fillStyle=mute;for(let a=0;a<n;a++)for(let j=0;j<=a;j++){g.beginPath();g.arc(cx+(j-a/2)*bw,pY+a*P.dy,rp,0,7);g.fill()}
+  stk.forEach(s=>s.forEach(o=>dm(o.x,o.y,bar)));
+  if(total>0){const mu=n/2,v=n/4;g.strokeStyle=cur;g.lineWidth=2;g.beginPath();
+    for(let k=0;k<=n;k++){const y=bottom-total*norm(k,mu,v)/cols*2*r,x=cx+(k-n/2)*bw;k?g.lineTo(x,y):g.moveTo(x,y)}g.stroke();
+    g.fillStyle=dot;for(let k=0;k<=n;k++){g.beginPath();g.arc(cx+(k-n/2)*bw,bottom-total*binom(n,k,.5)/cols*2*r,4,0,7);g.fill()}}
+  marbles.forEach(m=>{if(m.w<=0)dm(m.x,m.y,cur)});
+  const fs=12/sc;g.font=fs+'px sans-serif';g.textAlign='center';
+  for(let k=0;k<=n;k++){const x=cx+(k-n/2)*bw;g.fillStyle=mute;if(bw*sc>=22||k%2===0)g.fillText('k='+k,x,bottom+fs*2.2);g.fillStyle=ink;if(bw*sc>=20)g.fillText(counts[k],x,bottom+fs*1.1)}
+  let s1=0,s2=0;counts.forEach((c,k)=>{s1+=k*c;s2+=k*k*c});const mean=total?s1/total:0,sd=total?Math.sqrt(Math.max(0,s2/total-mean*mean)):0;
+  $('gs').innerHTML=`Marbles <b>${total}</b> · actual mean <b>${mean.toFixed(2)}</b>, std. dev. <b>${sd.toFixed(2)}</b> · ideal coin <b>${(n/2).toFixed(1)}</b>, <b>${(Math.sqrt(n)/2).toFixed(2)}</b>`+(full?' · <b>A bin is full. Press Clear or Restart.</b>':'');
+}
+function frame(ts){const dt=Math.min(.05,(ts-lastT)/1000||0);lastT=ts;
+  if($('g').classList.contains('on')){
+    if(running){if(full||Math.max(...counts)>=P.cap-1){running=false;full=true;setPlayLabel()}else{acc+=dt*$('gs2').value*1.2;while(acc>=1){acc--;if(marbles.length<80)spawn()}}}
+    step(dt);if(full&&running){running=false;setPlayLabel()}gDraw()}
+  requestAnimationFrame(frame)}
+$('gplay').onclick=()=>{if(full){gReset();return}running=!running;setPlayLabel()};
+$('g1').onclick=()=>spawn();$('gbulk').onclick=()=>bulk(100);$('gbulk2').onclick=()=>bulk(500);
+$('grst').onclick=gReset;
+requestAnimationFrame(frame);
+
+/* Coin toss: 3D rigid-body physics (gravity, spin, gyroscopic motion, impulse collisions with bounce and friction) */
+const CR=1,CT=.14,CG=40,CDT=1/960,CIa=.5*CR*CR,CIp=(3*CR*CR+CT*CT)/12,CMU=.4,CE=.35;
+const CPTS=[];for(let i=0;i<16;i++){const a=i/16*2*Math.PI;for(const sz of[-1,1])CPTS.push([CR*Math.cos(a),CR*Math.sin(a),sz*CT/2])}
+function cIinv(R,v){const b0=(R[0]*v[0]+R[3]*v[1]+R[6]*v[2])/CIp,b1=(R[1]*v[0]+R[4]*v[1]+R[7]*v[2])/CIp,b2=(R[2]*v[0]+R[5]*v[1]+R[8]*v[2])/CIa;
+  return[R[0]*b0+R[1]*b1+R[2]*b2,R[3]*b0+R[4]*b1+R[5]*b2,R[6]*b0+R[7]*b1+R[8]*b2]}
+function cImpulse(c,rx,ry,rz,jx,jy,jz){c.vx+=jx;c.vy+=jy;c.vz+=jz;
+  const t=cIinv(c.R,[ry*jz-rz*jy,rz*jx-rx*jz,rx*jy-ry*jx]);c.w[0]+=t[0];c.w[1]+=t[1];c.w[2]+=t[2]}
+function cContact(c,n,off){
+  for(let it=0;it<3;it++){let maxd=0;const R=c.R;
+    const off0=Math.random()*CPTS.length|0,dir=Math.random()<.5?1:-1;
+    for(let q0=0;q0<CPTS.length;q0++){const P=CPTS[((off0+dir*q0)%CPTS.length+CPTS.length)%CPTS.length];
+      const rx=R[0]*P[0]+R[1]*P[1]+R[2]*P[2],ry=R[3]*P[0]+R[4]*P[1]+R[5]*P[2],rz=R[6]*P[0]+R[7]*P[1]+R[8]*P[2];
+      const d=n[0]*(c.x+rx)+n[1]*(c.y+ry)+n[2]*(c.z+rz)-off;if(d>=0)continue;if(-d>maxd)maxd=-d;
+      let vx=c.vx+c.w[1]*rz-c.w[2]*ry,vy=c.vy+c.w[2]*rx-c.w[0]*rz,vz=c.vz+c.w[0]*ry-c.w[1]*rx;
+      const vn=vx*n[0]+vy*n[1]+vz*n[2];if(vn>=0)continue;
+      let a=cIinv(R,[ry*n[2]-rz*n[1],rz*n[0]-rx*n[2],rx*n[1]-ry*n[0]]);
+      let k=1+((a[1]*rz-a[2]*ry)*n[0]+(a[2]*rx-a[0]*rz)*n[1]+(a[0]*ry-a[1]*rx)*n[2]);
+      const jn=-(1+(vn<-4?CE:0))*vn/k;cImpulse(c,rx,ry,rz,jn*n[0],jn*n[1],jn*n[2]);
+      vx=c.vx+c.w[1]*rz-c.w[2]*ry;vy=c.vy+c.w[2]*rx-c.w[0]*rz;vz=c.vz+c.w[0]*ry-c.w[1]*rx;
+      const vn2=vx*n[0]+vy*n[1]+vz*n[2],tx=vx-vn2*n[0],ty=vy-vn2*n[1],tz=vz-vn2*n[2],s=Math.hypot(tx,ty,tz);
+      if(s>1e-9){const ux=tx/s,uy=ty/s,uz=tz/s;a=cIinv(R,[ry*uz-rz*uy,rz*ux-rx*uz,rx*uy-ry*ux]);
+        k=1+((a[1]*rz-a[2]*ry)*ux+(a[2]*rx-a[0]*rz)*uy+(a[0]*ry-a[1]*rx)*uz);
+        const jt=Math.min(s/k,CMU*jn);cImpulse(c,rx,ry,rz,-jt*ux,-jt*uy,-jt*uz)}}
+    if(maxd>0){c.x+=n[0]*maxd*.8;c.y+=n[1]*maxd*.8;c.z+=n[2]*maxd*.8}else break}}
+function cStep(c,dt){
+  c.vy-=CG*dt;let R=c.R;
+  const w=c.w,b0=R[0]*w[0]+R[3]*w[1]+R[6]*w[2],b1=R[1]*w[0]+R[4]*w[1]+R[7]*w[2],b2=R[2]*w[0]+R[5]*w[1]+R[8]*w[2];
+  const Lx=CIp*b0,Ly=CIp*b1,Lz=CIa*b2;
+  const n0=b0-(b1*Lz-b2*Ly)/CIp*dt,n1=b1-(b2*Lx-b0*Lz)/CIp*dt,n2=b2-(b0*Ly-b1*Lx)/CIa*dt;
+  c.w=[R[0]*n0+R[1]*n1+R[2]*n2,R[3]*n0+R[4]*n1+R[5]*n2,R[6]*n0+R[7]*n1+R[8]*n2];
+  c.x+=c.vx*dt;c.y+=c.vy*dt;c.z+=c.vz*dt;
+  const W=c.w;
+  for(let j=0;j<3;j++){const a=R[j],b=R[3+j],d=R[6+j];
+    R[j]+=dt*(W[1]*d-W[2]*b);R[3+j]+=dt*(W[2]*a-W[0]*d);R[6+j]+=dt*(W[0]*b-W[1]*a)}
+  let l=Math.hypot(R[0],R[3],R[6]);R[0]/=l;R[3]/=l;R[6]/=l;
+  let dp=R[1]*R[0]+R[4]*R[3]+R[7]*R[6];R[1]-=dp*R[0];R[4]-=dp*R[3];R[7]-=dp*R[6];
+  l=Math.hypot(R[1],R[4],R[7]);R[1]/=l;R[4]/=l;R[7]/=l;
+  R[2]=R[3]*R[7]-R[6]*R[4];R[5]=R[6]*R[1]-R[0]*R[7];R[8]=R[0]*R[4]-R[3]*R[1];
+  if(c.y<CR+.15)cContact(c,[0,1,0],0);
+  const lx=c.x-c.x0;
+  if(lx<-2.4||lx>2.4||Math.abs(c.z)>2.9){
+    cContact(c,[1,0,0],c.x0-3.5);cContact(c,[-1,0,0],-(c.x0+3.5));cContact(c,[0,0,1],-4);cContact(c,[0,0,-1],-4)}
+  c.t+=dt;
+  const sp=c.vx*c.vx+c.vy*c.vy+c.vz*c.vz,wm=c.w[0]*c.w[0]+c.w[1]*c.w[1]+c.w[2]*c.w[2];
+  if(c.t>.3&&c.y<.3&&sp<.05&&wm<.4&&Math.abs(R[5])>.97)c.rt+=dt;else c.rt=0;
+  if(c.rt>.2||c.t>7){c.done=true;c.res=R[5]>0?1:0;c.vx=c.vy=c.vz=0;c.w=[0,0,0]}}
+function cNew(x0,r){
+  const u=()=>Math.random()*2-1,yaw=r*Math.PI*u(),cy=Math.cos(yaw),sy=Math.sin(yaw);
+  /* orientation = Ry(yaw) * Rx(-90deg): local z -> world +y (heads up) */
+  /* Rx(-90): [[1,0,0],[0,0,1],[0,-1,0]] ; Ry(yaw): [[cy,0,sy],[0,1,0],[-sy,0,cy]] ; product Ry*Rx */
+  const Rx=[1,0,0,0,0,1,0,-1,0],Ry=[cy,0,sy,0,1,0,-sy,0,cy],M=[];
+  for(let i=0;i<3;i++)for(let j=0;j<3;j++){let s=0;for(let k=0;k<3;k++)s+=Ry[3*i+k]*Rx[3*k+j];M.push(s)}
+  const om=28*(1+r*.6*u()),tl=r*.35*u();
+  return{x:x0+r*.3*u(),y:1.2,z:r*.5*u(),x0,vx:r*.4*u(),vy:17.9*(1+r*.22*u()),vz:r*.4*u(),R:M,
+    w:[om*Math.cos(tl),r*u(),om*Math.sin(tl)],t:0,rt:0,done:false,res:0}}
+
+/* Coin toss UI */
+let cCoins=[],cTrials=0,cCounts=[],cHeads=0,cLast=-1,cTallied=true,cAuto=false,cWait=0,cFast=0,cAcc=0,cLastT=0,cKey='';
+const cN=()=>+$('cn').value,cRnd=()=>+$('cr').value/100;
+function cIdle(){const n=cN();cCoins=[];for(let i=0;i<n;i++){const c=cNew((i-(n-1)/2)*2.6,0);c.y=.07;c.vx=c.vy=c.vz=0;c.w=[0,0,0];c.x=c.x0;c.z=0;c.done=true;c.res=1;cCoins.push(c)}}
+function cClear(){cCounts=Array(cN()+1).fill(0);cTrials=0;cHeads=0;cLast=-1;cTallied=true;cFast=0;cAcc=0;cWait=0;
+  $('cnv').textContent=cN();$('crv').textContent=Math.round(cRnd()*100)+'%';$('csv').textContent=(+$('cs').value/10).toFixed(1)+'×';cIdle();cHist()}
+function cThrow(){const n=cN(),r=cRnd();cCoins=[];for(let i=0;i<n;i++)cCoins.push(cNew((i-(n-1)/2)*2.6,r));cTallied=false}
+function cTally(){let h=0;cCoins.forEach(c=>h+=c.res);if(cCounts.length!==cN()+1)return;cCounts[h]++;cTrials++;cHeads+=h;cLast=h;cTallied=true;cWait=.9;cHist()}
+function cInstant(){cThrow();for(const c of cCoins)while(!c.done)cStep(c,CDT);cTally()}
+function cHist(){
+  if(!$('c').classList.contains('on'))return;
+  const n=cN(),mu=n/2,v=n/4,b=[],cu=[],ex=[];
+  for(let k=0;k<=n;k++){b.push(cTrials?(cCounts[k]||0)/cTrials:0);cu.push(norm(k,mu,v));ex.push(binom(n,k,.5))}
+  chart($('kc'),0,n,b,cu,ex);
+  $('cst').innerHTML=`Trials <b>${cTrials}</b> · coins per trial <b>${n}</b> · heads in last trial <b>${cLast<0?'–':cLast}</b>`+(cTrials?` · overall heads <b>${(cHeads/(cTrials*n)*100).toFixed(1)}%</b> (ideal 50%)`:'')+(cFast>0?` · running… <b>${cFast}</b> left`:'')}
+function cDraw(){
+  const cv=$('cc'),dpr=window.devicePixelRatio||1,w=cv.clientWidth,h=340,key=w+'|'+dpr;
+  if(!w)return;
+  if(key!==cKey){cKey=key;cv.style.height=h+'px';cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr)}
+  const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,w,h);
+  const n=cN(),s=Math.min(36,(w-16)/(n*2.6)),ox=w/2,oy=h-58,PH=.489,cC=Math.cos(PH),sC=Math.sin(PH);
+  const X=x=>ox+x*s,Y=(y,z)=>oy-(y*cC-z*sC)*s;
+  const mute=css('--mute'),ink=css('--ink'),line=css('--line');
+  const xl=-(n*1.3+.4),xr=n*1.3+.4;
+  g.fillStyle='rgba(120,130,150,.12)';g.strokeStyle=line;g.lineWidth=1;g.beginPath();
+  g.moveTo(X(xl),Y(0,-2.2));g.lineTo(X(xr),Y(0,-2.2));g.lineTo(X(xr),Y(0,2.2));g.lineTo(X(xl),Y(0,2.2));g.closePath();g.fill();g.stroke();
+  g.setLineDash([3,4]);g.beginPath();for(let i=1;i<n;i++){const x=(i-n/2)*2.6;g.moveTo(X(x),Y(0,-2.2));g.lineTo(X(x),Y(0,2.2))}g.stroke();g.setLineDash([]);
+  const sP=Math.sin(PH),NS=24;
+  cCoins.forEach(c=>{
+    const R=c.R,ex=[R[0],R[3],R[6]],ey=[R[1],R[4],R[7]],ez=[R[2],R[5],R[8]];
+    g.fillStyle='rgba(0,0,0,'+(.3/(1+c.y*.3)).toFixed(3)+')';g.beginPath();g.ellipse(X(c.x),Y(0,c.z),s*1.02,s*1.02*sC,0,0,7);g.fill();
+    const rim=(a,sz)=>{const lx=Math.cos(a),ly=Math.sin(a);
+      const dx=lx*ex[0]+ly*ey[0]+sz*CT/2*ez[0],dy=lx*ex[1]+ly*ey[1]+sz*CT/2*ez[1],dz=lx*ex[2]+ly*ey[2]+sz*CT/2*ez[2];
+      return[X(c.x+dx),Y(c.y+dy,c.z+dz)]};
+    g.fillStyle='#8a7a4a';
+    for(let i=0;i<NS;i++){const a0=i/NS*2*Math.PI,a1=(i+1)/NS*2*Math.PI,am=(a0+a1)/2,lx=Math.cos(am),ly=Math.sin(am);
+      const ny=lx*ex[1]+ly*ey[1],nz=lx*ex[2]+ly*ey[2];if(ny*sP+nz*cC<=0)continue;
+      const p0=rim(a0,1),p1=rim(a1,1),p2=rim(a1,-1),p3=rim(a0,-1);
+      g.beginPath();g.moveTo(p0[0],p0[1]);g.lineTo(p1[0],p1[1]);g.lineTo(p2[0],p2[1]);g.lineTo(p3[0],p3[1]);g.closePath();g.fill();g.strokeStyle='#8a7a4a';g.lineWidth=.6;g.stroke()}
+    const sg=(ez[1]*sP+ez[2]*cC)>0?1:-1,fx=c.x+sg*CT/2*ez[0],fy=c.y+sg*CT/2*ez[1],fz=c.z+sg*CT/2*ez[2];
+    const A=sg>0?ex:[-ex[0],-ex[1],-ex[2]],B=ey,sv=v=>[v[0]*s,-(v[1]*cC-v[2]*sC)*s],a=sv(A),b=sv(B);
+    g.setTransform(dpr*a[0],dpr*a[1],-dpr*b[0],-dpr*b[1],dpr*X(fx),dpr*Y(fy,fz));
+    g.fillStyle=sg>0?'#e3b84a':'#aeb6c4';g.beginPath();g.arc(0,0,1,0,7);g.fill();
+    g.lineWidth=.06;g.strokeStyle='rgba(0,0,0,.4)';g.stroke();
+    g.lineWidth=.04;g.strokeStyle='rgba(0,0,0,.2)';g.beginPath();g.arc(0,0,.8,0,7);g.stroke();
+    g.font='bold 1.05px sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillStyle=sg>0?'rgba(70,50,10,.9)':'rgba(40,50,65,.9)';g.fillText(sg>0?'H':'T',0,.04);
+    g.setTransform(dpr,0,0,dpr,0,0);
+    if(c.done){g.fillStyle=ink;g.font='600 13px sans-serif';g.textAlign='center';g.textBaseline='alphabetic';g.fillText(c.res?'H':'T',X(c.x0),Y(0,2.2)+17)}
+  })}
+function cFrame(ts){const dt=Math.min(.05,(ts-cLastT)/1000||0);cLastT=ts;
+  if($('c').classList.contains('on')){
+    if(cFast>0){const t0=performance.now();while(cFast>0&&performance.now()-t0<12){cInstant();cFast--}cHist()}
+    else if(cCoins.length&&!cTallied){
+      cAcc+=dt*(+$('cs').value)/10;let k=0;
+      while(cAcc>=CDT&&k++<64){cAcc-=CDT;for(const c of cCoins)if(!c.done)cStep(c,CDT)}
+      if(k>=64)cAcc=0;
+      if(cCoins.every(c=>c.done))cTally()}
+    else if(cAuto&&cTallied){cWait-=dt;if(cWait<=0)cThrow()}
+    cDraw()}
+  requestAnimationFrame(cFrame)}
+$('cgo').onclick=()=>{if(cFast>0||!cTallied)return;cThrow()};
+$('cauto').onclick=()=>{cAuto=!cAuto;$('cauto').textContent='Auto-throw: '+(cAuto?'on':'off');if(cAuto&&cTallied)cWait=0};
+$('cfast').onclick=()=>{cFast+=100};
+$('crst').onclick=cClear;
+$('cn').oninput=cClear;$('cr').oninput=cClear;
+$('cs').oninput=()=>{$('csv').textContent=(+$('cs').value/10).toFixed(1)+'×'};
+
+/* Tabs */
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===b.dataset.t));
+  redraw();if(b.dataset.t==='p'&&!pStarted)pBuild()});
+function redraw(){gDraw();aDraw();cDraw();cHist()}
+matchMedia('(prefers-color-scheme:dark)').addEventListener('change',redraw);
+addEventListener('resize',redraw);
+gReset();aDraw();pInit();cClear();requestAnimationFrame(cFrame);
+</script>
+</body>
+</html>
