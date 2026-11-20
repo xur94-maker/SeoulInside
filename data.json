@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "Anthropic becomes one of world's most valuable public companies in stock market debut",
+      "link": "https://www.bbc.co.uk/news/articles/c3x29ggenz12o?at_medium=RSS&at_campaign=rss",
+      "date": "Thu, 19 Nov 2026 23:33:51 GMT",
+      "desc": "Anthropic is the first purely AI company to be publicly listed, creating a test for the entire industry."
+    },
+    {
+      "title": "'I tell my son it's just fireworks': People inside besieged Yemeni city speak to BBC",
+      "link": "https://www.bbc.co.uk/news/articles/cx7v2d8q879eo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 20 Nov 2026 00:13:21 GMT",
+      "desc": "Orla Guerin speaks to seven people trapped in Taiz by the Houthis who reveal what life is like under siege."
+    },
+    {
       "title": "Myanmar committed genocide against Rohingya minority, top UN court rules",
       "link": "https://www.bbc.co.uk/news/articles/c804wzp20ddvo?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 19 Nov 2026 20:07:02 GMT",
       "desc": "The unprecedented International Court of Justice verdict concerns a 2017 military crackdown that killed thousands."
     },
     {
+      "title": "Europe ready for talks with Russia on ending war in Ukraine, leaders say",
+      "link": "https://www.bbc.co.uk/news/articles/ckzd9nln5e6go?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 20 Nov 2026 00:50:24 GMT",
+      "desc": "European allies of Ukraine say they have a \"united\" negotiating position at a summit in Berlin."
+    },
+    {
       "title": "Trump, Putin and Xi release 'peace declaration' after historic meeting",
       "link": "https://www.bbc.co.uk/news/articles/c623j4ln97x7o?at_medium=RSS&at_campaign=rss",
       "date": "Thu, 19 Nov 2026 17:38:22 GMT",
       "desc": "While the presidents have previously met for one-on-one meetings, this is their first trilateral discussion."
-    },
-    {
-      "title": "Europe ready for talks with Russia on ending war in Ukraine, leaders say",
-      "link": "https://www.bbc.co.uk/news/articles/ckzd9nln5e6go?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 19 Nov 2026 21:21:43 GMT",
-      "desc": "European allies of Ukraine say they have a \"united\" negotiating position at a summit in Berlin."
-    },
-    {
-      "title": "Dozens missing after boat carrying migrants sinks off Senegal's coast",
-      "link": "https://www.bbc.co.uk/news/articles/c58j484089ewo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 19 Nov 2026 15:52:26 GMT",
-      "desc": "At least four bodies have been recovered from the boat which was reportedly carrying between 50 and 100 people."
-    },
-    {
-      "title": "Putin vows 'far more painful' response to Ukraine's strikes on Crimean Bridge",
-      "link": "https://www.bbc.co.uk/news/articles/cm879dqn3e1jo?at_medium=RSS&at_campaign=rss",
-      "date": "Thu, 19 Nov 2026 13:07:35 GMT",
-      "desc": "The bridge - a symbol of Russia's occupation of the Crimean Peninsula - suffered major damaged following a combined attack by Ukraine earlier this week."
     }
   ],
   "koreaNews": [
@@ -39,10 +39,16 @@
       "desc": "South Korea’s Exports Top $1 Trillion for First Time on AI Boom&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQYjJyUW83NEllOTVXWDNHUnY0UW85MjF2dzVVQ1NxOVBGaW1EY0trbjRZZU5zZWFLUnZnQ1RGUkhiM3ZmZVA2VUxZNm5UQlpJR2F2OXotX0EzOUJJdHNkZlhCUXVnM2xqaEZ1Zmh6R19sSmUyelZzSVJSSkVTZHBvd2ZUQkNJOFZPaEZ6amhLd1BGWlcxd2M4N0pLa0J5Z28taFE2M293Z1puMWViY3FhZDh6WXd4SjFsNzg0dkZ3?oc=5",
-      "date": "Thu, 19 Nov 2026 06:29:00 GMT",
-      "desc": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom&nbsp;&nbsp;Reuters"
+      "title": "CCIA Statement on One-Year Anniversary of U.S.-Korea Joint Fact Sheet on U.S.-Korean Economic Relations - CCIA",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNQU0yeHZpVjRDSHoxbzF6UjZfRGdScjRpQXhucDFhSGdiU1RNT2ZHRTg0eVh0TlRhMHN4LWczM0xVZkMtcGtsUW82dWtlekMyZEFZQTJLVjFIbF9QeGxyTXlldWdaYnE5djQ4SDhoQ0JaZTlOaGxxM1BuM19DZmVySGVlOGhPRDB6NXp6YWdGM3A3RVhuclg2cEFjc2lOSVpYeTlPQnBKR1JJUjdJdjhEa0JGN3pkbnh2YjRWZWdzcXd4NnJzQ0QxeVFGX25KSkdZ?oc=5",
+      "date": "Tue, 17 Nov 2026 20:46:06 GMT",
+      "desc": "CCIA Statement on One-Year Anniversary of U.S.-Korea Joint Fact Sheet on U.S.-Korean Economic Relations&nbsp;&nbsp;CCIA"
+    },
+    {
+      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
+      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
+      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
     },
     {
       "title": "AI Boom Reshapes South Korea’s Export Economy - Businesskorea",
@@ -51,16 +57,10 @@
       "desc": "AI Boom Reshapes South Korea’s Export Economy&nbsp;&nbsp;Businesskorea"
     },
     {
-      "title": "China, South Korea ‘substantively conclude’ talks on expanding free-trade deal - South China Morning Post",
-      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQMEhlc0Z6MXRVeDh6YnZxZEdhZ0d4WTgtdnFGcXc0a0V3ZXFoNnpBZGdHV0NMdHI4LVRLV1Vaa2Zsem44azBwcHk1anlYY0t1M0V4UkVaeDQyd1NBS3c1WndRaU55WHVHSm43OGVZcGJWbzBCNDNvMW90V3dRQS1jeWtoZWt4VzRxRzl1aUx3STlpb0VxZ2FHaVZwVzVpMlp2eDVlY0JUTzh5cElpdDRSTmlQaUdrTUpRZWNqcWpvakFoNEUwUkpIa1NuSnR1aW52Y3dRUFk0ONIB1wFBVV95cUxONGZONy1zaDd5UmtiV0Z5UGF5N2hHZjRPQkxjUHZUOGxvLXlzbUlva01zaTJvUnBlR3BFeU0xTmZCMDV4aFVIanVWbVdIajlGbW5PVHZENkdVOTFDampJV1BTbS1zYkVTZ051dVFFOGJqZjFIZVRST01vc3ptbEdCYnVtUGNQbWo0Zm82aG93OWxrM084TjU0Ti1CcUkxNFNxVWdEZERyeFhpdFB0dE5QY0QzYnB0bmxOSW9Eb2RIT2hncjh3c1U1SE5OYnk2SDRkci1EblV3QQ?oc=5",
-      "date": "Thu, 19 Nov 2026 07:00:06 GMT",
-      "desc": "China, South Korea ‘substantively conclude’ talks on expanding free-trade deal&nbsp;&nbsp;South China Morning Post"
-    },
-    {
-      "title": "CCIA Statement on One-Year Anniversary of U.S.-Korea Joint Fact Sheet on U.S.-Korean Economic Relations - CCIA",
-      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNQU0yeHZpVjRDSHoxbzF6UjZfRGdScjRpQXhucDFhSGdiU1RNT2ZHRTg0eVh0TlRhMHN4LWczM0xVZkMtcGtsUW82dWtlekMyZEFZQTJLVjFIbF9QeGxyTXlldWdaYnE5djQ4SDhoQ0JaZTlOaGxxM1BuM19DZmVySGVlOGhPRDB6NXp6YWdGM3A3RVhuclg2cEFjc2lOSVpYeTlPQnBKR1JJUjdJdjhEa0JGN3pkbnh2YjRWZWdzcXd4NnJzQ0QxeVFGX25KSkdZ?oc=5",
-      "date": "Tue, 17 Nov 2026 20:46:06 GMT",
-      "desc": "CCIA Statement on One-Year Anniversary of U.S.-Korea Joint Fact Sheet on U.S.-Korean Economic Relations&nbsp;&nbsp;CCIA"
+      "title": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQYjJyUW83NEllOTVXWDNHUnY0UW85MjF2dzVVQ1NxOVBGaW1EY0trbjRZZU5zZWFLUnZnQ1RGUkhiM3ZmZVA2VUxZNm5UQlpJR2F2OXotX0EzOUJJdHNkZlhCUXVnM2xqaEZ1Zmh6R19sSmUyelZzSVJSSkVTZHBvd2ZUQkNJOFZPaEZ6amhLd1BGWlcxd2M4N0pLa0J5Z28taFE2M293Z1puMWViY3FhZDh6WXd4SjFsNzg0dkZ3?oc=5",
+      "date": "Thu, 19 Nov 2026 06:29:00 GMT",
+      "desc": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom&nbsp;&nbsp;Reuters"
     },
     {
       "title": "Samsung, SK Hynix: Demand Outpaces Semiconductor Supply - 조선일보",
@@ -69,10 +69,10 @@
       "desc": "Samsung, SK Hynix: Demand Outpaces Semiconductor Supply&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "Trump-Xi Summit: Samsung, SK Hynix China Plants on Edge Over US Equipment Rules - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5xdnY2TzlwSnhuTlBrZGZhMGNmN054TkpCWTdwNUg0SEZWeDBWb0JfbnlYd3ZOMmlVRlM4dWNVNUQzR29QTGdJU2Q3WkVxZmN2b2VnRk5xRGFuLTFTN3Jjc011TlI4bEtVS1hpM29Rai03Mldad0E?oc=5",
-      "date": "Thu, 19 Nov 2026 03:06:00 GMT",
-      "desc": "Trump-Xi Summit: Samsung, SK Hynix China Plants on Edge Over US Equipment Rules&nbsp;&nbsp;BigGo Finance"
+      "title": "Samsung Electronics, SK hynix slide on Wall Street tech selloff - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA0dEpTcnZ0amJQLV9pcnROZ01fQ0h0WDVmVllmNFBfQ092LXM2TzR0MFctRkVvczE3MFRiTXVtZEl5RERyWlB5VHYxSVhLSnRKc0E?oc=5",
+      "date": "Fri, 20 Nov 2026 01:46:41 GMT",
+      "desc": "Samsung Electronics, SK hynix slide on Wall Street tech selloff&nbsp;&nbsp;매일경제"
     },
     {
       "title": "Samsung, SK hynix, and Micron form unlikely alliance to standardize robot charging as chipmakers push toward unmanned chip fabs — standard specs would allow manufacturer-agnostic charging equipment - Tom's Hardware",
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 196900.0,
-      "change": 6600.0,
-      "pct": 3.47,
+      "price": 184800.0,
+      "change": -9900.0,
+      "pct": -5.08,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1183000.0,
-      "change": 85000.0,
-      "pct": 7.74,
+      "price": 1112000.0,
+      "change": -32000.0,
+      "pct": -2.8,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 267500.0,
-      "change": 8500.0,
-      "pct": 3.28,
+      "price": 256000.0,
+      "change": -11000.0,
+      "pct": -4.12,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 91500.0,
-      "change": -600.0,
-      "pct": -0.65,
+      "price": 88700.0,
+      "change": -3500.0,
+      "pct": -3.8,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 168300.0,
-      "change": -1700.0,
-      "pct": -1.0,
+      "price": 163600.0,
+      "change": -6700.0,
+      "pct": -3.93,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5137.89,
-      "change": 169.41,
-      "pct": 3.41,
+      "price": 4912.7,
+      "change": -154.74,
+      "pct": -3.05,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1334.45,
-      "change": 1.44,
-      "pct": 0.11,
+      "price": 1338.08,
+      "change": 7.68,
+      "pct": 0.58,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-19 21:54 UTC"
+  "updatedAt": "2026-11-20 02:48 UTC"
 }
