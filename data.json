@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "UK to explore even closer ties with EU after agreeing deal, says Burnham",
+      "link": "https://www.bbc.co.uk/news/articles/c6jreyqgw4e9o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 20 Nov 2026 17:49:48 GMT",
+      "desc": "The UK-EU deal agreed on Friday covers British food exports, emissions trading and a youth experience scheme."
+    },
+    {
       "title": "Russian missile hits Poland as Ukraine's allies hold military exercise, says Tusk",
       "link": "https://www.bbc.co.uk/news/articles/cqx2x9dklxnro?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 20 Nov 2026 16:54:29 GMT",
@@ -13,54 +19,48 @@
       "desc": "Russia launched one of its biggest air attacks yet as it rejected the prospect of security guarantees for Ukraine."
     },
     {
+      "title": "Gérard Depardieu and French author investigated over sexual allegations",
+      "link": "https://www.bbc.co.uk/news/articles/c9ly43pj10mvo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 20 Nov 2026 19:45:20 GMT",
+      "desc": "A judicial investigation was launched after a complaint was filed last year over \"allegations of a sexual nature\"."
+    },
+    {
       "title": "Anthropic shares fall after blockbuster opening as wider tech sell-off continues",
       "link": "https://www.bbc.co.uk/news/articles/c6808ym10vzgo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 20 Nov 2026 17:36:29 GMT",
+      "date": "Fri, 20 Nov 2026 20:00:53 GMT",
       "desc": "Other tech companies have also taken a hit as share markets broadly slump."
-    },
-    {
-      "title": "Nearly 600 women killed in South Africa within three months",
-      "link": "https://www.bbc.co.uk/news/articles/c69vwyjp0339o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 20 Nov 2026 15:55:16 GMT",
-      "desc": "Police officials called for \"greater efforts to prevent... violence\" against women and children."
-    },
-    {
-      "title": "Texas death-row inmate screams as execution takes more than one hour",
-      "link": "https://www.bbc.co.uk/news/articles/ck20vl1dd8qzo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 20 Nov 2026 12:42:37 GMT",
-      "desc": "This prolonged execution comes weeks after Christa Pike survived the lethal injection of the same drug."
     }
   ],
   "koreaNews": [
-    {
-      "title": "Why the midterms matter for the US-South Korea alliance - Brookings",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOREtwb1FyT2xMdmpQMXFpZjVPZm1HQmFBUFhVZjliVE9DdFdXNTNhRlZnRE5uTG44WVRZcG5Lck5Ob2MzSk5zZThpdkVtZnMxemNPajRfc0RNeFdRczU5OGViQ1hlcW1SeERWdTJ3QU1MTWxvUnc3QjZ0UU9qTG5VRVhlQ1kzN0dJTG1UR05pZ3gySDBBTWc?oc=5",
-      "date": "Fri, 20 Nov 2026 14:02:04 GMT",
-      "desc": "Why the midterms matter for the US-South Korea alliance&nbsp;&nbsp;Brookings"
-    },
-    {
-      "title": "North Korea - Economy, Resources, Trade - Britannica",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
-      "date": "Tue, 17 Nov 2026 08:00:00 GMT",
-      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
-    },
-    {
-      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
-      "date": "Mon, 26 Oct 2026 23:42:05 GMT",
-      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "Take Five: Shopping, chips and central banks - Yahoo Finance",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPVkNJUnViS1dRU2Rmekk2OWIzN21NY2ZMSDhGNjNPcGFnRWpaczM1ZkJaT0pxeUFiLWdvZ0hnVXk2OGJORUJVdnE3TlpiV251TlRmb1dHMlV2ZHhQMDAxS2dlc2c0SXYzS1E1d3MwSkZpOXRYMVViX2wyMlpGNGxYTGJta2tuaFNkU1B0blFVT3dPdk5Renc?oc=5",
-      "date": "Fri, 20 Nov 2026 11:07:24 GMT",
-      "desc": "Take Five: Shopping, chips and central banks&nbsp;&nbsp;Yahoo Finance"
-    },
     {
       "title": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom - Reuters",
       "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQYjJyUW83NEllOTVXWDNHUnY0UW85MjF2dzVVQ1NxOVBGaW1EY0trbjRZZU5zZWFLUnZnQ1RGUkhiM3ZmZVA2VUxZNm5UQlpJR2F2OXotX0EzOUJJdHNkZlhCUXVnM2xqaEZ1Zmh6R19sSmUyelZzSVJSSkVTZHBvd2ZUQkNJOFZPaEZ6amhLd1BGWlcxd2M4N0pLa0J5Z28taFE2M293Z1puMWViY3FhZDh6WXd4SjFsNzg0dkZ3?oc=5",
       "date": "Thu, 19 Nov 2026 06:29:00 GMT",
       "desc": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom&nbsp;&nbsp;Reuters"
+    },
+    {
+      "title": "South Korea’s Exports Top $1 Trillion for First Time on AI Boom - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNWENQYzJENEk2cFdxcENHbGpRQl9uZ0sxeURRNldsa3NQWWJ1Z3p6ZEhzMTZ1OHN1dGRZTFNyVlNYZ01mLXByWUdWV2tLR0RJUWFHWGowTmpXR0lmdDF2Y1NLa0d6RGdEcWgzcGlFSlkxX2ppWFo4Q3d4YzNQR0owb2JGbVBZMW9PTEZNM3ZEOFFCRUZVSDJiMEczZDRIUkpRbmM4UGxSNTFZT3BtZnJOdnRRWQ?oc=5",
+      "date": "Thu, 19 Nov 2026 08:25:53 GMT",
+      "desc": "South Korea’s Exports Top $1 Trillion for First Time on AI Boom&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "Korea becomes world's 4th country to reach $1 tril. in annual exports - The Korea Times",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdWR2Qk9WSmJ3VWQ5SVN4SXd3UzlUUnR0RDl1TUpRODctQTJqZTdsOVpKVUVzUmwxMTd1eUNEUWVSV0Z4dFF0bGdGYlBhYk9abGhqZ1A4bjVscWFyZ0Q4Qk9oTGhNd1BWME44QXdBQnNJY3ZhYlBveDJHSE9XSEFpcW04dy1PSHRDUUVVa1dKVG01aFd5ZFdUUFFVMWhUSmp1WjhrNXQ4Ti0xVEZnMkhMZzhqSjRhWmhOUHcw0gHAAUFVX3lxTE0taEZ3YUtUZklsbGZBckVndnFDM0pqVzdSbGJrbEVDeHRYY24tSEJYUFd5U21Nd1pDYVZ4X0N5ZGYwR0ZMcDFLbWFEVXV3al9PS0NXMW9vOXpLd3RHWnBNVlNETjVzMDNfeFBPXzZvUXNCei05VUJsTmFUUzBuQkI5ZFUwb2psUE5QTVEzRGdrcThVV1Rvc2szQ2NCRkxWTVJoaWhOSzhKb3pGVE1EZ1dvTkV4b0JoWm0tNHlDS2VERQ?oc=5",
+      "date": "Thu, 19 Nov 2026 05:37:06 GMT",
+      "desc": "Korea becomes world's 4th country to reach $1 tril. in annual exports&nbsp;&nbsp;The Korea Times"
+    },
+    {
+      "title": "South Korea rides AI boom to new height as exports hit $1 trillion - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNb0Z1c1NPbHZaLVJKeUFuNlhzX01RSU1rSnlYckpRVkxwTzN1eEFVeG1iU3lKUzVqR2RTbDBtWjhiNVNBVmdHWklvUlJUbXJXbkpmbF9jczRDa0c0aUp3ckY2YUJTTHl2eWE0STlPSU9fUkVpZzM5eG1YN3B1RXBNclB3YXk5WWh1eUdqSUEzWUM1UzI2Z0RrTFJfazdUQQ?oc=5",
+      "date": "Thu, 19 Nov 2026 07:22:00 GMT",
+      "desc": "South Korea rides AI boom to new height as exports hit $1 trillion&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
+      "title": "China to Lift Korean Culture Ban After Decade - Seoul Economic Daily",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOd2xWVEdYNEpwNTl0NnFSbV9nMVB2MjZZcVZpbHpJWDJpWU42T1FhVXlEdDdGeU9lV2N4SFBnOEpwdXd1blRXTG9qWk1wYU9Xem1SVndmQXU2Y1IzOTNYVkRvazFWdVZDM0lyaVA1bnh1cXBkcWFkeExEUk1ZbmFTblJLMU9pTkFVZzFZRnNVWUFlQQ?oc=5",
+      "date": "Wed, 18 Nov 2026 08:49:41 GMT",
+      "desc": "China to Lift Korean Culture Ban After Decade&nbsp;&nbsp;Seoul Economic Daily"
     },
     {
       "title": "Samsung, SK Hynix investors search for answers, but relief remains elusive - KED Global",
@@ -75,99 +75,99 @@
       "desc": "Samsung, SK Hynix: Demand Outpaces Semiconductor Supply&nbsp;&nbsp;조선일보"
     },
     {
-      "title": "South Korea's Stock Market and the Nikkei 225 Sink More Than 4% as the AI Selloff Spreads From Wall Street. Here's How Much of a Target-Date Fund Is in Samsung, SK Hynix and TSMC - 24/7 Wall St.",
-      "link": "https://news.google.com/rss/articles/CBMivgJBVV95cUxNcVR2UnlLWGVWNWRLajg1SGVQX3FoeEFPN2RSTDlXZURZUTM0NmQtWmJZRV9YS1Ftc0w2VkJRVGFneUo5ODJQRzNTaHJMTFZHTHI2SjhFdTNWXzRYSkh3aXpBX180cTlHTTVMNUoxLXpwUUNfcWtTN0F0cjcwSGY1cm4ta3Q1eUJMeHZaT2w0dUZndjdpNlRNRi00dGJnaTk2ZDFkeXpqYWQ5NW5Qak9nZTFaX3FydnhQR01VU2h4UDJ1T2ktcnlNTTZwU0wwbXJKdFBJOHN2TEh2ZW9CT3l6dUZzbDQ1LXBZTjR2UzY3T1lBNWswTjJFaTVPM0RCVXh0blNQMy1MZmRkUmpla1NoYVFsZXZQNU90cjNQWmxXTkJCSy1CcW0zdVJOSTNScENJdUVKVFpvbFJGcEVyLWc?oc=5",
-      "date": "Fri, 20 Nov 2026 03:51:00 GMT",
-      "desc": "South Korea's Stock Market and the Nikkei 225 Sink More Than 4% as the AI Selloff Spreads From Wall Street. Here's How Much of a Target-Date Fund Is in Samsung, SK Hynix and TSMC&nbsp;&nbsp;24/7 Wall "
+      "title": "Retail Investors in Samsung, SK Hynix at Breaking Point as Shares Sink Again; Kospi Falls Below 5,000 - bloomingbit",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1nZ1BOZ1NIQ1FHRWg1UWpzQ3ljb2VKSnVaWTRPcHlyUDJmX2c0aXd2ekI4a1NEbUR1XzlTODFVZmNGVVZQNDBKeEcyZzdFdzB3VThESQ?oc=5",
+      "date": "Fri, 20 Nov 2026 13:10:19 GMT",
+      "desc": "Retail Investors in Samsung, SK Hynix at Breaking Point as Shares Sink Again; Kospi Falls Below 5,000&nbsp;&nbsp;bloomingbit"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 135.24,
-      "change": -15.72,
-      "pct": -10.41,
+      "price": 125.53,
+      "change": -25.43,
+      "pct": -16.85,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 323.29,
-      "change": -39.33,
-      "pct": -10.85,
+      "price": 318.71,
+      "change": -43.91,
+      "pct": -12.11,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 432.62,
-      "change": -97.52,
-      "pct": -18.39,
+      "price": 424.39,
+      "change": -105.75,
+      "pct": -19.95,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 52.71,
-      "change": -1.96,
-      "pct": -3.59,
+      "price": 51.28,
+      "change": -3.39,
+      "pct": -6.2,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 154.94,
-      "change": -4.87,
-      "pct": -3.04,
+      "price": 149.94,
+      "change": -9.87,
+      "pct": -6.18,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 156.54,
-      "change": -26.22,
-      "pct": -14.35,
+      "price": 152.2,
+      "change": -30.56,
+      "pct": -16.72,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 273.12,
-      "change": -9.32,
-      "pct": -3.3,
+      "price": 265.29,
+      "change": -17.15,
+      "pct": -6.07,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 345.78,
-      "change": -6.67,
-      "pct": -1.89,
+      "price": 342.56,
+      "change": -9.89,
+      "pct": -2.81,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 488.26,
-      "change": -20.03,
-      "pct": -3.94,
+      "price": 484.52,
+      "change": -23.77,
+      "pct": -4.68,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 7016.49,
-      "change": -307.14,
-      "pct": -4.19,
+      "price": 6910.39,
+      "change": -413.24,
+      "pct": -5.64,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 23013.84,
-      "change": -1416.04,
-      "pct": -5.8,
+      "price": 22617.73,
+      "change": -1812.15,
+      "pct": -7.42,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1343.1,
-      "change": 12.7,
-      "pct": 0.95,
+      "price": 1345.89,
+      "change": 15.49,
+      "pct": 1.16,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-20 17:40 UTC"
+  "updatedAt": "2026-11-20 21:36 UTC"
 }
