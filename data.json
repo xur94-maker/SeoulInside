@@ -1,6 +1,12 @@
 {
   "globalNews": [
     {
+      "title": "Tech stock sell-off drags markets down as Anthropic shares slide",
+      "link": "https://www.bbc.co.uk/news/articles/c6808ym10vzgo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 20 Nov 2026 22:42:47 GMT",
+      "desc": "Pressures weighed on US markets, with the S&P 500 and the Dow Jones Industrial Average pushed into correction territory."
+    },
+    {
       "title": "UK to explore even closer ties with EU after agreeing deal, says Burnham",
       "link": "https://www.bbc.co.uk/news/articles/c6jreyqgw4e9o?at_medium=RSS&at_campaign=rss",
       "date": "Fri, 20 Nov 2026 17:49:48 GMT",
@@ -9,58 +15,52 @@
     {
       "title": "Russian missile hits Poland as Ukraine's allies hold military exercise, says Tusk",
       "link": "https://www.bbc.co.uk/news/articles/cqx2x9dklxnro?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 20 Nov 2026 16:54:29 GMT",
+      "date": "Sat, 21 Nov 2026 02:09:46 GMT",
       "desc": "Nobody was hurt and no damage has been reported, but Warsaw described the incident as a \"provocation\" from Moscow."
     },
     {
-      "title": "Russia targets Kyiv crossings days after Ukraine hits Crimean Bridge",
-      "link": "https://www.bbc.co.uk/news/articles/c6x29gn4pdn9o?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 20 Nov 2026 13:01:16 GMT",
-      "desc": "Russia launched one of its biggest air attacks yet as it rejected the prospect of security guarantees for Ukraine."
+      "title": "French police officers sentenced for beating of music producer Michel Zecler",
+      "link": "https://www.bbc.co.uk/news/articles/ck9d7e9wvvweo?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 20 Nov 2026 22:37:09 GMT",
+      "desc": "The court has upheld the 2020 beating of the black music producer as an aggravated circumstance of racism."
     },
     {
-      "title": "Gérard Depardieu and French author investigated over sexual allegations",
-      "link": "https://www.bbc.co.uk/news/articles/c9ly43pj10mvo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 20 Nov 2026 19:45:20 GMT",
-      "desc": "A judicial investigation was launched after a complaint was filed last year over \"allegations of a sexual nature\"."
-    },
-    {
-      "title": "Anthropic shares fall after blockbuster opening as wider tech sell-off continues",
-      "link": "https://www.bbc.co.uk/news/articles/c6808ym10vzgo?at_medium=RSS&at_campaign=rss",
-      "date": "Fri, 20 Nov 2026 20:00:53 GMT",
-      "desc": "Other tech companies have also taken a hit as share markets broadly slump."
+      "title": "In a year of AI solving maths problems, Anthropic may have just solved the biggest",
+      "link": "https://www.bbc.co.uk/news/articles/c6pqr2g7w059o?at_medium=RSS&at_campaign=rss",
+      "date": "Fri, 20 Nov 2026 23:08:57 GMT",
+      "desc": "A mathematician at Anthropic says he used an AI to prove the famed Riemann hypothesis, though verification will take some time."
     }
   ],
   "koreaNews": [
     {
+      "title": "The Midterms Gave the U.S.-South Korea Alliance New Defenders in Congress - Korea Economic Institute of America -",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPdmFSRi1HLXpUd0tENTlUaDl1VWNwMkpCNnd1NXdSZUVOdml2c1c1TTBybS16UGxvUkVFMXRMWFVrQlNDcUFEZEJjcW56WXBPb0ZSaVZoZ2s1SVFNWXdBSDFxVFRodUFoanVIc1FxNDFfR0h4LXZHZmI5UjlSdGpZUG90VzNpTm1SRUVlaXhnTjExaUljT0VveVk1UWJhdTRP?oc=5",
+      "date": "Fri, 20 Nov 2026 13:45:27 GMT",
+      "desc": "The Midterms Gave the U.S.-South Korea Alliance New Defenders in Congress&nbsp;&nbsp;Korea Economic Institute of America -"
+    },
+    {
+      "title": "Why the midterms matter for the US-South Korea alliance - Brookings",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOREtwb1FyT2xMdmpQMXFpZjVPZm1HQmFBUFhVZjliVE9DdFdXNTNhRlZnRE5uTG44WVRZcG5Lck5Ob2MzSk5zZThpdkVtZnMxemNPajRfc0RNeFdRczU5OGViQ1hlcW1SeERWdTJ3QU1MTWxvUnc3QjZ0UU9qTG5VRVhlQ1kzN0dJTG1UR05pZ3gySDBBTWc?oc=5",
+      "date": "Fri, 20 Nov 2026 14:05:01 GMT",
+      "desc": "Why the midterms matter for the US-South Korea alliance&nbsp;&nbsp;Brookings"
+    },
+    {
+      "title": "North Korea - Economy, Resources, Trade - Britannica",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VTXhQUUpxWlRfam1mb2JmZEVlc0dXeklTUkpWc2MwWkR1eUpSRWZodUVHY25EU0hDTlNacVhJb3o1aXBfTGlwUEdVV3ZxaHpWUFVCSUNkSDFkSlV1al9hM1l3?oc=5",
+      "date": "Tue, 17 Nov 2026 08:00:00 GMT",
+      "desc": "North Korea - Economy, Resources, Trade&nbsp;&nbsp;Britannica"
+    },
+    {
+      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
+      "date": "Mon, 26 Oct 2026 23:42:05 GMT",
+      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
+    },
+    {
       "title": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom - Reuters",
       "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQYjJyUW83NEllOTVXWDNHUnY0UW85MjF2dzVVQ1NxOVBGaW1EY0trbjRZZU5zZWFLUnZnQ1RGUkhiM3ZmZVA2VUxZNm5UQlpJR2F2OXotX0EzOUJJdHNkZlhCUXVnM2xqaEZ1Zmh6R19sSmUyelZzSVJSSkVTZHBvd2ZUQkNJOFZPaEZ6amhLd1BGWlcxd2M4N0pLa0J5Z28taFE2M293Z1puMWViY3FhZDh6WXd4SjFsNzg0dkZ3?oc=5",
-      "date": "Thu, 19 Nov 2026 06:29:00 GMT",
+      "date": "Thu, 19 Nov 2026 10:40:43 GMT",
       "desc": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "South Korea’s Exports Top $1 Trillion for First Time on AI Boom - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNWENQYzJENEk2cFdxcENHbGpRQl9uZ0sxeURRNldsa3NQWWJ1Z3p6ZEhzMTZ1OHN1dGRZTFNyVlNYZ01mLXByWUdWV2tLR0RJUWFHWGowTmpXR0lmdDF2Y1NLa0d6RGdEcWgzcGlFSlkxX2ppWFo4Q3d4YzNQR0owb2JGbVBZMW9PTEZNM3ZEOFFCRUZVSDJiMEczZDRIUkpRbmM4UGxSNTFZT3BtZnJOdnRRWQ?oc=5",
-      "date": "Thu, 19 Nov 2026 08:25:53 GMT",
-      "desc": "South Korea’s Exports Top $1 Trillion for First Time on AI Boom&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "Korea becomes world's 4th country to reach $1 tril. in annual exports - The Korea Times",
-      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPdWR2Qk9WSmJ3VWQ5SVN4SXd3UzlUUnR0RDl1TUpRODctQTJqZTdsOVpKVUVzUmwxMTd1eUNEUWVSV0Z4dFF0bGdGYlBhYk9abGhqZ1A4bjVscWFyZ0Q4Qk9oTGhNd1BWME44QXdBQnNJY3ZhYlBveDJHSE9XSEFpcW04dy1PSHRDUUVVa1dKVG01aFd5ZFdUUFFVMWhUSmp1WjhrNXQ4Ti0xVEZnMkhMZzhqSjRhWmhOUHcw0gHAAUFVX3lxTE0taEZ3YUtUZklsbGZBckVndnFDM0pqVzdSbGJrbEVDeHRYY24tSEJYUFd5U21Nd1pDYVZ4X0N5ZGYwR0ZMcDFLbWFEVXV3al9PS0NXMW9vOXpLd3RHWnBNVlNETjVzMDNfeFBPXzZvUXNCei05VUJsTmFUUzBuQkI5ZFUwb2psUE5QTVEzRGdrcThVV1Rvc2szQ2NCRkxWTVJoaWhOSzhKb3pGVE1EZ1dvTkV4b0JoWm0tNHlDS2VERQ?oc=5",
-      "date": "Thu, 19 Nov 2026 05:37:06 GMT",
-      "desc": "Korea becomes world's 4th country to reach $1 tril. in annual exports&nbsp;&nbsp;The Korea Times"
-    },
-    {
-      "title": "South Korea rides AI boom to new height as exports hit $1 trillion - Nikkei Asia",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNb0Z1c1NPbHZaLVJKeUFuNlhzX01RSU1rSnlYckpRVkxwTzN1eEFVeG1iU3lKUzVqR2RTbDBtWjhiNVNBVmdHWklvUlJUbXJXbkpmbF9jczRDa0c0aUp3ckY2YUJTTHl2eWE0STlPSU9fUkVpZzM5eG1YN3B1RXBNclB3YXk5WWh1eUdqSUEzWUM1UzI2Z0RrTFJfazdUQQ?oc=5",
-      "date": "Thu, 19 Nov 2026 07:22:00 GMT",
-      "desc": "South Korea rides AI boom to new height as exports hit $1 trillion&nbsp;&nbsp;Nikkei Asia"
-    },
-    {
-      "title": "China to Lift Korean Culture Ban After Decade - Seoul Economic Daily",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOd2xWVEdYNEpwNTl0NnFSbV9nMVB2MjZZcVZpbHpJWDJpWU42T1FhVXlEdDdGeU9lV2N4SFBnOEpwdXd1blRXTG9qWk1wYU9Xem1SVndmQXU2Y1IzOTNYVkRvazFWdVZDM0lyaVA1bnh1cXBkcWFkeExEUk1ZbmFTblJLMU9pTkFVZzFZRnNVWUFlQQ?oc=5",
-      "date": "Wed, 18 Nov 2026 08:49:41 GMT",
-      "desc": "China to Lift Korean Culture Ban After Decade&nbsp;&nbsp;Seoul Economic Daily"
     },
     {
       "title": "Samsung, SK Hynix investors search for answers, but relief remains elusive - KED Global",
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1345.89,
-      "change": 15.49,
-      "pct": 1.16,
+      "price": 1346.13,
+      "change": 15.73,
+      "pct": 1.18,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-20 21:36 UTC"
+  "updatedAt": "2026-11-21 02:57 UTC"
 }
