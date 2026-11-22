@@ -1,15 +1,21 @@
 {
   "globalNews": [
     {
+      "title": "Explosion on Russian ship at Libya port caused by suspected drone attack, officials say",
+      "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 22 Nov 2026 16:05:25 GMT",
+      "desc": "Libya's eastern government says it is working with Russia to investigate the incident."
+    },
+    {
       "title": "South Korea education minister resigns over exam cheating scandal",
       "link": "https://www.bbc.co.uk/news/articles/cw3dgk29d37no?at_medium=RSS&at_campaign=rss",
       "date": "Sun, 22 Nov 2026 09:20:45 GMT",
       "desc": "Choi Kyo-jin admits last-minute measures to stop AI-assisted cheating during the college entrance exam caused chaos."
     },
     {
-      "title": "Russia-bound ship attacked in Gulf of Finland",
+      "title": "Russia-bound ship still on fire after attack in Gulf of Finland",
       "link": "https://www.bbc.co.uk/news/articles/cj752ddve27ko?at_medium=RSS&at_campaign=rss",
-      "date": "Sat, 21 Nov 2026 19:20:22 GMT",
+      "date": "Sun, 22 Nov 2026 11:25:14 GMT",
       "desc": "Finnish defence forces say that Ukraine was likely behind the drone attack on the vessel."
     },
     {
@@ -21,34 +27,28 @@
     {
       "title": "Three killed and dozens missing after fire at Indonesian factory",
       "link": "https://www.bbc.co.uk/news/articles/cw8dvg5pgm0eo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 06:05:00 GMT",
-      "desc": "At least three people were killed and 36 are still missing after a fire at a confectionary factory."
-    },
-    {
-      "title": "Italian jeweller and businessman Paolo Bulgari dies aged 89",
-      "link": "https://www.bbc.co.uk/news/articles/c8e39qk5vrpdo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 07:12:41 GMT",
-      "desc": "In a statement to Italian media, his family remember him as \"the greatest jeweller of our time\"."
+      "date": "Sun, 22 Nov 2026 14:05:20 GMT",
+      "desc": "At least three people were killed and many more feared dead after a fire at a confectionary factory."
     }
   ],
   "koreaNews": [
     {
-      "title": "Why the midterms matter for the US-South Korea alliance - Brookings",
-      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOREtwb1FyT2xMdmpQMXFpZjVPZm1HQmFBUFhVZjliVE9DdFdXNTNhRlZnRE5uTG44WVRZcG5Lck5Ob2MzSk5zZThpdkVtZnMxemNPajRfc0RNeFdRczU5OGViQ1hlcW1SeERWdTJ3QU1MTWxvUnc3QjZ0UU9qTG5VRVhlQ1kzN0dJTG1UR05pZ3gySDBBTWc?oc=5",
-      "date": "Fri, 20 Nov 2026 14:05:01 GMT",
-      "desc": "Why the midterms matter for the US-South Korea alliance&nbsp;&nbsp;Brookings"
+      "title": "South Korea Prepares Market Backstops After Kospi Fall - Briefs Finance",
+      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQcGFDbFRTT25zRFdiZFcybDNQQTUxWVRGcEpwa3ZlRFpZN0dQcC1ZcGNmcWRoMkVtODFLelRxSnI3Ry1DWTJJSzgwMjhMMDF3eXBCM3dkTUFVV0k2TFktbkt2T1BjTFpOYkNfV0dLWExfak5wcDVUV1V4Zm5vaHJjYnV5aFh6SUNKWHRVZTRCV1lkUQ?oc=5",
+      "date": "Sun, 22 Nov 2026 15:35:57 GMT",
+      "desc": "South Korea Prepares Market Backstops After Kospi Fall&nbsp;&nbsp;Briefs Finance"
     },
     {
-      "title": "South Korea posts record car trade deficit with China as Tesla EV imports surge - Anadolu Ajansı",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQcjVPbDRMNkFPRnBvNkZDeVBScHVLUGh0WWRNc241ZnhFN1RlYlRVXzQ4cmwyaG5Zc05vWm14YjAxZU9rUHJSVXd3VENpdEFKeEJWQlJ5RDdFVXhkWXRIR1NqaTlLazZ1RUh6SnpDcTFrRVJVTlo2MHp0aHltQmZVNjVoVmNyd2hGTHM2NjA5NVpYVDFyMlhxUlF0VkxPcDdzd3dwd3U5c05nTlVhcVhBdEJWb3RYUF93WlFsU1dtNlVMWjg?oc=5",
-      "date": "Sun, 22 Nov 2026 07:09:22 GMT",
-      "desc": "South Korea posts record car trade deficit with China as Tesla EV imports surge&nbsp;&nbsp;Anadolu Ajansı"
+      "title": "South Korea's Semiconductor Boom Comes With a Warning: \"When the Good Times End, Long Slump Returns — Now Is the Time to Reform\" - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBvYk9mbzFXdWZuWVRHdVAxTmhETXRXbDktTzZ4MHpqZzR4VGxFWWRwMndQZlBsaXpVMDVmTEh0bi1pRjkwNlJ0bGk1SlJhX2xZWTBiWkVmWUNrRVJrOUFrdlV0WXZZVURsNUxJcTJpazNnRzV3a0E?oc=5",
+      "date": "Sun, 22 Nov 2026 10:35:00 GMT",
+      "desc": "South Korea's Semiconductor Boom Comes With a Warning: \"When the Good Times End, Long Slump Returns — Now Is the Time to Reform\"&nbsp;&nbsp;BigGo Finance"
     },
     {
-      "title": "South Korea's Growth Forecast Jumps to 3.9%, but Household Loan Growth Plunges 80% - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE51c2tzRTJpeDhPZVRvTWk1RHR0Q0czTzZMOEtGYmdwQTdIQ0FwQUszcHVnMkIwUWptdzVucTFOTFQ3eTB3NE9tbnZHOUxNU0ZLcEZhR2J2REx4OEdIVnBnU2s0UTgzeFJ1a2dSMUxDamVyRXRRcUE?oc=5",
-      "date": "Sun, 22 Nov 2026 02:05:00 GMT",
-      "desc": "South Korea's Growth Forecast Jumps to 3.9%, but Household Loan Growth Plunges 80%&nbsp;&nbsp;BigGo Finance"
+      "title": "S. Korea Rolls Out Phased Measures to Stabilize Volatile Markets - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOYVRMcEsxcVVCNE9DVnI3U3hWT040d25KN0lPMUY5eEtTb2pWZmU4ZVFsYVoyWHNBc2t5UmhzbHNJXzVoMUpnTm5VOVRIbE1reEc2M0NWSmNwUmFaQURMOGEydnUzUzJaeS1HQVEwMjNmTkFVLTgtTnk1ekx1dFNaTVVWV1MzV3dRajhYcUpxdkoySkZHbkdyb3h3V29tYkNHcXFUUlFIclRTb0pUSnlPSWJ3aGQ?oc=5",
+      "date": "Sun, 22 Nov 2026 12:52:16 GMT",
+      "desc": "S. Korea Rolls Out Phased Measures to Stabilize Volatile Markets&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
@@ -57,16 +57,10 @@
       "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "Luxury for the elite, hardship for the masses: North Korea's economic divide - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9VSXZMbks0Tk54OXQ5Wml0TEVIdzBNY3RoYW5EelRtbl9BaFZHSVFHOWRBOUZtX0oyNElCd2FWR1dISDFwV1JyaERXX2lhZVN6NTJVY1ZJMA?oc=5",
-      "date": "Sun, 22 Nov 2026 04:02:58 GMT",
-      "desc": "Luxury for the elite, hardship for the masses: North Korea's economic divide&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "Samsung, SK hynix elevate North America chiefs in semiconductor reshuffle - 헤럴드경제",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51S01xNEVfLTZCR0xnMHZuOVNzQTY2TWZ0dnpSYmduRS1TU29OcVVOc1ZVOE1OZnUySGpFa3VLMjZoQ3prYUpIOW1fZWcwTUd4Ym1EazVJcw?oc=5",
-      "date": "Sat, 21 Nov 2026 22:00:00 GMT",
-      "desc": "Samsung, SK hynix elevate North America chiefs in semiconductor reshuffle&nbsp;&nbsp;헤럴드경제"
+      "title": "South Korea posts record car trade deficit with China as Tesla EV imports surge - Anadolu Ajansı",
+      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQcjVPbDRMNkFPRnBvNkZDeVBScHVLUGh0WWRNc241ZnhFN1RlYlRVXzQ4cmwyaG5Zc05vWm14YjAxZU9rUHJSVXd3VENpdEFKeEJWQlJ5RDdFVXhkWXRIR1NqaTlLazZ1RUh6SnpDcTFrRVJVTlo2MHp0aHltQmZVNjVoVmNyd2hGTHM2NjA5NVpYVDFyMlhxUlF0VkxPcDdzd3dwd3U5c05nTlVhcVhBdEJWb3RYUF93WlFsU1dtNlVMWjg?oc=5",
+      "date": "Sun, 22 Nov 2026 07:09:22 GMT",
+      "desc": "South Korea posts record car trade deficit with China as Tesla EV imports surge&nbsp;&nbsp;Anadolu Ajansı"
     },
     {
       "title": "Samsung, SK Hynix: Demand Outpaces Semiconductor Supply - 조선일보",
@@ -79,6 +73,12 @@
       "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9UN1MwN3FZcjE3ZUpQeDlCelBqLWNBTE5Jenk4RGs2Y2dSRlM5czdYLUQ1cW5teFBTeFNWLWJvdm1Ea2xpbDdXbkx2d0d6YXk2cVZLd2p2TQ?oc=5",
       "date": "Sat, 21 Nov 2026 07:48:43 GMT",
       "desc": "Samsung, SK hynix tumble as analysts split on chip outlook&nbsp;&nbsp;The Korea Herald"
+    },
+    {
+      "title": "Samsung, SK hynix elevate North America chiefs in semiconductor reshuffle - 헤럴드경제",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51S01xNEVfLTZCR0xnMHZuOVNzQTY2TWZ0dnpSYmduRS1TU29OcVVOc1ZVOE1OZnUySGpFa3VLMjZoQ3prYUpIOW1fZWcwTUd4Ym1EazVJcw?oc=5",
+      "date": "Sat, 21 Nov 2026 22:00:00 GMT",
+      "desc": "Samsung, SK hynix elevate North America chiefs in semiconductor reshuffle&nbsp;&nbsp;헤럴드경제"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1337.8,
-      "change": 7.4,
-      "pct": 0.56,
+      "price": 1346.13,
+      "change": 15.73,
+      "pct": 1.18,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-22 10:33 UTC"
+  "updatedAt": "2026-11-22 17:00 UTC"
 }
