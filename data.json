@@ -1,34 +1,34 @@
 {
   "globalNews": [
     {
+      "title": "COP31 fails to reach major climate deal as talks expose deep divisions",
+      "link": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 22 Nov 2026 18:17:59 GMT",
+      "desc": "The talks fail to make a breakthrough on tackling climate change after a row about mentioning fossil fuels."
+    },
+    {
+      "title": "What's next after no deal at COP31 climate talks?",
+      "link": "https://www.bbc.co.uk/news/videos/cr1ewge81q4qo?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 22 Nov 2026 18:57:24 GMT",
+      "desc": "The COP31 climate summit in Turkey has formally come to an end after countries failed to agree a deal."
+    },
+    {
       "title": "Explosion on Russian ship at Libya port caused by suspected drone attack, officials say",
       "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 16:05:25 GMT",
-      "desc": "Libya's eastern government says it is working with Russia to investigate the incident."
+      "date": "Sun, 22 Nov 2026 20:28:09 GMT",
+      "desc": "Libya's eastern government says the ship had stopped for fuel and supplies on its way back to Russia."
     },
     {
-      "title": "South Korea education minister resigns over exam cheating scandal",
-      "link": "https://www.bbc.co.uk/news/articles/cw3dgk29d37no?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 09:20:45 GMT",
-      "desc": "Choi Kyo-jin admits last-minute measures to stop AI-assisted cheating during the college entrance exam caused chaos."
+      "title": "'Danger seems greater all the time': Ukrainians search for missing after Russian strikes",
+      "link": "https://www.bbc.co.uk/news/videos/cre3dvd1k9y1o?at_medium=RSS&at_campaign=rss",
+      "date": "Sun, 22 Nov 2026 17:57:43 GMT",
+      "desc": "The BBC's Sarah Rainsford reports from the scene of a collapsed residential building in Ukraine's Kyiv region."
     },
     {
-      "title": "Russia-bound ship still on fire after attack in Gulf of Finland",
+      "title": "Russia-bound ship towed away after it was attacked in Gulf of Finland",
       "link": "https://www.bbc.co.uk/news/articles/cj752ddve27ko?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 11:25:14 GMT",
-      "desc": "Finnish defence forces say that Ukraine was likely behind the drone attack on the vessel."
-    },
-    {
-      "title": "Mexican drug lord on FBI's 10 most wanted list arrested in shoot-out",
-      "link": "https://www.bbc.co.uk/news/articles/ckz749ey0r75o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 01:25:03 GMT",
-      "desc": "Fausto Isidro \"Chapo Idisro\" Meza Flores, who is accused of drug trafficking and torture, is detained after gun fight with authorities."
-    },
-    {
-      "title": "Three killed and dozens missing after fire at Indonesian factory",
-      "link": "https://www.bbc.co.uk/news/articles/cw8dvg5pgm0eo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 14:05:20 GMT",
-      "desc": "At least three people were killed and many more feared dead after a fire at a confectionary factory."
+      "date": "Sun, 22 Nov 2026 17:18:26 GMT",
+      "desc": "Finnish defence forces say that Ukraine was likely behind the drone strike on Saturday. Kyiv has yet to comment."
     }
   ],
   "koreaNews": [
@@ -57,10 +57,10 @@
       "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
     },
     {
-      "title": "South Korea posts record car trade deficit with China as Tesla EV imports surge - Anadolu Ajansı",
-      "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQcjVPbDRMNkFPRnBvNkZDeVBScHVLUGh0WWRNc241ZnhFN1RlYlRVXzQ4cmwyaG5Zc05vWm14YjAxZU9rUHJSVXd3VENpdEFKeEJWQlJ5RDdFVXhkWXRIR1NqaTlLazZ1RUh6SnpDcTFrRVJVTlo2MHp0aHltQmZVNjVoVmNyd2hGTHM2NjA5NVpYVDFyMlhxUlF0VkxPcDdzd3dwd3U5c05nTlVhcVhBdEJWb3RYUF93WlFsU1dtNlVMWjg?oc=5",
-      "date": "Sun, 22 Nov 2026 07:09:22 GMT",
-      "desc": "South Korea posts record car trade deficit with China as Tesla EV imports surge&nbsp;&nbsp;Anadolu Ajansı"
+      "title": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNLTVUMmtXdG5WeFZ6MzRrdno2RU9OeGh6Z01HSXkzMkxFQ0FyaE5aWmQxMjljeXQ5RzAzRUdKTU1QOHdqaDk3clU3R3pIMFR5MllNMDM5M0JwRE5qbXR2MVJVaWJSU2M5UVlFcnMwRS1ud3puT2ozRzNWT3FOWEJkaXh1S0ZKaEVIUGZOUWVKWS1jSXIzV2Fj?oc=5",
+      "date": "Thu, 19 Nov 2026 06:31:00 GMT",
+      "desc": "South Korea becomes fourth country globally to hit $1 trillion exports on AI chip boom&nbsp;&nbsp;Yahoo Finance"
     },
     {
       "title": "Samsung, SK Hynix: Demand Outpaces Semiconductor Supply - 조선일보",
@@ -75,10 +75,10 @@
       "desc": "Samsung, SK hynix tumble as analysts split on chip outlook&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "Samsung, SK hynix elevate North America chiefs in semiconductor reshuffle - 헤럴드경제",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51S01xNEVfLTZCR0xnMHZuOVNzQTY2TWZ0dnpSYmduRS1TU29OcVVOc1ZVOE1OZnUySGpFa3VLMjZoQ3prYUpIOW1fZWcwTUd4Ym1EazVJcw?oc=5",
-      "date": "Sat, 21 Nov 2026 22:00:00 GMT",
-      "desc": "Samsung, SK hynix elevate North America chiefs in semiconductor reshuffle&nbsp;&nbsp;헤럴드경제"
+      "title": "Samsung, SK Hynix investors search for answers, but relief remains elusive - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBkd054a0JDZ0JhdS1Sd3dzclFsckhNNWhVMEF2cEpHV3d3ZXlOSW9lWGV3MkRiakNVeDNSR2NnbnF3TzhIM2pYalprd3ViemZndFBSdHlBUGFVbWFyMkVsdG5QNFlReEhj?oc=5",
+      "date": "Fri, 20 Nov 2026 11:54:00 GMT",
+      "desc": "Samsung, SK Hynix investors search for answers, but relief remains elusive&nbsp;&nbsp;KED Global"
     }
   ],
   "worldStocks": [
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1346.13,
-      "change": 15.73,
+      "price": 1346.04,
+      "change": 15.64,
       "pct": 1.18,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-22 17:00 UTC"
+  "updatedAt": "2026-11-22 20:30 UTC"
 }
