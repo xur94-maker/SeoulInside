@@ -1,84 +1,84 @@
 {
   "globalNews": [
     {
-      "title": "COP31 fails to reach major climate deal as talks expose deep divisions",
+      "title": "Longest-ever UN climate talks end with no deal as deep divisions exposed",
       "link": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 00:50:35 GMT",
-      "desc": "Hopes for an agreement on tackling climate change collapsed after a row about mentioning fossil fuels"
+      "date": "Mon, 23 Nov 2026 05:15:06 GMT",
+      "desc": "The prime minister of Australia, which co-hosted COP31, attributed the failure to \"difficult geopolitical times\"."
     },
     {
-      "title": "What's next after no deal at COP31 climate talks?",
-      "link": "https://www.bbc.co.uk/news/videos/cr1ewge81q4qo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 18:57:24 GMT",
-      "desc": "The talks have been the longest-running in the summit's history, with negotiations breaking down two days after they had been due to end."
+      "title": "Five takeaways from the failed climate talks COP31",
+      "link": "https://www.bbc.co.uk/news/articles/cm75237wlp3lo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 23 Nov 2026 06:33:50 GMT",
+      "desc": "The COP31 summit in Antalya was the longest-running climate talks in UN history."
     },
     {
-      "title": "Explosion on Russian ship at Libya port caused by suspected drone attack, officials say",
+      "title": "Boy, 7, pulled alive from rubble hours after Russian strike on Ukraine, rescuers say",
+      "link": "https://www.bbc.co.uk/news/articles/cqdr15l32d3go?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 23 Nov 2026 05:33:17 GMT",
+      "desc": "Eleven people are dead in the attack on Dymer, with rescue efforts ongoing to find those still missing from the residential building."
+    },
+    {
+      "title": "Russian warship hit by Ukrainian drones in Libya, Zelensky says",
       "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 20:28:09 GMT",
-      "desc": "Libya's eastern government says the ship had stopped for fuel and supplies on its way back to Russia."
+      "date": "Mon, 23 Nov 2026 11:25:16 GMT",
+      "desc": "Libya's eastern government says a sunken warship had stopped for fuel and supplies on its way back to Russia."
     },
     {
-      "title": "'Danger seems greater all the time': Ukrainians search for missing after Russian strikes",
-      "link": "https://www.bbc.co.uk/news/videos/cre3dvd1k9y1o?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 22:37:43 GMT",
-      "desc": "The BBC's Sarah Rainsford reports from the scene of a collapsed residential building in Ukraine's Kyiv region."
-    },
-    {
-      "title": "Russia-bound ship towed away after it was attacked in Gulf of Finland",
-      "link": "https://www.bbc.co.uk/news/articles/cj752ddve27ko?at_medium=RSS&at_campaign=rss",
-      "date": "Sun, 22 Nov 2026 17:18:26 GMT",
-      "desc": "Finnish defence forces say that Ukraine was likely behind the drone strike on Saturday. Kyiv has yet to comment."
+      "title": "San Francisco is enjoying an AI boom, but worries about a crash are growing",
+      "link": "https://www.bbc.co.uk/news/articles/cqe9k09j9jv4o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 23 Nov 2026 00:08:00 GMT",
+      "desc": "AI employees in the industry's epicentre - San Francisco - worry that the sector is overheated."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea’s stock market tumbles as AI bubble fears mount - Al Jazeera",
+      "title": "South Korea's finance minister sees solid growth next year, flags chip volatility risks - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNaEZfamtocksxRTF4eDNSZGR5ZDFiLVR5MWdvai1qUTgxSmxMQ0lNdDFXRlBxaXJ3N0dQVWZWN3FKb3RNUjZwRXVnZnlaOTZERDJqTHFhTDU1ZlA0NHYwWmE0RWlJRmV0UGZwQkJfZWN1LXFDS29QNWh6cjJ4ZlVXMWFMM0p3OHI3RXlCSVZVUEVvejFhZDFR?oc=5",
+      "date": "Mon, 23 Nov 2026 02:43:00 GMT",
+      "desc": "South Korea's finance minister sees solid growth next year, flags chip volatility risks&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
+      "title": "South Korea - Economy, Technology, Education - Britannica",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQSG11Q1hPWC01Y0hQX2xfaVJDYTd0NU5PdWVraFc1MWVQakRPZlpramlmYV9CcDYtNkl3V3BvZUxhcU5zQ2pDTEVKVTZ0VEhud3NRX2FFV3hqY21jeUVCbzFtbEhwLWpDeWcxcXVaOHh2clNDYVBtYmpSNTEzY1RxQ0tXcw?oc=5",
+      "date": "Fri, 20 Nov 2026 08:00:00 GMT",
+      "desc": "South Korea - Economy, Technology, Education&nbsp;&nbsp;Britannica"
+    },
+    {
+      "title": "Asian stock markets tumble as AI bubble fears mount - Al Jazeera",
       "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOaWg2VjJNckwyMnpNTjV6cnBRckpmX2hndGxyM29qMnU0aml6bUNicGJPNXJKdzludzVfYVNhSHpJR0xhZjJMeHFDM3d4MldqQUJPbE9ha3VFbjMyLXFEeS1VSkFxejNJN2czNFlnMF9uNGdnb2lPUUdoTmZZeUFrbHFfNjVsZzc5QUVSR3hST2VYaDB1S2dYd0ktRWNoSHNmQUHSAacBQVVfeXFMUHlLZVl5SzNCcWd0RjktYlZwT2pDLXNDZmg1dzNKQ2k4VFZaa08xWjhQcEFubzhxYnpsZWxQU3ZIaGZSZlFzOGlrY3RRNUlLczVZRk8xN05VdkduMFRaVy03ME5zMWFtT0JSSWRqTzZ0cjVtUVBwYzJ5LWZhM0FiOFlSSlJHS1ZhcmZqeGlFdi1CLTBLeVpVSFNJVElhSnQxQmU4WS1hSWM?oc=5",
-      "date": "Mon, 23 Nov 2026 00:21:10 GMT",
-      "desc": "South Korea’s stock market tumbles as AI bubble fears mount&nbsp;&nbsp;Al Jazeera"
+      "date": "Mon, 23 Nov 2026 09:21:03 GMT",
+      "desc": "Asian stock markets tumble as AI bubble fears mount&nbsp;&nbsp;Al Jazeera"
     },
     {
-      "title": "South Korea’s Early Exports Gain After $1 Trillion Milestone - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPa0hkTFZkNTVyUlRNQTg1WV9Ycm9tOUN3R3djbmVMR2VONFNCUV82ZFY5QUthWjFGZ2ExRkZlWWxQV2thZGZrbXdWYkJJMmtyZWJaOGUwU21tNEdIN0ItTzQ2SC1tMDc1dUZFcFg0MFNJVjVsZXEwc1JSbHhQUlZ3ekFHdlloMlNQQ29uekdTMVRGVGFlYkNjUU13N0Y1WWRJVzZzcmxoMkt0cWdHYTZj?oc=5",
-      "date": "Mon, 23 Nov 2026 00:00:00 GMT",
-      "desc": "South Korea’s Early Exports Gain After $1 Trillion Milestone&nbsp;&nbsp;Bloomberg.com"
+      "title": "South Korea Says Market Measures Will Ease Investor Jitters - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNFM3MmtldGFubzdUaHgyalNTc21uMC1PdXJvWm1Hc01jemo2bXN1Sl9YXzM4ZW03TWUxSTQ4WVVRQUkzejhFQ2NWM3FPZnFzMFdrUVRxbTJQeG9mczhUUUVlbm1kdXdtandFTGdYRndvOWk1b3V2dF9IMnR1RFlLLTRJNi1XaEpSY2xUTFEzRVl3MVUwdjJnNllsdFRCd0RFakFTX0k3UzRZenUxeWtv?oc=5",
+      "date": "Mon, 23 Nov 2026 08:03:31 GMT",
+      "desc": "South Korea Says Market Measures Will Ease Investor Jitters&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "[Yoo Choon-sik] IMF's advice on fiscal policy - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBtQUt2NndBV3J3T0hfVWtEbDlDcHpOMElMYi0tSXh1dUpKVFlhNWd5REdKMnpfOGh3NW9JMk5UVDlIMTdxRVpBMTZGX2V1T0psY19jbHVjMA?oc=5",
-      "date": "Mon, 23 Nov 2026 00:12:44 GMT",
-      "desc": "[Yoo Choon-sik] IMF's advice on fiscal policy&nbsp;&nbsp;The Korea Herald"
+      "title": "South Korea Finance Minister Lee Hyoung-il Projects Solid Growth Next Year - IndexBox",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaUphMEM4a0FRS2xvRVBwZWp5eWRrRXZDOG5LZkk0UExhUWZOVTJBZkMyVWpFYng4VzFvUGpENTBTbXZ1b2lwRlNCNVFRT1ljaWNXLTVPZV95c19GUmFjZEZQVHZrMU5yRk5qOG1yZEdkNEFRUm5EaXhRdFBhTWVSV2oyRUJSUEhTSlB5b1pvMkVEYkxtRThwTllPdTVzWkR1UUY2azMtRQ?oc=5",
+      "date": "Mon, 23 Nov 2026 04:00:30 GMT",
+      "desc": "South Korea Finance Minister Lee Hyoung-il Projects Solid Growth Next Year&nbsp;&nbsp;IndexBox"
     },
     {
-      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
-      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
+      "title": "Samsung, SK hynix, LG redraw playbooks for AI boom - The Korea Herald",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5qRU05SGdTbEZ3dTRvRFBVMlRDVmRfWlNuWWlodDYtVW0zTkZzejB6c292VzZlZ0s4dXRqc0NFV1BwaUxLOFcwcHhpOHk1S2FpLXRrUGdnNA?oc=5",
+      "date": "Mon, 23 Nov 2026 06:31:35 GMT",
+      "desc": "Samsung, SK hynix, LG redraw playbooks for AI boom&nbsp;&nbsp;The Korea Herald"
     },
     {
-      "title": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPclJITG5OM3lQUHFQQXI0Z0QxNTEzU2RjOXNHakE5aXZiWkJNUjVpYUtiNE1OcVNIY3dNMkxsTHQ3TlpfbnFXM2M0N3VSdDdXbEktX29CaFhLWnZMYS1fWGFpSmo4aERwRkpKTTJPNmRqMVcxTVFONFBnN04yM2FoRlBoaGRkb0YxNmJmU3JTSEJIR3I5N2I0ZndDREZsU01vOEhIa1RqRzlJQ1lhODJubEllc3d4MzQ?oc=5",
-      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea Q3 GDP beats forecasts as AI chip boom boosts exports, investments&nbsp;&nbsp;Reuters"
+      "title": "Samsung, SK Hynix’s long-term supply deals with Big Tech hold firm despite market peak fears - KED Global",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE01SUdGekxFZW5xYnB4Z2xwWDVNeTNoTDNLY3E1VnE3UXNEc3VvajJ1MVFnV1BjVXczVnNycnV6QTVobjNLSTNTTkhERkM3aE95ZmdmV2lldnBYd25hMFRwRWFFYkFSSjktMEs5X2dESGRQS0xpRXBj?oc=5",
+      "date": "Mon, 23 Nov 2026 11:18:00 GMT",
+      "desc": "Samsung, SK Hynix’s long-term supply deals with Big Tech hold firm despite market peak fears&nbsp;&nbsp;KED Global"
     },
     {
-      "title": "Samsung, SK Hynix: Demand Outpaces Semiconductor Supply - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPcWFNYXl0cjhMdmhDMUJtc2pXZVlkLWZseGJMYXFSaVE5RjBTUVVhSlRiVlZDc184N1ZMZDRaNFZDLU9WWGNVTUFDWlZsVVZkajhJWkpjWmNfYVZ0S0dzd2YtUzE0QjRsUHdrZkw4ZnY0SnNRRWhLYmYtaFNtdzlNNUtZV2FyUXBU?oc=5",
-      "date": "Tue, 17 Nov 2026 13:35:46 GMT",
-      "desc": "Samsung, SK Hynix: Demand Outpaces Semiconductor Supply&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Samsung, SK hynix tumble as analysts split on chip outlook - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9UN1MwN3FZcjE3ZUpQeDlCelBqLWNBTE5Jenk4RGs2Y2dSRlM5czdYLUQ1cW5teFBTeFNWLWJvdm1Ea2xpbDdXbkx2d0d6YXk2cVZLd2p2TQ?oc=5",
-      "date": "Sat, 21 Nov 2026 07:48:43 GMT",
-      "desc": "Samsung, SK hynix tumble as analysts split on chip outlook&nbsp;&nbsp;The Korea Herald"
-    },
-    {
-      "title": "Samsung, SK Hynix investors search for answers, but relief remains elusive - KED Global",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBkd054a0JDZ0JhdS1Sd3dzclFsckhNNWhVMEF2cEpHV3d3ZXlOSW9lWGV3MkRiakNVeDNSR2NnbnF3TzhIM2pYalprd3ViemZndFBSdHlBUGFVbWFyMkVsdG5QNFlReEhj?oc=5",
-      "date": "Fri, 20 Nov 2026 11:54:00 GMT",
-      "desc": "Samsung, SK Hynix investors search for answers, but relief remains elusive&nbsp;&nbsp;KED Global"
+      "title": "South Korea's Top Traders Dump Samsung Electronics, SK Hynix and Scoop Up Celltrion, Samsung SDS in Sharp Selloff - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5obnBERGFCWEVyWENkSGpRaFkwNzNQYXJwdGp0WFVQZ1dYMEhwY1NjSENSbmVQVzJyYWpOQ21PR1g1TjRZTHFMX1BaLWxOWXhqYVJ4T1lXNGhTVXlGVzFxQk9iWXZGM3dMRkRFcTRuUGU0T3AyUFE?oc=5",
+      "date": "Mon, 23 Nov 2026 03:05:00 GMT",
+      "desc": "South Korea's Top Traders Dump Samsung Electronics, SK Hynix and Scoop Up Celltrion, Samsung SDS in Sharp Selloff&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 176000.0,
-      "change": -20900.0,
-      "pct": -10.61,
+      "price": 177500.0,
+      "change": -19400.0,
+      "pct": -9.85,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1077000.0,
-      "change": -106000.0,
-      "pct": -8.96,
+      "price": 1085000.0,
+      "change": -98000.0,
+      "pct": -8.28,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 246000.0,
-      "change": -21500.0,
-      "pct": -8.04,
+      "price": 247500.0,
+      "change": -20000.0,
+      "pct": -7.48,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 86900.0,
-      "change": -4600.0,
-      "pct": -5.03,
+      "price": 86400.0,
+      "change": -5100.0,
+      "pct": -5.57,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 147000.0,
-      "change": -21300.0,
-      "pct": -12.66,
+      "price": 150000.0,
+      "change": -18300.0,
+      "pct": -10.87,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 4699.28,
-      "change": -438.61,
-      "pct": -8.54,
+      "price": 4708.54,
+      "change": -429.35,
+      "pct": -8.36,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1347.05,
-      "change": 12.26,
-      "pct": 0.92,
+      "price": 1345.81,
+      "change": 11.02,
+      "pct": 0.83,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-23 04:41 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-23 11:33 UTC"
 }
