@@ -1,37 +1,43 @@
 {
   "globalNews": [
     {
-      "title": "Longest-ever UN climate talks end with no deal as deep divisions exposed",
-      "link": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 05:15:06 GMT",
-      "desc": "The prime minister of Australia, which co-hosted COP31, attributed the failure to \"difficult geopolitical times\"."
-    },
-    {
-      "title": "Five takeaways from the failed climate talks COP31",
-      "link": "https://www.bbc.co.uk/news/articles/cm75237wlp3lo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 06:33:50 GMT",
-      "desc": "The COP31 summit in Antalya was the longest-running climate talks in UN history."
-    },
-    {
-      "title": "Boy, 7, pulled alive from rubble hours after Russian strike on Ukraine, rescuers say",
-      "link": "https://www.bbc.co.uk/news/articles/cqdr15l32d3go?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 05:33:17 GMT",
-      "desc": "Eleven people are dead in the attack on Dymer, with rescue efforts ongoing to find those still missing from the residential building."
-    },
-    {
       "title": "Russian warship hit by Ukrainian drones in Libya, Zelensky says",
       "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 11:25:16 GMT",
-      "desc": "Libya's eastern government says a sunken warship had stopped for fuel and supplies on its way back to Russia."
+      "date": "Mon, 23 Nov 2026 15:41:23 GMT",
+      "desc": "The Kremlin warns of an \"escalation of tensions in the region\", but declines to comment directly on the attacks in Libya."
     },
     {
-      "title": "San Francisco is enjoying an AI boom, but worries about a crash are growing",
-      "link": "https://www.bbc.co.uk/news/articles/cqe9k09j9jv4o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 00:08:00 GMT",
-      "desc": "AI employees in the industry's epicentre - San Francisco - worry that the sector is overheated."
+      "title": "What strike on Russian ship in Libya says about spread of Ukraine war",
+      "link": "https://www.bbc.co.uk/news/articles/cm894p88jzxpo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 23 Nov 2026 20:48:35 GMT",
+      "desc": "Ukraine's sinking of a Russian battleship at a port in Libya raises the stakes of the war a notch, writes Frank Gardner."
+    },
+    {
+      "title": "Iranian authorities flog singer who performed without hijab, lawyers say",
+      "link": "https://www.bbc.co.uk/news/articles/cq1j6585l5g6o?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 23 Nov 2026 18:04:20 GMT",
+      "desc": "Parastoo Ahmadi, three musicians and a producer were reportedly given 74 lashes in Qom."
+    },
+    {
+      "title": "'I want to destroy capitalism, not France': On the streets with the French ultra left",
+      "link": "https://www.bbc.co.uk/news/articles/cw074km48myeo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 23 Nov 2026 13:09:52 GMT",
+      "desc": "The BBC meets the far-left protesters French President Emmanuel Macron says are trying to bring down the Republic."
+    },
+    {
+      "title": "What failure of COP31 reveals about a divided world",
+      "link": "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
+      "date": "Mon, 23 Nov 2026 17:24:25 GMT",
+      "desc": "Interests of oil-producing countries, a US boycott and a dispute over finance may have torpedoed climate talks."
     }
   ],
   "koreaNews": [
+    {
+      "title": "South Korea - Economy, Technology, Education - Britannica",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQSG11Q1hPWC01Y0hQX2xfaVJDYTd0NU5PdWVraFc1MWVQakRPZlpramlmYV9CcDYtNkl3V3BvZUxhcU5zQ2pDTEVKVTZ0VEhud3NRX2FFV3hqY21jeUVCbzFtbEhwLWpDeWcxcXVaOHh2clNDYVBtYmpSNTEzY1RxQ0tXcw?oc=5",
+      "date": "Fri, 20 Nov 2026 08:00:00 GMT",
+      "desc": "South Korea - Economy, Technology, Education&nbsp;&nbsp;Britannica"
+    },
     {
       "title": "South Korea's finance minister sees solid growth next year, flags chip volatility risks - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNaEZfamtocksxRTF4eDNSZGR5ZDFiLVR5MWdvai1qUTgxSmxMQ0lNdDFXRlBxaXJ3N0dQVWZWN3FKb3RNUjZwRXVnZnlaOTZERDJqTHFhTDU1ZlA0NHYwWmE0RWlJRmV0UGZwQkJfZWN1LXFDS29QNWh6cjJ4ZlVXMWFMM0p3OHI3RXlCSVZVUEVvejFhZDFR?oc=5",
@@ -39,10 +45,10 @@
       "desc": "South Korea's finance minister sees solid growth next year, flags chip volatility risks&nbsp;&nbsp;Yahoo Finance"
     },
     {
-      "title": "South Korea - Economy, Technology, Education - Britannica",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQSG11Q1hPWC01Y0hQX2xfaVJDYTd0NU5PdWVraFc1MWVQakRPZlpramlmYV9CcDYtNkl3V3BvZUxhcU5zQ2pDTEVKVTZ0VEhud3NRX2FFV3hqY21jeUVCbzFtbEhwLWpDeWcxcXVaOHh2clNDYVBtYmpSNTEzY1RxQ0tXcw?oc=5",
-      "date": "Fri, 20 Nov 2026 08:00:00 GMT",
-      "desc": "South Korea - Economy, Technology, Education&nbsp;&nbsp;Britannica"
+      "title": "South Korea vows to stabilise stock market after KOSPI drops 5% - Reuters",
+      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOaF9QVUplYkNRSkhhV19adWpudklsdXcxV0dodVVtYzc1WHJUWTNRMkduX1UxaURycVZTREc4RGpzOURZcFhvSTN3MUxwYUhuNWluQzVfSFAydjZ1bnVFR3VYaXpFY05XVW5OOUR2R0E3VkYwZzJHajh6MndCYUtsNnBxOGhib0dUUFlvRlNIRnp2TGl2Mml3emx5emcyQWFMajdNWGhRNnRkbW5fTk1ZUlV2VURvcHgwcndHN0Z1eDE5S19IS0FTZm43NmVZbUk?oc=5",
+      "date": "Mon, 23 Nov 2026 02:43:00 GMT",
+      "desc": "South Korea vows to stabilise stock market after KOSPI drops 5%&nbsp;&nbsp;Reuters"
     },
     {
       "title": "Asian stock markets tumble as AI bubble fears mount - Al Jazeera",
@@ -57,10 +63,10 @@
       "desc": "South Korea Says Market Measures Will Ease Investor Jitters&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea Finance Minister Lee Hyoung-il Projects Solid Growth Next Year - IndexBox",
-      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaUphMEM4a0FRS2xvRVBwZWp5eWRrRXZDOG5LZkk0UExhUWZOVTJBZkMyVWpFYng4VzFvUGpENTBTbXZ1b2lwRlNCNVFRT1ljaWNXLTVPZV95c19GUmFjZEZQVHZrMU5yRk5qOG1yZEdkNEFRUm5EaXhRdFBhTWVSV2oyRUJSUEhTSlB5b1pvMkVEYkxtRThwTllPdTVzWkR1UUY2azMtRQ?oc=5",
-      "date": "Mon, 23 Nov 2026 04:00:30 GMT",
-      "desc": "South Korea Finance Minister Lee Hyoung-il Projects Solid Growth Next Year&nbsp;&nbsp;IndexBox"
+      "title": "Samsung, SK Hynix Stocks Halve on AI Bubble Fears - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNT1ZXaFFVNWllbDhtM2ROMS00d0pZXzNYd0tLU2NFOUQzVGo4c3IxdmZxQ0k2RTF5cVpXcndYMmRtank0R2tjZlJ1NjRXbWpoazBRX0M4QTI1ZTJ2OVoxRUI2NTl1anpuZDlkejlxblpZeW83dkF2Q2xTLW9vMjhwWG9MMWJfNXVz?oc=5",
+      "date": "Mon, 23 Nov 2026 15:52:57 GMT",
+      "desc": "Samsung, SK Hynix Stocks Halve on AI Bubble Fears&nbsp;&nbsp;조선일보"
     },
     {
       "title": "Samsung, SK hynix, LG redraw playbooks for AI boom - The Korea Herald",
@@ -73,101 +79,95 @@
       "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE01SUdGekxFZW5xYnB4Z2xwWDVNeTNoTDNLY3E1VnE3UXNEc3VvajJ1MVFnV1BjVXczVnNycnV6QTVobjNLSTNTTkhERkM3aE95ZmdmV2lldnBYd25hMFRwRWFFYkFSSjktMEs5X2dESGRQS0xpRXBj?oc=5",
       "date": "Mon, 23 Nov 2026 11:18:00 GMT",
       "desc": "Samsung, SK Hynix’s long-term supply deals with Big Tech hold firm despite market peak fears&nbsp;&nbsp;KED Global"
-    },
-    {
-      "title": "South Korea's Top Traders Dump Samsung Electronics, SK Hynix and Scoop Up Celltrion, Samsung SDS in Sharp Selloff - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5obnBERGFCWEVyWENkSGpRaFkwNzNQYXJwdGp0WFVQZ1dYMEhwY1NjSENSbmVQVzJyYWpOQ21PR1g1TjRZTHFMX1BaLWxOWXhqYVJ4T1lXNGhTVXlGVzFxQk9iWXZGM3dMRkRFcTRuUGU0T3AyUFE?oc=5",
-      "date": "Mon, 23 Nov 2026 03:05:00 GMT",
-      "desc": "South Korea's Top Traders Dump Samsung Electronics, SK Hynix and Scoop Up Celltrion, Samsung SDS in Sharp Selloff&nbsp;&nbsp;BigGo Finance"
     }
   ],
   "worldStocks": [
     {
       "symbol": "NVDA",
       "label": "NVIDIA",
-      "price": 125.53,
-      "change": -25.43,
-      "pct": -16.85,
+      "price": 165.05,
+      "change": 19.07,
+      "pct": 13.06,
       "url": "https://finance.yahoo.com/quote/NVDA"
     },
     {
       "symbol": "TSM",
       "label": "TSMC",
-      "price": 318.71,
-      "change": -43.91,
-      "pct": -12.11,
+      "price": 363.43,
+      "change": 11.34,
+      "pct": 3.22,
       "url": "https://finance.yahoo.com/quote/TSM"
     },
     {
       "symbol": "AMD",
       "label": "AMD",
-      "price": 424.39,
-      "change": -105.75,
-      "pct": -19.95,
+      "price": 453.46,
+      "change": -35.73,
+      "pct": -7.3,
       "url": "https://finance.yahoo.com/quote/AMD"
     },
     {
       "symbol": "INTC",
       "label": "Intel",
-      "price": 51.28,
-      "change": -3.39,
-      "pct": -6.2,
+      "price": 59.66,
+      "change": 3.94,
+      "pct": 7.07,
       "url": "https://finance.yahoo.com/quote/INTC"
     },
     {
       "symbol": "QCOM",
       "label": "Qualcomm",
-      "price": 149.94,
-      "change": -9.87,
-      "pct": -6.18,
+      "price": 165.38,
+      "change": 3.37,
+      "pct": 2.08,
       "url": "https://finance.yahoo.com/quote/QCOM"
     },
     {
       "symbol": "ARM",
       "label": "ARM",
-      "price": 152.2,
-      "change": -30.56,
-      "pct": -16.72,
+      "price": 176.67,
+      "change": -0.5,
+      "pct": -0.28,
       "url": "https://finance.yahoo.com/quote/ARM"
     },
     {
       "symbol": "GOOGL",
       "label": "Google",
-      "price": 265.29,
-      "change": -17.15,
-      "pct": -6.07,
+      "price": 282.1,
+      "change": 9.44,
+      "pct": 3.46,
       "url": "https://finance.yahoo.com/quote/GOOGL"
     },
     {
       "symbol": "AAPL",
       "label": "Apple",
-      "price": 342.56,
-      "change": -9.89,
-      "pct": -2.81,
+      "price": 349.08,
+      "change": -0.13,
+      "pct": -0.04,
       "url": "https://finance.yahoo.com/quote/AAPL"
     },
     {
       "symbol": "MSFT",
       "label": "Microsoft",
-      "price": 484.52,
-      "change": -23.77,
-      "pct": -4.68,
+      "price": 492.5,
+      "change": -5.8,
+      "pct": -1.16,
       "url": "https://finance.yahoo.com/quote/MSFT"
     },
     {
       "symbol": "^GSPC",
       "label": "S&P 500",
-      "price": 6910.39,
-      "change": -413.24,
-      "pct": -5.64,
+      "price": 7237.26,
+      "change": 61.43,
+      "pct": 0.86,
       "url": "https://finance.yahoo.com/quote/%5EGSPC"
     },
     {
       "symbol": "^IXIC",
       "label": "NASDAQ",
-      "price": 22617.73,
-      "change": -1812.15,
-      "pct": -7.42,
+      "price": 24089.56,
+      "change": 210.36,
+      "pct": 0.88,
       "url": "https://finance.yahoo.com/quote/%5EIXIC"
     }
   ],
@@ -223,11 +223,11 @@
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1345.81,
-      "change": 11.02,
-      "pct": 0.83,
+      "price": 1341.76,
+      "change": 6.97,
+      "pct": 0.52,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-23 11:33 UTC"
+  "updatedAt": "2026-11-23 21:04 UTC"
 }
