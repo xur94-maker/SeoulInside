@@ -1,16 +1,22 @@
 {
   "globalNews": [
     {
+      "title": "Trump faces backlash after saying he 'convinced' Nvidia to reinstate CEO Jensen Huang",
+      "link": "https://www.bbc.co.uk/news/articles/cq5y1k8ez407o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 24 Nov 2026 04:36:31 GMT",
+      "desc": "Nvidia had come under pressure from President Trump to reappoint Huang, whose comeback helped add $1tn to the company's stock value."
+    },
+    {
       "title": "US to blacklist Asian AI firm Megaspeed after Nvidia scandal",
       "link": "https://www.bbc.co.uk/news/articles/cv98xpg5dg5zo?at_medium=RSS&at_campaign=rss",
       "date": "Mon, 23 Nov 2026 23:16:08 GMT",
       "desc": "Megaspeed has been accused of funneling AI chips to China after a former executive's affair with Jensen Huang became public."
     },
     {
-      "title": "Russian warship hit by Ukrainian drones in Libya, Zelensky says",
-      "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 15:41:23 GMT",
-      "desc": "The Kremlin warns of an \"escalation of tensions in the region\", but declines to comment directly on the attacks in Libya."
+      "title": "Nato chief vows defence against space threat after Russian nuclear satellite reports",
+      "link": "https://www.bbc.co.uk/news/articles/c9x2er1ry2mzo?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 24 Nov 2026 02:15:59 GMT",
+      "desc": "German media said Russia planned to launch a satellite with a nuclear warhead into space in coming weeks."
     },
     {
       "title": "What strike on Russian ship in Libya says about spread of Ukraine war",
@@ -19,24 +25,18 @@
       "desc": "Ukraine's sinking of a Russian battleship at a port in Libya raises the stakes of the war a notch, writes Frank Gardner."
     },
     {
-      "title": "Iranian authorities flog singer who performed without hijab, lawyers say",
-      "link": "https://www.bbc.co.uk/news/articles/cq1j6585l5g6o?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 18:04:20 GMT",
-      "desc": "Parastoo Ahmadi, three musicians and a producer were reportedly given 74 lashes in Qom."
-    },
-    {
-      "title": "What failure of COP31 reveals about a divided world",
-      "link": "https://www.bbc.co.uk/news/articles/cky970n83rvjo?at_medium=RSS&at_campaign=rss",
-      "date": "Mon, 23 Nov 2026 17:24:25 GMT",
-      "desc": "Interests of oil-producing countries, a US boycott and a dispute over finance may have torpedoed climate talks."
+      "title": "King Charles and Elton John pay tribute to Australian music legend Molly Meldrum",
+      "link": "https://www.bbc.co.uk/news/articles/c3qj57rkd2k1o?at_medium=RSS&at_campaign=rss",
+      "date": "Tue, 24 Nov 2026 00:23:25 GMT",
+      "desc": "The promoter and broadcaster helped define the music tastes of Australians for decades."
     }
   ],
   "koreaNews": [
     {
-      "title": "South Korea vows to stabilise stock market after KOSPI drops 5% - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOaF9QVUplYkNRSkhhV19adWpudklsdXcxV0dodVVtYzc1WHJUWTNRMkduX1UxaURycVZTREc4RGpzOURZcFhvSTN3MUxwYUhuNWluQzVfSFAydjZ1bnVFR3VYaXpFY05XVW5OOUR2R0E3VkYwZzJHajh6MndCYUtsNnBxOGhib0dUUFlvRlNIRnp2TGl2Mml3emx5emcyQWFMajdNWGhRNnRkbW5fTk1ZUlV2VURvcHgwcndHN0Z1eDE5S19IS0FTZm43NmVZbUk?oc=5",
-      "date": "Mon, 23 Nov 2026 02:43:00 GMT",
-      "desc": "South Korea vows to stabilise stock market after KOSPI drops 5%&nbsp;&nbsp;Reuters"
+      "title": "South Korea - Economy, Technology, Education - Britannica",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQSG11Q1hPWC01Y0hQX2xfaVJDYTd0NU5PdWVraFc1MWVQakRPZlpramlmYV9CcDYtNkl3V3BvZUxhcU5zQ2pDTEVKVTZ0VEhud3NRX2FFV3hqY21jeUVCbzFtbEhwLWpDeWcxcXVaOHh2clNDYVBtYmpSNTEzY1RxQ0tXcw?oc=5",
+      "date": "Fri, 20 Nov 2026 08:00:00 GMT",
+      "desc": "South Korea - Economy, Technology, Education&nbsp;&nbsp;Britannica"
     },
     {
       "title": "Asian stock markets tumble as AI bubble fears mount - Al Jazeera",
@@ -45,40 +45,40 @@
       "desc": "Asian stock markets tumble as AI bubble fears mount&nbsp;&nbsp;Al Jazeera"
     },
     {
+      "title": "South Korea vows to stabilise stock market after KOSPI drops 5% - Yahoo Finance",
+      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNaEZfamtocksxRTF4eDNSZGR5ZDFiLVR5MWdvai1qUTgxSmxMQ0lNdDFXRlBxaXJ3N0dQVWZWN3FKb3RNUjZwRXVnZnlaOTZERDJqTHFhTDU1ZlA0NHYwWmE0RWlJRmV0UGZwQkJfZWN1LXFDS29QNWh6cjJ4ZlVXMWFMM0p3OHI3RXlCSVZVUEVvejFhZDFR?oc=5",
+      "date": "Mon, 23 Nov 2026 03:17:00 GMT",
+      "desc": "South Korea vows to stabilise stock market after KOSPI drops 5%&nbsp;&nbsp;Yahoo Finance"
+    },
+    {
+      "title": "South Korea's Deputy PM Lee Hyung-il: \"Potential Growth Rate to Rebound from 1.9% to 2.5%... Aiming for 3% with AI\" - BigGo Finance",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9pXzJKU1ZTei1uWHM5YnVWQjRjZGRrWlByaTBpRHZwNndnR2lQbGFWc1FwY24zRXZ5ZDVNMldDa19nV1EtNDBwVjh3TE1vTTdwUVVmTU5YZmNqdmgyakIxNFZVeGxzdU9pTnhvaHRBcXdfektPa1E?oc=5",
+      "date": "Tue, 24 Nov 2026 02:35:00 GMT",
+      "desc": "South Korea's Deputy PM Lee Hyung-il: \"Potential Growth Rate to Rebound from 1.9% to 2.5%... Aiming for 3% with AI\"&nbsp;&nbsp;BigGo Finance"
+    },
+    {
       "title": "South Korea Says Market Measures Will Ease Investor Jitters - Bloomberg.com",
       "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNFM3MmtldGFubzdUaHgyalNTc21uMC1PdXJvWm1Hc01jemo2bXN1Sl9YXzM4ZW03TWUxSTQ4WVVRQUkzejhFQ2NWM3FPZnFzMFdrUVRxbTJQeG9mczhUUUVlbm1kdXdtandFTGdYRndvOWk1b3V2dF9IMnR1RFlLLTRJNi1XaEpSY2xUTFEzRVl3MVUwdjJnNllsdFRCd0RFakFTX0k3UzRZenUxeWtv?oc=5",
       "date": "Mon, 23 Nov 2026 08:03:31 GMT",
       "desc": "South Korea Says Market Measures Will Ease Investor Jitters&nbsp;&nbsp;Bloomberg.com"
     },
     {
-      "title": "South Korea’s finance minister sees solid growth next year, flags chip volatility risks - WTVB",
-      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQSXppaThtS25HX29JZXNJNENleGJOM0U3clprdm9famNXaXZ0YWhNVzcxN0xieldDTWJHbnNxVHFPcXg0MDNtYW5NZGp6RmMtNGNSd3Nma3dtaTFleF92UFNabXYzY0h5aXVtVVlrTE1mMUo3M2s1cEtkcFFUWWhzUmFPSmEzUTNMQzdwRWlVeTBCaVE3QkkyRFg0UXlaZWJsSVc0aW8tZEU2M2k4ZUdXU1BHSGlieXc?oc=5",
-      "date": "Mon, 23 Nov 2026 02:58:51 GMT",
-      "desc": "South Korea’s finance minister sees solid growth next year, flags chip volatility risks&nbsp;&nbsp;WTVB"
-    },
-    {
-      "title": "South Korea's Consumer Sentiment Falls to 7-Month Low on Stock Market Correction; Home Price Expectations Drop for Third Month - BigGo Finance",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE13VElKV1JqVGVwanEyUjJYNHNUVHM0bmRYX2t1U0xSaWFHQ3VGbzJkWFRIMWVDNFNCZGt5b2F5MDlqSnlsRHlrWGxDYlNTMHVBTGZTR1dIdFlMemlJcDJYams3N01JQXV5NXVuNDU0Mno0dTdmemc?oc=5",
-      "date": "Mon, 23 Nov 2026 21:25:00 GMT",
-      "desc": "South Korea's Consumer Sentiment Falls to 7-Month Low on Stock Market Correction; Home Price Expectations Drop for Third Month&nbsp;&nbsp;BigGo Finance"
-    },
-    {
-      "title": "Samsung, SK Hynix Stocks Halve on AI Bubble Fears - 조선일보",
+      "title": "Samsung, SK Hynix Stocks Halve Amid AI Bubble Anxiety - 조선일보",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNT1ZXaFFVNWllbDhtM2ROMS00d0pZXzNYd0tLU2NFOUQzVGo4c3IxdmZxQ0k2RTF5cVpXcndYMmRtank0R2tjZlJ1NjRXbWpoazBRX0M4QTI1ZTJ2OVoxRUI2NTl1anpuZDlkejlxblpZeW83dkF2Q2xTLW9vMjhwWG9MMWJfNXVz?oc=5",
-      "date": "Mon, 23 Nov 2026 15:52:57 GMT",
-      "desc": "Samsung, SK Hynix Stocks Halve on AI Bubble Fears&nbsp;&nbsp;조선일보"
+      "date": "Tue, 24 Nov 2026 01:44:52 GMT",
+      "desc": "Samsung, SK Hynix Stocks Halve Amid AI Bubble Anxiety&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Goldman Sachs Cuts Samsung, SK hynix Price Targets by Up to 43% - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE51ZGlaaExMc2hyaHBPTGdpMmZLZDc0WGY3R3FCTkZqSm1mb0toVDBUd0p2dFpKNklyNlRCYzFUdXZHdmRaMVlJU0R6N0NnWUJ6ekt6YTBhRUpuQ3g2MXl1cWNJSDhjc2tUMEhyMFRicjFlOWdR?oc=5",
+      "date": "Tue, 24 Nov 2026 04:01:11 GMT",
+      "desc": "Goldman Sachs Cuts Samsung, SK hynix Price Targets by Up to 43%&nbsp;&nbsp;Businesskorea"
     },
     {
       "title": "Samsung, SK Hynix’s long-term supply deals with Big Tech hold firm despite market peak fears - KED Global",
       "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE01SUdGekxFZW5xYnB4Z2xwWDVNeTNoTDNLY3E1VnE3UXNEc3VvajJ1MVFnV1BjVXczVnNycnV6QTVobjNLSTNTTkhERkM3aE95ZmdmV2lldnBYd25hMFRwRWFFYkFSSjktMEs5X2dESGRQS0xpRXBj?oc=5",
       "date": "Mon, 23 Nov 2026 11:18:00 GMT",
       "desc": "Samsung, SK Hynix’s long-term supply deals with Big Tech hold firm despite market peak fears&nbsp;&nbsp;KED Global"
-    },
-    {
-      "title": "Samsung, SK hynix, LG redraw playbooks for AI boom - The Korea Herald",
-      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5qRU05SGdTbEZ3dTRvRFBVMlRDVmRfWlNuWWlodDYtVW0zTkZzejB6c292VzZlZ0s4dXRqc0NFV1BwaUxLOFcwcHhpOHk1S2FpLXRrUGdnNA?oc=5",
-      "date": "Mon, 23 Nov 2026 06:31:35 GMT",
-      "desc": "Samsung, SK hynix, LG redraw playbooks for AI boom&nbsp;&nbsp;The Korea Herald"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 191300.0,
-      "change": 8200.0,
-      "pct": 4.48,
+      "price": 191700.0,
+      "change": 8600.0,
+      "pct": 4.7,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1198000.0,
-      "change": 85000.0,
-      "pct": 7.64,
+      "price": 1173000.0,
+      "change": 60000.0,
+      "pct": 5.39,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 266000.0,
-      "change": 11000.0,
-      "pct": 4.31,
+      "price": 276000.0,
+      "change": 21000.0,
+      "pct": 8.24,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 92300.0,
-      "change": 4100.0,
-      "pct": 4.65,
+      "price": 95900.0,
+      "change": 7700.0,
+      "pct": 8.73,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 158300.0,
-      "change": -3300.0,
-      "pct": -2.04,
+      "price": 156900.0,
+      "change": -4700.0,
+      "pct": -2.91,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5036.37,
-      "change": 166.41,
-      "pct": 3.42,
+      "price": 5037.28,
+      "change": 167.32,
+      "pct": 3.44,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1346.18,
-      "change": 1.87,
-      "pct": 0.14,
+      "price": 1342.43,
+      "change": -1.88,
+      "pct": -0.14,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-24 01:22 UTC"
+  "updatedAt": "2026-11-24 05:42 UTC"
 }
