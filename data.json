@@ -3,14 +3,20 @@
     {
       "title": "US attorney general dodges questions about Nvidia investigation",
       "link": "https://www.bbc.co.uk/news/articles/crpdw1qx7jgxo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 24 Nov 2026 21:19:42 GMT",
+      "date": "Wed, 25 Nov 2026 03:44:07 GMT",
       "desc": "Nvidia's share price have fallen 7% as lawmakers demand answers about President Donald Trump's involvement in Huang's reinstatement."
     },
     {
-      "title": "French ex-President Sarkozy and wife Carla Bruni to face trial",
-      "link": "https://www.bbc.co.uk/news/articles/c65y17pwv1z7o?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 24 Nov 2026 16:49:07 GMT",
-      "desc": "It is the latest case involving Nicolas Sarkozy who became the first French ex-president to go to jail last year."
+      "title": "Russia's own figures show almost 500,000 deaths in war in Ukraine",
+      "link": "https://www.bbc.co.uk/news/articles/cmx27g533zwyo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 25 Nov 2026 00:56:51 GMT",
+      "desc": "Leaked data reveal how the full-scale invasion of Ukraine has fundamentally changed mortality patterns in Russia."
+    },
+    {
+      "title": "Kilmar Ábrego García leaving US for Spain, ending Trump deportation battle",
+      "link": "https://www.bbc.co.uk/news/articles/c6808pyy5dl9o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 25 Nov 2026 03:54:43 GMT",
+      "desc": "His deportation to El Salvador and return to the US became a flash point in the debate over President Donald Trump's immigration agenda."
     },
     {
       "title": "Indian government has 'lost the plot', says 'cockroach' leader barred from UK flight",
@@ -21,14 +27,8 @@
     {
       "title": "Huawei found guilty of stealing trade secrets but acquitted of racketeering",
       "link": "https://www.bbc.co.uk/news/articles/cmy49ngydqzpo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 24 Nov 2026 22:24:23 GMT",
+      "date": "Wed, 25 Nov 2026 02:59:27 GMT",
       "desc": "The verdict follows a months-long trial in New York."
-    },
-    {
-      "title": "Land mine casualties soar in Syria, two years after war",
-      "link": "https://www.bbc.co.uk/news/articles/c893rl37ywdgo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 24 Nov 2026 15:17:28 GMT",
-      "desc": "Nearly 1,000 children are among those killed or injured by explosives left over from the conflict, figures show."
     }
   ],
   "koreaNews": [
@@ -39,28 +39,28 @@
       "desc": "Making the Most of South Korea’s Semiconductor Boom&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
     },
     {
+      "title": "Bank of Korea Seen Resuming Rate Hikes as AI Boom Stokes Growth - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQckhjMEI0ZTFqMlludWdDOUltWFhuM3U3SDJSeVZ0TGxTenc3VzRNTm9DNVp1ald2LU1fbmJJaUpmSE1mRzVaR2YzVkRaalZqU2RucjdTalhkeFNqYlJRbm9fX1cwYTBUWEFHOWR5c2VaMUhUWU9xV0h5dkhMSlJ5ZVRQNTJYMkRXOTNIakZCUm81RGJiVDhWSC1qLWRQX2hubXB0Ym5WY25FQ01NZk1JWlRzWFQ?oc=5",
+      "date": "Tue, 24 Nov 2026 21:00:00 GMT",
+      "desc": "Bank of Korea Seen Resuming Rate Hikes as AI Boom Stokes Growth&nbsp;&nbsp;Bloomberg.com"
+    },
+    {
+      "title": "Semiconductor Surge Lifts South Korea's Growth Forecasts - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZUpCUDVUaE1yVUNvT1YzbHBKLUd5MkZMUkFfaEs4R0Z5ekxOYjRTcEFITFUweHJSTnd4WUtWSDJ4eTJpX1RDTzEyNDdHTWUtLVp3X041Y0l1Y3ZkUkN5SFhhTDN6cUM3TkxmTTBSWi1xZVAxdEZmNTRncGlTLVpObHdIMTcyaGF5Z3NPMEp3?oc=5",
+      "date": "Wed, 25 Nov 2026 00:39:45 GMT",
+      "desc": "Semiconductor Surge Lifts South Korea's Growth Forecasts&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "Exports Fuel Half of Korea’s Growth, but $1 Trillion Milestone Exposes Structural Risks - Businesskorea",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE4zRkhvYV9DanFwY3BOaGFjZzVSYk5sR1FkOVJvN2hBZzVpcm5JaWJldjFSa0Q2UHhCODFBdjAyQ0tmaGQ5b2VwYXlQNEhTZzJIOE9ZaERWb1hNNXl2WUJNeW9MbzdodEtjNjJDbEFsRWVkWjVY?oc=5",
+      "date": "Wed, 25 Nov 2026 01:27:14 GMT",
+      "desc": "Exports Fuel Half of Korea’s Growth, but $1 Trillion Milestone Exposes Structural Risks&nbsp;&nbsp;Businesskorea"
+    },
+    {
       "title": "South Korea vows to stabilise stock market after KOSPI drops 5% - Yahoo Finance",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNaEZfamtocksxRTF4eDNSZGR5ZDFiLVR5MWdvai1qUTgxSmxMQ0lNdDFXRlBxaXJ3N0dQVWZWN3FKb3RNUjZwRXVnZnlaOTZERDJqTHFhTDU1ZlA0NHYwWmE0RWlJRmV0UGZwQkJfZWN1LXFDS29QNWh6cjJ4ZlVXMWFMM0p3OHI3RXlCSVZVUEVvejFhZDFR?oc=5",
       "date": "Mon, 23 Nov 2026 03:17:00 GMT",
       "desc": "South Korea vows to stabilise stock market after KOSPI drops 5%&nbsp;&nbsp;Yahoo Finance"
-    },
-    {
-      "title": "South Korea’s Economy Grows Faster Than Expected in Third Quarter - WSJ",
-      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaUdZa2s4Tl9abC1VNTVrc08zclh0T3M0TE1PWEpMSjc4N1dOdlV1T3l2eG1QN3JHRVdMajdlTlFPQ0ZWSmFNYjJ5QzU0UURDX1RFVmotY0VqT3hhV3dtd21wZlhPWVl1VktWd05hbVRfTEM4ZF9WZG1UUUNPSHFMWkpNbllzNDdJNW5sRkJkMUdNcjhHVmlUWGZFOUNBU0JLbGJF?oc=5",
-      "date": "Mon, 26 Oct 2026 07:00:00 GMT",
-      "desc": "South Korea’s Economy Grows Faster Than Expected in Third Quarter&nbsp;&nbsp;WSJ"
-    },
-    {
-      "title": "Asian stock markets tumble as AI bubble fears mount - Al Jazeera",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOaWg2VjJNckwyMnpNTjV6cnBRckpmX2hndGxyM29qMnU0aml6bUNicGJPNXJKdzludzVfYVNhSHpJR0xhZjJMeHFDM3d4MldqQUJPbE9ha3VFbjMyLXFEeS1VSkFxejNJN2czNFlnMF9uNGdnb2lPUUdoTmZZeUFrbHFfNjVsZzc5QUVSR3hST2VYaDB1S2dYd0ktRWNoSHNmQUHSAacBQVVfeXFMUHlLZVl5SzNCcWd0RjktYlZwT2pDLXNDZmg1dzNKQ2k4VFZaa08xWjhQcEFubzhxYnpsZWxQU3ZIaGZSZlFzOGlrY3RRNUlLczVZRk8xN05VdkduMFRaVy03ME5zMWFtT0JSSWRqTzZ0cjVtUVBwYzJ5LWZhM0FiOFlSSlJHS1ZhcmZqeGlFdi1CLTBLeVpVSFNJVElhSnQxQmU4WS1hSWM?oc=5",
-      "date": "Mon, 23 Nov 2026 09:21:03 GMT",
-      "desc": "Asian stock markets tumble as AI bubble fears mount&nbsp;&nbsp;Al Jazeera"
-    },
-    {
-      "title": "South Korea’s Early Exports Gain After $1 Trillion Milestone - Bloomberg.com",
-      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPa0hkTFZkNTVyUlRNQTg1WV9Ycm9tOUN3R3djbmVMR2VONFNCUV82ZFY5QUthWjFGZ2ExRkZlWWxQV2thZGZrbXdWYkJJMmtyZWJaOGUwU21tNEdIN0ItTzQ2SC1tMDc1dUZFcFg0MFNJVjVsZXEwc1JSbHhQUlZ3ekFHdlloMlNQQ29uekdTMVRGVGFlYkNjUU13N0Y1WWRJVzZzcmxoMkt0cWdHYTZj?oc=5",
-      "date": "Mon, 23 Nov 2026 00:00:00 GMT",
-      "desc": "South Korea’s Early Exports Gain After $1 Trillion Milestone&nbsp;&nbsp;Bloomberg.com"
     },
     {
       "title": "Samsung And SK hynix Face Labor Crunch For Its Semiconductor Mega-Projects; South Korea Reportedly Meeting 260,000 Workforce Requirement Through Retired Soldiers - Wccftech",
@@ -75,10 +75,10 @@
       "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
     },
     {
-      "title": "Samsung, SK Hynix Stocks Halve Amid AI Bubble Anxiety - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNT1ZXaFFVNWllbDhtM2ROMS00d0pZXzNYd0tLU2NFOUQzVGo4c3IxdmZxQ0k2RTF5cVpXcndYMmRtank0R2tjZlJ1NjRXbWpoazBRX0M4QTI1ZTJ2OVoxRUI2NTl1anpuZDlkejlxblpZeW83dkF2Q2xTLW9vMjhwWG9MMWJfNXVz?oc=5",
-      "date": "Tue, 24 Nov 2026 01:44:52 GMT",
-      "desc": "Samsung, SK Hynix Stocks Halve Amid AI Bubble Anxiety&nbsp;&nbsp;조선일보"
+      "title": "Samsung, SK Hynix Lead 43% Retained Earnings Surge - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOMXpVc0pYd0hGMExpN3Z1SFl1VHlRUG0zR0FrWTR4dm54UFpVbXpQV3JQdGNaWGp2Yk96OVRSVkVDQklpNHNHcDdNWVhfSGNmQWxOc3FIUUxmTEFIeS1tU2lNcFl0a1ZWXzZmMmJGWmJTLWk0d3BzaUx1ZWRGb0EwRGh0R1JZSmxp?oc=5",
+      "date": "Wed, 25 Nov 2026 01:55:10 GMT",
+      "desc": "Samsung, SK Hynix Lead 43% Retained Earnings Surge&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -175,59 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 189400.0,
-      "change": 6300.0,
-      "pct": 3.44,
+      "price": 172300.0,
+      "change": -5200.0,
+      "pct": -2.93,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1158000.0,
-      "change": 45000.0,
-      "pct": 4.04,
+      "price": 1048000.0,
+      "change": -37000.0,
+      "pct": -3.41,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 275000.0,
-      "change": 20000.0,
-      "pct": 7.84,
+      "price": 271000.0,
+      "change": 23500.0,
+      "pct": 9.49,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 95600.0,
-      "change": 7400.0,
-      "pct": 8.39,
+      "price": 95400.0,
+      "change": 9000.0,
+      "pct": 10.42,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 156100.0,
-      "change": -5500.0,
-      "pct": -3.4,
+      "price": 160300.0,
+      "change": 10300.0,
+      "pct": 6.87,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 5006.03,
-      "change": 136.07,
-      "pct": 2.79,
+      "price": 4727.74,
+      "change": 19.2,
+      "pct": 0.41,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1340.93,
-      "change": -3.38,
-      "pct": -0.25,
+      "price": 1342.98,
+      "change": 1.96,
+      "pct": 0.15,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-24 23:18 UTC"
+  "updatedAt": "2026-11-25 04:44 UTC"
 }
