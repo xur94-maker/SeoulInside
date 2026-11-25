@@ -1,37 +1,49 @@
 {
   "globalNews": [
     {
+      "title": "Russia's own figures show it has lost almost 500,000 people in Ukraine war",
+      "link": "https://www.bbc.co.uk/news/articles/cmx27g533zwyo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 25 Nov 2026 00:56:51 GMT",
+      "desc": "Leaked data reveal how the full-scale invasion of Ukraine has fundamentally changed mortality patterns in Russia."
+    },
+    {
+      "title": "My family died in Ukraine. My mum blamed Zelensky's troops - the truth is complicated",
+      "link": "https://www.bbc.co.uk/news/articles/cw24e17v9e51o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 25 Nov 2026 00:54:13 GMT",
+      "desc": "BBC journalist Anastasiya Gribanova investigates who killed her father and grandparents in the war."
+    },
+    {
       "title": "US attorney general dodges questions about Nvidia investigation",
       "link": "https://www.bbc.co.uk/news/articles/crpdw1qx7jgxo?at_medium=RSS&at_campaign=rss",
       "date": "Wed, 25 Nov 2026 03:44:07 GMT",
       "desc": "Nvidia's share price have fallen 7% as lawmakers demand answers about President Donald Trump's involvement in Huang's reinstatement."
     },
     {
-      "title": "Russia's own figures show almost 500,000 deaths in war in Ukraine",
-      "link": "https://www.bbc.co.uk/news/articles/cmx27g533zwyo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 25 Nov 2026 00:56:51 GMT",
-      "desc": "Leaked data reveal how the full-scale invasion of Ukraine has fundamentally changed mortality patterns in Russia."
+      "title": "Close-up images to be revealed of asteroid deliberately hit to test ability to protect Earth",
+      "link": "https://www.bbc.co.uk/news/articles/cw8dv112r5gmo?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 25 Nov 2026 06:00:36 GMT",
+      "desc": "The mission is studying an asteroid deliberately knocked off course by a colliding spacecraft."
     },
     {
-      "title": "Kilmar Ábrego García leaving US for Spain, ending Trump deportation battle",
-      "link": "https://www.bbc.co.uk/news/articles/c6808pyy5dl9o?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 25 Nov 2026 03:54:43 GMT",
-      "desc": "His deportation to El Salvador and return to the US became a flash point in the debate over President Donald Trump's immigration agenda."
-    },
-    {
-      "title": "Indian government has 'lost the plot', says 'cockroach' leader barred from UK flight",
-      "link": "https://www.bbc.co.uk/news/articles/cm5y1ezx2gqyo?at_medium=RSS&at_campaign=rss",
-      "date": "Tue, 24 Nov 2026 18:07:46 GMT",
-      "desc": "Saurav Das says immigration authorities at Delhi airport told him his passport had been flagged."
-    },
-    {
-      "title": "Huawei found guilty of stealing trade secrets but acquitted of racketeering",
-      "link": "https://www.bbc.co.uk/news/articles/cmy49ngydqzpo?at_medium=RSS&at_campaign=rss",
-      "date": "Wed, 25 Nov 2026 02:59:27 GMT",
-      "desc": "The verdict follows a months-long trial in New York."
+      "title": "Thomas Markle charged in US for possessing child sex abuse images",
+      "link": "https://www.bbc.co.uk/news/articles/crwy4egxn592o?at_medium=RSS&at_campaign=rss",
+      "date": "Wed, 25 Nov 2026 01:40:42 GMT",
+      "desc": "The FBI arrested Markle on 6 November after a search of a storage unit he had allegedly rented in Los Angeles uncovered the abuse material."
     }
   ],
   "koreaNews": [
+    {
+      "title": "Exports Drive Over Half of South Korea's Growth - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSjV1eDRKeWRKOTBFbzQtT0NDR05Fd29sd3M2b05ocUVHNW5UTlZTekZrSFFOMzQwOUk2RkxCYVlDUEFQOXJnSTU2dFRudU9wM0pqN2NCNGRyWm5XUVdsald0d05WRjFmT1VWZ3hUSW5XOTZNMS02SjZ5NHNYWHhXOW1QR2VXdkZt?oc=5",
+      "date": "Wed, 25 Nov 2026 04:50:29 GMT",
+      "desc": "Exports Drive Over Half of South Korea's Growth&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "The limits of the Russia–North Korea partnership - East Asia Forum",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNUTFPVDNXTWQ1SmZTZmhVMVVBRWU3R01rY3dhdjV4WGNjenVlMzV3QUFfeHYyYVBWcDhpQzkwSmlDZDlydktHLUpIUk1Bd0Z2MlI1VXhBUFZ3cDV5QXptRjMxQ3Q5cURTVVNHdTdJdVdOVnZpbk9OQ3RWd2dzZ3E2N1JJOV9HZFlvYXhyeHNaOA?oc=5",
+      "date": "Wed, 25 Nov 2026 11:01:09 GMT",
+      "desc": "The limits of the Russia–North Korea partnership&nbsp;&nbsp;East Asia Forum"
+    },
     {
       "title": "Making the Most of South Korea’s Semiconductor Boom - The Diplomat – Asia-Pacific Current Affairs Magazine",
       "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNMFBlT3ZBS3NseHFSYXR2WVE4U3ljR19weUM5YXNrQmlTd0dSU1g2dkhMb0xfdlBFUGQyZ0pXaGtJblUwQmVkczMtLVhiQXJXQm9EemtValVuSTFBMUpraUs5YV9CN1lZdXNwTm9DTTdHdUgtWFhJWnRoY1ZHYklUWXJCaDg3NDJGRktV?oc=5",
@@ -39,22 +51,10 @@
       "desc": "Making the Most of South Korea’s Semiconductor Boom&nbsp;&nbsp;The Diplomat – Asia-Pacific Current Affairs Magazine"
     },
     {
-      "title": "Bank of Korea Seen Resuming Rate Hikes as AI Boom Stokes Growth - Bloomberg.com",
+      "title": "Bank of Korea Seen Resuming Rate Hikes as AI Boom Stokes Growth - Bloomberg",
       "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQckhjMEI0ZTFqMlludWdDOUltWFhuM3U3SDJSeVZ0TGxTenc3VzRNTm9DNVp1ald2LU1fbmJJaUpmSE1mRzVaR2YzVkRaalZqU2RucjdTalhkeFNqYlJRbm9fX1cwYTBUWEFHOWR5c2VaMUhUWU9xV0h5dkhMSlJ5ZVRQNTJYMkRXOTNIakZCUm81RGJiVDhWSC1qLWRQX2hubXB0Ym5WY25FQ01NZk1JWlRzWFQ?oc=5",
       "date": "Tue, 24 Nov 2026 21:00:00 GMT",
-      "desc": "Bank of Korea Seen Resuming Rate Hikes as AI Boom Stokes Growth&nbsp;&nbsp;Bloomberg.com"
-    },
-    {
-      "title": "Semiconductor Surge Lifts South Korea's Growth Forecasts - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPZUpCUDVUaE1yVUNvT1YzbHBKLUd5MkZMUkFfaEs4R0Z5ekxOYjRTcEFITFUweHJSTnd4WUtWSDJ4eTJpX1RDTzEyNDdHTWUtLVp3X041Y0l1Y3ZkUkN5SFhhTDN6cUM3TkxmTTBSWi1xZVAxdEZmNTRncGlTLVpObHdIMTcyaGF5Z3NPMEp3?oc=5",
-      "date": "Wed, 25 Nov 2026 00:39:45 GMT",
-      "desc": "Semiconductor Surge Lifts South Korea's Growth Forecasts&nbsp;&nbsp;조선일보"
-    },
-    {
-      "title": "Exports Fuel Half of Korea’s Growth, but $1 Trillion Milestone Exposes Structural Risks - Businesskorea",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE4zRkhvYV9DanFwY3BOaGFjZzVSYk5sR1FkOVJvN2hBZzVpcm5JaWJldjFSa0Q2UHhCODFBdjAyQ0tmaGQ5b2VwYXlQNEhTZzJIOE9ZaERWb1hNNXl2WUJNeW9MbzdodEtjNjJDbEFsRWVkWjVY?oc=5",
-      "date": "Wed, 25 Nov 2026 01:27:14 GMT",
-      "desc": "Exports Fuel Half of Korea’s Growth, but $1 Trillion Milestone Exposes Structural Risks&nbsp;&nbsp;Businesskorea"
+      "desc": "Bank of Korea Seen Resuming Rate Hikes as AI Boom Stokes Growth&nbsp;&nbsp;Bloomberg"
     },
     {
       "title": "South Korea vows to stabilise stock market after KOSPI drops 5% - Yahoo Finance",
@@ -63,22 +63,22 @@
       "desc": "South Korea vows to stabilise stock market after KOSPI drops 5%&nbsp;&nbsp;Yahoo Finance"
     },
     {
+      "title": "Samsung, SK Hynix Lead 560-Trillion Won Surge in Retained Earnings - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOMXpVc0pYd0hGMExpN3Z1SFl1VHlRUG0zR0FrWTR4dm54UFpVbXpQV3JQdGNaWGp2Yk96OVRSVkVDQklpNHNHcDdNWVhfSGNmQWxOc3FIUUxmTEFIeS1tU2lNcFl0a1ZWXzZmMmJGWmJTLWk0d3BzaUx1ZWRGb0EwRGh0R1JZSmxp?oc=5",
+      "date": "Wed, 25 Nov 2026 06:16:06 GMT",
+      "desc": "Samsung, SK Hynix Lead 560-Trillion Won Surge in Retained Earnings&nbsp;&nbsp;조선일보"
+    },
+    {
+      "title": "China's YMTC boosted by Samsung and SK Hynix adopting its memory technology - Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPcmxHTGR2bmVFQ1dEWG1ONkllUlZxbmkyUFVHTEhONFZGdldrYTBCMzA0S1J0N2x5dHpTcVFfTG1YcEpGN1NPNzdwdkZNOHJySUZjenBhRkxSTmtpRnhvYTdlNkZlQUczNC1VdEdWUlhrd3ExVVF6c3RremhxajU4VE5GVlE1SjV5WHdJVndQMUxrNjVqNlBhRS12SndlSEk1aFh3UTZ6dHl6Rjk5T1lRbVBfeGJNbFQySmViZXRGeG9CTEZZTU5J?oc=5",
+      "date": "Wed, 25 Nov 2026 06:08:00 GMT",
+      "desc": "China's YMTC boosted by Samsung and SK Hynix adopting its memory technology&nbsp;&nbsp;Nikkei Asia"
+    },
+    {
       "title": "Samsung And SK hynix Face Labor Crunch For Its Semiconductor Mega-Projects; South Korea Reportedly Meeting 260,000 Workforce Requirement Through Retired Soldiers - Wccftech",
       "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPX3g5dkhKZU1GTTlET1hSckpFcE1Hc29xYTlPUXduY2pCeXFuNFlKQ2MySS1sN2N0dUl3emdUM0lucTg3dUkyZXJobldra0MteW1zN1VsanA0cDluREl2QUNWZ3M5MDkyOUI4RG0zMk9SSHZlSThFMHJDN0tKQmVnVlRKYUZYNmZMNWk0NFhEUjY1QdIBlwFBVV95cUxQbE5JX2Jya05lMWNqWm5KZldSMHJoUTV1eS1EYTZZSDZ0YzI5cVJYQnl2RUFZd3hEQTZGcHJ6eTI0TFM3WmM5dUhnd1VWa3ZqOTNjMmtSUi1sdThVVjFHbmZISk91Vk9xaFNGNkk0WjlOdU1qcWZkWl9lYk9TMmVZY2dLVEFVbE9fVkNfRV9adTlEbHNRR1VV?oc=5",
       "date": "Tue, 24 Nov 2026 10:14:10 GMT",
       "desc": "Samsung And SK hynix Face Labor Crunch For Its Semiconductor Mega-Projects; South Korea Reportedly Meeting 260,000 Workforce Requirement Through Retired Soldiers&nbsp;&nbsp;Wccftech"
-    },
-    {
-      "title": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say - Reuters",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNmZxYjhQQjhXcUZzRnh3dHJIMWQzWUxyNDFMLTM1b1R3d3NFMEFycFpkQkx5NW5sQjBNdVJldDNhakRYcUMxRERYRnR3ZWdoVDBZUmljM2VENTdmRzFVdVY4eUMxTDk3VmtCWk1jQ1dvZmY0cnVCQ1FpTl9uZ3lrWWU4MGp0aDRsbG9jNTBvUDBadXpoZVAwOUFYRUlITXVUMUMxakpMVGc3QXJmQjJxeWZoWWJlTHNDSHNmZGprUVY?oc=5",
-      "date": "Wed, 21 Oct 2026 07:00:00 GMT",
-      "desc": "EXCLUSIVE: Samsung, SK Hynix upgrading China plants to make more advanced chips, people say&nbsp;&nbsp;Reuters"
-    },
-    {
-      "title": "Samsung, SK Hynix Lead 43% Retained Earnings Surge - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOMXpVc0pYd0hGMExpN3Z1SFl1VHlRUG0zR0FrWTR4dm54UFpVbXpQV3JQdGNaWGp2Yk96OVRSVkVDQklpNHNHcDdNWVhfSGNmQWxOc3FIUUxmTEFIeS1tU2lNcFl0a1ZWXzZmMmJGWmJTLWk0d3BzaUx1ZWRGb0EwRGh0R1JZSmxp?oc=5",
-      "date": "Wed, 25 Nov 2026 01:55:10 GMT",
-      "desc": "Samsung, SK Hynix Lead 43% Retained Earnings Surge&nbsp;&nbsp;조선일보"
     }
   ],
   "worldStocks": [
@@ -175,61 +175,59 @@
     {
       "symbol": "005930.KS",
       "label": "Samsung",
-      "price": 172300.0,
-      "change": -5200.0,
-      "pct": -2.93,
+      "price": 170700.0,
+      "change": -6800.0,
+      "pct": -3.83,
       "url": "https://finance.yahoo.com/quote/005930.KS"
     },
     {
       "symbol": "000660.KS",
       "label": "SK Hynix",
-      "price": 1048000.0,
-      "change": -37000.0,
-      "pct": -3.41,
+      "price": 1030000.0,
+      "change": -55000.0,
+      "pct": -5.07,
       "url": "https://finance.yahoo.com/quote/000660.KS"
     },
     {
       "symbol": "005380.KS",
       "label": "Hyundai",
-      "price": 271000.0,
-      "change": 23500.0,
-      "pct": 9.49,
+      "price": 269500.0,
+      "change": 22000.0,
+      "pct": 8.89,
       "url": "https://finance.yahoo.com/quote/005380.KS"
     },
     {
       "symbol": "000270.KS",
       "label": "Kia",
-      "price": 95400.0,
-      "change": 9000.0,
-      "pct": 10.42,
+      "price": 96000.0,
+      "change": 9600.0,
+      "pct": 11.11,
       "url": "https://finance.yahoo.com/quote/000270.KS"
     },
     {
       "symbol": "035420.KS",
       "label": "NAVER",
-      "price": 160300.0,
-      "change": 10300.0,
-      "pct": 6.87,
+      "price": 159000.0,
+      "change": 9000.0,
+      "pct": 6.0,
       "url": "https://finance.yahoo.com/quote/035420.KS"
     },
     {
       "symbol": "^KS11",
       "label": "KOSPI",
-      "price": 4727.74,
-      "change": 19.2,
-      "pct": 0.41,
+      "price": 4697.51,
+      "change": -11.03,
+      "pct": -0.23,
       "url": "https://finance.yahoo.com/quote/%5EKS11"
     },
     {
       "symbol": "USDKRW=X",
       "label": "USD/KRW",
-      "price": 1342.98,
-      "change": 1.96,
+      "price": 1343.0,
+      "change": 1.98,
       "pct": 0.15,
       "url": "https://finance.yahoo.com/quote/USDKRW%3DX"
     }
   ],
-  "updatedAt": "2026-11-25 06:01 UTC",
-  "myPosts": [],
-  "latestPost": {}
+  "updatedAt": "2026-11-25 11:55 UTC"
 }
