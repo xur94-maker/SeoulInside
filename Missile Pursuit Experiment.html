@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Missile Pursuit: Prediction Weight w and Inertia α</title>
+<style>
+:root{--bg:#f4f6f8;--panel:#fff;--ink:#17202c;--mute:#5b6675;--line:#d8dee6;--msl:#1f5fd6;--ref:#9aa5b4;--hero:#d9480f;--ok:#0b7a53;--bad:#c92a2a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151c;--panel:#18202b;--ink:#e6ebf2;--mute:#9aa6b6;--line:#2b3644;--msl:#6aa2ff;--ref:#6d7889;--hero:#ff8a4c;--ok:#4cd6a0;--bad:#ff7b7b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10151c;--panel:#18202b;--ink:#e6ebf2;--mute:#9aa6b6;--line:#2b3644;--msl:#6aa2ff;--ref:#6d7889;--hero:#ff8a4c;--ok:#4cd6a0;--bad:#ff7b7b;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:900px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
+p.sub{margin:0 0 14px;color:var(--mute);max-width:72ch}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;margin-top:14px}
+.tabs{display:flex;gap:6px}
+.tabs button,.btn{padding:7px 12px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);font:inherit;cursor:pointer}
+.tabs button[aria-pressed=true]{background:var(--msl);border-color:var(--msl);color:#fff}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--msl);outline-offset:2px}
+body[data-m=game] .au,body[data-m=auto] .g{display:none!important}
+canvas{width:100%;height:400px;display:block;touch-action:none}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--mute);margin-top:8px}
+.legend i{display:inline-block;width:18px;height:0;border-top:3px solid;vertical-align:middle;margin-right:5px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stats div{border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:13px;color:var(--mute)}
+.stats strong{display:block;font-size:18px;color:var(--ink);font-variant-numeric:tabular-nums}
+#msg{margin:12px 0 0;font-weight:600;min-height:1.6em}
+#msg.win{color:var(--ok)}#msg.hit{color:var(--bad)}
+.pad{display:grid;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(2,44px);gap:6px;justify-content:center;margin-top:10px}
+.pad button{font-size:18px}
+.pad button:nth-child(1){grid-column:2}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px 18px}
+.ctl label{display:flex;justify-content:space-between;font-size:13px;margin-top:10px}
+.ctl input[type=range]{width:100%;accent-color:var(--msl)}
+.ctl select{width:100%;padding:7px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:inherit;margin-top:6px}
+.hint{font-size:12px;color:var(--mute);margin:2px 0 0}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums;min-width:100%}
+th,td{padding:4px 8px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--panel)}
+td.turn,th.turn{border-left:2px solid var(--hero)}
+.note{font-size:13px;color:var(--mute);margin-top:14px;max-width:80ch}
+</style>
+</head>
+<body data-m="game">
+<main>
+<h1>Missile Pursuit Experiment</h1>
+<p class="sub">The discrete pursuit model from section 2-3, plus inertia α. Steer the hero with the arrow keys, or run the automatic simulation to compare the prediction weight w and the inertia α.</p>
+<div class="tabs" role="group" aria-label="Mode">
+<button id="tg" type="button" aria-pressed="true">Play it</button>
+<button id="ta" type="button" aria-pressed="false">Auto simulation</button>
+</div>
+
+<section class="box">
+<canvas id="cv" role="img" aria-label="Trajectories of the hero and the missile"></canvas>
+<div class="legend"><span><i style="border-color:var(--hero)"></i>Hero</span><span><i style="border-color:var(--msl)"></i>Missile</span><span class="au"><i style="border-color:var(--ref);border-top-style:dashed"></i>Missile (α=1)</span><span class="g">Dashed circle: hit radius</span></div>
+<div class="stats">
+<div><span class="g">Steps left</span><span class="au">Distance at last detection</span><strong id="s1"></strong></div>
+<div><span class="g">Current distance</span><span class="au">Minimum distance</span><strong id="s2"></strong></div>
+<div><span class="g">Minimum distance</span><span class="au">Mean distance, n≥6</span><strong id="s3"></strong></div>
+</div>
+<p id="msg" class="g" aria-live="polite"></p>
+<div class="g">
+<div class="pad" aria-label="Direction buttons"><button class="btn" data-d="U" aria-label="Up">↑</button><button class="btn" data-d="L" aria-label="Left">←</button><button class="btn" data-d="D" aria-label="Down">↓</button><button class="btn" data-d="R" aria-label="Right">→</button></div>
+<p class="hint" style="text-align:center">Each key press is one detection: the hero moves u, then the missile moves by the rule.</p>
+<div class="row" style="justify-content:center"><button id="restart" class="btn" type="button">Restart</button></div>
+</div>
+</section>
+
+<section class="box ctl" aria-label="Settings">
+<div><label>Prediction weight w <b id="vw"></b></label><input id="w" type="range" min="0" max="1" step="0.05" value="0.65"></div>
+<div><label>Missile speed s <b id="vs"></b></label><input id="s" type="range" min="6" max="20" step="1" value="16"></div>
+<div><label>Hero speed u <b id="vu"></b></label><input id="u" type="range" min="3" max="11" step="1" value="9"></div>
+<div><label>Inertia α <b id="va"></b></label><input id="a" type="range" min="0.1" max="1" step="0.05" value="0.4"><p class="hint">α=1 means no inertia; the smaller α is, the more slowly the direction changes.</p></div>
+<div><label>Number of steps N <b id="vn"></b></label><input id="n" type="range" min="8" max="20" step="1" value="14"></div>
+<div class="g"><label>Hit radius R <b id="vr"></b></label><input id="r" type="range" min="1" max="6" step="0.5" value="2.5"></div>
+<div class="au"><label for="mode">Hero's movement</label>
+<select id="mode"><option value="straight">Straight, +y</option><option value="t90" selected>Turns 90° to +x at n=6</option><option value="t180">Reverses 180° at n=6</option><option value="alt">Keeps turning: +y / +x every 3 detections</option></select></div>
+<div style="grid-column:1/-1" class="row"><button id="demo" class="btn" type="button">Inertia demo (w=0.65, s=16, α=0.4)</button><button id="reset" class="btn" type="button">Document's table setting (s=12, w=0, α=1, straight)</button></div>
+</section>
+
+<div class="box tw"><table id="tb"></table></div>
+<p class="note">Distances are |P<sub>n</sub> − M<sub>n</sub>| at the detection moment (before the missile moves). The inertia model blends the target movement D with the previous velocity V: V<sub>n+1</sub> = (1−α)V<sub>n</sub> + αD, M<sub>n+1</sub> = M<sub>n</sub> + V<sub>n+1</sub>. At launch the missile is assumed to be already flying toward the hero at speed s. In Play mode you are caught when the distance at a detection is at most R, and you survive if you last N steps (a missile passing close between detections is not checked). "Keeps turning" follows the zig rule of the document's code E-11. This is a simplified model for learning recurrences and differs from real games and guidance systems. With inertia, the formula "remaining gap = (1−w)·u" no longer holds, so read the results as simulations only.</p>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let mode="game",G=null;
+const P0=()=>({w:+$("w").value,s:+$("s").value,u:+$("u").value,al:+$("a").value,N:+$("n").value,R:+$("r").value});
+function mv(P,M,V,n,p){
+  const a=[P[n][0]-M[n][0],P[n][1]-M[n][1]],ww=n>0?p.w:0,v=n>0?[P[n][0]-P[n-1][0],P[n][1]-P[n-1][1]]:[0,0];
+  const d=[a[0]+ww*v[0],a[1]+ww*v[1]],L=Math.hypot(d[0],d[1]),k=L>0?Math.min(p.s,L)/L:0,D=[d[0]*k,d[1]*k];
+  const W=(n===0||p.al>=1)?D:[(1-p.al)*V[0]+p.al*D[0],(1-p.al)*V[1]+p.al*D[1]];
+  return{V:W,M:[M[n][0]+W[0],M[n][1]+W[1]]};
+}
+function sim(p,al,hm){
+  const hd=n=>hm==="straight"?[0,1]:hm==="alt"?(Math.floor(n/3)%2===0?[0,1]:[1,0]):n<6?[0,1]:hm==="t90"?[1,0]:[0,-1];
+  const q={...p,al},P=[[30,0]];
+  for(let n=1;n<=p.N;n++){const d=hd(n);P.push([P[n-1][0]+p.u*d[0],P[n-1][1]+p.u*d[1]]);}
+  const M=[[0,0]],dist=[];let V=[0,0];
+  for(let n=0;n<=p.N;n++){
+    dist.push(Math.hypot(P[n][0]-M[n][0],P[n][1]-M[n][1]));
+    if(n===p.N)break;
+    const r=mv(P,M,V,n,q);V=r.V;M.push(r.M);
+  }
+  return{P,M,dist};
+}
+function newGame(){const p=P0();G={p,P:[[30,0]],M:[[0,0]],V:[0,0],dist:[30],over:null};}
+function play(d){
+  if(!G||G.over)return;
+  const p=G.p,n=G.P.length-1,r=mv(G.P,G.M,G.V,n,p);G.V=r.V;G.M.push(r.M);
+  const h=G.P[n];G.P.push([h[0]+p.u*d[0],h[1]+p.u*d[1]]);
+  const dd=Math.hypot(G.P[n+1][0]-r.M[0],G.P[n+1][1]-r.M[1]);G.dist.push(dd);
+  if(dd<=p.R)G.over="hit";else if(n+1>=p.N)G.over="win";
+  render();
+}
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function draw(A,B,R){
+  const c=$("cv"),r=devicePixelRatio||1,W=c.clientWidth,H=c.clientHeight;
+  c.width=W*r;c.height=H*r;const g=c.getContext("2d");g.scale(r,r);
+  const pts=[...A.P,...A.M,...B.M,[0,0]];
+  const x0=Math.min(...pts.map(p=>p[0])),x1=Math.max(...pts.map(p=>p[0])),y0=Math.min(...pts.map(p=>p[1])),y1=Math.max(...pts.map(p=>p[1]));
+  const pad=28,sc=Math.min((W-2*pad)/Math.max(x1-x0,30),(H-2*pad)/Math.max(y1-y0,30));
+  const ox=(W-sc*(x1-x0))/2,oy=(H+sc*(y1-y0))/2,X=p=>ox+(p[0]-x0)*sc,Y=p=>oy-(p[1]-y0)*sc;
+  g.font="12px system-ui";g.lineJoin="round";
+  const path=(arr,col,dash,wd)=>{g.beginPath();arr.forEach((p,i)=>i?g.lineTo(X(p),Y(p)):g.moveTo(X(p),Y(p)));g.strokeStyle=col;g.lineWidth=wd;g.setLineDash(dash);g.stroke();g.setLineDash([]);};
+  const dots=(arr,col,rad)=>{g.fillStyle=col;arr.forEach(p=>{g.beginPath();g.arc(X(p),Y(p),rad,0,7);g.fill();});};
+  path(B.M,css("--ref"),[6,4],1.6);dots(B.M,css("--ref"),2.2);
+  path(A.P,css("--hero"),[],2);dots(A.P,css("--hero"),3);
+  path(A.M,css("--msl"),[],2);dots(A.M,css("--msl"),3);
+  const hp=A.P[A.P.length-1],mp=A.M[A.M.length-1];
+  if(R){g.beginPath();g.arc(X(hp),Y(hp),R*sc,0,7);g.strokeStyle=css("--hero");g.setLineDash([3,3]);g.lineWidth=1.2;g.stroke();g.setLineDash([]);}
+  g.beginPath();g.arc(X(hp),Y(hp),6,0,7);g.strokeStyle=css("--hero");g.lineWidth=2;g.stroke();
+  g.beginPath();g.arc(X(mp),Y(mp),6,0,7);g.strokeStyle=css("--msl");g.stroke();
+  g.fillStyle=css("--ink");g.fillText("S",X(A.M[0])+6,Y(A.M[0])+14);
+  g.fillStyle=css("--mute");g.fillText("y ↑",6,14);g.fillText("x →",W-34,H-8);
+}
+const f=x=>x.toFixed(1);
+function table(rows,tc){
+  const L=rows[0][1].length,tn=i=>i===tc?"turn":"";
+  let h="<tr><th>Detection n</th>"+Array.from({length:L},(_,i)=>`<th class="${tn(i)}">${i}</th>`).join("")+"</tr>";
+  rows.forEach(([nm,ds])=>h+=`<tr><td>${nm}</td>`+ds.map((d,i)=>`<td class="${tn(i)}">${f(d)}</td>`).join("")+"</tr>");
+  $("tb").innerHTML=h;
+}
+function render(){
+  const p=P0();
+  $("vw").textContent=p.w.toFixed(2);$("vs").textContent=p.s;$("vu").textContent=p.u;$("va").textContent=p.al.toFixed(2);$("vn").textContent=p.N;$("vr").textContent=p.R;
+  if(mode==="game"){
+    const n=G.P.length-1,msg=$("msg");
+    $("s1").textContent=G.p.N-n;$("s2").textContent=f(G.dist[n]);$("s3").textContent=f(Math.min(...G.dist));
+    msg.className="g"+(G.over?" "+G.over:"");
+    msg.textContent=G.over==="hit"?`Caught at detection ${n}: distance ${f(G.dist[n])} (within radius ${G.p.R}).`:G.over==="win"?`Survived! You lasted all ${G.p.N} steps.`:n===0?"Press an arrow key to take your first step.":"Keep moving.";
+    table([["This run",G.dist]],-1);draw({P:G.P,M:G.M},{M:[]},G.p.R);
+  }else{
+    const hm=$("mode").value,A=sim(p,p.al,hm),B=sim(p,1,hm),late=A.dist.slice(6);
+    $("s1").textContent=f(A.dist[p.N]);$("s2").textContent=f(Math.min(...A.dist));
+    $("s3").textContent=late.length?f(late.reduce((a,b)=>a+b,0)/late.length):"-";
+    table([["Current setting",A.dist],["No inertia (α=1)",B.dist]],hm==="t90"||hm==="t180"?6:-1);draw(A,B,0);
+  }
+}
+function setMode(m){
+  mode=m;document.body.dataset.m=m;
+  $("tg").setAttribute("aria-pressed",m==="game");$("ta").setAttribute("aria-pressed",m==="auto");
+  if(m==="game")newGame();render();
+}
+function setVals(o){for(const k in o)$(k).value=o[k];if(mode==="game")newGame();render();}
+["w","s","u","a","n","r"].forEach(i=>$(i).addEventListener("input",()=>{if(mode==="game")newGame();render();}));
+$("mode").addEventListener("change",render);
+$("tg").onclick=()=>setMode("game");$("ta").onclick=()=>setMode("auto");
+$("restart").onclick=()=>{newGame();render();};
+$("demo").onclick=()=>setVals({w:0.65,s:16,u:9,a:0.4,n:14,mode:"t90"});
+$("reset").onclick=()=>setVals({w:0,s:12,u:9,a:1,n:14,mode:"straight"});
+const K={ArrowUp:[0,1],ArrowDown:[0,-1],ArrowLeft:[-1,0],ArrowRight:[1,0]},B2={U:[0,1],D:[0,-1],L:[-1,0],R:[1,0]};
+document.querySelectorAll(".pad button").forEach(b=>b.onclick=()=>play(B2[b.dataset.d]));
+addEventListener("keydown",e=>{
+  const d=K[e.key];if(!d||mode!=="game")return;
+  const a=document.activeElement;if(a&&(a.tagName==="SELECT"||a.type==="range"))a.blur();
+  e.preventDefault();play(d);
+});
+addEventListener("resize",render);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render);
+newGame();render();
+</script>
+</body>
+</html>
