@@ -832,8 +832,23 @@ https://seoulinside.substack.com/p/the-connected-framework-how-the-suppression
 ----
 
 <!-- BLOG-POST-LIST:START -->
+### [Recurrence Relations Step by Step: From Bank Accounts and Game Characters to Stability and Applications [R.4]](https://seoulinside.substack.com/p/recurrence-relations-step-by-step) `2026.11.26`
+Part 1: What Is a Recurrence Relation?
+
+### [Korea Pulse | Memes & Issues from Korean Online Communities](https://seoulinside.substack.com/p/korea-pulse-memes-and-issues-from) `2026.11.25`
+Bus Stop Arrival Boards These Days , Overdose on Romance: The Lights-Out Line 1 Subway
+
+### [The Equals Sign Has Five Readings: Calculation, Sameness, Definition, Assignment, and Question [R.3]](https://seoulinside.substack.com/p/the-equals-sign-has-five-readings) `2026.11.24`
+Same =, different jobs: five ways to read the equals sign
+
+### [Brief [2026.11.23]: A 3.9% Growth Forecast and a KOSPI Below 5,000: Which One Will the BoK Listen To?](https://seoulinside.substack.com/p/brief-20261123-a-39-growth-forecast) `2026.11.22`
+Bank of Korea Poised to Resume Rate Hikes at Year-End Meeting on Nov.
+
+### [Did Interest Rates Move Seoul Home Prices? 22 Years Through Sales, Jeonse, and Loan Rates (Nov 2003 – Oct 2026)](https://seoulinside.substack.com/p/did-interest-rates-move-seoul-home) `2026.11.21`
+1.
+
 ### [A Mathematical Stroll Starting from (x+y)² | From Pascal’s Triangle to the Normal Distribution and Entropy [i.1]](https://seoulinside.substack.com/p/a-mathematical-stroll-starting-from) `2026.11.20`
-Part 1 Chapter 1.
+Interactive Page : from-coefficients-to-bell-curve.html
 
 ### [Jeonse and Interest Rates: How Did Seoul Apartment Jeonse Prices Move Relative to the Policy Rate and Loan Rates, and With What Lag? (2003.11–2026.10)](https://seoulinside.substack.com/p/jeonse-and-interest-rates-how-did) `2026.11.19`
 Data as of 2026.11.19 | Seoul apartment jeonse price index (monthly), base rate, and deposit-bank mortgage and jeonse-loan rates (new-business basis)
@@ -847,20 +862,5 @@ Six months ago, I came to Substack. Before that, I had written only in online co
 ### [Brief [2026.11.16]: Recent Issues in Korea | Top Scorer on the Tax Accountant Exam Admits Using a Miniature Camera and Generative AI. Two Proctors, Seated Right in Front of Him, Never Caught It](https://seoulinside.substack.com/p/brief-20261116-recent-issues-in-korea) `2026.11.16`
 AI Cheating That Got Through the Tax Accountant Exam
 
-### [A 3D Random Walk Under Gravity: What Happens When You Give the Drunken Sailor Gravity (Part 4)](https://seoulinside.substack.com/p/a-3d-random-walk-under-gravity-what) `2026.11.15`
-Step rules, equilibrium, dynamics, the time of a simulation, and gravity that pulls toward a center
-
-### [The Drunken Sailor Walks in 3D | Random Walks (Part 3)](https://seoulinside.substack.com/p/the-drunken-sailor-walks-in-3d) `2026.11.12`
-From Rayleigh to Maxwell: Random Walks on the Sphere and the Mathematics of Direction Sets
-
-### [22 Years of Seoul Jeonse: M2, the Gangnam 3 Districts, Speed by Administration, and Weekly Turning Points](https://seoulinside.substack.com/p/22-years-of-seoul-jeonse-m2-the-gangnam) `2026.11.08`
-Seoul 2003.10–2026.10 as seen through Bank of Korea M2, the KB Housing Composite Jeonse Price Index (monthly), and the Korea Real Estate Board weekly…
-
-### [Linear Algebra and Its Applications: The Mathematics of Splitting Vectors and Transforming Space [V.2]](https://seoulinside.substack.com/p/linear-algebra-and-its-applications) `2026.11.04`
-Recap of Installment 1:
-
-### [Sigma and Integral: What a Sum of Vectors Tells You Is “Displacement” [V.1]](https://seoulinside.substack.com/p/sigma-and-integral-what-a-sum-of) `2026.11.03`
-Understanding the sum of vectors (Σ) and the integral (∫) from the viewpoint of displacement
-
-> 🔄 마지막 업데이트: 2026-11-20 04:49 UTC
+> 🔄 마지막 업데이트: 2026-11-28 05:28 UTC
 <!-- BLOG-POST-LIST:END -->
